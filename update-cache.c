@@ -276,6 +276,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+literal|0
+return|;
 block|}
 end_function
 
@@ -1385,6 +1388,9 @@ argument_list|(
 literal|".dircache/index.lock"
 argument_list|)
 expr_stmt|;
+return|return
+literal|0
+return|;
 block|}
 end_function
 

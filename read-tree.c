@@ -422,9 +422,6 @@ modifier|*
 name|argv
 parameter_list|)
 block|{
-name|int
-name|fd
-decl_stmt|;
 name|unsigned
 name|char
 name|sha1

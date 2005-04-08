@@ -39,8 +39,6 @@ name|int
 name|len
 decl_stmt|,
 name|i
-decl_stmt|,
-name|fd
 decl_stmt|;
 if|if
 condition|(
@@ -102,7 +100,9 @@ operator|.
 name|st_mode
 argument_list|)
 condition|)
-return|return;
+return|return
+literal|0
+return|;
 name|fprintf
 argument_list|(
 name|stderr

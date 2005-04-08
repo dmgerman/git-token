@@ -44,9 +44,6 @@ name|unsigned
 name|long
 name|size
 decl_stmt|;
-name|int
-name|fd
-decl_stmt|;
 if|if
 condition|(
 name|argc
