@@ -316,6 +316,22 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|cache_name_pos
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|name
+parameter_list|,
+name|int
+name|namelen
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/* Return a statically allocated filename matching the sha1 signature */
 end_comment
