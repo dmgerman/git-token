@@ -1494,7 +1494,6 @@ end_function
 
 begin_function
 DECL|function|cache_name_compare
-specifier|static
 name|int
 name|cache_name_compare
 parameter_list|(
