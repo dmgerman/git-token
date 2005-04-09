@@ -185,6 +185,9 @@ name|long
 name|size
 parameter_list|)
 block|{
+name|int
+name|parents
+decl_stmt|;
 name|unsigned
 name|char
 name|tree_sha1
@@ -249,6 +252,10 @@ operator|+
 literal|1
 expr_stmt|;
 comment|/* "tree " +<hex sha1> + '\n' */
+name|parents
+operator|=
+literal|0
+expr_stmt|;
 while|while
 condition|(
 operator|!
@@ -297,7 +304,25 @@ operator|+
 literal|1
 expr_stmt|;
 comment|/* "parent " +<hex sha1> + '\n' */
+name|parents
+operator|++
+expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+name|parents
+condition|)
+name|printf
+argument_list|(
+literal|"root: %s\n"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|sha1
+argument_list|)
+argument_list|)
+expr_stmt|;
 return|return
 literal|0
 return|;
