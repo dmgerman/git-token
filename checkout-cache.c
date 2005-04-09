@@ -74,7 +74,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"checkout-cache: unable to read sha1 file of %s (%s)"
+literal|"checkout-cache: unable to read sha1 file of %s (%s)\n"
 argument_list|,
 name|ce
 operator|->
@@ -121,7 +121,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"checkout-cache: unable to create %s (%s)"
+literal|"checkout-cache: unable to create %s (%s)\n"
 argument_list|,
 name|ce
 operator|->
@@ -177,7 +177,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"checkout-cache: unable to write %s"
+literal|"checkout-cache: unable to write %s\n"
 argument_list|,
 name|ce
 operator|->
@@ -240,14 +240,8 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|changed
-condition|)
-return|return
-literal|0
-return|;
-if|if
-condition|(
+operator|&&
 operator|!
 name|quiet
 condition|)
@@ -255,7 +249,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"checkout-cache: %s already exists"
+literal|"checkout-cache: %s already exists\n"
 argument_list|,
 name|ce
 operator|->
@@ -263,8 +257,7 @@ name|name
 argument_list|)
 expr_stmt|;
 return|return
-operator|-
-literal|1
+literal|0
 return|;
 block|}
 block|}
@@ -318,7 +311,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"checkout-cache: %s is not in the cache"
+literal|"checkout-cache: %s is not in the cache\n"
 argument_list|,
 name|name
 argument_list|)
@@ -429,7 +422,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Invalid cache"
+literal|"Invalid cache\n"
 argument_list|)
 expr_stmt|;
 name|exit
