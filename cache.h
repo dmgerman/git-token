@@ -303,7 +303,7 @@ value|(((x)+16)*3/2)
 end_define
 
 begin_comment
-comment|/* Initialize the cache information */
+comment|/* Initialize and use the cache information */
 end_comment
 
 begin_function_decl
@@ -331,6 +331,72 @@ name|namelen
 parameter_list|)
 function_decl|;
 end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|cache_match_stat
+parameter_list|(
+name|struct
+name|cache_entry
+modifier|*
+name|ce
+parameter_list|,
+name|struct
+name|stat
+modifier|*
+name|st
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_define
+DECL|macro|MTIME_CHANGED
+define|#
+directive|define
+name|MTIME_CHANGED
+value|0x0001
+end_define
+
+begin_define
+DECL|macro|CTIME_CHANGED
+define|#
+directive|define
+name|CTIME_CHANGED
+value|0x0002
+end_define
+
+begin_define
+DECL|macro|OWNER_CHANGED
+define|#
+directive|define
+name|OWNER_CHANGED
+value|0x0004
+end_define
+
+begin_define
+DECL|macro|MODE_CHANGED
+define|#
+directive|define
+name|MODE_CHANGED
+value|0x0008
+end_define
+
+begin_define
+DECL|macro|INODE_CHANGED
+define|#
+directive|define
+name|INODE_CHANGED
+value|0x0010
+end_define
+
+begin_define
+DECL|macro|DATA_CHANGED
+define|#
+directive|define
+name|DATA_CHANGED
+value|0x0020
+end_define
 
 begin_comment
 comment|/* Return a statically allocated filename matching the sha1 signature */
