@@ -569,6 +569,11 @@ name|buf
 parameter_list|,
 name|unsigned
 name|len
+parameter_list|,
+name|unsigned
+name|char
+modifier|*
+name|return_sha1
 parameter_list|)
 function_decl|;
 end_function_decl
