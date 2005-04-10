@@ -456,6 +456,7 @@ name|char
 modifier|*
 name|sha1_file_name
 parameter_list|(
+specifier|const
 name|unsigned
 name|char
 modifier|*
@@ -473,6 +474,7 @@ specifier|extern
 name|int
 name|write_sha1_buffer
 parameter_list|(
+specifier|const
 name|unsigned
 name|char
 modifier|*
@@ -499,6 +501,7 @@ name|void
 modifier|*
 name|map_sha1_file
 parameter_list|(
+specifier|const
 name|unsigned
 name|char
 modifier|*
@@ -544,6 +547,7 @@ name|void
 modifier|*
 name|read_sha1_file
 parameter_list|(
+specifier|const
 name|unsigned
 name|char
 modifier|*
