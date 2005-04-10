@@ -320,21 +320,6 @@ argument_list|,
 name|subdir_sha1
 argument_list|)
 expr_stmt|;
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-literal|"Wrote %d entries from subdirectory '%.*s'\n"
-argument_list|,
-name|subdir_written
-argument_list|,
-name|dirname
-operator|-
-name|pathname
-argument_list|,
-name|pathname
-argument_list|)
-expr_stmt|;
 name|nr
 operator|+=
 name|subdir_written

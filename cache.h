@@ -361,6 +361,9 @@ name|struct
 name|cache_entry
 modifier|*
 name|ce
+parameter_list|,
+name|int
+name|ok_to_add
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -653,6 +656,8 @@ specifier|const
 name|char
 modifier|*
 name|err
+parameter_list|,
+modifier|...
 parameter_list|)
 function_decl|;
 end_function_decl

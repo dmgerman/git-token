@@ -130,6 +130,8 @@ return|return
 name|add_cache_entry
 argument_list|(
 name|ce
+argument_list|,
+literal|1
 argument_list|)
 return|;
 block|}
