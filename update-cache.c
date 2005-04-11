@@ -998,7 +998,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * We fundamentally don't like some paths: we don't want  * dot or dot-dot anywhere, and in fact, we don't even want  * any other dot-files (.dircache or anything else). They  * are hidden, for chist sake.  *  * Also, we don't want double slashes or slashes at the  * end that can make pathnames ambiguous.   */
+comment|/*  * We fundamentally don't like some paths: we don't want  * dot or dot-dot anywhere, and in fact, we don't even want  * any other dot-files (.git or anything else). They  * are hidden, for chist sake.  *  * Also, we don't want double slashes or slashes at the  * end that can make pathnames ambiguous.   */
 end_comment
 
 begin_function
@@ -1101,7 +1101,7 @@ name|remove_lock
 condition|)
 name|unlink
 argument_list|(
-literal|".dircache/index.lock"
+literal|".git/index.lock"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1137,7 +1137,7 @@ name|newfd
 operator|=
 name|open
 argument_list|(
-literal|".dircache/index.lock"
+literal|".git/index.lock"
 argument_list|,
 name|O_RDWR
 operator||
@@ -1343,9 +1343,9 @@ argument_list|)
 operator|||
 name|rename
 argument_list|(
-literal|".dircache/index.lock"
+literal|".git/index.lock"
 argument_list|,
-literal|".dircache/index"
+literal|".git/index"
 argument_list|)
 condition|)
 name|usage

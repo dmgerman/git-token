@@ -2162,7 +2162,7 @@ name|fd
 operator|=
 name|open
 argument_list|(
-literal|".dircache/index"
+literal|".git/index"
 argument_list|,
 name|O_RDONLY
 argument_list|)

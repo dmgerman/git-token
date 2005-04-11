@@ -426,7 +426,7 @@ name|remove_lock
 condition|)
 name|unlink
 argument_list|(
-literal|".dircache/index.lock"
+literal|".git/index.lock"
 argument_list|)
 expr_stmt|;
 block|}
@@ -462,7 +462,7 @@ name|newfd
 operator|=
 name|open
 argument_list|(
-literal|".dircache/index.lock"
+literal|".git/index.lock"
 argument_list|,
 name|O_RDWR
 operator||
@@ -602,9 +602,9 @@ argument_list|)
 operator|||
 name|rename
 argument_list|(
-literal|".dircache/index.lock"
+literal|".git/index.lock"
 argument_list|,
-literal|".dircache/index"
+literal|".git/index"
 argument_list|)
 condition|)
 name|usage

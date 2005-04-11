@@ -266,7 +266,7 @@ DECL|macro|DEFAULT_DB_ENVIRONMENT
 define|#
 directive|define
 name|DEFAULT_DB_ENVIRONMENT
-value|".dircache/objects"
+value|".git/objects"
 end_define
 
 begin_define
