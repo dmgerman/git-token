@@ -763,7 +763,7 @@ name|gecos
 operator|=
 name|getenv
 argument_list|(
-literal|"COMMITTER_NAME"
+literal|"AUTHOR_NAME"
 argument_list|)
 condition|?
 else|:
@@ -773,7 +773,7 @@ name|email
 operator|=
 name|getenv
 argument_list|(
-literal|"COMMITTER_EMAIL"
+literal|"AUTHOR_EMAIL"
 argument_list|)
 condition|?
 else|:
@@ -783,7 +783,7 @@ name|date
 operator|=
 name|getenv
 argument_list|(
-literal|"COMMITTER_DATE"
+literal|"AUTHOR_DATE"
 argument_list|)
 condition|?
 else|:
