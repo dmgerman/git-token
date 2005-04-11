@@ -401,6 +401,37 @@ return|;
 block|}
 end_function
 
+begin_decl_stmt
+DECL|variable|remove_lock
+specifier|static
+name|int
+name|remove_lock
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_function
+DECL|function|remove_lock_file
+specifier|static
+name|void
+name|remove_lock_file
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+if|if
+condition|(
+name|remove_lock
+condition|)
+name|unlink
+argument_list|(
+literal|".dircache/index.lock"
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
 begin_function
 DECL|function|main
 name|int
@@ -453,6 +484,15 @@ argument_list|(
 literal|"unable to create new cachefile"
 argument_list|)
 expr_stmt|;
+name|atexit
+argument_list|(
+name|remove_lock_file
+argument_list|)
+expr_stmt|;
+name|remove_lock
+operator|=
+literal|1
+expr_stmt|;
 for|for
 control|(
 name|i
@@ -493,18 +533,11 @@ if|if
 condition|(
 name|active_cache
 condition|)
-block|{
-name|fprintf
+name|usage
 argument_list|(
-name|stderr
-argument_list|,
-literal|"read-tree: cannot merge old cache on top of new\n"
+literal|"read-tree: cannot merge old cache on top of new"
 argument_list|)
 expr_stmt|;
-goto|goto
-name|out
-goto|;
-block|}
 if|if
 condition|(
 name|read_cache
@@ -512,18 +545,11 @@ argument_list|()
 operator|<
 literal|0
 condition|)
-block|{
-name|fprintf
+name|usage
 argument_list|(
-name|stderr
-argument_list|,
-literal|"read-tree: corrupt directory cache\n"
+literal|"read-tree: corrupt directory cache"
 argument_list|)
 expr_stmt|;
-goto|goto
-name|out
-goto|;
-block|}
 continue|continue;
 block|}
 if|if
@@ -537,18 +563,11 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-block|{
-name|fprintf
+name|usage
 argument_list|(
-name|stderr
-argument_list|,
-literal|"read-tree [-m]<sha1>\n"
+literal|"read-tree [-m]<sha1>"
 argument_list|)
 expr_stmt|;
-goto|goto
-name|out
-goto|;
-block|}
 if|if
 condition|(
 name|read_tree
@@ -562,24 +581,16 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-block|{
-name|fprintf
+name|usage
 argument_list|(
-name|stderr
-argument_list|,
-literal|"failed to unpack tree object %s\n"
+literal|"failed to unpack tree object %s"
 argument_list|,
 name|arg
 argument_list|)
 expr_stmt|;
-goto|goto
-name|out
-goto|;
-block|}
 block|}
 if|if
 condition|(
-operator|!
 name|write_cache
 argument_list|(
 name|newfd
@@ -588,8 +599,7 @@ name|active_cache
 argument_list|,
 name|active_nr
 argument_list|)
-operator|&&
-operator|!
+operator|||
 name|rename
 argument_list|(
 literal|".dircache/index.lock"
@@ -597,21 +607,18 @@ argument_list|,
 literal|".dircache/index"
 argument_list|)
 condition|)
+name|usage
+argument_list|(
+literal|"unable to write new index file"
+argument_list|)
+expr_stmt|;
+name|remove_lock
+operator|=
+literal|0
+expr_stmt|;
 return|return
 literal|0
 return|;
-name|out
-label|:
-name|unlink
-argument_list|(
-literal|".dircache/index.lock"
-argument_list|)
-expr_stmt|;
-name|exit
-argument_list|(
-literal|1
-argument_list|)
-expr_stmt|;
 block|}
 end_function
 
