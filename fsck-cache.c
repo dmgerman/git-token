@@ -353,6 +353,24 @@ name|parent
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|printf
+argument_list|(
+literal|"missing %s: %s referenced by %s\n"
+argument_list|,
+name|n
+operator|->
+name|tag
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|n
+operator|->
+name|needs
+argument_list|)
+argument_list|,
+name|hex
+argument_list|)
+expr_stmt|;
 block|}
 comment|/* Tell the user about things not referenced.. */
 for|for
