@@ -46,7 +46,7 @@ name|mkdir
 argument_list|(
 literal|".dircache"
 argument_list|,
-literal|0700
+literal|0755
 argument_list|)
 operator|<
 literal|0
@@ -138,7 +138,7 @@ name|mkdir
 argument_list|(
 name|sha1_dir
 argument_list|,
-literal|0700
+literal|0755
 argument_list|)
 operator|<
 literal|0
@@ -212,7 +212,7 @@ name|mkdir
 argument_list|(
 name|path
 argument_list|,
-literal|0700
+literal|0755
 argument_list|)
 operator|<
 literal|0

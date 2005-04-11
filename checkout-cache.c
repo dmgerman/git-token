@@ -106,7 +106,7 @@ name|mkdir
 argument_list|(
 name|buf
 argument_list|,
-literal|0700
+literal|0755
 argument_list|)
 expr_stmt|;
 block|}
