@@ -680,6 +680,10 @@ name|struct
 name|cache_entry
 modifier|*
 name|ce
+parameter_list|,
+name|unsigned
+name|long
+name|expected_size
 parameter_list|)
 block|{
 name|int
@@ -744,9 +748,7 @@ if|if
 condition|(
 name|size
 operator|==
-name|ce
-operator|->
-name|st_size
+name|expected_size
 operator|&&
 operator|!
 name|strcmp
@@ -852,16 +854,12 @@ condition|)
 return|return
 name|ce
 return|;
-comment|/* 	 * If the length has changed, there's no point in trying 	 * to refresh the entry - it's not going to match 	 */
+comment|/* 	 * If the mode has changed, there's no point in trying 	 * to refresh the entry - it's not going to match 	 */
 if|if
 condition|(
 name|changed
 operator|&
-operator|(
-name|DATA_CHANGED
-operator||
 name|MODE_CHANGED
-operator|)
 condition|)
 return|return
 name|NULL
@@ -871,6 +869,10 @@ condition|(
 name|compare_data
 argument_list|(
 name|ce
+argument_list|,
+name|st
+operator|.
+name|st_size
 argument_list|)
 condition|)
 return|return
@@ -906,6 +908,14 @@ argument_list|,
 operator|&
 name|st
 argument_list|)
+expr_stmt|;
+name|updated
+operator|->
+name|st_size
+operator|=
+name|st
+operator|.
+name|st_size
 expr_stmt|;
 return|return
 name|updated
