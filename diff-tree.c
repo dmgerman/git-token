@@ -737,7 +737,7 @@ condition|)
 return|return
 literal|0
 return|;
-comment|/* 	 * If the filemode has changed to/from a directory from/to a regular 	 * file, we need to consider it a remove and an add.  	 */
+comment|/* 	 * If the filemode has changed to/from a directory from/to a regular 	 * file, we need to consider it a remove and an add. 	 */
 if|if
 condition|(
 name|S_ISDIR

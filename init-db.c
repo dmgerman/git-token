@@ -113,7 +113,7 @@ name|sha1_dir
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* 	 * The default case is to have a DB per managed directory.  	 */
+comment|/* 	 * The default case is to have a DB per managed directory. 	 */
 name|sha1_dir
 operator|=
 name|DEFAULT_DB_ENVIRONMENT

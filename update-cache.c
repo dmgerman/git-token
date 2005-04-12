@@ -1004,7 +1004,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * We fundamentally don't like some paths: we don't want  * dot or dot-dot anywhere, and in fact, we don't even want  * any other dot-files (.git or anything else). They  * are hidden, for chist sake.  *  * Also, we don't want double slashes or slashes at the  * end that can make pathnames ambiguous.   */
+comment|/*  * We fundamentally don't like some paths: we don't want  * dot or dot-dot anywhere, and in fact, we don't even want  * any other dot-files (.git or anything else). They  * are hidden, for chist sake.  *  * Also, we don't want double slashes or slashes at the  * end that can make pathnames ambiguous.  */
 end_comment
 
 begin_function
