@@ -224,18 +224,7 @@ condition|(
 operator|!
 name|changed
 condition|)
-block|{
-name|printf
-argument_list|(
-literal|"%s: ok\n"
-argument_list|,
-name|ce
-operator|->
-name|name
-argument_list|)
-expr_stmt|;
 continue|continue;
-block|}
 name|printf
 argument_list|(
 literal|"%.*s:  "
