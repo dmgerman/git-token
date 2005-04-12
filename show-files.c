@@ -763,7 +763,7 @@ continue|continue;
 block|}
 name|usage
 argument_list|(
-literal|"show-files (--[cached|deleted|others|ignoded])*"
+literal|"show-files (--[cached|deleted|others|ignored])*"
 argument_list|)
 expr_stmt|;
 block|}
