@@ -798,6 +798,9 @@ block|{
 name|void
 modifier|*
 name|buffer
+decl_stmt|,
+modifier|*
+name|bufptr
 decl_stmt|;
 name|unsigned
 name|long
@@ -823,6 +826,8 @@ operator||=
 name|SEEN
 expr_stmt|;
 name|buffer
+operator|=
+name|bufptr
 operator|=
 name|read_sha1_file
 argument_list|(
@@ -850,7 +855,7 @@ return|return
 operator|-
 literal|1
 return|;
-name|buffer
+name|bufptr
 operator|+=
 literal|46
 expr_stmt|;
@@ -860,7 +865,7 @@ condition|(
 operator|!
 name|memcmp
 argument_list|(
-name|buffer
+name|bufptr
 argument_list|,
 literal|"parent "
 argument_list|,
@@ -870,7 +875,7 @@ operator|&&
 operator|!
 name|get_sha1_hex
 argument_list|(
-name|buffer
+name|bufptr
 operator|+
 literal|7
 argument_list|,
@@ -890,7 +895,7 @@ argument_list|(
 name|parent
 argument_list|)
 expr_stmt|;
-name|buffer
+name|bufptr
 operator|+=
 literal|48
 expr_stmt|;
@@ -902,7 +907,7 @@ name|date
 operator|=
 name|parse_commit_date
 argument_list|(
-name|buffer
+name|bufptr
 argument_list|)
 expr_stmt|;
 name|free
