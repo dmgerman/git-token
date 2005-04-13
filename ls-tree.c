@@ -52,7 +52,7 @@ condition|(
 operator|!
 name|buffer
 condition|)
-name|usage
+name|die
 argument_list|(
 literal|"unable to read sha1 file"
 argument_list|)
@@ -66,7 +66,7 @@ argument_list|,
 literal|"tree"
 argument_list|)
 condition|)
-name|usage
+name|die
 argument_list|(
 literal|"expected a 'tree' node"
 argument_list|)
@@ -137,7 +137,7 @@ argument_list|)
 operator|!=
 literal|1
 condition|)
-name|usage
+name|die
 argument_list|(
 literal|"corrupt 'tree' file"
 argument_list|)
@@ -265,7 +265,7 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-name|usage
+name|die
 argument_list|(
 literal|"list failed"
 argument_list|)

@@ -956,7 +956,7 @@ condition|(
 operator|!
 name|file
 condition|)
-name|usage
+name|die
 argument_list|(
 literal|"bad revtree cache file (%s)"
 argument_list|,

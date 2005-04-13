@@ -59,7 +59,7 @@ name|errno
 operator|!=
 name|ENOENT
 condition|)
-name|usage
+name|die
 argument_list|(
 literal|"%s: %s"
 argument_list|,
@@ -92,7 +92,7 @@ name|pos
 operator|<
 literal|0
 condition|)
-name|usage
+name|die
 argument_list|(
 literal|"preparing to update existing file '%s' not in cache"
 argument_list|,
@@ -118,7 +118,7 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-name|usage
+name|die
 argument_list|(
 literal|"fstat(%s): %s"
 argument_list|,
@@ -144,7 +144,7 @@ if|if
 condition|(
 name|changed
 condition|)
-name|usage
+name|die
 argument_list|(
 literal|"preparing to update file '%s' not uptodate in cache"
 argument_list|,

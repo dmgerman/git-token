@@ -531,9 +531,9 @@ name|entries
 operator|<=
 literal|0
 condition|)
-name|usage
+name|die
 argument_list|(
-literal|"no cache contents to write"
+literal|"write-tree: no cache contents to write"
 argument_list|)
 expr_stmt|;
 if|if
@@ -553,7 +553,7 @@ argument_list|)
 operator|!=
 name|entries
 condition|)
-name|usage
+name|die
 argument_list|(
 literal|"write-tree: internal error"
 argument_list|)

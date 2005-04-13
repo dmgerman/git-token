@@ -1231,18 +1231,13 @@ operator|!
 name|dir
 condition|)
 block|{
-name|fprintf
+return|return
+name|error
 argument_list|(
-name|stderr
-argument_list|,
 literal|"missing sha1 directory '%s'"
 argument_list|,
 name|path
 argument_list|)
-expr_stmt|;
-return|return
-operator|-
-literal|1
 return|;
 block|}
 while|while

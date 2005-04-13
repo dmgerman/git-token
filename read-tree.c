@@ -479,7 +479,7 @@ name|newfd
 operator|<
 literal|0
 condition|)
-name|usage
+name|die
 argument_list|(
 literal|"unable to create new cachefile"
 argument_list|)
@@ -533,7 +533,7 @@ if|if
 condition|(
 name|active_cache
 condition|)
-name|usage
+name|die
 argument_list|(
 literal|"read-tree: cannot merge old cache on top of new"
 argument_list|)
@@ -545,7 +545,7 @@ argument_list|()
 operator|<
 literal|0
 condition|)
-name|usage
+name|die
 argument_list|(
 literal|"read-tree: corrupt directory cache"
 argument_list|)
@@ -581,7 +581,7 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-name|usage
+name|die
 argument_list|(
 literal|"failed to unpack tree object %s"
 argument_list|,
@@ -607,7 +607,7 @@ argument_list|,
 literal|".git/index"
 argument_list|)
 condition|)
-name|usage
+name|die
 argument_list|(
 literal|"unable to write new index file"
 argument_list|)

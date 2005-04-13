@@ -62,7 +62,7 @@ argument_list|)
 condition|)
 name|usage
 argument_list|(
-literal|"cat-file: cat-file [-t | tagname]<sha1>"
+literal|"cat-file [-t | tagname]<sha1>"
 argument_list|)
 expr_stmt|;
 name|buf
@@ -82,12 +82,9 @@ condition|(
 operator|!
 name|buf
 condition|)
-block|{
-name|fprintf
+name|die
 argument_list|(
-name|stderr
-argument_list|,
-literal|"cat-file %s: bad file\n"
+literal|"cat-file %s: bad file"
 argument_list|,
 name|argv
 index|[
@@ -95,12 +92,6 @@ literal|2
 index|]
 argument_list|)
 expr_stmt|;
-name|exit
-argument_list|(
-literal|1
-argument_list|)
-expr_stmt|;
-block|}
 if|if
 condition|(
 operator|!
@@ -151,11 +142,9 @@ index|]
 argument_list|)
 condition|)
 block|{
-name|fprintf
+name|die
 argument_list|(
-name|stderr
-argument_list|,
-literal|"cat-file %s: bad tag\n"
+literal|"cat-file %s: bad tag"
 argument_list|,
 name|argv
 index|[
@@ -163,12 +152,6 @@ literal|2
 index|]
 argument_list|)
 expr_stmt|;
-name|exit
-argument_list|(
-literal|1
-argument_list|)
-expr_stmt|;
-comment|/* bad tag */
 block|}
 while|while
 condition|(
@@ -211,11 +194,9 @@ operator|==
 name|EPIPE
 condition|)
 break|break;
-name|fprintf
+name|die
 argument_list|(
-name|stderr
-argument_list|,
-literal|"cat-file: %s\n"
+literal|"cat-file: %s"
 argument_list|,
 name|strerror
 argument_list|(
@@ -223,28 +204,17 @@ name|errno
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|exit
-argument_list|(
-literal|1
-argument_list|)
-expr_stmt|;
 block|}
+elseif|else
 if|if
 condition|(
 operator|!
 name|ret
 condition|)
 block|{
-name|fprintf
+name|die
 argument_list|(
-name|stderr
-argument_list|,
 literal|"cat-file: disk full?"
-argument_list|)
-expr_stmt|;
-name|exit
-argument_list|(
-literal|1
 argument_list|)
 expr_stmt|;
 block|}
