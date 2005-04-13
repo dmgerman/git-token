@@ -1233,7 +1233,7 @@ continue|continue;
 block|}
 name|usage
 argument_list|(
-literal|"diff-tree [-R]<tree sha1><tree sha1>"
+literal|"diff-tree [-r]<tree sha1><tree sha1>"
 argument_list|)
 expr_stmt|;
 block|}
