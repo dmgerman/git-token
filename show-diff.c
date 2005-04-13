@@ -169,11 +169,7 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"+++ %s\n"
-argument_list|,
-name|ce
-operator|->
-name|name
+literal|"+++ /dev/null\n"
 argument_list|)
 expr_stmt|;
 name|p
