@@ -532,11 +532,20 @@ return|return;
 block|}
 name|printf
 argument_list|(
-literal|"%s%o %s %s%s%c"
+literal|"%s%o\t%s\t%s\t%s%s%c"
 argument_list|,
 name|prefix
 argument_list|,
 name|mode
+argument_list|,
+name|S_ISDIR
+argument_list|(
+name|mode
+argument_list|)
+condition|?
+literal|"tree"
+else|:
+literal|"blob"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -835,11 +844,20 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"*%o->%o %s->%s %s%s%c"
+literal|"*%o->%o\t%s\t%s->%s\t%s%s%c"
 argument_list|,
 name|mode1
 argument_list|,
 name|mode2
+argument_list|,
+name|S_ISDIR
+argument_list|(
+name|mode1
+argument_list|)
+condition|?
+literal|"tree"
+else|:
+literal|"blob"
 argument_list|,
 name|old_sha1_hex
 argument_list|,
