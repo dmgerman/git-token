@@ -557,6 +557,16 @@ name|rev
 operator|->
 name|parent
 decl_stmt|;
+comment|/* If we've been here already, don't bother */
+if|if
+condition|(
+name|rev
+operator|->
+name|flags
+operator|&
+name|REACHABLE
+condition|)
+return|return;
 name|rev
 operator|->
 name|flags
