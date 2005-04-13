@@ -331,6 +331,9 @@ name|st
 operator|->
 name|st_ctime
 expr_stmt|;
+ifdef|#
+directive|ifdef
+name|NSEC
 name|ce
 operator|->
 name|ctime
@@ -343,6 +346,8 @@ name|st_ctim
 operator|.
 name|tv_nsec
 expr_stmt|;
+endif|#
+directive|endif
 name|ce
 operator|->
 name|mtime
@@ -353,6 +358,9 @@ name|st
 operator|->
 name|st_mtime
 expr_stmt|;
+ifdef|#
+directive|ifdef
+name|NSEC
 name|ce
 operator|->
 name|mtime
@@ -365,6 +373,8 @@ name|st_mtim
 operator|.
 name|tv_nsec
 expr_stmt|;
+endif|#
+directive|endif
 name|ce
 operator|->
 name|st_dev
