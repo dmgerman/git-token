@@ -400,6 +400,11 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
+name|free
+argument_list|(
+name|buffer
+argument_list|)
+expr_stmt|;
 return|return
 literal|0
 return|;
