@@ -281,6 +281,15 @@ literal|"blob"
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+name|new
+condition|)
+name|free
+argument_list|(
+name|new
+argument_list|)
+expr_stmt|;
 return|return
 name|error
 argument_list|(
