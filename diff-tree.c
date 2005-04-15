@@ -15,6 +15,16 @@ literal|0
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|line_termination
+specifier|static
+name|int
+name|line_termination
+init|=
+literal|'\n'
+decl_stmt|;
+end_decl_stmt
+
 begin_function_decl
 specifier|static
 name|int
@@ -556,7 +566,7 @@ name|base
 argument_list|,
 name|path
 argument_list|,
-literal|0
+name|line_termination
 argument_list|)
 expr_stmt|;
 block|}
@@ -870,7 +880,7 @@ name|base
 argument_list|,
 name|path1
 argument_list|,
-literal|0
+name|line_termination
 argument_list|)
 expr_stmt|;
 return|return
@@ -1249,9 +1259,26 @@ literal|1
 expr_stmt|;
 continue|continue;
 block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"-z"
+argument_list|)
+condition|)
+block|{
+name|line_termination
+operator|=
+literal|'\0'
+expr_stmt|;
+continue|continue;
+block|}
 name|usage
 argument_list|(
-literal|"diff-tree [-r]<tree sha1><tree sha1>"
+literal|"diff-tree [-r] [-z]<tree sha1><tree sha1>"
 argument_list|)
 expr_stmt|;
 block|}
