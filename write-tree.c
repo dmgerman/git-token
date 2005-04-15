@@ -229,9 +229,10 @@ decl_stmt|;
 name|int
 name|pathlen
 init|=
+name|ce_namelen
+argument_list|(
 name|ce
-operator|->
-name|namelen
+argument_list|)
 decl_stmt|,
 name|entrylen
 decl_stmt|;
@@ -269,9 +270,12 @@ name|sha1
 expr_stmt|;
 name|mode
 operator|=
+name|ntohl
+argument_list|(
 name|ce
 operator|->
-name|st_mode
+name|ce_mode
+argument_list|)
 expr_stmt|;
 comment|/* Do we have _further_ subdirectories? */
 name|filename

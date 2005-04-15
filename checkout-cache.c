@@ -285,9 +285,12 @@ name|ce
 operator|->
 name|name
 argument_list|,
+name|ntohl
+argument_list|(
 name|ce
 operator|->
-name|st_mode
+name|ce_mode
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
