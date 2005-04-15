@@ -11,6 +11,18 @@ DECL|macro|_XOPEN_SOURCE
 comment|/* glibc2 needs this */
 end_comment
 
+begin_define
+DECL|macro|_BSD_SOURCE
+define|#
+directive|define
+name|_BSD_SOURCE
+end_define
+
+begin_comment
+DECL|macro|_BSD_SOURCE
+comment|/* for tm.tm_gmtoff */
+end_comment
+
 begin_include
 include|#
 directive|include
@@ -103,6 +115,8 @@ name|formats
 index|[]
 init|=
 block|{
+literal|"%s"
+block|,
 literal|"%c"
 block|,
 literal|"%a %b %d %T %y"
@@ -146,6 +160,8 @@ operator|++
 operator|)
 operator|!=
 literal|'\n'
+operator|&&
+name|c
 condition|)
 operator|*
 name|p
@@ -253,6 +269,10 @@ modifier|*
 name|buf
 parameter_list|)
 block|{
+name|unsigned
+name|long
+name|time
+decl_stmt|;
 if|if
 condition|(
 name|memcmp
@@ -301,11 +321,31 @@ literal|'>'
 condition|)
 comment|/* nada */
 empty_stmt|;
-return|return
+name|time
+operator|=
+name|strtoul
+argument_list|(
+name|buf
+argument_list|,
+name|NULL
+argument_list|,
+literal|10
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|time
+condition|)
+name|time
+operator|=
 name|parse_time
 argument_list|(
 name|buf
 argument_list|)
+expr_stmt|;
+return|return
+name|time
 return|;
 block|}
 end_function
