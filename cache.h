@@ -238,19 +238,24 @@ value|(0x0fff)
 end_define
 
 begin_define
-DECL|macro|CE_STAGE1
+DECL|macro|CE_STAGEMASK
 define|#
 directive|define
-name|CE_STAGE1
-value|(0x1000)
+name|CE_STAGEMASK
+value|(0x3000)
 end_define
 
 begin_define
-DECL|macro|CE_STAGE2
+DECL|macro|create_ce_flags
 define|#
 directive|define
-name|CE_STAGE2
-value|(0x2000)
+name|create_ce_flags
+parameter_list|(
+name|len
+parameter_list|,
+name|stage
+parameter_list|)
+value|((len) | ((stage)<< 12))
 end_define
 
 begin_decl_stmt
