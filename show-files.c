@@ -62,6 +62,16 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|show_stage
+specifier|static
+name|int
+name|show_stage
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|line_terminator
 specifier|static
 name|int
@@ -560,6 +570,8 @@ block|}
 if|if
 condition|(
 name|show_cached
+operator||
+name|show_stage
 condition|)
 block|{
 for|for
@@ -586,10 +598,48 @@ index|[
 name|i
 index|]
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|show_stage
+condition|)
 name|printf
 argument_list|(
 literal|"%s%c"
 argument_list|,
+name|ce
+operator|->
+name|name
+argument_list|,
+name|line_terminator
+argument_list|)
+expr_stmt|;
+else|else
+name|printf
+argument_list|(
+comment|/* "%06o %s %d %10d %s%c", */
+literal|"%06o %s %d %s%c"
+argument_list|,
+name|ntohl
+argument_list|(
+name|ce
+operator|->
+name|ce_mode
+argument_list|)
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|ce
+operator|->
+name|sha1
+argument_list|)
+argument_list|,
+name|ce_stage
+argument_list|(
+name|ce
+argument_list|)
+argument_list|,
+comment|/* ntohl(ce->ce_size), */
 name|ce
 operator|->
 name|name
@@ -794,9 +844,26 @@ literal|1
 expr_stmt|;
 continue|continue;
 block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--stage"
+argument_list|)
+condition|)
+block|{
+name|show_stage
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
 name|usage
 argument_list|(
-literal|"show-files (--[cached|deleted|others|ignored])*"
+literal|"show-files [-z] (--[cached|deleted|others|ignored|stage])*"
 argument_list|)
 expr_stmt|;
 block|}
@@ -805,7 +872,7 @@ if|if
 condition|(
 operator|!
 operator|(
-name|show_cached
+name|show_stage
 operator||
 name|show_deleted
 operator||

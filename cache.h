@@ -246,6 +246,14 @@ value|(0x3000)
 end_define
 
 begin_define
+DECL|macro|CE_STAGESHIFT
+define|#
+directive|define
+name|CE_STAGESHIFT
+value|12
+end_define
+
+begin_define
 DECL|macro|create_ce_flags
 define|#
 directive|define
@@ -255,7 +263,51 @@ name|len
 parameter_list|,
 name|stage
 parameter_list|)
-value|htons((len) | ((stage)<< 12))
+value|htons((len) | ((stage)<< CE_STAGESHIFT))
+end_define
+
+begin_define
+DECL|macro|ce_namelen
+define|#
+directive|define
+name|ce_namelen
+parameter_list|(
+name|ce
+parameter_list|)
+value|(CE_NAMEMASK& ntohs((ce)->ce_flags))
+end_define
+
+begin_define
+DECL|macro|ce_size
+define|#
+directive|define
+name|ce_size
+parameter_list|(
+name|ce
+parameter_list|)
+value|cache_entry_size(ce_namelen(ce))
+end_define
+
+begin_define
+DECL|macro|ce_stage
+define|#
+directive|define
+name|ce_stage
+parameter_list|(
+name|ce
+parameter_list|)
+value|((CE_STAGEMASK& ntohs((ce)->ce_flags))>> CE_STAGESHIFT)
+end_define
+
+begin_define
+DECL|macro|cache_entry_size
+define|#
+directive|define
+name|cache_entry_size
+parameter_list|(
+name|len
+parameter_list|)
+value|((offsetof(struct cache_entry,name) + (len) + 8)& ~7)
 end_define
 
 begin_decl_stmt
@@ -302,39 +354,6 @@ define|#
 directive|define
 name|DEFAULT_DB_ENVIRONMENT
 value|".git/objects"
-end_define
-
-begin_define
-DECL|macro|cache_entry_size
-define|#
-directive|define
-name|cache_entry_size
-parameter_list|(
-name|len
-parameter_list|)
-value|((offsetof(struct cache_entry,name) + (len) + 8)& ~7)
-end_define
-
-begin_define
-DECL|macro|ce_namelen
-define|#
-directive|define
-name|ce_namelen
-parameter_list|(
-name|ce
-parameter_list|)
-value|(CE_NAMEMASK& ntohs((ce)->ce_flags))
-end_define
-
-begin_define
-DECL|macro|ce_size
-define|#
-directive|define
-name|ce_size
-parameter_list|(
-name|ce
-parameter_list|)
-value|cache_entry_size(ce_namelen(ce))
 end_define
 
 begin_define
