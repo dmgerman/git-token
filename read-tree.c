@@ -86,7 +86,7 @@ argument_list|)
 expr_stmt|;
 name|ce
 operator|->
-name|ce_namelen
+name|ce_flags
 operator|=
 name|htons
 argument_list|(

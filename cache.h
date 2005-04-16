@@ -213,10 +213,10 @@ index|[
 literal|20
 index|]
 decl_stmt|;
-DECL|member|ce_namelen
+DECL|member|ce_flags
 name|unsigned
 name|short
-name|ce_namelen
+name|ce_flags
 decl_stmt|;
 DECL|member|name
 name|char
@@ -228,6 +228,30 @@ decl_stmt|;
 block|}
 struct|;
 end_struct
+
+begin_define
+DECL|macro|CE_NAMEMASK
+define|#
+directive|define
+name|CE_NAMEMASK
+value|(0x0fff)
+end_define
+
+begin_define
+DECL|macro|CE_STAGE1
+define|#
+directive|define
+name|CE_STAGE1
+value|(0x1000)
+end_define
+
+begin_define
+DECL|macro|CE_STAGE2
+define|#
+directive|define
+name|CE_STAGE2
+value|(0x2000)
+end_define
 
 begin_decl_stmt
 DECL|variable|sha1_file_directory
@@ -294,7 +318,7 @@ name|ce_namelen
 parameter_list|(
 name|ce
 parameter_list|)
-value|ntohs((ce)->ce_namelen)
+value|(CE_NAMEMASK& ntohs((ce)->ce_flags))
 end_define
 
 begin_define
