@@ -72,6 +72,16 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|show_unmerged
+specifier|static
+name|int
+name|show_unmerged
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|line_terminator
 specifier|static
 name|int
@@ -600,6 +610,17 @@ index|]
 decl_stmt|;
 if|if
 condition|(
+name|show_unmerged
+operator|&&
+operator|!
+name|ce_stage
+argument_list|(
+name|ce
+argument_list|)
+condition|)
+continue|continue;
+if|if
+condition|(
 operator|!
 name|show_stage
 condition|)
@@ -861,6 +882,28 @@ literal|1
 expr_stmt|;
 continue|continue;
 block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--unmerged"
+argument_list|)
+condition|)
+block|{
+comment|// There's no point in showing unmerged unless you also show the stage information
+name|show_stage
+operator|=
+literal|1
+expr_stmt|;
+name|show_unmerged
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
 name|usage
 argument_list|(
 literal|"show-files [-z] (--[cached|deleted|others|ignored|stage])*"
@@ -879,6 +922,8 @@ operator||
 name|show_others
 operator||
 name|show_ignored
+operator||
+name|show_unmerged
 operator|)
 condition|)
 name|show_cached
