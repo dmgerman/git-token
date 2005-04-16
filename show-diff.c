@@ -503,12 +503,7 @@ condition|)
 continue|continue;
 name|printf
 argument_list|(
-literal|"%.*s:  "
-argument_list|,
-name|ce_namelen
-argument_list|(
-name|ce
-argument_list|)
+literal|"%s:  "
 argument_list|,
 name|ce
 operator|->
