@@ -1123,6 +1123,8 @@ name|lookup_rev
 argument_list|(
 name|head_sha1
 argument_list|)
+argument_list|,
+name|REACHABLE
 argument_list|)
 expr_stmt|;
 name|heads
