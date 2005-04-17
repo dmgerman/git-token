@@ -798,7 +798,7 @@ index|]
 decl_stmt|;
 name|void
 modifier|*
-name|new
+name|old
 decl_stmt|;
 if|if
 condition|(
@@ -959,7 +959,7 @@ condition|(
 name|silent
 condition|)
 continue|continue;
-name|new
+name|old
 operator|=
 name|read_sha1_file
 argument_list|(
@@ -979,14 +979,14 @@ name|ce
 operator|->
 name|name
 argument_list|,
-name|new
+name|old
 argument_list|,
 name|size
 argument_list|)
 expr_stmt|;
 name|free
 argument_list|(
-name|new
+name|old
 argument_list|)
 expr_stmt|;
 block|}
