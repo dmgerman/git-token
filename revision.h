@@ -653,7 +653,9 @@ end_function
 begin_function
 DECL|function|parse_commit
 specifier|static
-name|int
+name|struct
+name|revision
+modifier|*
 name|parse_commit
 parameter_list|(
 name|unsigned
@@ -740,10 +742,16 @@ argument_list|,
 literal|"commit"
 argument_list|)
 condition|)
-return|return
-operator|-
-literal|1
-return|;
+name|die
+argument_list|(
+literal|"%s is not a commit object"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|sha1
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|bufptr
 operator|+=
 literal|46
@@ -806,7 +814,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-literal|0
+name|rev
 return|;
 block|}
 end_function
