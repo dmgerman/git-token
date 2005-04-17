@@ -34,18 +34,10 @@ specifier|static
 name|int
 name|index_fd
 parameter_list|(
-specifier|const
+name|unsigned
 name|char
 modifier|*
-name|path
-parameter_list|,
-name|int
-name|namelen
-parameter_list|,
-name|struct
-name|cache_entry
-modifier|*
-name|ce
+name|sha1
 parameter_list|,
 name|int
 name|fd
@@ -70,8 +62,6 @@ decl_stmt|;
 name|int
 name|max_out_bytes
 init|=
-name|namelen
-operator|+
 name|size
 operator|+
 literal|200
@@ -91,8 +81,6 @@ name|metadata
 init|=
 name|malloc
 argument_list|(
-name|namelen
-operator|+
 literal|200
 argument_list|)
 decl_stmt|;
@@ -275,8 +263,6 @@ argument_list|)
 expr_stmt|;
 name|SHA1_Final
 argument_list|(
-name|ce
-operator|->
 name|sha1
 argument_list|,
 operator|&
@@ -286,8 +272,6 @@ expr_stmt|;
 return|return
 name|write_sha1_buffer
 argument_list|(
-name|ce
-operator|->
 name|sha1
 argument_list|,
 name|out
@@ -603,11 +587,9 @@ if|if
 condition|(
 name|index_fd
 argument_list|(
-name|path
-argument_list|,
-name|namelen
-argument_list|,
 name|ce
+operator|->
+name|sha1
 argument_list|,
 name|fd
 argument_list|,
@@ -1170,13 +1152,6 @@ return|return
 operator|-
 literal|1
 return|;
-name|printf
-argument_list|(
-literal|"got mode %o\n"
-argument_list|,
-name|mode
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|get_sha1_hex
@@ -1190,16 +1165,6 @@ return|return
 operator|-
 literal|1
 return|;
-name|printf
-argument_list|(
-literal|"got sha1 %s\n"
-argument_list|,
-name|sha1_to_hex
-argument_list|(
-name|sha1
-argument_list|)
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -1212,13 +1177,6 @@ return|return
 operator|-
 literal|1
 return|;
-name|printf
-argument_list|(
-literal|"got path %s\n"
-argument_list|,
-name|arg3
-argument_list|)
-expr_stmt|;
 name|len
 operator|=
 name|strlen
