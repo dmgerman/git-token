@@ -1707,18 +1707,23 @@ name|changed
 operator||=
 name|OWNER_CHANGED
 expr_stmt|;
+comment|/* We consider only the owner x bit to be relevant for "mode changes" */
 if|if
 condition|(
+literal|0100
+operator|&
+operator|(
+name|ntohs
+argument_list|(
 name|ce
 operator|->
 name|ce_mode
-operator|!=
-name|htonl
-argument_list|(
+argument_list|)
+operator|^
 name|st
 operator|->
 name|st_mode
-argument_list|)
+operator|)
 condition|)
 name|changed
 operator||=

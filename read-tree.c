@@ -89,7 +89,7 @@ name|ce
 operator|->
 name|ce_mode
 operator|=
-name|htonl
+name|create_ce_mode
 argument_list|(
 name|mode
 argument_list|)

@@ -300,6 +300,28 @@ value|((CE_STAGEMASK& ntohs((ce)->ce_flags))>> CE_STAGESHIFT)
 end_define
 
 begin_define
+DECL|macro|ce_permissions
+define|#
+directive|define
+name|ce_permissions
+parameter_list|(
+name|mode
+parameter_list|)
+value|(((mode)& 0100) ? 0755 : 0644)
+end_define
+
+begin_define
+DECL|macro|create_ce_mode
+define|#
+directive|define
+name|create_ce_mode
+parameter_list|(
+name|mode
+parameter_list|)
+value|htonl(S_IFREG | ce_permissions(mode))
+end_define
+
+begin_define
 DECL|macro|cache_entry_size
 define|#
 directive|define
