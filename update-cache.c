@@ -1269,6 +1269,7 @@ name|active_cache_changed
 operator|=
 literal|1
 expr_stmt|;
+comment|/* You can NOT just free active_cache[i] here, since it 		 * might not be necessarily malloc()ed but can also come 		 * from mmap(). */
 name|active_cache
 index|[
 name|i
