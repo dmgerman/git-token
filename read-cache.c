@@ -1713,7 +1713,7 @@ condition|(
 literal|0100
 operator|&
 operator|(
-name|ntohs
+name|ntohl
 argument_list|(
 name|ce
 operator|->
