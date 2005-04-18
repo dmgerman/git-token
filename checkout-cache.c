@@ -591,6 +591,14 @@ index|]
 decl_stmt|;
 if|if
 condition|(
+name|ce_stage
+argument_list|(
+name|ce
+argument_list|)
+condition|)
+continue|continue;
+if|if
+condition|(
 name|checkout_entry
 argument_list|(
 name|ce
