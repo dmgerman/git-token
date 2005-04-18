@@ -59,12 +59,12 @@ name|char
 modifier|*
 name|cp
 decl_stmt|;
-comment|/* count single quote characters */
+comment|/* count bytes needed to store the quoted string. */
 for|for
 control|(
 name|cnt
 operator|=
-literal|0
+literal|1
 operator|,
 name|cp
 operator|=
