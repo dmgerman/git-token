@@ -118,7 +118,11 @@ condition|)
 block|{
 name|printf
 argument_list|(
-literal|"unreachable %s\n"
+literal|"unreachable %s %s\n"
+argument_list|,
+name|obj
+operator|->
+name|type
 argument_list|,
 name|sha1_to_hex
 argument_list|(
