@@ -218,6 +218,15 @@ argument_list|(
 name|sha1
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|obj
+operator|->
+name|object
+operator|.
+name|parsed
+condition|)
+return|return;
 name|parse_commit
 argument_list|(
 name|obj
