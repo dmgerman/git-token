@@ -90,8 +90,6 @@ argument_list|,
 operator|&
 name|st
 argument_list|)
-operator|<
-literal|0
 operator|&&
 name|S_ISDIR
 argument_list|(
