@@ -26,11 +26,6 @@ block|{
 name|char
 modifier|*
 name|sha1_dir
-init|=
-name|getenv
-argument_list|(
-name|DB_ENVIRONMENT
-argument_list|)
 decl_stmt|,
 modifier|*
 name|path
