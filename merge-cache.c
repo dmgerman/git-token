@@ -42,6 +42,14 @@ index|]
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|err
+specifier|static
+name|int
+name|err
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|run_program
 specifier|static
@@ -156,10 +164,8 @@ argument_list|(
 name|status
 argument_list|)
 condition|)
-name|die
-argument_list|(
-literal|"merge program failed"
-argument_list|)
+name|err
+operator|++
 expr_stmt|;
 block|}
 end_function
@@ -629,6 +635,15 @@ name|arg
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|err
+condition|)
+name|die
+argument_list|(
+literal|"merge program failed"
+argument_list|)
+expr_stmt|;
 return|return
 literal|0
 return|;
