@@ -121,14 +121,6 @@ name|unsigned
 name|int
 name|hdr_entries
 decl_stmt|;
-DECL|member|sha1
-name|unsigned
-name|char
-name|sha1
-index|[
-literal|20
-index|]
-decl_stmt|;
 block|}
 struct|;
 end_struct
