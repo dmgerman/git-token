@@ -689,6 +689,11 @@ parameter_list|,
 name|unsigned
 name|long
 name|size
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|type
 parameter_list|)
 function_decl|;
 end_function_decl
