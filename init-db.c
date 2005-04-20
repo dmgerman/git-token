@@ -71,44 +71,10 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|sha1_dir
 condition|)
 block|{
-name|struct
-name|stat
-name|st
-decl_stmt|;
-if|if
-condition|(
-operator|!
-name|stat
-argument_list|(
-name|sha1_dir
-argument_list|,
-operator|&
-name|st
-argument_list|)
-operator|&&
-name|S_ISDIR
-argument_list|(
-name|st
-operator|.
-name|st_mode
-argument_list|)
-condition|)
-return|return
-literal|0
-return|;
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-literal|"DB_ENVIRONMENT set to bad directory %s: "
-argument_list|,
-name|sha1_dir
-argument_list|)
-expr_stmt|;
-block|}
 name|sha1_dir
 operator|=
 name|DEFAULT_DB_ENVIRONMENT
@@ -117,9 +83,10 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"defaulting to private storage area\n"
+literal|"defaulting to local storage area\n"
 argument_list|)
 expr_stmt|;
+block|}
 name|len
 operator|=
 name|strlen
