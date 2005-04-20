@@ -9,6 +9,10 @@ directive|include
 file|"cache.h"
 end_include
 
+begin_comment
+comment|/*  * If you want to, you can share the DB area with any number of branches.  * That has advantages: you can save space by sharing all the SHA1 objects.  * On the other hand, it might just make lookup slower and messier. You  * be the judge.  The default case is to have one DB per managed directory.  */
+end_comment
+
 begin_function
 DECL|function|main
 name|int
@@ -58,7 +62,6 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* 	 * If you want to, you can share the DB area with any number of branches. 	 * That has advantages: you can save space by sharing all the SHA1 objects. 	 * On the other hand, it might just make lookup slower and messier. You 	 * be the judge. 	 */
 name|sha1_dir
 operator|=
 name|getenv
@@ -106,7 +109,6 @@ name|sha1_dir
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* 	 * The default case is to have a DB per managed directory. 	 */
 name|sha1_dir
 operator|=
 name|DEFAULT_DB_ENVIRONMENT
