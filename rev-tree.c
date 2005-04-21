@@ -339,12 +339,10 @@ name|read_cache_file
 argument_list|(
 name|argv
 index|[
-literal|2
+operator|++
+name|i
 index|]
 argument_list|)
-expr_stmt|;
-name|i
-operator|++
 expr_stmt|;
 continue|continue;
 block|}
