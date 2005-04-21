@@ -118,11 +118,7 @@ name|sprintf
 argument_list|(
 name|cmdline
 argument_list|,
-literal|"diff-tree -r -z %s %s | xargs -0 gitdiff-do %s %s"
-argument_list|,
-name|against
-argument_list|,
-name|hex
+literal|"git diff -r %s:%s"
 argument_list|,
 name|against
 argument_list|,
