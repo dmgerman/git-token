@@ -1046,7 +1046,8 @@ name|fd
 operator|=
 name|open
 argument_list|(
-literal|".git/index"
+name|get_index_file
+argument_list|()
 argument_list|,
 name|O_RDONLY
 argument_list|)

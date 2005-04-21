@@ -75,6 +75,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|<sys/param.h>
+end_include
+
+begin_include
+include|#
+directive|include
 file|<netinet/in.h>
 end_include
 
@@ -374,6 +380,40 @@ define|#
 directive|define
 name|DEFAULT_DB_ENVIRONMENT
 value|".git/objects"
+end_define
+
+begin_define
+DECL|macro|get_object_directory
+define|#
+directive|define
+name|get_object_directory
+parameter_list|()
+value|(getenv(DB_ENVIRONMENT) ? : DEFAULT_DB_ENVIRONMENT)
+end_define
+
+begin_define
+DECL|macro|INDEX_ENVIRONMENT
+define|#
+directive|define
+name|INDEX_ENVIRONMENT
+value|"GIT_INDEX_FILE"
+end_define
+
+begin_define
+DECL|macro|DEFAULT_INDEX_ENVIRONMENT
+define|#
+directive|define
+name|DEFAULT_INDEX_ENVIRONMENT
+value|".git/index"
+end_define
+
+begin_define
+DECL|macro|get_index_file
+define|#
+directive|define
+name|get_index_file
+parameter_list|()
+value|(getenv(INDEX_ENVIRONMENT) ? : DEFAULT_INDEX_ENVIRONMENT)
 end_define
 
 begin_define
