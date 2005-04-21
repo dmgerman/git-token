@@ -87,7 +87,7 @@ end_include
 begin_include
 include|#
 directive|include
-file|<openssl/sha.h>
+include|SHA1_HEADER
 end_include
 
 begin_include
