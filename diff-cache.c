@@ -1411,6 +1411,17 @@ return|;
 block|}
 end_function
 
+begin_decl_stmt
+DECL|variable|diff_cache_usage
+specifier|static
+name|char
+modifier|*
+name|diff_cache_usage
+init|=
+literal|"diff-cache [-r] [-z] [--cached]<tree sha1>"
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|main
 name|int
@@ -1518,7 +1529,7 @@ continue|continue;
 block|}
 name|usage
 argument_list|(
-literal|"diff-cache [-r] [-z]<tree sha1>"
+name|diff_cache_usage
 argument_list|)
 expr_stmt|;
 block|}
@@ -1540,7 +1551,7 @@ argument_list|)
 condition|)
 name|usage
 argument_list|(
-literal|"diff-cache [-r] [-z]<tree sha1>"
+name|diff_cache_usage
 argument_list|)
 expr_stmt|;
 name|tree

@@ -1048,6 +1048,17 @@ block|}
 block|}
 end_function
 
+begin_decl_stmt
+DECL|variable|read_tree_usage
+specifier|static
+name|char
+modifier|*
+name|read_tree_usage
+init|=
+literal|"read-tree (<sha> | -m<sha1> [<sha2><sha3>])"
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|main
 name|int
@@ -1158,7 +1169,7 @@ if|if
 condition|(
 name|stage
 condition|)
-name|usage
+name|die
 argument_list|(
 literal|"-m needs to come first"
 argument_list|)
@@ -1190,7 +1201,7 @@ name|i
 index|]
 argument_list|)
 condition|)
-name|usage
+name|die
 argument_list|(
 literal|"you need to resolve your current index first"
 argument_list|)
@@ -1219,7 +1230,7 @@ literal|0
 condition|)
 name|usage
 argument_list|(
-literal|"read-tree [-m]<sha1>"
+name|read_tree_usage
 argument_list|)
 expr_stmt|;
 if|if
@@ -1230,7 +1241,7 @@ literal|3
 condition|)
 name|usage
 argument_list|(
-literal|"can't merge more than two trees"
+name|read_tree_usage
 argument_list|)
 expr_stmt|;
 if|if
