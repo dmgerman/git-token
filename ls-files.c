@@ -92,6 +92,54 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|tag_cached
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|tag_cached
+init|=
+literal|""
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|tag_unmerged
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|tag_unmerged
+init|=
+literal|""
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|tag_removed
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|tag_removed
+init|=
+literal|""
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|tag_other
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|tag_other
+init|=
+literal|""
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|nr_excludes
 specifier|static
 name|int
@@ -926,7 +974,9 @@ operator|++
 control|)
 name|printf
 argument_list|(
-literal|"%s%c"
+literal|"%s%s%c"
+argument_list|,
+name|tag_other
 argument_list|,
 name|dir
 index|[
@@ -998,7 +1048,16 @@ name|show_stage
 condition|)
 name|printf
 argument_list|(
-literal|"%s%c"
+literal|"%s%s%c"
+argument_list|,
+name|ce_stage
+argument_list|(
+name|ce
+argument_list|)
+condition|?
+name|tag_unmerged
+else|:
+name|tag_cached
 argument_list|,
 name|ce
 operator|->
@@ -1010,8 +1069,16 @@ expr_stmt|;
 else|else
 name|printf
 argument_list|(
-comment|/* "%06o %s %d %10d %s%c", */
-literal|"%06o %s %d %s%c"
+literal|"%s%06o %s %d %s%c"
+argument_list|,
+name|ce_stage
+argument_list|(
+name|ce
+argument_list|)
+condition|?
+name|tag_unmerged
+else|:
+name|tag_cached
 argument_list|,
 name|ntohl
 argument_list|(
@@ -1032,7 +1099,6 @@ argument_list|(
 name|ce
 argument_list|)
 argument_list|,
-comment|/* ntohl(ce->ce_size), */
 name|ce
 operator|->
 name|name
@@ -1103,7 +1169,9 @@ condition|)
 continue|continue;
 name|printf
 argument_list|(
-literal|"%s%c"
+literal|"%s%s%c"
+argument_list|,
+name|tag_removed
 argument_list|,
 name|ce
 operator|->
@@ -1125,7 +1193,7 @@ name|char
 modifier|*
 name|ls_files_usage
 init|=
-literal|"ls-files [-z] (--[cached|deleted|others|stage|unmerged])* "
+literal|"ls-files [-z] [-t] (--[cached|deleted|others|stage|unmerged])* "
 literal|"[ --ignored [--exclude=<pattern>] [--exclude-from=<file>) ]"
 decl_stmt|;
 end_decl_stmt
@@ -1184,6 +1252,35 @@ block|{
 name|line_terminator
 operator|=
 literal|0
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"-t"
+argument_list|)
+condition|)
+block|{
+name|tag_cached
+operator|=
+literal|"H "
+expr_stmt|;
+name|tag_unmerged
+operator|=
+literal|"M "
+expr_stmt|;
+name|tag_removed
+operator|=
+literal|"R "
+expr_stmt|;
+name|tag_other
+operator|=
+literal|"? "
 expr_stmt|;
 block|}
 elseif|else
@@ -1331,7 +1428,7 @@ literal|"--unmerged"
 argument_list|)
 condition|)
 block|{
-comment|// There's no point in showing unmerged unless you also show the stage information
+comment|/* There's no point in showing unmerged unless 			 * you also show the stage information. 			 */
 name|show_stage
 operator|=
 literal|1
