@@ -482,7 +482,6 @@ end_comment
 
 begin_function
 DECL|function|remove_entry_at
-specifier|static
 name|int
 name|remove_entry_at
 parameter_list|(
@@ -602,7 +601,6 @@ end_function
 
 begin_function
 DECL|function|same_name
-specifier|static
 name|int
 name|same_name
 parameter_list|(
