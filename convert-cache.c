@@ -972,6 +972,8 @@ literal|"PDT"
 block|,
 literal|"PST"
 block|,
+literal|"CEST"
+block|,
 name|NULL
 block|}
 decl_stmt|;
@@ -1313,17 +1315,6 @@ argument_list|,
 name|date
 argument_list|,
 name|datelen
-argument_list|)
-expr_stmt|;
-name|printf
-argument_list|(
-literal|"new format date '%.*s'?\n"
-argument_list|,
-name|datelen
-operator|-
-literal|1
-argument_list|,
-name|date
 argument_list|)
 expr_stmt|;
 return|return
