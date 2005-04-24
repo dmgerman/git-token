@@ -108,6 +108,8 @@ name|pop_most_recent_commit
 argument_list|(
 operator|&
 name|list
+argument_list|,
+literal|0x1
 argument_list|)
 decl_stmt|;
 name|printf

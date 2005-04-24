@@ -169,6 +169,10 @@ name|commit_list
 modifier|*
 modifier|*
 name|list
+parameter_list|,
+name|unsigned
+name|int
+name|mark
 parameter_list|)
 function_decl|;
 end_function_decl
