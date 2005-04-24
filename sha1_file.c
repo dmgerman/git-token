@@ -893,6 +893,15 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|ret
+operator|<
+name|Z_OK
+condition|)
+return|return
+name|NULL
+return|;
+if|if
+condition|(
 name|sscanf
 argument_list|(
 name|buffer
