@@ -345,7 +345,7 @@ condition|)
 block|{
 name|show_file
 argument_list|(
-literal|"-"
+literal|"+"
 argument_list|,
 name|ce
 argument_list|)
