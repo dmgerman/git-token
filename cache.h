@@ -788,6 +788,37 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|write_sha1_from_fd
+parameter_list|(
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|sha1
+parameter_list|,
+name|int
+name|fd
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|has_sha1_file
+parameter_list|(
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|sha1
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/* Convert to/from hex/sha1 representation */
 end_comment
