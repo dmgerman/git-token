@@ -102,14 +102,6 @@ name|type
 operator|=
 name|blob_type
 expr_stmt|;
-name|ret
-operator|->
-name|object
-operator|.
-name|parsed
-operator|=
-literal|1
-expr_stmt|;
 return|return
 name|ret
 return|;
