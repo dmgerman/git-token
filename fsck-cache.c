@@ -325,6 +325,23 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|commit
+operator|->
+name|date
+condition|)
+name|printf
+argument_list|(
+literal|"bad commit date in %s\n"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|sha1
+argument_list|)
+argument_list|)
+expr_stmt|;
 return|return
 literal|0
 return|;
