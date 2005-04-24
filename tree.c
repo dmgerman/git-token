@@ -926,6 +926,10 @@ operator|->
 name|object
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|obj
+condition|)
 name|add_ref
 argument_list|(
 operator|&
