@@ -424,6 +424,12 @@ index|[
 literal|20
 index|]
 decl_stmt|;
+name|char
+name|object_hex
+index|[
+literal|60
+index|]
+decl_stmt|;
 specifier|const
 name|char
 modifier|*
@@ -573,9 +579,19 @@ argument_list|(
 literal|"tag \n"
 argument_list|)
 expr_stmt|;
+name|strcpy
+argument_list|(
+name|object_hex
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|object
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|printf
 argument_list|(
-literal|"tagged %.*s %s (%.*s)\n"
+literal|"tagged %.*s %s (%.*s) in %s\n"
 argument_list|,
 name|typelen
 argument_list|,
@@ -583,16 +599,18 @@ name|type_line
 operator|+
 literal|5
 argument_list|,
-name|sha1_to_hex
-argument_list|(
-name|object
-argument_list|)
+name|object_hex
 argument_list|,
 name|taglen
 argument_list|,
 name|tag_line
 operator|+
 literal|4
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|sha1
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
