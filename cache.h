@@ -731,6 +731,11 @@ parameter_list|,
 name|unsigned
 name|len
 parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|type
+parameter_list|,
 name|unsigned
 name|char
 modifier|*
