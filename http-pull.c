@@ -421,7 +421,7 @@ argument_list|)
 expr_stmt|;
 name|url
 operator|=
-name|malloc
+name|xmalloc
 argument_list|(
 name|strlen
 argument_list|(

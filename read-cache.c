@@ -776,7 +776,7 @@ argument_list|)
 expr_stmt|;
 name|active_cache
 operator|=
-name|realloc
+name|xrealloc
 argument_list|(
 name|active_cache
 argument_list|,

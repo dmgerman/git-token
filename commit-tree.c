@@ -72,7 +72,7 @@ name|char
 modifier|*
 name|buf
 init|=
-name|malloc
+name|xmalloc
 argument_list|(
 name|BLOCKING
 argument_list|)
@@ -213,7 +213,7 @@ literal|32767
 expr_stmt|;
 name|buf
 operator|=
-name|realloc
+name|xrealloc
 argument_list|(
 name|buf
 argument_list|,

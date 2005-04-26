@@ -159,7 +159,7 @@ name|void
 modifier|*
 name|out
 init|=
-name|malloc
+name|xmalloc
 argument_list|(
 name|max_out_bytes
 argument_list|)
@@ -168,7 +168,7 @@ name|void
 modifier|*
 name|metadata
 init|=
-name|malloc
+name|xmalloc
 argument_list|(
 literal|200
 argument_list|)
@@ -634,7 +634,7 @@ argument_list|)
 expr_stmt|;
 name|ce
 operator|=
-name|malloc
+name|xmalloc
 argument_list|(
 name|size
 argument_list|)
@@ -1029,7 +1029,7 @@ argument_list|)
 expr_stmt|;
 name|updated
 operator|=
-name|malloc
+name|xmalloc
 argument_list|(
 name|size
 argument_list|)
@@ -1376,7 +1376,7 @@ argument_list|)
 expr_stmt|;
 name|ce
 operator|=
-name|malloc
+name|xmalloc
 argument_list|(
 name|size
 argument_list|)

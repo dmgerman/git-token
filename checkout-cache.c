@@ -53,7 +53,7 @@ name|char
 modifier|*
 name|buf
 init|=
-name|malloc
+name|xmalloc
 argument_list|(
 name|len
 operator|+

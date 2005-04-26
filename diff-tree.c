@@ -292,7 +292,7 @@ name|char
 modifier|*
 name|newbase
 init|=
-name|malloc
+name|xmalloc
 argument_list|(
 name|baselen
 operator|+
@@ -1615,7 +1615,7 @@ literal|3
 expr_stmt|;
 name|pathlens
 operator|=
-name|malloc
+name|xmalloc
 argument_list|(
 name|nr_paths
 operator|*

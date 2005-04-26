@@ -124,7 +124,7 @@ name|entry
 modifier|*
 name|new
 init|=
-name|malloc
+name|xmalloc
 argument_list|(
 sizeof|sizeof
 argument_list|(
@@ -442,7 +442,7 @@ name|char
 modifier|*
 name|new
 init|=
-name|malloc
+name|xmalloc
 argument_list|(
 name|size
 argument_list|)
@@ -1291,7 +1291,7 @@ name|char
 modifier|*
 name|new
 init|=
-name|malloc
+name|xmalloc
 argument_list|(
 name|size
 operator|+
@@ -1593,7 +1593,7 @@ argument_list|)
 expr_stmt|;
 name|buffer
 operator|=
-name|malloc
+name|xmalloc
 argument_list|(
 name|size
 argument_list|)
