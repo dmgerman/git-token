@@ -6,6 +6,12 @@ end_comment
 begin_include
 include|#
 directive|include
+file|<signal.h>
+end_include
+
+begin_include
+include|#
+directive|include
 file|"cache.h"
 end_include
 
@@ -1469,6 +1475,22 @@ block|}
 end_function
 
 begin_function
+DECL|function|remove_lock_file_on_signal
+specifier|static
+name|void
+name|remove_lock_file_on_signal
+parameter_list|(
+name|int
+name|signo
+parameter_list|)
+block|{
+name|remove_lock_file
+argument_list|()
+expr_stmt|;
+block|}
+end_function
+
+begin_function
 DECL|function|main
 name|int
 name|main
@@ -1549,6 +1571,13 @@ condition|)
 name|die
 argument_list|(
 literal|"unable to create new cachefile"
+argument_list|)
+expr_stmt|;
+name|signal
+argument_list|(
+name|SIGINT
+argument_list|,
+name|remove_lock_file_on_signal
 argument_list|)
 expr_stmt|;
 name|atexit
