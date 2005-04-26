@@ -352,8 +352,17 @@ argument_list|)
 return|;
 block|}
 return|return
-operator|-
-literal|1
+name|error
+argument_list|(
+literal|"open(\"%s\"): %s"
+argument_list|,
+name|path
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
+argument_list|)
 return|;
 block|}
 name|namelen
