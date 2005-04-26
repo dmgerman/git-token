@@ -428,7 +428,7 @@ argument_list|(
 name|ce
 argument_list|)
 condition|)
-break|break;
+continue|continue;
 name|printf
 argument_list|(
 literal|"%s: unmerged\n"
