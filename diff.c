@@ -1359,13 +1359,6 @@ name|strcat
 argument_list|(
 name|concatpath
 argument_list|,
-literal|"/"
-argument_list|)
-expr_stmt|;
-name|strcat
-argument_list|(
-name|concatpath
-argument_list|,
 name|path
 argument_list|)
 expr_stmt|;
@@ -1525,13 +1518,6 @@ argument_list|(
 name|concatpath
 argument_list|,
 name|base
-argument_list|)
-expr_stmt|;
-name|strcat
-argument_list|(
-name|concatpath
-argument_list|,
-literal|"/"
 argument_list|)
 expr_stmt|;
 name|strcat
