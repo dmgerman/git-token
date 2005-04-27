@@ -329,12 +329,8 @@ block|{
 case|case
 literal|'U'
 case|:
-name|fprintf
+name|diff_unmerge
 argument_list|(
-name|stderr
-argument_list|,
-literal|"warning: unmerged path %s\n"
-argument_list|,
 name|cp
 operator|+
 literal|1
