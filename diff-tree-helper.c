@@ -267,6 +267,22 @@ return|;
 block|}
 end_function
 
+begin_define
+DECL|macro|PLEASE_WARN
+define|#
+directive|define
+name|PLEASE_WARN
+value|-1
+end_define
+
+begin_define
+DECL|macro|WARNED_OURSELVES
+define|#
+directive|define
+name|WARNED_OURSELVES
+value|-2
+end_define
+
 begin_function
 DECL|function|parse_diff_tree_output
 specifier|static
@@ -311,6 +327,23 @@ operator|++
 condition|)
 block|{
 case|case
+literal|'U'
+case|:
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"warning: unmerged path %s\n"
+argument_list|,
+name|cp
+operator|+
+literal|1
+argument_list|)
+expr_stmt|;
+return|return
+name|WARNED_OURSELVES
+return|;
+case|case
 literal|'+'
 case|:
 name|old
@@ -354,8 +387,7 @@ case|:
 break|break;
 default|default:
 return|return
-operator|-
-literal|1
+name|PLEASE_WARN
 return|;
 block|}
 comment|/* This is for '*' entries */
@@ -443,8 +475,7 @@ literal|2
 argument_list|)
 condition|)
 return|return
-operator|-
-literal|1
+name|PLEASE_WARN
 return|;
 name|cp
 operator|+=
@@ -504,8 +535,7 @@ literal|6
 argument_list|)
 condition|)
 return|return
-operator|-
-literal|1
+name|PLEASE_WARN
 return|;
 name|cp
 operator|+=
@@ -525,8 +555,7 @@ name|sha1
 argument_list|)
 condition|)
 return|return
-operator|-
-literal|1
+name|PLEASE_WARN
 return|;
 name|cp
 operator|+=
@@ -544,8 +573,7 @@ literal|2
 argument_list|)
 condition|)
 return|return
-operator|-
-literal|1
+name|PLEASE_WARN
 return|;
 name|cp
 operator|+=
@@ -565,8 +593,7 @@ name|sha1
 argument_list|)
 condition|)
 return|return
-operator|-
-literal|1
+name|PLEASE_WARN
 return|;
 name|cp
 operator|+=
@@ -581,8 +608,7 @@ operator|!=
 literal|'\t'
 condition|)
 return|return
-operator|-
-literal|1
+name|PLEASE_WARN
 return|;
 name|strcpy
 argument_list|(
@@ -712,6 +738,9 @@ condition|(
 literal|1
 condition|)
 block|{
+name|int
+name|status
+decl_stmt|;
 name|struct
 name|diff_spec
 name|old
@@ -741,8 +770,8 @@ operator|.
 name|eof
 condition|)
 break|break;
-if|if
-condition|(
+name|status
+operator|=
 name|parse_diff_tree_output
 argument_list|(
 name|sb
@@ -757,8 +786,18 @@ name|new
 argument_list|,
 name|path
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|status
 condition|)
 block|{
+if|if
+condition|(
+name|status
+operator|==
+name|PLEASE_WARN
+condition|)
 name|fprintf
 argument_list|(
 name|stderr
