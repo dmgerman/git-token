@@ -1625,6 +1625,8 @@ literal|"-p"
 argument_list|)
 condition|)
 block|{
+name|recursive
+operator|=
 name|generate_patch
 operator|=
 literal|1
