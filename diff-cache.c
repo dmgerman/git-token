@@ -431,11 +431,13 @@ condition|)
 continue|continue;
 name|printf
 argument_list|(
-literal|"%s: unmerged\n"
+literal|"U %s%c"
 argument_list|,
 name|ce
 operator|->
 name|name
+argument_list|,
+name|line_termination
 argument_list|)
 expr_stmt|;
 while|while
