@@ -118,7 +118,7 @@ name|sprintf
 argument_list|(
 name|cmdline
 argument_list|,
-literal|"diff-tree -p -r %s %s"
+literal|"diff-tree -p %s %s"
 argument_list|,
 name|against
 argument_list|,
