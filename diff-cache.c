@@ -881,9 +881,11 @@ argument_list|()
 expr_stmt|;
 name|tree
 operator|=
-name|read_tree_with_tree_or_commit_sha1
+name|read_object_with_reference
 argument_list|(
 name|tree_sha1
+argument_list|,
+literal|"tree"
 argument_list|,
 operator|&
 name|size

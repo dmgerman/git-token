@@ -482,7 +482,7 @@ argument_list|,
 name|MAXSIZE
 argument_list|)
 expr_stmt|;
-comment|// Verify it for some basic sanity: it needs to start with "object<sha1>\ntag "
+comment|// Verify it for some basic sanity: it needs to start with "object<sha1>\ntype "
 if|if
 condition|(
 name|verify_tag

@@ -1445,9 +1445,11 @@ name|retval
 decl_stmt|;
 name|tree1
 operator|=
-name|read_tree_with_tree_or_commit_sha1
+name|read_object_with_reference
 argument_list|(
 name|old
+argument_list|,
+literal|"tree"
 argument_list|,
 operator|&
 name|size1
@@ -1472,9 +1474,11 @@ argument_list|)
 expr_stmt|;
 name|tree2
 operator|=
-name|read_tree_with_tree_or_commit_sha1
+name|read_object_with_reference
 argument_list|(
 name|new
+argument_list|,
+literal|"tree"
 argument_list|,
 operator|&
 name|size2
