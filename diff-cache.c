@@ -251,7 +251,7 @@ end_function
 begin_function
 DECL|function|show_new_file
 specifier|static
-name|int
+name|void
 name|show_new_file
 parameter_list|(
 name|struct
@@ -285,10 +285,7 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-return|return
-operator|-
-literal|1
-return|;
+return|return;
 name|show_file
 argument_list|(
 literal|"+"
