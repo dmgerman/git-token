@@ -127,6 +127,24 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/** Returns the object, having parsed it to find out what it is. **/
+end_comment
+
+begin_function_decl
+name|struct
+name|object
+modifier|*
+name|parse_object
+parameter_list|(
+name|unsigned
+name|char
+modifier|*
+name|sha1
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function_decl
 name|void
 name|add_ref
