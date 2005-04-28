@@ -18,6 +18,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|<signal.h>
+end_include
+
+begin_include
+include|#
+directive|include
 file|"cache.h"
 end_include
 
@@ -687,6 +693,7 @@ condition|)
 block|{
 name|not_a_valid_file
 label|:
+comment|/* A '-' entry produces this for file-2, and 		 * a '+' entry produces this for file-1. 		 */
 name|temp
 operator|->
 name|name
@@ -819,7 +826,10 @@ name|temp
 operator|->
 name|hex
 argument_list|,
-literal|"."
+name|sha1_to_hex
+argument_list|(
+name|null_sha1
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|sprintf
@@ -1076,6 +1086,22 @@ block|}
 block|}
 end_function
 
+begin_function
+DECL|function|remove_tempfile_on_signal
+specifier|static
+name|void
+name|remove_tempfile_on_signal
+parameter_list|(
+name|int
+name|signo
+parameter_list|)
+block|{
+name|remove_tempfile
+argument_list|()
+expr_stmt|;
+block|}
+end_function
+
 begin_comment
 comment|/* An external diff command takes:  *  * diff-cmd name infile1 infile1-sha1 infile1-mode \  *               infile2 infile2-sha1 infile2-mode.  *  */
 end_comment
@@ -1108,9 +1134,10 @@ name|temp
 init|=
 name|diff_temp
 decl_stmt|;
-name|int
+name|pid_t
 name|pid
-decl_stmt|,
+decl_stmt|;
+name|int
 name|status
 decl_stmt|;
 specifier|static
@@ -1198,6 +1225,13 @@ name|remove_tempfile
 argument_list|)
 expr_stmt|;
 block|}
+name|signal
+argument_list|(
+name|SIGINT
+argument_list|,
+name|remove_tempfile_on_signal
+argument_list|)
+expr_stmt|;
 block|}
 name|fflush
 argument_list|(
@@ -1359,11 +1393,17 @@ argument_list|(
 name|status
 argument_list|)
 condition|)
+block|{
+comment|/* We do not check the exit status because typically 		 * diff exits non-zero if files are different, and 		 * we are not interested in knowing that.  We *knew* 		 * they are different and that's why we ran diff 		 * in the first place!  However if it dies by a signal, 		 * we stop processing immediately. 		 */
+name|remove_tempfile
+argument_list|()
+expr_stmt|;
 name|die
 argument_list|(
-literal|"diff program failed"
+literal|"external diff died unexpectedly.\n"
 argument_list|)
 expr_stmt|;
+block|}
 name|remove_tempfile
 argument_list|()
 expr_stmt|;
