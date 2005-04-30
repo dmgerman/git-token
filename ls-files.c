@@ -1118,14 +1118,14 @@ block|}
 end_function
 
 begin_decl_stmt
-DECL|variable|show_files_usage
+DECL|variable|ls_files_usage
 specifier|static
 specifier|const
 name|char
 modifier|*
-name|show_files_usage
+name|ls_files_usage
 init|=
-literal|"show-files [-z] (--[cached|deleted|others|stage|unmerged])* "
+literal|"ls-files [-z] (--[cached|deleted|others|stage|unmerged])* "
 literal|"[ --ignored [--exclude=<pattern>] [--exclude-from=<file>) ]"
 decl_stmt|;
 end_decl_stmt
@@ -1444,7 +1444,7 @@ block|}
 else|else
 name|usage
 argument_list|(
-name|show_files_usage
+name|ls_files_usage
 argument_list|)
 expr_stmt|;
 block|}

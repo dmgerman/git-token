@@ -16,14 +16,14 @@ file|"diff.h"
 end_include
 
 begin_decl_stmt
-DECL|variable|show_diff_usage
+DECL|variable|diff_files_usage
 specifier|static
 specifier|const
 name|char
 modifier|*
-name|show_diff_usage
+name|diff_files_usage
 init|=
-literal|"show-diff [-p] [-q] [-r] [-z] [paths...]"
+literal|"diff-files [-p] [-q] [-r] [-z] [paths...]"
 decl_stmt|;
 end_decl_stmt
 
@@ -498,7 +498,7 @@ expr_stmt|;
 else|else
 name|usage
 argument_list|(
-name|show_diff_usage
+name|diff_files_usage
 argument_list|)
 expr_stmt|;
 name|argv
