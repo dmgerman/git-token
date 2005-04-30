@@ -692,9 +692,10 @@ argument_list|)
 expr_stmt|;
 switch|switch
 condition|(
+name|DTYPE
+argument_list|(
 name|de
-operator|->
-name|d_type
+argument_list|)
 condition|)
 block|{
 name|struct
