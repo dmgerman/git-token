@@ -282,7 +282,7 @@ if|if
 condition|(
 name|socketpair
 argument_list|(
-name|AF_LOCAL
+name|AF_UNIX
 argument_list|,
 name|SOCK_STREAM
 argument_list|,
