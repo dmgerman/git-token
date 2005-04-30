@@ -96,6 +96,32 @@ directive|include
 file|<zlib.h>
 end_include
 
+begin_if
+if|#
+directive|if
+name|ZLIB_VERNUM
+operator|<
+literal|0x1200
+end_if
+
+begin_define
+DECL|macro|deflateBound
+define|#
+directive|define
+name|deflateBound
+parameter_list|(
+name|c
+parameter_list|,
+name|s
+parameter_list|)
+value|((s) + (((s) + 7)>> 3) + (((s) + 63)>> 6) + 11)
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_comment
 comment|/*  * Basic data structures for the directory cache  *  * NOTE NOTE NOTE! This is all in the native CPU byte format. It's  * not even trying to be portable. It's trying to be efficient. It's  * just a cache, after all.  */
 end_comment
