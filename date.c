@@ -279,6 +279,10 @@ DECL|member|offset
 name|int
 name|offset
 decl_stmt|;
+DECL|member|dst
+name|int
+name|dst
+decl_stmt|;
 DECL|variable|timezone_names
 block|}
 name|timezone_names
@@ -290,7 +294,9 @@ literal|"IDLW"
 block|,
 operator|-
 literal|12
-block|}
+block|,
+literal|0
+block|, }
 block|,
 comment|/* International Date Line West */
 block|{
@@ -298,7 +304,9 @@ literal|"NT"
 block|,
 operator|-
 literal|11
-block|}
+block|,
+literal|0
+block|, }
 block|,
 comment|/* Nome */
 block|{
@@ -306,7 +314,9 @@ literal|"CAT"
 block|,
 operator|-
 literal|10
-block|}
+block|,
+literal|0
+block|, }
 block|,
 comment|/* Central Alaska */
 block|{
@@ -314,47 +324,59 @@ literal|"HST"
 block|,
 operator|-
 literal|10
-block|}
+block|,
+literal|0
+block|, }
 block|,
 comment|/* Hawaii Standard */
 block|{
 literal|"HDT"
 block|,
 operator|-
-literal|9
-block|}
+literal|10
+block|,
+literal|1
+block|, }
 block|,
 comment|/* Hawaii Daylight */
-block|{
-literal|"YDT"
-block|,
-operator|-
-literal|8
-block|}
-block|,
-comment|/* Yukon Daylight */
 block|{
 literal|"YST"
 block|,
 operator|-
 literal|9
-block|}
+block|,
+literal|0
+block|, }
 block|,
 comment|/* Yukon Standard */
+block|{
+literal|"YDT"
+block|,
+operator|-
+literal|9
+block|,
+literal|1
+block|, }
+block|,
+comment|/* Yukon Daylight */
 block|{
 literal|"PST"
 block|,
 operator|-
 literal|8
-block|}
+block|,
+literal|0
+block|, }
 block|,
 comment|/* Pacific Standard */
 block|{
 literal|"PDT"
 block|,
 operator|-
-literal|7
-block|}
+literal|8
+block|,
+literal|1
+block|, }
 block|,
 comment|/* Pacific Daylight */
 block|{
@@ -362,15 +384,19 @@ literal|"MST"
 block|,
 operator|-
 literal|7
-block|}
+block|,
+literal|0
+block|, }
 block|,
 comment|/* Mountain Standard */
 block|{
 literal|"MDT"
 block|,
 operator|-
-literal|6
-block|}
+literal|7
+block|,
+literal|1
+block|, }
 block|,
 comment|/* Mountain Daylight */
 block|{
@@ -378,15 +404,19 @@ literal|"CST"
 block|,
 operator|-
 literal|6
-block|}
+block|,
+literal|0
+block|, }
 block|,
 comment|/* Central Standard */
 block|{
 literal|"CDT"
 block|,
 operator|-
-literal|5
-block|}
+literal|6
+block|,
+literal|1
+block|, }
 block|,
 comment|/* Central Daylight */
 block|{
@@ -394,15 +424,19 @@ literal|"EST"
 block|,
 operator|-
 literal|5
-block|}
+block|,
+literal|0
+block|, }
 block|,
 comment|/* Eastern Standard */
 block|{
 literal|"EDT"
 block|,
 operator|-
-literal|4
-block|}
+literal|5
+block|,
+literal|1
+block|, }
 block|,
 comment|/* Eastern Daylight */
 block|{
@@ -410,15 +444,19 @@ literal|"AST"
 block|,
 operator|-
 literal|3
-block|}
+block|,
+literal|0
+block|, }
 block|,
 comment|/* Atlantic Standard */
 block|{
 literal|"ADT"
 block|,
 operator|-
-literal|2
-block|}
+literal|3
+block|,
+literal|1
+block|, }
 block|,
 comment|/* Atlantic Daylight */
 block|{
@@ -426,35 +464,45 @@ literal|"WAT"
 block|,
 operator|-
 literal|1
-block|}
+block|,
+literal|0
+block|, }
 block|,
 comment|/* West Africa */
 block|{
 literal|"GMT"
 block|,
 literal|0
-block|}
+block|,
+literal|0
+block|, }
 block|,
 comment|/* Greenwich Mean */
 block|{
 literal|"UTC"
 block|,
 literal|0
-block|}
+block|,
+literal|0
+block|, }
 block|,
 comment|/* Universal (Coordinated) */
 block|{
 literal|"WET"
 block|,
 literal|0
-block|}
+block|,
+literal|0
+block|, }
 block|,
 comment|/* Western European */
 block|{
 literal|"BST"
 block|,
 literal|0
-block|}
+block|,
+literal|1
+block|, }
 block|,
 comment|/* British Summer */
 block|{
@@ -462,7 +510,9 @@ literal|"CET"
 block|,
 operator|+
 literal|1
-block|}
+block|,
+literal|0
+block|, }
 block|,
 comment|/* Central European */
 block|{
@@ -470,7 +520,9 @@ literal|"MET"
 block|,
 operator|+
 literal|1
-block|}
+block|,
+literal|0
+block|, }
 block|,
 comment|/* Middle European */
 block|{
@@ -478,23 +530,29 @@ literal|"MEWT"
 block|,
 operator|+
 literal|1
-block|}
+block|,
+literal|0
+block|, }
 block|,
 comment|/* Middle European Winter */
 block|{
 literal|"MEST"
 block|,
 operator|+
-literal|2
-block|}
+literal|1
+block|,
+literal|1
+block|, }
 block|,
 comment|/* Middle European Summer */
 block|{
 literal|"CEST"
 block|,
 operator|+
-literal|2
-block|}
+literal|1
+block|,
+literal|1
+block|, }
 block|,
 comment|/* Central European Summer */
 block|{
@@ -502,7 +560,9 @@ literal|"MESZ"
 block|,
 operator|+
 literal|1
-block|}
+block|,
+literal|1
+block|, }
 block|,
 comment|/* Middle European Summer */
 block|{
@@ -510,15 +570,19 @@ literal|"FWT"
 block|,
 operator|+
 literal|1
-block|}
+block|,
+literal|0
+block|, }
 block|,
 comment|/* French Winter */
 block|{
 literal|"FST"
 block|,
 operator|+
-literal|2
-block|}
+literal|1
+block|,
+literal|1
+block|, }
 block|,
 comment|/* French Summer */
 block|{
@@ -526,7 +590,9 @@ literal|"EET"
 block|,
 operator|+
 literal|2
-block|}
+block|,
+literal|0
+block|, }
 block|,
 comment|/* Eastern Europe, USSR Zone 1 */
 block|{
@@ -534,15 +600,19 @@ literal|"WAST"
 block|,
 operator|+
 literal|7
-block|}
+block|,
+literal|0
+block|, }
 block|,
 comment|/* West Australian Standard */
 block|{
 literal|"WADT"
 block|,
 operator|+
-literal|8
-block|}
+literal|7
+block|,
+literal|1
+block|, }
 block|,
 comment|/* West Australian Daylight */
 block|{
@@ -550,7 +620,9 @@ literal|"CCT"
 block|,
 operator|+
 literal|8
-block|}
+block|,
+literal|0
+block|, }
 block|,
 comment|/* China Coast, USSR Zone 7 */
 block|{
@@ -558,7 +630,9 @@ literal|"JST"
 block|,
 operator|+
 literal|9
-block|}
+block|,
+literal|0
+block|, }
 block|,
 comment|/* Japan Standard, USSR Zone 8 */
 block|{
@@ -566,15 +640,19 @@ literal|"EAST"
 block|,
 operator|+
 literal|10
-block|}
+block|,
+literal|0
+block|, }
 block|,
 comment|/* Eastern Australian Standard */
 block|{
 literal|"EADT"
 block|,
 operator|+
-literal|11
-block|}
+literal|10
+block|,
+literal|1
+block|, }
 block|,
 comment|/* Eastern Australian Daylight */
 block|{
@@ -582,7 +660,9 @@ literal|"GST"
 block|,
 operator|+
 literal|10
-block|}
+block|,
+literal|0
+block|, }
 block|,
 comment|/* Guam Standard, USSR Zone 9 */
 block|{
@@ -590,7 +670,9 @@ literal|"NZT"
 block|,
 operator|+
 literal|11
-block|}
+block|,
+literal|0
+block|, }
 block|,
 comment|/* New Zealand */
 block|{
@@ -598,15 +680,19 @@ literal|"NZST"
 block|,
 operator|+
 literal|11
-block|}
+block|,
+literal|0
+block|, }
 block|,
 comment|/* New Zealand Standard */
 block|{
 literal|"NZDT"
 block|,
 operator|+
-literal|12
-block|}
+literal|11
+block|,
+literal|1
+block|, }
 block|,
 comment|/* New Zealand Daylight */
 block|{
@@ -614,7 +700,9 @@ literal|"IDLE"
 block|,
 operator|+
 literal|12
-block|}
+block|,
+literal|0
+block|, }
 block|,
 comment|/* International Date Line East */
 block|}
@@ -868,17 +956,32 @@ operator|>=
 literal|3
 condition|)
 block|{
-operator|*
-name|offset
-operator|=
-literal|60
-operator|*
+name|int
+name|off
+init|=
 name|timezone_names
 index|[
 name|i
 index|]
 operator|.
 name|offset
+decl_stmt|;
+comment|/* This is bogus, but we like summer */
+name|off
+operator|+=
+name|timezone_names
+index|[
+name|i
+index|]
+operator|.
+name|dst
+expr_stmt|;
+operator|*
+name|offset
+operator|=
+literal|60
+operator|*
+name|off
 expr_stmt|;
 return|return
 name|match
