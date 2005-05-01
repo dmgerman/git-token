@@ -94,7 +94,7 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"%s -> %s -> %s\n"
+literal|"%s -> %s -> %s"
 argument_list|,
 name|argv
 index|[
