@@ -640,7 +640,7 @@ argument_list|,
 literal|"-p"
 argument_list|)
 operator|||
-name|get_sha1_hex
+name|get_sha1
 argument_list|(
 name|b
 argument_list|,

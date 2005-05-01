@@ -353,7 +353,7 @@ name|nr
 operator|>=
 name|MAX_COMMITS
 operator|||
-name|get_sha1_hex
+name|get_sha1
 argument_list|(
 name|arg
 argument_list|,

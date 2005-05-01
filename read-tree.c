@@ -828,7 +828,7 @@ continue|continue;
 block|}
 if|if
 condition|(
-name|get_sha1_hex
+name|get_sha1
 argument_list|(
 name|arg
 argument_list|,

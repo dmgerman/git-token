@@ -510,7 +510,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|get_sha1_hex
+name|get_sha1
 argument_list|(
 name|argv
 index|[
