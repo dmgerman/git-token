@@ -640,6 +640,27 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|index_fd
+parameter_list|(
+name|unsigned
+name|char
+modifier|*
+name|sha1
+parameter_list|,
+name|int
+name|fd
+parameter_list|,
+name|struct
+name|stat
+modifier|*
+name|st
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_define
 DECL|macro|MTIME_CHANGED
 define|#
