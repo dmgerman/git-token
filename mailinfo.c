@@ -56,6 +56,17 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|date
+specifier|static
+name|char
+name|date
+index|[
+literal|1000
+index|]
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|name
 specifier|static
 name|char
@@ -388,6 +399,27 @@ block|}
 end_function
 
 begin_function
+DECL|function|handle_date
+specifier|static
+name|void
+name|handle_date
+parameter_list|(
+name|char
+modifier|*
+name|line
+parameter_list|)
+block|{
+name|strcpy
+argument_list|(
+name|date
+argument_list|,
+name|line
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
 DECL|function|handle_subject
 specifier|static
 name|void
@@ -508,6 +540,40 @@ name|memcmp
 argument_list|(
 name|line
 argument_list|,
+literal|"Date:"
+argument_list|,
+literal|5
+argument_list|)
+operator|&&
+name|isspace
+argument_list|(
+name|line
+index|[
+literal|5
+index|]
+argument_list|)
+condition|)
+block|{
+name|handle_date
+argument_list|(
+name|line
+operator|+
+literal|6
+argument_list|)
+expr_stmt|;
+name|cont
+operator|=
+literal|0
+expr_stmt|;
+return|return;
+block|}
+if|if
+condition|(
+operator|!
+name|memcmp
+argument_list|(
+name|line
+argument_list|,
 literal|"Subject:"
 argument_list|,
 literal|8
@@ -556,7 +622,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"I don't do 'From:' line continuations\n"
+literal|"I don't do 'Date:' or 'From:' line continuations\n"
 argument_list|)
 expr_stmt|;
 break|break;
@@ -971,6 +1037,11 @@ argument_list|)
 expr_stmt|;
 name|cleanup_space
 argument_list|(
+name|date
+argument_list|)
+expr_stmt|;
+name|cleanup_space
+argument_list|(
 name|email
 argument_list|)
 expr_stmt|;
@@ -981,13 +1052,15 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"Author: %s\nEmail: %s\nSubject: %s\n\n"
+literal|"Author: %s\nEmail: %s\nSubject: %s\nDate: %s\n\n"
 argument_list|,
 name|name
 argument_list|,
 name|email
 argument_list|,
 name|sub
+argument_list|,
+name|date
 argument_list|)
 expr_stmt|;
 name|FILE
