@@ -62,7 +62,7 @@ argument_list|)
 condition|)
 name|usage
 argument_list|(
-literal|"cat-file [-t | tagname]<sha1>"
+literal|"git-cat-file [-t | tagname]<sha1>"
 argument_list|)
 expr_stmt|;
 if|if
@@ -146,7 +146,7 @@ name|buf
 condition|)
 name|die
 argument_list|(
-literal|"cat-file %s: bad file"
+literal|"git-cat-file %s: bad file"
 argument_list|,
 name|argv
 index|[
@@ -197,7 +197,7 @@ condition|)
 break|break;
 name|die
 argument_list|(
-literal|"cat-file: %s"
+literal|"git-cat-file: %s"
 argument_list|,
 name|strerror
 argument_list|(
@@ -215,7 +215,7 @@ condition|)
 block|{
 name|die
 argument_list|(
-literal|"cat-file: disk full?"
+literal|"git-cat-file: disk full?"
 argument_list|)
 expr_stmt|;
 block|}

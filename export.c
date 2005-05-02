@@ -68,7 +68,7 @@ name|sprintf
 argument_list|(
 name|cmdline
 argument_list|,
-literal|"cat-file commit %s"
+literal|"git-cat-file commit %s"
 argument_list|,
 name|hex
 argument_list|)
