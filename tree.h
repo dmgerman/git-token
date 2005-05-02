@@ -87,12 +87,6 @@ name|struct
 name|object
 name|object
 decl_stmt|;
-DECL|member|has_full_path
-name|unsigned
-name|has_full_path
-range|:
-literal|1
-decl_stmt|;
 DECL|member|entries
 name|struct
 name|tree_entry_list

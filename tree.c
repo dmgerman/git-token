@@ -841,24 +841,6 @@ name|next
 operator|=
 name|NULL
 expr_stmt|;
-comment|/* Warn about trees that don't do the recursive thing.. */
-if|if
-condition|(
-name|strchr
-argument_list|(
-name|path
-argument_list|,
-literal|'/'
-argument_list|)
-condition|)
-block|{
-name|item
-operator|->
-name|has_full_path
-operator|=
-literal|1
-expr_stmt|;
-block|}
 name|bufptr
 operator|+=
 name|len
