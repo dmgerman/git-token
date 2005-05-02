@@ -114,6 +114,9 @@ index|]
 operator|=
 literal|'\n'
 expr_stmt|;
+name|size
+operator|++
+expr_stmt|;
 block|}
 block|}
 else|else
