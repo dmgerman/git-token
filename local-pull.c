@@ -1,4 +1,8 @@
 begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
+begin_comment
+comment|/*  * Copyright (C) 2005 Junio C Hamano  */
+end_comment
+
 begin_include
 include|#
 directive|include
@@ -70,6 +74,16 @@ name|int
 name|use_symlink
 init|=
 literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|use_filecopy
+specifier|static
+name|int
+name|use_filecopy
+init|=
+literal|1
 decl_stmt|;
 end_decl_stmt
 
@@ -168,21 +182,6 @@ name|sha1_file_name
 argument_list|(
 name|sha1
 argument_list|)
-decl_stmt|;
-name|int
-name|ifd
-decl_stmt|,
-name|ofd
-decl_stmt|,
-name|status
-decl_stmt|;
-name|struct
-name|stat
-name|st
-decl_stmt|;
-name|void
-modifier|*
-name|map
 decl_stmt|;
 if|if
 condition|(
@@ -308,6 +307,26 @@ return|return
 literal|0
 return|;
 block|}
+if|if
+condition|(
+name|use_filecopy
+condition|)
+block|{
+name|int
+name|ifd
+decl_stmt|,
+name|ofd
+decl_stmt|,
+name|status
+decl_stmt|;
+name|struct
+name|stat
+name|st
+decl_stmt|;
+name|void
+modifier|*
+name|map
+decl_stmt|;
 name|ifd
 operator|=
 name|open
@@ -490,6 +509,20 @@ return|return
 name|status
 return|;
 block|}
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"No copy method was provided to copy %s.\n"
+argument_list|,
+name|hex
+argument_list|)
+expr_stmt|;
+return|return
+operator|-
+literal|1
+return|;
+block|}
 end_function
 
 begin_decl_stmt
@@ -500,9 +533,13 @@ name|char
 modifier|*
 name|local_pull_usage
 init|=
-literal|"git-local-pull [-c] [-t] [-a] [-l] [-s] [-v] commit-id path"
+literal|"git-local-pull [-c] [-t] [-a] [-l] [-s] [-n] [-v] commit-id path"
 decl_stmt|;
 end_decl_stmt
+
+begin_comment
+comment|/*   * By default we only use file copy.  * If -l is specified, a hard link is attempted.  * If -s is specified, then a symlink is attempted.  * If -n is _not_ specified, then a regular file-to-file copy is done.  */
+end_comment
 
 begin_function
 DECL|function|main
@@ -637,6 +674,23 @@ condition|)
 name|use_symlink
 operator|=
 literal|1
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|argv
+index|[
+name|arg
+index|]
+index|[
+literal|1
+index|]
+operator|==
+literal|'n'
+condition|)
+name|use_filecopy
+operator|=
+literal|0
 expr_stmt|;
 elseif|else
 if|if
