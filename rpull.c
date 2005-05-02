@@ -86,16 +86,6 @@ modifier|*
 name|sha1
 parameter_list|)
 block|{
-if|if
-condition|(
-name|has_sha1_file
-argument_list|(
-name|sha1
-argument_list|)
-condition|)
-return|return
-literal|0
-return|;
 name|write
 argument_list|(
 name|fd_out
