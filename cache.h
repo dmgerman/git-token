@@ -729,32 +729,6 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/* Write a memory buffer out to the sha file */
-end_comment
-
-begin_function_decl
-specifier|extern
-name|int
-name|write_sha1_buffer
-parameter_list|(
-specifier|const
-name|unsigned
-name|char
-modifier|*
-name|sha1
-parameter_list|,
-name|void
-modifier|*
-name|buf
-parameter_list|,
-name|unsigned
-name|int
-name|size
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_comment
 comment|/* Read and unpack a sha1 file into memory, write memory to a sha1 file */
 end_comment
 
