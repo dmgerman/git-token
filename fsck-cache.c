@@ -205,7 +205,9 @@ name|printf
 argument_list|(
 literal|"              to %7s %s\n"
 argument_list|,
-name|obj
+name|refs
+operator|->
+name|item
 operator|->
 name|type
 argument_list|,
