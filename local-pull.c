@@ -262,7 +262,10 @@ expr_stmt|;
 if|if
 condition|(
 name|use_link
-operator|&&
+condition|)
+block|{
+if|if
+condition|(
 operator|!
 name|link
 argument_list|(
@@ -274,7 +277,7 @@ condition|)
 block|{
 name|say
 argument_list|(
-literal|"Hardlinked %s.\n"
+literal|"link %s\n"
 argument_list|,
 name|hex
 argument_list|)
@@ -282,6 +285,29 @@ expr_stmt|;
 return|return
 literal|0
 return|;
+block|}
+comment|/* If we got ENOENT there is no point continuing. */
+if|if
+condition|(
+name|errno
+operator|==
+name|ENOENT
+condition|)
+block|{
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"does not exist %s\n"
+argument_list|,
+name|filename
+argument_list|)
+expr_stmt|;
+return|return
+operator|-
+literal|1
+return|;
+block|}
 block|}
 if|if
 condition|(
@@ -298,7 +324,7 @@ condition|)
 block|{
 name|say
 argument_list|(
-literal|"Symlinked %s.\n"
+literal|"symlink %s\n"
 argument_list|,
 name|hex
 argument_list|)
@@ -362,7 +388,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Cannot open %s\n"
+literal|"cannot open %s\n"
 argument_list|,
 name|filename
 argument_list|)
@@ -414,7 +440,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Cannot mmap %s\n"
+literal|"cannot mmap %s\n"
 argument_list|,
 name|filename
 argument_list|)
@@ -488,7 +514,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Cannot write %s (%ld bytes)\n"
+literal|"cannot write %s (%ld bytes)\n"
 argument_list|,
 name|dest_filename
 argument_list|,
@@ -500,7 +526,7 @@ expr_stmt|;
 else|else
 name|say
 argument_list|(
-literal|"Copied %s.\n"
+literal|"copy %s\n"
 argument_list|,
 name|hex
 argument_list|)
@@ -513,7 +539,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"No copy method was provided to copy %s.\n"
+literal|"failed to copy %s with given copy methods.\n"
 argument_list|,
 name|hex
 argument_list|)
