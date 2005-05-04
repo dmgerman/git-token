@@ -224,6 +224,11 @@ name|sha1
 argument_list|)
 argument_list|)
 return|;
+name|free
+argument_list|(
+name|buffer
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|strcmp

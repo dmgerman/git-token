@@ -588,6 +588,13 @@ operator|&
 name|size
 argument_list|)
 decl_stmt|;
+name|munmap
+argument_list|(
+name|map
+argument_list|,
+name|mapsize
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -621,11 +628,9 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|munmap
+name|free
 argument_list|(
-name|map
-argument_list|,
-name|mapsize
+name|buffer
 argument_list|)
 expr_stmt|;
 if|if
