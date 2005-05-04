@@ -318,8 +318,9 @@ name|char
 modifier|*
 name|diff_arg
 init|=
-literal|"'%s' '%s'"
+literal|"'%s' '%s'||:"
 decl_stmt|;
+comment|/* "||:" is to return 0 */
 specifier|const
 name|char
 modifier|*
@@ -1428,15 +1429,29 @@ name|WIFEXITED
 argument_list|(
 name|status
 argument_list|)
+operator|||
+name|WEXITSTATUS
+argument_list|(
+name|status
+argument_list|)
 condition|)
 block|{
-comment|/* We do not check the exit status because typically 		 * diff exits non-zero if files are different, and 		 * we are not interested in knowing that.  We *knew* 		 * they are different and that's why we ran diff 		 * in the first place!  However if it dies by a signal, 		 * we stop processing immediately. 		 */
+comment|/* Earlier we did not check the exit status because 		 * diff exits non-zero if files are different, and 		 * we are not interested in knowing that.  It was a 		 * mistake which made it harder to quit a diff-* 		 * session that uses the git-apply-patch-script as 		 * the GIT_EXTERNAL_DIFF.  A custom GIT_EXTERNAL_DIFF 		 * should also exit non-zero only when it wants to 		 * abort the entire diff-* session. 		 */
 name|remove_tempfile
 argument_list|()
 expr_stmt|;
-name|die
+name|fprintf
 argument_list|(
-literal|"external diff died unexpectedly.\n"
+name|stderr
+argument_list|,
+literal|"external diff died, stopping at %s.\n"
+argument_list|,
+name|name
+argument_list|)
+expr_stmt|;
+name|exit
+argument_list|(
+literal|1
 argument_list|)
 expr_stmt|;
 block|}
