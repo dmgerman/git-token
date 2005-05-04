@@ -104,28 +104,14 @@ DECL|struct|diff_spec
 struct|struct
 name|diff_spec
 block|{
-union|union
-block|{
-DECL|member|name
-specifier|const
-name|char
-modifier|*
-name|name
-decl_stmt|;
-comment|/* path on the filesystem */
-DECL|member|sha1
+DECL|member|blob_sha1
 name|unsigned
 name|char
-name|sha1
+name|blob_sha1
 index|[
 literal|20
 index|]
 decl_stmt|;
-comment|/* blob object ID */
-DECL|member|u
-block|}
-name|u
-union|;
 DECL|member|mode
 name|unsigned
 name|short
@@ -138,7 +124,7 @@ name|sha1_valid
 range|:
 literal|1
 decl_stmt|;
-comment|/* if true, use u.sha1 and trust mode. 				  * (however with a NULL SHA1, read them 				  * from the file!). 				  * if false, use u.name and read mode from 				  * the filesystem. 				  */
+comment|/* if true, use blob_sha1 and trust mode; 				  * however with a NULL SHA1, read them 				  * from the file system. 				  * if false, use the name and read mode from 				  * the filesystem. 				  */
 DECL|member|file_valid
 name|unsigned
 name|file_valid
