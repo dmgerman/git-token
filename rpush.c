@@ -311,7 +311,7 @@ argument_list|,
 operator|&
 name|fd_out
 argument_list|,
-literal|"rpull"
+literal|"git-rpull"
 argument_list|,
 name|url
 argument_list|,
