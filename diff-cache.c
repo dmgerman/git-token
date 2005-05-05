@@ -32,6 +32,16 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|match_nonexisting
+specifier|static
+name|int
+name|match_nonexisting
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|line_termination
 specifier|static
 name|int
@@ -198,10 +208,35 @@ argument_list|)
 operator|<
 literal|0
 condition|)
+block|{
+if|if
+condition|(
+name|errno
+operator|==
+name|ENOENT
+operator|&&
+name|match_nonexisting
+condition|)
+block|{
+operator|*
+name|sha1p
+operator|=
+name|sha1
+expr_stmt|;
+operator|*
+name|modep
+operator|=
+name|mode
+expr_stmt|;
+return|return
+literal|0
+return|;
+block|}
 return|return
 operator|-
 literal|1
 return|;
+block|}
 name|changed
 operator|=
 name|cache_match_stat
@@ -726,7 +761,7 @@ name|char
 modifier|*
 name|diff_cache_usage
 init|=
-literal|"diff-cache [-r] [-z] [-p] [--cached]<tree sha1>"
+literal|"diff-cache [-r] [-z] [-p] [-i] [--cached]<tree sha1>"
 decl_stmt|;
 end_decl_stmt
 
@@ -829,6 +864,23 @@ block|{
 name|line_termination
 operator|=
 literal|'\0'
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"-m"
+argument_list|)
+condition|)
+block|{
+name|match_nonexisting
+operator|=
+literal|1
 expr_stmt|;
 continue|continue;
 block|}
