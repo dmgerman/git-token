@@ -262,7 +262,7 @@ argument_list|,
 operator|&
 name|fd_out
 argument_list|,
-literal|"rpush"
+literal|"git-rpush"
 argument_list|,
 name|url
 argument_list|,
