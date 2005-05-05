@@ -350,6 +350,9 @@ name|struct
 name|cache_entry
 modifier|*
 name|new
+parameter_list|,
+name|int
+name|report_missing
 parameter_list|)
 block|{
 name|unsigned
@@ -386,6 +389,10 @@ operator|<
 literal|0
 condition|)
 block|{
+if|if
+condition|(
+name|report_missing
+condition|)
 name|show_file
 argument_list|(
 literal|"-"
@@ -595,6 +602,8 @@ literal|1
 index|]
 argument_list|,
 name|ce
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 break|break;
@@ -625,7 +634,27 @@ argument_list|)
 expr_stmt|;
 break|break;
 block|}
-comment|/* Otherwise we fall through to the "unmerged" case */
+comment|/* We come here with ce pointing at stage 1 			 * (original tree) and ac[1] pointing at stage 			 * 3 (unmerged).  show-modified with 			 * report-mising set to false does not say the 			 * file is deleted but reports true if work 			 * tree does not have it, in which case we 			 * fall through to report the unmerged state. 			 * Otherwise, we show the differences between 			 * the original tree and the work tree. 			 */
+if|if
+condition|(
+operator|!
+name|cached_only
+operator|&&
+operator|!
+name|show_modified
+argument_list|(
+name|ce
+argument_list|,
+name|ac
+index|[
+literal|1
+index|]
+argument_list|,
+literal|0
+argument_list|)
+condition|)
+break|break;
+comment|/* fallthru */
 case|case
 literal|3
 case|:
