@@ -50,6 +50,17 @@ name|executable
 range|:
 literal|1
 decl_stmt|;
+DECL|member|symlink
+name|unsigned
+name|symlink
+range|:
+literal|1
+decl_stmt|;
+DECL|member|mode
+name|unsigned
+name|int
+name|mode
+decl_stmt|;
 DECL|member|name
 name|char
 modifier|*
