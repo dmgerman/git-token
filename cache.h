@@ -475,11 +475,14 @@ end_decl_stmt
 begin_decl_stmt
 DECL|variable|active_nr
 DECL|variable|active_alloc
+DECL|variable|active_cache_changed
 name|unsigned
 name|int
 name|active_nr
 decl_stmt|,
 name|active_alloc
+decl_stmt|,
+name|active_cache_changed
 decl_stmt|;
 end_decl_stmt
 

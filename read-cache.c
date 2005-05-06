@@ -30,6 +30,7 @@ end_decl_stmt
 begin_decl_stmt
 DECL|variable|active_nr
 DECL|variable|active_alloc
+DECL|variable|active_cache_changed
 name|unsigned
 name|int
 name|active_nr
@@ -37,6 +38,10 @@ init|=
 literal|0
 decl_stmt|,
 name|active_alloc
+init|=
+literal|0
+decl_stmt|,
+name|active_cache_changed
 init|=
 literal|0
 decl_stmt|;
@@ -551,6 +556,10 @@ name|int
 name|pos
 parameter_list|)
 block|{
+name|active_cache_changed
+operator|=
+literal|1
+expr_stmt|;
 name|active_nr
 operator|--
 expr_stmt|;
@@ -751,6 +760,10 @@ operator|>=
 literal|0
 condition|)
 block|{
+name|active_cache_changed
+operator|=
+literal|1
+expr_stmt|;
 name|active_cache
 index|[
 name|pos
@@ -895,6 +908,10 @@ name|pos
 index|]
 operator|=
 name|ce
+expr_stmt|;
+name|active_cache_changed
+operator|=
+literal|1
 expr_stmt|;
 return|return
 literal|0
