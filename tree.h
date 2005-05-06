@@ -124,6 +124,26 @@ end_function_decl
 
 begin_function_decl
 name|int
+name|parse_tree_buffer
+parameter_list|(
+name|struct
+name|tree
+modifier|*
+name|item
+parameter_list|,
+name|void
+modifier|*
+name|buffer
+parameter_list|,
+name|unsigned
+name|long
+name|size
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
 name|parse_tree
 parameter_list|(
 name|struct

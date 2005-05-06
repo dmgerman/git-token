@@ -101,6 +101,26 @@ end_function_decl
 
 begin_function_decl
 name|int
+name|parse_commit_buffer
+parameter_list|(
+name|struct
+name|commit
+modifier|*
+name|item
+parameter_list|,
+name|void
+modifier|*
+name|buffer
+parameter_list|,
+name|unsigned
+name|long
+name|size
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
 name|parse_commit
 parameter_list|(
 name|struct
