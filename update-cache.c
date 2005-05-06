@@ -299,10 +299,6 @@ decl_stmt|;
 name|int
 name|fd
 decl_stmt|;
-name|unsigned
-name|int
-name|len
-decl_stmt|;
 name|char
 modifier|*
 name|target
