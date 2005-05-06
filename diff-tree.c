@@ -2179,7 +2179,7 @@ name|char
 modifier|*
 name|diff_tree_usage
 init|=
-literal|"diff-tree [-p] [-r] [-z]<tree sha1><tree sha1>"
+literal|"diff-tree [-p] [-r] [-z] [--stdin] [-m] [-s] [-v]<tree sha1><tree sha1>"
 decl_stmt|;
 end_decl_stmt
 
