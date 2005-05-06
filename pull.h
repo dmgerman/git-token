@@ -62,6 +62,37 @@ name|get_all
 decl_stmt|;
 end_decl_stmt
 
+begin_comment
+comment|/* Set to be verbose */
+end_comment
+
+begin_decl_stmt
+specifier|extern
+name|int
+name|get_verbosely
+decl_stmt|;
+end_decl_stmt
+
+begin_comment
+comment|/* Report what we got under get_verbosely */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|void
+name|pull_say
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function_decl
 specifier|extern
 name|int
