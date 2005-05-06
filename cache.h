@@ -454,15 +454,6 @@ value|((offsetof(struct cache_entry,name) + (len) + 8)& ~7)
 end_define
 
 begin_decl_stmt
-DECL|variable|sha1_file_directory
-specifier|const
-name|char
-modifier|*
-name|sha1_file_directory
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|variable|active_cache
 name|struct
 name|cache_entry

@@ -15,17 +15,6 @@ directive|include
 file|"cache.h"
 end_include
 
-begin_decl_stmt
-DECL|variable|sha1_file_directory
-specifier|const
-name|char
-modifier|*
-name|sha1_file_directory
-init|=
-name|NULL
-decl_stmt|;
-end_decl_stmt
-
 begin_ifndef
 ifndef|#
 directive|ifndef
