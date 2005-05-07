@@ -494,6 +494,14 @@ value|".git/objects"
 end_define
 
 begin_define
+DECL|macro|ALTERNATE_DB_ENVIRONMENT
+define|#
+directive|define
+name|ALTERNATE_DB_ENVIRONMENT
+value|"SHA1_FILE_DIRECTORIES"
+end_define
+
+begin_define
 DECL|macro|get_object_directory
 define|#
 directive|define

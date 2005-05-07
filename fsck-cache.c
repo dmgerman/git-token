@@ -1567,13 +1567,8 @@ expr_stmt|;
 block|}
 name|sha1_dir
 operator|=
-name|getenv
-argument_list|(
-name|DB_ENVIRONMENT
-argument_list|)
-condition|?
-else|:
-name|DEFAULT_DB_ENVIRONMENT
+name|get_object_directory
+argument_list|()
 expr_stmt|;
 for|for
 control|(
