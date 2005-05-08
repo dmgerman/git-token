@@ -1840,7 +1840,14 @@ operator|+
 literal|3
 operator|>=
 name|argc
-operator|||
+condition|)
+name|die
+argument_list|(
+literal|"update-cache: --cacheinfo<mode><sha1><path>"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|add_cacheinfo
 argument_list|(
 name|argv
@@ -1867,7 +1874,14 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"update-cache: --cacheinfo<mode><sha1><path>"
+literal|"update-cache: --cacheinfo cannot add %s"
+argument_list|,
+name|argv
+index|[
+name|i
+operator|+
+literal|3
+index|]
 argument_list|)
 expr_stmt|;
 name|i
