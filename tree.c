@@ -167,7 +167,7 @@ name|add_cache_entry
 argument_list|(
 name|ce
 argument_list|,
-literal|1
+name|ADD_CACHE_OK_TO_ADD
 argument_list|)
 return|;
 block|}

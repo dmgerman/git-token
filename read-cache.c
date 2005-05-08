@@ -720,7 +720,7 @@ block|}
 end_function
 
 begin_comment
-comment|/* We may be in a situation where we already have path/file and path  * is being added, or we already have path and path/file is being  * added.  Either one would result in a nonsense tree that has path  * twice when git-write-tree tries to write it out.  Prevent it.  */
+comment|/* We may be in a situation where we already have path/file and path  * is being added, or we already have path and path/file is being  * added.  Either one would result in a nonsense tree that has path  * twice when git-write-tree tries to write it out.  Prevent it.  *   * If ok-to-replace is specified, we remove the conflicting entries  * from the cache so the caller should recompute the insert position.  * When this happens, we return non-zero.  */
 end_comment
 
 begin_function
@@ -734,10 +734,17 @@ name|struct
 name|cache_entry
 modifier|*
 name|ce
+parameter_list|,
+name|int
+name|ok_to_replace
 parameter_list|)
 block|{
 name|int
 name|pos
+decl_stmt|,
+name|replaced
+init|=
+literal|0
 decl_stmt|;
 specifier|const
 name|char
@@ -851,6 +858,12 @@ name|pos
 condition|)
 block|{
 comment|/* Our leading path component is registered as a file, 			 * and we are trying to make it a directory.  This is 			 * bad. 			 */
+if|if
+condition|(
+operator|!
+name|ok_to_replace
+condition|)
+block|{
 name|free
 argument_list|(
 name|pathbuf
@@ -860,6 +873,27 @@ return|return
 operator|-
 literal|1
 return|;
+block|}
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"removing file '%s' to replace it with a directory to create '%s'.\n"
+argument_list|,
+name|pathbuf
+argument_list|,
+name|path
+argument_list|)
+expr_stmt|;
+name|remove_entry_at
+argument_list|(
+name|pos
+argument_list|)
+expr_stmt|;
+name|replaced
+operator|=
+literal|1
+expr_stmt|;
 block|}
 operator|*
 name|ep
@@ -905,7 +939,7 @@ name|pos
 operator|-
 literal|1
 expr_stmt|;
-comment|/* pos would point at an existing entry that would come immediately 	 * after our path.  It could be the same as our path in higher stage, 	 * or different path but in a lower stage. 	 * 	 * E.g. when we are inserting path at stage 2, 	 * 	 *        1 path 	 * pos->  3 path 	 *        2 path/file 	 *        3 path/file 	 * 	 * We need to examine pos, ignore it because it is at different 	 * stage, examine next to find the path/file at stage 2, and 	 * complain. 	 */
+comment|/* pos would point at an existing entry that would come immediately 	 * after our path.  It could be the same as our path in higher stage, 	 * or different path but in a lower stage. 	 * 	 * E.g. when we are inserting path at stage 2, 	 * 	 *        1 path 	 * pos->  3 path 	 *        2 path/file1 	 *        3 path/file1 	 *        2 path/file2 	 *        2 patho 	 * 	 * We need to examine pos, ignore it because it is at different 	 * stage, examine next to find the path/file at stage 2, and 	 * complain.  We need to do this until we are not the leading 	 * path of an existing entry anymore. 	 */
 while|while
 condition|(
 name|pos
@@ -958,16 +992,47 @@ index|]
 operator|==
 literal|'/'
 condition|)
+block|{
+if|if
+condition|(
+operator|!
+name|ok_to_replace
+condition|)
 return|return
 operator|-
 literal|1
 return|;
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"removing file '%s' under '%s' to be replaced with a file\n"
+argument_list|,
+name|other
+operator|->
+name|name
+argument_list|,
+name|path
+argument_list|)
+expr_stmt|;
+name|remove_entry_at
+argument_list|(
+name|pos
+argument_list|)
+expr_stmt|;
+name|replaced
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+comment|/* cycle without updating pos */
+block|}
 name|pos
 operator|++
 expr_stmt|;
 block|}
 return|return
-literal|0
+name|replaced
 return|;
 block|}
 end_function
@@ -983,11 +1048,25 @@ modifier|*
 name|ce
 parameter_list|,
 name|int
-name|ok_to_add
+name|option
 parameter_list|)
 block|{
 name|int
 name|pos
+decl_stmt|;
+name|int
+name|ok_to_add
+init|=
+name|option
+operator|&
+name|ADD_CACHE_OK_TO_ADD
+decl_stmt|;
+name|int
+name|ok_to_replace
+init|=
+name|option
+operator|&
+name|ADD_CACHE_OK_TO_REPLACE
 decl_stmt|;
 name|pos
 operator|=
@@ -1092,12 +1171,44 @@ condition|(
 name|check_file_directory_conflict
 argument_list|(
 name|ce
+argument_list|,
+name|ok_to_replace
 argument_list|)
+condition|)
+block|{
+if|if
+condition|(
+operator|!
+name|ok_to_replace
 condition|)
 return|return
 operator|-
 literal|1
 return|;
+name|pos
+operator|=
+name|cache_name_pos
+argument_list|(
+name|ce
+operator|->
+name|name
+argument_list|,
+name|htons
+argument_list|(
+name|ce
+operator|->
+name|ce_flags
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|pos
+operator|=
+operator|-
+name|pos
+operator|-
+literal|1
+expr_stmt|;
+block|}
 comment|/* Make sure the array is big enough .. */
 if|if
 condition|(
