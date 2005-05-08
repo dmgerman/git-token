@@ -1824,6 +1824,7 @@ operator|==
 name|Z_OK
 condition|)
 comment|/* nothing */
+empty_stmt|;
 comment|/* Then the data itself.. */
 name|stream
 operator|.
