@@ -820,9 +820,8 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|ep
-operator|==
-literal|0
 condition|)
 break|break;
 operator|*
