@@ -127,7 +127,12 @@ name|nr
 operator|=
 literal|0
 expr_stmt|;
-do|do
+while|while
+condition|(
+name|nr
+operator|<
+name|maxentries
+condition|)
 block|{
 name|struct
 name|cache_entry
@@ -372,13 +377,6 @@ name|nr
 operator|++
 expr_stmt|;
 block|}
-do|while
-condition|(
-name|nr
-operator|<
-name|maxentries
-condition|)
-do|;
 name|write_sha1_file
 argument_list|(
 name|buffer
@@ -436,12 +434,12 @@ decl_stmt|;
 if|if
 condition|(
 name|entries
-operator|<=
+operator|<
 literal|0
 condition|)
 name|die
 argument_list|(
-literal|"write-tree: no cache contents to write"
+literal|"write-tree: error reading cache"
 argument_list|)
 expr_stmt|;
 comment|/* Verify that the tree is merged */
