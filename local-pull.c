@@ -477,13 +477,9 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"cannot write %s (%ld bytes)\n"
+literal|"cannot write %s\n"
 argument_list|,
 name|dest_filename
-argument_list|,
-name|st
-operator|.
-name|st_size
 argument_list|)
 expr_stmt|;
 else|else
