@@ -185,6 +185,34 @@ directive|endif
 end_endif
 
 begin_comment
+comment|/*  * Environment variables transition.  * We accept older names for now but warn.  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|char
+modifier|*
+name|gitenv_bc
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_define
+DECL|macro|gitenv
+define|#
+directive|define
+name|gitenv
+parameter_list|(
+name|e
+parameter_list|)
+value|(getenv(e) ? : gitenv_bc(e))
+end_define
+
+begin_comment
 comment|/*  * Basic data structures for the directory cache  *  * NOTE NOTE NOTE! This is all in the native CPU byte format. It's  * not even trying to be portable. It's trying to be efficient. It's  * just a cache, after all.  */
 end_comment
 
@@ -482,7 +510,7 @@ DECL|macro|DB_ENVIRONMENT
 define|#
 directive|define
 name|DB_ENVIRONMENT
-value|"SHA1_FILE_DIRECTORY"
+value|"GIT_OBJECT_DIRECTORY"
 end_define
 
 begin_define
@@ -498,7 +526,7 @@ DECL|macro|ALTERNATE_DB_ENVIRONMENT
 define|#
 directive|define
 name|ALTERNATE_DB_ENVIRONMENT
-value|"SHA1_FILE_DIRECTORIES"
+value|"GIT_ALTERNATE_OBJECT_DIRECTORIES"
 end_define
 
 begin_define
@@ -507,7 +535,7 @@ define|#
 directive|define
 name|get_object_directory
 parameter_list|()
-value|(getenv(DB_ENVIRONMENT) ? : DEFAULT_DB_ENVIRONMENT)
+value|(gitenv(DB_ENVIRONMENT) ? : DEFAULT_DB_ENVIRONMENT)
 end_define
 
 begin_define
@@ -532,7 +560,7 @@ define|#
 directive|define
 name|get_index_file
 parameter_list|()
-value|(getenv(INDEX_ENVIRONMENT) ? : DEFAULT_INDEX_ENVIRONMENT)
+value|(gitenv(INDEX_ENVIRONMENT) ? : DEFAULT_INDEX_ENVIRONMENT)
 end_define
 
 begin_define

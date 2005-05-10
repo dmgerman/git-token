@@ -631,7 +631,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * NOTE! This returns a statically allocated buffer, so you have to be  * careful about using it. Do a "strdup()" if you need to save the  * filename.  *  * Also note that this returns the location for creating.  Reading  * SHA1 file can happen from any alternate directory listed in the  * SHA1_FILE_DIRECTORIES environment variable if it is not found in  * the primary object database.  */
+comment|/*  * NOTE! This returns a statically allocated buffer, so you have to be  * careful about using it. Do a "strdup()" if you need to save the  * filename.  *  * Also note that this returns the location for creating.  Reading  * SHA1 file can happen from any alternate directory listed in the  * DB_ENVIRONMENT environment variable if it is not found in  * the primary object database.  */
 end_comment
 
 begin_function
@@ -661,6 +661,7 @@ operator|!
 name|base
 condition|)
 block|{
+specifier|const
 name|char
 modifier|*
 name|sha1_file_directory
@@ -767,7 +768,7 @@ struct|;
 end_struct
 
 begin_comment
-comment|/*  * Prepare alternate object database registry.  * alt_odb points at an array of struct alternate_object_database.  * This array is terminated with an element that has both its base  * and name set to NULL.  alt_odb[n] comes from n'th non-empty  * element from colon separated $SHA1_FILE_DIRECTORIES environment  * variable, and its base points at a statically allocated buffer  * that contains "/the/directory/corresponding/to/.git/objects/...",  * while its name points just after the slash at the end of  * ".git/objects/" in the example above, and has enough space to hold  * 40-byte hex SHA1, an extra slash for the first level indirection,  * and the terminating NUL.  * This function allocates the alt_odb array and all the strings  * pointed by base fields of the array elements with one xmalloc();  * the string pool immediately follows the array.  */
+comment|/*  * Prepare alternate object database registry.  * alt_odb points at an array of struct alternate_object_database.  * This array is terminated with an element that has both its base  * and name set to NULL.  alt_odb[n] comes from n'th non-empty  * element from colon separated ALTERNATE_DB_ENVIRONMENT environment  * variable, and its base points at a statically allocated buffer  * that contains "/the/directory/corresponding/to/.git/objects/...",  * while its name points just after the slash at the end of  * ".git/objects/" in the example above, and has enough space to hold  * 40-byte hex SHA1, an extra slash for the first level indirection,  * and the terminating NUL.  * This function allocates the alt_odb array and all the strings  * pointed by base fields of the array elements with one xmalloc();  * the string pool immediately follows the array.  */
 end_comment
 
 begin_function
@@ -805,7 +806,7 @@ name|char
 modifier|*
 name|alt
 init|=
-name|getenv
+name|gitenv
 argument_list|(
 name|ALTERNATE_DB_ENVIRONMENT
 argument_list|)

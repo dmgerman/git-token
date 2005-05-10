@@ -14,6 +14,7 @@ DECL|function|safe_create_dir
 name|void
 name|safe_create_dir
 parameter_list|(
+specifier|const
 name|char
 modifier|*
 name|dir
@@ -71,10 +72,12 @@ modifier|*
 name|argv
 parameter_list|)
 block|{
+specifier|const
 name|char
 modifier|*
 name|sha1_dir
-decl_stmt|,
+decl_stmt|;
+name|char
 modifier|*
 name|path
 decl_stmt|;
@@ -90,7 +93,7 @@ argument_list|)
 expr_stmt|;
 name|sha1_dir
 operator|=
-name|getenv
+name|gitenv
 argument_list|(
 name|DB_ENVIRONMENT
 argument_list|)
