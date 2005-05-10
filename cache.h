@@ -454,7 +454,7 @@ value|((offsetof(struct cache_entry,name) + (len) + 8)& ~7)
 end_define
 
 begin_decl_stmt
-DECL|variable|active_cache
+specifier|extern
 name|struct
 name|cache_entry
 modifier|*
@@ -464,9 +464,7 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|active_nr
-DECL|variable|active_alloc
-DECL|variable|active_cache_changed
+specifier|extern
 name|unsigned
 name|int
 name|active_nr

@@ -80,14 +80,14 @@ struct|;
 end_struct
 
 begin_decl_stmt
-DECL|variable|nr_objs
+specifier|extern
 name|int
 name|nr_objs
 decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|objs
+specifier|extern
 name|struct
 name|object
 modifier|*
