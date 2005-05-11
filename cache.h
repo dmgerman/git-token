@@ -185,6 +185,34 @@ directive|endif
 end_endif
 
 begin_comment
+comment|/*  * Environment variables transition.  * We accept older names for now but warn.  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|char
+modifier|*
+name|gitenv_bc
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_define
+DECL|macro|gitenv
+define|#
+directive|define
+name|gitenv
+parameter_list|(
+name|e
+parameter_list|)
+value|(getenv(e) ? : gitenv_bc(e))
+end_define
+
+begin_comment
 comment|/*  * Basic data structures for the directory cache  *  * NOTE NOTE NOTE! This is all in the native CPU byte format. It's  * not even trying to be portable. It's trying to be efficient. It's  * just a cache, after all.  */
 end_comment
 
@@ -476,28 +504,27 @@ decl_stmt|;
 end_decl_stmt
 
 begin_define
+DECL|macro|GIT_DIR_ENVIRONMENT
+define|#
+directive|define
+name|GIT_DIR_ENVIRONMENT
+value|"GIT_DIR"
+end_define
+
+begin_define
+DECL|macro|DEFAULT_GIT_DIR_ENVIRONMENT
+define|#
+directive|define
+name|DEFAULT_GIT_DIR_ENVIRONMENT
+value|".git"
+end_define
+
+begin_define
 DECL|macro|DB_ENVIRONMENT
 define|#
 directive|define
 name|DB_ENVIRONMENT
-value|"SHA1_FILE_DIRECTORY"
-end_define
-
-begin_define
-DECL|macro|DEFAULT_DB_ENVIRONMENT
-define|#
-directive|define
-name|DEFAULT_DB_ENVIRONMENT
-value|".git/objects"
-end_define
-
-begin_define
-DECL|macro|get_object_directory
-define|#
-directive|define
-name|get_object_directory
-parameter_list|()
-value|(getenv(DB_ENVIRONMENT) ? : DEFAULT_DB_ENVIRONMENT)
+value|"GIT_OBJECT_DIRECTORY"
 end_define
 
 begin_define
@@ -508,21 +535,34 @@ name|INDEX_ENVIRONMENT
 value|"GIT_INDEX_FILE"
 end_define
 
-begin_define
-DECL|macro|DEFAULT_INDEX_ENVIRONMENT
-define|#
-directive|define
-name|DEFAULT_INDEX_ENVIRONMENT
-value|".git/index"
-end_define
+begin_function_decl
+specifier|extern
+name|char
+modifier|*
+name|get_object_directory
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|char
+modifier|*
+name|get_index_file
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
 
 begin_define
-DECL|macro|get_index_file
+DECL|macro|ALTERNATE_DB_ENVIRONMENT
 define|#
 directive|define
-name|get_index_file
-parameter_list|()
-value|(getenv(INDEX_ENVIRONMENT) ? : DEFAULT_INDEX_ENVIRONMENT)
+name|ALTERNATE_DB_ENVIRONMENT
+value|"GIT_ALTERNATE_OBJECT_DIRECTORIES"
 end_define
 
 begin_define
@@ -586,6 +626,32 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_define
+DECL|macro|ADD_CACHE_OK_TO_ADD
+define|#
+directive|define
+name|ADD_CACHE_OK_TO_ADD
+value|1
+end_define
+
+begin_comment
+DECL|macro|ADD_CACHE_OK_TO_ADD
+comment|/* Ok to add */
+end_comment
+
+begin_define
+DECL|macro|ADD_CACHE_OK_TO_REPLACE
+define|#
+directive|define
+name|ADD_CACHE_OK_TO_REPLACE
+value|2
+end_define
+
+begin_comment
+DECL|macro|ADD_CACHE_OK_TO_REPLACE
+comment|/* Ok to replace file/directory */
+end_comment
+
 begin_function_decl
 specifier|extern
 name|int
@@ -597,7 +663,7 @@ modifier|*
 name|ce
 parameter_list|,
 name|int
-name|ok_to_add
+name|option
 parameter_list|)
 function_decl|;
 end_function_decl

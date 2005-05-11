@@ -307,6 +307,22 @@ begin_comment
 comment|/*  * The entries in a tree are ordered in the _path_ order,  * which means that a directory entry is ordered by adding  * a slash to the end of it.  *  * So a directory called "a" is ordered _after_ a file  * called "a.c", because "a/" sorts after "a.c".  */
 end_comment
 
+begin_define
+DECL|macro|TREE_UNORDERED
+define|#
+directive|define
+name|TREE_UNORDERED
+value|(-1)
+end_define
+
+begin_define
+DECL|macro|TREE_HAS_DUPS
+define|#
+directive|define
+name|TREE_HAS_DUPS
+value|(-2)
+end_define
+
 begin_function
 DECL|function|verify_ordered
 specifier|static
@@ -395,8 +411,7 @@ operator|>
 literal|0
 condition|)
 return|return
-operator|-
-literal|1
+name|TREE_UNORDERED
 return|;
 comment|/* 	 * Ok, the first<len> characters are the same. 	 * Now we need to order the next one, but turn 	 * a '\0' into a '/' for a directory entry. 	 */
 name|c1
@@ -417,6 +432,18 @@ index|[
 name|len
 index|]
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|c1
+operator|&&
+operator|!
+name|c2
+condition|)
+comment|/* 		 * git-write-tree used to write out a nonsense tree that has 		 * entries with the same name, one blob and one tree.  Make 		 * sure we do not have duplicate entries. 		 */
+return|return
+name|TREE_HAS_DUPS
+return|;
 if|if
 condition|(
 operator|!
@@ -450,8 +477,7 @@ name|c2
 condition|?
 literal|0
 else|:
-operator|-
-literal|1
+name|TREE_UNORDERED
 return|;
 block|}
 end_function
@@ -578,7 +604,7 @@ condition|(
 name|last
 condition|)
 block|{
-if|if
+switch|switch
 condition|(
 name|verify_ordered
 argument_list|(
@@ -586,10 +612,11 @@ name|last
 argument_list|,
 name|entry
 argument_list|)
-operator|<
-literal|0
 condition|)
 block|{
+case|case
+name|TREE_UNORDERED
+case|:
 name|fprintf
 argument_list|(
 name|stderr
@@ -610,6 +637,35 @@ return|return
 operator|-
 literal|1
 return|;
+case|case
+name|TREE_HAS_DUPS
+case|:
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"tree %s has duplicate entries for '%s'\n"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|item
+operator|->
+name|object
+operator|.
+name|sha1
+argument_list|)
+argument_list|,
+name|entry
+operator|->
+name|name
+argument_list|)
+expr_stmt|;
+return|return
+operator|-
+literal|1
+return|;
+default|default:
+break|break;
 block|}
 block|}
 name|last
@@ -1567,13 +1623,8 @@ expr_stmt|;
 block|}
 name|sha1_dir
 operator|=
-name|getenv
-argument_list|(
-name|DB_ENVIRONMENT
-argument_list|)
-condition|?
-else|:
-name|DEFAULT_DB_ENVIRONMENT
+name|get_object_directory
+argument_list|()
 expr_stmt|;
 for|for
 control|(

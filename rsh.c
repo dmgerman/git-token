@@ -186,9 +186,11 @@ name|command
 argument_list|,
 name|COMMAND_SIZE
 argument_list|,
-literal|"cd /%s; SHA1_FILE_DIRECTORY=objects %s"
+literal|"cd /%s; %s=objects %s"
 argument_list|,
 name|path
+argument_list|,
+name|DB_ENVIRONMENT
 argument_list|,
 name|remote_prog
 argument_list|)
