@@ -702,6 +702,16 @@ argument_list|)
 expr_stmt|;
 name|mode
 operator|=
+operator|(
+name|S_ISLNK
+argument_list|(
+name|st
+operator|.
+name|st_mode
+argument_list|)
+condition|?
+name|S_IFLNK
+else|:
 name|S_IFREG
 operator||
 name|ce_permissions
@@ -710,6 +720,7 @@ name|st
 operator|.
 name|st_mode
 argument_list|)
+operator|)
 expr_stmt|;
 name|show_modified
 argument_list|(
