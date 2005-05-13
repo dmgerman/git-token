@@ -614,7 +614,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Read a directory tree. We currently ignore anything but  * directories and regular files. That's because git doesn't  * handle them at all yet. Maybe that will change some day.  *  * Also, we currently ignore all names starting with a dot.  * That likely will not change.  */
+comment|/*  * Read a directory tree. We currently ignore anything but  * directories, regular files and symlinks. That's because git  * doesn't handle them at all yet. Maybe that will change some  * day.  *  * Also, we currently ignore all names starting with a dot.  * That likely will not change.  */
 end_comment
 
 begin_function
@@ -774,6 +774,13 @@ name|st
 operator|.
 name|st_mode
 argument_list|)
+operator|||
+name|S_ISLNK
+argument_list|(
+name|st
+operator|.
+name|st_mode
+argument_list|)
 condition|)
 break|break;
 if|if
@@ -820,6 +827,9 @@ expr_stmt|;
 continue|continue;
 case|case
 name|DT_REG
+case|:
+case|case
+name|DT_LNK
 case|:
 break|break;
 block|}
