@@ -96,7 +96,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/* These are for diff-tree-helper */
+comment|/* These are for diff-helper */
 end_comment
 
 begin_struct
