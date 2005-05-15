@@ -48,9 +48,9 @@ decl_stmt|;
 end_decl_stmt
 
 begin_function
-DECL|function|cache_match_stat
+DECL|function|ce_match_stat
 name|int
-name|cache_match_stat
+name|ce_match_stat
 parameter_list|(
 name|struct
 name|cache_entry
