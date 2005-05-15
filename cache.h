@@ -221,7 +221,7 @@ value|(getenv(e) ? : gitenv_bc(e))
 end_define
 
 begin_comment
-comment|/*  * Basic data structures for the directory cache  *  * NOTE NOTE NOTE! This is all in the native CPU byte format. It's  * not even trying to be portable. It's trying to be efficient. It's  * just a cache, after all.  */
+comment|/*  * Basic data structures for the directory cache  */
 end_comment
 
 begin_define
