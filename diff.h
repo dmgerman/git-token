@@ -146,6 +146,11 @@ name|char
 modifier|*
 name|name
 parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|other
+parameter_list|,
 name|struct
 name|diff_spec
 modifier|*
