@@ -352,14 +352,14 @@ expr_stmt|;
 block|}
 name|rev1
 operator|=
-name|lookup_commit
+name|lookup_commit_reference
 argument_list|(
 name|rev1key
 argument_list|)
 expr_stmt|;
 name|rev2
 operator|=
-name|lookup_commit
+name|lookup_commit_reference
 argument_list|(
 name|rev2key
 argument_list|)
