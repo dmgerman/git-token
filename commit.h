@@ -100,6 +100,20 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+name|struct
+name|commit
+modifier|*
+name|lookup_commit_reference
+parameter_list|(
+name|unsigned
+name|char
+modifier|*
+name|sha1
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|int
 name|parse_commit_buffer
 parameter_list|(
