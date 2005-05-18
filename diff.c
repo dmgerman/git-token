@@ -317,13 +317,6 @@ decl_stmt|;
 specifier|const
 name|char
 modifier|*
-name|git_prefix
-init|=
-literal|"# mode: "
-decl_stmt|;
-specifier|const
-name|char
-modifier|*
 name|diff_cmd
 init|=
 literal|"diff -L'%s%s' -L'%s%s'"
@@ -595,6 +588,15 @@ literal|1
 index|]
 argument_list|)
 expr_stmt|;
+name|printf
+argument_list|(
+literal|"diff --git a/%s b/%s\n"
+argument_list|,
+name|name
+argument_list|,
+name|name
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -608,9 +610,7 @@ index|]
 condition|)
 name|printf
 argument_list|(
-literal|"%s. %s %s\n"
-argument_list|,
-name|git_prefix
+literal|"new file mode %s\n"
 argument_list|,
 name|temp
 index|[
@@ -618,8 +618,6 @@ literal|1
 index|]
 operator|.
 name|mode
-argument_list|,
-name|name
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -636,9 +634,7 @@ index|]
 condition|)
 name|printf
 argument_list|(
-literal|"%s%s . %s\n"
-argument_list|,
-name|git_prefix
+literal|"deleted file mode %s\n"
 argument_list|,
 name|temp
 index|[
@@ -646,8 +642,6 @@ literal|0
 index|]
 operator|.
 name|mode
-argument_list|,
-name|name
 argument_list|)
 expr_stmt|;
 else|else
@@ -671,11 +665,10 @@ operator|.
 name|mode
 argument_list|)
 condition|)
+block|{
 name|printf
 argument_list|(
-literal|"%s%s %s %s\n"
-argument_list|,
-name|git_prefix
+literal|"old mode %s\n"
 argument_list|,
 name|temp
 index|[
@@ -683,6 +676,11 @@ literal|0
 index|]
 operator|.
 name|mode
+argument_list|)
+expr_stmt|;
+name|printf
+argument_list|(
+literal|"new mode %s\n"
 argument_list|,
 name|temp
 index|[
@@ -690,10 +688,9 @@ literal|1
 index|]
 operator|.
 name|mode
-argument_list|,
-name|name
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|strncmp
