@@ -2088,11 +2088,9 @@ name|arg
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* 	 * If we've been asked to do reachability without any explicit 	 * head information, do the default ones from .git/refs. We also 	 * consider the index file in this case (ie this implies --cache). 	 */
+comment|/* 	 * If we've not been gived any explicit head information, do the 	 * default ones from .git/refs. We also consider the index file 	 * in this case (ie this implies --cache). 	 */
 if|if
 condition|(
-name|show_unreachable
-operator|&&
 operator|!
 name|heads
 condition|)
