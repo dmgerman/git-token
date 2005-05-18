@@ -311,7 +311,7 @@ expr_stmt|;
 name|minutes
 operator|=
 operator|(
-name|tz
+name|minutes
 operator|/
 literal|100
 operator|)
@@ -319,7 +319,7 @@ operator|*
 literal|60
 operator|+
 operator|(
-name|tz
+name|minutes
 operator|%
 literal|100
 operator|)
@@ -338,7 +338,7 @@ expr_stmt|;
 name|t
 operator|=
 name|time
-operator|-
+operator|+
 name|minutes
 operator|*
 literal|60
