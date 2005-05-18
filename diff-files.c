@@ -285,11 +285,13 @@ name|int
 name|mode
 parameter_list|,
 specifier|const
+name|unsigned
 name|char
 modifier|*
 name|old_sha1
 parameter_list|,
 specifier|const
+name|unsigned
 name|char
 modifier|*
 name|sha1
@@ -374,6 +376,7 @@ parameter_list|)
 block|{
 specifier|static
 specifier|const
+name|unsigned
 name|char
 name|null_sha1
 index|[

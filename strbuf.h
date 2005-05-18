@@ -30,7 +30,6 @@ name|int
 name|eof
 decl_stmt|;
 DECL|member|buf
-name|unsigned
 name|char
 modifier|*
 name|buf

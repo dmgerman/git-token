@@ -366,7 +366,6 @@ name|char
 modifier|*
 name|sha1
 decl_stmt|;
-name|unsigned
 name|char
 name|old_sha1_hex
 index|[

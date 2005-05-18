@@ -1626,6 +1626,7 @@ index|[
 literal|8192
 index|]
 decl_stmt|;
+name|unsigned
 name|char
 modifier|*
 name|buf
@@ -1660,6 +1661,11 @@ name|stream
 operator|.
 name|next_out
 operator|=
+operator|(
+name|unsigned
+name|char
+operator|*
+operator|)
 name|buffer
 expr_stmt|;
 name|stream
@@ -1901,7 +1907,6 @@ modifier|*
 name|sha1
 parameter_list|,
 specifier|const
-name|unsigned
 name|char
 modifier|*
 name|required_type
@@ -2107,7 +2112,7 @@ DECL|function|write_sha1_file
 name|int
 name|write_sha1_file
 parameter_list|(
-name|char
+name|void
 modifier|*
 name|buf
 parameter_list|,
@@ -2129,6 +2134,7 @@ block|{
 name|int
 name|size
 decl_stmt|;
+name|unsigned
 name|char
 modifier|*
 name|compressed
@@ -2157,6 +2163,7 @@ index|[
 name|PATH_MAX
 index|]
 decl_stmt|;
+name|unsigned
 name|char
 name|hdr
 index|[
@@ -2175,6 +2182,10 @@ name|hdrlen
 operator|=
 name|sprintf
 argument_list|(
+operator|(
+name|char
+operator|*
+operator|)
 name|hdr
 argument_list|,
 literal|"%s %lu"
@@ -2616,12 +2627,14 @@ index|[
 literal|20
 index|]
 decl_stmt|;
+name|unsigned
 name|char
 name|buf
 index|[
 literal|4096
 index|]
 decl_stmt|;
+name|unsigned
 name|char
 name|discard
 index|[

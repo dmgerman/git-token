@@ -1076,6 +1076,7 @@ name|void
 name|write_header
 parameter_list|(
 specifier|const
+name|unsigned
 name|char
 modifier|*
 parameter_list|,
@@ -1319,6 +1320,7 @@ name|void
 name|write_global_extended_header
 parameter_list|(
 specifier|const
+name|unsigned
 name|char
 modifier|*
 name|sha1
@@ -1397,6 +1399,7 @@ name|void
 name|write_header
 parameter_list|(
 specifier|const
+name|unsigned
 name|char
 modifier|*
 name|sha1

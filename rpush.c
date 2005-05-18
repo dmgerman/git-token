@@ -42,6 +42,7 @@ name|int
 name|posn
 decl_stmt|;
 name|char
+name|unsigned
 name|sha1
 index|[
 literal|20

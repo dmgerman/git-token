@@ -1714,6 +1714,7 @@ end_define
 begin_decl_stmt
 DECL|variable|write_buffer
 specifier|static
+name|unsigned
 name|char
 name|write_buffer
 index|[
