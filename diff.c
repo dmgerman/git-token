@@ -339,14 +339,14 @@ name|sha1_valid
 range|:
 literal|1
 decl_stmt|;
-comment|/* if true, use blob_sha1 and trust mode; 				  * however with a NULL SHA1, read them 				  * from the file system. 				  * if false, use the name and read mode from 				  * the filesystem. 				  */
+comment|/* if true, use blob_sha1 and trust mode; 				  * if false, use the name and read from 				  * the filesystem. 				  */
 DECL|member|file_valid
 name|unsigned
 name|file_valid
 range|:
 literal|1
 decl_stmt|;
-comment|/* if false the file does not even exist */
+comment|/* if false the file does not exist */
 block|}
 struct|;
 end_struct
@@ -2639,6 +2639,12 @@ operator||
 name|SHOULD_MUNMAP
 operator|)
 expr_stmt|;
+name|s
+operator|->
+name|data
+operator|=
+literal|0
+expr_stmt|;
 block|}
 end_function
 
@@ -3192,7 +3198,7 @@ name|diff_score
 modifier|*
 name|mx
 decl_stmt|;
-comment|/* We really want to cull the candidates list early 	 * with cheap tests in order to avoid doing deltas. 	 */
+comment|/* We really want to cull the candidates list early 	 * with cheap tests in order to avoid doing deltas. 	 * 	 * With the current callers, we should not have already 	 * matched entries at this point, but it is nonetheless 	 * checked for sanity. 	 */
 for|for
 control|(
 name|dst
@@ -3208,6 +3214,15 @@ operator|->
 name|next
 control|)
 block|{
+if|if
+condition|(
+name|dst
+operator|->
+name|flags
+operator|&
+name|MATCHED
+condition|)
+continue|continue;
 for|for
 control|(
 name|src
@@ -3223,6 +3238,15 @@ operator|->
 name|next
 control|)
 block|{
+if|if
+condition|(
+name|src
+operator|->
+name|flags
+operator|&
+name|MATCHED
+condition|)
+continue|continue;
 if|if
 condition|(
 operator|!
@@ -3461,60 +3485,12 @@ argument_list|,
 name|score_compare
 argument_list|)
 expr_stmt|;
-for|for
-control|(
-name|c
-operator|=
+if|#
+directive|if
 literal|0
-init|;
-name|c
-operator|<
-name|num_create
-operator|*
-name|num_delete
-condition|;
-name|c
-operator|++
-control|)
-block|{
-name|src
-operator|=
-name|mx
-index|[
-name|c
-index|]
-operator|.
-name|src
-expr_stmt|;
-name|dst
-operator|=
-name|mx
-index|[
-name|c
-index|]
-operator|.
-name|dst
-expr_stmt|;
-if|if
-condition|(
-operator|(
-name|src
-operator|->
-name|flags
-operator|&
-name|MATCHED
-operator|)
-operator|||
-operator|(
-name|dst
-operator|->
-name|flags
-operator|&
-name|MATCHED
-operator|)
-condition|)
-continue|continue;
-block|}
+block|for (c = 0; c< num_create * num_delete; c++) { 		src = mx[c].src; 		dst = mx[c].dst; 		if ((src->flags& MATCHED) || (dst->flags& MATCHED)) 			continue; 		fprintf(stderr, 			"**score ** %d %s %s\n", 			mx[c].score, src->path, dst->path); 	}
+endif|#
+directive|endif
 for|for
 control|(
 name|c
@@ -3588,6 +3564,11 @@ name|dst
 argument_list|)
 expr_stmt|;
 block|}
+name|free
+argument_list|(
+name|mx
+argument_list|)
+expr_stmt|;
 name|exit_path
 label|:
 name|flush_remaining_diff
