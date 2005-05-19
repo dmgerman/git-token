@@ -645,7 +645,7 @@ name|char
 modifier|*
 name|read_tree_usage
 init|=
-literal|"read-tree (<sha> | -m<sha1> [<sha2><sha3>])"
+literal|"git-read-tree (<sha> | -m<sha1> [<sha2><sha3>])"
 decl_stmt|;
 end_decl_stmt
 

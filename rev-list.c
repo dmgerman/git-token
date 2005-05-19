@@ -189,7 +189,7 @@ argument_list|)
 condition|)
 name|usage
 argument_list|(
-literal|"usage: rev-list [OPTION] commit-id\n"
+literal|"usage: git-rev-list [OPTION] commit-id\n"
 literal|"  --max-count=nr\n"
 literal|"  --max-age=epoch\n"
 literal|"  --min-age=epoch\n"

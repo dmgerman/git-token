@@ -1541,7 +1541,7 @@ name|char
 modifier|*
 name|ls_files_usage
 init|=
-literal|"ls-files [-z] [-t] (--[cached|deleted|others|stage|unmerged|killed])* "
+literal|"git-ls-files [-z] [-t] (--[cached|deleted|others|stage|unmerged|killed])* "
 literal|"[ --ignored [--exclude=<pattern>] [--exclude-from=<file>) ]"
 decl_stmt|;
 end_decl_stmt

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_comment
-comment|/*  * Check-out files from the "current cache directory"  *  * Copyright (C) 2005 Linus Torvalds  *  * Careful: order of argument flags does matter. For example,  *  *	checkout-cache -a -f file.c  *  * Will first check out all files listed in the cache (but not  * overwrite any old ones), and then force-checkout "file.c" a  * second time (ie that one _will_ overwrite any old contents  * with the same filename).  *  * Also, just doing "checkout-cache" does nothing. You probably  * meant "checkout-cache -a". And if you want to force it, you  * want "checkout-cache -f -a".  *  * Intuitiveness is not the goal here. Repeatability is. The  * reason for the "no arguments means no work" thing is that  * from scripts you are supposed to be able to do things like  *  *	find . -name '*.h' -print0 | xargs -0 checkout-cache -f --  *  * which will force all existing *.h files to be replaced with  * their cached copies. If an empty command line implied "all",  * then this would force-refresh everything in the cache, which  * was not the point.  *  * Oh, and the "--" is just a good idea when you know the rest  * will be filenames. Just so that you wouldn't have a filename  * of "-a" causing problems (not possible in the above example,  * but get used to it in scripting!).  */
+comment|/*  * Check-out files from the "current cache directory"  *  * Copyright (C) 2005 Linus Torvalds  *  * Careful: order of argument flags does matter. For example,  *  *	git-checkout-cache -a -f file.c  *  * Will first check out all files listed in the cache (but not  * overwrite any old ones), and then force-checkout "file.c" a  * second time (ie that one _will_ overwrite any old contents  * with the same filename).  *  * Also, just doing "git-checkout-cache" does nothing. You probably  * meant "git-checkout-cache -a". And if you want to force it, you  * want "git-checkout-cache -f -a".  *  * Intuitiveness is not the goal here. Repeatability is. The  * reason for the "no arguments means no work" thing is that  * from scripts you are supposed to be able to do things like  *  *	find . -name '*.h' -print0 | xargs -0 git-checkout-cache -f --  *  * which will force all existing *.h files to be replaced with  * their cached copies. If an empty command line implied "all",  * then this would force-refresh everything in the cache, which  * was not the point.  *  * Oh, and the "--" is just a good idea when you know the rest  * will be filenames. Just so that you wouldn't have a filename  * of "-a" causing problems (not possible in the above example,  * but get used to it in scripting!).  */
 end_comment
 
 begin_include
@@ -594,7 +594,7 @@ expr_stmt|;
 return|return
 name|error
 argument_list|(
-literal|"checkout-cache: unable to read sha1 file of %s (%s)"
+literal|"git-checkout-cache: unable to read sha1 file of %s (%s)"
 argument_list|,
 name|path
 argument_list|,
@@ -651,7 +651,7 @@ expr_stmt|;
 return|return
 name|error
 argument_list|(
-literal|"checkout-cache: unable to create file %s (%s)"
+literal|"git-checkout-cache: unable to create file %s (%s)"
 argument_list|,
 name|path
 argument_list|,
@@ -692,7 +692,7 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"checkout-cache: unable to write file %s"
+literal|"git-checkout-cache: unable to write file %s"
 argument_list|,
 name|path
 argument_list|)
@@ -740,7 +740,7 @@ expr_stmt|;
 return|return
 name|error
 argument_list|(
-literal|"checkout-cache: unable to create symlink %s (%s)"
+literal|"git-checkout-cache: unable to create symlink %s (%s)"
 argument_list|,
 name|path
 argument_list|,
@@ -766,7 +766,7 @@ expr_stmt|;
 return|return
 name|error
 argument_list|(
-literal|"checkout-cache: unknown file mode for %s"
+literal|"git-checkout-cache: unknown file mode for %s"
 argument_list|,
 name|path
 argument_list|)
@@ -910,7 +910,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"checkout-cache: %s already exists\n"
+literal|"git-checkout-cache: %s already exists\n"
 argument_list|,
 name|path
 argument_list|)
@@ -999,7 +999,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"checkout-cache: %s is %s.\n"
+literal|"git-checkout-cache: %s is %s.\n"
 argument_list|,
 name|name
 argument_list|,

@@ -246,7 +246,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Usage: rev-tree [--edges] [--cache<cache-file>]<commit-id> [<commit-id2>]  *  * The cache-file can be quite important for big trees. This is an  * expensive operation if you have to walk the whole chain of  * parents in a tree with a long revision history.  */
+comment|/*  * Usage: git-rev-tree [--edges] [--cache<cache-file>]<commit-id> [<commit-id2>]  *  * The cache-file can be quite important for big trees. This is an  * expensive operation if you have to walk the whole chain of  * parents in a tree with a long revision history.  */
 end_comment
 
 begin_function
@@ -382,7 +382,7 @@ argument_list|)
 condition|)
 name|usage
 argument_list|(
-literal|"rev-tree [--edges] [--cache<cache-file>]<commit-id> [<commit-id>]"
+literal|"git-rev-tree [--edges] [--cache<cache-file>]<commit-id> [<commit-id>]"
 argument_list|)
 expr_stmt|;
 name|process_commit

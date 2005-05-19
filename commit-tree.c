@@ -452,7 +452,7 @@ name|char
 modifier|*
 name|commit_tree_usage
 init|=
-literal|"commit-tree<sha1> [-p<sha1>]*< changelog"
+literal|"git-commit-tree<sha1> [-p<sha1>]*< changelog"
 decl_stmt|;
 end_decl_stmt
 

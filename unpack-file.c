@@ -169,7 +169,7 @@ argument_list|)
 condition|)
 name|usage
 argument_list|(
-literal|"unpack-file.c<sha1>"
+literal|"git-unpack-file<sha1>"
 argument_list|)
 expr_stmt|;
 name|puts

@@ -103,7 +103,7 @@ name|char
 modifier|*
 name|tar_tree_usage
 init|=
-literal|"tar-tree<key> [basedir]"
+literal|"git-tar-tree<key> [basedir]"
 decl_stmt|;
 end_decl_stmt
 
@@ -231,7 +231,7 @@ argument_list|)
 expr_stmt|;
 name|die
 argument_list|(
-literal|"tar-tree: %s"
+literal|"git-tar-tree: %s"
 argument_list|,
 name|strerror
 argument_list|(
@@ -249,7 +249,7 @@ condition|)
 block|{
 name|die
 argument_list|(
-literal|"tar-tree: disk full?"
+literal|"git-tar-tree: disk full?"
 argument_list|)
 expr_stmt|;
 block|}

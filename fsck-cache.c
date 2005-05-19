@@ -682,7 +682,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"warning: fsck-cache: tree %s "
+literal|"warning: git-fsck-cache: tree %s "
 literal|"has full pathnames in it\n"
 argument_list|,
 name|sha1_to_hex
@@ -1946,7 +1946,7 @@ literal|'-'
 condition|)
 name|usage
 argument_list|(
-literal|"fsck-cache [--tags] [[--unreachable] [--cache]<head-sha1>*]"
+literal|"git-fsck-cache [--tags] [[--unreachable] [--cache]<head-sha1>*]"
 argument_list|)
 expr_stmt|;
 block|}

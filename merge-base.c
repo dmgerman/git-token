@@ -346,7 +346,7 @@ condition|)
 block|{
 name|usage
 argument_list|(
-literal|"merge-base<commit-id><commit-id>"
+literal|"git-merge-base<commit-id><commit-id>"
 argument_list|)
 expr_stmt|;
 block|}

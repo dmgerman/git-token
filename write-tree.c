@@ -439,7 +439,7 @@ literal|0
 condition|)
 name|die
 argument_list|(
-literal|"write-tree: error reading cache"
+literal|"git-write-tree: error reading cache"
 argument_list|)
 expr_stmt|;
 comment|/* Verify that the tree is merged */
@@ -527,7 +527,7 @@ name|funny
 condition|)
 name|die
 argument_list|(
-literal|"write-tree: not able to write tree"
+literal|"git-write-tree: not able to write tree"
 argument_list|)
 expr_stmt|;
 comment|/* Also verify that the cache does not have path and path/file 	 * at the same time.  At this point we know the cache has only 	 * stage 0 entries. 	 */
@@ -650,7 +650,7 @@ name|funny
 condition|)
 name|die
 argument_list|(
-literal|"write-tree: not able to write tree"
+literal|"git-write-tree: not able to write tree"
 argument_list|)
 expr_stmt|;
 comment|/* Ok, write it out */
@@ -673,7 +673,7 @@ name|entries
 condition|)
 name|die
 argument_list|(
-literal|"write-tree: internal error"
+literal|"git-write-tree: internal error"
 argument_list|)
 expr_stmt|;
 name|printf

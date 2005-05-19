@@ -1583,7 +1583,7 @@ continue|continue;
 block|}
 name|die
 argument_list|(
-literal|"diff-tree: internal error"
+literal|"git-diff-tree: internal error"
 argument_list|)
 expr_stmt|;
 block|}
@@ -2519,7 +2519,7 @@ name|char
 modifier|*
 name|diff_tree_usage
 init|=
-literal|"diff-tree [-p] [-r] [-z] [--stdin] [-M] [-m] [-s] [-v]<tree-ish><tree-ish>"
+literal|"git-diff-tree [-p] [-r] [-z] [--stdin] [-M] [-m] [-s] [-v]<tree-ish><tree-ish>"
 decl_stmt|;
 end_decl_stmt
 

@@ -871,7 +871,7 @@ literal|"-r"
 argument_list|)
 condition|)
 block|{
-comment|/* We accept the -r flag just to look like diff-tree */
+comment|/* We accept the -r flag just to look like git-diff-tree */
 continue|continue;
 block|}
 if|if
