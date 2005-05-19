@@ -377,6 +377,8 @@ name|int
 name|i
 decl_stmt|,
 name|next_at
+decl_stmt|,
+name|cmd_size
 decl_stmt|;
 specifier|const
 name|char
@@ -450,9 +452,8 @@ name|name_b
 argument_list|)
 expr_stmt|;
 comment|/* diff_cmd and diff_arg have 6 %s in total which makes 	 * the sum of these strings 12 bytes larger than required. 	 * we use 2 spaces around diff-opts, and we need to count 	 * terminating NUL, so we subtract 9 here. 	 */
-name|int
 name|cmd_size
-init|=
+operator|=
 operator|(
 name|strlen
 argument_list|(
@@ -471,7 +472,7 @@ argument_list|)
 operator|-
 literal|9
 operator|)
-decl_stmt|;
+expr_stmt|;
 for|for
 control|(
 name|i
