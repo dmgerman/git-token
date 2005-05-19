@@ -51,6 +51,16 @@ literal|'\n'
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|detect_rename
+specifier|static
+name|int
+name|detect_rename
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
 begin_comment
 comment|/* A file entry went away or appeared */
 end_comment
@@ -789,7 +799,7 @@ name|char
 modifier|*
 name|diff_cache_usage
 init|=
-literal|"git-diff-cache [-p] [-r] [-z] [-m] [--cached]<tree sha1>"
+literal|"git-diff-cache [-p] [-r] [-z] [-m] [-M] [--cached]<tree-ish>"
 decl_stmt|;
 end_decl_stmt
 
@@ -821,6 +831,9 @@ decl_stmt|;
 name|unsigned
 name|long
 name|size
+decl_stmt|;
+name|int
+name|ret
 decl_stmt|;
 name|read_cache
 argument_list|()
@@ -873,6 +886,25 @@ argument_list|)
 condition|)
 block|{
 name|generate_patch
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"-M"
+argument_list|)
+condition|)
+block|{
+name|generate_patch
+operator|=
+name|detect_rename
 operator|=
 literal|1
 expr_stmt|;
@@ -956,6 +988,23 @@ argument_list|(
 name|diff_cache_usage
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|generate_patch
+condition|)
+name|diff_setup
+argument_list|(
+name|detect_rename
+argument_list|,
+literal|0
+argument_list|,
+literal|0
+argument_list|,
+literal|0
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
 name|mark_merge_entries
 argument_list|()
 expr_stmt|;
@@ -1009,13 +1058,24 @@ literal|1
 index|]
 argument_list|)
 expr_stmt|;
-return|return
+name|ret
+operator|=
 name|diff_cache
 argument_list|(
 name|active_cache
 argument_list|,
 name|active_nr
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|generate_patch
+condition|)
+name|diff_flush
+argument_list|()
+expr_stmt|;
+return|return
+name|ret
 return|;
 block|}
 end_function

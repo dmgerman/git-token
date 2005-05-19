@@ -23,7 +23,7 @@ name|char
 modifier|*
 name|diff_files_usage
 init|=
-literal|"diff-files [-p] [-q] [-r] [-z] [paths...]"
+literal|"diff-files [-p] [-q] [-r] [-z] [-M] [paths...]"
 decl_stmt|;
 end_decl_stmt
 
@@ -44,6 +44,16 @@ name|int
 name|line_termination
 init|=
 literal|'\n'
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|detect_rename
+specifier|static
+name|int
+name|detect_rename
+init|=
+literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -498,6 +508,28 @@ name|line_termination
 operator|=
 literal|0
 expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|argv
+index|[
+literal|1
+index|]
+argument_list|,
+literal|"-M"
+argument_list|)
+condition|)
+block|{
+name|detect_rename
+operator|=
+name|generate_patch
+operator|=
+literal|1
+expr_stmt|;
+block|}
 else|else
 name|usage
 argument_list|(
@@ -530,6 +562,23 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|generate_patch
+condition|)
+name|diff_setup
+argument_list|(
+name|detect_rename
+argument_list|,
+literal|0
+argument_list|,
+literal|0
+argument_list|,
+literal|0
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|i
@@ -743,6 +792,13 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|generate_patch
+condition|)
+name|diff_flush
+argument_list|()
+expr_stmt|;
 return|return
 literal|0
 return|;
