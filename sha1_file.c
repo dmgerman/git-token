@@ -243,6 +243,7 @@ end_function
 
 begin_function
 DECL|function|get_sha1_file
+specifier|static
 name|int
 name|get_sha1_file
 parameter_list|(
@@ -959,7 +960,7 @@ name|char
 modifier|*
 name|op
 init|=
-literal|0
+name|NULL
 decl_stmt|;
 specifier|const
 name|char
@@ -1177,7 +1178,7 @@ index|]
 operator|.
 name|name
 operator|=
-literal|0
+name|NULL
 expr_stmt|;
 name|op
 operator|=

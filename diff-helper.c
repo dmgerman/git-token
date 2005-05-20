@@ -542,7 +542,7 @@ name|new_sha1
 argument_list|,
 name|path
 argument_list|,
-literal|0
+name|NULL
 argument_list|)
 expr_stmt|;
 break|break;

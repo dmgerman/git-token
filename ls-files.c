@@ -983,7 +983,9 @@ DECL|function|show_killed_files
 specifier|static
 name|void
 name|show_killed_files
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 name|int
 name|i

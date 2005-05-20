@@ -17,6 +17,7 @@ end_comment
 
 begin_function
 DECL|function|show_commit
+specifier|static
 name|void
 name|show_commit
 parameter_list|(
@@ -145,6 +146,7 @@ end_comment
 
 begin_function
 DECL|function|show_unseen
+specifier|static
 name|void
 name|show_unseen
 parameter_list|(
@@ -213,6 +215,7 @@ end_function
 
 begin_function
 DECL|function|export
+specifier|static
 name|void
 name|export
 parameter_list|(
@@ -261,6 +264,7 @@ end_function
 
 begin_function
 DECL|function|get_commit
+specifier|static
 name|struct
 name|commit
 modifier|*

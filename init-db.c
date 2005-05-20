@@ -11,6 +11,7 @@ end_include
 
 begin_function
 DECL|function|safe_create_dir
+specifier|static
 name|void
 name|safe_create_dir
 parameter_list|(

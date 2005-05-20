@@ -11,6 +11,7 @@ end_include
 
 begin_decl_stmt
 DECL|variable|line_termination
+specifier|static
 name|int
 name|line_termination
 init|=
@@ -20,6 +21,7 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|recursive
+specifier|static
 name|int
 name|recursive
 init|=
@@ -375,7 +377,7 @@ argument_list|,
 operator|&
 name|size
 argument_list|,
-literal|0
+name|NULL
 argument_list|)
 expr_stmt|;
 if|if
