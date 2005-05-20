@@ -1496,7 +1496,7 @@ end_function
 begin_function
 DECL|function|read_sha1_reference
 specifier|static
-name|void
+name|int
 name|read_sha1_reference
 parameter_list|(
 specifier|const
@@ -1541,7 +1541,10 @@ name|fd
 operator|<
 literal|0
 condition|)
-return|return;
+return|return
+operator|-
+literal|1
+return|;
 name|len
 operator|=
 name|read
@@ -1567,7 +1570,10 @@ name|len
 operator|<
 literal|40
 condition|)
-return|return;
+return|return
+operator|-
+literal|1
+return|;
 if|if
 condition|(
 name|get_sha1_hex
@@ -1579,7 +1585,10 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-return|return;
+return|return
+operator|-
+literal|1
+return|;
 name|obj
 operator|=
 name|lookup_object
@@ -1587,6 +1596,21 @@ argument_list|(
 name|sha1
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|obj
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"%s: invalid sha1 pointer %.40s"
+argument_list|,
+name|path
+argument_list|,
+name|hexname
+argument_list|)
+return|;
 name|obj
 operator|->
 name|used
@@ -1600,6 +1624,9 @@ argument_list|,
 name|REACHABLE
 argument_list|)
 expr_stmt|;
+return|return
+literal|0
+return|;
 block|}
 end_function
 
