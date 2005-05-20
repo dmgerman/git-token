@@ -97,6 +97,19 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|int
+name|diff_scoreopt_parse
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|opt
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|void
 name|diff_setup
 parameter_list|(
@@ -108,6 +121,9 @@ name|minimum_score
 parameter_list|,
 name|int
 name|reverse
+parameter_list|,
+name|int
+name|raw_output
 parameter_list|,
 specifier|const
 name|char

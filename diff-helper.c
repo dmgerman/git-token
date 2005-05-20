@@ -37,6 +37,16 @@ literal|0
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|diff_score_opt
+specifier|static
+name|int
+name|diff_score_opt
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|parse_oneside_change
 specifier|static
@@ -122,6 +132,15 @@ literal|"\tblob\t"
 argument_list|,
 literal|6
 argument_list|)
+operator|&&
+name|strncmp
+argument_list|(
+name|cp
+argument_list|,
+literal|" blob "
+argument_list|,
+literal|6
+argument_list|)
 condition|)
 return|return
 operator|-
@@ -150,11 +169,17 @@ literal|40
 expr_stmt|;
 if|if
 condition|(
+operator|(
 operator|*
 name|cp
-operator|++
 operator|!=
 literal|'\t'
+operator|)
+operator|&&
+operator|*
+name|cp
+operator|!=
+literal|' '
 condition|)
 return|return
 operator|-
@@ -164,6 +189,7 @@ name|strcpy
 argument_list|(
 name|path
 argument_list|,
+operator|++
 name|cp
 argument_list|)
 expr_stmt|;
@@ -407,6 +433,15 @@ literal|"\tblob\t"
 argument_list|,
 literal|6
 argument_list|)
+operator|&&
+name|strncmp
+argument_list|(
+name|cp
+argument_list|,
+literal|" blob "
+argument_list|,
+literal|6
+argument_list|)
 condition|)
 return|return
 operator|-
@@ -471,11 +506,17 @@ literal|40
 expr_stmt|;
 if|if
 condition|(
+operator|(
 operator|*
 name|cp
-operator|++
 operator|!=
 literal|'\t'
+operator|)
+operator|&&
+operator|*
+name|cp
+operator|!=
+literal|' '
 condition|)
 return|return
 operator|-
@@ -485,6 +526,7 @@ name|strcpy
 argument_list|(
 name|path
 argument_list|,
+operator|++
 name|cp
 argument_list|)
 expr_stmt|;
@@ -626,10 +668,22 @@ index|]
 operator|==
 literal|'M'
 condition|)
+block|{
 name|detect_rename
 operator|=
 literal|1
 expr_stmt|;
+name|diff_score_opt
+operator|=
+name|diff_scoreopt_parse
+argument_list|(
+name|av
+index|[
+literal|1
+index|]
+argument_list|)
+expr_stmt|;
+block|}
 else|else
 name|usage
 argument_list|(
@@ -648,9 +702,12 @@ name|diff_setup
 argument_list|(
 name|detect_rename
 argument_list|,
-literal|0
+name|diff_score_opt
 argument_list|,
 name|reverse
+argument_list|,
+operator|-
+literal|1
 argument_list|,
 name|av
 operator|+
