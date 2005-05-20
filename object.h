@@ -50,6 +50,12 @@ name|used
 range|:
 literal|1
 decl_stmt|;
+DECL|member|delta
+name|unsigned
+name|delta
+range|:
+literal|1
+decl_stmt|;
 DECL|member|flags
 name|unsigned
 name|int
@@ -74,6 +80,12 @@ name|struct
 name|object_list
 modifier|*
 name|refs
+decl_stmt|;
+DECL|member|attached_deltas
+name|struct
+name|object_list
+modifier|*
+name|attached_deltas
 decl_stmt|;
 block|}
 struct|;
