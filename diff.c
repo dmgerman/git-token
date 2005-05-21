@@ -120,6 +120,16 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|pickaxe
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|pickaxe
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|minimum_score
 specifier|static
 name|int
@@ -2746,6 +2756,10 @@ parameter_list|,
 name|int
 name|minimum_score_
 parameter_list|,
+name|char
+modifier|*
+name|pickaxe_
+parameter_list|,
 name|int
 name|reverse_diff_
 parameter_list|,
@@ -2789,6 +2803,10 @@ condition|?
 else|:
 name|DEFAULT_MINIMUM_SCORE
 expr_stmt|;
+name|pickaxe
+operator|=
+name|pickaxe_
+expr_stmt|;
 block|}
 end_function
 
@@ -2804,7 +2822,7 @@ end_decl_stmt
 begin_function
 DECL|function|diff_queue
 name|struct
-name|diff_file_pair
+name|diff_filepair
 modifier|*
 name|diff_queue
 parameter_list|(
@@ -2825,7 +2843,7 @@ name|two
 parameter_list|)
 block|{
 name|struct
-name|diff_file_pair
+name|diff_filepair
 modifier|*
 name|dp
 init|=
@@ -2963,7 +2981,7 @@ name|void
 name|diff_flush_raw
 parameter_list|(
 name|struct
-name|diff_file_pair
+name|diff_filepair
 modifier|*
 name|p
 parameter_list|)
@@ -3151,7 +3169,7 @@ name|void
 name|diff_flush_patch
 parameter_list|(
 name|struct
-name|diff_file_pair
+name|diff_filepair
 modifier|*
 name|p
 parameter_list|)
@@ -3272,7 +3290,7 @@ modifier|*
 name|two
 parameter_list|)
 block|{
-comment|/* This function is written stricter than necessary to support 	 * the currently implemented transformers, but the idea is to 	 * let transformers to produce diff_file_pairs any way they want, 	 * and filter and clean them up here before producing the output. 	 */
+comment|/* This function is written stricter than necessary to support 	 * the currently implemented transformers, but the idea is to 	 * let transformers to produce diff_filepairs any way they want, 	 * and filter and clean them up here before producing the output. 	 */
 if|if
 condition|(
 operator|!
@@ -3389,7 +3407,7 @@ name|void
 name|diff_flush_one
 parameter_list|(
 name|struct
-name|diff_file_pair
+name|diff_filepair
 modifier|*
 name|p
 parameter_list|)
@@ -3460,6 +3478,17 @@ argument_list|,
 name|minimum_score
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|pickaxe
+condition|)
+name|diff_pickaxe
+argument_list|(
+name|q
+argument_list|,
+name|pickaxe
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|i
@@ -3502,7 +3531,7 @@ operator|++
 control|)
 block|{
 name|struct
-name|diff_file_pair
+name|diff_filepair
 modifier|*
 name|p
 init|=

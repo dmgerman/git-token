@@ -57,6 +57,17 @@ literal|1
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|pickaxe
+specifier|static
+name|char
+modifier|*
+name|pickaxe
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|parse_oneside_change
 specifier|static
@@ -624,7 +635,7 @@ name|char
 modifier|*
 name|diff_helper_usage
 init|=
-literal|"git-diff-helper [-z] [-R] [-M] [-C] paths..."
+literal|"git-diff-helper [-z] [-R] [-M] [-C] [-S<string>] paths..."
 decl_stmt|;
 end_decl_stmt
 
@@ -789,6 +800,30 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|av
+index|[
+literal|1
+index|]
+index|[
+literal|1
+index|]
+operator|==
+literal|'S'
+condition|)
+block|{
+name|pickaxe
+operator|=
+name|av
+index|[
+literal|1
+index|]
+operator|+
+literal|2
+expr_stmt|;
+block|}
 else|else
 name|usage
 argument_list|(
@@ -808,6 +843,8 @@ argument_list|(
 name|detect_rename
 argument_list|,
 name|diff_score_opt
+argument_list|,
+name|pickaxe
 argument_list|,
 name|reverse
 argument_list|,

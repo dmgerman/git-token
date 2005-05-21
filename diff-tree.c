@@ -128,6 +128,17 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|pickaxe
+specifier|static
+name|char
+modifier|*
+name|pickaxe
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|header
 specifier|static
 specifier|const
@@ -1681,6 +1692,8 @@ name|detect_rename
 argument_list|,
 name|diff_score_opt
 argument_list|,
+name|pickaxe
+argument_list|,
 name|reverse_diff
 argument_list|,
 operator|(
@@ -1751,6 +1764,8 @@ argument_list|(
 name|detect_rename
 argument_list|,
 name|diff_score_opt
+argument_list|,
+name|pickaxe
 argument_list|,
 name|reverse_diff
 argument_list|,
@@ -2593,7 +2608,7 @@ name|char
 modifier|*
 name|diff_tree_usage
 init|=
-literal|"git-diff-tree [-p] [-r] [-z] [--stdin] [-M] [-C] [-R] [-m] [-s] [-v]<tree-ish><tree-ish>"
+literal|"git-diff-tree [-p] [-r] [-z] [--stdin] [-M] [-C] [-R] [-S<string>] [-m] [-s] [-v]<tree-ish><tree-ish>"
 decl_stmt|;
 end_decl_stmt
 
@@ -2763,6 +2778,27 @@ operator|=
 name|generate_patch
 operator|=
 literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strncmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"-S"
+argument_list|,
+literal|2
+argument_list|)
+condition|)
+block|{
+name|pickaxe
+operator|=
+name|arg
+operator|+
+literal|2
 expr_stmt|;
 continue|continue;
 block|}

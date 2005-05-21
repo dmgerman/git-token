@@ -190,9 +190,9 @@ function_decl|;
 end_function_decl
 
 begin_struct
-DECL|struct|diff_file_pair
+DECL|struct|diff_filepair
 struct|struct
-name|diff_file_pair
+name|diff_filepair
 block|{
 DECL|member|one
 name|struct
@@ -232,7 +232,7 @@ name|diff_queue_struct
 block|{
 DECL|member|queue
 name|struct
-name|diff_file_pair
+name|diff_filepair
 modifier|*
 modifier|*
 name|queue
@@ -252,7 +252,7 @@ end_struct
 begin_function_decl
 specifier|extern
 name|struct
-name|diff_file_pair
+name|diff_filepair
 modifier|*
 name|diff_queue
 parameter_list|(
@@ -283,6 +283,22 @@ parameter_list|,
 name|int
 parameter_list|,
 name|int
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|void
+name|diff_pickaxe
+parameter_list|(
+name|struct
+name|diff_queue_struct
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
 parameter_list|)
 function_decl|;
 end_function_decl

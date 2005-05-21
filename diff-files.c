@@ -23,7 +23,7 @@ name|char
 modifier|*
 name|diff_files_usage
 init|=
-literal|"git-diff-files [-p] [-q] [-r] [-z] [-M] [-C] [-R] [paths...]"
+literal|"git-diff-files [-p] [-q] [-r] [-z] [-M] [-C] [-R] [-S<string>] [paths...]"
 decl_stmt|;
 end_decl_stmt
 
@@ -72,6 +72,17 @@ DECL|variable|diff_score_opt
 specifier|static
 name|int
 name|diff_score_opt
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|pickaxe
+specifier|static
+name|char
+modifier|*
+name|pickaxe
 init|=
 literal|0
 decl_stmt|;
@@ -461,6 +472,29 @@ elseif|else
 if|if
 condition|(
 operator|!
+name|strcmp
+argument_list|(
+name|argv
+index|[
+literal|1
+index|]
+argument_list|,
+literal|"-S"
+argument_list|)
+condition|)
+name|pickaxe
+operator|=
+name|argv
+index|[
+literal|1
+index|]
+operator|+
+literal|2
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
 name|strncmp
 argument_list|(
 name|argv
@@ -564,6 +598,8 @@ argument_list|(
 name|detect_rename
 argument_list|,
 name|diff_score_opt
+argument_list|,
+name|pickaxe
 argument_list|,
 name|reverse_diff
 argument_list|,
