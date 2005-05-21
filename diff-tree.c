@@ -2472,10 +2472,18 @@ name|header
 operator|&&
 name|verbose_header
 condition|)
+block|{
 name|header_prefix
 operator|=
 literal|"\ndiff-tree "
 expr_stmt|;
+comment|/* 			 * Don't print multiple merge entries if we 			 * don't print the diffs. 			 */
+if|if
+condition|(
+name|silent
+condition|)
+break|break;
+block|}
 name|offset
 operator|+=
 literal|48
