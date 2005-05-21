@@ -783,6 +783,10 @@ if|if
 condition|(
 operator|!
 name|changed
+operator|&&
+name|detect_rename
+operator|<
+literal|2
 condition|)
 continue|continue;
 name|oldmode

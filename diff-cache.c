@@ -442,6 +442,10 @@ name|sha1
 argument_list|,
 literal|20
 argument_list|)
+operator|&&
+name|detect_rename
+operator|<
+literal|2
 condition|)
 return|return
 literal|0
