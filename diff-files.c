@@ -23,7 +23,7 @@ name|char
 modifier|*
 name|diff_files_usage
 init|=
-literal|"git-diff-files [-p] [-q] [-r] [-z] [-M] [-R] [paths...]"
+literal|"git-diff-files [-p] [-q] [-r] [-z] [-M] [-C] [-R] [paths...]"
 decl_stmt|;
 end_decl_stmt
 
@@ -486,6 +486,42 @@ argument_list|)
 expr_stmt|;
 name|detect_rename
 operator|=
+name|generate_patch
+operator|=
+literal|1
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|strncmp
+argument_list|(
+name|argv
+index|[
+literal|1
+index|]
+argument_list|,
+literal|"-C"
+argument_list|,
+literal|2
+argument_list|)
+condition|)
+block|{
+name|diff_score_opt
+operator|=
+name|diff_scoreopt_parse
+argument_list|(
+name|argv
+index|[
+literal|1
+index|]
+argument_list|)
+expr_stmt|;
+name|detect_rename
+operator|=
+literal|2
+expr_stmt|;
 name|generate_patch
 operator|=
 literal|1

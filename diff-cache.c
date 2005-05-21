@@ -728,7 +728,7 @@ name|char
 modifier|*
 name|diff_cache_usage
 init|=
-literal|"git-diff-cache [-p] [-r] [-z] [-m] [-M] [-R] [--cached]<tree-ish>"
+literal|"git-diff-cache [-p] [-r] [-z] [-m] [-M] [-C] [-R] [--cached]<tree-ish>"
 decl_stmt|;
 end_decl_stmt
 
@@ -838,6 +838,36 @@ operator|=
 name|detect_rename
 operator|=
 literal|1
+expr_stmt|;
+name|diff_score_opt
+operator|=
+name|diff_scoreopt_parse
+argument_list|(
+name|arg
+argument_list|)
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strncmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"-C"
+argument_list|,
+literal|2
+argument_list|)
+condition|)
+block|{
+name|generate_patch
+operator|=
+literal|1
+expr_stmt|;
+name|detect_rename
+operator|=
+literal|2
 expr_stmt|;
 name|diff_score_opt
 operator|=
