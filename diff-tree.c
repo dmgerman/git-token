@@ -130,11 +130,12 @@ end_decl_stmt
 begin_decl_stmt
 DECL|variable|pickaxe
 specifier|static
+specifier|const
 name|char
 modifier|*
 name|pickaxe
 init|=
-literal|0
+name|NULL
 decl_stmt|;
 end_decl_stmt
 
