@@ -328,6 +328,8 @@ decl_stmt|;
 name|unsigned
 name|long
 name|delta_size
+decl_stmt|,
+name|base_size
 decl_stmt|;
 name|int
 name|score
@@ -366,26 +368,38 @@ name|size
 operator|)
 operator|)
 expr_stmt|;
-comment|/* We would not consider rename followed by more than 	 * minimum_score/MAX_SCORE edits; that is, delta_size must be smaller 	 * than (src->size + dst->size)/2 * minimum_score/MAX_SCORE, 	 * which means... 	 */
-if|if
-condition|(
+name|base_size
+operator|=
+operator|(
 operator|(
 name|src
 operator|->
 name|size
-operator|+
+operator|<
 name|dst
 operator|->
 name|size
 operator|)
+condition|?
+name|src
+operator|->
+name|size
+else|:
+name|dst
+operator|->
+name|size
+operator|)
+expr_stmt|;
+comment|/* We would not consider edits that change the file size so 	 * drastically.  delta_size must be smaller than 	 * minimum_score/MAX_SCORE * min(src->size, dst->size). 	 * Note that base_size == 0 case is handled here already 	 * and the final score computation below would not have a 	 * divide-by-zero issue. 	 */
+if|if
+condition|(
+name|base_size
 operator|*
 name|minimum_score
 operator|<
 name|delta_size
 operator|*
 name|MAX_SCORE
-operator|*
-literal|2
 condition|)
 return|return
 literal|0
@@ -414,12 +428,13 @@ operator|&
 name|delta_size
 argument_list|)
 expr_stmt|;
+comment|/* 	 * We currently punt here, but we may later end up parsing the 	 * delta to really assess the extent of damage.  A big consecutive 	 * remove would produce small delta_size that affects quite a 	 * big portion of the file. 	 */
 name|free
 argument_list|(
 name|delta
 argument_list|)
 expr_stmt|;
-comment|/* This "delta" is really xdiff with adler32 and all the 	 * overheads but it is a quick and dirty approximation. 	 * 	 * Now we will give some score to it.  100% edit gets 	 * 0 points and 0% edit gets MAX_SCORE points.  That is, every 	 * 1/MAX_SCORE edit gets 1 point penalty.  The amount of penalty is: 	 * 	 * (delta_size * 2 / (src->size + dst->size)) * MAX_SCORE 	 * 	 */
+comment|/* 	 * Now we will give some score to it.  100% edit gets 0 points 	 * and 0% edit gets MAX_SCORE points. 	 */
 name|score
 operator|=
 name|MAX_SCORE
@@ -427,19 +442,9 @@ operator|-
 operator|(
 name|MAX_SCORE
 operator|*
-literal|2
-operator|*
 name|delta_size
 operator|/
-operator|(
-name|src
-operator|->
-name|size
-operator|+
-name|dst
-operator|->
-name|size
-operator|)
+name|base_size
 operator|)
 expr_stmt|;
 if|if
@@ -1438,7 +1443,8 @@ name|score
 operator|<
 name|minimum_score
 condition|)
-continue|continue;
+break|break;
+comment|/* there is not any more diffs applicable. */
 name|record_rename_pair
 argument_list|(
 operator|&
