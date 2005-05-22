@@ -390,12 +390,16 @@ operator|->
 name|size
 operator|)
 expr_stmt|;
-comment|/* We would not consider edits that change the file size so 	 * drastically.  delta_size must be smaller than 	 * minimum_score/MAX_SCORE * min(src->size, dst->size). 	 * Note that base_size == 0 case is handled here already 	 * and the final score computation below would not have a 	 * divide-by-zero issue. 	 */
+comment|/* We would not consider edits that change the file size so 	 * drastically.  delta_size must be smaller than 	 * (MAX_SCORE-minimum_score)/MAX_SCORE * min(src->size, dst->size). 	 * Note that base_size == 0 case is handled here already 	 * and the final score computation below would not have a 	 * divide-by-zero issue. 	 */
 if|if
 condition|(
 name|base_size
 operator|*
+operator|(
+name|MAX_SCORE
+operator|-
 name|minimum_score
+operator|)
 operator|<
 name|delta_size
 operator|*
