@@ -879,6 +879,15 @@ name|dst_cnt
 decl_stmt|,
 name|src_cnt
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|minimum_score
+condition|)
+name|minimum_score
+operator|=
+name|DEFAULT_MINIMUM_SCORE
+expr_stmt|;
 name|outq
 operator|.
 name|queue
