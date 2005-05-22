@@ -106,13 +106,14 @@ range|:
 literal|1
 decl_stmt|;
 comment|/* if true, use sha1 and trust mode; 				  * if false, use the name and read from 				  * the filesystem. 				  */
-DECL|member|file_valid
-name|unsigned
-name|file_valid
-range|:
-literal|1
-decl_stmt|;
-comment|/* if false the file does not exist */
+DECL|macro|DIFF_FILE_VALID
+define|#
+directive|define
+name|DIFF_FILE_VALID
+parameter_list|(
+name|spec
+parameter_list|)
+value|(((spec)->mode) != 0)
 DECL|member|should_free
 name|unsigned
 name|should_free

@@ -22,12 +22,12 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|generate_patch
+DECL|variable|diff_output_format
 specifier|static
 name|int
-name|generate_patch
+name|diff_output_format
 init|=
-literal|0
+name|DIFF_FORMAT_HUMAN
 decl_stmt|;
 end_decl_stmt
 
@@ -38,16 +38,6 @@ name|int
 name|match_nonexisting
 init|=
 literal|0
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-DECL|variable|line_termination
-specifier|static
-name|int
-name|line_termination
-init|=
-literal|'\n'
 decl_stmt|;
 end_decl_stmt
 
@@ -830,9 +820,9 @@ literal|"-p"
 argument_list|)
 condition|)
 block|{
-name|generate_patch
+name|diff_output_format
 operator|=
-literal|1
+name|DIFF_FORMAT_PATCH
 expr_stmt|;
 continue|continue;
 block|}
@@ -849,8 +839,6 @@ literal|2
 argument_list|)
 condition|)
 block|{
-name|generate_patch
-operator|=
 name|detect_rename
 operator|=
 literal|1
@@ -877,10 +865,6 @@ literal|2
 argument_list|)
 condition|)
 block|{
-name|generate_patch
-operator|=
-literal|1
-expr_stmt|;
 name|detect_rename
 operator|=
 literal|2
@@ -905,9 +889,9 @@ literal|"-z"
 argument_list|)
 condition|)
 block|{
-name|line_termination
+name|diff_output_format
 operator|=
-literal|'\0'
+name|DIFF_FORMAT_MACHINE
 expr_stmt|;
 continue|continue;
 block|}
@@ -1012,14 +996,7 @@ name|diff_setup
 argument_list|(
 name|reverse_diff
 argument_list|,
-operator|(
-name|generate_patch
-condition|?
-operator|-
-literal|1
-else|:
-name|line_termination
-operator|)
+name|diff_output_format
 argument_list|)
 expr_stmt|;
 name|mark_merge_entries
