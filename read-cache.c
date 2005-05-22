@@ -89,7 +89,7 @@ argument_list|)
 expr_stmt|;
 ifdef|#
 directive|ifdef
-name|NSEC
+name|USE_NSEC
 name|ce
 operator|->
 name|ce_ctime
@@ -326,7 +326,7 @@ name|CTIME_CHANGED
 expr_stmt|;
 ifdef|#
 directive|ifdef
-name|NSEC
+name|USE_NSEC
 comment|/* 	 * nsec seems unreliable - not all filesystems support it, so 	 * as long as it is in the inode cache you get right nsec 	 * but after it gets flushed, you get zero nsec. 	 */
 if|if
 condition|(
@@ -404,17 +404,6 @@ if|if
 condition|(
 name|ce
 operator|->
-name|ce_dev
-operator|!=
-name|htonl
-argument_list|(
-name|st
-operator|->
-name|st_dev
-argument_list|)
-operator|||
-name|ce
-operator|->
 name|ce_ino
 operator|!=
 name|htonl
@@ -428,6 +417,29 @@ name|changed
 operator||=
 name|INODE_CHANGED
 expr_stmt|;
+ifdef|#
+directive|ifdef
+name|USE_STDEV
+comment|/* 	 * st_dev breaks on network filesystems where different 	 * clients will have different views of what "device" 	 * the filesystem is on 	 */
+if|if
+condition|(
+name|ce
+operator|->
+name|ce_dev
+operator|!=
+name|htonl
+argument_list|(
+name|st
+operator|->
+name|st_dev
+argument_list|)
+condition|)
+name|changed
+operator||=
+name|INODE_CHANGED
+expr_stmt|;
+endif|#
+directive|endif
 if|if
 condition|(
 name|ce
