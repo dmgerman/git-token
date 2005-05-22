@@ -1639,7 +1639,9 @@ DECL|function|call_diff_flush
 specifier|static
 name|int
 name|call_diff_flush
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 if|if
 condition|(

@@ -929,7 +929,7 @@ name|spec
 operator|->
 name|data
 operator|=
-literal|0
+name|NULL
 expr_stmt|;
 name|spec
 operator|->
@@ -1536,7 +1536,7 @@ name|s
 operator|->
 name|data
 operator|=
-literal|0
+name|NULL
 expr_stmt|;
 block|}
 end_function
@@ -2390,7 +2390,7 @@ block|}
 operator|*
 name|arg
 operator|=
-literal|0
+name|NULL
 expr_stmt|;
 name|execvp
 argument_list|(
@@ -2656,7 +2656,7 @@ name|dp
 operator|->
 name|xfrm_msg
 operator|=
-literal|0
+name|NULL
 expr_stmt|;
 name|dp
 operator|->
