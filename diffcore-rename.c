@@ -816,11 +816,6 @@ DECL|function|diff_detect_rename
 name|void
 name|diff_detect_rename
 parameter_list|(
-name|struct
-name|diff_queue_struct
-modifier|*
-name|q
-parameter_list|,
 name|int
 name|detect_rename
 parameter_list|,
@@ -828,6 +823,14 @@ name|int
 name|minimum_score
 parameter_list|)
 block|{
+name|struct
+name|diff_queue_struct
+modifier|*
+name|q
+init|=
+operator|&
+name|diff_queued_diff
+decl_stmt|;
 name|struct
 name|diff_queue_struct
 name|outq
