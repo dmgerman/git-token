@@ -207,21 +207,21 @@ name|diff_filespec
 modifier|*
 name|two
 decl_stmt|;
-DECL|member|xfrm_msg
-name|char
-modifier|*
-name|xfrm_msg
+DECL|member|score
+name|int
+name|score
 decl_stmt|;
+comment|/* only valid when one and two are different paths */
 DECL|member|orig_order
 name|int
 name|orig_order
 decl_stmt|;
 comment|/* the original order of insertion into the queue */
-DECL|member|xfrm_work
+DECL|member|rename_rank
 name|int
-name|xfrm_work
+name|rename_rank
 decl_stmt|;
-comment|/* for use by tramsformers, not by diffcore */
+comment|/* rename/copy dependency needs to enforce 			  * certain ordering of patches that later 			  * diffcore transformations should not break. 			  */
 block|}
 struct|;
 end_struct
@@ -237,6 +237,18 @@ parameter_list|)
 define|\
 value|(!DIFF_FILE_VALID((p)->one)&& !DIFF_FILE_VALID((p)->two))
 end_define
+
+begin_function_decl
+specifier|extern
+name|int
+name|diff_unmodified_pair
+parameter_list|(
+name|struct
+name|diff_filepair
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
 
 begin_struct
 DECL|struct|diff_queue_struct
@@ -310,11 +322,17 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|void
-name|diff_free_filepair
+name|int
+name|diff_needs_to_stay
 parameter_list|(
 name|struct
-name|diff_filepair
+name|diff_queue_struct
+modifier|*
+parameter_list|,
+name|int
+parameter_list|,
+name|struct
+name|diff_filespec
 modifier|*
 parameter_list|)
 function_decl|;
