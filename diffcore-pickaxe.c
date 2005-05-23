@@ -288,6 +288,12 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|!
+name|diff_unmodified_pair
+argument_list|(
+name|p
+argument_list|)
+operator|&&
 name|contains
 argument_list|(
 name|p
