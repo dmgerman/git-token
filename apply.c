@@ -1106,7 +1106,11 @@ name|len
 operator|<=
 literal|0
 condition|)
-break|break;
+name|die
+argument_list|(
+literal|"corrupt patch"
+argument_list|)
+expr_stmt|;
 name|printf
 argument_list|(
 literal|"applying fragment:\n%.*s\n\n"
