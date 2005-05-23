@@ -759,13 +759,11 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"%s%c"
+literal|"%s\n"
 argument_list|,
 name|sb1
 operator|.
 name|buf
-argument_list|,
-name|line_termination
 argument_list|)
 expr_stmt|;
 block|}
