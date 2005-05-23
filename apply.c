@@ -1600,8 +1600,7 @@ name|old_mode
 operator|=
 name|new_mode
 operator|=
-operator|-
-literal|1
+literal|0
 expr_stmt|;
 name|def_name
 operator|=
