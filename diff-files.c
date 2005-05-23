@@ -716,6 +716,8 @@ expr_stmt|;
 name|diff_flush
 argument_list|(
 name|diff_output_format
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 return|return

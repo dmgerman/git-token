@@ -222,6 +222,11 @@ name|int
 name|rename_rank
 decl_stmt|;
 comment|/* rename/copy dependency needs to enforce 			  * certain ordering of patches that later 			  * diffcore transformations should not break. 			  */
+DECL|member|status
+name|int
+name|status
+decl_stmt|;
+comment|/* M C R N D U (see Documentation/diff-format.txt) */
 block|}
 struct|;
 end_struct

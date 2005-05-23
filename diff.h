@@ -85,7 +85,7 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|void
-name|diff_guif
+name|diff_helper_input
 parameter_list|(
 name|unsigned
 name|mode1
@@ -109,6 +109,12 @@ specifier|const
 name|char
 modifier|*
 name|path1
+parameter_list|,
+name|int
+name|status
+parameter_list|,
+name|int
+name|score
 parameter_list|,
 specifier|const
 name|char
@@ -271,6 +277,9 @@ name|diff_flush
 parameter_list|(
 name|int
 name|output_style
+parameter_list|,
+name|int
+name|resolve_rename_copy
 parameter_list|)
 function_decl|;
 end_function_decl

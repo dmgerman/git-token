@@ -1676,6 +1676,8 @@ block|{
 name|diff_flush
 argument_list|(
 name|DIFF_FORMAT_NO_OUTPUT
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 return|return
@@ -1791,6 +1793,8 @@ block|}
 name|diff_flush
 argument_list|(
 name|diff_output_format
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 return|return
