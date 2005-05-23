@@ -1661,7 +1661,6 @@ if|if
 condition|(
 name|pickaxe
 condition|)
-block|{
 name|diffcore_pickaxe
 argument_list|(
 name|pickaxe
@@ -1683,7 +1682,6 @@ expr_stmt|;
 return|return
 literal|0
 return|;
-block|}
 block|}
 if|if
 condition|(
