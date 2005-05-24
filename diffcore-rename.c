@@ -27,6 +27,12 @@ directive|include
 file|"delta.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"count-delta.h"
+end_include
+
 begin_comment
 comment|/* Table of rename/copy destinations */
 end_comment
@@ -801,12 +807,44 @@ operator|&
 name|delta_size
 argument_list|)
 expr_stmt|;
-comment|/* 	 * We currently punt here, but we may later end up parsing the 	 * delta to really assess the extent of damage.  A big consecutive 	 * remove would produce small delta_size that affects quite a 	 * big portion of the file. 	 */
+comment|/* A delta that has a lot of literal additions would have 	 * big delta_size no matter what else it does. 	 */
+if|if
+condition|(
+name|minimum_score
+operator|<
+name|MAX_SCORE
+operator|*
+name|delta_size
+operator|/
+name|base_size
+condition|)
+return|return
+literal|0
+return|;
+comment|/* Estimate the edit size by interpreting delta. */
+name|delta_size
+operator|=
+name|count_delta
+argument_list|(
+name|delta
+argument_list|,
+name|delta_size
+argument_list|)
+expr_stmt|;
 name|free
 argument_list|(
 name|delta
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|delta_size
+operator|==
+name|UINT_MAX
+condition|)
+return|return
+literal|0
+return|;
 comment|/* 	 * Now we will give some score to it.  100% edit gets 0 points 	 * and 0% edit gets MAX_SCORE points. 	 */
 name|score
 operator|=
