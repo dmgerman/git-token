@@ -525,7 +525,7 @@ name|int
 name|score
 parameter_list|)
 block|{
-comment|/* 	 * These ranks are used to sort the final output, because there 	 * are certain dependencies: 	 * 	 *  1. rename/copy that depends on deleted ones. 	 *  2. deletions in the original. 	 *  3. rename/copy that depends on the pre-edit image of kept files. 	 *  4. additions, modifications and no-modifications in the original. 	 *  5. rename/copy that depends on the post-edit image of kept files 	 *     (note that we currently do not detect such rename/copy). 	 * 	 * The downstream diffcore transformers are free to reorder 	 * the entries as long as they keep file pairs that has the 	 * same p->one->path in earlier rename_rank to appear before 	 * later ones.  This ordering is used by the diff_flush() 	 * logic to tell renames from copies, and also used by the 	 * diffcore_prune() logic to omit unnecessary 	 * "no-modification" entries. 	 * 	 * To the final output routine, and in the diff-raw format 	 * output, a rename/copy that is based on a path that has a 	 * later entry that shares the same p->one->path and is not a 	 * deletion is a copy.  Otherwise it is a rename. 	 */
+comment|/* 	 * These ranks are used to sort the final output, because there 	 * are certain dependencies: 	 * 	 *  1. rename/copy that depends on deleted ones. 	 *  2. deletions in the original. 	 *  3. rename/copy that depends on the pre-edit image of kept files. 	 *  4. additions, modifications and no-modifications in the original. 	 *  5. rename/copy that depends on the post-edit image of kept files 	 *     (note that we currently do not detect such rename/copy). 	 * 	 * The downstream diffcore transformers are free to reorder 	 * the entries as long as they keep file pairs that has the 	 * same p->one->path in earlier rename_rank to appear before 	 * later ones. 	 * 	 * To the final output routine, and in the diff-raw format 	 * output, a rename/copy that is based on a path that has a 	 * later entry that shares the same p->one->path and is not a 	 * deletion is a copy.  Otherwise it is a rename. 	 */
 name|struct
 name|diff_filepair
 modifier|*
@@ -1092,7 +1092,7 @@ goto|goto
 name|cleanup
 goto|;
 comment|/* nothing to do */
-comment|/* We really want to cull the candidates list early 	 * with cheap tests in order to avoid doing deltas. 	 * 	 * With the current callers, we should not have already 	 * matched entries at this point, but it is nonetheless 	 * checked for sanity. 	 */
+comment|/* We really want to cull the candidates list early 	 * with cheap tests in order to avoid doing deltas. 	 */
 for|for
 control|(
 name|i
@@ -1109,21 +1109,6 @@ name|i
 operator|++
 control|)
 block|{
-if|if
-condition|(
-name|created
-operator|.
-name|s
-index|[
-name|i
-index|]
-operator|->
-name|xfrm_flags
-operator|&
-name|RENAME_DST_MATCHED
-condition|)
-continue|continue;
-comment|/* we have matched exactly already */
 for|for
 control|(
 name|h
@@ -1835,19 +1820,6 @@ argument_list|)
 condition|)
 block|{
 comment|/* deleted */
-if|if
-condition|(
-name|p
-operator|->
-name|one
-operator|->
-name|xfrm_flags
-operator|&
-name|RENAME_SRC_GONE
-condition|)
-empty_stmt|;
-comment|/* rename/copy deleted it already */
-else|else
 name|diff_queue
 argument_list|(
 name|q
@@ -1907,33 +1879,6 @@ operator|=
 name|p
 operator|->
 name|score
-expr_stmt|;
-comment|/* if we have a later entry that is a rename/copy 			 * that depends on p->one, then we copy here. 			 * otherwise we rename it. 			 */
-if|if
-condition|(
-operator|!
-name|diff_needs_to_stay
-argument_list|(
-operator|&
-name|outq
-argument_list|,
-name|i
-operator|+
-literal|1
-argument_list|,
-name|p
-operator|->
-name|one
-argument_list|)
-condition|)
-comment|/* this is the last one, so mark it as gone. 				 */
-name|p
-operator|->
-name|one
-operator|->
-name|xfrm_flags
-operator||=
-name|RENAME_SRC_GONE
 expr_stmt|;
 block|}
 else|else

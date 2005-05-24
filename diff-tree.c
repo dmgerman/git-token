@@ -1654,9 +1654,6 @@ argument_list|,
 name|diff_score_opt
 argument_list|)
 expr_stmt|;
-name|diffcore_prune
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|pickaxe

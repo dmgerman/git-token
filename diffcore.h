@@ -44,22 +44,6 @@ name|RENAME_DST_MATCHED
 value|01
 end_define
 
-begin_define
-DECL|macro|RENAME_SRC_GONE
-define|#
-directive|define
-name|RENAME_SRC_GONE
-value|02
-end_define
-
-begin_define
-DECL|macro|RENAME_SCORE_SHIFT
-define|#
-directive|define
-name|RENAME_SCORE_SHIFT
-value|8
-end_define
-
 begin_struct
 DECL|struct|diff_filespec
 struct|struct
