@@ -241,7 +241,7 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"export GIT_COMMITTER_DATE='%s'\n"
+literal|"export GIT_COMMITTER_DATE='+0000 %s'\n"
 argument_list|,
 name|date
 argument_list|)
@@ -262,7 +262,7 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"export GIT_AUTHOR_DATE='%s'\n"
+literal|"export GIT_AUTHOR_DATE='+0000 %s'\n"
 argument_list|,
 name|date
 argument_list|)
