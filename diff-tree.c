@@ -18,16 +18,6 @@ file|"diff.h"
 end_include
 
 begin_decl_stmt
-DECL|variable|silent
-specifier|static
-name|int
-name|silent
-init|=
-literal|0
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|variable|show_root_diff
 specifier|static
 name|int
@@ -579,11 +569,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|silent
-condition|)
-return|return;
-if|if
-condition|(
 name|recursive
 operator|&&
 name|S_ISDIR
@@ -966,13 +951,6 @@ return|return
 name|retval
 return|;
 block|}
-if|if
-condition|(
-name|silent
-condition|)
-return|return
-literal|0
-return|;
 name|diff_change
 argument_list|(
 name|mode1
@@ -2319,11 +2297,6 @@ operator|=
 literal|'\n'
 expr_stmt|;
 comment|/* Add _another_ EOLN if we are doing diff output */
-if|if
-condition|(
-operator|!
-name|silent
-condition|)
 name|this_header
 index|[
 name|offset
@@ -2574,11 +2547,6 @@ operator|=
 literal|"\ndiff-tree "
 expr_stmt|;
 comment|/* 			 * Don't print multiple merge entries if we 			 * don't print the diffs. 			 */
-if|if
-condition|(
-name|silent
-condition|)
-break|break;
 block|}
 name|offset
 operator|+=
@@ -3052,9 +3020,9 @@ literal|"-s"
 argument_list|)
 condition|)
 block|{
-name|silent
+name|diff_output_format
 operator|=
-literal|1
+name|DIFF_FORMAT_NO_OUTPUT
 expr_stmt|;
 continue|continue;
 block|}
