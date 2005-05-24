@@ -734,7 +734,7 @@ name|char
 modifier|*
 name|diff_cache_usage
 init|=
-literal|"git-diff-cache [-p] [-r] [-z] [-m] [-M] [-C] [-R] [-S<string>] [--cached]<tree-ish>"
+literal|"git-diff-cache [-p] [-r] [-z] [-m] [-M] [-C] [-R] [-S<string>] [--cached]<tree-ish> [<path>...]"
 decl_stmt|;
 end_decl_stmt
 
