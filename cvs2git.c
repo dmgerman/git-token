@@ -297,7 +297,7 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"git-read-tree -m HEAD\n"
+literal|"git-read-tree -m HEAD || exit 1\n"
 argument_list|)
 expr_stmt|;
 name|printf
@@ -328,6 +328,11 @@ literal|""
 else|:
 literal|"-p HEAD"
 decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|dst_branch
+decl_stmt|;
 name|printf
 argument_list|(
 literal|"tree=$(git-write-tree)\n"
@@ -347,9 +352,29 @@ argument_list|,
 name|cmit_parent
 argument_list|)
 expr_stmt|;
+name|dst_branch
+operator|=
+name|branch
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|dst_branch
+argument_list|,
+literal|"HEAD"
+argument_list|)
+condition|)
+name|dst_branch
+operator|=
+literal|"master"
+expr_stmt|;
 name|printf
 argument_list|(
-literal|"echo $commit> .git/HEAD\n"
+literal|"echo $commit> .git/refs/heads/'%s'\n"
+argument_list|,
+name|dst_branch
 argument_list|)
 expr_stmt|;
 operator|*
@@ -663,7 +688,7 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"co -p -r%s '%s'> '%s'\n"
+literal|"co -q -p -r%s '%s'> '%s'\n"
 argument_list|,
 name|version
 argument_list|,
