@@ -58,6 +58,16 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|show_tree_entry_in_recursive
+specifier|static
+name|int
+name|show_tree_entry_in_recursive
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|read_stdin
 specifier|static
 name|int
@@ -931,6 +941,25 @@ argument_list|,
 name|pathlen1
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|show_tree_entry_in_recursive
+condition|)
+name|diff_change
+argument_list|(
+name|mode1
+argument_list|,
+name|mode2
+argument_list|,
+name|sha1
+argument_list|,
+name|sha2
+argument_list|,
+name|base
+argument_list|,
+name|path1
+argument_list|)
+expr_stmt|;
 name|retval
 operator|=
 name|diff_tree_sha1
@@ -2725,7 +2754,7 @@ name|char
 modifier|*
 name|diff_tree_usage
 init|=
-literal|"git-diff-tree [-p] [-r] [-z] [--stdin] [-M] [-C] [-R] [-S<string>] [-m] [-s] [-v]<tree-ish><tree-ish>"
+literal|"git-diff-tree [-p] [-r] [-z] [--stdin] [-M] [-C] [-R] [-S<string>] [-m] [-s] [-v] [-t]<tree-ish><tree-ish>"
 decl_stmt|;
 end_decl_stmt
 
@@ -2859,6 +2888,25 @@ argument_list|)
 condition|)
 block|{
 name|recursive
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"-t"
+argument_list|)
+condition|)
+block|{
+name|recursive
+operator|=
+name|show_tree_entry_in_recursive
 operator|=
 literal|1
 expr_stmt|;
