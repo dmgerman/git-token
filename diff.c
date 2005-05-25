@@ -3694,6 +3694,7 @@ name|status
 operator|=
 literal|0
 expr_stmt|;
+comment|/* undecided */
 if|if
 condition|(
 name|DIFF_PAIR_UNMERGED
@@ -3740,7 +3741,13 @@ name|two
 argument_list|)
 condition|)
 block|{
-comment|/* Deletion record should be omitted if there 			 * is another entry that is a rename or a copy 			 * and it uses this one as the source.  Then we 			 * can say the other one is a rename. 			 */
+comment|/* Deletion record should be omitted if there 			 * are rename/copy entries using this one as 			 * the source.  Then we can say one of them 			 * is a rename and the rest are copies. 			 */
+name|p
+operator|->
+name|status
+operator|=
+literal|'D'
+expr_stmt|;
 for|for
 control|(
 name|j
@@ -3799,25 +3806,32 @@ operator|->
 name|path
 argument_list|)
 condition|)
-break|break;
-block|}
-if|if
-condition|(
-name|j
-operator|<
-name|q
-operator|->
-name|nr
-condition|)
-continue|continue;
-comment|/* has rename/copy */
+block|{
 name|p
 operator|->
 name|status
 operator|=
-literal|'D'
+literal|'X'
 expr_stmt|;
+break|break;
 block|}
+block|}
+block|}
+elseif|else
+if|if
+condition|(
+name|DIFF_PAIR_TYPE_CHANGED
+argument_list|(
+name|p
+argument_list|)
+condition|)
+name|p
+operator|->
+name|status
+operator|=
+literal|'T'
+expr_stmt|;
+comment|/* from this point on, we are dealing with a pair 		 * whose both sides are valid and of the same type, i.e. 		 * either in-place edit or rename/copy edit. 		 */
 elseif|else
 if|if
 condition|(
@@ -3837,7 +3851,7 @@ name|path
 argument_list|)
 condition|)
 block|{
-comment|/* See if there is somebody else anywhere that 			 * will keep the path (either modified or 			 * unmodified).  If so, we have to be a copy, 			 * not a rename.  In addition, if there is 			 * some other rename or copy that comes later 			 * than us that uses the same source, we 			 * cannot be a rename either. 			 */
+comment|/* See if there is somebody else anywhere that 			 * will keep the path (either modified or 			 * unmodified).  If so, we have to be a copy, 			 * not a rename.  In addition, if there is 			 * some other rename or copy that comes later 			 * than us that uses the same source, we 			 * have to be a copy, not a rename. 			 */
 for|for
 control|(
 name|j
@@ -3980,15 +3994,13 @@ operator|=
 literal|'M'
 expr_stmt|;
 else|else
-block|{
-comment|/* we do not need this one */
+comment|/* this is a "no-change" entry */
 name|p
 operator|->
 name|status
 operator|=
-literal|0
+literal|'X'
 expr_stmt|;
-block|}
 block|}
 name|diff_debug_queue
 argument_list|(
@@ -4086,13 +4098,21 @@ name|p
 operator|->
 name|status
 operator|==
-literal|0
+literal|'X'
 condition|)
+continue|continue;
+if|if
+condition|(
 name|p
 operator|->
 name|status
-operator|=
-literal|'?'
+operator|==
+literal|0
+condition|)
+name|die
+argument_list|(
+literal|"internal error in diff-resolve-rename-copy"
+argument_list|)
 expr_stmt|;
 switch|switch
 condition|(

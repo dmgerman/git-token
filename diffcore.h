@@ -217,6 +217,18 @@ define|\
 value|(!DIFF_FILE_VALID((p)->one)&& !DIFF_FILE_VALID((p)->two))
 end_define
 
+begin_define
+DECL|macro|DIFF_PAIR_TYPE_CHANGED
+define|#
+directive|define
+name|DIFF_PAIR_TYPE_CHANGED
+parameter_list|(
+name|p
+parameter_list|)
+define|\
+value|((S_IFMT& (p)->one->mode) != (S_IFMT& (p)->two->mode))
+end_define
+
 begin_function_decl
 specifier|extern
 name|int
