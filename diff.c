@@ -4088,7 +4088,12 @@ name|status
 operator|==
 literal|0
 condition|)
-continue|continue;
+name|p
+operator|->
+name|status
+operator|=
+literal|'?'
+expr_stmt|;
 switch|switch
 condition|(
 name|diff_output_style
