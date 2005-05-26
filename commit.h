@@ -73,7 +73,6 @@ modifier|*
 name|tree
 decl_stmt|;
 DECL|member|buffer
-specifier|const
 name|char
 modifier|*
 name|buffer
