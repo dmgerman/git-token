@@ -1456,7 +1456,7 @@ expr_stmt|;
 else|else
 name|printf
 argument_list|(
-literal|"%s%06o %s %d %s%c"
+literal|"%s%06o %s %d\t%s%c"
 argument_list|,
 name|ce_stage
 argument_list|(

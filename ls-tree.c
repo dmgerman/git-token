@@ -573,7 +573,7 @@ condition|)
 block|{
 name|printf
 argument_list|(
-literal|"%06o\t%s\t%s\t"
+literal|"%06o %s %s\t"
 argument_list|,
 name|mode
 argument_list|,
