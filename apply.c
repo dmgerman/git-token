@@ -1752,6 +1752,13 @@ break|break;
 block|}
 if|if
 condition|(
+name|second
+index|[
+name|len
+index|]
+operator|==
+literal|'\n'
+operator|&&
 operator|!
 name|memcmp
 argument_list|(
