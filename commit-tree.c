@@ -884,7 +884,7 @@ name|cmdate
 condition|)
 name|parse_date
 argument_list|(
-name|audate
+name|cmdate
 argument_list|,
 name|realdate
 argument_list|,
