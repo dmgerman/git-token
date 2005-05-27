@@ -1094,6 +1094,9 @@ argument_list|,
 literal|'/'
 argument_list|)
 decl_stmt|;
+name|int
+name|len
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -1106,6 +1109,12 @@ operator|=
 literal|0
 expr_stmt|;
 comment|/* first cut it at slash */
+name|len
+operator|=
+name|ep
+operator|-
+name|pathbuf
+expr_stmt|;
 name|pos
 operator|=
 name|cache_name_pos
@@ -1116,9 +1125,7 @@ name|htons
 argument_list|(
 name|create_ce_flags
 argument_list|(
-name|ep
-operator|-
-name|cp
+name|len
 argument_list|,
 name|stage
 argument_list|)
