@@ -810,13 +810,17 @@ expr_stmt|;
 comment|/* A delta that has a lot of literal additions would have 	 * big delta_size no matter what else it does. 	 */
 if|if
 condition|(
-name|minimum_score
-operator|<
-name|MAX_SCORE
-operator|*
-name|delta_size
-operator|/
 name|base_size
+operator|*
+operator|(
+name|MAX_SCORE
+operator|-
+name|minimum_score
+operator|)
+operator|<
+name|delta_size
+operator|*
+name|MAX_SCORE
 condition|)
 return|return
 literal|0
