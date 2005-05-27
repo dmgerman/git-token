@@ -645,10 +645,6 @@ DECL|member|score
 name|int
 name|score
 decl_stmt|;
-DECL|member|rank
-name|int
-name|rank
-decl_stmt|;
 block|}
 struct|;
 end_struct
