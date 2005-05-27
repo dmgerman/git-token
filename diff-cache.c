@@ -83,6 +83,16 @@ name|NULL
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|pickaxe_opts
+specifier|static
+name|int
+name|pickaxe_opts
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
 begin_comment
 comment|/* A file entry went away or appeared */
 end_comment
@@ -986,6 +996,23 @@ name|strcmp
 argument_list|(
 name|arg
 argument_list|,
+literal|"--pickaxe-all"
+argument_list|)
+condition|)
+block|{
+name|pickaxe_opts
+operator|=
+name|DIFF_PICKAXE_ALL
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
 literal|"-m"
 argument_list|)
 condition|)
@@ -1116,6 +1143,8 @@ condition|)
 name|diffcore_pickaxe
 argument_list|(
 name|pickaxe
+argument_list|,
+name|pickaxe_opts
 argument_list|)
 expr_stmt|;
 if|if
