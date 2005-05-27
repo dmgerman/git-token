@@ -21,16 +21,6 @@ directive|include
 file|"diff.h"
 end_include
 
-begin_include
-include|#
-directive|include
-file|"diffcore.h"
-end_include
-
-begin_comment
-comment|/* just for MAX_SCORE */
-end_comment
-
 begin_decl_stmt
 DECL|variable|pickaxe
 specifier|static
@@ -461,14 +451,6 @@ argument_list|,
 operator|&
 name|score
 argument_list|)
-expr_stmt|;
-name|score
-operator|=
-name|score
-operator|*
-name|MAX_SCORE
-operator|/
-literal|100
 expr_stmt|;
 if|if
 condition|(
