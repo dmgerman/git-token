@@ -757,11 +757,9 @@ index|[
 literal|0
 index|]
 condition|)
-name|fputs
+name|puts
 argument_list|(
 name|xfrm_msg
-argument_list|,
-name|stdout
 argument_list|)
 expr_stmt|;
 if|if
@@ -3314,7 +3312,7 @@ name|msg_
 argument_list|,
 literal|"similarity index %d%%\n"
 literal|"copy from %s\n"
-literal|"copy to %s\n"
+literal|"copy to %s"
 argument_list|,
 call|(
 name|int
@@ -3358,7 +3356,7 @@ name|msg_
 argument_list|,
 literal|"similarity index %d%%\n"
 literal|"rename old %s\n"
-literal|"rename new %s\n"
+literal|"rename new %s"
 argument_list|,
 call|(
 name|int
