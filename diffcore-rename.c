@@ -284,6 +284,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/* Table of rename/copy src files */
+end_comment
+
 begin_struct
 DECL|struct|diff_rename_src
 specifier|static
@@ -296,9 +300,9 @@ name|diff_filespec
 modifier|*
 name|one
 decl_stmt|;
-DECL|member|src_used
+DECL|member|src_stays
 name|unsigned
-name|src_used
+name|src_stays
 range|:
 literal|1
 decl_stmt|;
@@ -321,12 +325,12 @@ decl_stmt|;
 end_decl_stmt
 
 begin_function
-DECL|function|locate_rename_src
+DECL|function|register_rename_src
 specifier|static
 name|struct
 name|diff_rename_src
 modifier|*
-name|locate_rename_src
+name|register_rename_src
 parameter_list|(
 name|struct
 name|diff_filespec
@@ -334,7 +338,7 @@ modifier|*
 name|one
 parameter_list|,
 name|int
-name|insert_ok
+name|src_stays
 parameter_list|)
 block|{
 name|int
@@ -425,15 +429,6 @@ operator|+
 literal|1
 expr_stmt|;
 block|}
-comment|/* not found */
-if|if
-condition|(
-operator|!
-name|insert_ok
-condition|)
-return|return
-name|NULL
-return|;
 comment|/* insert to make it at "first" */
 if|if
 condition|(
@@ -515,9 +510,9 @@ index|[
 name|first
 index|]
 operator|.
-name|src_used
+name|src_stays
 operator|=
-literal|0
+name|src_stays
 expr_stmt|;
 return|return
 operator|&
@@ -1014,15 +1009,21 @@ operator|->
 name|score
 operator|=
 name|score
+condition|?
+else|:
+literal|1
 expr_stmt|;
+comment|/* make sure it is at least 1 */
+name|dp
+operator|->
+name|source_stays
+operator|=
 name|rename_src
 index|[
 name|src_index
 index|]
 operator|.
-name|src_used
-operator|=
-literal|1
+name|src_stays
 expr_stmt|;
 name|rename_dst
 index|[
@@ -1037,7 +1038,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * We sort the rename similarity matrix with the score, in descending  * order (more similar first).  */
+comment|/*  * We sort the rename similarity matrix with the score, in descending  * order (the most similar first).  */
 end_comment
 
 begin_function
@@ -1345,24 +1346,23 @@ operator|->
 name|two
 argument_list|)
 condition|)
-name|locate_rename_src
+name|register_rename_src
 argument_list|(
 name|p
 operator|->
 name|one
 argument_list|,
-literal|1
+literal|0
 argument_list|)
 expr_stmt|;
 elseif|else
 if|if
 condition|(
-literal|1
-operator|<
 name|detect_rename
+operator|==
+name|DIFF_DETECT_COPY
 condition|)
-comment|/* find copy, too */
-name|locate_rename_src
+name|register_rename_src
 argument_list|(
 name|p
 operator|->
@@ -1480,7 +1480,7 @@ operator|==
 name|rename_dst_nr
 condition|)
 goto|goto
-name|flush_rest
+name|cleanup
 goto|;
 name|num_create
 operator|=
@@ -1696,7 +1696,7 @@ operator|<
 name|minimum_score
 condition|)
 break|break;
-comment|/* there is not any more diffs applicable. */
+comment|/* there is no more usable pair. */
 name|record_rename_pair
 argument_list|(
 operator|&
@@ -1738,9 +1738,9 @@ operator|&
 name|renq
 argument_list|)
 expr_stmt|;
-name|flush_rest
+name|cleanup
 label|:
-comment|/* At this point, we have found some renames and copies and they 	 * are kept in renq.  The original list is still in *q. 	 * 	 * Scan the original list and move them into the outq; we will sort 	 * outq and swap it into the queue supplied to pass that to 	 * downstream, so we assign the sort keys in this loop. 	 * 	 * See comments at the top of record_rename_pair for numbers used 	 * to assign rename_rank. 	 */
+comment|/* At this point, we have found some renames and copies and they 	 * are kept in renq.  The original list is still in *q. 	 */
 name|outq
 operator|.
 name|queue
@@ -1786,20 +1786,6 @@ name|i
 index|]
 decl_stmt|;
 name|struct
-name|diff_rename_src
-modifier|*
-name|src
-init|=
-name|locate_rename_src
-argument_list|(
-name|p
-operator|->
-name|one
-argument_list|,
-literal|0
-argument_list|)
-decl_stmt|;
-name|struct
 name|diff_rename_dst
 modifier|*
 name|dst
@@ -1833,7 +1819,7 @@ operator|->
 name|pair
 condition|)
 block|{
-comment|/* renq has rename/copy already to produce 				 * this file, so we do not emit the creation 				 * record in the output. 				 */
+comment|/* renq has rename/copy to produce 				 * this file already, so we do not 				 * emit the creation record in the 				 * output. 				 */
 name|diff_q
 argument_list|(
 operator|&
@@ -1869,7 +1855,7 @@ argument_list|(
 name|p
 argument_list|)
 condition|)
-comment|/* all the other cases need to be recorded as is */
+comment|/* all the usual ones need to be kept */
 name|diff_q
 argument_list|(
 operator|&
@@ -1879,30 +1865,11 @@ name|p
 argument_list|)
 expr_stmt|;
 else|else
-block|{
-comment|/* unmodified pair needs to be recorded only if 			 * it is used as the source of rename/copy 			 */
-if|if
-condition|(
-name|src
-operator|&&
-name|src
-operator|->
-name|src_used
-condition|)
-name|diff_q
-argument_list|(
-operator|&
-name|outq
-argument_list|,
-name|p
-argument_list|)
-expr_stmt|;
-else|else
+comment|/* no need to keep unmodified pairs */
 name|pair_to_free
 operator|=
 name|p
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|pair_to_free
@@ -1947,8 +1914,6 @@ argument_list|,
 name|q
 argument_list|)
 expr_stmt|;
-name|cleanup
-label|:
 name|free
 argument_list|(
 name|rename_dst

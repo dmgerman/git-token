@@ -2761,6 +2761,12 @@ name|score
 operator|=
 literal|0
 expr_stmt|;
+name|dp
+operator|->
+name|source_stays
+operator|=
+literal|0
+expr_stmt|;
 name|diff_q
 argument_list|(
 name|queue
@@ -3635,7 +3641,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"score %d, status %c\n"
+literal|"score %d, status %c source_stays %d\n"
 argument_list|,
 name|p
 operator|->
@@ -3647,6 +3653,10 @@ name|status
 condition|?
 else|:
 literal|'?'
+argument_list|,
+name|p
+operator|->
+name|source_stays
 argument_list|)
 expr_stmt|;
 block|}
@@ -3769,7 +3779,6 @@ init|=
 operator|&
 name|diff_queued_diff
 decl_stmt|;
-comment|/* This should not depend on the ordering of things. */
 name|diff_debug_queue
 argument_list|(
 literal|"resolve-rename-copy"
@@ -3828,9 +3837,7 @@ condition|(
 operator|!
 name|DIFF_FILE_VALID
 argument_list|(
-operator|(
 name|p
-operator|)
 operator|->
 name|one
 argument_list|)
@@ -3847,21 +3854,13 @@ condition|(
 operator|!
 name|DIFF_FILE_VALID
 argument_list|(
-operator|(
 name|p
-operator|)
 operator|->
 name|two
 argument_list|)
 condition|)
 block|{
-comment|/* Deletion record should be omitted if there 			 * are rename/copy entries using this one as 			 * the source.  Then we can say one of them 			 * is a rename and the rest are copies. 			 */
-name|p
-operator|->
-name|status
-operator|=
-literal|'D'
-expr_stmt|;
+comment|/* Deleted entry may have been picked up by 			 * another rename-copy entry.  So we scan the 			 * queue and if we find one that uses us as the 			 * source we do not say delete for this entry. 			 */
 for|for
 control|(
 name|j
@@ -3892,35 +3891,25 @@ condition|(
 operator|!
 name|strcmp
 argument_list|(
-name|pp
+name|p
 operator|->
 name|one
 operator|->
 name|path
 argument_list|,
-name|p
+name|pp
 operator|->
 name|one
 operator|->
 name|path
 argument_list|)
 operator|&&
-name|strcmp
-argument_list|(
 name|pp
 operator|->
-name|one
-operator|->
-name|path
-argument_list|,
-name|pp
-operator|->
-name|two
-operator|->
-name|path
-argument_list|)
+name|score
 condition|)
 block|{
+comment|/* rename/copy are always valid 					 * so we do not say DIFF_FILE_VALID() 					 * on pp->one and pp->two. 					 */
 name|p
 operator|->
 name|status
@@ -3930,6 +3919,19 @@ expr_stmt|;
 break|break;
 block|}
 block|}
+if|if
+condition|(
+operator|!
+name|p
+operator|->
+name|status
+condition|)
+name|p
+operator|->
+name|status
+operator|=
+literal|'D'
+expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -3949,28 +3951,34 @@ comment|/* from this point on, we are dealing with a pair 		 * whose both sides 
 elseif|else
 if|if
 condition|(
-name|strcmp
-argument_list|(
 name|p
 operator|->
-name|one
-operator|->
-name|path
-argument_list|,
-name|p
-operator|->
-name|two
-operator|->
-name|path
-argument_list|)
+name|score
 condition|)
 block|{
-comment|/* See if there is somebody else anywhere that 			 * will keep the path (either modified or 			 * unmodified).  If so, we have to be a copy, 			 * not a rename.  In addition, if there is 			 * some other rename or copy that comes later 			 * than us that uses the same source, we 			 * have to be a copy, not a rename. 			 */
+if|if
+condition|(
+name|p
+operator|->
+name|source_stays
+condition|)
+block|{
+name|p
+operator|->
+name|status
+operator|=
+literal|'C'
+expr_stmt|;
+continue|continue;
+block|}
+comment|/* See if there is some other filepair that 			 * copies from the same source as us.  If so 			 * we are a copy.  Otherwise we are a rename. 			 */
 for|for
 control|(
 name|j
 operator|=
-literal|0
+name|i
+operator|+
+literal|1
 init|;
 name|j
 operator|<
@@ -4009,55 +4017,17 @@ name|path
 argument_list|)
 condition|)
 continue|continue;
+comment|/* not us */
 if|if
 condition|(
 operator|!
-name|strcmp
-argument_list|(
 name|pp
 operator|->
-name|one
-operator|->
-name|path
-argument_list|,
-name|pp
-operator|->
-name|two
-operator|->
-name|path
-argument_list|)
+name|score
 condition|)
-block|{
-if|if
-condition|(
-name|DIFF_FILE_VALID
-argument_list|(
-name|pp
-operator|->
-name|two
-argument_list|)
-condition|)
-block|{
-comment|/* non-delete */
-name|p
-operator|->
-name|status
-operator|=
-literal|'C'
-expr_stmt|;
-break|break;
-block|}
 continue|continue;
-block|}
-comment|/* pp is a rename/copy ... */
-if|if
-condition|(
-name|i
-operator|<
-name|j
-condition|)
-block|{
-comment|/* ... and comes later than us */
+comment|/* not a rename/copy */
+comment|/* pp is a rename/copy from the same source */
 name|p
 operator|->
 name|status
@@ -4065,7 +4035,6 @@ operator|=
 literal|'C'
 expr_stmt|;
 break|break;
-block|}
 block|}
 if|if
 condition|(
@@ -4120,12 +4089,11 @@ operator|=
 literal|'M'
 expr_stmt|;
 else|else
-comment|/* this is a "no-change" entry */
-name|p
-operator|->
-name|status
-operator|=
-literal|'X'
+comment|/* this is a "no-change" entry. 			 * should not happen anymore. 			 * p->status = 'X'; 			 */
+name|die
+argument_list|(
+literal|"internal error in diffcore: unmodified entry remains"
+argument_list|)
 expr_stmt|;
 block|}
 name|diff_debug_queue

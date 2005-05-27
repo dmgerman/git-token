@@ -192,12 +192,19 @@ modifier|*
 name|two
 decl_stmt|;
 DECL|member|score
+name|unsigned
+name|short
 name|int
 name|score
 decl_stmt|;
-comment|/* only valid when one and two are different paths */
+comment|/* only valid when one and two are 				   * different paths 				   */
+DECL|member|source_stays
+name|char
+name|source_stays
+decl_stmt|;
+comment|/* all of R/C are copies */
 DECL|member|status
-name|int
+name|char
 name|status
 decl_stmt|;
 comment|/* M C R N D U (see Documentation/diff-format.txt) */
