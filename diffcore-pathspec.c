@@ -377,7 +377,7 @@ name|p
 argument_list|)
 expr_stmt|;
 else|else
-name|free
+name|diff_free_filepair
 argument_list|(
 name|p
 argument_list|)

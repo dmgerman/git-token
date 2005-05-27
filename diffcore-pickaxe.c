@@ -332,7 +332,7 @@ name|outq
 operator|.
 name|nr
 condition|)
-name|free
+name|diff_free_filepair
 argument_list|(
 name|p
 argument_list|)
