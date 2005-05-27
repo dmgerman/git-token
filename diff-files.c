@@ -48,10 +48,10 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|reverse_diff
+DECL|variable|diff_setup_opt
 specifier|static
 name|int
-name|reverse_diff
+name|diff_setup_opt
 init|=
 literal|0
 decl_stmt|;
@@ -349,9 +349,9 @@ argument_list|,
 literal|"-R"
 argument_list|)
 condition|)
-name|reverse_diff
-operator|=
-literal|1
+name|diff_setup_opt
+operator||=
+name|DIFF_SETUP_REVERSE
 expr_stmt|;
 elseif|else
 if|if
@@ -474,7 +474,7 @@ expr_stmt|;
 block|}
 name|diff_setup
 argument_list|(
-name|reverse_diff
+name|diff_setup_opt
 argument_list|)
 expr_stmt|;
 for|for
