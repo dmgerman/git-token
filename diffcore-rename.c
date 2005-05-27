@@ -575,14 +575,49 @@ condition|(
 name|diff_populate_filespec
 argument_list|(
 name|src
+argument_list|,
+literal|1
 argument_list|)
 operator|||
 name|diff_populate_filespec
 argument_list|(
 name|dst
+argument_list|,
+literal|1
 argument_list|)
 condition|)
-comment|/* this is an error but will be caught downstream */
+return|return
+literal|0
+return|;
+if|if
+condition|(
+name|src
+operator|->
+name|size
+operator|!=
+name|dst
+operator|->
+name|size
+condition|)
+return|return
+literal|0
+return|;
+if|if
+condition|(
+name|diff_populate_filespec
+argument_list|(
+name|src
+argument_list|,
+literal|0
+argument_list|)
+operator|||
+name|diff_populate_filespec
+argument_list|(
+name|dst
+argument_list|,
+literal|0
+argument_list|)
+condition|)
 return|return
 literal|0
 return|;
@@ -664,7 +699,7 @@ name|int
 name|minimum_score
 parameter_list|)
 block|{
-comment|/* src points at a file that existed in the original tree (or 	 * optionally a file in the destination tree) and dst points 	 * at a newly created file.  They may be quite similar, in which 	 * case we want to say src is renamed to dst or src is copied into 	 * dst, and then some edit has been applied to dst. 	 * 	 * Compare them and return how similar they are, representing 	 * the score as an integer between 0 and 10000, except 	 * where they match exactly it is considered better than anything 	 * else. 	 */
+comment|/* src points at a file that existed in the original tree (or 	 * optionally a file in the destination tree) and dst points 	 * at a newly created file.  They may be quite similar, in which 	 * case we want to say src is renamed to dst or src is copied into 	 * dst, and then some edit has been applied to dst. 	 * 	 * Compare them and return how similar they are, representing 	 * the score as an integer between 0 and MAX_SCORE. 	 * 	 * When there is an exact match, it is considered a better 	 * match than anything else; the destination does not even 	 * call into this function in that case. 	 */
 name|void
 modifier|*
 name|delta
@@ -756,7 +791,7 @@ operator|->
 name|size
 operator|)
 expr_stmt|;
-comment|/* We would not consider edits that change the file size so 	 * drastically.  delta_size must be smaller than 	 * (MAX_SCORE-minimum_score)/MAX_SCORE * min(src->size, dst->size). 	 * Note that base_size == 0 case is handled here already 	 * and the final score computation below would not have a 	 * divide-by-zero issue. 	 */
+comment|/* We would not consider edits that change the file size so 	 * drastically.  delta_size must be smaller than 	 * (MAX_SCORE-minimum_score)/MAX_SCORE * min(src->size, dst->size). 	 * 	 * Note that base_size == 0 case is handled here already 	 * and the final score computation below would not have a 	 * divide-by-zero issue. 	 */
 if|if
 condition|(
 name|base_size
@@ -774,6 +809,26 @@ condition|)
 return|return
 literal|0
 return|;
+if|if
+condition|(
+name|diff_populate_filespec
+argument_list|(
+name|src
+argument_list|,
+literal|0
+argument_list|)
+operator|||
+name|diff_populate_filespec
+argument_list|(
+name|dst
+argument_list|,
+literal|0
+argument_list|)
+condition|)
+return|return
+literal|0
+return|;
+comment|/* error but caught downstream */
 name|delta
 operator|=
 name|diff_delta

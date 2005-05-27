@@ -158,6 +158,22 @@ name|DIFF_SETUP_REVERSE
 value|1
 end_define
 
+begin_define
+DECL|macro|DIFF_SETUP_USE_CACHE
+define|#
+directive|define
+name|DIFF_SETUP_USE_CACHE
+value|2
+end_define
+
+begin_define
+DECL|macro|DIFF_SETUP_USE_SIZE_CACHE
+define|#
+directive|define
+name|DIFF_SETUP_USE_SIZE_CACHE
+value|4
+end_define
+
 begin_function_decl
 specifier|extern
 name|void
