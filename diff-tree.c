@@ -1689,15 +1689,6 @@ return|;
 block|}
 if|if
 condition|(
-name|nr_paths
-condition|)
-name|diffcore_pathspec
-argument_list|(
-name|paths
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
 name|header
 condition|)
 block|{
