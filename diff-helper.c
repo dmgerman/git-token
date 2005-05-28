@@ -94,6 +94,11 @@ name|struct
 name|strbuf
 name|sb
 decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|garbage_flush_format
+decl_stmt|;
 name|strbuf_init
 argument_list|(
 operator|&
@@ -190,6 +195,18 @@ name|av
 operator|++
 expr_stmt|;
 block|}
+name|garbage_flush_format
+operator|=
+operator|(
+name|line_termination
+operator|==
+literal|0
+operator|)
+condition|?
+literal|"%s"
+else|:
+literal|"%s\n"
+expr_stmt|;
 comment|/* the remaining parameters are paths patterns */
 name|diff_setup
 argument_list|(
@@ -713,7 +730,7 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"%s\n"
+name|garbage_flush_format
 argument_list|,
 name|sb
 operator|.
