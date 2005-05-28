@@ -367,7 +367,7 @@ elseif|else
 if|if
 condition|(
 operator|!
-name|strcmp
+name|strncmp
 argument_list|(
 name|argv
 index|[
@@ -375,6 +375,8 @@ literal|1
 index|]
 argument_list|,
 literal|"-S"
+argument_list|,
+literal|2
 argument_list|)
 condition|)
 name|pickaxe

@@ -973,11 +973,13 @@ block|}
 if|if
 condition|(
 operator|!
-name|strcmp
+name|strncmp
 argument_list|(
 name|arg
 argument_list|,
 literal|"-S"
+argument_list|,
+literal|2
 argument_list|)
 condition|)
 block|{
