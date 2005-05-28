@@ -21,12 +21,6 @@ directive|include
 file|"diffcore.h"
 end_include
 
-begin_include
-include|#
-directive|include
-file|"delta.h"
-end_include
-
 begin_struct
 DECL|struct|path_spec
 struct|struct

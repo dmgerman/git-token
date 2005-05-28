@@ -24,12 +24,6 @@ end_include
 begin_include
 include|#
 directive|include
-file|"delta.h"
-end_include
-
-begin_include
-include|#
-directive|include
 file|"count-delta.h"
 end_include
 
