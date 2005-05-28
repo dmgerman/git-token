@@ -381,6 +381,18 @@ return|return
 name|UINT_MAX
 return|;
 comment|/* delete size is what was _not_ copied from source. 	 * edit size is that and literal additions. 	 */
+if|if
+condition|(
+name|src_size
+operator|+
+name|added_literal
+operator|<
+name|copied_from_source
+condition|)
+comment|/* we ended up overcounting and underflowed */
+return|return
+literal|0
+return|;
 return|return
 operator|(
 name|src_size
