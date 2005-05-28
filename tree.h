@@ -84,6 +84,12 @@ DECL|member|item
 block|}
 name|item
 union|;
+DECL|member|parent
+name|struct
+name|tree_entry_list
+modifier|*
+name|parent
+decl_stmt|;
 block|}
 struct|;
 end_struct
