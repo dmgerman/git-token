@@ -4278,9 +4278,10 @@ operator|->
 name|path
 argument_list|)
 operator|&&
+name|DIFF_PAIR_RENAME
+argument_list|(
 name|pp
-operator|->
-name|score
+argument_list|)
 condition|)
 block|{
 comment|/* rename/copy are always valid 					 * so we do not say DIFF_FILE_VALID() 					 * on pp->one and pp->two. 					 */
@@ -4325,9 +4326,10 @@ comment|/* from this point on, we are dealing with a pair 		 * whose both sides 
 elseif|else
 if|if
 condition|(
+name|DIFF_PAIR_RENAME
+argument_list|(
 name|p
-operator|->
-name|score
+argument_list|)
 condition|)
 block|{
 if|if
@@ -4395,9 +4397,10 @@ comment|/* not us */
 if|if
 condition|(
 operator|!
+name|DIFF_PAIR_RENAME
+argument_list|(
 name|pp
-operator|->
-name|score
+argument_list|)
 condition|)
 continue|continue;
 comment|/* not a rename/copy */

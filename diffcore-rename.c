@@ -1064,11 +1064,7 @@ operator|->
 name|score
 operator|=
 name|score
-condition|?
-else|:
-literal|1
 expr_stmt|;
-comment|/* make sure it is at least 1 */
 name|dp
 operator|->
 name|source_stays
