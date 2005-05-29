@@ -482,11 +482,13 @@ name|status
 operator|==
 literal|'C'
 condition|)
-block|{
 name|two_paths
 operator|=
 literal|1
 expr_stmt|;
+comment|/* pick up score if exists */
+if|if
+condition|(
 name|sscanf
 argument_list|(
 name|cp
@@ -496,12 +498,13 @@ argument_list|,
 operator|&
 name|score
 argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|line_termination
+operator|!=
+literal|1
 condition|)
-block|{
+name|score
+operator|=
+literal|0
+expr_stmt|;
 name|cp
 operator|=
 name|strchr
@@ -517,8 +520,6 @@ operator|!
 name|cp
 condition|)
 break|break;
-block|}
-block|}
 if|if
 condition|(
 operator|*
