@@ -93,6 +93,17 @@ literal|0
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|diff_break_opt
+specifier|static
+name|int
+name|diff_break_opt
+init|=
+operator|-
+literal|1
+decl_stmt|;
+end_decl_stmt
+
 begin_comment
 comment|/* A file entry went away or appeared */
 end_comment
@@ -891,6 +902,28 @@ name|strncmp
 argument_list|(
 name|arg
 argument_list|,
+literal|"-B"
+argument_list|,
+literal|2
+argument_list|)
+condition|)
+block|{
+name|diff_break_opt
+operator|=
+name|diff_scoreopt_parse
+argument_list|(
+name|arg
+argument_list|)
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strncmp
+argument_list|(
+name|arg
+argument_list|,
 literal|"-M"
 argument_list|,
 literal|2
@@ -1130,6 +1163,9 @@ expr_stmt|;
 name|diffcore_std
 argument_list|(
 name|pathspec
+condition|?
+else|:
+name|NULL
 argument_list|,
 name|detect_rename
 argument_list|,
@@ -1138,6 +1174,8 @@ argument_list|,
 name|pickaxe
 argument_list|,
 name|pickaxe_opts
+argument_list|,
+name|diff_break_opt
 argument_list|)
 expr_stmt|;
 name|diff_flush

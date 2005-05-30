@@ -1177,13 +1177,20 @@ literal|1
 index|]
 operator|!=
 literal|'C'
+operator|&&
+name|opt
+index|[
+literal|1
+index|]
+operator|!=
+literal|'B'
 operator|)
 condition|)
 return|return
 operator|-
 literal|1
 return|;
-comment|/* that is not a -M nor -C option */
+comment|/* that is not a -M, -C nor -B option */
 name|diglen
 operator|=
 name|strspn
@@ -1308,7 +1315,7 @@ name|minimum_score
 condition|)
 name|minimum_score
 operator|=
-name|DEFAULT_MINIMUM_SCORE
+name|DEFAULT_RENAME_SCORE
 expr_stmt|;
 name|renq
 operator|.
@@ -1930,7 +1937,46 @@ name|two
 argument_list|)
 condition|)
 block|{
-comment|/* 			 * Deletion 			 * 			 * We would output this delete record if renq 			 * does not have a rename/copy to move 			 * p->one->path out. 			 */
+comment|/* 			 * Deletion 			 * 			 * We would output this delete record if: 			 * 			 * (1) this is a broken delete and the counterpart 			 *     broken create remains in the output; or 			 * (2) this is not a broken delete, and renq does 			 *     not have a rename/copy to move p->one->path 			 *     out. 			 * 			 * Otherwise, the counterpart broken create 			 * has been turned into a rename-edit; or 			 * delete did not have a matching create to 			 * begin with. 			 */
+if|if
+condition|(
+name|DIFF_PAIR_BROKEN
+argument_list|(
+name|p
+argument_list|)
+condition|)
+block|{
+comment|/* broken delete */
+name|struct
+name|diff_rename_dst
+modifier|*
+name|dst
+init|=
+name|locate_rename_dst
+argument_list|(
+name|p
+operator|->
+name|one
+argument_list|,
+literal|0
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|dst
+operator|&&
+name|dst
+operator|->
+name|pair
+condition|)
+comment|/* counterpart is now rename/copy */
+name|pair_to_free
+operator|=
+name|p
+expr_stmt|;
+block|}
+else|else
+block|{
 for|for
 control|(
 name|j
@@ -1983,6 +2029,7 @@ name|pair_to_free
 operator|=
 name|p
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|pair_to_free

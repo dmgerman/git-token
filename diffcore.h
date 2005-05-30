@@ -25,16 +25,34 @@ DECL|macro|MAX_SCORE
 define|#
 directive|define
 name|MAX_SCORE
-value|10000
+value|60000
 end_define
 
 begin_define
-DECL|macro|DEFAULT_MINIMUM_SCORE
+DECL|macro|DEFAULT_RENAME_SCORE
 define|#
 directive|define
-name|DEFAULT_MINIMUM_SCORE
-value|5000
+name|DEFAULT_RENAME_SCORE
+value|30000
 end_define
+
+begin_comment
+DECL|macro|DEFAULT_RENAME_SCORE
+comment|/* rename/copy similarity minimum (50%) */
+end_comment
+
+begin_define
+DECL|macro|DEFAULT_BREAK_SCORE
+define|#
+directive|define
+name|DEFAULT_BREAK_SCORE
+value|59400
+end_define
+
+begin_comment
+DECL|macro|DEFAULT_BREAK_SCORE
+comment|/* minimum for break to happen (99%)*/
+end_comment
 
 begin_define
 DECL|macro|RENAME_DST_MATCHED
@@ -199,16 +217,24 @@ name|short
 name|int
 name|score
 decl_stmt|;
-DECL|member|source_stays
-name|char
-name|source_stays
-decl_stmt|;
-comment|/* all of R/C are copies */
 DECL|member|status
 name|char
 name|status
 decl_stmt|;
 comment|/* M C R N D U (see Documentation/diff-format.txt) */
+DECL|member|source_stays
+name|unsigned
+name|source_stays
+range|:
+literal|1
+decl_stmt|;
+comment|/* all of R/C are copies */
+DECL|member|broken_pair
+name|unsigned
+name|broken_pair
+range|:
+literal|1
+decl_stmt|;
 block|}
 struct|;
 end_struct
@@ -234,6 +260,18 @@ parameter_list|(
 name|p
 parameter_list|)
 value|(strcmp((p)->one->path, (p)->two->path))
+end_define
+
+begin_define
+DECL|macro|DIFF_PAIR_BROKEN
+define|#
+directive|define
+name|DIFF_PAIR_BROKEN
+parameter_list|(
+name|p
+parameter_list|)
+define|\
+value|( (!DIFF_FILE_VALID((p)->one) != !DIFF_FILE_VALID((p)->two))&& \ 	  ((p)->broken_pair != 0) )
 end_define
 
 begin_define
