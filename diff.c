@@ -2225,6 +2225,7 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|/* Even though we may sometimes borrow the 			 * contents from the work tree, we always want 			 * one->mode.  mode is trustworthy even when 			 * !(one->sha1_valid), as long as 			 * DIFF_FILE_VALID(one). 			 */
 name|sprintf
 argument_list|(
 name|temp
@@ -2233,14 +2234,9 @@ name|mode
 argument_list|,
 literal|"%06o"
 argument_list|,
-name|S_IFREG
-operator||
-name|ce_permissions
-argument_list|(
-name|st
-operator|.
-name|st_mode
-argument_list|)
+name|one
+operator|->
+name|mode
 argument_list|)
 expr_stmt|;
 block|}
