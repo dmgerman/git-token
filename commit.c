@@ -665,7 +665,9 @@ end_function
 
 begin_function
 DECL|function|commit_list_insert
-name|void
+name|struct
+name|commit_list
+modifier|*
 name|commit_list_insert
 parameter_list|(
 name|struct
@@ -712,6 +714,9 @@ name|list_p
 operator|=
 name|new_list
 expr_stmt|;
+return|return
+name|new_list
+return|;
 block|}
 end_function
 
