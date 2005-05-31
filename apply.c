@@ -505,19 +505,11 @@ block|}
 end_function
 
 begin_define
-DECL|macro|TERM_EXIST
-define|#
-directive|define
-name|TERM_EXIST
-value|1
-end_define
-
-begin_define
 DECL|macro|TERM_SPACE
 define|#
 directive|define
 name|TERM_SPACE
-value|2
+value|1
 end_define
 
 begin_define
@@ -525,7 +517,7 @@ DECL|macro|TERM_TAB
 define|#
 directive|define
 name|TERM_TAB
-value|4
+value|2
 end_define
 
 begin_function
@@ -579,23 +571,6 @@ name|TERM_TAB
 operator|)
 condition|)
 return|return
-literal|0
-return|;
-comment|/* 	 * Do we want an existing name? Return false and 	 * continue if it's not there. 	 */
-if|if
-condition|(
-name|terminate
-operator|&
-name|TERM_EXIST
-condition|)
-return|return
-name|cache_name_pos
-argument_list|(
-name|name
-argument_list|,
-name|namelen
-argument_list|)
-operator|>=
 literal|0
 return|;
 return|return
@@ -913,8 +888,6 @@ name|NULL
 argument_list|,
 name|p_value
 argument_list|,
-name|TERM_EXIST
-operator||
 name|TERM_SPACE
 operator||
 name|TERM_TAB
@@ -939,8 +912,6 @@ name|NULL
 argument_list|,
 name|p_value
 argument_list|,
-name|TERM_EXIST
-operator||
 name|TERM_SPACE
 operator||
 name|TERM_TAB
@@ -956,8 +927,6 @@ name|name
 argument_list|,
 name|p_value
 argument_list|,
-name|TERM_EXIST
-operator||
 name|TERM_SPACE
 operator||
 name|TERM_TAB
