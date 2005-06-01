@@ -4544,12 +4544,26 @@ operator|=
 literal|'M'
 expr_stmt|;
 else|else
-comment|/* this is a "no-change" entry. 			 * should not happen anymore. 			 * p->status = 'X'; 			 */
-name|die
+block|{
+comment|/* This is a "no-change" entry and should not 			 * happen anymore, but prepare for broken callers. 			 */
+name|error
 argument_list|(
-literal|"internal error in diffcore: unmodified entry remains"
+literal|"feeding unmodified %s to diffcore"
+argument_list|,
+name|p
+operator|->
+name|one
+operator|->
+name|path
 argument_list|)
 expr_stmt|;
+name|p
+operator|->
+name|status
+operator|=
+literal|'X'
+expr_stmt|;
+block|}
 block|}
 name|diff_debug_queue
 argument_list|(

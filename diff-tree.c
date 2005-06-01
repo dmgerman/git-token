@@ -387,6 +387,10 @@ argument_list|,
 literal|' '
 argument_list|)
 decl_stmt|;
+name|unsigned
+name|int
+name|mode
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -404,7 +408,8 @@ name|tree
 argument_list|,
 literal|"%o"
 argument_list|,
-name|modep
+operator|&
+name|mode
 argument_list|)
 operator|!=
 literal|1
@@ -420,6 +425,14 @@ operator|=
 name|path
 operator|+
 literal|1
+expr_stmt|;
+operator|*
+name|modep
+operator|=
+name|DIFF_FILE_CANON_MODE
+argument_list|(
+name|mode
+argument_list|)
 expr_stmt|;
 return|return
 name|sha1
