@@ -195,6 +195,32 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|unsigned
+name|long
+name|pretty_print_commit
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|msg
+parameter_list|,
+name|unsigned
+name|long
+name|len
+parameter_list|,
+name|char
+modifier|*
+name|buf
+parameter_list|,
+name|unsigned
+name|long
+name|space
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/** Removes the first commit from a list sorted by date, and adds all  * of its parents.  **/
 end_comment
