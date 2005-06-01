@@ -386,6 +386,10 @@ name|char
 modifier|*
 name|dst_branch
 decl_stmt|;
+name|char
+modifier|*
+name|space
+decl_stmt|;
 name|int
 name|i
 decl_stmt|;
@@ -507,6 +511,40 @@ argument_list|(
 literal|"echo $commit> .git/refs/heads/'%s'\n"
 argument_list|,
 name|dst_branch
+argument_list|)
+expr_stmt|;
+name|space
+operator|=
+name|strchr
+argument_list|(
+name|tag
+argument_list|,
+literal|' '
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|space
+condition|)
+operator|*
+name|space
+operator|=
+literal|0
+expr_stmt|;
+if|if
+condition|(
+name|strcmp
+argument_list|(
+name|tag
+argument_list|,
+literal|"(none)"
+argument_list|)
+condition|)
+name|printf
+argument_list|(
+literal|"echo $commit> .git/refs/tags/'%s'\n"
+argument_list|,
+name|tag
 argument_list|)
 expr_stmt|;
 name|printf
