@@ -63,6 +63,17 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
+comment|/* Set to zero to skip the check for delta object base. */
+end_comment
+
+begin_decl_stmt
+specifier|extern
+name|int
+name|get_delta
+decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|/* Set to be verbose */
 end_comment
 

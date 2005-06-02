@@ -993,6 +993,23 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|int
+name|sha1_delta_base
+parameter_list|(
+specifier|const
+name|unsigned
+name|char
+modifier|*
+parameter_list|,
+name|unsigned
+name|char
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|void
 modifier|*
 name|unpack_sha1_file

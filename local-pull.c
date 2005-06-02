@@ -476,7 +476,7 @@ name|char
 modifier|*
 name|local_pull_usage
 init|=
-literal|"git-local-pull [-c] [-t] [-a] [-l] [-s] [-n] [-v] commit-id path"
+literal|"git-local-pull [-c] [-t] [-a] [-l] [-s] [-n] [-v] [-d] commit-id path"
 decl_stmt|;
 end_decl_stmt
 
@@ -556,6 +556,23 @@ condition|)
 name|get_history
 operator|=
 literal|1
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|argv
+index|[
+name|arg
+index|]
+index|[
+literal|1
+index|]
+operator|==
+literal|'d'
+condition|)
+name|get_delta
+operator|=
+literal|0
 expr_stmt|;
 elseif|else
 if|if
