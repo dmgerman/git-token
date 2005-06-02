@@ -972,6 +972,27 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|int
+name|parse_sha1_header
+parameter_list|(
+name|char
+modifier|*
+name|hdr
+parameter_list|,
+name|char
+modifier|*
+name|type
+parameter_list|,
+name|unsigned
+name|long
+modifier|*
+name|sizep
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|void
 modifier|*
 name|unpack_sha1_file
