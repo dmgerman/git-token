@@ -114,13 +114,12 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * NOTE.  We do not _interpret_ delta fully.  As an approximation, we  * just count the number of bytes that are copied from the source, and  * the number of literal data bytes that are inserted.  Number of  * bytes that are _not_ copied from the source is deletion, and number  * of inserted literal bytes are addition, so sum of them is what we  * return.  xdelta can express an edit that copies data inside of the  * destination which originally came from the source.  We do not count  * that in the following routine, so we are undercounting the source  * material that remains in the final output that way.  */
+comment|/*  * NOTE.  We do not _interpret_ delta fully.  As an approximation, we  * just count the number of bytes that are copied from the source, and  * the number of literal data bytes that are inserted.  *  * Number of bytes that are _not_ copied from the source is deletion,  * and number of inserted literal bytes are addition, so sum of them  * is the extent of damage.  xdelta can express an edit that copies  * data inside of the destination which originally came from the  * source.  We do not count that in the following routine, so we are  * undercounting the source material that remains in the final output  * that way.  */
 end_comment
 
 begin_function
 DECL|function|count_delta
-name|unsigned
-name|long
+name|int
 name|count_delta
 parameter_list|(
 name|void
@@ -130,6 +129,16 @@ parameter_list|,
 name|unsigned
 name|long
 name|delta_size
+parameter_list|,
+name|unsigned
+name|long
+modifier|*
+name|src_copied
+parameter_list|,
+name|unsigned
+name|long
+modifier|*
+name|literal_added
 parameter_list|)
 block|{
 name|unsigned
@@ -167,7 +176,8 @@ operator|<
 literal|6
 condition|)
 return|return
-name|UINT_MAX
+operator|-
+literal|1
 return|;
 name|data
 operator|=
@@ -378,29 +388,22 @@ operator|!=
 name|dst_size
 condition|)
 return|return
-name|UINT_MAX
+operator|-
+literal|1
 return|;
 comment|/* delete size is what was _not_ copied from source. 	 * edit size is that and literal additions. 	 */
-if|if
-condition|(
-name|src_size
-operator|+
-name|added_literal
-operator|<
+operator|*
+name|src_copied
+operator|=
 name|copied_from_source
-condition|)
-comment|/* we ended up overcounting and underflowed */
+expr_stmt|;
+operator|*
+name|literal_added
+operator|=
+name|added_literal
+expr_stmt|;
 return|return
 literal|0
-return|;
-return|return
-operator|(
-name|src_size
-operator|-
-name|copied_from_source
-operator|)
-operator|+
-name|added_literal
 return|;
 block|}
 end_function
