@@ -366,7 +366,7 @@ expr_stmt|;
 name|write_if_needed
 argument_list|()
 expr_stmt|;
-if|if
+while|while
 condition|(
 name|offset
 condition|)
