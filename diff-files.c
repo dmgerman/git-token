@@ -23,7 +23,7 @@ name|char
 modifier|*
 name|diff_files_usage
 init|=
-literal|"git-diff-files [-p] [-q] [-r] [-z] [-M] [-C] [-R] [-S<string>] [paths...]"
+literal|"git-diff-files [-p] [-q] [-r] [-z] [-M] [-C] [-R] [-S<string>] [-O<orderfile>] [paths...]"
 decl_stmt|;
 end_decl_stmt
 
