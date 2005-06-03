@@ -20,6 +20,10 @@ begin_comment
 comment|/* This header file is internal between diff.c and its diff transformers  * (e.g. diffcore-rename, diffcore-pickaxe).  Never include this header  * in anything else.  */
 end_comment
 
+begin_comment
+comment|/* We internally use unsigned short as the score value,  * and rely on an int capable to hold 32-bits.  -B can take  * -Bmerge_score/break_score format and the two scores are  * passed around in one int (high 16-bit for merge and low 16-bit  * for break).  */
+end_comment
+
 begin_define
 DECL|macro|MAX_SCORE
 define|#
@@ -52,6 +56,32 @@ end_define
 begin_comment
 DECL|macro|DEFAULT_BREAK_SCORE
 comment|/* minimum for break to happen (99%)*/
+end_comment
+
+begin_define
+DECL|macro|DEFAULT_MERGE_SCORE
+define|#
+directive|define
+name|DEFAULT_MERGE_SCORE
+value|48000
+end_define
+
+begin_comment
+DECL|macro|DEFAULT_MERGE_SCORE
+comment|/* maximum for break-merge to happen (80%)*/
+end_comment
+
+begin_define
+DECL|macro|MINIMUM_BREAK_SIZE
+define|#
+directive|define
+name|MINIMUM_BREAK_SIZE
+value|400
+end_define
+
+begin_comment
+DECL|macro|MINIMUM_BREAK_SIZE
+comment|/* do not break a file smaller than this */
 end_comment
 
 begin_struct
@@ -416,6 +446,16 @@ name|int
 name|rename_copy
 parameter_list|,
 name|int
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|void
+name|diffcore_merge_broken
+parameter_list|(
+name|void
 parameter_list|)
 function_decl|;
 end_function_decl
