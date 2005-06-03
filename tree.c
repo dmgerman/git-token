@@ -502,6 +502,7 @@ name|tree
 modifier|*
 name|lookup_tree
 parameter_list|(
+specifier|const
 name|unsigned
 name|char
 modifier|*

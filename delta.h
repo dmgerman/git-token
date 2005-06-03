@@ -99,6 +99,7 @@ name|delta
 modifier|*
 name|lookup_delta
 parameter_list|(
+specifier|const
 name|unsigned
 name|char
 modifier|*

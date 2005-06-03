@@ -72,6 +72,7 @@ specifier|static
 name|int
 name|find_object
 parameter_list|(
+specifier|const
 name|unsigned
 name|char
 modifier|*
@@ -175,6 +176,7 @@ name|object
 modifier|*
 name|lookup_object
 parameter_list|(
+specifier|const
 name|unsigned
 name|char
 modifier|*
@@ -212,6 +214,7 @@ DECL|function|created_object
 name|void
 name|created_object
 parameter_list|(
+specifier|const
 name|unsigned
 name|char
 modifier|*
@@ -529,6 +532,7 @@ name|object
 modifier|*
 name|parse_object
 parameter_list|(
+specifier|const
 name|unsigned
 name|char
 modifier|*
