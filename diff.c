@@ -5073,9 +5073,10 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-literal|0
-operator|<=
 name|break_opt
+operator|!=
+operator|-
+literal|1
 condition|)
 name|diffcore_break
 argument_list|(
@@ -5095,9 +5096,10 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-literal|0
-operator|<=
 name|break_opt
+operator|!=
+operator|-
+literal|1
 condition|)
 name|diffcore_merge_broken
 argument_list|()
