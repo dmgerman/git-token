@@ -1209,6 +1209,9 @@ name|char
 modifier|*
 name|sha1
 parameter_list|,
+name|int
+name|find_only
+parameter_list|,
 name|unsigned
 name|long
 name|size
@@ -1240,6 +1243,8 @@ name|first
 condition|)
 block|{
 name|int
+name|cmp
+decl_stmt|,
 name|next
 init|=
 operator|(
@@ -1257,9 +1262,8 @@ index|[
 name|next
 index|]
 expr_stmt|;
-name|int
 name|cmp
-init|=
+operator|=
 name|memcmp
 argument_list|(
 name|e
@@ -1270,7 +1274,7 @@ name|sha1
 argument_list|,
 literal|20
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -1302,9 +1306,7 @@ block|}
 comment|/* not found */
 if|if
 condition|(
-name|size
-operator|==
-name|UINT_MAX
+name|find_only
 condition|)
 return|return
 name|NULL
@@ -1731,7 +1733,9 @@ name|s
 operator|->
 name|sha1
 argument_list|,
-name|UINT_MAX
+literal|1
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 if|if
@@ -1771,6 +1775,8 @@ argument_list|(
 name|s
 operator|->
 name|sha1
+argument_list|,
+literal|0
 argument_list|,
 name|s
 operator|->
