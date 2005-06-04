@@ -125,41 +125,6 @@ return|return
 literal|0
 return|;
 comment|/* error but caught downstream */
-name|delta_size
-operator|=
-operator|(
-operator|(
-name|src
-operator|->
-name|size
-operator|<
-name|dst
-operator|->
-name|size
-operator|)
-condition|?
-operator|(
-name|dst
-operator|->
-name|size
-operator|-
-name|src
-operator|->
-name|size
-operator|)
-else|:
-operator|(
-name|src
-operator|->
-name|size
-operator|-
-name|dst
-operator|->
-name|size
-operator|)
-operator|)
-expr_stmt|;
-comment|/* Notice that we use max of src and dst as the base size, 	 * unlike rename similarity detection.  This is so that we do 	 * not mistake a large addition as a complete rewrite. 	 */
 name|base_size
 operator|=
 operator|(
@@ -173,11 +138,11 @@ operator|->
 name|size
 operator|)
 condition|?
-name|dst
+name|src
 operator|->
 name|size
 else|:
-name|src
+name|dst
 operator|->
 name|size
 operator|)
@@ -247,12 +212,10 @@ name|size
 operator|<=
 name|src_copied
 condition|)
-name|delta_size
-operator|=
-literal|0
-expr_stmt|;
-comment|/* avoid wrapping around */
+empty_stmt|;
+comment|/* all copied, nothing removed */
 else|else
+block|{
 name|delta_size
 operator|=
 name|src
@@ -272,6 +235,7 @@ name|src
 operator|->
 name|size
 expr_stmt|;
+block|}
 comment|/* Extent of damage, which counts both inserts and 	 * deletes. 	 */
 if|if
 condition|(
@@ -506,6 +470,14 @@ argument_list|,
 operator|&
 name|score
 argument_list|)
+operator|&&
+name|MINIMUM_BREAK_SIZE
+operator|<=
+name|p
+operator|->
+name|one
+operator|->
+name|size
 condition|)
 block|{
 comment|/* Split this into delete and create */
@@ -525,21 +497,9 @@ decl_stmt|;
 comment|/* Set score to 0 for the pair that 				 * needs to be merged back together 				 * should they survive rename/copy. 				 * Also we do not want to break very 				 * small files. 				 */
 if|if
 condition|(
-operator|(
 name|score
 operator|<
 name|merge_score
-operator|)
-operator|||
-operator|(
-name|p
-operator|->
-name|one
-operator|->
-name|size
-operator|<
-name|MINIMUM_BREAK_SIZE
-operator|)
 condition|)
 name|score
 operator|=

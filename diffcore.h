@@ -50,12 +50,12 @@ DECL|macro|DEFAULT_BREAK_SCORE
 define|#
 directive|define
 name|DEFAULT_BREAK_SCORE
-value|59400
+value|30000
 end_define
 
 begin_comment
 DECL|macro|DEFAULT_BREAK_SCORE
-comment|/* minimum for break to happen (99%)*/
+comment|/* minimum for break to happen (50%)*/
 end_comment
 
 begin_define
