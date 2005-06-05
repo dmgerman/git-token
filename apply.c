@@ -2057,13 +2057,13 @@ name|gitdiff_copydst
 block|}
 block|,
 block|{
-literal|"rename from "
+literal|"rename old "
 block|,
 name|gitdiff_renamesrc
 block|}
 block|,
 block|{
-literal|"rename to "
+literal|"rename new "
 block|,
 name|gitdiff_renamedst
 block|}
@@ -2767,7 +2767,9 @@ name|new_name
 condition|)
 name|die
 argument_list|(
-literal|"git diff header lacks filename information"
+literal|"git diff header lacks filename information (line %d)"
+argument_list|,
+name|linenr
 argument_list|)
 expr_stmt|;
 operator|*
