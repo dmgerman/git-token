@@ -2069,6 +2069,18 @@ name|gitdiff_renamedst
 block|}
 block|,
 block|{
+literal|"rename from "
+block|,
+name|gitdiff_renamesrc
+block|}
+block|,
+block|{
+literal|"rename to "
+block|,
+name|gitdiff_renamedst
+block|}
+block|,
+block|{
 literal|"similarity index "
 block|,
 name|gitdiff_similarity

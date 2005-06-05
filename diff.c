@@ -4092,8 +4092,8 @@ argument_list|(
 name|msg_
 argument_list|,
 literal|"similarity index %d%%\n"
-literal|"rename old %s\n"
-literal|"rename new %s"
+literal|"rename from %s\n"
+literal|"rename to %s"
 argument_list|,
 call|(
 name|int
