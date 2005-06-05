@@ -63,7 +63,7 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
-comment|/* Set to zero to skip the check for delta object base. */
+comment|/* Set to zero to skip the check for delta object base;  * set to two to check delta dependency even for objects we already have.  */
 end_comment
 
 begin_decl_stmt

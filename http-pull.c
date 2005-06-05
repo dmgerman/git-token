@@ -627,6 +627,26 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|argv
+index|[
+name|arg
+index|]
+argument_list|,
+literal|"--recover"
+argument_list|)
+condition|)
+block|{
+name|get_delta
+operator|=
+literal|2
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
 name|argv
 index|[
 name|arg
@@ -685,7 +705,7 @@ condition|)
 block|{
 name|usage
 argument_list|(
-literal|"git-http-pull [-c] [-t] [-a] [-d] [-v] commit-id url"
+literal|"git-http-pull [-c] [-t] [-a] [-d] [-v] [--recover] commit-id url"
 argument_list|)
 expr_stmt|;
 return|return

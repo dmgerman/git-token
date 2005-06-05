@@ -41,6 +41,10 @@ literal|0
 decl_stmt|;
 end_decl_stmt
 
+begin_comment
+comment|/* 1 means "get delta", 2 means "really check delta harder */
+end_comment
+
 begin_decl_stmt
 DECL|variable|get_delta
 name|int
@@ -221,17 +225,18 @@ parameter_list|)
 block|{
 name|int
 name|status
+init|=
+literal|0
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|has_sha1_file
 argument_list|(
 name|sha1
 argument_list|)
 condition|)
-return|return
-literal|0
-return|;
+block|{
 name|status
 operator|=
 name|fetch
@@ -252,6 +257,17 @@ argument_list|,
 name|sha1
 argument_list|)
 expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|get_delta
+operator|<
+literal|2
+condition|)
+return|return
+literal|0
+return|;
 if|if
 condition|(
 name|get_delta
