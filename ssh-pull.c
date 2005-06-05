@@ -412,7 +412,7 @@ condition|)
 block|{
 name|usage
 argument_list|(
-literal|"git-rpull [-c] [-t] [-a] [-v] [-d] [--recover] commit-id url"
+literal|"git-ssh-pull [-c] [-t] [-a] [-v] [-d] [--recover] commit-id url"
 argument_list|)
 expr_stmt|;
 return|return
@@ -445,7 +445,7 @@ argument_list|,
 operator|&
 name|fd_out
 argument_list|,
-literal|"git-rpush"
+literal|"git-ssh-push"
 argument_list|,
 name|url
 argument_list|,
