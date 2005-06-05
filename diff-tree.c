@@ -192,6 +192,17 @@ literal|""
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|commit_format
+specifier|static
+name|enum
+name|cmit_fmt
+name|commit_format
+init|=
+name|CMIT_FMT_RAW
+decl_stmt|;
+end_decl_stmt
+
 begin_comment
 comment|// What paths are we interested in?
 end_comment
@@ -1986,6 +1997,8 @@ name|offset
 operator|+=
 name|pretty_print_commit
 argument_list|(
+name|commit_format
+argument_list|,
 name|msg
 argument_list|,
 name|len
