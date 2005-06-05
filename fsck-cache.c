@@ -1851,7 +1851,7 @@ end_function
 begin_function
 DECL|function|find_file_objects
 specifier|static
-name|void
+name|int
 name|find_file_objects
 parameter_list|(
 specifier|const
@@ -1941,7 +1941,9 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-return|return;
+return|return
+literal|0
+return|;
 comment|/* 	 * Recurse into directories 	 */
 if|if
 condition|(
@@ -1953,6 +1955,11 @@ name|st_mode
 argument_list|)
 condition|)
 block|{
+name|int
+name|count
+init|=
+literal|0
+decl_stmt|;
 name|DIR
 modifier|*
 name|dir
@@ -1998,6 +2005,8 @@ operator|==
 literal|'.'
 condition|)
 continue|continue;
+name|count
+operator|+=
 name|find_file_objects
 argument_list|(
 name|path
@@ -2014,7 +2023,9 @@ name|dir
 argument_list|)
 expr_stmt|;
 block|}
-return|return;
+return|return
+name|count
+return|;
 block|}
 if|if
 condition|(
@@ -2025,14 +2036,17 @@ operator|.
 name|st_mode
 argument_list|)
 condition|)
-block|{
+return|return
 name|read_sha1_reference
 argument_list|(
 name|path
 argument_list|)
-expr_stmt|;
-return|return;
-block|}
+operator|==
+literal|0
+return|;
+return|return
+literal|0
+return|;
 block|}
 end_function
 
@@ -2057,11 +2071,24 @@ condition|?
 else|:
 name|DEFAULT_GIT_DIR_ENVIRONMENT
 decl_stmt|;
+name|int
+name|count
+init|=
 name|find_file_objects
 argument_list|(
 name|git_dir
 argument_list|,
 literal|"refs"
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|count
+condition|)
+name|die
+argument_list|(
+literal|"No default references"
 argument_list|)
 expr_stmt|;
 block|}
