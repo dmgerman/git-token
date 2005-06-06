@@ -559,7 +559,7 @@ if|if
 condition|(
 name|nr
 operator|>
-literal|2
+literal|1
 operator|&&
 operator|(
 name|result
