@@ -603,6 +603,17 @@ begin_function_decl
 specifier|extern
 name|char
 modifier|*
+name|get_refs_directory
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|char
+modifier|*
 name|get_index_file
 parameter_list|(
 name|void
