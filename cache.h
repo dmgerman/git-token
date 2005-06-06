@@ -198,6 +198,37 @@ endif|#
 directive|endif
 end_endif
 
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|__GNUC__
+end_ifdef
+
+begin_define
+DECL|macro|NORETURN
+define|#
+directive|define
+name|NORETURN
+value|__attribute__((__noreturn__))
+end_define
+
+begin_else
+else|#
+directive|else
+end_else
+
+begin_define
+DECL|macro|NORETURN
+define|#
+directive|define
+name|NORETURN
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_comment
 comment|/*  * Environment variables transition.  * We accept older names for now but warn.  */
 end_comment
@@ -1252,33 +1283,35 @@ begin_comment
 comment|/* General helper functions */
 end_comment
 
-begin_function_decl
+begin_decl_stmt
 specifier|extern
 name|void
 name|usage
-parameter_list|(
+argument_list|(
 specifier|const
 name|char
-modifier|*
+operator|*
 name|err
-parameter_list|)
-function_decl|;
-end_function_decl
+argument_list|)
+name|NORETURN
+decl_stmt|;
+end_decl_stmt
 
-begin_function_decl
+begin_decl_stmt
 specifier|extern
 name|void
 name|die
-parameter_list|(
+argument_list|(
 specifier|const
 name|char
-modifier|*
+operator|*
 name|err
-parameter_list|,
-modifier|...
-parameter_list|)
-function_decl|;
-end_function_decl
+argument_list|,
+operator|...
+argument_list|)
+name|NORETURN
+decl_stmt|;
+end_decl_stmt
 
 begin_function_decl
 specifier|extern
