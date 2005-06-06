@@ -29,6 +29,50 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|fetch_ref
+parameter_list|(
+name|char
+modifier|*
+name|ref
+parameter_list|,
+name|unsigned
+name|char
+modifier|*
+name|sha1
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/** If set, the ref filename to write the target value to. **/
+end_comment
+
+begin_decl_stmt
+specifier|extern
+specifier|const
+name|char
+modifier|*
+name|write_ref
+decl_stmt|;
+end_decl_stmt
+
+begin_comment
+comment|/** If set, the hash that the current value of write_ref must be. **/
+end_comment
+
+begin_decl_stmt
+specifier|extern
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|current_ref
+decl_stmt|;
+end_decl_stmt
+
 begin_comment
 comment|/** Set to fetch the target tree. */
 end_comment
