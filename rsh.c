@@ -186,11 +186,11 @@ name|command
 argument_list|,
 name|COMMAND_SIZE
 argument_list|,
-literal|"cd /%s; %s=objects %s"
+literal|"%s='/%s' %s"
+argument_list|,
+name|GIT_DIR_ENVIRONMENT
 argument_list|,
 name|path
-argument_list|,
-name|DB_ENVIRONMENT
 argument_list|,
 name|remote_prog
 argument_list|)
