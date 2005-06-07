@@ -1252,7 +1252,7 @@ name|char
 modifier|*
 name|read_tree_usage
 init|=
-literal|"git-read-tree (<sha> | -m<sha1> [<sha2> [<sha3>]])"
+literal|"git-read-tree (<sha> | -m [-u]<sha1> [<sha2> [<sha3>]])"
 decl_stmt|;
 end_decl_stmt
 
@@ -1475,6 +1475,18 @@ name|stage
 operator|++
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|update
+operator|&&
+operator|!
+name|merge
+condition|)
+name|usage
+argument_list|(
+name|read_tree_usage
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|merge
