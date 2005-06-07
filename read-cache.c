@@ -774,7 +774,7 @@ name|ce
 operator|->
 name|name
 argument_list|,
-name|htons
+name|ntohs
 argument_list|(
 name|ce
 operator|->
@@ -1121,7 +1121,7 @@ name|cache_name_pos
 argument_list|(
 name|pathbuf
 argument_list|,
-name|htons
+name|ntohs
 argument_list|(
 name|create_ce_flags
 argument_list|(
@@ -1202,7 +1202,7 @@ name|cache_name_pos
 argument_list|(
 name|path
 argument_list|,
-name|htons
+name|ntohs
 argument_list|(
 name|create_ce_flags
 argument_list|(
@@ -1358,7 +1358,7 @@ name|ce
 operator|->
 name|name
 argument_list|,
-name|htons
+name|ntohs
 argument_list|(
 name|ce
 operator|->
@@ -1475,7 +1475,7 @@ name|ce
 operator|->
 name|name
 argument_list|,
-name|htons
+name|ntohs
 argument_list|(
 name|ce
 operator|->
