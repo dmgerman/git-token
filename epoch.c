@@ -9,23 +9,15 @@ directive|include
 file|<stdlib.h>
 end_include
 
+begin_comment
+comment|/* Provides arbitrary precision integers required to accurately represent  * fractional mass: */
+end_comment
+
 begin_include
 include|#
 directive|include
 file|<openssl/bn.h>
 end_include
-
-begin_comment
-comment|// provides arbitrary precision integers
-end_comment
-
-begin_comment
-comment|// required to accurately represent fractional
-end_comment
-
-begin_comment
-comment|//mass
-end_comment
 
 begin_include
 include|#
@@ -898,7 +890,7 @@ condition|)
 block|{
 name|die
 argument_list|(
-literal|"multiple attempts to initialize mass counter for %s\n"
+literal|"multiple attempts to initialize mass counter for %s"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -962,151 +954,7 @@ block|}
 end_function
 
 begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// Finds the base commit of a list of commits.
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// One property of the commit being searched for is that every commit reachable
-end_comment
-
-begin_comment
-comment|// from the base commit is reachable from the commits in the starting list only
-end_comment
-
-begin_comment
-comment|// via paths that include the base commit.
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// This algorithm uses a conservation of mass approach to find the base commit.
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// We start by injecting one unit of mass into the graph at each
-end_comment
-
-begin_comment
-comment|// of the commits in the starting list. Injecting mass into a commit
-end_comment
-
-begin_comment
-comment|// is achieved by adding to its pending mass counter and, if it is not already
-end_comment
-
-begin_comment
-comment|// enqueued, enqueuing the commit in a list of pending commits, in latest
-end_comment
-
-begin_comment
-comment|// commit date first order.
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// The algorithm then preceeds to visit each commit in the pending queue.
-end_comment
-
-begin_comment
-comment|// Upon each visit, the pending mass is added to the mass already seen for that
-end_comment
-
-begin_comment
-comment|// commit and then divided into N equal portions, where N is the number of
-end_comment
-
-begin_comment
-comment|// parents of the commit being visited. The divided portions are then injected
-end_comment
-
-begin_comment
-comment|// into each of the parents.
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// The algorithm continues until we discover a commit which has seen all the
-end_comment
-
-begin_comment
-comment|// mass originally injected or until we run out of things to do.
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// If we find a commit that has seen all the original mass, we have found
-end_comment
-
-begin_comment
-comment|// the common base of all the commits in the starting list.
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// The algorithm does _not_ depend on accurate timestamps for correct operation.
-end_comment
-
-begin_comment
-comment|// However, reasonably sane (e.g. non-random) timestamps are required in order
-end_comment
-
-begin_comment
-comment|// to prevent an exponential performance characteristic. The occasional
-end_comment
-
-begin_comment
-comment|// timestamp inaccuracy will not dramatically affect performance but may
-end_comment
-
-begin_comment
-comment|// result in more nodes being processed than strictly necessary.
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// This procedure sets *boundary to the address of the base commit. It returns
-end_comment
-
-begin_comment
-comment|// non-zero if, and only if, there was a problem parsing one of the
-end_comment
-
-begin_comment
-comment|// commits discovered during the traversal.
-end_comment
-
-begin_comment
-comment|//
+comment|/*  * Finds the base commit of a list of commits.  *  * One property of the commit being searched for is that every commit reachable  * from the base commit is reachable from the commits in the starting list only  * via paths that include the base commit.  *  * This algorithm uses a conservation of mass approach to find the base commit.  *  * We start by injecting one unit of mass into the graph at each  * of the commits in the starting list. Injecting mass into a commit  * is achieved by adding to its pending mass counter and, if it is not already  * enqueued, enqueuing the commit in a list of pending commits, in latest  * commit date first order.  *  * The algorithm then preceeds to visit each commit in the pending queue.  * Upon each visit, the pending mass is added to the mass already seen for that  * commit and then divided into N equal portions, where N is the number of  * parents of the commit being visited. The divided portions are then injected  * into each of the parents.  *  * The algorithm continues until we discover a commit which has seen all the  * mass originally injected or until we run out of things to do.  *  * If we find a commit that has seen all the original mass, we have found  * the common base of all the commits in the starting list.  *  * The algorithm does _not_ depend on accurate timestamps for correct operation.  * However, reasonably sane (e.g. non-random) timestamps are required in order  * to prevent an exponential performance characteristic. The occasional  * timestamp inaccuracy will not dramatically affect performance but may  * result in more nodes being processed than strictly necessary.  *  * This procedure sets *boundary to the address of the base commit. It returns  * non-zero if, and only if, there was a problem parsing one of the  * commits discovered during the traversal.  */
 end_comment
 
 begin_function
@@ -1146,11 +994,6 @@ name|pending
 init|=
 name|NULL
 decl_stmt|;
-operator|*
-name|boundary
-operator|=
-name|NULL
-expr_stmt|;
 name|struct
 name|fraction
 name|injected
@@ -1160,6 +1003,11 @@ argument_list|(
 operator|&
 name|injected
 argument_list|)
+expr_stmt|;
+operator|*
+name|boundary
+operator|=
+name|NULL
 expr_stmt|;
 for|for
 control|(
@@ -1193,7 +1041,7 @@ condition|)
 block|{
 name|die
 argument_list|(
-literal|"%s:%d:%s: logic error: this should not have happened - commit %s\n"
+literal|"%s:%d:%s: logic error: this should not have happened - commit %s"
 argument_list|,
 name|__FILE__
 argument_list|,
@@ -1294,6 +1142,9 @@ name|object
 operator|.
 name|util
 decl_stmt|;
+name|int
+name|num_parents
+decl_stmt|;
 if|if
 condition|(
 operator|(
@@ -1324,14 +1175,13 @@ operator|->
 name|pending
 argument_list|)
 expr_stmt|;
-name|int
 name|num_parents
-init|=
+operator|=
 name|count_parents
 argument_list|(
 name|latest
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
 name|num_parents
@@ -1453,7 +1303,6 @@ name|get_zero
 argument_list|()
 argument_list|)
 condition|)
-block|{
 name|insert_by_date
 argument_list|(
 operator|&
@@ -1462,7 +1311,6 @@ argument_list|,
 name|parent
 argument_list|)
 expr_stmt|;
-block|}
 name|add
 argument_list|(
 operator|&
@@ -1502,13 +1350,11 @@ operator|&
 name|injected
 argument_list|)
 condition|)
-block|{
 operator|*
 name|boundary
 operator|=
 name|latest
 expr_stmt|;
-block|}
 name|copy
 argument_list|(
 operator|&
@@ -1582,19 +1428,7 @@ block|}
 end_function
 
 begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// Finds the base of an minimal, non-linear epoch, headed at head, by
-end_comment
-
-begin_comment
-comment|// applying the find_base_for_list to a list consisting of the parents
-end_comment
-
-begin_comment
-comment|//
+comment|/*  * Finds the base of an minimal, non-linear epoch, headed at head, by  * applying the find_base_for_list to a list consisting of the parents  */
 end_comment
 
 begin_function
@@ -1681,35 +1515,7 @@ block|}
 end_function
 
 begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// This procedure traverses to the boundary of the first epoch in the epoch
-end_comment
-
-begin_comment
-comment|// sequence of the epoch headed at head_of_epoch. This is either the end of
-end_comment
-
-begin_comment
-comment|// the maximal linear epoch or the base of a minimal non-linear epoch.
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// The queue of pending nodes is sorted in reverse date order and each node
-end_comment
-
-begin_comment
-comment|// is currently in the queue at most once.
-end_comment
-
-begin_comment
-comment|//
+comment|/*  * This procedure traverses to the boundary of the first epoch in the epoch  * sequence of the epoch headed at head_of_epoch. This is either the end of  * the maximal linear epoch or the base of a minimal non-linear epoch.  *  * The queue of pending nodes is sorted in reverse date order and each node  * is currently in the queue at most once.  */
 end_comment
 
 begin_function
@@ -1762,8 +1568,7 @@ name|item
 argument_list|)
 condition|)
 block|{
-comment|// we are at the start of a maximimal linear epoch .. traverse to the end
-comment|// traverse to the end of a maximal linear epoch
+comment|/* 		 * We are at the start of a maximimal linear epoch. 		 * Traverse to the end. 		 */
 while|while
 condition|(
 name|HAS_EXACTLY_ONE_PARENT
@@ -1799,8 +1604,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// otherwise, we are at the start of a minimal, non-linear
-comment|// epoch - find the common base of all parents.
+comment|/* 		 * Otherwise, we are at the start of a minimal, non-linear 		 * epoch - find the common base of all parents. 		 */
 name|ret
 operator|=
 name|find_base
@@ -1818,15 +1622,7 @@ block|}
 end_function
 
 begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// Returns non-zero if parent is known to be a parent of child.
-end_comment
-
-begin_comment
-comment|//
+comment|/*  * Returns non-zero if parent is known to be a parent of child.  */
 end_comment
 
 begin_function
@@ -1910,23 +1706,7 @@ block|}
 end_function
 
 begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// Pushes an item onto the merge order stack. If the top of the stack is
-end_comment
-
-begin_comment
-comment|// marked as being a possible "break", we check to see whether it actually
-end_comment
-
-begin_comment
-comment|// is a break.
-end_comment
-
-begin_comment
-comment|//
+comment|/*  * Pushes an item onto the merge order stack. If the top of the stack is  * marked as being a possible "break", we check to see whether it actually  * is a break.  */
 end_comment
 
 begin_function
@@ -2008,39 +1788,7 @@ block|}
 end_function
 
 begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// Marks all interesting, visited commits reachable from this commit
-end_comment
-
-begin_comment
-comment|// as uninteresting. We stop recursing when we reach the epoch boundary,
-end_comment
-
-begin_comment
-comment|// an unvisited node or a node that has already been marking uninteresting.
-end_comment
-
-begin_comment
-comment|// This doesn't actually mark all ancestors between the start node and the
-end_comment
-
-begin_comment
-comment|// epoch boundary uninteresting, but does ensure that they will
-end_comment
-
-begin_comment
-comment|// eventually be marked uninteresting when the main sort_first_epoch
-end_comment
-
-begin_comment
-comment|// traversal eventually reaches them.
-end_comment
-
-begin_comment
-comment|//
+comment|/*  * Marks all interesting, visited commits reachable from this commit  * as uninteresting. We stop recursing when we reach the epoch boundary,  * an unvisited node or a node that has already been marking uninteresting.  *  * This doesn't actually mark all ancestors between the start node and the  * epoch boundary uninteresting, but does ensure that they will eventually  * be marked uninteresting when the main sort_first_epoch() traversal  * eventually reaches them.  */
 end_comment
 
 begin_function
@@ -2086,6 +1834,11 @@ name|flags
 operator|&
 name|UNINTERESTING
 decl_stmt|;
+name|struct
+name|commit_list
+modifier|*
+name|next
+decl_stmt|;
 name|commit
 operator|->
 name|object
@@ -2094,6 +1847,7 @@ name|flags
 operator||=
 name|UNINTERESTING
 expr_stmt|;
+comment|/* 	 * We only need to recurse if 	 *      we are not on the boundary and 	 *      we have not already been marked uninteresting and 	 *      we have already been visited. 	 * 	 * The main sort_first_epoch traverse will mark unreachable 	 * all uninteresting, unvisited parents as they are visited 	 * so there is no need to duplicate that traversal here. 	 * 	 * Similarly, if we are already marked uninteresting 	 * then either all ancestors have already been marked 	 * uninteresting or will be once the sort_first_epoch 	 * traverse reaches them. 	 */
 if|if
 condition|(
 name|uninteresting
@@ -2103,29 +1857,7 @@ operator|||
 operator|!
 name|visited
 condition|)
-block|{
 return|return;
-comment|// we only need to recurse if
-comment|//      we are not on the boundary, and,
-comment|//      we have not already been marked uninteresting, and,
-comment|//      we have already been visited.
-comment|//
-comment|// the main sort_first_epoch traverse will
-comment|// mark unreachable all uninteresting, unvisited parents
-comment|// as they are visited so there is no need to duplicate
-comment|// that traversal here.
-comment|//
-comment|// similarly, if we are already marked uninteresting
-comment|// then either all ancestors have already been marked
-comment|// uninteresting or will be once the sort_first_epoch
-comment|// traverse reaches them.
-comment|//
-block|}
-name|struct
-name|commit_list
-modifier|*
-name|next
-decl_stmt|;
 for|for
 control|(
 name|next
@@ -2153,19 +1885,7 @@ block|}
 end_function
 
 begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// Sorts the nodes of the first epoch of the epoch sequence of the epoch headed at head
-end_comment
-
-begin_comment
-comment|// into merge order.
-end_comment
-
-begin_comment
-comment|//
+comment|/*  * Sorts the nodes of the first epoch of the epoch sequence of the epoch headed at head  * into merge order.  */
 end_comment
 
 begin_function
@@ -2206,12 +1926,7 @@ name|flags
 operator||=
 name|VISITED
 expr_stmt|;
-comment|//
-comment|// parse_commit builds the parent list in reverse order with respect to the order of
-comment|// the git-commit-tree arguments.
-comment|//
-comment|// so we need to reverse this list to output the oldest (or most "local") commits last.
-comment|//
+comment|/* 	 * parse_commit() builds the parent list in reverse order with respect 	 * to the order of the git-commit-tree arguments. So we need to reverse 	 * this list to output the oldest (or most "local") commits last. 	 */
 for|for
 control|(
 name|parents
@@ -2238,14 +1953,7 @@ operator|&
 name|reversed_parents
 argument_list|)
 expr_stmt|;
-comment|//
-comment|// todo: by sorting the parents in a different order, we can alter the
-comment|// merge order to show contemporaneous changes in parallel branches
-comment|// occurring after "local" changes. This is useful for a developer
-comment|// when a developer wants to see all changes that were incorporated
-comment|// into the same merge as her own changes occur after her own
-comment|// changes.
-comment|//
+comment|/* 	 * TODO: By sorting the parents in a different order, we can alter the 	 * merge order to show contemporaneous changes in parallel branches 	 * occurring after "local" changes. This is useful for a developer 	 * when a developer wants to see all changes that were incorporated 	 * into the same merge as her own changes occur after her own 	 * changes. 	 */
 while|while
 condition|(
 name|reversed_parents
@@ -2273,12 +1981,7 @@ operator|&
 name|UNINTERESTING
 condition|)
 block|{
-comment|// propagates the uninteresting bit to
-comment|// all parents. if we have already visited
-comment|// this parent, then the uninteresting bit
-comment|// will be propagated to each reachable
-comment|// commit that is still not marked uninteresting
-comment|// and won't otherwise be reached.
+comment|/* 			 * Propagates the uninteresting bit to all parents. 			 * if we have already visited this parent, then 			 * the uninteresting bit will be propagated to each 			 * reachable commit that is still not marked 			 * uninteresting and won't otherwise be reached. 			 */
 name|mark_ancestors_uninteresting
 argument_list|(
 name|parent
@@ -2318,7 +2021,7 @@ condition|)
 block|{
 name|die
 argument_list|(
-literal|"something else is on the stack - %s\n"
+literal|"something else is on the stack - %s"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -2366,15 +2069,7 @@ condition|(
 name|reversed_parents
 condition|)
 block|{
-comment|//
-comment|// this indicates a possible discontinuity
-comment|// it may not be be actual discontinuity if
-comment|// the head of parent N happens to be the tail
-comment|// of parent N+1
-comment|//
-comment|// the next push onto the stack will resolve the
-comment|// question
-comment|//
+comment|/* 					 * This indicates a possible 					 * discontinuity it may not be be 					 * actual discontinuity if the head 					 * of parent N happens to be the tail 					 * of parent N+1. 					 * 					 * The next push onto the stack will 					 * resolve the question. 					 */
 operator|(
 operator|*
 name|stack
@@ -2403,31 +2098,7 @@ block|}
 end_function
 
 begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// Emit the contents of the stack.
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// The stack is freed and replaced by NULL.
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// Sets the return value to STOP if no further output should be generated.
-end_comment
-
-begin_comment
-comment|//
+comment|/*  * Emit the contents of the stack.  *  * The stack is freed and replaced by NULL.  *  * Sets the return value to STOP if no further output should be generated.  */
 end_comment
 
 begin_function
@@ -2492,7 +2163,6 @@ condition|(
 operator|*
 name|stack
 condition|)
-block|{
 name|action
 operator|=
 call|(
@@ -2503,7 +2173,6 @@ argument_list|(
 name|next
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 if|if
 condition|(
@@ -2544,31 +2213,7 @@ block|}
 end_function
 
 begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// Sorts an arbitrary epoch into merge order by sorting each epoch
-end_comment
-
-begin_comment
-comment|// of its epoch sequence into order.
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// Note: this algorithm currently leaves traces of its execution in the
-end_comment
-
-begin_comment
-comment|// object flags of nodes it discovers. This should probably be fixed.
-end_comment
-
-begin_comment
-comment|//
+comment|/*  * Sorts an arbitrary epoch into merge order by sorting each epoch  * of its epoch sequence into order.  *  * Note: this algorithm currently leaves traces of its execution in the  * object flags of nodes it discovers. This should probably be fixed.  */
 end_comment
 
 begin_function
@@ -2635,9 +2280,6 @@ name|base
 init|=
 name|NULL
 decl_stmt|;
-if|if
-condition|(
-operator|(
 name|ret
 operator|=
 name|find_next_epoch_boundary
@@ -2647,7 +2289,10 @@ argument_list|,
 operator|&
 name|base
 argument_list|)
-operator|)
+expr_stmt|;
+if|if
+condition|(
+name|ret
 condition|)
 return|return
 name|ret
@@ -2664,7 +2309,6 @@ if|if
 condition|(
 name|base
 condition|)
-block|{
 name|base
 operator|->
 name|object
@@ -2673,7 +2317,6 @@ name|flags
 operator||=
 name|BOUNDARY
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|HAS_EXACTLY_ONE_PARENT
@@ -2816,27 +2459,7 @@ block|}
 end_function
 
 begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// Sorts the nodes reachable from a starting list in merge order, we
-end_comment
-
-begin_comment
-comment|// first find the base for the starting list and then sort all nodes in this
-end_comment
-
-begin_comment
-comment|// subgraph using the sort_first_epoch algorithm. Once we have reached the base
-end_comment
-
-begin_comment
-comment|// we can continue sorting using sort_in_merge_order.
-end_comment
-
-begin_comment
-comment|//
+comment|/*  * Sorts the nodes reachable from a starting list in merge order, we  * first find the base for the starting list and then sort all nodes  * in this subgraph using the sort_first_epoch algorithm. Once we have  * reached the base we can continue sorting using sort_in_merge_order.  */
 end_comment
 
 begin_function
@@ -2978,8 +2601,7 @@ operator|->
 name|next
 condition|)
 block|{
-comment|// if there is only one element in the list, we can sort it using
-comment|// sort_in_merge_order.
+comment|/* 		 * If there is only one element in the list, we can sort it 		 * using sort_in_merge_order. 		 */
 name|base
 operator|=
 name|reversed
@@ -2989,10 +2611,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// otherwise, we search for the base of the list
-if|if
-condition|(
-operator|(
+comment|/* 		 * Otherwise, we search for the base of the list. 		 */
 name|ret
 operator|=
 name|find_base_for_list
@@ -3002,7 +2621,10 @@ argument_list|,
 operator|&
 name|base
 argument_list|)
-operator|)
+expr_stmt|;
+if|if
+condition|(
+name|ret
 condition|)
 return|return
 name|ret
@@ -3011,7 +2633,6 @@ if|if
 condition|(
 name|base
 condition|)
-block|{
 name|base
 operator|->
 name|object
@@ -3020,7 +2641,6 @@ name|flags
 operator||=
 name|BOUNDARY
 expr_stmt|;
-block|}
 while|while
 condition|(
 name|reversed
@@ -3043,16 +2663,7 @@ condition|(
 name|reversed
 condition|)
 block|{
-comment|//
-comment|// if we have more commits to push, then the
-comment|// first push for the next parent may (or may not)
-comment|// represent a discontinuity with respect to the
-comment|// parent currently on the top of the stack.
-comment|//
-comment|// mark it for checking here, and check it
-comment|// with the next push...see sort_first_epoch for
-comment|// more details.
-comment|//
+comment|/* 				 * If we have more commits to push, then the 				 * first push for the next parent may (or may 				 * not) represent a discontinuity with respect 				 * to the parent currently on the top of 				 * the stack. 				 * 				 * Mark it for checking here, and check it 				 * with the next push. See sort_first_epoch() 				 * for more details. 				 */
 name|stack
 operator|->
 name|item
