@@ -3052,12 +3052,29 @@ operator|!=
 operator|!
 name|newlines
 condition|)
+block|{
+if|if
+condition|(
+name|newlines
+condition|)
 return|return
 name|error
 argument_list|(
 literal|"deleted file still has contents"
 argument_list|)
 return|;
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"** warning: file %s becomes empty but is not deleted\n"
+argument_list|,
+name|patch
+operator|->
+name|new_name
+argument_list|)
+expr_stmt|;
+block|}
 comment|/* Parse the thing.. */
 name|line
 operator|+=
