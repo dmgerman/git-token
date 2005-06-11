@@ -1027,6 +1027,54 @@ return|;
 block|}
 comment|/* otherwise we will apply the original rule */
 block|}
+comment|/* #14ALT */
+if|if
+condition|(
+name|a
+operator|&&
+name|b
+operator|&&
+name|c
+operator|&&
+name|same
+argument_list|(
+name|a
+argument_list|,
+name|b
+argument_list|)
+operator|&&
+operator|!
+name|same
+argument_list|(
+name|a
+argument_list|,
+name|c
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
+name|old
+operator|&&
+name|same
+argument_list|(
+name|old
+argument_list|,
+name|c
+argument_list|)
+condition|)
+return|return
+name|merged_entry_allow_dirty
+argument_list|(
+name|c
+argument_list|,
+name|old
+argument_list|,
+name|dst
+argument_list|)
+return|;
+comment|/* otherwise the regular rule applies */
+block|}
 comment|/* 	 * If we have an entry in the index cache ("old"), then we want 	 * to make sure that it matches any entries in stage 2 ("first 	 * branch", aka "b"). 	 */
 if|if
 condition|(
