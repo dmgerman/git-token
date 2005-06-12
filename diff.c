@@ -3424,6 +3424,12 @@ literal|0
 expr_stmt|;
 name|dp
 operator|->
+name|status
+operator|=
+literal|0
+expr_stmt|;
+name|dp
+operator|->
 name|source_stays
 operator|=
 literal|0
