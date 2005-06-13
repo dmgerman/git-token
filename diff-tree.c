@@ -2967,6 +2967,10 @@ name|verbose_header
 operator|=
 literal|1
 expr_stmt|;
+name|header_prefix
+operator|=
+literal|"diff-tree "
+expr_stmt|;
 name|commit_format
 operator|=
 name|get_commit_format
