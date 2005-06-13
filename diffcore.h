@@ -137,7 +137,7 @@ name|DIFF_FILE_VALID
 parameter_list|(
 name|spec
 parameter_list|)
-value|((spec)&& ((spec)->mode) != 0)
+value|(((spec)->mode) != 0)
 DECL|member|should_free
 name|unsigned
 name|should_free
