@@ -163,6 +163,18 @@ argument_list|,
 literal|':'
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|path
+condition|)
+operator|*
+operator|(
+name|path
+operator|++
+operator|)
+operator|=
+literal|'\0'
+expr_stmt|;
 block|}
 if|if
 condition|(
@@ -179,22 +191,14 @@ name|url
 argument_list|)
 return|;
 block|}
-operator|*
-operator|(
-name|path
-operator|++
-operator|)
-operator|=
-literal|'\0'
-expr_stmt|;
-comment|/* ssh<host> 'cd /<path>; stdio-pull<arg...><commit-id>' */
+comment|/* ssh<host> 'cd<path>; stdio-pull<arg...><commit-id>' */
 name|snprintf
 argument_list|(
 name|command
 argument_list|,
 name|COMMAND_SIZE
 argument_list|,
-literal|"%s='/%s' %s"
+literal|"%s='%s' %s"
 argument_list|,
 name|GIT_DIR_ENVIRONMENT
 argument_list|,
