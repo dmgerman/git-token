@@ -207,6 +207,11 @@ argument_list|,
 name|remote_prog
 argument_list|)
 expr_stmt|;
+operator|*
+name|path
+operator|=
+literal|'\0'
+expr_stmt|;
 name|posn
 operator|=
 name|command
