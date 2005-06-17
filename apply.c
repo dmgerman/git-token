@@ -2777,6 +2777,14 @@ name|patch
 operator|->
 name|new_name
 condition|)
+block|{
+if|if
+condition|(
+operator|!
+name|patch
+operator|->
+name|def_name
+condition|)
 name|die
 argument_list|(
 literal|"git diff header lacks filename information (line %d)"
@@ -2784,6 +2792,19 @@ argument_list|,
 name|linenr
 argument_list|)
 expr_stmt|;
+name|patch
+operator|->
+name|old_name
+operator|=
+name|patch
+operator|->
+name|new_name
+operator|=
+name|patch
+operator|->
+name|def_name
+expr_stmt|;
+block|}
 operator|*
 name|hdrsize
 operator|=
