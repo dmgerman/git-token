@@ -44,7 +44,7 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
-comment|/*  * This is a really stupid program that takes cvsps output, and  * generates a a long _shell_script_ that will create the GIT archive  * from it.   *  * You've been warned. I told you it was stupid.  *  * NOTE NOTE NOTE! In order to do branches correctly, this needs  * the fixed cvsps that has the "Ancestor branch" tag output.  * Hopefully David Mansfield will update his distribution soon  * enough (he's the one who wrote the patch, so at least we don't  * have to figt maintainer issues ;)  *  * Usage:  *  *	TZ=UTC cvsps -A |  *		cvs2git --cvsroot=[root] --module=[module]> script  *  * Creates a shell script that will generate the .git archive of  * the names CVS repository.  *  * IMPORTANT NOTE ABOUT "cvsps"! This requires version 2.1 or better,  * and the "TZ=UTC" and the "-A" flag is required for sane results!  */
+comment|/*  * This is a really stupid program that takes cvsps output, and  * generates a a long _shell_script_ that will create the GIT archive  * from it.   *  * You've been warned. I told you it was stupid.  *  * NOTE NOTE NOTE! In order to do branches correctly, this needs  * the fixed cvsps that has the "Ancestor branch" tag output.  * Hopefully David Mansfield will update his distribution soon  * enough (he's the one who wrote the patch, so at least we don't  * have to figt maintainer issues ;)  *  * Usage:  *  *	TZ=UTC cvsps -A |  *		git-cvs2git --cvsroot=[root] --module=[module]> script  *  * Creates a shell script that will generate the .git archive of  * the names CVS repository.  *  *	TZ=UTC cvsps -s 1234- -A |  *		git-cvs2git -u --cvsroot=[root] --module=[module]> script  *  * Creates a shell script that will update the .git archive with  * CVS changes from patchset 1234 until the last one.  *  * IMPORTANT NOTE ABOUT "cvsps"! This requires version 2.1 or better,  * and the "TZ=UTC" and the "-A" flag is required for sane results!  */
 end_comment
 
 begin_enum
@@ -949,6 +949,23 @@ literal|1
 expr_stmt|;
 continue|continue;
 block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"-u"
+argument_list|)
+condition|)
+block|{
+name|initial_commit
+operator|=
+literal|0
+expr_stmt|;
+continue|continue;
+block|}
 block|}
 if|if
 condition|(
@@ -984,6 +1001,11 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|initial_commit
+condition|)
+block|{
 name|printf
 argument_list|(
 literal|"[ -d .git ]&& exit 1\n"
@@ -1009,6 +1031,7 @@ argument_list|(
 literal|"ln -sf refs/heads/master .git/HEAD\n"
 argument_list|)
 expr_stmt|;
+block|}
 while|while
 condition|(
 name|fgets
