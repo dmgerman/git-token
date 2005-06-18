@@ -728,7 +728,7 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"cvs -q -d %s checkout -r%s -p '%s/%s'> '%s'\n"
+literal|"cvs -q -d %s checkout -d .git-tmp -r%s '%s/%s'\n"
 argument_list|,
 name|cvsroot
 argument_list|,
@@ -737,8 +737,26 @@ argument_list|,
 name|cvsmodule
 argument_list|,
 name|name
+argument_list|)
+expr_stmt|;
+name|printf
+argument_list|(
+literal|"mv -f .git-tmp/%s %s\n"
+argument_list|,
+name|dir
+condition|?
+name|dir
+operator|+
+literal|1
+else|:
+name|name
 argument_list|,
 name|name
+argument_list|)
+expr_stmt|;
+name|printf
+argument_list|(
+literal|"rm -rf .git-tmp\n"
 argument_list|)
 expr_stmt|;
 name|printf
