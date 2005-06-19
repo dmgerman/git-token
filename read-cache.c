@@ -1094,21 +1094,6 @@ operator|!=
 literal|'/'
 condition|)
 continue|continue;
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-literal|"conflict: %s %s\n"
-argument_list|,
-name|ce
-operator|->
-name|name
-argument_list|,
-name|p
-operator|->
-name|name
-argument_list|)
-expr_stmt|;
 name|retval
 operator|=
 operator|-
