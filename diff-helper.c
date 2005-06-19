@@ -134,7 +134,7 @@ name|char
 modifier|*
 name|diff_helper_usage
 init|=
-literal|"git-diff-helper [-z] [-S<string>] [-O<orderfile>] paths..."
+literal|"git-diff-helper [-z] [-O<orderfile>] [-S<string>] [--pickaxe-all] [<path>...]"
 decl_stmt|;
 end_decl_stmt
 
