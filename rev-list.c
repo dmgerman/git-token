@@ -741,7 +741,7 @@ end_function
 begin_function
 DECL|function|clear_distance
 specifier|static
-name|int
+name|void
 name|clear_distance
 parameter_list|(
 name|struct
