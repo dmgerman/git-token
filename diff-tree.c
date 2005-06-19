@@ -1334,8 +1334,6 @@ condition|)
 block|{
 if|if
 condition|(
-name|find_copies_harder
-operator|||
 name|interesting
 argument_list|(
 name|tree
@@ -1742,11 +1740,7 @@ parameter_list|)
 block|{
 name|diffcore_std
 argument_list|(
-name|find_copies_harder
-condition|?
-name|paths
-else|:
-literal|0
+name|NULL
 argument_list|,
 name|detect_rename
 argument_list|,
@@ -2473,7 +2467,7 @@ name|char
 modifier|*
 name|diff_tree_usage
 init|=
-literal|"git-diff-tree [-p] [-r] [-z] [--stdin] [-M] [-C] [-R] [-S<string>] [-O<orderfile>] [-m] [-s] [-v] [--pretty] [-t]<tree-ish><tree-ish>"
+literal|"git-diff-tree [-p] [-r] [-z] [--stdin] [-m] [-s] [-v] [--pretty] [-t] [-R] [-B] [-M] [-C] [--find-copies-header] [-O<orderfile>] [-S<string>] [--pickaxe-all]<tree-ish><tree-ish>"
 decl_stmt|;
 end_decl_stmt
 

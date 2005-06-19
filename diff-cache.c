@@ -52,6 +52,16 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|find_copies_harder
+specifier|static
+name|int
+name|find_copies_harder
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|diff_setup_opt
 specifier|static
 name|int
@@ -479,9 +489,8 @@ argument_list|,
 literal|20
 argument_list|)
 operator|&&
-name|detect_rename
-operator|<
-name|DIFF_DETECT_COPY
+operator|!
+name|find_copies_harder
 condition|)
 return|return
 literal|0
@@ -779,7 +788,7 @@ name|char
 modifier|*
 name|diff_cache_usage
 init|=
-literal|"git-diff-cache [-p] [-r] [-z] [-m] [-M] [-C] [-R] [-S<string>] [-O<orderfile>] [--cached]<tree-ish> [<path>...]"
+literal|"git-diff-cache [-p] [-r] [-z] [-m] [--cached] [-R] [-B] [-M] [-C] [--find-copies-harder] [-O<orderfile>] [-S<string>] [--pickaxe-all]<tree-ish> [<path>...]"
 decl_stmt|;
 end_decl_stmt
 
@@ -1061,6 +1070,23 @@ name|strcmp
 argument_list|(
 name|arg
 argument_list|,
+literal|"--find-copies-harder"
+argument_list|)
+condition|)
+block|{
+name|find_copies_harder
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
 literal|"-z"
 argument_list|)
 condition|)
@@ -1208,6 +1234,19 @@ name|diff_cache_usage
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|find_copies_harder
+operator|&&
+name|detect_rename
+operator|!=
+name|DIFF_DETECT_COPY
+condition|)
+name|usage
+argument_list|(
+name|diff_cache_usage
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
