@@ -2644,13 +2644,34 @@ condition|(
 name|reversed
 condition|)
 block|{
-name|sort_first_epoch
-argument_list|(
+name|struct
+name|commit
+modifier|*
+name|next
+init|=
 name|pop_commit
 argument_list|(
 operator|&
 name|reversed
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+operator|(
+name|next
+operator|->
+name|object
+operator|.
+name|flags
+operator|&
+name|VISITED
+operator|)
+condition|)
+block|{
+name|sort_first_epoch
+argument_list|(
+name|next
 argument_list|,
 operator|&
 name|stack
@@ -2661,7 +2682,7 @@ condition|(
 name|reversed
 condition|)
 block|{
-comment|/* 				 * If we have more commits to push, then the 				 * first push for the next parent may (or may 				 * not) represent a discontinuity with respect 				 * to the parent currently on the top of 				 * the stack. 				 * 				 * Mark it for checking here, and check it 				 * with the next push. See sort_first_epoch() 				 * for more details. 				 */
+comment|/* 					 * If we have more commits  					 * to push, then the first 					 * push for the next parent may  					 * (or may * not) represent a  					 * discontinuity with respect 					 * to the parent currently on  					 * the top of the stack. 					 * 					 * Mark it for checking here,  					 * and check it with the next  					 * push. See sort_first_epoch() 					 * for more details. 					 */
 name|stack
 operator|->
 name|item
@@ -2672,6 +2693,7 @@ name|flags
 operator||=
 name|DISCONTINUITY
 expr_stmt|;
+block|}
 block|}
 block|}
 name|action
