@@ -777,11 +777,13 @@ operator|<=
 literal|3
 operator|)
 operator|||
+operator|(
 name|find_copies_harder
 operator|&&
 name|detect_rename
 operator|!=
 name|DIFF_DETECT_COPY
+operator|)
 condition|)
 name|usage
 argument_list|(
