@@ -2255,6 +2255,14 @@ argument_list|(
 name|head_of_epoch
 argument_list|)
 expr_stmt|;
+name|next
+operator|->
+name|object
+operator|.
+name|flags
+operator||=
+name|BOUNDARY
+expr_stmt|;
 while|while
 condition|(
 name|next
