@@ -259,7 +259,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * This is like "get_sha1()", except it allows "sha1 expressions",  * notably "xyz.p" for "parent of xyz"  */
+comment|/*  * This is like "get_sha1()", except it allows "sha1 expressions",  * notably "xyz^" for "parent of xyz"  */
 end_comment
 
 begin_function
@@ -297,7 +297,7 @@ if|if
 condition|(
 name|len
 operator|>
-literal|3
+literal|2
 operator|&&
 name|name
 index|[
@@ -337,21 +337,16 @@ if|if
 condition|(
 name|len
 operator|>
-literal|2
+literal|1
 operator|&&
-operator|!
-name|memcmp
-argument_list|(
 name|name
-operator|+
+index|[
 name|len
 operator|-
-literal|2
-argument_list|,
-literal|".p"
-argument_list|,
-literal|2
-argument_list|)
+literal|1
+index|]
+operator|==
+literal|'^'
 condition|)
 block|{
 name|int
@@ -361,7 +356,7 @@ name|name
 index|[
 name|len
 operator|-
-literal|2
+literal|1
 index|]
 operator|=
 literal|0
@@ -381,10 +376,10 @@ name|name
 index|[
 name|len
 operator|-
-literal|2
+literal|1
 index|]
 operator|=
-literal|'.'
+literal|'^'
 expr_stmt|;
 if|if
 condition|(
