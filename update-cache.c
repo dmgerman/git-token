@@ -18,6 +18,7 @@ DECL|variable|allow_add
 DECL|variable|allow_remove
 DECL|variable|allow_replace
 DECL|variable|not_new
+DECL|variable|quiet
 specifier|static
 name|int
 name|allow_add
@@ -33,6 +34,10 @@ init|=
 literal|0
 decl_stmt|,
 name|not_new
+init|=
+literal|0
+decl_stmt|,
+name|quiet
 init|=
 literal|0
 decl_stmt|;
@@ -1097,8 +1102,6 @@ condition|)
 block|{
 if|if
 condition|(
-operator|!
-operator|(
 name|not_new
 operator|&&
 name|PTR_ERR
@@ -1108,9 +1111,13 @@ argument_list|)
 operator|==
 operator|-
 name|ENOENT
-operator|)
 condition|)
-block|{
+continue|continue;
+if|if
+condition|(
+name|quiet
+condition|)
+continue|continue;
 name|printf
 argument_list|(
 literal|"%s: needs update\n"
@@ -1124,7 +1131,6 @@ name|has_errors
 operator|=
 literal|1
 expr_stmt|;
-block|}
 continue|continue;
 block|}
 name|active_cache_changed
@@ -1629,6 +1635,23 @@ block|{
 name|allow_options
 operator|=
 literal|0
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|path
+argument_list|,
+literal|"-q"
+argument_list|)
+condition|)
+block|{
+name|quiet
+operator|=
+literal|1
 expr_stmt|;
 continue|continue;
 block|}
