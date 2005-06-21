@@ -172,6 +172,7 @@ name|void
 modifier|*
 name|create_object
 parameter_list|(
+name|unsigned
 name|char
 modifier|*
 name|buf
@@ -193,6 +194,7 @@ modifier|*
 name|retsize
 parameter_list|)
 block|{
+name|unsigned
 name|char
 modifier|*
 name|compressed
@@ -263,6 +265,11 @@ name|stream
 operator|.
 name|next_in
 operator|=
+operator|(
+name|unsigned
+name|char
+operator|*
+operator|)
 name|hdr
 expr_stmt|;
 name|stream
@@ -337,6 +344,7 @@ specifier|static
 name|int
 name|restore_original_object
 parameter_list|(
+name|unsigned
 name|char
 modifier|*
 name|buf
@@ -434,6 +442,7 @@ name|void
 modifier|*
 name|create_delta_object
 parameter_list|(
+name|unsigned
 name|char
 modifier|*
 name|buf

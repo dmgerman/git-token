@@ -1741,6 +1741,7 @@ argument_list|)
 operator|+
 literal|1
 decl_stmt|;
+name|unsigned
 name|char
 modifier|*
 name|buf
@@ -2400,6 +2401,12 @@ block|}
 comment|/* We are dealing with a delta object.  Inflated, the first 	 * 20 bytes hold the base object SHA1, and delta data follows 	 * immediately after it. 	 * 	 * The initial part of the delta starts at delta_data_head + 	 * 20.  Borrow code from patch-delta to read the result size. 	 */
 name|data
 operator|=
+operator|(
+name|unsigned
+name|char
+operator|*
+operator|)
+operator|(
 name|hdr
 operator|+
 name|strlen
@@ -2410,6 +2417,7 @@ operator|+
 literal|1
 operator|+
 literal|20
+operator|)
 expr_stmt|;
 comment|/* Skip over the source size; we are not interested in 	 * it and we cannot verify it because we do not want 	 * to read the base object. 	 */
 name|cmd

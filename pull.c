@@ -302,6 +302,7 @@ condition|(
 name|get_delta
 condition|)
 block|{
+name|unsigned
 name|char
 name|delta_sha1
 index|[

@@ -57,6 +57,7 @@ name|posn
 init|=
 literal|0
 decl_stmt|;
+name|unsigned
 name|char
 name|sha1
 index|[
