@@ -1892,13 +1892,6 @@ name|commit_list
 modifier|*
 name|parents
 decl_stmt|;
-name|struct
-name|commit_list
-modifier|*
-name|reversed_parents
-init|=
-name|NULL
-decl_stmt|;
 name|head
 operator|->
 name|object
@@ -1907,7 +1900,7 @@ name|flags
 operator||=
 name|VISITED
 expr_stmt|;
-comment|/* 	 * parse_commit() builds the parent list in reverse order with respect 	 * to the order of the git-commit-tree arguments. So we need to reverse 	 * this list to output the oldest (or most "local") commits last. 	 */
+comment|/* 	 * TODO: By sorting the parents in a different order, we can alter the 	 * merge order to show contemporaneous changes in parallel branches 	 * occurring after "local" changes. This is useful for a developer 	 * when a developer wants to see all changes that were incorporated 	 * into the same merge as her own changes occur after her own 	 * changes. 	 */
 for|for
 control|(
 name|parents
@@ -1924,32 +1917,15 @@ name|parents
 operator|->
 name|next
 control|)
-name|commit_list_insert
-argument_list|(
-name|parents
-operator|->
-name|item
-argument_list|,
-operator|&
-name|reversed_parents
-argument_list|)
-expr_stmt|;
-comment|/* 	 * TODO: By sorting the parents in a different order, we can alter the 	 * merge order to show contemporaneous changes in parallel branches 	 * occurring after "local" changes. This is useful for a developer 	 * when a developer wants to see all changes that were incorporated 	 * into the same merge as her own changes occur after her own 	 * changes. 	 */
-while|while
-condition|(
-name|reversed_parents
-condition|)
 block|{
 name|struct
 name|commit
 modifier|*
 name|parent
 init|=
-name|pop_commit
-argument_list|(
-operator|&
-name|reversed_parents
-argument_list|)
+name|parents
+operator|->
+name|item
 decl_stmt|;
 if|if
 condition|(
@@ -2047,7 +2023,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|reversed_parents
+name|parents
 condition|)
 block|{
 comment|/* 					 * This indicates a possible 					 * discontinuity it may not be be 					 * actual discontinuity if the head 					 * of parent N happens to be the tail 					 * of parent N+1. 					 * 					 * The next push onto the stack will 					 * resolve the question. 					 */
