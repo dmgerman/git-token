@@ -3633,6 +3633,13 @@ name|add
 operator|+
 name|del
 expr_stmt|;
+if|if
+condition|(
+name|max_change
+operator|>
+literal|0
+condition|)
+block|{
 name|total
 operator|=
 operator|(
@@ -3667,6 +3674,7 @@ name|total
 operator|-
 name|add
 expr_stmt|;
+block|}
 name|printf
 argument_list|(
 literal|" %-*s |%5d %.*s%.*s\n"
