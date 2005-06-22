@@ -3534,7 +3534,7 @@ name|name
 init|=
 name|patch
 operator|->
-name|old_name
+name|new_name
 decl_stmt|;
 name|int
 name|len
@@ -3556,7 +3556,7 @@ name|name
 operator|=
 name|patch
 operator|->
-name|new_name
+name|old_name
 expr_stmt|;
 comment|/* 	 * "scale" the filename 	 */
 name|len
