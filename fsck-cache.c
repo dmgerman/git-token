@@ -404,16 +404,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* Don't bother with tag reachability. */
-if|if
-condition|(
-name|obj
-operator|->
-name|type
-operator|==
-name|tag_type
-condition|)
-continue|continue;
 if|if
 condition|(
 name|show_unreachable
