@@ -948,6 +948,16 @@ name|line
 argument_list|,
 literal|3
 argument_list|)
+operator|||
+operator|!
+name|memcmp
+argument_list|(
+literal|"Index: "
+argument_list|,
+name|line
+argument_list|,
+literal|7
+argument_list|)
 condition|)
 name|out
 operator|=
