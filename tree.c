@@ -168,6 +168,8 @@ argument_list|(
 name|ce
 argument_list|,
 name|ADD_CACHE_OK_TO_ADD
+operator||
+name|ADD_CACHE_SKIP_DFCHECK
 argument_list|)
 return|;
 block|}

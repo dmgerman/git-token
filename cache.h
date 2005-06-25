@@ -716,6 +716,19 @@ DECL|macro|ADD_CACHE_OK_TO_REPLACE
 comment|/* Ok to replace file/directory */
 end_comment
 
+begin_define
+DECL|macro|ADD_CACHE_SKIP_DFCHECK
+define|#
+directive|define
+name|ADD_CACHE_SKIP_DFCHECK
+value|4
+end_define
+
+begin_comment
+DECL|macro|ADD_CACHE_SKIP_DFCHECK
+comment|/* Ok to skip DF conflict checks */
+end_comment
+
 begin_function_decl
 specifier|extern
 name|int
