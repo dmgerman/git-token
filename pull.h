@@ -13,7 +13,7 @@ name|PULL_H
 end_define
 
 begin_comment
-comment|/** To be provided by the particular implementation. **/
+comment|/*  * Fetch object given SHA1 from the remote, and store it locally under  * GIT_OBJECT_DIRECTORY.  Return 0 on success, -1 on failure.  To be  * provided by the particular implementation.  */
 end_comment
 
 begin_function_decl
@@ -28,6 +28,10 @@ name|sha1
 parameter_list|)
 function_decl|;
 end_function_decl
+
+begin_comment
+comment|/*  * Fetch ref (relative to $GIT_DIR/refs) from the remote, and store  * the 20-byte SHA1 in sha1.  Return 0 on success, -1 on failure.  To  * be provided by the particular implementation.  */
+end_comment
 
 begin_function_decl
 specifier|extern
@@ -47,7 +51,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/** If set, the ref filename to write the target value to. **/
+comment|/* If set, the ref filename to write the target value to. */
 end_comment
 
 begin_decl_stmt
@@ -60,7 +64,7 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
-comment|/** If set, the hash that the current value of write_ref must be. **/
+comment|/* If set, the hash that the current value of write_ref must be. */
 end_comment
 
 begin_decl_stmt
@@ -74,7 +78,7 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
-comment|/** Set to fetch the target tree. */
+comment|/* Set to fetch the target tree. */
 end_comment
 
 begin_decl_stmt
@@ -85,7 +89,7 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
-comment|/** Set to fetch the commit history. */
+comment|/* Set to fetch the commit history. */
 end_comment
 
 begin_decl_stmt
@@ -96,7 +100,7 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
-comment|/** Set to fetch the trees in the commit history. **/
+comment|/* Set to fetch the trees in the commit history. */
 end_comment
 
 begin_decl_stmt
