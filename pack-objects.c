@@ -656,6 +656,13 @@ operator|->
 name|delta
 condition|)
 block|{
+name|header
+index|[
+literal|0
+index|]
+operator|=
+literal|'D'
+expr_stmt|;
 name|memcpy
 argument_list|(
 name|header
