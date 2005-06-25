@@ -953,7 +953,7 @@ expr_stmt|;
 for|for
 control|(
 name|i
-operator|<
+operator|=
 literal|0
 init|;
 name|i
