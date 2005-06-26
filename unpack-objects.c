@@ -957,19 +957,6 @@ argument_list|,
 literal|20
 argument_list|)
 decl_stmt|;
-name|printf
-argument_list|(
-literal|"lo=%d mi=%d hi=%d cmp=%d\n"
-argument_list|,
-name|lo
-argument_list|,
-name|mi
-argument_list|,
-name|hi
-argument_list|,
-name|cmp
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 operator|!
