@@ -855,6 +855,9 @@ name|size
 argument_list|,
 operator|&
 name|delta_size
+argument_list|,
+operator|~
+literal|0UL
 argument_list|)
 expr_stmt|;
 comment|/* A delta that has a lot of literal additions would have 	 * big delta_size no matter what else it does. 	 */

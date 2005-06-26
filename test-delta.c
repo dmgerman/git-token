@@ -342,6 +342,9 @@ name|data_size
 argument_list|,
 operator|&
 name|out_size
+argument_list|,
+operator|~
+literal|0UL
 argument_list|)
 expr_stmt|;
 else|else
