@@ -29,6 +29,12 @@ name|object_list
 modifier|*
 name|next
 decl_stmt|;
+DECL|member|name
+specifier|const
+name|char
+modifier|*
+name|name
+decl_stmt|;
 block|}
 struct|;
 end_struct

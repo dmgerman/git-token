@@ -589,6 +589,11 @@ name|object_list
 modifier|*
 modifier|*
 name|p
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|name
 parameter_list|)
 block|{
 name|struct
@@ -616,6 +621,12 @@ operator|->
 name|next
 operator|=
 name|NULL
+expr_stmt|;
+name|entry
+operator|->
+name|name
+operator|=
+name|name
 expr_stmt|;
 operator|*
 name|p
@@ -650,6 +661,11 @@ name|object_list
 modifier|*
 modifier|*
 name|p
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|name
 parameter_list|)
 block|{
 name|struct
@@ -697,6 +713,8 @@ argument_list|(
 name|obj
 argument_list|,
 name|p
+argument_list|,
+name|name
 argument_list|)
 return|;
 block|}
@@ -721,6 +739,11 @@ name|object_list
 modifier|*
 modifier|*
 name|p
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|name
 parameter_list|)
 block|{
 name|struct
@@ -795,6 +818,8 @@ argument_list|(
 name|obj
 argument_list|,
 name|p
+argument_list|,
+name|name
 argument_list|)
 expr_stmt|;
 for|for
@@ -831,6 +856,10 @@ operator|.
 name|tree
 argument_list|,
 name|p
+argument_list|,
+name|entry
+operator|->
+name|name
 argument_list|)
 expr_stmt|;
 else|else
@@ -845,6 +874,10 @@ operator|.
 name|blob
 argument_list|,
 name|p
+argument_list|,
+name|entry
+operator|->
+name|name
 argument_list|)
 expr_stmt|;
 block|}
@@ -907,6 +940,8 @@ operator|->
 name|tree
 argument_list|,
 name|p
+argument_list|,
+literal|""
 argument_list|)
 expr_stmt|;
 if|if
@@ -925,8 +960,10 @@ condition|(
 name|objects
 condition|)
 block|{
-name|puts
+name|printf
 argument_list|(
+literal|"%s %s\n"
+argument_list|,
 name|sha1_to_hex
 argument_list|(
 name|objects
@@ -935,6 +972,10 @@ name|item
 operator|->
 name|sha1
 argument_list|)
+argument_list|,
+name|objects
+operator|->
+name|name
 argument_list|)
 expr_stmt|;
 name|objects
