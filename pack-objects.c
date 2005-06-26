@@ -150,16 +150,6 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|delta_window
-specifier|static
-name|int
-name|delta_window
-init|=
-literal|10
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|variable|base_name
 specifier|static
 specifier|const
@@ -2124,6 +2114,11 @@ literal|128
 index|]
 decl_stmt|;
 name|int
+name|window
+init|=
+literal|10
+decl_stmt|;
+name|int
 name|i
 decl_stmt|;
 for|for
@@ -2175,7 +2170,7 @@ name|char
 modifier|*
 name|end
 decl_stmt|;
-name|delta_window
+name|window
 operator|=
 name|strtoul
 argument_list|(
@@ -2307,13 +2302,15 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|delta_window
+name|window
 condition|)
 name|find_deltas
 argument_list|(
 name|sorted_by_type
 argument_list|,
-name|delta_window
+name|window
+operator|+
+literal|1
 argument_list|)
 expr_stmt|;
 name|write_pack_file
