@@ -1057,10 +1057,13 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|int
-name|sha1_file_size
+name|sha1_object_info
 parameter_list|(
 specifier|const
 name|unsigned
+name|char
+modifier|*
+parameter_list|,
 name|char
 modifier|*
 parameter_list|,

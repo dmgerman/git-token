@@ -2157,11 +2157,13 @@ block|}
 if|if
 condition|(
 operator|!
-name|sha1_file_size
+name|sha1_object_info
 argument_list|(
 name|s
 operator|->
 name|sha1
+argument_list|,
+name|type
 argument_list|,
 operator|&
 name|s
