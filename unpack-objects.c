@@ -460,7 +460,7 @@ operator|=
 name|n
 expr_stmt|;
 block|}
-comment|/* 	 * Total size: 	 *  - 256 index entries 4 bytes each 	 *  - 24-byte entries * nr (20-byte sha1 + 4-byte offset) 	 *  - 20-byte SHA1 file checksum 	 */
+comment|/* 	 * Total size: 	 *  - 256 index entries 4 bytes each 	 *  - 24-byte entries * nr (20-byte sha1 + 4-byte offset) 	 *  - 20-byte SHA1 of the packfile 	 *  - 20-byte SHA1 file checksum 	 */
 if|if
 condition|(
 name|index_size
@@ -472,6 +472,8 @@ operator|+
 name|nr
 operator|*
 literal|24
+operator|+
+literal|20
 operator|+
 literal|20
 condition|)
