@@ -404,6 +404,8 @@ operator|<
 literal|4
 operator|*
 literal|256
+operator|+
+literal|20
 condition|)
 return|return
 name|error
@@ -458,6 +460,7 @@ operator|=
 name|n
 expr_stmt|;
 block|}
+comment|/* 	 * Total size: 	 *  - 256 index entries 4 bytes each 	 *  - 24-byte entries * nr (20-byte sha1 + 4-byte offset) 	 *  - 20-byte SHA1 file checksum 	 */
 if|if
 condition|(
 name|index_size
@@ -469,32 +472,15 @@ operator|+
 name|nr
 operator|*
 literal|24
-condition|)
-block|{
-name|printf
-argument_list|(
-literal|"index_size=%lu, expected %u (%u)\n"
-argument_list|,
-name|index_size
-argument_list|,
-literal|4
-operator|*
-literal|256
 operator|+
-name|nr
-operator|*
-literal|24
-argument_list|,
-name|nr
-argument_list|)
-expr_stmt|;
+literal|20
+condition|)
 return|return
 name|error
 argument_list|(
 literal|"wrong index file size"
 argument_list|)
 return|;
-block|}
 name|nr_entries
 operator|=
 name|nr
