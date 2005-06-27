@@ -60,7 +60,6 @@ name|OBJ_BLOB
 block|,
 DECL|enumerator|OBJ_DELTA
 name|OBJ_DELTA
-comment|// NOTE! This is _not_ the same as a "delta" object in the filesystem
 block|}
 enum|;
 end_enum
