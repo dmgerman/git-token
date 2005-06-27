@@ -219,9 +219,26 @@ name|CMIT_FMT_MEDIUM
 block|,
 DECL|enumerator|CMIT_FMT_SHORT
 name|CMIT_FMT_SHORT
-block|}
+block|,
+DECL|enumerator|CMIT_FMT_FULL
+name|CMIT_FMT_FULL
+block|, }
 enum|;
 end_enum
+
+begin_function_decl
+specifier|extern
+name|enum
+name|cmit_fmt
+name|get_commit_format
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|arg
+parameter_list|)
+function_decl|;
+end_function_decl
 
 begin_function_decl
 specifier|extern
