@@ -2021,6 +2021,12 @@ name|NULL
 expr_stmt|;
 name|p
 operator|->
+name|pack_base
+operator|=
+name|NULL
+expr_stmt|;
+name|p
+operator|->
 name|pack_last_used
 operator|=
 literal|0
