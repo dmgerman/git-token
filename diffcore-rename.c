@@ -714,6 +714,10 @@ name|src_copied
 decl_stmt|,
 name|literal_added
 decl_stmt|;
+name|unsigned
+name|long
+name|delta_limit
+decl_stmt|;
 name|int
 name|score
 decl_stmt|;
@@ -833,6 +837,18 @@ return|return
 literal|0
 return|;
 comment|/* error but caught downstream */
+name|delta_limit
+operator|=
+name|base_size
+operator|*
+operator|(
+name|MAX_SCORE
+operator|-
+name|minimum_score
+operator|)
+operator|/
+name|MAX_SCORE
+expr_stmt|;
 name|delta
 operator|=
 name|diff_delta
@@ -856,10 +872,18 @@ argument_list|,
 operator|&
 name|delta_size
 argument_list|,
-operator|~
-literal|0UL
+name|delta_limit
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|delta
+condition|)
+comment|/* If delta_limit is exceeded, we have too much differences */
+return|return
+literal|0
+return|;
 comment|/* A delta that has a lot of literal additions would have 	 * big delta_size no matter what else it does. 	 */
 if|if
 condition|(
