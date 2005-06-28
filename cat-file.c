@@ -62,7 +62,7 @@ argument_list|)
 condition|)
 name|usage
 argument_list|(
-literal|"git-cat-file [-t | tagname]<sha1>"
+literal|"git-cat-file [-t | -s | tagname]<sha1>"
 argument_list|)
 expr_stmt|;
 if|if
@@ -71,6 +71,17 @@ operator|!
 name|strcmp
 argument_list|(
 literal|"-t"
+argument_list|,
+name|argv
+index|[
+literal|1
+index|]
+argument_list|)
+operator|||
+operator|!
+name|strcmp
+argument_list|(
+literal|"-s"
 argument_list|,
 name|argv
 index|[
@@ -93,6 +104,20 @@ name|size
 argument_list|)
 condition|)
 block|{
+switch|switch
+condition|(
+name|argv
+index|[
+literal|1
+index|]
+index|[
+literal|1
+index|]
+condition|)
+block|{
+case|case
+literal|'t'
+case|:
 name|printf
 argument_list|(
 literal|"%s\n"
@@ -100,6 +125,19 @@ argument_list|,
 name|type
 argument_list|)
 expr_stmt|;
+break|break;
+case|case
+literal|'s'
+case|:
+name|printf
+argument_list|(
+literal|"%lu\n"
+argument_list|,
+name|size
+argument_list|)
+expr_stmt|;
+break|break;
+block|}
 return|return
 literal|0
 return|;
