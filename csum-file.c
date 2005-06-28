@@ -321,6 +321,10 @@ name|offset
 operator|+=
 name|nr
 expr_stmt|;
+name|buf
+operator|+=
+name|nr
+expr_stmt|;
 name|left
 operator|-=
 name|nr
