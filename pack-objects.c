@@ -37,7 +37,7 @@ name|char
 name|pack_usage
 index|[]
 init|=
-literal|"git-pack-objects [--window=N] [--depth=N] base-name< object-list"
+literal|"git-pack-objects [--window=N] [--depth=N] {--stdout | base-name}< object-list"
 decl_stmt|;
 end_decl_stmt
 
@@ -517,15 +517,6 @@ name|struct
 name|sha1file
 modifier|*
 name|f
-init|=
-name|sha1create
-argument_list|(
-literal|"%s.%s"
-argument_list|,
-name|base_name
-argument_list|,
-literal|"pack"
-argument_list|)
 decl_stmt|;
 name|unsigned
 name|long
@@ -537,6 +528,32 @@ name|unsigned
 name|long
 name|mb
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|base_name
+condition|)
+name|f
+operator|=
+name|sha1fd
+argument_list|(
+literal|1
+argument_list|,
+literal|"<stdout>"
+argument_list|)
+expr_stmt|;
+else|else
+name|f
+operator|=
+name|sha1create
+argument_list|(
+literal|"%s.%s"
+argument_list|,
+name|base_name
+argument_list|,
+literal|"pack"
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|i
@@ -1952,6 +1969,10 @@ decl_stmt|,
 name|depth
 init|=
 literal|10
+decl_stmt|,
+name|pack_to_stdout
+init|=
+literal|0
 decl_stmt|;
 name|int
 name|i
@@ -2086,6 +2107,23 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+literal|"--stdout"
+argument_list|,
+name|arg
+argument_list|)
+condition|)
+block|{
+name|pack_to_stdout
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
 name|usage
 argument_list|(
 name|pack_usage
@@ -2108,6 +2146,8 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+name|pack_to_stdout
+operator|!=
 operator|!
 name|base_name
 condition|)
@@ -2214,8 +2254,10 @@ block|}
 name|get_object_details
 argument_list|()
 expr_stmt|;
-name|printf
+name|fprintf
 argument_list|(
+name|stderr
+argument_list|,
 literal|"Packing %d objects\n"
 argument_list|,
 name|nr_objects
@@ -2255,6 +2297,11 @@ expr_stmt|;
 name|write_pack_file
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|pack_to_stdout
+condition|)
 name|write_index_file
 argument_list|()
 expr_stmt|;
