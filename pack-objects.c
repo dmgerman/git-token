@@ -536,7 +536,7 @@ operator|->
 name|size
 argument_list|)
 expr_stmt|;
-comment|/* 	 * The object header is a byte of 'type' followed by four bytes of 	 * length, except for deltas that has the 20 bytes of delta sha 	 * instead. 	 */
+comment|/* 	 * The object header is a byte of 'type' followed by zero or 	 * more bytes of length.  For deltas, the 20 bytes of delta sha1 	 * follows that. 	 */
 name|obj_type
 operator|=
 name|entry
