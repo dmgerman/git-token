@@ -343,8 +343,7 @@ argument_list|,
 operator|&
 name|out_size
 argument_list|,
-operator|~
-literal|0UL
+literal|0
 argument_list|)
 expr_stmt|;
 else|else
