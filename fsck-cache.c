@@ -41,6 +41,12 @@ directive|include
 file|"tag.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"pack.h"
+end_include
+
 begin_define
 DECL|macro|REACHABLE
 define|#
@@ -2262,6 +2268,26 @@ expr_stmt|;
 block|}
 name|prepare_packed_git
 argument_list|()
+expr_stmt|;
+for|for
+control|(
+name|p
+operator|=
+name|packed_git
+init|;
+name|p
+condition|;
+name|p
+operator|=
+name|p
+operator|->
+name|next
+control|)
+comment|/* verify gives error messages itself */
+name|verify_pack
+argument_list|(
+name|p
+argument_list|)
 expr_stmt|;
 for|for
 control|(

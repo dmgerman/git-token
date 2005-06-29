@@ -104,6 +104,18 @@ block|}
 struct|;
 end_struct
 
+begin_function_decl
+specifier|extern
+name|int
+name|verify_pack
+parameter_list|(
+name|struct
+name|packed_git
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
