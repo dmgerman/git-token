@@ -558,6 +558,7 @@ argument_list|(
 name|out
 argument_list|)
 expr_stmt|;
+comment|/* 	 * FIXME! Here we need to now send the pack-file to the "out" fd, using something 	 * like this: 	 * 	 *   fork() + 	 *	dup2(out, 1) + 	 *	execve("/bin/sh git-rev-list --objects ..for-each-ref-list.. | " 	 *		"git-pack-objects --stdout"); 	 * 	 * but I'm too tired right now. 	 */
 name|close
 argument_list|(
 name|out
