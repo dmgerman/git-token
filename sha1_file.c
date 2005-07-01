@@ -3179,6 +3179,39 @@ modifier|*
 name|sizep
 parameter_list|)
 block|{
+if|if
+condition|(
+name|left
+operator|<
+literal|20
+condition|)
+name|die
+argument_list|(
+literal|"truncated pack file"
+argument_list|)
+expr_stmt|;
+comment|/* We choose to only get the type of the base object and 	 * ignore potentially corrupt pack file that expects the delta 	 * based on a base with a wrong size.  This saves tons of 	 * inflate() calls. 	 */
+if|if
+condition|(
+name|sha1_object_info
+argument_list|(
+name|base_sha1
+argument_list|,
+name|type
+argument_list|,
+name|NULL
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"cannot get info for delta-pack base"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|sizep
+condition|)
+block|{
 specifier|const
 name|unsigned
 name|char
@@ -3195,10 +3228,6 @@ decl_stmt|;
 name|unsigned
 name|long
 name|result_size
-decl_stmt|,
-name|base_size
-decl_stmt|,
-name|verify_base_size
 decl_stmt|;
 name|z_stream
 name|stream
@@ -3206,34 +3235,6 @@ decl_stmt|;
 name|int
 name|st
 decl_stmt|;
-if|if
-condition|(
-name|left
-operator|<
-literal|20
-condition|)
-name|die
-argument_list|(
-literal|"truncated pack file"
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|sha1_object_info
-argument_list|(
-name|base_sha1
-argument_list|,
-name|type
-argument_list|,
-operator|&
-name|base_size
-argument_list|)
-condition|)
-name|die
-argument_list|(
-literal|"cannot get info for delta-pack base"
-argument_list|)
-expr_stmt|;
 name|memset
 argument_list|(
 operator|&
@@ -3324,30 +3325,18 @@ argument_list|(
 literal|"delta data unpack-initial failed"
 argument_list|)
 expr_stmt|;
-comment|/* Examine the initial part of the delta to figure out 	 * the result size.  Verify the base size while we are at it. 	 */
+comment|/* Examine the initial part of the delta to figure out 		 * the result size. 		 */
 name|data
 operator|=
 name|delta_head
 expr_stmt|;
-name|verify_base_size
-operator|=
 name|get_delta_hdr_size
 argument_list|(
 operator|&
 name|data
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|verify_base_size
-operator|!=
-name|base_size
-condition|)
-name|die
-argument_list|(
-literal|"delta base size mismatch"
-argument_list|)
-expr_stmt|;
+comment|/* ignore base size */
 comment|/* Read the result size */
 name|result_size
 operator|=
@@ -3362,6 +3351,7 @@ name|sizep
 operator|=
 name|result_size
 expr_stmt|;
+block|}
 return|return
 literal|0
 return|;
@@ -3692,6 +3682,10 @@ literal|"corrupted pack file"
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|sizep
+condition|)
 operator|*
 name|sizep
 operator|=
@@ -4755,9 +4749,7 @@ name|sha1
 argument_list|)
 argument_list|)
 return|;
-if|if
-condition|(
-operator|!
+return|return
 name|packed_object_info
 argument_list|(
 operator|&
@@ -4767,39 +4759,6 @@ name|type
 argument_list|,
 name|sizep
 argument_list|)
-condition|)
-return|return
-literal|0
-return|;
-comment|/* sheesh */
-name|map
-operator|=
-name|unpack_entry
-argument_list|(
-operator|&
-name|e
-argument_list|,
-name|type
-argument_list|,
-name|sizep
-argument_list|)
-expr_stmt|;
-name|free
-argument_list|(
-name|map
-argument_list|)
-expr_stmt|;
-return|return
-operator|(
-name|map
-operator|==
-name|NULL
-operator|)
-condition|?
-literal|0
-else|:
-operator|-
-literal|1
 return|;
 block|}
 if|if
@@ -4867,6 +4826,10 @@ name|status
 operator|=
 literal|0
 expr_stmt|;
+if|if
+condition|(
+name|sizep
+condition|)
 operator|*
 name|sizep
 operator|=
