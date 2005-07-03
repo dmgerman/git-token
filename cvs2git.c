@@ -771,6 +771,7 @@ end_function
 
 begin_struct
 DECL|struct|hdrentry
+specifier|static
 struct|struct
 name|hdrentry
 block|{

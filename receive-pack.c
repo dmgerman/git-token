@@ -142,6 +142,7 @@ end_struct
 
 begin_decl_stmt
 DECL|variable|commands
+specifier|static
 name|struct
 name|command
 modifier|*

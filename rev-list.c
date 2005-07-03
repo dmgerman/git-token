@@ -1729,6 +1729,7 @@ end_function
 
 begin_function
 DECL|function|limit_list
+specifier|static
 name|struct
 name|commit_list
 modifier|*

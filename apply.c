@@ -3560,6 +3560,7 @@ end_function
 
 begin_decl_stmt
 DECL|variable|pluses
+specifier|static
 specifier|const
 name|char
 name|pluses
@@ -3571,6 +3572,7 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|minuses
+specifier|static
 specifier|const
 name|char
 name|minuses

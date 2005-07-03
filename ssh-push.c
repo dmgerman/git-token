@@ -25,6 +25,7 @@ end_include
 
 begin_decl_stmt
 DECL|variable|local_version
+specifier|static
 name|unsigned
 name|char
 name|local_version
@@ -35,6 +36,7 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|remote_version
+specifier|static
 name|unsigned
 name|char
 name|remote_version
@@ -45,6 +47,7 @@ end_decl_stmt
 
 begin_function
 DECL|function|serve_object
+specifier|static
 name|int
 name|serve_object
 parameter_list|(
@@ -270,6 +273,7 @@ end_function
 
 begin_function
 DECL|function|serve_version
+specifier|static
 name|int
 name|serve_version
 parameter_list|(
@@ -316,6 +320,7 @@ end_function
 
 begin_function
 DECL|function|serve_ref
+specifier|static
 name|int
 name|serve_ref
 parameter_list|(
@@ -433,6 +438,7 @@ end_function
 
 begin_function
 DECL|function|service
+specifier|static
 name|void
 name|service
 parameter_list|(
