@@ -2064,13 +2064,9 @@ condition|(
 operator|!
 name|tree_objects
 condition|)
-name|die
-argument_list|(
-literal|"%s is a tree object, not a commit"
-argument_list|,
-name|name
-argument_list|)
-expr_stmt|;
+return|return
+name|NULL
+return|;
 if|if
 condition|(
 name|flags
@@ -2125,13 +2121,9 @@ condition|(
 operator|!
 name|blob_objects
 condition|)
-name|die
-argument_list|(
-literal|"%s is a blob object, not a commit"
-argument_list|,
-name|name
-argument_list|)
-expr_stmt|;
+return|return
+name|NULL
+return|;
 if|if
 condition|(
 name|flags
