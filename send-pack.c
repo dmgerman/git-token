@@ -597,6 +597,9 @@ literal|"rev-list fork failed"
 argument_list|)
 expr_stmt|;
 comment|/* 	 * We don't wait for the rev-list pipeline in the parent: 	 * we end up waiting for the other end instead 	 */
+return|return
+literal|0
+return|;
 block|}
 end_function
 
