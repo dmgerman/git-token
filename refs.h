@@ -13,6 +13,35 @@ name|REFS_H
 end_define
 
 begin_comment
+comment|/*  * Calls the specified function for each ref file until it returns nonzero,  * and returns the value  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|for_each_ref
+parameter_list|(
+name|int
+function_decl|(
+modifier|*
+name|fn
+function_decl|)
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|,
+name|unsigned
+name|char
+modifier|*
+name|sha1
+parameter_list|)
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/** Reads the refs file specified into sha1 **/
 end_comment
 
