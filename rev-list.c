@@ -79,9 +79,22 @@ literal|"usage: git-rev-list [OPTION] commit-id<commit-id>\n"
 literal|"  --max-count=nr\n"
 literal|"  --max-age=epoch\n"
 literal|"  --min-age=epoch\n"
+literal|"  --bisect\n"
+literal|"  --objects\n"
+literal|"  --unpacked\n"
 literal|"  --header\n"
 literal|"  --pretty\n"
 literal|"  --merge-order [ --show-breaks ]"
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|unpacked
+specifier|static
+name|int
+name|unpacked
+init|=
+literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -1787,6 +1800,23 @@ name|object
 decl_stmt|;
 if|if
 condition|(
+name|unpacked
+operator|&&
+name|has_sha1_pack
+argument_list|(
+name|obj
+operator|->
+name|sha1
+argument_list|)
+condition|)
+name|obj
+operator|->
+name|flags
+operator||=
+name|UNINTERESTING
+expr_stmt|;
+if|if
+condition|(
 name|obj
 operator|->
 name|flags
@@ -2399,6 +2429,27 @@ operator|=
 literal|1
 expr_stmt|;
 name|blob_objects
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--unpacked"
+argument_list|)
+condition|)
+block|{
+name|unpacked
+operator|=
+literal|1
+expr_stmt|;
+name|limited
 operator|=
 literal|1
 expr_stmt|;
