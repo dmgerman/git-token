@@ -58,6 +58,7 @@ name|char
 modifier|*
 name|path
 parameter_list|,
+specifier|const
 name|unsigned
 name|char
 modifier|*
