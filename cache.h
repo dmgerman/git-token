@@ -1830,6 +1830,27 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|int
+name|path_match
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|,
+name|int
+name|nr
+parameter_list|,
+name|char
+modifier|*
+modifier|*
+name|match
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|void
 name|prepare_packed_git
 parameter_list|(
