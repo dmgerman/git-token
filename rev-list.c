@@ -2549,12 +2549,12 @@ operator|!
 name|commit
 condition|)
 continue|continue;
-name|commit_list_insert
+name|insert_by_date
 argument_list|(
-name|commit
-argument_list|,
 operator|&
 name|list
+argument_list|,
+name|commit
 argument_list|)
 expr_stmt|;
 block|}
