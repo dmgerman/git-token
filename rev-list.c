@@ -424,6 +424,11 @@ name|hdr_termination
 argument_list|)
 expr_stmt|;
 block|}
+name|fflush
+argument_list|(
+name|stdout
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
