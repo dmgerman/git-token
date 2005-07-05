@@ -883,6 +883,11 @@ parameter_list|(
 name|void
 parameter_list|)
 block|{
+name|head_ref
+argument_list|(
+name|send_ref
+argument_list|)
+expr_stmt|;
 name|for_each_ref
 argument_list|(
 name|send_ref
