@@ -2611,6 +2611,10 @@ name|flags
 operator|&
 name|VISITED
 operator|)
+operator|&&
+name|next
+operator|!=
+name|base
 condition|)
 block|{
 name|sort_first_epoch
