@@ -27,7 +27,7 @@ name|mkdir
 argument_list|(
 name|dir
 argument_list|,
-literal|0755
+literal|0777
 argument_list|)
 operator|<
 literal|0

@@ -421,7 +421,7 @@ name|O_EXCL
 operator||
 name|O_WRONLY
 argument_list|,
-literal|0644
+literal|0666
 argument_list|)
 expr_stmt|;
 if|if
