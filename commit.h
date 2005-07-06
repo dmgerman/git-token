@@ -340,6 +340,23 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Performs an in-place topological sort of list supplied.  *  * Pre-conditions:  *   all commits in input list and all parents of those  *   commits must have object.util == NULL  *          * Post-conditions:   *   invariant of resulting list is:  *      a reachable from b => ord(b)< ord(a)  */
+end_comment
+
+begin_function_decl
+name|void
+name|sort_in_topological_order
+parameter_list|(
+name|struct
+name|commit_list
+modifier|*
+modifier|*
+name|list
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
