@@ -64,7 +64,15 @@ DECL|macro|SHOWN
 define|#
 directive|define
 name|SHOWN
-value|(LAST_EPOCH_FLAG<< 2)
+value|(1u<< 3)
+end_define
+
+begin_define
+DECL|macro|DUPCHECK
+define|#
+directive|define
+name|DUPCHECK
+value|(1u<< 4)
 end_define
 
 begin_decl_stmt
@@ -2571,6 +2579,25 @@ operator|!
 name|commit
 condition|)
 continue|continue;
+if|if
+condition|(
+name|commit
+operator|->
+name|object
+operator|.
+name|flags
+operator|&
+name|DUPCHECK
+condition|)
+continue|continue;
+name|commit
+operator|->
+name|object
+operator|.
+name|flags
+operator||=
+name|DUPCHECK
+expr_stmt|;
 name|insert
 argument_list|(
 name|commit

@@ -71,12 +71,16 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* Low bits are used by rev-list */
+end_comment
+
 begin_define
 DECL|macro|UNINTERESTING
 define|#
 directive|define
 name|UNINTERESTING
-value|(1u<<2)
+value|(1u<<10)
 end_define
 
 begin_define
@@ -84,7 +88,7 @@ DECL|macro|BOUNDARY
 define|#
 directive|define
 name|BOUNDARY
-value|(1u<<3)
+value|(1u<<11)
 end_define
 
 begin_define
@@ -92,7 +96,7 @@ DECL|macro|VISITED
 define|#
 directive|define
 name|VISITED
-value|(1u<<4)
+value|(1u<<12)
 end_define
 
 begin_define
@@ -100,15 +104,7 @@ DECL|macro|DISCONTINUITY
 define|#
 directive|define
 name|DISCONTINUITY
-value|(1u<<5)
-end_define
-
-begin_define
-DECL|macro|DUPCHECK
-define|#
-directive|define
-name|DUPCHECK
-value|(1u<<6)
+value|(1u<<13)
 end_define
 
 begin_define
@@ -116,7 +112,7 @@ DECL|macro|LAST_EPOCH_FLAG
 define|#
 directive|define
 name|LAST_EPOCH_FLAG
-value|(1u<<6)
+value|(1u<<14)
 end_define
 
 begin_endif
