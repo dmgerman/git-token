@@ -2546,6 +2546,10 @@ name|topo_order
 operator|=
 literal|1
 expr_stmt|;
+name|limited
+operator|=
+literal|1
+expr_stmt|;
 continue|continue;
 block|}
 name|flags
