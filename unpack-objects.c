@@ -298,14 +298,6 @@ argument_list|(
 name|size
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-operator|!
-name|size
-condition|)
-return|return
-name|buf
-return|;
 name|memset
 argument_list|(
 operator|&
