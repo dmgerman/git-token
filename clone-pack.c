@@ -79,6 +79,7 @@ end_struct
 
 begin_function
 DECL|function|get_remote_refs
+specifier|static
 name|struct
 name|ref
 modifier|*
