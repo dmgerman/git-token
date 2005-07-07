@@ -372,7 +372,7 @@ name|err
 operator|=
 name|error
 argument_list|(
-literal|"cannot packed %s from %s corrupt"
+literal|"packed %s from %s is corrupt"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
