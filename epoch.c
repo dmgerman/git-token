@@ -2150,10 +2150,7 @@ name|BOUNDARY
 expr_stmt|;
 name|action
 operator|=
-call|(
-modifier|*
 name|emitter
-call|)
 argument_list|(
 name|next
 argument_list|)
@@ -2356,10 +2353,7 @@ else|else
 block|{
 name|action
 operator|=
-call|(
-modifier|*
 name|emitter
-call|)
 argument_list|(
 name|next
 argument_list|)
@@ -2443,10 +2437,7 @@ operator|!
 name|ret
 condition|)
 block|{
-call|(
-modifier|*
 name|emitter
-call|)
 argument_list|(
 name|next
 argument_list|)
