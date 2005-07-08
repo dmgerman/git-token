@@ -1613,10 +1613,15 @@ argument_list|(
 name|sha1
 argument_list|)
 condition|)
+block|{
+name|default_refs
+operator|++
+expr_stmt|;
 return|return
 literal|0
 return|;
 comment|/* it is in a pack */
+block|}
 name|error
 argument_list|(
 literal|"%s: invalid sha1 pointer %s"
