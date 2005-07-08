@@ -936,6 +936,7 @@ block|{
 comment|/* We accept the -r flag just to look like git-diff-tree */
 continue|continue;
 block|}
+comment|/* We accept the -u flag as a synonym for "-p" */
 if|if
 condition|(
 operator|!
@@ -944,6 +945,14 @@ argument_list|(
 name|arg
 argument_list|,
 literal|"-p"
+argument_list|)
+operator|||
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"-u"
 argument_list|)
 condition|)
 block|{

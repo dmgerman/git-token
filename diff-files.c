@@ -317,6 +317,17 @@ index|]
 argument_list|,
 literal|"-p"
 argument_list|)
+operator|||
+operator|!
+name|strcmp
+argument_list|(
+name|argv
+index|[
+literal|1
+index|]
+argument_list|,
+literal|"-u"
+argument_list|)
 condition|)
 name|diff_output_format
 operator|=
