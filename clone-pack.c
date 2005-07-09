@@ -24,6 +24,14 @@ file|<sys/wait.h>
 end_include
 
 begin_decl_stmt
+DECL|variable|quiet
+specifier|static
+name|int
+name|quiet
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|clone_pack_usage
 specifier|static
 specifier|const
@@ -864,6 +872,12 @@ literal|"git-unpack-objects"
 argument_list|,
 literal|"git-unpack-objects"
 argument_list|,
+name|quiet
+condition|?
+literal|"-q"
+else|:
+name|NULL
+argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
@@ -1070,7 +1084,23 @@ operator|==
 literal|'-'
 condition|)
 block|{
-comment|/* Arguments go here */
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+literal|"-q"
+argument_list|,
+name|arg
+argument_list|)
+condition|)
+block|{
+name|quiet
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
 name|usage
 argument_list|(
 name|clone_pack_usage
