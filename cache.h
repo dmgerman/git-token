@@ -1050,26 +1050,6 @@ end_comment
 
 begin_function_decl
 specifier|extern
-name|void
-modifier|*
-name|map_sha1_file
-parameter_list|(
-specifier|const
-name|unsigned
-name|char
-modifier|*
-name|sha1
-parameter_list|,
-name|unsigned
-name|long
-modifier|*
-name|size
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-specifier|extern
 name|int
 name|unpack_sha1_header
 parameter_list|(
