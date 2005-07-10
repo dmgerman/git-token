@@ -6178,7 +6178,7 @@ name|posn
 init|=
 literal|0
 decl_stmt|;
-name|char
+name|void
 modifier|*
 name|buf
 init|=
@@ -6310,6 +6310,10 @@ name|stream
 operator|.
 name|next_in
 operator|=
+operator|(
+name|void
+operator|*
+operator|)
 name|hdr
 expr_stmt|;
 name|stream
