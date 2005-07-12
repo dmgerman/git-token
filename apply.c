@@ -5793,11 +5793,16 @@ literal|" %s %.*s{%s => %s} (%d%%)\n"
 argument_list|,
 name|renamecopy
 argument_list|,
+call|(
+name|int
+call|)
+argument_list|(
 name|old
 operator|-
 name|p
 operator|->
 name|old_name
+argument_list|)
 argument_list|,
 name|p
 operator|->
