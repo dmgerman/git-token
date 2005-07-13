@@ -294,6 +294,15 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_define
+DECL|macro|COMMON_DIFF_OPTIONS_HELP
+define|#
+directive|define
+name|COMMON_DIFF_OPTIONS_HELP
+define|\
+value|"\ncommon diff options:\n" \ "  -r		diff recursively (only meaningful in diff-tree)\n" \ "  -z		output diff-raw with lines terminated with NUL.\n" \ "  -p		output patch format.\n" \ "  -u		synonym for -p.\n" \ "  --name-only	show only names of changed files.\n" \ "  --name-only-z\n" \ "		same as --name-only but terminate lines with NUL.\n" \ "  -R		swap input file pairs.\n" \ "  -B		detect complete rewrites.\n" \ "  -M		detect renames.\n" \ "  -C		detect copies.\n" \ "  --find-copies-harder\n" \ "		try unchanged files as candidate for copy detection.\n" \ "  -O<file>	reorder diffs according to the<file>.\n" \ "  -S<string>	find filepair whose only one side contains the string.\n" \ "  --pickaxe-all\n" \ "		show all files diff when -S is used and hit is found.\n"
+end_define
+
 begin_function_decl
 specifier|extern
 name|int

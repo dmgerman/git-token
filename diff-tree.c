@@ -2443,7 +2443,9 @@ name|char
 modifier|*
 name|diff_tree_usage
 init|=
-literal|"git-diff-tree [-p] [-r] [-z] [--stdin] [-m] [-s] [-v] [--pretty] [-t] [-R] [-B] [-M] [-C] [--find-copies-header] [-O<orderfile>] [-S<string>] [--pickaxe-all]<tree-ish><tree-ish>"
+literal|"git-diff-tree [--stdin] [-m] [-s] [-v] [--pretty] [-t] "
+literal|"[<common diff options>]<tree-ish><tree-ish>"
+name|COMMON_DIFF_OPTIONS_HELP
 decl_stmt|;
 end_decl_stmt
 

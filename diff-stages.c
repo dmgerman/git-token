@@ -129,7 +129,8 @@ name|char
 modifier|*
 name|diff_stages_usage
 init|=
-literal|"git-diff-stages [-p] [-r] [-z] [-R] [-B] [-M] [-C] [--find-copies-harder] [-O<orderfile>] [-S<string>] [--pickaxe-all]<stage1><stage2> [<path>...]"
+literal|"git-diff-stages [<common diff options>]<stage1><stage2> [<path>...]"
+name|COMMON_DIFF_OPTIONS_HELP
 decl_stmt|;
 end_decl_stmt
 

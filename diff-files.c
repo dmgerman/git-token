@@ -23,7 +23,9 @@ name|char
 modifier|*
 name|diff_files_usage
 init|=
-literal|"git-diff-files [-p] [-q] [-r] [-z] [-R] [-B] [-M] [-C] [--find-copies-harder] [-O<orderfile>] [-S<string>] [--pickaxe-all] [<path>...]"
+literal|"git-diff-files [-q] "
+literal|"[<common diff options>] [<path>...]"
+name|COMMON_DIFF_OPTIONS_HELP
 decl_stmt|;
 end_decl_stmt
 

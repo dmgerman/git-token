@@ -788,7 +788,9 @@ name|char
 modifier|*
 name|diff_cache_usage
 init|=
-literal|"git-diff-cache [-p] [-r] [-z] [-m] [--cached] [-R] [-B] [-M] [-C] [--find-copies-harder] [-O<orderfile>] [-S<string>] [--pickaxe-all]<tree-ish> [<path>...]"
+literal|"git-diff-cache [-m] [--cached] "
+literal|"[<common diff options>]<tree-ish> [<path>...]"
+name|COMMON_DIFF_OPTIONS_HELP
 decl_stmt|;
 end_decl_stmt
 
