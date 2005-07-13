@@ -474,6 +474,14 @@ name|arg
 argument_list|,
 literal|"-p"
 argument_list|)
+operator|||
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"-u"
+argument_list|)
 condition|)
 name|diff_output_format
 operator|=
