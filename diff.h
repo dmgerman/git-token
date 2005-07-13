@@ -336,6 +336,22 @@ name|DIFF_FORMAT_NO_OUTPUT
 value|3
 end_define
 
+begin_define
+DECL|macro|DIFF_FORMAT_NAME
+define|#
+directive|define
+name|DIFF_FORMAT_NAME
+value|4
+end_define
+
+begin_define
+DECL|macro|DIFF_FORMAT_NAME_Z
+define|#
+directive|define
+name|DIFF_FORMAT_NAME_Z
+value|5
+end_define
+
 begin_function_decl
 specifier|extern
 name|void
