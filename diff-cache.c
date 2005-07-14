@@ -1353,6 +1353,8 @@ argument_list|,
 name|size
 argument_list|,
 literal|1
+argument_list|,
+name|NULL
 argument_list|)
 condition|)
 name|die

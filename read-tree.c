@@ -84,6 +84,8 @@ argument_list|,
 name|size
 argument_list|,
 name|stage
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 name|free
