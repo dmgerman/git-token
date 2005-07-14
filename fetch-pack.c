@@ -408,7 +408,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"git-fetch-pack: protocol error - expected ref descriptor, got '%s¤'"
+literal|"git-fetch-pack: protocol error - expected ref descriptor, got '%s'"
 argument_list|,
 name|line
 argument_list|)
