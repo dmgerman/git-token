@@ -39,7 +39,7 @@ name|char
 name|clone_pack_usage
 index|[]
 init|=
-literal|"git-clone-pack [host:]directory [heads]*"
+literal|"git-clone-pack [-q] [--exec=<git-upload-pack>] [<host>:]<directory> [<heads>]*"
 decl_stmt|;
 end_decl_stmt
 
@@ -1098,6 +1098,27 @@ block|{
 name|quiet
 operator|=
 literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strncmp
+argument_list|(
+literal|"--exec="
+argument_list|,
+name|arg
+argument_list|,
+literal|7
+argument_list|)
+condition|)
+block|{
+name|exec
+operator|=
+name|arg
+operator|+
+literal|7
 expr_stmt|;
 continue|continue;
 block|}
