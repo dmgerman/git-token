@@ -198,12 +198,14 @@ name|unsigned
 name|int
 name|mode
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
 name|paths
 parameter_list|)
 block|{
+specifier|const
 name|char
 modifier|*
 name|match
@@ -339,6 +341,9 @@ name|pathlen
 argument_list|)
 condition|)
 continue|continue;
+return|return
+literal|1
+return|;
 block|}
 return|return
 literal|0
@@ -371,6 +376,7 @@ parameter_list|,
 name|int
 name|stage
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
@@ -674,6 +680,7 @@ parameter_list|,
 name|int
 name|stage
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*

@@ -1288,6 +1288,7 @@ parameter_list|,
 name|int
 name|stage
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
