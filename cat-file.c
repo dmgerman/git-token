@@ -62,7 +62,7 @@ argument_list|)
 condition|)
 name|usage
 argument_list|(
-literal|"git-cat-file [-t | -s | tagname]<sha1>"
+literal|"git-cat-file [-t | -s |<type>]<sha1>"
 argument_list|)
 expr_stmt|;
 if|if
