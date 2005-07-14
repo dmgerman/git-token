@@ -24,6 +24,14 @@ file|<sys/wait.h>
 end_include
 
 begin_decl_stmt
+DECL|variable|quiet
+specifier|static
+name|int
+name|quiet
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|fetch_pack_usage
 specifier|static
 specifier|const
@@ -31,7 +39,7 @@ name|char
 name|fetch_pack_usage
 index|[]
 init|=
-literal|"git-fetch-pack [host:]directory [heads]*< mycommitlist"
+literal|"git-fetch-pack [-q] [--exec=upload-pack] [host:]directory [heads]*< mycommitlist"
 decl_stmt|;
 end_decl_stmt
 
@@ -607,6 +615,12 @@ literal|"git-unpack-objects"
 argument_list|,
 literal|"git-unpack-objects"
 argument_list|,
+name|quiet
+condition|?
+literal|"-q"
+else|:
+name|NULL
+argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
@@ -816,7 +830,27 @@ operator|==
 literal|'-'
 condition|)
 block|{
-comment|/* Arguments go here */
+if|if
+condition|(
+operator|!
+name|strncmp
+argument_list|(
+literal|"--exec="
+argument_list|,
+name|arg
+argument_list|,
+literal|7
+argument_list|)
+condition|)
+block|{
+name|exec
+operator|=
+name|arg
+operator|+
+literal|7
+expr_stmt|;
+continue|continue;
+block|}
 name|usage
 argument_list|(
 name|fetch_pack_usage
