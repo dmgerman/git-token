@@ -25,7 +25,7 @@ name|char
 name|send_pack_usage
 index|[]
 init|=
-literal|"git-send-pack [--exec=other] destination [heads]*"
+literal|"git-send-pack [--exec=git-receive-pack] [host:]directory [heads]*"
 decl_stmt|;
 end_decl_stmt
 
