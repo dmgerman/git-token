@@ -242,6 +242,18 @@ directive|endif
 end_endif
 
 begin_comment
+comment|/*  * Intensive research over the course of many years has shown that  * port 9418 is totally unused by anything else. Or  *  *	Your search - "port 9418" - did not match any documents.  *  * as www.google.com puts it.  */
+end_comment
+
+begin_define
+DECL|macro|DEFAULT_GIT_PORT
+define|#
+directive|define
+name|DEFAULT_GIT_PORT
+value|9418
+end_define
+
+begin_comment
 comment|/*  * Environment variables transition.  * We accept older names for now but warn.  */
 end_comment
 
