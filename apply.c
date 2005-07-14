@@ -135,7 +135,7 @@ name|char
 name|apply_usage
 index|[]
 init|=
-literal|"git-apply [--stat] [--summary] [--check] [--show-files]<patch>"
+literal|"git-apply [--no-merge] [--stat] [--summary] [--check] [--index] [--apply] [--show-files]<patch>..."
 decl_stmt|;
 end_decl_stmt
 
@@ -7278,6 +7278,7 @@ literal|0
 expr_stmt|;
 continue|continue;
 block|}
+comment|/* NEEDSWORK: this does not do anything at this moment. */
 if|if
 condition|(
 operator|!
