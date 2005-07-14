@@ -217,6 +217,18 @@ return|;
 block|}
 end_function
 
+begin_decl_stmt
+DECL|variable|checkout_cache_usage
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|checkout_cache_usage
+init|=
+literal|"git-checkout-cache [-u] [-q] [-a] [-f] [-n] [--prefix=<string>] [--]<file>..."
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|main
 name|int
@@ -463,6 +475,20 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
+if|if
+condition|(
+name|arg
+index|[
+literal|0
+index|]
+operator|==
+literal|'-'
+condition|)
+name|usage
+argument_list|(
+name|checkout_cache_usage
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(
