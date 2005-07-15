@@ -153,6 +153,9 @@ name|type_line
 decl_stmt|,
 modifier|*
 name|tag_line
+decl_stmt|,
+modifier|*
+name|tagger_line
 decl_stmt|;
 if|if
 condition|(
@@ -390,6 +393,35 @@ operator|-
 literal|1
 return|;
 block|}
+comment|/* Verify the tagger line */
+name|tagger_line
+operator|=
+name|tag_line
+expr_stmt|;
+if|if
+condition|(
+name|memcmp
+argument_list|(
+name|tagger_line
+argument_list|,
+literal|"tagger"
+argument_list|,
+literal|6
+argument_list|)
+operator|||
+operator|(
+name|tagger_line
+index|[
+literal|6
+index|]
+operator|==
+literal|'\n'
+operator|)
+condition|)
+return|return
+operator|-
+literal|1
+return|;
 comment|/* The actual stuff afterwards we don't care about.. */
 return|return
 literal|0
@@ -493,7 +525,7 @@ operator|+=
 name|ret
 expr_stmt|;
 block|}
-comment|// Verify it for some basic sanity: it needs to start with "object<sha1>\ntype "
+comment|// Verify it for some basic sanity: it needs to start with "object<sha1>\ntype\ntagger "
 if|if
 condition|(
 name|verify_tag
