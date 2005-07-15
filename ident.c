@@ -113,7 +113,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"Your parents must have hated you"
+literal|"Your parents must have hated you!"
 argument_list|)
 expr_stmt|;
 name|memcpy
@@ -152,7 +152,7 @@ literal|2
 condition|)
 name|die
 argument_list|(
-literal|"Your parents must have hated you"
+literal|"Your sysadmin must hate you!"
 argument_list|)
 expr_stmt|;
 name|memcpy
