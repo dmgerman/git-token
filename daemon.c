@@ -31,7 +31,7 @@ name|char
 name|daemon_usage
 index|[]
 init|=
-literal|"git-daemon [--port=n]"
+literal|"git-daemon [--inetd | --port=n]"
 decl_stmt|;
 end_decl_stmt
 
@@ -500,6 +500,11 @@ init|=
 name|DEFAULT_GIT_PORT
 decl_stmt|;
 name|int
+name|inetd_mode
+init|=
+literal|0
+decl_stmt|;
+name|int
 name|i
 decl_stmt|;
 for|for
@@ -579,12 +584,37 @@ expr_stmt|;
 continue|continue;
 block|}
 block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--inetd"
+argument_list|)
+condition|)
+block|{
+name|inetd_mode
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
 name|usage
 argument_list|(
 name|daemon_usage
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|inetd_mode
+condition|)
+return|return
+name|execute
+argument_list|()
+return|;
 return|return
 name|serve
 argument_list|(
