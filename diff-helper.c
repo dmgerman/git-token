@@ -121,6 +121,8 @@ expr_stmt|;
 name|diff_flush
 argument_list|(
 name|DIFF_FORMAT_PATCH
+argument_list|,
+literal|'\n'
 argument_list|)
 expr_stmt|;
 block|}

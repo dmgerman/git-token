@@ -314,18 +314,10 @@ function_decl|;
 end_function_decl
 
 begin_define
-DECL|macro|DIFF_FORMAT_HUMAN
+DECL|macro|DIFF_FORMAT_RAW
 define|#
 directive|define
-name|DIFF_FORMAT_HUMAN
-value|0
-end_define
-
-begin_define
-DECL|macro|DIFF_FORMAT_MACHINE
-define|#
-directive|define
-name|DIFF_FORMAT_MACHINE
+name|DIFF_FORMAT_RAW
 value|1
 end_define
 
@@ -353,14 +345,6 @@ name|DIFF_FORMAT_NAME
 value|4
 end_define
 
-begin_define
-DECL|macro|DIFF_FORMAT_NAME_Z
-define|#
-directive|define
-name|DIFF_FORMAT_NAME_Z
-value|5
-end_define
-
 begin_function_decl
 specifier|extern
 name|void
@@ -368,6 +352,9 @@ name|diff_flush
 parameter_list|(
 name|int
 name|output_style
+parameter_list|,
+name|int
+name|line_terminator
 parameter_list|)
 function_decl|;
 end_function_decl
