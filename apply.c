@@ -3307,6 +3307,32 @@ return|;
 break|break;
 block|}
 block|}
+comment|/* If a fragment ends with an incomplete line, we failed to include 	 * it in the above loop because we hit oldlines == newlines == 0 	 * before seeing it. 	 */
+if|if
+condition|(
+literal|12
+operator|<
+name|size
+operator|&&
+operator|!
+name|memcmp
+argument_list|(
+name|line
+argument_list|,
+literal|"\\ No newline"
+argument_list|,
+literal|12
+argument_list|)
+condition|)
+name|offset
+operator|+=
+name|linelen
+argument_list|(
+name|line
+argument_list|,
+name|size
+argument_list|)
+expr_stmt|;
 name|patch
 operator|->
 name|lines_added
@@ -4334,7 +4360,7 @@ expr_stmt|;
 if|if
 condition|(
 name|len
-operator|>
+operator|<
 name|size
 operator|&&
 name|patch
