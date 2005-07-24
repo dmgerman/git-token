@@ -614,6 +614,11 @@ operator|->
 name|next
 expr_stmt|;
 block|}
+name|update_server_info
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
