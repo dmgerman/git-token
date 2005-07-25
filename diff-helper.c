@@ -591,11 +591,11 @@ if|if
 condition|(
 name|status
 operator|==
-literal|'R'
+name|DIFF_STATUS_RENAMED
 operator|||
 name|status
 operator|==
-literal|'C'
+name|DIFF_STATUS_COPIED
 condition|)
 name|two_paths
 operator|=
