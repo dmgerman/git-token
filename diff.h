@@ -368,7 +368,7 @@ DECL|macro|DIFF_STATUS_ADDED
 define|#
 directive|define
 name|DIFF_STATUS_ADDED
-value|'N'
+value|'A'
 end_define
 
 begin_define
