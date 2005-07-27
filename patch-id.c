@@ -348,7 +348,7 @@ name|char
 name|patch_id_usage
 index|[]
 init|=
-literal|"usage: git-patch-id< patch"
+literal|"git-patch-id< patch"
 decl_stmt|;
 end_decl_stmt
 

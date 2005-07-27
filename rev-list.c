@@ -75,7 +75,7 @@ name|char
 name|rev_list_usage
 index|[]
 init|=
-literal|"usage: git-rev-list [OPTION] commit-id<commit-id>\n"
+literal|"git-rev-list [OPTION] commit-id<commit-id>\n"
 literal|"  --max-count=nr\n"
 literal|"  --max-age=epoch\n"
 literal|"  --min-age=epoch\n"

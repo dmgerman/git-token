@@ -13,7 +13,7 @@ name|char
 name|prune_packed_usage
 index|[]
 init|=
-literal|"git-prune-packed: usage: git-prune-packed"
+literal|"git-prune-packed (no arguments)"
 decl_stmt|;
 end_decl_stmt
 
