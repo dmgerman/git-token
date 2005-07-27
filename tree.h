@@ -56,6 +56,12 @@ name|symlink
 range|:
 literal|1
 decl_stmt|;
+DECL|member|zeropad
+name|unsigned
+name|zeropad
+range|:
+literal|1
+decl_stmt|;
 DECL|member|mode
 name|unsigned
 name|int
