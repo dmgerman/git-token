@@ -2323,7 +2323,7 @@ literal|'-'
 condition|)
 name|usage
 argument_list|(
-literal|"git-fsck-cache [--tags] [[--unreachable] [--cache] [--standalone | --full]<head-sha1>*]"
+literal|"git-fsck-cache [--tags] [--root] [[--unreachable] [--cache] [--standalone | --full] [--strict]<head-sha1>*]"
 argument_list|)
 expr_stmt|;
 block|}
