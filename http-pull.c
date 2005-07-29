@@ -29,6 +29,86 @@ directive|include
 file|<curl/easy.h>
 end_include
 
+begin_if
+if|#
+directive|if
+name|LIBCURL_VERSION_NUM
+operator|<
+literal|0x070704
+end_if
+
+begin_define
+DECL|macro|curl_global_cleanup
+define|#
+directive|define
+name|curl_global_cleanup
+parameter_list|()
+value|do {
+comment|/* nothing */
+value|} while(0)
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
+begin_if
+if|#
+directive|if
+name|LIBCURL_VERSION_NUM
+operator|<
+literal|0x070800
+end_if
+
+begin_define
+DECL|macro|curl_global_init
+define|#
+directive|define
+name|curl_global_init
+parameter_list|(
+name|a
+parameter_list|)
+value|do {
+comment|/* nothing */
+value|} while(0)
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
+begin_if
+if|#
+directive|if
+name|LIBCURL_VERSION_NUM
+operator|<
+literal|0x070907
+end_if
+
+begin_define
+DECL|macro|curl_easy_setopt
+define|#
+directive|define
+name|curl_easy_setopt
+parameter_list|(
+name|a
+parameter_list|,
+name|b
+parameter_list|,
+name|c
+parameter_list|)
+value|do {
+comment|/* nothing */
+value|} while(0)
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_decl_stmt
 DECL|variable|curl
 specifier|static
