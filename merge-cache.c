@@ -44,9 +44,12 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|one_shot
+DECL|variable|quiet
 specifier|static
 name|int
 name|one_shot
+decl_stmt|,
+name|quiet
 decl_stmt|;
 end_decl_stmt
 
@@ -177,15 +180,28 @@ if|if
 condition|(
 name|one_shot
 condition|)
+block|{
 name|err
 operator|++
 expr_stmt|;
+block|}
 else|else
+block|{
+if|if
+condition|(
+name|quiet
+condition|)
 name|die
 argument_list|(
 literal|"merge program failed"
 argument_list|)
 expr_stmt|;
+name|exit
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 end_function
@@ -561,7 +577,7 @@ literal|3
 condition|)
 name|usage
 argument_list|(
-literal|"git-merge-cache [-o]<merge-program> (-a |<filename>*)"
+literal|"git-merge-cache [-o] [-q]<merge-program> (-a |<filename>*)"
 argument_list|)
 expr_stmt|;
 name|read_cache
@@ -578,7 +594,7 @@ name|strcmp
 argument_list|(
 name|argv
 index|[
-literal|1
+name|i
 index|]
 argument_list|,
 literal|"-o"
@@ -586,6 +602,28 @@ argument_list|)
 condition|)
 block|{
 name|one_shot
+operator|=
+literal|1
+expr_stmt|;
+name|i
+operator|++
+expr_stmt|;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|argv
+index|[
+name|i
+index|]
+argument_list|,
+literal|"-q"
+argument_list|)
+condition|)
+block|{
+name|quiet
 operator|=
 literal|1
 expr_stmt|;
@@ -682,6 +720,8 @@ block|}
 if|if
 condition|(
 name|err
+operator|&&
+name|quiet
 condition|)
 name|die
 argument_list|(
@@ -689,7 +729,7 @@ literal|"merge program failed"
 argument_list|)
 expr_stmt|;
 return|return
-literal|0
+name|err
 return|;
 block|}
 end_function
