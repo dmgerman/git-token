@@ -1404,6 +1404,18 @@ name|flags
 operator||=
 name|UNINTERESTING
 expr_stmt|;
+comment|/* 		 * Normally we haven't parsed the parent 		 * yet, so we won't have a parent of a parent 		 * here. However, it may turn out that we've 		 * reached this commit some other way (where it 		 * wasn't uninteresting), in which case we need 		 * to mark its parents recursively too.. 		 */
+if|if
+condition|(
+name|commit
+operator|->
+name|parents
+condition|)
+name|mark_parents_uninteresting
+argument_list|(
+name|commit
+argument_list|)
+expr_stmt|;
 comment|/* 		 * A missing commit is ok iff its parent is marked  		 * uninteresting. 		 * 		 * We just mark such a thing parsed, so that when 		 * it is popped next time around, we won't be trying 		 * to parse it and get an error. 		 */
 if|if
 condition|(
