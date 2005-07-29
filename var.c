@@ -30,9 +30,10 @@ end_include
 begin_decl_stmt
 DECL|variable|var_usage
 specifier|static
+specifier|const
 name|char
-modifier|*
 name|var_usage
+index|[]
 init|=
 literal|"git-var [-l |<variable>]"
 decl_stmt|;

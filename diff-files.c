@@ -20,8 +20,8 @@ DECL|variable|diff_files_usage
 specifier|static
 specifier|const
 name|char
-modifier|*
 name|diff_files_usage
+index|[]
 init|=
 literal|"git-diff-files [-q] "
 literal|"[<common diff options>] [<path>...]"

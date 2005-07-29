@@ -506,8 +506,8 @@ DECL|variable|ssh_push_usage
 specifier|static
 specifier|const
 name|char
-modifier|*
 name|ssh_push_usage
+index|[]
 init|=
 literal|"git-ssh-push [-c] [-t] [-a] [-w ref] commit-id url"
 decl_stmt|;

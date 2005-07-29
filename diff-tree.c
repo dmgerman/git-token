@@ -2447,9 +2447,10 @@ end_function
 begin_decl_stmt
 DECL|variable|diff_tree_usage
 specifier|static
+specifier|const
 name|char
-modifier|*
 name|diff_tree_usage
+index|[]
 init|=
 literal|"git-diff-tree [--stdin] [-m] [-s] [-v] [--pretty] [-t] "
 literal|"[<common diff options>]<tree-ish><tree-ish>"

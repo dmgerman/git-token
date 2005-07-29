@@ -338,9 +338,10 @@ end_decl_stmt
 begin_decl_stmt
 DECL|variable|commit_tree_usage
 specifier|static
+specifier|const
 name|char
-modifier|*
 name|commit_tree_usage
+index|[]
 init|=
 literal|"git-commit-tree<sha1> [-p<sha1>]*< changelog"
 decl_stmt|;

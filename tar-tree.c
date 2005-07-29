@@ -100,8 +100,8 @@ DECL|variable|tar_tree_usage
 specifier|static
 specifier|const
 name|char
-modifier|*
 name|tar_tree_usage
+index|[]
 init|=
 literal|"git-tar-tree<key> [basedir]"
 decl_stmt|;

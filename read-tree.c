@@ -2163,9 +2163,10 @@ end_function
 begin_decl_stmt
 DECL|variable|read_tree_usage
 specifier|static
+specifier|const
 name|char
-modifier|*
 name|read_tree_usage
+index|[]
 init|=
 literal|"git-read-tree (<sha> | -m [-u]<sha1> [<sha2> [<sha3>]])"
 decl_stmt|;

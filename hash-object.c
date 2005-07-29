@@ -111,8 +111,8 @@ DECL|variable|hash_object_usage
 specifier|static
 specifier|const
 name|char
-modifier|*
 name|hash_object_usage
+index|[]
 init|=
 literal|"git-hash-object [-t<type>] [-w]<file>..."
 decl_stmt|;

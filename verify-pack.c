@@ -142,8 +142,8 @@ DECL|variable|verify_pack_usage
 specifier|static
 specifier|const
 name|char
-modifier|*
 name|verify_pack_usage
+index|[]
 init|=
 literal|"git-verify-pack [-v]<pack>..."
 decl_stmt|;

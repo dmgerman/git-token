@@ -56,8 +56,8 @@ DECL|variable|usage
 specifier|static
 specifier|const
 name|char
-modifier|*
 name|usage
+index|[]
 init|=
 literal|"test-delta (-d|-p)<from_file><data_file><out_file>"
 decl_stmt|;

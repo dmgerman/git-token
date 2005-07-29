@@ -639,8 +639,8 @@ DECL|variable|local_pull_usage
 specifier|static
 specifier|const
 name|char
-modifier|*
 name|local_pull_usage
+index|[]
 init|=
 literal|"git-local-pull [-c] [-t] [-a] [-d] [-v] [-w filename] [--recover] [-l] [-s] [-n] commit-id path"
 decl_stmt|;

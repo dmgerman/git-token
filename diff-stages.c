@@ -135,9 +135,10 @@ end_decl_stmt
 begin_decl_stmt
 DECL|variable|diff_stages_usage
 specifier|static
+specifier|const
 name|char
-modifier|*
 name|diff_stages_usage
+index|[]
 init|=
 literal|"git-diff-stages [<common diff options>]<stage1><stage2> [<path>...]"
 name|COMMON_DIFF_OPTIONS_HELP

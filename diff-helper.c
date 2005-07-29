@@ -133,8 +133,8 @@ DECL|variable|diff_helper_usage
 specifier|static
 specifier|const
 name|char
-modifier|*
 name|diff_helper_usage
+index|[]
 init|=
 literal|"git-diff-helper [-z] [-O<orderfile>] [-S<string>] [--pickaxe-all] [<path>...]"
 decl_stmt|;

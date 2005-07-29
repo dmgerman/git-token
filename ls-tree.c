@@ -900,8 +900,8 @@ DECL|variable|ls_tree_usage
 specifier|static
 specifier|const
 name|char
-modifier|*
 name|ls_tree_usage
+index|[]
 init|=
 literal|"git-ls-tree [-d] [-r] [-z]<tree-ish> [path...]"
 decl_stmt|;

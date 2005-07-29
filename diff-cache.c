@@ -815,9 +815,10 @@ end_function
 begin_decl_stmt
 DECL|variable|diff_cache_usage
 specifier|static
+specifier|const
 name|char
-modifier|*
 name|diff_cache_usage
+index|[]
 init|=
 literal|"git-diff-cache [-m] [--cached] "
 literal|"[<common diff options>]<tree-ish> [<path>...]"

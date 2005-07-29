@@ -2133,18 +2133,14 @@ DECL|variable|ls_files_usage
 specifier|static
 specifier|const
 name|char
-modifier|*
 name|ls_files_usage
+index|[]
 init|=
 literal|"git-ls-files [-z] [-t] (--[cached|deleted|others|stage|unmerged|killed])* "
 literal|"[ --ignored ] [--exclude=<pattern>] [--exclude-from=<file>] "
 literal|"[ --exclude-per-directory=<filename> ]"
 decl_stmt|;
 end_decl_stmt
-
-begin_empty_stmt
-empty_stmt|;
-end_empty_stmt
 
 begin_function
 DECL|function|main
