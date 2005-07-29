@@ -221,6 +221,11 @@ literal|2
 index|]
 argument_list|)
 expr_stmt|;
+name|close
+argument_list|(
+name|fd
+argument_list|)
+expr_stmt|;
 return|return
 literal|1
 return|;
@@ -305,6 +310,11 @@ name|argv
 index|[
 literal|3
 index|]
+argument_list|)
+expr_stmt|;
+name|close
+argument_list|(
+name|fd
 argument_list|)
 expr_stmt|;
 return|return
