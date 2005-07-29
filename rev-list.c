@@ -2754,6 +2754,9 @@ expr_stmt|;
 block|}
 else|else
 block|{
+ifndef|#
+directive|ifndef
+name|NO_OPENSSL
 if|if
 condition|(
 name|sort_list_in_merge_order
@@ -2771,6 +2774,15 @@ literal|"merge order sort failed\n"
 argument_list|)
 expr_stmt|;
 block|}
+else|#
+directive|else
+name|die
+argument_list|(
+literal|"merge order sort unsupported, OpenSSL not linked"
+argument_list|)
+expr_stmt|;
+endif|#
+directive|endif
 block|}
 return|return
 literal|0
