@@ -612,6 +612,14 @@ name|INDEX_ENVIRONMENT
 value|"GIT_INDEX_FILE"
 end_define
 
+begin_define
+DECL|macro|GRAFT_ENVIRONMENT
+define|#
+directive|define
+name|GRAFT_ENVIRONMENT
+value|"GIT_GRAFT_FILE"
+end_define
+
 begin_function_decl
 specifier|extern
 name|char
@@ -639,6 +647,17 @@ specifier|extern
 name|char
 modifier|*
 name|get_index_file
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|char
+modifier|*
+name|get_graft_file
 parameter_list|(
 name|void
 parameter_list|)
