@@ -274,6 +274,7 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|dead_child
+specifier|static
 name|pid_t
 name|dead_child
 index|[
@@ -310,6 +311,7 @@ end_decl_stmt
 
 begin_struct
 DECL|struct|child
+specifier|static
 struct|struct
 name|child
 block|{

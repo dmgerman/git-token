@@ -341,6 +341,7 @@ end_comment
 
 begin_struct
 DECL|struct|pack_info
+specifier|static
 struct|struct
 name|pack_info
 block|{
