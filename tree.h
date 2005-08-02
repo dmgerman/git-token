@@ -74,6 +74,12 @@ name|name
 decl_stmt|;
 union|union
 block|{
+DECL|member|any
+name|struct
+name|object
+modifier|*
+name|any
+decl_stmt|;
 DECL|member|tree
 name|struct
 name|tree
