@@ -48,6 +48,21 @@ end_enum
 
 begin_function_decl
 name|int
+name|run_command_v
+parameter_list|(
+name|int
+name|argc
+parameter_list|,
+name|char
+modifier|*
+modifier|*
+name|argv
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
 name|run_command
 parameter_list|(
 specifier|const
