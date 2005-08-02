@@ -1379,6 +1379,17 @@ name|sha1
 parameter_list|,
 name|int
 name|fd
+parameter_list|,
+name|char
+modifier|*
+name|buffer
+parameter_list|,
+name|size_t
+name|bufsize
+parameter_list|,
+name|size_t
+modifier|*
+name|bufposn
 parameter_list|)
 function_decl|;
 end_function_decl
