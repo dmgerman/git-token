@@ -30,6 +30,23 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/*  * Fetch the specified object and store it locally; fetch() will be  * called later to determine success. To be provided by the particular  * implementation.  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|void
+name|prefetch
+parameter_list|(
+name|unsigned
+name|char
+modifier|*
+name|sha1
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/*  * Fetch ref (relative to $GIT_DIR/refs) from the remote, and store  * the 20-byte SHA1 in sha1.  Return 0 on success, -1 on failure.  To  * be provided by the particular implementation.  */
 end_comment
 
