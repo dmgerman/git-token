@@ -31,7 +31,8 @@ name|char
 name|send_pack_usage
 index|[]
 init|=
-literal|"git-send-pack [--exec=git-receive-pack] [host:]directory [heads]*"
+literal|"git-send-pack [--all] [--exec=git-receive-pack]<remote> [<head>...]\n"
+literal|"  --all and explicit<head> specification are mutually exclusive."
 decl_stmt|;
 end_decl_stmt
 
@@ -1131,6 +1132,8 @@ comment|/* 	 * See if we have any refs that the other end didn't have 	 */
 if|if
 condition|(
 name|nr_match
+operator|||
+name|send_all
 condition|)
 block|{
 name|local_ref_nr_match
@@ -1445,6 +1448,17 @@ if|if
 condition|(
 operator|!
 name|dest
+condition|)
+name|usage
+argument_list|(
+name|send_pack_usage
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|heads
+operator|&&
+name|send_all
 condition|)
 name|usage
 argument_list|(
