@@ -579,6 +579,11 @@ argument_list|,
 name|new_hex
 argument_list|)
 return|;
+name|safe_create_leading_directories
+argument_list|(
+name|lock_name
+argument_list|)
+expr_stmt|;
 name|newfd
 operator|=
 name|open
