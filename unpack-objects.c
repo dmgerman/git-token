@@ -421,6 +421,12 @@ operator|=
 name|len
 expr_stmt|;
 block|}
+name|inflateEnd
+argument_list|(
+operator|&
+name|stream
+argument_list|)
+expr_stmt|;
 return|return
 name|buf
 return|;
@@ -962,6 +968,9 @@ index|[
 literal|20
 index|]
 decl_stmt|;
+name|int
+name|result
+decl_stmt|;
 name|memcpy
 argument_list|(
 name|base_sha1
@@ -1049,7 +1058,8 @@ name|base_sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
-return|return
+name|result
+operator|=
 name|resolve_delta
 argument_list|(
 name|type
@@ -1062,6 +1072,14 @@ name|delta_data
 argument_list|,
 name|delta_size
 argument_list|)
+expr_stmt|;
+name|free
+argument_list|(
+name|base
+argument_list|)
+expr_stmt|;
+return|return
+name|result
 return|;
 block|}
 end_function
