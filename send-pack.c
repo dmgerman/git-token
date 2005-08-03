@@ -234,6 +234,13 @@ name|refs
 operator|->
 name|old_sha1
 argument_list|)
+operator|&&
+name|has_sha1_file
+argument_list|(
+name|refs
+operator|->
+name|old_sha1
+argument_list|)
 condition|)
 block|{
 name|args
@@ -1089,6 +1096,33 @@ argument_list|,
 literal|"'%s' unchanged\n"
 argument_list|,
 name|name
+argument_list|)
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|has_sha1_file
+argument_list|(
+name|ref
+operator|->
+name|old_sha1
+argument_list|)
+condition|)
+block|{
+name|error
+argument_list|(
+literal|"remote '%s' object %s does not exist on local"
+argument_list|,
+name|name
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|ref
+operator|->
+name|old_sha1
+argument_list|)
 argument_list|)
 expr_stmt|;
 continue|continue;
