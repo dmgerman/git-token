@@ -1372,11 +1372,21 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|dst_peer
 operator|&&
 name|dst_peer
 operator|->
 name|peer_ref
+operator|)
+operator|||
+operator|(
+operator|!
+name|dst_peer
+operator|&&
+operator|!
+name|all
+operator|)
 condition|)
 continue|continue;
 if|if
@@ -1385,12 +1395,6 @@ operator|!
 name|dst_peer
 condition|)
 block|{
-if|if
-condition|(
-operator|!
-name|all
-condition|)
-continue|continue;
 comment|/* Create a new one and link it */
 name|int
 name|len

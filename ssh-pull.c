@@ -69,6 +69,7 @@ end_decl_stmt
 
 begin_function
 DECL|function|force_write
+specifier|static
 name|ssize_t
 name|force_write
 parameter_list|(
