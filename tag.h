@@ -108,6 +108,20 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|struct
+name|object
+modifier|*
+name|deref_tag
+parameter_list|(
+name|struct
+name|object
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
