@@ -986,6 +986,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|path
+index|[
+name|len
+index|]
+operator|=
+literal|0
+expr_stmt|;
 name|copy_templates
 argument_list|(
 name|path
