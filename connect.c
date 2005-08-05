@@ -1074,6 +1074,8 @@ name|matched_src
 operator|->
 name|name
 argument_list|)
+operator|+
+literal|1
 decl_stmt|;
 name|matched_dst
 operator|=
