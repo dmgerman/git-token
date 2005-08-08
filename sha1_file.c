@@ -6029,6 +6029,11 @@ return|return
 name|NULL
 return|;
 block|}
+name|free
+argument_list|(
+name|buffer
+argument_list|)
+expr_stmt|;
 comment|/* Now we have the ID of the referred-to object in 		 * actual_sha1.  Check again. */
 block|}
 block|}
