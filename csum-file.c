@@ -240,6 +240,11 @@ name|errno
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|free
+argument_list|(
+name|f
+argument_list|)
+expr_stmt|;
 return|return
 literal|0
 return|;
