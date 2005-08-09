@@ -401,6 +401,18 @@ name|next
 expr_stmt|;
 block|}
 block|}
+if|if
+condition|(
+name|commit_format
+operator|==
+name|CMIT_FMT_ONELINE
+condition|)
+name|putchar
+argument_list|(
+literal|' '
+argument_list|)
+expr_stmt|;
+else|else
 name|putchar
 argument_list|(
 literal|'\n'
@@ -2579,6 +2591,17 @@ name|hdr_termination
 operator|=
 literal|'\n'
 expr_stmt|;
+if|if
+condition|(
+name|commit_format
+operator|==
+name|CMIT_FMT_ONELINE
+condition|)
+name|prefix
+operator|=
+literal|""
+expr_stmt|;
+else|else
 name|prefix
 operator|=
 literal|"commit "
