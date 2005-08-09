@@ -1815,7 +1815,7 @@ argument_list|,
 literal|2
 argument_list|)
 expr_stmt|;
-name|printf
+name|sprintf
 argument_list|(
 operator|&
 name|header
@@ -1829,7 +1829,7 @@ literal|0
 argument_list|)
 expr_stmt|;
 comment|/* devmajor */
-name|printf
+name|sprintf
 argument_list|(
 operator|&
 name|header

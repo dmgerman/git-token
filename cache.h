@@ -241,6 +241,27 @@ endif|#
 directive|endif
 end_endif
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|__attribute__
+end_ifndef
+
+begin_define
+DECL|macro|__attribute
+define|#
+directive|define
+name|__attribute
+parameter_list|(
+name|x
+parameter_list|)
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_comment
 comment|/*  * Intensive research over the course of many years has shown that  * port 9418 is totally unused by anything else. Or  *  *	Your search - "port 9418" - did not match any documents.  *  * as www.google.com puts it.  */
 end_comment
@@ -1050,8 +1071,21 @@ name|fmt
 parameter_list|,
 modifier|...
 parameter_list|)
-function_decl|;
+function_decl|__attribute__
+parameter_list|(
+function_decl|(format
+parameter_list|(
+name|printf
+parameter_list|,
+function_decl|1
+operator|,
+function_decl|2
 end_function_decl
+
+begin_empty_stmt
+unit|)))
+empty_stmt|;
+end_empty_stmt
 
 begin_function_decl
 specifier|extern
@@ -1066,8 +1100,21 @@ name|fmt
 parameter_list|,
 modifier|...
 parameter_list|)
-function_decl|;
+function_decl|__attribute__
+parameter_list|(
+function_decl|(format
+parameter_list|(
+name|printf
+parameter_list|,
+function_decl|1
+operator|,
+function_decl|2
 end_function_decl
+
+begin_empty_stmt
+unit|)))
+empty_stmt|;
+end_empty_stmt
 
 begin_function_decl
 specifier|extern
@@ -1593,6 +1640,19 @@ argument_list|,
 operator|...
 argument_list|)
 name|NORETURN
+name|__attribute__
+argument_list|(
+operator|(
+name|format
+argument_list|(
+name|printf
+argument_list|,
+literal|1
+argument_list|,
+literal|2
+argument_list|)
+operator|)
+argument_list|)
 decl_stmt|;
 end_decl_stmt
 
@@ -1608,8 +1668,21 @@ name|err
 parameter_list|,
 modifier|...
 parameter_list|)
-function_decl|;
+function_decl|__attribute__
+parameter_list|(
+function_decl|(format
+parameter_list|(
+name|printf
+parameter_list|,
+function_decl|1
+operator|,
+function_decl|2
 end_function_decl
+
+begin_empty_stmt
+unit|)))
+empty_stmt|;
+end_empty_stmt
 
 begin_function_decl
 specifier|extern

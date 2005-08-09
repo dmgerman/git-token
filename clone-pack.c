@@ -197,6 +197,8 @@ name|path
 init|=
 name|git_path
 argument_list|(
+literal|"%s"
+argument_list|,
 name|ref
 operator|->
 name|name

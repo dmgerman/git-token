@@ -1032,6 +1032,13 @@ expr_stmt|;
 name|error
 argument_list|(
 literal|"src refspec %s does not match any."
+argument_list|,
+name|rs
+index|[
+name|i
+index|]
+operator|.
+name|src
 argument_list|)
 expr_stmt|;
 break|break;

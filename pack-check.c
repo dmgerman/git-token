@@ -94,7 +94,7 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"Packfile signature mismatch"
+literal|"Packfile %s signature mismatch"
 argument_list|,
 name|p
 operator|->
