@@ -345,7 +345,7 @@ name|offset
 operator|=
 literal|1
 expr_stmt|;
-comment|/* 	 * Search for a line beginning with "From ", and  	 * having smething that looks like a date format. 	 */
+comment|/* 	 * Search for a line beginning with "From ", and  	 * having something that looks like a date format. 	 */
 do|do
 block|{
 name|int
