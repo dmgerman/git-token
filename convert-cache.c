@@ -385,6 +385,10 @@ name|die
 argument_list|(
 literal|"expected sha1, got '%s'"
 argument_list|,
+operator|(
+name|char
+operator|*
+operator|)
 name|buffer
 argument_list|)
 expr_stmt|;
@@ -1541,6 +1545,10 @@ name|die
 argument_list|(
 literal|"Bad commit '%s'"
 argument_list|,
+operator|(
+name|char
+operator|*
+operator|)
 name|buffer
 argument_list|)
 expr_stmt|;

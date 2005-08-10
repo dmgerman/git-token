@@ -79,12 +79,15 @@ literal|"git-rev-list [OPTION] commit-id<commit-id>\n"
 literal|"  --max-count=nr\n"
 literal|"  --max-age=epoch\n"
 literal|"  --min-age=epoch\n"
+literal|"  --parents\n"
 literal|"  --bisect\n"
 literal|"  --objects\n"
 literal|"  --unpacked\n"
 literal|"  --header\n"
 literal|"  --pretty\n"
-literal|"  --merge-order [ --show-breaks ]"
+literal|"  --no-merges\n"
+literal|"  --merge-order [ --show-breaks ]\n"
+literal|"  --topo-order"
 decl_stmt|;
 end_decl_stmt
 
@@ -266,6 +269,16 @@ literal|0
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|no_merges
+specifier|static
+name|int
+name|no_merges
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|show_commit
 specifier|static
@@ -388,6 +401,18 @@ name|next
 expr_stmt|;
 block|}
 block|}
+if|if
+condition|(
+name|commit_format
+operator|==
+name|CMIT_FMT_ONELINE
+condition|)
+name|putchar
+argument_list|(
+literal|' '
+argument_list|)
+expr_stmt|;
+else|else
 name|putchar
 argument_list|(
 literal|'\n'
@@ -547,6 +572,25 @@ operator|--
 condition|)
 return|return
 name|STOP
+return|;
+if|if
+condition|(
+name|no_merges
+operator|&&
+operator|(
+name|commit
+operator|->
+name|parents
+operator|&&
+name|commit
+operator|->
+name|parents
+operator|->
+name|next
+operator|)
+condition|)
+return|return
+name|CONTINUE
 return|;
 return|return
 name|DO
@@ -2547,9 +2591,39 @@ name|hdr_termination
 operator|=
 literal|'\n'
 expr_stmt|;
+if|if
+condition|(
+name|commit_format
+operator|==
+name|CMIT_FMT_ONELINE
+condition|)
+name|prefix
+operator|=
+literal|""
+expr_stmt|;
+else|else
 name|prefix
 operator|=
 literal|"commit "
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strncmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--no-merges"
+argument_list|,
+literal|11
+argument_list|)
+condition|)
+block|{
+name|no_merges
+operator|=
+literal|1
 expr_stmt|;
 continue|continue;
 block|}

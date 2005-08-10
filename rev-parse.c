@@ -170,6 +170,12 @@ literal|"--min-age="
 block|,
 literal|"--merge-order"
 block|,
+literal|"--topo-order"
+block|,
+literal|"--bisect"
+block|,
+literal|"--no-merges"
+block|,
 name|NULL
 block|}
 decl_stmt|;
