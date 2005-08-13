@@ -859,6 +859,10 @@ name|p
 decl_stmt|;
 if|if
 condition|(
+name|len
+operator|==
+literal|40
+operator|&&
 operator|!
 name|get_sha1_hex
 argument_list|(
