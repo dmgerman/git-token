@@ -2059,19 +2059,28 @@ specifier|extern
 struct|struct
 name|alternate_object_database
 block|{
-DECL|member|base
-name|char
+DECL|member|next
+name|struct
+name|alternate_object_database
 modifier|*
-name|base
+name|next
 decl_stmt|;
 DECL|member|name
 name|char
 modifier|*
 name|name
 decl_stmt|;
+DECL|member|base
+name|char
+name|base
+index|[
+literal|0
+index|]
+decl_stmt|;
+comment|/* more */
 block|}
 modifier|*
-name|alt_odb
+name|alt_odb_list
 struct|;
 end_struct
 
