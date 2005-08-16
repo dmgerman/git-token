@@ -308,7 +308,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|lstat
+name|stat
 argument_list|(
 name|git_path
 argument_list|(
