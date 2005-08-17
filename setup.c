@@ -7,7 +7,6 @@ end_include
 
 begin_function
 DECL|function|prefix_path
-specifier|static
 name|char
 modifier|*
 name|prefix_path
