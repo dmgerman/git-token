@@ -396,17 +396,9 @@ init|;
 condition|;
 control|)
 block|{
-comment|/* 		 * We always want to see a .git/HEAD and a .git/refs/ 		 * subdirectory 		 */
+comment|/* 		 * We always want to see a .git/refs/ subdirectory 		 */
 if|if
 condition|(
-operator|!
-name|access
-argument_list|(
-literal|".git/HEAD"
-argument_list|,
-name|R_OK
-argument_list|)
-operator|&&
 operator|!
 name|access
 argument_list|(
