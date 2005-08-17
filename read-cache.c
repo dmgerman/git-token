@@ -1119,6 +1119,14 @@ condition|)
 return|return
 literal|1
 return|;
+if|if
+condition|(
+operator|!
+name|matchlen
+condition|)
+return|return
+literal|1
+return|;
 block|}
 return|return
 literal|0
