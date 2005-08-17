@@ -726,6 +726,27 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|char
+modifier|*
+name|prefix_path
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|prefix
+parameter_list|,
+name|int
+name|len
+parameter_list|,
+name|char
+modifier|*
+name|path
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_define
 DECL|macro|alloc_nr
 define|#
