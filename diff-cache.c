@@ -834,7 +834,6 @@ parameter_list|(
 name|int
 name|argc
 parameter_list|,
-specifier|const
 name|char
 modifier|*
 modifier|*
@@ -854,6 +853,14 @@ name|sha1
 index|[
 literal|20
 index|]
+decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|prefix
+init|=
+name|setup_git_directory
+argument_list|()
 decl_stmt|;
 specifier|const
 name|char
@@ -882,9 +889,6 @@ decl_stmt|;
 name|int
 name|i
 decl_stmt|;
-name|read_cache
-argument_list|()
-expr_stmt|;
 for|for
 control|(
 name|i
@@ -924,15 +928,7 @@ if|if
 condition|(
 name|tree_name
 condition|)
-block|{
-name|pathspec
-operator|=
-name|argv
-operator|+
-name|i
-expr_stmt|;
 break|break;
-block|}
 name|tree_name
 operator|=
 name|arg
@@ -1294,6 +1290,17 @@ name|diff_cache_usage
 argument_list|)
 expr_stmt|;
 block|}
+name|pathspec
+operator|=
+name|get_pathspec
+argument_list|(
+name|prefix
+argument_list|,
+name|argv
+operator|+
+name|i
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|find_copies_harder
@@ -1323,6 +1330,9 @@ name|usage
 argument_list|(
 name|diff_cache_usage
 argument_list|)
+expr_stmt|;
+name|read_cache
+argument_list|()
 expr_stmt|;
 comment|/* The rest is for paths restriction. */
 name|diff_setup
