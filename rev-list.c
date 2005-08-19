@@ -2175,6 +2175,25 @@ operator|->
 name|sha1
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|object
+condition|)
+name|die
+argument_list|(
+literal|"bad object %s"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|tag
+operator|->
+name|tagged
+operator|->
+name|sha1
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 comment|/* 	 * Commit object? Just return it, we'll do all the complex 	 * reachability crud. 	 */
 if|if
