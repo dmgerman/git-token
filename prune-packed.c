@@ -13,7 +13,15 @@ name|char
 name|prune_packed_usage
 index|[]
 init|=
-literal|"git-prune-packed (no arguments)"
+literal|"git-prune-packed [-n]"
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|dryrun
+specifier|static
+name|int
+name|dryrun
 decl_stmt|;
 end_decl_stmt
 
@@ -136,6 +144,18 @@ argument_list|,
 literal|38
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|dryrun
+condition|)
+name|printf
+argument_list|(
+literal|"rm -f %s\n"
+argument_list|,
+name|pathname
+argument_list|)
+expr_stmt|;
+elseif|else
 if|if
 condition|(
 name|unlink
@@ -353,12 +373,27 @@ operator|==
 literal|'-'
 condition|)
 block|{
-comment|/* Handle flags here .. */
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"-n"
+argument_list|)
+condition|)
+name|dryrun
+operator|=
+literal|1
+expr_stmt|;
+else|else
 name|usage
 argument_list|(
 name|prune_packed_usage
 argument_list|)
 expr_stmt|;
+continue|continue;
 block|}
 comment|/* Handle arguments here .. */
 name|usage
