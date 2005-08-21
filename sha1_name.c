@@ -846,8 +846,6 @@ literal|"refs/tags"
 block|,
 literal|"refs/heads"
 block|,
-literal|"refs/snap"
-block|,
 name|NULL
 block|}
 decl_stmt|;
