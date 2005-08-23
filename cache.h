@@ -431,9 +431,7 @@ decl_stmt|;
 DECL|member|name
 name|char
 name|name
-index|[
-literal|0
-index|]
+index|[]
 decl_stmt|;
 block|}
 struct|;
@@ -2127,9 +2125,7 @@ decl_stmt|;
 DECL|member|base
 name|char
 name|base
-index|[
-literal|0
-index|]
+index|[]
 decl_stmt|;
 comment|/* more */
 block|}
@@ -2202,9 +2198,7 @@ decl_stmt|;
 DECL|member|pack_name
 name|char
 name|pack_name
-index|[
-literal|0
-index|]
+index|[]
 decl_stmt|;
 comment|/* something like ".git/objects/pack/xxxxx.pack" */
 block|}
@@ -2278,9 +2272,7 @@ comment|/* when renaming */
 DECL|member|name
 name|char
 name|name
-index|[
-literal|0
-index|]
+index|[]
 decl_stmt|;
 block|}
 struct|;

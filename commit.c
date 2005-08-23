@@ -511,9 +511,7 @@ DECL|member|parent
 name|unsigned
 name|char
 name|parent
-index|[
-literal|0
-index|]
+index|[]
 index|[
 literal|20
 index|]

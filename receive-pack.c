@@ -143,9 +143,7 @@ decl_stmt|;
 DECL|member|ref_name
 name|char
 name|ref_name
-index|[
-literal|0
-index|]
+index|[]
 decl_stmt|;
 block|}
 struct|;
