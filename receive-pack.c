@@ -1453,13 +1453,9 @@ argument_list|(
 literal|".git"
 argument_list|)
 expr_stmt|;
-name|setenv
+name|putenv
 argument_list|(
-literal|"GIT_DIR"
-argument_list|,
-literal|"."
-argument_list|,
-literal|1
+literal|"GIT_DIR=."
 argument_list|)
 expr_stmt|;
 if|if

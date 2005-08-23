@@ -2350,9 +2350,9 @@ if|if
 condition|(
 name|standalone
 condition|)
-name|unsetenv
+name|putenv
 argument_list|(
-literal|"GIT_ALTERNATE_OBJECT_DIRECTORIES"
+literal|"GIT_ALTERNATE_OBJECT_DIRECTORIES="
 argument_list|)
 expr_stmt|;
 name|fsck_head_link
