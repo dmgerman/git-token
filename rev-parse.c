@@ -475,7 +475,7 @@ name|arg
 argument_list|)
 expr_stmt|;
 else|else
-name|show_norev
+name|show
 argument_list|(
 name|arg
 argument_list|)
@@ -536,7 +536,7 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-name|show_arg
+name|show_norev
 argument_list|(
 name|s
 argument_list|)
@@ -678,6 +678,8 @@ expr_stmt|;
 if|if
 condition|(
 name|revs_only
+operator|||
+name|flags_only
 condition|)
 break|break;
 name|as_is

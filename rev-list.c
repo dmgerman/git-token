@@ -2449,6 +2449,14 @@ name|list
 init|=
 name|NULL
 decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|prefix
+init|=
+name|setup_git_directory
+argument_list|()
+decl_stmt|;
 name|int
 name|i
 decl_stmt|,
