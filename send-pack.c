@@ -1092,7 +1092,7 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
-comment|/* This part determines what can overwrite what. 		 * The rules are: 		 * 		 * (0) you can always use --force. 		 * 		 * (1) if the old thing does not exist, it is OK. 		 * 		 * (2) if you do not have the old thing, you are not allowed 		 *     to overwrite it; you would not know what you are losing 		 *     otherwise. 		 * 		 * (3) if both new and old are commit-ish, and new is a 		 *     descendant of old, it is OK. 		 */
+comment|/* This part determines what can overwrite what. 		 * The rules are: 		 * 		 * (0) you can always use --force or +A:B notation to 		 *     selectively force individual ref pairs. 		 * 		 * (1) if the old thing does not exist, it is OK. 		 * 		 * (2) if you do not have the old thing, you are not allowed 		 *     to overwrite it; you would not know what you are losing 		 *     otherwise. 		 * 		 * (3) if both new and old are commit-ish, and new is a 		 *     descendant of old, it is OK. 		 */
 if|if
 condition|(
 operator|!
@@ -1105,6 +1105,11 @@ name|ref
 operator|->
 name|old_sha1
 argument_list|)
+operator|&&
+operator|!
+name|ref
+operator|->
+name|force
 condition|)
 block|{
 if|if
@@ -1137,7 +1142,7 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
-comment|/* We assume that local is fsck-clean.  Otherwise 			 * you _could_ have a old tag which points at 			 * something you do not have which may or may not 			 * be a commit. 			 */
+comment|/* We assume that local is fsck-clean.  Otherwise 			 * you _could_ have an old tag which points at 			 * something you do not have, which may or may not 			 * be a commit. 			 */
 if|if
 condition|(
 operator|!
