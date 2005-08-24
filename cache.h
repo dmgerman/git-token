@@ -2268,6 +2268,11 @@ index|[
 literal|20
 index|]
 decl_stmt|;
+DECL|member|force
+name|unsigned
+name|char
+name|force
+decl_stmt|;
 DECL|member|peer_ref
 name|struct
 name|ref
