@@ -825,6 +825,9 @@ name|obj
 operator|->
 name|type
 condition|?
+name|obj
+operator|->
+name|type
 else|:
 literal|"object"
 argument_list|,
