@@ -384,9 +384,7 @@ decl_stmt|;
 DECL|member|dep
 name|char
 name|dep
-index|[
-literal|0
-index|]
+index|[]
 decl_stmt|;
 comment|/* more */
 DECL|variable|info
