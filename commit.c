@@ -1995,7 +1995,6 @@ name|char
 modifier|*
 name|date
 decl_stmt|;
-name|unsigned
 name|int
 name|namelen
 decl_stmt|;
