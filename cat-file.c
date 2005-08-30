@@ -44,6 +44,9 @@ name|unsigned
 name|long
 name|size
 decl_stmt|;
+name|setup_git_directory
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|argc
