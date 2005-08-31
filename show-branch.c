@@ -1778,6 +1778,9 @@ modifier|*
 modifier|*
 name|label
 decl_stmt|;
+name|setup_git_directory
+argument_list|()
+expr_stmt|;
 while|while
 condition|(
 literal|1
