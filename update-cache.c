@@ -223,10 +223,25 @@ name|path
 argument_list|)
 return|;
 block|}
+if|if
+condition|(
+literal|0
+operator|==
+name|status
+condition|)
 return|return
 name|error
 argument_list|(
-literal|"open(\"%s\"): %s"
+literal|"%s: is a directory"
+argument_list|,
+name|path
+argument_list|)
+return|;
+else|else
+return|return
+name|error
+argument_list|(
+literal|"lstat(\"%s\"): %s"
 argument_list|,
 name|path
 argument_list|,
@@ -1867,7 +1882,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"Unable to add %s to database"
+literal|"Unable to add %s to database; maybe you want to use --add option?"
 argument_list|,
 name|path
 argument_list|)
