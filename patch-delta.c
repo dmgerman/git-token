@@ -123,6 +123,8 @@ operator|=
 name|malloc
 argument_list|(
 name|size
+operator|+
+literal|1
 argument_list|)
 expr_stmt|;
 if|if
@@ -133,6 +135,13 @@ condition|)
 return|return
 name|NULL
 return|;
+name|dst_buf
+index|[
+name|size
+index|]
+operator|=
+literal|0
+expr_stmt|;
 name|out
 operator|=
 name|dst_buf

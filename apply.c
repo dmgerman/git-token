@@ -3292,7 +3292,7 @@ name|newlines
 operator|--
 expr_stmt|;
 break|break;
-comment|/* We allow "\ No newline at end of file" */
+comment|/* We allow "\ No newline at end of file". Depending                  * on locale settings when the patch was produced we                  * don't know what this line looks like. The only                  * thing we do know is that it begins with "\ ". */
 case|case
 literal|'\\'
 case|:
@@ -3306,9 +3306,9 @@ name|memcmp
 argument_list|(
 name|line
 argument_list|,
-literal|"\\ No newline"
+literal|"\\ "
 argument_list|,
-literal|12
+literal|2
 argument_list|)
 condition|)
 return|return
@@ -3330,9 +3330,9 @@ name|memcmp
 argument_list|(
 name|line
 argument_list|,
-literal|"\\ No newline"
+literal|"\\ "
 argument_list|,
-literal|12
+literal|2
 argument_list|)
 condition|)
 name|offset

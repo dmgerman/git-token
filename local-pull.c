@@ -92,6 +92,7 @@ end_decl_stmt
 
 begin_function
 DECL|function|setup_index
+specifier|static
 name|void
 name|setup_index
 parameter_list|(
@@ -167,9 +168,12 @@ end_function
 
 begin_function
 DECL|function|setup_indices
+specifier|static
 name|int
 name|setup_indices
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 name|DIR
 modifier|*
@@ -278,6 +282,7 @@ end_function
 
 begin_function
 DECL|function|copy_file
+specifier|static
 name|int
 name|copy_file
 parameter_list|(
@@ -580,9 +585,11 @@ end_function
 
 begin_function
 DECL|function|fetch_pack
+specifier|static
 name|int
 name|fetch_pack
 parameter_list|(
+specifier|const
 name|unsigned
 name|char
 modifier|*
@@ -749,9 +756,11 @@ end_function
 
 begin_function
 DECL|function|fetch_file
+specifier|static
 name|int
 name|fetch_file
 parameter_list|(
+specifier|const
 name|unsigned
 name|char
 modifier|*
