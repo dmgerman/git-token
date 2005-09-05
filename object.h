@@ -260,6 +260,24 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+name|void
+name|object_list_append
+parameter_list|(
+name|struct
+name|object
+modifier|*
+name|item
+parameter_list|,
+name|struct
+name|object_list
+modifier|*
+modifier|*
+name|list_p
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|unsigned
 name|object_list_length
 parameter_list|(
