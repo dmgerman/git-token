@@ -173,6 +173,25 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* Parses and returns the tree in the given ent, chasing tags and commits. */
+end_comment
+
+begin_function_decl
+name|struct
+name|tree
+modifier|*
+name|parse_tree_indirect
+parameter_list|(
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|sha1
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
