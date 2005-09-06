@@ -3,6 +3,14 @@ begin_comment
 comment|/*  * GIT - The information manager from hell  *  * Copyright (C) Linus Torvalds, 2005  */
 end_comment
 
+begin_define
+DECL|macro|DBRT_DEBUG
+define|#
+directive|define
+name|DBRT_DEBUG
+value|1
+end_define
+
 begin_include
 include|#
 directive|include
@@ -276,14 +284,6 @@ return|;
 block|}
 end_function
 
-begin_define
-DECL|macro|DBRT_DEBUG
-define|#
-directive|define
-name|DBRT_DEBUG
-value|0
-end_define
-
 begin_function
 DECL|function|unpack_trees_rec
 specifier|static
@@ -448,6 +448,8 @@ block|}
 if|#
 directive|if
 name|DBRT_DEBUG
+operator|>
+literal|1
 if|if
 condition|(
 name|first
@@ -495,6 +497,8 @@ continue|continue;
 if|#
 directive|if
 name|DBRT_DEBUG
+operator|>
+literal|1
 name|printf
 argument_list|(
 literal|"%d %s\n"
@@ -1002,6 +1006,8 @@ decl_stmt|;
 if|#
 directive|if
 name|DBRT_DEBUG
+operator|>
+literal|1
 name|printf
 argument_list|(
 literal|"%s:\n"
@@ -1071,6 +1077,8 @@ expr_stmt|;
 if|#
 directive|if
 name|DBRT_DEBUG
+operator|>
+literal|1
 name|printf
 argument_list|(
 literal|"Added %d entries\n"
@@ -1836,6 +1844,74 @@ return|;
 block|}
 end_function
 
+begin_if
+if|#
+directive|if
+name|DBRT_DEBUG
+end_if
+
+begin_function
+DECL|function|show_stage_entry
+specifier|static
+name|void
+name|show_stage_entry
+parameter_list|(
+name|FILE
+modifier|*
+name|o
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|label
+parameter_list|,
+specifier|const
+name|struct
+name|cache_entry
+modifier|*
+name|ce
+parameter_list|)
+block|{
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"%s%06o %s %d\t%s\n"
+argument_list|,
+name|label
+argument_list|,
+name|ntohl
+argument_list|(
+name|ce
+operator|->
+name|ce_mode
+argument_list|)
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|ce
+operator|->
+name|sha1
+argument_list|)
+argument_list|,
+name|ce_stage
+argument_list|(
+name|ce
+argument_list|)
+argument_list|,
+name|ce
+operator|->
+name|name
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_function
 DECL|function|threeway_merge
 specifier|static
@@ -2018,7 +2094,7 @@ condition|)
 block|{
 name|head_match
 operator|=
-literal|1
+name|i
 expr_stmt|;
 block|}
 if|if
@@ -2036,7 +2112,7 @@ condition|)
 block|{
 name|remote_match
 operator|=
-literal|1
+name|i
 expr_stmt|;
 block|}
 block|}
@@ -2230,6 +2306,45 @@ break|break;
 block|}
 block|}
 block|}
+if|#
+directive|if
+name|DBRT_DEBUG
+else|else
+block|{
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"read-tree: warning #16 detected\n"
+argument_list|)
+expr_stmt|;
+name|show_stage_entry
+argument_list|(
+name|stderr
+argument_list|,
+literal|"head   "
+argument_list|,
+name|stages
+index|[
+name|head_match
+index|]
+argument_list|)
+expr_stmt|;
+name|show_stage_entry
+argument_list|(
+name|stderr
+argument_list|,
+literal|"remote "
+argument_list|,
+name|stages
+index|[
+name|remote_match
+index|]
+argument_list|)
+expr_stmt|;
+block|}
+endif|#
+directive|endif
 if|if
 condition|(
 name|head
