@@ -711,6 +711,29 @@ name|line
 parameter_list|)
 block|{
 comment|/* We do not want to mess with boundary.  Note that we do not 	 * handle nested multipart. 	 */
+if|if
+condition|(
+name|strcasestr
+argument_list|(
+name|line
+argument_list|,
+literal|"boundary="
+argument_list|)
+condition|)
+block|{
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"Not handling nested multipart message.\n"
+argument_list|)
+expr_stmt|;
+name|exit
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
 name|slurp_attr
 argument_list|(
 name|line
