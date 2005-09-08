@@ -1558,10 +1558,18 @@ if|if
 condition|(
 name|inetd_mode
 condition|)
+block|{
+name|fclose
+argument_list|(
+name|stderr
+argument_list|)
+expr_stmt|;
+comment|//FIXME: workaround
 return|return
 name|execute
 argument_list|()
 return|;
+block|}
 return|return
 name|serve
 argument_list|(
