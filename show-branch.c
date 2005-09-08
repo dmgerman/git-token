@@ -31,7 +31,7 @@ name|char
 name|show_branch_usage
 index|[]
 init|=
-literal|"git-show-branch [--all] [--heads] [--tags] [--more=count] [<refs>...]"
+literal|"git-show-branch [--all] [--heads] [--tags] [--more=count] [--merge-base] [<refs>...]"
 decl_stmt|;
 end_decl_stmt
 
@@ -1620,6 +1620,11 @@ operator|-
 literal|1
 operator|)
 decl_stmt|;
+name|int
+name|exit_status
+init|=
+literal|1
+decl_stmt|;
 while|while
 condition|(
 name|seen
@@ -1679,13 +1684,22 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
-return|return
+name|exit_status
+operator|=
 literal|0
-return|;
+expr_stmt|;
+name|commit
+operator|->
+name|object
+operator|.
+name|flags
+operator||=
+name|UNINTERESTING
+expr_stmt|;
 block|}
 block|}
 return|return
-literal|1
+name|exit_status
 return|;
 block|}
 end_function
