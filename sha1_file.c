@@ -289,7 +289,7 @@ parameter_list|)
 block|{
 name|git_dir
 operator|=
-name|gitenv
+name|getenv
 argument_list|(
 name|GIT_DIR_ENVIRONMENT
 argument_list|)
@@ -305,7 +305,7 @@ name|DEFAULT_GIT_DIR_ENVIRONMENT
 expr_stmt|;
 name|git_object_dir
 operator|=
-name|gitenv
+name|getenv
 argument_list|(
 name|DB_ENVIRONMENT
 argument_list|)
@@ -361,7 +361,7 @@ argument_list|)
 expr_stmt|;
 name|git_index_file
 operator|=
-name|gitenv
+name|getenv
 argument_list|(
 name|INDEX_ENVIRONMENT
 argument_list|)
@@ -396,7 +396,7 @@ expr_stmt|;
 block|}
 name|git_graft_file
 operator|=
-name|gitenv
+name|getenv
 argument_list|(
 name|GRAFT_ENVIRONMENT
 argument_list|)
@@ -1447,7 +1447,7 @@ name|alt
 decl_stmt|;
 name|alt
 operator|=
-name|gitenv
+name|getenv
 argument_list|(
 name|ALTERNATE_DB_ENVIRONMENT
 argument_list|)

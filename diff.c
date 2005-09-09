@@ -129,7 +129,7 @@ return|;
 comment|/* 	 * Default values above are meant to match the 	 * Linux kernel development style.  Examples of 	 * alternative styles you can specify via environment 	 * variables are: 	 * 	 * GIT_DIFF_OPTS="-c"; 	 */
 name|external_diff_cmd
 operator|=
-name|gitenv
+name|getenv
 argument_list|(
 literal|"GIT_EXTERNAL_DIFF"
 argument_list|)
@@ -137,7 +137,7 @@ expr_stmt|;
 comment|/* In case external diff fails... */
 name|env_diff_opts
 operator|=
-name|gitenv
+name|getenv
 argument_list|(
 literal|"GIT_DIFF_OPTS"
 argument_list|)

@@ -275,61 +275,6 @@ value|9418
 end_define
 
 begin_comment
-comment|/*  * Environment variables transition.  * We accept older names for now but warn.  */
-end_comment
-
-begin_function_decl
-specifier|extern
-name|char
-modifier|*
-name|gitenv_bc
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_ifdef
-ifdef|#
-directive|ifdef
-name|__GNUC__
-end_ifdef
-
-begin_define
-DECL|macro|gitenv
-define|#
-directive|define
-name|gitenv
-parameter_list|(
-name|e
-parameter_list|)
-value|(getenv(e) ? : gitenv_bc(e))
-end_define
-
-begin_else
-else|#
-directive|else
-end_else
-
-begin_define
-DECL|macro|gitenv
-define|#
-directive|define
-name|gitenv
-parameter_list|(
-name|e
-parameter_list|)
-value|(getenv(e) ? getenv(e) : gitenv_bc(e))
-end_define
-
-begin_endif
-endif|#
-directive|endif
-end_endif
-
-begin_comment
 comment|/*  * Basic data structures for the directory cache  */
 end_comment
 
