@@ -4972,7 +4972,7 @@ name|DIFF_STATUS_COPIED
 expr_stmt|;
 continue|continue;
 block|}
-comment|/* See if there is some other filepair that 			 * copies from the same source as us.  If so 			 * we are a copy.  Otherwise we are a rename. 			 */
+comment|/* See if there is some other filepair that 			 * copies from the same source as us.  If so 			 * we are a copy.  Otherwise we are either a 			 * copy if the path stays, or a rename if it 			 * does not, but we already handled "stays" case. 			 */
 for|for
 control|(
 name|j
