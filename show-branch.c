@@ -2435,6 +2435,10 @@ condition|(
 literal|1
 operator|<
 name|num_rev
+operator|||
+name|extra
+operator|<
+literal|0
 condition|)
 block|{
 for|for
