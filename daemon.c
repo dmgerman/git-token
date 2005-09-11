@@ -326,7 +326,7 @@ name|pid_t
 name|pid
 decl_stmt|;
 DECL|member|addrlen
-name|socklen_t
+name|int
 name|addrlen
 decl_stmt|;
 DECL|member|address
@@ -360,7 +360,7 @@ name|sockaddr
 modifier|*
 name|addr
 parameter_list|,
-name|socklen_t
+name|int
 name|addrlen
 parameter_list|)
 block|{
@@ -733,7 +733,7 @@ name|sockaddr
 modifier|*
 name|addr
 parameter_list|,
-name|socklen_t
+name|int
 name|addrlen
 parameter_list|)
 block|{
@@ -1344,7 +1344,7 @@ name|struct
 name|sockaddr_storage
 name|ss
 decl_stmt|;
-name|socklen_t
+name|int
 name|sslen
 init|=
 sizeof|sizeof
