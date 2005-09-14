@@ -1892,9 +1892,24 @@ modifier|*
 name|ce
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|ce
+condition|)
 name|fprintf
 argument_list|(
-name|stderr
+name|o
+argument_list|,
+literal|"%s (missing)\n"
+argument_list|,
+name|label
+argument_list|)
+expr_stmt|;
+else|else
+name|fprintf
+argument_list|(
+name|o
 argument_list|,
 literal|"%s%06o %s %d\t%s\n"
 argument_list|,
