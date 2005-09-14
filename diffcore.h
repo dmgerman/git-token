@@ -207,7 +207,7 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|void
-name|diff_free_filespec
+name|diff_free_filespec_data
 parameter_list|(
 name|struct
 name|diff_filespec
