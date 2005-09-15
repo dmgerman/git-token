@@ -2932,6 +2932,10 @@ name|list
 argument_list|)
 expr_stmt|;
 block|}
+name|save_commit_buffer
+operator|=
+name|verbose_header
+expr_stmt|;
 if|if
 condition|(
 operator|!
