@@ -93,6 +93,13 @@ end_struct
 begin_decl_stmt
 specifier|extern
 name|int
+name|track_object_refs
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
+name|int
 name|nr_objs
 decl_stmt|;
 end_decl_stmt
