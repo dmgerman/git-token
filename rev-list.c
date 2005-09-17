@@ -2904,6 +2904,16 @@ name|dotdot
 operator|=
 literal|0
 expr_stmt|;
+if|if
+condition|(
+operator|!
+operator|*
+name|next
+condition|)
+name|next
+operator|=
+literal|"HEAD"
+expr_stmt|;
 name|exclude
 operator|=
 name|get_commit_reference
@@ -2952,7 +2962,7 @@ expr_stmt|;
 continue|continue;
 block|}
 operator|*
-name|next
+name|dotdot
 operator|=
 literal|'.'
 expr_stmt|;
