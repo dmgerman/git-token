@@ -23,6 +23,15 @@ directive|include
 file|"cache.h"
 end_include
 
+begin_decl_stmt
+DECL|variable|save_commit_buffer
+name|int
+name|save_commit_buffer
+init|=
+literal|1
+decl_stmt|;
+end_decl_stmt
+
 begin_struct
 DECL|struct|sort_node
 struct|struct
@@ -1524,6 +1533,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|save_commit_buffer
+operator|&&
 operator|!
 name|ret
 condition|)

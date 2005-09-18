@@ -60,6 +60,15 @@ name|obj_allocs
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|track_object_refs
+name|int
+name|track_object_refs
+init|=
+literal|1
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|find_object
 specifier|static
@@ -378,17 +387,23 @@ name|object_list
 modifier|*
 modifier|*
 name|pp
-init|=
+decl_stmt|,
+modifier|*
+name|p
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|track_object_refs
+condition|)
+return|return;
+name|pp
+operator|=
 operator|&
 name|refer
 operator|->
 name|refs
-decl_stmt|;
-name|struct
-name|object_list
-modifier|*
-name|p
-decl_stmt|;
+expr_stmt|;
 while|while
 condition|(
 operator|(
@@ -479,6 +494,16 @@ name|obj
 operator|->
 name|refs
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|track_object_refs
+condition|)
+name|die
+argument_list|(
+literal|"cannot do reachability with object refs turned off"
+argument_list|)
+expr_stmt|;
 comment|/* If we've been here already, don't bother */
 if|if
 condition|(

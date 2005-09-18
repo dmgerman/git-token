@@ -11,18 +11,6 @@ DECL|macro|_XOPEN_SOURCE
 comment|/* glibc2 needs this */
 end_comment
 
-begin_define
-DECL|macro|__EXTENSIONS__
-define|#
-directive|define
-name|__EXTENSIONS__
-end_define
-
-begin_comment
-DECL|macro|__EXTENSIONS__
-comment|/* solaris needs this */
-end_comment
-
 begin_include
 include|#
 directive|include
