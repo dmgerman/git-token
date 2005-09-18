@@ -216,12 +216,44 @@ if|if
 condition|(
 name|allow_remove
 condition|)
-return|return
+block|{
+if|if
+condition|(
 name|remove_file_from_cache
 argument_list|(
 name|path
 argument_list|)
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"%s: cannot remove from the index"
+argument_list|,
+name|path
+argument_list|)
 return|;
+else|else
+return|return
+literal|0
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|status
+operator|<
+literal|0
+condition|)
+block|{
+return|return
+name|error
+argument_list|(
+literal|"%s: does not exist and --remove not passed"
+argument_list|,
+name|path
+argument_list|)
+return|;
+block|}
 block|}
 if|if
 condition|(
@@ -232,7 +264,7 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"%s: is a directory"
+literal|"%s: is a directory - add files inside instead"
 argument_list|,
 name|path
 argument_list|)
@@ -349,8 +381,17 @@ operator|<
 literal|0
 condition|)
 return|return
-operator|-
-literal|1
+name|error
+argument_list|(
+literal|"open(\"%s\"): %s"
+argument_list|,
+name|path
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
+argument_list|)
 return|;
 if|if
 condition|(
@@ -374,8 +415,12 @@ operator|<
 literal|0
 condition|)
 return|return
-operator|-
-literal|1
+name|error
+argument_list|(
+literal|"%s: failed to insert into database"
+argument_list|,
+name|path
+argument_list|)
 return|;
 break|break;
 case|case
@@ -412,14 +457,29 @@ operator|.
 name|st_size
 condition|)
 block|{
+name|char
+modifier|*
+name|errstr
+init|=
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
+decl_stmt|;
 name|free
 argument_list|(
 name|target
 argument_list|)
 expr_stmt|;
 return|return
-operator|-
-literal|1
+name|error
+argument_list|(
+literal|"readlink(\"%s\"): %s"
+argument_list|,
+name|path
+argument_list|,
+name|errstr
+argument_list|)
 return|;
 block|}
 if|if
@@ -477,8 +537,12 @@ name|sha1
 argument_list|)
 condition|)
 return|return
-operator|-
-literal|1
+name|error
+argument_list|(
+literal|"%s: failed to insert into database"
+argument_list|,
+name|path
+argument_list|)
 return|;
 name|free
 argument_list|(
@@ -488,8 +552,12 @@ expr_stmt|;
 break|break;
 default|default:
 return|return
-operator|-
-literal|1
+name|error
+argument_list|(
+literal|"%s: unsupported file type"
+argument_list|,
+name|path
+argument_list|)
 return|;
 block|}
 name|option
@@ -508,13 +576,25 @@ name|ADD_CACHE_OK_TO_REPLACE
 else|:
 literal|0
 expr_stmt|;
-return|return
+if|if
+condition|(
 name|add_cache_entry
 argument_list|(
 name|ce
 argument_list|,
 name|option
 argument_list|)
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"%s: cannot add to the index - missing --add option?"
+argument_list|,
+name|path
+argument_list|)
+return|;
+return|return
+literal|0
 return|;
 block|}
 end_function
@@ -1866,7 +1946,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"git-update-index: --force-remove cannot remove %s"
+literal|"git-update-index: unable to remove %s"
 argument_list|,
 name|path
 argument_list|)
@@ -1882,7 +1962,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"Unable to add %s to database; maybe you want to use --add option?"
+literal|"Unable to process file %s"
 argument_list|,
 name|path
 argument_list|)
