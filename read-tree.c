@@ -3151,7 +3151,11 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
 name|update
+operator|||
+name|index_only
+operator|)
 operator|&&
 operator|!
 name|merge
