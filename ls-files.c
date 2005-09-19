@@ -82,6 +82,16 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|show_modified
+specifier|static
+name|int
+name|show_modified
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|show_killed
 specifier|static
 name|int
@@ -196,6 +206,18 @@ specifier|const
 name|char
 modifier|*
 name|tag_killed
+init|=
+literal|""
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|tag_modified
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|tag_modified
 init|=
 literal|""
 decl_stmt|;
@@ -2385,6 +2407,8 @@ block|}
 if|if
 condition|(
 name|show_deleted
+operator||
+name|show_modified
 condition|)
 block|{
 for|for
@@ -2415,6 +2439,9 @@ name|struct
 name|stat
 name|st
 decl_stmt|;
+name|int
+name|err
+decl_stmt|;
 if|if
 condition|(
 name|excluded
@@ -2427,9 +2454,8 @@ operator|!=
 name|show_ignored
 condition|)
 continue|continue;
-if|if
-condition|(
-operator|!
+name|err
+operator|=
 name|lstat
 argument_list|(
 name|ce
@@ -2439,11 +2465,35 @@ argument_list|,
 operator|&
 name|st
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|show_deleted
+operator|&&
+name|err
 condition|)
-continue|continue;
 name|show_ce_entry
 argument_list|(
 name|tag_removed
+argument_list|,
+name|ce
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|show_modified
+operator|&&
+name|ce_modified
+argument_list|(
+name|ce
+argument_list|,
+operator|&
+name|st
+argument_list|)
+condition|)
+name|show_ce_entry
+argument_list|(
+name|tag_modified
 argument_list|,
 name|ce
 argument_list|)
@@ -2795,7 +2845,7 @@ name|char
 name|ls_files_usage
 index|[]
 init|=
-literal|"git-ls-files [-z] [-t] (--[cached|deleted|others|stage|unmerged|killed])* "
+literal|"git-ls-files [-z] [-t] (--[cached|deleted|others|stage|unmerged|killed|modified])* "
 literal|"[ --ignored ] [--exclude=<pattern>] [--exclude-from=<file>] "
 literal|"[ --exclude-per-directory=<filename> ]"
 decl_stmt|;
@@ -2902,6 +2952,10 @@ name|tag_removed
 operator|=
 literal|"R "
 expr_stmt|;
+name|tag_modified
+operator|=
+literal|"C "
+expr_stmt|;
 name|tag_other
 operator|=
 literal|"? "
@@ -2957,6 +3011,31 @@ argument_list|)
 condition|)
 block|{
 name|show_deleted
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"-m"
+argument_list|)
+operator|||
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--modified"
+argument_list|)
+condition|)
+block|{
+name|show_modified
 operator|=
 literal|1
 expr_stmt|;
@@ -3343,6 +3422,8 @@ operator||
 name|show_unmerged
 operator||
 name|show_killed
+operator||
+name|show_modified
 operator|)
 condition|)
 name|show_cached
