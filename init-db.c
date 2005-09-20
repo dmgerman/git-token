@@ -825,6 +825,13 @@ argument_list|,
 name|len
 argument_list|)
 expr_stmt|;
+name|path
+index|[
+name|len
+index|]
+operator|=
+literal|0
+expr_stmt|;
 name|copy_templates_1
 argument_list|(
 name|path
