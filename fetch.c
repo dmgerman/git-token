@@ -740,17 +740,6 @@ name|sha1
 argument_list|)
 expr_stmt|;
 comment|/* We already have it, so we should scan it now. */
-if|if
-condition|(
-name|obj
-operator|->
-name|flags
-operator|&
-name|TO_SCAN
-condition|)
-return|return
-literal|0
-return|;
 name|obj
 operator|->
 name|flags
