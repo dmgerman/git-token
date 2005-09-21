@@ -3741,6 +3741,23 @@ name|strcmp
 argument_list|(
 name|arg
 argument_list|,
+literal|"--name-status"
+argument_list|)
+condition|)
+name|options
+operator|->
+name|output_format
+operator|=
+name|DIFF_FORMAT_NAME_STATUS
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
 literal|"-R"
 argument_list|)
 condition|)
@@ -4465,6 +4482,9 @@ name|line_termination
 parameter_list|,
 name|int
 name|inter_name_termination
+parameter_list|,
+name|int
+name|output_format
 parameter_list|)
 block|{
 name|int
@@ -4647,6 +4667,13 @@ literal|0
 expr_stmt|;
 break|break;
 block|}
+if|if
+condition|(
+name|output_format
+operator|!=
+name|DIFF_FORMAT_NAME_STATUS
+condition|)
+block|{
 name|printf
 argument_list|(
 literal|":%06o %06o %s "
@@ -4675,7 +4702,7 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"%s %s%c%s"
+literal|"%s "
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -4685,6 +4712,12 @@ name|two
 operator|->
 name|sha1
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+name|printf
+argument_list|(
+literal|"%s%c%s"
 argument_list|,
 name|status
 argument_list|,
@@ -5690,6 +5723,9 @@ break|break;
 case|case
 name|DIFF_FORMAT_RAW
 case|:
+case|case
+name|DIFF_FORMAT_NAME_STATUS
+case|:
 name|diff_flush_raw
 argument_list|(
 name|p
@@ -5697,6 +5733,8 @@ argument_list|,
 name|line_termination
 argument_list|,
 name|inter_name_termination
+argument_list|,
+name|diff_output_format
 argument_list|)
 expr_stmt|;
 break|break;
