@@ -305,14 +305,6 @@ value|1U
 end_define
 
 begin_define
-DECL|macro|TO_FETCH
-define|#
-directive|define
-name|TO_FETCH
-value|2U
-end_define
-
-begin_define
 DECL|macro|TO_SCAN
 define|#
 directive|define
@@ -792,11 +784,7 @@ name|obj
 operator|->
 name|flags
 operator|&
-operator|(
 name|COMPLETE
-operator||
-name|TO_FETCH
-operator|)
 condition|)
 return|return
 literal|0
@@ -817,12 +805,6 @@ name|process_queue_end
 operator|)
 operator|->
 name|next
-expr_stmt|;
-name|obj
-operator|->
-name|flags
-operator||=
-name|TO_FETCH
 expr_stmt|;
 name|prefetch
 argument_list|(
