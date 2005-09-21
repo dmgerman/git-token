@@ -732,13 +732,6 @@ name|sha1
 argument_list|)
 condition|)
 block|{
-name|parse_object
-argument_list|(
-name|obj
-operator|->
-name|sha1
-argument_list|)
-expr_stmt|;
 comment|/* We already have it, so we should scan it now. */
 name|obj
 operator|->
