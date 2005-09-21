@@ -1249,6 +1249,7 @@ DECL|function|remove_file_from_cache
 name|int
 name|remove_file_from_cache
 parameter_list|(
+specifier|const
 name|char
 modifier|*
 name|path

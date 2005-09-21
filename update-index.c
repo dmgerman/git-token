@@ -140,6 +140,7 @@ specifier|static
 name|int
 name|add_file_to_cache
 parameter_list|(
+specifier|const
 name|char
 modifier|*
 name|path
@@ -986,6 +987,7 @@ specifier|static
 name|int
 name|verify_path
 parameter_list|(
+specifier|const
 name|char
 modifier|*
 name|path
@@ -1072,14 +1074,17 @@ specifier|static
 name|int
 name|add_cacheinfo
 parameter_list|(
+specifier|const
 name|char
 modifier|*
 name|arg1
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 name|arg2
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 name|arg3
@@ -1265,6 +1270,7 @@ parameter_list|(
 name|int
 name|argc
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
@@ -1347,6 +1353,7 @@ name|i
 operator|++
 control|)
 block|{
+specifier|const
 name|char
 modifier|*
 name|path

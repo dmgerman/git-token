@@ -226,6 +226,7 @@ end_decl_stmt
 begin_decl_stmt
 DECL|variable|exclude_per_dir
 specifier|static
+specifier|const
 name|char
 modifier|*
 name|exclude_per_dir
@@ -2859,6 +2860,7 @@ parameter_list|(
 name|int
 name|argc
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
@@ -2903,6 +2905,7 @@ name|i
 operator|++
 control|)
 block|{
+specifier|const
 name|char
 modifier|*
 name|arg

@@ -7,6 +7,7 @@ end_include
 
 begin_function
 DECL|function|prefix_path
+specifier|const
 name|char
 modifier|*
 name|prefix_path
@@ -19,11 +20,13 @@ parameter_list|,
 name|int
 name|len
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 name|path
 parameter_list|)
 block|{
+specifier|const
 name|char
 modifier|*
 name|orig
@@ -224,12 +227,14 @@ name|char
 modifier|*
 name|prefix
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
 name|pathspec
 parameter_list|)
 block|{
+specifier|const
 name|char
 modifier|*
 name|entry
@@ -237,6 +242,7 @@ init|=
 operator|*
 name|pathspec
 decl_stmt|;
+specifier|const
 name|char
 modifier|*
 modifier|*
