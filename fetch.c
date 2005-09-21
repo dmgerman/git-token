@@ -301,15 +301,7 @@ DECL|macro|COMPLETE
 define|#
 directive|define
 name|COMPLETE
-value|1U
-end_define
-
-begin_define
-DECL|macro|TO_SCAN
-define|#
-directive|define
-name|TO_SCAN
-value|4U
+value|(1U<< 0)
 end_define
 
 begin_define
@@ -317,7 +309,15 @@ DECL|macro|SEEN
 define|#
 directive|define
 name|SEEN
-value|16U
+value|(1U<< 1)
+end_define
+
+begin_define
+DECL|macro|TO_SCAN
+define|#
+directive|define
+name|TO_SCAN
+value|(1U<< 2)
 end_define
 
 begin_decl_stmt
