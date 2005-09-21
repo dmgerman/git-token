@@ -442,10 +442,9 @@ specifier|extern
 name|void
 name|diffcore_rename
 parameter_list|(
-name|int
-name|rename_copy
-parameter_list|,
-name|int
+name|struct
+name|diff_options
+modifier|*
 parameter_list|)
 function_decl|;
 end_function_decl
