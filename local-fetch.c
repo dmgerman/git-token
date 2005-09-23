@@ -436,6 +436,12 @@ operator|<
 literal|0
 condition|)
 block|{
+if|if
+condition|(
+name|ifd
+operator|>=
+literal|0
+condition|)
 name|close
 argument_list|(
 name|ifd
@@ -551,6 +557,12 @@ operator|.
 name|st_size
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|ofd
+operator|>=
+literal|0
+condition|)
 name|close
 argument_list|(
 name|ofd
