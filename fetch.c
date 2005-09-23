@@ -1069,6 +1069,10 @@ name|save_commit_buffer
 operator|=
 literal|0
 expr_stmt|;
+name|track_object_refs
+operator|=
+literal|0
+expr_stmt|;
 if|if
 condition|(
 name|write_ref
