@@ -213,6 +213,15 @@ argument_list|(
 name|filename
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|dir
+condition|)
+return|return
+operator|-
+literal|1
+return|;
 while|while
 condition|(
 operator|(
@@ -274,6 +283,11 @@ name|sha1
 argument_list|)
 expr_stmt|;
 block|}
+name|closedir
+argument_list|(
+name|dir
+argument_list|)
+expr_stmt|;
 return|return
 literal|0
 return|;
