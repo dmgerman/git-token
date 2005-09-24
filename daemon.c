@@ -53,6 +53,20 @@ directive|include
 file|<arpa/inet.h>
 end_include
 
+begin_include
+include|#
+directive|include
+file|<syslog.h>
+end_include
+
+begin_decl_stmt
+DECL|variable|log_syslog
+specifier|static
+name|int
+name|log_syslog
+decl_stmt|;
+end_decl_stmt
+
 begin_decl_stmt
 DECL|variable|verbose
 specifier|static
@@ -69,7 +83,7 @@ name|char
 name|daemon_usage
 index|[]
 init|=
-literal|"git-daemon [--verbose] [--inetd | --port=n]"
+literal|"git-daemon [--verbose] [--syslog] [--inetd | --port=n]"
 decl_stmt|;
 end_decl_stmt
 
@@ -79,6 +93,9 @@ specifier|static
 name|void
 name|logreport
 parameter_list|(
+name|int
+name|priority
+parameter_list|,
 specifier|const
 name|char
 modifier|*
@@ -151,6 +168,22 @@ argument_list|,
 name|params
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|log_syslog
+condition|)
+block|{
+name|syslog
+argument_list|(
+name|priority
+argument_list|,
+literal|"%s"
+argument_list|,
+name|buf
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 comment|/* maxlen counted our own LF but also counts space given to 	 * vsnprintf for the terminating NUL.  We want to make sure that 	 * we have space for our own LF and NUL after the "meat" of the 	 * message, so truncate it at maxlen - 1. 	 */
 if|if
 condition|(
@@ -234,6 +267,8 @@ argument_list|)
 expr_stmt|;
 name|logreport
 argument_list|(
+name|LOG_ERR
+argument_list|,
 name|err
 argument_list|,
 name|params
@@ -278,6 +313,8 @@ argument_list|)
 expr_stmt|;
 name|logreport
 argument_list|(
+name|LOG_INFO
+argument_list|,
 name|err
 argument_list|,
 name|params
@@ -1231,6 +1268,9 @@ init|;
 condition|;
 control|)
 block|{
+name|int
+name|status
+decl_stmt|;
 name|pid_t
 name|pid
 init|=
@@ -1239,7 +1279,8 @@ argument_list|(
 operator|-
 literal|1
 argument_list|,
-name|NULL
+operator|&
+name|status
 argument_list|,
 name|WNOHANG
 argument_list|)
@@ -1276,15 +1317,60 @@ if|if
 condition|(
 name|verbose
 condition|)
+block|{
+name|char
+modifier|*
+name|dead
+init|=
+literal|""
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|WIFEXITED
+argument_list|(
+name|status
+argument_list|)
+operator|||
+name|WEXITSTATUS
+argument_list|(
+name|status
+argument_list|)
+operator|>
+literal|0
+condition|)
+name|dead
+operator|=
+literal|" (with error)"
+expr_stmt|;
+if|if
+condition|(
+name|log_syslog
+condition|)
+name|syslog
+argument_list|(
+name|LOG_INFO
+argument_list|,
+literal|"[%d] Disconnected%s"
+argument_list|,
+name|pid
+argument_list|,
+name|dead
+argument_list|)
+expr_stmt|;
+else|else
 name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"[%d] Disconnected\n"
+literal|"[%d] Disconnected%s\n"
 argument_list|,
 name|pid
+argument_list|,
+name|dead
 argument_list|)
 expr_stmt|;
+block|}
 continue|continue;
 block|}
 break|break;
@@ -1975,6 +2061,32 @@ block|{
 name|verbose
 operator|=
 literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--syslog"
+argument_list|)
+condition|)
+block|{
+name|log_syslog
+operator|=
+literal|1
+expr_stmt|;
+name|openlog
+argument_list|(
+literal|"git-daemon"
+argument_list|,
+literal|0
+argument_list|,
+name|LOG_DAEMON
+argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
