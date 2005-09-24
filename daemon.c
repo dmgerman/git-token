@@ -115,8 +115,11 @@ argument_list|(
 name|buf
 argument_list|)
 argument_list|,
-literal|"[%d] "
+literal|"[%ld] "
 argument_list|,
+operator|(
+name|long
+operator|)
 name|getpid
 argument_list|()
 argument_list|)
