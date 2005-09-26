@@ -99,6 +99,17 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|curl_errorstr
+specifier|static
+name|char
+name|curl_errorstr
+index|[
+name|CURL_ERROR_SIZE
+index|]
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|initial_base
 specifier|static
 name|char
@@ -614,6 +625,15 @@ argument_list|,
 name|no_pragma_header
 argument_list|)
 expr_stmt|;
+name|curl_easy_setopt
+argument_list|(
+name|curl
+argument_list|,
+name|CURLOPT_ERRORBUFFER
+argument_list|,
+name|curl_errorstr
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|curl_easy_perform
@@ -630,9 +650,11 @@ expr_stmt|;
 return|return
 name|error
 argument_list|(
-literal|"Unable to get pack index %s"
+literal|"Unable to get pack index %s\n%s"
 argument_list|,
 name|url
+argument_list|,
+name|curl_errorstr
 argument_list|)
 return|;
 block|}
@@ -1443,6 +1465,15 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
+name|curl_easy_setopt
+argument_list|(
+name|curl
+argument_list|,
+name|CURLOPT_ERRORBUFFER
+argument_list|,
+name|curl_errorstr
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|curl_easy_perform
@@ -1450,12 +1481,14 @@ argument_list|(
 name|curl
 argument_list|)
 condition|)
-block|{
 return|return
-operator|-
-literal|1
+name|error
+argument_list|(
+literal|"%s"
+argument_list|,
+name|curl_errorstr
+argument_list|)
 return|;
-block|}
 while|while
 condition|(
 name|i
@@ -1772,6 +1805,15 @@ argument_list|,
 name|no_pragma_header
 argument_list|)
 expr_stmt|;
+name|curl_easy_setopt
+argument_list|(
+name|curl
+argument_list|,
+name|CURLOPT_ERRORBUFFER
+argument_list|,
+name|curl_errorstr
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|curl_easy_perform
@@ -1788,9 +1830,11 @@ expr_stmt|;
 return|return
 name|error
 argument_list|(
-literal|"Unable to get pack file %s"
+literal|"Unable to get pack file %s\n%s"
 argument_list|,
 name|url
+argument_list|,
+name|curl_errorstr
 argument_list|)
 return|;
 block|}
@@ -2008,6 +2052,15 @@ argument_list|,
 name|no_pragma_header
 argument_list|)
 expr_stmt|;
+name|curl_easy_setopt
+argument_list|(
+name|curl
+argument_list|,
+name|CURLOPT_ERRORBUFFER
+argument_list|,
+name|curl_errorstr
+argument_list|)
+expr_stmt|;
 name|url
 operator|=
 name|xmalloc
@@ -2106,8 +2159,12 @@ name|filename
 argument_list|)
 expr_stmt|;
 return|return
-operator|-
-literal|1
+name|error
+argument_list|(
+literal|"%s"
+argument_list|,
+name|curl_errorstr
+argument_list|)
 return|;
 block|}
 name|fchmod
@@ -2450,6 +2507,15 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
+name|curl_easy_setopt
+argument_list|(
+name|curl
+argument_list|,
+name|CURLOPT_ERRORBUFFER
+argument_list|,
+name|curl_errorstr
+argument_list|)
+expr_stmt|;
 name|url
 operator|=
 name|xmalloc
@@ -2520,11 +2586,13 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"Couldn't get %s for %s\n"
+literal|"Couldn't get %s for %s\n%s"
 argument_list|,
 name|url
 argument_list|,
 name|ref
+argument_list|,
+name|curl_errorstr
 argument_list|)
 return|;
 name|hex
