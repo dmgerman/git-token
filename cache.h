@@ -617,6 +617,17 @@ begin_function_decl
 specifier|extern
 name|char
 modifier|*
+name|get_git_dir
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|char
+modifier|*
 name|get_object_directory
 parameter_list|(
 name|void
