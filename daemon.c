@@ -637,6 +637,11 @@ operator|-
 literal|1
 return|;
 block|}
+name|chdir
+argument_list|(
+literal|".git"
+argument_list|)
+expr_stmt|;
 comment|/* 	 * Security on the cheap. 	 * 	 * We want a readable HEAD, usable "objects" directory, and  	 * a "git-daemon-export-ok" flag that says that the other side 	 * is ok with us doing this. 	 */
 if|if
 condition|(
