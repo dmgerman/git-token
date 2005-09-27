@@ -139,6 +139,17 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
+comment|/* Set to check on all reachable objects. */
+end_comment
+
+begin_decl_stmt
+specifier|extern
+name|int
+name|get_recover
+decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|/* Report what we got under get_verbosely */
 end_comment
 

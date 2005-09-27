@@ -101,6 +101,15 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|get_recover
+name|int
+name|get_recover
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|current_commit_sha1
 specifier|static
 name|unsigned
@@ -1107,11 +1116,18 @@ operator|-
 literal|1
 return|;
 block|}
+if|if
+condition|(
+operator|!
+name|get_recover
+condition|)
+block|{
 name|for_each_ref
 argument_list|(
 name|mark_complete
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|interpret_target
