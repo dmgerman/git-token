@@ -1697,7 +1697,7 @@ end_define
 begin_ifndef
 ifndef|#
 directive|ifndef
-name|__CYGWIN__
+name|NO_IPV6
 end_ifndef
 
 begin_function
@@ -2021,7 +2021,7 @@ directive|else
 end_else
 
 begin_comment
-comment|/* __CYGWIN__ */
+comment|/* NO_IPV6 */
 end_comment
 
 begin_function
@@ -2408,7 +2408,7 @@ directive|endif
 end_endif
 
 begin_comment
-comment|/* __CYGWIN__ */
+comment|/* NO_IPV6 */
 end_comment
 
 begin_comment
