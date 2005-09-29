@@ -2304,7 +2304,10 @@ name|sa
 operator|.
 name|sin_port
 operator|=
+name|htons
+argument_list|(
 name|nport
+argument_list|)
 expr_stmt|;
 name|memcpy
 argument_list|(
