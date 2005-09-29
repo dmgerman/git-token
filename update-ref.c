@@ -39,6 +39,7 @@ end_define
 
 begin_function
 DECL|function|resolve_ref
+specifier|static
 specifier|const
 name|char
 modifier|*
