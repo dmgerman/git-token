@@ -1720,6 +1720,37 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|create_symref
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|git_HEAD
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|refs_heads_master
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|validate_symref
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|git_HEAD
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/* General helper functions */
 end_comment
