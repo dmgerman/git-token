@@ -2944,6 +2944,11 @@ name|ssl_cert
 argument_list|)
 expr_stmt|;
 block|}
+if|#
+directive|if
+name|LIBCURL_VERSION_NUM
+operator|>=
+literal|0x070902
 if|if
 condition|(
 operator|(
@@ -2968,6 +2973,8 @@ name|ssl_key
 argument_list|)
 expr_stmt|;
 block|}
+endif|#
+directive|endif
 if|#
 directive|if
 name|LIBCURL_VERSION_NUM
