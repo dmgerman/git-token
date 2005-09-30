@@ -2223,6 +2223,13 @@ operator|=
 name|POLLIN
 expr_stmt|;
 block|}
+name|signal
+argument_list|(
+name|SIGCHLD
+argument_list|,
+name|child_handler
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 init|;
@@ -2406,13 +2413,6 @@ decl_stmt|,
 modifier|*
 name|socklist
 decl_stmt|;
-name|signal
-argument_list|(
-name|SIGCHLD
-argument_list|,
-name|child_handler
-argument_list|)
-expr_stmt|;
 name|socknum
 operator|=
 name|socksetup
