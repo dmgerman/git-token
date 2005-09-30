@@ -58,22 +58,6 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|null_sha1
-specifier|static
-name|unsigned
-name|char
-name|null_sha1
-index|[
-literal|20
-index|]
-init|=
-block|{
-literal|0
-block|, }
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|variable|use_size_cache
 specifier|static
 name|int
@@ -2162,6 +2146,7 @@ name|unsigned
 name|long
 name|size
 parameter_list|,
+specifier|const
 name|unsigned
 name|char
 modifier|*

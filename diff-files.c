@@ -179,19 +179,6 @@ modifier|*
 name|argv
 parameter_list|)
 block|{
-specifier|static
-specifier|const
-name|unsigned
-name|char
-name|null_sha1
-index|[
-literal|20
-index|]
-init|=
-block|{
-literal|0
-block|, }
-decl_stmt|;
 specifier|const
 name|char
 modifier|*

@@ -1220,6 +1220,18 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_decl_stmt
+specifier|extern
+specifier|const
+name|unsigned
+name|char
+name|null_sha1
+index|[
+literal|20
+index|]
+decl_stmt|;
+end_decl_stmt
+
 begin_function_decl
 name|int
 name|git_mkstemp
