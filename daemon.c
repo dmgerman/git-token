@@ -2301,6 +2301,7 @@ name|struct
 name|sockaddr_storage
 name|ss
 decl_stmt|;
+name|unsigned
 name|int
 name|sslen
 init|=
