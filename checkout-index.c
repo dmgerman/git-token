@@ -161,6 +161,10 @@ parameter_list|)
 block|{
 name|int
 name|i
+decl_stmt|,
+name|errs
+init|=
+literal|0
 decl_stmt|;
 for|for
 control|(
@@ -206,11 +210,20 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-return|return
-operator|-
-literal|1
-return|;
+name|errs
+operator|++
+expr_stmt|;
 block|}
+if|if
+condition|(
+name|errs
+condition|)
+comment|/* we have already done our error reporting. 		 * exit with the same code as die(). 		 */
+name|exit
+argument_list|(
+literal|128
+argument_list|)
+expr_stmt|;
 return|return
 literal|0
 return|;
