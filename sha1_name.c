@@ -777,8 +777,14 @@ literal|20
 argument_list|)
 condition|)
 return|return
-operator|-
-literal|1
+name|error
+argument_list|(
+literal|"short SHA1 %.*s is ambiguous."
+argument_list|,
+name|len
+argument_list|,
+name|canonical
+argument_list|)
 return|;
 name|memcpy
 argument_list|(
