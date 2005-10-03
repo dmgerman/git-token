@@ -152,7 +152,7 @@ name|O_CREAT
 operator||
 name|O_EXCL
 argument_list|,
-literal|0600
+literal|0666
 argument_list|)
 return|;
 block|}

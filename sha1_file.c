@@ -92,6 +92,22 @@ directive|endif
 end_endif
 
 begin_decl_stmt
+DECL|variable|null_sha1
+specifier|const
+name|unsigned
+name|char
+name|null_sha1
+index|[
+literal|20
+index|]
+init|=
+block|{
+literal|0
+block|, }
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|sha1_file_open_flag
 specifier|static
 name|unsigned

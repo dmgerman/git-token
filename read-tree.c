@@ -60,6 +60,26 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|nontrivial_merge
+specifier|static
+name|int
+name|nontrivial_merge
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|trivial_merges_only
+specifier|static
+name|int
+name|trivial_merges_only
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|head_idx
 specifier|static
 name|int
@@ -1505,6 +1525,17 @@ return|return
 operator|-
 literal|1
 return|;
+if|if
+condition|(
+name|trivial_merges_only
+operator|&&
+name|nontrivial_merge
+condition|)
+name|die
+argument_list|(
+literal|"Merge requires file-level merging"
+argument_list|)
+expr_stmt|;
 name|check_updates
 argument_list|(
 name|active_cache
@@ -2290,6 +2321,10 @@ name|index
 argument_list|)
 expr_stmt|;
 block|}
+name|nontrivial_merge
+operator|=
+literal|1
+expr_stmt|;
 comment|/* #2, #3, #4, #6, #7, #9, #11. */
 name|count
 operator|=
@@ -3041,20 +3076,15 @@ name|strcmp
 argument_list|(
 name|arg
 argument_list|,
-literal|"--head"
+literal|"--trivial"
 argument_list|)
 condition|)
 block|{
-name|head_idx
+name|trivial_merges_only
 operator|=
-name|stage
-operator|-
 literal|1
 expr_stmt|;
-name|fn
-operator|=
-name|threeway_merge
-expr_stmt|;
+continue|continue;
 block|}
 comment|/* "-m" stands for "merge", meaning we start in stage 1 */
 if|if
@@ -3168,9 +3198,6 @@ expr_stmt|;
 if|if
 condition|(
 name|merge
-operator|&&
-operator|!
-name|fn
 condition|)
 block|{
 if|if
@@ -3226,14 +3253,6 @@ name|threeway_merge
 expr_stmt|;
 break|break;
 block|}
-block|}
-if|if
-condition|(
-name|head_idx
-operator|<
-literal|0
-condition|)
-block|{
 if|if
 condition|(
 name|stage
