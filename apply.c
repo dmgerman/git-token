@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_comment
-comment|/*  * apply.c  *  * Copyright (C) Linus Torvalds, 2005  *  * This applies patches on top of some (arbitrary) version of the SCM.  *  * NOTE! It does all its work in the index file, and only cares about  * the files in the working directory if you tell it to "merge" the  * patch apply.  *  * Even when merging it always takes the source from the index, and  * uses the working tree as a "branch" for a 3-way merge.  */
+comment|/*  * apply.c  *  * Copyright (C) Linus Torvalds, 2005  *  * This applies patches on top of some (arbitrary) version of the SCM.  *  */
 end_comment
 
 begin_include
@@ -22,18 +22,6 @@ file|"cache.h"
 end_include
 
 begin_comment
-comment|// We default to the merge behaviour, since that's what most people would
-end_comment
-
-begin_comment
-comment|// expect.
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
 comment|//  --check turns on checking that the working tree matches the
 end_comment
 
@@ -52,16 +40,6 @@ end_comment
 begin_comment
 comment|//
 end_comment
-
-begin_decl_stmt
-DECL|variable|merge_patch
-specifier|static
-name|int
-name|merge_patch
-init|=
-literal|1
-decl_stmt|;
-end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|check_index
@@ -141,7 +119,7 @@ name|char
 name|apply_usage
 index|[]
 init|=
-literal|"git-apply [--no-merge] [--stat] [--summary] [--check] [--index] [--apply] [--show-files]<patch>..."
+literal|"git-apply [--stat] [--summary] [--check] [--index] [--apply] [--show-files]<patch>..."
 decl_stmt|;
 end_decl_stmt
 
@@ -7721,24 +7699,6 @@ expr_stmt|;
 name|excludes
 operator|=
 name|x
-expr_stmt|;
-continue|continue;
-block|}
-comment|/* NEEDSWORK: this does not do anything at this moment. */
-if|if
-condition|(
-operator|!
-name|strcmp
-argument_list|(
-name|arg
-argument_list|,
-literal|"--no-merge"
-argument_list|)
-condition|)
-block|{
-name|merge_patch
-operator|=
-literal|0
 expr_stmt|;
 continue|continue;
 block|}
