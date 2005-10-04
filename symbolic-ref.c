@@ -20,7 +20,7 @@ end_decl_stmt
 begin_function
 DECL|function|check_symref
 specifier|static
-name|int
+name|void
 name|check_symref
 parameter_list|(
 specifier|const

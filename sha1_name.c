@@ -565,6 +565,11 @@ name|now
 index|[
 literal|20
 index|]
+decl_stmt|,
+name|next
+index|[
+literal|20
+index|]
 decl_stmt|;
 name|nth_packed_object_sha1
 argument_list|(
@@ -587,6 +592,31 @@ name|now
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+name|nth_packed_object_sha1
+argument_list|(
+name|p
+argument_list|,
+name|first
+operator|+
+literal|1
+argument_list|,
+name|next
+argument_list|)
+operator|||
+operator|!
+name|match_sha
+argument_list|(
+name|len
+argument_list|,
+name|match
+argument_list|,
+name|next
+argument_list|)
+condition|)
+block|{
+comment|/* unique within this pack */
 if|if
 condition|(
 operator|!
@@ -619,6 +649,16 @@ literal|20
 argument_list|)
 condition|)
 block|{
+name|found
+operator|=
+literal|2
+expr_stmt|;
+break|break;
+block|}
+block|}
+else|else
+block|{
+comment|/* not even unique within this pack */
 name|found
 operator|=
 literal|2
@@ -735,8 +775,14 @@ operator|<
 name|has_packed
 condition|)
 return|return
-operator|-
-literal|1
+name|error
+argument_list|(
+literal|"short SHA1 %.*s is ambiguous."
+argument_list|,
+name|len
+argument_list|,
+name|canonical
+argument_list|)
 return|;
 if|if
 condition|(
