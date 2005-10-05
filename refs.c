@@ -248,7 +248,7 @@ name|memcmp
 argument_list|(
 literal|"refs/"
 argument_list|,
-name|buffer
+name|buf
 argument_list|,
 literal|5
 argument_list|)
