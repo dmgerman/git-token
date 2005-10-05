@@ -469,7 +469,7 @@ DECL|macro|DIFF_STATUS_FILTER_AON
 define|#
 directive|define
 name|DIFF_STATUS_FILTER_AON
-value|'A'
+value|'*'
 end_define
 
 begin_define
