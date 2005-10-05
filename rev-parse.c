@@ -161,6 +161,8 @@ name|rev_args
 index|[]
 init|=
 block|{
+literal|"--all"
+block|,
 literal|"--bisect"
 block|,
 literal|"--header"
