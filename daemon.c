@@ -667,7 +667,7 @@ operator|)
 operator|||
 name|access
 argument_list|(
-literal|"objects/00"
+literal|"objects/"
 argument_list|,
 name|X_OK
 argument_list|)
