@@ -198,6 +198,11 @@ name|entries
 decl_stmt|,
 name|i
 decl_stmt|;
+name|git_config
+argument_list|(
+name|git_default_config
+argument_list|)
+expr_stmt|;
 name|diff_setup
 argument_list|(
 operator|&

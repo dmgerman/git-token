@@ -10,6 +10,15 @@ file|"cache.h"
 end_include
 
 begin_decl_stmt
+DECL|variable|trust_executable_bit
+name|int
+name|trust_executable_bit
+init|=
+literal|1
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|active_cache
 name|struct
 name|cache_entry
