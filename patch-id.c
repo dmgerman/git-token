@@ -290,6 +290,20 @@ literal|5
 argument_list|)
 condition|)
 continue|continue;
+comment|/* Ignore git-diff index header */
+if|if
+condition|(
+operator|!
+name|memcmp
+argument_list|(
+name|line
+argument_list|,
+literal|"index "
+argument_list|,
+literal|6
+argument_list|)
+condition|)
+continue|continue;
 comment|/* Ignore line numbers when computing the SHA1 of the patch */
 if|if
 condition|(
