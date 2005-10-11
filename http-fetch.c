@@ -2773,16 +2773,6 @@ directive|endif
 block|}
 end_function
 
-begin_decl_stmt
-DECL|variable|got_alternates
-specifier|static
-name|int
-name|got_alternates
-init|=
-literal|0
-decl_stmt|;
-end_decl_stmt
-
 begin_function
 DECL|function|fetch_index
 specifier|static
@@ -3245,13 +3235,6 @@ name|active_request_slot
 modifier|*
 name|slot
 decl_stmt|;
-if|if
-condition|(
-name|got_alternates
-condition|)
-return|return
-literal|0
-return|;
 name|data
 operator|=
 name|xmalloc
@@ -3851,10 +3834,6 @@ operator|+
 literal|1
 expr_stmt|;
 block|}
-name|got_alternates
-operator|=
-literal|1
-expr_stmt|;
 return|return
 name|ret
 return|;
