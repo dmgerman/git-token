@@ -187,6 +187,16 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|pragma_header
+specifier|static
+name|struct
+name|curl_slist
+modifier|*
+name|pragma_header
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|no_pragma_header
 specifier|static
 name|struct
@@ -1074,7 +1084,7 @@ name|curl
 argument_list|,
 name|CURLOPT_HTTPHEADER
 argument_list|,
-name|no_pragma_header
+name|pragma_header
 argument_list|)
 expr_stmt|;
 name|curl_easy_setopt
@@ -1890,6 +1900,17 @@ argument_list|,
 name|CURLOPT_URL
 argument_list|,
 name|url
+argument_list|)
+expr_stmt|;
+name|curl_easy_setopt
+argument_list|(
+name|slot
+operator|->
+name|curl
+argument_list|,
+name|CURLOPT_HTTPHEADER
+argument_list|,
+name|no_pragma_header
 argument_list|)
 expr_stmt|;
 comment|/* If we have successfully processed data from a previous fetch 	   attempt, only fetch the data we don't already have. */
@@ -2971,6 +2992,17 @@ argument_list|,
 name|CURLOPT_URL
 argument_list|,
 name|url
+argument_list|)
+expr_stmt|;
+name|curl_easy_setopt
+argument_list|(
+name|slot
+operator|->
+name|curl
+argument_list|,
+name|CURLOPT_HTTPHEADER
+argument_list|,
+name|no_pragma_header
 argument_list|)
 expr_stmt|;
 name|slot
@@ -4427,6 +4459,17 @@ argument_list|,
 name|url
 argument_list|)
 expr_stmt|;
+name|curl_easy_setopt
+argument_list|(
+name|slot
+operator|->
+name|curl
+argument_list|,
+name|CURLOPT_HTTPHEADER
+argument_list|,
+name|no_pragma_header
+argument_list|)
+expr_stmt|;
 name|slot
 operator|->
 name|local
@@ -5634,6 +5677,15 @@ return|;
 block|}
 endif|#
 directive|endif
+name|pragma_header
+operator|=
+name|curl_slist_append
+argument_list|(
+name|pragma_header
+argument_list|,
+literal|"Pragma: no-cache"
+argument_list|)
+expr_stmt|;
 name|no_pragma_header
 operator|=
 name|curl_slist_append
@@ -5864,6 +5916,11 @@ condition|)
 return|return
 literal|1
 return|;
+name|curl_slist_free_all
+argument_list|(
+name|pragma_header
+argument_list|)
+expr_stmt|;
 name|curl_slist_free_all
 argument_list|(
 name|no_pragma_header
