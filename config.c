@@ -278,6 +278,16 @@ operator|=
 literal|'\n'
 expr_stmt|;
 break|break;
+comment|/* Some characters escape as themselves */
+case|case
+literal|'\\'
+case|:
+case|case
+literal|'"'
+case|:
+break|break;
+comment|/* Reject unknown escape sequences */
+default|default:
 return|return
 name|NULL
 return|;
