@@ -6577,7 +6577,6 @@ end_comment
 
 begin_function
 DECL|function|move_temp_to_file
-specifier|static
 name|int
 name|move_temp_to_file
 parameter_list|(
