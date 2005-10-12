@@ -240,9 +240,12 @@ name|TYPE_CHANGED
 else|:
 literal|0
 expr_stmt|;
-comment|/* We consider only the owner x bit to be relevant for "mode changes" */
+comment|/* We consider only the owner x bit to be relevant for 		 * "mode changes" 		 */
 if|if
 condition|(
+name|trust_executable_bit
+operator|&&
+operator|(
 literal|0100
 operator|&
 operator|(
@@ -256,6 +259,7 @@ operator|^
 name|st
 operator|->
 name|st_mode
+operator|)
 operator|)
 condition|)
 name|changed
@@ -1979,7 +1983,7 @@ name|ce_flags
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/* existing match? Just replace it */
+comment|/* existing match? Just replace it. */
 if|if
 condition|(
 name|pos
