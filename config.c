@@ -723,7 +723,10 @@ index|[
 name|baselen
 index|]
 operator|=
+name|tolower
+argument_list|(
 name|c
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
