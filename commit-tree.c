@@ -471,6 +471,14 @@ name|unsigned
 name|int
 name|size
 decl_stmt|;
+name|setup_ident
+argument_list|()
+expr_stmt|;
+name|git_config
+argument_list|(
+name|git_default_config
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|argc
@@ -603,9 +611,6 @@ index|[
 literal|1
 index|]
 argument_list|)
-expr_stmt|;
-name|setup_ident
-argument_list|()
 expr_stmt|;
 name|init_buffer
 argument_list|(
