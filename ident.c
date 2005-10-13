@@ -21,12 +21,6 @@ directive|include
 file|<time.h>
 end_include
 
-begin_include
-include|#
-directive|include
-file|<ctype.h>
-end_include
-
 begin_decl_stmt
 DECL|variable|git_default_date
 specifier|static

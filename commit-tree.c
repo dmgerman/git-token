@@ -21,12 +21,6 @@ directive|include
 file|<time.h>
 end_include
 
-begin_include
-include|#
-directive|include
-file|<ctype.h>
-end_include
-
 begin_define
 DECL|macro|BLOCKING
 define|#

@@ -11,12 +11,6 @@ directive|include
 file|"refs.h"
 end_include
 
-begin_include
-include|#
-directive|include
-file|<ctype.h>
-end_include
-
 begin_decl_stmt
 DECL|variable|git_update_ref_usage
 specifier|static
