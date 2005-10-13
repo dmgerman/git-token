@@ -2358,6 +2358,10 @@ name|unsigned
 name|int
 name|pack_use_cnt
 decl_stmt|;
+DECL|member|pack_local
+name|int
+name|pack_local
+decl_stmt|;
 DECL|member|sha1
 name|unsigned
 name|char
@@ -2705,6 +2709,8 @@ name|add_packed_git
 parameter_list|(
 name|char
 modifier|*
+parameter_list|,
+name|int
 parameter_list|,
 name|int
 parameter_list|)
