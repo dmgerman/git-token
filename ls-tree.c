@@ -21,6 +21,12 @@ directive|include
 file|"tree.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"quote.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|line_termination
 specifier|static
@@ -731,7 +737,7 @@ condition|)
 block|{
 name|printf
 argument_list|(
-literal|"%06o %s %s	%s%s"
+literal|"%06o %s %s	"
 argument_list|,
 name|e
 operator|->
@@ -746,12 +752,19 @@ name|entry_hex
 argument_list|(
 name|e
 argument_list|)
-argument_list|,
+argument_list|)
+expr_stmt|;
+name|write_name_quoted
+argument_list|(
 name|pathbuf
 argument_list|,
 name|e
 operator|->
 name|name
+argument_list|,
+name|line_termination
+argument_list|,
+name|stdout
 argument_list|)
 expr_stmt|;
 name|putchar
