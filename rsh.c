@@ -456,7 +456,7 @@ name|url
 argument_list|)
 return|;
 block|}
-comment|/* $GIT_RSH<host> "env GIR_DIR=<path><remote_prog><args...>" */
+comment|/* $GIT_RSH<host> "env GIT_DIR=<path><remote_prog><args...>" */
 name|sizen
 operator|=
 name|COMMAND_SIZE
