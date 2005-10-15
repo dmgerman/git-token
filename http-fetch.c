@@ -5585,11 +5585,21 @@ name|ret
 operator|=
 name|error
 argument_list|(
-literal|"%s"
+literal|"%s (curl_result = %d, http_code = %ld, sha1 = %s)"
 argument_list|,
 name|request
 operator|->
 name|errorstr
+argument_list|,
+name|request
+operator|->
+name|curl_result
+argument_list|,
+name|request
+operator|->
+name|http_code
+argument_list|,
+name|hex
 argument_list|)
 expr_stmt|;
 name|release_request
