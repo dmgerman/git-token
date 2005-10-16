@@ -459,6 +459,8 @@ argument_list|,
 name|nr_match
 argument_list|,
 name|match
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 if|if
