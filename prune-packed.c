@@ -182,6 +182,7 @@ literal|0
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|rmdir
 argument_list|(
 name|pathname
