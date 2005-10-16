@@ -1268,16 +1268,22 @@ name|USE_CURL_MULTI
 end_ifdef
 
 begin_function_decl
+specifier|static
 name|void
 name|process_curl_messages
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 function_decl|;
 end_function_decl
 
 begin_function_decl
+specifier|static
 name|void
 name|process_request_queue
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 function_decl|;
 end_function_decl
 
@@ -1292,7 +1298,9 @@ specifier|static
 name|CURL
 modifier|*
 name|get_curl_handle
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 name|CURL
 modifier|*
@@ -1417,11 +1425,14 @@ end_function
 
 begin_function
 DECL|function|get_active_slot
+specifier|static
 name|struct
 name|active_request_slot
 modifier|*
 name|get_active_slot
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 name|struct
 name|active_request_slot
@@ -1650,6 +1661,7 @@ end_function
 
 begin_function
 DECL|function|start_active_slot
+specifier|static
 name|int
 name|start_active_slot
 parameter_list|(
@@ -1708,6 +1720,7 @@ end_function
 
 begin_function
 DECL|function|run_active_slot
+specifier|static
 name|void
 name|run_active_slot
 parameter_list|(
@@ -1918,6 +1931,7 @@ end_function
 
 begin_function
 DECL|function|start_request
+specifier|static
 name|void
 name|start_request
 parameter_list|(
@@ -2620,6 +2634,7 @@ end_function
 
 begin_function
 DECL|function|finish_request
+specifier|static
 name|void
 name|finish_request
 parameter_list|(
@@ -2777,6 +2792,7 @@ end_function
 
 begin_function
 DECL|function|release_request
+specifier|static
 name|void
 name|release_request
 parameter_list|(
@@ -2873,7 +2889,9 @@ begin_function
 DECL|function|process_curl_messages
 name|void
 name|process_curl_messages
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 name|int
 name|num_messages
@@ -3138,7 +3156,9 @@ begin_function
 DECL|function|process_request_queue
 name|void
 name|process_request_queue
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 name|struct
 name|transfer_request
@@ -5397,9 +5417,6 @@ block|}
 ifdef|#
 directive|ifdef
 name|USE_CURL_MULTI
-name|int
-name|num_transfers
-decl_stmt|;
 while|while
 condition|(
 name|request
@@ -5409,6 +5426,9 @@ operator|==
 name|WAITING
 condition|)
 block|{
+name|int
+name|num_transfers
+decl_stmt|;
 name|curl_multi_perform
 argument_list|(
 name|curlm
@@ -6489,6 +6509,7 @@ expr_stmt|;
 ifdef|#
 directive|ifdef
 name|USE_CURL_MULTI
+block|{
 name|char
 modifier|*
 name|http_max_requests
@@ -6511,6 +6532,7 @@ argument_list|(
 name|http_max_requests
 argument_list|)
 expr_stmt|;
+block|}
 name|curlm
 operator|=
 name|curl_multi_init
