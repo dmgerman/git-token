@@ -244,7 +244,7 @@ if|if
 condition|(
 operator|(
 name|ch
-operator|<=
+operator|<
 literal|' '
 operator|)
 operator|||
