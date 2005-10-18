@@ -878,7 +878,7 @@ modifier|*
 specifier|const
 name|diff_arg
 init|=
-literal|"%s %s||:"
+literal|"-- %s %s||:"
 decl_stmt|;
 comment|/* "||:" is to return 0 */
 specifier|const
