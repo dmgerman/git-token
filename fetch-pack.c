@@ -190,19 +190,14 @@ name|object
 modifier|*
 name|o
 decl_stmt|;
-comment|/* 		 * If that object is complete (i.e. it is an ancestor of a 		 * local ref), we tell them we have it but do not have to 		 * tell them about its ancestors, which they already know 		 * about. 		 */
+comment|/* 		 * If that object is complete (i.e. it is an ancestor of a 		 * local ref), we tell them we have it but do not have to 		 * tell them about its ancestors, which they already know 		 * about. 		 * 		 * We use lookup_object here because we are only 		 * interested in the case we *know* the object is 		 * reachable and we have already scanned it. 		 */
 if|if
 condition|(
-name|has_sha1_file
-argument_list|(
-name|remote
-argument_list|)
-operator|&&
 operator|(
 operator|(
 name|o
 operator|=
-name|parse_object
+name|lookup_object
 argument_list|(
 name|remote
 argument_list|)
@@ -639,6 +634,27 @@ operator|==
 name|tag_type
 condition|)
 block|{
+name|struct
+name|tag
+modifier|*
+name|t
+init|=
+operator|(
+expr|struct
+name|tag
+operator|*
+operator|)
+name|o
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|t
+operator|->
+name|tagged
+condition|)
+break|break;
+comment|/* broken repository */
 name|o
 operator|->
 name|flags
@@ -649,14 +665,7 @@ name|o
 operator|=
 name|parse_object
 argument_list|(
-operator|(
-operator|(
-expr|struct
-name|tag
-operator|*
-operator|)
-name|o
-operator|)
+name|t
 operator|->
 name|tagged
 operator|->
@@ -666,6 +675,8 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+name|o
+operator|&&
 name|o
 operator|->
 name|type
