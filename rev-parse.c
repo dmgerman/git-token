@@ -874,6 +874,25 @@ name|as_is
 operator|=
 literal|1
 expr_stmt|;
+name|show_default
+argument_list|()
+expr_stmt|;
+comment|/* Pass on the "--" if we show anything but files.. */
+if|if
+condition|(
+name|filter
+operator|&
+operator|(
+name|DO_FLAGS
+operator||
+name|DO_REVS
+operator|)
+condition|)
+name|show_file
+argument_list|(
+name|arg
+argument_list|)
+expr_stmt|;
 continue|continue;
 block|}
 if|if
