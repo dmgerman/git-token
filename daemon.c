@@ -667,7 +667,7 @@ return|return
 operator|-
 literal|1
 return|;
-comment|/* 	 * Security on the cheap. 	 * 	 * We want a readable HEAD, usable "objects" directory, and  	 * a "git-daemon-export-ok" flag that says that the other side 	 * is ok with us doing this. 	 */
+comment|/* 	 * Security on the cheap. 	 * 	 * We want a readable HEAD, usable "objects" directory, and 	 * a "git-daemon-export-ok" flag that says that the other side 	 * is ok with us doing this. 	 */
 if|if
 condition|(
 operator|!
