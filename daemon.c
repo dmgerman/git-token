@@ -2600,7 +2600,7 @@ name|arg
 argument_list|,
 literal|"--init-timeout="
 argument_list|,
-literal|10
+literal|15
 argument_list|)
 condition|)
 block|{
