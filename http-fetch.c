@@ -5859,6 +5859,21 @@ operator|!=
 literal|416
 condition|)
 block|{
+if|if
+condition|(
+name|request
+operator|->
+name|http_code
+operator|==
+literal|404
+condition|)
+name|ret
+operator|=
+operator|-
+literal|1
+expr_stmt|;
+comment|/* Be silent, it is probably in a pack. */
+else|else
 name|ret
 operator|=
 name|error
