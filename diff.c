@@ -4059,6 +4059,18 @@ operator|=
 operator|-
 literal|1
 expr_stmt|;
+name|options
+operator|->
+name|change
+operator|=
+name|diff_change
+expr_stmt|;
+name|options
+operator|->
+name|add_remove
+operator|=
+name|diff_addremove
+expr_stmt|;
 block|}
 end_function
 
