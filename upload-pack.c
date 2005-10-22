@@ -46,7 +46,7 @@ DECL|macro|MAX_HAS
 define|#
 directive|define
 name|MAX_HAS
-value|(16)
+value|256
 end_define
 
 begin_define
@@ -54,7 +54,7 @@ DECL|macro|MAX_NEEDS
 define|#
 directive|define
 name|MAX_NEEDS
-value|(256)
+value|256
 end_define
 
 begin_decl_stmt
