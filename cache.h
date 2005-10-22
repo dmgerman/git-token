@@ -3242,6 +3242,20 @@ return|;
 block|}
 end_function
 
+begin_function_decl
+specifier|extern
+name|int
+name|copy_fd
+parameter_list|(
+name|int
+name|ifd
+parameter_list|,
+name|int
+name|ofd
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
