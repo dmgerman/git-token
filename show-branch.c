@@ -1407,7 +1407,7 @@ return|;
 if|if
 condition|(
 name|MAX_REVS
-operator|<
+operator|<=
 name|ref_name_cnt
 condition|)
 block|{
