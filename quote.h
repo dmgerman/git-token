@@ -62,6 +62,22 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* This unwraps what sq_quote() produces in place, but returns  * NULL if the input does not look like what sq_quote would have  * produced.  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|char
+modifier|*
+name|sq_dequote
+parameter_list|(
+name|char
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function_decl
 specifier|extern
 name|int
