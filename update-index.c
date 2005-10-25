@@ -1727,6 +1727,18 @@ block|}
 block|}
 end_function
 
+begin_decl_stmt
+DECL|variable|update_index_usage
+specifier|static
+specifier|const
+name|char
+name|update_index_usage
+index|[]
+init|=
+literal|"git-update-index [-q] [--add] [--replace] [--remove] [--unmerged] [--refresh] [--cacheinfo] [--chmod=(+|-)x] [--info-only] [--force-remove] [--stdin] [--index-info] [--ignore-missing] [-z] [--version] [--]<file>..."
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|main
 name|int
@@ -2257,6 +2269,29 @@ literal|1
 expr_stmt|;
 continue|continue;
 block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|path
+argument_list|,
+literal|"-h"
+argument_list|)
+operator|||
+operator|!
+name|strcmp
+argument_list|(
+name|path
+argument_list|,
+literal|"--help"
+argument_list|)
+condition|)
+name|usage
+argument_list|(
+name|update_index_usage
+argument_list|)
+expr_stmt|;
 name|die
 argument_list|(
 literal|"unknown option %s"
