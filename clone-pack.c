@@ -1077,7 +1077,7 @@ argument_list|(
 name|tmpfile
 argument_list|)
 argument_list|,
-literal|"%s/pack-XXXXXX"
+literal|"%s/pack/tmp-XXXXXX"
 argument_list|,
 name|get_object_directory
 argument_list|()
