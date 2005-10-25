@@ -746,6 +746,9 @@ modifier|*
 name|arg
 parameter_list|)
 block|{
+name|show_default
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 operator|(
@@ -873,9 +876,6 @@ block|{
 name|as_is
 operator|=
 literal|1
-expr_stmt|;
-name|show_default
-argument_list|()
 expr_stmt|;
 comment|/* Pass on the "--" if we show anything but files.. */
 if|if
