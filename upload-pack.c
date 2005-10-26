@@ -366,6 +366,8 @@ literal|"--objects"
 expr_stmt|;
 if|if
 condition|(
+name|create_full_pack
+operator|||
 name|MAX_NEEDS
 operator|<=
 name|nr_needs
@@ -419,6 +421,11 @@ literal|41
 expr_stmt|;
 block|}
 block|}
+if|if
+condition|(
+operator|!
+name|create_full_pack
+condition|)
 for|for
 control|(
 name|i
