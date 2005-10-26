@@ -6337,24 +6337,18 @@ argument_list|,
 name|filename
 argument_list|)
 decl_stmt|;
+comment|/* 	 * Coda hack - coda doesn't like cross-directory links, 	 * so we fall back to a rename, which will mean that it 	 * won't be able to check collisions, but that's not a 	 * big deal. 	 * 	 * The same holds for FAT formatted media. 	 * 	 * When this succeeds, we just return 0. We have nothing 	 * left to unlink. 	 */
 if|if
 condition|(
 name|ret
+operator|&&
+name|ret
+operator|!=
+name|EEXIST
 condition|)
 block|{
-comment|/* 		 * Coda hack - coda doesn't like cross-directory links, 		 * so we fall back to a rename, which will mean that it 		 * won't be able to check collisions, but that's not a 		 * big deal. 		 * 		 * The same holds for FAT formatted media. 		 * 		 * When this succeeds, we just return 0. We have nothing 		 * left to unlink. 		 */
 if|if
 condition|(
-operator|(
-name|ret
-operator|==
-name|EXDEV
-operator|||
-name|ret
-operator|==
-name|ENOTSUP
-operator|)
-operator|&&
 operator|!
 name|rename
 argument_list|(
