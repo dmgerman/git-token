@@ -60,7 +60,7 @@ name|char
 modifier|*
 name|server_capabilities
 init|=
-literal|""
+name|NULL
 decl_stmt|;
 end_decl_stmt
 
@@ -360,11 +360,13 @@ name|feature
 parameter_list|)
 block|{
 return|return
+name|server_capabilities
+operator|&&
 name|strstr
 argument_list|(
-name|feature
-argument_list|,
 name|server_capabilities
+argument_list|,
+name|feature
 argument_list|)
 operator|!=
 name|NULL

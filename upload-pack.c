@@ -1195,7 +1195,7 @@ name|char
 modifier|*
 name|capabilities
 init|=
-literal|"\0multi_ack"
+literal|"multi_ack"
 decl_stmt|;
 name|struct
 name|object
@@ -1207,11 +1207,15 @@ argument_list|(
 name|sha1
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|capabilities
+condition|)
 name|packet_write
 argument_list|(
 literal|1
 argument_list|,
-literal|"%s %s%s\n"
+literal|"%s %s%c%s\n"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -1220,12 +1224,29 @@ argument_list|)
 argument_list|,
 name|refname
 argument_list|,
+literal|0
+argument_list|,
 name|capabilities
+argument_list|)
+expr_stmt|;
+else|else
+name|packet_write
+argument_list|(
+literal|1
+argument_list|,
+literal|"%s %s\n"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|sha1
+argument_list|)
+argument_list|,
+name|refname
 argument_list|)
 expr_stmt|;
 name|capabilities
 operator|=
-literal|""
+name|NULL
 expr_stmt|;
 if|if
 condition|(
