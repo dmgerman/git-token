@@ -408,6 +408,9 @@ name|prune_packed_usage
 argument_list|)
 expr_stmt|;
 block|}
+name|sync
+argument_list|()
+expr_stmt|;
 name|prune_packed_objects
 argument_list|()
 expr_stmt|;
