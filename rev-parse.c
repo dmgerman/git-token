@@ -1454,6 +1454,10 @@ argument_list|(
 literal|"Needed a single revision"
 argument_list|)
 expr_stmt|;
+name|as_is
+operator|=
+literal|1
+expr_stmt|;
 name|show_file
 argument_list|(
 name|arg
