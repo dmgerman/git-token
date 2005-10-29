@@ -305,7 +305,6 @@ name|char
 modifier|*
 name|source
 parameter_list|,
-specifier|const
 name|char
 modifier|*
 name|dest
@@ -319,6 +318,11 @@ name|int
 name|warn_if_not_exists
 parameter_list|)
 block|{
+name|safe_create_leading_directories
+argument_list|(
+name|dest
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|use_link
@@ -896,7 +900,6 @@ argument_list|(
 name|sha1
 argument_list|)
 decl_stmt|;
-specifier|const
 name|char
 modifier|*
 name|dest_filename
