@@ -165,6 +165,8 @@ literal|"--all"
 block|,
 literal|"--bisect"
 block|,
+literal|"--dense"
+block|,
 literal|"--header"
 block|,
 literal|"--max-age="
@@ -184,6 +186,8 @@ block|,
 literal|"--pretty"
 block|,
 literal|"--show-breaks"
+block|,
+literal|"--sparse"
 block|,
 literal|"--topo-order"
 block|,
