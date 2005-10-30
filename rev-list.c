@@ -95,19 +95,24 @@ name|char
 name|rev_list_usage
 index|[]
 init|=
-literal|"git-rev-list [OPTION] commit-id<commit-id>\n"
-literal|"  --max-count=nr\n"
-literal|"  --max-age=epoch\n"
-literal|"  --min-age=epoch\n"
-literal|"  --parents\n"
-literal|"  --bisect\n"
-literal|"  --objects\n"
-literal|"  --unpacked\n"
-literal|"  --header\n"
-literal|"  --pretty\n"
-literal|"  --no-merges\n"
-literal|"  --merge-order [ --show-breaks ]\n"
-literal|"  --topo-order"
+literal|"git-rev-list [OPTION]<commit-id>... [ -- paths... ]\n"
+literal|"  limiting output:\n"
+literal|"    --max-count=nr\n"
+literal|"    --max-age=epoch\n"
+literal|"    --min-age=epoch\n"
+literal|"    --sparse\n"
+literal|"    --no-merges\n"
+literal|"    --all\n"
+literal|"  ordering output:\n"
+literal|"    --merge-order [ --show-breaks ]\n"
+literal|"    --topo-order\n"
+literal|"  formatting output:\n"
+literal|"    --parents\n"
+literal|"    --objects\n"
+literal|"    --unpacked\n"
+literal|"    --header | --pretty\n"
+literal|"  special purpose:\n"
+literal|"    --bisect"
 decl_stmt|;
 end_decl_stmt
 
