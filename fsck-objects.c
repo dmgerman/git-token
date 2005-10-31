@@ -1770,16 +1770,9 @@ condition|(
 operator|!
 name|dir
 condition|)
-block|{
 return|return
-name|error
-argument_list|(
-literal|"missing sha1 directory '%s'"
-argument_list|,
-name|path
-argument_list|)
+literal|0
 return|;
-block|}
 while|while
 condition|(
 operator|(

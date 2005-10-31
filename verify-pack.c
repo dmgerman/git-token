@@ -85,6 +85,8 @@ argument_list|(
 name|arg
 argument_list|,
 name|len
+argument_list|,
+literal|1
 argument_list|)
 operator|)
 condition|)
@@ -113,6 +115,8 @@ argument_list|(
 name|arg
 argument_list|,
 name|len
+argument_list|,
+literal|1
 argument_list|)
 operator|)
 condition|)

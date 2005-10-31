@@ -868,14 +868,6 @@ condition|)
 block|{
 if|if
 condition|(
-operator|!
-name|has_sha1_file
-argument_list|(
-name|obj
-operator|->
-name|sha1
-argument_list|)
-operator|&&
 name|fetch
 argument_list|(
 name|obj
