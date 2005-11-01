@@ -60,6 +60,7 @@ name|SHA_CTX
 modifier|*
 name|ctx
 parameter_list|,
+specifier|const
 name|void
 modifier|*
 name|dataIn

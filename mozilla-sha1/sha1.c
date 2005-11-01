@@ -130,6 +130,7 @@ name|SHA_CTX
 modifier|*
 name|ctx
 parameter_list|,
+specifier|const
 name|void
 modifier|*
 name|_dataIn
@@ -138,6 +139,7 @@ name|int
 name|len
 parameter_list|)
 block|{
+specifier|const
 name|unsigned
 name|char
 modifier|*
