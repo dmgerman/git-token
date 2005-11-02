@@ -247,6 +247,10 @@ name|parse_object
 argument_list|(
 name|sha1
 argument_list|)
+argument_list|,
+name|NULL
+argument_list|,
+literal|0
 argument_list|)
 decl_stmt|;
 if|if
