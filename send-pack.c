@@ -662,6 +662,10 @@ name|parse_object
 argument_list|(
 name|old_sha1
 argument_list|)
+argument_list|,
+name|NULL
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 if|if
@@ -695,6 +699,10 @@ name|parse_object
 argument_list|(
 name|new_sha1
 argument_list|)
+argument_list|,
+name|NULL
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 if|if

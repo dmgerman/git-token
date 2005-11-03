@@ -1947,6 +1947,14 @@ operator|=
 name|deref_tag
 argument_list|(
 name|o
+argument_list|,
+name|name
+argument_list|,
+name|sp
+operator|-
+name|name
+operator|-
+literal|2
 argument_list|)
 expr_stmt|;
 if|if

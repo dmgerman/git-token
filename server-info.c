@@ -98,8 +98,16 @@ operator|=
 name|deref_tag
 argument_list|(
 name|o
+argument_list|,
+name|path
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|o
+condition|)
 name|fprintf
 argument_list|(
 name|info_ref_fp
