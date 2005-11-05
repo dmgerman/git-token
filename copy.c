@@ -64,6 +64,9 @@ operator|<
 literal|0
 condition|)
 block|{
+name|int
+name|read_error
+decl_stmt|;
 if|if
 condition|(
 name|errno
@@ -71,6 +74,15 @@ operator|==
 name|EAGAIN
 condition|)
 continue|continue;
+name|read_error
+operator|=
+name|errno
+expr_stmt|;
+name|close
+argument_list|(
+name|ifd
+argument_list|)
+expr_stmt|;
 return|return
 name|error
 argument_list|(
@@ -78,7 +90,7 @@ literal|"copy-fd: read returned %s"
 argument_list|,
 name|strerror
 argument_list|(
-name|errno
+name|read_error
 argument_list|)
 argument_list|)
 return|;
