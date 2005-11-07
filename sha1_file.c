@@ -285,6 +285,16 @@ name|pos
 init|=
 name|path
 decl_stmt|;
+if|if
+condition|(
+operator|*
+name|pos
+operator|==
+literal|'/'
+condition|)
+name|pos
+operator|++
+expr_stmt|;
 while|while
 condition|(
 name|pos
