@@ -10,14 +10,14 @@ file|"cache.h"
 end_include
 
 begin_decl_stmt
-DECL|variable|pack_intersect_usage
+DECL|variable|pack_redundant_usage
 specifier|static
 specifier|const
 name|char
-name|pack_intersect_usage
+name|pack_redundant_usage
 index|[]
 init|=
-literal|"git-pack-intersect [ -v ]< -a |<.pack filename> ...>"
+literal|"git-pack-redundant [ -v ]< -a |<.pack filename> ...>"
 decl_stmt|;
 end_decl_stmt
 
@@ -2722,7 +2722,12 @@ argument_list|,
 literal|"--"
 argument_list|)
 condition|)
+block|{
+name|i
+operator|++
+expr_stmt|;
 break|break;
+block|}
 if|if
 condition|(
 operator|!
@@ -2766,7 +2771,7 @@ literal|'-'
 condition|)
 name|usage
 argument_list|(
-name|pack_intersect_usage
+name|pack_redundant_usage
 argument_list|)
 expr_stmt|;
 else|else
