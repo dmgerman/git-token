@@ -1563,6 +1563,15 @@ name|curl_low_speed_time
 argument_list|)
 expr_stmt|;
 block|}
+name|curl_easy_setopt
+argument_list|(
+name|result
+argument_list|,
+name|CURLOPT_FOLLOWLOCATION
+argument_list|,
+literal|1
+argument_list|)
+expr_stmt|;
 return|return
 name|result
 return|;
