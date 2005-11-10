@@ -3082,6 +3082,7 @@ end_ifdef
 
 begin_function
 DECL|function|process_curl_messages
+specifier|static
 name|void
 name|process_curl_messages
 parameter_list|(
@@ -3369,6 +3370,7 @@ end_function
 
 begin_function
 DECL|function|process_request_queue
+specifier|static
 name|void
 name|process_request_queue
 parameter_list|(

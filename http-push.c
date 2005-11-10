@@ -3309,6 +3309,7 @@ end_function
 
 begin_function
 DECL|function|refresh_lock
+specifier|static
 name|int
 name|refresh_lock
 parameter_list|(
@@ -4069,6 +4070,7 @@ end_ifdef
 
 begin_function
 DECL|function|process_curl_messages
+specifier|static
 name|void
 name|process_curl_messages
 parameter_list|(
@@ -4280,6 +4282,7 @@ end_function
 
 begin_function
 DECL|function|process_request_queue
+specifier|static
 name|void
 name|process_request_queue
 parameter_list|(
@@ -4448,6 +4451,7 @@ end_endif
 
 begin_function
 DECL|function|process_waiting_requests
+specifier|static
 name|void
 name|process_waiting_requests
 parameter_list|(
@@ -4498,6 +4502,7 @@ end_function
 
 begin_function
 DECL|function|add_request
+specifier|static
 name|void
 name|add_request
 parameter_list|(
@@ -5158,7 +5163,9 @@ DECL|function|fetch_indices
 specifier|static
 name|int
 name|fetch_indices
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 name|unsigned
 name|char
@@ -6741,6 +6748,7 @@ end_function
 
 begin_function
 DECL|function|lock_remote
+specifier|static
 name|struct
 name|active_lock
 modifier|*
@@ -7518,6 +7526,7 @@ end_function
 
 begin_function
 DECL|function|unlock_remote
+specifier|static
 name|int
 name|unlock_remote
 parameter_list|(
@@ -7733,9 +7742,12 @@ end_function
 
 begin_function
 DECL|function|check_locking
+specifier|static
 name|int
 name|check_locking
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 name|struct
 name|active_request_slot
@@ -8134,6 +8146,7 @@ end_function
 
 begin_function
 DECL|function|is_ancestor
+specifier|static
 name|int
 name|is_ancestor
 parameter_list|(
@@ -8250,6 +8263,7 @@ end_function
 
 begin_function
 DECL|function|get_delta
+specifier|static
 name|void
 name|get_delta
 parameter_list|(
@@ -8613,6 +8627,7 @@ end_function
 
 begin_function
 DECL|function|update_remote
+specifier|static
 name|int
 name|update_remote
 parameter_list|(
