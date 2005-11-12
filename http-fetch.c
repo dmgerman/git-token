@@ -4192,7 +4192,9 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Getting alternates list\n"
+literal|"Getting alternates list for %s\n"
+argument_list|,
+name|base
 argument_list|)
 expr_stmt|;
 name|url
@@ -4899,7 +4901,11 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Getting pack list\n"
+literal|"Getting pack list for %s\n"
+argument_list|,
+name|repo
+operator|->
+name|base
 argument_list|)
 expr_stmt|;
 name|url
