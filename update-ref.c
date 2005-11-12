@@ -317,13 +317,18 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"Ref %s changed to %s"
+literal|"Ref %s is at %s but expected %s"
 argument_list|,
 name|refname
 argument_list|,
 name|sha1_to_hex
 argument_list|(
 name|currsha1
+argument_list|)
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|oldsha1
 argument_list|)
 argument_list|)
 expr_stmt|;

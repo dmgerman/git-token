@@ -268,6 +268,9 @@ block|,
 DECL|enumerator|CMIT_FMT_FULL
 name|CMIT_FMT_FULL
 block|,
+DECL|enumerator|CMIT_FMT_FULLER
+name|CMIT_FMT_FULLER
+block|,
 DECL|enumerator|CMIT_FMT_ONELINE
 name|CMIT_FMT_ONELINE
 block|, }

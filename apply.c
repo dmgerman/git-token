@@ -116,6 +116,16 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|no_add
+specifier|static
+name|int
+name|no_add
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|show_index_info
 specifier|static
 name|int
@@ -143,7 +153,7 @@ name|char
 name|apply_usage
 index|[]
 init|=
-literal|"git-apply [--stat] [--numstat] [--summary] [--check] [--index] [--apply] [--index-info] [-z]<patch>..."
+literal|"git-apply [--stat] [--numstat] [--summary] [--check] [--index] [--apply] [--no-add] [--index-info] [-z]<patch>..."
 decl_stmt|;
 end_decl_stmt
 
@@ -5462,6 +5472,17 @@ comment|/* Fall-through for ' ' */
 case|case
 literal|'+'
 case|:
+if|if
+condition|(
+operator|*
+name|patch
+operator|!=
+literal|'+'
+operator|||
+operator|!
+name|no_add
+condition|)
+block|{
 name|memcpy
 argument_list|(
 name|new
@@ -5479,6 +5500,7 @@ name|newsize
 operator|+=
 name|plen
 expr_stmt|;
+block|}
 break|break;
 case|case
 literal|'@'
@@ -8780,6 +8802,23 @@ expr_stmt|;
 name|excludes
 operator|=
 name|x
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--no-add"
+argument_list|)
+condition|)
+block|{
+name|no_add
+operator|=
+literal|1
 expr_stmt|;
 continue|continue;
 block|}
