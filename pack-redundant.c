@@ -3000,8 +3000,12 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"There are %ld packs available in alt-odbs.\n"
+literal|"There are %lu packs available in alt-odbs.\n"
 argument_list|,
+operator|(
+name|unsigned
+name|long
+operator|)
 name|pack_list_size
 argument_list|(
 name|altodb_packs
@@ -3048,14 +3052,22 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"containing %ld duplicate objects "
-literal|"with a total size of %ldkb.\n"
+literal|"containing %lu duplicate objects "
+literal|"with a total size of %lukb.\n"
 argument_list|,
+operator|(
+name|unsigned
+name|long
+operator|)
 name|get_pack_redundancy
 argument_list|(
 name|min
 argument_list|)
 argument_list|,
+operator|(
+name|unsigned
+name|long
+operator|)
 name|pack_set_bytecount
 argument_list|(
 name|min
@@ -3068,8 +3080,12 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"A total of %ld unique objects were considered.\n"
+literal|"A total of %lu unique objects were considered.\n"
 argument_list|,
+operator|(
+name|unsigned
+name|long
+operator|)
 name|all_objects
 operator|->
 name|size
