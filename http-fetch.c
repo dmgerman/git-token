@@ -3420,6 +3420,14 @@ name|request
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+name|finish_request
+argument_list|(
+name|request
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 else|else
 block|{
