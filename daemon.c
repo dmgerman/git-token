@@ -2929,20 +2929,21 @@ name|stderr
 argument_list|)
 expr_stmt|;
 comment|//FIXME: workaround
+name|log_syslog
+operator|=
+literal|1
+expr_stmt|;
 return|return
 name|execute
 argument_list|()
 return|;
 block|}
-else|else
-block|{
 return|return
 name|serve
 argument_list|(
 name|port
 argument_list|)
 return|;
-block|}
 block|}
 end_function
 
