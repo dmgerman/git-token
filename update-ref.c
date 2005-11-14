@@ -157,7 +157,8 @@ name|oldval
 decl_stmt|,
 modifier|*
 name|path
-decl_stmt|,
+decl_stmt|;
+name|char
 modifier|*
 name|lockpath
 decl_stmt|;
@@ -365,6 +366,22 @@ argument_list|(
 literal|"%s.lock"
 argument_list|,
 name|path
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|safe_create_leading_directories
+argument_list|(
+name|lockpath
+argument_list|)
+operator|<
+literal|0
+condition|)
+name|die
+argument_list|(
+literal|"Unable to create all of %s"
+argument_list|,
+name|lockpath
 argument_list|)
 expr_stmt|;
 name|fd
