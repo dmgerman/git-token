@@ -1894,7 +1894,7 @@ operator|!=
 literal|'.'
 operator|||
 literal|40
-operator|<=
+operator|<
 name|ptr
 operator|-
 name|line
@@ -1974,7 +1974,7 @@ expr_stmt|;
 if|if
 condition|(
 literal|40
-operator|<=
+operator|<
 name|len
 condition|)
 return|return
@@ -4477,6 +4477,8 @@ argument_list|,
 name|buffer
 operator|+
 name|hdrsize
+operator|+
+name|offset
 argument_list|,
 sizeof|sizeof
 argument_list|(
