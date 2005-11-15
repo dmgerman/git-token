@@ -29,25 +29,6 @@ name|MAXDEPTH
 value|5
 end_define
 
-begin_ifndef
-ifndef|#
-directive|ifndef
-name|USE_SYMLINK_HEAD
-end_ifndef
-
-begin_define
-DECL|macro|USE_SYMLINK_HEAD
-define|#
-directive|define
-name|USE_SYMLINK_HEAD
-value|1
-end_define
-
-begin_endif
-endif|#
-directive|endif
-end_endif
-
 begin_function
 DECL|function|resolve_ref
 specifier|const
@@ -378,8 +359,8 @@ name|len
 decl_stmt|,
 name|written
 decl_stmt|;
-if|#
-directive|if
+ifdef|#
+directive|ifdef
 name|USE_SYMLINK_HEAD
 if|if
 condition|(
