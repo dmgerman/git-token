@@ -1101,6 +1101,13 @@ name|trust_executable_bit
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+specifier|extern
+name|int
+name|only_use_symrefs
+decl_stmt|;
+end_decl_stmt
+
 begin_define
 DECL|macro|MTIME_CHANGED
 define|#
