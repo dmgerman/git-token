@@ -177,6 +177,11 @@ DECL|member|tree_in_recursive
 name|tree_in_recursive
 range|:
 literal|1
+decl_stmt|,
+DECL|member|full_index
+name|full_index
+range|:
+literal|1
 decl_stmt|;
 DECL|member|break_opt
 name|int
@@ -527,7 +532,7 @@ define|#
 directive|define
 name|COMMON_DIFF_OPTIONS_HELP
 define|\
-value|"\ncommon diff options:\n" \ "  -z            output diff-raw with lines terminated with NUL.\n" \ "  -p            output patch format.\n" \ "  -u            synonym for -p.\n" \ "  --name-only   show only names of changed files.\n" \ "  --name-status show names and status of changed files.\n" \ "  -R            swap input file pairs.\n" \ "  -B            detect complete rewrites.\n" \ "  -M            detect renames.\n" \ "  -C            detect copies.\n" \ "  --find-copies-harder\n" \ "                try unchanged files as candidate for copy detection.\n" \ "  -l<n>         limit rename attempts up to<n> paths.\n" \ "  -O<file>      reorder diffs according to the<file>.\n" \ "  -S<string>    find filepair whose only one side contains the string.\n" \ "  --pickaxe-all\n" \ "                show all files diff when -S is used and hit is found.\n"
+value|"\ncommon diff options:\n" \ "  -z            output diff-raw with lines terminated with NUL.\n" \ "  -p            output patch format.\n" \ "  -u            synonym for -p.\n" \ "  --name-only   show only names of changed files.\n" \ "  --name-status show names and status of changed files.\n" \ "  --full-index  show full object name on index ines.\n" \ "  -R            swap input file pairs.\n" \ "  -B            detect complete rewrites.\n" \ "  -M            detect renames.\n" \ "  -C            detect copies.\n" \ "  --find-copies-harder\n" \ "                try unchanged files as candidate for copy detection.\n" \ "  -l<n>         limit rename attempts up to<n> paths.\n" \ "  -O<file>      reorder diffs according to the<file>.\n" \ "  -S<string>    find filepair whose only one side contains the string.\n" \ "  --pickaxe-all\n" \ "                show all files diff when -S is used and hit is found.\n"
 end_define
 
 begin_function_decl

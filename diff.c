@@ -3447,6 +3447,11 @@ name|struct
 name|diff_filepair
 modifier|*
 name|p
+parameter_list|,
+name|struct
+name|diff_options
+modifier|*
+name|o
 parameter_list|)
 block|{
 specifier|const
@@ -3777,6 +3782,19 @@ index|[
 literal|41
 index|]
 decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|index_fmt
+init|=
+name|o
+operator|->
+name|full_index
+condition|?
+literal|"index %s..%s"
+else|:
+literal|"index %.7s..%.7s"
+decl_stmt|;
 name|memcpy
 argument_list|(
 name|one_sha1
@@ -3806,7 +3824,7 @@ argument_list|)
 operator|-
 name|len
 argument_list|,
-literal|"index %.7s..%.7s"
+name|index_fmt
 argument_list|,
 name|one_sha1
 argument_list|,
@@ -4279,6 +4297,23 @@ name|NULL
 argument_list|,
 literal|10
 argument_list|)
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--full-index"
+argument_list|)
+condition|)
+name|options
+operator|->
+name|full_index
+operator|=
+literal|1
 expr_stmt|;
 elseif|else
 if|if
@@ -5529,6 +5564,11 @@ name|struct
 name|diff_filepair
 modifier|*
 name|p
+parameter_list|,
+name|struct
+name|diff_options
+modifier|*
+name|o
 parameter_list|)
 block|{
 if|if
@@ -5582,6 +5622,8 @@ comment|/* no tree diffs in patch format */
 name|run_diff
 argument_list|(
 name|p
+argument_list|,
+name|o
 argument_list|)
 expr_stmt|;
 block|}
@@ -6319,6 +6361,8 @@ case|:
 name|diff_flush_patch
 argument_list|(
 name|p
+argument_list|,
+name|options
 argument_list|)
 expr_stmt|;
 break|break;
