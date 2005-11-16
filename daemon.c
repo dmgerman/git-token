@@ -2760,6 +2760,10 @@ name|inetd_mode
 operator|=
 literal|1
 expr_stmt|;
+name|log_syslog
+operator|=
+literal|1
+expr_stmt|;
 continue|continue;
 block|}
 if|if
@@ -2793,15 +2797,6 @@ block|{
 name|log_syslog
 operator|=
 literal|1
-expr_stmt|;
-name|openlog
-argument_list|(
-literal|"git-daemon"
-argument_list|,
-literal|0
-argument_list|,
-name|LOG_DAEMON
-argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
@@ -2844,6 +2839,7 @@ operator|+
 literal|10
 argument_list|)
 expr_stmt|;
+continue|continue;
 block|}
 if|if
 condition|(
@@ -2867,6 +2863,7 @@ operator|+
 literal|15
 argument_list|)
 expr_stmt|;
+continue|continue;
 block|}
 if|if
 condition|(
@@ -2920,6 +2917,19 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+name|log_syslog
+condition|)
+name|openlog
+argument_list|(
+literal|"git-daemon"
+argument_list|,
+literal|0
+argument_list|,
+name|LOG_DAEMON
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|inetd_mode
 condition|)
 block|{
@@ -2929,10 +2939,6 @@ name|stderr
 argument_list|)
 expr_stmt|;
 comment|//FIXME: workaround
-name|log_syslog
-operator|=
-literal|1
-expr_stmt|;
 return|return
 name|execute
 argument_list|()
