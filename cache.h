@@ -2053,6 +2053,18 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+name|unsigned
+name|long
+name|approxidate
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 specifier|extern
 name|int
 name|setup_ident
