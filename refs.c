@@ -590,6 +590,12 @@ decl_stmt|;
 if|#
 directive|if
 name|USE_SYMLINK_HEAD
+if|if
+condition|(
+operator|!
+name|only_use_symrefs
+condition|)
+block|{
 name|unlink
 argument_list|(
 name|git_HEAD
@@ -615,6 +621,7 @@ argument_list|,
 literal|"no symlink - falling back to symbolic ref\n"
 argument_list|)
 expr_stmt|;
+block|}
 endif|#
 directive|endif
 name|len
