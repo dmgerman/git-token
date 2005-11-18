@@ -1605,6 +1605,12 @@ name|pl
 operator|=
 name|list
 expr_stmt|;
+name|new_pll
+operator|->
+name|pl_size
+operator|=
+literal|1
+expr_stmt|;
 return|return
 name|new_pll
 return|;
