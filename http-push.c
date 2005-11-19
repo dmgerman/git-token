@@ -41,12 +41,6 @@ directive|include
 file|"http.h"
 end_include
 
-begin_ifdef
-ifdef|#
-directive|ifdef
-name|USE_CURL_MULTI
-end_ifdef
-
 begin_include
 include|#
 directive|include
@@ -8002,47 +7996,6 @@ name|rc
 return|;
 block|}
 end_function
-
-begin_else
-else|#
-directive|else
-end_else
-
-begin_comment
-comment|/* ifdef USE_CURL_MULTI */
-end_comment
-
-begin_function
-DECL|function|main
-name|int
-name|main
-parameter_list|(
-name|int
-name|argc
-parameter_list|,
-name|char
-modifier|*
-modifier|*
-name|argv
-parameter_list|)
-block|{
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-literal|"http-push requires curl 7.9.8 or higher.\n"
-argument_list|)
-expr_stmt|;
-return|return
-literal|1
-return|;
-block|}
-end_function
-
-begin_endif
-endif|#
-directive|endif
-end_endif
 
 end_unit
 
