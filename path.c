@@ -839,15 +839,6 @@ condition|)
 block|{
 if|if
 condition|(
-operator|(
-name|path
-index|[
-literal|0
-index|]
-operator|!=
-literal|'/'
-operator|)
-operator|||
 name|chdir
 argument_list|(
 name|path
