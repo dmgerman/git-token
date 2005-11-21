@@ -1355,6 +1355,21 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|char
+modifier|*
+name|enter_repo
+parameter_list|(
+name|char
+modifier|*
+name|path
+parameter_list|,
+name|int
+name|strict
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/* Read and unpack a sha1 file into memory, write memory to a sha1 file */
 end_comment

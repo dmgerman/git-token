@@ -25,6 +25,7 @@ begin_decl_stmt
 DECL|variable|load_all_packs
 DECL|variable|verbose
 DECL|variable|alt_odb
+specifier|static
 name|int
 name|load_all_packs
 init|=
@@ -62,6 +63,7 @@ end_struct
 
 begin_struct
 DECL|struct|llist
+specifier|static
 struct|struct
 name|llist
 block|{
@@ -95,6 +97,7 @@ end_comment
 
 begin_struct
 DECL|struct|pack_list
+specifier|static
 struct|struct
 name|pack_list
 block|{
@@ -164,6 +167,7 @@ end_struct
 
 begin_function
 DECL|function|llist_free
+specifier|static
 specifier|inline
 name|void
 name|llist_free
@@ -215,6 +219,7 @@ end_function
 
 begin_function
 DECL|function|llist_init
+specifier|static
 specifier|inline
 name|void
 name|llist_init
@@ -268,6 +273,7 @@ end_function
 
 begin_function
 DECL|function|llist_copy
+specifier|static
 name|struct
 name|llist
 modifier|*
@@ -412,6 +418,7 @@ end_function
 
 begin_function
 DECL|function|llist_insert
+specifier|static
 specifier|inline
 name|struct
 name|llist_item
@@ -541,6 +548,7 @@ end_function
 
 begin_function
 DECL|function|llist_insert_back
+specifier|static
 specifier|inline
 name|struct
 name|llist_item
@@ -574,6 +582,7 @@ end_function
 
 begin_function
 DECL|function|llist_insert_sorted_unique
+specifier|static
 specifier|inline
 name|struct
 name|llist_item
@@ -697,6 +706,7 @@ end_comment
 
 begin_function
 DECL|function|llist_sorted_remove
+specifier|static
 specifier|inline
 name|struct
 name|llist_item
@@ -880,6 +890,7 @@ end_comment
 
 begin_function
 DECL|function|llist_sorted_difference_inplace
+specifier|static
 name|void
 name|llist_sorted_difference_inplace
 parameter_list|(
@@ -942,6 +953,7 @@ end_function
 
 begin_function
 DECL|function|pack_list_insert
+specifier|static
 specifier|inline
 name|struct
 name|pack_list
@@ -1007,6 +1019,7 @@ end_function
 
 begin_function
 DECL|function|pack_list_size
+specifier|static
 specifier|inline
 name|size_t
 name|pack_list_size
@@ -1045,6 +1058,7 @@ end_function
 
 begin_function
 DECL|function|pack_list_difference
+specifier|static
 name|struct
 name|pack_list
 modifier|*
@@ -1161,6 +1175,7 @@ end_function
 
 begin_function
 DECL|function|cmp_two_packs
+specifier|static
 name|void
 name|cmp_two_packs
 parameter_list|(
@@ -1351,6 +1366,7 @@ end_function
 
 begin_function
 DECL|function|pll_insert
+specifier|static
 name|void
 name|pll_insert
 parameter_list|(
@@ -1500,6 +1516,7 @@ end_comment
 
 begin_function
 DECL|function|get_all_permutations
+specifier|static
 name|struct
 name|pll
 modifier|*
@@ -1799,6 +1816,7 @@ end_function
 
 begin_function
 DECL|function|is_superset
+specifier|static
 name|int
 name|is_superset
 parameter_list|(
@@ -1878,6 +1896,7 @@ end_function
 
 begin_function
 DECL|function|sizeof_union
+specifier|static
 name|size_t
 name|sizeof_union
 parameter_list|(
@@ -2033,6 +2052,7 @@ end_comment
 
 begin_function
 DECL|function|get_pack_redundancy
+specifier|static
 name|size_t
 name|get_pack_redundancy
 parameter_list|(
@@ -2047,6 +2067,11 @@ name|pack_list
 modifier|*
 name|subset
 decl_stmt|;
+name|size_t
+name|ret
+init|=
+literal|0
+decl_stmt|;
 if|if
 condition|(
 name|pl
@@ -2056,11 +2081,6 @@ condition|)
 return|return
 literal|0
 return|;
-name|size_t
-name|ret
-init|=
-literal|0
-decl_stmt|;
 while|while
 condition|(
 operator|(
@@ -2112,6 +2132,7 @@ end_function
 
 begin_function
 DECL|function|pack_set_bytecount
+specifier|static
 specifier|inline
 name|size_t
 name|pack_set_bytecount
@@ -2163,6 +2184,7 @@ end_function
 
 begin_function
 DECL|function|minimize
+specifier|static
 name|void
 name|minimize
 parameter_list|(
@@ -2488,9 +2510,12 @@ end_function
 
 begin_function
 DECL|function|load_all_objects
+specifier|static
 name|void
 name|load_all_objects
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 name|struct
 name|pack_list
@@ -2604,9 +2629,12 @@ end_comment
 
 begin_function
 DECL|function|cmp_local_packs
+specifier|static
 name|void
 name|cmp_local_packs
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 name|struct
 name|pack_list
@@ -2656,9 +2684,12 @@ end_function
 
 begin_function
 DECL|function|scan_alt_odb_packs
+specifier|static
 name|void
 name|scan_alt_odb_packs
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 name|struct
 name|pack_list
@@ -2716,6 +2747,7 @@ end_function
 
 begin_function
 DECL|function|add_pack
+specifier|static
 name|struct
 name|pack_list
 modifier|*
@@ -2860,6 +2892,7 @@ end_function
 
 begin_function
 DECL|function|add_pack_file
+specifier|static
 name|struct
 name|pack_list
 modifier|*
@@ -2934,9 +2967,12 @@ end_function
 
 begin_function
 DECL|function|load_all
+specifier|static
 name|void
 name|load_all
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 name|struct
 name|packed_git
