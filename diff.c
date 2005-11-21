@@ -4696,6 +4696,20 @@ name|cp_p
 operator|=
 name|cp
 expr_stmt|;
+comment|/* special case: -M100 would mean 1.0 not 0.1 */
+if|if
+condition|(
+name|num
+operator|==
+literal|100
+operator|&&
+name|scale
+operator|==
+literal|1000
+condition|)
+return|return
+name|MAX_SCORE
+return|;
 comment|/* user says num divided by scale and we say internally that 	 * is MAX_SCORE * num / scale. 	 */
 return|return
 operator|(
