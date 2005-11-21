@@ -2093,6 +2093,27 @@ return|return
 literal|0
 return|;
 block|}
+if|if
+condition|(
+name|listen
+argument_list|(
+name|sockfd
+argument_list|,
+literal|5
+argument_list|)
+operator|<
+literal|0
+condition|)
+block|{
+name|close
+argument_list|(
+name|sockfd
+argument_list|)
+expr_stmt|;
+return|return
+literal|0
+return|;
+block|}
 operator|*
 name|socklist_p
 operator|=
@@ -2110,6 +2131,9 @@ name|socklist_p
 operator|=
 name|sockfd
 expr_stmt|;
+return|return
+literal|1
+return|;
 block|}
 end_function
 
