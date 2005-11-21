@@ -2077,6 +2077,15 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+name|store
+operator|.
+name|key
+index|[
+name|i
+index|]
+operator|=
+literal|0
+expr_stmt|;
 comment|/* 	 * The lock_file serves a purpose in addition to locking: the new 	 * contents of .git/config will be written into it. 	 */
 name|fd
 operator|=

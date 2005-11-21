@@ -252,6 +252,13 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+name|key
+index|[
+name|i
+index|]
+operator|=
+literal|0
+expr_stmt|;
 if|if
 condition|(
 name|regex_
