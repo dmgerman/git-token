@@ -51,6 +51,7 @@ modifier|*
 name|name
 decl_stmt|;
 DECL|member|read
+specifier|const
 name|char
 modifier|*
 function_decl|(

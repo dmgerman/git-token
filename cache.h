@@ -2091,30 +2091,7 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|char
-modifier|*
-name|get_ident
-parameter_list|(
 specifier|const
-name|char
-modifier|*
-name|name
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|email
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|date_str
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-specifier|extern
 name|char
 modifier|*
 name|git_author_info
@@ -2126,6 +2103,7 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+specifier|const
 name|char
 modifier|*
 name|git_committer_info
