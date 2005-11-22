@@ -2626,25 +2626,10 @@ literal|"core.gitproxy"
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|git_proxy_command
-condition|)
-return|return
-literal|0
-return|;
-comment|/* [core] 		 * ;# matches www.kernel.org as well 		 * gitproxy = netcatter-1 for kernel.org 		 * gitproxy = netcatter-2 for sample.xz 		 * gitproxy = netcatter-default 		 */
 specifier|const
 name|char
 modifier|*
 name|for_pos
-init|=
-name|strstr
-argument_list|(
-name|value
-argument_list|,
-literal|" for "
-argument_list|)
 decl_stmt|;
 name|int
 name|matchlen
@@ -2655,6 +2640,23 @@ decl_stmt|;
 name|int
 name|hostlen
 decl_stmt|;
+if|if
+condition|(
+name|git_proxy_command
+condition|)
+return|return
+literal|0
+return|;
+comment|/* [core] 		 * ;# matches www.kernel.org as well 		 * gitproxy = netcatter-1 for kernel.org 		 * gitproxy = netcatter-2 for sample.xz 		 * gitproxy = netcatter-default 		 */
+name|for_pos
+operator|=
+name|strstr
+argument_list|(
+name|value
+argument_list|,
+literal|" for "
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
