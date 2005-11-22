@@ -786,6 +786,7 @@ name|llist
 modifier|*
 name|list
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 name|sha1
@@ -1132,11 +1133,13 @@ name|pack_list
 modifier|*
 name|pack_list_difference
 parameter_list|(
+specifier|const
 name|struct
 name|pack_list
 modifier|*
 name|A
 parameter_list|,
+specifier|const
 name|struct
 name|pack_list
 modifier|*
@@ -1147,7 +1150,10 @@ name|struct
 name|pack_list
 modifier|*
 name|ret
-decl_stmt|,
+decl_stmt|;
+specifier|const
+name|struct
+name|pack_list
 modifier|*
 name|pl
 decl_stmt|;
