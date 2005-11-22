@@ -830,7 +830,7 @@ name|i
 decl_stmt|;
 name|git_config
 argument_list|(
-name|git_default_config
+name|git_diff_config
 argument_list|)
 expr_stmt|;
 name|diff_setup
