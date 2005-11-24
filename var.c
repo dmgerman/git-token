@@ -295,6 +295,9 @@ name|var_usage
 argument_list|)
 expr_stmt|;
 block|}
+name|setup_git_directory
+argument_list|()
+expr_stmt|;
 name|setup_ident
 argument_list|()
 expr_stmt|;
