@@ -1497,7 +1497,6 @@ name|exec_path
 operator|==
 literal|'/'
 condition|)
-operator|*
 name|exec_path
 operator|++
 expr_stmt|;
