@@ -48,6 +48,15 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|repository_format_version
+name|int
+name|repository_format_version
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|git_dir
 DECL|variable|git_object_dir
 DECL|variable|git_index_file
