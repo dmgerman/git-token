@@ -3118,6 +3118,9 @@ literal|42
 index|]
 decl_stmt|;
 comment|/* 40 byte sha1 + \n + \0 */
+name|setup_git_directory
+argument_list|()
+expr_stmt|;
 for|for
 control|(
 name|i

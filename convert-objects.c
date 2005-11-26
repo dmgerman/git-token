@@ -1818,6 +1818,9 @@ name|entry
 modifier|*
 name|entry
 decl_stmt|;
+name|setup_git_directory
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|argc

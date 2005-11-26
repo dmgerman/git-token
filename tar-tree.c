@@ -2338,6 +2338,9 @@ name|unsigned
 name|long
 name|size
 decl_stmt|;
+name|setup_git_directory
+argument_list|()
+expr_stmt|;
 switch|switch
 condition|(
 name|argc

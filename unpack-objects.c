@@ -1471,6 +1471,9 @@ index|[
 literal|20
 index|]
 decl_stmt|;
+name|setup_git_directory
+argument_list|()
+expr_stmt|;
 for|for
 control|(
 name|i

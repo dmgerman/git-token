@@ -113,6 +113,9 @@ argument_list|(
 name|update_server_info_usage
 argument_list|)
 expr_stmt|;
+name|setup_git_directory
+argument_list|()
+expr_stmt|;
 return|return
 operator|!
 operator|!
