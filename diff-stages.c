@@ -337,6 +337,14 @@ name|stage1
 decl_stmt|,
 name|stage2
 decl_stmt|;
+name|setup_git_directory
+argument_list|()
+expr_stmt|;
+name|git_config
+argument_list|(
+name|git_diff_config
+argument_list|)
+expr_stmt|;
 name|read_cache
 argument_list|()
 expr_stmt|;

@@ -25,6 +25,7 @@ begin_decl_stmt
 DECL|variable|load_all_packs
 DECL|variable|verbose
 DECL|variable|alt_odb
+specifier|static
 name|int
 name|load_all_packs
 init|=
@@ -52,6 +53,7 @@ modifier|*
 name|next
 decl_stmt|;
 DECL|member|sha1
+name|unsigned
 name|char
 modifier|*
 name|sha1
@@ -62,6 +64,7 @@ end_struct
 
 begin_struct
 DECL|struct|llist
+specifier|static
 struct|struct
 name|llist
 block|{
@@ -95,6 +98,7 @@ end_comment
 
 begin_struct
 DECL|struct|pack_list
+specifier|static
 struct|struct
 name|pack_list
 block|{
@@ -162,9 +166,96 @@ block|}
 struct|;
 end_struct
 
+begin_decl_stmt
+DECL|variable|free_nodes
+specifier|static
+name|struct
+name|llist_item
+modifier|*
+name|free_nodes
+init|=
+name|NULL
+decl_stmt|;
+end_decl_stmt
+
+begin_function
+DECL|function|llist_item_get
+specifier|static
+specifier|inline
+name|struct
+name|llist_item
+modifier|*
+name|llist_item_get
+parameter_list|()
+block|{
+name|struct
+name|llist_item
+modifier|*
+name|new
+decl_stmt|;
+if|if
+condition|(
+name|free_nodes
+condition|)
+block|{
+name|new
+operator|=
+name|free_nodes
+expr_stmt|;
+name|free_nodes
+operator|=
+name|free_nodes
+operator|->
+name|next
+expr_stmt|;
+block|}
+else|else
+name|new
+operator|=
+name|xmalloc
+argument_list|(
+sizeof|sizeof
+argument_list|(
+expr|struct
+name|llist_item
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return
+name|new
+return|;
+block|}
+end_function
+
+begin_function
+DECL|function|llist_item_put
+specifier|static
+specifier|inline
+name|void
+name|llist_item_put
+parameter_list|(
+name|struct
+name|llist_item
+modifier|*
+name|item
+parameter_list|)
+block|{
+name|item
+operator|->
+name|next
+operator|=
+name|free_nodes
+expr_stmt|;
+name|free_nodes
+operator|=
+name|item
+expr_stmt|;
+block|}
+end_function
+
 begin_function
 DECL|function|llist_free
-specifier|inline
+specifier|static
 name|void
 name|llist_free
 parameter_list|(
@@ -197,7 +288,7 @@ name|front
 operator|->
 name|next
 expr_stmt|;
-name|free
+name|llist_item_put
 argument_list|(
 name|list
 operator|->
@@ -215,6 +306,7 @@ end_function
 
 begin_function
 DECL|function|llist_init
+specifier|static
 specifier|inline
 name|void
 name|llist_init
@@ -268,6 +360,7 @@ end_function
 
 begin_function
 DECL|function|llist_copy
+specifier|static
 name|struct
 name|llist
 modifier|*
@@ -324,14 +417,8 @@ name|ret
 operator|->
 name|front
 operator|=
-name|xmalloc
-argument_list|(
-sizeof|sizeof
-argument_list|(
-expr|struct
-name|llist_item
-argument_list|)
-argument_list|)
+name|llist_item_get
+argument_list|()
 expr_stmt|;
 name|new
 operator|->
@@ -362,14 +449,8 @@ name|new
 expr_stmt|;
 name|new
 operator|=
-name|xmalloc
-argument_list|(
-sizeof|sizeof
-argument_list|(
-expr|struct
-name|llist_item
-argument_list|)
-argument_list|)
+name|llist_item_get
+argument_list|()
 expr_stmt|;
 name|prev
 operator|->
@@ -412,6 +493,7 @@ end_function
 
 begin_function
 DECL|function|llist_insert
+specifier|static
 specifier|inline
 name|struct
 name|llist_item
@@ -428,6 +510,7 @@ name|llist_item
 modifier|*
 name|after
 parameter_list|,
+name|unsigned
 name|char
 modifier|*
 name|sha1
@@ -438,14 +521,8 @@ name|llist_item
 modifier|*
 name|new
 init|=
-name|xmalloc
-argument_list|(
-sizeof|sizeof
-argument_list|(
-expr|struct
-name|llist_item
-argument_list|)
-argument_list|)
+name|llist_item_get
+argument_list|()
 decl_stmt|;
 name|new
 operator|->
@@ -541,6 +618,7 @@ end_function
 
 begin_function
 DECL|function|llist_insert_back
+specifier|static
 specifier|inline
 name|struct
 name|llist_item
@@ -552,6 +630,7 @@ name|llist
 modifier|*
 name|list
 parameter_list|,
+name|unsigned
 name|char
 modifier|*
 name|sha1
@@ -574,6 +653,7 @@ end_function
 
 begin_function
 DECL|function|llist_insert_sorted_unique
+specifier|static
 specifier|inline
 name|struct
 name|llist_item
@@ -585,6 +665,7 @@ name|llist
 modifier|*
 name|list
 parameter_list|,
+name|unsigned
 name|char
 modifier|*
 name|sha1
@@ -697,6 +778,7 @@ end_comment
 
 begin_function
 DECL|function|llist_sorted_remove
+specifier|static
 specifier|inline
 name|struct
 name|llist_item
@@ -708,6 +790,8 @@ name|llist
 modifier|*
 name|list
 parameter_list|,
+specifier|const
+name|unsigned
 name|char
 modifier|*
 name|sha1
@@ -843,7 +927,7 @@ name|back
 operator|=
 name|prev
 expr_stmt|;
-name|free
+name|llist_item_put
 argument_list|(
 name|l
 argument_list|)
@@ -880,6 +964,7 @@ end_comment
 
 begin_function
 DECL|function|llist_sorted_difference_inplace
+specifier|static
 name|void
 name|llist_sorted_difference_inplace
 parameter_list|(
@@ -942,6 +1027,7 @@ end_function
 
 begin_function
 DECL|function|pack_list_insert
+specifier|static
 specifier|inline
 name|struct
 name|pack_list
@@ -1007,6 +1093,7 @@ end_function
 
 begin_function
 DECL|function|pack_list_size
+specifier|static
 specifier|inline
 name|size_t
 name|pack_list_size
@@ -1045,16 +1132,19 @@ end_function
 
 begin_function
 DECL|function|pack_list_difference
+specifier|static
 name|struct
 name|pack_list
 modifier|*
 name|pack_list_difference
 parameter_list|(
+specifier|const
 name|struct
 name|pack_list
 modifier|*
 name|A
 parameter_list|,
+specifier|const
 name|struct
 name|pack_list
 modifier|*
@@ -1065,7 +1155,10 @@ name|struct
 name|pack_list
 modifier|*
 name|ret
-decl_stmt|,
+decl_stmt|;
+specifier|const
+name|struct
+name|pack_list
 modifier|*
 name|pl
 decl_stmt|;
@@ -1161,6 +1254,7 @@ end_function
 
 begin_function
 DECL|function|cmp_two_packs
+specifier|static
 name|void
 name|cmp_two_packs
 parameter_list|(
@@ -1351,6 +1445,7 @@ end_function
 
 begin_function
 DECL|function|pll_insert
+specifier|static
 name|void
 name|pll_insert
 parameter_list|(
@@ -1500,6 +1595,7 @@ end_comment
 
 begin_function
 DECL|function|get_all_permutations
+specifier|static
 name|struct
 name|pll
 modifier|*
@@ -1799,6 +1895,7 @@ end_function
 
 begin_function
 DECL|function|is_superset
+specifier|static
 name|int
 name|is_superset
 parameter_list|(
@@ -1878,6 +1975,7 @@ end_function
 
 begin_function
 DECL|function|sizeof_union
+specifier|static
 name|size_t
 name|sizeof_union
 parameter_list|(
@@ -2033,6 +2131,7 @@ end_comment
 
 begin_function
 DECL|function|get_pack_redundancy
+specifier|static
 name|size_t
 name|get_pack_redundancy
 parameter_list|(
@@ -2047,6 +2146,11 @@ name|pack_list
 modifier|*
 name|subset
 decl_stmt|;
+name|size_t
+name|ret
+init|=
+literal|0
+decl_stmt|;
 if|if
 condition|(
 name|pl
@@ -2056,11 +2160,6 @@ condition|)
 return|return
 literal|0
 return|;
-name|size_t
-name|ret
-init|=
-literal|0
-decl_stmt|;
 while|while
 condition|(
 operator|(
@@ -2112,6 +2211,7 @@ end_function
 
 begin_function
 DECL|function|pack_set_bytecount
+specifier|static
 specifier|inline
 name|size_t
 name|pack_set_bytecount
@@ -2163,6 +2263,7 @@ end_function
 
 begin_function
 DECL|function|minimize
+specifier|static
 name|void
 name|minimize
 parameter_list|(
@@ -2488,9 +2589,12 @@ end_function
 
 begin_function
 DECL|function|load_all_objects
+specifier|static
 name|void
 name|load_all_objects
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 name|struct
 name|pack_list
@@ -2507,9 +2611,6 @@ decl_stmt|,
 modifier|*
 name|l
 decl_stmt|;
-name|int
-name|i
-decl_stmt|;
 name|llist_init
 argument_list|(
 operator|&
@@ -2521,10 +2622,6 @@ condition|(
 name|pl
 condition|)
 block|{
-name|i
-operator|=
-literal|0
-expr_stmt|;
 name|hint
 operator|=
 name|NULL
@@ -2604,9 +2701,12 @@ end_comment
 
 begin_function
 DECL|function|cmp_local_packs
+specifier|static
 name|void
 name|cmp_local_packs
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 name|struct
 name|pack_list
@@ -2656,9 +2756,12 @@ end_function
 
 begin_function
 DECL|function|scan_alt_odb_packs
+specifier|static
 name|void
 name|scan_alt_odb_packs
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 name|struct
 name|pack_list
@@ -2716,6 +2819,7 @@ end_function
 
 begin_function
 DECL|function|add_pack
+specifier|static
 name|struct
 name|pack_list
 modifier|*
@@ -2860,6 +2964,7 @@ end_function
 
 begin_function
 DECL|function|add_pack_file
+specifier|static
 name|struct
 name|pack_list
 modifier|*
@@ -2934,9 +3039,12 @@ end_function
 
 begin_function
 DECL|function|load_all
+specifier|static
 name|void
 name|load_all
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 name|struct
 name|packed_git
@@ -2993,6 +3101,23 @@ decl_stmt|,
 modifier|*
 name|pl
 decl_stmt|;
+name|struct
+name|llist
+modifier|*
+name|ignore
+decl_stmt|;
+name|unsigned
+name|char
+modifier|*
+name|sha1
+decl_stmt|;
+name|char
+name|buf
+index|[
+literal|42
+index|]
+decl_stmt|;
+comment|/* 40 byte sha1 + \n + \0 */
 for|for
 control|(
 name|i
@@ -3156,6 +3281,103 @@ condition|)
 name|scan_alt_odb_packs
 argument_list|()
 expr_stmt|;
+comment|/* ignore objects given on stdin */
+name|llist_init
+argument_list|(
+operator|&
+name|ignore
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|isatty
+argument_list|(
+literal|0
+argument_list|)
+condition|)
+block|{
+while|while
+condition|(
+name|fgets
+argument_list|(
+name|buf
+argument_list|,
+sizeof|sizeof
+argument_list|(
+name|buf
+argument_list|)
+argument_list|,
+name|stdin
+argument_list|)
+condition|)
+block|{
+name|sha1
+operator|=
+name|xmalloc
+argument_list|(
+literal|20
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|get_sha1_hex
+argument_list|(
+name|buf
+argument_list|,
+name|sha1
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"Bad sha1 on stdin: %s"
+argument_list|,
+name|buf
+argument_list|)
+expr_stmt|;
+name|llist_insert_sorted_unique
+argument_list|(
+name|ignore
+argument_list|,
+name|sha1
+argument_list|,
+name|NULL
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+name|llist_sorted_difference_inplace
+argument_list|(
+name|all_objects
+argument_list|,
+name|ignore
+argument_list|)
+expr_stmt|;
+name|pl
+operator|=
+name|local_packs
+expr_stmt|;
+while|while
+condition|(
+name|pl
+condition|)
+block|{
+name|llist_sorted_difference_inplace
+argument_list|(
+name|pl
+operator|->
+name|unique_objects
+argument_list|,
+name|ignore
+argument_list|)
+expr_stmt|;
+name|pl
+operator|=
+name|pl
+operator|->
+name|next
+expr_stmt|;
+block|}
 name|minimize
 argument_list|(
 operator|&
@@ -3313,6 +3535,32 @@ operator|->
 name|next
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|verbose
+condition|)
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"%luMB of redundant packs in total.\n"
+argument_list|,
+operator|(
+name|unsigned
+name|long
+operator|)
+name|pack_set_bytecount
+argument_list|(
+name|red
+argument_list|)
+operator|/
+operator|(
+literal|1024
+operator|*
+literal|1024
+operator|)
+argument_list|)
+expr_stmt|;
 return|return
 literal|0
 return|;

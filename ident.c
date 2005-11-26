@@ -780,6 +780,8 @@ end_function
 
 begin_function
 DECL|function|get_ident
+specifier|static
+specifier|const
 name|char
 modifier|*
 name|get_ident
@@ -966,6 +968,7 @@ end_function
 
 begin_function
 DECL|function|git_author_info
+specifier|const
 name|char
 modifier|*
 name|git_author_info
@@ -997,6 +1000,7 @@ end_function
 
 begin_function
 DECL|function|git_committer_info
+specifier|const
 name|char
 modifier|*
 name|git_committer_info

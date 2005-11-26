@@ -1264,17 +1264,6 @@ condition|(
 name|all
 condition|)
 block|{
-specifier|extern
-name|struct
-name|object
-modifier|*
-modifier|*
-name|objs
-decl_stmt|;
-specifier|extern
-name|int
-name|nr_objs
-decl_stmt|;
 name|int
 name|i
 decl_stmt|;

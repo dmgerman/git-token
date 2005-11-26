@@ -1602,6 +1602,15 @@ condition|)
 goto|goto
 name|cleanup
 goto|;
+if|if
+condition|(
+name|minimum_score
+operator|==
+name|MAX_SCORE
+condition|)
+goto|goto
+name|cleanup
+goto|;
 name|num_create
 operator|=
 operator|(
