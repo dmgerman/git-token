@@ -158,6 +158,17 @@ decl_stmt|;
 name|pid_t
 name|pid
 decl_stmt|;
+name|int
+name|nongit
+init|=
+literal|0
+decl_stmt|;
+name|setup_git_directory_gently
+argument_list|(
+operator|&
+name|nongit
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|i
