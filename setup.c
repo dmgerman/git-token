@@ -796,6 +796,9 @@ init|=
 name|setup_git_directory_1
 argument_list|()
 decl_stmt|;
+name|check_repository_format
+argument_list|()
+expr_stmt|;
 return|return
 name|retval
 return|;
