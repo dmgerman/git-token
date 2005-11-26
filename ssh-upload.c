@@ -637,6 +637,9 @@ name|prog
 operator|=
 name|COUNTERPART_PROGRAM_NAME
 expr_stmt|;
+name|setup_git_directory
+argument_list|()
+expr_stmt|;
 while|while
 condition|(
 name|arg
