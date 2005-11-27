@@ -59,7 +59,7 @@ specifier|static
 name|int
 name|ls_options
 init|=
-literal|0
+name|LS_RECURSIVE
 decl_stmt|;
 end_decl_stmt
 
@@ -113,11 +113,6 @@ name|type
 init|=
 literal|"blob"
 decl_stmt|;
-name|int
-name|retval
-init|=
-literal|0
-decl_stmt|;
 if|if
 condition|(
 name|S_ISDIR
@@ -126,19 +121,18 @@ name|mode
 argument_list|)
 condition|)
 block|{
-name|type
-operator|=
-literal|"tree"
-expr_stmt|;
 if|if
 condition|(
 name|ls_options
 operator|&
 name|LS_RECURSIVE
 condition|)
-name|retval
-operator|=
+return|return
 name|READ_TREE_RECURSIVE
+return|;
+name|type
+operator|=
+literal|"tree"
 expr_stmt|;
 block|}
 name|printf
@@ -164,7 +158,7 @@ name|line_termination
 argument_list|)
 expr_stmt|;
 return|return
-name|retval
+literal|0
 return|;
 block|}
 end_function
