@@ -35,6 +35,7 @@ end_decl_stmt
 begin_decl_stmt
 DECL|variable|config_file_name
 specifier|static
+specifier|const
 name|char
 modifier|*
 name|config_file_name
