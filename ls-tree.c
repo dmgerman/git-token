@@ -242,7 +242,7 @@ expr_stmt|;
 block|}
 name|printf
 argument_list|(
-literal|"%06o %s %s\t%.*s%s%c"
+literal|"%06o %s %s\t"
 argument_list|,
 name|mode
 argument_list|,
@@ -252,13 +252,23 @@ name|sha1_to_hex
 argument_list|(
 name|sha1
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|write_name_quoted
+argument_list|(
+name|base
 argument_list|,
 name|baselen
 argument_list|,
-name|base
-argument_list|,
 name|pathname
 argument_list|,
+name|line_termination
+argument_list|,
+name|stdout
+argument_list|)
+expr_stmt|;
+name|putchar
+argument_list|(
 name|line_termination
 argument_list|)
 expr_stmt|;
