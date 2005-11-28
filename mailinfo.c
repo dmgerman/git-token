@@ -40,6 +40,12 @@ directive|include
 file|<iconv.h>
 end_include
 
+begin_include
+include|#
+directive|include
+file|"cache.h"
+end_include
+
 begin_ifdef
 ifdef|#
 directive|ifdef
@@ -3572,32 +3578,6 @@ decl_stmt|;
 end_decl_stmt
 
 begin_function
-DECL|function|usage
-specifier|static
-name|void
-name|usage
-parameter_list|(
-name|void
-parameter_list|)
-block|{
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-literal|"%s\n"
-argument_list|,
-name|mailinfo_usage
-argument_list|)
-expr_stmt|;
-name|exit
-argument_list|(
-literal|1
-argument_list|)
-expr_stmt|;
-block|}
-end_function
-
-begin_function
 DECL|function|main
 name|int
 name|main
@@ -3611,6 +3591,12 @@ modifier|*
 name|argv
 parameter_list|)
 block|{
+comment|/* NEEDSWORK: might want to do the optional .git/ directory 	 * discovery 	 */
+name|git_config
+argument_list|(
+name|git_default_config
+argument_list|)
+expr_stmt|;
 while|while
 condition|(
 literal|1
@@ -3661,7 +3647,7 @@ argument_list|)
 condition|)
 name|metainfo_charset
 operator|=
-literal|"utf-8"
+name|git_commit_encoding
 expr_stmt|;
 elseif|else
 if|if
@@ -3690,7 +3676,9 @@ literal|3
 expr_stmt|;
 else|else
 name|usage
-argument_list|()
+argument_list|(
+name|mailinfo_usage
+argument_list|)
 expr_stmt|;
 name|argc
 operator|--
@@ -3706,7 +3694,9 @@ operator|!=
 literal|3
 condition|)
 name|usage
-argument_list|()
+argument_list|(
+name|mailinfo_usage
+argument_list|)
 expr_stmt|;
 name|cmitmsg
 operator|=
