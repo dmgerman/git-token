@@ -151,6 +151,8 @@ specifier|const
 name|char
 modifier|*
 name|prefix
+init|=
+name|NULL
 decl_stmt|;
 name|int
 name|prefix_length
@@ -252,6 +254,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
+specifier|const
 name|char
 modifier|*
 name|arg
