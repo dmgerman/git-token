@@ -3170,6 +3170,24 @@ index|]
 decl_stmt|;
 end_decl_stmt
 
+begin_define
+DECL|macro|MAX_ENCODING_LENGTH
+define|#
+directive|define
+name|MAX_ENCODING_LENGTH
+value|64
+end_define
+
+begin_decl_stmt
+specifier|extern
+name|char
+name|git_commit_encoding
+index|[
+name|MAX_ENCODING_LENGTH
+index|]
+decl_stmt|;
+end_decl_stmt
+
 begin_comment
 comment|/* Sane ctype - no locale, and works with signed chars */
 end_comment

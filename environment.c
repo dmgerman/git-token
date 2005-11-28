@@ -57,6 +57,18 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|git_commit_encoding
+name|char
+name|git_commit_encoding
+index|[
+name|MAX_ENCODING_LENGTH
+index|]
+init|=
+literal|"utf-8"
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|git_dir
 DECL|variable|git_object_dir
 DECL|variable|git_index_file
