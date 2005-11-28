@@ -3573,7 +3573,7 @@ name|char
 name|mailinfo_usage
 index|[]
 init|=
-literal|"git-mailinfo [-k] [-u] msg patch<mail>info"
+literal|"git-mailinfo [-k] [-u | --encoding=<encoding>] msg patch<mail>info"
 decl_stmt|;
 end_decl_stmt
 
@@ -3660,9 +3660,9 @@ index|[
 literal|1
 index|]
 argument_list|,
-literal|"-u="
+literal|"--encoding="
 argument_list|,
-literal|3
+literal|11
 argument_list|)
 condition|)
 name|metainfo_charset
@@ -3672,7 +3672,7 @@ index|[
 literal|1
 index|]
 operator|+
-literal|3
+literal|11
 expr_stmt|;
 else|else
 name|usage
