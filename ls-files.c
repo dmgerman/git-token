@@ -1871,6 +1871,8 @@ name|write_name_quoted
 argument_list|(
 literal|""
 argument_list|,
+literal|0
+argument_list|,
 name|ent
 operator|->
 name|name
@@ -2347,6 +2349,8 @@ name|write_name_quoted
 argument_list|(
 literal|""
 argument_list|,
+literal|0
+argument_list|,
 name|ce
 operator|->
 name|name
@@ -2395,6 +2399,8 @@ expr_stmt|;
 name|write_name_quoted
 argument_list|(
 literal|""
+argument_list|,
+literal|0
 argument_list|,
 name|ce
 operator|->

@@ -735,6 +735,14 @@ operator|&
 name|root_entry
 condition|)
 block|{
+name|int
+name|pathlen
+init|=
+name|strlen
+argument_list|(
+name|pathbuf
+argument_list|)
+decl_stmt|;
 name|printf
 argument_list|(
 literal|"%06o %s %s	"
@@ -757,6 +765,8 @@ expr_stmt|;
 name|write_name_quoted
 argument_list|(
 name|pathbuf
+argument_list|,
+name|pathlen
 argument_list|,
 name|e
 operator|->
