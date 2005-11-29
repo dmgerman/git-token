@@ -4552,9 +4552,9 @@ argument_list|(
 name|ctx
 operator|->
 name|cdata
+argument_list|)
 operator|-
 literal|15
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|strcpy
