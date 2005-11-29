@@ -127,7 +127,7 @@ decl_stmt|;
 name|int
 name|parent_number
 init|=
-literal|0
+literal|1
 decl_stmt|;
 if|if
 condition|(
@@ -301,7 +301,7 @@ if|if
 condition|(
 name|parent_number
 operator|>
-literal|0
+literal|1
 condition|)
 block|{
 name|char
