@@ -484,6 +484,9 @@ argument_list|(
 name|commit_tree_usage
 argument_list|)
 expr_stmt|;
+name|setup_git_directory
+argument_list|()
+expr_stmt|;
 name|check_valid
 argument_list|(
 name|tree_sha1

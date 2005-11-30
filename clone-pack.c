@@ -1389,6 +1389,9 @@ decl_stmt|;
 name|pid_t
 name|pid
 decl_stmt|;
+name|setup_git_directory
+argument_list|()
+expr_stmt|;
 name|nr_heads
 operator|=
 literal|0

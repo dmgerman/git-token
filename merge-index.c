@@ -581,6 +581,9 @@ argument_list|(
 literal|"git-merge-index [-o] [-q]<merge-program> (-a |<filename>*)"
 argument_list|)
 expr_stmt|;
+name|setup_git_directory
+argument_list|()
+expr_stmt|;
 name|read_cache
 argument_list|()
 expr_stmt|;
