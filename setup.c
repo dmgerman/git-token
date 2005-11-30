@@ -537,7 +537,10 @@ if|if
 condition|(
 name|access
 argument_list|(
+name|getenv
+argument_list|(
 name|DB_ENVIRONMENT
+argument_list|)
 argument_list|,
 name|X_OK
 argument_list|)
