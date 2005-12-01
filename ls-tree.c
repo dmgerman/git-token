@@ -309,6 +309,16 @@ operator|=
 literal|"tree"
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|ls_options
+operator|&
+name|LS_TREE_ONLY
+condition|)
+return|return
+literal|0
+return|;
 name|printf
 argument_list|(
 literal|"%06o %s %s\t"
@@ -461,6 +471,29 @@ name|argv
 operator|++
 expr_stmt|;
 block|}
+comment|/* -d -r should imply -t, but -d by itself should not have to. */
+if|if
+condition|(
+operator|(
+name|LS_TREE_ONLY
+operator||
+name|LS_RECURSIVE
+operator|)
+operator|==
+operator|(
+operator|(
+name|LS_TREE_ONLY
+operator||
+name|LS_RECURSIVE
+operator|)
+operator|&
+name|ls_options
+operator|)
+condition|)
+name|ls_options
+operator||=
+name|LS_SHOW_TREES
+expr_stmt|;
 if|if
 condition|(
 name|argc
