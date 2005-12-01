@@ -61,6 +61,14 @@ name|LS_SHOW_TREES
 value|4
 end_define
 
+begin_define
+DECL|macro|LS_NAME_ONLY
+define|#
+directive|define
+name|LS_NAME_ONLY
+value|8
+end_define
+
 begin_decl_stmt
 DECL|variable|ls_options
 specifier|static
@@ -89,7 +97,7 @@ name|char
 name|ls_tree_usage
 index|[]
 init|=
-literal|"git-ls-tree [-d] [-r] [-t] [-z]<tree-ish> [path...]"
+literal|"git-ls-tree [-d] [-r] [-t] [-z] [--name-only] [--name-status]<tree-ish> [path...]"
 decl_stmt|;
 end_decl_stmt
 
@@ -319,6 +327,15 @@ condition|)
 return|return
 literal|0
 return|;
+if|if
+condition|(
+operator|!
+operator|(
+name|ls_options
+operator|&
+name|LS_NAME_ONLY
+operator|)
+condition|)
 name|printf
 argument_list|(
 literal|"%06o %s %s\t"
@@ -457,6 +474,45 @@ operator||=
 name|LS_SHOW_TREES
 expr_stmt|;
 break|break;
+case|case
+literal|'-'
+case|:
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|argv
+index|[
+literal|1
+index|]
+operator|+
+literal|2
+argument_list|,
+literal|"name-only"
+argument_list|)
+operator|||
+operator|!
+name|strcmp
+argument_list|(
+name|argv
+index|[
+literal|1
+index|]
+operator|+
+literal|2
+argument_list|,
+literal|"name-status"
+argument_list|)
+condition|)
+block|{
+name|ls_options
+operator||=
+name|LS_NAME_ONLY
+expr_stmt|;
+break|break;
+block|}
+comment|/* otherwise fallthru */
 default|default:
 name|usage
 argument_list|(
