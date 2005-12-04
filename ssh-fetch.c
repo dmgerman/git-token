@@ -738,6 +738,9 @@ name|prog
 operator|=
 literal|"git-ssh-upload"
 expr_stmt|;
+name|setup_git_directory
+argument_list|()
+expr_stmt|;
 while|while
 condition|(
 name|arg

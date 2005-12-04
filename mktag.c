@@ -471,6 +471,9 @@ argument_list|(
 literal|"cat<signaturefile> | git-mktag"
 argument_list|)
 expr_stmt|;
+name|setup_git_directory
+argument_list|()
+expr_stmt|;
 comment|// Read the signature
 name|size
 operator|=

@@ -3037,6 +3037,9 @@ name|fn
 init|=
 name|NULL
 decl_stmt|;
+name|setup_git_directory
+argument_list|()
+expr_stmt|;
 name|newfd
 operator|=
 name|hold_index_file_for_update

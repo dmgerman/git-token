@@ -172,6 +172,9 @@ argument_list|(
 literal|"git-unpack-file<sha1>"
 argument_list|)
 expr_stmt|;
+name|setup_git_directory
+argument_list|()
+expr_stmt|;
 name|puts
 argument_list|(
 name|create_temp_file

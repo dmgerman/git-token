@@ -33,6 +33,16 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|config_file_name
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|config_file_name
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|config_linenr
 specifier|static
 name|int
@@ -790,9 +800,11 @@ break|break;
 block|}
 name|die
 argument_list|(
-literal|"bad config file line %d"
+literal|"bad config file line %d in %s"
 argument_list|,
 name|config_linenr
+argument_list|,
+name|config_file_name
 argument_list|)
 expr_stmt|;
 block|}
@@ -851,9 +863,11 @@ return|;
 block|}
 name|die
 argument_list|(
-literal|"bad config value for '%s'"
+literal|"bad config value for '%s' in %s"
 argument_list|,
 name|name
+argument_list|,
+name|config_file_name
 argument_list|)
 expr_stmt|;
 block|}
@@ -1050,6 +1064,33 @@ return|return
 literal|0
 return|;
 block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|var
+argument_list|,
+literal|"i18n.commitencoding"
+argument_list|)
+condition|)
+block|{
+name|strncpy
+argument_list|(
+name|git_commit_encoding
+argument_list|,
+name|value
+argument_list|,
+sizeof|sizeof
+argument_list|(
+name|git_commit_encoding
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return
+literal|0
+return|;
+block|}
 comment|/* Add other config variables here.. */
 return|return
 literal|0
@@ -1058,12 +1099,17 @@ block|}
 end_function
 
 begin_function
-DECL|function|git_config
+DECL|function|git_config_from_file
 name|int
-name|git_config
+name|git_config_from_file
 parameter_list|(
 name|config_fn_t
 name|fn
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|filename
 parameter_list|)
 block|{
 name|int
@@ -1075,10 +1121,7 @@ name|f
 init|=
 name|fopen
 argument_list|(
-name|git_path
-argument_list|(
-literal|"config"
-argument_list|)
+name|filename
 argument_list|,
 literal|"r"
 argument_list|)
@@ -1097,6 +1140,10 @@ name|config_file
 operator|=
 name|f
 expr_stmt|;
+name|config_file_name
+operator|=
+name|filename
+expr_stmt|;
 name|config_linenr
 operator|=
 literal|1
@@ -1113,9 +1160,36 @@ argument_list|(
 name|f
 argument_list|)
 expr_stmt|;
+name|config_file_name
+operator|=
+name|NULL
+expr_stmt|;
 block|}
 return|return
 name|ret
+return|;
+block|}
+end_function
+
+begin_function
+DECL|function|git_config
+name|int
+name|git_config
+parameter_list|(
+name|config_fn_t
+name|fn
+parameter_list|)
+block|{
+return|return
+name|git_config_from_file
+argument_list|(
+name|fn
+argument_list|,
+name|git_path
+argument_list|(
+literal|"config"
+argument_list|)
+argument_list|)
 return|;
 block|}
 end_function
