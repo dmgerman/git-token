@@ -1599,9 +1599,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"git: command name given is too long (%d)\n"
-argument_list|,
-name|len
+literal|"git: command name given is too long.\n"
 argument_list|)
 expr_stmt|;
 name|exit
