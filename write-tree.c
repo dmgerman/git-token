@@ -411,6 +411,18 @@ return|;
 block|}
 end_function
 
+begin_decl_stmt
+DECL|variable|write_tree_usage
+specifier|static
+specifier|const
+name|char
+name|write_tree_usage
+index|[]
+init|=
+literal|"git-write-tree [--missing-ok]"
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|main
 name|int
@@ -475,12 +487,7 @@ expr_stmt|;
 else|else
 name|die
 argument_list|(
-literal|"unknown option %s"
-argument_list|,
-name|argv
-index|[
-literal|1
-index|]
+name|write_tree_usage
 argument_list|)
 expr_stmt|;
 block|}
