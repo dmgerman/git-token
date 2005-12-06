@@ -4,11 +4,25 @@ DECL|macro|_XOPEN_SOURCE
 define|#
 directive|define
 name|_XOPEN_SOURCE
+value|500
 end_define
 
 begin_comment
 DECL|macro|_XOPEN_SOURCE
-comment|/* glibc2 needs this */
+comment|/* glibc2 and AIX 5.3L need this */
+end_comment
+
+begin_define
+DECL|macro|_XOPEN_SOURCE_EXTENDED
+define|#
+directive|define
+name|_XOPEN_SOURCE_EXTENDED
+value|1
+end_define
+
+begin_comment
+DECL|macro|_XOPEN_SOURCE_EXTENDED
+comment|/* AIX 5.3L needs this */
 end_comment
 
 begin_include
