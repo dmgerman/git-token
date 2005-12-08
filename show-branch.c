@@ -37,7 +37,7 @@ name|char
 name|show_branch_usage
 index|[]
 init|=
-literal|"git-show-branch [--all] [--heads] [--tags] [--more=count | --list | --independent | --merge-base ] [<refs>...]"
+literal|"git-show-branch [--all] [--heads] [--tags] [--topo-order] [--more=count | --list | --independent | --merge-base ] [<refs>...]"
 decl_stmt|;
 end_decl_stmt
 
