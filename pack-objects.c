@@ -37,7 +37,7 @@ name|char
 name|pack_usage
 index|[]
 init|=
-literal|"git-pack-objects [--local] [--incremental] [--window=N] [--depth=N] {--stdout | base-name}< object-list"
+literal|"git-pack-objects [--non-empty] [--local] [--incremental] [--window=N] [--depth=N] {--stdout | base-name}< object-list"
 decl_stmt|;
 end_decl_stmt
 
