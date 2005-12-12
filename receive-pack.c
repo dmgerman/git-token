@@ -976,11 +976,13 @@ index|]
 operator|=
 name|NULL
 expr_stmt|;
-name|run_command_v
+name|run_command_v_opt
 argument_list|(
 name|argc
 argument_list|,
 name|argv
+argument_list|,
+name|RUN_COMMAND_NO_STDIO
 argument_list|)
 expr_stmt|;
 block|}

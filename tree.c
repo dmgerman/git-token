@@ -1173,13 +1173,6 @@ condition|)
 name|n_refs
 operator|++
 expr_stmt|;
-name|entry
-operator|->
-name|parent
-operator|=
-name|NULL
-expr_stmt|;
-comment|/* needs to be filled by the user */
 operator|*
 name|list_p
 operator|=

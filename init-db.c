@@ -1189,17 +1189,6 @@ index|]
 decl_stmt|;
 if|if
 condition|(
-name|arg
-index|[
-literal|0
-index|]
-operator|!=
-literal|'-'
-condition|)
-break|break;
-elseif|else
-if|if
-condition|(
 operator|!
 name|strncmp
 argument_list|(

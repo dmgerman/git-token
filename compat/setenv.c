@@ -106,11 +106,6 @@ name|valuelen
 operator|+
 literal|2
 operator|)
-operator|*
-sizeof|sizeof
-argument_list|(
-name|char
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -169,11 +164,7 @@ argument_list|(
 name|envstr
 argument_list|)
 expr_stmt|;
-name|free
-argument_list|(
-name|envstr
-argument_list|)
-expr_stmt|;
+comment|/* putenv(3) makes the argument string part of the environment, 	 * and changing that string modifies the environment --- which 	 * means we do not own that storage anymore.  Do not free 	 * envstr. 	 */
 return|return
 name|out
 return|;

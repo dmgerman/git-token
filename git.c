@@ -59,6 +59,12 @@ directive|include
 file|<stdarg.h>
 end_include
 
+begin_include
+include|#
+directive|include
+file|"git-compat-util.h"
+end_include
+
 begin_ifndef
 ifndef|#
 directive|ifndef
@@ -72,36 +78,6 @@ directive|define
 name|PATH_MAX
 value|4096
 end_define
-
-begin_endif
-endif|#
-directive|endif
-end_endif
-
-begin_ifdef
-ifdef|#
-directive|ifdef
-name|NO_SETENV
-end_ifdef
-
-begin_function_decl
-specifier|extern
-name|int
-name|gitsetenv
-parameter_list|(
-name|char
-modifier|*
-name|name
-parameter_list|,
-name|char
-modifier|*
-name|value
-parameter_list|,
-name|int
-name|overwrite
-parameter_list|)
-function_decl|;
-end_function_decl
 
 begin_endif
 endif|#
@@ -889,7 +865,7 @@ end_ifdef
 begin_function_decl
 specifier|static
 name|void
-name|usage
+name|cmd_usage
 parameter_list|(
 specifier|const
 name|char
@@ -934,10 +910,10 @@ directive|endif
 end_endif
 
 begin_function
-DECL|function|usage
+DECL|function|cmd_usage
 specifier|static
 name|void
-name|usage
+name|cmd_usage
 parameter_list|(
 specifier|const
 name|char
@@ -1080,15 +1056,6 @@ name|path_len
 operator|+
 literal|1
 argument_list|)
-expr_stmt|;
-name|path
-index|[
-name|path_len
-operator|+
-literal|1
-index|]
-operator|=
-literal|'\0'
 expr_stmt|;
 name|memcpy
 argument_list|(
@@ -1421,7 +1388,7 @@ condition|(
 operator|!
 name|show_help
 condition|)
-name|usage
+name|cmd_usage
 argument_list|(
 name|NULL
 argument_list|,
@@ -1444,7 +1411,7 @@ name|i
 operator|>=
 name|argc
 condition|)
-name|usage
+name|cmd_usage
 argument_list|(
 name|exec_path
 argument_list|,
@@ -1609,9 +1576,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"git: command name given is too long (%d)\n"
-argument_list|,
-name|len
+literal|"git: command name given is too long.\n"
 argument_list|)
 expr_stmt|;
 name|exit
@@ -1640,7 +1605,7 @@ name|errno
 operator|==
 name|ENOENT
 condition|)
-name|usage
+name|cmd_usage
 argument_list|(
 name|exec_path
 argument_list|,
