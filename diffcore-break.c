@@ -173,6 +173,15 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|delta
+condition|)
+return|return
+literal|0
+return|;
+comment|/* error but caught downstream */
 comment|/* Estimate the edit size by interpreting delta. */
 if|if
 condition|(
