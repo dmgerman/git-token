@@ -1120,6 +1120,12 @@ name|bdf
 decl_stmt|;
 if|if
 condition|(
+operator|!
+name|from_size
+operator|||
+operator|!
+name|to_size
+operator|||
 name|delta_prepare
 argument_list|(
 name|from_buf
