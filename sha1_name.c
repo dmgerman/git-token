@@ -1139,6 +1139,15 @@ argument_list|,
 literal|40
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|len
+operator|==
+literal|40
+condition|)
+return|return
+name|hex
+return|;
 while|while
 condition|(
 name|len
