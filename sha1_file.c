@@ -6518,7 +6518,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"unable to write sha1 filename %s: %s"
+literal|"unable to write sha1 filename %s: %s\n"
 argument_list|,
 name|filename
 argument_list|,
@@ -6685,7 +6685,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"sha1 file %s: %s"
+literal|"sha1 file %s: %s\n"
 argument_list|,
 name|filename
 argument_list|,
@@ -6733,7 +6733,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"unable to create temporary sha1 filename %s: %s"
+literal|"unable to create temporary sha1 filename %s: %s\n"
 argument_list|,
 name|tmpfile
 argument_list|,
@@ -7192,7 +7192,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"write closed"
+literal|"write closed\n"
 argument_list|)
 expr_stmt|;
 block|}
