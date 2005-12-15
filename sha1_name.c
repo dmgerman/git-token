@@ -1212,6 +1212,9 @@ specifier|const
 name|char
 modifier|*
 name|path
+parameter_list|,
+name|int
+name|len
 parameter_list|)
 block|{
 name|int
@@ -1219,10 +1222,21 @@ name|slash
 init|=
 literal|1
 decl_stmt|;
+name|int
+name|cnt
+decl_stmt|;
 for|for
 control|(
+name|cnt
+operator|=
+literal|0
 init|;
+name|cnt
+operator|<
+name|len
 condition|;
+name|cnt
+operator|++
 control|)
 block|{
 switch|switch
@@ -1264,6 +1278,9 @@ return|return
 name|slash
 return|;
 block|}
+return|return
+name|slash
+return|;
 block|}
 end_function
 
@@ -1340,6 +1357,8 @@ condition|(
 name|ambiguous_path
 argument_list|(
 name|str
+argument_list|,
+name|len
 argument_list|)
 condition|)
 return|return
@@ -1386,7 +1405,7 @@ name|sha1
 argument_list|)
 condition|)
 block|{
-comment|/* Must be unique; i.e. when heads/foo and 			 * tags/foo are both present, reject "foo". 			 * Note that read_ref() eventually calls 			 * get_sha1_hex() which can smudge initial 			 * part of the buffer even if what is read 			 * is found to be invalid halfway. 			 */
+comment|/* Must be unique; i.e. when heads/foo and 			 * tags/foo are both present, reject "foo". 			 */
 if|if
 condition|(
 literal|1
@@ -1399,20 +1418,64 @@ operator|-
 literal|1
 return|;
 block|}
-block|}
+comment|/* We want to allow .git/description file and 		 * "description" branch to exist at the same time. 		 * "git-rev-parse description" should silently skip 		 * .git/description file as a candidate for 		 * get_sha1().  However, having garbage file anywhere 		 * under refs/ is not OK, and we would not have caught 		 * ambiguous heads and tags with the above test. 		 */
+elseif|else
 if|if
 condition|(
-name|found
-operator|==
-literal|1
+operator|*
+operator|*
+name|p
+operator|&&
+operator|!
+name|access
+argument_list|(
+name|pathname
+argument_list|,
+name|F_OK
+argument_list|)
 condition|)
+block|{
+comment|/* Garbage exists under .git/refs */
 return|return
-literal|0
+name|error
+argument_list|(
+literal|"garbage ref found '%s'"
+argument_list|,
+name|pathname
+argument_list|)
 return|;
+block|}
+block|}
+switch|switch
+condition|(
+name|found
+condition|)
+block|{
+case|case
+literal|0
+case|:
 return|return
 operator|-
 literal|1
 return|;
+case|case
+literal|1
+case|:
+return|return
+literal|0
+return|;
+default|default:
+return|return
+name|error
+argument_list|(
+literal|"ambiguous refname '%.*s'"
+argument_list|,
+name|len
+argument_list|,
+name|str
+argument_list|)
+return|;
+block|}
 block|}
 end_function
 
