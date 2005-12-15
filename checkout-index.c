@@ -154,7 +154,7 @@ name|ce
 argument_list|)
 operator|!=
 name|namelen
-operator|&&
+operator|||
 name|memcmp
 argument_list|(
 name|ce
