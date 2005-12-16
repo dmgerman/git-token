@@ -1690,6 +1690,19 @@ operator|||
 name|ch
 operator|==
 literal|':'
+operator|||
+comment|/* 2.13 Pattern Matching Notation */
+name|ch
+operator|==
+literal|'?'
+operator|||
+name|ch
+operator|==
+literal|'*'
+operator|||
+name|ch
+operator|==
+literal|'['
 operator|)
 return|;
 block|}
