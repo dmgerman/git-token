@@ -1848,21 +1848,21 @@ operator|-
 literal|1
 return|;
 comment|/* at least of form "heads/blah" */
-comment|/* Do not allow ref name to end in "HEAD" 			 * Note that cp is poiting at one past NUL at the end. 			 * i.e. cp[-1] = NUL. 			 */
+comment|/* do not allow ref name to end in "HEAD" */
 if|if
 condition|(
-literal|5
-operator|<=
 name|cp
 operator|-
 name|ref
+operator|>
+literal|4
 operator|&&
 operator|!
 name|strcmp
 argument_list|(
 name|cp
 operator|-
-literal|5
+literal|4
 argument_list|,
 literal|"HEAD"
 argument_list|)
