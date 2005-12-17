@@ -1848,29 +1848,6 @@ operator|-
 literal|1
 return|;
 comment|/* at least of form "heads/blah" */
-comment|/* do not allow ref name to end in "HEAD" */
-if|if
-condition|(
-name|cp
-operator|-
-name|ref
-operator|>
-literal|4
-operator|&&
-operator|!
-name|strcmp
-argument_list|(
-name|cp
-operator|-
-literal|4
-argument_list|,
-literal|"HEAD"
-argument_list|)
-condition|)
-return|return
-operator|-
-literal|1
-return|;
 return|return
 literal|0
 return|;
