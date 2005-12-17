@@ -1274,9 +1274,7 @@ literal|0
 expr_stmt|;
 continue|continue;
 block|}
-return|return
-name|slash
-return|;
+break|break;
 block|}
 return|return
 name|slash
