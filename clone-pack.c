@@ -814,17 +814,6 @@ literal|7
 expr_stmt|;
 continue|continue;
 block|}
-if|if
-condition|(
-operator|!
-name|strcmp
-argument_list|(
-literal|"--keep"
-argument_list|,
-name|arg
-argument_list|)
-condition|)
-continue|continue;
 name|usage
 argument_list|(
 name|clone_pack_usage
