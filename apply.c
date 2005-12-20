@@ -444,7 +444,7 @@ expr_stmt|;
 block|}
 name|nr
 operator|=
-name|read
+name|xread
 argument_list|(
 name|fd
 argument_list|,
@@ -467,14 +467,6 @@ name|nr
 operator|<
 literal|0
 condition|)
-block|{
-if|if
-condition|(
-name|errno
-operator|==
-name|EAGAIN
-condition|)
-continue|continue;
 name|die
 argument_list|(
 literal|"git-apply: read returned %s"
@@ -485,7 +477,6 @@ name|errno
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 name|size
 operator|+=
 name|nr
@@ -5052,7 +5043,7 @@ block|{
 name|int
 name|ret
 init|=
-name|read
+name|xread
 argument_list|(
 name|fd
 argument_list|,
@@ -5068,23 +5059,8 @@ decl_stmt|;
 if|if
 condition|(
 name|ret
-operator|<
+operator|<=
 literal|0
-condition|)
-block|{
-if|if
-condition|(
-name|errno
-operator|==
-name|EAGAIN
-condition|)
-continue|continue;
-break|break;
-block|}
-if|if
-condition|(
-operator|!
-name|ret
 condition|)
 break|break;
 name|got
@@ -8224,7 +8200,7 @@ block|{
 name|int
 name|written
 init|=
-name|write
+name|xwrite
 argument_list|(
 name|fd
 argument_list|,
@@ -8239,18 +8215,6 @@ name|written
 operator|<
 literal|0
 condition|)
-block|{
-if|if
-condition|(
-name|errno
-operator|==
-name|EINTR
-operator|||
-name|errno
-operator|==
-name|EAGAIN
-condition|)
-continue|continue;
 name|die
 argument_list|(
 literal|"writing file %s: %s"
@@ -8263,7 +8227,6 @@ name|errno
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 operator|!

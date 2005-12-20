@@ -48,7 +48,7 @@ block|{
 name|int
 name|ret
 init|=
-name|write
+name|xwrite
 argument_list|(
 name|f
 operator|->
@@ -97,17 +97,6 @@ operator|->
 name|name
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|errno
-operator|==
-name|EAGAIN
-operator|||
-name|errno
-operator|==
-name|EINTR
-condition|)
-continue|continue;
 name|die
 argument_list|(
 literal|"sha1 file '%s' write error (%s)"
