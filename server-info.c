@@ -1074,6 +1074,13 @@ operator|+
 literal|6
 argument_list|)
 expr_stmt|;
+name|fputc
+argument_list|(
+literal|'\n'
+argument_list|,
+name|fp
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
