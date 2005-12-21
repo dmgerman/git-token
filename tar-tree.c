@@ -195,7 +195,7 @@ block|{
 name|long
 name|ret
 init|=
-name|write
+name|xwrite
 argument_list|(
 literal|1
 argument_list|,
@@ -211,13 +211,6 @@ operator|<
 literal|0
 condition|)
 block|{
-if|if
-condition|(
-name|errno
-operator|==
-name|EAGAIN
-condition|)
-continue|continue;
 if|if
 condition|(
 name|errno

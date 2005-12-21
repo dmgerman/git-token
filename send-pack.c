@@ -55,6 +55,16 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|verbose
+specifier|static
+name|int
+name|verbose
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|send_all
 specifier|static
 name|int
@@ -1111,6 +1121,10 @@ literal|20
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+name|verbose
+condition|)
 name|fprintf
 argument_list|(
 name|stderr
@@ -1364,6 +1378,14 @@ argument_list|,
 name|remote_refs
 argument_list|)
 expr_stmt|;
+else|else
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"Everything up-to-date\n"
+argument_list|)
+expr_stmt|;
 name|close
 argument_list|(
 name|out
@@ -1508,6 +1530,23 @@ argument_list|)
 condition|)
 block|{
 name|force_update
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--verbose"
+argument_list|)
+condition|)
+block|{
+name|verbose
 operator|=
 literal|1
 expr_stmt|;
