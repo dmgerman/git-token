@@ -1378,7 +1378,13 @@ argument_list|,
 name|remote_refs
 argument_list|)
 expr_stmt|;
-else|else
+elseif|else
+if|if
+condition|(
+name|ret
+operator|==
+literal|0
+condition|)
 name|fprintf
 argument_list|(
 name|stderr
