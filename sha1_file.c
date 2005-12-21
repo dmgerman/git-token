@@ -2472,6 +2472,12 @@ name|local
 expr_stmt|;
 if|if
 condition|(
+operator|(
+name|path_len
+operator|>
+literal|44
+operator|)
+operator|&&
 operator|!
 name|get_sha1_hex
 argument_list|(
@@ -2479,9 +2485,7 @@ name|path
 operator|+
 name|path_len
 operator|-
-literal|40
-operator|-
-literal|4
+literal|44
 argument_list|,
 name|sha1
 argument_list|)
