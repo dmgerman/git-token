@@ -2330,7 +2330,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Invalid pattern: %s"
+literal|"Invalid pattern: %s\n"
 argument_list|,
 name|value_regex
 argument_list|)
