@@ -1028,6 +1028,13 @@ name|diff_rename_limit_default
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+specifier|extern
+name|int
+name|shared_repository
+decl_stmt|;
+end_decl_stmt
+
 begin_define
 DECL|macro|GIT_REPO_VERSION
 define|#
@@ -1261,6 +1268,18 @@ specifier|const
 name|char
 modifier|*
 name|template
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
+name|adjust_shared_perm
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
 parameter_list|)
 function_decl|;
 end_function_decl
