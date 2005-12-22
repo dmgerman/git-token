@@ -38,6 +38,9 @@ specifier|const
 name|char
 modifier|*
 name|dir
+parameter_list|,
+name|int
+name|share
 parameter_list|)
 block|{
 if|if
@@ -71,6 +74,23 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+elseif|else
+if|if
+condition|(
+name|share
+operator|&&
+name|adjust_shared_perm
+argument_list|(
+name|dir
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"Could not make %s writable by group\n"
+argument_list|,
+name|dir
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
@@ -176,6 +196,20 @@ argument_list|(
 name|fdo
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|status
+operator|&&
+name|adjust_shared_perm
+argument_list|(
+name|dst
+argument_list|)
+condition|)
+return|return
+operator|-
+literal|1
+return|;
 return|return
 name|status
 return|;
@@ -216,6 +250,8 @@ comment|/* Note: if ".git/hooks" file exists in the repository being 	 * re-init
 name|safe_create_dir
 argument_list|(
 name|path
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 while|while
@@ -917,6 +953,8 @@ expr_stmt|;
 name|safe_create_dir
 argument_list|(
 name|path
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 name|strcpy
@@ -931,6 +969,8 @@ expr_stmt|;
 name|safe_create_dir
 argument_list|(
 name|path
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 name|strcpy
@@ -945,6 +985,8 @@ expr_stmt|;
 name|safe_create_dir
 argument_list|(
 name|path
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 comment|/* First copy the templates -- we might have the default 	 * config file there, in which case we would want to read 	 * from it after installing. 	 */
@@ -1115,7 +1157,7 @@ name|char
 name|init_db_usage
 index|[]
 init|=
-literal|"git-init-db [--template=<template-directory>]"
+literal|"git-init-db [--template=<template-directory>] [--shared]"
 decl_stmt|;
 end_decl_stmt
 
@@ -1205,6 +1247,21 @@ name|arg
 operator|+
 literal|11
 expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--shared"
+argument_list|)
+condition|)
+name|shared_repository
+operator|=
+literal|1
+expr_stmt|;
 else|else
 name|die
 argument_list|(
@@ -1241,6 +1298,8 @@ block|}
 name|safe_create_dir
 argument_list|(
 name|git_dir
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 comment|/* Check to see if the repository version is right. 	 * Note that a newly created repository does not have 	 * config file, so this will not fail.  What we are catching 	 * is an attempt to reinitialize new repository with an old tool. 	 */
@@ -1288,6 +1347,8 @@ expr_stmt|;
 name|safe_create_dir
 argument_list|(
 name|sha1_dir
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 name|strcpy
@@ -1302,6 +1363,8 @@ expr_stmt|;
 name|safe_create_dir
 argument_list|(
 name|path
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 name|strcpy
@@ -1316,6 +1379,19 @@ expr_stmt|;
 name|safe_create_dir
 argument_list|(
 name|path
+argument_list|,
+literal|1
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|shared_repository
+condition|)
+name|git_config_set
+argument_list|(
+literal|"core.sharedRepository"
+argument_list|,
+literal|"true"
 argument_list|)
 expr_stmt|;
 return|return
