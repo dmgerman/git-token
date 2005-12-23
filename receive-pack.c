@@ -429,7 +429,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"%s died of signal"
+literal|"%s died of signal\n"
 argument_list|,
 name|update_hook
 argument_list|)

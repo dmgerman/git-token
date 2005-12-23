@@ -1531,7 +1531,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"git: cannot determine current directory"
+literal|"git: cannot determine current directory\n"
 argument_list|)
 expr_stmt|;
 name|exit
