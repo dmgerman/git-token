@@ -90,7 +90,8 @@ name|daemon_usage
 index|[]
 init|=
 literal|"git-daemon [--verbose] [--syslog] [--inetd | --port=n] [--export-all]\n"
-literal|"           [--timeout=n] [--init-timeout=n] [--strict-paths] [directory...]"
+literal|"           [--timeout=n] [--init-timeout=n] [--strict-paths]\n"
+literal|"           [--base-path=path] [directory...]"
 decl_stmt|;
 end_decl_stmt
 
@@ -131,6 +132,21 @@ name|int
 name|export_all_trees
 init|=
 literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_comment
+comment|/* Take all paths relative to this one if non-NULL */
+end_comment
+
+begin_decl_stmt
+DECL|variable|base_path
+specifier|static
+name|char
+modifier|*
+name|base_path
+init|=
+name|NULL
 decl_stmt|;
 end_decl_stmt
 
@@ -602,6 +618,54 @@ expr_stmt|;
 return|return
 name|NULL
 return|;
+block|}
+if|if
+condition|(
+name|base_path
+condition|)
+block|{
+specifier|static
+name|char
+name|rpath
+index|[
+name|PATH_MAX
+index|]
+decl_stmt|;
+if|if
+condition|(
+operator|*
+name|dir
+operator|!=
+literal|'/'
+condition|)
+block|{
+comment|/* Forbid possible base-path evasion using ~paths. */
+name|logerror
+argument_list|(
+literal|"'%s': Non-absolute path denied (base-path active)"
+argument_list|)
+expr_stmt|;
+return|return
+name|NULL
+return|;
+block|}
+name|snprintf
+argument_list|(
+name|rpath
+argument_list|,
+name|PATH_MAX
+argument_list|,
+literal|"%s%s"
+argument_list|,
+name|base_path
+argument_list|,
+name|dir
+argument_list|)
+expr_stmt|;
+name|dir
+operator|=
+name|rpath
+expr_stmt|;
 block|}
 name|path
 operator|=
@@ -2862,6 +2926,27 @@ block|{
 name|strict_paths
 operator|=
 literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strncmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--base-path="
+argument_list|,
+literal|12
+argument_list|)
+condition|)
+block|{
+name|base_path
+operator|=
+name|arg
+operator|+
+literal|12
 expr_stmt|;
 continue|continue;
 block|}
