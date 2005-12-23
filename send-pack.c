@@ -1167,35 +1167,7 @@ name|ref
 operator|->
 name|old_sha1
 argument_list|)
-condition|)
-block|{
-name|error
-argument_list|(
-literal|"remote '%s' object %s does not "
-literal|"exist on local"
-argument_list|,
-name|ref
-operator|->
-name|name
-argument_list|,
-name|sha1_to_hex
-argument_list|(
-name|ref
-operator|->
-name|old_sha1
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|ret
-operator|=
-operator|-
-literal|2
-expr_stmt|;
-continue|continue;
-block|}
-comment|/* We assume that local is fsck-clean.  Otherwise 			 * you _could_ have an old tag which points at 			 * something you do not have, which may or may not 			 * be a commit. 			 */
-if|if
-condition|(
+operator|||
 operator|!
 name|ref_newer
 argument_list|(
@@ -1211,10 +1183,13 @@ name|old_sha1
 argument_list|)
 condition|)
 block|{
+comment|/* We do not have the remote ref, or 				 * we know that the remote ref is not 				 * an ancestor of what we are trying to 				 * push.  Either way this can be losing 				 * commits at the remote end and likely 				 * we were not up to date to begin with. 				 */
 name|error
 argument_list|(
-literal|"remote ref '%s' is not a strict "
-literal|"subset of local ref '%s'."
+literal|"remote '%s' is not a strict "
+literal|"subset of local ref '%s'. "
+literal|"maybe you are not up-to-date and "
+literal|"need to pull first?"
 argument_list|,
 name|ref
 operator|->
