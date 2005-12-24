@@ -2507,7 +2507,7 @@ name|char
 name|latin_one
 index|[]
 init|=
-literal|"latin-1"
+literal|"latin1"
 decl_stmt|;
 name|char
 modifier|*
