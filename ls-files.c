@@ -3022,7 +3022,7 @@ index|[]
 init|=
 literal|"git-ls-files [-z] [-t] (--[cached|deleted|others|stage|unmerged|killed|modified])* "
 literal|"[ --ignored ] [--exclude=<pattern>] [--exclude-from=<file>] "
-literal|"[ --exclude-per-directory=<filename> ] [--] [<file>]*"
+literal|"[ --exclude-per-directory=<filename> ] [--full-name] [--] [<file>]*"
 decl_stmt|;
 end_decl_stmt
 
