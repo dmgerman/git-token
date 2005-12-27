@@ -247,6 +247,12 @@ name|speccnt
 operator|=
 name|i
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|speccnt
+condition|)
+return|return;
 name|spec
 operator|=
 name|xmalloc
