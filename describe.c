@@ -14,6 +14,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"tag.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"refs.h"
 end_include
 
@@ -49,7 +55,7 @@ end_decl_stmt
 
 begin_comment
 DECL|variable|all
-comment|/* Default to tags only */
+comment|/* Default to annotated tags only */
 end_comment
 
 begin_decl_stmt
@@ -317,7 +323,15 @@ if|if
 condition|(
 operator|!
 name|all
-operator|&&
+condition|)
+block|{
+name|struct
+name|object
+modifier|*
+name|object
+decl_stmt|;
+if|if
+condition|(
 name|strncmp
 argument_list|(
 name|path
@@ -330,9 +344,34 @@ condition|)
 return|return
 literal|0
 return|;
+name|object
+operator|=
+name|parse_object
+argument_list|(
+name|sha1
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|object
+operator|->
+name|type
+operator|!=
+name|tag_type
+condition|)
+return|return
+literal|0
+return|;
+block|}
 name|add_to_known_names
 argument_list|(
+name|all
+condition|?
 name|path
+else|:
+name|path
+operator|+
+literal|10
 argument_list|,
 name|commit
 argument_list|)
