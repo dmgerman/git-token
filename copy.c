@@ -127,13 +127,26 @@ condition|(
 operator|!
 name|written
 condition|)
+block|{
+name|close
+argument_list|(
+name|ifd
+argument_list|)
+expr_stmt|;
 return|return
 name|error
 argument_list|(
 literal|"copy-fd: write returned 0"
 argument_list|)
 return|;
+block|}
 else|else
+block|{
+name|close
+argument_list|(
+name|ifd
+argument_list|)
+expr_stmt|;
 return|return
 name|error
 argument_list|(
@@ -145,6 +158,7 @@ name|errno
 argument_list|)
 argument_list|)
 return|;
+block|}
 block|}
 block|}
 name|close
