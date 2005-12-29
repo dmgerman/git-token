@@ -988,7 +988,7 @@ return|;
 block|}
 else|else
 block|{
-comment|/* match with FNM_PATHNAME: 				 * exclude has base (baselen long) inplicitly 				 * in front of it. 				 */
+comment|/* match with FNM_PATHNAME: 				 * exclude has base (baselen long) implicitly 				 * in front of it. 				 */
 name|int
 name|baselen
 init|=

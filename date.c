@@ -1839,7 +1839,7 @@ return|return
 name|n
 return|;
 block|}
-comment|/* 	 * NOTE! We will give precedence to day-of-month over month or 	 * year numebers in the 1-12 range. So 05 is always "mday 5", 	 * unless we already have a mday.. 	 * 	 * IOW, 01 Apr 05 parses as "April 1st, 2005". 	 */
+comment|/* 	 * NOTE! We will give precedence to day-of-month over month or 	 * year numbers in the 1-12 range. So 05 is always "mday 5", 	 * unless we already have a mday.. 	 * 	 * IOW, 01 Apr 05 parses as "April 1st, 2005". 	 */
 if|if
 condition|(
 name|num

@@ -4223,7 +4223,7 @@ condition|(
 operator|!
 name|active_cache
 condition|)
-comment|/* read-cache does not die even when it fails 			 * so it is safe for us to do this here.  Also 			 * it does not smudge active_cache or active_nr 			 * when it fails, so we do not have to worry about 			 * cleaning it up oufselves either. 			 */
+comment|/* read-cache does not die even when it fails 			 * so it is safe for us to do this here.  Also 			 * it does not smudge active_cache or active_nr 			 * when it fails, so we do not have to worry about 			 * cleaning it up ourselves either. 			 */
 name|read_cache
 argument_list|()
 expr_stmt|;
