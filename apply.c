@@ -8420,6 +8420,9 @@ operator|!=
 name|EEXIST
 condition|)
 break|break;
+operator|++
+name|nr
+expr_stmt|;
 block|}
 block|}
 name|die
