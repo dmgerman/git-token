@@ -46,11 +46,11 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|regex
+DECL|variable|regexp
 specifier|static
 name|regex_t
 modifier|*
-name|regex
+name|regexp
 init|=
 name|NULL
 decl_stmt|;
@@ -114,7 +114,7 @@ name|key
 argument_list|)
 operator|&&
 operator|(
-name|regex
+name|regexp
 operator|==
 name|NULL
 operator|||
@@ -124,7 +124,7 @@ operator|^
 operator|!
 name|regexec
 argument_list|(
-name|regex
+name|regexp
 argument_list|,
 name|value_
 argument_list|,
@@ -282,7 +282,7 @@ name|regex_
 operator|++
 expr_stmt|;
 block|}
-name|regex
+name|regexp
 operator|=
 operator|(
 name|regex_t
@@ -300,7 +300,7 @@ if|if
 condition|(
 name|regcomp
 argument_list|(
-name|regex
+name|regexp
 argument_list|,
 name|regex_
 argument_list|,
@@ -355,17 +355,17 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|regex
+name|regexp
 condition|)
 block|{
 name|regfree
 argument_list|(
-name|regex
+name|regexp
 argument_list|)
 expr_stmt|;
 name|free
 argument_list|(
-name|regex
+name|regexp
 argument_list|)
 expr_stmt|;
 block|}
