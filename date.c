@@ -3531,6 +3531,14 @@ operator|>
 name|now
 operator|.
 name|tm_mon
+operator|&&
+name|tm
+operator|.
+name|tm_year
+operator|==
+name|now
+operator|.
+name|tm_year
 condition|)
 name|tm
 operator|.
