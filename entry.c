@@ -436,8 +436,6 @@ name|path
 argument_list|,
 name|O_WRONLY
 operator||
-name|O_TRUNC
-operator||
 name|O_CREAT
 operator||
 name|O_EXCL
