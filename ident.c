@@ -717,7 +717,7 @@ operator|--
 name|len
 expr_stmt|;
 block|}
-comment|/* 	 * Copy the rest to the buffer, but avoid the special 	 * characters '\n' '<' and '>' that act as delimeters on 	 * a identification line 	 */
+comment|/* 	 * Copy the rest to the buffer, but avoid the special 	 * characters '\n' '<' and '>' that act as delimiters on 	 * a identification line 	 */
 for|for
 control|(
 name|i

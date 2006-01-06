@@ -684,7 +684,7 @@ argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
-comment|/* if we are delitified, write out its base object. */
+comment|/* if we are deltified, write out its base object. */
 if|if
 condition|(
 name|e
