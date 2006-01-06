@@ -285,7 +285,7 @@ literal|"waitpid failed (%s)"
 argument_list|,
 name|strerror
 argument_list|(
-name|retval
+name|errno
 argument_list|)
 argument_list|)
 expr_stmt|;
