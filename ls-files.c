@@ -1152,9 +1152,10 @@ DECL|member|name
 name|char
 name|name
 index|[
-literal|0
+name|FLEX_ARRAY
 index|]
 decl_stmt|;
+comment|/* more */
 block|}
 struct|;
 end_struct
