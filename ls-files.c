@@ -1624,6 +1624,9 @@ argument_list|,
 literal|2
 argument_list|)
 expr_stmt|;
+name|len
+operator|++
+expr_stmt|;
 if|if
 condition|(
 name|show_other_directories
@@ -1636,8 +1639,6 @@ argument_list|,
 name|baselen
 operator|+
 name|len
-operator|+
-literal|1
 argument_list|)
 condition|)
 break|break;
@@ -1650,8 +1651,6 @@ argument_list|,
 name|baselen
 operator|+
 name|len
-operator|+
-literal|1
 argument_list|)
 expr_stmt|;
 continue|continue;
