@@ -724,9 +724,16 @@ name|abbrev
 argument_list|)
 argument_list|)
 expr_stmt|;
-return|return;
+break|break;
 block|}
 block|}
+name|clear_commit_marks
+argument_list|(
+name|cmit
+argument_list|,
+name|SEEN
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 

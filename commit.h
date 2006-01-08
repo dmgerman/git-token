@@ -360,6 +360,22 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+name|void
+name|clear_commit_marks
+parameter_list|(
+name|struct
+name|commit
+modifier|*
+name|commit
+parameter_list|,
+name|unsigned
+name|int
+name|mark
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|int
 name|count_parents
 parameter_list|(
