@@ -54,9 +54,10 @@ name|object
 modifier|*
 name|ref
 index|[
-literal|0
+name|FLEX_ARRAY
 index|]
 decl_stmt|;
+comment|/* more */
 block|}
 struct|;
 end_struct
