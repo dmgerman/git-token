@@ -884,6 +884,15 @@ argument_list|)
 operator|==
 name|NULL
 condition|)
+block|{
+if|if
+condition|(
+name|f
+operator|==
+name|stdin
+condition|)
+break|break;
+comment|/* empty stdin is OK */
 name|die
 argument_list|(
 literal|"cannot read mbox %s"
@@ -891,6 +900,7 @@ argument_list|,
 name|file
 argument_list|)
 expr_stmt|;
+block|}
 while|while
 condition|(
 operator|!

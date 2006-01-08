@@ -1463,6 +1463,14 @@ decl_stmt|;
 name|setup_git_directory
 argument_list|()
 expr_stmt|;
+name|quiet
+operator|=
+operator|!
+name|isatty
+argument_list|(
+literal|2
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|i

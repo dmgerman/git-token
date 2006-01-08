@@ -132,8 +132,11 @@ comment|/* annotated tag = 2, tag = 1, head = 0 */
 DECL|member|path
 name|char
 name|path
-index|[]
+index|[
+name|FLEX_ARRAY
+index|]
 decl_stmt|;
+comment|/* more */
 DECL|variable|name_array
 block|}
 modifier|*

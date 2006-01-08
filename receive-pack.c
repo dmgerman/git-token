@@ -215,9 +215,10 @@ DECL|member|ref_name
 name|char
 name|ref_name
 index|[
-literal|0
+name|FLEX_ARRAY
 index|]
 decl_stmt|;
+comment|/* more */
 block|}
 struct|;
 end_struct
