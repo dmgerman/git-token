@@ -17,6 +17,12 @@ directive|include
 file|<sys/wait.h>
 end_include
 
+begin_include
+include|#
+directive|include
+file|"exec_cmd.h"
+end_include
+
 begin_function
 DECL|function|run_command_v_opt
 name|int
@@ -93,6 +99,21 @@ name|fd
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|flags
+operator|&
+name|RUN_GIT_CMD
+condition|)
+block|{
+name|execv_git_cmd
+argument_list|(
+name|argv
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|execvp
 argument_list|(
 name|argv
@@ -109,6 +130,7 @@ operator|)
 name|argv
 argument_list|)
 expr_stmt|;
+block|}
 name|die
 argument_list|(
 literal|"exec %s failed."

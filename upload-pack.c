@@ -35,6 +35,12 @@ directive|include
 file|"commit.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"exec_cmd.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|upload_pack_usage
 specifier|static
@@ -375,7 +381,7 @@ operator|*
 name|p
 operator|++
 operator|=
-literal|"git-rev-list"
+literal|"rev-list"
 expr_stmt|;
 operator|*
 name|p
@@ -497,10 +503,8 @@ operator|++
 operator|=
 name|NULL
 expr_stmt|;
-name|execvp
+name|execv_git_cmd
 argument_list|(
-literal|"git-rev-list"
-argument_list|,
 name|argv
 argument_list|)
 expr_stmt|;
@@ -536,11 +540,9 @@ literal|1
 index|]
 argument_list|)
 expr_stmt|;
-name|execlp
+name|execl_git_cmd
 argument_list|(
-literal|"git-pack-objects"
-argument_list|,
-literal|"git-pack-objects"
+literal|"pack-objects"
 argument_list|,
 literal|"--stdout"
 argument_list|,

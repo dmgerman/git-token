@@ -29,6 +29,12 @@ directive|include
 file|"pkt-line.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"exec_cmd.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|send_pack_usage
 specifier|static
@@ -146,17 +152,15 @@ name|args
 index|[]
 init|=
 block|{
-literal|"git-pack-objects"
+literal|"pack-objects"
 block|,
 literal|"--stdout"
 block|,
 name|NULL
 block|}
 decl_stmt|;
-name|execvp
+name|execv_git_cmd
 argument_list|(
-literal|"git-pack-objects"
-argument_list|,
 name|args
 argument_list|)
 expr_stmt|;
@@ -204,7 +208,7 @@ name|i
 operator|++
 index|]
 operator|=
-literal|"git-rev-list"
+literal|"rev-list"
 expr_stmt|;
 comment|/* 0 */
 name|args
@@ -338,10 +342,8 @@ index|]
 operator|=
 name|NULL
 expr_stmt|;
-name|execvp
+name|execv_git_cmd
 argument_list|(
-literal|"git-rev-list"
-argument_list|,
 name|args
 argument_list|)
 expr_stmt|;

@@ -11,6 +11,12 @@ directive|include
 file|"quote.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"exec_cmd.h"
+end_include
+
 begin_function
 DECL|function|do_generic_cmd
 specifier|static
@@ -55,12 +61,30 @@ argument_list|(
 literal|"bad argument"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|strncmp
+argument_list|(
+name|me
+argument_list|,
+literal|"git-"
+argument_list|,
+literal|4
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"bad command"
+argument_list|)
+expr_stmt|;
 name|my_argv
 index|[
 literal|0
 index|]
 operator|=
 name|me
+operator|+
+literal|4
 expr_stmt|;
 name|my_argv
 index|[
@@ -77,10 +101,8 @@ operator|=
 name|NULL
 expr_stmt|;
 return|return
-name|execvp
+name|execv_git_cmd
 argument_list|(
-name|me
-argument_list|,
 operator|(
 name|char
 operator|*

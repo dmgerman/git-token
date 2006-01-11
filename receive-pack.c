@@ -44,12 +44,16 @@ end_decl_stmt
 begin_decl_stmt
 DECL|variable|unpacker
 specifier|static
-specifier|const
 name|char
+modifier|*
 name|unpacker
 index|[]
 init|=
-literal|"git-unpack-objects"
+block|{
+literal|"unpack-objects"
+block|,
+name|NULL
+block|}
 decl_stmt|;
 end_decl_stmt
 
@@ -1449,11 +1453,13 @@ block|{
 name|int
 name|code
 init|=
-name|run_command
+name|run_command_v_opt
 argument_list|(
+literal|1
+argument_list|,
 name|unpacker
 argument_list|,
-name|NULL
+name|RUN_GIT_CMD
 argument_list|)
 decl_stmt|;
 operator|*

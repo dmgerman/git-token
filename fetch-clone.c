@@ -8,6 +8,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"exec_cmd.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|<sys/wait.h>
 end_include
 
@@ -166,11 +172,9 @@ literal|1
 index|]
 argument_list|)
 expr_stmt|;
-name|execlp
+name|execl_git_cmd
 argument_list|(
-literal|"git-index-pack"
-argument_list|,
-literal|"git-index-pack"
+literal|"index-pack"
 argument_list|,
 literal|"-o"
 argument_list|,
@@ -562,11 +566,9 @@ literal|1
 index|]
 argument_list|)
 expr_stmt|;
-name|execlp
+name|execl_git_cmd
 argument_list|(
-literal|"git-unpack-objects"
-argument_list|,
-literal|"git-unpack-objects"
+literal|"unpack-objects"
 argument_list|,
 name|quiet
 condition|?

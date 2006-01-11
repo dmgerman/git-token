@@ -65,6 +65,12 @@ directive|include
 file|"cache.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"exec_cmd.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|log_syslog
 specifier|static
@@ -903,11 +909,9 @@ name|timeout
 argument_list|)
 expr_stmt|;
 comment|/* git-upload-pack only ever reads stuff, so this is safe */
-name|execlp
+name|execl_git_cmd
 argument_list|(
-literal|"git-upload-pack"
-argument_list|,
-literal|"git-upload-pack"
+literal|"upload-pack"
 argument_list|,
 literal|"--strict"
 argument_list|,

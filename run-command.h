@@ -54,6 +54,19 @@ name|RUN_COMMAND_NO_STDIO
 value|1
 end_define
 
+begin_define
+DECL|macro|RUN_GIT_CMD
+define|#
+directive|define
+name|RUN_GIT_CMD
+value|2
+end_define
+
+begin_comment
+DECL|macro|RUN_GIT_CMD
+comment|/*If this is to be git sub-command */
+end_comment
+
 begin_function_decl
 name|int
 name|run_command_v_opt
