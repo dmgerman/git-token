@@ -2633,6 +2633,13 @@ name|av
 argument_list|,
 literal|'?'
 argument_list|)
+operator|||
+name|strchr
+argument_list|(
+name|av
+argument_list|,
+literal|'['
+argument_list|)
 condition|)
 block|{
 comment|/* glob style match */
