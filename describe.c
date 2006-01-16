@@ -593,6 +593,9 @@ name|struct
 name|commit
 modifier|*
 name|cmit
+parameter_list|,
+name|int
+name|last_one
 parameter_list|)
 block|{
 name|struct
@@ -727,6 +730,11 @@ name|abbrev
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|last_one
+condition|)
 name|clear_commit_marks
 argument_list|(
 name|cmit
@@ -919,6 +927,12 @@ expr_stmt|;
 name|describe
 argument_list|(
 name|cmit
+argument_list|,
+name|i
+operator|==
+name|argc
+operator|-
+literal|1
 argument_list|)
 expr_stmt|;
 block|}

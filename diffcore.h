@@ -29,7 +29,7 @@ DECL|macro|MAX_SCORE
 define|#
 directive|define
 name|MAX_SCORE
-value|60000
+value|60000.0
 end_define
 
 begin_define
