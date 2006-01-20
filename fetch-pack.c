@@ -1320,12 +1320,6 @@ decl_stmt|,
 modifier|*
 name|next
 decl_stmt|;
-if|if
-condition|(
-operator|!
-name|nr_match
-condition|)
-return|return;
 for|for
 control|(
 name|prev
