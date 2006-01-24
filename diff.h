@@ -313,6 +313,26 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|int
+name|diff_tree_combined_merge
+parameter_list|(
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|sha1
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+parameter_list|,
+name|int
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|void
 name|diff_addremove
 parameter_list|(
