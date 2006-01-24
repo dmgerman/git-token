@@ -78,6 +78,16 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|dense_combined_merges
+specifier|static
+name|int
+name|dense_combined_merges
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|read_stdin
 specifier|static
 name|int
@@ -685,6 +695,8 @@ argument_list|,
 name|header
 argument_list|,
 name|show_empty_combined
+argument_list|,
+name|dense_combined_merges
 argument_list|)
 return|;
 block|}
@@ -946,7 +958,7 @@ name|char
 name|diff_tree_usage
 index|[]
 init|=
-literal|"git-diff-tree [--stdin] [-m] [-c] [-s] [-v] [--pretty] [-t] [-r] [--root] "
+literal|"git-diff-tree [--stdin] [-m] [-c] [--cc] [-s] [-v] [--pretty] [-t] [-r] [--root] "
 literal|"[<common diff options>]<tree-ish> [<tree-ish>] [<path>...]\n"
 literal|"  -r            diff recursively\n"
 literal|"  --root        include the initial commit as diff against /dev/null\n"
@@ -1209,6 +1221,25 @@ literal|"-c"
 argument_list|)
 condition|)
 block|{
+name|combine_merges
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--cc"
+argument_list|)
+condition|)
+block|{
+name|dense_combined_merges
+operator|=
 name|combine_merges
 operator|=
 literal|1
