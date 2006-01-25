@@ -484,6 +484,8 @@ name|this_header
 argument_list|)
 operator|-
 name|offset
+argument_list|,
+name|abbrev
 argument_list|)
 expr_stmt|;
 return|return

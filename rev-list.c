@@ -495,6 +495,8 @@ sizeof|sizeof
 argument_list|(
 name|pretty_header
 argument_list|)
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|printf
