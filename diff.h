@@ -524,32 +524,6 @@ name|DIFF_PICKAXE_ALL
 value|1
 end_define
 
-begin_define
-DECL|macro|DIFF_DEFAULT_INDEX_ABBREV
-define|#
-directive|define
-name|DIFF_DEFAULT_INDEX_ABBREV
-value|7
-end_define
-
-begin_comment
-DECL|macro|DIFF_DEFAULT_INDEX_ABBREV
-comment|/* hex digits */
-end_comment
-
-begin_define
-DECL|macro|DIFF_DEFAULT_ABBREV
-define|#
-directive|define
-name|DIFF_DEFAULT_ABBREV
-value|7
-end_define
-
-begin_comment
-DECL|macro|DIFF_DEFAULT_ABBREV
-comment|/* hex digits */
-end_comment
-
 begin_function_decl
 specifier|extern
 name|void

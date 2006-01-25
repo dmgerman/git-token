@@ -73,19 +73,6 @@ DECL|variable|tags
 comment|/* But allow any tags if --tags is specified */
 end_comment
 
-begin_define
-DECL|macro|DEFAULT_ABBREV
-define|#
-directive|define
-name|DEFAULT_ABBREV
-value|8
-end_define
-
-begin_comment
-DECL|macro|DEFAULT_ABBREV
-comment|/* maybe too many */
-end_comment
-
 begin_decl_stmt
 DECL|variable|abbrev
 specifier|static
@@ -916,7 +903,7 @@ if|if
 condition|(
 name|abbrev
 operator|<
-literal|4
+name|MINIMUM_ABBREV
 operator|||
 literal|40
 operator|<=
