@@ -738,6 +738,10 @@ name|i
 operator|++
 control|)
 block|{
+name|struct
+name|stat
+name|st
+decl_stmt|;
 name|char
 modifier|*
 name|arg
@@ -1415,6 +1419,30 @@ condition|)
 name|die
 argument_list|(
 literal|"Needed a single revision"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|lstat
+argument_list|(
+name|arg
+argument_list|,
+operator|&
+name|st
+argument_list|)
+operator|<
+literal|0
+condition|)
+name|die
+argument_list|(
+literal|"'%s': %s"
+argument_list|,
+name|arg
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|as_is
