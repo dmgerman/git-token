@@ -849,8 +849,7 @@ literal|20
 argument_list|)
 condition|)
 return|return
-operator|-
-literal|2
+name|SHORT_NAME_AMBIGUOUS
 return|;
 name|memcpy
 argument_list|(
