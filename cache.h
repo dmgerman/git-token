@@ -1574,35 +1574,6 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
-begin_comment
-comment|/* Read a tree into the cache */
-end_comment
-
-begin_function_decl
-specifier|extern
-name|int
-name|read_tree
-parameter_list|(
-name|void
-modifier|*
-name|buffer
-parameter_list|,
-name|unsigned
-name|long
-name|size
-parameter_list|,
-name|int
-name|stage
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-modifier|*
-name|paths
-parameter_list|)
-function_decl|;
-end_function_decl
-
 begin_function_decl
 specifier|extern
 name|int

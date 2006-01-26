@@ -8,6 +8,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"tree.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"diff.h"
 end_include
 
@@ -809,13 +815,10 @@ name|pathspec
 init|=
 name|NULL
 decl_stmt|;
-name|void
+name|struct
+name|tree
 modifier|*
 name|tree
-decl_stmt|;
-name|unsigned
-name|long
-name|size
 decl_stmt|;
 name|int
 name|ret
@@ -1051,16 +1054,9 @@ argument_list|()
 expr_stmt|;
 name|tree
 operator|=
-name|read_object_with_reference
+name|parse_tree_indirect
 argument_list|(
 name|sha1
-argument_list|,
-literal|"tree"
-argument_list|,
-operator|&
-name|size
-argument_list|,
-name|NULL
 argument_list|)
 expr_stmt|;
 if|if
@@ -1080,8 +1076,6 @@ condition|(
 name|read_tree
 argument_list|(
 name|tree
-argument_list|,
-name|size
 argument_list|,
 literal|1
 argument_list|,
