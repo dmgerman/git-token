@@ -302,9 +302,9 @@ name|cmit_fmt
 name|fmt
 parameter_list|,
 specifier|const
-name|char
+name|struct
+name|commit
 modifier|*
-name|msg
 parameter_list|,
 name|unsigned
 name|long

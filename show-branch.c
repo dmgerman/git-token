@@ -1314,8 +1314,6 @@ argument_list|(
 name|CMIT_FMT_ONELINE
 argument_list|,
 name|commit
-operator|->
-name|buffer
 argument_list|,
 operator|~
 literal|0
