@@ -963,7 +963,7 @@ name|strcmp
 argument_list|(
 name|arg
 argument_list|,
-literal|"--abbrev"
+literal|"--short"
 argument_list|)
 operator|||
 operator|!
@@ -971,7 +971,7 @@ name|strncmp
 argument_list|(
 name|arg
 argument_list|,
-literal|"--abbrev="
+literal|"--short="
 argument_list|,
 literal|9
 argument_list|)
