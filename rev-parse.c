@@ -1423,6 +1423,19 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
+name|filter
+operator|&
+name|DO_REVS
+operator|)
+operator|&&
+operator|(
+name|filter
+operator|&
+name|DO_NONFLAGS
+operator|)
+operator|&&
+comment|/* !def&& */
 name|lstat
 argument_list|(
 name|arg
