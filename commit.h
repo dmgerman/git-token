@@ -302,9 +302,9 @@ name|cmit_fmt
 name|fmt
 parameter_list|,
 specifier|const
-name|char
+name|struct
+name|commit
 modifier|*
-name|msg
 parameter_list|,
 name|unsigned
 name|long
@@ -317,6 +317,9 @@ parameter_list|,
 name|unsigned
 name|long
 name|space
+parameter_list|,
+name|int
+name|abbrev
 parameter_list|)
 function_decl|;
 end_function_decl

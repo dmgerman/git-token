@@ -911,7 +911,7 @@ if|if
 condition|(
 name|len
 operator|<
-literal|4
+name|MINIMUM_ABBREV
 condition|)
 return|return
 operator|-
