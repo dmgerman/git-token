@@ -214,6 +214,27 @@ name|p
 init|=
 name|rev_args
 decl_stmt|;
+comment|/* accept -<digit>, like traditional "head" */
+if|if
+condition|(
+operator|(
+operator|*
+name|arg
+operator|==
+literal|'-'
+operator|)
+operator|&&
+name|isdigit
+argument_list|(
+name|arg
+index|[
+literal|1
+index|]
+argument_list|)
+condition|)
+return|return
+literal|1
+return|;
 for|for
 control|(
 init|;
