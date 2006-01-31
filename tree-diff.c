@@ -55,7 +55,6 @@ end_decl_stmt
 
 begin_function
 DECL|function|update_tree_entry
-specifier|static
 name|void
 name|update_tree_entry
 parameter_list|(
@@ -124,13 +123,12 @@ block|}
 end_function
 
 begin_function
-DECL|function|extract
-specifier|static
+DECL|function|tree_entry_extract
 specifier|const
 name|unsigned
 name|char
 modifier|*
-name|extract
+name|tree_entry_extract
 parameter_list|(
 name|struct
 name|tree_desc
@@ -417,7 +415,7 @@ name|pathlen2
 decl_stmt|;
 name|sha1
 operator|=
-name|extract
+name|tree_entry_extract
 argument_list|(
 name|t1
 argument_list|,
@@ -430,7 +428,7 @@ argument_list|)
 expr_stmt|;
 name|sha2
 operator|=
-name|extract
+name|tree_entry_extract
 argument_list|(
 name|t2
 argument_list|,
@@ -725,7 +723,7 @@ return|;
 operator|(
 name|void
 operator|)
-name|extract
+name|tree_entry_extract
 argument_list|(
 name|desc
 argument_list|,
@@ -997,7 +995,7 @@ name|char
 modifier|*
 name|sha1
 init|=
-name|extract
+name|tree_entry_extract
 argument_list|(
 name|desc
 argument_list|,
