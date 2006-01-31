@@ -129,6 +129,23 @@ directive|endif
 end_endif
 
 begin_struct
+DECL|struct|slot_results
+struct|struct
+name|slot_results
+block|{
+DECL|member|curl_result
+name|CURLcode
+name|curl_result
+decl_stmt|;
+DECL|member|http_code
+name|long
+name|http_code
+decl_stmt|;
+block|}
+struct|;
+end_struct
+
+begin_struct
 DECL|struct|active_request_slot
 struct|struct
 name|active_request_slot
@@ -154,6 +171,12 @@ decl_stmt|;
 DECL|member|http_code
 name|long
 name|http_code
+decl_stmt|;
+DECL|member|results
+name|struct
+name|slot_results
+modifier|*
+name|results
 decl_stmt|;
 DECL|member|callback_data
 name|void
