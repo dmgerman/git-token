@@ -2943,6 +2943,18 @@ block|{
 name|remove_tempfile
 argument_list|()
 expr_stmt|;
+name|signal
+argument_list|(
+name|SIGINT
+argument_list|,
+name|SIG_DFL
+argument_list|)
+expr_stmt|;
+name|raise
+argument_list|(
+name|signo
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
