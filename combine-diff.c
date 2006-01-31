@@ -481,6 +481,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/* Lines lost from parent */
+end_comment
+
 begin_struct
 DECL|struct|lline
 struct|struct
@@ -512,6 +516,10 @@ block|}
 struct|;
 end_struct
 
+begin_comment
+comment|/* Lines surviving in the merge result */
+end_comment
+
 begin_struct
 DECL|struct|sline
 struct|struct
@@ -537,6 +545,7 @@ DECL|member|len
 name|int
 name|len
 decl_stmt|;
+comment|/* bit 0 up to (N-1) are on if the parent does _not_ 	 * have this line (i.e. we changed it). 	 * bit N is used for "interesting" lines, including context. 	 */
 DECL|member|flag
 name|unsigned
 name|long
@@ -1500,6 +1509,7 @@ operator|!
 name|lost_bucket
 condition|)
 continue|continue;
+comment|/* not in any hunk yet */
 switch|switch
 condition|(
 name|line
