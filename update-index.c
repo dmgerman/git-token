@@ -1565,7 +1565,7 @@ index|]
 operator|==
 literal|' '
 operator|&&
-literal|'1'
+literal|'0'
 operator|<=
 name|tab
 index|[
