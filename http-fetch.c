@@ -1731,10 +1731,11 @@ operator|->
 name|sha1
 argument_list|)
 condition|)
-name|release_object_request
-argument_list|(
 name|obj_req
-argument_list|)
+operator|->
+name|state
+operator|=
+name|COMPLETE
 expr_stmt|;
 else|else
 name|start_object_request
