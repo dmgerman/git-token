@@ -2539,15 +2539,12 @@ literal|1
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|start_active_slot
 argument_list|(
 name|slot
 argument_list|)
 condition|)
-block|{
-return|return;
-block|}
-else|else
 block|{
 name|got_alternates
 operator|=
@@ -2560,8 +2557,8 @@ name|in_use
 operator|=
 literal|0
 expr_stmt|;
-return|return;
 block|}
+return|return;
 block|}
 block|}
 elseif|else
