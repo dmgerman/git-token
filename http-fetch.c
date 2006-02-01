@@ -4444,18 +4444,11 @@ name|ret
 operator|=
 name|error
 argument_list|(
-literal|"unable to write sha1 filename %s: %s"
+literal|"unable to write sha1 filename %s"
 argument_list|,
 name|obj_req
 operator|->
 name|filename
-argument_list|,
-name|strerror
-argument_list|(
-name|obj_req
-operator|->
-name|rename
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
