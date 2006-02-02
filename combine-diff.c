@@ -545,7 +545,7 @@ DECL|member|len
 name|int
 name|len
 decl_stmt|;
-comment|/* bit 0 up to (N-1) are on if the parent does _not_ 	 * have this line (i.e. we changed it). 	 * bit N is used for "interesting" lines, including context. 	 */
+comment|/* bit 0 up to (N-1) are on if the parent has this line (i.e. 	 * we did not change it). 	 * bit N is used for "interesting" lines, including context. 	 */
 DECL|member|flag
 name|unsigned
 name|long
@@ -1362,13 +1362,6 @@ operator|<<
 name|n
 operator|)
 decl_stmt|;
-name|unsigned
-name|long
-name|pmask
-init|=
-operator|~
-name|nmask
-decl_stmt|;
 name|struct
 name|sline
 modifier|*
@@ -1612,8 +1605,8 @@ literal|1
 index|]
 operator|.
 name|flag
-operator|&=
-name|pmask
+operator||=
+name|nmask
 expr_stmt|;
 name|lno
 operator|++
@@ -1703,6 +1696,8 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|!
+operator|(
 name|sline
 index|[
 name|lno
@@ -1711,6 +1706,7 @@ operator|.
 name|flag
 operator|&
 name|nmask
+operator|)
 condition|)
 name|p_lno
 operator|++
@@ -1770,6 +1766,7 @@ name|long
 name|all_mask
 parameter_list|)
 block|{
+comment|/* If some parents lost lines here, or if we have added to 	 * some parent, it is interesting. 	 */
 return|return
 operator|(
 operator|(
@@ -1779,8 +1776,6 @@ name|flag
 operator|&
 name|all_mask
 operator|)
-operator|!=
-name|all_mask
 operator|||
 name|sline
 operator|->
@@ -1815,7 +1810,7 @@ name|long
 name|i
 parameter_list|)
 block|{
-comment|/* i points at the first uninteresting line. 	 * If the last line of the hunk was interesting 	 * only because it has some deletion, then 	 * it is not all that interesting for the 	 * purpose of giving trailing context lines. 	 */
+comment|/* i points at the first uninteresting line.  If the last line 	 * of the hunk was interesting only because it has some 	 * deletion, then it is not all that interesting for the 	 * purpose of giving trailing context lines.  This is because 	 * we output '-' line and then unmodified sline[i-1] itself in 	 * that case which gives us one extra context line. 	 */
 if|if
 condition|(
 operator|(
@@ -1826,7 +1821,7 @@ operator|<=
 name|i
 operator|)
 operator|&&
-operator|(
+operator|!
 operator|(
 name|sline
 index|[
@@ -1837,9 +1832,6 @@ index|]
 operator|.
 name|flag
 operator|&
-name|all_mask
-operator|)
-operator|==
 name|all_mask
 operator|)
 condition|)
@@ -1853,11 +1845,11 @@ block|}
 end_function
 
 begin_function
-DECL|function|next_interesting
+DECL|function|find_next
 specifier|static
 name|unsigned
 name|long
-name|next_interesting
+name|find_next
 parameter_list|(
 name|struct
 name|sline
@@ -1880,6 +1872,7 @@ name|int
 name|uninteresting
 parameter_list|)
 block|{
+comment|/* We have examined up to i-1 and are about to look at i. 	 * Find next interesting or uninteresting line.  Here, 	 * "interesting" does not mean interesting(), but marked by 	 * the give_context() function below (i.e. it includes context 	 * lines that are not interesting to interesting() function 	 * that are surrounded by interesting() ones. 	 */
 while|while
 condition|(
 name|i
@@ -1971,9 +1964,10 @@ name|unsigned
 name|long
 name|i
 decl_stmt|;
+comment|/* Two groups of interesting lines may have a short gap of 	 * unintersting lines.  Connect such groups to give them a 	 * bit of context. 	 * 	 * We first start from what the interesting() function says, 	 * and mark them with "mark", and paint context lines with the 	 * mark.  So interesting() would still say false for such context 	 * lines but they are treated as "interesting" in the end. 	 */
 name|i
 operator|=
-name|next_interesting
+name|find_next
 argument_list|(
 name|sline
 argument_list|,
@@ -2024,6 +2018,7 @@ name|unsigned
 name|long
 name|k
 decl_stmt|;
+comment|/* Paint a few lines before the first interesting line. */
 while|while
 condition|(
 name|j
@@ -2042,9 +2037,10 @@ name|mark
 expr_stmt|;
 name|again
 label|:
+comment|/* we know up to i is to be included.  where does the 		 * next uninteresting one start? 		 */
 name|j
 operator|=
-name|next_interesting
+name|find_next
 argument_list|(
 name|sline
 argument_list|,
@@ -2068,7 +2064,7 @@ comment|/* the rest are all interesting */
 comment|/* lookahead context lines */
 name|k
 operator|=
-name|next_interesting
+name|find_next
 argument_list|(
 name|sline
 argument_list|,
@@ -2128,7 +2124,7 @@ goto|goto
 name|again
 goto|;
 block|}
-comment|/* j is the first uninteresting line and there is 		 * no overlap beyond it within context lines. 		 */
+comment|/* j is the first uninteresting line and there is 		 * no overlap beyond it within context lines.  Paint 		 * the trailing edge a bit. 		 */
 name|i
 operator|=
 name|k
@@ -2491,7 +2487,6 @@ name|unsigned
 name|long
 name|this_diff
 init|=
-operator|~
 name|sline
 index|[
 name|j
@@ -2920,6 +2915,10 @@ decl_stmt|;
 name|int
 name|j
 decl_stmt|;
+name|unsigned
+name|long
+name|p_mask
+decl_stmt|;
 name|sl
 operator|=
 operator|&
@@ -2992,6 +2991,10 @@ operator|->
 name|next
 expr_stmt|;
 block|}
+name|p_mask
+operator|=
+literal|1
+expr_stmt|;
 for|for
 control|(
 name|j
@@ -3008,11 +3011,7 @@ control|)
 block|{
 if|if
 condition|(
-operator|(
-literal|1UL
-operator|<<
-name|j
-operator|)
+name|p_mask
 operator|&
 name|sl
 operator|->
@@ -3020,14 +3019,18 @@ name|flag
 condition|)
 name|putchar
 argument_list|(
-literal|' '
+literal|'+'
 argument_list|)
 expr_stmt|;
 else|else
 name|putchar
 argument_list|(
-literal|'+'
+literal|' '
 argument_list|)
+expr_stmt|;
+name|p_mask
+operator|<<=
+literal|1
 expr_stmt|;
 block|}
 name|printf
@@ -3160,20 +3163,16 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-operator|!
-operator|(
 name|sline
 operator|->
 name|flag
 operator|&
 name|jmask
-operator|)
 condition|)
 name|sline
 operator|->
 name|flag
-operator|&=
-operator|~
+operator||=
 name|imask
 expr_stmt|;
 name|sline
@@ -3589,13 +3588,7 @@ index|]
 operator|.
 name|flag
 operator|=
-operator|(
-literal|1UL
-operator|<<
-name|num_parent
-operator|)
-operator|-
-literal|1
+literal|0
 expr_stmt|;
 name|lno
 operator|++
@@ -3683,13 +3676,7 @@ index|]
 operator|.
 name|flag
 operator|=
-operator|(
-literal|1UL
-operator|<<
-name|num_parent
-operator|)
-operator|-
-literal|1
+literal|0
 expr_stmt|;
 block|}
 name|sline
@@ -3857,13 +3844,12 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|header
-operator|&&
-operator|(
 name|show_hunks
-operator|||
-name|show_empty
-operator|)
+condition|)
+block|{
+if|if
+condition|(
+name|header
 condition|)
 block|{
 name|shown_header
@@ -3875,11 +3861,6 @@ name|header
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|show_hunks
-condition|)
-block|{
 name|printf
 argument_list|(
 literal|"diff --%s "
@@ -4079,6 +4060,16 @@ expr_stmt|;
 block|}
 block|}
 block|}
+name|free
+argument_list|(
+name|sline
+index|[
+literal|0
+index|]
+operator|.
+name|p_lno
+argument_list|)
+expr_stmt|;
 name|free
 argument_list|(
 name|sline
