@@ -2270,7 +2270,7 @@ name|hunk_end
 operator|=
 name|j
 expr_stmt|;
-comment|/* [i..hunk_end) are interesting.  Now is it really 		 * interesting? 		 */
+comment|/* [i..hunk_end) are interesting.  Now is it really 		 * interesting?  We check if there are only two versions 		 * and the result matches one of them.  That is, we look 		 * at: 		 *   (+) line, which records lines added to which parents; 		 *       this line appears in the result. 		 *   (-) line, which records from what parents the line 		 *       was removed; this line does not appear in the result. 		 * then check the set of parents the result has difference 		 * from, from all lines.  If there are lines that has 		 * different set of parents that the result has differences 		 * from, that means we have more than two versions. 		 * 		 * Even when we have only two versions, if the result does 		 * not match any of the parents, the it should be considered 		 * interesting.  In such a case, we would have all '+' line. 		 * After passing the above "two versions" test, that would 		 * appear as "the same set of parents" to be "all parents". 		 */
 name|same_diff
 operator|=
 literal|0
@@ -2401,6 +2401,10 @@ if|if
 condition|(
 operator|!
 name|has_interesting
+operator|&&
+name|same_diff
+operator|!=
+name|all_mask
 condition|)
 block|{
 comment|/* This hunk is not that interesting after all */
