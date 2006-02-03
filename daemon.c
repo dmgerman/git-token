@@ -649,6 +649,8 @@ comment|/* Forbid possible base-path evasion using ~paths. */
 name|logerror
 argument_list|(
 literal|"'%s': Non-absolute path denied (base-path active)"
+argument_list|,
+name|dir
 argument_list|)
 expr_stmt|;
 return|return
