@@ -88,6 +88,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|reuseaddr
+specifier|static
+name|int
+name|reuseaddr
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|daemon_usage
 specifier|static
 specifier|const
@@ -97,7 +105,7 @@ index|[]
 init|=
 literal|"git-daemon [--verbose] [--syslog] [--inetd | --port=n] [--export-all]\n"
 literal|"           [--timeout=n] [--init-timeout=n] [--strict-paths]\n"
-literal|"           [--base-path=path] [directory...]"
+literal|"           [--base-path=path] [--reuseaddr] [directory...]"
 decl_stmt|;
 end_decl_stmt
 
@@ -1895,6 +1903,50 @@ block|}
 block|}
 end_function
 
+begin_function
+DECL|function|set_reuse_addr
+specifier|static
+name|int
+name|set_reuse_addr
+parameter_list|(
+name|int
+name|sockfd
+parameter_list|)
+block|{
+name|int
+name|on
+init|=
+literal|1
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|reuseaddr
+condition|)
+return|return
+literal|0
+return|;
+return|return
+name|setsockopt
+argument_list|(
+name|sockfd
+argument_list|,
+name|SOL_SOCKET
+argument_list|,
+name|SO_REUSEADDR
+argument_list|,
+operator|&
+name|on
+argument_list|,
+sizeof|sizeof
+argument_list|(
+name|on
+argument_list|)
+argument_list|)
+return|;
+block|}
+end_function
+
 begin_ifndef
 ifndef|#
 directive|ifndef
@@ -2131,6 +2183,24 @@ endif|#
 directive|endif
 if|if
 condition|(
+name|set_reuse_addr
+argument_list|(
+name|sockfd
+argument_list|)
+condition|)
+block|{
+name|close
+argument_list|(
+name|sockfd
+argument_list|)
+expr_stmt|;
+return|return
+literal|0
+return|;
+comment|/* not fatal */
+block|}
+if|if
+condition|(
 name|bind
 argument_list|(
 name|sockfd
@@ -2335,6 +2405,23 @@ argument_list|(
 name|port
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|set_reuse_addr
+argument_list|(
+name|sockfd
+argument_list|)
+condition|)
+block|{
+name|close
+argument_list|(
+name|sockfd
+argument_list|)
+expr_stmt|;
+return|return
+literal|0
+return|;
+block|}
 if|if
 condition|(
 name|bind
@@ -2969,6 +3056,23 @@ operator|=
 name|arg
 operator|+
 literal|12
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--reuseaddr"
+argument_list|)
+condition|)
+block|{
+name|reuseaddr
+operator|=
+literal|1
 expr_stmt|;
 continue|continue;
 block|}
