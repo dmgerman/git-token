@@ -487,7 +487,7 @@ end_comment
 begin_function
 DECL|function|show_flag
 specifier|static
-name|void
+name|int
 name|show_flag
 parameter_list|(
 name|char
@@ -504,7 +504,9 @@ operator|&
 name|DO_FLAGS
 operator|)
 condition|)
-return|return;
+return|return
+literal|0
+return|;
 if|if
 condition|(
 name|filter
@@ -520,11 +522,19 @@ else|:
 name|DO_NOREV
 operator|)
 condition|)
+block|{
 name|show
 argument_list|(
 name|arg
 argument_list|)
 expr_stmt|;
+return|return
+literal|1
+return|;
+block|}
+return|return
+literal|0
+return|;
 block|}
 end_function
 
@@ -1468,16 +1478,16 @@ continue|continue;
 block|}
 if|if
 condition|(
+name|show_flag
+argument_list|(
+name|arg
+argument_list|)
+operator|&&
 name|verify
 condition|)
 name|die
 argument_list|(
 literal|"Needed a single revision"
-argument_list|)
-expr_stmt|;
-name|show_flag
-argument_list|(
-name|arg
 argument_list|)
 expr_stmt|;
 continue|continue;
