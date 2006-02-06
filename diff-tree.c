@@ -58,16 +58,6 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|show_empty_combined
-specifier|static
-name|int
-name|show_empty_combined
-init|=
-literal|0
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|variable|combine_merges
 specifier|static
 name|int
@@ -725,8 +715,6 @@ argument_list|(
 name|sha1
 argument_list|,
 name|header
-argument_list|,
-name|show_empty_combined
 argument_list|,
 name|dense_combined_merges
 argument_list|)
@@ -1427,11 +1415,6 @@ operator|.
 name|output_format
 operator|=
 name|DIFF_FORMAT_PATCH
-expr_stmt|;
-name|show_empty_combined
-operator|=
-operator|!
-name|ignore_merges
 expr_stmt|;
 name|ignore_merges
 operator|=
