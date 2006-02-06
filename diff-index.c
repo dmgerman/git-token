@@ -922,6 +922,26 @@ block|{
 comment|/* We accept the -r flag just to look like git-diff-tree */
 continue|continue;
 block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--cc"
+argument_list|)
+condition|)
+comment|/* 			 * I _think_ "diff-index --cached HEAD" with an 			 * unmerged index could show something else 			 * later, but pretend --cc is the same as -p for 			 * now.  "git diff" uses --cc by default. 			 */
+name|argv
+index|[
+name|i
+index|]
+operator|=
+name|arg
+operator|=
+literal|"-p"
+expr_stmt|;
 name|diff_opt_cnt
 operator|=
 name|diff_opt_parse
