@@ -3547,6 +3547,18 @@ operator|<
 literal|0
 condition|)
 return|return;
+comment|/* Reset per part headers */
+name|transfer_encoding
+operator|=
+name|TE_DONTCARE
+expr_stmt|;
+name|charset
+index|[
+literal|0
+index|]
+operator|=
+literal|0
+expr_stmt|;
 block|}
 else|else
 name|check_subheader_line
