@@ -836,6 +836,25 @@ name|email
 operator|=
 name|git_default_email
 expr_stmt|;
+if|if
+condition|(
+operator|!
+operator|*
+name|name
+operator|||
+operator|!
+operator|*
+name|email
+condition|)
+name|die
+argument_list|(
+literal|"empty ident %s<%s> not allowed"
+argument_list|,
+name|name
+argument_list|,
+name|email
+argument_list|)
+expr_stmt|;
 name|strcpy
 argument_list|(
 name|date
