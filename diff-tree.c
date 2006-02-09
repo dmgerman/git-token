@@ -63,7 +63,7 @@ specifier|static
 name|int
 name|combine_merges
 init|=
-literal|0
+literal|1
 decl_stmt|;
 end_decl_stmt
 
@@ -663,7 +663,8 @@ argument_list|,
 name|commit
 argument_list|)
 expr_stmt|;
-return|return
+name|header
+operator|=
 name|diff_tree_combined_merge
 argument_list|(
 name|sha1
@@ -671,7 +672,24 @@ argument_list|,
 name|header
 argument_list|,
 name|dense_combined_merges
+argument_list|,
+operator|&
+name|diff_options
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|header
+operator|&&
+name|verbose_header
+condition|)
+name|header_prefix
+operator|=
+literal|"\ndiff-tree "
+expr_stmt|;
+return|return
+literal|0
 return|;
 block|}
 block|}
@@ -1454,18 +1472,21 @@ if|if
 condition|(
 name|combine_merges
 condition|)
-block|{
+name|ignore_merges
+operator|=
+literal|0
+expr_stmt|;
+comment|/* We can only do dense combined merges with diff output */
+if|if
+condition|(
+name|dense_combined_merges
+condition|)
 name|diff_options
 operator|.
 name|output_format
 operator|=
 name|DIFF_FORMAT_PATCH
 expr_stmt|;
-name|ignore_merges
-operator|=
-literal|0
-expr_stmt|;
-block|}
 if|if
 condition|(
 name|diff_options
