@@ -2969,13 +2969,13 @@ init|=
 operator|-
 literal|1
 decl_stmt|;
+name|setup_git_directory
+argument_list|()
+expr_stmt|;
 name|git_config
 argument_list|(
 name|git_show_branch_config
 argument_list|)
-expr_stmt|;
-name|setup_git_directory
-argument_list|()
 expr_stmt|;
 comment|/* If nothing is specified, try the default first */
 if|if
