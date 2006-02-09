@@ -442,6 +442,10 @@ specifier|const
 name|char
 modifier|*
 name|header
+parameter_list|,
+name|struct
+name|diff_options
+modifier|*
 parameter_list|)
 function_decl|;
 end_function_decl
