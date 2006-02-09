@@ -185,6 +185,19 @@ operator|->
 name|st_size
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|assume_unchanged
+condition|)
+name|ce
+operator|->
+name|ce_flags
+operator||=
+name|htons
+argument_list|(
+name|CE_VALID
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
@@ -794,20 +807,45 @@ name|struct
 name|stat
 modifier|*
 name|st
+parameter_list|,
+name|int
+name|ignore_valid
 parameter_list|)
 block|{
 name|unsigned
 name|int
 name|changed
-init|=
+decl_stmt|;
+comment|/* 	 * If it's marked as always valid in the index, it's 	 * valid whatever the checked-out copy says. 	 */
+if|if
+condition|(
+operator|!
+name|ignore_valid
+operator|&&
+operator|(
+name|ce
+operator|->
+name|ce_flags
+operator|&
+name|htons
+argument_list|(
+name|CE_VALID
+argument_list|)
+operator|)
+condition|)
+return|return
+literal|0
+return|;
+name|changed
+operator|=
 name|ce_match_stat_basic
 argument_list|(
 name|ce
 argument_list|,
 name|st
 argument_list|)
-decl_stmt|;
-comment|/* 	 * Within 1 second of this sequence: 	 * 	echo xyzzy>file&& git-update-index --add file 	 * running this command: 	 * 	echo frotz>file 	 * would give a falsely clean cache entry.  The mtime and 	 * length match the cache, and other stat fields do not change. 	 * 	 * We could detect this at update-index time (the cache entry 	 * being registered/updated records the same time as "now") 	 * and delay the return from git-update-index, but that would 	 * effectively mean we can make at most one commit per second, 	 * which is not acceptable.  Instead, we check cache entries 	 * whose mtime are the same as the index file timestamp more 	 * careful than others. 	 */
+expr_stmt|;
+comment|/* 	 * Within 1 second of this sequence: 	 * 	echo xyzzy>file&& git-update-index --add file 	 * running this command: 	 * 	echo frotz>file 	 * would give a falsely clean cache entry.  The mtime and 	 * length match the cache, and other stat fields do not change. 	 * 	 * We could detect this at update-index time (the cache entry 	 * being registered/updated records the same time as "now") 	 * and delay the return from git-update-index, but that would 	 * effectively mean we can make at most one commit per second, 	 * which is not acceptable.  Instead, we check cache entries 	 * whose mtime are the same as the index file timestamp more 	 * carefully than others. 	 */
 if|if
 condition|(
 operator|!
@@ -855,6 +893,9 @@ name|struct
 name|stat
 modifier|*
 name|st
+parameter_list|,
+name|int
+name|really
 parameter_list|)
 block|{
 name|int
@@ -869,6 +910,8 @@ argument_list|(
 name|ce
 argument_list|,
 name|st
+argument_list|,
+name|really
 argument_list|)
 expr_stmt|;
 if|if
@@ -1156,6 +1199,17 @@ condition|)
 return|return
 literal|1
 return|;
+comment|/* Differences between "assume up-to-date" should not matter. */
+name|flags1
+operator|&=
+operator|~
+name|CE_VALID
+expr_stmt|;
+name|flags2
+operator|&=
+operator|~
+name|CE_VALID
+expr_stmt|;
 if|if
 condition|(
 name|flags1

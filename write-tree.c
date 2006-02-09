@@ -544,15 +544,10 @@ index|]
 decl_stmt|;
 if|if
 condition|(
-name|ntohs
+name|ce_stage
 argument_list|(
 name|ce
-operator|->
-name|ce_flags
 argument_list|)
-operator|&
-operator|~
-name|CE_NAMEMASK
 condition|)
 block|{
 if|if
