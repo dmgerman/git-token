@@ -800,6 +800,8 @@ name|ce
 argument_list|,
 operator|&
 name|st
+argument_list|,
+literal|1
 argument_list|)
 decl_stmt|;
 if|if
