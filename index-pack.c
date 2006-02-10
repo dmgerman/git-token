@@ -367,18 +367,17 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+name|pack_version_ok
+argument_list|(
 name|hdr
 operator|->
 name|hdr_version
-operator|!=
-name|htonl
-argument_list|(
-name|PACK_VERSION
 argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"packfile '%s' version %d different from ours %d"
+literal|"packfile '%s' version %d unsupported"
 argument_list|,
 name|pack_name
 argument_list|,
@@ -388,8 +387,6 @@ name|hdr
 operator|->
 name|hdr_version
 argument_list|)
-argument_list|,
-name|PACK_VERSION
 argument_list|)
 expr_stmt|;
 name|nr_objects

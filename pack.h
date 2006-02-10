@@ -80,6 +80,17 @@ name|PACK_VERSION
 value|2
 end_define
 
+begin_define
+DECL|macro|pack_version_ok
+define|#
+directive|define
+name|pack_version_ok
+parameter_list|(
+name|v
+parameter_list|)
+value|((v) == htonl(2) || (v) == htonl(3))
+end_define
+
 begin_struct
 DECL|struct|pack_header
 struct|struct
