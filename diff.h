@@ -384,6 +384,10 @@ DECL|struct|combine_diff_parent
 struct|struct
 name|combine_diff_parent
 block|{
+DECL|member|status
+name|char
+name|status
+decl_stmt|;
 DECL|member|mode
 name|unsigned
 name|int
