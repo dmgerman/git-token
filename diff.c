@@ -5291,7 +5291,7 @@ block|}
 end_function
 
 begin_comment
-comment|/* This is different from find_unique_abbrev() in that  * it needs to deal with 0{40} SHA1.  */
+comment|/* This is different from find_unique_abbrev() in that  * it stuffs the result with dots for alignment.  */
 end_comment
 
 begin_function
@@ -5345,56 +5345,12 @@ condition|(
 operator|!
 name|abbrev
 condition|)
-block|{
-if|if
-condition|(
-operator|!
-name|memcmp
-argument_list|(
-name|sha1
-argument_list|,
-name|null_sha1
-argument_list|,
-literal|20
-argument_list|)
-condition|)
-block|{
-name|char
-modifier|*
-name|buf
-init|=
-name|sha1_to_hex
-argument_list|(
-name|null_sha1
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|len
-operator|<
-literal|37
-condition|)
-name|strcpy
-argument_list|(
-name|buf
-operator|+
-name|len
-argument_list|,
-literal|"..."
-argument_list|)
-expr_stmt|;
-return|return
-name|buf
-return|;
-block|}
-else|else
 return|return
 name|sha1_to_hex
 argument_list|(
 name|sha1
 argument_list|)
 return|;
-block|}
 name|abblen
 operator|=
 name|strlen
