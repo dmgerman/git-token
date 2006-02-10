@@ -554,16 +554,14 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|combine_merges
+name|dense_combined_merges
 condition|)
-block|{
 name|diff_options
 operator|.
 name|output_format
 operator|=
 name|DIFF_FORMAT_PATCH
 expr_stmt|;
-block|}
 comment|/* Find the directory, and set up the pathspec */
 name|pathspec
 operator|=
@@ -948,6 +946,9 @@ argument_list|,
 name|dense_combined_merges
 argument_list|,
 name|NULL
+argument_list|,
+operator|&
+name|diff_options
 argument_list|)
 expr_stmt|;
 name|free

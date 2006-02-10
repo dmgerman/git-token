@@ -423,6 +423,7 @@ value|(sizeof(struct combine_diff_path) + \ 	 sizeof(struct combine_diff_parent)
 end_define
 
 begin_function_decl
+specifier|extern
 name|int
 name|show_combined_diff
 parameter_list|(
@@ -441,13 +442,19 @@ specifier|const
 name|char
 modifier|*
 name|header
+parameter_list|,
+name|struct
+name|diff_options
+modifier|*
 parameter_list|)
 function_decl|;
 end_function_decl
 
 begin_function_decl
 specifier|extern
-name|int
+specifier|const
+name|char
+modifier|*
 name|diff_tree_combined_merge
 parameter_list|(
 specifier|const
@@ -461,6 +468,11 @@ name|char
 modifier|*
 parameter_list|,
 name|int
+parameter_list|,
+name|struct
+name|diff_options
+modifier|*
+name|opt
 parameter_list|)
 function_decl|;
 end_function_decl
