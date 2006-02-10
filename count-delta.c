@@ -34,7 +34,7 @@ file|"count-delta.h"
 end_include
 
 begin_comment
-comment|/*  * NOTE.  We do not _interpret_ delta fully.  As an approximation, we  * just count the number of bytes that are copied from the source, and  * the number of literal data bytes that are inserted.  *  * Number of bytes that are _not_ copied from the source is deletion,  * and number of inserted literal bytes are addition, so sum of them  * is the extent of damage.  xdelta can express an edit that copies  * data inside of the destination which originally came from the  * source.  We do not count that in the following routine, so we are  * undercounting the source material that remains in the final output  * that way.  */
+comment|/*  * NOTE.  We do not _interpret_ delta fully.  As an approximation, we  * just count the number of bytes that are copied from the source, and  * the number of literal data bytes that are inserted.  *  * Number of bytes that are _not_ copied from the source is deletion,  * and number of inserted literal bytes are addition, so sum of them  * is the extent of damage.  */
 end_comment
 
 begin_function
