@@ -125,6 +125,7 @@ literal|"    --parents\n"
 literal|"    --objects\n"
 literal|"    --unpacked\n"
 literal|"    --header | --pretty\n"
+literal|"    --abbrev=nr | --no-abbrev\n"
 literal|"  special purpose:\n"
 literal|"    --bisect"
 decl_stmt|;
@@ -197,6 +198,16 @@ name|int
 name|verbose_header
 init|=
 literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|abbrev
+specifier|static
+name|int
+name|abbrev
+init|=
+name|DEFAULT_ABBREV
 decl_stmt|;
 end_decl_stmt
 
@@ -571,7 +582,7 @@ argument_list|(
 name|pretty_header
 argument_list|)
 argument_list|,
-literal|0
+name|abbrev
 argument_list|)
 expr_stmt|;
 name|printf
@@ -4026,6 +4037,74 @@ block|{
 name|verbose_header
 operator|=
 literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--no-abbrev"
+argument_list|)
+condition|)
+block|{
+name|abbrev
+operator|=
+literal|0
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strncmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--abbrev="
+argument_list|,
+literal|9
+argument_list|)
+condition|)
+block|{
+name|abbrev
+operator|=
+name|strtoul
+argument_list|(
+name|arg
+operator|+
+literal|9
+argument_list|,
+name|NULL
+argument_list|,
+literal|10
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|abbrev
+operator|&&
+name|abbrev
+operator|<
+name|MINIMUM_ABBREV
+condition|)
+name|abbrev
+operator|=
+name|MINIMUM_ABBREV
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+literal|40
+operator|<
+name|abbrev
+condition|)
+name|abbrev
+operator|=
+literal|40
 expr_stmt|;
 continue|continue;
 block|}
