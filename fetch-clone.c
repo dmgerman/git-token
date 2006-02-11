@@ -916,6 +916,17 @@ operator|<
 literal|0
 condition|)
 block|{
+if|if
+condition|(
+name|errno
+operator|!=
+name|EINTR
+operator|&&
+name|errno
+operator|!=
+name|EAGAIN
+condition|)
+block|{
 name|error
 argument_list|(
 literal|"error reading pack (%s)"
@@ -940,6 +951,11 @@ return|return
 operator|-
 literal|1
 return|;
+block|}
+name|sz
+operator|=
+literal|0
+expr_stmt|;
 block|}
 name|pos
 operator|=
