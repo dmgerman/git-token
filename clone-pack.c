@@ -41,6 +41,16 @@ literal|"git-upload-pack"
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|quiet
+specifier|static
+name|int
+name|quiet
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|clone_handshake
 specifier|static
@@ -638,6 +648,18 @@ argument_list|,
 name|refs
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|quiet
+condition|)
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"Generating pack ...\r"
+argument_list|)
+expr_stmt|;
 name|status
 operator|=
 name|receive_keep_pack
@@ -645,6 +667,8 @@ argument_list|(
 name|fd
 argument_list|,
 literal|"git-clone-pack"
+argument_list|,
+name|quiet
 argument_list|)
 expr_stmt|;
 if|if
@@ -792,7 +816,13 @@ argument_list|,
 name|arg
 argument_list|)
 condition|)
+block|{
+name|quiet
+operator|=
+literal|1
+expr_stmt|;
 continue|continue;
+block|}
 if|if
 condition|(
 operator|!

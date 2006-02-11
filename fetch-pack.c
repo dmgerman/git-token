@@ -1942,6 +1942,8 @@ argument_list|(
 name|fd
 argument_list|,
 literal|"git-fetch-pack"
+argument_list|,
+name|quiet
 argument_list|)
 expr_stmt|;
 else|else
