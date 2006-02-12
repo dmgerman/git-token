@@ -123,7 +123,7 @@ end_decl_stmt
 begin_decl_stmt
 specifier|extern
 name|int
-name|nr_objs
+name|obj_allocs
 decl_stmt|;
 end_decl_stmt
 
