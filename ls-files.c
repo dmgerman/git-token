@@ -118,6 +118,16 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|show_valid_bit
+specifier|static
+name|int
+name|show_valid_bit
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|line_terminator
 specifier|static
 name|int
@@ -2436,6 +2446,8 @@ operator|&&
 operator|*
 name|tag
 operator|&&
+name|show_valid_bit
+operator|&&
 operator|(
 name|ce
 operator|->
@@ -3233,7 +3245,7 @@ name|char
 name|ls_files_usage
 index|[]
 init|=
-literal|"git-ls-files [-z] [-t] (--[cached|deleted|others|stage|unmerged|killed|modified])* "
+literal|"git-ls-files [-z] [-t] [-v] (--[cached|deleted|others|stage|unmerged|killed|modified])* "
 literal|"[ --ignored ] [--exclude=<pattern>] [--exclude-from=<file>] "
 literal|"[ --exclude-per-directory=<filename> ] [--full-name] [--] [<file>]*"
 decl_stmt|;
@@ -3349,6 +3361,14 @@ name|arg
 argument_list|,
 literal|"-t"
 argument_list|)
+operator|||
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"-v"
+argument_list|)
 condition|)
 block|{
 name|tag_cached
@@ -3374,6 +3394,19 @@ expr_stmt|;
 name|tag_killed
 operator|=
 literal|"K "
+expr_stmt|;
+if|if
+condition|(
+name|arg
+index|[
+literal|1
+index|]
+operator|==
+literal|'v'
+condition|)
+name|show_valid_bit
+operator|=
+literal|1
 expr_stmt|;
 continue|continue;
 block|}
