@@ -43,7 +43,7 @@ name|char
 name|pack_usage
 index|[]
 init|=
-literal|"git-pack-objects [--non-empty] [--local] [--incremental] [--window=N] [--depth=N] {--stdout | base-name}< object-list"
+literal|"git-pack-objects [-q] [--non-empty] [--local] [--incremental] [--window=N] [--depth=N] {--stdout | base-name}< object-list"
 decl_stmt|;
 end_decl_stmt
 
@@ -213,7 +213,7 @@ specifier|static
 name|int
 name|progress
 init|=
-literal|0
+literal|1
 decl_stmt|;
 end_decl_stmt
 
@@ -2989,6 +2989,23 @@ condition|(
 operator|!
 name|strcmp
 argument_list|(
+literal|"-q"
+argument_list|,
+name|arg
+argument_list|)
+condition|)
+block|{
+name|progress
+operator|=
+literal|0
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
 literal|"--stdout"
 argument_list|,
 name|arg
@@ -3031,13 +3048,6 @@ condition|)
 name|usage
 argument_list|(
 name|pack_usage
-argument_list|)
-expr_stmt|;
-name|progress
-operator|=
-name|isatty
-argument_list|(
-literal|2
 argument_list|)
 expr_stmt|;
 name|prepare_packed_git
