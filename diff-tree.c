@@ -63,7 +63,7 @@ specifier|static
 name|int
 name|combine_merges
 init|=
-literal|1
+literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -1299,8 +1299,6 @@ literal|"-m"
 argument_list|)
 condition|)
 block|{
-name|combine_merges
-operator|=
 name|ignore_merges
 operator|=
 literal|0

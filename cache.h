@@ -2924,6 +2924,9 @@ specifier|const
 name|char
 modifier|*
 name|me
+parameter_list|,
+name|int
+name|quiet
 parameter_list|)
 function_decl|;
 end_function_decl
