@@ -1276,11 +1276,18 @@ literal|0
 init|;
 name|i
 operator|<
-name|nr_objs
+name|obj_allocs
 condition|;
 name|i
 operator|++
 control|)
+if|if
+condition|(
+name|objs
+index|[
+name|i
+index|]
+condition|)
 name|printf
 argument_list|(
 literal|"%s %s\n"
