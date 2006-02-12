@@ -648,18 +648,6 @@ argument_list|,
 name|refs
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|quiet
-condition|)
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-literal|"Generating pack ...\r"
-argument_list|)
-expr_stmt|;
 name|status
 operator|=
 name|receive_keep_pack
@@ -669,6 +657,18 @@ argument_list|,
 literal|"git-clone-pack"
 argument_list|,
 name|quiet
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|quiet
+condition|)
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"\n"
 argument_list|)
 expr_stmt|;
 if|if
