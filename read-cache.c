@@ -1199,16 +1199,14 @@ condition|)
 return|return
 literal|1
 return|;
-comment|/* Differences between "assume up-to-date" should not matter. */
+comment|/* Compare stages  */
 name|flags1
 operator|&=
-operator|~
-name|CE_VALID
+name|CE_STAGEMASK
 expr_stmt|;
 name|flags2
 operator|&=
-operator|~
-name|CE_VALID
+name|CE_STAGEMASK
 expr_stmt|;
 if|if
 condition|(
