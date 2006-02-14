@@ -3365,9 +3365,10 @@ name|ourtmp
 init|=
 name|ourtmp_buf
 decl_stmt|;
-comment|/* Read the result of merge first */
-if|if
-condition|(
+name|int
+name|working_tree_file
+init|=
+operator|!
 name|memcmp
 argument_list|(
 name|elem
@@ -3378,6 +3379,12 @@ name|null_sha1
 argument_list|,
 literal|20
 argument_list|)
+decl_stmt|;
+comment|/* Read the result of merge first */
+if|if
+condition|(
+operator|!
+name|working_tree_file
 condition|)
 block|{
 name|result
@@ -3455,6 +3462,17 @@ name|cnt
 init|=
 literal|0
 decl_stmt|;
+name|elem
+operator|->
+name|mode
+operator|=
+name|DIFF_FILE_CANON_MODE
+argument_list|(
+name|st
+operator|.
+name|st_mode
+argument_list|)
+expr_stmt|;
 name|size
 operator|=
 name|len
@@ -3528,6 +3546,12 @@ else|else
 block|{
 comment|/* deleted file */
 name|size
+operator|=
+literal|0
+expr_stmt|;
+name|elem
+operator|->
+name|mode
 operator|=
 literal|0
 expr_stmt|;
@@ -3973,6 +3997,8 @@ condition|(
 name|show_hunks
 operator|||
 name|mode_differs
+operator|||
+name|working_tree_file
 condition|)
 block|{
 specifier|const
@@ -4067,25 +4093,6 @@ name|i
 operator|++
 control|)
 block|{
-if|if
-condition|(
-name|elem
-operator|->
-name|parent
-index|[
-name|i
-index|]
-operator|.
-name|mode
-operator|!=
-name|elem
-operator|->
-name|mode
-condition|)
-name|mode_differs
-operator|=
-literal|1
-expr_stmt|;
 name|abb
 operator|=
 name|find_unique_abbrev
