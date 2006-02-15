@@ -4156,7 +4156,7 @@ index|[
 name|num
 index|]
 operator|+
-name|prefix_len
+name|prefix_offset
 argument_list|)
 expr_stmt|;
 block|}
