@@ -905,6 +905,21 @@ argument_list|(
 name|mode
 argument_list|)
 expr_stmt|;
+name|combine
+operator|.
+name|p
+operator|.
+name|parent
+index|[
+name|stage
+operator|-
+literal|2
+index|]
+operator|.
+name|status
+operator|=
+name|DIFF_STATUS_MODIFIED
+expr_stmt|;
 block|}
 comment|/* diff against the proper unmerged stage */
 if|if
