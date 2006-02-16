@@ -481,6 +481,7 @@ name|unsigned
 name|long
 name|store_size
 decl_stmt|;
+name|unsigned
 name|int
 name|delta_chain_length
 decl_stmt|;
@@ -568,7 +569,7 @@ expr_stmt|;
 else|else
 name|printf
 argument_list|(
-literal|"%-6s %lu %u %d %s\n"
+literal|"%-6s %lu %u %u %s\n"
 argument_list|,
 name|type
 argument_list|,
