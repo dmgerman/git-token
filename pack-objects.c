@@ -43,7 +43,7 @@ name|char
 name|pack_usage
 index|[]
 init|=
-literal|"git-pack-objects [-q] [--non-empty] [--local] [--incremental] [--window=N] [--depth=N] {--stdout | base-name}< object-list"
+literal|"git-pack-objects [-q] [--no-reuse-delta] [--non-empty] [--local] [--incremental] [--window=N] [--depth=N] {--stdout | base-name}< object-list"
 decl_stmt|;
 end_decl_stmt
 
@@ -89,6 +89,18 @@ name|enum
 name|object_type
 name|type
 decl_stmt|;
+DECL|member|edge
+name|unsigned
+name|char
+name|edge
+decl_stmt|;
+comment|/* reused delta chain points at this entry. */
+DECL|member|in_pack_type
+name|enum
+name|object_type
+name|in_pack_type
+decl_stmt|;
+comment|/* could be delta */
 DECL|member|delta_size
 name|unsigned
 name|long
@@ -109,12 +121,6 @@ modifier|*
 name|in_pack
 decl_stmt|;
 comment|/* already in pack */
-DECL|member|in_pack_type
-name|enum
-name|object_type
-name|in_pack_type
-decl_stmt|;
-comment|/* could be delta */
 DECL|member|in_pack_offset
 name|unsigned
 name|int
@@ -145,6 +151,16 @@ DECL|variable|non_empty
 specifier|static
 name|int
 name|non_empty
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|no_reuse_delta
+specifier|static
+name|int
+name|no_reuse_delta
 init|=
 literal|0
 decl_stmt|;
@@ -325,10 +341,30 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|written_delta
+specifier|static
+name|int
+name|written_delta
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|reused
 specifier|static
 name|int
 name|reused
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|reused_delta
+specifier|static
+name|int
+name|reused_delta
 init|=
 literal|0
 decl_stmt|;
@@ -1185,6 +1221,11 @@ name|enum
 name|object_type
 name|obj_type
 decl_stmt|;
+name|int
+name|to_reuse
+init|=
+literal|0
+decl_stmt|;
 name|obj_type
 operator|=
 name|entry
@@ -1197,14 +1238,60 @@ operator|!
 name|entry
 operator|->
 name|in_pack
-operator|||
-operator|(
+condition|)
+name|to_reuse
+operator|=
+literal|0
+expr_stmt|;
+comment|/* can't reuse what we don't have */
+elseif|else
+if|if
+condition|(
+name|obj_type
+operator|==
+name|OBJ_DELTA
+condition|)
+name|to_reuse
+operator|=
+literal|1
+expr_stmt|;
+comment|/* check_object() decided it for us */
+elseif|else
+if|if
+condition|(
 name|obj_type
 operator|!=
 name|entry
 operator|->
 name|in_pack_type
-operator|)
+condition|)
+name|to_reuse
+operator|=
+literal|0
+expr_stmt|;
+comment|/* pack has delta which is unusable */
+elseif|else
+if|if
+condition|(
+name|entry
+operator|->
+name|delta
+condition|)
+name|to_reuse
+operator|=
+literal|0
+expr_stmt|;
+comment|/* we want to pack afresh */
+else|else
+name|to_reuse
+operator|=
+literal|1
+expr_stmt|;
+comment|/* we have it in-pack undeltified, 				 * and we do not need to deltify it. 				 */
+if|if
+condition|(
+operator|!
+name|to_reuse
 condition|)
 block|{
 name|buf
@@ -1410,10 +1497,28 @@ operator|=
 literal|0
 expr_stmt|;
 comment|/* not really */
+if|if
+condition|(
+name|obj_type
+operator|==
+name|OBJ_DELTA
+condition|)
+name|reused_delta
+operator|++
+expr_stmt|;
 name|reused
 operator|++
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|obj_type
+operator|==
+name|OBJ_DELTA
+condition|)
+name|written_delta
+operator|++
+expr_stmt|;
 name|written
 operator|++
 expr_stmt|;
@@ -1518,10 +1623,6 @@ decl_stmt|;
 name|unsigned
 name|long
 name|offset
-decl_stmt|;
-name|unsigned
-name|long
-name|mb
 decl_stmt|;
 name|struct
 name|pack_header
@@ -1901,16 +2002,16 @@ decl_stmt|;
 name|unsigned
 name|int
 name|found_offset
+init|=
+literal|0
 decl_stmt|;
 name|struct
 name|packed_git
 modifier|*
 name|found_pack
-decl_stmt|;
-name|found_pack
-operator|=
+init|=
 name|NULL
-expr_stmt|;
+decl_stmt|;
 for|for
 control|(
 name|p
@@ -2256,7 +2357,6 @@ operator|->
 name|in_pack
 condition|)
 block|{
-comment|/* Check if it is delta, and the base is also an object 		 * we are going to pack.  If so we will reuse the existing 		 * delta. 		 */
 name|unsigned
 name|char
 name|base
@@ -2273,9 +2373,7 @@ name|object_entry
 modifier|*
 name|base_entry
 decl_stmt|;
-if|if
-condition|(
-operator|!
+comment|/* We want in_pack_type even if we do not reuse delta. 		 * There is no point not reusing non-delta representations. 		 */
 name|check_reuse_pack_delta
 argument_list|(
 name|entry
@@ -2296,6 +2394,18 @@ name|entry
 operator|->
 name|in_pack_type
 argument_list|)
+expr_stmt|;
+comment|/* Check if it is delta, and the base is also an object 		 * we are going to pack.  If so we will reuse the existing 		 * delta. 		 */
+if|if
+condition|(
+operator|!
+name|no_reuse_delta
+operator|&&
+name|entry
+operator|->
+name|in_pack_type
+operator|==
+name|OBJ_DELTA
 operator|&&
 operator|(
 name|base_entry
@@ -2307,14 +2417,8 @@ argument_list|)
 operator|)
 condition|)
 block|{
-comment|/* We do not know depth at this point, but it 			 * does not matter.  Getting delta_chain_length 			 * with packed_object_info_detail() is not so 			 * expensive, so we could do that later if we 			 * wanted to.  Calling sha1_object_info to get 			 * the true size (and later an uncompressed 			 * representation) of deeply deltified object 			 * is quite expensive. 			 */
-name|entry
-operator|->
-name|depth
-operator|=
-literal|1
-expr_stmt|;
-comment|/* uncompressed size */
+comment|/* Depth value does not matter - find_deltas() 			 * will never consider reused delta as the 			 * base object to deltify other objects 			 * against, in order to avoid circular deltas. 			 */
+comment|/* uncompressed size of the delta data */
 name|entry
 operator|->
 name|size
@@ -2336,6 +2440,12 @@ operator|->
 name|type
 operator|=
 name|OBJ_DELTA
+expr_stmt|;
+name|base_entry
+operator|->
+name|edge
+operator|=
+literal|1
 expr_stmt|;
 return|return;
 block|}
@@ -3031,6 +3141,17 @@ return|return
 operator|-
 literal|1
 return|;
+comment|/* If the current object is at edge, take the depth the objects 	 * that depend on the current object into account -- otherwise 	 * they would become too deep. 	 */
+if|if
+condition|(
+name|cur_entry
+operator|->
+name|edge
+condition|)
+name|max_depth
+operator|/=
+literal|4
+expr_stmt|;
 name|size
 operator|=
 name|cur_entry
@@ -3331,7 +3452,7 @@ name|entry
 operator|->
 name|delta
 condition|)
-comment|/* This happens if we decided to reuse existing 			 * delta from a pack. 			 */
+comment|/* This happens if we decided to reuse existing 			 * delta from a pack.  "!no_reuse_delta&&" is implied. 			 */
 continue|continue;
 name|free
 argument_list|(
@@ -3530,11 +3651,11 @@ if|if
 condition|(
 name|progress
 condition|)
-name|fprintf
+name|fputc
 argument_list|(
-name|stderr
+literal|'.'
 argument_list|,
-literal|"."
+name|stderr
 argument_list|)
 expr_stmt|;
 name|sorted_by_type
@@ -3696,6 +3817,10 @@ literal|0
 return|;
 block|}
 block|}
+if|if
+condition|(
+name|progress
+condition|)
 name|fprintf
 argument_list|(
 name|stderr
@@ -4171,6 +4296,23 @@ condition|(
 operator|!
 name|strcmp
 argument_list|(
+literal|"--no-reuse-delta"
+argument_list|,
+name|arg
+argument_list|)
+condition|)
+block|{
+name|no_reuse_delta
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
 literal|"--stdout"
 argument_list|,
 name|arg
@@ -4563,17 +4705,25 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+if|if
+condition|(
+name|progress
+condition|)
 name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Total %d, written %d, reused %d\n"
+literal|"Total %d, written %d (delta %d), reused %d (delta %d)\n"
 argument_list|,
 name|nr_objects
 argument_list|,
 name|written
 argument_list|,
+name|written_delta
+argument_list|,
 name|reused
+argument_list|,
+name|reused_delta
 argument_list|)
 expr_stmt|;
 return|return
