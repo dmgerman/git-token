@@ -391,7 +391,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Performs an in-place topological sort of list supplied.  *  * Pre-conditions:  *   all commits in input list and all parents of those  *   commits must have object.util == NULL  *          * Post-conditions:   *   invariant of resulting list is:  *      a reachable from b => ord(b)< ord(a)  */
+comment|/*  * Performs an in-place topological sort of list supplied.  *  * Pre-conditions:  *   all commits in input list and all parents of those  *   commits must have object.util == NULL  *          * Post-conditions:   *   invariant of resulting list is:  *      a reachable from b => ord(b)< ord(a)  *   in addition, when lifo == 0, commits on parallel tracks are  *   sorted in the dates order.  */
 end_comment
 
 begin_function_decl
@@ -403,6 +403,9 @@ name|commit_list
 modifier|*
 modifier|*
 name|list
+parameter_list|,
+name|int
+name|lifo
 parameter_list|)
 function_decl|;
 end_function_decl

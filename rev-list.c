@@ -120,6 +120,7 @@ literal|"    --all\n"
 literal|"  ordering output:\n"
 literal|"    --merge-order [ --show-breaks ]\n"
 literal|"    --topo-order\n"
+literal|"    --date-order\n"
 literal|"  formatting output:\n"
 literal|"    --parents\n"
 literal|"    --objects\n"
@@ -326,6 +327,16 @@ name|int
 name|topo_order
 init|=
 literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|lifo
+specifier|static
+name|int
+name|lifo
+init|=
+literal|1
 decl_stmt|;
 end_decl_stmt
 
@@ -4322,6 +4333,35 @@ name|topo_order
 operator|=
 literal|1
 expr_stmt|;
+name|lifo
+operator|=
+literal|1
+expr_stmt|;
+name|limited
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--date-order"
+argument_list|)
+condition|)
+block|{
+name|topo_order
+operator|=
+literal|1
+expr_stmt|;
+name|lifo
+operator|=
+literal|0
+expr_stmt|;
 name|limited
 operator|=
 literal|1
@@ -4754,6 +4794,8 @@ name|sort_in_topological_order
 argument_list|(
 operator|&
 name|list
+argument_list|,
+name|lifo
 argument_list|)
 expr_stmt|;
 name|show_commit_list
