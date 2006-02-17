@@ -34,11 +34,22 @@ directive|include
 file|<ctype.h>
 end_include
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|NO_ICONV
+end_ifndef
+
 begin_include
 include|#
 directive|include
 file|<iconv.h>
 end_include
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_include
 include|#
@@ -2481,6 +2492,9 @@ modifier|*
 name|charset
 parameter_list|)
 block|{
+ifndef|#
+directive|ifndef
+name|NO_ICONV
 name|char
 modifier|*
 name|in
@@ -2666,6 +2680,8 @@ argument_list|,
 name|outbuf
 argument_list|)
 expr_stmt|;
+endif|#
+directive|endif
 block|}
 end_function
 
