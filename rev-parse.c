@@ -1102,7 +1102,7 @@ name|arg
 argument_list|,
 literal|"--short="
 argument_list|,
-literal|9
+literal|8
 argument_list|)
 condition|)
 block|{
@@ -1127,7 +1127,7 @@ if|if
 condition|(
 name|arg
 index|[
-literal|8
+literal|7
 index|]
 operator|==
 literal|'='
@@ -1138,7 +1138,7 @@ name|strtoul
 argument_list|(
 name|arg
 operator|+
-literal|9
+literal|8
 argument_list|,
 name|NULL
 argument_list|,
