@@ -3096,6 +3096,9 @@ name|commit_list
 modifier|*
 modifier|*
 name|list
+parameter_list|,
+name|int
+name|lifo
 parameter_list|)
 block|{
 name|struct
@@ -3358,6 +3361,17 @@ name|next
 expr_stmt|;
 block|}
 comment|/* process the list in topological order */
+if|if
+condition|(
+operator|!
+name|lifo
+condition|)
+name|sort_by_date
+argument_list|(
+operator|&
+name|work
+argument_list|)
+expr_stmt|;
 while|while
 condition|(
 name|work
@@ -3447,6 +3461,21 @@ name|pn
 operator|->
 name|indegree
 condition|)
+block|{
+if|if
+condition|(
+operator|!
+name|lifo
+condition|)
+name|insert_by_date
+argument_list|(
+name|parent
+argument_list|,
+operator|&
+name|work
+argument_list|)
+expr_stmt|;
+else|else
 name|commit_list_insert
 argument_list|(
 name|parent
@@ -3455,6 +3484,7 @@ operator|&
 name|work
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|parents
 operator|=

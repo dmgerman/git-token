@@ -2907,6 +2907,11 @@ name|all_mask
 decl_stmt|,
 name|all_revs
 decl_stmt|;
+name|int
+name|lifo
+init|=
+literal|1
+decl_stmt|;
 name|char
 name|head_path
 index|[
@@ -2950,11 +2955,6 @@ literal|0
 decl_stmt|;
 name|int
 name|shown_merge_point
-init|=
-literal|0
-decl_stmt|;
-name|int
-name|topo_order
 init|=
 literal|0
 decl_stmt|;
@@ -3232,9 +3232,24 @@ argument_list|,
 literal|"--topo-order"
 argument_list|)
 condition|)
-name|topo_order
+name|lifo
 operator|=
 literal|1
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--date-order"
+argument_list|)
+condition|)
+name|lifo
+operator|=
+literal|0
 expr_stmt|;
 else|else
 name|usage
@@ -3865,14 +3880,12 @@ literal|0
 argument_list|)
 expr_stmt|;
 comment|/* Sort topologically */
-if|if
-condition|(
-name|topo_order
-condition|)
 name|sort_in_topological_order
 argument_list|(
 operator|&
 name|seen
+argument_list|,
+name|lifo
 argument_list|)
 expr_stmt|;
 comment|/* Give names to commits */
