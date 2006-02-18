@@ -1211,6 +1211,21 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
+name|o
+condition|)
+name|die
+argument_list|(
+literal|"git-upload-pack: cannot find object %s:"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|sha1
+argument_list|)
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|capabilities
 condition|)
 name|packet_write
