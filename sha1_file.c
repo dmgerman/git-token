@@ -2922,7 +2922,23 @@ condition|(
 operator|!
 name|dir
 condition|)
+block|{
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"unable to open object pack directory: %s: %s\n"
+argument_list|,
+name|path
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
+argument_list|)
+expr_stmt|;
 return|return;
+block|}
 name|path
 index|[
 name|len
