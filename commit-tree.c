@@ -667,7 +667,9 @@ argument_list|,
 literal|"author %s\n"
 argument_list|,
 name|git_author_info
-argument_list|()
+argument_list|(
+literal|1
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|add_buffer
@@ -681,7 +683,9 @@ argument_list|,
 literal|"committer %s\n\n"
 argument_list|,
 name|git_committer_info
-argument_list|()
+argument_list|(
+literal|1
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* And add the comment */
