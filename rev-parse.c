@@ -191,6 +191,8 @@ literal|"--no-merges"
 block|,
 literal|"--objects"
 block|,
+literal|"--objects-edge"
+block|,
 literal|"--parents"
 block|,
 literal|"--pretty"
