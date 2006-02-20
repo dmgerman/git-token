@@ -119,6 +119,16 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|use_thin_pack
+specifier|static
+name|int
+name|use_thin_pack
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|has_sha1
 specifier|static
 name|unsigned
@@ -307,10 +317,17 @@ if|if
 condition|(
 name|create_full_pack
 condition|)
+block|{
 name|args
 operator|=
 literal|10
 expr_stmt|;
+name|use_thin_pack
+operator|=
+literal|0
+expr_stmt|;
+comment|/* no point doing it */
+block|}
 else|else
 name|args
 operator|=
@@ -387,6 +404,10 @@ operator|*
 name|p
 operator|++
 operator|=
+name|use_thin_pack
+condition|?
+literal|"--objects-edge"
+else|:
 literal|"--objects"
 expr_stmt|;
 if|if
@@ -1117,6 +1138,21 @@ name|multi_ack
 operator|=
 literal|1
 expr_stmt|;
+if|if
+condition|(
+name|strstr
+argument_list|(
+name|line
+operator|+
+literal|45
+argument_list|,
+literal|"thin-pack"
+argument_list|)
+condition|)
+name|use_thin_pack
+operator|=
+literal|1
+expr_stmt|;
 comment|/* We have sent all our refs already, and the other end 		 * should have chosen out of them; otherwise they are 		 * asking for nonsense. 		 * 		 * Hmph.  We may later want to allow "want" line that 		 * asks for something like "master~10" (symbolic)... 		 * would it make sense?  I don't know. 		 */
 name|o
 operator|=
@@ -1197,7 +1233,7 @@ name|char
 modifier|*
 name|capabilities
 init|=
-literal|"multi_ack"
+literal|"multi_ack thin-pack"
 decl_stmt|;
 name|struct
 name|object
