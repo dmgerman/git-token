@@ -90,6 +90,16 @@ literal|0
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|use_thin_pack
+specifier|static
+name|int
+name|use_thin_pack
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|is_zero_sha1
 specifier|static
@@ -211,6 +221,20 @@ operator|=
 literal|"rev-list"
 expr_stmt|;
 comment|/* 0 */
+if|if
+condition|(
+name|use_thin_pack
+condition|)
+comment|/* 1 */
+name|args
+index|[
+name|i
+operator|++
+index|]
+operator|=
+literal|"--objects-edge"
+expr_stmt|;
+else|else
 name|args
 index|[
 name|i
@@ -219,7 +243,6 @@ index|]
 operator|=
 literal|"--objects"
 expr_stmt|;
-comment|/* 1 */
 while|while
 condition|(
 name|refs
@@ -1795,6 +1818,23 @@ argument_list|)
 condition|)
 block|{
 name|verbose
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--thin"
+argument_list|)
+condition|)
+block|{
+name|use_thin_pack
 operator|=
 literal|1
 expr_stmt|;
