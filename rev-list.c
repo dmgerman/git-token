@@ -1528,7 +1528,7 @@ condition|(
 name|objects
 condition|)
 block|{
-comment|/* An object with name "foo\n0000000000000000000000000000000000000000" 		 * can be used confuse downstream git-pack-objects very badly. 		 */
+comment|/* An object with name "foo\n0000000..." can be used to 		 * confuse downstream git-pack-objects very badly. 		 */
 specifier|const
 name|char
 modifier|*
