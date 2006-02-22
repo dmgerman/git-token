@@ -1062,6 +1062,8 @@ name|ce
 argument_list|,
 operator|&
 name|st
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 if|if
