@@ -720,6 +720,10 @@ expr_stmt|;
 block|}
 end_function
 
+begin_comment
+comment|/* provide the size of the copy opcode given the block offset and size */
+end_comment
+
 begin_define
 DECL|macro|COPYOP_SIZE
 define|#
@@ -732,6 +736,18 @@ name|s
 parameter_list|)
 define|\
 value|(!!(o& 0xff) + !!(o& 0xff00) + !!(o& 0xff0000) + !!(o& 0xff000000) + \      !!(s& 0xff) + !!(s& 0xff00) + 1)
+end_define
+
+begin_comment
+comment|/* the maximum size for any opcode */
+end_comment
+
+begin_define
+DECL|macro|MAX_OP_SIZE
+define|#
+directive|define
+name|MAX_OP_SIZE
+value|COPYOP_SIZE(0xffffffff, 0xffffffff)
 end_define
 
 begin_function
@@ -766,6 +782,7 @@ name|long
 name|max_size
 parameter_list|)
 block|{
+name|unsigned
 name|int
 name|i
 decl_stmt|,
@@ -849,6 +866,22 @@ expr_stmt|;
 name|outsize
 operator|=
 literal|8192
+expr_stmt|;
+if|if
+condition|(
+name|max_size
+operator|&&
+name|outsize
+operator|>=
+name|max_size
+condition|)
+name|outsize
+operator|=
+name|max_size
+operator|+
+name|MAX_OP_SIZE
+operator|+
+literal|1
 expr_stmt|;
 name|out
 operator|=
@@ -1387,36 +1420,11 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|max_size
-operator|&&
 name|outpos
-operator|>
-name|max_size
-condition|)
-block|{
-name|free
-argument_list|(
-name|out
-argument_list|)
-expr_stmt|;
-name|delta_cleanup
-argument_list|(
-operator|&
-name|bdf
-argument_list|)
-expr_stmt|;
-return|return
-name|NULL
-return|;
-block|}
-comment|/* next time around the largest possible output is 1 + 4 + 3 */
-if|if
-condition|(
-name|outpos
-operator|>
+operator|>=
 name|outsize
 operator|-
-literal|8
+name|MAX_OP_SIZE
 condition|)
 block|{
 name|void
@@ -1433,6 +1441,35 @@ literal|3
 operator|/
 literal|2
 expr_stmt|;
+if|if
+condition|(
+name|max_size
+operator|&&
+name|outsize
+operator|>=
+name|max_size
+condition|)
+name|outsize
+operator|=
+name|max_size
+operator|+
+name|MAX_OP_SIZE
+operator|+
+literal|1
+expr_stmt|;
+if|if
+condition|(
+name|max_size
+operator|&&
+name|outpos
+operator|>
+name|max_size
+condition|)
+name|out
+operator|=
+name|NULL
+expr_stmt|;
+else|else
 name|out
 operator|=
 name|realloc
