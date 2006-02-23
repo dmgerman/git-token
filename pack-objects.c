@@ -2458,6 +2458,10 @@ name|NULL
 decl_stmt|;
 name|int
 name|ix
+decl_stmt|,
+name|status
+init|=
+literal|0
 decl_stmt|;
 if|if
 condition|(
@@ -2716,6 +2720,10 @@ operator|+
 literal|1
 expr_stmt|;
 block|}
+name|status
+operator|=
+literal|1
+expr_stmt|;
 name|already_added
 label|:
 if|if
@@ -2769,7 +2777,7 @@ expr_stmt|;
 block|}
 block|}
 return|return
-literal|1
+name|status
 return|;
 block|}
 end_function
@@ -2857,6 +2865,9 @@ name|size
 argument_list|)
 condition|)
 continue|continue;
+if|if
+condition|(
+operator|!
 name|add_object_entry
 argument_list|(
 name|sha1
@@ -2865,7 +2876,8 @@ name|name
 argument_list|,
 literal|1
 argument_list|)
-expr_stmt|;
+condition|)
+continue|continue;
 if|if
 condition|(
 operator|!
@@ -2979,6 +2991,8 @@ operator|.
 name|buf
 condition|)
 return|return;
+if|if
+condition|(
 name|add_object_entry
 argument_list|(
 name|sha1
@@ -2987,7 +3001,7 @@ literal|""
 argument_list|,
 literal|1
 argument_list|)
-expr_stmt|;
+condition|)
 name|add_pbase_tree
 argument_list|(
 operator|&
@@ -4128,7 +4142,8 @@ expr_stmt|;
 else|else
 comment|/* trying with non-preferred one when we 				 * already have a delta based on preferred 				 * one is pointless. 				 */
 return|return
-literal|0
+operator|-
+literal|1
 return|;
 block|}
 elseif|else
