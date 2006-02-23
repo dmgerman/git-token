@@ -508,7 +508,7 @@ case|:
 return|return
 name|error
 argument_list|(
-literal|"%s died of signal\n"
+literal|"%s died of signal"
 argument_list|,
 name|update_hook
 argument_list|)
@@ -892,7 +892,7 @@ expr_stmt|;
 return|return
 name|error
 argument_list|(
-literal|"hook declined to update %s\n"
+literal|"hook declined to update %s"
 argument_list|,
 name|name
 argument_list|)

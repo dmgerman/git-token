@@ -2704,7 +2704,7 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"Cannot do a twoway merge of %d trees\n"
+literal|"Cannot do a twoway merge of %d trees"
 argument_list|,
 name|merge_size
 argument_list|)
@@ -2950,7 +2950,7 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"Cannot do a oneway merge of %d trees\n"
+literal|"Cannot do a oneway merge of %d trees"
 argument_list|,
 name|merge_size
 argument_list|)
