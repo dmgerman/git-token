@@ -435,12 +435,15 @@ name|p
 parameter_list|)
 block|{
 name|unsigned
-name|int
+name|long
 name|ui
 init|=
 operator|(
 name|unsigned
-name|int
+name|long
+operator|)
+operator|(
+name|long
 operator|)
 name|p
 decl_stmt|;
