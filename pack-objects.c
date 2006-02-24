@@ -3445,6 +3445,14 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|nr_objects
+operator|==
+name|nr_result
+condition|)
+block|{
+comment|/* 		 * Depth of objects that depend on the entry -- this 		 * is subtracted from depth-max to break too deep 		 * delta chain because of delta data reusing. 		 * However, we loosen this restriction when we know we 		 * are creating a thin pack -- it will have to be 		 * expanded on the other end anyway, so do not 		 * artificially cut the delta chain and let it go as 		 * deep as it wants. 		 */
 for|for
 control|(
 name|i
@@ -3487,6 +3495,7 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 end_function
 
