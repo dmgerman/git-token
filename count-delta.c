@@ -136,6 +136,14 @@ condition|(
 name|e
 operator|->
 name|next
+operator|&&
+name|e
+operator|->
+name|next
+operator|->
+name|ofs
+operator|<=
+name|end
 condition|)
 block|{
 name|e
