@@ -922,9 +922,16 @@ name|delta_size
 operator|*
 name|MAX_SCORE
 condition|)
+block|{
+name|free
+argument_list|(
+name|delta
+argument_list|)
+expr_stmt|;
 return|return
 literal|0
 return|;
+block|}
 comment|/* Estimate the edit size by interpreting delta. */
 if|if
 condition|(
