@@ -4032,7 +4032,9 @@ name|object_entry
 modifier|*
 modifier|*
 name|create_final_object_list
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 name|struct
 name|object_entry
