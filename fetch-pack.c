@@ -457,7 +457,9 @@ name|unsigned
 name|char
 modifier|*
 name|get_rev
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 name|struct
 name|commit

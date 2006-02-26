@@ -143,11 +143,11 @@ index|]
 decl_stmt|;
 end_decl_stmt
 
-begin_if
-if|#
-directive|if
+begin_ifdef
+ifdef|#
+directive|ifdef
 name|NO_D_INO_IN_DIRENT
-end_if
+end_ifdef
 
 begin_define
 DECL|macro|SORT_DIRENT
