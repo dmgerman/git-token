@@ -34,6 +34,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"revision.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"epoch.h"
 end_include
 
