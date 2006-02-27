@@ -1173,18 +1173,6 @@ return|;
 block|}
 end_function
 
-begin_decl_stmt
-DECL|variable|pending_objects
-specifier|static
-name|struct
-name|object_list
-modifier|*
-name|pending_objects
-init|=
-name|NULL
-decl_stmt|;
-end_decl_stmt
-
 begin_function
 DECL|function|show_commit_list
 specifier|static
@@ -1262,6 +1250,8 @@ for|for
 control|(
 name|pending
 operator|=
+name|revs
+operator|.
 name|pending_objects
 init|;
 name|pending
@@ -3444,10 +3434,6 @@ expr_stmt|;
 if|if
 condition|(
 name|list
-operator|&&
-name|list
-operator|->
-name|next
 condition|)
 name|limited
 operator|=
@@ -3519,10 +3505,16 @@ condition|(
 name|revs
 operator|.
 name|max_age
+operator|!=
+operator|-
+literal|1
 operator|||
 name|revs
 operator|.
 name|min_age
+operator|!=
+operator|-
+literal|1
 condition|)
 name|limited
 operator|=
