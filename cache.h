@@ -1042,6 +1042,10 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* Environment bits from configuration mechanism */
+end_comment
+
 begin_decl_stmt
 specifier|extern
 name|int
@@ -1067,6 +1071,15 @@ begin_decl_stmt
 specifier|extern
 name|int
 name|shared_repository
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
+specifier|const
+name|char
+modifier|*
+name|apply_default_whitespace
 decl_stmt|;
 end_decl_stmt
 
