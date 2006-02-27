@@ -102,6 +102,16 @@ DECL|member|edge_hint
 name|edge_hint
 range|:
 literal|1
+decl_stmt|,
+DECL|member|limited
+name|limited
+range|:
+literal|1
+decl_stmt|,
+DECL|member|unpacked
+name|unpacked
+range|:
+literal|1
 decl_stmt|;
 comment|/* special limits */
 DECL|member|max_count
