@@ -46,6 +46,11 @@ parameter_list|,
 name|unsigned
 name|long
 name|max_size
+parameter_list|,
+name|void
+modifier|*
+modifier|*
+name|from_index
 parameter_list|)
 function_decl|;
 end_function_decl

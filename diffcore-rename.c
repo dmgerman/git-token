@@ -896,6 +896,8 @@ operator|&
 name|delta_size
 argument_list|,
 name|delta_limit
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 if|if
