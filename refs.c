@@ -831,7 +831,18 @@ argument_list|)
 operator|<
 literal|0
 condition|)
+block|{
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"%s points nowhere!"
+argument_list|,
+name|path
+argument_list|)
+expr_stmt|;
 continue|continue;
+block|}
 if|if
 condition|(
 operator|!
@@ -840,7 +851,19 @@ argument_list|(
 name|sha1
 argument_list|)
 condition|)
+block|{
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"%s does not point to a valid "
+literal|"commit object!"
+argument_list|,
+name|path
+argument_list|)
+expr_stmt|;
 continue|continue;
+block|}
 name|retval
 operator|=
 name|fn
