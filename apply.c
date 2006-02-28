@@ -219,7 +219,7 @@ block|, }
 DECL|variable|new_whitespace
 name|new_whitespace
 init|=
-name|nowarn_whitespace
+name|warn_on_whitespace
 enum|;
 end_enum
 
@@ -285,7 +285,7 @@ condition|)
 block|{
 name|new_whitespace
 operator|=
-name|nowarn_whitespace
+name|warn_on_whitespace
 expr_stmt|;
 return|return;
 block|}
@@ -303,6 +303,23 @@ block|{
 name|new_whitespace
 operator|=
 name|warn_on_whitespace
+expr_stmt|;
+return|return;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|option
+argument_list|,
+literal|"nowarn"
+argument_list|)
+condition|)
+block|{
+name|new_whitespace
+operator|=
+name|nowarn_whitespace
 expr_stmt|;
 return|return;
 block|}
