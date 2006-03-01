@@ -44,6 +44,19 @@ name|SHOWN
 value|(1u<<3)
 end_define
 
+begin_define
+DECL|macro|TMP_MARK
+define|#
+directive|define
+name|TMP_MARK
+value|(1u<<4)
+end_define
+
+begin_comment
+DECL|macro|TMP_MARK
+comment|/* for isolated cases; clean after use */
+end_comment
+
 begin_struct
 DECL|struct|rev_info
 struct|struct
