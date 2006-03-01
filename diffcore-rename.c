@@ -21,18 +21,6 @@ directive|include
 file|"diffcore.h"
 end_include
 
-begin_include
-include|#
-directive|include
-file|"delta.h"
-end_include
-
-begin_include
-include|#
-directive|include
-file|"count-delta.h"
-end_include
-
 begin_comment
 comment|/* Table of rename/copy destinations */
 end_comment
@@ -723,10 +711,6 @@ name|minimum_score
 parameter_list|)
 block|{
 comment|/* src points at a file that existed in the original tree (or 	 * optionally a file in the destination tree) and dst points 	 * at a newly created file.  They may be quite similar, in which 	 * case we want to say src is renamed to dst or src is copied into 	 * dst, and then some edit has been applied to dst. 	 * 	 * Compare them and return how similar they are, representing 	 * the score as an integer between 0 and MAX_SCORE. 	 * 	 * When there is an exact match, it is considered a better 	 * match than anything else; the destination does not even 	 * call into this function in that case. 	 */
-name|void
-modifier|*
-name|delta
-decl_stmt|;
 name|unsigned
 name|long
 name|delta_size
@@ -872,9 +856,9 @@ operator|)
 operator|/
 name|MAX_SCORE
 expr_stmt|;
-name|delta
-operator|=
-name|diff_delta
+if|if
+condition|(
+name|diffcore_count_changes
 argument_list|(
 name|src
 operator|->
@@ -891,55 +875,8 @@ argument_list|,
 name|dst
 operator|->
 name|size
-argument_list|,
-operator|&
-name|delta_size
 argument_list|,
 name|delta_limit
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-operator|!
-name|delta
-condition|)
-comment|/* If delta_limit is exceeded, we have too much differences */
-return|return
-literal|0
-return|;
-comment|/* A delta that has a lot of literal additions would have 	 * big delta_size no matter what else it does. 	 */
-if|if
-condition|(
-name|base_size
-operator|*
-operator|(
-name|MAX_SCORE
-operator|-
-name|minimum_score
-operator|)
-operator|<
-name|delta_size
-operator|*
-name|MAX_SCORE
-condition|)
-block|{
-name|free
-argument_list|(
-name|delta
-argument_list|)
-expr_stmt|;
-return|return
-literal|0
-return|;
-block|}
-comment|/* Estimate the edit size by interpreting delta. */
-if|if
-condition|(
-name|count_delta
-argument_list|(
-name|delta
-argument_list|,
-name|delta_size
 argument_list|,
 operator|&
 name|src_copied
@@ -948,21 +885,9 @@ operator|&
 name|literal_added
 argument_list|)
 condition|)
-block|{
-name|free
-argument_list|(
-name|delta
-argument_list|)
-expr_stmt|;
 return|return
 literal|0
 return|;
-block|}
-name|free
-argument_list|(
-name|delta
-argument_list|)
-expr_stmt|;
 comment|/* Extent of damage */
 if|if
 condition|(

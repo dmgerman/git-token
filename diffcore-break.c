@@ -21,18 +21,6 @@ directive|include
 file|"diffcore.h"
 end_include
 
-begin_include
-include|#
-directive|include
-file|"delta.h"
-end_include
-
-begin_include
-include|#
-directive|include
-file|"count-delta.h"
-end_include
-
 begin_function
 DECL|function|should_break
 specifier|static
@@ -58,10 +46,6 @@ name|merge_score_p
 parameter_list|)
 block|{
 comment|/* dst is recorded as a modification of src.  Are they so 	 * different that we are better off recording this as a pair 	 * of delete and create? 	 * 	 * There are two criteria used in this algorithm.  For the 	 * purposes of helping later rename/copy, we take both delete 	 * and insert into account and estimate the amount of "edit". 	 * If the edit is very large, we break this pair so that 	 * rename/copy can pick the pieces up to match with other 	 * files. 	 * 	 * On the other hand, we would want to ignore inserts for the 	 * pure "complete rewrite" detection.  As long as most of the 	 * existing contents were removed from the file, it is a 	 * complete rewrite, and if sizable chunk from the original 	 * still remains in the result, it is not a rewrite.  It does 	 * not matter how much or how little new material is added to 	 * the file. 	 * 	 * The score we leave for such a broken filepair uses the 	 * latter definition so that later clean-up stage can find the 	 * pieces that should not have been broken according to the 	 * latter definition after rename/copy runs, and merge the 	 * broken pair that have a score lower than given criteria 	 * back together.  The break operation itself happens 	 * according to the former definition. 	 * 	 * The minimum_edit parameter tells us when to break (the 	 * amount of "edit" required for us to consider breaking the 	 * pair).  We leave the amount of deletion in *merge_score_p 	 * when we return. 	 * 	 * The value we return is 1 if we want the pair to be broken, 	 * or 0 if we do not. 	 */
-name|void
-modifier|*
-name|delta
-decl_stmt|;
 name|unsigned
 name|long
 name|delta_size
@@ -185,9 +169,9 @@ return|return
 literal|0
 return|;
 comment|/* we do not break too small filepair */
-name|delta
-operator|=
-name|diff_delta
+if|if
+condition|(
+name|diffcore_count_changes
 argument_list|(
 name|src
 operator|->
@@ -205,29 +189,7 @@ name|dst
 operator|->
 name|size
 argument_list|,
-operator|&
-name|delta_size
-argument_list|,
 literal|0
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-operator|!
-name|delta
-condition|)
-return|return
-literal|0
-return|;
-comment|/* error but caught downstream */
-comment|/* Estimate the edit size by interpreting delta. */
-if|if
-condition|(
-name|count_delta
-argument_list|(
-name|delta
-argument_list|,
-name|delta_size
 argument_list|,
 operator|&
 name|src_copied
@@ -236,22 +198,9 @@ operator|&
 name|literal_added
 argument_list|)
 condition|)
-block|{
-name|free
-argument_list|(
-name|delta
-argument_list|)
-expr_stmt|;
 return|return
 literal|0
 return|;
-comment|/* we cannot tell */
-block|}
-name|free
-argument_list|(
-name|delta
-argument_list|)
-expr_stmt|;
 comment|/* Compute merge-score, which is "how much is removed 	 * from the source material".  The clean-up stage will 	 * merge the surviving pair together if the score is 	 * less than the minimum, after rename/copy runs. 	 */
 if|if
 condition|(
