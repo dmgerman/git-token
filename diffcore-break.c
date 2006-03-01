@@ -107,6 +107,34 @@ return|;
 comment|/* leave symlink rename alone */
 if|if
 condition|(
+name|src
+operator|->
+name|sha1_valid
+operator|&&
+name|dst
+operator|->
+name|sha1_valid
+operator|&&
+operator|!
+name|memcmp
+argument_list|(
+name|src
+operator|->
+name|sha1
+argument_list|,
+name|dst
+operator|->
+name|sha1
+argument_list|,
+literal|20
+argument_list|)
+condition|)
+return|return
+literal|0
+return|;
+comment|/* they are the same */
+if|if
+condition|(
 name|diff_populate_filespec
 argument_list|(
 name|src
