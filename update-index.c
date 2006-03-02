@@ -2613,6 +2613,19 @@ literal|"--index-info"
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+name|i
+operator|!=
+name|argc
+operator|-
+literal|1
+condition|)
+name|die
+argument_list|(
+literal|"--index-info must be at the end"
+argument_list|)
+expr_stmt|;
 name|allow_add
 operator|=
 name|allow_replace
@@ -2626,7 +2639,7 @@ argument_list|(
 name|line_termination
 argument_list|)
 expr_stmt|;
-continue|continue;
+break|break;
 block|}
 if|if
 condition|(
