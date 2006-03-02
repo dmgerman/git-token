@@ -216,7 +216,9 @@ name|struct
 name|llist_item
 modifier|*
 name|llist_item_get
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 name|struct
 name|llist_item
@@ -1479,6 +1481,7 @@ end_function
 
 begin_function
 DECL|function|pll_free
+specifier|static
 name|void
 name|pll_free
 parameter_list|(

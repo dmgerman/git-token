@@ -729,7 +729,7 @@ name|ABORTED
 expr_stmt|;
 name|error
 argument_list|(
-literal|"Couldn't create temporary file %s for %s: %s\n"
+literal|"Couldn't create temporary file %s for %s: %s"
 argument_list|,
 name|obj_req
 operator|->
@@ -4462,7 +4462,7 @@ name|ret
 operator|=
 name|error
 argument_list|(
-literal|"File %s (%s) corrupt\n"
+literal|"File %s (%s) corrupt"
 argument_list|,
 name|hex
 argument_list|,
@@ -4493,7 +4493,7 @@ name|ret
 operator|=
 name|error
 argument_list|(
-literal|"File %s has bad hash\n"
+literal|"File %s has bad hash"
 argument_list|,
 name|hex
 argument_list|)
@@ -4598,7 +4598,7 @@ block|}
 return|return
 name|error
 argument_list|(
-literal|"Unable to find %s under %s\n"
+literal|"Unable to find %s under %s"
 argument_list|,
 name|sha1_to_hex
 argument_list|(

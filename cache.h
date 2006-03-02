@@ -65,7 +65,10 @@ name|DT_UNKNOWN
 argument_list|)
 operator|&&
 operator|!
+name|defined
+argument_list|(
 name|NO_D_TYPE_IN_DIRENT
+argument_list|)
 end_if
 
 begin_define
@@ -332,6 +335,14 @@ define|#
 directive|define
 name|CE_UPDATE
 value|(0x4000)
+end_define
+
+begin_define
+DECL|macro|CE_VALID
+define|#
+directive|define
+name|CE_VALID
+value|(0x8000)
 end_define
 
 begin_define
@@ -840,6 +851,8 @@ name|struct
 name|stat
 modifier|*
 name|st
+parameter_list|,
+name|int
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -858,6 +871,8 @@ name|struct
 name|stat
 modifier|*
 name|st
+parameter_list|,
+name|int
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -1046,6 +1061,13 @@ begin_decl_stmt
 specifier|extern
 name|int
 name|trust_executable_bit
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
+name|int
+name|assume_unchanged
 decl_stmt|;
 end_decl_stmt
 
@@ -2909,6 +2931,20 @@ name|me
 parameter_list|,
 name|int
 name|quiet
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/* pager.c */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|void
+name|setup_pager
+parameter_list|(
+name|void
 parameter_list|)
 function_decl|;
 end_function_decl

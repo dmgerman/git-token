@@ -1177,7 +1177,7 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"bad tree pointer in commit %s\n"
+literal|"bad tree pointer in commit %s"
 argument_list|,
 name|sha1_to_hex
 argument_list|(

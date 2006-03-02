@@ -61,7 +61,7 @@ name|char
 name|fetch_pack_usage
 index|[]
 init|=
-literal|"git-fetch-pack [-q] [-v] [-k] [--exec=upload-pack] [host:]directory<refs>..."
+literal|"git-fetch-pack [-q] [-v] [-k] [--thin] [--exec=upload-pack] [host:]directory<refs>..."
 decl_stmt|;
 end_decl_stmt
 
@@ -132,6 +132,7 @@ end_decl_stmt
 begin_decl_stmt
 DECL|variable|non_common_revs
 DECL|variable|multi_ack
+DECL|variable|use_thin_pack
 specifier|static
 name|int
 name|non_common_revs
@@ -139,6 +140,10 @@ init|=
 literal|0
 decl_stmt|,
 name|multi_ack
+init|=
+literal|0
+decl_stmt|,
+name|use_thin_pack
 init|=
 literal|0
 decl_stmt|;
@@ -452,7 +457,9 @@ name|unsigned
 name|char
 modifier|*
 name|get_rev
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 name|struct
 name|commit
@@ -771,18 +778,28 @@ index|[
 literal|1
 index|]
 argument_list|,
-literal|"want %s%s\n"
+literal|"want %s%s%s\n"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
 name|remote
 argument_list|)
 argument_list|,
+operator|(
 name|multi_ack
 condition|?
 literal|" multi_ack"
 else|:
 literal|""
+operator|)
+argument_list|,
+operator|(
+name|use_thin_pack
+condition|?
+literal|" thin-pack"
+else|:
+literal|""
+operator|)
 argument_list|)
 expr_stmt|;
 name|fetching
@@ -2161,6 +2178,23 @@ condition|(
 operator|!
 name|strcmp
 argument_list|(
+literal|"--thin"
+argument_list|,
+name|arg
+argument_list|)
+condition|)
+block|{
+name|use_thin_pack
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
 literal|"-v"
 argument_list|,
 name|arg
@@ -2210,6 +2244,14 @@ name|usage
 argument_list|(
 name|fetch_pack_usage
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|keep_pack
+condition|)
+name|use_thin_pack
+operator|=
+literal|0
 expr_stmt|;
 name|pid
 operator|=
