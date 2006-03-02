@@ -2766,9 +2766,23 @@ operator|&&
 name|head_match
 operator|)
 condition|)
+block|{
+if|if
+condition|(
+name|index
+condition|)
+return|return
+name|deleted_entry
+argument_list|(
+name|index
+argument_list|,
+name|index
+argument_list|)
+return|;
 return|return
 literal|0
 return|;
+block|}
 comment|/* 		 * Added in both, identically. 		 */
 if|if
 condition|(
