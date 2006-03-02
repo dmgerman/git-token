@@ -78,6 +78,17 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|apply_default_whitespace
+specifier|const
+name|char
+modifier|*
+name|apply_default_whitespace
+init|=
+name|NULL
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|git_dir
 DECL|variable|git_object_dir
 DECL|variable|git_index_file
