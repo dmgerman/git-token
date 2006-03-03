@@ -3390,7 +3390,7 @@ name|char
 name|read_tree_usage
 index|[]
 init|=
-literal|"git-read-tree (<sha> | -m [-u | -i]<sha1> [<sha2> [<sha3>]])"
+literal|"git-read-tree (<sha> | -m [--aggressive] [-u | -i]<sha1> [<sha2> [<sha3>]])"
 decl_stmt|;
 end_decl_stmt
 

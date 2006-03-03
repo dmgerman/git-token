@@ -194,7 +194,7 @@ name|char
 name|apply_usage
 index|[]
 init|=
-literal|"git-apply [--stat] [--numstat] [--summary] [--check] [--index] [--apply] [--no-add] [--index-info] [--allow-binary-replacement] [-z] [-pNUM]<patch>..."
+literal|"git-apply [--stat] [--numstat] [--summary] [--check] [--index] [--apply] [--no-add] [--index-info] [--allow-binary-replacement] [-z] [-pNUM] [--whitespace=<nowarn|warn|error|error-all|strip>]<patch>..."
 decl_stmt|;
 end_decl_stmt
 
