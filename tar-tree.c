@@ -1658,9 +1658,29 @@ argument_list|)
 condition|)
 name|mode
 operator||=
-literal|0755
+literal|0777
 expr_stmt|;
-comment|/* GIT doesn't store permissions of dirs */
+elseif|else
+if|if
+condition|(
+name|S_ISREG
+argument_list|(
+name|mode
+argument_list|)
+condition|)
+name|mode
+operator||=
+operator|(
+name|mode
+operator|&
+literal|0100
+operator|)
+condition|?
+literal|0777
+else|:
+literal|0666
+expr_stmt|;
+elseif|else
 if|if
 condition|(
 name|S_ISLNK
@@ -1672,7 +1692,6 @@ name|mode
 operator||=
 literal|0777
 expr_stmt|;
-comment|/* ... nor of symlinks */
 name|sprintf
 argument_list|(
 operator|&
@@ -2176,9 +2195,11 @@ expr_stmt|;
 block|}
 name|commit
 operator|=
-name|lookup_commit_reference
+name|lookup_commit_reference_gently
 argument_list|(
 name|sha1
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 if|if
