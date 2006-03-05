@@ -534,7 +534,7 @@ name|sprintf
 argument_list|(
 name|diff_cmd
 argument_list|,
-literal|"diff -u0 %s %s"
+literal|"diff -u -U 0 %s %s"
 argument_list|,
 name|tmp_path1
 argument_list|,
