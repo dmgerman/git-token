@@ -156,6 +156,7 @@ name|void
 parameter_list|)
 block|{
 specifier|static
+specifier|const
 name|char
 modifier|*
 name|args
@@ -205,6 +206,7 @@ modifier|*
 name|ref
 decl_stmt|;
 specifier|static
+specifier|const
 name|char
 modifier|*
 name|args
