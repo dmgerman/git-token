@@ -103,11 +103,6 @@ expr_stmt|;
 return|return
 name|execv_git_cmd
 argument_list|(
-operator|(
-name|char
-operator|*
-operator|*
-operator|)
 name|my_argv
 argument_list|)
 return|;

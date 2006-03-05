@@ -299,6 +299,7 @@ decl_stmt|;
 name|int
 name|args
 decl_stmt|;
+specifier|const
 name|char
 modifier|*
 modifier|*
@@ -337,7 +338,7 @@ name|nr_needs
 operator|+
 literal|5
 expr_stmt|;
-name|argv
+name|p
 operator|=
 name|xmalloc
 argument_list|(
@@ -350,6 +351,16 @@ operator|*
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|argv
+operator|=
+operator|(
+specifier|const
+name|char
+operator|*
+operator|*
+operator|)
+name|p
+expr_stmt|;
 name|buf
 operator|=
 name|xmalloc
@@ -358,10 +369,6 @@ name|args
 operator|*
 literal|45
 argument_list|)
-expr_stmt|;
-name|p
-operator|=
-name|argv
 expr_stmt|;
 name|dup2
 argument_list|(

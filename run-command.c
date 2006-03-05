@@ -31,6 +31,7 @@ parameter_list|(
 name|int
 name|argc
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
@@ -258,6 +259,7 @@ parameter_list|(
 name|int
 name|argc
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
@@ -293,6 +295,7 @@ block|{
 name|int
 name|argc
 decl_stmt|;
+specifier|const
 name|char
 modifier|*
 name|argv

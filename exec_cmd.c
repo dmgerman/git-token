@@ -123,6 +123,7 @@ DECL|function|execv_git_cmd
 name|int
 name|execv_git_cmd
 parameter_list|(
+specifier|const
 name|char
 modifier|*
 modifier|*
@@ -136,10 +137,6 @@ name|PATH_MAX
 operator|+
 literal|1
 index|]
-decl_stmt|;
-name|char
-modifier|*
-name|tmp
 decl_stmt|;
 name|int
 name|len
@@ -199,6 +196,11 @@ name|paths
 index|[
 name|i
 index|]
+decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|tmp
 decl_stmt|;
 if|if
 condition|(
@@ -376,6 +378,11 @@ name|execve
 argument_list|(
 name|git_command
 argument_list|,
+operator|(
+name|char
+operator|*
+operator|*
+operator|)
 name|argv
 argument_list|,
 name|environ
@@ -405,6 +412,7 @@ DECL|function|execl_git_cmd
 name|int
 name|execl_git_cmd
 parameter_list|(
+specifier|const
 name|char
 modifier|*
 name|cmd
@@ -415,6 +423,7 @@ block|{
 name|int
 name|argc
 decl_stmt|;
+specifier|const
 name|char
 modifier|*
 name|argv
@@ -424,6 +433,7 @@ operator|+
 literal|1
 index|]
 decl_stmt|;
+specifier|const
 name|char
 modifier|*
 name|arg
