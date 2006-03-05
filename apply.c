@@ -6882,6 +6882,8 @@ index|]
 argument_list|,
 operator|&
 name|costate
+argument_list|,
+name|NULL
 argument_list|)
 operator|||
 name|lstat
