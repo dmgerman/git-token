@@ -125,6 +125,16 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|value_
+operator|==
+name|NULL
+condition|)
+name|value_
+operator|=
+literal|""
+expr_stmt|;
+if|if
+condition|(
 operator|!
 name|strcmp
 argument_list|(
@@ -266,10 +276,6 @@ operator|=
 name|strdup
 argument_list|(
 name|value_
-condition|?
-name|value_
-else|:
-literal|""
 argument_list|)
 expr_stmt|;
 block|}
