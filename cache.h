@@ -2106,6 +2106,10 @@ name|struct
 name|checkout
 modifier|*
 name|state
+parameter_list|,
+name|char
+modifier|*
+name|topath
 parameter_list|)
 function_decl|;
 end_function_decl
