@@ -495,6 +495,20 @@ name|parents
 operator|->
 name|item
 decl_stmt|;
+if|if
+condition|(
+operator|!
+operator|(
+name|commit
+operator|->
+name|object
+operator|.
+name|flags
+operator|&
+name|UNINTERESTING
+operator|)
+condition|)
+block|{
 name|commit
 operator|->
 name|object
@@ -503,7 +517,7 @@ name|flags
 operator||=
 name|UNINTERESTING
 expr_stmt|;
-comment|/* 		 * Normally we haven't parsed the parent 		 * yet, so we won't have a parent of a parent 		 * here. However, it may turn out that we've 		 * reached this commit some other way (where it 		 * wasn't uninteresting), in which case we need 		 * to mark its parents recursively too.. 		 */
+comment|/* 			 * Normally we haven't parsed the parent 			 * yet, so we won't have a parent of a parent 			 * here. However, it may turn out that we've 			 * reached this commit some other way (where it 			 * wasn't uninteresting), in which case we need 			 * to mark its parents recursively too.. 			 */
 if|if
 condition|(
 name|commit
@@ -515,6 +529,7 @@ argument_list|(
 name|commit
 argument_list|)
 expr_stmt|;
+block|}
 comment|/* 		 * A missing commit is ok iff its parent is marked 		 * uninteresting. 		 * 		 * We just mark such a thing parsed, so that when 		 * it is popped next time around, we won't be trying 		 * to parse it and get an error. 		 */
 if|if
 condition|(
