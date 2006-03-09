@@ -832,10 +832,8 @@ operator|<
 literal|0
 condition|)
 block|{
-name|fprintf
+name|error
 argument_list|(
-name|stderr
-argument_list|,
 literal|"%s points nowhere!"
 argument_list|,
 name|path
@@ -852,10 +850,8 @@ name|sha1
 argument_list|)
 condition|)
 block|{
-name|fprintf
+name|error
 argument_list|(
-name|stderr
-argument_list|,
 literal|"%s does not point to a valid "
 literal|"commit object!"
 argument_list|,

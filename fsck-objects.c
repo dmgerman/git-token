@@ -92,16 +92,6 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|standalone
-specifier|static
-name|int
-name|standalone
-init|=
-literal|0
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|variable|check_full
 specifier|static
 name|int
@@ -418,9 +408,6 @@ condition|)
 block|{
 if|if
 condition|(
-operator|!
-name|standalone
-operator|&&
 name|has_sha1_file
 argument_list|(
 name|obj
@@ -504,9 +491,6 @@ operator|->
 name|parsed
 operator|||
 operator|(
-operator|!
-name|standalone
-operator|&&
 name|has_sha1_file
 argument_list|(
 name|ref
@@ -2089,9 +2073,6 @@ condition|)
 block|{
 if|if
 condition|(
-operator|!
-name|standalone
-operator|&&
 name|has_sha1_file
 argument_list|(
 name|sha1
@@ -2466,23 +2447,6 @@ name|strcmp
 argument_list|(
 name|arg
 argument_list|,
-literal|"--standalone"
-argument_list|)
-condition|)
-block|{
-name|standalone
-operator|=
-literal|1
-expr_stmt|;
-continue|continue;
-block|}
-if|if
-condition|(
-operator|!
-name|strcmp
-argument_list|(
-name|arg
-argument_list|,
 literal|"--full"
 argument_list|)
 condition|)
@@ -2519,30 +2483,10 @@ literal|'-'
 condition|)
 name|usage
 argument_list|(
-literal|"git-fsck-objects [--tags] [--root] [[--unreachable] [--cache] [--standalone | --full] [--strict]<head-sha1>*]"
+literal|"git-fsck-objects [--tags] [--root] [[--unreachable] [--cache] [--full] [--strict]<head-sha1>*]"
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|standalone
-operator|&&
-name|check_full
-condition|)
-name|die
-argument_list|(
-literal|"Only one of --standalone or --full can be used."
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|standalone
-condition|)
-name|putenv
-argument_list|(
-literal|"GIT_ALTERNATE_OBJECT_DIRECTORIES="
-argument_list|)
-expr_stmt|;
 name|fsck_head_link
 argument_list|()
 expr_stmt|;

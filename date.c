@@ -857,14 +857,6 @@ block|}
 struct|;
 end_struct
 
-begin_define
-DECL|macro|NR_TZ
-define|#
-directive|define
-name|NR_TZ
-value|(sizeof(timezone_names) / sizeof(timezone_names[0]))
-end_define
-
 begin_function
 DECL|function|match_string
 specifier|static
@@ -1116,7 +1108,10 @@ literal|0
 init|;
 name|i
 operator|<
-name|NR_TZ
+name|ARRAY_SIZE
+argument_list|(
+name|timezone_names
+argument_list|)
 condition|;
 name|i
 operator|++

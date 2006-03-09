@@ -68,6 +68,17 @@ endif|#
 directive|endif
 end_endif
 
+begin_define
+DECL|macro|ARRAY_SIZE
+define|#
+directive|define
+name|ARRAY_SIZE
+parameter_list|(
+name|x
+parameter_list|)
+value|(sizeof(x)/sizeof(x[0]))
+end_define
+
 begin_include
 include|#
 directive|include
