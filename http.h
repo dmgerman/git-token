@@ -172,6 +172,11 @@ DECL|member|http_code
 name|long
 name|http_code
 decl_stmt|;
+DECL|member|finished
+name|int
+modifier|*
+name|finished
+decl_stmt|;
 DECL|member|results
 name|struct
 name|slot_results
