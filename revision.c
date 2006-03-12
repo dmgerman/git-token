@@ -1501,14 +1501,15 @@ name|tree
 argument_list|)
 condition|)
 block|{
-operator|*
-name|pp
-operator|=
-name|parent
+comment|/* We are adding all the specified paths from 				 * this parent, so the parents of it is 				 * not interesting, but the difference between 				 * this parent and us still is interesting. 				 */
+name|p
 operator|->
-name|next
+name|object
+operator|.
+name|flags
+operator||=
+name|UNINTERESTING
 expr_stmt|;
-continue|continue;
 block|}
 comment|/* fallthrough */
 case|case
