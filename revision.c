@@ -1527,14 +1527,17 @@ name|tree
 argument_list|)
 condition|)
 block|{
-comment|/* We are adding all the specified paths from 				 * this parent, so the parents of it is 				 * not interesting, but the difference between 				 * this parent and us still is interesting. 				 */
+comment|/* We are adding all the specified 				 * paths from this parent, so the 				 * history beyond this parent is not 				 * interesting.  Remove its parents 				 * (they are grandparents for us). 				 * IOW, we pretend this parent is a 				 * "root" commit. 				 */
+name|parse_commit
+argument_list|(
+name|p
+argument_list|)
+expr_stmt|;
 name|p
 operator|->
-name|object
-operator|.
-name|flags
-operator||=
-name|UNINTERESTING
+name|parents
+operator|=
+name|NULL
 expr_stmt|;
 block|}
 comment|/* fallthrough */
