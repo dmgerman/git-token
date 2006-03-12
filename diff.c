@@ -2427,6 +2427,19 @@ name|data
 operator|=
 name|NULL
 expr_stmt|;
+name|free
+argument_list|(
+name|s
+operator|->
+name|cnt_data
+argument_list|)
+expr_stmt|;
+name|s
+operator|->
+name|cnt_data
+operator|=
+name|NULL
+expr_stmt|;
 block|}
 end_function
 
