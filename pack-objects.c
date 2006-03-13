@@ -157,11 +157,6 @@ name|int
 name|preferred_base
 decl_stmt|;
 comment|/* we do not pack this, but is encouraged to 				 * be used as the base objectto delta huge 				 * objects against. 				 */
-DECL|member|based_on_preferred
-name|int
-name|based_on_preferred
-decl_stmt|;
-comment|/* current delta candidate is a preferred 				 * one, or delta against a preferred one. 				 */
 block|}
 struct|;
 end_struct
@@ -4355,19 +4350,6 @@ name|old
 operator|->
 name|entry
 decl_stmt|;
-name|int
-name|old_preferred
-init|=
-operator|(
-name|old_entry
-operator|->
-name|preferred_base
-operator|||
-name|old_entry
-operator|->
-name|based_on_preferred
-operator|)
-decl_stmt|;
 name|unsigned
 name|long
 name|size
@@ -4499,18 +4481,6 @@ name|cur_entry
 operator|->
 name|delta
 condition|)
-block|{
-if|if
-condition|(
-name|cur_entry
-operator|->
-name|based_on_preferred
-condition|)
-block|{
-if|if
-condition|(
-name|old_preferred
-condition|)
 name|max_size
 operator|=
 name|cur_entry
@@ -4519,31 +4489,6 @@ name|delta_size
 operator|-
 literal|1
 expr_stmt|;
-else|else
-comment|/* trying with non-preferred one when we 				 * already have a delta based on preferred 				 * one is pointless. 				 */
-return|return
-operator|-
-literal|1
-return|;
-block|}
-elseif|else
-if|if
-condition|(
-operator|!
-name|old_preferred
-condition|)
-name|max_size
-operator|=
-name|cur_entry
-operator|->
-name|delta_size
-operator|-
-literal|1
-expr_stmt|;
-else|else
-comment|/* otherwise...  even if delta with a 			 * preferred one produces a bigger result than 			 * what we currently have, which is based on a 			 * non-preferred one, it is OK. 			 */
-empty_stmt|;
-block|}
 if|if
 condition|(
 name|sizediff
@@ -4605,12 +4550,6 @@ operator|->
 name|depth
 operator|+
 literal|1
-expr_stmt|;
-name|cur_entry
-operator|->
-name|based_on_preferred
-operator|=
-name|old_preferred
 expr_stmt|;
 name|free
 argument_list|(
@@ -4956,6 +4895,13 @@ literal|0
 condition|)
 break|break;
 block|}
+if|#
+directive|if
+literal|0
+comment|/* if we made n a delta, and if n is already at max 		 * depth, leaving it in the window is pointless.  we 		 * should evict it first. 		 * ... in theory only; somehow this makes things worse. 		 */
+block|if (entry->delta&& depth<= entry->depth) 			continue;
+endif|#
+directive|endif
 name|idx
 operator|++
 expr_stmt|;
