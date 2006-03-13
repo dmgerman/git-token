@@ -33,19 +33,6 @@ name|INITIAL_HASH_SIZE
 value|9
 end_define
 
-begin_define
-DECL|macro|HASHBASE
-define|#
-directive|define
-name|HASHBASE
-value|65537
-end_define
-
-begin_comment
-DECL|macro|HASHBASE
-comment|/* next_prime(2^16) */
-end_comment
-
 begin_comment
 comment|/* We leave more room in smaller hash but do not let it  * grow to have unused hole too much.  */
 end_comment
@@ -59,6 +46,18 @@ parameter_list|(
 name|sz_log2
 parameter_list|)
 value|((1<<(sz_log2))*(sz_log2-3)/(sz_log2))
+end_define
+
+begin_comment
+comment|/* A prime rather carefully chosen between 2^16..2^17, so that  * HASHBASE< INITIAL_FREE(17).  We want to keep the maximum hashtable  * size under the current 2<<17 maximum, which can hold this many  * different values before overflowing to hashtable of size 2<<18.  */
+end_comment
+
+begin_define
+DECL|macro|HASHBASE
+define|#
+directive|define
+name|HASHBASE
+value|107927
 end_define
 
 begin_struct
