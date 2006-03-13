@@ -30,7 +30,7 @@ DECL|macro|INITIAL_HASH_SIZE
 define|#
 directive|define
 name|INITIAL_HASH_SIZE
-value|10
+value|9
 end_define
 
 begin_define
@@ -45,6 +45,21 @@ begin_comment
 DECL|macro|HASHBASE
 comment|/* next_prime(2^16) */
 end_comment
+
+begin_comment
+comment|/* We leave more room in smaller hash but do not let it  * grow to have unused hole too much.  */
+end_comment
+
+begin_define
+DECL|macro|INITIAL_FREE
+define|#
+directive|define
+name|INITIAL_FREE
+parameter_list|(
+name|sz_log2
+parameter_list|)
+value|((1<<(sz_log2))*(sz_log2-3)/(sz_log2))
+end_define
 
 begin_struct
 DECL|struct|spanhash
@@ -255,7 +270,12 @@ name|new
 operator|->
 name|free
 operator|=
-name|osz
+name|INITIAL_FREE
+argument_list|(
+name|new
+operator|->
+name|alloc_log2
+argument_list|)
 expr_stmt|;
 name|memset
 argument_list|(
@@ -613,13 +633,10 @@ name|hash
 operator|->
 name|free
 operator|=
-operator|(
-literal|1
-operator|<<
+name|INITIAL_FREE
+argument_list|(
 name|i
-operator|)
-operator|/
-literal|2
+argument_list|)
 expr_stmt|;
 name|memset
 argument_list|(
