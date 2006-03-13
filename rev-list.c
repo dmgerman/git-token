@@ -1037,7 +1037,7 @@ condition|(
 operator|!
 name|revs
 operator|.
-name|paths
+name|prune_fn
 operator|||
 operator|(
 name|commit
@@ -1198,7 +1198,7 @@ condition|(
 operator|!
 name|revs
 operator|.
-name|paths
+name|prune_fn
 operator|||
 operator|(
 name|p
@@ -1252,7 +1252,7 @@ if|if
 condition|(
 name|revs
 operator|.
-name|paths
+name|prune_fn
 operator|&&
 operator|!
 operator|(
