@@ -1673,18 +1673,11 @@ name|minimum_score
 argument_list|)
 expr_stmt|;
 block|}
-name|free
+comment|/* We do not need the text anymore */
+name|diff_free_filespec_data
 argument_list|(
 name|two
-operator|->
-name|cnt_data
 argument_list|)
-expr_stmt|;
-name|two
-operator|->
-name|cnt_data
-operator|=
-name|NULL
 expr_stmt|;
 name|dst_cnt
 operator|++
