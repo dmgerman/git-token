@@ -1783,8 +1783,8 @@ end_function
 begin_function
 specifier|static
 name|int
-DECL|function|vasprintf
-name|vasprintf
+DECL|function|git_vasprintf
+name|git_vasprintf
 parameter_list|(
 name|char
 modifier|*
@@ -1991,7 +1991,7 @@ block|{
 name|int
 name|ret
 init|=
-name|vasprintf
+name|git_vasprintf
 argument_list|(
 name|str
 argument_list|,
