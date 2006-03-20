@@ -417,6 +417,7 @@ end_decl_stmt
 begin_decl_stmt
 DECL|variable|remote_dir_exists
 specifier|static
+name|signed
 name|char
 name|remote_dir_exists
 index|[
