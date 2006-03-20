@@ -57,6 +57,16 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|corrupt_object_found
+specifier|static
+name|int
+name|corrupt_object_found
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|no_pragma_header
 specifier|static
 name|struct
@@ -4492,6 +4502,9 @@ operator|!=
 name|Z_STREAM_END
 condition|)
 block|{
+name|corrupt_object_found
+operator|++
+expr_stmt|;
 name|ret
 operator|=
 name|error
@@ -5415,6 +5428,21 @@ expr_stmt|;
 name|http_cleanup
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|corrupt_object_found
+condition|)
+block|{
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"Some loose object were found to be corrupt, but they might be just\n"
+literal|"a false '404 Not Found' error message sent with incorrect HTTP\n"
+literal|"status code.  Suggest running git fsck-objects.\n"
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|rc
 return|;
