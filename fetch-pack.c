@@ -54,6 +54,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|fetch_all
+specifier|static
+name|int
+name|fetch_all
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|fetch_pack_usage
 specifier|static
 specifier|const
@@ -61,7 +69,7 @@ name|char
 name|fetch_pack_usage
 index|[]
 init|=
-literal|"git-fetch-pack [-q] [-v] [-k] [--thin] [--exec=upload-pack] [host:]directory<refs>..."
+literal|"git-fetch-pack [--all] [-q] [-v] [-k] [--thin] [--exec=upload-pack] [host:]directory<refs>..."
 decl_stmt|;
 end_decl_stmt
 
@@ -1386,6 +1394,10 @@ literal|5
 argument_list|)
 operator|)
 operator|||
+operator|(
+operator|!
+name|fetch_all
+operator|&&
 operator|!
 name|path_match
 argument_list|(
@@ -1397,6 +1409,7 @@ name|nr_match
 argument_list|,
 name|match
 argument_list|)
+operator|)
 condition|)
 block|{
 if|if
@@ -1941,6 +1954,12 @@ argument_list|)
 operator|<
 literal|0
 condition|)
+if|if
+condition|(
+operator|!
+name|keep_pack
+condition|)
+comment|/* When cloning, it is not unusual to have 			 * no common commit. 			 */
 name|fprintf
 argument_list|(
 name|stderr
@@ -2185,6 +2204,23 @@ argument_list|)
 condition|)
 block|{
 name|use_thin_pack
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+literal|"--all"
+argument_list|,
+name|arg
+argument_list|)
+condition|)
+block|{
+name|fetch_all
 operator|=
 literal|1
 expr_stmt|;
