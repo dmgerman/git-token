@@ -57,6 +57,15 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|warn_ambiguous_refs
+name|int
+name|warn_ambiguous_refs
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|repository_format_version
 name|int
 name|repository_format_version
