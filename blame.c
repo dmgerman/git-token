@@ -4247,7 +4247,7 @@ decl_stmt|;
 name|int
 name|max_digits
 decl_stmt|;
-name|size_t
+name|int
 name|longest_file
 decl_stmt|,
 name|longest_author
