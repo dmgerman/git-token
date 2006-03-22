@@ -4165,8 +4165,7 @@ condition|(
 name|patch
 operator|->
 name|is_new
-operator|!=
-operator|!
+operator|&&
 name|oldlines
 condition|)
 return|return
