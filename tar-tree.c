@@ -2134,6 +2134,11 @@ name|sha1
 index|[
 literal|20
 index|]
+decl_stmt|,
+name|tree_sha1
+index|[
+literal|20
+index|]
 decl_stmt|;
 name|struct
 name|commit
@@ -2238,7 +2243,7 @@ name|tree
 operator|.
 name|size
 argument_list|,
-name|NULL
+name|tree_sha1
 argument_list|)
 expr_stmt|;
 if|if
@@ -2276,12 +2281,7 @@ name|basedir
 condition|)
 name|write_header
 argument_list|(
-operator|(
-name|unsigned
-name|char
-operator|*
-operator|)
-literal|"0"
+name|tree_sha1
 argument_list|,
 name|TYPEFLAG_DIR
 argument_list|,
