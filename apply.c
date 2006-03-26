@@ -3471,8 +3471,7 @@ expr_stmt|;
 operator|*
 name|p2
 operator|=
-operator|*
-name|p1
+literal|1
 expr_stmt|;
 if|if
 condition|(
@@ -4408,6 +4407,16 @@ return|;
 break|break;
 block|}
 block|}
+if|if
+condition|(
+name|oldlines
+operator|||
+name|newlines
+condition|)
+return|return
+operator|-
+literal|1
+return|;
 comment|/* If a fragment ends with an incomplete line, we failed to include 	 * it in the above loop because we hit oldlines == newlines == 0 	 * before seeing it. 	 */
 if|if
 condition|(

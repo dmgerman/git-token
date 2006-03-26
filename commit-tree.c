@@ -718,6 +718,9 @@ argument_list|,
 name|comment
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
 name|write_sha1_file
 argument_list|(
 name|buffer
@@ -728,7 +731,8 @@ literal|"commit"
 argument_list|,
 name|commit_sha1
 argument_list|)
-expr_stmt|;
+condition|)
+block|{
 name|printf
 argument_list|(
 literal|"%s\n"
@@ -741,6 +745,11 @@ argument_list|)
 expr_stmt|;
 return|return
 literal|0
+return|;
+block|}
+else|else
+return|return
+literal|1
 return|;
 block|}
 end_function
