@@ -48,7 +48,7 @@ file|"revision.h"
 end_include
 
 begin_comment
-comment|/* bits #0-4 in revision.h */
+comment|/* bits #0-5 in revision.h */
 end_comment
 
 begin_define
@@ -56,7 +56,7 @@ DECL|macro|COUNTED
 define|#
 directive|define
 name|COUNTED
-value|(1u<<5)
+value|(1u<<6)
 end_define
 
 begin_decl_stmt
@@ -218,6 +218,21 @@ argument_list|(
 name|commit_prefix
 argument_list|,
 name|stdout
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|commit
+operator|->
+name|object
+operator|.
+name|flags
+operator|&
+name|BOUNDARY
+condition|)
+name|putchar
+argument_list|(
+literal|'-'
 argument_list|)
 expr_stmt|;
 name|fputs
