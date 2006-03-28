@@ -1490,6 +1490,12 @@ name|ctxlen
 operator|=
 literal|3
 expr_stmt|;
+name|xecfg
+operator|.
+name|flags
+operator|=
+name|XDL_EMIT_FUNCNAMES
+expr_stmt|;
 if|if
 condition|(
 operator|!

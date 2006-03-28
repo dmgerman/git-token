@@ -201,6 +201,14 @@ parameter_list|,
 name|long
 name|c2
 parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|func
+parameter_list|,
+name|long
+name|funclen
+parameter_list|,
 name|xdemitcb_t
 modifier|*
 name|ecb
