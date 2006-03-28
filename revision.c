@@ -2879,13 +2879,11 @@ block|}
 if|if
 condition|(
 operator|!
-name|strncmp
+name|strcmp
 argument_list|(
 name|arg
 argument_list|,
 literal|"--no-merges"
-argument_list|,
-literal|11
 argument_list|)
 condition|)
 block|{
