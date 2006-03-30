@@ -3167,6 +3167,7 @@ index|[
 literal|20
 index|]
 decl_stmt|;
+specifier|const
 name|char
 modifier|*
 name|next
@@ -3175,19 +3176,12 @@ name|dotdot
 operator|+
 literal|2
 decl_stmt|;
+specifier|const
 name|char
 modifier|*
 name|this
 init|=
 name|arg
-decl_stmt|;
-specifier|static
-specifier|const
-name|char
-name|HEAD
-index|[]
-init|=
-literal|"HEAD"
 decl_stmt|;
 operator|*
 name|dotdot
@@ -3202,7 +3196,7 @@ name|next
 condition|)
 name|next
 operator|=
-name|HEAD
+literal|"HEAD"
 expr_stmt|;
 if|if
 condition|(
@@ -3212,7 +3206,7 @@ name|arg
 condition|)
 name|this
 operator|=
-name|HEAD
+literal|"HEAD"
 expr_stmt|;
 if|if
 condition|(
