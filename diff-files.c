@@ -900,7 +900,7 @@ index|]
 operator|.
 name|mode
 operator|=
-name|DIFF_FILE_CANON_MODE
+name|canon_mode
 argument_list|(
 name|mode
 argument_list|)
@@ -1088,7 +1088,7 @@ argument_list|)
 expr_stmt|;
 name|newmode
 operator|=
-name|DIFF_FILE_CANON_MODE
+name|canon_mode
 argument_list|(
 name|st
 operator|.

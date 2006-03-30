@@ -451,6 +451,18 @@ block|}
 end_function
 
 begin_define
+DECL|macro|canon_mode
+define|#
+directive|define
+name|canon_mode
+parameter_list|(
+name|mode
+parameter_list|)
+define|\
+value|(S_ISREG(mode) ? (S_IFREG | ce_permissions(mode)) : \ 	S_ISLNK(mode) ? S_IFLNK : S_IFDIR)
+end_define
+
+begin_define
 DECL|macro|cache_entry_size
 define|#
 directive|define

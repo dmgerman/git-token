@@ -32,7 +32,7 @@ end_include
 begin_include
 include|#
 directive|include
-file|"diff.h"
+file|"tree-walk.h"
 end_include
 
 begin_include

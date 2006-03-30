@@ -3482,7 +3482,7 @@ name|elem
 operator|->
 name|mode
 operator|=
-name|DIFF_FILE_CANON_MODE
+name|canon_mode
 argument_list|(
 name|st
 operator|.
