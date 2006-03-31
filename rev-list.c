@@ -129,16 +129,6 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|show_parents
-specifier|static
-name|int
-name|show_parents
-init|=
-literal|0
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|variable|show_timestamp
 specifier|static
 name|int
@@ -251,7 +241,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|show_parents
+name|revs
+operator|.
+name|parents
 condition|)
 block|{
 name|struct
@@ -1833,23 +1825,6 @@ else|else
 name|commit_prefix
 operator|=
 literal|"commit "
-expr_stmt|;
-continue|continue;
-block|}
-if|if
-condition|(
-operator|!
-name|strcmp
-argument_list|(
-name|arg
-argument_list|,
-literal|"--parents"
-argument_list|)
-condition|)
-block|{
-name|show_parents
-operator|=
-literal|1
 expr_stmt|;
 continue|continue;
 block|}
