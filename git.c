@@ -969,7 +969,9 @@ DECL|function|list_common_cmds_help
 specifier|static
 name|void
 name|list_common_cmds_help
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 name|int
 name|i
