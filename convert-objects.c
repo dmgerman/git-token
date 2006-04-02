@@ -37,6 +37,24 @@ directive|include
 file|"cache.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"blob.h"
+end_include
+
+begin_include
+include|#
+directive|include
+file|"commit.h"
+end_include
+
+begin_include
+include|#
+directive|include
+file|"tree.h"
+end_include
+
 begin_struct
 DECL|struct|entry
 struct|struct
@@ -774,7 +792,7 @@ name|new
 argument_list|,
 name|newlen
 argument_list|,
-literal|"tree"
+name|tree_type
 argument_list|,
 name|result_sha1
 argument_list|)
@@ -1493,7 +1511,7 @@ name|new
 argument_list|,
 name|newlen
 argument_list|,
-literal|"commit"
+name|commit_type
 argument_list|,
 name|result_sha1
 argument_list|)
@@ -1709,7 +1727,7 @@ name|strcmp
 argument_list|(
 name|type
 argument_list|,
-literal|"blob"
+name|blob_type
 argument_list|)
 condition|)
 block|{
@@ -1719,7 +1737,7 @@ name|buffer
 argument_list|,
 name|size
 argument_list|,
-literal|"blob"
+name|blob_type
 argument_list|,
 name|entry
 operator|->
@@ -1735,7 +1753,7 @@ name|strcmp
 argument_list|(
 name|type
 argument_list|,
-literal|"tree"
+name|tree_type
 argument_list|)
 condition|)
 name|convert_tree
@@ -1757,7 +1775,7 @@ name|strcmp
 argument_list|(
 name|type
 argument_list|,
-literal|"commit"
+name|commit_type
 argument_list|)
 condition|)
 name|convert_commit

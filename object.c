@@ -1227,7 +1227,7 @@ name|strcmp
 argument_list|(
 name|type
 argument_list|,
-literal|"blob"
+name|blob_type
 argument_list|)
 condition|)
 block|{
@@ -1266,7 +1266,7 @@ name|strcmp
 argument_list|(
 name|type
 argument_list|,
-literal|"tree"
+name|tree_type
 argument_list|)
 condition|)
 block|{
@@ -1305,7 +1305,7 @@ name|strcmp
 argument_list|(
 name|type
 argument_list|,
-literal|"commit"
+name|commit_type
 argument_list|)
 condition|)
 block|{
@@ -1363,7 +1363,7 @@ name|strcmp
 argument_list|(
 name|type
 argument_list|,
-literal|"tag"
+name|tag_type
 argument_list|)
 condition|)
 block|{

@@ -21,6 +21,12 @@ directive|include
 file|"quote.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"blob.h"
+end_include
+
 begin_comment
 comment|//  --check turns on checking that the working tree matches the
 end_comment
@@ -6333,7 +6339,7 @@ name|desc
 operator|->
 name|size
 argument_list|,
-literal|"blob"
+name|blob_type
 argument_list|,
 name|sha1
 argument_list|,
@@ -8408,7 +8414,7 @@ name|buf
 argument_list|,
 name|size
 argument_list|,
-literal|"blob"
+name|blob_type
 argument_list|,
 name|ce
 operator|->

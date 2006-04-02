@@ -303,7 +303,7 @@ name|char
 modifier|*
 name|type
 init|=
-literal|"blob"
+name|blob_type
 decl_stmt|;
 if|if
 condition|(
@@ -344,7 +344,7 @@ return|;
 block|}
 name|type
 operator|=
-literal|"tree"
+name|tree_type
 expr_stmt|;
 block|}
 elseif|else

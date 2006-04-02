@@ -316,7 +316,7 @@ name|read_object_with_reference
 argument_list|(
 name|new
 argument_list|,
-literal|"tree"
+name|tree_type
 argument_list|,
 operator|&
 name|real
