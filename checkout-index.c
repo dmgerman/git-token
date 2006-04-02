@@ -543,7 +543,7 @@ name|cache_entry
 modifier|*
 name|last_ce
 init|=
-literal|0
+name|NULL
 decl_stmt|;
 for|for
 control|(
