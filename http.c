@@ -1136,6 +1136,15 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
+name|curl_easy_setopt
+argument_list|(
+name|result
+argument_list|,
+name|CURLOPT_USERAGENT
+argument_list|,
+name|GIT_USER_AGENT
+argument_list|)
+expr_stmt|;
 return|return
 name|result
 return|;
