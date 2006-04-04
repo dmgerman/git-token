@@ -26,6 +26,30 @@ end_include
 begin_include
 include|#
 directive|include
+file|"blob.h"
+end_include
+
+begin_include
+include|#
+directive|include
+file|"commit.h"
+end_include
+
+begin_include
+include|#
+directive|include
+file|"tag.h"
+end_include
+
+begin_include
+include|#
+directive|include
+file|"tree.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|<sys/time.h>
 end_include
 
@@ -861,7 +885,7 @@ name|OBJ_COMMIT
 case|:
 name|type
 operator|=
-literal|"commit"
+name|commit_type
 expr_stmt|;
 break|break;
 case|case
@@ -869,7 +893,7 @@ name|OBJ_TREE
 case|:
 name|type
 operator|=
-literal|"tree"
+name|tree_type
 expr_stmt|;
 break|break;
 case|case
@@ -877,7 +901,7 @@ name|OBJ_BLOB
 case|:
 name|type
 operator|=
-literal|"blob"
+name|blob_type
 expr_stmt|;
 break|break;
 case|case
@@ -885,7 +909,7 @@ name|OBJ_TAG
 case|:
 name|type
 operator|=
-literal|"tag"
+name|tag_type
 expr_stmt|;
 break|break;
 default|default:

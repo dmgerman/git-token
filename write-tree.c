@@ -9,6 +9,12 @@ directive|include
 file|"cache.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"tree.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|missing_ok
 specifier|static
@@ -395,7 +401,7 @@ name|buffer
 argument_list|,
 name|offset
 argument_list|,
-literal|"tree"
+name|tree_type
 argument_list|,
 name|returnsha1
 argument_list|)
