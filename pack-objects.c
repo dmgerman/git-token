@@ -5807,10 +5807,9 @@ expr_stmt|;
 if|if
 condition|(
 name|errno
-operator|==
+operator|!=
 name|EINTR
 condition|)
-continue|continue;
 name|die
 argument_list|(
 literal|"fgets: %s"
@@ -5821,6 +5820,12 @@ name|errno
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|clearerr
+argument_list|(
+name|stdin
+argument_list|)
+expr_stmt|;
+continue|continue;
 block|}
 if|if
 condition|(
