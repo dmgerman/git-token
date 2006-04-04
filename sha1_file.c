@@ -21,6 +21,30 @@ directive|include
 file|"pack.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"blob.h"
+end_include
+
+begin_include
+include|#
+directive|include
+file|"commit.h"
+end_include
+
+begin_include
+include|#
+directive|include
+file|"tag.h"
+end_include
+
+begin_include
+include|#
+directive|include
+file|"tree.h"
+end_include
+
 begin_ifndef
 ifndef|#
 directive|ifndef
@@ -4593,7 +4617,7 @@ name|strcpy
 argument_list|(
 name|type
 argument_list|,
-literal|"commit"
+name|commit_type
 argument_list|)
 expr_stmt|;
 break|break;
@@ -4604,7 +4628,7 @@ name|strcpy
 argument_list|(
 name|type
 argument_list|,
-literal|"tree"
+name|tree_type
 argument_list|)
 expr_stmt|;
 break|break;
@@ -4615,7 +4639,7 @@ name|strcpy
 argument_list|(
 name|type
 argument_list|,
-literal|"blob"
+name|blob_type
 argument_list|)
 expr_stmt|;
 break|break;
@@ -4626,7 +4650,7 @@ name|strcpy
 argument_list|(
 name|type
 argument_list|,
-literal|"tag"
+name|tag_type
 argument_list|)
 expr_stmt|;
 break|break;
@@ -4787,7 +4811,7 @@ name|strcpy
 argument_list|(
 name|type
 argument_list|,
-literal|"commit"
+name|commit_type
 argument_list|)
 expr_stmt|;
 break|break;
@@ -4798,7 +4822,7 @@ name|strcpy
 argument_list|(
 name|type
 argument_list|,
-literal|"tree"
+name|tree_type
 argument_list|)
 expr_stmt|;
 break|break;
@@ -4809,7 +4833,7 @@ name|strcpy
 argument_list|(
 name|type
 argument_list|,
-literal|"blob"
+name|blob_type
 argument_list|)
 expr_stmt|;
 break|break;
@@ -4820,7 +4844,7 @@ name|strcpy
 argument_list|(
 name|type
 argument_list|,
-literal|"tag"
+name|tag_type
 argument_list|)
 expr_stmt|;
 break|break;
@@ -5497,7 +5521,7 @@ name|strcpy
 argument_list|(
 name|type
 argument_list|,
-literal|"commit"
+name|commit_type
 argument_list|)
 expr_stmt|;
 break|break;
@@ -5508,7 +5532,7 @@ name|strcpy
 argument_list|(
 name|type
 argument_list|,
-literal|"tree"
+name|tree_type
 argument_list|)
 expr_stmt|;
 break|break;
@@ -5519,7 +5543,7 @@ name|strcpy
 argument_list|(
 name|type
 argument_list|,
-literal|"blob"
+name|blob_type
 argument_list|)
 expr_stmt|;
 break|break;
@@ -5530,7 +5554,7 @@ name|strcpy
 argument_list|(
 name|type
 argument_list|,
-literal|"tag"
+name|tag_type
 argument_list|)
 expr_stmt|;
 break|break;
@@ -6478,7 +6502,7 @@ name|strcmp
 argument_list|(
 name|type
 argument_list|,
-literal|"commit"
+name|commit_type
 argument_list|)
 condition|)
 name|ref_type
@@ -6493,7 +6517,7 @@ name|strcmp
 argument_list|(
 name|type
 argument_list|,
-literal|"tag"
+name|tag_type
 argument_list|)
 condition|)
 name|ref_type
@@ -8286,7 +8310,7 @@ name|type
 condition|)
 name|type
 operator|=
-literal|"blob"
+name|blob_type
 expr_stmt|;
 if|if
 condition|(
@@ -8438,7 +8462,7 @@ name|type
 condition|)
 name|type
 operator|=
-literal|"blob"
+name|blob_type
 expr_stmt|;
 if|if
 condition|(
@@ -8677,7 +8701,7 @@ name|st
 operator|->
 name|st_size
 argument_list|,
-literal|"blob"
+name|blob_type
 argument_list|,
 name|sha1
 argument_list|,
@@ -8699,7 +8723,7 @@ name|st
 operator|->
 name|st_size
 argument_list|,
-literal|"blob"
+name|blob_type
 argument_list|,
 name|sha1
 argument_list|)

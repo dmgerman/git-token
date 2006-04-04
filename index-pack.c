@@ -23,6 +23,30 @@ directive|include
 file|"csum-file.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"blob.h"
+end_include
+
+begin_include
+include|#
+directive|include
+file|"commit.h"
+end_include
+
+begin_include
+include|#
+directive|include
+file|"tag.h"
+end_include
+
+begin_include
+include|#
+directive|include
+file|"tree.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|index_pack_usage
 specifier|static
@@ -1236,7 +1260,7 @@ name|OBJ_COMMIT
 case|:
 name|type_str
 operator|=
-literal|"commit"
+name|commit_type
 expr_stmt|;
 break|break;
 case|case
@@ -1244,7 +1268,7 @@ name|OBJ_TREE
 case|:
 name|type_str
 operator|=
-literal|"tree"
+name|tree_type
 expr_stmt|;
 break|break;
 case|case
@@ -1252,7 +1276,7 @@ name|OBJ_BLOB
 case|:
 name|type_str
 operator|=
-literal|"blob"
+name|blob_type
 expr_stmt|;
 break|break;
 case|case
@@ -1260,7 +1284,7 @@ name|OBJ_TAG
 case|:
 name|type_str
 operator|=
-literal|"tag"
+name|tag_type
 expr_stmt|;
 break|break;
 default|default:

@@ -14,6 +14,30 @@ end_include
 begin_include
 include|#
 directive|include
+file|"blob.h"
+end_include
+
+begin_include
+include|#
+directive|include
+file|"commit.h"
+end_include
+
+begin_include
+include|#
+directive|include
+file|"tag.h"
+end_include
+
+begin_include
+include|#
+directive|include
+file|"tree.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"delta.h"
 end_include
 
@@ -3214,7 +3238,7 @@ name|strcmp
 argument_list|(
 name|type
 argument_list|,
-literal|"tree"
+name|tree_type
 argument_list|)
 condition|)
 block|{
@@ -3324,7 +3348,7 @@ name|read_object_with_reference
 argument_list|(
 name|sha1
 argument_list|,
-literal|"tree"
+name|tree_type
 argument_list|,
 operator|&
 name|tree
@@ -3554,7 +3578,7 @@ name|strcmp
 argument_list|(
 name|type
 argument_list|,
-literal|"commit"
+name|commit_type
 argument_list|)
 condition|)
 block|{
@@ -3573,7 +3597,7 @@ name|strcmp
 argument_list|(
 name|type
 argument_list|,
-literal|"tree"
+name|tree_type
 argument_list|)
 condition|)
 block|{
@@ -3592,7 +3616,7 @@ name|strcmp
 argument_list|(
 name|type
 argument_list|,
-literal|"blob"
+name|blob_type
 argument_list|)
 condition|)
 block|{
@@ -3611,7 +3635,7 @@ name|strcmp
 argument_list|(
 name|type
 argument_list|,
-literal|"tag"
+name|tag_type
 argument_list|)
 condition|)
 block|{

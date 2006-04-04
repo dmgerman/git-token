@@ -5,6 +5,12 @@ directive|include
 file|"cache.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"tag.h"
+end_include
+
 begin_comment
 comment|/*  * A signature file has a very simple fixed format: three lines  * of "object<sha1>" + "type<typename>" + "tag<tagname>",  * followed by some free-form signature that git itself doesn't  * care about, but that can be verified with gpg or similar.  *  * The first three lines are guaranteed to be at least 63 bytes:  * "object<sha1>\n" is 48 bytes, "type tag\n" at 9 bytes is the  * shortest possible type-line, and "tag .\n" at 6 bytes is the  * shortest single-character-tag line.   *  * We also artificially limit the size of the full object to 8kB.  * Just because I'm a lazy bastard, and if you can't fit a signature  * in that size, you're doing something wrong.  */
 end_comment
@@ -538,7 +544,7 @@ name|buffer
 argument_list|,
 name|size
 argument_list|,
-literal|"tag"
+name|tag_type
 argument_list|,
 name|result_sha1
 argument_list|)

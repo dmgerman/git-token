@@ -1353,7 +1353,7 @@ name|strcmp
 argument_list|(
 name|type
 argument_list|,
-literal|"blob"
+name|blob_type
 argument_list|)
 argument_list|)
 expr_stmt|;

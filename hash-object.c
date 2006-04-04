@@ -1,12 +1,18 @@
 begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_comment
-comment|/*  * GIT - The information manager from hell  *  * Copyright (C) Linus Torvalds, 2005  * Copyright (C) Junio C Hamano, 2005   */
+comment|/*  * GIT - The information manager from hell  *  * Copyright (C) Linus Torvalds, 2005  * Copyright (C) Junio C Hamano, 2005  */
 end_comment
 
 begin_include
 include|#
 directive|include
 file|"cache.h"
+end_include
+
+begin_include
+include|#
+directive|include
+file|"blob.h"
 end_include
 
 begin_function
@@ -193,7 +199,7 @@ name|char
 modifier|*
 name|type
 init|=
-literal|"blob"
+name|blob_type
 decl_stmt|;
 name|int
 name|write_object

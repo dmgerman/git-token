@@ -15,6 +15,12 @@ directive|include
 file|"diff.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"tree.h"
+end_include
+
 begin_comment
 comment|// What paths are we interested in?
 end_comment
@@ -876,7 +882,7 @@ name|strcmp
 argument_list|(
 name|type
 argument_list|,
-literal|"tree"
+name|tree_type
 argument_list|)
 condition|)
 name|die
@@ -1189,7 +1195,7 @@ name|read_object_with_reference
 argument_list|(
 name|old
 argument_list|,
-literal|"tree"
+name|tree_type
 argument_list|,
 operator|&
 name|t1
@@ -1220,7 +1226,7 @@ name|read_object_with_reference
 argument_list|(
 name|new
 argument_list|,
-literal|"tree"
+name|tree_type
 argument_list|,
 operator|&
 name|t2
