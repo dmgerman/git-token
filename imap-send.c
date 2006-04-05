@@ -7651,6 +7651,31 @@ return|return
 literal|1
 return|;
 block|}
+name|total
+operator|=
+name|count_messages
+argument_list|(
+operator|&
+name|all_msgs
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|total
+condition|)
+block|{
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"no messages to send\n"
+argument_list|)
+expr_stmt|;
+return|return
+literal|1
+return|;
+block|}
 comment|/* write it to the imap server */
 name|ctx
 operator|=
@@ -7677,14 +7702,6 @@ return|return
 literal|1
 return|;
 block|}
-name|total
-operator|=
-name|count_messages
-argument_list|(
-operator|&
-name|all_msgs
-argument_list|)
-expr_stmt|;
 name|fprintf
 argument_list|(
 name|stderr
