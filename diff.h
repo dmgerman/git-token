@@ -633,6 +633,14 @@ name|DIFF_PICKAXE_ALL
 value|1
 end_define
 
+begin_define
+DECL|macro|DIFF_PICKAXE_REGEX
+define|#
+directive|define
+name|DIFF_PICKAXE_REGEX
+value|2
+end_define
+
 begin_function_decl
 specifier|extern
 name|void
