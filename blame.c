@@ -4601,6 +4601,12 @@ name|topo_getter
 expr_stmt|;
 name|rev
 operator|.
+name|parents
+operator|=
+literal|1
+expr_stmt|;
+name|rev
+operator|.
 name|limited
 operator|=
 literal|1
