@@ -1104,6 +1104,8 @@ name|bbest1
 decl_stmt|;
 name|fbest
 operator|=
+name|fbest1
+operator|=
 operator|-
 literal|1
 expr_stmt|;
@@ -1178,6 +1180,8 @@ expr_stmt|;
 block|}
 block|}
 name|bbest
+operator|=
+name|bbest1
 operator|=
 name|XDL_LINE_MAX
 expr_stmt|;
@@ -1559,6 +1563,16 @@ decl_stmt|;
 name|xdpsplit_t
 name|spl
 decl_stmt|;
+name|spl
+operator|.
+name|i1
+operator|=
+name|spl
+operator|.
+name|i2
+operator|=
+literal|0
+expr_stmt|;
 comment|/* 		 * Divide ... 		 */
 if|if
 condition|(
