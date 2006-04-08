@@ -85,6 +85,7 @@ literal|"    --objects | --objects-edge\n"
 literal|"    --unpacked\n"
 literal|"    --header | --pretty\n"
 literal|"    --abbrev=nr | --no-abbrev\n"
+literal|"    --abbrev-commit\n"
 literal|"  special purpose:\n"
 literal|"    --bisect"
 decl_stmt|;
@@ -125,6 +126,16 @@ name|int
 name|abbrev
 init|=
 name|DEFAULT_ABBREV
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|abbrev_commit
+specifier|static
+name|int
+name|abbrev_commit
+init|=
+literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -225,6 +236,29 @@ argument_list|(
 literal|'-'
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|abbrev_commit
+operator|&&
+name|abbrev
+condition|)
+name|fputs
+argument_list|(
+name|find_unique_abbrev
+argument_list|(
+name|commit
+operator|->
+name|object
+operator|.
+name|sha1
+argument_list|,
+name|abbrev
+argument_list|)
+argument_list|,
+name|stdout
+argument_list|)
+expr_stmt|;
+else|else
 name|fputs
 argument_list|(
 name|sha1_to_hex
@@ -1727,6 +1761,40 @@ block|{
 name|abbrev
 operator|=
 literal|0
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--abbrev"
+argument_list|)
+condition|)
+block|{
+name|abbrev
+operator|=
+name|DEFAULT_ABBREV
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--abbrev-commit"
+argument_list|)
+condition|)
+block|{
+name|abbrev_commit
+operator|=
+literal|1
 expr_stmt|;
 continue|continue;
 block|}
