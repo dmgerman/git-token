@@ -65,6 +65,19 @@ name|BOUNDARY
 value|(1u<<5)
 end_define
 
+begin_define
+DECL|macro|ADDED
+define|#
+directive|define
+name|ADDED
+value|(1u<<6)
+end_define
+
+begin_comment
+DECL|macro|ADDED
+comment|/* Parents already parsed and added? */
+end_comment
+
 begin_struct_decl
 struct_decl|struct
 name|rev_info
