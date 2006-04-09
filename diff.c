@@ -743,12 +743,25 @@ modifier|*
 name|two
 parameter_list|)
 block|{
-comment|/* Use temp[i].name as input, name_a and name_b as labels */
 name|int
 name|lc_a
 decl_stmt|,
 name|lc_b
 decl_stmt|;
+name|diff_populate_filespec
+argument_list|(
+name|one
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+name|diff_populate_filespec
+argument_list|(
+name|two
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
 name|lc_a
 operator|=
 name|count_lines
