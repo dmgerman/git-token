@@ -602,6 +602,8 @@ name|prefix
 argument_list|,
 name|argv
 argument_list|)
+argument_list|,
+name|opt
 argument_list|)
 expr_stmt|;
 name|diff_setup_done
