@@ -7205,6 +7205,13 @@ name|options
 argument_list|)
 expr_stmt|;
 block|}
+name|putchar
+argument_list|(
+name|options
+operator|->
+name|line_termination
+argument_list|)
+expr_stmt|;
 block|}
 for|for
 control|(
