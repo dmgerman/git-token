@@ -4911,6 +4911,13 @@ name|output_format
 operator|=
 name|saved_format
 expr_stmt|;
+name|putchar
+argument_list|(
+name|opt
+operator|->
+name|line_termination
+argument_list|)
+expr_stmt|;
 block|}
 for|for
 control|(
