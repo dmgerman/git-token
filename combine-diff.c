@@ -1507,7 +1507,7 @@ operator|=
 literal|1
 init|;
 name|lno
-operator|<
+operator|<=
 name|cnt
 condition|;
 name|lno
@@ -1567,6 +1567,10 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+name|lno
+operator|<
+name|cnt
+operator|&&
 operator|!
 operator|(
 name|sline
@@ -1747,7 +1751,7 @@ comment|/* We have examined up to i-1 and are about to look at i. 	 * Find next 
 while|while
 condition|(
 name|i
-operator|<
+operator|<=
 name|cnt
 condition|)
 if|if
@@ -1785,7 +1789,7 @@ name|i
 operator|++
 expr_stmt|;
 return|return
-name|cnt
+name|i
 return|;
 block|}
 end_function
@@ -1854,7 +1858,7 @@ expr_stmt|;
 if|if
 condition|(
 name|cnt
-operator|<=
+operator|<
 name|i
 condition|)
 return|return
@@ -1863,7 +1867,7 @@ return|;
 while|while
 condition|(
 name|i
-operator|<
+operator|<=
 name|cnt
 condition|)
 block|{
@@ -1927,7 +1931,7 @@ expr_stmt|;
 if|if
 condition|(
 name|cnt
-operator|<=
+operator|<
 name|j
 condition|)
 break|break;
@@ -2008,6 +2012,8 @@ operator|+
 name|context
 operator|<
 name|cnt
+operator|+
+literal|1
 operator|)
 condition|?
 name|j
@@ -2015,6 +2021,8 @@ operator|+
 name|context
 else|:
 name|cnt
+operator|+
+literal|1
 expr_stmt|;
 while|while
 condition|(
@@ -2099,7 +2107,7 @@ operator|=
 literal|0
 init|;
 name|i
-operator|<
+operator|<=
 name|cnt
 condition|;
 name|i
@@ -2163,7 +2171,7 @@ expr_stmt|;
 while|while
 condition|(
 name|i
-operator|<
+operator|<=
 name|cnt
 condition|)
 block|{
@@ -2182,7 +2190,7 @@ decl_stmt|;
 while|while
 condition|(
 name|i
-operator|<
+operator|<=
 name|cnt
 operator|&&
 operator|!
@@ -2203,7 +2211,7 @@ expr_stmt|;
 if|if
 condition|(
 name|cnt
-operator|<=
+operator|<
 name|i
 condition|)
 break|break;
@@ -2221,7 +2229,7 @@ operator|+
 literal|1
 init|;
 name|j
-operator|<
+operator|<=
 name|cnt
 condition|;
 name|j
@@ -2275,6 +2283,8 @@ operator|+
 name|context
 operator|<
 name|cnt
+operator|+
+literal|1
 operator|)
 condition|?
 operator|(
@@ -2284,6 +2294,8 @@ name|context
 operator|)
 else|:
 name|cnt
+operator|+
+literal|1
 expr_stmt|;
 while|while
 condition|(
@@ -2640,10 +2652,13 @@ decl_stmt|;
 name|int
 name|hunk_end
 decl_stmt|;
+name|int
+name|rlines
+decl_stmt|;
 while|while
 condition|(
 name|lno
-operator|<
+operator|<=
 name|cnt
 operator|&&
 operator|!
@@ -2664,10 +2679,12 @@ expr_stmt|;
 if|if
 condition|(
 name|cnt
-operator|<=
+operator|<
 name|lno
 condition|)
 break|break;
+else|else
+block|{
 for|for
 control|(
 name|hunk_end
@@ -2677,7 +2694,7 @@ operator|+
 literal|1
 init|;
 name|hunk_end
-operator|<
+operator|<=
 name|cnt
 condition|;
 name|hunk_end
@@ -2698,6 +2715,23 @@ name|mark
 operator|)
 condition|)
 break|break;
+block|}
+name|rlines
+operator|=
+name|hunk_end
+operator|-
+name|lno
+expr_stmt|;
+if|if
+condition|(
+name|cnt
+operator|<
+name|hunk_end
+condition|)
+name|rlines
+operator|--
+expr_stmt|;
+comment|/* pointing at the last delete hunk */
 for|for
 control|(
 name|i
@@ -2750,9 +2784,7 @@ name|lno
 operator|+
 literal|1
 argument_list|,
-name|hunk_end
-operator|-
-name|lno
+name|rlines
 argument_list|)
 expr_stmt|;
 for|for
@@ -2869,6 +2901,13 @@ operator|->
 name|next
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|cnt
+operator|<
+name|lno
+condition|)
+break|break;
 name|p_mask
 operator|=
 literal|1
@@ -2983,7 +3022,7 @@ operator|=
 literal|0
 init|;
 name|lno
-operator|<
+operator|<=
 name|cnt
 condition|;
 name|lno
@@ -3413,7 +3452,7 @@ name|xcalloc
 argument_list|(
 name|cnt
 operator|+
-literal|1
+literal|2
 argument_list|,
 sizeof|sizeof
 argument_list|(
@@ -3444,6 +3483,8 @@ init|;
 name|lno
 operator|<=
 name|cnt
+operator|+
+literal|1
 condition|;
 name|lno
 operator|++
@@ -3589,6 +3630,7 @@ name|size
 operator|=
 name|result_size
 expr_stmt|;
+comment|/* Even p_lno[cnt+1] is valid -- that is for the end line number 	 * for deletion hunk at the end. 	 */
 name|sline
 index|[
 literal|0
@@ -3601,7 +3643,7 @@ argument_list|(
 operator|(
 name|cnt
 operator|+
-literal|1
+literal|2
 operator|)
 operator|*
 name|num_parent
@@ -3620,7 +3662,7 @@ operator|=
 literal|0
 init|;
 name|lno
-operator|<
+operator|<=
 name|cnt
 condition|;
 name|lno
