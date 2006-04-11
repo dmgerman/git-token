@@ -117,13 +117,6 @@ DECL|struct|diff_options
 struct|struct
 name|diff_options
 block|{
-DECL|member|paths
-specifier|const
-name|char
-modifier|*
-modifier|*
-name|paths
-decl_stmt|;
 DECL|member|filter
 specifier|const
 name|char
@@ -145,6 +138,11 @@ decl_stmt|;
 DECL|member|recursive
 name|unsigned
 name|recursive
+range|:
+literal|1
+decl_stmt|,
+DECL|member|with_raw
+name|with_raw
 range|:
 literal|1
 decl_stmt|,
