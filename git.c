@@ -98,13 +98,13 @@ end_include
 begin_include
 include|#
 directive|include
-file|"revision.h"
+file|"diff.h"
 end_include
 
 begin_include
 include|#
 directive|include
-file|"diff.h"
+file|"revision.h"
 end_include
 
 begin_include

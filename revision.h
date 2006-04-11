@@ -223,6 +223,12 @@ name|unsigned
 name|long
 name|min_age
 decl_stmt|;
+comment|/* paths limiting */
+DECL|member|diffopt
+name|struct
+name|diff_options
+name|diffopt
+decl_stmt|;
 DECL|member|topo_setter
 name|topo_sort_set_fn_t
 name|topo_setter
@@ -269,6 +275,10 @@ name|int
 name|rev_same_tree_as_empty
 parameter_list|(
 name|struct
+name|rev_info
+modifier|*
+parameter_list|,
+name|struct
 name|tree
 modifier|*
 name|t1
@@ -281,6 +291,10 @@ specifier|extern
 name|int
 name|rev_compare_tree
 parameter_list|(
+name|struct
+name|rev_info
+modifier|*
+parameter_list|,
 name|struct
 name|tree
 modifier|*
