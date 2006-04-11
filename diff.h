@@ -141,6 +141,11 @@ name|recursive
 range|:
 literal|1
 decl_stmt|,
+DECL|member|with_raw
+name|with_raw
+range|:
+literal|1
+decl_stmt|,
 DECL|member|tree_in_recursive
 name|tree_in_recursive
 range|:
