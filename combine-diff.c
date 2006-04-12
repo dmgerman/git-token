@@ -2649,10 +2649,12 @@ index|[
 name|lno
 index|]
 decl_stmt|;
-name|int
+name|unsigned
+name|long
 name|hunk_end
 decl_stmt|;
-name|int
+name|unsigned
+name|long
 name|rlines
 decl_stmt|;
 while|while
