@@ -2187,6 +2187,12 @@ operator|*
 name|msg
 operator|++
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|c
+condition|)
+break|break;
 name|ret
 operator|++
 expr_stmt|;
@@ -2197,14 +2203,6 @@ operator|==
 literal|'\n'
 condition|)
 break|break;
-if|if
-condition|(
-operator|!
-name|c
-condition|)
-return|return
-literal|0
-return|;
 block|}
 return|return
 name|ret
