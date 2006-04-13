@@ -1563,6 +1563,15 @@ argument_list|(
 name|name
 argument_list|)
 expr_stmt|;
+name|data
+operator|->
+name|files
+index|[
+name|i
+index|]
+operator|->
+name|name
+operator|=
 name|name
 operator|=
 name|qname
@@ -1675,7 +1684,9 @@ argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
-continue|continue;
+goto|goto
+name|free_diffstat_file
+goto|;
 block|}
 elseif|else
 if|if
@@ -1690,7 +1701,9 @@ block|{
 name|total_files
 operator|--
 expr_stmt|;
-continue|continue;
+goto|goto
+name|free_diffstat_file
+goto|;
 block|}
 name|add
 operator|=
@@ -1756,7 +1769,6 @@ operator|-
 name|add
 expr_stmt|;
 block|}
-comment|/* TODO: binary */
 name|printf
 argument_list|(
 literal|" %s%-*s |%5d %.*s%.*s\n"
@@ -1780,8 +1792,17 @@ argument_list|,
 name|minuses
 argument_list|)
 expr_stmt|;
+name|free_diffstat_file
+label|:
 name|free
 argument_list|(
+name|data
+operator|->
+name|files
+index|[
+name|i
+index|]
+operator|->
 name|name
 argument_list|)
 expr_stmt|;
