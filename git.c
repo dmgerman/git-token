@@ -2056,11 +2056,13 @@ condition|)
 block|{
 if|if
 condition|(
+name|shown
+operator|&&
+name|do_diff
+operator|&&
 name|commit_format
 operator|!=
 name|CMIT_FMT_ONELINE
-operator|&&
-name|shown
 condition|)
 name|putchar
 argument_list|(
