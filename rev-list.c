@@ -1988,6 +1988,16 @@ name|track_object_refs
 operator|=
 literal|0
 expr_stmt|;
+if|if
+condition|(
+name|bisect_list
+condition|)
+name|revs
+operator|.
+name|limited
+operator|=
+literal|1
+expr_stmt|;
 name|prepare_revision_walk
 argument_list|(
 operator|&
