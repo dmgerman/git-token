@@ -43,8 +43,6 @@ decl_stmt|;
 if|if
 condition|(
 name|len
-operator|>
-literal|1
 operator|&&
 name|line
 index|[
@@ -56,6 +54,15 @@ operator|==
 literal|'\n'
 condition|)
 block|{
+if|if
+condition|(
+name|len
+operator|==
+literal|1
+condition|)
+return|return
+literal|0
+return|;
 do|do
 block|{
 name|unsigned
