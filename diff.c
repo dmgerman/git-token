@@ -2508,13 +2508,13 @@ name|xecfg
 operator|.
 name|ctxlen
 operator|=
-literal|3
+literal|0
 expr_stmt|;
 name|xecfg
 operator|.
 name|flags
 operator|=
-name|XDL_EMIT_FUNCNAMES
+literal|0
 expr_stmt|;
 name|ecb
 operator|.
