@@ -147,11 +147,6 @@ name|struct
 name|log_tree_opt
 name|logopt
 decl_stmt|;
-DECL|member|commit_format
-name|enum
-name|cmit_fmt
-name|commit_format
-decl_stmt|;
 DECL|member|abbrev
 name|int
 name|abbrev
