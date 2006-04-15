@@ -391,6 +391,12 @@ name|nr_sha1
 operator|=
 literal|0
 expr_stmt|;
+name|opt
+operator|->
+name|abbrev
+operator|=
+literal|0
+expr_stmt|;
 name|argc
 operator|=
 name|setup_revisions
