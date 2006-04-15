@@ -1950,7 +1950,6 @@ name|commits
 expr_stmt|;
 if|if
 condition|(
-operator|(
 operator|!
 name|list
 operator|&&
@@ -1975,11 +1974,6 @@ name|revs
 operator|.
 name|pending_objects
 operator|)
-operator|)
-operator|||
-name|revs
-operator|.
-name|diff
 condition|)
 name|usage
 argument_list|(
