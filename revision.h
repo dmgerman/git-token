@@ -153,6 +153,11 @@ name|no_merges
 range|:
 literal|1
 decl_stmt|,
+DECL|member|no_walk
+name|no_walk
+range|:
+literal|1
+decl_stmt|,
 DECL|member|remove_empty_trees
 name|remove_empty_trees
 range|:
