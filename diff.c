@@ -1388,11 +1388,6 @@ operator|==
 literal|0
 condition|)
 return|return;
-name|printf
-argument_list|(
-literal|"---\n"
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|i
