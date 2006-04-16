@@ -1646,6 +1646,12 @@ name|shown
 init|=
 literal|0
 decl_stmt|;
+name|init_revisions
+argument_list|(
+operator|&
+name|rev
+argument_list|)
+expr_stmt|;
 name|rev
 operator|.
 name|abbrev

@@ -2311,13 +2311,6 @@ modifier|*
 name|revs
 parameter_list|)
 block|{
-name|unsigned
-name|abbrev
-init|=
-name|revs
-operator|->
-name|abbrev
-decl_stmt|;
 name|memset
 argument_list|(
 name|revs
@@ -2335,7 +2328,7 @@ name|revs
 operator|->
 name|abbrev
 operator|=
-name|abbrev
+name|DEFAULT_ABBREV
 expr_stmt|;
 name|revs
 operator|->
@@ -2505,11 +2498,6 @@ name|left
 init|=
 literal|1
 decl_stmt|;
-name|init_revisions
-argument_list|(
-name|revs
-argument_list|)
-expr_stmt|;
 comment|/* First, search for "--" */
 name|seen_dashdash
 operator|=

@@ -391,6 +391,11 @@ name|nr_sha1
 operator|=
 literal|0
 expr_stmt|;
+name|init_revisions
+argument_list|(
+name|opt
+argument_list|)
+expr_stmt|;
 name|opt
 operator|->
 name|abbrev
