@@ -291,6 +291,12 @@ name|char
 modifier|*
 name|header
 decl_stmt|;
+DECL|member|use_precomputed_header
+specifier|const
+name|char
+modifier|*
+name|use_precomputed_header
+decl_stmt|;
 comment|/* special limits */
 DECL|member|max_count
 name|int
