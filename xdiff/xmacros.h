@@ -101,6 +101,19 @@ value|do { if (p) { xdl_free(p); (p) = NULL; } } while (0)
 end_define
 
 begin_define
+DECL|macro|XDL_RECMATCH
+define|#
+directive|define
+name|XDL_RECMATCH
+parameter_list|(
+name|r1
+parameter_list|,
+name|r2
+parameter_list|)
+value|((r1)->size == (r2)->size&& memcmp((r1)->ptr, (r2)->ptr, (r1)->size) == 0)
+end_define
+
+begin_define
 DECL|macro|XDL_LE32_PUT
 define|#
 directive|define
