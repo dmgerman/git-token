@@ -1707,6 +1707,13 @@ argument_list|,
 name|commit
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|revs
+operator|->
+name|no_walk
+condition|)
+return|return;
 name|parent
 operator|=
 name|commit
@@ -3641,6 +3648,13 @@ modifier|*
 name|revs
 parameter_list|)
 block|{
+if|if
+condition|(
+name|revs
+operator|->
+name|no_walk
+condition|)
+return|return;
 name|sort_by_date
 argument_list|(
 operator|&
