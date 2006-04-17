@@ -824,7 +824,7 @@ operator|==
 literal|'#'
 condition|)
 return|return
-literal|0
+name|NULL
 return|;
 if|if
 condition|(
@@ -1032,6 +1032,12 @@ argument_list|,
 name|len
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|graft
+condition|)
+continue|continue;
 if|if
 condition|(
 name|register_commit_graft
