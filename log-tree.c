@@ -321,6 +321,14 @@ name|opt
 operator|->
 name|loginfo
 argument_list|,
+name|opt
+operator|->
+name|diffopt
+operator|.
+name|with_stat
+condition|?
+literal|"---\n"
+else|:
 literal|"\n"
 argument_list|)
 expr_stmt|;
