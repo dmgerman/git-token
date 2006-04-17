@@ -1717,6 +1717,20 @@ operator|=
 literal|"commit "
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|revs
+operator|.
+name|verbose_header
+condition|)
+comment|/* Only --header was specified */
+name|revs
+operator|.
+name|commit_format
+operator|=
+name|CMIT_FMT_RAW
+expr_stmt|;
 name|list
 operator|=
 name|revs
