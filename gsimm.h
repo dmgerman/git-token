@@ -37,10 +37,10 @@ comment|/* The MIN_FILE_SIZE indicates the absolute minimal file size that    ca
 end_comment
 
 begin_define
-DECL|macro|MIN_FILE_SIZE
+DECL|macro|GB_SIMM_MIN_FILE_SIZE
 define|#
 directive|define
-name|MIN_FILE_SIZE
+name|GB_SIMM_MIN_FILE_SIZE
 value|(3 * MD_LENGTH + 2 * (RABIN_WINDOW_SIZE - 1))
 end_define
 
@@ -49,10 +49,10 @@ comment|/* Limit matching algorithm to files less than 256 MB, so we can use    
 end_comment
 
 begin_define
-DECL|macro|MAX_FILE_SIZE
+DECL|macro|GB_SIMM_MAX_FILE_SIZE
 define|#
 directive|define
-name|MAX_FILE_SIZE
+name|GB_SIMM_MAX_FILE_SIZE
 value|(256*1024*1024 - 1)
 end_define
 
@@ -70,6 +70,21 @@ parameter_list|,
 name|u_char
 modifier|*
 name|md
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|double
+name|gb_simm_score
+parameter_list|(
+name|u_char
+modifier|*
+name|l
+parameter_list|,
+name|u_char
+modifier|*
+name|r
 parameter_list|)
 function_decl|;
 end_function_decl
