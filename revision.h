@@ -66,11 +66,19 @@ value|(1u<<5)
 end_define
 
 begin_define
+DECL|macro|BOUNDARY_SHOW
+define|#
+directive|define
+name|BOUNDARY_SHOW
+value|(1u<<6)
+end_define
+
+begin_define
 DECL|macro|ADDED
 define|#
 directive|define
 name|ADDED
-value|(1u<<6)
+value|(1u<<7)
 end_define
 
 begin_comment
