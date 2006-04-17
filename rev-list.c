@@ -54,7 +54,7 @@ file|"revision.h"
 end_include
 
 begin_comment
-comment|/* bits #0-6 in revision.h */
+comment|/* bits #0-15 in revision.h */
 end_comment
 
 begin_define
@@ -62,7 +62,7 @@ DECL|macro|COUNTED
 define|#
 directive|define
 name|COUNTED
-value|(1u<<7)
+value|(1u<<16)
 end_define
 
 begin_decl_stmt
