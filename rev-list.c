@@ -135,6 +135,16 @@ literal|0
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|header_prefix
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|header_prefix
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|show_commit
 specifier|static
@@ -162,15 +172,10 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|*
-name|revs
-operator|.
 name|header_prefix
 condition|)
 name|fputs
 argument_list|(
-name|revs
-operator|.
 name|header_prefix
 argument_list|,
 name|stdout
@@ -1703,15 +1708,11 @@ name|commit_format
 operator|==
 name|CMIT_FMT_ONELINE
 condition|)
-name|revs
-operator|.
 name|header_prefix
 operator|=
 literal|""
 expr_stmt|;
 else|else
-name|revs
-operator|.
 name|header_prefix
 operator|=
 literal|"commit "

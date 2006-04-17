@@ -24,6 +24,12 @@ end_include
 
 begin_struct_decl
 struct_decl|struct
+name|rev_info
+struct_decl|;
+end_struct_decl
+
+begin_struct_decl
+struct_decl|struct
 name|diff_options
 struct_decl|;
 end_struct_decl
@@ -402,7 +408,7 @@ end_define
 
 begin_function_decl
 specifier|extern
-name|int
+name|void
 name|show_combined_diff
 parameter_list|(
 name|struct
@@ -416,13 +422,8 @@ parameter_list|,
 name|int
 name|dense
 parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|header
-parameter_list|,
 name|struct
-name|diff_options
+name|rev_info
 modifier|*
 parameter_list|)
 function_decl|;
@@ -430,9 +431,7 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-specifier|const
-name|char
-modifier|*
+name|void
 name|diff_tree_combined_merge
 parameter_list|(
 specifier|const
@@ -441,16 +440,11 @@ name|char
 modifier|*
 name|sha1
 parameter_list|,
-specifier|const
-name|char
-modifier|*
-parameter_list|,
 name|int
 parameter_list|,
 name|struct
-name|diff_options
+name|rev_info
 modifier|*
-name|opt
 parameter_list|)
 function_decl|;
 end_function_decl

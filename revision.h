@@ -84,6 +84,12 @@ name|rev_info
 struct_decl|;
 end_struct_decl
 
+begin_struct_decl
+struct_decl|struct
+name|log_info
+struct_decl|;
+end_struct_decl
+
 begin_typedef
 DECL|typedef|prune_fn_t
 typedef|typedef
@@ -262,9 +268,14 @@ range|:
 literal|1
 decl_stmt|;
 comment|/* Format info */
-DECL|member|abbrev_commit
+DECL|member|shown_one
 name|unsigned
 name|int
+name|shown_one
+range|:
+literal|1
+decl_stmt|,
+DECL|member|abbrev_commit
 name|abbrev_commit
 range|:
 literal|1
@@ -279,23 +290,11 @@ name|enum
 name|cmit_fmt
 name|commit_format
 decl_stmt|;
-DECL|member|header_prefix
-specifier|const
-name|char
+DECL|member|loginfo
+name|struct
+name|log_info
 modifier|*
-name|header_prefix
-decl_stmt|;
-DECL|member|header
-specifier|const
-name|char
-modifier|*
-name|header
-decl_stmt|;
-DECL|member|use_precomputed_header
-specifier|const
-name|char
-modifier|*
-name|use_precomputed_header
+name|loginfo
 decl_stmt|;
 comment|/* special limits */
 DECL|member|max_count
