@@ -822,6 +822,13 @@ literal|0
 index|]
 operator|==
 literal|'#'
+operator|||
+name|buf
+index|[
+literal|0
+index|]
+operator|==
+literal|'\0'
 condition|)
 return|return
 name|NULL
