@@ -575,10 +575,6 @@ name|EMITQ
 argument_list|()
 expr_stmt|;
 break|break;
-case|case
-literal|' '
-case|:
-break|break;
 default|default:
 comment|/* octal */
 name|EMITQ
