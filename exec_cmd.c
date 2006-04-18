@@ -141,8 +141,6 @@ decl_stmt|;
 name|int
 name|len
 decl_stmt|,
-name|err
-decl_stmt|,
 name|i
 decl_stmt|;
 specifier|const
@@ -379,10 +377,6 @@ name|argv
 argument_list|,
 name|environ
 argument_list|)
-expr_stmt|;
-name|err
-operator|=
-name|errno
 expr_stmt|;
 name|argv
 index|[
