@@ -1587,14 +1587,6 @@ return|;
 block|}
 end_function
 
-begin_define
-DECL|macro|LOGSIZE
-define|#
-directive|define
-name|LOGSIZE
-value|(65536)
-end_define
-
 begin_function
 DECL|function|cmd_log_wc
 specifier|static
