@@ -89,6 +89,11 @@ name|abbrev
 else|:
 literal|40
 decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|extra
+decl_stmt|;
 name|int
 name|len
 decl_stmt|;
@@ -120,7 +125,28 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-comment|/* 	 * Whitespace between commit messages, unless we are oneline 	 */
+comment|/* 	 * The "oneline" format has several special cases: 	 *  - The pretty-printed commit lacks a newline at the end 	 *    of the buffer, but we do want to make sure that we 	 *    have a newline there. If the separator isn't already 	 *    a newline, add an extra one. 	 *  - unlike other log messages, the one-line format does 	 *    not have an empty line between entries. 	 */
+name|extra
+operator|=
+literal|""
+expr_stmt|;
+if|if
+condition|(
+operator|*
+name|sep
+operator|!=
+literal|'\n'
+operator|&&
+name|opt
+operator|->
+name|commit_format
+operator|==
+name|CMIT_FMT_ONELINE
+condition|)
+name|extra
+operator|=
+literal|"\n"
+expr_stmt|;
 if|if
 condition|(
 name|opt
@@ -230,9 +256,11 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"%s%s"
+literal|"%s%s%s"
 argument_list|,
 name|this_header
+argument_list|,
+name|extra
 argument_list|,
 name|sep
 argument_list|)
