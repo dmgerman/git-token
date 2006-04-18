@@ -5695,12 +5695,6 @@ name|output_format
 operator|==
 name|DIFF_FORMAT_DIFFSTAT
 operator|)
-operator|||
-operator|(
-name|options
-operator|->
-name|with_stat
-operator|)
 condition|)
 name|options
 operator|->

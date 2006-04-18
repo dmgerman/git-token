@@ -14239,6 +14239,12 @@ name|commit_argc
 operator|++
 expr_stmt|;
 block|}
+name|init_revisions
+argument_list|(
+operator|&
+name|revs
+argument_list|)
+expr_stmt|;
 name|setup_revisions
 argument_list|(
 name|commit_argc
