@@ -84,6 +84,14 @@ condition|(
 operator|!
 operator|*
 name|pager
+operator|||
+operator|!
+name|strcmp
+argument_list|(
+name|pager
+argument_list|,
+literal|"cat"
+argument_list|)
 condition|)
 return|return;
 if|if
