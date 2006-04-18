@@ -15,6 +15,18 @@ directive|include
 file|"diff.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"commit.h"
+end_include
+
+begin_include
+include|#
+directive|include
+file|"revision.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|diff_files_usage
 specifier|static
@@ -29,11 +41,11 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|diff_options
+DECL|variable|rev
 specifier|static
 name|struct
-name|diff_options
-name|diff_options
+name|rev_info
+name|rev
 decl_stmt|;
 end_decl_stmt
 
@@ -92,7 +104,9 @@ block|{
 name|diff_unmerge
 argument_list|(
 operator|&
-name|diff_options
+name|rev
+operator|.
+name|diffopt
 argument_list|,
 name|path
 argument_list|)
@@ -118,7 +132,9 @@ block|{
 name|diff_addremove
 argument_list|(
 operator|&
-name|diff_options
+name|rev
+operator|.
+name|diffopt
 argument_list|,
 name|pfx
 argument_list|,
@@ -175,7 +191,9 @@ block|{
 name|diff_change
 argument_list|(
 operator|&
-name|diff_options
+name|rev
+operator|.
+name|diffopt
 argument_list|,
 name|oldmode
 argument_list|,
@@ -235,7 +253,9 @@ expr_stmt|;
 name|diff_setup
 argument_list|(
 operator|&
-name|diff_options
+name|rev
+operator|.
+name|diffopt
 argument_list|)
 expr_stmt|;
 while|while
@@ -500,7 +520,9 @@ operator|=
 name|diff_opt_parse
 argument_list|(
 operator|&
-name|diff_options
+name|rev
+operator|.
+name|diffopt
 argument_list|,
 name|argv
 operator|+
@@ -556,7 +578,9 @@ if|if
 condition|(
 name|dense_combined_merges
 condition|)
-name|diff_options
+name|rev
+operator|.
+name|diffopt
 operator|.
 name|output_format
 operator|=
@@ -584,7 +608,9 @@ condition|(
 name|diff_setup_done
 argument_list|(
 operator|&
-name|diff_options
+name|rev
+operator|.
+name|diffopt
 argument_list|)
 operator|<
 literal|0
@@ -960,10 +986,8 @@ literal|2
 argument_list|,
 name|dense_combined_merges
 argument_list|,
-name|NULL
-argument_list|,
 operator|&
-name|diff_options
+name|rev
 argument_list|)
 expr_stmt|;
 name|free
@@ -1072,7 +1096,9 @@ operator|!
 name|changed
 operator|&&
 operator|!
-name|diff_options
+name|rev
+operator|.
+name|diffopt
 operator|.
 name|find_copies_harder
 condition|)
@@ -1153,13 +1179,17 @@ block|}
 name|diffcore_std
 argument_list|(
 operator|&
-name|diff_options
+name|rev
+operator|.
+name|diffopt
 argument_list|)
 expr_stmt|;
 name|diff_flush
 argument_list|(
 operator|&
-name|diff_options
+name|rev
+operator|.
+name|diffopt
 argument_list|)
 expr_stmt|;
 return|return
