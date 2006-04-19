@@ -2504,6 +2504,9 @@ parameter_list|,
 name|unsigned
 name|char
 modifier|*
+parameter_list|,
+name|unsigned
+modifier|*
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -2528,6 +2531,10 @@ name|unsigned
 name|char
 modifier|*
 name|result
+parameter_list|,
+name|unsigned
+modifier|*
+name|mode
 parameter_list|)
 block|{
 name|int
@@ -2561,9 +2568,6 @@ name|entrylen
 decl_stmt|,
 name|cmp
 decl_stmt|;
-name|unsigned
-name|mode
-decl_stmt|;
 name|sha1
 operator|=
 name|tree_entry_extract
@@ -2573,7 +2577,6 @@ argument_list|,
 operator|&
 name|entry
 argument_list|,
-operator|&
 name|mode
 argument_list|)
 expr_stmt|;
@@ -2656,6 +2659,7 @@ condition|(
 operator|!
 name|S_ISDIR
 argument_list|(
+operator|*
 name|mode
 argument_list|)
 condition|)
@@ -2691,6 +2695,8 @@ operator|+
 name|entrylen
 argument_list|,
 name|result
+argument_list|,
+name|mode
 argument_list|)
 return|;
 block|}
@@ -2722,6 +2728,10 @@ name|unsigned
 name|char
 modifier|*
 name|sha1
+parameter_list|,
+name|unsigned
+modifier|*
+name|mode
 parameter_list|)
 block|{
 name|int
@@ -2776,6 +2786,8 @@ argument_list|,
 name|name
 argument_list|,
 name|sha1
+argument_list|,
+name|mode
 argument_list|)
 expr_stmt|;
 name|free
@@ -2811,6 +2823,9 @@ parameter_list|)
 block|{
 name|int
 name|ret
+decl_stmt|;
+name|unsigned
+name|unused
 decl_stmt|;
 name|prepare_alt_odb
 argument_list|()
@@ -2884,6 +2899,9 @@ operator|+
 literal|1
 argument_list|,
 name|sha1
+argument_list|,
+operator|&
+name|unused
 argument_list|)
 return|;
 block|}
