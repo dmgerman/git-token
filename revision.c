@@ -819,6 +819,14 @@ operator|&
 name|UNINTERESTING
 condition|)
 block|{
+name|commit
+operator|->
+name|object
+operator|.
+name|flags
+operator||=
+name|UNINTERESTING
+expr_stmt|;
 name|mark_parents_uninteresting
 argument_list|(
 name|commit
