@@ -2142,6 +2142,9 @@ parameter_list|,
 name|char
 modifier|*
 name|ep
+parameter_list|,
+name|int
+name|rfc2047
 parameter_list|)
 block|{
 name|int
@@ -2213,8 +2216,21 @@ operator|++
 argument_list|)
 operator|)
 expr_stmt|;
+continue|continue;
 block|}
-else|else
+if|if
+condition|(
+name|rfc2047
+operator|&&
+name|c
+operator|==
+literal|'_'
+condition|)
+comment|/* rfc2047 4.2 (2) */
+name|c
+operator|=
+literal|0x20
+expr_stmt|;
 operator|*
 name|ot
 operator|++
@@ -2926,6 +2942,8 @@ argument_list|,
 name|piecebuf
 argument_list|,
 name|ep
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 break|break;
@@ -3025,6 +3043,8 @@ argument_list|,
 name|line
 argument_list|,
 name|ep
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 break|break;
