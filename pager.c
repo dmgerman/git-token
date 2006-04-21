@@ -30,6 +30,19 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
+name|execl
+argument_list|(
+literal|"/bin/sh"
+argument_list|,
+literal|"sh"
+argument_list|,
+literal|"-c"
+argument_list|,
+name|pager
+argument_list|,
+name|NULL
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
@@ -207,6 +220,13 @@ argument_list|)
 expr_stmt|;
 name|run_pager
 argument_list|(
+name|pager
+argument_list|)
+expr_stmt|;
+name|die
+argument_list|(
+literal|"unable to execute pager '%s'"
+argument_list|,
 name|pager
 argument_list|)
 expr_stmt|;
