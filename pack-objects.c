@@ -5417,8 +5417,7 @@ operator|>=
 name|max_size
 condition|)
 return|return
-operator|-
-literal|1
+literal|0
 return|;
 name|delta_buf
 operator|=
@@ -6362,9 +6361,13 @@ decl_stmt|;
 name|char
 name|line
 index|[
+literal|40
+operator|+
+literal|1
+operator|+
 name|PATH_MAX
 operator|+
-literal|20
+literal|2
 index|]
 decl_stmt|;
 name|int
