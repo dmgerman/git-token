@@ -1492,9 +1492,6 @@ name|revs
 parameter_list|,
 name|int
 name|cached
-parameter_list|,
-name|int
-name|match_missing
 parameter_list|)
 block|{
 name|int
@@ -1515,6 +1512,23 @@ name|char
 modifier|*
 name|tree_name
 decl_stmt|;
+name|int
+name|match_missing
+init|=
+literal|0
+decl_stmt|;
+comment|/*  	 * Backward compatibility wart - "diff-index -m" does 	 * not mean "do not ignore merges", but totally different. 	 */
+if|if
+condition|(
+operator|!
+name|revs
+operator|->
+name|ignore_merges
+condition|)
+name|match_missing
+operator|=
+literal|1
+expr_stmt|;
 if|if
 condition|(
 name|read_cache
