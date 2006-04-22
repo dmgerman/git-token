@@ -912,9 +912,6 @@ name|revs
 parameter_list|,
 name|int
 name|cached
-parameter_list|,
-name|int
-name|match_missing
 parameter_list|)
 function_decl|;
 end_function_decl
