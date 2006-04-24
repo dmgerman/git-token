@@ -937,6 +937,13 @@ operator|<=
 name|it
 operator|->
 name|entry_count
+operator|&&
+name|has_sha1_file
+argument_list|(
+name|it
+operator|->
+name|sha1
+argument_list|)
 condition|)
 return|return
 name|it
