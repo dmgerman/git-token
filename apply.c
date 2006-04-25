@@ -33,28 +33,6 @@ directive|include
 file|"blob.h"
 end_include
 
-begin_decl_stmt
-DECL|variable|active_cache_sha1
-specifier|static
-name|unsigned
-name|char
-name|active_cache_sha1
-index|[
-literal|20
-index|]
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-DECL|variable|active_cache_tree
-specifier|static
-name|struct
-name|cache_tree
-modifier|*
-name|active_cache_tree
-decl_stmt|;
-end_decl_stmt
-
 begin_comment
 comment|//  --check turns on checking that the working tree matches the
 end_comment
@@ -9737,23 +9715,14 @@ condition|)
 block|{
 if|if
 condition|(
-name|read_cache_1
-argument_list|(
-name|active_cache_sha1
-argument_list|)
+name|read_cache
+argument_list|()
 operator|<
 literal|0
 condition|)
 name|die
 argument_list|(
 literal|"unable to read index file"
-argument_list|)
-expr_stmt|;
-name|active_cache_tree
-operator|=
-name|read_cache_tree
-argument_list|(
-name|active_cache_sha1
 argument_list|)
 expr_stmt|;
 block|}
@@ -9795,15 +9764,13 @@ condition|)
 block|{
 if|if
 condition|(
-name|write_cache_1
+name|write_cache
 argument_list|(
 name|newfd
 argument_list|,
 name|active_cache
 argument_list|,
 name|active_nr
-argument_list|,
-name|active_cache_sha1
 argument_list|)
 operator|||
 name|commit_index_file
@@ -9815,13 +9782,6 @@ condition|)
 name|die
 argument_list|(
 literal|"Unable to write new cachefile"
-argument_list|)
-expr_stmt|;
-name|write_cache_tree
-argument_list|(
-name|active_cache_sha1
-argument_list|,
-name|active_cache_tree
 argument_list|)
 expr_stmt|;
 block|}

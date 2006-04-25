@@ -32,6 +32,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"cache-tree.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|<sys/time.h>
 end_include
 
@@ -3835,6 +3841,12 @@ block|}
 name|unpack_trees
 argument_list|(
 name|fn
+argument_list|)
+expr_stmt|;
+name|cache_tree_free
+argument_list|(
+operator|&
+name|active_cache_tree
 argument_list|)
 expr_stmt|;
 if|if
