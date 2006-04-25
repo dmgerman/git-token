@@ -24,36 +24,8 @@ end_include
 begin_include
 include|#
 directive|include
-file|"tree.h"
-end_include
-
-begin_include
-include|#
-directive|include
 file|"cache-tree.h"
 end_include
-
-begin_decl_stmt
-DECL|variable|active_cache_sha1
-specifier|static
-name|unsigned
-name|char
-name|active_cache_sha1
-index|[
-literal|20
-index|]
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-DECL|variable|active_cache_tree
-specifier|static
-name|struct
-name|cache_tree
-modifier|*
-name|active_cache_tree
-decl_stmt|;
-end_decl_stmt
 
 begin_comment
 comment|/*  * Default to not allowing changes to the list of files. The  * tool doesn't actually care, but this makes it harder to add  * files to the revision control by mistake by doing something  * like "git-update-index *" and suddenly having all the object  * files be revision controlled.  */
@@ -2193,10 +2165,8 @@ argument_list|)
 expr_stmt|;
 name|entries
 operator|=
-name|read_cache_1
-argument_list|(
-name|active_cache_sha1
-argument_list|)
+name|read_cache
+argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -2207,13 +2177,6 @@ condition|)
 name|die
 argument_list|(
 literal|"cache corrupted"
-argument_list|)
-expr_stmt|;
-name|active_cache_tree
-operator|=
-name|read_cache_tree
-argument_list|(
-name|active_cache_sha1
 argument_list|)
 expr_stmt|;
 for|for
@@ -2891,15 +2854,13 @@ condition|)
 block|{
 if|if
 condition|(
-name|write_cache_1
+name|write_cache
 argument_list|(
 name|newfd
 argument_list|,
 name|active_cache
 argument_list|,
 name|active_nr
-argument_list|,
-name|active_cache_sha1
 argument_list|)
 operator|||
 name|commit_index_file
@@ -2911,13 +2872,6 @@ condition|)
 name|die
 argument_list|(
 literal|"Unable to write new cachefile"
-argument_list|)
-expr_stmt|;
-name|write_cache_tree
-argument_list|(
-name|active_cache_sha1
-argument_list|,
-name|active_cache_tree
 argument_list|)
 expr_stmt|;
 block|}
