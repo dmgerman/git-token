@@ -1139,7 +1139,7 @@ return|return
 literal|0
 return|;
 block|}
-comment|/* Add other config variables here.. */
+comment|/* Add other config variables here and to Documentation/config.txt. */
 return|return
 literal|0
 return|;

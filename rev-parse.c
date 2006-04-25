@@ -749,6 +749,47 @@ block|}
 end_function
 
 begin_function
+DECL|function|die_badfile
+specifier|static
+name|void
+name|die_badfile
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|arg
+parameter_list|)
+block|{
+if|if
+condition|(
+name|errno
+operator|!=
+name|ENOENT
+condition|)
+name|die
+argument_list|(
+literal|"'%s': %s"
+argument_list|,
+name|arg
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|die
+argument_list|(
+literal|"'%s' is ambiguous - revision name or file/directory name?\n"
+literal|"Please put '--' before the list of filenames."
+argument_list|,
+name|arg
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
 DECL|function|main
 name|int
 name|main
@@ -852,16 +893,9 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-name|die
+name|die_badfile
 argument_list|(
-literal|"'%s': %s"
-argument_list|,
 name|arg
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 continue|continue;
@@ -1728,16 +1762,9 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-name|die
+name|die_badfile
 argument_list|(
-literal|"'%s': %s"
-argument_list|,
 name|arg
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
