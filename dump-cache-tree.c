@@ -53,17 +53,21 @@ literal|0
 condition|)
 name|printf
 argument_list|(
-literal|"%-40s %s\n"
+literal|"%-40s %s (%d subtrees)\n"
 argument_list|,
 literal|"invalid"
 argument_list|,
 name|pfx
+argument_list|,
+name|it
+operator|->
+name|subtree_nr
 argument_list|)
 expr_stmt|;
 else|else
 name|printf
 argument_list|(
-literal|"%s %s (%d entries)\n"
+literal|"%s %s (%d entries, %d subtrees)\n"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -77,6 +81,10 @@ argument_list|,
 name|it
 operator|->
 name|entry_count
+argument_list|,
+name|it
+operator|->
+name|subtree_nr
 argument_list|)
 expr_stmt|;
 for|for
