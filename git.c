@@ -284,6 +284,12 @@ literal|"show"
 block|,
 name|cmd_show
 block|}
+block|,
+block|{
+literal|"count-objects"
+block|,
+name|cmd_count_objects
+block|}
 block|, 	}
 struct|;
 name|int
