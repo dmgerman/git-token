@@ -57,11 +57,6 @@ name|rev_info
 name|rev
 decl_stmt|;
 name|int
-name|match_missing
-init|=
-literal|0
-decl_stmt|;
-name|int
 name|cached
 init|=
 literal|0
