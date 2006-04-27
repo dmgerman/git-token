@@ -124,6 +124,23 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+name|struct
+name|cache_tree_sub
+modifier|*
+name|cache_tree_sub
+parameter_list|(
+name|struct
+name|cache_tree
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|void
 modifier|*
 name|cache_tree_write
