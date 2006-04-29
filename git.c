@@ -296,6 +296,12 @@ literal|"count-objects"
 block|,
 name|cmd_count_objects
 block|}
+block|,
+block|{
+literal|"diffn"
+block|,
+name|cmd_diff
+block|}
 block|, 	}
 struct|;
 name|int
