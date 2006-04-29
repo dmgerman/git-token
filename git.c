@@ -284,6 +284,12 @@ literal|"show"
 block|,
 name|cmd_show
 block|}
+block|,
+block|{
+literal|"diffn"
+block|,
+name|cmd_diff
+block|}
 block|, 	}
 struct|;
 name|int
