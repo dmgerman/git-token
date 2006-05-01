@@ -308,6 +308,12 @@ literal|"push"
 block|,
 name|cmd_push
 block|}
+block|,
+block|{
+literal|"grep"
+block|,
+name|cmd_grep
+block|}
 block|, 	}
 struct|;
 name|int
