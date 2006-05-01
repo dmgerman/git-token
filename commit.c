@@ -2423,7 +2423,7 @@ name|ret
 argument_list|,
 literal|"Date: %s\n"
 argument_list|,
-name|show_date
+name|show_rfc2822_date
 argument_list|(
 name|time
 argument_list|,
