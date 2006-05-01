@@ -284,6 +284,12 @@ literal|"show"
 block|,
 name|cmd_show
 block|}
+block|,
+block|{
+literal|"grep"
+block|,
+name|cmd_grep
+block|}
 block|, 	}
 struct|;
 name|int
