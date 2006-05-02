@@ -496,9 +496,14 @@ name|printf
 argument_list|(
 literal|"%.*s\n"
 argument_list|,
+call|(
+name|int
+call|)
+argument_list|(
 name|eol
 operator|-
 name|bol
+argument_list|)
 argument_list|,
 name|bol
 argument_list|)
