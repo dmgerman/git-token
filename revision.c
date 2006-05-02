@@ -3744,6 +3744,27 @@ argument_list|,
 name|next
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|seen_dashdash
+condition|)
+block|{
+operator|*
+name|dotdot
+operator|=
+literal|'.'
+expr_stmt|;
+name|verify_non_filename
+argument_list|(
+name|revs
+operator|->
+name|prefix
+argument_list|,
+name|arg
+argument_list|)
+expr_stmt|;
+block|}
 name|add_pending_object
 argument_list|(
 name|revs
@@ -3818,7 +3839,7 @@ argument_list|,
 name|arg
 argument_list|)
 expr_stmt|;
-comment|/* If we didn't have a "--", all filenames must exist */
+comment|/* If we didn't have a "--": 			 * (1) all filenames must exist; 			 * (2) all rev-args must not be interpretable 			 *     as a valid filename. 			 * but the latter we have checked in the main loop. 			 */
 for|for
 control|(
 name|j
@@ -3861,6 +3882,20 @@ argument_list|)
 expr_stmt|;
 break|break;
 block|}
+if|if
+condition|(
+operator|!
+name|seen_dashdash
+condition|)
+name|verify_non_filename
+argument_list|(
+name|revs
+operator|->
+name|prefix
+argument_list|,
+name|arg
+argument_list|)
+expr_stmt|;
 name|object
 operator|=
 name|get_reference
