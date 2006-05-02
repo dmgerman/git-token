@@ -1017,11 +1017,11 @@ name|strcmp
 argument_list|(
 name|var
 argument_list|,
-literal|"core.symrefsonly"
+literal|"core.prefersymlinkrefs"
 argument_list|)
 condition|)
 block|{
-name|only_use_symrefs
+name|prefer_symlink_refs
 operator|=
 name|git_config_bool
 argument_list|(
