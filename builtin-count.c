@@ -659,6 +659,14 @@ name|packed_git
 modifier|*
 name|p
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|packed_git
+condition|)
+name|prepare_packed_git
+argument_list|()
+expr_stmt|;
 for|for
 control|(
 name|p
