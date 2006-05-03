@@ -139,10 +139,10 @@ decl_stmt|;
 specifier|const
 name|char
 modifier|*
-name|slash
+name|cp
 decl_stmt|,
 modifier|*
-name|cp
+name|meta
 decl_stmt|;
 if|if
 condition|(
@@ -217,14 +217,14 @@ operator|!=
 literal|'/'
 condition|)
 continue|continue;
-comment|/* We are being asked if the name directory is worth 		 * descending into. 		 * 		 * Find the longest leading directory name that does 		 * not have metacharacter in the pathspec; the name 		 * we are looking at must overlap with that directory. 		 */
+comment|/* We are being asked if the directory ("name") is worth 		 * descending into. 		 * 		 * Find the longest leading directory name that does 		 * not have metacharacter in the pathspec; the name 		 * we are looking at must overlap with that directory. 		 */
 for|for
 control|(
 name|cp
 operator|=
 name|match
 operator|,
-name|slash
+name|meta
 operator|=
 name|NULL
 init|;
@@ -248,48 +248,44 @@ if|if
 condition|(
 name|ch
 operator|==
-literal|'/'
-condition|)
-name|slash
-operator|=
-name|cp
-expr_stmt|;
-if|if
-condition|(
-name|ch
-operator|==
 literal|'*'
 operator|||
 name|ch
 operator|==
 literal|'['
+operator|||
+name|ch
+operator|==
+literal|'?'
 condition|)
+block|{
+name|meta
+operator|=
+name|cp
+expr_stmt|;
 break|break;
+block|}
 block|}
 if|if
 condition|(
 operator|!
-name|slash
+name|meta
 condition|)
-name|slash
+name|meta
 operator|=
-name|match
+name|cp
 expr_stmt|;
-comment|/* toplevel */
-else|else
-name|slash
-operator|++
-expr_stmt|;
+comment|/* fully literal */
 if|if
 condition|(
 name|namelen
 operator|<=
-name|slash
+name|meta
 operator|-
 name|match
 condition|)
 block|{
-comment|/* Looking at "Documentation/" and 			 * the pattern says "Documentation/howto/", or 			 * "Documentation/diff*.txt". 			 */
+comment|/* Looking at "Documentation/" and 			 * the pattern says "Documentation/howto/", or 			 * "Documentation/diff*.txt".  The name we 			 * have should match prefix. 			 */
 if|if
 condition|(
 operator|!
@@ -305,10 +301,18 @@ condition|)
 return|return
 literal|1
 return|;
+continue|continue;
 block|}
-else|else
+if|if
+condition|(
+name|meta
+operator|-
+name|match
+operator|<
+name|namelen
+condition|)
 block|{
-comment|/* Looking at "Documentation/howto/" and 			 * the pattern says "Documentation/h*". 			 */
+comment|/* Looking at "Documentation/howto/" and 			 * the pattern says "Documentation/h*"; 			 * match up to "Do.../h"; this avoids descending 			 * into "Documentation/technical/". 			 */
 if|if
 condition|(
 operator|!
@@ -318,7 +322,7 @@ name|match
 argument_list|,
 name|name
 argument_list|,
-name|slash
+name|meta
 operator|-
 name|match
 argument_list|)
@@ -326,6 +330,7 @@ condition|)
 return|return
 literal|1
 return|;
+continue|continue;
 block|}
 block|}
 return|return
