@@ -124,18 +124,14 @@ if|if
 condition|(
 operator|!
 name|it
-condition|)
-return|return;
-if|if
-condition|(
+operator|||
 operator|!
 name|ref
 condition|)
-name|die
-argument_list|(
-literal|"internal error"
-argument_list|)
-expr_stmt|;
+comment|/* missing in either */
+return|return
+literal|0
+return|;
 if|if
 condition|(
 name|it
