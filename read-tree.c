@@ -2252,6 +2252,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+else|else
+name|invalidate_ce_path
+argument_list|(
+name|merge
+argument_list|)
+expr_stmt|;
 name|merge
 operator|->
 name|ce_flags
