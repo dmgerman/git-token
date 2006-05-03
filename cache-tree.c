@@ -626,6 +626,20 @@ name|cache_tree_sub
 modifier|*
 name|down
 decl_stmt|;
+if|#
+directive|if
+name|DEBUG
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"cache-tree invalidate<%s>\n"
+argument_list|,
+name|path
+argument_list|)
+expr_stmt|;
+endif|#
+directive|endif
 if|if
 condition|(
 operator|!
@@ -1786,7 +1800,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"cache-tree %o %.*s\n"
+literal|"cache-tree update-one %o %.*s\n"
 argument_list|,
 name|mode
 argument_list|,
@@ -1866,7 +1880,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"cache-tree (%d ent, %d subtree) %s\n"
+literal|"cache-tree update-one (%d ent, %d subtree) %s\n"
 argument_list|,
 name|it
 operator|->
