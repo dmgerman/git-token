@@ -3523,6 +3523,12 @@ literal|1
 expr_stmt|;
 name|revs
 operator|->
+name|dense_combined_merges
+operator|=
+literal|0
+expr_stmt|;
+name|revs
+operator|->
 name|combine_merges
 operator|=
 literal|1
