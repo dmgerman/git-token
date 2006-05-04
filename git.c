@@ -286,6 +286,12 @@ name|cmd_show
 block|}
 block|,
 block|{
+literal|"push"
+block|,
+name|cmd_push
+block|}
+block|,
+block|{
 literal|"fmt-patch"
 block|,
 name|cmd_format_patch
@@ -301,12 +307,6 @@ block|{
 literal|"diff"
 block|,
 name|cmd_diff
-block|}
-block|,
-block|{
-literal|"push"
-block|,
-name|cmd_push
 block|}
 block|,
 block|{
