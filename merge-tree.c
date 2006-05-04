@@ -161,12 +161,6 @@ modifier|*
 name|result
 parameter_list|)
 block|{
-name|char
-name|branch1_sha1
-index|[
-literal|50
-index|]
-decl_stmt|;
 comment|/* If it's already branch1, don't bother showing it */
 if|if
 condition|(
@@ -174,20 +168,6 @@ operator|!
 name|branch1
 condition|)
 return|return;
-name|memcpy
-argument_list|(
-name|branch1_sha1
-argument_list|,
-name|sha1_to_hex_zero
-argument_list|(
-name|branch1
-operator|->
-name|sha1
-argument_list|)
-argument_list|,
-literal|41
-argument_list|)
-expr_stmt|;
 name|printf
 argument_list|(
 literal|"0 %06o->%06o %s->%s %s%s\n"
@@ -200,7 +180,12 @@ name|result
 operator|->
 name|mode
 argument_list|,
-name|branch1_sha1
+name|sha1_to_hex_zero
+argument_list|(
+name|branch1
+operator|->
+name|sha1
+argument_list|)
 argument_list|,
 name|sha1_to_hex_zero
 argument_list|(
