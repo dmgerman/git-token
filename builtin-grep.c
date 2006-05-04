@@ -1384,6 +1384,12 @@ name|eol
 operator|+
 literal|1
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|left
+condition|)
+break|break;
 name|left
 operator|--
 expr_stmt|;
