@@ -3021,6 +3021,28 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* base85 */
+end_comment
+
+begin_function_decl
+name|int
+name|decode_85
+parameter_list|(
+name|char
+modifier|*
+name|dst
+parameter_list|,
+name|char
+modifier|*
+name|line
+parameter_list|,
+name|int
+name|linelen
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
