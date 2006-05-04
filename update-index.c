@@ -2093,7 +2093,7 @@ name|char
 name|update_index_usage
 index|[]
 init|=
-literal|"git-update-index [-q] [--add] [--replace] [--remove] [--unmerged] [--refresh] [--cacheinfo] [--chmod=(+|-)x] [--info-only] [--force-remove] [--stdin] [--index-info] [--ignore-missing] [-z] [--verbose] [--]<file>..."
+literal|"git-update-index [-q] [--add] [--replace] [--remove] [--unmerged] [--refresh] [--really-refresh] [--cacheinfo] [--chmod=(+|-)x] [--assume-unchanged] [--info-only] [--force-remove] [--stdin] [--index-info] [--unresolve] [--ignore-missing] [-z] [--verbose] [--]<file>..."
 decl_stmt|;
 end_decl_stmt
 
