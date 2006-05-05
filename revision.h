@@ -304,6 +304,13 @@ name|log_info
 modifier|*
 name|loginfo
 decl_stmt|;
+DECL|member|nr
+DECL|member|total
+name|int
+name|nr
+decl_stmt|,
+name|total
+decl_stmt|;
 comment|/* special limits */
 DECL|member|max_count
 name|int

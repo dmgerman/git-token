@@ -326,6 +326,11 @@ name|space
 parameter_list|,
 name|int
 name|abbrev
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|subject
 parameter_list|)
 function_decl|;
 end_function_decl
