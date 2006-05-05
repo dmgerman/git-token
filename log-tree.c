@@ -227,10 +227,23 @@ operator|=
 name|buffer
 expr_stmt|;
 block|}
-else|else
+elseif|else
+if|if
+condition|(
+name|opt
+operator|->
+name|total
+operator|==
+literal|0
+condition|)
 name|subject
 operator|=
 literal|"Subject: [PATCH] "
+expr_stmt|;
+else|else
+name|subject
+operator|=
+literal|"Subject: "
 expr_stmt|;
 name|printf
 argument_list|(
