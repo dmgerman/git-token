@@ -373,6 +373,10 @@ name|int
 name|has_explicit_refspec
 init|=
 name|refspec_nr
+operator|||
+name|all
+operator|||
+name|tags
 decl_stmt|;
 if|if
 condition|(
@@ -776,7 +780,13 @@ expr_stmt|;
 name|config_get_refspecs
 operator|=
 operator|!
+operator|(
 name|refspec_nr
+operator|||
+name|all
+operator|||
+name|tags
+operator|)
 expr_stmt|;
 name|git_config
 argument_list|(
