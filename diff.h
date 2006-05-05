@@ -162,6 +162,11 @@ name|tree_in_recursive
 range|:
 literal|1
 decl_stmt|,
+DECL|member|binary
+name|binary
+range|:
+literal|1
+decl_stmt|,
 DECL|member|full_index
 name|full_index
 range|:

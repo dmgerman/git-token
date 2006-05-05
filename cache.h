@@ -3043,6 +3043,25 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|void
+name|encode_85
+parameter_list|(
+name|char
+modifier|*
+name|buf
+parameter_list|,
+name|unsigned
+name|char
+modifier|*
+name|data
+parameter_list|,
+name|int
+name|bytes
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
