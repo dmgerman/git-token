@@ -1350,7 +1350,6 @@ end_function
 
 begin_function
 DECL|function|add_head
-specifier|static
 name|void
 name|add_head
 parameter_list|(
