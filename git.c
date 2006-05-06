@@ -62,12 +62,6 @@ end_include
 begin_include
 include|#
 directive|include
-file|<sys/ioctl.h>
-end_include
-
-begin_include
-include|#
-directive|include
 file|"git-compat-util.h"
 end_include
 
@@ -292,9 +286,27 @@ name|cmd_show
 block|}
 block|,
 block|{
+literal|"push"
+block|,
+name|cmd_push
+block|}
+block|,
+block|{
 literal|"fmt-patch"
 block|,
 name|cmd_format_patch
+block|}
+block|,
+block|{
+literal|"count-objects"
+block|,
+name|cmd_count_objects
+block|}
+block|,
+block|{
+literal|"diff"
+block|,
+name|cmd_diff
 block|}
 block|, 	}
 struct|;
