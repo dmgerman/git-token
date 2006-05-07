@@ -2464,6 +2464,16 @@ operator|.
 name|value_regex
 argument_list|)
 expr_stmt|;
+name|close
+argument_list|(
+name|fd
+argument_list|)
+expr_stmt|;
+name|unlink
+argument_list|(
+name|lock_file
+argument_list|)
+expr_stmt|;
 name|ret
 operator|=
 literal|6
