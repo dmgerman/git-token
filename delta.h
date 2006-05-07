@@ -22,6 +22,7 @@ name|void
 modifier|*
 name|diff_delta
 parameter_list|(
+specifier|const
 name|void
 modifier|*
 name|from_buf
@@ -30,6 +31,7 @@ name|unsigned
 name|long
 name|from_size
 parameter_list|,
+specifier|const
 name|void
 modifier|*
 name|to_buf
@@ -64,6 +66,7 @@ name|unsigned
 name|long
 name|src_size
 parameter_list|,
+specifier|const
 name|void
 modifier|*
 name|delta_buf

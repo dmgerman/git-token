@@ -359,13 +359,12 @@ name|len
 decl_stmt|,
 name|written
 decl_stmt|;
-ifdef|#
-directive|ifdef
-name|USE_SYMLINK_HEAD
+ifndef|#
+directive|ifndef
+name|NO_SYMLINK_HEAD
 if|if
 condition|(
-operator|!
-name|only_use_symrefs
+name|prefer_symlink_refs
 condition|)
 block|{
 name|unlink

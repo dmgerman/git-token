@@ -2856,7 +2856,7 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
-comment|/* accept -<digit>, like traditilnal "head" */
+comment|/* accept -<digit>, like traditional "head" */
 if|if
 condition|(
 operator|(
@@ -3520,6 +3520,12 @@ operator|->
 name|diff
 operator|=
 literal|1
+expr_stmt|;
+name|revs
+operator|->
+name|dense_combined_merges
+operator|=
+literal|0
 expr_stmt|;
 name|revs
 operator|->

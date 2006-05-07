@@ -284,6 +284,24 @@ literal|"show"
 block|,
 name|cmd_show
 block|}
+block|,
+block|{
+literal|"push"
+block|,
+name|cmd_push
+block|}
+block|,
+block|{
+literal|"count-objects"
+block|,
+name|cmd_count_objects
+block|}
+block|,
+block|{
+literal|"diff"
+block|,
+name|cmd_diff
+block|}
 block|, 	}
 struct|;
 name|int
