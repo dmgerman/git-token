@@ -1634,12 +1634,6 @@ modifier|*
 name|data
 parameter_list|)
 block|{
-name|char
-modifier|*
-name|prefix
-init|=
-literal|""
-decl_stmt|;
 name|int
 name|i
 decl_stmt|,
@@ -1783,6 +1777,12 @@ name|i
 operator|++
 control|)
 block|{
+name|char
+modifier|*
+name|prefix
+init|=
+literal|""
+decl_stmt|;
 name|char
 modifier|*
 name|name
