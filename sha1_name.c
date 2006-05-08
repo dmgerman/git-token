@@ -2733,6 +2733,9 @@ return|return
 literal|0
 return|;
 block|}
+name|pos
+operator|++
+expr_stmt|;
 block|}
 return|return
 operator|-
