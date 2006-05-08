@@ -620,12 +620,12 @@ name|arg
 argument_list|,
 name|sha1
 argument_list|)
-operator|<
-literal|0
 condition|)
-name|usage
+name|die
 argument_list|(
-name|describe_usage
+literal|"Not a valid object name %s"
+argument_list|,
+name|arg
 argument_list|)
 expr_stmt|;
 name|cmit
@@ -640,9 +640,13 @@ condition|(
 operator|!
 name|cmit
 condition|)
-name|usage
+name|die
 argument_list|(
-name|describe_usage
+literal|"%s is not a valid '%s' object"
+argument_list|,
+name|arg
+argument_list|,
+name|commit_type
 argument_list|)
 expr_stmt|;
 if|if

@@ -723,7 +723,14 @@ condition|(
 name|argc
 operator|!=
 literal|3
-operator|||
+condition|)
+name|usage
+argument_list|(
+name|merge_base_usage
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|get_sha1
 argument_list|(
 name|argv
@@ -733,7 +740,19 @@ index|]
 argument_list|,
 name|rev1key
 argument_list|)
-operator|||
+condition|)
+name|die
+argument_list|(
+literal|"Not a valid object name %s"
+argument_list|,
+name|argv
+index|[
+literal|1
+index|]
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|get_sha1
 argument_list|(
 name|argv
@@ -744,9 +763,14 @@ argument_list|,
 name|rev2key
 argument_list|)
 condition|)
-name|usage
+name|die
 argument_list|(
-name|merge_base_usage
+literal|"Not a valid object name %s"
+argument_list|,
+name|argv
+index|[
+literal|2
+index|]
 argument_list|)
 expr_stmt|;
 name|rev1

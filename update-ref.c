@@ -236,8 +236,6 @@ name|value
 argument_list|,
 name|sha1
 argument_list|)
-operator|<
-literal|0
 condition|)
 name|die
 argument_list|(
@@ -265,8 +263,6 @@ name|oldval
 argument_list|,
 name|oldsha1
 argument_list|)
-operator|<
-literal|0
 condition|)
 name|die
 argument_list|(

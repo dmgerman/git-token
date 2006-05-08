@@ -476,8 +476,15 @@ condition|(
 name|argc
 operator|<
 literal|2
-operator|||
-name|get_sha1_hex
+condition|)
+name|usage
+argument_list|(
+name|commit_tree_usage
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|get_sha1
 argument_list|(
 name|argv
 index|[
@@ -486,12 +493,15 @@ index|]
 argument_list|,
 name|tree_sha1
 argument_list|)
-operator|<
-literal|0
 condition|)
-name|usage
+name|die
 argument_list|(
-name|commit_tree_usage
+literal|"Not a valid object name %s"
+argument_list|,
+name|argv
+index|[
+literal|1
+index|]
 argument_list|)
 expr_stmt|;
 name|check_valid
@@ -550,7 +560,14 @@ name|a
 argument_list|,
 literal|"-p"
 argument_list|)
-operator|||
+condition|)
+name|usage
+argument_list|(
+name|commit_tree_usage
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|get_sha1
 argument_list|(
 name|b
@@ -561,9 +578,11 @@ name|parents
 index|]
 argument_list|)
 condition|)
-name|usage
+name|die
 argument_list|(
-name|commit_tree_usage
+literal|"Not a valid object name %s"
+argument_list|,
+name|b
 argument_list|)
 expr_stmt|;
 name|check_valid
