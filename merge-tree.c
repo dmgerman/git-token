@@ -838,8 +838,6 @@ name|rev
 argument_list|,
 name|sha1
 argument_list|)
-operator|<
-literal|0
 condition|)
 name|die
 argument_list|(
