@@ -2673,7 +2673,7 @@ argument_list|)
 expr_stmt|;
 name|active_cache
 operator|=
-name|calloc
+name|xcalloc
 argument_list|(
 name|active_alloc
 argument_list|,
