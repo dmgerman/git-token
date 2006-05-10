@@ -3637,7 +3637,7 @@ name|j
 operator|<
 name|argc
 condition|;
-name|i
+name|j
 operator|++
 control|)
 name|verify_filename
