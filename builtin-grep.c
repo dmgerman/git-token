@@ -1263,22 +1263,24 @@ literal|1
 index|]
 argument_list|)
 condition|)
-continue|continue;
-comment|/* not a word boundary */
+name|hit
+operator|=
+literal|0
+expr_stmt|;
 if|if
 condition|(
-operator|(
-name|eol
-operator|-
-name|bol
-operator|)
-operator|<
 name|pmatch
 index|[
 literal|0
 index|]
 operator|.
 name|rm_eo
+operator|!=
+operator|(
+name|eol
+operator|-
+name|bol
+operator|)
 operator|&&
 name|word_char
 argument_list|(
@@ -1293,8 +1295,10 @@ name|rm_eo
 index|]
 argument_list|)
 condition|)
-continue|continue;
-comment|/* not a word boundary */
+name|hit
+operator|=
+literal|0
+expr_stmt|;
 block|}
 if|if
 condition|(
