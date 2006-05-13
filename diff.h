@@ -182,6 +182,10 @@ name|find_copies_harder
 range|:
 literal|1
 decl_stmt|;
+DECL|member|context
+name|int
+name|context
+decl_stmt|;
 DECL|member|break_opt
 name|int
 name|break_opt
