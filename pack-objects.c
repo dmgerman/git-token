@@ -786,13 +786,13 @@ name|i
 operator|++
 control|)
 block|{
-name|long
+name|uint32_t
 name|hl
 init|=
 operator|*
 operator|(
 operator|(
-name|long
+name|uint32_t
 operator|*
 operator|)
 operator|(

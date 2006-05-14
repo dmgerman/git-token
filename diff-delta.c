@@ -1555,9 +1555,6 @@ name|i
 index|]
 operator|++
 expr_stmt|;
-name|entries
-operator|--
-expr_stmt|;
 block|}
 block|}
 comment|/* 	 * Determine a limit on the number of entries in the same hash 	 * bucket.  This guard us against patological data sets causing 	 * really bad hash distribution with most entries in the same hash 	 * bucket that would bring us to O(m*n) computing costs (m and n 	 * corresponding to reference and target buffer sizes). 	 * 	 * Make sure none of the hash buckets has more entries than 	 * we're willing to test.  Otherwise we cull the entry list 	 * uniformly to still preserve a good repartition across 	 * the reference buffer. 	 */
@@ -1646,28 +1643,6 @@ block|}
 name|free
 argument_list|(
 name|hash_count
-argument_list|)
-expr_stmt|;
-comment|/* If we didn't use all hash entries, free the unused memory. */
-if|if
-condition|(
-name|entries
-condition|)
-name|index
-operator|=
-name|realloc
-argument_list|(
-name|index
-argument_list|,
-name|memsize
-operator|-
-name|entries
-operator|*
-sizeof|sizeof
-argument_list|(
-operator|*
-name|entry
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
