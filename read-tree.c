@@ -3270,7 +3270,12 @@ operator|!
 name|a
 condition|)
 return|return
-literal|0
+name|deleted_entry
+argument_list|(
+name|old
+argument_list|,
+name|NULL
+argument_list|)
 return|;
 if|if
 condition|(
