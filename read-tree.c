@@ -3430,7 +3430,12 @@ name|old
 argument_list|)
 expr_stmt|;
 return|return
-literal|0
+name|deleted_entry
+argument_list|(
+name|old
+argument_list|,
+name|NULL
+argument_list|)
 return|;
 block|}
 if|if
