@@ -46,7 +46,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * free_delta_index: free the index created by create_delta_index()  */
+comment|/*  * free_delta_index: free the index created by create_delta_index()  *  * Given pointer must be what create_delta_index() returned, or NULL.  */
 end_comment
 
 begin_function_decl
