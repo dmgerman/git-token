@@ -45,12 +45,6 @@ directive|include
 file|"tree.h"
 end_include
 
-begin_include
-include|#
-directive|include
-file|<stdint.h>
-end_include
-
 begin_ifndef
 ifndef|#
 directive|ifndef
@@ -6011,7 +6005,8 @@ argument_list|(
 operator|*
 operator|(
 operator|(
-name|uint32_t
+name|unsigned
+name|int
 operator|*
 operator|)
 operator|(
