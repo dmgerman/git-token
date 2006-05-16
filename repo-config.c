@@ -392,9 +392,6 @@ modifier|*
 name|regex_
 parameter_list|)
 block|{
-name|int
-name|i
-decl_stmt|;
 name|char
 modifier|*
 name|tl
