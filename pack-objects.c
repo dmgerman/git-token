@@ -71,12 +71,6 @@ directive|include
 file|<signal.h>
 end_include
 
-begin_include
-include|#
-directive|include
-file|<stdint.h>
-end_include
-
 begin_decl_stmt
 DECL|variable|pack_usage
 specifier|static
@@ -792,13 +786,15 @@ name|i
 operator|++
 control|)
 block|{
-name|uint32_t
+name|unsigned
+name|int
 name|hl
 init|=
 operator|*
 operator|(
 operator|(
-name|uint32_t
+name|unsigned
+name|int
 operator|*
 operator|)
 operator|(
