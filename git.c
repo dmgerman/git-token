@@ -302,6 +302,12 @@ literal|"diff"
 block|,
 name|cmd_diff
 block|}
+block|,
+block|{
+literal|"grep"
+block|,
+name|cmd_grep
+block|}
 block|, 	}
 struct|;
 name|int
