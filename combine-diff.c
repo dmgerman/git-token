@@ -3283,6 +3283,12 @@ decl_stmt|;
 name|mmfile_t
 name|result_file
 decl_stmt|;
+name|context
+operator|=
+name|opt
+operator|->
+name|context
+expr_stmt|;
 comment|/* Read the result of merge first */
 if|if
 condition|(
