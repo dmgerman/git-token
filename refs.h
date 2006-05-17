@@ -306,6 +306,32 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/** Reads log for the value of ref during at_time. **/
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|read_ref_at
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|ref
+parameter_list|,
+name|unsigned
+name|long
+name|at_time
+parameter_list|,
+name|unsigned
+name|char
+modifier|*
+name|sha1
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/** Returns 0 if target has the right format for a ref. **/
 end_comment
 
