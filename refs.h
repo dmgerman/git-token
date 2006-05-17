@@ -27,6 +27,11 @@ name|char
 modifier|*
 name|lock_file
 decl_stmt|;
+DECL|member|log_file
+name|char
+modifier|*
+name|log_file
+decl_stmt|;
 DECL|member|old_sha1
 name|unsigned
 name|char
