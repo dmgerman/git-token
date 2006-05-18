@@ -586,6 +586,12 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
+name|match
+index|[
+literal|0
+index|]
+operator|||
+operator|!
 name|lstat
 argument_list|(
 name|match
