@@ -314,7 +314,13 @@ literal|"rev-list"
 block|,
 name|cmd_rev_list
 block|}
-block|, 	}
+block|,
+block|{
+literal|"check-ref-format"
+block|,
+name|cmd_check_ref_format
+block|}
+block|}
 struct|;
 name|int
 name|i
