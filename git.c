@@ -310,6 +310,12 @@ name|cmd_grep
 block|}
 block|,
 block|{
+literal|"rm"
+block|,
+name|cmd_rm
+block|}
+block|,
+block|{
 literal|"add"
 block|,
 name|cmd_add
