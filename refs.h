@@ -44,6 +44,10 @@ DECL|member|lock_fd
 name|int
 name|lock_fd
 decl_stmt|;
+DECL|member|force_write
+name|int
+name|force_write
+decl_stmt|;
 block|}
 struct|;
 end_struct
