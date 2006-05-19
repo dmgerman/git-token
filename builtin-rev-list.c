@@ -53,6 +53,12 @@ directive|include
 file|"revision.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"builtin.h"
+end_include
+
 begin_comment
 comment|/* bits #0-15 in revision.h */
 end_comment
@@ -99,6 +105,7 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|revs
+specifier|static
 name|struct
 name|rev_info
 name|revs
@@ -1551,9 +1558,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|main
+DECL|function|cmd_rev_list
 name|int
-name|main
+name|cmd_rev_list
 parameter_list|(
 name|int
 name|argc
@@ -1563,6 +1570,11 @@ name|char
 modifier|*
 modifier|*
 name|argv
+parameter_list|,
+name|char
+modifier|*
+modifier|*
+name|envp
 parameter_list|)
 block|{
 name|struct
