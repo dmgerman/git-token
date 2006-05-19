@@ -259,6 +259,30 @@ operator|=
 literal|1
 expr_stmt|;
 comment|/* 	 * Print header line of header.. 	 */
+if|if
+condition|(
+name|opt
+operator|->
+name|commit_format
+operator|==
+name|CMIT_FMT_EMAIL
+condition|)
+name|printf
+argument_list|(
+literal|"From %s  Thu Apr 7 15:13:13 2005\n"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|commit
+operator|->
+name|object
+operator|.
+name|sha1
+argument_list|)
+argument_list|)
+expr_stmt|;
+else|else
+block|{
 name|printf
 argument_list|(
 literal|"%s%s"
@@ -331,6 +355,7 @@ else|:
 literal|'\n'
 argument_list|)
 expr_stmt|;
+block|}
 comment|/* 	 * And then the pretty-printed message itself 	 */
 name|len
 operator|=
@@ -881,6 +906,9 @@ name|struct
 name|log_info
 name|log
 decl_stmt|;
+name|int
+name|shown
+decl_stmt|;
 name|log
 operator|.
 name|commit
@@ -900,9 +928,8 @@ operator|=
 operator|&
 name|log
 expr_stmt|;
-if|if
-condition|(
-operator|!
+name|shown
+operator|=
 name|log_tree_diff
 argument_list|(
 name|opt
@@ -912,6 +939,11 @@ argument_list|,
 operator|&
 name|log
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|shown
 operator|&&
 name|opt
 operator|->
@@ -939,6 +971,10 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
+name|shown
+operator|=
+literal|1
+expr_stmt|;
 block|}
 name|opt
 operator|->
@@ -947,7 +983,7 @@ operator|=
 name|NULL
 expr_stmt|;
 return|return
-literal|0
+name|shown
 return|;
 block|}
 end_function

@@ -2036,6 +2036,22 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+specifier|const
+name|char
+modifier|*
+name|show_rfc2822_date
+parameter_list|(
+name|unsigned
+name|long
+name|time
+parameter_list|,
+name|int
+name|timezone
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|int
 name|parse_date
 parameter_list|(
