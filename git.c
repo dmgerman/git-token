@@ -316,6 +316,12 @@ name|cmd_rev_list
 block|}
 block|,
 block|{
+literal|"init-db"
+block|,
+name|cmd_init_db
+block|}
+block|,
+block|{
 literal|"check-ref-format"
 block|,
 name|cmd_check_ref_format
