@@ -311,6 +311,12 @@ name|nr
 decl_stmt|,
 name|total
 decl_stmt|;
+DECL|member|mime_boundary
+specifier|const
+name|char
+modifier|*
+name|mime_boundary
+decl_stmt|;
 comment|/* special limits */
 DECL|member|max_count
 name|int
