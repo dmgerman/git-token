@@ -495,6 +495,15 @@ name|active_cache_changed
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+specifier|extern
+name|struct
+name|cache_tree
+modifier|*
+name|active_cache_tree
+decl_stmt|;
+end_decl_stmt
+
 begin_define
 DECL|macro|GIT_DIR_ENVIRONMENT
 define|#

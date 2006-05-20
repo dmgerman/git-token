@@ -21,6 +21,12 @@ directive|include
 file|"quote.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"cache-tree.h"
+end_include
+
 begin_define
 DECL|macro|CHECKOUT_ALL
 define|#
