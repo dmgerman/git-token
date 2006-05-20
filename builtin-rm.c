@@ -641,6 +641,13 @@ argument_list|,
 name|path
 argument_list|)
 expr_stmt|;
+name|cache_tree_invalidate_path
+argument_list|(
+name|active_cache_tree
+argument_list|,
+name|path
+argument_list|)
+expr_stmt|;
 block|}
 comment|/* 	 * Then, if we used "-f", remove the filenames from the 	 * workspace. If we fail to remove the first one, we 	 * abort the "git rm" (but once we've successfully removed 	 * any file at all, we'll go ahead and commit to it all: 	 * by then we've already committed ourself and can't fail 	 * in the middle) 	 */
 if|if
