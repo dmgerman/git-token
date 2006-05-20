@@ -815,6 +815,14 @@ name|DIFF_FORMAT_DIFFSTAT
 value|6
 end_define
 
+begin_define
+DECL|macro|DIFF_FORMAT_CHECKDIFF
+define|#
+directive|define
+name|DIFF_FORMAT_CHECKDIFF
+value|7
+end_define
+
 begin_function_decl
 specifier|extern
 name|void
