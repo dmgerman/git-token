@@ -416,7 +416,6 @@ name|unsigned
 name|tmp
 decl_stmt|;
 specifier|const
-specifier|const
 name|unsigned
 name|char
 modifier|*
@@ -672,12 +671,7 @@ name|sha1
 argument_list|,
 name|null_sha1
 argument_list|,
-name|blob
-index|[
-literal|0
-index|]
-operator|.
-name|name
+name|path
 argument_list|,
 name|path
 argument_list|)
@@ -730,7 +724,7 @@ modifier|*
 name|blob
 parameter_list|)
 block|{
-comment|/* Blobs */
+comment|/* Blobs: the arguments are reversed when setup_revisions() 	 * picked them up. 	 */
 name|unsigned
 name|mode
 init|=
@@ -802,6 +796,13 @@ name|mode
 argument_list|,
 name|blob
 index|[
+literal|1
+index|]
+operator|.
+name|sha1
+argument_list|,
+name|blob
+index|[
 literal|0
 index|]
 operator|.
@@ -809,21 +810,14 @@ name|sha1
 argument_list|,
 name|blob
 index|[
-literal|1
-index|]
-operator|.
-name|sha1
-argument_list|,
-name|blob
-index|[
-literal|1
+literal|0
 index|]
 operator|.
 name|name
 argument_list|,
 name|blob
 index|[
-literal|1
+literal|0
 index|]
 operator|.
 name|name

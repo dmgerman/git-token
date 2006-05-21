@@ -27,6 +27,7 @@ name|void
 modifier|*
 name|patch_delta
 parameter_list|(
+specifier|const
 name|void
 modifier|*
 name|src_buf

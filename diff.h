@@ -162,6 +162,11 @@ name|tree_in_recursive
 range|:
 literal|1
 decl_stmt|,
+DECL|member|binary
+name|binary
+range|:
+literal|1
+decl_stmt|,
 DECL|member|full_index
 name|full_index
 range|:
@@ -176,6 +181,15 @@ DECL|member|find_copies_harder
 name|find_copies_harder
 range|:
 literal|1
+decl_stmt|,
+DECL|member|summary
+name|summary
+range|:
+literal|1
+decl_stmt|;
+DECL|member|context
+name|int
+name|context
 decl_stmt|;
 DECL|member|break_opt
 name|int
@@ -799,6 +813,14 @@ define|#
 directive|define
 name|DIFF_FORMAT_DIFFSTAT
 value|6
+end_define
+
+begin_define
+DECL|macro|DIFF_FORMAT_CHECKDIFF
+define|#
+directive|define
+name|DIFF_FORMAT_CHECKDIFF
+value|7
 end_define
 
 begin_function_decl

@@ -452,7 +452,14 @@ condition|(
 name|argc
 operator|!=
 literal|3
-operator|||
+condition|)
+name|usage
+argument_list|(
+literal|"git-cat-file [-t|-s|-e|-p|<type>]<sha1>"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|get_sha1
 argument_list|(
 name|argv
@@ -463,9 +470,14 @@ argument_list|,
 name|sha1
 argument_list|)
 condition|)
-name|usage
+name|die
 argument_list|(
-literal|"git-cat-file [-t|-s|-e|-p|<type>]<sha1>"
+literal|"Not a valid object name %s"
+argument_list|,
+name|argv
+index|[
+literal|2
+index|]
 argument_list|)
 expr_stmt|;
 name|opt
@@ -596,16 +608,6 @@ literal|'p'
 case|:
 if|if
 condition|(
-name|get_sha1
-argument_list|(
-name|argv
-index|[
-literal|2
-index|]
-argument_list|,
-name|sha1
-argument_list|)
-operator|||
 name|sha1_object_info
 argument_list|(
 name|sha1
