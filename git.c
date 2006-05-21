@@ -292,7 +292,7 @@ name|cmd_push
 block|}
 block|,
 block|{
-literal|"fmt-patch"
+literal|"format-patch"
 block|,
 name|cmd_format_patch
 block|}
