@@ -1289,12 +1289,12 @@ name|name
 operator|=
 name|xmalloc
 argument_list|(
-name|len_a
-operator|+
-name|len_b
-operator|-
 name|pfx_length
-operator|-
+operator|+
+name|a_midlen
+operator|+
+name|b_midlen
+operator|+
 name|sfx_length
 operator|+
 literal|7
