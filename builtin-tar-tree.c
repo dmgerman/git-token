@@ -1756,6 +1756,7 @@ end_function
 
 begin_function
 DECL|function|generate_tar
+specifier|static
 name|int
 name|generate_tar
 parameter_list|(
@@ -1767,6 +1768,11 @@ name|char
 modifier|*
 modifier|*
 name|argv
+parameter_list|,
+name|char
+modifier|*
+modifier|*
+name|envp
 parameter_list|)
 block|{
 name|unsigned
@@ -2362,6 +2368,8 @@ argument_list|(
 name|argc
 argument_list|,
 name|argv
+argument_list|,
+name|envp
 argument_list|)
 return|;
 block|}

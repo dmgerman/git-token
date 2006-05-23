@@ -29,6 +29,12 @@ directive|include
 file|"refs.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"builtin.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|show_branch_usage
 specifier|static
@@ -64,6 +70,7 @@ end_decl_stmt
 begin_decl_stmt
 DECL|variable|default_arg
 specifier|static
+specifier|const
 name|char
 modifier|*
 modifier|*
@@ -2956,17 +2963,23 @@ block|}
 end_function
 
 begin_function
-DECL|function|main
+DECL|function|cmd_show_branch
 name|int
-name|main
+name|cmd_show_branch
 parameter_list|(
 name|int
 name|ac
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
 name|av
+parameter_list|,
+name|char
+modifier|*
+modifier|*
+name|envp
 parameter_list|)
 block|{
 name|struct
@@ -3143,6 +3156,7 @@ operator|==
 literal|'-'
 condition|)
 block|{
+specifier|const
 name|char
 modifier|*
 name|arg
