@@ -326,6 +326,12 @@ literal|"check-ref-format"
 block|,
 name|cmd_check_ref_format
 block|}
+block|,
+block|{
+literal|"ls-files"
+block|,
+name|cmd_ls_files
+block|}
 block|}
 struct|;
 name|int
