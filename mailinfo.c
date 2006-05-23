@@ -3613,6 +3613,11 @@ literal|0
 decl_stmt|;
 if|if
 condition|(
+name|line
+index|[
+literal|0
+index|]
+operator|||
 name|fgets
 argument_list|(
 name|line
