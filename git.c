@@ -338,6 +338,12 @@ literal|"ls-tree"
 block|,
 name|cmd_ls_tree
 block|}
+block|,
+block|{
+literal|"tar-tree"
+block|,
+name|cmd_tar_tree
+block|}
 block|}
 struct|;
 name|int

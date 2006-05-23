@@ -39,6 +39,12 @@ directive|include
 file|"tar.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"builtin.h"
+end_include
+
 begin_define
 DECL|macro|RECORDSIZE
 define|#
@@ -1743,17 +1749,23 @@ block|}
 end_function
 
 begin_function
-DECL|function|main
+DECL|function|cmd_tar_tree
 name|int
-name|main
+name|cmd_tar_tree
 parameter_list|(
 name|int
 name|argc
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
 name|argv
+parameter_list|,
+name|char
+modifier|*
+modifier|*
+name|envp
 parameter_list|)
 block|{
 name|unsigned
