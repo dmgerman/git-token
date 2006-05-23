@@ -344,6 +344,12 @@ literal|"tar-tree"
 block|,
 name|cmd_tar_tree
 block|}
+block|,
+block|{
+literal|"read-tree"
+block|,
+name|cmd_read_tree
+block|}
 block|}
 struct|;
 name|int
