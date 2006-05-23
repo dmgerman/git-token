@@ -57,6 +57,15 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|log_all_ref_updates
+name|int
+name|log_all_ref_updates
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|warn_ambiguous_refs
 name|int
 name|warn_ambiguous_refs
