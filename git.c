@@ -356,6 +356,12 @@ literal|"commit-tree"
 block|,
 name|cmd_commit_tree
 block|}
+block|,
+block|{
+literal|"apply"
+block|,
+name|cmd_apply
+block|}
 block|}
 struct|;
 name|int
