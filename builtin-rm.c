@@ -21,6 +21,12 @@ directive|include
 file|"dir.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"cache-tree.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|builtin_rm_usage
 specifier|static
