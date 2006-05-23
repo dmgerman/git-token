@@ -350,6 +350,12 @@ literal|"read-tree"
 block|,
 name|cmd_read_tree
 block|}
+block|,
+block|{
+literal|"commit-tree"
+block|,
+name|cmd_commit_tree
+block|}
 block|}
 struct|;
 name|int
