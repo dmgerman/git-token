@@ -1636,6 +1636,18 @@ block|}
 block|}
 end_function
 
+begin_function_decl
+specifier|static
+name|void
+name|decode_header_bq
+parameter_list|(
+name|char
+modifier|*
+name|it
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_typedef
 DECL|typedef|header_fn_t
 typedef|typedef
@@ -1801,6 +1813,16 @@ index|]
 argument_list|)
 condition|)
 block|{
+comment|/* Unwrap inline B and Q encoding, and optionally 			 * normalize the meta information to utf8. 			 */
+name|decode_header_bq
+argument_list|(
+name|line
+operator|+
+name|len
+operator|+
+literal|2
+argument_list|)
+expr_stmt|;
 name|header
 index|[
 name|i
@@ -3116,27 +3138,6 @@ name|email
 argument_list|)
 expr_stmt|;
 name|cleanup_space
-argument_list|(
-name|sub
-argument_list|)
-expr_stmt|;
-comment|/* Unwrap inline B and Q encoding, and optionally 	 * normalize the meta information to utf8. 	 */
-name|decode_header_bq
-argument_list|(
-name|name
-argument_list|)
-expr_stmt|;
-name|decode_header_bq
-argument_list|(
-name|date
-argument_list|)
-expr_stmt|;
-name|decode_header_bq
-argument_list|(
-name|email
-argument_list|)
-expr_stmt|;
-name|decode_header_bq
 argument_list|(
 name|sub
 argument_list|)
