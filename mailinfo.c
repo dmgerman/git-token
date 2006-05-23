@@ -1684,9 +1684,6 @@ name|char
 modifier|*
 name|line
 parameter_list|,
-name|int
-name|len
-parameter_list|,
 name|struct
 name|header_def
 modifier|*
@@ -1833,9 +1830,6 @@ parameter_list|(
 name|char
 modifier|*
 name|line
-parameter_list|,
-name|int
-name|len
 parameter_list|)
 block|{
 specifier|static
@@ -1866,8 +1860,6 @@ name|check_header
 argument_list|(
 name|line
 argument_list|,
-name|len
-argument_list|,
 name|header
 argument_list|)
 expr_stmt|;
@@ -1883,9 +1875,6 @@ parameter_list|(
 name|char
 modifier|*
 name|line
-parameter_list|,
-name|int
-name|len
 parameter_list|)
 block|{
 specifier|static
@@ -1933,8 +1922,6 @@ decl_stmt|;
 name|check_header
 argument_list|(
 name|line
-argument_list|,
-name|len
 argument_list|,
 name|header
 argument_list|)
@@ -3555,7 +3542,7 @@ literal|1
 condition|)
 block|{
 name|int
-name|len
+name|hdr
 init|=
 name|read_one_header_line
 argument_list|(
@@ -3572,7 +3559,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|len
+name|hdr
 condition|)
 block|{
 if|if
@@ -3600,8 +3587,6 @@ else|else
 name|check_subheader_line
 argument_list|(
 name|line
-argument_list|,
-name|len
 argument_list|)
 expr_stmt|;
 block|}
@@ -3950,7 +3935,7 @@ literal|1
 condition|)
 block|{
 name|int
-name|len
+name|hdr
 init|=
 name|read_one_header_line
 argument_list|(
@@ -3967,7 +3952,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|len
+name|hdr
 condition|)
 block|{
 if|if
@@ -3989,8 +3974,6 @@ block|}
 name|check_header_line
 argument_list|(
 name|line
-argument_list|,
-name|len
 argument_list|)
 expr_stmt|;
 block|}
