@@ -362,6 +362,12 @@ literal|"apply"
 block|,
 name|cmd_apply
 block|}
+block|,
+block|{
+literal|"show-branch"
+block|,
+name|cmd_show_branch
+block|}
 block|}
 struct|;
 name|int
