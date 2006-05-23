@@ -332,6 +332,12 @@ literal|"ls-files"
 block|,
 name|cmd_ls_files
 block|}
+block|,
+block|{
+literal|"ls-tree"
+block|,
+name|cmd_ls_tree
+block|}
 block|}
 struct|;
 name|int
