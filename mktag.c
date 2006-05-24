@@ -168,16 +168,12 @@ condition|(
 name|size
 operator|<
 literal|64
-operator|||
-name|size
-operator|>
-name|MAXSIZE
-operator|-
-literal|1
 condition|)
 return|return
-operator|-
-literal|1
+name|error
+argument_list|(
+literal|"wanna fool me ? you obviously got the size wrong !\n"
+argument_list|)
 return|;
 name|buffer
 index|[
@@ -203,8 +199,12 @@ literal|7
 argument_list|)
 condition|)
 return|return
-operator|-
-literal|1
+name|error
+argument_list|(
+literal|"char%d: does not start with \"object \"\n"
+argument_list|,
+literal|0
+argument_list|)
 return|;
 if|if
 condition|(
@@ -218,8 +218,12 @@ name|sha1
 argument_list|)
 condition|)
 return|return
-operator|-
-literal|1
+name|error
+argument_list|(
+literal|"char%d: could not get SHA1 hash\n"
+argument_list|,
+literal|7
+argument_list|)
 return|;
 comment|/* Verify type line */
 name|type_line
@@ -242,8 +246,12 @@ literal|6
 argument_list|)
 condition|)
 return|return
-operator|-
-literal|1
+name|error
+argument_list|(
+literal|"char%d: could not find \"\\ntype \"\n"
+argument_list|,
+literal|47
+argument_list|)
 return|;
 comment|/* Verify tag-line */
 name|tag_line
@@ -261,8 +269,14 @@ operator|!
 name|tag_line
 condition|)
 return|return
+name|error
+argument_list|(
+literal|"char%td: could not find next \"\\n\"\n"
+argument_list|,
+name|type_line
 operator|-
-literal|1
+name|buffer
+argument_list|)
 return|;
 name|tag_line
 operator|++
@@ -286,8 +300,14 @@ operator|==
 literal|'\n'
 condition|)
 return|return
+name|error
+argument_list|(
+literal|"char%td: no \"tag \" found\n"
+argument_list|,
+name|tag_line
 operator|-
-literal|1
+name|buffer
+argument_list|)
 return|;
 comment|/* Get the actual type */
 name|typelen
@@ -311,8 +331,16 @@ name|type
 argument_list|)
 condition|)
 return|return
+name|error
+argument_list|(
+literal|"char%td: type too long\n"
+argument_list|,
+name|type_line
+operator|+
+literal|5
 operator|-
-literal|1
+name|buffer
+argument_list|)
 return|;
 name|memcpy
 argument_list|(
@@ -345,8 +373,12 @@ name|sha1
 argument_list|)
 condition|)
 return|return
-operator|-
-literal|1
+name|error
+argument_list|(
+literal|"char%d: could not get SHA1 hash but this is really odd since i got it before !\n"
+argument_list|,
+literal|7
+argument_list|)
 return|;
 if|if
 condition|(
@@ -358,8 +390,14 @@ name|type
 argument_list|)
 condition|)
 return|return
-operator|-
-literal|1
+name|error
+argument_list|(
+literal|"char%d: could not verify object %s\n"
+argument_list|,
+literal|7
+argument_list|,
+name|sha1
+argument_list|)
 return|;
 comment|/* Verify the tag-name: we don't allow control characters or spaces in it */
 name|tag_line
@@ -395,8 +433,14 @@ literal|' '
 condition|)
 continue|continue;
 return|return
+name|error
+argument_list|(
+literal|"char%td: could not verify tag name\n"
+argument_list|,
+name|tag_line
 operator|-
-literal|1
+name|buffer
+argument_list|)
 return|;
 block|}
 comment|/* Verify the tagger line */
@@ -425,8 +469,14 @@ literal|'\n'
 operator|)
 condition|)
 return|return
+name|error
+argument_list|(
+literal|"char%td: could not find \"tagger\"\n"
+argument_list|,
+name|tagger_line
 operator|-
-literal|1
+name|buffer
+argument_list|)
 return|;
 comment|/* The actual stuff afterwards we don't care about.. */
 return|return
@@ -452,12 +502,17 @@ block|{
 name|unsigned
 name|long
 name|size
+init|=
+literal|4096
 decl_stmt|;
 name|char
+modifier|*
 name|buffer
-index|[
-name|MAXSIZE
-index|]
+init|=
+name|malloc
+argument_list|(
+name|size
+argument_list|)
 decl_stmt|;
 name|unsigned
 name|char
@@ -480,43 +535,29 @@ expr_stmt|;
 name|setup_git_directory
 argument_list|()
 expr_stmt|;
-comment|// Read the signature
-name|size
-operator|=
-literal|0
-expr_stmt|;
-for|for
-control|(
-init|;
-condition|;
-control|)
-block|{
-name|int
-name|ret
-init|=
-name|xread
+if|if
+condition|(
+name|read_pipe
 argument_list|(
 literal|0
 argument_list|,
+operator|&
 name|buffer
-operator|+
-name|size
 argument_list|,
-name|MAXSIZE
-operator|-
+operator|&
 name|size
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|ret
-operator|<=
-literal|0
 condition|)
-break|break;
-name|size
-operator|+=
-name|ret
+block|{
+name|free
+argument_list|(
+name|buffer
+argument_list|)
+expr_stmt|;
+name|die
+argument_list|(
+literal|"could not read from stdin"
+argument_list|)
 expr_stmt|;
 block|}
 comment|// Verify it for some basic sanity: it needs to start with "object<sha1>\ntype\ntagger "
@@ -554,6 +595,11 @@ condition|)
 name|die
 argument_list|(
 literal|"unable to write tag file"
+argument_list|)
+expr_stmt|;
+name|free
+argument_list|(
+name|buffer
 argument_list|)
 expr_stmt|;
 name|printf
