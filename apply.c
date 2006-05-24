@@ -6534,6 +6534,9 @@ modifier|*
 name|frag
 parameter_list|)
 block|{
+name|int
+name|match_end
+decl_stmt|;
 name|char
 modifier|*
 name|buf
@@ -6804,6 +6807,12 @@ name|frag
 operator|->
 name|trailing
 expr_stmt|;
+comment|/* 	 * If we don't have any trailing data in the patch, 	 * we want it to match at the end of the file. 	 */
+name|match_end
+operator|=
+operator|!
+name|trailing
+expr_stmt|;
 name|lines
 operator|=
 literal|0
@@ -6839,6 +6848,23 @@ argument_list|,
 operator|&
 name|lines
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|match_end
+operator|&&
+name|offset
+operator|+
+name|oldsize
+operator|!=
+name|desc
+operator|->
+name|size
+condition|)
+name|offset
+operator|=
+operator|-
+literal|1
 expr_stmt|;
 if|if
 condition|(
@@ -7001,6 +7027,17 @@ name|p_context
 operator|)
 condition|)
 break|break;
+if|if
+condition|(
+name|match_end
+condition|)
+block|{
+name|match_end
+operator|=
+literal|0
+expr_stmt|;
+continue|continue;
+block|}
 comment|/* Reduce the number of context lines 		 * Reduce both leading and trailing if they are equal 		 * otherwise just reduce the larger context. 		 */
 if|if
 condition|(
