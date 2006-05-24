@@ -41,6 +41,12 @@ directive|include
 file|<signal.h>
 end_include
 
+begin_include
+include|#
+directive|include
+file|"builtin.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|reset
 specifier|static
@@ -3654,17 +3660,23 @@ decl_stmt|;
 end_decl_stmt
 
 begin_function
-DECL|function|main
+DECL|function|cmd_read_tree
 name|int
-name|main
+name|cmd_read_tree
 parameter_list|(
 name|int
 name|argc
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
 name|argv
+parameter_list|,
+name|char
+modifier|*
+modifier|*
+name|envp
 parameter_list|)
 block|{
 name|int
