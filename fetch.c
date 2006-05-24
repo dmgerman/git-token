@@ -64,18 +64,6 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|current_ref
-specifier|const
-name|unsigned
-name|char
-modifier|*
-name|current_ref
-init|=
-name|NULL
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|variable|get_tree
 name|int
 name|get_tree
@@ -1109,9 +1097,9 @@ name|lock_ref_sha1
 argument_list|(
 name|write_ref
 argument_list|,
-name|current_ref
+name|NULL
 argument_list|,
-literal|1
+literal|0
 argument_list|)
 expr_stmt|;
 if|if
@@ -1138,13 +1126,11 @@ condition|(
 operator|!
 name|get_recover
 condition|)
-block|{
 name|for_each_ref
 argument_list|(
 name|mark_complete
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|interpret_target
