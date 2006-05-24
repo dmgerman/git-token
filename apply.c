@@ -6535,6 +6535,8 @@ name|frag
 parameter_list|)
 block|{
 name|int
+name|match_beginning
+decl_stmt|,
 name|match_end
 decl_stmt|;
 name|char
@@ -6807,7 +6809,20 @@ name|frag
 operator|->
 name|trailing
 expr_stmt|;
-comment|/* 	 * If we don't have any trailing data in the patch, 	 * we want it to match at the end of the file. 	 */
+comment|/* 	 * If we don't have any leading/trailing data in the patch, 	 * we want it to match at the beginning/end of the file. 	 */
+name|match_beginning
+operator|=
+operator|!
+name|leading
+operator|&&
+operator|(
+name|frag
+operator|->
+name|oldpos
+operator|==
+literal|1
+operator|)
+expr_stmt|;
 name|match_end
 operator|=
 operator|!
@@ -6860,6 +6875,17 @@ operator|!=
 name|desc
 operator|->
 name|size
+condition|)
+name|offset
+operator|=
+operator|-
+literal|1
+expr_stmt|;
+if|if
+condition|(
+name|match_beginning
+operator|&&
+name|offset
 condition|)
 name|offset
 operator|=
@@ -7029,9 +7055,13 @@ condition|)
 break|break;
 if|if
 condition|(
+name|match_beginning
+operator|||
 name|match_end
 condition|)
 block|{
+name|match_beginning
+operator|=
 name|match_end
 operator|=
 literal|0
