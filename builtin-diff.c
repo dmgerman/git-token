@@ -671,12 +671,7 @@ name|sha1
 argument_list|,
 name|null_sha1
 argument_list|,
-name|blob
-index|[
-literal|0
-index|]
-operator|.
-name|name
+name|path
 argument_list|,
 name|path
 argument_list|)
@@ -1349,7 +1344,6 @@ end_function
 
 begin_function
 DECL|function|add_head
-specifier|static
 name|void
 name|add_head
 parameter_list|(

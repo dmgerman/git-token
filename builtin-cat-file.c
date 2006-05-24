@@ -27,6 +27,12 @@ directive|include
 file|"tree.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"builtin.h"
+end_include
+
 begin_function
 DECL|function|flush_buffer
 specifier|static
@@ -402,17 +408,23 @@ block|}
 end_function
 
 begin_function
-DECL|function|main
+DECL|function|cmd_cat_file
 name|int
-name|main
+name|cmd_cat_file
 parameter_list|(
 name|int
 name|argc
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
 name|argv
+parameter_list|,
+name|char
+modifier|*
+modifier|*
+name|envp
 parameter_list|)
 block|{
 name|unsigned

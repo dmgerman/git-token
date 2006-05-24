@@ -23,6 +23,12 @@ directive|include
 file|"log-tree.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"builtin.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|log_tree_opt
 specifier|static
@@ -332,9 +338,9 @@ decl_stmt|;
 end_decl_stmt
 
 begin_function
-DECL|function|main
+DECL|function|cmd_diff_tree
 name|int
-name|main
+name|cmd_diff_tree
 parameter_list|(
 name|int
 name|argc
@@ -344,6 +350,11 @@ name|char
 modifier|*
 modifier|*
 name|argv
+parameter_list|,
+name|char
+modifier|*
+modifier|*
+name|envp
 parameter_list|)
 block|{
 name|int
@@ -649,6 +660,21 @@ argument_list|,
 name|stdin
 argument_list|)
 condition|)
+if|if
+condition|(
+name|line
+index|[
+literal|0
+index|]
+operator|==
+literal|'\n'
+condition|)
+name|fflush
+argument_list|(
+name|stdout
+argument_list|)
+expr_stmt|;
+else|else
 name|diff_tree_stdin
 argument_list|(
 name|line
