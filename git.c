@@ -292,6 +292,12 @@ name|cmd_push
 block|}
 block|,
 block|{
+literal|"format-patch"
+block|,
+name|cmd_format_patch
+block|}
+block|,
+block|{
 literal|"count-objects"
 block|,
 name|cmd_count_objects

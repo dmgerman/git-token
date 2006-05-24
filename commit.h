@@ -274,6 +274,9 @@ block|,
 DECL|enumerator|CMIT_FMT_ONELINE
 name|CMIT_FMT_ONELINE
 block|,
+DECL|enumerator|CMIT_FMT_EMAIL
+name|CMIT_FMT_EMAIL
+block|,
 DECL|enumerator|CMIT_FMT_UNSPECIFIED
 name|CMIT_FMT_UNSPECIFIED
 block|, }
@@ -323,6 +326,16 @@ name|space
 parameter_list|,
 name|int
 name|abbrev
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|subject
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|after_subject
 parameter_list|)
 function_decl|;
 end_function_decl
