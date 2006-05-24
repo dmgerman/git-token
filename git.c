@@ -422,6 +422,12 @@ literal|"diff-tree"
 block|,
 name|cmd_diff_tree
 block|}
+block|,
+block|{
+literal|"cat-file"
+block|,
+name|cmd_cat_file
+block|}
 block|}
 struct|;
 name|int
