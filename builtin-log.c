@@ -1285,8 +1285,6 @@ name|j
 expr_stmt|;
 if|if
 condition|(
-name|numbered
-operator|&&
 name|start_number
 operator|<
 literal|0
@@ -1492,11 +1490,15 @@ name|rev
 operator|.
 name|nr
 operator|=
-name|rev
-operator|.
 name|total
 operator|-
 name|nr
+operator|+
+operator|(
+name|start_number
+operator|-
+literal|1
+operator|)
 expr_stmt|;
 if|if
 condition|(
@@ -1536,6 +1538,18 @@ operator|->
 name|buffer
 operator|=
 name|NULL
+expr_stmt|;
+comment|/* We put one extra blank line between formatted 		 * patches and this flag is used by log-tree code 		 * to see if it needs to emit a LF before showing 		 * the log; when using one file per patch, we do 		 * not want the extra blank line. 		 */
+if|if
+condition|(
+operator|!
+name|use_stdout
+condition|)
+name|rev
+operator|.
+name|shown_one
+operator|=
+literal|0
 expr_stmt|;
 if|if
 condition|(
