@@ -842,7 +842,7 @@ name|fopen
 argument_list|(
 name|file
 argument_list|,
-literal|"rt"
+literal|"r"
 argument_list|)
 decl_stmt|;
 name|int
