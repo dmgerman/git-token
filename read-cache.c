@@ -3121,11 +3121,11 @@ name|int
 name|fd
 parameter_list|,
 name|unsigned
-name|long
+name|int
 name|ext
 parameter_list|,
 name|unsigned
-name|long
+name|int
 name|sz
 parameter_list|)
 block|{
