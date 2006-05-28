@@ -1298,8 +1298,6 @@ condition|(
 name|numbered
 operator|&&
 name|keep_subject
-operator|<
-literal|0
 condition|)
 name|die
 argument_list|(
