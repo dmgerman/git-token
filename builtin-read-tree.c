@@ -228,6 +228,7 @@ specifier|static
 name|int
 name|entcmp
 parameter_list|(
+specifier|const
 name|char
 modifier|*
 name|name1
@@ -235,6 +236,7 @@ parameter_list|,
 name|int
 name|dir1
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 name|name2
@@ -421,6 +423,7 @@ block|{
 name|int
 name|i
 decl_stmt|;
+specifier|const
 name|char
 modifier|*
 name|first
