@@ -847,6 +847,7 @@ specifier|static
 name|int
 name|get_blob_sha1_internal
 parameter_list|(
+specifier|const
 name|unsigned
 name|char
 modifier|*
@@ -1030,6 +1031,7 @@ specifier|static
 name|int
 name|get_blob_sha1_internal
 parameter_list|(
+specifier|const
 name|unsigned
 name|char
 modifier|*
