@@ -106,6 +106,9 @@ expr_stmt|;
 if|if
 condition|(
 name|env
+operator|&&
+operator|*
+name|env
 condition|)
 block|{
 return|return
@@ -199,6 +202,10 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
+name|exec_dir
+operator|||
+operator|!
+operator|*
 name|exec_dir
 condition|)
 continue|continue;
