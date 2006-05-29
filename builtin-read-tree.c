@@ -872,9 +872,10 @@ index|[
 name|i
 index|]
 operator|=
+name|create_tree_entry_list
+argument_list|(
 name|tree
-operator|->
-name|entries
+argument_list|)
 expr_stmt|;
 name|posns
 index|[
@@ -1921,7 +1922,8 @@ index|[
 name|i
 index|]
 operator|=
-operator|(
+name|create_tree_entry_list
+argument_list|(
 operator|(
 expr|struct
 name|tree
@@ -1930,9 +1932,7 @@ operator|)
 name|posn
 operator|->
 name|item
-operator|)
-operator|->
-name|entries
+argument_list|)
 expr_stmt|;
 name|posn
 operator|=
