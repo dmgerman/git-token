@@ -27,6 +27,12 @@ directive|include
 file|"revision.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"builtin.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|diff_files_usage
 specifier|static
@@ -41,9 +47,9 @@ decl_stmt|;
 end_decl_stmt
 
 begin_function
-DECL|function|main
+DECL|function|cmd_diff_files
 name|int
-name|main
+name|cmd_diff_files
 parameter_list|(
 name|int
 name|argc
@@ -53,6 +59,11 @@ name|char
 modifier|*
 modifier|*
 name|argv
+parameter_list|,
+name|char
+modifier|*
+modifier|*
+name|envp
 parameter_list|)
 block|{
 name|struct

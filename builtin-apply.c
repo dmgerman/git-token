@@ -39,6 +39,12 @@ directive|include
 file|"delta.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"builtin.h"
+end_include
+
 begin_comment
 comment|//  --check turns on checking that the working tree matches the
 end_comment
@@ -10896,17 +10902,23 @@ block|}
 end_function
 
 begin_function
-DECL|function|main
+DECL|function|cmd_apply
 name|int
-name|main
+name|cmd_apply
 parameter_list|(
 name|int
 name|argc
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
 name|argv
+parameter_list|,
+name|char
+modifier|*
+modifier|*
+name|envp
 parameter_list|)
 block|{
 name|int

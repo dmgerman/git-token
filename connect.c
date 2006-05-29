@@ -624,7 +624,11 @@ operator|=
 literal|0
 expr_stmt|;
 return|return
+operator|(
+name|i
+operator|+
 literal|1
+operator|)
 return|;
 block|}
 return|return

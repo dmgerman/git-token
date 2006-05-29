@@ -27,6 +27,12 @@ directive|include
 file|"quote.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"builtin.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|line_termination
 specifier|static
@@ -91,6 +97,7 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|pathspec
+specifier|static
 specifier|const
 name|char
 modifier|*
@@ -268,6 +275,7 @@ specifier|static
 name|int
 name|show_tree
 parameter_list|(
+specifier|const
 name|unsigned
 name|char
 modifier|*
@@ -440,9 +448,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|main
+DECL|function|cmd_ls_tree
 name|int
-name|main
+name|cmd_ls_tree
 parameter_list|(
 name|int
 name|argc
@@ -452,6 +460,11 @@ name|char
 modifier|*
 modifier|*
 name|argv
+parameter_list|,
+name|char
+modifier|*
+modifier|*
+name|envp
 parameter_list|)
 block|{
 name|unsigned
