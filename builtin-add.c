@@ -27,6 +27,12 @@ directive|include
 file|"dir.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"cache-tree.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|builtin_add_usage
 specifier|static
@@ -640,6 +646,13 @@ condition|)
 name|printf
 argument_list|(
 literal|"add '%s'\n"
+argument_list|,
+name|path
+argument_list|)
+expr_stmt|;
+name|cache_tree_invalidate_path
+argument_list|(
+name|active_cache_tree
 argument_list|,
 name|path
 argument_list|)
