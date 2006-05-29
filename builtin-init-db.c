@@ -9,6 +9,12 @@ directive|include
 file|"cache.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"builtin.h"
+end_include
+
 begin_ifndef
 ifndef|#
 directive|ifndef
@@ -652,6 +658,7 @@ parameter_list|,
 name|int
 name|len
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 name|template_dir
@@ -855,6 +862,7 @@ name|char
 modifier|*
 name|git_dir
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 name|template_path
@@ -1166,17 +1174,23 @@ comment|/*  * If you want to, you can share the DB area with any number of branc
 end_comment
 
 begin_function
-DECL|function|main
+DECL|function|cmd_init_db
 name|int
-name|main
+name|cmd_init_db
 parameter_list|(
 name|int
 name|argc
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
 name|argv
+parameter_list|,
+name|char
+modifier|*
+modifier|*
+name|envp
 parameter_list|)
 block|{
 specifier|const
@@ -1189,14 +1203,16 @@ name|char
 modifier|*
 name|sha1_dir
 decl_stmt|;
+specifier|const
 name|char
-modifier|*
-name|path
-decl_stmt|,
 modifier|*
 name|template_dir
 init|=
 name|NULL
+decl_stmt|;
+name|char
+modifier|*
+name|path
 decl_stmt|;
 name|int
 name|len
@@ -1220,6 +1236,7 @@ name|argv
 operator|++
 control|)
 block|{
+specifier|const
 name|char
 modifier|*
 name|arg

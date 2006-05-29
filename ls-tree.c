@@ -751,12 +751,15 @@ index|]
 argument_list|,
 name|sha1
 argument_list|)
-operator|<
-literal|0
 condition|)
-name|usage
+name|die
 argument_list|(
-name|ls_tree_usage
+literal|"Not a valid object name %s"
+argument_list|,
+name|argv
+index|[
+literal|1
+index|]
 argument_list|)
 expr_stmt|;
 name|pathspec

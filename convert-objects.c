@@ -1847,7 +1847,14 @@ condition|(
 name|argc
 operator|!=
 literal|2
-operator|||
+condition|)
+name|usage
+argument_list|(
+literal|"git-convert-objects<sha1>"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|get_sha1
 argument_list|(
 name|argv
@@ -1858,9 +1865,14 @@ argument_list|,
 name|sha1
 argument_list|)
 condition|)
-name|usage
+name|die
 argument_list|(
-literal|"git-convert-objects<sha1>"
+literal|"Not a valid object name %s"
+argument_list|,
+name|argv
+index|[
+literal|1
+index|]
 argument_list|)
 expr_stmt|;
 name|entry

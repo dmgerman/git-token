@@ -714,9 +714,11 @@ argument_list|,
 name|sha1
 argument_list|)
 condition|)
-name|usage
+name|die
 argument_list|(
-name|ssh_push_usage
+literal|"Not a valid object name %s"
+argument_list|,
+name|commit_id
 argument_list|)
 expr_stmt|;
 name|memcpy
