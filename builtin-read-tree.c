@@ -32,13 +32,13 @@ end_include
 begin_include
 include|#
 directive|include
-file|"cache-tree.h"
+file|"tree-walk.h"
 end_include
 
 begin_include
 include|#
 directive|include
-file|"tree-walk.h"
+file|"cache-tree.h"
 end_include
 
 begin_include
@@ -3723,8 +3723,6 @@ name|desc
 decl_stmt|;
 name|int
 name|cnt
-init|=
-literal|0
 decl_stmt|;
 name|memcpy
 argument_list|(
@@ -3756,6 +3754,10 @@ operator|=
 name|tree
 operator|->
 name|size
+expr_stmt|;
+name|cnt
+operator|=
+literal|0
 expr_stmt|;
 while|while
 condition|(
@@ -3820,14 +3822,12 @@ name|struct
 name|tree
 modifier|*
 name|subtree
-decl_stmt|;
-name|subtree
-operator|=
+init|=
 name|lookup_tree
 argument_list|(
 name|sha1
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 operator|!
