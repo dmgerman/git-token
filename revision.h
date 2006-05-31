@@ -317,6 +317,12 @@ name|char
 modifier|*
 name|mime_boundary
 decl_stmt|;
+DECL|member|add_signoff
+specifier|const
+name|char
+modifier|*
+name|add_signoff
+decl_stmt|;
 comment|/* special limits */
 DECL|member|max_count
 name|int
