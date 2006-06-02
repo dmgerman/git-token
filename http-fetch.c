@@ -7095,13 +7095,13 @@ name|rc
 operator|=
 literal|1
 expr_stmt|;
+name|http_cleanup
+argument_list|()
+expr_stmt|;
 name|curl_slist_free_all
 argument_list|(
 name|no_pragma_header
 argument_list|)
-expr_stmt|;
-name|http_cleanup
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
