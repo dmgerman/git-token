@@ -339,6 +339,7 @@ decl_stmt|;
 name|int
 name|len
 decl_stmt|;
+specifier|const
 name|char
 modifier|*
 name|subject
@@ -346,9 +347,11 @@ init|=
 name|NULL
 decl_stmt|,
 modifier|*
-name|after_subject
+name|extra_headers
 init|=
-name|NULL
+name|opt
+operator|->
+name|extra_headers
 decl_stmt|;
 name|opt
 operator|->
@@ -566,6 +569,7 @@ argument_list|)
 operator|-
 literal|1
 argument_list|,
+literal|"%s"
 literal|"MIME-Version: 1.0\n"
 literal|"Content-Type: multipart/mixed;\n"
 literal|" boundary=\"%s%s\"\n"
@@ -576,6 +580,12 @@ literal|"--%s%s\n"
 literal|"Content-Type: text/plain; "
 literal|"charset=UTF-8; format=fixed\n"
 literal|"Content-Transfer-Encoding: 8bit\n\n"
+argument_list|,
+name|extra_headers
+condition|?
+name|extra_headers
+else|:
+literal|""
 argument_list|,
 name|mime_boundary_leader
 argument_list|,
@@ -590,7 +600,7 @@ operator|->
 name|mime_boundary
 argument_list|)
 expr_stmt|;
-name|after_subject
+name|extra_headers
 operator|=
 name|subject_buffer
 expr_stmt|;
@@ -733,7 +743,7 @@ name|abbrev
 argument_list|,
 name|subject
 argument_list|,
-name|after_subject
+name|extra_headers
 argument_list|)
 expr_stmt|;
 if|if
