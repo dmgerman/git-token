@@ -323,6 +323,12 @@ name|char
 modifier|*
 name|add_signoff
 decl_stmt|;
+DECL|member|extra_headers
+specifier|const
+name|char
+modifier|*
+name|extra_headers
+decl_stmt|;
 comment|/* special limits */
 DECL|member|max_count
 name|int
