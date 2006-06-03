@@ -428,6 +428,12 @@ literal|"cat-file"
 block|,
 name|cmd_cat_file
 block|}
+block|,
+block|{
+literal|"rev-parse"
+block|,
+name|cmd_rev_parse
+block|}
 block|}
 struct|;
 name|int
