@@ -275,6 +275,7 @@ specifier|static
 name|int
 name|show_tree
 parameter_list|(
+specifier|const
 name|unsigned
 name|char
 modifier|*
