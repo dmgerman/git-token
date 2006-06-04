@@ -6813,6 +6813,11 @@ decl_stmt|;
 name|setup_git_directory
 argument_list|()
 expr_stmt|;
+name|git_config
+argument_list|(
+name|git_default_config
+argument_list|)
+expr_stmt|;
 while|while
 condition|(
 name|arg
@@ -6997,6 +7002,10 @@ name|arg
 operator|+
 literal|1
 index|]
+expr_stmt|;
+name|write_ref_log_details
+operator|=
+name|url
 expr_stmt|;
 name|http_init
 argument_list|()
