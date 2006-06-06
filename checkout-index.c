@@ -742,11 +742,11 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|cache_file
+DECL|variable|lock_file
 specifier|static
 name|struct
-name|cache_file
-name|cache_file
+name|lock_file
+name|lock_file
 decl_stmt|;
 end_decl_stmt
 
@@ -997,10 +997,10 @@ literal|0
 condition|)
 name|newfd
 operator|=
-name|hold_index_file_for_update
+name|hold_lock_file_for_update
 argument_list|(
 operator|&
-name|cache_file
+name|lock_file
 argument_list|,
 name|get_index_file
 argument_list|()
@@ -1237,10 +1237,10 @@ operator|=
 operator|-
 literal|1
 expr_stmt|;
-name|rollback_index_file
+name|rollback_lock_file
 argument_list|(
 operator|&
-name|cache_file
+name|lock_file
 argument_list|)
 expr_stmt|;
 block|}
@@ -1501,16 +1501,16 @@ argument_list|,
 name|active_nr
 argument_list|)
 operator|||
-name|commit_index_file
+name|commit_lock_file
 argument_list|(
 operator|&
-name|cache_file
+name|lock_file
 argument_list|)
 operator|)
 condition|)
 name|die
 argument_list|(
-literal|"Unable to write new cachefile"
+literal|"Unable to write new index file"
 argument_list|)
 expr_stmt|;
 return|return
