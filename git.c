@@ -1180,6 +1180,11 @@ name|exec_path
 init|=
 name|NULL
 decl_stmt|;
+name|int
+name|done_alias
+init|=
+literal|0
+decl_stmt|;
 comment|/* 	 * Take the basename of argv[0] as the command 	 * name, and the dirname as the default exec_path 	 * if it's an absolute path and we don't have 	 * anything better. 	 */
 if|if
 condition|(
@@ -1232,15 +1237,6 @@ literal|0
 index|]
 operator|=
 name|cmd
-expr_stmt|;
-name|handle_alias
-argument_list|(
-operator|&
-name|argc
-argument_list|,
-operator|&
-name|argv
-argument_list|)
 expr_stmt|;
 name|handle_internal_command
 argument_list|(
@@ -1414,15 +1410,11 @@ name|exec_path
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|handle_alias
-argument_list|(
-operator|&
-name|argc
-argument_list|,
-operator|&
-name|argv
-argument_list|)
-expr_stmt|;
+while|while
+condition|(
+literal|1
+condition|)
+block|{
 comment|/* See if it's an internal command */
 name|handle_internal_command
 argument_list|(
@@ -1439,6 +1431,27 @@ argument_list|(
 name|argv
 argument_list|)
 expr_stmt|;
+comment|/* It could be an alias -- this works around the insanity 		 * of overriding "git log" with "git show" by having 		 * alias.log = show 		 */
+if|if
+condition|(
+name|done_alias
+operator|||
+operator|!
+name|handle_alias
+argument_list|(
+operator|&
+name|argc
+argument_list|,
+operator|&
+name|argv
+argument_list|)
+condition|)
+break|break;
+name|done_alias
+operator|=
+literal|1
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|errno
