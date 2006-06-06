@@ -4534,6 +4534,12 @@ block|}
 block|}
 end_function
 
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|USE_CURL_MULTI
+end_ifdef
+
 begin_function
 DECL|function|fill_active_slots
 name|void
@@ -4703,6 +4709,11 @@ block|}
 block|}
 end_function
 
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_function_decl
 specifier|static
 name|void
@@ -4844,12 +4855,17 @@ name|request_queue_head
 operator|=
 name|request
 expr_stmt|;
+ifdef|#
+directive|ifdef
+name|USE_CURL_MULTI
 name|fill_active_slots
 argument_list|()
 expr_stmt|;
 name|step_active_slots
 argument_list|()
 expr_stmt|;
+endif|#
+directive|endif
 block|}
 end_function
 
@@ -5025,12 +5041,17 @@ name|request_queue_head
 operator|=
 name|request
 expr_stmt|;
+ifdef|#
+directive|ifdef
+name|USE_CURL_MULTI
 name|fill_active_slots
 argument_list|()
 expr_stmt|;
 name|step_active_slots
 argument_list|()
 expr_stmt|;
+endif|#
+directive|endif
 return|return
 literal|1
 return|;
@@ -14353,9 +14374,14 @@ argument_list|,
 name|objects_to_send
 argument_list|)
 expr_stmt|;
+ifdef|#
+directive|ifdef
+name|USE_CURL_MULTI
 name|fill_active_slots
 argument_list|()
 expr_stmt|;
+endif|#
+directive|endif
 name|finish_all_active_slots
 argument_list|()
 expr_stmt|;
