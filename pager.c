@@ -9,6 +9,13 @@ begin_comment
 comment|/*  * This is split up from the rest of git so that we might do  * something different on Windows, for example.  */
 end_comment
 
+begin_decl_stmt
+DECL|variable|pager_in_use
+name|int
+name|pager_in_use
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|run_pager
 specifier|static
@@ -107,6 +114,11 @@ literal|"cat"
 argument_list|)
 condition|)
 return|return;
+name|pager_in_use
+operator|=
+literal|1
+expr_stmt|;
+comment|/* means we are emitting to terminal */
 if|if
 condition|(
 name|pipe
