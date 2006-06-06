@@ -1996,6 +1996,10 @@ name|last_percent
 operator|=
 name|percent
 expr_stmt|;
+name|progress_update
+operator|=
+literal|0
+expr_stmt|;
 block|}
 block|}
 block|}
