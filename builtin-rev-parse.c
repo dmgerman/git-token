@@ -79,6 +79,7 @@ end_decl_stmt
 begin_decl_stmt
 DECL|variable|def
 specifier|static
+specifier|const
 name|char
 modifier|*
 name|def
@@ -502,6 +503,7 @@ specifier|static
 name|int
 name|show_flag
 parameter_list|(
+specifier|const
 name|char
 modifier|*
 name|arg
@@ -559,6 +561,7 @@ parameter_list|(
 name|void
 parameter_list|)
 block|{
+specifier|const
 name|char
 modifier|*
 name|s
@@ -825,6 +828,7 @@ name|i
 operator|++
 control|)
 block|{
+specifier|const
 name|char
 modifier|*
 name|arg
@@ -1616,6 +1620,7 @@ name|dotdot
 operator|+
 literal|2
 decl_stmt|;
+specifier|const
 name|char
 modifier|*
 name|this
