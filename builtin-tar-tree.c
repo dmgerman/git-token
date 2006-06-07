@@ -840,7 +840,13 @@ name|i
 operator|=
 name|maxlen
 expr_stmt|;
-while|while
+do|do
+block|{
+name|i
+operator|--
+expr_stmt|;
+block|}
+do|while
 condition|(
 name|i
 operator|>
@@ -855,9 +861,7 @@ index|]
 operator|!=
 literal|'/'
 condition|)
-name|i
-operator|--
-expr_stmt|;
+do|;
 return|return
 name|i
 return|;
