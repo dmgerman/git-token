@@ -2204,6 +2204,12 @@ argument_list|)
 expr_stmt|;
 name|newreq
 operator|->
+name|slot
+operator|=
+name|NULL
+expr_stmt|;
+name|newreq
+operator|->
 name|next
 operator|=
 name|NULL
