@@ -3557,6 +3557,17 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+name|pid
+operator|<
+literal|0
+condition|)
+name|die
+argument_list|(
+literal|"unable to fork"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 operator|!
 name|pid
 condition|)

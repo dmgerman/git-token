@@ -242,6 +242,9 @@ decl_stmt|;
 name|int
 name|i
 decl_stmt|;
+name|pid_t
+name|pid
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -519,11 +522,27 @@ argument_list|(
 literal|"Couldn't create socket"
 argument_list|)
 return|;
+name|pid
+operator|=
+name|fork
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|pid
+operator|<
+literal|0
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"Couldn't fork"
+argument_list|)
+return|;
 if|if
 condition|(
 operator|!
-name|fork
-argument_list|()
+name|pid
 condition|)
 block|{
 specifier|const
