@@ -439,6 +439,17 @@ name|builtin_rm_usage
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|argc
+operator|<=
+name|i
+condition|)
+name|usage
+argument_list|(
+name|builtin_rm_usage
+argument_list|)
+expr_stmt|;
 name|pathspec
 operator|=
 name|get_pathspec
@@ -454,11 +465,6 @@ name|seen
 operator|=
 name|NULL
 expr_stmt|;
-if|if
-condition|(
-name|pathspec
-condition|)
-block|{
 for|for
 control|(
 name|i
@@ -491,7 +497,6 @@ argument_list|,
 name|i
 argument_list|)
 expr_stmt|;
-block|}
 for|for
 control|(
 name|i
@@ -655,6 +660,13 @@ name|path
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|show_only
+condition|)
+return|return
+literal|0
+return|;
 comment|/* 	 * Then, if we used "-f", remove the filenames from the 	 * workspace. If we fail to remove the first one, we 	 * abort the "git rm" (but once we've successfully removed 	 * any file at all, we'll go ahead and commit to it all: 	 * by then we've already committed ourself and can't fail 	 * in the middle) 	 */
 if|if
 condition|(
