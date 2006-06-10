@@ -930,9 +930,9 @@ name|cmd_init_db
 block|}
 block|,
 block|{
-literal|"tar-tree"
+literal|"get-tar-commit-id"
 block|,
-name|cmd_tar_tree
+name|cmd_get_tar_commit_id
 block|}
 block|,
 block|{
