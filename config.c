@@ -2581,6 +2581,11 @@ condition|(
 name|fd
 operator|<
 literal|0
+operator|||
+name|adjust_shared_perm
+argument_list|(
+name|lock_file
+argument_list|)
 condition|)
 block|{
 name|fprintf
