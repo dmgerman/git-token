@@ -100,7 +100,7 @@ DECL|variable|shared_repository
 name|int
 name|shared_repository
 init|=
-literal|0
+name|PERM_UMASK
 decl_stmt|;
 end_decl_stmt
 
