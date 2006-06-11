@@ -274,6 +274,12 @@ name|recursive
 operator|=
 literal|1
 expr_stmt|;
+name|rev
+operator|.
+name|simplify_history
+operator|=
+literal|0
+expr_stmt|;
 return|return
 name|cmd_log_wc
 argument_list|(
