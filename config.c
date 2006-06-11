@@ -1263,7 +1263,7 @@ literal|"user.name"
 argument_list|)
 condition|)
 block|{
-name|strncpy
+name|safe_strncpy
 argument_list|(
 name|git_default_name
 argument_list|,
@@ -1290,7 +1290,7 @@ literal|"user.email"
 argument_list|)
 condition|)
 block|{
-name|strncpy
+name|safe_strncpy
 argument_list|(
 name|git_default_email
 argument_list|,
@@ -1317,7 +1317,7 @@ literal|"i18n.commitencoding"
 argument_list|)
 condition|)
 block|{
-name|strncpy
+name|safe_strncpy
 argument_list|(
 name|git_commit_encoding
 argument_list|,

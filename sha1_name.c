@@ -1502,7 +1502,7 @@ operator|+
 literal|1
 argument_list|)
 decl_stmt|;
-name|strncpy
+name|safe_strncpy
 argument_list|(
 name|date_spec
 argument_list|,
@@ -1513,14 +1513,9 @@ operator|+
 literal|2
 argument_list|,
 name|date_len
+operator|+
+literal|1
 argument_list|)
-expr_stmt|;
-name|date_spec
-index|[
-name|date_len
-index|]
-operator|=
-literal|0
 expr_stmt|;
 name|at_time
 operator|=
