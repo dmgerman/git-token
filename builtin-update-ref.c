@@ -11,6 +11,12 @@ directive|include
 file|"refs.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"builtin.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|git_update_ref_usage
 specifier|static
@@ -24,17 +30,23 @@ decl_stmt|;
 end_decl_stmt
 
 begin_function
-DECL|function|main
+DECL|function|cmd_update_ref
 name|int
-name|main
+name|cmd_update_ref
 parameter_list|(
 name|int
 name|argc
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
 name|argv
+parameter_list|,
+name|char
+modifier|*
+modifier|*
+name|envp
 parameter_list|)
 block|{
 specifier|const
@@ -304,6 +316,7 @@ condition|)
 return|return
 literal|1
 return|;
+comment|/* write_ref_sha1 always unlocks the ref, no need to do it explicitly */
 return|return
 literal|0
 return|;
