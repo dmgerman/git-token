@@ -1026,6 +1026,12 @@ literal|"write-tree"
 block|,
 name|cmd_write_tree
 block|}
+block|,
+block|{
+literal|"mailsplit"
+block|,
+name|cmd_mailsplit
+block|}
 block|}
 struct|;
 name|int
