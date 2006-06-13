@@ -1032,6 +1032,12 @@ literal|"mailsplit"
 block|,
 name|cmd_mailsplit
 block|}
+block|,
+block|{
+literal|"mailinfo"
+block|,
+name|cmd_mailinfo
+block|}
 block|}
 struct|;
 name|int
