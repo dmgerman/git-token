@@ -1044,6 +1044,12 @@ literal|"stripspace"
 block|,
 name|cmd_stripspace
 block|}
+block|,
+block|{
+literal|"update-index"
+block|,
+name|cmd_update_index
+block|}
 block|}
 struct|;
 name|int
