@@ -101,7 +101,7 @@ DECL|macro|MAX_REVS
 define|#
 directive|define
 name|MAX_REVS
-value|29
+value|(FLAG_BITS - REV_SHIFT)
 end_define
 
 begin_comment

@@ -90,7 +90,7 @@ name|o
 operator|->
 name|type
 operator|==
-name|tag_type
+name|TYPE_TAG
 condition|)
 block|{
 name|o
