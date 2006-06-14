@@ -242,6 +242,10 @@ name|char
 modifier|*
 name|stat_sep
 decl_stmt|;
+DECL|member|xdl_opts
+name|long
+name|xdl_opts
+decl_stmt|;
 DECL|member|nr_paths
 name|int
 name|nr_paths

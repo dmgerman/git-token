@@ -38,6 +38,21 @@ define|#
 directive|define
 name|XDF_NEED_MINIMAL
 value|(1<< 1)
+DECL|macro|XDF_IGNORE_WHITESPACE
+define|#
+directive|define
+name|XDF_IGNORE_WHITESPACE
+value|(1<< 2)
+DECL|macro|XDF_IGNORE_WHITESPACE_CHANGE
+define|#
+directive|define
+name|XDF_IGNORE_WHITESPACE_CHANGE
+value|(1<< 3)
+DECL|macro|XDF_WHITESPACE_FLAGS
+define|#
+directive|define
+name|XDF_WHITESPACE_FLAGS
+value|(XDF_IGNORE_WHITESPACE | XDF_IGNORE_WHITESPACE_CHANGE)
 DECL|macro|XDL_PATCH_NORMAL
 define|#
 directive|define
