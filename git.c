@@ -709,8 +709,6 @@ name|count
 operator|+
 operator|*
 name|argcp
-operator|-
-literal|1
 operator|)
 argument_list|)
 expr_stmt|;
@@ -722,6 +720,8 @@ name|count
 argument_list|,
 operator|*
 name|argv
+operator|+
+literal|1
 argument_list|,
 sizeof|sizeof
 argument_list|(
@@ -729,12 +729,8 @@ name|char
 operator|*
 argument_list|)
 operator|*
-operator|(
 operator|*
 name|argcp
-operator|-
-literal|1
-operator|)
 argument_list|)
 expr_stmt|;
 block|}
