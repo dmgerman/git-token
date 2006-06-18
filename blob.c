@@ -90,7 +90,7 @@ name|object
 operator|.
 name|type
 operator|=
-name|blob_type
+name|TYPE_BLOB
 expr_stmt|;
 return|return
 name|ret
@@ -107,7 +107,7 @@ name|obj
 operator|->
 name|type
 operator|=
-name|blob_type
+name|TYPE_BLOB
 expr_stmt|;
 if|if
 condition|(
@@ -115,7 +115,7 @@ name|obj
 operator|->
 name|type
 operator|!=
-name|blob_type
+name|TYPE_BLOB
 condition|)
 block|{
 name|error
@@ -127,9 +127,12 @@ argument_list|(
 name|sha1
 argument_list|)
 argument_list|,
+name|typename
+argument_list|(
 name|obj
 operator|->
 name|type
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return

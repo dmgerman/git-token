@@ -268,7 +268,7 @@ name|obj
 operator|->
 name|type
 operator|!=
-name|commit_type
+name|TYPE_COMMIT
 condition|)
 block|{
 if|if
@@ -285,9 +285,12 @@ argument_list|(
 name|sha1
 argument_list|)
 argument_list|,
+name|typename
+argument_list|(
 name|obj
 operator|->
 name|type
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -447,7 +450,7 @@ name|object
 operator|.
 name|type
 operator|=
-name|commit_type
+name|TYPE_COMMIT
 expr_stmt|;
 return|return
 name|ret
@@ -464,7 +467,7 @@ name|obj
 operator|->
 name|type
 operator|=
-name|commit_type
+name|TYPE_COMMIT
 expr_stmt|;
 return|return
 name|check_commit
@@ -3901,8 +3904,6 @@ parameter_list|)
 block|{
 name|c
 operator|->
-name|object
-operator|.
 name|util
 operator|=
 name|data
@@ -3925,8 +3926,6 @@ block|{
 return|return
 name|c
 operator|->
-name|object
-operator|.
 name|util
 return|;
 block|}

@@ -10276,7 +10276,7 @@ name|obj
 operator|->
 name|type
 operator|==
-name|tag_type
+name|TYPE_TAG
 condition|)
 block|{
 name|obj
@@ -10306,7 +10306,7 @@ name|obj
 operator|->
 name|type
 operator|==
-name|tree_type
+name|TYPE_TREE
 condition|)
 block|{
 name|p
@@ -10335,7 +10335,7 @@ name|obj
 operator|->
 name|type
 operator|==
-name|blob_type
+name|TYPE_BLOB
 condition|)
 block|{
 name|p
@@ -11271,7 +11271,7 @@ name|o
 operator|->
 name|type
 operator|!=
-name|commit_type
+name|TYPE_COMMIT
 condition|)
 return|return
 literal|0
@@ -11308,7 +11308,7 @@ name|o
 operator|->
 name|type
 operator|!=
-name|commit_type
+name|TYPE_COMMIT
 condition|)
 return|return
 literal|0
@@ -11710,7 +11710,7 @@ name|o
 operator|->
 name|type
 operator|==
-name|tag_type
+name|TYPE_TAG
 condition|)
 block|{
 name|o

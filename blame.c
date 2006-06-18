@@ -601,8 +601,6 @@ operator|*
 operator|)
 name|commit
 operator|->
-name|object
-operator|.
 name|util
 decl_stmt|;
 name|struct
@@ -617,8 +615,6 @@ operator|*
 operator|)
 name|other
 operator|->
-name|object
-operator|.
 name|util
 decl_stmt|;
 name|struct
@@ -1128,8 +1124,6 @@ name|info
 init|=
 name|commit
 operator|->
-name|object
-operator|.
 name|util
 decl_stmt|;
 name|char
@@ -1300,8 +1294,6 @@ name|util
 init|=
 name|cmit
 operator|->
-name|object
-operator|.
 name|util
 decl_stmt|;
 name|struct
@@ -1311,8 +1303,6 @@ name|util2
 init|=
 name|other
 operator|->
-name|object
-operator|.
 name|util
 decl_stmt|;
 name|int
@@ -1494,8 +1484,6 @@ name|util
 init|=
 name|commit
 operator|->
-name|object
-operator|.
 name|util
 decl_stmt|;
 name|struct
@@ -1505,8 +1493,6 @@ name|util2
 init|=
 name|other
 operator|->
-name|object
-operator|.
 name|util
 decl_stmt|;
 name|int
@@ -1895,8 +1881,6 @@ name|info
 init|=
 name|commit
 operator|->
-name|object
-operator|.
 name|util
 decl_stmt|;
 name|assert
@@ -1944,8 +1928,6 @@ name|util
 init|=
 name|commit
 operator|->
-name|object
-operator|.
 name|util
 decl_stmt|;
 if|if
@@ -1999,8 +1981,6 @@ name|NULL
 expr_stmt|;
 name|commit
 operator|->
-name|object
-operator|.
 name|util
 operator|=
 name|util
@@ -2030,8 +2010,6 @@ name|util
 init|=
 name|commit
 operator|->
-name|object
-operator|.
 name|util
 decl_stmt|;
 name|assert
@@ -2092,8 +2070,6 @@ name|util
 init|=
 name|commit
 operator|->
-name|object
-operator|.
 name|util
 decl_stmt|;
 name|int
@@ -2238,8 +2214,6 @@ name|util
 init|=
 name|commit
 operator|->
-name|object
-operator|.
 name|util
 decl_stmt|;
 name|int
@@ -2272,8 +2246,6 @@ name|util
 operator|=
 name|commit
 operator|->
-name|object
-operator|.
 name|util
 expr_stmt|;
 for|for
@@ -2374,8 +2346,6 @@ name|util
 operator|=
 name|commit
 operator|->
-name|object
-operator|.
 name|util
 expr_stmt|;
 name|num_blame_lines
@@ -2574,8 +2544,6 @@ name|util
 operator|=
 name|commit
 operator|->
-name|object
-operator|.
 name|util
 expr_stmt|;
 for|for
@@ -2904,8 +2872,6 @@ name|util
 init|=
 name|c2
 operator|->
-name|object
-operator|.
 name|util
 decl_stmt|;
 name|paths
@@ -3083,8 +3049,6 @@ name|cutil
 init|=
 name|commit
 operator|->
-name|object
-operator|.
 name|util
 decl_stmt|;
 name|struct
@@ -3348,8 +3312,6 @@ name|util
 init|=
 name|commit
 operator|->
-name|object
-operator|.
 name|util
 decl_stmt|;
 if|if
@@ -3484,8 +3446,6 @@ name|util
 init|=
 name|commit
 operator|->
-name|object
-operator|.
 name|util
 decl_stmt|;
 if|if
@@ -3995,8 +3955,6 @@ name|util
 init|=
 name|c
 operator|->
-name|object
-operator|.
 name|util
 decl_stmt|;
 name|util
@@ -4028,8 +3986,6 @@ name|util
 init|=
 name|c
 operator|->
-name|object
-operator|.
 name|util
 decl_stmt|;
 return|return
@@ -4860,8 +4816,6 @@ name|u
 operator|=
 name|c
 operator|->
-name|object
-operator|.
 name|util
 expr_stmt|;
 if|if
@@ -4973,8 +4927,6 @@ name|u
 operator|=
 name|c
 operator|->
-name|object
-operator|.
 name|util
 expr_stmt|;
 name|get_commit_info

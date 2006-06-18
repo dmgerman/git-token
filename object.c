@@ -61,6 +61,28 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|type_names
+specifier|const
+name|char
+modifier|*
+name|type_names
+index|[]
+init|=
+block|{
+literal|"none"
+block|,
+literal|"blob"
+block|,
+literal|"tree"
+block|,
+literal|"commit"
+block|,
+literal|"bad"
+block|}
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|track_object_refs
 name|int
 name|track_object_refs
@@ -278,7 +300,7 @@ name|obj
 operator|->
 name|type
 operator|=
-name|NULL
+name|TYPE_NONE
 expr_stmt|;
 name|obj
 operator|->
@@ -1114,7 +1136,7 @@ name|object
 operator|.
 name|type
 operator|=
-name|NULL
+name|TYPE_NONE
 expr_stmt|;
 return|return
 operator|&
