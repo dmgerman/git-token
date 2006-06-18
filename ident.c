@@ -364,7 +364,7 @@ literal|'.'
 argument_list|)
 operator|)
 condition|)
-name|strncpy
+name|safe_strncpy
 argument_list|(
 name|git_default_email
 operator|+
@@ -383,7 +383,7 @@ name|len
 argument_list|)
 expr_stmt|;
 else|else
-name|strncpy
+name|safe_strncpy
 argument_list|(
 name|git_default_email
 operator|+
@@ -398,18 +398,6 @@ argument_list|)
 operator|-
 name|len
 argument_list|)
-expr_stmt|;
-name|git_default_email
-index|[
-sizeof|sizeof
-argument_list|(
-name|git_default_email
-argument_list|)
-operator|-
-literal|1
-index|]
-operator|=
-literal|0
 expr_stmt|;
 block|}
 comment|/* And set the default date */

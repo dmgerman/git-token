@@ -103,9 +103,11 @@ name|char
 name|blame_usage
 index|[]
 init|=
-literal|"[-c] [-l] [--] file [commit]\n"
+literal|"[-c] [-l] [-t] [-S<revs-file>] [--] file [commit]\n"
 literal|"  -c, --compability Use the same output mode as git-annotate (Default: off)\n"
 literal|"  -l, --long        Show long commit SHA1 (Default: off)\n"
+literal|"  -t, --time        Show raw timestamp (Default: off)\n"
+literal|"  -S, --revs-file   Use revisions from revs-file instead of calling git-rev-list\n"
 literal|"  -h, --help        This message"
 decl_stmt|;
 end_decl_stmt
@@ -3835,6 +3837,9 @@ specifier|const
 name|char
 modifier|*
 name|tz_str
+parameter_list|,
+name|int
+name|show_raw_time
 parameter_list|)
 block|{
 specifier|static
@@ -3859,6 +3864,26 @@ name|tm
 modifier|*
 name|tm
 decl_stmt|;
+if|if
+condition|(
+name|show_raw_time
+condition|)
+block|{
+name|sprintf
+argument_list|(
+name|time_buf
+argument_list|,
+literal|"%lu %s"
+argument_list|,
+name|time
+argument_list|,
+name|tz_str
+argument_list|)
+expr_stmt|;
+return|return
+name|time_buf
+return|;
+block|}
 name|tz
 operator|=
 name|atoi
@@ -4193,6 +4218,11 @@ init|=
 literal|0
 decl_stmt|;
 name|int
+name|show_raw_time
+init|=
+literal|0
+decl_stmt|;
+name|int
 name|options
 init|=
 literal|1
@@ -4354,6 +4384,38 @@ argument_list|)
 condition|)
 block|{
 name|compability
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|argv
+index|[
+name|i
+index|]
+argument_list|,
+literal|"-t"
+argument_list|)
+operator|||
+operator|!
+name|strcmp
+argument_list|(
+name|argv
+index|[
+name|i
+index|]
+argument_list|,
+literal|"--time"
+argument_list|)
+condition|)
+block|{
+name|show_raw_time
 operator|=
 literal|1
 expr_stmt|;
@@ -4963,6 +5025,8 @@ argument_list|,
 name|ci
 operator|.
 name|author_tz
+argument_list|,
+name|show_raw_time
 argument_list|)
 argument_list|,
 name|i
@@ -5011,6 +5075,8 @@ argument_list|,
 name|ci
 operator|.
 name|author_tz
+argument_list|,
+name|show_raw_time
 argument_list|)
 argument_list|,
 name|max_digits

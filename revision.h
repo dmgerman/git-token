@@ -177,6 +177,11 @@ name|remove_empty_trees
 range|:
 literal|1
 decl_stmt|,
+DECL|member|simplify_history
+name|simplify_history
+range|:
+literal|1
+decl_stmt|,
 DECL|member|lifo
 name|lifo
 range|:

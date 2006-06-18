@@ -213,7 +213,7 @@ name|setenv
 argument_list|(
 literal|"LESS"
 argument_list|,
-literal|"-S"
+literal|"-RS"
 argument_list|,
 literal|0
 argument_list|)
