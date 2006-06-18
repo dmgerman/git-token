@@ -201,8 +201,6 @@ specifier|static
 name|struct
 name|cache_entry
 name|df_conflict_entry
-init|=
-block|{ }
 decl_stmt|;
 end_decl_stmt
 
