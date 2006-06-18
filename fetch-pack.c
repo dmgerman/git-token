@@ -125,6 +125,18 @@ name|POPPED
 value|(1U<< 4)
 end_define
 
+begin_comment
+comment|/*  * After sending this many "have"s if we do not get any new ACK , we  * give up traversing our history.  */
+end_comment
+
+begin_define
+DECL|macro|MAX_IN_VAIN
+define|#
+directive|define
+name|MAX_IN_VAIN
+value|256
+end_define
+
 begin_decl_stmt
 DECL|variable|rev_list
 specifier|static
@@ -717,6 +729,16 @@ name|char
 modifier|*
 name|sha1
 decl_stmt|;
+name|unsigned
+name|in_vain
+init|=
+literal|0
+decl_stmt|;
+name|int
+name|got_continue
+init|=
+literal|0
+decl_stmt|;
 name|for_each_ref
 argument_list|(
 name|rev_list_insert_ref
@@ -880,6 +902,9 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|in_vain
+operator|++
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -1001,6 +1026,14 @@ name|retval
 operator|=
 literal|0
 expr_stmt|;
+name|in_vain
+operator|=
+literal|0
+expr_stmt|;
+name|got_continue
+operator|=
+literal|1
+expr_stmt|;
 block|}
 block|}
 do|while
@@ -1011,6 +1044,29 @@ do|;
 name|flushes
 operator|--
 expr_stmt|;
+if|if
+condition|(
+name|got_continue
+operator|&&
+name|MAX_IN_VAIN
+operator|<
+name|in_vain
+condition|)
+block|{
+if|if
+condition|(
+name|verbose
+condition|)
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"giving up\n"
+argument_list|)
+expr_stmt|;
+break|break;
+comment|/* give up */
+block|}
 block|}
 block|}
 name|done
