@@ -3904,8 +3904,6 @@ parameter_list|)
 block|{
 name|c
 operator|->
-name|object
-operator|.
 name|util
 operator|=
 name|data
@@ -3928,8 +3926,6 @@ block|{
 return|return
 name|c
 operator|->
-name|object
-operator|.
 name|util
 return|;
 block|}
