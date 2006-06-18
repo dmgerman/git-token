@@ -160,6 +160,10 @@ name|write
 argument_list|(
 name|fd
 argument_list|,
+operator|(
+name|char
+operator|*
+operator|)
 name|buffer
 operator|+
 name|ret

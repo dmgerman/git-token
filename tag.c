@@ -319,6 +319,10 @@ argument_list|)
 operator|||
 name|get_sha1_hex
 argument_list|(
+operator|(
+name|char
+operator|*
+operator|)
 name|data
 operator|+
 literal|7
@@ -332,6 +336,10 @@ literal|1
 return|;
 name|type_line
 operator|=
+operator|(
+name|char
+operator|*
+operator|)
 name|data
 operator|+
 literal|48
