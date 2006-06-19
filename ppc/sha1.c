@@ -151,6 +151,9 @@ name|c
 operator|->
 name|len
 operator|+=
+operator|(
+name|uint64_t
+operator|)
 name|n
 operator|<<
 literal|3
