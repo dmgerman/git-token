@@ -21,6 +21,12 @@ directive|include
 file|"delta.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"git-compat-util.h"
+end_include
+
 begin_comment
 comment|/* maximum hash entry list for the same hash bucket */
 end_comment
@@ -1157,7 +1163,7 @@ name|index_entry
 modifier|*
 name|hash
 index|[
-literal|0
+name|FLEX_ARRAY
 index|]
 decl_stmt|;
 block|}

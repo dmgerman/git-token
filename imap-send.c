@@ -369,7 +369,7 @@ name|flags
 decl_stmt|;
 DECL|member|crlf
 name|unsigned
-name|char
+name|int
 name|crlf
 range|:
 literal|1
