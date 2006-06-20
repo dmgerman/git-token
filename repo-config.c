@@ -456,11 +456,6 @@ condition|)
 name|local
 operator|=
 name|repo_config
-expr_stmt|;
-else|else
-name|local
-operator|=
-name|repo_config
 operator|=
 name|strdup
 argument_list|(
