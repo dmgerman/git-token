@@ -1510,14 +1510,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|access
 argument_list|(
 name|user_config
 argument_list|,
 name|R_OK
 argument_list|)
-operator|>
-literal|0
 condition|)
 name|ret
 operator|=
