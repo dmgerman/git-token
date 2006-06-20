@@ -570,6 +570,14 @@ name|force_file
 init|=
 literal|0
 decl_stmt|;
+comment|/* Without this we cannot rely on waitpid() to tell 	 * what happened to our children. 	 */
+name|signal
+argument_list|(
+name|SIGCHLD
+argument_list|,
+name|SIG_DFL
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|argc
