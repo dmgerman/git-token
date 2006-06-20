@@ -154,16 +154,13 @@ block|}
 comment|/* 	 * Make sure there is one revision (i.e. pending object), 	 * and there is no revision filtering parameters. 	 */
 if|if
 condition|(
-operator|!
 name|rev
 operator|.
-name|pending_objects
-operator|||
-name|rev
+name|pending
 operator|.
-name|pending_objects
-operator|->
-name|next
+name|nr
+operator|!=
+literal|1
 operator|||
 name|rev
 operator|.
