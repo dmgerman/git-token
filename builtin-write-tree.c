@@ -71,8 +71,10 @@ name|lock_file
 modifier|*
 name|lock_file
 init|=
-name|xmalloc
+name|xcalloc
 argument_list|(
+literal|1
+argument_list|,
 sizeof|sizeof
 argument_list|(
 expr|struct

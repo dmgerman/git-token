@@ -2383,8 +2383,10 @@ expr_stmt|;
 comment|/* We can't free this memory, it becomes part of a linked list parsed atexit() */
 name|lock_file
 operator|=
-name|xmalloc
+name|xcalloc
 argument_list|(
+literal|1
+argument_list|,
 sizeof|sizeof
 argument_list|(
 expr|struct
