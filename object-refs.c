@@ -726,6 +726,13 @@ argument_list|(
 literal|"cannot do reachability with object refs turned off"
 argument_list|)
 expr_stmt|;
+comment|/* nothing to lookup */
+if|if
+condition|(
+operator|!
+name|refs_hash_size
+condition|)
+return|return;
 comment|/* If we've been here already, don't bother */
 if|if
 condition|(
