@@ -3412,12 +3412,15 @@ argument_list|(
 name|ss
 argument_list|)
 decl_stmt|;
-name|fclose
+name|freopen
 argument_list|(
+literal|"/dev/null"
+argument_list|,
+literal|"w"
+argument_list|,
 name|stderr
 argument_list|)
 expr_stmt|;
-comment|//FIXME: workaround
 if|if
 condition|(
 name|getpeername
