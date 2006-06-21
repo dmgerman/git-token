@@ -17,8 +17,7 @@ end_comment
 
 begin_function
 DECL|function|safe_write
-specifier|static
-name|void
+name|ssize_t
 name|safe_write
 parameter_list|(
 name|int
@@ -29,10 +28,15 @@ name|void
 modifier|*
 name|buf
 parameter_list|,
-name|unsigned
+name|ssize_t
 name|n
 parameter_list|)
 block|{
+name|ssize_t
+name|nn
+init|=
+name|n
+decl_stmt|;
 while|while
 condition|(
 name|n
@@ -88,6 +92,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+name|nn
+return|;
 block|}
 end_function
 

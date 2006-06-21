@@ -153,6 +153,7 @@ begin_decl_stmt
 DECL|variable|non_common_revs
 DECL|variable|multi_ack
 DECL|variable|use_thin_pack
+DECL|variable|use_sideband
 specifier|static
 name|int
 name|non_common_revs
@@ -166,6 +167,8 @@ decl_stmt|,
 name|use_thin_pack
 init|=
 literal|0
+decl_stmt|,
+name|use_sideband
 decl_stmt|;
 end_decl_stmt
 
@@ -801,6 +804,11 @@ condition|)
 block|{
 continue|continue;
 block|}
+if|if
+condition|(
+operator|!
+name|fetching
+condition|)
 name|packet_write
 argument_list|(
 name|fd
@@ -808,7 +816,7 @@ index|[
 literal|1
 index|]
 argument_list|,
-literal|"want %s%s%s\n"
+literal|"want %s%s%s%s\n"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -824,12 +832,36 @@ literal|""
 operator|)
 argument_list|,
 operator|(
+name|use_sideband
+condition|?
+literal|" side-band"
+else|:
+literal|""
+operator|)
+argument_list|,
+operator|(
 name|use_thin_pack
 condition|?
 literal|" thin-pack"
 else|:
 literal|""
 operator|)
+argument_list|)
+expr_stmt|;
+else|else
+name|packet_write
+argument_list|(
+name|fd
+index|[
+literal|1
+index|]
+argument_list|,
+literal|"want %s\n"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|remote
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|fetching
@@ -2127,6 +2159,30 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+name|server_supports
+argument_list|(
+literal|"side-band"
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
+name|verbose
+condition|)
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"Server supports side-band\n"
+argument_list|)
+expr_stmt|;
+name|use_sideband
+operator|=
+literal|1
+expr_stmt|;
+block|}
+if|if
+condition|(
 operator|!
 name|ref
 condition|)
@@ -2209,6 +2265,8 @@ argument_list|,
 literal|"git-fetch-pack"
 argument_list|,
 name|quiet
+argument_list|,
+name|use_sideband
 argument_list|)
 expr_stmt|;
 else|else
@@ -2221,6 +2279,8 @@ argument_list|,
 literal|"git-fetch-pack"
 argument_list|,
 name|quiet
+argument_list|,
+name|use_sideband
 argument_list|)
 expr_stmt|;
 if|if
