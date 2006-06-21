@@ -3132,7 +3132,13 @@ name|bytes
 argument_list|)
 expr_stmt|;
 name|cp
-operator|+=
+operator|=
+operator|(
+name|char
+operator|*
+operator|)
+name|cp
+operator|+
 name|bytes
 expr_stmt|;
 name|puts

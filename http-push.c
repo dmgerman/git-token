@@ -1024,6 +1024,10 @@ name|request
 operator|->
 name|local_fileno
 argument_list|,
+operator|(
+name|char
+operator|*
+operator|)
 name|ptr
 operator|+
 name|posn

@@ -281,6 +281,10 @@ name|desc
 operator|->
 name|buf
 operator|=
+operator|(
+name|char
+operator|*
+operator|)
 name|buf
 operator|+
 name|len
@@ -435,6 +439,11 @@ name|char
 modifier|*
 name|sha1
 init|=
+operator|(
+name|unsigned
+name|char
+operator|*
+operator|)
 name|tree
 operator|+
 name|len
@@ -517,7 +526,9 @@ init|=
 name|desc
 operator|->
 name|buf
-decl_stmt|,
+decl_stmt|;
+specifier|const
+name|char
 modifier|*
 name|path
 decl_stmt|;
@@ -590,6 +601,12 @@ name|entry
 operator|->
 name|sha1
 operator|=
+operator|(
+specifier|const
+name|unsigned
+name|char
+operator|*
+operator|)
 name|path
 expr_stmt|;
 name|path
@@ -600,6 +617,10 @@ name|len
 operator|=
 name|path
 operator|-
+operator|(
+name|char
+operator|*
+operator|)
 name|tree
 expr_stmt|;
 if|if

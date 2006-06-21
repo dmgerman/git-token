@@ -620,6 +620,10 @@ name|obj_req
 operator|->
 name|local
 argument_list|,
+operator|(
+name|char
+operator|*
+operator|)
 name|ptr
 operator|+
 name|posn
