@@ -3146,6 +3146,8 @@ name|me
 parameter_list|,
 name|int
 name|quiet
+parameter_list|,
+name|int
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -3168,6 +3170,8 @@ name|me
 parameter_list|,
 name|int
 name|quiet
+parameter_list|,
+name|int
 parameter_list|)
 function_decl|;
 end_function_decl
