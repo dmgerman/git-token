@@ -771,6 +771,10 @@ name|xread
 argument_list|(
 name|fd
 argument_list|,
+operator|(
+name|char
+operator|*
+operator|)
 name|buffer
 operator|+
 name|size
@@ -832,6 +836,10 @@ argument_list|)
 expr_stmt|;
 name|memset
 argument_list|(
+operator|(
+name|char
+operator|*
+operator|)
 name|buffer
 operator|+
 name|size
@@ -5914,6 +5922,10 @@ name|xread
 argument_list|(
 name|fd
 argument_list|,
+operator|(
+name|char
+operator|*
+operator|)
 name|buf
 operator|+
 name|got

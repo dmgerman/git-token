@@ -881,7 +881,26 @@ break|break;
 comment|/* verbatim */
 case|case
 literal|'0'
-operator|...
+case|:
+case|case
+literal|'1'
+case|:
+case|case
+literal|'2'
+case|:
+case|case
+literal|'3'
+case|:
+case|case
+literal|'4'
+case|:
+case|case
+literal|'5'
+case|:
+case|case
+literal|'6'
+case|:
+case|case
 literal|'7'
 case|:
 comment|/* octal */
