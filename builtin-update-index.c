@@ -33,6 +33,12 @@ directive|include
 file|"tree-walk.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"builtin.h"
+end_include
+
 begin_comment
 comment|/*  * Default to not allowing changes to the list of files. The  * tool doesn't actually care, but this makes it harder to add  * files to the revision control by mistake by doing something  * like "git-update-index *" and suddenly having all the object  * files be revision controlled.  */
 end_comment
@@ -895,15 +901,6 @@ expr_stmt|;
 block|}
 end_function
 
-begin_decl_stmt
-DECL|variable|lock_file
-specifier|static
-name|struct
-name|lock_file
-name|lock_file
-decl_stmt|;
-end_decl_stmt
-
 begin_function
 DECL|function|update_one
 specifier|static
@@ -1120,7 +1117,7 @@ decl_stmt|;
 name|int
 name|stage
 decl_stmt|;
-comment|/* This reads lines formatted in one of three formats: 		 * 		 * (1) mode         SP sha1          TAB path 		 * The first format is what "git-apply --index-info" 		 * reports, and used to reconstruct a partial tree 		 * that is used for phony merge base tree when falling 		 * back on 3-way merge. 		 * 		 * (2) mode SP type SP sha1          TAB path 		 * The second format is to stuff git-ls-tree output 		 * into the index file. 		 *  		 * (3) mode         SP sha1 SP stage TAB path 		 * This format is to put higher order stages into the 		 * index file and matches git-ls-files --stage output. 		 */
+comment|/* This reads lines formatted in one of three formats: 		 * 		 * (1) mode         SP sha1          TAB path 		 * The first format is what "git-apply --index-info" 		 * reports, and used to reconstruct a partial tree 		 * that is used for phony merge base tree when falling 		 * back on 3-way merge. 		 * 		 * (2) mode SP type SP sha1          TAB path 		 * The second format is to stuff git-ls-tree output 		 * into the index file. 		 * 		 * (3) mode         SP sha1 SP stage TAB path 		 * This format is to put higher order stages into the 		 * index file and matches git-ls-files --stage output. 		 */
 name|read_line
 argument_list|(
 operator|&
@@ -2298,9 +2295,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|main
+DECL|function|cmd_update_index
 name|int
-name|main
+name|cmd_update_index
 parameter_list|(
 name|int
 name|argc
@@ -2310,6 +2307,11 @@ name|char
 modifier|*
 modifier|*
 name|argv
+parameter_list|,
+name|char
+modifier|*
+modifier|*
+name|envp
 parameter_list|)
 block|{
 name|int
@@ -2368,16 +2370,34 @@ name|refresh_flags
 init|=
 literal|0
 decl_stmt|;
+name|struct
+name|lock_file
+modifier|*
+name|lock_file
+decl_stmt|;
 name|git_config
 argument_list|(
 name|git_default_config
+argument_list|)
+expr_stmt|;
+comment|/* We can't free this memory, it becomes part of a linked list parsed atexit() */
+name|lock_file
+operator|=
+name|xcalloc
+argument_list|(
+literal|1
+argument_list|,
+sizeof|sizeof
+argument_list|(
+expr|struct
+name|lock_file
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|newfd
 operator|=
 name|hold_lock_file_for_update
 argument_list|(
-operator|&
 name|lock_file
 argument_list|,
 name|get_index_file
@@ -2392,7 +2412,7 @@ literal|0
 condition|)
 name|die
 argument_list|(
-literal|"unable to create new index file"
+literal|"unable to create new cachefile"
 argument_list|)
 expr_stmt|;
 name|entries
@@ -3222,7 +3242,6 @@ argument_list|)
 operator|||
 name|commit_lock_file
 argument_list|(
-operator|&
 name|lock_file
 argument_list|)
 condition|)
@@ -3232,6 +3251,11 @@ literal|"Unable to write new index file"
 argument_list|)
 expr_stmt|;
 block|}
+name|rollback_lock_file
+argument_list|(
+name|lock_file
+argument_list|)
+expr_stmt|;
 return|return
 name|has_errors
 condition|?
