@@ -131,11 +131,10 @@ name|commit_list
 modifier|*
 name|commits
 decl_stmt|;
-DECL|member|pending_objects
+DECL|member|pending
 name|struct
-name|object_list
-modifier|*
-name|pending_objects
+name|object_array
+name|pending
 decl_stmt|;
 comment|/* Basic information */
 DECL|member|prefix
@@ -560,10 +559,7 @@ end_struct
 
 begin_function_decl
 specifier|extern
-name|struct
-name|object_list
-modifier|*
-modifier|*
+name|void
 name|add_object
 parameter_list|(
 name|struct
@@ -572,8 +568,7 @@ modifier|*
 name|obj
 parameter_list|,
 name|struct
-name|object_list
-modifier|*
+name|object_array
 modifier|*
 name|p
 parameter_list|,
@@ -581,6 +576,29 @@ name|struct
 name|name_path
 modifier|*
 name|path
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|name
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|void
+name|add_pending_object
+parameter_list|(
+name|struct
+name|rev_info
+modifier|*
+name|revs
+parameter_list|,
+name|struct
+name|object
+modifier|*
+name|obj
 parameter_list|,
 specifier|const
 name|char
