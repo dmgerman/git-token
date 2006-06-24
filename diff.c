@@ -1117,6 +1117,10 @@ name|mf
 operator|->
 name|ptr
 operator|=
+operator|(
+name|char
+operator|*
+operator|)
 literal|""
 expr_stmt|;
 comment|/* does not matter */
@@ -2267,6 +2271,7 @@ name|i
 operator|++
 control|)
 block|{
+specifier|const
 name|char
 modifier|*
 name|prefix
@@ -5151,6 +5156,10 @@ name|s
 operator|->
 name|data
 operator|=
+operator|(
+name|char
+operator|*
+operator|)
 literal|""
 expr_stmt|;
 name|s
@@ -7814,6 +7823,7 @@ end_function
 
 begin_function
 DECL|function|opt_arg
+specifier|static
 name|int
 name|opt_arg
 parameter_list|(
@@ -9689,9 +9699,6 @@ modifier|*
 name|p
 parameter_list|,
 name|int
-name|inter_name_termination
-parameter_list|,
-name|int
 name|line_termination
 parameter_list|)
 block|{
@@ -9719,15 +9726,6 @@ name|two
 operator|->
 name|path
 argument_list|)
-expr_stmt|;
-else|else
-name|path
-operator|=
-name|p
-operator|->
-name|two
-operator|->
-name|path
 expr_stmt|;
 name|printf
 argument_list|(
@@ -10865,8 +10863,6 @@ case|:
 name|diff_flush_name
 argument_list|(
 name|p
-argument_list|,
-name|inter_name_termination
 argument_list|,
 name|line_termination
 argument_list|)
