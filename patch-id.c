@@ -232,6 +232,23 @@ name|p
 operator|+=
 literal|10
 expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|memcmp
+argument_list|(
+name|line
+argument_list|,
+literal|"commit "
+argument_list|,
+literal|7
+argument_list|)
+condition|)
+name|p
+operator|+=
+literal|7
+expr_stmt|;
 if|if
 condition|(
 operator|!
