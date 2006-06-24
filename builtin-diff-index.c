@@ -151,6 +151,23 @@ name|diff_cache_usage
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+name|rev
+operator|.
+name|diffopt
+operator|.
+name|output_format
+condition|)
+name|rev
+operator|.
+name|diffopt
+operator|.
+name|output_format
+operator|=
+name|DIFF_FORMAT_RAW
+expr_stmt|;
 comment|/* 	 * Make sure there is one revision (i.e. pending object), 	 * and there is no revision filtering parameters. 	 */
 if|if
 condition|(

@@ -8051,12 +8051,6 @@ argument_list|)
 expr_stmt|;
 name|options
 operator|->
-name|output_format
-operator|=
-name|DIFF_FORMAT_RAW
-expr_stmt|;
-name|options
-operator|->
 name|line_termination
 operator|=
 literal|'\n'
