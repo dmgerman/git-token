@@ -284,7 +284,7 @@ operator|->
 name|diffopt
 operator|.
 name|output_format
-operator|==
+operator|&
 name|DIFF_FORMAT_PATCH
 operator|)
 condition|)
