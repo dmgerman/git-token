@@ -3514,7 +3514,7 @@ name|o
 operator|->
 name|color_diff
 argument_list|,
-name|DIFF_PLAIN
+name|DIFF_RESET
 argument_list|)
 decl_stmt|;
 name|a_one
