@@ -364,7 +364,7 @@ literal|'.'
 argument_list|)
 operator|)
 condition|)
-name|safe_strncpy
+name|strlcpy
 argument_list|(
 name|git_default_email
 operator|+
@@ -383,7 +383,7 @@ name|len
 argument_list|)
 expr_stmt|;
 else|else
-name|safe_strncpy
+name|strlcpy
 argument_list|(
 name|git_default_email
 operator|+

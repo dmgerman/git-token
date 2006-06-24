@@ -677,7 +677,7 @@ condition|(
 name|output_directory
 condition|)
 block|{
-name|safe_strncpy
+name|strlcpy
 argument_list|(
 name|filename
 argument_list|,

@@ -1502,7 +1502,7 @@ operator|+
 literal|1
 argument_list|)
 decl_stmt|;
-name|safe_strncpy
+name|strlcpy
 argument_list|(
 name|date_spec
 argument_list|,
