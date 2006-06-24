@@ -279,25 +279,6 @@ name|dense_combined_merges
 operator|=
 literal|1
 expr_stmt|;
-comment|/* 	 * Backward compatibility wart - "diff-files -s" used to 	 * defeat the common diff option "-s" which asked for 	 * DIFF_FORMAT_NO_OUTPUT. 	 */
-if|if
-condition|(
-name|revs
-operator|->
-name|diffopt
-operator|.
-name|output_format
-operator|==
-name|DIFF_FORMAT_NO_OUTPUT
-condition|)
-name|revs
-operator|->
-name|diffopt
-operator|.
-name|output_format
-operator|=
-name|DIFF_FORMAT_RAW
-expr_stmt|;
 return|return
 name|run_diff_files
 argument_list|(
