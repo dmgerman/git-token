@@ -1053,6 +1053,14 @@ name|ignore_merges
 operator|=
 literal|1
 expr_stmt|;
+name|rev
+operator|.
+name|diffopt
+operator|.
+name|msg_sep
+operator|=
+literal|"---\n"
+expr_stmt|;
 name|git_config
 argument_list|(
 name|git_format_config

@@ -101,11 +101,6 @@ name|rev_info
 modifier|*
 name|opt
 parameter_list|,
-name|struct
-name|log_info
-modifier|*
-name|log
-parameter_list|,
 specifier|const
 name|char
 modifier|*
