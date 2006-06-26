@@ -12,6 +12,12 @@ directive|define
 name|PKTLINE_H
 end_define
 
+begin_include
+include|#
+directive|include
+file|"git-compat-util.h"
+end_include
+
 begin_comment
 comment|/*  * Silly packetized line writing interface  */
 end_comment
