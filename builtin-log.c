@@ -451,14 +451,6 @@ name|always_show_header
 operator|=
 literal|1
 expr_stmt|;
-name|rev
-operator|.
-name|diffopt
-operator|.
-name|recursive
-operator|=
-literal|1
-expr_stmt|;
 name|cmd_log_init
 argument_list|(
 name|argc
