@@ -414,6 +414,14 @@ name|diff
 operator|=
 literal|1
 expr_stmt|;
+name|opt
+operator|->
+name|diffopt
+operator|.
+name|msg_sep
+operator|=
+literal|"---\n"
+expr_stmt|;
 name|argc
 operator|=
 name|setup_revisions
