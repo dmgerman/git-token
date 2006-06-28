@@ -30,7 +30,7 @@ name|EMIT
 parameter_list|(
 name|x
 parameter_list|)
-value|( (++len< n)&& (*bp++ = (x)) )
+value|do { if (++len< n) *bp++ = (x); } while(0)
 end_define
 
 begin_function
