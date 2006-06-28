@@ -593,6 +593,10 @@ decl_stmt|,
 name|ret
 init|=
 literal|0
+decl_stmt|,
+name|saved_errno
+init|=
+name|errno
 decl_stmt|;
 specifier|const
 name|char
@@ -762,6 +766,10 @@ name|chdir
 argument_list|(
 name|subdir
 argument_list|)
+expr_stmt|;
+name|errno
+operator|=
+name|saved_errno
 expr_stmt|;
 return|return
 name|ret
