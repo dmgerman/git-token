@@ -4760,6 +4760,8 @@ literal|1
 expr_stmt|;
 name|show_log_first
 operator|=
+operator|!
+operator|!
 name|rev
 operator|->
 name|loginfo
