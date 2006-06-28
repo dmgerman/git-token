@@ -1897,6 +1897,7 @@ decl_stmt|,
 modifier|*
 name|end
 decl_stmt|;
+specifier|const
 name|char
 modifier|*
 name|port
@@ -2884,6 +2885,7 @@ modifier|*
 name|path
 parameter_list|)
 block|{
+specifier|const
 name|char
 modifier|*
 name|port

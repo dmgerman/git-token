@@ -576,6 +576,7 @@ specifier|static
 name|void
 name|describe
 parameter_list|(
+specifier|const
 name|char
 modifier|*
 name|arg

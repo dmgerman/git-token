@@ -1612,6 +1612,7 @@ index|[
 literal|20
 index|]
 decl_stmt|;
+specifier|const
 name|char
 modifier|*
 name|next
