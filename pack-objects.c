@@ -5099,6 +5099,24 @@ return|return
 operator|-
 literal|1
 return|;
+comment|/* 	 * We do not bother to try a delta that we discarded 	 * on an earlier try. 	 */
+if|if
+condition|(
+name|trg_entry
+operator|->
+name|in_pack
+operator|&&
+name|trg_entry
+operator|->
+name|in_pack
+operator|==
+name|src_entry
+operator|->
+name|in_pack
+condition|)
+return|return
+literal|0
+return|;
 comment|/* 	 * If the current object is at pack edge, take the depth the 	 * objects that depend on the current object into account -- 	 * otherwise they would become too deep. 	 */
 if|if
 condition|(
