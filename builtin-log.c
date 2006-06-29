@@ -1093,7 +1093,15 @@ name|diffopt
 operator|.
 name|msg_sep
 operator|=
-literal|"---\n"
+literal|""
+expr_stmt|;
+name|rev
+operator|.
+name|diffopt
+operator|.
+name|recursive
+operator|=
+literal|1
 expr_stmt|;
 name|git_config
 argument_list|(
