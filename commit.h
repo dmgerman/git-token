@@ -593,6 +593,26 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|struct
+name|commit_list
+modifier|*
+name|get_merge_bases
+parameter_list|(
+name|struct
+name|commit
+modifier|*
+name|rev1
+parameter_list|,
+name|struct
+name|commit
+modifier|*
+name|rev2
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
