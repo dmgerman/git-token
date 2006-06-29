@@ -12528,7 +12528,7 @@ name|xecfg
 operator|.
 name|flags
 operator|=
-literal|3
+name|XDL_EMIT_FUNCNAMES
 expr_stmt|;
 name|ecb
 operator|.
