@@ -5099,9 +5099,12 @@ return|return
 operator|-
 literal|1
 return|;
-comment|/* 	 * We do not bother to try a delta that we discarded 	 * on an earlier try. 	 */
+comment|/* 	 * We do not bother to try a delta that we discarded 	 * on an earlier try, but only when reusing delta data. 	 */
 if|if
 condition|(
+operator|!
+name|no_reuse_delta
+operator|&&
 name|trg_entry
 operator|->
 name|in_pack
