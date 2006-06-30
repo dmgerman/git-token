@@ -389,8 +389,15 @@ parameter_list|)
 block|{
 name|int
 name|i
+decl_stmt|,
+name|max
 decl_stmt|;
 comment|/* Look up all the requirements, warn about missing objects.. */
+name|max
+operator|=
+name|get_max_object_index
+argument_list|()
+expr_stmt|;
 for|for
 control|(
 name|i
@@ -399,7 +406,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|obj_allocs
+name|max
 condition|;
 name|i
 operator|++
@@ -416,10 +423,10 @@ name|object
 modifier|*
 name|obj
 init|=
-name|objs
-index|[
+name|get_indexed_object
+argument_list|(
 name|i
-index|]
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
