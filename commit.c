@@ -4487,12 +4487,16 @@ begin_comment
 comment|/* merge-rebase stuff */
 end_comment
 
+begin_comment
+comment|/* bits #0..7 in revision.h */
+end_comment
+
 begin_define
 DECL|macro|PARENT1
 define|#
 directive|define
 name|PARENT1
-value|1
+value|(1u<< 8)
 end_define
 
 begin_define
@@ -4500,7 +4504,7 @@ DECL|macro|PARENT2
 define|#
 directive|define
 name|PARENT2
-value|2
+value|(1u<< 9)
 end_define
 
 begin_define
@@ -4508,7 +4512,7 @@ DECL|macro|UNINTERESTING
 define|#
 directive|define
 name|UNINTERESTING
-value|4
+value|(1u<<10)
 end_define
 
 begin_function
@@ -5088,7 +5092,62 @@ operator|=
 name|next
 expr_stmt|;
 block|}
-comment|/* reset flags */
+return|return
+name|result
+return|;
+block|}
+end_function
+
+begin_function
+DECL|function|get_merge_bases_clean
+name|struct
+name|commit_list
+modifier|*
+name|get_merge_bases_clean
+parameter_list|(
+name|struct
+name|commit
+modifier|*
+name|rev1
+parameter_list|,
+name|struct
+name|commit
+modifier|*
+name|rev2
+parameter_list|)
+block|{
+name|unsigned
+name|int
+name|flags1
+init|=
+name|rev1
+operator|->
+name|object
+operator|.
+name|flags
+decl_stmt|;
+name|unsigned
+name|int
+name|flags2
+init|=
+name|rev2
+operator|->
+name|object
+operator|.
+name|flags
+decl_stmt|;
+name|struct
+name|commit_list
+modifier|*
+name|result
+init|=
+name|get_merge_bases
+argument_list|(
+name|rev1
+argument_list|,
+name|rev2
+argument_list|)
+decl_stmt|;
 name|clear_commit_marks
 argument_list|(
 name|rev1
@@ -5110,6 +5169,22 @@ name|PARENT2
 operator||
 name|UNINTERESTING
 argument_list|)
+expr_stmt|;
+name|rev1
+operator|->
+name|object
+operator|.
+name|flags
+operator|=
+name|flags1
+expr_stmt|;
+name|rev2
+operator|->
+name|object
+operator|.
+name|flags
+operator|=
+name|flags2
 expr_stmt|;
 return|return
 name|result
