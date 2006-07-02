@@ -54,6 +54,8 @@ argument_list|(
 name|rev1
 argument_list|,
 name|rev2
+argument_list|,
+literal|0
 argument_list|)
 decl_stmt|;
 if|if

@@ -4111,11 +4111,13 @@ condition|)
 block|{
 name|exclude
 operator|=
-name|get_merge_bases_clean
+name|get_merge_bases
 argument_list|(
 name|a
 argument_list|,
 name|b
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 name|add_pending_commit_list
