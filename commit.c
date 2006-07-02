@@ -4487,10 +4487,10 @@ value|(1u<< 9)
 end_define
 
 begin_define
-DECL|macro|UNINTERESTING
+DECL|macro|STALE
 define|#
 directive|define
-name|UNINTERESTING
+name|STALE
 value|(1u<<10)
 end_define
 
@@ -4536,7 +4536,7 @@ name|object
 operator|.
 name|flags
 operator|&
-name|UNINTERESTING
+name|STALE
 condition|)
 continue|continue;
 return|return
@@ -4550,7 +4550,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * A pathological example of how this thing works.  *  * Suppose we had this commit graph, where chronologically  * the timestamp on the commit are A<= B<= C<= D<= E<= F  * and we are trying to figure out the merge base for E and F  * commits.  *  *                  F  *                 / \  *            E   A   D  *             \ /   /  *              B   /  *               \ /  *                C  *  * First we push E and F to list to be processed.  E gets bit 1  * and F gets bit 2.  The list becomes:  *  *     list=F(2) E(1), result=empty  *  * Then we pop F, the newest commit, from the list.  Its flag is 2.  * We scan its parents, mark them reachable from the side that F is  * reachable from, and push them to the list:  *  *     list=E(1) D(2) A(2), result=empty  *  * Next pop E and do the same.  *  *     list=D(2) B(1) A(2), result=empty  *  * Next pop D and do the same.  *  *     list=C(2) B(1) A(2), result=empty  *  * Next pop C and do the same.  *  *     list=B(1) A(2), result=empty  *  * Now it is B's turn.  We mark its parent, C, reachable from B's side,  * and push it to the list:  *  *     list=C(3) A(2), result=empty  *  * Now pop C and notice it has flags==3.  It is placed on the result list,  * and the list now contains:  *  *     list=A(2), result=C(3)  *  * We pop A and do the same.  *  *     list=B(3), result=C(3)  *  * Next, we pop B and something very interesting happens.  It has flags==3  * so it is also placed on the result list, and its parents are marked  * uninteresting, retroactively, and placed back on the list:  *  *    list=C(7), result=C(7) B(3)  *  * Now, list does not have any interesting commit.  So we find the newest  * commit from the result list that is not marked uninteresting.  Which is  * commit B.  *  *  * Another pathological example how this thing used to fail to mark an  * ancestor of a merge base as UNINTERESTING before we introduced the  * postprocessing phase (mark_reachable_commits).  *  *		  2  *		  H  *	    1    / \  *	    G   A   \  *	    |\ /     \  *	    | B       \  *	    |  \       \  *	     \  C       F  *	      \  \     /  *	       \  D   /  *		\ |  /  *		 \| /  *		  E  *  *	 list			A B C D E F G H  *	 G1 H2			- - - - - - 1 2  *	 H2 E1 B1		- 1 - - 1 - 1 2  *	 F2 E1 B1 A2		2 1 - - 1 2 1 2  *	 E3 B1 A2		2 1 - - 3 2 1 2  *	 B1 A2			2 1 - - 3 2 1 2  *	 C1 A2			2 1 1 - 3 2 1 2  *	 D1 A2			2 1 1 1 3 2 1 2  *	 A2			2 1 1 1 3 2 1 2  *	 B3			2 3 1 1 3 2 1 2  *	 C7			2 3 7 1 3 2 1 2  *  * At this point, unfortunately, everybody in the list is  * uninteresting, so we fail to complete the following two  * steps to fully marking uninteresting commits.  *  *	 D7			2 3 7 7 3 2 1 2  *	 E7			2 3 7 7 7 2 1 2  *  * and we ended up showing E as an interesting merge base.  * The postprocessing phase re-injects C and continues traversal  * to contaminate D and E.  */
+comment|/*  * A pathological example of how this thing works.  *  * Suppose we had this commit graph, where chronologically  * the timestamp on the commit are A<= B<= C<= D<= E<= F  * and we are trying to figure out the merge base for E and F  * commits.  *  *                  F  *                 / \  *            E   A   D  *             \ /   /  *              B   /  *               \ /  *                C  *  * First we push E and F to list to be processed.  E gets bit 1  * and F gets bit 2.  The list becomes:  *  *     list=F(2) E(1), result=empty  *  * Then we pop F, the newest commit, from the list.  Its flag is 2.  * We scan its parents, mark them reachable from the side that F is  * reachable from, and push them to the list:  *  *     list=E(1) D(2) A(2), result=empty  *  * Next pop E and do the same.  *  *     list=D(2) B(1) A(2), result=empty  *  * Next pop D and do the same.  *  *     list=C(2) B(1) A(2), result=empty  *  * Next pop C and do the same.  *  *     list=B(1) A(2), result=empty  *  * Now it is B's turn.  We mark its parent, C, reachable from B's side,  * and push it to the list:  *  *     list=C(3) A(2), result=empty  *  * Now pop C and notice it has flags==3.  It is placed on the result list,  * and the list now contains:  *  *     list=A(2), result=C(3)  *  * We pop A and do the same.  *  *     list=B(3), result=C(3)  *  * Next, we pop B and something very interesting happens.  It has flags==3  * so it is also placed on the result list, and its parents are marked  * stale, retroactively, and placed back on the list:  *  *    list=C(7), result=C(7) B(3)  *  * Now, list does not have any interesting commit.  So we find the newest  * commit from the result list that is not marked stale.  Which is  * commit B.  *  *  * Another pathological example how this thing used to fail to mark an  * ancestor of a merge base as STALE before we introduced the  * postprocessing phase (mark_reachable_commits).  *  *		  2  *		  H  *	    1    / \  *	    G   A   \  *	    |\ /     \  *	    | B       \  *	    |  \       \  *	     \  C       F  *	      \  \     /  *	       \  D   /  *		\ |  /  *		 \| /  *		  E  *  *	 list			A B C D E F G H  *	 G1 H2			- - - - - - 1 2  *	 H2 E1 B1		- 1 - - 1 - 1 2  *	 F2 E1 B1 A2		2 1 - - 1 2 1 2  *	 E3 B1 A2		2 1 - - 3 2 1 2  *	 B1 A2			2 1 - - 3 2 1 2  *	 C1 A2			2 1 1 - 3 2 1 2  *	 D1 A2			2 1 1 1 3 2 1 2  *	 A2			2 1 1 1 3 2 1 2  *	 B3			2 3 1 1 3 2 1 2  *	 C7			2 3 7 1 3 2 1 2  *  * At this point, unfortunately, everybody in the list is  * stale, so we fail to complete the following two  * steps to fully marking stale commits.  *  *	 D7			2 3 7 7 3 2 1 2  *	 E7			2 3 7 7 7 2 1 2  *  * and we ended up showing E as an interesting merge base.  * The postprocessing phase re-injects C and continues traversal  * to contaminate D and E.  */
 end_comment
 
 begin_function
@@ -4600,7 +4600,7 @@ name|tmp
 operator|->
 name|item
 decl_stmt|;
-comment|/* Reinject uninteresting ones to list, 		 * so we can scan their parents. 		 */
+comment|/* Reinject stale ones to list, 		 * so we can scan their parents. 		 */
 if|if
 condition|(
 name|c
@@ -4609,7 +4609,7 @@ name|object
 operator|.
 name|flags
 operator|&
-name|UNINTERESTING
+name|STALE
 condition|)
 name|commit_list_insert
 argument_list|(
@@ -4654,7 +4654,7 @@ argument_list|(
 name|tmp
 argument_list|)
 expr_stmt|;
-comment|/* Anything taken out of the list is uninteresting, so 		 * mark all its parents uninteresting.  We do not 		 * parse new ones (we already parsed all the relevant 		 * ones). 		 */
+comment|/* Anything taken out of the list is stale, so 		 * mark all its parents stale.  We do not 		 * parse new ones (we already parsed all the relevant 		 * ones). 		 */
 name|parents
 operator|=
 name|c
@@ -4691,7 +4691,7 @@ name|object
 operator|.
 name|flags
 operator|&
-name|UNINTERESTING
+name|STALE
 operator|)
 condition|)
 block|{
@@ -4701,7 +4701,7 @@ name|object
 operator|.
 name|flags
 operator||=
-name|UNINTERESTING
+name|STALE
 expr_stmt|;
 name|commit_list_insert
 argument_list|(
@@ -4852,7 +4852,7 @@ name|PARENT1
 operator||
 name|PARENT2
 operator||
-name|UNINTERESTING
+name|STALE
 operator|)
 decl_stmt|;
 name|tmp
@@ -4889,10 +4889,10 @@ operator|&
 name|result
 argument_list|)
 expr_stmt|;
-comment|/* Mark parents of a found merge uninteresting */
+comment|/* Mark parents of a found merge stale */
 name|flags
 operator||=
-name|UNINTERESTING
+name|STALE
 expr_stmt|;
 block|}
 name|parents
@@ -5023,7 +5023,7 @@ name|object
 operator|.
 name|flags
 operator|&
-name|UNINTERESTING
+name|STALE
 condition|)
 block|{
 if|if
@@ -5066,7 +5066,7 @@ name|object
 operator|.
 name|flags
 operator||=
-name|UNINTERESTING
+name|STALE
 expr_stmt|;
 block|}
 name|tmp
@@ -5087,7 +5087,7 @@ name|PARENT1
 operator||
 name|PARENT2
 operator||
-name|UNINTERESTING
+name|STALE
 argument_list|)
 expr_stmt|;
 name|clear_commit_marks
@@ -5098,7 +5098,7 @@ name|PARENT1
 operator||
 name|PARENT2
 operator||
-name|UNINTERESTING
+name|STALE
 argument_list|)
 expr_stmt|;
 block|}
