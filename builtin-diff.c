@@ -1309,6 +1309,7 @@ name|diffopt
 operator|.
 name|output_format
 condition|)
+block|{
 name|rev
 operator|.
 name|diffopt
@@ -1317,6 +1318,15 @@ name|output_format
 operator|=
 name|DIFF_FORMAT_PATCH
 expr_stmt|;
+name|diff_setup_done
+argument_list|(
+operator|&
+name|rev
+operator|.
+name|diffopt
+argument_list|)
+expr_stmt|;
+block|}
 comment|/* Do we have --cached and not have a pending object, then 	 * default to HEAD by hand.  Eek. 	 */
 if|if
 condition|(
