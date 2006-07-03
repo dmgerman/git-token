@@ -1066,6 +1066,12 @@ literal|"update-ref"
 block|,
 name|cmd_update_ref
 block|}
+block|,
+block|{
+literal|"fmt-merge-msg"
+block|,
+name|cmd_fmt_merge_msg
+block|}
 block|}
 struct|;
 name|int
