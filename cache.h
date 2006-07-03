@@ -1267,6 +1267,13 @@ name|apply_default_whitespace
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+specifier|extern
+name|int
+name|zlib_compression_level
+decl_stmt|;
+end_decl_stmt
+
 begin_define
 DECL|macro|GIT_REPO_VERSION
 define|#
