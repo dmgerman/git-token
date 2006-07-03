@@ -4964,9 +4964,9 @@ condition|(
 operator|!
 name|result
 condition|)
-return|return
-name|NULL
-return|;
+goto|goto
+name|finish
+goto|;
 if|if
 condition|(
 name|result
@@ -5074,6 +5074,8 @@ operator|=
 name|next
 expr_stmt|;
 block|}
+name|finish
+label|:
 if|if
 condition|(
 name|cleanup
