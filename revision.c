@@ -4140,6 +4140,11 @@ argument_list|,
 name|flags_exclude
 argument_list|)
 expr_stmt|;
+name|free_commit_list
+argument_list|(
+name|exclude
+argument_list|)
+expr_stmt|;
 name|a
 operator|->
 name|object
