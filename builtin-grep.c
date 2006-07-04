@@ -4314,7 +4314,16 @@ argument_list|,
 name|arg
 argument_list|)
 condition|)
+block|{
+comment|/* later processing wants to have this at argv[1] */
+name|argv
+operator|--
+expr_stmt|;
+name|argc
+operator|++
+expr_stmt|;
 break|break;
+block|}
 if|if
 condition|(
 operator|*
