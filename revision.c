@@ -4372,15 +4372,12 @@ name|revs
 operator|->
 name|dense_combined_merges
 operator|&&
-operator|(
+operator|!
 name|revs
 operator|->
 name|diffopt
 operator|.
 name|output_format
-operator|!=
-name|DIFF_FORMAT_DIFFSTAT
-operator|)
 condition|)
 name|revs
 operator|->

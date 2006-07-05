@@ -467,6 +467,23 @@ name|diff_tree_usage
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+name|opt
+operator|->
+name|diffopt
+operator|.
+name|output_format
+condition|)
+name|opt
+operator|->
+name|diffopt
+operator|.
+name|output_format
+operator|=
+name|DIFF_FORMAT_RAW
+expr_stmt|;
 comment|/* 	 * NOTE! We expect "a ^b" to be equal to "a..b", so we 	 * reverse the order of the objects if the second one 	 * is marked UNINTERESTING. 	 */
 name|nr_sha1
 operator|=

@@ -213,6 +213,23 @@ name|argc
 operator|--
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+name|rev
+operator|.
+name|diffopt
+operator|.
+name|output_format
+condition|)
+name|rev
+operator|.
+name|diffopt
+operator|.
+name|output_format
+operator|=
+name|DIFF_FORMAT_RAW
+expr_stmt|;
 comment|/* 	 * Make sure there are NO revision (i.e. pending object) parameter, 	 * rev.max_count is reasonable (0<= n<= 3), 	 * there is no other revision filtering parameters. 	 */
 if|if
 condition|(
