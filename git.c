@@ -1072,7 +1072,13 @@ literal|"fmt-merge-msg"
 block|,
 name|cmd_fmt_merge_msg
 block|}
+block|,
+block|{
+literal|"prune"
+block|,
+name|cmd_prune
 block|}
+block|, 	}
 struct|;
 name|int
 name|i
