@@ -8824,6 +8824,14 @@ name|strcmp
 argument_list|(
 name|arg
 argument_list|,
+literal|"-a"
+argument_list|)
+operator|||
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
 literal|"--text"
 argument_list|)
 condition|)
