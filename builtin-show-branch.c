@@ -43,7 +43,7 @@ name|char
 name|show_branch_usage
 index|[]
 init|=
-literal|"git-show-branch [--dense] [--current] [--all] [--heads] [--tags] [--topo-order] [--more=count | --list | --independent | --merge-base ] [--topics] [<refs>...]"
+literal|"git-show-branch [--sparse] [--current] [--all] [--heads] [--tags] [--topo-order] [--more=count | --list | --independent | --merge-base ] [--topics] [<refs>...]"
 decl_stmt|;
 end_decl_stmt
 
