@@ -229,6 +229,11 @@ name|binary
 range|:
 literal|1
 decl_stmt|,
+DECL|member|text
+name|text
+range|:
+literal|1
+decl_stmt|,
 DECL|member|full_index
 name|full_index
 range|:
