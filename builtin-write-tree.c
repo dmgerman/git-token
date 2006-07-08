@@ -171,6 +171,12 @@ name|active_cache
 argument_list|,
 name|active_nr
 argument_list|)
+operator|&&
+operator|!
+name|close
+argument_list|(
+name|newfd
+argument_list|)
 condition|)
 name|commit_lock_file
 argument_list|(

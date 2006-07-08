@@ -991,6 +991,11 @@ argument_list|,
 name|active_nr
 argument_list|)
 operator|||
+name|close
+argument_list|(
+name|newfd
+argument_list|)
+operator|||
 name|commit_lock_file
 argument_list|(
 operator|&
