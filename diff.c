@@ -629,10 +629,14 @@ expr_stmt|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * These are to give UI layer defaults.  * The core-level commands such as git-diff-files should  * never be affected by the setting of diff.renames  * the user happens to have in the configuration file.  */
+end_comment
+
 begin_function
-DECL|function|git_diff_config
+DECL|function|git_diff_ui_config
 name|int
-name|git_diff_config
+name|git_diff_ui_config
 parameter_list|(
 specifier|const
 name|char
