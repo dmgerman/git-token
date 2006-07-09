@@ -2034,7 +2034,7 @@ decl_stmt|;
 specifier|const
 name|char
 modifier|*
-name|comitter
+name|committer
 decl_stmt|;
 if|if
 condition|(
@@ -2118,7 +2118,7 @@ block|}
 name|setup_ident
 argument_list|()
 expr_stmt|;
-name|comitter
+name|committer
 operator|=
 name|git_committer_info
 argument_list|(
@@ -2134,7 +2134,7 @@ name|maxlen
 operator|=
 name|strlen
 argument_list|(
-name|comitter
+name|committer
 argument_list|)
 operator|+
 name|strlen
@@ -2177,7 +2177,7 @@ argument_list|(
 name|sha1
 argument_list|)
 argument_list|,
-name|comitter
+name|committer
 argument_list|,
 name|msg
 argument_list|)
@@ -2189,7 +2189,7 @@ name|maxlen
 operator|=
 name|strlen
 argument_list|(
-name|comitter
+name|committer
 argument_list|)
 operator|+
 literal|2
@@ -2227,7 +2227,7 @@ argument_list|(
 name|sha1
 argument_list|)
 argument_list|,
-name|comitter
+name|committer
 argument_list|)
 expr_stmt|;
 block|}
