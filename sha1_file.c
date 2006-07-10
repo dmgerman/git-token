@@ -8511,7 +8511,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * reads from fd as long as possible into a supplied buffer of size bytes.  * If neccessary the buffer's size is increased using realloc()  *  * returns 0 if anything went fine and -1 otherwise  *  * NOTE: both buf and size may change, but even when -1 is returned  * you still have to free() it yourself.  */
+comment|/*  * reads from fd as long as possible into a supplied buffer of size bytes.  * If necessary the buffer's size is increased using realloc()  *  * returns 0 if anything went fine and -1 otherwise  *  * NOTE: both buf and size may change, but even when -1 is returned  * you still have to free() it yourself.  */
 end_comment
 
 begin_function

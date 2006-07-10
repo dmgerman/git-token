@@ -1057,7 +1057,7 @@ value|(4)
 end_define
 
 begin_comment
-comment|/*  * A "binary msec" is a power-of-two-msec, aka 1/1024th of a second.  * Keeing the time in that format means that "bytes / msecs" means  * is the same as kB/s (modulo rounding).  *  * 1000512 is a magic number (usecs in a second, rounded up by half  * of 1024, to make "rounding" come out right ;)  */
+comment|/*  * A "binary msec" is a power-of-two-msec, aka 1/1024th of a second.  * Keeping the time in that format means that "bytes / msecs" means  * the same as kB/s (modulo rounding).  *  * 1000512 is a magic number (usecs in a second, rounded up by half  * of 1024, to make "rounding" come out right ;)  */
 end_comment
 
 begin_define

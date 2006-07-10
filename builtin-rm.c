@@ -667,7 +667,7 @@ condition|)
 return|return
 literal|0
 return|;
-comment|/* 	 * Then, if we used "-f", remove the filenames from the 	 * workspace. If we fail to remove the first one, we 	 * abort the "git rm" (but once we've successfully removed 	 * any file at all, we'll go ahead and commit to it all: 	 * by then we've already committed ourself and can't fail 	 * in the middle) 	 */
+comment|/* 	 * Then, if we used "-f", remove the filenames from the 	 * workspace. If we fail to remove the first one, we 	 * abort the "git rm" (but once we've successfully removed 	 * any file at all, we'll go ahead and commit to it all: 	 * by then we've already committed ourselves and can't fail 	 * in the middle) 	 */
 if|if
 condition|(
 name|force

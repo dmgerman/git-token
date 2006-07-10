@@ -532,7 +532,7 @@ expr_stmt|;
 else|else
 name|error
 argument_list|(
-literal|"more than %d URL's specified, ignoreing the rest"
+literal|"more than %d URL's specified, ignoring the rest"
 argument_list|,
 name|MAX_URI
 argument_list|)

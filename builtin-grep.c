@@ -5034,7 +5034,7 @@ name|regflags
 operator|=
 name|REG_NEWLINE
 expr_stmt|;
-comment|/* 	 * If there is no -- then the paths must exist in the working 	 * tree.  If there is no explicit pattern specified with -e or 	 * -f, we take the first unrecognized non option to be the 	 * pattern, but then what follows it must be zero or more 	 * valid refs up to the -- (if exists), and then existing 	 * paths.  If there is an explicit pattern, then the first 	 * unrecocnized non option is the beginning of the refs list 	 * that continues up to the -- (if exists), and then paths. 	 */
+comment|/* 	 * If there is no -- then the paths must exist in the working 	 * tree.  If there is no explicit pattern specified with -e or 	 * -f, we take the first unrecognized non option to be the 	 * pattern, but then what follows it must be zero or more 	 * valid refs up to the -- (if exists), and then existing 	 * paths.  If there is an explicit pattern, then the first 	 * unrecognized non option is the beginning of the refs list 	 * that continues up to the -- (if exists), and then paths. 	 */
 while|while
 condition|(
 literal|1

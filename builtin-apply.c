@@ -3883,7 +3883,7 @@ operator|<
 literal|6
 condition|)
 continue|continue;
-comment|/* 		 * Make sure we don't find any unconnected patch fragmants. 		 * That's a sign that we didn't find a header, and that a 		 * patch has become corrupted/broken up. 		 */
+comment|/* 		 * Make sure we don't find any unconnected patch fragments. 		 * That's a sign that we didn't find a header, and that a 		 * patch has become corrupted/broken up. 		 */
 if|if
 condition|(
 operator|!
@@ -4832,7 +4832,7 @@ modifier|*
 name|patch
 parameter_list|)
 block|{
-comment|/* We have read "GIT binary patch\n"; what follows is a line 	 * that says the patch method (currently, either "deflated 	 * literal" or "deflated delta") and the length of data before 	 * deflating; a sequence of 'length-byte' followed by base-85 	 * encoded data follows. 	 * 	 * Each 5-byte sequence of base-85 encodes up to 4 bytes, 	 * and we would limit the patch line to 66 characters, 	 * so one line can fit up to 13 groups that would decode 	 * to 52 bytes max.  The length byte 'A'-'Z' corresponds 	 * to 1-26 bytes, and 'a'-'z' corresponds to 27-52 bytes. 	 * The end of binary is signalled with an empty line. 	 */
+comment|/* We have read "GIT binary patch\n"; what follows is a line 	 * that says the patch method (currently, either "deflated 	 * literal" or "deflated delta") and the length of data before 	 * deflating; a sequence of 'length-byte' followed by base-85 	 * encoded data follows. 	 * 	 * Each 5-byte sequence of base-85 encodes up to 4 bytes, 	 * and we would limit the patch line to 66 characters, 	 * so one line can fit up to 13 groups that would decode 	 * to 52 bytes max.  The length byte 'A'-'Z' corresponds 	 * to 1-26 bytes, and 'a'-'z' corresponds to 27-52 bytes. 	 * The end of binary is signaled with an empty line. 	 */
 name|int
 name|llen
 decl_stmt|,

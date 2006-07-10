@@ -925,7 +925,7 @@ argument_list|(
 name|builtin_diff_usage
 argument_list|)
 expr_stmt|;
-comment|/* We saw two trees, ent[0] and ent[1]. 	 * if ent[1] is unintesting, they are swapped 	 */
+comment|/* We saw two trees, ent[0] and ent[1]. 	 * if ent[1] is uninteresting, they are swapped 	 */
 if|if
 condition|(
 name|ent

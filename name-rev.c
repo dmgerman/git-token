@@ -37,7 +37,7 @@ name|char
 name|name_rev_usage
 index|[]
 init|=
-literal|"git-name-rev [--tags] ( --all | --stdin | commitish [commitish...] )\n"
+literal|"git-name-rev [--tags] ( --all | --stdin | committish [committish...] )\n"
 decl_stmt|;
 end_decl_stmt
 

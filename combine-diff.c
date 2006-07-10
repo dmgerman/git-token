@@ -1846,7 +1846,7 @@ name|unsigned
 name|long
 name|i
 decl_stmt|;
-comment|/* Two groups of interesting lines may have a short gap of 	 * unintersting lines.  Connect such groups to give them a 	 * bit of context. 	 * 	 * We first start from what the interesting() function says, 	 * and mark them with "mark", and paint context lines with the 	 * mark.  So interesting() would still say false for such context 	 * lines but they are treated as "interesting" in the end. 	 */
+comment|/* Two groups of interesting lines may have a short gap of 	 * uninteresting lines.  Connect such groups to give them a 	 * bit of context. 	 * 	 * We first start from what the interesting() function says, 	 * and mark them with "mark", and paint context lines with the 	 * mark.  So interesting() would still say false for such context 	 * lines but they are treated as "interesting" in the end. 	 */
 name|i
 operator|=
 name|find_next
