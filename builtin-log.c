@@ -256,7 +256,7 @@ name|rev
 decl_stmt|;
 name|git_config
 argument_list|(
-name|git_diff_config
+name|git_diff_ui_config
 argument_list|)
 expr_stmt|;
 name|init_revisions
@@ -350,7 +350,7 @@ name|rev
 decl_stmt|;
 name|git_config
 argument_list|(
-name|git_diff_config
+name|git_diff_ui_config
 argument_list|)
 expr_stmt|;
 name|init_revisions
@@ -451,7 +451,7 @@ name|rev
 decl_stmt|;
 name|git_config
 argument_list|(
-name|git_diff_config
+name|git_diff_ui_config
 argument_list|)
 expr_stmt|;
 name|init_revisions
@@ -650,7 +650,7 @@ literal|0
 return|;
 block|}
 return|return
-name|git_diff_config
+name|git_diff_ui_config
 argument_list|(
 name|var
 argument_list|,

@@ -1277,7 +1277,7 @@ decl_stmt|;
 comment|/* 	 * We could get N tree-ish in the rev.pending_objects list. 	 * Also there could be M blobs there, and P pathspecs. 	 * 	 * N=0, M=0: 	 *	cache vs files (diff-files) 	 * N=0, M=2: 	 *      compare two random blobs.  P must be zero. 	 * N=0, M=1, P=1: 	 *	compare a blob with a working tree file. 	 * 	 * N=1, M=0: 	 *      tree vs cache (diff-index --cached) 	 * 	 * N=2, M=0: 	 *      tree vs tree (diff-tree) 	 * 	 * Other cases are errors. 	 */
 name|git_config
 argument_list|(
-name|git_diff_config
+name|git_diff_ui_config
 argument_list|)
 expr_stmt|;
 name|init_revisions

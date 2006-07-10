@@ -726,7 +726,7 @@ end_define
 begin_function_decl
 specifier|extern
 name|int
-name|git_diff_config
+name|git_diff_ui_config
 parameter_list|(
 specifier|const
 name|char
