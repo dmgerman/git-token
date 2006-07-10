@@ -2660,7 +2660,7 @@ condition|)
 return|return
 literal|0
 return|;
-comment|// don't list this as something we can get
+comment|/* don't list this as something we can get */
 if|if
 condition|(
 name|fetch_index
@@ -3119,7 +3119,7 @@ operator|+=
 literal|3
 expr_stmt|;
 block|}
-comment|// If the server got removed, give up.
+comment|/* If the server got removed, give up. */
 name|okay
 operator|=
 name|strchr
@@ -3199,7 +3199,7 @@ literal|1
 expr_stmt|;
 block|}
 block|}
-comment|// skip 'objects' at end
+comment|/* skip 'objects' at end */
 if|if
 condition|(
 name|okay

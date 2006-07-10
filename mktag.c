@@ -16,7 +16,7 @@ comment|/*  * A signature file has a very simple fixed format: three lines  * of
 end_comment
 
 begin_comment
-comment|// Some random size
+comment|/* Some random size */
 end_comment
 
 begin_define
@@ -560,7 +560,7 @@ literal|"could not read from stdin"
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Verify it for some basic sanity: it needs to start with "object<sha1>\ntype\ntagger "
+comment|/* Verify it for some basic sanity: it needs to start with 	   "object<sha1>\ntype\ntagger " */
 if|if
 condition|(
 name|verify_tag

@@ -46,35 +46,7 @@ file|"builtin.h"
 end_include
 
 begin_comment
-comment|//  --check turns on checking that the working tree matches the
-end_comment
-
-begin_comment
-comment|//    files that are being modified, but doesn't apply the patch
-end_comment
-
-begin_comment
-comment|//  --stat does just a diffstat, and doesn't actually apply
-end_comment
-
-begin_comment
-comment|//  --numstat does numeric diffstat, and doesn't actually apply
-end_comment
-
-begin_comment
-comment|//  --index-info shows the old and new index info for paths if available.
-end_comment
-
-begin_comment
-comment|//  --index updates the cache as well.
-end_comment
-
-begin_comment
-comment|//  --cached updates only the cache without ever touching the working tree.
-end_comment
-
-begin_comment
-comment|//
+comment|/*  *  --check turns on checking that the working tree matches the  *    files that are being modified, but doesn't apply the patch  *  --stat does just a diffstat, and doesn't actually apply  *  --numstat does numeric diffstat, and doesn't actually apply  *  --index-info shows the old and new index info for paths if available.  *  --index updates the cache as well.  *  --cached updates only the cache without ever touching the working tree.  */
 end_comment
 
 begin_decl_stmt
@@ -1342,12 +1314,12 @@ name|first
 operator|+=
 literal|4
 expr_stmt|;
-comment|// skip "--- "
+comment|/* skip "--- " */
 name|second
 operator|+=
 literal|4
 expr_stmt|;
-comment|// skip "+++ "
+comment|/* skip "+++ " */
 if|if
 condition|(
 name|is_dev_null

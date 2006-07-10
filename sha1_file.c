@@ -2328,7 +2328,7 @@ name|struct
 name|stat
 name|st
 decl_stmt|;
-comment|// We created the struct before we had the pack
+comment|/* We created the struct before we had the pack */
 name|stat
 argument_list|(
 name|p
@@ -7683,7 +7683,7 @@ name|void
 modifier|*
 name|buf
 decl_stmt|;
-comment|// need to unpack and recompress it by itself
+comment|/* need to unpack and recompress it by itself */
 name|unpacked
 operator|=
 name|read_packed_sha1

@@ -1410,7 +1410,7 @@ name|newlen
 init|=
 literal|0
 decl_stmt|;
-comment|// "tree<sha1>\n"
+comment|/* "tree<sha1>\n" */
 name|memcpy
 argument_list|(
 name|new
@@ -1440,7 +1440,7 @@ name|size
 operator|-=
 literal|46
 expr_stmt|;
-comment|// "parent<sha1>\n"
+comment|/* "parent<sha1>\n" */
 while|while
 condition|(
 operator|!
@@ -1484,7 +1484,7 @@ operator|-=
 literal|48
 expr_stmt|;
 block|}
-comment|// "author xyz<xyz> date"
+comment|/* "author xyz<xyz> date" */
 name|newlen
 operator|+=
 name|convert_date_line
@@ -1500,7 +1500,7 @@ operator|&
 name|size
 argument_list|)
 expr_stmt|;
-comment|// "committer xyz<xyz> date"
+comment|/* "committer xyz<xyz> date" */
 name|newlen
 operator|+=
 name|convert_date_line
@@ -1516,7 +1516,7 @@ operator|&
 name|size
 argument_list|)
 expr_stmt|;
-comment|// Rest
+comment|/* Rest */
 name|memcpy
 argument_list|(
 name|new
