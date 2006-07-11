@@ -2115,9 +2115,6 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-name|setup_ident
-argument_list|()
-expr_stmt|;
 name|committer
 operator|=
 name|git_committer_info
