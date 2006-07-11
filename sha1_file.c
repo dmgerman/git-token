@@ -3593,6 +3593,7 @@ end_function
 
 begin_function
 DECL|function|unpack_sha1_header
+specifier|static
 name|int
 name|unpack_sha1_header
 parameter_list|(
@@ -3801,6 +3802,7 @@ end_comment
 
 begin_function
 DECL|function|parse_sha1_header
+specifier|static
 name|int
 name|parse_sha1_header
 parameter_list|(
