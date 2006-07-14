@@ -104,14 +104,22 @@ init|=
 block|{
 literal|"none"
 block|,
-literal|"blob"
+literal|"commit"
 block|,
 literal|"tree"
 block|,
-literal|"commit"
+literal|"blob"
+block|,
+literal|"tag"
+block|,
+literal|"bad type 5"
+block|,
+literal|"bad type 6"
+block|,
+literal|"delta"
 block|,
 literal|"bad"
-block|}
+block|, }
 decl_stmt|;
 end_decl_stmt
 
@@ -482,7 +490,7 @@ name|obj
 operator|->
 name|type
 operator|=
-name|TYPE_NONE
+name|OBJ_NONE
 expr_stmt|;
 name|obj
 operator|->
@@ -761,7 +769,7 @@ name|object
 operator|.
 name|type
 operator|=
-name|TYPE_NONE
+name|OBJ_NONE
 expr_stmt|;
 return|return
 operator|&

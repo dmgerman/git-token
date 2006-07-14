@@ -907,7 +907,7 @@ name|obj
 operator|->
 name|type
 operator|==
-name|TYPE_TAG
+name|OBJ_TAG
 condition|)
 block|{
 name|process_tag
@@ -933,7 +933,7 @@ name|obj
 operator|->
 name|type
 operator|==
-name|TYPE_TREE
+name|OBJ_TREE
 condition|)
 block|{
 name|process_tree
@@ -961,7 +961,7 @@ name|obj
 operator|->
 name|type
 operator|==
-name|TYPE_BLOB
+name|OBJ_BLOB
 condition|)
 block|{
 name|process_blob

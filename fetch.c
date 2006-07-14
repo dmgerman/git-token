@@ -673,7 +673,7 @@ name|obj
 operator|->
 name|type
 operator|==
-name|TYPE_COMMIT
+name|OBJ_COMMIT
 condition|)
 block|{
 if|if
@@ -702,7 +702,7 @@ name|obj
 operator|->
 name|type
 operator|==
-name|TYPE_TREE
+name|OBJ_TREE
 condition|)
 block|{
 if|if
@@ -731,7 +731,7 @@ name|obj
 operator|->
 name|type
 operator|==
-name|TYPE_BLOB
+name|OBJ_BLOB
 condition|)
 block|{
 return|return
@@ -744,7 +744,7 @@ name|obj
 operator|->
 name|type
 operator|==
-name|TYPE_TAG
+name|OBJ_TAG
 condition|)
 block|{
 if|if
