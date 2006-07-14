@@ -760,15 +760,6 @@ name|stderr
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* insert after command name */
-if|if
-condition|(
-operator|*
-name|argcp
-operator|>
-literal|1
-condition|)
-block|{
 name|new_argv
 operator|=
 name|realloc
@@ -786,9 +777,12 @@ name|count
 operator|+
 operator|*
 name|argcp
+operator|+
+literal|1
 operator|)
 argument_list|)
 expr_stmt|;
+comment|/* insert after command name */
 name|memcpy
 argument_list|(
 name|new_argv
@@ -810,7 +804,16 @@ operator|*
 name|argcp
 argument_list|)
 expr_stmt|;
-block|}
+name|new_argv
+index|[
+name|count
+operator|+
+operator|*
+name|argcp
+index|]
+operator|=
+name|NULL
+expr_stmt|;
 operator|*
 name|argv
 operator|=
