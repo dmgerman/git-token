@@ -725,7 +725,7 @@ name|object
 operator|.
 name|type
 operator|=
-name|TYPE_TREE
+name|OBJ_TREE
 expr_stmt|;
 return|return
 name|ret
@@ -742,7 +742,7 @@ name|obj
 operator|->
 name|type
 operator|=
-name|TYPE_TREE
+name|OBJ_TREE
 expr_stmt|;
 if|if
 condition|(
@@ -750,7 +750,7 @@ name|obj
 operator|->
 name|type
 operator|!=
-name|TYPE_TREE
+name|OBJ_TREE
 condition|)
 block|{
 name|error
@@ -1178,7 +1178,7 @@ name|obj
 operator|->
 name|type
 operator|==
-name|TYPE_TREE
+name|OBJ_TREE
 condition|)
 return|return
 operator|(
@@ -1195,7 +1195,7 @@ name|obj
 operator|->
 name|type
 operator|==
-name|TYPE_COMMIT
+name|OBJ_COMMIT
 condition|)
 name|obj
 operator|=
@@ -1222,7 +1222,7 @@ name|obj
 operator|->
 name|type
 operator|==
-name|TYPE_TAG
+name|OBJ_TAG
 condition|)
 name|obj
 operator|=
