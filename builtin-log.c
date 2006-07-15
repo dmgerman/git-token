@@ -39,6 +39,18 @@ directive|include
 file|"builtin.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|<time.h>
+end_include
+
+begin_include
+include|#
+directive|include
+file|<sys/time.h>
+end_include
+
 begin_comment
 comment|/* this is in builtin-diff.c */
 end_comment
@@ -1443,20 +1455,29 @@ name|dest
 argument_list|,
 name|length
 argument_list|,
-literal|"%s.%u.git.%.*s"
+literal|"%s.%lu.git.%.*s"
 argument_list|,
 name|base
 argument_list|,
+operator|(
+name|unsigned
+name|long
+operator|)
 name|time
 argument_list|(
 name|NULL
 argument_list|)
 argument_list|,
+call|(
+name|int
+call|)
+argument_list|(
 name|email_end
 operator|-
 name|email_start
 operator|-
 literal|1
+argument_list|)
 argument_list|,
 name|email_start
 operator|+
@@ -1545,6 +1566,7 @@ name|thread
 init|=
 literal|0
 decl_stmt|;
+specifier|const
 name|char
 modifier|*
 name|in_reply_to
