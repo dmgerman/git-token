@@ -869,7 +869,7 @@ operator|.
 name|flags
 condition|)
 block|{
-name|insert_by_date
+name|commit_list_insert
 argument_list|(
 name|commit
 argument_list|,
@@ -1110,7 +1110,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/* 	 * Postprocess to complete well-poisoning. 	 * 	 * At this point we have all the commits we have seen in 	 * seen_p list (which happens to be sorted chronologically but 	 * it does not really matter).  Mark anything that can be 	 * reached from uninteresting commits not interesting. 	 */
+comment|/* 	 * Postprocess to complete well-poisoning. 	 * 	 * At this point we have all the commits we have seen in 	 * seen_p list.  Mark anything that can be reached from 	 * uninteresting commits not interesting. 	 */
 for|for
 control|(
 init|;
@@ -3817,6 +3817,12 @@ argument_list|,
 name|num_rev
 argument_list|,
 name|extra
+argument_list|)
+expr_stmt|;
+name|sort_by_date
+argument_list|(
+operator|&
+name|seen
 argument_list|)
 expr_stmt|;
 if|if
