@@ -10277,6 +10277,10 @@ condition|(
 name|errno
 operator|==
 name|EEXIST
+operator|||
+name|errno
+operator|==
+name|EACCES
 condition|)
 block|{
 comment|/* We may be trying to create a file where a directory 		 * used to be. 		 */
