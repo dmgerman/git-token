@@ -1009,6 +1009,9 @@ name|pu
 decl_stmt|,
 name|pollsize
 decl_stmt|;
+name|reset_timeout
+argument_list|()
+expr_stmt|;
 name|pollsize
 operator|=
 literal|0
