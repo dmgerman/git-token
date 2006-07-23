@@ -457,6 +457,8 @@ name|i
 operator|++
 expr_stmt|;
 block|}
+else|else
+break|break;
 name|c
 operator|=
 name|p
