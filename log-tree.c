@@ -719,19 +719,6 @@ name|abbrev_commit
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|putchar
-argument_list|(
-name|opt
-operator|->
-name|commit_format
-operator|==
-name|CMIT_FMT_ONELINE
-condition|?
-literal|' '
-else|:
-literal|'\n'
-argument_list|)
-expr_stmt|;
 name|printf
 argument_list|(
 literal|"%s"
@@ -746,6 +733,19 @@ name|color_diff
 argument_list|,
 name|DIFF_RESET
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|putchar
+argument_list|(
+name|opt
+operator|->
+name|commit_format
+operator|==
+name|CMIT_FMT_ONELINE
+condition|?
+literal|' '
+else|:
+literal|'\n'
 argument_list|)
 expr_stmt|;
 block|}
