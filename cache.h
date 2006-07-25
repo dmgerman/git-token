@@ -1219,6 +1219,13 @@ end_comment
 begin_decl_stmt
 specifier|extern
 name|int
+name|use_legacy_headers
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
+name|int
 name|trust_executable_bit
 decl_stmt|;
 end_decl_stmt
