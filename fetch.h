@@ -155,12 +155,17 @@ specifier|extern
 name|int
 name|pull
 parameter_list|(
+name|int
+name|targets
+parameter_list|,
 name|char
+modifier|*
 modifier|*
 name|target
 parameter_list|,
 specifier|const
 name|char
+modifier|*
 modifier|*
 name|write_ref
 parameter_list|,

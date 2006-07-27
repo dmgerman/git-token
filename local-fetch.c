@@ -1401,8 +1401,12 @@ if|if
 condition|(
 name|pull
 argument_list|(
+literal|1
+argument_list|,
+operator|&
 name|commit_id
 argument_list|,
+operator|&
 name|write_ref
 argument_list|,
 name|path
