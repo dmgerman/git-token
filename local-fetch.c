@@ -1128,12 +1128,12 @@ name|char
 name|local_pull_usage
 index|[]
 init|=
-literal|"git-local-fetch [-c] [-t] [-a] [-d] [-v] [-w filename] [--recover] [-l] [-s] [-n] commit-id path"
+literal|"git-local-fetch [-c] [-t] [-a] [-v] [-w filename] [--recover] [-l] [-s] [-n] commit-id path"
 decl_stmt|;
 end_decl_stmt
 
 begin_comment
-comment|/*   * By default we only use file copy.  * If -l is specified, a hard link is attempted.  * If -s is specified, then a symlink is attempted.  * If -n is _not_ specified, then a regular file-to-file copy is done.  */
+comment|/*  * By default we only use file copy.  * If -l is specified, a hard link is attempted.  * If -s is specified, then a symlink is attempted.  * If -n is _not_ specified, then a regular file-to-file copy is done.  */
 end_comment
 
 begin_function

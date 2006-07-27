@@ -7008,7 +7008,7 @@ condition|)
 block|{
 name|usage
 argument_list|(
-literal|"git-http-fetch [-c] [-t] [-a] [-d] [-v] [--recover] [-w ref] commit-id url"
+literal|"git-http-fetch [-c] [-t] [-a] [-v] [--recover] [-w ref] commit-id url"
 argument_list|)
 expr_stmt|;
 return|return

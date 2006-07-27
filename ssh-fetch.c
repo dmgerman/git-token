@@ -690,7 +690,7 @@ name|ssh_fetch_usage
 index|[]
 init|=
 name|MY_PROGRAM_NAME
-literal|" [-c] [-t] [-a] [-v] [-d] [--recover] [-w ref] commit-id url"
+literal|" [-c] [-t] [-a] [-v] [--recover] [-w ref] commit-id url"
 decl_stmt|;
 end_decl_stmt
 
