@@ -143,6 +143,57 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/* Load pull targets from stdin */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|pull_targets_stdin
+parameter_list|(
+name|char
+modifier|*
+modifier|*
+modifier|*
+name|target
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+modifier|*
+modifier|*
+name|write_ref
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/* Free up loaded targets */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|void
+name|pull_targets_free
+parameter_list|(
+name|int
+name|targets
+parameter_list|,
+name|char
+modifier|*
+modifier|*
+name|target
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|write_ref
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/* If write_ref is set, the ref filename to write the target value to. */
 end_comment
 
