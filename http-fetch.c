@@ -6816,6 +6816,13 @@ modifier|*
 name|argv
 parameter_list|)
 block|{
+specifier|const
+name|char
+modifier|*
+name|write_ref
+init|=
+name|NULL
+decl_stmt|;
 name|char
 modifier|*
 name|commit_id
@@ -7031,10 +7038,6 @@ operator|+
 literal|1
 index|]
 expr_stmt|;
-name|write_ref_log_details
-operator|=
-name|url
-expr_stmt|;
 name|http_init
 argument_list|()
 expr_stmt|;
@@ -7126,6 +7129,10 @@ condition|(
 name|pull
 argument_list|(
 name|commit_id
+argument_list|,
+name|write_ref
+argument_list|,
+name|url
 argument_list|)
 condition|)
 name|rc

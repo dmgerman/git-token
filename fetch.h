@@ -68,32 +68,6 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/* If set, the ref filename to write the target value to. */
-end_comment
-
-begin_decl_stmt
-specifier|extern
-specifier|const
-name|char
-modifier|*
-name|write_ref
-decl_stmt|;
-end_decl_stmt
-
-begin_comment
-comment|/* If set additional text will appear in the ref log. */
-end_comment
-
-begin_decl_stmt
-specifier|extern
-specifier|const
-name|char
-modifier|*
-name|write_ref_log_details
-decl_stmt|;
-end_decl_stmt
-
-begin_comment
 comment|/* Set to fetch the target tree. */
 end_comment
 
@@ -168,6 +142,14 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* If write_ref is set, the ref filename to write the target value to. */
+end_comment
+
+begin_comment
+comment|/* If write_ref_log_details is set, additional text will appear in the ref log. */
+end_comment
+
 begin_function_decl
 specifier|extern
 name|int
@@ -176,6 +158,16 @@ parameter_list|(
 name|char
 modifier|*
 name|target
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|write_ref
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|write_ref_log_details
 parameter_list|)
 function_decl|;
 end_function_decl
