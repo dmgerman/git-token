@@ -225,7 +225,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * TODO: we should not have to copy the SHA1s around, but rather reference  * them. That way, sha_eq() is just sha1 == sha2.  */
+comment|/*  * Since we use get_tree_entry(), which does not put the read object into  * the object pool, we cannot rely on a == b.  */
 end_comment
 
 begin_function
@@ -278,7 +278,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * TODO: check if we can just reuse the active_cache structure: it is already  * sorted (by name, stage).  * Only problem: do not write it when flushing the cache.  */
+comment|/*  * Since we want to write the index eventually, we cannot reuse the index  * for these (temporary) data.  */
 end_comment
 
 begin_struct
