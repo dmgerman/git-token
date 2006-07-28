@@ -388,6 +388,11 @@ name|read_stdin
 init|=
 literal|0
 decl_stmt|;
+name|init_revisions
+argument_list|(
+name|opt
+argument_list|)
+expr_stmt|;
 name|git_config
 argument_list|(
 name|git_default_config
@@ -397,11 +402,6 @@ comment|/* no "diff" UI options */
 name|nr_sha1
 operator|=
 literal|0
-expr_stmt|;
-name|init_revisions
-argument_list|(
-name|opt
-argument_list|)
 expr_stmt|;
 name|opt
 operator|->

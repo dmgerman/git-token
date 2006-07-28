@@ -75,18 +75,18 @@ name|silent
 init|=
 literal|0
 decl_stmt|;
-name|git_config
-argument_list|(
-name|git_default_config
-argument_list|)
-expr_stmt|;
-comment|/* no "diff" UI options */
 name|init_revisions
 argument_list|(
 operator|&
 name|rev
 argument_list|)
 expr_stmt|;
+name|git_config
+argument_list|(
+name|git_default_config
+argument_list|)
+expr_stmt|;
+comment|/* no "diff" UI options */
 name|rev
 operator|.
 name|abbrev
