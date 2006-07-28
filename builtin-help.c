@@ -1264,10 +1264,16 @@ name|char
 modifier|*
 name|help_cmd
 init|=
+name|argc
+operator|>
+literal|1
+condition|?
 name|argv
 index|[
 literal|1
 index|]
+else|:
+name|NULL
 decl_stmt|;
 if|if
 condition|(
