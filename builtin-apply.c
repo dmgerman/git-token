@@ -7513,6 +7513,31 @@ name|void
 modifier|*
 name|result
 decl_stmt|;
+comment|/* Binary patch is irreversible */
+if|if
+condition|(
+name|patch
+operator|->
+name|is_reverse
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"cannot reverse-apply a binary patch to '%s'"
+argument_list|,
+name|patch
+operator|->
+name|new_name
+condition|?
+name|patch
+operator|->
+name|new_name
+else|:
+name|patch
+operator|->
+name|old_name
+argument_list|)
+return|;
 name|data
 operator|=
 name|inflate_it
