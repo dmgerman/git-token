@@ -985,7 +985,11 @@ argument_list|(
 literal|1
 argument_list|)
 operator|||
+operator|(
 name|pager_in_use
+operator|&&
+name|pager_use_color
+operator|)
 condition|)
 block|{
 name|char
