@@ -1623,6 +1623,14 @@ decl_stmt|,
 modifier|*
 name|current_branch
 decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|prefix
+init|=
+name|setup_git_directory
+argument_list|()
+decl_stmt|;
 name|git_config
 argument_list|(
 name|fmt_merge_msg_config
@@ -2156,6 +2164,8 @@ name|init_revisions
 argument_list|(
 operator|&
 name|rev
+argument_list|,
+name|prefix
 argument_list|)
 expr_stmt|;
 name|rev

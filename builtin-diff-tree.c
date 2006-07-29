@@ -391,6 +391,9 @@ decl_stmt|;
 name|init_revisions
 argument_list|(
 name|opt
+argument_list|,
+name|setup_git_directory
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|git_config
