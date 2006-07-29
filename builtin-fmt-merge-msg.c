@@ -1574,10 +1574,10 @@ modifier|*
 modifier|*
 name|argv
 parameter_list|,
+specifier|const
 name|char
 modifier|*
-modifier|*
-name|envp
+name|prefix
 parameter_list|)
 block|{
 name|int
@@ -1622,14 +1622,6 @@ name|head
 decl_stmt|,
 modifier|*
 name|current_branch
-decl_stmt|;
-specifier|const
-name|char
-modifier|*
-name|prefix
-init|=
-name|setup_git_directory
-argument_list|()
 decl_stmt|;
 name|git_config
 argument_list|(

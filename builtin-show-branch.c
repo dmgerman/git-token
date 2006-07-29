@@ -2954,10 +2954,10 @@ modifier|*
 modifier|*
 name|av
 parameter_list|,
+specifier|const
 name|char
 modifier|*
-modifier|*
-name|envp
+name|prefix
 parameter_list|)
 block|{
 name|struct
@@ -3085,9 +3085,6 @@ name|dense
 init|=
 literal|1
 decl_stmt|;
-name|setup_git_directory
-argument_list|()
-expr_stmt|;
 name|git_config
 argument_list|(
 name|git_show_branch_config
