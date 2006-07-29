@@ -1877,10 +1877,10 @@ modifier|*
 modifier|*
 name|argv
 parameter_list|,
+specifier|const
 name|char
 modifier|*
-modifier|*
-name|envp
+name|prefix
 parameter_list|)
 block|{
 name|unsigned
@@ -1932,9 +1932,6 @@ operator|.
 name|eof
 operator|=
 literal|0
-expr_stmt|;
-name|setup_git_directory
-argument_list|()
 expr_stmt|;
 name|git_config
 argument_list|(
@@ -2430,10 +2427,10 @@ modifier|*
 modifier|*
 name|argv
 parameter_list|,
+specifier|const
 name|char
 modifier|*
-modifier|*
-name|envp
+name|prefix
 parameter_list|)
 block|{
 if|if
@@ -2477,7 +2474,7 @@ name|argc
 argument_list|,
 name|argv
 argument_list|,
-name|envp
+name|prefix
 argument_list|)
 return|;
 block|}
@@ -2509,10 +2506,10 @@ modifier|*
 modifier|*
 name|argv
 parameter_list|,
+specifier|const
 name|char
 modifier|*
-modifier|*
-name|envp
+name|prefix
 parameter_list|)
 block|{
 name|char

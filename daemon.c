@@ -106,7 +106,7 @@ init|=
 literal|"git-daemon [--verbose] [--syslog] [--inetd | --port=n] [--export-all]\n"
 literal|"           [--timeout=n] [--init-timeout=n] [--strict-paths]\n"
 literal|"           [--base-path=path] [--user-path | --user-path=path]\n"
-literal|"           [--reuseaddr] [directory...]"
+literal|"           [--reuseaddr] [--detach] [--pid-file=file] [directory...]"
 decl_stmt|;
 end_decl_stmt
 

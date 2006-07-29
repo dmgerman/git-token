@@ -2501,6 +2501,11 @@ name|struct
 name|rev_info
 modifier|*
 name|revs
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|prefix
 parameter_list|)
 block|{
 name|memset
@@ -2574,8 +2579,7 @@ name|revs
 operator|->
 name|prefix
 operator|=
-name|setup_git_directory
-argument_list|()
+name|prefix
 expr_stmt|;
 name|revs
 operator|->

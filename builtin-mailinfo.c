@@ -2303,6 +2303,7 @@ condition|(
 operator|!
 name|ofs
 operator|&&
+operator|(
 operator|!
 name|memcmp
 argument_list|(
@@ -2312,6 +2313,17 @@ literal|"From "
 argument_list|,
 literal|5
 argument_list|)
+operator|||
+operator|!
+name|memcmp
+argument_list|(
+name|line
+argument_list|,
+literal|">From "
+argument_list|,
+literal|6
+argument_list|)
+operator|)
 condition|)
 name|ofs
 operator|=
@@ -4136,10 +4148,10 @@ modifier|*
 modifier|*
 name|argv
 parameter_list|,
+specifier|const
 name|char
 modifier|*
-modifier|*
-name|envp
+name|prefix
 parameter_list|)
 block|{
 comment|/* NEEDSWORK: might want to do the optional .git/ directory 	 * discovery 	 */
