@@ -117,12 +117,12 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|prefix
+DECL|variable|ls_tree_prefix
 specifier|static
 specifier|const
 name|char
 modifier|*
-name|prefix
+name|ls_tree_prefix
 decl_stmt|;
 end_decl_stmt
 
@@ -376,7 +376,7 @@ name|chomp_prefix
 operator|||
 name|memcmp
 argument_list|(
-name|prefix
+name|ls_tree_prefix
 argument_list|,
 name|base
 argument_list|,
@@ -461,10 +461,10 @@ modifier|*
 modifier|*
 name|argv
 parameter_list|,
+specifier|const
 name|char
 modifier|*
-modifier|*
-name|envp
+name|prefix
 parameter_list|)
 block|{
 name|unsigned
@@ -479,15 +479,14 @@ name|tree
 modifier|*
 name|tree
 decl_stmt|;
-name|prefix
-operator|=
-name|setup_git_directory
-argument_list|()
-expr_stmt|;
 name|git_config
 argument_list|(
 name|git_default_config
 argument_list|)
+expr_stmt|;
+name|ls_tree_prefix
+operator|=
+name|prefix
 expr_stmt|;
 if|if
 condition|(
