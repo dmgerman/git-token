@@ -89,6 +89,17 @@ directive|include
 file|"builtin.h"
 end_include
 
+begin_decl_stmt
+DECL|variable|git_usage_string
+specifier|const
+name|char
+name|git_usage_string
+index|[]
+init|=
+literal|"git [--version] [--exec-path[=GIT_EXEC_PATH]] [--help] COMMAND [ ARGS ]"
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|prepend_to_path
 specifier|static
@@ -462,13 +473,9 @@ argument_list|,
 name|cmd
 argument_list|)
 expr_stmt|;
-name|cmd_usage
+name|usage
 argument_list|(
-literal|0
-argument_list|,
-name|NULL
-argument_list|,
-name|NULL
+name|git_usage_string
 argument_list|)
 expr_stmt|;
 block|}
@@ -2028,14 +2035,8 @@ name|errno
 operator|==
 name|ENOENT
 condition|)
-name|cmd_usage
+name|help_unknown_cmd
 argument_list|(
-literal|0
-argument_list|,
-name|exec_path
-argument_list|,
-literal|"'%s' is not a git-command"
-argument_list|,
 name|cmd
 argument_list|)
 expr_stmt|;
