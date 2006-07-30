@@ -18,24 +18,11 @@ directive|include
 file|<stdio.h>
 end_include
 
-begin_ifndef
-ifndef|#
-directive|ifndef
-name|PATH_MAX
-end_ifndef
-
-begin_define
-DECL|macro|PATH_MAX
-define|#
-directive|define
-name|PATH_MAX
-value|4096
-end_define
-
-begin_endif
-endif|#
-directive|endif
-end_endif
+begin_include
+include|#
+directive|include
+file|<limits.h>
+end_include
 
 begin_decl_stmt
 specifier|extern
