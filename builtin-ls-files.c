@@ -1821,10 +1821,10 @@ modifier|*
 modifier|*
 name|argv
 parameter_list|,
+specifier|const
 name|char
 modifier|*
-modifier|*
-name|envp
+name|prefix
 parameter_list|)
 block|{
 name|int
@@ -1851,11 +1851,6 @@ argument_list|(
 name|dir
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|prefix
-operator|=
-name|setup_git_directory
-argument_list|()
 expr_stmt|;
 if|if
 condition|(

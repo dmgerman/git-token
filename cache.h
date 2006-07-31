@@ -940,6 +940,22 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|int
+name|add_file_to_index
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|,
+name|int
+name|verbose
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
 name|ce_same_name
 parameter_list|(
 name|struct
@@ -1263,6 +1279,13 @@ end_function_decl
 begin_comment
 comment|/* Environment bits from configuration mechanism */
 end_comment
+
+begin_decl_stmt
+specifier|extern
+name|int
+name|use_legacy_headers
+decl_stmt|;
+end_decl_stmt
 
 begin_decl_stmt
 specifier|extern

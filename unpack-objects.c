@@ -1329,10 +1329,6 @@ block|}
 block|}
 end_function
 
-begin_comment
-comment|/*  * We unpack from the end, older files first. Now, usually  * there are deltas etc, so we'll not actually write the  * objects in that order, but we might as well try..  */
-end_comment
-
 begin_function
 DECL|function|unpack_all
 specifier|static

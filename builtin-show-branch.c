@@ -457,6 +457,8 @@ name|i
 operator|++
 expr_stmt|;
 block|}
+else|else
+break|break;
 name|c
 operator|=
 name|p
@@ -869,7 +871,7 @@ operator|.
 name|flags
 condition|)
 block|{
-name|insert_by_date
+name|commit_list_insert
 argument_list|(
 name|commit
 argument_list|,
@@ -1110,7 +1112,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/* 	 * Postprocess to complete well-poisoning. 	 * 	 * At this point we have all the commits we have seen in 	 * seen_p list (which happens to be sorted chronologically but 	 * it does not really matter).  Mark anything that can be 	 * reached from uninteresting commits not interesting. 	 */
+comment|/* 	 * Postprocess to complete well-poisoning. 	 * 	 * At this point we have all the commits we have seen in 	 * seen_p list.  Mark anything that can be reached from 	 * uninteresting commits not interesting. 	 */
 for|for
 control|(
 init|;
@@ -2952,10 +2954,10 @@ modifier|*
 modifier|*
 name|av
 parameter_list|,
+specifier|const
 name|char
 modifier|*
-modifier|*
-name|envp
+name|prefix
 parameter_list|)
 block|{
 name|struct
@@ -3083,9 +3085,6 @@ name|dense
 init|=
 literal|1
 decl_stmt|;
-name|setup_git_directory
-argument_list|()
-expr_stmt|;
 name|git_config
 argument_list|(
 name|git_show_branch_config
@@ -3817,6 +3816,12 @@ argument_list|,
 name|num_rev
 argument_list|,
 name|extra
+argument_list|)
+expr_stmt|;
+name|sort_by_date
+argument_list|(
+operator|&
+name|seen
 argument_list|)
 expr_stmt|;
 if|if
