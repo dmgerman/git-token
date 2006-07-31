@@ -1196,6 +1196,14 @@ name|NEEDS_PREFIX
 value|1
 end_define
 
+begin_define
+DECL|macro|USE_PAGER
+define|#
+directive|define
+name|USE_PAGER
+value|2
+end_define
+
 begin_function
 DECL|function|handle_internal_command
 specifier|static
@@ -1255,7 +1263,7 @@ modifier|*
 parameter_list|)
 function_decl|;
 name|int
-name|prefix
+name|option
 decl_stmt|;
 block|}
 name|commands
@@ -1280,6 +1288,8 @@ block|,
 name|cmd_log
 block|,
 name|NEEDS_PREFIX
+operator||
+name|USE_PAGER
 block|}
 block|,
 block|{
@@ -1288,6 +1298,8 @@ block|,
 name|cmd_whatchanged
 block|,
 name|NEEDS_PREFIX
+operator||
+name|USE_PAGER
 block|}
 block|,
 block|{
@@ -1296,6 +1308,8 @@ block|,
 name|cmd_show
 block|,
 name|NEEDS_PREFIX
+operator||
+name|USE_PAGER
 block|}
 block|,
 block|{
@@ -1644,11 +1658,24 @@ if|if
 condition|(
 name|p
 operator|->
-name|prefix
+name|option
+operator|&
+name|NEEDS_PREFIX
 condition|)
 name|prefix
 operator|=
 name|setup_git_directory
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|p
+operator|->
+name|option
+operator|&
+name|USE_PAGER
+condition|)
+name|setup_pager
 argument_list|()
 expr_stmt|;
 if|if
