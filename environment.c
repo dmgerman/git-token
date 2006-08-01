@@ -141,6 +141,15 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|pager_use_color
+name|int
+name|pager_use_color
+init|=
+literal|1
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|git_dir
 DECL|variable|git_object_dir
 DECL|variable|git_index_file

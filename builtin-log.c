@@ -185,9 +185,6 @@ argument_list|(
 name|rev
 argument_list|)
 expr_stmt|;
-name|setup_pager
-argument_list|()
-expr_stmt|;
 while|while
 condition|(
 operator|(
