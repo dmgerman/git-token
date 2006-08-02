@@ -1578,6 +1578,12 @@ name|cmd_prune_packed
 block|,
 name|NEEDS_PREFIX
 block|}
+block|,
+block|{
+literal|"repo-config"
+block|,
+name|cmd_repo_config
+block|}
 block|, 	}
 struct|;
 name|int
