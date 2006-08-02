@@ -43,7 +43,7 @@ name|char
 name|push_usage
 index|[]
 init|=
-literal|"git push [--all] [--tags] [--force]<repository> [<refspec>...]"
+literal|"git push [--all] [--tags] [-f | --force]<repository> [<refspec>...]"
 decl_stmt|;
 end_decl_stmt
 
@@ -1557,6 +1557,14 @@ argument_list|(
 name|arg
 argument_list|,
 literal|"--force"
+argument_list|)
+operator|||
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"-f"
 argument_list|)
 condition|)
 block|{
