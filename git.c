@@ -1570,6 +1570,14 @@ name|cmd_mv
 block|,
 name|NEEDS_PREFIX
 block|}
+block|,
+block|{
+literal|"prune-packed"
+block|,
+name|cmd_prune_packed
+block|,
+name|NEEDS_PREFIX
+block|}
 block|, 	}
 struct|;
 name|int

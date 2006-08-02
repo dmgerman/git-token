@@ -331,9 +331,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|main
+DECL|function|cmd_prune_packed
 name|int
-name|main
+name|cmd_prune_packed
 parameter_list|(
 name|int
 name|argc
@@ -342,14 +342,16 @@ name|char
 modifier|*
 modifier|*
 name|argv
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|prefix
 parameter_list|)
 block|{
 name|int
 name|i
 decl_stmt|;
-name|setup_git_directory
-argument_list|()
-expr_stmt|;
 for|for
 control|(
 name|i
