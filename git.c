@@ -1592,6 +1592,14 @@ name|cmd_name_rev
 block|,
 name|NEEDS_PREFIX
 block|}
+block|,
+block|{
+literal|"pack-objects"
+block|,
+name|cmd_pack_objects
+block|,
+name|NEEDS_PREFIX
+block|}
 block|, 	}
 struct|;
 name|int
