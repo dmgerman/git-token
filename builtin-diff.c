@@ -725,7 +725,7 @@ name|name
 argument_list|,
 name|blob
 index|[
-literal|0
+literal|1
 index|]
 operator|.
 name|name
