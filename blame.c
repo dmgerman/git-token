@@ -103,7 +103,7 @@ name|char
 name|blame_usage
 index|[]
 init|=
-literal|"[-c] [-l] [-t] [-S<revs-file>] [--] file [commit]\n"
+literal|"git-blame [-c] [-l] [-t] [-S<revs-file>] [--] file [commit]\n"
 literal|"  -c, --compatibility Use the same output mode as git-annotate (Default: off)\n"
 literal|"  -l, --long          Show long commit SHA1 (Default: off)\n"
 literal|"  -t, --time          Show raw timestamp (Default: off)\n"
