@@ -1600,6 +1600,14 @@ name|cmd_pack_objects
 block|,
 name|NEEDS_PREFIX
 block|}
+block|,
+block|{
+literal|"unpack-objects"
+block|,
+name|cmd_unpack_objects
+block|,
+name|NEEDS_PREFIX
+block|}
 block|, 	}
 struct|;
 name|int
