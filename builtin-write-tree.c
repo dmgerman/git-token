@@ -330,7 +330,7 @@ operator|+
 literal|9
 expr_stmt|;
 else|else
-name|die
+name|usage
 argument_list|(
 name|write_tree_usage
 argument_list|)
