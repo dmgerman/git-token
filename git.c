@@ -1584,6 +1584,14 @@ literal|"repo-config"
 block|,
 name|cmd_repo_config
 block|}
+block|,
+block|{
+literal|"name-rev"
+block|,
+name|cmd_name_rev
+block|,
+name|NEEDS_PREFIX
+block|}
 block|, 	}
 struct|;
 name|int
