@@ -1074,6 +1074,12 @@ argument_list|,
 name|two
 argument_list|)
 expr_stmt|;
+name|dp
+operator|->
+name|renamed_pair
+operator|=
+literal|1
+expr_stmt|;
 if|if
 condition|(
 operator|!

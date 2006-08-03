@@ -262,6 +262,12 @@ name|broken_pair
 range|:
 literal|1
 decl_stmt|;
+DECL|member|renamed_pair
+name|unsigned
+name|renamed_pair
+range|:
+literal|1
+decl_stmt|;
 block|}
 struct|;
 end_struct
@@ -286,7 +292,7 @@ name|DIFF_PAIR_RENAME
 parameter_list|(
 name|p
 parameter_list|)
-value|(strcmp((p)->one->path, (p)->two->path))
+value|((p)->renamed_pair)
 end_define
 
 begin_define
