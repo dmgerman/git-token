@@ -4941,6 +4941,12 @@ operator|.
 name|path
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|compare
+operator|<=
+literal|0
+condition|)
 name|ren1
 operator|=
 name|a_renames
@@ -4953,6 +4959,12 @@ index|]
 operator|.
 name|util
 expr_stmt|;
+if|if
+condition|(
+name|compare
+operator|>=
+literal|0
+condition|)
 name|ren2
 operator|=
 name|b_renames
