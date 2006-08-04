@@ -1616,6 +1616,14 @@ name|cmd_symbolic_ref
 block|,
 name|NEEDS_PREFIX
 block|}
+block|,
+block|{
+literal|"checkout-index"
+block|,
+name|cmd_checkout_index
+block|,
+name|NEEDS_PREFIX
+block|}
 block|, 	}
 struct|;
 name|int
