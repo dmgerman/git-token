@@ -6868,6 +6868,9 @@ name|rc
 init|=
 literal|0
 decl_stmt|;
+name|setup_ident
+argument_list|()
+expr_stmt|;
 name|setup_git_directory
 argument_list|()
 expr_stmt|;
