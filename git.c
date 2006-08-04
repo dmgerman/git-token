@@ -1196,11 +1196,11 @@ decl_stmt|;
 end_decl_stmt
 
 begin_define
-DECL|macro|NEEDS_PREFIX
+DECL|macro|RUN_SETUP
 define|#
 directive|define
-name|NEEDS_PREFIX
-value|1
+name|RUN_SETUP
+value|(1<<0)
 end_define
 
 begin_define
@@ -1208,7 +1208,7 @@ DECL|macro|USE_PAGER
 define|#
 directive|define
 name|USE_PAGER
-value|2
+value|(1<<1)
 end_define
 
 begin_function
@@ -1282,7 +1282,7 @@ literal|"add"
 block|,
 name|cmd_add
 block|,
-name|NEEDS_PREFIX
+name|RUN_SETUP
 block|}
 block|,
 block|{
@@ -1296,7 +1296,7 @@ literal|"cat-file"
 block|,
 name|cmd_cat_file
 block|,
-name|NEEDS_PREFIX
+name|RUN_SETUP
 block|}
 block|,
 block|{
@@ -1304,7 +1304,7 @@ literal|"checkout-index"
 block|,
 name|cmd_checkout_index
 block|,
-name|NEEDS_PREFIX
+name|RUN_SETUP
 block|}
 block|,
 block|{
@@ -1318,7 +1318,7 @@ literal|"commit-tree"
 block|,
 name|cmd_commit_tree
 block|,
-name|NEEDS_PREFIX
+name|RUN_SETUP
 block|}
 block|,
 block|{
@@ -1332,7 +1332,7 @@ literal|"diff"
 block|,
 name|cmd_diff
 block|,
-name|NEEDS_PREFIX
+name|RUN_SETUP
 block|}
 block|,
 block|{
@@ -1340,7 +1340,7 @@ literal|"diff-files"
 block|,
 name|cmd_diff_files
 block|,
-name|NEEDS_PREFIX
+name|RUN_SETUP
 block|}
 block|,
 block|{
@@ -1348,7 +1348,7 @@ literal|"diff-index"
 block|,
 name|cmd_diff_index
 block|,
-name|NEEDS_PREFIX
+name|RUN_SETUP
 block|}
 block|,
 block|{
@@ -1356,7 +1356,7 @@ literal|"diff-stages"
 block|,
 name|cmd_diff_stages
 block|,
-name|NEEDS_PREFIX
+name|RUN_SETUP
 block|}
 block|,
 block|{
@@ -1364,7 +1364,7 @@ literal|"diff-tree"
 block|,
 name|cmd_diff_tree
 block|,
-name|NEEDS_PREFIX
+name|RUN_SETUP
 block|}
 block|,
 block|{
@@ -1372,7 +1372,7 @@ literal|"fmt-merge-msg"
 block|,
 name|cmd_fmt_merge_msg
 block|,
-name|NEEDS_PREFIX
+name|RUN_SETUP
 block|}
 block|,
 block|{
@@ -1380,7 +1380,7 @@ literal|"format-patch"
 block|,
 name|cmd_format_patch
 block|,
-name|NEEDS_PREFIX
+name|RUN_SETUP
 block|}
 block|,
 block|{
@@ -1394,7 +1394,7 @@ literal|"grep"
 block|,
 name|cmd_grep
 block|,
-name|NEEDS_PREFIX
+name|RUN_SETUP
 block|}
 block|,
 block|{
@@ -1414,7 +1414,7 @@ literal|"log"
 block|,
 name|cmd_log
 block|,
-name|NEEDS_PREFIX
+name|RUN_SETUP
 operator||
 name|USE_PAGER
 block|}
@@ -1424,7 +1424,7 @@ literal|"ls-files"
 block|,
 name|cmd_ls_files
 block|,
-name|NEEDS_PREFIX
+name|RUN_SETUP
 block|}
 block|,
 block|{
@@ -1432,7 +1432,7 @@ literal|"ls-tree"
 block|,
 name|cmd_ls_tree
 block|,
-name|NEEDS_PREFIX
+name|RUN_SETUP
 block|}
 block|,
 block|{
@@ -1452,7 +1452,7 @@ literal|"mv"
 block|,
 name|cmd_mv
 block|,
-name|NEEDS_PREFIX
+name|RUN_SETUP
 block|}
 block|,
 block|{
@@ -1460,7 +1460,7 @@ literal|"name-rev"
 block|,
 name|cmd_name_rev
 block|,
-name|NEEDS_PREFIX
+name|RUN_SETUP
 block|}
 block|,
 block|{
@@ -1468,7 +1468,7 @@ literal|"pack-objects"
 block|,
 name|cmd_pack_objects
 block|,
-name|NEEDS_PREFIX
+name|RUN_SETUP
 block|}
 block|,
 block|{
@@ -1476,7 +1476,7 @@ literal|"prune"
 block|,
 name|cmd_prune
 block|,
-name|NEEDS_PREFIX
+name|RUN_SETUP
 block|}
 block|,
 block|{
@@ -1484,7 +1484,7 @@ literal|"prune-packed"
 block|,
 name|cmd_prune_packed
 block|,
-name|NEEDS_PREFIX
+name|RUN_SETUP
 block|}
 block|,
 block|{
@@ -1498,7 +1498,7 @@ literal|"read-tree"
 block|,
 name|cmd_read_tree
 block|,
-name|NEEDS_PREFIX
+name|RUN_SETUP
 block|}
 block|,
 block|{
@@ -1512,7 +1512,7 @@ literal|"rev-list"
 block|,
 name|cmd_rev_list
 block|,
-name|NEEDS_PREFIX
+name|RUN_SETUP
 block|}
 block|,
 block|{
@@ -1520,7 +1520,7 @@ literal|"rev-parse"
 block|,
 name|cmd_rev_parse
 block|,
-name|NEEDS_PREFIX
+name|RUN_SETUP
 block|}
 block|,
 block|{
@@ -1528,7 +1528,7 @@ literal|"rm"
 block|,
 name|cmd_rm
 block|,
-name|NEEDS_PREFIX
+name|RUN_SETUP
 block|}
 block|,
 block|{
@@ -1536,7 +1536,7 @@ literal|"show-branch"
 block|,
 name|cmd_show_branch
 block|,
-name|NEEDS_PREFIX
+name|RUN_SETUP
 block|}
 block|,
 block|{
@@ -1544,7 +1544,7 @@ literal|"show"
 block|,
 name|cmd_show
 block|,
-name|NEEDS_PREFIX
+name|RUN_SETUP
 operator||
 name|USE_PAGER
 block|}
@@ -1560,7 +1560,7 @@ literal|"symbolic-ref"
 block|,
 name|cmd_symbolic_ref
 block|,
-name|NEEDS_PREFIX
+name|RUN_SETUP
 block|}
 block|,
 block|{
@@ -1568,7 +1568,7 @@ literal|"tar-tree"
 block|,
 name|cmd_tar_tree
 block|,
-name|NEEDS_PREFIX
+name|RUN_SETUP
 block|}
 block|,
 block|{
@@ -1576,7 +1576,7 @@ literal|"unpack-objects"
 block|,
 name|cmd_unpack_objects
 block|,
-name|NEEDS_PREFIX
+name|RUN_SETUP
 block|}
 block|,
 block|{
@@ -1584,7 +1584,7 @@ literal|"update-index"
 block|,
 name|cmd_update_index
 block|,
-name|NEEDS_PREFIX
+name|RUN_SETUP
 block|}
 block|,
 block|{
@@ -1592,7 +1592,7 @@ literal|"update-ref"
 block|,
 name|cmd_update_ref
 block|,
-name|NEEDS_PREFIX
+name|RUN_SETUP
 block|}
 block|,
 block|{
@@ -1612,7 +1612,7 @@ literal|"whatchanged"
 block|,
 name|cmd_whatchanged
 block|,
-name|NEEDS_PREFIX
+name|RUN_SETUP
 operator||
 name|USE_PAGER
 block|}
@@ -1622,7 +1622,7 @@ literal|"write-tree"
 block|,
 name|cmd_write_tree
 block|,
-name|NEEDS_PREFIX
+name|RUN_SETUP
 block|}
 block|, 	}
 struct|;
@@ -1721,7 +1721,7 @@ name|p
 operator|->
 name|option
 operator|&
-name|NEEDS_PREFIX
+name|RUN_SETUP
 condition|)
 name|prefix
 operator|=
