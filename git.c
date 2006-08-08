@@ -1323,6 +1323,8 @@ block|{
 literal|"push"
 block|,
 name|cmd_push
+block|,
+name|NEEDS_PREFIX
 block|}
 block|,
 block|{
