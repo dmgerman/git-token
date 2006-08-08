@@ -1908,6 +1908,10 @@ name|struct
 name|strbuf
 name|current_path
 decl_stmt|;
+name|void
+modifier|*
+name|buffer
+decl_stmt|;
 name|current_path
 operator|.
 name|buf
@@ -2041,6 +2045,8 @@ name|tree
 operator|.
 name|buf
 operator|=
+name|buffer
+operator|=
 name|read_object_with_reference
 argument_list|(
 name|sha1
@@ -2105,6 +2111,11 @@ argument_list|)
 expr_stmt|;
 name|write_trailer
 argument_list|()
+expr_stmt|;
+name|free
+argument_list|(
+name|buffer
+argument_list|)
 expr_stmt|;
 name|free
 argument_list|(

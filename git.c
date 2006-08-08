@@ -1491,6 +1491,8 @@ block|{
 literal|"push"
 block|,
 name|cmd_push
+block|,
+name|RUN_SETUP
 block|}
 block|,
 block|{

@@ -854,7 +854,6 @@ name|bad_dir_environ
 label|:
 if|if
 condition|(
-operator|!
 name|nongit_ok
 condition|)
 block|{
