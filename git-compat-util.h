@@ -676,6 +676,20 @@ argument_list|(
 literal|"Out of memory, malloc failed"
 argument_list|)
 expr_stmt|;
+ifdef|#
+directive|ifdef
+name|XMALLOC_POISON
+name|memset
+argument_list|(
+name|ret
+argument_list|,
+literal|0xA5
+argument_list|,
+name|size
+argument_list|)
+expr_stmt|;
+endif|#
+directive|endif
 return|return
 name|ret
 return|;
