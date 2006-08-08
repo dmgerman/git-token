@@ -690,7 +690,7 @@ argument_list|(
 operator|&
 name|stream
 argument_list|,
-name|Z_DEFAULT_COMPRESSION
+name|zlib_compression_level
 argument_list|)
 expr_stmt|;
 name|maxsize

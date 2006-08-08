@@ -12,11 +12,11 @@ file|"tag.h"
 end_include
 
 begin_comment
-comment|/*  * A signature file has a very simple fixed format: three lines  * of "object<sha1>" + "type<typename>" + "tag<tagname>",  * followed by some free-form signature that git itself doesn't  * care about, but that can be verified with gpg or similar.  *  * The first three lines are guaranteed to be at least 63 bytes:  * "object<sha1>\n" is 48 bytes, "type tag\n" at 9 bytes is the  * shortest possible type-line, and "tag .\n" at 6 bytes is the  * shortest single-character-tag line.   *  * We also artificially limit the size of the full object to 8kB.  * Just because I'm a lazy bastard, and if you can't fit a signature  * in that size, you're doing something wrong.  */
+comment|/*  * A signature file has a very simple fixed format: four lines  * of "object<sha1>" + "type<typename>" + "tag<tagname>" +  * "tagger<committer>", followed by a blank line, a free-form tag  * message and a signature block that git itself doesn't care about,  * but that can be verified with gpg or similar.  *  * The first three lines are guaranteed to be at least 63 bytes:  * "object<sha1>\n" is 48 bytes, "type tag\n" at 9 bytes is the  * shortest possible type-line, and "tag .\n" at 6 bytes is the  * shortest single-character-tag line.   *  * We also artificially limit the size of the full object to 8kB.  * Just because I'm a lazy bastard, and if you can't fit a signature  * in that size, you're doing something wrong.  */
 end_comment
 
 begin_comment
-comment|// Some random size
+comment|/* Some random size */
 end_comment
 
 begin_define
@@ -118,6 +118,38 @@ return|;
 block|}
 end_function
 
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|NO_C99_FORMAT
+end_ifdef
+
+begin_define
+DECL|macro|PD_FMT
+define|#
+directive|define
+name|PD_FMT
+value|"%d"
+end_define
+
+begin_else
+else|#
+directive|else
+end_else
+
+begin_define
+DECL|macro|PD_FMT
+define|#
+directive|define
+name|PD_FMT
+value|"%td"
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_function
 DECL|function|verify_tag
 specifier|static
@@ -172,7 +204,7 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"wanna fool me ? you obviously got the size wrong !\n"
+literal|"wanna fool me ? you obviously got the size wrong !"
 argument_list|)
 return|;
 name|buffer
@@ -201,7 +233,7 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"char%d: does not start with \"object \"\n"
+literal|"char%d: does not start with \"object \""
 argument_list|,
 literal|0
 argument_list|)
@@ -220,7 +252,7 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"char%d: could not get SHA1 hash\n"
+literal|"char%d: could not get SHA1 hash"
 argument_list|,
 literal|7
 argument_list|)
@@ -248,7 +280,7 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"char%d: could not find \"\\ntype \"\n"
+literal|"char%d: could not find \"\\ntype \""
 argument_list|,
 literal|47
 argument_list|)
@@ -271,7 +303,9 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"char%td: could not find next \"\\n\"\n"
+literal|"char"
+name|PD_FMT
+literal|": could not find next \"\\n\""
 argument_list|,
 name|type_line
 operator|-
@@ -302,7 +336,9 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"char%td: no \"tag \" found\n"
+literal|"char"
+name|PD_FMT
+literal|": no \"tag \" found"
 argument_list|,
 name|tag_line
 operator|-
@@ -333,7 +369,9 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"char%td: type too long\n"
+literal|"char"
+name|PD_FMT
+literal|": type too long"
 argument_list|,
 name|type_line
 operator|+
@@ -363,25 +401,6 @@ expr_stmt|;
 comment|/* Verify that the object matches */
 if|if
 condition|(
-name|get_sha1_hex
-argument_list|(
-name|object
-operator|+
-literal|7
-argument_list|,
-name|sha1
-argument_list|)
-condition|)
-return|return
-name|error
-argument_list|(
-literal|"char%d: could not get SHA1 hash but this is really odd since i got it before !\n"
-argument_list|,
-literal|7
-argument_list|)
-return|;
-if|if
-condition|(
 name|verify_object
 argument_list|(
 name|sha1
@@ -392,11 +411,14 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"char%d: could not verify object %s\n"
+literal|"char%d: could not verify object %s"
 argument_list|,
 literal|7
 argument_list|,
+name|sha1_to_hex
+argument_list|(
 name|sha1
+argument_list|)
 argument_list|)
 return|;
 comment|/* Verify the tag-name: we don't allow control characters or spaces in it */
@@ -435,7 +457,9 @@ continue|continue;
 return|return
 name|error
 argument_list|(
-literal|"char%td: could not verify tag name\n"
+literal|"char"
+name|PD_FMT
+literal|": could not verify tag name"
 argument_list|,
 name|tag_line
 operator|-
@@ -471,19 +495,30 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"char%td: could not find \"tagger\"\n"
+literal|"char"
+name|PD_FMT
+literal|": could not find \"tagger\""
 argument_list|,
 name|tagger_line
 operator|-
 name|buffer
 argument_list|)
 return|;
+comment|/* TODO: check for committer info + blank line? */
+comment|/* Also, the minimum length is probably + "tagger .", or 63+8=71 */
 comment|/* The actual stuff afterwards we don't care about.. */
 return|return
 literal|0
 return|;
 block|}
 end_function
+
+begin_undef
+DECL|macro|PD_FMT
+undef|#
+directive|undef
+name|PD_FMT
+end_undef
 
 begin_function
 DECL|function|main
@@ -529,7 +564,7 @@ literal|1
 condition|)
 name|usage
 argument_list|(
-literal|"cat<signaturefile> | git-mktag"
+literal|"git-mktag< signaturefile"
 argument_list|)
 expr_stmt|;
 name|setup_git_directory
@@ -560,7 +595,7 @@ literal|"could not read from stdin"
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Verify it for some basic sanity: it needs to start with "object<sha1>\ntype\ntagger "
+comment|/* Verify it for some basic sanity: it needs to start with 	   "object<sha1>\ntype\ntagger " */
 if|if
 condition|(
 name|verify_tag

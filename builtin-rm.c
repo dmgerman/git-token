@@ -253,10 +253,10 @@ modifier|*
 modifier|*
 name|argv
 parameter_list|,
+specifier|const
 name|char
 modifier|*
-modifier|*
-name|envp
+name|prefix
 parameter_list|)
 block|{
 name|int
@@ -276,14 +276,6 @@ decl_stmt|,
 name|force
 init|=
 literal|0
-decl_stmt|;
-specifier|const
-name|char
-modifier|*
-name|prefix
-init|=
-name|setup_git_directory
-argument_list|()
 decl_stmt|;
 specifier|const
 name|char
@@ -433,7 +425,7 @@ literal|1
 expr_stmt|;
 continue|continue;
 block|}
-name|die
+name|usage
 argument_list|(
 name|builtin_rm_usage
 argument_list|)
@@ -483,18 +475,11 @@ comment|/* nothing */
 empty_stmt|;
 name|seen
 operator|=
-name|xmalloc
+name|xcalloc
 argument_list|(
 name|i
-argument_list|)
-expr_stmt|;
-name|memset
-argument_list|(
-name|seen
 argument_list|,
-literal|0
-argument_list|,
-name|i
+literal|1
 argument_list|)
 expr_stmt|;
 for|for
@@ -647,7 +632,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"git rm: unable to remove %s"
+literal|"git-rm: unable to remove %s"
 argument_list|,
 name|path
 argument_list|)
@@ -667,7 +652,7 @@ condition|)
 return|return
 literal|0
 return|;
-comment|/* 	 * Then, if we used "-f", remove the filenames from the 	 * workspace. If we fail to remove the first one, we 	 * abort the "git rm" (but once we've successfully removed 	 * any file at all, we'll go ahead and commit to it all: 	 * by then we've already committed ourself and can't fail 	 * in the middle) 	 */
+comment|/* 	 * Then, if we used "-f", remove the filenames from the 	 * workspace. If we fail to remove the first one, we 	 * abort the "git rm" (but once we've successfully removed 	 * any file at all, we'll go ahead and commit to it all: 	 * by then we've already committed ourselves and can't fail 	 * in the middle) 	 */
 if|if
 condition|(
 name|force
@@ -728,7 +713,7 @@ name|removed
 condition|)
 name|die
 argument_list|(
-literal|"git rm: %s: %s"
+literal|"git-rm: %s: %s"
 argument_list|,
 name|path
 argument_list|,
@@ -754,6 +739,11 @@ argument_list|,
 name|active_cache
 argument_list|,
 name|active_nr
+argument_list|)
+operator|||
+name|close
+argument_list|(
+name|newfd
 argument_list|)
 operator|||
 name|commit_lock_file

@@ -107,6 +107,11 @@ literal|"cat"
 argument_list|)
 condition|)
 return|return;
+name|pager_in_use
+operator|=
+literal|1
+expr_stmt|;
+comment|/* means we are emitting to terminal */
 if|if
 condition|(
 name|pipe

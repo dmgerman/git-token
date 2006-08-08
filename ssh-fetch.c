@@ -403,7 +403,7 @@ literal|20
 argument_list|)
 condition|)
 block|{
-comment|// we must have already fetched it to clean the queue
+comment|/* we must have already fetched it to clean the queue */
 return|return
 name|has_sha1_file
 argument_list|(
@@ -490,7 +490,7 @@ operator|-
 literal|1
 return|;
 block|}
-comment|//fprintf(stderr, "Got %d\n", remote);
+comment|/* fprintf(stderr, "Got %d\n", remote); */
 if|if
 condition|(
 name|remote
@@ -690,7 +690,7 @@ name|ssh_fetch_usage
 index|[]
 init|=
 name|MY_PROGRAM_NAME
-literal|" [-c] [-t] [-a] [-v] [-d] [--recover] [-w ref] commit-id url"
+literal|" [-c] [-t] [-a] [-v] [--recover] [-w ref] commit-id url"
 decl_stmt|;
 end_decl_stmt
 
@@ -708,6 +708,13 @@ modifier|*
 name|argv
 parameter_list|)
 block|{
+specifier|const
+name|char
+modifier|*
+name|write_ref
+init|=
+name|NULL
+decl_stmt|;
 name|char
 modifier|*
 name|commit_id
@@ -741,6 +748,9 @@ condition|)
 name|prog
 operator|=
 literal|"git-ssh-upload"
+expr_stmt|;
+name|setup_ident
+argument_list|()
 expr_stmt|;
 name|setup_git_directory
 argument_list|()
@@ -935,10 +945,6 @@ operator|+
 literal|1
 index|]
 expr_stmt|;
-name|write_ref_log_details
-operator|=
-name|url
-expr_stmt|;
 if|if
 condition|(
 name|setup_connection
@@ -975,7 +981,15 @@ if|if
 condition|(
 name|pull
 argument_list|(
+literal|1
+argument_list|,
+operator|&
 name|commit_id
+argument_list|,
+operator|&
+name|write_ref
+argument_list|,
+name|url
 argument_list|)
 condition|)
 return|return

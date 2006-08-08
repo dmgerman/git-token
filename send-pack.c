@@ -816,7 +816,7 @@ name|o
 operator|->
 name|type
 operator|!=
-name|TYPE_COMMIT
+name|OBJ_COMMIT
 condition|)
 return|return
 literal|0
@@ -853,7 +853,7 @@ name|o
 operator|->
 name|type
 operator|!=
-name|TYPE_COMMIT
+name|OBJ_COMMIT
 condition|)
 return|return
 literal|0
@@ -1337,7 +1337,7 @@ literal|0
 argument_list|,
 name|NULL
 argument_list|,
-literal|1
+name|REF_NORMAL
 argument_list|)
 expr_stmt|;
 name|get_local_heads

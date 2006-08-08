@@ -37,7 +37,7 @@ name|char
 name|name_rev_usage
 index|[]
 init|=
-literal|"git-name-rev [--tags] ( --all | --stdin | commitish [commitish...] )\n"
+literal|"git-name-rev [--tags] ( --all | --stdin | committish [committish...] )\n"
 decl_stmt|;
 end_decl_stmt
 
@@ -454,7 +454,7 @@ name|o
 operator|->
 name|type
 operator|==
-name|TYPE_TAG
+name|OBJ_TAG
 condition|)
 block|{
 name|struct
@@ -502,7 +502,7 @@ name|o
 operator|->
 name|type
 operator|==
-name|TYPE_COMMIT
+name|OBJ_COMMIT
 condition|)
 block|{
 name|struct
@@ -618,7 +618,7 @@ name|o
 operator|->
 name|type
 operator|!=
-name|TYPE_COMMIT
+name|OBJ_COMMIT
 condition|)
 return|return
 literal|"undefined"
@@ -950,7 +950,7 @@ name|o
 operator|->
 name|type
 operator|!=
-name|TYPE_COMMIT
+name|OBJ_COMMIT
 condition|)
 block|{
 name|fprintf

@@ -12,48 +12,11 @@ directive|define
 name|PACK_H
 end_define
 
-begin_comment
-comment|/*  * The packed object type is stored in 3 bits.  * The type value 0 is a reserved prefix if ever there is more than 7  * object types, or any future format extensions.  */
-end_comment
-
-begin_enum
-DECL|enum|object_type
-enum|enum
-name|object_type
-block|{
-DECL|enumerator|OBJ_EXT
-name|OBJ_EXT
-init|=
-literal|0
-block|,
-DECL|enumerator|OBJ_COMMIT
-name|OBJ_COMMIT
-init|=
-literal|1
-block|,
-DECL|enumerator|OBJ_TREE
-name|OBJ_TREE
-init|=
-literal|2
-block|,
-DECL|enumerator|OBJ_BLOB
-name|OBJ_BLOB
-init|=
-literal|3
-block|,
-DECL|enumerator|OBJ_TAG
-name|OBJ_TAG
-init|=
-literal|4
-block|,
-comment|/* 5/6 for future expansion */
-DECL|enumerator|OBJ_DELTA
-name|OBJ_DELTA
-init|=
-literal|7
-block|, }
-enum|;
-end_enum
+begin_include
+include|#
+directive|include
+file|"object.h"
+end_include
 
 begin_comment
 comment|/*  * Packed object header  */

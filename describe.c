@@ -396,7 +396,7 @@ name|object
 operator|->
 name|type
 operator|==
-name|TYPE_TAG
+name|OBJ_TAG
 condition|)
 name|prio
 operator|=

@@ -2169,7 +2169,7 @@ literal|'}'
 condition|)
 name|expected_type
 operator|=
-name|TYPE_COMMIT
+name|OBJ_COMMIT
 expr_stmt|;
 elseif|else
 if|if
@@ -2193,7 +2193,7 @@ literal|'}'
 condition|)
 name|expected_type
 operator|=
-name|TYPE_TREE
+name|OBJ_TREE
 expr_stmt|;
 elseif|else
 if|if
@@ -2217,7 +2217,7 @@ literal|'}'
 condition|)
 name|expected_type
 operator|=
-name|TYPE_BLOB
+name|OBJ_BLOB
 expr_stmt|;
 elseif|else
 if|if
@@ -2231,7 +2231,7 @@ literal|'}'
 condition|)
 name|expected_type
 operator|=
-name|TYPE_NONE
+name|OBJ_NONE
 expr_stmt|;
 else|else
 return|return
@@ -2392,7 +2392,7 @@ name|o
 operator|->
 name|type
 operator|==
-name|TYPE_TAG
+name|OBJ_TAG
 condition|)
 name|o
 operator|=
@@ -2414,7 +2414,7 @@ name|o
 operator|->
 name|type
 operator|==
-name|TYPE_COMMIT
+name|OBJ_COMMIT
 condition|)
 name|o
 operator|=

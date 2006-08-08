@@ -30,6 +30,15 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|use_legacy_headers
+name|int
+name|use_legacy_headers
+init|=
+literal|1
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|trust_executable_bit
 name|int
 name|trust_executable_bit
@@ -112,6 +121,31 @@ modifier|*
 name|apply_default_whitespace
 init|=
 name|NULL
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|zlib_compression_level
+name|int
+name|zlib_compression_level
+init|=
+name|Z_DEFAULT_COMPRESSION
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|pager_in_use
+name|int
+name|pager_in_use
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|pager_use_color
+name|int
+name|pager_use_color
+init|=
+literal|1
 decl_stmt|;
 end_decl_stmt
 

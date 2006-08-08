@@ -168,7 +168,7 @@ name|object_entry
 modifier|*
 name|delta_child
 decl_stmt|;
-comment|/* delitified objects who bases me */
+comment|/* deltified objects who bases me */
 DECL|member|delta_sibling
 name|struct
 name|object_entry
@@ -186,7 +186,7 @@ struct|;
 end_struct
 
 begin_comment
-comment|/*  * Objects we are going to pack are colected in objects array (dynamically  * expanded).  nr_objects& nr_alloc controls this array.  They are stored  * in the order we see -- typically rev-list --objects order that gives us  * nice "minimum seek" order.  *  * sorted-by-sha ans sorted-by-type are arrays of pointers that point at  * elements in the objects array.  The former is used to build the pack  * index (lists object names in the ascending order to help offset lookup),  * and the latter is used to group similar things together by try_delta()  * heuristics.  */
+comment|/*  * Objects we are going to pack are collected in objects array (dynamically  * expanded).  nr_objects& nr_alloc controls this array.  They are stored  * in the order we see -- typically rev-list --objects order that gives us  * nice "minimum seek" order.  *  * sorted-by-sha ans sorted-by-type are arrays of pointers that point at  * elements in the objects array.  The former is used to build the pack  * index (lists object names in the ascending order to help offset lookup),  * and the latter is used to group similar things together by try_delta()  * heuristics.  */
 end_comment
 
 begin_decl_stmt
@@ -329,6 +329,16 @@ name|sig_atomic_t
 name|progress_update
 init|=
 literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|window
+specifier|static
+name|int
+name|window
+init|=
+literal|10
 decl_stmt|;
 end_decl_stmt
 
@@ -6290,6 +6300,58 @@ block|}
 end_function
 
 begin_function
+DECL|function|git_pack_config
+specifier|static
+name|int
+name|git_pack_config
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|k
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|v
+parameter_list|)
+block|{
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|k
+argument_list|,
+literal|"pack.window"
+argument_list|)
+condition|)
+block|{
+name|window
+operator|=
+name|git_config_int
+argument_list|(
+name|k
+argument_list|,
+name|v
+argument_list|)
+expr_stmt|;
+return|return
+literal|0
+return|;
+block|}
+return|return
+name|git_default_config
+argument_list|(
+name|k
+argument_list|,
+name|v
+argument_list|)
+return|;
+block|}
+end_function
+
+begin_function
 DECL|function|main
 name|int
 name|main
@@ -6319,10 +6381,6 @@ literal|2
 index|]
 decl_stmt|;
 name|int
-name|window
-init|=
-literal|10
-decl_stmt|,
 name|depth
 init|=
 literal|10
@@ -6347,6 +6405,11 @@ name|i
 decl_stmt|;
 name|setup_git_directory
 argument_list|()
+expr_stmt|;
+name|git_config
+argument_list|(
+name|git_pack_config
+argument_list|)
 expr_stmt|;
 name|progress
 operator|=

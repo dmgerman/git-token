@@ -1246,7 +1246,7 @@ condition|)
 return|return
 name|NULL
 return|;
-comment|/* Determine index hash size.  Note that indexing skips the 	   first byte to allow for optimizing the rabin polynomial 	   initialization in create_delta(). */
+comment|/* Determine index hash size.  Note that indexing skips the 	   first byte to allow for optimizing the Rabin's polynomial 	   initialization in create_delta(). */
 name|entries
 operator|=
 operator|(
@@ -1563,7 +1563,7 @@ operator|++
 expr_stmt|;
 block|}
 block|}
-comment|/* 	 * Determine a limit on the number of entries in the same hash 	 * bucket.  This guard us against patological data sets causing 	 * really bad hash distribution with most entries in the same hash 	 * bucket that would bring us to O(m*n) computing costs (m and n 	 * corresponding to reference and target buffer sizes). 	 * 	 * Make sure none of the hash buckets has more entries than 	 * we're willing to test.  Otherwise we cull the entry list 	 * uniformly to still preserve a good repartition across 	 * the reference buffer. 	 */
+comment|/* 	 * Determine a limit on the number of entries in the same hash 	 * bucket.  This guards us against pathological data sets causing 	 * really bad hash distribution with most entries in the same hash 	 * bucket that would bring us to O(m*n) computing costs (m and n 	 * corresponding to reference and target buffer sizes). 	 * 	 * Make sure none of the hash buckets has more entries than 	 * we're willing to test.  Otherwise we cull the entry list 	 * uniformly to still preserve a good repartition across 	 * the reference buffer. 	 */
 for|for
 control|(
 name|i
@@ -1677,7 +1677,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * The maximum size for any opcode sequence, including the initial header  * plus rabin window plus biggest copy.  */
+comment|/*  * The maximum size for any opcode sequence, including the initial header  * plus Rabin window plus biggest copy.  */
 end_comment
 
 begin_define

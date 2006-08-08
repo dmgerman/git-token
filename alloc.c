@@ -60,7 +60,6 @@ value|static unsigned int name##_allocs;				\ struct name *alloc_##name##_node(v
 end_define
 
 begin_macro
-DECL|function|DEFINE_ALLOCATOR
 name|DEFINE_ALLOCATOR
 argument_list|(
 argument|blob
@@ -88,6 +87,81 @@ argument|tag
 argument_list|)
 end_macro
 
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|NO_C99_FORMAT
+end_ifdef
+
+begin_define
+DECL|macro|SZ_FMT
+define|#
+directive|define
+name|SZ_FMT
+value|"%u"
+end_define
+
+begin_else
+else|#
+directive|else
+end_else
+
+begin_define
+define|#
+directive|define
+name|SZ_FMT
+value|"%zu"
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
+begin_function
+DECL|function|report
+specifier|static
+name|void
+name|report
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|name
+parameter_list|,
+name|unsigned
+name|int
+name|count
+parameter_list|,
+name|size_t
+name|size
+parameter_list|)
+block|{
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"%10s: %8u ("
+name|SZ_FMT
+literal|" kB)\n"
+argument_list|,
+name|name
+argument_list|,
+name|count
+argument_list|,
+name|size
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_undef
+DECL|macro|SZ_FMT
+undef|#
+directive|undef
+name|SZ_FMT
+end_undef
+
 begin_define
 DECL|macro|REPORT
 define|#
@@ -97,10 +171,11 @@ parameter_list|(
 name|name
 parameter_list|)
 define|\
-value|fprintf(stderr, "%10s: %8u (%zu kB)\n", #name, name##_allocs, name##_allocs*sizeof(struct name)>> 10)
+value|report(#name, name##_allocs, name##_allocs*sizeof(struct name)>> 10)
 end_define
 
 begin_function
+DECL|function|alloc_report
 name|void
 name|alloc_report
 parameter_list|(
