@@ -612,6 +612,18 @@ block|}
 end_function
 
 begin_decl_stmt
+DECL|variable|current_index_file
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|current_index_file
+init|=
+name|NULL
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|original_index_file
 specifier|static
 specifier|const
@@ -674,10 +686,7 @@ name|hold_lock_file_for_update
 argument_list|(
 name|lock
 argument_list|,
-name|getenv
-argument_list|(
-literal|"GIT_INDEX_FILE"
-argument_list|)
+name|current_index_file
 argument_list|)
 decl_stmt|;
 if|if
@@ -720,10 +729,7 @@ name|die
 argument_list|(
 literal|"unable to write %s"
 argument_list|,
-name|getenv
-argument_list|(
-literal|"GIT_INDEX_FILE"
-argument_list|)
+name|current_index_file
 argument_list|)
 expr_stmt|;
 name|discard_cache
@@ -749,17 +755,14 @@ name|int
 name|temp
 parameter_list|)
 block|{
-specifier|const
-name|char
-modifier|*
-name|idx
-init|=
+name|current_index_file
+operator|=
 name|temp
 condition|?
 name|temporary_index_file
 else|:
 name|original_index_file
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
 name|cache_dirty
@@ -772,15 +775,6 @@ expr_stmt|;
 name|unlink
 argument_list|(
 name|temporary_index_file
-argument_list|)
-expr_stmt|;
-name|setenv
-argument_list|(
-literal|"GIT_INDEX_FILE"
-argument_list|,
-name|idx
-argument_list|,
-literal|1
 argument_list|)
 expr_stmt|;
 name|discard_cache
@@ -966,10 +960,7 @@ name|cache_dirty
 condition|)
 name|read_cache_from
 argument_list|(
-name|getenv
-argument_list|(
-literal|"GIT_INDEX_FILE"
-argument_list|)
+name|current_index_file
 argument_list|)
 expr_stmt|;
 name|cache_dirty
@@ -1173,10 +1164,7 @@ condition|)
 block|{
 name|read_cache_from
 argument_list|(
-name|getenv
-argument_list|(
-literal|"GIT_INDEX_FILE"
-argument_list|)
+name|current_index_file
 argument_list|)
 expr_stmt|;
 name|cache_dirty
@@ -1356,10 +1344,7 @@ block|}
 else|else
 name|read_cache_from
 argument_list|(
-name|getenv
-argument_list|(
-literal|"GIT_INDEX_FILE"
-argument_list|)
+name|current_index_file
 argument_list|)
 expr_stmt|;
 if|if
@@ -1811,10 +1796,7 @@ condition|)
 block|{
 name|read_cache_from
 argument_list|(
-name|getenv
-argument_list|(
-literal|"GIT_INDEX_FILE"
-argument_list|)
+name|current_index_file
 argument_list|)
 expr_stmt|;
 name|cache_dirty
@@ -2608,10 +2590,6 @@ return|;
 block|}
 end_function
 
-begin_comment
-comment|/*  * TODO: once we no longer call external programs, we'd probably be better off  * not setting / getting the environment variable GIT_INDEX_FILE all the time.  */
-end_comment
-
 begin_function
 DECL|function|remove_file
 name|int
@@ -2651,10 +2629,7 @@ name|cache_dirty
 condition|)
 name|read_cache_from
 argument_list|(
-name|getenv
-argument_list|(
-literal|"GIT_INDEX_FILE"
-argument_list|)
+name|current_index_file
 argument_list|)
 expr_stmt|;
 name|cache_dirty
