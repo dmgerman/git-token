@@ -767,11 +767,15 @@ if|if
 condition|(
 name|cache_dirty
 condition|)
-name|die
-argument_list|(
-literal|"fatal: cache changed flush_cache();"
-argument_list|)
+block|{
+name|discard_cache
+argument_list|()
 expr_stmt|;
+name|cache_dirty
+operator|=
+literal|0
+expr_stmt|;
+block|}
 name|unlink
 argument_list|(
 name|temporary_index_file
