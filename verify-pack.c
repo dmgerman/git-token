@@ -46,14 +46,11 @@ block|{
 comment|/* Should name foo.idx, but foo.pack may be named; 		 * convert it to foo.idx 		 */
 if|if
 condition|(
-operator|!
-name|strcmp
+name|has_extension
 argument_list|(
 name|arg
-operator|+
+argument_list|,
 name|len
-operator|-
-literal|5
 argument_list|,
 literal|".pack"
 argument_list|)
