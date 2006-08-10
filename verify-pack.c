@@ -140,6 +140,34 @@ operator|+=
 literal|4
 expr_stmt|;
 block|}
+comment|/* 	 * add_packed_git() uses our buffer (containing "foo.idx") to 	 * build the pack filename ("foo.pack").  Make sure it fits. 	 */
+if|if
+condition|(
+name|len
+operator|+
+literal|1
+operator|>=
+name|PATH_MAX
+condition|)
+block|{
+name|arg
+index|[
+name|len
+operator|-
+literal|4
+index|]
+operator|=
+literal|'\0'
+expr_stmt|;
+return|return
+name|error
+argument_list|(
+literal|"name too long: %s.pack"
+argument_list|,
+name|arg
+argument_list|)
+return|;
+block|}
 name|pack
 operator|=
 name|add_packed_git
