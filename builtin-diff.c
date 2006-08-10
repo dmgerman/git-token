@@ -1857,6 +1857,16 @@ operator|)
 condition|)
 block|{
 comment|/* diff A...B where there is one sane merge base between 		 * A and B.  We have ent[0] == merge-base, ent[1] == A, 		 * and ent[2] == B.  Show diff between the base and B. 		 */
+name|ent
+index|[
+literal|1
+index|]
+operator|=
+name|ent
+index|[
+literal|2
+index|]
+expr_stmt|;
 return|return
 name|builtin_diff_tree
 argument_list|(
