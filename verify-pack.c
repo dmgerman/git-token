@@ -239,7 +239,7 @@ name|av
 parameter_list|)
 block|{
 name|int
-name|errs
+name|err
 init|=
 literal|0
 decl_stmt|;
@@ -337,8 +337,9 @@ argument_list|,
 name|verbose
 argument_list|)
 condition|)
-name|errs
-operator|++
+name|err
+operator|=
+literal|1
 expr_stmt|;
 name|nothing_done
 operator|=
@@ -362,9 +363,7 @@ name|verify_pack_usage
 argument_list|)
 expr_stmt|;
 return|return
-operator|!
-operator|!
-name|errs
+name|err
 return|;
 block|}
 end_function
