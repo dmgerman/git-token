@@ -1626,6 +1626,12 @@ name|cmd_write_tree
 block|,
 name|RUN_SETUP
 block|}
+block|,
+block|{
+literal|"verify-pack"
+block|,
+name|cmd_verify_pack
+block|}
 block|, 	}
 struct|;
 name|int
