@@ -65,12 +65,7 @@ argument_list|,
 name|path
 argument_list|)
 return|;
-while|while
-condition|(
-literal|1
-condition|)
-block|{
-comment|/* Should name foo.idx, but foo.pack may be named; 		 * convert it to foo.idx 		 */
+comment|/* 	 * In addition to "foo.idx" we accept "foo.pack" and "foo"; 	 * normalize these forms to "foo.idx" for add_packed_git(). 	 */
 if|if
 condition|(
 name|has_extension
@@ -144,6 +139,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|!
 operator|(
 name|g
 operator|=
@@ -157,7 +153,6 @@ literal|1
 argument_list|)
 operator|)
 condition|)
-break|break;
 return|return
 name|error
 argument_list|(
@@ -166,7 +161,6 @@ argument_list|,
 name|arg
 argument_list|)
 return|;
-block|}
 return|return
 name|verify_pack
 argument_list|(
