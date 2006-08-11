@@ -791,8 +791,6 @@ name|de
 operator|->
 name|d_name
 argument_list|,
-name|namelen
-argument_list|,
 literal|".lock"
 argument_list|)
 condition|)

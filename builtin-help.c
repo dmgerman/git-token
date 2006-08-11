@@ -776,8 +776,6 @@ name|de
 operator|->
 name|d_name
 argument_list|,
-name|entlen
-argument_list|,
 literal|".exe"
 argument_list|)
 condition|)

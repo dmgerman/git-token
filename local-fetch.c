@@ -270,8 +270,6 @@ name|de
 operator|->
 name|d_name
 argument_list|,
-name|namelen
-argument_list|,
 literal|".pack"
 argument_list|)
 condition|)

@@ -4874,8 +4874,6 @@ name|ls
 operator|->
 name|dentry_name
 argument_list|,
-literal|63
-argument_list|,
 literal|".pack"
 argument_list|)
 condition|)

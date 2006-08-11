@@ -2507,8 +2507,6 @@ name|has_extension
 argument_list|(
 name|pack_name
 argument_list|,
-name|len
-argument_list|,
 literal|".pack"
 argument_list|)
 condition|)
