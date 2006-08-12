@@ -1238,6 +1238,8 @@ specifier|const
 name|char
 modifier|*
 name|path
+parameter_list|,
+name|int
 parameter_list|)
 function_decl|;
 end_function_decl
