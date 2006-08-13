@@ -8,6 +8,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"builtin.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"cache.h"
 end_include
 
@@ -685,17 +691,23 @@ block|}
 end_function
 
 begin_function
-DECL|function|main
+DECL|function|cmd_name_rev
 name|int
-name|main
+name|cmd_name_rev
 parameter_list|(
 name|int
 name|argc
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
 name|argv
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|prefix
 parameter_list|)
 block|{
 name|struct
@@ -723,9 +735,6 @@ name|transform_stdin
 init|=
 literal|0
 decl_stmt|;
-name|setup_git_directory
-argument_list|()
-expr_stmt|;
 name|git_config
 argument_list|(
 name|git_default_config
