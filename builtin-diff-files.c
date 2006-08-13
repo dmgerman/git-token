@@ -261,25 +261,6 @@ argument_list|(
 name|diff_files_usage
 argument_list|)
 expr_stmt|;
-comment|/* 	 * Backward compatibility wart - "diff-files -s" used to 	 * defeat the common diff option "-s" which asked for 	 * DIFF_FORMAT_NO_OUTPUT. 	 */
-if|if
-condition|(
-name|rev
-operator|.
-name|diffopt
-operator|.
-name|output_format
-operator|==
-name|DIFF_FORMAT_NO_OUTPUT
-condition|)
-name|rev
-operator|.
-name|diffopt
-operator|.
-name|output_format
-operator|=
-name|DIFF_FORMAT_RAW
-expr_stmt|;
 return|return
 name|run_diff_files
 argument_list|(
