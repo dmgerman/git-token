@@ -3120,15 +3120,12 @@ name|p
 decl_stmt|;
 if|if
 condition|(
-name|strcmp
+operator|!
+name|has_extension
 argument_list|(
 name|de
 operator|->
 name|d_name
-operator|+
-name|namelen
-operator|-
-literal|4
 argument_list|,
 literal|".idx"
 argument_list|)

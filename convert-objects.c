@@ -25,6 +25,13 @@ DECL|macro|_XOPEN_SOURCE_EXTENDED
 comment|/* AIX 5.3L needs this */
 end_comment
 
+begin_define
+DECL|macro|_GNU_SOURCE
+define|#
+directive|define
+name|_GNU_SOURCE
+end_define
+
 begin_include
 include|#
 directive|include

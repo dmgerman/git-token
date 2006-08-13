@@ -2,6 +2,12 @@ begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_include
 include|#
 directive|include
+file|"builtin.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"cache.h"
 end_include
 
@@ -331,25 +337,28 @@ block|}
 end_function
 
 begin_function
-DECL|function|main
+DECL|function|cmd_prune_packed
 name|int
-name|main
+name|cmd_prune_packed
 parameter_list|(
 name|int
 name|argc
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
 name|argv
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|prefix
 parameter_list|)
 block|{
 name|int
 name|i
 decl_stmt|;
-name|setup_git_directory
-argument_list|()
-expr_stmt|;
 for|for
 control|(
 name|i

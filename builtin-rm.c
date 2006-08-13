@@ -301,17 +301,8 @@ name|lock_file
 argument_list|,
 name|get_index_file
 argument_list|()
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|newfd
-operator|<
-literal|0
-condition|)
-name|die
-argument_list|(
-literal|"unable to create new index file"
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 if|if
@@ -425,7 +416,7 @@ literal|1
 expr_stmt|;
 continue|continue;
 block|}
-name|die
+name|usage
 argument_list|(
 name|builtin_rm_usage
 argument_list|)
@@ -632,7 +623,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"git rm: unable to remove %s"
+literal|"git-rm: unable to remove %s"
 argument_list|,
 name|path
 argument_list|)
@@ -713,7 +704,7 @@ name|removed
 condition|)
 name|die
 argument_list|(
-literal|"git rm: %s: %s"
+literal|"git-rm: %s: %s"
 argument_list|,
 name|path
 argument_list|,

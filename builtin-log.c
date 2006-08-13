@@ -185,9 +185,6 @@ argument_list|(
 name|rev
 argument_list|)
 expr_stmt|;
-name|setup_pager
-argument_list|()
-expr_stmt|;
 while|while
 condition|(
 operator|(
@@ -1608,6 +1605,9 @@ index|[
 literal|1024
 index|]
 decl_stmt|;
+name|setup_ident
+argument_list|()
+expr_stmt|;
 name|git_config
 argument_list|(
 name|git_format_config
@@ -1945,9 +1945,6 @@ name|char
 modifier|*
 name|endpos
 decl_stmt|;
-name|setup_ident
-argument_list|()
-expr_stmt|;
 name|committer
 operator|=
 name|git_committer_info

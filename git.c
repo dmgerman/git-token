@@ -89,6 +89,17 @@ directive|include
 file|"builtin.h"
 end_include
 
+begin_decl_stmt
+DECL|variable|git_usage_string
+specifier|const
+name|char
+name|git_usage_string
+index|[]
+init|=
+literal|"git [--version] [--exec-path[=GIT_EXEC_PATH]] [--help] COMMAND [ ARGS ]"
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|prepend_to_path
 specifier|static
@@ -462,13 +473,9 @@ argument_list|,
 name|cmd
 argument_list|)
 expr_stmt|;
-name|cmd_usage
+name|usage
 argument_list|(
-literal|0
-argument_list|,
-name|NULL
-argument_list|,
-name|NULL
+name|git_usage_string
 argument_list|)
 expr_stmt|;
 block|}
@@ -1196,6 +1203,14 @@ name|NEEDS_PREFIX
 value|1
 end_define
 
+begin_define
+DECL|macro|USE_PAGER
+define|#
+directive|define
+name|USE_PAGER
+value|2
+end_define
+
 begin_function
 DECL|function|handle_internal_command
 specifier|static
@@ -1255,7 +1270,7 @@ modifier|*
 parameter_list|)
 function_decl|;
 name|int
-name|prefix
+name|option
 decl_stmt|;
 block|}
 name|commands
@@ -1280,6 +1295,8 @@ block|,
 name|cmd_log
 block|,
 name|NEEDS_PREFIX
+operator||
+name|USE_PAGER
 block|}
 block|,
 block|{
@@ -1288,6 +1305,8 @@ block|,
 name|cmd_whatchanged
 block|,
 name|NEEDS_PREFIX
+operator||
+name|USE_PAGER
 block|}
 block|,
 block|{
@@ -1296,12 +1315,16 @@ block|,
 name|cmd_show
 block|,
 name|NEEDS_PREFIX
+operator||
+name|USE_PAGER
 block|}
 block|,
 block|{
 literal|"push"
 block|,
 name|cmd_push
+block|,
+name|NEEDS_PREFIX
 block|}
 block|,
 block|{
@@ -1549,6 +1572,20 @@ name|cmd_mv
 block|,
 name|NEEDS_PREFIX
 block|}
+block|,
+block|{
+literal|"prune-packed"
+block|,
+name|cmd_prune_packed
+block|,
+name|NEEDS_PREFIX
+block|}
+block|,
+block|{
+literal|"repo-config"
+block|,
+name|cmd_repo_config
+block|}
 block|, 	}
 struct|;
 name|int
@@ -1644,11 +1681,24 @@ if|if
 condition|(
 name|p
 operator|->
-name|prefix
+name|option
+operator|&
+name|NEEDS_PREFIX
 condition|)
 name|prefix
 operator|=
 name|setup_git_directory
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|p
+operator|->
+name|option
+operator|&
+name|USE_PAGER
+condition|)
+name|setup_pager
 argument_list|()
 expr_stmt|;
 if|if
@@ -2001,14 +2051,8 @@ name|errno
 operator|==
 name|ENOENT
 condition|)
-name|cmd_usage
+name|help_unknown_cmd
 argument_list|(
-literal|0
-argument_list|,
-name|exec_path
-argument_list|,
-literal|"'%s' is not a git-command"
-argument_list|,
 name|cmd
 argument_list|)
 expr_stmt|;

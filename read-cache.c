@@ -354,11 +354,7 @@ argument_list|,
 literal|20
 argument_list|)
 expr_stmt|;
-name|close
-argument_list|(
-name|fd
-argument_list|)
-expr_stmt|;
+comment|/* index_fd() closed the file descriptor already */
 block|}
 return|return
 name|match

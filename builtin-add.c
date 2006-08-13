@@ -487,17 +487,8 @@ name|lock_file
 argument_list|,
 name|get_index_file
 argument_list|()
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|newfd
-operator|<
-literal|0
-condition|)
-name|die
-argument_list|(
-literal|"unable to create new index file"
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 if|if
@@ -596,7 +587,7 @@ literal|1
 expr_stmt|;
 continue|continue;
 block|}
-name|die
+name|usage
 argument_list|(
 name|builtin_add_usage
 argument_list|)

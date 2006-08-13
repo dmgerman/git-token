@@ -687,23 +687,10 @@ argument_list|(
 name|lock
 argument_list|,
 name|current_index_file
+argument_list|,
+literal|1
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|fd
-operator|<
-literal|0
-condition|)
-name|die
-argument_list|(
-literal|"could not lock %s"
-argument_list|,
-name|lock
-operator|->
-name|filename
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|write_cache

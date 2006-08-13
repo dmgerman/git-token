@@ -92,7 +92,7 @@ name|char
 name|builtin_diff_usage
 index|[]
 init|=
-literal|"diff<options><rev>{0,2} --<path>*"
+literal|"git-diff<options><rev>{0,2} --<path>*"
 decl_stmt|;
 end_decl_stmt
 
@@ -670,7 +670,6 @@ modifier|*
 name|blob
 parameter_list|)
 block|{
-comment|/* Blobs: the arguments are reversed when setup_revisions() 	 * picked them up. 	 */
 name|unsigned
 name|mode
 init|=
@@ -705,14 +704,14 @@ name|mode
 argument_list|,
 name|blob
 index|[
-literal|1
+literal|0
 index|]
 operator|.
 name|sha1
 argument_list|,
 name|blob
 index|[
-literal|0
+literal|1
 index|]
 operator|.
 name|sha1
@@ -726,7 +725,7 @@ name|name
 argument_list|,
 name|blob
 index|[
-literal|0
+literal|1
 index|]
 operator|.
 name|name
@@ -1320,12 +1319,21 @@ name|output_format
 operator|=
 name|DIFF_FORMAT_PATCH
 expr_stmt|;
+if|if
+condition|(
 name|diff_setup_done
 argument_list|(
 operator|&
 name|rev
 operator|.
 name|diffopt
+argument_list|)
+operator|<
+literal|0
+condition|)
+name|die
+argument_list|(
+literal|"diff_setup_done failed"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1849,6 +1857,16 @@ operator|)
 condition|)
 block|{
 comment|/* diff A...B where there is one sane merge base between 		 * A and B.  We have ent[0] == merge-base, ent[1] == A, 		 * and ent[2] == B.  Show diff between the base and B. 		 */
+name|ent
+index|[
+literal|1
+index|]
+operator|=
+name|ent
+index|[
+literal|2
+index|]
+expr_stmt|;
 return|return
 name|builtin_diff_tree
 argument_list|(
