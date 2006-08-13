@@ -1491,6 +1491,11 @@ index|[
 literal|20
 index|]
 decl_stmt|;
+name|git_config
+argument_list|(
+name|git_default_config
+argument_list|)
+expr_stmt|;
 name|quiet
 operator|=
 operator|!
