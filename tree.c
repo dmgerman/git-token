@@ -788,7 +788,7 @@ end_function
 begin_function
 DECL|function|track_tree_refs
 specifier|static
-name|int
+name|void
 name|track_tree_refs
 parameter_list|(
 name|struct
@@ -951,9 +951,6 @@ argument_list|,
 name|refs
 argument_list|)
 expr_stmt|;
-return|return
-literal|0
-return|;
 block|}
 end_function
 
