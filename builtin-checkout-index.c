@@ -489,7 +489,7 @@ end_function
 begin_function
 DECL|function|checkout_all
 specifier|static
-name|int
+name|void
 name|checkout_all
 parameter_list|(
 specifier|const
@@ -691,9 +691,6 @@ argument_list|(
 literal|128
 argument_list|)
 expr_stmt|;
-return|return
-literal|0
-return|;
 block|}
 end_function
 
