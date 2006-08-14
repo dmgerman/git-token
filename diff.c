@@ -5228,8 +5228,9 @@ name|sz
 operator|=
 name|FIRST_FEW_BYTES
 expr_stmt|;
-if|if
-condition|(
+return|return
+operator|!
+operator|!
 name|memchr
 argument_list|(
 name|mf
@@ -5240,12 +5241,6 @@ literal|0
 argument_list|,
 name|sz
 argument_list|)
-condition|)
-return|return
-literal|1
-return|;
-return|return
-literal|0
 return|;
 block|}
 end_function
