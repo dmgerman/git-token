@@ -1955,7 +1955,7 @@ end_function
 begin_function
 DECL|function|fsck_dir
 specifier|static
-name|int
+name|void
 name|fsck_dir
 parameter_list|(
 name|int
@@ -1985,9 +1985,7 @@ condition|(
 operator|!
 name|dir
 condition|)
-return|return
-literal|0
-return|;
+return|return;
 while|while
 condition|(
 operator|(
@@ -2131,9 +2129,6 @@ argument_list|(
 name|dir
 argument_list|)
 expr_stmt|;
-return|return
-literal|0
-return|;
 block|}
 end_function
 
