@@ -12688,8 +12688,8 @@ argument_list|,
 literal|1
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
+return|return
+operator|(
 name|merge_bases
 operator|&&
 operator|!
@@ -12702,12 +12702,7 @@ operator|->
 name|item
 operator|==
 name|branch
-condition|)
-return|return
-literal|1
-return|;
-return|return
-literal|0
+operator|)
 return|;
 block|}
 end_function
