@@ -2408,7 +2408,7 @@ end_function
 begin_function
 DECL|function|upload_pack
 specifier|static
-name|int
+name|void
 name|upload_pack
 parameter_list|(
 name|void
@@ -2437,23 +2437,18 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-operator|!
 name|want_obj
 operator|.
 name|nr
 condition|)
-return|return
-literal|0
-return|;
+block|{
 name|get_common_commits
 argument_list|()
 expr_stmt|;
 name|create_pack_file
 argument_list|()
 expr_stmt|;
-return|return
-literal|0
-return|;
+block|}
 block|}
 end_function
 
