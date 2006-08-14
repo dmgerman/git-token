@@ -2036,8 +2036,9 @@ operator|->
 name|pathname
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
+return|return
+operator|!
+operator|!
 name|get_blob_sha1
 argument_list|(
 name|commit
@@ -2052,13 +2053,6 @@ name|util
 operator|->
 name|sha1
 argument_list|)
-condition|)
-return|return
-literal|1
-return|;
-else|else
-return|return
-literal|0
 return|;
 block|}
 end_function
