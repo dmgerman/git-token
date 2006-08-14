@@ -201,6 +201,7 @@ literal|5
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|strncmp
 argument_list|(
 name|ref
@@ -210,9 +211,6 @@ argument_list|,
 literal|5
 argument_list|)
 condition|)
-return|return
-literal|0
-return|;
 name|add_refspec
 argument_list|(
 name|strdup
