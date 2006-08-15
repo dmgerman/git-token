@@ -6486,14 +6486,9 @@ operator|->
 name|sha1_valid
 operator|=
 operator|!
-operator|!
-name|memcmp
+name|is_null_sha1
 argument_list|(
 name|sha1
-argument_list|,
-name|null_sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 block|}
