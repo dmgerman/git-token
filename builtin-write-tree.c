@@ -90,6 +90,8 @@ name|lock_file
 argument_list|,
 name|get_index_file
 argument_list|()
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|entries

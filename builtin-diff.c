@@ -279,25 +279,6 @@ name|dense_combined_merges
 operator|=
 literal|1
 expr_stmt|;
-comment|/* 	 * Backward compatibility wart - "diff-files -s" used to 	 * defeat the common diff option "-s" which asked for 	 * DIFF_FORMAT_NO_OUTPUT. 	 */
-if|if
-condition|(
-name|revs
-operator|->
-name|diffopt
-operator|.
-name|output_format
-operator|==
-name|DIFF_FORMAT_NO_OUTPUT
-condition|)
-name|revs
-operator|->
-name|diffopt
-operator|.
-name|output_format
-operator|=
-name|DIFF_FORMAT_RAW
-expr_stmt|;
 return|return
 name|run_diff_files
 argument_list|(
@@ -1319,12 +1300,21 @@ name|output_format
 operator|=
 name|DIFF_FORMAT_PATCH
 expr_stmt|;
+if|if
+condition|(
 name|diff_setup_done
 argument_list|(
 operator|&
 name|rev
 operator|.
 name|diffopt
+argument_list|)
+operator|<
+literal|0
+condition|)
+name|die
+argument_list|(
+literal|"diff_setup_done failed"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1848,6 +1838,16 @@ operator|)
 condition|)
 block|{
 comment|/* diff A...B where there is one sane merge base between 		 * A and B.  We have ent[0] == merge-base, ent[1] == A, 		 * and ent[2] == B.  Show diff between the base and B. 		 */
+name|ent
+index|[
+literal|1
+index|]
+operator|=
+name|ent
+index|[
+literal|2
+index|]
+expr_stmt|;
 return|return
 name|builtin_diff_tree
 argument_list|(

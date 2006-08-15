@@ -1211,6 +1211,9 @@ condition|(
 name|len
 operator|==
 literal|40
+operator|||
+operator|!
+name|len
 condition|)
 return|return
 name|hex

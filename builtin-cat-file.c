@@ -122,7 +122,7 @@ end_function
 begin_function
 DECL|function|pprint_tag
 specifier|static
-name|int
+name|void
 name|pprint_tag
 parameter_list|(
 specifier|const
@@ -401,9 +401,6 @@ operator|-
 name|cp
 argument_list|)
 expr_stmt|;
-return|return
-literal|0
-return|;
 block|}
 end_function
 
@@ -696,7 +693,7 @@ argument_list|,
 name|tag_type
 argument_list|)
 condition|)
-return|return
+block|{
 name|pprint_tag
 argument_list|(
 name|sha1
@@ -705,7 +702,11 @@ name|buf
 argument_list|,
 name|size
 argument_list|)
+expr_stmt|;
+return|return
+literal|0
 return|;
+block|}
 comment|/* otherwise just spit out the data */
 break|break;
 case|case

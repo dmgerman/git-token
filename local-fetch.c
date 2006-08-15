@@ -263,15 +263,12 @@ name|namelen
 operator|!=
 literal|50
 operator|||
-name|strcmp
+operator|!
+name|has_extension
 argument_list|(
 name|de
 operator|->
 name|d_name
-operator|+
-name|namelen
-operator|-
-literal|5
 argument_list|,
 literal|".pack"
 argument_list|)
