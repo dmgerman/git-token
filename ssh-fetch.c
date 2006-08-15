@@ -108,8 +108,6 @@ specifier|static
 name|unsigned
 name|char
 name|remote_version
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -211,8 +209,6 @@ DECL|variable|prefetches
 specifier|static
 name|int
 name|prefetches
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -223,8 +219,6 @@ name|struct
 name|object_list
 modifier|*
 name|in_transit
-init|=
-name|NULL
 decl_stmt|;
 end_decl_stmt
 
@@ -359,8 +353,6 @@ DECL|variable|conn_buf_posn
 specifier|static
 name|size_t
 name|conn_buf_posn
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 

@@ -3934,8 +3934,6 @@ parameter_list|)
 block|{
 name|int
 name|count
-init|=
-literal|0
 decl_stmt|;
 name|struct
 name|commit_list

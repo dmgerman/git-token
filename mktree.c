@@ -330,10 +330,6 @@ argument_list|,
 name|ent_compare
 argument_list|)
 expr_stmt|;
-name|size
-operator|=
-literal|100
-expr_stmt|;
 for|for
 control|(
 name|size

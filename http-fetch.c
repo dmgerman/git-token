@@ -200,8 +200,6 @@ DECL|variable|commits_on_stdin
 specifier|static
 name|int
 name|commits_on_stdin
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -221,8 +219,6 @@ DECL|variable|corrupt_object_found
 specifier|static
 name|int
 name|corrupt_object_found
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -278,8 +274,6 @@ name|struct
 name|alt_base
 modifier|*
 name|alt
-init|=
-name|NULL
 decl_stmt|;
 end_decl_stmt
 
@@ -564,8 +558,6 @@ name|struct
 name|object_request
 modifier|*
 name|object_queue_head
-init|=
-name|NULL
 decl_stmt|;
 end_decl_stmt
 

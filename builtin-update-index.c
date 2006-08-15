@@ -96,8 +96,6 @@ DECL|variable|mark_valid_only
 specifier|static
 name|int
 name|mark_valid_only
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 

@@ -36,16 +36,10 @@ DECL|variable|alt_odb
 specifier|static
 name|int
 name|load_all_packs
-init|=
-literal|0
 decl_stmt|,
 name|verbose
-init|=
-literal|0
 decl_stmt|,
 name|alt_odb
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -177,8 +171,6 @@ name|struct
 name|llist_item
 modifier|*
 name|free_nodes
-init|=
-name|NULL
 decl_stmt|;
 end_decl_stmt
 

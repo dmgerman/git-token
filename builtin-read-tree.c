@@ -52,8 +52,6 @@ name|struct
 name|object_list
 modifier|*
 name|trees
-init|=
-name|NULL
 decl_stmt|;
 end_decl_stmt
 

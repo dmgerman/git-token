@@ -1481,8 +1481,6 @@ specifier|static
 specifier|volatile
 name|sig_atomic_t
 name|progress_update
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 

@@ -53,8 +53,6 @@ specifier|const
 name|char
 modifier|*
 name|current_exec_path
-init|=
-name|NULL
 decl_stmt|;
 end_decl_stmt
 

@@ -55,16 +55,10 @@ DECL|variable|thin
 specifier|static
 name|int
 name|all
-init|=
-literal|0
 decl_stmt|,
 name|tags
-init|=
-literal|0
 decl_stmt|,
 name|force
-init|=
-literal|0
 decl_stmt|,
 name|thin
 init|=
@@ -79,8 +73,6 @@ specifier|const
 name|char
 modifier|*
 name|execute
-init|=
-name|NULL
 decl_stmt|;
 end_decl_stmt
 
@@ -111,8 +103,6 @@ name|char
 modifier|*
 modifier|*
 name|refspec
-init|=
-name|NULL
 decl_stmt|;
 end_decl_stmt
 
@@ -121,8 +111,6 @@ DECL|variable|refspec_nr
 specifier|static
 name|int
 name|refspec_nr
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 

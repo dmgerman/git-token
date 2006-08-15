@@ -30,8 +30,6 @@ specifier|const
 name|char
 modifier|*
 name|pgm
-init|=
-name|NULL
 decl_stmt|;
 end_decl_stmt
 

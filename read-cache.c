@@ -56,8 +56,6 @@ name|cache_entry
 modifier|*
 modifier|*
 name|active_cache
-init|=
-name|NULL
 decl_stmt|;
 end_decl_stmt
 
@@ -76,16 +74,10 @@ DECL|variable|active_cache_changed
 name|unsigned
 name|int
 name|active_nr
-init|=
-literal|0
 decl_stmt|,
 name|active_alloc
-init|=
-literal|0
 decl_stmt|,
 name|active_cache_changed
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -95,8 +87,6 @@ name|struct
 name|cache_tree
 modifier|*
 name|active_cache_tree
-init|=
-name|NULL
 decl_stmt|;
 end_decl_stmt
 
@@ -104,8 +94,6 @@ begin_decl_stmt
 DECL|variable|cache_errno
 name|int
 name|cache_errno
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -115,8 +103,6 @@ specifier|static
 name|void
 modifier|*
 name|cache_mmap
-init|=
-name|NULL
 decl_stmt|;
 end_decl_stmt
 
@@ -125,8 +111,6 @@ DECL|variable|cache_mmap_size
 specifier|static
 name|size_t
 name|cache_mmap_size
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 

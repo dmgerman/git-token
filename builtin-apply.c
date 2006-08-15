@@ -96,8 +96,6 @@ DECL|variable|allow_binary_replacement
 specifier|static
 name|int
 name|allow_binary_replacement
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -106,8 +104,6 @@ DECL|variable|check_index
 specifier|static
 name|int
 name|check_index
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -116,8 +112,6 @@ DECL|variable|write_index
 specifier|static
 name|int
 name|write_index
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -126,8 +120,6 @@ DECL|variable|cached
 specifier|static
 name|int
 name|cached
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -136,8 +128,6 @@ DECL|variable|diffstat
 specifier|static
 name|int
 name|diffstat
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -146,8 +136,6 @@ DECL|variable|numstat
 specifier|static
 name|int
 name|numstat
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -156,8 +144,6 @@ DECL|variable|summary
 specifier|static
 name|int
 name|summary
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -166,8 +152,6 @@ DECL|variable|check
 specifier|static
 name|int
 name|check
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -186,8 +170,6 @@ DECL|variable|apply_in_reverse
 specifier|static
 name|int
 name|apply_in_reverse
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -196,8 +178,6 @@ DECL|variable|no_add
 specifier|static
 name|int
 name|no_add
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -206,8 +186,6 @@ DECL|variable|show_index_info
 specifier|static
 name|int
 name|show_index_info
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -275,8 +253,6 @@ DECL|variable|whitespace_error
 specifier|static
 name|int
 name|whitespace_error
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -295,8 +271,6 @@ DECL|variable|applied_after_stripping
 specifier|static
 name|int
 name|applied_after_stripping
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -307,8 +281,6 @@ specifier|const
 name|char
 modifier|*
 name|patch_input_file
-init|=
-name|NULL
 decl_stmt|;
 end_decl_stmt
 

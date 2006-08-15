@@ -65,8 +65,6 @@ DECL|variable|verbose
 specifier|static
 name|int
 name|verbose
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -75,8 +73,6 @@ DECL|variable|send_all
 specifier|static
 name|int
 name|send_all
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -85,8 +81,6 @@ DECL|variable|force_update
 specifier|static
 name|int
 name|force_update
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -95,8 +89,6 @@ DECL|variable|use_thin_pack
 specifier|static
 name|int
 name|use_thin_pack
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 

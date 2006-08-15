@@ -83,8 +83,6 @@ specifier|const
 name|char
 modifier|*
 name|def
-init|=
-name|NULL
 decl_stmt|;
 end_decl_stmt
 
@@ -119,8 +117,6 @@ DECL|variable|symbolic
 specifier|static
 name|int
 name|symbolic
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -129,8 +125,6 @@ DECL|variable|abbrev
 specifier|static
 name|int
 name|abbrev
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -139,8 +133,6 @@ DECL|variable|output_sq
 specifier|static
 name|int
 name|output_sq
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -149,8 +141,6 @@ DECL|variable|revs_count
 specifier|static
 name|int
 name|revs_count
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 

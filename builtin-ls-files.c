@@ -38,8 +38,6 @@ DECL|variable|abbrev
 specifier|static
 name|int
 name|abbrev
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -48,8 +46,6 @@ DECL|variable|show_deleted
 specifier|static
 name|int
 name|show_deleted
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -58,8 +54,6 @@ DECL|variable|show_cached
 specifier|static
 name|int
 name|show_cached
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -68,8 +62,6 @@ DECL|variable|show_others
 specifier|static
 name|int
 name|show_others
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -78,8 +70,6 @@ DECL|variable|show_stage
 specifier|static
 name|int
 name|show_stage
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -88,8 +78,6 @@ DECL|variable|show_unmerged
 specifier|static
 name|int
 name|show_unmerged
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -98,8 +86,6 @@ DECL|variable|show_modified
 specifier|static
 name|int
 name|show_modified
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -108,8 +94,6 @@ DECL|variable|show_killed
 specifier|static
 name|int
 name|show_killed
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -118,8 +102,6 @@ DECL|variable|show_valid_bit
 specifier|static
 name|int
 name|show_valid_bit
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -135,16 +117,17 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|prefix_len
-DECL|variable|prefix_offset
 specifier|static
 name|int
 name|prefix_len
-init|=
-literal|0
-decl_stmt|,
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|prefix_offset
+specifier|static
+name|int
 name|prefix_offset
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -156,8 +139,6 @@ name|char
 modifier|*
 modifier|*
 name|pathspec
-init|=
-name|NULL
 decl_stmt|;
 end_decl_stmt
 
@@ -166,8 +147,6 @@ DECL|variable|error_unmatch
 specifier|static
 name|int
 name|error_unmatch
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -177,8 +156,6 @@ specifier|static
 name|char
 modifier|*
 name|ps_matched
-init|=
-name|NULL
 decl_stmt|;
 end_decl_stmt
 
