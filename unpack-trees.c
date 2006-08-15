@@ -1479,7 +1479,7 @@ begin_decl_stmt
 DECL|variable|progress_update
 specifier|static
 specifier|volatile
-name|int
+name|sig_atomic_t
 name|progress_update
 init|=
 literal|0

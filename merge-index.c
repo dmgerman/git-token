@@ -76,12 +76,13 @@ parameter_list|(
 name|void
 parameter_list|)
 block|{
-name|int
+name|pid_t
 name|pid
 init|=
 name|fork
 argument_list|()
-decl_stmt|,
+decl_stmt|;
+name|int
 name|status
 decl_stmt|;
 if|if

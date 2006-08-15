@@ -270,9 +270,8 @@ name|status
 decl_stmt|,
 name|code
 decl_stmt|;
-name|int
-name|retval
-init|=
+if|if
+condition|(
 name|waitpid
 argument_list|(
 name|pid
@@ -282,10 +281,6 @@ name|status
 argument_list|,
 literal|0
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|retval
 operator|<
 literal|0
 condition|)
