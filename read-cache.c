@@ -15,12 +15,6 @@ directive|include
 file|"cache-tree.h"
 end_include
 
-begin_include
-include|#
-directive|include
-file|<time.h>
-end_include
-
 begin_comment
 comment|/* Index extensions.  *  * The first letter should be 'A'..'Z' for extensions that are not  * necessary for a correct operation (i.e. optimization data).  * When new extensions are added that _needs_ to be understood in  * order to correctly interpret the index file, pick character that  * is outside the range, to cause the reader to abort.  */
 end_comment
@@ -4747,12 +4741,6 @@ operator|<=
 name|now
 condition|)
 block|{
-name|struct
-name|timespec
-name|rq
-decl_stmt|,
-name|rm
-decl_stmt|;
 name|off_t
 name|where
 init|=
@@ -4765,25 +4753,9 @@ argument_list|,
 name|SEEK_CUR
 argument_list|)
 decl_stmt|;
-name|rq
-operator|.
-name|tv_sec
-operator|=
-literal|0
-expr_stmt|;
-name|rq
-operator|.
-name|tv_nsec
-operator|=
-literal|250000000
-expr_stmt|;
-name|nanosleep
+name|sleep
 argument_list|(
-operator|&
-name|rq
-argument_list|,
-operator|&
-name|rm
+literal|1
 argument_list|)
 expr_stmt|;
 if|if
