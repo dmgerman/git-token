@@ -182,6 +182,16 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|apply_in_reverse
+specifier|static
+name|int
+name|apply_in_reverse
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|no_add
 specifier|static
 name|int
@@ -569,7 +579,6 @@ DECL|member|is_copy
 DECL|member|is_new
 DECL|member|is_delete
 DECL|member|is_binary
-DECL|member|is_reverse
 name|int
 name|is_rename
 decl_stmt|,
@@ -580,8 +589,6 @@ decl_stmt|,
 name|is_delete
 decl_stmt|,
 name|is_binary
-decl_stmt|,
-name|is_reverse
 decl_stmt|;
 DECL|macro|BINARY_DELTA_DEFLATED
 define|#
@@ -5628,15 +5635,6 @@ name|oldlines
 argument_list|)
 expr_stmt|;
 block|}
-name|p
-operator|->
-name|is_reverse
-operator|=
-operator|!
-name|p
-operator|->
-name|is_reverse
-expr_stmt|;
 block|}
 block|}
 end_function
@@ -6703,9 +6701,6 @@ modifier|*
 name|frag
 parameter_list|,
 name|int
-name|reverse
-parameter_list|,
-name|int
 name|inaccurate_eof
 parameter_list|)
 block|{
@@ -6845,7 +6840,7 @@ name|patch
 expr_stmt|;
 if|if
 condition|(
-name|reverse
+name|apply_in_reverse
 condition|)
 block|{
 if|if
@@ -7516,9 +7511,7 @@ decl_stmt|;
 comment|/* Binary patch is irreversible */
 if|if
 condition|(
-name|patch
-operator|->
-name|is_reverse
+name|apply_in_reverse
 condition|)
 return|return
 name|error
@@ -8118,10 +8111,6 @@ argument_list|(
 name|desc
 argument_list|,
 name|frag
-argument_list|,
-name|patch
-operator|->
-name|is_reverse
 argument_list|,
 name|patch
 operator|->
@@ -11094,9 +11083,6 @@ modifier|*
 name|filename
 parameter_list|,
 name|int
-name|reverse
-parameter_list|,
-name|int
 name|inaccurate_eof
 parameter_list|)
 block|{
@@ -11210,7 +11196,7 @@ condition|)
 break|break;
 if|if
 condition|(
-name|reverse
+name|apply_in_reverse
 condition|)
 name|reverse_patches
 argument_list|(
@@ -11480,11 +11466,6 @@ init|=
 literal|1
 decl_stmt|;
 name|int
-name|reverse
-init|=
-literal|0
-decl_stmt|;
-name|int
 name|inaccurate_eof
 init|=
 literal|0
@@ -11543,8 +11524,6 @@ argument_list|(
 literal|0
 argument_list|,
 literal|"<stdin>"
-argument_list|,
-name|reverse
 argument_list|,
 name|inaccurate_eof
 argument_list|)
@@ -11937,7 +11916,7 @@ literal|"--reverse"
 argument_list|)
 condition|)
 block|{
-name|reverse
+name|apply_in_reverse
 operator|=
 literal|1
 expr_stmt|;
@@ -12055,8 +12034,6 @@ name|fd
 argument_list|,
 name|arg
 argument_list|,
-name|reverse
-argument_list|,
 name|inaccurate_eof
 argument_list|)
 expr_stmt|;
@@ -12080,8 +12057,6 @@ argument_list|(
 literal|0
 argument_list|,
 literal|"<stdin>"
-argument_list|,
-name|reverse
 argument_list|,
 name|inaccurate_eof
 argument_list|)
