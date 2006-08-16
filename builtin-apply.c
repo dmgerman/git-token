@@ -5108,7 +5108,16 @@ name|llen
 operator|==
 literal|1
 condition|)
+block|{
+comment|/* consume the blank line */
+name|buffer
+operator|++
+expr_stmt|;
+name|size
+operator|--
+expr_stmt|;
 break|break;
+block|}
 comment|/* Minimum line is "A00000\n" which is 7-byte long, 		 * and the line length must be multiple of 5 plus 2. 		 */
 if|if
 condition|(
@@ -7768,6 +7777,8 @@ return|;
 name|fragment
 operator|=
 name|fragment
+operator|->
+name|next
 expr_stmt|;
 block|}
 name|data
@@ -8241,9 +8252,18 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"binary patch to '%s' creates incorrect result"
+literal|"binary patch to '%s' creates incorrect result (expecting %s, got %s)"
 argument_list|,
 name|name
+argument_list|,
+name|patch
+operator|->
+name|new_sha1_prefix
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|sha1
+argument_list|)
 argument_list|)
 return|;
 block|}
