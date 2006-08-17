@@ -282,7 +282,7 @@ expr_stmt|;
 elseif|else
 if|if
 condition|(
-name|memcmp
+name|hashcmp
 argument_list|(
 name|one
 operator|->
@@ -291,8 +291,6 @@ argument_list|,
 name|two
 operator|->
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 operator|||
 operator|(

@@ -1434,7 +1434,7 @@ continue|continue;
 if|if
 condition|(
 operator|!
-name|memcmp
+name|hashcmp
 argument_list|(
 name|ref
 operator|->
@@ -1445,8 +1445,6 @@ operator|->
 name|peer_ref
 operator|->
 name|new_sha1
-argument_list|,
-literal|20
 argument_list|)
 condition|)
 block|{

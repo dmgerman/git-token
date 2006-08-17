@@ -1088,15 +1088,13 @@ operator|==
 name|oldmode
 operator|&&
 operator|!
-name|memcmp
+name|hashcmp
 argument_list|(
 name|sha1
 argument_list|,
 name|old
 operator|->
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 operator|&&
 operator|!

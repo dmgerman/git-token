@@ -327,15 +327,13 @@ argument_list|)
 condition|)
 name|match
 operator|=
-name|memcmp
+name|hashcmp
 argument_list|(
 name|sha1
 argument_list|,
 name|ce
 operator|->
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 comment|/* index_fd() closed the file descriptor already */
@@ -3373,11 +3371,12 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|memcmp
+name|hashcmp
 argument_list|(
 name|sha1
 argument_list|,
 operator|(
+name|unsigned
 name|char
 operator|*
 operator|)
@@ -3385,8 +3384,6 @@ name|hdr
 operator|+
 name|size
 operator|-
-literal|20
-argument_list|,
 literal|20
 argument_list|)
 condition|)

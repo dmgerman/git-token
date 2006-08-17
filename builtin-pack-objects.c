@@ -2276,7 +2276,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|memcmp
+name|hashcmp
 argument_list|(
 name|sha1
 argument_list|,
@@ -2291,8 +2291,6 @@ literal|1
 index|]
 operator|.
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 condition|)
 return|return
@@ -3112,15 +3110,13 @@ condition|(
 name|ent
 operator|&&
 operator|!
-name|memcmp
+name|hashcmp
 argument_list|(
 name|ent
 operator|->
 name|sha1
 argument_list|,
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 condition|)
 block|{
@@ -4067,7 +4063,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|memcmp
+name|hashcmp
 argument_list|(
 name|it
 operator|->
@@ -4076,8 +4072,6 @@ operator|.
 name|sha1
 argument_list|,
 name|tree_sha1
-argument_list|,
-literal|20
 argument_list|)
 condition|)
 block|{
@@ -4764,7 +4758,7 @@ name|b
 parameter_list|)
 block|{
 return|return
-name|memcmp
+name|hashcmp
 argument_list|(
 name|a
 operator|->
@@ -4773,8 +4767,6 @@ argument_list|,
 name|b
 operator|->
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 return|;
 block|}

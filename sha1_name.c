@@ -541,13 +541,11 @@ argument_list|)
 expr_stmt|;
 name|cmp
 operator|=
-name|memcmp
+name|hashcmp
 argument_list|(
 name|match
 argument_list|,
 name|now
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 if|if
@@ -669,13 +667,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|memcmp
+name|hashcmp
 argument_list|(
 name|found_sha1
 argument_list|,
 name|now
-argument_list|,
-literal|20
 argument_list|)
 condition|)
 block|{
@@ -851,13 +847,11 @@ block|}
 comment|/* Both have unique ones -- do they match? */
 if|if
 condition|(
-name|memcmp
+name|hashcmp
 argument_list|(
 name|packed_sha1
 argument_list|,
 name|unpacked_sha1
-argument_list|,
-literal|20
 argument_list|)
 condition|)
 return|return

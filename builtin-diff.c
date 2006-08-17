@@ -353,13 +353,11 @@ name|new_sha1
 argument_list|)
 operator|&&
 operator|!
-name|memcmp
+name|hashcmp
 argument_list|(
 name|old_sha1
 argument_list|,
 name|new_sha1
-argument_list|,
-literal|20
 argument_list|)
 condition|)
 return|return;

@@ -3873,7 +3873,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|memcmp
+name|hashcmp
 argument_list|(
 name|elem
 operator|->
@@ -3892,8 +3892,6 @@ name|j
 index|]
 operator|.
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 condition|)
 block|{

@@ -324,15 +324,13 @@ block|{
 if|if
 condition|(
 operator|!
-name|memcmp
+name|hashcmp
 argument_list|(
 name|sha1
 argument_list|,
 name|obj
 operator|->
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 condition|)
 break|break;

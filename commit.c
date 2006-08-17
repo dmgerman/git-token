@@ -645,15 +645,13 @@ decl_stmt|;
 name|int
 name|cmp
 init|=
-name|memcmp
+name|hashcmp
 argument_list|(
 name|sha1
 argument_list|,
 name|graft
 operator|->
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 decl_stmt|;
 if|if

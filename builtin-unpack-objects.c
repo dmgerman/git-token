@@ -793,15 +793,13 @@ block|{
 if|if
 condition|(
 operator|!
-name|memcmp
+name|hashcmp
 argument_list|(
 name|info
 operator|->
 name|base_sha1
 argument_list|,
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 condition|)
 block|{
@@ -1612,7 +1610,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|memcmp
+name|hashcmp
 argument_list|(
 name|fill
 argument_list|(
@@ -1620,8 +1618,6 @@ literal|20
 argument_list|)
 argument_list|,
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 condition|)
 name|die

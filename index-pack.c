@@ -451,7 +451,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|memcmp
+name|hashcmp
 argument_list|(
 name|sha1
 argument_list|,
@@ -459,8 +459,6 @@ name|pack_base
 operator|+
 name|pack_size
 operator|-
-literal|20
-argument_list|,
 literal|20
 argument_list|)
 condition|)
@@ -1041,15 +1039,13 @@ name|cmp
 decl_stmt|;
 name|cmp
 operator|=
-name|memcmp
+name|hashcmp
 argument_list|(
 name|base_sha1
 argument_list|,
 name|delta
 operator|->
 name|base_sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 if|if
@@ -1147,7 +1143,7 @@ operator|>
 literal|0
 operator|&&
 operator|!
-name|memcmp
+name|hashcmp
 argument_list|(
 name|deltas
 index|[
@@ -1159,8 +1155,6 @@ operator|.
 name|base_sha1
 argument_list|,
 name|base_sha1
-argument_list|,
-literal|20
 argument_list|)
 condition|)
 operator|--
@@ -1173,7 +1167,7 @@ operator|<
 name|end
 operator|&&
 operator|!
-name|memcmp
+name|hashcmp
 argument_list|(
 name|deltas
 index|[
@@ -1185,8 +1179,6 @@ operator|.
 name|base_sha1
 argument_list|,
 name|base_sha1
-argument_list|,
-literal|20
 argument_list|)
 condition|)
 operator|++
@@ -1581,7 +1573,7 @@ init|=
 name|b
 decl_stmt|;
 return|return
-name|memcmp
+name|hashcmp
 argument_list|(
 name|delta_a
 operator|->
@@ -1590,8 +1582,6 @@ argument_list|,
 name|delta_b
 operator|->
 name|base_sha1
-argument_list|,
-literal|20
 argument_list|)
 return|;
 block|}
@@ -1987,7 +1977,7 @@ operator|)
 name|_b
 decl_stmt|;
 return|return
-name|memcmp
+name|hashcmp
 argument_list|(
 name|a
 operator|->
@@ -1996,8 +1986,6 @@ argument_list|,
 name|b
 operator|->
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 return|;
 block|}

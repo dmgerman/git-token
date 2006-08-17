@@ -2518,9 +2518,10 @@ expr_stmt|;
 comment|/* Check if the pack file matches with the index file. 		 * this is cheap. 		 */
 if|if
 condition|(
-name|memcmp
+name|hashcmp
 argument_list|(
 operator|(
+name|unsigned
 name|char
 operator|*
 operator|)
@@ -2537,6 +2538,7 @@ operator|-
 literal|40
 argument_list|,
 operator|(
+name|unsigned
 name|char
 operator|*
 operator|)
@@ -2548,8 +2550,6 @@ name|p
 operator|->
 name|pack_size
 operator|-
-literal|20
-argument_list|,
 literal|20
 argument_list|)
 condition|)
@@ -3414,13 +3414,11 @@ name|c
 argument_list|)
 expr_stmt|;
 return|return
-name|memcmp
+name|hashcmp
 argument_list|(
 name|sha1
 argument_list|,
 name|real_sha1
-argument_list|,
-literal|20
 argument_list|)
 condition|?
 operator|-
@@ -4801,6 +4799,7 @@ argument_list|(
 name|base
 argument_list|,
 operator|(
+name|unsigned
 name|char
 operator|*
 operator|)
@@ -6221,9 +6220,10 @@ decl_stmt|;
 name|int
 name|cmp
 init|=
-name|memcmp
+name|hashcmp
 argument_list|(
 operator|(
+name|unsigned
 name|char
 operator|*
 operator|)
@@ -6238,8 +6238,6 @@ operator|+
 literal|4
 argument_list|,
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 decl_stmt|;
 if|if
@@ -8794,13 +8792,11 @@ return|;
 block|}
 if|if
 condition|(
-name|memcmp
+name|hashcmp
 argument_list|(
 name|sha1
 argument_list|,
 name|real_sha1
-argument_list|,
-literal|20
 argument_list|)
 condition|)
 block|{
