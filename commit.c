@@ -31,13 +31,13 @@ DECL|struct|sort_node
 struct|struct
 name|sort_node
 block|{
-comment|/*          * the number of children of the associated commit          * that also occur in the list being sorted.          */
+comment|/* 	 * the number of children of the associated commit 	 * that also occur in the list being sorted. 	 */
 DECL|member|indegree
 name|unsigned
 name|int
 name|indegree
 decl_stmt|;
-comment|/*          * reference to original list item that we will re-use          * on output.          */
+comment|/* 	 * reference to original list item that we will re-use 	 * on output. 	 */
 DECL|member|list_item
 name|struct
 name|commit_list
