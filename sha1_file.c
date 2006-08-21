@@ -2382,6 +2382,11 @@ name|void
 modifier|*
 name|map
 decl_stmt|;
+name|struct
+name|pack_header
+modifier|*
+name|hdr
+decl_stmt|;
 name|pack_mapped
 operator|+=
 name|p
@@ -2514,6 +2519,58 @@ operator|->
 name|pack_base
 operator|=
 name|map
+expr_stmt|;
+comment|/* Check if we understand this pack file.  If we don't we're 		 * likely too old to handle it. 		 */
+name|hdr
+operator|=
+name|map
+expr_stmt|;
+if|if
+condition|(
+name|hdr
+operator|->
+name|hdr_signature
+operator|!=
+name|htonl
+argument_list|(
+name|PACK_SIGNATURE
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"packfile %s isn't actually a pack."
+argument_list|,
+name|p
+operator|->
+name|pack_name
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|pack_version_ok
+argument_list|(
+name|hdr
+operator|->
+name|hdr_version
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"packfile %s is version %i and not supported"
+literal|" (try upgrading GIT to a newer version)"
+argument_list|,
+name|p
+operator|->
+name|pack_name
+argument_list|,
+name|ntohl
+argument_list|(
+name|hdr
+operator|->
+name|hdr_version
+argument_list|)
+argument_list|)
 expr_stmt|;
 comment|/* Check if the pack file matches with the index file. 		 * this is cheap. 		 */
 if|if
