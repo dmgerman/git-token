@@ -5587,6 +5587,9 @@ operator||
 literal|0755
 case|:
 case|case
+name|S_IFLNK
+case|:
+case|case
 literal|0644
 case|:
 case|case
