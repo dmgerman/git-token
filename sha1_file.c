@@ -5367,30 +5367,6 @@ return|;
 block|}
 end_function
 
-begin_comment
-comment|/* forward declaration for a mutually recursive function */
-end_comment
-
-begin_function_decl
-specifier|static
-name|void
-modifier|*
-name|unpack_entry
-parameter_list|(
-name|struct
-name|pack_entry
-modifier|*
-parameter_list|,
-name|char
-modifier|*
-parameter_list|,
-name|unsigned
-name|long
-modifier|*
-parameter_list|)
-function_decl|;
-end_function_decl
-
 begin_function
 DECL|function|unpack_delta_entry
 specifier|static
