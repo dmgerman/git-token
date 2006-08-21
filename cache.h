@@ -3239,6 +3239,25 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|void
+name|write_or_die
+parameter_list|(
+name|int
+name|fd
+parameter_list|,
+specifier|const
+name|void
+modifier|*
+name|buf
+parameter_list|,
+name|size_t
+name|count
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/* Finish off pack transfer receiving end */
 end_comment
