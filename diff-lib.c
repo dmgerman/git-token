@@ -345,7 +345,7 @@ decl_stmt|;
 name|num_compare_stages
 operator|++
 expr_stmt|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|dpath
 operator|->
@@ -361,8 +361,6 @@ argument_list|,
 name|nce
 operator|->
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 name|dpath

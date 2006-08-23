@@ -263,7 +263,7 @@ decl_stmt|;
 name|int
 name|cnt
 decl_stmt|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|it
 operator|->
@@ -274,8 +274,6 @@ operator|->
 name|object
 operator|.
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 name|desc

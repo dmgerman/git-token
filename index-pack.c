@@ -910,15 +910,13 @@ argument_list|,
 literal|"object extends past end of pack"
 argument_list|)
 expr_stmt|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|delta_base
 argument_list|,
 name|pack_base
 operator|+
 name|pos
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 name|pos
@@ -1711,15 +1709,13 @@ name|obj
 operator|=
 name|obj
 expr_stmt|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|delta
 operator|->
 name|base_sha1
 argument_list|,
 name|base_sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 block|}

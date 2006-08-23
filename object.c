@@ -496,15 +496,13 @@ name|flags
 operator|=
 literal|0
 expr_stmt|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|obj
 operator|->
 name|sha1
 argument_list|,
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 if|if
