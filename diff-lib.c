@@ -249,15 +249,11 @@ name|mode
 operator|=
 literal|0
 expr_stmt|;
-name|memset
+name|hashclr
 argument_list|(
 name|dpath
 operator|->
 name|sha1
-argument_list|,
-literal|0
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 name|memset

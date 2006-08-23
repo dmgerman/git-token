@@ -940,16 +940,9 @@ index|]
 operator|=
 name|NULL
 expr_stmt|;
-name|memset
+name|hashclr
 argument_list|(
 name|blob_sha1
-argument_list|,
-literal|0
-argument_list|,
-sizeof|sizeof
-argument_list|(
-name|blob_sha1
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|read_tree_recursive

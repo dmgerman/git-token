@@ -915,13 +915,9 @@ return|return
 operator|-
 literal|1
 return|;
-name|memset
+name|hashclr
 argument_list|(
 name|res
-argument_list|,
-literal|0
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 name|memset
