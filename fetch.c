@@ -471,7 +471,7 @@ condition|)
 return|return
 literal|0
 return|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|current_commit_sha1
 argument_list|,
@@ -480,8 +480,6 @@ operator|->
 name|object
 operator|.
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 name|pull_say

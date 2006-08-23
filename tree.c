@@ -179,15 +179,13 @@ operator|+
 literal|1
 argument_list|)
 expr_stmt|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|ce
 operator|->
 name|sha1
 argument_list|,
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 return|return
@@ -788,7 +786,7 @@ end_function
 begin_function
 DECL|function|track_tree_refs
 specifier|static
-name|int
+name|void
 name|track_tree_refs
 parameter_list|(
 name|struct
@@ -951,9 +949,6 @@ argument_list|,
 name|refs
 argument_list|)
 expr_stmt|;
-return|return
-literal|0
-return|;
 block|}
 end_function
 

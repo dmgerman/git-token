@@ -95,8 +95,6 @@ DECL|variable|keep_subject
 specifier|static
 name|int
 name|keep_subject
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -107,8 +105,6 @@ specifier|const
 name|char
 modifier|*
 name|metainfo_charset
-init|=
-name|NULL
 decl_stmt|;
 end_decl_stmt
 
@@ -220,8 +216,6 @@ DECL|variable|patch_lines
 specifier|static
 name|int
 name|patch_lines
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 

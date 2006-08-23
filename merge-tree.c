@@ -868,7 +868,7 @@ operator|->
 name|sha1
 operator|&&
 operator|!
-name|memcmp
+name|hashcmp
 argument_list|(
 name|a
 operator|->
@@ -877,8 +877,6 @@ argument_list|,
 name|b
 operator|->
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 operator|&&
 name|a

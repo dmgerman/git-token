@@ -96,8 +96,6 @@ DECL|variable|mark_valid_only
 specifier|static
 name|int
 name|mark_valid_only
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -646,15 +644,13 @@ argument_list|,
 name|size
 argument_list|)
 expr_stmt|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|ce
 operator|->
 name|sha1
 argument_list|,
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 name|memcpy
@@ -1582,15 +1578,13 @@ argument_list|,
 name|size
 argument_list|)
 expr_stmt|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|ce
 operator|->
 name|sha1
 argument_list|,
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 name|memcpy
@@ -1801,7 +1795,7 @@ block|}
 if|if
 condition|(
 operator|!
-name|memcmp
+name|hashcmp
 argument_list|(
 name|ce_2
 operator|->
@@ -1810,8 +1804,6 @@ argument_list|,
 name|ce_3
 operator|->
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 operator|&&
 name|ce_2
@@ -2238,7 +2230,7 @@ operator|->
 name|ce_mode
 operator|&&
 operator|!
-name|memcmp
+name|hashcmp
 argument_list|(
 name|ce
 operator|->
@@ -2247,8 +2239,6 @@ argument_list|,
 name|old
 operator|->
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 condition|)
 block|{

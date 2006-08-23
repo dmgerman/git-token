@@ -52,8 +52,6 @@ DECL|variable|merge_summary
 specifier|static
 name|int
 name|merge_summary
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 

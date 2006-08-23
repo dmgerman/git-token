@@ -31,13 +31,13 @@ DECL|struct|sort_node
 struct|struct
 name|sort_node
 block|{
-comment|/*          * the number of children of the associated commit          * that also occur in the list being sorted.          */
+comment|/* 	 * the number of children of the associated commit 	 * that also occur in the list being sorted. 	 */
 DECL|member|indegree
 name|unsigned
 name|int
 name|indegree
 decl_stmt|;
-comment|/*          * reference to original list item that we will re-use          * on output.          */
+comment|/* 	 * reference to original list item that we will re-use 	 * on output. 	 */
 DECL|member|list_item
 name|struct
 name|commit_list
@@ -645,15 +645,13 @@ decl_stmt|;
 name|int
 name|cmp
 init|=
-name|memcmp
+name|hashcmp
 argument_list|(
 name|sha1
 argument_list|,
 name|graft
 operator|->
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 decl_stmt|;
 if|if
@@ -3934,8 +3932,6 @@ parameter_list|)
 block|{
 name|int
 name|count
-init|=
-literal|0
 decl_stmt|;
 name|struct
 name|commit_list

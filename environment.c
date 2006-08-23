@@ -51,8 +51,6 @@ begin_decl_stmt
 DECL|variable|assume_unchanged
 name|int
 name|assume_unchanged
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -60,8 +58,6 @@ begin_decl_stmt
 DECL|variable|prefer_symlink_refs
 name|int
 name|prefer_symlink_refs
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -69,8 +65,6 @@ begin_decl_stmt
 DECL|variable|log_all_ref_updates
 name|int
 name|log_all_ref_updates
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -87,8 +81,6 @@ begin_decl_stmt
 DECL|variable|repository_format_version
 name|int
 name|repository_format_version
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -119,8 +111,6 @@ specifier|const
 name|char
 modifier|*
 name|apply_default_whitespace
-init|=
-name|NULL
 decl_stmt|;
 end_decl_stmt
 

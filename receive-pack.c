@@ -63,8 +63,6 @@ DECL|variable|report_status
 specifier|static
 name|int
 name|report_status
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -84,8 +82,6 @@ DECL|variable|capabilities_sent
 specifier|static
 name|int
 name|capabilities_sent
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -235,8 +231,6 @@ name|struct
 name|command
 modifier|*
 name|commands
-init|=
-name|NULL
 decl_stmt|;
 end_decl_stmt
 
@@ -1379,26 +1373,22 @@ operator|-
 literal|80
 argument_list|)
 expr_stmt|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|cmd
 operator|->
 name|old_sha1
 argument_list|,
 name|old_sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|cmd
 operator|->
 name|new_sha1
 argument_list|,
 name|new_sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 name|memcpy

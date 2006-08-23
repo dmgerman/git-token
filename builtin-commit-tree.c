@@ -382,7 +382,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|memcmp
+name|hashcmp
 argument_list|(
 name|parent_sha1
 index|[
@@ -390,8 +390,6 @@ name|i
 index|]
 argument_list|,
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 condition|)
 block|{

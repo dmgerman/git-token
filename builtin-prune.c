@@ -82,8 +82,6 @@ DECL|variable|show_only
 specifier|static
 name|int
 name|show_only
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 

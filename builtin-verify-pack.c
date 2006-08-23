@@ -2,6 +2,12 @@ begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_include
 include|#
 directive|include
+file|"builtin.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"cache.h"
 end_include
 
@@ -221,17 +227,23 @@ decl_stmt|;
 end_decl_stmt
 
 begin_function
-DECL|function|main
+DECL|function|cmd_verify_pack
 name|int
-name|main
+name|cmd_verify_pack
 parameter_list|(
 name|int
-name|ac
+name|argc
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
-name|av
+name|argv
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|prefix
 parameter_list|)
 block|{
 name|int
@@ -258,7 +270,7 @@ while|while
 condition|(
 literal|1
 operator|<
-name|ac
+name|argc
 condition|)
 block|{
 if|if
@@ -266,7 +278,7 @@ condition|(
 operator|!
 name|no_more_options
 operator|&&
-name|av
+name|argv
 index|[
 literal|1
 index|]
@@ -284,7 +296,7 @@ name|strcmp
 argument_list|(
 literal|"-v"
 argument_list|,
-name|av
+name|argv
 index|[
 literal|1
 index|]
@@ -302,7 +314,7 @@ name|strcmp
 argument_list|(
 literal|"--"
 argument_list|,
-name|av
+name|argv
 index|[
 literal|1
 index|]
@@ -325,7 +337,7 @@ if|if
 condition|(
 name|verify_one_pack
 argument_list|(
-name|av
+name|argv
 index|[
 literal|1
 index|]
@@ -342,10 +354,10 @@ operator|=
 literal|0
 expr_stmt|;
 block|}
-name|ac
+name|argc
 operator|--
 expr_stmt|;
-name|av
+name|argv
 operator|++
 expr_stmt|;
 block|}

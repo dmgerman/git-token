@@ -52,8 +52,6 @@ DECL|variable|default_num
 specifier|static
 name|int
 name|default_num
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -62,8 +60,6 @@ DECL|variable|default_alloc
 specifier|static
 name|int
 name|default_alloc
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -75,8 +71,6 @@ name|char
 modifier|*
 modifier|*
 name|default_arg
-init|=
-name|NULL
 decl_stmt|;
 end_decl_stmt
 
@@ -1934,13 +1928,11 @@ argument_list|,
 name|tmp
 argument_list|)
 operator|||
-name|memcmp
+name|hashcmp
 argument_list|(
 name|tmp
 argument_list|,
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 condition|)
 name|ofs
@@ -2305,13 +2297,11 @@ name|head_sha1
 operator|&&
 name|sha1
 operator|&&
-name|memcmp
+name|hashcmp
 argument_list|(
 name|head_sha1
 argument_list|,
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 operator|)
 condition|)

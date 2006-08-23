@@ -2,6 +2,12 @@ begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_include
 include|#
 directive|include
+file|"builtin.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"cache.h"
 end_include
 
@@ -206,8 +212,6 @@ DECL|variable|non_empty
 specifier|static
 name|int
 name|non_empty
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -216,8 +220,6 @@ DECL|variable|no_reuse_delta
 specifier|static
 name|int
 name|no_reuse_delta
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -226,8 +228,6 @@ DECL|variable|local
 specifier|static
 name|int
 name|local
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -236,8 +236,6 @@ DECL|variable|incremental
 specifier|static
 name|int
 name|incremental
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -264,8 +262,6 @@ name|struct
 name|object_entry
 modifier|*
 name|objects
-init|=
-name|NULL
 decl_stmt|;
 end_decl_stmt
 
@@ -276,16 +272,10 @@ DECL|variable|nr_result
 specifier|static
 name|int
 name|nr_objects
-init|=
-literal|0
 decl_stmt|,
 name|nr_alloc
-init|=
-literal|0
 decl_stmt|,
 name|nr_result
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -327,8 +317,6 @@ specifier|static
 specifier|volatile
 name|sig_atomic_t
 name|progress_update
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -352,8 +340,6 @@ specifier|static
 name|int
 modifier|*
 name|object_ix
-init|=
-name|NULL
 decl_stmt|;
 end_decl_stmt
 
@@ -362,8 +348,6 @@ DECL|variable|object_ix_hashsz
 specifier|static
 name|int
 name|object_ix_hashsz
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -402,8 +386,6 @@ DECL|variable|pack_revindex_hashsz
 specifier|static
 name|int
 name|pack_revindex_hashsz
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -416,8 +398,6 @@ DECL|variable|written
 specifier|static
 name|int
 name|written
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -426,8 +406,6 @@ DECL|variable|written_delta
 specifier|static
 name|int
 name|written_delta
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -436,8 +414,6 @@ DECL|variable|reused
 specifier|static
 name|int
 name|reused
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -446,8 +422,6 @@ DECL|variable|reused_delta
 specifier|static
 name|int
 name|reused_delta
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -1387,6 +1361,90 @@ comment|/* we have it in-pack undeltified, 				 * and we do not need to deltify 
 if|if
 condition|(
 operator|!
+name|entry
+operator|->
+name|in_pack
+operator|&&
+operator|!
+name|entry
+operator|->
+name|delta
+condition|)
+block|{
+name|unsigned
+name|char
+modifier|*
+name|map
+decl_stmt|;
+name|unsigned
+name|long
+name|mapsize
+decl_stmt|;
+name|map
+operator|=
+name|map_sha1_file
+argument_list|(
+name|entry
+operator|->
+name|sha1
+argument_list|,
+operator|&
+name|mapsize
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|map
+operator|&&
+operator|!
+name|legacy_loose_object
+argument_list|(
+name|map
+argument_list|)
+condition|)
+block|{
+comment|/* We can copy straight into the pack file */
+name|sha1write
+argument_list|(
+name|f
+argument_list|,
+name|map
+argument_list|,
+name|mapsize
+argument_list|)
+expr_stmt|;
+name|munmap
+argument_list|(
+name|map
+argument_list|,
+name|mapsize
+argument_list|)
+expr_stmt|;
+name|written
+operator|++
+expr_stmt|;
+name|reused
+operator|++
+expr_stmt|;
+return|return
+name|mapsize
+return|;
+block|}
+if|if
+condition|(
+name|map
+condition|)
+name|munmap
+argument_list|(
+name|map
+argument_list|,
+name|mapsize
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+operator|!
 name|to_reuse
 condition|)
 block|{
@@ -2218,7 +2276,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|memcmp
+name|hashcmp
 argument_list|(
 name|sha1
 argument_list|,
@@ -2233,8 +2291,6 @@ literal|1
 index|]
 operator|.
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 condition|)
 return|return
@@ -2717,15 +2773,13 @@ name|entry
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|entry
 operator|->
 name|sha1
 argument_list|,
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 name|entry
@@ -3054,15 +3108,13 @@ condition|(
 name|ent
 operator|&&
 operator|!
-name|memcmp
+name|hashcmp
 argument_list|(
 name|ent
 operator|->
 name|sha1
 argument_list|,
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 condition|)
 block|{
@@ -3240,15 +3292,13 @@ operator|=
 name|ent
 expr_stmt|;
 block|}
-name|memcpy
+name|hashcpy
 argument_list|(
 name|nent
 operator|->
 name|sha1
 argument_list|,
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 name|nent
@@ -4009,7 +4059,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|memcmp
+name|hashcmp
 argument_list|(
 name|it
 operator|->
@@ -4018,8 +4068,6 @@ operator|.
 name|sha1
 argument_list|,
 name|tree_sha1
-argument_list|,
-literal|20
 argument_list|)
 condition|)
 block|{
@@ -4054,7 +4102,7 @@ name|pbase_tree
 operator|=
 name|it
 expr_stmt|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|it
 operator|->
@@ -4063,8 +4111,6 @@ operator|.
 name|sha1
 argument_list|,
 name|tree_sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 name|it
@@ -4706,7 +4752,7 @@ name|b
 parameter_list|)
 block|{
 return|return
-name|memcmp
+name|hashcmp
 argument_list|(
 name|a
 operator|->
@@ -4715,8 +4761,6 @@ argument_list|,
 name|b
 operator|->
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 return|;
 block|}
@@ -6352,17 +6396,23 @@ block|}
 end_function
 
 begin_function
-DECL|function|main
+DECL|function|cmd_pack_objects
 name|int
-name|main
+name|cmd_pack_objects
 parameter_list|(
 name|int
 name|argc
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
 name|argv
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|prefix
 parameter_list|)
 block|{
 name|SHA_CTX
@@ -6403,9 +6453,6 @@ decl_stmt|;
 name|int
 name|i
 decl_stmt|;
-name|setup_git_directory
-argument_list|()
-expr_stmt|;
 name|git_config
 argument_list|(
 name|git_pack_config

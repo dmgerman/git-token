@@ -70,7 +70,7 @@ name|pager
 init|=
 name|getenv
 argument_list|(
-literal|"PAGER"
+literal|"GIT_PAGER"
 argument_list|)
 decl_stmt|;
 if|if
@@ -82,6 +82,18 @@ literal|1
 argument_list|)
 condition|)
 return|return;
+if|if
+condition|(
+operator|!
+name|pager
+condition|)
+name|pager
+operator|=
+name|getenv
+argument_list|(
+literal|"PAGER"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!

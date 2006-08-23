@@ -26,8 +26,6 @@ DECL|variable|use_link
 specifier|static
 name|int
 name|use_link
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -36,8 +34,6 @@ DECL|variable|use_symlink
 specifier|static
 name|int
 name|use_symlink
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -56,8 +52,6 @@ DECL|variable|commits_on_stdin
 specifier|static
 name|int
 name|commits_on_stdin
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -96,8 +90,6 @@ name|struct
 name|packed_git
 modifier|*
 name|packs
-init|=
-name|NULL
 decl_stmt|;
 end_decl_stmt
 

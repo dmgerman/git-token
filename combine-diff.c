@@ -48,34 +48,6 @@ file|"log-tree.h"
 end_include
 
 begin_function
-DECL|function|uninteresting
-specifier|static
-name|int
-name|uninteresting
-parameter_list|(
-name|struct
-name|diff_filepair
-modifier|*
-name|p
-parameter_list|)
-block|{
-if|if
-condition|(
-name|diff_unmodified_pair
-argument_list|(
-name|p
-argument_list|)
-condition|)
-return|return
-literal|1
-return|;
-return|return
-literal|0
-return|;
-block|}
-end_function
-
-begin_function
 DECL|function|intersect_paths
 specifier|static
 name|struct
@@ -157,7 +129,7 @@ name|path
 decl_stmt|;
 if|if
 condition|(
-name|uninteresting
+name|diff_unmodified_pair
 argument_list|(
 name|q
 operator|->
@@ -271,7 +243,7 @@ operator|*
 name|num_parent
 argument_list|)
 expr_stmt|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|p
 operator|->
@@ -287,8 +259,6 @@ operator|->
 name|two
 operator|->
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 name|p
@@ -306,7 +276,7 @@ name|two
 operator|->
 name|mode
 expr_stmt|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|p
 operator|->
@@ -327,8 +297,6 @@ operator|->
 name|one
 operator|->
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 name|p
@@ -440,7 +408,7 @@ name|len
 decl_stmt|;
 if|if
 condition|(
-name|uninteresting
+name|diff_unmodified_pair
 argument_list|(
 name|q
 operator|->
@@ -496,7 +464,7 @@ name|found
 operator|=
 literal|1
 expr_stmt|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|p
 operator|->
@@ -517,8 +485,6 @@ operator|->
 name|one
 operator|->
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 name|p
@@ -691,14 +657,9 @@ index|]
 decl_stmt|;
 if|if
 condition|(
-operator|!
-name|memcmp
+name|is_null_sha1
 argument_list|(
 name|sha1
-argument_list|,
-name|null_sha1
-argument_list|,
-literal|20
 argument_list|)
 condition|)
 block|{
@@ -3313,7 +3274,7 @@ end_function
 begin_function
 DECL|function|show_patch_diff
 specifier|static
-name|int
+name|void
 name|show_patch_diff
 parameter_list|(
 name|struct
@@ -3373,24 +3334,15 @@ name|int
 name|i
 decl_stmt|,
 name|show_hunks
-decl_stmt|,
-name|shown_header
-init|=
-literal|0
 decl_stmt|;
 name|int
 name|working_tree_file
 init|=
-operator|!
-name|memcmp
+name|is_null_sha1
 argument_list|(
 name|elem
 operator|->
 name|sha1
-argument_list|,
-name|null_sha1
-argument_list|,
-literal|20
 argument_list|)
 decl_stmt|;
 name|int
@@ -3915,7 +3867,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|memcmp
+name|hashcmp
 argument_list|(
 name|elem
 operator|->
@@ -3934,8 +3886,6 @@ name|j
 index|]
 operator|.
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 condition|)
 block|{
@@ -4426,9 +4376,6 @@ argument_list|(
 name|sline
 argument_list|)
 expr_stmt|;
-return|return
-name|shown_header
-return|;
 block|}
 end_function
 
@@ -4816,7 +4763,6 @@ operator||
 name|DIFF_FORMAT_NAME_STATUS
 operator|)
 condition|)
-block|{
 name|show_raw_diff
 argument_list|(
 name|p
@@ -4826,7 +4772,6 @@ argument_list|,
 name|rev
 argument_list|)
 expr_stmt|;
-block|}
 elseif|else
 if|if
 condition|(
@@ -4836,7 +4781,6 @@ name|output_format
 operator|&
 name|DIFF_FORMAT_PATCH
 condition|)
-block|{
 name|show_patch_diff
 argument_list|(
 name|p
@@ -4848,7 +4792,6 @@ argument_list|,
 name|rev
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 end_function
 
@@ -5353,11 +5296,18 @@ operator|,
 name|num_parent
 operator|++
 control|)
-name|memcpy
+name|hashcpy
 argument_list|(
+operator|(
+name|unsigned
+name|char
+operator|*
+operator|)
+operator|(
 name|parent
 operator|+
 name|num_parent
+operator|)
 argument_list|,
 name|parents
 operator|->
@@ -5366,8 +5316,6 @@ operator|->
 name|object
 operator|.
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 name|diff_tree_combined

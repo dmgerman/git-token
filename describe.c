@@ -48,8 +48,6 @@ DECL|variable|all
 specifier|static
 name|int
 name|all
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -63,8 +61,6 @@ DECL|variable|tags
 specifier|static
 name|int
 name|tags
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -89,12 +85,8 @@ DECL|variable|allocs
 specifier|static
 name|int
 name|names
-init|=
-literal|0
 decl_stmt|,
 name|allocs
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 

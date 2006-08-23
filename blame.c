@@ -262,8 +262,6 @@ DECL|variable|num_get_patch
 specifier|static
 name|int
 name|num_get_patch
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -272,8 +270,6 @@ DECL|variable|num_commits
 specifier|static
 name|int
 name|num_commits
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -282,8 +278,6 @@ DECL|variable|patch_time
 specifier|static
 name|int
 name|patch_time
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -946,16 +940,9 @@ index|]
 operator|=
 name|NULL
 expr_stmt|;
-name|memset
+name|hashclr
 argument_list|(
 name|blob_sha1
-argument_list|,
-literal|0
-argument_list|,
-sizeof|sizeof
-argument_list|(
-name|blob_sha1
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|read_tree_recursive
@@ -1008,13 +995,11 @@ return|return
 operator|-
 literal|1
 return|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|sha1
 argument_list|,
 name|blob_sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 return|return
@@ -1089,13 +1074,11 @@ return|return
 operator|-
 literal|1
 return|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|blob_sha1
 argument_list|,
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 return|return
@@ -2036,8 +2019,9 @@ operator|->
 name|pathname
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
+return|return
+operator|!
+operator|!
 name|get_blob_sha1
 argument_list|(
 name|commit
@@ -2052,13 +2036,6 @@ name|util
 operator|->
 name|sha1
 argument_list|)
-condition|)
-return|return
-literal|1
-return|;
-else|else
-return|return
-literal|0
 return|;
 block|}
 end_function

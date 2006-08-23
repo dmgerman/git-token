@@ -18,7 +18,7 @@ end_include
 begin_function
 DECL|function|sha1flush
 specifier|static
-name|int
+name|void
 name|sha1flush
 parameter_list|(
 name|struct
@@ -85,9 +85,7 @@ condition|(
 name|count
 condition|)
 continue|continue;
-return|return
-literal|0
-return|;
+return|return;
 block|}
 if|if
 condition|(
@@ -190,15 +188,13 @@ if|if
 condition|(
 name|result
 condition|)
-name|memcpy
+name|hashcpy
 argument_list|(
 name|result
 argument_list|,
 name|f
 operator|->
 name|buffer
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 if|if
