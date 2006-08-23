@@ -9304,7 +9304,7 @@ init|=
 name|NULL
 decl_stmt|;
 name|int
-name|error
+name|err
 init|=
 literal|0
 decl_stmt|;
@@ -9323,7 +9323,7 @@ operator|->
 name|next
 control|)
 block|{
-name|error
+name|err
 operator||=
 name|check_patch
 argument_list|(
@@ -9338,7 +9338,7 @@ name|patch
 expr_stmt|;
 block|}
 return|return
-name|error
+name|err
 return|;
 block|}
 end_function
