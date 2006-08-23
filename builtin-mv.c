@@ -1706,7 +1706,7 @@ operator|.
 name|path
 decl_stmt|;
 name|int
-name|i
+name|j
 init|=
 name|cache_name_pos
 argument_list|(
@@ -1725,12 +1725,12 @@ name|ce
 init|=
 name|active_cache
 index|[
-name|i
+name|j
 index|]
 decl_stmt|;
 if|if
 condition|(
-name|i
+name|j
 operator|<
 literal|0
 condition|)

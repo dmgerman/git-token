@@ -1754,7 +1754,7 @@ argument_list|)
 condition|)
 block|{
 name|int
-name|i
+name|j
 decl_stmt|;
 name|fprintf
 argument_list|(
@@ -1765,16 +1765,16 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-name|i
+name|j
 operator|=
 literal|0
 init|;
-name|i
+name|j
 operator|<
 name|argc
 condition|;
 operator|++
-name|i
+name|j
 control|)
 block|{
 name|fputc
@@ -1790,7 +1790,7 @@ name|stderr
 argument_list|,
 name|argv
 index|[
-name|i
+name|j
 index|]
 argument_list|)
 expr_stmt|;
