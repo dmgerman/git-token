@@ -848,15 +848,13 @@ argument_list|,
 name|size
 argument_list|)
 expr_stmt|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|ce
 operator|->
 name|sha1
 argument_list|,
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 name|memcpy
@@ -1906,7 +1904,7 @@ operator|->
 name|ce_mode
 argument_list|)
 expr_stmt|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|e
 operator|->
@@ -1923,8 +1921,6 @@ argument_list|,
 name|ce
 operator|->
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 block|}
@@ -3547,7 +3543,7 @@ name|a
 operator|->
 name|mode
 expr_stmt|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|result
 operator|.
@@ -3556,8 +3552,6 @@ argument_list|,
 name|a
 operator|->
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 block|}
@@ -3571,7 +3565,7 @@ name|b
 operator|->
 name|mode
 expr_stmt|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|result
 operator|.
@@ -3580,8 +3574,6 @@ argument_list|,
 name|b
 operator|->
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 block|}
@@ -3653,7 +3645,7 @@ operator|->
 name|sha1
 argument_list|)
 condition|)
-name|memcpy
+name|hashcpy
 argument_list|(
 name|result
 operator|.
@@ -3662,8 +3654,6 @@ argument_list|,
 name|b
 operator|->
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -3680,7 +3670,7 @@ operator|->
 name|sha1
 argument_list|)
 condition|)
-name|memcpy
+name|hashcpy
 argument_list|(
 name|result
 operator|.
@@ -3689,8 +3679,6 @@ argument_list|,
 name|a
 operator|->
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -4024,7 +4012,7 @@ argument_list|(
 literal|"cannot merge modes?"
 argument_list|)
 expr_stmt|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|result
 operator|.
@@ -4033,8 +4021,6 @@ argument_list|,
 name|a
 operator|->
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 if|if
@@ -6517,15 +6503,13 @@ operator|*
 operator|)
 name|path
 expr_stmt|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|o
 operator|.
 name|sha1
 argument_list|,
 name|o_sha
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 name|o
@@ -6534,15 +6518,13 @@ name|mode
 operator|=
 name|o_mode
 expr_stmt|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|a
 operator|.
 name|sha1
 argument_list|,
 name|a_sha
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 name|a
@@ -6551,15 +6533,13 @@ name|mode
 operator|=
 name|a_mode
 expr_stmt|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|b
 operator|.
 name|sha1
 argument_list|,
 name|b_sha
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 name|b
