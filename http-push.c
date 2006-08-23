@@ -9808,6 +9808,7 @@ end_function
 
 begin_function
 DECL|function|add_one_object
+specifier|static
 name|struct
 name|object_list
 modifier|*
