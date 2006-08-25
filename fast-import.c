@@ -2592,6 +2592,16 @@ name|n
 init|=
 name|tree_entry_alloc
 decl_stmt|;
+name|total_allocd
+operator|+=
+name|n
+operator|*
+sizeof|sizeof
+argument_list|(
+expr|struct
+name|tree_entry
+argument_list|)
+expr_stmt|;
 name|avail_tree_entry
 operator|=
 name|e
