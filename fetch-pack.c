@@ -2030,15 +2030,13 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
-name|memcpy
+name|hashcpy
 argument_list|(
 name|ref
 operator|->
 name|new_sha1
 argument_list|,
 name|local
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 if|if

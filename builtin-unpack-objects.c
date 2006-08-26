@@ -529,15 +529,13 @@ name|info
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|info
 operator|->
 name|base_sha1
 argument_list|,
 name|base_sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 name|info
@@ -988,7 +986,7 @@ decl_stmt|;
 name|int
 name|result
 decl_stmt|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|base_sha1
 argument_list|,
@@ -996,8 +994,6 @@ name|fill
 argument_list|(
 literal|20
 argument_list|)
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 name|use

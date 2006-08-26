@@ -270,13 +270,11 @@ operator|&
 name|ctx
 argument_list|)
 expr_stmt|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|sha1
 argument_list|,
 name|n
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 name|patchlen

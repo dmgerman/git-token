@@ -1966,13 +1966,11 @@ if|if
 condition|(
 name|multi_ack
 condition|)
-name|memcpy
+name|hashcpy
 argument_list|(
 name|last_sha1
 argument_list|,
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 block|}
