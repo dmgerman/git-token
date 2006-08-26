@@ -1144,7 +1144,7 @@ condition|)
 block|{
 name|source
 operator|=
-name|realloc
+name|xrealloc
 argument_list|(
 name|source
 argument_list|,
@@ -1165,7 +1165,7 @@ argument_list|)
 expr_stmt|;
 name|destination
 operator|=
-name|realloc
+name|xrealloc
 argument_list|(
 name|destination
 argument_list|,
@@ -1186,7 +1186,7 @@ argument_list|)
 expr_stmt|;
 name|modes
 operator|=
-name|realloc
+name|xrealloc
 argument_list|(
 name|modes
 argument_list|,

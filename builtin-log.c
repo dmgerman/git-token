@@ -620,7 +620,7 @@ literal|1
 expr_stmt|;
 name|extra_headers
 operator|=
-name|realloc
+name|xrealloc
 argument_list|(
 name|extra_headers
 argument_list|,
@@ -2411,7 +2411,7 @@ operator|++
 expr_stmt|;
 name|list
 operator|=
-name|realloc
+name|xrealloc
 argument_list|(
 name|list
 argument_list|,

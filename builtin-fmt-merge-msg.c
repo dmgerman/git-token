@@ -166,7 +166,7 @@ name|list
 operator|->
 name|list
 operator|=
-name|realloc
+name|xrealloc
 argument_list|(
 name|list
 operator|->
@@ -187,7 +187,7 @@ name|list
 operator|->
 name|payload
 operator|=
-name|realloc
+name|xrealloc
 argument_list|(
 name|list
 operator|->
