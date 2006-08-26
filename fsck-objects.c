@@ -1889,15 +1889,13 @@ name|ino
 operator|=
 name|ino
 expr_stmt|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|entry
 operator|->
 name|sha1
 argument_list|,
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 name|nr

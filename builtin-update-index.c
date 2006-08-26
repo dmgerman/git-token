@@ -644,15 +644,13 @@ argument_list|,
 name|size
 argument_list|)
 expr_stmt|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|ce
 operator|->
 name|sha1
 argument_list|,
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 name|memcpy
@@ -1432,7 +1430,7 @@ name|char
 name|update_index_usage
 index|[]
 init|=
-literal|"git-update-index [-q] [--add] [--replace] [--remove] [--unmerged] [--refresh] [--really-refresh] [--cacheinfo] [--chmod=(+|-)x] [--assume-unchanged] [--info-only] [--force-remove] [--stdin] [--index-info] [--unresolve] [--again] [--ignore-missing] [-z] [--verbose] [--]<file>..."
+literal|"git-update-index [-q] [--add] [--replace] [--remove] [--unmerged] [--refresh] [--really-refresh] [--cacheinfo] [--chmod=(+|-)x] [--assume-unchanged] [--info-only] [--force-remove] [--stdin] [--index-info] [--unresolve] [--again | -g] [--ignore-missing] [-z] [--verbose] [--]<file>..."
 decl_stmt|;
 end_decl_stmt
 
@@ -1580,15 +1578,13 @@ argument_list|,
 name|size
 argument_list|)
 expr_stmt|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|ce
 operator|->
 name|sha1
 argument_list|,
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 name|memcpy
@@ -1799,7 +1795,7 @@ block|}
 if|if
 condition|(
 operator|!
-name|memcmp
+name|hashcmp
 argument_list|(
 name|ce_2
 operator|->
@@ -1808,8 +1804,6 @@ argument_list|,
 name|ce_3
 operator|->
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 operator|&&
 name|ce_2
@@ -2236,7 +2230,7 @@ operator|->
 name|ce_mode
 operator|&&
 operator|!
-name|memcmp
+name|hashcmp
 argument_list|(
 name|ce
 operator|->
@@ -2245,8 +2239,6 @@ argument_list|,
 name|old
 operator|->
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 condition|)
 block|{
@@ -2938,6 +2930,14 @@ argument_list|(
 name|path
 argument_list|,
 literal|"--again"
+argument_list|)
+operator|||
+operator|!
+name|strcmp
+argument_list|(
+name|path
+argument_list|,
+literal|"-g"
 argument_list|)
 condition|)
 block|{

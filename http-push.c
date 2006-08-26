@@ -4296,7 +4296,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|memcmp
+name|hashcmp
 argument_list|(
 name|request
 operator|->
@@ -4307,8 +4307,6 @@ argument_list|,
 name|request
 operator|->
 name|real_sha1
-argument_list|,
-literal|20
 argument_list|)
 condition|)
 block|{
@@ -9810,6 +9808,7 @@ end_function
 
 begin_function
 DECL|function|add_one_object
+specifier|static
 name|struct
 name|object_list
 modifier|*
@@ -10914,15 +10913,13 @@ operator|+
 name|len
 argument_list|)
 expr_stmt|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|ref
 operator|->
 name|new_sha1
 argument_list|,
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 name|memcpy
@@ -11081,15 +11078,13 @@ operator|+
 name|len
 argument_list|)
 expr_stmt|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|ref
 operator|->
 name|old_sha1
 argument_list|,
 name|remote_sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 name|memcpy
@@ -12526,13 +12521,9 @@ name|symref
 operator|=
 name|NULL
 expr_stmt|;
-name|memset
+name|hashclr
 argument_list|(
 name|sha1
-argument_list|,
-literal|0
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 if|if
@@ -13856,7 +13847,7 @@ continue|continue;
 if|if
 condition|(
 operator|!
-name|memcmp
+name|hashcmp
 argument_list|(
 name|ref
 operator|->
@@ -13867,8 +13858,6 @@ operator|->
 name|peer_ref
 operator|->
 name|new_sha1
-argument_list|,
-literal|20
 argument_list|)
 condition|)
 block|{
@@ -13962,7 +13951,7 @@ expr_stmt|;
 continue|continue;
 block|}
 block|}
-name|memcpy
+name|hashcpy
 argument_list|(
 name|ref
 operator|->
@@ -13973,8 +13962,6 @@ operator|->
 name|peer_ref
 operator|->
 name|new_sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 if|if

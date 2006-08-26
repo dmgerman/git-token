@@ -1270,7 +1270,7 @@ operator|=
 literal|4
 init|;
 operator|(
-literal|1
+literal|1u
 operator|<<
 name|i
 operator|)

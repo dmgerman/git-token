@@ -353,13 +353,11 @@ name|new_sha1
 argument_list|)
 operator|&&
 operator|!
-name|memcmp
+name|hashcmp
 argument_list|(
 name|old_sha1
 argument_list|,
 name|new_sha1
-argument_list|,
-literal|20
 argument_list|)
 condition|)
 return|return;
@@ -1079,8 +1077,13 @@ condition|;
 name|i
 operator|++
 control|)
-name|memcpy
+name|hashcpy
 argument_list|(
+operator|(
+name|unsigned
+name|char
+operator|*
+operator|)
 name|parent
 operator|+
 name|i
@@ -1097,8 +1100,6 @@ operator|.
 name|item
 operator|->
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 name|diff_tree_combined
@@ -1590,7 +1591,7 @@ argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|blob
 index|[
@@ -1602,8 +1603,6 @@ argument_list|,
 name|obj
 operator|->
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 name|blob

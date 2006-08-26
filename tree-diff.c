@@ -296,13 +296,11 @@ operator|->
 name|find_copies_harder
 operator|&&
 operator|!
-name|memcmp
+name|hashcmp
 argument_list|(
 name|sha1
 argument_list|,
 name|sha2
-argument_list|,
-literal|20
 argument_list|)
 operator|&&
 name|mode1

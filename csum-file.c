@@ -188,15 +188,13 @@ if|if
 condition|(
 name|result
 condition|)
-name|memcpy
+name|hashcpy
 argument_list|(
 name|result
 argument_list|,
 name|f
 operator|->
 name|buffer
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 if|if

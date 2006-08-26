@@ -2403,7 +2403,7 @@ operator|!=
 name|OBJ_TAG
 condition|)
 break|break;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|sha1
 argument_list|,
@@ -2419,8 +2419,6 @@ operator|->
 name|tagged
 operator|->
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 block|}

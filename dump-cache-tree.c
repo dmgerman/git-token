@@ -187,7 +187,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|memcmp
+name|hashcmp
 argument_list|(
 name|it
 operator|->
@@ -196,8 +196,6 @@ argument_list|,
 name|ref
 operator|->
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 operator|||
 name|ref

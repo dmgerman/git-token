@@ -141,14 +141,21 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|git_dir
-DECL|variable|git_object_dir
-DECL|variable|git_index_file
-DECL|variable|git_refs_dir
 specifier|static
+specifier|const
 name|char
 modifier|*
 name|git_dir
-decl_stmt|,
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|git_object_dir
+DECL|variable|git_index_file
+DECL|variable|git_refs_dir
+DECL|variable|git_graft_file
+specifier|static
+name|char
 modifier|*
 name|git_object_dir
 decl_stmt|,
@@ -158,7 +165,6 @@ decl_stmt|,
 modifier|*
 name|git_refs_dir
 decl_stmt|,
-DECL|variable|git_graft_file
 modifier|*
 name|git_graft_file
 decl_stmt|;
@@ -307,6 +313,7 @@ end_function
 
 begin_function
 DECL|function|get_git_dir
+specifier|const
 name|char
 modifier|*
 name|get_git_dir
