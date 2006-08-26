@@ -1504,7 +1504,7 @@ decl_stmt|;
 name|char
 name|fullname
 index|[
-name|MAXPATHLEN
+name|PATH_MAX
 operator|+
 literal|1
 index|]
