@@ -2640,6 +2640,8 @@ while|while
 condition|(
 name|n
 operator|--
+operator|>
+literal|1
 condition|)
 block|{
 operator|*
@@ -2660,6 +2662,17 @@ name|e
 operator|++
 expr_stmt|;
 block|}
+operator|*
+operator|(
+operator|(
+name|void
+operator|*
+operator|)
+name|e
+operator|)
+operator|=
+name|NULL
+expr_stmt|;
 block|}
 name|e
 operator|=
