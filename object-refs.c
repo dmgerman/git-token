@@ -181,7 +181,7 @@ name|new_hash
 decl_stmt|;
 name|new_hash
 operator|=
-name|calloc
+name|xcalloc
 argument_list|(
 name|new_hash_size
 argument_list|,
