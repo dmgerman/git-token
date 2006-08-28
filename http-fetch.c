@@ -3738,13 +3738,6 @@ argument_list|,
 name|c
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|ctx
-operator|->
-name|cdata
-condition|)
-block|{
 name|free
 argument_list|(
 name|ctx
@@ -3758,7 +3751,6 @@ name|cdata
 operator|=
 name|NULL
 expr_stmt|;
-block|}
 name|ctx
 operator|->
 name|userFunc
@@ -3897,12 +3889,6 @@ operator|*
 operator|)
 name|userData
 decl_stmt|;
-if|if
-condition|(
-name|ctx
-operator|->
-name|cdata
-condition|)
 name|free
 argument_list|(
 name|ctx
@@ -4213,13 +4199,6 @@ name|DAV_PROPFIND_RESP
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|ls
-operator|->
-name|dentry_name
-condition|)
-block|{
 name|free
 argument_list|(
 name|ls
@@ -4227,7 +4206,6 @@ operator|->
 name|dentry_name
 argument_list|)
 expr_stmt|;
-block|}
 name|ls
 operator|->
 name|dentry_name

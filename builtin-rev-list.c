@@ -434,13 +434,6 @@ operator|=
 name|NULL
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|commit
-operator|->
-name|buffer
-condition|)
-block|{
 name|free
 argument_list|(
 name|commit
@@ -454,7 +447,6 @@ name|buffer
 operator|=
 name|NULL
 expr_stmt|;
-block|}
 block|}
 end_function
 

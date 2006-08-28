@@ -508,17 +508,6 @@ operator|.
 name|path
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|list
-operator|->
-name|items
-index|[
-name|i
-index|]
-operator|.
-name|util
-condition|)
 name|free
 argument_list|(
 name|list

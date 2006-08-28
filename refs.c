@@ -1935,12 +1935,6 @@ name|lk
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|lock
-operator|->
-name|ref_file
-condition|)
 name|free
 argument_list|(
 name|lock
@@ -1948,12 +1942,6 @@ operator|->
 name|ref_file
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|lock
-operator|->
-name|log_file
-condition|)
 name|free
 argument_list|(
 name|lock

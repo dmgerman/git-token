@@ -1693,10 +1693,6 @@ goto|goto
 name|unlock_and_fail
 goto|;
 block|}
-if|if
-condition|(
-name|msg
-condition|)
 name|free
 argument_list|(
 name|msg

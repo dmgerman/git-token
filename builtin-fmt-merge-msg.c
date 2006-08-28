@@ -340,15 +340,6 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|list
-operator|->
-name|payload
-index|[
-name|i
-index|]
-condition|)
 name|free
 argument_list|(
 name|list
