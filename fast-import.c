@@ -9865,6 +9865,10 @@ expr_stmt|;
 name|dump_marks
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|branch_log
+condition|)
 name|fclose
 argument_list|(
 name|branch_log
