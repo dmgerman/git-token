@@ -805,6 +805,16 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|int
+name|discard_cache
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
 name|verify_path
 parameter_list|(
 specifier|const
