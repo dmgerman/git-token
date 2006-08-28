@@ -2608,6 +2608,9 @@ specifier|const
 name|char
 modifier|*
 name|line
+parameter_list|,
+name|int
+name|relative_date
 parameter_list|)
 block|{
 name|char
@@ -2855,7 +2858,7 @@ name|time
 argument_list|,
 name|tz
 argument_list|,
-literal|0
+name|relative_date
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2903,7 +2906,7 @@ name|time
 argument_list|,
 name|tz
 argument_list|,
-literal|0
+name|relative_date
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3176,6 +3179,9 @@ specifier|const
 name|char
 modifier|*
 name|after_subject
+parameter_list|,
+name|int
+name|relative_date
 parameter_list|)
 block|{
 name|int
@@ -3531,6 +3537,8 @@ argument_list|,
 name|line
 operator|+
 literal|7
+argument_list|,
+name|relative_date
 argument_list|)
 expr_stmt|;
 if|if
@@ -3570,6 +3578,8 @@ argument_list|,
 name|line
 operator|+
 literal|10
+argument_list|,
+name|relative_date
 argument_list|)
 expr_stmt|;
 continue|continue;

@@ -291,6 +291,11 @@ DECL|member|abbrev_commit
 name|abbrev_commit
 range|:
 literal|1
+decl_stmt|,
+DECL|member|relative_date
+name|relative_date
+range|:
+literal|1
 decl_stmt|;
 DECL|member|abbrev
 name|unsigned

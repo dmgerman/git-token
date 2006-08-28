@@ -341,6 +341,9 @@ specifier|const
 name|char
 modifier|*
 name|after_subject
+parameter_list|,
+name|int
+name|relative_date
 parameter_list|)
 function_decl|;
 end_function_decl

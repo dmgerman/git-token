@@ -1001,6 +1001,10 @@ argument_list|,
 name|subject
 argument_list|,
 name|extra_headers
+argument_list|,
+name|opt
+operator|->
+name|relative_date
 argument_list|)
 expr_stmt|;
 if|if
