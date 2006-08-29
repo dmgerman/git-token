@@ -101,15 +101,12 @@ end_decl_stmt
 begin_decl_stmt
 DECL|variable|offset
 DECL|variable|len
-DECL|variable|eof
 specifier|static
 name|unsigned
 name|long
 name|offset
 decl_stmt|,
 name|len
-decl_stmt|,
-name|eof
 decl_stmt|;
 end_decl_stmt
 
@@ -147,15 +144,6 @@ name|buffer
 operator|+
 name|offset
 return|;
-if|if
-condition|(
-name|eof
-condition|)
-name|die
-argument_list|(
-literal|"unable to fill input"
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|min
