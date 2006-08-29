@@ -17,12 +17,6 @@ directive|include
 file|"pkt-line.h"
 end_include
 
-begin_include
-include|#
-directive|include
-file|<sys/wait.h>
-end_include
-
 begin_decl_stmt
 DECL|variable|peek_remote_usage
 specifier|static
