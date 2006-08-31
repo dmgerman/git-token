@@ -912,7 +912,7 @@ name|char
 modifier|*
 name|new_origin
 init|=
-name|malloc
+name|xmalloc
 argument_list|(
 name|len
 operator|-
@@ -961,7 +961,7 @@ name|char
 modifier|*
 name|new_origin
 init|=
-name|malloc
+name|xmalloc
 argument_list|(
 name|strlen
 argument_list|(
@@ -1402,7 +1402,7 @@ name|bol
 decl_stmt|;
 name|oneline
 operator|=
-name|malloc
+name|xmalloc
 argument_list|(
 name|len
 operator|+

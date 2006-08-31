@@ -286,7 +286,7 @@ name|char
 modifier|*
 name|buf
 init|=
-name|malloc
+name|xmalloc
 argument_list|(
 literal|100
 argument_list|)
@@ -423,7 +423,7 @@ name|char
 modifier|*
 name|buf
 init|=
-name|malloc
+name|xmalloc
 argument_list|(
 literal|42
 argument_list|)

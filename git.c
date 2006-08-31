@@ -156,7 +156,7 @@ literal|1
 expr_stmt|;
 name|path
 operator|=
-name|malloc
+name|xmalloc
 argument_list|(
 name|path_len
 operator|+
