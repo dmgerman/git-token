@@ -562,7 +562,7 @@ condition|)
 block|{
 name|alias_string
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|value
 argument_list|)

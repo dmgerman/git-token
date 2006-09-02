@@ -810,7 +810,7 @@ name|name_commit
 argument_list|(
 name|p
 argument_list|,
-name|strdup
+name|xstrdup
 argument_list|(
 name|newname
 argument_list|)
@@ -1856,7 +1856,7 @@ name|ref_name_cnt
 operator|++
 index|]
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|refname
 argument_list|)
@@ -2794,7 +2794,7 @@ name|default_num
 operator|++
 index|]
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|value
 argument_list|)

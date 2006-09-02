@@ -623,7 +623,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * NOTE! This returns a statically allocated buffer, so you have to be  * careful about using it. Do a "strdup()" if you need to save the  * filename.  *  * Also note that this returns the location for creating.  Reading  * SHA1 file can happen from any alternate directory listed in the  * DB_ENVIRONMENT environment variable if it is not found in  * the primary object database.  */
+comment|/*  * NOTE! This returns a statically allocated buffer, so you have to be  * careful about using it. Do a "xstrdup()" if you need to save the  * filename.  *  * Also note that this returns the location for creating.  Reading  * SHA1 file can happen from any alternate directory listed in the  * DB_ENVIRONMENT environment variable if it is not found in  * the primary object database.  */
 end_comment
 
 begin_function

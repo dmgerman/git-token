@@ -562,7 +562,7 @@ name|name_rev
 argument_list|(
 name|commit
 argument_list|,
-name|strdup
+name|xstrdup
 argument_list|(
 name|path
 argument_list|)

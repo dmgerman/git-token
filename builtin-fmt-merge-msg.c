@@ -659,7 +659,7 @@ argument_list|(
 operator|&
 name|srcs
 argument_list|,
-name|strdup
+name|xstrdup
 argument_list|(
 name|src
 argument_list|)
@@ -693,7 +693,7 @@ condition|)
 block|{
 name|origin
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|src
 argument_list|)
@@ -721,7 +721,7 @@ condition|)
 block|{
 name|origin
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|line
 operator|+
@@ -772,7 +772,7 @@ name|src_data
 operator|->
 name|tag
 argument_list|,
-name|strdup
+name|xstrdup
 argument_list|(
 name|origin
 operator|+
@@ -805,7 +805,7 @@ condition|)
 block|{
 name|origin
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|line
 operator|+
@@ -835,7 +835,7 @@ else|else
 block|{
 name|origin
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|src
 argument_list|)
@@ -847,7 +847,7 @@ name|src_data
 operator|->
 name|generic
 argument_list|,
-name|strdup
+name|xstrdup
 argument_list|(
 name|line
 argument_list|)
@@ -949,7 +949,7 @@ block|}
 else|else
 name|origin
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|origin
 argument_list|)
@@ -1358,7 +1358,7 @@ argument_list|(
 operator|&
 name|subjects
 argument_list|,
-name|strdup
+name|xstrdup
 argument_list|(
 name|sha1_to_hex
 argument_list|(
@@ -1429,7 +1429,7 @@ block|}
 else|else
 name|oneline
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|bol
 argument_list|)
@@ -1770,7 +1770,7 @@ expr_stmt|;
 comment|/* get current branch */
 name|head
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|git_path
 argument_list|(

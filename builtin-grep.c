@@ -5607,7 +5607,7 @@ argument_list|(
 operator|&
 name|opt
 argument_list|,
-name|strdup
+name|xstrdup
 argument_list|(
 name|buf
 argument_list|)

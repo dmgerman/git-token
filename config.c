@@ -1602,7 +1602,7 @@ name|filename
 operator|=
 name|repo_config
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|git_path
 argument_list|(
@@ -1620,7 +1620,7 @@ name|char
 modifier|*
 name|user_config
 init|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|mkpath
 argument_list|(
@@ -2633,14 +2633,14 @@ expr_stmt|;
 block|}
 name|config_filename
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|config_filename
 argument_list|)
 expr_stmt|;
 name|lock_file
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|mkpath
 argument_list|(

@@ -2840,12 +2840,12 @@ name|long
 name|mode
 parameter_list|)
 block|{
-comment|/* path points to cache entries, so strdup before messing with it */
+comment|/* path points to cache entries, so xstrdup before messing with it */
 name|char
 modifier|*
 name|buf
 init|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|path
 argument_list|)
@@ -3793,7 +3793,7 @@ index|]
 operator|=
 name|la
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|mkpath
 argument_list|(
@@ -3814,7 +3814,7 @@ index|]
 operator|=
 name|lb
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|mkpath
 argument_list|(
@@ -3835,7 +3835,7 @@ index|]
 operator|=
 name|lo
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|mkpath
 argument_list|(
@@ -7674,7 +7674,7 @@ name|original_index_file
 condition|)
 name|original_index_file
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|git_path
 argument_list|(
@@ -7684,7 +7684,7 @@ argument_list|)
 expr_stmt|;
 name|temporary_index_file
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|git_path
 argument_list|(

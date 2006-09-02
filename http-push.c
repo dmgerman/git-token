@@ -8840,7 +8840,7 @@ name|ls
 operator|.
 name|path
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|path
 argument_list|)
@@ -10028,7 +10028,7 @@ name|SEEN
 expr_stmt|;
 name|name
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|name
 argument_list|)
@@ -14081,7 +14081,7 @@ literal|3
 expr_stmt|;
 name|new_sha1_hex
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|sha1_to_hex
 argument_list|(

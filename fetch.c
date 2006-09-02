@@ -1278,7 +1278,7 @@ index|[
 name|targets
 index|]
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|tg_one
 argument_list|)
@@ -1293,7 +1293,7 @@ index|]
 operator|=
 name|rf_one
 condition|?
-name|strdup
+name|xstrdup
 argument_list|(
 name|rf_one
 argument_list|)

@@ -2108,7 +2108,7 @@ expr_stmt|;
 comment|/* --remote=<repo> */
 name|url
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|argv
 index|[

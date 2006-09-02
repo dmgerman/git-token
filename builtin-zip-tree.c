@@ -1905,7 +1905,7 @@ literal|3
 case|:
 name|base
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|argv
 index|[
@@ -1926,7 +1926,7 @@ literal|2
 case|:
 name|base
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 literal|""
 argument_list|)

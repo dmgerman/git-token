@@ -376,7 +376,7 @@ argument_list|)
 expr_stmt|;
 name|server_capabilities
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|name
 operator|+
@@ -3553,7 +3553,7 @@ else|else
 block|{
 name|path
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|ptr
 argument_list|)
@@ -3581,7 +3581,7 @@ name|char
 modifier|*
 name|target_host
 init|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|host
 argument_list|)

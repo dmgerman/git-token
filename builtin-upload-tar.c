@@ -354,7 +354,7 @@ literal|0
 expr_stmt|;
 name|base
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|buf
 operator|+
