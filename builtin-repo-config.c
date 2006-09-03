@@ -451,7 +451,7 @@ name|local
 operator|=
 name|repo_config
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|git_path
 argument_list|(
@@ -465,7 +465,7 @@ name|home
 condition|)
 name|global
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|mkpath
 argument_list|(
@@ -478,7 +478,7 @@ expr_stmt|;
 block|}
 name|key
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|key_
 argument_list|)
@@ -554,7 +554,7 @@ operator|(
 name|regex_t
 operator|*
 operator|)
-name|malloc
+name|xmalloc
 argument_list|(
 sizeof|sizeof
 argument_list|(
@@ -617,7 +617,7 @@ operator|(
 name|regex_t
 operator|*
 operator|)
-name|malloc
+name|xmalloc
 argument_list|(
 sizeof|sizeof
 argument_list|(

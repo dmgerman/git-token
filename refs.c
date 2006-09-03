@@ -1698,7 +1698,7 @@ name|lock
 operator|->
 name|ref_file
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|path
 argument_list|)
@@ -1707,7 +1707,7 @@ name|lock
 operator|->
 name|log_file
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|git_path
 argument_list|(

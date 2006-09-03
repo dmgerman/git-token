@@ -182,7 +182,7 @@ name|char
 modifier|*
 name|n
 init|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|name
 argument_list|)

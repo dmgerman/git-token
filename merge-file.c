@@ -120,7 +120,7 @@ name|NULL
 return|;
 name|filename
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|filename
 argument_list|)

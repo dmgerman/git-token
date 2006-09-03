@@ -12198,7 +12198,7 @@ condition|)
 block|{
 name|apply_default_whitespace
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|value
 argument_list|)

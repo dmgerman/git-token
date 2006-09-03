@@ -1035,7 +1035,7 @@ name|char
 modifier|*
 name|p
 init|=
-name|malloc
+name|xmalloc
 argument_list|(
 name|page_len
 operator|+

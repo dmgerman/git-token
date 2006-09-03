@@ -276,7 +276,7 @@ name|list
 operator|->
 name|strdup_paths
 condition|?
-name|strdup
+name|xstrdup
 argument_list|(
 name|path
 argument_list|)
