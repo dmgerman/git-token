@@ -122,48 +122,6 @@ begin_comment
 comment|/*  * The object type is stored in 3 bits.  */
 end_comment
 
-begin_enum
-DECL|enum|object_type
-enum|enum
-name|object_type
-block|{
-DECL|enumerator|OBJ_NONE
-name|OBJ_NONE
-init|=
-literal|0
-block|,
-DECL|enumerator|OBJ_COMMIT
-name|OBJ_COMMIT
-init|=
-literal|1
-block|,
-DECL|enumerator|OBJ_TREE
-name|OBJ_TREE
-init|=
-literal|2
-block|,
-DECL|enumerator|OBJ_BLOB
-name|OBJ_BLOB
-init|=
-literal|3
-block|,
-DECL|enumerator|OBJ_TAG
-name|OBJ_TAG
-init|=
-literal|4
-block|,
-comment|/* 5/6 for future expansion */
-DECL|enumerator|OBJ_DELTA
-name|OBJ_DELTA
-init|=
-literal|7
-block|,
-DECL|enumerator|OBJ_BAD
-name|OBJ_BAD
-block|, }
-enum|;
-end_enum
-
 begin_struct
 DECL|struct|object
 struct|struct
