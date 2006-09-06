@@ -221,6 +221,7 @@ name|unpacked
 range|:
 literal|1
 decl_stmt|,
+comment|/* see also ignore_packed below */
 DECL|member|boundary
 name|boundary
 range|:
@@ -296,6 +297,18 @@ DECL|member|relative_date
 name|relative_date
 range|:
 literal|1
+decl_stmt|;
+DECL|member|ignore_packed
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|ignore_packed
+decl_stmt|;
+comment|/* pretend objects in these are unpacked */
+DECL|member|num_ignore_packed
+name|int
+name|num_ignore_packed
 decl_stmt|;
 DECL|member|abbrev
 name|unsigned
