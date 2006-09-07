@@ -1561,6 +1561,12 @@ name|RUN_SETUP
 block|}
 block|,
 block|{
+literal|"upload-archive"
+block|,
+name|cmd_upload_archive
+block|}
+block|,
+block|{
 literal|"upload-tar"
 block|,
 name|cmd_upload_tar
