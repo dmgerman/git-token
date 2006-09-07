@@ -92,14 +92,6 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|allow_binary_replacement
-specifier|static
-name|int
-name|allow_binary_replacement
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|variable|check_index
 specifier|static
 name|int
@@ -5954,7 +5946,7 @@ break|break;
 block|}
 block|}
 block|}
-comment|/* Empty patch cannot be applied if: 		 * - it is a binary patch and we do not do binary_replace, or 		 * - text patch without metadata change 		 */
+comment|/* Empty patch cannot be applied if it is a text patch 		 * without metadata change.  A binary patch appears 		 * empty to us here. 		 */
 if|if
 condition|(
 operator|(
@@ -5964,13 +5956,11 @@ name|check
 operator|)
 operator|&&
 operator|(
+operator|!
 name|patch
 operator|->
 name|is_binary
-condition|?
-operator|!
-name|allow_binary_replacement
-else|:
+operator|&&
 operator|!
 name|metadata_changes
 argument_list|(
@@ -8090,20 +8080,6 @@ decl_stmt|;
 name|int
 name|hdrlen
 decl_stmt|;
-if|if
-condition|(
-operator|!
-name|allow_binary_replacement
-condition|)
-return|return
-name|error
-argument_list|(
-literal|"cannot apply binary patch to '%s' "
-literal|"without --allow-binary-replacement"
-argument_list|,
-name|name
-argument_list|)
-return|;
 comment|/* For safety, we require patch index line to contain 	 * full 40-byte textual SHA1 for old and new, at least for now. 	 */
 if|if
 condition|(
@@ -12450,11 +12426,8 @@ literal|"--binary"
 argument_list|)
 condition|)
 block|{
-name|allow_binary_replacement
-operator|=
-literal|1
-expr_stmt|;
 continue|continue;
+comment|/* now no-op */
 block|}
 if|if
 condition|(
