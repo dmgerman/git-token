@@ -72,8 +72,15 @@ index|[]
 init|=
 block|{
 block|{
-literal|""
-comment|/* dummy */
+operator|.
+name|name
+operator|=
+literal|"tar"
+block|,
+operator|.
+name|write_archive
+operator|=
+name|write_tar_archive
 block|}
 block|, }
 decl_stmt|;

@@ -218,6 +218,22 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Archive-format specific backends.  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|write_tar_archive
+parameter_list|(
+name|struct
+name|archiver_args
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
