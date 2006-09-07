@@ -119,6 +119,7 @@ literal|"git-daemon [--verbose] [--syslog] [--inetd | --port=n] [--export-all]\n
 literal|"           [--timeout=n] [--init-timeout=n] [--strict-paths]\n"
 literal|"           [--base-path=path] [--user-path | --user-path=path]\n"
 literal|"           [--reuseaddr] [--detach] [--pid-file=file]\n"
+literal|"           [--[enable|disable|allow-override|forbid-override]=service]\n"
 literal|"           [--user=user [[--group=group]] [directory...]"
 decl_stmt|;
 end_decl_stmt
@@ -1354,31 +1355,6 @@ return|;
 block|}
 end_function
 
-begin_function
-DECL|function|upload_tar
-specifier|static
-name|int
-name|upload_tar
-parameter_list|(
-name|void
-parameter_list|)
-block|{
-name|execl_git_cmd
-argument_list|(
-literal|"upload-tar"
-argument_list|,
-literal|"."
-argument_list|,
-name|NULL
-argument_list|)
-expr_stmt|;
-return|return
-operator|-
-literal|1
-return|;
-block|}
-end_function
-
 begin_decl_stmt
 DECL|variable|daemon_service
 specifier|static
@@ -1396,18 +1372,6 @@ block|,
 name|upload_pack
 block|,
 literal|1
-block|,
-literal|1
-block|}
-block|,
-block|{
-literal|"upload-tar"
-block|,
-literal|"uploadtar"
-block|,
-name|upload_tar
-block|,
-literal|0
 block|,
 literal|1
 block|}
