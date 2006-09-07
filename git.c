@@ -1241,6 +1241,12 @@ name|cmd_apply
 block|}
 block|,
 block|{
+literal|"archive"
+block|,
+name|cmd_archive
+block|}
+block|,
+block|{
 literal|"cat-file"
 block|,
 name|cmd_cat_file
