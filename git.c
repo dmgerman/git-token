@@ -1483,6 +1483,14 @@ name|RUN_SETUP
 block|}
 block|,
 block|{
+literal|"runstatus"
+block|,
+name|cmd_runstatus
+block|,
+name|RUN_SETUP
+block|}
+block|,
+block|{
 literal|"show-branch"
 block|,
 name|cmd_show_branch
