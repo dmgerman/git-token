@@ -246,6 +246,24 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|void
+modifier|*
+name|parse_extra_zip_args
+parameter_list|(
+name|int
+name|argc
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|argv
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif

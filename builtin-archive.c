@@ -81,7 +81,7 @@ operator|.
 name|write_archive
 operator|=
 name|write_tar_archive
-block|}
+block|, 	}
 block|,
 block|{
 operator|.
@@ -93,7 +93,12 @@ operator|.
 name|write_archive
 operator|=
 name|write_zip_archive
-block|}
+block|,
+operator|.
+name|parse_extra
+operator|=
+name|parse_extra_zip_args
+block|, 	}
 block|, }
 decl_stmt|;
 end_decl_stmt
