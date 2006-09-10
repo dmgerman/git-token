@@ -59,7 +59,7 @@ name|char
 name|archive_usage
 index|[]
 init|= \
-literal|"git-archive --format=<fmt> [--prefix=<prefix>/] [<extra>]<tree-ish> [path...]"
+literal|"git-archive --format=<fmt> [--prefix=<prefix>/] [--verbose] [<extra>]<tree-ish> [path...]"
 decl_stmt|;
 end_decl_stmt
 
@@ -815,6 +815,11 @@ init|=
 literal|""
 decl_stmt|;
 name|int
+name|verbose
+init|=
+literal|0
+decl_stmt|;
+name|int
 name|i
 decl_stmt|;
 for|for
@@ -893,6 +898,31 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--verbose"
+argument_list|)
+operator|||
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"-v"
+argument_list|)
+condition|)
+block|{
+name|verbose
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
 block|}
 if|if
 condition|(
@@ -1069,6 +1099,14 @@ name|extra_argv
 argument_list|)
 expr_stmt|;
 block|}
+name|ar
+operator|->
+name|args
+operator|.
+name|verbose
+operator|=
+name|verbose
+expr_stmt|;
 name|ar
 operator|->
 name|args

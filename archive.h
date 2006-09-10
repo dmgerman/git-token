@@ -63,6 +63,13 @@ modifier|*
 modifier|*
 name|pathspec
 decl_stmt|;
+DECL|member|verbose
+name|unsigned
+name|int
+name|verbose
+range|:
+literal|1
+decl_stmt|;
 DECL|member|extra
 name|void
 modifier|*

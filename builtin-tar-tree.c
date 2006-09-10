@@ -121,6 +121,14 @@ name|tar_umask
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|verbose
+specifier|static
+name|int
+name|verbose
+decl_stmt|;
+end_decl_stmt
+
 begin_comment
 comment|/* writes out the whole block, but only if it is full */
 end_comment
@@ -921,6 +929,25 @@ expr_stmt|;
 block|}
 else|else
 block|{
+if|if
+condition|(
+name|verbose
+condition|)
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"%.*s\n"
+argument_list|,
+name|path
+operator|->
+name|len
+argument_list|,
+name|path
+operator|->
+name|buf
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|S_ISDIR
@@ -2319,6 +2346,12 @@ operator|=
 name|args
 operator|->
 name|time
+expr_stmt|;
+name|verbose
+operator|=
+name|args
+operator|->
+name|verbose
 expr_stmt|;
 if|if
 condition|(

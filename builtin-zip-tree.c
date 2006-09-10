@@ -64,6 +64,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|verbose
+specifier|static
+name|int
+name|verbose
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|zip_date
 specifier|static
 name|int
@@ -955,6 +963,19 @@ argument_list|)
 argument_list|,
 operator|&
 name|pathlen
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|verbose
+condition|)
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"%s\n"
+argument_list|,
+name|path
 argument_list|)
 expr_stmt|;
 if|if
@@ -2177,6 +2198,12 @@ expr_stmt|;
 name|zip_dir_size
 operator|=
 name|ZIP_DIRECTORY_MIN_SIZE
+expr_stmt|;
+name|verbose
+operator|=
+name|args
+operator|->
+name|verbose
 expr_stmt|;
 if|if
 condition|(
