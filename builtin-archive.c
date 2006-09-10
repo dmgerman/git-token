@@ -1314,6 +1314,11 @@ argument_list|,
 name|argv
 argument_list|)
 return|;
+name|setlinebuf
+argument_list|(
+name|stderr
+argument_list|)
+expr_stmt|;
 name|memset
 argument_list|(
 operator|&
