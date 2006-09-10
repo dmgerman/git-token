@@ -51,6 +51,12 @@ directive|include
 file|"pkt-line.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"sideband.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|archive_usage
 specifier|static
@@ -130,7 +136,7 @@ name|url
 decl_stmt|,
 name|buf
 index|[
-literal|1024
+name|LARGE_PACKET_MAX
 index|]
 decl_stmt|;
 name|int
@@ -407,14 +413,25 @@ expr_stmt|;
 comment|/* Now, start reading from fd[0] and spit it out to stdout */
 name|rv
 operator|=
-name|copy_fd
+name|recv_sideband
 argument_list|(
+literal|"archive"
+argument_list|,
 name|fd
 index|[
 literal|0
 index|]
 argument_list|,
 literal|1
+argument_list|,
+literal|2
+argument_list|,
+name|buf
+argument_list|,
+sizeof|sizeof
+argument_list|(
+name|buf
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|close
