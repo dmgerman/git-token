@@ -610,7 +610,7 @@ comment|/* subprocess */
 name|char
 name|buf
 index|[
-name|DEFAULT_PACKET_MAX
+name|LARGE_PACKET_MAX
 index|]
 decl_stmt|;
 name|close

@@ -36,6 +36,14 @@ name|DEFAULT_PACKET_MAX
 value|1000
 end_define
 
+begin_define
+DECL|macro|LARGE_PACKET_MAX
+define|#
+directive|define
+name|LARGE_PACKET_MAX
+value|65520
+end_define
+
 begin_function_decl
 name|int
 name|recv_sideband

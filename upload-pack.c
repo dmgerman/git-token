@@ -147,6 +147,10 @@ name|timeout
 decl_stmt|;
 end_decl_stmt
 
+begin_comment
+comment|/* 0 for no sideband,  * otherwise maximum packet size (up to 65520 bytes).  */
+end_comment
+
 begin_decl_stmt
 DECL|variable|use_sideband
 specifier|static
@@ -246,7 +250,7 @@ name|data
 argument_list|,
 name|sz
 argument_list|,
-name|DEFAULT_PACKET_MAX
+name|use_sideband
 argument_list|)
 return|;
 if|if
@@ -2058,12 +2062,28 @@ name|line
 operator|+
 literal|45
 argument_list|,
+literal|"side-band-64k"
+argument_list|)
+condition|)
+name|use_sideband
+operator|=
+name|LARGE_PACKET_MAX
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|strstr
+argument_list|(
+name|line
+operator|+
+literal|45
+argument_list|,
 literal|"side-band"
 argument_list|)
 condition|)
 name|use_sideband
 operator|=
-literal|1
+name|DEFAULT_PACKET_MAX
 expr_stmt|;
 comment|/* We have sent all our refs already, and the other end 		 * should have chosen out of them; otherwise they are 		 * asking for nonsense. 		 * 		 * Hmph.  We may later want to allow "want" line that 		 * asks for something like "master~10" (symbolic)... 		 * would it make sense?  I don't know. 		 */
 name|o
@@ -2153,7 +2173,7 @@ name|char
 modifier|*
 name|capabilities
 init|=
-literal|"multi_ack thin-pack side-band"
+literal|"multi_ack thin-pack side-band side-band-64k"
 decl_stmt|;
 name|struct
 name|object
