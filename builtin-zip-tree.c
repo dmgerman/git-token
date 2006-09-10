@@ -2204,7 +2204,7 @@ name|char
 modifier|*
 name|base
 init|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|args
 operator|->
