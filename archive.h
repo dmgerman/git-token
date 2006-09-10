@@ -121,12 +121,6 @@ name|char
 modifier|*
 name|name
 decl_stmt|;
-DECL|member|remote
-specifier|const
-name|char
-modifier|*
-name|remote
-decl_stmt|;
 DECL|member|args
 name|struct
 name|archiver_args
