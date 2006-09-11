@@ -98,6 +98,35 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/*  * Append a string to a string buffer, with or without shell quoting.  * Return true if the buffer overflowed.  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|add_to_string
+parameter_list|(
+name|char
+modifier|*
+modifier|*
+name|ptrp
+parameter_list|,
+name|int
+modifier|*
+name|sizep
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|str
+parameter_list|,
+name|int
+name|quote
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/* This unwraps what sq_quote() produces in place, but returns  * NULL if the input does not look like what sq_quote would have  * produced.  */
 end_comment
 
