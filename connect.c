@@ -3303,12 +3303,12 @@ value|1024
 end_define
 
 begin_comment
-comment|/*  * Yeah, yeah, fixme. Need to pass in the heads etc.  */
+comment|/*  * This returns 0 if the transport protocol does not need fork(2),  * or a process id if it does.  Once done, finish the connection  * with finish_connect() with the value returned from this function  * (it is safe to call finish_connect() with 0 to support the former  * case).  *  * Does not return a negative value on error; it just dies.  */
 end_comment
 
 begin_function
 DECL|function|git_connect
-name|int
+name|pid_t
 name|git_connect
 parameter_list|(
 name|int
@@ -4030,6 +4030,15 @@ name|pid_t
 name|pid
 parameter_list|)
 block|{
+if|if
+condition|(
+name|pid
+operator|==
+literal|0
+condition|)
+return|return
+literal|0
+return|;
 while|while
 condition|(
 name|waitpid
