@@ -64,6 +64,10 @@ DECL|member|amend
 name|int
 name|amend
 decl_stmt|;
+DECL|member|untracked
+name|int
+name|untracked
+decl_stmt|;
 block|}
 struct|;
 end_struct
