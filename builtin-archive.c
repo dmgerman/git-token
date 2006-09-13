@@ -1212,12 +1212,12 @@ block|}
 end_function
 
 begin_function
-DECL|function|remote_request
+DECL|function|extract_remote_arg
 specifier|static
 specifier|const
 name|char
 modifier|*
-name|remote_request
+name|extract_remote_arg
 parameter_list|(
 name|int
 modifier|*
@@ -1420,7 +1420,7 @@ name|NULL
 decl_stmt|;
 name|remote
 operator|=
-name|remote_request
+name|extract_remote_arg
 argument_list|(
 operator|&
 name|argc
