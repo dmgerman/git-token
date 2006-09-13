@@ -103,7 +103,7 @@ name|char
 name|pack_usage
 index|[]
 init|=
-literal|"git-pack-objects [-q] [--no-reuse-delta] [--non-empty] [--local] [--incremental] [--window=N] [--depth=N] {--stdout | base-name} [--revs [--unpacked | --all]*<ref-list |<object-list]"
+literal|"git-pack-objects [-q] [--no-reuse-delta] [--non-empty] [--local] [--incremental] [--window=N] [--depth=N] [--revs [--unpacked | --all]*] [--stdout | base-name]<ref-list |<object-list]"
 decl_stmt|;
 end_decl_stmt
 
