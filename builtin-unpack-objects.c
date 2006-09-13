@@ -62,11 +62,17 @@ end_include
 begin_decl_stmt
 DECL|variable|dry_run
 DECL|variable|quiet
+DECL|variable|recover
+DECL|variable|has_errors
 specifier|static
 name|int
 name|dry_run
 decl_stmt|,
 name|quiet
+decl_stmt|,
+name|recover
+decl_stmt|,
+name|has_errors
 decl_stmt|;
 end_decl_stmt
 
@@ -78,7 +84,7 @@ name|char
 name|unpack_usage
 index|[]
 init|=
-literal|"git-unpack-objects [-n] [-q]< pack-file"
+literal|"git-unpack-objects [-n] [-q] [-r]< pack-file"
 decl_stmt|;
 end_decl_stmt
 
@@ -405,13 +411,39 @@ name|ret
 operator|!=
 name|Z_OK
 condition|)
-name|die
+block|{
+name|error
 argument_list|(
 literal|"inflate returned %d\n"
 argument_list|,
 name|ret
 argument_list|)
 expr_stmt|;
+name|free
+argument_list|(
+name|buf
+argument_list|)
+expr_stmt|;
+name|buf
+operator|=
+name|NULL
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|recover
+condition|)
+name|exit
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+name|has_errors
+operator|=
+literal|1
+expr_stmt|;
+break|break;
+block|}
 name|stream
 operator|.
 name|next_in
@@ -641,7 +673,7 @@ end_function
 begin_function
 DECL|function|resolve_delta
 specifier|static
-name|int
+name|void
 name|resolve_delta
 parameter_list|(
 specifier|const
@@ -719,9 +751,6 @@ argument_list|(
 name|result
 argument_list|)
 expr_stmt|;
-return|return
-literal|0
-return|;
 block|}
 end_function
 
@@ -839,7 +868,7 @@ end_function
 begin_function
 DECL|function|unpack_non_delta_entry
 specifier|static
-name|int
+name|void
 name|unpack_non_delta_entry
 parameter_list|(
 name|enum
@@ -915,6 +944,8 @@ if|if
 condition|(
 operator|!
 name|dry_run
+operator|&&
+name|buf
 condition|)
 name|write_object
 argument_list|(
@@ -930,16 +961,13 @@ argument_list|(
 name|buf
 argument_list|)
 expr_stmt|;
-return|return
-literal|0
-return|;
 block|}
 end_function
 
 begin_function
 DECL|function|unpack_delta_entry
 specifier|static
-name|int
+name|void
 name|unpack_delta_entry
 parameter_list|(
 name|unsigned
@@ -971,9 +999,6 @@ index|[
 literal|20
 index|]
 decl_stmt|;
-name|int
-name|result
-decl_stmt|;
 name|hashcpy
 argument_list|(
 name|base_sha1
@@ -999,6 +1024,9 @@ expr_stmt|;
 if|if
 condition|(
 name|dry_run
+operator|||
+operator|!
+name|delta_data
 condition|)
 block|{
 name|free
@@ -1006,9 +1034,7 @@ argument_list|(
 name|delta_data
 argument_list|)
 expr_stmt|;
-return|return
-literal|0
-return|;
+return|return;
 block|}
 if|if
 condition|(
@@ -1028,9 +1054,7 @@ argument_list|,
 name|delta_size
 argument_list|)
 expr_stmt|;
-return|return
-literal|0
-return|;
+return|return;
 block|}
 name|base
 operator|=
@@ -1049,7 +1073,8 @@ condition|(
 operator|!
 name|base
 condition|)
-name|die
+block|{
+name|error
 argument_list|(
 literal|"failed to read delta-pack base object %s"
 argument_list|,
@@ -1059,8 +1084,22 @@ name|base_sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|result
+if|if
+condition|(
+operator|!
+name|recover
+condition|)
+name|exit
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+name|has_errors
 operator|=
+literal|1
+expr_stmt|;
+return|return;
+block|}
 name|resolve_delta
 argument_list|(
 name|type
@@ -1079,9 +1118,6 @@ argument_list|(
 name|base
 argument_list|)
 expr_stmt|;
-return|return
-name|result
-return|;
 block|}
 end_function
 
@@ -1306,11 +1342,25 @@ argument_list|)
 expr_stmt|;
 return|return;
 default|default:
-name|die
+name|error
 argument_list|(
 literal|"bad object type %d"
 argument_list|,
 name|type
+argument_list|)
+expr_stmt|;
+name|has_errors
+operator|=
+literal|1
+expr_stmt|;
+if|if
+condition|(
+name|recover
+condition|)
+return|return;
+name|exit
+argument_list|(
+literal|1
 argument_list|)
 expr_stmt|;
 block|}
@@ -1552,6 +1602,23 @@ literal|1
 expr_stmt|;
 continue|continue;
 block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"-r"
+argument_list|)
+condition|)
+block|{
+name|recover
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
 name|usage
 argument_list|(
 name|unpack_usage
@@ -1664,7 +1731,7 @@ literal|"\n"
 argument_list|)
 expr_stmt|;
 return|return
-literal|0
+name|has_errors
 return|;
 block|}
 end_function
