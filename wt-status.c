@@ -467,7 +467,7 @@ break|break;
 case|case
 name|DIFF_STATUS_DELETED
 case|:
-name|color_printf_ln
+name|color_printf
 argument_list|(
 name|c
 argument_list|,
