@@ -3042,23 +3042,44 @@ operator|==
 literal|'/'
 condition|)
 block|{
-name|serverlen
-operator|=
-name|strchr
+comment|/* This counts 				 * http://git.host/pub/scm/linux.git/ 				 * -----------here^ 				 * so memcpy(dst, base, serverlen) will 				 * copy up to "...git.host". 				 */
+specifier|const
+name|char
+modifier|*
+name|colon_ss
+init|=
+name|strstr
 argument_list|(
 name|base
+argument_list|,
+literal|"://"
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|colon_ss
+condition|)
+block|{
+name|serverlen
+operator|=
+operator|(
+name|strchr
+argument_list|(
+name|colon_ss
 operator|+
-literal|8
+literal|3
 argument_list|,
 literal|'/'
 argument_list|)
 operator|-
 name|base
+operator|)
 expr_stmt|;
 name|okay
 operator|=
 literal|1
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -3076,6 +3097,7 @@ literal|3
 argument_list|)
 condition|)
 block|{
+comment|/* Relative URL; chop the corresponding 				 * number of subpath from base (and ../ 				 * from data), and concatenate the result. 				 * 				 * The code first drops ../ from data, and 				 * then drops one ../ from data and one path 				 * from base.  IOW, one extra ../ is dropped 				 * from data than path is dropped from base. 				 * 				 * This is not wrong.  The alternate in 				 *     http://git.host/pub/scm/linux.git/ 				 * to borrow from 				 *     http://git.host/pub/scm/linus.git/ 				 * is ../../linus.git/objects/.  You need 				 * two ../../ to borrow from your direct 				 * neighbour. 				 */
 name|i
 operator|+=
 literal|3
@@ -3213,7 +3235,7 @@ literal|1
 expr_stmt|;
 block|}
 block|}
-comment|/* skip 'objects' at end */
+comment|/* skip "objects\n" at end */
 if|if
 condition|(
 name|okay
@@ -3232,7 +3254,7 @@ operator|-
 literal|6
 argument_list|)
 expr_stmt|;
-name|strlcpy
+name|memcpy
 argument_list|(
 name|target
 argument_list|,
@@ -3241,7 +3263,7 @@ argument_list|,
 name|serverlen
 argument_list|)
 expr_stmt|;
-name|strlcpy
+name|memcpy
 argument_list|(
 name|target
 operator|+
@@ -3255,8 +3277,21 @@ name|posn
 operator|-
 name|i
 operator|-
-literal|6
+literal|7
 argument_list|)
+expr_stmt|;
+name|target
+index|[
+name|serverlen
+operator|+
+name|posn
+operator|-
+name|i
+operator|-
+literal|7
+index|]
+operator|=
+literal|0
 expr_stmt|;
 if|if
 condition|(
