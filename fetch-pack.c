@@ -2613,6 +2613,8 @@ literal|1
 index|]
 argument_list|)
 expr_stmt|;
+name|ret
+operator||=
 name|finish_connect
 argument_list|(
 name|pid
@@ -2673,6 +2675,8 @@ expr_stmt|;
 block|}
 block|}
 return|return
+operator|!
+operator|!
 name|ret
 return|;
 block|}
