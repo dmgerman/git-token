@@ -1834,6 +1834,9 @@ argument_list|(
 name|merge_tree_usage
 argument_list|)
 expr_stmt|;
+name|setup_git_directory
+argument_list|()
+expr_stmt|;
 name|buf1
 operator|=
 name|get_tree_descriptor
