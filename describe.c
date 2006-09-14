@@ -923,9 +923,9 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|i
-operator|==
 name|argc
+operator|<=
+name|i
 condition|)
 name|describe
 argument_list|(
