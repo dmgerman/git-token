@@ -17,10 +17,10 @@ DECL|struct|ref_lock
 struct|struct
 name|ref_lock
 block|{
-DECL|member|ref_file
+DECL|member|ref_name
 name|char
 modifier|*
-name|ref_file
+name|ref_name
 decl_stmt|;
 DECL|member|log_file
 name|char
