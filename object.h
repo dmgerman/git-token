@@ -330,6 +330,42 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/* Given the result of read_sha1_file(), returns the object after  * parsing it.  eaten_p indicates if the object has a borrowed copy  * of buffer and the caller should not free() it.  */
+end_comment
+
+begin_function_decl
+name|struct
+name|object
+modifier|*
+name|parse_object_buffer
+parameter_list|(
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|sha1
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|type
+parameter_list|,
+name|unsigned
+name|long
+name|size
+parameter_list|,
+name|void
+modifier|*
+name|buffer
+parameter_list|,
+name|int
+modifier|*
+name|eaten_p
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/** Returns the object, with potentially excess memory allocated. **/
 end_comment
 
