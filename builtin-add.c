@@ -359,15 +359,6 @@ operator|+
 literal|1
 argument_list|)
 decl_stmt|;
-name|common
-operator|=
-name|xmalloc
-argument_list|(
-name|baselen
-operator|+
-literal|1
-argument_list|)
-expr_stmt|;
 name|memcpy
 argument_list|(
 name|common
