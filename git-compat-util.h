@@ -163,6 +163,29 @@ directive|include
 file|<dirent.h>
 end_include
 
+begin_comment
+comment|/* On most systems<limits.h> would have given us this, but  * not on some systems (e.g. GNU/Hurd).  */
+end_comment
+
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|PATH_MAX
+end_ifndef
+
+begin_define
+DECL|macro|PATH_MAX
+define|#
+directive|define
+name|PATH_MAX
+value|4096
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_ifdef
 ifdef|#
 directive|ifdef
