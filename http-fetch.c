@@ -786,6 +786,17 @@ name|result
 operator|==
 name|CURLE_HTTP_RETURNED_ERROR
 operator|)
+operator|||
+comment|/* ftp:// URL */
+operator|(
+name|code
+operator|==
+literal|550
+operator|&&
+name|result
+operator|==
+name|CURLE_FTP_COULDNT_RETR_FILE
+operator|)
 return|;
 block|}
 end_function
