@@ -808,7 +808,7 @@ index|[
 literal|1
 index|]
 argument_list|,
-literal|"want %s%s%s%s\n"
+literal|"want %s%s%s%s%s\n"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -825,6 +825,18 @@ operator|)
 argument_list|,
 operator|(
 name|use_sideband
+operator|==
+literal|2
+condition|?
+literal|" side-band-64k"
+else|:
+literal|""
+operator|)
+argument_list|,
+operator|(
+name|use_sideband
+operator|==
+literal|1
 condition|?
 literal|" side-band"
 else|:
@@ -2145,6 +2157,31 @@ operator|=
 literal|1
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|server_supports
+argument_list|(
+literal|"side-band-64k"
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
+name|verbose
+condition|)
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"Server supports side-band-64k\n"
+argument_list|)
+expr_stmt|;
+name|use_sideband
+operator|=
+literal|2
+expr_stmt|;
+block|}
+elseif|else
 if|if
 condition|(
 name|server_supports

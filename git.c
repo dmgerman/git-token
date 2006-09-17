@@ -1241,6 +1241,12 @@ name|cmd_apply
 block|}
 block|,
 block|{
+literal|"archive"
+block|,
+name|cmd_archive
+block|}
+block|,
+block|{
 literal|"cat-file"
 block|,
 name|cmd_cat_file
@@ -1554,6 +1560,12 @@ block|,
 name|cmd_update_ref
 block|,
 name|RUN_SETUP
+block|}
+block|,
+block|{
+literal|"upload-archive"
+block|,
+name|cmd_upload_archive
 block|}
 block|,
 block|{
