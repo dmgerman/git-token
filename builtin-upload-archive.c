@@ -917,6 +917,7 @@ argument_list|,
 literal|2
 argument_list|)
 expr_stmt|;
+comment|/* Always finish to read data when available */
 if|if
 condition|(
 operator|(
@@ -934,7 +935,7 @@ index|]
 operator|.
 name|revents
 operator|)
-operator|==
+operator|&
 name|POLLIN
 condition|)
 continue|continue;
