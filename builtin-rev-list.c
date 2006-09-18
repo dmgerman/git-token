@@ -1306,6 +1306,14 @@ operator|=
 name|revs
 operator|.
 name|verbose_header
+operator|||
+name|revs
+operator|.
+name|header_filter
+operator|||
+name|revs
+operator|.
+name|message_filter
 expr_stmt|;
 name|track_object_refs
 operator|=
