@@ -128,6 +128,27 @@ endif|#
 directive|endif
 end_endif
 
+begin_if
+if|#
+directive|if
+name|LIBCURL_VERSION_NUM
+operator|<
+literal|0x070a03
+end_if
+
+begin_define
+DECL|macro|CURLE_HTTP_RETURNED_ERROR
+define|#
+directive|define
+name|CURLE_HTTP_RETURNED_ERROR
+value|CURLE_HTTP_NOT_FOUND
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_struct
 DECL|struct|slot_results
 struct|struct
