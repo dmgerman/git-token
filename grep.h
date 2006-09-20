@@ -20,6 +20,12 @@ block|{
 DECL|enumerator|GREP_PATTERN
 name|GREP_PATTERN
 block|,
+DECL|enumerator|GREP_PATTERN_HEAD
+name|GREP_PATTERN_HEAD
+block|,
+DECL|enumerator|GREP_PATTERN_BODY
+name|GREP_PATTERN_BODY
+block|,
 DECL|enumerator|GREP_AND
 name|GREP_AND
 block|,
@@ -34,6 +40,20 @@ name|GREP_NOT
 block|,
 DECL|enumerator|GREP_OR
 name|GREP_OR
+block|, }
+enum|;
+end_enum
+
+begin_enum
+DECL|enum|grep_context
+enum|enum
+name|grep_context
+block|{
+DECL|enumerator|GREP_CONTEXT_HEAD
+name|GREP_CONTEXT_HEAD
+block|,
+DECL|enumerator|GREP_CONTEXT_BODY
+name|GREP_CONTEXT_BODY
 block|, }
 enum|;
 end_enum
