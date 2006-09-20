@@ -364,17 +364,11 @@ modifier|*
 name|extra_headers
 decl_stmt|;
 comment|/* Filter by commit log message */
-DECL|member|header_filter
+DECL|member|grep_filter
 name|struct
 name|grep_opt
 modifier|*
-name|header_filter
-decl_stmt|;
-DECL|member|message_filter
-name|struct
-name|grep_opt
-modifier|*
-name|message_filter
+name|grep_filter
 decl_stmt|;
 comment|/* special limits */
 DECL|member|max_count
