@@ -126,23 +126,11 @@ name|O_NOATIME
 decl_stmt|;
 end_decl_stmt
 
-begin_function
-DECL|function|hexval
-specifier|static
-specifier|inline
-name|unsigned
-name|int
-name|hexval
-parameter_list|(
-name|unsigned
-name|int
-name|c
-parameter_list|)
-block|{
-specifier|static
+begin_decl_stmt
+DECL|variable|hexval_table
 name|signed
 name|char
-name|val
+name|hexval_table
 index|[
 literal|256
 index|]
@@ -928,14 +916,7 @@ block|,
 comment|/* f8-ff */
 block|}
 decl_stmt|;
-return|return
-name|val
-index|[
-name|c
-index|]
-return|;
-block|}
-end_function
+end_decl_stmt
 
 begin_function
 DECL|function|get_sha1_hex
