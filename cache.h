@@ -1334,6 +1334,13 @@ end_decl_stmt
 
 begin_decl_stmt
 specifier|extern
+name|int
+name|deny_non_fast_forwards
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
 specifier|const
 name|char
 modifier|*
