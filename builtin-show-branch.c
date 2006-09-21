@@ -1772,6 +1772,10 @@ name|unsigned
 name|char
 modifier|*
 name|sha1
+parameter_list|,
+name|void
+modifier|*
+name|cb_data
 parameter_list|)
 block|{
 name|struct
@@ -1890,6 +1894,10 @@ name|unsigned
 name|char
 modifier|*
 name|sha1
+parameter_list|,
+name|void
+modifier|*
+name|cb_data
 parameter_list|)
 block|{
 name|unsigned
@@ -1949,6 +1957,8 @@ operator|+
 name|ofs
 argument_list|,
 name|sha1
+argument_list|,
+name|cb_data
 argument_list|)
 return|;
 block|}
@@ -1970,6 +1980,10 @@ name|unsigned
 name|char
 modifier|*
 name|sha1
+parameter_list|,
+name|void
+modifier|*
+name|cb_data
 parameter_list|)
 block|{
 if|if
@@ -1994,6 +2008,8 @@ operator|+
 literal|5
 argument_list|,
 name|sha1
+argument_list|,
+name|cb_data
 argument_list|)
 return|;
 block|}
@@ -2076,6 +2092,10 @@ name|unsigned
 name|char
 modifier|*
 name|sha1
+parameter_list|,
+name|void
+modifier|*
+name|cb_data
 parameter_list|)
 block|{
 comment|/* we want to allow pattern hold/<asterisk> to show all 	 * branches under refs/heads/hold/, and v0.99.9? to show 	 * refs/tags/v0.99.9a and friends. 	 */
@@ -2158,6 +2178,8 @@ argument_list|(
 name|refname
 argument_list|,
 name|sha1
+argument_list|,
+name|cb_data
 argument_list|)
 return|;
 if|if
@@ -2178,6 +2200,8 @@ argument_list|(
 name|refname
 argument_list|,
 name|sha1
+argument_list|,
+name|cb_data
 argument_list|)
 return|;
 return|return
@@ -2186,6 +2210,8 @@ argument_list|(
 name|refname
 argument_list|,
 name|sha1
+argument_list|,
+name|cb_data
 argument_list|)
 return|;
 block|}
@@ -2217,6 +2243,8 @@ decl_stmt|;
 name|for_each_ref
 argument_list|(
 name|append_head_ref
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 name|sort_ref_range
@@ -2240,6 +2268,8 @@ decl_stmt|;
 name|for_each_ref
 argument_list|(
 name|append_tag_ref
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 name|sort_ref_range
@@ -2585,6 +2615,8 @@ argument_list|(
 name|av
 argument_list|,
 name|revkey
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 return|return;
@@ -2633,6 +2665,8 @@ expr_stmt|;
 name|for_each_ref
 argument_list|(
 name|append_matching_ref
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 if|if

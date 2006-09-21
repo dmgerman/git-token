@@ -12,15 +12,6 @@ file|"refs.h"
 end_include
 
 begin_decl_stmt
-DECL|variable|refs_file
-specifier|static
-name|FILE
-modifier|*
-name|refs_file
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|variable|result_path
 DECL|variable|lock_path
 specifier|static
@@ -71,8 +62,18 @@ name|unsigned
 name|char
 modifier|*
 name|sha1
+parameter_list|,
+name|void
+modifier|*
+name|cb_data
 parameter_list|)
 block|{
+name|FILE
+modifier|*
+name|refs_file
+init|=
+name|cb_data
+decl_stmt|;
 name|fprintf
 argument_list|(
 name|refs_file
@@ -115,6 +116,10 @@ parameter_list|)
 block|{
 name|int
 name|fd
+decl_stmt|;
+name|FILE
+modifier|*
+name|refs_file
 decl_stmt|;
 name|result_path
 operator|=
@@ -201,6 +206,8 @@ expr_stmt|;
 name|for_each_ref
 argument_list|(
 name|handle_one_ref
+argument_list|,
+name|refs_file
 argument_list|)
 expr_stmt|;
 name|fsync

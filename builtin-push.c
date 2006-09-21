@@ -180,6 +180,10 @@ name|unsigned
 name|char
 modifier|*
 name|sha1
+parameter_list|,
+name|void
+modifier|*
+name|cb_data
 parameter_list|)
 block|{
 comment|/* Ignore the "refs/" at the beginning of the refname */
@@ -248,6 +252,8 @@ return|return;
 name|for_each_ref
 argument_list|(
 name|expand_one_ref
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 block|}

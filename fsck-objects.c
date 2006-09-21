@@ -2142,6 +2142,10 @@ name|unsigned
 name|char
 modifier|*
 name|sha1
+parameter_list|,
+name|void
+modifier|*
+name|cb_data
 parameter_list|)
 block|{
 name|struct
@@ -2229,6 +2233,8 @@ block|{
 name|for_each_ref
 argument_list|(
 name|fsck_handle_ref
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 comment|/* 	 * Not having any default heads isn't really fatal, but 	 * it does mean that "--unreachable" no longer makes any 	 * sense (since in this case everything will obviously 	 * be unreachable by definition. 	 * 	 * Showing dangling objects is valid, though (as those 	 * dangling objects are likely lost heads). 	 * 	 * So we just print a warning about it, and clear the 	 * "show_unreachable" flag. 	 */

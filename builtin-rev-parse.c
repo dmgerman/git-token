@@ -616,6 +616,10 @@ name|unsigned
 name|char
 modifier|*
 name|sha1
+parameter_list|,
+name|void
+modifier|*
+name|cb_data
 parameter_list|)
 block|{
 name|show_rev
@@ -1492,6 +1496,8 @@ block|{
 name|for_each_ref
 argument_list|(
 name|show_reference
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 continue|continue;
@@ -1510,6 +1516,8 @@ block|{
 name|for_each_branch_ref
 argument_list|(
 name|show_reference
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 continue|continue;
@@ -1528,6 +1536,8 @@ block|{
 name|for_each_tag_ref
 argument_list|(
 name|show_reference
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 continue|continue;
@@ -1546,6 +1556,8 @@ block|{
 name|for_each_remote_ref
 argument_list|(
 name|show_reference
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 continue|continue;
