@@ -1203,7 +1203,7 @@ name|OBJ_COMMIT
 operator|||
 name|type
 operator|>
-name|OBJ_DELTA
+name|OBJ_REF_DELTA
 condition|)
 name|die
 argument_list|(
@@ -1509,7 +1509,7 @@ if|if
 condition|(
 name|type
 operator|==
-name|OBJ_DELTA
+name|OBJ_REF_DELTA
 condition|)
 name|used
 operator|+=
@@ -1708,7 +1708,7 @@ if|if
 condition|(
 name|obj_type
 operator|==
-name|OBJ_DELTA
+name|OBJ_REF_DELTA
 condition|)
 name|to_reuse
 operator|=
@@ -1943,7 +1943,7 @@ name|delta_size
 expr_stmt|;
 name|obj_type
 operator|=
-name|OBJ_DELTA
+name|OBJ_REF_DELTA
 expr_stmt|;
 block|}
 comment|/* 		 * The object header is a byte of 'type' followed by zero or 		 * more bytes of length.  For deltas, the 20 bytes of delta 		 * sha1 follows that. 		 */
@@ -2094,7 +2094,7 @@ if|if
 condition|(
 name|obj_type
 operator|==
-name|OBJ_DELTA
+name|OBJ_REF_DELTA
 condition|)
 name|reused_delta
 operator|++
@@ -2107,7 +2107,7 @@ if|if
 condition|(
 name|obj_type
 operator|==
-name|OBJ_DELTA
+name|OBJ_REF_DELTA
 condition|)
 name|written_delta
 operator|++
@@ -4649,7 +4649,7 @@ name|entry
 operator|->
 name|in_pack_type
 operator|==
-name|OBJ_DELTA
+name|OBJ_REF_DELTA
 operator|&&
 operator|(
 name|base_entry
@@ -4690,7 +4690,7 @@ name|entry
 operator|->
 name|type
 operator|=
-name|OBJ_DELTA
+name|OBJ_REF_DELTA
 expr_stmt|;
 name|entry
 operator|->

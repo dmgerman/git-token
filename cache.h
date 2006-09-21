@@ -2132,9 +2132,14 @@ name|OBJ_TAG
 init|=
 literal|4
 block|,
-comment|/* 5/6 for future expansion */
-DECL|enumerator|OBJ_DELTA
-name|OBJ_DELTA
+comment|/* 5 for future expansion */
+DECL|enumerator|OBJ_OFS_DELTA
+name|OBJ_OFS_DELTA
+init|=
+literal|6
+block|,
+DECL|enumerator|OBJ_REF_DELTA
+name|OBJ_REF_DELTA
 init|=
 literal|7
 block|,

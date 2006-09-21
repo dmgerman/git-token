@@ -1333,7 +1333,7 @@ argument_list|)
 expr_stmt|;
 return|return;
 case|case
-name|OBJ_DELTA
+name|OBJ_REF_DELTA
 case|:
 name|unpack_delta_entry
 argument_list|(
