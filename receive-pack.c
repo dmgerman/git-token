@@ -96,6 +96,9 @@ name|char
 modifier|*
 name|sha1
 parameter_list|,
+name|int
+name|flag
+parameter_list|,
 name|void
 modifier|*
 name|cb_data
@@ -174,6 +177,8 @@ argument_list|(
 literal|"capabilities^{}"
 argument_list|,
 name|null_sha1
+argument_list|,
+literal|0
 argument_list|,
 name|NULL
 argument_list|)

@@ -11,6 +11,12 @@ directive|include
 file|"cache.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"refs.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|git_symbolic_ref_usage
 specifier|static
@@ -42,6 +48,9 @@ index|[
 literal|20
 index|]
 decl_stmt|;
+name|int
+name|flag
+decl_stmt|;
 specifier|const
 name|char
 modifier|*
@@ -54,6 +63,9 @@ argument_list|,
 name|sha1
 argument_list|,
 literal|0
+argument_list|,
+operator|&
+name|flag
 argument_list|)
 decl_stmt|;
 if|if
@@ -64,6 +76,23 @@ condition|)
 name|die
 argument_list|(
 literal|"No such ref: %s"
+argument_list|,
+name|HEAD
+argument_list|)
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+operator|(
+name|flag
+operator|&
+name|REF_ISSYMREF
+operator|)
+condition|)
+name|die
+argument_list|(
+literal|"ref %s is not a symbolic ref"
 argument_list|,
 name|HEAD
 argument_list|)

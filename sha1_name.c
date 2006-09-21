@@ -1568,6 +1568,8 @@ argument_list|,
 name|this_result
 argument_list|,
 literal|1
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 if|if

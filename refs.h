@@ -57,6 +57,22 @@ begin_comment
 comment|/*  * Calls the specified function for each ref file until it returns nonzero,  * and returns the value  */
 end_comment
 
+begin_define
+DECL|macro|REF_ISSYMREF
+define|#
+directive|define
+name|REF_ISSYMREF
+value|01
+end_define
+
+begin_define
+DECL|macro|REF_ISPACKED
+define|#
+directive|define
+name|REF_ISPACKED
+value|02
+end_define
+
 begin_typedef
 DECL|typedef|each_ref_fn
 typedef|typedef
@@ -73,6 +89,9 @@ name|unsigned
 name|char
 modifier|*
 name|sha1
+parameter_list|,
+name|int
+name|flags
 parameter_list|,
 name|void
 modifier|*
