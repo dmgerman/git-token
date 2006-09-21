@@ -2088,5 +2088,34 @@ return|;
 block|}
 end_function
 
+begin_function
+name|int
+DECL|function|file_exists
+name|file_exists
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|f
+parameter_list|)
+block|{
+name|struct
+name|stat
+name|sb
+decl_stmt|;
+return|return
+name|stat
+argument_list|(
+name|f
+argument_list|,
+operator|&
+name|sb
+argument_list|)
+operator|==
+literal|0
+return|;
+block|}
+end_function
+
 end_unit
 
