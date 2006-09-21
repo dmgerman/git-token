@@ -77,6 +77,16 @@ name|refs_file
 init|=
 name|cb_data
 decl_stmt|;
+comment|/* Do not pack the symbolic refs */
+if|if
+condition|(
+operator|!
+operator|(
+name|flags
+operator|&
+name|REF_ISSYMREF
+operator|)
+condition|)
 name|fprintf
 argument_list|(
 name|refs_file
