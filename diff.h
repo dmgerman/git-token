@@ -34,6 +34,12 @@ name|diff_options
 struct_decl|;
 end_struct_decl
 
+begin_struct_decl
+struct_decl|struct
+name|diff_queue_struct
+struct_decl|;
+end_struct_decl
+
 begin_typedef
 DECL|typedef|change_fn_t
 typedef|typedef
@@ -118,6 +124,32 @@ parameter_list|)
 function_decl|;
 end_typedef
 
+begin_typedef
+DECL|typedef|diff_format_fn_t
+typedef|typedef
+name|void
+function_decl|(
+modifier|*
+name|diff_format_fn_t
+function_decl|)
+parameter_list|(
+name|struct
+name|diff_queue_struct
+modifier|*
+name|q
+parameter_list|,
+name|struct
+name|diff_options
+modifier|*
+name|options
+parameter_list|,
+name|void
+modifier|*
+name|data
+parameter_list|)
+function_decl|;
+end_typedef
+
 begin_define
 DECL|macro|DIFF_FORMAT_RAW
 define|#
@@ -188,6 +220,14 @@ define|#
 directive|define
 name|DIFF_FORMAT_NO_OUTPUT
 value|0x0080
+end_define
+
+begin_define
+DECL|macro|DIFF_FORMAT_CALLBACK
+define|#
+directive|define
+name|DIFF_FORMAT_CALLBACK
+value|0x0100
 end_define
 
 begin_struct
@@ -342,6 +382,15 @@ decl_stmt|;
 DECL|member|add_remove
 name|add_remove_fn_t
 name|add_remove
+decl_stmt|;
+DECL|member|format_callback
+name|diff_format_fn_t
+name|format_callback
+decl_stmt|;
+DECL|member|format_callback_data
+name|void
+modifier|*
+name|format_callback_data
 decl_stmt|;
 block|}
 struct|;

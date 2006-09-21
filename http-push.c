@@ -10859,6 +10859,13 @@ name|unsigned
 name|char
 modifier|*
 name|sha1
+parameter_list|,
+name|int
+name|flag
+parameter_list|,
+name|void
+modifier|*
+name|cb_data
 parameter_list|)
 block|{
 name|struct
@@ -11108,6 +11115,8 @@ expr_stmt|;
 name|for_each_ref
 argument_list|(
 name|one_local_ref
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 block|}

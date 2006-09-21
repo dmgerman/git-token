@@ -393,14 +393,6 @@ block|}
 block|}
 end_function
 
-begin_decl_stmt
-DECL|variable|tags_only
-specifier|static
-name|int
-name|tags_only
-decl_stmt|;
-end_decl_stmt
-
 begin_function
 DECL|function|name_ref
 specifier|static
@@ -417,6 +409,13 @@ name|unsigned
 name|char
 modifier|*
 name|sha1
+parameter_list|,
+name|int
+name|flags
+parameter_list|,
+name|void
+modifier|*
+name|cb_data
 parameter_list|)
 block|{
 name|struct
@@ -428,6 +427,16 @@ name|parse_object
 argument_list|(
 name|sha1
 argument_list|)
+decl_stmt|;
+name|int
+name|tags_only
+init|=
+operator|*
+operator|(
+name|int
+operator|*
+operator|)
+name|cb_data
 decl_stmt|;
 name|int
 name|deref
@@ -733,6 +742,11 @@ name|transform_stdin
 init|=
 literal|0
 decl_stmt|;
+name|int
+name|tags_only
+init|=
+literal|0
+decl_stmt|;
 name|git_config
 argument_list|(
 name|git_default_config
@@ -1015,6 +1029,9 @@ block|}
 name|for_each_ref
 argument_list|(
 name|name_ref
+argument_list|,
+operator|&
+name|tags_only
 argument_list|)
 expr_stmt|;
 if|if
