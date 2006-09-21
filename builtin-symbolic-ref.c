@@ -49,7 +49,7 @@ name|refs_heads_master
 init|=
 name|resolve_ref
 argument_list|(
-literal|"HEAD"
+name|HEAD
 argument_list|,
 name|sha1
 argument_list|,
