@@ -1673,6 +1673,10 @@ name|extra_headers
 operator|=
 name|extra_headers
 expr_stmt|;
+name|output_directory
+operator|=
+name|prefix
+expr_stmt|;
 comment|/* 	 * Parse the arguments before setup_revisions(), or something 	 * like "git fmt-patch -o a123 HEAD^.." may fail; a123 is 	 * possibly a valid SHA1. 	 */
 for|for
 control|(
