@@ -2426,6 +2426,8 @@ name|ref_file
 operator|=
 name|git_path
 argument_list|(
+literal|"%s"
+argument_list|,
 name|ref
 argument_list|)
 expr_stmt|;
