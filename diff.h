@@ -435,6 +435,11 @@ DECL|enumerator|DIFF_COMMIT
 name|DIFF_COMMIT
 init|=
 literal|6
+block|,
+DECL|enumerator|DIFF_WHITESPACE
+name|DIFF_WHITESPACE
+init|=
+literal|7
 block|, }
 enum|;
 end_enum
