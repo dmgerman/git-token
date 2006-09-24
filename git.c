@@ -1569,12 +1569,6 @@ name|cmd_upload_archive
 block|}
 block|,
 block|{
-literal|"upload-tar"
-block|,
-name|cmd_upload_tar
-block|}
-block|,
-block|{
 literal|"version"
 block|,
 name|cmd_version
