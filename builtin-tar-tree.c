@@ -1656,11 +1656,6 @@ name|base
 init|=
 name|NULL
 decl_stmt|;
-name|git_config
-argument_list|(
-name|git_tar_config
-argument_list|)
-expr_stmt|;
 name|memset
 argument_list|(
 operator|&
