@@ -3104,16 +3104,13 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|int
+name|unsigned
+name|long
 name|find_pack_entry_one
 parameter_list|(
 specifier|const
 name|unsigned
 name|char
-modifier|*
-parameter_list|,
-name|struct
-name|pack_entry
 modifier|*
 parameter_list|,
 name|struct
@@ -3130,8 +3127,11 @@ modifier|*
 name|unpack_entry_gently
 parameter_list|(
 name|struct
-name|pack_entry
+name|packed_git
 modifier|*
+parameter_list|,
+name|unsigned
+name|long
 parameter_list|,
 name|char
 modifier|*
@@ -3178,8 +3178,11 @@ name|void
 name|packed_object_info_detail
 parameter_list|(
 name|struct
-name|pack_entry
+name|packed_git
 modifier|*
+parameter_list|,
+name|unsigned
+name|long
 parameter_list|,
 name|char
 modifier|*
