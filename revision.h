@@ -363,6 +363,13 @@ name|char
 modifier|*
 name|extra_headers
 decl_stmt|;
+comment|/* Filter by commit log message */
+DECL|member|grep_filter
+name|struct
+name|grep_opt
+modifier|*
+name|grep_filter
+decl_stmt|;
 comment|/* special limits */
 DECL|member|max_count
 name|int
