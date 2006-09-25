@@ -16,6 +16,10 @@ directive|define
 name|INTERPOLATE_H
 end_define
 
+begin_comment
+comment|/*  * Convert a NUL-terminated string in buffer orig,  * performing substitutions on %-named sub-strings from  * the interpretation table.  */
+end_comment
+
 begin_struct
 DECL|struct|interp
 struct|struct
@@ -47,10 +51,12 @@ parameter_list|,
 name|int
 name|reslen
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 name|orig
 parameter_list|,
+specifier|const
 name|struct
 name|interp
 modifier|*
