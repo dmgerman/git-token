@@ -1621,6 +1621,14 @@ name|cmd_verify_pack
 block|}
 block|,
 block|{
+literal|"show-ref"
+block|,
+name|cmd_show_ref
+block|,
+name|RUN_SETUP
+block|}
+block|,
+block|{
 literal|"pack-refs"
 block|,
 name|cmd_pack_refs
