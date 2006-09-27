@@ -348,6 +348,19 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|void
+name|free_grep_patterns
+parameter_list|(
+name|struct
+name|grep_opt
+modifier|*
+name|opt
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|int
 name|grep_buffer
 parameter_list|(
