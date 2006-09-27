@@ -307,8 +307,6 @@ argument_list|,
 name|r
 operator|->
 name|sha1
-argument_list|,
-literal|1
 argument_list|)
 decl_stmt|;
 if|if
