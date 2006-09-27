@@ -836,14 +836,6 @@ name|grep_pat
 modifier|*
 name|p
 decl_stmt|;
-if|if
-condition|(
-name|opt
-operator|->
-name|fixed
-condition|)
-return|return;
-comment|/* First compile regexps */
 for|for
 control|(
 name|p
@@ -878,6 +870,13 @@ case|:
 case|case
 name|GREP_PATTERN_BODY
 case|:
+if|if
+condition|(
+operator|!
+name|opt
+operator|->
+name|fixed
+condition|)
 name|compile_regexp
 argument_list|(
 name|p
