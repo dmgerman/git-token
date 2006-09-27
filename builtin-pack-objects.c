@@ -5213,11 +5213,6 @@ expr_stmt|;
 if|if
 condition|(
 name|base_entry
-operator|&&
-operator|!
-name|base_entry
-operator|->
-name|preferred_base
 condition|)
 block|{
 comment|/* Depth value does not matter - find_deltas() 			 * will never consider reused delta as the 			 * base object to deltify other objects 			 * against, in order to avoid circular deltas. 			 */
