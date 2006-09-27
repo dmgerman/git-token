@@ -1333,6 +1333,14 @@ name|RUN_SETUP
 block|}
 block|,
 block|{
+literal|"for-each-ref"
+block|,
+name|cmd_for_each_ref
+block|,
+name|RUN_SETUP
+block|}
+block|,
+block|{
 literal|"format-patch"
 block|,
 name|cmd_format_patch
