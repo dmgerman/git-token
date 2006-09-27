@@ -1399,6 +1399,9 @@ argument_list|,
 name|dir
 argument_list|)
 expr_stmt|;
+name|setup_ident
+argument_list|()
+expr_stmt|;
 name|git_config
 argument_list|(
 name|git_default_config
