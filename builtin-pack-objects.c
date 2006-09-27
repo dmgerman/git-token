@@ -2382,7 +2382,6 @@ name|entry
 operator|->
 name|in_pack_header_size
 expr_stmt|;
-comment|//fprintf(stderr, "reusing %d at %d header %d size %d\n", obj_type, entry->in_pack_offset, entry->in_pack_header_size, datalen);
 if|if
 condition|(
 operator|!
