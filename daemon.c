@@ -95,6 +95,25 @@ directive|include
 file|"interpolate.h"
 end_include
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|HOST_NAME_MAX
+end_ifndef
+
+begin_define
+DECL|macro|HOST_NAME_MAX
+define|#
+directive|define
+name|HOST_NAME_MAX
+value|256
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_decl_stmt
 DECL|variable|log_syslog
 specifier|static
