@@ -1351,6 +1351,13 @@ end_decl_stmt
 
 begin_decl_stmt
 specifier|extern
+name|int
+name|deny_non_fast_forwards
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
 specifier|const
 name|char
 modifier|*
@@ -2153,6 +2160,39 @@ name|OBJ_BAD
 block|, }
 enum|;
 end_enum
+
+begin_decl_stmt
+specifier|extern
+name|signed
+name|char
+name|hexval_table
+index|[
+literal|256
+index|]
+decl_stmt|;
+end_decl_stmt
+
+begin_function
+DECL|function|hexval
+specifier|static
+specifier|inline
+name|unsigned
+name|int
+name|hexval
+parameter_list|(
+name|unsigned
+name|int
+name|c
+parameter_list|)
+block|{
+return|return
+name|hexval_table
+index|[
+name|c
+index|]
+return|;
+block|}
+end_function
 
 begin_comment
 comment|/* Convert to/from hex/sha1 representation */
@@ -3084,16 +3124,13 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|int
+name|unsigned
+name|long
 name|find_pack_entry_one
 parameter_list|(
 specifier|const
 name|unsigned
 name|char
-modifier|*
-parameter_list|,
-name|struct
-name|pack_entry
 modifier|*
 parameter_list|,
 name|struct
@@ -3110,8 +3147,11 @@ modifier|*
 name|unpack_entry_gently
 parameter_list|(
 name|struct
-name|pack_entry
+name|packed_git
 modifier|*
+parameter_list|,
+name|unsigned
+name|long
 parameter_list|,
 name|char
 modifier|*
@@ -3158,8 +3198,11 @@ name|void
 name|packed_object_info_detail
 parameter_list|(
 name|struct
-name|pack_entry
+name|packed_git
 modifier|*
+parameter_list|,
+name|unsigned
+name|long
 parameter_list|,
 name|char
 modifier|*

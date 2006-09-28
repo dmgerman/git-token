@@ -1513,6 +1513,13 @@ argument_list|,
 name|buf
 argument_list|)
 expr_stmt|;
+name|git_config_set
+argument_list|(
+literal|"receive.denyNonFastforwards"
+argument_list|,
+literal|"true"
+argument_list|)
+expr_stmt|;
 block|}
 return|return
 literal|0

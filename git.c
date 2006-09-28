@@ -1547,14 +1547,6 @@ name|RUN_SETUP
 block|}
 block|,
 block|{
-literal|"zip-tree"
-block|,
-name|cmd_zip_tree
-block|,
-name|RUN_SETUP
-block|}
-block|,
-block|{
 literal|"unpack-objects"
 block|,
 name|cmd_unpack_objects
@@ -1582,12 +1574,6 @@ block|{
 literal|"upload-archive"
 block|,
 name|cmd_upload_archive
-block|}
-block|,
-block|{
-literal|"upload-tar"
-block|,
-name|cmd_upload_tar
 block|}
 block|,
 block|{
