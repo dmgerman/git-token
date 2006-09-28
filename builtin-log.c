@@ -1673,10 +1673,6 @@ name|extra_headers
 operator|=
 name|extra_headers
 expr_stmt|;
-name|output_directory
-operator|=
-name|prefix
-expr_stmt|;
 comment|/* 	 * Parse the arguments before setup_revisions(), or something 	 * like "git fmt-patch -o a123 HEAD^.." may fail; a123 is 	 * possibly a valid SHA1. 	 */
 for|for
 control|(
@@ -2244,6 +2240,15 @@ operator|=
 name|DIFF_FORMAT_DIFFSTAT
 operator||
 name|DIFF_FORMAT_PATCH
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|output_directory
+condition|)
+name|output_directory
+operator|=
+name|prefix
 expr_stmt|;
 if|if
 condition|(
