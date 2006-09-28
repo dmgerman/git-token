@@ -34,6 +34,7 @@ parameter_list|,
 name|int
 name|slot
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 name|value
@@ -54,7 +55,7 @@ name|char
 modifier|*
 name|newval
 init|=
-name|value
+name|NULL
 decl_stmt|;
 if|if
 condition|(
