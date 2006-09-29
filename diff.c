@@ -1843,7 +1843,7 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"--- %s\n+++ %s\n@@ -"
+literal|"--- a/%s\n+++ b/%s\n@@ -"
 argument_list|,
 name|name_a
 argument_list|,
