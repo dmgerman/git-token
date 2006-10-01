@@ -729,6 +729,12 @@ operator|)
 condition|?
 literal|0
 else|:
+name|seen
+operator|>
+literal|1
+condition|?
+literal|2
+else|:
 literal|1
 expr_stmt|;
 name|free_strings
