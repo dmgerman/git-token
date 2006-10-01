@@ -3227,6 +3227,15 @@ return|;
 block|}
 end_function
 
+begin_decl_stmt
+DECL|variable|packlock
+specifier|static
+name|struct
+name|lock_file
+name|packlock
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|repack_without_ref
 specifier|static
@@ -3254,10 +3263,6 @@ name|int
 name|found
 init|=
 literal|0
-decl_stmt|;
-name|struct
-name|lock_file
-name|packlock
 decl_stmt|;
 name|packed_ref_list
 operator|=
