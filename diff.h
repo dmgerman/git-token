@@ -359,6 +359,14 @@ DECL|member|xdl_opts
 name|long
 name|xdl_opts
 decl_stmt|;
+DECL|member|stat_width
+name|int
+name|stat_width
+decl_stmt|;
+DECL|member|stat_name_width
+name|int
+name|stat_name_width
+decl_stmt|;
 DECL|member|nr_paths
 name|int
 name|nr_paths
