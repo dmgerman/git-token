@@ -182,6 +182,25 @@ expr_stmt|;
 continue|continue;
 block|}
 block|}
+comment|/* Is it a directory? */
+if|if
+condition|(
+name|S_ISDIR
+argument_list|(
+name|st
+operator|.
+name|st_mode
+argument_list|)
+condition|)
+block|{
+name|errno
+operator|=
+name|EISDIR
+expr_stmt|;
+return|return
+name|NULL
+return|;
+block|}
 comment|/* 		 * Anything else, just open it and try to use it as 		 * a ref 		 */
 name|fd
 operator|=
