@@ -414,11 +414,11 @@ condition|(
 operator|!
 name|strncmp
 argument_list|(
-literal|"URL: "
+literal|"URL:"
 argument_list|,
 name|buffer
 argument_list|,
-literal|5
+literal|4
 argument_list|)
 condition|)
 block|{
@@ -430,7 +430,7 @@ name|s
 operator|=
 name|buffer
 operator|+
-literal|5
+literal|4
 expr_stmt|;
 block|}
 elseif|else
@@ -439,11 +439,11 @@ condition|(
 operator|!
 name|strncmp
 argument_list|(
-literal|"Push: "
+literal|"Push:"
 argument_list|,
 name|buffer
 argument_list|,
-literal|6
+literal|5
 argument_list|)
 condition|)
 block|{
@@ -455,7 +455,7 @@ name|s
 operator|=
 name|buffer
 operator|+
-literal|6
+literal|5
 expr_stmt|;
 block|}
 else|else
