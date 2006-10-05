@@ -491,6 +491,13 @@ operator|&
 name|cbdata
 argument_list|)
 expr_stmt|;
+name|fflush
+argument_list|(
+name|cbdata
+operator|.
+name|refs_file
+argument_list|)
+expr_stmt|;
 name|fsync
 argument_list|(
 name|fd
