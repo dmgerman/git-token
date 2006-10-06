@@ -4239,6 +4239,9 @@ name|unsigned
 name|long
 name|at_time
 parameter_list|,
+name|int
+name|cnt
+parameter_list|,
 name|unsigned
 name|char
 modifier|*
@@ -4478,6 +4481,10 @@ condition|(
 name|date
 operator|<=
 name|at_time
+operator|||
+name|cnt
+operator|==
+literal|0
 condition|)
 block|{
 if|if
@@ -4664,6 +4671,15 @@ block|}
 name|lastrec
 operator|=
 name|rec
+expr_stmt|;
+if|if
+condition|(
+name|cnt
+operator|>
+literal|0
+condition|)
+name|cnt
+operator|--
 expr_stmt|;
 block|}
 name|rec
