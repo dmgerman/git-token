@@ -96,7 +96,7 @@ name|char
 name|git_usage_string
 index|[]
 init|=
-literal|"git [--version] [--exec-path[=GIT_EXEC_PATH]] [--help] COMMAND [ ARGS ]"
+literal|"git [--version] [--exec-path[=GIT_EXEC_PATH]] [-p|--paginate] [--bare] [--git-dir=GIT_DIR] [--help] COMMAND [ARGS]"
 decl_stmt|;
 end_decl_stmt
 
