@@ -19,7 +19,7 @@ name|char
 name|builtin_pack_refs_usage
 index|[]
 init|=
-literal|"git-pack-refs [--prune]"
+literal|"git-pack-refs [--all] [--prune]"
 decl_stmt|;
 end_decl_stmt
 
@@ -370,6 +370,20 @@ name|struct
 name|pack_refs_cb_data
 name|cbdata
 decl_stmt|;
+name|int
+function_decl|(
+modifier|*
+name|iterate_ref
+function_decl|)
+parameter_list|(
+name|each_ref_fn
+parameter_list|,
+name|void
+modifier|*
+parameter_list|)
+init|=
+name|for_each_tag_ref
+function_decl|;
 name|memset
 argument_list|(
 operator|&
@@ -423,6 +437,23 @@ operator|.
 name|prune
 operator|=
 literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--all"
+argument_list|)
+condition|)
+block|{
+name|iterate_ref
+operator|=
+name|for_each_ref
 expr_stmt|;
 continue|continue;
 block|}
@@ -483,7 +514,7 @@ name|errno
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|for_each_ref
+name|iterate_ref
 argument_list|(
 name|handle_one_ref
 argument_list|,
