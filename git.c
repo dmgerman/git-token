@@ -1534,8 +1534,6 @@ block|{
 literal|"tar-tree"
 block|,
 name|cmd_tar_tree
-block|,
-name|RUN_SETUP
 block|}
 block|,
 block|{
