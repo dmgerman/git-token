@@ -3848,7 +3848,11 @@ block|{
 if|if
 condition|(
 operator|!
-name|log_all_ref_updates
+operator|(
+name|oflags
+operator|&
+name|O_CREAT
+operator|)
 operator|&&
 name|errno
 operator|==
