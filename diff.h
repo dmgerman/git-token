@@ -167,11 +167,19 @@ value|0x0002
 end_define
 
 begin_define
+DECL|macro|DIFF_FORMAT_NUMSTAT
+define|#
+directive|define
+name|DIFF_FORMAT_NUMSTAT
+value|0x0004
+end_define
+
+begin_define
 DECL|macro|DIFF_FORMAT_SUMMARY
 define|#
 directive|define
 name|DIFF_FORMAT_SUMMARY
-value|0x0004
+value|0x0008
 end_define
 
 begin_define
@@ -179,7 +187,7 @@ DECL|macro|DIFF_FORMAT_PATCH
 define|#
 directive|define
 name|DIFF_FORMAT_PATCH
-value|0x0008
+value|0x0010
 end_define
 
 begin_comment
@@ -191,7 +199,7 @@ DECL|macro|DIFF_FORMAT_NAME
 define|#
 directive|define
 name|DIFF_FORMAT_NAME
-value|0x0010
+value|0x0100
 end_define
 
 begin_define
@@ -199,7 +207,7 @@ DECL|macro|DIFF_FORMAT_NAME_STATUS
 define|#
 directive|define
 name|DIFF_FORMAT_NAME_STATUS
-value|0x0020
+value|0x0200
 end_define
 
 begin_define
@@ -207,7 +215,7 @@ DECL|macro|DIFF_FORMAT_CHECKDIFF
 define|#
 directive|define
 name|DIFF_FORMAT_CHECKDIFF
-value|0x0040
+value|0x0400
 end_define
 
 begin_comment
@@ -219,7 +227,7 @@ DECL|macro|DIFF_FORMAT_NO_OUTPUT
 define|#
 directive|define
 name|DIFF_FORMAT_NO_OUTPUT
-value|0x0080
+value|0x0800
 end_define
 
 begin_define
@@ -227,7 +235,7 @@ DECL|macro|DIFF_FORMAT_CALLBACK
 define|#
 directive|define
 name|DIFF_FORMAT_CALLBACK
-value|0x0100
+value|0x1000
 end_define
 
 begin_struct
@@ -972,7 +980,7 @@ define|#
 directive|define
 name|COMMON_DIFF_OPTIONS_HELP
 define|\
-value|"\ncommon diff options:\n" \ "  -z            output diff-raw with lines terminated with NUL.\n" \ "  -p            output patch format.\n" \ "  -u            synonym for -p.\n" \ "  --patch-with-raw\n" \ "                output both a patch and the diff-raw format.\n" \ "  --stat        show diffstat instead of patch.\n" \ "  --patch-with-stat\n" \ "                output a patch and prepend its diffstat.\n" \ "  --name-only   show only names of changed files.\n" \ "  --name-status show names and status of changed files.\n" \ "  --full-index  show full object name on index lines.\n" \ "  --abbrev=<n>  abbreviate object names in diff-tree header and diff-raw.\n" \ "  -R            swap input file pairs.\n" \ "  -B            detect complete rewrites.\n" \ "  -M            detect renames.\n" \ "  -C            detect copies.\n" \ "  --find-copies-harder\n" \ "                try unchanged files as candidate for copy detection.\n" \ "  -l<n>         limit rename attempts up to<n> paths.\n" \ "  -O<file>      reorder diffs according to the<file>.\n" \ "  -S<string>    find filepair whose only one side contains the string.\n" \ "  --pickaxe-all\n" \ "                show all files diff when -S is used and hit is found.\n" \ "  -a  --text    treat all files as text.\n"
+value|"\ncommon diff options:\n" \ "  -z            output diff-raw with lines terminated with NUL.\n" \ "  -p            output patch format.\n" \ "  -u            synonym for -p.\n" \ "  --patch-with-raw\n" \ "                output both a patch and the diff-raw format.\n" \ "  --stat        show diffstat instead of patch.\n" \ "  --numstat     show numeric diffstat instead of patch.\n" \ "  --patch-with-stat\n" \ "                output a patch and prepend its diffstat.\n" \ "  --name-only   show only names of changed files.\n" \ "  --name-status show names and status of changed files.\n" \ "  --full-index  show full object name on index lines.\n" \ "  --abbrev=<n>  abbreviate object names in diff-tree header and diff-raw.\n" \ "  -R            swap input file pairs.\n" \ "  -B            detect complete rewrites.\n" \ "  -M            detect renames.\n" \ "  -C            detect copies.\n" \ "  --find-copies-harder\n" \ "                try unchanged files as candidate for copy detection.\n" \ "  -l<n>         limit rename attempts up to<n> paths.\n" \ "  -O<file>      reorder diffs according to the<file>.\n" \ "  -S<string>    find filepair whose only one side contains the string.\n" \ "  --pickaxe-all\n" \ "                show all files diff when -S is used and hit is found.\n" \ "  -a  --text    treat all files as text.\n"
 end_define
 
 begin_function_decl
