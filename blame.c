@@ -109,11 +109,14 @@ name|char
 name|blame_usage
 index|[]
 init|=
-literal|"git-blame [-c] [-l] [-t] [-S<revs-file>] [--] file [commit]\n"
+literal|"git-blame [-c] [-l] [-t] [-f] [-n] [-p] [-S<revs-file>] [--] file [commit]\n"
 literal|"  -c, --compatibility Use the same output mode as git-annotate (Default: off)\n"
 literal|"  -l, --long          Show long commit SHA1 (Default: off)\n"
 literal|"  -t, --time          Show raw timestamp (Default: off)\n"
-literal|"  -S, --revs-file     Use revisions from revs-file instead of calling git-rev-list\n"
+literal|"  -f, --show-name     Show original filename (Default: auto)\n"
+literal|"  -n, --show-number   Show original linenumber (Default: off)\n"
+literal|"  -p, --porcelain     Show in a format designed for machine consumption\n"
+literal|"  -S revs-file        Use revisions from revs-file instead of calling git-rev-list\n"
 literal|"  -h, --help          This message"
 decl_stmt|;
 end_decl_stmt
@@ -5354,6 +5357,17 @@ continue|continue;
 block|}
 if|if
 condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|argv
+index|[
+name|i
+index|]
+argument_list|,
+literal|"-p"
+argument_list|)
+operator|||
 operator|!
 name|strcmp
 argument_list|(
