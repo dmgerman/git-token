@@ -7670,6 +7670,7 @@ end_function
 
 begin_function
 DECL|function|write_sha1_file_prepare
+specifier|static
 name|char
 modifier|*
 name|write_sha1_file_prepare
