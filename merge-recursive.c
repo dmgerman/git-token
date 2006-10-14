@@ -7262,16 +7262,6 @@ name|tree
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|unsigned
-name|char
-name|hdr
-index|[
-literal|40
-index|]
-decl_stmt|;
-name|int
-name|hdrlen
-decl_stmt|;
 name|tree
 operator|->
 name|object
@@ -7288,7 +7278,7 @@ name|type
 operator|=
 name|OBJ_TREE
 expr_stmt|;
-name|write_sha1_file_prepare
+name|hash_sha1_file
 argument_list|(
 name|NULL
 argument_list|,
@@ -7301,11 +7291,6 @@ operator|->
 name|object
 operator|.
 name|sha1
-argument_list|,
-name|hdr
-argument_list|,
-operator|&
-name|hdrlen
 argument_list|)
 expr_stmt|;
 name|merged_common_ancestors
