@@ -40,7 +40,7 @@ DECL|macro|PACK_VERSION
 define|#
 directive|define
 name|PACK_VERSION
-value|3
+value|2
 end_define
 
 begin_define
