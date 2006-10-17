@@ -113,6 +113,18 @@ block|}
 union|;
 end_union
 
+begin_comment
+comment|/*  * Even if sizeof(union delta_base) == 24 on 64-bit archs, we really want  * to memcmp() only the first 20 bytes.  */
+end_comment
+
+begin_define
+DECL|macro|UNION_BASE_SZ
+define|#
+directive|define
+name|UNION_BASE_SZ
+value|20
+end_define
+
 begin_struct
 DECL|struct|delta_entry
 struct|struct
@@ -1192,11 +1204,7 @@ name|delta
 operator|->
 name|base
 argument_list|,
-sizeof|sizeof
-argument_list|(
-operator|*
-name|base
-argument_list|)
+name|UNION_BASE_SZ
 argument_list|)
 expr_stmt|;
 if|if
@@ -1308,11 +1316,7 @@ name|base
 argument_list|,
 name|base
 argument_list|,
-sizeof|sizeof
-argument_list|(
-operator|*
-name|base
-argument_list|)
+name|UNION_BASE_SZ
 argument_list|)
 condition|)
 operator|--
@@ -1339,11 +1343,7 @@ name|base
 argument_list|,
 name|base
 argument_list|,
-sizeof|sizeof
-argument_list|(
-operator|*
-name|base
-argument_list|)
+name|UNION_BASE_SZ
 argument_list|)
 condition|)
 operator|++
@@ -1850,11 +1850,7 @@ name|delta_b
 operator|->
 name|base
 argument_list|,
-sizeof|sizeof
-argument_list|(
-expr|union
-name|delta_base
-argument_list|)
+name|UNION_BASE_SZ
 argument_list|)
 return|;
 block|}
