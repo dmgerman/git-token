@@ -1700,7 +1700,7 @@ name|NULL
 argument_list|,
 literal|1
 argument_list|,
-literal|0
+name|TERM_TAB
 argument_list|)
 return|;
 if|if
@@ -1754,7 +1754,7 @@ name|NULL
 argument_list|,
 literal|1
 argument_list|,
-literal|0
+name|TERM_TAB
 argument_list|)
 expr_stmt|;
 if|if
