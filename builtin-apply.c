@@ -4585,6 +4585,10 @@ operator|-
 literal|1
 return|;
 case|case
+literal|'\n'
+case|:
+comment|/* newer GNU diff, an empty context line */
+case|case
 literal|' '
 case|:
 name|oldlines
@@ -7806,6 +7810,35 @@ condition|(
 name|first
 condition|)
 block|{
+case|case
+literal|'\n'
+case|:
+comment|/* Newer GNU diff, empty context line */
+if|if
+condition|(
+name|plen
+operator|<
+literal|0
+condition|)
+comment|/* ... followed by '\No newline'; nothing */
+break|break;
+name|old
+index|[
+name|oldsize
+operator|++
+index|]
+operator|=
+literal|'\n'
+expr_stmt|;
+name|new
+index|[
+name|newsize
+operator|++
+index|]
+operator|=
+literal|'\n'
+expr_stmt|;
+break|break;
 case|case
 literal|' '
 case|:
