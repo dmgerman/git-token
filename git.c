@@ -1551,6 +1551,14 @@ name|RUN_SETUP
 block|}
 block|,
 block|{
+literal|"shortlog"
+block|,
+name|cmd_shortlog
+block|,
+name|RUN_SETUP
+block|}
+block|,
+block|{
 literal|"show-branch"
 block|,
 name|cmd_show_branch
