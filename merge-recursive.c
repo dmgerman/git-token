@@ -2318,6 +2318,7 @@ end_function
 
 begin_function
 DECL|function|update_stages
+specifier|static
 name|int
 name|update_stages
 parameter_list|(
@@ -2579,6 +2580,7 @@ end_function
 
 begin_function
 DECL|function|remove_file
+specifier|static
 name|int
 name|remove_file
 parameter_list|(
@@ -2962,6 +2964,7 @@ end_function
 
 begin_function
 DECL|function|update_file_flags
+specifier|static
 name|void
 name|update_file_flags
 parameter_list|(
@@ -3261,6 +3264,7 @@ end_function
 
 begin_function
 DECL|function|update_file
+specifier|static
 name|void
 name|update_file
 parameter_list|(
