@@ -86,6 +86,14 @@ DECL|macro|ADDED
 comment|/* Parents already parsed and added? */
 end_comment
 
+begin_define
+DECL|macro|SYMMETRIC_LEFT
+define|#
+directive|define
+name|SYMMETRIC_LEFT
+value|(1u<<8)
+end_define
+
 begin_struct_decl
 struct_decl|struct
 name|rev_info

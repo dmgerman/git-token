@@ -4524,7 +4524,7 @@ comment|/* merge-rebase stuff */
 end_comment
 
 begin_comment
-comment|/* bits #0..7 in revision.h */
+comment|/* bits #0..15 in revision.h */
 end_comment
 
 begin_define
@@ -4532,7 +4532,7 @@ DECL|macro|PARENT1
 define|#
 directive|define
 name|PARENT1
-value|(1u<< 8)
+value|(1u<<16)
 end_define
 
 begin_define
@@ -4540,7 +4540,7 @@ DECL|macro|PARENT2
 define|#
 directive|define
 name|PARENT2
-value|(1u<< 9)
+value|(1u<<17)
 end_define
 
 begin_define
@@ -4548,7 +4548,7 @@ DECL|macro|STALE
 define|#
 directive|define
 name|STALE
-value|(1u<<10)
+value|(1u<<18)
 end_define
 
 begin_define
@@ -4556,7 +4556,7 @@ DECL|macro|RESULT
 define|#
 directive|define
 name|RESULT
-value|(1u<<11)
+value|(1u<<19)
 end_define
 
 begin_function
