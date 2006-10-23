@@ -503,13 +503,15 @@ name|printf
 argument_list|(
 literal|"%s "
 argument_list|,
-name|sha1_to_hex
+name|find_unique_abbrev
 argument_list|(
 name|commit
 operator|->
 name|object
 operator|.
 name|sha1
+argument_list|,
+name|DEFAULT_ABBREV
 argument_list|)
 argument_list|)
 expr_stmt|;
