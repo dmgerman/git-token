@@ -1247,6 +1247,12 @@ name|cmd_archive
 block|}
 block|,
 block|{
+literal|"branch"
+block|,
+name|cmd_branch
+block|}
+block|,
+block|{
 literal|"cat-file"
 block|,
 name|cmd_cat_file
