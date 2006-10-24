@@ -128,6 +128,10 @@ name|enum
 name|grep_expr_node
 name|node
 decl_stmt|;
+DECL|member|hit
+name|unsigned
+name|hit
+decl_stmt|;
 union|union
 block|{
 DECL|member|atom
@@ -245,6 +249,12 @@ decl_stmt|;
 DECL|member|fixed
 name|unsigned
 name|fixed
+range|:
+literal|1
+decl_stmt|;
+DECL|member|all_match
+name|unsigned
+name|all_match
 range|:
 literal|1
 decl_stmt|;

@@ -1700,7 +1700,7 @@ name|NULL
 argument_list|,
 literal|1
 argument_list|,
-literal|0
+name|TERM_TAB
 argument_list|)
 return|;
 if|if
@@ -1754,7 +1754,7 @@ name|NULL
 argument_list|,
 literal|1
 argument_list|,
-literal|0
+name|TERM_TAB
 argument_list|)
 expr_stmt|;
 if|if
@@ -4584,6 +4584,10 @@ return|return
 operator|-
 literal|1
 return|;
+case|case
+literal|'\n'
+case|:
+comment|/* newer GNU diff, an empty context line */
 case|case
 literal|' '
 case|:
@@ -7807,6 +7811,35 @@ name|first
 condition|)
 block|{
 case|case
+literal|'\n'
+case|:
+comment|/* Newer GNU diff, empty context line */
+if|if
+condition|(
+name|plen
+operator|<
+literal|0
+condition|)
+comment|/* ... followed by '\No newline'; nothing */
+break|break;
+name|old
+index|[
+name|oldsize
+operator|++
+index|]
+operator|=
+literal|'\n'
+expr_stmt|;
+name|new
+index|[
+name|newsize
+operator|++
+index|]
+operator|=
+literal|'\n'
+expr_stmt|;
+break|break;
+case|case
 literal|' '
 case|:
 case|case
@@ -8533,16 +8566,6 @@ index|[
 literal|20
 index|]
 decl_stmt|;
-name|unsigned
-name|char
-name|hdr
-index|[
-literal|50
-index|]
-decl_stmt|;
-name|int
-name|hdrlen
-decl_stmt|;
 comment|/* For safety, we require patch index line to contain 	 * full 40-byte textual SHA1 for old and new, at least for now. 	 */
 if|if
 condition|(
@@ -8599,7 +8622,7 @@ name|old_name
 condition|)
 block|{
 comment|/* See if the old one matches what the patch 		 * applies to. 		 */
-name|write_sha1_file_prepare
+name|hash_sha1_file
 argument_list|(
 name|desc
 operator|->
@@ -8612,11 +8635,6 @@ argument_list|,
 name|blob_type
 argument_list|,
 name|sha1
-argument_list|,
-name|hdr
-argument_list|,
-operator|&
-name|hdrlen
 argument_list|)
 expr_stmt|;
 if|if
@@ -8805,7 +8823,7 @@ name|name
 argument_list|)
 return|;
 comment|/* verify that the result matches */
-name|write_sha1_file_prepare
+name|hash_sha1_file
 argument_list|(
 name|desc
 operator|->
@@ -8818,11 +8836,6 @@ argument_list|,
 name|blob_type
 argument_list|,
 name|sha1
-argument_list|,
-name|hdr
-argument_list|,
-operator|&
-name|hdrlen
 argument_list|)
 expr_stmt|;
 if|if
@@ -10333,7 +10346,7 @@ argument_list|)
 expr_stmt|;
 name|putchar
 argument_list|(
-literal|'\n'
+name|line_termination
 argument_list|)
 expr_stmt|;
 block|}

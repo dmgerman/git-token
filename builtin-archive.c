@@ -425,13 +425,6 @@ argument_list|,
 literal|1
 argument_list|,
 literal|2
-argument_list|,
-name|buf
-argument_list|,
-sizeof|sizeof
-argument_list|(
-name|buf
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|close

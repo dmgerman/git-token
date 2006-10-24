@@ -214,6 +214,14 @@ name|strcmp
 argument_list|(
 name|trace
 argument_list|,
+literal|""
+argument_list|)
+operator|||
+operator|!
+name|strcmp
+argument_list|(
+name|trace
+argument_list|,
 literal|"0"
 argument_list|)
 operator|||

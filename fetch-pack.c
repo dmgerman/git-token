@@ -808,7 +808,7 @@ index|[
 literal|1
 index|]
 argument_list|,
-literal|"want %s%s%s%s%s\n"
+literal|"want %s%s%s%s%s%s\n"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -850,6 +850,8 @@ literal|" thin-pack"
 else|:
 literal|""
 operator|)
+argument_list|,
+literal|" ofs-delta"
 argument_list|)
 expr_stmt|;
 else|else

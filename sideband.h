@@ -61,11 +61,6 @@ name|out
 parameter_list|,
 name|int
 name|err
-parameter_list|,
-name|char
-modifier|*
-parameter_list|,
-name|int
 parameter_list|)
 function_decl|;
 end_function_decl

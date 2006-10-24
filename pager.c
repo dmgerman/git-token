@@ -230,7 +230,7 @@ name|setenv
 argument_list|(
 literal|"LESS"
 argument_list|,
-literal|"-RS"
+literal|"FRSX"
 argument_list|,
 literal|0
 argument_list|)

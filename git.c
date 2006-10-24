@@ -96,7 +96,7 @@ name|char
 name|git_usage_string
 index|[]
 init|=
-literal|"git [--version] [--exec-path[=GIT_EXEC_PATH]] [--help] COMMAND [ ARGS ]"
+literal|"git [--version] [--exec-path[=GIT_EXEC_PATH]] [-p|--paginate] [--bare] [--git-dir=GIT_DIR] [--help] COMMAND [ARGS]"
 decl_stmt|;
 end_decl_stmt
 
@@ -1290,6 +1290,8 @@ block|,
 name|cmd_diff
 block|,
 name|RUN_SETUP
+operator||
+name|USE_PAGER
 block|}
 block|,
 block|{
@@ -1534,8 +1536,6 @@ block|{
 literal|"tar-tree"
 block|,
 name|cmd_tar_tree
-block|,
-name|RUN_SETUP
 block|}
 block|,
 block|{
