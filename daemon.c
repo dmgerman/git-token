@@ -1972,6 +1972,12 @@ index|]
 operator|.
 name|value
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|hp
+condition|)
+return|return;
 for|for
 control|(
 init|;
@@ -2529,6 +2535,7 @@ index|]
 operator|==
 literal|'\n'
 condition|)
+block|{
 name|line
 index|[
 operator|--
@@ -2537,6 +2544,10 @@ index|]
 operator|=
 literal|0
 expr_stmt|;
+name|pktlen
+operator|--
+expr_stmt|;
+block|}
 comment|/* 	 * Initialize the path interpolation table for this connection. 	 */
 name|interp_clear_table
 argument_list|(
