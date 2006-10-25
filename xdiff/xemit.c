@@ -363,17 +363,11 @@ comment|/* also identifier? */
 operator|*
 name|rec
 operator|==
-literal|'('
-operator|||
-comment|/* lisp defun? */
-operator|*
-name|rec
-operator|==
-literal|'#'
+literal|'$'
 operator|)
 condition|)
 block|{
-comment|/* #define? */
+comment|/* mysterious GNU diff's invention */
 if|if
 condition|(
 name|len
