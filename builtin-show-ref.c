@@ -31,7 +31,7 @@ name|char
 name|show_ref_usage
 index|[]
 init|=
-literal|"git show-ref [-q|--quiet] [--verify] [-h|--head] [-d|--dereference] [-s|--hash] [--tags] [--heads] [--] [pattern*]"
+literal|"git show-ref [-q|--quiet] [--verify] [-h|--head] [-d|--dereference] [-s|--hash[=<length>]] [--abbrev[=<length>]] [--tags] [--heads] [--] [pattern*]"
 decl_stmt|;
 end_decl_stmt
 
