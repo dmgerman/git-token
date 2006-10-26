@@ -2644,6 +2644,11 @@ argument_list|(
 literal|"pack is corrupted (SHA1 mismatch)"
 argument_list|)
 expr_stmt|;
+name|use
+argument_list|(
+literal|20
+argument_list|)
+expr_stmt|;
 comment|/* If input_fd is a file, we should have reached its end now. */
 if|if
 condition|(
@@ -2679,8 +2684,6 @@ operator|.
 name|st_size
 operator|!=
 name|consumed_bytes
-operator|+
-literal|20
 condition|)
 name|die
 argument_list|(
@@ -4542,6 +4545,41 @@ argument_list|,
 literal|0444
 argument_list|)
 expr_stmt|;
+comment|/* 		 * Let's just mimic git-unpack-objects here and write 		 * the last part of the buffer to stdout. 		 */
+while|while
+condition|(
+name|input_len
+condition|)
+block|{
+name|err
+operator|=
+name|xwrite
+argument_list|(
+literal|1
+argument_list|,
+name|input_buffer
+operator|+
+name|input_offset
+argument_list|,
+name|input_len
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|err
+operator|<=
+literal|0
+condition|)
+break|break;
+name|input_len
+operator|-=
+name|err
+expr_stmt|;
+name|input_offset
+operator|+=
+name|err
+expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -5100,11 +5138,6 @@ block|}
 else|else
 block|{
 comment|/* Flush remaining pack final 20-byte SHA1. */
-name|use
-argument_list|(
-literal|20
-argument_list|)
-expr_stmt|;
 name|flush
 argument_list|()
 expr_stmt|;
@@ -5146,6 +5179,11 @@ argument_list|(
 name|index_name_buf
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|from_stdin
+condition|)
 name|printf
 argument_list|(
 literal|"%s\n"
