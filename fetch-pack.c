@@ -2597,14 +2597,6 @@ argument_list|(
 name|fetch_pack_usage
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|keep_pack
-condition|)
-name|use_thin_pack
-operator|=
-literal|0
-expr_stmt|;
 name|pid
 operator|=
 name|git_connect
