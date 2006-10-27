@@ -300,6 +300,9 @@ name|unsigned
 name|long
 name|at_time
 parameter_list|,
+name|int
+name|cnt
+parameter_list|,
 name|unsigned
 name|char
 modifier|*
