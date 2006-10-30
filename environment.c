@@ -106,15 +106,6 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|deny_non_fast_forwards
-name|int
-name|deny_non_fast_forwards
-init|=
-literal|0
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|variable|apply_default_whitespace
 specifier|const
 name|char
