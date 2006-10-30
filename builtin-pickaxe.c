@@ -5470,7 +5470,12 @@ argument_list|(
 name|suspect
 argument_list|)
 expr_stmt|;
-name|coalesce
+if|if
+condition|(
+name|DEBUG
+condition|)
+comment|/* sanity */
+name|sanity_check_refcnt
 argument_list|(
 name|sb
 argument_list|)
@@ -7671,7 +7676,40 @@ operator|->
 name|next
 control|)
 block|{
-comment|/* first mark the ones that haven't been checked */
+comment|/* Nobody should have zero or negative refcnt */
+if|if
+condition|(
+name|ent
+operator|->
+name|suspect
+operator|->
+name|refcnt
+operator|<=
+literal|0
+condition|)
+name|baa
+operator|=
+literal|1
+expr_stmt|;
+block|}
+for|for
+control|(
+name|ent
+operator|=
+name|sb
+operator|->
+name|ent
+init|;
+name|ent
+condition|;
+name|ent
+operator|=
+name|ent
+operator|->
+name|next
+control|)
+block|{
+comment|/* Mark the ones that haven't been checked */
 if|if
 condition|(
 literal|0
@@ -7694,20 +7732,6 @@ operator|->
 name|suspect
 operator|->
 name|refcnt
-expr_stmt|;
-elseif|else
-if|if
-condition|(
-operator|!
-name|ent
-operator|->
-name|suspect
-operator|->
-name|refcnt
-condition|)
-name|baa
-operator|=
-literal|1
 expr_stmt|;
 block|}
 for|for
@@ -7763,6 +7787,7 @@ name|suspect
 operator|->
 name|refcnt
 expr_stmt|;
+comment|/* Unmark */
 for|for
 control|(
 name|found
