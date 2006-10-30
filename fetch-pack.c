@@ -1049,6 +1049,82 @@ name|sha1
 argument_list|)
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|strncmp
+argument_list|(
+literal|"unshallow "
+argument_list|,
+name|line
+argument_list|,
+literal|10
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
+name|get_sha1_hex
+argument_list|(
+name|line
+operator|+
+literal|10
+argument_list|,
+name|sha1
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"invalid unshallow line: %s"
+argument_list|,
+name|line
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|lookup_object
+argument_list|(
+name|sha1
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"object not found: %s"
+argument_list|,
+name|line
+argument_list|)
+expr_stmt|;
+comment|/* make sure that it is parsed as shallow */
+name|parse_object
+argument_list|(
+name|sha1
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|unregister_shallow
+argument_list|(
+name|sha1
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"no shallow found: %s"
+argument_list|,
+name|line
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+name|die
+argument_list|(
+literal|"expected shallow/unshallow, got %s"
+argument_list|,
+name|line
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 name|flushes
@@ -1998,6 +2074,12 @@ name|date
 expr_stmt|;
 block|}
 block|}
+if|if
+condition|(
+operator|!
+name|depth
+condition|)
+block|{
 name|for_each_ref
 argument_list|(
 name|mark_complete
@@ -2014,6 +2096,7 @@ argument_list|(
 name|cutoff
 argument_list|)
 expr_stmt|;
+block|}
 comment|/* 	 * Mark all complete remote refs as common refs. 	 * Don't mark them common yet; the server has to be told so first. 	 */
 for|for
 control|(
@@ -3434,20 +3517,6 @@ condition|)
 name|usage
 argument_list|(
 name|fetch_pack_usage
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|is_repository_shallow
-argument_list|()
-operator|&&
-name|depth
-operator|>
-literal|0
-condition|)
-name|die
-argument_list|(
-literal|"Deepening of a shallow repository not yet supported!"
 argument_list|)
 expr_stmt|;
 name|pid
