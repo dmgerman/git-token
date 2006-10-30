@@ -403,6 +403,30 @@ block|}
 end_function
 
 begin_function
+DECL|function|iskeychar
+specifier|static
+specifier|inline
+name|int
+name|iskeychar
+parameter_list|(
+name|int
+name|c
+parameter_list|)
+block|{
+return|return
+name|isalnum
+argument_list|(
+name|c
+argument_list|)
+operator|||
+name|c
+operator|==
+literal|'-'
+return|;
+block|}
+end_function
+
+begin_function
 DECL|function|get_value
 specifier|static
 name|int
@@ -449,7 +473,7 @@ break|break;
 if|if
 condition|(
 operator|!
-name|isalnum
+name|iskeychar
 argument_list|(
 name|c
 argument_list|)
@@ -766,7 +790,7 @@ return|;
 if|if
 condition|(
 operator|!
-name|isalnum
+name|iskeychar
 argument_list|(
 name|c
 argument_list|)
@@ -2758,7 +2782,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|isalnum
+name|iskeychar
 argument_list|(
 name|c
 argument_list|)
