@@ -288,9 +288,14 @@ literal|0
 condition|)
 name|die
 argument_list|(
-literal|"%s: unable to fork off git-unpack-objects"
+literal|"%s: unable to fork off %s"
 argument_list|,
 name|me
+argument_list|,
+name|argv
+index|[
+literal|0
+index|]
 argument_list|)
 expr_stmt|;
 if|if
