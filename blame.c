@@ -93,6 +93,12 @@ directive|include
 file|"quote.h"
 end_include
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|DEBUG
+end_ifndef
+
 begin_define
 DECL|macro|DEBUG
 define|#
@@ -100,6 +106,11 @@ directive|define
 name|DEBUG
 value|0
 end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_decl_stmt
 DECL|variable|blame_usage
@@ -1301,6 +1312,14 @@ decl_stmt|;
 name|int
 name|num
 decl_stmt|;
+if|if
+condition|(
+name|print_map
+operator|==
+name|NULL
+condition|)
+empty_stmt|;
+comment|/* to avoid "unused function" warning */
 for|for
 control|(
 name|i
