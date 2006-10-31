@@ -43,7 +43,7 @@ name|char
 name|send_pack_usage
 index|[]
 init|=
-literal|"git-send-pack [--all] [--keep] [--exec=git-receive-pack]<remote> [<head>...]\n"
+literal|"git-send-pack [--all] [--exec=git-receive-pack]<remote> [<head>...]\n"
 literal|"  --all and explicit<head> specification are mutually exclusive."
 decl_stmt|;
 end_decl_stmt
@@ -89,14 +89,6 @@ DECL|variable|use_thin_pack
 specifier|static
 name|int
 name|use_thin_pack
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-DECL|variable|keep_pack
-specifier|static
-name|int
-name|keep_pack
 decl_stmt|;
 end_decl_stmt
 
@@ -1386,11 +1378,6 @@ init|=
 literal|0
 decl_stmt|;
 name|int
-name|ask_to_keep_pack
-init|=
-literal|0
-decl_stmt|;
-name|int
 name|expect_status_report
 init|=
 literal|0
@@ -1424,19 +1411,6 @@ literal|"report-status"
 argument_list|)
 condition|)
 name|ask_for_status_report
-operator|=
-literal|1
-expr_stmt|;
-if|if
-condition|(
-name|server_supports
-argument_list|(
-literal|"keep-pack"
-argument_list|)
-operator|&&
-name|keep_pack
-condition|)
-name|ask_to_keep_pack
 operator|=
 literal|1
 expr_stmt|;
@@ -1695,15 +1669,13 @@ expr_stmt|;
 if|if
 condition|(
 name|ask_for_status_report
-operator|||
-name|ask_to_keep_pack
 condition|)
 block|{
 name|packet_write
 argument_list|(
 name|out
 argument_list|,
-literal|"%s %s %s%c%s%s"
+literal|"%s %s %s%c%s"
 argument_list|,
 name|old_hex
 argument_list|,
@@ -1715,34 +1687,16 @@ name|name
 argument_list|,
 literal|0
 argument_list|,
-name|ask_for_status_report
-condition|?
-literal|" report-status"
-else|:
-literal|""
-argument_list|,
-name|ask_to_keep_pack
-condition|?
-literal|" keep-pack"
-else|:
-literal|""
+literal|"report-status"
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
 name|ask_for_status_report
-condition|)
+operator|=
+literal|0
+expr_stmt|;
 name|expect_status_report
 operator|=
 literal|1
-expr_stmt|;
-name|ask_for_status_report
-operator|=
-literal|0
-expr_stmt|;
-name|ask_to_keep_pack
-operator|=
-literal|0
 expr_stmt|;
 block|}
 else|else
@@ -2028,23 +1982,6 @@ argument_list|)
 condition|)
 block|{
 name|verbose
-operator|=
-literal|1
-expr_stmt|;
-continue|continue;
-block|}
-if|if
-condition|(
-operator|!
-name|strcmp
-argument_list|(
-name|arg
-argument_list|,
-literal|"--keep"
-argument_list|)
-condition|)
-block|{
-name|keep_pack
 operator|=
 literal|1
 expr_stmt|;
