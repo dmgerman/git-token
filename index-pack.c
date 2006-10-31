@@ -305,7 +305,7 @@ argument_list|,
 name|input_offset
 argument_list|)
 expr_stmt|;
-name|memcpy
+name|memmove
 argument_list|(
 name|input_buffer
 argument_list|,
