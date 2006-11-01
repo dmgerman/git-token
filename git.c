@@ -1256,6 +1256,8 @@ block|{
 literal|"branch"
 block|,
 name|cmd_branch
+block|,
+name|RUN_SETUP
 block|}
 block|,
 block|{
