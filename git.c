@@ -1253,6 +1253,12 @@ name|cmd_archive
 block|}
 block|,
 block|{
+literal|"branch"
+block|,
+name|cmd_branch
+block|}
+block|,
+block|{
 literal|"cat-file"
 block|,
 name|cmd_cat_file
@@ -1610,6 +1616,22 @@ block|{
 literal|"verify-pack"
 block|,
 name|cmd_verify_pack
+block|}
+block|,
+block|{
+literal|"show-ref"
+block|,
+name|cmd_show_ref
+block|,
+name|RUN_SETUP
+block|}
+block|,
+block|{
+literal|"pack-refs"
+block|,
+name|cmd_pack_refs
+block|,
+name|RUN_SETUP
 block|}
 block|, 	}
 struct|;

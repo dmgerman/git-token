@@ -1069,6 +1069,13 @@ name|unsigned
 name|char
 modifier|*
 name|sha1
+parameter_list|,
+name|int
+name|flag
+parameter_list|,
+name|void
+modifier|*
+name|cb_data
 parameter_list|)
 block|{
 name|struct
@@ -1481,8 +1488,6 @@ name|i
 index|]
 argument_list|,
 name|NULL
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 if|if
@@ -1517,6 +1522,8 @@ condition|)
 name|for_each_ref
 argument_list|(
 name|mark_complete
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 for|for

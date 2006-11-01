@@ -1279,6 +1279,23 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|delete_ref
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+parameter_list|,
+name|unsigned
+name|char
+modifier|*
+name|sha1
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/* Environment bits from configuration mechanism */
 end_comment
@@ -2276,6 +2293,9 @@ modifier|*
 name|sha1
 parameter_list|,
 name|int
+parameter_list|,
+name|int
+modifier|*
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -2288,7 +2308,7 @@ parameter_list|(
 specifier|const
 name|char
 modifier|*
-name|git_HEAD
+name|ref
 parameter_list|,
 specifier|const
 name|char
@@ -2306,7 +2326,7 @@ parameter_list|(
 specifier|const
 name|char
 modifier|*
-name|git_HEAD
+name|ref
 parameter_list|)
 function_decl|;
 end_function_decl
