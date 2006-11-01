@@ -3005,6 +3005,16 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|void
+name|reprepare_packed_git
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|void
 name|install_packed_git
 parameter_list|(
 name|struct
