@@ -7904,10 +7904,17 @@ argument_list|(
 name|filename
 argument_list|)
 condition|)
+block|{
+operator|*
+name|dir
+operator|=
+literal|'/'
+expr_stmt|;
 return|return
 operator|-
 literal|2
 return|;
+block|}
 operator|*
 name|dir
 operator|=
