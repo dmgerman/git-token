@@ -1281,6 +1281,14 @@ name|cmd_check_ref_format
 block|}
 block|,
 block|{
+literal|"cherry"
+block|,
+name|cmd_cherry
+block|,
+name|RUN_SETUP
+block|}
+block|,
+block|{
 literal|"commit-tree"
 block|,
 name|cmd_commit_tree
