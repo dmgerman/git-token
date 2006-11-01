@@ -4646,6 +4646,8 @@ argument_list|,
 name|O_RDWR
 operator||
 name|O_CREAT
+operator||
+name|O_EXCL
 argument_list|,
 literal|0600
 argument_list|)
@@ -4656,11 +4658,21 @@ name|keep_fd
 operator|<
 literal|0
 condition|)
+block|{
+if|if
+condition|(
+name|errno
+operator|!=
+name|EEXIST
+condition|)
 name|die
 argument_list|(
 literal|"cannot write keep file"
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
 if|if
 condition|(
 name|keep_msg_len
@@ -4692,6 +4704,7 @@ argument_list|(
 name|keep_fd
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
