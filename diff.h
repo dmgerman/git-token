@@ -261,6 +261,12 @@ name|char
 modifier|*
 name|pickaxe
 decl_stmt|;
+DECL|member|single_follow
+specifier|const
+name|char
+modifier|*
+name|single_follow
+decl_stmt|;
 DECL|member|recursive
 name|unsigned
 name|recursive

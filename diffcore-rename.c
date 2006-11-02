@@ -1379,6 +1379,7 @@ operator|->
 name|one
 argument_list|)
 condition|)
+block|{
 if|if
 condition|(
 operator|!
@@ -1391,6 +1392,28 @@ argument_list|)
 condition|)
 continue|continue;
 comment|/* unmerged */
+elseif|else
+if|if
+condition|(
+name|options
+operator|->
+name|single_follow
+operator|&&
+name|strcmp
+argument_list|(
+name|options
+operator|->
+name|single_follow
+argument_list|,
+name|p
+operator|->
+name|two
+operator|->
+name|path
+argument_list|)
+condition|)
+continue|continue;
+comment|/* not interested */
 else|else
 name|locate_rename_dst
 argument_list|(
@@ -1401,6 +1424,7 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
