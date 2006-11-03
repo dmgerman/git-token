@@ -431,7 +431,7 @@ name|color_printf
 argument_list|(
 name|c
 argument_list|,
-literal|"new file: %s"
+literal|"new file:   %s"
 argument_list|,
 name|p
 operator|->
@@ -448,7 +448,7 @@ name|color_printf
 argument_list|(
 name|c
 argument_list|,
-literal|"copied: %s -> %s"
+literal|"copied:     %s -> %s"
 argument_list|,
 name|p
 operator|->
@@ -471,7 +471,7 @@ name|color_printf
 argument_list|(
 name|c
 argument_list|,
-literal|"deleted: %s"
+literal|"deleted:    %s"
 argument_list|,
 name|p
 operator|->
@@ -488,7 +488,7 @@ name|color_printf
 argument_list|(
 name|c
 argument_list|,
-literal|"modified: %s"
+literal|"modified:   %s"
 argument_list|,
 name|p
 operator|->
@@ -505,7 +505,7 @@ name|color_printf
 argument_list|(
 name|c
 argument_list|,
-literal|"renamed: %s -> %s"
+literal|"renamed:    %s -> %s"
 argument_list|,
 name|p
 operator|->
@@ -545,7 +545,7 @@ name|color_printf
 argument_list|(
 name|c
 argument_list|,
-literal|"unknown: %s"
+literal|"unknown:    %s"
 argument_list|,
 name|p
 operator|->
@@ -562,7 +562,7 @@ name|color_printf
 argument_list|(
 name|c
 argument_list|,
-literal|"unmerged: %s"
+literal|"unmerged:   %s"
 argument_list|,
 name|p
 operator|->
