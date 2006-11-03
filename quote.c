@@ -846,7 +846,7 @@ operator|)
 operator|||
 operator|(
 name|ch
-operator|==
+operator|>=
 literal|0177
 operator|)
 condition|)
