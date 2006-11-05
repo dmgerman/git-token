@@ -103,7 +103,7 @@ name|char
 name|pack_usage
 index|[]
 init|=
-literal|"git-pack-objects [-q] [--no-reuse-delta] [--delta-base-offset] [--non-empty] [--local] [--incremental] [--window=N] [--depth=N] [--revs [--unpacked | --all]*] [--stdout | base-name]<ref-list |<object-list]"
+literal|"git-pack-objects [-q] [--no-reuse-delta] [--delta-base-offset] [--non-empty] [--local] [--incremental] [--window=N] [--depth=N] [--all-progress] [--revs [--unpacked | --all]*] [--stdout | base-name]<ref-list |<object-list]"
 decl_stmt|;
 end_decl_stmt
 
@@ -2556,13 +2556,14 @@ decl_stmt|;
 name|int
 name|do_progress
 init|=
-literal|0
+name|progress
 decl_stmt|;
 if|if
 condition|(
 operator|!
 name|base_name
 condition|)
+block|{
 name|f
 operator|=
 name|sha1fd
@@ -2572,8 +2573,12 @@ argument_list|,
 literal|"<stdout>"
 argument_list|)
 expr_stmt|;
+name|do_progress
+operator|>>=
+literal|1
+expr_stmt|;
+block|}
 else|else
-block|{
 name|f
 operator|=
 name|sha1create
@@ -2590,11 +2595,6 @@ argument_list|,
 literal|"pack"
 argument_list|)
 expr_stmt|;
-name|do_progress
-operator|=
-name|progress
-expr_stmt|;
-block|}
 if|if
 condition|(
 name|do_progress
@@ -8041,6 +8041,23 @@ condition|(
 operator|!
 name|strcmp
 argument_list|(
+literal|"--all-progress"
+argument_list|,
+name|arg
+argument_list|)
+condition|)
+block|{
+name|progress
+operator|=
+literal|2
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
 literal|"--incremental"
 argument_list|,
 name|arg
@@ -8553,6 +8570,8 @@ expr_stmt|;
 if|if
 condition|(
 name|progress
+operator|==
+literal|1
 operator|&&
 name|pack_to_stdout
 condition|)
