@@ -222,8 +222,7 @@ name|unsigned
 name|long
 name|p_context
 init|=
-operator|-
-literal|1
+name|ULONG_MAX
 decl_stmt|;
 end_decl_stmt
 
