@@ -7645,6 +7645,12 @@ decl_stmt|,
 modifier|*
 name|h2
 decl_stmt|;
+name|git_config
+argument_list|(
+name|git_default_config
+argument_list|)
+expr_stmt|;
+comment|/* core.filemode */
 name|original_index_file
 operator|=
 name|getenv

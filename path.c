@@ -1317,6 +1317,16 @@ name|S_ISGID
 expr_stmt|;
 if|if
 condition|(
+operator|(
+name|mode
+operator|&
+name|st
+operator|.
+name|st_mode
+operator|)
+operator|!=
+name|mode
+operator|&&
 name|chmod
 argument_list|(
 name|path
