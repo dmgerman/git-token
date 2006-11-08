@@ -618,13 +618,6 @@ decl_stmt|;
 name|int
 name|i
 decl_stmt|;
-if|if
-condition|(
-name|q
-operator|->
-name|nr
-condition|)
-block|{ 	}
 for|for
 control|(
 name|i
