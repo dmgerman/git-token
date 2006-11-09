@@ -1253,6 +1253,16 @@ name|cmd_archive
 block|}
 block|,
 block|{
+literal|"blame"
+block|,
+name|cmd_blame
+block|,
+name|RUN_SETUP
+operator||
+name|USE_PAGER
+block|}
+block|,
+block|{
 literal|"branch"
 block|,
 name|cmd_branch
@@ -1463,7 +1473,7 @@ block|,
 block|{
 literal|"pickaxe"
 block|,
-name|cmd_pickaxe
+name|cmd_blame
 block|,
 name|RUN_SETUP
 operator||
