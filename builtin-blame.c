@@ -7887,6 +7887,10 @@ argument_list|,
 name|len
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|graft
+condition|)
 name|register_commit_graft
 argument_list|(
 name|graft
