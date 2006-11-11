@@ -11,6 +11,12 @@ directive|include
 file|"commit.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"tag.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|is_shallow
 specifier|static
@@ -310,6 +316,8 @@ expr|struct
 name|commit
 operator|*
 operator|)
+name|deref_tag
+argument_list|(
 name|heads
 operator|->
 name|objects
@@ -319,6 +327,11 @@ operator|++
 index|]
 operator|.
 name|item
+argument_list|,
+name|NULL
+argument_list|,
+literal|0
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
