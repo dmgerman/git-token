@@ -345,6 +345,7 @@ literal|0
 condition|)
 name|index
 operator|=
+operator|-
 literal|1
 operator|-
 name|index
