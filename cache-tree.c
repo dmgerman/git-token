@@ -1478,6 +1478,15 @@ argument_list|,
 name|dryrun
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|subcnt
+operator|<
+literal|0
+condition|)
+return|return
+name|subcnt
+return|;
 name|i
 operator|+=
 name|subcnt
