@@ -1048,8 +1048,8 @@ argument_list|(
 name|sha1
 argument_list|)
 expr_stmt|;
+continue|continue;
 block|}
-elseif|else
 if|if
 condition|(
 operator|!
@@ -1116,8 +1116,8 @@ argument_list|,
 name|line
 argument_list|)
 expr_stmt|;
+continue|continue;
 block|}
-else|else
 name|die
 argument_list|(
 literal|"expected shallow/unshallow, got %s"
