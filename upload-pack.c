@@ -3176,6 +3176,12 @@ operator|->
 name|sha1
 argument_list|)
 expr_stmt|;
+name|object
+operator|->
+name|parsed
+operator|=
+literal|0
+expr_stmt|;
 name|parse_commit
 argument_list|(
 operator|(
