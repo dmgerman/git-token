@@ -815,6 +815,7 @@ index|]
 operator|.
 name|item
 decl_stmt|;
+comment|/* why??? */
 name|o
 operator|->
 name|flags
