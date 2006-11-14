@@ -1034,15 +1034,6 @@ argument_list|,
 name|line
 argument_list|)
 expr_stmt|;
-comment|/* no need making it shallow if we have it already */
-if|if
-condition|(
-name|lookup_object
-argument_list|(
-name|sha1
-argument_list|)
-condition|)
-continue|continue;
 name|register_shallow
 argument_list|(
 name|sha1
