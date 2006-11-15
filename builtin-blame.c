@@ -9910,6 +9910,15 @@ comment|/* Now we got rev and path.  We do not want the path pruning 	 * but we 
 name|argv
 index|[
 name|unk
+operator|++
+index|]
+operator|=
+literal|"--"
+expr_stmt|;
+comment|/* terminate the rev name */
+name|argv
+index|[
+name|unk
 index|]
 operator|=
 name|NULL
