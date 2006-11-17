@@ -1781,6 +1781,16 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
+name|current_branch
+condition|)
+name|die
+argument_list|(
+literal|"No current branch"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
 name|strncmp
 argument_list|(
 name|current_branch
