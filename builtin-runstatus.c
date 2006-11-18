@@ -26,7 +26,7 @@ name|char
 name|runstatus_usage
 index|[]
 init|=
-literal|"git-runstatus [--color|--nocolor] [--amend] [--verbose]"
+literal|"git-runstatus [--color|--nocolor] [--amend] [--verbose] [--untracked]"
 decl_stmt|;
 end_decl_stmt
 
