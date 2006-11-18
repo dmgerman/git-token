@@ -933,7 +933,7 @@ name|crc32
 argument_list|(
 literal|0
 argument_list|,
-name|Z_NULL
+name|NULL
 argument_list|,
 literal|0
 argument_list|)
