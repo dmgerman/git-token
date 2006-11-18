@@ -3899,7 +3899,9 @@ begin_function
 DECL|function|discard_cache
 name|int
 name|discard_cache
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 name|int
 name|ret
