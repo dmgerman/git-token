@@ -2842,7 +2842,10 @@ name|v
 operator|->
 name|s
 operator|=
+name|xstrdup
+argument_list|(
 name|bodypos
+argument_list|)
 expr_stmt|;
 elseif|else
 if|if
@@ -2859,7 +2862,10 @@ name|v
 operator|->
 name|s
 operator|=
+name|xstrdup
+argument_list|(
 name|subpos
+argument_list|)
 expr_stmt|;
 block|}
 block|}
