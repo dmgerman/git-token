@@ -73,6 +73,19 @@ name|REF_ISPACKED
 value|02
 end_define
 
+begin_define
+DECL|macro|REF_ISPEELED
+define|#
+directive|define
+name|REF_ISPEELED
+value|04
+end_define
+
+begin_comment
+DECL|macro|REF_ISPEELED
+comment|/* internal use */
+end_comment
+
 begin_typedef
 DECL|typedef|each_ref_fn
 typedef|typedef
@@ -160,6 +173,22 @@ parameter_list|(
 name|each_ref_fn
 parameter_list|,
 name|void
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|peel_ref
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+parameter_list|,
+name|unsigned
+name|char
 modifier|*
 parameter_list|)
 function_decl|;
