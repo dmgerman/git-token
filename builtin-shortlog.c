@@ -781,11 +781,16 @@ name|eob
 init|=
 name|strchr
 argument_list|(
-name|buffer
+name|oneline
 argument_list|,
 literal|']'
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|eob
+condition|)
+block|{
 while|while
 condition|(
 name|isspace
@@ -825,6 +830,7 @@ name|oneline
 operator|=
 name|eob
 expr_stmt|;
+block|}
 block|}
 block|}
 while|while
