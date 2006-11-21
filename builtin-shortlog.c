@@ -49,7 +49,7 @@ name|char
 name|shortlog_usage
 index|[]
 init|=
-literal|"git-shortlog [-n] [-s] [<commit-id>... ]\n"
+literal|"git-shortlog [-n] [-s] [<commit-id>... ]"
 decl_stmt|;
 end_decl_stmt
 
@@ -1772,6 +1772,32 @@ index|]
 operator|.
 name|util
 decl_stmt|;
+if|if
+condition|(
+name|summary
+condition|)
+block|{
+name|printf
+argument_list|(
+literal|"%s: %d\n"
+argument_list|,
+name|list
+operator|.
+name|items
+index|[
+name|i
+index|]
+operator|.
+name|path
+argument_list|,
+name|onelines
+operator|->
+name|nr
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|printf
 argument_list|(
 literal|"%s (%d):\n"
@@ -1790,12 +1816,6 @@ operator|->
 name|nr
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|summary
-condition|)
-block|{
 for|for
 control|(
 name|j
