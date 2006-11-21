@@ -1412,9 +1412,15 @@ argument_list|,
 name|argv
 argument_list|)
 return|;
-name|setlinebuf
+name|setvbuf
 argument_list|(
 name|stderr
+argument_list|,
+name|NULL
+argument_list|,
+name|_IOLBF
+argument_list|,
+name|BUFSIZ
 argument_list|)
 expr_stmt|;
 name|memset
