@@ -377,6 +377,15 @@ name|peeled
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|is_null_sha1
+argument_list|(
+name|peeled
+argument_list|)
+condition|)
+block|{
 name|hex
 operator|=
 name|find_unique_abbrev
@@ -395,6 +404,7 @@ argument_list|,
 name|refname
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{

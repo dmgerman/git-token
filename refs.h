@@ -53,10 +53,6 @@ block|}
 struct|;
 end_struct
 
-begin_comment
-comment|/*  * Calls the specified function for each ref file until it returns nonzero,  * and returns the value  */
-end_comment
-
 begin_define
 DECL|macro|REF_ISSYMREF
 define|#
@@ -73,17 +69,8 @@ name|REF_ISPACKED
 value|02
 end_define
 
-begin_define
-DECL|macro|REF_ISPEELED
-define|#
-directive|define
-name|REF_ISPEELED
-value|04
-end_define
-
 begin_comment
-DECL|macro|REF_ISPEELED
-comment|/* internal use */
+comment|/*  * Calls the specified function for each ref file until it returns nonzero,  * and returns the value  */
 end_comment
 
 begin_typedef

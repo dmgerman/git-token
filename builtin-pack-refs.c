@@ -251,7 +251,7 @@ name|cb
 operator|->
 name|refs_file
 argument_list|,
-literal|"%s  %s^{}\n"
+literal|"^%s\n"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -259,8 +259,6 @@ name|o
 operator|->
 name|sha1
 argument_list|)
-argument_list|,
-name|path
 argument_list|)
 expr_stmt|;
 block|}
@@ -605,6 +603,16 @@ name|strerror
 argument_list|(
 name|errno
 argument_list|)
+argument_list|)
+expr_stmt|;
+comment|/* perhaps other traits later as well */
+name|fprintf
+argument_list|(
+name|cbdata
+operator|.
+name|refs_file
+argument_list|,
+literal|"# pack-refs with: peeled \n"
 argument_list|)
 expr_stmt|;
 name|for_each_ref
