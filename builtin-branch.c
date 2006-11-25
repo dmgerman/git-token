@@ -184,6 +184,8 @@ name|rev
 decl_stmt|,
 modifier|*
 name|head_rev
+init|=
+name|head_rev
 decl_stmt|;
 name|unsigned
 name|char
@@ -199,6 +201,12 @@ decl_stmt|;
 name|int
 name|i
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|force
+condition|)
+block|{
 name|head_rev
 operator|=
 name|lookup_commit_reference
@@ -206,6 +214,17 @@ argument_list|(
 name|head_sha1
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|head_rev
+condition|)
+name|die
+argument_list|(
+literal|"Couldn't look up commit object for HEAD"
+argument_list|)
+expr_stmt|;
+block|}
 for|for
 control|(
 name|i
@@ -288,13 +307,12 @@ if|if
 condition|(
 operator|!
 name|rev
-operator|||
-operator|!
-name|head_rev
 condition|)
 name|die
 argument_list|(
-literal|"Couldn't look up commit objects."
+literal|"Couldn't look up commit object for '%s'"
+argument_list|,
+name|name
 argument_list|)
 expr_stmt|;
 comment|/* This checks whether the merge bases of branch and 		 * HEAD contains branch -- which means that the HEAD 		 * contains everything in both. 		 */
