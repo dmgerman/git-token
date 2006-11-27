@@ -53,10 +53,6 @@ block|}
 struct|;
 end_struct
 
-begin_comment
-comment|/*  * Calls the specified function for each ref file until it returns nonzero,  * and returns the value  */
-end_comment
-
 begin_define
 DECL|macro|REF_ISSYMREF
 define|#
@@ -72,6 +68,10 @@ directive|define
 name|REF_ISPACKED
 value|02
 end_define
+
+begin_comment
+comment|/*  * Calls the specified function for each ref file until it returns nonzero,  * and returns the value  */
+end_comment
 
 begin_typedef
 DECL|typedef|each_ref_fn
@@ -160,6 +160,22 @@ parameter_list|(
 name|each_ref_fn
 parameter_list|,
 name|void
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|peel_ref
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+parameter_list|,
+name|unsigned
+name|char
 modifier|*
 parameter_list|)
 function_decl|;
