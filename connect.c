@@ -781,7 +781,7 @@ struct|;
 end_struct
 
 begin_comment
-comment|/*  * A:B means fast forward remote B with local A.  * +A:B means overwrite remote B with local A.  * +A is a shorthand for +A:A.  * A is a shorthand for A:A.  */
+comment|/*  * A:B means fast forward remote B with local A.  * +A:B means overwrite remote B with local A.  * +A is a shorthand for +A:A.  * A is a shorthand for A:A.  * :B means delete remote B.  */
 end_comment
 
 begin_function
@@ -1231,6 +1231,48 @@ name|len
 decl_stmt|;
 if|if
 condition|(
+operator|!
+operator|*
+name|name
+condition|)
+block|{
+name|ref
+operator|=
+name|xcalloc
+argument_list|(
+literal|1
+argument_list|,
+sizeof|sizeof
+argument_list|(
+operator|*
+name|ref
+argument_list|)
+operator|+
+literal|20
+argument_list|)
+expr_stmt|;
+name|strcpy
+argument_list|(
+name|ref
+operator|->
+name|name
+argument_list|,
+literal|"(delete)"
+argument_list|)
+expr_stmt|;
+name|hashclr
+argument_list|(
+name|ref
+operator|->
+name|new_sha1
+argument_list|)
+expr_stmt|;
+return|return
+name|ref
+return|;
+block|}
+if|if
+condition|(
 name|get_sha1
 argument_list|(
 name|name
@@ -1383,7 +1425,7 @@ break|break;
 case|case
 literal|0
 case|:
-comment|/* The source could be in the get_sha1() format 			 * not a reference name. 			 */
+comment|/* The source could be in the get_sha1() format 			 * not a reference name.  :refs/other is a 			 * way to delete 'other' ref at the remote end. 			 */
 name|matched_src
 operator|=
 name|try_explicit_object_name
