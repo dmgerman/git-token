@@ -798,12 +798,17 @@ name|char
 modifier|*
 name|env_hint
 init|=
-literal|"\n*** Environment problem:\n"
+literal|"\n"
 literal|"*** Your name cannot be determined from your system services (gecos).\n"
-literal|"*** You would need to set %s and %s\n"
-literal|"*** environment variables; otherwise you won't be able to perform\n"
-literal|"*** certain operations because of \"empty ident\" errors.\n"
-literal|"*** Alternatively, you can use user.name configuration variable.\n\n"
+literal|"\n"
+literal|"Run\n"
+literal|"\n"
+literal|"  git repo-config user.email \"you@email.com\"\n"
+literal|"  git repo-config user.name \"Your Name\"\n"
+literal|"\n"
+literal|"To set the identity in this repository.\n"
+literal|"Add --global to set your account\'s default\n"
+literal|"\n"
 decl_stmt|;
 end_decl_stmt
 
