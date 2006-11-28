@@ -1834,22 +1834,6 @@ name|pending
 operator|.
 name|nr
 operator|==
-literal|1
-condition|)
-name|die
-argument_list|(
-literal|"Need a range!"
-argument_list|)
-expr_stmt|;
-elseif|else
-if|if
-condition|(
-name|rev
-operator|.
-name|pending
-operator|.
-name|nr
-operator|==
 literal|0
 condition|)
 name|read_from_stdin
