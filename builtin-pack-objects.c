@@ -2750,6 +2750,21 @@ argument_list|)
 expr_stmt|;
 name|done
 label|:
+if|if
+condition|(
+name|written
+operator|!=
+name|nr_result
+condition|)
+name|die
+argument_list|(
+literal|"wrote %d objects while expecting %d"
+argument_list|,
+name|written
+argument_list|,
+name|nr_result
+argument_list|)
+expr_stmt|;
 name|sha1close
 argument_list|(
 name|f
@@ -8634,9 +8649,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Total %d, written %d (delta %d), reused %d (delta %d)\n"
-argument_list|,
-name|nr_result
+literal|"Total %d (delta %d), reused %d (delta %d)\n"
 argument_list|,
 name|written
 argument_list|,
