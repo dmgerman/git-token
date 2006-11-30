@@ -776,6 +776,14 @@ name|strcmp
 argument_list|(
 name|arg
 argument_list|,
+literal|"--index"
+argument_list|)
+operator|||
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
 literal|"--cached"
 argument_list|)
 condition|)
