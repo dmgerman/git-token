@@ -362,6 +362,11 @@ specifier|const
 name|char
 modifier|*
 name|newref
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|logmsg
 parameter_list|)
 function_decl|;
 end_function_decl

@@ -1412,6 +1412,15 @@ name|newref
 index|[
 name|PATH_MAX
 index|]
+decl_stmt|,
+name|logmsg
+index|[
+name|PATH_MAX
+operator|*
+literal|2
+operator|+
+literal|100
+index|]
 decl_stmt|;
 name|unsigned
 name|char
@@ -1523,6 +1532,22 @@ argument_list|,
 name|newname
 argument_list|)
 expr_stmt|;
+name|snprintf
+argument_list|(
+name|logmsg
+argument_list|,
+sizeof|sizeof
+argument_list|(
+name|logmsg
+argument_list|)
+argument_list|,
+literal|"Branch: renamed %s to %s"
+argument_list|,
+name|oldref
+argument_list|,
+name|newref
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|rename_ref
@@ -1530,6 +1555,8 @@ argument_list|(
 name|oldref
 argument_list|,
 name|newref
+argument_list|,
+name|logmsg
 argument_list|)
 condition|)
 name|die
@@ -1628,6 +1655,9 @@ decl_stmt|;
 name|int
 name|i
 decl_stmt|;
+name|setup_ident
+argument_list|()
+expr_stmt|;
 name|git_config
 argument_list|(
 name|git_default_config
