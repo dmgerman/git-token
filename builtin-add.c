@@ -482,18 +482,6 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|read_cache
-argument_list|()
-operator|<
-literal|0
-condition|)
-name|die
-argument_list|(
-literal|"index file corrupt"
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|i
@@ -672,6 +660,18 @@ return|return
 literal|0
 return|;
 block|}
+if|if
+condition|(
+name|read_cache
+argument_list|()
+operator|<
+literal|0
+condition|)
+name|die
+argument_list|(
+literal|"index file corrupt"
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|i
