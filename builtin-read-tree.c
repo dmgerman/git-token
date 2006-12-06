@@ -458,7 +458,7 @@ name|char
 name|read_tree_usage
 index|[]
 init|=
-literal|"git-read-tree (<sha> | [[-m [--aggressive] | --reset | --prefix=<prefix>] [-u | -i]]<sha1> [<sha2> [<sha3>]])"
+literal|"git-read-tree (<sha> | [[-m [--aggressive] | --reset | --prefix=<prefix>] [-u | -i]] [--exclude-per-directory=<gitignore>]<sha1> [<sha2> [<sha3>]])"
 decl_stmt|;
 end_decl_stmt
 
