@@ -1202,8 +1202,14 @@ name|offset
 operator|=
 literal|8
 expr_stmt|;
-if|if
+while|while
 condition|(
+name|buffer
+operator|+
+name|offset
+operator|<
+name|bob
+operator|&&
 name|isspace
 argument_list|(
 name|bob
