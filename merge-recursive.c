@@ -5305,7 +5305,7 @@ literal|1
 argument_list|,
 name|ren1_src
 argument_list|,
-literal|1
+name|index_only
 argument_list|)
 expr_stmt|;
 name|hashcpy
