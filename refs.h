@@ -344,6 +344,33 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/** rename ref, return 0 on success **/
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|rename_ref
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|oldref
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|newref
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|logmsg
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
