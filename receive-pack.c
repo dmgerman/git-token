@@ -81,7 +81,7 @@ specifier|static
 name|int
 name|unpack_limit
 init|=
-literal|5000
+literal|100
 decl_stmt|;
 end_decl_stmt
 
@@ -672,6 +672,16 @@ operator|!
 name|is_null_sha1
 argument_list|(
 name|old_sha1
+argument_list|)
+operator|&&
+operator|!
+name|strncmp
+argument_list|(
+name|name
+argument_list|,
+literal|"refs/heads/"
+argument_list|,
+literal|11
 argument_list|)
 condition|)
 block|{

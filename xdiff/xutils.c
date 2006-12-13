@@ -1255,6 +1255,13 @@ condition|(
 name|flags
 operator|&
 name|XDF_IGNORE_WHITESPACE_CHANGE
+operator|&&
+name|ptr
+index|[
+literal|1
+index|]
+operator|!=
+literal|'\n'
 condition|)
 block|{
 name|ha
