@@ -865,7 +865,7 @@ name|wt_status_print_header
 argument_list|(
 literal|"Changed but not updated"
 argument_list|,
-literal|"use git-update-index to mark for commit"
+literal|"use git-add on files to include for commit"
 argument_list|)
 expr_stmt|;
 for|for
