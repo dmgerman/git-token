@@ -95,12 +95,12 @@ comment|/* PLAIN (normal) */
 literal|"\033[31m"
 block|,
 comment|/* REMOTE (red) */
+literal|""
+block|,
+comment|/* LOCAL (normal) */
 literal|"\033[32m"
 block|,
-comment|/* LOCAL (green) */
-literal|"\033[1;32m"
-block|,
-comment|/* CURRENT (boldgreen) */
+comment|/* CURRENT (green) */
 block|}
 decl_stmt|;
 end_decl_stmt
