@@ -1464,6 +1464,14 @@ name|var
 argument_list|,
 literal|"pager.color"
 argument_list|)
+operator|||
+operator|!
+name|strcmp
+argument_list|(
+name|var
+argument_list|,
+literal|"color.pager"
+argument_list|)
 condition|)
 block|{
 name|pager_use_color
