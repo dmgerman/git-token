@@ -553,6 +553,19 @@ end_define
 
 begin_function_decl
 specifier|extern
+name|int
+name|is_bare_git_dir
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|dir
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 specifier|const
 name|char
 modifier|*

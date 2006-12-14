@@ -1222,6 +1222,22 @@ literal|"false"
 argument_list|)
 expr_stmt|;
 block|}
+comment|/* Enable logAllRefUpdates if a working tree is attached */
+if|if
+condition|(
+operator|!
+name|is_bare_git_dir
+argument_list|(
+name|git_dir
+argument_list|)
+condition|)
+name|git_config_set
+argument_list|(
+literal|"core.logallrefupdates"
+argument_list|,
+literal|"true"
+argument_list|)
+expr_stmt|;
 return|return
 name|reinit
 return|;
