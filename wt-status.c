@@ -1529,15 +1529,6 @@ condition|(
 name|s
 operator|->
 name|branch
-operator|&&
-name|strcmp
-argument_list|(
-name|s
-operator|->
-name|branch
-argument_list|,
-literal|"refs/heads/master"
-argument_list|)
 condition|)
 name|color_printf_ln
 argument_list|(
