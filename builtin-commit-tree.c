@@ -614,23 +614,6 @@ name|parents
 operator|++
 expr_stmt|;
 block|}
-if|if
-condition|(
-operator|!
-name|parents
-condition|)
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-literal|"Committing initial tree %s\n"
-argument_list|,
-name|argv
-index|[
-literal|1
-index|]
-argument_list|)
-expr_stmt|;
 name|init_buffer
 argument_list|(
 operator|&

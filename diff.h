@@ -190,6 +190,14 @@ name|DIFF_FORMAT_PATCH
 value|0x0010
 end_define
 
+begin_define
+DECL|macro|DIFF_FORMAT_SHORTSTAT
+define|#
+directive|define
+name|DIFF_FORMAT_SHORTSTAT
+value|0x0020
+end_define
+
 begin_comment
 comment|/* These override all above */
 end_comment
