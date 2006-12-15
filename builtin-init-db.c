@@ -854,7 +854,7 @@ end_function
 begin_function
 DECL|function|create_default_files
 specifier|static
-name|void
+name|int
 name|create_default_files
 parameter_list|(
 specifier|const
@@ -899,6 +899,9 @@ name|repo_version_string
 index|[
 literal|10
 index|]
+decl_stmt|;
+name|int
+name|reinit
 decl_stmt|;
 if|if
 condition|(
@@ -1090,16 +1093,20 @@ argument_list|,
 literal|"HEAD"
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
+name|reinit
+operator|=
+operator|!
 name|read_ref
 argument_list|(
 literal|"HEAD"
 argument_list|,
 name|sha1
 argument_list|)
-operator|<
-literal|0
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|reinit
 condition|)
 block|{
 if|if
@@ -1215,6 +1222,9 @@ literal|"false"
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+name|reinit
+return|;
 block|}
 end_function
 
@@ -1279,6 +1289,8 @@ name|int
 name|len
 decl_stmt|,
 name|i
+decl_stmt|,
+name|reinit
 decl_stmt|;
 for|for
 control|(
@@ -1384,19 +1396,10 @@ condition|(
 operator|!
 name|git_dir
 condition|)
-block|{
 name|git_dir
 operator|=
 name|DEFAULT_GIT_DIR_ENVIRONMENT
 expr_stmt|;
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-literal|"defaulting to local storage area\n"
-argument_list|)
-expr_stmt|;
-block|}
 name|safe_create_dir
 argument_list|(
 name|git_dir
@@ -1408,6 +1411,8 @@ comment|/* Check to see if the repository version is right. 	 * Note that a newl
 name|check_repository_format
 argument_list|()
 expr_stmt|;
+name|reinit
+operator|=
 name|create_default_files
 argument_list|(
 name|git_dir
@@ -1521,6 +1526,25 @@ literal|"true"
 argument_list|)
 expr_stmt|;
 block|}
+name|printf
+argument_list|(
+literal|"%s%s Git repository in %s/\n"
+argument_list|,
+name|reinit
+condition|?
+literal|"Reinitialized existing"
+else|:
+literal|"Initialized empty"
+argument_list|,
+name|shared_repository
+condition|?
+literal|" shared"
+else|:
+literal|""
+argument_list|,
+name|git_dir
+argument_list|)
+expr_stmt|;
 return|return
 literal|0
 return|;
