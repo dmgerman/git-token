@@ -142,6 +142,16 @@ name|offset
 argument_list|,
 literal|"updated"
 argument_list|)
+operator|||
+operator|!
+name|strcasecmp
+argument_list|(
+name|var
+operator|+
+name|offset
+argument_list|,
+literal|"added"
+argument_list|)
 condition|)
 return|return
 name|WT_STATUS_UPDATED
@@ -804,7 +814,7 @@ condition|)
 block|{
 name|wt_status_print_header
 argument_list|(
-literal|"Updated but not checked in"
+literal|"Added but not yet committed"
 argument_list|,
 literal|"will commit"
 argument_list|)
@@ -875,7 +885,7 @@ name|nr
 condition|)
 name|wt_status_print_header
 argument_list|(
-literal|"Changed but not updated"
+literal|"Changed but not added"
 argument_list|,
 name|use_add_msg
 argument_list|)
@@ -955,7 +965,7 @@ literal|1
 expr_stmt|;
 name|wt_status_print_header
 argument_list|(
-literal|"Updated but not checked in"
+literal|"Added but not yet committed"
 argument_list|,
 literal|"will commit"
 argument_list|)
