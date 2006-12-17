@@ -2761,8 +2761,14 @@ operator|!
 name|ok_to_replace
 condition|)
 return|return
-operator|-
-literal|1
+name|error
+argument_list|(
+literal|"'%s' appears as both a file and as a directory"
+argument_list|,
+name|ce
+operator|->
+name|name
+argument_list|)
 return|;
 name|pos
 operator|=
