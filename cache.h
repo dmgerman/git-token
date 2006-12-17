@@ -2520,6 +2520,14 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|void
+name|ignore_missing_committer_name
+parameter_list|()
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 specifier|const
 name|char
 modifier|*
