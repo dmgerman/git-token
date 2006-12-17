@@ -2446,6 +2446,7 @@ literal|1
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|ok_to_replace
 condition|)
 break|break;
