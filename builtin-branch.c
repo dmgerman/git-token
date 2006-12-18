@@ -488,7 +488,7 @@ end_function
 begin_function
 DECL|function|delete_branches
 specifier|static
-name|void
+name|int
 name|delete_branches
 parameter_list|(
 name|int
@@ -527,6 +527,8 @@ decl_stmt|;
 name|char
 modifier|*
 name|name
+init|=
+name|NULL
 decl_stmt|;
 specifier|const
 name|char
@@ -538,6 +540,11 @@ name|remote
 decl_stmt|;
 name|int
 name|i
+decl_stmt|;
+name|int
+name|ret
+init|=
+literal|0
 decl_stmt|;
 switch|switch
 condition|(
@@ -634,9 +641,31 @@ name|i
 index|]
 argument_list|)
 condition|)
-name|die
+block|{
+name|error
 argument_list|(
-literal|"Cannot delete the branch you are currently on."
+literal|"Cannot delete the branch '%s' "
+literal|"which you are currently on."
+argument_list|,
+name|argv
+index|[
+name|i
+index|]
+argument_list|)
+expr_stmt|;
+name|ret
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+name|name
+condition|)
+name|free
+argument_list|(
+name|name
 argument_list|)
 expr_stmt|;
 name|name
@@ -668,7 +697,8 @@ argument_list|,
 name|NULL
 argument_list|)
 condition|)
-name|die
+block|{
+name|error
 argument_list|(
 literal|"%sbranch '%s' not found."
 argument_list|,
@@ -680,6 +710,12 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+name|ret
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
 name|rev
 operator|=
 name|lookup_commit_reference
@@ -692,13 +728,20 @@ condition|(
 operator|!
 name|rev
 condition|)
-name|die
+block|{
+name|error
 argument_list|(
 literal|"Couldn't look up commit object for '%s'"
 argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
+name|ret
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
 comment|/* This checks whether the merge bases of branch and 		 * HEAD contains branch -- which means that the HEAD 		 * contains everything in both. 		 */
 if|if
 condition|(
@@ -716,12 +759,12 @@ name|head_rev
 argument_list|)
 condition|)
 block|{
-name|fprintf
+name|error
 argument_list|(
-name|stderr
-argument_list|,
-literal|"The branch '%s' is not a strict subset of your current HEAD.\n"
-literal|"If you are sure you want to delete it, run 'git branch -D %s'.\n"
+literal|"The branch '%s' is not a strict subset of "
+literal|"your current HEAD.\n"
+literal|"If you are sure you want to delete it, "
+literal|"run 'git branch -D %s'."
 argument_list|,
 name|argv
 index|[
@@ -734,11 +777,11 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
-name|exit
-argument_list|(
+name|ret
+operator|=
 literal|1
-argument_list|)
 expr_stmt|;
+continue|continue;
 block|}
 if|if
 condition|(
@@ -749,9 +792,10 @@ argument_list|,
 name|sha1
 argument_list|)
 condition|)
-name|printf
+block|{
+name|error
 argument_list|(
-literal|"Error deleting %sbranch '%s'\n"
+literal|"Error deleting %sbranch '%s'"
 argument_list|,
 name|remote
 argument_list|,
@@ -761,6 +805,11 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+name|ret
+operator|=
+literal|1
+expr_stmt|;
+block|}
 else|else
 name|printf
 argument_list|(
@@ -774,12 +823,21 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|name
+condition|)
 name|free
 argument_list|(
 name|name
 argument_list|)
 expr_stmt|;
-block|}
+return|return
+operator|(
+name|ret
+operator|)
+return|;
 block|}
 end_function
 
@@ -2435,6 +2493,7 @@ if|if
 condition|(
 name|delete
 condition|)
+return|return
 name|delete_branches
 argument_list|(
 name|argc
@@ -2449,7 +2508,7 @@ name|force_delete
 argument_list|,
 name|kinds
 argument_list|)
-expr_stmt|;
+return|;
 elseif|else
 if|if
 condition|(
