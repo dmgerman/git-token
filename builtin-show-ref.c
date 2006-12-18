@@ -1227,6 +1227,12 @@ argument_list|,
 name|NULL
 argument_list|)
 condition|)
+block|{
+if|if
+condition|(
+operator|!
+name|quiet
+condition|)
 name|printf
 argument_list|(
 literal|"%s %s\n"
@@ -1240,6 +1246,7 @@ operator|*
 name|pattern
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
