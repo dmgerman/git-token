@@ -41,9 +41,41 @@ name|char
 name|builtin_branch_usage
 index|[]
 init|=
-literal|"git-branch (-d | -D)<branchname> | [-l] [-f]<branchname> [<start-point>] | (-m | -M) [<oldbranch>]<newbranch> | [-r | -a] [-v [--abbrev=<length>]]"
+literal|"git-branch [-r] (-d | -D)<branchname> | [-l] [-f]<branchname> [<start-point>] | (-m | -M) [<oldbranch>]<newbranch> | [-r | -a] [-v [--abbrev=<length>]]"
 decl_stmt|;
 end_decl_stmt
+
+begin_define
+DECL|macro|REF_UNKNOWN_TYPE
+define|#
+directive|define
+name|REF_UNKNOWN_TYPE
+value|0x00
+end_define
+
+begin_define
+DECL|macro|REF_LOCAL_BRANCH
+define|#
+directive|define
+name|REF_LOCAL_BRANCH
+value|0x01
+end_define
+
+begin_define
+DECL|macro|REF_REMOTE_BRANCH
+define|#
+directive|define
+name|REF_REMOTE_BRANCH
+value|0x02
+end_define
+
+begin_define
+DECL|macro|REF_TAG
+define|#
+directive|define
+name|REF_TAG
+value|0x04
+end_define
 
 begin_decl_stmt
 DECL|variable|head
@@ -470,6 +502,9 @@ name|argv
 parameter_list|,
 name|int
 name|force
+parameter_list|,
+name|int
+name|kinds
 parameter_list|)
 block|{
 name|struct
@@ -493,9 +528,57 @@ name|char
 modifier|*
 name|name
 decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|fmt
+decl_stmt|,
+modifier|*
+name|remote
+decl_stmt|;
 name|int
 name|i
 decl_stmt|;
+switch|switch
+condition|(
+name|kinds
+condition|)
+block|{
+case|case
+name|REF_REMOTE_BRANCH
+case|:
+name|fmt
+operator|=
+literal|"refs/remotes/%s"
+expr_stmt|;
+name|remote
+operator|=
+literal|"remote "
+expr_stmt|;
+name|force
+operator|=
+literal|1
+expr_stmt|;
+break|break;
+case|case
+name|REF_LOCAL_BRANCH
+case|:
+name|fmt
+operator|=
+literal|"refs/heads/%s"
+expr_stmt|;
+name|remote
+operator|=
+literal|""
+expr_stmt|;
+break|break;
+default|default:
+name|die
+argument_list|(
+literal|"cannot use -a with -d"
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -536,6 +619,10 @@ control|)
 block|{
 if|if
 condition|(
+name|kinds
+operator|==
+name|REF_LOCAL_BRANCH
+operator|&&
 operator|!
 name|strcmp
 argument_list|(
@@ -558,7 +645,7 @@ name|xstrdup
 argument_list|(
 name|mkpath
 argument_list|(
-literal|"refs/heads/%s"
+name|fmt
 argument_list|,
 name|argv
 index|[
@@ -583,7 +670,9 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"Branch '%s' not found."
+literal|"%sbranch '%s' not found."
+argument_list|,
+name|remote
 argument_list|,
 name|argv
 index|[
@@ -662,7 +751,9 @@ argument_list|)
 condition|)
 name|printf
 argument_list|(
-literal|"Error deleting branch '%s'\n"
+literal|"Error deleting %sbranch '%s'\n"
+argument_list|,
+name|remote
 argument_list|,
 name|argv
 index|[
@@ -673,7 +764,9 @@ expr_stmt|;
 else|else
 name|printf
 argument_list|(
-literal|"Deleted branch %s.\n"
+literal|"Deleted %sbranch %s.\n"
+argument_list|,
+name|remote
 argument_list|,
 name|argv
 index|[
@@ -689,38 +782,6 @@ expr_stmt|;
 block|}
 block|}
 end_function
-
-begin_define
-DECL|macro|REF_UNKNOWN_TYPE
-define|#
-directive|define
-name|REF_UNKNOWN_TYPE
-value|0x00
-end_define
-
-begin_define
-DECL|macro|REF_LOCAL_BRANCH
-define|#
-directive|define
-name|REF_LOCAL_BRANCH
-value|0x01
-end_define
-
-begin_define
-DECL|macro|REF_REMOTE_BRANCH
-define|#
-directive|define
-name|REF_REMOTE_BRANCH
-value|0x02
-end_define
-
-begin_define
-DECL|macro|REF_TAG
-define|#
-directive|define
-name|REF_TAG
-value|0x04
-end_define
 
 begin_struct
 DECL|struct|ref_item
@@ -2385,6 +2446,8 @@ operator|+
 name|i
 argument_list|,
 name|force_delete
+argument_list|,
+name|kinds
 argument_list|)
 expr_stmt|;
 elseif|else
