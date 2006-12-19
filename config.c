@@ -9,12 +9,6 @@ directive|include
 file|"cache.h"
 end_include
 
-begin_include
-include|#
-directive|include
-file|<regex.h>
-end_include
-
 begin_define
 DECL|macro|MAXNAME
 define|#

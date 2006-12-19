@@ -45,18 +45,6 @@ directive|include
 file|"tag.h"
 end_include
 
-begin_include
-include|#
-directive|include
-file|<time.h>
-end_include
-
-begin_include
-include|#
-directive|include
-file|<sys/time.h>
-end_include
-
 begin_decl_stmt
 DECL|variable|default_show_root
 specifier|static

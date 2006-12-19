@@ -47,12 +47,6 @@ directive|include
 file|"object.h"
 end_include
 
-begin_include
-include|#
-directive|include
-file|<sys/wait.h>
-end_include
-
 begin_decl_stmt
 DECL|variable|receive_pack_usage
 specifier|static

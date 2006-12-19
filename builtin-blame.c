@@ -63,24 +63,6 @@ directive|include
 file|"xdiff-interface.h"
 end_include
 
-begin_include
-include|#
-directive|include
-file|<time.h>
-end_include
-
-begin_include
-include|#
-directive|include
-file|<sys/time.h>
-end_include
-
-begin_include
-include|#
-directive|include
-file|<regex.h>
-end_include
-
 begin_decl_stmt
 DECL|variable|blame_usage
 specifier|static

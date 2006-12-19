@@ -41,12 +41,6 @@ directive|include
 file|"sideband.h"
 end_include
 
-begin_include
-include|#
-directive|include
-file|<sys/wait.h>
-end_include
-
 begin_decl_stmt
 DECL|variable|keep_pack
 specifier|static

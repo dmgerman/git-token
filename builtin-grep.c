@@ -48,25 +48,7 @@ end_include
 begin_include
 include|#
 directive|include
-file|<regex.h>
-end_include
-
-begin_include
-include|#
-directive|include
 file|"grep.h"
-end_include
-
-begin_include
-include|#
-directive|include
-file|<fnmatch.h>
-end_include
-
-begin_include
-include|#
-directive|include
-file|<sys/wait.h>
 end_include
 
 begin_comment
