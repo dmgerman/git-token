@@ -5520,6 +5520,10 @@ name|int
 name|logfd
 decl_stmt|,
 name|tz
+decl_stmt|,
+name|reccnt
+init|=
+literal|0
 decl_stmt|;
 name|struct
 name|stat
@@ -5641,6 +5645,9 @@ operator|<
 name|rec
 condition|)
 block|{
+name|reccnt
+operator|++
+expr_stmt|;
 if|if
 condition|(
 name|logdata
@@ -6021,6 +6028,10 @@ operator|.
 name|st_size
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|at_time
+condition|)
 name|fprintf
 argument_list|(
 name|stderr
@@ -6035,6 +6046,18 @@ name|date
 argument_list|,
 name|tz
 argument_list|)
+argument_list|)
+expr_stmt|;
+else|else
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"warning: Log %s only has %d entries.\n"
+argument_list|,
+name|logfile
+argument_list|,
+name|reccnt
 argument_list|)
 expr_stmt|;
 return|return
