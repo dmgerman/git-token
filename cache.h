@@ -2520,6 +2520,14 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|void
+name|ignore_missing_committer_name
+parameter_list|()
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 specifier|const
 name|char
 modifier|*
@@ -3379,6 +3387,22 @@ name|char
 modifier|*
 parameter_list|,
 name|int
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|git_config_rename_section
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
 parameter_list|)
 function_decl|;
 end_function_decl

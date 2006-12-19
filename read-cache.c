@@ -1775,6 +1775,8 @@ argument_list|(
 name|ce
 argument_list|,
 name|ADD_CACHE_OK_TO_ADD
+operator||
+name|ADD_CACHE_OK_TO_REPLACE
 argument_list|)
 condition|)
 name|die
@@ -2444,6 +2446,7 @@ literal|1
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|ok_to_replace
 condition|)
 break|break;
@@ -2761,8 +2764,14 @@ operator|!
 name|ok_to_replace
 condition|)
 return|return
-operator|-
-literal|1
+name|error
+argument_list|(
+literal|"'%s' appears as both a file and as a directory"
+argument_list|,
+name|ce
+operator|->
+name|name
+argument_list|)
 return|;
 name|pos
 operator|=
