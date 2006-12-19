@@ -619,6 +619,23 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|int
+name|in_merge_bases
+parameter_list|(
+name|struct
+name|commit
+modifier|*
+name|rev1
+parameter_list|,
+name|struct
+name|commit
+modifier|*
+name|rev2
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
