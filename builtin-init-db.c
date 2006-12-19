@@ -693,7 +693,7 @@ name|template_dir
 operator|=
 name|getenv
 argument_list|(
-literal|"GIT_TEMPLATE_DIR"
+name|TEMPLATE_DIR_ENVIRONMENT
 argument_list|)
 expr_stmt|;
 if|if
