@@ -566,6 +566,31 @@ name|builtin_add_usage
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|argc
+operator|<=
+name|i
+condition|)
+block|{
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"Nothing specified, nothing added.\n"
+argument_list|)
+expr_stmt|;
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"Maybe you wanted to say 'git add .'?\n"
+argument_list|)
+expr_stmt|;
+return|return
+literal|0
+return|;
+block|}
 name|pathspec
 operator|=
 name|get_pathspec
