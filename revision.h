@@ -371,6 +371,10 @@ modifier|*
 name|grep_filter
 decl_stmt|;
 comment|/* special limits */
+DECL|member|skip_count
+name|int
+name|skip_count
+decl_stmt|;
 DECL|member|max_count
 name|int
 name|max_count
