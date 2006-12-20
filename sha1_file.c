@@ -5781,7 +5781,7 @@ block|{
 default|default:
 name|die
 argument_list|(
-literal|"corrupted pack file %s containing object of kind %d"
+literal|"pack %s contains unknown object type %d"
 argument_list|,
 name|p
 operator|->
@@ -6041,7 +6041,7 @@ break|break;
 default|default:
 name|die
 argument_list|(
-literal|"corrupted pack file %s containing object of kind %d"
+literal|"pack %s contains unknown object type %d"
 argument_list|,
 name|p
 operator|->

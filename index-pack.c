@@ -1460,7 +1460,7 @@ name|obj
 operator|->
 name|offset
 argument_list|,
-literal|"bad object type %d"
+literal|"unknown object type %d"
 argument_list|,
 name|obj
 operator|->
