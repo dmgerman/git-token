@@ -7439,7 +7439,7 @@ name|original_index_file
 operator|=
 name|getenv
 argument_list|(
-literal|"GIT_INDEX_FILE"
+name|INDEX_ENVIRONMENT
 argument_list|)
 expr_stmt|;
 if|if
