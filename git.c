@@ -1459,6 +1459,14 @@ name|cmd_repo_config
 block|}
 block|,
 block|{
+literal|"rerere"
+block|,
+name|cmd_rerere
+block|,
+name|RUN_SETUP
+block|}
+block|,
+block|{
 literal|"rev-list"
 block|,
 name|cmd_rev_list
