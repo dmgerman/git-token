@@ -41,9 +41,41 @@ name|char
 name|builtin_branch_usage
 index|[]
 init|=
-literal|"git-branch (-d | -D)<branchname> | [-l] [-f]<branchname> [<start-point>] | (-m | -M) [<oldbranch>]<newbranch> | [-r | -a] [-v [--abbrev=<length>]]"
+literal|"git-branch [-r] (-d | -D)<branchname> | [-l] [-f]<branchname> [<start-point>] | (-m | -M) [<oldbranch>]<newbranch> | [-r | -a] [-v [--abbrev=<length>]]"
 decl_stmt|;
 end_decl_stmt
+
+begin_define
+DECL|macro|REF_UNKNOWN_TYPE
+define|#
+directive|define
+name|REF_UNKNOWN_TYPE
+value|0x00
+end_define
+
+begin_define
+DECL|macro|REF_LOCAL_BRANCH
+define|#
+directive|define
+name|REF_LOCAL_BRANCH
+value|0x01
+end_define
+
+begin_define
+DECL|macro|REF_REMOTE_BRANCH
+define|#
+directive|define
+name|REF_REMOTE_BRANCH
+value|0x02
+end_define
+
+begin_define
+DECL|macro|REF_TAG
+define|#
+directive|define
+name|REF_TAG
+value|0x04
+end_define
 
 begin_decl_stmt
 DECL|variable|head
@@ -456,7 +488,7 @@ end_function
 begin_function
 DECL|function|delete_branches
 specifier|static
-name|void
+name|int
 name|delete_branches
 parameter_list|(
 name|int
@@ -470,6 +502,9 @@ name|argv
 parameter_list|,
 name|int
 name|force
+parameter_list|,
+name|int
+name|kinds
 parameter_list|)
 block|{
 name|struct
@@ -492,10 +527,65 @@ decl_stmt|;
 name|char
 modifier|*
 name|name
+init|=
+name|NULL
+decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|fmt
+decl_stmt|,
+modifier|*
+name|remote
 decl_stmt|;
 name|int
 name|i
 decl_stmt|;
+name|int
+name|ret
+init|=
+literal|0
+decl_stmt|;
+switch|switch
+condition|(
+name|kinds
+condition|)
+block|{
+case|case
+name|REF_REMOTE_BRANCH
+case|:
+name|fmt
+operator|=
+literal|"refs/remotes/%s"
+expr_stmt|;
+name|remote
+operator|=
+literal|"remote "
+expr_stmt|;
+name|force
+operator|=
+literal|1
+expr_stmt|;
+break|break;
+case|case
+name|REF_LOCAL_BRANCH
+case|:
+name|fmt
+operator|=
+literal|"refs/heads/%s"
+expr_stmt|;
+name|remote
+operator|=
+literal|""
+expr_stmt|;
+break|break;
+default|default:
+name|die
+argument_list|(
+literal|"cannot use -a with -d"
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -536,6 +626,10 @@ control|)
 block|{
 if|if
 condition|(
+name|kinds
+operator|==
+name|REF_LOCAL_BRANCH
+operator|&&
 operator|!
 name|strcmp
 argument_list|(
@@ -547,9 +641,31 @@ name|i
 index|]
 argument_list|)
 condition|)
-name|die
+block|{
+name|error
 argument_list|(
-literal|"Cannot delete the branch you are currently on."
+literal|"Cannot delete the branch '%s' "
+literal|"which you are currently on."
+argument_list|,
+name|argv
+index|[
+name|i
+index|]
+argument_list|)
+expr_stmt|;
+name|ret
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+name|name
+condition|)
+name|free
+argument_list|(
+name|name
 argument_list|)
 expr_stmt|;
 name|name
@@ -558,7 +674,7 @@ name|xstrdup
 argument_list|(
 name|mkpath
 argument_list|(
-literal|"refs/heads/%s"
+name|fmt
 argument_list|,
 name|argv
 index|[
@@ -581,9 +697,12 @@ argument_list|,
 name|NULL
 argument_list|)
 condition|)
-name|die
+block|{
+name|error
 argument_list|(
-literal|"Branch '%s' not found."
+literal|"%sbranch '%s' not found."
+argument_list|,
+name|remote
 argument_list|,
 name|argv
 index|[
@@ -591,6 +710,12 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+name|ret
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
 name|rev
 operator|=
 name|lookup_commit_reference
@@ -603,13 +728,20 @@ condition|(
 operator|!
 name|rev
 condition|)
-name|die
+block|{
+name|error
 argument_list|(
 literal|"Couldn't look up commit object for '%s'"
 argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
+name|ret
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
 comment|/* This checks whether the merge bases of branch and 		 * HEAD contains branch -- which means that the HEAD 		 * contains everything in both. 		 */
 if|if
 condition|(
@@ -627,12 +759,12 @@ name|head_rev
 argument_list|)
 condition|)
 block|{
-name|fprintf
+name|error
 argument_list|(
-name|stderr
-argument_list|,
-literal|"The branch '%s' is not a strict subset of your current HEAD.\n"
-literal|"If you are sure you want to delete it, run 'git branch -D %s'.\n"
+literal|"The branch '%s' is not a strict subset of "
+literal|"your current HEAD.\n"
+literal|"If you are sure you want to delete it, "
+literal|"run 'git branch -D %s'."
 argument_list|,
 name|argv
 index|[
@@ -645,11 +777,11 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
-name|exit
-argument_list|(
+name|ret
+operator|=
 literal|1
-argument_list|)
 expr_stmt|;
+continue|continue;
 block|}
 if|if
 condition|(
@@ -660,9 +792,12 @@ argument_list|,
 name|sha1
 argument_list|)
 condition|)
-name|printf
+block|{
+name|error
 argument_list|(
-literal|"Error deleting branch '%s'\n"
+literal|"Error deleting %sbranch '%s'"
+argument_list|,
+name|remote
 argument_list|,
 name|argv
 index|[
@@ -670,10 +805,17 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+name|ret
+operator|=
+literal|1
+expr_stmt|;
+block|}
 else|else
 name|printf
 argument_list|(
-literal|"Deleted branch %s.\n"
+literal|"Deleted %sbranch %s.\n"
+argument_list|,
+name|remote
 argument_list|,
 name|argv
 index|[
@@ -681,46 +823,23 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|name
+condition|)
 name|free
 argument_list|(
 name|name
 argument_list|)
 expr_stmt|;
-block|}
+return|return
+operator|(
+name|ret
+operator|)
+return|;
 block|}
 end_function
-
-begin_define
-DECL|macro|REF_UNKNOWN_TYPE
-define|#
-directive|define
-name|REF_UNKNOWN_TYPE
-value|0x00
-end_define
-
-begin_define
-DECL|macro|REF_LOCAL_BRANCH
-define|#
-directive|define
-name|REF_LOCAL_BRANCH
-value|0x01
-end_define
-
-begin_define
-DECL|macro|REF_REMOTE_BRANCH
-define|#
-directive|define
-name|REF_REMOTE_BRANCH
-value|0x02
-end_define
-
-begin_define
-DECL|macro|REF_TAG
-define|#
-directive|define
-name|REF_TAG
-value|0x04
-end_define
 
 begin_struct
 DECL|struct|ref_item
@@ -2374,6 +2493,7 @@ if|if
 condition|(
 name|delete
 condition|)
+return|return
 name|delete_branches
 argument_list|(
 name|argc
@@ -2385,8 +2505,10 @@ operator|+
 name|i
 argument_list|,
 name|force_delete
+argument_list|,
+name|kinds
 argument_list|)
-expr_stmt|;
+return|;
 elseif|else
 if|if
 condition|(
