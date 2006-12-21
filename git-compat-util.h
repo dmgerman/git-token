@@ -79,6 +79,12 @@ parameter_list|)
 value|(sizeof(x)/sizeof(x[0]))
 end_define
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|__APPLE_CC__
+end_ifndef
+
 begin_define
 DECL|macro|_XOPEN_SOURCE
 define|#
@@ -104,6 +110,11 @@ begin_comment
 DECL|macro|_XOPEN_SOURCE_EXTENDED
 comment|/* AIX 5.3L needs this */
 end_comment
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_define
 DECL|macro|_GNU_SOURCE
