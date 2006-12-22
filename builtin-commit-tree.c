@@ -27,6 +27,12 @@ directive|include
 file|"builtin.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"utf8.h"
+end_include
+
 begin_define
 DECL|macro|BLOCKING
 define|#
@@ -164,6 +170,8 @@ operator|=
 name|size
 operator|+
 name|len
+operator|+
+literal|1
 expr_stmt|;
 name|alloc
 operator|=
@@ -218,6 +226,8 @@ operator|*
 name|sizep
 operator|=
 name|newsize
+operator|-
+literal|1
 expr_stmt|;
 name|memcpy
 argument_list|(
@@ -413,6 +423,20 @@ literal|1
 return|;
 block|}
 end_function
+
+begin_decl_stmt
+DECL|variable|commit_utf8_warn
+specifier|static
+specifier|const
+name|char
+name|commit_utf8_warn
+index|[]
+init|=
+literal|"Warning: commit message does not conform to UTF-8.\n"
+literal|"You may want to amend it after fixing the message, or set the config\n"
+literal|"variable i18n.commitencoding to the encoding your project uses.\n"
+decl_stmt|;
+end_decl_stmt
 
 begin_function
 DECL|function|cmd_commit_tree
@@ -746,6 +770,37 @@ argument_list|,
 literal|"%s"
 argument_list|,
 name|comment
+argument_list|)
+expr_stmt|;
+comment|/* And check the encoding */
+name|buffer
+index|[
+name|size
+index|]
+operator|=
+literal|'\0'
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|git_commit_encoding
+argument_list|,
+literal|"utf-8"
+argument_list|)
+operator|&&
+operator|!
+name|is_utf8
+argument_list|(
+name|buffer
+argument_list|)
+condition|)
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+name|commit_utf8_warn
 argument_list|)
 expr_stmt|;
 if|if
