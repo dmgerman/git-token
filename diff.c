@@ -4756,11 +4756,6 @@ name|spaces
 init|=
 literal|0
 decl_stmt|;
-name|data
-operator|->
-name|lineno
-operator|++
-expr_stmt|;
 comment|/* check space before tab */
 for|for
 control|(
@@ -4882,6 +4877,11 @@ name|len
 argument_list|,
 name|line
 argument_list|)
+expr_stmt|;
+name|data
+operator|->
+name|lineno
+operator|++
 expr_stmt|;
 block|}
 elseif|else
