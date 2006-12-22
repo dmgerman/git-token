@@ -307,12 +307,22 @@ condition|(
 operator|*
 name|argc
 operator|<
-literal|1
+literal|2
 condition|)
-return|return
-operator|-
-literal|1
-return|;
+block|{
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"No directory given for --git-dir.\n"
+argument_list|)
+expr_stmt|;
+name|usage
+argument_list|(
+name|git_usage_string
+argument_list|)
+expr_stmt|;
+block|}
 name|setenv
 argument_list|(
 literal|"GIT_DIR"
