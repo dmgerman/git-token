@@ -576,6 +576,19 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|parents
+operator|>=
+name|MAXPARENT
+condition|)
+name|die
+argument_list|(
+literal|"Too many parents (%d max)"
+argument_list|,
+name|MAXPARENT
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|get_sha1
 argument_list|(
 name|b
