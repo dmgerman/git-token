@@ -79,11 +79,21 @@ parameter_list|)
 value|(sizeof(x)/sizeof(x[0]))
 end_define
 
-begin_ifndef
-ifndef|#
-directive|ifndef
-name|__APPLE_CC__
-end_ifndef
+begin_if
+if|#
+directive|if
+operator|!
+name|defined
+argument_list|(
+name|__APPLE__
+argument_list|)
+operator|&&
+operator|!
+name|defined
+argument_list|(
+name|__FreeBSD
+argument_list|)
+end_if
 
 begin_define
 DECL|macro|_XOPEN_SOURCE
