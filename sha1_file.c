@@ -3749,11 +3749,16 @@ name|MAP_FAILED
 condition|)
 name|die
 argument_list|(
-literal|"packfile %s cannot be mapped."
+literal|"packfile %s cannot be mapped: %s"
 argument_list|,
 name|p
 operator|->
 name|pack_name
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|win
