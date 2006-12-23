@@ -91,7 +91,7 @@ operator|&&
 operator|!
 name|defined
 argument_list|(
-name|__FreeBSD
+name|__FreeBSD__
 argument_list|)
 end_if
 
