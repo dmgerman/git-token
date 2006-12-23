@@ -128,6 +128,19 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|packed_git_window_size
+name|size_t
+name|packed_git_window_size
+init|=
+literal|32
+operator|*
+literal|1024
+operator|*
+literal|1024
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|packed_git_limit
 name|size_t
 name|packed_git_limit

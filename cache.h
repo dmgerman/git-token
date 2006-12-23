@@ -1413,6 +1413,13 @@ end_decl_stmt
 begin_decl_stmt
 specifier|extern
 name|size_t
+name|packed_git_window_size
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
+name|size_t
 name|packed_git_limit
 decl_stmt|;
 end_decl_stmt
