@@ -5359,22 +5359,7 @@ name|unsigned
 name|long
 name|base_offset
 decl_stmt|;
-comment|/* there must be at least 20 bytes left regardless of delta type */
-if|if
-condition|(
-name|p
-operator|->
-name|pack_size
-operator|<=
-name|offset
-operator|+
-literal|20
-condition|)
-name|die
-argument_list|(
-literal|"truncated pack file"
-argument_list|)
-expr_stmt|;
+comment|/* use_pack() assured us we have [base_info, base_info + 20) 	 * as a range that we can look at without walking off the 	 * end of the mapped window.  Its actually the hash size 	 * that is assured.  An OFS_DELTA longer than the hash size 	 * is stupid, as then a REF_DELTA would be smaller to store. 	 */
 if|if
 condition|(
 name|kind
@@ -5895,6 +5880,7 @@ name|unsigned
 name|long
 name|used
 decl_stmt|;
+comment|/* use_pack() assures us we have [base, base + 20) available 	 * as a range that we can look at at.  (Its actually the hash 	 * size that is assurred.)  With our object header encoding 	 * the maximum deflated object size is 2^137, which is just 	 * insane, so we know won't exceed what we have been given. 	 */
 name|base
 operator|=
 name|use_pack
