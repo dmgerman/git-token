@@ -3683,7 +3683,7 @@ name|xstrdup
 argument_list|(
 name|mkpath
 argument_list|(
-literal|"%s/%s"
+literal|"%s:%s"
 argument_list|,
 name|branch1
 argument_list|,
@@ -3699,7 +3699,7 @@ name|xstrdup
 argument_list|(
 name|mkpath
 argument_list|(
-literal|"%s/%s"
+literal|"%s:%s"
 argument_list|,
 name|branch2
 argument_list|,
