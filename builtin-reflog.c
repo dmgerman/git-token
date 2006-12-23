@@ -444,6 +444,11 @@ name|expire_unreachable
 operator|)
 operator|&&
 operator|(
+operator|!
+name|cb
+operator|->
+name|ref_commit
+operator|||
 operator|(
 name|old
 operator|&&
@@ -725,20 +730,15 @@ name|cb
 operator|.
 name|ref_commit
 condition|)
-block|{
-name|status
-operator|=
-name|error
+name|fprintf
 argument_list|(
-literal|"ref '%s' does not point at a commit"
+name|stderr
+argument_list|,
+literal|"warning: ref '%s' does not point at a commit\n"
 argument_list|,
 name|ref
 argument_list|)
 expr_stmt|;
-goto|goto
-name|finish
-goto|;
-block|}
 name|cb
 operator|.
 name|ref
