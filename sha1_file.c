@@ -2647,14 +2647,6 @@ return|;
 block|}
 end_function
 
-begin_define
-DECL|macro|PACK_MAX_SZ
-define|#
-directive|define
-name|PACK_MAX_SZ
-value|(1<<26)
-end_define
-
 begin_decl_stmt
 DECL|variable|pack_used_ctr
 specifier|static
@@ -3121,7 +3113,7 @@ name|pack_size
 expr_stmt|;
 while|while
 condition|(
-name|PACK_MAX_SZ
+name|packed_git_limit
 operator|<
 name|pack_mapped
 operator|&&

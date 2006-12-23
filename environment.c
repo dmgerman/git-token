@@ -128,6 +128,19 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|packed_git_limit
+name|size_t
+name|packed_git_limit
+init|=
+literal|256
+operator|*
+literal|1024
+operator|*
+literal|1024
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|pager_in_use
 name|int
 name|pager_in_use

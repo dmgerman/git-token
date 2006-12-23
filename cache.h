@@ -1410,6 +1410,13 @@ name|zlib_compression_level
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+specifier|extern
+name|size_t
+name|packed_git_limit
+decl_stmt|;
+end_decl_stmt
+
 begin_define
 DECL|macro|GIT_REPO_VERSION
 define|#
