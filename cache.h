@@ -3195,7 +3195,7 @@ begin_function_decl
 specifier|extern
 name|void
 modifier|*
-name|unpack_entry_gently
+name|unpack_entry
 parameter_list|(
 name|struct
 name|packed_git
