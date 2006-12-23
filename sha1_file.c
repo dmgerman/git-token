@@ -2657,6 +2657,41 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|pack_mmap_calls
+specifier|static
+name|unsigned
+name|int
+name|pack_mmap_calls
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|peak_pack_open_windows
+specifier|static
+name|unsigned
+name|int
+name|peak_pack_open_windows
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|pack_open_windows
+specifier|static
+name|unsigned
+name|int
+name|pack_open_windows
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|peak_pack_mapped
+specifier|static
+name|size_t
+name|peak_pack_mapped
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|pack_mapped
 specifier|static
 name|size_t
@@ -2680,6 +2715,52 @@ modifier|*
 name|packed_git
 decl_stmt|;
 end_decl_stmt
+
+begin_function
+DECL|function|pack_report
+name|void
+name|pack_report
+parameter_list|()
+block|{
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"pack_report: getpagesize()            = %10lu\n"
+literal|"pack_report: core.packedGitWindowSize = %10lu\n"
+literal|"pack_report: core.packedGitLimit      = %10lu\n"
+argument_list|,
+name|page_size
+argument_list|,
+name|packed_git_window_size
+argument_list|,
+name|packed_git_limit
+argument_list|)
+expr_stmt|;
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"pack_report: pack_used_ctr            = %10u\n"
+literal|"pack_report: pack_mmap_calls          = %10u\n"
+literal|"pack_report: pack_open_windows        = %10u / %10u\n"
+literal|"pack_report: pack_mapped              = %10lu / %10lu\n"
+argument_list|,
+name|pack_used_ctr
+argument_list|,
+name|pack_mmap_calls
+argument_list|,
+name|pack_open_windows
+argument_list|,
+name|peak_pack_open_windows
+argument_list|,
+name|pack_mapped
+argument_list|,
+name|peak_pack_mapped
+argument_list|)
+expr_stmt|;
+block|}
+end_function
 
 begin_function
 DECL|function|check_packed_git_idx
@@ -3179,6 +3260,9 @@ name|free
 argument_list|(
 name|lru_w
 argument_list|)
+expr_stmt|;
+name|pack_open_windows
+operator|--
 expr_stmt|;
 return|return
 literal|1
@@ -3841,6 +3925,32 @@ argument_list|(
 name|errno
 argument_list|)
 argument_list|)
+expr_stmt|;
+name|pack_mmap_calls
+operator|++
+expr_stmt|;
+name|pack_open_windows
+operator|++
+expr_stmt|;
+if|if
+condition|(
+name|pack_mapped
+operator|>
+name|peak_pack_mapped
+condition|)
+name|peak_pack_mapped
+operator|=
+name|pack_mapped
+expr_stmt|;
+if|if
+condition|(
+name|pack_open_windows
+operator|>
+name|peak_pack_open_windows
+condition|)
+name|peak_pack_open_windows
+operator|=
+name|pack_open_windows
 expr_stmt|;
 name|win
 operator|->
