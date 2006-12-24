@@ -6,10 +6,10 @@ file|"../git-compat-util.h"
 end_include
 
 begin_function
-DECL|function|gitfakemmap
+DECL|function|git_mmap
 name|void
 modifier|*
-name|gitfakemmap
+name|git_mmap
 parameter_list|(
 name|void
 modifier|*
@@ -63,7 +63,7 @@ operator|)
 condition|)
 name|die
 argument_list|(
-literal|"Invalid usage of gitfakemmap."
+literal|"Invalid usage of mmap when built with NO_MMAP"
 argument_list|)
 expr_stmt|;
 if|if
@@ -209,9 +209,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|gitfakemunmap
+DECL|function|git_munmap
 name|int
-name|gitfakemunmap
+name|git_munmap
 parameter_list|(
 name|void
 modifier|*

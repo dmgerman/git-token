@@ -646,7 +646,7 @@ DECL|macro|mmap
 define|#
 directive|define
 name|mmap
-value|gitfakemmap
+value|git_mmap
 end_define
 
 begin_define
@@ -654,14 +654,14 @@ DECL|macro|munmap
 define|#
 directive|define
 name|munmap
-value|gitfakemunmap
+value|git_munmap
 end_define
 
 begin_function_decl
 specifier|extern
 name|void
 modifier|*
-name|gitfakemmap
+name|git_mmap
 parameter_list|(
 name|void
 modifier|*
@@ -688,7 +688,7 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|int
-name|gitfakemunmap
+name|git_munmap
 parameter_list|(
 name|void
 modifier|*
