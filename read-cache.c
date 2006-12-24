@@ -3654,7 +3654,7 @@ literal|20
 condition|)
 name|cache_mmap
 operator|=
-name|mmap
+name|xmmap
 argument_list|(
 name|NULL
 argument_list|,

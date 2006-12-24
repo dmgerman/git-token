@@ -3364,7 +3364,7 @@ argument_list|)
 expr_stmt|;
 name|contents
 operator|=
-name|mmap
+name|xmmap
 argument_list|(
 name|NULL
 argument_list|,
