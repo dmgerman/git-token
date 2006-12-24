@@ -700,6 +700,14 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_define
+DECL|macro|DEFAULT_PACKED_GIT_WINDOW_SIZE
+define|#
+directive|define
+name|DEFAULT_PACKED_GIT_WINDOW_SIZE
+value|(1 * 1024 * 1024)
+end_define
+
 begin_else
 else|#
 directive|else
@@ -715,6 +723,14 @@ directive|include
 file|<sys/mman.h>
 end_include
 
+begin_define
+DECL|macro|DEFAULT_PACKED_GIT_WINDOW_SIZE
+define|#
+directive|define
+name|DEFAULT_PACKED_GIT_WINDOW_SIZE
+value|(32 * 1024 * 1024)
+end_define
+
 begin_endif
 endif|#
 directive|endif
@@ -723,6 +739,14 @@ end_endif
 begin_comment
 comment|/* NO_MMAP */
 end_comment
+
+begin_define
+DECL|macro|DEFAULT_PACKED_GIT_LIMIT
+define|#
+directive|define
+name|DEFAULT_PACKED_GIT_LIMIT
+value|(256 * 1024 * 1024)
+end_define
 
 begin_ifdef
 ifdef|#

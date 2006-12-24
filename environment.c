@@ -132,11 +132,7 @@ DECL|variable|packed_git_window_size
 name|size_t
 name|packed_git_window_size
 init|=
-literal|32
-operator|*
-literal|1024
-operator|*
-literal|1024
+name|DEFAULT_PACKED_GIT_WINDOW_SIZE
 decl_stmt|;
 end_decl_stmt
 
@@ -145,11 +141,7 @@ DECL|variable|packed_git_limit
 name|size_t
 name|packed_git_limit
 init|=
-literal|256
-operator|*
-literal|1024
-operator|*
-literal|1024
+name|DEFAULT_PACKED_GIT_LIMIT
 decl_stmt|;
 end_decl_stmt
 
