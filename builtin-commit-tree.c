@@ -494,6 +494,9 @@ name|unsigned
 name|int
 name|size
 decl_stmt|;
+name|int
+name|encoding_is_utf8
+decl_stmt|;
 name|setup_ident
 argument_list|()
 expr_stmt|;
@@ -651,6 +654,16 @@ name|parents
 operator|++
 expr_stmt|;
 block|}
+name|encoding_is_utf8
+operator|=
+operator|!
+name|strcmp
+argument_list|(
+name|git_commit_encoding
+argument_list|,
+literal|"utf-8"
+argument_list|)
+expr_stmt|;
 name|init_buffer
 argument_list|(
 operator|&
@@ -734,12 +747,41 @@ argument_list|,
 operator|&
 name|size
 argument_list|,
-literal|"committer %s\n\n"
+literal|"committer %s\n"
 argument_list|,
 name|git_committer_info
 argument_list|(
 literal|1
 argument_list|)
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|encoding_is_utf8
+condition|)
+name|add_buffer
+argument_list|(
+operator|&
+name|buffer
+argument_list|,
+operator|&
+name|size
+argument_list|,
+literal|"encoding %s\n"
+argument_list|,
+name|git_commit_encoding
+argument_list|)
+expr_stmt|;
+name|add_buffer
+argument_list|(
+operator|&
+name|buffer
+argument_list|,
+operator|&
+name|size
+argument_list|,
+literal|"\n"
 argument_list|)
 expr_stmt|;
 comment|/* And add the comment */
@@ -782,13 +824,7 @@ literal|'\0'
 expr_stmt|;
 if|if
 condition|(
-operator|!
-name|strcmp
-argument_list|(
-name|git_commit_encoding
-argument_list|,
-literal|"utf-8"
-argument_list|)
+name|encoding_is_utf8
 operator|&&
 operator|!
 name|is_utf8
