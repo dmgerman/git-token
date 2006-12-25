@@ -185,6 +185,23 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
+if|if
+condition|(
+name|entry
+operator|->
+name|ignored_entry
+condition|)
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"warning: '%s' is an ignored path.\n"
+argument_list|,
+name|entry
+operator|->
+name|name
+argument_list|)
+expr_stmt|;
 operator|*
 name|dst
 operator|++
