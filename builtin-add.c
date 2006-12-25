@@ -47,7 +47,7 @@ name|char
 name|builtin_add_usage
 index|[]
 init|=
-literal|"git-add [-n] [-v]<filepattern>..."
+literal|"git-add [-n] [-v] [--interactive] [--]<filepattern>..."
 decl_stmt|;
 end_decl_stmt
 
