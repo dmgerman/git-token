@@ -328,6 +328,54 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/* iterate over reflog entries */
+end_comment
+
+begin_typedef
+DECL|typedef|each_reflog_ent_fn
+typedef|typedef
+name|int
+name|each_reflog_ent_fn
+parameter_list|(
+name|unsigned
+name|char
+modifier|*
+name|osha1
+parameter_list|,
+name|unsigned
+name|char
+modifier|*
+name|nsha1
+parameter_list|,
+name|char
+modifier|*
+parameter_list|,
+name|void
+modifier|*
+parameter_list|)
+function_decl|;
+end_typedef
+
+begin_function_decl
+name|void
+name|for_each_reflog_ent
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|ref
+parameter_list|,
+name|each_reflog_ent_fn
+name|fn
+parameter_list|,
+name|void
+modifier|*
+name|cb_data
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/** Returns 0 if target has the right format for a ref. **/
 end_comment
 
