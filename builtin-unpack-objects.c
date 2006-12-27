@@ -53,12 +53,6 @@ directive|include
 file|"tree.h"
 end_include
 
-begin_include
-include|#
-directive|include
-file|<sys/time.h>
-end_include
-
 begin_decl_stmt
 DECL|variable|dry_run
 DECL|variable|quiet

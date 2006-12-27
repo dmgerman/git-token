@@ -21,12 +21,6 @@ directive|include
 file|"diffcore.h"
 end_include
 
-begin_include
-include|#
-directive|include
-file|<fnmatch.h>
-end_include
-
 begin_decl_stmt
 DECL|variable|order
 specifier|static

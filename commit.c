@@ -4712,7 +4712,7 @@ comment|/* merge-rebase stuff */
 end_comment
 
 begin_comment
-comment|/* bits #0..7 in revision.h */
+comment|/* bits #0..15 in revision.h */
 end_comment
 
 begin_define
@@ -4720,7 +4720,7 @@ DECL|macro|PARENT1
 define|#
 directive|define
 name|PARENT1
-value|(1u<< 8)
+value|(1u<<16)
 end_define
 
 begin_define
@@ -4728,7 +4728,7 @@ DECL|macro|PARENT2
 define|#
 directive|define
 name|PARENT2
-value|(1u<< 9)
+value|(1u<<17)
 end_define
 
 begin_define
@@ -4736,7 +4736,7 @@ DECL|macro|STALE
 define|#
 directive|define
 name|STALE
-value|(1u<<10)
+value|(1u<<18)
 end_define
 
 begin_define
@@ -4744,7 +4744,7 @@ DECL|macro|RESULT
 define|#
 directive|define
 name|RESULT
-value|(1u<<11)
+value|(1u<<19)
 end_define
 
 begin_function
@@ -5508,6 +5508,100 @@ argument_list|)
 expr_stmt|;
 return|return
 name|result
+return|;
+block|}
+end_function
+
+begin_function
+DECL|function|in_merge_bases
+name|int
+name|in_merge_bases
+parameter_list|(
+name|struct
+name|commit
+modifier|*
+name|rev1
+parameter_list|,
+name|struct
+name|commit
+modifier|*
+name|rev2
+parameter_list|)
+block|{
+name|struct
+name|commit_list
+modifier|*
+name|bases
+decl_stmt|,
+modifier|*
+name|b
+decl_stmt|;
+name|int
+name|ret
+init|=
+literal|0
+decl_stmt|;
+name|bases
+operator|=
+name|get_merge_bases
+argument_list|(
+name|rev1
+argument_list|,
+name|rev2
+argument_list|,
+literal|1
+argument_list|)
+expr_stmt|;
+for|for
+control|(
+name|b
+operator|=
+name|bases
+init|;
+name|b
+condition|;
+name|b
+operator|=
+name|b
+operator|->
+name|next
+control|)
+block|{
+if|if
+condition|(
+operator|!
+name|hashcmp
+argument_list|(
+name|rev1
+operator|->
+name|object
+operator|.
+name|sha1
+argument_list|,
+name|b
+operator|->
+name|item
+operator|->
+name|object
+operator|.
+name|sha1
+argument_list|)
+condition|)
+block|{
+name|ret
+operator|=
+literal|1
+expr_stmt|;
+break|break;
+block|}
+block|}
+name|free_commit_list
+argument_list|(
+name|bases
+argument_list|)
+expr_stmt|;
+return|return
+name|ret
 return|;
 block|}
 end_function

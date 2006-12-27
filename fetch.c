@@ -2,13 +2,13 @@ begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_include
 include|#
 directive|include
-file|"fetch.h"
+file|"cache.h"
 end_include
 
 begin_include
 include|#
 directive|include
-file|"cache.h"
+file|"fetch.h"
 end_include
 
 begin_include
@@ -149,15 +149,10 @@ name|void
 name|report_missing
 parameter_list|(
 specifier|const
-name|char
+name|struct
+name|object
 modifier|*
-name|what
-parameter_list|,
-specifier|const
-name|unsigned
-name|char
-modifier|*
-name|missing
+name|obj
 parameter_list|)
 block|{
 name|char
@@ -172,7 +167,9 @@ name|missing_hex
 argument_list|,
 name|sha1_to_hex
 argument_list|(
-name|missing
+name|obj
+operator|->
+name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -181,11 +178,37 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Cannot obtain needed %s %s\nwhile processing commit %s.\n"
+literal|"Cannot obtain needed %s %s\n"
 argument_list|,
-name|what
+name|obj
+operator|->
+name|type
+condition|?
+name|typename
+argument_list|(
+name|obj
+operator|->
+name|type
+argument_list|)
+else|:
+literal|"object"
 argument_list|,
 name|missing_hex
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|is_null_sha1
+argument_list|(
+name|current_commit_sha1
+argument_list|)
+condition|)
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"while processing commit %s.\n"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -942,16 +965,7 @@ condition|)
 block|{
 name|report_missing
 argument_list|(
-name|typename
-argument_list|(
 name|obj
-operator|->
-name|type
-argument_list|)
-argument_list|,
-name|obj
-operator|->
-name|sha1
 argument_list|)
 expr_stmt|;
 return|return

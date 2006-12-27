@@ -2,6 +2,12 @@ begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_include
 include|#
 directive|include
+file|"cache.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"wt-status.h"
 end_include
 
@@ -9,12 +15,6 @@ begin_include
 include|#
 directive|include
 file|"color.h"
-end_include
-
-begin_include
-include|#
-directive|include
-file|"cache.h"
 end_include
 
 begin_include
@@ -89,6 +89,18 @@ block|}
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|use_add_msg
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|use_add_msg
+init|=
+literal|"use \"git add file1 file2\" to include for commit"
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|parse_status_slot
 specifier|static
@@ -129,6 +141,16 @@ operator|+
 name|offset
 argument_list|,
 literal|"updated"
+argument_list|)
+operator|||
+operator|!
+name|strcasecmp
+argument_list|(
+name|var
+operator|+
+name|offset
+argument_list|,
+literal|"added"
 argument_list|)
 condition|)
 return|return
@@ -792,7 +814,7 @@ condition|)
 block|{
 name|wt_status_print_header
 argument_list|(
-literal|"Updated but not checked in"
+literal|"Added but not yet committed"
 argument_list|,
 literal|"will commit"
 argument_list|)
@@ -863,9 +885,9 @@ name|nr
 condition|)
 name|wt_status_print_header
 argument_list|(
-literal|"Changed but not updated"
+literal|"Changed but not added"
 argument_list|,
-literal|"use git-update-index to mark for commit"
+name|use_add_msg
 argument_list|)
 expr_stmt|;
 for|for
@@ -943,7 +965,7 @@ literal|1
 expr_stmt|;
 name|wt_status_print_header
 argument_list|(
-literal|"Updated but not checked in"
+literal|"Added but not yet committed"
 argument_list|,
 literal|"will commit"
 argument_list|)
@@ -1386,7 +1408,7 @@ name|wt_status_print_header
 argument_list|(
 literal|"Untracked files"
 argument_list|,
-literal|"use \"git add\" to add to commit"
+name|use_add_msg
 argument_list|)
 expr_stmt|;
 name|shown_header
@@ -1507,15 +1529,6 @@ condition|(
 name|s
 operator|->
 name|branch
-operator|&&
-name|strcmp
-argument_list|(
-name|s
-operator|->
-name|branch
-argument_list|,
-literal|"refs/heads/master"
-argument_list|)
 condition|)
 name|color_printf_ln
 argument_list|(
@@ -1620,7 +1633,7 @@ name|commitable
 condition|)
 name|printf
 argument_list|(
-literal|"%s\n"
+literal|"%s (%s)\n"
 argument_list|,
 name|s
 operator|->
@@ -1629,6 +1642,8 @@ condition|?
 literal|"# No changes"
 else|:
 literal|"nothing to commit"
+argument_list|,
+name|use_add_msg
 argument_list|)
 expr_stmt|;
 block|}
@@ -1659,6 +1674,14 @@ name|k
 argument_list|,
 literal|"status.color"
 argument_list|)
+operator|||
+operator|!
+name|strcmp
+argument_list|(
+name|k
+argument_list|,
+literal|"color.status"
+argument_list|)
 condition|)
 block|{
 name|wt_status_use_color
@@ -1682,6 +1705,16 @@ argument_list|(
 name|k
 argument_list|,
 literal|"status.color."
+argument_list|,
+literal|13
+argument_list|)
+operator|||
+operator|!
+name|strncmp
+argument_list|(
+name|k
+argument_list|,
+literal|"color.status"
 argument_list|,
 literal|13
 argument_list|)

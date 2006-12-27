@@ -47,18 +47,6 @@ directive|include
 file|"tree.h"
 end_include
 
-begin_include
-include|#
-directive|include
-file|<sys/time.h>
-end_include
-
-begin_include
-include|#
-directive|include
-file|<signal.h>
-end_include
-
 begin_decl_stmt
 DECL|variable|index_pack_usage
 specifier|static
@@ -448,14 +436,14 @@ end_decl_stmt
 begin_decl_stmt
 DECL|variable|input_fd
 DECL|variable|output_fd
-DECL|variable|mmap_fd
+DECL|variable|pack_fd
 specifier|static
 name|int
 name|input_fd
 decl_stmt|,
 name|output_fd
 decl_stmt|,
-name|mmap_fd
+name|pack_fd
 decl_stmt|;
 end_decl_stmt
 
@@ -502,7 +490,7 @@ argument_list|,
 name|input_offset
 argument_list|)
 expr_stmt|;
-name|memcpy
+name|memmove
 argument_list|(
 name|input_buffer
 argument_list|,
@@ -769,7 +757,7 @@ name|errno
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|mmap_fd
+name|pack_fd
 operator|=
 name|output_fd
 expr_stmt|;
@@ -808,7 +796,7 @@ operator|=
 operator|-
 literal|1
 expr_stmt|;
-name|mmap_fd
+name|pack_fd
 operator|=
 name|input_fd
 expr_stmt|;
@@ -1472,7 +1460,7 @@ name|obj
 operator|->
 name|offset
 argument_list|,
-literal|"bad object type %d"
+literal|"unknown object type %d"
 argument_list|,
 name|obj
 operator|->
@@ -1550,17 +1538,9 @@ operator|-
 name|from
 decl_stmt|;
 name|unsigned
-name|pg_offset
-init|=
-name|from
-operator|%
-name|getpagesize
-argument_list|()
-decl_stmt|;
-name|unsigned
 name|char
 modifier|*
-name|map
+name|src
 decl_stmt|,
 modifier|*
 name|data
@@ -1571,36 +1551,31 @@ decl_stmt|;
 name|int
 name|st
 decl_stmt|;
-name|map
+name|src
 operator|=
-name|mmap
+name|xmalloc
 argument_list|(
-name|NULL
-argument_list|,
 name|len
-operator|+
-name|pg_offset
-argument_list|,
-name|PROT_READ
-argument_list|,
-name|MAP_PRIVATE
-argument_list|,
-name|mmap_fd
-argument_list|,
-name|from
-operator|-
-name|pg_offset
 argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|map
-operator|==
-name|MAP_FAILED
+name|pread
+argument_list|(
+name|pack_fd
+argument_list|,
+name|src
+argument_list|,
+name|len
+argument_list|,
+name|from
+argument_list|)
+operator|!=
+name|len
 condition|)
 name|die
 argument_list|(
-literal|"cannot mmap pack file: %s"
+literal|"cannot pread pack file: %s"
 argument_list|,
 name|strerror
 argument_list|(
@@ -1648,9 +1623,7 @@ name|stream
 operator|.
 name|next_in
 operator|=
-name|map
-operator|+
-name|pg_offset
+name|src
 expr_stmt|;
 name|stream
 operator|.
@@ -1706,13 +1679,9 @@ argument_list|(
 literal|"serious inflate inconsistency"
 argument_list|)
 expr_stmt|;
-name|munmap
+name|free
 argument_list|(
-name|map
-argument_list|,
-name|len
-operator|+
-name|pg_offset
+name|src
 argument_list|)
 expr_stmt|;
 return|return

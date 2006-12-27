@@ -116,6 +116,22 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|int
+name|read_mmfile
+parameter_list|(
+name|mmfile_t
+modifier|*
+name|ptr
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|filename
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif

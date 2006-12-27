@@ -84,6 +84,12 @@ name|char
 modifier|*
 name|prefix
 decl_stmt|;
+DECL|member|dir
+name|struct
+name|dir_struct
+modifier|*
+name|dir
+decl_stmt|;
 DECL|member|fn
 name|merge_fn_t
 name|fn
