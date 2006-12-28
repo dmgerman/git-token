@@ -1141,6 +1141,22 @@ operator|->
 name|mode
 condition|)
 continue|continue;
+comment|/* no sense refining a conflict when one side is empty */
+if|if
+condition|(
+name|m
+operator|->
+name|chg1
+operator|==
+literal|0
+operator|||
+name|m
+operator|->
+name|chg2
+operator|==
+literal|0
+condition|)
+continue|continue;
 comment|/* 		 * This probably does not work outside git, since 		 * we have a very simple mmfile structure. 		 */
 name|t1
 operator|.
