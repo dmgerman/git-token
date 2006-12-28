@@ -3485,21 +3485,19 @@ index|]
 decl_stmt|;
 end_decl_stmt
 
-begin_define
-DECL|macro|MAX_ENCODING_LENGTH
-define|#
-directive|define
-name|MAX_ENCODING_LENGTH
-value|64
-end_define
+begin_decl_stmt
+specifier|extern
+name|char
+modifier|*
+name|git_commit_encoding
+decl_stmt|;
+end_decl_stmt
 
 begin_decl_stmt
 specifier|extern
 name|char
-name|git_commit_encoding
-index|[
-name|MAX_ENCODING_LENGTH
-index|]
+modifier|*
+name|git_log_output_encoding
 decl_stmt|;
 end_decl_stmt
 

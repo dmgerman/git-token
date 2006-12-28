@@ -87,12 +87,16 @@ end_decl_stmt
 begin_decl_stmt
 DECL|variable|git_commit_encoding
 name|char
+modifier|*
 name|git_commit_encoding
-index|[
-name|MAX_ENCODING_LENGTH
-index|]
-init|=
-literal|"utf-8"
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|git_log_output_encoding
+name|char
+modifier|*
+name|git_log_output_encoding
 decl_stmt|;
 end_decl_stmt
 
