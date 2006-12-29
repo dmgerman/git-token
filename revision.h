@@ -376,6 +376,12 @@ name|char
 modifier|*
 name|extra_headers
 decl_stmt|;
+DECL|member|log_reencode
+specifier|const
+name|char
+modifier|*
+name|log_reencode
+decl_stmt|;
 comment|/* Filter by commit log message */
 DECL|member|grep_filter
 name|struct
