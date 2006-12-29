@@ -3362,6 +3362,9 @@ name|char
 modifier|*
 name|idx_sha1
 decl_stmt|;
+name|long
+name|fd_flag
+decl_stmt|;
 name|p
 operator|->
 name|pack_fd
@@ -3457,6 +3460,56 @@ argument_list|,
 name|p
 operator|->
 name|pack_name
+argument_list|)
+expr_stmt|;
+comment|/* We leave these file descriptors open with sliding mmap; 	 * there is no point keeping them open across exec(), though. 	 */
+name|fd_flag
+operator|=
+name|fcntl
+argument_list|(
+name|p
+operator|->
+name|pack_fd
+argument_list|,
+name|F_GETFD
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|fd_flag
+operator|<
+literal|0
+condition|)
+name|die
+argument_list|(
+literal|"cannot determine file descriptor flags"
+argument_list|)
+expr_stmt|;
+name|fd_flag
+operator||=
+name|FD_CLOEXEC
+expr_stmt|;
+if|if
+condition|(
+name|fcntl
+argument_list|(
+name|p
+operator|->
+name|pack_fd
+argument_list|,
+name|F_SETFD
+argument_list|,
+name|fd_flag
+argument_list|)
+operator|==
+operator|-
+literal|1
+condition|)
+name|die
+argument_list|(
+literal|"cannot set FD_CLOEXEC"
 argument_list|)
 expr_stmt|;
 comment|/* Verify we recognize this pack file format. */
