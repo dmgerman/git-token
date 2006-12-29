@@ -1259,10 +1259,11 @@ block|}
 end_function
 
 begin_function
-DECL|function|add_name
-specifier|static
-name|void
-name|add_name
+DECL|function|dir_add_name
+name|struct
+name|dir_entry
+modifier|*
+name|dir_add_name
 parameter_list|(
 name|struct
 name|dir_struct
@@ -1294,7 +1295,9 @@ argument_list|)
 operator|>=
 literal|0
 condition|)
-return|return;
+return|return
+name|NULL
+return|;
 if|if
 condition|(
 name|dir
@@ -1358,6 +1361,16 @@ argument_list|)
 expr_stmt|;
 name|ent
 operator|->
+name|ignored
+operator|=
+name|ent
+operator|->
+name|ignored_dir
+operator|=
+literal|0
+expr_stmt|;
+name|ent
+operator|->
 name|len
 operator|=
 name|len
@@ -1394,6 +1407,9 @@ index|]
 operator|=
 name|ent
 expr_stmt|;
+return|return
+name|ent
+return|;
 block|}
 end_function
 
@@ -1831,7 +1847,7 @@ goto|goto
 name|exit_early
 goto|;
 else|else
-name|add_name
+name|dir_add_name
 argument_list|(
 name|dir
 argument_list|,
