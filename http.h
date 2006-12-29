@@ -111,9 +111,17 @@ end_endif
 begin_if
 if|#
 directive|if
+operator|(
 name|LIBCURL_VERSION_NUM
 operator|<
 literal|0x070c04
+operator|)
+operator|||
+operator|(
+name|LIBCURL_VERSION_NUM
+operator|==
+literal|0x071000
+operator|)
 end_if
 
 begin_define
