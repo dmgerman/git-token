@@ -657,18 +657,10 @@ block|}
 comment|/* Not having i18n.commitencoding is the same as having utf-8 */
 name|encoding_is_utf8
 operator|=
-operator|(
-operator|!
-name|git_commit_encoding
-operator|||
-operator|!
-name|strcmp
+name|is_encoding_utf8
 argument_list|(
 name|git_commit_encoding
-argument_list|,
-literal|"utf-8"
 argument_list|)
-operator|)
 expr_stmt|;
 name|init_buffer
 argument_list|(

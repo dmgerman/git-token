@@ -38,6 +38,18 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+name|int
+name|is_encoding_utf8
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|name
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|void
 name|print_wrapped_text
 parameter_list|(
