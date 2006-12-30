@@ -3554,6 +3554,17 @@ condition|(
 operator|!
 name|output_encoding
 condition|)
+name|output_encoding
+operator|=
+literal|"utf-8"
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+operator|*
+name|output_encoding
+condition|)
 return|return
 name|NULL
 return|;
