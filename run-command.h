@@ -47,10 +47,10 @@ enum|;
 end_enum
 
 begin_define
-DECL|macro|RUN_COMMAND_NO_STDIO
+DECL|macro|RUN_COMMAND_NO_STDIN
 define|#
 directive|define
-name|RUN_COMMAND_NO_STDIO
+name|RUN_COMMAND_NO_STDIN
 value|1
 end_define
 

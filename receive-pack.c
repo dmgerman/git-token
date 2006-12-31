@@ -400,6 +400,8 @@ name|code
 operator|=
 name|run_command_opt
 argument_list|(
+name|RUN_COMMAND_NO_STDIN
+operator||
 name|RUN_COMMAND_STDOUT_TO_STDERR
 argument_list|,
 name|update_hook
@@ -1092,7 +1094,9 @@ name|run_command_v_opt
 argument_list|(
 name|argv
 argument_list|,
-name|RUN_COMMAND_NO_STDIO
+name|RUN_COMMAND_NO_STDIN
+operator||
+name|RUN_COMMAND_STDOUT_TO_STDERR
 argument_list|)
 expr_stmt|;
 block|}
