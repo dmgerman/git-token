@@ -282,9 +282,6 @@ specifier|static
 name|void
 name|rev_list
 parameter_list|(
-name|int
-name|fd
-parameter_list|,
 name|struct
 name|ref
 modifier|*
@@ -336,13 +333,6 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-name|dup2
-argument_list|(
-name|fd
-argument_list|,
-literal|1
-argument_list|)
-expr_stmt|;
 name|close
 argument_list|(
 name|pipe_fd
@@ -357,11 +347,6 @@ name|pipe_fd
 index|[
 literal|1
 index|]
-argument_list|)
-expr_stmt|;
-name|close
-argument_list|(
-name|fd
 argument_list|)
 expr_stmt|;
 name|exec_pack_objects
@@ -409,11 +394,6 @@ name|pipe_fd
 index|[
 literal|1
 index|]
-argument_list|)
-expr_stmt|;
-name|close
-argument_list|(
-name|fd
 argument_list|)
 expr_stmt|;
 name|exec_rev_list
@@ -518,8 +498,6 @@ argument_list|)
 expr_stmt|;
 name|rev_list
 argument_list|(
-name|fd
-argument_list|,
 name|refs
 argument_list|)
 expr_stmt|;
