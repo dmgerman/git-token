@@ -34,6 +34,38 @@ endif|#
 directive|endif
 end_endif
 
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|NO_TRUSTABLE_FILEMODE
+end_ifdef
+
+begin_define
+DECL|macro|TEST_FILEMODE
+define|#
+directive|define
+name|TEST_FILEMODE
+value|0
+end_define
+
+begin_else
+else|#
+directive|else
+end_else
+
+begin_define
+DECL|macro|TEST_FILEMODE
+define|#
+directive|define
+name|TEST_FILEMODE
+value|1
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_function
 DECL|function|safe_create_dir
 specifier|static
@@ -917,6 +949,9 @@ decl_stmt|;
 name|int
 name|reinit
 decl_stmt|;
+name|int
+name|filemode
+decl_stmt|;
 if|if
 condition|(
 name|len
@@ -1174,8 +1209,14 @@ literal|"config"
 argument_list|)
 expr_stmt|;
 comment|/* Check filemode trustability */
+name|filemode
+operator|=
+name|TEST_FILEMODE
+expr_stmt|;
 if|if
 condition|(
+name|TEST_FILEMODE
+operator|&&
 operator|!
 name|lstat
 argument_list|(
@@ -1190,9 +1231,8 @@ name|struct
 name|stat
 name|st2
 decl_stmt|;
-name|int
 name|filemode
-init|=
+operator|=
 operator|(
 operator|!
 name|chmod
@@ -1223,7 +1263,8 @@ name|st2
 operator|.
 name|st_mode
 operator|)
-decl_stmt|;
+expr_stmt|;
+block|}
 name|git_config_set
 argument_list|(
 literal|"core.filemode"
@@ -1235,7 +1276,6 @@ else|:
 literal|"false"
 argument_list|)
 expr_stmt|;
-block|}
 comment|/* Enable logAllRefUpdates if a working tree is attached */
 if|if
 condition|(
