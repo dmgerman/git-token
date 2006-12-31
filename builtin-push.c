@@ -1521,8 +1521,6 @@ name|err
 operator|=
 name|run_command_v
 argument_list|(
-name|argc
-argument_list|,
 name|argv
 argument_list|)
 expr_stmt|;
