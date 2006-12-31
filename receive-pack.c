@@ -398,8 +398,10 @@ literal|0
 return|;
 name|code
 operator|=
-name|run_command
+name|run_command_opt
 argument_list|(
+name|RUN_COMMAND_STDOUT_TO_STDERR
+argument_list|,
 name|update_hook
 argument_list|,
 name|refname

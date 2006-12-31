@@ -67,6 +67,14 @@ DECL|macro|RUN_GIT_CMD
 comment|/*If this is to be git sub-command */
 end_comment
 
+begin_define
+DECL|macro|RUN_COMMAND_STDOUT_TO_STDERR
+define|#
+directive|define
+name|RUN_COMMAND_STDOUT_TO_STDERR
+value|4
+end_define
+
 begin_function_decl
 name|int
 name|run_command_v_opt
@@ -92,6 +100,23 @@ name|char
 modifier|*
 modifier|*
 name|argv
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
+name|run_command_opt
+parameter_list|(
+name|int
+name|opt
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|cmd
+parameter_list|,
+modifier|...
 parameter_list|)
 function_decl|;
 end_function_decl
