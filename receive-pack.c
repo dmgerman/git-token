@@ -398,8 +398,12 @@ literal|0
 return|;
 name|code
 operator|=
-name|run_command
+name|run_command_opt
 argument_list|(
+name|RUN_COMMAND_NO_STDIN
+operator||
+name|RUN_COMMAND_STDOUT_TO_STDERR
+argument_list|,
 name|update_hook
 argument_list|,
 name|refname
@@ -1088,11 +1092,11 @@ name|NULL
 expr_stmt|;
 name|run_command_v_opt
 argument_list|(
-name|argc
-argument_list|,
 name|argv
 argument_list|,
-name|RUN_COMMAND_NO_STDIO
+name|RUN_COMMAND_NO_STDIN
+operator||
+name|RUN_COMMAND_STDOUT_TO_STDERR
 argument_list|)
 expr_stmt|;
 block|}
@@ -1628,8 +1632,6 @@ name|code
 operator|=
 name|run_command_v_opt
 argument_list|(
-literal|1
-argument_list|,
 name|unpacker
 argument_list|,
 name|RUN_GIT_CMD
