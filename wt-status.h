@@ -68,6 +68,10 @@ DECL|member|untracked
 name|int
 name|untracked
 decl_stmt|;
+DECL|member|workdir_clean
+name|int
+name|workdir_clean
+decl_stmt|;
 block|}
 struct|;
 end_struct
