@@ -1638,7 +1638,12 @@ parameter_list|,
 specifier|const
 name|char
 modifier|*
-name|start
+name|start_name
+parameter_list|,
+name|unsigned
+name|char
+modifier|*
+name|start_sha1
 parameter_list|,
 name|int
 name|force
@@ -1748,13 +1753,35 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+name|start_sha1
+condition|)
+comment|/* detached HEAD */
+name|hashcpy
+argument_list|(
+name|sha1
+argument_list|,
+name|start_sha1
+argument_list|)
+expr_stmt|;
+elseif|else
+if|if
+condition|(
 name|get_sha1
 argument_list|(
-name|start
+name|start_name
 argument_list|,
 name|sha1
 argument_list|)
-operator|||
+condition|)
+name|die
+argument_list|(
+literal|"Not a valid object name: '%s'."
+argument_list|,
+name|start_name
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 operator|(
 name|commit
 operator|=
@@ -1770,7 +1797,7 @@ name|die
 argument_list|(
 literal|"Not a valid branch point: '%s'."
 argument_list|,
-name|start
+name|start_name
 argument_list|)
 expr_stmt|;
 name|hashcpy
@@ -1826,7 +1853,7 @@ name|msg
 argument_list|,
 literal|"branch: Created from %s"
 argument_list|,
-name|start
+name|start_name
 argument_list|)
 expr_stmt|;
 block|}
@@ -1903,6 +1930,16 @@ index|[
 literal|20
 index|]
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|oldname
+condition|)
+name|die
+argument_list|(
+literal|"cannot rename the curren branch while not on any."
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|snprintf
@@ -2619,6 +2656,8 @@ index|]
 argument_list|,
 name|head
 argument_list|,
+name|head_sha1
+argument_list|,
 name|force_create
 argument_list|,
 name|reflog
@@ -2646,6 +2685,8 @@ name|i
 operator|+
 literal|1
 index|]
+argument_list|,
+name|NULL
 argument_list|,
 name|force_create
 argument_list|,

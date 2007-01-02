@@ -625,7 +625,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Test if it looks like we're at a git directory.  * We want to see:  *  *  - either a objects/ directory _or_ the proper  *    GIT_OBJECT_DIRECTORY environment variable  *  - a refs/ directory  *  - either a HEAD symlink or a HEAD file that is formatted as  *    a proper "ref:".  */
+comment|/*  * Test if it looks like we're at a git directory.  * We want to see:  *  *  - either a objects/ directory _or_ the proper  *    GIT_OBJECT_DIRECTORY environment variable  *  - a refs/ directory  *  - either a HEAD symlink or a HEAD file that is formatted as  *    a proper "ref:", or a regular file HEAD that has a properly  *    formatted sha1 object name.  */
 end_comment
 
 begin_function
@@ -741,7 +741,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|validate_symref
+name|validate_headref
 argument_list|(
 name|path
 argument_list|)
