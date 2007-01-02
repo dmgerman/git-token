@@ -309,6 +309,70 @@ expr_stmt|;
 block|}
 end_function
 
+begin_function
+DECL|function|wt_status_print_cached_header
+specifier|static
+name|void
+name|wt_status_print_cached_header
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|reference
+parameter_list|)
+block|{
+specifier|const
+name|char
+modifier|*
+name|c
+init|=
+name|color
+argument_list|(
+name|WT_STATUS_HEADER
+argument_list|)
+decl_stmt|;
+name|color_printf_ln
+argument_list|(
+name|c
+argument_list|,
+literal|"# Cached changes to be committed:"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|reference
+condition|)
+block|{
+name|color_printf_ln
+argument_list|(
+name|c
+argument_list|,
+literal|"#   (use \"git reset %s<file>...\" and \"git rm --cached<file>...\" to unstage)"
+argument_list|,
+name|reference
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|color_printf_ln
+argument_list|(
+name|c
+argument_list|,
+literal|"#   (use \"git rm --cached<file>...\" to unstage)"
+argument_list|)
+expr_stmt|;
+block|}
+name|color_printf_ln
+argument_list|(
+name|c
+argument_list|,
+literal|"#"
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
 begin_decl_stmt
 DECL|function|wt_status_print_header
 specifier|static
@@ -803,11 +867,11 @@ operator|!
 name|shown_header
 condition|)
 block|{
-name|wt_status_print_header
+name|wt_status_print_cached_header
 argument_list|(
-literal|"Added but not yet committed"
-argument_list|,
-literal|"will commit"
+name|s
+operator|->
+name|reference
 argument_list|)
 expr_stmt|;
 name|s
@@ -969,11 +1033,9 @@ name|commitable
 operator|=
 literal|1
 expr_stmt|;
-name|wt_status_print_header
+name|wt_status_print_cached_header
 argument_list|(
-literal|"Added but not yet committed"
-argument_list|,
-literal|"will commit"
+name|NULL
 argument_list|)
 expr_stmt|;
 block|}
