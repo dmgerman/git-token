@@ -1225,6 +1225,10 @@ name|lock_file
 modifier|*
 name|next
 decl_stmt|;
+DECL|member|on_list
+name|char
+name|on_list
+decl_stmt|;
 DECL|member|filename
 name|char
 name|filename
