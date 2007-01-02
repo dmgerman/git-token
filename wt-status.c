@@ -97,7 +97,7 @@ name|char
 modifier|*
 name|use_add_msg
 init|=
-literal|"use \"git add file1 file2\" to include for commit"
+literal|"use \"git add<file>...\" to incrementally add content to commit"
 decl_stmt|;
 end_decl_stmt
 
