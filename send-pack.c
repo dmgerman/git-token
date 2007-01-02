@@ -306,7 +306,10 @@ index|]
 operator|=
 literal|'\n'
 expr_stmt|;
-name|write
+if|if
+condition|(
+operator|!
+name|write_in_full
 argument_list|(
 name|pipe_fd
 index|[
@@ -316,8 +319,11 @@ argument_list|,
 name|buf
 argument_list|,
 literal|42
+argument_list|,
+literal|"send-pack: send refs"
 argument_list|)
-expr_stmt|;
+condition|)
+break|break;
 block|}
 if|if
 condition|(
@@ -351,7 +357,10 @@ index|]
 operator|=
 literal|'\n'
 expr_stmt|;
-name|write
+if|if
+condition|(
+operator|!
+name|write_in_full
 argument_list|(
 name|pipe_fd
 index|[
@@ -361,8 +370,11 @@ argument_list|,
 name|buf
 argument_list|,
 literal|41
+argument_list|,
+literal|"send-pack: send refs"
 argument_list|)
-expr_stmt|;
+condition|)
+break|break;
 block|}
 name|refs
 operator|=
