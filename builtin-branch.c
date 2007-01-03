@@ -41,7 +41,7 @@ name|char
 name|builtin_branch_usage
 index|[]
 init|=
-literal|"git-branch [-r] (-d | -D)<branchname> | [-l] [-f]<branchname> [<start-point>] | (-m | -M) [<oldbranch>]<newbranch> | [-r | -a] [-v [--abbrev=<length>]]"
+literal|"git-branch [-r] (-d | -D)<branchname> | [-l] [-f]<branchname> [<start-point>] | (-m | -M) [<oldbranch>]<newbranch> | [--color | --no-color] [-r | -a] [-v [--abbrev=<length>]]"
 decl_stmt|;
 end_decl_stmt
 
