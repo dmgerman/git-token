@@ -5699,13 +5699,6 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|cache_dirty
-condition|)
-name|flush_cache
-argument_list|()
-expr_stmt|;
 return|return
 name|clean_merge
 return|;
@@ -6419,13 +6412,6 @@ argument_list|(
 literal|"Fatal merge failure, shouldn't happen."
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|cache_dirty
-condition|)
-name|flush_cache
-argument_list|()
-expr_stmt|;
 return|return
 name|clean_merge
 return|;
@@ -6720,6 +6706,13 @@ operator|=
 literal|0
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|cache_dirty
+condition|)
+name|flush_cache
+argument_list|()
+expr_stmt|;
 name|path_list_clear
 argument_list|(
 name|re_merge
