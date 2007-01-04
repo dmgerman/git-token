@@ -698,13 +698,6 @@ init|;
 condition|;
 control|)
 block|{
-name|struct
-name|name_entry
-name|entry
-index|[
-literal|3
-index|]
-decl_stmt|;
 name|unsigned
 name|long
 name|mask
