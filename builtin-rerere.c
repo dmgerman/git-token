@@ -2354,7 +2354,6 @@ name|nr
 operator|-
 literal|1
 condition|)
-block|{
 name|memmove
 argument_list|(
 name|rr
@@ -2371,6 +2370,17 @@ name|i
 operator|+
 literal|1
 argument_list|,
+sizeof|sizeof
+argument_list|(
+name|rr
+operator|->
+name|items
+index|[
+literal|0
+index|]
+argument_list|)
+operator|*
+operator|(
 name|rr
 operator|->
 name|nr
@@ -2378,9 +2388,9 @@ operator|-
 name|i
 operator|-
 literal|1
+operator|)
 argument_list|)
 expr_stmt|;
-block|}
 name|rr
 operator|->
 name|nr
