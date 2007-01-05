@@ -1410,6 +1410,10 @@ name|prune_usage
 argument_list|)
 expr_stmt|;
 block|}
+name|save_commit_buffer
+operator|=
+literal|0
+expr_stmt|;
 comment|/* 	 * Set up revision parsing, and mark us as being interested 	 * in all object types, not just commits. 	 */
 name|init_revisions
 argument_list|(
