@@ -854,6 +854,15 @@ specifier|const
 name|char
 modifier|*
 name|path
+parameter_list|,
+name|unsigned
+name|mode
+parameter_list|,
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|sha1
 parameter_list|)
 function_decl|;
 end_function_decl
