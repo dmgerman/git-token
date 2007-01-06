@@ -1185,6 +1185,37 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
+return|return
+literal|0
+return|;
+block|}
+end_function
+
+begin_function
+DECL|function|add_one_reflog
+specifier|static
+name|int
+name|add_one_reflog
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|,
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|sha1
+parameter_list|,
+name|int
+name|flag
+parameter_list|,
+name|void
+modifier|*
+name|cb_data
+parameter_list|)
+block|{
 name|for_each_reflog_ent
 argument_list|(
 name|path
@@ -1475,7 +1506,7 @@ name|tree_objects
 operator|=
 literal|1
 expr_stmt|;
-comment|/* Add all external refs, along with its reflog info */
+comment|/* Add all external refs */
 name|for_each_ref
 argument_list|(
 name|add_one_ref
@@ -1487,6 +1518,15 @@ expr_stmt|;
 comment|/* Add all refs from the index file */
 name|add_cache_refs
 argument_list|(
+operator|&
+name|revs
+argument_list|)
+expr_stmt|;
+comment|/* Add all reflog info from refs */
+name|for_each_ref
+argument_list|(
+name|add_one_reflog
+argument_list|,
 operator|&
 name|revs
 argument_list|)
