@@ -260,7 +260,7 @@ name|die_on_error
 condition|)
 name|die
 argument_list|(
-literal|"unable to create '%s': %s"
+literal|"unable to create '%s.lock': %s"
 argument_list|,
 name|path
 argument_list|,
