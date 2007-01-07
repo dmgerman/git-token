@@ -65,8 +65,16 @@ begin_decl_stmt
 DECL|variable|log_all_ref_updates
 name|int
 name|log_all_ref_updates
+init|=
+operator|-
+literal|1
 decl_stmt|;
 end_decl_stmt
+
+begin_comment
+DECL|variable|log_all_ref_updates
+comment|/* unspecified */
+end_comment
 
 begin_decl_stmt
 DECL|variable|warn_ambiguous_refs
@@ -328,14 +336,6 @@ name|git_path
 argument_list|(
 literal|"info/grafts"
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|log_all_ref_updates
-operator|=
-operator|!
-name|is_bare_git_dir
-argument_list|(
-name|git_dir
 argument_list|)
 expr_stmt|;
 block|}
