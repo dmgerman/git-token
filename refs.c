@@ -4952,11 +4952,8 @@ condition|)
 name|log_all_ref_updates
 operator|=
 operator|!
-name|is_bare_git_dir
-argument_list|(
-name|get_git_dir
+name|is_bare_repository
 argument_list|()
-argument_list|)
 expr_stmt|;
 if|if
 condition|(
