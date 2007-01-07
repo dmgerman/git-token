@@ -97,7 +97,7 @@ name|char
 modifier|*
 name|use_add_msg
 init|=
-literal|"use \"git add file1 file2\" to include for commit"
+literal|"use \"git add<file>...\" to incrementally add content to commit"
 decl_stmt|;
 end_decl_stmt
 
@@ -244,21 +244,6 @@ name|char
 modifier|*
 name|head
 decl_stmt|;
-name|s
-operator|->
-name|is_initial
-operator|=
-name|get_sha1
-argument_list|(
-literal|"HEAD"
-argument_list|,
-name|sha1
-argument_list|)
-condition|?
-literal|1
-else|:
-literal|0
-expr_stmt|;
 name|head
 operator|=
 name|resolve_ref
@@ -314,6 +299,76 @@ operator|->
 name|untracked
 operator|=
 literal|0
+expr_stmt|;
+name|s
+operator|->
+name|workdir_clean
+operator|=
+literal|1
+expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|function|wt_status_print_cached_header
+specifier|static
+name|void
+name|wt_status_print_cached_header
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|reference
+parameter_list|)
+block|{
+specifier|const
+name|char
+modifier|*
+name|c
+init|=
+name|color
+argument_list|(
+name|WT_STATUS_HEADER
+argument_list|)
+decl_stmt|;
+name|color_printf_ln
+argument_list|(
+name|c
+argument_list|,
+literal|"# Cached changes to be committed:"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|reference
+condition|)
+block|{
+name|color_printf_ln
+argument_list|(
+name|c
+argument_list|,
+literal|"#   (use \"git reset %s<file>...\" and \"git rm --cached<file>...\" to unstage)"
+argument_list|,
+name|reference
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|color_printf_ln
+argument_list|(
+name|c
+argument_list|,
+literal|"#   (use \"git rm --cached<file>...\" to unstage)"
+argument_list|)
+expr_stmt|;
+block|}
+name|color_printf_ln
+argument_list|(
+name|c
+argument_list|,
+literal|"#"
+argument_list|)
 expr_stmt|;
 block|}
 end_function
@@ -812,11 +867,11 @@ operator|!
 name|shown_header
 condition|)
 block|{
-name|wt_status_print_header
+name|wt_status_print_cached_header
 argument_list|(
-literal|"Added but not yet committed"
-argument_list|,
-literal|"will commit"
+name|s
+operator|->
+name|reference
 argument_list|)
 expr_stmt|;
 name|s
@@ -874,6 +929,13 @@ modifier|*
 name|data
 parameter_list|)
 block|{
+name|struct
+name|wt_status
+modifier|*
+name|s
+init|=
+name|data
+decl_stmt|;
 name|int
 name|i
 decl_stmt|;
@@ -883,6 +945,13 @@ name|q
 operator|->
 name|nr
 condition|)
+block|{
+name|s
+operator|->
+name|workdir_clean
+operator|=
+literal|0
+expr_stmt|;
 name|wt_status_print_header
 argument_list|(
 literal|"Changed but not added"
@@ -890,6 +959,7 @@ argument_list|,
 name|use_add_msg
 argument_list|)
 expr_stmt|;
+block|}
 for|for
 control|(
 name|i
@@ -963,11 +1033,9 @@ name|commitable
 operator|=
 literal|1
 expr_stmt|;
-name|wt_status_print_header
+name|wt_status_print_cached_header
 argument_list|(
-literal|"Added but not yet committed"
-argument_list|,
-literal|"will commit"
+name|NULL
 argument_list|)
 expr_stmt|;
 block|}
@@ -1191,7 +1259,6 @@ specifier|static
 name|void
 name|wt_status_print_untracked
 parameter_list|(
-specifier|const
 name|struct
 name|wt_status
 modifier|*
@@ -1404,6 +1471,12 @@ operator|!
 name|shown_header
 condition|)
 block|{
+name|s
+operator|->
+name|workdir_clean
+operator|=
+literal|0
+expr_stmt|;
 name|wt_status_print_header
 argument_list|(
 literal|"Untracked files"
@@ -1524,6 +1597,30 @@ modifier|*
 name|s
 parameter_list|)
 block|{
+name|unsigned
+name|char
+name|sha1
+index|[
+literal|20
+index|]
+decl_stmt|;
+name|s
+operator|->
+name|is_initial
+operator|=
+name|get_sha1
+argument_list|(
+name|s
+operator|->
+name|reference
+argument_list|,
+name|sha1
+argument_list|)
+condition|?
+literal|1
+else|:
+literal|0
+expr_stmt|;
 if|if
 condition|(
 name|s
@@ -1631,21 +1728,43 @@ name|s
 operator|->
 name|commitable
 condition|)
-name|printf
-argument_list|(
-literal|"%s (%s)\n"
-argument_list|,
+block|{
+if|if
+condition|(
 name|s
 operator|->
 name|amend
-condition|?
-literal|"# No changes"
-else|:
-literal|"nothing to commit"
-argument_list|,
-name|use_add_msg
+condition|)
+name|printf
+argument_list|(
+literal|"# No changes\n"
 argument_list|)
 expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|s
+operator|->
+name|workdir_clean
+condition|)
+name|printf
+argument_list|(
+name|s
+operator|->
+name|is_initial
+condition|?
+literal|"nothing to commit\n"
+else|:
+literal|"nothing to commit (working directory matches HEAD)\n"
+argument_list|)
+expr_stmt|;
+else|else
+name|printf
+argument_list|(
+literal|"no changes added to commit (use \"git add\" and/or \"git commit [-a|-i|-o]\")\n"
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_function
 
