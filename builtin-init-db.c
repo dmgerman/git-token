@@ -1306,7 +1306,7 @@ name|char
 name|init_db_usage
 index|[]
 init|=
-literal|"git-init-db [--template=<template-directory>] [--shared]"
+literal|"git-init [--template=<template-directory>] [--shared]"
 decl_stmt|;
 end_decl_stmt
 
