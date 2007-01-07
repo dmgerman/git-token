@@ -128,6 +128,24 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|packed_git_window_size
+name|size_t
+name|packed_git_window_size
+init|=
+name|DEFAULT_PACKED_GIT_WINDOW_SIZE
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|packed_git_limit
+name|size_t
+name|packed_git_limit
+init|=
+name|DEFAULT_PACKED_GIT_LIMIT
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|pager_in_use
 name|int
 name|pager_in_use

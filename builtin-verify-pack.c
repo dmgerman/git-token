@@ -266,6 +266,11 @@ name|nothing_done
 init|=
 literal|1
 decl_stmt|;
+name|git_config
+argument_list|(
+name|git_default_config
+argument_list|)
+expr_stmt|;
 while|while
 condition|(
 literal|1

@@ -7616,7 +7616,7 @@ name|s
 operator|->
 name|data
 operator|=
-name|mmap
+name|xmmap
 argument_list|(
 name|NULL
 argument_list|,
@@ -7638,17 +7638,6 @@ argument_list|(
 name|fd
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|s
-operator|->
-name|data
-operator|==
-name|MAP_FAILED
-condition|)
-goto|goto
-name|err_empty
-goto|;
 name|s
 operator|->
 name|should_munmap

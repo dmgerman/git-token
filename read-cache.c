@@ -3614,10 +3614,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|cache_mmap
-operator|=
-name|MAP_FAILED
-expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -3654,7 +3650,7 @@ literal|20
 condition|)
 name|cache_mmap
 operator|=
-name|mmap
+name|xmmap
 argument_list|(
 name|NULL
 argument_list|,
@@ -3671,26 +3667,27 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-block|}
-name|close
-argument_list|(
-name|fd
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|cache_mmap
-operator|==
-name|MAP_FAILED
-condition|)
+else|else
 name|die
 argument_list|(
-literal|"index file mmap failed (%s)"
+literal|"index file smaller than expected"
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+name|die
+argument_list|(
+literal|"cannot stat the open index (%s)"
 argument_list|,
 name|strerror
 argument_list|(
 name|errno
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|close
+argument_list|(
+name|fd
 argument_list|)
 expr_stmt|;
 name|hdr
