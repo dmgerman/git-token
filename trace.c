@@ -444,7 +444,7 @@ argument_list|(
 name|rest
 argument_list|)
 expr_stmt|;
-name|write_or_whine
+name|write_or_whine_pipe
 argument_list|(
 name|fd
 argument_list|,
@@ -635,7 +635,7 @@ argument_list|,
 literal|"\n"
 argument_list|)
 expr_stmt|;
-name|write_or_whine
+name|write_or_whine_pipe
 argument_list|(
 name|fd
 argument_list|,
