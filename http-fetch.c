@@ -990,7 +990,7 @@ do|do
 block|{
 name|prev_read
 operator|=
-name|read
+name|xread
 argument_list|(
 name|prevlocal
 argument_list|,

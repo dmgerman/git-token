@@ -3590,6 +3590,24 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|int
+name|read_in_full
+parameter_list|(
+name|int
+name|fd
+parameter_list|,
+name|void
+modifier|*
+name|buf
+parameter_list|,
+name|size_t
+name|count
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|void
 name|read_or_die
 parameter_list|(

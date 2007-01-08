@@ -10280,7 +10280,7 @@ break|break;
 block|}
 name|size
 operator|=
-name|read
+name|xread
 argument_list|(
 name|fd
 argument_list|,
