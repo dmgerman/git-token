@@ -1002,7 +1002,7 @@ block|{
 name|ssize_t
 name|retval
 init|=
-name|write
+name|xwrite
 argument_list|(
 name|request
 operator|->

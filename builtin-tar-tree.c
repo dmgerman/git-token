@@ -408,7 +408,7 @@ literal|1
 return|;
 name|n
 operator|=
-name|xwrite
+name|write_in_full
 argument_list|(
 literal|1
 argument_list|,

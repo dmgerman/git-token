@@ -2872,7 +2872,7 @@ block|{
 name|long
 name|ret
 init|=
-name|xwrite
+name|write_in_full
 argument_list|(
 name|fd
 argument_list|,

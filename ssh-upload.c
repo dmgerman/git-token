@@ -213,7 +213,9 @@ operator|-
 literal|1
 expr_stmt|;
 block|}
-name|write
+if|if
+condition|(
+name|write_in_full
 argument_list|(
 name|fd_out
 argument_list|,
@@ -222,7 +224,12 @@ name|remote
 argument_list|,
 literal|1
 argument_list|)
-expr_stmt|;
+operator|!=
+literal|1
+condition|)
+return|return
+literal|0
+return|;
 if|if
 condition|(
 name|remote
@@ -274,7 +281,7 @@ return|return
 operator|-
 literal|1
 return|;
-name|write
+name|write_in_full
 argument_list|(
 name|fd_out
 argument_list|,
@@ -393,7 +400,9 @@ operator|=
 operator|-
 literal|1
 expr_stmt|;
-name|write
+if|if
+condition|(
+name|write_in_full
 argument_list|(
 name|fd_out
 argument_list|,
@@ -402,7 +411,12 @@ name|remote
 argument_list|,
 literal|1
 argument_list|)
-expr_stmt|;
+operator|!=
+literal|1
+condition|)
+return|return
+literal|0
+return|;
 if|if
 condition|(
 name|remote
@@ -410,7 +424,7 @@ condition|)
 return|return
 literal|0
 return|;
-name|write
+name|write_in_full
 argument_list|(
 name|fd_out
 argument_list|,

@@ -327,6 +327,7 @@ operator|==
 literal|2
 condition|)
 block|{
+comment|/* XXX: are we happy to lose stuff here? */
 name|xwrite
 argument_list|(
 name|fd
