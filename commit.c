@@ -5289,7 +5289,7 @@ block|}
 end_function
 
 begin_comment
-comment|/* merge-rebase stuff */
+comment|/* merge-base stuff */
 end_comment
 
 begin_comment
@@ -5327,6 +5327,25 @@ directive|define
 name|RESULT
 value|(1u<<19)
 end_define
+
+begin_decl_stmt
+DECL|variable|all_flags
+specifier|static
+specifier|const
+name|unsigned
+name|all_flags
+init|=
+operator|(
+name|PARENT1
+operator||
+name|PARENT2
+operator||
+name|STALE
+operator||
+name|RESULT
+operator|)
+decl_stmt|;
+end_decl_stmt
 
 begin_function
 DECL|function|interesting
@@ -5650,6 +5669,11 @@ expr_stmt|;
 block|}
 block|}
 comment|/* Clean up the result to remove stale ones */
+name|free_commit_list
+argument_list|(
+name|list
+argument_list|)
+expr_stmt|;
 name|list
 operator|=
 name|result
@@ -5734,20 +5758,6 @@ name|int
 name|cleanup
 parameter_list|)
 block|{
-specifier|const
-name|unsigned
-name|all_flags
-init|=
-operator|(
-name|PARENT1
-operator||
-name|PARENT2
-operator||
-name|STALE
-operator||
-name|RESULT
-operator|)
-decl_stmt|;
 name|struct
 name|commit_list
 modifier|*
