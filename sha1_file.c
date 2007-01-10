@@ -103,6 +103,38 @@ endif|#
 directive|endif
 end_endif
 
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|NO_C99_FORMAT
+end_ifdef
+
+begin_define
+DECL|macro|SZ_FMT
+define|#
+directive|define
+name|SZ_FMT
+value|"lu"
+end_define
+
+begin_else
+else|#
+directive|else
+end_else
+
+begin_define
+DECL|macro|SZ_FMT
+define|#
+directive|define
+name|SZ_FMT
+value|"zu"
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_decl_stmt
 DECL|variable|null_sha1
 specifier|const
@@ -2719,9 +2751,15 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"pack_report: getpagesize()            = %10lu\n"
-literal|"pack_report: core.packedGitWindowSize = %10lu\n"
-literal|"pack_report: core.packedGitLimit      = %10lu\n"
+literal|"pack_report: getpagesize()            = %10"
+name|SZ_FMT
+literal|"\n"
+literal|"pack_report: core.packedGitWindowSize = %10"
+name|SZ_FMT
+literal|"\n"
+literal|"pack_report: core.packedGitLimit      = %10"
+name|SZ_FMT
+literal|"\n"
 argument_list|,
 name|page_size
 argument_list|,
@@ -2737,7 +2775,12 @@ argument_list|,
 literal|"pack_report: pack_used_ctr            = %10u\n"
 literal|"pack_report: pack_mmap_calls          = %10u\n"
 literal|"pack_report: pack_open_windows        = %10u / %10u\n"
-literal|"pack_report: pack_mapped              = %10lu / %10lu\n"
+literal|"pack_report: pack_mapped              = "
+literal|"%10"
+name|SZ_FMT
+literal|" / %10"
+name|SZ_FMT
+literal|"\n"
 argument_list|,
 name|pack_used_ctr
 argument_list|,
