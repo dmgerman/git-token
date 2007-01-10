@@ -1266,6 +1266,14 @@ name|RUN_SETUP
 block|}
 block|,
 block|{
+literal|"describe"
+block|,
+name|cmd_describe
+block|,
+name|RUN_SETUP
+block|}
+block|,
+block|{
 literal|"diff"
 block|,
 name|cmd_diff

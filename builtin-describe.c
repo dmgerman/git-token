@@ -23,6 +23,12 @@ directive|include
 file|"refs.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"builtin.h"
+end_include
+
 begin_define
 DECL|macro|SEEN
 define|#
@@ -800,17 +806,23 @@ block|}
 end_function
 
 begin_function
-DECL|function|main
+DECL|function|cmd_describe
 name|int
-name|main
+name|cmd_describe
 parameter_list|(
 name|int
 name|argc
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
 name|argv
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|prefix
 parameter_list|)
 block|{
 name|int
@@ -927,9 +939,6 @@ name|describe_usage
 argument_list|)
 expr_stmt|;
 block|}
-name|setup_git_directory
-argument_list|()
-expr_stmt|;
 name|save_commit_buffer
 operator|=
 literal|0
