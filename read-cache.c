@@ -4680,7 +4680,11 @@ argument_list|,
 name|sz
 argument_list|)
 condition|)
-empty_stmt|;
+name|free
+argument_list|(
+name|data
+argument_list|)
+expr_stmt|;
 else|else
 block|{
 name|free
