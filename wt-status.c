@@ -94,10 +94,34 @@ DECL|variable|use_add_msg
 specifier|static
 specifier|const
 name|char
-modifier|*
 name|use_add_msg
+index|[]
 init|=
-literal|"use \"git add<file>...\" to incrementally add content to commit"
+literal|"use \"git add<file>...\" to update what will be committed"
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|use_add_rm_msg
+specifier|static
+specifier|const
+name|char
+name|use_add_rm_msg
+index|[]
+init|=
+literal|"use \"git add/rm<file>...\" to update what will be committed"
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|use_add_to_include_msg
+specifier|static
+specifier|const
+name|char
+name|use_add_to_include_msg
+index|[]
+init|=
+literal|"use \"git add<file>...\" to include in what will be committed"
 decl_stmt|;
 end_decl_stmt
 
@@ -952,17 +976,59 @@ operator|->
 name|nr
 condition|)
 block|{
+specifier|const
+name|char
+modifier|*
+name|msg
+init|=
+name|use_add_msg
+decl_stmt|;
 name|s
 operator|->
 name|workdir_dirty
 operator|=
 literal|1
 expr_stmt|;
+for|for
+control|(
+name|i
+operator|=
+literal|0
+init|;
+name|i
+operator|<
+name|q
+operator|->
+name|nr
+condition|;
+name|i
+operator|++
+control|)
+if|if
+condition|(
+name|q
+operator|->
+name|queue
+index|[
+name|i
+index|]
+operator|->
+name|status
+operator|==
+name|DIFF_STATUS_DELETED
+condition|)
+block|{
+name|msg
+operator|=
+name|use_add_rm_msg
+expr_stmt|;
+break|break;
+block|}
 name|wt_status_print_header
 argument_list|(
-literal|"Changed but not added"
+literal|"Changed but not updated"
 argument_list|,
-name|use_add_msg
+name|msg
 argument_list|)
 expr_stmt|;
 block|}
@@ -1487,7 +1553,7 @@ name|wt_status_print_header
 argument_list|(
 literal|"Untracked files"
 argument_list|,
-name|use_add_msg
+name|use_add_to_include_msg
 argument_list|)
 expr_stmt|;
 name|shown_header
