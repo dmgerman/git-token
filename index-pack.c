@@ -4812,7 +4812,7 @@ name|sha1
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|write_in_full
+name|write_or_die
 argument_list|(
 literal|1
 argument_list|,
