@@ -8975,6 +8975,14 @@ block|{
 name|ssize_t
 name|size
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|len
+condition|)
+return|return
+literal|0
+return|;
 name|size
 operator|=
 name|write_in_full
