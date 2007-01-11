@@ -1078,6 +1078,13 @@ name|min_match
 operator|=
 name|cur_match
 expr_stmt|;
+name|free_commit_list
+argument_list|(
+name|revs
+operator|.
+name|commits
+argument_list|)
+expr_stmt|;
 block|}
 name|printf
 argument_list|(
