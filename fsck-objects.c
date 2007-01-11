@@ -1504,7 +1504,7 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"%s: object not found"
+literal|"%s: object corrupt or missing"
 argument_list|,
 name|sha1_to_hex
 argument_list|(

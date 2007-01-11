@@ -1366,6 +1366,14 @@ operator|==
 name|MAP_FAILED
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|length
+condition|)
+return|return
+name|NULL
+return|;
 name|release_pack_memory
 argument_list|(
 name|length
