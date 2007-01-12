@@ -583,15 +583,19 @@ name|EXEC_PATH_ENVIRONMENT
 value|"GIT_EXEC_PATH"
 end_define
 
+begin_decl_stmt
+specifier|extern
+name|int
+name|is_bare_repository_cfg
+decl_stmt|;
+end_decl_stmt
+
 begin_function_decl
 specifier|extern
 name|int
-name|is_bare_git_dir
+name|is_bare_repository
 parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|dir
+name|void
 parameter_list|)
 function_decl|;
 end_function_decl
