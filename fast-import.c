@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_comment
-comment|/* Format of STDIN stream:    stream ::= cmd*;    cmd ::= new_blob         | new_commit         | new_tag         | reset_branch         ;    new_blob ::= 'blob' lf 	mark?     file_content;   file_content ::= data;    new_commit ::= 'commit' sp ref_str lf     mark?     ('author' sp name '<' email '>' ts tz lf)?     'committer' sp name '<' email '>' ts tz lf     commit_msg     ('from' sp (ref_str | hexsha1 | sha1exp_str | idnum) lf)?     ('merge' sp (ref_str | hexsha1 | sha1exp_str | idnum) lf)*     file_change*     lf;   commit_msg ::= data;    file_change ::= 'M' sp mode sp (hexsha1 | idnum) sp path_str lf                 | 'D' sp path_str lf                 ;   mode ::= '644' | '755';    new_tag ::= 'tag' sp tag_str lf     'from' sp (ref_str | hexsha1 | sha1exp_str | idnum) lf 	'tagger' sp name '<' email '>' ts tz lf     tag_msg;   tag_msg ::= data;    reset_branch ::= 'reset' sp ref_str lf;       # note: the first idnum in a stream should be 1 and subsequent      # idnums should not have gaps between values as this will cause      # the stream parser to reserve space for the gapped values.  An 	 # idnum can be updated in the future to a new object by issuing      # a new mark directive with the old idnum. 	 #   mark ::= 'mark' sp idnum lf;       # note: declen indicates the length of binary_data in bytes.      # declen does not include the lf preceeding or trailing the      # binary data.      #   data ::= 'data' sp declen lf     binary_data 	lf;       # note: quoted strings are C-style quoting supporting \c for      # common escapes of 'c' (e..g \n, \t, \\, \") or \nnn where nnn 	 # is the signed byte value in octal.  Note that the only      # characters which must actually be escaped to protect the      # stream formatting is: \, " and LF.  Otherwise these values 	 # are UTF8.      #   ref_str     ::= ref     | '"' quoted(ref)     '"' ;   sha1exp_str ::= sha1exp | '"' quoted(sha1exp) '"' ;   tag_str     ::= tag     | '"' quoted(tag)     '"' ;   path_str    ::= path    | '"' quoted(path)    '"' ;    declen ::= # unsigned 32 bit value, ascii base10 notation;   binary_data ::= # file content, not interpreted;    sp ::= # ASCII space character;   lf ::= # ASCII newline (LF) character;       # note: a colon (':') must precede the numerical value assigned to 	 # an idnum.  This is to distinguish it from a ref or tag name as      # GIT does not permit ':' in ref or tag strings. 	 #   idnum   ::= ':' declen;   path    ::= # GIT style file path, e.g. "a/b/c";   ref     ::= # GIT ref name, e.g. "refs/heads/MOZ_GECKO_EXPERIMENT";   tag     ::= # GIT tag name, e.g. "FIREFOX_1_5";   sha1exp ::= # Any valid GIT SHA1 expression;   hexsha1 ::= # SHA1 in hexadecimal format;       # note: name and email are UTF8 strings, however name must not 	 # contain '<' or lf and email must not contain any of the      # following: '<', '>', lf. 	 #   name  ::= # valid GIT author/committer name;   email ::= # valid GIT author/committer email;   ts    ::= # time since the epoch in seconds, ascii base10 notation;   tz    ::= # GIT style timezone; */
+comment|/* Format of STDIN stream:    stream ::= cmd*;    cmd ::= new_blob         | new_commit         | new_tag         | reset_branch         ;    new_blob ::= 'blob' lf 	mark?     file_content;   file_content ::= data;    new_commit ::= 'commit' sp ref_str lf     mark?     ('author' sp name '<' email '>' ts tz lf)?     'committer' sp name '<' email '>' ts tz lf     commit_msg     ('from' sp (ref_str | hexsha1 | sha1exp_str | idnum) lf)?     ('merge' sp (ref_str | hexsha1 | sha1exp_str | idnum) lf)*     file_change*     lf;   commit_msg ::= data;    file_change ::= 'M' sp mode sp (hexsha1 | idnum) sp path_str lf                 | 'D' sp path_str lf                 ;   mode ::= '644' | '755';    new_tag ::= 'tag' sp tag_str lf     'from' sp (ref_str | hexsha1 | sha1exp_str | idnum) lf 	'tagger' sp name '<' email '>' ts tz lf     tag_msg;   tag_msg ::= data;    reset_branch ::= 'reset' sp ref_str lf     ('from' sp (ref_str | hexsha1 | sha1exp_str | idnum) lf)?     lf;       # note: the first idnum in a stream should be 1 and subsequent      # idnums should not have gaps between values as this will cause      # the stream parser to reserve space for the gapped values.  An 	 # idnum can be updated in the future to a new object by issuing      # a new mark directive with the old idnum. 	 #   mark ::= 'mark' sp idnum lf;       # note: declen indicates the length of binary_data in bytes.      # declen does not include the lf preceeding or trailing the      # binary data.      #   data ::= 'data' sp declen lf     binary_data 	lf;       # note: quoted strings are C-style quoting supporting \c for      # common escapes of 'c' (e..g \n, \t, \\, \") or \nnn where nnn 	 # is the signed byte value in octal.  Note that the only      # characters which must actually be escaped to protect the      # stream formatting is: \, " and LF.  Otherwise these values 	 # are UTF8.      #   ref_str     ::= ref     | '"' quoted(ref)     '"' ;   sha1exp_str ::= sha1exp | '"' quoted(sha1exp) '"' ;   tag_str     ::= tag     | '"' quoted(tag)     '"' ;   path_str    ::= path    | '"' quoted(path)    '"' ;    declen ::= # unsigned 32 bit value, ascii base10 notation;   binary_data ::= # file content, not interpreted;    sp ::= # ASCII space character;   lf ::= # ASCII newline (LF) character;       # note: a colon (':') must precede the numerical value assigned to 	 # an idnum.  This is to distinguish it from a ref or tag name as      # GIT does not permit ':' in ref or tag strings. 	 #   idnum   ::= ':' declen;   path    ::= # GIT style file path, e.g. "a/b/c";   ref     ::= # GIT ref name, e.g. "refs/heads/MOZ_GECKO_EXPERIMENT";   tag     ::= # GIT tag name, e.g. "FIREFOX_1_5";   sha1exp ::= # Any valid GIT SHA1 expression;   hexsha1 ::= # SHA1 in hexadecimal format;       # note: name and email are UTF8 strings, however name must not 	 # contain '<' or lf and email must not contain any of the      # following: '<', '>', lf. 	 #   name  ::= # valid GIT author/committer name;   email ::= # valid GIT author/committer email;   ts    ::= # time since the epoch in seconds, ascii base10 notation;   tz    ::= # GIT style timezone; */
 end_comment
 
 begin_include
@@ -10559,6 +10559,14 @@ name|NULL
 expr_stmt|;
 block|}
 block|}
+else|else
+name|b
+operator|=
+name|new_branch
+argument_list|(
+name|sp
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|str_uq
@@ -10566,6 +10574,14 @@ condition|)
 name|free
 argument_list|(
 name|str_uq
+argument_list|)
+expr_stmt|;
+name|read_next_command
+argument_list|()
+expr_stmt|;
+name|cmd_from
+argument_list|(
+name|b
 argument_list|)
 expr_stmt|;
 block|}
