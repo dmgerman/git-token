@@ -4214,7 +4214,7 @@ name|output
 argument_list|(
 literal|1
 argument_list|,
-literal|"%s is a directory in %s adding as %s instead"
+literal|"%s is a directory in %s added as %s instead"
 argument_list|,
 name|ren1_dst
 argument_list|,
@@ -4263,7 +4263,7 @@ name|output
 argument_list|(
 literal|1
 argument_list|,
-literal|"%s is a directory in %s adding as %s instead"
+literal|"%s is a directory in %s added as %s instead"
 argument_list|,
 name|ren2_dst
 argument_list|,
@@ -4370,7 +4370,7 @@ name|output
 argument_list|(
 literal|1
 argument_list|,
-literal|"Renaming %s to %s instead"
+literal|"Renamed %s to %s instead"
 argument_list|,
 name|ren1
 operator|->
@@ -4494,7 +4494,7 @@ name|output
 argument_list|(
 literal|1
 argument_list|,
-literal|"Renaming %s to %s and %s to %s instead"
+literal|"Renamed %s to %s and %s to %s instead"
 argument_list|,
 name|ren1
 operator|->
@@ -5237,7 +5237,7 @@ name|output
 argument_list|(
 literal|1
 argument_list|,
-literal|"Renaming %s->%s"
+literal|"Renamed %s->%s"
 argument_list|,
 name|src
 argument_list|,
@@ -5254,7 +5254,7 @@ name|output
 argument_list|(
 literal|2
 argument_list|,
-literal|"Auto-merging %s"
+literal|"Auto-merged %s"
 argument_list|,
 name|ren1_dst
 argument_list|)
@@ -5457,7 +5457,7 @@ name|output
 argument_list|(
 literal|1
 argument_list|,
-literal|"CONFLICT (rename/directory): Rename %s->%s in %s "
+literal|"CONFLICT (rename/directory): Renamed %s->%s in %s "
 literal|" directory %s added in %s"
 argument_list|,
 name|ren1_src
@@ -5500,7 +5500,7 @@ name|output
 argument_list|(
 literal|1
 argument_list|,
-literal|"CONFLICT (rename/delete): Rename %s->%s in %s "
+literal|"CONFLICT (rename/delete): Renamed %s->%s in %s "
 literal|"and deleted in %s"
 argument_list|,
 name|ren1_src
@@ -5567,7 +5567,7 @@ name|output
 argument_list|(
 literal|1
 argument_list|,
-literal|"CONFLICT (rename/add): Rename %s->%s in %s. "
+literal|"CONFLICT (rename/add): Renamed %s->%s in %s. "
 literal|"%s added in %s"
 argument_list|,
 name|ren1_src
@@ -5594,7 +5594,7 @@ name|output
 argument_list|(
 literal|1
 argument_list|,
-literal|"Adding as %s instead"
+literal|"Added as %s instead"
 argument_list|,
 name|new_path
 argument_list|)
@@ -5650,8 +5650,8 @@ name|output
 argument_list|(
 literal|1
 argument_list|,
-literal|"CONFLICT (rename/rename): Rename %s->%s in %s. "
-literal|"Rename %s->%s in %s"
+literal|"CONFLICT (rename/rename): Renamed %s->%s in %s. "
+literal|"Renamed %s->%s in %s"
 argument_list|,
 name|ren1_src
 argument_list|,
@@ -5800,7 +5800,7 @@ name|output
 argument_list|(
 literal|1
 argument_list|,
-literal|"Renaming %s => %s"
+literal|"Renamed %s => %s"
 argument_list|,
 name|ren1_src
 argument_list|,
@@ -5817,7 +5817,7 @@ name|output
 argument_list|(
 literal|2
 argument_list|,
-literal|"Auto-merging %s"
+literal|"Auto-merged %s"
 argument_list|,
 name|ren1_dst
 argument_list|)
@@ -6119,7 +6119,7 @@ name|output
 argument_list|(
 literal|2
 argument_list|,
-literal|"Removing %s"
+literal|"Removed %s"
 argument_list|,
 name|path
 argument_list|)
@@ -6343,7 +6343,7 @@ argument_list|(
 literal|1
 argument_list|,
 literal|"CONFLICT (%s): There is a directory with name %s in %s. "
-literal|"Adding %s as %s"
+literal|"Added %s as %s"
 argument_list|,
 name|conf
 argument_list|,
@@ -6383,7 +6383,7 @@ name|output
 argument_list|(
 literal|2
 argument_list|,
-literal|"Adding %s"
+literal|"Added %s"
 argument_list|,
 name|path
 argument_list|)
@@ -6454,7 +6454,7 @@ name|output
 argument_list|(
 literal|2
 argument_list|,
-literal|"Auto-merging %s"
+literal|"Auto-merged %s"
 argument_list|,
 name|path
 argument_list|)
