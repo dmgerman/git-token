@@ -181,7 +181,7 @@ name|new_hash
 decl_stmt|;
 name|new_hash
 operator|=
-name|calloc
+name|xcalloc
 argument_list|(
 name|new_hash_size
 argument_list|,
@@ -321,21 +321,32 @@ modifier|*
 name|obj
 parameter_list|)
 block|{
+name|struct
+name|object_refs
+modifier|*
+name|ref
+decl_stmt|;
 name|int
 name|j
-init|=
+decl_stmt|;
+comment|/* nothing to lookup */
+if|if
+condition|(
+operator|!
+name|refs_hash_size
+condition|)
+return|return
+name|NULL
+return|;
+name|j
+operator|=
 name|hash_obj
 argument_list|(
 name|obj
 argument_list|,
 name|refs_hash_size
 argument_list|)
-decl_stmt|;
-name|struct
-name|object_refs
-modifier|*
-name|ref
-decl_stmt|;
+expr_stmt|;
 while|while
 condition|(
 operator|(
@@ -728,13 +739,6 @@ argument_list|(
 literal|"cannot do reachability with object refs turned off"
 argument_list|)
 expr_stmt|;
-comment|/* nothing to lookup */
-if|if
-condition|(
-operator|!
-name|refs_hash_size
-condition|)
-return|return;
 comment|/* If we've been here already, don't bother */
 if|if
 condition|(

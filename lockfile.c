@@ -6,12 +6,6 @@ end_comment
 begin_include
 include|#
 directive|include
-file|<signal.h>
-end_include
-
-begin_include
-include|#
-directive|include
 file|"cache.h"
 end_include
 
@@ -153,7 +147,7 @@ condition|(
 operator|!
 name|lk
 operator|->
-name|next
+name|on_list
 condition|)
 block|{
 name|lk
@@ -166,6 +160,18 @@ name|lock_file_list
 operator|=
 name|lk
 expr_stmt|;
+name|lk
+operator|->
+name|on_list
+operator|=
+literal|1
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|lock_file_list
+condition|)
+block|{
 name|signal
 argument_list|(
 name|SIGINT
@@ -199,6 +205,16 @@ name|filename
 argument_list|)
 return|;
 block|}
+else|else
+name|lk
+operator|->
+name|filename
+index|[
+literal|0
+index|]
+operator|=
+literal|0
+expr_stmt|;
 return|return
 name|fd
 return|;
@@ -244,7 +260,7 @@ name|die_on_error
 condition|)
 name|die
 argument_list|(
-literal|"unable to create '%s': %s"
+literal|"unable to create '%s.lock': %s"
 argument_list|,
 name|path
 argument_list|,

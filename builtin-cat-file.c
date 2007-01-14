@@ -265,6 +265,8 @@ argument_list|(
 name|date
 argument_list|,
 name|tz
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|write_or_die

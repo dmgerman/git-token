@@ -2,12 +2,6 @@ begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_include
 include|#
 directive|include
-file|<stdlib.h>
-end_include
-
-begin_include
-include|#
-directive|include
 file|"builtin.h"
 end_include
 
@@ -393,14 +387,6 @@ block|}
 block|}
 end_function
 
-begin_decl_stmt
-DECL|variable|tags_only
-specifier|static
-name|int
-name|tags_only
-decl_stmt|;
-end_decl_stmt
-
 begin_function
 DECL|function|name_ref
 specifier|static
@@ -417,6 +403,13 @@ name|unsigned
 name|char
 modifier|*
 name|sha1
+parameter_list|,
+name|int
+name|flags
+parameter_list|,
+name|void
+modifier|*
+name|cb_data
 parameter_list|)
 block|{
 name|struct
@@ -428,6 +421,16 @@ name|parse_object
 argument_list|(
 name|sha1
 argument_list|)
+decl_stmt|;
+name|int
+name|tags_only
+init|=
+operator|*
+operator|(
+name|int
+operator|*
+operator|)
+name|cb_data
 decl_stmt|;
 name|int
 name|deref
@@ -562,7 +565,7 @@ name|name_rev
 argument_list|(
 name|commit
 argument_list|,
-name|strdup
+name|xstrdup
 argument_list|(
 name|path
 argument_list|)
@@ -730,6 +733,11 @@ init|=
 literal|0
 decl_stmt|,
 name|transform_stdin
+init|=
+literal|0
+decl_stmt|;
+name|int
+name|tags_only
 init|=
 literal|0
 decl_stmt|;
@@ -1015,6 +1023,9 @@ block|}
 name|for_each_ref
 argument_list|(
 name|name_ref
+argument_list|,
+operator|&
+name|tags_only
 argument_list|)
 expr_stmt|;
 if|if

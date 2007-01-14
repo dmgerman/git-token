@@ -2,12 +2,6 @@ begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_include
 include|#
 directive|include
-file|<stdio.h>
-end_include
-
-begin_include
-include|#
-directive|include
 file|"cache.h"
 end_include
 
@@ -276,7 +270,7 @@ name|list
 operator|->
 name|strdup_paths
 condition|?
-name|strdup
+name|xstrdup
 argument_list|(
 name|path
 argument_list|)
@@ -345,6 +339,7 @@ literal|0
 condition|)
 name|index
 operator|=
+operator|-
 literal|1
 operator|-
 name|index
@@ -508,17 +503,6 @@ operator|.
 name|path
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|list
-operator|->
-name|items
-index|[
-name|i
-index|]
-operator|.
-name|util
-condition|)
 name|free
 argument_list|(
 name|list

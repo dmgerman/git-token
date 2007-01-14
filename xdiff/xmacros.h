@@ -21,14 +21,6 @@ name|XMACROS_H
 end_define
 
 begin_define
-DECL|macro|GR_PRIME
-define|#
-directive|define
-name|GR_PRIME
-value|0x9e370001UL
-end_define
-
-begin_define
 DECL|macro|XDL_MIN
 define|#
 directive|define
@@ -77,6 +69,30 @@ value|((c)>= '0'&& (c)<= '9')
 end_define
 
 begin_define
+DECL|macro|XDL_ADDBITS
+define|#
+directive|define
+name|XDL_ADDBITS
+parameter_list|(
+name|v
+parameter_list|,
+name|b
+parameter_list|)
+value|((v) + ((v)>> (b)))
+end_define
+
+begin_define
+DECL|macro|XDL_MASKBITS
+define|#
+directive|define
+name|XDL_MASKBITS
+parameter_list|(
+name|b
+parameter_list|)
+value|((1UL<< (b)) - 1)
+end_define
+
+begin_define
 DECL|macro|XDL_HASHLONG
 define|#
 directive|define
@@ -86,7 +102,7 @@ name|v
 parameter_list|,
 name|b
 parameter_list|)
-value|(((unsigned long)(v) * GR_PRIME)>> ((CHAR_BIT * sizeof(unsigned long)) - (b)))
+value|(XDL_ADDBITS((unsigned long)(v), b)& XDL_MASKBITS(b))
 end_define
 
 begin_define

@@ -60,7 +60,7 @@ literal|1
 condition|)
 name|die
 argument_list|(
-literal|"unable to read idex"
+literal|"unable to read index"
 argument_list|)
 expr_stmt|;
 name|nr

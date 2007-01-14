@@ -177,6 +177,24 @@ end_function_decl
 
 begin_function_decl
 name|int
+name|xdl_change_compact
+parameter_list|(
+name|xdfile_t
+modifier|*
+name|xdf
+parameter_list|,
+name|xdfile_t
+modifier|*
+name|xdfo
+parameter_list|,
+name|long
+name|flags
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
 name|xdl_build_script
 parameter_list|(
 name|xdfenv_t

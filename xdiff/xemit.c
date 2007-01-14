@@ -363,17 +363,11 @@ comment|/* also identifier? */
 operator|*
 name|rec
 operator|==
-literal|'('
-operator|||
-comment|/* lisp defun? */
-operator|*
-name|rec
-operator|==
-literal|'#'
+literal|'$'
 operator|)
 condition|)
 block|{
-comment|/* #define? */
+comment|/* mysterious GNU diff's invention */
 if|if
 condition|(
 name|len
@@ -384,18 +378,25 @@ name|len
 operator|=
 name|sz
 expr_stmt|;
-if|if
+while|while
 condition|(
+literal|0
+operator|<
 name|len
 operator|&&
+name|isspace
+argument_list|(
+operator|(
+name|unsigned
+name|char
+operator|)
 name|rec
 index|[
 name|len
 operator|-
 literal|1
 index|]
-operator|==
-literal|'\n'
+argument_list|)
 condition|)
 name|len
 operator|--
@@ -556,7 +557,7 @@ decl_stmt|;
 name|char
 name|funcbuf
 index|[
-literal|40
+literal|80
 index|]
 decl_stmt|;
 name|long

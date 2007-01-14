@@ -2,18 +2,6 @@ begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_include
 include|#
 directive|include
-file|<sys/types.h>
-end_include
-
-begin_include
-include|#
-directive|include
-file|<dirent.h>
-end_include
-
-begin_include
-include|#
-directive|include
 file|"cache.h"
 end_include
 
@@ -626,7 +614,7 @@ return|;
 block|}
 name|wrote
 operator|=
-name|write
+name|write_in_full
 argument_list|(
 name|fd
 argument_list|,
@@ -711,7 +699,7 @@ return|;
 block|}
 name|wrote
 operator|=
-name|write
+name|write_in_full
 argument_list|(
 name|fd
 argument_list|,
@@ -856,7 +844,7 @@ specifier|static
 name|char
 name|path
 index|[
-name|MAXPATHLEN
+name|PATH_MAX
 operator|+
 literal|1
 index|]

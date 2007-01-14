@@ -483,7 +483,7 @@ operator|!
 name|trust_executable_bit
 condition|)
 block|{
-comment|/* If there is an existing entry, pick the mode bits 		 * from it. 		 */
+comment|/* If there is an existing entry, pick the mode bits 		 * from it, otherwise assume unexecutable. 		 */
 name|int
 name|pos
 init|=
@@ -510,6 +510,27 @@ name|pos
 index|]
 operator|->
 name|ce_mode
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|S_ISREG
+argument_list|(
+name|st
+operator|.
+name|st_mode
+argument_list|)
+condition|)
+name|ce
+operator|->
+name|ce_mode
+operator|=
+name|create_ce_mode
+argument_list|(
+name|S_IFREG
+operator||
+literal|0666
+argument_list|)
 expr_stmt|;
 block|}
 if|if
@@ -1430,7 +1451,7 @@ name|char
 name|update_index_usage
 index|[]
 init|=
-literal|"git-update-index [-q] [--add] [--replace] [--remove] [--unmerged] [--refresh] [--really-refresh] [--cacheinfo] [--chmod=(+|-)x] [--assume-unchanged] [--info-only] [--force-remove] [--stdin] [--index-info] [--unresolve] [--again] [--ignore-missing] [-z] [--verbose] [--]<file>..."
+literal|"git-update-index [-q] [--add] [--replace] [--remove] [--unmerged] [--refresh] [--really-refresh] [--cacheinfo] [--chmod=(+|-)x] [--assume-unchanged] [--info-only] [--force-remove] [--stdin] [--index-info] [--unresolve] [--again | -g] [--ignore-missing] [-z] [--verbose] [--]<file>..."
 decl_stmt|;
 end_decl_stmt
 
@@ -1922,10 +1943,7 @@ if|if
 condition|(
 name|read_ref
 argument_list|(
-name|git_path
-argument_list|(
 literal|"HEAD"
-argument_list|)
 argument_list|,
 name|head_sha1
 argument_list|)
@@ -1939,10 +1957,7 @@ if|if
 condition|(
 name|read_ref
 argument_list|(
-name|git_path
-argument_list|(
 literal|"MERGE_HEAD"
-argument_list|)
 argument_list|,
 name|merge_head_sha1
 argument_list|)
@@ -2128,10 +2143,7 @@ if|if
 condition|(
 name|read_ref
 argument_list|(
-name|git_path
-argument_list|(
 literal|"HEAD"
-argument_list|)
 argument_list|,
 name|head_sha1
 argument_list|)
@@ -2930,6 +2942,14 @@ argument_list|(
 name|path
 argument_list|,
 literal|"--again"
+argument_list|)
+operator|||
+operator|!
+name|strcmp
+argument_list|(
+name|path
+argument_list|,
+literal|"-g"
 argument_list|)
 condition|)
 block|{

@@ -17,6 +17,12 @@ directive|include
 file|"cache-tree.h"
 end_include
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|DEBUG
+end_ifndef
+
 begin_define
 DECL|macro|DEBUG
 define|#
@@ -24,6 +30,11 @@ directive|define
 name|DEBUG
 value|0
 end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_function
 DECL|function|cache_tree
@@ -1467,6 +1478,15 @@ argument_list|,
 name|dryrun
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|subcnt
+operator|<
+literal|0
+condition|)
+return|return
+name|subcnt
+return|;
 name|i
 operator|+=
 name|subcnt
@@ -1821,18 +1841,7 @@ if|if
 condition|(
 name|dryrun
 condition|)
-block|{
-name|unsigned
-name|char
-name|hdr
-index|[
-literal|200
-index|]
-decl_stmt|;
-name|int
-name|hdrlen
-decl_stmt|;
-name|write_sha1_file_prepare
+name|hash_sha1_file
 argument_list|(
 name|buffer
 argument_list|,
@@ -1843,14 +1852,8 @@ argument_list|,
 name|it
 operator|->
 name|sha1
-argument_list|,
-name|hdr
-argument_list|,
-operator|&
-name|hdrlen
 argument_list|)
 expr_stmt|;
-block|}
 else|else
 name|write_sha1_file
 argument_list|(

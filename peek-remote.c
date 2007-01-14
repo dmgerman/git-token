@@ -17,12 +17,6 @@ directive|include
 file|"pkt-line.h"
 end_include
 
-begin_include
-include|#
-directive|include
-file|<sys/wait.h>
-end_include
-
 begin_decl_stmt
 DECL|variable|peek_remote_usage
 specifier|static
@@ -353,12 +347,16 @@ literal|1
 index|]
 argument_list|)
 expr_stmt|;
+name|ret
+operator||=
 name|finish_connect
 argument_list|(
 name|pid
 argument_list|)
 expr_stmt|;
 return|return
+operator|!
+operator|!
 name|ret
 return|;
 block|}

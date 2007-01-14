@@ -268,6 +268,12 @@ name|renamed_pair
 range|:
 literal|1
 decl_stmt|;
+DECL|member|is_unmerged
+name|unsigned
+name|is_unmerged
+range|:
+literal|1
+decl_stmt|;
 block|}
 struct|;
 end_struct
@@ -280,8 +286,7 @@ name|DIFF_PAIR_UNMERGED
 parameter_list|(
 name|p
 parameter_list|)
-define|\
-value|(!DIFF_FILE_VALID((p)->one)&& !DIFF_FILE_VALID((p)->two))
+value|((p)->is_unmerged)
 end_define
 
 begin_define

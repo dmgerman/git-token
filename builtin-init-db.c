@@ -34,6 +34,38 @@ endif|#
 directive|endif
 end_endif
 
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|NO_TRUSTABLE_FILEMODE
+end_ifdef
+
+begin_define
+DECL|macro|TEST_FILEMODE
+define|#
+directive|define
+name|TEST_FILEMODE
+value|0
+end_define
+
+begin_else
+else|#
+directive|else
+end_else
+
+begin_define
+DECL|macro|TEST_FILEMODE
+define|#
+directive|define
+name|TEST_FILEMODE
+value|1
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_function
 DECL|function|safe_create_dir
 specifier|static
@@ -252,7 +284,7 @@ name|dirent
 modifier|*
 name|de
 decl_stmt|;
-comment|/* Note: if ".git/hooks" file exists in the repository being 	 * re-initialized, /etc/core-git/templates/hooks/update would 	 * cause git-init-db to fail here.  I think this is sane but 	 * it means that the set of templates we ship by default, along 	 * with the way the namespace under .git/ is organized, should 	 * be really carefully chosen. 	 */
+comment|/* Note: if ".git/hooks" file exists in the repository being 	 * re-initialized, /etc/core-git/templates/hooks/update would 	 * cause git-init to fail here.  I think this is sane but 	 * it means that the set of templates we ship by default, along 	 * with the way the namespace under .git/ is organized, should 	 * be really carefully chosen. 	 */
 name|safe_create_dir
 argument_list|(
 name|path
@@ -688,10 +720,24 @@ condition|(
 operator|!
 name|template_dir
 condition|)
+block|{
+name|template_dir
+operator|=
+name|getenv
+argument_list|(
+name|TEMPLATE_DIR_ENVIRONMENT
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|template_dir
+condition|)
 name|template_dir
 operator|=
 name|DEFAULT_GIT_TEMPLATE_DIR
 expr_stmt|;
+block|}
 name|strcpy
 argument_list|(
 name|template_path
@@ -854,7 +900,7 @@ end_function
 begin_function
 DECL|function|create_default_files
 specifier|static
-name|void
+name|int
 name|create_default_files
 parameter_list|(
 specifier|const
@@ -899,6 +945,12 @@ name|repo_version_string
 index|[
 literal|10
 index|]
+decl_stmt|;
+name|int
+name|reinit
+decl_stmt|;
+name|int
+name|filemode
 decl_stmt|;
 if|if
 condition|(
@@ -1090,23 +1142,27 @@ argument_list|,
 literal|"HEAD"
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
+name|reinit
+operator|=
+operator|!
 name|read_ref
 argument_list|(
-name|path
+literal|"HEAD"
 argument_list|,
 name|sha1
 argument_list|)
-operator|<
-literal|0
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|reinit
 condition|)
 block|{
 if|if
 condition|(
 name|create_symref
 argument_list|(
-name|path
+literal|"HEAD"
 argument_list|,
 literal|"refs/heads/master"
 argument_list|)
@@ -1153,8 +1209,14 @@ literal|"config"
 argument_list|)
 expr_stmt|;
 comment|/* Check filemode trustability */
+name|filemode
+operator|=
+name|TEST_FILEMODE
+expr_stmt|;
 if|if
 condition|(
+name|TEST_FILEMODE
+operator|&&
 operator|!
 name|lstat
 argument_list|(
@@ -1169,9 +1231,8 @@ name|struct
 name|stat
 name|st2
 decl_stmt|;
-name|int
 name|filemode
-init|=
+operator|=
 operator|(
 operator|!
 name|chmod
@@ -1202,7 +1263,8 @@ name|st2
 operator|.
 name|st_mode
 operator|)
-decl_stmt|;
+expr_stmt|;
+block|}
 name|git_config_set
 argument_list|(
 literal|"core.filemode"
@@ -1214,7 +1276,40 @@ else|:
 literal|"false"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|is_bare_repository
+argument_list|()
+condition|)
+block|{
+name|git_config_set
+argument_list|(
+literal|"core.bare"
+argument_list|,
+literal|"true"
+argument_list|)
+expr_stmt|;
 block|}
+else|else
+block|{
+name|git_config_set
+argument_list|(
+literal|"core.bare"
+argument_list|,
+literal|"false"
+argument_list|)
+expr_stmt|;
+name|git_config_set
+argument_list|(
+literal|"core.logallrefupdates"
+argument_list|,
+literal|"true"
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|reinit
+return|;
 block|}
 end_function
 
@@ -1226,7 +1321,7 @@ name|char
 name|init_db_usage
 index|[]
 init|=
-literal|"git-init-db [--template=<template-directory>] [--shared]"
+literal|"git-init [--template=<template-directory>] [--shared]"
 decl_stmt|;
 end_decl_stmt
 
@@ -1279,6 +1374,8 @@ name|int
 name|len
 decl_stmt|,
 name|i
+decl_stmt|,
+name|reinit
 decl_stmt|;
 for|for
 control|(
@@ -1384,19 +1481,10 @@ condition|(
 operator|!
 name|git_dir
 condition|)
-block|{
 name|git_dir
 operator|=
 name|DEFAULT_GIT_DIR_ENVIRONMENT
 expr_stmt|;
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-literal|"defaulting to local storage area\n"
-argument_list|)
-expr_stmt|;
-block|}
 name|safe_create_dir
 argument_list|(
 name|git_dir
@@ -1408,6 +1496,8 @@ comment|/* Check to see if the repository version is right. 	 * Note that a newl
 name|check_repository_format
 argument_list|()
 expr_stmt|;
+name|reinit
+operator|=
 name|create_default_files
 argument_list|(
 name|git_dir
@@ -1513,7 +1603,33 @@ argument_list|,
 name|buf
 argument_list|)
 expr_stmt|;
+name|git_config_set
+argument_list|(
+literal|"receive.denyNonFastforwards"
+argument_list|,
+literal|"true"
+argument_list|)
+expr_stmt|;
 block|}
+name|printf
+argument_list|(
+literal|"%s%s Git repository in %s/\n"
+argument_list|,
+name|reinit
+condition|?
+literal|"Reinitialized existing"
+else|:
+literal|"Initialized empty"
+argument_list|,
+name|shared_repository
+condition|?
+literal|" shared"
+else|:
+literal|""
+argument_list|,
+name|git_dir
+argument_list|)
+expr_stmt|;
 return|return
 literal|0
 return|;

@@ -1020,7 +1020,7 @@ condition|)
 return|return;
 name|path
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|mkpath
 argument_list|(
@@ -1377,7 +1377,7 @@ expr_stmt|;
 else|else
 name|path
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|mkpath
 argument_list|(
@@ -1826,13 +1826,16 @@ decl_stmt|;
 if|if
 condition|(
 name|argc
-operator|<
+operator|!=
 literal|4
 condition|)
 name|usage
 argument_list|(
 name|merge_tree_usage
 argument_list|)
+expr_stmt|;
+name|setup_git_directory
+argument_list|()
 expr_stmt|;
 name|buf1
 operator|=

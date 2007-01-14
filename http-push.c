@@ -1002,7 +1002,7 @@ block|{
 name|ssize_t
 name|retval
 init|=
-name|write
+name|xwrite
 argument_list|(
 name|request
 operator|->
@@ -1603,7 +1603,7 @@ do|do
 block|{
 name|prev_read
 operator|=
-name|read
+name|xread
 argument_list|(
 name|prevlocal
 argument_list|,
@@ -4423,6 +4423,16 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|off_t
+name|pack_size
+init|=
+name|ftell
+argument_list|(
+name|request
+operator|->
+name|local_stream
+argument_list|)
+decl_stmt|;
 name|fclose
 argument_list|(
 name|request
@@ -4461,6 +4471,12 @@ operator|)
 name|request
 operator|->
 name|userData
+expr_stmt|;
+name|target
+operator|->
+name|pack_size
+operator|=
+name|pack_size
 expr_stmt|;
 name|lst
 operator|=
@@ -6987,13 +7003,6 @@ argument_list|,
 name|c
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|ctx
-operator|->
-name|cdata
-condition|)
-block|{
 name|free
 argument_list|(
 name|ctx
@@ -7007,7 +7016,6 @@ name|cdata
 operator|=
 name|NULL
 expr_stmt|;
-block|}
 name|ctx
 operator|->
 name|userFunc
@@ -7146,12 +7154,6 @@ operator|*
 operator|)
 name|userData
 decl_stmt|;
-if|if
-condition|(
-name|ctx
-operator|->
-name|cdata
-condition|)
 name|free
 argument_list|(
 name|ctx
@@ -8717,13 +8719,6 @@ name|DAV_PROPFIND_RESP
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|ls
-operator|->
-name|dentry_name
-condition|)
-block|{
 name|free
 argument_list|(
 name|ls
@@ -8731,7 +8726,6 @@ operator|->
 name|dentry_name
 argument_list|)
 expr_stmt|;
-block|}
 name|ls
 operator|->
 name|dentry_name
@@ -8862,7 +8856,7 @@ name|ls
 operator|.
 name|path
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|path
 argument_list|)
@@ -9808,6 +9802,7 @@ end_function
 
 begin_function
 DECL|function|add_one_object
+specifier|static
 name|struct
 name|object_list
 modifier|*
@@ -10049,7 +10044,7 @@ name|SEEN
 expr_stmt|;
 name|name
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|name
 argument_list|)
@@ -10880,6 +10875,13 @@ name|unsigned
 name|char
 modifier|*
 name|sha1
+parameter_list|,
+name|int
+name|flag
+parameter_list|,
+name|void
+modifier|*
+name|cb_data
 parameter_list|)
 block|{
 name|struct
@@ -11129,6 +11131,8 @@ expr_stmt|;
 name|for_each_ref
 argument_list|(
 name|one_local_ref
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 block|}
@@ -14102,7 +14106,7 @@ literal|3
 expr_stmt|;
 name|new_sha1_hex
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|sha1_to_hex
 argument_list|(

@@ -6,12 +6,6 @@ end_comment
 begin_include
 include|#
 directive|include
-file|<fnmatch.h>
-end_include
-
-begin_include
-include|#
-directive|include
 file|"cache.h"
 end_include
 
@@ -2661,7 +2655,7 @@ condition|)
 continue|continue;
 name|error
 argument_list|(
-literal|"pathspec '%s' did not match any."
+literal|"pathspec '%s' did not match any file(s) known to git."
 argument_list|,
 name|pathspec
 index|[
@@ -2675,6 +2669,17 @@ name|errors
 operator|++
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|errors
+condition|)
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"Did you forget to 'git add'?\n"
+argument_list|)
+expr_stmt|;
 return|return
 name|errors
 condition|?

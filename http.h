@@ -111,9 +111,17 @@ end_endif
 begin_if
 if|#
 directive|if
+operator|(
 name|LIBCURL_VERSION_NUM
 operator|<
 literal|0x070c04
+operator|)
+operator|||
+operator|(
+name|LIBCURL_VERSION_NUM
+operator|==
+literal|0x071000
+operator|)
 end_if
 
 begin_define
@@ -121,6 +129,27 @@ DECL|macro|NO_CURL_EASY_DUPHANDLE
 define|#
 directive|define
 name|NO_CURL_EASY_DUPHANDLE
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
+begin_if
+if|#
+directive|if
+name|LIBCURL_VERSION_NUM
+operator|<
+literal|0x070a03
+end_if
+
+begin_define
+DECL|macro|CURLE_HTTP_RETURNED_ERROR
+define|#
+directive|define
+name|CURLE_HTTP_RETURNED_ERROR
+value|CURLE_HTTP_NOT_FOUND
 end_define
 
 begin_endif

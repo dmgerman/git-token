@@ -6,25 +6,13 @@ end_comment
 begin_include
 include|#
 directive|include
-file|<stdlib.h>
-end_include
-
-begin_include
-include|#
-directive|include
-file|<string.h>
+file|"git-compat-util.h"
 end_include
 
 begin_include
 include|#
 directive|include
 file|"delta.h"
-end_include
-
-begin_include
-include|#
-directive|include
-file|"git-compat-util.h"
 end_include
 
 begin_comment
@@ -2619,7 +2607,7 @@ condition|)
 break|break;
 name|out
 operator|=
-name|realloc
+name|xrealloc
 argument_list|(
 name|out
 argument_list|,

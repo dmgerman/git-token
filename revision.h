@@ -86,6 +86,14 @@ DECL|macro|ADDED
 comment|/* Parents already parsed and added? */
 end_comment
 
+begin_define
+DECL|macro|SYMMETRIC_LEFT
+define|#
+directive|define
+name|SYMMETRIC_LEFT
+value|(1u<<8)
+end_define
+
 begin_struct_decl
 struct_decl|struct
 name|rev_info
@@ -221,8 +229,14 @@ name|unpacked
 range|:
 literal|1
 decl_stmt|,
+comment|/* see also ignore_packed below */
 DECL|member|boundary
 name|boundary
+range|:
+literal|1
+decl_stmt|,
+DECL|member|left_right
+name|left_right
 range|:
 literal|1
 decl_stmt|,
@@ -291,6 +305,23 @@ DECL|member|abbrev_commit
 name|abbrev_commit
 range|:
 literal|1
+decl_stmt|,
+DECL|member|relative_date
+name|relative_date
+range|:
+literal|1
+decl_stmt|;
+DECL|member|ignore_packed
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|ignore_packed
+decl_stmt|;
+comment|/* pretend objects in these are unpacked */
+DECL|member|num_ignore_packed
+name|int
+name|num_ignore_packed
 decl_stmt|;
 DECL|member|abbrev
 name|unsigned
@@ -345,7 +376,24 @@ name|char
 modifier|*
 name|extra_headers
 decl_stmt|;
+DECL|member|log_reencode
+specifier|const
+name|char
+modifier|*
+name|log_reencode
+decl_stmt|;
+comment|/* Filter by commit log message */
+DECL|member|grep_filter
+name|struct
+name|grep_opt
+modifier|*
+name|grep_filter
+decl_stmt|;
 comment|/* special limits */
+DECL|member|skip_count
+name|int
+name|skip_count
+decl_stmt|;
 DECL|member|max_count
 name|int
 name|max_count
@@ -491,6 +539,30 @@ specifier|const
 name|char
 modifier|*
 name|def
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|handle_revision_arg
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|arg
+parameter_list|,
+name|struct
+name|rev_info
+modifier|*
+name|revs
+parameter_list|,
+name|int
+name|flags
+parameter_list|,
+name|int
+name|cant_be_filename
 parameter_list|)
 function_decl|;
 end_function_decl
