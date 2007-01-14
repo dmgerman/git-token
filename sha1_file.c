@@ -3556,7 +3556,9 @@ literal|"cannot set FD_CLOEXEC"
 argument_list|)
 expr_stmt|;
 comment|/* Verify we recognize this pack file format. */
-name|read_or_die
+if|if
+condition|(
+name|read_in_full
 argument_list|(
 name|p
 operator|->
@@ -3569,6 +3571,20 @@ sizeof|sizeof
 argument_list|(
 name|hdr
 argument_list|)
+argument_list|)
+operator|!=
+sizeof|sizeof
+argument_list|(
+name|hdr
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"file %s is far too short to be a packfile"
+argument_list|,
+name|p
+operator|->
+name|pack_name
 argument_list|)
 expr_stmt|;
 if|if
@@ -3687,7 +3703,9 @@ operator|->
 name|pack_name
 argument_list|)
 expr_stmt|;
-name|read_or_die
+if|if
+condition|(
+name|read_in_full
 argument_list|(
 name|p
 operator|->
@@ -3699,6 +3717,20 @@ sizeof|sizeof
 argument_list|(
 name|sha1
 argument_list|)
+argument_list|)
+operator|!=
+sizeof|sizeof
+argument_list|(
+name|sha1
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"packfile %s signature is unavailable"
+argument_list|,
+name|p
+operator|->
+name|pack_name
 argument_list|)
 expr_stmt|;
 name|idx_sha1
