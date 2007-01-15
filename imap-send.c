@@ -1041,7 +1041,7 @@ block|{
 name|int
 name|n
 init|=
-name|read
+name|xread
 argument_list|(
 name|sock
 operator|->
@@ -1111,7 +1111,7 @@ block|{
 name|int
 name|n
 init|=
-name|write
+name|write_in_full
 argument_list|(
 name|sock
 operator|->
@@ -1896,7 +1896,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|read
+name|read_in_full
 argument_list|(
 name|fd
 argument_list|,

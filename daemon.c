@@ -439,7 +439,7 @@ index|]
 operator|=
 literal|'\0'
 expr_stmt|;
-name|write
+name|write_in_full
 argument_list|(
 literal|2
 argument_list|,

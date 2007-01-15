@@ -1504,7 +1504,7 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"%s: object not found"
+literal|"%s: object corrupt or missing"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -2130,9 +2130,22 @@ name|char
 modifier|*
 name|nsha1
 parameter_list|,
+specifier|const
 name|char
 modifier|*
-name|datail
+name|email
+parameter_list|,
+name|unsigned
+name|long
+name|timestamp
+parameter_list|,
+name|int
+name|tz
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|message
 parameter_list|,
 name|void
 modifier|*

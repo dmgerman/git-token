@@ -784,11 +784,6 @@ argument_list|(
 literal|"current working directory is untracked"
 argument_list|)
 expr_stmt|;
-name|free
-argument_list|(
-name|tree
-argument_list|)
-expr_stmt|;
 name|tree
 operator|=
 name|parse_tree_indirect

@@ -378,7 +378,7 @@ name|fd
 operator|<
 literal|0
 operator|||
-name|write
+name|write_in_full
 argument_list|(
 name|fd
 argument_list|,

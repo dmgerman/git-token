@@ -109,7 +109,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|write
+name|write_in_full
 argument_list|(
 name|fd
 argument_list|,

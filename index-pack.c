@@ -3760,7 +3760,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|xread
+name|read_in_full
 argument_list|(
 name|output_fd
 argument_list|,
@@ -4812,7 +4812,7 @@ name|sha1
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|xwrite
+name|write_or_die
 argument_list|(
 literal|1
 argument_list|,

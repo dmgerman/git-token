@@ -408,9 +408,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|validate_symref
+DECL|function|validate_headref
 name|int
-name|validate_symref
+name|validate_headref
 parameter_list|(
 specifier|const
 name|char
@@ -429,6 +429,13 @@ decl_stmt|,
 name|buffer
 index|[
 literal|256
+index|]
+decl_stmt|;
+name|unsigned
+name|char
+name|sha1
+index|[
+literal|20
 index|]
 decl_stmt|;
 name|int
@@ -525,7 +532,7 @@ literal|1
 return|;
 name|len
 operator|=
-name|read
+name|read_in_full
 argument_list|(
 name|fd
 argument_list|,
@@ -550,7 +557,14 @@ condition|(
 name|len
 operator|<
 literal|4
-operator|||
+condition|)
+return|return
+operator|-
+literal|1
+return|;
+if|if
+condition|(
+operator|!
 name|memcmp
 argument_list|(
 literal|"ref:"
@@ -560,10 +574,7 @@ argument_list|,
 literal|4
 argument_list|)
 condition|)
-return|return
-operator|-
-literal|1
-return|;
+block|{
 name|buf
 operator|=
 name|buffer
@@ -604,6 +615,21 @@ argument_list|,
 name|buf
 argument_list|,
 literal|5
+argument_list|)
+condition|)
+return|return
+literal|0
+return|;
+block|}
+comment|/* 	 * Is this a detached HEAD? 	 */
+if|if
+condition|(
+operator|!
+name|get_sha1_hex
+argument_list|(
+name|buffer
+argument_list|,
+name|sha1
 argument_list|)
 condition|)
 return|return
@@ -1154,7 +1180,7 @@ argument_list|)
 operator|==
 literal|0
 operator|&&
-name|validate_symref
+name|validate_headref
 argument_list|(
 literal|"HEAD"
 argument_list|)
