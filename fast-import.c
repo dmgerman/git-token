@@ -3865,6 +3865,22 @@ argument_list|(
 name|idx_name
 argument_list|)
 expr_stmt|;
+name|fprintf
+argument_list|(
+name|stdout
+argument_list|,
+literal|"%s\n"
+argument_list|,
+name|old_p
+operator|->
+name|pack_name
+argument_list|)
+expr_stmt|;
+name|fflush
+argument_list|(
+name|stdout
+argument_list|)
+expr_stmt|;
 comment|/* Register the packfile with core git's machinary. */
 name|new_p
 operator|=
