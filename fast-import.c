@@ -769,18 +769,6 @@ name|pack_size
 decl_stmt|;
 end_decl_stmt
 
-begin_decl_stmt
-DECL|variable|pack_sha1
-specifier|static
-name|unsigned
-name|char
-name|pack_sha1
-index|[
-literal|20
-index|]
-decl_stmt|;
-end_decl_stmt
-
 begin_comment
 comment|/* Table of objects we've written. */
 end_comment
@@ -3338,7 +3326,9 @@ argument_list|)
 expr_stmt|;
 name|SHA1_Final
 argument_list|(
-name|pack_sha1
+name|pack_data
+operator|->
+name|sha1
 argument_list|,
 operator|&
 name|c
@@ -3348,11 +3338,15 @@ name|write_or_die
 argument_list|(
 name|pack_fd
 argument_list|,
-name|pack_sha1
+name|pack_data
+operator|->
+name|sha1
 argument_list|,
 sizeof|sizeof
 argument_list|(
-name|pack_sha1
+name|pack_data
+operator|->
+name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3727,11 +3721,15 @@ name|sha1write
 argument_list|(
 name|f
 argument_list|,
-name|pack_sha1
+name|pack_data
+operator|->
+name|sha1
 argument_list|,
 sizeof|sizeof
 argument_list|(
-name|pack_sha1
+name|pack_data
+operator|->
+name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3739,7 +3737,9 @@ name|sha1close
 argument_list|(
 name|f
 argument_list|,
-name|NULL
+name|pack_data
+operator|->
+name|sha1
 argument_list|,
 literal|1
 argument_list|)
