@@ -555,14 +555,6 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|object_count
-specifier|static
-name|uintmax_t
-name|object_count
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|variable|marks_set_count
 specifier|static
 name|uintmax_t
@@ -606,6 +598,15 @@ literal|1
 operator|<<
 name|TYPE_BITS
 index|]
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|object_count
+specifier|static
+name|unsigned
+name|long
+name|object_count
 decl_stmt|;
 end_decl_stmt
 
@@ -10809,6 +10810,8 @@ init|=
 name|object_entry_alloc
 decl_stmt|;
 name|uintmax_t
+name|total_count
+decl_stmt|,
 name|duplicate_count
 decl_stmt|;
 name|setup_ident
@@ -11283,6 +11286,33 @@ argument_list|(
 name|branch_log
 argument_list|)
 expr_stmt|;
+name|total_count
+operator|=
+literal|0
+expr_stmt|;
+for|for
+control|(
+name|i
+operator|=
+literal|0
+init|;
+name|i
+operator|<
+name|ARRAY_SIZE
+argument_list|(
+name|object_count_by_type
+argument_list|)
+condition|;
+name|i
+operator|++
+control|)
+name|total_count
+operator|+=
+name|object_count_by_type
+index|[
+name|i
+index|]
+expr_stmt|;
 name|duplicate_count
 operator|=
 literal|0
@@ -11348,7 +11378,7 @@ name|stderr
 argument_list|,
 literal|"Total objects:   %10ju (%10ju duplicates                  )\n"
 argument_list|,
-name|object_count
+name|total_count
 argument_list|,
 name|duplicate_count
 argument_list|)
