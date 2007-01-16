@@ -127,10 +127,19 @@ directive|endif
 end_endif
 
 begin_define
+DECL|macro|_ALL_SOURCE
+define|#
+directive|define
+name|_ALL_SOURCE
+value|1
+end_define
+
+begin_define
 DECL|macro|_GNU_SOURCE
 define|#
 directive|define
 name|_GNU_SOURCE
+value|1
 end_define
 
 begin_define
@@ -138,6 +147,7 @@ DECL|macro|_BSD_SOURCE
 define|#
 directive|define
 name|_BSD_SOURCE
+value|1
 end_define
 
 begin_include
@@ -302,11 +312,31 @@ directive|include
 file|<pwd.h>
 end_include
 
+begin_undef
+DECL|macro|_ALL_SOURCE
+undef|#
+directive|undef
+name|_ALL_SOURCE
+end_undef
+
+begin_comment
+DECL|macro|_ALL_SOURCE
+comment|/* AIX 5.3L defines a struct list with _ALL_SOURCE. */
+end_comment
+
 begin_include
 include|#
 directive|include
 file|<grp.h>
 end_include
+
+begin_define
+DECL|macro|_ALL_SOURCE
+define|#
+directive|define
+name|_ALL_SOURCE
+value|1
+end_define
 
 begin_ifndef
 ifndef|#
