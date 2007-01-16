@@ -4491,8 +4491,13 @@ condition|(
 name|errno
 operator|==
 name|EISDIR
+operator|||
+name|errno
+operator|==
+name|ENOTDIR
 condition|)
 block|{
+comment|/* 			 * rename(a, b) when b is an existing 			 * directory ought to result in ISDIR, but 			 * Solaris 5.8 gives ENOTDIR.  Sheesh. 			 */
 if|if
 condition|(
 name|remove_empty_directories
