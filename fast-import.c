@@ -521,6 +521,11 @@ name|unsigned
 name|long
 name|max_packsize
 init|=
+operator|(
+literal|1LL
+operator|<<
+literal|32
+operator|)
 operator|-
 literal|1
 decl_stmt|;
