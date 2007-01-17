@@ -1217,12 +1217,24 @@ condition|)
 block|{
 name|int
 name|len
-init|=
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|value
+condition|)
+name|die
+argument_list|(
+literal|"format.headers without value"
+argument_list|)
+expr_stmt|;
+name|len
+operator|=
 name|strlen
 argument_list|(
 name|value
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|extra_headers_size
 operator|+=
 name|len
