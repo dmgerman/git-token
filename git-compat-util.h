@@ -312,6 +312,12 @@ directive|include
 file|<pwd.h>
 end_include
 
+begin_include
+include|#
+directive|include
+file|<stdint.h>
+end_include
+
 begin_undef
 DECL|macro|_ALL_SOURCE
 undef|#
