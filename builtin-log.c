@@ -2961,6 +2961,8 @@ name|output_format
 operator|=
 name|DIFF_FORMAT_DIFFSTAT
 operator||
+name|DIFF_FORMAT_SUMMARY
+operator||
 name|DIFF_FORMAT_PATCH
 expr_stmt|;
 if|if
