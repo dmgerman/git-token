@@ -41,7 +41,7 @@ name|char
 name|builtin_add_usage
 index|[]
 init|=
-literal|"git-add [-n] [-v] [-f] [--interactive] [--]<filepattern>..."
+literal|"git-add [-n] [-v] [-f] [--interactive | -i] [--]<filepattern>..."
 decl_stmt|;
 end_decl_stmt
 
@@ -541,6 +541,17 @@ operator|!
 name|strcmp
 argument_list|(
 literal|"--interactive"
+argument_list|,
+name|argv
+index|[
+name|i
+index|]
+argument_list|)
+operator|||
+operator|!
+name|strcmp
+argument_list|(
+literal|"-i"
 argument_list|,
 name|argv
 index|[
