@@ -1183,7 +1183,7 @@ name|char
 modifier|*
 name|fmt_patch_suffix
 init|=
-literal|".txt"
+literal|".patch"
 decl_stmt|;
 end_decl_stmt
 
