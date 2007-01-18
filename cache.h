@@ -2767,8 +2767,7 @@ modifier|*
 name|windows
 decl_stmt|;
 DECL|member|index_base
-name|unsigned
-name|int
+name|uint32_t
 modifier|*
 name|index_base
 decl_stmt|;

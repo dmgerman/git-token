@@ -3080,8 +3080,7 @@ name|list
 operator|+
 name|nr_result
 decl_stmt|;
-name|unsigned
-name|int
+name|uint32_t
 name|array
 index|[
 literal|256
@@ -3166,10 +3165,7 @@ name|array
 argument_list|,
 literal|256
 operator|*
-sizeof|sizeof
-argument_list|(
-name|int
-argument_list|)
+literal|4
 argument_list|)
 expr_stmt|;
 comment|/* 	 * Write the actual SHA1 entries.. 	 */
@@ -3200,8 +3196,7 @@ operator|*
 name|list
 operator|++
 decl_stmt|;
-name|unsigned
-name|int
+name|uint32_t
 name|offset
 init|=
 name|htonl
