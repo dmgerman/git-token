@@ -558,17 +558,6 @@ literal|1
 decl_stmt|;
 end_decl_stmt
 
-begin_decl_stmt
-DECL|variable|max_objects
-specifier|static
-name|uintmax_t
-name|max_objects
-init|=
-operator|-
-literal|1
-decl_stmt|;
-end_decl_stmt
-
 begin_comment
 comment|/* Stats and misc. counters */
 end_comment
@@ -4871,22 +4860,6 @@ expr_stmt|;
 comment|/* Determine if we should auto-checkpoint. */
 if|if
 condition|(
-operator|(
-name|object_count
-operator|+
-literal|1
-operator|)
-operator|>
-name|max_objects
-operator|||
-operator|(
-name|object_count
-operator|+
-literal|1
-operator|)
-operator|<
-name|object_count
-operator|||
 operator|(
 name|pack_size
 operator|+
@@ -11035,7 +11008,7 @@ name|char
 name|fast_import_usage
 index|[]
 init|=
-literal|"git-fast-import [--objects=n] [--depth=n] [--active-branches=n] [--export-marks=marks.file] [--branch-log=log]"
+literal|"git-fast-import [--depth=n] [--active-branches=n] [--export-marks=marks.file] [--branch-log=log]"
 decl_stmt|;
 end_decl_stmt
 
@@ -11056,11 +11029,6 @@ parameter_list|)
 block|{
 name|int
 name|i
-decl_stmt|;
-name|uintmax_t
-name|est_obj_cnt
-init|=
-name|object_entry_alloc
 decl_stmt|;
 name|uintmax_t
 name|total_count
@@ -11115,58 +11083,6 @@ literal|"--"
 argument_list|)
 condition|)
 break|break;
-elseif|else
-if|if
-condition|(
-operator|!
-name|strncmp
-argument_list|(
-name|a
-argument_list|,
-literal|"--objects="
-argument_list|,
-literal|10
-argument_list|)
-condition|)
-name|est_obj_cnt
-operator|=
-name|strtoumax
-argument_list|(
-name|a
-operator|+
-literal|10
-argument_list|,
-name|NULL
-argument_list|,
-literal|0
-argument_list|)
-expr_stmt|;
-elseif|else
-if|if
-condition|(
-operator|!
-name|strncmp
-argument_list|(
-name|a
-argument_list|,
-literal|"--max-objects-per-pack="
-argument_list|,
-literal|23
-argument_list|)
-condition|)
-name|max_objects
-operator|=
-name|strtoumax
-argument_list|(
-name|a
-operator|+
-literal|23
-argument_list|,
-name|NULL
-argument_list|,
-literal|0
-argument_list|)
-expr_stmt|;
 elseif|else
 if|if
 condition|(
@@ -11335,7 +11251,7 @@ argument_list|)
 expr_stmt|;
 name|alloc_objects
 argument_list|(
-name|est_obj_cnt
+name|object_entry_alloc
 argument_list|)
 expr_stmt|;
 name|strbuf_init
@@ -11616,13 +11532,9 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Alloc'd objects: %10ju (%10ju overflow  )\n"
+literal|"Alloc'd objects: %10ju\n"
 argument_list|,
 name|alloc_count
-argument_list|,
-name|alloc_count
-operator|-
-name|est_obj_cnt
 argument_list|)
 expr_stmt|;
 name|fprintf
