@@ -43,7 +43,7 @@ name|char
 name|push_usage
 index|[]
 init|=
-literal|"git-push [--all] [--tags] [--exec=<git-receive-pack>] [--repo=all] [-f | --force] [-v] [<repository><refspec>...]"
+literal|"git-push [--all] [--tags] [--receive-pack=<git-receive-pack>] [--repo=all] [-f | --force] [-v] [<repository><refspec>...]"
 decl_stmt|;
 end_decl_stmt
 
@@ -70,12 +70,12 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|execute
+DECL|variable|receivepack
 specifier|static
 specifier|const
 name|char
 modifier|*
-name|execute
+name|receivepack
 decl_stmt|;
 end_decl_stmt
 
@@ -901,12 +901,12 @@ block|{
 if|if
 condition|(
 operator|!
-name|execute
+name|receivepack
 condition|)
 block|{
 name|char
 modifier|*
-name|ex
+name|rp
 init|=
 name|xmalloc
 argument_list|(
@@ -915,21 +915,21 @@ argument_list|(
 name|value
 argument_list|)
 operator|+
-literal|8
+literal|16
 argument_list|)
 decl_stmt|;
 name|sprintf
 argument_list|(
-name|ex
+name|rp
 argument_list|,
-literal|"--exec=%s"
+literal|"--receive-pack=%s"
 argument_list|,
 name|value
 argument_list|)
 expr_stmt|;
-name|execute
+name|receivepack
 operator|=
-name|ex
+name|rp
 expr_stmt|;
 block|}
 else|else
@@ -999,7 +999,7 @@ expr_stmt|;
 name|config_get_receivepack
 operator|=
 operator|(
-name|execute
+name|receivepack
 operator|==
 name|NULL
 operator|)
@@ -1437,7 +1437,7 @@ literal|"--force"
 expr_stmt|;
 if|if
 condition|(
-name|execute
+name|receivepack
 condition|)
 name|argv
 index|[
@@ -1445,7 +1445,7 @@ name|argc
 operator|++
 index|]
 operator|=
-name|execute
+name|receivepack
 expr_stmt|;
 name|common_argc
 operator|=
@@ -1880,13 +1880,32 @@ name|strncmp
 argument_list|(
 name|arg
 argument_list|,
+literal|"--receive-pack="
+argument_list|,
+literal|15
+argument_list|)
+condition|)
+block|{
+name|receivepack
+operator|=
+name|arg
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strncmp
+argument_list|(
+name|arg
+argument_list|,
 literal|"--exec="
 argument_list|,
 literal|7
 argument_list|)
 condition|)
 block|{
-name|execute
+name|receivepack
 operator|=
 name|arg
 expr_stmt|;

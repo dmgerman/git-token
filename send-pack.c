@@ -43,18 +43,18 @@ name|char
 name|send_pack_usage
 index|[]
 init|=
-literal|"git-send-pack [--all] [--force] [--exec=<git-receive-pack>] [--verbose] [--thin] [<host>:]<directory> [<ref>...]\n"
+literal|"git-send-pack [--all] [--force] [--receive-pack=<git-receive-pack>] [--verbose] [--thin] [<host>:]<directory> [<ref>...]\n"
 literal|"  --all and explicit<ref> specification are mutually exclusive."
 decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|exec
+DECL|variable|receivepack
 specifier|static
 specifier|const
 name|char
 modifier|*
-name|exec
+name|receivepack
 init|=
 literal|"git-receive-pack"
 decl_stmt|;
@@ -1819,13 +1819,34 @@ name|strncmp
 argument_list|(
 name|arg
 argument_list|,
+literal|"--receive-pack="
+argument_list|,
+literal|15
+argument_list|)
+condition|)
+block|{
+name|receivepack
+operator|=
+name|arg
+operator|+
+literal|15
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strncmp
+argument_list|(
+name|arg
+argument_list|,
 literal|"--exec="
 argument_list|,
 literal|7
 argument_list|)
 condition|)
 block|{
-name|exec
+name|receivepack
 operator|=
 name|arg
 operator|+
@@ -1967,7 +1988,7 @@ name|fd
 argument_list|,
 name|dest
 argument_list|,
-name|exec
+name|receivepack
 argument_list|)
 expr_stmt|;
 if|if
