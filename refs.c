@@ -6117,6 +6117,11 @@ index|[
 literal|1024
 index|]
 decl_stmt|;
+name|int
+name|ret
+init|=
+literal|0
+decl_stmt|;
 name|logfile
 operator|=
 name|git_path
@@ -6184,8 +6189,6 @@ name|timestamp
 decl_stmt|;
 name|int
 name|len
-decl_stmt|,
-name|ret
 decl_stmt|,
 name|tz
 decl_stmt|;
@@ -6400,9 +6403,7 @@ if|if
 condition|(
 name|ret
 condition|)
-return|return
-name|ret
-return|;
+break|break;
 block|}
 name|fclose
 argument_list|(
@@ -6410,7 +6411,7 @@ name|logfp
 argument_list|)
 expr_stmt|;
 return|return
-literal|0
+name|ret
 return|;
 block|}
 end_function
