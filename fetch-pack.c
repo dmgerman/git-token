@@ -89,7 +89,7 @@ name|char
 name|fetch_pack_usage
 index|[]
 init|=
-literal|"git-fetch-pack [--all] [-q] [-v] [-k] [--thin] [--exec=upload-pack] [--depth=<n>] [host:]directory<refs>..."
+literal|"git-fetch-pack [--all] [--quiet|-q] [--keep|-k] [--thin] [--exec=<git-upload-pack>] [--depth=<n>] [-v] [<host>:]<directory> [<refs>...]"
 decl_stmt|;
 end_decl_stmt
 

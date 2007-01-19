@@ -43,7 +43,7 @@ name|char
 name|push_usage
 index|[]
 init|=
-literal|"git-push [--all] [--tags] [-f | --force]<repository> [<refspec>...]"
+literal|"git-push [--all] [--tags] [--exec=<git-receive-pack>] [--repo=all] [-f | --force] [-v] [<repository><refspec>...]"
 decl_stmt|;
 end_decl_stmt
 

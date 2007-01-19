@@ -43,8 +43,8 @@ name|char
 name|send_pack_usage
 index|[]
 init|=
-literal|"git-send-pack [--all] [--exec=git-receive-pack]<remote> [<head>...]\n"
-literal|"  --all and explicit<head> specification are mutually exclusive."
+literal|"git-send-pack [--all] [--force] [--exec=<git-receive-pack>] [--verbose] [--thin] [<host>:]<directory> [<ref>...]\n"
+literal|"  --all and explicit<ref> specification are mutually exclusive."
 decl_stmt|;
 end_decl_stmt
 
