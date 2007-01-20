@@ -911,6 +911,23 @@ name|commit_reflog
 modifier|*
 name|commit_reflog
 decl_stmt|;
+if|if
+condition|(
+name|commit
+operator|->
+name|object
+operator|.
+name|flags
+operator|&
+name|UNINTERESTING
+condition|)
+name|die
+argument_list|(
+literal|"Cannot walk reflogs for %s"
+argument_list|,
+name|name
+argument_list|)
+expr_stmt|;
 name|branch
 operator|=
 name|xstrdup
