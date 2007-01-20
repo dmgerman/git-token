@@ -31,7 +31,19 @@ name|char
 name|show_branch_usage
 index|[]
 init|=
-literal|"git-show-branch [--sparse] [--current] [--all] [--remotes] [--topo-order] [--more=count | --list | --independent | --merge-base ] [--topics] [<refs>...] | --reflog[=n]<branch>"
+literal|"git-show-branch [--sparse] [--current] [--all] [--remotes] [--topo-order] [--more=count | --list | --independent | --merge-base ] [--topics] [<refs>...] | --reflog[=n[,b]]<branch>"
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|show_branch_usage_reflog
+specifier|static
+specifier|const
+name|char
+name|show_branch_usage_reflog
+index|[]
+init|=
+literal|"--reflog is incompatible with --all, --remotes, --independent or --merge-base"
 decl_stmt|;
 end_decl_stmt
 
@@ -3727,15 +3739,21 @@ operator|!
 name|reflog
 operator|&&
 operator|(
+operator|(
 literal|0
 operator|<
 name|extra
 operator|)
+operator|||
+name|all_heads
+operator|||
+name|all_remotes
+operator|)
 condition|)
-comment|/* 			 * Asking for --more in reflog mode does not 			 * make sense. 			 */
+comment|/* 			 * Asking for --more in reflog mode does not 			 * make sense.  --list is Ok. 			 * 			 * Also --all and --remotes do not make sense either. 			 */
 name|usage
 argument_list|(
-name|show_branch_usage
+name|show_branch_usage_reflog
 argument_list|)
 expr_stmt|;
 block|}
@@ -3803,6 +3821,19 @@ condition|)
 name|die
 argument_list|(
 literal|"--reflog option needs one branch name"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|MAX_REVS
+operator|<
+name|reflog
+condition|)
+name|die
+argument_list|(
+literal|"Only %d entries can be shown at one time."
+argument_list|,
+name|MAX_REVS
 argument_list|)
 expr_stmt|;
 if|if
