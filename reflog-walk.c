@@ -35,6 +35,12 @@ directive|include
 file|"path-list.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"reflog-walk.h"
+end_include
+
 begin_struct
 DECL|struct|complete_reflogs
 struct|struct
