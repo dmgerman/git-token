@@ -380,16 +380,6 @@ name|unsigned
 name|long
 name|diff
 decl_stmt|;
-name|time_t
-name|t
-init|=
-name|gm_time_t
-argument_list|(
-name|time
-argument_list|,
-name|tz
-argument_list|)
-decl_stmt|;
 name|struct
 name|timeval
 name|now
@@ -408,7 +398,7 @@ name|now
 operator|.
 name|tv_sec
 operator|<
-name|t
+name|time
 condition|)
 return|return
 literal|"in the future"
@@ -419,7 +409,7 @@ name|now
 operator|.
 name|tv_sec
 operator|-
-name|t
+name|time
 expr_stmt|;
 if|if
 condition|(
