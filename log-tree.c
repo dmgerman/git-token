@@ -1122,8 +1122,15 @@ argument_list|(
 name|opt
 operator|->
 name|reflog_info
+argument_list|,
+name|opt
+operator|->
+name|commit_format
+operator|==
+name|CMIT_FMT_ONELINE
 argument_list|)
 expr_stmt|;
+empty_stmt|;
 block|}
 comment|/* 	 * And then the pretty-printed message itself 	 */
 name|len
