@@ -275,6 +275,15 @@ argument_list|,
 name|commit
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|rev
+operator|->
+name|reflog_info
+condition|)
+block|{
+comment|/* we allow cycles in reflog ancestry */
 name|free
 argument_list|(
 name|commit
@@ -288,6 +297,7 @@ name|buffer
 operator|=
 name|NULL
 expr_stmt|;
+block|}
 name|free_commit_list
 argument_list|(
 name|commit
