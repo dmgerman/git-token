@@ -244,6 +244,11 @@ DECL|member|parents
 name|parents
 range|:
 literal|1
+decl_stmt|,
+DECL|member|reverse
+name|reverse
+range|:
+literal|2
 decl_stmt|;
 comment|/* Diff flags */
 DECL|member|diff
