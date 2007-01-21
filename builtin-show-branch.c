@@ -4035,7 +4035,7 @@ name|show_date
 argument_list|(
 name|timestamp
 argument_list|,
-literal|0
+name|tz
 argument_list|,
 literal|1
 argument_list|)
