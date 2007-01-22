@@ -2786,7 +2786,10 @@ index|[
 literal|1
 index|]
 operator|=
+name|dup
+argument_list|(
 name|sockfd
+argument_list|)
 expr_stmt|;
 block|}
 end_function
