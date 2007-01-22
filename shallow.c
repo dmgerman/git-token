@@ -111,7 +111,9 @@ begin_function
 DECL|function|is_repository_shallow
 name|int
 name|is_repository_shallow
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 name|FILE
 modifier|*
