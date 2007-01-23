@@ -1448,22 +1448,6 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|cb
-operator|.
-name|ref_commit
-condition|)
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-literal|"warning: ref '%s' does not point at a commit\n"
-argument_list|,
-name|ref
-argument_list|)
-expr_stmt|;
 name|cb
 operator|.
 name|ref
