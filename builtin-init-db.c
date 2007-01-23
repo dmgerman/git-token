@@ -1299,6 +1299,14 @@ argument_list|,
 literal|"false"
 argument_list|)
 expr_stmt|;
+comment|/* allow template config file to override the default */
+if|if
+condition|(
+name|log_all_ref_updates
+operator|==
+operator|-
+literal|1
+condition|)
 name|git_config_set
 argument_list|(
 literal|"core.logallrefupdates"
