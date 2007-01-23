@@ -1825,12 +1825,17 @@ operator|&
 name|NOT_BARE
 operator|)
 operator|&&
+operator|(
 name|is_bare_repository
 argument_list|()
+operator|||
+name|is_inside_git_dir
+argument_list|()
+operator|)
 condition|)
 name|die
 argument_list|(
-literal|"%s cannot be used in a bare git directory"
+literal|"%s must be run in a work tree"
 argument_list|,
 name|cmd
 argument_list|)
