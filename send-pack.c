@@ -142,6 +142,18 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+name|pid
+operator|<
+literal|0
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"send-pack: unable to fork git-pack-objects"
+argument_list|)
+return|;
+if|if
+condition|(
 operator|!
 name|pid
 condition|)
