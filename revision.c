@@ -4665,6 +4665,14 @@ name|strcmp
 argument_list|(
 name|arg
 argument_list|,
+literal|"-g"
+argument_list|)
+operator|||
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
 literal|"--walk-reflogs"
 argument_list|)
 condition|)
