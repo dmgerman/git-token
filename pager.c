@@ -5,6 +5,12 @@ directive|include
 file|"cache.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|<sys/select.h>
+end_include
+
 begin_comment
 comment|/*  * This is split up from the rest of git so that we might do  * something different on Windows, for example.  */
 end_comment
@@ -21,6 +27,39 @@ modifier|*
 name|pager
 parameter_list|)
 block|{
+comment|/* 	 * Work around bug in "less" by not starting it until we 	 * have real input 	 */
+name|fd_set
+name|in
+decl_stmt|;
+name|FD_ZERO
+argument_list|(
+operator|&
+name|in
+argument_list|)
+expr_stmt|;
+name|FD_SET
+argument_list|(
+literal|0
+argument_list|,
+operator|&
+name|in
+argument_list|)
+expr_stmt|;
+name|select
+argument_list|(
+literal|1
+argument_list|,
+operator|&
+name|in
+argument_list|,
+name|NULL
+argument_list|,
+operator|&
+name|in
+argument_list|,
+name|NULL
+argument_list|)
+expr_stmt|;
 name|execlp
 argument_list|(
 name|pager
