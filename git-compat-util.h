@@ -315,7 +315,7 @@ end_include
 begin_include
 include|#
 directive|include
-file|<stdint.h>
+file|<inttypes.h>
 end_include
 
 begin_undef
