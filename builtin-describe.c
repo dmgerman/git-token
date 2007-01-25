@@ -612,11 +612,6 @@ name|seen_commits
 init|=
 literal|0
 decl_stmt|;
-name|int
-name|found
-init|=
-literal|0
-decl_stmt|;
 if|if
 condition|(
 name|get_sha1
@@ -811,8 +806,7 @@ name|t
 operator|->
 name|found_order
 operator|=
-name|found
-operator|++
+name|match_cnt
 expr_stmt|;
 name|c
 operator|->
