@@ -1133,7 +1133,7 @@ expr_stmt|;
 else|else
 name|printf
 argument_list|(
-literal|"%s-g%s\n"
+literal|"%s-%d-g%s\n"
 argument_list|,
 name|all_matches
 index|[
@@ -1143,6 +1143,13 @@ operator|.
 name|name
 operator|->
 name|path
+argument_list|,
+name|all_matches
+index|[
+literal|0
+index|]
+operator|.
+name|depth
 argument_list|,
 name|find_unique_abbrev
 argument_list|(
