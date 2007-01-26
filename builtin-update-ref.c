@@ -165,20 +165,6 @@ argument_list|(
 literal|"Refusing to perform update with empty message."
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|strchr
-argument_list|(
-name|msg
-argument_list|,
-literal|'\n'
-argument_list|)
-condition|)
-name|die
-argument_list|(
-literal|"Refusing to perform update with \\n in message."
-argument_list|)
-expr_stmt|;
 continue|continue;
 block|}
 if|if
