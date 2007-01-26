@@ -2305,10 +2305,6 @@ expr_stmt|;
 name|setup_ident
 argument_list|()
 expr_stmt|;
-comment|/* don't die if gecos is empty */
-name|ignore_missing_committer_name
-argument_list|()
-expr_stmt|;
 name|git_config
 argument_list|(
 name|receive_pack_config

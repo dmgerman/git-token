@@ -5127,6 +5127,7 @@ name|committer
 operator|=
 name|git_committer_info
 argument_list|(
+operator|-
 literal|1
 argument_list|)
 expr_stmt|;

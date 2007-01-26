@@ -2120,6 +2120,7 @@ name|committer
 init|=
 name|git_committer_info
 argument_list|(
+operator|-
 literal|1
 argument_list|)
 decl_stmt|;
