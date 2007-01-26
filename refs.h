@@ -22,11 +22,6 @@ name|char
 modifier|*
 name|ref_name
 decl_stmt|;
-DECL|member|log_file
-name|char
-modifier|*
-name|log_file
-decl_stmt|;
 DECL|member|lk
 name|struct
 name|lock_file

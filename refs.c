@@ -3524,20 +3524,6 @@ argument_list|(
 name|ref
 argument_list|)
 expr_stmt|;
-name|lock
-operator|->
-name|log_file
-operator|=
-name|xstrdup
-argument_list|(
-name|git_path
-argument_list|(
-literal|"logs/%s"
-argument_list|,
-name|ref
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|ref_file
 operator|=
 name|git_path
@@ -4092,9 +4078,14 @@ name|err
 operator|=
 name|unlink
 argument_list|(
+name|git_path
+argument_list|(
+literal|"logs/%s"
+argument_list|,
 name|lock
 operator|->
-name|log_file
+name|ref_name
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -4111,9 +4102,14 @@ name|stderr
 argument_list|,
 literal|"warning: unlink(%s) failed: %s"
 argument_list|,
+name|git_path
+argument_list|(
+literal|"logs/%s"
+argument_list|,
 name|lock
 operator|->
-name|log_file
+name|ref_name
+argument_list|)
 argument_list|,
 name|strerror
 argument_list|(
@@ -4907,13 +4903,6 @@ expr_stmt|;
 name|free
 argument_list|(
 name|lock
-operator|->
-name|log_file
-argument_list|)
-expr_stmt|;
-name|free
-argument_list|(
-name|lock
 argument_list|)
 expr_stmt|;
 block|}
@@ -4925,16 +4914,22 @@ specifier|static
 name|int
 name|log_ref_write
 parameter_list|(
-name|struct
-name|ref_lock
+specifier|const
+name|char
 modifier|*
-name|lock
+name|ref_name
 parameter_list|,
 specifier|const
 name|unsigned
 name|char
 modifier|*
-name|sha1
+name|old_sha1
+parameter_list|,
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|new_sha1
 parameter_list|,
 specifier|const
 name|char
@@ -4963,6 +4958,9 @@ name|msglen
 decl_stmt|;
 name|char
 modifier|*
+name|log_file
+decl_stmt|,
+modifier|*
 name|logrec
 decl_stmt|;
 specifier|const
@@ -4982,6 +4980,15 @@ operator|!
 name|is_bare_repository
 argument_list|()
 expr_stmt|;
+name|log_file
+operator|=
+name|git_path
+argument_list|(
+literal|"logs/%s"
+argument_list|,
+name|ref_name
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|log_all_ref_updates
@@ -4990,8 +4997,6 @@ operator|(
 operator|!
 name|strncmp
 argument_list|(
-name|lock
-operator|->
 name|ref_name
 argument_list|,
 literal|"refs/heads/"
@@ -5002,8 +5007,6 @@ operator|||
 operator|!
 name|strncmp
 argument_list|(
-name|lock
-operator|->
 name|ref_name
 argument_list|,
 literal|"refs/remotes/"
@@ -5017,8 +5020,6 @@ if|if
 condition|(
 name|safe_create_leading_directories
 argument_list|(
-name|lock
-operator|->
 name|log_file
 argument_list|)
 operator|<
@@ -5029,8 +5030,6 @@ name|error
 argument_list|(
 literal|"unable to create directory for %s"
 argument_list|,
-name|lock
-operator|->
 name|log_file
 argument_list|)
 return|;
@@ -5043,8 +5042,6 @@ name|logfd
 operator|=
 name|open
 argument_list|(
-name|lock
-operator|->
 name|log_file
 argument_list|,
 name|oflags
@@ -5092,8 +5089,6 @@ if|if
 condition|(
 name|remove_empty_directories
 argument_list|(
-name|lock
-operator|->
 name|log_file
 argument_list|)
 condition|)
@@ -5103,8 +5098,6 @@ name|error
 argument_list|(
 literal|"There are still logs under '%s'"
 argument_list|,
-name|lock
-operator|->
 name|log_file
 argument_list|)
 return|;
@@ -5113,8 +5106,6 @@ name|logfd
 operator|=
 name|open
 argument_list|(
-name|lock
-operator|->
 name|log_file
 argument_list|,
 name|oflags
@@ -5134,8 +5125,6 @@ name|error
 argument_list|(
 literal|"Unable to append to %s: %s"
 argument_list|,
-name|lock
-operator|->
 name|log_file
 argument_list|,
 name|strerror
@@ -5248,14 +5237,12 @@ literal|"%s %s %s\n"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
-name|lock
-operator|->
 name|old_sha1
 argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
-name|sha1
+name|new_sha1
 argument_list|)
 argument_list|,
 name|committer
@@ -5323,8 +5310,6 @@ name|error
 argument_list|(
 literal|"Unable to append to %s"
 argument_list|,
-name|lock
-operator|->
 name|log_file
 argument_list|)
 return|;
@@ -5469,6 +5454,12 @@ condition|(
 name|log_ref_write
 argument_list|(
 name|lock
+operator|->
+name|ref_name
+argument_list|,
+name|lock
+operator|->
+name|old_sha1
 argument_list|,
 name|sha1
 argument_list|,
