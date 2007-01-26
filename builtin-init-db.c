@@ -1165,6 +1165,8 @@ argument_list|(
 literal|"HEAD"
 argument_list|,
 literal|"refs/heads/master"
+argument_list|,
+name|NULL
 argument_list|)
 operator|<
 literal|0

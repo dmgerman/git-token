@@ -2417,6 +2417,11 @@ specifier|const
 name|char
 modifier|*
 name|refs_heads_master
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|logmsg
 parameter_list|)
 function_decl|;
 end_function_decl
