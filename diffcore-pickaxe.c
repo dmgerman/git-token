@@ -74,6 +74,14 @@ condition|)
 return|return
 literal|0
 return|;
+if|if
+condition|(
+operator|!
+name|len
+condition|)
+return|return
+literal|0
+return|;
 name|sz
 operator|=
 name|one
