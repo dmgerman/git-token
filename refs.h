@@ -22,6 +22,11 @@ name|char
 modifier|*
 name|ref_name
 decl_stmt|;
+DECL|member|orig_ref_name
+name|char
+modifier|*
+name|orig_ref_name
+decl_stmt|;
 DECL|member|lk
 name|struct
 name|lock_file
