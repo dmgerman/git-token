@@ -1716,6 +1716,25 @@ argument_list|,
 literal|0666
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|fd
+operator|<
+literal|0
+condition|)
+block|{
+name|error
+argument_list|(
+literal|"Unable to open %s for writing"
+argument_list|,
+name|lockpath
+argument_list|)
+expr_stmt|;
+return|return
+operator|-
+literal|5
+return|;
+block|}
 name|written
 operator|=
 name|write_in_full
