@@ -119,7 +119,7 @@ operator|>
 literal|0
 condition|)
 block|{
-name|size_t
+name|ssize_t
 name|written
 init|=
 name|xwrite
