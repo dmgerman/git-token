@@ -2313,9 +2313,6 @@ index|[
 literal|1024
 index|]
 decl_stmt|;
-name|setup_ident
-argument_list|()
-expr_stmt|;
 name|git_config
 argument_list|(
 name|git_format_config

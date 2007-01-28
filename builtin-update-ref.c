@@ -97,9 +97,6 @@ name|delete
 operator|=
 literal|0
 expr_stmt|;
-name|setup_ident
-argument_list|()
-expr_stmt|;
 name|git_config
 argument_list|(
 name|git_default_config

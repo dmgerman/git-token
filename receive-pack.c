@@ -2302,9 +2302,6 @@ argument_list|(
 literal|"attempt to push into a shallow repository"
 argument_list|)
 expr_stmt|;
-name|setup_ident
-argument_list|()
-expr_stmt|;
 name|git_config
 argument_list|(
 name|receive_pack_config
