@@ -1117,6 +1117,7 @@ name|opt
 operator|->
 name|reflog_info
 condition|)
+block|{
 name|show_reflog_message
 argument_list|(
 name|opt
@@ -1131,6 +1132,25 @@ name|CMIT_FMT_ONELINE
 argument_list|)
 expr_stmt|;
 empty_stmt|;
+if|if
+condition|(
+name|opt
+operator|->
+name|commit_format
+operator|==
+name|CMIT_FMT_ONELINE
+condition|)
+block|{
+name|printf
+argument_list|(
+literal|"%s"
+argument_list|,
+name|sep
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+block|}
 block|}
 comment|/* 	 * And then the pretty-printed message itself 	 */
 name|len

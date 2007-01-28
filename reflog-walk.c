@@ -1455,7 +1455,11 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"}: "
+literal|"}: %s"
+argument_list|,
+name|info
+operator|->
+name|message
 argument_list|)
 expr_stmt|;
 block|}
