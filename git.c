@@ -1223,8 +1223,6 @@ block|,
 name|cmd_blame
 block|,
 name|RUN_SETUP
-operator||
-name|USE_PAGER
 block|}
 block|,
 block|{

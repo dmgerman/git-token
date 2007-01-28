@@ -10092,6 +10092,14 @@ block|}
 if|if
 condition|(
 operator|!
+name|incremental
+condition|)
+name|setup_pager
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+operator|!
 name|blame_move_score
 condition|)
 name|blame_move_score
