@@ -1978,7 +1978,7 @@ name|strncmp
 argument_list|(
 name|k
 argument_list|,
-literal|"color.status"
+literal|"color.status."
 argument_list|,
 literal|13
 argument_list|)
