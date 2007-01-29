@@ -1041,7 +1041,7 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|int
-name|cmd_repo_config
+name|cmd_config
 parameter_list|(
 name|int
 name|argc
