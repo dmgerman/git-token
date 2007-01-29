@@ -2891,7 +2891,7 @@ literal|'-'
 condition|)
 name|usage
 argument_list|(
-literal|"git-fsck-objects [--tags] [--root] [[--unreachable] [--cache] [--full] [--strict]<head-sha1>*]"
+literal|"git-fsck [--tags] [--root] [[--unreachable] [--cache] [--full] [--strict]<head-sha1>*]"
 argument_list|)
 expr_stmt|;
 block|}
