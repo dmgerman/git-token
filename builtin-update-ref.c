@@ -340,9 +340,13 @@ condition|(
 operator|!
 name|lock
 condition|)
-return|return
-literal|1
-return|;
+name|die
+argument_list|(
+literal|"%s: cannot lock the ref"
+argument_list|,
+name|refname
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|write_ref_sha1
@@ -356,10 +360,13 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-return|return
-literal|1
-return|;
-comment|/* write_ref_sha1 always unlocks the ref, no need to do it explicitly */
+name|die
+argument_list|(
+literal|"%s: cannot update the ref"
+argument_list|,
+name|refname
+argument_list|)
+expr_stmt|;
 return|return
 literal|0
 return|;
