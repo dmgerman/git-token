@@ -1201,7 +1201,9 @@ block|{
 literal|"annotate"
 block|,
 name|cmd_annotate
-block|, }
+block|,
+name|USE_PAGER
+block|}
 block|,
 block|{
 literal|"apply"
@@ -1221,8 +1223,6 @@ block|,
 name|cmd_blame
 block|,
 name|RUN_SETUP
-operator||
-name|USE_PAGER
 block|}
 block|,
 block|{
@@ -1269,6 +1269,12 @@ block|,
 name|cmd_commit_tree
 block|,
 name|RUN_SETUP
+block|}
+block|,
+block|{
+literal|"config"
+block|,
+name|cmd_config
 block|}
 block|,
 block|{
@@ -1349,6 +1355,22 @@ block|{
 literal|"format-patch"
 block|,
 name|cmd_format_patch
+block|,
+name|RUN_SETUP
+block|}
+block|,
+block|{
+literal|"fsck"
+block|,
+name|cmd_fsck
+block|,
+name|RUN_SETUP
+block|}
+block|,
+block|{
+literal|"fsck-objects"
+block|,
+name|cmd_fsck
 block|,
 name|RUN_SETUP
 block|}
@@ -1508,7 +1530,7 @@ block|,
 block|{
 literal|"repo-config"
 block|,
-name|cmd_repo_config
+name|cmd_config
 block|}
 block|,
 block|{

@@ -65,7 +65,7 @@ name|char
 name|reflog_expire_usage
 index|[]
 init|=
-literal|"git-reflog expire [--verbose] [--dry-run] [--fix-stale] [--expire=<time>] [--expire-unreachable=<time>] [--all]<refs>..."
+literal|"git-reflog expire [--verbose] [--dry-run] [--stale-fix] [--expire=<time>] [--expire-unreachable=<time>] [--all]<refs>..."
 decl_stmt|;
 end_decl_stmt
 
@@ -1446,22 +1446,6 @@ argument_list|(
 name|sha1
 argument_list|,
 literal|1
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-operator|!
-name|cb
-operator|.
-name|ref_commit
-condition|)
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-literal|"warning: ref '%s' does not point at a commit\n"
-argument_list|,
-name|ref
 argument_list|)
 expr_stmt|;
 name|cb

@@ -427,6 +427,12 @@ DECL|member|topo_getter
 name|topo_sort_get_fn_t
 name|topo_getter
 decl_stmt|;
+DECL|member|reflog_info
+name|struct
+name|reflog_walk_info
+modifier|*
+name|reflog_info
+decl_stmt|;
 block|}
 struct|;
 end_struct

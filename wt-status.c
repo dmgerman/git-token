@@ -1876,7 +1876,7 @@ name|workdir_dirty
 condition|)
 name|printf
 argument_list|(
-literal|"no changes added to commit (use \"git add\" and/or \"git commit [-a|-i|-o]\")\n"
+literal|"no changes added to commit (use \"git add\" and/or \"git commit -a\")\n"
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -1978,7 +1978,7 @@ name|strncmp
 argument_list|(
 name|k
 argument_list|,
-literal|"color.status"
+literal|"color.status."
 argument_list|,
 literal|13
 argument_list|)

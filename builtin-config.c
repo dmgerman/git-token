@@ -19,7 +19,7 @@ name|char
 name|git_config_set_usage
 index|[]
 init|=
-literal|"git-repo-config [ --global ] [ --bool | --int ] [--get | --get-all | --get-regexp | --replace-all | --add | --unset | --unset-all] name [value [value_regex]] | --rename-section old_name new_name | --list"
+literal|"git-config [ --global ] [ --bool | --int ] [--get | --get-all | --get-regexp | --replace-all | --add | --unset | --unset-all] name [value [value_regex]] | --rename-section old_name new_name | --list"
 decl_stmt|;
 end_decl_stmt
 
@@ -750,9 +750,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|cmd_repo_config
+DECL|function|cmd_config
 name|int
-name|cmd_repo_config
+name|cmd_config
 parameter_list|(
 name|int
 name|argc

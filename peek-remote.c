@@ -25,17 +25,17 @@ name|char
 name|peek_remote_usage
 index|[]
 init|=
-literal|"git-peek-remote [--exec=upload-pack] [host:]directory"
+literal|"git-peek-remote [--upload-pack=<git-upload-pack>] [<host>:]<directory>"
 decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|exec
+DECL|variable|uploadpack
 specifier|static
 specifier|const
 name|char
 modifier|*
-name|exec
+name|uploadpack
 init|=
 literal|"git-upload-pack"
 decl_stmt|;
@@ -207,6 +207,27 @@ condition|(
 operator|!
 name|strncmp
 argument_list|(
+literal|"--upload-pack="
+argument_list|,
+name|arg
+argument_list|,
+literal|14
+argument_list|)
+condition|)
+block|{
+name|uploadpack
+operator|=
+name|arg
+operator|+
+literal|14
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strncmp
+argument_list|(
 literal|"--exec="
 argument_list|,
 name|arg
@@ -215,7 +236,7 @@ literal|7
 argument_list|)
 condition|)
 block|{
-name|exec
+name|uploadpack
 operator|=
 name|arg
 operator|+
@@ -310,7 +331,7 @@ name|fd
 argument_list|,
 name|dest
 argument_list|,
-name|exec
+name|uploadpack
 argument_list|)
 expr_stmt|;
 if|if

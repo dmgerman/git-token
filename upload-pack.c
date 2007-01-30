@@ -3658,6 +3658,16 @@ argument_list|,
 name|dir
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|is_repository_shallow
+argument_list|()
+condition|)
+name|die
+argument_list|(
+literal|"attempt to fetch/clone from a shallow repository"
+argument_list|)
+expr_stmt|;
 name|upload_pack
 argument_list|()
 expr_stmt|;

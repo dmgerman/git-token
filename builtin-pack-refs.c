@@ -177,6 +177,7 @@ argument_list|,
 literal|10
 argument_list|)
 expr_stmt|;
+comment|/* ALWAYS pack refs that were already packed or are tags */
 if|if
 condition|(
 operator|!
@@ -186,6 +187,13 @@ name|all
 operator|&&
 operator|!
 name|is_tag_ref
+operator|&&
+operator|!
+operator|(
+name|flags
+operator|&
+name|REF_ISPACKED
+operator|)
 condition|)
 return|return
 literal|0
