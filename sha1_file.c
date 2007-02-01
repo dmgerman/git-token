@@ -7952,6 +7952,33 @@ condition|(
 name|offset
 condition|)
 block|{
+comment|/* 			 * We are about to tell the caller where they can 			 * locate the requested object.  We better make 			 * sure the packfile is still here and can be 			 * accessed before supplying that answer, as 			 * it may have been deleted since the index 			 * was loaded! 			 */
+if|if
+condition|(
+name|p
+operator|->
+name|pack_fd
+operator|==
+operator|-
+literal|1
+operator|&&
+name|open_packed_git
+argument_list|(
+name|p
+argument_list|)
+condition|)
+block|{
+name|error
+argument_list|(
+literal|"packfile %s cannot be accessed"
+argument_list|,
+name|p
+operator|->
+name|pack_name
+argument_list|)
+expr_stmt|;
+continue|continue;
+block|}
 name|e
 operator|->
 name|offset
