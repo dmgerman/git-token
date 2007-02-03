@@ -404,6 +404,23 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/*  * Calls the specified function for each reflog file until it returns nonzero,  * and returns the value  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|for_each_reflog
+parameter_list|(
+name|each_ref_fn
+parameter_list|,
+name|void
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/** Returns 0 if target has the right format for a ref. **/
 end_comment
 

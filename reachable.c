@@ -1079,12 +1079,12 @@ argument_list|,
 name|revs
 argument_list|)
 expr_stmt|;
-comment|/* Add all reflog info from refs */
+comment|/* Add all reflog info */
 if|if
 condition|(
 name|mark_reflog
 condition|)
-name|for_each_ref
+name|for_each_reflog
 argument_list|(
 name|add_one_reflog
 argument_list|,
