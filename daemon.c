@@ -1769,7 +1769,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Separate the "extra args" information as supplied by the client connection.  * Any resulting data is squirrelled away in the given interpolation table.  */
+comment|/*  * Separate the "extra args" information as supplied by the client connection.  * Any resulting data is squirreled away in the given interpolation table.  */
 end_comment
 
 begin_function

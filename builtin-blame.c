@@ -2468,7 +2468,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Link in a new blame entry to the scorebord.  Entries that cover the  * same line range have been removed from the scoreboard previously.  */
+comment|/*  * Link in a new blame entry to the scoreboard.  Entries that cover the  * same line range have been removed from the scoreboard previously.  */
 end_comment
 
 begin_function
@@ -6802,7 +6802,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * The main loop -- while the scoreboard has lines whose true origin  * is still unknown, pick one brame_entry, and allow its current  * suspect to pass blames to its parents.  */
+comment|/*  * The main loop -- while the scoreboard has lines whose true origin  * is still unknown, pick one blame_entry, and allow its current  * suspect to pass blames to its parents.  */
 end_comment
 
 begin_function
@@ -10283,7 +10283,7 @@ name|blame_copy_score
 operator|=
 name|BLAME_DEFAULT_COPY_SCORE
 expr_stmt|;
-comment|/* 	 * We have collected options unknown to us in argv[1..unk] 	 * which are to be passed to revision machinery if we are 	 * going to do the "bottom" procesing. 	 * 	 * The remaining are: 	 * 	 * (1) if seen_dashdash, its either 	 *     "-options --<path>" or 	 *     "-options --<path><rev>". 	 *     but the latter is allowed only if there is no 	 *     options that we passed to revision machinery. 	 * 	 * (2) otherwise, we may have "--" somewhere later and 	 *     might be looking at the first one of multiple 'rev' 	 *     parameters (e.g. " master ^next ^maint -- path"). 	 *     See if there is a dashdash first, and give the 	 *     arguments before that to revision machinery. 	 *     After that there must be one 'path'. 	 * 	 * (3) otherwise, its one of the three: 	 *     "-options<path><rev>" 	 *     "-options<rev><path>" 	 *     "-options<path>" 	 *     but again the first one is allowed only if 	 *     there is no options that we passed to revision 	 *     machinery. 	 */
+comment|/* 	 * We have collected options unknown to us in argv[1..unk] 	 * which are to be passed to revision machinery if we are 	 * going to do the "bottom" processing. 	 * 	 * The remaining are: 	 * 	 * (1) if seen_dashdash, its either 	 *     "-options --<path>" or 	 *     "-options --<path><rev>". 	 *     but the latter is allowed only if there is no 	 *     options that we passed to revision machinery. 	 * 	 * (2) otherwise, we may have "--" somewhere later and 	 *     might be looking at the first one of multiple 'rev' 	 *     parameters (e.g. " master ^next ^maint -- path"). 	 *     See if there is a dashdash first, and give the 	 *     arguments before that to revision machinery. 	 *     After that there must be one 'path'. 	 * 	 * (3) otherwise, its one of the three: 	 *     "-options<path><rev>" 	 *     "-options<rev><path>" 	 *     "-options<path>" 	 *     but again the first one is allowed only if 	 *     there is no options that we passed to revision 	 *     machinery. 	 */
 if|if
 condition|(
 name|seen_dashdash

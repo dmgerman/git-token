@@ -572,7 +572,7 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-comment|/* 	 * "!used" means that nothing at all points to it, including 	 * other unreacahble objects. In other words, it's the "tip" 	 * of some set of unreachable objects, usually a commit that 	 * got dropped. 	 * 	 * Such starting points are more interesting than some random 	 * set of unreachable objects, so we show them even if the user 	 * hasn't asked for _all_ unreachable objects. If you have 	 * deleted a branch by mistake, this is a prime candidate to 	 * start looking at, for example. 	 */
+comment|/* 	 * "!used" means that nothing at all points to it, including 	 * other unreachable objects. In other words, it's the "tip" 	 * of some set of unreachable objects, usually a commit that 	 * got dropped. 	 * 	 * Such starting points are more interesting than some random 	 * set of unreachable objects, so we show them even if the user 	 * hasn't asked for _all_ unreachable objects. If you have 	 * deleted a branch by mistake, this is a prime candidate to 	 * start looking at, for example. 	 */
 if|if
 condition|(
 operator|!

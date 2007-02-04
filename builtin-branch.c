@@ -1965,7 +1965,7 @@ name|oldname
 condition|)
 name|die
 argument_list|(
-literal|"cannot rename the curren branch while not on any."
+literal|"cannot rename the current branch while not on any."
 argument_list|)
 expr_stmt|;
 if|if

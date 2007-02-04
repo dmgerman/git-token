@@ -702,7 +702,7 @@ operator|==
 literal|'%'
 condition|)
 block|{
-comment|/* %( is the start of an atom; 			 * %% is a quoteed per-cent. 			 */
+comment|/* %( is the start of an atom; 			 * %% is a quoted per-cent. 			 */
 if|if
 condition|(
 name|cp
