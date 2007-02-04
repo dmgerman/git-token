@@ -325,6 +325,10 @@ block|}
 struct|;
 end_struct
 
+begin_comment
+comment|/*  * Given an origin, prepare mmfile_t structure to be used by the  * diff machinery  */
+end_comment
+
 begin_function
 DECL|function|fill_origin_blob
 specifier|static
@@ -411,6 +415,10 @@ name|ptr
 return|;
 block|}
 end_function
+
+begin_comment
+comment|/*  * Origin is refcounted and usually we keep the blob contents to be  * reused.  */
+end_comment
 
 begin_function
 DECL|function|origin_incref
@@ -505,6 +513,10 @@ block|}
 block|}
 end_function
 
+begin_comment
+comment|/*  * Each group of lines is described by a blame_entry; it can be split  * as we pass blame to the parents.  They form a linked list in the  * scoreboard structure, sorted by the target line number.  */
+end_comment
+
 begin_struct
 DECL|struct|blame_entry
 struct|struct
@@ -549,7 +561,7 @@ DECL|member|s_lno
 name|int
 name|s_lno
 decl_stmt|;
-comment|/* how significant this entry is -- cached to avoid 	 * scanning the lines over and over 	 */
+comment|/* how significant this entry is -- cached to avoid 	 * scanning the lines over and over. 	 */
 DECL|member|score
 name|unsigned
 name|score
@@ -557,6 +569,10 @@ decl_stmt|;
 block|}
 struct|;
 end_struct
+
+begin_comment
+comment|/*  * The current state of the blame assignment.  */
+end_comment
 
 begin_struct
 DECL|struct|scoreboard
@@ -576,7 +592,7 @@ name|char
 modifier|*
 name|path
 decl_stmt|;
-comment|/* the contents in the final; pointed into by buf pointers of 	 * blame_entries 	 */
+comment|/* 	 * The contents in the final image. 	 * Used by many functions to obtain contents of the nth line, 	 * indexed with scoreboard.lineno[blame_entry.lno]. 	 */
 DECL|member|final_buf
 specifier|const
 name|char
@@ -694,6 +710,10 @@ modifier|*
 parameter_list|)
 function_decl|;
 end_function_decl
+
+begin_comment
+comment|/*  * If two blame entries that are next to each other came from  * contiguous lines in the same origin (i.e.<commit, path> pair),  * merge them together.  */
+end_comment
 
 begin_function
 DECL|function|coalesce
@@ -841,6 +861,10 @@ expr_stmt|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Given a commit and a path in it, create a new origin structure.  * The callers that add blame to the scoreboard should use  * get_origin() to obtain shared, refcounted copy instead of calling  * this function directly.  */
+end_comment
+
 begin_function
 DECL|function|make_origin
 specifier|static
@@ -911,6 +935,10 @@ name|o
 return|;
 block|}
 end_function
+
+begin_comment
+comment|/*  * Locate an existing origin or create a new one.  */
+end_comment
 
 begin_function
 DECL|function|get_origin
@@ -999,6 +1027,10 @@ argument_list|)
 return|;
 block|}
 end_function
+
+begin_comment
+comment|/*  * Fill the blob_sha1 field of an origin if it hasn't, so that later  * call to fill_origin_blob() can use it to locate the data.  blob_sha1  * for an origin is also used to pass the blame for the entire file to  * the parent to detect the case where a child's blob is identical to  * that of its parent's.  */
+end_comment
 
 begin_function
 DECL|function|fill_blob_sha1
@@ -1103,6 +1135,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * We have an origin -- check if the same path exists in the  * parent and return an origin structure to represent it.  */
+end_comment
+
 begin_function
 DECL|function|find_origin
 specifier|static
@@ -1153,7 +1189,7 @@ operator|->
 name|util
 condition|)
 block|{
-comment|/* This is a freestanding copy of origin and not 		 * refcounted. 		 */
+comment|/* 		 * Each commit object can cache one origin in that 		 * commit.  This is a freestanding copy of origin and 		 * not refcounted. 		 */
 name|struct
 name|origin
 modifier|*
@@ -1178,6 +1214,7 @@ name|path
 argument_list|)
 condition|)
 block|{
+comment|/* 			 * The same path between origin and its parent 			 * without renaming -- the most common case. 			 */
 name|porigin
 operator|=
 name|get_origin
@@ -1191,6 +1228,7 @@ operator|->
 name|path
 argument_list|)
 expr_stmt|;
+comment|/* 			 * If the origin was newly created (i.e. get_origin 			 * would call make_origin if none is found in the 			 * scoreboard), it does not know the blob_sha1, 			 * so copy it.  Otherwise porigin was in the 			 * scoreboard and already knows blob_sha1. 			 */
 if|if
 condition|(
 name|porigin
@@ -1456,6 +1494,7 @@ condition|(
 name|porigin
 condition|)
 block|{
+comment|/* 		 * Create a freestanding copy that is not part of 		 * the refcounted origin found in the scoreboard, and 		 * cache it in the commit. 		 */
 name|struct
 name|origin
 modifier|*
@@ -1497,6 +1536,10 @@ name|porigin
 return|;
 block|}
 end_function
+
+begin_comment
+comment|/*  * We have an origin -- find the path that corresponds to it in its  * parent and return an origin structure to represent it.  */
+end_comment
 
 begin_function
 DECL|function|find_rename
@@ -1739,6 +1782,10 @@ name|porigin
 return|;
 block|}
 end_function
+
+begin_comment
+comment|/*  * Parsing of patch chunks...  */
+end_comment
 
 begin_struct
 DECL|struct|chunk
@@ -2307,6 +2354,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Run diff between two origins and grab the patch output, so that  * we can pass blame for lines origin is currently suspected for  * to its parent.  */
+end_comment
+
 begin_function
 DECL|function|get_patch
 specifier|static
@@ -2415,6 +2466,10 @@ argument_list|)
 expr_stmt|;
 block|}
 end_function
+
+begin_comment
+comment|/*  * Link in a new blame entry to the scoreboard.  Entries that cover the  * same line range have been removed from the scoreboard previously.  */
+end_comment
 
 begin_function
 DECL|function|add_blame_entry
@@ -2539,6 +2594,10 @@ expr_stmt|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * src typically is on-stack; we want to copy the information in it to  * an malloced blame_entry that is already on the linked list of the  * scoreboard.  The origin of dst loses a refcnt while the origin of src  * gains one.  */
+end_comment
+
 begin_function
 DECL|function|dup_entry
 specifier|static
@@ -2656,6 +2715,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * It is known that lines between tlno to same came from parent, and e  * has an overlap with that range.  it also is known that parent's  * line plno corresponds to e's line tlno.  *  *<---- e ----->  *<------>  *<------------>  *<------------>  *<------------------>  *  * Split e into potentially three parts; before this chunk, the chunk  * to be blamed for the parent, and after that portion.  */
+end_comment
+
 begin_function
 DECL|function|split_overlap
 specifier|static
@@ -2687,7 +2750,6 @@ modifier|*
 name|parent
 parameter_list|)
 block|{
-comment|/* it is known that lines between tlno to same came from 	 * parent, and e has an overlap with that range.  it also is 	 * known that parent's line plno corresponds to e's line tlno. 	 * 	 *<---- e -----> 	 *<------> 	 *<------------> 	 *<------------> 	 *<------------------> 	 * 	 * Potentially we need to split e into three parts; before 	 * this chunk, the chunk to be blamed for parent, and after 	 * that portion. 	 */
 name|int
 name|chunk_end_lno
 decl_stmt|;
@@ -2944,6 +3006,7 @@ index|]
 operator|.
 name|lno
 expr_stmt|;
+comment|/* 	 * if it turns out there is nothing to blame the parent for, 	 * forget about the splitting.  !split[1].suspect signals this. 	 */
 if|if
 condition|(
 name|split
@@ -2970,6 +3033,10 @@ argument_list|)
 expr_stmt|;
 block|}
 end_function
+
+begin_comment
+comment|/*  * split_overlap() divided an existing blame e into up to three parts  * in split.  Adjust the linked list of blames in the scoreboard to  * reflect the split.  */
+end_comment
 
 begin_function
 DECL|function|split_blame
@@ -3015,7 +3082,7 @@ operator|.
 name|suspect
 condition|)
 block|{
-comment|/* we need to split e into two and add another for parent */
+comment|/* The first part (reuse storage for the existing entry e) */
 name|dup_entry
 argument_list|(
 name|e
@@ -3027,6 +3094,7 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
+comment|/* The last part -- me */
 name|new_entry
 operator|=
 name|xmalloc
@@ -3064,6 +3132,7 @@ argument_list|,
 name|new_entry
 argument_list|)
 expr_stmt|;
+comment|/* ... and the middle part -- parent */
 name|new_entry
 operator|=
 name|xmalloc
@@ -3121,7 +3190,7 @@ index|]
 operator|.
 name|suspect
 condition|)
-comment|/* parent covers the entire area */
+comment|/* 		 * The parent covers the entire area; reuse storage for 		 * e and replace it with the parent. 		 */
 name|dup_entry
 argument_list|(
 name|e
@@ -3144,6 +3213,7 @@ operator|.
 name|suspect
 condition|)
 block|{
+comment|/* me and then parent */
 name|dup_entry
 argument_list|(
 name|e
@@ -3195,6 +3265,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
+comment|/* parent and then me */
 name|dup_entry
 argument_list|(
 name|e
@@ -3382,6 +3453,10 @@ block|}
 block|}
 end_function
 
+begin_comment
+comment|/*  * After splitting the blame, the origins used by the  * on-stack blame_entry should lose one refcnt each.  */
+end_comment
+
 begin_function
 DECL|function|decref_split
 specifier|static
@@ -3422,6 +3497,10 @@ argument_list|)
 expr_stmt|;
 block|}
 end_function
+
+begin_comment
+comment|/*  * Helper for blame_chunk().  blame_entry e is known to overlap with  * the patch hunk; split it and pass blame to the parent.  */
+end_comment
 
 begin_function
 DECL|function|blame_overlap
@@ -3501,6 +3580,10 @@ argument_list|)
 expr_stmt|;
 block|}
 end_function
+
+begin_comment
+comment|/*  * Find the line number of the last line the target is suspected for.  */
+end_comment
 
 begin_function
 DECL|function|find_last_in_target
@@ -3591,6 +3674,10 @@ name|last_in_target
 return|;
 block|}
 end_function
+
+begin_comment
+comment|/*  * Process one hunk from the patch between the current suspect for  * blame_entry e and its parent.  Find and split the overlap, and  * pass blame to the overlapping part to the parent.  */
+end_comment
 
 begin_function
 DECL|function|blame_chunk
@@ -3700,6 +3787,10 @@ expr_stmt|;
 block|}
 block|}
 end_function
+
+begin_comment
+comment|/*  * We are looking at the origin 'target' and aiming to pass blame  * for the lines it is suspected to its parent.  Run diff to find  * which lines came from parent and pass blame for them.  */
+end_comment
 
 begin_function
 DECL|function|pass_blame_to_parent
@@ -3830,7 +3921,7 @@ operator|->
 name|t_next
 expr_stmt|;
 block|}
-comment|/* rest (i.e. anything above tlno) are the same as parent */
+comment|/* The rest (i.e. anything after tlno) are the same as the parent */
 name|blame_chunk
 argument_list|(
 name|sb
@@ -3856,6 +3947,10 @@ literal|0
 return|;
 block|}
 end_function
+
+begin_comment
+comment|/*  * The lines in blame_entry after splitting blames many times can become  * very small and trivial, and at some point it becomes pointless to  * blame the parents.  E.g. "\t\t}\n\t}\n\n" appears everywhere in any  * ordinary C program, and it is not worth to say it was copied from  * totally unrelated file in the parent.  *  * Compute how trivial the lines in the blame_entry are.  */
+end_comment
 
 begin_function
 DECL|function|ent_score
@@ -3971,6 +4066,10 @@ name|score
 return|;
 block|}
 end_function
+
+begin_comment
+comment|/*  * best_so_far[] and this[] are both a split of an existing blame_entry  * that passes blame to the parent.  Maintain best_so_far the best split  * so far, by comparing this and best_so_far and copying this into  * bst_so_far as needed.  */
+end_comment
 
 begin_function
 DECL|function|copy_split_if_better
@@ -4091,6 +4190,10 @@ expr_stmt|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Find the lines from parent that are the same as ent so that  * we can pass blames to it.  file_p has the blob contents for  * the parent.  */
+end_comment
+
 begin_function
 DECL|function|find_copy_in_blob
 specifier|static
@@ -4145,6 +4248,7 @@ name|plno
 decl_stmt|,
 name|tlno
 decl_stmt|;
+comment|/* 	 * Prepare mmfile that contains only the lines in ent. 	 */
 name|cp
 operator|=
 name|nth_line
@@ -4359,6 +4463,10 @@ expr_stmt|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * See if lines currently target is suspected for can be attributed to  * parent.  */
+end_comment
+
 begin_function
 DECL|function|find_move_in_parent
 specifier|static
@@ -4569,6 +4677,10 @@ block|}
 struct|;
 end_struct
 
+begin_comment
+comment|/*  * Count the number of entries the target is suspected for,  * and prepare a list of entry and the best split.  */
+end_comment
+
 begin_function
 DECL|function|setup_blame_list
 specifier|static
@@ -4609,7 +4721,6 @@ name|blame_list
 init|=
 name|NULL
 decl_stmt|;
-comment|/* Count the number of entries the target is suspected for, 	 * and prepare a list of entry and the best split. 	 */
 for|for
 control|(
 name|e
@@ -4726,6 +4837,10 @@ name|blame_list
 return|;
 block|}
 end_function
+
+begin_comment
+comment|/*  * For lines target is suspected for, see if we can find code movement  * across file boundary from the parent commit.  porigin is the path  * in the parent we already tried.  */
+end_comment
 
 begin_function
 DECL|function|find_copy_in_parent
@@ -5239,7 +5354,7 @@ block|}
 end_function
 
 begin_comment
-comment|/* The blobs of origin and porigin exactly match, so everything  * origin is suspected for can be blamed on the parent.  */
+comment|/*  * The blobs of origin and porigin exactly match, so everything  * origin is suspected for can be blamed on the parent.  */
 end_comment
 
 begin_function
@@ -5702,7 +5817,7 @@ goto|goto
 name|finish
 goto|;
 block|}
-comment|/* 	 * Optionally run "miff" to find moves in parents' files here. 	 */
+comment|/* 	 * Optionally find moves in parents' files. 	 */
 if|if
 condition|(
 name|opt
@@ -5768,7 +5883,7 @@ goto|goto
 name|finish
 goto|;
 block|}
-comment|/* 	 * Optionally run "ciff" to find copies from parents' files here. 	 */
+comment|/* 	 * Optionally find copies from parents' files. 	 */
 if|if
 condition|(
 name|opt
@@ -5860,6 +5975,10 @@ expr_stmt|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Information on commits, used for output.  */
+end_comment
+
 begin_struct
 DECL|struct|commit_info
 struct|struct
@@ -5914,6 +6033,10 @@ decl_stmt|;
 block|}
 struct|;
 end_struct
+
+begin_comment
+comment|/*  * Parse author/committer line in the commit object buffer  */
+end_comment
 
 begin_function
 DECL|function|get_ac_line
@@ -6190,7 +6313,7 @@ index|[
 literal|1024
 index|]
 decl_stmt|;
-comment|/* We've operated without save_commit_buffer, so 	 * we now need to populate them for output. 	 */
+comment|/* 	 * We've operated without save_commit_buffer, so 	 * we now need to populate them for output. 	 */
 if|if
 condition|(
 operator|!
@@ -6409,6 +6532,10 @@ expr_stmt|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * To allow LF and other nonportable characters in pathnames,  * they are c-style quoted as needed.  */
+end_comment
+
 begin_function
 DECL|function|write_filename_info
 specifier|static
@@ -6446,6 +6573,10 @@ argument_list|)
 expr_stmt|;
 block|}
 end_function
+
+begin_comment
+comment|/*  * The blame_entry is found to be guilty for the range.  Mark it  * as such, and show it in incremental output.  */
+end_comment
 
 begin_function
 DECL|function|found_guilty_entry
@@ -6670,6 +6801,10 @@ block|}
 block|}
 end_function
 
+begin_comment
+comment|/*  * The main loop -- while the scoreboard has lines whose true origin  * is still unknown, pick one blame_entry, and allow its current  * suspect to pass blames to its parents.  */
+end_comment
+
 begin_function
 DECL|function|assign_blame
 specifier|static
@@ -6752,6 +6887,7 @@ name|suspect
 condition|)
 return|return;
 comment|/* all done */
+comment|/* 		 * We will use this suspect later in the loop, 		 * so hold onto it in the meantime. 		 */
 name|origin_incref
 argument_list|(
 name|suspect
@@ -8003,6 +8139,10 @@ block|}
 block|}
 end_function
 
+begin_comment
+comment|/*  * To allow quick access to the contents of nth line in the  * final image, prepare an index in the scoreboard.  */
+end_comment
+
 begin_function
 DECL|function|prepare_lines
 specifier|static
@@ -8188,6 +8328,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Add phony grafts for use with -S; this is primarily to  * support git-cvsserver that wants to give a linear history  * to its clients.  */
+end_comment
+
 begin_function
 DECL|function|read_ancestry
 specifier|static
@@ -8285,6 +8429,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * How many columns do we need to show line numbers in decimal?  */
+end_comment
+
 begin_function
 DECL|function|lineno_width
 specifier|static
@@ -8328,6 +8476,10 @@ name|width
 return|;
 block|}
 end_function
+
+begin_comment
+comment|/*  * How many columns do we need to show line numbers, authors,  * and filenames?  */
+end_comment
 
 begin_function
 DECL|function|find_alignment
@@ -8578,6 +8730,10 @@ expr_stmt|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * For debugging -- origin is refcounted, and this asserts that  * we do not underflow.  */
+end_comment
+
 begin_function
 DECL|function|sanity_check_refcnt
 specifier|static
@@ -8726,7 +8882,7 @@ operator|->
 name|next
 control|)
 block|{
-comment|/* then pick each and see if they have the the correct 		 * refcnt. 		 */
+comment|/* 		 * ... then pick each and see if they have the the 		 * correct refcnt. 		 */
 name|int
 name|found
 decl_stmt|;
@@ -8882,6 +9038,10 @@ block|}
 block|}
 end_function
 
+begin_comment
+comment|/*  * Used for the command line parsing; check if the path exists  * in the working tree.  */
+end_comment
+
 begin_function
 DECL|function|has_path_in_work_tree
 specifier|static
@@ -9003,6 +9163,10 @@ argument_list|)
 return|;
 block|}
 end_function
+
+begin_comment
+comment|/*  * Parsing of (comma separated) one item in the -L option  */
+end_comment
 
 begin_function
 DECL|function|parse_loc
@@ -9412,6 +9576,10 @@ expr_stmt|;
 block|}
 block|}
 end_function
+
+begin_comment
+comment|/*  * Parsing of -L option  */
+end_comment
 
 begin_function
 DECL|function|prepare_blame_range
@@ -10092,6 +10260,14 @@ block|}
 if|if
 condition|(
 operator|!
+name|incremental
+condition|)
+name|setup_pager
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+operator|!
 name|blame_move_score
 condition|)
 name|blame_move_score
@@ -10107,7 +10283,7 @@ name|blame_copy_score
 operator|=
 name|BLAME_DEFAULT_COPY_SCORE
 expr_stmt|;
-comment|/* We have collected options unknown to us in argv[1..unk] 	 * which are to be passed to revision machinery if we are 	 * going to do the "bottom" procesing. 	 * 	 * The remaining are: 	 * 	 * (1) if seen_dashdash, its either 	 *     "-options --<path>" or 	 *     "-options --<path><rev>". 	 *     but the latter is allowed only if there is no 	 *     options that we passed to revision machinery. 	 * 	 * (2) otherwise, we may have "--" somewhere later and 	 *     might be looking at the first one of multiple 'rev' 	 *     parameters (e.g. " master ^next ^maint -- path"). 	 *     See if there is a dashdash first, and give the 	 *     arguments before that to revision machinery. 	 *     After that there must be one 'path'. 	 * 	 * (3) otherwise, its one of the three: 	 *     "-options<path><rev>" 	 *     "-options<rev><path>" 	 *     "-options<path>" 	 *     but again the first one is allowed only if 	 *     there is no options that we passed to revision 	 *     machinery. 	 */
+comment|/* 	 * We have collected options unknown to us in argv[1..unk] 	 * which are to be passed to revision machinery if we are 	 * going to do the "bottom" processing. 	 * 	 * The remaining are: 	 * 	 * (1) if seen_dashdash, its either 	 *     "-options --<path>" or 	 *     "-options --<path><rev>". 	 *     but the latter is allowed only if there is no 	 *     options that we passed to revision machinery. 	 * 	 * (2) otherwise, we may have "--" somewhere later and 	 *     might be looking at the first one of multiple 'rev' 	 *     parameters (e.g. " master ^next ^maint -- path"). 	 *     See if there is a dashdash first, and give the 	 *     arguments before that to revision machinery. 	 *     After that there must be one 'path'. 	 * 	 * (3) otherwise, its one of the three: 	 *     "-options<path><rev>" 	 *     "-options<rev><path>" 	 *     "-options<path>" 	 *     but again the first one is allowed only if 	 *     there is no options that we passed to revision 	 *     machinery. 	 */
 if|if
 condition|(
 name|seen_dashdash
@@ -10407,7 +10583,7 @@ index|]
 operator|=
 name|final_commit_name
 expr_stmt|;
-comment|/* Now we got rev and path.  We do not want the path pruning 	 * but we may want "bottom" processing. 	 */
+comment|/* 	 * Now we got rev and path.  We do not want the path pruning 	 * but we may want "bottom" processing. 	 */
 name|argv
 index|[
 name|unk
@@ -10457,7 +10633,7 @@ name|sb
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/* There must be one and only one positive commit in the 	 * revs->pending array. 	 */
+comment|/* 	 * There must be one and only one positive commit in the 	 * revs->pending array. 	 */
 for|for
 control|(
 name|i
@@ -10601,7 +10777,7 @@ operator|.
 name|final
 condition|)
 block|{
-comment|/* "--not A B -- path" without anything positive */
+comment|/* 		 * "--not A B -- path" without anything positive; 		 * default to HEAD. 		 */
 name|unsigned
 name|char
 name|head_sha1
@@ -10654,7 +10830,7 @@ literal|"HEAD"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* If we have bottom, this will mark the ancestors of the 	 * bottom commits we would reach while traversing as 	 * uninteresting. 	 */
+comment|/* 	 * If we have bottom, this will mark the ancestors of the 	 * bottom commits we would reach while traversing as 	 * uninteresting. 	 */
 name|prepare_revision_walk
 argument_list|(
 operator|&

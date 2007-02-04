@@ -1545,7 +1545,7 @@ for|for
 control|(
 name|at
 operator|=
-literal|1
+literal|0
 init|;
 name|at
 operator|<
@@ -1601,6 +1601,8 @@ block|}
 comment|/* Accept only unambiguous ref paths. */
 if|if
 condition|(
+name|len
+operator|&&
 name|ambiguous_path
 argument_list|(
 name|str
@@ -1612,6 +1614,31 @@ return|return
 operator|-
 literal|1
 return|;
+if|if
+condition|(
+operator|!
+name|len
+operator|&&
+name|reflog_len
+condition|)
+block|{
+comment|/* allow "@{...}" to mean the current branch reflog */
+name|refs_found
+operator|=
+name|dwim_ref
+argument_list|(
+literal|"HEAD"
+argument_list|,
+literal|4
+argument_list|,
+name|sha1
+argument_list|,
+operator|&
+name|real_ref
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 name|refs_found
 operator|=
 name|dwim_ref
@@ -1659,7 +1686,6 @@ condition|(
 name|reflog_len
 condition|)
 block|{
-comment|/* Is it asking for N-th entry, or approxidate? */
 name|int
 name|nth
 decl_stmt|,
@@ -1678,6 +1704,66 @@ name|co_tz
 decl_stmt|,
 name|co_cnt
 decl_stmt|;
+comment|/* 		 * We'll have an independent reflog for "HEAD" eventually 		 * which won't be a synonym for the current branch reflog. 		 * In the mean time prevent people from getting used to 		 * such a synonym until the work is completed. 		 */
+if|if
+condition|(
+name|len
+operator|&&
+operator|!
+name|strncmp
+argument_list|(
+literal|"HEAD"
+argument_list|,
+name|str
+argument_list|,
+name|len
+argument_list|)
+operator|&&
+operator|!
+name|strncmp
+argument_list|(
+name|real_ref
+argument_list|,
+literal|"refs/"
+argument_list|,
+literal|5
+argument_list|)
+condition|)
+block|{
+name|error
+argument_list|(
+literal|"reflog for HEAD has not been implemented yet\n"
+literal|"Maybe you could try %s%s instead, "
+literal|"or just %s for current branch.."
+argument_list|,
+name|strchr
+argument_list|(
+name|real_ref
+operator|+
+literal|5
+argument_list|,
+literal|'/'
+argument_list|)
+operator|+
+literal|1
+argument_list|,
+name|str
+operator|+
+name|len
+argument_list|,
+name|str
+operator|+
+name|len
+argument_list|)
+expr_stmt|;
+name|exit
+argument_list|(
+operator|-
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
+comment|/* Is it asking for N-th entry, or approxidate? */
 for|for
 control|(
 name|i

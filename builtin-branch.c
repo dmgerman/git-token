@@ -1682,6 +1682,11 @@ operator|+
 literal|20
 index|]
 decl_stmt|;
+name|int
+name|forcing
+init|=
+literal|0
+decl_stmt|;
 name|snprintf
 argument_list|(
 name|ref
@@ -1753,6 +1758,10 @@ name|die
 argument_list|(
 literal|"Cannot force update the current branch."
 argument_list|)
+expr_stmt|;
+name|forcing
+operator|=
+literal|1
 expr_stmt|;
 block|}
 if|if
@@ -1843,11 +1852,27 @@ if|if
 condition|(
 name|reflog
 condition|)
-block|{
 name|log_all_ref_updates
 operator|=
 literal|1
 expr_stmt|;
+if|if
+condition|(
+name|forcing
+condition|)
+name|snprintf
+argument_list|(
+name|msg
+argument_list|,
+sizeof|sizeof
+name|msg
+argument_list|,
+literal|"branch: Reset from %s"
+argument_list|,
+name|start_name
+argument_list|)
+expr_stmt|;
+else|else
 name|snprintf
 argument_list|(
 name|msg
@@ -1860,7 +1885,6 @@ argument_list|,
 name|start_name
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|write_ref_sha1
@@ -1941,7 +1965,7 @@ name|oldname
 condition|)
 name|die
 argument_list|(
-literal|"cannot rename the curren branch while not on any."
+literal|"cannot rename the current branch while not on any."
 argument_list|)
 expr_stmt|;
 if|if

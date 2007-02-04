@@ -2108,7 +2108,7 @@ struct|;
 end_struct
 
 begin_comment
-comment|/*  * Get information of all renames which occured between 'o_tree' and  * 'tree'. We need the three trees in the merge ('o_tree', 'a_tree' and  * 'b_tree') to be able to associate the correct cache entries with  * the rename information. 'tree' is always equal to either a_tree or b_tree.  */
+comment|/*  * Get information of all renames which occurred between 'o_tree' and  * 'tree'. We need the three trees in the merge ('o_tree', 'a_tree' and  * 'b_tree') to be able to associate the correct cache entries with  * the rename information. 'tree' is always equal to either a_tree or b_tree.  */
 end_comment
 
 begin_function
@@ -5366,6 +5366,10 @@ argument_list|,
 name|ren1_src
 argument_list|,
 name|index_only
+operator|||
+name|stage
+operator|==
+literal|3
 argument_list|)
 expr_stmt|;
 name|hashcpy
@@ -7035,7 +7039,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Merge the commits h1 and h2, return the resulting virtual  * commit object and a flag indicating the cleaness of the merge.  */
+comment|/*  * Merge the commits h1 and h2, return the resulting virtual  * commit object and a flag indicating the cleanness of the merge.  */
 end_comment
 
 begin_function
@@ -7278,7 +7282,7 @@ block|{
 name|call_depth
 operator|++
 expr_stmt|;
-comment|/* 		 * When the merge fails, the result contains files 		 * with conflict markers. The cleanness flag is 		 * ignored, it was never acutally used, as result of 		 * merge_trees has always overwritten it: the commited 		 * "conflicts" were already resolved. 		 */
+comment|/* 		 * When the merge fails, the result contains files 		 * with conflict markers. The cleanness flag is 		 * ignored, it was never actually used, as result of 		 * merge_trees has always overwritten it: the committed 		 * "conflicts" were already resolved. 		 */
 name|discard_cache
 argument_list|()
 expr_stmt|;

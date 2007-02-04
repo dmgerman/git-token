@@ -572,7 +572,7 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-comment|/* 	 * "!used" means that nothing at all points to it, including 	 * other unreacahble objects. In other words, it's the "tip" 	 * of some set of unreachable objects, usually a commit that 	 * got dropped. 	 * 	 * Such starting points are more interesting than some random 	 * set of unreachable objects, so we show them even if the user 	 * hasn't asked for _all_ unreachable objects. If you have 	 * deleted a branch by mistake, this is a prime candidate to 	 * start looking at, for example. 	 */
+comment|/* 	 * "!used" means that nothing at all points to it, including 	 * other unreachable objects. In other words, it's the "tip" 	 * of some set of unreachable objects, usually a commit that 	 * got dropped. 	 * 	 * Such starting points are more interesting than some random 	 * set of unreachable objects, so we show them even if the user 	 * hasn't asked for _all_ unreachable objects. If you have 	 * deleted a branch by mistake, this is a prime candidate to 	 * start looking at, for example. 	 */
 if|if
 condition|(
 operator|!
@@ -2769,9 +2769,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|main
+DECL|function|cmd_fsck
 name|int
-name|main
+name|cmd_fsck
 parameter_list|(
 name|int
 name|argc
@@ -2780,6 +2780,11 @@ name|char
 modifier|*
 modifier|*
 name|argv
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|prefix
 parameter_list|)
 block|{
 name|int
@@ -2790,9 +2795,6 @@ decl_stmt|;
 name|track_object_refs
 operator|=
 literal|1
-expr_stmt|;
-name|setup_git_directory
-argument_list|()
 expr_stmt|;
 for|for
 control|(
@@ -2929,7 +2931,7 @@ literal|'-'
 condition|)
 name|usage
 argument_list|(
-literal|"git-fsck-objects [--tags] [--root] [[--unreachable] [--cache] [--full] [--strict]<head-sha1>*]"
+literal|"git-fsck [--tags] [--root] [[--unreachable] [--cache] [--full] [--strict]<head-sha1>*]"
 argument_list|)
 expr_stmt|;
 block|}

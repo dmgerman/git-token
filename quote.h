@@ -252,6 +252,23 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|void
+name|tcl_quote_print
+parameter_list|(
+name|FILE
+modifier|*
+name|stream
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|src
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif

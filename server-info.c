@@ -77,6 +77,15 @@ argument_list|(
 name|sha1
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|o
+condition|)
+return|return
+operator|-
+literal|1
+return|;
 name|fprintf
 argument_list|(
 name|info_ref_fp
