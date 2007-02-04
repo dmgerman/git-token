@@ -5366,6 +5366,10 @@ argument_list|,
 name|ren1_src
 argument_list|,
 name|index_only
+operator|||
+name|stage
+operator|==
+literal|3
 argument_list|)
 expr_stmt|;
 name|hashcpy
