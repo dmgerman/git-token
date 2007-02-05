@@ -10325,7 +10325,7 @@ name|size
 operator|=
 name|fin_size
 expr_stmt|;
-name|write_sha1_file
+name|pretend_sha1_file
 argument_list|(
 name|buf
 argument_list|,

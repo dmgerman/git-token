@@ -7239,7 +7239,7 @@ name|type
 operator|=
 name|OBJ_TREE
 expr_stmt|;
-name|write_sha1_file
+name|pretend_sha1_file
 argument_list|(
 name|NULL
 argument_list|,
