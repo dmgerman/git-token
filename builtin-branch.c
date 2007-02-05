@@ -2103,6 +2103,7 @@ argument_list|(
 literal|"Branch rename failed"
 argument_list|)
 expr_stmt|;
+comment|/* no need to pass logmsg here as HEAD didn't really move */
 if|if
 condition|(
 operator|!
@@ -2118,6 +2119,8 @@ argument_list|(
 literal|"HEAD"
 argument_list|,
 name|newref
+argument_list|,
+name|NULL
 argument_list|)
 condition|)
 name|die

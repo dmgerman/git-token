@@ -25,7 +25,7 @@ name|char
 name|git_symbolic_ref_usage
 index|[]
 init|=
-literal|"git-symbolic-ref [-q] name [ref]"
+literal|"git-symbolic-ref [-q] [-m<reason>] name [ref]"
 decl_stmt|;
 end_decl_stmt
 
@@ -146,6 +146,13 @@ name|quiet
 init|=
 literal|0
 decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|msg
+init|=
+name|NULL
+decl_stmt|;
 name|git_config
 argument_list|(
 name|git_default_config
@@ -193,6 +200,64 @@ name|quiet
 operator|=
 literal|1
 expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+literal|"-m"
+argument_list|,
+name|arg
+argument_list|)
+condition|)
+block|{
+name|argc
+operator|--
+expr_stmt|;
+name|argv
+operator|++
+expr_stmt|;
+if|if
+condition|(
+name|argc
+operator|<=
+literal|1
+condition|)
+break|break;
+name|msg
+operator|=
+name|argv
+index|[
+literal|1
+index|]
+expr_stmt|;
+if|if
+condition|(
+operator|!
+operator|*
+name|msg
+condition|)
+name|die
+argument_list|(
+literal|"Refusing to perform update with empty message"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|strchr
+argument_list|(
+name|msg
+argument_list|,
+literal|'\n'
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"Refusing to perform update with \\n in message"
+argument_list|)
+expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -261,6 +326,8 @@ name|argv
 index|[
 literal|2
 index|]
+argument_list|,
+name|msg
 argument_list|)
 expr_stmt|;
 break|break;

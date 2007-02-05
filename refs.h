@@ -22,10 +22,10 @@ name|char
 modifier|*
 name|ref_name
 decl_stmt|;
-DECL|member|log_file
+DECL|member|orig_ref_name
 name|char
 modifier|*
-name|log_file
+name|orig_ref_name
 decl_stmt|;
 DECL|member|lk
 name|struct
@@ -399,6 +399,23 @@ parameter_list|,
 name|void
 modifier|*
 name|cb_data
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/*  * Calls the specified function for each reflog file until it returns nonzero,  * and returns the value  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|for_each_reflog
+parameter_list|(
+name|each_ref_fn
+parameter_list|,
+name|void
+modifier|*
 parameter_list|)
 function_decl|;
 end_function_decl
