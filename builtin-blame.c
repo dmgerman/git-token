@@ -82,7 +82,7 @@ name|char
 name|blame_usage
 index|[]
 init|=
-literal|"git-blame [-c] [-l] [-t] [-f] [-n] [-p] [-L n,m] [-S<revs-file>] [-M] [-C] [-C] [--contents<filename>] [commit] [--] file\n"
+literal|"git-blame [-c] [-l] [-t] [-f] [-n] [-p] [-L n,m] [-S<revs-file>] [-M] [-C] [-C] [--contents<filename>] [--incremental] [commit] [--] file\n"
 literal|"  -c, --compatibility Use the same output mode as git-annotate (Default: off)\n"
 literal|"  -b                  Show blank SHA-1 for boundary commits (Default: off)\n"
 literal|"  -l, --long          Show long commit SHA1 (Default: off)\n"
