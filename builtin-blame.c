@@ -163,6 +163,14 @@ name|incremental
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|cmd_is_annotate
+specifier|static
+name|int
+name|cmd_is_annotate
+decl_stmt|;
+end_decl_stmt
+
 begin_ifndef
 ifndef|#
 directive|ifndef
@@ -7854,8 +7862,22 @@ condition|)
 block|{
 if|if
 condition|(
-operator|!
 name|blank_boundary
+condition|)
+name|memset
+argument_list|(
+name|hex
+argument_list|,
+literal|' '
+argument_list|,
+name|length
+argument_list|)
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|cmd_is_annotate
 condition|)
 block|{
 name|length
@@ -7867,16 +7889,6 @@ literal|'^'
 argument_list|)
 expr_stmt|;
 block|}
-else|else
-name|memset
-argument_list|(
-name|hex
-argument_list|,
-literal|' '
-argument_list|,
-name|length
-argument_list|)
-expr_stmt|;
 block|}
 name|printf
 argument_list|(
@@ -10632,6 +10644,19 @@ name|contents_from
 init|=
 name|NULL
 decl_stmt|;
+name|cmd_is_annotate
+operator|=
+operator|!
+name|strcmp
+argument_list|(
+name|argv
+index|[
+literal|0
+index|]
+argument_list|,
+literal|"annotate"
+argument_list|)
+expr_stmt|;
 name|git_config
 argument_list|(
 name|git_blame_config

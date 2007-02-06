@@ -66,7 +66,7 @@ index|[
 literal|0
 index|]
 operator|=
-literal|"blame"
+literal|"annotate"
 expr_stmt|;
 name|nargv
 index|[
