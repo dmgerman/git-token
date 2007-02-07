@@ -7948,6 +7948,11 @@ argument_list|,
 literal|"w"
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|f
+condition|)
+block|{
 name|dump_marks_helper
 argument_list|(
 name|f
@@ -7960,6 +7965,22 @@ expr_stmt|;
 name|fclose
 argument_list|(
 name|f
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+name|failure
+operator||=
+name|error
+argument_list|(
+literal|"Unable to write marks file %s: %s"
+argument_list|,
+name|mark_file
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
