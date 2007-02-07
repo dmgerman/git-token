@@ -4446,10 +4446,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|checkpoint
+DECL|function|cycle_packfile
 specifier|static
 name|void
-name|checkpoint
+name|cycle_packfile
 parameter_list|(
 name|void
 parameter_list|)
@@ -4935,7 +4935,7 @@ name|pack_id
 operator|+
 literal|1
 expr_stmt|;
-name|checkpoint
+name|cycle_packfile
 argument_list|()
 expr_stmt|;
 comment|/* We cannot carry a delta into the new pack. */
@@ -11416,9 +11416,20 @@ if|if
 condition|(
 name|object_count
 condition|)
-name|checkpoint
+block|{
+name|cycle_packfile
 argument_list|()
 expr_stmt|;
+name|dump_branches
+argument_list|()
+expr_stmt|;
+name|dump_tags
+argument_list|()
+expr_stmt|;
+name|dump_marks
+argument_list|()
+expr_stmt|;
+block|}
 name|read_next_command
 argument_list|()
 expr_stmt|;
