@@ -6764,7 +6764,7 @@ decl_stmt|;
 name|int
 name|retval
 init|=
-name|errno
+literal|0
 decl_stmt|;
 if|if
 condition|(
@@ -7005,6 +7005,10 @@ name|dir
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+return|return
+name|errno
+return|;
 return|return
 name|retval
 return|;
