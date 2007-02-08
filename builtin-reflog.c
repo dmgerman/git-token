@@ -65,7 +65,7 @@ name|char
 name|reflog_expire_usage
 index|[]
 init|=
-literal|"git-reflog expire [--verbose] [--dry-run] [--stale-fix] [--expire=<time>] [--expire-unreachable=<time>] [--all]<refs>..."
+literal|"git-reflog (show|expire) [--verbose] [--dry-run] [--stale-fix] [--expire=<time>] [--expire-unreachable=<time>] [--all]<refs>..."
 decl_stmt|;
 end_decl_stmt
 
@@ -2074,18 +2074,58 @@ modifier|*
 name|prefix
 parameter_list|)
 block|{
+comment|/* With no command, we default to showing it. */
 if|if
 condition|(
 name|argc
 operator|<
 literal|2
+operator|||
+operator|*
+name|argv
+index|[
+literal|1
+index|]
+operator|==
+literal|'-'
 condition|)
-name|usage
+return|return
+name|cmd_log_reflog
 argument_list|(
-name|reflog_usage
+name|argc
+argument_list|,
+name|argv
+argument_list|,
+name|prefix
 argument_list|)
-expr_stmt|;
-elseif|else
+return|;
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|argv
+index|[
+literal|1
+index|]
+argument_list|,
+literal|"show"
+argument_list|)
+condition|)
+return|return
+name|cmd_log_reflog
+argument_list|(
+name|argc
+operator|-
+literal|1
+argument_list|,
+name|argv
+operator|+
+literal|1
+argument_list|,
+name|prefix
+argument_list|)
+return|;
 if|if
 condition|(
 operator|!
@@ -2113,7 +2153,7 @@ argument_list|,
 name|prefix
 argument_list|)
 return|;
-else|else
+comment|/* Not a recognized reflog command..*/
 name|usage
 argument_list|(
 name|reflog_usage
