@@ -1410,6 +1410,9 @@ name|info
 parameter_list|,
 name|int
 name|oneline
+parameter_list|,
+name|int
+name|relative_date
 parameter_list|)
 block|{
 if|if
@@ -1472,6 +1475,8 @@ condition|(
 name|commit_reflog
 operator|->
 name|flag
+operator|||
+name|relative_date
 condition|)
 name|printf
 argument_list|(
@@ -1535,12 +1540,14 @@ condition|(
 name|commit_reflog
 operator|->
 name|flag
+operator|||
+name|relative_date
 condition|)
 name|printf
 argument_list|(
 literal|"%s"
 argument_list|,
-name|show_rfc2822_date
+name|show_date
 argument_list|(
 name|info
 operator|->
@@ -1549,6 +1556,8 @@ argument_list|,
 name|info
 operator|->
 name|tz
+argument_list|,
+name|relative_date
 argument_list|)
 argument_list|)
 expr_stmt|;
