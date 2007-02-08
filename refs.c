@@ -5411,6 +5411,23 @@ argument_list|(
 name|old_sha1
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|safe_create_leading_directories
+argument_list|(
+name|git_HEAD
+argument_list|)
+operator|<
+literal|0
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"unable to create directory for %s"
+argument_list|,
+name|git_HEAD
+argument_list|)
+return|;
 ifndef|#
 directive|ifndef
 name|NO_SYMLINK_HEAD
