@@ -6673,13 +6673,6 @@ index|[
 literal|5
 index|]
 argument_list|)
-operator|||
-name|message
-index|[
-literal|6
-index|]
-operator|!=
-literal|'\t'
 condition|)
 continue|continue;
 comment|/* corrupt? */
@@ -6703,6 +6696,20 @@ argument_list|,
 literal|10
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|message
+index|[
+literal|6
+index|]
+operator|!=
+literal|'\t'
+condition|)
+name|message
+operator|+=
+literal|6
+expr_stmt|;
+else|else
 name|message
 operator|+=
 literal|7
