@@ -12458,8 +12458,10 @@ name|diff_filepair
 modifier|*
 name|p
 parameter_list|,
-name|int
-name|line_termination
+name|struct
+name|diff_options
+modifier|*
+name|opt
 parameter_list|)
 block|{
 name|char
@@ -12474,6 +12476,8 @@ name|path
 decl_stmt|;
 if|if
 condition|(
+name|opt
+operator|->
 name|line_termination
 condition|)
 name|path
@@ -12493,6 +12497,8 @@ literal|"%s%c"
 argument_list|,
 name|path
 argument_list|,
+name|opt
+operator|->
 name|line_termination
 argument_list|)
 expr_stmt|;
@@ -13589,8 +13595,6 @@ argument_list|(
 name|p
 argument_list|,
 name|opt
-operator|->
-name|line_termination
 argument_list|)
 expr_stmt|;
 block|}
