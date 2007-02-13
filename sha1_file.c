@@ -11364,6 +11364,7 @@ name|type
 operator|=
 name|blob_type
 expr_stmt|;
+comment|/* FIXME: CRLF -> LF conversion here for blobs! We'll need the path! */
 if|if
 condition|(
 name|write_object

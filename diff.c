@@ -7796,6 +7796,7 @@ name|should_munmap
 operator|=
 literal|1
 expr_stmt|;
+comment|/* FIXME! CRLF -> LF conversion goes here, based on "s->path" */
 block|}
 else|else
 block|{
