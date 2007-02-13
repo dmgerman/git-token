@@ -2636,7 +2636,7 @@ name|all_flags
 operator|=
 name|flags
 expr_stmt|;
-name|for_each_ref
+name|for_each_reflog
 argument_list|(
 name|handle_one_reflog
 argument_list|,
