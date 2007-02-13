@@ -7029,7 +7029,12 @@ name|dir
 argument_list|)
 expr_stmt|;
 block|}
-else|else
+elseif|else
+if|if
+condition|(
+operator|*
+name|base
+condition|)
 return|return
 name|errno
 return|;
