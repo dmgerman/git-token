@@ -185,6 +185,15 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|auto_crlf
+name|int
+name|auto_crlf
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|git_dir
 specifier|static
 specifier|const
