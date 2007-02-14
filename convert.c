@@ -474,8 +474,9 @@ decl_stmt|;
 comment|/* 	 * FIXME! Other pluggable conversions should go here, 	 * based on filename patterns. Right now we just do the 	 * stupid auto-CRLF one. 	 */
 if|if
 condition|(
-operator|!
 name|auto_crlf
+operator|<=
+literal|0
 condition|)
 return|return
 literal|0
