@@ -703,12 +703,13 @@ parameter_list|(
 name|struct
 name|commit
 modifier|*
-name|rev1
 parameter_list|,
 name|struct
 name|commit
 modifier|*
-name|rev2
+modifier|*
+parameter_list|,
+name|int
 parameter_list|)
 function_decl|;
 end_function_decl

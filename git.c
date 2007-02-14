@@ -1506,6 +1506,14 @@ name|cmd_mailsplit
 block|}
 block|,
 block|{
+literal|"merge-base"
+block|,
+name|cmd_merge_base
+block|,
+name|RUN_SETUP
+block|}
+block|,
+block|{
 literal|"merge-file"
 block|,
 name|cmd_merge_file
