@@ -736,6 +736,10 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* This value must be multiple of (pagesize * 2) */
+end_comment
+
 begin_define
 DECL|macro|DEFAULT_PACKED_GIT_WINDOW_SIZE
 define|#
@@ -758,6 +762,10 @@ include|#
 directive|include
 file|<sys/mman.h>
 end_include
+
+begin_comment
+comment|/* This value must be multiple of (pagesize * 2) */
+end_comment
 
 begin_define
 DECL|macro|DEFAULT_PACKED_GIT_WINDOW_SIZE
