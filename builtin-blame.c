@@ -11249,6 +11249,7 @@ condition|(
 name|seen_dashdash
 condition|)
 block|{
+comment|/* (2) */
 if|if
 condition|(
 name|seen_dashdash
@@ -11306,6 +11307,17 @@ block|}
 else|else
 block|{
 comment|/* (3) */
+if|if
+condition|(
+name|argc
+operator|<=
+name|i
+condition|)
+name|usage
+argument_list|(
+name|blame_usage
+argument_list|)
+expr_stmt|;
 name|path
 operator|=
 name|add_prefix
