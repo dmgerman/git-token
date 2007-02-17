@@ -12,6 +12,14 @@ directive|define
 name|GIT_COMPAT_UTIL_H
 end_define
 
+begin_define
+DECL|macro|_FILE_OFFSET_BITS
+define|#
+directive|define
+name|_FILE_OFFSET_BITS
+value|64
+end_define
+
 begin_ifndef
 ifndef|#
 directive|ifndef
