@@ -9588,8 +9588,10 @@ name|st_mode
 operator|=
 name|ntohl
 argument_list|(
-name|create_ce_mode
+name|ce_mode_from_stat
 argument_list|(
+name|ce
+argument_list|,
 name|st
 operator|.
 name|st_mode
