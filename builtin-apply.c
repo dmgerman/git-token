@@ -12852,12 +12852,6 @@ argument_list|)
 else|:
 literal|0
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|is_not_gitdir
-condition|)
-block|{
 name|git_config
 argument_list|(
 name|git_apply_config
@@ -12872,7 +12866,6 @@ argument_list|(
 name|apply_default_whitespace
 argument_list|)
 expr_stmt|;
-block|}
 for|for
 control|(
 name|i
