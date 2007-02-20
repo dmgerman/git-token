@@ -429,13 +429,11 @@ literal|"diff.color."
 argument_list|)
 operator|||
 operator|!
-name|strncmp
+name|prefixcmp
 argument_list|(
 name|var
 argument_list|,
 literal|"color.diff."
-argument_list|,
-literal|11
 argument_list|)
 condition|)
 block|{

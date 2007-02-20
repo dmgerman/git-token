@@ -3741,7 +3741,7 @@ literal|" pack-"
 argument_list|)
 operator|&&
 operator|!
-name|strncmp
+name|prefixcmp
 argument_list|(
 name|data
 operator|+
@@ -3750,8 +3750,6 @@ operator|+
 literal|46
 argument_list|,
 literal|".pack\n"
-argument_list|,
-literal|6
 argument_list|)
 condition|)
 block|{
