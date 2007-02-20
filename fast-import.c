@@ -91,6 +91,62 @@ name|MAX_PACK_ID
 value|((1<<PACK_ID_BITS)-1)
 end_define
 
+begin_if
+if|#
+directive|if
+operator|!
+name|defined
+argument_list|(
+name|NO_C99_FORMAT
+argument_list|)
+end_if
+
+begin_define
+DECL|macro|UM_FMT
+define|#
+directive|define
+name|UM_FMT
+value|"%ju"
+end_define
+
+begin_define
+DECL|macro|UM10_FMT
+define|#
+directive|define
+name|UM10_FMT
+value|"%10ju"
+end_define
+
+begin_else
+else|#
+directive|else
+end_else
+
+begin_comment
+comment|/* Assumes unsigned long long exists. */
+end_comment
+
+begin_define
+DECL|macro|UM_FMT
+define|#
+directive|define
+name|UM_FMT
+value|"%llu"
+end_define
+
+begin_define
+DECL|macro|UM10_FMT
+define|#
+directive|define
+name|UM10_FMT
+value|"%10llu"
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_struct
 DECL|struct|object_entry
 struct|struct
@@ -2067,7 +2123,9 @@ name|oe
 condition|)
 name|die
 argument_list|(
-literal|"mark :%ju not declared"
+literal|"mark :"
+name|UM_FMT
+literal|" not declared"
 argument_list|,
 name|orig_idnum
 argument_list|)
@@ -7921,7 +7979,9 @@ name|fprintf
 argument_list|(
 name|f
 argument_list|,
-literal|":%ju %s\n"
+literal|":"
+name|UM_FMT
+literal|" %s\n"
 argument_list|,
 name|base
 operator|+
@@ -9778,7 +9838,9 @@ name|OBJ_COMMIT
 condition|)
 name|die
 argument_list|(
-literal|"Mark :%ju not a commit"
+literal|"Mark :"
+name|UM_FMT
+literal|" not a commit"
 argument_list|,
 name|idnum
 argument_list|)
@@ -10227,7 +10289,9 @@ name|OBJ_COMMIT
 condition|)
 name|die
 argument_list|(
-literal|"Mark :%ju not a commit"
+literal|"Mark :"
+name|UM_FMT
+literal|" not a commit"
 argument_list|,
 name|idnum
 argument_list|)
@@ -11083,7 +11147,9 @@ name|OBJ_COMMIT
 condition|)
 name|die
 argument_list|(
-literal|"Mark :%ju not a commit"
+literal|"Mark :"
+name|UM_FMT
+literal|" not a commit"
 argument_list|,
 name|from_mark
 argument_list|)
@@ -12192,7 +12258,9 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Alloc'd objects: %10ju\n"
+literal|"Alloc'd objects: "
+name|UM10_FMT
+literal|"\n"
 argument_list|,
 name|alloc_count
 argument_list|)
@@ -12201,7 +12269,11 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Total objects:   %10ju (%10ju duplicates                  )\n"
+literal|"Total objects:   "
+name|UM10_FMT
+literal|" ("
+name|UM10_FMT
+literal|" duplicates                  )\n"
 argument_list|,
 name|total_count
 argument_list|,
@@ -12212,7 +12284,13 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"      blobs  :   %10ju (%10ju duplicates %10ju deltas)\n"
+literal|"      blobs  :   "
+name|UM10_FMT
+literal|" ("
+name|UM10_FMT
+literal|" duplicates "
+name|UM10_FMT
+literal|" deltas)\n"
 argument_list|,
 name|object_count_by_type
 index|[
@@ -12234,7 +12312,13 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"      trees  :   %10ju (%10ju duplicates %10ju deltas)\n"
+literal|"      trees  :   "
+name|UM10_FMT
+literal|" ("
+name|UM10_FMT
+literal|" duplicates "
+name|UM10_FMT
+literal|" deltas)\n"
 argument_list|,
 name|object_count_by_type
 index|[
@@ -12256,7 +12340,13 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"      commits:   %10ju (%10ju duplicates %10ju deltas)\n"
+literal|"      commits:   "
+name|UM10_FMT
+literal|" ("
+name|UM10_FMT
+literal|" duplicates "
+name|UM10_FMT
+literal|" deltas)\n"
 argument_list|,
 name|object_count_by_type
 index|[
@@ -12278,7 +12368,13 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"      tags   :   %10ju (%10ju duplicates %10ju deltas)\n"
+literal|"      tags   :   "
+name|UM10_FMT
+literal|" ("
+name|UM10_FMT
+literal|" duplicates "
+name|UM10_FMT
+literal|" deltas)\n"
 argument_list|,
 name|object_count_by_type
 index|[
@@ -12311,7 +12407,11 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"      marks:     %10ju (%10ju unique    )\n"
+literal|"      marks:     "
+name|UM10_FMT
+literal|" ("
+name|UM10_FMT
+literal|" unique    )\n"
 argument_list|,
 operator|(
 operator|(
@@ -12344,7 +12444,9 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Memory total:    %10ju KiB\n"
+literal|"Memory total:    "
+name|UM10_FMT
+literal|" KiB\n"
 argument_list|,
 operator|(
 name|total_allocd
@@ -12382,7 +12484,9 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"     objects:    %10ju KiB\n"
+literal|"     objects:    "
+name|UM10_FMT
+literal|" KiB\n"
 argument_list|,
 operator|(
 name|alloc_count
