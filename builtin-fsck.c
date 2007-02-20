@@ -2603,13 +2603,11 @@ argument_list|)
 return|;
 if|if
 condition|(
-name|strncmp
+name|prefixcmp
 argument_list|(
 name|head_points_at
 argument_list|,
 literal|"refs/heads/"
-argument_list|,
-literal|11
 argument_list|)
 condition|)
 return|return

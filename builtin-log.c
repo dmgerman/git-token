@@ -190,13 +190,11 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|strncmp
+name|prefixcmp
 argument_list|(
 name|arg
 argument_list|,
 literal|"--encoding="
-argument_list|,
-literal|11
 argument_list|)
 condition|)
 block|{
@@ -1614,13 +1612,11 @@ operator|!
 name|keep_subject
 operator|&&
 operator|!
-name|strncmp
+name|prefixcmp
 argument_list|(
 name|sol
 argument_list|,
 literal|"[PATCH"
-argument_list|,
-literal|6
 argument_list|)
 condition|)
 block|{
@@ -2553,7 +2549,7 @@ elseif|else
 if|if
 condition|(
 operator|!
-name|strncmp
+name|prefixcmp
 argument_list|(
 name|argv
 index|[
@@ -2561,8 +2557,6 @@ name|i
 index|]
 argument_list|,
 literal|"--start-number="
-argument_list|,
-literal|15
 argument_list|)
 condition|)
 name|start_number
@@ -2844,7 +2838,7 @@ elseif|else
 if|if
 condition|(
 operator|!
-name|strncmp
+name|prefixcmp
 argument_list|(
 name|argv
 index|[
@@ -2852,8 +2846,6 @@ name|i
 index|]
 argument_list|,
 literal|"--attach="
-argument_list|,
-literal|9
 argument_list|)
 condition|)
 name|rev
@@ -2907,7 +2899,7 @@ elseif|else
 if|if
 condition|(
 operator|!
-name|strncmp
+name|prefixcmp
 argument_list|(
 name|argv
 index|[
@@ -2915,8 +2907,6 @@ name|i
 index|]
 argument_list|,
 literal|"--in-reply-to="
-argument_list|,
-literal|14
 argument_list|)
 condition|)
 name|in_reply_to
@@ -2969,7 +2959,7 @@ elseif|else
 if|if
 condition|(
 operator|!
-name|strncmp
+name|prefixcmp
 argument_list|(
 name|argv
 index|[
@@ -2977,8 +2967,6 @@ name|i
 index|]
 argument_list|,
 literal|"--suffix="
-argument_list|,
-literal|9
 argument_list|)
 condition|)
 name|fmt_patch_suffix

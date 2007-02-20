@@ -3731,15 +3731,13 @@ operator|.
 name|posn
 operator|&&
 operator|!
-name|strncmp
+name|prefixcmp
 argument_list|(
 name|data
 operator|+
 name|i
 argument_list|,
 literal|" pack-"
-argument_list|,
-literal|6
 argument_list|)
 operator|&&
 operator|!

@@ -261,13 +261,11 @@ comment|/* Trivial cleanup */
 while|while
 condition|(
 operator|!
-name|strncmp
+name|prefixcmp
 argument_list|(
 name|exec_dir
 argument_list|,
 literal|"./"
-argument_list|,
-literal|2
 argument_list|)
 condition|)
 block|{

@@ -4000,7 +4000,7 @@ elseif|else
 if|if
 condition|(
 operator|!
-name|strncmp
+name|prefixcmp
 argument_list|(
 name|argv
 index|[
@@ -4008,8 +4008,6 @@ literal|1
 index|]
 argument_list|,
 literal|"--encoding="
-argument_list|,
-literal|11
 argument_list|)
 condition|)
 name|metainfo_charset

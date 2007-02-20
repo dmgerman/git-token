@@ -694,14 +694,15 @@ block|{
 if|if
 condition|(
 operator|!
-name|strncmp
+operator|(
+operator|-
+name|prefixcmp
 argument_list|(
-literal|"<<<<<<< "
-argument_list|,
 name|buf
 argument_list|,
-literal|8
+literal|"<<<<<<< "
 argument_list|)
+operator|)
 condition|)
 name|hunk
 operator|=
@@ -711,14 +712,15 @@ elseif|else
 if|if
 condition|(
 operator|!
-name|strncmp
+operator|(
+operator|-
+name|prefixcmp
 argument_list|(
-literal|"======="
-argument_list|,
 name|buf
 argument_list|,
-literal|7
+literal|"======="
 argument_list|)
+operator|)
 condition|)
 name|hunk
 operator|=
@@ -728,14 +730,15 @@ elseif|else
 if|if
 condition|(
 operator|!
-name|strncmp
+operator|(
+operator|-
+name|prefixcmp
 argument_list|(
-literal|">>>>>>> "
-argument_list|,
 name|buf
 argument_list|,
-literal|8
+literal|">>>>>>> "
 argument_list|)
+operator|)
 condition|)
 block|{
 name|hunk_no
