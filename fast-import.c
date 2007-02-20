@@ -8071,8 +8071,6 @@ block|{
 if|if
 condition|(
 operator|!
-operator|(
-operator|-
 name|prefixcmp
 argument_list|(
 name|command_buf
@@ -8081,7 +8079,6 @@ name|buf
 argument_list|,
 literal|"mark :"
 argument_list|)
-operator|)
 condition|)
 block|{
 name|next_mark
@@ -8132,8 +8129,6 @@ name|buffer
 decl_stmt|;
 if|if
 condition|(
-operator|(
-operator|-
 name|prefixcmp
 argument_list|(
 name|command_buf
@@ -8142,7 +8137,6 @@ name|buf
 argument_list|,
 literal|"data "
 argument_list|)
-operator|)
 condition|)
 name|die
 argument_list|(
@@ -8156,8 +8150,6 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-operator|(
-operator|-
 name|prefixcmp
 argument_list|(
 name|command_buf
@@ -8168,7 +8160,6 @@ literal|5
 argument_list|,
 literal|"<<"
 argument_list|)
-operator|)
 condition|)
 block|{
 name|char
@@ -9187,15 +9178,12 @@ elseif|else
 if|if
 condition|(
 operator|!
-operator|(
-operator|-
 name|prefixcmp
 argument_list|(
 name|p
 argument_list|,
 literal|"inline"
 argument_list|)
-operator|)
 condition|)
 block|{
 name|inline_data
@@ -9617,8 +9605,6 @@ name|s
 decl_stmt|;
 if|if
 condition|(
-operator|(
-operator|-
 name|prefixcmp
 argument_list|(
 name|command_buf
@@ -9627,7 +9613,6 @@ name|buf
 argument_list|,
 literal|"from "
 argument_list|)
-operator|)
 condition|)
 return|return;
 if|if
@@ -10159,8 +10144,6 @@ expr_stmt|;
 while|while
 condition|(
 operator|!
-operator|(
-operator|-
 name|prefixcmp
 argument_list|(
 name|command_buf
@@ -10169,7 +10152,6 @@ name|buf
 argument_list|,
 literal|"merge "
 argument_list|)
-operator|)
 condition|)
 block|{
 name|from
@@ -10430,8 +10412,6 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-operator|(
-operator|-
 name|prefixcmp
 argument_list|(
 name|command_buf
@@ -10440,7 +10420,6 @@ name|buf
 argument_list|,
 literal|"author "
 argument_list|)
-operator|)
 condition|)
 block|{
 name|author
@@ -10461,8 +10440,6 @@ block|}
 if|if
 condition|(
 operator|!
-operator|(
-operator|-
 name|prefixcmp
 argument_list|(
 name|command_buf
@@ -10471,7 +10448,6 @@ name|buf
 argument_list|,
 literal|"committer "
 argument_list|)
-operator|)
 condition|)
 block|{
 name|committer
@@ -10566,8 +10542,6 @@ elseif|else
 if|if
 condition|(
 operator|!
-operator|(
-operator|-
 name|prefixcmp
 argument_list|(
 name|command_buf
@@ -10576,7 +10550,6 @@ name|buf
 argument_list|,
 literal|"M "
 argument_list|)
-operator|)
 condition|)
 name|file_change_m
 argument_list|(
@@ -10587,8 +10560,6 @@ elseif|else
 if|if
 condition|(
 operator|!
-operator|(
-operator|-
 name|prefixcmp
 argument_list|(
 name|command_buf
@@ -10597,7 +10568,6 @@ name|buf
 argument_list|,
 literal|"D "
 argument_list|)
-operator|)
 condition|)
 name|file_change_d
 argument_list|(
@@ -11024,8 +10994,6 @@ expr_stmt|;
 comment|/* from ... */
 if|if
 condition|(
-operator|(
-operator|-
 name|prefixcmp
 argument_list|(
 name|command_buf
@@ -11034,7 +11002,6 @@ name|buf
 argument_list|,
 literal|"from "
 argument_list|)
-operator|)
 condition|)
 name|die
 argument_list|(
@@ -11214,8 +11181,6 @@ expr_stmt|;
 comment|/* tagger ... */
 if|if
 condition|(
-operator|(
-operator|-
 name|prefixcmp
 argument_list|(
 name|command_buf
@@ -11224,7 +11189,6 @@ name|buf
 argument_list|,
 literal|"tagger "
 argument_list|)
-operator|)
 condition|)
 name|die
 argument_list|(
@@ -12040,8 +12004,6 @@ elseif|else
 if|if
 condition|(
 operator|!
-operator|(
-operator|-
 name|prefixcmp
 argument_list|(
 name|command_buf
@@ -12050,7 +12012,6 @@ name|buf
 argument_list|,
 literal|"commit "
 argument_list|)
-operator|)
 condition|)
 name|cmd_new_commit
 argument_list|()
@@ -12059,8 +12020,6 @@ elseif|else
 if|if
 condition|(
 operator|!
-operator|(
-operator|-
 name|prefixcmp
 argument_list|(
 name|command_buf
@@ -12069,7 +12028,6 @@ name|buf
 argument_list|,
 literal|"tag "
 argument_list|)
-operator|)
 condition|)
 name|cmd_new_tag
 argument_list|()
@@ -12078,8 +12036,6 @@ elseif|else
 if|if
 condition|(
 operator|!
-operator|(
-operator|-
 name|prefixcmp
 argument_list|(
 name|command_buf
@@ -12088,7 +12044,6 @@ name|buf
 argument_list|,
 literal|"reset "
 argument_list|)
-operator|)
 condition|)
 name|cmd_reset_branch
 argument_list|()

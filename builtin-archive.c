@@ -192,15 +192,12 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-operator|(
-operator|-
 name|prefixcmp
 argument_list|(
 name|arg
 argument_list|,
 literal|"--exec="
 argument_list|)
-operator|)
 condition|)
 block|{
 if|if

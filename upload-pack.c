@@ -2672,15 +2672,12 @@ break|break;
 if|if
 condition|(
 operator|!
-operator|(
-operator|-
 name|prefixcmp
 argument_list|(
 name|line
 argument_list|,
 literal|"shallow "
 argument_list|)
-operator|)
 condition|)
 block|{
 name|unsigned
@@ -2757,15 +2754,12 @@ block|}
 if|if
 condition|(
 operator|!
-operator|(
-operator|-
 name|prefixcmp
 argument_list|(
 name|line
 argument_list|,
 literal|"deepen "
 argument_list|)
-operator|)
 condition|)
 block|{
 name|char
@@ -2813,15 +2807,12 @@ continue|continue;
 block|}
 if|if
 condition|(
-operator|(
-operator|-
 name|prefixcmp
 argument_list|(
 name|line
 argument_list|,
 literal|"want "
 argument_list|)
-operator|)
 operator|||
 name|get_sha1_hex
 argument_list|(
