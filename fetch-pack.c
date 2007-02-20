@@ -120,6 +120,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|no_progress
+specifier|static
+name|int
+name|no_progress
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|fetch_pack_usage
 specifier|static
 specifier|const
@@ -127,7 +135,7 @@ name|char
 name|fetch_pack_usage
 index|[]
 init|=
-literal|"git-fetch-pack [--all] [--quiet|-q] [--keep|-k] [--thin] [--upload-pack=<git-upload-pack>] [--depth=<n>] [-v] [<host>:]<directory> [<refs>...]"
+literal|"git-fetch-pack [--all] [--quiet|-q] [--keep|-k] [--thin] [--upload-pack=<git-upload-pack>] [--depth=<n>] [--no-progress] [-v] [<host>:]<directory> [<refs>...]"
 decl_stmt|;
 end_decl_stmt
 
@@ -2725,6 +2733,9 @@ if|if
 condition|(
 operator|!
 name|quiet
+operator|&&
+operator|!
+name|no_progress
 condition|)
 operator|*
 name|av
@@ -3798,6 +3809,23 @@ literal|0
 expr_stmt|;
 continue|continue;
 block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+literal|"--no-progress"
+argument_list|,
+name|arg
+argument_list|)
+condition|)
+block|{
+name|no_progress
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
 name|usage
 argument_list|(
 name|fetch_pack_usage
@@ -3836,6 +3864,44 @@ argument_list|(
 name|fetch_pack_usage
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|no_progress
+condition|)
+block|{
+name|char
+name|buf
+index|[
+literal|256
+index|]
+decl_stmt|;
+name|snprintf
+argument_list|(
+name|buf
+argument_list|,
+sizeof|sizeof
+argument_list|(
+name|buf
+argument_list|)
+argument_list|,
+literal|"%s --no-progress"
+argument_list|,
+name|uploadpack
+argument_list|)
+expr_stmt|;
+name|pid
+operator|=
+name|git_connect
+argument_list|(
+name|fd
+argument_list|,
+name|dest
+argument_list|,
+name|buf
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 name|pid
 operator|=
 name|git_connect
