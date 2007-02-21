@@ -91,55 +91,18 @@ name|MAX_PACK_ID
 value|((1<<PACK_ID_BITS)-1)
 end_define
 
-begin_if
-if|#
-directive|if
-operator|!
-name|defined
-argument_list|(
-name|NO_C99_FORMAT
-argument_list|)
-end_if
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|PRIuMAX
+end_ifndef
 
 begin_define
-DECL|macro|UM_FMT
+DECL|macro|PRIuMAX
 define|#
 directive|define
-name|UM_FMT
-value|"%ju"
-end_define
-
-begin_define
-DECL|macro|UM10_FMT
-define|#
-directive|define
-name|UM10_FMT
-value|"%10ju"
-end_define
-
-begin_else
-else|#
-directive|else
-end_else
-
-begin_comment
-comment|/* Assumes unsigned long long exists. */
-end_comment
-
-begin_define
-DECL|macro|UM_FMT
-define|#
-directive|define
-name|UM_FMT
-value|"%llu"
-end_define
-
-begin_define
-DECL|macro|UM10_FMT
-define|#
-directive|define
-name|UM10_FMT
-value|"%10llu"
+name|PRIuMAX
+value|"llu"
 end_define
 
 begin_endif
@@ -2123,8 +2086,8 @@ name|oe
 condition|)
 name|die
 argument_list|(
-literal|"mark :"
-name|UM_FMT
+literal|"mark :%"
+name|PRIuMAX
 literal|" not declared"
 argument_list|,
 name|orig_idnum
@@ -7982,8 +7945,8 @@ name|fprintf
 argument_list|(
 name|f
 argument_list|,
-literal|":"
-name|UM_FMT
+literal|":%"
+name|PRIuMAX
 literal|" %s\n"
 argument_list|,
 name|base
@@ -9841,8 +9804,8 @@ name|OBJ_COMMIT
 condition|)
 name|die
 argument_list|(
-literal|"Mark :"
-name|UM_FMT
+literal|"Mark :%"
+name|PRIuMAX
 literal|" not a commit"
 argument_list|,
 name|idnum
@@ -10292,8 +10255,8 @@ name|OBJ_COMMIT
 condition|)
 name|die
 argument_list|(
-literal|"Mark :"
-name|UM_FMT
+literal|"Mark :%"
+name|PRIuMAX
 literal|" not a commit"
 argument_list|,
 name|idnum
@@ -11150,8 +11113,8 @@ name|OBJ_COMMIT
 condition|)
 name|die
 argument_list|(
-literal|"Mark :"
-name|UM_FMT
+literal|"Mark :%"
+name|PRIuMAX
 literal|" not a commit"
 argument_list|,
 name|from_mark
@@ -12261,8 +12224,8 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Alloc'd objects: "
-name|UM10_FMT
+literal|"Alloc'd objects: %10"
+name|PRIuMAX
 literal|"\n"
 argument_list|,
 name|alloc_count
@@ -12272,10 +12235,10 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Total objects:   "
-name|UM10_FMT
-literal|" ("
-name|UM10_FMT
+literal|"Total objects:   %10"
+name|PRIuMAX
+literal|" (%10"
+name|PRIuMAX
 literal|" duplicates                  )\n"
 argument_list|,
 name|total_count
@@ -12287,12 +12250,12 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"      blobs  :   "
-name|UM10_FMT
-literal|" ("
-name|UM10_FMT
-literal|" duplicates "
-name|UM10_FMT
+literal|"      blobs  :   %10"
+name|PRIuMAX
+literal|" (%10"
+name|PRIuMAX
+literal|" duplicates %10"
+name|PRIuMAX
 literal|" deltas)\n"
 argument_list|,
 name|object_count_by_type
@@ -12315,12 +12278,12 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"      trees  :   "
-name|UM10_FMT
-literal|" ("
-name|UM10_FMT
-literal|" duplicates "
-name|UM10_FMT
+literal|"      trees  :   %10"
+name|PRIuMAX
+literal|" (%10"
+name|PRIuMAX
+literal|" duplicates %10"
+name|PRIuMAX
 literal|" deltas)\n"
 argument_list|,
 name|object_count_by_type
@@ -12343,12 +12306,12 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"      commits:   "
-name|UM10_FMT
-literal|" ("
-name|UM10_FMT
-literal|" duplicates "
-name|UM10_FMT
+literal|"      commits:   %10"
+name|PRIuMAX
+literal|" (%10"
+name|PRIuMAX
+literal|" duplicates %10"
+name|PRIuMAX
 literal|" deltas)\n"
 argument_list|,
 name|object_count_by_type
@@ -12371,12 +12334,12 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"      tags   :   "
-name|UM10_FMT
-literal|" ("
-name|UM10_FMT
-literal|" duplicates "
-name|UM10_FMT
+literal|"      tags   :   %10"
+name|PRIuMAX
+literal|" (%10"
+name|PRIuMAX
+literal|" duplicates %10"
+name|PRIuMAX
 literal|" deltas)\n"
 argument_list|,
 name|object_count_by_type
@@ -12410,10 +12373,10 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"      marks:     "
-name|UM10_FMT
-literal|" ("
-name|UM10_FMT
+literal|"      marks:     %10"
+name|PRIuMAX
+literal|" (%10"
+name|PRIuMAX
 literal|" unique    )\n"
 argument_list|,
 operator|(
@@ -12447,8 +12410,8 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Memory total:    "
-name|UM10_FMT
+literal|"Memory total:    %10"
+name|PRIuMAX
 literal|" KiB\n"
 argument_list|,
 operator|(
@@ -12487,8 +12450,8 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"     objects:    "
-name|UM10_FMT
+literal|"     objects:    %10"
+name|PRIuMAX
 literal|" KiB\n"
 argument_list|,
 operator|(
