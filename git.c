@@ -1366,8 +1366,6 @@ literal|"diff"
 block|,
 name|cmd_diff
 block|,
-name|RUN_SETUP
-operator||
 name|USE_PAGER
 block|}
 block|,
@@ -1375,8 +1373,6 @@ block|{
 literal|"diff-files"
 block|,
 name|cmd_diff_files
-block|,
-name|RUN_SETUP
 block|}
 block|,
 block|{

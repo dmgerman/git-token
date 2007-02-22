@@ -13704,6 +13704,15 @@ operator|->
 name|two
 operator|->
 name|mode
+operator|||
+name|is_null_sha1
+argument_list|(
+name|p
+operator|->
+name|one
+operator|->
+name|sha1
+argument_list|)
 condition|)
 name|p
 operator|->
