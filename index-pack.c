@@ -2643,6 +2643,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|input_fd
+operator|&&
 name|S_ISREG
 argument_list|(
 name|st
@@ -2658,7 +2660,25 @@ name|consumed_bytes
 condition|)
 name|die
 argument_list|(
-literal|"pack has junk at the end"
+literal|"pack has junk at the end: 0%o, %d, %d %d"
+argument_list|,
+name|st
+operator|.
+name|st_mode
+argument_list|,
+operator|(
+name|int
+operator|)
+name|st
+operator|.
+name|st_size
+argument_list|,
+operator|(
+name|int
+operator|)
+name|consumed_bytes
+argument_list|,
+name|input_fd
 argument_list|)
 expr_stmt|;
 if|if
