@@ -883,7 +883,7 @@ index|[
 literal|1
 index|]
 argument_list|,
-literal|"want %s%s%s%s%s%s\n"
+literal|"want %s%s%s%s%s%s%s\n"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -922,6 +922,14 @@ operator|(
 name|use_thin_pack
 condition|?
 literal|" thin-pack"
+else|:
+literal|""
+operator|)
+argument_list|,
+operator|(
+name|no_progress
+condition|?
+literal|" no-progress"
 else|:
 literal|""
 operator|)
@@ -3864,44 +3872,6 @@ argument_list|(
 name|fetch_pack_usage
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|no_progress
-condition|)
-block|{
-name|char
-name|buf
-index|[
-literal|256
-index|]
-decl_stmt|;
-name|snprintf
-argument_list|(
-name|buf
-argument_list|,
-sizeof|sizeof
-argument_list|(
-name|buf
-argument_list|)
-argument_list|,
-literal|"%s --no-progress"
-argument_list|,
-name|uploadpack
-argument_list|)
-expr_stmt|;
-name|pid
-operator|=
-name|git_connect
-argument_list|(
-name|fd
-argument_list|,
-name|dest
-argument_list|,
-name|buf
-argument_list|)
-expr_stmt|;
-block|}
-else|else
 name|pid
 operator|=
 name|git_connect
