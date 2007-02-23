@@ -185,6 +185,20 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|auto_crlf
+name|int
+name|auto_crlf
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_comment
+DECL|variable|auto_crlf
+comment|/* 1: both ways, -1: only when adding git objects */
+end_comment
+
+begin_decl_stmt
 DECL|variable|git_dir
 specifier|static
 specifier|const
