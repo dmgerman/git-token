@@ -1218,6 +1218,18 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/* format-patch */
+end_comment
+
+begin_define
+DECL|macro|FORMAT_PATCH_NAME_MAX
+define|#
+directive|define
+name|FORMAT_PATCH_NAME_MAX
+value|64
+end_define
+
 begin_function
 DECL|function|istitlechar
 specifier|static
@@ -1480,7 +1492,7 @@ end_decl_stmt
 begin_function
 DECL|function|reopen_stdout
 specifier|static
-name|void
+name|int
 name|reopen_stdout
 parameter_list|(
 name|struct
@@ -1498,7 +1510,7 @@ block|{
 name|char
 name|filename
 index|[
-literal|1024
+name|PATH_MAX
 index|]
 decl_stmt|;
 name|char
@@ -1518,21 +1530,47 @@ argument_list|(
 name|fmt_patch_suffix
 argument_list|)
 operator|+
-literal|10
+literal|1
 decl_stmt|;
-comment|/* ., NUL and slop */
 if|if
 condition|(
 name|output_directory
 condition|)
 block|{
+if|if
+condition|(
+name|strlen
+argument_list|(
+name|output_directory
+argument_list|)
+operator|>=
+sizeof|sizeof
+argument_list|(
+name|filename
+argument_list|)
+operator|-
+name|FORMAT_PATCH_NAME_MAX
+operator|-
+name|suffix_len
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"name of output directory is too long"
+argument_list|)
+return|;
 name|strlcpy
 argument_list|(
 name|filename
 argument_list|,
 name|output_directory
 argument_list|,
-literal|1000
+sizeof|sizeof
+argument_list|(
+name|filename
+argument_list|)
+operator|-
+name|suffix_len
 argument_list|)
 expr_stmt|;
 name|len
@@ -1665,6 +1703,14 @@ name|j
 operator|=
 literal|0
 init|;
+name|j
+operator|<
+name|FORMAT_PATCH_NAME_MAX
+operator|-
+name|suffix_len
+operator|-
+literal|5
+operator|&&
 name|len
 operator|<
 sizeof|sizeof
@@ -1783,7 +1829,31 @@ condition|)
 name|len
 operator|--
 expr_stmt|;
+name|filename
+index|[
+name|len
+index|]
+operator|=
+literal|0
+expr_stmt|;
 block|}
+if|if
+condition|(
+name|len
+operator|+
+name|suffix_len
+operator|>=
+sizeof|sizeof
+argument_list|(
+name|filename
+argument_list|)
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"Patch pathname too long"
+argument_list|)
+return|;
 name|strcpy
 argument_list|(
 name|filename
@@ -1802,6 +1872,8 @@ argument_list|,
 name|filename
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|freopen
 argument_list|(
 name|filename
@@ -1810,7 +1882,20 @@ literal|"w"
 argument_list|,
 name|stdout
 argument_list|)
-expr_stmt|;
+operator|==
+name|NULL
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"Cannot open patch file %s"
+argument_list|,
+name|filename
+argument_list|)
+return|;
+return|return
+literal|0
+return|;
 block|}
 end_function
 
@@ -3455,6 +3540,8 @@ condition|(
 operator|!
 name|use_stdout
 condition|)
+if|if
+condition|(
 name|reopen_stdout
 argument_list|(
 name|commit
@@ -3464,6 +3551,11 @@ operator|.
 name|nr
 argument_list|,
 name|keep_subject
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"Failed to create output files"
 argument_list|)
 expr_stmt|;
 name|shown
