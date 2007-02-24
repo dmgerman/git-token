@@ -1040,7 +1040,7 @@ name|char
 modifier|*
 name|message
 init|=
-literal|"The bundle requires these lacking revs:"
+literal|"Repository lacks these prerequisite commits:"
 decl_stmt|;
 name|init_revisions
 argument_list|(
