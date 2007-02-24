@@ -8271,6 +8271,17 @@ case|:
 comment|/* Ignore it, we already handled it */
 break|break;
 default|default:
+if|if
+condition|(
+name|apply_verbosely
+condition|)
+name|error
+argument_list|(
+literal|"invalid start of line: '%c'"
+argument_list|,
+name|first
+argument_list|)
+expr_stmt|;
 return|return
 operator|-
 literal|1
@@ -8691,6 +8702,21 @@ operator|--
 expr_stmt|;
 block|}
 block|}
+if|if
+condition|(
+name|offset
+operator|&&
+name|apply_verbosely
+condition|)
+name|error
+argument_list|(
+literal|"while searching for:\n%.*s"
+argument_list|,
+name|oldsize
+argument_list|,
+name|oldlines
+argument_list|)
+expr_stmt|;
 name|free
 argument_list|(
 name|old
@@ -13924,6 +13950,14 @@ continue|continue;
 block|}
 if|if
 condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"-v"
+argument_list|)
+operator|||
 operator|!
 name|strcmp
 argument_list|(
