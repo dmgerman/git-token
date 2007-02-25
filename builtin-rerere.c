@@ -1110,7 +1110,7 @@ argument_list|)
 expr_stmt|;
 name|i
 operator|+=
-literal|3
+literal|2
 expr_stmt|;
 block|}
 block|}
