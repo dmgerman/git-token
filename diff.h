@@ -389,6 +389,11 @@ DECL|member|stat_name_width
 name|int
 name|stat_name_width
 decl_stmt|;
+comment|/* this is set by diffcore for DIFF_FORMAT_PATCH */
+DECL|member|found_changes
+name|int
+name|found_changes
+decl_stmt|;
 DECL|member|nr_paths
 name|int
 name|nr_paths

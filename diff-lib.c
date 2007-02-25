@@ -1251,6 +1251,8 @@ argument_list|(
 literal|"need two files/directories with --no-index"
 argument_list|)
 return|;
+if|if
+condition|(
 name|queue_diff
 argument_list|(
 operator|&
@@ -1276,7 +1278,11 @@ index|[
 literal|1
 index|]
 argument_list|)
-expr_stmt|;
+condition|)
+return|return
+operator|-
+literal|1
+return|;
 name|diffcore_std
 argument_list|(
 operator|&
@@ -1293,8 +1299,13 @@ operator|->
 name|diffopt
 argument_list|)
 expr_stmt|;
+comment|/* 		 * The return code for --no-index imitates diff(1): 		 * 0 = no changes, 1 = changes, else error 		 */
 return|return
-literal|0
+name|revs
+operator|->
+name|diffopt
+operator|.
+name|found_changes
 return|;
 block|}
 if|if
