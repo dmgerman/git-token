@@ -331,9 +331,8 @@ name|char
 modifier|*
 name|sha1
 parameter_list|,
-specifier|const
-name|char
-modifier|*
+name|enum
+name|object_type
 name|type
 parameter_list|,
 name|unsigned

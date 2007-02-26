@@ -9137,11 +9137,9 @@ argument_list|)
 condition|)
 block|{
 comment|/* We already have the postimage */
-name|char
+name|enum
+name|object_type
 name|type
-index|[
-literal|10
-index|]
 decl_stmt|;
 name|unsigned
 name|long
@@ -9162,6 +9160,7 @@ name|read_sha1_file
 argument_list|(
 name|sha1
 argument_list|,
+operator|&
 name|type
 argument_list|,
 operator|&
@@ -9447,11 +9446,9 @@ condition|(
 name|ce
 condition|)
 block|{
-name|char
+name|enum
+name|object_type
 name|type
-index|[
-literal|20
-index|]
 decl_stmt|;
 name|buf
 operator|=
@@ -9461,6 +9458,7 @@ name|ce
 operator|->
 name|sha1
 argument_list|,
+operator|&
 name|type
 argument_list|,
 operator|&

@@ -35,11 +35,9 @@ name|void
 modifier|*
 name|buf
 decl_stmt|;
-name|char
+name|enum
+name|object_type
 name|type
-index|[
-literal|100
-index|]
 decl_stmt|;
 name|unsigned
 name|long
@@ -54,6 +52,7 @@ name|read_sha1_file
 argument_list|(
 name|sha1
 argument_list|,
+operator|&
 name|type
 argument_list|,
 operator|&
@@ -65,12 +64,9 @@ condition|(
 operator|!
 name|buf
 operator|||
-name|strcmp
-argument_list|(
 name|type
-argument_list|,
-name|blob_type
-argument_list|)
+operator|!=
+name|OBJ_BLOB
 condition|)
 name|die
 argument_list|(

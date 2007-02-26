@@ -1022,11 +1022,9 @@ modifier|*
 name|item
 parameter_list|)
 block|{
-name|char
+name|enum
+name|object_type
 name|type
-index|[
-literal|20
-index|]
 decl_stmt|;
 name|void
 modifier|*
@@ -1057,6 +1055,7 @@ name|object
 operator|.
 name|sha1
 argument_list|,
+operator|&
 name|type
 argument_list|,
 operator|&
@@ -1085,12 +1084,9 @@ argument_list|)
 return|;
 if|if
 condition|(
-name|strcmp
-argument_list|(
 name|type
-argument_list|,
-name|tree_type
-argument_list|)
+operator|!=
+name|OBJ_TREE
 condition|)
 block|{
 name|free
