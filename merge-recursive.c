@@ -3350,7 +3350,7 @@ argument_list|)
 expr_stmt|;
 name|unlink
 argument_list|(
-name|lnk
+name|path
 argument_list|)
 expr_stmt|;
 name|symlink
