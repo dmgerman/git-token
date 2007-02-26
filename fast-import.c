@@ -4686,10 +4686,10 @@ name|hdr
 argument_list|,
 literal|"%s %lu"
 argument_list|,
-name|type_names
-index|[
+name|typename
+argument_list|(
 name|type
-index|]
+argument_list|)
 argument_list|,
 operator|(
 name|unsigned
@@ -9361,12 +9361,12 @@ name|command_buf
 operator|.
 name|buf
 argument_list|,
-name|type_names
-index|[
+name|typename
+argument_list|(
 name|oe
 operator|->
 name|type
-index|]
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -9981,10 +9981,7 @@ name|b
 operator|->
 name|sha1
 argument_list|,
-name|type_names
-index|[
-name|OBJ_COMMIT
-index|]
+name|commit_type
 argument_list|,
 operator|&
 name|size
@@ -11134,10 +11131,7 @@ name|read_object_with_reference
 argument_list|(
 name|sha1
 argument_list|,
-name|type_names
-index|[
-name|OBJ_COMMIT
-index|]
+name|commit_type
 argument_list|,
 operator|&
 name|size
@@ -11273,10 +11267,7 @@ name|sp
 argument_list|,
 literal|"type %s\n"
 argument_list|,
-name|type_names
-index|[
-name|OBJ_COMMIT
-index|]
+name|commit_type
 argument_list|)
 expr_stmt|;
 name|sp

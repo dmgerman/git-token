@@ -1019,12 +1019,12 @@ name|v
 operator|->
 name|s
 operator|=
-name|type_names
-index|[
+name|typename
+argument_list|(
 name|obj
 operator|->
 name|type
-index|]
+argument_list|)
 expr_stmt|;
 elseif|else
 if|if
