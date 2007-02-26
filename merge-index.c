@@ -370,11 +370,6 @@ name|ce
 operator|->
 name|ce_mode
 argument_list|)
-operator|&
-operator|(
-operator|~
-name|S_IFMT
-operator|)
 argument_list|)
 expr_stmt|;
 name|arguments
