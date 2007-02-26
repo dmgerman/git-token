@@ -254,30 +254,6 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
-begin_comment
-comment|/** Returns the object, having looked it up as being the given type. **/
-end_comment
-
-begin_function_decl
-name|struct
-name|object
-modifier|*
-name|lookup_object_type
-parameter_list|(
-specifier|const
-name|unsigned
-name|char
-modifier|*
-name|sha1
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|type
-parameter_list|)
-function_decl|;
-end_function_decl
-
 begin_function_decl
 name|void
 name|created_object
