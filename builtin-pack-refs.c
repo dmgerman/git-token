@@ -168,13 +168,11 @@ return|;
 name|is_tag_ref
 operator|=
 operator|!
-name|strncmp
+name|prefixcmp
 argument_list|(
 name|path
 argument_list|,
 literal|"refs/tags/"
-argument_list|,
-literal|10
 argument_list|)
 expr_stmt|;
 comment|/* ALWAYS pack refs that were already packed or are tags */

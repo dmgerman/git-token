@@ -619,7 +619,7 @@ block|}
 if|if
 condition|(
 operator|!
-name|strncmp
+name|prefixcmp
 argument_list|(
 name|argv
 index|[
@@ -629,8 +629,6 @@ operator|+
 literal|2
 argument_list|,
 literal|"abbrev="
-argument_list|,
-literal|7
 argument_list|)
 condition|)
 block|{

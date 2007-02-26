@@ -908,9 +908,11 @@ name|unsigned
 name|char
 operator|*
 operator|)
+operator|(
 name|parent
 operator|+
 name|i
+operator|)
 argument_list|,
 name|ent
 index|[
@@ -1215,6 +1217,20 @@ name|add_head
 argument_list|(
 operator|&
 name|rev
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|rev
+operator|.
+name|pending
+operator|.
+name|nr
+condition|)
+name|die
+argument_list|(
+literal|"No HEAD commit to compare with (yet)"
 argument_list|)
 expr_stmt|;
 break|break;

@@ -783,13 +783,11 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|strncmp
+name|prefixcmp
 argument_list|(
 name|oneline
 argument_list|,
 literal|"[PATCH"
-argument_list|,
-literal|6
 argument_list|)
 condition|)
 block|{
@@ -1128,15 +1126,13 @@ literal|'a'
 operator|)
 operator|&&
 operator|!
-name|strncmp
+name|prefixcmp
 argument_list|(
 name|buffer
 operator|+
 literal|1
 argument_list|,
 literal|"uthor: "
-argument_list|,
-literal|7
 argument_list|)
 operator|&&
 operator|(
@@ -1442,13 +1438,11 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|strncmp
+name|prefixcmp
 argument_list|(
 name|buffer
 argument_list|,
 literal|"author "
-argument_list|,
-literal|7
 argument_list|)
 condition|)
 block|{

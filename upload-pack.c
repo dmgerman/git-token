@@ -2422,13 +2422,11 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|strncmp
+name|prefixcmp
 argument_list|(
 name|line
 argument_list|,
 literal|"have "
-argument_list|,
-literal|5
 argument_list|)
 condition|)
 block|{
@@ -2674,13 +2672,11 @@ break|break;
 if|if
 condition|(
 operator|!
-name|strncmp
+name|prefixcmp
 argument_list|(
-literal|"shallow "
-argument_list|,
 name|line
 argument_list|,
-literal|8
+literal|"shallow "
 argument_list|)
 condition|)
 block|{
@@ -2758,13 +2754,11 @@ block|}
 if|if
 condition|(
 operator|!
-name|strncmp
+name|prefixcmp
 argument_list|(
-literal|"deepen "
-argument_list|,
 name|line
 argument_list|,
-literal|7
+literal|"deepen "
 argument_list|)
 condition|)
 block|{
@@ -2813,13 +2807,11 @@ continue|continue;
 block|}
 if|if
 condition|(
-name|strncmp
+name|prefixcmp
 argument_list|(
-literal|"want "
-argument_list|,
 name|line
 argument_list|,
-literal|5
+literal|"want "
 argument_list|)
 operator|||
 name|get_sha1_hex
@@ -3583,13 +3575,11 @@ block|}
 if|if
 condition|(
 operator|!
-name|strncmp
+name|prefixcmp
 argument_list|(
 name|arg
 argument_list|,
 literal|"--timeout="
-argument_list|,
-literal|10
 argument_list|)
 condition|)
 block|{

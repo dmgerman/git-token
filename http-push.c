@@ -5891,19 +5891,17 @@ operator|.
 name|posn
 operator|&&
 operator|!
-name|strncmp
+name|prefixcmp
 argument_list|(
 name|data
 operator|+
 name|i
 argument_list|,
 literal|" pack-"
-argument_list|,
-literal|6
 argument_list|)
 operator|&&
 operator|!
-name|strncmp
+name|prefixcmp
 argument_list|(
 name|data
 operator|+
@@ -5912,8 +5910,6 @@ operator|+
 literal|46
 argument_list|,
 literal|".pack\n"
-argument_list|,
-literal|6
 argument_list|)
 condition|)
 block|{
@@ -6772,15 +6768,13 @@ block|{
 if|if
 condition|(
 operator|!
-name|strncmp
+name|prefixcmp
 argument_list|(
 name|ctx
 operator|->
 name|cdata
 argument_list|,
 literal|"Second-"
-argument_list|,
-literal|7
 argument_list|)
 condition|)
 name|lock
@@ -6818,15 +6812,13 @@ block|{
 if|if
 condition|(
 operator|!
-name|strncmp
+name|prefixcmp
 argument_list|(
 name|ctx
 operator|->
 name|cdata
 argument_list|,
 literal|"opaquelocktoken:"
-argument_list|,
-literal|16
 argument_list|)
 condition|)
 block|{
@@ -12542,7 +12534,7 @@ comment|/* If it's a symref, set the refname; otherwise try for a sha1 */
 if|if
 condition|(
 operator|!
-name|strncmp
+name|prefixcmp
 argument_list|(
 operator|(
 name|char
@@ -12553,8 +12545,6 @@ operator|.
 name|buffer
 argument_list|,
 literal|"ref: "
-argument_list|,
-literal|5
 argument_list|)
 condition|)
 block|{
