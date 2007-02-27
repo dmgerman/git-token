@@ -7398,6 +7398,11 @@ operator|)
 operator|||
 operator|!
 name|whitespace_error
+operator|||
+operator|*
+name|patch
+operator|!=
+literal|'+'
 condition|)
 block|{
 name|memcpy
