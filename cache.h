@@ -2571,6 +2571,25 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_enum
+DECL|enum|date_mode
+DECL|enumerator|DATE_NORMAL
+DECL|enumerator|DATE_RELATIVE
+DECL|enumerator|DATE_SHORT
+enum|enum
+name|date_mode
+block|{
+name|DATE_NORMAL
+init|=
+literal|0
+block|,
+name|DATE_RELATIVE
+block|,
+name|DATE_SHORT
+block|}
+enum|;
+end_enum
+
 begin_function_decl
 specifier|const
 name|char
@@ -2584,8 +2603,9 @@ parameter_list|,
 name|int
 name|timezone
 parameter_list|,
-name|int
-name|relative
+name|enum
+name|date_mode
+name|mode
 parameter_list|)
 function_decl|;
 end_function_decl
