@@ -312,13 +312,11 @@ elseif|else
 if|if
 condition|(
 operator|!
-name|strncmp
+name|prefixcmp
 argument_list|(
 name|arg
 argument_list|,
 literal|"--prefix="
-argument_list|,
-literal|9
 argument_list|)
 condition|)
 name|prefix

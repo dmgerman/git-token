@@ -694,13 +694,11 @@ block|{
 if|if
 condition|(
 operator|!
-name|strncmp
+name|prefixcmp
 argument_list|(
-literal|"<<<<<<< "
-argument_list|,
 name|buf
 argument_list|,
-literal|8
+literal|"<<<<<<< "
 argument_list|)
 condition|)
 name|hunk
@@ -711,13 +709,11 @@ elseif|else
 if|if
 condition|(
 operator|!
-name|strncmp
+name|prefixcmp
 argument_list|(
-literal|"======="
-argument_list|,
 name|buf
 argument_list|,
-literal|7
+literal|"======="
 argument_list|)
 condition|)
 name|hunk
@@ -728,13 +724,11 @@ elseif|else
 if|if
 condition|(
 operator|!
-name|strncmp
+name|prefixcmp
 argument_list|(
-literal|">>>>>>> "
-argument_list|,
 name|buf
 argument_list|,
-literal|8
+literal|">>>>>>> "
 argument_list|)
 condition|)
 block|{
@@ -1092,6 +1086,36 @@ name|e1
 argument_list|,
 name|e3
 argument_list|)
+operator|&&
+name|S_ISREG
+argument_list|(
+name|ntohl
+argument_list|(
+name|e1
+operator|->
+name|ce_mode
+argument_list|)
+argument_list|)
+operator|&&
+name|S_ISREG
+argument_list|(
+name|ntohl
+argument_list|(
+name|e2
+operator|->
+name|ce_mode
+argument_list|)
+argument_list|)
+operator|&&
+name|S_ISREG
+argument_list|(
+name|ntohl
+argument_list|(
+name|e3
+operator|->
+name|ce_mode
+argument_list|)
+argument_list|)
 condition|)
 block|{
 name|path_list_insert
@@ -1110,7 +1134,7 @@ argument_list|)
 expr_stmt|;
 name|i
 operator|+=
-literal|3
+literal|2
 expr_stmt|;
 block|}
 block|}
