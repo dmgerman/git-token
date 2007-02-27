@@ -1673,12 +1673,12 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Wrap the text, if necessary. The variable indent is the indent for the  * first line, indent2 is the indent for all other lines.  */
+comment|/*  * Wrap the text, if necessary. The variable indent is the indent for the  * first line, indent2 is the indent for all other lines.  * If indent is negative, assume that already -indent columns have been  * consumed (and no extra indent is necessary for the first line).  */
 end_comment
 
 begin_function
 DECL|function|print_wrapped_text
-name|void
+name|int
 name|print_wrapped_text
 parameter_list|(
 specifier|const
@@ -1720,6 +1720,23 @@ name|space
 init|=
 name|NULL
 decl_stmt|;
+if|if
+condition|(
+name|indent
+operator|<
+literal|0
+condition|)
+block|{
+name|w
+operator|=
+operator|-
+name|indent
+expr_stmt|;
+name|space
+operator|=
+name|text
+expr_stmt|;
+block|}
 for|for
 control|(
 init|;
@@ -1792,14 +1809,9 @@ condition|(
 operator|!
 name|c
 condition|)
-block|{
-name|putchar
-argument_list|(
-literal|'\n'
-argument_list|)
-expr_stmt|;
-return|return;
-block|}
+return|return
+name|w
+return|;
 elseif|else
 if|if
 condition|(
@@ -1872,6 +1884,9 @@ operator|++
 expr_stmt|;
 block|}
 block|}
+return|return
+name|w
+return|;
 block|}
 end_function
 
