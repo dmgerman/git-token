@@ -2301,6 +2301,15 @@ condition|)
 continue|continue;
 if|if
 condition|(
+name|eol
+operator|-
+name|ls
+operator|<
+literal|40
+condition|)
+continue|continue;
+if|if
+condition|(
 name|get_sha1_hex
 argument_list|(
 name|ls
