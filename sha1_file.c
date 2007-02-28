@@ -11225,9 +11225,18 @@ expr_stmt|;
 comment|/* 	 * Convert blobs to git internal format 	 */
 if|if
 condition|(
+operator|(
 name|type
 operator|==
 name|OBJ_BLOB
+operator|)
+operator|&&
+name|S_ISREG
+argument_list|(
+name|st
+operator|->
+name|st_mode
+argument_list|)
 condition|)
 block|{
 name|unsigned
