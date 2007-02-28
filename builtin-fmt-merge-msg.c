@@ -1693,7 +1693,7 @@ if|if
 condition|(
 name|argc
 operator|<
-literal|2
+literal|3
 condition|)
 name|die
 argument_list|(
@@ -1734,6 +1734,21 @@ literal|2
 index|]
 argument_list|,
 literal|"r"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|in
+condition|)
+name|die
+argument_list|(
+literal|"cannot open %s"
+argument_list|,
+name|argv
+index|[
+literal|2
+index|]
 argument_list|)
 expr_stmt|;
 block|}
