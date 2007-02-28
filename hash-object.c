@@ -85,6 +85,8 @@ argument_list|,
 name|write_object
 argument_list|,
 name|type
+argument_list|,
+name|path
 argument_list|)
 condition|)
 name|die

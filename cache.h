@@ -1236,6 +1236,11 @@ parameter_list|,
 name|enum
 name|object_type
 name|type
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|path
 parameter_list|)
 function_decl|;
 end_function_decl

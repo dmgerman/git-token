@@ -11157,6 +11157,11 @@ parameter_list|,
 name|enum
 name|object_type
 name|type
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|path
 parameter_list|)
 block|{
 name|unsigned
@@ -11241,7 +11246,7 @@ if|if
 condition|(
 name|convert_to_git
 argument_list|(
-name|NULL
+name|path
 argument_list|,
 operator|&
 name|nbuf
@@ -11428,6 +11433,8 @@ argument_list|,
 name|write_object
 argument_list|,
 name|OBJ_BLOB
+argument_list|,
+name|path
 argument_list|)
 operator|<
 literal|0
