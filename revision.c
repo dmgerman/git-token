@@ -570,6 +570,25 @@ modifier|*
 name|name
 parameter_list|)
 block|{
+if|if
+condition|(
+name|revs
+operator|->
+name|no_walk
+operator|&&
+operator|(
+name|obj
+operator|->
+name|flags
+operator|&
+name|UNINTERESTING
+operator|)
+condition|)
+name|die
+argument_list|(
+literal|"object ranges do not make sense when not walking revisions"
+argument_list|)
+expr_stmt|;
 name|add_object_array
 argument_list|(
 name|obj
