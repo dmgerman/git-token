@@ -1950,6 +1950,12 @@ DECL|enum|object_type
 enum|enum
 name|object_type
 block|{
+DECL|enumerator|OBJ_BAD
+name|OBJ_BAD
+init|=
+operator|-
+literal|1
+block|,
 DECL|enumerator|OBJ_NONE
 name|OBJ_NONE
 init|=
@@ -1986,8 +1992,8 @@ name|OBJ_REF_DELTA
 init|=
 literal|7
 block|,
-DECL|enumerator|OBJ_BAD
-name|OBJ_BAD
+DECL|enumerator|OBJ_MAX
+name|OBJ_MAX
 block|, }
 enum|;
 end_enum
