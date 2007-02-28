@@ -1664,11 +1664,9 @@ argument_list|(
 name|sha1
 argument_list|)
 decl_stmt|;
-name|char
+name|enum
+name|object_type
 name|type
-index|[
-literal|20
-index|]
 decl_stmt|;
 name|void
 modifier|*
@@ -1696,6 +1694,7 @@ name|read_sha1_file
 argument_list|(
 name|sha1
 argument_list|,
+operator|&
 name|type
 argument_list|,
 operator|&
@@ -1735,13 +1734,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|!
-name|strcmp
-argument_list|(
 name|type
-argument_list|,
-name|blob_type
-argument_list|)
+operator|==
+name|OBJ_BLOB
 condition|)
 block|{
 name|write_sha1_file
@@ -1761,13 +1756,9 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|!
-name|strcmp
-argument_list|(
 name|type
-argument_list|,
-name|tree_type
-argument_list|)
+operator|==
+name|OBJ_TREE
 condition|)
 name|convert_tree
 argument_list|(
@@ -1783,13 +1774,9 @@ expr_stmt|;
 elseif|else
 if|if
 condition|(
-operator|!
-name|strcmp
-argument_list|(
 name|type
-argument_list|,
-name|commit_type
-argument_list|)
+operator|==
+name|OBJ_COMMIT
 condition|)
 name|convert_commit
 argument_list|(
@@ -1805,7 +1792,7 @@ expr_stmt|;
 else|else
 name|die
 argument_list|(
-literal|"unknown object type '%s' in %s"
+literal|"unknown object type %d in %s"
 argument_list|,
 name|type
 argument_list|,

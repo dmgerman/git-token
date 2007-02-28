@@ -1648,11 +1648,9 @@ name|void
 modifier|*
 name|buffer
 decl_stmt|;
-name|char
+name|enum
+name|object_type
 name|type
-index|[
-literal|20
-index|]
 decl_stmt|;
 name|unsigned
 name|long
@@ -1795,6 +1793,7 @@ name|read_sha1_file
 argument_list|(
 name|sha1
 argument_list|,
+operator|&
 name|type
 argument_list|,
 operator|&

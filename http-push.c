@@ -2674,11 +2674,9 @@ name|char
 modifier|*
 name|posn
 decl_stmt|;
-name|char
+name|enum
+name|object_type
 name|type
-index|[
-literal|20
-index|]
 decl_stmt|;
 name|char
 name|hdr
@@ -2713,6 +2711,7 @@ name|obj
 operator|->
 name|sha1
 argument_list|,
+operator|&
 name|type
 argument_list|,
 operator|&
@@ -2727,7 +2726,10 @@ name|hdr
 argument_list|,
 literal|"%s %lu"
 argument_list|,
+name|typename
+argument_list|(
 name|type
+argument_list|)
 argument_list|,
 name|len
 argument_list|)

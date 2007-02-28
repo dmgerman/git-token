@@ -54,11 +54,9 @@ init|=
 operator|-
 literal|1
 decl_stmt|;
-name|char
+name|enum
+name|object_type
 name|type
-index|[
-literal|100
-index|]
 decl_stmt|;
 name|unsigned
 name|long
@@ -72,6 +70,7 @@ name|read_sha1_file
 argument_list|(
 name|sha1
 argument_list|,
+operator|&
 name|type
 argument_list|,
 operator|&
@@ -85,11 +84,10 @@ condition|)
 block|{
 if|if
 condition|(
-operator|!
-name|strcmp
-argument_list|(
 name|type
-argument_list|,
+operator|==
+name|type_from_string
+argument_list|(
 name|expected_type
 argument_list|)
 condition|)
@@ -103,7 +101,7 @@ name|buffer
 argument_list|,
 name|size
 argument_list|,
-name|type
+name|expected_type
 argument_list|)
 expr_stmt|;
 name|free
