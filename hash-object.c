@@ -26,9 +26,8 @@ name|char
 modifier|*
 name|path
 parameter_list|,
-specifier|const
-name|char
-modifier|*
+name|enum
+name|object_type
 name|type
 parameter_list|,
 name|int
@@ -434,7 +433,10 @@ name|hash_object
 argument_list|(
 name|arg
 argument_list|,
+name|type_from_string
+argument_list|(
 name|type
+argument_list|)
 argument_list|,
 name|write_object
 argument_list|)

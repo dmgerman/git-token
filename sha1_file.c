@@ -11154,9 +11154,8 @@ parameter_list|,
 name|int
 name|write_object
 parameter_list|,
-specifier|const
-name|char
-modifier|*
+name|enum
+name|object_type
 name|type
 parameter_list|)
 block|{
@@ -11216,18 +11215,14 @@ name|type
 condition|)
 name|type
 operator|=
-name|blob_type
+name|OBJ_BLOB
 expr_stmt|;
 comment|/* 	 * Convert blobs to git internal format 	 */
 if|if
 condition|(
-operator|!
-name|strcmp
-argument_list|(
 name|type
-argument_list|,
-name|blob_type
-argument_list|)
+operator|==
+name|OBJ_BLOB
 condition|)
 block|{
 name|unsigned
@@ -11293,7 +11288,10 @@ name|buf
 argument_list|,
 name|size
 argument_list|,
+name|typename
+argument_list|(
 name|type
+argument_list|)
 argument_list|,
 name|sha1
 argument_list|)
@@ -11307,7 +11305,10 @@ name|buf
 argument_list|,
 name|size
 argument_list|,
+name|typename
+argument_list|(
 name|type
+argument_list|)
 argument_list|,
 name|sha1
 argument_list|)
@@ -11426,7 +11427,7 @@ name|st
 argument_list|,
 name|write_object
 argument_list|,
-name|NULL
+name|OBJ_BLOB
 argument_list|)
 operator|<
 literal|0
