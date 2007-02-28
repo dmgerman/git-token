@@ -1296,6 +1296,12 @@ name|RUN_SETUP
 block|}
 block|,
 block|{
+literal|"bundle"
+block|,
+name|cmd_bundle
+block|}
+block|,
+block|{
 literal|"cat-file"
 block|,
 name|cmd_cat_file

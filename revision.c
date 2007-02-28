@@ -2360,7 +2360,7 @@ name|all_revs
 argument_list|,
 name|object
 argument_list|,
-literal|""
+name|path
 argument_list|)
 expr_stmt|;
 return|return
