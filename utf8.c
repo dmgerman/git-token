@@ -1847,7 +1847,11 @@ name|bol
 operator|=
 name|space
 operator|+
-literal|1
+name|isspace
+argument_list|(
+operator|*
+name|space
+argument_list|)
 expr_stmt|;
 name|space
 operator|=
