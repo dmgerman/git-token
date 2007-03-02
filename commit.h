@@ -282,6 +282,9 @@ block|,
 DECL|enumerator|CMIT_FMT_EMAIL
 name|CMIT_FMT_EMAIL
 block|,
+DECL|enumerator|CMIT_FMT_USERFORMAT
+name|CMIT_FMT_USERFORMAT
+block|,
 DECL|enumerator|CMIT_FMT_UNSPECIFIED
 name|CMIT_FMT_UNSPECIFIED
 block|, }
