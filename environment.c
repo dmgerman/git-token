@@ -48,6 +48,15 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|has_symlinks
+name|int
+name|has_symlinks
+init|=
+literal|1
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|assume_unchanged
 name|int
 name|assume_unchanged
