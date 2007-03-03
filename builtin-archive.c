@@ -1445,17 +1445,6 @@ operator|&
 name|ar
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|prefix
-operator|==
-name|NULL
-condition|)
-name|prefix
-operator|=
-name|setup_git_directory
-argument_list|()
-expr_stmt|;
 name|argv
 operator|+=
 name|tree_idx
