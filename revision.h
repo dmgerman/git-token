@@ -387,6 +387,10 @@ name|char
 modifier|*
 name|log_reencode
 decl_stmt|;
+DECL|member|no_inline
+name|int
+name|no_inline
+decl_stmt|;
 comment|/* Filter by commit log message */
 DECL|member|grep_filter
 name|struct

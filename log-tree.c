@@ -985,7 +985,7 @@ literal|"--%s%s\n"
 literal|"Content-Type: text/x-patch;\n"
 literal|" name=\"%s.diff\"\n"
 literal|"Content-Transfer-Encoding: 8bit\n"
-literal|"Content-Disposition: inline;\n"
+literal|"Content-Disposition: %s;\n"
 literal|" filename=\"%s.diff\"\n\n"
 argument_list|,
 name|mime_boundary_leader
@@ -995,6 +995,14 @@ operator|->
 name|mime_boundary
 argument_list|,
 name|sha1
+argument_list|,
+name|opt
+operator|->
+name|no_inline
+condition|?
+literal|"attachment"
+else|:
+literal|"inline"
 argument_list|,
 name|sha1
 argument_list|)
