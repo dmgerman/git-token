@@ -1825,14 +1825,7 @@ argument_list|)
 argument_list|,
 name|oneline
 argument_list|)
-condition|)
-name|exit
-argument_list|(
-literal|1
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
+operator|||
 name|write_tree
 argument_list|(
 name|head
@@ -1999,39 +1992,18 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"You may choose to use the following "
-literal|"when making the commit:\n"
-literal|"GIT_AUTHOR_NAME=\"%s\"\n"
+literal|"When commiting, use the option "
+literal|"'-c %s' to retain authorship and message.\n"
 argument_list|,
-name|getenv
+name|find_unique_abbrev
 argument_list|(
-literal|"GIT_AUTHOR_NAME"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|fprintf
-argument_list|(
-name|stderr
+name|commit
+operator|->
+name|object
+operator|.
+name|sha1
 argument_list|,
-literal|"GIT_AUTHOR_EMAIL=\"%s\"\n"
-argument_list|,
-name|getenv
-argument_list|(
-literal|"GIT_AUTHOR_EMAIL"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-literal|"GIT_AUTHOR_DATE=\"%s\"\n"
-literal|"export GIT_AUTHOR_NAME GIT_AUTHOR_EMAIL "
-literal|"GIT_AUTHOR_DATE\n"
-argument_list|,
-name|getenv
-argument_list|(
-literal|"GIT_AUTHOR_DATE"
+name|DEFAULT_ABBREV
 argument_list|)
 argument_list|)
 expr_stmt|;
