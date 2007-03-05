@@ -937,7 +937,7 @@ literal|1
 argument_list|,
 literal|"%s"
 literal|"MIME-Version: 1.0\n"
-literal|"Content-Type: multipart/mixed;\n"
+literal|"Content-Type: multipart/mixed;"
 literal|" boundary=\"%s%s\"\n"
 literal|"\n"
 literal|"This is a multi-part message in MIME "
@@ -982,10 +982,10 @@ operator|-
 literal|1
 argument_list|,
 literal|"--%s%s\n"
-literal|"Content-Type: text/x-patch;\n"
+literal|"Content-Type: text/x-patch;"
 literal|" name=\"%s.diff\"\n"
 literal|"Content-Transfer-Encoding: 8bit\n"
-literal|"Content-Disposition: %s;\n"
+literal|"Content-Disposition: %s;"
 literal|" filename=\"%s.diff\"\n\n"
 argument_list|,
 name|mime_boundary_leader
