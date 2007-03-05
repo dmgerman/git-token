@@ -94,6 +94,14 @@ name|SYMMETRIC_LEFT
 value|(1u<<8)
 end_define
 
+begin_define
+DECL|macro|CHILD_SHOWN
+define|#
+directive|define
+name|CHILD_SHOWN
+value|(1u<<9)
+end_define
+
 begin_struct_decl
 struct_decl|struct
 name|rev_info
@@ -143,6 +151,12 @@ DECL|member|pending
 name|struct
 name|object_array
 name|pending
+decl_stmt|;
+comment|/* Parents of shown commits */
+DECL|member|boundary_commits
+name|struct
+name|object_array
+name|boundary_commits
 decl_stmt|;
 comment|/* Basic information */
 DECL|member|prefix
@@ -233,7 +247,7 @@ comment|/* see also ignore_packed below */
 DECL|member|boundary
 name|boundary
 range|:
-literal|1
+literal|2
 decl_stmt|,
 DECL|member|left_right
 name|left_right
@@ -248,7 +262,7 @@ decl_stmt|,
 DECL|member|reverse
 name|reverse
 range|:
-literal|2
+literal|1
 decl_stmt|;
 comment|/* Diff flags */
 DECL|member|diff
