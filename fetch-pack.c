@@ -120,6 +120,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|no_progress
+specifier|static
+name|int
+name|no_progress
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|fetch_pack_usage
 specifier|static
 specifier|const
@@ -127,7 +135,7 @@ name|char
 name|fetch_pack_usage
 index|[]
 init|=
-literal|"git-fetch-pack [--all] [--quiet|-q] [--keep|-k] [--thin] [--upload-pack=<git-upload-pack>] [--depth=<n>] [-v] [<host>:]<directory> [<refs>...]"
+literal|"git-fetch-pack [--all] [--quiet|-q] [--keep|-k] [--thin] [--upload-pack=<git-upload-pack>] [--depth=<n>] [--no-progress] [-v] [<host>:]<directory> [<refs>...]"
 decl_stmt|;
 end_decl_stmt
 
@@ -875,7 +883,7 @@ index|[
 literal|1
 index|]
 argument_list|,
-literal|"want %s%s%s%s%s%s\n"
+literal|"want %s%s%s%s%s%s%s\n"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -914,6 +922,14 @@ operator|(
 name|use_thin_pack
 condition|?
 literal|" thin-pack"
+else|:
+literal|""
+operator|)
+argument_list|,
+operator|(
+name|no_progress
+condition|?
+literal|" no-progress"
 else|:
 literal|""
 operator|)
@@ -2719,6 +2735,9 @@ if|if
 condition|(
 operator|!
 name|quiet
+operator|&&
+operator|!
+name|no_progress
 condition|)
 operator|*
 name|av
@@ -3783,6 +3802,23 @@ operator|.
 name|st_mtime
 operator|=
 literal|0
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+literal|"--no-progress"
+argument_list|,
+name|arg
+argument_list|)
+condition|)
+block|{
+name|no_progress
+operator|=
+literal|1
 expr_stmt|;
 continue|continue;
 block|}
