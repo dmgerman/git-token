@@ -6811,15 +6811,27 @@ name|reverse
 operator|=
 literal|0
 expr_stmt|;
+name|c
+operator|=
+name|NULL
+expr_stmt|;
 block|}
 comment|/* 	 * Now pick up what they want to give us 	 */
+if|if
+condition|(
+operator|!
+operator|(
 name|c
 operator|=
 name|get_revision_1
 argument_list|(
 name|revs
 argument_list|)
-expr_stmt|;
+operator|)
+condition|)
+return|return
+name|NULL
+return|;
 while|while
 condition|(
 literal|0
@@ -6847,6 +6859,16 @@ operator|!
 name|c
 condition|)
 break|break;
+comment|/* Although we grabbed it, it is not shown. */
+name|c
+operator|->
+name|object
+operator|.
+name|flags
+operator|&=
+operator|~
+name|SHOWN
+expr_stmt|;
 block|}
 comment|/* 	 * Check the max_count. 	 */
 switch|switch
@@ -6864,6 +6886,20 @@ break|break;
 case|case
 literal|0
 case|:
+comment|/* Although we grabbed it, it is not shown. */
+if|if
+condition|(
+name|c
+condition|)
+name|c
+operator|->
+name|object
+operator|.
+name|flags
+operator|&=
+operator|~
+name|SHOWN
+expr_stmt|;
 name|c
 operator|=
 name|NULL
