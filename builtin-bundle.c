@@ -1681,6 +1681,23 @@ block|}
 end_function
 
 begin_function
+DECL|function|show_edge
+specifier|static
+name|void
+name|show_edge
+parameter_list|(
+name|struct
+name|commit
+modifier|*
+name|commit
+parameter_list|)
+block|{
+empty_stmt|;
+comment|/* nothing to do */
+block|}
+end_function
+
+begin_function
 DECL|function|create_bundle
 specifier|static
 name|int
@@ -2284,6 +2301,18 @@ name|prepare_revision_walk
 argument_list|(
 operator|&
 name|revs
+argument_list|)
+expr_stmt|;
+name|mark_edges_uninteresting
+argument_list|(
+name|revs
+operator|.
+name|commits
+argument_list|,
+operator|&
+name|revs
+argument_list|,
+name|show_edge
 argument_list|)
 expr_stmt|;
 name|traverse_commit_list
