@@ -1709,12 +1709,13 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|replay
 condition|)
 block|{
 name|add_to_msg
 argument_list|(
-literal|"\n(cherry picked from commit "
+literal|"(cherry picked from commit "
 argument_list|)
 expr_stmt|;
 name|add_to_msg
