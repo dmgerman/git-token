@@ -2658,6 +2658,18 @@ argument_list|,
 name|O_WRONLY
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|dev_null
+operator|<
+literal|0
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"Could not open /dev/null"
+argument_list|)
+return|;
 name|pid
 operator|=
 name|fork_with_pipe
@@ -2891,7 +2903,6 @@ argument_list|,
 literal|"create"
 argument_list|)
 operator|&&
-operator|!
 operator|(
 name|bundle_fd
 operator|=
@@ -2903,6 +2914,8 @@ operator|&
 name|header
 argument_list|)
 operator|)
+operator|<
+literal|0
 condition|)
 return|return
 literal|1
