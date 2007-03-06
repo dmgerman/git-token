@@ -6867,21 +6867,18 @@ name|NULL
 expr_stmt|;
 block|}
 comment|/* 	 * Now pick up what they want to give us 	 */
-if|if
-condition|(
-operator|!
-operator|(
 name|c
 operator|=
 name|get_revision_1
 argument_list|(
 name|revs
 argument_list|)
-operator|)
+expr_stmt|;
+if|if
+condition|(
+name|c
 condition|)
-return|return
-name|NULL
-return|;
+block|{
 while|while
 condition|(
 literal|0
@@ -6910,6 +6907,7 @@ name|c
 condition|)
 break|break;
 block|}
+block|}
 comment|/* 	 * Check the max_count. 	 */
 switch|switch
 condition|(
@@ -6926,7 +6924,6 @@ break|break;
 case|case
 literal|0
 case|:
-comment|/* Although we grabbed it, it is not shown. */
 name|c
 operator|=
 name|NULL
