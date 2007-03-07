@@ -928,6 +928,8 @@ name|name
 argument_list|)
 return|;
 block|}
+if|if
+condition|(
 name|write_ref_sha1
 argument_list|(
 name|lock
@@ -936,7 +938,20 @@ name|new_sha1
 argument_list|,
 literal|"push"
 argument_list|)
+condition|)
+block|{
+name|cmd
+operator|->
+name|error_string
+operator|=
+literal|"failed to write"
 expr_stmt|;
+return|return
+operator|-
+literal|1
+return|;
+comment|/* error() already called */
+block|}
 name|fprintf
 argument_list|(
 name|stderr
