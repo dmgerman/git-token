@@ -10101,9 +10101,12 @@ expr_stmt|;
 block|}
 name|fin_size
 operator|=
+name|xsize_t
+argument_list|(
 name|st
 operator|.
 name|st_size
+argument_list|)
 expr_stmt|;
 name|buf
 operator|=

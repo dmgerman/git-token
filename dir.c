@@ -557,7 +557,7 @@ name|fd
 decl_stmt|,
 name|i
 decl_stmt|;
-name|long
+name|size_t
 name|size
 decl_stmt|;
 name|char
@@ -597,9 +597,12 @@ name|err
 goto|;
 name|size
 operator|=
+name|xsize_t
+argument_list|(
 name|st
 operator|.
 name|st_size
+argument_list|)
 expr_stmt|;
 if|if
 condition|(

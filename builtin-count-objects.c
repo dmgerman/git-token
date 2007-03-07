@@ -290,9 +290,12 @@ operator|*
 name|loose_size
 operator|)
 operator|+=
+name|xsize_t
+argument_list|(
 name|st
 operator|.
 name|st_blocks
+argument_list|)
 expr_stmt|;
 block|}
 if|if

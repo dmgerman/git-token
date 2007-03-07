@@ -260,6 +260,10 @@ comment|/* Compute merge-score, which is "how much is removed 	 * from the sourc
 operator|*
 name|merge_score_p
 operator|=
+call|(
+name|int
+call|)
+argument_list|(
 name|src_removed
 operator|*
 name|MAX_SCORE
@@ -267,6 +271,7 @@ operator|/
 name|src
 operator|->
 name|size
+argument_list|)
 expr_stmt|;
 comment|/* Extent of damage, which counts both inserts and 	 * deletes. 	 */
 name|delta_size

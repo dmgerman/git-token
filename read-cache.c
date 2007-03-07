@@ -359,8 +359,7 @@ name|cache_entry
 modifier|*
 name|ce
 parameter_list|,
-name|unsigned
-name|long
+name|size_t
 name|expected_size
 parameter_list|)
 block|{
@@ -541,9 +540,12 @@ name|ce_compare_link
 argument_list|(
 name|ce
 argument_list|,
+name|xsize_t
+argument_list|(
 name|st
 operator|->
 name|st_size
+argument_list|)
 argument_list|)
 condition|)
 return|return
@@ -3640,9 +3642,12 @@ condition|)
 block|{
 name|cache_mmap_size
 operator|=
+name|xsize_t
+argument_list|(
 name|st
 operator|.
 name|st_size
+argument_list|)
 expr_stmt|;
 name|errno
 operator|=

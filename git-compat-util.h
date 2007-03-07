@@ -1695,6 +1695,26 @@ block|}
 end_function
 
 begin_function
+DECL|function|xsize_t
+specifier|static
+specifier|inline
+name|size_t
+name|xsize_t
+parameter_list|(
+name|off_t
+name|len
+parameter_list|)
+block|{
+return|return
+operator|(
+name|size_t
+operator|)
+name|len
+return|;
+block|}
+end_function
+
+begin_function
 DECL|function|has_extension
 specifier|static
 specifier|inline

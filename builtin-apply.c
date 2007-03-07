@@ -9496,9 +9496,12 @@ condition|)
 block|{
 name|size
 operator|=
+name|xsize_t
+argument_list|(
 name|st
 operator|->
 name|st_size
+argument_list|)
 expr_stmt|;
 name|alloc
 operator|=
