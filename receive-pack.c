@@ -736,7 +736,9 @@ end_function
 begin_function
 DECL|function|update
 specifier|static
-name|int
+specifier|const
+name|char
+modifier|*
 name|update
 parameter_list|(
 name|struct
@@ -777,12 +779,6 @@ name|ref_lock
 modifier|*
 name|lock
 decl_stmt|;
-name|cmd
-operator|->
-name|error_string
-operator|=
-name|NULL
-expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -801,19 +797,15 @@ literal|5
 argument_list|)
 condition|)
 block|{
-name|cmd
-operator|->
-name|error_string
-operator|=
-literal|"funny refname"
-expr_stmt|;
-return|return
 name|error
 argument_list|(
 literal|"refusing to create funny ref '%s' locally"
 argument_list|,
 name|name
 argument_list|)
+expr_stmt|;
+return|return
+literal|"funny refname"
 return|;
 block|}
 if|if
@@ -831,13 +823,6 @@ name|new_sha1
 argument_list|)
 condition|)
 block|{
-name|cmd
-operator|->
-name|error_string
-operator|=
-literal|"bad pack"
-expr_stmt|;
-return|return
 name|error
 argument_list|(
 literal|"unpack should have generated %s, "
@@ -848,6 +833,9 @@ argument_list|(
 name|new_sha1
 argument_list|)
 argument_list|)
+expr_stmt|;
+return|return
+literal|"bad pack"
 return|;
 block|}
 if|if
@@ -967,13 +955,19 @@ condition|(
 operator|!
 name|ent
 condition|)
-return|return
+block|{
 name|error
 argument_list|(
-literal|"denying non-fast forward;"
-literal|" you should pull first"
+literal|"denying non-fast forward %s"
+literal|" (you should pull first)"
+argument_list|,
+name|name
 argument_list|)
+expr_stmt|;
+return|return
+literal|"non-fast forward"
 return|;
+block|}
 block|}
 if|if
 condition|(
@@ -987,19 +981,15 @@ literal|1
 argument_list|)
 condition|)
 block|{
-name|cmd
-operator|->
-name|error_string
-operator|=
-literal|"hook declined"
-expr_stmt|;
-return|return
 name|error
 argument_list|(
 literal|"hook declined to update %s"
 argument_list|,
 name|name
 argument_list|)
+expr_stmt|;
+return|return
+literal|"hook declined"
 return|;
 block|}
 if|if
@@ -1020,19 +1010,15 @@ name|old_sha1
 argument_list|)
 condition|)
 block|{
-name|cmd
-operator|->
-name|error_string
-operator|=
-literal|"failed to delete"
-expr_stmt|;
-return|return
 name|error
 argument_list|(
 literal|"failed to delete %s"
 argument_list|,
 name|name
 argument_list|)
+expr_stmt|;
+return|return
+literal|"failed to delete"
 return|;
 block|}
 name|fprintf
@@ -1049,6 +1035,10 @@ name|old_sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
+return|return
+name|NULL
+return|;
+comment|/* good */
 block|}
 else|else
 block|{
@@ -1067,19 +1057,15 @@ operator|!
 name|lock
 condition|)
 block|{
-name|cmd
-operator|->
-name|error_string
-operator|=
-literal|"failed to lock"
-expr_stmt|;
-return|return
 name|error
 argument_list|(
 literal|"failed to lock %s"
 argument_list|,
 name|name
 argument_list|)
+expr_stmt|;
+return|return
+literal|"failed to lock"
 return|;
 block|}
 if|if
@@ -1094,15 +1080,8 @@ literal|"push"
 argument_list|)
 condition|)
 block|{
-name|cmd
-operator|->
-name|error_string
-operator|=
-literal|"failed to write"
-expr_stmt|;
 return|return
-operator|-
-literal|1
+literal|"failed to write"
 return|;
 comment|/* error() already called */
 block|}
@@ -1125,10 +1104,11 @@ name|new_sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 return|return
-literal|0
+name|NULL
 return|;
+comment|/* good */
+block|}
 block|}
 end_function
 
@@ -1321,17 +1301,16 @@ expr_stmt|;
 block|}
 end_function
 
-begin_comment
-comment|/*  * This gets called after(if) we've successfully  * unpacked the data payload.  */
-end_comment
-
 begin_function
 DECL|function|execute_commands
 specifier|static
 name|void
 name|execute_commands
 parameter_list|(
-name|void
+specifier|const
+name|char
+modifier|*
+name|unpacker_error
 parameter_list|)
 block|{
 name|struct
@@ -1341,11 +1320,40 @@ name|cmd
 init|=
 name|commands
 decl_stmt|;
+if|if
+condition|(
+name|unpacker_error
+condition|)
+block|{
 while|while
 condition|(
 name|cmd
 condition|)
 block|{
+name|cmd
+operator|->
+name|error_string
+operator|=
+literal|"n/a (unpacker error)"
+expr_stmt|;
+name|cmd
+operator|=
+name|cmd
+operator|->
+name|next
+expr_stmt|;
+block|}
+return|return;
+block|}
+while|while
+condition|(
+name|cmd
+condition|)
+block|{
+name|cmd
+operator|->
+name|error_string
+operator|=
 name|update
 argument_list|(
 name|cmd
@@ -1592,7 +1600,7 @@ name|cmd
 operator|->
 name|error_string
 operator|=
-literal|"n/a (unpacker error)"
+name|NULL
 expr_stmt|;
 name|cmd
 operator|->
@@ -2534,13 +2542,10 @@ operator|=
 name|unpack
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|unpack_status
-condition|)
 name|execute_commands
-argument_list|()
+argument_list|(
+name|unpack_status
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
