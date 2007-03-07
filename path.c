@@ -1188,9 +1188,13 @@ operator|==
 literal|0
 condition|)
 block|{
-name|putenv
+name|setenv
 argument_list|(
-literal|"GIT_DIR=."
+literal|"GIT_DIR"
+argument_list|,
+literal|"."
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 name|check_repository_format

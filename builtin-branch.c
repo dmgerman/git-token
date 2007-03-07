@@ -1480,7 +1480,10 @@ name|item
 operator|.
 name|name
 operator|=
+name|xstrdup
+argument_list|(
 literal|"(no branch)"
+argument_list|)
 expr_stmt|;
 name|item
 operator|.
@@ -1535,6 +1538,13 @@ argument_list|,
 name|abbrev
 argument_list|,
 literal|1
+argument_list|)
+expr_stmt|;
+name|free
+argument_list|(
+name|item
+operator|.
+name|name
 argument_list|)
 expr_stmt|;
 block|}

@@ -4438,6 +4438,7 @@ modifier|*
 name|sha1
 parameter_list|)
 block|{
+specifier|const
 name|char
 modifier|*
 name|report

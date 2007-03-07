@@ -1363,6 +1363,7 @@ operator|!=
 name|NULL
 condition|)
 block|{
+specifier|const
 name|char
 modifier|*
 name|author
@@ -1405,6 +1406,7 @@ literal|'\n'
 condition|;
 control|)
 block|{
+specifier|const
 name|char
 modifier|*
 name|eol

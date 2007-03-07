@@ -816,7 +816,7 @@ condition|(
 name|size
 condition|)
 block|{
-name|int
+name|size_t
 name|len
 init|=
 literal|1

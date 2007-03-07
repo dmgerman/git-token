@@ -26,6 +26,7 @@ struct|struct
 name|interp
 block|{
 DECL|member|name
+specifier|const
 name|char
 modifier|*
 name|name

@@ -126,6 +126,7 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|git_log_output_encoding
+specifier|const
 name|char
 modifier|*
 name|git_log_output_encoding

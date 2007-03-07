@@ -3997,10 +3997,12 @@ modifier|*
 name|logmsg
 decl_stmt|,
 modifier|*
-name|msg
-decl_stmt|,
-modifier|*
 name|m
+decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|msg
 decl_stmt|;
 name|unsigned
 name|long

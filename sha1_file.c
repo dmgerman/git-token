@@ -11213,6 +11213,8 @@ decl_stmt|;
 name|void
 modifier|*
 name|buf
+init|=
+name|NULL
 decl_stmt|;
 name|int
 name|ret
@@ -11221,10 +11223,6 @@ name|re_allocated
 init|=
 literal|0
 decl_stmt|;
-name|buf
-operator|=
-literal|""
-expr_stmt|;
 if|if
 condition|(
 name|size

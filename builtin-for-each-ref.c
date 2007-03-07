@@ -1707,6 +1707,7 @@ end_function
 begin_function
 DECL|function|copy_line
 specifier|static
+specifier|const
 name|char
 modifier|*
 name|copy_line
@@ -1784,6 +1785,7 @@ end_function
 begin_function
 DECL|function|copy_name
 specifier|static
+specifier|const
 name|char
 modifier|*
 name|copy_name
@@ -1881,6 +1883,7 @@ end_function
 begin_function
 DECL|function|copy_email
 specifier|static
+specifier|const
 name|char
 modifier|*
 name|copy_email

@@ -3980,6 +3980,7 @@ name|PATH_MAX
 index|]
 decl_stmt|;
 specifier|static
+specifier|const
 name|char
 modifier|*
 name|keep_msg
