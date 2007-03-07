@@ -3058,7 +3058,9 @@ operator|->
 name|next
 control|)
 block|{
-name|int
+name|uint32_t
+name|i
+decl_stmt|,
 name|num
 init|=
 name|num_packed_objects

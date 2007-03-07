@@ -69,12 +69,13 @@ name|pack_size
 operator|-
 literal|20
 decl_stmt|;
-name|int
+name|uint32_t
 name|nr_objects
 decl_stmt|,
-name|err
-decl_stmt|,
 name|i
+decl_stmt|;
+name|int
+name|err
 decl_stmt|;
 comment|/* Note that the pack header checks are actually performed by 	 * use_pack when it first opens the pack file.  If anything 	 * goes wrong during those checks then the call will die out 	 * immediately. 	 */
 name|SHA1_Init
@@ -219,6 +220,8 @@ for|for
 control|(
 name|i
 operator|=
+literal|0
+operator|,
 name|err
 operator|=
 literal|0
@@ -398,13 +401,11 @@ modifier|*
 name|p
 parameter_list|)
 block|{
-name|int
+name|uint32_t
 name|nr_objects
 decl_stmt|,
 name|i
-decl_stmt|;
-name|unsigned
-name|int
+decl_stmt|,
 name|chain_histogram
 index|[
 name|MAX_CHAIN

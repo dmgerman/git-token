@@ -2828,7 +2828,7 @@ name|unsigned
 name|long
 name|idx_size
 decl_stmt|;
-name|int
+name|uint32_t
 name|nr
 decl_stmt|,
 name|i
@@ -2997,8 +2997,7 @@ name|i
 operator|++
 control|)
 block|{
-name|unsigned
-name|int
+name|uint32_t
 name|n
 init|=
 name|ntohl
@@ -7488,7 +7487,7 @@ end_function
 
 begin_function
 DECL|function|num_packed_objects
-name|int
+name|uint32_t
 name|num_packed_objects
 parameter_list|(
 specifier|const
@@ -7530,7 +7529,7 @@ name|packed_git
 modifier|*
 name|p
 parameter_list|,
-name|int
+name|uint32_t
 name|n
 parameter_list|,
 name|unsigned
@@ -7551,10 +7550,6 @@ literal|256
 decl_stmt|;
 if|if
 condition|(
-name|n
-operator|<
-literal|0
-operator|||
 name|num_packed_objects
 argument_list|(
 name|p
