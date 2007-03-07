@@ -574,8 +574,7 @@ end_decl_stmt
 begin_decl_stmt
 DECL|variable|max_packsize
 specifier|static
-name|unsigned
-name|long
+name|off_t
 name|max_packsize
 init|=
 operator|(
@@ -8827,8 +8826,7 @@ operator|>=
 name|max_active_branches
 condition|)
 block|{
-name|unsigned
-name|long
+name|uintmax_t
 name|min_commit
 init|=
 name|ULONG_MAX
