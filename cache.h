@@ -3051,8 +3051,7 @@ struct|struct
 name|pack_entry
 block|{
 DECL|member|offset
-name|unsigned
-name|int
+name|off_t
 name|offset
 decl_stmt|;
 DECL|member|sha1
@@ -3415,8 +3414,7 @@ name|pack_window
 modifier|*
 modifier|*
 parameter_list|,
-name|unsigned
-name|long
+name|off_t
 parameter_list|,
 name|unsigned
 name|int
@@ -3490,8 +3488,7 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|unsigned
-name|long
+name|off_t
 name|find_pack_entry_one
 parameter_list|(
 specifier|const
@@ -3516,8 +3513,7 @@ name|struct
 name|packed_git
 modifier|*
 parameter_list|,
-name|unsigned
-name|long
+name|off_t
 parameter_list|,
 name|enum
 name|object_type
@@ -3570,8 +3566,7 @@ name|struct
 name|packed_git
 modifier|*
 parameter_list|,
-name|unsigned
-name|long
+name|off_t
 parameter_list|,
 name|unsigned
 name|long

@@ -91,25 +91,6 @@ name|MAX_PACK_ID
 value|((1<<PACK_ID_BITS)-1)
 end_define
 
-begin_ifndef
-ifndef|#
-directive|ifndef
-name|PRIuMAX
-end_ifndef
-
-begin_define
-DECL|macro|PRIuMAX
-define|#
-directive|define
-name|PRIuMAX
-value|"llu"
-end_define
-
-begin_endif
-endif|#
-directive|endif
-end_endif
-
 begin_struct
 DECL|struct|object_entry
 struct|struct

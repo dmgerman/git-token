@@ -2063,7 +2063,7 @@ begin_function
 DECL|function|pack_set_bytecount
 specifier|static
 specifier|inline
-name|size_t
+name|off_t
 name|pack_set_bytecount
 parameter_list|(
 name|struct
@@ -2072,7 +2072,7 @@ modifier|*
 name|pl
 parameter_list|)
 block|{
-name|size_t
+name|off_t
 name|ret
 init|=
 literal|0
@@ -2165,14 +2165,10 @@ name|llist
 modifier|*
 name|missing
 decl_stmt|;
-name|size_t
+name|off_t
 name|min_perm_size
 init|=
-operator|(
-name|size_t
-operator|)
-operator|-
-literal|1
+literal|0
 decl_stmt|,
 name|perm_size
 decl_stmt|;
@@ -2404,6 +2400,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+name|min_perm_size
+operator|||
 name|min_perm_size
 operator|>
 name|perm_size

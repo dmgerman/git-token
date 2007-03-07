@@ -432,6 +432,25 @@ endif|#
 directive|endif
 end_endif
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|PRIuMAX
+end_ifndef
+
+begin_define
+DECL|macro|PRIuMAX
+define|#
+directive|define
+name|PRIuMAX
+value|"llu"
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_ifdef
 ifdef|#
 directive|ifdef

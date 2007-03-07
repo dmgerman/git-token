@@ -3908,8 +3908,7 @@ name|pack_window
 modifier|*
 name|win
 parameter_list|,
-name|unsigned
-name|long
+name|off_t
 name|offset
 parameter_list|)
 block|{
@@ -3961,8 +3960,7 @@ modifier|*
 modifier|*
 name|w_cursor
 parameter_list|,
-name|unsigned
-name|long
+name|off_t
 name|offset
 parameter_list|,
 name|unsigned
@@ -6032,8 +6030,7 @@ end_function
 begin_function
 DECL|function|get_delta_base
 specifier|static
-name|unsigned
-name|long
+name|off_t
 name|get_delta_base
 parameter_list|(
 name|struct
@@ -6047,8 +6044,7 @@ modifier|*
 modifier|*
 name|w_curs
 parameter_list|,
-name|unsigned
-name|long
+name|off_t
 modifier|*
 name|curpos
 parameter_list|,
@@ -6056,8 +6052,7 @@ name|enum
 name|object_type
 name|type
 parameter_list|,
-name|unsigned
-name|long
+name|off_t
 name|delta_obj_offset
 parameter_list|)
 block|{
@@ -6078,8 +6073,7 @@ argument_list|,
 name|NULL
 argument_list|)
 decl_stmt|;
-name|unsigned
-name|long
+name|off_t
 name|base_offset
 decl_stmt|;
 comment|/* use_pack() assured us we have [base_info, base_info + 20) 	 * as a range that we can look at without walking off the 	 * end of the mapped window.  Its actually the hash size 	 * that is assured.  An OFS_DELTA longer than the hash size 	 * is stupid, as then a REF_DELTA would be smaller to store. 	 */
@@ -6253,8 +6247,7 @@ name|packed_git
 modifier|*
 name|p
 parameter_list|,
-name|unsigned
-name|long
+name|off_t
 name|offset
 parameter_list|,
 name|unsigned
@@ -6282,16 +6275,14 @@ modifier|*
 modifier|*
 name|w_curs
 parameter_list|,
-name|unsigned
-name|long
+name|off_t
 name|curpos
 parameter_list|,
 name|enum
 name|object_type
 name|type
 parameter_list|,
-name|unsigned
-name|long
+name|off_t
 name|obj_offset
 parameter_list|,
 name|unsigned
@@ -6300,8 +6291,7 @@ modifier|*
 name|sizep
 parameter_list|)
 block|{
-name|unsigned
-name|long
+name|off_t
 name|base_offset
 decl_stmt|;
 name|base_offset
@@ -6546,8 +6536,7 @@ modifier|*
 modifier|*
 name|w_curs
 parameter_list|,
-name|unsigned
-name|long
+name|off_t
 modifier|*
 name|curpos
 parameter_list|,
@@ -6637,8 +6626,7 @@ name|packed_git
 modifier|*
 name|p
 parameter_list|,
-name|unsigned
-name|long
+name|off_t
 name|obj_offset
 parameter_list|,
 name|unsigned
@@ -6669,10 +6657,11 @@ name|w_curs
 init|=
 name|NULL
 decl_stmt|;
+name|off_t
+name|curpos
+decl_stmt|;
 name|unsigned
 name|long
-name|curpos
-decl_stmt|,
 name|dummy
 decl_stmt|;
 name|unsigned
@@ -6880,8 +6869,7 @@ name|packed_git
 modifier|*
 name|p
 parameter_list|,
-name|unsigned
-name|long
+name|off_t
 name|obj_offset
 parameter_list|,
 name|unsigned
@@ -6900,7 +6888,8 @@ decl_stmt|;
 name|unsigned
 name|long
 name|size
-decl_stmt|,
+decl_stmt|;
+name|off_t
 name|curpos
 init|=
 name|obj_offset
@@ -7020,8 +7009,7 @@ modifier|*
 modifier|*
 name|w_curs
 parameter_list|,
-name|unsigned
-name|long
+name|off_t
 name|curpos
 parameter_list|,
 name|unsigned
@@ -7198,16 +7186,14 @@ modifier|*
 modifier|*
 name|w_curs
 parameter_list|,
-name|unsigned
-name|long
+name|off_t
 name|curpos
 parameter_list|,
 name|unsigned
 name|long
 name|delta_size
 parameter_list|,
-name|unsigned
-name|long
+name|off_t
 name|obj_offset
 parameter_list|,
 name|enum
@@ -7234,7 +7220,8 @@ decl_stmt|;
 name|unsigned
 name|long
 name|base_size
-decl_stmt|,
+decl_stmt|;
+name|off_t
 name|base_offset
 decl_stmt|;
 name|base_offset
@@ -7275,8 +7262,14 @@ name|base
 condition|)
 name|die
 argument_list|(
-literal|"failed to read delta base object at %lu from %s"
+literal|"failed to read delta base object"
+literal|" at %"
+name|PRIuMAX
+literal|" from %s"
 argument_list|,
+operator|(
+name|uintmax_t
+operator|)
 name|base_offset
 argument_list|,
 name|p
@@ -7349,8 +7342,7 @@ name|packed_git
 modifier|*
 name|p
 parameter_list|,
-name|unsigned
-name|long
+name|off_t
 name|obj_offset
 parameter_list|,
 name|enum
@@ -7371,8 +7363,7 @@ name|w_curs
 init|=
 name|NULL
 decl_stmt|;
-name|unsigned
-name|long
+name|off_t
 name|curpos
 init|=
 name|obj_offset
@@ -7589,8 +7580,7 @@ end_function
 
 begin_function
 DECL|function|find_pack_entry_one
-name|unsigned
-name|long
+name|off_t
 name|find_pack_entry_one
 parameter_list|(
 specifier|const
@@ -7877,8 +7867,7 @@ name|packed_git
 modifier|*
 name|p
 decl_stmt|;
-name|unsigned
-name|long
+name|off_t
 name|offset
 decl_stmt|;
 name|prepare_packed_git
