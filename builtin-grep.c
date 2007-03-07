@@ -760,6 +760,12 @@ return|;
 block|}
 end_function
 
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|__unix__
+end_ifdef
+
 begin_function
 DECL|function|exec_grep
 specifier|static
@@ -1581,6 +1587,11 @@ name|hit
 return|;
 block|}
 end_function
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_function
 DECL|function|grep_cache
