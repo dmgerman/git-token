@@ -2178,8 +2178,7 @@ operator|&
 name|SHOWN
 operator|)
 condition|)
-block|{
-name|warn
+name|die
 argument_list|(
 literal|"ref '%s' is excluded by the rev-list options"
 argument_list|,
@@ -2188,8 +2187,6 @@ operator|->
 name|name
 argument_list|)
 expr_stmt|;
-continue|continue;
-block|}
 name|write_or_die
 argument_list|(
 name|bundle_fd
