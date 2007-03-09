@@ -1759,6 +1759,8 @@ name|path
 argument_list|,
 name|O_CREAT
 operator||
+name|O_EXCL
+operator||
 name|O_WRONLY
 argument_list|,
 literal|0666
@@ -1774,9 +1776,14 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"Could not write to '%s'"
+literal|"Could not create '%s': %s"
 argument_list|,
 name|path
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
 argument_list|)
 return|;
 comment|/* write signature */
