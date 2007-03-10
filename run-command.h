@@ -23,6 +23,9 @@ block|,
 DECL|enumerator|ERR_RUN_COMMAND_EXEC
 name|ERR_RUN_COMMAND_EXEC
 block|,
+DECL|enumerator|ERR_RUN_COMMAND_PIPE
+name|ERR_RUN_COMMAND_PIPE
+block|,
 DECL|enumerator|ERR_RUN_COMMAND_WAITPID
 name|ERR_RUN_COMMAND_WAITPID
 block|,
@@ -53,6 +56,16 @@ decl_stmt|;
 DECL|member|pid
 name|pid_t
 name|pid
+decl_stmt|;
+DECL|member|in
+name|int
+name|in
+decl_stmt|;
+DECL|member|close_in
+name|unsigned
+name|close_in
+range|:
+literal|1
 decl_stmt|;
 DECL|member|no_stdin
 name|unsigned
