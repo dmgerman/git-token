@@ -974,6 +974,8 @@ sizeof|sizeof
 argument_list|(
 name|cwd
 argument_list|)
+operator|-
+literal|1
 argument_list|)
 operator|||
 name|cwd
