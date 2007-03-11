@@ -4900,6 +4900,11 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+name|adjust_shared_perm
+argument_list|(
+name|log_file
+argument_list|)
+expr_stmt|;
 name|msglen
 operator|=
 literal|0
