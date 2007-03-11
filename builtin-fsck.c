@@ -129,6 +129,30 @@ index|]
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|errors_found
+specifier|static
+name|int
+name|errors_found
+decl_stmt|;
+end_decl_stmt
+
+begin_define
+DECL|macro|ERROR_OBJECT
+define|#
+directive|define
+name|ERROR_OBJECT
+value|01
+end_define
+
+begin_define
+DECL|macro|ERROR_REACHABLE
+define|#
+directive|define
+name|ERROR_REACHABLE
+value|02
+end_define
+
 begin_ifdef
 ifdef|#
 directive|ifdef
@@ -279,6 +303,10 @@ argument_list|,
 name|err
 argument_list|)
 expr_stmt|;
+name|errors_found
+operator||=
+name|ERROR_OBJECT
+expr_stmt|;
 name|objreport
 argument_list|(
 name|obj
@@ -387,11 +415,13 @@ condition|)
 block|{
 if|if
 condition|(
-name|has_sha1_file
+name|has_sha1_pack
 argument_list|(
 name|obj
 operator|->
 name|sha1
+argument_list|,
+name|NULL
 argument_list|)
 condition|)
 return|return;
@@ -414,6 +444,10 @@ operator|->
 name|sha1
 argument_list|)
 argument_list|)
+expr_stmt|;
+name|errors_found
+operator||=
+name|ERROR_REACHABLE
 expr_stmt|;
 return|return;
 block|}
@@ -514,6 +548,10 @@ operator|->
 name|sha1
 argument_list|)
 argument_list|)
+expr_stmt|;
+name|errors_found
+operator||=
+name|ERROR_REACHABLE
 expr_stmt|;
 block|}
 block|}
@@ -1581,6 +1619,11 @@ condition|(
 operator|!
 name|obj
 condition|)
+block|{
+name|errors_found
+operator||=
+name|ERROR_OBJECT
+expr_stmt|;
 return|return
 name|error
 argument_list|(
@@ -1592,6 +1635,7 @@ name|sha1
 argument_list|)
 argument_list|)
 return|;
+block|}
 if|if
 condition|(
 name|obj
@@ -2766,6 +2810,19 @@ return|;
 block|}
 end_function
 
+begin_decl_stmt
+DECL|variable|fsck_usage
+specifier|static
+specifier|const
+name|char
+name|fsck_usage
+index|[]
+init|=
+literal|"git-fsck [--tags] [--root] [[--unreachable] [--cache] [--full] "
+literal|"[--strict]<head-sha1>*]"
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|cmd_fsck
 name|int
@@ -2793,6 +2850,10 @@ decl_stmt|;
 name|track_object_refs
 operator|=
 literal|1
+expr_stmt|;
+name|errors_found
+operator|=
+literal|0
 expr_stmt|;
 for|for
 control|(
@@ -2929,7 +2990,7 @@ literal|'-'
 condition|)
 name|usage
 argument_list|(
-literal|"git-fsck [--tags] [--root] [[--unreachable] [--cache] [--full] [--strict]<head-sha1>*]"
+name|fsck_usage
 argument_list|)
 expr_stmt|;
 block|}
@@ -3297,7 +3358,7 @@ name|check_connectivity
 argument_list|()
 expr_stmt|;
 return|return
-literal|0
+name|errors_found
 return|;
 block|}
 end_function
