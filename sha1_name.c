@@ -3308,6 +3308,7 @@ end_define
 
 begin_function
 DECL|function|get_sha1_oneline
+specifier|static
 name|int
 name|get_sha1_oneline
 parameter_list|(
@@ -3337,12 +3338,11 @@ decl_stmt|,
 modifier|*
 name|l
 decl_stmt|;
-name|struct
-name|commit
-modifier|*
-name|commit
+name|int
+name|retval
 init|=
-name|NULL
+operator|-
+literal|1
 decl_stmt|;
 if|if
 condition|(
@@ -3426,6 +3426,11 @@ name|char
 modifier|*
 name|p
 decl_stmt|;
+name|struct
+name|commit
+modifier|*
+name|commit
+decl_stmt|;
 name|commit
 operator|=
 name|pop_most_recent_commit
@@ -3436,12 +3441,6 @@ argument_list|,
 name|ONELINE_SEEN
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|commit
-condition|)
-break|break;
 name|parse_object
 argument_list|(
 name|commit
@@ -3497,6 +3496,10 @@ operator|.
 name|sha1
 argument_list|)
 expr_stmt|;
+name|retval
+operator|=
+literal|0
+expr_stmt|;
 break|break;
 block|}
 block|}
@@ -3529,9 +3532,7 @@ name|ONELINE_SEEN
 argument_list|)
 expr_stmt|;
 return|return
-name|commit
-operator|==
-name|NULL
+name|retval
 return|;
 block|}
 end_function
