@@ -83,6 +83,12 @@ name|no_stdin
 range|:
 literal|1
 decl_stmt|;
+DECL|member|no_stdout
+name|unsigned
+name|no_stdout
+range|:
+literal|1
+decl_stmt|;
 DECL|member|git_cmd
 name|unsigned
 name|git_cmd
