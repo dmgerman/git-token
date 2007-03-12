@@ -1841,7 +1841,7 @@ name|char
 modifier|*
 name|sender
 init|=
-literal|"git-send-pack"
+literal|"send-pack"
 decl_stmt|;
 if|if
 condition|(
@@ -1863,7 +1863,7 @@ argument_list|)
 condition|)
 name|sender
 operator|=
-literal|"git-http-push"
+literal|"http-push"
 expr_stmt|;
 elseif|else
 if|if
@@ -1934,7 +1934,7 @@ name|run_command_v_opt
 argument_list|(
 name|argv
 argument_list|,
-literal|0
+name|RUN_GIT_CMD
 argument_list|)
 expr_stmt|;
 if|if
