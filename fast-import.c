@@ -5681,7 +5681,9 @@ name|grow_tree_content
 argument_list|(
 name|t
 argument_list|,
-literal|8
+name|t
+operator|->
+name|entry_count
 argument_list|)
 expr_stmt|;
 name|t
@@ -7003,7 +7005,9 @@ name|grow_tree_content
 argument_list|(
 name|t
 argument_list|,
-literal|8
+name|t
+operator|->
+name|entry_count
 argument_list|)
 expr_stmt|;
 name|e
