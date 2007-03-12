@@ -5762,10 +5762,6 @@ name|to_atom
 argument_list|(
 name|c
 argument_list|,
-operator|(
-name|unsigned
-name|short
-operator|)
 name|strlen
 argument_list|(
 name|c
@@ -7023,10 +7019,6 @@ name|to_atom
 argument_list|(
 name|p
 argument_list|,
-operator|(
-name|unsigned
-name|short
-operator|)
 name|n
 argument_list|)
 expr_stmt|;
