@@ -1148,6 +1148,18 @@ name|tree_difference
 operator|=
 name|diff
 expr_stmt|;
+if|if
+condition|(
+name|tree_difference
+operator|==
+name|REV_TREE_DIFFERENT
+condition|)
+name|options
+operator|->
+name|has_changes
+operator|=
+literal|1
+expr_stmt|;
 block|}
 end_function
 
@@ -1195,6 +1207,12 @@ name|tree_difference
 operator|=
 name|REV_TREE_DIFFERENT
 expr_stmt|;
+name|options
+operator|->
+name|has_changes
+operator|=
+literal|1
+expr_stmt|;
 block|}
 end_function
 
@@ -1238,6 +1256,14 @@ return|;
 name|tree_difference
 operator|=
 name|REV_TREE_SAME
+expr_stmt|;
+name|revs
+operator|->
+name|pruning
+operator|.
+name|has_changes
+operator|=
+literal|0
 expr_stmt|;
 if|if
 condition|(
@@ -1360,6 +1386,14 @@ expr_stmt|;
 name|tree_difference
 operator|=
 name|REV_TREE_SAME
+expr_stmt|;
+name|revs
+operator|->
+name|pruning
+operator|.
+name|has_changes
+operator|=
+literal|0
 expr_stmt|;
 name|retval
 operator|=
@@ -2704,6 +2738,14 @@ operator|->
 name|pruning
 operator|.
 name|recursive
+operator|=
+literal|1
+expr_stmt|;
+name|revs
+operator|->
+name|pruning
+operator|.
+name|quiet
 operator|=
 literal|1
 expr_stmt|;
