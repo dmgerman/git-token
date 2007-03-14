@@ -2979,6 +2979,10 @@ name|uint32_t
 modifier|*
 name|index_base
 decl_stmt|;
+DECL|member|mtime
+name|time_t
+name|mtime
+decl_stmt|;
 DECL|member|index_size
 name|off_t
 name|index_size
