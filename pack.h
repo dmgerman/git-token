@@ -76,7 +76,7 @@ struct|;
 end_struct
 
 begin_comment
-comment|/*  * Packed object index header  *  * struct pack_idx_header {  * 	uint32_t idx_signature;  *	uint32_t idx_version;  * };  *  * Note: this header isn't active yet.  In future versions of git  * we may change the index file format.  At that time we would start  * the first four bytes of the new index format with this signature,  * as all older git binaries would find this value illegal and abort  * reading the file.  *  * This is the case because the number of objects in a packfile  * cannot exceed 1,431,660,000 as every object would need at least  * 3 bytes of data and the overall packfile cannot exceed 4 GiB due  * to the 32 bit offsets used by the index.  Clearly the signature  * exceeds this maximum.  *  * Very old git binaries will also compare the first 4 bytes to the  * next 4 bytes in the index and abort with a "non-monotonic index"  * error if the second 4 byte word is smaller than the first 4  * byte word.  This would be true in the proposed future index  * format as idx_signature would be greater than idx_version.  */
+comment|/*  * The first four bytes of index formats later than version 1 should  * start with this signature, as all older git binaries would find this  * value illegal and abort reading the file.  *  * This is the case because the number of objects in a packfile  * cannot exceed 1,431,660,000 as every object would need at least  * 3 bytes of data and the overall packfile cannot exceed 4 GiB with  * version 1 of the index file due to the offsets limited to 32 bits.  * Clearly the signature exceeds this maximum.  *  * Very old git binaries will also compare the first 4 bytes to the  * next 4 bytes in the index and abort with a "non-monotonic index"  * error if the second 4 byte word is smaller than the first 4  * byte word.  This would be true in the proposed future index  * format as idx_signature would be greater than idx_version.  */
 end_comment
 
 begin_define
@@ -91,6 +91,27 @@ begin_comment
 DECL|macro|PACK_IDX_SIGNATURE
 comment|/* "\377tOc" */
 end_comment
+
+begin_comment
+comment|/*  * Packed object index header  */
+end_comment
+
+begin_struct
+DECL|struct|pack_idx_header
+struct|struct
+name|pack_idx_header
+block|{
+DECL|member|idx_signature
+name|uint32_t
+name|idx_signature
+decl_stmt|;
+DECL|member|idx_version
+name|uint32_t
+name|idx_version
+decl_stmt|;
+block|}
+struct|;
+end_struct
 
 begin_function_decl
 specifier|extern
