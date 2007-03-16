@@ -1655,7 +1655,7 @@ condition|)
 block|{
 name|git_commit_encoding
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|value
 argument_list|)
@@ -1677,7 +1677,7 @@ condition|)
 block|{
 name|git_log_output_encoding
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|value
 argument_list|)
