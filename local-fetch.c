@@ -360,20 +360,20 @@ condition|)
 block|{
 if|if
 condition|(
+operator|!
 name|warn_if_not_exists
 condition|)
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-literal|"does not exist %s\n"
-argument_list|,
-name|source
-argument_list|)
-expr_stmt|;
 return|return
 operator|-
 literal|1
+return|;
+return|return
+name|error
+argument_list|(
+literal|"does not exist %s"
+argument_list|,
+name|source
+argument_list|)
 return|;
 block|}
 block|}
@@ -410,11 +410,10 @@ return|return
 operator|-
 literal|1
 return|;
-name|fprintf
+return|return
+name|error
 argument_list|(
-name|stderr
-argument_list|,
-literal|"cannot stat %s: %s\n"
+literal|"cannot stat %s: %s"
 argument_list|,
 name|source
 argument_list|,
@@ -423,10 +422,6 @@ argument_list|(
 name|errno
 argument_list|)
 argument_list|)
-expr_stmt|;
-return|return
-operator|-
-literal|1
 return|;
 block|}
 if|if
@@ -495,18 +490,13 @@ return|return
 operator|-
 literal|1
 return|;
-name|fprintf
+return|return
+name|error
 argument_list|(
-name|stderr
-argument_list|,
-literal|"cannot open %s\n"
+literal|"cannot open %s"
 argument_list|,
 name|source
 argument_list|)
-expr_stmt|;
-return|return
-operator|-
-literal|1
 return|;
 block|}
 name|ofd
@@ -531,23 +521,18 @@ operator|<
 literal|0
 condition|)
 block|{
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-literal|"cannot open %s\n"
-argument_list|,
-name|dest
-argument_list|)
-expr_stmt|;
 name|close
 argument_list|(
 name|ifd
 argument_list|)
 expr_stmt|;
 return|return
-operator|-
-literal|1
+name|error
+argument_list|(
+literal|"cannot open %s"
+argument_list|,
+name|dest
+argument_list|)
 return|;
 block|}
 name|status
@@ -568,16 +553,14 @@ if|if
 condition|(
 name|status
 condition|)
-name|fprintf
+return|return
+name|error
 argument_list|(
-name|stderr
-argument_list|,
-literal|"cannot write %s\n"
+literal|"cannot write %s"
 argument_list|,
 name|dest
 argument_list|)
-expr_stmt|;
-else|else
+return|;
 name|pull_say
 argument_list|(
 literal|"copy %s\n"
@@ -586,21 +569,16 @@ name|hex
 argument_list|)
 expr_stmt|;
 return|return
-name|status
+literal|0
 return|;
 block|}
-name|fprintf
+return|return
+name|error
 argument_list|(
-name|stderr
-argument_list|,
-literal|"failed to copy %s with given copy methods.\n"
+literal|"failed to copy %s with given copy methods."
 argument_list|,
 name|hex
 argument_list|)
-expr_stmt|;
-return|return
-operator|-
-literal|1
 return|;
 block|}
 end_function
@@ -1045,18 +1023,13 @@ argument_list|(
 name|ifd
 argument_list|)
 expr_stmt|;
-name|fprintf
+return|return
+name|error
 argument_list|(
-name|stderr
-argument_list|,
-literal|"cannot open %s\n"
+literal|"cannot open %s"
 argument_list|,
 name|filename
 argument_list|)
-expr_stmt|;
-return|return
-operator|-
-literal|1
 return|;
 block|}
 if|if
@@ -1085,18 +1058,13 @@ argument_list|(
 name|ifd
 argument_list|)
 expr_stmt|;
-name|fprintf
+return|return
+name|error
 argument_list|(
-name|stderr
-argument_list|,
-literal|"cannot read from %s\n"
+literal|"cannot read from %s"
 argument_list|,
 name|filename
 argument_list|)
-expr_stmt|;
-return|return
-operator|-
-literal|1
 return|;
 block|}
 name|close
