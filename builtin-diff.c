@@ -1080,6 +1080,11 @@ name|nongit
 init|=
 literal|0
 decl_stmt|;
+name|int
+name|result
+init|=
+literal|0
+decl_stmt|;
 comment|/* 	 * We could get N tree-ish in the rev.pending_objects list. 	 * Also there could be M blobs there, and P pathspecs. 	 * 	 * N=0, M=0: 	 *	cache vs files (diff-files) 	 * N=0, M=2: 	 *      compare two random blobs.  P must be zero. 	 * N=0, M=1, P=1: 	 *	compare a blob with a working tree file. 	 * 	 * N=1, M=0: 	 *      tree vs cache (diff-index --cached) 	 * 	 * N=2, M=0: 	 *      tree vs tree (diff-tree) 	 * 	 * Other cases are errors. 	 */
 name|prefix
 operator|=
@@ -1558,7 +1563,8 @@ block|{
 case|case
 literal|0
 case|:
-return|return
+name|result
+operator|=
 name|run_diff_files_cmd
 argument_list|(
 operator|&
@@ -1568,7 +1574,7 @@ name|argc
 argument_list|,
 name|argv
 argument_list|)
-return|;
+expr_stmt|;
 break|break;
 case|case
 literal|1
@@ -1584,7 +1590,8 @@ argument_list|(
 name|builtin_diff_usage
 argument_list|)
 expr_stmt|;
-return|return
+name|result
+operator|=
 name|builtin_diff_b_f
 argument_list|(
 operator|&
@@ -1598,7 +1605,7 @@ name|blob
 argument_list|,
 name|path
 argument_list|)
-return|;
+expr_stmt|;
 break|break;
 case|case
 literal|2
@@ -1612,7 +1619,8 @@ argument_list|(
 name|builtin_diff_usage
 argument_list|)
 expr_stmt|;
-return|return
+name|result
+operator|=
 name|builtin_diff_blobs
 argument_list|(
 operator|&
@@ -1624,7 +1632,7 @@ name|argv
 argument_list|,
 name|blob
 argument_list|)
-return|;
+expr_stmt|;
 break|break;
 default|default:
 name|usage
@@ -1651,7 +1659,8 @@ name|ents
 operator|==
 literal|1
 condition|)
-return|return
+name|result
+operator|=
 name|builtin_diff_index
 argument_list|(
 operator|&
@@ -1661,7 +1670,7 @@ name|argc
 argument_list|,
 name|argv
 argument_list|)
-return|;
+expr_stmt|;
 elseif|else
 if|if
 condition|(
@@ -1669,7 +1678,8 @@ name|ents
 operator|==
 literal|2
 condition|)
-return|return
+name|result
+operator|=
 name|builtin_diff_tree
 argument_list|(
 operator|&
@@ -1681,7 +1691,7 @@ name|argv
 argument_list|,
 name|ent
 argument_list|)
-return|;
+expr_stmt|;
 elseif|else
 if|if
 condition|(
@@ -1716,7 +1726,8 @@ index|[
 literal|2
 index|]
 expr_stmt|;
-return|return
+name|result
+operator|=
 name|builtin_diff_tree
 argument_list|(
 operator|&
@@ -1728,10 +1739,11 @@ name|argv
 argument_list|,
 name|ent
 argument_list|)
-return|;
+expr_stmt|;
 block|}
 else|else
-return|return
+name|result
+operator|=
 name|builtin_diff_combined
 argument_list|(
 operator|&
@@ -1745,12 +1757,26 @@ name|ent
 argument_list|,
 name|ents
 argument_list|)
-return|;
-name|usage
-argument_list|(
-name|builtin_diff_usage
-argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|rev
+operator|.
+name|diffopt
+operator|.
+name|exit_with_status
+condition|)
+name|result
+operator|=
+name|rev
+operator|.
+name|diffopt
+operator|.
+name|has_changes
+expr_stmt|;
+return|return
+name|result
+return|;
 block|}
 end_function
 

@@ -1067,6 +1067,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * The goal is to get REV_TREE_NEW as the result only if the  * diff consists of all '+' (and no other changes), and  * REV_TREE_DIFFERENT otherwise (of course if the trees are  * the same we want REV_TREE_SAME).  That means that once we  * get to REV_TREE_DIFFERENT, we do not have to look any further.  */
+end_comment
+
 begin_decl_stmt
 DECL|variable|tree_difference
 specifier|static
@@ -1144,6 +1148,18 @@ name|tree_difference
 operator|=
 name|diff
 expr_stmt|;
+if|if
+condition|(
+name|tree_difference
+operator|==
+name|REV_TREE_DIFFERENT
+condition|)
+name|options
+operator|->
+name|has_changes
+operator|=
+literal|1
+expr_stmt|;
 block|}
 end_function
 
@@ -1191,6 +1207,12 @@ name|tree_difference
 operator|=
 name|REV_TREE_DIFFERENT
 expr_stmt|;
+name|options
+operator|->
+name|has_changes
+operator|=
+literal|1
+expr_stmt|;
 block|}
 end_function
 
@@ -1234,6 +1256,14 @@ return|;
 name|tree_difference
 operator|=
 name|REV_TREE_SAME
+expr_stmt|;
+name|revs
+operator|->
+name|pruning
+operator|.
+name|has_changes
+operator|=
+literal|0
 expr_stmt|;
 if|if
 condition|(
@@ -1355,6 +1385,14 @@ literal|0
 expr_stmt|;
 name|tree_difference
 operator|=
+name|REV_TREE_SAME
+expr_stmt|;
+name|revs
+operator|->
+name|pruning
+operator|.
+name|has_changes
+operator|=
 literal|0
 expr_stmt|;
 name|retval
@@ -1385,8 +1423,11 @@ name|retval
 operator|>=
 literal|0
 operator|&&
-operator|!
+operator|(
 name|tree_difference
+operator|==
+name|REV_TREE_SAME
+operator|)
 return|;
 block|}
 end_function
@@ -2697,6 +2738,14 @@ operator|->
 name|pruning
 operator|.
 name|recursive
+operator|=
+literal|1
+expr_stmt|;
+name|revs
+operator|->
+name|pruning
+operator|.
+name|quiet
 operator|=
 literal|1
 expr_stmt|;
