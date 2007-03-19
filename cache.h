@@ -1605,6 +1605,13 @@ end_decl_stmt
 
 begin_decl_stmt
 specifier|extern
+name|size_t
+name|delta_base_cache_limit
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
 name|int
 name|auto_crlf
 decl_stmt|;

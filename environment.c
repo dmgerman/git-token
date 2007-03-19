@@ -180,6 +180,19 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|delta_base_cache_limit
+name|size_t
+name|delta_base_cache_limit
+init|=
+literal|16
+operator|*
+literal|1024
+operator|*
+literal|1024
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|pager_in_use
 name|int
 name|pager_in_use
