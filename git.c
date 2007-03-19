@@ -1452,6 +1452,14 @@ name|RUN_SETUP
 block|}
 block|,
 block|{
+literal|"gc"
+block|,
+name|cmd_gc
+block|,
+name|RUN_SETUP
+block|}
+block|,
+block|{
 literal|"get-tar-commit-id"
 block|,
 name|cmd_get_tar_commit_id
