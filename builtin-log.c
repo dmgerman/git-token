@@ -213,7 +213,7 @@ argument_list|)
 condition|)
 name|git_log_output_encoding
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|arg
 argument_list|)
