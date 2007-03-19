@@ -7625,8 +7625,8 @@ operator|)
 expr_stmt|;
 return|return
 name|hash
-operator|&
-literal|0xff
+operator|%
+name|MAX_DELTA_CACHE
 return|;
 block|}
 end_function
@@ -7917,10 +7917,7 @@ name|delta_base_cache_limit
 operator|&&
 name|i
 operator|<
-name|ARRAY_SIZE
-argument_list|(
-name|delta_base_cache
-argument_list|)
+name|MAX_DELTA_CACHE
 condition|;
 name|i
 operator|++
@@ -7961,10 +7958,7 @@ name|delta_base_cache_limit
 operator|&&
 name|i
 operator|<
-name|ARRAY_SIZE
-argument_list|(
-name|delta_base_cache
-argument_list|)
+name|MAX_DELTA_CACHE
 condition|;
 name|i
 operator|++
