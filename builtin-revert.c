@@ -1412,9 +1412,6 @@ modifier|*
 name|oneline
 decl_stmt|,
 modifier|*
-name|encoding
-decl_stmt|,
-modifier|*
 name|reencoded_message
 init|=
 name|NULL
@@ -1423,6 +1420,9 @@ specifier|const
 name|char
 modifier|*
 name|message
+decl_stmt|,
+modifier|*
+name|encoding
 decl_stmt|;
 name|git_config
 argument_list|(
