@@ -29,7 +29,7 @@ name|char
 modifier|*
 name|arguments
 index|[
-literal|8
+literal|9
 index|]
 decl_stmt|;
 end_decl_stmt
@@ -211,6 +211,13 @@ literal|7
 index|]
 operator|=
 literal|""
+expr_stmt|;
+name|arguments
+index|[
+literal|8
+index|]
+operator|=
+name|NULL
 expr_stmt|;
 name|found
 operator|=
