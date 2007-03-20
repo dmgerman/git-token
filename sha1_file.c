@@ -10027,6 +10027,7 @@ specifier|static
 name|void
 name|write_sha1_file_prepare
 parameter_list|(
+specifier|const
 name|void
 modifier|*
 name|buf
@@ -10558,6 +10559,7 @@ DECL|function|hash_sha1_file
 name|int
 name|hash_sha1_file
 parameter_list|(
+specifier|const
 name|void
 modifier|*
 name|buf
