@@ -592,7 +592,11 @@ index|]
 decl_stmt|;
 name|int
 name|m
+init|=
+operator|-
+literal|1
 decl_stmt|;
+comment|/* signals that we haven't called strncmp() */
 if|if
 condition|(
 name|baselen
@@ -639,7 +643,13 @@ name|matchlen
 operator|-=
 name|baselen
 expr_stmt|;
-comment|/* 		 * Does match sort strictly earlier than path with their 		 * common parts? 		 */
+if|if
+condition|(
+name|never_interesting
+condition|)
+block|{
+comment|/* 			 * We have not seen any match that sorts later 			 * than the current path. 			 */
+comment|/* 			 * Does match sort strictly earlier than path 			 * with their common parts? 			 */
 name|m
 operator|=
 name|strncmp
@@ -666,11 +676,12 @@ operator|<
 literal|0
 condition|)
 continue|continue;
-comment|/* 		 * If we come here even once, that means there is at 		 * least one pathspec that would sort equal to or 		 * later than the path we are currently looking at. 		 * In other words, if we have never reached this point 		 * after iterating all pathspecs, it means all 		 * pathspecs are either outside of base, or inside the 		 * base but sorts strictly earlier than the current 		 * one.  In either case, they will never match the 		 * subsequent entries.  In such a case, we initialized 		 * the variable to -1 and that is what will be 		 * returned, allowing the caller to terminate early. 		 */
+comment|/* 			 * If we come here even once, that means there is at 			 * least one pathspec that would sort equal to or 			 * later than the path we are currently looking at. 			 * In other words, if we have never reached this point 			 * after iterating all pathspecs, it means all 			 * pathspecs are either outside of base, or inside the 			 * base but sorts strictly earlier than the current 			 * one.  In either case, they will never match the 			 * subsequent entries.  In such a case, we initialized 			 * the variable to -1 and that is what will be 			 * returned, allowing the caller to terminate early. 			 */
 name|never_interesting
 operator|=
 literal|0
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|pathlen
@@ -705,6 +716,25 @@ argument_list|)
 condition|)
 continue|continue;
 block|}
+if|if
+condition|(
+name|m
+operator|==
+operator|-
+literal|1
+condition|)
+comment|/* 			 * we cheated and did not do strncmp(), so we do 			 * that here. 			 */
+name|m
+operator|=
+name|strncmp
+argument_list|(
+name|match
+argument_list|,
+name|path
+argument_list|,
+name|pathlen
+argument_list|)
+expr_stmt|;
 comment|/* 		 * If common part matched earlier then it is a hit, 		 * because we rejected the case where path is not a 		 * leading directory and is shorter than match. 		 */
 if|if
 condition|(
