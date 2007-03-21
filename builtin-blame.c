@@ -640,10 +640,11 @@ struct|;
 end_struct
 
 begin_function
-DECL|function|cmp_suspect
+DECL|function|same_suspect
 specifier|static
+specifier|inline
 name|int
-name|cmp_suspect
+name|same_suspect
 parameter_list|(
 name|struct
 name|origin
@@ -659,6 +660,15 @@ block|{
 if|if
 condition|(
 name|a
+operator|==
+name|b
+condition|)
+return|return
+literal|1
+return|;
+if|if
+condition|(
+name|a
 operator|->
 name|commit
 operator|!=
@@ -667,9 +677,10 @@ operator|->
 name|commit
 condition|)
 return|return
-literal|1
+literal|0
 return|;
 return|return
+operator|!
 name|strcmp
 argument_list|(
 name|a
@@ -683,19 +694,6 @@ argument_list|)
 return|;
 block|}
 end_function
-
-begin_define
-DECL|macro|cmp_suspect
-define|#
-directive|define
-name|cmp_suspect
-parameter_list|(
-name|a
-parameter_list|,
-name|b
-parameter_list|)
-value|( ((a)==(b)) ? 0 : cmp_suspect(a,b) )
-end_define
 
 begin_function_decl
 specifier|static
@@ -758,8 +756,7 @@ control|)
 block|{
 if|if
 condition|(
-operator|!
-name|cmp_suspect
+name|same_suspect
 argument_list|(
 name|ent
 operator|->
@@ -3677,7 +3674,8 @@ name|e
 operator|->
 name|guilty
 operator|||
-name|cmp_suspect
+operator|!
+name|same_suspect
 argument_list|(
 name|e
 operator|->
@@ -3779,7 +3777,8 @@ name|e
 operator|->
 name|guilty
 operator|||
-name|cmp_suspect
+operator|!
+name|same_suspect
 argument_list|(
 name|e
 operator|->
@@ -4621,7 +4620,8 @@ name|e
 operator|->
 name|guilty
 operator|||
-name|cmp_suspect
+operator|!
+name|same_suspect
 argument_list|(
 name|e
 operator|->
@@ -4789,8 +4789,7 @@ name|e
 operator|->
 name|guilty
 operator|&&
-operator|!
-name|cmp_suspect
+name|same_suspect
 argument_list|(
 name|e
 operator|->
@@ -4847,8 +4846,7 @@ name|e
 operator|->
 name|guilty
 operator|&&
-operator|!
-name|cmp_suspect
+name|same_suspect
 argument_list|(
 name|e
 operator|->
@@ -5506,7 +5504,8 @@ control|)
 block|{
 if|if
 condition|(
-name|cmp_suspect
+operator|!
+name|same_suspect
 argument_list|(
 name|e
 operator|->
@@ -7100,8 +7099,7 @@ name|next
 control|)
 if|if
 condition|(
-operator|!
-name|cmp_suspect
+name|same_suspect
 argument_list|(
 name|ent
 operator|->
