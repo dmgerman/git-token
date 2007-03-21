@@ -1970,9 +1970,16 @@ name|path_buf
 operator|+
 name|len
 operator|+
+name|tree_entry_len
+argument_list|(
 name|entry
 operator|.
-name|pathlen
+name|path
+argument_list|,
+name|entry
+operator|.
+name|sha1
+argument_list|)
 argument_list|,
 literal|"/"
 argument_list|)

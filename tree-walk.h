@@ -55,10 +55,6 @@ name|unsigned
 name|int
 name|mode
 decl_stmt|;
-DECL|member|pathlen
-name|int
-name|pathlen
-decl_stmt|;
 block|}
 struct|;
 end_struct
