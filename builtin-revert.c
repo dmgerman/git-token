@@ -1664,6 +1664,17 @@ operator|==
 name|REVERT
 condition|)
 block|{
+name|char
+modifier|*
+name|oneline_body
+init|=
+name|strchr
+argument_list|(
+name|oneline
+argument_list|,
+literal|' '
+argument_list|)
+decl_stmt|;
 name|base
 operator|=
 name|commit
@@ -1678,31 +1689,19 @@ name|item
 expr_stmt|;
 name|add_to_msg
 argument_list|(
-literal|"Revert "
+literal|"Revert \""
 argument_list|)
 expr_stmt|;
 name|add_to_msg
 argument_list|(
-name|find_unique_abbrev
-argument_list|(
-name|commit
-operator|->
-name|object
-operator|.
-name|sha1
-argument_list|,
-name|DEFAULT_ABBREV
-argument_list|)
+name|oneline_body
+operator|+
+literal|1
 argument_list|)
 expr_stmt|;
 name|add_to_msg
 argument_list|(
-name|oneline
-argument_list|)
-expr_stmt|;
-name|add_to_msg
-argument_list|(
-literal|"\nThis reverts commit "
+literal|"\"\n\nThis reverts commit "
 argument_list|)
 expr_stmt|;
 name|add_to_msg
