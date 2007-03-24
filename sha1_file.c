@@ -11716,6 +11716,13 @@ operator|&
 name|stream
 argument_list|)
 expr_stmt|;
+name|fchmod
+argument_list|(
+name|local
+argument_list|,
+literal|0444
+argument_list|)
+expr_stmt|;
 name|close
 argument_list|(
 name|local
