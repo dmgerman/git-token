@@ -439,11 +439,7 @@ expr_stmt|;
 if|if
 condition|(
 name|no_head
-condition|)
-continue|continue;
-comment|/* 		 * It is Ok to remove a newly added path, as long as 		 * it is cache-clean. 		 */
-if|if
-condition|(
+operator|||
 name|get_tree_entry
 argument_list|(
 name|head
@@ -455,11 +451,7 @@ argument_list|,
 operator|&
 name|mode
 argument_list|)
-condition|)
-continue|continue;
-comment|/* 		 * Otherwise make sure the version from the HEAD 		 * matches the index. 		 */
-if|if
-condition|(
+operator|||
 name|ce
 operator|->
 name|ce_mode
