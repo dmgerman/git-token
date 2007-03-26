@@ -255,6 +255,11 @@ DECL|member|reverse
 name|reverse
 range|:
 literal|1
+decl_stmt|,
+DECL|member|first_parent_only
+name|first_parent_only
+range|:
+literal|1
 decl_stmt|;
 comment|/* Diff flags */
 DECL|member|diff
