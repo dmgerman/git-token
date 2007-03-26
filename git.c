@@ -561,7 +561,7 @@ decl_stmt|;
 operator|*
 name|argv
 operator|=
-name|malloc
+name|xmalloc
 argument_list|(
 sizeof|sizeof
 argument_list|(
