@@ -680,6 +680,14 @@ name|struct
 name|rev_info
 name|revs
 decl_stmt|;
+name|close
+argument_list|(
+name|lp_pipe
+index|[
+literal|0
+index|]
+argument_list|)
+expr_stmt|;
 name|pack_pipe
 operator|=
 name|fdopen
