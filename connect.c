@@ -2206,6 +2206,16 @@ name|colon
 operator|+
 literal|1
 expr_stmt|;
+if|if
+condition|(
+operator|!
+operator|*
+name|port
+condition|)
+name|port
+operator|=
+literal|"<none>"
+expr_stmt|;
 block|}
 name|memset
 argument_list|(
@@ -2253,9 +2263,11 @@ name|gai
 condition|)
 name|die
 argument_list|(
-literal|"Unable to look up %s (%s)"
+literal|"Unable to look up %s (port %s) (%s)"
 argument_list|,
 name|host
+argument_list|,
+name|port
 argument_list|,
 name|gai_strerror
 argument_list|(
