@@ -11009,9 +11009,16 @@ argument_list|,
 literal|0444
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|close
 argument_list|(
 name|fd
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"unable to write sha1 file"
 argument_list|)
 expr_stmt|;
 name|free
