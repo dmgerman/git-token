@@ -4822,6 +4822,13 @@ name|DEFAULT_ABBREV
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|parents
+index|[
+literal|1
+index|]
+operator|=
+literal|0
+expr_stmt|;
 for|for
 control|(
 name|i
@@ -4868,7 +4875,7 @@ name|i
 operator|-
 literal|1
 argument_list|,
-literal|"%s "
+literal|" %s"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -4889,7 +4896,16 @@ argument_list|,
 name|IPARENTS
 argument_list|,
 name|parents
+operator|+
+literal|1
 argument_list|)
+expr_stmt|;
+name|parents
+index|[
+literal|1
+index|]
+operator|=
+literal|0
 expr_stmt|;
 for|for
 control|(
@@ -4937,7 +4953,7 @@ name|i
 operator|-
 literal|1
 argument_list|,
-literal|"%s "
+literal|" %s"
 argument_list|,
 name|find_unique_abbrev
 argument_list|(
@@ -4960,6 +4976,8 @@ argument_list|,
 name|IPARENTS_ABBREV
 argument_list|,
 name|parents
+operator|+
+literal|1
 argument_list|)
 expr_stmt|;
 for|for
