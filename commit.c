@@ -5174,10 +5174,14 @@ argument_list|(
 name|msg
 operator|+
 name|i
+operator|+
+literal|9
 argument_list|,
 name|eol
 operator|-
 name|i
+operator|-
+literal|9
 argument_list|)
 expr_stmt|;
 name|i
