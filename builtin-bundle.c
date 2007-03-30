@@ -554,7 +554,7 @@ name|sha1
 argument_list|)
 condition|)
 block|{
-name|warn
+name|warning
 argument_list|(
 literal|"unrecognized header: %s"
 argument_list|,
@@ -1810,7 +1810,7 @@ name|SHOWN
 operator|)
 condition|)
 block|{
-name|warn
+name|warning
 argument_list|(
 literal|"ref '%s' is excluded by the rev-list options"
 argument_list|,

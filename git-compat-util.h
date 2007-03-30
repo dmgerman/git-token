@@ -581,7 +581,7 @@ end_empty_stmt
 begin_function_decl
 specifier|extern
 name|void
-name|warn
+name|warning
 parameter_list|(
 specifier|const
 name|char

@@ -7600,7 +7600,7 @@ argument_list|(
 name|lock
 argument_list|)
 expr_stmt|;
-name|warn
+name|warning
 argument_list|(
 literal|"Not updating %s"
 literal|" (new tip %s does not contain %s)"

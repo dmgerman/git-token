@@ -2349,7 +2349,7 @@ operator|->
 name|warned_bad_reflog
 condition|)
 block|{
-name|warn
+name|warning
 argument_list|(
 literal|"reflog of '%s' references pruned commits"
 argument_list|,
