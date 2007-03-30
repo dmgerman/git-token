@@ -1480,6 +1480,9 @@ name|char
 modifier|*
 modifier|*
 name|hdr_data
+parameter_list|,
+name|int
+name|overwrite
 parameter_list|)
 block|{
 name|int
@@ -1514,11 +1517,15 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 operator|!
 name|hdr_data
 index|[
 name|i
 index|]
+operator|||
+name|overwrite
+operator|)
 operator|&&
 operator|!
 name|strncasecmp
@@ -3064,6 +3071,12 @@ parameter_list|(
 name|void
 parameter_list|)
 block|{
+name|char
+name|newline
+index|[]
+init|=
+literal|"\n"
+decl_stmt|;
 name|again
 label|:
 if|if
@@ -3117,7 +3130,7 @@ expr_stmt|;
 block|}
 name|handle_filter
 argument_list|(
-literal|"\n"
+name|newline
 argument_list|)
 expr_stmt|;
 comment|/* skip to the next boundary */
@@ -3170,6 +3183,8 @@ argument_list|(
 name|line
 argument_list|,
 name|p_hdr_data
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 comment|/* eat the blank line after section info */
@@ -3413,6 +3428,8 @@ argument_list|(
 name|cp
 argument_list|,
 name|s_hdr_data
+argument_list|,
+literal|0
 argument_list|)
 operator|)
 operator|!=
@@ -3422,6 +3439,18 @@ return|return
 literal|0
 return|;
 block|}
+comment|/* normalize the log message to UTF-8. */
+if|if
+condition|(
+name|metainfo_charset
+condition|)
+name|convert_to_utf8
+argument_list|(
+name|line
+argument_list|,
+name|charset
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|patchbreak
@@ -3636,21 +3665,10 @@ argument_list|()
 condition|)
 return|return;
 block|}
-comment|/* Unwrap transfer encoding and optionally 		 * normalize the log message to UTF-8. 		 */
+comment|/* Unwrap transfer encoding */
 name|decode_transfer_encoding
 argument_list|(
 name|line
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|metainfo_charset
-condition|)
-name|convert_to_utf8
-argument_list|(
-name|line
-argument_list|,
-name|charset
 argument_list|)
 expr_stmt|;
 switch|switch
@@ -4123,6 +4141,8 @@ argument_list|(
 name|line
 argument_list|,
 name|p_hdr_data
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 name|handle_body
