@@ -456,6 +456,8 @@ argument_list|,
 name|base
 argument_list|,
 name|baselen
+argument_list|,
+name|pathspec
 argument_list|)
 expr_stmt|;
 if|if

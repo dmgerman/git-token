@@ -264,6 +264,12 @@ name|base
 parameter_list|,
 name|int
 name|baselen
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|pathspec
 parameter_list|)
 function_decl|;
 end_function_decl
