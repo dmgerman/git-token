@@ -8115,12 +8115,9 @@ argument_list|)
 expr_stmt|;
 name|index_fd
 operator|=
-name|hold_lock_file_for_update
+name|hold_locked_index
 argument_list|(
 name|lock
-argument_list|,
-name|get_index_file
-argument_list|()
 argument_list|,
 literal|1
 argument_list|)
@@ -8200,7 +8197,7 @@ argument_list|(
 name|index_fd
 argument_list|)
 operator|||
-name|commit_lock_file
+name|commit_locked_index
 argument_list|(
 name|lock
 argument_list|)
