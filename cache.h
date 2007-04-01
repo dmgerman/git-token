@@ -694,14 +694,6 @@ value|"GIT_INDEX_FILE"
 end_define
 
 begin_define
-DECL|macro|INDEX_OUTPUT_ENVIRONMENT
-define|#
-directive|define
-name|INDEX_OUTPUT_ENVIRONMENT
-value|"_GIT_INDEX_OUTPUT"
-end_define
-
-begin_define
 DECL|macro|GRAFT_ENVIRONMENT
 define|#
 directive|define
@@ -1513,6 +1505,18 @@ name|commit_locked_index
 parameter_list|(
 name|struct
 name|lock_file
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|void
+name|set_alternate_index_output
+parameter_list|(
+specifier|const
+name|char
 modifier|*
 parameter_list|)
 function_decl|;
