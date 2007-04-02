@@ -2727,6 +2727,11 @@ name|struct
 name|cache_entry
 modifier|*
 name|ce
+parameter_list|,
+name|struct
+name|unpack_trees_options
+modifier|*
+name|o
 parameter_list|)
 block|{
 name|add_cache_entry
@@ -3426,6 +3431,8 @@ name|stages
 index|[
 name|i
 index|]
+argument_list|,
+name|o
 argument_list|)
 expr_stmt|;
 name|count
@@ -3484,6 +3491,8 @@ operator|+=
 name|keep_entry
 argument_list|(
 name|head
+argument_list|,
+name|o
 argument_list|)
 expr_stmt|;
 block|}
@@ -3497,6 +3506,8 @@ operator|+=
 name|keep_entry
 argument_list|(
 name|remote
+argument_list|,
+name|o
 argument_list|)
 expr_stmt|;
 block|}
@@ -3645,6 +3656,8 @@ return|return
 name|keep_entry
 argument_list|(
 name|current
+argument_list|,
+name|o
 argument_list|)
 return|;
 block|}
@@ -3859,6 +3872,8 @@ return|return
 name|keep_entry
 argument_list|(
 name|old
+argument_list|,
+name|o
 argument_list|)
 return|;
 else|else
@@ -4008,6 +4023,8 @@ return|return
 name|keep_entry
 argument_list|(
 name|old
+argument_list|,
+name|o
 argument_list|)
 return|;
 block|}
