@@ -3548,7 +3548,9 @@ name|src
 index|[
 literal|1
 index|]
-decl_stmt|,
+decl_stmt|;
+name|struct
+name|cache_entry
 modifier|*
 name|newtree
 init|=
@@ -3575,6 +3577,30 @@ operator|->
 name|merge_size
 argument_list|)
 return|;
+if|if
+condition|(
+name|oldtree
+operator|==
+name|o
+operator|->
+name|df_conflict_entry
+condition|)
+name|oldtree
+operator|=
+name|NULL
+expr_stmt|;
+if|if
+condition|(
+name|newtree
+operator|==
+name|o
+operator|->
+name|df_conflict_entry
+condition|)
+name|newtree
+operator|=
+name|NULL
+expr_stmt|;
 if|if
 condition|(
 name|current
@@ -3633,7 +3659,7 @@ argument_list|,
 name|newtree
 argument_list|)
 operator|&&
-comment|/* 18 and 19*/
+comment|/* 18 and 19 */
 name|same
 argument_list|(
 name|current
