@@ -86,6 +86,7 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|cache_errno
+specifier|static
 name|int
 name|cache_errno
 decl_stmt|;

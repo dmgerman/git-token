@@ -1234,12 +1234,9 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"cache_addinfo failed: %s"
+literal|"addinfo_cache failed for path '%s'"
 argument_list|,
-name|strerror
-argument_list|(
-name|cache_errno
-argument_list|)
+name|path
 argument_list|)
 return|;
 return|return

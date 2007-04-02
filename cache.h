@@ -601,13 +601,6 @@ name|active_cache_tree
 decl_stmt|;
 end_decl_stmt
 
-begin_decl_stmt
-specifier|extern
-name|int
-name|cache_errno
-decl_stmt|;
-end_decl_stmt
-
 begin_enum
 DECL|enum|object_type
 enum|enum
