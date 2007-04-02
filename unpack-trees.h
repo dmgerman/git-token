@@ -84,6 +84,10 @@ name|char
 modifier|*
 name|prefix
 decl_stmt|;
+DECL|member|pos
+name|int
+name|pos
+decl_stmt|;
 DECL|member|dir
 name|struct
 name|dir_struct
