@@ -110,10 +110,10 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|write_index
+DECL|variable|update_index
 specifier|static
 name|int
-name|write_index
+name|update_index
 decl_stmt|;
 end_decl_stmt
 
@@ -11358,7 +11358,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|write_index
+name|update_index
 condition|)
 block|{
 if|if
@@ -11521,7 +11521,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|write_index
+name|update_index
 condition|)
 return|return;
 name|ce
@@ -13202,7 +13202,7 @@ name|apply
 operator|=
 literal|0
 expr_stmt|;
-name|write_index
+name|update_index
 operator|=
 name|check_index
 operator|&&
@@ -13210,7 +13210,7 @@ name|apply
 expr_stmt|;
 if|if
 condition|(
-name|write_index
+name|update_index
 operator|&&
 name|newfd
 operator|<
@@ -14212,7 +14212,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|write_index
+name|update_index
 condition|)
 block|{
 if|if
