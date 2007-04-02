@@ -1143,7 +1143,7 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|int
-name|add_file_to_index
+name|add_file_to_cache
 parameter_list|(
 specifier|const
 name|char

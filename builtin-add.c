@@ -1113,7 +1113,7 @@ condition|;
 name|i
 operator|++
 control|)
-name|add_file_to_index
+name|add_file_to_cache
 argument_list|(
 name|dir
 operator|.

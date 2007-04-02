@@ -1794,7 +1794,7 @@ index|]
 operator|.
 name|path
 decl_stmt|;
-name|add_file_to_index
+name|add_file_to_cache
 argument_list|(
 name|path
 argument_list|,
