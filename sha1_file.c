@@ -8517,7 +8517,10 @@ end_function
 
 begin_function
 DECL|function|nth_packed_object_sha1
-name|int
+specifier|const
+name|unsigned
+name|char
+modifier|*
 name|nth_packed_object_sha1
 parameter_list|(
 specifier|const
@@ -8528,11 +8531,6 @@ name|p
 parameter_list|,
 name|uint32_t
 name|n
-parameter_list|,
-name|unsigned
-name|char
-modifier|*
-name|sha1
 parameter_list|)
 block|{
 specifier|const
@@ -8561,13 +8559,9 @@ operator|<=
 name|n
 condition|)
 return|return
-operator|-
-literal|1
+name|NULL
 return|;
-name|hashcpy
-argument_list|(
-name|sha1
-argument_list|,
+return|return
 name|index
 operator|+
 literal|24
@@ -8575,10 +8569,6 @@ operator|*
 name|n
 operator|+
 literal|4
-argument_list|)
-expr_stmt|;
-return|return
-literal|0
 return|;
 block|}
 end_function
