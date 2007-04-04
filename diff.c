@@ -4801,7 +4801,44 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"  Bin\n"
+literal|"  Bin "
+argument_list|)
+expr_stmt|;
+name|printf
+argument_list|(
+literal|"%s%d%s"
+argument_list|,
+name|del_c
+argument_list|,
+name|deleted
+argument_list|,
+name|reset
+argument_list|)
+expr_stmt|;
+name|printf
+argument_list|(
+literal|" -> "
+argument_list|)
+expr_stmt|;
+name|printf
+argument_list|(
+literal|"%s%d%s"
+argument_list|,
+name|add_c
+argument_list|,
+name|added
+argument_list|,
+name|reset
+argument_list|)
+expr_stmt|;
+name|printf
+argument_list|(
+literal|" bytes"
+argument_list|)
+expr_stmt|;
+name|printf
+argument_list|(
+literal|"\n"
 argument_list|)
 expr_stmt|;
 goto|goto
@@ -7104,12 +7141,30 @@ operator|&
 name|mf2
 argument_list|)
 condition|)
+block|{
 name|data
 operator|->
 name|is_binary
 operator|=
 literal|1
 expr_stmt|;
+name|data
+operator|->
+name|added
+operator|=
+name|mf2
+operator|.
+name|size
+expr_stmt|;
+name|data
+operator|->
+name|deleted
+operator|=
+name|mf1
+operator|.
+name|size
+expr_stmt|;
+block|}
 else|else
 block|{
 comment|/* Crazy xdl interfaces.. */
