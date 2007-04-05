@@ -4514,15 +4514,9 @@ argument_list|)
 operator|)
 condition|)
 block|{
-name|ret
-operator|=
-name|error
-argument_list|(
-literal|"Could not open config file!"
-argument_list|)
-expr_stmt|;
+comment|/* no config file means nothing to rename, no error */
 goto|goto
-name|out
+name|unlock_and_out
 goto|;
 block|}
 while|while
@@ -4690,6 +4684,8 @@ argument_list|(
 name|config_file
 argument_list|)
 expr_stmt|;
+name|unlock_and_out
+label|:
 if|if
 condition|(
 name|close
