@@ -4456,9 +4456,11 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-return|return
-literal|1
-return|;
+name|error
+argument_list|(
+literal|"unable to update config-file"
+argument_list|)
+expr_stmt|;
 block|}
 return|return
 literal|0
