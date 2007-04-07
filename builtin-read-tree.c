@@ -456,7 +456,7 @@ name|char
 name|read_tree_usage
 index|[]
 init|=
-literal|"git-read-tree (<sha> | [[-m [--aggressive] | --reset | --prefix=<prefix>] [-u | -i]] [--exclude-per-directory=<gitignore>]<sha1> [<sha2> [<sha3>]])"
+literal|"git-read-tree (<sha> | [[-m [--aggressive] | --reset | --prefix=<prefix>] [-u | -i]] [--exclude-per-directory=<gitignore>] [--index-output=<file>]<sha1> [<sha2> [<sha3>]])"
 decl_stmt|;
 end_decl_stmt
 
@@ -539,13 +539,10 @@ argument_list|)
 expr_stmt|;
 name|newfd
 operator|=
-name|hold_lock_file_for_update
+name|hold_locked_index
 argument_list|(
 operator|&
 name|lock_file
-argument_list|,
-name|get_index_file
-argument_list|()
 argument_list|,
 literal|1
 argument_list|)
@@ -635,6 +632,26 @@ operator|.
 name|index_only
 operator|=
 literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|prefixcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--index-output="
+argument_list|)
+condition|)
+block|{
+name|set_alternate_index_output
+argument_list|(
+name|arg
+operator|+
+literal|15
+argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
@@ -1297,7 +1314,7 @@ argument_list|(
 name|newfd
 argument_list|)
 operator|||
-name|commit_lock_file
+name|commit_locked_index
 argument_list|(
 operator|&
 name|lock_file
