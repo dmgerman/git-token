@@ -1943,6 +1943,16 @@ operator|!
 name|err
 condition|)
 continue|continue;
+name|error
+argument_list|(
+literal|"failed to push to '%s'"
+argument_list|,
+name|uri
+index|[
+name|i
+index|]
+argument_list|)
+expr_stmt|;
 switch|switch
 condition|(
 name|err
