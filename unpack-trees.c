@@ -3722,7 +3722,7 @@ name|nontrivial_merge
 operator|=
 literal|1
 expr_stmt|;
-comment|/* #2, #3, #4, #6, #7, #9, #11. */
+comment|/* #2, #3, #4, #6, #7, #9, #10, #11. */
 name|count
 operator|=
 literal|0
