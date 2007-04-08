@@ -1154,6 +1154,15 @@ operator|.
 name|prefix
 argument_list|)
 expr_stmt|;
+name|opts
+operator|.
+name|pos
+operator|=
+operator|-
+literal|1
+operator|-
+name|pos
+expr_stmt|;
 block|}
 if|if
 condition|(

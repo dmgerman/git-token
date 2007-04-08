@@ -2299,6 +2299,20 @@ operator|!=
 literal|'/'
 condition|)
 continue|continue;
+if|if
+condition|(
+operator|!
+name|ce_stage
+argument_list|(
+name|p
+argument_list|)
+operator|&&
+operator|!
+name|p
+operator|->
+name|ce_mode
+condition|)
+continue|continue;
 name|retval
 operator|=
 operator|-
@@ -2446,6 +2460,19 @@ operator|>=
 literal|0
 condition|)
 block|{
+comment|/* 			 * Found one, but not so fast.  This could 			 * be a marker that says "I was here, but 			 * I am being removed".  Such an entry is 			 * not a part of the resulting tree, and 			 * it is Ok to have a directory at the same 			 * path. 			 */
+if|if
+condition|(
+name|stage
+operator|||
+name|active_cache
+index|[
+name|pos
+index|]
+operator|->
+name|ce_mode
+condition|)
+block|{
 name|retval
 operator|=
 operator|-
@@ -2464,7 +2491,8 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
-comment|/* 		 * Trivial optimization: if we find an entry that 		 * already matches the sub-directory, then we know 		 * we're ok, and we can exit. 		 */
+block|}
+else|else
 name|pos
 operator|=
 operator|-
@@ -2472,6 +2500,7 @@ name|pos
 operator|-
 literal|1
 expr_stmt|;
+comment|/* 		 * Trivial optimization: if we find an entry that 		 * already matches the sub-directory, then we know 		 * we're ok, and we can exit. 		 */
 while|while
 condition|(
 name|pos
@@ -2532,6 +2561,14 @@ name|p
 argument_list|)
 operator|==
 name|stage
+operator|&&
+operator|(
+name|stage
+operator|||
+name|p
+operator|->
+name|ce_mode
+operator|)
 condition|)
 comment|/* p is at the same stage as our entry, and 				 * is a subdirectory of what we are looking 				 * at, so we cannot have conflicts at our 				 * level or anything shorter. 				 */
 return|return
@@ -2571,10 +2608,29 @@ name|int
 name|ok_to_replace
 parameter_list|)
 block|{
-comment|/* 	 * We check if the path is a sub-path of a subsequent pathname 	 * first, since removing those will not change the position 	 * in the array 	 */
 name|int
 name|retval
-init|=
+decl_stmt|;
+comment|/* 	 * When ce is an "I am going away" entry, we allow it to be added 	 */
+if|if
+condition|(
+operator|!
+name|ce_stage
+argument_list|(
+name|ce
+argument_list|)
+operator|&&
+operator|!
+name|ce
+operator|->
+name|ce_mode
+condition|)
+return|return
+literal|0
+return|;
+comment|/* 	 * We check if the path is a sub-path of a subsequent pathname 	 * first, since removing those will not change the position 	 * in the array. 	 */
+name|retval
+operator|=
 name|has_file_name
 argument_list|(
 name|ce
@@ -2583,7 +2639,7 @@ name|pos
 argument_list|,
 name|ok_to_replace
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 comment|/* 	 * Then check if the path might have a clashing sub-directory 	 * before it. 	 */
 return|return
 name|retval
