@@ -762,10 +762,9 @@ decl_stmt|;
 name|int
 name|num_ent
 init|=
-name|num_packed_objects
-argument_list|(
 name|p
-argument_list|)
+operator|->
+name|num_objects
 decl_stmt|;
 name|int
 name|i
@@ -999,10 +998,9 @@ literal|0
 expr_stmt|;
 name|hi
 operator|=
-name|num_packed_objects
-argument_list|(
 name|p
-argument_list|)
+operator|->
+name|num_objects
 operator|+
 literal|1
 expr_stmt|;

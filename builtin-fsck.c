@@ -3154,10 +3154,9 @@ name|i
 decl_stmt|,
 name|num
 init|=
-name|num_packed_objects
-argument_list|(
 name|p
-argument_list|)
+operator|->
+name|num_objects
 decl_stmt|;
 for|for
 control|(

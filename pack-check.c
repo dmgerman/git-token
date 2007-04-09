@@ -212,10 +212,9 @@ expr_stmt|;
 comment|/* Make sure everything reachable from idx is valid.  Since we 	 * have verified that nr_objects matches between idx and pack, 	 * we do not do scan-streaming check on the pack file. 	 */
 name|nr_objects
 operator|=
-name|num_packed_objects
-argument_list|(
 name|p
-argument_list|)
+operator|->
+name|num_objects
 expr_stmt|;
 for|for
 control|(
@@ -417,10 +416,9 @@ index|]
 decl_stmt|;
 name|nr_objects
 operator|=
-name|num_packed_objects
-argument_list|(
 name|p
-argument_list|)
+operator|->
+name|num_objects
 expr_stmt|;
 name|memset
 argument_list|(
