@@ -35,6 +35,18 @@ directive|include
 file|"interpolate.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"diff.h"
+end_include
+
+begin_include
+include|#
+directive|include
+file|"revision.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|save_commit_buffer
 name|int
@@ -4609,7 +4621,13 @@ comment|/* reset color */
 block|{
 literal|"%n"
 block|}
+block|,
 comment|/* newline */
+block|{
+literal|"%m"
+block|}
+block|,
+comment|/* left/right/bottom */
 block|}
 decl_stmt|;
 enum|enum
@@ -4668,7 +4686,9 @@ block|,
 name|IRESET_COLOR
 block|,
 name|INEWLINE
-block|}
+block|,
+name|ILEFT_RIGHT
+block|, 	}
 enum|;
 name|struct
 name|commit_list
@@ -4696,7 +4716,7 @@ name|state
 enum|;
 if|if
 condition|(
-name|INEWLINE
+name|ILEFT_RIGHT
 operator|+
 literal|1
 operator|!=
@@ -4845,6 +4865,39 @@ name|sha1
 argument_list|,
 name|DEFAULT_ABBREV
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|interp_set_entry
+argument_list|(
+name|table
+argument_list|,
+name|ILEFT_RIGHT
+argument_list|,
+operator|(
+name|commit
+operator|->
+name|object
+operator|.
+name|flags
+operator|&
+name|BOUNDARY
+operator|)
+condition|?
+literal|"-"
+else|:
+operator|(
+name|commit
+operator|->
+name|object
+operator|.
+name|flags
+operator|&
+name|SYMMETRIC_LEFT
+operator|)
+condition|?
+literal|"<"
+else|:
+literal|">"
 argument_list|)
 expr_stmt|;
 name|parents
