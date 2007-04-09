@@ -366,6 +366,7 @@ name|char
 modifier|*
 name|dst
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 name|buffer
@@ -587,6 +588,7 @@ name|char
 modifier|*
 name|buf
 parameter_list|,
+specifier|const
 name|unsigned
 name|char
 modifier|*
