@@ -65,8 +65,7 @@ struct|struct
 name|object_entry
 block|{
 DECL|member|offset
-name|unsigned
-name|long
+name|off_t
 name|offset
 decl_stmt|;
 DECL|member|size
@@ -115,8 +114,7 @@ literal|20
 index|]
 decl_stmt|;
 DECL|member|offset
-name|unsigned
-name|long
+name|off_t
 name|offset
 decl_stmt|;
 block|}
@@ -413,14 +411,19 @@ end_decl_stmt
 begin_decl_stmt
 DECL|variable|input_offset
 DECL|variable|input_len
-DECL|variable|consumed_bytes
 specifier|static
 name|unsigned
-name|long
+name|int
 name|input_offset
 decl_stmt|,
 name|input_len
-decl_stmt|,
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|consumed_bytes
+specifier|static
+name|off_t
 name|consumed_bytes
 decl_stmt|;
 end_decl_stmt
@@ -649,6 +652,20 @@ expr_stmt|;
 name|input_offset
 operator|+=
 name|bytes
+expr_stmt|;
+comment|/* make sure off_t is sufficiently large not to wrap */
+if|if
+condition|(
+name|consumed_bytes
+operator|>
+name|consumed_bytes
+operator|+
+name|bytes
+condition|)
+name|die
+argument_list|(
+literal|"pack too large for current definition of off_t"
+argument_list|)
 expr_stmt|;
 name|consumed_bytes
 operator|+=
@@ -1178,7 +1195,8 @@ decl_stmt|;
 name|unsigned
 name|long
 name|size
-decl_stmt|,
+decl_stmt|;
+name|off_t
 name|base_offset
 decl_stmt|;
 name|unsigned

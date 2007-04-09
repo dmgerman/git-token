@@ -1904,7 +1904,8 @@ end_function
 begin_function
 DECL|function|write_object
 specifier|static
-name|off_t
+name|unsigned
+name|long
 name|write_object
 parameter_list|(
 name|struct
@@ -2686,6 +2687,11 @@ name|off_t
 name|offset
 parameter_list|)
 block|{
+name|unsigned
+name|long
+name|size
+decl_stmt|;
+comment|/* offset is non zero if object is written already. */
 if|if
 condition|(
 name|e
@@ -2696,11 +2702,10 @@ name|e
 operator|->
 name|preferred_base
 condition|)
-comment|/* offset starts from header size and cannot be zero 		 * if it is written already. 		 */
 return|return
 name|offset
 return|;
-comment|/* if we are deltified, write out its base object first. */
+comment|/* if we are deltified, write out base object first. */
 if|if
 condition|(
 name|e
@@ -2726,15 +2731,33 @@ name|offset
 operator|=
 name|offset
 expr_stmt|;
-return|return
-name|offset
-operator|+
+name|size
+operator|=
 name|write_object
 argument_list|(
 name|f
 argument_list|,
 name|e
 argument_list|)
+expr_stmt|;
+comment|/* make sure off_t is sufficiently large not to wrap */
+if|if
+condition|(
+name|offset
+operator|>
+name|offset
+operator|+
+name|size
+condition|)
+name|die
+argument_list|(
+literal|"pack too large for current definition of off_t"
+argument_list|)
+expr_stmt|;
+return|return
+name|offset
+operator|+
+name|size
 return|;
 block|}
 end_function
