@@ -855,9 +855,8 @@ name|char
 modifier|*
 name|format
 init|=
-name|NULL
+literal|"tar"
 decl_stmt|;
-comment|/* might want to default to "tar" */
 specifier|const
 name|char
 modifier|*
@@ -1076,16 +1075,6 @@ condition|)
 name|usage
 argument_list|(
 name|archive_usage
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-operator|!
-name|format
-condition|)
-name|die
-argument_list|(
-literal|"You must specify an archive format"
 argument_list|)
 expr_stmt|;
 if|if
