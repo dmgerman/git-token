@@ -538,11 +538,11 @@ condition|(
 operator|!
 name|path
 operator|||
-name|sscanf
+name|strtoul_ui
 argument_list|(
 name|buffer
 argument_list|,
-literal|"%o"
+literal|8
 argument_list|,
 operator|&
 name|mode
