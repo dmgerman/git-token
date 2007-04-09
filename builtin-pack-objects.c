@@ -197,6 +197,11 @@ name|int
 name|preferred_base
 decl_stmt|;
 comment|/* we do not pack this, but is encouraged to 				 * be used as the base objectto delta huge 				 * objects against. 				 */
+DECL|member|crc32
+name|uint32_t
+name|crc32
+decl_stmt|;
+comment|/* crc of raw pack data for this object */
 block|}
 struct|;
 end_struct
@@ -1953,6 +1958,16 @@ name|to_reuse
 init|=
 literal|0
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|pack_to_stdout
+condition|)
+name|crc32_begin
+argument_list|(
+name|f
+argument_list|)
+expr_stmt|;
 name|obj_type
 operator|=
 name|entry
@@ -2658,6 +2673,20 @@ operator|++
 expr_stmt|;
 name|written
 operator|++
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|pack_to_stdout
+condition|)
+name|entry
+operator|->
+name|crc32
+operator|=
+name|crc32_end
+argument_list|(
+name|f
+argument_list|)
 expr_stmt|;
 return|return
 name|hdrlen
