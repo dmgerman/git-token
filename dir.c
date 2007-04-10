@@ -1770,6 +1770,21 @@ operator|->
 name|d_name
 argument_list|)
 expr_stmt|;
+comment|/* Ignore overly long pathnames! */
+if|if
+condition|(
+name|len
+operator|+
+name|baselen
+operator|+
+literal|8
+operator|>
+sizeof|sizeof
+argument_list|(
+name|fullname
+argument_list|)
+condition|)
+continue|continue;
 name|memcpy
 argument_list|(
 name|fullname
