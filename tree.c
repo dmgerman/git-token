@@ -782,6 +782,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * NOTE! Tree refs to external git repositories  * (ie gitlinks) do not count as real references.  *  * You don't have to have those repositories  * available at all, much less have the objects  * accessible from the current repository.  */
+end_comment
+
 begin_function
 DECL|function|track_tree_refs
 specifier|static
@@ -840,9 +844,21 @@ operator|&
 name|entry
 argument_list|)
 condition|)
+block|{
+if|if
+condition|(
+name|S_ISDIRLNK
+argument_list|(
+name|entry
+operator|.
+name|mode
+argument_list|)
+condition|)
+continue|continue;
 name|n_refs
 operator|++
 expr_stmt|;
+block|}
 comment|/* Allocate object refs and walk it again.. */
 name|i
 operator|=
@@ -886,6 +902,16 @@ name|object
 modifier|*
 name|obj
 decl_stmt|;
+if|if
+condition|(
+name|S_ISDIRLNK
+argument_list|(
+name|entry
+operator|.
+name|mode
+argument_list|)
+condition|)
+continue|continue;
 if|if
 condition|(
 name|S_ISDIR
