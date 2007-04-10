@@ -45,6 +45,12 @@ directive|include
 file|"tree.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"refs.h"
+end_include
+
 begin_ifndef
 ifndef|#
 directive|ifndef
@@ -12650,6 +12656,19 @@ name|target
 argument_list|)
 expr_stmt|;
 break|break;
+case|case
+name|S_IFDIR
+case|:
+return|return
+name|resolve_gitlink_ref
+argument_list|(
+name|path
+argument_list|,
+literal|"HEAD"
+argument_list|,
+name|sha1
+argument_list|)
+return|;
 default|default:
 return|return
 name|error

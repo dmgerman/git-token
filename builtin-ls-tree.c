@@ -24,6 +24,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"commit.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"quote.h"
 end_include
 
@@ -307,6 +313,21 @@ name|type
 init|=
 name|blob_type
 decl_stmt|;
+if|if
+condition|(
+name|S_ISDIRLNK
+argument_list|(
+name|mode
+argument_list|)
+condition|)
+block|{
+comment|/* 		 * Maybe we want to have some recursive version here? 		 * 		 * Something like: 		 * 		if (show_subprojects(base, baselen, pathname)) { 			if (fork()) { 				chdir(base); 				exec ls-tree; 			} 			waitpid(); 		} 		 * 		 * ..or similar.. 		 */
+name|type
+operator|=
+name|commit_type
+expr_stmt|;
+block|}
+elseif|else
 if|if
 condition|(
 name|S_ISDIR
