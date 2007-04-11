@@ -821,7 +821,11 @@ argument_list|(
 name|buffer
 argument_list|)
 argument_list|,
-literal|"Subject: [PATCH %0*d/%d] "
+literal|"Subject: [%s %0*d/%d] "
+argument_list|,
+name|opt
+operator|->
+name|subject_prefix
 argument_list|,
 name|digits_in_number
 argument_list|(
@@ -853,15 +857,42 @@ name|total
 operator|==
 literal|0
 condition|)
+block|{
+specifier|static
+name|char
+name|buffer
+index|[
+literal|256
+index|]
+decl_stmt|;
+name|snprintf
+argument_list|(
+name|buffer
+argument_list|,
+sizeof|sizeof
+argument_list|(
+name|buffer
+argument_list|)
+argument_list|,
+literal|"Subject: [%s] "
+argument_list|,
+name|opt
+operator|->
+name|subject_prefix
+argument_list|)
+expr_stmt|;
 name|subject
 operator|=
-literal|"Subject: [PATCH] "
+name|buffer
 expr_stmt|;
+block|}
 else|else
+block|{
 name|subject
 operator|=
 literal|"Subject: "
 expr_stmt|;
+block|}
 name|printf
 argument_list|(
 literal|"From %s Mon Sep 17 00:00:00 2001\n"

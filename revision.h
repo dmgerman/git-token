@@ -398,6 +398,12 @@ name|char
 modifier|*
 name|log_reencode
 decl_stmt|;
+DECL|member|subject_prefix
+specifier|const
+name|char
+modifier|*
+name|subject_prefix
+decl_stmt|;
 DECL|member|no_inline
 name|int
 name|no_inline
