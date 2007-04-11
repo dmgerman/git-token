@@ -2515,9 +2515,11 @@ operator|!
 name|default_refs
 condition|)
 block|{
-name|error
+name|fprintf
 argument_list|(
-literal|"No default references"
+name|stderr
+argument_list|,
+literal|"notice: No default references\n"
 argument_list|)
 expr_stmt|;
 name|show_unreachable
@@ -2608,6 +2610,11 @@ decl_stmt|;
 name|int
 name|flag
 decl_stmt|;
+name|int
+name|null_is_error
+init|=
+literal|0
+decl_stmt|;
 specifier|const
 name|char
 modifier|*
@@ -2619,7 +2626,7 @@ literal|"HEAD"
 argument_list|,
 name|sha1
 argument_list|,
-literal|1
+literal|0
 argument_list|,
 operator|&
 name|flag
@@ -2629,20 +2636,29 @@ if|if
 condition|(
 operator|!
 name|head_points_at
-operator|||
-operator|!
-operator|(
-name|flag
-operator|&
-name|REF_ISSYMREF
-operator|)
 condition|)
 return|return
 name|error
 argument_list|(
-literal|"HEAD is not a symbolic ref"
+literal|"Invalid HEAD"
 argument_list|)
 return|;
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|head_points_at
+argument_list|,
+literal|"HEAD"
+argument_list|)
+condition|)
+comment|/* detached HEAD */
+name|null_is_error
+operator|=
+literal|1
+expr_stmt|;
+elseif|else
 if|if
 condition|(
 name|prefixcmp
@@ -2667,12 +2683,29 @@ argument_list|(
 name|sha1
 argument_list|)
 condition|)
+block|{
+if|if
+condition|(
+name|null_is_error
+condition|)
 return|return
 name|error
 argument_list|(
-literal|"HEAD: not a valid git pointer"
+literal|"HEAD: detached HEAD points at nothing"
 argument_list|)
 return|;
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"notice: HEAD points to an unborn branch (%s)\n"
+argument_list|,
+name|head_points_at
+operator|+
+literal|11
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 literal|0
 return|;
