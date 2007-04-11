@@ -35,18 +35,6 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|builtin_exec_path
-specifier|static
-specifier|const
-name|char
-modifier|*
-name|builtin_exec_path
-init|=
-name|GIT_EXEC_PATH
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|variable|argv_exec_path
 specifier|static
 specifier|const
@@ -55,6 +43,23 @@ modifier|*
 name|argv_exec_path
 decl_stmt|;
 end_decl_stmt
+
+begin_function
+DECL|function|builtin_exec_path
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|builtin_exec_path
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+return|return
+name|GIT_EXEC_PATH
+return|;
+block|}
+end_function
 
 begin_function
 DECL|function|git_set_argv_exec_path
@@ -121,6 +126,7 @@ return|;
 block|}
 return|return
 name|builtin_exec_path
+argument_list|()
 return|;
 block|}
 end_function
@@ -244,6 +250,7 @@ operator|&
 name|new_path
 argument_list|,
 name|builtin_exec_path
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|add_path
