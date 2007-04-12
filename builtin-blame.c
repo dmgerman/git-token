@@ -82,7 +82,7 @@ name|char
 name|blame_usage
 index|[]
 init|=
-literal|"git-blame [-c] [-l] [-t] [-f] [-n] [-p] [-L n,m] [-S<revs-file>] [-M] [-C] [-C] [--contents<filename>] [--incremental] [commit] [--] file\n"
+literal|"git-blame [-c] [-b] [-l] [--root] [-t] [-f] [-n] [-s] [-p] [-L n,m] [-S<revs-file>] [-M] [-C] [-C] [--contents<filename>] [--incremental] [commit] [--] file\n"
 literal|"  -c                  Use the same output mode as git-annotate (Default: off)\n"
 literal|"  -b                  Show blank SHA-1 for boundary commits (Default: off)\n"
 literal|"  -l                  Show long commit SHA1 (Default: off)\n"
@@ -90,6 +90,7 @@ literal|"  --root              Do not treat root commits as boundaries (Default:
 literal|"  -t                  Show raw timestamp (Default: off)\n"
 literal|"  -f, --show-name     Show original filename (Default: auto)\n"
 literal|"  -n, --show-number   Show original linenumber (Default: off)\n"
+literal|"  -s                  Suppress author name and timestamp (Default: off)\n"
 literal|"  -p, --porcelain     Show in a format designed for machine consumption\n"
 literal|"  -L n,m              Process only line range n,m, counting from 1\n"
 literal|"  -M, -C              Find line movements within and across files\n"
@@ -7339,6 +7340,14 @@ name|OUTPUT_SHOW_SCORE
 value|0100
 end_define
 
+begin_define
+DECL|macro|OUTPUT_NO_AUTHOR
+define|#
+directive|define
+name|OUTPUT_NO_AUTHOR
+value|0200
+end_define
+
 begin_function
 DECL|function|emit_porcelain
 specifier|static
@@ -7974,9 +7983,18 @@ operator|+
 name|cnt
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+operator|(
+name|opt
+operator|&
+name|OUTPUT_NO_AUTHOR
+operator|)
+condition|)
 name|printf
 argument_list|(
-literal|" (%-*.*s %10s %*d) "
+literal|" (%-*.*s %10s"
 argument_list|,
 name|longest_author
 argument_list|,
@@ -7998,6 +8016,11 @@ name|author_tz
 argument_list|,
 name|show_raw_time
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|printf
+argument_list|(
+literal|" %*d) "
 argument_list|,
 name|max_digits
 argument_list|,
@@ -10779,6 +10802,21 @@ condition|)
 name|output_option
 operator||=
 name|OUTPUT_LONG_OBJECT_NAME
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+literal|"-s"
+argument_list|,
+name|arg
+argument_list|)
+condition|)
+name|output_option
+operator||=
+name|OUTPUT_NO_AUTHOR
 expr_stmt|;
 elseif|else
 if|if
