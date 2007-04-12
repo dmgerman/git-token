@@ -1694,6 +1694,15 @@ return|;
 case|case
 name|index_gitdir
 case|:
+if|if
+condition|(
+name|dir
+operator|->
+name|show_other_directories
+condition|)
+return|return
+name|ignore_directory
+return|;
 return|return
 name|show_directory
 return|;
