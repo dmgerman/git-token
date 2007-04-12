@@ -348,6 +348,9 @@ name|argc
 operator|)
 operator|--
 expr_stmt|;
+name|handled
+operator|++
+expr_stmt|;
 block|}
 elseif|else
 if|if
