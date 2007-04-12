@@ -2565,12 +2565,6 @@ literal|1
 expr_stmt|;
 name|rev
 operator|.
-name|subject_prefix
-operator|=
-literal|"PATCH"
-expr_stmt|;
-name|rev
-operator|.
 name|extra_headers
 operator|=
 name|extra_headers
