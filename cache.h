@@ -726,6 +726,22 @@ name|EXEC_PATH_ENVIRONMENT
 value|"GIT_EXEC_PATH"
 end_define
 
+begin_define
+DECL|macro|GITATTRIBUTES_FILE
+define|#
+directive|define
+name|GITATTRIBUTES_FILE
+value|".gitattributes"
+end_define
+
+begin_define
+DECL|macro|INFOATTRIBUTES_FILE
+define|#
+directive|define
+name|INFOATTRIBUTES_FILE
+value|"info/attributes"
+end_define
+
 begin_decl_stmt
 specifier|extern
 name|int

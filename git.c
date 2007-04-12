@@ -1327,6 +1327,16 @@ name|cmd_check_ref_format
 block|}
 block|,
 block|{
+literal|"check-attr"
+block|,
+name|cmd_check_attr
+block|,
+name|RUN_SETUP
+operator||
+name|NOT_BARE
+block|}
+block|,
+block|{
 literal|"cherry"
 block|,
 name|cmd_cherry
