@@ -603,10 +603,23 @@ name|DATA_CHANGED
 return|;
 break|break;
 case|case
-name|S_IFDIRLNK
+name|S_IFDIR
 case|:
-comment|/* No need to do anything, we did the exact compare in "match_stat_basic" */
-break|break;
+if|if
+condition|(
+name|S_ISDIRLNK
+argument_list|(
+name|ntohl
+argument_list|(
+name|ce
+operator|->
+name|ce_mode
+argument_list|)
+argument_list|)
+condition|)
+return|return
+literal|0
+return|;
 default|default:
 return|return
 name|TYPE_CHANGED
@@ -756,7 +769,9 @@ name|changed
 operator||=
 name|DATA_CHANGED
 expr_stmt|;
-break|break;
+return|return
+name|changed
+return|;
 default|default:
 name|die
 argument_list|(
