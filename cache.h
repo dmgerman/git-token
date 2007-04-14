@@ -742,6 +742,14 @@ name|INFOATTRIBUTES_FILE
 value|"info/attributes"
 end_define
 
+begin_define
+DECL|macro|ATTRIBUTE_MACRO_PREFIX
+define|#
+directive|define
+name|ATTRIBUTE_MACRO_PREFIX
+value|"[attr]"
+end_define
+
 begin_decl_stmt
 specifier|extern
 name|int
