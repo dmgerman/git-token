@@ -947,6 +947,8 @@ name|builtin_attr
 index|[]
 init|=
 block|{
+literal|"[attr]binary !diff !crlf"
+block|,
 name|NULL
 block|, }
 decl_stmt|;
