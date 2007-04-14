@@ -10487,11 +10487,13 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-name|sprintf
+name|snprintf
 argument_list|(
 name|commit
 operator|->
 name|buffer
+argument_list|,
+literal|400
 argument_list|,
 literal|"tree 0000000000000000000000000000000000000000\n"
 literal|"parent %s\n"
