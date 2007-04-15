@@ -26,6 +26,7 @@ specifier|static
 name|void
 name|copy_gecos
 parameter_list|(
+specifier|const
 name|struct
 name|passwd
 modifier|*
@@ -193,6 +194,7 @@ specifier|static
 name|void
 name|copy_email
 parameter_list|(
+specifier|const
 name|struct
 name|passwd
 modifier|*
