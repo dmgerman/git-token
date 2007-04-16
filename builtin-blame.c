@@ -83,11 +83,11 @@ name|blame_usage
 index|[]
 init|=
 literal|"git-blame [-c] [-l] [-t] [-f] [-n] [-p] [-L n,m] [-S<revs-file>] [-M] [-C] [-C] [--contents<filename>] [--incremental] [commit] [--] file\n"
-literal|"  -c, --compatibility Use the same output mode as git-annotate (Default: off)\n"
+literal|"  -c                  Use the same output mode as git-annotate (Default: off)\n"
 literal|"  -b                  Show blank SHA-1 for boundary commits (Default: off)\n"
-literal|"  -l, --long          Show long commit SHA1 (Default: off)\n"
+literal|"  -l                  Show long commit SHA1 (Default: off)\n"
 literal|"  --root              Do not treat root commits as boundaries (Default: off)\n"
-literal|"  -t, --time          Show raw timestamp (Default: off)\n"
+literal|"  -t                  Show raw timestamp (Default: off)\n"
 literal|"  -f, --show-name     Show original filename (Default: auto)\n"
 literal|"  -n, --show-number   Show original linenumber (Default: off)\n"
 literal|"  -p, --porcelain     Show in a format designed for machine consumption\n"
