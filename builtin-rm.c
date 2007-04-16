@@ -887,7 +887,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/* 	 * If not forced, the file, the index and the HEAD (if exists) 	 * must match; but the file can already been removed, since 	 * this sequence is a natural "novice" way: 	 * 	 *	rm F; git fm F 	 * 	 * Further, if HEAD commit exists, "diff-index --cached" must 	 * report no changes unless forced. 	 */
+comment|/* 	 * If not forced, the file, the index and the HEAD (if exists) 	 * must match; but the file can already been removed, since 	 * this sequence is a natural "novice" way: 	 * 	 *	rm F; git rm F 	 * 	 * Further, if HEAD commit exists, "diff-index --cached" must 	 * report no changes unless forced. 	 */
 if|if
 condition|(
 operator|!
