@@ -42,12 +42,6 @@ DECL|member|count
 name|unsigned
 name|count
 decl_stmt|;
-DECL|member|base
-name|struct
-name|object
-modifier|*
-name|base
-decl_stmt|;
 DECL|member|ref
 name|struct
 name|object
