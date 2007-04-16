@@ -41,7 +41,7 @@ name|char
 name|builtin_rm_usage
 index|[]
 init|=
-literal|"git-rm [-f] [-n] [-r] [--cached] [--]<file>..."
+literal|"git-rm [-f] [-n] [-r] [--cached] [--quiet] [--]<file>..."
 decl_stmt|;
 end_decl_stmt
 
@@ -537,6 +537,10 @@ decl_stmt|,
 name|recursive
 init|=
 literal|0
+decl_stmt|,
+name|quiet
+init|=
+literal|0
 decl_stmt|;
 specifier|const
 name|char
@@ -681,6 +685,21 @@ literal|"-r"
 argument_list|)
 condition|)
 name|recursive
+operator|=
+literal|1
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--quiet"
+argument_list|)
+condition|)
+name|quiet
 operator|=
 literal|1
 expr_stmt|;
@@ -938,6 +957,11 @@ index|[
 name|i
 index|]
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|quiet
+condition|)
 name|printf
 argument_list|(
 literal|"rm '%s'\n"
