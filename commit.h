@@ -24,6 +24,12 @@ directive|include
 file|"tree.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"decorate.h"
+end_include
+
 begin_struct
 DECL|struct|commit_list
 struct|struct
@@ -101,6 +107,40 @@ modifier|*
 name|commit_type
 decl_stmt|;
 end_decl_stmt
+
+begin_comment
+comment|/* While we can decorate any object with a name, it's only used for commits.. */
+end_comment
+
+begin_decl_stmt
+specifier|extern
+name|struct
+name|decoration
+name|name_decoration
+decl_stmt|;
+end_decl_stmt
+
+begin_struct
+DECL|struct|name_decoration
+struct|struct
+name|name_decoration
+block|{
+DECL|member|next
+name|struct
+name|name_decoration
+modifier|*
+name|next
+decl_stmt|;
+DECL|member|name
+name|char
+name|name
+index|[
+literal|1
+index|]
+decl_stmt|;
+block|}
+struct|;
+end_struct
 
 begin_function_decl
 name|struct
