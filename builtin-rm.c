@@ -41,7 +41,7 @@ name|char
 name|builtin_rm_usage
 index|[]
 init|=
-literal|"git-rm [-f] [-n] [-r] [--cached] [--quiet] [--]<file>..."
+literal|"git-rm [-f] [-n] [-r] [--cached] [--ignore-unmatch] [--quiet] [--]<file>..."
 decl_stmt|;
 end_decl_stmt
 
@@ -542,6 +542,11 @@ name|quiet
 init|=
 literal|0
 decl_stmt|;
+name|int
+name|ignore_unmatch
+init|=
+literal|0
+decl_stmt|;
 specifier|const
 name|char
 modifier|*
@@ -703,6 +708,21 @@ name|quiet
 operator|=
 literal|1
 expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--ignore-unmatch"
+argument_list|)
+condition|)
+name|ignore_unmatch
+operator|=
+literal|1
+expr_stmt|;
 else|else
 name|usage
 argument_list|(
@@ -825,6 +845,11 @@ name|char
 modifier|*
 name|match
 decl_stmt|;
+name|int
+name|seen_any
+init|=
+literal|0
+decl_stmt|;
 for|for
 control|(
 name|i
@@ -854,6 +879,13 @@ index|[
 name|i
 index|]
 condition|)
+block|{
+if|if
+condition|(
+operator|!
+name|ignore_unmatch
+condition|)
+block|{
 name|die
 argument_list|(
 literal|"pathspec '%s' did not match any files"
@@ -861,6 +893,15 @@ argument_list|,
 name|match
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+name|seen_any
+operator|=
+literal|1
+expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -886,6 +927,16 @@ literal|"."
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+name|seen_any
+condition|)
+name|exit
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
 block|}
 comment|/* 	 * If not forced, the file, the index and the HEAD (if exists) 	 * must match; but the file can already been removed, since 	 * this sequence is a natural "novice" way: 	 * 	 *	rm F; git rm F 	 * 	 * Further, if HEAD commit exists, "diff-index --cached" must 	 * report no changes unless forced. 	 */
 if|if
