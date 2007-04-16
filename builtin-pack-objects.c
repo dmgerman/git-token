@@ -108,59 +108,34 @@ index|[
 literal|20
 index|]
 decl_stmt|;
+DECL|member|crc32
+name|uint32_t
+name|crc32
+decl_stmt|;
+comment|/* crc of raw pack data for this object */
+DECL|member|offset
+name|off_t
+name|offset
+decl_stmt|;
+comment|/* offset into the final pack file */
 DECL|member|size
 name|unsigned
 name|long
 name|size
 decl_stmt|;
 comment|/* uncompressed size */
-DECL|member|offset
-name|off_t
-name|offset
-decl_stmt|;
-comment|/* offset into the final pack file; 				 * nonzero if already written. 				 */
-DECL|member|depth
-name|unsigned
-name|int
-name|depth
-decl_stmt|;
-comment|/* delta depth */
 DECL|member|hash
 name|unsigned
 name|int
 name|hash
 decl_stmt|;
 comment|/* name hint hash */
-DECL|member|type
-name|enum
-name|object_type
-name|type
-decl_stmt|;
-DECL|member|in_pack_type
-name|enum
-name|object_type
-name|in_pack_type
-decl_stmt|;
-comment|/* could be delta */
-DECL|member|delta_size
+DECL|member|depth
 name|unsigned
-name|long
-name|delta_size
+name|int
+name|depth
 decl_stmt|;
-comment|/* delta data size (uncompressed) */
-DECL|macro|in_pack_header_size
-define|#
-directive|define
-name|in_pack_header_size
-value|delta_size
-comment|/* only when reusing pack data */
-DECL|member|delta
-name|struct
-name|object_entry
-modifier|*
-name|delta
-decl_stmt|;
-comment|/* delta base object */
+comment|/* delta depth */
 DECL|member|in_pack
 name|struct
 name|packed_git
@@ -172,6 +147,13 @@ DECL|member|in_pack_offset
 name|off_t
 name|in_pack_offset
 decl_stmt|;
+DECL|member|delta
+name|struct
+name|object_entry
+modifier|*
+name|delta
+decl_stmt|;
+comment|/* delta base object */
 DECL|member|delta_child
 name|struct
 name|object_entry
@@ -186,16 +168,34 @@ modifier|*
 name|delta_sibling
 decl_stmt|;
 comment|/* other deltified objects who 					     * uses the same base as me 					     */
+DECL|member|delta_size
+name|unsigned
+name|long
+name|delta_size
+decl_stmt|;
+comment|/* delta data size (uncompressed) */
+DECL|member|type
+name|enum
+name|object_type
+name|type
+decl_stmt|;
+DECL|member|in_pack_type
+name|enum
+name|object_type
+name|in_pack_type
+decl_stmt|;
+comment|/* could be delta */
+DECL|member|in_pack_header_size
+name|unsigned
+name|char
+name|in_pack_header_size
+decl_stmt|;
 DECL|member|preferred_base
-name|int
+name|unsigned
+name|char
 name|preferred_base
 decl_stmt|;
-comment|/* we do not pack this, but is encouraged to 				 * be used as the base objectto delta huge 				 * objects against. 				 */
-DECL|member|crc32
-name|uint32_t
-name|crc32
-decl_stmt|;
-comment|/* crc of raw pack data for this object */
+comment|/* we do not pack this, but is available 				       * to be used as the base objectto delta 				       * objects against. 				       */
 block|}
 struct|;
 end_struct
