@@ -4028,34 +4028,9 @@ begin_comment
 comment|/* alloc.c */
 end_comment
 
-begin_struct_decl
-struct_decl|struct
-name|blob
-struct_decl|;
-end_struct_decl
-
-begin_struct_decl
-struct_decl|struct
-name|tree
-struct_decl|;
-end_struct_decl
-
-begin_struct_decl
-struct_decl|struct
-name|commit
-struct_decl|;
-end_struct_decl
-
-begin_struct_decl
-struct_decl|struct
-name|tag
-struct_decl|;
-end_struct_decl
-
 begin_function_decl
 specifier|extern
-name|struct
-name|blob
+name|void
 modifier|*
 name|alloc_blob_node
 parameter_list|(
@@ -4066,8 +4041,7 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|struct
-name|tree
+name|void
 modifier|*
 name|alloc_tree_node
 parameter_list|(
@@ -4078,8 +4052,7 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|struct
-name|commit
+name|void
 modifier|*
 name|alloc_commit_node
 parameter_list|(
@@ -4090,8 +4063,7 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|struct
-name|tag
+name|void
 modifier|*
 name|alloc_tag_node
 parameter_list|(
@@ -4102,8 +4074,7 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|struct
-name|object
+name|void
 modifier|*
 name|alloc_object_node
 parameter_list|(
