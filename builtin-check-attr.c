@@ -275,7 +275,8 @@ name|j
 operator|++
 control|)
 block|{
-name|void
+specifier|const
+name|char
 modifier|*
 name|value
 init|=
@@ -348,10 +349,6 @@ operator|+
 literal|1
 index|]
 argument_list|,
-operator|(
-name|char
-operator|*
-operator|)
 name|value
 argument_list|)
 expr_stmt|;
