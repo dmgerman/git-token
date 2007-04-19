@@ -2667,7 +2667,6 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|(
 name|strtoul_ui
 argument_list|(
 name|argv
@@ -2682,9 +2681,6 @@ argument_list|,
 operator|&
 name|mode
 argument_list|)
-operator|!=
-literal|1
-operator|)
 operator|||
 name|get_sha1_hex
 argument_list|(
