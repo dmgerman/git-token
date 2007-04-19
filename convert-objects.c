@@ -547,8 +547,6 @@ argument_list|,
 operator|&
 name|mode
 argument_list|)
-operator|!=
-literal|1
 condition|)
 name|die
 argument_list|(
