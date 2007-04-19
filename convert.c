@@ -295,7 +295,8 @@ end_function
 begin_function
 DECL|function|crlf_to_git
 specifier|static
-name|int
+name|char
+modifier|*
 name|crlf_to_git
 parameter_list|(
 specifier|const
@@ -303,10 +304,10 @@ name|char
 modifier|*
 name|path
 parameter_list|,
+specifier|const
 name|char
 modifier|*
-modifier|*
-name|bufp
+name|src
 parameter_list|,
 name|unsigned
 name|long
@@ -322,7 +323,7 @@ modifier|*
 name|buffer
 decl_stmt|,
 modifier|*
-name|nbuf
+name|dst
 decl_stmt|;
 name|unsigned
 name|long
@@ -352,7 +353,7 @@ name|auto_crlf
 operator|)
 condition|)
 return|return
-literal|0
+name|NULL
 return|;
 name|size
 operator|=
@@ -365,16 +366,11 @@ operator|!
 name|size
 condition|)
 return|return
-literal|0
+name|NULL
 return|;
-name|buffer
-operator|=
-operator|*
-name|bufp
-expr_stmt|;
 name|gather_stats
 argument_list|(
-name|buffer
+name|src
 argument_list|,
 name|size
 argument_list|,
@@ -391,7 +387,7 @@ operator|.
 name|cr
 condition|)
 return|return
-literal|0
+name|NULL
 return|;
 if|if
 condition|(
@@ -412,7 +408,7 @@ operator|.
 name|crlf
 condition|)
 return|return
-literal|0
+name|NULL
 return|;
 comment|/* 		 * And add some heuristics for binary vs text, of course... 		 */
 if|if
@@ -426,7 +422,7 @@ name|stats
 argument_list|)
 condition|)
 return|return
-literal|0
+name|NULL
 return|;
 block|}
 comment|/* 	 * Ok, allocate a new buffer, fill it in, and return true 	 * to let the caller know that we switched buffers on it. 	 */
@@ -438,7 +434,7 @@ name|stats
 operator|.
 name|crlf
 expr_stmt|;
-name|nbuf
+name|buffer
 operator|=
 name|xmalloc
 argument_list|(
@@ -446,14 +442,13 @@ name|nsize
 argument_list|)
 expr_stmt|;
 operator|*
-name|bufp
-operator|=
-name|nbuf
-expr_stmt|;
-operator|*
 name|sizep
 operator|=
 name|nsize
+expr_stmt|;
+name|dst
+operator|=
+name|buffer
 expr_stmt|;
 if|if
 condition|(
@@ -470,7 +465,7 @@ name|char
 name|c
 init|=
 operator|*
-name|buffer
+name|src
 operator|++
 decl_stmt|;
 if|if
@@ -480,7 +475,7 @@ operator|!=
 literal|'\r'
 condition|)
 operator|*
-name|nbuf
+name|dst
 operator|++
 operator|=
 name|c
@@ -502,7 +497,7 @@ name|char
 name|c
 init|=
 operator|*
-name|buffer
+name|src
 operator|++
 decl_stmt|;
 if|if
@@ -526,7 +521,7 @@ operator|)
 operator|)
 condition|)
 operator|*
-name|nbuf
+name|dst
 operator|++
 operator|=
 name|c
@@ -540,7 +535,7 @@ condition|)
 do|;
 block|}
 return|return
-literal|1
+name|buffer
 return|;
 block|}
 end_function
@@ -548,7 +543,8 @@ end_function
 begin_function
 DECL|function|crlf_to_worktree
 specifier|static
-name|int
+name|char
+modifier|*
 name|crlf_to_worktree
 parameter_list|(
 specifier|const
@@ -556,10 +552,10 @@ name|char
 modifier|*
 name|path
 parameter_list|,
+specifier|const
 name|char
 modifier|*
-modifier|*
-name|bufp
+name|src
 parameter_list|,
 name|unsigned
 name|long
@@ -575,7 +571,7 @@ modifier|*
 name|buffer
 decl_stmt|,
 modifier|*
-name|nbuf
+name|dst
 decl_stmt|;
 name|unsigned
 name|long
@@ -616,7 +612,7 @@ literal|0
 operator|)
 condition|)
 return|return
-literal|0
+name|NULL
 return|;
 name|size
 operator|=
@@ -629,16 +625,11 @@ operator|!
 name|size
 condition|)
 return|return
-literal|0
+name|NULL
 return|;
-name|buffer
-operator|=
-operator|*
-name|bufp
-expr_stmt|;
 name|gather_stats
 argument_list|(
-name|buffer
+name|src
 argument_list|,
 name|size
 argument_list|,
@@ -655,7 +646,7 @@ operator|.
 name|lf
 condition|)
 return|return
-literal|0
+name|NULL
 return|;
 comment|/* Was it already in CRLF format? */
 if|if
@@ -669,7 +660,7 @@ operator|.
 name|crlf
 condition|)
 return|return
-literal|0
+name|NULL
 return|;
 if|if
 condition|(
@@ -690,7 +681,7 @@ operator|.
 name|crlf
 condition|)
 return|return
-literal|0
+name|NULL
 return|;
 if|if
 condition|(
@@ -703,7 +694,7 @@ name|stats
 argument_list|)
 condition|)
 return|return
-literal|0
+name|NULL
 return|;
 block|}
 comment|/* 	 * Ok, allocate a new buffer, fill it in, and return true 	 * to let the caller know that we switched buffers on it. 	 */
@@ -719,17 +710,12 @@ name|stats
 operator|.
 name|crlf
 expr_stmt|;
-name|nbuf
+name|buffer
 operator|=
 name|xmalloc
 argument_list|(
 name|nsize
 argument_list|)
-expr_stmt|;
-operator|*
-name|bufp
-operator|=
-name|nbuf
 expr_stmt|;
 operator|*
 name|sizep
@@ -740,6 +726,10 @@ name|last
 operator|=
 literal|0
 expr_stmt|;
+name|dst
+operator|=
+name|buffer
+expr_stmt|;
 do|do
 block|{
 name|unsigned
@@ -747,7 +737,7 @@ name|char
 name|c
 init|=
 operator|*
-name|buffer
+name|src
 operator|++
 decl_stmt|;
 if|if
@@ -761,13 +751,13 @@ operator|!=
 literal|'\r'
 condition|)
 operator|*
-name|nbuf
+name|dst
 operator|++
 operator|=
 literal|'\r'
 expr_stmt|;
 operator|*
-name|nbuf
+name|dst
 operator|++
 operator|=
 name|c
@@ -784,7 +774,7 @@ name|size
 condition|)
 do|;
 return|return
-literal|1
+name|buffer
 return|;
 block|}
 end_function
@@ -929,7 +919,8 @@ end_function
 
 begin_function
 DECL|function|convert_to_git
-name|int
+name|char
+modifier|*
 name|convert_to_git
 parameter_list|(
 specifier|const
@@ -937,10 +928,10 @@ name|char
 modifier|*
 name|path
 parameter_list|,
+specifier|const
 name|char
 modifier|*
-modifier|*
-name|bufp
+name|src
 parameter_list|,
 name|unsigned
 name|long
@@ -953,7 +944,7 @@ name|crlf_to_git
 argument_list|(
 name|path
 argument_list|,
-name|bufp
+name|src
 argument_list|,
 name|sizep
 argument_list|,
@@ -968,7 +959,8 @@ end_function
 
 begin_function
 DECL|function|convert_to_working_tree
-name|int
+name|char
+modifier|*
 name|convert_to_working_tree
 parameter_list|(
 specifier|const
@@ -976,10 +968,10 @@ name|char
 modifier|*
 name|path
 parameter_list|,
+specifier|const
 name|char
 modifier|*
-modifier|*
-name|bufp
+name|src
 parameter_list|,
 name|unsigned
 name|long
@@ -992,7 +984,7 @@ name|crlf_to_worktree
 argument_list|(
 name|path
 argument_list|,
-name|bufp
+name|src
 argument_list|,
 name|sizep
 argument_list|,

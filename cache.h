@@ -4224,7 +4224,8 @@ end_comment
 
 begin_function_decl
 specifier|extern
-name|int
+name|char
+modifier|*
 name|convert_to_git
 parameter_list|(
 specifier|const
@@ -4232,10 +4233,10 @@ name|char
 modifier|*
 name|path
 parameter_list|,
+specifier|const
 name|char
 modifier|*
-modifier|*
-name|bufp
+name|src
 parameter_list|,
 name|unsigned
 name|long
@@ -4247,7 +4248,8 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|int
+name|char
+modifier|*
 name|convert_to_working_tree
 parameter_list|(
 specifier|const
@@ -4255,10 +4257,10 @@ name|char
 modifier|*
 name|path
 parameter_list|,
+specifier|const
 name|char
 modifier|*
-modifier|*
-name|bufp
+name|src
 parameter_list|,
 name|unsigned
 name|long
