@@ -1634,22 +1634,7 @@ name|total
 operator|++
 expr_stmt|;
 block|}
-comment|/* Don't bother doing this for very small updates */
-if|if
-condition|(
-name|total
-operator|<
-literal|250
-condition|)
-name|total
-operator|=
-literal|0
-expr_stmt|;
-if|if
-condition|(
-name|total
-condition|)
-name|start_progress
+name|start_progress_delay
 argument_list|(
 operator|&
 name|progress
@@ -1659,6 +1644,10 @@ argument_list|,
 literal|""
 argument_list|,
 name|total
+argument_list|,
+literal|50
+argument_list|,
+literal|2
 argument_list|)
 expr_stmt|;
 name|cnt
