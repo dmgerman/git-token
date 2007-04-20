@@ -17,11 +17,11 @@ DECL|struct|progress
 struct|struct
 name|progress
 block|{
-DECL|member|msg
+DECL|member|prefix
 specifier|const
 name|char
 modifier|*
-name|msg
+name|prefix
 decl_stmt|;
 DECL|member|total
 name|unsigned
@@ -62,7 +62,12 @@ parameter_list|,
 specifier|const
 name|char
 modifier|*
-name|msg
+name|title
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|prefix
 parameter_list|,
 name|unsigned
 name|total

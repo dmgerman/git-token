@@ -2359,27 +2359,18 @@ if|if
 condition|(
 name|verbose
 condition|)
-block|{
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-literal|"Indexing %d objects.\n"
-argument_list|,
-name|nr_objects
-argument_list|)
-expr_stmt|;
 name|start_progress
 argument_list|(
 operator|&
 name|progress
+argument_list|,
+literal|"Indexing %u objects..."
 argument_list|,
 literal|""
 argument_list|,
 name|nr_objects
 argument_list|)
 expr_stmt|;
-block|}
 for|for
 control|(
 name|i
@@ -2621,27 +2612,18 @@ if|if
 condition|(
 name|verbose
 condition|)
-block|{
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-literal|"Resolving %d deltas.\n"
-argument_list|,
-name|nr_deltas
-argument_list|)
-expr_stmt|;
 name|start_progress
 argument_list|(
 operator|&
 name|progress
+argument_list|,
+literal|"Resolving %u deltas..."
 argument_list|,
 literal|""
 argument_list|,
 name|nr_deltas
 argument_list|)
 expr_stmt|;
-block|}
 for|for
 control|(
 name|i

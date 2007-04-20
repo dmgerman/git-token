@@ -3203,27 +3203,18 @@ if|if
 condition|(
 name|do_progress
 condition|)
-block|{
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-literal|"Writing %u objects.\n"
-argument_list|,
-name|nr_result
-argument_list|)
-expr_stmt|;
 name|start_progress
 argument_list|(
 operator|&
 name|progress_state
+argument_list|,
+literal|"Writing %u objects..."
 argument_list|,
 literal|""
 argument_list|,
 name|nr_result
 argument_list|)
 expr_stmt|;
-block|}
 name|hdr
 operator|.
 name|hdr_signature
@@ -7478,27 +7469,18 @@ if|if
 condition|(
 name|progress
 condition|)
-block|{
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-literal|"Deltifying %u objects.\n"
-argument_list|,
-name|nr_result
-argument_list|)
-expr_stmt|;
 name|start_progress
 argument_list|(
 operator|&
 name|progress_state
+argument_list|,
+literal|"Deltifying %u objects..."
 argument_list|,
 literal|""
 argument_list|,
 name|nr_result
 argument_list|)
 expr_stmt|;
-block|}
 do|do
 block|{
 name|struct
@@ -9097,25 +9079,18 @@ if|if
 condition|(
 name|progress
 condition|)
-block|{
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-literal|"Generating pack...\n"
-argument_list|)
-expr_stmt|;
 name|start_progress
 argument_list|(
 operator|&
 name|progress_state
+argument_list|,
+literal|"Generating pack..."
 argument_list|,
 literal|"Counting objects: "
 argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 operator|!

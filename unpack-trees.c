@@ -1649,25 +1649,18 @@ if|if
 condition|(
 name|total
 condition|)
-block|{
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-literal|"Checking files out...\n"
-argument_list|)
-expr_stmt|;
 name|start_progress
 argument_list|(
 operator|&
 name|progress
+argument_list|,
+literal|"Checking %u files out..."
 argument_list|,
 literal|""
 argument_list|,
 name|total
 argument_list|)
 expr_stmt|;
-block|}
 name|cnt
 operator|=
 literal|0

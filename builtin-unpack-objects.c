@@ -1746,27 +1746,18 @@ condition|(
 operator|!
 name|quiet
 condition|)
-block|{
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-literal|"Unpacking %d objects\n"
-argument_list|,
-name|nr_objects
-argument_list|)
-expr_stmt|;
 name|start_progress
 argument_list|(
 operator|&
 name|progress
+argument_list|,
+literal|"Unpacking %u objects..."
 argument_list|,
 literal|""
 argument_list|,
 name|nr_objects
 argument_list|)
 expr_stmt|;
-block|}
 name|obj_list
 operator|=
 name|xmalloc
