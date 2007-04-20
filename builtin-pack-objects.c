@@ -201,8 +201,32 @@ struct|;
 end_struct
 
 begin_comment
-comment|/*  * Objects we are going to pack are collected in objects array (dynamically  * expanded).  nr_objects& nr_alloc controls this array.  They are stored  * in the order we see -- typically rev-list --objects order that gives us  * nice "minimum seek" order.  *  * sorted-by-sha ans sorted-by-type are arrays of pointers that point at  * elements in the objects array.  The former is used to build the pack  * index (lists object names in the ascending order to help offset lookup),  * and the latter is used to group similar things together by try_delta()  * heuristics.  */
+comment|/*  * Objects we are going to pack are collected in objects array (dynamically  * expanded).  nr_objects& nr_alloc controls this array.  They are stored  * in the order we see -- typically rev-list --objects order that gives us  * nice "minimum seek" order.  */
 end_comment
+
+begin_decl_stmt
+DECL|variable|objects
+specifier|static
+name|struct
+name|object_entry
+modifier|*
+name|objects
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|nr_objects
+DECL|variable|nr_alloc
+DECL|variable|nr_result
+specifier|static
+name|uint32_t
+name|nr_objects
+decl_stmt|,
+name|nr_alloc
+decl_stmt|,
+name|nr_result
+decl_stmt|;
+end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|non_empty
@@ -241,30 +265,6 @@ DECL|variable|allow_ofs_delta
 specifier|static
 name|int
 name|allow_ofs_delta
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-DECL|variable|objects
-specifier|static
-name|struct
-name|object_entry
-modifier|*
-name|objects
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-DECL|variable|nr_objects
-DECL|variable|nr_alloc
-DECL|variable|nr_result
-specifier|static
-name|uint32_t
-name|nr_objects
-decl_stmt|,
-name|nr_alloc
-decl_stmt|,
-name|nr_result
 decl_stmt|;
 end_decl_stmt
 
@@ -351,7 +351,7 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
-comment|/*  * The object names in objects array are hashed with this hashtable,  * to help looking up the entry by object name.  Binary search from  * sorted_by_sha is also possible but this was easier to code and faster.  * This hashtable is built after all the objects are seen.  */
+comment|/*  * The object names in objects array are hashed with this hashtable,  * to help looking up the entry by object name.  * This hashtable is built after all the objects are seen.  */
 end_comment
 
 begin_decl_stmt
