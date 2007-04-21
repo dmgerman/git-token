@@ -1455,6 +1455,10 @@ name|lock_file
 modifier|*
 name|next
 decl_stmt|;
+DECL|member|owner
+name|pid_t
+name|owner
+decl_stmt|;
 DECL|member|on_list
 name|char
 name|on_list
