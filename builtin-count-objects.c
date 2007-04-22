@@ -703,10 +703,9 @@ condition|)
 continue|continue;
 name|packed
 operator|+=
-name|num_packed_objects
-argument_list|(
 name|p
-argument_list|)
+operator|->
+name|num_objects
 expr_stmt|;
 name|num_pack
 operator|++

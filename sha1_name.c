@@ -489,10 +489,9 @@ block|{
 name|uint32_t
 name|num
 init|=
-name|num_packed_objects
-argument_list|(
 name|p
-argument_list|)
+operator|->
+name|num_objects
 decl_stmt|;
 name|uint32_t
 name|first
