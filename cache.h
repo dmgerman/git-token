@@ -767,6 +767,30 @@ name|EXEC_PATH_ENVIRONMENT
 value|"GIT_EXEC_PATH"
 end_define
 
+begin_define
+DECL|macro|GITATTRIBUTES_FILE
+define|#
+directive|define
+name|GITATTRIBUTES_FILE
+value|".gitattributes"
+end_define
+
+begin_define
+DECL|macro|INFOATTRIBUTES_FILE
+define|#
+directive|define
+name|INFOATTRIBUTES_FILE
+value|"info/attributes"
+end_define
+
+begin_define
+DECL|macro|ATTRIBUTE_MACRO_PREFIX
+define|#
+directive|define
+name|ATTRIBUTE_MACRO_PREFIX
+value|"[attr]"
+end_define
+
 begin_decl_stmt
 specifier|extern
 name|int
@@ -1471,6 +1495,10 @@ name|struct
 name|lock_file
 modifier|*
 name|next
+decl_stmt|;
+DECL|member|owner
+name|pid_t
+name|owner
 decl_stmt|;
 DECL|member|on_list
 name|char
@@ -4252,7 +4280,8 @@ end_comment
 
 begin_function_decl
 specifier|extern
-name|int
+name|char
+modifier|*
 name|convert_to_git
 parameter_list|(
 specifier|const
@@ -4260,10 +4289,10 @@ name|char
 modifier|*
 name|path
 parameter_list|,
+specifier|const
 name|char
 modifier|*
-modifier|*
-name|bufp
+name|src
 parameter_list|,
 name|unsigned
 name|long
@@ -4275,7 +4304,8 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|int
+name|char
+modifier|*
 name|convert_to_working_tree
 parameter_list|(
 specifier|const
@@ -4283,10 +4313,10 @@ name|char
 modifier|*
 name|path
 parameter_list|,
+specifier|const
 name|char
 modifier|*
-modifier|*
-name|bufp
+name|src
 parameter_list|,
 name|unsigned
 name|long
