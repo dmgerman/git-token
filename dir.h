@@ -149,6 +149,11 @@ DECL|member|hide_empty_directories
 name|hide_empty_directories
 range|:
 literal|1
+decl_stmt|,
+DECL|member|no_dirlinks
+name|no_dirlinks
+range|:
+literal|1
 decl_stmt|;
 DECL|member|entries
 name|struct

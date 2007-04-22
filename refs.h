@@ -464,6 +464,33 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/** resolve ref in nested "gitlink" repository */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|resolve_gitlink_ref
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|name
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|refname
+parameter_list|,
+name|unsigned
+name|char
+modifier|*
+name|result
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
