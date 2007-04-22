@@ -372,6 +372,14 @@ decl_stmt|;
 name|int
 name|opt
 decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|exp_type
+decl_stmt|,
+modifier|*
+name|obj_name
+decl_stmt|;
 name|git_config
 argument_list|(
 name|git_default_config
@@ -388,14 +396,25 @@ argument_list|(
 literal|"git-cat-file [-t|-s|-e|-p|<type>]<sha1>"
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|get_sha1
-argument_list|(
+name|exp_type
+operator|=
+name|argv
+index|[
+literal|1
+index|]
+expr_stmt|;
+name|obj_name
+operator|=
 name|argv
 index|[
 literal|2
 index|]
+expr_stmt|;
+if|if
+condition|(
+name|get_sha1
+argument_list|(
+name|obj_name
 argument_list|,
 name|sha1
 argument_list|)
@@ -404,10 +423,7 @@ name|die
 argument_list|(
 literal|"Not a valid object name %s"
 argument_list|,
-name|argv
-index|[
-literal|2
-index|]
+name|obj_name
 argument_list|)
 expr_stmt|;
 name|opt
@@ -416,10 +432,7 @@ literal|0
 expr_stmt|;
 if|if
 condition|(
-name|argv
-index|[
-literal|1
-index|]
+name|exp_type
 index|[
 literal|0
 index|]
@@ -429,10 +442,7 @@ condition|)
 block|{
 name|opt
 operator|=
-name|argv
-index|[
-literal|1
-index|]
+name|exp_type
 index|[
 literal|1
 index|]
@@ -442,10 +452,7 @@ condition|(
 operator|!
 name|opt
 operator|||
-name|argv
-index|[
-literal|1
-index|]
+name|exp_type
 index|[
 literal|2
 index|]
@@ -564,10 +571,7 @@ name|die
 argument_list|(
 literal|"Not a valid object name %s"
 argument_list|,
-name|argv
-index|[
-literal|2
-index|]
+name|obj_name
 argument_list|)
 expr_stmt|;
 comment|/* custom pretty-print here */
@@ -577,18 +581,34 @@ name|type
 operator|==
 name|OBJ_TREE
 condition|)
+block|{
+specifier|const
+name|char
+modifier|*
+name|ls_args
+index|[
+literal|3
+index|]
+init|=
+block|{
+literal|"ls-tree"
+block|,
+name|obj_name
+block|,
+name|NULL
+block|}
+decl_stmt|;
 return|return
 name|cmd_ls_tree
 argument_list|(
 literal|2
 argument_list|,
-name|argv
-operator|+
-literal|1
+name|ls_args
 argument_list|,
 name|NULL
 argument_list|)
 return|;
+block|}
 name|buf
 operator|=
 name|read_sha1_file
@@ -611,10 +631,7 @@ name|die
 argument_list|(
 literal|"Cannot read object %s"
 argument_list|,
-name|argv
-index|[
-literal|2
-index|]
+name|obj_name
 argument_list|)
 expr_stmt|;
 if|if
@@ -648,10 +665,7 @@ name|read_object_with_reference
 argument_list|(
 name|sha1
 argument_list|,
-name|argv
-index|[
-literal|1
-index|]
+name|exp_type
 argument_list|,
 operator|&
 name|size
@@ -665,10 +679,7 @@ name|die
 argument_list|(
 literal|"git-cat-file: unknown option: %s\n"
 argument_list|,
-name|argv
-index|[
-literal|1
-index|]
+name|exp_type
 argument_list|)
 expr_stmt|;
 block|}
@@ -681,10 +692,7 @@ name|die
 argument_list|(
 literal|"git-cat-file %s: bad file"
 argument_list|,
-name|argv
-index|[
-literal|2
-index|]
+name|obj_name
 argument_list|)
 expr_stmt|;
 name|write_or_die
