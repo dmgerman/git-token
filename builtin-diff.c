@@ -165,6 +165,12 @@ name|old_sha1
 argument_list|,
 name|new_sha1
 argument_list|)
+operator|&&
+operator|(
+name|old_mode
+operator|==
+name|new_mode
+operator|)
 condition|)
 return|return;
 if|if
