@@ -1179,6 +1179,14 @@ literal|"diff_setup_done failed"
 argument_list|)
 expr_stmt|;
 block|}
+name|rev
+operator|.
+name|diffopt
+operator|.
+name|allow_external
+operator|=
+literal|1
+expr_stmt|;
 comment|/* Do we have --cached and not have a pending object, then 	 * default to HEAD by hand.  Eek. 	 */
 if|if
 condition|(

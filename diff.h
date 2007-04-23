@@ -331,6 +331,11 @@ name|quiet
 range|:
 literal|1
 decl_stmt|,
+DECL|member|allow_external
+name|allow_external
+range|:
+literal|1
+decl_stmt|,
 DECL|member|exit_with_status
 name|exit_with_status
 range|:

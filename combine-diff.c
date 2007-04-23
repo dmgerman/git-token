@@ -5330,6 +5330,12 @@ name|recursive
 operator|=
 literal|1
 expr_stmt|;
+name|diffopts
+operator|.
+name|allow_external
+operator|=
+literal|0
+expr_stmt|;
 name|show_log_first
 operator|=
 operator|!
