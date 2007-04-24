@@ -173,10 +173,16 @@ name|path
 argument_list|,
 name|next
 argument_list|,
-name|len
+name|prefix
 argument_list|)
 condition|)
 continue|continue;
+name|len
+operator|=
+name|prefix
+operator|-
+literal|1
+expr_stmt|;
 for|for
 control|(
 init|;
