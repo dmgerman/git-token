@@ -4038,7 +4038,6 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-operator|!
 name|fstat
 argument_list|(
 name|fd
@@ -4047,7 +4046,20 @@ operator|&
 name|st
 argument_list|)
 condition|)
-block|{
+name|die
+argument_list|(
+literal|"cannot stat the open index (%s)"
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|errno
+operator|=
+name|EINVAL
+expr_stmt|;
 name|istate
 operator|->
 name|mmap_size
@@ -4059,16 +4071,12 @@ operator|.
 name|st_size
 argument_list|)
 expr_stmt|;
-name|errno
-operator|=
-name|EINVAL
-expr_stmt|;
 if|if
 condition|(
 name|istate
 operator|->
 name|mmap_size
-operator|>=
+operator|<
 sizeof|sizeof
 argument_list|(
 expr|struct
@@ -4077,6 +4085,11 @@ argument_list|)
 operator|+
 literal|20
 condition|)
+name|die
+argument_list|(
+literal|"index file smaller than expected"
+argument_list|)
+expr_stmt|;
 name|istate
 operator|->
 name|mmap
@@ -4098,24 +4111,6 @@ argument_list|,
 name|fd
 argument_list|,
 literal|0
-argument_list|)
-expr_stmt|;
-else|else
-name|die
-argument_list|(
-literal|"index file smaller than expected"
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-name|die
-argument_list|(
-literal|"cannot stat the open index (%s)"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|close
