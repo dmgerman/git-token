@@ -7727,6 +7727,7 @@ name|two
 operator|->
 name|mode
 condition|)
+comment|/* 					 * This messaged is part of 					 * t6022 test. If you change 					 * it update the test too. 					 */
 name|output
 argument_list|(
 literal|3
