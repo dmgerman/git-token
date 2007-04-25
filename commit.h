@@ -385,8 +385,9 @@ name|char
 modifier|*
 name|after_subject
 parameter_list|,
-name|int
-name|relative_date
+name|enum
+name|date_mode
+name|dmode
 parameter_list|)
 function_decl|;
 end_function_decl

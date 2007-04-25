@@ -2947,8 +2947,9 @@ name|char
 modifier|*
 name|line
 parameter_list|,
-name|int
-name|relative_date
+name|enum
+name|date_mode
+name|dmode
 parameter_list|,
 specifier|const
 name|char
@@ -3203,7 +3204,7 @@ name|time
 argument_list|,
 name|tz
 argument_list|,
-name|relative_date
+name|dmode
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3251,7 +3252,7 @@ name|time
 argument_list|,
 name|tz
 argument_list|,
-name|relative_date
+name|dmode
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -5379,8 +5380,9 @@ name|char
 modifier|*
 name|after_subject
 parameter_list|,
-name|int
-name|relative_date
+name|enum
+name|date_mode
+name|dmode
 parameter_list|)
 block|{
 name|int
@@ -5805,7 +5807,7 @@ name|line
 operator|+
 literal|7
 argument_list|,
-name|relative_date
+name|dmode
 argument_list|,
 name|encoding
 argument_list|)
@@ -5848,7 +5850,7 @@ name|line
 operator|+
 literal|10
 argument_list|,
-name|relative_date
+name|dmode
 argument_list|,
 name|encoding
 argument_list|)

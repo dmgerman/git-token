@@ -438,7 +438,7 @@ name|NULL
 argument_list|,
 name|revs
 operator|.
-name|relative_date
+name|date_mode
 argument_list|)
 expr_stmt|;
 name|printf
