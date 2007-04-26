@@ -7694,10 +7694,6 @@ if|if
 condition|(
 name|mfi
 operator|.
-name|merge
-operator|&&
-name|mfi
-operator|.
 name|clean
 operator|&&
 name|sha_eq
