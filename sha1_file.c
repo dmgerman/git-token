@@ -3396,6 +3396,9 @@ name|struct
 name|packed_git
 modifier|*
 name|current
+parameter_list|,
+name|int
+name|keep_fd
 parameter_list|)
 block|{
 name|struct
@@ -3518,8 +3521,10 @@ operator|->
 name|windows
 operator|&&
 name|lru_p
+operator|->
+name|pack_fd
 operator|!=
-name|current
+name|keep_fd
 condition|)
 block|{
 name|close
@@ -3563,6 +3568,9 @@ name|release_pack_memory
 parameter_list|(
 name|size_t
 name|need
+parameter_list|,
+name|int
+name|fd
 parameter_list|)
 block|{
 name|size_t
@@ -3583,6 +3591,8 @@ operator|&&
 name|unuse_one_window
 argument_list|(
 name|NULL
+argument_list|,
+name|fd
 argument_list|)
 condition|)
 empty_stmt|;
@@ -4352,6 +4362,10 @@ operator|&&
 name|unuse_one_window
 argument_list|(
 name|p
+argument_list|,
+name|p
+operator|->
+name|pack_fd
 argument_list|)
 condition|)
 empty_stmt|;
