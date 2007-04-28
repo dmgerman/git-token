@@ -187,9 +187,6 @@ modifier|*
 name|oldval
 parameter_list|)
 block|{
-name|int
-name|len
-decl_stmt|;
 name|char
 name|msg
 index|[
@@ -220,8 +217,6 @@ name|rla
 operator|=
 literal|"(reflog update)"
 expr_stmt|;
-name|len
-operator|=
 name|snprintf
 argument_list|(
 name|msg
@@ -236,20 +231,6 @@ argument_list|,
 name|rla
 argument_list|,
 name|action
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-sizeof|sizeof
-argument_list|(
-name|msg
-argument_list|)
-operator|<=
-name|len
-condition|)
-name|die
-argument_list|(
-literal|"insanely long action"
 argument_list|)
 expr_stmt|;
 name|lock
