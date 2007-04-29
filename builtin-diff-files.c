@@ -41,7 +41,7 @@ name|char
 name|diff_files_usage
 index|[]
 init|=
-literal|"git-diff-files [-q] [-0/-1/2/3 |-c|--cc|-n|--no-index] [<common diff options>] [<path>...]"
+literal|"git-diff-files [-q] [-0/-1/2/3 |-c|--cc|--no-index] [<common diff options>] [<path>...]"
 name|COMMON_DIFF_OPTIONS_HELP
 decl_stmt|;
 end_decl_stmt
