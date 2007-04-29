@@ -941,6 +941,11 @@ init|=
 literal|0
 decl_stmt|;
 name|int
+name|has_empty_name
+init|=
+literal|0
+decl_stmt|;
+name|int
 name|has_zero_pad
 init|=
 literal|0
@@ -1049,6 +1054,16 @@ literal|'/'
 argument_list|)
 condition|)
 name|has_full_path
+operator|=
+literal|1
+expr_stmt|;
+if|if
+condition|(
+operator|!
+operator|*
+name|name
+condition|)
+name|has_empty_name
 operator|=
 literal|1
 expr_stmt|;
@@ -1197,6 +1212,22 @@ operator|->
 name|object
 argument_list|,
 literal|"contains full pathnames"
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|has_empty_name
+condition|)
+block|{
+name|objwarning
+argument_list|(
+operator|&
+name|item
+operator|->
+name|object
+argument_list|,
+literal|"contains empty pathname"
 argument_list|)
 expr_stmt|;
 block|}
