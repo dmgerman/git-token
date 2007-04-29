@@ -6746,6 +6746,16 @@ argument_list|(
 name|p
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|n
+condition|)
+name|die
+argument_list|(
+literal|"Empty path component found in input"
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|i
