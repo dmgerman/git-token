@@ -2,14 +2,14 @@ begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_ifndef
 ifndef|#
 directive|ifndef
-name|_PATH_LIST_H_
+name|PATH_LIST_H
 end_ifndef
 
 begin_define
-DECL|macro|_PATH_LIST_H_
+DECL|macro|PATH_LIST_H
 define|#
 directive|define
-name|_PATH_LIST_H_
+name|PATH_LIST_H
 end_define
 
 begin_struct
@@ -156,7 +156,7 @@ directive|endif
 end_endif
 
 begin_comment
-comment|/* _PATH_LIST_H_ */
+comment|/* PATH_LIST_H */
 end_comment
 
 end_unit

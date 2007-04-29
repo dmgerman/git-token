@@ -6,14 +6,14 @@ end_comment
 begin_ifndef
 ifndef|#
 directive|ifndef
-name|_DIFFCORE_H_
+name|DIFFCORE_H
 end_ifndef
 
 begin_define
-DECL|macro|_DIFFCORE_H_
+DECL|macro|DIFFCORE_H
 define|#
 directive|define
-name|_DIFFCORE_H_
+name|DIFFCORE_H
 end_define
 
 begin_comment

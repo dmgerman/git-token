@@ -2,14 +2,14 @@ begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_ifndef
 ifndef|#
 directive|ifndef
-name|__progress_h__
+name|PROGRESS_H
 end_ifndef
 
 begin_define
-DECL|macro|__progress_h__
+DECL|macro|PROGRESS_H
 define|#
 directive|define
-name|__progress_h__
+name|PROGRESS_H
 end_define
 
 begin_struct
