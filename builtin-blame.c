@@ -12189,14 +12189,6 @@ if|if
 condition|(
 operator|!
 name|no_mailmap
-operator|&&
-operator|!
-name|access
-argument_list|(
-literal|".mailmap"
-argument_list|,
-name|R_OK
-argument_list|)
 condition|)
 name|read_mailmap
 argument_list|(

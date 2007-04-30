@@ -1735,16 +1735,6 @@ literal|1
 index|]
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|access
-argument_list|(
-literal|".mailmap"
-argument_list|,
-name|R_OK
-argument_list|)
-condition|)
 name|read_mailmap
 argument_list|(
 operator|&
