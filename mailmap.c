@@ -11,6 +11,12 @@ directive|include
 file|"path-list.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"mailmap.h"
+end_include
+
 begin_function
 DECL|function|read_mailmap
 name|int
