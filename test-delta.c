@@ -15,12 +15,18 @@ directive|include
 file|"delta.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"cache.h"
+end_include
+
 begin_decl_stmt
-DECL|variable|usage
+DECL|variable|usage_str
 specifier|static
 specifier|const
 name|char
-name|usage
+name|usage_str
 index|[]
 init|=
 literal|"test-delta (-d|-p)<from_file><data_file><out_file>"
@@ -101,7 +107,7 @@ name|stderr
 argument_list|,
 literal|"Usage: %s\n"
 argument_list|,
-name|usage
+name|usage_str
 argument_list|)
 expr_stmt|;
 return|return
