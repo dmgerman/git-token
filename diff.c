@@ -7376,6 +7376,16 @@ expr_stmt|;
 block|}
 name|free_ab_and_return
 label|:
+name|diff_free_filespec_data
+argument_list|(
+name|one
+argument_list|)
+expr_stmt|;
+name|diff_free_filespec_data
+argument_list|(
+name|two
+argument_list|)
+expr_stmt|;
 name|free
 argument_list|(
 name|a_one
@@ -7517,7 +7527,9 @@ operator|->
 name|size
 argument_list|)
 expr_stmt|;
-return|return;
+goto|goto
+name|free_and_return
+goto|;
 block|}
 if|if
 condition|(
@@ -7647,6 +7659,18 @@ name|ecb
 argument_list|)
 expr_stmt|;
 block|}
+name|free_and_return
+label|:
+name|diff_free_filespec_data
+argument_list|(
+name|one
+argument_list|)
+expr_stmt|;
+name|diff_free_filespec_data
+argument_list|(
+name|two
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
@@ -7776,7 +7800,9 @@ argument_list|(
 name|two
 argument_list|)
 condition|)
-return|return;
+goto|goto
+name|free_and_return
+goto|;
 else|else
 block|{
 comment|/* Crazy xdl interfaces.. */
@@ -7839,6 +7865,18 @@ name|ecb
 argument_list|)
 expr_stmt|;
 block|}
+name|free_and_return
+label|:
+name|diff_free_filespec_data
+argument_list|(
+name|one
+argument_list|)
+expr_stmt|;
+name|diff_free_filespec_data
+argument_list|(
+name|two
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
@@ -8668,7 +8706,7 @@ operator|->
 name|data
 condition|)
 return|return
-name|err
+literal|0
 return|;
 if|if
 condition|(
@@ -9172,6 +9210,17 @@ operator|->
 name|size
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|s
+operator|->
+name|should_free
+operator|||
+name|s
+operator|->
+name|should_munmap
+condition|)
+block|{
 name|s
 operator|->
 name|should_free
@@ -9188,6 +9237,7 @@ name|data
 operator|=
 name|NULL
 expr_stmt|;
+block|}
 name|free
 argument_list|(
 name|s
