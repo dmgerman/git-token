@@ -94,13 +94,12 @@ name|char
 name|blame_usage
 index|[]
 init|=
-literal|"git-blame [-c] [-b] [-l] [--root] [-x] [-t] [-f] [-n] [-s] [-p] [-L n,m] [-S<revs-file>] [-M] [-C] [-C] [--contents<filename>] [--incremental] [commit] [--] file\n"
+literal|"git-blame [-c] [-b] [-l] [--root] [-t] [-f] [-n] [-s] [-p] [-L n,m] [-S<revs-file>] [-M] [-C] [-C] [--contents<filename>] [--incremental] [commit] [--] file\n"
 literal|"  -c                  Use the same output mode as git-annotate (Default: off)\n"
 literal|"  -b                  Show blank SHA-1 for boundary commits (Default: off)\n"
 literal|"  -l                  Show long commit SHA1 (Default: off)\n"
 literal|"  --root              Do not treat root commits as boundaries (Default: off)\n"
 literal|"  -t                  Show raw timestamp (Default: off)\n"
-literal|"  -x                  Do not use .mailmap file\n"
 literal|"  -f, --show-name     Show original filename (Default: auto)\n"
 literal|"  -n, --show-number   Show original linenumber (Default: off)\n"
 literal|"  -s                  Suppress author name and timestamp (Default: off)\n"
@@ -182,14 +181,6 @@ DECL|variable|cmd_is_annotate
 specifier|static
 name|int
 name|cmd_is_annotate
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-DECL|variable|no_mailmap
-specifier|static
-name|int
-name|no_mailmap
 decl_stmt|;
 end_decl_stmt
 
@@ -11257,29 +11248,6 @@ condition|(
 operator|!
 name|strcmp
 argument_list|(
-literal|"-x"
-argument_list|,
-name|arg
-argument_list|)
-operator|||
-operator|!
-name|strcmp
-argument_list|(
-literal|"--no-mailmap"
-argument_list|,
-name|arg
-argument_list|)
-condition|)
-name|no_mailmap
-operator|=
-literal|1
-expr_stmt|;
-elseif|else
-if|if
-condition|(
-operator|!
-name|strcmp
-argument_list|(
 literal|"--"
 argument_list|,
 name|arg
@@ -12185,11 +12153,6 @@ name|errno
 argument_list|)
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|no_mailmap
-condition|)
 name|read_mailmap
 argument_list|(
 operator|&
