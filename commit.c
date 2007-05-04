@@ -3602,6 +3602,12 @@ literal|1
 expr_stmt|;
 if|if
 condition|(
+name|eol
+operator|-
+name|line
+operator|>
+name|key_len
+operator|&&
 operator|!
 name|strncmp
 argument_list|(
