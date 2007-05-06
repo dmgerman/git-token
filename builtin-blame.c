@@ -242,6 +242,14 @@ name|PICKAXE_BLAME_COPY_HARDER
 value|04
 end_define
 
+begin_define
+DECL|macro|PICKAXE_BLAME_COPY_HARDEST
+define|#
+directive|define
+name|PICKAXE_BLAME_COPY_HARDEST
+value|010
+end_define
+
 begin_comment
 comment|/*  * blame for a blame_entry with score lower than these thresholds  * is not passed to the parent using move/copy logic.  */
 end_comment
@@ -5096,6 +5104,13 @@ condition|(
 operator|(
 name|opt
 operator|&
+name|PICKAXE_BLAME_COPY_HARDEST
+operator|)
+operator|||
+operator|(
+operator|(
+name|opt
+operator|&
 name|PICKAXE_BLAME_COPY_HARDER
 operator|)
 operator|&&
@@ -5113,6 +5128,7 @@ name|porigin
 operator|->
 name|path
 argument_list|)
+operator|)
 operator|)
 condition|)
 name|diff_opts
@@ -10923,6 +10939,17 @@ literal|"-C"
 argument_list|)
 condition|)
 block|{
+comment|/* 			 * -C enables copy from removed files; 			 * -C -C enables copy from existing files, but only 			 *       when blaming a new file; 			 * -C -C -C enables copy from existing files for 			 *          everybody 			 */
+if|if
+condition|(
+name|opt
+operator|&
+name|PICKAXE_BLAME_COPY_HARDER
+condition|)
+name|opt
+operator||=
+name|PICKAXE_BLAME_COPY_HARDEST
+expr_stmt|;
 if|if
 condition|(
 name|opt
