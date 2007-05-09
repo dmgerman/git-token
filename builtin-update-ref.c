@@ -25,7 +25,7 @@ name|char
 name|git_update_ref_usage
 index|[]
 init|=
-literal|"git-update-ref [-m<reason>] (-d<refname><value> |<refname><value> [<oldval>])"
+literal|"git-update-ref [-m<reason>] (-d<refname><value> | [--no-deref]<refname><value> [<oldval>])"
 decl_stmt|;
 end_decl_stmt
 
@@ -92,8 +92,14 @@ name|int
 name|i
 decl_stmt|,
 name|delete
+decl_stmt|,
+name|ref_flags
 decl_stmt|;
 name|delete
+operator|=
+literal|0
+expr_stmt|;
+name|ref_flags
 operator|=
 literal|0
 expr_stmt|;
@@ -195,6 +201,26 @@ block|{
 name|delete
 operator|=
 literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+literal|"--no-deref"
+argument_list|,
+name|argv
+index|[
+name|i
+index|]
+argument_list|)
+condition|)
+block|{
+name|ref_flags
+operator||=
+name|REF_NODEREF
 expr_stmt|;
 continue|continue;
 block|}
@@ -333,6 +359,8 @@ condition|?
 name|oldsha1
 else|:
 name|NULL
+argument_list|,
+name|ref_flags
 argument_list|)
 expr_stmt|;
 if|if

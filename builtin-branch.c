@@ -2460,6 +2460,8 @@ argument_list|(
 name|ref
 argument_list|,
 name|NULL
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 if|if
