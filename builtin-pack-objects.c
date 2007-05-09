@@ -97,7 +97,7 @@ name|char
 name|pack_usage
 index|[]
 init|=
-literal|"\ git-pack-objects [{ -q | --progress | --all-progress }] \n\ 	[--local] [--incremental] [--window=N] [--depth=N] \n\ 	[--no-reuse-delta] [--delta-base-offset] [--non-empty] \n\ 	[--revs [--unpacked | --all]*] [--reflog] [--stdout | base-name] \n\ 	[<ref-list |<object-list]"
+literal|"\ git-pack-objects [{ -q | --progress | --all-progress }] \n\ 	[--local] [--incremental] [--window=N] [--depth=N] \n\ 	[--no-reuse-delta] [--no-reuse-object] [--delta-base-offset] \n\ 	[--non-empty] [--revs [--unpacked | --all]*] [--reflog] \n\ 	[--stdout | base-name] [<ref-list |<object-list]"
 decl_stmt|;
 end_decl_stmt
 
@@ -244,9 +244,12 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|no_reuse_delta
+DECL|variable|no_reuse_object
 specifier|static
 name|int
 name|no_reuse_delta
+decl_stmt|,
+name|no_reuse_object
 decl_stmt|;
 end_decl_stmt
 
@@ -2220,6 +2223,16 @@ name|type
 expr_stmt|;
 if|if
 condition|(
+name|no_reuse_object
+condition|)
+name|to_reuse
+operator|=
+literal|0
+expr_stmt|;
+comment|/* explicit */
+elseif|else
+if|if
+condition|(
 operator|!
 name|entry
 operator|->
@@ -2280,6 +2293,9 @@ expr_stmt|;
 comment|/* we have it in-pack undeltified, 				 * and we do not need to deltify it. 				 */
 if|if
 condition|(
+operator|!
+name|no_reuse_object
+operator|&&
 operator|!
 name|entry
 operator|->
@@ -6123,7 +6139,7 @@ operator|&
 name|avail
 argument_list|)
 expr_stmt|;
-comment|/* 		 * We want in_pack_type even if we do not reuse delta. 		 * There is no point not reusing non-delta representations. 		 */
+comment|/* 		 * We want in_pack_type even if we do not reuse delta 		 * since non-delta representations could still be reused. 		 */
 name|used
 operator|=
 name|unpack_object_header_gently
@@ -8820,6 +8836,25 @@ name|arg
 argument_list|)
 condition|)
 block|{
+name|no_reuse_delta
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+literal|"--no-reuse-object"
+argument_list|,
+name|arg
+argument_list|)
+condition|)
+block|{
+name|no_reuse_object
+operator|=
 name|no_reuse_delta
 operator|=
 literal|1
