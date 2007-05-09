@@ -1812,6 +1812,11 @@ argument_list|,
 name|minimum_score
 argument_list|)
 expr_stmt|;
+name|diff_free_filespec_data
+argument_list|(
+name|one
+argument_list|)
+expr_stmt|;
 block|}
 comment|/* We do not need the text anymore */
 name|diff_free_filespec_data

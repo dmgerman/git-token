@@ -203,6 +203,11 @@ expr_stmt|;
 block|}
 block|}
 block|}
+name|diff_free_filespec_data
+argument_list|(
+name|one
+argument_list|)
+expr_stmt|;
 return|return
 name|cnt
 return|;
