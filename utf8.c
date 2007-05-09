@@ -168,10 +168,10 @@ comment|/* The following two functions define the column width of an ISO 10646  
 end_comment
 
 begin_function
-DECL|function|wcwidth
+DECL|function|git_wcwidth
 specifier|static
 name|int
-name|wcwidth
+name|git_wcwidth
 parameter_list|(
 name|ucs_char_t
 name|ch
@@ -1549,7 +1549,7 @@ literal|0
 return|;
 block|}
 return|return
-name|wcwidth
+name|git_wcwidth
 argument_list|(
 name|ch
 argument_list|)
