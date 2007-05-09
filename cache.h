@@ -1955,6 +1955,20 @@ end_decl_stmt
 
 begin_decl_stmt
 specifier|extern
+name|int
+name|core_compression_level
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
+name|int
+name|core_compression_seen
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
 name|size_t
 name|packed_git_window_size
 decl_stmt|;

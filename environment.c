@@ -157,7 +157,21 @@ DECL|variable|zlib_compression_level
 name|int
 name|zlib_compression_level
 init|=
-name|Z_DEFAULT_COMPRESSION
+name|Z_BEST_SPEED
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|core_compression_level
+name|int
+name|core_compression_level
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|core_compression_seen
+name|int
+name|core_compression_seen
 decl_stmt|;
 end_decl_stmt
 
