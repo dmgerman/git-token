@@ -833,7 +833,7 @@ literal|0
 condition|)
 name|die
 argument_list|(
-literal|"Could not write to .msg"
+literal|"Could not write to MERGE_MSG"
 argument_list|)
 expr_stmt|;
 block|}
