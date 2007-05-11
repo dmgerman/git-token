@@ -926,6 +926,11 @@ name|S_ISDIR
 argument_list|(
 name|mode
 argument_list|)
+operator|||
+name|S_ISDIRLNK
+argument_list|(
+name|mode
+argument_list|)
 condition|)
 block|{
 operator|*
@@ -1763,6 +1768,11 @@ expr_stmt|;
 if|if
 condition|(
 name|S_ISDIR
+argument_list|(
+name|mode
+argument_list|)
+operator|||
+name|S_ISDIRLNK
 argument_list|(
 name|mode
 argument_list|)
