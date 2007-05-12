@@ -3274,6 +3274,23 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|has_symlink_leading_path
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|name
+parameter_list|,
+name|char
+modifier|*
+name|last_symlink
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_struct
 DECL|struct|alternate_object_database
 specifier|extern
