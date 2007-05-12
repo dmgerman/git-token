@@ -68,6 +68,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"remote.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|<expat.h>
 end_include
 

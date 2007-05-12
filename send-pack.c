@@ -35,6 +35,12 @@ directive|include
 file|"run-command.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"remote.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|send_pack_usage
 specifier|static
