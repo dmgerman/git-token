@@ -70,10 +70,10 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|take_all_worktree_changes
+DECL|variable|take_worktree_changes
 specifier|static
 name|int
-name|take_all_worktree_changes
+name|take_worktree_changes
 decl_stmt|;
 end_decl_stmt
 
@@ -641,13 +641,19 @@ block|}
 end_function
 
 begin_function
-DECL|function|update_all
+DECL|function|update
 specifier|static
 name|void
-name|update_all
+name|update
 parameter_list|(
 name|int
 name|verbose
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|files
 parameter_list|)
 block|{
 name|struct
@@ -672,6 +678,19 @@ operator|&
 name|rev
 argument_list|,
 name|NULL
+argument_list|)
+expr_stmt|;
+name|rev
+operator|.
+name|prune_data
+operator|=
+name|get_pathspec
+argument_list|(
+name|rev
+operator|.
+name|prefix
+argument_list|,
+name|files
 argument_list|)
 expr_stmt|;
 name|rev
@@ -1068,7 +1087,7 @@ literal|"-u"
 argument_list|)
 condition|)
 block|{
-name|take_all_worktree_changes
+name|take_worktree_changes
 operator|=
 literal|1
 expr_stmt|;
@@ -1082,23 +1101,16 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|take_all_worktree_changes
+name|take_worktree_changes
 condition|)
 block|{
-if|if
-condition|(
-name|i
-operator|<
-name|argc
-condition|)
-name|die
-argument_list|(
-literal|"-u and explicit paths are incompatible"
-argument_list|)
-expr_stmt|;
-name|update_all
+name|update
 argument_list|(
 name|verbose
+argument_list|,
+name|argv
+operator|+
+name|i
 argument_list|)
 expr_stmt|;
 goto|goto
