@@ -191,29 +191,6 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
-begin_function_decl
-specifier|const
-name|unsigned
-name|char
-modifier|*
-name|tree_entry_extract
-parameter_list|(
-name|struct
-name|tree_desc
-modifier|*
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-modifier|*
-parameter_list|,
-name|unsigned
-name|int
-modifier|*
-parameter_list|)
-function_decl|;
-end_function_decl
-
 begin_comment
 comment|/* Helper function that does both of the above and returns true for success */
 end_comment
