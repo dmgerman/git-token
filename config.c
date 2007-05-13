@@ -2131,6 +2131,14 @@ modifier|*
 name|value
 parameter_list|)
 block|{
+specifier|const
+name|char
+modifier|*
+name|ep
+decl_stmt|;
+name|size_t
+name|section_len
+decl_stmt|;
 switch|switch
 condition|(
 name|store
@@ -2221,9 +2229,33 @@ break|break;
 case|case
 name|SECTION_SEEN
 case|:
+comment|/* 		 * What we are looking for is in store.key (both 		 * section and var), and its section part is baselen 		 * long.  We found key (again, both section and var). 		 * We would want to know if this key is in the same 		 * section as what we are looking for.  We already 		 * know we are in the same section as what should 		 * hold store.key. 		 */
+name|ep
+operator|=
+name|strrchr
+argument_list|(
+name|key
+argument_list|,
+literal|'.'
+argument_list|)
+expr_stmt|;
+name|section_len
+operator|=
+name|ep
+operator|-
+name|key
+expr_stmt|;
 if|if
 condition|(
-name|strncmp
+operator|(
+name|section_len
+operator|!=
+name|store
+operator|.
+name|baselen
+operator|)
+operator|||
+name|memcmp
 argument_list|(
 name|key
 argument_list|,
@@ -2231,9 +2263,7 @@ name|store
 operator|.
 name|key
 argument_list|,
-name|store
-operator|.
-name|baselen
+name|section_len
 operator|+
 literal|1
 argument_list|)
@@ -2247,8 +2277,7 @@ name|SECTION_END_SEEN
 expr_stmt|;
 break|break;
 block|}
-else|else
-comment|/* do not increment matches: this is no match */
+comment|/* 		 * Do not increment matches: this is no match, but we 		 * just made sure we are in the desired section. 		 */
 name|store
 operator|.
 name|offset
