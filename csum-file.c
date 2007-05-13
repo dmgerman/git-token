@@ -135,7 +135,7 @@ modifier|*
 name|result
 parameter_list|,
 name|int
-name|update
+name|final
 parameter_list|)
 block|{
 name|unsigned
@@ -171,7 +171,22 @@ argument_list|,
 name|offset
 argument_list|)
 expr_stmt|;
+name|f
+operator|->
+name|offset
+operator|=
+literal|0
+expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+name|final
+condition|)
+return|return
+literal|0
+return|;
+comment|/* only want to flush (no checksum write, no close) */
 name|SHA1_Final
 argument_list|(
 name|f
@@ -197,10 +212,6 @@ operator|->
 name|buffer
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|update
-condition|)
 name|sha1flush
 argument_list|(
 name|f
