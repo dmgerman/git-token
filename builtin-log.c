@@ -2564,7 +2564,7 @@ name|extra_headers
 operator|=
 name|extra_headers
 expr_stmt|;
-comment|/* 	 * Parse the arguments before setup_revisions(), or something 	 * like "git fmt-patch -o a123 HEAD^.." may fail; a123 is 	 * possibly a valid SHA1. 	 */
+comment|/* 	 * Parse the arguments before setup_revisions(), or something 	 * like "git format-patch -o a123 HEAD^.." may fail; a123 is 	 * possibly a valid SHA1. 	 */
 for|for
 control|(
 name|i
