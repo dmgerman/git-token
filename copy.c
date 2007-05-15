@@ -22,9 +22,6 @@ condition|(
 literal|1
 condition|)
 block|{
-name|int
-name|len
-decl_stmt|;
 name|char
 name|buffer
 index|[
@@ -37,8 +34,9 @@ name|buf
 init|=
 name|buffer
 decl_stmt|;
+name|ssize_t
 name|len
-operator|=
+init|=
 name|xread
 argument_list|(
 name|ifd
@@ -50,7 +48,7 @@ argument_list|(
 name|buffer
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 operator|!

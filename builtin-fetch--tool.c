@@ -35,7 +35,7 @@ parameter_list|(
 name|void
 parameter_list|)
 block|{
-name|int
+name|size_t
 name|offset
 init|=
 literal|0
@@ -54,7 +54,7 @@ condition|(
 literal|1
 condition|)
 block|{
-name|int
+name|ssize_t
 name|cnt
 init|=
 name|xread

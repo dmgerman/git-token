@@ -8191,7 +8191,7 @@ name|unsigned
 name|long
 name|size
 decl_stmt|;
-name|int
+name|ssize_t
 name|got
 decl_stmt|;
 name|size

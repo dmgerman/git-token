@@ -303,7 +303,7 @@ name|unsigned
 name|size
 parameter_list|)
 block|{
-name|int
+name|size_t
 name|n
 init|=
 literal|0
@@ -315,7 +315,7 @@ operator|<
 name|size
 condition|)
 block|{
-name|int
+name|ssize_t
 name|ret
 init|=
 name|xread

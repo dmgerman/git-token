@@ -12414,7 +12414,7 @@ init|=
 operator|*
 name|return_size
 decl_stmt|;
-name|int
+name|ssize_t
 name|iret
 decl_stmt|;
 name|unsigned

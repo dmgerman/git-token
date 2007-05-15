@@ -405,7 +405,7 @@ argument_list|()
 expr_stmt|;
 do|do
 block|{
-name|int
+name|ssize_t
 name|ret
 init|=
 name|xread

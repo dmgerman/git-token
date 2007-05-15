@@ -898,7 +898,7 @@ init|;
 condition|;
 control|)
 block|{
-name|int
+name|ssize_t
 name|nr
 init|=
 name|alloc
@@ -7124,7 +7124,7 @@ init|;
 condition|;
 control|)
 block|{
-name|int
+name|ssize_t
 name|ret
 init|=
 name|xread

@@ -455,7 +455,7 @@ block|{
 name|char
 name|type
 decl_stmt|;
-name|int
+name|ssize_t
 name|retval
 decl_stmt|;
 do|do
