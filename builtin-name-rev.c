@@ -316,7 +316,20 @@ name|xmalloc
 argument_list|(
 name|len
 operator|+
-literal|8
+literal|1
+operator|+
+name|decimal_length
+argument_list|(
+name|generation
+argument_list|)
+operator|+
+comment|/* ~<n> */
+literal|1
+operator|+
+literal|2
+operator|+
+comment|/* ^NN */
+literal|1
 argument_list|)
 decl_stmt|;
 if|if
