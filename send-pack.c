@@ -1855,6 +1855,12 @@ argument_list|,
 name|dest
 argument_list|,
 name|receivepack
+argument_list|,
+name|verbose
+condition|?
+name|CONNECT_VERBOSE
+else|:
+literal|0
 argument_list|)
 expr_stmt|;
 if|if
