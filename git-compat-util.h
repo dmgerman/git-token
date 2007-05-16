@@ -137,6 +137,21 @@ parameter_list|)
 value|((x)& TYPEOF(x)(~0ULL<< (sizeof(x) * 8 - (bits))))
 end_define
 
+begin_comment
+comment|/* Approximation of the length of the decimal representation of this type. */
+end_comment
+
+begin_define
+DECL|macro|decimal_length
+define|#
+directive|define
+name|decimal_length
+parameter_list|(
+name|x
+parameter_list|)
+value|((int)(sizeof(x) * 2.56 + 0.5) + 1)
+end_define
+
 begin_if
 if|#
 directive|if

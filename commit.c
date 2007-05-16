@@ -5976,6 +5976,7 @@ name|char
 modifier|*
 name|header_fmt
 init|=
+literal|"MIME-Version: 1.0\n"
 literal|"Content-Type: text/plain; charset=%s\n"
 literal|"Content-Transfer-Encoding: 8bit\n"
 decl_stmt|;
