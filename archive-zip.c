@@ -1144,9 +1144,13 @@ literal|0
 expr_stmt|;
 name|buffer
 operator|=
-name|read_sha1_file
+name|convert_sha1_file
 argument_list|(
+name|path
+argument_list|,
 name|sha1
+argument_list|,
+name|mode
 argument_list|,
 operator|&
 name|type
