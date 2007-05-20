@@ -328,6 +328,8 @@ argument_list|,
 name|dest
 argument_list|,
 name|uploadpack
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 if|if
