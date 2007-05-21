@@ -1610,7 +1610,7 @@ condition|(
 operator|!
 name|endchar
 operator|&&
-name|S_ISDIRLNK
+name|S_ISGITLINK
 argument_list|(
 name|ntohl
 argument_list|(
@@ -1631,7 +1631,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * When we find a directory when traversing the filesystem, we  * have three distinct cases:  *  *  - ignore it  *  - see it as a directory  *  - recurse into it  *  * and which one we choose depends on a combination of existing  * git index contents and the flags passed into the directory  * traversal routine.  *  * Case 1: If we *already* have entries in the index under that  * directory name, we always recurse into the directory to see  * all the files.  *  * Case 2: If we *already* have that directory name as a gitlink,  * we always continue to see it as a gitlink, regardless of whether  * there is an actual git directory there or not (it might not  * be checked out as a subproject!)  *  * Case 3: if we didn't have it in the index previously, we  * have a few sub-cases:  *  *  (a) if "show_other_directories" is true, we show it as  *      just a directory, unless "hide_empty_directories" is  *      also true and the directory is empty, in which case  *      we just ignore it entirely.  *  (b) if it looks like a git directory, and we don't have  *      'no_dirlinks' set we treat it as a gitlink, and show it  *      as a directory.  *  (c) otherwise, we recurse into it.  */
+comment|/*  * When we find a directory when traversing the filesystem, we  * have three distinct cases:  *  *  - ignore it  *  - see it as a directory  *  - recurse into it  *  * and which one we choose depends on a combination of existing  * git index contents and the flags passed into the directory  * traversal routine.  *  * Case 1: If we *already* have entries in the index under that  * directory name, we always recurse into the directory to see  * all the files.  *  * Case 2: If we *already* have that directory name as a gitlink,  * we always continue to see it as a gitlink, regardless of whether  * there is an actual git directory there or not (it might not  * be checked out as a subproject!)  *  * Case 3: if we didn't have it in the index previously, we  * have a few sub-cases:  *  *  (a) if "show_other_directories" is true, we show it as  *      just a directory, unless "hide_empty_directories" is  *      also true and the directory is empty, in which case  *      we just ignore it entirely.  *  (b) if it looks like a git directory, and we don't have  *      'no_gitlinks' set we treat it as a gitlink, and show it  *      as a directory.  *  (c) otherwise, we recurse into it.  */
 end_comment
 
 begin_enum
@@ -1727,7 +1727,7 @@ condition|(
 operator|!
 name|dir
 operator|->
-name|no_dirlinks
+name|no_gitlinks
 condition|)
 block|{
 name|unsigned

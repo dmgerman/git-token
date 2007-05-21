@@ -315,7 +315,7 @@ name|blob_type
 decl_stmt|;
 if|if
 condition|(
-name|S_ISDIRLNK
+name|S_ISGITLINK
 argument_list|(
 name|mode
 argument_list|)

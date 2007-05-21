@@ -1712,7 +1712,7 @@ if|if
 condition|(
 name|mode
 operator|!=
-name|S_IFDIRLNK
+name|S_IFGITLINK
 operator|&&
 operator|!
 name|missing_ok

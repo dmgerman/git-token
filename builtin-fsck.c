@@ -1109,7 +1109,7 @@ case|case
 name|S_IFDIR
 case|:
 case|case
-name|S_IFDIRLNK
+name|S_IFGITLINK
 case|:
 break|break;
 comment|/* 		 * This is nonstandard, but we had a few of these 		 * early on when we honored the full set of mode 		 * bits.. 		 */
@@ -3408,7 +3408,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|S_ISDIRLNK
+name|S_ISGITLINK
 argument_list|(
 name|mode
 argument_list|)

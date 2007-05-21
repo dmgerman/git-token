@@ -150,8 +150,8 @@ name|hide_empty_directories
 range|:
 literal|1
 decl_stmt|,
-DECL|member|no_dirlinks
-name|no_dirlinks
+DECL|member|no_gitlinks
+name|no_gitlinks
 range|:
 literal|1
 decl_stmt|;

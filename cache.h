@@ -180,22 +180,22 @@ comment|/*  * A "directory link" is a link to another git directory.  *  * The v
 end_comment
 
 begin_define
-DECL|macro|S_IFDIRLNK
+DECL|macro|S_IFGITLINK
 define|#
 directive|define
-name|S_IFDIRLNK
+name|S_IFGITLINK
 value|0160000
 end_define
 
 begin_define
-DECL|macro|S_ISDIRLNK
+DECL|macro|S_ISGITLINK
 define|#
 directive|define
-name|S_ISDIRLNK
+name|S_ISGITLINK
 parameter_list|(
 name|m
 parameter_list|)
-value|(((m)& S_IFMT) == S_IFDIRLNK)
+value|(((m)& S_IFMT) == S_IFGITLINK)
 end_define
 
 begin_comment
@@ -478,7 +478,7 @@ argument_list|(
 name|mode
 argument_list|)
 operator|||
-name|S_ISDIRLNK
+name|S_ISGITLINK
 argument_list|(
 name|mode
 argument_list|)
@@ -486,7 +486,7 @@ condition|)
 return|return
 name|htonl
 argument_list|(
-name|S_IFDIRLNK
+name|S_IFGITLINK
 argument_list|)
 return|;
 return|return
@@ -609,7 +609,7 @@ parameter_list|(
 name|mode
 parameter_list|)
 define|\
-value|(S_ISREG(mode) ? (S_IFREG | ce_permissions(mode)) : \ 	S_ISLNK(mode) ? S_IFLNK : S_ISDIR(mode) ? S_IFDIR : S_IFDIRLNK)
+value|(S_ISREG(mode) ? (S_IFREG | ce_permissions(mode)) : \ 	S_ISLNK(mode) ? S_IFLNK : S_ISDIR(mode) ? S_IFDIR : S_IFGITLINK)
 end_define
 
 begin_define

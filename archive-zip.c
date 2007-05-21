@@ -1046,7 +1046,7 @@ argument_list|(
 name|mode
 argument_list|)
 operator|||
-name|S_ISDIRLNK
+name|S_ISGITLINK
 argument_list|(
 name|mode
 argument_list|)

@@ -827,7 +827,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|S_ISDIRLNK
+name|S_ISGITLINK
 argument_list|(
 name|entry
 operator|.
@@ -884,7 +884,7 @@ name|obj
 decl_stmt|;
 if|if
 condition|(
-name|S_ISDIRLNK
+name|S_ISGITLINK
 argument_list|(
 name|entry
 operator|.

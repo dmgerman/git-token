@@ -464,7 +464,7 @@ index|[
 literal|20
 index|]
 decl_stmt|;
-comment|/* 	 * We don't actually require that the .git directory 	 * under DIRLNK directory be a valid git directory. It 	 * might even be missing (in case nobody populated that 	 * sub-project). 	 * 	 * If so, we consider it always to match. 	 */
+comment|/* 	 * We don't actually require that the .git directory 	 * under GITLINK directory be a valid git directory. It 	 * might even be missing (in case nobody populated that 	 * sub-project). 	 * 	 * If so, we consider it always to match. 	 */
 if|if
 condition|(
 name|resolve_gitlink_ref
@@ -564,7 +564,7 @@ name|S_IFDIR
 case|:
 if|if
 condition|(
-name|S_ISDIRLNK
+name|S_ISGITLINK
 argument_list|(
 name|ntohl
 argument_list|(
@@ -698,7 +698,7 @@ name|TYPE_CHANGED
 expr_stmt|;
 break|break;
 case|case
-name|S_IFDIRLNK
+name|S_IFGITLINK
 case|:
 if|if
 condition|(
