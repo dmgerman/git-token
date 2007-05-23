@@ -7501,15 +7501,6 @@ condition|)
 break|break;
 if|if
 condition|(
-name|m
-operator|->
-name|entry
-operator|->
-name|no_try_delta
-condition|)
-continue|continue;
-if|if
-condition|(
 name|try_delta
 argument_list|(
 name|n
