@@ -5374,6 +5374,12 @@ expr_stmt|;
 if|if
 condition|(
 name|myoe
+operator|&&
+name|myoe
+operator|->
+name|pack_id
+operator|!=
+name|MAX_PACK_ID
 condition|)
 block|{
 if|if
