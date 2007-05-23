@@ -6265,6 +6265,12 @@ name|depth
 operator|=
 literal|0
 expr_stmt|;
+name|lo
+operator|.
+name|no_free
+operator|=
+literal|0
+expr_stmt|;
 block|}
 else|else
 block|{
