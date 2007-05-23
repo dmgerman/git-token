@@ -45,6 +45,10 @@ name|char
 modifier|*
 name|delayed_title
 decl_stmt|;
+DECL|member|need_lf
+name|int
+name|need_lf
+decl_stmt|;
 block|}
 struct|;
 end_struct
