@@ -219,6 +219,10 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * env (the environment) is to be formatted like environ: "VAR=VALUE".  * To unset an environment variable use just "VAR".  */
+end_comment
+
 begin_function_decl
 name|int
 name|run_command_v_opt_cd_env
