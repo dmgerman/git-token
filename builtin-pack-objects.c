@@ -3807,6 +3807,7 @@ argument_list|,
 name|nr_result
 argument_list|)
 expr_stmt|;
+comment|/* 	 * We have scanned through [0 ... i).  Since we have written 	 * the correct number of objects,  the remaining [i ... nr_objects) 	 * items must be either already written (due to out-of-order delta base) 	 * or a preferred base.  Count those which are neither and complain if any. 	 */
 for|for
 control|(
 name|j
@@ -9712,6 +9713,17 @@ condition|)
 name|usage
 argument_list|(
 name|pack_usage
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|pack_to_stdout
+operator|&&
+name|pack_size_limit
+condition|)
+name|die
+argument_list|(
+literal|"--max-pack-size cannot be used to build a pack for transfer."
 argument_list|)
 expr_stmt|;
 if|if
