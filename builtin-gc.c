@@ -41,7 +41,6 @@ specifier|static
 name|int
 name|pack_refs
 init|=
-operator|-
 literal|1
 decl_stmt|;
 end_decl_stmt
@@ -76,6 +75,8 @@ index|[]
 init|=
 block|{
 literal|"pack-refs"
+block|,
+literal|"--all"
 block|,
 literal|"--prune"
 block|,
