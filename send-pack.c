@@ -1708,6 +1708,11 @@ operator|-
 literal|2
 case|:
 comment|/* ok but a single level -- that is fine for 			  * a match pattern. 			  */
+case|case
+operator|-
+literal|3
+case|:
+comment|/* ok but ends with a pattern-match character */
 continue|continue;
 block|}
 name|die
