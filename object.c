@@ -981,6 +981,11 @@ operator|<
 literal|0
 condition|)
 block|{
+name|free
+argument_list|(
+name|buffer
+argument_list|)
+expr_stmt|;
 name|error
 argument_list|(
 literal|"sha1 mismatch %s\n"
