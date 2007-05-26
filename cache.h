@@ -3808,6 +3808,18 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|int
+name|open_pack_index
+parameter_list|(
+name|struct
+name|packed_git
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|unsigned
 name|char
 modifier|*
@@ -3870,7 +3882,6 @@ name|char
 modifier|*
 name|nth_packed_object_sha1
 parameter_list|(
-specifier|const
 name|struct
 name|packed_git
 modifier|*
