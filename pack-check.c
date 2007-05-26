@@ -389,7 +389,7 @@ DECL|macro|MAX_CHAIN
 define|#
 directive|define
 name|MAX_CHAIN
-value|40
+value|50
 end_define
 
 begin_function
@@ -412,6 +412,8 @@ decl_stmt|,
 name|chain_histogram
 index|[
 name|MAX_CHAIN
+operator|+
+literal|1
 index|]
 decl_stmt|;
 name|nr_objects
@@ -596,7 +598,7 @@ expr_stmt|;
 if|if
 condition|(
 name|delta_chain_length
-operator|<
+operator|<=
 name|MAX_CHAIN
 condition|)
 name|chain_histogram
@@ -621,7 +623,7 @@ operator|=
 literal|0
 init|;
 name|i
-operator|<
+operator|<=
 name|MAX_CHAIN
 condition|;
 name|i
@@ -639,31 +641,21 @@ condition|)
 continue|continue;
 name|printf
 argument_list|(
-literal|"chain length %s %d: %d object%s\n"
+literal|"chain length = %d: %d object%s\n"
 argument_list|,
 name|i
-condition|?
-literal|"="
-else|:
-literal|">="
-argument_list|,
-name|i
-condition|?
-name|i
-else|:
-name|MAX_CHAIN
 argument_list|,
 name|chain_histogram
 index|[
 name|i
 index|]
 argument_list|,
+name|chain_histogram
+index|[
+name|i
+index|]
+operator|>
 literal|1
-operator|<
-name|chain_histogram
-index|[
-name|i
-index|]
 condition|?
 literal|"s"
 else|:
@@ -671,6 +663,36 @@ literal|""
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|chain_histogram
+index|[
+literal|0
+index|]
+condition|)
+name|printf
+argument_list|(
+literal|"chain length> %d: %d object%s\n"
+argument_list|,
+name|MAX_CHAIN
+argument_list|,
+name|chain_histogram
+index|[
+literal|0
+index|]
+argument_list|,
+name|chain_histogram
+index|[
+literal|0
+index|]
+operator|>
+literal|1
+condition|?
+literal|"s"
+else|:
+literal|""
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
