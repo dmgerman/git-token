@@ -8008,7 +8008,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Given a name and sha1 pair, if the dircache tells us the file in  * the work tree has that object contents, return true, so that  * prepare_temp_file() does not have to inflate and extract.  */
+comment|/*  * Given a name and sha1 pair, if the index tells us the file in  * the work tree has that object contents, return true, so that  * prepare_temp_file() does not have to inflate and extract.  */
 end_comment
 
 begin_function
