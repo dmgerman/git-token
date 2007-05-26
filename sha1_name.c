@@ -764,6 +764,9 @@ index|[
 literal|20
 index|]
 decl_stmt|;
+name|prepare_alt_odb
+argument_list|()
+expr_stmt|;
 name|has_unpacked
 operator|=
 name|find_short_object_filename
@@ -3612,9 +3615,6 @@ operator|*
 name|mode
 operator|=
 name|S_IFINVALID
-expr_stmt|;
-name|prepare_alt_odb
-argument_list|()
 expr_stmt|;
 name|ret
 operator|=
