@@ -7817,11 +7817,28 @@ name|src
 operator|->
 name|index
 condition|)
-name|die
+block|{
+specifier|static
+name|int
+name|warned
+init|=
+literal|0
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|warned
+operator|++
+condition|)
+name|warning
 argument_list|(
-literal|"out of memory"
+literal|"suboptimal pack - out of memory"
 argument_list|)
 expr_stmt|;
+return|return
+literal|0
+return|;
+block|}
 block|}
 name|delta_buf
 operator|=
