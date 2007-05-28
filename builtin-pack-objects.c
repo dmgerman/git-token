@@ -458,6 +458,17 @@ literal|0
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|cache_max_small_delta_size
+specifier|static
+name|unsigned
+name|long
+name|cache_max_small_delta_size
+init|=
+literal|1000
+decl_stmt|;
+end_decl_stmt
+
 begin_comment
 comment|/*  * The object names in objects array are hashed with this hashtable,  * to help looking up the entry by object name.  * This hashtable is built after all the objects are seen.  */
 end_comment
@@ -7583,6 +7594,15 @@ condition|)
 return|return
 literal|0
 return|;
+if|if
+condition|(
+name|delta_size
+operator|<
+name|cache_max_small_delta_size
+condition|)
+return|return
+literal|1
+return|;
 comment|/* cache delta, if objects are large enough compared to delta size */
 if|if
 condition|(
@@ -8796,6 +8816,30 @@ argument_list|)
 condition|)
 block|{
 name|max_delta_cache_size
+operator|=
+name|git_config_int
+argument_list|(
+name|k
+argument_list|,
+name|v
+argument_list|)
+expr_stmt|;
+return|return
+literal|0
+return|;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|k
+argument_list|,
+literal|"pack.deltacachelimit"
+argument_list|)
+condition|)
+block|{
+name|cache_max_small_delta_size
 operator|=
 name|git_config_int
 argument_list|(
