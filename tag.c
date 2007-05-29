@@ -189,7 +189,7 @@ condition|)
 block|{
 name|error
 argument_list|(
-literal|"Object %s is a %s, not a tree"
+literal|"Object %s is a %s, not a tag"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
