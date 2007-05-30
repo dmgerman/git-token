@@ -703,11 +703,6 @@ condition|)
 continue|continue;
 if|if
 condition|(
-operator|!
-name|p
-operator|->
-name|index_data
-operator|&&
 name|open_pack_index
 argument_list|(
 name|p
