@@ -502,6 +502,7 @@ operator|*=
 literal|85
 operator|)
 condition|)
+return|return
 name|error
 argument_list|(
 literal|"invalid base85 sequence %.5s"
@@ -510,7 +511,7 @@ name|buffer
 operator|-
 literal|5
 argument_list|)
-expr_stmt|;
+return|;
 name|acc
 operator|+=
 name|de
