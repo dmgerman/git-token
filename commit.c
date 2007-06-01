@@ -2859,12 +2859,17 @@ index|]
 operator|&
 literal|0xFF
 decl_stmt|;
+comment|/* 		 * We encode ' ' using '=20' even though rfc2047 		 * allows using '_' for readability.  Unfortunately, 		 * many programs do not understand this and just 		 * leave the underscore in place. 		 */
 if|if
 condition|(
 name|is_rfc2047_special
 argument_list|(
 name|ch
 argument_list|)
+operator|||
+name|ch
+operator|==
+literal|' '
 condition|)
 block|{
 name|sprintf
@@ -2881,19 +2886,6 @@ operator|+=
 literal|3
 expr_stmt|;
 block|}
-elseif|else
-if|if
-condition|(
-name|ch
-operator|==
-literal|' '
-condition|)
-operator|*
-name|bp
-operator|++
-operator|=
-literal|'_'
-expr_stmt|;
 else|else
 operator|*
 name|bp
