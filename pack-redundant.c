@@ -2880,6 +2880,16 @@ operator|.
 name|all_objects
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|open_pack_index
+argument_list|(
+name|p
+argument_list|)
+condition|)
+return|return
+name|NULL
+return|;
 name|base
 operator|=
 name|p

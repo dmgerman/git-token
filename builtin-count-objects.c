@@ -701,6 +701,14 @@ operator|->
 name|pack_local
 condition|)
 continue|continue;
+if|if
+condition|(
+name|open_pack_index
+argument_list|(
+name|p
+argument_list|)
+condition|)
+continue|continue;
 name|packed
 operator|+=
 name|p
