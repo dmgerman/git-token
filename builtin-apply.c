@@ -284,10 +284,10 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|applied_after_stripping
+DECL|variable|applied_after_fixing_ws
 specifier|static
 name|int
-name|applied_after_stripping
+name|applied_after_fixing_ws
 decl_stmt|;
 end_decl_stmt
 
@@ -7981,7 +7981,7 @@ if|if
 condition|(
 name|fixed
 condition|)
-name|applied_after_stripping
+name|applied_after_fixing_ws
 operator|++
 expr_stmt|;
 return|return
@@ -14235,7 +14235,7 @@ name|error_on_whitespace
 condition|)
 name|die
 argument_list|(
-literal|"%d line%s add%s trailing whitespaces."
+literal|"%d line%s add%s whitespace errors."
 argument_list|,
 name|whitespace_error
 argument_list|,
@@ -14258,18 +14258,18 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|applied_after_stripping
+name|applied_after_fixing_ws
 condition|)
 name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
 literal|"warning: %d line%s applied after"
-literal|" stripping trailing whitespaces.\n"
+literal|" fixing whitespace errors.\n"
 argument_list|,
-name|applied_after_stripping
+name|applied_after_fixing_ws
 argument_list|,
-name|applied_after_stripping
+name|applied_after_fixing_ws
 operator|==
 literal|1
 condition|?
@@ -14287,8 +14287,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"warning: %d line%s add%s trailing"
-literal|" whitespaces.\n"
+literal|"warning: %d line%s add%s whitespace errors.\n"
 argument_list|,
 name|whitespace_error
 argument_list|,
