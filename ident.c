@@ -934,10 +934,7 @@ name|email
 condition|)
 name|email
 operator|=
-name|getenv
-argument_list|(
-literal|"EMAIL"
-argument_list|)
+name|git_default_email
 expr_stmt|;
 if|if
 condition|(
@@ -946,7 +943,10 @@ name|email
 condition|)
 name|email
 operator|=
-name|git_default_email
+name|getenv
+argument_list|(
+literal|"EMAIL"
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
