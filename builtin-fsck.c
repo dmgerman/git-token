@@ -147,6 +147,14 @@ name|errors_found
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|verbose
+specifier|static
+name|int
+name|verbose
+decl_stmt|;
+end_decl_stmt
+
 begin_define
 DECL|macro|ERROR_OBJECT
 define|#
@@ -668,6 +676,24 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|verbose
+condition|)
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"Checking %s\n"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|obj
+operator|->
+name|sha1
+argument_list|)
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|obj
 operator|->
 name|flags
@@ -707,6 +733,19 @@ name|max
 operator|=
 name|get_max_object_index
 argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|verbose
+condition|)
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"Checking connectivity (%d objects)\n"
+argument_list|,
+name|max
+argument_list|)
 expr_stmt|;
 for|for
 control|(
@@ -983,6 +1022,26 @@ name|char
 modifier|*
 name|o_sha1
 decl_stmt|;
+if|if
+condition|(
+name|verbose
+condition|)
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"Checking tree %s\n"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|item
+operator|->
+name|object
+operator|.
+name|sha1
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|init_tree_desc
 argument_list|(
 operator|&
@@ -1339,6 +1398,26 @@ index|]
 decl_stmt|;
 if|if
 condition|(
+name|verbose
+condition|)
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"Checking commit %s\n"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|commit
+operator|->
+name|object
+operator|.
+name|sha1
+argument_list|)
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|memcmp
 argument_list|(
 name|buffer
@@ -1565,6 +1644,26 @@ name|tag
 operator|->
 name|tagged
 decl_stmt|;
+if|if
+condition|(
+name|verbose
+condition|)
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"Checking tag %s\n"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|tag
+operator|->
+name|object
+operator|.
+name|sha1
+argument_list|)
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -2127,6 +2226,19 @@ operator|!
 name|dir
 condition|)
 return|return;
+if|if
+condition|(
+name|verbose
+condition|)
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"Checking directory %s\n"
+argument_list|,
+name|path
+argument_list|)
+expr_stmt|;
 while|while
 condition|(
 operator|(
@@ -2324,6 +2436,27 @@ name|object
 modifier|*
 name|obj
 decl_stmt|;
+if|if
+condition|(
+name|verbose
+condition|)
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"Checking reflog %s->%s\n"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|osha1
+argument_list|)
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|nsha1
+argument_list|)
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -2594,6 +2727,17 @@ block|{
 name|int
 name|i
 decl_stmt|;
+if|if
+condition|(
+name|verbose
+condition|)
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"Checking object directory\n"
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|i
@@ -2681,6 +2825,17 @@ operator|&
 name|flag
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|verbose
+condition|)
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"Checking HEAD link\n"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -2781,6 +2936,17 @@ name|err
 init|=
 literal|0
 decl_stmt|;
+if|if
+condition|(
+name|verbose
+condition|)
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"Checking cache tree\n"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 literal|0
@@ -2899,7 +3065,7 @@ name|fsck_usage
 index|[]
 init|=
 literal|"git-fsck [--tags] [--root] [[--unreachable] [--cache] [--full] "
-literal|"[--strict]<head-sha1>*]"
+literal|"[--strict] [--verbose]<head-sha1>*]"
 decl_stmt|;
 end_decl_stmt
 
@@ -3073,6 +3239,23 @@ argument_list|)
 condition|)
 block|{
 name|check_strict
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--verbose"
+argument_list|)
+condition|)
+block|{
+name|verbose
 operator|=
 literal|1
 expr_stmt|;
