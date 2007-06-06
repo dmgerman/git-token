@@ -1169,6 +1169,23 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
+name|gitdirenv
+operator|=
+name|getenv
+argument_list|(
+name|GIT_DIR_ENVIRONMENT
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|gitdirenv
+condition|)
+name|die
+argument_list|(
+literal|"getenv after setenv failed"
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(
@@ -1358,6 +1375,16 @@ operator|=
 name|getenv
 argument_list|(
 name|GIT_DIR_ENVIRONMENT
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|gitdirenv
+condition|)
+name|die
+argument_list|(
+literal|"getenv after setenv failed"
 argument_list|)
 expr_stmt|;
 if|if
