@@ -2401,12 +2401,12 @@ argument_list|,
 literal|10
 argument_list|)
 expr_stmt|;
-comment|/* 	 * Seconds since 1970? We trigger on that for anything after Jan 1, 2000 	 */
+comment|/* 	 * Seconds since 1970? We trigger on that for any numbers with 	 * more than 8 digits. This is because we don't want to rule out 	 * numbers like 20070606 as a YYYYMMDD date. 	 */
 if|if
 condition|(
 name|num
-operator|>
-literal|946684800
+operator|>=
+literal|100000000
 condition|)
 block|{
 name|time_t
