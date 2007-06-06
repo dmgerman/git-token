@@ -3088,6 +3088,11 @@ argument_list|)
 expr_stmt|;
 name|unsetenv
 argument_list|(
+name|GIT_WORK_TREE_ENVIRONMENT
+argument_list|)
+expr_stmt|;
+name|unsetenv
+argument_list|(
 name|GRAFT_ENVIRONMENT
 argument_list|)
 expr_stmt|;
