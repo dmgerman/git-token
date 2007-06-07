@@ -6540,7 +6540,7 @@ operator|->
 name|next
 expr_stmt|;
 block|}
-comment|/*           * find the tips          *          * tips are nodes not reachable from any other node in the list           *           * the tips serve as a starting set for the work queue.          */
+comment|/*          * find the tips          *          * tips are nodes not reachable from any other node in the list          *          * the tips serve as a starting set for the work queue.          */
 name|next
 operator|=
 operator|*
@@ -6690,7 +6690,7 @@ condition|(
 name|pn
 condition|)
 block|{
-comment|/* 				 * parents are only enqueued for emission                                   * when all their children have been emitted thereby                                  * guaranteeing topological order.                                  */
+comment|/* 				 * parents are only enqueued for emission                                  * when all their children have been emitted thereby                                  * guaranteeing topological order.                                  */
 name|pn
 operator|->
 name|indegree

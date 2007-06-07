@@ -2350,7 +2350,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * We've seen a digit. Time? Year? Date?   */
+comment|/*  * We've seen a digit. Time? Year? Date?  */
 end_comment
 
 begin_function

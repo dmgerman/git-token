@@ -588,7 +588,7 @@ name|sl
 decl_stmt|,
 name|ndot
 decl_stmt|;
-comment|/*  	 * This resurrects the belts and suspenders paranoia check by HPA 	 * done in<435560F7.4080006@zytor.com> thread, now enter_repo() 	 * does not do getcwd() based path canonicalizations. 	 * 	 * sl becomes true immediately after seeing '/' and continues to 	 * be true as long as dots continue after that without intervening 	 * non-dot character. 	 */
+comment|/* 	 * This resurrects the belts and suspenders paranoia check by HPA 	 * done in<435560F7.4080006@zytor.com> thread, now enter_repo() 	 * does not do getcwd() based path canonicalizations. 	 * 	 * sl becomes true immediately after seeing '/' and continues to 	 * be true as long as dots continue after that without intervening 	 * non-dot character. 	 */
 if|if
 condition|(
 operator|!
@@ -1061,7 +1061,7 @@ argument_list|(
 name|path
 argument_list|)
 decl_stmt|;
-comment|/* The validation is done on the paths after enter_repo 		 * appends optional {.git,.git/.git} and friends, but  		 * it does not use getcwd().  So if your /pub is 		 * a symlink to /mnt/pub, you can whitelist /pub and 		 * do not have to say /mnt/pub. 		 * Do not say /pub/. 		 */
+comment|/* The validation is done on the paths after enter_repo 		 * appends optional {.git,.git/.git} and friends, but 		 * it does not use getcwd().  So if your /pub is 		 * a symlink to /mnt/pub, you can whitelist /pub and 		 * do not have to say /mnt/pub. 		 * Do not say /pub/. 		 */
 for|for
 control|(
 name|pp

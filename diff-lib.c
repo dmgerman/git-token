@@ -3712,7 +3712,7 @@ name|match_missing
 init|=
 literal|0
 decl_stmt|;
-comment|/*  	 * Backward compatibility wart - "diff-index -m" does 	 * not mean "do not ignore merges", but totally different. 	 */
+comment|/* 	 * Backward compatibility wart - "diff-index -m" does 	 * not mean "do not ignore merges", but totally different. 	 */
 if|if
 condition|(
 operator|!

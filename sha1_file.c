@@ -6445,7 +6445,7 @@ name|unsigned
 name|long
 name|size
 decl_stmt|;
-comment|/* 	 * The type can be at most ten bytes (including the  	 * terminating '\0' that we add), and is followed by 	 * a space. 	 */
+comment|/* 	 * The type can be at most ten bytes (including the 	 * terminating '\0' that we add), and is followed by 	 * a space. 	 */
 name|i
 operator|=
 literal|0

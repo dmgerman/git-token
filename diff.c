@@ -17119,7 +17119,7 @@ decl_stmt|,
 modifier|*
 name|two
 decl_stmt|;
-comment|/* This may look odd, but it is a preparation for 	 * feeding "there are unchanged files which should 	 * not produce diffs, but when you are doing copy 	 * detection you would need them, so here they are" 	 * entries to the diff-core.  They will be prefixed 	 * with something like '=' or '*' (I haven't decided 	 * which but should not make any difference). 	 * Feeding the same new and old to diff_change()  	 * also has the same effect. 	 * Before the final output happens, they are pruned after 	 * merged into rename/copy pairs as appropriate. 	 */
+comment|/* This may look odd, but it is a preparation for 	 * feeding "there are unchanged files which should 	 * not produce diffs, but when you are doing copy 	 * detection you would need them, so here they are" 	 * entries to the diff-core.  They will be prefixed 	 * with something like '=' or '*' (I haven't decided 	 * which but should not make any difference). 	 * Feeding the same new and old to diff_change() 	 * also has the same effect. 	 * Before the final output happens, they are pruned after 	 * merged into rename/copy pairs as appropriate. 	 */
 if|if
 condition|(
 name|options
