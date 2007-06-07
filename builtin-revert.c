@@ -668,6 +668,7 @@ end_function
 
 begin_function
 DECL|function|get_encoding
+specifier|static
 name|char
 modifier|*
 name|get_encoding

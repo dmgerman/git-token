@@ -423,6 +423,7 @@ end_function
 
 begin_function
 DECL|function|xdl_emit_common
+specifier|static
 name|int
 name|xdl_emit_common
 parameter_list|(

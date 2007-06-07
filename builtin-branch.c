@@ -280,6 +280,7 @@ end_function
 
 begin_function
 DECL|function|git_branch_config
+specifier|static
 name|int
 name|git_branch_config
 parameter_list|(
@@ -387,6 +388,7 @@ end_function
 
 begin_function
 DECL|function|branch_get_color
+specifier|static
 specifier|const
 name|char
 modifier|*

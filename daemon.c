@@ -1918,6 +1918,7 @@ end_function
 
 begin_function
 DECL|function|fill_in_extra_table_entries
+specifier|static
 name|void
 name|fill_in_extra_table_entries
 parameter_list|(
