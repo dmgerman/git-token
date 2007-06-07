@@ -3760,16 +3760,6 @@ condition|)
 name|read_cache
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|active_nr
-operator|<
-literal|0
-condition|)
-return|return
-operator|-
-literal|1
-return|;
 name|pos
 operator|=
 name|cache_name_pos
