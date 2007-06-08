@@ -3994,6 +3994,7 @@ end_function
 
 begin_function
 DECL|function|mailinfo
+specifier|static
 name|int
 name|mailinfo
 parameter_list|(

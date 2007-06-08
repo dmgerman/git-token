@@ -798,6 +798,7 @@ end_function
 
 begin_function
 DECL|function|split_mbox
+specifier|static
 name|int
 name|split_mbox
 parameter_list|(
