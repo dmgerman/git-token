@@ -359,6 +359,7 @@ end_function
 
 begin_decl_stmt
 DECL|variable|pack_pipe
+specifier|static
 name|FILE
 modifier|*
 name|pack_pipe

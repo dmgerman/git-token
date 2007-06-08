@@ -892,19 +892,6 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
-begin_function_decl
-specifier|extern
-name|int
-name|diff_scoreopt_parse
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|opt
-parameter_list|)
-function_decl|;
-end_function_decl
-
 begin_define
 DECL|macro|DIFF_SETUP_REVERSE
 define|#

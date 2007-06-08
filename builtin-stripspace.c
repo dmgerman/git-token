@@ -112,6 +112,7 @@ end_function
 
 begin_function
 DECL|function|stripspace
+specifier|static
 name|void
 name|stripspace
 parameter_list|(

@@ -51,22 +51,6 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|void
-name|stripspace
-parameter_list|(
-name|FILE
-modifier|*
-name|in
-parameter_list|,
-name|FILE
-modifier|*
-name|out
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-specifier|extern
 name|int
 name|write_tree
 parameter_list|(

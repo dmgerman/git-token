@@ -11767,6 +11767,19 @@ return|;
 block|}
 end_function
 
+begin_function_decl
+specifier|static
+name|int
+name|diff_scoreopt_parse
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|opt
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function
 DECL|function|diff_opt_parse
 name|int
@@ -12979,6 +12992,7 @@ end_function
 
 begin_function
 DECL|function|diff_scoreopt_parse
+specifier|static
 name|int
 name|diff_scoreopt_parse
 parameter_list|(
