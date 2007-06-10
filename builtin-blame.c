@@ -94,7 +94,7 @@ name|char
 name|blame_usage
 index|[]
 init|=
-literal|"git-blame [-c] [-b] [-l] [--root] [-t] [-f] [-n] [-s] [-p] [-L n,m] [-S<revs-file>] [-M] [-C] [-C] [--contents<filename>] [--incremental] [commit] [--] file\n"
+literal|"git-blame [-c] [-b] [-l] [--root] [-t] [-f] [-n] [-s] [-p] [-w] [-L n,m] [-S<revs-file>] [-M] [-C] [-C] [--contents<filename>] [--incremental] [commit] [--] file\n"
 literal|"  -c                  Use the same output mode as git-annotate (Default: off)\n"
 literal|"  -b                  Show blank SHA-1 for boundary commits (Default: off)\n"
 literal|"  -l                  Show long commit SHA1 (Default: off)\n"
@@ -104,6 +104,7 @@ literal|"  -f, --show-name     Show original filename (Default: auto)\n"
 literal|"  -n, --show-number   Show original linenumber (Default: off)\n"
 literal|"  -s                  Suppress author name and timestamp (Default: off)\n"
 literal|"  -p, --porcelain     Show in a format designed for machine consumption\n"
+literal|"  -w                  Ignore whitespace differences\n"
 literal|"  -L n,m              Process only line range n,m, counting from 1\n"
 literal|"  -M, -C              Find line movements within and across files\n"
 literal|"  --incremental       Show blame entries as we find them, incrementally\n"
@@ -181,6 +182,16 @@ DECL|variable|cmd_is_annotate
 specifier|static
 name|int
 name|cmd_is_annotate
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|xdl_opts
+specifier|static
+name|int
+name|xdl_opts
+init|=
+name|XDF_NEED_MINIMAL
 decl_stmt|;
 end_decl_stmt
 
@@ -2272,7 +2283,7 @@ name|xpp
 operator|.
 name|flags
 operator|=
-name|XDF_NEED_MINIMAL
+name|xdl_opts
 expr_stmt|;
 name|xecfg
 operator|.
@@ -11061,6 +11072,21 @@ condition|)
 name|output_option
 operator||=
 name|OUTPUT_NO_AUTHOR
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+literal|"-w"
+argument_list|,
+name|arg
+argument_list|)
+condition|)
+name|xdl_opts
+operator||=
+name|XDF_IGNORE_WHITESPACE
 expr_stmt|;
 elseif|else
 if|if
