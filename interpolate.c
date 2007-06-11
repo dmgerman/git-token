@@ -128,19 +128,21 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Convert a NUL-terminated string in buffer orig  * into the supplied buffer, result, whose length is reslen,  * performing substitutions on %-named sub-strings from  * the table, interps, with ninterps entries.  *  * Example interps:  *    {  *        { "%H", "example.org"},  *        { "%port", "123"},  *        { "%%", "%"},  *    }  *  * Returns 1 on a successful substitution pass that fits in result,  * Returns 0 on a failed or overflowing substitution pass.  */
+comment|/*  * Convert a NUL-terminated string in buffer orig  * into the supplied buffer, result, whose length is reslen,  * performing substitutions on %-named sub-strings from  * the table, interps, with ninterps entries.  *  * Example interps:  *    {  *        { "%H", "example.org"},  *        { "%port", "123"},  *        { "%%", "%"},  *    }  *  * Returns 0 on a successful substitution pass that fits in result,  * Returns a number of bytes needed to hold the full substituted  * string otherwise.  */
 end_comment
 
 begin_function
 DECL|function|interpolate
-name|int
+name|unsigned
+name|long
 name|interpolate
 parameter_list|(
 name|char
 modifier|*
 name|result
 parameter_list|,
-name|int
+name|unsigned
+name|long
 name|reslen
 parameter_list|,
 specifier|const
@@ -171,7 +173,8 @@ name|dest
 init|=
 name|result
 decl_stmt|;
-name|int
+name|unsigned
+name|long
 name|newlen
 init|=
 literal|0
@@ -184,7 +187,8 @@ decl_stmt|,
 modifier|*
 name|value
 decl_stmt|;
-name|int
+name|unsigned
+name|long
 name|namelen
 decl_stmt|,
 name|valuelen
@@ -212,12 +216,6 @@ operator|=
 operator|*
 name|src
 operator|)
-operator|&&
-name|newlen
-operator|<
-name|reslen
-operator|-
-literal|1
 condition|)
 block|{
 if|if
@@ -271,9 +269,7 @@ argument_list|)
 operator|==
 literal|0
 condition|)
-block|{
 break|break;
-block|}
 block|}
 comment|/* Check for valid interpolation. */
 if|if
@@ -304,10 +300,10 @@ condition|(
 name|newlen
 operator|+
 name|valuelen
+operator|+
+literal|1
 operator|<
 name|reslen
-operator|-
-literal|1
 condition|)
 block|{
 comment|/* Substitute. */
@@ -320,11 +316,12 @@ argument_list|,
 name|valuelen
 argument_list|)
 expr_stmt|;
-name|newlen
+name|dest
 operator|+=
 name|valuelen
 expr_stmt|;
-name|dest
+block|}
+name|newlen
 operator|+=
 name|valuelen
 expr_stmt|;
@@ -332,53 +329,48 @@ name|src
 operator|+=
 name|namelen
 expr_stmt|;
+continue|continue;
 block|}
-else|else
-block|{
-comment|/* Something's not fitting. */
+block|}
+comment|/* Straight copy one non-interpolation character. */
+if|if
+condition|(
+name|newlen
+operator|+
+literal|1
+operator|<
+name|reslen
+condition|)
+operator|*
+name|dest
+operator|++
+operator|=
+operator|*
+name|src
+expr_stmt|;
+name|src
+operator|++
+expr_stmt|;
+name|newlen
+operator|++
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|newlen
+operator|+
+literal|1
+operator|<
+name|reslen
+condition|)
 return|return
 literal|0
 return|;
-block|}
-block|}
 else|else
-block|{
-comment|/* Skip bogus interpolation. */
-operator|*
-name|dest
-operator|++
-operator|=
-operator|*
-name|src
-operator|++
-expr_stmt|;
-name|newlen
-operator|++
-expr_stmt|;
-block|}
-block|}
-else|else
-block|{
-comment|/* Straight copy one non-interpolation character. */
-operator|*
-name|dest
-operator|++
-operator|=
-operator|*
-name|src
-operator|++
-expr_stmt|;
-name|newlen
-operator|++
-expr_stmt|;
-block|}
-block|}
 return|return
 name|newlen
-operator|<
-name|reslen
-operator|-
-literal|1
+operator|+
+literal|2
 return|;
 block|}
 end_function

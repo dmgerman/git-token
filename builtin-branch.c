@@ -1239,12 +1239,6 @@ name|commit
 modifier|*
 name|commit
 decl_stmt|;
-name|char
-name|subject
-index|[
-literal|256
-index|]
-decl_stmt|;
 switch|switch
 condition|(
 name|item
@@ -1298,6 +1292,25 @@ condition|(
 name|verbose
 condition|)
 block|{
+name|char
+modifier|*
+name|subject
+init|=
+name|NULL
+decl_stmt|;
+name|unsigned
+name|long
+name|subject_len
+init|=
+literal|0
+decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|sub
+init|=
+literal|" **** invalid ref ****"
+decl_stmt|;
 name|commit
 operator|=
 name|lookup_commit
@@ -1317,6 +1330,7 @@ argument_list|(
 name|commit
 argument_list|)
 condition|)
+block|{
 name|pretty_print_commit
 argument_list|(
 name|CMIT_FMT_ONELINE
@@ -1326,12 +1340,11 @@ argument_list|,
 operator|~
 literal|0
 argument_list|,
+operator|&
 name|subject
 argument_list|,
-sizeof|sizeof
-argument_list|(
-name|subject
-argument_list|)
+operator|&
+name|subject_len
 argument_list|,
 literal|0
 argument_list|,
@@ -1342,14 +1355,11 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-else|else
-name|strcpy
-argument_list|(
+name|sub
+operator|=
 name|subject
-argument_list|,
-literal|" **** invalid ref ****"
-argument_list|)
 expr_stmt|;
+block|}
 name|printf
 argument_list|(
 literal|"%c %s%-*s%s %s %s\n"
@@ -1381,6 +1391,15 @@ argument_list|,
 name|abbrev
 argument_list|)
 argument_list|,
+name|sub
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|subject
+condition|)
+name|free
+argument_list|(
 name|subject
 argument_list|)
 expr_stmt|;
