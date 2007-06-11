@@ -26,7 +26,7 @@ DECL|macro|DEFAULT_GIT_TEMPLATE_DIR
 define|#
 directive|define
 name|DEFAULT_GIT_TEMPLATE_DIR
-value|"/usr/share/git-core/templates/"
+value|"/usr/share/git-core/templates"
 end_define
 
 begin_endif
