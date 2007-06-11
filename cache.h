@@ -1255,6 +1255,26 @@ value|(((x)+16)*3/2)
 end_define
 
 begin_comment
+comment|/*  * Realloc the buffer pointed at by variable 'x' so that it can hold  * at least 'nr' entries; the number of entries currently allocated  * is 'alloc', using the standard growing factor alloc_nr() macro.  *  * DO NOT USE any expression with side-effect for 'x' or 'alloc'.  */
+end_comment
+
+begin_define
+DECL|macro|ALLOC_GROW
+define|#
+directive|define
+name|ALLOC_GROW
+parameter_list|(
+name|x
+parameter_list|,
+name|nr
+parameter_list|,
+name|alloc
+parameter_list|)
+define|\
+value|do { \ 		if ((nr)>= alloc) { \ 			alloc = alloc_nr(alloc); \ 			x = xrealloc((x), alloc * sizeof(*(x))); \ 		} \ 	} while(0)
+end_define
+
+begin_comment
 comment|/* Initialize and use the cache information */
 end_comment
 
