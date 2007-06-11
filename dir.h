@@ -133,6 +133,13 @@ name|nr
 decl_stmt|,
 name|alloc
 decl_stmt|;
+DECL|member|ignored_nr
+DECL|member|ignored_alloc
+name|int
+name|ignored_nr
+decl_stmt|,
+name|ignored_alloc
+decl_stmt|;
 DECL|member|show_ignored
 name|unsigned
 name|int
@@ -154,6 +161,11 @@ DECL|member|no_gitlinks
 name|no_gitlinks
 range|:
 literal|1
+decl_stmt|,
+DECL|member|collect_ignored
+name|collect_ignored
+range|:
+literal|1
 decl_stmt|;
 DECL|member|entries
 name|struct
@@ -161,6 +173,13 @@ name|dir_entry
 modifier|*
 modifier|*
 name|entries
+decl_stmt|;
+DECL|member|ignored
+name|struct
+name|dir_entry
+modifier|*
+modifier|*
+name|ignored
 decl_stmt|;
 comment|/* Exclude info */
 DECL|member|exclude_per_dir
