@@ -2460,7 +2460,9 @@ DECL|function|write_error
 specifier|static
 name|int
 name|write_error
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 name|fprintf
 argument_list|(

@@ -2750,7 +2750,9 @@ begin_function
 DECL|function|pack_report
 name|void
 name|pack_report
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 name|fprintf
 argument_list|(

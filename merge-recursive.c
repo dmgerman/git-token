@@ -663,7 +663,9 @@ DECL|function|flush_output
 specifier|static
 name|void
 name|flush_output
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 name|struct
 name|output_buffer
