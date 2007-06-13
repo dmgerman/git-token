@@ -91,6 +91,7 @@ end_decl_stmt
 
 begin_struct
 DECL|struct|cmt_fmt_map
+specifier|static
 struct|struct
 name|cmt_fmt_map
 block|{

@@ -5658,6 +5658,7 @@ end_function
 
 begin_function
 DECL|function|map_sha1_file
+specifier|static
 name|void
 modifier|*
 name|map_sha1_file

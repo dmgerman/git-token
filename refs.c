@@ -690,6 +690,7 @@ end_comment
 
 begin_struct
 DECL|struct|cached_refs
+specifier|static
 struct|struct
 name|cached_refs
 block|{
