@@ -1440,6 +1440,8 @@ argument_list|,
 name|dir
 operator|->
 name|nr
+operator|+
+literal|1
 argument_list|,
 name|dir
 operator|->
@@ -1511,6 +1513,8 @@ argument_list|,
 name|dir
 operator|->
 name|ignored_nr
+operator|+
+literal|1
 argument_list|,
 name|dir
 operator|->
