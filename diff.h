@@ -311,6 +311,11 @@ name|find_copies_harder
 range|:
 literal|1
 decl_stmt|,
+DECL|member|follow_renames
+name|follow_renames
+range|:
+literal|1
+decl_stmt|,
 DECL|member|color_diff
 name|color_diff
 range|:

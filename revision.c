@@ -6423,6 +6423,16 @@ operator|->
 name|pruning
 argument_list|)
 expr_stmt|;
+comment|/* Can't prune commits with rename following: the paths change.. */
+if|if
+condition|(
+operator|!
+name|revs
+operator|->
+name|diffopt
+operator|.
+name|follow_renames
+condition|)
 name|revs
 operator|->
 name|prune_fn
