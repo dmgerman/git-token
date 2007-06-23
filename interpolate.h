@@ -79,14 +79,16 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|int
+name|unsigned
+name|long
 name|interpolate
 parameter_list|(
 name|char
 modifier|*
 name|result
 parameter_list|,
-name|int
+name|unsigned
+name|long
 name|reslen
 parameter_list|,
 specifier|const

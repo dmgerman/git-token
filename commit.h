@@ -366,11 +366,13 @@ name|len
 parameter_list|,
 name|char
 modifier|*
-name|buf
+modifier|*
+name|buf_p
 parameter_list|,
 name|unsigned
 name|long
-name|space
+modifier|*
+name|space_p
 parameter_list|,
 name|int
 name|abbrev
