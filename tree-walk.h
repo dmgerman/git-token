@@ -143,15 +143,12 @@ parameter_list|)
 block|{
 return|return
 operator|(
+specifier|const
 name|char
 operator|*
 operator|)
 name|sha1
 operator|-
-operator|(
-name|char
-operator|*
-operator|)
 name|name
 operator|-
 literal|1
