@@ -571,6 +571,20 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|ferror
+argument_list|(
+name|cbdata
+operator|.
+name|refs_file
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"failed to write ref-pack file"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|fflush
 argument_list|(
 name|cbdata
