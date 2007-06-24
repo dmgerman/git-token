@@ -395,9 +395,18 @@ literal|"unable to write rerere record"
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
 name|close
 argument_list|(
 name|out_fd
+argument_list|)
+operator|!=
+literal|0
+condition|)
+name|die
+argument_list|(
+literal|"unable to write rerere record"
 argument_list|)
 expr_stmt|;
 return|return

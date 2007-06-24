@@ -3877,9 +3877,18 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
 name|close
 argument_list|(
 name|keep_fd
+argument_list|)
+operator|!=
+literal|0
+condition|)
+name|die
+argument_list|(
+literal|"cannot write keep file"
 argument_list|)
 expr_stmt|;
 name|report
