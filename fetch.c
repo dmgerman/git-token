@@ -296,6 +296,17 @@ name|obj
 init|=
 name|NULL
 decl_stmt|;
+comment|/* submodule commits are not stored in the superproject */
+if|if
+condition|(
+name|S_ISDIRLNK
+argument_list|(
+name|entry
+operator|.
+name|mode
+argument_list|)
+condition|)
+continue|continue;
 if|if
 condition|(
 name|S_ISDIR
