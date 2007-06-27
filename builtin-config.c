@@ -260,6 +260,11 @@ if|if
 condition|(
 name|show_keys
 condition|)
+block|{
+if|if
+condition|(
+name|value_
+condition|)
 name|printf
 argument_list|(
 literal|"%s "
@@ -267,6 +272,15 @@ argument_list|,
 name|key_
 argument_list|)
 expr_stmt|;
+else|else
+name|printf
+argument_list|(
+literal|"%s"
+argument_list|,
+name|key_
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|seen
