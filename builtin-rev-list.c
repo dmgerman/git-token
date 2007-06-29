@@ -460,9 +460,11 @@ name|buf
 argument_list|)
 expr_stmt|;
 block|}
-name|fflush
+name|maybe_flush_or_die
 argument_list|(
 name|stdout
+argument_list|,
+literal|"stdout"
 argument_list|)
 expr_stmt|;
 if|if

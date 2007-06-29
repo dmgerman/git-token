@@ -4204,6 +4204,25 @@ name|git_log_output_encoding
 decl_stmt|;
 end_decl_stmt
 
+begin_comment
+comment|/* IO helper functions */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|void
+name|maybe_flush_or_die
+parameter_list|(
+name|FILE
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function_decl
 specifier|extern
 name|int

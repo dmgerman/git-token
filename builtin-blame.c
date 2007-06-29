@@ -7137,6 +7137,13 @@ operator|->
 name|path
 argument_list|)
 expr_stmt|;
+name|maybe_flush_or_die
+argument_list|(
+name|stdout
+argument_list|,
+literal|"stdout"
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_function
