@@ -157,6 +157,13 @@ range|:
 literal|1
 decl_stmt|;
 comment|/* data should be munmap()'ed */
+DECL|member|is_binary
+name|unsigned
+name|is_binary
+range|:
+literal|1
+decl_stmt|;
+comment|/* data should be considered "binary" */
 block|}
 struct|;
 end_struct
