@@ -1381,24 +1381,7 @@ return|;
 comment|/* Check for ENOSPC and EIO errors.. */
 if|if
 condition|(
-name|ferror
-argument_list|(
-name|stdout
-argument_list|)
-condition|)
-name|die
-argument_list|(
-literal|"write failure on standard output"
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
 name|fflush
-argument_list|(
-name|stdout
-argument_list|)
-operator|||
-name|fclose
 argument_list|(
 name|stdout
 argument_list|)
@@ -1406,6 +1389,35 @@ condition|)
 name|die
 argument_list|(
 literal|"write failure on standard output: %s"
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|ferror
+argument_list|(
+name|stdout
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"unknown write failure on standard output"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|fclose
+argument_list|(
+name|stdout
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"close failed on standard output: %s"
 argument_list|,
 name|strerror
 argument_list|(
