@@ -723,9 +723,11 @@ name|char
 modifier|*
 name|sp
 decl_stmt|;
-name|int
+name|unsigned
+name|char
 name|ch
-decl_stmt|,
+decl_stmt|;
+name|int
 name|count
 init|=
 literal|0
@@ -792,9 +794,13 @@ literal|'\\'
 operator|)
 operator|||
 operator|(
+name|quote_path_fully
+operator|&&
+operator|(
 name|ch
 operator|>=
 literal|0177
+operator|)
 operator|)
 condition|)
 block|{
