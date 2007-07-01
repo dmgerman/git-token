@@ -936,6 +936,14 @@ value|"GIT_DIR"
 end_define
 
 begin_define
+DECL|macro|GIT_WORK_TREE_ENVIRONMENT
+define|#
+directive|define
+name|GIT_WORK_TREE_ENVIRONMENT
+value|"GIT_WORK_TREE"
+end_define
+
+begin_define
 DECL|macro|DEFAULT_GIT_DIR_ENVIRONMENT
 define|#
 directive|define
@@ -1044,6 +1052,16 @@ begin_function_decl
 specifier|extern
 name|int
 name|is_inside_git_dir
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|is_inside_work_tree
 parameter_list|(
 name|void
 parameter_list|)

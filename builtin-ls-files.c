@@ -2527,7 +2527,8 @@ condition|(
 name|require_work_tree
 operator|&&
 operator|(
-name|is_bare_repository
+operator|!
+name|is_inside_work_tree
 argument_list|()
 operator|||
 name|is_inside_git_dir
