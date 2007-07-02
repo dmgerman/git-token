@@ -18,7 +18,7 @@ file|"diffcore.h"
 end_include
 
 begin_comment
-comment|/*  * Idea here is very simple.  *  * We have total of (sz-N+1) N-byte overlapping sequences in buf whose  * size is sz.  If the same N-byte sequence appears in both source and  * destination, we say the byte that starts that sequence is shared  * between them (i.e. copied from source to destination).  *  * For each possible N-byte sequence, if the source buffer has more  * instances of it than the destination buffer, that means the  * difference are the number of bytes not copied from source to  * destination.  If the counts are the same, everything was copied  * from source to destination.  If the destination has more,  * everything was copied, and destination added more.  *  * We are doing an approximation so we do not really have to waste  * memory by actually storing the sequence.  We just hash them into  * somewhere around 2^16 hashbuckets and count the occurrences.  *  * The length of the sequence is arbitrarily set to 8 for now.  */
+comment|/*  * Idea here is very simple.  *  * Almost all data we are interested in are text, but sometimes we have  * to deal with binary data.  So we cut them into chunks delimited by  * LF byte, or 64-byte sequence, whichever comes first, and hash them.  *  * For those chunks, if the source buffer has more instances of it  * than the destination buffer, that means the difference are the  * number of bytes not copied from source to destination.  If the  * counts are the same, everything was copied from source to  * destination.  If the destination has more, everything was copied,  * and destination added more.  *  * We are doing an approximation so we do not really have to waste  * memory by actually storing the sequence.  We just hash them into  * somewhere around 2^16 hashbuckets and count the occurrences.  */
 end_comment
 
 begin_comment
@@ -573,14 +573,10 @@ name|spanhash_top
 modifier|*
 name|hash_chars
 parameter_list|(
-name|unsigned
-name|char
+name|struct
+name|diff_filespec
 modifier|*
-name|buf
-parameter_list|,
-name|unsigned
-name|int
-name|sz
+name|one
 parameter_list|)
 block|{
 name|int
@@ -600,6 +596,31 @@ name|struct
 name|spanhash_top
 modifier|*
 name|hash
+decl_stmt|;
+name|unsigned
+name|char
+modifier|*
+name|buf
+init|=
+name|one
+operator|->
+name|data
+decl_stmt|;
+name|unsigned
+name|int
+name|sz
+init|=
+name|one
+operator|->
+name|size
+decl_stmt|;
+name|int
+name|is_text
+init|=
+operator|!
+name|one
+operator|->
+name|is_binary
 decl_stmt|;
 name|i
 operator|=
@@ -696,6 +717,23 @@ decl_stmt|;
 name|sz
 operator|--
 expr_stmt|;
+comment|/* Ignore CR in CRLF sequence if text */
+if|if
+condition|(
+name|is_text
+operator|&&
+name|c
+operator|==
+literal|'\r'
+operator|&&
+name|sz
+operator|&&
+operator|*
+name|buf
+operator|==
+literal|'\n'
+condition|)
+continue|continue;
 name|accum1
 operator|=
 operator|(
@@ -785,21 +823,15 @@ DECL|function|diffcore_count_changes
 name|int
 name|diffcore_count_changes
 parameter_list|(
-name|void
+name|struct
+name|diff_filespec
 modifier|*
 name|src
 parameter_list|,
-name|unsigned
-name|long
-name|src_size
-parameter_list|,
-name|void
+name|struct
+name|diff_filespec
 modifier|*
 name|dst
-parameter_list|,
-name|unsigned
-name|long
-name|dst_size
 parameter_list|,
 name|void
 modifier|*
@@ -871,8 +903,6 @@ operator|=
 name|hash_chars
 argument_list|(
 name|src
-argument_list|,
-name|src_size
 argument_list|)
 expr_stmt|;
 if|if
@@ -905,8 +935,6 @@ operator|=
 name|hash_chars
 argument_list|(
 name|dst
-argument_list|,
-name|dst_size
 argument_list|)
 expr_stmt|;
 if|if
