@@ -128,6 +128,15 @@ name|pager
 condition|)
 name|pager
 operator|=
+name|pager_program
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|pager
+condition|)
+name|pager
+operator|=
 name|getenv
 argument_list|(
 literal|"PAGER"
