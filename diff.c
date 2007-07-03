@@ -13695,7 +13695,17 @@ name|status
 argument_list|,
 name|inter_name_termination
 argument_list|,
+name|two_paths
+operator|||
+name|p
+operator|->
+name|one
+operator|->
+name|mode
+condition|?
 name|path_one
+else|:
+name|path_two
 argument_list|)
 expr_stmt|;
 if|if
