@@ -1011,6 +1011,15 @@ operator|->
 name|total
 operator|==
 literal|0
+operator|&&
+name|opt
+operator|->
+name|subject_prefix
+operator|&&
+operator|*
+name|opt
+operator|->
+name|subject_prefix
 condition|)
 block|{
 specifier|static
