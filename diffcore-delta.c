@@ -618,9 +618,10 @@ name|int
 name|is_text
 init|=
 operator|!
+name|diff_filespec_is_binary
+argument_list|(
 name|one
-operator|->
-name|is_binary
+argument_list|)
 decl_stmt|;
 name|i
 operator|=
