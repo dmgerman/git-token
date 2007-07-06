@@ -104,6 +104,8 @@ DECL|variable|branch_track_remotes
 specifier|static
 name|int
 name|branch_track_remotes
+init|=
+literal|1
 decl_stmt|;
 end_decl_stmt
 
