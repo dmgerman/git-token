@@ -112,6 +112,12 @@ name|void
 modifier|*
 name|cnt_data
 decl_stmt|;
+DECL|member|hunk_header_ident
+specifier|const
+name|void
+modifier|*
+name|hunk_header_ident
+decl_stmt|;
 DECL|member|size
 name|unsigned
 name|long

@@ -148,6 +148,23 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|void
+name|xdiff_set_find_func
+parameter_list|(
+name|xdemitconf_t
+modifier|*
+name|xecfg
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|line
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
