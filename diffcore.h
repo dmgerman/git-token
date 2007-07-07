@@ -112,11 +112,11 @@ name|void
 modifier|*
 name|cnt_data
 decl_stmt|;
-DECL|member|hunk_header_ident
+DECL|member|funcname_pattern_ident
 specifier|const
-name|void
+name|char
 modifier|*
-name|hunk_header_ident
+name|funcname_pattern_ident
 decl_stmt|;
 DECL|member|size
 name|unsigned
