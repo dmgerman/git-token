@@ -6811,6 +6811,11 @@ name|struct
 name|git_attr_check
 name|attr_diff_check
 decl_stmt|;
+name|int
+name|check_from_data
+init|=
+literal|0
+decl_stmt|;
 if|if
 condition|(
 name|one
@@ -6886,6 +6891,11 @@ name|is_binary
 operator|=
 literal|1
 expr_stmt|;
+else|else
+name|check_from_data
+operator|=
+literal|1
+expr_stmt|;
 comment|/* funcname pattern ident */
 if|if
 condition|(
@@ -6913,6 +6923,11 @@ operator|=
 name|value
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|check_from_data
+condition|)
+block|{
 if|if
 condition|(
 operator|!
@@ -6953,6 +6968,7 @@ operator|->
 name|size
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 end_function
 
