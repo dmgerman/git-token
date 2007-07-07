@@ -112,6 +112,12 @@ name|void
 modifier|*
 name|cnt_data
 decl_stmt|;
+DECL|member|funcname_pattern_ident
+specifier|const
+name|char
+modifier|*
+name|funcname_pattern_ident
+decl_stmt|;
 DECL|member|size
 name|unsigned
 name|long
@@ -157,6 +163,12 @@ range|:
 literal|1
 decl_stmt|;
 comment|/* data should be munmap()'ed */
+DECL|member|checked_attr
+name|unsigned
+name|checked_attr
+range|:
+literal|1
+decl_stmt|;
 DECL|member|is_binary
 name|unsigned
 name|is_binary
@@ -220,6 +232,18 @@ begin_function_decl
 specifier|extern
 name|void
 name|diff_free_filespec_data
+parameter_list|(
+name|struct
+name|diff_filespec
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|diff_filespec_is_binary
 parameter_list|(
 name|struct
 name|diff_filespec
