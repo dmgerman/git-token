@@ -134,12 +134,9 @@ argument_list|)
 condition|)
 name|path_list_insert
 argument_list|(
-name|xstrdup
-argument_list|(
 name|e
 operator|->
 name|d_name
-argument_list|)
 argument_list|,
 name|list
 argument_list|)
