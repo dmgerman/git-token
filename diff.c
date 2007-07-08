@@ -7055,6 +7055,49 @@ return|;
 block|}
 end_function
 
+begin_struct
+DECL|struct|builtin_funcname_pattern
+specifier|static
+struct|struct
+name|builtin_funcname_pattern
+block|{
+DECL|member|name
+specifier|const
+name|char
+modifier|*
+name|name
+decl_stmt|;
+DECL|member|pattern
+specifier|const
+name|char
+modifier|*
+name|pattern
+decl_stmt|;
+DECL|variable|builtin_funcname_pattern
+block|}
+name|builtin_funcname_pattern
+index|[]
+init|=
+block|{
+block|{
+literal|"java"
+block|,
+literal|"!^[ 	]*\\(catch\\|do\\|for\\|if\\|instanceof\\|"
+literal|"new\\|return\\|switch\\|throw\\|while\\)\n"
+literal|"^[ 	]*\\(\\([ 	]*"
+literal|"[A-Za-z_][A-Za-z_0-9]*\\)\\{2,\\}"
+literal|"[ 	]*([^;]*$\\)"
+block|}
+block|,
+block|{
+literal|"tex"
+block|,
+literal|"^\\(\\\\\\(sub\\)*section{.*\\)$"
+block|}
+block|, }
+struct|;
+end_struct
+
 begin_function
 DECL|function|diff_funcname_pattern
 specifier|static
@@ -7076,6 +7119,9 @@ name|ident
 decl_stmt|,
 modifier|*
 name|pattern
+decl_stmt|;
+name|int
+name|i
 decl_stmt|;
 name|diff_filespec_check_attr
 argument_list|(
@@ -7116,6 +7162,22 @@ return|return
 name|pattern
 return|;
 comment|/* 	 * And define built-in fallback patterns here.  Note that 	 * these can be overriden by the user's config settings. 	 */
+for|for
+control|(
+name|i
+operator|=
+literal|0
+init|;
+name|i
+operator|<
+name|ARRAY_SIZE
+argument_list|(
+name|builtin_funcname_pattern
+argument_list|)
+condition|;
+name|i
+operator|++
+control|)
 if|if
 condition|(
 operator|!
@@ -7123,15 +7185,21 @@ name|strcmp
 argument_list|(
 name|ident
 argument_list|,
-literal|"java"
+name|builtin_funcname_pattern
+index|[
+name|i
+index|]
+operator|.
+name|name
 argument_list|)
 condition|)
 return|return
-literal|"!^[ 	]*\\(catch\\|do\\|for\\|if\\|instanceof\\|"
-literal|"new\\|return\\|switch\\|throw\\|while\\)\n"
-literal|"^[ 	]*\\(\\([ 	]*"
-literal|"[A-Za-z_][A-Za-z_0-9]*\\)\\{2,\\}"
-literal|"[ 	]*([^;]*$\\)"
+name|builtin_funcname_pattern
+index|[
+name|i
+index|]
+operator|.
+name|pattern
 return|;
 return|return
 name|NULL
