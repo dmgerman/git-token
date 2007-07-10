@@ -142,6 +142,34 @@ struct|;
 end_struct
 
 begin_function_decl
+name|struct
+name|ref
+modifier|*
+name|alloc_ref
+parameter_list|(
+name|unsigned
+name|namelen
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/*  * Frees the entire list and peers of elements.  */
+end_comment
+
+begin_function_decl
+name|void
+name|free_refs
+parameter_list|(
+name|struct
+name|ref
+modifier|*
+name|ref
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|int
 name|match_refs
 parameter_list|(
