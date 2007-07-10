@@ -2269,10 +2269,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|link_dst_tail
+DECL|function|tail_link_ref
 specifier|static
 name|void
-name|link_dst_tail
+name|tail_link_ref
 parameter_list|(
 name|struct
 name|ref
@@ -2293,6 +2293,18 @@ name|tail
 operator|=
 name|ref
 expr_stmt|;
+while|while
+condition|(
+name|ref
+operator|->
+name|next
+condition|)
+name|ref
+operator|=
+name|ref
+operator|->
+name|next
+expr_stmt|;
 operator|*
 name|tail
 operator|=
@@ -2300,12 +2312,6 @@ operator|&
 name|ref
 operator|->
 name|next
-expr_stmt|;
-operator|*
-operator|*
-name|tail
-operator|=
-name|NULL
 expr_stmt|;
 block|}
 end_function
@@ -2428,12 +2434,12 @@ block|}
 end_function
 
 begin_function
-DECL|function|make_dst
+DECL|function|make_linked_ref
 specifier|static
 name|struct
 name|ref
 modifier|*
-name|make_dst
+name|make_linked_ref
 parameter_list|(
 specifier|const
 name|char
@@ -2445,13 +2451,13 @@ name|ref
 modifier|*
 modifier|*
 modifier|*
-name|dst_tail
+name|tail
 parameter_list|)
 block|{
 name|struct
 name|ref
 modifier|*
-name|dst
+name|ret
 decl_stmt|;
 name|size_t
 name|len
@@ -2465,7 +2471,7 @@ argument_list|)
 operator|+
 literal|1
 expr_stmt|;
-name|dst
+name|ret
 operator|=
 name|alloc_ref
 argument_list|(
@@ -2474,7 +2480,7 @@ argument_list|)
 expr_stmt|;
 name|memcpy
 argument_list|(
-name|dst
+name|ret
 operator|->
 name|name
 argument_list|,
@@ -2483,15 +2489,15 @@ argument_list|,
 name|len
 argument_list|)
 expr_stmt|;
-name|link_dst_tail
+name|tail_link_ref
 argument_list|(
-name|dst
+name|ret
 argument_list|,
-name|dst_tail
+name|tail
 argument_list|)
 expr_stmt|;
 return|return
-name|dst
+name|ret
 return|;
 block|}
 end_function
@@ -2678,7 +2684,7 @@ argument_list|)
 condition|)
 name|matched_dst
 operator|=
-name|make_dst
+name|make_linked_ref
 argument_list|(
 name|dst_value
 argument_list|,
@@ -3248,7 +3254,7 @@ block|{
 comment|/* Create a new one and link it */
 name|dst_peer
 operator|=
-name|make_dst
+name|make_linked_ref
 argument_list|(
 name|dst_name
 argument_list|,
