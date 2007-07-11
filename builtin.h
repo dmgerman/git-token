@@ -51,16 +51,15 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|void
+name|size_t
 name|stripspace
 parameter_list|(
-name|FILE
+name|char
 modifier|*
-name|in
+name|buffer
 parameter_list|,
-name|FILE
-modifier|*
-name|out
+name|size_t
+name|length
 parameter_list|,
 name|int
 name|skip_comments
