@@ -243,6 +243,11 @@ argument_list|(
 name|info_ref_fp
 argument_list|)
 expr_stmt|;
+name|adjust_shared_perm
+argument_list|(
+name|path1
+argument_list|)
+expr_stmt|;
 name|rename
 argument_list|(
 name|path1
@@ -1206,6 +1211,11 @@ expr_stmt|;
 name|fclose
 argument_list|(
 name|fp
+argument_list|)
+expr_stmt|;
+name|adjust_shared_perm
+argument_list|(
+name|name
 argument_list|)
 expr_stmt|;
 name|rename
