@@ -2580,6 +2580,16 @@ condition|)
 return|return;
 if|if
 condition|(
+name|has_symlink_leading_path
+argument_list|(
+name|path
+argument_list|,
+name|NULL
+argument_list|)
+condition|)
+return|return;
+if|if
+condition|(
 operator|!
 name|lstat
 argument_list|(
