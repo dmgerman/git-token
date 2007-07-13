@@ -4428,6 +4428,22 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|interp_set_entry
+argument_list|(
+name|table
+argument_list|,
+literal|6
+argument_list|,
+name|show_date
+argument_list|(
+name|date
+argument_list|,
+name|tz
+argument_list|,
+name|DATE_ISO8601
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
@@ -4526,6 +4542,11 @@ block|}
 block|,
 comment|/* author date, UNIX timestamp */
 block|{
+literal|"%ai"
+block|}
+block|,
+comment|/* author date, ISO 8601 */
+block|{
 literal|"%cn"
 block|}
 block|,
@@ -4555,6 +4576,11 @@ literal|"%ct"
 block|}
 block|,
 comment|/* committer date, UNIX timestamp */
+block|{
+literal|"%ci"
+block|}
+block|,
+comment|/* committer date, ISO 8601 */
 block|{
 literal|"%e"
 block|}
@@ -4631,6 +4657,8 @@ name|IAUTHOR_DATE_RELATIVE
 block|,
 name|IAUTHOR_TIMESTAMP
 block|,
+name|IAUTHOR_ISO8601
+block|,
 name|ICOMMITTER_NAME
 block|,
 name|ICOMMITTER_EMAIL
@@ -4642,6 +4670,8 @@ block|,
 name|ICOMMITTER_DATE_RELATIVE
 block|,
 name|ICOMMITTER_TIMESTAMP
+block|,
+name|ICOMMITTER_ISO8601
 block|,
 name|IENCODING
 block|,

@@ -3085,6 +3085,7 @@ DECL|enumerator|DATE_NORMAL
 DECL|enumerator|DATE_RELATIVE
 DECL|enumerator|DATE_SHORT
 DECL|enumerator|DATE_LOCAL
+DECL|enumerator|DATE_ISO8601
 enum|enum
 name|date_mode
 block|{
@@ -3097,6 +3098,8 @@ block|,
 name|DATE_SHORT
 block|,
 name|DATE_LOCAL
+block|,
+name|DATE_ISO8601
 block|}
 enum|;
 end_enum
