@@ -261,6 +261,9 @@ name|unsigned
 name|char
 modifier|*
 name|head
+parameter_list|,
+name|int
+name|index_only
 parameter_list|)
 block|{
 comment|/* items in list are already sorted in the cache order, 	 * so we could do this a lot more efficiently by using 	 * tree_desc based traversal if we wanted to, but I am 	 * lazy, and who cares if removal of files is a tad 	 * slower than the theoretical maximum speed? 	 */
@@ -330,6 +333,16 @@ index|]
 decl_stmt|;
 name|unsigned
 name|mode
+decl_stmt|;
+name|int
+name|local_changes
+init|=
+literal|0
+decl_stmt|;
+name|int
+name|staged_changes
+init|=
+literal|0
 decl_stmt|;
 name|pos
 operator|=
@@ -424,17 +437,9 @@ argument_list|,
 literal|0
 argument_list|)
 condition|)
-name|errs
+name|local_changes
 operator|=
-name|error
-argument_list|(
-literal|"'%s' has local modifications "
-literal|"(hint: try -f)"
-argument_list|,
-name|ce
-operator|->
-name|name
-argument_list|)
+literal|1
 expr_stmt|;
 if|if
 condition|(
@@ -470,16 +475,66 @@ argument_list|,
 name|sha1
 argument_list|)
 condition|)
+name|staged_changes
+operator|=
+literal|1
+expr_stmt|;
+if|if
+condition|(
+name|local_changes
+operator|&&
+name|staged_changes
+condition|)
 name|errs
 operator|=
 name|error
 argument_list|(
-literal|"'%s' has changes staged in the index "
-literal|"(hint: try -f)"
+literal|"'%s' has staged content different "
+literal|"from both the file and the HEAD\n"
+literal|"(use -f to force removal)"
 argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|index_only
+condition|)
+block|{
+comment|/* It's not dangerous to git-rm --cached a 			 * file if the index matches the file or the 			 * HEAD, since it means the deleted content is 			 * still available somewhere. 			 */
+if|if
+condition|(
+name|staged_changes
+condition|)
+name|errs
+operator|=
+name|error
+argument_list|(
+literal|"'%s' has changes staged in the index\n"
+literal|"(use --cached to keep the file, "
+literal|"or -f to force removal)"
+argument_list|,
+name|name
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|local_changes
+condition|)
+name|errs
+operator|=
+name|error
+argument_list|(
+literal|"'%s' has local modifications\n"
+literal|"(use --cached to keep the file, "
+literal|"or -f to force removal)"
+argument_list|,
+name|name
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 return|return
 name|errs
@@ -971,6 +1026,8 @@ condition|(
 name|check_local_mod
 argument_list|(
 name|sha1
+argument_list|,
+name|index_only
 argument_list|)
 condition|)
 name|exit
