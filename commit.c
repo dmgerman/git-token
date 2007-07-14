@@ -3254,11 +3254,13 @@ name|ret
 argument_list|,
 literal|"Date: %s\n"
 argument_list|,
-name|show_rfc2822_date
+name|show_date
 argument_list|(
 name|time
 argument_list|,
 name|tz
+argument_list|,
+name|DATE_RFC2822
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4394,7 +4396,7 @@ name|date
 argument_list|,
 name|tz
 argument_list|,
-literal|0
+name|DATE_NORMAL
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4404,11 +4406,13 @@ name|table
 argument_list|,
 literal|3
 argument_list|,
-name|show_rfc2822_date
+name|show_date
 argument_list|(
 name|date
 argument_list|,
 name|tz
+argument_list|,
+name|DATE_RFC2822
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4424,7 +4428,7 @@ name|date
 argument_list|,
 name|tz
 argument_list|,
-literal|1
+name|DATE_RELATIVE
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -2069,11 +2069,13 @@ name|len
 argument_list|,
 name|str
 argument_list|,
-name|show_rfc2822_date
+name|show_date
 argument_list|(
 name|co_time
 argument_list|,
 name|co_tz
+argument_list|,
+name|DATE_RFC2822
 argument_list|)
 argument_list|)
 expr_stmt|;
