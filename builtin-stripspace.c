@@ -320,7 +320,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|read_pipe
+name|read_fd
 argument_list|(
 literal|0
 argument_list|,
@@ -331,11 +331,18 @@ operator|&
 name|size
 argument_list|)
 condition|)
+block|{
+name|free
+argument_list|(
+name|buffer
+argument_list|)
+expr_stmt|;
 name|die
 argument_list|(
 literal|"could not read the input"
 argument_list|)
 expr_stmt|;
+block|}
 name|size
 operator|=
 name|stripspace

@@ -12493,13 +12493,13 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * reads from fd as long as possible into a supplied buffer of size bytes.  * If necessary the buffer's size is increased using realloc()  *  * returns 0 if anything went fine and -1 otherwise  *  * NOTE: both buf and size may change, but even when -1 is returned  * you still have to free() it yourself.  */
+comment|/*  * reads from fd as long as possible into a supplied buffer of size bytes.  * If necessary the buffer's size is increased using realloc()  *  * returns 0 if anything went fine and -1 otherwise  *  * The buffer is always NUL-terminated, not including it in returned size.  *  * NOTE: both buf and size may change, but even when -1 is returned  * you still have to free() it yourself.  */
 end_comment
 
 begin_function
-DECL|function|read_pipe
+DECL|function|read_fd
 name|int
-name|read_pipe
+name|read_fd
 parameter_list|(
 name|int
 name|fd
@@ -12538,6 +12538,30 @@ name|off
 init|=
 literal|0
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|buf
+operator|||
+name|size
+operator|<=
+literal|1
+condition|)
+block|{
+name|size
+operator|=
+literal|1024
+expr_stmt|;
+name|buf
+operator|=
+name|xrealloc
+argument_list|(
+name|buf
+argument_list|,
+name|size
+argument_list|)
+expr_stmt|;
+block|}
 do|do
 block|{
 name|iret
@@ -12550,7 +12574,11 @@ name|buf
 operator|+
 name|off
 argument_list|,
+operator|(
 name|size
+operator|-
+literal|1
+operator|)
 operator|-
 name|off
 argument_list|)
@@ -12571,11 +12599,16 @@ condition|(
 name|off
 operator|==
 name|size
+operator|-
+literal|1
 condition|)
 block|{
 name|size
-operator|*=
-literal|2
+operator|=
+name|alloc_nr
+argument_list|(
+name|size
+argument_list|)
 expr_stmt|;
 name|buf
 operator|=
@@ -12596,6 +12629,13 @@ operator|>
 literal|0
 condition|)
 do|;
+name|buf
+index|[
+name|off
+index|]
+operator|=
+literal|'\0'
+expr_stmt|;
 operator|*
 name|return_buf
 operator|=
@@ -12664,7 +12704,7 @@ name|ret
 decl_stmt|;
 if|if
 condition|(
-name|read_pipe
+name|read_fd
 argument_list|(
 name|fd
 argument_list|,

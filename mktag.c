@@ -558,7 +558,7 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|read_pipe
+name|read_fd
 argument_list|(
 literal|0
 argument_list|,
