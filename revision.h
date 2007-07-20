@@ -413,6 +413,10 @@ DECL|member|no_inline
 name|int
 name|no_inline
 decl_stmt|;
+DECL|member|show_log_size
+name|int
+name|show_log_size
+decl_stmt|;
 comment|/* Filter by commit log message */
 DECL|member|grep_filter
 name|struct

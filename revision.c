@@ -6105,6 +6105,25 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--log-size"
+argument_list|)
+condition|)
+block|{
+name|revs
+operator|->
+name|show_log_size
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
 comment|/* 			 * Grepping the commit log 			 */
 if|if
 condition|(

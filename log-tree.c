@@ -1479,6 +1479,19 @@ operator|->
 name|add_signoff
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|opt
+operator|->
+name|show_log_size
+condition|)
+name|printf
+argument_list|(
+literal|"log size %i\n"
+argument_list|,
+name|len
+argument_list|)
+expr_stmt|;
 name|printf
 argument_list|(
 literal|"%s%s%s"
