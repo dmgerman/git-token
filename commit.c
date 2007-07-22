@@ -4036,6 +4036,11 @@ argument_list|,
 name|output_encoding
 argument_list|)
 condition|)
+if|if
+condition|(
+name|encoding
+condition|)
+comment|/* we'll strip encoding header later */
 name|out
 operator|=
 name|xstrdup
@@ -4045,6 +4050,11 @@ operator|->
 name|buffer
 argument_list|)
 expr_stmt|;
+else|else
+return|return
+name|NULL
+return|;
+comment|/* nothing to do */
 else|else
 name|out
 operator|=
