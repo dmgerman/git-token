@@ -28,7 +28,7 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|void
+name|int
 name|add_reflog_for_walk
 parameter_list|(
 name|struct

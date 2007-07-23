@@ -857,7 +857,7 @@ end_function
 
 begin_function
 DECL|function|add_reflog_for_walk
-name|void
+name|int
 name|add_reflog_for_walk
 parameter_list|(
 name|struct
@@ -1184,13 +1184,10 @@ name|nr
 operator|==
 literal|0
 condition|)
-name|die
-argument_list|(
-literal|"No reflogs found for '%s'"
-argument_list|,
-name|branch
-argument_list|)
-expr_stmt|;
+return|return
+operator|-
+literal|1
+return|;
 name|path_list_insert
 argument_list|(
 name|branch
@@ -1262,7 +1259,10 @@ argument_list|(
 name|commit_reflog
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+operator|-
+literal|1
+return|;
 block|}
 block|}
 else|else
@@ -1296,6 +1296,9 @@ operator|->
 name|reflogs
 argument_list|)
 expr_stmt|;
+return|return
+literal|0
+return|;
 block|}
 end_function
 
