@@ -2590,6 +2590,17 @@ name|charset
 condition|)
 return|return;
 block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|metainfo_charset
+argument_list|,
+name|charset
+argument_list|)
+condition|)
+return|return;
 name|out
 operator|=
 name|reencode_string
