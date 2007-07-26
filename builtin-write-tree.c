@@ -209,6 +209,18 @@ argument_list|,
 name|prefix
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|subtree
+condition|)
+name|die
+argument_list|(
+literal|"git-write-tree: prefix %s not found"
+argument_list|,
+name|prefix
+argument_list|)
+expr_stmt|;
 name|hashcpy
 argument_list|(
 name|sha1
