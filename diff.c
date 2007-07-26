@@ -9572,7 +9572,12 @@ literal|0
 condition|)
 name|die
 argument_list|(
-literal|"unable to create temp-file"
+literal|"unable to create temp-file: %s"
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
