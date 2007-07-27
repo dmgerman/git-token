@@ -82,7 +82,8 @@ index|[]
 init|=
 literal|"git-daemon [--verbose] [--syslog] [--export-all]\n"
 literal|"           [--timeout=n] [--init-timeout=n] [--strict-paths]\n"
-literal|"           [--base-path=path] [--user-path | --user-path=path]\n"
+literal|"           [--base-path=path] [--base-path-relaxed]\n"
+literal|"           [--user-path | --user-path=path]\n"
 literal|"           [--interpolated-path=path]\n"
 literal|"           [--reuseaddr] [--detach] [--pid-file=file]\n"
 literal|"           [--[enable|disable|allow-override|forbid-override]=service]\n"
@@ -145,6 +146,14 @@ specifier|static
 name|char
 modifier|*
 name|interpolated_path
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|base_path_relaxed
+specifier|static
+name|int
+name|base_path_relaxed
 decl_stmt|;
 end_decl_stmt
 
@@ -764,6 +773,11 @@ index|[
 name|PATH_MAX
 index|]
 decl_stmt|;
+name|int
+name|retried_path
+init|=
+literal|0
+decl_stmt|;
 name|char
 modifier|*
 name|path
@@ -1014,6 +1028,8 @@ operator|=
 name|rpath
 expr_stmt|;
 block|}
+do|do
+block|{
 name|path
 operator|=
 name|enter_repo
@@ -1023,6 +1039,44 @@ argument_list|,
 name|strict_paths
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|path
+condition|)
+break|break;
+comment|/* 		 * if we fail and base_path_relaxed is enabled, try without 		 * prefixing the base path 		 */
+if|if
+condition|(
+name|base_path
+operator|&&
+name|base_path_relaxed
+operator|&&
+operator|!
+name|retried_path
+condition|)
+block|{
+name|dir
+operator|=
+name|itable
+index|[
+name|INTERP_SLOT_DIR
+index|]
+operator|.
+name|value
+expr_stmt|;
+name|retried_path
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
+break|break;
+block|}
+do|while
+condition|(
+literal|1
+condition|)
+do|;
 if|if
 condition|(
 operator|!
@@ -4991,6 +5045,23 @@ operator|=
 name|arg
 operator|+
 literal|12
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--base-path-relaxed"
+argument_list|)
+condition|)
+block|{
+name|base_path_relaxed
+operator|=
+literal|1
 expr_stmt|;
 continue|continue;
 block|}
