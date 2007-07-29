@@ -1268,6 +1268,14 @@ name|allow_external
 operator|=
 literal|1
 expr_stmt|;
+name|rev
+operator|.
+name|diffopt
+operator|.
+name|recursive
+operator|=
+literal|1
+expr_stmt|;
 comment|/* Do we have --cached and not have a pending object, then 	 * default to HEAD by hand.  Eek. 	 */
 if|if
 condition|(
