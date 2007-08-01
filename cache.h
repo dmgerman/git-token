@@ -1124,6 +1124,19 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|set_git_dir
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_define
 DECL|macro|ALTERNATE_DB_ENVIRONMENT
 define|#

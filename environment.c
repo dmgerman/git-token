@@ -600,5 +600,44 @@ return|;
 block|}
 end_function
 
+begin_function
+DECL|function|set_git_dir
+name|int
+name|set_git_dir
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|)
+block|{
+if|if
+condition|(
+name|setenv
+argument_list|(
+name|GIT_DIR_ENVIRONMENT
+argument_list|,
+name|path
+argument_list|,
+literal|1
+argument_list|)
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"Could not set GIT_DIR to '%s'"
+argument_list|,
+name|path
+argument_list|)
+return|;
+name|setup_git_env
+argument_list|()
+expr_stmt|;
+return|return
+literal|0
+return|;
+block|}
+end_function
+
 end_unit
 
