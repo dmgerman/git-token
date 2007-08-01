@@ -1502,8 +1502,8 @@ name|on_list
 argument_list|,
 sizeof|sizeof
 argument_list|(
-name|int
 operator|*
+name|weights
 argument_list|)
 argument_list|)
 expr_stmt|;
