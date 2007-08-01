@@ -1058,6 +1058,14 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_decl_stmt
+specifier|extern
+name|char
+modifier|*
+name|git_work_tree_cfg
+decl_stmt|;
+end_decl_stmt
+
 begin_function_decl
 specifier|extern
 name|int
@@ -1133,6 +1141,18 @@ specifier|const
 name|char
 modifier|*
 name|path
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+specifier|const
+name|char
+modifier|*
+name|get_git_work_tree
+parameter_list|(
+name|void
 parameter_list|)
 function_decl|;
 end_function_decl
