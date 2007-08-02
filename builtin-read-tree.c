@@ -529,9 +529,6 @@ operator|=
 operator|-
 literal|1
 expr_stmt|;
-name|setup_git_directory
-argument_list|()
-expr_stmt|;
 name|git_config
 argument_list|(
 name|git_default_config
