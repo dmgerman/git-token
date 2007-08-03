@@ -2352,13 +2352,26 @@ argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
-if|if
+switch|switch
 condition|(
 name|check_ref_format
 argument_list|(
 name|name
 argument_list|)
 condition|)
+block|{
+case|case
+literal|0
+case|:
+break|break;
+comment|/* its valid */
+case|case
+operator|-
+literal|2
+case|:
+break|break;
+comment|/* valid, but too few '/', allow anyway */
+default|default:
 name|die
 argument_list|(
 literal|"Branch name doesn't conform to GIT standards: %s"
@@ -2366,6 +2379,7 @@ argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
+block|}
 name|b
 operator|=
 name|pool_calloc
