@@ -358,6 +358,10 @@ DECL|member|detect_rename
 name|int
 name|detect_rename
 decl_stmt|;
+DECL|member|skip_stat_unmatch
+name|int
+name|skip_stat_unmatch
+decl_stmt|;
 DECL|member|line_termination
 name|int
 name|line_termination
