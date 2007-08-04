@@ -2175,6 +2175,20 @@ operator|!
 name|changed
 condition|)
 return|return;
+comment|/* 		 * NEEDSWORK: the current default policy is to allow 		 * submodule to be out of sync wrt the supermodule 		 * index.  This needs to be tightened later for 		 * submodules that are marked to be automatically 		 * checked out. 		 */
+if|if
+condition|(
+name|S_ISGITLINK
+argument_list|(
+name|ntohl
+argument_list|(
+name|ce
+operator|->
+name|ce_mode
+argument_list|)
+argument_list|)
+condition|)
+return|return;
 name|errno
 operator|=
 literal|0
