@@ -509,6 +509,10 @@ condition|(
 name|errno
 operator|!=
 name|ENOENT
+operator|&&
+name|errno
+operator|!=
+name|ENOTDIR
 condition|)
 name|die
 argument_list|(
