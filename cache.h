@@ -1457,6 +1457,19 @@ DECL|macro|ADD_CACHE_SKIP_DFCHECK
 comment|/* Ok to skip DF conflict checks */
 end_comment
 
+begin_define
+DECL|macro|ADD_CACHE_JUST_APPEND
+define|#
+directive|define
+name|ADD_CACHE_JUST_APPEND
+value|8
+end_define
+
+begin_comment
+DECL|macro|ADD_CACHE_JUST_APPEND
+comment|/* Append only; tree.c::read_tree() */
+end_comment
+
 begin_function_decl
 specifier|extern
 name|int
