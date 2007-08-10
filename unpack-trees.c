@@ -3171,11 +3171,6 @@ decl_stmt|;
 name|int
 name|i
 decl_stmt|;
-name|remove_entry
-argument_list|(
-name|remove
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|i
@@ -3466,9 +3461,16 @@ name|remote
 operator|&&
 name|any_anc_missing
 condition|)
+block|{
+name|remove_entry
+argument_list|(
+name|remove
+argument_list|)
+expr_stmt|;
 return|return
 literal|0
 return|;
+block|}
 comment|/* Under the new "aggressive" rule, we resolve mostly trivial 	 * cases that we historically had git-merge-one-file resolve. 	 */
 if|if
 condition|(
@@ -3600,6 +3602,11 @@ name|head_match
 operator|)
 condition|)
 block|{
+name|remove_entry
+argument_list|(
+name|remove
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|index
@@ -3676,6 +3683,11 @@ name|o
 argument_list|)
 expr_stmt|;
 block|}
+name|remove_entry
+argument_list|(
+name|remove
+argument_list|)
+expr_stmt|;
 name|o
 operator|->
 name|nontrivial_merge
