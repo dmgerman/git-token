@@ -3875,11 +3875,6 @@ index|[
 literal|2
 index|]
 decl_stmt|;
-name|remove_entry
-argument_list|(
-name|remove
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|o
@@ -4016,6 +4011,11 @@ argument_list|)
 condition|)
 block|{
 comment|/* 10 or 11 */
+name|remove_entry
+argument_list|(
+name|remove
+argument_list|)
+expr_stmt|;
 return|return
 name|deleted_entry
 argument_list|(
@@ -4065,6 +4065,11 @@ block|}
 else|else
 block|{
 comment|/* all other failures */
+name|remove_entry
+argument_list|(
+name|remove
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|oldtree
@@ -4113,7 +4118,11 @@ argument_list|,
 name|o
 argument_list|)
 return|;
-else|else
+name|remove_entry
+argument_list|(
+name|remove
+argument_list|)
+expr_stmt|;
 return|return
 name|deleted_entry
 argument_list|(
