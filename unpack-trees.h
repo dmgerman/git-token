@@ -121,10 +121,13 @@ specifier|extern
 name|int
 name|unpack_trees
 parameter_list|(
+name|unsigned
+name|n
+parameter_list|,
 name|struct
-name|object_list
+name|tree_desc
 modifier|*
-name|trees
+name|t
 parameter_list|,
 name|struct
 name|unpack_trees_options
