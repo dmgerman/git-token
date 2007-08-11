@@ -4524,6 +4524,14 @@ name|pager_use_color
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+specifier|extern
+name|char
+modifier|*
+name|editor_program
+decl_stmt|;
+end_decl_stmt
+
 begin_comment
 comment|/* base85 */
 end_comment
