@@ -1276,6 +1276,19 @@ name|recursive
 operator|=
 literal|1
 expr_stmt|;
+comment|/* If the user asked for our exit code then don't start a 	 * pager or we would end up reporting its exit code instead. 	 */
+if|if
+condition|(
+operator|!
+name|rev
+operator|.
+name|diffopt
+operator|.
+name|exit_with_status
+condition|)
+name|setup_pager
+argument_list|()
+expr_stmt|;
 comment|/* Do we have --cached and not have a pending object, then 	 * default to HEAD by hand.  Eek. 	 */
 if|if
 condition|(

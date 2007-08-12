@@ -1901,8 +1901,6 @@ block|{
 literal|"diff"
 block|,
 name|cmd_diff
-block|,
-name|USE_PAGER
 block|}
 block|,
 block|{
