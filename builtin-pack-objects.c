@@ -3367,7 +3367,7 @@ name|path
 argument_list|)
 expr_stmt|;
 return|return
-name|mkstemp
+name|xmkstemp
 argument_list|(
 name|tmpname
 argument_list|)
@@ -3505,24 +3505,6 @@ argument_list|(
 literal|"tmp_pack_XXXXXX"
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|fd
-operator|<
-literal|0
-condition|)
-name|die
-argument_list|(
-literal|"unable to create %s: %s\n"
-argument_list|,
-name|tmpname
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|pack_tmp_name
 operator|=
 name|xstrdup

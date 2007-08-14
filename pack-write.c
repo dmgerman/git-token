@@ -278,7 +278,7 @@ argument_list|)
 expr_stmt|;
 name|fd
 operator|=
-name|mkstemp
+name|xmkstemp
 argument_list|(
 name|tmpfile
 argument_list|)

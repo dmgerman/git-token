@@ -4317,20 +4317,9 @@ argument_list|)
 expr_stmt|;
 name|fd
 operator|=
-name|mkstemp
+name|xmkstemp
 argument_list|(
 name|path
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|fd
-operator|<
-literal|0
-condition|)
-name|die
-argument_list|(
-literal|"unable to create temp-file"
 argument_list|)
 expr_stmt|;
 if|if
