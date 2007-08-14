@@ -1140,6 +1140,14 @@ name|exit_with_status
 operator|=
 literal|1
 expr_stmt|;
+name|revs
+operator|->
+name|diffopt
+operator|.
+name|no_index
+operator|=
+literal|1
+expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -1229,6 +1237,7 @@ literal|1
 index|]
 argument_list|)
 condition|)
+block|{
 name|revs
 operator|->
 name|max_count
@@ -1236,6 +1245,15 @@ operator|=
 operator|-
 literal|2
 expr_stmt|;
+name|revs
+operator|->
+name|diffopt
+operator|.
+name|no_index
+operator|=
+literal|1
+expr_stmt|;
+block|}
 block|}
 comment|/* 	 * Make sure there are NO revision (i.e. pending object) parameter, 	 * rev.max_count is reasonable (0<= n<= 3), 	 * there is no other revision filtering parameters. 	 */
 if|if
@@ -1794,6 +1812,14 @@ literal|2
 expr_stmt|;
 name|revs
 operator|->
+name|diffopt
+operator|.
+name|no_index
+operator|=
+literal|1
+expr_stmt|;
+name|revs
+operator|->
 name|max_count
 operator|=
 operator|-
@@ -1850,10 +1876,9 @@ if|if
 condition|(
 name|revs
 operator|->
-name|max_count
-operator|==
-operator|-
-literal|2
+name|diffopt
+operator|.
+name|no_index
 condition|)
 block|{
 if|if

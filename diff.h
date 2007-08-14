@@ -336,6 +336,11 @@ name|quiet
 range|:
 literal|1
 decl_stmt|,
+DECL|member|no_index
+name|no_index
+range|:
+literal|1
+decl_stmt|,
 DECL|member|allow_external
 name|allow_external
 range|:

@@ -17849,6 +17849,13 @@ expr_stmt|;
 else|else
 block|{
 comment|/* 			 * The caller can subtract 1 from skip_stat_unmatch 			 * to determine how many paths were dirty only 			 * due to stat info mismatch. 			 */
+if|if
+condition|(
+operator|!
+name|diffopt
+operator|->
+name|no_index
+condition|)
 name|diffopt
 operator|->
 name|skip_stat_unmatch
