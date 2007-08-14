@@ -8,6 +8,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"cache.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"attr.h"
 end_include
 
@@ -61,6 +67,20 @@ name|i
 decl_stmt|,
 name|doubledash
 decl_stmt|;
+if|if
+condition|(
+name|read_cache
+argument_list|()
+operator|<
+literal|0
+condition|)
+block|{
+name|die
+argument_list|(
+literal|"invalid cache"
+argument_list|)
+expr_stmt|;
+block|}
 name|doubledash
 operator|=
 operator|-
