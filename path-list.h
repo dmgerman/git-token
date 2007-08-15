@@ -107,7 +107,7 @@ modifier|*
 name|list
 parameter_list|,
 name|int
-name|free_items
+name|free_util
 parameter_list|)
 function_decl|;
 end_function_decl
