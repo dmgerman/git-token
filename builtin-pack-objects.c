@@ -5349,6 +5349,16 @@ name|entry
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+name|S_ISGITLINK
+argument_list|(
+name|entry
+operator|.
+name|mode
+argument_list|)
+condition|)
+continue|continue;
 name|cmp
 operator|=
 name|tree_entry_len
