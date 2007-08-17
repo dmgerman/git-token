@@ -56,7 +56,7 @@ DECL|macro|MAX_TREES
 define|#
 directive|define
 name|MAX_TREES
-value|4
+value|8
 end_define
 
 begin_decl_stmt
@@ -101,12 +101,15 @@ if|if
 condition|(
 name|nr_trees
 operator|>=
-literal|4
+name|MAX_TREES
 condition|)
-return|return
-operator|-
-literal|1
-return|;
+name|die
+argument_list|(
+literal|"I cannot read more than %d trees"
+argument_list|,
+name|MAX_TREES
+argument_list|)
+expr_stmt|;
 name|tree
 operator|=
 name|parse_tree_indirect
@@ -1282,19 +1285,6 @@ operator|=
 literal|1
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|MAX_TREES
-operator|<
-name|nr_trees
-condition|)
-name|die
-argument_list|(
-literal|"I cannot read more than %d trees"
-argument_list|,
-name|MAX_TREES
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|i
