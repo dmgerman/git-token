@@ -16404,17 +16404,6 @@ argument_list|(
 literal|"unable to read files to diff"
 argument_list|)
 return|;
-comment|/* Maybe hash p->two? into the patch id? */
-if|if
-condition|(
-name|diff_filespec_is_binary
-argument_list|(
-name|p
-operator|->
-name|two
-argument_list|)
-condition|)
-continue|continue;
 name|len1
 operator|=
 name|remove_space
