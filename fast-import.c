@@ -1805,6 +1805,16 @@ specifier|static
 name|int
 name|zombie
 decl_stmt|;
+name|va_list
+name|x_params
+decl_stmt|;
+name|va_copy
+argument_list|(
+name|x_params
+argument_list|,
+name|params
+argument_list|)
+expr_stmt|;
 name|fputs
 argument_list|(
 literal|"fatal: "
@@ -1842,10 +1852,15 @@ name|write_crash_report
 argument_list|(
 name|err
 argument_list|,
-name|params
+name|x_params
 argument_list|)
 expr_stmt|;
 block|}
+name|va_end
+argument_list|(
+name|x_params
+argument_list|)
+expr_stmt|;
 name|exit
 argument_list|(
 literal|128
@@ -9299,7 +9314,9 @@ DECL|function|skip_optional_lf
 specifier|static
 name|void
 name|skip_optional_lf
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 name|int
 name|term_char
