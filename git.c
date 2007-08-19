@@ -30,7 +30,7 @@ name|char
 name|git_usage_string
 index|[]
 init|=
-literal|"git [--version] [--exec-path[=GIT_EXEC_PATH]] [-p|--paginate] [--bare] [--git-dir=GIT_DIR] [--work-tree=GIT_WORK_TREE] [--help] COMMAND [ARGS]"
+literal|"git [--version] [--exec-path[=GIT_EXEC_PATH]] [-p|--paginate|--no-pager] [--bare] [--git-dir=GIT_DIR] [--work-tree=GIT_WORK_TREE] [--help] COMMAND [ARGS]"
 decl_stmt|;
 end_decl_stmt
 
@@ -290,6 +290,37 @@ condition|)
 block|{
 name|setup_pager
 argument_list|()
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|cmd
+argument_list|,
+literal|"--no-pager"
+argument_list|)
+condition|)
+block|{
+name|setenv
+argument_list|(
+literal|"GIT_PAGER"
+argument_list|,
+literal|"cat"
+argument_list|,
+literal|1
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|envchanged
+condition|)
+operator|*
+name|envchanged
+operator|=
+literal|1
 expr_stmt|;
 block|}
 elseif|else
