@@ -6742,6 +6742,21 @@ name|grep_filter
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|revs
+operator|->
+name|reverse
+operator|&&
+name|revs
+operator|->
+name|reflog_info
+condition|)
+name|die
+argument_list|(
+literal|"cannot combine --reverse with --walk-reflogs"
+argument_list|)
+expr_stmt|;
 return|return
 name|left
 return|;
