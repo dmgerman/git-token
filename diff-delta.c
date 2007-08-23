@@ -1612,8 +1612,6 @@ name|i
 index|]
 operator|/
 name|HASH_LIMIT
-operator|/
-literal|2
 decl_stmt|;
 do|do
 block|{
