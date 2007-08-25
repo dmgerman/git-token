@@ -8673,6 +8673,28 @@ argument_list|,
 name|delta_size
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|delta_data
+condition|)
+name|die
+argument_list|(
+literal|"failed to unpack compressed delta"
+literal|" at %"
+name|PRIuMAX
+literal|" from %s"
+argument_list|,
+operator|(
+name|uintmax_t
+operator|)
+name|curpos
+argument_list|,
+name|p
+operator|->
+name|pack_name
+argument_list|)
+expr_stmt|;
 name|result
 operator|=
 name|patch_delta
