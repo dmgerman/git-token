@@ -3577,8 +3577,14 @@ operator|.
 name|max_count
 operator|<
 literal|0
+operator|&&
+operator|!
+name|rev
+operator|.
+name|show_root_diff
 condition|)
 block|{
+comment|/* 			 * This is traditional behaviour of "git format-patch 			 * origin" that prepares what the origin side still 			 * does not have. 			 */
 name|rev
 operator|.
 name|pending
@@ -3601,7 +3607,7 @@ name|rev
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* Otherwise, it is "format-patch -22 HEAD", and 		 * get_revision() would return only the specified count. 		 */
+comment|/* 		 * Otherwise, it is "format-patch -22 HEAD", and/or 		 * "format-patch --root HEAD".  The user wants 		 * get_revision() to do the usual traversal. 		 */
 block|}
 if|if
 condition|(
