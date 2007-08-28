@@ -887,11 +887,11 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|ignore_warning
+DECL|variable|ignore_error
 specifier|static
 specifier|const
 name|char
-name|ignore_warning
+name|ignore_error
 index|[]
 init|=
 literal|"The following paths are ignored by one of your .gitignore files:\n"
@@ -1370,7 +1370,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-name|ignore_warning
+name|ignore_error
 argument_list|)
 expr_stmt|;
 for|for
@@ -1413,9 +1413,9 @@ argument_list|,
 literal|"Use -f if you really want to add them.\n"
 argument_list|)
 expr_stmt|;
-name|exit
+name|die
 argument_list|(
-literal|1
+literal|"no files added"
 argument_list|)
 expr_stmt|;
 block|}
