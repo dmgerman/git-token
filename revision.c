@@ -4688,6 +4688,15 @@ name|argc
 operator|=
 name|i
 expr_stmt|;
+if|if
+condition|(
+name|argv
+index|[
+name|i
+operator|+
+literal|1
+index|]
+condition|)
 name|revs
 operator|->
 name|prune_data
