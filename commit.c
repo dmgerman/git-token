@@ -4463,7 +4463,6 @@ end_function
 
 begin_function
 DECL|function|format_commit_message
-specifier|static
 name|long
 name|format_commit_message
 parameter_list|(
@@ -4474,9 +4473,9 @@ modifier|*
 name|commit
 parameter_list|,
 specifier|const
-name|char
+name|void
 modifier|*
-name|msg
+name|format
 parameter_list|,
 name|char
 modifier|*
@@ -4730,6 +4729,15 @@ name|BODY
 block|}
 name|state
 enum|;
+specifier|const
+name|char
+modifier|*
+name|msg
+init|=
+name|commit
+operator|->
+name|buffer
+decl_stmt|;
 if|if
 condition|(
 name|ILEFT_RIGHT
@@ -5363,7 +5371,7 @@ name|buf
 argument_list|,
 name|space
 argument_list|,
-name|user_format
+name|format
 argument_list|,
 name|table
 argument_list|,
@@ -6643,7 +6651,7 @@ name|format_commit_message
 argument_list|(
 name|commit
 argument_list|,
-name|msg
+name|user_format
 argument_list|,
 name|buf_p
 argument_list|,
