@@ -101,6 +101,17 @@ name|verbose
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|commit
+specifier|static
+specifier|const
+name|struct
+name|commit
+modifier|*
+name|commit
+decl_stmt|;
+end_decl_stmt
+
 begin_comment
 comment|/* writes out the whole block, but only if it is full */
 end_comment
@@ -1831,7 +1842,7 @@ else|else
 block|{
 name|buffer
 operator|=
-name|convert_sha1_file
+name|sha1_file_to_archive
 argument_list|(
 name|path
 operator|.
@@ -1846,6 +1857,8 @@ name|type
 argument_list|,
 operator|&
 name|size
+argument_list|,
+name|commit
 argument_list|)
 expr_stmt|;
 if|if
@@ -1932,6 +1945,12 @@ operator|=
 name|args
 operator|->
 name|verbose
+expr_stmt|;
+name|commit
+operator|=
+name|args
+operator|->
+name|commit
 expr_stmt|;
 if|if
 condition|(
