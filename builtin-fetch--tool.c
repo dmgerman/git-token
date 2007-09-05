@@ -167,10 +167,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|update_ref
+DECL|function|update_ref_env
 specifier|static
 name|int
-name|update_ref
+name|update_ref_env
 parameter_list|(
 specifier|const
 name|char
@@ -208,12 +208,6 @@ argument_list|(
 literal|"GIT_REFLOG_ACTION"
 argument_list|)
 decl_stmt|;
-specifier|static
-name|struct
-name|ref_lock
-modifier|*
-name|lock
-decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -223,6 +217,8 @@ name|rla
 operator|=
 literal|"(reflog update)"
 expr_stmt|;
+if|if
+condition|(
 name|snprintf
 argument_list|(
 name|msg
@@ -238,44 +234,36 @@ name|rla
 argument_list|,
 name|action
 argument_list|)
-expr_stmt|;
-name|lock
-operator|=
-name|lock_any_ref_for_update
+operator|>=
+sizeof|sizeof
 argument_list|(
+name|msg
+argument_list|)
+condition|)
+name|warning
+argument_list|(
+literal|"reflog message too long: %.*s..."
+argument_list|,
+literal|50
+argument_list|,
+name|msg
+argument_list|)
+expr_stmt|;
+return|return
+name|update_ref
+argument_list|(
+name|msg
+argument_list|,
 name|refname
+argument_list|,
+name|sha1
 argument_list|,
 name|oldval
 argument_list|,
 literal|0
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-operator|!
-name|lock
-condition|)
-return|return
-literal|1
-return|;
-if|if
-condition|(
-name|write_ref_sha1
-argument_list|(
-name|lock
 argument_list|,
-name|sha1
-argument_list|,
-name|msg
+name|QUIET_ON_ERR
 argument_list|)
-operator|<
-literal|0
-condition|)
-return|return
-literal|1
-return|;
-return|return
-literal|0
 return|;
 block|}
 end_function
@@ -472,7 +460,7 @@ name|sha1_new
 argument_list|)
 expr_stmt|;
 return|return
-name|update_ref
+name|update_ref_env
 argument_list|(
 name|msg
 argument_list|,
@@ -555,7 +543,7 @@ name|sha1_new
 argument_list|)
 expr_stmt|;
 return|return
-name|update_ref
+name|update_ref_env
 argument_list|(
 literal|"updating tag"
 argument_list|,
@@ -656,7 +644,7 @@ name|newh
 argument_list|)
 expr_stmt|;
 return|return
-name|update_ref
+name|update_ref_env
 argument_list|(
 literal|"fast forward"
 argument_list|,
@@ -723,7 +711,7 @@ name|newh
 argument_list|)
 expr_stmt|;
 return|return
-name|update_ref
+name|update_ref_env
 argument_list|(
 literal|"forced-update"
 argument_list|,
