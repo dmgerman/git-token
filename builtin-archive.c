@@ -462,11 +462,11 @@ block|}
 end_function
 
 begin_function
-DECL|function|format_specfile
+DECL|function|format_subst
 specifier|static
 name|void
 modifier|*
-name|format_specfile
+name|format_subst
 parameter_list|(
 specifier|const
 name|struct
@@ -784,7 +784,7 @@ specifier|static
 name|struct
 name|git_attr
 modifier|*
-name|attr_specfile
+name|attr_export_subst
 decl_stmt|;
 name|struct
 name|git_attr_check
@@ -804,15 +804,15 @@ return|;
 if|if
 condition|(
 operator|!
-name|attr_specfile
+name|attr_export_subst
 condition|)
-name|attr_specfile
+name|attr_export_subst
 operator|=
 name|git_attr
 argument_list|(
-literal|"specfile"
+literal|"export-subst"
 argument_list|,
-literal|8
+literal|12
 argument_list|)
 expr_stmt|;
 name|check
@@ -822,7 +822,7 @@ index|]
 operator|.
 name|attr
 operator|=
-name|attr_specfile
+name|attr_export_subst
 expr_stmt|;
 if|if
 condition|(
@@ -858,7 +858,7 @@ return|return
 name|NULL
 return|;
 return|return
-name|format_specfile
+name|format_subst
 argument_list|(
 name|commit
 argument_list|,
