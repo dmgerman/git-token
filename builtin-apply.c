@@ -7344,6 +7344,14 @@ block|}
 comment|/* Exact line number? */
 if|if
 condition|(
+operator|(
+name|start
+operator|+
+name|fragsize
+operator|<=
+name|size
+operator|)
+operator|&&
 operator|!
 name|memcmp
 argument_list|(
