@@ -525,12 +525,16 @@ name|strbuf_init
 argument_list|(
 operator|&
 name|minus
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|strbuf_init
 argument_list|(
 operator|&
 name|plus
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 if|if

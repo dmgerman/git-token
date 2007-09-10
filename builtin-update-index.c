@@ -1446,6 +1446,8 @@ name|strbuf_init
 argument_list|(
 operator|&
 name|buf
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 while|while
@@ -3495,6 +3497,8 @@ name|strbuf_init
 argument_list|(
 operator|&
 name|buf
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 while|while

@@ -699,6 +699,8 @@ name|strbuf_init
 argument_list|(
 operator|&
 name|ext_header
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 if|if
@@ -1335,6 +1337,8 @@ name|strbuf_init
 argument_list|(
 operator|&
 name|ext_header
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|strbuf_append_ext_header
