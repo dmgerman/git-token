@@ -27,6 +27,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"strbuf.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"decorate.h"
 end_include
 
@@ -347,7 +353,7 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|long
+name|void
 name|format_commit_message
 parameter_list|(
 specifier|const
@@ -359,25 +365,19 @@ parameter_list|,
 specifier|const
 name|void
 modifier|*
-name|template
+name|format
 parameter_list|,
-name|char
+name|struct
+name|strbuf
 modifier|*
-modifier|*
-name|buf_p
-parameter_list|,
-name|unsigned
-name|long
-modifier|*
-name|space_p
+name|sb
 parameter_list|)
 function_decl|;
 end_function_decl
 
 begin_function_decl
 specifier|extern
-name|unsigned
-name|long
+name|void
 name|pretty_print_commit
 parameter_list|(
 name|enum
@@ -389,19 +389,9 @@ name|struct
 name|commit
 modifier|*
 parameter_list|,
-name|unsigned
-name|long
-name|len
-parameter_list|,
-name|char
+name|struct
+name|strbuf
 modifier|*
-modifier|*
-name|buf_p
-parameter_list|,
-name|unsigned
-name|long
-modifier|*
-name|space_p
 parameter_list|,
 name|int
 name|abbrev
@@ -418,7 +408,6 @@ name|after_subject
 parameter_list|,
 name|enum
 name|date_mode
-name|dmode
 parameter_list|)
 function_decl|;
 end_function_decl
