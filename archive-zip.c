@@ -70,6 +70,17 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|commit
+specifier|static
+specifier|const
+name|struct
+name|commit
+modifier|*
+name|commit
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|zip_dir
 specifier|static
 name|unsigned
@@ -1144,7 +1155,7 @@ literal|0
 expr_stmt|;
 name|buffer
 operator|=
-name|convert_sha1_file
+name|sha1_file_to_archive
 argument_list|(
 name|path
 argument_list|,
@@ -1157,6 +1168,8 @@ name|type
 argument_list|,
 operator|&
 name|size
+argument_list|,
+name|commit
 argument_list|)
 expr_stmt|;
 if|if
@@ -1935,6 +1948,12 @@ operator|=
 name|args
 operator|->
 name|verbose
+expr_stmt|;
+name|commit
+operator|=
+name|args
+operator|->
+name|commit
 expr_stmt|;
 if|if
 condition|(

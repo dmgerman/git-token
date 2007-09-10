@@ -1069,6 +1069,14 @@ operator|=
 literal|'\0'
 expr_stmt|;
 block|}
+comment|/* When the username signingkey is bad, program could be terminated 	 * because gpg exits without reading and then write gets SIGPIPE. */
+name|signal
+argument_list|(
+name|SIGPIPE
+argument_list|,
+name|SIG_IGN
+argument_list|)
+expr_stmt|;
 name|memset
 argument_list|(
 operator|&
@@ -1144,7 +1152,9 @@ argument_list|(
 literal|"could not run gpg."
 argument_list|)
 return|;
-name|write_or_die
+if|if
+condition|(
+name|write_in_full
 argument_list|(
 name|gpg
 operator|.
@@ -1154,7 +1164,30 @@ name|buffer
 argument_list|,
 name|size
 argument_list|)
+operator|!=
+name|size
+condition|)
+block|{
+name|close
+argument_list|(
+name|gpg
+operator|.
+name|in
+argument_list|)
 expr_stmt|;
+name|finish_command
+argument_list|(
+operator|&
+name|gpg
+argument_list|)
+expr_stmt|;
+return|return
+name|error
+argument_list|(
+literal|"gpg did not accept the tag data"
+argument_list|)
+return|;
+block|}
 name|close
 argument_list|(
 name|gpg
@@ -1185,12 +1218,27 @@ operator|-
 name|size
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|finish_command
 argument_list|(
 operator|&
 name|gpg
 argument_list|)
-expr_stmt|;
+operator|||
+operator|!
+name|len
+operator|||
+name|len
+operator|<
+literal|0
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"gpg failed to sign the tag"
+argument_list|)
+return|;
 if|if
 condition|(
 name|len
@@ -1644,8 +1692,9 @@ condition|(
 name|sign
 condition|)
 block|{
-name|size
-operator|=
+name|ssize_t
+name|r
+init|=
 name|do_sign
 argument_list|(
 name|buffer
@@ -1654,10 +1703,10 @@ name|size
 argument_list|,
 name|max_size
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
-name|size
+name|r
 operator|<
 literal|0
 condition|)
@@ -1665,6 +1714,10 @@ name|die
 argument_list|(
 literal|"unable to sign the tag"
 argument_list|)
+expr_stmt|;
+name|size
+operator|=
+name|r
 expr_stmt|;
 block|}
 if|if
