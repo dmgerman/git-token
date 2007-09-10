@@ -128,7 +128,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Convert a NUL-terminated string in buffer orig  * into the supplied buffer, result, whose length is reslen,  * performing substitutions on %-named sub-strings from  * the table, interps, with ninterps entries.  *  * Example interps:  *    {  *        { "%H", "example.org"},  *        { "%port", "123"},  *        { "%%", "%"},  *    }  *  * Returns 0 on a successful substitution pass that fits in result,  * Returns a number of bytes needed to hold the full substituted  * string otherwise.  */
+comment|/*  * Convert a NUL-terminated string in buffer orig  * into the supplied buffer, result, whose length is reslen,  * performing substitutions on %-named sub-strings from  * the table, interps, with ninterps entries.  *  * Example interps:  *    {  *        { "%H", "example.org"},  *        { "%port", "123"},  *        { "%%", "%"},  *    }  *  * Returns the length of the substituted string (not including the final \0).  * Like with snprintf, if the result is>= reslen, then it overflowed.  */
 end_comment
 
 begin_function
@@ -199,15 +199,6 @@ decl_stmt|;
 name|char
 name|c
 decl_stmt|;
-name|memset
-argument_list|(
-name|result
-argument_list|,
-literal|0
-argument_list|,
-name|reslen
-argument_list|)
-expr_stmt|;
 while|while
 condition|(
 operator|(
@@ -300,14 +291,12 @@ condition|(
 name|newlen
 operator|+
 name|valuelen
-operator|+
-literal|1
 operator|<
 name|reslen
 condition|)
 block|{
 comment|/* Substitute. */
-name|strncpy
+name|memcpy
 argument_list|(
 name|dest
 argument_list|,
@@ -355,22 +344,20 @@ name|newlen
 operator|++
 expr_stmt|;
 block|}
+comment|/* XXX: the previous loop always keep room for the ending NUL, 	   we just need to check if there was room for a NUL in the first place */
 if|if
 condition|(
-name|newlen
-operator|+
-literal|1
-operator|<
 name|reslen
-condition|)
-return|return
+operator|>
 literal|0
-return|;
-else|else
+condition|)
+operator|*
+name|dest
+operator|=
+literal|'\0'
+expr_stmt|;
 return|return
 name|newlen
-operator|+
-literal|2
 return|;
 block|}
 end_function
