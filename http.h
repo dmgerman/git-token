@@ -420,21 +420,29 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|void
-name|step_active_slots
+name|add_fill_function
 parameter_list|(
 name|void
+modifier|*
+name|data
+parameter_list|,
+name|int
+function_decl|(
+modifier|*
+name|fill
+function_decl|)
+parameter_list|(
+name|void
+modifier|*
+parameter_list|)
 parameter_list|)
 function_decl|;
 end_function_decl
 
-begin_comment
-comment|/* Provided by the program using http. */
-end_comment
-
 begin_function_decl
 specifier|extern
-name|int
-name|fill_active_slot
+name|void
+name|step_active_slots
 parameter_list|(
 name|void
 parameter_list|)

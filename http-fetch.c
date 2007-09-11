@@ -1745,10 +1745,13 @@ end_ifdef
 
 begin_function
 DECL|function|fill_active_slot
+specifier|static
 name|int
 name|fill_active_slot
 parameter_list|(
 name|void
+modifier|*
+name|unused
 parameter_list|)
 block|{
 name|struct
@@ -5573,6 +5576,18 @@ name|next
 operator|=
 name|NULL
 expr_stmt|;
+ifdef|#
+directive|ifdef
+name|USE_CURL_MULTI
+name|add_fill_function
+argument_list|(
+name|NULL
+argument_list|,
+name|fill_active_slot
+argument_list|)
+expr_stmt|;
+endif|#
+directive|endif
 if|if
 condition|(
 name|pull
