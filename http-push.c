@@ -20,12 +20,6 @@ end_include
 begin_include
 include|#
 directive|include
-file|"fetch.h"
-end_include
-
-begin_include
-include|#
-directive|include
 file|"tag.h"
 end_include
 
