@@ -1961,6 +1961,14 @@ name|RUN_SETUP
 block|}
 block|,
 block|{
+literal|"fetch"
+block|,
+name|cmd_fetch
+block|,
+name|RUN_SETUP
+block|}
+block|,
+block|{
 literal|"fetch-pack"
 block|,
 name|cmd_fetch_pack
