@@ -427,6 +427,20 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* Provided by the program using http. */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|fill_active_slot
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
@@ -465,32 +479,6 @@ name|int
 name|active_requests
 decl_stmt|;
 end_decl_stmt
-
-begin_ifdef
-ifdef|#
-directive|ifdef
-name|USE_CURL_MULTI
-end_ifdef
-
-begin_decl_stmt
-specifier|extern
-name|int
-name|max_requests
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-specifier|extern
-name|CURLM
-modifier|*
-name|curlm
-decl_stmt|;
-end_decl_stmt
-
-begin_endif
-endif|#
-directive|endif
-end_endif
 
 begin_ifndef
 ifndef|#
@@ -615,15 +603,6 @@ name|struct
 name|curl_slist
 modifier|*
 name|no_range_header
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-specifier|extern
-name|struct
-name|active_request_slot
-modifier|*
-name|active_queue_head
 decl_stmt|;
 end_decl_stmt
 
