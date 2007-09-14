@@ -1692,6 +1692,11 @@ argument_list|,
 name|ref_map
 argument_list|)
 expr_stmt|;
+name|transport_unlock_pack
+argument_list|(
+name|transport
+argument_list|)
+expr_stmt|;
 return|return
 name|ret
 return|;
