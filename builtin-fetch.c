@@ -3034,6 +3034,8 @@ index|[
 name|j
 index|]
 argument_list|)
+operator|+
+literal|1
 expr_stmt|;
 block|}
 if|if
