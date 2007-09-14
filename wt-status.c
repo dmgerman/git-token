@@ -1254,6 +1254,14 @@ name|detect_rename
 operator|=
 literal|1
 expr_stmt|;
+name|rev
+operator|.
+name|diffopt
+operator|.
+name|rename_limit
+operator|=
+literal|100
+expr_stmt|;
 name|wt_read_cache
 argument_list|(
 name|s
