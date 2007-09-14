@@ -3492,13 +3492,6 @@ name|dst
 operator|++
 expr_stmt|;
 block|}
-name|heads
-index|[
-name|dst
-index|]
-operator|=
-literal|0
-expr_stmt|;
 return|return
 name|dst
 return|;
