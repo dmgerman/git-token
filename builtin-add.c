@@ -559,6 +559,9 @@ case|:
 case|case
 name|DIFF_STATUS_MODIFIED
 case|:
+case|case
+name|DIFF_STATUS_TYPE_CHANGED
+case|:
 name|add_file_to_cache
 argument_list|(
 name|path
