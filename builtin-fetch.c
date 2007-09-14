@@ -1345,6 +1345,8 @@ name|force
 operator|=
 name|rm
 operator|->
+name|peer_ref
+operator|->
 name|force
 expr_stmt|;
 block|}
