@@ -546,7 +546,7 @@ block|{
 default|default:
 name|die
 argument_list|(
-literal|"unexpacted diff status %c"
+literal|"unexpected diff status %c"
 argument_list|,
 name|p
 operator|->
