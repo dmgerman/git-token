@@ -9,12 +9,6 @@ directive|include
 file|"cache.h"
 end_include
 
-begin_include
-include|#
-directive|include
-file|"strbuf.h"
-end_include
-
 begin_typedef
 DECL|struct|store_conf
 typedef|typedef

@@ -51,12 +51,6 @@ directive|include
 file|"refs.h"
 end_include
 
-begin_include
-include|#
-directive|include
-file|"strbuf.h"
-end_include
-
 begin_ifndef
 ifndef|#
 directive|ifndef

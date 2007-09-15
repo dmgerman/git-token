@@ -5,12 +5,6 @@ directive|include
 file|"cache.h"
 end_include
 
-begin_include
-include|#
-directive|include
-file|"strbuf.h"
-end_include
-
 begin_function
 DECL|function|strbuf_init
 name|void

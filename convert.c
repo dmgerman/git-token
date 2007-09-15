@@ -17,12 +17,6 @@ directive|include
 file|"run-command.h"
 end_include
 
-begin_include
-include|#
-directive|include
-file|"strbuf.h"
-end_include
-
 begin_comment
 comment|/*  * convert.c - convert a file when checking it out and checking it in.  *  * This should use the pathname to decide on whether it wants to do some  * more interesting conversions (automatic gzip/unzip, general format  * conversions etc etc), but by default it just does automatic CRLF<->LF  * translation when the "auto_crlf" option is set.  */
 end_comment

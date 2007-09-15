@@ -18,12 +18,6 @@ end_include
 begin_include
 include|#
 directive|include
-file|"strbuf.h"
-end_include
-
-begin_include
-include|#
-directive|include
 file|"tar.h"
 end_include
 

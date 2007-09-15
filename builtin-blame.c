@@ -87,12 +87,6 @@ directive|include
 file|"mailmap.h"
 end_include
 
-begin_include
-include|#
-directive|include
-file|"strbuf.h"
-end_include
-
 begin_decl_stmt
 DECL|variable|blame_usage
 specifier|static

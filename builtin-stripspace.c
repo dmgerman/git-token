@@ -11,12 +11,6 @@ directive|include
 file|"cache.h"
 end_include
 
-begin_include
-include|#
-directive|include
-file|"strbuf.h"
-end_include
-
 begin_comment
 comment|/*  * Returns the length of a line, without trailing spaces.  *  * If the line ends with newline, it will be removed too.  */
 end_comment

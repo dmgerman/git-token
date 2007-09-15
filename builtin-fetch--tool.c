@@ -23,12 +23,6 @@ directive|include
 file|"commit.h"
 end_include
 
-begin_include
-include|#
-directive|include
-file|"strbuf.h"
-end_include
-
 begin_function
 DECL|function|get_stdin
 specifier|static
