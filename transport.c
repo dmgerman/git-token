@@ -186,7 +186,7 @@ name|objs
 argument_list|,
 name|NULL
 argument_list|,
-name|dest
+name|NULL
 argument_list|)
 condition|)
 name|die
