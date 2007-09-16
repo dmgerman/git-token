@@ -21,6 +21,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"strbuf.h"
+end_include
+
+begin_include
+include|#
+directive|include
 include|SHA1_HEADER
 end_include
 
@@ -4721,10 +4727,13 @@ begin_comment
 comment|/* convert.c */
 end_comment
 
+begin_comment
+comment|/* returns 1 if *dst was used */
+end_comment
+
 begin_function_decl
 specifier|extern
-name|char
-modifier|*
+name|int
 name|convert_to_git
 parameter_list|(
 specifier|const
@@ -4737,18 +4746,20 @@ name|char
 modifier|*
 name|src
 parameter_list|,
-name|unsigned
-name|long
+name|size_t
+name|len
+parameter_list|,
+name|struct
+name|strbuf
 modifier|*
-name|sizep
+name|dst
 parameter_list|)
 function_decl|;
 end_function_decl
 
 begin_function_decl
 specifier|extern
-name|char
-modifier|*
+name|int
 name|convert_to_working_tree
 parameter_list|(
 specifier|const
@@ -4761,10 +4772,13 @@ name|char
 modifier|*
 name|src
 parameter_list|,
-name|unsigned
-name|long
+name|size_t
+name|len
+parameter_list|,
+name|struct
+name|strbuf
 modifier|*
-name|sizep
+name|dst
 parameter_list|)
 function_decl|;
 end_function_decl
