@@ -2213,26 +2213,6 @@ condition|)
 return|return
 name|NULL
 return|;
-if|if
-condition|(
-operator|!
-name|strcmp
-argument_list|(
-name|name
-argument_list|,
-literal|"."
-argument_list|)
-condition|)
-block|{
-comment|// we always fetch "refs/*:refs/*", which is trivial
-name|add_fetch_refspec
-argument_list|(
-name|ret
-argument_list|,
-literal|"refs/*:refs/*"
-argument_list|)
-expr_stmt|;
-block|}
 name|ret
 operator|->
 name|fetch
