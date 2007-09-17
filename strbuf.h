@@ -35,10 +35,6 @@ DECL|member|len
 name|size_t
 name|len
 decl_stmt|;
-DECL|member|eof
-name|int
-name|eof
-decl_stmt|;
 DECL|member|buf
 name|char
 modifier|*
@@ -53,7 +49,7 @@ DECL|macro|STRBUF_INIT
 define|#
 directive|define
 name|STRBUF_INIT
-value|{ 0, 0, 0, NULL }
+value|{ 0, 0, NULL }
 end_define
 
 begin_comment
@@ -503,8 +499,8 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|void
-name|read_line
+name|int
+name|strbuf_getline
 parameter_list|(
 name|struct
 name|strbuf
