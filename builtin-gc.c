@@ -436,6 +436,16 @@ name|needed
 init|=
 literal|0
 decl_stmt|;
+comment|/* 	 * Setting gc.auto to 0 or negative can disable the 	 * automatic gc 	 */
+if|if
+condition|(
+name|gc_auto_threshold
+operator|<=
+literal|0
+condition|)
+return|return
+literal|0
+return|;
 if|if
 condition|(
 sizeof|sizeof
@@ -715,15 +725,6 @@ literal|"--auto"
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|gc_auto_threshold
-operator|<=
-literal|0
-condition|)
-return|return
-literal|0
-return|;
 name|auto_gc
 operator|=
 literal|1
