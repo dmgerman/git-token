@@ -391,10 +391,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|need_to_gc
+DECL|function|too_many_loose_objects
 specifier|static
 name|int
-name|need_to_gc
+name|too_many_loose_objects
 parameter_list|(
 name|void
 parameter_list|)
@@ -436,16 +436,6 @@ name|needed
 init|=
 literal|0
 decl_stmt|;
-comment|/* 	 * Setting gc.auto to 0 or negative can disable the 	 * automatic gc 	 */
-if|if
-condition|(
-name|gc_auto_threshold
-operator|<=
-literal|0
-condition|)
-return|return
-literal|0
-return|;
 if|if
 condition|(
 sizeof|sizeof
@@ -565,6 +555,32 @@ argument_list|)
 expr_stmt|;
 return|return
 name|needed
+return|;
+block|}
+end_function
+
+begin_function
+DECL|function|need_to_gc
+specifier|static
+name|int
+name|need_to_gc
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+comment|/* 	 * Setting gc.auto to 0 or negative can disable the 	 * automatic gc 	 */
+if|if
+condition|(
+name|gc_auto_threshold
+operator|<=
+literal|0
+condition|)
+return|return
+literal|0
+return|;
+return|return
+name|too_many_loose_objects
+argument_list|()
 return|;
 block|}
 end_function
@@ -894,6 +910,19 @@ literal|0
 index|]
 argument_list|)
 return|;
+if|if
+condition|(
+name|auto_gc
+operator|&&
+name|too_many_loose_objects
+argument_list|()
+condition|)
+name|warning
+argument_list|(
+literal|"There are too many unreachable loose objects; "
+literal|"run 'git prune' to remove them."
+argument_list|)
+expr_stmt|;
 return|return
 literal|0
 return|;
