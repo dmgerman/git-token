@@ -412,17 +412,18 @@ end_function_decl
 
 begin_function_decl
 name|int
-name|branch_merges
+name|branch_merge_matches
 parameter_list|(
 name|struct
 name|branch
 modifier|*
-name|branch
+parameter_list|,
+name|int
+name|n
 parameter_list|,
 specifier|const
 name|char
 modifier|*
-name|refname
 parameter_list|)
 function_decl|;
 end_function_decl
