@@ -1507,22 +1507,11 @@ name|path
 argument_list|)
 expr_stmt|;
 block|}
-name|strbuf_setlen
-argument_list|(
-name|buf
-argument_list|,
 name|stripspace
 argument_list|(
 name|buf
-operator|->
-name|buf
-argument_list|,
-name|buf
-operator|->
-name|len
 argument_list|,
 literal|1
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -1538,20 +1527,6 @@ condition|)
 name|die
 argument_list|(
 literal|"no tag message?"
-argument_list|)
-expr_stmt|;
-comment|/* insert the header and add the '\n' if needed: */
-if|if
-condition|(
-name|buf
-operator|->
-name|len
-condition|)
-name|strbuf_addch
-argument_list|(
-name|buf
-argument_list|,
-literal|'\n'
 argument_list|)
 expr_stmt|;
 name|strbuf_insert

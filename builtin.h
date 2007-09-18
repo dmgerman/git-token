@@ -51,24 +51,6 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|size_t
-name|stripspace
-parameter_list|(
-name|char
-modifier|*
-name|buffer
-parameter_list|,
-name|size_t
-name|length
-parameter_list|,
-name|int
-name|skip_comments
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-specifier|extern
 name|int
 name|write_tree
 parameter_list|(
