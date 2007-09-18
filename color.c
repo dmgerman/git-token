@@ -780,11 +780,15 @@ block|}
 end_function
 
 begin_function
-DECL|function|color_vprintf
+DECL|function|color_vfprintf
 specifier|static
 name|int
-name|color_vprintf
+name|color_vfprintf
 parameter_list|(
+name|FILE
+modifier|*
+name|fp
+parameter_list|,
 specifier|const
 name|char
 modifier|*
@@ -816,8 +820,10 @@ name|color
 condition|)
 name|r
 operator|+=
-name|printf
+name|fprintf
 argument_list|(
+name|fp
+argument_list|,
 literal|"%s"
 argument_list|,
 name|color
@@ -825,8 +831,10 @@ argument_list|)
 expr_stmt|;
 name|r
 operator|+=
-name|vprintf
+name|vfprintf
 argument_list|(
+name|fp
+argument_list|,
 name|fmt
 argument_list|,
 name|args
@@ -839,8 +847,10 @@ name|color
 condition|)
 name|r
 operator|+=
-name|printf
+name|fprintf
 argument_list|(
+name|fp
+argument_list|,
 literal|"%s"
 argument_list|,
 name|COLOR_RESET
@@ -852,8 +862,10 @@ name|trail
 condition|)
 name|r
 operator|+=
-name|printf
+name|fprintf
 argument_list|(
+name|fp
+argument_list|,
 literal|"%s"
 argument_list|,
 name|trail
@@ -866,10 +878,14 @@ block|}
 end_function
 
 begin_function
-DECL|function|color_printf
+DECL|function|color_fprintf
 name|int
-name|color_printf
+name|color_fprintf
 parameter_list|(
+name|FILE
+modifier|*
+name|fp
+parameter_list|,
 specifier|const
 name|char
 modifier|*
@@ -898,8 +914,10 @@ argument_list|)
 expr_stmt|;
 name|r
 operator|=
-name|color_vprintf
+name|color_vfprintf
 argument_list|(
+name|fp
+argument_list|,
 name|color
 argument_list|,
 name|fmt
@@ -921,10 +939,14 @@ block|}
 end_function
 
 begin_function
-DECL|function|color_printf_ln
+DECL|function|color_fprintf_ln
 name|int
-name|color_printf_ln
+name|color_fprintf_ln
 parameter_list|(
+name|FILE
+modifier|*
+name|fp
+parameter_list|,
 specifier|const
 name|char
 modifier|*
@@ -953,8 +975,10 @@ argument_list|)
 expr_stmt|;
 name|r
 operator|=
-name|color_vprintf
+name|color_vfprintf
 argument_list|(
+name|fp
+argument_list|,
 name|color
 argument_list|,
 name|fmt
