@@ -329,6 +329,13 @@ name|fp
 operator|=
 name|stdout
 expr_stmt|;
+name|s
+operator|->
+name|index_file
+operator|=
+name|get_index_file
+argument_list|()
+expr_stmt|;
 block|}
 end_function
 
@@ -1176,8 +1183,12 @@ block|{
 name|discard_cache
 argument_list|()
 expr_stmt|;
-name|read_cache
-argument_list|()
+name|read_cache_from
+argument_list|(
+name|s
+operator|->
+name|index_file
+argument_list|)
 expr_stmt|;
 block|}
 end_function
