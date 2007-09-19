@@ -1254,7 +1254,7 @@ name|cp
 operator|=
 name|strchr
 argument_list|(
-name|name
+name|cp
 argument_list|,
 literal|'/'
 argument_list|)
