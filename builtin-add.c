@@ -546,7 +546,7 @@ block|{
 default|default:
 name|die
 argument_list|(
-literal|"unexpacted diff status %c"
+literal|"unexpected diff status %c"
 argument_list|,
 name|p
 operator|->
@@ -558,6 +558,9 @@ name|DIFF_STATUS_UNMERGED
 case|:
 case|case
 name|DIFF_STATUS_MODIFIED
+case|:
+case|case
+name|DIFF_STATUS_TYPE_CHANGED
 case|:
 name|add_file_to_cache
 argument_list|(
@@ -572,13 +575,6 @@ name|DIFF_STATUS_DELETED
 case|:
 name|remove_file_from_cache
 argument_list|(
-name|path
-argument_list|)
-expr_stmt|;
-name|cache_tree_invalidate_path
-argument_list|(
-name|active_cache_tree
-argument_list|,
 name|path
 argument_list|)
 expr_stmt|;

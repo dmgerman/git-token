@@ -190,7 +190,6 @@ operator|+
 name|len
 argument_list|,
 name|PGP_SIGNATURE
-literal|"\n"
 argument_list|)
 condition|)
 block|{
