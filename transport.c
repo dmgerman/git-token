@@ -267,16 +267,6 @@ return|;
 block|}
 end_function
 
-begin_decl_stmt
-DECL|variable|rsync_transport
-specifier|static
-specifier|const
-name|struct
-name|transport_ops
-name|rsync_transport
-decl_stmt|;
-end_decl_stmt
-
 begin_function
 DECL|function|curl_transport_push
 specifier|static
@@ -1108,33 +1098,6 @@ endif|#
 directive|endif
 end_endif
 
-begin_decl_stmt
-DECL|variable|curl_transport
-specifier|static
-specifier|const
-name|struct
-name|transport_ops
-name|curl_transport
-init|=
-block|{
-comment|/* set_option */
-name|NULL
-block|,
-comment|/* get_refs_list */
-name|get_refs_via_curl
-block|,
-comment|/* fetch */
-name|fetch_objs_via_curl
-block|,
-comment|/* push */
-name|curl_transport_push
-block|,
-comment|/* disconnect */
-name|disconnect_walker
-block|}
-decl_stmt|;
-end_decl_stmt
-
 begin_struct
 DECL|struct|bundle_transport_data
 struct|struct
@@ -1411,33 +1374,6 @@ literal|0
 return|;
 block|}
 end_function
-
-begin_decl_stmt
-DECL|variable|bundle_transport
-specifier|static
-specifier|const
-name|struct
-name|transport_ops
-name|bundle_transport
-init|=
-block|{
-comment|/* set_option */
-name|NULL
-block|,
-comment|/* get_refs_list */
-name|get_refs_from_bundle
-block|,
-comment|/* fetch */
-name|fetch_refs_from_bundle
-block|,
-comment|/* push */
-name|NULL
-block|,
-comment|/* disconnect */
-name|close_bundle
-block|}
-decl_stmt|;
-end_decl_stmt
 
 begin_struct
 DECL|struct|git_transport_data
@@ -2352,30 +2288,6 @@ return|;
 block|}
 end_function
 
-begin_decl_stmt
-DECL|variable|git_transport
-specifier|static
-specifier|const
-name|struct
-name|transport_ops
-name|git_transport
-init|=
-block|{
-comment|/* set_option */
-name|set_git_option
-block|,
-comment|/* get_refs_list */
-name|get_refs_via_connect
-block|,
-comment|/* fetch */
-name|fetch_refs_via_pack
-block|,
-comment|/* push */
-name|git_transport_push
-block|}
-decl_stmt|;
-end_decl_stmt
-
 begin_function
 DECL|function|is_local
 specifier|static
@@ -2524,13 +2436,7 @@ literal|"rsync://"
 argument_list|)
 condition|)
 block|{
-name|ret
-operator|->
-name|ops
-operator|=
-operator|&
-name|rsync_transport
-expr_stmt|;
+comment|/* not supported; don't populate any ops */
 block|}
 elseif|else
 if|if
@@ -2562,10 +2468,27 @@ condition|)
 block|{
 name|ret
 operator|->
-name|ops
+name|get_refs_list
 operator|=
-operator|&
-name|curl_transport
+name|get_refs_via_curl
+expr_stmt|;
+name|ret
+operator|->
+name|fetch
+operator|=
+name|fetch_objs_via_curl
+expr_stmt|;
+name|ret
+operator|->
+name|push
+operator|=
+name|curl_transport_push
+expr_stmt|;
+name|ret
+operator|->
+name|disconnect
+operator|=
+name|disconnect_walker
 expr_stmt|;
 block|}
 elseif|else
@@ -2606,10 +2529,21 @@ name|data
 expr_stmt|;
 name|ret
 operator|->
-name|ops
+name|get_refs_list
 operator|=
-operator|&
-name|bundle_transport
+name|get_refs_from_bundle
+expr_stmt|;
+name|ret
+operator|->
+name|fetch
+operator|=
+name|fetch_refs_from_bundle
+expr_stmt|;
+name|ret
+operator|->
+name|disconnect
+operator|=
+name|close_bundle
 expr_stmt|;
 block|}
 else|else
@@ -2635,6 +2569,30 @@ operator|->
 name|data
 operator|=
 name|data
+expr_stmt|;
+name|ret
+operator|->
+name|set_option
+operator|=
+name|set_git_option
+expr_stmt|;
+name|ret
+operator|->
+name|get_refs_list
+operator|=
+name|get_refs_via_connect
+expr_stmt|;
+name|ret
+operator|->
+name|fetch
+operator|=
+name|fetch_refs_via_pack
+expr_stmt|;
+name|ret
+operator|->
+name|push
+operator|=
+name|git_transport_push
 expr_stmt|;
 name|data
 operator|->
@@ -2693,13 +2651,6 @@ operator|=
 operator|-
 literal|1
 expr_stmt|;
-name|ret
-operator|->
-name|ops
-operator|=
-operator|&
-name|git_transport
-expr_stmt|;
 block|}
 return|return
 name|ret
@@ -2732,14 +2683,10 @@ if|if
 condition|(
 name|transport
 operator|->
-name|ops
-operator|->
 name|set_option
 condition|)
 return|return
 name|transport
-operator|->
-name|ops
 operator|->
 name|set_option
 argument_list|(
@@ -2784,8 +2731,6 @@ condition|(
 operator|!
 name|transport
 operator|->
-name|ops
-operator|->
 name|push
 condition|)
 return|return
@@ -2793,8 +2738,6 @@ literal|1
 return|;
 return|return
 name|transport
-operator|->
-name|ops
 operator|->
 name|push
 argument_list|(
@@ -2835,8 +2778,6 @@ operator|->
 name|remote_refs
 operator|=
 name|transport
-operator|->
-name|ops
 operator|->
 name|get_refs_list
 argument_list|(
@@ -2952,8 +2893,6 @@ name|rc
 operator|=
 name|transport
 operator|->
-name|ops
-operator|->
 name|fetch
 argument_list|(
 name|transport
@@ -3036,15 +2975,11 @@ if|if
 condition|(
 name|transport
 operator|->
-name|ops
-operator|->
 name|disconnect
 condition|)
 name|ret
 operator|=
 name|transport
-operator|->
-name|ops
 operator|->
 name|disconnect
 argument_list|(
