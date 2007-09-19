@@ -1756,6 +1756,9 @@ name|buf
 init|;
 operator|*
 name|cp
+operator|&&
+operator|*
+name|cp
 operator|!=
 literal|'\n'
 condition|;
