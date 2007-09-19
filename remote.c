@@ -225,10 +225,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|add_uri
+DECL|function|add_url
 specifier|static
 name|void
-name|add_uri
+name|add_url
 parameter_list|(
 name|struct
 name|remote
@@ -238,7 +238,7 @@ parameter_list|,
 specifier|const
 name|char
 modifier|*
-name|uri
+name|url
 parameter_list|)
 block|{
 name|int
@@ -246,19 +246,19 @@ name|nr
 init|=
 name|remote
 operator|->
-name|uri_nr
+name|url_nr
 operator|+
 literal|1
 decl_stmt|;
 name|remote
 operator|->
-name|uri
+name|url
 operator|=
 name|xrealloc
 argument_list|(
 name|remote
 operator|->
-name|uri
+name|url
 argument_list|,
 name|nr
 operator|*
@@ -271,18 +271,18 @@ argument_list|)
 expr_stmt|;
 name|remote
 operator|->
-name|uri
+name|url
 index|[
 name|nr
 operator|-
 literal|1
 index|]
 operator|=
-name|uri
+name|url
 expr_stmt|;
 name|remote
 operator|->
-name|uri_nr
+name|url_nr
 operator|=
 name|nr
 expr_stmt|;
@@ -1040,7 +1040,7 @@ block|{
 case|case
 literal|0
 case|:
-name|add_uri
+name|add_url
 argument_list|(
 name|remote
 argument_list|,
@@ -1338,7 +1338,7 @@ operator|=
 literal|"refs/heads/master"
 expr_stmt|;
 block|}
-name|add_uri
+name|add_url
 argument_list|(
 name|remote
 argument_list|,
@@ -1603,7 +1603,7 @@ literal|".url"
 argument_list|)
 condition|)
 block|{
-name|add_uri
+name|add_url
 argument_list|(
 name|remote
 argument_list|,
@@ -2169,7 +2169,7 @@ condition|(
 operator|!
 name|ret
 operator|->
-name|uri
+name|url
 condition|)
 name|read_remotes_file
 argument_list|(
@@ -2181,7 +2181,7 @@ condition|(
 operator|!
 name|ret
 operator|->
-name|uri
+name|url
 condition|)
 name|read_branches_file
 argument_list|(
@@ -2194,9 +2194,9 @@ condition|(
 operator|!
 name|ret
 operator|->
-name|uri
+name|url
 condition|)
-name|add_uri
+name|add_url
 argument_list|(
 name|ret
 argument_list|,
@@ -2208,7 +2208,7 @@ condition|(
 operator|!
 name|ret
 operator|->
-name|uri
+name|url
 condition|)
 return|return
 name|NULL
@@ -2366,9 +2366,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|remote_has_uri
+DECL|function|remote_has_url
 name|int
-name|remote_has_uri
+name|remote_has_url
 parameter_list|(
 name|struct
 name|remote
@@ -2378,7 +2378,7 @@ parameter_list|,
 specifier|const
 name|char
 modifier|*
-name|uri
+name|url
 parameter_list|)
 block|{
 name|int
@@ -2394,7 +2394,7 @@ name|i
 operator|<
 name|remote
 operator|->
-name|uri_nr
+name|url_nr
 condition|;
 name|i
 operator|++
@@ -2407,12 +2407,12 @@ name|strcmp
 argument_list|(
 name|remote
 operator|->
-name|uri
+name|url
 index|[
 name|i
 index|]
 argument_list|,
-name|uri
+name|url
 argument_list|)
 condition|)
 return|return

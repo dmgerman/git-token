@@ -23,16 +23,16 @@ name|char
 modifier|*
 name|name
 decl_stmt|;
-DECL|member|uri
+DECL|member|url
 specifier|const
 name|char
 modifier|*
 modifier|*
-name|uri
+name|url
 decl_stmt|;
-DECL|member|uri_nr
+DECL|member|url_nr
 name|int
-name|uri_nr
+name|url_nr
 decl_stmt|;
 DECL|member|push_refspec
 specifier|const
@@ -137,7 +137,7 @@ end_function_decl
 
 begin_function_decl
 name|int
-name|remote_has_uri
+name|remote_has_url
 parameter_list|(
 name|struct
 name|remote
@@ -147,7 +147,7 @@ parameter_list|,
 specifier|const
 name|char
 modifier|*
-name|uri
+name|url
 parameter_list|)
 function_decl|;
 end_function_decl
