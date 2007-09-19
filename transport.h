@@ -257,18 +257,6 @@ value|"keep"
 end_define
 
 begin_comment
-comment|/* Unpack the objects if fewer than this number of objects are fetched */
-end_comment
-
-begin_define
-DECL|macro|TRANS_OPT_UNPACKLIMIT
-define|#
-directive|define
-name|TRANS_OPT_UNPACKLIMIT
-value|"unpacklimit"
-end_define
-
-begin_comment
 comment|/* Limit the depth of the fetch if not null */
 end_comment
 
