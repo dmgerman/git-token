@@ -2077,6 +2077,7 @@ if|if
 condition|(
 name|best
 condition|)
+block|{
 name|best
 operator|->
 name|next
@@ -2091,6 +2092,7 @@ argument_list|(
 name|best
 argument_list|)
 expr_stmt|;
+block|}
 name|free
 argument_list|(
 name|weights
