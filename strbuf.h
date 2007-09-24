@@ -289,6 +289,22 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|strbuf_cmp
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/*----- add data in your buffer -----*/
 end_comment
