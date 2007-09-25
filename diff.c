@@ -9466,9 +9466,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|diff_free_filespec_data
+DECL|function|diff_free_filespec_data_large
 name|void
-name|diff_free_filespec_data
+name|diff_free_filespec_data_large
 parameter_list|(
 name|struct
 name|diff_filespec
@@ -9535,6 +9535,25 @@ operator|=
 name|NULL
 expr_stmt|;
 block|}
+block|}
+end_function
+
+begin_function
+DECL|function|diff_free_filespec_data
+name|void
+name|diff_free_filespec_data
+parameter_list|(
+name|struct
+name|diff_filespec
+modifier|*
+name|s
+parameter_list|)
+block|{
+name|diff_free_filespec_data_large
+argument_list|(
+name|s
+argument_list|)
+expr_stmt|;
 name|free
 argument_list|(
 name|s
