@@ -142,18 +142,16 @@ end_function_decl
 
 begin_function_decl
 name|void
-modifier|*
 name|cache_tree_write
 parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+parameter_list|,
 name|struct
 name|cache_tree
 modifier|*
 name|root
-parameter_list|,
-name|unsigned
-name|long
-modifier|*
-name|size_p
 parameter_list|)
 function_decl|;
 end_function_decl
