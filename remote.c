@@ -3528,9 +3528,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|matched_src
 condition|)
-break|break;
 name|error
 argument_list|(
 literal|"src refspec %s does not match any."
