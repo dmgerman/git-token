@@ -242,6 +242,18 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|void
+name|diff_free_filespec_data_large
+parameter_list|(
+name|struct
+name|diff_filespec
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|int
 name|diff_filespec_is_binary
 parameter_list|(
