@@ -202,6 +202,20 @@ return|;
 block|}
 end_function
 
+begin_function_decl
+specifier|extern
+name|void
+name|strbuf_grow
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+parameter_list|,
+name|size_t
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function
 DECL|function|strbuf_setlen
 specifier|static
@@ -218,6 +232,20 @@ name|size_t
 name|len
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|sb
+operator|->
+name|alloc
+condition|)
+name|strbuf_grow
+argument_list|(
+name|sb
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
 name|assert
 argument_list|(
 name|len
@@ -244,20 +272,6 @@ literal|'\0'
 expr_stmt|;
 block|}
 end_function
-
-begin_function_decl
-specifier|extern
-name|void
-name|strbuf_grow
-parameter_list|(
-name|struct
-name|strbuf
-modifier|*
-parameter_list|,
-name|size_t
-parameter_list|)
-function_decl|;
-end_function_decl
 
 begin_comment
 comment|/*----- content related -----*/
