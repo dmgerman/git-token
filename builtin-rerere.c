@@ -739,6 +739,12 @@ argument_list|,
 name|one
 operator|.
 name|buf
+condition|?
+name|one
+operator|.
+name|buf
+else|:
+literal|""
 argument_list|,
 name|one
 operator|.
@@ -755,6 +761,12 @@ argument_list|,
 name|two
 operator|.
 name|buf
+condition|?
+name|two
+operator|.
+name|buf
+else|:
+literal|""
 argument_list|,
 name|two
 operator|.
