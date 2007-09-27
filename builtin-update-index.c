@@ -1766,17 +1766,6 @@ name|path_name
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|path_name
-operator|!=
-name|ptr
-condition|)
-name|free
-argument_list|(
-name|path_name
-argument_list|)
-expr_stmt|;
 continue|continue;
 name|bad_line
 label|:
