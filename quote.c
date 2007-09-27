@@ -75,6 +75,8 @@ operator|=
 name|strbuf_detach
 argument_list|(
 name|dst
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 name|strbuf_addch

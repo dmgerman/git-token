@@ -6809,6 +6809,8 @@ name|strbuf_detach
 argument_list|(
 operator|&
 name|buf
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 return|return

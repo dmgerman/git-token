@@ -3731,9 +3731,13 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
+name|strbuf_detach
+argument_list|(
+operator|&
 name|tmp
-operator|.
-name|buf
+argument_list|,
+name|NULL
+argument_list|)
 return|;
 block|}
 end_function

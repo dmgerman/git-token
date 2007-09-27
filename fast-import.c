@@ -9061,6 +9061,8 @@ name|strbuf_detach
 argument_list|(
 operator|&
 name|command_buf
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 name|stdin_eof

@@ -13,7 +13,7 @@ name|STRBUF_H
 end_define
 
 begin_comment
-comment|/*  * Strbuf's can be use in many ways: as a byte array, or to store arbitrary  * long, overflow safe strings.  *  * Strbufs has some invariants that are very important to keep in mind:  *  * 1. the ->buf member is always malloc-ed, hence strbuf's can be used to  *    build complex strings/buffers whose final size isn't easily known.  *  *    It is legal to copy the ->buf pointer away. Though if you want to reuse  *    the strbuf after that, setting ->buf to NULL isn't legal.  *    `strbuf_detach' is the operation that detachs a buffer from its shell  *    while keeping the shell valid wrt its invariants.  *  * 2. the ->buf member is a byte array that has at least ->len + 1 bytes  *    allocated. The extra byte is used to store a '\0', allowing the ->buf  *    member to be a valid C-string. Every strbuf function ensure this  *    invariant is preserved.  *  *    Note that it is OK to "play" with the buffer directly if you work it  *    that way:  *  *    strbuf_grow(sb, SOME_SIZE);  *    // ... here the memory areay starting at sb->buf, and of length  *    // sb_avail(sb) is all yours, and you are sure that sb_avail(sb) is at  *    // least SOME_SIZE  *    strbuf_setlen(sb, sb->len + SOME_OTHER_SIZE);  *  *    Of course, SOME_OTHER_SIZE must be smaller or equal to sb_avail(sb).  *  *    Doing so is safe, though if it has to be done in many places, adding the  *    missing API to the strbuf module is the way to go.  *  *    XXX: do _not_ assume that the area that is yours is of size ->alloc - 1  *         even if it's true in the current implementation. Alloc is somehow a  *         "private" member that should not be messed with.  */
+comment|/*  * Strbuf's can be use in many ways: as a byte array, or to store arbitrary  * long, overflow safe strings.  *  * Strbufs has some invariants that are very important to keep in mind:  *  * 1. the ->buf member is always malloc-ed, hence strbuf's can be used to  *    build complex strings/buffers whose final size isn't easily known.  *  *    It is NOT legal to copy the ->buf pointer away.  *    `strbuf_detach' is the operation that detachs a buffer from its shell  *    while keeping the shell valid wrt its invariants.  *  * 2. the ->buf member is a byte array that has at least ->len + 1 bytes  *    allocated. The extra byte is used to store a '\0', allowing the ->buf  *    member to be a valid C-string. Every strbuf function ensure this  *    invariant is preserved.  *  *    Note that it is OK to "play" with the buffer directly if you work it  *    that way:  *  *    strbuf_grow(sb, SOME_SIZE);  *    // ... here the memory areay starting at sb->buf, and of length  *    // sb_avail(sb) is all yours, and you are sure that sb_avail(sb) is at  *    // least SOME_SIZE  *    strbuf_setlen(sb, sb->len + SOME_OTHER_SIZE);  *  *    Of course, SOME_OTHER_SIZE must be smaller or equal to sb_avail(sb).  *  *    Doing so is safe, though if it has to be done in many places, adding the  *    missing API to the strbuf module is the way to go.  *  *    XXX: do _not_ assume that the area that is yours is of size ->alloc - 1  *         even if it's true in the current implementation. Alloc is somehow a  *         "private" member that should not be messed with.  */
 end_comment
 
 begin_include
@@ -21,6 +21,14 @@ include|#
 directive|include
 file|<assert.h>
 end_include
+
+begin_decl_stmt
+specifier|extern
+name|char
+name|strbuf_slopbuf
+index|[]
+decl_stmt|;
+end_decl_stmt
 
 begin_struct
 DECL|struct|strbuf
@@ -49,7 +57,7 @@ DECL|macro|STRBUF_INIT
 define|#
 directive|define
 name|STRBUF_INIT
-value|{ 0, 0, NULL }
+value|{ 0, 0, strbuf_slopbuf }
 end_define
 
 begin_comment
@@ -84,24 +92,15 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|void
-name|strbuf_reset
-parameter_list|(
-name|struct
-name|strbuf
-modifier|*
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-specifier|extern
 name|char
 modifier|*
 name|strbuf_detach
 parameter_list|(
 name|struct
 name|strbuf
+modifier|*
+parameter_list|,
+name|size_t
 modifier|*
 parameter_list|)
 function_decl|;
@@ -272,6 +271,17 @@ literal|'\0'
 expr_stmt|;
 block|}
 end_function
+
+begin_define
+DECL|macro|strbuf_reset
+define|#
+directive|define
+name|strbuf_reset
+parameter_list|(
+name|sb
+parameter_list|)
+value|strbuf_setlen(sb, 0)
+end_define
 
 begin_comment
 comment|/*----- content related -----*/
