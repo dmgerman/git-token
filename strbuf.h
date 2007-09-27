@@ -604,6 +604,9 @@ specifier|const
 name|char
 modifier|*
 name|path
+parameter_list|,
+name|size_t
+name|hint
 parameter_list|)
 function_decl|;
 end_function_decl
