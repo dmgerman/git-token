@@ -633,8 +633,6 @@ operator|&&
 name|ref_map
 operator|&&
 operator|!
-name|strcmp
-argument_list|(
 name|remote
 operator|->
 name|fetch
@@ -642,12 +640,7 @@ index|[
 literal|0
 index|]
 operator|.
-name|src
-argument_list|,
-name|ref_map
-operator|->
-name|name
-argument_list|)
+name|pattern
 condition|)
 name|ref_map
 operator|->
