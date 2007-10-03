@@ -3298,6 +3298,19 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+name|enum
+name|date_mode
+name|parse_date_format
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|format
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 specifier|extern
 specifier|const
 name|char
