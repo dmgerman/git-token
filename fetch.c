@@ -47,12 +47,6 @@ directive|include
 file|"refs.h"
 end_include
 
-begin_include
-include|#
-directive|include
-file|"strbuf.h"
-end_include
-
 begin_decl_stmt
 DECL|variable|get_tree
 name|int
@@ -1187,6 +1181,8 @@ name|strbuf_init
 argument_list|(
 operator|&
 name|buf
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 while|while
@@ -1204,7 +1200,9 @@ name|char
 modifier|*
 name|tg_one
 decl_stmt|;
-name|read_line
+if|if
+condition|(
+name|strbuf_getline
 argument_list|(
 operator|&
 name|buf
@@ -1213,12 +1211,8 @@ name|stdin
 argument_list|,
 literal|'\n'
 argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|buf
-operator|.
-name|eof
+operator|==
+name|EOF
 condition|)
 break|break;
 name|tg_one
@@ -1334,6 +1328,12 @@ name|targets
 operator|++
 expr_stmt|;
 block|}
+name|strbuf_release
+argument_list|(
+operator|&
+name|buf
+argument_list|)
+expr_stmt|;
 return|return
 name|targets
 return|;
