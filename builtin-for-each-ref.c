@@ -236,7 +236,6 @@ block|{
 literal|"parent"
 block|}
 block|,
-comment|/* NEEDSWORK: how to address 2nd and later parents? */
 block|{
 literal|"numparent"
 block|,
@@ -1458,6 +1457,15 @@ argument_list|(
 literal|40
 argument_list|)
 decl_stmt|;
+name|v
+operator|->
+name|ul
+operator|=
+name|num_parents
+argument_list|(
+name|commit
+argument_list|)
+expr_stmt|;
 name|sprintf
 argument_list|(
 name|s
@@ -1474,15 +1482,6 @@ operator|->
 name|s
 operator|=
 name|s
-expr_stmt|;
-name|v
-operator|->
-name|ul
-operator|=
-name|num_parents
-argument_list|(
-name|commit
-argument_list|)
 expr_stmt|;
 block|}
 elseif|else
@@ -1519,9 +1518,11 @@ name|s
 init|=
 name|xmalloc
 argument_list|(
-literal|42
+literal|41
 operator|*
 name|num
+operator|+
+literal|1
 argument_list|)
 decl_stmt|;
 name|v
@@ -1554,7 +1555,7 @@ name|i
 operator|=
 name|i
 operator|+
-literal|42
+literal|41
 control|)
 block|{
 name|struct
@@ -1598,6 +1599,16 @@ operator|=
 literal|' '
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+name|i
+condition|)
+operator|*
+name|s
+operator|=
+literal|'\0'
+expr_stmt|;
 block|}
 block|}
 block|}

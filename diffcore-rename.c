@@ -2052,14 +2052,14 @@ argument_list|,
 name|two
 argument_list|)
 expr_stmt|;
-name|diff_free_filespec_data_large
+name|diff_free_filespec_blob
 argument_list|(
 name|one
 argument_list|)
 expr_stmt|;
 block|}
 comment|/* We do not need the text anymore */
-name|diff_free_filespec_data_large
+name|diff_free_filespec_blob
 argument_list|(
 name|two
 argument_list|)
