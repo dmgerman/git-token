@@ -158,10 +158,10 @@ modifier|*
 name|pack_lockfile
 decl_stmt|;
 DECL|member|verbose
-name|unsigned
+name|signed
 name|verbose
 range|:
-literal|1
+literal|2
 decl_stmt|;
 block|}
 struct|;
