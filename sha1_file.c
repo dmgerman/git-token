@@ -9392,7 +9392,6 @@ end_function
 
 begin_function
 DECL|function|matches_pack_name
-specifier|static
 name|int
 name|matches_pack_name
 parameter_list|(
@@ -9404,7 +9403,7 @@ parameter_list|,
 specifier|const
 name|char
 modifier|*
-name|ig
+name|name
 parameter_list|)
 block|{
 specifier|const
@@ -9424,11 +9423,11 @@ name|p
 operator|->
 name|pack_name
 argument_list|,
-name|ig
+name|name
 argument_list|)
 condition|)
 return|return
-literal|0
+literal|1
 return|;
 for|for
 control|(
@@ -9469,14 +9468,14 @@ name|strcmp
 argument_list|(
 name|last_c
 argument_list|,
-name|ig
+name|name
 argument_list|)
 condition|)
 return|return
-literal|0
+literal|1
 return|;
 return|return
-literal|1
+literal|0
 return|;
 block|}
 end_function
@@ -9579,7 +9578,6 @@ operator|++
 control|)
 if|if
 condition|(
-operator|!
 name|matches_pack_name
 argument_list|(
 name|p
