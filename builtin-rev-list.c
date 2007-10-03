@@ -386,6 +386,12 @@ operator|.
 name|date_mode
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|buf
+operator|.
+name|len
+condition|)
 name|printf
 argument_list|(
 literal|"%s%c"
