@@ -1119,6 +1119,12 @@ literal|"space-before-tab"
 block|,
 name|WS_SPACE_BEFORE_TAB
 block|}
+block|,
+block|{
+literal|"indent-with-non-tab"
+block|,
+name|WS_INDENT_WITH_NON_TAB
+block|}
 block|, }
 struct|;
 end_struct

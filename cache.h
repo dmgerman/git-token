@@ -4872,6 +4872,14 @@ value|02
 end_define
 
 begin_define
+DECL|macro|WS_INDENT_WITH_NON_TAB
+define|#
+directive|define
+name|WS_INDENT_WITH_NON_TAB
+value|04
+end_define
+
+begin_define
 DECL|macro|WS_DEFAULT_RULE
 define|#
 directive|define
