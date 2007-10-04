@@ -13214,6 +13214,8 @@ argument_list|,
 name|buf
 operator|.
 name|len
+operator|-
+name|offset
 argument_list|,
 name|patch
 argument_list|)
