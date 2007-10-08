@@ -6605,7 +6605,7 @@ name|diff
 operator|=
 literal|1
 expr_stmt|;
-comment|/* Pickaxe needs diffs */
+comment|/* Pickaxe and rename following needs diffs */
 if|if
 condition|(
 name|revs
@@ -6613,6 +6613,12 @@ operator|->
 name|diffopt
 operator|.
 name|pickaxe
+operator|||
+name|revs
+operator|->
+name|diffopt
+operator|.
+name|follow_renames
 condition|)
 name|revs
 operator|->
