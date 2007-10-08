@@ -686,6 +686,11 @@ literal|1
 expr_stmt|;
 block|}
 block|}
+name|ref_remove_duplicates
+argument_list|(
+name|ref_map
+argument_list|)
+expr_stmt|;
 return|return
 name|ref_map
 return|;

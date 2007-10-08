@@ -211,6 +211,22 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Removes and frees any duplicate refs in the map.  */
+end_comment
+
+begin_function_decl
+name|void
+name|ref_remove_duplicates
+parameter_list|(
+name|struct
+name|ref
+modifier|*
+name|ref_map
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function_decl
 name|struct
 name|refspec
