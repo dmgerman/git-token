@@ -1599,6 +1599,17 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
+name|opt
+operator|->
+name|diffopt
+operator|.
+name|output_format
+operator|&
+operator|~
+name|DIFF_FORMAT_NO_OUTPUT
+operator|)
+operator|&&
 name|opt
 operator|->
 name|verbose_header
