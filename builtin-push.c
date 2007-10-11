@@ -41,18 +41,21 @@ name|char
 name|push_usage
 index|[]
 init|=
-literal|"git-push [--all] [--tags] [--receive-pack=<git-receive-pack>] [--repo=all] [-f | --force] [-v] [<repository><refspec>...]"
+literal|"git-push [--all] [--dry-run] [--tags] [--receive-pack=<git-receive-pack>] [--repo=all] [-f | --force] [-v] [<repository><refspec>...]"
 decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|all
+DECL|variable|dry_run
 DECL|variable|force
 DECL|variable|thin
 DECL|variable|verbose
 specifier|static
 name|int
 name|all
+decl_stmt|,
+name|dry_run
 decl_stmt|,
 name|force
 decl_stmt|,
@@ -419,6 +422,18 @@ operator|++
 index|]
 operator|=
 literal|"--all"
+expr_stmt|;
+if|if
+condition|(
+name|dry_run
+condition|)
+name|argv
+index|[
+name|argc
+operator|++
+index|]
+operator|=
+literal|"--dry-run"
 expr_stmt|;
 if|if
 condition|(
@@ -843,6 +858,23 @@ argument_list|)
 condition|)
 block|{
 name|all
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--dry-run"
+argument_list|)
+condition|)
+block|{
+name|dry_run
 operator|=
 literal|1
 expr_stmt|;
