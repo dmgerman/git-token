@@ -5253,6 +5253,10 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|ref_map
+condition|)
 name|tail_link_ref
 argument_list|(
 name|ref_map
