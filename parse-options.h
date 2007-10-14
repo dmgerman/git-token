@@ -31,6 +31,9 @@ name|OPTION_STRING
 block|,
 DECL|enumerator|OPTION_INTEGER
 name|OPTION_INTEGER
+block|,
+DECL|enumerator|OPTION_CALLBACK
+name|OPTION_CALLBACK
 block|, }
 enum|;
 end_enum
@@ -47,6 +50,47 @@ literal|1
 block|, }
 enum|;
 end_enum
+
+begin_enum
+DECL|enum|parse_opt_option_flags
+enum|enum
+name|parse_opt_option_flags
+block|{
+DECL|enumerator|PARSE_OPT_OPTARG
+name|PARSE_OPT_OPTARG
+init|=
+literal|1
+block|, }
+enum|;
+end_enum
+
+begin_struct_decl
+struct_decl|struct
+name|option
+struct_decl|;
+end_struct_decl
+
+begin_typedef
+DECL|typedef|parse_opt_cb
+typedef|typedef
+name|int
+name|parse_opt_cb
+parameter_list|(
+specifier|const
+name|struct
+name|option
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|arg
+parameter_list|,
+name|int
+name|unset
+parameter_list|)
+function_decl|;
+end_typedef
 
 begin_struct
 DECL|struct|option
@@ -84,6 +128,20 @@ specifier|const
 name|char
 modifier|*
 name|help
+decl_stmt|;
+DECL|member|flags
+name|int
+name|flags
+decl_stmt|;
+DECL|member|callback
+name|parse_opt_cb
+modifier|*
+name|callback
+decl_stmt|;
+comment|/* holds default value for PARSE_OPT_OPTARG, 	   though callbacks can use it like they want */
+DECL|member|defval
+name|intptr_t
+name|defval
 decl_stmt|;
 block|}
 struct|;
@@ -160,6 +218,28 @@ parameter_list|,
 name|h
 parameter_list|)
 value|{ OPTION_STRING,  (s), (l), (v), (a), (h) }
+end_define
+
+begin_define
+DECL|macro|OPT_CALLBACK
+define|#
+directive|define
+name|OPT_CALLBACK
+parameter_list|(
+name|s
+parameter_list|,
+name|l
+parameter_list|,
+name|v
+parameter_list|,
+name|a
+parameter_list|,
+name|h
+parameter_list|,
+name|f
+parameter_list|)
+define|\
+value|{ OPTION_CALLBACK, (s), (l), (v), (a), (h), 0, (f) }
 end_define
 
 begin_comment
