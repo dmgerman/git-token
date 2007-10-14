@@ -20,6 +20,9 @@ block|{
 DECL|enumerator|OPTION_END
 name|OPTION_END
 block|,
+DECL|enumerator|OPTION_GROUP
+name|OPTION_GROUP
+block|,
 DECL|enumerator|OPTION_BOOLEAN
 name|OPTION_BOOLEAN
 block|,
@@ -70,6 +73,18 @@ name|void
 modifier|*
 name|value
 decl_stmt|;
+DECL|member|argh
+specifier|const
+name|char
+modifier|*
+name|argh
+decl_stmt|;
+DECL|member|help
+specifier|const
+name|char
+modifier|*
+name|help
+decl_stmt|;
 block|}
 struct|;
 end_struct
@@ -81,6 +96,17 @@ directive|define
 name|OPT_END
 parameter_list|()
 value|{ OPTION_END }
+end_define
+
+begin_define
+DECL|macro|OPT_GROUP
+define|#
+directive|define
+name|OPT_GROUP
+parameter_list|(
+name|h
+parameter_list|)
+value|{ OPTION_GROUP, 0, NULL, NULL, NULL, (h) }
 end_define
 
 begin_define
@@ -97,7 +123,7 @@ name|v
 parameter_list|,
 name|h
 parameter_list|)
-value|{ OPTION_BOOLEAN, (s), (l), (v) }
+value|{ OPTION_BOOLEAN, (s), (l), (v), NULL, (h) }
 end_define
 
 begin_define
@@ -114,7 +140,7 @@ name|v
 parameter_list|,
 name|h
 parameter_list|)
-value|{ OPTION_INTEGER, (s), (l), (v) }
+value|{ OPTION_INTEGER, (s), (l), (v), NULL, (h) }
 end_define
 
 begin_define
@@ -133,7 +159,7 @@ name|a
 parameter_list|,
 name|h
 parameter_list|)
-value|{ OPTION_STRING,  (s), (l), (v) }
+value|{ OPTION_STRING,  (s), (l), (v), (a), (h) }
 end_define
 
 begin_comment
@@ -163,10 +189,34 @@ parameter_list|,
 specifier|const
 name|char
 modifier|*
+specifier|const
 name|usagestr
+index|[]
 parameter_list|,
 name|int
 name|flags
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|NORETURN
+name|void
+name|usage_with_options
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+specifier|const
+modifier|*
+name|usagestr
+parameter_list|,
+specifier|const
+name|struct
+name|option
+modifier|*
+name|options
 parameter_list|)
 function_decl|;
 end_function_decl
