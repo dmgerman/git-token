@@ -301,6 +301,74 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*----- some often used options -----*/
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|parse_opt_abbrev_cb
+parameter_list|(
+specifier|const
+name|struct
+name|option
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+parameter_list|,
+name|int
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_define
+DECL|macro|OPT__VERBOSE
+define|#
+directive|define
+name|OPT__VERBOSE
+parameter_list|(
+name|var
+parameter_list|)
+value|OPT_BOOLEAN('v', "verbose", (var), "be verbose")
+end_define
+
+begin_define
+DECL|macro|OPT__QUIET
+define|#
+directive|define
+name|OPT__QUIET
+parameter_list|(
+name|var
+parameter_list|)
+value|OPT_BOOLEAN('q', "quiet",   (var), "be quiet")
+end_define
+
+begin_define
+DECL|macro|OPT__DRY_RUN
+define|#
+directive|define
+name|OPT__DRY_RUN
+parameter_list|(
+name|var
+parameter_list|)
+value|OPT_BOOLEAN('n', "dry-run", (var), "dry run")
+end_define
+
+begin_define
+DECL|macro|OPT__ABBREV
+define|#
+directive|define
+name|OPT__ABBREV
+parameter_list|(
+name|var
+parameter_list|)
+define|\
+value|{ OPTION_CALLBACK, 0, "abbrev", (var), "n", \ 	  "use<n> digits to display SHA-1s", \ 	  PARSE_OPT_OPTARG,&parse_opt_abbrev_cb, 0 }
+end_define
+
 begin_endif
 endif|#
 directive|endif
