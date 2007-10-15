@@ -60,6 +60,11 @@ DECL|enumerator|PARSE_OPT_OPTARG
 name|PARSE_OPT_OPTARG
 init|=
 literal|1
+block|,
+DECL|enumerator|PARSE_OPT_NOARG
+name|PARSE_OPT_NOARG
+init|=
+literal|2
 block|, }
 enum|;
 end_enum
