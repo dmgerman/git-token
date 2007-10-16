@@ -183,6 +183,14 @@ name|TRANSPORT_PUSH_FORCE
 value|2
 end_define
 
+begin_define
+DECL|macro|TRANSPORT_PUSH_DRY_RUN
+define|#
+directive|define
+name|TRANSPORT_PUSH_DRY_RUN
+value|4
+end_define
+
 begin_comment
 comment|/* Returns a transport suitable for the url */
 end_comment

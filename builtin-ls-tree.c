@@ -528,7 +528,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|write_name_quoted
+name|write_name_quotedpfx
 argument_list|(
 name|base
 operator|+
@@ -540,13 +540,8 @@ name|chomp_prefix
 argument_list|,
 name|pathname
 argument_list|,
-name|line_termination
-argument_list|,
 name|stdout
-argument_list|)
-expr_stmt|;
-name|putchar
-argument_list|(
+argument_list|,
 name|line_termination
 argument_list|)
 expr_stmt|;

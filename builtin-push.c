@@ -47,7 +47,7 @@ name|char
 name|push_usage
 index|[]
 init|=
-literal|"git-push [--all] [--tags] [--receive-pack=<git-receive-pack>] [--repo=all] [-f | --force] [-v] [<repository><refspec>...]"
+literal|"git-push [--all] [--dry-run] [--tags] [--receive-pack=<git-receive-pack>] [--repo=all] [-f | --force] [-v] [<repository><refspec>...]"
 decl_stmt|;
 end_decl_stmt
 
@@ -598,6 +598,23 @@ block|{
 name|flags
 operator||=
 name|TRANSPORT_PUSH_ALL
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--dry-run"
+argument_list|)
+condition|)
+block|{
+name|flags
+operator||=
+name|TRANSPORT_PUSH_DRY_RUN
 expr_stmt|;
 continue|continue;
 block|}
