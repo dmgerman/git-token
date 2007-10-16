@@ -52,13 +52,10 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|all
 DECL|variable|thin
 DECL|variable|verbose
 specifier|static
 name|int
-name|all
-decl_stmt|,
 name|thin
 decl_stmt|,
 name|verbose
@@ -315,7 +312,11 @@ operator|!
 name|refspec
 operator|&&
 operator|!
-name|all
+operator|(
+name|flags
+operator|&
+name|TRANSPORT_PUSH_ALL
+operator|)
 operator|&&
 name|remote
 operator|->
@@ -752,7 +753,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|all
+operator|(
+name|flags
+operator|&
+name|TRANSPORT_PUSH_ALL
+operator|)
 operator|&&
 name|refspec
 condition|)
