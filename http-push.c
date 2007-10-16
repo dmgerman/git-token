@@ -79,7 +79,7 @@ name|char
 name|http_push_usage
 index|[]
 init|=
-literal|"git-http-push [--all] [--force] [--verbose]<remote> [<head>...]\n"
+literal|"git-http-push [--all] [--dry-run] [--force] [--verbose]<remote> [<head>...]\n"
 decl_stmt|;
 end_decl_stmt
 
@@ -469,6 +469,14 @@ DECL|variable|force_all
 specifier|static
 name|int
 name|force_all
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|dry_run
+specifier|static
+name|int
+name|dry_run
 decl_stmt|;
 end_decl_stmt
 
@@ -13309,6 +13317,23 @@ name|strcmp
 argument_list|(
 name|arg
 argument_list|,
+literal|"--dry-run"
+argument_list|)
+condition|)
+block|{
+name|dry_run
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
 literal|"--verbose"
 argument_list|)
 condition|)
@@ -13969,6 +13994,11 @@ argument_list|,
 name|new_hex
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|dry_run
+condition|)
+continue|continue;
 comment|/* Lock remote branch ref */
 name|ref_lock
 operator|=
@@ -14270,6 +14300,11 @@ argument_list|,
 literal|"Updating remote server info\n"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|dry_run
+condition|)
 name|update_remote_info_refs
 argument_list|(
 name|info_ref_lock
