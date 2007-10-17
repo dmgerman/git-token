@@ -1106,6 +1106,7 @@ argument_list|(
 name|stderr
 argument_list|,
 literal|"No refs in common and none specified; doing nothing.\n"
+literal|"Perhaps you should specify a branch such as 'master'.\n"
 argument_list|)
 expr_stmt|;
 return|return
