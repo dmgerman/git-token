@@ -525,12 +525,10 @@ end_function
 begin_function
 DECL|function|open_pack_file
 specifier|static
-specifier|const
 name|char
 modifier|*
 name|open_pack_file
 parameter_list|(
-specifier|const
 name|char
 modifier|*
 name|pack_name
@@ -4122,7 +4120,6 @@ name|fix_thin_pack
 init|=
 literal|0
 decl_stmt|;
-specifier|const
 name|char
 modifier|*
 name|curr_pack
@@ -4132,7 +4129,6 @@ name|pack_name
 init|=
 name|NULL
 decl_stmt|;
-specifier|const
 name|char
 modifier|*
 name|curr_index
@@ -4192,7 +4188,6 @@ name|i
 operator|++
 control|)
 block|{
-specifier|const
 name|char
 modifier|*
 name|arg
