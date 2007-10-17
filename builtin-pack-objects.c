@@ -9049,6 +9049,10 @@ block|}
 if|if
 condition|(
 name|nr_deltas
+operator|&&
+name|n
+operator|>
+literal|1
 condition|)
 block|{
 name|unsigned
