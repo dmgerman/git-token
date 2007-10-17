@@ -2383,9 +2383,7 @@ argument_list|(
 operator|&
 name|progress
 argument_list|,
-literal|"Indexing %u objects..."
-argument_list|,
-literal|""
+literal|"Indexing objects"
 argument_list|,
 name|nr_objects
 argument_list|)
@@ -2640,9 +2638,7 @@ argument_list|(
 operator|&
 name|progress
 argument_list|,
-literal|"Resolving %u deltas..."
-argument_list|,
-literal|""
+literal|"Resolving deltas"
 argument_list|,
 name|nr_deltas
 argument_list|)

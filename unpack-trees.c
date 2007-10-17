@@ -1641,9 +1641,7 @@ argument_list|(
 operator|&
 name|progress
 argument_list|,
-literal|"Checking %u files out..."
-argument_list|,
-literal|""
+literal|"Checking out files"
 argument_list|,
 name|total
 argument_list|,

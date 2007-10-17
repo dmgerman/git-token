@@ -3469,9 +3469,7 @@ argument_list|(
 operator|&
 name|progress_state
 argument_list|,
-literal|"Writing %u objects..."
-argument_list|,
-literal|""
+literal|"Writing objects"
 argument_list|,
 name|nr_result
 argument_list|)
@@ -9067,9 +9065,7 @@ argument_list|(
 operator|&
 name|progress_state
 argument_list|,
-literal|"Deltifying %u objects..."
-argument_list|,
-literal|""
+literal|"Deltifying objects"
 argument_list|,
 name|nr_deltas
 argument_list|)
@@ -11337,9 +11333,7 @@ argument_list|(
 operator|&
 name|progress_state
 argument_list|,
-literal|"Generating pack..."
-argument_list|,
-literal|"Counting objects: "
+literal|"Counting objects"
 argument_list|,
 literal|0
 argument_list|)
@@ -11373,23 +11367,12 @@ if|if
 condition|(
 name|progress
 condition|)
-block|{
 name|stop_progress
 argument_list|(
 operator|&
 name|progress_state
 argument_list|)
 expr_stmt|;
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-literal|"Done counting %u objects.\n"
-argument_list|,
-name|nr_objects
-argument_list|)
-expr_stmt|;
-block|}
 if|if
 condition|(
 name|non_empty
@@ -11400,25 +11383,6 @@ condition|)
 return|return
 literal|0
 return|;
-if|if
-condition|(
-name|progress
-operator|&&
-operator|(
-name|nr_objects
-operator|!=
-name|nr_result
-operator|)
-condition|)
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-literal|"Result has %u objects.\n"
-argument_list|,
-name|nr_result
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|nr_result
