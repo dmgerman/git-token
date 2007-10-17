@@ -138,6 +138,9 @@ name|int
 name|final
 parameter_list|)
 block|{
+name|int
+name|fd
+decl_stmt|;
 name|unsigned
 name|offset
 init|=
@@ -180,13 +183,10 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-operator|!
 name|final
 condition|)
-return|return
-literal|0
-return|;
-comment|/* only want to flush (no checksum write, no close) */
+block|{
+comment|/* write checksum and close fd */
 name|SHA1_Final
 argument_list|(
 name|f
@@ -242,13 +242,25 @@ name|errno
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|fd
+operator|=
+literal|0
+expr_stmt|;
+block|}
+else|else
+name|fd
+operator|=
+name|f
+operator|->
+name|fd
+expr_stmt|;
 name|free
 argument_list|(
 name|f
 argument_list|)
 expr_stmt|;
 return|return
-literal|0
+name|fd
 return|;
 block|}
 end_function
