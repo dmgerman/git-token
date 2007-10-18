@@ -735,6 +735,17 @@ expr_stmt|;
 return|return
 name|changed
 return|;
+case|case
+literal|0
+case|:
+comment|/* Special case: unmerged file in index */
+return|return
+name|MODE_CHANGED
+operator||
+name|DATA_CHANGED
+operator||
+name|TYPE_CHANGED
+return|;
 default|default:
 name|die
 argument_list|(
