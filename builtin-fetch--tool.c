@@ -834,9 +834,11 @@ argument_list|)
 return|;
 name|commit
 operator|=
-name|lookup_commit_reference
+name|lookup_commit_reference_gently
 argument_list|(
 name|sha1
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 if|if
