@@ -1154,6 +1154,7 @@ condition|(
 operator|*
 name|cp
 condition|)
+block|{
 name|cp
 operator|=
 name|parse_attr
@@ -1170,6 +1171,15 @@ argument_list|,
 name|res
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|cp
+condition|)
+return|return
+name|NULL
+return|;
+block|}
 if|if
 condition|(
 name|pass
