@@ -980,9 +980,9 @@ argument_list|(
 name|stderr
 argument_list|,
 literal|"Packing your repository for optimum "
-literal|"performance. If you would rather run\n"
-literal|"\"git gc\" by hand, run \"git config gc.auto 0\" "
-literal|"to disable automatic cleanup.\n"
+literal|"performance. You may also\n"
+literal|"run \"git gc\" manually. See "
+literal|"\"git help gc\" for more information.\n"
 argument_list|)
 expr_stmt|;
 block|}
