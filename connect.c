@@ -2504,12 +2504,14 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * This returns 0 if the transport protocol does not need fork(2),  * or a process id if it does.  Once done, finish the connection  * with finish_connect() with the value returned from this function  * (it is safe to call finish_connect() with 0 to support the former  * case).  *  * Does not return a negative value on error; it just dies.  */
+comment|/*  * This returns NULL if the transport protocol does not need fork(2), or a  * struct child_process object if it does.  Once done, finish the connection  * with finish_connect() with the value returned from this function  * (it is safe to call finish_connect() with NULL to support the former  * case).  *  * If it returns, the connect is successful; it just dies on errors.  */
 end_comment
 
 begin_function
 DECL|function|git_connect
-name|pid_t
+name|struct
+name|child_process
+modifier|*
 name|git_connect
 parameter_list|(
 name|int
@@ -2556,8 +2558,10 @@ index|[
 literal|2
 index|]
 decl_stmt|;
-name|pid_t
-name|pid
+name|struct
+name|child_process
+modifier|*
+name|conn
 decl_stmt|;
 name|enum
 name|protocol
@@ -2876,7 +2880,7 @@ name|path
 argument_list|)
 expr_stmt|;
 return|return
-literal|0
+name|NULL
 return|;
 block|}
 if|if
@@ -2906,6 +2910,21 @@ argument_list|(
 literal|"unable to create pipe pair for communication"
 argument_list|)
 expr_stmt|;
+name|conn
+operator|=
+name|xcalloc
+argument_list|(
+literal|1
+argument_list|,
+sizeof|sizeof
+argument_list|(
+operator|*
+name|conn
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|conn
+operator|->
 name|pid
 operator|=
 name|fork
@@ -2913,6 +2932,8 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+name|conn
+operator|->
 name|pid
 operator|<
 literal|0
@@ -2925,6 +2946,8 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
+name|conn
+operator|->
 name|pid
 condition|)
 block|{
@@ -3253,7 +3276,7 @@ name|path
 argument_list|)
 expr_stmt|;
 return|return
-name|pid
+name|conn
 return|;
 block|}
 end_function
@@ -3263,15 +3286,16 @@ DECL|function|finish_connect
 name|int
 name|finish_connect
 parameter_list|(
-name|pid_t
-name|pid
+name|struct
+name|child_process
+modifier|*
+name|conn
 parameter_list|)
 block|{
 if|if
 condition|(
-name|pid
-operator|==
-literal|0
+operator|!
+name|conn
 condition|)
 return|return
 literal|0
@@ -3280,6 +3304,8 @@ while|while
 condition|(
 name|waitpid
 argument_list|(
+name|conn
+operator|->
 name|pid
 argument_list|,
 name|NULL
@@ -3301,6 +3327,11 @@ operator|-
 literal|1
 return|;
 block|}
+name|free
+argument_list|(
+name|conn
+argument_list|)
+expr_stmt|;
 return|return
 literal|0
 return|;

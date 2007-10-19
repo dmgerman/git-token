@@ -156,8 +156,10 @@ name|len
 decl_stmt|,
 name|rv
 decl_stmt|;
-name|pid_t
-name|pid
+name|struct
+name|child_process
+modifier|*
+name|conn
 decl_stmt|;
 specifier|const
 name|char
@@ -235,7 +237,7 @@ argument_list|(
 name|remote
 argument_list|)
 expr_stmt|;
-name|pid
+name|conn
 operator|=
 name|git_connect
 argument_list|(
@@ -248,15 +250,6 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|pid
-operator|<
-literal|0
-condition|)
-return|return
-name|pid
-return|;
 for|for
 control|(
 name|i
@@ -450,7 +443,7 @@ name|rv
 operator||=
 name|finish_connect
 argument_list|(
-name|pid
+name|conn
 argument_list|)
 expr_stmt|;
 return|return

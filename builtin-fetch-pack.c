@@ -4089,8 +4089,10 @@ index|[
 literal|2
 index|]
 decl_stmt|;
-name|pid_t
-name|pid
+name|struct
+name|child_process
+modifier|*
+name|conn
 decl_stmt|;
 name|struct
 name|ref
@@ -4146,7 +4148,7 @@ operator|=
 literal|0
 expr_stmt|;
 block|}
-name|pid
+name|conn
 operator|=
 name|git_connect
 argument_list|(
@@ -4169,15 +4171,6 @@ else|:
 literal|0
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|pid
-operator|<
-literal|0
-condition|)
-return|return
-name|NULL
-return|;
 if|if
 condition|(
 name|heads
@@ -4226,7 +4219,7 @@ name|ret
 operator|=
 name|finish_connect
 argument_list|(
-name|pid
+name|conn
 argument_list|)
 expr_stmt|;
 if|if

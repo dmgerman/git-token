@@ -1772,8 +1772,10 @@ index|]
 decl_stmt|,
 name|ret
 decl_stmt|;
-name|pid_t
-name|pid
+name|struct
+name|child_process
+modifier|*
+name|conn
 decl_stmt|;
 name|char
 modifier|*
@@ -2065,7 +2067,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|pid
+name|conn
 operator|=
 name|git_connect
 argument_list|(
@@ -2082,15 +2084,6 @@ else|:
 literal|0
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|pid
-operator|<
-literal|0
-condition|)
-return|return
-literal|1
-return|;
 name|ret
 operator|=
 name|send_pack
@@ -2132,7 +2125,7 @@ name|ret
 operator||=
 name|finish_connect
 argument_list|(
-name|pid
+name|conn
 argument_list|)
 expr_stmt|;
 return|return
