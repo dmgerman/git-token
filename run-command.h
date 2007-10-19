@@ -65,6 +65,10 @@ DECL|member|out
 name|int
 name|out
 decl_stmt|;
+DECL|member|err
+name|int
+name|err
+decl_stmt|;
 DECL|member|dir
 specifier|const
 name|char
