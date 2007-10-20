@@ -1049,15 +1049,14 @@ modifier|*
 name|cmd
 parameter_list|)
 block|{
-name|printf
+name|fprintf
 argument_list|(
-literal|"git: '%s' is not a git-command\n\n"
+name|stderr
+argument_list|,
+literal|"git: '%s' is not a git-command. See --help\n\n"
 argument_list|,
 name|cmd
 argument_list|)
-expr_stmt|;
-name|list_common_cmds_help
-argument_list|()
 expr_stmt|;
 name|exit
 argument_list|(
