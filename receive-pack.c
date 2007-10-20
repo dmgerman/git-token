@@ -997,7 +997,7 @@ condition|)
 block|{
 name|error
 argument_list|(
-literal|"refusing to create funny ref '%s' locally"
+literal|"refusing to create funny ref '%s' remotely"
 argument_list|,
 name|name
 argument_list|)
