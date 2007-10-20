@@ -10618,16 +10618,16 @@ name|die
 argument_list|(
 literal|"Not a blob (actually a %s): %s"
 argument_list|,
-name|command_buf
-operator|.
-name|buf
-argument_list|,
 name|typename
 argument_list|(
 name|oe
 operator|->
 name|type
 argument_list|)
+argument_list|,
+name|command_buf
+operator|.
+name|buf
 argument_list|)
 expr_stmt|;
 block|}
