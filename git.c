@@ -2484,7 +2484,7 @@ name|done_alias
 init|=
 literal|0
 decl_stmt|;
-comment|/* 	 * Take the basename of argv[0] as the command 	 * name, and the dirname as the default exec_path 	 * if it's an absolute path and we don't have 	 * anything better. 	 */
+comment|/* 	 * Take the basename of argv[0] as the command 	 * name, and the dirname as the default exec_path 	 * if we don't have anything better. 	 */
 if|if
 condition|(
 name|slash
@@ -2506,6 +2506,17 @@ condition|)
 name|exec_path
 operator|=
 name|cmd
+expr_stmt|;
+else|else
+name|exec_path
+operator|=
+name|xstrdup
+argument_list|(
+name|make_absolute_path
+argument_list|(
+name|cmd
+argument_list|)
+argument_list|)
 expr_stmt|;
 name|cmd
 operator|=
