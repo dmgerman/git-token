@@ -966,6 +966,7 @@ end_enum
 begin_decl_stmt
 DECL|variable|reset_type_names
 specifier|static
+specifier|const
 name|char
 modifier|*
 name|reset_type_names
