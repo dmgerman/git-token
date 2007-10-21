@@ -676,8 +676,7 @@ modifier|*
 name|result
 decl_stmt|;
 DECL|member|resultsize
-name|unsigned
-name|long
+name|size_t
 name|resultsize
 decl_stmt|;
 DECL|member|old_sha1_prefix

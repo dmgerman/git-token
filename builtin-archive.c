@@ -858,6 +858,11 @@ name|struct
 name|strbuf
 name|buf
 decl_stmt|;
+name|size_t
+name|size
+init|=
+literal|0
+decl_stmt|;
 name|strbuf_init
 argument_list|(
 operator|&
@@ -923,8 +928,14 @@ argument_list|(
 operator|&
 name|buf
 argument_list|,
-name|sizep
+operator|&
+name|size
 argument_list|)
+expr_stmt|;
+operator|*
+name|sizep
+operator|=
+name|size
 expr_stmt|;
 block|}
 return|return

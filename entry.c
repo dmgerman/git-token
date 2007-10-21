@@ -665,6 +665,11 @@ name|buf
 argument_list|)
 condition|)
 block|{
+name|size_t
+name|newsize
+init|=
+literal|0
+decl_stmt|;
 name|free
 argument_list|(
 name|new
@@ -678,8 +683,12 @@ operator|&
 name|buf
 argument_list|,
 operator|&
-name|size
+name|newsize
 argument_list|)
+expr_stmt|;
+name|size
+operator|=
+name|newsize
 expr_stmt|;
 block|}
 if|if
