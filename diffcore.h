@@ -133,6 +133,11 @@ name|int
 name|xfrm_flags
 decl_stmt|;
 comment|/* for use by the xfrm */
+DECL|member|rename_used
+name|int
+name|rename_used
+decl_stmt|;
+comment|/* Count of rename users */
 DECL|member|mode
 name|unsigned
 name|short
@@ -309,13 +314,6 @@ name|char
 name|status
 decl_stmt|;
 comment|/* M C R N D U (see Documentation/diff-format.txt) */
-DECL|member|source_stays
-name|unsigned
-name|source_stays
-range|:
-literal|1
-decl_stmt|;
-comment|/* all of R/C are copies */
 DECL|member|broken_pair
 name|unsigned
 name|broken_pair
