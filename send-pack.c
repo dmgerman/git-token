@@ -2047,7 +2047,7 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|remote_has_uri
+name|remote_has_url
 argument_list|(
 name|remote
 argument_list|,

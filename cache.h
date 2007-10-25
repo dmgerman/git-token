@@ -3640,6 +3640,11 @@ name|unsigned
 name|char
 name|force
 decl_stmt|;
+DECL|member|merge
+name|unsigned
+name|char
+name|merge
+decl_stmt|;
 DECL|member|peer_ref
 name|struct
 name|ref

@@ -223,6 +223,18 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|char
+modifier|*
+name|index_pack_lockfile
+parameter_list|(
+name|int
+name|fd
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_define
 DECL|macro|PH_ERROR_EOF
 define|#

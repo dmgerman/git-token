@@ -442,6 +442,22 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|remove_dir_recursively
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+name|path
+parameter_list|,
+name|int
+name|only_empty
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
