@@ -123,6 +123,11 @@ name|unsigned
 name|long
 name|size
 decl_stmt|;
+DECL|member|count
+name|int
+name|count
+decl_stmt|;
+comment|/* Reference count */
 DECL|member|xfrm_flags
 name|int
 name|xfrm_flags
@@ -189,6 +194,18 @@ name|alloc_filespec
 parameter_list|(
 specifier|const
 name|char
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|void
+name|free_filespec
+parameter_list|(
+name|struct
+name|diff_filespec
 modifier|*
 parameter_list|)
 function_decl|;
