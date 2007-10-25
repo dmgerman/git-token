@@ -2069,6 +2069,12 @@ goto|goto
 name|cleanup
 goto|;
 comment|/* nothing to do */
+comment|/* 	 * We really want to cull the candidates list early 	 * with cheap tests in order to avoid doing deltas. 	 */
+name|rename_count
+operator|=
+name|find_exact_renames
+argument_list|()
+expr_stmt|;
 comment|/* 	 * This basically does a test for the rename matrix not 	 * growing larger than a "rename_limit" square matrix, ie: 	 * 	 *    rename_dst_nr * rename_src_nr> rename_limit * rename_limit 	 * 	 * but handles the potential overflow case specially (and we 	 * assume at least 32-bit integers) 	 */
 if|if
 condition|(
@@ -2110,12 +2116,6 @@ condition|)
 goto|goto
 name|cleanup
 goto|;
-comment|/* 	 * We really want to cull the candidates list early 	 * with cheap tests in order to avoid doing deltas. 	 */
-name|rename_count
-operator|=
-name|find_exact_renames
-argument_list|()
-expr_stmt|;
 comment|/* Have we run out the created file pool?  If so we can avoid 	 * doing the delta matrix altogether. 	 */
 if|if
 condition|(
