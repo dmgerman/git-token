@@ -39,6 +39,16 @@ end_decl_stmt
 begin_function_decl
 specifier|extern
 name|void
+name|list_common_cmds_help
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|void
 name|help_unknown_cmd
 parameter_list|(
 specifier|const

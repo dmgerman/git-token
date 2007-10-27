@@ -2638,17 +2638,21 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|/* Default command: "help" */
-name|argv
-index|[
-literal|0
-index|]
-operator|=
-literal|"help"
+comment|/* The user didn't specify a command; give them help */
+name|printf
+argument_list|(
+literal|"usage: %s\n\n"
+argument_list|,
+name|git_usage_string
+argument_list|)
 expr_stmt|;
-name|argc
-operator|=
+name|list_common_cmds_help
+argument_list|()
+expr_stmt|;
+name|exit
+argument_list|(
 literal|1
+argument_list|)
 expr_stmt|;
 block|}
 name|cmd
