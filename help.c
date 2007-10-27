@@ -1053,7 +1053,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"git: '%s' is not a git-command. See --help\n\n"
+literal|"git: '%s' is not a git-command. See 'git --help'.\n"
 argument_list|,
 name|cmd
 argument_list|)
