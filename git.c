@@ -246,7 +246,7 @@ name|cmd
 operator|==
 literal|'='
 condition|)
-name|git_set_exec_path
+name|git_set_argv_exec_path
 argument_list|(
 name|cmd
 operator|+

@@ -47,19 +47,19 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|current_exec_path
+DECL|variable|argv_exec_path
 specifier|static
 specifier|const
 name|char
 modifier|*
-name|current_exec_path
+name|argv_exec_path
 decl_stmt|;
 end_decl_stmt
 
 begin_function
-DECL|function|git_set_exec_path
+DECL|function|git_set_argv_exec_path
 name|void
-name|git_set_exec_path
+name|git_set_argv_exec_path
 parameter_list|(
 specifier|const
 name|char
@@ -67,7 +67,7 @@ modifier|*
 name|exec_path
 parameter_list|)
 block|{
-name|current_exec_path
+name|argv_exec_path
 operator|=
 name|exec_path
 expr_stmt|;
@@ -95,10 +95,10 @@ name|env
 decl_stmt|;
 if|if
 condition|(
-name|current_exec_path
+name|argv_exec_path
 condition|)
 return|return
-name|current_exec_path
+name|argv_exec_path
 return|;
 name|env
 operator|=
@@ -155,7 +155,7 @@ name|paths
 index|[]
 init|=
 block|{
-name|current_exec_path
+name|argv_exec_path
 block|,
 name|getenv
 argument_list|(

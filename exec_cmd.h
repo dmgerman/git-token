@@ -15,7 +15,7 @@ end_define
 begin_function_decl
 specifier|extern
 name|void
-name|git_set_exec_path
+name|git_set_argv_exec_path
 parameter_list|(
 specifier|const
 name|char
