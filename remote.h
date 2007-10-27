@@ -281,7 +281,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Given a list of the remote refs and the specification of things to  * fetch, makes a (separate) list of the refs to fetch and the local  * refs to store into.  *  * *tail is the pointer to the tail pointer of the list of results  * beforehand, and will be set to the tail pointer of the list of  * results afterward.  */
+comment|/*  * Given a list of the remote refs and the specification of things to  * fetch, makes a (separate) list of the refs to fetch and the local  * refs to store into.  *  * *tail is the pointer to the tail pointer of the list of results  * beforehand, and will be set to the tail pointer of the list of  * results afterward.  *  * missing_ok is usually false, but when we are adding branch.$name.merge  * it is Ok if the branch is not at the remote anymore.  */
 end_comment
 
 begin_function_decl
@@ -305,6 +305,9 @@ modifier|*
 modifier|*
 modifier|*
 name|tail
+parameter_list|,
+name|int
+name|missing_ok
 parameter_list|)
 function_decl|;
 end_function_decl
