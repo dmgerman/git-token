@@ -39,6 +39,18 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|void
+name|setup_path
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|int
 name|execv_git_cmd
 parameter_list|(
