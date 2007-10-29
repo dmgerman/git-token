@@ -8986,6 +8986,8 @@ name|struct
 name|tree
 modifier|*
 name|mrtree
+init|=
+name|mrtree
 decl_stmt|;
 name|int
 name|clean
