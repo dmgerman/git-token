@@ -261,6 +261,11 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
+name|free
+argument_list|(
+name|seen
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
@@ -817,6 +822,11 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
+name|free
+argument_list|(
+name|seen
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
