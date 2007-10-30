@@ -215,6 +215,7 @@ DECL|variable|progress
 specifier|static
 name|struct
 name|progress
+modifier|*
 name|progress
 decl_stmt|;
 end_decl_stmt
@@ -2376,11 +2377,10 @@ if|if
 condition|(
 name|verbose
 condition|)
+name|progress
+operator|=
 name|start_progress
 argument_list|(
-operator|&
-name|progress
-argument_list|,
 literal|"Indexing objects"
 argument_list|,
 name|nr_objects
@@ -2490,7 +2490,6 @@ name|verbose
 condition|)
 name|display_progress
 argument_list|(
-operator|&
 name|progress
 argument_list|,
 name|i
@@ -2631,11 +2630,10 @@ if|if
 condition|(
 name|verbose
 condition|)
+name|progress
+operator|=
 name|start_progress
 argument_list|(
-operator|&
-name|progress
-argument_list|,
 literal|"Resolving deltas"
 argument_list|,
 name|nr_deltas
@@ -2905,7 +2903,6 @@ name|verbose
 condition|)
 name|display_progress
 argument_list|(
-operator|&
 name|progress
 argument_list|,
 name|nr_resolved_deltas
@@ -3647,7 +3644,6 @@ name|verbose
 condition|)
 name|display_progress
 argument_list|(
-operator|&
 name|progress
 argument_list|,
 name|nr_resolved_deltas

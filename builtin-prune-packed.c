@@ -50,6 +50,7 @@ DECL|variable|progress
 specifier|static
 name|struct
 name|progress
+modifier|*
 name|progress
 decl_stmt|;
 end_decl_stmt
@@ -97,7 +98,6 @@ name|VERBOSE
 condition|)
 name|display_progress
 argument_list|(
-operator|&
 name|progress
 argument_list|,
 name|i
@@ -281,11 +281,10 @@ name|opts
 operator|==
 name|VERBOSE
 condition|)
+name|progress
+operator|=
 name|start_progress_delay
 argument_list|(
-operator|&
-name|progress
-argument_list|,
 literal|"Removing duplicate objects"
 argument_list|,
 literal|256

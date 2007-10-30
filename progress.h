@@ -12,40 +12,11 @@ directive|define
 name|PROGRESS_H
 end_define
 
-begin_struct
-DECL|struct|progress
-struct|struct
+begin_struct_decl
+struct_decl|struct
 name|progress
-block|{
-DECL|member|title
-specifier|const
-name|char
-modifier|*
-name|title
-decl_stmt|;
-DECL|member|last_value
-name|int
-name|last_value
-decl_stmt|;
-DECL|member|total
-name|unsigned
-name|total
-decl_stmt|;
-DECL|member|last_percent
-name|unsigned
-name|last_percent
-decl_stmt|;
-DECL|member|delay
-name|unsigned
-name|delay
-decl_stmt|;
-DECL|member|delayed_percent_treshold
-name|unsigned
-name|delayed_percent_treshold
-decl_stmt|;
-block|}
-struct|;
-end_struct
+struct_decl|;
+end_struct_decl
 
 begin_function_decl
 name|int
@@ -63,14 +34,11 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-name|void
-name|start_progress
-parameter_list|(
 name|struct
 name|progress
 modifier|*
-name|progress
-parameter_list|,
+name|start_progress
+parameter_list|(
 specifier|const
 name|char
 modifier|*
@@ -83,14 +51,11 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-name|void
-name|start_progress_delay
-parameter_list|(
 name|struct
 name|progress
 modifier|*
-name|progress
-parameter_list|,
+name|start_progress_delay
+parameter_list|(
 specifier|const
 name|char
 modifier|*
@@ -114,6 +79,7 @@ name|stop_progress
 parameter_list|(
 name|struct
 name|progress
+modifier|*
 modifier|*
 name|progress
 parameter_list|)
