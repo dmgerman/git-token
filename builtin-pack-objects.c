@@ -3447,11 +3447,13 @@ condition|)
 block|{
 name|f
 operator|=
-name|sha1fd
+name|sha1fd_throughput
 argument_list|(
 literal|1
 argument_list|,
 literal|"<stdout>"
+argument_list|,
+name|progress_state
 argument_list|)
 expr_stmt|;
 block|}
