@@ -820,7 +820,6 @@ name|ref
 modifier|*
 name|get_refs_via_rsync
 parameter_list|(
-specifier|const
 name|struct
 name|transport
 modifier|*
@@ -2497,7 +2496,6 @@ name|ref
 modifier|*
 name|get_refs_via_curl
 parameter_list|(
-specifier|const
 name|struct
 name|transport
 modifier|*
@@ -3009,7 +3007,6 @@ name|ref
 modifier|*
 name|get_refs_from_bundle
 parameter_list|(
-specifier|const
 name|struct
 name|transport
 modifier|*
@@ -3477,7 +3474,6 @@ name|ref
 modifier|*
 name|get_refs_via_connect
 parameter_list|(
-specifier|const
 name|struct
 name|transport
 modifier|*
@@ -4662,6 +4658,7 @@ end_function
 
 begin_function
 DECL|function|transport_get_remote_refs
+specifier|const
 name|struct
 name|ref
 modifier|*

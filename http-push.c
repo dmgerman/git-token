@@ -13698,6 +13698,12 @@ name|remote_tail
 argument_list|,
 name|nr_refspec
 argument_list|,
+operator|(
+specifier|const
+name|char
+operator|*
+operator|*
+operator|)
 name|refspec
 argument_list|,
 name|push_all
