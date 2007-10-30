@@ -1995,6 +1995,12 @@ name|RUN_SETUP
 block|}
 block|,
 block|{
+literal|"peek-remote"
+block|,
+name|cmd_peek_remote
+block|}
+block|,
+block|{
 literal|"pickaxe"
 block|,
 name|cmd_blame
