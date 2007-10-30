@@ -442,6 +442,17 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|from_stdin
+condition|)
+name|display_throughput
+argument_list|(
+name|progress
+argument_list|,
+name|ret
+argument_list|)
+expr_stmt|;
 name|input_len
 operator|+=
 name|ret
@@ -2381,6 +2392,10 @@ name|progress
 operator|=
 name|start_progress
 argument_list|(
+name|from_stdin
+condition|?
+literal|"Receiving objects"
+else|:
 literal|"Indexing objects"
 argument_list|,
 name|nr_objects
