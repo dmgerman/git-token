@@ -3594,10 +3594,6 @@ name|offset
 operator|=
 name|offset_one
 expr_stmt|;
-if|if
-condition|(
-name|do_progress
-condition|)
 name|display_progress
 argument_list|(
 name|progress_state
@@ -3894,10 +3890,6 @@ argument_list|(
 name|written_list
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|do_progress
-condition|)
 name|stop_progress
 argument_list|(
 operator|&
@@ -4744,10 +4736,6 @@ index|]
 operator|=
 name|nr_objects
 expr_stmt|;
-if|if
-condition|(
-name|progress
-condition|)
 name|display_progress
 argument_list|(
 name|progress_state
@@ -8136,10 +8124,6 @@ name|processed
 operator|)
 operator|++
 expr_stmt|;
-if|if
-condition|(
-name|progress
-condition|)
 name|display_progress
 argument_list|(
 name|progress_state
@@ -9085,10 +9069,6 @@ operator|&
 name|nr_done
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|progress
-condition|)
 name|stop_progress
 argument_list|(
 operator|&
@@ -11346,10 +11326,6 @@ name|rp_av
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|progress
-condition|)
 name|stop_progress
 argument_list|(
 operator|&

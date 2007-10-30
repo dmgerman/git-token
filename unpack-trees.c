@@ -1679,10 +1679,6 @@ operator|++
 decl_stmt|;
 if|if
 condition|(
-name|total
-condition|)
-if|if
-condition|(
 operator|!
 name|ce
 operator|->
@@ -1768,10 +1764,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-if|if
-condition|(
-name|total
-condition|)
 name|stop_progress
 argument_list|(
 operator|&

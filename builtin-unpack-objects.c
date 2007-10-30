@@ -1790,11 +1790,6 @@ argument_list|(
 name|i
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|quiet
-condition|)
 name|display_progress
 argument_list|(
 name|progress
@@ -1805,11 +1800,6 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-operator|!
-name|quiet
-condition|)
 name|stop_progress
 argument_list|(
 operator|&
