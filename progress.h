@@ -19,6 +19,22 @@ struct_decl|;
 end_struct_decl
 
 begin_function_decl
+name|void
+name|display_throughput
+parameter_list|(
+name|struct
+name|progress
+modifier|*
+name|progress
+parameter_list|,
+name|unsigned
+name|long
+name|n
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|int
 name|display_progress
 parameter_list|(
