@@ -2003,7 +2003,7 @@ name|stderr
 argument_list|,
 literal|"Automatic %s failed.  "
 literal|"After resolving the conflicts,\n"
-literal|"mark the corrected paths with 'git-add<paths>'\n"
+literal|"mark the corrected paths with 'git add<paths>' "
 literal|"and commit the result.\n"
 argument_list|,
 name|me
