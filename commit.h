@@ -333,6 +333,16 @@ end_enum
 
 begin_function_decl
 specifier|extern
+name|int
+name|non_ascii
+parameter_list|(
+name|int
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|enum
 name|cmit_fmt
 name|get_commit_format
@@ -390,6 +400,9 @@ parameter_list|,
 name|enum
 name|date_mode
 name|dmode
+parameter_list|,
+name|int
+name|non_ascii_present
 parameter_list|)
 function_decl|;
 end_function_decl
