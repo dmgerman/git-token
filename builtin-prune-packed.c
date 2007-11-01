@@ -90,15 +90,6 @@ index|[
 literal|40
 index|]
 decl_stmt|;
-name|display_progress
-argument_list|(
-name|progress
-argument_list|,
-name|i
-operator|+
-literal|1
-argument_list|)
-expr_stmt|;
 name|sprintf
 argument_list|(
 name|hex
@@ -216,6 +207,15 @@ argument_list|(
 literal|"unable to unlink %s"
 argument_list|,
 name|pathname
+argument_list|)
+expr_stmt|;
+name|display_progress
+argument_list|(
+name|progress
+argument_list|,
+name|i
+operator|+
+literal|1
 argument_list|)
 expr_stmt|;
 block|}
