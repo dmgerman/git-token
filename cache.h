@@ -3698,7 +3698,9 @@ end_define
 
 begin_function_decl
 specifier|extern
-name|pid_t
+name|struct
+name|child_process
+modifier|*
 name|git_connect
 parameter_list|(
 name|int
@@ -3727,8 +3729,10 @@ specifier|extern
 name|int
 name|finish_connect
 parameter_list|(
-name|pid_t
-name|pid
+name|struct
+name|child_process
+modifier|*
+name|conn
 parameter_list|)
 function_decl|;
 end_function_decl
