@@ -15,7 +15,7 @@ end_define
 begin_function_decl
 specifier|extern
 name|void
-name|git_set_exec_path
+name|git_set_argv_exec_path
 parameter_list|(
 specifier|const
 name|char
@@ -33,6 +33,18 @@ modifier|*
 name|git_exec_path
 parameter_list|(
 name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|void
+name|setup_path
+parameter_list|(
+specifier|const
+name|char
+modifier|*
 parameter_list|)
 function_decl|;
 end_function_decl
