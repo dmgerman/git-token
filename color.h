@@ -64,8 +64,12 @@ end_function_decl
 
 begin_function_decl
 name|int
-name|color_printf
+name|color_fprintf
 parameter_list|(
+name|FILE
+modifier|*
+name|fp
+parameter_list|,
 specifier|const
 name|char
 modifier|*
@@ -83,8 +87,12 @@ end_function_decl
 
 begin_function_decl
 name|int
-name|color_printf_ln
+name|color_fprintf_ln
 parameter_list|(
+name|FILE
+modifier|*
+name|fp
+parameter_list|,
 specifier|const
 name|char
 modifier|*
