@@ -12,6 +12,12 @@ directive|define
 name|CSUM_FILE_H
 end_define
 
+begin_struct_decl
+struct_decl|struct
+name|progress
+struct_decl|;
+end_struct_decl
+
 begin_comment
 comment|/* A SHA1-protected file */
 end_comment
@@ -39,6 +45,12 @@ decl_stmt|;
 DECL|member|ctx
 name|SHA_CTX
 name|ctx
+decl_stmt|;
+DECL|member|tp
+name|struct
+name|progress
+modifier|*
+name|tp
 decl_stmt|;
 DECL|member|name
 name|char
@@ -81,6 +93,29 @@ specifier|const
 name|char
 modifier|*
 name|name
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|struct
+name|sha1file
+modifier|*
+name|sha1fd_throughput
+parameter_list|(
+name|int
+name|fd
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|name
+parameter_list|,
+name|struct
+name|progress
+modifier|*
+name|tp
 parameter_list|)
 function_decl|;
 end_function_decl

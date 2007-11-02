@@ -101,12 +101,10 @@ end_comment
 
 begin_function
 DECL|function|write_idx_file
-specifier|const
 name|char
 modifier|*
 name|write_idx_file
 parameter_list|(
-specifier|const
 name|char
 modifier|*
 name|index_name
