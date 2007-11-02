@@ -2964,6 +2964,12 @@ name|i
 expr_stmt|;
 if|if
 condition|(
+operator|(
+name|whitespace_rule
+operator|&
+name|WS_SPACE_BEFORE_TAB
+operator|)
+operator|&&
 literal|0
 operator|<=
 name|last_space_in_indent
@@ -3137,6 +3143,13 @@ condition|)
 name|tail
 operator|--
 expr_stmt|;
+if|if
+condition|(
+name|whitespace_rule
+operator|&
+name|WS_TRAILING_SPACE
+condition|)
+block|{
 while|while
 condition|(
 name|i
@@ -3159,6 +3172,7 @@ break|break;
 name|tail
 operator|--
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
