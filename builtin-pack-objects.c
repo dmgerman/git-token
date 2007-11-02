@@ -239,7 +239,7 @@ begin_decl_stmt
 DECL|variable|written_list
 specifier|static
 name|struct
-name|object_entry
+name|pack_idx_entry
 modifier|*
 modifier|*
 name|written_list
@@ -3332,7 +3332,10 @@ name|nr_written
 operator|++
 index|]
 operator|=
+operator|&
 name|e
+operator|->
+name|idx
 expr_stmt|;
 comment|/* make sure off_t is sufficiently large not to wrap */
 if|if
@@ -3484,9 +3487,8 @@ name|nr_objects
 operator|*
 sizeof|sizeof
 argument_list|(
-expr|struct
-name|object_entry
 operator|*
+name|written_list
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3727,12 +3729,6 @@ name|write_idx_file
 argument_list|(
 name|NULL
 argument_list|,
-operator|(
-expr|struct
-name|pack_idx_entry
-operator|*
-operator|*
-operator|)
 name|written_list
 argument_list|,
 name|nr_written
@@ -3883,8 +3879,6 @@ index|[
 name|j
 index|]
 operator|->
-name|idx
-operator|.
 name|offset
 operator|=
 operator|(
