@@ -94,6 +94,19 @@ name|SYMMETRIC_LEFT
 value|(1u<<8)
 end_define
 
+begin_define
+DECL|macro|TOPOSORT
+define|#
+directive|define
+name|TOPOSORT
+value|(1u<<9)
+end_define
+
+begin_comment
+DECL|macro|TOPOSORT
+comment|/* In the active toposort list.. */
+end_comment
+
 begin_struct_decl
 struct_decl|struct
 name|rev_info
@@ -453,14 +466,6 @@ DECL|member|pruning
 name|struct
 name|diff_options
 name|pruning
-decl_stmt|;
-DECL|member|topo_setter
-name|topo_sort_set_fn_t
-name|topo_setter
-decl_stmt|;
-DECL|member|topo_getter
-name|topo_sort_get_fn_t
-name|topo_getter
 decl_stmt|;
 DECL|member|reflog_info
 name|struct
