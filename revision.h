@@ -180,6 +180,11 @@ name|prune_fn_t
 modifier|*
 name|prune_fn
 decl_stmt|;
+DECL|member|early_output
+name|unsigned
+name|int
+name|early_output
+decl_stmt|;
 comment|/* Traversal flags */
 DECL|member|dense
 name|unsigned
@@ -504,6 +509,34 @@ end_define
 begin_comment
 comment|/* revision.c */
 end_comment
+
+begin_typedef
+DECL|typedef|show_early_output_fn_t
+typedef|typedef
+name|void
+function_decl|(
+modifier|*
+name|show_early_output_fn_t
+function_decl|)
+parameter_list|(
+name|struct
+name|rev_info
+modifier|*
+parameter_list|,
+name|struct
+name|commit_list
+modifier|*
+parameter_list|)
+function_decl|;
+end_typedef
+
+begin_decl_stmt
+DECL|variable|show_early_output
+specifier|volatile
+name|show_early_output_fn_t
+name|show_early_output
+decl_stmt|;
+end_decl_stmt
 
 begin_function_decl
 specifier|extern
