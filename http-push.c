@@ -12962,7 +12962,10 @@ block|{
 return|return
 name|error
 argument_list|(
-literal|"The branch '%s' is not a strict subset of your current HEAD.\nIf you are sure you want to delete it, run:\n\t'git http-push -D %s %s'"
+literal|"The branch '%s' is not an ancestor "
+literal|"of your current HEAD.\n"
+literal|"If you are sure you want to delete it,"
+literal|" run:\n\t'git http-push -D %s %s'"
 argument_list|,
 name|remote_ref
 operator|->
@@ -13858,12 +13861,12 @@ name|old_sha1
 argument_list|)
 condition|)
 block|{
-comment|/* We do not have the remote ref, or 				 * we know that the remote ref is not 				 * an ancestor of what we are trying to 				 * push.  Either way this can be losing 				 * commits at the remote end and likely 				 * we were not up to date to begin with. 				 */
+comment|/* 				 * We do not have the remote ref, or 				 * we know that the remote ref is not 				 * an ancestor of what we are trying to 				 * push.  Either way this can be losing 				 * commits at the remote end and likely 				 * we were not up to date to begin with. 				 */
 name|error
 argument_list|(
-literal|"remote '%s' is not a strict "
-literal|"subset of local ref '%s'. "
-literal|"maybe you are not up-to-date and "
+literal|"remote '%s' is not an ancestor of\n"
+literal|"local '%s'.\n"
+literal|"Maybe you are not up-to-date and "
 literal|"need to pull first?"
 argument_list|,
 name|ref

@@ -1432,9 +1432,9 @@ block|{
 comment|/* We do not have the remote ref, or 				 * we know that the remote ref is not 				 * an ancestor of what we are trying to 				 * push.  Either way this can be losing 				 * commits at the remote end and likely 				 * we were not up to date to begin with. 				 */
 name|error
 argument_list|(
-literal|"remote '%s' is not a strict "
-literal|"subset of local ref '%s'. "
-literal|"maybe you are not up-to-date and "
+literal|"remote '%s' is not an ancestor of\n"
+literal|" local  '%s'.\n"
+literal|" Maybe you are not up-to-date and "
 literal|"need to pull first?"
 argument_list|,
 name|ref
