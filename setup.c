@@ -1083,6 +1083,10 @@ argument_list|,
 literal|"/"
 argument_list|)
 expr_stmt|;
+name|inside_work_tree
+operator|=
+literal|1
+expr_stmt|;
 return|return
 name|retval
 return|;
