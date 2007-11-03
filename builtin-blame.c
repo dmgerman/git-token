@@ -11930,6 +11930,9 @@ name|final
 condition|)
 block|{
 comment|/* 		 * "--not A B -- path" without anything positive; 		 * do not default to HEAD, but use the working tree 		 * or "--contents". 		 */
+name|setup_work_tree
+argument_list|()
+expr_stmt|;
 name|sb
 operator|.
 name|final
