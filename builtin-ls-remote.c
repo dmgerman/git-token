@@ -24,21 +24,21 @@ file|"remote.h"
 end_include
 
 begin_decl_stmt
-DECL|variable|peek_remote_usage
+DECL|variable|ls_remote_usage
 specifier|static
 specifier|const
 name|char
-name|peek_remote_usage
+name|ls_remote_usage
 index|[]
 init|=
-literal|"git-peek-remote [--upload-pack=<git-upload-pack>] [<host>:]<directory>"
+literal|"git-ls-remote [--upload-pack=<git-upload-pack>] [<host>:]<directory>"
 decl_stmt|;
 end_decl_stmt
 
 begin_function
-DECL|function|cmd_peek_remote
+DECL|function|cmd_ls_remote
 name|int
-name|cmd_peek_remote
+name|cmd_ls_remote
 parameter_list|(
 name|int
 name|argc
@@ -222,7 +222,7 @@ continue|continue;
 block|}
 name|usage
 argument_list|(
-name|peek_remote_usage
+name|ls_remote_usage
 argument_list|)
 expr_stmt|;
 block|}
@@ -245,7 +245,7 @@ literal|1
 condition|)
 name|usage
 argument_list|(
-name|peek_remote_usage
+name|ls_remote_usage
 argument_list|)
 expr_stmt|;
 name|transport

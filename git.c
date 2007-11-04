@@ -1943,6 +1943,12 @@ name|RUN_SETUP
 block|}
 block|,
 block|{
+literal|"ls-remote"
+block|,
+name|cmd_ls_remote
+block|}
+block|,
+block|{
 literal|"mailinfo"
 block|,
 name|cmd_mailinfo
@@ -1997,7 +2003,7 @@ block|,
 block|{
 literal|"peek-remote"
 block|,
-name|cmd_peek_remote
+name|cmd_ls_remote
 block|}
 block|,
 block|{
