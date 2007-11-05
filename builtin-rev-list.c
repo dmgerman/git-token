@@ -672,12 +672,6 @@ condition|)
 break|break;
 if|if
 condition|(
-operator|!
-name|revs
-operator|.
-name|prune_fn
-operator|||
-operator|(
 name|commit
 operator|->
 name|object
@@ -685,7 +679,6 @@ operator|.
 name|flags
 operator|&
 name|TREECHANGE
-operator|)
 condition|)
 name|nr
 operator|++
@@ -950,10 +943,6 @@ block|{
 comment|/* 	 * Don't short-cut something we are not going to return! 	 */
 if|if
 condition|(
-name|revs
-operator|.
-name|prune_fn
-operator|&&
 operator|!
 operator|(
 name|p
@@ -1411,10 +1400,6 @@ name|flags
 decl_stmt|;
 if|if
 condition|(
-name|revs
-operator|.
-name|prune_fn
-operator|&&
 operator|!
 operator|(
 name|flags
@@ -1650,10 +1635,6 @@ name|flags
 decl_stmt|;
 if|if
 condition|(
-name|revs
-operator|.
-name|prune_fn
-operator|&&
 operator|!
 operator|(
 name|flags
@@ -1947,16 +1928,9 @@ literal|0
 case|:
 if|if
 condition|(
-operator|!
-name|revs
-operator|.
-name|prune_fn
-operator|||
-operator|(
 name|flags
 operator|&
 name|TREECHANGE
-operator|)
 condition|)
 block|{
 name|weight_set
@@ -2204,16 +2178,9 @@ continue|continue;
 comment|/* 			 * weight for p is unknown but q is known. 			 * add one for p itself if p is to be counted, 			 * otherwise inherit it from q directly. 			 */
 if|if
 condition|(
-operator|!
-name|revs
-operator|.
-name|prune_fn
-operator|||
-operator|(
 name|flags
 operator|&
 name|TREECHANGE
-operator|)
 condition|)
 block|{
 name|weight_set
@@ -2427,16 +2394,9 @@ name|p
 expr_stmt|;
 if|if
 condition|(
-operator|!
-name|revs
-operator|.
-name|prune_fn
-operator|||
-operator|(
 name|flags
 operator|&
 name|TREECHANGE
-operator|)
 condition|)
 name|nr
 operator|++
