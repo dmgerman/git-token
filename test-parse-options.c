@@ -144,6 +144,20 @@ argument_list|,
 literal|"get another string"
 argument_list|)
 block|,
+name|OPT_STRING
+argument_list|(
+literal|0
+argument_list|,
+literal|"st"
+argument_list|,
+operator|&
+name|string
+argument_list|,
+literal|"st"
+argument_list|,
+literal|"get another string (pervert ordering)"
+argument_list|)
+block|,
 name|OPT_END
 argument_list|()
 block|, 	}
