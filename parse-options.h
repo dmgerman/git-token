@@ -97,6 +97,10 @@ parameter_list|)
 function_decl|;
 end_typedef
 
+begin_comment
+comment|/*  * `type`::  *   holds the type of the option, you must have an OPTION_END last in your  *   array.  *  * `short_name`::  *   the character to use as a short option name, '\0' if none.  *  * `long_name`::  *   the long option name, without the leading dashes, NULL if none.  *  * `value`::  *   stores pointers to the values to be filled.  *  * `argh`::  *   token to explain the kind of argument this option wants. Keep it  *   homogenous across the repository.  *  * `help`::  *   the short help associated to what the option does.  *   Must never be NULL (except for OPTION_END).  *   OPTION_GROUP uses this pointer to store the group header.  *  * `flags`::  *   mask of parse_opt_option_flags.  *   PARSE_OPT_OPTARG: says that the argument is optionnal (not for BOOLEANs)  *   PARSE_OPT_NOARG: says that this option takes no argument, for CALLBACKs  *  * `callback`::  *   pointer to the callback to use for OPTION_CALLBACK.  *  * `defval`::  *   default value to fill (*->value) with for PARSE_OPT_OPTARG.  *   CALLBACKS can use it like they want.  */
+end_comment
+
 begin_struct
 DECL|struct|option
 struct|struct
@@ -143,7 +147,6 @@ name|parse_opt_cb
 modifier|*
 name|callback
 decl_stmt|;
-comment|/* holds default value for PARSE_OPT_OPTARG, 	   though callbacks can use it like they want */
 DECL|member|defval
 name|intptr_t
 name|defval
