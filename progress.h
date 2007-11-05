@@ -27,9 +27,8 @@ name|progress
 modifier|*
 name|progress
 parameter_list|,
-name|unsigned
-name|long
-name|n
+name|off_t
+name|total
 parameter_list|)
 function_decl|;
 end_function_decl

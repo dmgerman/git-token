@@ -46,6 +46,10 @@ DECL|member|ctx
 name|SHA_CTX
 name|ctx
 decl_stmt|;
+DECL|member|total
+name|off_t
+name|total
+decl_stmt|;
 DECL|member|tp
 name|struct
 name|progress
