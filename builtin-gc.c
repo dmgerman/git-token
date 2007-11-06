@@ -849,7 +849,7 @@ argument_list|,
 operator|&
 name|prune
 argument_list|,
-literal|"prune unreferenced loose objects"
+literal|"prune unreferenced objects"
 argument_list|)
 block|,
 name|OPT_BOOLEAN
