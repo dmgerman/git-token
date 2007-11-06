@@ -2405,9 +2405,12 @@ argument_list|)
 expr_stmt|;
 name|port
 operator|=
+name|ntohs
+argument_list|(
 name|sin_addr
 operator|->
 name|sin_port
+argument_list|)
 expr_stmt|;
 ifndef|#
 directive|ifndef
@@ -2482,9 +2485,12 @@ argument_list|)
 expr_stmt|;
 name|port
 operator|=
+name|ntohs
+argument_list|(
 name|sin6_addr
 operator|->
 name|sin6_port
+argument_list|)
 expr_stmt|;
 endif|#
 directive|endif
