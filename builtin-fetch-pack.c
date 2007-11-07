@@ -182,15 +182,12 @@ end_decl_stmt
 begin_decl_stmt
 DECL|variable|non_common_revs
 DECL|variable|multi_ack
-DECL|variable|use_thin_pack
 DECL|variable|use_sideband
 specifier|static
 name|int
 name|non_common_revs
 decl_stmt|,
 name|multi_ack
-decl_stmt|,
-name|use_thin_pack
 decl_stmt|,
 name|use_sideband
 decl_stmt|;
@@ -885,6 +882,8 @@ literal|""
 operator|)
 argument_list|,
 operator|(
+name|args
+operator|.
 name|use_thin_pack
 condition|?
 literal|" thin-pack"
