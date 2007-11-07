@@ -137,6 +137,22 @@ parameter_list|)
 value|((x)& TYPEOF(x)(~0ULL<< (sizeof(x) * 8 - (bits))))
 end_define
 
+begin_define
+DECL|macro|HAS_MULTI_BITS
+define|#
+directive|define
+name|HAS_MULTI_BITS
+parameter_list|(
+name|i
+parameter_list|)
+value|((i)& ((i) - 1))
+end_define
+
+begin_comment
+DECL|macro|HAS_MULTI_BITS
+comment|/* checks if an integer has more than 1 bit set */
+end_comment
+
 begin_comment
 comment|/* Approximation of the length of the decimal representation of this type. */
 end_comment

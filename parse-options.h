@@ -17,15 +17,28 @@ DECL|enum|parse_opt_type
 enum|enum
 name|parse_opt_type
 block|{
+comment|/* special types */
 DECL|enumerator|OPTION_END
 name|OPTION_END
 block|,
 DECL|enumerator|OPTION_GROUP
 name|OPTION_GROUP
 block|,
+comment|/* options with no arguments */
+DECL|enumerator|OPTION_BIT
+name|OPTION_BIT
+block|,
 DECL|enumerator|OPTION_BOOLEAN
 name|OPTION_BOOLEAN
 block|,
+comment|/* _INCR would have been a better name */
+DECL|enumerator|OPTION_SET_INT
+name|OPTION_SET_INT
+block|,
+DECL|enumerator|OPTION_SET_PTR
+name|OPTION_SET_PTR
+block|,
+comment|/* options with arguments (usually) */
 DECL|enumerator|OPTION_STRING
 name|OPTION_STRING
 block|,
@@ -65,6 +78,11 @@ DECL|enumerator|PARSE_OPT_NOARG
 name|PARSE_OPT_NOARG
 init|=
 literal|2
+block|,
+DECL|enumerator|PARSE_OPT_NONEG
+name|PARSE_OPT_NONEG
+init|=
+literal|4
 block|, }
 enum|;
 end_enum
@@ -98,7 +116,7 @@ function_decl|;
 end_typedef
 
 begin_comment
-comment|/*  * `type`::  *   holds the type of the option, you must have an OPTION_END last in your  *   array.  *  * `short_name`::  *   the character to use as a short option name, '\0' if none.  *  * `long_name`::  *   the long option name, without the leading dashes, NULL if none.  *  * `value`::  *   stores pointers to the values to be filled.  *  * `argh`::  *   token to explain the kind of argument this option wants. Keep it  *   homogenous across the repository.  *  * `help`::  *   the short help associated to what the option does.  *   Must never be NULL (except for OPTION_END).  *   OPTION_GROUP uses this pointer to store the group header.  *  * `flags`::  *   mask of parse_opt_option_flags.  *   PARSE_OPT_OPTARG: says that the argument is optionnal (not for BOOLEANs)  *   PARSE_OPT_NOARG: says that this option takes no argument, for CALLBACKs  *  * `callback`::  *   pointer to the callback to use for OPTION_CALLBACK.  *  * `defval`::  *   default value to fill (*->value) with for PARSE_OPT_OPTARG.  *   CALLBACKS can use it like they want.  */
+comment|/*  * `type`::  *   holds the type of the option, you must have an OPTION_END last in your  *   array.  *  * `short_name`::  *   the character to use as a short option name, '\0' if none.  *  * `long_name`::  *   the long option name, without the leading dashes, NULL if none.  *  * `value`::  *   stores pointers to the values to be filled.  *  * `argh`::  *   token to explain the kind of argument this option wants. Keep it  *   homogenous across the repository.  *  * `help`::  *   the short help associated to what the option does.  *   Must never be NULL (except for OPTION_END).  *   OPTION_GROUP uses this pointer to store the group header.  *  * `flags`::  *   mask of parse_opt_option_flags.  *   PARSE_OPT_OPTARG: says that the argument is optionnal (not for BOOLEANs)  *   PARSE_OPT_NOARG: says that this option takes no argument, for CALLBACKs  *   PARSE_OPT_NONEG: says that this option cannot be negated  *  * `callback`::  *   pointer to the callback to use for OPTION_CALLBACK.  *  * `defval`::  *   default value to fill (*->value) with for PARSE_OPT_OPTARG.  *   OPTION_{BIT,SET_INT,SET_PTR} store the {mask,integer,pointer} to put in  *   the value when met.  *   CALLBACKS can use it like they want.  */
 end_comment
 
 begin_struct
@@ -176,6 +194,25 @@ value|{ OPTION_GROUP, 0, NULL, NULL, NULL, (h) }
 end_define
 
 begin_define
+DECL|macro|OPT_BIT
+define|#
+directive|define
+name|OPT_BIT
+parameter_list|(
+name|s
+parameter_list|,
+name|l
+parameter_list|,
+name|v
+parameter_list|,
+name|h
+parameter_list|,
+name|b
+parameter_list|)
+value|{ OPTION_BIT, (s), (l), (v), NULL, (h), 0, NULL, (b) }
+end_define
+
+begin_define
 DECL|macro|OPT_BOOLEAN
 define|#
 directive|define
@@ -190,6 +227,44 @@ parameter_list|,
 name|h
 parameter_list|)
 value|{ OPTION_BOOLEAN, (s), (l), (v), NULL, (h) }
+end_define
+
+begin_define
+DECL|macro|OPT_SET_INT
+define|#
+directive|define
+name|OPT_SET_INT
+parameter_list|(
+name|s
+parameter_list|,
+name|l
+parameter_list|,
+name|v
+parameter_list|,
+name|h
+parameter_list|,
+name|i
+parameter_list|)
+value|{ OPTION_SET_INT, (s), (l), (v), NULL, (h), 0, NULL, (i) }
+end_define
+
+begin_define
+DECL|macro|OPT_SET_PTR
+define|#
+directive|define
+name|OPT_SET_PTR
+parameter_list|(
+name|s
+parameter_list|,
+name|l
+parameter_list|,
+name|v
+parameter_list|,
+name|h
+parameter_list|,
+name|p
+parameter_list|)
+value|{ OPTION_SET_PTR, (s), (l), (v), NULL, (h), 0, NULL, (p) }
 end_define
 
 begin_define
