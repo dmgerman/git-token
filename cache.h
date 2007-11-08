@@ -39,6 +39,11 @@ end_include
 begin_if
 if|#
 directive|if
+name|defined
+argument_list|(
+name|NO_DEFLATE_BOUND
+argument_list|)
+operator|||
 name|ZLIB_VERNUM
 operator|<
 literal|0x1200
