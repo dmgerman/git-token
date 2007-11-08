@@ -65,7 +65,7 @@ name|char
 name|builtin_reset_usage
 index|[]
 init|=
-literal|"git-reset [--mixed | --soft | --hard]  [<commit-ish>] [ [--]<paths>...]"
+literal|"git-reset [--mixed | --soft | --hard] [-q] [<commit-ish>] [ [--]<paths>...]"
 decl_stmt|;
 end_decl_stmt
 
@@ -1077,6 +1077,10 @@ decl_stmt|,
 name|update_ref_status
 init|=
 literal|0
+decl_stmt|,
+name|quiet
+init|=
+literal|0
 decl_stmt|;
 specifier|const
 name|char
@@ -1147,7 +1151,7 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-if|if
+while|while
 condition|(
 name|i
 operator|<
@@ -1222,6 +1226,31 @@ name|i
 operator|++
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|argv
+index|[
+name|i
+index|]
+argument_list|,
+literal|"-q"
+argument_list|)
+condition|)
+block|{
+name|quiet
+operator|=
+literal|1
+expr_stmt|;
+name|i
+operator|++
+expr_stmt|;
+block|}
+else|else
+break|break;
 block|}
 if|if
 condition|(
@@ -1561,6 +1590,9 @@ if|if
 condition|(
 operator|!
 name|update_ref_status
+operator|&&
+operator|!
+name|quiet
 condition|)
 name|print_new_head_line
 argument_list|(
