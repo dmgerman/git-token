@@ -308,10 +308,13 @@ parameter_list|,
 name|unsigned
 name|n
 parameter_list|,
-name|int
+specifier|const
+name|char
+modifier|*
 name|done
 parameter_list|)
 block|{
+specifier|const
 name|char
 modifier|*
 name|eol
@@ -415,7 +418,7 @@ name|eol
 operator|=
 name|done
 condition|?
-literal|", done.   \n"
+name|done
 else|:
 literal|"   \r"
 expr_stmt|;
@@ -1046,7 +1049,7 @@ name|progress
 operator|->
 name|last_value
 argument_list|,
-literal|0
+name|NULL
 argument_list|)
 expr_stmt|;
 block|}
@@ -1076,7 +1079,7 @@ name|progress
 argument_list|,
 name|n
 argument_list|,
-literal|0
+name|NULL
 argument_list|)
 else|:
 literal|0
@@ -1236,6 +1239,33 @@ modifier|*
 name|p_progress
 parameter_list|)
 block|{
+name|stop_progress_msg
+argument_list|(
+name|p_progress
+argument_list|,
+literal|"done"
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|function|stop_progress_msg
+name|void
+name|stop_progress_msg
+parameter_list|(
+name|struct
+name|progress
+modifier|*
+modifier|*
+name|p_progress
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|msg
+parameter_list|)
+block|{
 name|struct
 name|progress
 modifier|*
@@ -1266,6 +1296,17 @@ literal|1
 condition|)
 block|{
 comment|/* Force the last update */
+name|char
+name|buf
+index|[
+name|strlen
+argument_list|(
+name|msg
+argument_list|)
+operator|+
+literal|5
+index|]
+decl_stmt|;
 name|struct
 name|throughput
 modifier|*
@@ -1315,6 +1356,15 @@ name|progress_update
 operator|=
 literal|1
 expr_stmt|;
+name|sprintf
+argument_list|(
+name|buf
+argument_list|,
+literal|", %s.\n"
+argument_list|,
+name|msg
+argument_list|)
+expr_stmt|;
 name|display
 argument_list|(
 name|progress
@@ -1323,7 +1373,7 @@ name|progress
 operator|->
 name|last_value
 argument_list|,
-literal|1
+name|buf
 argument_list|)
 expr_stmt|;
 block|}
