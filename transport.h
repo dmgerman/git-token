@@ -191,6 +191,14 @@ name|TRANSPORT_PUSH_DRY_RUN
 value|4
 end_define
 
+begin_define
+DECL|macro|TRANSPORT_PUSH_MIRROR
+define|#
+directive|define
+name|TRANSPORT_PUSH_MIRROR
+value|8
+end_define
+
 begin_comment
 comment|/* Returns a transport suitable for the url */
 end_comment
