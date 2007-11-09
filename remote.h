@@ -481,6 +481,41 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* Flags to match_refs. */
+end_comment
+
+begin_enum
+DECL|enum|match_refs_flags
+enum|enum
+name|match_refs_flags
+block|{
+DECL|enumerator|MATCH_REFS_NONE
+name|MATCH_REFS_NONE
+init|=
+literal|0
+block|,
+DECL|enumerator|MATCH_REFS_ALL
+name|MATCH_REFS_ALL
+init|=
+operator|(
+literal|1
+operator|<<
+literal|0
+operator|)
+block|,
+DECL|enumerator|MATCH_REFS_MIRROR
+name|MATCH_REFS_MIRROR
+init|=
+operator|(
+literal|1
+operator|<<
+literal|1
+operator|)
+block|, }
+enum|;
+end_enum
+
 begin_endif
 endif|#
 directive|endif

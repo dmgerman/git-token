@@ -34,6 +34,11 @@ name|send_all
 range|:
 literal|1
 decl_stmt|,
+DECL|member|send_mirror
+name|send_mirror
+range|:
+literal|1
+decl_stmt|,
 DECL|member|force_update
 name|force_update
 range|:
