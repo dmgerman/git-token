@@ -11701,6 +11701,9 @@ name|blame_usage
 argument_list|)
 expr_stmt|;
 comment|/* garbage at end */
+name|setup_work_tree
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 operator|!
