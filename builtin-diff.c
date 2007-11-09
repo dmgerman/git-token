@@ -1157,10 +1157,8 @@ expr_stmt|;
 if|if
 condition|(
 name|active_cache_changed
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
+operator|!
 name|write_cache
 argument_list|(
 name|fd
@@ -1169,20 +1167,18 @@ name|active_cache
 argument_list|,
 name|active_nr
 argument_list|)
-operator|||
+operator|&&
+operator|!
 name|close
 argument_list|(
 name|fd
 argument_list|)
-operator|||
+condition|)
 name|commit_locked_index
 argument_list|(
 name|lock_file
 argument_list|)
-condition|)
-empty_stmt|;
-comment|/* 			   * silently ignore it -- we haven't mucked 			   * with the real index. 			   */
-block|}
+expr_stmt|;
 name|rollback_lock_file
 argument_list|(
 name|lock_file
