@@ -396,6 +396,8 @@ argument_list|,
 name|revs
 operator|.
 name|date_mode
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 if|if

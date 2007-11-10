@@ -724,7 +724,7 @@ condition|)
 block|{
 name|error
 argument_list|(
-literal|"The branch '%s' is not a strict subset of "
+literal|"The branch '%s' is not an ancestor of "
 literal|"your current HEAD.\n"
 literal|"If you are sure you want to delete it, "
 literal|"run 'git branch -D %s'."
@@ -1412,6 +1412,8 @@ argument_list|,
 name|NULL
 argument_list|,
 name|NULL
+argument_list|,
+literal|0
 argument_list|,
 literal|0
 argument_list|)

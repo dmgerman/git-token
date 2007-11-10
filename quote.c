@@ -99,7 +99,7 @@ name|strcspn
 argument_list|(
 name|src
 argument_list|,
-literal|"'\\"
+literal|"'!"
 argument_list|)
 decl_stmt|;
 name|strbuf_add

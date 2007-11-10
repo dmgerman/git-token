@@ -767,6 +767,14 @@ argument_list|,
 name|builtin_rm_options
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|index_only
+condition|)
+name|setup_work_tree
+argument_list|()
+expr_stmt|;
 name|pathspec
 operator|=
 name|get_pathspec

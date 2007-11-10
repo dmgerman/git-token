@@ -11408,14 +11408,6 @@ block|}
 if|if
 condition|(
 operator|!
-name|incremental
-condition|)
-name|setup_pager
-argument_list|()
-expr_stmt|;
-if|if
-condition|(
-operator|!
 name|blame_move_score
 condition|)
 name|blame_move_score
@@ -11938,6 +11930,9 @@ name|final
 condition|)
 block|{
 comment|/* 		 * "--not A B -- path" without anything positive; 		 * do not default to HEAD, but use the working tree 		 * or "--contents". 		 */
+name|setup_work_tree
+argument_list|()
+expr_stmt|;
 name|sb
 operator|.
 name|final
@@ -12315,6 +12310,14 @@ literal|".mailmap"
 argument_list|,
 name|NULL
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|incremental
+condition|)
+name|setup_pager
+argument_list|()
 expr_stmt|;
 name|assign_blame
 argument_list|(
