@@ -1183,6 +1183,18 @@ name|DIFF_SILENT_ON_REMOVED
 value|01
 end_define
 
+begin_comment
+comment|/* report racily-clean paths as modified */
+end_comment
+
+begin_define
+DECL|macro|DIFF_RACY_IS_MODIFIED
+define|#
+directive|define
+name|DIFF_RACY_IS_MODIFIED
+value|02
+end_define
+
 begin_function_decl
 specifier|extern
 name|int

@@ -1916,6 +1916,13 @@ name|cache_entry
 modifier|*
 name|ce
 decl_stmt|;
+name|unsigned
+name|ce_option
+init|=
+name|CE_MATCH_IGNORE_VALID
+operator||
+name|CE_MATCH_RACY_IS_DIRTY
+decl_stmt|;
 if|if
 condition|(
 name|lstat
@@ -2148,7 +2155,7 @@ index|]
 argument_list|)
 operator|&&
 operator|!
-name|ie_modified
+name|ie_match_stat
 argument_list|(
 name|istate
 argument_list|,
@@ -2162,7 +2169,7 @@ argument_list|,
 operator|&
 name|st
 argument_list|,
-name|CE_MATCH_IGNORE_VALID
+name|ce_option
 argument_list|)
 condition|)
 block|{
