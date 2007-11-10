@@ -520,6 +520,25 @@ expr_stmt|;
 block|}
 end_function
 
+begin_function_decl
+specifier|extern
+name|void
+name|strbuf_adddup
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+name|sb
+parameter_list|,
+name|size_t
+name|pos
+parameter_list|,
+name|size_t
+name|len
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_typedef
 DECL|typedef|expand_fn_t
 typedef|typedef
