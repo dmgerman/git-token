@@ -4895,7 +4895,6 @@ literal|0
 argument_list|,
 literal|"sort"
 argument_list|,
-operator|&
 name|sort_tail
 argument_list|,
 literal|"key"
