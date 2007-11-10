@@ -1171,6 +1171,18 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* do not report anything on removed paths */
+end_comment
+
+begin_define
+DECL|macro|DIFF_SILENT_ON_REMOVED
+define|#
+directive|define
+name|DIFF_SILENT_ON_REMOVED
+value|01
+end_define
+
 begin_function_decl
 specifier|extern
 name|int
@@ -1181,8 +1193,9 @@ name|rev_info
 modifier|*
 name|revs
 parameter_list|,
+name|unsigned
 name|int
-name|silent_on_removed
+name|option
 parameter_list|)
 function_decl|;
 end_function_decl
