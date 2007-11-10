@@ -1251,11 +1251,23 @@ endif|#
 directive|endif
 end_endif
 
-begin_ifdef
-ifdef|#
-directive|ifdef
-name|NO_STRCHRNUL
-end_ifdef
+begin_if
+if|#
+directive|if
+operator|!
+name|defined
+argument_list|(
+name|__GLIBC_PREREQ
+argument_list|)
+operator|&&
+operator|!
+name|__GLIBC_PREREQ
+argument_list|(
+literal|2
+operator|,
+literal|1
+argument_list|)
+end_if
 
 begin_define
 DECL|macro|strchrnul
@@ -1265,7 +1277,10 @@ name|strchrnul
 value|gitstrchrnul
 end_define
 
-begin_function_decl
+begin_function
+DECL|function|gitstrchrnul
+specifier|static
+specifier|inline
 name|char
 modifier|*
 name|gitstrchrnul
@@ -1278,8 +1293,29 @@ parameter_list|,
 name|int
 name|c
 parameter_list|)
-function_decl|;
-end_function_decl
+block|{
+while|while
+condition|(
+operator|*
+name|s
+operator|&&
+operator|*
+name|s
+operator|!=
+name|c
+condition|)
+name|s
+operator|++
+expr_stmt|;
+return|return
+operator|(
+name|char
+operator|*
+operator|)
+name|s
+return|;
+block|}
+end_function
 
 begin_endif
 endif|#
