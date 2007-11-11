@@ -5417,16 +5417,12 @@ name|entry
 operator|.
 name|sha1
 argument_list|,
-name|S_ISDIR
+name|object_type
 argument_list|(
 name|entry
 operator|.
 name|mode
 argument_list|)
-condition|?
-name|OBJ_TREE
-else|:
-name|OBJ_BLOB
 argument_list|,
 name|fullname
 argument_list|,
