@@ -686,6 +686,14 @@ name|TRANSPORT_PUSH_DRY_RUN
 expr_stmt|;
 if|if
 condition|(
+name|verbose
+condition|)
+name|flags
+operator||=
+name|TRANSPORT_PUSH_VERBOSE
+expr_stmt|;
+if|if
+condition|(
 name|tags
 condition|)
 name|add_refspec
