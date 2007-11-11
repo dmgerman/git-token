@@ -107,6 +107,12 @@ name|no_stdout
 range|:
 literal|1
 decl_stmt|;
+DECL|member|no_stderr
+name|unsigned
+name|no_stderr
+range|:
+literal|1
+decl_stmt|;
 DECL|member|git_cmd
 name|unsigned
 name|git_cmd
