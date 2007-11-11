@@ -3144,6 +3144,16 @@ index|[]
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+specifier|extern
+specifier|const
+name|char
+modifier|*
+name|ref_fetch_rules
+index|[]
+decl_stmt|;
+end_decl_stmt
+
 begin_function_decl
 specifier|extern
 name|int

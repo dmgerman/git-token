@@ -3341,6 +3341,26 @@ block|}
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|ref_fetch_rules
+specifier|const
+name|char
+modifier|*
+name|ref_fetch_rules
+index|[]
+init|=
+block|{
+literal|"%.*s"
+block|,
+literal|"refs/%.*s"
+block|,
+literal|"refs/heads/%.*s"
+block|,
+name|NULL
+block|}
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|refname_match
 name|int
