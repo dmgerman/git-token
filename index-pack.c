@@ -1412,8 +1412,7 @@ modifier|*
 name|obj
 parameter_list|)
 block|{
-name|unsigned
-name|long
+name|off_t
 name|from
 init|=
 name|obj
