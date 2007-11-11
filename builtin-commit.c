@@ -778,6 +778,11 @@ specifier|const
 name|char
 modifier|*
 name|index_file
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|prefix
 parameter_list|)
 block|{
 name|struct
@@ -789,6 +794,12 @@ argument_list|(
 operator|&
 name|s
 argument_list|)
+expr_stmt|;
+name|s
+operator|.
+name|prefix
+operator|=
+name|prefix
 expr_stmt|;
 if|if
 condition|(
@@ -868,6 +879,11 @@ specifier|const
 name|char
 modifier|*
 name|index_file
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|prefix
 parameter_list|)
 block|{
 name|struct
@@ -1382,6 +1398,8 @@ argument_list|(
 name|fp
 argument_list|,
 name|index_file
+argument_list|,
+name|prefix
 argument_list|)
 expr_stmt|;
 name|fclose
@@ -2426,6 +2444,8 @@ argument_list|(
 name|stdout
 argument_list|,
 name|index_file
+argument_list|,
+name|prefix
 argument_list|)
 expr_stmt|;
 name|rollback_lock_file
@@ -2924,6 +2944,8 @@ operator|!
 name|prepare_log_message
 argument_list|(
 name|index_file
+argument_list|,
+name|prefix
 argument_list|)
 operator|&&
 operator|!
@@ -2935,6 +2957,8 @@ argument_list|(
 name|stdout
 argument_list|,
 name|index_file
+argument_list|,
+name|prefix
 argument_list|)
 expr_stmt|;
 name|unlink

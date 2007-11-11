@@ -94,6 +94,12 @@ name|FILE
 modifier|*
 name|fp
 decl_stmt|;
+DECL|member|prefix
+specifier|const
+name|char
+modifier|*
+name|prefix
+decl_stmt|;
 block|}
 struct|;
 end_struct
