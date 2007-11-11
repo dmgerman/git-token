@@ -2298,7 +2298,7 @@ argument_list|,
 name|ref_name
 argument_list|)
 operator|&&
-name|lookup_object
+name|has_sha1_file
 argument_list|(
 name|ref
 operator|->
