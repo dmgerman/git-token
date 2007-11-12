@@ -1690,6 +1690,16 @@ name|NEED_WORK_TREE
 block|}
 block|,
 block|{
+literal|"clean"
+block|,
+name|cmd_clean
+block|,
+name|RUN_SETUP
+operator||
+name|NEED_WORK_TREE
+block|}
+block|,
+block|{
 literal|"commit-tree"
 block|,
 name|cmd_commit_tree
