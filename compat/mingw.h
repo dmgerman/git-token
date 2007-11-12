@@ -358,19 +358,6 @@ name|ITIMER_REAL
 value|0
 end_define
 
-begin_define
-DECL|macro|st_blocks
-define|#
-directive|define
-name|st_blocks
-value|st_size/512
-end_define
-
-begin_comment
-DECL|macro|st_blocks
-comment|/* will be cleaned up later */
-end_comment
-
 begin_comment
 comment|/*  * trivial stubs  */
 end_comment
@@ -1096,8 +1083,52 @@ value|mingw_rename
 end_define
 
 begin_comment
-comment|/* Use mingw_lstat() instead of lstat()/stat() and  * mingw_fstat() instead of fstat() on Windows.  */
+comment|/* Use mingw_lstat() instead of lstat()/stat() and  * mingw_fstat() instead of fstat() on Windows.  * struct stat is redefined because it lacks the st_blocks member.  */
 end_comment
+
+begin_struct
+DECL|struct|mingw_stat
+struct|struct
+name|mingw_stat
+block|{
+DECL|member|st_mode
+name|unsigned
+name|st_mode
+decl_stmt|;
+DECL|member|st_mtime
+DECL|member|st_atime
+DECL|member|st_ctime
+name|time_t
+name|st_mtime
+decl_stmt|,
+name|st_atime
+decl_stmt|,
+name|st_ctime
+decl_stmt|;
+DECL|member|st_dev
+DECL|member|st_ino
+DECL|member|st_uid
+DECL|member|st_gid
+name|unsigned
+name|st_dev
+decl_stmt|,
+name|st_ino
+decl_stmt|,
+name|st_uid
+decl_stmt|,
+name|st_gid
+decl_stmt|;
+DECL|member|st_size
+name|size_t
+name|st_size
+decl_stmt|;
+DECL|member|st_blocks
+name|size_t
+name|st_blocks
+decl_stmt|;
+block|}
+struct|;
+end_struct
 
 begin_function_decl
 name|int
@@ -1109,7 +1140,7 @@ modifier|*
 name|file_name
 parameter_list|,
 name|struct
-name|stat
+name|mingw_stat
 modifier|*
 name|buf
 parameter_list|)
@@ -1124,7 +1155,7 @@ name|int
 name|fd
 parameter_list|,
 name|struct
-name|stat
+name|mingw_stat
 modifier|*
 name|buf
 parameter_list|)
@@ -1152,13 +1183,37 @@ DECL|macro|stat
 define|#
 directive|define
 name|stat
-parameter_list|(
-name|x
-parameter_list|,
-name|y
-parameter_list|)
-value|mingw_lstat(x,y)
+value|mingw_stat
 end_define
+
+begin_function
+DECL|function|mingw_stat
+specifier|static
+specifier|inline
+name|int
+name|mingw_stat
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|file_name
+parameter_list|,
+name|struct
+name|mingw_stat
+modifier|*
+name|buf
+parameter_list|)
+block|{
+return|return
+name|mingw_lstat
+argument_list|(
+name|file_name
+argument_list|,
+name|buf
+argument_list|)
+return|;
+block|}
+end_function
 
 begin_function_decl
 name|int
