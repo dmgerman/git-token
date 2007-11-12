@@ -1707,10 +1707,8 @@ operator|++
 expr_stmt|;
 if|if
 condition|(
+operator|*
 name|eol
-index|[
-literal|1
-index|]
 operator|==
 literal|'\n'
 condition|)
