@@ -1440,7 +1440,7 @@ condition|(
 name|no_commit
 condition|)
 block|{
-comment|/* 		 * We do not intend to commit immediately.  We just want to 		 * merge the differences in. 		 */
+comment|/* 		 * We do not intend to commit immediately.  We just want to 		 * merge the differences in, so let's compute the tree 		 * that represents the "current" state for merge-recursive 		 * to work on. 		 */
 if|if
 condition|(
 name|write_tree
