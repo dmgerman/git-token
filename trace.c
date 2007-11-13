@@ -265,7 +265,7 @@ argument_list|(
 operator|&
 name|buf
 argument_list|,
-literal|0
+literal|64
 argument_list|)
 expr_stmt|;
 name|va_start
@@ -471,7 +471,7 @@ argument_list|(
 operator|&
 name|buf
 argument_list|,
-literal|0
+literal|64
 argument_list|)
 expr_stmt|;
 name|va_start
