@@ -2162,6 +2162,22 @@ block|}
 end_function
 
 begin_function
+DECL|function|git_etc_gitconfig
+specifier|const
+name|char
+modifier|*
+name|git_etc_gitconfig
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+return|return
+name|ETC_GITCONFIG
+return|;
+block|}
+end_function
+
+begin_function
 DECL|function|git_config
 name|int
 name|git_config
@@ -2210,7 +2226,8 @@ condition|(
 operator|!
 name|access
 argument_list|(
-name|ETC_GITCONFIG
+name|git_etc_gitconfig
+argument_list|()
 argument_list|,
 name|R_OK
 argument_list|)
@@ -2221,7 +2238,8 @@ name|git_config_from_file
 argument_list|(
 name|fn
 argument_list|,
-name|ETC_GITCONFIG
+name|git_etc_gitconfig
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|home

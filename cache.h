@@ -4400,6 +4400,18 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+specifier|const
+name|char
+modifier|*
+name|git_etc_gitconfig
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|int
 name|check_repository_format_version
 parameter_list|(
