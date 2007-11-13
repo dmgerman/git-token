@@ -32,8 +32,16 @@ DECL|variable|force
 specifier|static
 name|int
 name|force
+init|=
+operator|-
+literal|1
 decl_stmt|;
 end_decl_stmt
+
+begin_comment
+DECL|variable|force
+comment|/* unset */
+end_comment
 
 begin_decl_stmt
 DECL|variable|builtin_clean_usage
@@ -144,6 +152,10 @@ decl_stmt|,
 name|baselen
 init|=
 literal|0
+decl_stmt|,
+name|config_set
+init|=
+literal|0
 decl_stmt|;
 name|struct
 name|strbuf
@@ -243,6 +255,21 @@ argument_list|(
 name|git_clean_config
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|force
+operator|<
+literal|0
+condition|)
+name|force
+operator|=
+literal|0
+expr_stmt|;
+else|else
+name|config_set
+operator|=
+literal|1
+expr_stmt|;
 name|argc
 operator|=
 name|parse_options
@@ -310,7 +337,14 @@ name|force
 condition|)
 name|die
 argument_list|(
-literal|"clean.requireForce set and -n or -f not given; refusing to clean"
+literal|"clean.requireForce%s set and -n or -f not given; "
+literal|"refusing to clean"
+argument_list|,
+name|config_set
+condition|?
+literal|""
+else|:
+literal|" not"
 argument_list|)
 expr_stmt|;
 name|dir
