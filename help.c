@@ -27,12 +27,6 @@ directive|include
 file|"common-cmds.h"
 end_include
 
-begin_include
-include|#
-directive|include
-file|<sys/ioctl.h>
-end_include
-
 begin_comment
 comment|/* most GUI terminals set COLUMNS (although some don't export it) */
 end_comment
