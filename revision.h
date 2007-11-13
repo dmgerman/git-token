@@ -29,10 +29,10 @@ value|(1u<<1)
 end_define
 
 begin_define
-DECL|macro|TREECHANGE
+DECL|macro|TREESAME
 define|#
 directive|define
-name|TREECHANGE
+name|TREESAME
 value|(1u<<2)
 end_define
 

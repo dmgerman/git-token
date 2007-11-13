@@ -1168,7 +1168,7 @@ name|flags
 init|=
 name|UNINTERESTING
 operator||
-name|TREECHANGE
+name|TREESAME
 operator||
 name|SEEN
 operator||
