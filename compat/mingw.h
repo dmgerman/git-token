@@ -1045,6 +1045,27 @@ name|rename
 value|mingw_rename
 end_define
 
+begin_function_decl
+name|sig_handler_t
+name|mingw_signal
+parameter_list|(
+name|int
+name|sig
+parameter_list|,
+name|sig_handler_t
+name|handler
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_define
+DECL|macro|signal
+define|#
+directive|define
+name|signal
+value|mingw_signal
+end_define
+
 begin_comment
 comment|/*  * git specific compatibility  */
 end_comment
