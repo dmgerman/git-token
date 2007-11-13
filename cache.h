@@ -1910,6 +1910,10 @@ name|lock_file
 modifier|*
 name|next
 decl_stmt|;
+DECL|member|fd
+name|int
+name|fd
+decl_stmt|;
 DECL|member|owner
 name|pid_t
 name|owner
