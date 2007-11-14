@@ -1489,10 +1489,6 @@ condition|(
 name|s
 operator|.
 name|commitable
-operator|||
-name|s
-operator|.
-name|workdir_dirty
 condition|)
 name|die
 argument_list|(
