@@ -2156,7 +2156,7 @@ argument_list|,
 operator|&
 name|st
 argument_list|,
-literal|1
+name|CE_MATCH_IGNORE_VALID
 argument_list|)
 decl_stmt|;
 if|if
@@ -4368,7 +4368,7 @@ argument_list|,
 operator|&
 name|st
 argument_list|,
-literal|1
+name|CE_MATCH_IGNORE_VALID
 argument_list|)
 condition|)
 name|old

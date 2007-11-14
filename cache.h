@@ -860,9 +860,9 @@ name|ce
 parameter_list|,
 name|st
 parameter_list|,
-name|really
+name|options
 parameter_list|)
-value|ie_match_stat(&the_index, (ce), (st), (really))
+value|ie_match_stat(&the_index, (ce), (st), (options))
 end_define
 
 begin_define
@@ -875,9 +875,9 @@ name|ce
 parameter_list|,
 name|st
 parameter_list|,
-name|really
+name|options
 parameter_list|)
-value|ie_modified(&the_index, (ce), (st), (really))
+value|ie_modified(&the_index, (ce), (st), (options))
 end_define
 
 begin_endif
@@ -1630,6 +1630,30 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* do stat comparison even if CE_VALID is true */
+end_comment
+
+begin_define
+DECL|macro|CE_MATCH_IGNORE_VALID
+define|#
+directive|define
+name|CE_MATCH_IGNORE_VALID
+value|01
+end_define
+
+begin_comment
+comment|/* do not check the contents but report dirty on racily-clean entries */
+end_comment
+
+begin_define
+DECL|macro|CE_MATCH_RACY_IS_DIRTY
+define|#
+directive|define
+name|CE_MATCH_RACY_IS_DIRTY
+value|02
+end_define
+
 begin_function_decl
 specifier|extern
 name|int
@@ -1647,6 +1671,7 @@ name|struct
 name|stat
 modifier|*
 parameter_list|,
+name|unsigned
 name|int
 parameter_list|)
 function_decl|;
@@ -1669,6 +1694,7 @@ name|struct
 name|stat
 modifier|*
 parameter_list|,
+name|unsigned
 name|int
 parameter_list|)
 function_decl|;

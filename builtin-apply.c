@@ -9632,7 +9632,7 @@ name|ce
 argument_list|,
 name|st
 argument_list|,
-literal|1
+name|CE_MATCH_IGNORE_VALID
 argument_list|)
 return|;
 block|}

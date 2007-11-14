@@ -1171,6 +1171,30 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* do not report anything on removed paths */
+end_comment
+
+begin_define
+DECL|macro|DIFF_SILENT_ON_REMOVED
+define|#
+directive|define
+name|DIFF_SILENT_ON_REMOVED
+value|01
+end_define
+
+begin_comment
+comment|/* report racily-clean paths as modified */
+end_comment
+
+begin_define
+DECL|macro|DIFF_RACY_IS_MODIFIED
+define|#
+directive|define
+name|DIFF_RACY_IS_MODIFIED
+value|02
+end_define
+
 begin_function_decl
 specifier|extern
 name|int
@@ -1181,8 +1205,9 @@ name|rev_info
 modifier|*
 name|revs
 parameter_list|,
+name|unsigned
 name|int
-name|silent_on_removed
+name|option
 parameter_list|)
 function_decl|;
 end_function_decl
