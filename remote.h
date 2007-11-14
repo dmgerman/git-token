@@ -195,6 +195,37 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|struct
+name|ref
+modifier|*
+name|copy_ref_list
+parameter_list|(
+specifier|const
+name|struct
+name|ref
+modifier|*
+name|ref
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
+name|check_ref_type
+parameter_list|(
+specifier|const
+name|struct
+name|ref
+modifier|*
+name|ref
+parameter_list|,
+name|int
+name|flags
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/*  * Frees the entire list and peers of elements.  */
 end_comment
@@ -269,6 +300,7 @@ parameter_list|,
 name|int
 name|nr_refspec
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
@@ -288,6 +320,7 @@ begin_function_decl
 name|int
 name|get_fetch_map
 parameter_list|(
+specifier|const
 name|struct
 name|ref
 modifier|*
@@ -318,6 +351,7 @@ name|ref
 modifier|*
 name|get_remote_ref
 parameter_list|(
+specifier|const
 name|struct
 name|ref
 modifier|*

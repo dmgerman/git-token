@@ -47,6 +47,7 @@ modifier|*
 name|data
 decl_stmt|;
 DECL|member|remote_refs
+specifier|const
 name|struct
 name|ref
 modifier|*
@@ -85,7 +86,6 @@ modifier|*
 name|get_refs_list
 function_decl|)
 parameter_list|(
-specifier|const
 name|struct
 name|transport
 modifier|*
@@ -335,6 +335,7 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+specifier|const
 name|struct
 name|ref
 modifier|*
