@@ -1676,6 +1676,16 @@ name|ref
 operator|->
 name|next
 control|)
+if|if
+condition|(
+operator|!
+name|is_null_sha1
+argument_list|(
+name|ref
+operator|->
+name|new_sha1
+argument_list|)
+condition|)
 name|update_tracking_ref
 argument_list|(
 name|remote
