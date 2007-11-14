@@ -853,6 +853,14 @@ name|SUMMARY_WIDTH
 value|(2 * DEFAULT_ABBREV + 3)
 end_define
 
+begin_define
+DECL|macro|REFCOL_WIDTH
+define|#
+directive|define
+name|REFCOL_WIDTH
+value|10
+end_define
+
 begin_function
 DECL|function|update_local_ref
 specifier|static
@@ -1034,11 +1042,13 @@ name|sprintf
 argument_list|(
 name|display
 argument_list|,
-literal|"= %-*s %s -> %s"
+literal|"= %-*s %-*s -> %s"
 argument_list|,
 name|SUMMARY_WIDTH
 argument_list|,
 literal|"[up to date]"
+argument_list|,
+name|REFCOL_WIDTH
 argument_list|,
 name|remote
 argument_list|,
@@ -1087,11 +1097,13 @@ name|sprintf
 argument_list|(
 name|display
 argument_list|,
-literal|"! %-*s %s -> %s  (can't  fetch in current branch)"
+literal|"! %-*s %-*s -> %s  (can't fetch in current branch)"
 argument_list|,
 name|SUMMARY_WIDTH
 argument_list|,
 literal|"[rejected]"
+argument_list|,
+name|REFCOL_WIDTH
 argument_list|,
 name|remote
 argument_list|,
@@ -1127,11 +1139,13 @@ name|sprintf
 argument_list|(
 name|display
 argument_list|,
-literal|"- %-*s %s -> %s"
+literal|"- %-*s %-*s -> %s"
 argument_list|,
 name|SUMMARY_WIDTH
 argument_list|,
 literal|"[tag update]"
+argument_list|,
+name|REFCOL_WIDTH
 argument_list|,
 name|remote
 argument_list|,
@@ -1229,11 +1243,13 @@ name|sprintf
 argument_list|(
 name|display
 argument_list|,
-literal|"* %-*s %s -> %s"
+literal|"* %-*s %-*s -> %s"
 argument_list|,
 name|SUMMARY_WIDTH
 argument_list|,
 name|what
+argument_list|,
+name|REFCOL_WIDTH
 argument_list|,
 name|remote
 argument_list|,
@@ -1311,11 +1327,13 @@ name|sprintf
 argument_list|(
 name|display
 argument_list|,
-literal|"  %-*s %s -> %s  (fast forward)"
+literal|"  %-*s %-*s -> %s"
 argument_list|,
 name|SUMMARY_WIDTH
 argument_list|,
 name|quickref
+argument_list|,
+name|REFCOL_WIDTH
 argument_list|,
 name|remote
 argument_list|,
@@ -1390,11 +1408,13 @@ name|sprintf
 argument_list|(
 name|display
 argument_list|,
-literal|"+ %-*s %s -> %s  (forced update)"
+literal|"+ %-*s %-*s -> %s  (forced update)"
 argument_list|,
 name|SUMMARY_WIDTH
 argument_list|,
 name|quickref
+argument_list|,
+name|REFCOL_WIDTH
 argument_list|,
 name|remote
 argument_list|,
@@ -1418,11 +1438,13 @@ name|sprintf
 argument_list|(
 name|display
 argument_list|,
-literal|"! %-*s %s -> %s  (non fast forward)"
+literal|"! %-*s %-*s -> %s  (non fast forward)"
 argument_list|,
 name|SUMMARY_WIDTH
 argument_list|,
 literal|"[rejected]"
+argument_list|,
+name|REFCOL_WIDTH
 argument_list|,
 name|remote
 argument_list|,
