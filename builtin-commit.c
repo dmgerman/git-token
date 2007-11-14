@@ -3016,10 +3016,6 @@ parameter_list|)
 block|{
 name|int
 name|header_len
-decl_stmt|,
-name|parent_count
-init|=
-literal|0
 decl_stmt|;
 name|struct
 name|strbuf
@@ -3188,10 +3184,6 @@ block|{
 name|reflog_msg
 operator|=
 literal|"commit (initial)"
-expr_stmt|;
-name|parent_count
-operator|=
-literal|0
 expr_stmt|;
 block|}
 elseif|else
@@ -3459,16 +3451,6 @@ condition|(
 operator|!
 name|no_edit
 condition|)
-block|{
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-literal|"launching editor, log %s\n"
-argument_list|,
-name|logfile
-argument_list|)
-expr_stmt|;
 name|launch_editor
 argument_list|(
 name|git_path
@@ -3480,7 +3462,6 @@ operator|&
 name|sb
 argument_list|)
 expr_stmt|;
-block|}
 elseif|else
 if|if
 condition|(
