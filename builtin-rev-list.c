@@ -101,6 +101,7 @@ literal|"    --no-merges\n"
 literal|"    --remove-empty\n"
 literal|"    --all\n"
 literal|"    --stdin\n"
+literal|"    --quiet\n"
 literal|"  ordering output:\n"
 literal|"    --topo-order\n"
 literal|"    --date-order\n"
@@ -161,6 +162,19 @@ modifier|*
 name|header_prefix
 decl_stmt|;
 end_decl_stmt
+
+begin_function_decl
+specifier|static
+name|void
+name|finish_commit
+parameter_list|(
+name|struct
+name|commit
+modifier|*
+name|commit
+parameter_list|)
+function_decl|;
+end_function_decl
 
 begin_function
 DECL|function|show_commit
@@ -431,6 +445,26 @@ argument_list|,
 literal|"stdout"
 argument_list|)
 expr_stmt|;
+name|finish_commit
+argument_list|(
+name|commit
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|function|finish_commit
+specifier|static
+name|void
+name|finish_commit
+parameter_list|(
+name|struct
+name|commit
+modifier|*
+name|commit
+parameter_list|)
+block|{
 if|if
 condition|(
 name|commit
@@ -469,10 +503,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|show_object
+DECL|function|finish_object
 specifier|static
 name|void
-name|show_object
+name|finish_object
 parameter_list|(
 name|struct
 name|object_array_entry
@@ -480,21 +514,6 @@ modifier|*
 name|p
 parameter_list|)
 block|{
-comment|/* An object with name "foo\n0000000..." can be used to 	 * confuse downstream git-pack-objects very badly. 	 */
-specifier|const
-name|char
-modifier|*
-name|ep
-init|=
-name|strchr
-argument_list|(
-name|p
-operator|->
-name|name
-argument_list|,
-literal|'\n'
-argument_list|)
-decl_stmt|;
 if|if
 condition|(
 name|p
@@ -527,6 +546,41 @@ name|item
 operator|->
 name|sha1
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|function|show_object
+specifier|static
+name|void
+name|show_object
+parameter_list|(
+name|struct
+name|object_array_entry
+modifier|*
+name|p
+parameter_list|)
+block|{
+comment|/* An object with name "foo\n0000000..." can be used to 	 * confuse downstream git-pack-objects very badly. 	 */
+specifier|const
+name|char
+modifier|*
+name|ep
+init|=
+name|strchr
+argument_list|(
+name|p
+operator|->
+name|name
+argument_list|,
+literal|'\n'
+argument_list|)
+decl_stmt|;
+name|finish_object
+argument_list|(
+name|p
 argument_list|)
 expr_stmt|;
 if|if
@@ -2677,6 +2731,11 @@ name|bisect_find_all
 init|=
 literal|0
 decl_stmt|;
+name|int
+name|quiet
+init|=
+literal|0
+decl_stmt|;
 name|git_config
 argument_list|(
 name|git_default_config
@@ -2861,6 +2920,23 @@ argument_list|(
 operator|&
 name|revs
 argument_list|)
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--quiet"
+argument_list|)
+condition|)
+block|{
+name|quiet
+operator|=
+literal|1
 expr_stmt|;
 continue|continue;
 block|}
@@ -3160,8 +3236,16 @@ argument_list|(
 operator|&
 name|revs
 argument_list|,
+name|quiet
+condition|?
+name|finish_commit
+else|:
 name|show_commit
 argument_list|,
+name|quiet
+condition|?
+name|finish_object
+else|:
 name|show_object
 argument_list|)
 expr_stmt|;
