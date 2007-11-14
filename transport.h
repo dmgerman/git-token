@@ -192,11 +192,19 @@ value|4
 end_define
 
 begin_define
+DECL|macro|TRANSPORT_PUSH_MIRROR
+define|#
+directive|define
+name|TRANSPORT_PUSH_MIRROR
+value|8
+end_define
+
+begin_define
 DECL|macro|TRANSPORT_PUSH_VERBOSE
 define|#
 directive|define
 name|TRANSPORT_PUSH_VERBOSE
-value|8
+value|16
 end_define
 
 begin_comment

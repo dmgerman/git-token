@@ -56,7 +56,7 @@ name|push_usage
 index|[]
 init|=
 block|{
-literal|"git-push [--all] [--dry-run] [--tags] [--receive-pack=<git-receive-pack>] [--repo=all] [-f | --force] [-v] [<repository><refspec>...]"
+literal|"git-push [--all | --mirror] [--dry-run] [--tags] [--receive-pack=<git-receive-pack>] [--repo=all] [-f | --force] [-v] [<repository><refspec>...]"
 block|,
 name|NULL
 block|, }
@@ -513,6 +513,11 @@ init|=
 literal|0
 decl_stmt|;
 name|int
+name|mirror
+init|=
+literal|0
+decl_stmt|;
+name|int
 name|dry_run
 init|=
 literal|0
@@ -571,6 +576,18 @@ operator|&
 name|all
 argument_list|,
 literal|"push all refs"
+argument_list|)
+block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|0
+argument_list|,
+literal|"mirror"
+argument_list|,
+operator|&
+name|mirror
+argument_list|,
+literal|"mirror all refs"
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -711,6 +728,18 @@ name|TRANSPORT_PUSH_ALL
 expr_stmt|;
 if|if
 condition|(
+name|mirror
+condition|)
+name|flags
+operator||=
+operator|(
+name|TRANSPORT_PUSH_MIRROR
+operator||
+name|TRANSPORT_PUSH_FORCE
+operator|)
+expr_stmt|;
+if|if
+condition|(
 name|argc
 operator|>
 literal|0
@@ -740,7 +769,11 @@ condition|(
 operator|(
 name|flags
 operator|&
+operator|(
 name|TRANSPORT_PUSH_ALL
+operator||
+name|TRANSPORT_PUSH_MIRROR
+operator|)
 operator|)
 operator|&&
 name|refspec
@@ -752,6 +785,38 @@ argument_list|,
 name|options
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|(
+name|flags
+operator|&
+operator|(
+name|TRANSPORT_PUSH_ALL
+operator||
+name|TRANSPORT_PUSH_MIRROR
+operator|)
+operator|)
+operator|==
+operator|(
+name|TRANSPORT_PUSH_ALL
+operator||
+name|TRANSPORT_PUSH_MIRROR
+operator|)
+condition|)
+block|{
+name|error
+argument_list|(
+literal|"--all and --mirror are incompatible"
+argument_list|)
+expr_stmt|;
+name|usage_with_options
+argument_list|(
+name|push_usage
+argument_list|,
+name|options
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|do_push
 argument_list|(
