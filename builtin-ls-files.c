@@ -2033,8 +2033,8 @@ index|[]
 init|=
 literal|"git-ls-files [-z] [-t] [-v] (--[cached|deleted|others|stage|unmerged|killed|modified])* "
 literal|"[ --ignored ] [--exclude=<pattern>] [--exclude-from=<file>] "
-literal|"[ --exclude-per-directory=<filename> ] [--full-name] [--abbrev] "
-literal|"[--] [<file>]*"
+literal|"[ --exclude-per-directory=<filename> ] [--exclude-standard] "
+literal|"[--full-name] [--abbrev] [--] [<file>]*"
 decl_stmt|;
 end_decl_stmt
 
@@ -2643,6 +2643,29 @@ operator|=
 name|arg
 operator|+
 literal|24
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--exclude-standard"
+argument_list|)
+condition|)
+block|{
+name|exc_given
+operator|=
+literal|1
+expr_stmt|;
+name|setup_standard_excludes
+argument_list|(
+operator|&
+name|dir
+argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
