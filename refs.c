@@ -3050,53 +3050,6 @@ block|}
 end_function
 
 begin_comment
-comment|/* NEEDSWORK: This is only used by ssh-upload and it should go; the  * caller should do resolve_ref or read_ref like everybody else.  Or  * maybe everybody else should use get_ref_sha1() instead of doing  * read_ref().  */
-end_comment
-
-begin_function
-DECL|function|get_ref_sha1
-name|int
-name|get_ref_sha1
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|ref
-parameter_list|,
-name|unsigned
-name|char
-modifier|*
-name|sha1
-parameter_list|)
-block|{
-if|if
-condition|(
-name|check_ref_format
-argument_list|(
-name|ref
-argument_list|)
-condition|)
-return|return
-operator|-
-literal|1
-return|;
-return|return
-name|read_ref
-argument_list|(
-name|mkpath
-argument_list|(
-literal|"refs/%s"
-argument_list|,
-name|ref
-argument_list|)
-argument_list|,
-name|sha1
-argument_list|)
-return|;
-block|}
-end_function
-
-begin_comment
 comment|/*  * Make sure "ref" is something reasonable to have under ".git/refs/";  * We do not like it if:  *  * - any path component of it begins with ".", or  * - it has double dots "..", or  * - it has ASCII control character, "~", "^", ":" or SP, anywhere, or  * - it ends with a "/".  */
 end_comment
 

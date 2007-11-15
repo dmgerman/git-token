@@ -182,28 +182,6 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/** Reads the refs file specified into sha1 **/
-end_comment
-
-begin_function_decl
-specifier|extern
-name|int
-name|get_ref_sha1
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|ref
-parameter_list|,
-name|unsigned
-name|char
-modifier|*
-name|sha1
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_comment
 comment|/** Locks a "refs/" ref returning the lock on success and NULL on failure. **/
 end_comment
 
