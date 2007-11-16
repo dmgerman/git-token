@@ -2914,6 +2914,12 @@ argument_list|(
 name|pathspec
 argument_list|)
 decl_stmt|;
+name|char
+modifier|*
+name|pp
+init|=
+name|NULL
+decl_stmt|;
 comment|/* 	 * Make sure to do the per-directory exclude for all the 	 * directories leading up to our base. 	 */
 if|if
 condition|(
@@ -2930,17 +2936,16 @@ block|{
 name|char
 modifier|*
 name|p
-decl_stmt|,
-modifier|*
+decl_stmt|;
 name|pp
-init|=
+operator|=
 name|xmalloc
 argument_list|(
 name|baselen
 operator|+
 literal|1
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|memcpy
 argument_list|(
 name|pp
@@ -3019,11 +3024,6 @@ operator|+
 name|baselen
 expr_stmt|;
 block|}
-name|free
-argument_list|(
-name|pp
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 name|read_directory_recursive
@@ -3044,6 +3044,11 @@ expr_stmt|;
 name|free_simplify
 argument_list|(
 name|simplify
+argument_list|)
+expr_stmt|;
+name|free
+argument_list|(
+name|pp
 argument_list|)
 expr_stmt|;
 name|qsort
