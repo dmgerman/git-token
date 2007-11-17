@@ -442,6 +442,19 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|void
+name|setup_standard_excludes
+parameter_list|(
+name|struct
+name|dir_struct
+modifier|*
+name|dir
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif

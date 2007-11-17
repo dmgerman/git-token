@@ -239,6 +239,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|excludes_file
+name|char
+modifier|*
+name|excludes_file
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|auto_crlf
 name|int
 name|auto_crlf
