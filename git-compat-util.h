@@ -1239,6 +1239,28 @@ endif|#
 directive|endif
 end_endif
 
+begin_comment
+comment|/*  * Forward decl that will remind us if its twin in cache.h changes.  * This function is used in compat/pread.c.  But we can't include  * cache.h there.  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|ssize_t
+name|read_in_full
+parameter_list|(
+name|int
+name|fd
+parameter_list|,
+name|void
+modifier|*
+name|buf
+parameter_list|,
+name|size_t
+name|count
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_ifdef
 ifdef|#
 directive|ifdef
