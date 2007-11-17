@@ -3696,10 +3696,18 @@ name|REF_STATUS_REJECT_NODELETE
 block|,
 DECL|enumerator|REF_STATUS_UPTODATE
 name|REF_STATUS_UPTODATE
+block|,
+DECL|enumerator|REF_STATUS_REMOTE_REJECT
+name|REF_STATUS_REMOTE_REJECT
 block|, 	}
 DECL|member|status
 name|status
 enum|;
+DECL|member|error
+name|char
+modifier|*
+name|error
+decl_stmt|;
 DECL|member|peer_ref
 name|struct
 name|ref
