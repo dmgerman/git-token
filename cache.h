@@ -4863,6 +4863,31 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/* add */
+end_comment
+
+begin_function_decl
+name|void
+name|add_files_to_cache
+parameter_list|(
+name|int
+name|verbose
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|prefix
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|pathspec
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/* diff.c */
 end_comment
 
