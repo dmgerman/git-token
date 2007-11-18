@@ -1992,6 +1992,16 @@ begin_comment
 comment|/* Generic functions for using commit walkers */
 end_comment
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|NO_CURL
+end_ifndef
+
+begin_comment
+comment|/* http fetch is the only user */
+end_comment
+
 begin_function
 DECL|function|fetch_objs_via_walker
 specifier|static
@@ -2173,6 +2183,15 @@ literal|0
 return|;
 block|}
 end_function
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
+begin_comment
+comment|/* NO_CURL */
+end_comment
 
 begin_function
 DECL|function|disconnect_walker
