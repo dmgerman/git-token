@@ -3507,7 +3507,10 @@ name|index_file
 argument_list|,
 literal|"commit-msg"
 argument_list|,
+name|git_path
+argument_list|(
 name|commit_editmsg
+argument_list|)
 argument_list|)
 condition|)
 name|exit
