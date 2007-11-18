@@ -974,6 +974,8 @@ name|statbuf
 decl_stmt|;
 name|int
 name|commitable
+decl_stmt|,
+name|saved_color_setting
 decl_stmt|;
 name|struct
 name|strbuf
@@ -1535,6 +1537,14 @@ argument_list|,
 name|only_include_assumed
 argument_list|)
 expr_stmt|;
+name|saved_color_setting
+operator|=
+name|wt_status_use_color
+expr_stmt|;
+name|wt_status_use_color
+operator|=
+literal|0
+expr_stmt|;
 name|commitable
 operator|=
 name|run_status
@@ -1545,6 +1555,10 @@ name|index_file
 argument_list|,
 name|prefix
 argument_list|)
+expr_stmt|;
+name|wt_status_use_color
+operator|=
+name|saved_color_setting
 expr_stmt|;
 name|fclose
 argument_list|(
