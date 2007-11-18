@@ -3693,14 +3693,17 @@ name|REF_STATUS_UPTODATE
 block|,
 DECL|enumerator|REF_STATUS_REMOTE_REJECT
 name|REF_STATUS_REMOTE_REJECT
+block|,
+DECL|enumerator|REF_STATUS_EXPECTING_REPORT
+name|REF_STATUS_EXPECTING_REPORT
 block|, 	}
 DECL|member|status
 name|status
 enum|;
-DECL|member|error
+DECL|member|remote_status
 name|char
 modifier|*
-name|error
+name|remote_status
 decl_stmt|;
 DECL|member|peer_ref
 name|struct
