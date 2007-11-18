@@ -3745,6 +3745,26 @@ name|REF_TAGS
 value|(1u<< 2)
 end_define
 
+begin_function_decl
+specifier|extern
+name|struct
+name|ref
+modifier|*
+name|find_ref_by_name
+parameter_list|(
+name|struct
+name|ref
+modifier|*
+name|list
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|name
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_define
 DECL|macro|CONNECT_VERBOSE
 define|#
