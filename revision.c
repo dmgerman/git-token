@@ -413,15 +413,19 @@ name|entry
 argument_list|)
 condition|)
 block|{
-if|if
+switch|switch
 condition|(
-name|S_ISDIR
+name|object_type
 argument_list|(
 name|entry
 operator|.
 name|mode
 argument_list|)
 condition|)
+block|{
+case|case
+name|OBJ_TREE
+case|:
 name|mark_tree_uninteresting
 argument_list|(
 name|lookup_tree
@@ -432,7 +436,10 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
-else|else
+break|break;
+case|case
+name|OBJ_BLOB
+case|:
 name|mark_blob_uninteresting
 argument_list|(
 name|lookup_blob
@@ -443,6 +450,11 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
+break|break;
+default|default:
+comment|/* Subproject commit - not in this repository */
+break|break;
+block|}
 block|}
 comment|/* 	 * We don't care about the tree any more 	 * after it has been marked uninteresting. 	 */
 name|free
