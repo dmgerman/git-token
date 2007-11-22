@@ -15455,9 +15455,11 @@ operator|->
 name|score
 condition|)
 block|{
-name|puts
+name|fputs
 argument_list|(
 literal|" rewrite "
+argument_list|,
+name|stdout
 argument_list|)
 expr_stmt|;
 name|write_name_quoted
