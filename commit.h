@@ -701,7 +701,14 @@ specifier|extern
 name|int
 name|interactive_add
 parameter_list|(
-name|void
+name|int
+name|argc
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|argv
 parameter_list|)
 function_decl|;
 end_function_decl
