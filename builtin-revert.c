@@ -1358,7 +1358,7 @@ name|helpbuf
 argument_list|,
 literal|"  After resolving the conflicts,\n"
 literal|"mark the corrected paths with 'git add<paths>' "
-literal|"and commit the result."
+literal|"or 'git rm<paths>' and commit the result."
 argument_list|)
 expr_stmt|;
 if|if
