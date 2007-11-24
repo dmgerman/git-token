@@ -1007,10 +1007,8 @@ name|cmd
 operator|->
 name|pid
 operator|=
-name|spawnvpe
+name|mingw_spawnvpe
 argument_list|(
-name|_P_NOWAIT
-argument_list|,
 name|cmd
 operator|->
 name|argv
@@ -1022,12 +1020,6 @@ name|cmd
 operator|->
 name|argv
 argument_list|,
-operator|(
-specifier|const
-name|char
-operator|*
-operator|*
-operator|)
 name|env
 argument_list|)
 expr_stmt|;
