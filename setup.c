@@ -283,12 +283,10 @@ operator|!
 operator|*
 name|pfx
 operator|||
+name|is_absolute_path
+argument_list|(
 name|arg
-index|[
-literal|0
-index|]
-operator|==
-literal|'/'
+argument_list|)
 condition|)
 return|return
 name|arg

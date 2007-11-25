@@ -308,12 +308,10 @@ return|;
 block|}
 if|if
 condition|(
+name|is_absolute_path
+argument_list|(
 name|link
-index|[
-literal|0
-index|]
-operator|==
-literal|'/'
+argument_list|)
 condition|)
 block|{
 comment|/* absolute path simply replaces p */
