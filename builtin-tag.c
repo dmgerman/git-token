@@ -2142,6 +2142,14 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|sign
+condition|)
+name|annotate
+operator|=
+literal|1
+expr_stmt|;
+if|if
+condition|(
 name|list
 condition|)
 return|return
