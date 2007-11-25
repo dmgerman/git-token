@@ -1075,6 +1075,12 @@ if|if
 condition|(
 name|date_str
 condition|)
+block|{
+if|if
+condition|(
+operator|*
+name|date_str
+condition|)
 name|parse_date
 argument_list|(
 name|date_str
@@ -1087,6 +1093,15 @@ name|date
 argument_list|)
 argument_list|)
 expr_stmt|;
+else|else
+name|date
+index|[
+literal|0
+index|]
+operator|=
+literal|'\0'
+expr_stmt|;
+block|}
 name|i
 operator|=
 name|copy
@@ -1148,7 +1163,14 @@ argument_list|)
 argument_list|,
 name|i
 argument_list|,
+name|date
+index|[
+literal|0
+index|]
+condition|?
 literal|"> "
+else|:
+literal|">"
 argument_list|)
 expr_stmt|;
 name|i
