@@ -2601,7 +2601,6 @@ end_comment
 
 begin_function
 DECL|function|non_ascii
-specifier|static
 name|int
 name|non_ascii
 parameter_list|(
@@ -6602,6 +6601,9 @@ parameter_list|,
 name|enum
 name|date_mode
 name|dmode
+parameter_list|,
+name|int
+name|plain_non_ascii
 parameter_list|)
 block|{
 name|unsigned
@@ -6627,11 +6629,6 @@ init|=
 name|commit
 operator|->
 name|buffer
-decl_stmt|;
-name|int
-name|plain_non_ascii
-init|=
-literal|0
 decl_stmt|;
 name|char
 modifier|*
