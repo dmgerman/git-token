@@ -1215,20 +1215,6 @@ return|return
 literal|"failed to delete"
 return|;
 block|}
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-literal|"%s: %s -> deleted\n"
-argument_list|,
-name|name
-argument_list|,
-name|sha1_to_hex
-argument_list|(
-name|old_sha1
-argument_list|)
-argument_list|)
-expr_stmt|;
 return|return
 name|NULL
 return|;
@@ -1281,25 +1267,6 @@ literal|"failed to write"
 return|;
 comment|/* error() already called */
 block|}
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-literal|"%s: %s -> %s\n"
-argument_list|,
-name|name
-argument_list|,
-name|sha1_to_hex
-argument_list|(
-name|old_sha1
-argument_list|)
-argument_list|,
-name|sha1_to_hex
-argument_list|(
-name|new_sha1
-argument_list|)
-argument_list|)
-expr_stmt|;
 return|return
 name|NULL
 return|;

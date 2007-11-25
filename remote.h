@@ -195,6 +195,37 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|struct
+name|ref
+modifier|*
+name|copy_ref_list
+parameter_list|(
+specifier|const
+name|struct
+name|ref
+modifier|*
+name|ref
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
+name|check_ref_type
+parameter_list|(
+specifier|const
+name|struct
+name|ref
+modifier|*
+name|ref
+parameter_list|,
+name|int
+name|flags
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/*  * Frees the entire list and peers of elements.  */
 end_comment
@@ -269,6 +300,7 @@ parameter_list|,
 name|int
 name|nr_refspec
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
@@ -288,6 +320,7 @@ begin_function_decl
 name|int
 name|get_fetch_map
 parameter_list|(
+specifier|const
 name|struct
 name|ref
 modifier|*
@@ -318,6 +351,7 @@ name|ref
 modifier|*
 name|get_remote_ref
 parameter_list|(
+specifier|const
 name|struct
 name|ref
 modifier|*
@@ -446,6 +480,41 @@ modifier|*
 parameter_list|)
 function_decl|;
 end_function_decl
+
+begin_comment
+comment|/* Flags to match_refs. */
+end_comment
+
+begin_enum
+DECL|enum|match_refs_flags
+enum|enum
+name|match_refs_flags
+block|{
+DECL|enumerator|MATCH_REFS_NONE
+name|MATCH_REFS_NONE
+init|=
+literal|0
+block|,
+DECL|enumerator|MATCH_REFS_ALL
+name|MATCH_REFS_ALL
+init|=
+operator|(
+literal|1
+operator|<<
+literal|0
+operator|)
+block|,
+DECL|enumerator|MATCH_REFS_MIRROR
+name|MATCH_REFS_MIRROR
+init|=
+operator|(
+literal|1
+operator|<<
+literal|1
+operator|)
+block|, }
+enum|;
+end_enum
 
 begin_endif
 endif|#

@@ -181,6 +181,7 @@ modifier|*
 modifier|*
 name|head
 parameter_list|,
+specifier|const
 name|struct
 name|ref
 modifier|*
@@ -400,6 +401,7 @@ init|=
 operator|&
 name|ref_map
 decl_stmt|;
+specifier|const
 name|struct
 name|ref
 modifier|*
@@ -2441,11 +2443,13 @@ decl_stmt|;
 name|int
 name|ref_name_len
 decl_stmt|;
+specifier|const
 name|unsigned
 name|char
 modifier|*
 name|ref_sha1
 decl_stmt|;
+specifier|const
 name|struct
 name|ref
 modifier|*
@@ -2474,6 +2478,7 @@ init|=
 operator|&
 name|ref_map
 decl_stmt|;
+specifier|const
 name|struct
 name|ref
 modifier|*
