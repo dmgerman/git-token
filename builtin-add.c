@@ -649,7 +649,7 @@ argument_list|(
 operator|&
 name|rev
 argument_list|,
-literal|0
+name|DIFF_RACY_IS_MODIFIED
 argument_list|)
 expr_stmt|;
 block|}
