@@ -993,6 +993,8 @@ argument_list|(
 name|argc
 argument_list|,
 name|argv
+argument_list|,
+name|prefix
 argument_list|)
 expr_stmt|;
 name|commit_style

@@ -709,6 +709,11 @@ name|char
 modifier|*
 modifier|*
 name|argv
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|prefix
 parameter_list|)
 function_decl|;
 end_function_decl
