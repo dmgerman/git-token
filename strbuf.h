@@ -734,6 +734,13 @@ name|struct
 name|strbuf
 modifier|*
 name|buffer
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+specifier|const
+modifier|*
+name|env
 parameter_list|)
 function_decl|;
 end_function_decl
