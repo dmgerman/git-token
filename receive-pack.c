@@ -1196,6 +1196,25 @@ condition|)
 block|{
 if|if
 condition|(
+operator|!
+name|parse_object
+argument_list|(
+name|old_sha1
+argument_list|)
+condition|)
+block|{
+name|warning
+argument_list|(
+literal|"Allowing deletion of corrupt ref."
+argument_list|)
+expr_stmt|;
+name|old_sha1
+operator|=
+name|NULL
+expr_stmt|;
+block|}
+if|if
+condition|(
 name|delete_ref
 argument_list|(
 name|name
