@@ -1017,12 +1017,25 @@ condition|(
 operator|!
 name|work_tree_env
 condition|)
-return|return
+block|{
+name|retval
+operator|=
 name|set_work_tree
 argument_list|(
 name|gitdirenv
 argument_list|)
+expr_stmt|;
+comment|/* config may override worktree 				 * see set_work_tree comment */
+name|check_repository_format
+argument_list|()
+expr_stmt|;
+return|return
+name|retval
 return|;
+block|}
+name|check_repository_format
+argument_list|()
+expr_stmt|;
 name|retval
 operator|=
 name|get_relative_cwd
@@ -1187,6 +1200,9 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
+name|check_repository_format
+argument_list|()
+expr_stmt|;
 return|return
 name|NULL
 return|;
@@ -1270,6 +1286,9 @@ name|cwd
 argument_list|,
 name|offset
 argument_list|)
+expr_stmt|;
+name|check_repository_format
+argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -1600,9 +1619,6 @@ argument_list|(
 name|NULL
 argument_list|)
 decl_stmt|;
-name|check_repository_format
-argument_list|()
-expr_stmt|;
 comment|/* If the work tree is not the default one, recompute prefix */
 if|if
 condition|(
