@@ -418,13 +418,37 @@ end_include
 begin_include
 include|#
 directive|include
-file|<sys/wait.h>
+file|<fnmatch.h>
 end_include
 
 begin_include
 include|#
 directive|include
-file|<fnmatch.h>
+file|<assert.h>
+end_include
+
+begin_include
+include|#
+directive|include
+file|<regex.h>
+end_include
+
+begin_include
+include|#
+directive|include
+file|<utime.h>
+end_include
+
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|__MINGW32__
+end_ifndef
+
+begin_include
+include|#
+directive|include
+file|<sys/wait.h>
 end_include
 
 begin_include
@@ -445,12 +469,6 @@ directive|include
 file|<sys/ioctl.h>
 end_include
 
-begin_include
-include|#
-directive|include
-file|<utime.h>
-end_include
-
 begin_ifndef
 ifndef|#
 directive|ifndef
@@ -467,18 +485,6 @@ begin_endif
 endif|#
 directive|endif
 end_endif
-
-begin_include
-include|#
-directive|include
-file|<assert.h>
-end_include
-
-begin_include
-include|#
-directive|include
-file|<regex.h>
-end_include
 
 begin_include
 include|#
@@ -581,6 +587,34 @@ begin_endif
 endif|#
 directive|endif
 end_endif
+
+begin_else
+else|#
+directive|else
+end_else
+
+begin_comment
+comment|/* __MINGW32__ */
+end_comment
+
+begin_comment
+comment|/* pull in Windows compatibility stuff */
+end_comment
+
+begin_include
+include|#
+directive|include
+file|"compat/mingw.h"
+end_include
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
+begin_comment
+comment|/* __MINGW32__ */
+end_comment
 
 begin_ifndef
 ifndef|#
