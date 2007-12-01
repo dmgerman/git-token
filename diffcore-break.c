@@ -70,15 +70,13 @@ expr_stmt|;
 comment|/* assume no deletion --- "do not break" 			     * is the default. 			     */
 if|if
 condition|(
-operator|!
 name|S_ISREG
 argument_list|(
 name|src
 operator|->
 name|mode
 argument_list|)
-operator|||
-operator|!
+operator|!=
 name|S_ISREG
 argument_list|(
 name|dst
@@ -86,10 +84,20 @@ operator|->
 name|mode
 argument_list|)
 condition|)
+block|{
+operator|*
+name|merge_score_p
+operator|=
+operator|(
+name|int
+operator|)
+name|MAX_SCORE
+expr_stmt|;
 return|return
-literal|0
+literal|1
 return|;
-comment|/* leave symlink rename alone */
+comment|/* even their types are different */
+block|}
 if|if
 condition|(
 name|src
@@ -470,7 +478,7 @@ decl_stmt|;
 name|int
 name|score
 decl_stmt|;
-comment|/* We deal only with in-place edit of non directory. 		 * We do not break anything else. 		 */
+comment|/* 		 * We deal only with in-place edit of blobs. 		 * We do not break anything else. 		 */
 if|if
 condition|(
 name|DIFF_FILE_VALID
@@ -487,8 +495,7 @@ operator|->
 name|two
 argument_list|)
 operator|&&
-operator|!
-name|S_ISDIR
+name|object_type
 argument_list|(
 name|p
 operator|->
@@ -496,9 +503,10 @@ name|one
 operator|->
 name|mode
 argument_list|)
+operator|==
+name|OBJ_BLOB
 operator|&&
-operator|!
-name|S_ISDIR
+name|object_type
 argument_list|(
 name|p
 operator|->
@@ -506,6 +514,8 @@ name|two
 operator|->
 name|mode
 argument_list|)
+operator|==
+name|OBJ_BLOB
 operator|&&
 operator|!
 name|strcmp
