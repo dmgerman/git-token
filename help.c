@@ -1361,11 +1361,6 @@ name|help
 argument_list|)
 expr_stmt|;
 block|}
-name|puts
-argument_list|(
-literal|"(use 'git help -a' to get a list of all installed git commands)"
-argument_list|)
-expr_stmt|;
 block|}
 end_function
 
