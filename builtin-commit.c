@@ -1878,7 +1878,7 @@ argument_list|(
 operator|&
 name|sob
 argument_list|,
-name|fmt_ident
+name|fmt_name
 argument_list|(
 name|getenv
 argument_list|(
@@ -1889,10 +1889,6 @@ name|getenv
 argument_list|(
 literal|"GIT_COMMITTER_EMAIL"
 argument_list|)
-argument_list|,
-literal|""
-argument_list|,
-literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
