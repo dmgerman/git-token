@@ -1829,7 +1829,7 @@ name|NULL
 condition|)
 name|die
 argument_list|(
-literal|"could not open %s\n"
+literal|"could not open %s"
 argument_list|,
 name|git_path
 argument_list|(
@@ -2011,7 +2011,7 @@ name|len
 condition|)
 name|die
 argument_list|(
-literal|"could not write commit template: %s\n"
+literal|"could not write commit template: %s"
 argument_list|,
 name|strerror
 argument_list|(
@@ -2530,7 +2530,7 @@ name|a
 condition|)
 name|die
 argument_list|(
-literal|"invalid commit: %s\n"
+literal|"invalid commit: %s"
 argument_list|,
 name|use_message
 argument_list|)
@@ -2581,7 +2581,7 @@ name|eol
 condition|)
 name|die
 argument_list|(
-literal|"invalid commit: %s\n"
+literal|"invalid commit: %s"
 argument_list|,
 name|use_message
 argument_list|)
@@ -2677,7 +2677,7 @@ name|rb
 condition|)
 name|die
 argument_list|(
-literal|"malformed --author parameter\n"
+literal|"malformed --author parameter"
 argument_list|)
 expr_stmt|;
 name|name
@@ -2835,7 +2835,7 @@ name|in_merge
 condition|)
 name|die
 argument_list|(
-literal|"You are in the middle of a merger -- cannot amend."
+literal|"You are in the middle of a merge -- cannot amend."
 argument_list|)
 expr_stmt|;
 if|if
@@ -3483,7 +3483,7 @@ name|commit
 condition|)
 name|die
 argument_list|(
-literal|"couldn't look up newly created commit\n"
+literal|"couldn't look up newly created commit"
 argument_list|)
 expr_stmt|;
 if|if
@@ -4213,7 +4213,7 @@ argument_list|()
 expr_stmt|;
 name|die
 argument_list|(
-literal|"could not read commit message\n"
+literal|"could not read commit message"
 argument_list|)
 expr_stmt|;
 block|}
@@ -4303,7 +4303,7 @@ argument_list|()
 expr_stmt|;
 name|die
 argument_list|(
-literal|"* no commit message?  aborting commit."
+literal|"no commit message?  aborting commit."
 argument_list|)
 expr_stmt|;
 block|}
