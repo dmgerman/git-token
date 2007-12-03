@@ -179,7 +179,7 @@ name|strbuf_addch
 argument_list|(
 name|out
 argument_list|,
-literal|':'
+name|PATH_SEP
 argument_list|)
 expr_stmt|;
 block|}

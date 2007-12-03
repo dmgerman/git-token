@@ -675,6 +675,25 @@ endif|#
 directive|endif
 end_endif
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|PATH_SEP
+end_ifndef
+
+begin_define
+DECL|macro|PATH_SEP
+define|#
+directive|define
+name|PATH_SEP
+value|':'
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_ifdef
 ifdef|#
 directive|ifdef

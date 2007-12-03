@@ -932,5 +932,17 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * git specific compatibility  */
+end_comment
+
+begin_define
+DECL|macro|PATH_SEP
+define|#
+directive|define
+name|PATH_SEP
+value|';'
+end_define
+
 end_unit
 
