@@ -1316,6 +1316,86 @@ block|}
 end_function
 
 begin_function
+DECL|function|help_msg
+specifier|static
+name|char
+modifier|*
+name|help_msg
+parameter_list|(
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|sha1
+parameter_list|)
+block|{
+specifier|static
+name|char
+name|helpbuf
+index|[
+literal|1024
+index|]
+decl_stmt|;
+name|char
+modifier|*
+name|msg
+init|=
+name|getenv
+argument_list|(
+literal|"GIT_CHERRY_PICK_HELP"
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|msg
+condition|)
+return|return
+name|msg
+return|;
+name|strcpy
+argument_list|(
+name|helpbuf
+argument_list|,
+literal|"  After resolving the conflicts,\n"
+literal|"mark the corrected paths with 'git add<paths>' "
+literal|"or 'git rm<paths>' and commit the result."
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|action
+operator|==
+name|CHERRY_PICK
+condition|)
+block|{
+name|sprintf
+argument_list|(
+name|helpbuf
+operator|+
+name|strlen
+argument_list|(
+name|helpbuf
+argument_list|)
+argument_list|,
+literal|"\nWhen commiting, use the option "
+literal|"'-c %s' to retain authorship and message."
+argument_list|,
+name|find_unique_abbrev
+argument_list|(
+name|sha1
+argument_list|,
+name|DEFAULT_ABBREV
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|helpbuf
+return|;
+block|}
+end_function
+
+begin_function
 DECL|function|revert_or_cherry_pick
 specifier|static
 name|int
@@ -1983,41 +2063,20 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Automatic %s failed.  "
-literal|"After resolving the conflicts,\n"
-literal|"mark the corrected paths with 'git add<paths>' "
-literal|"and commit the result.\n"
+literal|"Automatic %s failed.%s\n"
 argument_list|,
 name|me
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|action
-operator|==
-name|CHERRY_PICK
-condition|)
-block|{
-name|fprintf
-argument_list|(
-name|stderr
 argument_list|,
-literal|"When commiting, use the option "
-literal|"'-c %s' to retain authorship and message.\n"
-argument_list|,
-name|find_unique_abbrev
+name|help_msg
 argument_list|(
 name|commit
 operator|->
 name|object
 operator|.
 name|sha1
-argument_list|,
-name|DEFAULT_ABBREV
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 name|exit
 argument_list|(
 literal|1
