@@ -283,6 +283,7 @@ DECL|variable|quiet
 DECL|variable|verbose
 DECL|variable|untracked_files
 DECL|variable|no_verify
+DECL|variable|allow_empty
 specifier|static
 name|int
 name|quiet
@@ -292,6 +293,8 @@ decl_stmt|,
 name|untracked_files
 decl_stmt|,
 name|no_verify
+decl_stmt|,
+name|allow_empty
 decl_stmt|;
 end_decl_stmt
 
@@ -620,6 +623,18 @@ operator|&
 name|untracked_files
 argument_list|,
 literal|"show all untracked files"
+argument_list|)
+block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|0
+argument_list|,
+literal|"allow-empty"
+argument_list|,
+operator|&
+name|allow_empty
+argument_list|,
+literal|"ok to record an empty change"
 argument_list|)
 block|,
 name|OPT_END
@@ -3852,6 +3867,9 @@ argument_list|)
 operator|&&
 operator|!
 name|in_merge
+operator|&&
+operator|!
+name|allow_empty
 operator|&&
 operator|!
 operator|(
