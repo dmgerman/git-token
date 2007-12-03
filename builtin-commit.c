@@ -118,6 +118,24 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|builtin_status_usage
+specifier|static
+specifier|const
+name|char
+modifier|*
+specifier|const
+name|builtin_status_usage
+index|[]
+init|=
+block|{
+literal|"git-status [options] [--]<filepattern>..."
+block|,
+name|NULL
+block|}
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|head_sha1
 DECL|variable|merge_head_sha1
 specifier|static
@@ -2740,6 +2758,13 @@ name|char
 modifier|*
 name|argv
 index|[]
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+specifier|const
+name|usage
+index|[]
 parameter_list|)
 block|{
 name|int
@@ -2757,7 +2782,7 @@ name|argv
 argument_list|,
 name|builtin_commit_options
 argument_list|,
-name|builtin_commit_usage
+name|usage
 argument_list|,
 literal|0
 argument_list|)
@@ -3239,6 +3264,8 @@ argument_list|(
 name|argc
 argument_list|,
 name|argv
+argument_list|,
+name|builtin_status_usage
 argument_list|)
 expr_stmt|;
 name|index_file
@@ -3722,6 +3749,8 @@ argument_list|(
 name|argc
 argument_list|,
 name|argv
+argument_list|,
+name|builtin_commit_usage
 argument_list|)
 expr_stmt|;
 name|index_file
