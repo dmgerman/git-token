@@ -358,9 +358,6 @@ name|trace_argv_printf
 argument_list|(
 name|argv
 argument_list|,
-operator|-
-literal|1
-argument_list|,
 literal|"trace: exec:"
 argument_list|)
 expr_stmt|;

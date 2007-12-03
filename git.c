@@ -1015,11 +1015,6 @@ operator|)
 operator|+
 literal|1
 argument_list|,
-operator|*
-name|argcp
-operator|-
-literal|1
-argument_list|,
 name|PATH_MAX
 argument_list|)
 expr_stmt|;
@@ -1186,8 +1181,6 @@ expr_stmt|;
 name|trace_argv_printf
 argument_list|(
 name|new_argv
-argument_list|,
-name|count
 argument_list|,
 literal|"trace: alias expansion: %s =>"
 argument_list|,
@@ -1436,8 +1429,6 @@ expr_stmt|;
 name|trace_argv_printf
 argument_list|(
 name|argv
-argument_list|,
-name|argc
 argument_list|,
 literal|"trace: built-in: git"
 argument_list|)

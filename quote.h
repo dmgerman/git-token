@@ -77,9 +77,6 @@ modifier|*
 modifier|*
 name|argv
 parameter_list|,
-name|int
-name|count
-parameter_list|,
 name|size_t
 name|maxlen
 parameter_list|)

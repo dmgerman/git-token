@@ -4904,9 +4904,6 @@ modifier|*
 modifier|*
 name|argv
 parameter_list|,
-name|int
-name|count
-parameter_list|,
 specifier|const
 name|char
 modifier|*

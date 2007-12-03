@@ -425,9 +425,6 @@ modifier|*
 modifier|*
 name|argv
 parameter_list|,
-name|int
-name|count
-parameter_list|,
 specifier|const
 name|char
 modifier|*
@@ -593,8 +590,6 @@ operator|&
 name|buf
 argument_list|,
 name|argv
-argument_list|,
-name|count
 argument_list|,
 literal|0
 argument_list|)
