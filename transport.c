@@ -3896,7 +3896,14 @@ name|dest
 argument_list|)
 expr_stmt|;
 return|return
+operator|(
+name|refs
+condition|?
 literal|0
+else|:
+operator|-
+literal|1
+operator|)
 return|;
 block|}
 end_function
