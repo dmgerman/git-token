@@ -3380,7 +3380,7 @@ name|stat
 name|sb
 decl_stmt|;
 return|return
-name|stat
+name|lstat
 argument_list|(
 name|f
 argument_list|,
