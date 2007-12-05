@@ -981,11 +981,14 @@ name|char
 modifier|*
 name|prepare_index
 parameter_list|(
+name|int
+name|argc
+parameter_list|,
 specifier|const
 name|char
 modifier|*
 modifier|*
-name|files
+name|argv
 parameter_list|,
 specifier|const
 name|char
@@ -1019,7 +1022,13 @@ name|interactive
 condition|)
 block|{
 name|interactive_add
-argument_list|()
+argument_list|(
+name|argc
+argument_list|,
+name|argv
+argument_list|,
+name|prefix
+argument_list|)
 expr_stmt|;
 name|commit_style
 operator|=
@@ -1045,7 +1054,7 @@ expr_stmt|;
 if|if
 condition|(
 operator|*
-name|files
+name|argv
 condition|)
 name|pathspec
 operator|=
@@ -1053,7 +1062,7 @@ name|get_pathspec
 argument_list|(
 name|prefix
 argument_list|,
-name|files
+name|argv
 argument_list|)
 expr_stmt|;
 comment|/* 	 * Non partial, non as-is commit. 	 * 	 * (1) get the real index; 	 * (2) update the_index as necessary; 	 * (3) write the_index out to the real index (still locked); 	 * (4) return the name of the locked index file. 	 * 	 * The caller should run hooks on the locked real index, and 	 * (A) if all goes well, commit the real index; 	 * (B) on failure, rollback the real index. 	 */
@@ -3287,6 +3296,8 @@ name|index_file
 operator|=
 name|prepare_index
 argument_list|(
+name|argc
+argument_list|,
 name|argv
 argument_list|,
 name|prefix
@@ -3828,6 +3839,8 @@ name|index_file
 operator|=
 name|prepare_index
 argument_list|(
+name|argc
+argument_list|,
 name|argv
 argument_list|,
 name|prefix
