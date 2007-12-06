@@ -253,9 +253,9 @@ comment|/* 1: both ways, -1: only when adding git objects */
 end_comment
 
 begin_decl_stmt
-DECL|variable|whitespace_rule
+DECL|variable|whitespace_rule_cfg
 name|unsigned
-name|whitespace_rule
+name|whitespace_rule_cfg
 init|=
 name|WS_DEFAULT_RULE
 decl_stmt|;
