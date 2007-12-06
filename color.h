@@ -37,6 +37,9 @@ specifier|const
 name|char
 modifier|*
 name|value
+parameter_list|,
+name|int
+name|stdout_is_tty
 parameter_list|)
 function_decl|;
 end_function_decl
