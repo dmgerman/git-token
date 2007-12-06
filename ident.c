@@ -898,7 +898,7 @@ literal|"*** Your name cannot be determined from your system services (gecos).\n
 literal|"\n"
 literal|"Run\n"
 literal|"\n"
-literal|"  git config --global user.email \"you@email.com\"\n"
+literal|"  git config --global user.email \"you@example.com\"\n"
 literal|"  git config --global user.name \"Your Name\"\n"
 literal|"\n"
 literal|"to set your account\'s default identity.\n"
