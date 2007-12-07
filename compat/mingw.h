@@ -778,10 +778,11 @@ return|;
 block|}
 end_function
 
-begin_function
-DECL|function|pipe
-specifier|static
-specifier|inline
+begin_comment
+comment|/*  * implementations of missing functions  */
+end_comment
+
+begin_function_decl
 name|int
 name|pipe
 parameter_list|(
@@ -791,23 +792,8 @@ index|[
 literal|2
 index|]
 parameter_list|)
-block|{
-return|return
-name|_pipe
-argument_list|(
-name|filedes
-argument_list|,
-literal|8192
-argument_list|,
-literal|0
-argument_list|)
-return|;
-block|}
-end_function
-
-begin_comment
-comment|/*  * implementations of missing functions  */
-end_comment
+function_decl|;
+end_function_decl
 
 begin_function_decl
 name|unsigned
