@@ -1022,6 +1022,29 @@ name|getcwd
 value|mingw_getcwd
 end_define
 
+begin_function_decl
+name|int
+name|mingw_rename
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_define
+DECL|macro|rename
+define|#
+directive|define
+name|rename
+value|mingw_rename
+end_define
+
 begin_comment
 comment|/*  * git specific compatibility  */
 end_comment
