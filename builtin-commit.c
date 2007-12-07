@@ -1453,6 +1453,10 @@ operator|&
 name|s
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|wt_status_relative_paths
+condition|)
 name|s
 operator|.
 name|prefix
