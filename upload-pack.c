@@ -842,6 +842,16 @@ argument_list|,
 name|show_object
 argument_list|)
 expr_stmt|;
+name|fflush
+argument_list|(
+name|pack_pipe
+argument_list|)
+expr_stmt|;
+name|fclose
+argument_list|(
+name|pack_pipe
+argument_list|)
+expr_stmt|;
 return|return
 literal|0
 return|;
