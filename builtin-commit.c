@@ -4345,6 +4345,9 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|!
+name|no_verify
+operator|&&
 name|run_hook
 argument_list|(
 name|index_file
