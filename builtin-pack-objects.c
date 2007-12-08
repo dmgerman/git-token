@@ -6704,6 +6704,10 @@ expr_stmt|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * We search for deltas in a list sorted by type, by filename hash, and then  * by size, so that we see progressively smaller and smaller files.  * That's because we prefer deltas to be from the bigger file  * to the smaller -- deletes are potentially cheaper, but perhaps  * more importantly, the bigger file is likely the more recent  * one.  The deepest deltas are therefore the oldest objects which are  * less susceptible to be accessed often.  */
+end_comment
+
 begin_function
 DECL|function|type_size_sort
 specifier|static
@@ -6756,26 +6760,26 @@ condition|(
 name|a
 operator|->
 name|type
-operator|<
-name|b
-operator|->
-name|type
-condition|)
-return|return
-operator|-
-literal|1
-return|;
-if|if
-condition|(
-name|a
-operator|->
-name|type
 operator|>
 name|b
 operator|->
 name|type
 condition|)
 return|return
+operator|-
+literal|1
+return|;
+if|if
+condition|(
+name|a
+operator|->
+name|type
+operator|<
+name|b
+operator|->
+name|type
+condition|)
+return|return
 literal|1
 return|;
 if|if
@@ -6783,7 +6787,7 @@ condition|(
 name|a
 operator|->
 name|hash
-operator|<
+operator|>
 name|b
 operator|->
 name|hash
@@ -6797,7 +6801,7 @@ condition|(
 name|a
 operator|->
 name|hash
-operator|>
+operator|<
 name|b
 operator|->
 name|hash
@@ -6810,7 +6814,7 @@ condition|(
 name|a
 operator|->
 name|preferred_base
-operator|<
+operator|>
 name|b
 operator|->
 name|preferred_base
@@ -6824,7 +6828,7 @@ condition|(
 name|a
 operator|->
 name|preferred_base
-operator|>
+operator|<
 name|b
 operator|->
 name|preferred_base
@@ -6837,7 +6841,7 @@ condition|(
 name|a
 operator|->
 name|size
-operator|<
+operator|>
 name|b
 operator|->
 name|size
@@ -6851,7 +6855,7 @@ condition|(
 name|a
 operator|->
 name|size
-operator|>
+operator|<
 name|b
 operator|->
 name|size
@@ -6861,7 +6865,7 @@ literal|1
 return|;
 return|return
 name|a
-operator|>
+operator|<
 name|b
 condition|?
 operator|-
@@ -6869,11 +6873,11 @@ literal|1
 else|:
 operator|(
 name|a
-operator|<
+operator|>
 name|b
 operator|)
 return|;
-comment|/* newest last */
+comment|/* newest first */
 block|}
 end_function
 
@@ -7131,10 +7135,6 @@ begin_endif
 endif|#
 directive|endif
 end_endif
-
-begin_comment
-comment|/*  * We search for deltas _backwards_ in a list sorted by type and  * by size, so that we see progressively smaller and smaller files.  * That's because we prefer deltas to be from the bigger file  * to the smaller - deletes are potentially cheaper, but perhaps  * more importantly, the bigger file is likely the more recent  * one.  */
-end_comment
 
 begin_function
 DECL|function|try_delta
@@ -7962,7 +7962,7 @@ block|{
 name|uint32_t
 name|i
 init|=
-name|list_size
+literal|0
 decl_stmt|,
 name|idx
 init|=
@@ -8020,8 +8020,8 @@ name|entry
 init|=
 name|list
 index|[
-operator|--
 name|i
+operator|++
 index|]
 decl_stmt|;
 name|struct
@@ -8359,8 +8359,8 @@ block|}
 do|while
 condition|(
 name|i
-operator|>
-literal|0
+operator|<
+name|list_size
 condition|)
 do|;
 for|for
