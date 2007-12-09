@@ -3031,8 +3031,7 @@ name|committer
 init|=
 name|git_committer_info
 argument_list|(
-operator|-
-literal|1
+name|IDENT_WARN_ON_NO_NAME
 argument_list|)
 decl_stmt|;
 specifier|const
@@ -3762,7 +3761,7 @@ name|committer
 operator|=
 name|git_committer_info
 argument_list|(
-literal|1
+name|IDENT_ERROR_ON_NO_NAME
 argument_list|)
 expr_stmt|;
 name|endpos
