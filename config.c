@@ -3100,7 +3100,7 @@ name|quote
 init|=
 literal|0
 decl_stmt|;
-comment|/* Check to see if the value needs to be quoted. */
+comment|/* 	 * Check to see if the value needs to be surrounded with a dq pair. 	 * Note that problematic characters are always backslash-quoted; this 	 * check is about not losing leading or trailing SP and strings that 	 * follow beginning-of-comment characters (i.e. ';' and '#') by the 	 * configuration parser. 	 */
 if|if
 condition|(
 name|value
@@ -3150,6 +3150,8 @@ literal|1
 expr_stmt|;
 if|if
 condition|(
+name|i
+operator|&&
 name|value
 index|[
 name|i
