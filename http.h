@@ -30,6 +30,12 @@ directive|include
 file|<curl/easy.h>
 end_include
 
+begin_include
+include|#
+directive|include
+file|"strbuf.h"
+end_include
+
 begin_if
 if|#
 directive|if
@@ -244,18 +250,14 @@ DECL|struct|buffer
 struct|struct
 name|buffer
 block|{
+DECL|member|buf
+name|struct
+name|strbuf
+name|buf
+decl_stmt|;
 DECL|member|posn
 name|size_t
 name|posn
-decl_stmt|;
-DECL|member|size
-name|size_t
-name|size
-decl_stmt|;
-DECL|member|buffer
-name|void
-modifier|*
-name|buffer
 decl_stmt|;
 block|}
 struct|;
@@ -305,7 +307,7 @@ name|size_t
 name|nmemb
 parameter_list|,
 name|struct
-name|buffer
+name|strbuf
 modifier|*
 name|buffer
 parameter_list|)
@@ -329,7 +331,7 @@ name|size_t
 name|nmemb
 parameter_list|,
 name|struct
-name|buffer
+name|strbuf
 modifier|*
 name|buffer
 parameter_list|)
