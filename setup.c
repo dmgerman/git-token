@@ -1762,9 +1762,6 @@ argument_list|(
 name|NULL
 argument_list|)
 decl_stmt|;
-name|check_repository_format
-argument_list|()
-expr_stmt|;
 comment|/* If the work tree is not the default one, recompute prefix */
 if|if
 condition|(
