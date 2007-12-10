@@ -1896,17 +1896,6 @@ name|curl
 argument_list|,
 name|CURLOPT_HTTPHEADER
 argument_list|,
-name|NULL
-argument_list|)
-expr_stmt|;
-name|curl_easy_setopt
-argument_list|(
-name|slot
-operator|->
-name|curl
-argument_list|,
-name|CURLOPT_HTTPHEADER
-argument_list|,
 name|pragma_header
 argument_list|)
 expr_stmt|;
