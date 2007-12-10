@@ -9042,6 +9042,26 @@ name|sub_size
 operator|--
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+name|sub_size
+condition|)
+block|{
+comment|/* 				 * It is possible for some "paths" to have 				 * so many objects that no hash boundary 				 * might be found.  Let's just steal the 				 * exact half in that case. 				 */
+name|sub_size
+operator|=
+name|victim
+operator|->
+name|remaining
+operator|/
+literal|2
+expr_stmt|;
+name|list
+operator|-=
+name|sub_size
+expr_stmt|;
+block|}
 name|target
 operator|->
 name|list
