@@ -1600,6 +1600,8 @@ literal|"info"
 argument_list|,
 literal|"info"
 argument_list|,
+literal|"gitman"
+argument_list|,
 name|page
 argument_list|,
 name|NULL
