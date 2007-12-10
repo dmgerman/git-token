@@ -510,7 +510,7 @@ literal|"author %s\n"
 argument_list|,
 name|git_author_info
 argument_list|(
-literal|1
+name|IDENT_ERROR_ON_NO_NAME
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -523,7 +523,7 @@ literal|"committer %s\n"
 argument_list|,
 name|git_committer_info
 argument_list|(
-literal|1
+name|IDENT_ERROR_ON_NO_NAME
 argument_list|)
 argument_list|)
 expr_stmt|;

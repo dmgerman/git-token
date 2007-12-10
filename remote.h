@@ -85,6 +85,12 @@ name|char
 modifier|*
 name|uploadpack
 decl_stmt|;
+comment|/* 	 * for curl remotes only 	 */
+DECL|member|http_proxy
+name|char
+modifier|*
+name|http_proxy
+decl_stmt|;
 block|}
 struct|;
 end_struct

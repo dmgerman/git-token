@@ -94,6 +94,12 @@ name|FILE
 modifier|*
 name|fp
 decl_stmt|;
+DECL|member|prefix
+specifier|const
+name|char
+modifier|*
+name|prefix
+decl_stmt|;
 block|}
 struct|;
 end_struct
@@ -114,6 +120,20 @@ name|value
 parameter_list|)
 function_decl|;
 end_function_decl
+
+begin_decl_stmt
+DECL|variable|wt_status_use_color
+name|int
+name|wt_status_use_color
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|wt_status_relative_paths
+name|int
+name|wt_status_relative_paths
+decl_stmt|;
+end_decl_stmt
 
 begin_function_decl
 name|void

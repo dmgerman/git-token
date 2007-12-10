@@ -294,6 +294,7 @@ condition|;
 name|end_of_name
 operator|--
 control|)
+empty_stmt|;
 comment|/* keep on looking */
 if|if
 condition|(

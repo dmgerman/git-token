@@ -29,6 +29,7 @@ end_ifdef
 
 begin_decl_stmt
 DECL|variable|max_requests
+specifier|static
 name|int
 name|max_requests
 init|=
@@ -39,6 +40,7 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|curlm
+specifier|static
 name|CURLM
 modifier|*
 name|curlm
@@ -58,6 +60,7 @@ end_ifndef
 
 begin_decl_stmt
 DECL|variable|curl_default
+specifier|static
 name|CURL
 modifier|*
 name|curl_default
@@ -81,6 +84,7 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|curl_ssl_verify
+specifier|static
 name|int
 name|curl_ssl_verify
 init|=
@@ -91,6 +95,7 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|ssl_cert
+specifier|static
 name|char
 modifier|*
 name|ssl_cert
@@ -109,6 +114,7 @@ end_if
 
 begin_decl_stmt
 DECL|variable|ssl_key
+specifier|static
 name|char
 modifier|*
 name|ssl_key
@@ -132,6 +138,7 @@ end_if
 
 begin_decl_stmt
 DECL|variable|ssl_capath
+specifier|static
 name|char
 modifier|*
 name|ssl_capath
@@ -147,6 +154,7 @@ end_endif
 
 begin_decl_stmt
 DECL|variable|ssl_cainfo
+specifier|static
 name|char
 modifier|*
 name|ssl_cainfo
@@ -157,6 +165,7 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|curl_low_speed_limit
+specifier|static
 name|long
 name|curl_low_speed_limit
 init|=
@@ -167,6 +176,7 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|curl_low_speed_time
+specifier|static
 name|long
 name|curl_low_speed_time
 init|=
@@ -177,6 +187,7 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|curl_ftp_no_epsv
+specifier|static
 name|int
 name|curl_ftp_no_epsv
 init|=
@@ -185,7 +196,19 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|curl_http_proxy
+specifier|static
+name|char
+modifier|*
+name|curl_http_proxy
+init|=
+name|NULL
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|pragma_header
+specifier|static
 name|struct
 name|curl_slist
 modifier|*
@@ -195,6 +218,7 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|active_queue_head
+specifier|static
 name|struct
 name|active_request_slot
 modifier|*
@@ -976,6 +1000,48 @@ return|return
 literal|0
 return|;
 block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+literal|"http.proxy"
+argument_list|,
+name|var
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
+name|curl_http_proxy
+operator|==
+name|NULL
+condition|)
+block|{
+name|curl_http_proxy
+operator|=
+name|xmalloc
+argument_list|(
+name|strlen
+argument_list|(
+name|value
+argument_list|)
+operator|+
+literal|1
+argument_list|)
+expr_stmt|;
+name|strcpy
+argument_list|(
+name|curl_http_proxy
+argument_list|,
+name|value
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+literal|0
+return|;
+block|}
 comment|/* Fall back on the default ones */
 return|return
 name|git_default_config
@@ -1188,6 +1254,19 @@ argument_list|,
 name|CURLOPT_FTP_USE_EPSV
 argument_list|,
 literal|0
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|curl_http_proxy
+condition|)
+name|curl_easy_setopt
+argument_list|(
+name|result
+argument_list|,
+name|CURLOPT_PROXY
+argument_list|,
+name|curl_http_proxy
 argument_list|)
 expr_stmt|;
 return|return
