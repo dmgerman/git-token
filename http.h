@@ -558,6 +558,29 @@ parameter_list|)
 value|missing__target((a)->http_code, (a)->curl_result)
 end_define
 
+begin_function_decl
+specifier|extern
+name|int
+name|http_fetch_ref
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|base
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|ref
+parameter_list|,
+name|unsigned
+name|char
+modifier|*
+name|sha1
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
