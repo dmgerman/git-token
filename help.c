@@ -1594,6 +1594,15 @@ argument_list|(
 name|git_cmd
 argument_list|)
 decl_stmt|;
+name|setenv
+argument_list|(
+literal|"INFOPATH"
+argument_list|,
+name|GIT_INFO_PATH
+argument_list|,
+literal|1
+argument_list|)
+expr_stmt|;
 name|execlp
 argument_list|(
 literal|"info"
