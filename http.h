@@ -498,6 +498,64 @@ index|]
 decl_stmt|;
 end_decl_stmt
 
+begin_function
+DECL|function|missing__target
+specifier|static
+specifier|inline
+name|int
+name|missing__target
+parameter_list|(
+name|int
+name|code
+parameter_list|,
+name|int
+name|result
+parameter_list|)
+block|{
+return|return
+comment|/* file:// URL -- do we ever use one??? */
+operator|(
+name|result
+operator|==
+name|CURLE_FILE_COULDNT_READ_FILE
+operator|)
+operator|||
+comment|/* http:// and https:// URL */
+operator|(
+name|code
+operator|==
+literal|404
+operator|&&
+name|result
+operator|==
+name|CURLE_HTTP_RETURNED_ERROR
+operator|)
+operator|||
+comment|/* ftp:// URL */
+operator|(
+name|code
+operator|==
+literal|550
+operator|&&
+name|result
+operator|==
+name|CURLE_FTP_COULDNT_RETR_FILE
+operator|)
+return|;
+block|}
+end_function
+
+begin_define
+DECL|macro|missing_target
+define|#
+directive|define
+name|missing_target
+parameter_list|(
+name|a
+parameter_list|)
+value|missing__target((a)->http_code, (a)->curl_result)
+end_define
+
 begin_endif
 endif|#
 directive|endif
