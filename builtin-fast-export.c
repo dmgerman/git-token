@@ -564,6 +564,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|size
+operator|&&
 name|fwrite
 argument_list|(
 name|buf
