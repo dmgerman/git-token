@@ -1746,7 +1746,11 @@ condition|)
 block|{
 name|printf
 argument_list|(
-literal|"%s: %d\n"
+literal|"%6d\t%s\n"
+argument_list|,
+name|onelines
+operator|->
+name|nr
 argument_list|,
 name|list
 operator|.
@@ -1756,10 +1760,6 @@ name|i
 index|]
 operator|.
 name|path
-argument_list|,
-name|onelines
-operator|->
-name|nr
 argument_list|)
 expr_stmt|;
 block|}
