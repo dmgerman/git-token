@@ -1609,6 +1609,12 @@ operator|&
 name|diff_opts
 argument_list|)
 expr_stmt|;
+name|diff_tree_release_paths
+argument_list|(
+operator|&
+name|diff_opts
+argument_list|)
+expr_stmt|;
 comment|/* Go through the new set of filepairing, and see if we find a more interesting one */
 for|for
 control|(
@@ -1688,6 +1694,11 @@ operator|=
 name|p
 expr_stmt|;
 comment|/* Update the path we use from now on.. */
+name|diff_tree_release_paths
+argument_list|(
+name|opt
+argument_list|)
+expr_stmt|;
 name|opt
 operator|->
 name|paths

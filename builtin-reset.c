@@ -874,6 +874,12 @@ operator|&
 name|opt
 argument_list|)
 expr_stmt|;
+name|diff_tree_release_paths
+argument_list|(
+operator|&
+name|opt
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
