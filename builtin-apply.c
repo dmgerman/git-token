@@ -4540,13 +4540,13 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"%s.\n%s:%d:%.*s\n"
-argument_list|,
-name|err
+literal|"%s:%d: %s.\n%.*s\n"
 argument_list|,
 name|patch_input_file
 argument_list|,
 name|linenr
+argument_list|,
+name|err
 argument_list|,
 name|len
 operator|-

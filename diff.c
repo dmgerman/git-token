@@ -5700,7 +5700,7 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"%s:%d: %s%s:%s "
+literal|"%s:%d: %s.\n"
 argument_list|,
 name|data
 operator|->
@@ -5710,11 +5710,7 @@ name|data
 operator|->
 name|lineno
 argument_list|,
-name|ws
-argument_list|,
 name|err
-argument_list|,
-name|reset
 argument_list|)
 expr_stmt|;
 name|free
