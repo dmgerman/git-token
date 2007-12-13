@@ -85,22 +85,6 @@ literal|"PATCH"
 decl_stmt|;
 end_decl_stmt
 
-begin_comment
-comment|/* this is in builtin-diff.c */
-end_comment
-
-begin_function_decl
-name|void
-name|add_head
-parameter_list|(
-name|struct
-name|rev_info
-modifier|*
-name|revs
-parameter_list|)
-function_decl|;
-end_function_decl
-
 begin_function
 DECL|function|add_name_decoration
 specifier|static
@@ -4295,7 +4279,7 @@ name|flags
 operator||=
 name|UNINTERESTING
 expr_stmt|;
-name|add_head
+name|add_head_to_pending
 argument_list|(
 operator|&
 name|rev
