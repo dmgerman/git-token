@@ -1784,7 +1784,7 @@ name|outf
 operator|=
 name|outf
 expr_stmt|;
-name|xdl_diff
+name|xdi_diff
 argument_list|(
 operator|&
 name|minus

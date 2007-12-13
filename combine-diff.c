@@ -1436,7 +1436,7 @@ name|n
 operator|=
 name|n
 expr_stmt|;
-name|xdl_diff
+name|xdi_diff
 argument_list|(
 operator|&
 name|parent_file

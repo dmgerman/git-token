@@ -2448,7 +2448,7 @@ name|num
 operator|=
 literal|0
 expr_stmt|;
-name|xdl_diff
+name|xdi_diff
 argument_list|(
 name|file_p
 argument_list|,

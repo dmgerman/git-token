@@ -2542,7 +2542,7 @@ name|consume
 operator|=
 name|fn_out_diff_words_aux
 expr_stmt|;
-name|xdl_diff
+name|xdi_diff
 argument_list|(
 operator|&
 name|minus
@@ -7980,7 +7980,7 @@ name|diff_words_data
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|xdl_diff
+name|xdi_diff
 argument_list|(
 operator|&
 name|mf1
@@ -8281,7 +8281,7 @@ name|priv
 operator|=
 name|diffstat
 expr_stmt|;
-name|xdl_diff
+name|xdi_diff
 argument_list|(
 operator|&
 name|mf1
@@ -8502,7 +8502,7 @@ operator|=
 operator|&
 name|data
 expr_stmt|;
-name|xdl_diff
+name|xdi_diff
 argument_list|(
 operator|&
 name|mf1
@@ -16420,7 +16420,7 @@ operator|=
 operator|&
 name|data
 expr_stmt|;
-name|xdl_diff
+name|xdi_diff
 argument_list|(
 operator|&
 name|mf1
