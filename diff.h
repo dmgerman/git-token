@@ -375,6 +375,14 @@ value|(1<< 15)
 end_define
 
 begin_define
+DECL|macro|DIFF_OPT_CHECK_FAILED
+define|#
+directive|define
+name|DIFF_OPT_CHECK_FAILED
+value|(1<< 16)
+end_define
+
+begin_define
 DECL|macro|DIFF_OPT_TST
 define|#
 directive|define
