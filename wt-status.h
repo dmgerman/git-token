@@ -70,6 +70,10 @@ DECL|member|untracked
 name|int
 name|untracked
 decl_stmt|;
+DECL|member|nowarn
+name|int
+name|nowarn
+decl_stmt|;
 comment|/* These are computed during processing of the individual sections */
 DECL|member|commitable
 name|int
