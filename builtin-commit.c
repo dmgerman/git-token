@@ -2956,6 +2956,9 @@ expr_stmt|;
 if|if
 condition|(
 name|amend
+operator|&&
+operator|!
+name|use_message
 condition|)
 name|use_message
 operator|=
