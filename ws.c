@@ -451,7 +451,7 @@ argument_list|(
 operator|&
 name|err
 argument_list|,
-literal|"Adds trailing whitespace"
+literal|"trailing whitespace"
 argument_list|)
 expr_stmt|;
 if|if
@@ -480,7 +480,7 @@ argument_list|(
 operator|&
 name|err
 argument_list|,
-literal|"Space in indent is followed by a tab"
+literal|"space before tab in indent"
 argument_list|)
 expr_stmt|;
 block|}
@@ -510,7 +510,7 @@ argument_list|(
 operator|&
 name|err
 argument_list|,
-literal|"Indent more than 8 places with spaces"
+literal|"indent with spaces"
 argument_list|)
 expr_stmt|;
 block|}
