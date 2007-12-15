@@ -375,6 +375,14 @@ value|(1<< 15)
 end_define
 
 begin_define
+DECL|macro|DIFF_OPT_CHECK_FAILED
+define|#
+directive|define
+name|DIFF_OPT_CHECK_FAILED
+value|(1<< 16)
+end_define
+
+begin_define
 DECL|macro|DIFF_OPT_TST
 define|#
 directive|define
@@ -1414,6 +1422,20 @@ parameter_list|,
 name|unsigned
 name|char
 modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|diff_result_code
+parameter_list|(
+name|struct
+name|diff_options
+modifier|*
+parameter_list|,
+name|int
 parameter_list|)
 function_decl|;
 end_function_decl

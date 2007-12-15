@@ -1327,7 +1327,7 @@ argument_list|,
 name|RECURSIVE
 argument_list|)
 expr_stmt|;
-comment|/* If the user asked for our exit code then don't start a 	 * pager or we would end up reporting its exit code instead. 	 */
+comment|/* 	 * If the user asked for our exit code then don't start a 	 * pager or we would end up reporting its exit code instead. 	 */
 if|if
 condition|(
 operator|!
@@ -1934,31 +1934,17 @@ argument_list|,
 name|ents
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|DIFF_OPT_TST
-argument_list|(
-operator|&
-name|rev
-operator|.
-name|diffopt
-argument_list|,
-name|EXIT_WITH_STATUS
-argument_list|)
-condition|)
 name|result
 operator|=
-name|DIFF_OPT_TST
+name|diff_result_code
 argument_list|(
 operator|&
 name|rev
 operator|.
 name|diffopt
 argument_list|,
-name|HAS_CHANGES
+name|result
 argument_list|)
-operator|!=
-literal|0
 expr_stmt|;
 if|if
 condition|(
