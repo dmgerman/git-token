@@ -7720,13 +7720,11 @@ operator|&
 name|WS_INDENT_WITH_NON_TAB
 operator|)
 operator|&&
-name|last_tab_in_indent
-operator|<=
-literal|0
-operator|&&
 literal|8
 operator|<=
 name|i
+operator|-
+name|last_tab_in_indent
 condition|)
 name|need_fix_leading_space
 operator|=
