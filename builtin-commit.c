@@ -3639,6 +3639,14 @@ name|always_show_header
 operator|=
 literal|0
 expr_stmt|;
+name|diff_setup_done
+argument_list|(
+operator|&
+name|rev
+operator|.
+name|diffopt
+argument_list|)
+expr_stmt|;
 name|printf
 argument_list|(
 literal|"Created %scommit "
