@@ -738,7 +738,7 @@ operator|)
 operator|&&
 name|leading_space
 operator|>=
-literal|8
+literal|7
 condition|)
 name|result
 operator||=
