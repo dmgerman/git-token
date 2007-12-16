@@ -769,6 +769,8 @@ name|recovered
 operator|<
 name|trimmed
 operator|&&
+literal|0
+operator|<=
 name|ctx
 condition|)
 if|if
