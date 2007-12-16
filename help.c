@@ -1818,7 +1818,7 @@ argument_list|)
 decl_stmt|;
 name|execl_git_cmd
 argument_list|(
-literal|"browse--help"
+literal|"help--browse"
 argument_list|,
 name|page
 argument_list|,
