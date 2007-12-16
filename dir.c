@@ -803,9 +803,16 @@ argument_list|)
 operator|!=
 name|size
 condition|)
+block|{
+name|free
+argument_list|(
+name|buf
+argument_list|)
+expr_stmt|;
 goto|goto
 name|err
 goto|;
+block|}
 name|close
 argument_list|(
 name|fd
