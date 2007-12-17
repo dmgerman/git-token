@@ -1631,7 +1631,7 @@ condition|)
 block|{
 name|error
 argument_list|(
-literal|"Could not interpret %s as something to pull"
+literal|"Could not interpret response from server '%s' as something to pull"
 argument_list|,
 name|target
 index|[
