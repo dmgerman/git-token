@@ -450,6 +450,16 @@ name|char
 modifier|*
 name|single_follow
 decl_stmt|;
+DECL|member|a_prefix
+DECL|member|b_prefix
+specifier|const
+name|char
+modifier|*
+name|a_prefix
+decl_stmt|,
+modifier|*
+name|b_prefix
+decl_stmt|;
 DECL|member|flags
 name|unsigned
 name|flags
