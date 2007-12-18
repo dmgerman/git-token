@@ -1582,6 +1582,7 @@ operator|<=
 name|HASH_LIMIT
 condition|)
 continue|continue;
+comment|/* We leave exactly HASH_LIMIT entries in the bucket */
 name|entries
 operator|-=
 name|hash_count
@@ -1591,7 +1592,6 @@ index|]
 operator|-
 name|HASH_LIMIT
 expr_stmt|;
-comment|/* We leave exactly HASH_LIMIT entries in the bucket */
 name|entry
 operator|=
 name|hash
@@ -1603,6 +1603,7 @@ name|acc
 operator|=
 literal|0
 expr_stmt|;
+comment|/* 		 * Assume that this loop is gone through exactly 		 * HASH_LIMIT times and is entered and left with 		 * acc==0.  So the first statement in the loop 		 * contributes (hash_count[i]-HASH_LIMIT)*HASH_LIMIT 		 * to the accumulator, and the inner loop consequently 		 * is run (hash_count[i]-HASH_LIMIT) times, removing 		 * one element from the list each time.  Since acc 		 * balances out to 0 at the final run, the inner loop 		 * body can't be left with entry==NULL.  So we indeed 		 * encounter entry==NULL in the outer loop only. 		 */
 do|do
 block|{
 name|acc
@@ -1669,14 +1670,13 @@ condition|(
 name|entry
 condition|)
 do|;
-comment|/* Assume that this loop is gone through exactly 		 * HASH_LIMIT times and is entered and left with 		 * acc==0.  So the first statement in the loop 		 * contributes (hash_count[i]-HASH_LIMIT)*HASH_LIMIT 		 * to the accumulator, and the inner loop consequently 		 * is run (hash_count[i]-HASH_LIMIT) times, removing 		 * one element from the list each time.  Since acc 		 * balances out to 0 at the final run, the inner loop 		 * body can't be left with entry==NULL.  So we indeed 		 * encounter entry==NULL in the outer loop only. 		 */
 block|}
 name|free
 argument_list|(
 name|hash_count
 argument_list|)
 expr_stmt|;
-comment|/* Now create the packed index in array form rather than 	 * linked lists */
+comment|/* 	 * Now create the packed index in array form 	 * rather than linked lists. 	 */
 name|memsize
 operator|=
 sizeof|sizeof
@@ -1779,7 +1779,6 @@ name|packed_entry
 operator|=
 name|mem
 expr_stmt|;
-comment|/* Coalesce all entries belonging to one linked list into 	 * consecutive array entries */
 for|for
 control|(
 name|i
@@ -1794,6 +1793,7 @@ name|i
 operator|++
 control|)
 block|{
+comment|/* 		 * Coalesce all entries belonging to one linked list 		 * into consecutive array entries. 		 */
 name|packed_hash
 index|[
 name|i
@@ -1827,7 +1827,7 @@ operator|->
 name|entry
 expr_stmt|;
 block|}
-comment|/* Sentinel value to indicate the length of the last hash 	 * bucket */
+comment|/* Sentinel value to indicate the length of the last hash bucket */
 name|packed_hash
 index|[
 name|hsize
