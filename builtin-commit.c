@@ -2092,6 +2092,13 @@ index|[
 literal|40
 index|]
 decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|parent
+init|=
+literal|"HEAD"
+decl_stmt|;
 name|fclose
 argument_list|(
 name|fp
@@ -2128,6 +2135,14 @@ operator|!
 operator|!
 name|active_nr
 return|;
+if|if
+condition|(
+name|amend
+condition|)
+name|parent
+operator|=
+literal|"HEAD^1"
+expr_stmt|;
 name|init_revisions
 argument_list|(
 operator|&
@@ -2151,7 +2166,7 @@ argument_list|,
 operator|&
 name|rev
 argument_list|,
-literal|"HEAD"
+name|parent
 argument_list|)
 expr_stmt|;
 name|DIFF_OPT_SET
