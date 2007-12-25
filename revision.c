@@ -6649,7 +6649,7 @@ name|diff
 operator|=
 literal|1
 expr_stmt|;
-comment|/* Pickaxe and rename following needs diffs */
+comment|/* Pickaxe, diff-filter and rename following need diffs */
 if|if
 condition|(
 name|revs
@@ -6657,6 +6657,12 @@ operator|->
 name|diffopt
 operator|.
 name|pickaxe
+operator|||
+name|revs
+operator|->
+name|diffopt
+operator|.
+name|filter
 operator|||
 name|DIFF_OPT_TST
 argument_list|(
