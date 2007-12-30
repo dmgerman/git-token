@@ -12,7 +12,7 @@ file|"sha1-lookup.h"
 end_include
 
 begin_comment
-comment|/*  * Conventional binary search loop looks like this:  *  *	unsigned lo, hi;  *      do {  *              unsigned mi = (lo + hi) / 2;  *              int cmp = "entry pointed at by mi" minus "target";  *              if (!cmp)  *                      return (mi is the wanted one)  *              if (cmp> 0)  *                      hi = mi; "mi is larger than target"  *              else  *                      lo = mi+1; "mi is smaller than target"  *      } while (lo< hi);  *  * The invariants are:  *  * - When entering the loop, lo points at a slot that is never  *   above the target (it could be at the target), hi points at a  *   slot that is guaranteed to be above the target (it can never  *   be at the target).  *  * - We find a point 'mi' between lo and hi (mi could be the same  *   as lo, but never can be as same as hi), and check if it hits  *   the target.  There are three cases:  *  *    - if it is a hit, we are happy.  *  *    - if it is strictly higher than the target, we set it to hi,  *      and repeat the search.  *  *    - if it is strictly lower than the target, we update lo to  *      one slot after it, because we allow lo to be at the target.  *  *   If the loop exits, there is no matching entry.  *  * When choosing 'mi', we do not have to take the "middle" but  * anywhere in between lo and hi, as long as lo<= mi< hi is  * satisfied.  When we somehow know that the distance between the  * target and lo is much shorter than the target and hi, we could  * pick mi that is much closer to lo than the midway.  *  * Now, we can take advantage of the fact that SHA-1 is a good hash  * function, and as long as there are enough entries in the table, we  * can expect uniform distribution.  An entry that begins with for  * example "deadbeef..." is much likely to appear much later than in  * the midway of the table.  It can reasonably be expected to be near  * 87% (222/256) from the top of the table.  *  * The table at "table" holds at least "nr" entries of "elem_size"  * bytes each.  Each entry has the SHA-1 key at "key_offset".  The  * table is sorted by the SHA-1 key of the entries.  The caller wants  * to find the entry with "key", and knows that the entry at "lo" is  * not higher than the entry it is looking for, and that the entry at  * "hi" is higher than the entry it is looking for.  */
+comment|/*  * Conventional binary search loop looks like this:  *  *	unsigned lo, hi;  *      do {  *              unsigned mi = (lo + hi) / 2;  *              int cmp = "entry pointed at by mi" minus "target";  *              if (!cmp)  *                      return (mi is the wanted one)  *              if (cmp> 0)  *                      hi = mi; "mi is larger than target"  *              else  *                      lo = mi+1; "mi is smaller than target"  *      } while (lo< hi);  *  * The invariants are:  *  * - When entering the loop, lo points at a slot that is never  *   above the target (it could be at the target), hi points at a  *   slot that is guaranteed to be above the target (it can never  *   be at the target).  *  * - We find a point 'mi' between lo and hi (mi could be the same  *   as lo, but never can be as same as hi), and check if it hits  *   the target.  There are three cases:  *  *    - if it is a hit, we are happy.  *  *    - if it is strictly higher than the target, we set it to hi,  *      and repeat the search.  *  *    - if it is strictly lower than the target, we update lo to  *      one slot after it, because we allow lo to be at the target.  *  *   If the loop exits, there is no matching entry.  *  * When choosing 'mi', we do not have to take the "middle" but  * anywhere in between lo and hi, as long as lo<= mi< hi is  * satisfied.  When we somehow know that the distance between the  * target and lo is much shorter than the target and hi, we could  * pick mi that is much closer to lo than the midway.  *  * Now, we can take advantage of the fact that SHA-1 is a good hash  * function, and as long as there are enough entries in the table, we  * can expect uniform distribution.  An entry that begins with for  * example "deadbeef..." is much likely to appear much later than in  * the midway of the table.  It can reasonably be expected to be near  * 87% (222/256) from the top of the table.  *  * However, we do not want to pick "mi" too precisely.  If the entry at  * the 87% in the above example turns out to be higher than the target  * we are looking for, we would end up narrowing the search space down  * only by 13%, instead of 50% we would get if we did a simple binary  * search.  So we would want to hedge our bets by being less aggressive.  *  * The table at "table" holds at least "nr" entries of "elem_size"  * bytes each.  Each entry has the SHA-1 key at "key_offset".  The  * table is sorted by the SHA-1 key of the entries.  The caller wants  * to find the entry with "key", and knows that the entry at "lo" is  * not higher than the entry it is looking for, and that the entry at  * "hi" is higher than the entry it is looking for.  */
 end_comment
 
 begin_function
@@ -333,17 +333,35 @@ literal|1
 operator|-
 name|hi
 return|;
+comment|/* 		 * Even if we know the target is much closer to 'hi' 		 * than 'lo', if we pick too precisely and overshoot 		 * (e.g. when we know 'mi' is closer to 'hi' than to 		 * 'lo', pick 'mi' that is higher than the target), we 		 * end up narrowing the search space by a smaller 		 * amount (i.e. the distance between 'mi' and 'hi') 		 * than what we would have (i.e. about half of 'lo' 		 * and 'hi').  Hedge our bets to pick 'mi' less 		 * aggressively, i.e. make 'mi' a bit closer to the 		 * middle than we would otherwise pick. 		 */
+name|kyv
+operator|=
+operator|(
+name|kyv
+operator|*
+literal|6
+operator|+
+name|lov
+operator|+
+name|hiv
+operator|)
+operator|/
+literal|8
+expr_stmt|;
 if|if
 condition|(
-name|kyv
-operator|==
-name|lov
-operator|&&
 name|lov
 operator|<
 name|hiv
 operator|-
 literal|1
+condition|)
+block|{
+if|if
+condition|(
+name|kyv
+operator|==
+name|lov
 condition|)
 name|kyv
 operator|++
@@ -354,16 +372,11 @@ condition|(
 name|kyv
 operator|==
 name|hiv
-operator|-
-literal|1
-operator|&&
-name|lov
-operator|<
-name|kyv
 condition|)
 name|kyv
 operator|--
 expr_stmt|;
+block|}
 name|mi
 operator|=
 operator|(
