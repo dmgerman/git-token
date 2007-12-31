@@ -1398,6 +1398,20 @@ operator|=
 name|MIXED
 expr_stmt|;
 comment|/* by default */
+if|if
+condition|(
+name|reset_type
+operator|==
+name|HARD
+operator|&&
+name|is_bare_repository
+argument_list|()
+condition|)
+name|die
+argument_list|(
+literal|"hard reset makes no sense in a bare repository"
+argument_list|)
+expr_stmt|;
 comment|/* Soft reset does not touch the index file nor the working tree 	 * at all, but requires them in a good order.  Other resets reset 	 * the index file to the tree object we are switching to. */
 if|if
 condition|(
