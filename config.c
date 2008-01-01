@@ -51,6 +51,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|config_file_eof
+specifier|static
+name|int
+name|config_file_eof
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|zlib_compression_seen
 specifier|static
 name|int
@@ -147,9 +155,9 @@ operator|==
 name|EOF
 condition|)
 block|{
-name|config_file
+name|config_file_eof
 operator|=
-name|NULL
+literal|1
 expr_stmt|;
 name|c
 operator|=
@@ -473,9 +481,7 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|c
-operator|==
-name|EOF
+name|config_file_eof
 condition|)
 break|break;
 if|if
@@ -761,9 +767,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|c
-operator|==
-name|EOF
+name|config_file_eof
 condition|)
 return|return
 operator|-
@@ -884,11 +888,9 @@ operator|==
 literal|'\n'
 condition|)
 block|{
-comment|/* EOF? */
 if|if
 condition|(
-operator|!
-name|config_file
+name|config_file_eof
 condition|)
 return|return
 literal|0
@@ -2212,6 +2214,10 @@ expr_stmt|;
 name|config_linenr
 operator|=
 literal|1
+expr_stmt|;
+name|config_file_eof
+operator|=
+literal|0
 expr_stmt|;
 name|ret
 operator|=
@@ -4360,6 +4366,25 @@ argument_list|,
 operator|&
 name|new_line
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|copy_end
+operator|>
+literal|0
+operator|&&
+name|contents
+index|[
+name|copy_end
+operator|-
+literal|1
+index|]
+operator|!=
+literal|'\n'
+condition|)
+name|new_line
+operator|=
+literal|1
 expr_stmt|;
 comment|/* write the first part of the config */
 if|if
