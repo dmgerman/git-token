@@ -3099,8 +3099,7 @@ case|:
 break|break;
 comment|/* its valid */
 case|case
-operator|-
-literal|2
+name|CHECK_REF_FORMAT_ONELEVEL
 case|:
 break|break;
 comment|/* valid, but too few '/', allow anyway */

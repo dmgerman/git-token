@@ -2717,13 +2717,11 @@ literal|0
 case|:
 comment|/* ok */
 case|case
-operator|-
-literal|2
+name|CHECK_REF_FORMAT_ONELEVEL
 case|:
-comment|/* ok but a single level -- that is fine for 			  * a match pattern. 			  */
+comment|/* ok but a single level -- that is fine for 			 * a match pattern. 			 */
 case|case
-operator|-
-literal|3
+name|CHECK_REF_FORMAT_WILDCARD
 case|:
 comment|/* ok but ends with a pattern-match character */
 continue|continue;
