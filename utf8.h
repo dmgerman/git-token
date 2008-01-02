@@ -35,6 +35,10 @@ name|char
 modifier|*
 modifier|*
 name|start
+parameter_list|,
+name|size_t
+modifier|*
+name|remainder_p
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -48,6 +52,10 @@ name|char
 modifier|*
 modifier|*
 name|start
+parameter_list|,
+name|size_t
+modifier|*
+name|remainder_p
 parameter_list|)
 function_decl|;
 end_function_decl

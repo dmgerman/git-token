@@ -1085,7 +1085,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Pick one ucs character starting from the location *start points at,  * and return it, while updating the *start pointer to point at the  * end of that character.  *  * If the string was not a valid UTF-8, *start pointer is set to NULL  * and the return value is undefined.  */
+comment|/*  * Pick one ucs character starting from the location *start points at,  * and return it, while updating the *start pointer to point at the  * end of that character.  When remainder_p is not NULL, the location  * holds the number of bytes remaining in the string that we are allowed  * to pick from.  Otherwise we are allowed to pick up to the NUL that  * would eventually appear in the string.  *remainder_p is also reduced  * by the number of bytes we have consumed.  *  * If the string was not a valid UTF-8, *start pointer is set to NULL  * and the return value is undefined.  */
 end_comment
 
 begin_function
@@ -1098,6 +1098,10 @@ name|char
 modifier|*
 modifier|*
 name|start
+parameter_list|,
+name|size_t
+modifier|*
+name|remainder_p
 parameter_list|)
 block|{
 name|unsigned
@@ -1116,6 +1120,35 @@ decl_stmt|;
 name|ucs_char_t
 name|ch
 decl_stmt|;
+name|size_t
+name|remainder
+decl_stmt|,
+name|incr
+decl_stmt|;
+comment|/* 	 * A caller that assumes NUL terminated text can choose 	 * not to bother with the remainder length.  We will 	 * stop at the first NUL. 	 */
+name|remainder
+operator|=
+operator|(
+name|remainder_p
+condition|?
+operator|*
+name|remainder_p
+else|:
+literal|999
+operator|)
+expr_stmt|;
+if|if
+condition|(
+name|remainder
+operator|<
+literal|1
+condition|)
+block|{
+goto|goto
+name|invalid
+goto|;
+block|}
+elseif|else
 if|if
 condition|(
 operator|*
@@ -1130,9 +1163,8 @@ operator|=
 operator|*
 name|s
 expr_stmt|;
-operator|*
-name|start
-operator|+=
+name|incr
+operator|=
 literal|1
 expr_stmt|;
 block|}
@@ -1154,6 +1186,10 @@ block|{
 comment|/* 110XXXXx 10xxxxxx */
 if|if
 condition|(
+name|remainder
+operator|<
+literal|2
+operator|||
 operator|(
 name|s
 index|[
@@ -1165,7 +1201,6 @@ operator|)
 operator|!=
 literal|0x80
 operator|||
-comment|/* overlong? */
 operator|(
 name|s
 index|[
@@ -1204,9 +1239,8 @@ operator|&
 literal|0x3f
 operator|)
 expr_stmt|;
-operator|*
-name|start
-operator|+=
+name|incr
+operator|=
 literal|2
 expr_stmt|;
 block|}
@@ -1228,6 +1262,10 @@ block|{
 comment|/* 1110XXXX 10Xxxxxx 10xxxxxx */
 if|if
 condition|(
+name|remainder
+operator|<
+literal|3
+operator|||
 operator|(
 name|s
 index|[
@@ -1360,9 +1398,8 @@ operator|&
 literal|0x3f
 operator|)
 expr_stmt|;
-operator|*
-name|start
-operator|+=
+name|incr
+operator|=
 literal|3
 expr_stmt|;
 block|}
@@ -1384,6 +1421,10 @@ block|{
 comment|/* 11110XXX 10XXxxxx 10xxxxxx 10xxxxxx */
 if|if
 condition|(
+name|remainder
+operator|<
+literal|4
+operator|||
 operator|(
 name|s
 index|[
@@ -1515,9 +1556,8 @@ operator|&
 literal|0x3f
 operator|)
 expr_stmt|;
-operator|*
-name|start
-operator|+=
+name|incr
+operator|=
 literal|4
 expr_stmt|;
 block|}
@@ -1534,6 +1574,22 @@ return|return
 literal|0
 return|;
 block|}
+operator|*
+name|start
+operator|+=
+name|incr
+expr_stmt|;
+if|if
+condition|(
+name|remainder_p
+condition|)
+operator|*
+name|remainder_p
+operator|=
+name|remainder
+operator|-
+name|incr
+expr_stmt|;
 return|return
 name|ch
 return|;
@@ -1541,7 +1597,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * This function returns the number of columns occupied by the character  * pointed to by the variable start. The pointer is updated to point at  * the next character.  If it was not valid UTF-8, the pointer is set to  * NULL.  */
+comment|/*  * This function returns the number of columns occupied by the character  * pointed to by the variable start. The pointer is updated to point at  * the next character. When remainder_p is not NULL, it points at the  * location that stores the number of remaining bytes we can use to pick  * a character (see pick_one_utf8_char() above).  */
 end_comment
 
 begin_function
@@ -1554,6 +1610,10 @@ name|char
 modifier|*
 modifier|*
 name|start
+parameter_list|,
+name|size_t
+modifier|*
+name|remainder_p
 parameter_list|)
 block|{
 name|ucs_char_t
@@ -1562,6 +1622,8 @@ init|=
 name|pick_one_utf8_char
 argument_list|(
 name|start
+argument_list|,
+name|remainder_p
 argument_list|)
 decl_stmt|;
 if|if
@@ -1626,6 +1688,8 @@ name|utf8_width
 argument_list|(
 operator|&
 name|text
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 if|if
@@ -1915,6 +1979,8 @@ name|utf8_width
 argument_list|(
 operator|&
 name|text
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 else|else
