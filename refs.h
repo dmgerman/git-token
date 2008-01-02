@@ -409,9 +409,37 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
-begin_comment
-comment|/** Returns 0 if target has the right format for a ref. **/
-end_comment
+begin_define
+DECL|macro|CHECK_REF_FORMAT_OK
+define|#
+directive|define
+name|CHECK_REF_FORMAT_OK
+value|0
+end_define
+
+begin_define
+DECL|macro|CHECK_REF_FORMAT_ERROR
+define|#
+directive|define
+name|CHECK_REF_FORMAT_ERROR
+value|(-1)
+end_define
+
+begin_define
+DECL|macro|CHECK_REF_FORMAT_ONELEVEL
+define|#
+directive|define
+name|CHECK_REF_FORMAT_ONELEVEL
+value|(-2)
+end_define
+
+begin_define
+DECL|macro|CHECK_REF_FORMAT_WILDCARD
+define|#
+directive|define
+name|CHECK_REF_FORMAT_WILDCARD
+value|(-3)
+end_define
 
 begin_function_decl
 specifier|extern
