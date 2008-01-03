@@ -1571,7 +1571,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Returns a index_entry instance which doesn't have to correspond to  * a real cache entry in Git's index.  */
+comment|/*  * Returns an index_entry instance which doesn't have to correspond to  * a real cache entry in Git's index.  */
 end_comment
 
 begin_function
