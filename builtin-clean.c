@@ -185,6 +185,11 @@ modifier|*
 modifier|*
 name|pathspec
 decl_stmt|;
+name|int
+name|prefix_offset
+init|=
+literal|0
+decl_stmt|;
 name|char
 modifier|*
 name|seen
@@ -365,6 +370,17 @@ name|setup_standard_excludes
 argument_list|(
 operator|&
 name|dir
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|prefix
+condition|)
+name|prefix_offset
+operator|=
+name|strlen
+argument_list|(
+name|prefix
 argument_list|)
 expr_stmt|;
 name|pathspec
@@ -672,6 +688,8 @@ argument_list|,
 name|directory
 operator|.
 name|buf
+operator|+
+name|prefix_offset
 argument_list|)
 expr_stmt|;
 block|}
@@ -711,6 +729,8 @@ argument_list|,
 name|directory
 operator|.
 name|buf
+operator|+
+name|prefix_offset
 argument_list|)
 expr_stmt|;
 name|remove_dir_recursively
@@ -735,6 +755,8 @@ argument_list|,
 name|directory
 operator|.
 name|buf
+operator|+
+name|prefix_offset
 argument_list|)
 expr_stmt|;
 block|}
@@ -747,6 +769,8 @@ argument_list|,
 name|directory
 operator|.
 name|buf
+operator|+
+name|prefix_offset
 argument_list|)
 expr_stmt|;
 block|}
@@ -779,6 +803,8 @@ argument_list|,
 name|ent
 operator|->
 name|name
+operator|+
+name|prefix_offset
 argument_list|)
 expr_stmt|;
 continue|continue;
@@ -797,6 +823,8 @@ argument_list|,
 name|ent
 operator|->
 name|name
+operator|+
+name|prefix_offset
 argument_list|)
 expr_stmt|;
 block|}
