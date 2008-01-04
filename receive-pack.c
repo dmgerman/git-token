@@ -977,16 +977,16 @@ name|ref_lock
 modifier|*
 name|lock
 decl_stmt|;
+comment|/* only refs/... are allowed */
 if|if
 condition|(
-operator|!
 name|prefixcmp
 argument_list|(
 name|name
 argument_list|,
 literal|"refs/"
 argument_list|)
-operator|&&
+operator|||
 name|check_ref_format
 argument_list|(
 name|name
