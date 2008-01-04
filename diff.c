@@ -338,35 +338,6 @@ name|user_diff_tail
 struct|;
 end_struct
 
-begin_function
-DECL|function|read_config_if_needed
-specifier|static
-name|void
-name|read_config_if_needed
-parameter_list|(
-name|void
-parameter_list|)
-block|{
-if|if
-condition|(
-operator|!
-name|user_diff_tail
-condition|)
-block|{
-name|user_diff_tail
-operator|=
-operator|&
-name|user_diff
-expr_stmt|;
-name|git_config
-argument_list|(
-name|git_diff_ui_config
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-end_function
-
 begin_comment
 comment|/*  * Currently there is only "diff.<drivername>.command" variable;  * because there are "diff.color.<slot>" variables, we are parsing  * this in a bit convoluted way to allow low level diff driver  * called "color".  */
 end_comment
@@ -10288,9 +10259,6 @@ name|ll_diff_driver
 modifier|*
 name|drv
 decl_stmt|;
-name|read_config_if_needed
-argument_list|()
-expr_stmt|;
 for|for
 control|(
 name|drv
