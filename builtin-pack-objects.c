@@ -10640,6 +10640,8 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|len
+operator|&&
 name|line
 index|[
 name|len

@@ -353,6 +353,8 @@ name|delim
 decl_stmt|;
 if|if
 condition|(
+name|len
+operator|&&
 name|buffer
 index|[
 name|len
