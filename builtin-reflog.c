@@ -2251,7 +2251,10 @@ name|error
 argument_list|(
 literal|"Not a reflog: %s"
 argument_list|,
-name|ref
+name|argv
+index|[
+name|i
+index|]
 argument_list|)
 expr_stmt|;
 continue|continue;
