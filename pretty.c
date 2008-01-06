@@ -1695,12 +1695,22 @@ operator|++
 control|)
 empty_stmt|;
 comment|/* do nothing */
+comment|/* 	 * If it does not even have a '<' and '>', that is 	 * quite a bogus commit author and we discard it; 	 * this is in line with add_user_info() that is used 	 * in the normal codepath.  When end points at the '<' 	 * that we found, it should have matching '>' later, 	 * which means start (beginning of email address) must 	 * be strictly below len. 	 */
 name|start
 operator|=
 name|end
 operator|+
 literal|1
 expr_stmt|;
+if|if
+condition|(
+name|start
+operator|>=
+name|len
+operator|-
+literal|1
+condition|)
+return|return;
 while|while
 condition|(
 name|end
@@ -1739,21 +1749,12 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-if|if
-condition|(
-name|start
-operator|>=
-name|len
-condition|)
-return|return;
 comment|/* parse email */
 for|for
 control|(
 name|end
 operator|=
 name|start
-operator|+
-literal|1
 init|;
 name|end
 operator|<
