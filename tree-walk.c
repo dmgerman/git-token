@@ -46,6 +46,16 @@ name|mode
 init|=
 literal|0
 decl_stmt|;
+if|if
+condition|(
+operator|*
+name|str
+operator|==
+literal|' '
+condition|)
+return|return
+name|NULL
+return|;
 while|while
 condition|(
 operator|(
@@ -110,7 +120,7 @@ modifier|*
 name|desc
 parameter_list|,
 specifier|const
-name|void
+name|char
 modifier|*
 name|buf
 parameter_list|,
@@ -130,6 +140,24 @@ name|mode
 decl_stmt|,
 name|len
 decl_stmt|;
+if|if
+condition|(
+name|size
+operator|<
+literal|24
+operator|||
+name|buf
+index|[
+name|size
+operator|-
+literal|21
+index|]
+condition|)
+name|die
+argument_list|(
+literal|"corrupt tree file"
+argument_list|)
+expr_stmt|;
 name|path
 operator|=
 name|get_mode
@@ -143,6 +171,10 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
+name|path
+operator|||
+operator|!
+operator|*
 name|path
 condition|)
 name|die
