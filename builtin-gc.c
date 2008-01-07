@@ -989,7 +989,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Packing your repository for optimum "
+literal|"Auto packing your repository for optimum "
 literal|"performance. You may also\n"
 literal|"run \"git gc\" manually. See "
 literal|"\"git help gc\" for more information.\n"
