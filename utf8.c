@@ -15,20 +15,6 @@ begin_comment
 comment|/* This code is originally from http://www.cl.cam.ac.uk/~mgk25/ucs/ */
 end_comment
 
-begin_typedef
-DECL|typedef|ucs_char_t
-typedef|typedef
-name|unsigned
-name|int
-name|ucs_char_t
-typedef|;
-end_typedef
-
-begin_comment
-DECL|typedef|ucs_char_t
-comment|/* assuming 32bit int */
-end_comment
-
 begin_struct
 DECL|struct|interval
 struct|struct
@@ -1099,13 +1085,13 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * This function returns the number of columns occupied by the character  * pointed to by the variable start. The pointer is updated to point at  * the next character. If it was not valid UTF-8, the pointer is set to NULL.  */
+comment|/*  * Pick one ucs character starting from the location *start points at,  * and return it, while updating the *start pointer to point at the  * end of that character.  *  * If the string was not a valid UTF-8, *start pointer is set to NULL  * and the return value is undefined.  */
 end_comment
 
 begin_function
-DECL|function|utf8_width
-name|int
-name|utf8_width
+DECL|function|pick_one_utf8_char
+name|ucs_char_t
+name|pick_one_utf8_char
 parameter_list|(
 specifier|const
 name|char
@@ -1548,6 +1534,45 @@ return|return
 literal|0
 return|;
 block|}
+return|return
+name|ch
+return|;
+block|}
+end_function
+
+begin_comment
+comment|/*  * This function returns the number of columns occupied by the character  * pointed to by the variable start. The pointer is updated to point at  * the next character.  If it was not valid UTF-8, the pointer is set to  * NULL.  */
+end_comment
+
+begin_function
+DECL|function|utf8_width
+name|int
+name|utf8_width
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|start
+parameter_list|)
+block|{
+name|ucs_char_t
+name|ch
+init|=
+name|pick_one_utf8_char
+argument_list|(
+name|start
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+operator|*
+name|start
+condition|)
+return|return
+literal|0
+return|;
 return|return
 name|git_wcwidth
 argument_list|(
