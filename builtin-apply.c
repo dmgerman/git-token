@@ -14378,6 +14378,8 @@ expr_stmt|;
 if|if
 condition|(
 name|applied_after_fixing_ws
+operator|&&
+name|apply
 condition|)
 name|fprintf
 argument_list|(
