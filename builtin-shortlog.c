@@ -55,7 +55,7 @@ name|char
 name|shortlog_usage
 index|[]
 init|=
-literal|"git-shortlog [-n] [-s] [<commit-id>... ]"
+literal|"git-shortlog [-n] [-s] [-e] [<commit-id>... ]"
 decl_stmt|;
 end_decl_stmt
 
