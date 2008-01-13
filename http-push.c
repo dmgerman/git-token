@@ -12719,6 +12719,16 @@ name|i
 expr_stmt|;
 break|break;
 block|}
+ifndef|#
+directive|ifndef
+name|USE_CURL_MULTI
+name|die
+argument_list|(
+literal|"git-push is not available for http/https repository when not compiled with USE_CURL_MULTI"
+argument_list|)
+expr_stmt|;
+endif|#
+directive|endif
 if|if
 condition|(
 operator|!
