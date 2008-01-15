@@ -5181,6 +5181,14 @@ value|04
 end_define
 
 begin_define
+DECL|macro|WS_CR_AT_EOL
+define|#
+directive|define
+name|WS_CR_AT_EOL
+value|010
+end_define
+
+begin_define
 DECL|macro|WS_DEFAULT_RULE
 define|#
 directive|define
