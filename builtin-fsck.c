@@ -3762,15 +3762,12 @@ name|obj
 decl_stmt|;
 name|mode
 operator|=
-name|ntohl
-argument_list|(
 name|active_cache
 index|[
 name|i
 index|]
 operator|->
 name|ce_mode
-argument_list|)
 expr_stmt|;
 if|if
 condition|(

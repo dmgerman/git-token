@@ -10729,15 +10729,12 @@ name|pos
 condition|)
 name|mode
 operator|=
-name|ntohl
-argument_list|(
 name|active_cache
 index|[
 name|pos
 index|]
 operator|->
 name|ce_mode
-argument_list|)
 expr_stmt|;
 else|else
 comment|/* Let's not bother reading from HEAD tree */

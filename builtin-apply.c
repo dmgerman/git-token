@@ -9304,12 +9304,9 @@ if|if
 condition|(
 name|S_ISGITLINK
 argument_list|(
-name|ntohl
-argument_list|(
 name|ce
 operator|->
 name|ce_mode
-argument_list|)
 argument_list|)
 condition|)
 block|{
@@ -9703,12 +9700,9 @@ if|if
 condition|(
 name|S_ISGITLINK
 argument_list|(
-name|ntohl
-argument_list|(
 name|ce
 operator|->
 name|ce_mode
-argument_list|)
 argument_list|)
 condition|)
 block|{
@@ -9999,12 +9993,9 @@ name|cached
 condition|)
 name|st_mode
 operator|=
-name|ntohl
-argument_list|(
 name|ce
 operator|->
 name|ce_mode
-argument_list|)
 expr_stmt|;
 block|}
 elseif|else
@@ -10034,8 +10025,6 @@ name|cached
 condition|)
 name|st_mode
 operator|=
-name|ntohl
-argument_list|(
 name|ce_mode_from_stat
 argument_list|(
 name|ce
@@ -10043,7 +10032,6 @@ argument_list|,
 name|st
 operator|.
 name|st_mode
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -11742,10 +11730,7 @@ name|ce
 operator|->
 name|ce_flags
 operator|=
-name|htons
-argument_list|(
 name|namelen
-argument_list|)
 expr_stmt|;
 if|if
 condition|(

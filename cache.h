@@ -290,18 +290,88 @@ comment|/*  * dev/ino/uid/gid/size are also just tracked to the low 32 bits  * A
 end_comment
 
 begin_struct
+DECL|struct|ondisk_cache_entry
+struct|struct
+name|ondisk_cache_entry
+block|{
+DECL|member|ctime
+name|struct
+name|cache_time
+name|ctime
+decl_stmt|;
+DECL|member|mtime
+name|struct
+name|cache_time
+name|mtime
+decl_stmt|;
+DECL|member|dev
+name|unsigned
+name|int
+name|dev
+decl_stmt|;
+DECL|member|ino
+name|unsigned
+name|int
+name|ino
+decl_stmt|;
+DECL|member|mode
+name|unsigned
+name|int
+name|mode
+decl_stmt|;
+DECL|member|uid
+name|unsigned
+name|int
+name|uid
+decl_stmt|;
+DECL|member|gid
+name|unsigned
+name|int
+name|gid
+decl_stmt|;
+DECL|member|size
+name|unsigned
+name|int
+name|size
+decl_stmt|;
+DECL|member|sha1
+name|unsigned
+name|char
+name|sha1
+index|[
+literal|20
+index|]
+decl_stmt|;
+DECL|member|flags
+name|unsigned
+name|short
+name|flags
+decl_stmt|;
+DECL|member|name
+name|char
+name|name
+index|[
+name|FLEX_ARRAY
+index|]
+decl_stmt|;
+comment|/* more */
+block|}
+struct|;
+end_struct
+
+begin_struct
 DECL|struct|cache_entry
 struct|struct
 name|cache_entry
 block|{
 DECL|member|ce_ctime
-name|struct
-name|cache_time
+name|unsigned
+name|int
 name|ce_ctime
 decl_stmt|;
 DECL|member|ce_mtime
-name|struct
-name|cache_time
+name|unsigned
+name|int
 name|ce_mtime
 decl_stmt|;
 DECL|member|ce_dev
@@ -334,6 +404,11 @@ name|unsigned
 name|int
 name|ce_size
 decl_stmt|;
+DECL|member|ce_flags
+name|unsigned
+name|int
+name|ce_flags
+decl_stmt|;
 DECL|member|sha1
 name|unsigned
 name|char
@@ -341,11 +416,6 @@ name|sha1
 index|[
 literal|20
 index|]
-decl_stmt|;
-DECL|member|ce_flags
-name|unsigned
-name|short
-name|ce_flags
 decl_stmt|;
 DECL|member|name
 name|char
@@ -376,14 +446,6 @@ value|(0x3000)
 end_define
 
 begin_define
-DECL|macro|CE_UPDATE
-define|#
-directive|define
-name|CE_UPDATE
-value|(0x4000)
-end_define
-
-begin_define
 DECL|macro|CE_VALID
 define|#
 directive|define
@@ -399,6 +461,26 @@ name|CE_STAGESHIFT
 value|12
 end_define
 
+begin_comment
+comment|/* In-memory only */
+end_comment
+
+begin_define
+DECL|macro|CE_UPDATE
+define|#
+directive|define
+name|CE_UPDATE
+value|(0x10000)
+end_define
+
+begin_define
+DECL|macro|CE_REMOVE
+define|#
+directive|define
+name|CE_REMOVE
+value|(0x20000)
+end_define
+
 begin_define
 DECL|macro|create_ce_flags
 define|#
@@ -409,7 +491,7 @@ name|len
 parameter_list|,
 name|stage
 parameter_list|)
-value|htons((len) | ((stage)<< CE_STAGESHIFT))
+value|((len) | ((stage)<< CE_STAGESHIFT))
 end_define
 
 begin_define
@@ -420,7 +502,7 @@ name|ce_namelen
 parameter_list|(
 name|ce
 parameter_list|)
-value|(CE_NAMEMASK& ntohs((ce)->ce_flags))
+value|(CE_NAMEMASK& (ce)->ce_flags)
 end_define
 
 begin_define
@@ -435,6 +517,17 @@ value|cache_entry_size(ce_namelen(ce))
 end_define
 
 begin_define
+DECL|macro|ondisk_ce_size
+define|#
+directive|define
+name|ondisk_ce_size
+parameter_list|(
+name|ce
+parameter_list|)
+value|ondisk_cache_entry_size(ce_namelen(ce))
+end_define
+
+begin_define
 DECL|macro|ce_stage
 define|#
 directive|define
@@ -442,7 +535,7 @@ name|ce_stage
 parameter_list|(
 name|ce
 parameter_list|)
-value|((CE_STAGEMASK& ntohs((ce)->ce_flags))>> CE_STAGESHIFT)
+value|((CE_STAGEMASK& (ce)->ce_flags)>> CE_STAGESHIFT)
 end_define
 
 begin_define
@@ -477,10 +570,7 @@ name|mode
 argument_list|)
 condition|)
 return|return
-name|htonl
-argument_list|(
 name|S_IFLNK
-argument_list|)
 return|;
 if|if
 condition|(
@@ -495,20 +585,14 @@ name|mode
 argument_list|)
 condition|)
 return|return
-name|htonl
-argument_list|(
 name|S_IFGITLINK
-argument_list|)
 return|;
 return|return
-name|htonl
-argument_list|(
 name|S_IFREG
 operator||
 name|ce_permissions
 argument_list|(
 name|mode
-argument_list|)
 argument_list|)
 return|;
 block|}
@@ -552,12 +636,9 @@ name|ce
 operator|&&
 name|S_ISLNK
 argument_list|(
-name|ntohl
-argument_list|(
 name|ce
 operator|->
 name|ce_mode
-argument_list|)
 argument_list|)
 condition|)
 return|return
@@ -582,12 +663,9 @@ name|ce
 operator|&&
 name|S_ISREG
 argument_list|(
-name|ntohl
-argument_list|(
 name|ce
 operator|->
 name|ce_mode
-argument_list|)
 argument_list|)
 condition|)
 return|return
@@ -634,6 +712,17 @@ parameter_list|)
 value|((offsetof(struct cache_entry,name) + (len) + 8)& ~7)
 end_define
 
+begin_define
+DECL|macro|ondisk_cache_entry_size
+define|#
+directive|define
+name|ondisk_cache_entry_size
+parameter_list|(
+name|len
+parameter_list|)
+value|((offsetof(struct ondisk_cache_entry,name) + (len) + 8)& ~7)
+end_define
+
 begin_struct
 DECL|struct|index_state
 struct|struct
@@ -667,14 +756,10 @@ DECL|member|timestamp
 name|time_t
 name|timestamp
 decl_stmt|;
-DECL|member|mmap
+DECL|member|alloc
 name|void
 modifier|*
-name|mmap
-decl_stmt|;
-DECL|member|mmap_size
-name|size_t
-name|mmap_size
+name|alloc
 decl_stmt|;
 block|}
 struct|;
