@@ -58,11 +58,14 @@ DECL|struct|text_stat
 struct|struct
 name|text_stat
 block|{
-comment|/* CR, LF and CRLF counts */
+comment|/* NUL, CR, LF and CRLF counts */
+DECL|member|nul
 DECL|member|cr
 DECL|member|lf
 DECL|member|crlf
 name|unsigned
+name|nul
+decl_stmt|,
 name|cr
 decl_stmt|,
 name|lf
@@ -236,6 +239,15 @@ name|printable
 operator|++
 expr_stmt|;
 break|break;
+case|case
+literal|0
+case|:
+name|stats
+operator|->
+name|nul
+operator|++
+expr_stmt|;
+comment|/* fall through */
 default|default:
 name|stats
 operator|->
@@ -274,6 +286,15 @@ modifier|*
 name|stats
 parameter_list|)
 block|{
+if|if
+condition|(
+name|stats
+operator|->
+name|nul
+condition|)
+return|return
+literal|1
+return|;
 if|if
 condition|(
 operator|(
