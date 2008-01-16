@@ -4137,11 +4137,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|close
-argument_list|(
-name|fd
-argument_list|)
-expr_stmt|;
 name|commit_lock_file
 argument_list|(
 operator|&

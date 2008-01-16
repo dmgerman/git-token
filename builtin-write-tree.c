@@ -172,23 +172,16 @@ name|active_nr
 argument_list|)
 operator|&&
 operator|!
-name|close
-argument_list|(
-name|newfd
-argument_list|)
-condition|)
-block|{
 name|commit_lock_file
 argument_list|(
 name|lock_file
 argument_list|)
-expr_stmt|;
+condition|)
 name|newfd
 operator|=
 operator|-
 literal|1
 expr_stmt|;
-block|}
 block|}
 comment|/* Not being able to write is fine -- we are only interested 		 * in updating the cache-tree part, and if the next caller 		 * ends up using the old index with unupdated cache-tree part 		 * it misses the work we did here, but that is just a 		 * performance penalty and not a big deal. 		 */
 block|}
@@ -247,11 +240,6 @@ literal|0
 operator|<=
 name|newfd
 condition|)
-name|close
-argument_list|(
-name|newfd
-argument_list|)
-expr_stmt|;
 name|rollback_lock_file
 argument_list|(
 name|lock_file

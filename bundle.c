@@ -1999,6 +1999,14 @@ argument_list|(
 literal|"Could not spawn pack-objects"
 argument_list|)
 return|;
+comment|/* 	 * start_command closed bundle_fd if it was> 1 	 * so set the lock fd to -1 so commit_lock_file() 	 * won't fail trying to close it. 	 */
+name|lock
+operator|.
+name|fd
+operator|=
+operator|-
+literal|1
+expr_stmt|;
 for|for
 control|(
 name|i
@@ -2094,24 +2102,19 @@ argument_list|(
 literal|"pack-objects died"
 argument_list|)
 return|;
+return|return
+name|bundle_to_stdout
+condition|?
 name|close
 argument_list|(
 name|bundle_fd
 argument_list|)
-expr_stmt|;
-if|if
-condition|(
-operator|!
-name|bundle_to_stdout
-condition|)
+else|:
 name|commit_lock_file
 argument_list|(
 operator|&
 name|lock
 argument_list|)
-expr_stmt|;
-return|return
-literal|0
 return|;
 block|}
 end_function

@@ -418,9 +418,10 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|close
+name|commit_lock_file
 argument_list|(
-name|out_fd
+operator|&
+name|write_lock
 argument_list|)
 operator|!=
 literal|0
@@ -431,11 +432,7 @@ literal|"unable to write rerere record"
 argument_list|)
 expr_stmt|;
 return|return
-name|commit_lock_file
-argument_list|(
-operator|&
-name|write_lock
-argument_list|)
+literal|0
 return|;
 block|}
 end_function

@@ -614,6 +614,14 @@ name|errno
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|/* 	 * Since the lock file was fdopen()'ed and then fclose()'ed above, 	 * assign -1 to the lock file descriptor so that commit_lock_file() 	 * won't try to close() it. 	 */
+name|packed
+operator|.
+name|fd
+operator|=
+operator|-
+literal|1
+expr_stmt|;
 if|if
 condition|(
 name|commit_lock_file

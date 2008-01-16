@@ -9018,10 +9018,39 @@ argument_list|,
 name|marks
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|ferror
+argument_list|(
+name|f
+argument_list|)
+operator|||
 name|fclose
 argument_list|(
 name|f
 argument_list|)
+condition|)
+name|failure
+operator||=
+name|error
+argument_list|(
+literal|"Unable to write marks file %s: %s"
+argument_list|,
+name|mark_file
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|/* 	 * Since the lock file was fdopen()'ed and then fclose()'ed above, 	 * assign -1 to the lock file descriptor so that commit_lock_file() 	 * won't try to close() it. 	 */
+name|mark_lock
+operator|.
+name|fd
+operator|=
+operator|-
+literal|1
 expr_stmt|;
 if|if
 condition|(
@@ -9035,7 +9064,7 @@ name|failure
 operator||=
 name|error
 argument_list|(
-literal|"Unable to write marks file %s: %s"
+literal|"Unable to write commit file %s: %s"
 argument_list|,
 name|mark_file
 argument_list|,
