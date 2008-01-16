@@ -6994,7 +6994,7 @@ condition|)
 return|return
 name|pattern
 return|;
-comment|/* 	 * And define built-in fallback patterns here.  Note that 	 * these can be overriden by the user's config settings. 	 */
+comment|/* 	 * And define built-in fallback patterns here.  Note that 	 * these can be overridden by the user's config settings. 	 */
 for|for
 control|(
 name|i
