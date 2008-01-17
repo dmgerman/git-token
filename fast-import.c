@@ -9009,6 +9009,14 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+comment|/* 	 * Since the lock file was fdopen()'ed, it should not be close()'ed. 	 * Assign -1 to the lock file descriptor so that commit_lock_file() 	 * won't try to close() it. 	 */
+name|mark_lock
+operator|.
+name|fd
+operator|=
+operator|-
+literal|1
+expr_stmt|;
 name|dump_marks_helper
 argument_list|(
 name|f
@@ -9030,6 +9038,13 @@ argument_list|(
 name|f
 argument_list|)
 condition|)
+block|{
+name|rollback_lock_file
+argument_list|(
+operator|&
+name|mark_lock
+argument_list|)
+expr_stmt|;
 name|failure
 operator||=
 name|error
@@ -9044,14 +9059,8 @@ name|errno
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/* 	 * Since the lock file was fdopen()'ed and then fclose()'ed above, 	 * assign -1 to the lock file descriptor so that commit_lock_file() 	 * won't try to close() it. 	 */
-name|mark_lock
-operator|.
-name|fd
-operator|=
-operator|-
-literal|1
-expr_stmt|;
+return|return;
+block|}
 if|if
 condition|(
 name|commit_lock_file
@@ -9060,11 +9069,18 @@ operator|&
 name|mark_lock
 argument_list|)
 condition|)
+block|{
+name|rollback_lock_file
+argument_list|(
+operator|&
+name|mark_lock
+argument_list|)
+expr_stmt|;
 name|failure
 operator||=
 name|error
 argument_list|(
-literal|"Unable to write commit file %s: %s"
+literal|"Unable to commit marks file %s: %s"
 argument_list|,
 name|mark_file
 argument_list|,
@@ -9074,6 +9090,8 @@ name|errno
 argument_list|)
 argument_list|)
 expr_stmt|;
+return|return;
+block|}
 block|}
 end_function
 
