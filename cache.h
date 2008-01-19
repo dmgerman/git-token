@@ -481,6 +481,14 @@ name|CE_REMOVE
 value|(0x20000)
 end_define
 
+begin_define
+DECL|macro|CE_UPTODATE
+define|#
+directive|define
+name|CE_UPTODATE
+value|(0x40000)
+end_define
+
 begin_function
 DECL|function|create_ce_flags
 specifier|static
@@ -597,6 +605,28 @@ parameter_list|(
 name|ce
 parameter_list|)
 value|((CE_STAGEMASK& (ce)->ce_flags)>> CE_STAGESHIFT)
+end_define
+
+begin_define
+DECL|macro|ce_uptodate
+define|#
+directive|define
+name|ce_uptodate
+parameter_list|(
+name|ce
+parameter_list|)
+value|((ce)->ce_flags& CE_UPTODATE)
+end_define
+
+begin_define
+DECL|macro|ce_mark_uptodate
+define|#
+directive|define
+name|ce_mark_uptodate
+parameter_list|(
+name|ce
+parameter_list|)
+value|((ce)->ce_flags |= CE_UPTODATE)
 end_define
 
 begin_define

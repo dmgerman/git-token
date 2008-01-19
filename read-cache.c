@@ -156,6 +156,20 @@ name|ce_flags
 operator||=
 name|CE_VALID
 expr_stmt|;
+if|if
+condition|(
+name|S_ISREG
+argument_list|(
+name|st
+operator|->
+name|st_mode
+argument_list|)
+condition|)
+name|ce_mark_uptodate
+argument_list|(
+name|ce
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
@@ -2055,6 +2069,16 @@ argument_list|(
 name|ce
 argument_list|)
 expr_stmt|;
+name|ce_mark_uptodate
+argument_list|(
+name|istate
+operator|->
+name|cache
+index|[
+name|pos
+index|]
+argument_list|)
+expr_stmt|;
 return|return
 literal|0
 return|;
@@ -3585,6 +3609,16 @@ name|CE_MATCH_IGNORE_VALID
 decl_stmt|;
 if|if
 condition|(
+name|ce_uptodate
+argument_list|(
+name|ce
+argument_list|)
+condition|)
+return|return
+name|ce
+return|;
+if|if
+condition|(
 name|lstat
 argument_list|(
 name|ce
@@ -3650,9 +3684,17 @@ condition|)
 empty_stmt|;
 comment|/* mark this one VALID again */
 else|else
+block|{
+comment|/* 			 * We do not mark the index itself "modified" 			 * because CE_UPTODATE flag is in-core only; 			 * we are not going to write this change out. 			 */
+name|ce_mark_uptodate
+argument_list|(
+name|ce
+argument_list|)
+expr_stmt|;
 return|return
 name|ce
 return|;
+block|}
 block|}
 if|if
 condition|(
