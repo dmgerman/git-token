@@ -12854,6 +12854,23 @@ name|can_update_info_refs
 operator|=
 literal|1
 expr_stmt|;
+else|else
+block|{
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"Error: cannot lock existing info/refs\n"
+argument_list|)
+expr_stmt|;
+name|rc
+operator|=
+literal|1
+expr_stmt|;
+goto|goto
+name|cleanup
+goto|;
+block|}
 block|}
 if|if
 condition|(
