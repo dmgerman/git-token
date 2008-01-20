@@ -115,6 +115,11 @@ name|cache_entry
 modifier|*
 name|df_conflict_entry
 decl_stmt|;
+DECL|member|unpack_data
+name|void
+modifier|*
+name|unpack_data
+decl_stmt|;
 block|}
 struct|;
 end_struct
