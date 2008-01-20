@@ -9021,15 +9021,51 @@ argument_list|(
 name|parser
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|lock_flags
+condition|)
+name|error
+argument_list|(
+literal|"Error: no DAV locking support on %s"
+argument_list|,
+name|remote
+operator|->
+name|url
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|error
+argument_list|(
+literal|"Cannot access URL %s, return code %d"
+argument_list|,
+name|remote
+operator|->
+name|url
+argument_list|,
+name|results
+operator|.
+name|curl_result
+argument_list|)
+expr_stmt|;
+name|lock_flags
+operator|=
+literal|0
+expr_stmt|;
 block|}
 block|}
 else|else
 block|{
-name|fprintf
+name|error
 argument_list|(
-name|stderr
+literal|"Unable to start PROPFIND request on %s"
 argument_list|,
-literal|"Unable to start PROPFIND request\n"
+name|remote
+operator|->
+name|url
 argument_list|)
 expr_stmt|;
 block|}
@@ -12784,17 +12820,6 @@ name|locking_available
 argument_list|()
 condition|)
 block|{
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-literal|"Error: no DAV locking support on remote repo %s\n"
-argument_list|,
-name|remote
-operator|->
-name|url
-argument_list|)
-expr_stmt|;
 name|rc
 operator|=
 literal|1
