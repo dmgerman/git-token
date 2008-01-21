@@ -8757,6 +8757,8 @@ comment|/* try to split chunks on "path" boundaries */
 while|while
 condition|(
 name|sub_size
+operator|&&
+name|sub_size
 operator|<
 name|list_size
 operator|&&
