@@ -36,6 +36,17 @@ directive|include
 file|"strbuf.h"
 end_include
 
+begin_comment
+comment|/*  * We detect based on the cURL version if multi-transfer is  * usable in this implementation and define this symbol accordingly.  * This is not something Makefile should set nor users should pass  * via CFLAGS.  */
+end_comment
+
+begin_undef
+DECL|macro|USE_CURL_MULTI
+undef|#
+directive|undef
+name|USE_CURL_MULTI
+end_undef
+
 begin_if
 if|#
 directive|if
