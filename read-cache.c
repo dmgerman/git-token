@@ -2930,8 +2930,8 @@ block|{
 comment|/* 			 * Found one, but not so fast.  This could 			 * be a marker that says "I was here, but 			 * I am being removed".  Such an entry is 			 * not a part of the resulting tree, and 			 * it is Ok to have a directory at the same 			 * path. 			 */
 if|if
 condition|(
-name|stage
-operator|||
+operator|!
+operator|(
 name|istate
 operator|->
 name|cache
@@ -2939,7 +2939,10 @@ index|[
 name|pos
 index|]
 operator|->
-name|ce_mode
+name|ce_flags
+operator|&
+name|CE_REMOVE
+operator|)
 condition|)
 block|{
 name|retval
@@ -3037,15 +3040,16 @@ argument_list|)
 operator|==
 name|stage
 operator|&&
+operator|!
 operator|(
-name|stage
-operator|||
 name|p
 operator|->
-name|ce_mode
+name|ce_flags
+operator|&
+name|CE_REMOVE
 operator|)
 condition|)
-comment|/* p is at the same stage as our entry, and 				 * is a subdirectory of what we are looking 				 * at, so we cannot have conflicts at our 				 * level or anything shorter. 				 */
+comment|/* 				 * p is at the same stage as our entry, and 				 * is a subdirectory of what we are looking 				 * at, so we cannot have conflicts at our 				 * level or anything shorter. 				 */
 return|return
 name|retval
 return|;
