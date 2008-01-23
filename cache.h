@@ -27,6 +27,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"hash.h"
+end_include
+
+begin_include
+include|#
+directive|include
 include|SHA1_HEADER
 end_include
 
@@ -364,6 +370,12 @@ DECL|struct|cache_entry
 struct|struct
 name|cache_entry
 block|{
+DECL|member|next
+name|struct
+name|cache_entry
+modifier|*
+name|next
+decl_stmt|;
 DECL|member|ce_ctime
 name|unsigned
 name|int
@@ -487,6 +499,14 @@ define|#
 directive|define
 name|CE_UPTODATE
 value|(0x40000)
+end_define
+
+begin_define
+DECL|macro|CE_UNHASHED
+define|#
+directive|define
+name|CE_UNHASHED
+value|(0x80000)
 end_define
 
 begin_function
@@ -852,6 +872,11 @@ name|void
 modifier|*
 name|alloc
 decl_stmt|;
+DECL|member|name_hash
+name|struct
+name|hash_table
+name|name_hash
+decl_stmt|;
 block|}
 struct|;
 end_struct
@@ -1054,6 +1079,19 @@ parameter_list|,
 name|options
 parameter_list|)
 value|ie_modified(&the_index, (ce), (st), (options))
+end_define
+
+begin_define
+DECL|macro|cache_name_exists
+define|#
+directive|define
+name|cache_name_exists
+parameter_list|(
+name|name
+parameter_list|,
+name|namelen
+parameter_list|)
+value|index_name_exists(&the_index, (name), (namelen))
 end_define
 
 begin_endif
@@ -1624,6 +1662,27 @@ specifier|const
 name|char
 modifier|*
 name|path
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|index_name_exists
+parameter_list|(
+name|struct
+name|index_state
+modifier|*
+name|istate
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|name
+parameter_list|,
+name|int
+name|namelen
 parameter_list|)
 function_decl|;
 end_function_decl
