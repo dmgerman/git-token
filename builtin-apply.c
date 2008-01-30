@@ -8033,7 +8033,7 @@ name|unsigned
 name|ws_rule
 parameter_list|)
 block|{
-comment|/* 	 * plen is number of bytes to be copied from patch, 	 * starting at patch+1 (patch[0] is '+').  Typically 	 * patch[plen] is '\n', unless this is the incomplete 	 * last line. 	 */
+comment|/* 	 * plen is number of bytes to be copied from patch, starting 	 * at patch.  Typically patch[plen-1] is '\n', unless this is 	 * the incomplete last line. 	 */
 name|int
 name|i
 decl_stmt|;
@@ -8050,12 +8050,14 @@ decl_stmt|;
 name|int
 name|last_tab_in_indent
 init|=
-literal|0
+operator|-
+literal|1
 decl_stmt|;
 name|int
 name|last_space_in_indent
 init|=
-literal|0
+operator|-
+literal|1
 decl_stmt|;
 name|int
 name|need_fix_leading_space
@@ -8076,7 +8078,7 @@ name|WS_TRAILING_SPACE
 operator|)
 operator|&&
 operator|(
-literal|1
+literal|2
 operator|<
 name|plen
 operator|&&
@@ -8086,7 +8088,7 @@ name|patch
 index|[
 name|plen
 operator|-
-literal|1
+literal|2
 index|]
 argument_list|)
 operator|)
@@ -8097,6 +8099,8 @@ condition|(
 name|patch
 index|[
 name|plen
+operator|-
+literal|1
 index|]
 operator|==
 literal|'\n'
@@ -8119,6 +8123,8 @@ argument_list|(
 name|patch
 index|[
 name|plen
+operator|-
+literal|1
 index|]
 argument_list|)
 condition|)
@@ -8135,7 +8141,7 @@ for|for
 control|(
 name|i
 operator|=
-literal|1
+literal|0
 init|;
 name|i
 operator|<
@@ -8173,7 +8179,7 @@ name|WS_SPACE_BEFORE_TAB
 operator|)
 operator|&&
 literal|0
-operator|<
+operator|<=
 name|last_space_in_indent
 condition|)
 name|need_fix_leading_space
@@ -8224,6 +8230,7 @@ condition|(
 name|need_fix_leading_space
 condition|)
 block|{
+comment|/* Process indent ourselves */
 name|int
 name|consecutive_spaces
 init|=
@@ -8264,12 +8271,12 @@ operator|+
 literal|1
 expr_stmt|;
 block|}
-comment|/* 		 * between patch[1..last], strip the funny spaces, 		 * updating them to tab as needed. 		 */
+comment|/* 		 * between patch[0..last-1], strip the funny spaces, 		 * updating them to tab as needed. 		 */
 for|for
 control|(
 name|i
 operator|=
-literal|1
+literal|0
 init|;
 name|i
 operator|<
@@ -8277,9 +8284,6 @@ name|last
 condition|;
 name|i
 operator|++
-operator|,
-name|plen
-operator|--
 control|)
 block|{
 name|char
@@ -8346,27 +8350,24 @@ operator|++
 operator|=
 literal|' '
 expr_stmt|;
+name|plen
+operator|-=
+name|last
+expr_stmt|;
+name|patch
+operator|+=
+name|last
+expr_stmt|;
 name|fixed
 operator|=
 literal|1
 expr_stmt|;
-name|i
-operator|=
-name|last
-expr_stmt|;
 block|}
-else|else
-name|i
-operator|=
-literal|1
-expr_stmt|;
 name|memcpy
 argument_list|(
 name|output
 argument_list|,
 name|patch
-operator|+
-name|i
 argument_list|,
 name|plen
 argument_list|)
@@ -9130,6 +9131,8 @@ argument_list|(
 name|new
 argument_list|,
 name|patch
+operator|+
+literal|1
 argument_list|,
 name|plen
 argument_list|,
