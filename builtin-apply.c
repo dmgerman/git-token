@@ -7891,6 +7891,9 @@ parameter_list|,
 name|int
 name|try_lno
 parameter_list|,
+name|unsigned
+name|ws_rule
+parameter_list|,
 name|int
 name|match_beginning
 parameter_list|,
@@ -8066,6 +8069,9 @@ parameter_list|,
 name|int
 name|line
 parameter_list|,
+name|unsigned
+name|ws_rule
+parameter_list|,
 name|int
 name|match_beginning
 parameter_list|,
@@ -8202,6 +8208,8 @@ argument_list|,
 name|try
 argument_list|,
 name|try_lno
+argument_list|,
+name|ws_rule
 argument_list|,
 name|match_beginning
 argument_list|,
@@ -9404,6 +9412,8 @@ operator|&
 name|postimage
 argument_list|,
 name|pos
+argument_list|,
+name|ws_rule
 argument_list|,
 name|match_beginning
 argument_list|,
