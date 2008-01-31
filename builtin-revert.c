@@ -2147,10 +2147,6 @@ name|NULL
 argument_list|)
 return|;
 block|}
-if|if
-condition|(
-name|reencoded_message
-condition|)
 name|free
 argument_list|(
 name|reencoded_message

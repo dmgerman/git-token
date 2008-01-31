@@ -1531,10 +1531,6 @@ argument_list|,
 name|expression
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|buffer
-condition|)
 name|free
 argument_list|(
 name|buffer

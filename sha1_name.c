@@ -3466,10 +3466,6 @@ name|sha1
 argument_list|)
 condition|)
 continue|continue;
-if|if
-condition|(
-name|temp_commit_buffer
-condition|)
 name|free
 argument_list|(
 name|temp_commit_buffer
@@ -3563,10 +3559,6 @@ expr_stmt|;
 break|break;
 block|}
 block|}
-if|if
-condition|(
-name|temp_commit_buffer
-condition|)
 name|free
 argument_list|(
 name|temp_commit_buffer
