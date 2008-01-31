@@ -58,6 +58,14 @@ name|EXC_FLAG_ENDSWITH
 value|4
 end_define
 
+begin_define
+DECL|macro|EXC_FLAG_MUSTBEDIR
+define|#
+directive|define
+name|EXC_FLAG_MUSTBEDIR
+value|8
+end_define
+
 begin_struct
 DECL|struct|exclude_list
 struct|struct
@@ -359,6 +367,8 @@ parameter_list|,
 specifier|const
 name|char
 modifier|*
+parameter_list|,
+name|int
 parameter_list|)
 function_decl|;
 end_function_decl

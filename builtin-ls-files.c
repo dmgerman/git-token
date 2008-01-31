@@ -1280,6 +1280,11 @@ argument_list|,
 name|ce
 operator|->
 name|name
+argument_list|,
+name|ce_to_dtype
+argument_list|(
+name|ce
+argument_list|)
 argument_list|)
 operator|!=
 name|dir
@@ -1373,6 +1378,11 @@ argument_list|,
 name|ce
 operator|->
 name|name
+argument_list|,
+name|ce_to_dtype
+argument_list|(
+name|ce
+argument_list|)
 argument_list|)
 operator|!=
 name|dir

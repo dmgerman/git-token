@@ -2645,6 +2645,11 @@ argument_list|,
 name|ce
 operator|->
 name|name
+argument_list|,
+name|ce_to_dtype
+argument_list|(
+name|ce
+argument_list|)
 argument_list|)
 condition|)
 comment|/* 			 * ce->name is explicitly excluded, so it is Ok to 			 * overwrite it. 			 */
