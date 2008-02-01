@@ -2630,6 +2630,14 @@ block|{
 name|int
 name|cnt
 decl_stmt|;
+name|int
+name|dtype
+init|=
+name|ce_to_dtype
+argument_list|(
+name|ce
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|o
@@ -2646,10 +2654,8 @@ name|ce
 operator|->
 name|name
 argument_list|,
-name|ce_to_dtype
-argument_list|(
-name|ce
-argument_list|)
+operator|&
+name|dtype
 argument_list|)
 condition|)
 comment|/* 			 * ce->name is explicitly excluded, so it is Ok to 			 * overwrite it. 			 */
