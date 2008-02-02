@@ -1899,7 +1899,7 @@ argument_list|)
 expr_stmt|;
 name|execl_git_cmd
 argument_list|(
-literal|"help--browse"
+literal|"web--browse"
 argument_list|,
 literal|"-c"
 argument_list|,
