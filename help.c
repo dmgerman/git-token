@@ -1901,6 +1901,10 @@ name|execl_git_cmd
 argument_list|(
 literal|"help--browse"
 argument_list|,
+literal|"-c"
+argument_list|,
+literal|"help.browser"
+argument_list|,
 name|page_path
 operator|.
 name|buf
