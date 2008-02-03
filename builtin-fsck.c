@@ -1587,6 +1587,24 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+name|commit
+operator|->
+name|date
+condition|)
+return|return
+name|objerror
+argument_list|(
+operator|&
+name|commit
+operator|->
+name|object
+argument_list|,
+literal|"invalid author/committer line"
+argument_list|)
+return|;
+if|if
+condition|(
 name|memcmp
 argument_list|(
 name|buffer
@@ -1754,27 +1772,6 @@ condition|)
 name|printf
 argument_list|(
 literal|"root %s\n"
-argument_list|,
-name|sha1_to_hex
-argument_list|(
-name|commit
-operator|->
-name|object
-operator|.
-name|sha1
-argument_list|)
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-operator|!
-name|commit
-operator|->
-name|date
-condition|)
-name|printf
-argument_list|(
-literal|"bad commit date in %s\n"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
