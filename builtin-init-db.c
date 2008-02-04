@@ -780,7 +780,7 @@ argument_list|()
 decl_stmt|;
 name|template_dir
 operator|=
-name|prefix_path
+name|prefix_filename
 argument_list|(
 name|exec_path
 argument_list|,
