@@ -522,6 +522,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|git_config_global
+argument_list|()
+operator|&&
 name|home
 condition|)
 name|global
@@ -536,6 +539,11 @@ name|home
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|git_config_system
+argument_list|()
+condition|)
 name|system_wide
 operator|=
 name|git_etc_gitconfig
