@@ -134,12 +134,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|*
-name|name
-operator|&&
-operator|!
-operator|*
 name|end
+operator|-
+name|name
+operator|==
+name|len
 operator|&&
 name|i
 operator|>=
