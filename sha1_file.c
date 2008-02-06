@@ -12818,6 +12818,12 @@ name|size
 argument_list|,
 operator|&
 name|nbuf
+argument_list|,
+name|write_object
+condition|?
+name|safe_crlf
+else|:
+literal|0
 argument_list|)
 condition|)
 block|{

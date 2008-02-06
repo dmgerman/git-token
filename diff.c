@@ -9235,6 +9235,8 @@ name|size
 argument_list|,
 operator|&
 name|buf
+argument_list|,
+name|safe_crlf
 argument_list|)
 condition|)
 block|{
