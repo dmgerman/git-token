@@ -562,8 +562,10 @@ if|if
 condition|(
 name|first
 condition|)
-name|printf
+name|fprintf
 argument_list|(
+name|stderr
+argument_list|,
 literal|"index %s\n"
 argument_list|,
 name|first
@@ -606,8 +608,10 @@ directive|if
 name|DBRT_DEBUG
 operator|>
 literal|1
-name|printf
+name|fprintf
 argument_list|(
+name|stderr
+argument_list|,
 literal|"%d %s\n"
 argument_list|,
 name|i
@@ -1119,8 +1123,10 @@ directive|if
 name|DBRT_DEBUG
 operator|>
 literal|1
-name|printf
+name|fprintf
 argument_list|(
+name|stderr
+argument_list|,
 literal|"%s:\n"
 argument_list|,
 name|first
@@ -1140,8 +1146,10 @@ name|i
 operator|++
 control|)
 block|{
-name|printf
+name|fprintf
 argument_list|(
+name|stderr
+argument_list|,
 literal|" %d "
 argument_list|,
 name|i
@@ -1154,9 +1162,18 @@ index|[
 name|i
 index|]
 condition|)
-name|printf
+name|fprintf
 argument_list|(
-literal|"%s\n"
+name|stderr
+argument_list|,
+literal|"%06x %s\n"
+argument_list|,
+name|src
+index|[
+name|i
+index|]
+operator|->
+name|ce_mode
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -1170,8 +1187,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 else|else
-name|printf
+name|fprintf
 argument_list|(
+name|stderr
+argument_list|,
 literal|"\n"
 argument_list|)
 expr_stmt|;
@@ -1205,8 +1224,10 @@ directive|if
 name|DBRT_DEBUG
 operator|>
 literal|1
-name|printf
+name|fprintf
 argument_list|(
+name|stderr
+argument_list|,
 literal|"Added %d entries\n"
 argument_list|,
 name|ret
