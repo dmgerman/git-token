@@ -1191,6 +1191,15 @@ argument_list|,
 name|remove
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|ret
+operator|<
+literal|0
+condition|)
+return|return
+name|ret
+return|;
 if|#
 directive|if
 name|DBRT_DEBUG
@@ -1931,11 +1940,12 @@ name|o
 operator|->
 name|nontrivial_merge
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 literal|"Merge requires file-level merging"
 argument_list|)
-expr_stmt|;
+return|;
 name|check_updates
 argument_list|(
 name|active_cache
@@ -1958,7 +1968,7 @@ end_comment
 begin_function
 DECL|function|reject_merge
 specifier|static
-name|void
+name|int
 name|reject_merge
 parameter_list|(
 name|struct
@@ -1967,7 +1977,8 @@ modifier|*
 name|ce
 parameter_list|)
 block|{
-name|die
+return|return
+name|error
 argument_list|(
 literal|"Entry '%s' would be overwritten by merge. Cannot merge."
 argument_list|,
@@ -1975,7 +1986,7 @@ name|ce
 operator|->
 name|name
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 end_function
 
@@ -2051,7 +2062,7 @@ end_comment
 begin_function
 DECL|function|verify_uptodate
 specifier|static
-name|void
+name|int
 name|verify_uptodate
 parameter_list|(
 name|struct
@@ -2079,7 +2090,9 @@ name|o
 operator|->
 name|reset
 condition|)
-return|return;
+return|return
+literal|0
+return|;
 if|if
 condition|(
 operator|!
@@ -2112,7 +2125,9 @@ condition|(
 operator|!
 name|changed
 condition|)
-return|return;
+return|return
+literal|0
+return|;
 comment|/* 		 * NEEDSWORK: the current default policy is to allow 		 * submodule to be out of sync wrt the supermodule 		 * index.  This needs to be tightened later for 		 * submodules that are marked to be automatically 		 * checked out. 		 */
 if|if
 condition|(
@@ -2123,7 +2138,9 @@ operator|->
 name|ce_mode
 argument_list|)
 condition|)
-return|return;
+return|return
+literal|0
+return|;
 name|errno
 operator|=
 literal|0
@@ -2135,8 +2152,11 @@ name|errno
 operator|==
 name|ENOENT
 condition|)
-return|return;
-name|die
+return|return
+literal|0
+return|;
+return|return
+name|error
 argument_list|(
 literal|"Entry '%s' not uptodate. Cannot merge."
 argument_list|,
@@ -2144,7 +2164,7 @@ name|ce
 operator|->
 name|name
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 end_function
 
@@ -2418,13 +2438,19 @@ name|ce
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
 name|verify_uptodate
 argument_list|(
 name|ce
 argument_list|,
 name|o
 argument_list|)
-expr_stmt|;
+condition|)
+return|return
+operator|-
+literal|1
+return|;
 name|ce
 operator|->
 name|ce_flags
@@ -2519,7 +2545,8 @@ if|if
 condition|(
 name|i
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 literal|"Updating '%s' would lose untracked files in it"
 argument_list|,
@@ -2527,7 +2554,7 @@ name|ce
 operator|->
 name|name
 argument_list|)
-expr_stmt|;
+return|;
 name|free
 argument_list|(
 name|pathbuf
@@ -2546,7 +2573,7 @@ end_comment
 begin_function
 DECL|function|verify_absent
 specifier|static
-name|void
+name|int
 name|verify_absent
 parameter_list|(
 name|struct
@@ -2584,7 +2611,9 @@ name|o
 operator|->
 name|update
 condition|)
-return|return;
+return|return
+literal|0
+return|;
 if|if
 condition|(
 name|has_symlink_leading_path
@@ -2596,7 +2625,9 @@ argument_list|,
 name|NULL
 argument_list|)
 condition|)
-return|return;
+return|return
+literal|0
+return|;
 if|if
 condition|(
 operator|!
@@ -2632,7 +2663,9 @@ name|name
 argument_list|)
 condition|)
 comment|/* 			 * ce->name is explicitly excluded, so it is Ok to 			 * overwrite it. 			 */
-return|return;
+return|return
+literal|0
+return|;
 if|if
 condition|(
 name|S_ISDIR
@@ -2662,7 +2695,9 @@ name|pos
 operator|+=
 name|cnt
 expr_stmt|;
-return|return;
+return|return
+literal|0
+return|;
 block|}
 comment|/* 		 * The previous round may already have decided to 		 * delete this path, which is in a subdirectory that 		 * is being replaced with a blob. 		 */
 name|cnt
@@ -2706,9 +2741,12 @@ name|ce_flags
 operator|&
 name|CE_REMOVE
 condition|)
-return|return;
+return|return
+literal|0
+return|;
 block|}
-name|die
+return|return
+name|error
 argument_list|(
 literal|"Untracked working tree file '%s' "
 literal|"would be %s by merge."
@@ -2719,8 +2757,11 @@ name|name
 argument_list|,
 name|action
 argument_list|)
-expr_stmt|;
+return|;
 block|}
+return|return
+literal|0
+return|;
 block|}
 end_function
 
@@ -2786,13 +2827,19 @@ expr_stmt|;
 block|}
 else|else
 block|{
+if|if
+condition|(
 name|verify_uptodate
 argument_list|(
 name|old
 argument_list|,
 name|o
 argument_list|)
-expr_stmt|;
+condition|)
+return|return
+operator|-
+literal|1
+return|;
 name|invalidate_ce_path
 argument_list|(
 name|old
@@ -2802,6 +2849,8 @@ block|}
 block|}
 else|else
 block|{
+if|if
+condition|(
 name|verify_absent
 argument_list|(
 name|merge
@@ -2810,7 +2859,11 @@ literal|"overwritten"
 argument_list|,
 name|o
 argument_list|)
-expr_stmt|;
+condition|)
+return|return
+operator|-
+literal|1
+return|;
 name|invalidate_ce_path
 argument_list|(
 name|merge
@@ -2865,14 +2918,24 @@ if|if
 condition|(
 name|old
 condition|)
+block|{
+if|if
+condition|(
 name|verify_uptodate
 argument_list|(
 name|old
 argument_list|,
 name|o
 argument_list|)
-expr_stmt|;
-else|else
+condition|)
+return|return
+operator|-
+literal|1
+return|;
+block|}
+elseif|else
+if|if
+condition|(
 name|verify_absent
 argument_list|(
 name|ce
@@ -2881,7 +2944,11 @@ literal|"removed"
 argument_list|,
 name|o
 argument_list|)
-expr_stmt|;
+condition|)
+return|return
+operator|-
+literal|1
+return|;
 name|ce
 operator|->
 name|ce_flags
@@ -3294,11 +3361,12 @@ argument_list|,
 name|head
 argument_list|)
 condition|)
+return|return
 name|reject_merge
 argument_list|(
 name|index
 argument_list|)
-expr_stmt|;
+return|;
 return|return
 name|merged_entry
 argument_list|(
@@ -3324,11 +3392,12 @@ name|head
 argument_list|)
 condition|)
 block|{
+return|return
 name|reject_merge
 argument_list|(
 name|index
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 if|if
 condition|(
@@ -3556,6 +3625,9 @@ operator|&&
 operator|!
 name|head_deleted
 condition|)
+block|{
+if|if
+condition|(
 name|verify_absent
 argument_list|(
 name|ce
@@ -3564,7 +3636,12 @@ literal|"removed"
 argument_list|,
 name|o
 argument_list|)
-expr_stmt|;
+condition|)
+return|return
+operator|-
+literal|1
+return|;
+block|}
 return|return
 literal|0
 return|;
@@ -3602,13 +3679,19 @@ condition|(
 name|index
 condition|)
 block|{
+if|if
+condition|(
 name|verify_uptodate
 argument_list|(
 name|index
 argument_list|,
 name|o
 argument_list|)
-expr_stmt|;
+condition|)
+return|return
+operator|-
+literal|1
+return|;
 block|}
 name|remove_entry
 argument_list|(
@@ -4013,29 +4096,32 @@ if|if
 condition|(
 name|oldtree
 condition|)
+return|return
 name|reject_merge
 argument_list|(
 name|oldtree
 argument_list|)
-expr_stmt|;
+return|;
 if|if
 condition|(
 name|current
 condition|)
+return|return
 name|reject_merge
 argument_list|(
 name|current
 argument_list|)
-expr_stmt|;
+return|;
 if|if
 condition|(
 name|newtree
 condition|)
+return|return
 name|reject_merge
 argument_list|(
 name|newtree
 argument_list|)
-expr_stmt|;
+return|;
 return|return
 operator|-
 literal|1
@@ -4143,7 +4229,8 @@ name|a
 operator|&&
 name|old
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 literal|"Entry '%s' overlaps.  Cannot bind."
 argument_list|,
@@ -4151,7 +4238,7 @@ name|a
 operator|->
 name|name
 argument_list|)
-expr_stmt|;
+return|;
 if|if
 condition|(
 operator|!
