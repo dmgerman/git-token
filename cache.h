@@ -986,6 +986,15 @@ value|discard_index(&the_index)
 end_define
 
 begin_define
+DECL|macro|unmerged_cache
+define|#
+directive|define
+name|unmerged_cache
+parameter_list|()
+value|unmerged_index(&the_index)
+end_define
+
+begin_define
 DECL|macro|cache_name_pos
 define|#
 directive|define
@@ -1651,6 +1660,18 @@ begin_function_decl
 specifier|extern
 name|int
 name|discard_index
+parameter_list|(
+name|struct
+name|index_state
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|unmerged_index
 parameter_list|(
 name|struct
 name|index_state
