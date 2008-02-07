@@ -30,6 +30,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"builtin.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"tree-walk.h"
 end_include
 
@@ -85,6 +91,12 @@ begin_include
 include|#
 directive|include
 file|"attr.h"
+end_include
+
+begin_include
+include|#
+directive|include
+file|"merge-recursive.h"
 end_include
 
 begin_decl_stmt
@@ -1256,12 +1268,11 @@ block|}
 end_function
 
 begin_function
-DECL|function|git_write_tree
-specifier|static
+DECL|function|write_tree_from_memory
 name|struct
 name|tree
 modifier|*
-name|git_write_tree
+name|write_tree_from_memory
 parameter_list|(
 name|void
 parameter_list|)
@@ -8590,7 +8601,6 @@ end_function
 
 begin_function
 DECL|function|merge_trees
-specifier|static
 name|int
 name|merge_trees
 parameter_list|(
@@ -8927,7 +8937,7 @@ condition|)
 operator|*
 name|result
 operator|=
-name|git_write_tree
+name|write_tree_from_memory
 argument_list|()
 expr_stmt|;
 return|return
@@ -9004,10 +9014,9 @@ comment|/*  * Merge the commits h1 and h2, return the resulting virtual  * commi
 end_comment
 
 begin_function
-DECL|function|merge
-specifier|static
+DECL|function|merge_recursive
 name|int
-name|merge
+name|merge_recursive
 parameter_list|(
 name|struct
 name|commit
@@ -9249,7 +9258,7 @@ comment|/* 		 * When the merge fails, the result contains files 		 * with confli
 name|discard_cache
 argument_list|()
 expr_stmt|;
-name|merge
+name|merge_recursive
 argument_list|(
 name|merged_common_ancestors
 argument_list|,
@@ -9653,17 +9662,23 @@ block|}
 end_function
 
 begin_function
-DECL|function|main
+DECL|function|cmd_merge_recursive
 name|int
-name|main
+name|cmd_merge_recursive
 parameter_list|(
 name|int
 name|argc
 parameter_list|,
+specifier|const
 name|char
 modifier|*
+modifier|*
 name|argv
-index|[]
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|prefix
 parameter_list|)
 block|{
 specifier|static
@@ -10006,7 +10021,7 @@ expr_stmt|;
 block|}
 name|clean
 operator|=
-name|merge
+name|merge_recursive
 argument_list|(
 name|h1
 argument_list|,
