@@ -5092,6 +5092,14 @@ literal|"MERGE_MSG"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|unlink
+argument_list|(
+name|git_path
+argument_list|(
+literal|"SQUASH_MSG"
+argument_list|)
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|commit_index_files
