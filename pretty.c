@@ -1635,7 +1635,7 @@ end_function
 begin_function
 DECL|function|format_person_part
 specifier|static
-name|void
+name|size_t
 name|format_person_part
 parameter_list|(
 name|struct
@@ -1655,6 +1655,13 @@ name|int
 name|len
 parameter_list|)
 block|{
+comment|/* currently all placeholders have same length */
+specifier|const
+name|int
+name|placeholder_len
+init|=
+literal|2
+decl_stmt|;
 name|int
 name|start
 decl_stmt|,
@@ -1667,12 +1674,14 @@ decl_stmt|;
 name|unsigned
 name|long
 name|date
+init|=
+literal|0
 decl_stmt|;
 name|char
 modifier|*
 name|ep
 decl_stmt|;
-comment|/* parse name */
+comment|/* advance 'end' to point to email start delimiter */
 for|for
 control|(
 name|end
@@ -1695,22 +1704,26 @@ operator|++
 control|)
 empty_stmt|;
 comment|/* do nothing */
-comment|/* 	 * If it does not even have a '<' and '>', that is 	 * quite a bogus commit author and we discard it; 	 * this is in line with add_user_info() that is used 	 * in the normal codepath.  When end points at the '<' 	 * that we found, it should have matching '>' later, 	 * which means start (beginning of email address) must 	 * be strictly below len. 	 */
-name|start
-operator|=
-name|end
-operator|+
-literal|1
-expr_stmt|;
+comment|/* 	 * When end points at the '<' that we found, it should have 	 * matching '>' later, which means 'end' must be strictly 	 * below len - 1. 	 */
 if|if
 condition|(
-name|start
+name|end
 operator|>=
 name|len
 operator|-
-literal|1
+literal|2
 condition|)
-return|return;
+goto|goto
+name|skip
+goto|;
+if|if
+condition|(
+name|part
+operator|==
+literal|'n'
+condition|)
+block|{
+comment|/* name */
 while|while
 condition|(
 name|end
@@ -1730,14 +1743,6 @@ condition|)
 name|end
 operator|--
 expr_stmt|;
-if|if
-condition|(
-name|part
-operator|==
-literal|'n'
-condition|)
-block|{
-comment|/* name */
 name|strbuf_add
 argument_list|(
 name|sb
@@ -1747,14 +1752,19 @@ argument_list|,
 name|end
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+name|placeholder_len
+return|;
 block|}
-comment|/* parse email */
+name|start
+operator|=
+operator|++
+name|end
+expr_stmt|;
+comment|/* save email start position */
+comment|/* advance 'end' to point to email end delimiter */
 for|for
 control|(
-name|end
-operator|=
-name|start
 init|;
 name|end
 operator|<
@@ -1778,7 +1788,9 @@ name|end
 operator|>=
 name|len
 condition|)
-return|return;
+goto|goto
+name|skip
+goto|;
 if|if
 condition|(
 name|part
@@ -1800,9 +1812,11 @@ operator|-
 name|start
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+name|placeholder_len
+return|;
 block|}
-comment|/* parse date */
+comment|/* advance 'start' to point to date start delimiter */
 for|for
 control|(
 name|start
@@ -1834,7 +1848,9 @@ name|start
 operator|>=
 name|len
 condition|)
-return|return;
+goto|goto
+name|skip
+goto|;
 name|date
 operator|=
 name|strtoul
@@ -1857,7 +1873,9 @@ name|start
 operator|==
 name|ep
 condition|)
-return|return;
+goto|goto
+name|skip
+goto|;
 if|if
 condition|(
 name|part
@@ -1883,7 +1901,9 @@ name|start
 operator|)
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+name|placeholder_len
+return|;
 block|}
 comment|/* parse tz */
 for|for
@@ -1975,7 +1995,9 @@ name|DATE_NORMAL
 argument_list|)
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+name|placeholder_len
+return|;
 case|case
 literal|'D'
 case|:
@@ -1994,7 +2016,9 @@ name|DATE_RFC2822
 argument_list|)
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+name|placeholder_len
+return|;
 case|case
 literal|'r'
 case|:
@@ -2013,7 +2037,9 @@ name|DATE_RELATIVE
 argument_list|)
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+name|placeholder_len
+return|;
 case|case
 literal|'i'
 case|:
@@ -2032,8 +2058,50 @@ name|DATE_ISO8601
 argument_list|)
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+name|placeholder_len
+return|;
 block|}
+name|skip
+label|:
+comment|/* 	 * bogus commit, 'sb' cannot be updated, but we still need to 	 * compute a valid return value. 	 */
+if|if
+condition|(
+name|part
+operator|==
+literal|'n'
+operator|||
+name|part
+operator|==
+literal|'e'
+operator|||
+name|part
+operator|==
+literal|'t'
+operator|||
+name|part
+operator|==
+literal|'d'
+operator|||
+name|part
+operator|==
+literal|'D'
+operator|||
+name|part
+operator|==
+literal|'r'
+operator|||
+name|part
+operator|==
+literal|'i'
+condition|)
+return|return
+name|placeholder_len
+return|;
+return|return
+literal|0
+return|;
+comment|/* unknown placeholder */
 block|}
 end_function
 
@@ -2462,7 +2530,7 @@ end_function
 begin_function
 DECL|function|format_commit_item
 specifier|static
-name|void
+name|size_t
 name|format_commit_item
 parameter_list|(
 name|struct
@@ -2523,18 +2591,19 @@ block|{
 case|case
 literal|'C'
 case|:
-switch|switch
+if|if
 condition|(
+operator|!
+name|prefixcmp
+argument_list|(
 name|placeholder
-index|[
-literal|3
-index|]
+operator|+
+literal|1
+argument_list|,
+literal|"red"
+argument_list|)
 condition|)
 block|{
-case|case
-literal|'d'
-case|:
-comment|/* red */
 name|strbuf_addstr
 argument_list|(
 name|sb
@@ -2542,11 +2611,24 @@ argument_list|,
 literal|"\033[31m"
 argument_list|)
 expr_stmt|;
-return|return;
-case|case
-literal|'e'
-case|:
-comment|/* green */
+return|return
+literal|4
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|prefixcmp
+argument_list|(
+name|placeholder
+operator|+
+literal|1
+argument_list|,
+literal|"green"
+argument_list|)
+condition|)
+block|{
 name|strbuf_addstr
 argument_list|(
 name|sb
@@ -2554,11 +2636,24 @@ argument_list|,
 literal|"\033[32m"
 argument_list|)
 expr_stmt|;
-return|return;
-case|case
-literal|'u'
-case|:
-comment|/* blue */
+return|return
+literal|6
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|prefixcmp
+argument_list|(
+name|placeholder
+operator|+
+literal|1
+argument_list|,
+literal|"blue"
+argument_list|)
+condition|)
+block|{
 name|strbuf_addstr
 argument_list|(
 name|sb
@@ -2566,11 +2661,24 @@ argument_list|,
 literal|"\033[34m"
 argument_list|)
 expr_stmt|;
-return|return;
-case|case
-literal|'s'
-case|:
-comment|/* reset color */
+return|return
+literal|5
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|prefixcmp
+argument_list|(
+name|placeholder
+operator|+
+literal|1
+argument_list|,
+literal|"reset"
+argument_list|)
+condition|)
+block|{
 name|strbuf_addstr
 argument_list|(
 name|sb
@@ -2578,8 +2686,14 @@ argument_list|,
 literal|"\033[m"
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|6
+return|;
 block|}
+else|else
+return|return
+literal|0
+return|;
 case|case
 literal|'n'
 case|:
@@ -2591,7 +2705,9 @@ argument_list|,
 literal|'\n'
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|1
+return|;
 block|}
 comment|/* these depend on the commit */
 if|if
@@ -2638,7 +2754,9 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|1
+return|;
 case|case
 literal|'h'
 case|:
@@ -2655,7 +2773,9 @@ operator|->
 name|abbrev_commit_hash
 argument_list|)
 condition|)
-return|return;
+return|return
+literal|1
+return|;
 name|strbuf_addstr
 argument_list|(
 name|sb
@@ -2688,7 +2808,9 @@ name|abbrev_commit_hash
 operator|.
 name|off
 expr_stmt|;
-return|return;
+return|return
+literal|1
+return|;
 case|case
 literal|'T'
 case|:
@@ -2709,7 +2831,9 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|1
+return|;
 case|case
 literal|'t'
 case|:
@@ -2726,7 +2850,9 @@ operator|->
 name|abbrev_tree_hash
 argument_list|)
 condition|)
-return|return;
+return|return
+literal|1
+return|;
 name|strbuf_addstr
 argument_list|(
 name|sb
@@ -2761,7 +2887,9 @@ name|abbrev_tree_hash
 operator|.
 name|off
 expr_stmt|;
-return|return;
+return|return
+literal|1
+return|;
 case|case
 literal|'P'
 case|:
@@ -2815,7 +2943,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-return|return;
+return|return
+literal|1
+return|;
 case|case
 literal|'p'
 case|:
@@ -2832,7 +2962,9 @@ operator|->
 name|abbrev_parent_hashes
 argument_list|)
 condition|)
-return|return;
+return|return
+literal|1
+return|;
 for|for
 control|(
 name|p
@@ -2900,7 +3032,9 @@ name|abbrev_parent_hashes
 operator|.
 name|off
 expr_stmt|;
-return|return;
+return|return
+literal|1
+return|;
 case|case
 literal|'m'
 case|:
@@ -2936,7 +3070,9 @@ else|:
 literal|'>'
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|1
+return|;
 block|}
 comment|/* For the rest we have to parse the commit header. */
 if|if
@@ -2962,6 +3098,7 @@ block|{
 case|case
 literal|'s'
 case|:
+comment|/* subject */
 name|strbuf_add
 argument_list|(
 name|sb
@@ -2981,10 +3118,14 @@ operator|.
 name|len
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|1
+return|;
 case|case
 literal|'a'
 case|:
+comment|/* author ... */
+return|return
 name|format_person_part
 argument_list|(
 name|sb
@@ -3008,11 +3149,12 @@ name|author
 operator|.
 name|len
 argument_list|)
-expr_stmt|;
-return|return;
+return|;
 case|case
 literal|'c'
 case|:
+comment|/* committer ... */
+return|return
 name|format_person_part
 argument_list|(
 name|sb
@@ -3036,11 +3178,11 @@ name|committer
 operator|.
 name|len
 argument_list|)
-expr_stmt|;
-return|return;
+return|;
 case|case
 literal|'e'
 case|:
+comment|/* encoding */
 name|strbuf_add
 argument_list|(
 name|sb
@@ -3060,10 +3202,13 @@ operator|.
 name|len
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|1
+return|;
 case|case
 literal|'b'
 case|:
+comment|/* body */
 name|strbuf_addstr
 argument_list|(
 name|sb
@@ -3075,8 +3220,14 @@ operator|->
 name|body_off
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|1
+return|;
 block|}
+return|return
+literal|0
+return|;
+comment|/* unknown placeholder */
 block|}
 end_function
 
@@ -3102,103 +3253,6 @@ modifier|*
 name|sb
 parameter_list|)
 block|{
-specifier|const
-name|char
-modifier|*
-name|placeholders
-index|[]
-init|=
-block|{
-literal|"H"
-block|,
-comment|/* commit hash */
-literal|"h"
-block|,
-comment|/* abbreviated commit hash */
-literal|"T"
-block|,
-comment|/* tree hash */
-literal|"t"
-block|,
-comment|/* abbreviated tree hash */
-literal|"P"
-block|,
-comment|/* parent hashes */
-literal|"p"
-block|,
-comment|/* abbreviated parent hashes */
-literal|"an"
-block|,
-comment|/* author name */
-literal|"ae"
-block|,
-comment|/* author email */
-literal|"ad"
-block|,
-comment|/* author date */
-literal|"aD"
-block|,
-comment|/* author date, RFC2822 style */
-literal|"ar"
-block|,
-comment|/* author date, relative */
-literal|"at"
-block|,
-comment|/* author date, UNIX timestamp */
-literal|"ai"
-block|,
-comment|/* author date, ISO 8601 */
-literal|"cn"
-block|,
-comment|/* committer name */
-literal|"ce"
-block|,
-comment|/* committer email */
-literal|"cd"
-block|,
-comment|/* committer date */
-literal|"cD"
-block|,
-comment|/* committer date, RFC2822 style */
-literal|"cr"
-block|,
-comment|/* committer date, relative */
-literal|"ct"
-block|,
-comment|/* committer date, UNIX timestamp */
-literal|"ci"
-block|,
-comment|/* committer date, ISO 8601 */
-literal|"e"
-block|,
-comment|/* encoding */
-literal|"s"
-block|,
-comment|/* subject */
-literal|"b"
-block|,
-comment|/* body */
-literal|"Cred"
-block|,
-comment|/* red */
-literal|"Cgreen"
-block|,
-comment|/* green */
-literal|"Cblue"
-block|,
-comment|/* blue */
-literal|"Creset"
-block|,
-comment|/* reset color */
-literal|"n"
-block|,
-comment|/* newline */
-literal|"m"
-block|,
-comment|/* left/right/bottom */
-name|NULL
-block|}
-decl_stmt|;
 name|struct
 name|format_commit_context
 name|context
@@ -3227,8 +3281,6 @@ argument_list|(
 name|sb
 argument_list|,
 name|format
-argument_list|,
-name|placeholders
 argument_list|,
 name|format_commit_item
 argument_list|,

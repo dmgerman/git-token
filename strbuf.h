@@ -542,7 +542,7 @@ end_function_decl
 begin_typedef
 DECL|typedef|expand_fn_t
 typedef|typedef
-name|void
+name|size_t
 function_decl|(
 modifier|*
 name|expand_fn_t
@@ -579,12 +579,6 @@ specifier|const
 name|char
 modifier|*
 name|format
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-modifier|*
-name|placeholders
 parameter_list|,
 name|expand_fn_t
 name|fn
