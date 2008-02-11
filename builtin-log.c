@@ -1088,9 +1088,9 @@ condition|(
 operator|!
 name|value
 condition|)
-name|die
+name|config_error_nonbool
 argument_list|(
-literal|"format.subjectprefix without value"
+name|var
 argument_list|)
 expr_stmt|;
 name|fmt_patch_subject_prefix
