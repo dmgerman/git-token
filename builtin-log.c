@@ -2351,11 +2351,12 @@ condition|(
 operator|!
 name|value
 condition|)
-name|die
+return|return
+name|config_error_nonbool
 argument_list|(
-literal|"format.suffix without value"
+name|var
 argument_list|)
-expr_stmt|;
+return|;
 name|fmt_patch_suffix
 operator|=
 name|xstrdup
@@ -2403,6 +2404,8 @@ condition|)
 block|{
 if|if
 condition|(
+name|value
+operator|&&
 operator|!
 name|strcasecmp
 argument_list|(
