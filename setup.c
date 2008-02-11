@@ -1699,6 +1699,17 @@ condition|)
 block|{
 if|if
 condition|(
+operator|!
+name|value
+condition|)
+return|return
+name|config_error_nonbool
+argument_list|(
+name|var
+argument_list|)
+return|;
+if|if
+condition|(
 name|git_work_tree_cfg
 condition|)
 name|free
