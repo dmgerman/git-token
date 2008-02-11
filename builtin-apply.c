@@ -13565,6 +13565,17 @@ literal|"apply.whitespace"
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|value
+condition|)
+return|return
+name|config_error_nonbool
+argument_list|(
+name|var
+argument_list|)
+return|;
 name|apply_default_whitespace
 operator|=
 name|xstrdup

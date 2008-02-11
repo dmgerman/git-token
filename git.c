@@ -569,6 +569,17 @@ name|alias_command
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|value
+condition|)
+return|return
+name|config_error_nonbool
+argument_list|(
+name|var
+argument_list|)
+return|;
 name|alias_string
 operator|=
 name|xstrdup

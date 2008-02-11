@@ -2039,6 +2039,17 @@ condition|)
 return|return
 literal|0
 return|;
+if|if
+condition|(
+operator|!
+name|value
+condition|)
+return|return
+name|config_error_nonbool
+argument_list|(
+name|var
+argument_list|)
+return|;
 comment|/* [core] 		 * ;# matches www.kernel.org as well 		 * gitproxy = netcatter-1 for kernel.org 		 * gitproxy = netcatter-2 for sample.xz 		 * gitproxy = netcatter-default 		 */
 name|for_pos
 operator|=

@@ -180,6 +180,17 @@ literal|"help.format"
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|value
+condition|)
+return|return
+name|config_error_nonbool
+argument_list|(
+name|var
+argument_list|)
+return|;
 name|help_default_format
 operator|=
 name|xstrdup

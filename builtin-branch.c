@@ -369,6 +369,17 @@ argument_list|,
 literal|13
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|value
+condition|)
+return|return
+name|config_error_nonbool
+argument_list|(
+name|var
+argument_list|)
+return|;
 name|color_parse
 argument_list|(
 name|value
@@ -395,6 +406,7 @@ argument_list|,
 literal|"branch.autosetupmerge"
 argument_list|)
 condition|)
+block|{
 name|branch_track
 operator|=
 name|git_config_bool
@@ -404,6 +416,10 @@ argument_list|,
 name|value
 argument_list|)
 expr_stmt|;
+return|return
+literal|0
+return|;
+block|}
 return|return
 name|git_default_config
 argument_list|(

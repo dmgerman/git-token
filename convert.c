@@ -1492,10 +1492,8 @@ operator|!
 name|value
 condition|)
 return|return
-name|error
+name|config_error_nonbool
 argument_list|(
-literal|"%s: lacks value"
-argument_list|,
 name|var
 argument_list|)
 return|;
@@ -1529,10 +1527,8 @@ operator|!
 name|value
 condition|)
 return|return
-name|error
+name|config_error_nonbool
 argument_list|(
-literal|"%s: lacks value"
-argument_list|,
 name|var
 argument_list|)
 return|;

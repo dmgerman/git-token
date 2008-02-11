@@ -2412,6 +2412,17 @@ argument_list|,
 literal|13
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|v
+condition|)
+return|return
+name|config_error_nonbool
+argument_list|(
+name|k
+argument_list|)
+return|;
 name|color_parse
 argument_list|(
 name|v

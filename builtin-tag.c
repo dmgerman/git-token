@@ -1353,11 +1353,12 @@ condition|(
 operator|!
 name|value
 condition|)
-name|die
+return|return
+name|config_error_nonbool
 argument_list|(
-literal|"user.signingkey without value"
+name|value
 argument_list|)
-expr_stmt|;
+return|;
 name|set_signingkey
 argument_list|(
 name|value
