@@ -5154,5 +5154,31 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Call this to report error for your variable that should not  * get a boolean value (i.e. "[my] var" means "true").  */
+end_comment
+
+begin_function
+DECL|function|config_error_nonbool
+name|int
+name|config_error_nonbool
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|var
+parameter_list|)
+block|{
+return|return
+name|error
+argument_list|(
+literal|"Missing value for '%s'"
+argument_list|,
+name|var
+argument_list|)
+return|;
+block|}
+end_function
+
 end_unit
 
