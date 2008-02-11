@@ -4022,6 +4022,17 @@ literal|"commit.template"
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|v
+condition|)
+return|return
+name|config_error_nonbool
+argument_list|(
+name|v
+argument_list|)
+return|;
 name|template_file
 operator|=
 name|xstrdup
