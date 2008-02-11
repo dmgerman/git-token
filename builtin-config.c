@@ -1018,6 +1018,16 @@ name|get_color_slot
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|value
+condition|)
+name|config_error_nonbool
+argument_list|(
+name|var
+argument_list|)
+expr_stmt|;
 name|color_parse
 argument_list|(
 name|value
