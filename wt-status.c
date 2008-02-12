@@ -373,9 +373,10 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|s
 operator|->
-name|reference
+name|is_initial
 condition|)
 block|{
 name|color_fprintf_ln
