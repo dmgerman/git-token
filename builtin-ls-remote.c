@@ -539,6 +539,11 @@ argument_list|(
 name|transport
 argument_list|)
 expr_stmt|;
+name|transport_disconnect
+argument_list|(
+name|transport
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!

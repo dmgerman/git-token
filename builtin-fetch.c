@@ -3206,6 +3206,11 @@ argument_list|(
 name|fetch_map
 argument_list|)
 expr_stmt|;
+name|transport_disconnect
+argument_list|(
+name|transport
+argument_list|)
+expr_stmt|;
 return|return
 literal|0
 return|;

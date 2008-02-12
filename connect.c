@@ -2549,8 +2549,17 @@ return|;
 block|}
 end_function
 
+begin_decl_stmt
+DECL|variable|no_fork
+specifier|static
+name|struct
+name|child_process
+name|no_fork
+decl_stmt|;
+end_decl_stmt
+
 begin_comment
-comment|/*  * This returns NULL if the transport protocol does not need fork(2), or a  * struct child_process object if it does.  Once done, finish the connection  * with finish_connect() with the value returned from this function  * (it is safe to call finish_connect() with NULL to support the former  * case).  *  * If it returns, the connect is successful; it just dies on errors.  */
+comment|/*  * This returns a dummy child_process if the transport protocol does not  * need fork(2), or a struct child_process object if it does.  Once done,  * finish the connection with finish_connect() with the value returned from  * this function (it is safe to call finish_connect() with NULL to support  * the former case).  *  * If it returns, the connect is successful; it just dies on errors (this  * will hopefully be changed in a libification effort, to return NULL when  * the connection failed).  */
 end_comment
 
 begin_function
@@ -2942,7 +2951,8 @@ name|path
 argument_list|)
 expr_stmt|;
 return|return
-name|NULL
+operator|&
+name|no_fork
 return|;
 block|}
 name|conn
@@ -3221,6 +3231,11 @@ if|if
 condition|(
 operator|!
 name|conn
+operator|||
+name|conn
+operator|==
+operator|&
+name|no_fork
 condition|)
 return|return
 literal|0
