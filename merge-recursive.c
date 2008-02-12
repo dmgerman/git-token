@@ -1885,12 +1885,9 @@ index|]
 operator|.
 name|mode
 operator|=
-name|ntohl
-argument_list|(
 name|ce
 operator|->
 name|ce_mode
-argument_list|)
 expr_stmt|;
 name|hashcpy
 argument_list|(

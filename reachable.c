@@ -1067,15 +1067,12 @@ if|if
 condition|(
 name|S_ISGITLINK
 argument_list|(
-name|ntohl
-argument_list|(
 name|active_cache
 index|[
 name|i
 index|]
 operator|->
 name|ce_mode
-argument_list|)
 argument_list|)
 condition|)
 continue|continue;
