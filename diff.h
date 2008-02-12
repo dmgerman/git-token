@@ -198,6 +198,22 @@ name|DIFF_FORMAT_SHORTSTAT
 value|0x0020
 end_define
 
+begin_define
+DECL|macro|DIFF_FORMAT_DIRSTAT
+define|#
+directive|define
+name|DIFF_FORMAT_DIRSTAT
+value|0x0040
+end_define
+
+begin_define
+DECL|macro|DIFF_FORMAT_CUMULATIVE
+define|#
+directive|define
+name|DIFF_FORMAT_CUMULATIVE
+value|0x0080
+end_define
+
 begin_comment
 comment|/* These override all above */
 end_comment
@@ -499,6 +515,10 @@ decl_stmt|;
 DECL|member|rename_limit
 name|int
 name|rename_limit
+decl_stmt|;
+DECL|member|dirstat_percent
+name|int
+name|dirstat_percent
 decl_stmt|;
 DECL|member|setup
 name|int
