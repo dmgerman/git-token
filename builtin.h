@@ -61,27 +61,6 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|int
-name|write_tree
-parameter_list|(
-name|unsigned
-name|char
-modifier|*
-name|sha1
-parameter_list|,
-name|int
-name|missing_ok
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|prefix
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-specifier|extern
 name|void
 name|prune_packed_objects
 parameter_list|(

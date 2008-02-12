@@ -59,6 +59,12 @@ directive|include
 file|"parse-options.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"cache-tree.h"
+end_include
+
 begin_comment
 comment|/*  * This implements the builtins revert and cherry-pick.  *  * Copyright (c) 2007 Johannes E. Schindelin  *  * Based on git-revert.sh, which is  *  * Copyright (c) 2005 Linus Torvalds  * Copyright (c) 2005 Junio C Hamano  */
 end_comment
@@ -1516,7 +1522,7 @@ block|{
 comment|/* 		 * We do not intend to commit immediately.  We just want to 		 * merge the differences in, so let's compute the tree 		 * that represents the "current" state for merge-recursive 		 * to work on. 		 */
 if|if
 condition|(
-name|write_tree
+name|write_cache_as_tree
 argument_list|(
 name|head
 argument_list|,
@@ -1945,7 +1951,7 @@ argument_list|,
 name|oneline
 argument_list|)
 operator|||
-name|write_tree
+name|write_cache_as_tree
 argument_list|(
 name|head
 argument_list|,
