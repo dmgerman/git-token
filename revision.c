@@ -3528,6 +3528,13 @@ expr_stmt|;
 if|if
 condition|(
 name|prefix
+operator|&&
+operator|!
+name|revs
+operator|->
+name|diffopt
+operator|.
+name|prefix
 condition|)
 block|{
 name|revs
