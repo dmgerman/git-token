@@ -1551,6 +1551,16 @@ argument_list|(
 literal|"unable to write temporary index file"
 argument_list|)
 expr_stmt|;
+name|discard_cache
+argument_list|()
+expr_stmt|;
+name|read_cache_from
+argument_list|(
+name|false_lock
+operator|.
+name|filename
+argument_list|)
+expr_stmt|;
 return|return
 name|false_lock
 operator|.
