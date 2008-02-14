@@ -9398,16 +9398,19 @@ operator|&
 name|entry
 argument_list|)
 condition|)
-block|{
-if|if
+switch|switch
 condition|(
-name|S_ISDIR
+name|object_type
 argument_list|(
 name|entry
 operator|.
 name|mode
 argument_list|)
 condition|)
+block|{
+case|case
+name|OBJ_TREE
+case|:
 name|p
 operator|=
 name|process_tree
@@ -9427,7 +9430,10 @@ argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
-else|else
+break|break;
+case|case
+name|OBJ_BLOB
+case|:
 name|p
 operator|=
 name|process_blob
@@ -9447,6 +9453,10 @@ argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
+break|break;
+default|default:
+comment|/* Subproject commit - not in this repository */
+break|break;
 block|}
 name|free
 argument_list|(
