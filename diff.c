@@ -502,7 +502,7 @@ name|drv
 operator|->
 name|cmd
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|value
 argument_list|)
