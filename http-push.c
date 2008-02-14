@@ -13641,17 +13641,10 @@ argument_list|,
 name|ref_lock
 argument_list|)
 condition|)
-block|{
 name|rc
 operator|=
 literal|1
 expr_stmt|;
-goto|goto
-name|unlock
-goto|;
-block|}
-name|unlock
-label|:
 if|if
 condition|(
 operator|!
