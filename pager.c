@@ -243,6 +243,16 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
+name|dup2
+argument_list|(
+name|fd
+index|[
+literal|1
+index|]
+argument_list|,
+literal|2
+argument_list|)
+expr_stmt|;
 name|close
 argument_list|(
 name|fd
