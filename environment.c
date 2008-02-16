@@ -208,6 +208,7 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|pager_program
+specifier|const
 name|char
 modifier|*
 name|pager_program
