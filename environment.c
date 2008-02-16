@@ -235,6 +235,7 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|excludes_file
+specifier|const
 name|char
 modifier|*
 name|excludes_file
