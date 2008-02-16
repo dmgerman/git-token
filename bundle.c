@@ -2095,6 +2095,13 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
+name|close
+argument_list|(
+name|rls
+operator|.
+name|in
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|finish_command

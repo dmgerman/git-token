@@ -777,6 +777,13 @@ condition|)
 break|break;
 block|}
 block|}
+name|close
+argument_list|(
+name|proc
+operator|.
+name|in
+argument_list|)
+expr_stmt|;
 return|return
 name|hook_status
 argument_list|(
@@ -2277,6 +2284,13 @@ return|;
 name|pack_lockfile
 operator|=
 name|index_pack_lockfile
+argument_list|(
+name|ip
+operator|.
+name|out
+argument_list|)
+expr_stmt|;
+name|close
 argument_list|(
 name|ip
 operator|.

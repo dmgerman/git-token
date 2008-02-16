@@ -2837,6 +2837,7 @@ name|do_keep
 operator|&&
 name|pack_lockfile
 condition|)
+block|{
 operator|*
 name|pack_lockfile
 operator|=
@@ -2847,6 +2848,14 @@ operator|.
 name|out
 argument_list|)
 expr_stmt|;
+name|close
+argument_list|(
+name|cmd
+operator|.
+name|out
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|finish_command

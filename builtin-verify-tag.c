@@ -311,12 +311,6 @@ operator|.
 name|in
 argument_list|)
 expr_stmt|;
-name|gpg
-operator|.
-name|close_in
-operator|=
-literal|0
-expr_stmt|;
 name|ret
 operator|=
 name|finish_command
