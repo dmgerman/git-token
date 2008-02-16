@@ -6366,6 +6366,21 @@ operator|&
 name|size
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|buf
+condition|)
+name|die
+argument_list|(
+literal|"Can't load tree %s"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|sha1
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{

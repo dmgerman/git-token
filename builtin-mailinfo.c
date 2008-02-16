@@ -3936,6 +3936,9 @@ block|{
 case|case
 name|TE_BASE64
 case|:
+case|case
+name|TE_QP
+case|:
 block|{
 name|char
 modifier|*

@@ -4799,6 +4799,27 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|int
+name|git_config_string
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
 name|git_config_set
 parameter_list|(
 specifier|const
@@ -5091,6 +5112,7 @@ end_function_decl
 
 begin_decl_stmt
 specifier|extern
+specifier|const
 name|char
 modifier|*
 name|pager_program
@@ -5116,6 +5138,7 @@ end_decl_stmt
 
 begin_decl_stmt
 specifier|extern
+specifier|const
 name|char
 modifier|*
 name|editor_program
@@ -5124,6 +5147,7 @@ end_decl_stmt
 
 begin_decl_stmt
 specifier|extern
+specifier|const
 name|char
 modifier|*
 name|excludes_file

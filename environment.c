@@ -208,6 +208,7 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|pager_program
+specifier|const
 name|char
 modifier|*
 name|pager_program
@@ -225,6 +226,7 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|editor_program
+specifier|const
 name|char
 modifier|*
 name|editor_program
@@ -233,6 +235,7 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|excludes_file
+specifier|const
 name|char
 modifier|*
 name|excludes_file
