@@ -226,6 +226,7 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|editor_program
+specifier|const
 name|char
 modifier|*
 name|editor_program
