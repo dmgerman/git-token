@@ -257,6 +257,16 @@ comment|/* 1: both ways, -1: only when adding git objects */
 end_comment
 
 begin_decl_stmt
+DECL|variable|safe_crlf
+name|enum
+name|safe_crlf
+name|safe_crlf
+init|=
+name|SAFE_CRLF_WARN
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|whitespace_rule_cfg
 name|unsigned
 name|whitespace_rule_cfg
