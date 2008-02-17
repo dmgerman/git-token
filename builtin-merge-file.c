@@ -346,7 +346,7 @@ argument_list|,
 operator|&
 name|xpp
 argument_list|,
-name|XDL_MERGE_ZEALOUS
+name|XDL_MERGE_ZEALOUS_ALNUM
 argument_list|,
 operator|&
 name|result
