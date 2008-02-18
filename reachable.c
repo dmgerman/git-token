@@ -472,6 +472,12 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|tag
+operator|->
+name|tagged
+condition|)
 name|add_object
 argument_list|(
 name|tag
