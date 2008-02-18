@@ -291,6 +291,12 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|!
+name|blob
+condition|)
+return|return;
+if|if
+condition|(
 name|blob
 operator|->
 name|object
@@ -340,6 +346,12 @@ name|tree
 operator|->
 name|object
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|tree
+condition|)
+return|return;
 if|if
 condition|(
 name|obj
