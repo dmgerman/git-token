@@ -791,10 +791,17 @@ name|NULL
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
 name|prepare_revision_walk
 argument_list|(
 operator|&
 name|revs
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"revision walk setup failed"
 argument_list|)
 expr_stmt|;
 name|mark_edges_uninteresting

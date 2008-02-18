@@ -1251,9 +1251,16 @@ name|flags
 operator||=
 name|UNINTERESTING
 expr_stmt|;
+if|if
+condition|(
 name|prepare_revision_walk
 argument_list|(
 name|rev
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"revision walk setup failed"
 argument_list|)
 expr_stmt|;
 while|while

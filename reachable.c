@@ -1162,9 +1162,16 @@ name|revs
 argument_list|)
 expr_stmt|;
 comment|/* 	 * Set up the revision walk - this will move all commits 	 * from the pending list to the commit walking list. 	 */
+if|if
+condition|(
 name|prepare_revision_walk
 argument_list|(
 name|revs
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"revision walk setup failed"
 argument_list|)
 expr_stmt|;
 name|walk_commit_list
