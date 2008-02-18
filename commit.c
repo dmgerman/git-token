@@ -1778,6 +1778,15 @@ name|ret
 decl_stmt|;
 if|if
 condition|(
+operator|!
+name|item
+condition|)
+return|return
+operator|-
+literal|1
+return|;
+if|if
+condition|(
 name|item
 operator|->
 name|object
