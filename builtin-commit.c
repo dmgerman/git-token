@@ -18,6 +18,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"color.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"dir.h"
 end_include
 
@@ -4112,6 +4118,17 @@ name|git_config
 argument_list|(
 name|git_status_config
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|wt_status_use_color
+operator|==
+operator|-
+literal|1
+condition|)
+name|wt_status_use_color
+operator|=
+name|git_use_color_default
 expr_stmt|;
 name|argc
 operator|=
