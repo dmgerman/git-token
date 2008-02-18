@@ -2207,13 +2207,14 @@ name|parents
 operator|->
 name|item
 decl_stmt|;
+if|if
+condition|(
+operator|!
 name|parse_commit
 argument_list|(
 name|commit
 argument_list|)
-expr_stmt|;
-if|if
-condition|(
+operator|&&
 operator|!
 operator|(
 name|commit

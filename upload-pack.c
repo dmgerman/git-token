@@ -2941,6 +2941,8 @@ name|parsed
 operator|=
 literal|0
 expr_stmt|;
+if|if
+condition|(
 name|parse_commit
 argument_list|(
 operator|(
@@ -2949,6 +2951,11 @@ name|commit
 operator|*
 operator|)
 name|object
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"invalid commit"
 argument_list|)
 expr_stmt|;
 name|parents
