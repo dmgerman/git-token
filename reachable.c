@@ -946,6 +946,10 @@ argument_list|(
 name|sha1
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|tree
+condition|)
 name|add_pending_object
 argument_list|(
 name|revs
