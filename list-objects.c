@@ -105,6 +105,16 @@ condition|)
 return|return;
 if|if
 condition|(
+operator|!
+name|obj
+condition|)
+name|die
+argument_list|(
+literal|"bad blob object"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|obj
 operator|->
 name|flags
@@ -246,6 +256,16 @@ operator|->
 name|tree_objects
 condition|)
 return|return;
+if|if
+condition|(
+operator|!
+name|obj
+condition|)
+name|die
+argument_list|(
+literal|"bad tree object"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|obj
