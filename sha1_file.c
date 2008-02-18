@@ -10735,6 +10735,12 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|ref_length
+operator|+
+literal|40
+operator|>
+name|isize
+operator|||
 name|memcmp
 argument_list|(
 name|buffer
