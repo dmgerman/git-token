@@ -3234,6 +3234,7 @@ name|type
 operator|==
 name|OBJ_TAG
 condition|)
+block|{
 name|object
 operator|=
 name|deref_tag
@@ -3248,6 +3249,15 @@ name|path
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|object
+condition|)
+return|return
+literal|0
+return|;
+block|}
 if|if
 condition|(
 name|object

@@ -491,6 +491,23 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|obj
+condition|)
+name|die
+argument_list|(
+literal|"git-show-ref: bad tag at ref %s (%s)"
+argument_list|,
+name|refname
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|sha1
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|hex
 operator|=
 name|find_unique_abbrev

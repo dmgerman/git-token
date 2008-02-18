@@ -3202,6 +3202,10 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|o
+condition|)
 name|packet_write
 argument_list|(
 literal|1
