@@ -92,6 +92,16 @@ name|object
 decl_stmt|;
 if|if
 condition|(
+operator|!
+name|blob
+condition|)
+name|die
+argument_list|(
+literal|"bad blob object"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|obj
 operator|->
 name|flags
@@ -190,6 +200,16 @@ name|struct
 name|name_path
 name|me
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|tree
+condition|)
+name|die
+argument_list|(
+literal|"bad tree object"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|obj
@@ -472,6 +492,12 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|tag
+operator|->
+name|tagged
+condition|)
 name|add_object
 argument_list|(
 name|tag
@@ -946,6 +972,10 @@ argument_list|(
 name|sha1
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|tree
+condition|)
 name|add_pending_object
 argument_list|(
 name|revs
