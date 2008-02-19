@@ -371,7 +371,6 @@ modifier|*
 name|mime_boundary
 decl_stmt|;
 DECL|member|message_id
-specifier|const
 name|char
 modifier|*
 name|message_id
