@@ -634,10 +634,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|add_user_info
-specifier|static
+DECL|function|pp_user_info
 name|void
-name|add_user_info
+name|pp_user_info
 parameter_list|(
 specifier|const
 name|char
@@ -1695,7 +1694,7 @@ operator|++
 control|)
 empty_stmt|;
 comment|/* do nothing */
-comment|/* 	 * If it does not even have a '<' and '>', that is 	 * quite a bogus commit author and we discard it; 	 * this is in line with add_user_info() that is used 	 * in the normal codepath.  When end points at the '<' 	 * that we found, it should have matching '>' later, 	 * which means start (beginning of email address) must 	 * be strictly below len. 	 */
+comment|/* 	 * If it does not even have a '<' and '>', that is 	 * quite a bogus commit author and we discard it; 	 * this is in line with pp_user_info() that is used 	 * in the normal codepath.  When end points at the '<' 	 * that we found, it should have matching '>' later, 	 * which means start (beginning of email address) must 	 * be strictly below len. 	 */
 name|start
 operator|=
 name|end
@@ -3459,7 +3458,7 @@ operator|+
 literal|80
 argument_list|)
 expr_stmt|;
-name|add_user_info
+name|pp_user_info
 argument_list|(
 literal|"Author"
 argument_list|,
@@ -3509,7 +3508,7 @@ operator|+
 literal|80
 argument_list|)
 expr_stmt|;
-name|add_user_info
+name|pp_user_info
 argument_list|(
 literal|"Commit"
 argument_list|,
@@ -3533,7 +3532,6 @@ end_function
 
 begin_function
 DECL|function|pp_title_line
-specifier|static
 name|void
 name|pp_title_line
 parameter_list|(
@@ -3797,7 +3795,6 @@ end_function
 
 begin_function
 DECL|function|pp_remainder
-specifier|static
 name|void
 name|pp_remainder
 parameter_list|(
