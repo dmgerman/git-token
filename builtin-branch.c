@@ -130,16 +130,6 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|branch_track
-specifier|static
-name|int
-name|branch_track
-init|=
-literal|1
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|variable|branch_use_color
 specifier|static
 name|int
@@ -391,25 +381,6 @@ return|return
 literal|0
 return|;
 block|}
-if|if
-condition|(
-operator|!
-name|strcmp
-argument_list|(
-name|var
-argument_list|,
-literal|"branch.autosetupmerge"
-argument_list|)
-condition|)
-name|branch_track
-operator|=
-name|git_config_bool
-argument_list|(
-name|var
-argument_list|,
-name|value
-argument_list|)
-expr_stmt|;
 return|return
 name|git_default_config
 argument_list|(
@@ -2303,7 +2274,9 @@ name|int
 name|reflog
 init|=
 literal|0
-decl_stmt|,
+decl_stmt|;
+name|enum
+name|branch_track
 name|track
 decl_stmt|;
 name|int
@@ -2335,7 +2308,7 @@ operator|&
 name|verbose
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_SET_INT
 argument_list|(
 literal|0
 argument_list|,
@@ -2345,6 +2318,8 @@ operator|&
 name|track
 argument_list|,
 literal|"set up tracking mode (see git-pull(1))"
+argument_list|,
+name|BRANCH_TRACK_EXPLICIT
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -2526,7 +2501,7 @@ argument_list|)
 expr_stmt|;
 name|track
 operator|=
-name|branch_track
+name|git_branch_track
 expr_stmt|;
 name|argc
 operator|=

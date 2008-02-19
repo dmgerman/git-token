@@ -191,6 +191,10 @@ specifier|const
 name|char
 modifier|*
 name|orig_ref
+parameter_list|,
+name|enum
+name|branch_track
+name|track
 parameter_list|)
 block|{
 name|char
@@ -260,15 +264,34 @@ argument_list|,
 operator|&
 name|tracking
 argument_list|)
-operator|||
+condition|)
+return|return
+literal|1
+return|;
+if|if
+condition|(
 operator|!
 name|tracking
 operator|.
 name|matches
 condition|)
+switch|switch
+condition|(
+name|track
+condition|)
+block|{
+case|case
+name|BRANCH_TRACK_ALWAYS
+case|:
+case|case
+name|BRANCH_TRACK_EXPLICIT
+case|:
+break|break;
+default|default:
 return|return
 literal|1
 return|;
+block|}
 if|if
 condition|(
 name|tracking
@@ -285,15 +308,6 @@ argument_list|,
 name|orig_ref
 argument_list|)
 return|;
-if|if
-condition|(
-name|tracking
-operator|.
-name|matches
-operator|==
-literal|1
-condition|)
-block|{
 name|sprintf
 argument_list|(
 name|key
@@ -334,6 +348,12 @@ argument_list|,
 name|tracking
 operator|.
 name|src
+condition|?
+name|tracking
+operator|.
+name|src
+else|:
+name|orig_ref
 argument_list|)
 expr_stmt|;
 name|free
@@ -345,14 +365,21 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"Branch %s set up to track remote branch %s.\n"
+literal|"Branch %s set up to track %s branch %s.\n"
 argument_list|,
 name|new_ref
+argument_list|,
+name|tracking
+operator|.
+name|remote
+condition|?
+literal|"remote"
+else|:
+literal|"local"
 argument_list|,
 name|orig_ref
 argument_list|)
 expr_stmt|;
-block|}
 return|return
 literal|0
 return|;
@@ -385,7 +412,8 @@ parameter_list|,
 name|int
 name|reflog
 parameter_list|,
-name|int
+name|enum
+name|branch_track
 name|track
 parameter_list|)
 block|{
@@ -546,9 +574,16 @@ case|case
 literal|0
 case|:
 comment|/* Not branching from any existing branch */
-name|real_ref
-operator|=
-name|NULL
+if|if
+condition|(
+name|track
+operator|==
+name|BRANCH_TRACK_EXPLICIT
+condition|)
+name|die
+argument_list|(
+literal|"Cannot setup tracking information; starting point is not a branch."
+argument_list|)
 expr_stmt|;
 break|break;
 case|case
@@ -660,7 +695,6 @@ argument_list|,
 name|start_name
 argument_list|)
 expr_stmt|;
-comment|/* When branching off a remote branch, set up so that git-pull 	   automatically merges from there.  So far, this is only done for 	   remotes registered via .git/config.  */
 if|if
 condition|(
 name|real_ref
@@ -672,6 +706,8 @@ argument_list|(
 name|name
 argument_list|,
 name|real_ref
+argument_list|,
+name|track
 argument_list|)
 expr_stmt|;
 if|if
@@ -697,10 +733,6 @@ name|errno
 argument_list|)
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|real_ref
-condition|)
 name|free
 argument_list|(
 name|real_ref

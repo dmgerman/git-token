@@ -2457,6 +2457,36 @@ name|auto_crlf
 decl_stmt|;
 end_decl_stmt
 
+begin_enum
+DECL|enum|branch_track
+enum|enum
+name|branch_track
+block|{
+DECL|enumerator|BRANCH_TRACK_NEVER
+name|BRANCH_TRACK_NEVER
+init|=
+literal|0
+block|,
+DECL|enumerator|BRANCH_TRACK_REMOTE
+name|BRANCH_TRACK_REMOTE
+block|,
+DECL|enumerator|BRANCH_TRACK_ALWAYS
+name|BRANCH_TRACK_ALWAYS
+block|,
+DECL|enumerator|BRANCH_TRACK_EXPLICIT
+name|BRANCH_TRACK_EXPLICIT
+block|, }
+enum|;
+end_enum
+
+begin_decl_stmt
+specifier|extern
+name|enum
+name|branch_track
+name|git_branch_track
+decl_stmt|;
+end_decl_stmt
+
 begin_define
 DECL|macro|GIT_REPO_VERSION
 define|#
