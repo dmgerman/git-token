@@ -34,6 +34,10 @@ DECL|member|url_nr
 name|int
 name|url_nr
 decl_stmt|;
+DECL|member|url_alloc
+name|int
+name|url_alloc
+decl_stmt|;
 DECL|member|push_refspec
 specifier|const
 name|char
@@ -51,6 +55,10 @@ DECL|member|push_refspec_nr
 name|int
 name|push_refspec_nr
 decl_stmt|;
+DECL|member|push_refspec_alloc
+name|int
+name|push_refspec_alloc
+decl_stmt|;
 DECL|member|fetch_refspec
 specifier|const
 name|char
@@ -67,6 +75,10 @@ decl_stmt|;
 DECL|member|fetch_refspec_nr
 name|int
 name|fetch_refspec_nr
+decl_stmt|;
+DECL|member|fetch_refspec_alloc
+name|int
+name|fetch_refspec_alloc
 decl_stmt|;
 comment|/* 	 * -1 to never fetch tags 	 * 0 to auto-follow tags on heuristic (default) 	 * 1 to always auto-follow tags 	 * 2 to always fetch tags 	 */
 DECL|member|fetch_tags
@@ -438,6 +450,10 @@ decl_stmt|;
 DECL|member|merge_nr
 name|int
 name|merge_nr
+decl_stmt|;
+DECL|member|merge_alloc
+name|int
+name|merge_alloc
 decl_stmt|;
 block|}
 struct|;
