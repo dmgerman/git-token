@@ -525,7 +525,7 @@ condition|)
 continue|continue;
 name|error
 argument_list|(
-literal|"failed to push to '%s'"
+literal|"failed to push some refs to '%s'"
 argument_list|,
 name|remote
 operator|->
