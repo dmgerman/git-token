@@ -1264,6 +1264,41 @@ block|}
 end_function
 
 begin_function
+DECL|function|die_bad_config
+specifier|static
+name|void
+name|die_bad_config
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|name
+parameter_list|)
+block|{
+if|if
+condition|(
+name|config_file_name
+condition|)
+name|die
+argument_list|(
+literal|"bad config value for '%s' in %s"
+argument_list|,
+name|name
+argument_list|,
+name|config_file_name
+argument_list|)
+expr_stmt|;
+name|die
+argument_list|(
+literal|"bad config value for '%s'"
+argument_list|,
+name|name
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
 DECL|function|git_config_int
 name|int
 name|git_config_int
@@ -1293,13 +1328,9 @@ operator|&
 name|ret
 argument_list|)
 condition|)
-name|die
+name|die_bad_config
 argument_list|(
-literal|"bad config value for '%s' in %s"
-argument_list|,
 name|name
-argument_list|,
-name|config_file_name
 argument_list|)
 expr_stmt|;
 return|return
@@ -1340,13 +1371,9 @@ operator|&
 name|ret
 argument_list|)
 condition|)
-name|die
+name|die_bad_config
 argument_list|(
-literal|"bad config value for '%s' in %s"
-argument_list|,
 name|name
-argument_list|,
-name|config_file_name
 argument_list|)
 expr_stmt|;
 return|return
