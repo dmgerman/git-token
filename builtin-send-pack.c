@@ -2175,10 +2175,17 @@ argument_list|,
 name|flags
 argument_list|)
 condition|)
+block|{
+name|close
+argument_list|(
+name|out
+argument_list|)
+expr_stmt|;
 return|return
 operator|-
 literal|1
 return|;
+block|}
 if|if
 condition|(
 operator|!
@@ -2191,6 +2198,11 @@ name|stderr
 argument_list|,
 literal|"No refs in common and none specified; doing nothing.\n"
 literal|"Perhaps you should specify a branch such as 'master'.\n"
+argument_list|)
+expr_stmt|;
+name|close
+argument_list|(
+name|out
 argument_list|)
 expr_stmt|;
 return|return
@@ -2505,18 +2517,12 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-block|{
-name|close
-argument_list|(
-name|out
-argument_list|)
-expr_stmt|;
 return|return
 operator|-
 literal|1
 return|;
 block|}
-block|}
+else|else
 name|close
 argument_list|(
 name|out
@@ -3259,14 +3265,7 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
-name|close
-argument_list|(
-name|fd
-index|[
-literal|1
-index|]
-argument_list|)
-expr_stmt|;
+comment|/* do_send_pack always closes fd[1] */
 name|ret
 operator||=
 name|finish_connect
