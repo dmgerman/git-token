@@ -2920,6 +2920,14 @@ operator|||
 operator|!
 name|strcmp
 argument_list|(
+literal|"--name-only"
+argument_list|,
+name|arg
+argument_list|)
+operator|||
+operator|!
+name|strcmp
+argument_list|(
 literal|"--files-with-matches"
 argument_list|,
 name|arg
