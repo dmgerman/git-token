@@ -234,12 +234,7 @@ name|last
 operator|=
 name|ce
 expr_stmt|;
-name|ce
-operator|->
-name|ce_flags
-operator||=
-name|CE_REMOVE
-expr_stmt|;
+continue|continue;
 block|}
 operator|*
 name|dst
