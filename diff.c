@@ -6955,7 +6955,7 @@ literal|"!^[ 	]*\\(catch\\|do\\|for\\|if\\|instanceof\\|"
 literal|"new\\|return\\|switch\\|throw\\|while\\)\n"
 literal|"^[ 	]*\\(\\([ 	]*"
 literal|"[A-Za-z_][A-Za-z_0-9]*\\)\\{2,\\}"
-literal|"[ 	]*([^;]*$\\)"
+literal|"[ 	]*([^;]*\\)$"
 block|}
 block|,
 block|{
