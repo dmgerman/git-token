@@ -182,6 +182,11 @@ name|no_walk
 range|:
 literal|1
 decl_stmt|,
+DECL|member|show_all
+name|show_all
+range|:
+literal|1
+decl_stmt|,
 DECL|member|remove_empty_trees
 name|remove_empty_trees
 range|:
