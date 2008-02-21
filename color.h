@@ -24,6 +24,38 @@ name|COLOR_MAXLEN
 value|24
 end_define
 
+begin_comment
+comment|/*  * This variable stores the value of color.ui  */
+end_comment
+
+begin_decl_stmt
+specifier|extern
+name|int
+name|git_use_color_default
+decl_stmt|;
+end_decl_stmt
+
+begin_comment
+comment|/*  * Use this instead of git_default_config if you need the value of color.ui.  */
+end_comment
+
+begin_function_decl
+name|int
+name|git_color_default_config
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|var
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|value
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function_decl
 name|int
 name|git_config_colorbool

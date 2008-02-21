@@ -12,6 +12,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"color.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"commit.h"
 end_include
 
@@ -1210,6 +1216,17 @@ name|git_config
 argument_list|(
 name|git_diff_ui_config
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|diff_use_color_default
+operator|==
+operator|-
+literal|1
+condition|)
+name|diff_use_color_default
+operator|=
+name|git_use_color_default
 expr_stmt|;
 name|init_revisions
 argument_list|(
