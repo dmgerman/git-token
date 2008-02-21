@@ -1670,10 +1670,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|adjust_to_tracking
+DECL|function|report_tracking
 specifier|static
 name|void
-name|adjust_to_tracking
+name|report_tracking
 parameter_list|(
 name|struct
 name|branch_info
@@ -1744,7 +1744,9 @@ name|branch
 init|=
 name|branch_get
 argument_list|(
-name|NULL
+name|new
+operator|->
+name|name
 argument_list|)
 decl_stmt|;
 comment|/* 	 * Nothing to report unless we are marked to build on top of 	 * somebody else. 	 */
@@ -1757,6 +1759,24 @@ operator|!
 name|branch
 operator|->
 name|merge
+operator|||
+operator|!
+name|branch
+operator|->
+name|merge
+index|[
+literal|0
+index|]
+operator|||
+operator|!
+name|branch
+operator|->
+name|merge
+index|[
+literal|0
+index|]
+operator|->
+name|dst
 condition|)
 return|return;
 comment|/* 	 * If what we used to build on no longer exists, there is 	 * nothing to report. 	 */
@@ -2038,7 +2058,7 @@ name|num_ours
 condition|)
 name|printf
 argument_list|(
-literal|"Your branch is behind of the tracked%s branch '%s' "
+literal|"Your branch is behind the tracked%s branch '%s' "
 literal|"by %d commit%s,\n"
 literal|"and can be fast-forwarded.\n"
 argument_list|,
@@ -2384,7 +2404,7 @@ literal|"HEAD"
 argument_list|)
 operator|)
 condition|)
-name|adjust_to_tracking
+name|report_tracking
 argument_list|(
 name|new
 argument_list|,
