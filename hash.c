@@ -341,7 +341,6 @@ return|return
 name|NULL
 return|;
 return|return
-operator|&
 name|lookup_hash_entry
 argument_list|(
 name|hash
