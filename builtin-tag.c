@@ -1246,18 +1246,6 @@ argument_list|(
 literal|"gpg failed to sign the tag"
 argument_list|)
 return|;
-if|if
-condition|(
-name|len
-operator|<
-literal|0
-condition|)
-return|return
-name|error
-argument_list|(
-literal|"could not read the entire signature from gpg."
-argument_list|)
-return|;
 return|return
 literal|0
 return|;
