@@ -1597,7 +1597,7 @@ name|total
 argument_list|,
 literal|50
 argument_list|,
-literal|2
+literal|1
 argument_list|)
 expr_stmt|;
 name|cnt
