@@ -517,6 +517,32 @@ name|CE_UNHASHED
 value|(0x200000)
 end_define
 
+begin_comment
+comment|/*  * We don't actually *remove* it, we can just mark it invalid so that  * we won't find it in lookups.  *  * Not only would we have to search the lists (simple enough), but  * we'd also have to rehash other hash buckets in case this makes the  * hash bucket empty (common). So it's much better to just mark  * it.  */
+end_comment
+
+begin_function
+DECL|function|remove_index_entry
+specifier|static
+specifier|inline
+name|void
+name|remove_index_entry
+parameter_list|(
+name|struct
+name|cache_entry
+modifier|*
+name|ce
+parameter_list|)
+block|{
+name|ce
+operator|->
+name|ce_flags
+operator||=
+name|CE_UNHASHED
+expr_stmt|;
+block|}
+end_function
+
 begin_function
 DECL|function|create_ce_flags
 specifier|static

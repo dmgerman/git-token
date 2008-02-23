@@ -204,6 +204,11 @@ name|ce
 argument_list|)
 condition|)
 block|{
+name|remove_index_entry
+argument_list|(
+name|ce
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|last
