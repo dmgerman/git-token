@@ -502,11 +502,19 @@ value|(0x40000)
 end_define
 
 begin_define
+DECL|macro|CE_HASHED
+define|#
+directive|define
+name|CE_HASHED
+value|(0x100000)
+end_define
+
+begin_define
 DECL|macro|CE_UNHASHED
 define|#
 directive|define
 name|CE_UNHASHED
-value|(0x80000)
+value|(0x200000)
 end_define
 
 begin_function
