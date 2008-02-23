@@ -11776,6 +11776,19 @@ operator|=
 name|online_cpus
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|progress
+condition|)
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"Using %d pack threads.\n"
+argument_list|,
+name|delta_search_threads
+argument_list|)
+expr_stmt|;
 endif|#
 directive|endif
 name|prepare_packed_git
