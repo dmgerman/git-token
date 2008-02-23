@@ -417,7 +417,7 @@ operator|=
 name|res
 expr_stmt|;
 return|return
-name|xdl_diff
+name|xdi_diff
 argument_list|(
 name|f1
 argument_list|,

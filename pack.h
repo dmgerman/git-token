@@ -162,12 +162,10 @@ end_struct
 
 begin_function_decl
 specifier|extern
-specifier|const
 name|char
 modifier|*
 name|write_idx_file
 parameter_list|(
-specifier|const
 name|char
 modifier|*
 name|index_name
@@ -219,6 +217,18 @@ name|char
 modifier|*
 parameter_list|,
 name|uint32_t
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|char
+modifier|*
+name|index_pack_lockfile
+parameter_list|(
+name|int
+name|fd
 parameter_list|)
 function_decl|;
 end_function_decl

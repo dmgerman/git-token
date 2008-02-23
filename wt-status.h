@@ -12,6 +12,12 @@ directive|define
 name|STATUS_H
 end_define
 
+begin_include
+include|#
+directive|include
+file|<stdio.h>
+end_include
+
 begin_enum
 DECL|enum|color_wt_status
 enum|enum
@@ -64,6 +70,10 @@ DECL|member|untracked
 name|int
 name|untracked
 decl_stmt|;
+DECL|member|nowarn
+name|int
+name|nowarn
+decl_stmt|;
 comment|/* These are computed during processing of the individual sections */
 DECL|member|commitable
 name|int
@@ -76,6 +86,23 @@ decl_stmt|;
 DECL|member|workdir_untracked
 name|int
 name|workdir_untracked
+decl_stmt|;
+DECL|member|index_file
+specifier|const
+name|char
+modifier|*
+name|index_file
+decl_stmt|;
+DECL|member|fp
+name|FILE
+modifier|*
+name|fp
+decl_stmt|;
+DECL|member|prefix
+specifier|const
+name|char
+modifier|*
+name|prefix
 decl_stmt|;
 block|}
 struct|;
@@ -97,6 +124,20 @@ name|value
 parameter_list|)
 function_decl|;
 end_function_decl
+
+begin_decl_stmt
+DECL|variable|wt_status_use_color
+name|int
+name|wt_status_use_color
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|wt_status_relative_paths
+name|int
+name|wt_status_relative_paths
+decl_stmt|;
+end_decl_stmt
 
 begin_function_decl
 name|void

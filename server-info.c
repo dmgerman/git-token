@@ -228,7 +228,7 @@ name|error
 argument_list|(
 literal|"unable to update %s"
 argument_list|,
-name|path0
+name|path1
 argument_list|)
 return|;
 name|for_each_ref
@@ -549,6 +549,8 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|len
+operator|&&
 name|line
 index|[
 name|len

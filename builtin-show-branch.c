@@ -1323,6 +1323,8 @@ argument_list|,
 name|NULL
 argument_list|,
 literal|0
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|pretty_str
@@ -2890,6 +2892,17 @@ literal|"showbranch.default"
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|value
+condition|)
+return|return
+name|config_error_nonbool
+argument_list|(
+name|var
+argument_list|)
+return|;
 if|if
 condition|(
 name|default_alloc

@@ -706,6 +706,7 @@ modifier|*
 modifier|*
 name|best_match
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 name|base

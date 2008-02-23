@@ -668,7 +668,7 @@ name|size
 operator|=
 name|size
 expr_stmt|;
-name|xdl_diff
+name|xdi_diff
 argument_list|(
 operator|&
 name|src

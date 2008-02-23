@@ -208,16 +208,10 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|pager_program
+specifier|const
 name|char
 modifier|*
 name|pager_program
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-DECL|variable|pager_in_use
-name|int
-name|pager_in_use
 decl_stmt|;
 end_decl_stmt
 
@@ -232,9 +226,19 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|editor_program
+specifier|const
 name|char
 modifier|*
 name|editor_program
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|excludes_file
+specifier|const
+name|char
+modifier|*
+name|excludes_file
 decl_stmt|;
 end_decl_stmt
 
@@ -251,6 +255,25 @@ begin_comment
 DECL|variable|auto_crlf
 comment|/* 1: both ways, -1: only when adding git objects */
 end_comment
+
+begin_decl_stmt
+DECL|variable|safe_crlf
+name|enum
+name|safe_crlf
+name|safe_crlf
+init|=
+name|SAFE_CRLF_WARN
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|whitespace_rule_cfg
+name|unsigned
+name|whitespace_rule_cfg
+init|=
+name|WS_DEFAULT_RULE
+decl_stmt|;
+end_decl_stmt
 
 begin_comment
 comment|/* This is set by setup_git_dir_gently() and/or git_default_config() */

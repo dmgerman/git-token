@@ -115,10 +115,10 @@ argument_list|)
 return|;
 if|if
 condition|(
-operator|*
+name|is_absolute_path
+argument_list|(
 name|trace
-operator|==
-literal|'/'
+argument_list|)
 condition|)
 block|{
 name|int
@@ -265,7 +265,7 @@ argument_list|(
 operator|&
 name|buf
 argument_list|,
-literal|0
+literal|64
 argument_list|)
 expr_stmt|;
 name|va_start
@@ -425,9 +425,6 @@ modifier|*
 modifier|*
 name|argv
 parameter_list|,
-name|int
-name|count
-parameter_list|,
 specifier|const
 name|char
 modifier|*
@@ -471,7 +468,7 @@ argument_list|(
 operator|&
 name|buf
 argument_list|,
-literal|0
+literal|64
 argument_list|)
 expr_stmt|;
 name|va_start
@@ -593,8 +590,6 @@ operator|&
 name|buf
 argument_list|,
 name|argv
-argument_list|,
-name|count
 argument_list|,
 literal|0
 argument_list|)

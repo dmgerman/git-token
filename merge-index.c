@@ -302,12 +302,9 @@ index|]
 argument_list|,
 literal|"%o"
 argument_list|,
-name|ntohl
-argument_list|(
 name|ce
 operator|->
 name|ce_mode
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|arguments
@@ -506,7 +503,7 @@ literal|3
 condition|)
 name|usage
 argument_list|(
-literal|"git-merge-index [-o] [-q]<merge-program> (-a |<filename>*)"
+literal|"git-merge-index [-o] [-q]<merge-program> (-a | [--]<filename>*)"
 argument_list|)
 expr_stmt|;
 name|setup_git_directory

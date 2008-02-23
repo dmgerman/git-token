@@ -88,7 +88,7 @@ argument_list|)
 expr_stmt|;
 name|git_config
 argument_list|(
-name|git_default_config
+name|git_diff_basic_config
 argument_list|)
 expr_stmt|;
 comment|/* no "diff" UI options */
@@ -240,19 +240,15 @@ name|cached
 argument_list|)
 expr_stmt|;
 return|return
+name|diff_result_code
+argument_list|(
+operator|&
 name|rev
 operator|.
 name|diffopt
-operator|.
-name|exit_with_status
-condition|?
-name|rev
-operator|.
-name|diffopt
-operator|.
-name|has_changes
-else|:
+argument_list|,
 name|result
+argument_list|)
 return|;
 block|}
 end_function

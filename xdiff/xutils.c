@@ -1259,9 +1259,6 @@ argument_list|,
 name|s1
 argument_list|)
 return|;
-return|return
-literal|0
-return|;
 block|}
 end_function
 

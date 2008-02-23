@@ -52,6 +52,10 @@ name|delta_size
 decl_stmt|,
 name|base_size
 decl_stmt|,
+name|max_size
+decl_stmt|;
+name|unsigned
+name|long
 name|src_copied
 decl_stmt|,
 name|literal_added
@@ -66,15 +70,13 @@ expr_stmt|;
 comment|/* assume no deletion --- "do not break" 			     * is the default. 			     */
 if|if
 condition|(
-operator|!
 name|S_ISREG
 argument_list|(
 name|src
 operator|->
 name|mode
 argument_list|)
-operator|||
-operator|!
+operator|!=
 name|S_ISREG
 argument_list|(
 name|dst
@@ -82,10 +84,20 @@ operator|->
 name|mode
 argument_list|)
 condition|)
+block|{
+operator|*
+name|merge_score_p
+operator|=
+operator|(
+name|int
+operator|)
+name|MAX_SCORE
+expr_stmt|;
 return|return
-literal|0
+literal|1
 return|;
-comment|/* leave symlink rename alone */
+comment|/* even their types are different */
+block|}
 if|if
 condition|(
 name|src
@@ -154,9 +166,31 @@ operator|->
 name|size
 operator|)
 expr_stmt|;
+name|max_size
+operator|=
+operator|(
+operator|(
+name|src
+operator|->
+name|size
+operator|>
+name|dst
+operator|->
+name|size
+operator|)
+condition|?
+name|src
+operator|->
+name|size
+else|:
+name|dst
+operator|->
+name|size
+operator|)
+expr_stmt|;
 if|if
 condition|(
-name|base_size
+name|max_size
 operator|<
 name|MINIMUM_BREAK_SIZE
 condition|)
@@ -261,6 +295,16 @@ operator|->
 name|size
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|*
+name|merge_score_p
+operator|>
+name|break_score
+condition|)
+return|return
+literal|1
+return|;
 comment|/* Extent of damage, which counts both inserts and 	 * deletes. 	 */
 name|delta_size
 operator|=
@@ -274,7 +318,7 @@ name|delta_size
 operator|*
 name|MAX_SCORE
 operator|/
-name|base_size
+name|max_size
 operator|<
 name|break_score
 condition|)
@@ -434,7 +478,7 @@ decl_stmt|;
 name|int
 name|score
 decl_stmt|;
-comment|/* We deal only with in-place edit of non directory. 		 * We do not break anything else. 		 */
+comment|/* 		 * We deal only with in-place edit of blobs. 		 * We do not break anything else. 		 */
 if|if
 condition|(
 name|DIFF_FILE_VALID
@@ -451,8 +495,7 @@ operator|->
 name|two
 argument_list|)
 operator|&&
-operator|!
-name|S_ISDIR
+name|object_type
 argument_list|(
 name|p
 operator|->
@@ -460,9 +503,10 @@ name|one
 operator|->
 name|mode
 argument_list|)
+operator|==
+name|OBJ_BLOB
 operator|&&
-operator|!
-name|S_ISDIR
+name|object_type
 argument_list|(
 name|p
 operator|->
@@ -470,6 +514,8 @@ name|two
 operator|->
 name|mode
 argument_list|)
+operator|==
+name|OBJ_BLOB
 operator|&&
 operator|!
 name|strcmp
