@@ -1403,6 +1403,15 @@ name|merge
 expr_stmt|;
 name|topts
 operator|.
+name|verbose_update
+operator|=
+operator|!
+name|opts
+operator|->
+name|quiet
+expr_stmt|;
+name|topts
+operator|.
 name|fn
 operator|=
 name|twoway_merge
