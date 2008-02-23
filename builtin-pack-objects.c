@@ -104,6 +104,12 @@ end_ifdef
 begin_include
 include|#
 directive|include
+file|"thread-utils.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|<pthread.h>
 end_include
 
@@ -9703,7 +9709,7 @@ if|if
 condition|(
 name|delta_search_threads
 operator|<
-literal|1
+literal|0
 condition|)
 name|die
 argument_list|(
@@ -9718,7 +9724,7 @@ name|THREADED_DELTA_SEARCH
 if|if
 condition|(
 name|delta_search_threads
-operator|>
+operator|!=
 literal|1
 condition|)
 name|warning
@@ -11269,7 +11275,7 @@ name|end
 operator|||
 name|delta_search_threads
 operator|<
-literal|1
+literal|0
 condition|)
 name|usage
 argument_list|(
@@ -11282,7 +11288,7 @@ name|THREADED_DELTA_SEARCH
 if|if
 condition|(
 name|delta_search_threads
-operator|>
+operator|!=
 literal|1
 condition|)
 name|warning
@@ -11756,6 +11762,22 @@ argument_list|(
 literal|"--thin cannot be used to build an indexable pack."
 argument_list|)
 expr_stmt|;
+ifdef|#
+directive|ifdef
+name|THREADED_DELTA_SEARCH
+if|if
+condition|(
+operator|!
+name|delta_search_threads
+condition|)
+comment|/* --threads=0 means autodetect */
+name|delta_search_threads
+operator|=
+name|online_cpus
+argument_list|()
+expr_stmt|;
+endif|#
+directive|endif
 name|prepare_packed_git
 argument_list|()
 expr_stmt|;
