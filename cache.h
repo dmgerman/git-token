@@ -5859,6 +5859,19 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|char
+modifier|*
+name|alias_lookup
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|alias
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
