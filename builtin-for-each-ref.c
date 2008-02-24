@@ -814,7 +814,7 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"malformatted format string %s"
+literal|"malformed format string %s"
 argument_list|,
 name|sp
 argument_list|)
