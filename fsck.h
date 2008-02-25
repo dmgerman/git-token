@@ -87,6 +87,28 @@ parameter_list|)
 function_decl|;
 end_typedef
 
+begin_function_decl
+name|int
+name|fsck_error_function
+parameter_list|(
+name|struct
+name|object
+modifier|*
+name|obj
+parameter_list|,
+name|int
+name|type
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|fmt
+parameter_list|,
+modifier|...
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/* descend in all linked child objects  * the return value is:  *    -1	error in processing the object  *<0	return value of the callback, which lead to an abort  *>0	return value of the first sigaled error>0 (in the case of no other errors)  *    0		everything OK  */
 end_comment
