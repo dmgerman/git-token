@@ -699,7 +699,7 @@ argument_list|)
 decl_stmt|;
 name|printf
 argument_list|(
-literal|"M 0%06o :%d %s\n"
+literal|"M %06o :%d %s\n"
 argument_list|,
 name|spec
 operator|->
