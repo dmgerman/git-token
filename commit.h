@@ -580,6 +580,21 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+name|struct
+name|commit_graft
+modifier|*
+name|lookup_commit_graft
+parameter_list|(
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|sha1
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 specifier|extern
 name|struct
 name|commit_list

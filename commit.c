@@ -1063,7 +1063,6 @@ end_function
 
 begin_function
 DECL|function|lookup_commit_graft
-specifier|static
 name|struct
 name|commit_graft
 modifier|*
