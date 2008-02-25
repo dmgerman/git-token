@@ -3013,10 +3013,6 @@ name|revs
 operator|.
 name|grep_filter
 expr_stmt|;
-name|track_object_refs
-operator|=
-literal|0
-expr_stmt|;
 if|if
 condition|(
 name|bisect_list
