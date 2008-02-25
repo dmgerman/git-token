@@ -932,6 +932,9 @@ name|OBJ_REF_DELTA
 init|=
 literal|7
 block|,
+DECL|enumerator|OBJ_ANY
+name|OBJ_ANY
+block|,
 DECL|enumerator|OBJ_MAX
 name|OBJ_MAX
 block|, }
