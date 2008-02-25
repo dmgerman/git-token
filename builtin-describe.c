@@ -115,6 +115,14 @@ comment|/* But allow any tags if --tags is specified */
 end_comment
 
 begin_decl_stmt
+DECL|variable|longformat
+specifier|static
+name|int
+name|longformat
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|abbrev
 specifier|static
 name|int
@@ -915,6 +923,11 @@ condition|(
 name|n
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|longformat
+condition|)
 name|printf
 argument_list|(
 literal|"%s\n"
@@ -922,6 +935,27 @@ argument_list|,
 name|n
 operator|->
 name|path
+argument_list|)
+expr_stmt|;
+else|else
+name|printf
+argument_list|(
+literal|"%s-0-g%s\n"
+argument_list|,
+name|n
+operator|->
+name|path
+argument_list|,
+name|find_unique_abbrev
+argument_list|(
+name|cmit
+operator|->
+name|object
+operator|.
+name|sha1
+argument_list|,
+name|abbrev
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return;
@@ -1526,6 +1560,18 @@ argument_list|,
 literal|"use any tag in .git/refs/tags"
 argument_list|)
 block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|0
+argument_list|,
+literal|"long"
+argument_list|,
+operator|&
+name|longformat
+argument_list|,
+literal|"always use long format"
+argument_list|)
+block|,
 name|OPT__ABBREV
 argument_list|(
 operator|&
@@ -1601,6 +1647,19 @@ expr_stmt|;
 name|save_commit_buffer
 operator|=
 literal|0
+expr_stmt|;
+if|if
+condition|(
+name|longformat
+operator|&&
+name|abbrev
+operator|==
+literal|0
+condition|)
+name|die
+argument_list|(
+literal|"--long is incompatible with --abbrev=0"
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
