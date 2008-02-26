@@ -1100,7 +1100,7 @@ operator|)
 operator|&&
 operator|(
 literal|2
-operator|<
+operator|<=
 name|len
 operator|&&
 name|isspace
