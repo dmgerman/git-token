@@ -1587,7 +1587,9 @@ name|xstrdup
 argument_list|(
 name|skipspaces
 argument_list|(
-name|s
+name|sb
+operator|.
+name|buf
 argument_list|)
 argument_list|)
 expr_stmt|;

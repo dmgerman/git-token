@@ -1487,10 +1487,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|copy_file
+DECL|function|copy_file_with_prefix
 specifier|static
 name|void
-name|copy_file
+name|copy_file_with_prefix
 parameter_list|(
 name|int
 name|prefix
@@ -1901,7 +1901,7 @@ if|if
 condition|(
 name|lc_a
 condition|)
-name|copy_file
+name|copy_file_with_prefix
 argument_list|(
 literal|'-'
 argument_list|,
@@ -1922,7 +1922,7 @@ if|if
 condition|(
 name|lc_b
 condition|)
-name|copy_file
+name|copy_file_with_prefix
 argument_list|(
 literal|'+'
 argument_list|,
