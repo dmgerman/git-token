@@ -2001,10 +2001,6 @@ argument_list|(
 name|var
 argument_list|)
 return|;
-if|if
-condition|(
-name|git_work_tree_cfg
-condition|)
 name|free
 argument_list|(
 name|git_work_tree_cfg

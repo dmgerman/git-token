@@ -2463,10 +2463,6 @@ expr_stmt|;
 if|if
 condition|(
 name|cb
-operator|&&
-name|cb
-operator|->
-name|data
 condition|)
 name|free
 argument_list|(
@@ -4922,14 +4918,6 @@ argument_list|,
 name|resp
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|cmdp
-operator|->
-name|cb
-operator|.
-name|data
-condition|)
 name|free
 argument_list|(
 name|cmdp

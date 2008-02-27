@@ -3728,12 +3728,6 @@ name|ref
 operator|->
 name|next
 expr_stmt|;
-if|if
-condition|(
-name|ref
-operator|->
-name|peer_ref
-condition|)
 name|free
 argument_list|(
 name|ref

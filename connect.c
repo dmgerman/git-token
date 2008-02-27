@@ -376,10 +376,6 @@ operator|+
 literal|41
 condition|)
 block|{
-if|if
-condition|(
-name|server_capabilities
-condition|)
 name|free
 argument_list|(
 name|server_capabilities

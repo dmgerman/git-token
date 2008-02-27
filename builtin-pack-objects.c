@@ -7673,12 +7673,6 @@ return|;
 block|}
 block|}
 comment|/* 	 * Handle memory allocation outside of the cache 	 * accounting lock.  Compiler will optimize the strangeness 	 * away when THREADED_DELTA_SEARCH is not defined. 	 */
-if|if
-condition|(
-name|trg_entry
-operator|->
-name|delta_data
-condition|)
 name|free
 argument_list|(
 name|trg_entry

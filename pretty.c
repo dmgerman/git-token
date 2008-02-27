@@ -180,10 +180,6 @@ literal|"format:"
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|user_format
-condition|)
 name|free
 argument_list|(
 name|user_format
