@@ -266,12 +266,6 @@ operator|=
 operator|-
 literal|1
 expr_stmt|;
-name|gpg
-operator|.
-name|out
-operator|=
-literal|1
-expr_stmt|;
 name|args_gpg
 index|[
 literal|2
@@ -310,12 +304,6 @@ name|gpg
 operator|.
 name|in
 argument_list|)
-expr_stmt|;
-name|gpg
-operator|.
-name|close_in
-operator|=
-literal|0
 expr_stmt|;
 name|ret
 operator|=
