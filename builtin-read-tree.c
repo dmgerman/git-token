@@ -1320,6 +1320,8 @@ name|size
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
 name|unpack_trees
 argument_list|(
 name|nr_trees
@@ -1329,7 +1331,10 @@ argument_list|,
 operator|&
 name|opts
 argument_list|)
-expr_stmt|;
+condition|)
+return|return
+literal|128
+return|;
 comment|/* 	 * When reading only one tree (either the most basic form, 	 * "-m ent" or "--reset ent" form), we can obtain a fully 	 * valid cache-tree because the index must match exactly 	 * what came from the tree. 	 */
 if|if
 condition|(

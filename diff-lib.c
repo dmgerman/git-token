@@ -3997,6 +3997,8 @@ operator|->
 name|size
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|unpack_trees
 argument_list|(
 literal|1
@@ -4006,6 +4008,11 @@ name|t
 argument_list|,
 operator|&
 name|opts
+argument_list|)
+condition|)
+name|exit
+argument_list|(
+literal|128
 argument_list|)
 expr_stmt|;
 name|diffcore_std
@@ -4263,6 +4270,8 @@ operator|->
 name|size
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|unpack_trees
 argument_list|(
 literal|1
@@ -4272,6 +4281,11 @@ name|t
 argument_list|,
 operator|&
 name|opts
+argument_list|)
+condition|)
+name|exit
+argument_list|(
+literal|128
 argument_list|)
 expr_stmt|;
 return|return

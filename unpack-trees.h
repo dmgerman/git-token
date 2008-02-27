@@ -81,6 +81,14 @@ DECL|member|aggressive
 name|int
 name|aggressive
 decl_stmt|;
+DECL|member|skip_unmerged
+name|int
+name|skip_unmerged
+decl_stmt|;
+DECL|member|gently
+name|int
+name|gently
+decl_stmt|;
 DECL|member|prefix
 specifier|const
 name|char
