@@ -398,6 +398,8 @@ operator|=
 name|get_http_walker
 argument_list|(
 name|url
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 name|walker
