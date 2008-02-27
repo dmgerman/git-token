@@ -1137,7 +1137,8 @@ name|int
 name|new_branch_log
 decl_stmt|;
 DECL|member|track
-name|int
+name|enum
+name|branch_track
 name|track
 decl_stmt|;
 block|}
@@ -2710,16 +2711,6 @@ return|;
 block|}
 end_function
 
-begin_decl_stmt
-DECL|variable|branch_track
-specifier|static
-name|int
-name|branch_track
-init|=
-literal|0
-decl_stmt|;
-end_decl_stmt
-
 begin_function
 DECL|function|git_checkout_config
 specifier|static
@@ -2737,25 +2728,6 @@ modifier|*
 name|value
 parameter_list|)
 block|{
-if|if
-condition|(
-operator|!
-name|strcmp
-argument_list|(
-name|var
-argument_list|,
-literal|"branch.autosetupmerge"
-argument_list|)
-condition|)
-name|branch_track
-operator|=
-name|git_config_bool
-argument_list|(
-name|var
-argument_list|,
-name|value
-argument_list|)
-expr_stmt|;
 return|return
 name|git_default_config
 argument_list|(
@@ -2858,7 +2830,7 @@ argument_list|,
 literal|"log for new branch"
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_SET_INT
 argument_list|(
 literal|0
 argument_list|,
@@ -2870,6 +2842,8 @@ operator|.
 name|track
 argument_list|,
 literal|"track"
+argument_list|,
+name|BRANCH_TRACK_EXPLICIT
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -2939,7 +2913,7 @@ name|opts
 operator|.
 name|track
 operator|=
-name|branch_track
+name|git_branch_track
 expr_stmt|;
 name|argc
 operator|=
@@ -3116,7 +3090,7 @@ name|opts
 operator|.
 name|track
 operator|!=
-name|branch_track
+name|git_branch_track
 operator|)
 condition|)
 name|die
