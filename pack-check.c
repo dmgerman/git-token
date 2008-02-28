@@ -11,6 +11,12 @@ directive|include
 file|"pack.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"pack-revindex.h"
+end_include
+
 begin_struct
 DECL|struct|idx_entry
 struct|struct
@@ -609,6 +615,9 @@ argument_list|(
 name|chain_histogram
 argument_list|)
 argument_list|)
+expr_stmt|;
+name|init_pack_revindex
+argument_list|()
 expr_stmt|;
 for|for
 control|(
