@@ -3131,6 +3131,16 @@ argument_list|,
 name|argv
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|pathspec
+condition|)
+name|die
+argument_list|(
+literal|"invalid path specification"
+argument_list|)
+expr_stmt|;
 comment|/* Checkout paths */
 if|if
 condition|(
