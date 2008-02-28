@@ -5569,22 +5569,6 @@ operator|&
 name|BOUNDARY
 condition|)
 block|{
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-literal|"Boundary %s\n"
-argument_list|,
-name|sha1_to_hex
-argument_list|(
-name|commit
-operator|->
-name|object
-operator|.
-name|sha1
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|boundary_count
 operator|++
 expr_stmt|;
