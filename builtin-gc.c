@@ -830,6 +830,11 @@ name|auto_gc
 init|=
 literal|0
 decl_stmt|;
+name|int
+name|quiet
+init|=
+literal|0
+decl_stmt|;
 name|char
 name|buf
 index|[
@@ -876,6 +881,18 @@ operator|&
 name|auto_gc
 argument_list|,
 literal|"enable auto-gc mode"
+argument_list|)
+block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|'q'
+argument_list|,
+literal|"quiet"
+argument_list|,
+operator|&
+name|quiet
+argument_list|,
+literal|"suppress progress reports"
 argument_list|)
 block|,
 name|OPT_END
@@ -968,6 +985,19 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+if|if
+condition|(
+name|quiet
+condition|)
+name|append_option
+argument_list|(
+name|argv_repack
+argument_list|,
+literal|"-q"
+argument_list|,
+name|MAX_ADD
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|auto_gc
