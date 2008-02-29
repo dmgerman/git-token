@@ -60,6 +60,11 @@ DECL|enumerator|PARSE_OPT_KEEP_DASHDASH
 name|PARSE_OPT_KEEP_DASHDASH
 init|=
 literal|1
+block|,
+DECL|enumerator|PARSE_OPT_STOP_AT_NON_OPTION
+name|PARSE_OPT_STOP_AT_NON_OPTION
+init|=
+literal|2
 block|, }
 enum|;
 end_enum
