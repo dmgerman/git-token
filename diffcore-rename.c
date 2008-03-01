@@ -2145,6 +2145,7 @@ literal|32767
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|num_create
 operator|>
 name|rename_limit
@@ -2152,12 +2153,9 @@ operator|&&
 name|num_src
 operator|>
 name|rename_limit
-condition|)
-goto|goto
-name|cleanup
-goto|;
-if|if
-condition|(
+operator|)
+operator|||
+operator|(
 name|num_create
 operator|*
 name|num_src
@@ -2165,10 +2163,18 @@ operator|>
 name|rename_limit
 operator|*
 name|rename_limit
+operator|)
 condition|)
+block|{
+name|warning
+argument_list|(
+literal|"too many files, skipping inexact rename detection"
+argument_list|)
+expr_stmt|;
 goto|goto
 name|cleanup
 goto|;
+block|}
 name|mx
 operator|=
 name|xmalloc
