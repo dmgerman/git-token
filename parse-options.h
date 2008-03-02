@@ -21,6 +21,9 @@ comment|/* special types */
 DECL|enumerator|OPTION_END
 name|OPTION_END
 block|,
+DECL|enumerator|OPTION_ARGUMENT
+name|OPTION_ARGUMENT
+block|,
 DECL|enumerator|OPTION_GROUP
 name|OPTION_GROUP
 block|,
@@ -185,6 +188,19 @@ directive|define
 name|OPT_END
 parameter_list|()
 value|{ OPTION_END }
+end_define
+
+begin_define
+DECL|macro|OPT_ARGUMENT
+define|#
+directive|define
+name|OPT_ARGUMENT
+parameter_list|(
+name|l
+parameter_list|,
+name|h
+parameter_list|)
+value|{ OPTION_ARGUMENT, 0, (l), NULL, NULL, (h) }
 end_define
 
 begin_define

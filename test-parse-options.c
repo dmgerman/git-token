@@ -172,6 +172,18 @@ argument_list|,
 literal|"get another string"
 argument_list|)
 block|,
+name|OPT_GROUP
+argument_list|(
+literal|"magic arguments"
+argument_list|)
+block|,
+name|OPT_ARGUMENT
+argument_list|(
+literal|"quux"
+argument_list|,
+literal|"means --quux"
+argument_list|)
+block|,
 name|OPT_END
 argument_list|()
 block|, 	}
