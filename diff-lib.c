@@ -2733,6 +2733,7 @@ name|cache_entry
 modifier|*
 name|ce
 parameter_list|,
+specifier|const
 name|unsigned
 name|char
 modifier|*
@@ -2780,6 +2781,7 @@ name|cache_entry
 modifier|*
 name|ce
 parameter_list|,
+specifier|const
 name|unsigned
 name|char
 modifier|*
@@ -2798,6 +2800,7 @@ name|int
 name|match_missing
 parameter_list|)
 block|{
+specifier|const
 name|unsigned
 name|char
 modifier|*
@@ -2821,14 +2824,6 @@ operator|!
 name|cached
 condition|)
 block|{
-specifier|static
-name|unsigned
-name|char
-name|no_sha1
-index|[
-literal|20
-index|]
-decl_stmt|;
 name|int
 name|changed
 decl_stmt|;
@@ -2909,7 +2904,7 @@ argument_list|)
 expr_stmt|;
 name|sha1
 operator|=
-name|no_sha1
+name|null_sha1
 expr_stmt|;
 block|}
 block|}
@@ -2952,6 +2947,7 @@ name|int
 name|match_missing
 parameter_list|)
 block|{
+specifier|const
 name|unsigned
 name|char
 modifier|*
@@ -3035,6 +3031,7 @@ name|mode
 decl_stmt|,
 name|oldmode
 decl_stmt|;
+specifier|const
 name|unsigned
 name|char
 modifier|*
