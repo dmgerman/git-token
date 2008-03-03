@@ -11,6 +11,12 @@ directive|include
 file|"pack.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"pack-revindex.h"
+end_include
+
 begin_struct
 DECL|struct|idx_entry
 struct|struct
@@ -610,6 +616,9 @@ name|chain_histogram
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|init_pack_revindex
+argument_list|()
+expr_stmt|;
 for|for
 control|(
 name|i
@@ -732,13 +741,15 @@ name|delta_chain_length
 condition|)
 name|printf
 argument_list|(
-literal|"%-6s %lu %"
+literal|"%-6s %lu %lu %"
 name|PRIuMAX
 literal|"\n"
 argument_list|,
 name|type
 argument_list|,
 name|size
+argument_list|,
+name|store_size
 argument_list|,
 operator|(
 name|uintmax_t
@@ -750,13 +761,15 @@ else|else
 block|{
 name|printf
 argument_list|(
-literal|"%-6s %lu %"
+literal|"%-6s %lu %lu %"
 name|PRIuMAX
 literal|" %u %s\n"
 argument_list|,
 name|type
 argument_list|,
 name|size
+argument_list|,
+name|store_size
 argument_list|,
 operator|(
 name|uintmax_t

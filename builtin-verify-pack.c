@@ -194,6 +194,11 @@ argument_list|,
 name|arg
 argument_list|)
 return|;
+name|install_packed_git
+argument_list|(
+name|pack
+argument_list|)
+expr_stmt|;
 name|err
 operator|=
 name|verify_pack
@@ -201,11 +206,6 @@ argument_list|(
 name|pack
 argument_list|,
 name|verbose
-argument_list|)
-expr_stmt|;
-name|free
-argument_list|(
-name|pack
 argument_list|)
 expr_stmt|;
 return|return
