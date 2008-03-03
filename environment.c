@@ -275,6 +275,16 @@ name|WS_DEFAULT_RULE
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|git_branch_track
+name|enum
+name|branch_track
+name|git_branch_track
+init|=
+name|BRANCH_TRACK_REMOTE
+decl_stmt|;
+end_decl_stmt
+
 begin_comment
 comment|/* This is set by setup_git_dir_gently() and/or git_default_config() */
 end_comment

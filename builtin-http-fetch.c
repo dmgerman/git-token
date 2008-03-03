@@ -480,10 +480,6 @@ argument_list|(
 name|walker
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|rewritten_url
-condition|)
 name|free
 argument_list|(
 name|rewritten_url
