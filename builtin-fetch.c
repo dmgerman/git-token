@@ -904,6 +904,13 @@ name|merge
 operator|=
 literal|1
 expr_stmt|;
+name|tail
+operator|=
+operator|&
+name|ref_map
+operator|->
+name|next
+expr_stmt|;
 block|}
 block|}
 name|ref_remove_duplicates
