@@ -2622,7 +2622,6 @@ modifier|*
 name|tail
 parameter_list|)
 block|{
-specifier|static
 name|struct
 name|path_list
 name|existing_refs
@@ -2920,6 +2919,22 @@ name|ref_name
 argument_list|)
 expr_stmt|;
 block|}
+name|path_list_clear
+argument_list|(
+operator|&
+name|existing_refs
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+name|path_list_clear
+argument_list|(
+operator|&
+name|new_refs
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
