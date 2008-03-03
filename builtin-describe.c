@@ -947,6 +947,13 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|parse_tag
+argument_list|(
+name|n
+operator|->
+name|tag
+argument_list|)
+operator|||
 operator|!
 name|n
 operator|->
