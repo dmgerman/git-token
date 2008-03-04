@@ -174,13 +174,21 @@ end_decl_stmt
 begin_decl_stmt
 DECL|variable|use_thin_pack
 DECL|variable|use_ofs_delta
-DECL|variable|no_progress
+DECL|variable|use_include_tag
 specifier|static
 name|int
 name|use_thin_pack
 decl_stmt|,
 name|use_ofs_delta
 decl_stmt|,
+name|use_include_tag
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|no_progress
+specifier|static
+name|int
 name|no_progress
 decl_stmt|;
 end_decl_stmt
@@ -984,6 +992,18 @@ operator|++
 index|]
 operator|=
 literal|"--delta-base-offset"
+expr_stmt|;
+if|if
+condition|(
+name|use_include_tag
+condition|)
+name|argv
+index|[
+name|arg
+operator|++
+index|]
+operator|=
+literal|"--include-tag"
 expr_stmt|;
 name|argv
 index|[
@@ -2724,6 +2744,21 @@ name|no_progress
 operator|=
 literal|1
 expr_stmt|;
+if|if
+condition|(
+name|strstr
+argument_list|(
+name|line
+operator|+
+literal|45
+argument_list|,
+literal|"include-tag"
+argument_list|)
+condition|)
+name|use_include_tag
+operator|=
+literal|1
+expr_stmt|;
 comment|/* We have sent all our refs already, and the other end 		 * should have chosen out of them; otherwise they are 		 * asking for nonsense. 		 * 		 * Hmph.  We may later want to allow "want" line that 		 * asks for something like "master~10" (symbolic)... 		 * would it make sense?  I don't know. 		 */
 name|o
 operator|=
@@ -3150,6 +3185,7 @@ name|capabilities
 init|=
 literal|"multi_ack thin-pack side-band"
 literal|" side-band-64k ofs-delta shallow no-progress"
+literal|" include-tag"
 decl_stmt|;
 name|struct
 name|object
