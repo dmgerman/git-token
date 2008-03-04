@@ -539,14 +539,6 @@ argument_list|(
 name|transport
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|ref
-condition|)
-return|return
-literal|1
-return|;
 for|for
 control|(
 init|;
