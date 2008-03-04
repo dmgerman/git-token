@@ -807,26 +807,6 @@ name|o_sha1
 operator|=
 name|NULL
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|desc
-operator|.
-name|size
-condition|)
-return|return
-name|error_func
-argument_list|(
-operator|&
-name|item
-operator|->
-name|object
-argument_list|,
-name|FSCK_ERROR
-argument_list|,
-literal|"empty tree"
-argument_list|)
-return|;
 while|while
 condition|(
 name|desc
