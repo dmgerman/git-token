@@ -933,8 +933,57 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/*  * replacements of existing functions  */
+end_comment
+
+begin_function_decl
+name|char
+modifier|*
+name|mingw_getcwd
+parameter_list|(
+name|char
+modifier|*
+name|pointer
+parameter_list|,
+name|int
+name|len
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_define
+DECL|macro|getcwd
+define|#
+directive|define
+name|getcwd
+value|mingw_getcwd
+end_define
+
+begin_comment
 comment|/*  * git specific compatibility  */
 end_comment
+
+begin_define
+DECL|macro|has_dos_drive_prefix
+define|#
+directive|define
+name|has_dos_drive_prefix
+parameter_list|(
+name|path
+parameter_list|)
+value|(isalpha(*(path))&& (path)[1] == ':')
+end_define
+
+begin_define
+DECL|macro|is_dir_sep
+define|#
+directive|define
+name|is_dir_sep
+parameter_list|(
+name|c
+parameter_list|)
+value|((c) == '/' || (c) == '\\')
+end_define
 
 begin_define
 DECL|macro|PATH_SEP
