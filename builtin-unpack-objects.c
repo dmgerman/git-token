@@ -153,6 +153,10 @@ name|ctx
 decl_stmt|;
 end_decl_stmt
 
+begin_comment
+comment|/*  * When running under --strict mode, objects whose reachability are  * suspect are kept in core without getting written in the object  * store.  */
+end_comment
+
 begin_struct
 DECL|struct|obj_buffer
 struct|struct
@@ -848,6 +852,10 @@ name|nr_objects
 decl_stmt|;
 end_decl_stmt
 
+begin_comment
+comment|/*  * Called only from check_object() after it verified this object  * is Ok.  */
+end_comment
+
 begin_function
 DECL|function|write_cached_object
 specifier|static
@@ -921,6 +929,10 @@ name|FLAG_WRITTEN
 expr_stmt|;
 block|}
 end_function
+
+begin_comment
+comment|/*  * At the very end of the processing, write_rest() scans the objects  * that have reachability requirements and calls this function.  * Verify its reachability and validity recursively and write it out.  */
+end_comment
 
 begin_function
 DECL|function|check_object
@@ -1149,6 +1161,10 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Write out nr-th object from the list, now we know the contents  * of it.  Under --strict, this buffers structured objects in-core,  * to be checked at the end.  */
+end_comment
+
 begin_function
 DECL|function|write_object
 specifier|static
@@ -1171,17 +1187,6 @@ name|long
 name|size
 parameter_list|)
 block|{
-name|added_object
-argument_list|(
-name|nr
-argument_list|,
-name|type
-argument_list|,
-name|buf
-argument_list|,
-name|size
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -1216,6 +1221,17 @@ argument_list|(
 literal|"failed to write object"
 argument_list|)
 expr_stmt|;
+name|added_object
+argument_list|(
+name|nr
+argument_list|,
+name|type
+argument_list|,
+name|buf
+argument_list|,
+name|size
+argument_list|)
+expr_stmt|;
 name|free
 argument_list|(
 name|buf
@@ -1228,7 +1244,7 @@ index|]
 operator|.
 name|obj
 operator|=
-literal|0
+name|NULL
 expr_stmt|;
 block|}
 elseif|else
@@ -1270,6 +1286,17 @@ condition|)
 name|die
 argument_list|(
 literal|"failed to write object"
+argument_list|)
+expr_stmt|;
+name|added_object
+argument_list|(
+name|nr
+argument_list|,
+name|type
+argument_list|,
+name|buf
+argument_list|,
+name|size
 argument_list|)
 expr_stmt|;
 name|free
@@ -1314,7 +1341,7 @@ index|]
 operator|.
 name|obj
 operator|=
-literal|0
+name|NULL
 expr_stmt|;
 block|}
 else|else
@@ -1344,6 +1371,17 @@ name|nr
 index|]
 operator|.
 name|sha1
+argument_list|)
+expr_stmt|;
+name|added_object
+argument_list|(
+name|nr
+argument_list|,
+name|type
+argument_list|,
+name|buf
+argument_list|,
+name|size
 argument_list|)
 expr_stmt|;
 name|obj
@@ -1382,7 +1420,6 @@ name|type
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/* buf is stored via add_object_buffer and in obj, if its a tree or commit */
 name|add_object_buffer
 argument_list|(
 name|obj
@@ -1493,6 +1530,10 @@ argument_list|)
 expr_stmt|;
 block|}
 end_function
+
+begin_comment
+comment|/*  * We now know the contents of an object (which is nr-th in the pack);  * resolve all the deltified objects that are based on it.  */
+end_comment
 
 begin_function
 DECL|function|added_object
@@ -1677,6 +1718,97 @@ block|}
 end_function
 
 begin_function
+DECL|function|resolve_against_held
+specifier|static
+name|int
+name|resolve_against_held
+parameter_list|(
+name|unsigned
+name|nr
+parameter_list|,
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|base
+parameter_list|,
+name|void
+modifier|*
+name|delta_data
+parameter_list|,
+name|unsigned
+name|long
+name|delta_size
+parameter_list|)
+block|{
+name|struct
+name|object
+modifier|*
+name|obj
+decl_stmt|;
+name|struct
+name|obj_buffer
+modifier|*
+name|obj_buffer
+decl_stmt|;
+name|obj
+operator|=
+name|lookup_object
+argument_list|(
+name|base
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|obj
+condition|)
+return|return
+literal|0
+return|;
+name|obj_buffer
+operator|=
+name|lookup_object_buffer
+argument_list|(
+name|obj
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|obj_buffer
+condition|)
+return|return
+literal|0
+return|;
+name|resolve_delta
+argument_list|(
+name|nr
+argument_list|,
+name|obj
+operator|->
+name|type
+argument_list|,
+name|obj_buffer
+operator|->
+name|buffer
+argument_list|,
+name|obj_buffer
+operator|->
+name|size
+argument_list|,
+name|delta_data
+argument_list|,
+name|delta_size
+argument_list|)
+expr_stmt|;
+return|return
+literal|1
+return|;
+block|}
+end_function
+
+begin_function
 DECL|function|unpack_delta_entry
 specifier|static
 name|void
@@ -1711,11 +1843,6 @@ name|base_sha1
 index|[
 literal|20
 index|]
-decl_stmt|;
-name|struct
-name|object
-modifier|*
-name|obj
 decl_stmt|;
 if|if
 condition|(
@@ -1763,13 +1890,32 @@ return|return;
 block|}
 if|if
 condition|(
-operator|!
 name|has_sha1_file
 argument_list|(
 name|base_sha1
 argument_list|)
 condition|)
+empty_stmt|;
+comment|/* Ok we have this one */
+elseif|else
+if|if
+condition|(
+name|resolve_against_held
+argument_list|(
+name|nr
+argument_list|,
+name|base_sha1
+argument_list|,
+name|delta_data
+argument_list|,
+name|delta_size
+argument_list|)
+condition|)
+return|return;
+comment|/* we are done */
+else|else
 block|{
+comment|/* cannot resolve yet --- queue it */
 name|hashcpy
 argument_list|(
 name|obj_list
@@ -2031,7 +2177,7 @@ operator|!
 name|base_found
 condition|)
 block|{
-comment|/* The delta base object is itself a delta that 			   has not been	resolved yet. */
+comment|/* 			 * The delta base object is itself a delta that 			 * has not been resolved yet. 			 */
 name|hashcpy
 argument_list|(
 name|obj_list
@@ -2060,57 +2206,20 @@ expr_stmt|;
 return|return;
 block|}
 block|}
-name|obj
-operator|=
-name|lookup_object
-argument_list|(
-name|base_sha1
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
-name|obj
-condition|)
-block|{
-name|struct
-name|obj_buffer
-modifier|*
-name|obj_buf
-init|=
-name|lookup_object_buffer
-argument_list|(
-name|obj
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|obj_buf
-condition|)
-block|{
-name|resolve_delta
+name|resolve_against_held
 argument_list|(
 name|nr
 argument_list|,
-name|obj
-operator|->
-name|type
-argument_list|,
-name|obj_buf
-operator|->
-name|buffer
-argument_list|,
-name|obj_buf
-operator|->
-name|size
+name|base_sha1
 argument_list|,
 name|delta_data
 argument_list|,
 name|delta_size
 argument_list|)
-expr_stmt|;
+condition|)
 return|return;
-block|}
-block|}
 name|base
 operator|=
 name|read_sha1_file
