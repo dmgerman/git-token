@@ -3980,6 +3980,13 @@ name|unpack_data
 operator|=
 name|revs
 expr_stmt|;
+name|opts
+operator|.
+name|index
+operator|=
+operator|&
+name|the_index
+expr_stmt|;
 name|init_tree_desc
 argument_list|(
 operator|&
@@ -4252,6 +4259,13 @@ name|unpack_data
 operator|=
 operator|&
 name|revs
+expr_stmt|;
+name|opts
+operator|.
+name|index
+operator|=
+operator|&
+name|the_index
 expr_stmt|;
 name|init_tree_desc
 argument_list|(

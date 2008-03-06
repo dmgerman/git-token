@@ -1107,6 +1107,13 @@ literal|1
 expr_stmt|;
 name|opts
 operator|.
+name|index
+operator|=
+operator|&
+name|the_index
+expr_stmt|;
+name|opts
+operator|.
 name|fn
 operator|=
 name|oneway_merge

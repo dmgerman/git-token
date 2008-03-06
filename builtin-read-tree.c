@@ -546,6 +546,13 @@ operator|=
 operator|-
 literal|1
 expr_stmt|;
+name|opts
+operator|.
+name|index
+operator|=
+operator|&
+name|the_index
+expr_stmt|;
 name|git_config
 argument_list|(
 name|git_default_config
