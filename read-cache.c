@@ -1259,6 +1259,7 @@ specifier|static
 name|int
 name|is_racy_timestamp
 parameter_list|(
+specifier|const
 name|struct
 name|index_state
 modifier|*
@@ -1299,6 +1300,7 @@ DECL|function|ie_match_stat
 name|int
 name|ie_match_stat
 parameter_list|(
+specifier|const
 name|struct
 name|index_state
 modifier|*
@@ -1407,6 +1409,7 @@ DECL|function|ie_modified
 name|int
 name|ie_modified
 parameter_list|(
+specifier|const
 name|struct
 name|index_state
 modifier|*
@@ -1919,6 +1922,7 @@ DECL|function|index_name_pos
 name|int
 name|index_name_pos
 parameter_list|(
+specifier|const
 name|struct
 name|index_state
 modifier|*
@@ -5769,6 +5773,7 @@ DECL|function|unmerged_index
 name|int
 name|unmerged_index
 parameter_list|(
+specifier|const
 name|struct
 name|index_state
 modifier|*
@@ -6483,6 +6488,7 @@ DECL|function|write_index
 name|int
 name|write_index
 parameter_list|(
+specifier|const
 name|struct
 name|index_state
 modifier|*
