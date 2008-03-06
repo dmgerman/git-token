@@ -1518,6 +1518,10 @@ name|unsigned
 name|long
 name|mask
 parameter_list|,
+name|unsigned
+name|long
+name|dirmask
+parameter_list|,
 name|struct
 name|name_entry
 modifier|*

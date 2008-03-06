@@ -248,6 +248,10 @@ name|unsigned
 name|long
 name|mask
 parameter_list|,
+name|unsigned
+name|long
+name|dirmask
+parameter_list|,
 name|struct
 name|name_entry
 modifier|*
@@ -299,6 +303,11 @@ decl_stmt|;
 DECL|member|pathlen
 name|int
 name|pathlen
+decl_stmt|;
+DECL|member|conflicts
+name|unsigned
+name|long
+name|conflicts
 decl_stmt|;
 DECL|member|fn
 name|traverse_callback_t
