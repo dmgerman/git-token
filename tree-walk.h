@@ -235,7 +235,7 @@ end_struct_decl
 begin_typedef
 DECL|typedef|traverse_callback_t
 typedef|typedef
-name|void
+name|int
 function_decl|(
 modifier|*
 name|traverse_callback_t
@@ -261,7 +261,7 @@ function_decl|;
 end_typedef
 
 begin_function_decl
-name|void
+name|int
 name|traverse_trees
 parameter_list|(
 name|int
