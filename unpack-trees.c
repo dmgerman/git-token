@@ -1702,6 +1702,14 @@ modifier|*
 name|message
 parameter_list|)
 block|{
+name|discard_index
+argument_list|(
+operator|&
+name|o
+operator|->
+name|result
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
