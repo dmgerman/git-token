@@ -1319,7 +1319,7 @@ argument_list|)
 condition|)
 name|mode
 operator||=
-name|S_ISGID
+name|FORCE_DIR_SET_GID
 expr_stmt|;
 if|if
 condition|(
