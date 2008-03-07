@@ -933,6 +933,13 @@ operator|)
 operator|=
 name|p
 expr_stmt|;
+else|else
+name|exit
+argument_list|(
+literal|128
+argument_list|)
+expr_stmt|;
+comment|/* error message already given */
 name|src
 operator|++
 expr_stmt|;
