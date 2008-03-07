@@ -27,6 +27,12 @@ directive|include
 file|"parse-options.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"quote.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|force
 specifier|static
@@ -189,10 +195,14 @@ modifier|*
 modifier|*
 name|pathspec
 decl_stmt|;
-name|int
-name|prefix_offset
-init|=
-literal|0
+name|struct
+name|strbuf
+name|buf
+decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|qname
 decl_stmt|;
 name|char
 modifier|*
@@ -305,6 +315,14 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|strbuf_init
+argument_list|(
+operator|&
+name|buf
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
 name|memset
 argument_list|(
 operator|&
@@ -374,17 +392,6 @@ name|setup_standard_excludes
 argument_list|(
 operator|&
 name|dir
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|prefix
-condition|)
-name|prefix_offset
-operator|=
-name|strlen
-argument_list|(
-name|prefix
 argument_list|)
 expr_stmt|;
 name|pathspec
@@ -686,6 +693,24 @@ operator|->
 name|name
 argument_list|)
 expr_stmt|;
+name|qname
+operator|=
+name|quote_path_relative
+argument_list|(
+name|directory
+operator|.
+name|buf
+argument_list|,
+name|directory
+operator|.
+name|len
+argument_list|,
+operator|&
+name|buf
+argument_list|,
+name|prefix
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|show_only
@@ -701,11 +726,7 @@ name|printf
 argument_list|(
 literal|"Would remove %s\n"
 argument_list|,
-name|directory
-operator|.
-name|buf
-operator|+
-name|prefix_offset
+name|qname
 argument_list|)
 expr_stmt|;
 block|}
@@ -726,11 +747,7 @@ name|printf
 argument_list|(
 literal|"Removing %s\n"
 argument_list|,
-name|directory
-operator|.
-name|buf
-operator|+
-name|prefix_offset
+name|qname
 argument_list|)
 expr_stmt|;
 if|if
@@ -750,11 +767,7 @@ name|warning
 argument_list|(
 literal|"failed to remove '%s'"
 argument_list|,
-name|directory
-operator|.
-name|buf
-operator|+
-name|prefix_offset
+name|qname
 argument_list|)
 expr_stmt|;
 name|errors
@@ -772,11 +785,7 @@ name|printf
 argument_list|(
 literal|"Would not remove %s\n"
 argument_list|,
-name|directory
-operator|.
-name|buf
-operator|+
-name|prefix_offset
+name|qname
 argument_list|)
 expr_stmt|;
 block|}
@@ -786,11 +795,7 @@ name|printf
 argument_list|(
 literal|"Not removing %s\n"
 argument_list|,
-name|directory
-operator|.
-name|buf
-operator|+
-name|prefix_offset
+name|qname
 argument_list|)
 expr_stmt|;
 block|}
@@ -811,6 +816,23 @@ operator|!
 name|matches
 condition|)
 continue|continue;
+name|qname
+operator|=
+name|quote_path_relative
+argument_list|(
+name|ent
+operator|->
+name|name
+argument_list|,
+operator|-
+literal|1
+argument_list|,
+operator|&
+name|buf
+argument_list|,
+name|prefix
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|show_only
@@ -820,11 +842,7 @@ name|printf
 argument_list|(
 literal|"Would remove %s\n"
 argument_list|,
-name|ent
-operator|->
-name|name
-operator|+
-name|prefix_offset
+name|qname
 argument_list|)
 expr_stmt|;
 continue|continue;
@@ -840,11 +858,7 @@ name|printf
 argument_list|(
 literal|"Removing %s\n"
 argument_list|,
-name|ent
-operator|->
-name|name
-operator|+
-name|prefix_offset
+name|qname
 argument_list|)
 expr_stmt|;
 block|}
@@ -864,9 +878,7 @@ name|warning
 argument_list|(
 literal|"failed to remove '%s'"
 argument_list|,
-name|ent
-operator|->
-name|name
+name|qname
 argument_list|)
 expr_stmt|;
 name|errors
