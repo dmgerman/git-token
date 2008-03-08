@@ -1610,6 +1610,22 @@ name|path_list_item
 modifier|*
 name|item
 decl_stmt|;
+comment|/* make sure that symrefs are deleted */
+if|if
+condition|(
+name|flags
+operator|&
+name|REF_ISSYMREF
+condition|)
+return|return
+name|unlink
+argument_list|(
+name|git_path
+argument_list|(
+name|refname
+argument_list|)
+argument_list|)
+return|;
 name|item
 operator|=
 name|path_list_append
