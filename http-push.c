@@ -12817,7 +12817,9 @@ literal|256
 argument_list|)
 expr_stmt|;
 name|http_init
-argument_list|()
+argument_list|(
+name|NULL
+argument_list|)
 expr_stmt|;
 name|no_pragma_header
 operator|=

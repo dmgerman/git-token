@@ -4889,6 +4889,11 @@ specifier|const
 name|char
 modifier|*
 name|url
+parameter_list|,
+name|struct
+name|remote
+modifier|*
+name|remote
 parameter_list|)
 block|{
 name|char
@@ -4924,7 +4929,9 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 name|http_init
-argument_list|()
+argument_list|(
+name|remote
+argument_list|)
 expr_stmt|;
 name|data
 operator|->

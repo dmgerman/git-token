@@ -36,6 +36,12 @@ directive|include
 file|"strbuf.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"remote.h"
+end_include
+
 begin_comment
 comment|/*  * We detect based on the cURL version if multi-transfer is  * usable in this implementation and define this symbol accordingly.  * This is not something Makefile should set nor users should pass  * via CFLAGS.  */
 end_comment
@@ -472,7 +478,10 @@ specifier|extern
 name|void
 name|http_init
 parameter_list|(
-name|void
+name|struct
+name|remote
+modifier|*
+name|remote
 parameter_list|)
 function_decl|;
 end_function_decl
