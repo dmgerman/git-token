@@ -266,6 +266,13 @@ block|,
 name|NULL
 block|}
 decl_stmt|;
+name|printf
+argument_list|(
+literal|"Updating %s\n"
+argument_list|,
+name|name
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|run_command_v_opt
