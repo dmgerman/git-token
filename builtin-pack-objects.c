@@ -101,6 +101,12 @@ directive|include
 file|"progress.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"refs.h"
+end_include
+
 begin_ifdef
 ifdef|#
 directive|ifdef
@@ -132,7 +138,7 @@ name|char
 name|pack_usage
 index|[]
 init|=
-literal|"\ git-pack-objects [{ -q | --progress | --all-progress }] \n\ 	[--max-pack-size=N] [--local] [--incremental] \n\ 	[--window=N] [--window-memory=N] [--depth=N] \n\ 	[--no-reuse-delta] [--no-reuse-object] [--delta-base-offset] \n\ 	[--threads=N] [--non-empty] [--revs [--unpacked | --all]*] [--reflog] \n\ 	[--stdout | base-name] [--keep-unreachable] [<ref-list |<object-list]"
+literal|"\ git-pack-objects [{ -q | --progress | --all-progress }] \n\ 	[--max-pack-size=N] [--local] [--incremental] \n\ 	[--window=N] [--window-memory=N] [--depth=N] \n\ 	[--no-reuse-delta] [--no-reuse-object] [--delta-base-offset] \n\ 	[--threads=N] [--non-empty] [--revs [--unpacked | --all]*] [--reflog] \n\ 	[--stdout | base-name] [--include-tag] [--keep-unreachable] \n\ 	[<ref-list |<object-list]"
 decl_stmt|;
 end_decl_stmt
 
@@ -287,6 +293,7 @@ begin_decl_stmt
 DECL|variable|no_reuse_delta
 DECL|variable|no_reuse_object
 DECL|variable|keep_unreachable
+DECL|variable|include_tag
 specifier|static
 name|int
 name|no_reuse_delta
@@ -294,6 +301,8 @@ decl_stmt|,
 name|no_reuse_object
 decl_stmt|,
 name|keep_unreachable
+decl_stmt|,
+name|include_tag
 decl_stmt|;
 end_decl_stmt
 
@@ -8440,6 +8449,88 @@ directive|endif
 end_endif
 
 begin_function
+DECL|function|add_ref_tag
+specifier|static
+name|int
+name|add_ref_tag
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|,
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|sha1
+parameter_list|,
+name|int
+name|flag
+parameter_list|,
+name|void
+modifier|*
+name|cb_data
+parameter_list|)
+block|{
+name|unsigned
+name|char
+name|peeled
+index|[
+literal|20
+index|]
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|prefixcmp
+argument_list|(
+name|path
+argument_list|,
+literal|"refs/tags/"
+argument_list|)
+operator|&&
+comment|/* is a tag? */
+operator|!
+name|peel_ref
+argument_list|(
+name|path
+argument_list|,
+name|peeled
+argument_list|)
+operator|&&
+comment|/* peelable? */
+operator|!
+name|is_null_sha1
+argument_list|(
+name|peeled
+argument_list|)
+operator|&&
+comment|/* annotated tag? */
+name|locate_object_entry
+argument_list|(
+name|peeled
+argument_list|)
+condition|)
+comment|/* object packed? */
+name|add_object_entry
+argument_list|(
+name|sha1
+argument_list|,
+name|OBJ_TAG
+argument_list|,
+name|NULL
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+return|return
+literal|0
+return|;
+block|}
+end_function
+
+begin_function
 DECL|function|prepare_pack
 specifier|static
 name|void
@@ -10669,6 +10760,23 @@ condition|(
 operator|!
 name|strcmp
 argument_list|(
+literal|"--include-tag"
+argument_list|,
+name|arg
+argument_list|)
+condition|)
+block|{
+name|include_tag
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
 literal|"--unpacked"
 argument_list|,
 name|arg
@@ -10978,6 +11086,19 @@ name|rp_av
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|include_tag
+operator|&&
+name|nr_result
+condition|)
+name|for_each_ref
+argument_list|(
+name|add_ref_tag
+argument_list|,
+name|NULL
+argument_list|)
+expr_stmt|;
 name|stop_progress
 argument_list|(
 operator|&

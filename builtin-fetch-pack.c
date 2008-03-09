@@ -119,7 +119,7 @@ name|char
 name|fetch_pack_usage
 index|[]
 init|=
-literal|"git-fetch-pack [--all] [--quiet|-q] [--keep|-k] [--thin] [--upload-pack=<git-upload-pack>] [--depth=<n>] [--no-progress] [-v] [<host>:]<directory> [<refs>...]"
+literal|"git-fetch-pack [--all] [--quiet|-q] [--keep|-k] [--thin] [--include-tag] [--upload-pack=<git-upload-pack>] [--depth=<n>] [--no-progress] [-v] [<host>:]<directory> [<refs>...]"
 decl_stmt|;
 end_decl_stmt
 
@@ -863,7 +863,7 @@ index|[
 literal|1
 index|]
 argument_list|,
-literal|"want %s%s%s%s%s%s%s\n"
+literal|"want %s%s%s%s%s%s%s%s\n"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -914,6 +914,16 @@ operator|.
 name|no_progress
 condition|?
 literal|" no-progress"
+else|:
+literal|""
+operator|)
+argument_list|,
+operator|(
+name|args
+operator|.
+name|include_tag
+condition|?
+literal|" include-tag"
 else|:
 literal|""
 operator|)
@@ -3589,6 +3599,25 @@ block|{
 name|args
 operator|.
 name|use_thin_pack
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+literal|"--include-tag"
+argument_list|,
+name|arg
+argument_list|)
+condition|)
+block|{
+name|args
+operator|.
+name|include_tag
 operator|=
 literal|1
 expr_stmt|;

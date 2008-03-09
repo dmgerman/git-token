@@ -66,6 +66,11 @@ DECL|member|no_progress
 name|no_progress
 range|:
 literal|1
+decl_stmt|,
+DECL|member|include_tag
+name|include_tag
+range|:
+literal|1
 decl_stmt|;
 block|}
 struct|;
