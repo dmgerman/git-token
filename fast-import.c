@@ -13144,14 +13144,13 @@ expr_stmt|;
 name|read_next_command
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-operator|!
 name|cmd_from
 argument_list|(
 name|b
 argument_list|)
-operator|&&
+expr_stmt|;
+if|if
+condition|(
 name|command_buf
 operator|.
 name|len

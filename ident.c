@@ -815,7 +815,7 @@ modifier|*
 name|env_hint
 init|=
 literal|"\n"
-literal|"*** Your name cannot be determined from your system services (gecos).\n"
+literal|"*** Please tell me who you are.\n"
 literal|"\n"
 literal|"Run\n"
 literal|"\n"
