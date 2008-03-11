@@ -649,9 +649,6 @@ return|return
 literal|0
 return|;
 block|}
-return|return
-literal|0
-return|;
 block|}
 return|return
 name|call_unpack_fn
@@ -1586,7 +1583,6 @@ return|return
 name|mask
 return|;
 block|}
-continue|continue;
 block|}
 name|src
 index|[
