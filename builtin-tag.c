@@ -227,6 +227,18 @@ index|[
 literal|6
 index|]
 decl_stmt|;
+name|struct
+name|strbuf
+name|arg0
+decl_stmt|;
+name|strbuf_init
+argument_list|(
+operator|&
+name|arg0
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|strcspn
@@ -240,6 +252,16 @@ name|len
 condition|)
 block|{
 comment|/* there are specials */
+name|strbuf_addf
+argument_list|(
+operator|&
+name|arg0
+argument_list|,
+literal|"%s \"$@\""
+argument_list|,
+name|editor
+argument_list|)
+expr_stmt|;
 name|args
 index|[
 name|i
@@ -262,7 +284,9 @@ name|i
 operator|++
 index|]
 operator|=
-literal|"$0 \"$@\""
+name|arg0
+operator|.
+name|buf
 expr_stmt|;
 block|}
 name|args
@@ -306,6 +330,12 @@ argument_list|(
 literal|"There was a problem with the editor %s."
 argument_list|,
 name|editor
+argument_list|)
+expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|arg0
 argument_list|)
 expr_stmt|;
 block|}
