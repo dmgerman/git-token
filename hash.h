@@ -68,6 +68,7 @@ name|unsigned
 name|int
 name|hash
 parameter_list|,
+specifier|const
 name|struct
 name|hash_table
 modifier|*
@@ -104,6 +105,7 @@ specifier|extern
 name|int
 name|for_each_hash
 parameter_list|(
+specifier|const
 name|struct
 name|hash_table
 modifier|*
