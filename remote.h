@@ -85,6 +85,10 @@ DECL|member|fetch_tags
 name|int
 name|fetch_tags
 decl_stmt|;
+DECL|member|skip_default_update
+name|int
+name|skip_default_update
+decl_stmt|;
 DECL|member|receivepack
 specifier|const
 name|char
