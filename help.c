@@ -753,14 +753,13 @@ name|exec_man_konqueror
 argument_list|)
 expr_stmt|;
 else|else
-return|return
-name|error
+name|warning
 argument_list|(
 literal|"'%s': unsupported man viewer."
 argument_list|,
 name|value
 argument_list|)
-return|;
+expr_stmt|;
 return|return
 literal|0
 return|;
