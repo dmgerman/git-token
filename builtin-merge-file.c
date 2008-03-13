@@ -424,6 +424,10 @@ expr_stmt|;
 elseif|else
 if|if
 condition|(
+name|result
+operator|.
+name|size
+operator|&&
 name|fwrite
 argument_list|(
 name|result
