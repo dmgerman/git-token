@@ -1456,6 +1456,17 @@ name|struct
 name|rev_info
 name|rev
 decl_stmt|;
+name|int
+name|nongit
+decl_stmt|;
+name|prefix
+operator|=
+name|setup_git_directory_gently
+argument_list|(
+operator|&
+name|nongit
+argument_list|)
+expr_stmt|;
 name|shortlog_init
 argument_list|(
 operator|&
@@ -1687,6 +1698,9 @@ expr_stmt|;
 comment|/* assume HEAD if from a tty */
 if|if
 condition|(
+operator|!
+name|nongit
+operator|&&
 operator|!
 name|rev
 operator|.
