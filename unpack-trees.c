@@ -695,7 +695,7 @@ name|struct
 name|tree_desc
 name|t
 index|[
-literal|3
+name|MAX_UNPACK_TREES
 index|]
 decl_stmt|;
 name|struct
@@ -1771,11 +1771,13 @@ if|if
 condition|(
 name|len
 operator|>
-literal|4
+name|MAX_UNPACK_TREES
 condition|)
 name|die
 argument_list|(
-literal|"unpack_trees takes at most four trees"
+literal|"unpack_trees takes at most %d trees"
+argument_list|,
+name|MAX_UNPACK_TREES
 argument_list|)
 expr_stmt|;
 name|memset

@@ -12,6 +12,14 @@ directive|define
 name|UNPACK_TREES_H
 end_define
 
+begin_define
+DECL|macro|MAX_UNPACK_TREES
+define|#
+directive|define
+name|MAX_UNPACK_TREES
+value|8
+end_define
+
 begin_struct_decl
 struct_decl|struct
 name|unpack_trees_options
