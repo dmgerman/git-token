@@ -243,6 +243,20 @@ argument_list|,
 name|TAGS_SET
 argument_list|)
 block|,
+name|OPT_SET_INT
+argument_list|(
+literal|'n'
+argument_list|,
+name|NULL
+argument_list|,
+operator|&
+name|tags
+argument_list|,
+literal|"do not fetch all tags (--no-tags)"
+argument_list|,
+name|TAGS_UNSET
+argument_list|)
+block|,
 name|OPT_BOOLEAN
 argument_list|(
 literal|'k'
