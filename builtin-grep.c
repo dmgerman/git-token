@@ -51,6 +51,49 @@ directive|include
 file|"grep.h"
 end_include
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|NO_EXTERNAL_GREP
+end_ifndef
+
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|__unix__
+end_ifdef
+
+begin_define
+DECL|macro|NO_EXTERNAL_GREP
+define|#
+directive|define
+name|NO_EXTERNAL_GREP
+value|0
+end_define
+
+begin_else
+else|#
+directive|else
+end_else
+
+begin_define
+DECL|macro|NO_EXTERNAL_GREP
+define|#
+directive|define
+name|NO_EXTERNAL_GREP
+value|1
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_comment
 comment|/*  * git grep pathspecs are somewhat different from diff-tree pathspecs;  * pathname wildcards are allowed.  */
 end_comment
@@ -766,11 +809,12 @@ return|;
 block|}
 end_function
 
-begin_ifdef
-ifdef|#
-directive|ifdef
-name|__unix__
-end_ifdef
+begin_if
+if|#
+directive|if
+operator|!
+name|NO_EXTERNAL_GREP
+end_if
 
 begin_function
 DECL|function|exec_grep
@@ -1812,9 +1856,10 @@ decl_stmt|;
 name|read_cache
 argument_list|()
 expr_stmt|;
-ifdef|#
-directive|ifdef
-name|__unix__
+if|#
+directive|if
+operator|!
+name|NO_EXTERNAL_GREP
 comment|/* 	 * Use the external "grep" command for the case where 	 * we grep through the checked-out files. It tends to 	 * be a lot more optimized 	 */
 if|if
 condition|(
