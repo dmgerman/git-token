@@ -146,6 +146,10 @@ name|char
 modifier|*
 modifier|*
 name|extra_headers_p
+parameter_list|,
+name|int
+modifier|*
+name|need_8bit_cte_p
 parameter_list|)
 function_decl|;
 end_function_decl

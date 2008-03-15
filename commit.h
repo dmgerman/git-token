@@ -425,7 +425,7 @@ name|enum
 name|date_mode
 parameter_list|,
 name|int
-name|non_ascii_present
+name|need_8bit_cte
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -500,7 +500,7 @@ modifier|*
 name|encoding
 parameter_list|,
 name|int
-name|plain_non_ascii
+name|need_8bit_cte
 parameter_list|)
 function_decl|;
 end_function_decl

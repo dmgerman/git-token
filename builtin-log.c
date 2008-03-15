@@ -3719,6 +3719,11 @@ name|struct
 name|diff_options
 name|opts
 decl_stmt|;
+name|int
+name|need_8bit_cte
+init|=
+literal|0
+decl_stmt|;
 if|if
 condition|(
 name|rev
@@ -3775,6 +3780,9 @@ name|subject_start
 argument_list|,
 operator|&
 name|extra_headers
+argument_list|,
+operator|&
+name|need_8bit_cte
 argument_list|)
 expr_stmt|;
 name|committer
@@ -3828,7 +3836,7 @@ name|extra_headers
 argument_list|,
 name|encoding
 argument_list|,
-literal|0
+name|need_8bit_cte
 argument_list|)
 expr_stmt|;
 name|pp_remainder
