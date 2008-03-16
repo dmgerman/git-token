@@ -2956,12 +2956,17 @@ modifier|*
 name|o
 parameter_list|)
 block|{
+name|int
+name|update
+init|=
+name|CE_UPDATE
+decl_stmt|;
 if|if
 condition|(
 name|old
 condition|)
 block|{
-comment|/* 		 * See if we can re-use the old CE directly? 		 * That way we get the uptodate stat info. 		 * 		 * This also removes the UPDATE flag on 		 * a match. 		 */
+comment|/* 		 * See if we can re-use the old CE directly? 		 * That way we get the uptodate stat info. 		 * 		 * This also removes the UPDATE flag on a match; otherwise 		 * we will end up overwriting local changes in the work tree. 		 */
 if|if
 condition|(
 name|same
@@ -2978,6 +2983,10 @@ name|merge
 argument_list|,
 name|old
 argument_list|)
+expr_stmt|;
+name|update
+operator|=
+literal|0
 expr_stmt|;
 block|}
 else|else
@@ -3035,7 +3044,7 @@ name|o
 argument_list|,
 name|merge
 argument_list|,
-name|CE_UPDATE
+name|update
 argument_list|,
 name|CE_STAGEMASK
 argument_list|)
