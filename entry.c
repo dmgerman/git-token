@@ -1177,11 +1177,6 @@ literal|1
 return|;
 block|}
 comment|/* 		 * We unlink the old file, to get the new one with the 		 * right permissions (including umask, which is nasty 		 * to emulate by hand - much easier to let the system 		 * just do the right thing) 		 */
-name|unlink
-argument_list|(
-name|path
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|S_ISDIR
@@ -1226,6 +1221,27 @@ name|path
 argument_list|)
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|unlink
+argument_list|(
+name|path
+argument_list|)
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"unable to unlink old '%s' (%s)"
+argument_list|,
+name|path
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
+argument_list|)
+return|;
 block|}
 elseif|else
 if|if
