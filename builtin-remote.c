@@ -2886,6 +2886,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|printf
+argument_list|(
+literal|"\n"
+argument_list|)
+expr_stmt|;
 block|}
 name|cleanup_states
 label|:
