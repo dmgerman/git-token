@@ -837,14 +837,10 @@ parameter_list|(
 name|void
 parameter_list|)
 block|{
-comment|/* 	 * Setting gc.auto and gc.autopacklimit to 0 or negative can 	 * disable the automatic gc. 	 */
+comment|/* 	 * Setting gc.auto to 0 or negative can disable the 	 * automatic gc. 	 */
 if|if
 condition|(
 name|gc_auto_threshold
-operator|<=
-literal|0
-operator|&&
-name|gc_auto_pack_limit
 operator|<=
 literal|0
 condition|)
