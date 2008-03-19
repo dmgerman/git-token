@@ -277,7 +277,7 @@ end_decl_stmt
 begin_function
 DECL|function|check_updates
 specifier|static
-name|void
+name|int
 name|check_updates
 parameter_list|(
 name|struct
@@ -320,6 +320,11 @@ name|result
 decl_stmt|;
 name|int
 name|i
+decl_stmt|;
+name|int
+name|errs
+init|=
+literal|0
 decl_stmt|;
 if|if
 condition|(
@@ -511,6 +516,8 @@ operator|->
 name|update
 condition|)
 block|{
+name|errs
+operator||=
 name|checkout_entry
 argument_list|(
 name|ce
@@ -535,6 +542,11 @@ operator|&
 name|progress
 argument_list|)
 expr_stmt|;
+return|return
+name|errs
+operator|!=
+literal|0
+return|;
 block|}
 end_function
 
@@ -2033,11 +2045,17 @@ name|src_index
 operator|=
 name|NULL
 expr_stmt|;
+if|if
+condition|(
 name|check_updates
 argument_list|(
 name|o
 argument_list|)
-expr_stmt|;
+condition|)
+return|return
+operator|-
+literal|1
+return|;
 if|if
 condition|(
 name|o
