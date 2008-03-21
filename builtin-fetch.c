@@ -3824,7 +3824,7 @@ name|do_fetch
 argument_list|(
 name|transport
 argument_list|,
-name|parse_ref_spec
+name|parse_fetch_refspec
 argument_list|(
 name|ref_nr
 argument_list|,
