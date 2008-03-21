@@ -1999,7 +1999,7 @@ name|pathname
 argument_list|,
 name|len
 argument_list|,
-literal|0
+name|ignore_case
 argument_list|)
 condition|)
 return|return
