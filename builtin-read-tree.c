@@ -196,7 +196,7 @@ name|ce
 argument_list|)
 condition|)
 block|{
-name|remove_index_entry
+name|remove_name_hash
 argument_list|(
 name|ce
 argument_list|)
