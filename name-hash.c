@@ -264,7 +264,9 @@ end_function
 
 begin_function
 DECL|function|index_name_exists
-name|int
+name|struct
+name|cache_entry
+modifier|*
 name|index_name_exists
 parameter_list|(
 name|struct
@@ -350,7 +352,7 @@ name|ce_flags
 argument_list|)
 condition|)
 return|return
-literal|1
+name|ce
 return|;
 block|}
 name|ce
@@ -361,7 +363,7 @@ name|next
 expr_stmt|;
 block|}
 return|return
-literal|0
+name|NULL
 return|;
 block|}
 end_function

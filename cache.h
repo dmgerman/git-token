@@ -1899,7 +1899,9 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|int
+name|struct
+name|cache_entry
+modifier|*
 name|index_name_exists
 parameter_list|(
 name|struct
