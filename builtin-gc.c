@@ -90,7 +90,7 @@ specifier|static
 name|int
 name|gc_auto_pack_limit
 init|=
-literal|20
+literal|50
 decl_stmt|;
 end_decl_stmt
 
