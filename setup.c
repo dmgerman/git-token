@@ -1400,6 +1400,16 @@ name|len
 decl_stmt|,
 name|offset
 decl_stmt|;
+comment|/* 	 * Let's assume that we are in a git repository. 	 * If it turns out later that we are somewhere else, the value will be 	 * updated accordingly. 	 */
+if|if
+condition|(
+name|nongit_ok
+condition|)
+operator|*
+name|nongit_ok
+operator|=
+literal|0
+expr_stmt|;
 comment|/* 	 * If GIT_DIR is set explicitly, we're not going 	 * to do any discovery, but we still do repository 	 * validation. 	 */
 name|gitdirenv
 operator|=

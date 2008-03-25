@@ -72,8 +72,6 @@ name|rev
 decl_stmt|;
 name|int
 name|nongit
-init|=
-literal|0
 decl_stmt|;
 name|int
 name|result

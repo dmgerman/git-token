@@ -14890,8 +14890,6 @@ literal|0
 decl_stmt|;
 name|int
 name|is_not_gitdir
-init|=
-literal|0
 decl_stmt|;
 specifier|const
 name|char

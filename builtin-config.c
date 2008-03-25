@@ -1418,8 +1418,6 @@ parameter_list|)
 block|{
 name|int
 name|nongit
-init|=
-literal|0
 decl_stmt|;
 name|char
 modifier|*
