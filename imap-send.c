@@ -7405,6 +7405,25 @@ return|return
 literal|1
 return|;
 block|}
+if|if
+condition|(
+operator|!
+name|server
+operator|.
+name|host
+condition|)
+block|{
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"no imap host specified\n"
+argument_list|)
+expr_stmt|;
+return|return
+literal|1
+return|;
+block|}
 comment|/* read the messages */
 if|if
 condition|(
