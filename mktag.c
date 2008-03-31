@@ -187,6 +187,9 @@ decl_stmt|,
 modifier|*
 name|rb
 decl_stmt|;
+name|size_t
+name|len
+decl_stmt|;
 if|if
 condition|(
 name|size
@@ -474,15 +477,6 @@ literal|"tagger "
 argument_list|,
 literal|7
 argument_list|)
-operator|||
-operator|(
-name|tagger_line
-index|[
-literal|7
-index|]
-operator|==
-literal|'\n'
-operator|)
 condition|)
 return|return
 name|error
@@ -496,7 +490,7 @@ operator|-
 name|buffer
 argument_list|)
 return|;
-comment|/* 	 * Check for correct form for name and email 	 * i.e. "<" followed by "> " on _this_ line 	 */
+comment|/* 	 * Check for correct form for name and email 	 * i.e. "<" followed by "> " on _this_ line 	 * No angle brackets within the name or email address fields. 	 * No spaces within the email address field. 	 */
 name|tagger_line
 operator|+=
 literal|7
@@ -529,13 +523,26 @@ literal|"> "
 argument_list|)
 operator|)
 operator|||
-name|strchr
+name|strpbrk
 argument_list|(
 name|tagger_line
 argument_list|,
-literal|'\n'
+literal|"<>\n"
 argument_list|)
-operator|<
+operator|!=
+name|lb
+operator|+
+literal|1
+operator|||
+name|strpbrk
+argument_list|(
+name|lb
+operator|+
+literal|2
+argument_list|,
+literal|"><\n "
+argument_list|)
+operator|!=
 name|rb
 condition|)
 return|return
@@ -543,7 +550,7 @@ name|error
 argument_list|(
 literal|"char"
 name|PD_FMT
-literal|": malformed tagger"
+literal|": malformed tagger field"
 argument_list|,
 name|tagger_line
 operator|-
@@ -569,7 +576,7 @@ operator|-
 name|buffer
 argument_list|)
 return|;
-comment|/* timestamp */
+comment|/* timestamp, 1 or more digits followed by space */
 name|tagger_line
 operator|=
 name|rb
@@ -578,9 +585,39 @@ literal|2
 expr_stmt|;
 if|if
 condition|(
+operator|!
+operator|(
+name|len
+operator|=
+name|strspn
+argument_list|(
+name|tagger_line
+argument_list|,
+literal|"0123456789"
+argument_list|)
+operator|)
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"char"
+name|PD_FMT
+literal|": missing tag timestamp"
+argument_list|,
+name|tagger_line
+operator|-
+name|buffer
+argument_list|)
+return|;
+name|tagger_line
+operator|+=
+name|len
+expr_stmt|;
+if|if
+condition|(
 operator|*
 name|tagger_line
-operator|==
+operator|!=
 literal|' '
 condition|)
 return|return
@@ -595,48 +632,9 @@ operator|-
 name|buffer
 argument_list|)
 return|;
-for|for
-control|(
-init|;
-condition|;
-control|)
-block|{
-name|unsigned
-name|char
-name|c
-init|=
-operator|*
 name|tagger_line
 operator|++
-decl_stmt|;
-if|if
-condition|(
-name|c
-operator|==
-literal|' '
-condition|)
-break|break;
-if|if
-condition|(
-name|isdigit
-argument_list|(
-name|c
-argument_list|)
-condition|)
-continue|continue;
-return|return
-name|error
-argument_list|(
-literal|"char"
-name|PD_FMT
-literal|": malformed tag timestamp"
-argument_list|,
-name|tagger_line
-operator|-
-name|buffer
-argument_list|)
-return|;
-block|}
+expr_stmt|;
 comment|/* timezone, 5 digits [+-]hhmm, max. 1400 */
 if|if
 condition|(
@@ -658,37 +656,16 @@ operator|==
 literal|'-'
 operator|)
 operator|&&
-name|isdigit
+name|strspn
 argument_list|(
 name|tagger_line
-index|[
+operator|+
 literal|1
-index|]
+argument_list|,
+literal|"0123456789"
 argument_list|)
-operator|&&
-name|isdigit
-argument_list|(
-name|tagger_line
-index|[
-literal|2
-index|]
-argument_list|)
-operator|&&
-name|isdigit
-argument_list|(
-name|tagger_line
-index|[
-literal|3
-index|]
-argument_list|)
-operator|&&
-name|isdigit
-argument_list|(
-name|tagger_line
-index|[
+operator|==
 literal|4
-index|]
-argument_list|)
 operator|&&
 name|tagger_line
 index|[
