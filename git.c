@@ -871,11 +871,15 @@ name|char
 modifier|*
 name|alias_string
 decl_stmt|;
+name|int
+name|unused_nongit
+decl_stmt|;
 name|subdir
 operator|=
 name|setup_git_directory_gently
 argument_list|(
-name|NULL
+operator|&
+name|unused_nongit
 argument_list|)
 expr_stmt|;
 name|alias_command
