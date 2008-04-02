@@ -281,12 +281,19 @@ operator|&
 name|gpg
 argument_list|)
 condition|)
+block|{
+name|unlink
+argument_list|(
+name|path
+argument_list|)
+expr_stmt|;
 return|return
 name|error
 argument_list|(
 literal|"could not run gpg."
 argument_list|)
 return|;
+block|}
 name|write_in_full
 argument_list|(
 name|gpg
