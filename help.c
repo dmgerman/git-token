@@ -170,6 +170,9 @@ literal|"show info page"
 argument_list|,
 name|HELP_FORMAT_INFO
 argument_list|)
+block|,
+name|OPT_END
+argument_list|()
 block|, }
 decl_stmt|;
 end_decl_stmt
