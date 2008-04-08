@@ -1197,9 +1197,7 @@ literal|'\n'
 operator|&&
 name|opt
 operator|->
-name|commit_format
-operator|==
-name|CMIT_FMT_ONELINE
+name|use_terminator
 condition|)
 name|extra
 operator|=
@@ -1211,11 +1209,10 @@ name|opt
 operator|->
 name|shown_one
 operator|&&
+operator|!
 name|opt
 operator|->
-name|commit_format
-operator|!=
-name|CMIT_FMT_ONELINE
+name|use_terminator
 condition|)
 name|putchar
 argument_list|(

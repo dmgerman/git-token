@@ -6174,15 +6174,13 @@ name|verbose_header
 operator|=
 literal|1
 expr_stmt|;
-name|revs
-operator|->
-name|commit_format
-operator|=
 name|get_commit_format
 argument_list|(
 name|arg
 operator|+
 literal|8
+argument_list|,
+name|revs
 argument_list|)
 expr_stmt|;
 continue|continue;
