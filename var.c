@@ -268,6 +268,9 @@ name|char
 modifier|*
 name|val
 decl_stmt|;
+name|int
+name|nongit
+decl_stmt|;
 if|if
 condition|(
 name|argc
@@ -281,8 +284,11 @@ name|var_usage
 argument_list|)
 expr_stmt|;
 block|}
-name|setup_git_directory
-argument_list|()
+name|setup_git_directory_gently
+argument_list|(
+operator|&
+name|nongit
+argument_list|)
 expr_stmt|;
 name|val
 operator|=
