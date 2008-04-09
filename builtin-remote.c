@@ -83,6 +83,16 @@ name|verbose
 decl_stmt|;
 end_decl_stmt
 
+begin_function_decl
+specifier|static
+name|int
+name|show_all
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function
 DECL|function|postfixcmp
 specifier|static
@@ -2280,6 +2290,16 @@ name|argc
 operator|<
 literal|1
 condition|)
+block|{
+if|if
+condition|(
+operator|!
+name|prune
+condition|)
+return|return
+name|show_all
+argument_list|()
+return|;
 name|usage_with_options
 argument_list|(
 name|builtin_remote_usage
@@ -2287,6 +2307,7 @@ argument_list|,
 name|options
 argument_list|)
 expr_stmt|;
+block|}
 name|memset
 argument_list|(
 operator|&
