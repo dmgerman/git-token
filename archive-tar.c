@@ -106,6 +106,14 @@ name|commit
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|base_len
+specifier|static
+name|size_t
+name|base_len
+decl_stmt|;
+end_decl_stmt
+
 begin_comment
 comment|/* writes out the whole block, but only if it is full */
 end_comment
@@ -1579,6 +1587,8 @@ argument_list|(
 name|path
 operator|.
 name|buf
+operator|+
+name|base_len
 argument_list|,
 name|sha1
 argument_list|,
@@ -1683,6 +1693,21 @@ operator|=
 name|args
 operator|->
 name|commit
+expr_stmt|;
+name|base_len
+operator|=
+name|args
+operator|->
+name|base
+condition|?
+name|strlen
+argument_list|(
+name|args
+operator|->
+name|base
+argument_list|)
+else|:
+literal|0
 expr_stmt|;
 if|if
 condition|(

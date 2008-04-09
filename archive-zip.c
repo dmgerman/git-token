@@ -81,6 +81,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|base_len
+specifier|static
+name|size_t
+name|base_len
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|zip_dir
 specifier|static
 name|unsigned
@@ -1172,6 +1180,8 @@ operator|=
 name|sha1_file_to_archive
 argument_list|(
 name|path
+operator|+
+name|base_len
 argument_list|,
 name|sha1
 argument_list|,
@@ -1981,6 +1991,21 @@ operator|=
 name|args
 operator|->
 name|commit
+expr_stmt|;
+name|base_len
+operator|=
+name|args
+operator|->
+name|base
+condition|?
+name|strlen
+argument_list|(
+name|args
+operator|->
+name|base
+argument_list|)
+else|:
+literal|0
 expr_stmt|;
 if|if
 condition|(
