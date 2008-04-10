@@ -3991,16 +3991,10 @@ operator|&&
 operator|!
 name|only
 condition|)
-block|{
 name|only_include_assumed
 operator|=
 literal|"Explicit paths specified without -i nor -o; assuming --only paths..."
 expr_stmt|;
-name|also
-operator|=
-literal|0
-expr_stmt|;
-block|}
 if|if
 condition|(
 operator|!
