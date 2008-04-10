@@ -54,7 +54,7 @@ literal|"git-tag [-a|-s|-u<key-id>] [-f] [-m<msg>|-F<file>]<tagname> [<head>]"
 block|,
 literal|"git-tag -d<tagname>..."
 block|,
-literal|"git-tag -l [-n [<num>]] [<pattern>]"
+literal|"git-tag -l [-n[<num>]] [<pattern>]"
 block|,
 literal|"git-tag -v<tagname>..."
 block|,
