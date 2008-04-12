@@ -5592,6 +5592,12 @@ condition|)
 block|{
 name|revs
 operator|->
+name|lifo
+operator|=
+literal|1
+expr_stmt|;
+name|revs
+operator|->
 name|topo_order
 operator|=
 literal|1
