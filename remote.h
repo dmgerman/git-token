@@ -281,6 +281,18 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+name|int
+name|valid_fetch_refspec
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|refspec
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|struct
 name|refspec
 modifier|*
