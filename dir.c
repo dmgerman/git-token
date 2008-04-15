@@ -327,11 +327,9 @@ literal|0
 return|;
 if|if
 condition|(
-operator|!
-name|name
-index|[
+name|namelen
+operator|==
 name|matchlen
-index|]
 condition|)
 return|return
 name|MATCHED_EXACTLY
