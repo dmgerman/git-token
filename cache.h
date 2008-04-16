@@ -3057,6 +3057,10 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * NOTE NOTE NOTE!!  *  * PERM_UMASK, OLD_PERM_GROUP and OLD_PERM_EVERYBODY enumerations must  * not be changed. Old repositories have core.sharedrepository written in  * numeric format, and therefore these values are preserved for compatibility  * reasons.  */
+end_comment
+
 begin_enum
 DECL|enum|sharedrepo
 enum|enum
@@ -3067,12 +3071,26 @@ name|PERM_UMASK
 init|=
 literal|0
 block|,
+DECL|enumerator|OLD_PERM_GROUP
+name|OLD_PERM_GROUP
+init|=
+literal|1
+block|,
+DECL|enumerator|OLD_PERM_EVERYBODY
+name|OLD_PERM_EVERYBODY
+init|=
+literal|2
+block|,
 DECL|enumerator|PERM_GROUP
 name|PERM_GROUP
+init|=
+literal|0660
 block|,
 DECL|enumerator|PERM_EVERYBODY
 name|PERM_EVERYBODY
-block|}
+init|=
+literal|0664
+block|, }
 enum|;
 end_enum
 
