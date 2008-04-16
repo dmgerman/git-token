@@ -15478,9 +15478,16 @@ name|fd
 operator|<
 literal|0
 condition|)
-name|usage
+name|die
 argument_list|(
-name|apply_usage
+literal|"can't open patch '%s': %s"
+argument_list|,
+name|arg
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|read_stdin
