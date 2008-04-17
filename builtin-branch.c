@@ -62,7 +62,7 @@ name|builtin_branch_usage
 index|[]
 init|=
 block|{
-literal|"git-branch [options] [-r | -a]"
+literal|"git-branch [options] [-r | -a] [--merged | --no-merged]"
 block|,
 literal|"git-branch [options] [-l] [-f]<branchname> [<start-point>]"
 block|,
@@ -202,6 +202,17 @@ literal|4
 block|, }
 enum|;
 end_enum
+
+begin_decl_stmt
+DECL|variable|mergefilter
+specifier|static
+name|int
+name|mergefilter
+init|=
+operator|-
+literal|1
+decl_stmt|;
+end_decl_stmt
 
 begin_function
 DECL|function|parse_branch_color_slot
@@ -1033,6 +1044,11 @@ decl_stmt|;
 name|int
 name|len
 decl_stmt|;
+specifier|static
+name|struct
+name|commit_list
+name|branch
+decl_stmt|;
 comment|/* Detect kind */
 if|if
 condition|(
@@ -1128,6 +1144,75 @@ condition|)
 return|return
 literal|0
 return|;
+if|if
+condition|(
+name|mergefilter
+operator|>
+operator|-
+literal|1
+condition|)
+block|{
+name|branch
+operator|.
+name|item
+operator|=
+name|lookup_commit_reference_gently
+argument_list|(
+name|sha1
+argument_list|,
+literal|1
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|branch
+operator|.
+name|item
+condition|)
+name|die
+argument_list|(
+literal|"Unable to lookup tip of branch %s"
+argument_list|,
+name|refname
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|mergefilter
+operator|==
+literal|0
+operator|&&
+name|has_commit
+argument_list|(
+name|head_sha1
+argument_list|,
+operator|&
+name|branch
+argument_list|)
+condition|)
+return|return
+literal|0
+return|;
+if|if
+condition|(
+name|mergefilter
+operator|==
+literal|1
+operator|&&
+operator|!
+name|has_commit
+argument_list|(
+name|head_sha1
+argument_list|,
+operator|&
+name|branch
+argument_list|)
+condition|)
+return|return
+literal|0
+return|;
+block|}
 comment|/* Resize buffer */
 if|if
 condition|(
@@ -2496,6 +2581,20 @@ operator|&
 name|force_create
 argument_list|,
 literal|"force creation (when already exists)"
+argument_list|)
+block|,
+name|OPT_SET_INT
+argument_list|(
+literal|0
+argument_list|,
+literal|"merged"
+argument_list|,
+operator|&
+name|mergefilter
+argument_list|,
+literal|"list only merged branches"
+argument_list|,
+literal|1
 argument_list|)
 block|,
 name|OPT_END
