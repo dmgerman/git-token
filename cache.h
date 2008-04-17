@@ -4246,6 +4246,19 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|void
+name|add_to_alternates_file
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|reference
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_struct
 DECL|struct|pack_window
 struct|struct
