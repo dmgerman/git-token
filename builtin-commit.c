@@ -4307,13 +4307,12 @@ name|show_root_diff
 operator|=
 literal|1
 expr_stmt|;
-name|rev
-operator|.
-name|commit_format
-operator|=
 name|get_commit_format
 argument_list|(
 literal|"format:%h: %s"
+argument_list|,
+operator|&
+name|rev
 argument_list|)
 expr_stmt|;
 name|rev

@@ -352,16 +352,29 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_struct_decl
+struct_decl|struct
+name|rev_info
+struct_decl|;
+end_struct_decl
+
+begin_comment
+comment|/* in revision.h, it circularly uses enum cmit_fmt */
+end_comment
+
 begin_function_decl
 specifier|extern
-name|enum
-name|cmit_fmt
+name|void
 name|get_commit_format
 parameter_list|(
 specifier|const
 name|char
 modifier|*
 name|arg
+parameter_list|,
+name|struct
+name|rev_info
+modifier|*
 parameter_list|)
 function_decl|;
 end_function_decl
