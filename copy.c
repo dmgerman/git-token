@@ -64,11 +64,9 @@ condition|)
 block|{
 name|int
 name|read_error
-decl_stmt|;
-name|read_error
-operator|=
+init|=
 name|errno
-expr_stmt|;
+decl_stmt|;
 name|close
 argument_list|(
 name|ifd
@@ -140,6 +138,11 @@ return|;
 block|}
 else|else
 block|{
+name|int
+name|write_error
+init|=
+name|errno
+decl_stmt|;
 name|close
 argument_list|(
 name|ifd
@@ -152,7 +155,7 @@ literal|"copy-fd: write returned %s"
 argument_list|,
 name|strerror
 argument_list|(
-name|errno
+name|write_error
 argument_list|)
 argument_list|)
 return|;
@@ -278,7 +281,7 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"%s: write error: %s"
+literal|"%s: close error: %s"
 argument_list|,
 name|dst
 argument_list|,
