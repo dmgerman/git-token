@@ -1812,14 +1812,22 @@ modifier|*
 name|value
 parameter_list|)
 block|{
-if|if
-condition|(
-name|value
-condition|)
-block|{
 name|int
 name|i
 decl_stmt|;
+name|char
+modifier|*
+name|endptr
+decl_stmt|;
+if|if
+condition|(
+name|value
+operator|==
+name|NULL
+condition|)
+return|return
+name|PERM_GROUP
+return|;
 if|if
 condition|(
 operator|!
@@ -1875,23 +1883,27 @@ condition|)
 return|return
 name|PERM_EVERYBODY
 return|;
+comment|/* Parse octal numbers */
 name|i
 operator|=
-name|atoi
+name|strtol
 argument_list|(
 name|value
+argument_list|,
+operator|&
+name|endptr
+argument_list|,
+literal|8
 argument_list|)
 expr_stmt|;
+comment|/* If not an octal number, maybe true/false? */
 if|if
 condition|(
-name|i
-operator|>
-literal|1
+operator|*
+name|endptr
+operator|!=
+literal|0
 condition|)
-return|return
-name|i
-return|;
-block|}
 return|return
 name|git_config_bool
 argument_list|(
@@ -1899,6 +1911,64 @@ name|var
 argument_list|,
 name|value
 argument_list|)
+condition|?
+name|PERM_GROUP
+else|:
+name|PERM_UMASK
+return|;
+comment|/* 	 * Treat values 0, 1 and 2 as compatibility cases, otherwise it is 	 * a chmod value. 	 */
+switch|switch
+condition|(
+name|i
+condition|)
+block|{
+case|case
+name|PERM_UMASK
+case|:
+comment|/* 0 */
+return|return
+name|PERM_UMASK
+return|;
+case|case
+name|OLD_PERM_GROUP
+case|:
+comment|/* 1 */
+return|return
+name|PERM_GROUP
+return|;
+case|case
+name|OLD_PERM_EVERYBODY
+case|:
+comment|/* 2 */
+return|return
+name|PERM_EVERYBODY
+return|;
+block|}
+comment|/* A filemode value was given: 0xxx */
+if|if
+condition|(
+operator|(
+name|i
+operator|&
+literal|0600
+operator|)
+operator|!=
+literal|0600
+condition|)
+name|die
+argument_list|(
+literal|"Problem with core.sharedRepository filemode value "
+literal|"(0%.3o).\nThe owner of files must always have "
+literal|"read and write permissions."
+argument_list|,
+name|i
+argument_list|)
+expr_stmt|;
+comment|/* 	 * Mask filemode value. Others can not get write permission. 	 * x flags for directories are handled separately. 	 */
+return|return
+name|i
+operator|&
+literal|0666
 return|;
 block|}
 end_function
