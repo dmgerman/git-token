@@ -4395,6 +4395,11 @@ index|[
 literal|20
 index|]
 decl_stmt|;
+DECL|member|symref
+name|char
+modifier|*
+name|symref
+decl_stmt|;
 DECL|member|force
 name|unsigned
 name|int
