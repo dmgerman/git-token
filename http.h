@@ -588,15 +588,10 @@ name|char
 modifier|*
 name|base
 parameter_list|,
-specifier|const
-name|char
+name|struct
+name|ref
 modifier|*
 name|ref
-parameter_list|,
-name|unsigned
-name|char
-modifier|*
-name|sha1
 parameter_list|)
 function_decl|;
 end_function_decl
