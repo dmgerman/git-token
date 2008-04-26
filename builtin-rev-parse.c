@@ -1880,6 +1880,34 @@ block|}
 end_function
 
 begin_function
+DECL|function|die_no_single_rev
+specifier|static
+name|void
+name|die_no_single_rev
+parameter_list|(
+name|int
+name|quiet
+parameter_list|)
+block|{
+if|if
+condition|(
+name|quiet
+condition|)
+name|exit
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+else|else
+name|die
+argument_list|(
+literal|"Needed a single revision"
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
 DECL|function|cmd_rev_parse
 name|int
 name|cmd_rev_parse
@@ -1907,6 +1935,10 @@ init|=
 literal|0
 decl_stmt|,
 name|verify
+init|=
+literal|0
+decl_stmt|,
+name|quiet
 init|=
 literal|0
 decl_stmt|;
@@ -2252,6 +2284,31 @@ name|DO_NOREV
 operator|)
 expr_stmt|;
 name|verify
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--quiet"
+argument_list|)
+operator|||
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"-q"
+argument_list|)
+condition|)
+block|{
+name|quiet
 operator|=
 literal|1
 expr_stmt|;
@@ -2839,9 +2896,9 @@ argument_list|)
 operator|&&
 name|verify
 condition|)
-name|die
+name|die_no_single_rev
 argument_list|(
-literal|"Needed a single revision"
+name|quiet
 argument_list|)
 expr_stmt|;
 continue|continue;
@@ -2925,9 +2982,9 @@ if|if
 condition|(
 name|verify
 condition|)
-name|die
+name|die_no_single_rev
 argument_list|(
-literal|"Needed a single revision"
+name|quiet
 argument_list|)
 expr_stmt|;
 name|verify_filename
@@ -2949,9 +3006,9 @@ name|revs_count
 operator|!=
 literal|1
 condition|)
-name|die
+name|die_no_single_rev
 argument_list|(
-literal|"Needed a single revision"
+name|quiet
 argument_list|)
 expr_stmt|;
 return|return
