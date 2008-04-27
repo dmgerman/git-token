@@ -3900,8 +3900,21 @@ condition|(
 name|done
 operator|==
 literal|0
+operator|&&
+name|sz
+operator|!=
+name|len
 condition|)
-break|break;
+name|die
+argument_list|(
+literal|"early EOF '%s'"
+argument_list|,
+name|elem
+operator|->
+name|path
+argument_list|)
+expr_stmt|;
+elseif|else
 if|if
 condition|(
 name|done
