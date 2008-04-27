@@ -1610,6 +1610,19 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|void
+name|set_git_work_tree
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|tree
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_define
 DECL|macro|ALTERNATE_DB_ENVIRONMENT
 define|#
