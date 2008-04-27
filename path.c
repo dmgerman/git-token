@@ -421,9 +421,10 @@ literal|20
 index|]
 decl_stmt|;
 name|int
-name|len
-decl_stmt|,
 name|fd
+decl_stmt|;
+name|ssize_t
+name|len
 decl_stmt|;
 if|if
 condition|(

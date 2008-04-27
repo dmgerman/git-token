@@ -1996,7 +1996,8 @@ name|int
 name|depth
 init|=
 name|MAXDEPTH
-decl_stmt|,
+decl_stmt|;
+name|ssize_t
 name|len
 decl_stmt|;
 name|char

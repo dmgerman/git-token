@@ -159,7 +159,7 @@ end_function
 
 begin_function
 DECL|function|read_in_full
-name|int
+name|ssize_t
 name|read_in_full
 parameter_list|(
 name|int
@@ -237,7 +237,7 @@ end_function
 
 begin_function
 DECL|function|write_in_full
-name|int
+name|ssize_t
 name|write_in_full
 parameter_list|(
 name|int
