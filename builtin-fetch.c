@@ -3389,11 +3389,6 @@ name|ref_map
 argument_list|)
 expr_stmt|;
 block|}
-name|transport_disconnect
-argument_list|(
-name|transport
-argument_list|)
-expr_stmt|;
 return|return
 literal|0
 return|;
@@ -3509,6 +3504,9 @@ name|int
 name|ref_nr
 init|=
 literal|0
+decl_stmt|;
+name|int
+name|exit_code
 decl_stmt|;
 comment|/* Record the command line for the reflog */
 name|strbuf_addstr
@@ -3837,7 +3835,8 @@ argument_list|(
 name|unlock_pack
 argument_list|)
 expr_stmt|;
-return|return
+name|exit_code
+operator|=
 name|do_fetch
 argument_list|(
 name|transport
@@ -3851,6 +3850,18 @@ argument_list|)
 argument_list|,
 name|ref_nr
 argument_list|)
+expr_stmt|;
+name|transport_disconnect
+argument_list|(
+name|transport
+argument_list|)
+expr_stmt|;
+name|transport
+operator|=
+name|NULL
+expr_stmt|;
+return|return
+name|exit_code
 return|;
 block|}
 end_function
