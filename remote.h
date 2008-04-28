@@ -191,6 +191,12 @@ name|pattern
 range|:
 literal|1
 decl_stmt|;
+DECL|member|matching
+name|unsigned
+name|matching
+range|:
+literal|1
+decl_stmt|;
 DECL|member|src
 name|char
 modifier|*
