@@ -552,7 +552,7 @@ argument_list|,
 operator|&
 name|signoff
 argument_list|,
-literal|"add Signed-off-by: header"
+literal|"add Signed-off-by:"
 argument_list|)
 block|,
 name|OPT_STRING
