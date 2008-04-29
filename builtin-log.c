@@ -4315,14 +4315,6 @@ name|ignore_merges
 operator|=
 literal|1
 expr_stmt|;
-name|rev
-operator|.
-name|diffopt
-operator|.
-name|msg_sep
-operator|=
-literal|""
-expr_stmt|;
 name|DIFF_OPT_SET
 argument_list|(
 operator|&

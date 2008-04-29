@@ -100,11 +100,6 @@ name|struct
 name|rev_info
 modifier|*
 name|opt
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|sep
 parameter_list|)
 function_decl|;
 end_function_decl

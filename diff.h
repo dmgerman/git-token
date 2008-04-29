@@ -546,12 +546,6 @@ DECL|member|prefix_length
 name|int
 name|prefix_length
 decl_stmt|;
-DECL|member|msg_sep
-specifier|const
-name|char
-modifier|*
-name|msg_sep
-decl_stmt|;
 DECL|member|stat_sep
 specifier|const
 name|char
