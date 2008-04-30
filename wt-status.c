@@ -1307,7 +1307,7 @@ name|diffopt
 operator|.
 name|rename_limit
 operator|=
-literal|100
+literal|200
 expr_stmt|;
 name|rev
 operator|.

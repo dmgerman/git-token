@@ -2030,7 +2030,7 @@ literal|0
 condition|?
 name|diff_rename_limit
 else|:
-literal|100
+literal|500
 expr_stmt|;
 name|opts
 operator|.
