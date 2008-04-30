@@ -2034,6 +2034,12 @@ literal|500
 expr_stmt|;
 name|opts
 operator|.
+name|warn_on_too_large_rename
+operator|=
+literal|1
+expr_stmt|;
+name|opts
+operator|.
 name|output_format
 operator|=
 name|DIFF_FORMAT_NO_OUTPUT
