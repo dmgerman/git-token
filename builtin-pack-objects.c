@@ -2552,13 +2552,6 @@ name|struct
 name|pack_header
 name|hdr
 decl_stmt|;
-name|int
-name|do_progress
-init|=
-name|progress
-operator|>>
-name|pack_to_stdout
-decl_stmt|;
 name|uint32_t
 name|nr_remaining
 init|=
@@ -2571,7 +2564,9 @@ literal|0
 decl_stmt|;
 if|if
 condition|(
-name|do_progress
+name|progress
+operator|>
+name|pack_to_stdout
 condition|)
 name|progress_state
 operator|=
