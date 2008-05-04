@@ -248,8 +248,13 @@ name|left_right
 range|:
 literal|1
 decl_stmt|,
-DECL|member|parents
-name|parents
+DECL|member|rewrite_parents
+name|rewrite_parents
+range|:
+literal|1
+decl_stmt|,
+DECL|member|print_parents
+name|print_parents
 range|:
 literal|1
 decl_stmt|,

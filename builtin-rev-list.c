@@ -324,7 +324,7 @@ if|if
 condition|(
 name|revs
 operator|.
-name|parents
+name|print_parents
 condition|)
 block|{
 name|struct

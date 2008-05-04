@@ -1148,7 +1148,7 @@ if|if
 condition|(
 name|opt
 operator|->
-name|parents
+name|print_parents
 condition|)
 name|show_parents
 argument_list|(
@@ -1355,7 +1355,7 @@ if|if
 condition|(
 name|opt
 operator|->
-name|parents
+name|print_parents
 condition|)
 name|show_parents
 argument_list|(
