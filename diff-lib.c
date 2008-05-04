@@ -2042,7 +2042,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * See if work tree has an entity that can be staged.  Return 0 if so,  * return 1 if not and return -1 if error.  */
+comment|/*  * Has the work tree entity been removed?  *  * Return 1 if it was removed from the work tree, 0 if an entity to be  * compared with the cache entry ce still exists (the latter includes  * the case where a directory that is not a submodule repository  * exists for ce that is a submodule -- it is a submodule that is not  * checked out).  Return negative for an error.  */
 end_comment
 
 begin_function
@@ -2130,8 +2130,17 @@ index|[
 literal|20
 index|]
 decl_stmt|;
+comment|/* 		 * If ce is already a gitlink, we can have a plain 		 * directory (i.e. the submodule is not checked out), 		 * or a checked out submodule.  Either case this is not 		 * a case where something was removed from the work tree, 		 * so we will return 0. 		 * 		 * Otherwise, if the directory is not a submodule 		 * repository, that means ce which was a blob turned into 		 * a directory --- the blob was removed! 		 */
 if|if
 condition|(
+operator|!
+name|S_ISGITLINK
+argument_list|(
+name|ce
+operator|->
+name|ce_mode
+argument_list|)
+operator|&&
 name|resolve_gitlink_ref
 argument_list|(
 name|ce
