@@ -30,6 +30,13 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|user_ident_explicitly_given
+name|int
+name|user_ident_explicitly_given
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|trust_executable_bit
 name|int
 name|trust_executable_bit
