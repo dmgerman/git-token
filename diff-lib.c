@@ -2046,10 +2046,10 @@ comment|/*  * Has the work tree entity been removed?  *  * Return 1 if it was re
 end_comment
 
 begin_function
-DECL|function|check_work_tree_entity
+DECL|function|check_removed
 specifier|static
 name|int
-name|check_work_tree_entity
+name|check_removed
 parameter_list|(
 specifier|const
 name|struct
@@ -2435,7 +2435,7 @@ argument_list|)
 expr_stmt|;
 name|changed
 operator|=
-name|check_work_tree_entity
+name|check_removed
 argument_list|(
 name|ce
 argument_list|,
@@ -2693,7 +2693,7 @@ condition|)
 continue|continue;
 name|changed
 operator|=
-name|check_work_tree_entity
+name|check_removed
 argument_list|(
 name|ce
 argument_list|,
@@ -3012,7 +3012,7 @@ name|st
 decl_stmt|;
 name|changed
 operator|=
-name|check_work_tree_entity
+name|check_removed
 argument_list|(
 name|ce
 argument_list|,
