@@ -93,6 +93,11 @@ DECL|member|num_parents
 name|int
 name|num_parents
 decl_stmt|;
+comment|/* 	 * The width of the graph output for this commit. 	 * All rows for this commit are padded to this width, so that 	 * messages printed after the graph output are aligned. 	 */
+DECL|member|width
+name|int
+name|width
+decl_stmt|;
 comment|/* 	 * The next expansion row to print 	 * when state is GRAPH_PRE_COMMIT 	 */
 DECL|member|expansion_row
 name|int
@@ -603,6 +608,65 @@ block|}
 end_function
 
 begin_function
+DECL|function|graph_update_width
+specifier|static
+name|void
+name|graph_update_width
+parameter_list|(
+name|struct
+name|git_graph
+modifier|*
+name|graph
+parameter_list|,
+name|int
+name|is_commit_in_existing_columns
+parameter_list|)
+block|{
+comment|/* 	 * Compute the width needed to display the graph for this commit. 	 * This is the maximum width needed for any row.  All other rows 	 * will be padded to this width. 	 * 	 * Compute the number of columns in the widest row: 	 * Count each existing column (graph->num_columns), and each new 	 * column added by this commit. 	 */
+name|int
+name|max_cols
+init|=
+name|graph
+operator|->
+name|num_columns
+operator|+
+name|graph
+operator|->
+name|num_parents
+decl_stmt|;
+comment|/* 	 * Even if the current commit has no parents, it still takes up a 	 * column for itself. 	 */
+if|if
+condition|(
+name|graph
+operator|->
+name|num_parents
+operator|<
+literal|1
+condition|)
+name|max_cols
+operator|++
+expr_stmt|;
+comment|/* 	 * We added a column for the the current commit as part of 	 * graph->num_parents.  If the current commit was already in 	 * graph->columns, then we have double counted it. 	 */
+if|if
+condition|(
+name|is_commit_in_existing_columns
+condition|)
+name|max_cols
+operator|--
+expr_stmt|;
+comment|/* 	 * Each column takes up 2 spaces 	 */
+name|graph
+operator|->
+name|width
+operator|=
+name|max_cols
+operator|*
+literal|2
+expr_stmt|;
+block|}
+end_function
+
+begin_function
 DECL|function|graph_update_columns
 specifier|static
 name|void
@@ -634,6 +698,8 @@ name|int
 name|i
 decl_stmt|,
 name|seen_this
+decl_stmt|,
+name|is_commit_in_columns
 decl_stmt|;
 comment|/* 	 * Swap graph->columns with graph->new_columns 	 * graph->columns contains the state for the previous commit, 	 * and new_columns now contains the state for our commit. 	 * 	 * We'll re-use the old columns array as storage to compute the new 	 * columns list for the commit after this one. 	 */
 name|tmp_columns
@@ -731,6 +797,10 @@ name|mapping_idx
 operator|=
 literal|0
 expr_stmt|;
+name|is_commit_in_columns
+operator|=
+literal|1
+expr_stmt|;
 for|for
 control|(
 name|i
@@ -766,6 +836,10 @@ condition|(
 name|seen_this
 condition|)
 break|break;
+name|is_commit_in_columns
+operator|=
+literal|0
+expr_stmt|;
 name|col_commit
 operator|=
 name|graph
@@ -873,6 +947,14 @@ name|graph
 operator|->
 name|mapping_size
 operator|--
+expr_stmt|;
+comment|/* 	 * Compute graph->width for this commit 	 */
+name|graph_update_width
+argument_list|(
+name|graph
+argument_list|,
+name|is_commit_in_columns
+argument_list|)
 expr_stmt|;
 block|}
 end_function
@@ -1072,48 +1154,26 @@ modifier|*
 name|sb
 parameter_list|)
 block|{
-comment|/* 	 * Add additional spaces to the end of the strbuf, so that all 	 * lines for a particular commit have the same width. 	 * 	 * This way, fields printed to the right of the graph will remain 	 * aligned for the entire commit. 	 * 	 * This computation results in 3 extra space to the right in most 	 * cases, but only 1 extra space if the commit doesn't have any 	 * children that have already been displayed in the graph (i.e., 	 * if the current commit isn't in graph->columns). 	 */
-name|size_t
+comment|/* 	 * Add additional spaces to the end of the strbuf, so that all 	 * lines for a particular commit have the same width. 	 * 	 * This way, fields printed to the right of the graph will remain 	 * aligned for the entire commit. 	 */
+name|int
 name|extra
 decl_stmt|;
-name|size_t
-name|final_width
-init|=
-name|graph
-operator|->
-name|num_columns
-operator|+
-name|graph
-operator|->
-name|num_parents
-decl_stmt|;
-if|if
-condition|(
-name|graph
-operator|->
-name|num_parents
-operator|<
-literal|1
-condition|)
-name|final_width
-operator|++
-expr_stmt|;
-name|final_width
-operator|*=
-literal|2
-expr_stmt|;
 if|if
 condition|(
 name|sb
 operator|->
 name|len
 operator|>=
-name|final_width
+name|graph
+operator|->
+name|width
 condition|)
 return|return;
 name|extra
 operator|=
-name|final_width
+name|graph
+operator|->
+name|width
 operator|-
 name|sb
 operator|->
