@@ -2186,11 +2186,7 @@ argument_list|,
 name|note
 argument_list|)
 expr_stmt|;
-elseif|else
-if|if
-condition|(
-name|verbose
-condition|)
+else|else
 name|sprintf
 argument_list|(
 name|note
@@ -2215,12 +2211,6 @@ name|what
 else|:
 literal|"HEAD"
 argument_list|)
-expr_stmt|;
-else|else
-operator|*
-name|note
-operator|=
-literal|'\0'
 expr_stmt|;
 if|if
 condition|(
