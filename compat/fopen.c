@@ -1,16 +1,20 @@
 begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
+begin_comment
+comment|/*  *  The order of the following two lines is important.  *  *  FREAD_READS_DIRECTORIES is undefined before including git-compat-util.h  *  to avoid the redefinition of fopen within git-compat-util.h. This is  *  necessary since fopen is a macro on some platforms which may be set  *  based on compiler options. For example, on AIX fopen is set to fopen64  *  when _LARGE_FILES is defined. The previous technique of merely undefining  *  fopen after including git-compat-util.h is inadequate in this case.  */
+end_comment
+
+begin_undef
+DECL|macro|FREAD_READS_DIRECTORIES
+undef|#
+directive|undef
+name|FREAD_READS_DIRECTORIES
+end_undef
+
 begin_include
 include|#
 directive|include
 file|"../git-compat-util.h"
 end_include
-
-begin_undef
-DECL|macro|fopen
-undef|#
-directive|undef
-name|fopen
-end_undef
 
 begin_function
 DECL|function|git_fopen
