@@ -1388,6 +1388,24 @@ directive|ifdef
 name|FREAD_READS_DIRECTORIES
 end_ifdef
 
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|fopen
+end_ifdef
+
+begin_undef
+DECL|macro|fopen
+undef|#
+directive|undef
+name|fopen
+end_undef
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_define
 DECL|macro|fopen
 define|#
