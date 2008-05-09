@@ -268,6 +268,23 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|int
+name|resolve_remote_symref
+parameter_list|(
+name|struct
+name|ref
+modifier|*
+name|ref
+parameter_list|,
+name|struct
+name|ref
+modifier|*
+name|list
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/*  * Removes and frees any duplicate refs in the map.  */
 end_comment

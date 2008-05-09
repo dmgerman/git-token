@@ -4808,14 +4808,10 @@ name|walker
 modifier|*
 name|walker
 parameter_list|,
-name|char
+name|struct
+name|ref
 modifier|*
 name|ref
-parameter_list|,
-name|unsigned
-name|char
-modifier|*
-name|sha1
 parameter_list|)
 block|{
 name|struct
@@ -4837,8 +4833,6 @@ operator|->
 name|base
 argument_list|,
 name|ref
-argument_list|,
-name|sha1
 argument_list|)
 return|;
 block|}
