@@ -1094,7 +1094,7 @@ argument_list|,
 operator|&
 name|prune
 argument_list|,
-literal|"prune unreferenced objects"
+literal|"prune unreferenced objects (deprecated)"
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -1242,10 +1242,6 @@ name|auto_gc
 condition|)
 block|{
 comment|/* 		 * Auto-gc should be least intrusive as possible. 		 */
-name|prune
-operator|=
-literal|0
-expr_stmt|;
 if|if
 condition|(
 operator|!
