@@ -2710,11 +2710,41 @@ block|, }
 enum|;
 end_enum
 
+begin_enum
+DECL|enum|rebase_setup_type
+enum|enum
+name|rebase_setup_type
+block|{
+DECL|enumerator|AUTOREBASE_NEVER
+name|AUTOREBASE_NEVER
+init|=
+literal|0
+block|,
+DECL|enumerator|AUTOREBASE_LOCAL
+name|AUTOREBASE_LOCAL
+block|,
+DECL|enumerator|AUTOREBASE_REMOTE
+name|AUTOREBASE_REMOTE
+block|,
+DECL|enumerator|AUTOREBASE_ALWAYS
+name|AUTOREBASE_ALWAYS
+block|, }
+enum|;
+end_enum
+
 begin_decl_stmt
 specifier|extern
 name|enum
 name|branch_track
 name|git_branch_track
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
+name|enum
+name|rebase_setup_type
+name|autorebase
 decl_stmt|;
 end_decl_stmt
 

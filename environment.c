@@ -285,6 +285,16 @@ name|BRANCH_TRACK_REMOTE
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|autorebase
+name|enum
+name|rebase_setup_type
+name|autorebase
+init|=
+name|AUTOREBASE_NEVER
+decl_stmt|;
+end_decl_stmt
+
 begin_comment
 comment|/* This is set by setup_git_dir_gently() and/or git_default_config() */
 end_comment
