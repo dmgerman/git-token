@@ -660,7 +660,7 @@ argument_list|)
 block|,
 name|OPT_BOOLEAN
 argument_list|(
-literal|0
+literal|'u'
 argument_list|,
 literal|"untracked-files"
 argument_list|,

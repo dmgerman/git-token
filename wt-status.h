@@ -126,14 +126,14 @@ function_decl|;
 end_function_decl
 
 begin_decl_stmt
-DECL|variable|wt_status_use_color
+specifier|extern
 name|int
 name|wt_status_use_color
 decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|wt_status_relative_paths
+specifier|extern
 name|int
 name|wt_status_relative_paths
 decl_stmt|;
