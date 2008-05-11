@@ -502,6 +502,14 @@ value|(0x40000)
 end_define
 
 begin_define
+DECL|macro|CE_ADDED
+define|#
+directive|define
+name|CE_ADDED
+value|(0x80000)
+end_define
+
+begin_define
 DECL|macro|CE_HASHED
 define|#
 directive|define
@@ -588,32 +596,6 @@ name|CE_STATE_MASK
 operator|)
 operator||
 name|state
-expr_stmt|;
-block|}
-end_function
-
-begin_comment
-comment|/*  * We don't actually *remove* it, we can just mark it invalid so that  * we won't find it in lookups.  *  * Not only would we have to search the lists (simple enough), but  * we'd also have to rehash other hash buckets in case this makes the  * hash bucket empty (common). So it's much better to just mark  * it.  */
-end_comment
-
-begin_function
-DECL|function|remove_index_entry
-specifier|static
-specifier|inline
-name|void
-name|remove_index_entry
-parameter_list|(
-name|struct
-name|cache_entry
-modifier|*
-name|ce
-parameter_list|)
-block|{
-name|ce
-operator|->
-name|ce_flags
-operator||=
-name|CE_UNHASHED
 expr_stmt|;
 block|}
 end_function
@@ -1072,6 +1054,54 @@ name|the_index
 decl_stmt|;
 end_decl_stmt
 
+begin_comment
+comment|/* Name hashing */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|void
+name|add_name_hash
+parameter_list|(
+name|struct
+name|index_state
+modifier|*
+name|istate
+parameter_list|,
+name|struct
+name|cache_entry
+modifier|*
+name|ce
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/*  * We don't actually *remove* it, we can just mark it invalid so that  * we won't find it in lookups.  *  * Not only would we have to search the lists (simple enough), but  * we'd also have to rehash other hash buckets in case this makes the  * hash bucket empty (common). So it's much better to just mark  * it.  */
+end_comment
+
+begin_function
+DECL|function|remove_name_hash
+specifier|static
+specifier|inline
+name|void
+name|remove_name_hash
+parameter_list|(
+name|struct
+name|cache_entry
+modifier|*
+name|ce
+parameter_list|)
+block|{
+name|ce
+operator|->
+name|ce_flags
+operator||=
+name|CE_UNHASHED
+expr_stmt|;
+block|}
+end_function
+
 begin_ifndef
 ifndef|#
 directive|ifndef
@@ -1220,6 +1250,21 @@ value|remove_file_from_index(&the_index, (path))
 end_define
 
 begin_define
+DECL|macro|add_to_cache
+define|#
+directive|define
+name|add_to_cache
+parameter_list|(
+name|path
+parameter_list|,
+name|st
+parameter_list|,
+name|verbose
+parameter_list|)
+value|add_to_index(&the_index, (path), (st), (verbose))
+end_define
+
+begin_define
 DECL|macro|add_file_to_cache
 define|#
 directive|define
@@ -1282,8 +1327,10 @@ parameter_list|(
 name|name
 parameter_list|,
 name|namelen
+parameter_list|,
+name|igncase
 parameter_list|)
-value|index_name_exists(&the_index, (name), (namelen))
+value|index_name_exists(&the_index, (name), (namelen), (igncase))
 end_define
 
 begin_endif
@@ -1892,7 +1939,9 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|int
+name|struct
+name|cache_entry
+modifier|*
 name|index_name_exists
 parameter_list|(
 name|struct
@@ -1907,6 +1956,9 @@ name|name
 parameter_list|,
 name|int
 name|namelen
+parameter_list|,
+name|int
+name|igncase
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -2050,6 +2102,30 @@ specifier|const
 name|char
 modifier|*
 name|path
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|add_to_index
+parameter_list|(
+name|struct
+name|index_state
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|,
+name|struct
+name|stat
+modifier|*
+parameter_list|,
+name|int
+name|verbose
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -2561,6 +2637,13 @@ begin_decl_stmt
 specifier|extern
 name|int
 name|has_symlinks
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
+name|int
+name|ignore_case
 decl_stmt|;
 end_decl_stmt
 
@@ -4219,14 +4302,13 @@ specifier|extern
 name|int
 name|has_symlink_leading_path
 parameter_list|(
+name|int
+name|len
+parameter_list|,
 specifier|const
 name|char
 modifier|*
 name|name
-parameter_list|,
-name|char
-modifier|*
-name|last_symlink
 parameter_list|)
 function_decl|;
 end_function_decl
