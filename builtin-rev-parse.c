@@ -2995,6 +2995,17 @@ name|arg
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|verify
+operator|&&
+name|revs_count
+operator|==
+literal|1
+condition|)
+return|return
+literal|0
+return|;
 name|show_default
 argument_list|()
 expr_stmt|;
