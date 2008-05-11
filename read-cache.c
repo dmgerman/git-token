@@ -949,6 +949,14 @@ parameter_list|)
 block|{
 return|return
 operator|(
+operator|!
+name|S_ISGITLINK
+argument_list|(
+name|ce
+operator|->
+name|ce_mode
+argument_list|)
+operator|&&
 name|istate
 operator|->
 name|timestamp
