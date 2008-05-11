@@ -57,6 +57,13 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|ignore_case
+name|int
+name|ignore_case
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|assume_unchanged
 name|int
 name|assume_unchanged
