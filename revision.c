@@ -2160,6 +2160,8 @@ name|left_flag
 expr_stmt|;
 if|if
 condition|(
+operator|!
+operator|(
 name|p
 operator|->
 name|object
@@ -2167,8 +2169,9 @@ operator|.
 name|flags
 operator|&
 name|SEEN
+operator|)
 condition|)
-continue|continue;
+block|{
 name|p
 operator|->
 name|object
@@ -2184,6 +2187,7 @@ argument_list|,
 name|list
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|revs
