@@ -520,11 +520,18 @@ case|:
 case|case
 name|DIFF_STATUS_TYPE_CHANGED
 case|:
+if|if
+condition|(
 name|add_file_to_cache
 argument_list|(
 name|path
 argument_list|,
 name|verbose
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"updating files failed"
 argument_list|)
 expr_stmt|;
 break|break;
@@ -1463,6 +1470,8 @@ condition|;
 name|i
 operator|++
 control|)
+if|if
+condition|(
 name|add_file_to_cache
 argument_list|(
 name|dir
@@ -1475,6 +1484,11 @@ operator|->
 name|name
 argument_list|,
 name|verbose
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"adding files failed"
 argument_list|)
 expr_stmt|;
 name|finish
