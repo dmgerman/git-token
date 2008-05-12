@@ -1089,6 +1089,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|ignore_add_errors
+specifier|static
+name|int
+name|ignore_add_errors
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|builtin_add_options
 specifier|static
 name|struct
@@ -1172,6 +1180,18 @@ operator|&
 name|refresh_only
 argument_list|,
 literal|"don't add, only refresh the index"
+argument_list|)
+block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|0
+argument_list|,
+literal|"ignore-errors"
+argument_list|,
+operator|&
+name|ignore_add_errors
+argument_list|,
+literal|"just skip files which cannot be added because of errors"
 argument_list|)
 block|,
 name|OPT_END
@@ -1318,6 +1338,14 @@ condition|)
 name|flags
 operator||=
 name|ADD_FILES_VERBOSE
+expr_stmt|;
+if|if
+condition|(
+name|ignore_add_errors
+condition|)
+name|flags
+operator||=
+name|ADD_FILES_IGNORE_ERRORS
 expr_stmt|;
 name|exit_status
 operator|=
@@ -1566,11 +1594,22 @@ argument_list|,
 name|verbose
 argument_list|)
 condition|)
+block|{
+if|if
+condition|(
+operator|!
+name|ignore_add_errors
+condition|)
 name|die
 argument_list|(
 literal|"adding files failed"
 argument_list|)
 expr_stmt|;
+name|exit_status
+operator|=
+literal|1
+expr_stmt|;
+block|}
 name|finish
 label|:
 if|if
