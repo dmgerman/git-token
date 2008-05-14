@@ -3450,6 +3450,13 @@ name|i
 index|]
 operator|==
 literal|'"'
+operator|||
+name|key
+index|[
+name|i
+index|]
+operator|==
+literal|'\\'
 condition|)
 name|strbuf_addch
 argument_list|(
