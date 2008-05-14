@@ -5469,6 +5469,13 @@ end_decl_stmt
 
 begin_decl_stmt
 specifier|extern
+name|int
+name|user_ident_explicitly_given
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
 specifier|const
 name|char
 modifier|*
