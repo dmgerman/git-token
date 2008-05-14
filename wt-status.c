@@ -2228,6 +2228,10 @@ specifier|const
 name|char
 modifier|*
 name|v
+parameter_list|,
+name|void
+modifier|*
+name|cb
 parameter_list|)
 block|{
 if|if
@@ -2392,6 +2396,8 @@ argument_list|(
 name|k
 argument_list|,
 name|v
+argument_list|,
+name|cb
 argument_list|)
 return|;
 block|}

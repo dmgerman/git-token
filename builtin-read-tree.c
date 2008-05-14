@@ -555,6 +555,8 @@ expr_stmt|;
 name|git_config
 argument_list|(
 name|git_default_config
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 name|newfd
@@ -565,11 +567,6 @@ operator|&
 name|lock_file
 argument_list|,
 literal|1
-argument_list|)
-expr_stmt|;
-name|git_config
-argument_list|(
-name|git_default_config
 argument_list|)
 expr_stmt|;
 for|for

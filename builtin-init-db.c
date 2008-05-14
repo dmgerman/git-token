@@ -747,6 +747,8 @@ argument_list|(
 name|check_repository_format_version
 argument_list|,
 name|template_path
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 name|template_path
@@ -992,6 +994,8 @@ expr_stmt|;
 name|git_config
 argument_list|(
 name|git_default_config
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 comment|/* 	 * We would have created the above under user's umask -- under 	 * shared-repository settings, we would need to fix them up. 	 */
