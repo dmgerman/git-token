@@ -2444,6 +2444,19 @@ DECL|macro|REFRESH_IGNORE_MISSING
 comment|/* ignore non-existent */
 end_comment
 
+begin_define
+DECL|macro|REFRESH_IGNORE_SUBMODULES
+define|#
+directive|define
+name|REFRESH_IGNORE_SUBMODULES
+value|0x0008
+end_define
+
+begin_comment
+DECL|macro|REFRESH_IGNORE_SUBMODULES
+comment|/* ignore submodules */
+end_comment
+
 begin_function_decl
 specifier|extern
 name|int
