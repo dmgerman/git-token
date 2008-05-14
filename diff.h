@@ -524,6 +524,10 @@ DECL|member|rename_limit
 name|int
 name|rename_limit
 decl_stmt|;
+DECL|member|warn_on_too_large_rename
+name|int
+name|warn_on_too_large_rename
+decl_stmt|;
 DECL|member|dirstat_percent
 name|int
 name|dirstat_percent
