@@ -9571,10 +9571,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|cmd_mark
+DECL|function|parse_mark
 specifier|static
 name|void
-name|cmd_mark
+name|parse_mark
 parameter_list|(
 name|void
 parameter_list|)
@@ -9620,10 +9620,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|cmd_data
+DECL|function|parse_data
 specifier|static
 name|void
-name|cmd_data
+name|parse_data
 parameter_list|(
 name|struct
 name|strbuf
@@ -10173,10 +10173,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|cmd_new_blob
+DECL|function|parse_new_blob
 specifier|static
 name|void
-name|cmd_new_blob
+name|parse_new_blob
 parameter_list|(
 name|void
 parameter_list|)
@@ -10191,10 +10191,10 @@ decl_stmt|;
 name|read_next_command
 argument_list|()
 expr_stmt|;
-name|cmd_mark
+name|parse_mark
 argument_list|()
 expr_stmt|;
-name|cmd_data
+name|parse_data
 argument_list|(
 operator|&
 name|buf
@@ -10740,7 +10740,7 @@ block|}
 name|read_next_command
 argument_list|()
 expr_stmt|;
-name|cmd_data
+name|parse_data
 argument_list|(
 operator|&
 name|buf
@@ -11314,10 +11314,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|cmd_from_commit
+DECL|function|parse_from_commit
 specifier|static
 name|void
-name|cmd_from_commit
+name|parse_from_commit
 parameter_list|(
 name|struct
 name|branch
@@ -11424,10 +11424,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|cmd_from_existing
+DECL|function|parse_from_existing
 specifier|static
 name|void
-name|cmd_from_existing
+name|parse_from_existing
 parameter_list|(
 name|struct
 name|branch
@@ -11502,7 +11502,7 @@ operator|->
 name|sha1
 argument_list|)
 expr_stmt|;
-name|cmd_from_commit
+name|parse_from_commit
 argument_list|(
 name|b
 argument_list|,
@@ -11521,10 +11521,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|cmd_from
+DECL|function|parse_from
 specifier|static
 name|int
-name|cmd_from
+name|parse_from
 parameter_list|(
 name|struct
 name|branch
@@ -11770,7 +11770,7 @@ operator|&
 name|size
 argument_list|)
 decl_stmt|;
-name|cmd_from_commit
+name|parse_from_commit
 argument_list|(
 name|b
 argument_list|,
@@ -11786,7 +11786,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
-name|cmd_from_existing
+name|parse_from_existing
 argument_list|(
 name|b
 argument_list|)
@@ -11805,7 +11805,7 @@ operator|->
 name|sha1
 argument_list|)
 condition|)
-name|cmd_from_existing
+name|parse_from_existing
 argument_list|(
 name|b
 argument_list|)
@@ -11828,12 +11828,12 @@ block|}
 end_function
 
 begin_function
-DECL|function|cmd_merge
+DECL|function|parse_merge
 specifier|static
 name|struct
 name|hash_list
 modifier|*
-name|cmd_merge
+name|parse_merge
 parameter_list|(
 name|unsigned
 name|int
@@ -12102,10 +12102,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|cmd_new_commit
+DECL|function|parse_new_commit
 specifier|static
 name|void
-name|cmd_new_commit
+name|parse_new_commit
 parameter_list|(
 name|void
 parameter_list|)
@@ -12185,7 +12185,7 @@ expr_stmt|;
 name|read_next_command
 argument_list|()
 expr_stmt|;
-name|cmd_mark
+name|parse_mark
 argument_list|()
 expr_stmt|;
 if|if
@@ -12254,7 +12254,7 @@ argument_list|(
 literal|"Expected committer but didn't get one"
 argument_list|)
 expr_stmt|;
-name|cmd_data
+name|parse_data
 argument_list|(
 operator|&
 name|msg
@@ -12263,14 +12263,14 @@ expr_stmt|;
 name|read_next_command
 argument_list|()
 expr_stmt|;
-name|cmd_from
+name|parse_from
 argument_list|(
 name|b
 argument_list|)
 expr_stmt|;
 name|merge_list
 operator|=
-name|cmd_merge
+name|parse_merge
 argument_list|(
 operator|&
 name|merge_count
@@ -12620,10 +12620,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|cmd_new_tag
+DECL|function|parse_new_tag
 specifier|static
 name|void
-name|cmd_new_tag
+name|parse_new_tag
 parameter_list|(
 name|void
 parameter_list|)
@@ -12952,7 +12952,7 @@ comment|/* tag payload/message */
 name|read_next_command
 argument_list|()
 expr_stmt|;
-name|cmd_data
+name|parse_data
 argument_list|(
 operator|&
 name|msg
@@ -13039,10 +13039,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|cmd_reset_branch
+DECL|function|parse_reset_branch
 specifier|static
 name|void
-name|cmd_reset_branch
+name|parse_reset_branch
 parameter_list|(
 name|void
 parameter_list|)
@@ -13156,7 +13156,7 @@ expr_stmt|;
 name|read_next_command
 argument_list|()
 expr_stmt|;
-name|cmd_from
+name|parse_from
 argument_list|(
 name|b
 argument_list|)
@@ -13177,10 +13177,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|cmd_checkpoint
+DECL|function|parse_checkpoint
 specifier|static
 name|void
-name|cmd_checkpoint
+name|parse_checkpoint
 parameter_list|(
 name|void
 parameter_list|)
@@ -13210,10 +13210,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|cmd_progress
+DECL|function|parse_progress
 specifier|static
 name|void
-name|cmd_progress
+name|parse_progress
 parameter_list|(
 name|void
 parameter_list|)
@@ -14183,7 +14183,7 @@ operator|.
 name|buf
 argument_list|)
 condition|)
-name|cmd_new_blob
+name|parse_new_blob
 argument_list|()
 expr_stmt|;
 elseif|else
@@ -14199,7 +14199,7 @@ argument_list|,
 literal|"commit "
 argument_list|)
 condition|)
-name|cmd_new_commit
+name|parse_new_commit
 argument_list|()
 expr_stmt|;
 elseif|else
@@ -14215,7 +14215,7 @@ argument_list|,
 literal|"tag "
 argument_list|)
 condition|)
-name|cmd_new_tag
+name|parse_new_tag
 argument_list|()
 expr_stmt|;
 elseif|else
@@ -14231,7 +14231,7 @@ argument_list|,
 literal|"reset "
 argument_list|)
 condition|)
-name|cmd_reset_branch
+name|parse_reset_branch
 argument_list|()
 expr_stmt|;
 elseif|else
@@ -14247,7 +14247,7 @@ operator|.
 name|buf
 argument_list|)
 condition|)
-name|cmd_checkpoint
+name|parse_checkpoint
 argument_list|()
 expr_stmt|;
 elseif|else
@@ -14263,7 +14263,7 @@ argument_list|,
 literal|"progress "
 argument_list|)
 condition|)
-name|cmd_progress
+name|parse_progress
 argument_list|()
 expr_stmt|;
 else|else
