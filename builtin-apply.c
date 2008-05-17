@@ -1984,7 +1984,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Get the name etc info from the --/+++ lines of a traditional patch header  *  * FIXME! The end-of-filename heuristics are kind of screwy. For existing  * files, we can happily check the index for a match, but for creating a  * new file we should try to match whatever "patch" does. I have no idea.  */
+comment|/*  * Get the name etc info from the ---/+++ lines of a traditional patch header  *  * FIXME! The end-of-filename heuristics are kind of screwy. For existing  * files, we can happily check the index for a match, but for creating a  * new file we should try to match whatever "patch" does. I have no idea.  */
 end_comment
 
 begin_function
