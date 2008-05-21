@@ -1606,11 +1606,11 @@ comment|/* Do more real merge */
 comment|/* 			 * We update the index fully, then write the 			 * tree from the index, then merge the new 			 * branch with the current tree, with the old 			 * branch as the base. Then we reset the index 			 * (but not the working tree) to the new 			 * branch, leaving the working tree as the 			 * merged version, but skipping unmerged 			 * entries in the index. 			 */
 name|add_files_to_cache
 argument_list|(
+name|NULL
+argument_list|,
+name|NULL
+argument_list|,
 literal|0
-argument_list|,
-name|NULL
-argument_list|,
-name|NULL
 argument_list|)
 expr_stmt|;
 name|work

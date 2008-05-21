@@ -1259,9 +1259,9 @@ name|path
 parameter_list|,
 name|st
 parameter_list|,
-name|verbose
+name|flags
 parameter_list|)
-value|add_to_index(&the_index, (path), (st), (verbose))
+value|add_to_index(&the_index, (path), (st), (flags))
 end_define
 
 begin_define
@@ -1272,9 +1272,9 @@ name|add_file_to_cache
 parameter_list|(
 name|path
 parameter_list|,
-name|verbose
+name|flags
 parameter_list|)
-value|add_file_to_index(&the_index, (path), (verbose))
+value|add_file_to_index(&the_index, (path), (flags))
 end_define
 
 begin_define
@@ -2106,6 +2106,22 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_define
+DECL|macro|ADD_CACHE_VERBOSE
+define|#
+directive|define
+name|ADD_CACHE_VERBOSE
+value|1
+end_define
+
+begin_define
+DECL|macro|ADD_CACHE_PRETEND
+define|#
+directive|define
+name|ADD_CACHE_PRETEND
+value|2
+end_define
+
 begin_function_decl
 specifier|extern
 name|int
@@ -2125,7 +2141,7 @@ name|stat
 modifier|*
 parameter_list|,
 name|int
-name|verbose
+name|flags
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -2145,7 +2161,7 @@ modifier|*
 name|path
 parameter_list|,
 name|int
-name|verbose
+name|flags
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -5932,9 +5948,6 @@ begin_function_decl
 name|void
 name|add_files_to_cache
 parameter_list|(
-name|int
-name|verbose
-parameter_list|,
 specifier|const
 name|char
 modifier|*
@@ -5945,6 +5958,9 @@ name|char
 modifier|*
 modifier|*
 name|pathspec
+parameter_list|,
+name|int
+name|flags
 parameter_list|)
 function_decl|;
 end_function_decl
