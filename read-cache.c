@@ -2309,13 +2309,14 @@ argument_list|(
 name|st_mode
 argument_list|)
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 literal|"%s: can only add regular files, symbolic links or git-directories"
 argument_list|,
 name|path
 argument_list|)
-expr_stmt|;
+return|;
 name|namelen
 operator|=
 name|strlen
@@ -2529,13 +2530,14 @@ argument_list|,
 literal|1
 argument_list|)
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 literal|"unable to index file %s"
 argument_list|,
 name|path
 argument_list|)
-expr_stmt|;
+return|;
 if|if
 condition|(
 name|ignore_case
@@ -2577,13 +2579,14 @@ operator||
 name|ADD_CACHE_OK_TO_REPLACE
 argument_list|)
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 literal|"unable to add %s to index"
 argument_list|,
 name|path
 argument_list|)
-expr_stmt|;
+return|;
 if|if
 condition|(
 name|verbose

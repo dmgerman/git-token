@@ -1716,11 +1716,18 @@ index|]
 operator|.
 name|path
 decl_stmt|;
+if|if
+condition|(
 name|add_file_to_cache
 argument_list|(
 name|path
 argument_list|,
 name|verbose
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"updating index entries failed"
 argument_list|)
 expr_stmt|;
 block|}

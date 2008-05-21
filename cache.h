@@ -5928,13 +5928,30 @@ begin_comment
 comment|/* add */
 end_comment
 
+begin_define
+DECL|macro|ADD_FILES_VERBOSE
+define|#
+directive|define
+name|ADD_FILES_VERBOSE
+value|01
+end_define
+
+begin_define
+DECL|macro|ADD_FILES_IGNORE_ERRORS
+define|#
+directive|define
+name|ADD_FILES_IGNORE_ERRORS
+value|02
+end_define
+
+begin_comment
+comment|/*  * return 0 if success, 1 - if addition of a file failed and  * ADD_FILES_IGNORE_ERRORS was specified in flags  */
+end_comment
+
 begin_function_decl
-name|void
+name|int
 name|add_files_to_cache
 parameter_list|(
-name|int
-name|verbose
-parameter_list|,
 specifier|const
 name|char
 modifier|*
@@ -5945,6 +5962,9 @@ name|char
 modifier|*
 modifier|*
 name|pathspec
+parameter_list|,
+name|int
+name|flags
 parameter_list|)
 function_decl|;
 end_function_decl
