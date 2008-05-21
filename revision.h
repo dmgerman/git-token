@@ -248,8 +248,13 @@ name|left_right
 range|:
 literal|1
 decl_stmt|,
-DECL|member|parents
-name|parents
+DECL|member|rewrite_parents
+name|rewrite_parents
+range|:
+literal|1
+decl_stmt|,
+DECL|member|print_parents
+name|print_parents
 range|:
 literal|1
 decl_stmt|,
@@ -331,6 +336,11 @@ literal|1
 decl_stmt|,
 DECL|member|use_terminator
 name|use_terminator
+range|:
+literal|1
+decl_stmt|,
+DECL|member|missing_newline
+name|missing_newline
 range|:
 literal|1
 decl_stmt|;
@@ -429,6 +439,13 @@ name|struct
 name|grep_opt
 modifier|*
 name|grep_filter
+decl_stmt|;
+comment|/* Display history graph */
+DECL|member|graph
+name|struct
+name|git_graph
+modifier|*
+name|graph
 decl_stmt|;
 comment|/* special limits */
 DECL|member|skip_count
