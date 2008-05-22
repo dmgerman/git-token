@@ -114,6 +114,9 @@ comment|/* WT_STATUS_CHANGED: red */
 literal|"\033[31m"
 block|,
 comment|/* WT_STATUS_UNTRACKED: red */
+literal|"\033[31m"
+block|,
+comment|/* WT_STATUS_NOBRANCH: red */
 block|}
 decl_stmt|;
 end_decl_stmt
@@ -238,6 +241,21 @@ argument_list|)
 condition|)
 return|return
 name|WT_STATUS_UNTRACKED
+return|;
+if|if
+condition|(
+operator|!
+name|strcasecmp
+argument_list|(
+name|var
+operator|+
+name|offset
+argument_list|,
+literal|"nobranch"
+argument_list|)
+condition|)
+return|return
+name|WT_STATUS_NOBRANCH
 return|;
 name|die
 argument_list|(
@@ -1944,6 +1962,16 @@ index|[
 literal|20
 index|]
 decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|branch_color
+init|=
+name|color
+argument_list|(
+name|WT_STATUS_HEADER
+argument_list|)
+decl_stmt|;
 name|s
 operator|->
 name|is_initial
@@ -2014,12 +2042,19 @@ name|branch_name
 operator|=
 literal|""
 expr_stmt|;
+name|branch_color
+operator|=
+name|color
+argument_list|(
+name|WT_STATUS_NOBRANCH
+argument_list|)
+expr_stmt|;
 name|on_what
 operator|=
 literal|"Not currently on any branch."
 expr_stmt|;
 block|}
-name|color_fprintf_ln
+name|color_fprintf
 argument_list|(
 name|s
 operator|->
@@ -2030,7 +2065,18 @@ argument_list|(
 name|WT_STATUS_HEADER
 argument_list|)
 argument_list|,
-literal|"# %s%s"
+literal|"# "
+argument_list|)
+expr_stmt|;
+name|color_fprintf_ln
+argument_list|(
+name|s
+operator|->
+name|fp
+argument_list|,
+name|branch_color
+argument_list|,
+literal|"%s%s"
 argument_list|,
 name|on_what
 argument_list|,

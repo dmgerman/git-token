@@ -34,6 +34,9 @@ name|WT_STATUS_CHANGED
 block|,
 DECL|enumerator|WT_STATUS_UNTRACKED
 name|WT_STATUS_UNTRACKED
+block|,
+DECL|enumerator|WT_STATUS_NOBRANCH
+name|WT_STATUS_NOBRANCH
 block|, }
 enum|;
 end_enum
