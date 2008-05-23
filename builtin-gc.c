@@ -1094,7 +1094,7 @@ argument_list|,
 operator|&
 name|prune
 argument_list|,
-literal|"prune unreferenced objects"
+literal|"prune unreferenced objects (deprecated)"
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -1242,10 +1242,6 @@ name|auto_gc
 condition|)
 block|{
 comment|/* 		 * Auto-gc should be least intrusive as possible. 		 */
-name|prune
-operator|=
-literal|0
-expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -1267,22 +1263,6 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
-block|{
-comment|/* 		 * Use safer (for shared repos) "-A" option to 		 * repack when not pruning. Auto-gc makes its 		 * own decision. 		 */
-if|if
-condition|(
-name|prune
-condition|)
-name|append_option
-argument_list|(
-name|argv_repack
-argument_list|,
-literal|"-a"
-argument_list|,
-name|MAX_ADD
-argument_list|)
-expr_stmt|;
-else|else
 name|append_option
 argument_list|(
 name|argv_repack
@@ -1292,7 +1272,6 @@ argument_list|,
 name|MAX_ADD
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|pack_refs
