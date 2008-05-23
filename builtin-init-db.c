@@ -1278,13 +1278,13 @@ name|work_tree
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* Check if symlink is supported in the work tree */
 if|if
 condition|(
 operator|!
 name|reinit
 condition|)
 block|{
+comment|/* Check if symlink is supported in the work tree */
 name|path
 index|[
 name|len
@@ -1354,6 +1354,40 @@ argument_list|(
 literal|"core.symlinks"
 argument_list|,
 literal|"false"
+argument_list|)
+expr_stmt|;
+comment|/* Check if the filesystem is case-insensitive */
+name|path
+index|[
+name|len
+index|]
+operator|=
+literal|0
+expr_stmt|;
+name|strcpy
+argument_list|(
+name|path
+operator|+
+name|len
+argument_list|,
+literal|"CoNfIg"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|access
+argument_list|(
+name|path
+argument_list|,
+name|F_OK
+argument_list|)
+condition|)
+name|git_config_set
+argument_list|(
+literal|"core.ignorecase"
+argument_list|,
+literal|"true"
 argument_list|)
 expr_stmt|;
 block|}
