@@ -407,6 +407,44 @@ block|}
 end_function
 
 begin_comment
+comment|/* Like show(), but with a negation prefix according to type */
+end_comment
+
+begin_function
+DECL|function|show_with_type
+specifier|static
+name|void
+name|show_with_type
+parameter_list|(
+name|int
+name|type
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|arg
+parameter_list|)
+block|{
+if|if
+condition|(
+name|type
+operator|!=
+name|show_type
+condition|)
+name|putchar
+argument_list|(
+literal|'^'
+argument_list|)
+expr_stmt|;
+name|show
+argument_list|(
+name|arg
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_comment
 comment|/* Output a revision, only if filter allows it */
 end_comment
 
@@ -444,17 +482,6 @@ return|return;
 name|def
 operator|=
 name|NULL
-expr_stmt|;
-if|if
-condition|(
-name|type
-operator|!=
-name|show_type
-condition|)
-name|putchar
-argument_list|(
-literal|'^'
-argument_list|)
 expr_stmt|;
 if|if
 condition|(
@@ -508,8 +535,10 @@ case|case
 literal|1
 case|:
 comment|/* happy */
-name|show
+name|show_with_type
 argument_list|(
+name|type
+argument_list|,
 name|full
 argument_list|)
 expr_stmt|;
@@ -528,8 +557,10 @@ block|}
 block|}
 else|else
 block|{
-name|show
+name|show_with_type
 argument_list|(
+name|type
+argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
@@ -540,8 +571,10 @@ if|if
 condition|(
 name|abbrev
 condition|)
-name|show
+name|show_with_type
 argument_list|(
+name|type
+argument_list|,
 name|find_unique_abbrev
 argument_list|(
 name|sha1
@@ -551,8 +584,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 else|else
-name|show
+name|show_with_type
 argument_list|(
+name|type
+argument_list|,
 name|sha1_to_hex
 argument_list|(
 name|sha1
