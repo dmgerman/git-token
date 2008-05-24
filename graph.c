@@ -518,7 +518,14 @@ operator||
 name|TREESAME
 operator|)
 condition|)
+block|{
+operator|*
+name|mapping_index
+operator|+=
+literal|2
+expr_stmt|;
 return|return;
+block|}
 comment|/* 	 * If the commit is already in the new_columns list, we don't need to 	 * add it.  Just update the mapping correctly. 	 */
 for|for
 control|(
