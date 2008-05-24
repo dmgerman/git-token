@@ -88,7 +88,7 @@ name|commit
 modifier|*
 name|commit
 decl_stmt|;
-comment|/* 	 * The number of parents this commit has. 	 * (Stored so we don't have to walk over them each time we need 	 * this number) 	 */
+comment|/* 	 * The number of interesting parents that this commit has. 	 * 	 * Note that this is not the same as the actual number of parents. 	 * This count excludes parents that won't be printed in the graph 	 * output, as determined by graph_is_interesting(). 	 */
 DECL|member|num_parents
 name|int
 name|num_parents
@@ -479,6 +479,45 @@ expr_stmt|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Returns 1 if the commit will be printed in the graph output,  * and 0 otherwise.  */
+end_comment
+
+begin_function
+DECL|function|graph_is_interesting
+specifier|static
+name|int
+name|graph_is_interesting
+parameter_list|(
+name|struct
+name|commit
+modifier|*
+name|commit
+parameter_list|)
+block|{
+comment|/* 	 * Uninteresting and pruned commits won't be printed 	 */
+return|return
+operator|(
+name|commit
+operator|->
+name|object
+operator|.
+name|flags
+operator|&
+operator|(
+name|UNINTERESTING
+operator||
+name|TREESAME
+operator|)
+operator|)
+condition|?
+literal|0
+else|:
+literal|1
+return|;
+block|}
+end_function
+
 begin_function
 DECL|function|graph_insert_into_new_columns
 specifier|static
@@ -503,29 +542,16 @@ block|{
 name|int
 name|i
 decl_stmt|;
-comment|/* 	 * Ignore uinteresting and pruned commits 	 */
+comment|/* 	 * Ignore uinteresting commits 	 */
 if|if
 condition|(
+operator|!
+name|graph_is_interesting
+argument_list|(
 name|commit
-operator|->
-name|object
-operator|.
-name|flags
-operator|&
-operator|(
-name|UNINTERESTING
-operator||
-name|TREESAME
-operator|)
+argument_list|)
 condition|)
-block|{
-operator|*
-name|mapping_index
-operator|+=
-literal|2
-expr_stmt|;
 return|return;
-block|}
 comment|/* 	 * If the commit is already in the new_columns list, we don't need to 	 * add it.  Just update the mapping correctly. 	 */
 for|for
 control|(
@@ -641,7 +667,7 @@ name|graph
 operator|->
 name|num_parents
 decl_stmt|;
-comment|/* 	 * Even if the current commit has no parents, it still takes up a 	 * column for itself. 	 */
+comment|/* 	 * Even if the current commit has no parents to be printed, it 	 * still takes up a column for itself. 	 */
 if|if
 condition|(
 name|graph
@@ -877,6 +903,11 @@ operator|->
 name|commit
 condition|)
 block|{
+name|int
+name|old_mapping_idx
+init|=
+name|mapping_idx
+decl_stmt|;
 name|seen_this
 operator|=
 literal|1
@@ -913,6 +944,17 @@ name|mapping_idx
 argument_list|)
 expr_stmt|;
 block|}
+comment|/* 			 * We always need to increment mapping_idx by at 			 * least 2, even if it has no interesting parents. 			 * The current commit always takes up at least 2 			 * spaces. 			 */
+if|if
+condition|(
+name|mapping_idx
+operator|==
+name|old_mapping_idx
+condition|)
+name|mapping_idx
+operator|+=
+literal|2
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -994,7 +1036,7 @@ name|commit
 operator|=
 name|commit
 expr_stmt|;
-comment|/* 	 * Count how many parents this commit has 	 */
+comment|/* 	 * Count how many interesting parents this commit has 	 */
 name|graph
 operator|->
 name|num_parents
@@ -1017,11 +1059,22 @@ name|parent
 operator|->
 name|next
 control|)
+block|{
+if|if
+condition|(
+name|graph_is_interesting
+argument_list|(
+name|parent
+operator|->
+name|item
+argument_list|)
+condition|)
 name|graph
 operator|->
 name|num_parents
 operator|++
 expr_stmt|;
+block|}
 comment|/* 	 * Call graph_update_columns() to update 	 * columns, new_columns, and mapping. 	 */
 name|graph_update_columns
 argument_list|(
@@ -1604,6 +1657,7 @@ name|seen_this
 operator|=
 literal|1
 expr_stmt|;
+comment|/* 			 * If the commit has more than 1 interesting 			 * parent, print 'M' to indicate that it is a 			 * merge.  Otherwise, print '*'. 			 * 			 * Note that even if this is actually a merge 			 * commit, we still print '*' if less than 2 of its 			 * parents are interesting. 			 */
 if|if
 condition|(
 name|graph
