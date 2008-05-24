@@ -8697,7 +8697,7 @@ operator|=
 literal|2
 expr_stmt|;
 return|return
-name|get_revision
+name|get_revision_internal
 argument_list|(
 name|revs
 argument_list|)
