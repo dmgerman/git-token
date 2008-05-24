@@ -1249,24 +1249,10 @@ argument_list|,
 name|mark
 argument_list|)
 expr_stmt|;
-elseif|else
-if|if
-condition|(
-name|i
-operator|==
-literal|1
-condition|)
-name|printf
-argument_list|(
-literal|"merge :%d"
-argument_list|,
-name|mark
-argument_list|)
-expr_stmt|;
 else|else
 name|printf
 argument_list|(
-literal|" :%d"
+literal|"merge :%d\n"
 argument_list|,
 name|mark
 argument_list|)
@@ -1275,17 +1261,6 @@ name|i
 operator|++
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|i
-operator|>
-literal|1
-condition|)
-name|printf
-argument_list|(
-literal|"\n"
-argument_list|)
-expr_stmt|;
 name|log_tree_diff_flush
 argument_list|(
 name|rev
