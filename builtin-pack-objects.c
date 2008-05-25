@@ -8973,6 +8973,10 @@ specifier|const
 name|char
 modifier|*
 name|v
+parameter_list|,
+name|void
+modifier|*
+name|cb
 parameter_list|)
 block|{
 if|if
@@ -9279,6 +9283,8 @@ argument_list|(
 name|k
 argument_list|,
 name|v
+argument_list|,
+name|cb
 argument_list|)
 return|;
 block|}
@@ -10542,6 +10548,8 @@ expr_stmt|;
 name|git_config
 argument_list|(
 name|git_pack_config
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 if|if

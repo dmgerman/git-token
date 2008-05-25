@@ -5267,6 +5267,9 @@ parameter_list|,
 specifier|const
 name|char
 modifier|*
+parameter_list|,
+name|void
+modifier|*
 parameter_list|)
 function_decl|;
 end_typedef
@@ -5283,6 +5286,9 @@ parameter_list|,
 specifier|const
 name|char
 modifier|*
+parameter_list|,
+name|void
+modifier|*
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -5298,6 +5304,9 @@ parameter_list|,
 specifier|const
 name|char
 modifier|*
+parameter_list|,
+name|void
+modifier|*
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -5309,6 +5318,9 @@ name|git_config
 parameter_list|(
 name|config_fn_t
 name|fn
+parameter_list|,
+name|void
+modifier|*
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -5513,6 +5525,10 @@ specifier|const
 name|char
 modifier|*
 name|value
+parameter_list|,
+name|void
+modifier|*
+name|cb
 parameter_list|)
 function_decl|;
 end_function_decl

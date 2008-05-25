@@ -905,6 +905,10 @@ specifier|const
 name|char
 modifier|*
 name|value
+parameter_list|,
+name|void
+modifier|*
+name|cb
 parameter_list|)
 block|{
 if|if
@@ -1190,6 +1194,8 @@ return|return;
 name|git_config
 argument_list|(
 name|config_read_branches
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 name|sort_path_list
@@ -3110,6 +3116,10 @@ specifier|const
 name|char
 modifier|*
 name|value
+parameter_list|,
+name|void
+modifier|*
+name|cb
 parameter_list|)
 block|{
 if|if
@@ -3305,6 +3315,8 @@ operator|=
 name|git_config
 argument_list|(
 name|get_remote_group
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 block|}

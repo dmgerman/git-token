@@ -4679,6 +4679,8 @@ comment|/* NEEDSWORK: might want to do the optional .git/ directory 	 * discover
 name|git_config
 argument_list|(
 name|git_default_config
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 name|def_charset

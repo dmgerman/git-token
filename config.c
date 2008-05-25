@@ -451,6 +451,10 @@ parameter_list|(
 name|config_fn_t
 name|fn
 parameter_list|,
+name|void
+modifier|*
+name|data
+parameter_list|,
 name|char
 modifier|*
 name|name
@@ -579,6 +583,8 @@ argument_list|(
 name|name
 argument_list|,
 name|value
+argument_list|,
+name|data
 argument_list|)
 return|;
 block|}
@@ -850,6 +856,10 @@ name|git_parse_file
 parameter_list|(
 name|config_fn_t
 name|fn
+parameter_list|,
+name|void
+modifier|*
+name|data
 parameter_list|)
 block|{
 name|int
@@ -990,6 +1000,8 @@ condition|(
 name|get_value
 argument_list|(
 name|fn
+argument_list|,
+name|data
 argument_list|,
 name|var
 argument_list|,
@@ -1578,6 +1590,10 @@ specifier|const
 name|char
 modifier|*
 name|value
+parameter_list|,
+name|void
+modifier|*
+name|dummy
 parameter_list|)
 block|{
 comment|/* This needs a better name */
@@ -2547,6 +2563,10 @@ specifier|const
 name|char
 modifier|*
 name|filename
+parameter_list|,
+name|void
+modifier|*
+name|data
 parameter_list|)
 block|{
 name|int
@@ -2594,6 +2614,8 @@ operator|=
 name|git_parse_file
 argument_list|(
 name|fn
+argument_list|,
+name|data
 argument_list|)
 expr_stmt|;
 name|fclose
@@ -2771,6 +2793,10 @@ name|git_config
 parameter_list|(
 name|config_fn_t
 name|fn
+parameter_list|,
+name|void
+modifier|*
+name|data
 parameter_list|)
 block|{
 name|int
@@ -2830,6 +2856,8 @@ name|fn
 argument_list|,
 name|git_etc_gitconfig
 argument_list|()
+argument_list|,
+name|data
 argument_list|)
 expr_stmt|;
 name|home
@@ -2903,6 +2931,8 @@ argument_list|(
 name|fn
 argument_list|,
 name|user_config
+argument_list|,
+name|data
 argument_list|)
 expr_stmt|;
 name|free
@@ -2918,6 +2948,8 @@ argument_list|(
 name|fn
 argument_list|,
 name|filename
+argument_list|,
+name|data
 argument_list|)
 expr_stmt|;
 name|free
@@ -3079,6 +3111,10 @@ specifier|const
 name|char
 modifier|*
 name|value
+parameter_list|,
+name|void
+modifier|*
+name|cb
 parameter_list|)
 block|{
 specifier|const
@@ -4600,6 +4636,8 @@ argument_list|(
 name|store_aux
 argument_list|,
 name|config_filename
+argument_list|,
+name|NULL
 argument_list|)
 condition|)
 block|{

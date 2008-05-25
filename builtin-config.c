@@ -164,6 +164,10 @@ specifier|const
 name|char
 modifier|*
 name|value_
+parameter_list|,
+name|void
+modifier|*
+name|cb
 parameter_list|)
 block|{
 if|if
@@ -214,6 +218,10 @@ specifier|const
 name|char
 modifier|*
 name|value_
+parameter_list|,
+name|void
+modifier|*
+name|cb
 parameter_list|)
 block|{
 name|char
@@ -787,6 +795,8 @@ argument_list|(
 name|show_config
 argument_list|,
 name|system_wide
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 if|if
@@ -800,6 +810,8 @@ argument_list|(
 name|show_config
 argument_list|,
 name|global
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 name|git_config_from_file
@@ -807,6 +819,8 @@ argument_list|(
 name|show_config
 argument_list|,
 name|local
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 if|if
@@ -824,6 +838,8 @@ argument_list|(
 name|show_config
 argument_list|,
 name|global
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 if|if
@@ -841,6 +857,8 @@ argument_list|(
 name|show_config
 argument_list|,
 name|system_wide
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 name|free
@@ -1118,6 +1136,10 @@ specifier|const
 name|char
 modifier|*
 name|value
+parameter_list|,
+name|void
+modifier|*
+name|cb
 parameter_list|)
 block|{
 if|if
@@ -1233,6 +1255,8 @@ expr_stmt|;
 name|git_config
 argument_list|(
 name|git_get_color_config
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 if|if
@@ -1303,6 +1327,10 @@ specifier|const
 name|char
 modifier|*
 name|value
+parameter_list|,
+name|void
+modifier|*
+name|cb
 parameter_list|)
 block|{
 if|if
@@ -1458,6 +1486,8 @@ expr_stmt|;
 name|git_config
 argument_list|(
 name|git_get_colorbool_config
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 if|if
@@ -1667,6 +1697,8 @@ condition|(
 name|git_config
 argument_list|(
 name|show_all_config
+argument_list|,
+name|NULL
 argument_list|)
 operator|<
 literal|0
