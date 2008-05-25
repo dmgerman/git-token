@@ -1412,6 +1412,14 @@ operator|=
 operator|&
 name|the_index
 expr_stmt|;
+name|topts
+operator|.
+name|msgs
+operator|.
+name|not_uptodate_file
+operator|=
+literal|"You have local changes to '%s'; cannot switch branches."
+expr_stmt|;
 name|refresh_cache
 argument_list|(
 name|REFRESH_QUIET
