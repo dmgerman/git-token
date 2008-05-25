@@ -113,7 +113,7 @@ argument_list|()
 expr_stmt|;
 name|signal
 argument_list|(
-name|SIGINT
+name|signo
 argument_list|,
 name|SIG_DFL
 argument_list|)
