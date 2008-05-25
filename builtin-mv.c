@@ -1723,6 +1723,10 @@ argument_list|(
 name|path
 argument_list|,
 name|verbose
+condition|?
+name|ADD_CACHE_VERBOSE
+else|:
+literal|0
 argument_list|)
 condition|)
 name|die

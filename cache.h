@@ -1259,9 +1259,9 @@ name|path
 parameter_list|,
 name|st
 parameter_list|,
-name|verbose
+name|flags
 parameter_list|)
-value|add_to_index(&the_index, (path), (st), (verbose))
+value|add_to_index(&the_index, (path), (st), (flags))
 end_define
 
 begin_define
@@ -1272,9 +1272,9 @@ name|add_file_to_cache
 parameter_list|(
 name|path
 parameter_list|,
-name|verbose
+name|flags
 parameter_list|)
-value|add_file_to_index(&the_index, (path), (verbose))
+value|add_file_to_index(&the_index, (path), (flags))
 end_define
 
 begin_define
@@ -2144,6 +2144,30 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_define
+DECL|macro|ADD_CACHE_VERBOSE
+define|#
+directive|define
+name|ADD_CACHE_VERBOSE
+value|1
+end_define
+
+begin_define
+DECL|macro|ADD_CACHE_PRETEND
+define|#
+directive|define
+name|ADD_CACHE_PRETEND
+value|2
+end_define
+
+begin_define
+DECL|macro|ADD_CACHE_IGNORE_ERRORS
+define|#
+directive|define
+name|ADD_CACHE_IGNORE_ERRORS
+value|4
+end_define
+
 begin_function_decl
 specifier|extern
 name|int
@@ -2163,7 +2187,7 @@ name|stat
 modifier|*
 parameter_list|,
 name|int
-name|verbose
+name|flags
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -2183,7 +2207,7 @@ modifier|*
 name|path
 parameter_list|,
 name|int
-name|verbose
+name|flags
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -6027,22 +6051,6 @@ end_function_decl
 begin_comment
 comment|/* add */
 end_comment
-
-begin_define
-DECL|macro|ADD_FILES_VERBOSE
-define|#
-directive|define
-name|ADD_FILES_VERBOSE
-value|01
-end_define
-
-begin_define
-DECL|macro|ADD_FILES_IGNORE_ERRORS
-define|#
-directive|define
-name|ADD_FILES_IGNORE_ERRORS
-value|02
-end_define
 
 begin_comment
 comment|/*  * return 0 if success, 1 - if addition of a file failed and  * ADD_FILES_IGNORE_ERRORS was specified in flags  */
