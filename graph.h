@@ -31,7 +31,12 @@ name|struct
 name|git_graph
 modifier|*
 name|graph_init
-parameter_list|()
+parameter_list|(
+name|struct
+name|rev_info
+modifier|*
+name|opt
+parameter_list|)
 function_decl|;
 end_function_decl
 

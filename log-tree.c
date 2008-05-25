@@ -1107,6 +1107,14 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+name|opt
+operator|->
+name|graph
+condition|)
+block|{
+if|if
+condition|(
 name|commit
 operator|->
 name|object
@@ -1165,6 +1173,7 @@ argument_list|(
 literal|'>'
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|fputs
 argument_list|(
@@ -1375,6 +1384,14 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+name|opt
+operator|->
+name|graph
+condition|)
+block|{
+if|if
+condition|(
 name|commit
 operator|->
 name|object
@@ -1433,6 +1450,7 @@ argument_list|(
 literal|'>'
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|fputs
 argument_list|(
