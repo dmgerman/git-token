@@ -215,6 +215,16 @@ block|}
 struct|;
 end_struct
 
+begin_decl_stmt
+specifier|extern
+specifier|const
+name|struct
+name|refspec
+modifier|*
+name|tag_refspec
+decl_stmt|;
+end_decl_stmt
+
 begin_function_decl
 name|struct
 name|ref
