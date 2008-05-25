@@ -6218,7 +6218,9 @@ operator|->
 name|graph
 operator|=
 name|graph_init
-argument_list|()
+argument_list|(
+name|revs
+argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
