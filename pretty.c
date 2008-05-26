@@ -161,16 +161,6 @@ return|return;
 block|}
 if|if
 condition|(
-operator|*
-name|arg
-operator|==
-literal|'='
-condition|)
-name|arg
-operator|++
-expr_stmt|;
-if|if
-condition|(
 operator|!
 name|prefixcmp
 argument_list|(
