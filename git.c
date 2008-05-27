@@ -1697,6 +1697,8 @@ block|{
 literal|"diff-files"
 block|,
 name|cmd_diff_files
+block|,
+name|RUN_SETUP
 block|}
 block|,
 block|{
