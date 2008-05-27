@@ -1234,6 +1234,18 @@ argument_list|,
 name|prefix
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|read_cache
+argument_list|()
+operator|<
+literal|0
+condition|)
+name|die
+argument_list|(
+literal|"index file corrupt"
+argument_list|)
+expr_stmt|;
 name|commit_style
 operator|=
 name|COMMIT_AS_IS
