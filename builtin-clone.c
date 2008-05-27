@@ -2413,6 +2413,27 @@ literal|0
 index|]
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|transport
+operator|->
+name|get_refs_list
+operator|||
+operator|!
+name|transport
+operator|->
+name|fetch
+condition|)
+name|die
+argument_list|(
+literal|"Don't know how to clone %s"
+argument_list|,
+name|transport
+operator|->
+name|url
+argument_list|)
+expr_stmt|;
 name|transport_set_option
 argument_list|(
 name|transport
