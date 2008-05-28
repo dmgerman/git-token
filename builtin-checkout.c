@@ -926,6 +926,10 @@ DECL|member|force
 name|int
 name|force
 decl_stmt|;
+DECL|member|writeout_error
+name|int
+name|writeout_error
+decl_stmt|;
 DECL|member|new_branch
 name|char
 modifier|*
@@ -1065,7 +1069,7 @@ operator|->
 name|size
 argument_list|)
 expr_stmt|;
-if|if
+switch|switch
 condition|(
 name|unpack_trees
 argument_list|(
@@ -1078,12 +1082,29 @@ operator|&
 name|opts
 argument_list|)
 condition|)
-return|return
-literal|128
-return|;
+block|{
+case|case
+operator|-
+literal|2
+case|:
+name|o
+operator|->
+name|writeout_error
+operator|=
+literal|1
+expr_stmt|;
+comment|/* 		 * We return 0 nevertheless, as the index is all right 		 * and more importantly we have made best efforts to 		 * update paths in the work tree, and we cannot revert 		 * them. 		 */
+case|case
+literal|0
+case|:
 return|return
 literal|0
 return|;
+default|default:
+return|return
+literal|128
+return|;
+block|}
 block|}
 end_function
 
@@ -1467,8 +1488,8 @@ operator|->
 name|size
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
+name|ret
+operator|=
 name|unpack_trees
 argument_list|(
 literal|2
@@ -1478,6 +1499,13 @@ argument_list|,
 operator|&
 name|topts
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|ret
+operator|==
+operator|-
+literal|1
 condition|)
 block|{
 comment|/* 			 * Unpack couldn't do a trivial merge; either 			 * give up or do a real merge, depending on 			 * whether the merge flag was used. 			 */
@@ -2667,7 +2695,8 @@ argument_list|,
 name|new
 argument_list|)
 expr_stmt|;
-return|return
+name|ret
+operator|=
 name|post_checkout_hook
 argument_list|(
 name|old
@@ -2680,6 +2709,13 @@ name|commit
 argument_list|,
 literal|1
 argument_list|)
+expr_stmt|;
+return|return
+name|ret
+operator|||
+name|opts
+operator|->
+name|writeout_error
 return|;
 block|}
 end_function
