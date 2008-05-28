@@ -1572,6 +1572,11 @@ name|char
 modifier|*
 modifier|*
 name|base
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|which
 parameter_list|)
 block|{
 specifier|static
@@ -1627,9 +1632,11 @@ argument_list|(
 operator|*
 name|base
 argument_list|,
-literal|"%s/pack/pack-1234567890123456789012345678901234567890.pack"
+literal|"%s/pack/pack-1234567890123456789012345678901234567890.%s"
 argument_list|,
 name|sha1_file_directory
+argument_list|,
+name|which
 argument_list|)
 expr_stmt|;
 operator|*
@@ -1731,6 +1738,8 @@ name|name
 argument_list|,
 operator|&
 name|base
+argument_list|,
+literal|"pack"
 argument_list|)
 return|;
 block|}
@@ -1767,6 +1776,8 @@ name|name
 argument_list|,
 operator|&
 name|base
+argument_list|,
+literal|"idx"
 argument_list|)
 return|;
 block|}
