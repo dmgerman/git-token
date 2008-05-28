@@ -1041,7 +1041,7 @@ end_function
 begin_function
 DECL|function|reset_clean_to_new
 specifier|static
-name|void
+name|int
 name|reset_clean_to_new
 parameter_list|(
 name|struct
@@ -1158,11 +1158,12 @@ operator|&
 name|opts
 argument_list|)
 condition|)
-name|exit
-argument_list|(
+return|return
 literal|128
-argument_list|)
-expr_stmt|;
+return|;
+return|return
+literal|0
+return|;
 block|}
 end_function
 
@@ -1686,6 +1687,8 @@ operator|&
 name|result
 argument_list|)
 expr_stmt|;
+name|ret
+operator|=
 name|reset_clean_to_new
 argument_list|(
 name|new
@@ -1699,6 +1702,13 @@ operator|->
 name|quiet
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|ret
+condition|)
+return|return
+name|ret
+return|;
 block|}
 block|}
 if|if
