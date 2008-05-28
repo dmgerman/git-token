@@ -1694,6 +1694,10 @@ decl_stmt|,
 name|shown_url
 init|=
 literal|0
+decl_stmt|,
+name|rc
+init|=
+literal|0
 decl_stmt|;
 name|char
 name|note
@@ -2144,6 +2148,8 @@ if|if
 condition|(
 name|ref
 condition|)
+name|rc
+operator||=
 name|update_local_ref
 argument_list|(
 name|ref
@@ -2226,7 +2232,7 @@ name|fp
 argument_list|)
 expr_stmt|;
 return|return
-literal|0
+name|rc
 return|;
 block|}
 end_function
