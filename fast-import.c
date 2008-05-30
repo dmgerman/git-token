@@ -4737,7 +4737,7 @@ name|f
 argument_list|,
 name|NULL
 argument_list|,
-literal|1
+name|CSUM_FSYNC
 argument_list|)
 expr_stmt|;
 name|free
