@@ -1222,7 +1222,7 @@ name|expansion_row
 operator|=
 literal|0
 expr_stmt|;
-comment|/* 	 * Update graph->state. 	 * Note that we don't call graph_update_state() here, since 	 * we don't want to update graph->prev_state.  No line for 	 * graph->state was ever printed. 	 * 	 * If the previous commit didn't get to the GRAPH_PADDING state, 	 * it never finished its output.  Goto GRAPH_SKIP, to print out 	 * a line to indicate that portion of the graph is missing. 	 * 	 * Otherwise, if there are 3 or more parents, we need to print 	 * extra rows before the commit, to expand the branch lines around 	 * it and make room for it. 	 * 	 * If there are less than 3 parents, we can immediately print the 	 * commit line. 	 */
+comment|/* 	 * Update graph->state. 	 * Note that we don't call graph_update_state() here, since 	 * we don't want to update graph->prev_state.  No line for 	 * graph->state was ever printed. 	 * 	 * If the previous commit didn't get to the GRAPH_PADDING state, 	 * it never finished its output.  Goto GRAPH_SKIP, to print out 	 * a line to indicate that portion of the graph is missing. 	 * 	 * If there are 3 or more parents, we may need to print extra rows 	 * before the commit, to expand the branch lines around it and make 	 * room for it.  We need to do this only if there is a branch row 	 * (or more) to the right of this commit. 	 * 	 * If there are less than 3 parents, we can immediately print the 	 * commit line. 	 */
 if|if
 condition|(
 name|graph
@@ -1245,6 +1245,18 @@ operator|->
 name|num_parents
 operator|>=
 literal|3
+operator|&&
+name|graph
+operator|->
+name|commit_index
+operator|<
+operator|(
+name|graph
+operator|->
+name|num_columns
+operator|-
+literal|1
+operator|)
 condition|)
 name|graph
 operator|->
@@ -1494,6 +1506,18 @@ operator|->
 name|num_parents
 operator|>=
 literal|3
+operator|&&
+name|graph
+operator|->
+name|commit_index
+operator|<
+operator|(
+name|graph
+operator|->
+name|num_columns
+operator|-
+literal|1
+operator|)
 condition|)
 name|graph_update_state
 argument_list|(
