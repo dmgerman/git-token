@@ -1813,6 +1813,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * N-way merge "len" trees.  Returns 0 on success, -1 on failure to manipulate the  * resulting index, -2 on failure to reflect the changes to the work tree.  */
+end_comment
+
 begin_function
 DECL|function|unpack_trees
 name|int
@@ -1832,6 +1836,9 @@ modifier|*
 name|o
 parameter_list|)
 block|{
+name|int
+name|ret
+decl_stmt|;
 specifier|static
 name|struct
 name|cache_entry
@@ -2104,17 +2111,20 @@ name|src_index
 operator|=
 name|NULL
 expr_stmt|;
-if|if
-condition|(
+name|ret
+operator|=
 name|check_updates
 argument_list|(
 name|o
 argument_list|)
-condition|)
-return|return
+condition|?
+operator|(
 operator|-
-literal|1
-return|;
+literal|2
+operator|)
+else|:
+literal|0
+expr_stmt|;
 if|if
 condition|(
 name|o
@@ -2131,7 +2141,7 @@ operator|->
 name|result
 expr_stmt|;
 return|return
-literal|0
+name|ret
 return|;
 block|}
 end_function
