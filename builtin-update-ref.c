@@ -34,7 +34,7 @@ name|git_update_ref_usage
 index|[]
 init|=
 block|{
-literal|"git-update-ref [options] -d<refname><oldval>"
+literal|"git-update-ref [options] -d<refname> [<oldval>]"
 block|,
 literal|"git-update-ref [options]<refname><newval> [<oldval>]"
 block|,
@@ -188,7 +188,11 @@ block|{
 if|if
 condition|(
 name|argc
-operator|!=
+operator|<
+literal|1
+operator|||
+name|argc
+operator|>
 literal|2
 condition|)
 name|usage_with_options
@@ -311,7 +315,11 @@ name|delete_ref
 argument_list|(
 name|refname
 argument_list|,
+name|oldval
+condition|?
 name|oldsha1
+else|:
+name|NULL
 argument_list|)
 return|;
 else|else
