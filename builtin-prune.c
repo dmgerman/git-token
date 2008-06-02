@@ -812,9 +812,6 @@ name|get_object_directory
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|sync
-argument_list|()
-expr_stmt|;
 name|prune_packed_objects
 argument_list|(
 name|show_only

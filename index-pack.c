@@ -4159,6 +4159,13 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|fsync_or_die
+argument_list|(
+name|output_fd
+argument_list|,
+name|curr_pack_name
+argument_list|)
+expr_stmt|;
 name|err
 operator|=
 name|close
