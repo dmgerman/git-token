@@ -714,6 +714,11 @@ argument_list|,
 name|obj_name
 argument_list|)
 expr_stmt|;
+name|fflush
+argument_list|(
+name|stdout
+argument_list|)
+expr_stmt|;
 return|return
 literal|0
 return|;
