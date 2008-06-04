@@ -369,6 +369,14 @@ name|size
 operator|=
 literal|0
 expr_stmt|;
+name|tree
+operator|->
+name|object
+operator|.
+name|parsed
+operator|=
+literal|0
+expr_stmt|;
 return|return
 literal|0
 return|;
