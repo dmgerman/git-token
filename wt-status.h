@@ -46,10 +46,11 @@ DECL|enum|untracked_status_type
 enum|enum
 name|untracked_status_type
 block|{
+DECL|enumerator|SHOW_NO_UNTRACKED_FILES
+name|SHOW_NO_UNTRACKED_FILES
+block|,
 DECL|enumerator|SHOW_NORMAL_UNTRACKED_FILES
 name|SHOW_NORMAL_UNTRACKED_FILES
-init|=
-literal|1
 block|,
 DECL|enumerator|SHOW_ALL_UNTRACKED_FILES
 name|SHOW_ALL_UNTRACKED_FILES

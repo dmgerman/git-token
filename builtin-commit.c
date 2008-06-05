@@ -693,7 +693,7 @@ name|untracked_files_arg
 block|,
 literal|"mode"
 block|,
-literal|"show untracked files, optional modes: all, normal. (Default: all)"
+literal|"show untracked files, optional modes: all, normal, no. (Default: all)"
 block|,
 name|PARSE_OPT_OPTARG
 block|,
@@ -4252,6 +4252,21 @@ name|untracked_files_arg
 condition|)
 empty_stmt|;
 comment|/* default already initialized */
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|untracked_files_arg
+argument_list|,
+literal|"no"
+argument_list|)
+condition|)
+name|show_untracked_files
+operator|=
+name|SHOW_NO_UNTRACKED_FILES
+expr_stmt|;
 elseif|else
 if|if
 condition|(

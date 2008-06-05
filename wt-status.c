@@ -2171,9 +2171,29 @@ argument_list|(
 name|s
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|show_untracked_files
+condition|)
 name|wt_status_print_untracked
 argument_list|(
 name|s
+argument_list|)
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|s
+operator|->
+name|commitable
+condition|)
+name|fprintf
+argument_list|(
+name|s
+operator|->
+name|fp
+argument_list|,
+literal|"# Untracked files not listed (use -u option to show untracked files)\n"
 argument_list|)
 expr_stmt|;
 if|if
@@ -2258,6 +2278,17 @@ condition|)
 name|printf
 argument_list|(
 literal|"nothing to commit (create/copy files and use \"git add\" to track)\n"
+argument_list|)
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|show_untracked_files
+condition|)
+name|printf
+argument_list|(
+literal|"nothing to commit (use -u to show untracked files)\n"
 argument_list|)
 expr_stmt|;
 else|else
