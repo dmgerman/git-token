@@ -3597,6 +3597,13 @@ expr_stmt|;
 name|list_commands
 argument_list|()
 expr_stmt|;
+name|printf
+argument_list|(
+literal|"%s\n"
+argument_list|,
+name|git_more_info_string
+argument_list|)
+expr_stmt|;
 return|return
 literal|0
 return|;
@@ -3619,6 +3626,13 @@ argument_list|)
 expr_stmt|;
 name|list_common_cmds_help
 argument_list|()
+expr_stmt|;
+name|printf
+argument_list|(
+literal|"\n%s\n"
+argument_list|,
+name|git_more_info_string
+argument_list|)
 expr_stmt|;
 return|return
 literal|0

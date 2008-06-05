@@ -34,6 +34,17 @@ literal|"git [--version] [--exec-path[=GIT_EXEC_PATH]] [-p|--paginate|--no-pager
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|git_more_info_string
+specifier|const
+name|char
+name|git_more_info_string
+index|[]
+init|=
+literal|"See 'git help COMMAND' for more information on a specific command."
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|handle_options
 specifier|static
@@ -2499,6 +2510,13 @@ argument_list|)
 expr_stmt|;
 name|list_common_cmds_help
 argument_list|()
+expr_stmt|;
+name|printf
+argument_list|(
+literal|"\n%s\n"
+argument_list|,
+name|git_more_info_string
+argument_list|)
 expr_stmt|;
 name|exit
 argument_list|(

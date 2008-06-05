@@ -36,6 +36,15 @@ index|[]
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+specifier|extern
+specifier|const
+name|char
+name|git_more_info_string
+index|[]
+decl_stmt|;
+end_decl_stmt
+
 begin_function_decl
 specifier|extern
 name|void
