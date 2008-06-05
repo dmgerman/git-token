@@ -1983,37 +1983,6 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-comment|/* 	 * Print 'M' for merge commits 	 * 	 * Note that we don't check graph->num_parents to determine if the 	 * commit is a merge, since that only tracks the number of 	 * "interesting" parents.  We want to print 'M' for merge commits 	 * even if they have less than 2 interesting parents. 	 */
-if|if
-condition|(
-name|graph
-operator|->
-name|commit
-operator|->
-name|parents
-operator|!=
-name|NULL
-operator|&&
-name|graph
-operator|->
-name|commit
-operator|->
-name|parents
-operator|->
-name|next
-operator|!=
-name|NULL
-condition|)
-block|{
-name|strbuf_addch
-argument_list|(
-name|sb
-argument_list|,
-literal|'M'
-argument_list|)
-expr_stmt|;
-return|return;
-block|}
 comment|/* 	 * Print '*' in all other cases 	 */
 name|strbuf_addch
 argument_list|(
