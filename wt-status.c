@@ -157,6 +157,16 @@ literal|"use \"git add<file>...\" to include in what will be committed"
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|show_untracked_files
+name|enum
+name|untracked_status_type
+name|show_untracked_files
+init|=
+name|SHOW_NORMAL_UNTRACKED_FILES
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|parse_status_slot
 specifier|static
