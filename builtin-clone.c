@@ -428,7 +428,7 @@ expr_stmt|;
 return|return
 name|xstrdup
 argument_list|(
-name|make_absolute_path
+name|make_nonrelative_path
 argument_list|(
 name|path
 argument_list|)
@@ -499,7 +499,7 @@ expr_stmt|;
 return|return
 name|xstrdup
 argument_list|(
-name|make_absolute_path
+name|make_nonrelative_path
 argument_list|(
 name|path
 argument_list|)
