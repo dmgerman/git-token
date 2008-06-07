@@ -1343,11 +1343,6 @@ name|commit_graft
 modifier|*
 name|graft
 decl_stmt|;
-name|unsigned
-name|n_refs
-init|=
-literal|0
-decl_stmt|;
 if|if
 condition|(
 name|item
@@ -1446,15 +1441,6 @@ name|lookup_tree
 argument_list|(
 name|parent
 argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|item
-operator|->
-name|tree
-condition|)
-name|n_refs
-operator|++
 expr_stmt|;
 name|bufptr
 operator|+=
@@ -1562,7 +1548,6 @@ if|if
 condition|(
 name|new_parent
 condition|)
-block|{
 name|pptr
 operator|=
 operator|&
@@ -1575,10 +1560,6 @@ argument_list|)
 operator|->
 name|next
 expr_stmt|;
-name|n_refs
-operator|++
-expr_stmt|;
-block|}
 block|}
 if|if
 condition|(
@@ -1638,9 +1619,6 @@ name|pptr
 argument_list|)
 operator|->
 name|next
-expr_stmt|;
-name|n_refs
-operator|++
 expr_stmt|;
 block|}
 block|}
