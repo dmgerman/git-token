@@ -250,6 +250,18 @@ name|defined
 argument_list|(
 name|__FreeBSD__
 argument_list|)
+operator|&&
+operator|!
+name|defined
+argument_list|(
+name|__USLC__
+argument_list|)
+operator|&&
+operator|!
+name|defined
+argument_list|(
+name|_M_UNIX
+argument_list|)
 end_if
 
 begin_define
