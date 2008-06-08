@@ -1620,8 +1620,6 @@ block|,
 name|cmd_check_attr
 block|,
 name|RUN_SETUP
-operator||
-name|NEED_WORK_TREE
 block|}
 block|,
 block|{
