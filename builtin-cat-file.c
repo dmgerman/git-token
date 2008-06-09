@@ -678,6 +678,8 @@ decl_stmt|;
 name|enum
 name|object_type
 name|type
+init|=
+literal|0
 decl_stmt|;
 name|unsigned
 name|long
@@ -759,9 +761,23 @@ name|type
 operator|<=
 literal|0
 condition|)
+block|{
+name|printf
+argument_list|(
+literal|"%s missing\n"
+argument_list|,
+name|obj_name
+argument_list|)
+expr_stmt|;
+name|fflush
+argument_list|(
+name|stdout
+argument_list|)
+expr_stmt|;
 return|return
-literal|1
+literal|0
 return|;
+block|}
 name|printf
 argument_list|(
 literal|"%s %s %lu\n"
