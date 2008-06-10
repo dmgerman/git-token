@@ -3118,7 +3118,7 @@ name|argv
 parameter_list|)
 block|{
 name|int
-name|no_query
+name|dry_run
 init|=
 literal|0
 decl_stmt|,
@@ -3137,16 +3137,10 @@ argument_list|(
 literal|"prune specific options"
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT__DRY_RUN
 argument_list|(
-literal|'n'
-argument_list|,
-name|NULL
-argument_list|,
 operator|&
-name|no_query
-argument_list|,
-literal|"do not query remotes"
+name|dry_run
 argument_list|)
 block|,
 name|OPT_END
@@ -3221,8 +3215,45 @@ argument_list|,
 operator|&
 name|states
 argument_list|,
-operator|!
-name|no_query
+literal|1
+argument_list|)
+expr_stmt|;
+name|printf
+argument_list|(
+literal|"Pruning %s\n"
+argument_list|,
+operator|*
+name|argv
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|states
+operator|.
+name|stale
+operator|.
+name|nr
+condition|)
+name|printf
+argument_list|(
+literal|"URL: %s\n"
+argument_list|,
+name|states
+operator|.
+name|remote
+operator|->
+name|url_nr
+condition|?
+name|states
+operator|.
+name|remote
+operator|->
+name|url
+index|[
+literal|0
+index|]
+else|:
+literal|"(no URL)"
 argument_list|)
 expr_stmt|;
 for|for
@@ -3259,6 +3290,11 @@ index|]
 operator|.
 name|util
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|dry_run
+condition|)
 name|result
 operator||=
 name|delete_ref
@@ -3266,6 +3302,24 @@ argument_list|(
 name|refname
 argument_list|,
 name|NULL
+argument_list|)
+expr_stmt|;
+name|printf
+argument_list|(
+literal|" * [%s] %s\n"
+argument_list|,
+name|dry_run
+condition|?
+literal|"would prune"
+else|:
+literal|"pruned"
+argument_list|,
+name|skip_prefix
+argument_list|(
+name|refname
+argument_list|,
+literal|"refs/remotes/"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
