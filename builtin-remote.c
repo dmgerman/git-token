@@ -2524,7 +2524,7 @@ name|prune
 parameter_list|)
 block|{
 name|int
-name|dry_run
+name|no_query
 init|=
 literal|0
 decl_stmt|,
@@ -2543,10 +2543,16 @@ argument_list|(
 literal|"show specific options"
 argument_list|)
 block|,
-name|OPT__DRY_RUN
+name|OPT_BOOLEAN
 argument_list|(
+literal|'n'
+argument_list|,
+name|NULL
+argument_list|,
 operator|&
-name|dry_run
+name|no_query
+argument_list|,
+literal|"do not query remotes"
 argument_list|)
 block|,
 name|OPT_END
@@ -2638,8 +2644,6 @@ name|buf
 decl_stmt|;
 name|int
 name|i
-decl_stmt|,
-name|got_states
 decl_stmt|;
 name|states
 operator|.
@@ -2667,6 +2671,15 @@ operator|*
 name|argv
 argument_list|)
 return|;
+name|read_branches
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|no_query
+condition|)
+block|{
 name|transport
 operator|=
 name|transport_get
@@ -2705,11 +2718,6 @@ argument_list|(
 name|transport
 argument_list|)
 expr_stmt|;
-name|read_branches
-argument_list|()
-expr_stmt|;
-name|got_states
-operator|=
 name|get_ref_states
 argument_list|(
 name|ref
@@ -2718,23 +2726,7 @@ operator|&
 name|states
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|got_states
-condition|)
-name|result
-operator|=
-name|error
-argument_list|(
-literal|"Error getting local info for '%s'"
-argument_list|,
-name|states
-operator|.
-name|remote
-operator|->
-name|name
-argument_list|)
-expr_stmt|;
+block|}
 if|if
 condition|(
 name|prune
@@ -2937,9 +2929,10 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|got_states
+operator|!
+name|no_query
 condition|)
-continue|continue;
+block|{
 name|strbuf_init
 argument_list|(
 operator|&
@@ -2953,8 +2946,8 @@ argument_list|(
 operator|&
 name|buf
 argument_list|,
-literal|"  New remote branch%%s (next fetch will "
-literal|"store in remotes/%s)"
+literal|"  New remote branch%%s (next fetch "
+literal|"will store in remotes/%s)"
 argument_list|,
 name|states
 operator|.
@@ -2983,7 +2976,8 @@ argument_list|)
 expr_stmt|;
 name|show_list
 argument_list|(
-literal|"  Stale tracking branch%s (use 'git remote prune')"
+literal|"  Stale tracking branch%s (use 'git remote "
+literal|"prune')"
 argument_list|,
 operator|&
 name|states
@@ -3001,6 +2995,7 @@ operator|.
 name|tracked
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|states
