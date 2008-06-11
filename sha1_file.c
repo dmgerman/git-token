@@ -11484,6 +11484,45 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/* Finalize a file on disk, and close it. */
+end_comment
+
+begin_function
+DECL|function|close_sha1_file
+specifier|static
+name|void
+name|close_sha1_file
+parameter_list|(
+name|int
+name|fd
+parameter_list|)
+block|{
+comment|/* For safe-mode, we could fsync_or_die(fd, "sha1 file") here */
+name|fchmod
+argument_list|(
+name|fd
+argument_list|,
+literal|0444
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|close
+argument_list|(
+name|fd
+argument_list|)
+operator|!=
+literal|0
+condition|)
+name|die
+argument_list|(
+literal|"unable to write sha1 file"
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
 begin_function
 DECL|function|write_loose_object
 specifier|static
@@ -11833,23 +11872,9 @@ argument_list|(
 literal|"unable to write sha1 file"
 argument_list|)
 expr_stmt|;
-name|fchmod
+name|close_sha1_file
 argument_list|(
 name|fd
-argument_list|,
-literal|0444
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|close
-argument_list|(
-name|fd
-argument_list|)
-condition|)
-name|die
-argument_list|(
-literal|"unable to write sha1 file"
 argument_list|)
 expr_stmt|;
 name|free
@@ -12816,25 +12841,9 @@ operator|&
 name|stream
 argument_list|)
 expr_stmt|;
-name|fchmod
+name|close_sha1_file
 argument_list|(
 name|local
-argument_list|,
-literal|0444
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|close
-argument_list|(
-name|local
-argument_list|)
-operator|!=
-literal|0
-condition|)
-name|die
-argument_list|(
-literal|"unable to write sha1 file"
 argument_list|)
 expr_stmt|;
 name|SHA1_Final
