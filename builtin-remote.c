@@ -3327,14 +3327,6 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
-name|printf
-argument_list|(
-literal|"Pruning %s\n"
-argument_list|,
-operator|*
-name|argv
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|states
@@ -3343,6 +3335,15 @@ name|stale
 operator|.
 name|nr
 condition|)
+block|{
+name|printf
+argument_list|(
+literal|"Pruning %s\n"
+argument_list|,
+operator|*
+name|argv
+argument_list|)
+expr_stmt|;
 name|printf
 argument_list|(
 literal|"URL: %s\n"
@@ -3365,6 +3366,7 @@ else|:
 literal|"(no URL)"
 argument_list|)
 expr_stmt|;
+block|}
 for|for
 control|(
 name|i
