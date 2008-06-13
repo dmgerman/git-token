@@ -1118,6 +1118,27 @@ argument_list|,
 name|encoding
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|commit
+operator|->
+name|parents
+condition|)
+name|printf
+argument_list|(
+literal|"reset %s\n"
+argument_list|,
+operator|(
+specifier|const
+name|char
+operator|*
+operator|)
+name|commit
+operator|->
+name|util
+argument_list|)
+expr_stmt|;
 name|printf
 argument_list|(
 literal|"commit %s\nmark :%d\n%.*s\n%.*s\ndata %u\n%s"
