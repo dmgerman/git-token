@@ -1163,7 +1163,7 @@ name|OPT_BOOLEAN
 argument_list|(
 literal|'f'
 argument_list|,
-name|NULL
+literal|"force"
 argument_list|,
 operator|&
 name|ignored_too
@@ -1175,7 +1175,7 @@ name|OPT_BOOLEAN
 argument_list|(
 literal|'u'
 argument_list|,
-name|NULL
+literal|"update"
 argument_list|,
 operator|&
 name|take_worktree_changes
