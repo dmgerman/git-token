@@ -5559,11 +5559,19 @@ name|options
 operator|->
 name|file
 argument_list|,
-literal|"%5d "
+literal|"%5d%s"
 argument_list|,
 name|added
 operator|+
 name|deleted
+argument_list|,
+name|added
+operator|+
+name|deleted
+condition|?
+literal|" "
+else|:
+literal|""
 argument_list|)
 expr_stmt|;
 name|show_graph
