@@ -1753,6 +1753,14 @@ name|ref_name
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+name|adjust_shared_perm
+argument_list|(
+name|log_file
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 name|free
 argument_list|(
