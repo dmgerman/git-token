@@ -4351,6 +4351,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|reprepare_packed_git
+argument_list|()
+expr_stmt|;
 return|return
 name|ref_cpy
 return|;
