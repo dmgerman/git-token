@@ -4887,27 +4887,6 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|struct
-name|packed_git
-modifier|*
-name|parse_pack_index_file
-parameter_list|(
-specifier|const
-name|unsigned
-name|char
-modifier|*
-name|sha1
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|idx_path
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-specifier|extern
 name|void
 name|prepare_packed_git
 parameter_list|(
