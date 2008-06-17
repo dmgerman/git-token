@@ -287,10 +287,7 @@ argument_list|)
 operator|->
 name|util
 operator|=
-name|xstrdup
-argument_list|(
 name|name
-argument_list|)
 expr_stmt|;
 block|}
 name|fclose
