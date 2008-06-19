@@ -3423,6 +3423,25 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|const
+name|char
+modifier|*
+name|make_relative_path
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|abs
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|base
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/* Read and unpack a sha1 file into memory, write memory to a sha1 file */
 end_comment
