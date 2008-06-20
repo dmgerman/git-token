@@ -2717,11 +2717,16 @@ name|NULL
 condition|)
 name|die
 argument_list|(
-literal|"could not open %s"
+literal|"could not open %s: %s"
 argument_list|,
 name|git_path
 argument_list|(
 name|commit_editmsg
+argument_list|)
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
 argument_list|)
 argument_list|)
 expr_stmt|;
