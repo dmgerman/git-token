@@ -988,6 +988,27 @@ value|mingw_getcwd
 end_define
 
 begin_function_decl
+name|char
+modifier|*
+name|mingw_getenv
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|name
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_define
+DECL|macro|getenv
+define|#
+directive|define
+name|getenv
+value|mingw_getenv
+end_define
+
+begin_function_decl
 name|struct
 name|hostent
 modifier|*
