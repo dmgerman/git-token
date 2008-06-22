@@ -610,7 +610,7 @@ DECL|member|len
 name|int
 name|len
 decl_stmt|;
-comment|/* bit 0 up to (N-1) are on if the parent has this line (i.e. 	 * we did not change it). 	 * bit N is used for "interesting" lines, including context. 	 */
+comment|/* bit 0 up to (N-1) are on if the parent has this line (i.e. 	 * we did not change it). 	 * bit N is used for "interesting" lines, including context. 	 * bit (N+1) is used for "do not show deletion before this". 	 */
 DECL|member|flag
 name|unsigned
 name|long
@@ -1802,6 +1802,16 @@ operator|)
 decl_stmt|;
 name|unsigned
 name|long
+name|no_pre_delete
+init|=
+operator|(
+literal|2UL
+operator|<<
+name|num_parent
+operator|)
+decl_stmt|;
+name|unsigned
+name|long
 name|i
 decl_stmt|;
 comment|/* Two groups of interesting lines may have a short gap of 	 * uninteresting lines.  Connect such groups to give them a 	 * bit of context. 	 * 	 * We first start from what the interesting() function says, 	 * and mark them with "mark", and paint context lines with the 	 * mark.  So interesting() would still say false for such context 	 * lines but they are treated as "interesting" in the end. 	 */
@@ -1874,6 +1884,8 @@ operator|.
 name|flag
 operator||=
 name|mark
+operator||
+name|no_pre_delete
 expr_stmt|;
 name|again
 label|:
@@ -2636,6 +2648,16 @@ operator|<<
 name|num_parent
 operator|)
 decl_stmt|;
+name|unsigned
+name|long
+name|no_pre_delete
+init|=
+operator|(
+literal|2UL
+operator|<<
+name|num_parent
+operator|)
+decl_stmt|;
 name|int
 name|i
 decl_stmt|;
@@ -3104,6 +3126,16 @@ index|]
 expr_stmt|;
 name|ll
 operator|=
+operator|(
+name|sl
+operator|->
+name|flag
+operator|&
+name|no_pre_delete
+operator|)
+condition|?
+name|NULL
+else|:
 name|sl
 operator|->
 name|lost_head
