@@ -1945,17 +1945,29 @@ condition|(
 operator|*
 name|usagestr
 condition|)
+block|{
 name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"    %s\n"
+literal|"%s%s\n"
+argument_list|,
+operator|*
+operator|*
+name|usagestr
+condition|?
+literal|"    "
+else|:
+literal|""
 argument_list|,
 operator|*
 name|usagestr
-operator|++
 argument_list|)
 expr_stmt|;
+name|usagestr
+operator|++
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|opts
