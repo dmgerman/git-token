@@ -1564,8 +1564,7 @@ end_function
 
 begin_function_decl
 specifier|static
-name|NORETURN
-name|void
+name|int
 name|usage_with_options_internal
 parameter_list|(
 specifier|const
@@ -1578,6 +1577,8 @@ specifier|const
 name|struct
 name|option
 modifier|*
+parameter_list|,
+name|int
 parameter_list|,
 name|int
 parameter_list|)
@@ -1870,6 +1871,8 @@ argument_list|,
 name|options
 argument_list|,
 literal|1
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 if|if
@@ -1941,7 +1944,7 @@ end_define
 
 begin_function
 DECL|function|usage_with_options_internal
-name|void
+name|int
 name|usage_with_options_internal
 parameter_list|(
 specifier|const
@@ -1959,6 +1962,9 @@ name|opts
 parameter_list|,
 name|int
 name|full
+parameter_list|,
+name|int
+name|do_exit
 parameter_list|)
 block|{
 name|fprintf
@@ -2409,11 +2415,18 @@ argument_list|,
 name|stderr
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|do_exit
+condition|)
 name|exit
 argument_list|(
 literal|129
 argument_list|)
 expr_stmt|;
+return|return
+name|PARSE_OPT_HELP
+return|;
 block|}
 end_function
 
@@ -2443,8 +2456,50 @@ argument_list|,
 name|opts
 argument_list|,
 literal|0
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
+name|exit
+argument_list|(
+literal|129
+argument_list|)
+expr_stmt|;
+comment|/* make gcc happy */
+block|}
+end_function
+
+begin_function
+DECL|function|parse_options_usage
+name|int
+name|parse_options_usage
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+specifier|const
+modifier|*
+name|usagestr
+parameter_list|,
+specifier|const
+name|struct
+name|option
+modifier|*
+name|opts
+parameter_list|)
+block|{
+return|return
+name|usage_with_options_internal
+argument_list|(
+name|usagestr
+argument_list|,
+name|opts
+argument_list|,
+literal|0
+argument_list|,
+literal|0
+argument_list|)
+return|;
 block|}
 end_function
 

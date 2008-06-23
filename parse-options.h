@@ -432,6 +432,24 @@ begin_comment
 comment|/*----- incremantal advanced APIs -----*/
 end_comment
 
+begin_enum
+enum|enum
+block|{
+DECL|enumerator|PARSE_OPT_HELP
+name|PARSE_OPT_HELP
+init|=
+operator|-
+literal|1
+block|,
+DECL|enumerator|PARSE_OPT_DONE
+name|PARSE_OPT_DONE
+block|,
+DECL|enumerator|PARSE_OPT_UNKNOWN
+name|PARSE_OPT_UNKNOWN
+block|, }
+enum|;
+end_enum
+
 begin_struct
 DECL|struct|parse_opt_ctx_t
 struct|struct
@@ -471,6 +489,27 @@ decl_stmt|;
 block|}
 struct|;
 end_struct
+
+begin_function_decl
+specifier|extern
+name|int
+name|parse_options_usage
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+specifier|const
+modifier|*
+name|usagestr
+parameter_list|,
+specifier|const
+name|struct
+name|option
+modifier|*
+name|opts
+parameter_list|)
+function_decl|;
+end_function_decl
 
 begin_function_decl
 specifier|extern
