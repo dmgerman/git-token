@@ -450,6 +450,10 @@ block|, }
 enum|;
 end_enum
 
+begin_comment
+comment|/*  * It's okay for the caller to consume argv/argc in the usual way.  * Other fields of that structure are private to parse-options and should not  * be modified in any way.  */
+end_comment
+
 begin_struct
 DECL|struct|parse_opt_ctx_t
 struct|struct

@@ -11,6 +11,12 @@ directive|include
 file|"parse-options.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"cache.h"
+end_include
+
 begin_define
 DECL|macro|OPT_SHORT
 define|#
@@ -1559,6 +1565,13 @@ name|usagestr
 index|[]
 parameter_list|)
 block|{
+comment|/* we must reset ->opt, unknown short option leave it dangling */
+name|ctx
+operator|->
+name|opt
+operator|=
+name|NULL
+expr_stmt|;
 for|for
 control|(
 init|;
@@ -1761,6 +1774,37 @@ case|case
 operator|-
 literal|2
 case|:
+comment|/* fake a short option thing to hide the fact that we may have 					 * started to parse aggregated stuff 					 * 					 * This is leaky, too bad. 					 */
+name|ctx
+operator|->
+name|argv
+index|[
+literal|0
+index|]
+operator|=
+name|xstrdup
+argument_list|(
+name|ctx
+operator|->
+name|opt
+operator|-
+literal|1
+argument_list|)
+expr_stmt|;
+operator|*
+operator|(
+name|char
+operator|*
+operator|)
+name|ctx
+operator|->
+name|argv
+index|[
+literal|0
+index|]
+operator|=
+literal|'-'
+expr_stmt|;
 return|return
 name|PARSE_OPT_UNKNOWN
 return|;
