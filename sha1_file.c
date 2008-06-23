@@ -11620,6 +11620,15 @@ name|dirlen
 condition|)
 block|{
 comment|/* Make sure the directory exists */
+name|memcpy
+argument_list|(
+name|buffer
+argument_list|,
+name|filename
+argument_list|,
+name|dirlen
+argument_list|)
+expr_stmt|;
 name|buffer
 index|[
 name|dirlen
