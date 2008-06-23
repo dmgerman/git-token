@@ -1019,6 +1019,20 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|time_t
+name|tm_to_time_t
+parameter_list|(
+specifier|const
+name|struct
+name|tm
+modifier|*
+name|tm
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_ifdef
 ifdef|#
 directive|ifdef

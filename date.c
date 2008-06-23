@@ -9,12 +9,16 @@ directive|include
 file|"cache.h"
 end_include
 
+begin_comment
+comment|/*  * This is like mktime, but without normalization of tm_wday and tm_yday.  */
+end_comment
+
 begin_function
-DECL|function|my_mktime
-specifier|static
+DECL|function|tm_to_time_t
 name|time_t
-name|my_mktime
+name|tm_to_time_t
 parameter_list|(
+specifier|const
 name|struct
 name|tm
 modifier|*
@@ -385,7 +389,7 @@ argument_list|)
 expr_stmt|;
 name|t_local
 operator|=
-name|my_mktime
+name|tm_to_time_t
 argument_list|(
 operator|&
 name|tm
@@ -1971,7 +1975,7 @@ literal|1
 return|;
 name|specified
 operator|=
-name|my_mktime
+name|tm_to_time_t
 argument_list|(
 name|r
 argument_list|)
@@ -3131,7 +3135,7 @@ block|}
 comment|/* mktime uses local timezone */
 name|then
 operator|=
-name|my_mktime
+name|tm_to_time_t
 argument_list|(
 operator|&
 name|tm
@@ -3344,7 +3348,7 @@ argument_list|)
 expr_stmt|;
 name|offset
 operator|=
-name|my_mktime
+name|tm_to_time_t
 argument_list|(
 name|localtime
 argument_list|(
