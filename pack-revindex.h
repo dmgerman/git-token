@@ -31,15 +31,6 @@ struct|;
 end_struct
 
 begin_function_decl
-name|void
-name|init_pack_revindex
-parameter_list|(
-name|void
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
 name|struct
 name|revindex_entry
 modifier|*

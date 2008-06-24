@@ -635,9 +635,6 @@ name|chain_histogram
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|init_pack_revindex
-argument_list|()
-expr_stmt|;
 for|for
 control|(
 name|i

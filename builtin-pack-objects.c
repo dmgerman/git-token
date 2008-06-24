@@ -6047,9 +6047,6 @@ argument_list|,
 name|pack_offset_sort
 argument_list|)
 expr_stmt|;
-name|init_pack_revindex
-argument_list|()
-expr_stmt|;
 for|for
 control|(
 name|i
