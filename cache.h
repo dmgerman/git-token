@@ -4530,6 +4530,16 @@ DECL|member|num_objects
 name|uint32_t
 name|num_objects
 decl_stmt|;
+DECL|member|num_bad_objects
+name|uint32_t
+name|num_bad_objects
+decl_stmt|;
+DECL|member|bad_object_sha1
+name|unsigned
+name|char
+modifier|*
+name|bad_object_sha1
+decl_stmt|;
 DECL|member|index_version
 name|int
 name|index_version
