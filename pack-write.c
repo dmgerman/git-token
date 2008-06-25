@@ -22,7 +22,7 @@ DECL|variable|pack_idx_default_version
 name|uint32_t
 name|pack_idx_default_version
 init|=
-literal|1
+literal|2
 decl_stmt|;
 end_decl_stmt
 
