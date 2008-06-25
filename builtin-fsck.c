@@ -3003,8 +3003,6 @@ comment|/* verify gives error messages itself */
 name|verify_pack
 argument_list|(
 name|p
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 for|for

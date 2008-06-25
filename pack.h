@@ -195,8 +195,6 @@ parameter_list|(
 name|struct
 name|packed_git
 modifier|*
-parameter_list|,
-name|int
 parameter_list|)
 function_decl|;
 end_function_decl
