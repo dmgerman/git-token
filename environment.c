@@ -190,6 +190,13 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|fsync_object_files
+name|int
+name|fsync_object_files
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|packed_git_window_size
 name|size_t
 name|packed_git_window_size

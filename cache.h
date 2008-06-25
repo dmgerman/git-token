@@ -2823,6 +2823,13 @@ name|auto_crlf
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+specifier|extern
+name|int
+name|fsync_object_files
+decl_stmt|;
+end_decl_stmt
+
 begin_enum
 DECL|enum|safe_crlf
 enum|enum
