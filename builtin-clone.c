@@ -63,6 +63,12 @@ directive|include
 file|"dir.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"pack-refs.h"
+end_include
+
 begin_comment
 comment|/*  * Overall FIXMEs:  *  - respect DB_ENVIRONMENT for .git/objects.  *  * Implementation notes:  *  - dropping use-separate-remote and no-separate-remote compatibility  *  */
 end_comment
@@ -1754,10 +1760,8 @@ name|r
 operator|->
 name|next
 control|)
-name|update_ref
+name|add_extra_ref
 argument_list|(
-name|reflog
-argument_list|,
 name|r
 operator|->
 name|peer_ref
@@ -1768,12 +1772,16 @@ name|r
 operator|->
 name|old_sha1
 argument_list|,
-name|NULL
-argument_list|,
 literal|0
-argument_list|,
-name|DIE_ON_ERR
 argument_list|)
+expr_stmt|;
+name|pack_refs
+argument_list|(
+name|PACK_REFS_ALL
+argument_list|)
+expr_stmt|;
+name|clear_extra_refs
+argument_list|()
 expr_stmt|;
 return|return
 name|local_refs
