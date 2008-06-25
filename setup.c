@@ -1257,12 +1257,11 @@ argument_list|(
 name|git_dir
 argument_list|)
 condition|)
-name|set_git_dir
-argument_list|(
+name|git_dir
+operator|=
 name|make_absolute_path
 argument_list|(
 name|git_dir
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -1278,6 +1277,16 @@ condition|)
 name|die
 argument_list|(
 literal|"This operation must be run in a work tree"
+argument_list|)
+expr_stmt|;
+name|set_git_dir
+argument_list|(
+name|make_relative_path
+argument_list|(
+name|git_dir
+argument_list|,
+name|work_tree
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|initialized
