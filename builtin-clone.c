@@ -2148,6 +2148,22 @@ name|work_tree
 expr_stmt|;
 if|if
 condition|(
+name|safe_create_leading_directories_const
+argument_list|(
+name|work_tree
+argument_list|)
+operator|<
+literal|0
+condition|)
+name|die
+argument_list|(
+literal|"could not create leading directories of '%s'"
+argument_list|,
+name|work_tree
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|mkdir
 argument_list|(
 name|work_tree
@@ -2199,6 +2215,22 @@ argument_list|)
 argument_list|)
 argument_list|,
 literal|1
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|safe_create_leading_directories_const
+argument_list|(
+name|git_dir
+argument_list|)
+operator|<
+literal|0
+condition|)
+name|die
+argument_list|(
+literal|"could not create leading directories of '%s'"
+argument_list|,
+name|git_dir
 argument_list|)
 expr_stmt|;
 name|set_git_dir

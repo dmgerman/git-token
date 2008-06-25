@@ -3346,6 +3346,18 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+name|int
+name|safe_create_leading_directories_const
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|char
 modifier|*
 name|enter_repo
