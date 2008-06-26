@@ -3256,10 +3256,7 @@ operator|->
 name|nparents
 argument_list|)
 expr_stmt|;
-operator|(
-name|void
-operator|)
-name|check_and_emit_line
+name|ws_check_emit
 argument_list|(
 name|line
 operator|+
@@ -6929,7 +6926,7 @@ operator|++
 expr_stmt|;
 name|bad
 operator|=
-name|check_and_emit_line
+name|ws_check
 argument_list|(
 name|line
 operator|+
@@ -6942,14 +6939,6 @@ argument_list|,
 name|data
 operator|->
 name|ws_rule
-argument_list|,
-name|NULL
-argument_list|,
-name|NULL
-argument_list|,
-name|NULL
-argument_list|,
-name|NULL
 argument_list|)
 expr_stmt|;
 if|if
@@ -7010,10 +6999,7 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
-operator|(
-name|void
-operator|)
-name|check_and_emit_line
+name|ws_check_emit
 argument_list|(
 name|line
 operator|+
