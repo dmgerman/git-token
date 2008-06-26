@@ -9335,6 +9335,7 @@ argument_list|(
 literal|"unable to read files to diff"
 argument_list|)
 expr_stmt|;
+comment|/* 	 * All the other codepaths check both sides, but not checking 	 * the "old" side here is deliberate.  We are checking the newly 	 * introduced changes, and as long as the "new" side is text, we 	 * can and should check what it introduces. 	 */
 if|if
 condition|(
 name|diff_filespec_is_binary
