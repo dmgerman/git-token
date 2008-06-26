@@ -6298,6 +6298,25 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|ws_blank_line
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|line
+parameter_list|,
+name|int
+name|len
+parameter_list|,
+name|unsigned
+name|ws_rule
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/* ls-files */
 end_comment
