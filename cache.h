@@ -6359,6 +6359,24 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|int
+name|split_cmdline
+parameter_list|(
+name|char
+modifier|*
+name|cmdline
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+modifier|*
+modifier|*
+name|argv
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
