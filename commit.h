@@ -254,6 +254,19 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+name|unsigned
+name|commit_list_count
+parameter_list|(
+specifier|const
+name|struct
+name|commit_list
+modifier|*
+name|l
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|struct
 name|commit_list
 modifier|*
