@@ -47,6 +47,11 @@ index|[
 literal|4
 index|]
 decl_stmt|;
+name|setup_path
+argument_list|(
+name|NULL
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -261,6 +266,7 @@ name|commands
 modifier|*
 name|cmd
 decl_stmt|;
+comment|/* 	 * Special hack to pretend to be a CVS server 	 */
 if|if
 condition|(
 name|argc
@@ -281,7 +287,7 @@ condition|)
 name|argv
 operator|--
 expr_stmt|;
-comment|/* We want to see "-c cmd args", and nothing else */
+comment|/* 	 * We do not accept anything but "-c" followed by "cmd arg", 	 * where "cmd" is a very limited subset of git commands. 	 */
 elseif|else
 if|if
 condition|(
@@ -311,13 +317,33 @@ index|[
 literal|2
 index|]
 expr_stmt|;
-name|argv
-operator|+=
-literal|2
-expr_stmt|;
-name|argc
-operator|-=
-literal|2
+if|if
+condition|(
+operator|!
+name|strncmp
+argument_list|(
+name|prog
+argument_list|,
+literal|"git"
+argument_list|,
+literal|3
+argument_list|)
+operator|&&
+name|isspace
+argument_list|(
+name|prog
+index|[
+literal|3
+index|]
+argument_list|)
+condition|)
+comment|/* Accept "git foo" as if the caller said "git-foo". */
+name|prog
+index|[
+literal|3
+index|]
+operator|=
+literal|'-'
 expr_stmt|;
 for|for
 control|(
