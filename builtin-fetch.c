@@ -1046,7 +1046,7 @@ operator|!
 name|lock
 condition|)
 return|return
-literal|1
+literal|2
 return|;
 if|if
 condition|(
@@ -1064,7 +1064,7 @@ operator|<
 literal|0
 condition|)
 return|return
-literal|1
+literal|2
 return|;
 return|return
 literal|0
@@ -1745,6 +1745,11 @@ name|char
 modifier|*
 name|url
 parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|remote_name
+parameter_list|,
 name|struct
 name|ref
 modifier|*
@@ -2307,6 +2312,21 @@ argument_list|(
 name|fp
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|rc
+operator|&
+literal|2
+condition|)
+name|error
+argument_list|(
+literal|"some local refs could not be updated; try running\n"
+literal|" 'git remote prune %s' to remove any old, conflicting "
+literal|"branches"
+argument_list|,
+name|remote_name
+argument_list|)
+expr_stmt|;
 return|return
 name|rc
 return|;
@@ -2640,6 +2660,12 @@ argument_list|(
 name|transport
 operator|->
 name|url
+argument_list|,
+name|transport
+operator|->
+name|remote
+operator|->
+name|name
 argument_list|,
 name|ref_map
 argument_list|)
