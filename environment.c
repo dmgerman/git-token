@@ -46,15 +46,6 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|quote_path_fully
-name|int
-name|quote_path_fully
-init|=
-literal|1
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|variable|has_symlinks
 name|int
 name|has_symlinks

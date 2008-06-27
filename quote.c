@@ -11,6 +11,15 @@ directive|include
 file|"quote.h"
 end_include
 
+begin_decl_stmt
+DECL|variable|quote_path_fully
+name|int
+name|quote_path_fully
+init|=
+literal|1
+decl_stmt|;
+end_decl_stmt
+
 begin_comment
 comment|/* Help to copy the thing properly quoted for the shell safety.  * any single quote is replaced with '\'', any exclamation point  * is replaced with '\!', and the whole thing is enclosed in a  *  * E.g.  *  original     sq_quote     result  *  name     ==> name      ==> 'name'  *  a b      ==> a b       ==> 'a b'  *  a'b      ==> a'\''b    ==> 'a'\''b'  *  a!b      ==> a'\!'b    ==> 'a'\!'b'  */
 end_comment
