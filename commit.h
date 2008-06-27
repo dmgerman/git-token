@@ -745,6 +745,21 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|struct
+name|commit_list
+modifier|*
+name|get_octopus_merge_bases
+parameter_list|(
+name|struct
+name|commit_list
+modifier|*
+name|in
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|int
 name|register_shallow
 parameter_list|(
