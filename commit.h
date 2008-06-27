@@ -912,6 +912,20 @@ return|;
 block|}
 end_function
 
+begin_function_decl
+name|struct
+name|commit_list
+modifier|*
+name|reduce_heads
+parameter_list|(
+name|struct
+name|commit_list
+modifier|*
+name|heads
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
