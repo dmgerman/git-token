@@ -826,6 +826,11 @@ argument_list|(
 name|stdout
 argument_list|)
 expr_stmt|;
+name|free
+argument_list|(
+name|contents
+argument_list|)
+expr_stmt|;
 block|}
 return|return
 literal|0
