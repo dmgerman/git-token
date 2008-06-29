@@ -147,6 +147,8 @@ index|[
 literal|1
 index|]
 argument_list|)
+operator|+
+literal|1
 operator|>
 sizeof|sizeof
 argument_list|(
