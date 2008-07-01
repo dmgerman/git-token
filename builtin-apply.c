@@ -4929,7 +4929,7 @@ decl_stmt|;
 name|unsigned
 name|result
 init|=
-name|check_and_emit_line
+name|ws_check
 argument_list|(
 name|line
 operator|+
@@ -4940,14 +4940,6 @@ operator|-
 literal|1
 argument_list|,
 name|ws_rule
-argument_list|,
-name|NULL
-argument_list|,
-name|NULL
-argument_list|,
-name|NULL
-argument_list|,
-name|NULL
 argument_list|)
 decl_stmt|;
 if|if
