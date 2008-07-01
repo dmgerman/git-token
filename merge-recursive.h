@@ -37,10 +37,10 @@ name|branch2
 decl_stmt|;
 enum|enum
 block|{
-DECL|enumerator|MERGE_RECURSIVE_SUBTREE
-name|MERGE_RECURSIVE_SUBTREE
+DECL|enumerator|MERGE_RECURSIVE_NORMAL
+name|MERGE_RECURSIVE_NORMAL
 init|=
-literal|1
+literal|0
 block|,
 DECL|enumerator|MERGE_RECURSIVE_OURS
 name|MERGE_RECURSIVE_OURS
@@ -51,6 +51,12 @@ block|, 	}
 DECL|member|recursive_variant
 name|recursive_variant
 enum|;
+DECL|member|subtree_shift
+specifier|const
+name|char
+modifier|*
+name|subtree_shift
+decl_stmt|;
 DECL|member|buffer_output
 name|unsigned
 name|buffer_output

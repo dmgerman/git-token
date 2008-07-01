@@ -7507,6 +7507,31 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|void
+name|shift_tree_by
+parameter_list|(
+specifier|const
+name|unsigned
+name|char
+modifier|*
+parameter_list|,
+specifier|const
+name|unsigned
+name|char
+modifier|*
+parameter_list|,
+name|unsigned
+name|char
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/*  * whitespace rules.  * used by both diff and apply  */
 end_comment
