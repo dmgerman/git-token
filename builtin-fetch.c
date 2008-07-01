@@ -1046,7 +1046,7 @@ operator|!
 name|lock
 condition|)
 return|return
-literal|1
+literal|2
 return|;
 if|if
 condition|(
@@ -1064,7 +1064,7 @@ operator|<
 literal|0
 condition|)
 return|return
-literal|1
+literal|2
 return|;
 return|return
 literal|0
@@ -1335,11 +1335,31 @@ literal|"refs/tags/"
 argument_list|)
 condition|)
 block|{
+name|int
+name|r
+decl_stmt|;
+name|r
+operator|=
+name|s_update_ref
+argument_list|(
+literal|"updating tag"
+argument_list|,
+name|ref
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
 name|sprintf
 argument_list|(
 name|display
 argument_list|,
-literal|"- %-*s %-*s -> %s"
+literal|"%c %-*s %-*s -> %s%s"
+argument_list|,
+name|r
+condition|?
+literal|'!'
+else|:
+literal|'-'
 argument_list|,
 name|SUMMARY_WIDTH
 argument_list|,
@@ -1350,17 +1370,16 @@ argument_list|,
 name|remote
 argument_list|,
 name|pretty_ref
+argument_list|,
+name|r
+condition|?
+literal|"  (unable to update local ref)"
+else|:
+literal|""
 argument_list|)
 expr_stmt|;
 return|return
-name|s_update_ref
-argument_list|(
-literal|"updating tag"
-argument_list|,
-name|ref
-argument_list|,
-literal|0
-argument_list|)
+name|r
 return|;
 block|}
 name|current
@@ -1404,6 +1423,9 @@ name|char
 modifier|*
 name|what
 decl_stmt|;
+name|int
+name|r
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -1439,11 +1461,28 @@ operator|=
 literal|"[new branch]"
 expr_stmt|;
 block|}
+name|r
+operator|=
+name|s_update_ref
+argument_list|(
+name|msg
+argument_list|,
+name|ref
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
 name|sprintf
 argument_list|(
 name|display
 argument_list|,
-literal|"* %-*s %-*s -> %s"
+literal|"%c %-*s %-*s -> %s%s"
+argument_list|,
+name|r
+condition|?
+literal|'!'
+else|:
+literal|'*'
 argument_list|,
 name|SUMMARY_WIDTH
 argument_list|,
@@ -1454,17 +1493,16 @@ argument_list|,
 name|remote
 argument_list|,
 name|pretty_ref
+argument_list|,
+name|r
+condition|?
+literal|"  (unable to update local ref)"
+else|:
+literal|""
 argument_list|)
 expr_stmt|;
 return|return
-name|s_update_ref
-argument_list|(
-name|msg
-argument_list|,
-name|ref
-argument_list|,
-literal|0
-argument_list|)
+name|r
 return|;
 block|}
 if|if
@@ -1485,6 +1523,9 @@ name|quickref
 index|[
 literal|83
 index|]
+decl_stmt|;
+name|int
+name|r
 decl_stmt|;
 name|strcpy
 argument_list|(
@@ -1523,11 +1564,28 @@ name|DEFAULT_ABBREV
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|r
+operator|=
+name|s_update_ref
+argument_list|(
+literal|"fast forward"
+argument_list|,
+name|ref
+argument_list|,
+literal|1
+argument_list|)
+expr_stmt|;
 name|sprintf
 argument_list|(
 name|display
 argument_list|,
-literal|"  %-*s %-*s -> %s"
+literal|"%c %-*s %-*s -> %s%s"
+argument_list|,
+name|r
+condition|?
+literal|'!'
+else|:
+literal|' '
 argument_list|,
 name|SUMMARY_WIDTH
 argument_list|,
@@ -1538,17 +1596,16 @@ argument_list|,
 name|remote
 argument_list|,
 name|pretty_ref
+argument_list|,
+name|r
+condition|?
+literal|"  (unable to update local ref)"
+else|:
+literal|""
 argument_list|)
 expr_stmt|;
 return|return
-name|s_update_ref
-argument_list|(
-literal|"fast forward"
-argument_list|,
-name|ref
-argument_list|,
-literal|1
-argument_list|)
+name|r
 return|;
 block|}
 elseif|else
@@ -1566,6 +1623,9 @@ name|quickref
 index|[
 literal|84
 index|]
+decl_stmt|;
+name|int
+name|r
 decl_stmt|;
 name|strcpy
 argument_list|(
@@ -1604,11 +1664,28 @@ name|DEFAULT_ABBREV
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|r
+operator|=
+name|s_update_ref
+argument_list|(
+literal|"forced-update"
+argument_list|,
+name|ref
+argument_list|,
+literal|1
+argument_list|)
+expr_stmt|;
 name|sprintf
 argument_list|(
 name|display
 argument_list|,
-literal|"+ %-*s %-*s -> %s  (forced update)"
+literal|"%c %-*s %-*s -> %s  (%s)"
+argument_list|,
+name|r
+condition|?
+literal|'!'
+else|:
+literal|'+'
 argument_list|,
 name|SUMMARY_WIDTH
 argument_list|,
@@ -1619,17 +1696,16 @@ argument_list|,
 name|remote
 argument_list|,
 name|pretty_ref
+argument_list|,
+name|r
+condition|?
+literal|"unable to update local ref"
+else|:
+literal|"forced update"
 argument_list|)
 expr_stmt|;
 return|return
-name|s_update_ref
-argument_list|(
-literal|"forced-update"
-argument_list|,
-name|ref
-argument_list|,
-literal|1
-argument_list|)
+name|r
 return|;
 block|}
 else|else
@@ -1668,6 +1744,11 @@ specifier|const
 name|char
 modifier|*
 name|url
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|remote_name
 parameter_list|,
 name|struct
 name|ref
@@ -2231,6 +2312,21 @@ argument_list|(
 name|fp
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|rc
+operator|&
+literal|2
+condition|)
+name|error
+argument_list|(
+literal|"some local refs could not be updated; try running\n"
+literal|" 'git remote prune %s' to remove any old, conflicting "
+literal|"branches"
+argument_list|,
+name|remote_name
+argument_list|)
+expr_stmt|;
 return|return
 name|rc
 return|;
@@ -2564,6 +2660,12 @@ argument_list|(
 name|transport
 operator|->
 name|url
+argument_list|,
+name|transport
+operator|->
+name|remote
+operator|->
+name|name
 argument_list|,
 name|ref_map
 argument_list|)
