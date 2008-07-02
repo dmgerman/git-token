@@ -1591,8 +1591,13 @@ name|flushes
 operator|--
 expr_stmt|;
 block|}
+comment|/* it is no error to fetch into a completely empty repo */
 return|return
+name|count
+condition|?
 name|retval
+else|:
+literal|0
 return|;
 block|}
 end_function
