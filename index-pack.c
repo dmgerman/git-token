@@ -970,7 +970,9 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"pack version %d unsupported"
+literal|"pack version %"
+name|PRIu32
+literal|" unsupported"
 argument_list|,
 name|ntohl
 argument_list|(
@@ -4580,7 +4582,8 @@ literal|2
 condition|)
 name|die
 argument_list|(
-literal|"bad pack.indexversion=%d"
+literal|"bad pack.indexversion=%"
+name|PRIu32
 argument_list|,
 name|pack_idx_default_version
 argument_list|)

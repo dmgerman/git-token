@@ -268,7 +268,11 @@ condition|)
 continue|continue;
 name|printf
 argument_list|(
-literal|"chain length = %d: %d object%s\n"
+literal|"chain length = %"
+name|PRIu32
+literal|": %"
+name|PRIu32
+literal|" object%s\n"
 argument_list|,
 name|i
 argument_list|,
@@ -299,7 +303,9 @@ index|]
 condition|)
 name|printf
 argument_list|(
-literal|"chain length> %d: %d object%s\n"
+literal|"chain length> %d: %"
+name|PRIu32
+literal|" object%s\n"
 argument_list|,
 name|MAX_CHAIN
 argument_list|,

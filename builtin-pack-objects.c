@@ -3121,7 +3121,10 @@ name|nr_result
 condition|)
 name|die
 argument_list|(
-literal|"wrote %u objects while expecting %u"
+literal|"wrote %"
+name|PRIu32
+literal|" objects while expecting %"
+name|PRIu32
 argument_list|,
 name|written
 argument_list|,
@@ -3173,7 +3176,11 @@ name|j
 condition|)
 name|die
 argument_list|(
-literal|"wrote %u objects as expected but %u unwritten"
+literal|"wrote %"
+name|PRIu32
+literal|" objects as expected but %"
+name|PRIu32
+literal|" unwritten"
 argument_list|,
 name|written
 argument_list|,
@@ -8650,9 +8657,10 @@ decl_stmt|;
 name|uint32_t
 name|i
 decl_stmt|,
-name|n
-decl_stmt|,
 name|nr_deltas
+decl_stmt|;
+name|unsigned
+name|n
 decl_stmt|;
 name|get_object_details
 argument_list|()
@@ -9124,7 +9132,8 @@ literal|2
 condition|)
 name|die
 argument_list|(
-literal|"bad pack.indexversion=%d"
+literal|"bad pack.indexversion=%"
+name|PRIu32
 argument_list|,
 name|pack_idx_default_version
 argument_list|)
@@ -11429,7 +11438,16 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Total %u (delta %u), reused %u (delta %u)\n"
+literal|"Total %"
+name|PRIu32
+literal|" (delta %"
+name|PRIu32
+literal|"),"
+literal|" reused %"
+name|PRIu32
+literal|" (delta %"
+name|PRIu32
+literal|")\n"
 argument_list|,
 name|written
 argument_list|,

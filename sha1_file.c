@@ -3188,7 +3188,8 @@ expr_stmt|;
 return|return
 name|error
 argument_list|(
-literal|"index file %s is version %d"
+literal|"index file %s is version %"
+name|PRIu32
 literal|" and is not supported by this binary"
 literal|" (try upgrading GIT to a newer version)"
 argument_list|,
@@ -4251,8 +4252,10 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"packfile %s is version %u and not supported"
-literal|" (try upgrading GIT to a newer version)"
+literal|"packfile %s is version %"
+name|PRIu32
+literal|" and not"
+literal|" supported (try upgrading GIT to a newer version)"
 argument_list|,
 name|p
 operator|->
@@ -4283,8 +4286,12 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"packfile %s claims to have %u objects"
-literal|" while index indicates %u objects"
+literal|"packfile %s claims to have %"
+name|PRIu32
+literal|" objects"
+literal|" while index indicates %"
+name|PRIu32
+literal|" objects"
 argument_list|,
 name|p
 operator|->
@@ -9896,7 +9903,9 @@ name|debug_lookup
 condition|)
 name|printf
 argument_list|(
-literal|"%02x%02x%02x... lo %u hi %u nr %u\n"
+literal|"%02x%02x%02x... lo %u hi %u nr %"
+name|PRIu32
+literal|"\n"
 argument_list|,
 name|sha1
 index|[

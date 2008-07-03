@@ -2044,7 +2044,10 @@ argument_list|(
 name|hdr_arg
 argument_list|)
 argument_list|,
-literal|"--pack_header=%u,%u"
+literal|"--pack_header=%"
+name|PRIu32
+literal|",%"
+name|PRIu32
 argument_list|,
 name|ntohl
 argument_list|(

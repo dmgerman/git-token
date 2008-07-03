@@ -622,7 +622,9 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"blob\nmark :%d\ndata %lu\n"
+literal|"blob\nmark :%"
+name|PRIu32
+literal|"\ndata %lu\n"
 argument_list|,
 name|last_idnum
 argument_list|,
@@ -1208,7 +1210,9 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"commit %s\nmark :%d\n%.*s\n%.*s\ndata %u\n%s"
+literal|"commit %s\nmark :%"
+name|PRIu32
+literal|"\n%.*s\n%.*s\ndata %u\n%s"
 argument_list|,
 operator|(
 specifier|const
