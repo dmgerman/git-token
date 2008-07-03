@@ -2196,17 +2196,12 @@ name|idnums
 operator|.
 name|size
 condition|;
-operator|++
 name|i
+operator|++
 control|)
 block|{
-name|deco
-operator|++
-expr_stmt|;
 if|if
 condition|(
-name|deco
-operator|&&
 name|deco
 operator|->
 name|base
@@ -2248,6 +2243,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|deco
+operator|++
+expr_stmt|;
 block|}
 if|if
 condition|(
@@ -2384,7 +2382,7 @@ expr_stmt|;
 operator|*
 name|line_end
 operator|=
-literal|0
+literal|'\0'
 expr_stmt|;
 name|mark
 operator|=
