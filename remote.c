@@ -7290,6 +7290,21 @@ operator|)
 operator|++
 expr_stmt|;
 block|}
+comment|/* clear object flags smudged by the above traversal */
+name|clear_commit_marks
+argument_list|(
+name|ours
+argument_list|,
+name|ALL_REV_FLAGS
+argument_list|)
+expr_stmt|;
+name|clear_commit_marks
+argument_list|(
+name|theirs
+argument_list|,
+name|ALL_REV_FLAGS
+argument_list|)
+expr_stmt|;
 return|return
 literal|1
 return|;
