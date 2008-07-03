@@ -285,10 +285,25 @@ name|int
 name|out
 decl_stmt|;
 comment|/* caller reads from here and closes it */
+ifndef|#
+directive|ifndef
+name|__MINGW32__
 DECL|member|pid
 name|pid_t
 name|pid
 decl_stmt|;
+else|#
+directive|else
+DECL|member|tid
+name|HANDLE
+name|tid
+decl_stmt|;
+DECL|member|fd_for_proc
+name|int
+name|fd_for_proc
+decl_stmt|;
+endif|#
+directive|endif
 block|}
 struct|;
 end_struct

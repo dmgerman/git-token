@@ -2765,6 +2765,12 @@ expr_stmt|;
 if|if
 condition|(
 name|path
+operator|&&
+operator|!
+name|has_dos_drive_prefix
+argument_list|(
+name|end
+argument_list|)
 condition|)
 block|{
 if|if

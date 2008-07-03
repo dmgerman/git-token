@@ -130,11 +130,16 @@ name|f
 argument_list|)
 condition|)
 block|{
+comment|/* 		 * On Windows, EPIPE is returned only by the first write() 		 * after the reading end has closed its handle; subsequent 		 * write()s return EINVAL. 		 */
 if|if
 condition|(
 name|errno
 operator|==
 name|EPIPE
+operator|||
+name|errno
+operator|==
+name|EINVAL
 condition|)
 name|exit
 argument_list|(
