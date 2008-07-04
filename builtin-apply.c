@@ -4551,7 +4551,7 @@ continue|continue;
 case|case
 literal|'\\'
 case|:
-break|break;
+continue|continue;
 case|case
 literal|'@'
 case|:
