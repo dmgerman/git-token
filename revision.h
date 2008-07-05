@@ -515,6 +515,18 @@ begin_comment
 comment|/* revision.c */
 end_comment
 
+begin_function_decl
+name|void
+name|read_revisions_from_stdin
+parameter_list|(
+name|struct
+name|rev_info
+modifier|*
+name|revs
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_typedef
 DECL|typedef|show_early_output_fn_t
 typedef|typedef
