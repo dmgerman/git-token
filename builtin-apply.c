@@ -15622,7 +15622,7 @@ name|prefixcmp
 argument_list|(
 name|arg
 argument_list|,
-literal|"--root="
+literal|"--directory="
 argument_list|)
 condition|)
 block|{
@@ -15630,7 +15630,7 @@ name|arg
 operator|+=
 name|strlen
 argument_list|(
-literal|"--root="
+literal|"--directory="
 argument_list|)
 expr_stmt|;
 name|root_len
