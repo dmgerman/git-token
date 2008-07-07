@@ -2249,15 +2249,6 @@ name|git_dir
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-literal|"Initialize %s\n"
-argument_list|,
-name|git_dir
-argument_list|)
-expr_stmt|;
 name|init_db
 argument_list|(
 name|option_template
