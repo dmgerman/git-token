@@ -483,6 +483,11 @@ name|reflog_walk_info
 modifier|*
 name|reflog_info
 decl_stmt|;
+DECL|member|children
+name|struct
+name|decoration
+name|children
+decl_stmt|;
 block|}
 struct|;
 end_struct
