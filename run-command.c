@@ -339,6 +339,15 @@ literal|0
 index|]
 expr_stmt|;
 block|}
+name|trace_argv_printf
+argument_list|(
+name|cmd
+operator|->
+name|argv
+argument_list|,
+literal|"trace: run_command:"
+argument_list|)
+expr_stmt|;
 name|cmd
 operator|->
 name|pid
