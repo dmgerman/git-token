@@ -101,6 +101,11 @@ DECL|enumerator|PARSE_OPT_HIDDEN
 name|PARSE_OPT_HIDDEN
 init|=
 literal|8
+block|,
+DECL|enumerator|PARSE_OPT_LASTARG_DEFAULT
+name|PARSE_OPT_LASTARG_DEFAULT
+init|=
+literal|16
 block|, }
 enum|;
 end_enum
