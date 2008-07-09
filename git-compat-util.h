@@ -633,6 +633,29 @@ endif|#
 directive|endif
 end_endif
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|NO_OPENSSL
+end_ifndef
+
+begin_include
+include|#
+directive|include
+file|<openssl/ssl.h>
+end_include
+
+begin_include
+include|#
+directive|include
+file|<openssl/err.h>
+end_include
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_comment
 comment|/* On most systems<limits.h> would have given us this, but  * not on some systems (e.g. GNU/Hurd).  */
 end_comment
