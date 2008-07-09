@@ -29,9 +29,8 @@ endif|#
 directive|endif
 end_endif
 
-begin_typedef
+begin_struct
 DECL|struct|store_conf
-typedef|typedef
 struct|struct
 name|store_conf
 block|{
@@ -73,15 +72,12 @@ name|trash_only_new
 range|:
 literal|1
 decl_stmt|;
-DECL|typedef|store_conf_t
 block|}
-name|store_conf_t
-typedef|;
-end_typedef
+struct|;
+end_struct
 
-begin_typedef
+begin_struct
 DECL|struct|string_list
-typedef|typedef
 struct|struct
 name|string_list
 block|{
@@ -98,15 +94,12 @@ index|[
 literal|1
 index|]
 decl_stmt|;
-DECL|typedef|string_list_t
 block|}
-name|string_list_t
-typedef|;
-end_typedef
+struct|;
+end_struct
 
-begin_typedef
+begin_struct
 DECL|struct|channel_conf
-typedef|typedef
 struct|struct
 name|channel_conf
 block|{
@@ -123,7 +116,8 @@ name|name
 decl_stmt|;
 DECL|member|master
 DECL|member|slave
-name|store_conf_t
+name|struct
+name|store_conf
 modifier|*
 name|master
 decl_stmt|,
@@ -145,7 +139,8 @@ modifier|*
 name|sync_state
 decl_stmt|;
 DECL|member|patterns
-name|string_list_t
+name|struct
+name|string_list
 modifier|*
 name|patterns
 decl_stmt|;
@@ -161,15 +156,12 @@ name|unsigned
 name|max_messages
 decl_stmt|;
 comment|/* for slave only */
-DECL|typedef|channel_conf_t
 block|}
-name|channel_conf_t
-typedef|;
-end_typedef
+struct|;
+end_struct
 
-begin_typedef
+begin_struct
 DECL|struct|group_conf
-typedef|typedef
 struct|struct
 name|group_conf
 block|{
@@ -185,15 +177,14 @@ modifier|*
 name|name
 decl_stmt|;
 DECL|member|channels
-name|string_list_t
+name|struct
+name|string_list
 modifier|*
 name|channels
 decl_stmt|;
-DECL|typedef|group_conf_t
 block|}
-name|group_conf_t
-typedef|;
-end_typedef
+struct|;
+end_struct
 
 begin_comment
 comment|/* For message->status */
@@ -238,9 +229,8 @@ DECL|macro|M_FLAGS
 comment|/* flags fetched */
 end_comment
 
-begin_typedef
+begin_struct
 DECL|struct|message
-typedef|typedef
 struct|struct
 name|message
 block|{
@@ -250,7 +240,7 @@ name|message
 modifier|*
 name|next
 decl_stmt|;
-comment|/* string_list_t *keywords; */
+comment|/* struct string_list *keywords; */
 DECL|member|size
 name|size_t
 name|size
@@ -268,20 +258,18 @@ name|flags
 decl_stmt|,
 name|status
 decl_stmt|;
-DECL|typedef|message_t
 block|}
-name|message_t
-typedef|;
-end_typedef
+struct|;
+end_struct
 
-begin_typedef
+begin_struct
 DECL|struct|store
-typedef|typedef
 struct|struct
 name|store
 block|{
 DECL|member|conf
-name|store_conf_t
+name|struct
+name|store_conf
 modifier|*
 name|conf
 decl_stmt|;
@@ -301,7 +289,8 @@ name|path
 decl_stmt|;
 comment|/* own */
 DECL|member|msgs
-name|message_t
+name|struct
+name|message
 modifier|*
 name|msgs
 decl_stmt|;
@@ -327,15 +316,14 @@ name|int
 name|recent
 decl_stmt|;
 comment|/* # of recent messages - don't trust this beyond the initial read */
-DECL|typedef|store_t
 block|}
-name|store_t
-typedef|;
-end_typedef
+struct|;
+end_struct
 
-begin_typedef
-typedef|typedef
+begin_struct
+DECL|struct|msg_data
 struct|struct
+name|msg_data
 block|{
 DECL|member|data
 name|char
@@ -358,11 +346,9 @@ name|crlf
 range|:
 literal|1
 decl_stmt|;
-DECL|typedef|msg_data_t
 block|}
-name|msg_data_t
-typedef|;
-end_typedef
+struct|;
+end_struct
 
 begin_define
 DECL|macro|DRV_OK
@@ -453,7 +439,8 @@ specifier|static
 name|void
 name|free_generic_messages
 parameter_list|(
-name|message_t
+name|struct
+name|message
 modifier|*
 parameter_list|)
 function_decl|;
@@ -588,9 +575,8 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
-begin_typedef
+begin_struct
 DECL|struct|imap_server_conf
-typedef|typedef
 struct|struct
 name|imap_server_conf
 block|{
@@ -631,24 +617,23 @@ DECL|member|ssl_verify
 name|int
 name|ssl_verify
 decl_stmt|;
-DECL|typedef|imap_server_conf_t
 block|}
-name|imap_server_conf_t
-typedef|;
-end_typedef
+struct|;
+end_struct
 
-begin_typedef
+begin_struct
 DECL|struct|imap_store_conf
-typedef|typedef
 struct|struct
 name|imap_store_conf
 block|{
 DECL|member|gen
-name|store_conf_t
+name|struct
+name|store_conf
 name|gen
 decl_stmt|;
 DECL|member|server
-name|imap_server_conf_t
+name|struct
+name|imap_server_conf
 modifier|*
 name|server
 decl_stmt|;
@@ -658,18 +643,16 @@ name|use_namespace
 range|:
 literal|1
 decl_stmt|;
-DECL|typedef|imap_store_conf_t
 block|}
-name|imap_store_conf_t
-typedef|;
-end_typedef
+struct|;
+end_struct
 
 begin_define
 DECL|macro|NIL
 define|#
 directive|define
 name|NIL
-value|(void*)0x1
+value|(void *)0x1
 end_define
 
 begin_define
@@ -677,19 +660,18 @@ DECL|macro|LIST
 define|#
 directive|define
 name|LIST
-value|(void*)0x2
+value|(void *)0x2
 end_define
 
-begin_typedef
-DECL|struct|_list
-typedef|typedef
+begin_struct
+DECL|struct|imap_list
 struct|struct
-name|_list
+name|imap_list
 block|{
 DECL|member|next
 DECL|member|child
 name|struct
-name|_list
+name|imap_list
 modifier|*
 name|next
 decl_stmt|,
@@ -705,15 +687,14 @@ DECL|member|len
 name|int
 name|len
 decl_stmt|;
-DECL|typedef|list_t
 block|}
-name|list_t
-typedef|;
-end_typedef
+struct|;
+end_struct
 
-begin_typedef
-typedef|typedef
+begin_struct
+DECL|struct|imap_socket
 struct|struct
+name|imap_socket
 block|{
 DECL|member|fd
 name|int
@@ -724,18 +705,18 @@ name|SSL
 modifier|*
 name|ssl
 decl_stmt|;
-DECL|typedef|Socket_t
 block|}
-name|Socket_t
-typedef|;
-end_typedef
+struct|;
+end_struct
 
-begin_typedef
-typedef|typedef
+begin_struct
+DECL|struct|imap_buffer
 struct|struct
+name|imap_buffer
 block|{
 DECL|member|sock
-name|Socket_t
+name|struct
+name|imap_socket
 name|sock
 decl_stmt|;
 DECL|member|bytes
@@ -753,11 +734,9 @@ index|[
 literal|1024
 index|]
 decl_stmt|;
-DECL|typedef|buffer_t
 block|}
-name|buffer_t
-typedef|;
-end_typedef
+struct|;
+end_struct
 
 begin_struct_decl
 struct_decl|struct
@@ -765,9 +744,8 @@ name|imap_cmd
 struct_decl|;
 end_struct_decl
 
-begin_typedef
+begin_struct
 DECL|struct|imap
-typedef|typedef
 struct|struct
 name|imap
 block|{
@@ -779,7 +757,8 @@ comment|/* from SELECT responses */
 DECL|member|ns_personal
 DECL|member|ns_other
 DECL|member|ns_shared
-name|list_t
+name|struct
+name|imap_list
 modifier|*
 name|ns_personal
 decl_stmt|,
@@ -821,24 +800,23 @@ modifier|*
 name|in_progress_append
 decl_stmt|;
 DECL|member|buf
-name|buffer_t
+name|struct
+name|imap_buffer
 name|buf
 decl_stmt|;
 comment|/* this is BIG, so put it last */
-DECL|typedef|imap_t
 block|}
-name|imap_t
-typedef|;
-end_typedef
+struct|;
+end_struct
 
-begin_typedef
+begin_struct
 DECL|struct|imap_store
-typedef|typedef
 struct|struct
 name|imap_store
 block|{
 DECL|member|gen
-name|store_t
+name|struct
+name|store
 name|gen
 decl_stmt|;
 DECL|member|uidvalidity
@@ -846,7 +824,8 @@ name|int
 name|uidvalidity
 decl_stmt|;
 DECL|member|imap
-name|imap_t
+name|struct
+name|imap
 modifier|*
 name|imap
 decl_stmt|;
@@ -863,11 +842,9 @@ name|trashnc
 range|:
 literal|1
 decl_stmt|;
-DECL|typedef|imap_store_t
 block|}
-name|imap_store_t
-typedef|;
-end_typedef
+struct|;
+end_struct
 
 begin_struct
 DECL|struct|imap_cmd_cb
@@ -881,7 +858,8 @@ modifier|*
 name|cont
 function_decl|)
 parameter_list|(
-name|imap_store_t
+name|struct
+name|imap_store
 modifier|*
 name|ctx
 parameter_list|,
@@ -903,7 +881,8 @@ modifier|*
 name|done
 function_decl|)
 parameter_list|(
-name|imap_store_t
+name|struct
+name|imap_store
 modifier|*
 name|ctx
 parameter_list|,
@@ -1066,7 +1045,8 @@ specifier|static
 name|int
 name|get_cmd_result
 parameter_list|(
-name|imap_store_t
+name|struct
+name|imap_store
 modifier|*
 name|ctx
 parameter_list|,
@@ -1155,7 +1135,8 @@ name|char
 modifier|*
 name|func
 parameter_list|,
-name|Socket_t
+name|struct
+name|imap_socket
 modifier|*
 name|sock
 parameter_list|,
@@ -1247,7 +1228,8 @@ specifier|static
 name|int
 name|ssl_socket_connect
 parameter_list|(
-name|Socket_t
+name|struct
+name|imap_socket
 modifier|*
 name|sock
 parameter_list|,
@@ -1457,7 +1439,8 @@ specifier|static
 name|int
 name|socket_read
 parameter_list|(
-name|Socket_t
+name|struct
+name|imap_socket
 modifier|*
 name|sock
 parameter_list|,
@@ -1553,7 +1536,8 @@ specifier|static
 name|int
 name|socket_write
 parameter_list|(
-name|Socket_t
+name|struct
+name|imap_socket
 modifier|*
 name|sock
 parameter_list|,
@@ -1650,7 +1634,8 @@ specifier|static
 name|void
 name|socket_shutdown
 parameter_list|(
-name|Socket_t
+name|struct
+name|imap_socket
 modifier|*
 name|sock
 parameter_list|)
@@ -1702,7 +1687,8 @@ specifier|static
 name|int
 name|buffer_gets
 parameter_list|(
-name|buffer_t
+name|struct
+name|imap_buffer
 modifier|*
 name|b
 parameter_list|,
@@ -2223,12 +2209,14 @@ specifier|static
 name|void
 name|free_generic_messages
 parameter_list|(
-name|message_t
+name|struct
+name|message
 modifier|*
 name|msgs
 parameter_list|)
 block|{
-name|message_t
+name|struct
+name|message
 modifier|*
 name|tmsg
 decl_stmt|;
@@ -2666,7 +2654,8 @@ name|imap_cmd
 modifier|*
 name|v_issue_imap_cmd
 parameter_list|(
-name|imap_store_t
+name|struct
+name|imap_store
 modifier|*
 name|ctx
 parameter_list|,
@@ -2684,7 +2673,8 @@ name|va_list
 name|ap
 parameter_list|)
 block|{
-name|imap_t
+name|struct
+name|imap
 modifier|*
 name|imap
 init|=
@@ -3092,7 +3082,8 @@ name|imap_cmd
 modifier|*
 name|issue_imap_cmd
 parameter_list|(
-name|imap_store_t
+name|struct
+name|imap_store
 modifier|*
 name|ctx
 parameter_list|,
@@ -3154,7 +3145,8 @@ specifier|static
 name|int
 name|imap_exec
 parameter_list|(
-name|imap_store_t
+name|struct
+name|imap_store
 modifier|*
 name|ctx
 parameter_list|,
@@ -3229,7 +3221,8 @@ specifier|static
 name|int
 name|imap_exec_m
 parameter_list|(
-name|imap_store_t
+name|struct
+name|imap_store
 modifier|*
 name|ctx
 parameter_list|,
@@ -3323,7 +3316,8 @@ specifier|static
 name|int
 name|is_atom
 parameter_list|(
-name|list_t
+name|struct
+name|imap_list
 modifier|*
 name|list
 parameter_list|)
@@ -3356,7 +3350,8 @@ specifier|static
 name|int
 name|is_list
 parameter_list|(
-name|list_t
+name|struct
+name|imap_list
 modifier|*
 name|list
 parameter_list|)
@@ -3379,12 +3374,14 @@ specifier|static
 name|void
 name|free_list
 parameter_list|(
-name|list_t
+name|struct
+name|imap_list
 modifier|*
 name|list
 parameter_list|)
 block|{
-name|list_t
+name|struct
+name|imap_list
 modifier|*
 name|tmp
 decl_stmt|;
@@ -3448,7 +3445,8 @@ specifier|static
 name|int
 name|parse_imap_list_l
 parameter_list|(
-name|imap_t
+name|struct
+name|imap
 modifier|*
 name|imap
 parameter_list|,
@@ -3457,7 +3455,8 @@ modifier|*
 modifier|*
 name|sp
 parameter_list|,
-name|list_t
+name|struct
+name|imap_list
 modifier|*
 modifier|*
 name|curp
@@ -3466,7 +3465,8 @@ name|int
 name|level
 parameter_list|)
 block|{
-name|list_t
+name|struct
+name|imap_list
 modifier|*
 name|cur
 decl_stmt|;
@@ -3889,16 +3889,13 @@ argument_list|,
 literal|3
 argument_list|)
 condition|)
-block|{
 name|cur
 operator|->
 name|val
 operator|=
 name|NIL
 expr_stmt|;
-block|}
 else|else
-block|{
 name|cur
 operator|->
 name|val
@@ -3912,7 +3909,6 @@ operator|->
 name|len
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 if|if
 condition|(
@@ -3960,11 +3956,13 @@ end_function
 begin_function
 DECL|function|parse_imap_list
 specifier|static
-name|list_t
+name|struct
+name|imap_list
 modifier|*
 name|parse_imap_list
 parameter_list|(
-name|imap_t
+name|struct
+name|imap
 modifier|*
 name|imap
 parameter_list|,
@@ -3974,7 +3972,8 @@ modifier|*
 name|sp
 parameter_list|)
 block|{
-name|list_t
+name|struct
+name|imap_list
 modifier|*
 name|head
 decl_stmt|;
@@ -4010,7 +4009,8 @@ end_function
 begin_function
 DECL|function|parse_list
 specifier|static
-name|list_t
+name|struct
+name|imap_list
 modifier|*
 name|parse_list
 parameter_list|(
@@ -4037,7 +4037,8 @@ specifier|static
 name|void
 name|parse_capability
 parameter_list|(
-name|imap_t
+name|struct
+name|imap
 modifier|*
 name|imap
 parameter_list|,
@@ -4125,7 +4126,8 @@ specifier|static
 name|int
 name|parse_response_code
 parameter_list|(
-name|imap_store_t
+name|struct
+name|imap_store
 modifier|*
 name|ctx
 parameter_list|,
@@ -4139,7 +4141,8 @@ modifier|*
 name|s
 parameter_list|)
 block|{
-name|imap_t
+name|struct
+name|imap
 modifier|*
 name|imap
 init|=
@@ -4467,7 +4470,8 @@ specifier|static
 name|int
 name|get_cmd_result
 parameter_list|(
-name|imap_store_t
+name|struct
+name|imap_store
 modifier|*
 name|ctx
 parameter_list|,
@@ -4477,7 +4481,8 @@ modifier|*
 name|tcmd
 parameter_list|)
 block|{
-name|imap_t
+name|struct
+name|imap
 modifier|*
 name|imap
 init|=
@@ -5410,12 +5415,14 @@ specifier|static
 name|void
 name|imap_close_server
 parameter_list|(
-name|imap_store_t
+name|struct
+name|imap_store
 modifier|*
 name|ictx
 parameter_list|)
 block|{
-name|imap_t
+name|struct
+name|imap
 modifier|*
 name|imap
 init|=
@@ -5492,7 +5499,8 @@ specifier|static
 name|void
 name|imap_close_store
 parameter_list|(
-name|store_t
+name|struct
+name|store
 modifier|*
 name|ctx
 parameter_list|)
@@ -5500,7 +5508,8 @@ block|{
 name|imap_close_server
 argument_list|(
 operator|(
-name|imap_store_t
+expr|struct
+name|imap_store
 operator|*
 operator|)
 name|ctx
@@ -5524,20 +5533,24 @@ end_function
 begin_function
 DECL|function|imap_open_store
 specifier|static
-name|store_t
+name|struct
+name|store
 modifier|*
 name|imap_open_store
 parameter_list|(
-name|imap_server_conf_t
+name|struct
+name|imap_server_conf
 modifier|*
 name|srvc
 parameter_list|)
 block|{
-name|imap_store_t
+name|struct
+name|imap_store
 modifier|*
 name|ctx
 decl_stmt|;
-name|imap_t
+name|struct
+name|imap
 modifier|*
 name|imap
 decl_stmt|;
@@ -6414,7 +6427,8 @@ literal|1
 expr_stmt|;
 return|return
 operator|(
-name|store_t
+expr|struct
+name|store
 operator|*
 operator|)
 name|ctx
@@ -6564,11 +6578,13 @@ specifier|static
 name|int
 name|imap_store_msg
 parameter_list|(
-name|store_t
+name|struct
+name|store
 modifier|*
 name|gctx
 parameter_list|,
-name|msg_data_t
+name|struct
+name|msg_data
 modifier|*
 name|data
 parameter_list|,
@@ -6577,17 +6593,20 @@ modifier|*
 name|uid
 parameter_list|)
 block|{
-name|imap_store_t
+name|struct
+name|imap_store
 modifier|*
 name|ctx
 init|=
 operator|(
-name|imap_store_t
+expr|struct
+name|imap_store
 operator|*
 operator|)
 name|gctx
 decl_stmt|;
-name|imap_t
+name|struct
+name|imap
 modifier|*
 name|imap
 init|=
@@ -7287,7 +7306,8 @@ name|FILE
 modifier|*
 name|f
 parameter_list|,
-name|msg_data_t
+name|struct
+name|msg_data
 modifier|*
 name|msg
 parameter_list|)
@@ -7378,7 +7398,8 @@ specifier|static
 name|int
 name|count_messages
 parameter_list|(
-name|msg_data_t
+name|struct
+name|msg_data
 modifier|*
 name|msg
 parameter_list|)
@@ -7453,11 +7474,13 @@ specifier|static
 name|int
 name|split_msg
 parameter_list|(
-name|msg_data_t
+name|struct
+name|msg_data
 modifier|*
 name|all_msgs
 parameter_list|,
-name|msg_data_t
+name|struct
+name|msg_data
 modifier|*
 name|msg
 parameter_list|,
@@ -7632,7 +7655,8 @@ end_function
 begin_decl_stmt
 DECL|variable|server
 specifier|static
-name|imap_server_conf_t
+name|struct
+name|imap_server_conf
 name|server
 init|=
 block|{
@@ -7951,12 +7975,14 @@ modifier|*
 name|argv
 parameter_list|)
 block|{
-name|msg_data_t
+name|struct
+name|msg_data
 name|all_msgs
 decl_stmt|,
 name|msg
 decl_stmt|;
-name|store_t
+name|struct
+name|store
 modifier|*
 name|ctx
 init|=
