@@ -1145,9 +1145,9 @@ directive|endif
 end_endif
 
 begin_function
+DECL|function|socket_perror
 specifier|static
 name|void
-DECL|function|socket_perror
 name|socket_perror
 parameter_list|(
 specifier|const
@@ -1452,9 +1452,9 @@ block|}
 end_function
 
 begin_function
+DECL|function|socket_read
 specifier|static
 name|int
-DECL|function|socket_read
 name|socket_read
 parameter_list|(
 name|Socket_t
@@ -1548,9 +1548,9 @@ block|}
 end_function
 
 begin_function
+DECL|function|socket_write
 specifier|static
 name|int
-DECL|function|socket_write
 name|socket_write
 parameter_list|(
 name|Socket_t
@@ -1697,9 +1697,9 @@ comment|/* simple line buffering */
 end_comment
 
 begin_function
+DECL|function|buffer_gets
 specifier|static
 name|int
-DECL|function|buffer_gets
 name|buffer_gets
 parameter_list|(
 name|buffer_t
@@ -1951,9 +1951,9 @@ block|}
 end_function
 
 begin_function
+DECL|function|imap_info
 specifier|static
 name|void
-DECL|function|imap_info
 name|imap_info
 parameter_list|(
 specifier|const
@@ -2002,9 +2002,9 @@ block|}
 end_function
 
 begin_function
+DECL|function|imap_warn
 specifier|static
 name|void
-DECL|function|imap_warn
 name|imap_warn
 parameter_list|(
 specifier|const
@@ -2051,10 +2051,10 @@ block|}
 end_function
 
 begin_function
+DECL|function|next_arg
 specifier|static
 name|char
 modifier|*
-DECL|function|next_arg
 name|next_arg
 parameter_list|(
 name|char
@@ -2218,9 +2218,9 @@ block|}
 end_function
 
 begin_function
+DECL|function|free_generic_messages
 specifier|static
 name|void
-DECL|function|free_generic_messages
 name|free_generic_messages
 parameter_list|(
 name|message_t
@@ -2258,9 +2258,9 @@ block|}
 end_function
 
 begin_function
+DECL|function|nfsnprintf
 specifier|static
 name|int
-DECL|function|nfsnprintf
 name|nfsnprintf
 parameter_list|(
 name|char
@@ -2361,9 +2361,9 @@ struct|;
 end_struct
 
 begin_function
+DECL|function|arc4_init
 specifier|static
 name|void
-DECL|function|arc4_init
 name|arc4_init
 parameter_list|(
 name|void
@@ -2571,10 +2571,10 @@ block|}
 end_function
 
 begin_function
+DECL|function|arc4_getbyte
 specifier|static
 name|unsigned
 name|char
-DECL|function|arc4_getbyte
 name|arc4_getbyte
 parameter_list|(
 name|void
@@ -2659,11 +2659,11 @@ block|}
 end_function
 
 begin_function
+DECL|function|v_issue_imap_cmd
 specifier|static
 name|struct
 name|imap_cmd
 modifier|*
-DECL|function|v_issue_imap_cmd
 name|v_issue_imap_cmd
 parameter_list|(
 name|imap_store_t
@@ -3085,11 +3085,11 @@ block|}
 end_function
 
 begin_function
+DECL|function|issue_imap_cmd
 specifier|static
 name|struct
 name|imap_cmd
 modifier|*
-DECL|function|issue_imap_cmd
 name|issue_imap_cmd
 parameter_list|(
 name|imap_store_t
@@ -3149,9 +3149,9 @@ block|}
 end_function
 
 begin_function
+DECL|function|imap_exec
 specifier|static
 name|int
-DECL|function|imap_exec
 name|imap_exec
 parameter_list|(
 name|imap_store_t
@@ -3224,9 +3224,9 @@ block|}
 end_function
 
 begin_function
+DECL|function|imap_exec_m
 specifier|static
 name|int
-DECL|function|imap_exec_m
 name|imap_exec_m
 parameter_list|(
 name|imap_store_t
@@ -3318,9 +3318,9 @@ block|}
 end_function
 
 begin_function
+DECL|function|is_atom
 specifier|static
 name|int
-DECL|function|is_atom
 name|is_atom
 parameter_list|(
 name|list_t
@@ -3351,9 +3351,9 @@ block|}
 end_function
 
 begin_function
+DECL|function|is_list
 specifier|static
 name|int
-DECL|function|is_list
 name|is_list
 parameter_list|(
 name|list_t
@@ -3374,9 +3374,9 @@ block|}
 end_function
 
 begin_function
+DECL|function|free_list
 specifier|static
 name|void
-DECL|function|free_list
 name|free_list
 parameter_list|(
 name|list_t
@@ -3443,9 +3443,9 @@ block|}
 end_function
 
 begin_function
+DECL|function|parse_imap_list_l
 specifier|static
 name|int
-DECL|function|parse_imap_list_l
 name|parse_imap_list_l
 parameter_list|(
 name|imap_t
@@ -3958,10 +3958,10 @@ block|}
 end_function
 
 begin_function
+DECL|function|parse_imap_list
 specifier|static
 name|list_t
 modifier|*
-DECL|function|parse_imap_list
 name|parse_imap_list
 parameter_list|(
 name|imap_t
@@ -4008,10 +4008,10 @@ block|}
 end_function
 
 begin_function
+DECL|function|parse_list
 specifier|static
 name|list_t
 modifier|*
-DECL|function|parse_list
 name|parse_list
 parameter_list|(
 name|char
@@ -4032,9 +4032,9 @@ block|}
 end_function
 
 begin_function
+DECL|function|parse_capability
 specifier|static
 name|void
-DECL|function|parse_capability
 name|parse_capability
 parameter_list|(
 name|imap_t
@@ -4120,9 +4120,9 @@ block|}
 end_function
 
 begin_function
+DECL|function|parse_response_code
 specifier|static
 name|int
-DECL|function|parse_response_code
 name|parse_response_code
 parameter_list|(
 name|imap_store_t
@@ -4462,9 +4462,9 @@ block|}
 end_function
 
 begin_function
+DECL|function|get_cmd_result
 specifier|static
 name|int
-DECL|function|get_cmd_result
 name|get_cmd_result
 parameter_list|(
 name|imap_store_t
@@ -5280,7 +5280,7 @@ name|RESP_NO
 expr_stmt|;
 block|}
 else|else
-comment|/*if (!strcmp( "BAD", arg ))*/
+comment|/*if (!strcmp("BAD", arg))*/
 name|resp
 operator|=
 name|RESP_BAD
@@ -5405,9 +5405,9 @@ block|}
 end_function
 
 begin_function
+DECL|function|imap_close_server
 specifier|static
 name|void
-DECL|function|imap_close_server
 name|imap_close_server
 parameter_list|(
 name|imap_store_t
@@ -5487,9 +5487,9 @@ block|}
 end_function
 
 begin_function
+DECL|function|imap_close_store
 specifier|static
 name|void
-DECL|function|imap_close_store
 name|imap_close_store
 parameter_list|(
 name|store_t
@@ -5522,10 +5522,10 @@ block|}
 end_function
 
 begin_function
+DECL|function|imap_open_store
 specifier|static
 name|store_t
 modifier|*
-DECL|function|imap_open_store
 name|imap_open_store
 parameter_list|(
 name|imap_server_conf_t
@@ -6436,9 +6436,9 @@ block|}
 end_function
 
 begin_function
+DECL|function|imap_make_flags
 specifier|static
 name|int
-DECL|function|imap_make_flags
 name|imap_make_flags
 parameter_list|(
 name|int
@@ -6559,9 +6559,9 @@ value|8
 end_define
 
 begin_function
+DECL|function|imap_store_msg
 specifier|static
 name|int
-DECL|function|imap_store_msg
 name|imap_store_msg
 parameter_list|(
 name|store_t
@@ -7278,9 +7278,9 @@ value|0x1000
 end_define
 
 begin_function
+DECL|function|read_message
 specifier|static
 name|int
-DECL|function|read_message
 name|read_message
 parameter_list|(
 name|FILE
@@ -7373,9 +7373,9 @@ block|}
 end_function
 
 begin_function
+DECL|function|count_messages
 specifier|static
 name|int
-DECL|function|count_messages
 name|count_messages
 parameter_list|(
 name|msg_data_t
@@ -7448,9 +7448,9 @@ block|}
 end_function
 
 begin_function
+DECL|function|split_msg
 specifier|static
 name|int
-DECL|function|split_msg
 name|split_msg
 parameter_list|(
 name|msg_data_t
@@ -7674,9 +7674,9 @@ decl_stmt|;
 end_decl_stmt
 
 begin_function
+DECL|function|git_imap_config
 specifier|static
 name|int
-DECL|function|git_imap_config
 name|git_imap_config
 parameter_list|(
 specifier|const
@@ -7938,8 +7938,8 @@ block|}
 end_function
 
 begin_function
-name|int
 DECL|function|main
+name|int
 name|main
 parameter_list|(
 name|int
