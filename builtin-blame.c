@@ -118,7 +118,7 @@ name|blame_usage
 block|,
 literal|""
 block|,
-literal|"[rev-opts] are documented in git-rev-parse(1)"
+literal|"[rev-opts] are documented in git-rev-list(1)"
 block|,
 name|NULL
 block|}
