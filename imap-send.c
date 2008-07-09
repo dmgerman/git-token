@@ -7383,9 +7383,18 @@ name|n
 init|=
 literal|0
 decl_stmt|;
+name|int
+name|nongit_ok
+decl_stmt|;
 comment|/* init the random number generator */
 name|arc4_init
 argument_list|()
+expr_stmt|;
+name|setup_git_directory_gently
+argument_list|(
+operator|&
+name|nongit_ok
+argument_list|)
 expr_stmt|;
 name|git_config
 argument_list|(
