@@ -2447,21 +2447,29 @@ argument_list|,
 name|REF_REMOTE_BRANCH
 argument_list|)
 block|,
-name|OPT_CALLBACK
-argument_list|(
+block|{
+name|OPTION_CALLBACK
+block|,
 literal|0
-argument_list|,
+block|,
 literal|"contains"
-argument_list|,
+block|,
 operator|&
 name|with_commit
-argument_list|,
+block|,
 literal|"commit"
-argument_list|,
+block|,
 literal|"print only branches that contain the commit"
-argument_list|,
+block|,
+name|PARSE_OPT_LASTARG_DEFAULT
+block|,
 name|opt_parse_with_commit
-argument_list|)
+block|,
+operator|(
+name|intptr_t
+operator|)
+literal|"HEAD"
+block|, 		}
 block|,
 block|{
 name|OPTION_CALLBACK
@@ -2478,8 +2486,15 @@ block|,
 literal|"print only branches that contain the commit"
 block|,
 name|PARSE_OPT_HIDDEN
+operator||
+name|PARSE_OPT_LASTARG_DEFAULT
 block|,
 name|opt_parse_with_commit
+block|,
+operator|(
+name|intptr_t
+operator|)
+literal|"HEAD"
 block|, 		}
 block|,
 name|OPT__ABBREV
