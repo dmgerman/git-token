@@ -108,6 +108,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"rerere.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"unpack-trees.h"
 end_include
 
