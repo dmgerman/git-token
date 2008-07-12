@@ -849,7 +849,7 @@ name|unlink
 argument_list|(
 name|git_path
 argument_list|(
-literal|"rr-cache/MERGE_RR"
+literal|"MERGE_RR"
 argument_list|)
 argument_list|)
 expr_stmt|;
