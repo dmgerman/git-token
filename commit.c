@@ -4108,8 +4108,12 @@ block|{
 if|if
 condition|(
 name|p
+operator|->
+name|item
 operator|==
 name|q
+operator|->
+name|item
 condition|)
 continue|continue;
 name|other
