@@ -409,11 +409,13 @@ DECL|function|strbuf_cmp
 name|int
 name|strbuf_cmp
 parameter_list|(
+specifier|const
 name|struct
 name|strbuf
 modifier|*
 name|a
 parameter_list|,
+specifier|const
 name|struct
 name|strbuf
 modifier|*

@@ -175,6 +175,7 @@ specifier|inline
 name|size_t
 name|strbuf_avail
 parameter_list|(
+specifier|const
 name|struct
 name|strbuf
 modifier|*
@@ -304,10 +305,12 @@ specifier|extern
 name|int
 name|strbuf_cmp
 parameter_list|(
+specifier|const
 name|struct
 name|strbuf
 modifier|*
 parameter_list|,
+specifier|const
 name|struct
 name|strbuf
 modifier|*
@@ -498,6 +501,7 @@ name|strbuf
 modifier|*
 name|sb
 parameter_list|,
+specifier|const
 name|struct
 name|strbuf
 modifier|*
