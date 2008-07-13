@@ -117,6 +117,7 @@ literal|"    --date-order\n"
 literal|"    --reverse\n"
 literal|"  formatting output:\n"
 literal|"    --parents\n"
+literal|"    --children\n"
 literal|"    --objects | --objects-edge\n"
 literal|"    --unpacked\n"
 literal|"    --header | --pretty\n"
@@ -382,6 +383,64 @@ expr_stmt|;
 name|parents
 operator|=
 name|parents
+operator|->
+name|next
+expr_stmt|;
+block|}
+block|}
+if|if
+condition|(
+name|revs
+operator|.
+name|children
+operator|.
+name|name
+condition|)
+block|{
+name|struct
+name|commit_list
+modifier|*
+name|children
+decl_stmt|;
+name|children
+operator|=
+name|lookup_decoration
+argument_list|(
+operator|&
+name|revs
+operator|.
+name|children
+argument_list|,
+operator|&
+name|commit
+operator|->
+name|object
+argument_list|)
+expr_stmt|;
+while|while
+condition|(
+name|children
+condition|)
+block|{
+name|printf
+argument_list|(
+literal|" %s"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|children
+operator|->
+name|item
+operator|->
+name|object
+operator|.
+name|sha1
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|children
+operator|=
+name|children
 operator|->
 name|next
 expr_stmt|;
