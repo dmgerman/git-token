@@ -34,7 +34,7 @@ name|git_symbolic_ref_usage
 index|[]
 init|=
 block|{
-literal|"git-symbolic-ref [options] name [ref]"
+literal|"git symbolic-ref [options] name [ref]"
 block|,
 name|NULL
 block|}

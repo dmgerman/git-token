@@ -693,7 +693,7 @@ name|char
 name|checkout_cache_usage
 index|[]
 init|=
-literal|"git-checkout-index [-u] [-q] [-a] [-f] [-n] [--stage=[123]|all] [--prefix=<string>] [--temp] [--]<file>..."
+literal|"git checkout-index [-u] [-q] [-a] [-f] [-n] [--stage=[123]|all] [--prefix=<string>] [--temp] [--]<file>..."
 decl_stmt|;
 end_decl_stmt
 

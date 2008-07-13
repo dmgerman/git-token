@@ -62,13 +62,13 @@ name|builtin_branch_usage
 index|[]
 init|=
 block|{
-literal|"git-branch [options] [-r | -a] [--merged | --no-merged]"
+literal|"git branch [options] [-r | -a] [--merged | --no-merged]"
 block|,
-literal|"git-branch [options] [-l] [-f]<branchname> [<start-point>]"
+literal|"git branch [options] [-l] [-f]<branchname> [<start-point>]"
 block|,
-literal|"git-branch [options] [-r] (-d | -D)<branchname>"
+literal|"git branch [options] [-r] (-d | -D)<branchname>"
 block|,
-literal|"git-branch [options] (-m | -M) [<oldbranch>]<newbranch>"
+literal|"git branch [options] (-m | -M) [<oldbranch>]<newbranch>"
 block|,
 name|NULL
 block|}

@@ -50,7 +50,7 @@ name|builtin_mv_usage
 index|[]
 init|=
 block|{
-literal|"git-mv [options]<source>...<destination>"
+literal|"git mv [options]<source>...<destination>"
 block|,
 name|NULL
 block|}

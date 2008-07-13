@@ -215,7 +215,7 @@ name|builtin_help_usage
 index|[]
 init|=
 block|{
-literal|"git-help [--all] [--man|--web|--info] [command]"
+literal|"git help [--all] [--man|--web|--info] [command]"
 block|,
 name|NULL
 block|}

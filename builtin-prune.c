@@ -52,7 +52,7 @@ name|prune_usage
 index|[]
 init|=
 block|{
-literal|"git-prune [-n] [--expire<time>] [--] [<head>...]"
+literal|"git prune [-n] [--expire<time>] [--] [<head>...]"
 block|,
 name|NULL
 block|}

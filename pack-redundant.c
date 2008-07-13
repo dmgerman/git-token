@@ -25,7 +25,7 @@ name|char
 name|pack_redundant_usage
 index|[]
 init|=
-literal|"git-pack-redundant [ --verbose ] [ --alt-odb ]< --all |<.pack filename> ...>"
+literal|"git pack-redundant [ --verbose ] [ --alt-odb ]< --all |<.pack filename> ...>"
 decl_stmt|;
 end_decl_stmt
 

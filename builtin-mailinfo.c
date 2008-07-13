@@ -4653,7 +4653,7 @@ name|char
 name|mailinfo_usage
 index|[]
 init|=
-literal|"git-mailinfo [-k] [-u | --encoding=<encoding>] msg patch<mail>info"
+literal|"git mailinfo [-k] [-u | --encoding=<encoding>] msg patch<mail>info"
 decl_stmt|;
 end_decl_stmt
 

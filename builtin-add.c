@@ -80,7 +80,7 @@ name|builtin_add_usage
 index|[]
 init|=
 block|{
-literal|"git-add [options] [--]<filepattern>..."
+literal|"git add [options] [--]<filepattern>..."
 block|,
 name|NULL
 block|}

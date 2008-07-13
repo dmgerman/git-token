@@ -43,7 +43,7 @@ name|char
 name|git_rerere_usage
 index|[]
 init|=
-literal|"git-rerere [clear | status | diff | gc]"
+literal|"git rerere [clear | status | diff | gc]"
 decl_stmt|;
 end_decl_stmt
 

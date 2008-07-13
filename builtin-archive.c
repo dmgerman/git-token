@@ -65,7 +65,7 @@ name|char
 name|archive_usage
 index|[]
 init|= \
-literal|"git-archive --format=<fmt> [--prefix=<prefix>/] [--verbose] [<extra>]<tree-ish> [path...]"
+literal|"git archive --format=<fmt> [--prefix=<prefix>/] [--verbose] [<extra>]<tree-ish> [path...]"
 decl_stmt|;
 end_decl_stmt
 

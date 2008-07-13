@@ -91,7 +91,7 @@ name|fast_export_usage
 index|[]
 init|=
 block|{
-literal|"git-fast-export [rev-list-opts]"
+literal|"git fast-export [rev-list-opts]"
 block|,
 name|NULL
 block|}

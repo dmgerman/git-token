@@ -46,7 +46,7 @@ name|builtin_gc_usage
 index|[]
 init|=
 block|{
-literal|"git-gc [options]"
+literal|"git gc [options]"
 block|,
 name|NULL
 block|}

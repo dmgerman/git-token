@@ -50,13 +50,13 @@ name|git_tag_usage
 index|[]
 init|=
 block|{
-literal|"git-tag [-a|-s|-u<key-id>] [-f] [-m<msg>|-F<file>]<tagname> [<head>]"
+literal|"git tag [-a|-s|-u<key-id>] [-f] [-m<msg>|-F<file>]<tagname> [<head>]"
 block|,
-literal|"git-tag -d<tagname>..."
+literal|"git tag -d<tagname>..."
 block|,
-literal|"git-tag -l [-n[<num>]] [<pattern>]"
+literal|"git tag -l [-n[<num>]] [<pattern>]"
 block|,
-literal|"git-tag -v<tagname>..."
+literal|"git tag -v<tagname>..."
 block|,
 name|NULL
 block|}

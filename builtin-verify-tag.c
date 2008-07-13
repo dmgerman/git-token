@@ -41,7 +41,7 @@ name|char
 name|builtin_verify_tag_usage
 index|[]
 init|=
-literal|"git-verify-tag [-v|--verbose]<tag>..."
+literal|"git verify-tag [-v|--verbose]<tag>..."
 decl_stmt|;
 end_decl_stmt
 

@@ -2512,7 +2512,7 @@ name|char
 name|builtin_grep_usage
 index|[]
 init|=
-literal|"git-grep<option>*<rev>* [-e]<pattern> [<path>...]"
+literal|"git grep<option>*<rev>* [-e]<pattern> [<path>...]"
 decl_stmt|;
 end_decl_stmt
 

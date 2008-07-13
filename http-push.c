@@ -85,7 +85,7 @@ name|char
 name|http_push_usage
 index|[]
 init|=
-literal|"git-http-push [--all] [--dry-run] [--force] [--verbose]<remote> [<head>...]\n"
+literal|"git http-push [--all] [--dry-run] [--force] [--verbose]<remote> [<head>...]\n"
 decl_stmt|;
 end_decl_stmt
 

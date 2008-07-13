@@ -97,7 +97,7 @@ name|char
 name|rev_list_usage
 index|[]
 init|=
-literal|"git-rev-list [OPTION]<commit-id>... [ -- paths... ]\n"
+literal|"git rev-list [OPTION]<commit-id>... [ -- paths... ]\n"
 literal|"  limiting output:\n"
 literal|"    --max-count=nr\n"
 literal|"    --max-age=epoch\n"

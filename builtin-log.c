@@ -6218,7 +6218,7 @@ name|char
 name|cherry_usage
 index|[]
 init|=
-literal|"git-cherry [-v]<upstream> [<head>] [<limit>]"
+literal|"git cherry [-v]<upstream> [<head>] [<limit>]"
 decl_stmt|;
 end_decl_stmt
 

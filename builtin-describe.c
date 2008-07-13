@@ -68,7 +68,7 @@ name|describe_usage
 index|[]
 init|=
 block|{
-literal|"git-describe [options]<committish>*"
+literal|"git describe [options]<committish>*"
 block|,
 name|NULL
 block|}
