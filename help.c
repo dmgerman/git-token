@@ -3527,13 +3527,27 @@ name|struct
 name|stat
 name|st
 decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|html_path
+init|=
+name|system_path
+argument_list|(
+name|GIT_HTML_PATH
+argument_list|)
+decl_stmt|;
 comment|/* Check that we have a git documentation directory. */
 if|if
 condition|(
 name|stat
 argument_list|(
-name|GIT_HTML_PATH
-literal|"/git.html"
+name|mkpath
+argument_list|(
+literal|"%s/git.html"
+argument_list|,
+name|html_path
+argument_list|)
 argument_list|,
 operator|&
 name|st
@@ -3551,7 +3565,7 @@ name|die
 argument_list|(
 literal|"'%s': not a documentation directory."
 argument_list|,
-name|GIT_HTML_PATH
+name|html_path
 argument_list|)
 expr_stmt|;
 name|strbuf_init
@@ -3565,8 +3579,9 @@ name|strbuf_addf
 argument_list|(
 name|page_path
 argument_list|,
-name|GIT_HTML_PATH
-literal|"/%s.html"
+literal|"%s/%s.html"
+argument_list|,
+name|html_path
 argument_list|,
 name|page
 argument_list|)
