@@ -1266,14 +1266,7 @@ operator|~
 literal|0222
 expr_stmt|;
 name|mode
-operator|=
-operator|(
-name|mode
-operator|&
-operator|~
-literal|0777
-operator|)
-operator||
+operator||=
 name|tweak
 expr_stmt|;
 block|}
