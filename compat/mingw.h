@@ -1408,6 +1408,26 @@ name|PRIuMAX
 value|"I64u"
 end_define
 
+begin_function_decl
+name|void
+name|mingw_open_html
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_define
+DECL|macro|open_html
+define|#
+directive|define
+name|open_html
+value|mingw_open_html
+end_define
+
 begin_comment
 comment|/*  * helpers  */
 end_comment
