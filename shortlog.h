@@ -52,6 +52,10 @@ DECL|member|in2
 name|int
 name|in2
 decl_stmt|;
+DECL|member|user_format
+name|int
+name|user_format
+decl_stmt|;
 DECL|member|common_repo_prefix
 name|char
 modifier|*
