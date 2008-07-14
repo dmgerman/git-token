@@ -919,6 +919,10 @@ name|mode
 parameter_list|,
 name|int
 name|stage
+parameter_list|,
+name|void
+modifier|*
+name|context
 parameter_list|)
 block|{
 name|struct
@@ -2102,6 +2106,8 @@ argument_list|,
 literal|040777
 argument_list|,
 literal|0
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 name|free
@@ -2129,6 +2135,8 @@ operator|->
 name|pathspec
 argument_list|,
 name|write_zip_entry
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 name|write_zip_trailer

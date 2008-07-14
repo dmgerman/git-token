@@ -1413,6 +1413,10 @@ name|mode
 parameter_list|,
 name|int
 name|stage
+parameter_list|,
+name|void
+modifier|*
+name|context
 parameter_list|)
 block|{
 name|int
@@ -1530,9 +1534,9 @@ argument_list|,
 name|NULL
 argument_list|,
 name|save_files_dirs
+argument_list|,
+name|NULL
 argument_list|)
-operator|!=
-literal|0
 condition|)
 return|return
 literal|0
