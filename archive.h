@@ -39,6 +39,10 @@ name|char
 modifier|*
 name|base
 decl_stmt|;
+DECL|member|baselen
+name|size_t
+name|baselen
+decl_stmt|;
 DECL|member|tree
 name|struct
 name|tree
