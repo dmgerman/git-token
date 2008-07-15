@@ -3625,6 +3625,35 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* just like read_sha1_file(), but non fatal in presence of bad objects */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|void
+modifier|*
+name|read_object
+parameter_list|(
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|sha1
+parameter_list|,
+name|enum
+name|object_type
+modifier|*
+name|type
+parameter_list|,
+name|unsigned
+name|long
+modifier|*
+name|size
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function_decl
 specifier|extern
 name|int
