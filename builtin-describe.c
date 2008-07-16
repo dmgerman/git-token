@@ -144,12 +144,11 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|pattern
+specifier|static
 specifier|const
 name|char
 modifier|*
 name|pattern
-init|=
-name|NULL
 decl_stmt|;
 end_decl_stmt
 
