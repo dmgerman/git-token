@@ -2678,6 +2678,7 @@ end_function
 
 begin_function
 DECL|function|cache_tree_find
+specifier|static
 name|struct
 name|cache_tree
 modifier|*
