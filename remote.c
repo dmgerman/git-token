@@ -7340,9 +7340,6 @@ specifier|const
 name|char
 modifier|*
 name|base
-decl_stmt|,
-modifier|*
-name|remote_msg
 decl_stmt|;
 if|if
 condition|(
@@ -7383,23 +7380,12 @@ literal|"refs/remotes/"
 argument_list|)
 condition|)
 block|{
-name|remote_msg
-operator|=
-literal|" remote"
-expr_stmt|;
 name|base
 operator|+=
 name|strlen
 argument_list|(
 literal|"refs/remotes/"
 argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|remote_msg
-operator|=
-literal|""
 expr_stmt|;
 block|}
 if|if
@@ -7411,10 +7397,8 @@ name|strbuf_addf
 argument_list|(
 name|sb
 argument_list|,
-literal|"Your branch is ahead of the tracked%s branch '%s' "
+literal|"Your branch is ahead of '%s' "
 literal|"by %d commit%s.\n"
-argument_list|,
-name|remote_msg
 argument_list|,
 name|base
 argument_list|,
@@ -7441,11 +7425,9 @@ name|strbuf_addf
 argument_list|(
 name|sb
 argument_list|,
-literal|"Your branch is behind the tracked%s branch '%s' "
-literal|"by %d commit%s,\n"
+literal|"Your branch is behind '%s' "
+literal|"by %d commit%s, "
 literal|"and can be fast-forwarded.\n"
-argument_list|,
-name|remote_msg
 argument_list|,
 name|base
 argument_list|,
@@ -7467,11 +7449,9 @@ name|strbuf_addf
 argument_list|(
 name|sb
 argument_list|,
-literal|"Your branch and the tracked%s branch '%s' "
-literal|"have diverged,\nand respectively "
-literal|"have %d and %d different commit(s) each.\n"
-argument_list|,
-name|remote_msg
+literal|"Your branch and '%s' have diverged,\n"
+literal|"and have %d and %d different commit(s) each, "
+literal|"respectively.\n"
 argument_list|,
 name|base
 argument_list|,
