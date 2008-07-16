@@ -254,6 +254,19 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+name|unsigned
+name|commit_list_count
+parameter_list|(
+specifier|const
+name|struct
+name|commit_list
+modifier|*
+name|l
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|struct
 name|commit_list
 modifier|*
@@ -732,6 +745,21 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|struct
+name|commit_list
+modifier|*
+name|get_octopus_merge_bases
+parameter_list|(
+name|struct
+name|commit_list
+modifier|*
+name|in
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|int
 name|register_shallow
 parameter_list|(
@@ -873,6 +901,20 @@ name|next
 return|;
 block|}
 end_function
+
+begin_function_decl
+name|struct
+name|commit_list
+modifier|*
+name|reduce_heads
+parameter_list|(
+name|struct
+name|commit_list
+modifier|*
+name|heads
+parameter_list|)
+function_decl|;
+end_function_decl
 
 begin_endif
 endif|#
