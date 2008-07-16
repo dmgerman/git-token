@@ -1323,6 +1323,7 @@ end_function
 
 begin_function
 DECL|function|check_typos
+specifier|static
 name|void
 name|check_typos
 parameter_list|(
