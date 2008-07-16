@@ -263,6 +263,27 @@ name|printable
 operator|++
 expr_stmt|;
 block|}
+comment|/* If file ends with EOF then don't count this EOF as non-printable. */
+if|if
+condition|(
+name|size
+operator|>=
+literal|1
+operator|&&
+name|buf
+index|[
+name|size
+operator|-
+literal|1
+index|]
+operator|==
+literal|'\032'
+condition|)
+name|stats
+operator|->
+name|nonprintable
+operator|--
+expr_stmt|;
 block|}
 end_function
 
