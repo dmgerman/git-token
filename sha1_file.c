@@ -8935,6 +8935,11 @@ argument_list|,
 name|obj_offset
 argument_list|)
 expr_stmt|;
+name|unuse_pack
+argument_list|(
+name|w_curs
+argument_list|)
+expr_stmt|;
 name|base
 operator|=
 name|cache_or_unpack_entry
