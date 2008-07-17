@@ -28,7 +28,7 @@ name|pack_refs_usage
 index|[]
 init|=
 block|{
-literal|"git-pack-refs [options]"
+literal|"git pack-refs [options]"
 block|,
 name|NULL
 block|}

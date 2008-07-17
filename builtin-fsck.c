@@ -2715,7 +2715,7 @@ name|fsck_usage
 index|[]
 init|=
 block|{
-literal|"git-fsck [options] [<object>...]"
+literal|"git fsck [options] [<object>...]"
 block|,
 name|NULL
 block|}

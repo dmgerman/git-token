@@ -60,7 +60,7 @@ name|builtin_clean_usage
 index|[]
 init|=
 block|{
-literal|"git-clean [-d] [-f] [-n] [-q] [-x | -X] [--]<paths>..."
+literal|"git clean [-d] [-f] [-n] [-q] [-x | -X] [--]<paths>..."
 block|,
 name|NULL
 block|}

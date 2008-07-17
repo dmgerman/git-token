@@ -41,7 +41,7 @@ name|char
 name|tar_tree_usage
 index|[]
 init|=
-literal|"git-tar-tree [--remote=<repo>]<tree-ish> [basedir]\n"
+literal|"git tar-tree [--remote=<repo>]<tree-ish> [basedir]\n"
 literal|"*** Note that this command is now deprecated; use git-archive instead."
 decl_stmt|;
 end_decl_stmt

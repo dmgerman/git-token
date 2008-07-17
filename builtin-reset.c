@@ -80,9 +80,9 @@ name|git_reset_usage
 index|[]
 init|=
 block|{
-literal|"git-reset [--mixed | --soft | --hard] [-q] [<commit>]"
+literal|"git reset [--mixed | --soft | --hard] [-q] [<commit>]"
 block|,
-literal|"git-reset [--mixed]<commit> [--]<paths>..."
+literal|"git reset [--mixed]<commit> [--]<paths>..."
 block|,
 name|NULL
 block|}

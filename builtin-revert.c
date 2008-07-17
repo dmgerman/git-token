@@ -92,7 +92,7 @@ name|revert_usage
 index|[]
 init|=
 block|{
-literal|"git-revert [options]<commit-ish>"
+literal|"git revert [options]<commit-ish>"
 block|,
 name|NULL
 block|}
@@ -110,7 +110,7 @@ name|cherry_pick_usage
 index|[]
 init|=
 block|{
-literal|"git-cherry-pick [options]<commit-ish>"
+literal|"git cherry-pick [options]<commit-ish>"
 block|,
 name|NULL
 block|}

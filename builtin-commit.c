@@ -128,7 +128,7 @@ name|builtin_commit_usage
 index|[]
 init|=
 block|{
-literal|"git-commit [options] [--]<filepattern>..."
+literal|"git commit [options] [--]<filepattern>..."
 block|,
 name|NULL
 block|}
@@ -146,7 +146,7 @@ name|builtin_status_usage
 index|[]
 init|=
 block|{
-literal|"git-status [options] [--]<filepattern>..."
+literal|"git status [options] [--]<filepattern>..."
 block|,
 name|NULL
 block|}

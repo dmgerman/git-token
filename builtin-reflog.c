@@ -65,7 +65,7 @@ name|char
 name|reflog_expire_usage
 index|[]
 init|=
-literal|"git-reflog (show|expire) [--verbose] [--dry-run] [--stale-fix] [--expire=<time>] [--expire-unreachable=<time>] [--all]<refs>..."
+literal|"git reflog (show|expire) [--verbose] [--dry-run] [--stale-fix] [--expire=<time>] [--expire-unreachable=<time>] [--all]<refs>..."
 decl_stmt|;
 end_decl_stmt
 
@@ -77,7 +77,7 @@ name|char
 name|reflog_delete_usage
 index|[]
 init|=
-literal|"git-reflog delete [--verbose] [--dry-run] [--rewrite] [--updateref]<refs>..."
+literal|"git reflog delete [--verbose] [--dry-run] [--rewrite] [--updateref]<refs>..."
 decl_stmt|;
 end_decl_stmt
 
@@ -3630,7 +3630,7 @@ name|char
 name|reflog_usage
 index|[]
 init|=
-literal|"git-reflog (expire | ...)"
+literal|"git reflog (expire | ...)"
 decl_stmt|;
 end_decl_stmt
 

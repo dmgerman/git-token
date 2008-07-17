@@ -329,7 +329,7 @@ name|char
 name|diff_tree_usage
 index|[]
 init|=
-literal|"git-diff-tree [--stdin] [-m] [-c] [--cc] [-s] [-v] [--pretty] [-t] [-r] [--root] "
+literal|"git diff-tree [--stdin] [-m] [-c] [--cc] [-s] [-v] [--pretty] [-t] [-r] [--root] "
 literal|"[<common diff options>]<tree-ish> [<tree-ish>] [<path>...]\n"
 literal|"  -r            diff recursively\n"
 literal|"  --root        include the initial commit as diff against /dev/null\n"

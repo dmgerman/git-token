@@ -4789,7 +4789,7 @@ name|for_each_ref_usage
 index|[]
 init|=
 block|{
-literal|"git-for-each-ref [options] [<pattern>]"
+literal|"git for-each-ref [options] [<pattern>]"
 block|,
 name|NULL
 block|}

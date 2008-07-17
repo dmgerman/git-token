@@ -912,9 +912,9 @@ name|cat_file_usage
 index|[]
 init|=
 block|{
-literal|"git-cat-file [-t|-s|-e|-p|<type>]<sha1>"
+literal|"git cat-file [-t|-s|-e|-p|<type>]<sha1>"
 block|,
-literal|"git-cat-file [--batch|--batch-check]<<list_of_sha1s>"
+literal|"git cat-file [--batch|--batch-check]<<list_of_sha1s>"
 block|,
 name|NULL
 block|}

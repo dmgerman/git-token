@@ -34,9 +34,9 @@ name|git_update_ref_usage
 index|[]
 init|=
 block|{
-literal|"git-update-ref [options] -d<refname> [<oldval>]"
+literal|"git update-ref [options] -d<refname> [<oldval>]"
 block|,
-literal|"git-update-ref [options]<refname><newval> [<oldval>]"
+literal|"git update-ref [options]<refname><newval> [<oldval>]"
 block|,
 name|NULL
 block|}

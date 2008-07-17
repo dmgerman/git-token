@@ -31,7 +31,7 @@ name|char
 name|show_branch_usage
 index|[]
 init|=
-literal|"git-show-branch [--sparse] [--current] [--all] [--remotes] [--topo-order] [--more=count | --list | --independent | --merge-base ] [--topics] [<refs>...] | --reflog[=n[,b]]<branch>"
+literal|"git show-branch [--sparse] [--current] [--all] [--remotes] [--topo-order] [--more=count | --list | --independent | --merge-base ] [--topics] [<refs>...] | --reflog[=n[,b]]<branch>"
 decl_stmt|;
 end_decl_stmt
 

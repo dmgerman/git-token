@@ -35,7 +35,7 @@ name|char
 name|write_tree_usage
 index|[]
 init|=
-literal|"git-write-tree [--missing-ok] [--prefix=<prefix>/]"
+literal|"git write-tree [--missing-ok] [--prefix=<prefix>/]"
 decl_stmt|;
 end_decl_stmt
 

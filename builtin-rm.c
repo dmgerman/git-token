@@ -50,7 +50,7 @@ name|builtin_rm_usage
 index|[]
 init|=
 block|{
-literal|"git-rm [options] [--]<file>..."
+literal|"git rm [options] [--]<file>..."
 block|,
 name|NULL
 block|}

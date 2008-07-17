@@ -2175,7 +2175,7 @@ name|char
 name|ls_files_usage
 index|[]
 init|=
-literal|"git-ls-files [-z] [-t] [-v] (--[cached|deleted|others|stage|unmerged|killed|modified])* "
+literal|"git ls-files [-z] [-t] [-v] (--[cached|deleted|others|stage|unmerged|killed|modified])* "
 literal|"[ --ignored ] [--exclude=<pattern>] [--exclude-from=<file>] "
 literal|"[ --exclude-per-directory=<filename> ] [--exclude-standard] "
 literal|"[--full-name] [--abbrev] [--] [<file>]*"
