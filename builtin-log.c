@@ -1687,6 +1687,10 @@ name|mode
 parameter_list|,
 name|int
 name|stage
+parameter_list|,
+name|void
+modifier|*
+name|context
 parameter_list|)
 block|{
 name|printf
@@ -2032,6 +2036,8 @@ argument_list|,
 name|NULL
 argument_list|,
 name|show_tree_object
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 break|break;

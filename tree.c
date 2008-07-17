@@ -232,6 +232,10 @@ name|mode
 parameter_list|,
 name|int
 name|stage
+parameter_list|,
+name|void
+modifier|*
+name|context
 parameter_list|)
 block|{
 return|return
@@ -291,6 +295,10 @@ name|mode
 parameter_list|,
 name|int
 name|stage
+parameter_list|,
+name|void
+modifier|*
+name|context
 parameter_list|)
 block|{
 return|return
@@ -519,6 +527,10 @@ name|match
 parameter_list|,
 name|read_tree_fn_t
 name|fn
+parameter_list|,
+name|void
+modifier|*
+name|context
 parameter_list|)
 block|{
 name|struct
@@ -608,6 +620,8 @@ operator|.
 name|mode
 argument_list|,
 name|stage
+argument_list|,
+name|context
 argument_list|)
 condition|)
 block|{
@@ -724,6 +738,8 @@ argument_list|,
 name|match
 argument_list|,
 name|fn
+argument_list|,
+name|context
 argument_list|)
 expr_stmt|;
 name|free
@@ -922,6 +938,8 @@ argument_list|,
 name|match
 argument_list|,
 name|fn
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 if|if
