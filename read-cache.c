@@ -2686,7 +2686,7 @@ name|ce_flags
 operator||=
 name|CE_ADDED
 expr_stmt|;
-comment|/* It was suspected to be recily clean, but it turns out to be Ok */
+comment|/* It was suspected to be racily clean, but it turns out to be Ok */
 name|was_same
 operator|=
 operator|(
