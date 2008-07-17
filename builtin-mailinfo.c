@@ -1223,10 +1223,7 @@ operator|-
 name|subject
 operator|->
 name|buf
-operator|+
-literal|1
 expr_stmt|;
-comment|/* Don't remove too much. */
 if|if
 condition|(
 name|remove
@@ -1237,8 +1234,6 @@ operator|->
 name|len
 operator|-
 name|remove
-operator|+
-literal|1
 operator|)
 operator|*
 literal|2
@@ -1251,6 +1246,8 @@ argument_list|,
 literal|0
 argument_list|,
 name|remove
+operator|+
+literal|1
 argument_list|)
 expr_stmt|;
 continue|continue;
