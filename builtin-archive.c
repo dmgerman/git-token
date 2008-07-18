@@ -1061,6 +1061,12 @@ argument_list|,
 name|format
 argument_list|)
 expr_stmt|;
+name|args
+operator|->
+name|compression_level
+operator|=
+name|Z_DEFAULT_COMPRESSION
+expr_stmt|;
 if|if
 condition|(
 name|compression_level
@@ -1080,7 +1086,9 @@ name|flags
 operator|&
 name|USES_ZLIB_COMPRESSION
 condition|)
-name|zlib_compression_level
+name|args
+operator|->
+name|compression_level
 operator|=
 name|compression_level
 expr_stmt|;
