@@ -36,12 +36,6 @@ end_include
 begin_include
 include|#
 directive|include
-file|"exec_cmd.h"
-end_include
-
-begin_include
-include|#
-directive|include
 file|"pkt-line.h"
 end_include
 
@@ -49,12 +43,6 @@ begin_include
 include|#
 directive|include
 file|"sideband.h"
-end_include
-
-begin_include
-include|#
-directive|include
-file|"attr.h"
 end_include
 
 begin_decl_stmt
