@@ -2458,6 +2458,16 @@ argument_list|(
 name|sha1
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|new_pack
+condition|)
+return|return
+operator|-
+literal|1
+return|;
+comment|/* parse_pack_index() already issued error message */
 name|new_pack
 operator|->
 name|next
