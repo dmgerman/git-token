@@ -2529,6 +2529,19 @@ DECL|macro|REFRESH_IGNORE_SUBMODULES
 comment|/* ignore submodules */
 end_comment
 
+begin_define
+DECL|macro|REFRESH_SAY_CHANGED
+define|#
+directive|define
+name|REFRESH_SAY_CHANGED
+value|0x0020
+end_define
+
+begin_comment
+DECL|macro|REFRESH_SAY_CHANGED
+comment|/* say "changed" not "needs update" */
+end_comment
+
 begin_function_decl
 specifier|extern
 name|int

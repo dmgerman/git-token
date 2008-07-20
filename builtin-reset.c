@@ -508,7 +508,7 @@ name|result
 operator|=
 name|refresh_cache
 argument_list|(
-literal|0
+name|REFRESH_SAY_CHANGED
 argument_list|)
 condition|?
 literal|1

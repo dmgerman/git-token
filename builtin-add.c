@@ -788,7 +788,7 @@ name|the_index
 argument_list|,
 name|verbose
 condition|?
-literal|0
+name|REFRESH_SAY_CHANGED
 else|:
 name|REFRESH_QUIET
 argument_list|,

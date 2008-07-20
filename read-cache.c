@@ -4589,6 +4589,25 @@ name|CE_MATCH_IGNORE_VALID
 else|:
 literal|0
 decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|needs_update_message
+decl_stmt|;
+name|needs_update_message
+operator|=
+operator|(
+operator|(
+name|flags
+operator|&
+name|REFRESH_SAY_CHANGED
+operator|)
+condition|?
+literal|"locally modified"
+else|:
+literal|"needs update"
+operator|)
+expr_stmt|;
 for|for
 control|(
 name|i
@@ -4793,11 +4812,13 @@ condition|)
 continue|continue;
 name|printf
 argument_list|(
-literal|"%s: needs update\n"
+literal|"%s: %s\n"
 argument_list|,
 name|ce
 operator|->
 name|name
+argument_list|,
+name|needs_update_message
 argument_list|)
 expr_stmt|;
 name|has_errors
