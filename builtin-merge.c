@@ -293,12 +293,6 @@ index|[]
 init|=
 block|{
 block|{
-literal|"recur"
-block|,
-name|NO_TRIVIAL
-block|}
-block|,
-block|{
 literal|"recursive"
 block|,
 name|DEFAULT_TWOHEAD
@@ -314,12 +308,6 @@ block|}
 block|,
 block|{
 literal|"resolve"
-block|,
-literal|0
-block|}
-block|,
-block|{
-literal|"stupid"
 block|,
 literal|0
 block|}
