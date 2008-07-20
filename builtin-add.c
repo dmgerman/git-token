@@ -1091,9 +1091,12 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|ignore_add_errors
+DECL|variable|addremove
 specifier|static
 name|int
 name|ignore_add_errors
+decl_stmt|,
+name|addremove
 decl_stmt|;
 end_decl_stmt
 
@@ -1169,6 +1172,18 @@ operator|&
 name|take_worktree_changes
 argument_list|,
 literal|"update tracked files"
+argument_list|)
+block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|'A'
+argument_list|,
+literal|"all"
+argument_list|,
+operator|&
+name|addremove
+argument_list|,
+literal|"add all, noticing removal of tracked files"
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -1485,6 +1500,49 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|addremove
+operator|&&
+name|take_worktree_changes
+condition|)
+name|die
+argument_list|(
+literal|"-A and -u are mutually incompatible"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|addremove
+operator|&&
+operator|!
+name|argc
+condition|)
+block|{
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|here
+index|[
+literal|2
+index|]
+init|=
+block|{
+literal|"."
+block|,
+name|NULL
+block|}
+decl_stmt|;
+name|argc
+operator|=
+literal|1
+expr_stmt|;
+name|argv
+operator|=
+name|here
+expr_stmt|;
+block|}
 name|add_new_files
 operator|=
 operator|!
@@ -1618,6 +1676,8 @@ block|}
 if|if
 condition|(
 name|take_worktree_changes
+operator|||
+name|addremove
 condition|)
 name|exit_status
 operator||=
