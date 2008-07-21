@@ -27,6 +27,19 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|void
+name|git_set_argv0_path
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 specifier|const
 name|char
 modifier|*
@@ -42,9 +55,7 @@ specifier|extern
 name|void
 name|setup_path
 parameter_list|(
-specifier|const
-name|char
-modifier|*
+name|void
 parameter_list|)
 function_decl|;
 end_function_decl

@@ -2497,13 +2497,6 @@ argument_list|(
 name|cmd
 argument_list|)
 decl_stmt|;
-specifier|const
-name|char
-modifier|*
-name|cmd_path
-init|=
-name|NULL
-decl_stmt|;
 name|int
 name|done_alias
 init|=
@@ -2541,9 +2534,10 @@ operator|++
 operator|=
 literal|0
 expr_stmt|;
-name|cmd_path
-operator|=
+name|git_set_argv0_path
+argument_list|(
 name|cmd
+argument_list|)
 expr_stmt|;
 name|cmd
 operator|=
@@ -2672,9 +2666,7 @@ index|]
 expr_stmt|;
 comment|/* 	 * We use PATH to find git commands, but we prepend some higher 	 * precidence paths: the "--exec-path" option, the GIT_EXEC_PATH 	 * environment, and the $(gitexecdir) from the Makefile at build 	 * time. 	 */
 name|setup_path
-argument_list|(
-name|cmd_path
-argument_list|)
+argument_list|()
 expr_stmt|;
 while|while
 condition|(

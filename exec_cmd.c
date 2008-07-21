@@ -44,6 +44,16 @@ name|argv_exec_path
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|argv0_path
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|argv0_path
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|builtin_exec_path
 specifier|static
@@ -258,6 +268,24 @@ block|}
 end_function
 
 begin_function
+DECL|function|git_set_argv0_path
+name|void
+name|git_set_argv0_path
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|)
+block|{
+name|argv0_path
+operator|=
+name|path
+expr_stmt|;
+block|}
+end_function
+
+begin_function
 DECL|function|git_set_argv_exec_path
 name|void
 name|git_set_argv_exec_path
@@ -393,10 +421,7 @@ DECL|function|setup_path
 name|void
 name|setup_path
 parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|cmd_path
+name|void
 parameter_list|)
 block|{
 specifier|const
@@ -454,7 +479,7 @@ argument_list|(
 operator|&
 name|new_path
 argument_list|,
-name|cmd_path
+name|argv0_path
 argument_list|)
 expr_stmt|;
 if|if

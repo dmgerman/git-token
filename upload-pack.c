@@ -3512,9 +3512,7 @@ name|upload_pack_usage
 argument_list|)
 expr_stmt|;
 name|setup_path
-argument_list|(
-name|NULL
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|dir
 operator|=
