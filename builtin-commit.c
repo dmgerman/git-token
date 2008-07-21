@@ -102,7 +102,7 @@ end_include
 begin_include
 include|#
 directive|include
-file|"path-list.h"
+file|"string-list.h"
 end_include
 
 begin_include
@@ -870,7 +870,7 @@ name|int
 name|list_paths
 parameter_list|(
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|list
 parameter_list|,
@@ -983,7 +983,7 @@ literal|0
 argument_list|)
 condition|)
 continue|continue;
-name|path_list_insert
+name|string_list_insert
 argument_list|(
 name|ce
 operator|->
@@ -1020,7 +1020,7 @@ name|void
 name|add_remove_files
 parameter_list|(
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|list
 parameter_list|)
@@ -1049,7 +1049,7 @@ name|stat
 name|st
 decl_stmt|;
 name|struct
-name|path_list_item
+name|string_list_item
 modifier|*
 name|p
 init|=
@@ -1070,7 +1070,7 @@ name|lstat
 argument_list|(
 name|p
 operator|->
-name|path
+name|string
 argument_list|,
 operator|&
 name|st
@@ -1083,7 +1083,7 @@ name|add_to_cache
 argument_list|(
 name|p
 operator|->
-name|path
+name|string
 argument_list|,
 operator|&
 name|st
@@ -1102,7 +1102,7 @@ name|remove_file_from_cache
 argument_list|(
 name|p
 operator|->
-name|path
+name|string
 argument_list|)
 expr_stmt|;
 block|}
@@ -1276,7 +1276,7 @@ name|int
 name|fd
 decl_stmt|;
 name|struct
-name|path_list
+name|string_list
 name|partial
 decl_stmt|;
 specifier|const
@@ -1516,7 +1516,7 @@ argument_list|)
 expr_stmt|;
 name|partial
 operator|.
-name|strdup_paths
+name|strdup_strings
 operator|=
 literal|1
 expr_stmt|;

@@ -26,7 +26,7 @@ end_include
 begin_include
 include|#
 directive|include
-file|"path-list.h"
+file|"string-list.h"
 end_include
 
 begin_include
@@ -172,7 +172,7 @@ name|not
 parameter_list|)
 block|{
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|list
 init|=
@@ -184,7 +184,7 @@ if|if
 condition|(
 name|not
 condition|)
-name|path_list_clear
+name|string_list_clear
 argument_list|(
 name|list
 argument_list|,
@@ -192,7 +192,7 @@ literal|0
 argument_list|)
 expr_stmt|;
 else|else
-name|path_list_append
+name|string_list_append
 argument_list|(
 name|arg
 argument_list|,
@@ -287,7 +287,7 @@ init|=
 literal|0
 decl_stmt|;
 name|struct
-name|path_list
+name|string_list
 name|track
 init|=
 block|{
@@ -571,7 +571,7 @@ name|nr
 operator|==
 literal|0
 condition|)
-name|path_list_append
+name|string_list_append
 argument_list|(
 literal|"*"
 argument_list|,
@@ -596,7 +596,7 @@ operator|++
 control|)
 block|{
 name|struct
-name|path_list_item
+name|string_list_item
 modifier|*
 name|item
 init|=
@@ -633,11 +633,11 @@ literal|"refs/%s:refs/%s"
 argument_list|,
 name|item
 operator|->
-name|path
+name|string
 argument_list|,
 name|item
 operator|->
-name|path
+name|string
 argument_list|)
 expr_stmt|;
 else|else
@@ -650,13 +650,13 @@ literal|"refs/heads/%s:refs/remotes/%s/%s"
 argument_list|,
 name|item
 operator|->
-name|path
+name|string
 argument_list|,
 name|name
 argument_list|,
 name|item
 operator|->
-name|path
+name|string
 argument_list|)
 expr_stmt|;
 if|if
@@ -803,7 +803,7 @@ operator|&
 name|buf2
 argument_list|)
 expr_stmt|;
-name|path_list_clear
+name|string_list_clear
 argument_list|(
 operator|&
 name|track
@@ -829,7 +829,7 @@ name|remote
 decl_stmt|;
 DECL|member|merge
 name|struct
-name|path_list
+name|string_list
 name|merge
 decl_stmt|;
 block|}
@@ -840,7 +840,7 @@ begin_decl_stmt
 DECL|variable|branch_list
 specifier|static
 name|struct
-name|path_list
+name|string_list
 name|branch_list
 decl_stmt|;
 end_decl_stmt
@@ -937,7 +937,7 @@ modifier|*
 name|name
 decl_stmt|;
 name|struct
-name|path_list_item
+name|string_list_item
 modifier|*
 name|item
 decl_stmt|;
@@ -1025,7 +1025,7 @@ literal|0
 return|;
 name|item
 operator|=
-name|path_list_insert
+name|string_list_insert
 argument_list|(
 name|name
 argument_list|,
@@ -1131,7 +1131,7 @@ operator|-
 name|value
 argument_list|)
 expr_stmt|;
-name|path_list_append
+name|string_list_append
 argument_list|(
 name|merge
 argument_list|,
@@ -1160,7 +1160,7 @@ literal|' '
 argument_list|)
 expr_stmt|;
 block|}
-name|path_list_append
+name|string_list_append
 argument_list|(
 name|xstrdup
 argument_list|(
@@ -1204,7 +1204,7 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
-name|sort_path_list
+name|sort_string_list
 argument_list|(
 operator|&
 name|branch_list
@@ -1228,7 +1228,7 @@ DECL|member|new
 DECL|member|stale
 DECL|member|tracked
 name|struct
-name|path_list
+name|string_list
 name|new
 decl_stmt|,
 name|stale
@@ -1313,7 +1313,7 @@ argument_list|)
 condition|)
 block|{
 name|struct
-name|path_list_item
+name|string_list_item
 modifier|*
 name|item
 decl_stmt|;
@@ -1338,7 +1338,7 @@ operator|&
 name|REF_ISSYMREF
 operator|)
 operator|||
-name|unsorted_path_list_has_path
+name|unsorted_string_list_has_string
 argument_list|(
 operator|&
 name|states
@@ -1348,7 +1348,7 @@ argument_list|,
 name|name
 argument_list|)
 operator|||
-name|unsorted_path_list_has_path
+name|unsorted_string_list_has_string
 argument_list|(
 operator|&
 name|states
@@ -1363,7 +1363,7 @@ literal|0
 return|;
 name|item
 operator|=
-name|path_list_append
+name|string_list_append
 argument_list|(
 name|name
 argument_list|,
@@ -1479,13 +1479,13 @@ name|states
 operator|->
 name|new
 operator|.
-name|strdup_paths
+name|strdup_strings
 operator|=
 name|states
 operator|->
 name|tracked
 operator|.
-name|strdup_paths
+name|strdup_strings
 operator|=
 literal|1
 expr_stmt|;
@@ -1505,7 +1505,7 @@ name|next
 control|)
 block|{
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|target
 init|=
@@ -1578,7 +1578,7 @@ operator|&
 name|states
 expr_stmt|;
 block|}
-name|path_list_append
+name|string_list_append
 argument_list|(
 name|abbrev_branch
 argument_list|(
@@ -1607,7 +1607,7 @@ argument_list|,
 name|states
 argument_list|)
 expr_stmt|;
-name|sort_path_list
+name|sort_string_list
 argument_list|(
 operator|&
 name|states
@@ -1760,7 +1760,7 @@ name|remote
 decl_stmt|;
 DECL|member|branches
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|branches
 decl_stmt|;
@@ -1811,7 +1811,7 @@ name|refspec
 name|refspec
 decl_stmt|;
 name|struct
-name|path_list_item
+name|string_list_item
 modifier|*
 name|item
 decl_stmt|;
@@ -1936,7 +1936,7 @@ argument_list|)
 return|;
 name|item
 operator|=
-name|path_list_append
+name|string_list_append
 argument_list|(
 name|refname
 argument_list|,
@@ -1976,7 +1976,7 @@ name|int
 name|remove_branches
 parameter_list|(
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|branches
 parameter_list|)
@@ -2005,7 +2005,7 @@ operator|++
 control|)
 block|{
 name|struct
-name|path_list_item
+name|string_list_item
 modifier|*
 name|item
 init|=
@@ -2022,7 +2022,7 @@ name|refname
 init|=
 name|item
 operator|->
-name|path
+name|string
 decl_stmt|;
 name|unsigned
 name|char
@@ -2104,7 +2104,7 @@ name|NULL
 block|}
 decl_stmt|;
 name|struct
-name|path_list
+name|string_list
 name|branches
 init|=
 block|{
@@ -2249,7 +2249,7 @@ operator|++
 control|)
 block|{
 name|struct
-name|path_list_item
+name|string_list_item
 modifier|*
 name|item
 init|=
@@ -2333,7 +2333,7 @@ literal|"branch.%s.%s"
 argument_list|,
 name|item
 operator|->
-name|path
+name|string
 argument_list|,
 operator|*
 name|k
@@ -2401,7 +2401,7 @@ operator|&
 name|branches
 argument_list|)
 expr_stmt|;
-name|path_list_clear
+name|string_list_clear
 argument_list|(
 operator|&
 name|branches
@@ -2427,7 +2427,7 @@ modifier|*
 name|title
 parameter_list|,
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|list
 parameter_list|)
@@ -2495,7 +2495,7 @@ index|[
 name|i
 index|]
 operator|.
-name|path
+name|string
 argument_list|)
 expr_stmt|;
 name|printf
@@ -2693,7 +2693,7 @@ operator|&
 name|refspec
 argument_list|)
 condition|)
-name|path_list_append
+name|string_list_append
 argument_list|(
 name|abbrev_branch
 argument_list|(
@@ -2883,7 +2883,7 @@ operator|++
 control|)
 block|{
 name|struct
-name|path_list_item
+name|string_list_item
 modifier|*
 name|branch
 init|=
@@ -2944,7 +2944,7 @@ literal|""
 argument_list|,
 name|branch
 operator|->
-name|path
+name|string
 argument_list|)
 expr_stmt|;
 for|for
@@ -2977,7 +2977,7 @@ index|[
 name|j
 index|]
 operator|.
-name|path
+name|string
 argument_list|)
 expr_stmt|;
 name|printf
@@ -3173,7 +3173,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/* NEEDSWORK: free remote */
-name|path_list_clear
+name|string_list_clear
 argument_list|(
 operator|&
 name|states
@@ -3183,7 +3183,7 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-name|path_list_clear
+name|string_list_clear
 argument_list|(
 operator|&
 name|states
@@ -3193,7 +3193,7 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-name|path_list_clear
+name|string_list_clear
 argument_list|(
 operator|&
 name|states
@@ -3435,7 +3435,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/* NEEDSWORK: free remote */
-name|path_list_clear
+name|string_list_clear
 argument_list|(
 operator|&
 name|states
@@ -3445,7 +3445,7 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-name|path_list_clear
+name|string_list_clear
 argument_list|(
 operator|&
 name|states
@@ -3455,7 +3455,7 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-name|path_list_clear
+name|string_list_clear
 argument_list|(
 operator|&
 name|states
@@ -3489,7 +3489,7 @@ name|priv
 parameter_list|)
 block|{
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|list
 init|=
@@ -3502,7 +3502,7 @@ name|remote
 operator|->
 name|skip_default_update
 condition|)
-name|path_list_append
+name|string_list_append
 argument_list|(
 name|xstrdup
 argument_list|(
@@ -3533,7 +3533,7 @@ name|name
 decl_stmt|;
 DECL|member|list
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|list
 decl_stmt|;
@@ -3610,7 +3610,7 @@ name|space
 operator|>
 literal|1
 condition|)
-name|path_list_append
+name|string_list_append
 argument_list|(
 name|xstrndup
 argument_list|(
@@ -3678,7 +3678,7 @@ init|=
 literal|0
 decl_stmt|;
 name|struct
-name|path_list
+name|string_list
 name|list
 init|=
 block|{
@@ -3823,17 +3823,17 @@ index|[
 name|i
 index|]
 operator|.
-name|path
+name|string
 argument_list|)
 expr_stmt|;
 comment|/* all names were strdup()ed or strndup()ed */
 name|list
 operator|.
-name|strdup_paths
+name|strdup_strings
 operator|=
 literal|1
 expr_stmt|;
-name|path_list_clear
+name|string_list_clear
 argument_list|(
 operator|&
 name|list
@@ -3864,13 +3864,13 @@ name|priv
 parameter_list|)
 block|{
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|list
 init|=
 name|priv
 decl_stmt|;
-name|path_list_append
+name|string_list_append
 argument_list|(
 name|remote
 operator|->
@@ -3931,7 +3931,7 @@ name|void
 parameter_list|)
 block|{
 name|struct
-name|path_list
+name|string_list
 name|list
 init|=
 block|{
@@ -3962,7 +3962,7 @@ block|{
 name|int
 name|i
 decl_stmt|;
-name|sort_path_list
+name|sort_string_list
 argument_list|(
 operator|&
 name|list
@@ -3985,7 +3985,7 @@ operator|++
 control|)
 block|{
 name|struct
-name|path_list_item
+name|string_list_item
 modifier|*
 name|item
 init|=
@@ -4001,7 +4001,7 @@ literal|"%s%s%s\n"
 argument_list|,
 name|item
 operator|->
-name|path
+name|string
 argument_list|,
 name|verbose
 condition|?

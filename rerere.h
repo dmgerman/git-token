@@ -15,7 +15,7 @@ end_define
 begin_include
 include|#
 directive|include
-file|"path-list.h"
+file|"string-list.h"
 end_include
 
 begin_function_decl
@@ -24,7 +24,7 @@ name|int
 name|setup_rerere
 parameter_list|(
 name|struct
-name|path_list
+name|string_list
 modifier|*
 parameter_list|)
 function_decl|;

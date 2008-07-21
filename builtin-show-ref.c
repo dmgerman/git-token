@@ -32,7 +32,7 @@ end_include
 begin_include
 include|#
 directive|include
-file|"path-list.h"
+file|"string-list.h"
 end_include
 
 begin_decl_stmt
@@ -562,18 +562,18 @@ name|cbdata
 parameter_list|)
 block|{
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|list
 init|=
 operator|(
 expr|struct
-name|path_list
+name|string_list
 operator|*
 operator|)
 name|cbdata
 decl_stmt|;
-name|path_list_insert
+name|string_list_insert
 argument_list|(
 name|refname
 argument_list|,
@@ -604,7 +604,7 @@ parameter_list|)
 block|{
 specifier|static
 name|struct
-name|path_list
+name|string_list
 name|existing_refs
 init|=
 block|{
@@ -807,7 +807,7 @@ block|}
 if|if
 condition|(
 operator|!
-name|path_list_has_path
+name|string_list_has_string
 argument_list|(
 operator|&
 name|existing_refs

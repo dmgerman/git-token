@@ -30,7 +30,7 @@ end_include
 begin_include
 include|#
 directive|include
-file|"path-list.h"
+file|"string-list.h"
 end_include
 
 begin_include
@@ -2707,18 +2707,18 @@ name|cbdata
 parameter_list|)
 block|{
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|list
 init|=
 operator|(
 expr|struct
-name|path_list
+name|string_list
 operator|*
 operator|)
 name|cbdata
 decl_stmt|;
-name|path_list_insert
+name|string_list_insert
 argument_list|(
 name|refname
 argument_list|,
@@ -2817,7 +2817,7 @@ name|tail
 parameter_list|)
 block|{
 name|struct
-name|path_list
+name|string_list
 name|existing_refs
 init|=
 block|{
@@ -2831,7 +2831,7 @@ literal|0
 block|}
 decl_stmt|;
 name|struct
-name|path_list
+name|string_list
 name|new_refs
 init|=
 block|{
@@ -3004,7 +3004,7 @@ block|}
 if|if
 condition|(
 operator|!
-name|path_list_has_path
+name|string_list_has_string
 argument_list|(
 operator|&
 name|existing_refs
@@ -3013,7 +3013,7 @@ name|ref_name
 argument_list|)
 operator|&&
 operator|!
-name|path_list_has_path
+name|string_list_has_string
 argument_list|(
 operator|&
 name|new_refs
@@ -3040,7 +3040,7 @@ argument_list|)
 operator|)
 condition|)
 block|{
-name|path_list_insert
+name|string_list_insert
 argument_list|(
 name|ref_name
 argument_list|,
@@ -3094,7 +3094,7 @@ name|ref_name
 argument_list|)
 expr_stmt|;
 block|}
-name|path_list_clear
+name|string_list_clear
 argument_list|(
 operator|&
 name|existing_refs
@@ -3102,7 +3102,7 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-name|path_list_clear
+name|string_list_clear
 argument_list|(
 operator|&
 name|new_refs

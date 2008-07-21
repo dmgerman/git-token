@@ -14,7 +14,7 @@ end_include
 begin_include
 include|#
 directive|include
-file|"path-list.h"
+file|"string-list.h"
 end_include
 
 begin_include
@@ -318,13 +318,13 @@ name|void
 name|garbage_collect
 parameter_list|(
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|rr
 parameter_list|)
 block|{
 name|struct
-name|path_list
+name|string_list
 name|to_remove
 init|=
 block|{
@@ -470,7 +470,7 @@ name|cutoff
 operator|*
 literal|86400
 condition|)
-name|path_list_append
+name|string_list_append
 argument_list|(
 name|name
 argument_list|,
@@ -503,10 +503,10 @@ index|[
 name|i
 index|]
 operator|.
-name|path
+name|string
 argument_list|)
 expr_stmt|;
-name|path_list_clear
+name|string_list_clear
 argument_list|(
 operator|&
 name|to_remove
@@ -755,7 +755,7 @@ name|prefix
 parameter_list|)
 block|{
 name|struct
-name|path_list
+name|string_list
 name|merge_rr
 init|=
 block|{
@@ -932,7 +932,7 @@ index|[
 name|i
 index|]
 operator|.
-name|path
+name|string
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -977,7 +977,7 @@ index|[
 name|i
 index|]
 operator|.
-name|path
+name|string
 decl_stmt|;
 specifier|const
 name|char
@@ -1021,7 +1021,7 @@ argument_list|(
 name|git_rerere_usage
 argument_list|)
 expr_stmt|;
-name|path_list_clear
+name|string_list_clear
 argument_list|(
 operator|&
 name|merge_rr

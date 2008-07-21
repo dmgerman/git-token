@@ -66,7 +66,7 @@ end_include
 begin_include
 include|#
 directive|include
-file|"path-list.h"
+file|"string-list.h"
 end_include
 
 begin_function
@@ -81,7 +81,7 @@ modifier|*
 name|path
 parameter_list|,
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|list
 parameter_list|)
@@ -146,7 +146,7 @@ operator|->
 name|d_name
 argument_list|)
 condition|)
-name|path_list_insert
+name|string_list_insert
 argument_list|(
 name|e
 operator|->
@@ -360,7 +360,7 @@ name|PATH_MAX
 index|]
 decl_stmt|;
 name|struct
-name|path_list
+name|string_list
 name|p1
 init|=
 block|{
@@ -431,7 +431,7 @@ name|p2
 argument_list|)
 condition|)
 block|{
-name|path_list_clear
+name|string_list_clear
 argument_list|(
 operator|&
 name|p1
@@ -616,7 +616,7 @@ index|[
 name|i1
 index|]
 operator|.
-name|path
+name|string
 argument_list|,
 name|p2
 operator|.
@@ -625,7 +625,7 @@ index|[
 name|i2
 index|]
 operator|.
-name|path
+name|string
 argument_list|)
 expr_stmt|;
 if|if
@@ -658,7 +658,7 @@ name|i1
 operator|++
 index|]
 operator|.
-name|path
+name|string
 argument_list|,
 name|PATH_MAX
 operator|-
@@ -696,7 +696,7 @@ name|i2
 operator|++
 index|]
 operator|.
-name|path
+name|string
 argument_list|,
 name|PATH_MAX
 operator|-
@@ -716,7 +716,7 @@ name|n2
 argument_list|)
 expr_stmt|;
 block|}
-name|path_list_clear
+name|string_list_clear
 argument_list|(
 operator|&
 name|p1
@@ -724,7 +724,7 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-name|path_list_clear
+name|string_list_clear
 argument_list|(
 operator|&
 name|p2

@@ -15,7 +15,7 @@ end_define
 begin_include
 include|#
 directive|include
-file|"path-list.h"
+file|"string-list.h"
 end_include
 
 begin_struct
@@ -25,7 +25,7 @@ name|shortlog
 block|{
 DECL|member|list
 name|struct
-name|path_list
+name|string_list
 name|list
 decl_stmt|;
 DECL|member|summary
@@ -67,7 +67,7 @@ name|email
 decl_stmt|;
 DECL|member|mailmap
 name|struct
-name|path_list
+name|string_list
 name|mailmap
 decl_stmt|;
 block|}

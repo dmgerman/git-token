@@ -8,7 +8,7 @@ end_include
 begin_include
 include|#
 directive|include
-file|"path-list.h"
+file|"string-list.h"
 end_include
 
 begin_include
@@ -138,7 +138,7 @@ name|void
 name|read_rr
 parameter_list|(
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|rr
 parameter_list|)
@@ -282,7 +282,7 @@ argument_list|(
 literal|"filename too long"
 argument_list|)
 expr_stmt|;
-name|path_list_insert
+name|string_list_insert
 argument_list|(
 name|buf
 argument_list|,
@@ -318,7 +318,7 @@ name|int
 name|write_rr
 parameter_list|(
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|rr
 parameter_list|,
@@ -375,7 +375,7 @@ index|[
 name|i
 index|]
 operator|.
-name|path
+name|string
 expr_stmt|;
 name|length
 operator|=
@@ -960,7 +960,7 @@ name|int
 name|find_conflict
 parameter_list|(
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|conflict
 parameter_list|)
@@ -1057,7 +1057,7 @@ name|ce_mode
 argument_list|)
 condition|)
 block|{
-name|path_list_insert
+name|string_list_insert
 argument_list|(
 operator|(
 specifier|const
@@ -1318,7 +1318,7 @@ name|int
 name|update_paths
 parameter_list|(
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|update
 parameter_list|)
@@ -1369,7 +1369,7 @@ operator|++
 control|)
 block|{
 name|struct
-name|path_list_item
+name|string_list_item
 modifier|*
 name|item
 init|=
@@ -1387,7 +1387,7 @@ name|add_file_to_cache
 argument_list|(
 name|item
 operator|->
-name|path
+name|string
 argument_list|,
 name|ADD_CACHE_IGNORE_ERRORS
 argument_list|)
@@ -1455,7 +1455,7 @@ name|int
 name|do_plain_rerere
 parameter_list|(
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|rr
 parameter_list|,
@@ -1464,7 +1464,7 @@ name|fd
 parameter_list|)
 block|{
 name|struct
-name|path_list
+name|string_list
 name|conflict
 init|=
 block|{
@@ -1478,7 +1478,7 @@ literal|1
 block|}
 decl_stmt|;
 name|struct
-name|path_list
+name|string_list
 name|update
 init|=
 block|{
@@ -1529,12 +1529,12 @@ index|[
 name|i
 index|]
 operator|.
-name|path
+name|string
 decl_stmt|;
 if|if
 condition|(
 operator|!
-name|path_list_has_path
+name|string_list_has_string
 argument_list|(
 name|rr
 argument_list|,
@@ -1584,7 +1584,7 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|path_list_insert
+name|string_list_insert
 argument_list|(
 name|path
 argument_list|,
@@ -1668,7 +1668,7 @@ index|[
 name|i
 index|]
 operator|.
-name|path
+name|string
 decl_stmt|;
 specifier|const
 name|char
@@ -1712,7 +1712,7 @@ if|if
 condition|(
 name|rerere_autoupdate
 condition|)
-name|path_list_insert
+name|string_list_insert
 argument_list|(
 name|path
 argument_list|,
@@ -1995,7 +1995,7 @@ name|int
 name|setup_rerere
 parameter_list|(
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|merge_rr
 parameter_list|)
@@ -2062,7 +2062,7 @@ name|void
 parameter_list|)
 block|{
 name|struct
-name|path_list
+name|string_list
 name|merge_rr
 init|=
 block|{

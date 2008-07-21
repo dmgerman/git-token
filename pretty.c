@@ -32,7 +32,7 @@ end_include
 begin_include
 include|#
 directive|include
-file|"path-list.h"
+file|"string-list.h"
 end_include
 
 begin_include
@@ -1710,7 +1710,7 @@ parameter_list|)
 block|{
 specifier|static
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|mail_map
 decl_stmt|;

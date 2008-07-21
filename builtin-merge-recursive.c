@@ -66,7 +66,7 @@ end_include
 begin_include
 include|#
 directive|include
-file|"path-list.h"
+file|"string-list.h"
 end_include
 
 begin_include
@@ -364,7 +364,7 @@ begin_decl_stmt
 DECL|variable|current_file_set
 specifier|static
 name|struct
-name|path_list
+name|string_list
 name|current_file_set
 init|=
 block|{
@@ -383,7 +383,7 @@ begin_decl_stmt
 DECL|variable|current_directory_set
 specifier|static
 name|struct
-name|path_list
+name|string_list
 name|current_directory_set
 init|=
 block|{
@@ -1438,7 +1438,7 @@ argument_list|(
 name|mode
 argument_list|)
 condition|)
-name|path_list_insert
+name|string_list_insert
 argument_list|(
 name|newpath
 argument_list|,
@@ -1447,7 +1447,7 @@ name|current_directory_set
 argument_list|)
 expr_stmt|;
 else|else
-name|path_list_insert
+name|string_list_insert
 argument_list|(
 name|newpath
 argument_list|,
@@ -1552,13 +1552,13 @@ modifier|*
 name|b
 parameter_list|,
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|entries
 parameter_list|)
 block|{
 name|struct
-name|path_list_item
+name|string_list_item
 modifier|*
 name|item
 decl_stmt|;
@@ -1670,7 +1670,7 @@ argument_list|)
 expr_stmt|;
 name|item
 operator|=
-name|path_list_insert
+name|string_list_insert
 argument_list|(
 name|path
 argument_list|,
@@ -1697,7 +1697,7 @@ begin_function
 DECL|function|get_unmerged
 specifier|static
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|get_unmerged
 parameter_list|(
@@ -1705,7 +1705,7 @@ name|void
 parameter_list|)
 block|{
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|unmerged
 init|=
@@ -1716,7 +1716,7 @@ argument_list|,
 sizeof|sizeof
 argument_list|(
 expr|struct
-name|path_list
+name|string_list
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1725,7 +1725,7 @@ name|i
 decl_stmt|;
 name|unmerged
 operator|->
-name|strdup_paths
+name|strdup_strings
 operator|=
 literal|1
 expr_stmt|;
@@ -1744,7 +1744,7 @@ operator|++
 control|)
 block|{
 name|struct
-name|path_list_item
+name|string_list_item
 modifier|*
 name|item
 decl_stmt|;
@@ -1774,7 +1774,7 @@ condition|)
 continue|continue;
 name|item
 operator|=
-name|path_list_lookup
+name|string_list_lookup
 argument_list|(
 name|ce
 operator|->
@@ -1791,7 +1791,7 @@ condition|)
 block|{
 name|item
 operator|=
-name|path_list_insert
+name|string_list_insert
 argument_list|(
 name|ce
 operator|->
@@ -1905,7 +1905,7 @@ begin_function
 DECL|function|get_renames
 specifier|static
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|get_renames
 parameter_list|(
@@ -1930,7 +1930,7 @@ modifier|*
 name|b_tree
 parameter_list|,
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|entries
 parameter_list|)
@@ -1939,7 +1939,7 @@ name|int
 name|i
 decl_stmt|;
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|renames
 decl_stmt|;
@@ -1956,7 +1956,7 @@ argument_list|,
 sizeof|sizeof
 argument_list|(
 expr|struct
-name|path_list
+name|string_list
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2068,7 +2068,7 @@ name|i
 control|)
 block|{
 name|struct
-name|path_list_item
+name|string_list_item
 modifier|*
 name|item
 decl_stmt|;
@@ -2130,7 +2130,7 @@ name|pair
 expr_stmt|;
 name|item
 operator|=
-name|path_list_lookup
+name|string_list_lookup
 argument_list|(
 name|re
 operator|->
@@ -2182,7 +2182,7 @@ name|util
 expr_stmt|;
 name|item
 operator|=
-name|path_list_lookup
+name|string_list_lookup
 argument_list|(
 name|re
 operator|->
@@ -2234,7 +2234,7 @@ name|util
 expr_stmt|;
 name|item
 operator|=
-name|path_list_insert
+name|string_list_insert
 argument_list|(
 name|pair
 operator|->
@@ -2698,7 +2698,7 @@ literal|'_'
 expr_stmt|;
 while|while
 condition|(
-name|path_list_has_path
+name|string_list_has_string
 argument_list|(
 operator|&
 name|current_file_set
@@ -2706,7 +2706,7 @@ argument_list|,
 name|newpath
 argument_list|)
 operator|||
-name|path_list_has_path
+name|string_list_has_string
 argument_list|(
 operator|&
 name|current_directory_set
@@ -2734,7 +2734,7 @@ name|suffix
 operator|++
 argument_list|)
 expr_stmt|;
-name|path_list_insert
+name|string_list_insert
 argument_list|(
 name|newpath
 argument_list|,
@@ -4217,7 +4217,7 @@ name|ren2_dst
 decl_stmt|;
 if|if
 condition|(
-name|path_list_has_path
+name|string_list_has_string
 argument_list|(
 operator|&
 name|current_directory_set
@@ -4266,7 +4266,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|path_list_has_path
+name|string_list_has_string
 argument_list|(
 operator|&
 name|current_directory_set
@@ -4649,12 +4649,12 @@ name|int
 name|process_renames
 parameter_list|(
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|a_renames
 parameter_list|,
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|b_renames
 parameter_list|,
@@ -4679,7 +4679,7 @@ decl_stmt|,
 name|j
 decl_stmt|;
 name|struct
-name|path_list
+name|string_list
 name|a_by_dst
 init|=
 block|{
@@ -4737,7 +4737,7 @@ index|]
 operator|.
 name|util
 expr_stmt|;
-name|path_list_insert
+name|string_list_insert
 argument_list|(
 name|sre
 operator|->
@@ -4785,7 +4785,7 @@ index|]
 operator|.
 name|util
 expr_stmt|;
-name|path_list_insert
+name|string_list_insert
 argument_list|(
 name|sre
 operator|->
@@ -4838,7 +4838,7 @@ modifier|*
 name|src
 decl_stmt|;
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|renames1
 decl_stmt|,
@@ -4943,7 +4943,7 @@ index|[
 name|i
 index|]
 operator|.
-name|path
+name|string
 argument_list|,
 name|b_renames
 operator|->
@@ -4952,7 +4952,7 @@ index|[
 name|j
 index|]
 operator|.
-name|path
+name|string
 argument_list|)
 expr_stmt|;
 if|if
@@ -5426,7 +5426,7 @@ else|else
 block|{
 comment|/* Renamed in 1, maybe changed in 2 */
 name|struct
-name|path_list_item
+name|string_list_item
 modifier|*
 name|item
 decl_stmt|;
@@ -5535,7 +5535,7 @@ literal|0
 expr_stmt|;
 if|if
 condition|(
-name|path_list_has_path
+name|string_list_has_string
 argument_list|(
 operator|&
 name|current_directory_set
@@ -5716,7 +5716,7 @@ condition|(
 operator|(
 name|item
 operator|=
-name|path_list_lookup
+name|string_list_lookup
 argument_list|(
 name|ren1_dst
 argument_list|,
@@ -6023,7 +6023,7 @@ block|}
 block|}
 block|}
 block|}
-name|path_list_clear
+name|string_list_clear
 argument_list|(
 operator|&
 name|a_by_dst
@@ -6031,7 +6031,7 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-name|path_list_clear
+name|string_list_clear
 argument_list|(
 operator|&
 name|b_by_dst
@@ -6469,7 +6469,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|path_list_has_path
+name|string_list_has_string
 argument_list|(
 operator|&
 name|current_directory_set
@@ -6990,7 +6990,7 @@ argument_list|()
 condition|)
 block|{
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|entries
 decl_stmt|,
@@ -7003,7 +7003,7 @@ decl_stmt|;
 name|int
 name|i
 decl_stmt|;
-name|path_list_clear
+name|string_list_clear
 argument_list|(
 operator|&
 name|current_file_set
@@ -7011,7 +7011,7 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
-name|path_list_clear
+name|string_list_clear
 argument_list|(
 operator|&
 name|current_directory_set
@@ -7105,7 +7105,7 @@ index|[
 name|i
 index|]
 operator|.
-name|path
+name|string
 decl_stmt|;
 name|struct
 name|stage_data
@@ -7145,21 +7145,21 @@ operator|=
 literal|0
 expr_stmt|;
 block|}
-name|path_list_clear
+name|string_list_clear
 argument_list|(
 name|re_merge
 argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-name|path_list_clear
+name|string_list_clear
 argument_list|(
 name|re_head
 argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-name|path_list_clear
+name|string_list_clear
 argument_list|(
 name|entries
 argument_list|,

@@ -66,7 +66,7 @@ end_include
 begin_include
 include|#
 directive|include
-file|"path-list.h"
+file|"string-list.h"
 end_include
 
 begin_include
@@ -1809,7 +1809,7 @@ modifier|*
 name|pending
 parameter_list|,
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|extra_refs
 parameter_list|)
@@ -1942,7 +1942,7 @@ operator|==
 name|OBJ_TAG
 condition|)
 block|{
-name|path_list_insert
+name|string_list_insert
 argument_list|(
 name|full_name
 argument_list|,
@@ -2039,7 +2039,7 @@ operator|->
 name|util
 condition|)
 comment|/* more than one name for the same object */
-name|path_list_insert
+name|string_list_insert
 argument_list|(
 name|full_name
 argument_list|,
@@ -2068,7 +2068,7 @@ name|void
 name|handle_tags_and_duplicates
 parameter_list|(
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|extra_refs
 parameter_list|)
@@ -2111,7 +2111,7 @@ index|[
 name|i
 index|]
 operator|.
-name|path
+name|string
 decl_stmt|;
 name|struct
 name|object
@@ -2591,7 +2591,7 @@ name|NULL
 block|}
 decl_stmt|;
 name|struct
-name|path_list
+name|string_list
 name|extra_refs
 init|=
 block|{

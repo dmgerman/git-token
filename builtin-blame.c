@@ -78,7 +78,7 @@ end_include
 begin_include
 include|#
 directive|include
-file|"path-list.h"
+file|"string-list.h"
 end_include
 
 begin_include
@@ -219,7 +219,7 @@ begin_decl_stmt
 DECL|variable|mailmap
 specifier|static
 name|struct
-name|path_list
+name|string_list
 name|mailmap
 decl_stmt|;
 end_decl_stmt
@@ -9860,10 +9860,10 @@ comment|/*  * Used for the command line parsing; check if the path exists  * in 
 end_comment
 
 begin_function
-DECL|function|has_path_in_work_tree
+DECL|function|has_string_in_work_tree
 specifier|static
 name|int
-name|has_path_in_work_tree
+name|has_string_in_work_tree
 parameter_list|(
 specifier|const
 name|char
@@ -12433,7 +12433,7 @@ operator|==
 literal|3
 operator|&&
 operator|!
-name|has_path_in_work_tree
+name|has_string_in_work_tree
 argument_list|(
 name|path
 argument_list|)
@@ -12478,7 +12478,7 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|has_path_in_work_tree
+name|has_string_in_work_tree
 argument_list|(
 name|path
 argument_list|)

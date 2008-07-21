@@ -13,14 +13,14 @@ name|PATH_LIST_H
 end_define
 
 begin_struct
-DECL|struct|path_list_item
+DECL|struct|string_list_item
 struct|struct
-name|path_list_item
+name|string_list_item
 block|{
-DECL|member|path
+DECL|member|string
 name|char
 modifier|*
-name|path
+name|string
 decl_stmt|;
 DECL|member|util
 name|void
@@ -32,13 +32,13 @@ struct|;
 end_struct
 
 begin_struct
-DECL|struct|path_list
+DECL|struct|string_list
 struct|struct
-name|path_list
+name|string_list
 block|{
 DECL|member|items
 name|struct
-name|path_list_item
+name|string_list_item
 modifier|*
 name|items
 decl_stmt|;
@@ -50,10 +50,10 @@ name|nr
 decl_stmt|,
 name|alloc
 decl_stmt|;
-DECL|member|strdup_paths
+DECL|member|strdup_strings
 name|unsigned
 name|int
-name|strdup_paths
+name|strdup_strings
 range|:
 literal|1
 decl_stmt|;
@@ -63,7 +63,7 @@ end_struct
 
 begin_function_decl
 name|void
-name|print_path_list
+name|print_string_list
 parameter_list|(
 specifier|const
 name|char
@@ -72,7 +72,7 @@ name|text
 parameter_list|,
 specifier|const
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|p
 parameter_list|)
@@ -81,10 +81,10 @@ end_function_decl
 
 begin_function_decl
 name|void
-name|path_list_clear
+name|string_list_clear
 parameter_list|(
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|list
 parameter_list|,
@@ -100,35 +100,35 @@ end_comment
 
 begin_function_decl
 name|int
-name|path_list_has_path
+name|string_list_has_string
 parameter_list|(
 specifier|const
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|list
 parameter_list|,
 specifier|const
 name|char
 modifier|*
-name|path
+name|string
 parameter_list|)
 function_decl|;
 end_function_decl
 
 begin_function_decl
 name|struct
-name|path_list_item
+name|string_list_item
 modifier|*
-name|path_list_insert
+name|string_list_insert
 parameter_list|(
 specifier|const
 name|char
 modifier|*
-name|path
+name|string
 parameter_list|,
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|list
 parameter_list|)
@@ -137,17 +137,17 @@ end_function_decl
 
 begin_function_decl
 name|struct
-name|path_list_item
+name|string_list_item
 modifier|*
-name|path_list_lookup
+name|string_list_lookup
 parameter_list|(
 specifier|const
 name|char
 modifier|*
-name|path
+name|string
 parameter_list|,
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|list
 parameter_list|)
@@ -160,17 +160,17 @@ end_comment
 
 begin_function_decl
 name|struct
-name|path_list_item
+name|string_list_item
 modifier|*
-name|path_list_append
+name|string_list_append
 parameter_list|(
 specifier|const
 name|char
 modifier|*
-name|path
+name|string
 parameter_list|,
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|list
 parameter_list|)
@@ -179,10 +179,10 @@ end_function_decl
 
 begin_function_decl
 name|void
-name|sort_path_list
+name|sort_string_list
 parameter_list|(
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|list
 parameter_list|)
@@ -191,17 +191,17 @@ end_function_decl
 
 begin_function_decl
 name|int
-name|unsorted_path_list_has_path
+name|unsorted_string_list_has_string
 parameter_list|(
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|list
 parameter_list|,
 specifier|const
 name|char
 modifier|*
-name|path
+name|string
 parameter_list|)
 function_decl|;
 end_function_decl
