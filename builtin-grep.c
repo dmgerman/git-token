@@ -2531,7 +2531,7 @@ name|char
 name|builtin_grep_usage
 index|[]
 init|=
-literal|"git grep<option>*<rev>* [-e]<pattern> [<path>...]"
+literal|"git grep<option>* [-e]<pattern><rev>* [[--]<path>...]"
 decl_stmt|;
 end_decl_stmt
 

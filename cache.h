@@ -2521,7 +2521,7 @@ DECL|macro|REFRESH_IGNORE_SUBMODULES
 define|#
 directive|define
 name|REFRESH_IGNORE_SUBMODULES
-value|0x0008
+value|0x0010
 end_define
 
 begin_comment
