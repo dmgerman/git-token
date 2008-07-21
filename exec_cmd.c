@@ -229,6 +229,8 @@ name|is_absolute_path
 argument_list|(
 name|path
 argument_list|)
+operator|&&
+name|argv0_path
 condition|)
 block|{
 name|struct
@@ -244,8 +246,7 @@ name|d
 argument_list|,
 literal|"%s/%s"
 argument_list|,
-name|git_exec_path
-argument_list|()
+name|argv0_path
 argument_list|,
 name|path
 argument_list|)
