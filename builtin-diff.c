@@ -1601,6 +1601,13 @@ name|diffopt
 argument_list|,
 name|EXIT_WITH_STATUS
 argument_list|)
+operator|&&
+name|check_pager_config
+argument_list|(
+literal|"diff"
+argument_list|)
+operator|!=
+literal|0
 condition|)
 name|setup_pager
 argument_list|()
