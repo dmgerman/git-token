@@ -1582,5 +1582,22 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * A replacement of main() that ensures that argv[0] has a path  */
+end_comment
+
+begin_define
+DECL|macro|main
+define|#
+directive|define
+name|main
+parameter_list|(
+name|c
+parameter_list|,
+name|v
+parameter_list|)
+value|main(int argc, const char **argv) \ { \ 	static int mingw_main(); \ 	argv[0] = xstrdup(_pgmptr); \ 	return mingw_main(argc, argv); \ } \ static int mingw_main(c,v)
+end_define
+
 end_unit
 
