@@ -625,6 +625,17 @@ if|if
 condition|(
 name|cmd
 operator|->
+name|preexec_cb
+condition|)
+name|cmd
+operator|->
+name|preexec_cb
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|cmd
+operator|->
 name|git_cmd
 condition|)
 block|{
