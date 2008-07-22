@@ -394,6 +394,7 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|only_include_assumed
+specifier|static
 specifier|const
 name|char
 modifier|*
@@ -403,6 +404,7 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|message
+specifier|static
 name|struct
 name|strbuf
 name|message
@@ -459,18 +461,11 @@ argument_list|,
 name|arg
 argument_list|)
 expr_stmt|;
-name|strbuf_addch
+name|strbuf_addstr
 argument_list|(
 name|buf
 argument_list|,
-literal|'\n'
-argument_list|)
-expr_stmt|;
-name|strbuf_addch
-argument_list|(
-name|buf
-argument_list|,
-literal|'\n'
+literal|"\n\n"
 argument_list|)
 expr_stmt|;
 block|}
