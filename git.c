@@ -2042,8 +2042,6 @@ block|,
 name|RUN_SETUP
 operator||
 name|NEED_WORK_TREE
-operator||
-name|USE_PAGER
 block|}
 block|,
 block|{
