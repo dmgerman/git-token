@@ -2910,7 +2910,7 @@ name|options
 argument_list|,
 name|checkout_usage
 argument_list|,
-literal|0
+name|PARSE_OPT_KEEP_DASHDASH
 argument_list|)
 expr_stmt|;
 if|if
