@@ -2416,6 +2416,7 @@ end_function
 
 begin_function
 DECL|function|git_merge_config
+specifier|static
 name|int
 name|git_merge_config
 parameter_list|(

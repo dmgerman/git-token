@@ -915,6 +915,7 @@ end_function
 
 begin_function
 DECL|function|normalize_value
+specifier|static
 name|char
 modifier|*
 name|normalize_value

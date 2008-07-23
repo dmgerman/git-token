@@ -4663,6 +4663,7 @@ end_function
 
 begin_function
 DECL|function|git_commit_config
+specifier|static
 name|int
 name|git_commit_config
 parameter_list|(
