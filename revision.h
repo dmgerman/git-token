@@ -101,24 +101,11 @@ value|(1u<<8)
 end_define
 
 begin_define
-DECL|macro|TOPOSORT
-define|#
-directive|define
-name|TOPOSORT
-value|(1u<<9)
-end_define
-
-begin_comment
-DECL|macro|TOPOSORT
-comment|/* In the active toposort list.. */
-end_comment
-
-begin_define
 DECL|macro|ALL_REV_FLAGS
 define|#
 directive|define
 name|ALL_REV_FLAGS
-value|((1u<<10)-1)
+value|((1u<<9)-1)
 end_define
 
 begin_struct_decl
