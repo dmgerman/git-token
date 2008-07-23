@@ -76,14 +76,6 @@ decl_stmt|;
 end_decl_stmt
 
 begin_define
-DECL|macro|REF_UNKNOWN_TYPE
-define|#
-directive|define
-name|REF_UNKNOWN_TYPE
-value|0x00
-end_define
-
-begin_define
 DECL|macro|REF_LOCAL_BRANCH
 define|#
 directive|define
@@ -97,14 +89,6 @@ define|#
 directive|define
 name|REF_REMOTE_BRANCH
 value|0x02
-end_define
-
-begin_define
-DECL|macro|REF_TAG
-define|#
-directive|define
-name|REF_TAG
-value|0x04
 end_define
 
 begin_decl_stmt
@@ -1067,8 +1051,6 @@ name|newitem
 decl_stmt|;
 name|int
 name|kind
-init|=
-name|REF_UNKNOWN_TYPE
 decl_stmt|;
 name|int
 name|len
@@ -1120,27 +1102,10 @@ operator|+=
 literal|13
 expr_stmt|;
 block|}
-elseif|else
-if|if
-condition|(
-operator|!
-name|prefixcmp
-argument_list|(
-name|refname
-argument_list|,
-literal|"refs/tags/"
-argument_list|)
-condition|)
-block|{
-name|kind
-operator|=
-name|REF_TAG
-expr_stmt|;
-name|refname
-operator|+=
-literal|10
-expr_stmt|;
-block|}
+else|else
+return|return
+literal|0
+return|;
 comment|/* Filter with with_commit if specified */
 if|if
 condition|(
