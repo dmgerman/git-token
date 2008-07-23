@@ -94,19 +94,6 @@ name|SYMMETRIC_LEFT
 value|(1u<<8)
 end_define
 
-begin_define
-DECL|macro|TOPOSORT
-define|#
-directive|define
-name|TOPOSORT
-value|(1u<<9)
-end_define
-
-begin_comment
-DECL|macro|TOPOSORT
-comment|/* In the active toposort list.. */
-end_comment
-
 begin_struct_decl
 struct_decl|struct
 name|rev_info
