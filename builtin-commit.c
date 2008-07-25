@@ -3441,6 +3441,8 @@ argument_list|,
 name|index_file
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|launch_editor
 argument_list|(
 name|git_path
@@ -3452,7 +3454,21 @@ name|NULL
 argument_list|,
 name|env
 argument_list|)
+condition|)
+block|{
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"Please supply the message using either -m or -F option.\n"
+argument_list|)
 expr_stmt|;
+name|exit
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 if|if
 condition|(

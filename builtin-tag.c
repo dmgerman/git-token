@@ -1528,6 +1528,8 @@ argument_list|(
 name|fd
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|launch_editor
 argument_list|(
 name|path
@@ -1536,7 +1538,21 @@ name|buf
 argument_list|,
 name|NULL
 argument_list|)
+condition|)
+block|{
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"Please supply the message using either -m or -F option.\n"
+argument_list|)
 expr_stmt|;
+name|exit
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
 name|unlink
 argument_list|(
 name|path

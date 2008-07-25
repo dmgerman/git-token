@@ -788,7 +788,7 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|void
+name|int
 name|launch_editor
 parameter_list|(
 specifier|const
