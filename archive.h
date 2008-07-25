@@ -12,22 +12,6 @@ directive|define
 name|ARCHIVE_H
 end_define
 
-begin_define
-DECL|macro|MAX_EXTRA_ARGS
-define|#
-directive|define
-name|MAX_EXTRA_ARGS
-value|32
-end_define
-
-begin_define
-DECL|macro|MAX_ARGS
-define|#
-directive|define
-name|MAX_ARGS
-value|(MAX_EXTRA_ARGS + 32)
-end_define
-
 begin_struct
 DECL|struct|archiver_args
 struct|struct

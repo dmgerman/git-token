@@ -69,6 +69,14 @@ literal|"git upload-archive: archiver process was lost"
 decl_stmt|;
 end_decl_stmt
 
+begin_define
+DECL|macro|MAX_ARGS
+define|#
+directive|define
+name|MAX_ARGS
+value|(64)
+end_define
+
 begin_function
 DECL|function|run_upload_archive
 specifier|static
@@ -237,7 +245,11 @@ literal|2
 condition|)
 name|die
 argument_list|(
-literal|"Too many options (>29)"
+literal|"Too many options (>%d)"
+argument_list|,
+name|MAX_ARGS
+operator|-
+literal|2
 argument_list|)
 expr_stmt|;
 if|if
