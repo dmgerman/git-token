@@ -49,11 +49,29 @@ name|USES_ZLIB_COMPRESSION
 value|1
 end_define
 
-begin_decl_stmt
-DECL|variable|archivers
+begin_struct
+DECL|struct|archiver
 specifier|const
-name|struct
+struct|struct
 name|archiver
+block|{
+DECL|member|name
+specifier|const
+name|char
+modifier|*
+name|name
+decl_stmt|;
+DECL|member|write_archive
+name|write_archive_fn_t
+name|write_archive
+decl_stmt|;
+DECL|member|flags
+name|unsigned
+name|int
+name|flags
+decl_stmt|;
+DECL|variable|archivers
+block|}
 name|archivers
 index|[]
 init|=
@@ -72,8 +90,8 @@ block|,
 name|USES_ZLIB_COMPRESSION
 block|}
 block|, }
-decl_stmt|;
-end_decl_stmt
+struct|;
+end_struct
 
 begin_function
 DECL|function|format_subst

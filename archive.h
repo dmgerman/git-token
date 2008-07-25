@@ -132,30 +132,6 @@ parameter_list|)
 function_decl|;
 end_typedef
 
-begin_struct
-DECL|struct|archiver
-struct|struct
-name|archiver
-block|{
-DECL|member|name
-specifier|const
-name|char
-modifier|*
-name|name
-decl_stmt|;
-DECL|member|write_archive
-name|write_archive_fn_t
-name|write_archive
-decl_stmt|;
-DECL|member|flags
-name|unsigned
-name|int
-name|flags
-decl_stmt|;
-block|}
-struct|;
-end_struct
-
 begin_comment
 comment|/*  * Archive-format specific backends.  */
 end_comment
