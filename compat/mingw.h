@@ -1596,7 +1596,7 @@ name|c
 parameter_list|,
 name|v
 parameter_list|)
-value|main(int argc, const char **argv) \ { \ 	static int mingw_main(); \ 	argv[0] = xstrdup(_pgmptr); \ 	return mingw_main(argc, argv); \ } \ static int mingw_main(c,v)
+value|dummy_decl_mingw_main(); \ static int mingw_main(); \ int main(int argc, const char **argv) \ { \ 	argv[0] = xstrdup(_pgmptr); \ 	return mingw_main(argc, argv); \ } \ static int mingw_main(c,v)
 end_define
 
 end_unit
