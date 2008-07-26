@@ -1052,11 +1052,6 @@ decl_stmt|;
 name|int
 name|len
 decl_stmt|;
-specifier|static
-name|struct
-name|commit_list
-name|branch
-decl_stmt|;
 comment|/* Detect kind */
 if|if
 condition|(
@@ -1163,32 +1158,6 @@ name|merge_filter
 operator|!=
 name|NO_FILTER
 condition|)
-block|{
-name|branch
-operator|.
-name|item
-operator|=
-name|lookup_commit_reference_gently
-argument_list|(
-name|sha1
-argument_list|,
-literal|1
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-operator|!
-name|branch
-operator|.
-name|item
-condition|)
-name|die
-argument_list|(
-literal|"Unable to lookup tip of branch %s"
-argument_list|,
-name|refname
-argument_list|)
-expr_stmt|;
 name|add_pending_object
 argument_list|(
 operator|&
@@ -1201,14 +1170,11 @@ expr|struct
 name|object
 operator|*
 operator|)
-name|branch
-operator|.
-name|item
+name|commit
 argument_list|,
 name|refname
 argument_list|)
 expr_stmt|;
-block|}
 comment|/* Resize buffer */
 if|if
 condition|(
