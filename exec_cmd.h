@@ -62,6 +62,23 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|prepare_git_cmd
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|argv
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|int
 name|execv_git_cmd
 parameter_list|(
