@@ -670,6 +670,15 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+if|if
+condition|(
+operator|!
+name|template_dir
+index|[
+literal|0
+index|]
+condition|)
+return|return;
 name|strcpy
 argument_list|(
 name|template_path
