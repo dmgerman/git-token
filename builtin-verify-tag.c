@@ -504,16 +504,10 @@ expr_stmt|;
 if|if
 condition|(
 name|argc
-operator|==
+operator|>
 literal|1
-condition|)
-name|usage
-argument_list|(
-name|builtin_verify_tag_usage
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
+operator|&&
+operator|(
 operator|!
 name|strcmp
 argument_list|(
@@ -535,6 +529,7 @@ index|]
 argument_list|,
 literal|"--verbose"
 argument_list|)
+operator|)
 condition|)
 block|{
 name|verbose
@@ -545,6 +540,17 @@ name|i
 operator|++
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|argc
+operator|<=
+name|i
+condition|)
+name|usage
+argument_list|(
+name|builtin_verify_tag_usage
+argument_list|)
+expr_stmt|;
 comment|/* sometimes the program was terminated because this signal 	 * was received in the process of writing the gpg input: */
 name|signal
 argument_list|(
