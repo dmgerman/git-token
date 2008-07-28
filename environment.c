@@ -46,6 +46,15 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|trust_ctime
+name|int
+name|trust_ctime
+init|=
+literal|1
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|has_symlinks
 name|int
 name|has_symlinks
