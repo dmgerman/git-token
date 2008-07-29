@@ -2999,6 +2999,7 @@ name|fp
 argument_list|,
 literal|"\n"
 literal|"# Please enter the commit message for your changes.\n"
+literal|"# To abort the commit, use an empty commit message.\n"
 literal|"# (Comment lines starting with '#' will "
 argument_list|)
 expr_stmt|;
