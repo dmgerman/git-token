@@ -752,6 +752,13 @@ name|ce_mode
 argument_list|)
 condition|)
 return|return
+name|ce_compare_gitlink
+argument_list|(
+name|ce
+argument_list|)
+condition|?
+name|DATA_CHANGED
+else|:
 literal|0
 return|;
 default|default:
@@ -962,6 +969,7 @@ break|break;
 case|case
 name|S_IFGITLINK
 case|:
+comment|/* We ignore most of the st_xxx fields for gitlinks */
 if|if
 condition|(
 operator|!
@@ -1385,7 +1393,7 @@ condition|)
 return|return
 name|changed
 return|;
-comment|/* Immediately after read-tree or update-index --cacheinfo, 	 * the length field is zero.  For other cases the ce_size 	 * should match the SHA1 recorded in the index entry. 	 */
+comment|/* 	 * Immediately after read-tree or update-index --cacheinfo, 	 * the length field is zero, as we have never even read the 	 * lstat(2) information once, and we cannot trust DATA_CHANGED 	 * returned by ie_match_stat() which in turn was returned by 	 * ce_match_stat_basic() to signal that the filesize of the 	 * blob changed.  We have to actually go to the filesystem to 	 * see if the contents match, and if so, should answer "unchanged". 	 * 	 * The logic does not apply to gitlinks, as ce_match_stat_basic() 	 * already has checked the actual HEAD from the filesystem in the 	 * subproject.  If ie_match_stat() already said it is different, 	 * then we know it is. 	 */
 if|if
 condition|(
 operator|(
@@ -1394,11 +1402,20 @@ operator|&
 name|DATA_CHANGED
 operator|)
 operator|&&
+operator|(
+name|S_ISGITLINK
+argument_list|(
+name|ce
+operator|->
+name|ce_mode
+argument_list|)
+operator|||
 name|ce
 operator|->
 name|ce_size
 operator|!=
 literal|0
+operator|)
 condition|)
 return|return
 name|changed
@@ -6485,7 +6502,7 @@ modifier|*
 name|ce
 parameter_list|)
 block|{
-comment|/* 	 * The only thing we care about in this function is to smudge the 	 * falsely clean entry due to touch-update-touch race, so we leave 	 * everything else as they are.  We are called for entries whose 	 * ce_mtime match the index file mtime. 	 */
+comment|/* 	 * The only thing we care about in this function is to smudge the 	 * falsely clean entry due to touch-update-touch race, so we leave 	 * everything else as they are.  We are called for entries whose 	 * ce_mtime match the index file mtime. 	 * 	 * Note that this actually does not do much for gitlinks, for 	 * which ce_match_stat_basic() always goes to the actual 	 * contents.  The caller checks with is_racy_timestamp() which 	 * always says "no" for gitlinks, so we are not called for them ;-) 	 */
 name|struct
 name|stat
 name|st
