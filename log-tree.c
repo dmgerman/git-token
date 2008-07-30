@@ -955,7 +955,7 @@ argument_list|)
 operator|-
 literal|1
 argument_list|,
-literal|"--%s%s\n"
+literal|"\n--%s%s\n"
 literal|"Content-Type: text/x-patch;"
 literal|" name=\"%s.diff\"\n"
 literal|"Content-Transfer-Encoding: 8bit\n"
