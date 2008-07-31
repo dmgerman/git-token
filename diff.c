@@ -8169,6 +8169,12 @@ literal|"tex"
 block|,
 literal|"^\\(\\\\\\(sub\\)*section{.*\\)$"
 block|}
+block|,
+block|{
+literal|"ruby"
+block|,
+literal|"^\\s*\\(\\(class\\|module\\|def\\)\\s.*\\)$"
+block|}
 block|, }
 struct|;
 end_struct
