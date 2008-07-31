@@ -2998,9 +2998,7 @@ argument_list|(
 name|fp
 argument_list|,
 literal|"\n"
-literal|"# Please enter the commit message for your changes.\n"
-literal|"# To abort the commit, use an empty commit message.\n"
-literal|"# (Comment lines starting with '#' will "
+literal|"# Please enter the commit message for your changes."
 argument_list|)
 expr_stmt|;
 if|if
@@ -3013,7 +3011,9 @@ name|fprintf
 argument_list|(
 name|fp
 argument_list|,
-literal|"not be included)\n"
+literal|" Lines starting\n"
+literal|"# with '#' will be ignored, and an empty"
+literal|" message aborts the commit.\n"
 argument_list|)
 expr_stmt|;
 else|else
@@ -3022,8 +3022,10 @@ name|fprintf
 argument_list|(
 name|fp
 argument_list|,
-literal|"be kept.\n"
-literal|"# You can remove them yourself if you want to)\n"
+literal|" Lines starting\n"
+literal|"# with '#' will be kept; you may remove them"
+literal|" yourself if you want to.\n"
+literal|"# An empty message aborts the commit.\n"
 argument_list|)
 expr_stmt|;
 if|if
@@ -5409,9 +5411,16 @@ block|{
 name|rollback_index_files
 argument_list|()
 expr_stmt|;
-name|die
+name|fprintf
 argument_list|(
-literal|"no commit message?  aborting commit."
+name|stderr
+argument_list|,
+literal|"Aborting commit due to empty commit message.\n"
+argument_list|)
+expr_stmt|;
+name|exit
+argument_list|(
+literal|1
 argument_list|)
 expr_stmt|;
 block|}
