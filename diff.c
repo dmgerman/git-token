@@ -8165,6 +8165,16 @@ literal|"[ 	]*([^;]*\\)$"
 block|}
 block|,
 block|{
+literal|"pascal"
+block|,
+literal|"^\\(\\(procedure\\|function\\|constructor\\|"
+literal|"destructor\\|interface\\|implementation\\|"
+literal|"initialization\\|finalization\\)[ \t]*.*\\)$"
+literal|"\\|"
+literal|"^\\(.*=[ \t]*\\(class\\|record\\).*\\)$"
+block|}
+block|,
+block|{
 literal|"tex"
 block|,
 literal|"^\\(\\\\\\(sub\\)*section{.*\\)$"
