@@ -1108,7 +1108,7 @@ name|timestamp
 condition|)
 name|die
 argument_list|(
-literal|"Could not extract author email from %s"
+literal|"Could not extract author time from %s"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
