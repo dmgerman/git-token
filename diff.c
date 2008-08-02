@@ -8177,7 +8177,7 @@ block|,
 block|{
 literal|"tex"
 block|,
-literal|"^\\(\\\\\\(sub\\)*section{.*\\)$"
+literal|"^\\(\\\\\\(\\(sub\\)*section\\|chapter\\|part\\)\\*\\{0,1\\}{.*\\)$"
 block|}
 block|,
 block|{
