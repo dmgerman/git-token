@@ -328,7 +328,7 @@ name|hash_object_usage
 index|[]
 init|=
 block|{
-literal|"git hash-object [-t<type>] [-w] [--path=<file>] [--stdin] [--]<file>..."
+literal|"git hash-object [-t<type>] [-w] [--path=<file>|--no-filters] [--stdin] [--]<file>..."
 block|,
 literal|"git hash-object  --stdin-paths<<list-of-paths>"
 block|,
@@ -368,6 +368,14 @@ DECL|variable|stdin_paths
 specifier|static
 name|int
 name|stdin_paths
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|no_filters
+specifier|static
+name|int
+name|no_filters
 decl_stmt|;
 end_decl_stmt
 
@@ -439,6 +447,18 @@ operator|&
 name|stdin_paths
 argument_list|,
 literal|"read file names from stdin"
+argument_list|)
+block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|0
+argument_list|,
+literal|"no-filters"
+argument_list|,
+operator|&
+name|no_filters
+argument_list|,
+literal|"store file as is without filters"
 argument_list|)
 block|,
 name|OPT_STRING
@@ -595,8 +615,18 @@ name|errstr
 operator|=
 literal|"Can't use --stdin-paths with --path"
 expr_stmt|;
-block|}
 elseif|else
+if|if
+condition|(
+name|no_filters
+condition|)
+name|errstr
+operator|=
+literal|"Can't use --stdin-paths with --no-filters"
+expr_stmt|;
+block|}
+else|else
+block|{
 if|if
 condition|(
 name|hashstdin
@@ -607,6 +637,17 @@ name|errstr
 operator|=
 literal|"Multiple --stdin arguments are not supported"
 expr_stmt|;
+if|if
+condition|(
+name|vpath
+operator|&&
+name|no_filters
+condition|)
+name|errstr
+operator|=
+literal|"Can't use --path with --no-filters"
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|errstr
@@ -689,6 +730,10 @@ name|type
 argument_list|,
 name|write_object
 argument_list|,
+name|no_filters
+condition|?
+name|NULL
+else|:
 name|vpath
 condition|?
 name|vpath
