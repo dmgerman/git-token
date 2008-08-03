@@ -310,7 +310,8 @@ name|char
 name|hash_object_usage
 index|[]
 init|=
-literal|"git hash-object [ [-t<type>] [-w] [--stdin]<file>... | --stdin-paths<<list-of-paths> ]"
+literal|"git hash-object [-t<type>] [-w] [--stdin] [--]<file>...\n"
+literal|"   or: git hash-object  --stdin-paths<<list-of-paths>"
 decl_stmt|;
 end_decl_stmt
 
