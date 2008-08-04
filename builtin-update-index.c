@@ -846,6 +846,30 @@ name|struct
 name|stat
 name|st
 decl_stmt|;
+name|len
+operator|=
+name|strlen
+argument_list|(
+name|path
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|has_symlink_leading_path
+argument_list|(
+name|len
+argument_list|,
+name|path
+argument_list|)
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"'%s' is beyond a symbolic link"
+argument_list|,
+name|path
+argument_list|)
+return|;
 comment|/* 	 * First things first: get the stat information, to decide 	 * what to do about the pathname! 	 */
 if|if
 condition|(
@@ -867,13 +891,6 @@ argument_list|,
 name|errno
 argument_list|)
 return|;
-name|len
-operator|=
-name|strlen
-argument_list|(
-name|path
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|S_ISDIR
