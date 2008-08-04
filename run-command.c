@@ -351,6 +351,11 @@ expr_stmt|;
 ifndef|#
 directive|ifndef
 name|__MINGW32__
+name|fflush
+argument_list|(
+name|NULL
+argument_list|)
+expr_stmt|;
 name|cmd
 operator|->
 name|pid

@@ -337,7 +337,7 @@ name|mode
 argument_list|)
 condition|)
 block|{
-comment|/* 		 * Maybe we want to have some recursive version here? 		 * 		 * Something like: 		 * 		if (show_subprojects(base, baselen, pathname)) { 			if (fork()) { 				chdir(base); 				exec ls-tree; 			} 			waitpid(); 		} 		 * 		 * ..or similar.. 		 */
+comment|/* 		 * Maybe we want to have some recursive version here? 		 * 		 * Something similar to this incomplete example: 		 * 		if (show_subprojects(base, baselen, pathname)) { 			struct child_process ls_tree;  			ls_tree.dir = base; 			ls_tree.argv = ls-tree; 			start_command(&ls_tree); 		} 		 * 		 */
 name|type
 operator|=
 name|commit_type
