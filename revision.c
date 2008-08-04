@@ -8346,6 +8346,18 @@ modifier|*
 modifier|*
 name|tail
 decl_stmt|;
+name|sort_in_topological_order
+argument_list|(
+operator|&
+name|revs
+operator|->
+name|commits
+argument_list|,
+name|revs
+operator|->
+name|lifo
+argument_list|)
+expr_stmt|;
 comment|/* feed the list reversed */
 name|yet_to_do
 operator|=
@@ -8511,19 +8523,6 @@ operator|->
 name|next
 expr_stmt|;
 block|}
-comment|/* sort topologically at the end */
-name|sort_in_topological_order
-argument_list|(
-operator|&
-name|revs
-operator|->
-name|commits
-argument_list|,
-name|revs
-operator|->
-name|lifo
-argument_list|)
-expr_stmt|;
 block|}
 end_function
 
