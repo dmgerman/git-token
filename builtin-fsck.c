@@ -1985,6 +1985,7 @@ continue|continue;
 block|}
 if|if
 condition|(
+operator|!
 name|prefixcmp
 argument_list|(
 name|de
