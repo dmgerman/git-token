@@ -10763,6 +10763,9 @@ name|struct
 name|pack_entry
 name|e
 decl_stmt|;
+name|int
+name|status
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -10777,6 +10780,26 @@ name|NULL
 argument_list|)
 condition|)
 block|{
+comment|/* Most likely it's a loose object. */
+name|status
+operator|=
+name|sha1_loose_object_info
+argument_list|(
+name|sha1
+argument_list|,
+name|sizep
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|status
+operator|>=
+literal|0
+condition|)
+return|return
+name|status
+return|;
+comment|/* Not a loose object; someone else may have just packed it. */
 name|reprepare_packed_git
 argument_list|()
 expr_stmt|;
@@ -10794,12 +10817,7 @@ name|NULL
 argument_list|)
 condition|)
 return|return
-name|sha1_loose_object_info
-argument_list|(
-name|sha1
-argument_list|,
-name|sizep
-argument_list|)
+name|status
 return|;
 block|}
 return|return
