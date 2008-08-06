@@ -515,6 +515,26 @@ define|\
 value|{ OPTION_CALLBACK, 0, "abbrev", (var), "n", \ 	  "use<n> digits to display SHA-1s", \ 	  PARSE_OPT_OPTARG,&parse_opt_abbrev_cb, 0 }
 end_define
 
+begin_function_decl
+specifier|extern
+specifier|const
+name|char
+modifier|*
+name|parse_options_fix_filename
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|prefix
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|file
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif

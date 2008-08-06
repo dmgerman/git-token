@@ -2042,6 +2042,7 @@ name|verify
 init|=
 literal|0
 decl_stmt|;
+specifier|const
 name|char
 modifier|*
 name|msgfile
@@ -2235,6 +2236,15 @@ argument_list|,
 name|git_tag_usage
 argument_list|,
 literal|0
+argument_list|)
+expr_stmt|;
+name|msgfile
+operator|=
+name|parse_options_fix_filename
+argument_list|(
+name|prefix
+argument_list|,
+name|msgfile
 argument_list|)
 expr_stmt|;
 if|if
