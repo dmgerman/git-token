@@ -11507,7 +11507,17 @@ name|int
 name|fd
 parameter_list|)
 block|{
-comment|/* For safe-mode, we could fsync_or_die(fd, "sha1 file") here */
+if|if
+condition|(
+name|fsync_object_files
+condition|)
+name|fsync_or_die
+argument_list|(
+name|fd
+argument_list|,
+literal|"sha1 file"
+argument_list|)
+expr_stmt|;
 name|fchmod
 argument_list|(
 name|fd
