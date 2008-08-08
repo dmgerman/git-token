@@ -1800,6 +1800,11 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|option_mirror
+condition|)
 name|get_fetch_map
 argument_list|(
 name|refs
