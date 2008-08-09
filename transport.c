@@ -2722,24 +2722,23 @@ operator|&
 name|results
 argument_list|)
 condition|)
-block|{
-return|return
-name|NULL
-return|;
-block|}
-else|else
-block|{
-name|error
+name|die
 argument_list|(
-literal|"%s"
+literal|"%s not found: did you run git update-server-info on the server?"
+argument_list|,
+name|refs_url
+argument_list|)
+expr_stmt|;
+else|else
+name|die
+argument_list|(
+literal|"%s download error - %s"
+argument_list|,
+name|refs_url
 argument_list|,
 name|curl_errorstr
 argument_list|)
 expr_stmt|;
-return|return
-name|NULL
-return|;
-block|}
 block|}
 block|}
 else|else
@@ -2750,14 +2749,11 @@ operator|&
 name|buffer
 argument_list|)
 expr_stmt|;
-name|error
+name|die
 argument_list|(
-literal|"Unable to start request"
+literal|"Unable to start HTTP request"
 argument_list|)
 expr_stmt|;
-return|return
-name|NULL
-return|;
 block|}
 name|data
 operator|=
