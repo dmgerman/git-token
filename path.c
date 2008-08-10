@@ -1623,7 +1623,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * path = Canonical absolute path  * prefix_list = Colon-separated list of absolute paths  *  * Determines, for each path in parent_list, whether the "prefix" really  * is an ancestor directory of path.  Returns the length of the longest  * ancestor directory, excluding any trailing slashes, or -1 if no prefix  * is an ancestor.  (Note that this means 0 is returned if prefix_list is  * "/".) "/foo" is not considered an ancestor of "/foobar".  Directories  * are not considered to be their own ancestors.  path must be in a  * canonical form: empty components, or "." or ".." components are not  * allowed.  prefix_list may be null, which is like "".  */
+comment|/*  * path = Canonical absolute path  * prefix_list = Colon-separated list of absolute paths  *  * Determines, for each path in prefix_list, whether the "prefix" really  * is an ancestor directory of path.  Returns the length of the longest  * ancestor directory, excluding any trailing slashes, or -1 if no prefix  * is an ancestor.  (Note that this means 0 is returned if prefix_list is  * "/".) "/foo" is not considered an ancestor of "/foobar".  Directories  * are not considered to be their own ancestors.  path must be in a  * canonical form: empty components, or "." or ".." components are not  * allowed.  prefix_list may be null, which is like "".  */
 end_comment
 
 begin_function
