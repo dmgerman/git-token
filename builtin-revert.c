@@ -77,6 +77,12 @@ directive|include
 file|"revision.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"rerere.h"
+end_include
+
 begin_comment
 comment|/*  * This implements the builtins revert and cherry-pick.  *  * Copyright (c) 2007 Johannes E. Schindelin  *  * Based on git-revert.sh, which is  *  * Copyright (c) 2005 Linus Torvalds  * Copyright (c) 2005 Junio C Hamano  */
 end_comment
@@ -2216,6 +2222,9 @@ operator|.
 name|sha1
 argument_list|)
 argument_list|)
+expr_stmt|;
+name|rerere
+argument_list|()
 expr_stmt|;
 name|exit
 argument_list|(
