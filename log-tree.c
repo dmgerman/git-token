@@ -2043,6 +2043,17 @@ operator|!
 name|opt
 operator|->
 name|diff
+operator|&&
+operator|!
+name|DIFF_OPT_TST
+argument_list|(
+operator|&
+name|opt
+operator|->
+name|diffopt
+argument_list|,
+name|EXIT_WITH_STATUS
+argument_list|)
 condition|)
 return|return
 literal|0
