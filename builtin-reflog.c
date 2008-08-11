@@ -3487,7 +3487,7 @@ block|}
 if|if
 condition|(
 operator|!
-name|dwim_ref
+name|dwim_log
 argument_list|(
 name|argv
 index|[
@@ -3512,7 +3512,7 @@ name|status
 operator||=
 name|error
 argument_list|(
-literal|"%s points nowhere!"
+literal|"no reflog for '%s'"
 argument_list|,
 name|argv
 index|[
