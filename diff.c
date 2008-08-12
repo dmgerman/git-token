@@ -8175,6 +8175,12 @@ literal|"^\\(.*=[ \t]*\\(class\\|record\\).*\\)$"
 block|}
 block|,
 block|{
+literal|"bibtex"
+block|,
+literal|"\\(@[a-zA-Z]\\{1,\\}[ \t]*{\\{0,1\\}[ \t]*[^ \t\"@',\\#}{~%]*\\).*$"
+block|}
+block|,
+block|{
 literal|"tex"
 block|,
 literal|"^\\(\\\\\\(\\(sub\\)*section\\|chapter\\|part\\)\\*\\{0,1\\}{.*\\)$"
