@@ -9638,6 +9638,14 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
+name|data
+operator|.
+name|ws_rule
+operator|&
+name|WS_TRAILING_SPACE
+operator|)
+operator|&&
 name|data
 operator|.
 name|trailing_blanks_start
