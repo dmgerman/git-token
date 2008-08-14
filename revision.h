@@ -505,6 +505,11 @@ name|struct
 name|decoration
 name|children
 decl_stmt|;
+DECL|member|merge_simplification
+name|struct
+name|decoration
+name|merge_simplification
+decl_stmt|;
 block|}
 struct|;
 end_struct
