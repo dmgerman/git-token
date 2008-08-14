@@ -3772,9 +3772,9 @@ operator|>=
 name|FD_SETSIZE
 condition|)
 block|{
-name|error
+name|logerror
 argument_list|(
-literal|"too large socket descriptor."
+literal|"Socket descriptor too large"
 argument_list|)
 expr_stmt|;
 name|close
@@ -4362,9 +4362,9 @@ operator|!=
 name|EINTR
 condition|)
 block|{
-name|error
+name|logerror
 argument_list|(
-literal|"poll failed, resuming: %s"
+literal|"Poll failed, resuming: %s"
 argument_list|,
 name|strerror
 argument_list|(
