@@ -126,8 +126,7 @@ return|;
 comment|/* do not support unset */
 operator|*
 operator|(
-name|unsigned
-name|long
+name|int
 operator|*
 operator|)
 name|opt
