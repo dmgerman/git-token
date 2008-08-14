@@ -18,6 +18,12 @@ directive|include
 file|"xdiff/xdiff.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"strbuf.h"
+end_include
+
 begin_struct_decl
 struct_decl|struct
 name|xdiff_emit_state
@@ -55,14 +61,9 @@ name|xdiff_emit_consume_fn
 name|consume
 decl_stmt|;
 DECL|member|remainder
-name|char
-modifier|*
+name|struct
+name|strbuf
 name|remainder
-decl_stmt|;
-DECL|member|remainder_size
-name|unsigned
-name|long
-name|remainder_size
 decl_stmt|;
 block|}
 struct|;
