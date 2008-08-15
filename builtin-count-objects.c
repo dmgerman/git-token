@@ -658,6 +658,12 @@ name|num_pack
 init|=
 literal|0
 decl_stmt|;
+name|unsigned
+name|long
+name|size_pack
+init|=
+literal|0
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -703,6 +709,16 @@ name|p
 operator|->
 name|num_objects
 expr_stmt|;
+name|size_pack
+operator|+=
+name|p
+operator|->
+name|pack_size
+operator|+
+name|p
+operator|->
+name|index_size
+expr_stmt|;
 name|num_pack
 operator|++
 expr_stmt|;
@@ -735,6 +751,15 @@ argument_list|(
 literal|"packs: %lu\n"
 argument_list|,
 name|num_pack
+argument_list|)
+expr_stmt|;
+name|printf
+argument_list|(
+literal|"size-pack: %lu\n"
+argument_list|,
+name|size_pack
+operator|/
+literal|1024
 argument_list|)
 expr_stmt|;
 name|printf
