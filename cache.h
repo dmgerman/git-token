@@ -458,6 +458,14 @@ value|(0x3000)
 end_define
 
 begin_define
+DECL|macro|CE_EXTENDED
+define|#
+directive|define
+name|CE_EXTENDED
+value|(0x4000)
+end_define
+
+begin_define
 DECL|macro|CE_VALID
 define|#
 directive|define

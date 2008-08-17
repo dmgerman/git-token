@@ -5372,6 +5372,20 @@ operator|->
 name|flags
 argument_list|)
 expr_stmt|;
+comment|/* For future extension: we do not understand this entry yet */
+if|if
+condition|(
+name|ce
+operator|->
+name|ce_flags
+operator|&
+name|CE_EXTENDED
+condition|)
+name|die
+argument_list|(
+literal|"Unknown index entry format"
+argument_list|)
+expr_stmt|;
 name|hashcpy
 argument_list|(
 name|ce
