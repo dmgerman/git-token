@@ -286,9 +286,10 @@ operator|)
 operator|+=
 name|xsize_t
 argument_list|(
+name|on_disk_bytes
+argument_list|(
 name|st
-operator|.
-name|st_blocks
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -720,7 +721,7 @@ literal|"size: %lu\n"
 argument_list|,
 name|loose_size
 operator|/
-literal|2
+literal|1024
 argument_list|)
 expr_stmt|;
 name|printf

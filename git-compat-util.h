@@ -1275,6 +1275,44 @@ begin_comment
 comment|/* NO_MMAP */
 end_comment
 
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|NO_ST_BLOCKS_IN_STRUCT_STAT
+end_ifdef
+
+begin_define
+DECL|macro|on_disk_bytes
+define|#
+directive|define
+name|on_disk_bytes
+parameter_list|(
+name|st
+parameter_list|)
+value|((st).st_size)
+end_define
+
+begin_else
+else|#
+directive|else
+end_else
+
+begin_define
+DECL|macro|on_disk_bytes
+define|#
+directive|define
+name|on_disk_bytes
+parameter_list|(
+name|st
+parameter_list|)
+value|((st).st_blocks * 512)
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_define
 DECL|macro|DEFAULT_PACKED_GIT_LIMIT
 define|#

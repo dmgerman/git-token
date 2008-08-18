@@ -1143,10 +1143,6 @@ DECL|member|st_size
 name|size_t
 name|st_size
 decl_stmt|;
-DECL|member|st_blocks
-name|size_t
-name|st_blocks
-decl_stmt|;
 block|}
 struct|;
 end_struct
