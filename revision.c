@@ -8310,9 +8310,23 @@ if|if
 condition|(
 name|cnt
 condition|)
+block|{
+name|tail
+operator|=
+operator|&
+name|commit_list_insert
+argument_list|(
+name|commit
+argument_list|,
+name|tail
+argument_list|)
+operator|->
+name|next
+expr_stmt|;
 return|return
 name|tail
 return|;
+block|}
 comment|/* 	 * Rewrite our list of parents. 	 */
 for|for
 control|(
