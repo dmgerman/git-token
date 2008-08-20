@@ -8187,6 +8187,18 @@ index|[]
 init|=
 block|{
 block|{
+literal|"bibtex"
+block|,
+literal|"\\(@[a-zA-Z]\\{1,\\}[ \t]*{\\{0,1\\}[ \t]*[^ \t\"@',\\#}{~%]*\\).*$"
+block|}
+block|,
+block|{
+literal|"html"
+block|,
+literal|"^\\s*\\(<[Hh][1-6]\\s.*>.*\\)$"
+block|}
+block|,
+block|{
 literal|"java"
 block|,
 literal|"!^[ 	]*\\(catch\\|do\\|for\\|if\\|instanceof\\|"
@@ -8207,18 +8219,6 @@ literal|"^\\(.*=[ \t]*\\(class\\|record\\).*\\)$"
 block|}
 block|,
 block|{
-literal|"bibtex"
-block|,
-literal|"\\(@[a-zA-Z]\\{1,\\}[ \t]*{\\{0,1\\}[ \t]*[^ \t\"@',\\#}{~%]*\\).*$"
-block|}
-block|,
-block|{
-literal|"tex"
-block|,
-literal|"^\\(\\\\\\(\\(sub\\)*section\\|chapter\\|part\\)\\*\\{0,1\\}{.*\\)$"
-block|}
-block|,
-block|{
 literal|"python"
 block|,
 literal|"^\\s*\\(\\(class\\|def\\)\\s.*\\)$"
@@ -8228,6 +8228,12 @@ block|{
 literal|"ruby"
 block|,
 literal|"^\\s*\\(\\(class\\|module\\|def\\)\\s.*\\)$"
+block|}
+block|,
+block|{
+literal|"tex"
+block|,
+literal|"^\\(\\\\\\(\\(sub\\)*section\\|chapter\\|part\\)\\*\\{0,1\\}{.*\\)$"
 block|}
 block|, }
 struct|;
