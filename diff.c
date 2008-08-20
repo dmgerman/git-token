@@ -9605,6 +9605,13 @@ name|xecfg
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|xecfg
+operator|.
+name|ctxlen
+operator|=
+literal|1
+expr_stmt|;
+comment|/* at least one context line */
 name|xpp
 operator|.
 name|flags

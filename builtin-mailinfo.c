@@ -583,7 +583,16 @@ name|buf
 argument_list|,
 name|el
 operator|+
+operator|(
+name|at
+index|[
+name|el
+index|]
+condition|?
 literal|1
+else|:
+literal|0
+operator|)
 argument_list|)
 expr_stmt|;
 comment|/* The remainder is name.  It could be "John Doe<john.doe@xz>" 	 * or "john.doe@xz (John Doe)", but we have removed the 	 * email part, so trim from both ends, possibly removing 	 * the () pair at the end. 	 */
