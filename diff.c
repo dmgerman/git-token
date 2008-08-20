@@ -8219,6 +8219,12 @@ literal|"^\\(\\\\\\(\\(sub\\)*section\\|chapter\\|part\\)\\*\\{0,1\\}{.*\\)$"
 block|}
 block|,
 block|{
+literal|"python"
+block|,
+literal|"^\\s*\\(\\(class\\|def\\)\\s.*\\)$"
+block|}
+block|,
+block|{
 literal|"ruby"
 block|,
 literal|"^\\s*\\(\\(class\\|module\\|def\\)\\s.*\\)$"
