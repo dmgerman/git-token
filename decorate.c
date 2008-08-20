@@ -28,6 +28,7 @@ name|unsigned
 name|int
 name|hash_obj
 parameter_list|(
+specifier|const
 name|struct
 name|object
 modifier|*
@@ -72,6 +73,7 @@ name|decoration
 modifier|*
 name|n
 parameter_list|,
+specifier|const
 name|struct
 name|object
 modifier|*
@@ -277,6 +279,7 @@ name|i
 operator|++
 control|)
 block|{
+specifier|const
 name|struct
 name|object
 modifier|*
@@ -339,6 +342,7 @@ name|decoration
 modifier|*
 name|n
 parameter_list|,
+specifier|const
 name|struct
 name|object
 modifier|*
@@ -403,6 +407,7 @@ name|decoration
 modifier|*
 name|n
 parameter_list|,
+specifier|const
 name|struct
 name|object
 modifier|*
