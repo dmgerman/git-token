@@ -4867,6 +4867,26 @@ literal|"Can merge only exactly one commit into "
 literal|"empty head"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|squash
+condition|)
+name|die
+argument_list|(
+literal|"Squash commit into empty head not supported yet"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|allow_fast_forward
+condition|)
+name|die
+argument_list|(
+literal|"Non-fast-forward commit does not make sense into "
+literal|"an empty head"
+argument_list|)
+expr_stmt|;
 name|remote_head
 operator|=
 name|peel_to_type
