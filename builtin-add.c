@@ -944,11 +944,14 @@ end_decl_stmt
 begin_decl_stmt
 DECL|variable|ignore_add_errors
 DECL|variable|addremove
+DECL|variable|intent_to_add
 specifier|static
 name|int
 name|ignore_add_errors
 decl_stmt|,
 name|addremove
+decl_stmt|,
+name|intent_to_add
 decl_stmt|;
 end_decl_stmt
 
@@ -1024,6 +1027,18 @@ operator|&
 name|take_worktree_changes
 argument_list|,
 literal|"update tracked files"
+argument_list|)
+block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|'N'
+argument_list|,
+literal|"intent-to-add"
+argument_list|,
+operator|&
+name|intent_to_add
+argument_list|,
+literal|"record only the fact that the path will be added later"
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -1437,6 +1452,14 @@ operator|(
 name|show_only
 condition|?
 name|ADD_CACHE_PRETEND
+else|:
+literal|0
+operator|)
+operator||
+operator|(
+name|intent_to_add
+condition|?
+name|ADD_CACHE_INTENT
 else|:
 literal|0
 operator|)
