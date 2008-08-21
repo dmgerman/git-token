@@ -565,7 +565,7 @@ function_decl|;
 end_typedef
 
 begin_decl_stmt
-DECL|variable|show_early_output
+specifier|extern
 specifier|volatile
 name|show_early_output_fn_t
 name|show_early_output
