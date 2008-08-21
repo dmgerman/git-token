@@ -2924,6 +2924,12 @@ DECL|enum|branch_track
 enum|enum
 name|branch_track
 block|{
+DECL|enumerator|BRANCH_TRACK_UNSPECIFIED
+name|BRANCH_TRACK_UNSPECIFIED
+init|=
+operator|-
+literal|1
+block|,
 DECL|enumerator|BRANCH_TRACK_NEVER
 name|BRANCH_TRACK_NEVER
 init|=
