@@ -380,6 +380,21 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+name|void
+name|free_refspecs
+parameter_list|(
+name|struct
+name|refspec
+modifier|*
+name|refspec
+parameter_list|,
+name|int
+name|nr_refspec
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|int
 name|match_refs
 parameter_list|(
