@@ -5531,7 +5531,7 @@ if|if
 condition|(
 name|istate
 operator|->
-name|alloc
+name|initialized
 condition|)
 return|return
 name|istate
@@ -5743,6 +5743,12 @@ operator|->
 name|cache_nr
 argument_list|)
 argument_list|)
+expr_stmt|;
+name|istate
+operator|->
+name|initialized
+operator|=
+literal|1
 expr_stmt|;
 name|src_offset
 operator|=
@@ -6032,6 +6038,12 @@ operator|->
 name|alloc
 operator|=
 name|NULL
+expr_stmt|;
+name|istate
+operator|->
+name|initialized
+operator|=
+literal|0
 expr_stmt|;
 comment|/* no need to throw away allocated active_cache */
 return|return
