@@ -6002,6 +6002,12 @@ name|timestamp
 operator|=
 literal|0
 expr_stmt|;
+name|istate
+operator|->
+name|name_hash_initialized
+operator|=
+literal|0
+expr_stmt|;
 name|free_hash
 argument_list|(
 operator|&
