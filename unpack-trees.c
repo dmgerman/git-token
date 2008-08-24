@@ -1912,6 +1912,14 @@ name|result
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|o
+operator|->
+name|result
+operator|.
+name|initialized
+operator|=
+literal|1
+expr_stmt|;
 if|if
 condition|(
 name|o

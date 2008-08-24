@@ -1044,6 +1044,11 @@ name|unsigned
 name|name_hash_initialized
 range|:
 literal|1
+decl_stmt|,
+DECL|member|initialized
+name|initialized
+range|:
+literal|1
 decl_stmt|;
 DECL|member|name_hash
 name|struct
