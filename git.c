@@ -2009,6 +2009,12 @@ name|RUN_SETUP
 block|}
 block|,
 block|{
+literal|"shell"
+block|,
+name|cmd_shell
+block|}
+block|,
+block|{
 literal|"shortlog"
 block|,
 name|cmd_shortlog
