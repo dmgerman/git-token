@@ -379,7 +379,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|/* Since stderr is set to linebuffered mode, the 		 * logging of different processes will not overlap 		 */
+comment|/* 		 * Since stderr is set to linebuffered mode, the 		 * logging of different processes will not overlap 		 */
 name|fprintf
 argument_list|(
 name|stderr
@@ -2768,7 +2768,12 @@ name|struct
 name|child
 modifier|*
 name|newborn
+decl_stmt|,
+modifier|*
+modifier|*
+name|cradle
 decl_stmt|;
+comment|/* 	 * This must be xcalloc() -- we'll compare the whole sockaddr_storage 	 * but individual address may be shorter. 	 */
 name|newborn
 operator|=
 name|xcalloc
@@ -2776,21 +2781,12 @@ argument_list|(
 literal|1
 argument_list|,
 sizeof|sizeof
-expr|*
+argument_list|(
+operator|*
 name|newborn
 argument_list|)
+argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|newborn
-condition|)
-block|{
-name|struct
-name|child
-modifier|*
-modifier|*
-name|cradle
-decl_stmt|;
 name|live_children
 operator|++
 expr_stmt|;
@@ -2851,9 +2847,11 @@ operator|->
 name|address
 argument_list|,
 sizeof|sizeof
+argument_list|(
 name|newborn
 operator|->
 name|address
+argument_list|)
 argument_list|)
 condition|)
 break|break;
@@ -2870,18 +2868,7 @@ operator|=
 name|newborn
 expr_stmt|;
 block|}
-else|else
-name|logerror
-argument_list|(
-literal|"Out of memory spawning new child"
-argument_list|)
-expr_stmt|;
-block|}
 end_function
-
-begin_comment
-comment|/*  * Walk from "deleted" to "spawned", and remove child "pid".  *  * We move everything up by one, since the new "deleted" will  * be one higher.  */
-end_comment
 
 begin_function
 DECL|function|remove_child
@@ -2970,22 +2957,20 @@ name|struct
 name|child
 modifier|*
 name|blanket
+decl_stmt|,
+modifier|*
+name|next
 decl_stmt|;
 if|if
 condition|(
+operator|!
 operator|(
 name|blanket
 operator|=
 name|firstborn
 operator|)
 condition|)
-block|{
-specifier|const
-name|struct
-name|child
-modifier|*
-name|next
-decl_stmt|;
+return|return;
 for|for
 control|(
 init|;
@@ -3017,9 +3002,11 @@ operator|->
 name|address
 argument_list|,
 sizeof|sizeof
+argument_list|(
 name|next
 operator|->
 name|address
+argument_list|)
 argument_list|)
 condition|)
 block|{
@@ -3033,7 +3020,6 @@ name|SIGTERM
 argument_list|)
 expr_stmt|;
 break|break;
-block|}
 block|}
 block|}
 end_function
@@ -3093,12 +3079,14 @@ argument_list|(
 name|status
 argument_list|)
 operator|||
+operator|(
 name|WEXITSTATUS
 argument_list|(
 name|status
 argument_list|)
 operator|>
 literal|0
+operator|)
 condition|)
 name|dead
 operator|=
@@ -3267,7 +3255,7 @@ name|int
 name|signo
 parameter_list|)
 block|{
-comment|/* Otherwise empty handler because systemcalls will get interrupted 	 * upon signal receipt 	 * SysV needs the handler to be rearmed 	 */
+comment|/* 	 * Otherwise empty handler because systemcalls will get interrupted 	 * upon signal receipt 	 * SysV needs the handler to be rearmed 	 */
 name|signal
 argument_list|(
 name|SIGCHLD
