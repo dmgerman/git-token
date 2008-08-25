@@ -5491,6 +5491,14 @@ operator|.
 name|diffopt
 operator|.
 name|output_format
+operator|||
+name|rev
+operator|.
+name|diffopt
+operator|.
+name|output_format
+operator|==
+name|DIFF_FORMAT_PATCH
 condition|)
 name|rev
 operator|.
