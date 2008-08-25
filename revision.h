@@ -18,6 +18,12 @@ directive|include
 file|"parse-options.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"grep.h"
+end_include
+
 begin_define
 DECL|macro|SEEN
 define|#
@@ -449,7 +455,6 @@ comment|/* Filter by commit log message */
 DECL|member|grep_filter
 name|struct
 name|grep_opt
-modifier|*
 name|grep_filter
 decl_stmt|;
 comment|/* Display history graph */
