@@ -99,14 +99,6 @@ directive|include
 file|"merge-recursive.h"
 end_include
 
-begin_decl_stmt
-DECL|variable|subtree_merge
-specifier|static
-name|int
-name|subtree_merge
-decl_stmt|;
-end_decl_stmt
-
 begin_function
 DECL|function|shift_tree_object
 specifier|static
@@ -408,47 +400,6 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|merge_recursive_verbosity
-name|int
-name|merge_recursive_verbosity
-init|=
-literal|2
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-DECL|variable|diff_rename_limit
-specifier|static
-name|int
-name|diff_rename_limit
-init|=
-operator|-
-literal|1
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-DECL|variable|merge_rename_limit
-specifier|static
-name|int
-name|merge_rename_limit
-init|=
-operator|-
-literal|1
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-DECL|variable|buffer_output
-specifier|static
-name|int
-name|buffer_output
-init|=
-literal|1
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|variable|obuf
 specifier|static
 name|struct
@@ -465,6 +416,11 @@ specifier|static
 name|int
 name|show
 parameter_list|(
+name|struct
+name|merge_options
+modifier|*
+name|o
+parameter_list|,
 name|int
 name|v
 parameter_list|)
@@ -474,12 +430,16 @@ operator|(
 operator|!
 name|call_depth
 operator|&&
-name|merge_recursive_verbosity
+name|o
+operator|->
+name|verbosity
 operator|>=
 name|v
 operator|)
 operator|||
-name|merge_recursive_verbosity
+name|o
+operator|->
+name|verbosity
 operator|>=
 literal|5
 return|;
@@ -527,6 +487,11 @@ specifier|static
 name|void
 name|output
 parameter_list|(
+name|struct
+name|merge_options
+modifier|*
+name|o
+parameter_list|,
 name|int
 name|v
 parameter_list|,
@@ -549,6 +514,8 @@ condition|(
 operator|!
 name|show
 argument_list|(
+name|o
+argument_list|,
 name|v
 argument_list|)
 condition|)
@@ -740,6 +707,8 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
+name|o
+operator|->
 name|buffer_output
 condition|)
 name|flush_output
@@ -1206,7 +1175,10 @@ name|tree
 modifier|*
 name|write_tree_from_memory
 parameter_list|(
-name|void
+name|struct
+name|merge_options
+modifier|*
+name|o
 parameter_list|)
 block|{
 name|struct
@@ -1227,6 +1199,8 @@ name|i
 decl_stmt|;
 name|output
 argument_list|(
+name|o
+argument_list|,
 literal|0
 argument_list|,
 literal|"There are unmerged index entries:"
@@ -1265,6 +1239,8 @@ argument_list|)
 condition|)
 name|output
 argument_list|(
+name|o
+argument_list|,
 literal|0
 argument_list|,
 literal|"%d %.*s"
@@ -1908,6 +1884,11 @@ modifier|*
 name|get_renames
 parameter_list|(
 name|struct
+name|merge_options
+modifier|*
+name|o
+parameter_list|,
+name|struct
 name|tree
 modifier|*
 name|tree
@@ -1982,16 +1963,24 @@ name|opts
 operator|.
 name|rename_limit
 operator|=
+name|o
+operator|->
 name|merge_rename_limit
 operator|>=
 literal|0
 condition|?
+name|o
+operator|->
 name|merge_rename_limit
 else|:
+name|o
+operator|->
 name|diff_rename_limit
 operator|>=
 literal|0
 condition|?
+name|o
+operator|->
 name|diff_rename_limit
 else|:
 literal|500
@@ -4141,6 +4130,11 @@ name|void
 name|conflict_rename_rename
 parameter_list|(
 name|struct
+name|merge_options
+modifier|*
+name|o
+parameter_list|,
+name|struct
 name|rename
 modifier|*
 name|ren1
@@ -4241,6 +4235,8 @@ argument_list|)
 expr_stmt|;
 name|output
 argument_list|(
+name|o
+argument_list|,
 literal|1
 argument_list|,
 literal|"%s is a directory in %s adding as %s instead"
@@ -4290,6 +4286,8 @@ argument_list|)
 expr_stmt|;
 name|output
 argument_list|(
+name|o
+argument_list|,
 literal|1
 argument_list|,
 literal|"%s is a directory in %s adding as %s instead"
@@ -4388,6 +4386,11 @@ name|void
 name|conflict_rename_dir
 parameter_list|(
 name|struct
+name|merge_options
+modifier|*
+name|o
+parameter_list|,
+name|struct
 name|rename
 modifier|*
 name|ren1
@@ -4417,6 +4420,8 @@ argument_list|)
 decl_stmt|;
 name|output
 argument_list|(
+name|o
+argument_list|,
 literal|1
 argument_list|,
 literal|"Renaming %s to %s instead"
@@ -4485,6 +4490,11 @@ name|void
 name|conflict_rename_rename_2
 parameter_list|(
 name|struct
+name|merge_options
+modifier|*
+name|o
+parameter_list|,
+name|struct
 name|rename
 modifier|*
 name|ren1
@@ -4541,6 +4551,8 @@ argument_list|)
 decl_stmt|;
 name|output
 argument_list|(
+name|o
+argument_list|,
 literal|1
 argument_list|,
 literal|"Renaming %s to %s and %s to %s instead"
@@ -4647,6 +4659,11 @@ name|int
 name|process_renames
 parameter_list|(
 name|struct
+name|merge_options
+modifier|*
+name|o
+parameter_list|,
+name|struct
 name|string_list
 modifier|*
 name|a_renames
@@ -4655,16 +4672,6 @@ name|struct
 name|string_list
 modifier|*
 name|b_renames
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|a_branch
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|b_branch
 parameter_list|)
 block|{
 name|int
@@ -5011,11 +5018,15 @@ name|b_by_dst
 expr_stmt|;
 name|branch1
 operator|=
-name|a_branch
+name|o
+operator|->
+name|branch1
 expr_stmt|;
 name|branch2
 operator|=
-name|b_branch
+name|o
+operator|->
+name|branch2
 expr_stmt|;
 block|}
 else|else
@@ -5040,11 +5051,15 @@ name|a_by_dst
 expr_stmt|;
 name|branch1
 operator|=
-name|b_branch
+name|o
+operator|->
+name|branch2
 expr_stmt|;
 name|branch2
 operator|=
-name|a_branch
+name|o
+operator|->
+name|branch1
 expr_stmt|;
 name|tmp
 operator|=
@@ -5198,6 +5213,8 @@ literal|0
 expr_stmt|;
 name|output
 argument_list|(
+name|o
+argument_list|,
 literal|1
 argument_list|,
 literal|"CONFLICT (rename/rename): "
@@ -5259,6 +5276,8 @@ expr_stmt|;
 block|}
 name|conflict_rename_rename
 argument_list|(
+name|o
+argument_list|,
 name|ren1
 argument_list|,
 name|branch1
@@ -5324,6 +5343,8 @@ name|clean
 condition|)
 name|output
 argument_list|(
+name|o
+argument_list|,
 literal|1
 argument_list|,
 literal|"Renaming %s->%s"
@@ -5341,6 +5362,8 @@ name|merge
 condition|)
 name|output
 argument_list|(
+name|o
+argument_list|,
 literal|2
 argument_list|,
 literal|"Auto-merging %s"
@@ -5358,6 +5381,8 @@ condition|)
 block|{
 name|output
 argument_list|(
+name|o
+argument_list|,
 literal|1
 argument_list|,
 literal|"CONFLICT (content): merge conflict in %s"
@@ -5548,6 +5573,8 @@ literal|0
 expr_stmt|;
 name|output
 argument_list|(
+name|o
+argument_list|,
 literal|1
 argument_list|,
 literal|"CONFLICT (rename/directory): Rename %s->%s in %s "
@@ -5566,6 +5593,8 @@ argument_list|)
 expr_stmt|;
 name|conflict_rename_dir
 argument_list|(
+name|o
+argument_list|,
 name|ren1
 argument_list|,
 name|branch1
@@ -5591,6 +5620,8 @@ literal|0
 expr_stmt|;
 name|output
 argument_list|(
+name|o
+argument_list|,
 literal|1
 argument_list|,
 literal|"CONFLICT (rename/delete): Rename %s->%s in %s "
@@ -5658,6 +5689,8 @@ literal|1
 expr_stmt|;
 name|output
 argument_list|(
+name|o
+argument_list|,
 literal|1
 argument_list|,
 literal|"CONFLICT (rename/add): Rename %s->%s in %s. "
@@ -5685,6 +5718,8 @@ argument_list|)
 expr_stmt|;
 name|output
 argument_list|(
+name|o
+argument_list|,
 literal|1
 argument_list|,
 literal|"Adding as %s instead"
@@ -5741,9 +5776,12 @@ literal|1
 expr_stmt|;
 name|output
 argument_list|(
+name|o
+argument_list|,
 literal|1
 argument_list|,
-literal|"CONFLICT (rename/rename): Rename %s->%s in %s. "
+literal|"CONFLICT (rename/rename): "
+literal|"Rename %s->%s in %s. "
 literal|"Rename %s->%s in %s"
 argument_list|,
 name|ren1_src
@@ -5773,6 +5811,8 @@ argument_list|)
 expr_stmt|;
 name|conflict_rename_rename_2
 argument_list|(
+name|o
+argument_list|,
 name|ren1
 argument_list|,
 name|branch1
@@ -5796,7 +5836,7 @@ block|{
 name|struct
 name|diff_filespec
 modifier|*
-name|o
+name|one
 decl_stmt|,
 modifier|*
 name|a
@@ -5818,7 +5858,7 @@ operator|*
 operator|)
 name|ren1_src
 expr_stmt|;
-name|o
+name|one
 operator|=
 name|ren1
 operator|->
@@ -5867,15 +5907,19 @@ name|mfi
 operator|=
 name|merge_file
 argument_list|(
-name|o
+name|one
 argument_list|,
 name|a
 argument_list|,
 name|b
 argument_list|,
-name|a_branch
+name|o
+operator|->
+name|branch1
 argument_list|,
-name|b_branch
+name|o
+operator|->
+name|branch2
 argument_list|)
 expr_stmt|;
 if|if
@@ -5914,6 +5958,8 @@ condition|)
 comment|/* 					 * This messaged is part of 					 * t6022 test. If you change 					 * it update the test too. 					 */
 name|output
 argument_list|(
+name|o
+argument_list|,
 literal|3
 argument_list|,
 literal|"Skipped %s (merged same as existing)"
@@ -5936,6 +5982,8 @@ name|clean
 condition|)
 name|output
 argument_list|(
+name|o
+argument_list|,
 literal|1
 argument_list|,
 literal|"Renaming %s => %s"
@@ -5953,6 +6001,8 @@ name|merge
 condition|)
 name|output
 argument_list|(
+name|o
+argument_list|,
 literal|2
 argument_list|,
 literal|"Auto-merging %s"
@@ -5970,6 +6020,8 @@ condition|)
 block|{
 name|output
 argument_list|(
+name|o
+argument_list|,
 literal|1
 argument_list|,
 literal|"CONFLICT (rename/modify): Merge conflict in %s"
@@ -5990,7 +6042,7 @@ name|update_stages
 argument_list|(
 name|ren1_dst
 argument_list|,
-name|o
+name|one
 argument_list|,
 name|a
 argument_list|,
@@ -6095,6 +6147,11 @@ specifier|static
 name|int
 name|process_entry
 parameter_list|(
+name|struct
+name|merge_options
+modifier|*
+name|o
+parameter_list|,
 specifier|const
 name|char
 modifier|*
@@ -6104,16 +6161,6 @@ name|struct
 name|stage_data
 modifier|*
 name|entry
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|branch1
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|branch2
 parameter_list|)
 block|{
 comment|/* 	printf("processing entry, clean cache: %s\n", index_only ? "yes": "no"); 	print_index_entry("\tpath: ", entry); 	*/
@@ -6271,6 +6318,8 @@ name|a_sha
 condition|)
 name|output
 argument_list|(
+name|o
+argument_list|,
 literal|2
 argument_list|,
 literal|"Removing %s"
@@ -6305,6 +6354,8 @@ condition|)
 block|{
 name|output
 argument_list|(
+name|o
+argument_list|,
 literal|1
 argument_list|,
 literal|"CONFLICT (delete/modify): %s deleted in %s "
@@ -6312,10 +6363,16 @@ literal|"and modified in %s. Version %s of %s left in tree."
 argument_list|,
 name|path
 argument_list|,
+name|o
+operator|->
 name|branch1
 argument_list|,
+name|o
+operator|->
 name|branch2
 argument_list|,
+name|o
+operator|->
 name|branch2
 argument_list|,
 name|path
@@ -6337,6 +6394,8 @@ else|else
 block|{
 name|output
 argument_list|(
+name|o
+argument_list|,
 literal|1
 argument_list|,
 literal|"CONFLICT (delete/modify): %s deleted in %s "
@@ -6344,10 +6403,16 @@ literal|"and modified in %s. Version %s of %s left in tree."
 argument_list|,
 name|path
 argument_list|,
+name|o
+operator|->
 name|branch2
 argument_list|,
+name|o
+operator|->
 name|branch1
 argument_list|,
+name|o
+operator|->
 name|branch1
 argument_list|,
 name|path
@@ -6423,10 +6488,14 @@ condition|)
 block|{
 name|add_branch
 operator|=
+name|o
+operator|->
 name|branch1
 expr_stmt|;
 name|other_branch
 operator|=
+name|o
+operator|->
 name|branch2
 expr_stmt|;
 name|mode
@@ -6446,10 +6515,14 @@ else|else
 block|{
 name|add_branch
 operator|=
+name|o
+operator|->
 name|branch2
 expr_stmt|;
 name|other_branch
 operator|=
+name|o
+operator|->
 name|branch1
 expr_stmt|;
 name|mode
@@ -6494,6 +6567,8 @@ literal|0
 expr_stmt|;
 name|output
 argument_list|(
+name|o
+argument_list|,
 literal|1
 argument_list|,
 literal|"CONFLICT (%s): There is a directory with name %s in %s. "
@@ -6535,6 +6610,8 @@ else|else
 block|{
 name|output
 argument_list|(
+name|o
+argument_list|,
 literal|2
 argument_list|,
 literal|"Adding %s"
@@ -6578,7 +6655,7 @@ name|mfi
 decl_stmt|;
 name|struct
 name|diff_filespec
-name|o
+name|one
 decl_stmt|,
 name|a
 decl_stmt|,
@@ -6606,6 +6683,8 @@ expr_stmt|;
 block|}
 name|output
 argument_list|(
+name|o
+argument_list|,
 literal|2
 argument_list|,
 literal|"Auto-merging %s"
@@ -6613,7 +6692,7 @@ argument_list|,
 name|path
 argument_list|)
 expr_stmt|;
-name|o
+name|one
 operator|.
 name|path
 operator|=
@@ -6633,14 +6712,14 @@ name|path
 expr_stmt|;
 name|hashcpy
 argument_list|(
-name|o
+name|one
 operator|.
 name|sha1
 argument_list|,
 name|o_sha
 argument_list|)
 expr_stmt|;
-name|o
+name|one
 operator|.
 name|mode
 operator|=
@@ -6681,7 +6760,7 @@ operator|=
 name|merge_file
 argument_list|(
 operator|&
-name|o
+name|one
 argument_list|,
 operator|&
 name|a
@@ -6689,8 +6768,12 @@ argument_list|,
 operator|&
 name|b
 argument_list|,
+name|o
+operator|->
 name|branch1
 argument_list|,
+name|o
+operator|->
 name|branch2
 argument_list|)
 expr_stmt|;
@@ -6733,6 +6816,8 @@ argument_list|)
 condition|)
 name|output
 argument_list|(
+name|o
+argument_list|,
 literal|1
 argument_list|,
 literal|"CONFLICT (submodule): Merge conflict in %s "
@@ -6752,6 +6837,8 @@ else|else
 block|{
 name|output
 argument_list|(
+name|o
+argument_list|,
 literal|1
 argument_list|,
 literal|"CONFLICT (%s): Merge conflict in %s"
@@ -6845,6 +6932,11 @@ name|int
 name|merge_trees
 parameter_list|(
 name|struct
+name|merge_options
+modifier|*
+name|o
+parameter_list|,
+name|struct
 name|tree
 modifier|*
 name|head
@@ -6858,16 +6950,6 @@ name|struct
 name|tree
 modifier|*
 name|common
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|branch1
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|branch2
 parameter_list|,
 name|struct
 name|tree
@@ -6883,6 +6965,8 @@ name|clean
 decl_stmt|;
 if|if
 condition|(
+name|o
+operator|->
 name|subtree_merge
 condition|)
 block|{
@@ -6925,6 +7009,8 @@ condition|)
 block|{
 name|output
 argument_list|(
+name|o
+argument_list|,
 literal|0
 argument_list|,
 literal|"Already uptodate!"
@@ -7036,6 +7122,8 @@ name|re_head
 operator|=
 name|get_renames
 argument_list|(
+name|o
+argument_list|,
 name|head
 argument_list|,
 name|common
@@ -7051,6 +7139,8 @@ name|re_merge
 operator|=
 name|get_renames
 argument_list|(
+name|o
+argument_list|,
 name|merge
 argument_list|,
 name|common
@@ -7066,13 +7156,11 @@ name|clean
 operator|=
 name|process_renames
 argument_list|(
+name|o
+argument_list|,
 name|re_head
 argument_list|,
 name|re_merge
-argument_list|,
-name|branch1
-argument_list|,
-name|branch2
 argument_list|)
 expr_stmt|;
 for|for
@@ -7129,13 +7217,11 @@ operator|&&
 operator|!
 name|process_entry
 argument_list|(
+name|o
+argument_list|,
 name|path
 argument_list|,
 name|e
-argument_list|,
-name|branch1
-argument_list|,
-name|branch2
 argument_list|)
 condition|)
 name|clean
@@ -7178,7 +7264,9 @@ operator|*
 name|result
 operator|=
 name|write_tree_from_memory
-argument_list|()
+argument_list|(
+name|o
+argument_list|)
 expr_stmt|;
 return|return
 name|clean
@@ -7259,6 +7347,11 @@ name|int
 name|merge_recursive
 parameter_list|(
 name|struct
+name|merge_options
+modifier|*
+name|o
+parameter_list|,
+name|struct
 name|commit
 modifier|*
 name|h1
@@ -7267,16 +7360,6 @@ name|struct
 name|commit
 modifier|*
 name|h2
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|branch1
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|branch2
 parameter_list|,
 name|struct
 name|commit_list
@@ -7314,12 +7397,16 @@ if|if
 condition|(
 name|show
 argument_list|(
+name|o
+argument_list|,
 literal|4
 argument_list|)
 condition|)
 block|{
 name|output
 argument_list|(
+name|o
+argument_list|,
 literal|4
 argument_list|,
 literal|"Merging:"
@@ -7365,12 +7452,16 @@ if|if
 condition|(
 name|show
 argument_list|(
+name|o
+argument_list|,
 literal|5
 argument_list|)
 condition|)
 block|{
 name|output
 argument_list|(
+name|o
+argument_list|,
 literal|5
 argument_list|,
 literal|"found %u common ancestor(s):"
@@ -7491,6 +7582,14 @@ operator|->
 name|next
 control|)
 block|{
+specifier|const
+name|char
+modifier|*
+name|saved_b1
+decl_stmt|,
+modifier|*
+name|saved_b2
+decl_stmt|;
 name|call_depth
 operator|++
 expr_stmt|;
@@ -7498,23 +7597,57 @@ comment|/* 		 * When the merge fails, the result contains files 		 * with confli
 name|discard_cache
 argument_list|()
 expr_stmt|;
+name|saved_b1
+operator|=
+name|o
+operator|->
+name|branch1
+expr_stmt|;
+name|saved_b2
+operator|=
+name|o
+operator|->
+name|branch2
+expr_stmt|;
+name|o
+operator|->
+name|branch1
+operator|=
+literal|"Temporary merge branch 1"
+expr_stmt|;
+name|o
+operator|->
+name|branch2
+operator|=
+literal|"Temporary merge branch 2"
+expr_stmt|;
 name|merge_recursive
 argument_list|(
+name|o
+argument_list|,
 name|merged_common_ancestors
 argument_list|,
 name|iter
 operator|->
 name|item
 argument_list|,
-literal|"Temporary merge branch 1"
-argument_list|,
-literal|"Temporary merge branch 2"
-argument_list|,
 name|NULL
 argument_list|,
 operator|&
 name|merged_common_ancestors
 argument_list|)
+expr_stmt|;
+name|o
+operator|->
+name|branch1
+operator|=
+name|saved_b1
+expr_stmt|;
+name|o
+operator|->
+name|branch2
+operator|=
+name|saved_b2
 expr_stmt|;
 name|call_depth
 operator|--
@@ -7556,6 +7689,8 @@ name|clean
 operator|=
 name|merge_trees
 argument_list|(
+name|o
+argument_list|,
 name|h1
 operator|->
 name|tree
@@ -7567,10 +7702,6 @@ argument_list|,
 name|merged_common_ancestors
 operator|->
 name|tree
-argument_list|,
-name|branch1
-argument_list|,
-name|branch2
 argument_list|,
 operator|&
 name|mrtree
@@ -7742,33 +7873,38 @@ DECL|function|merge_recursive_generic
 name|int
 name|merge_recursive_generic
 parameter_list|(
+name|struct
+name|merge_options
+modifier|*
+name|o
+parameter_list|,
 specifier|const
+name|unsigned
+name|char
+modifier|*
+name|head
+parameter_list|,
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|merge
+parameter_list|,
+name|int
+name|num_base_list
+parameter_list|,
+specifier|const
+name|unsigned
 name|char
 modifier|*
 modifier|*
 name|base_list
 parameter_list|,
-specifier|const
-name|unsigned
-name|char
+name|struct
+name|commit
 modifier|*
-name|head_sha1
-parameter_list|,
-specifier|const
-name|char
 modifier|*
-name|head_name
-parameter_list|,
-specifier|const
-name|unsigned
-name|char
-modifier|*
-name|next_sha1
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|next_name
+name|result
 parameter_list|)
 block|{
 name|int
@@ -7795,18 +7931,15 @@ decl_stmt|;
 name|struct
 name|commit
 modifier|*
-name|result
-decl_stmt|;
-name|struct
-name|commit
-modifier|*
 name|head_commit
 init|=
 name|get_ref
 argument_list|(
-name|head_sha1
+name|head
 argument_list|,
-name|head_name
+name|o
+operator|->
+name|branch1
 argument_list|)
 decl_stmt|;
 name|struct
@@ -7816,9 +7949,11 @@ name|next_commit
 init|=
 name|get_ref
 argument_list|(
-name|next_sha1
+name|merge
 argument_list|,
-name|next_name
+name|o
+operator|->
+name|branch2
 argument_list|)
 decl_stmt|;
 name|struct
@@ -7842,50 +7977,19 @@ name|i
 operator|=
 literal|0
 init|;
-name|base_list
-index|[
 name|i
-index|]
+operator|<
+name|num_base_list
 condition|;
 operator|++
 name|i
 control|)
 block|{
-name|unsigned
-name|char
-name|sha
-index|[
-literal|20
-index|]
-decl_stmt|;
 name|struct
 name|commit
 modifier|*
 name|base
 decl_stmt|;
-if|if
-condition|(
-name|get_sha1
-argument_list|(
-name|base_list
-index|[
-name|i
-index|]
-argument_list|,
-name|sha
-argument_list|)
-condition|)
-return|return
-name|error
-argument_list|(
-literal|"Could not resolve ref '%s'"
-argument_list|,
-name|base_list
-index|[
-name|i
-index|]
-argument_list|)
-return|;
 if|if
 condition|(
 operator|!
@@ -7894,12 +7998,18 @@ name|base
 operator|=
 name|get_ref
 argument_list|(
-name|sha
-argument_list|,
 name|base_list
 index|[
 name|i
 index|]
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|base_list
+index|[
+name|i
+index|]
+argument_list|)
 argument_list|)
 operator|)
 condition|)
@@ -7908,10 +8018,13 @@ name|error
 argument_list|(
 literal|"Could not parse object '%s'"
 argument_list|,
+name|sha1_to_hex
+argument_list|(
 name|base_list
 index|[
 name|i
 index|]
+argument_list|)
 argument_list|)
 return|;
 name|commit_list_insert
@@ -7937,17 +8050,14 @@ name|clean
 operator|=
 name|merge_recursive
 argument_list|(
+name|o
+argument_list|,
 name|head_commit
 argument_list|,
 name|next_commit
 argument_list|,
-name|head_name
-argument_list|,
-name|next_name
-argument_list|,
 name|ca
 argument_list|,
-operator|&
 name|result
 argument_list|)
 expr_stmt|;
@@ -7989,6 +8099,7 @@ end_function
 
 begin_function
 DECL|function|merge_recursive_config
+specifier|static
 name|int
 name|merge_recursive_config
 parameter_list|(
@@ -8007,6 +8118,13 @@ modifier|*
 name|cb
 parameter_list|)
 block|{
+name|struct
+name|merge_options
+modifier|*
+name|o
+init|=
+name|cb
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -8018,7 +8136,9 @@ literal|"merge.verbosity"
 argument_list|)
 condition|)
 block|{
-name|merge_recursive_verbosity
+name|o
+operator|->
+name|verbosity
 operator|=
 name|git_config_int
 argument_list|(
@@ -8042,6 +8162,8 @@ literal|"diff.renamelimit"
 argument_list|)
 condition|)
 block|{
+name|o
+operator|->
 name|diff_rename_limit
 operator|=
 name|git_config_int
@@ -8066,6 +8188,8 @@ literal|"merge.renamelimit"
 argument_list|)
 condition|)
 block|{
+name|o
+operator|->
 name|merge_rename_limit
 operator|=
 name|git_config_int
@@ -8093,14 +8217,62 @@ block|}
 end_function
 
 begin_function
-DECL|function|merge_recursive_setup
+DECL|function|init_merge_options
 name|void
-name|merge_recursive_setup
+name|init_merge_options
 parameter_list|(
-name|int
-name|is_subtree_merge
+name|struct
+name|merge_options
+modifier|*
+name|o
 parameter_list|)
 block|{
+name|memset
+argument_list|(
+name|o
+argument_list|,
+literal|0
+argument_list|,
+sizeof|sizeof
+argument_list|(
+expr|struct
+name|merge_options
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|o
+operator|->
+name|verbosity
+operator|=
+literal|2
+expr_stmt|;
+name|o
+operator|->
+name|buffer_output
+operator|=
+literal|1
+expr_stmt|;
+name|o
+operator|->
+name|diff_rename_limit
+operator|=
+operator|-
+literal|1
+expr_stmt|;
+name|o
+operator|->
+name|merge_rename_limit
+operator|=
+operator|-
+literal|1
+expr_stmt|;
+name|git_config
+argument_list|(
+name|merge_recursive_config
+argument_list|,
+name|o
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|getenv
@@ -8108,7 +8280,9 @@ argument_list|(
 literal|"GIT_MERGE_VERBOSITY"
 argument_list|)
 condition|)
-name|merge_recursive_verbosity
+name|o
+operator|->
+name|verbosity
 operator|=
 name|strtol
 argument_list|(
@@ -8124,17 +8298,17 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|merge_recursive_verbosity
+name|o
+operator|->
+name|verbosity
 operator|>=
 literal|5
 condition|)
+name|o
+operator|->
 name|buffer_output
 operator|=
 literal|0
-expr_stmt|;
-name|subtree_merge
-operator|=
-name|is_subtree_merge
 expr_stmt|;
 block|}
 end_function
