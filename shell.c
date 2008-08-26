@@ -23,12 +23,6 @@ directive|include
 file|"strbuf.h"
 end_include
 
-begin_include
-include|#
-directive|include
-file|"builtin.h"
-end_include
-
 begin_function
 DECL|function|do_generic_cmd
 specifier|static
@@ -246,23 +240,17 @@ struct|;
 end_struct
 
 begin_function
-DECL|function|cmd_shell
+DECL|function|main
 name|int
-name|cmd_shell
+name|main
 parameter_list|(
 name|int
 name|argc
 parameter_list|,
-specifier|const
 name|char
 modifier|*
 modifier|*
 name|argv
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|prefix
 parameter_list|)
 block|{
 name|char
@@ -320,13 +308,10 @@ argument_list|)
 expr_stmt|;
 name|prog
 operator|=
-name|xstrdup
-argument_list|(
 name|argv
 index|[
 literal|2
 index|]
-argument_list|)
 expr_stmt|;
 if|if
 condition|(
