@@ -5176,6 +5176,17 @@ index|[
 literal|20
 index|]
 decl_stmt|;
+name|int
+name|nongit
+init|=
+literal|0
+decl_stmt|;
+name|setup_git_directory_gently
+argument_list|(
+operator|&
+name|nongit
+argument_list|)
+expr_stmt|;
 name|git_config
 argument_list|(
 name|git_index_pack_config
