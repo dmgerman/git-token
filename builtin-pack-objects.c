@@ -2774,13 +2774,6 @@ argument_list|,
 name|nr_written
 argument_list|)
 expr_stmt|;
-name|fsync_or_die
-argument_list|(
-name|fd
-argument_list|,
-name|pack_tmp_name
-argument_list|)
-expr_stmt|;
 name|close
 argument_list|(
 name|fd

@@ -1049,6 +1049,13 @@ argument_list|,
 literal|20
 argument_list|)
 expr_stmt|;
+name|fsync_or_die
+argument_list|(
+name|pack_fd
+argument_list|,
+name|pack_name
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
