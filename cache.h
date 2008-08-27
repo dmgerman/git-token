@@ -2224,6 +2224,14 @@ name|ADD_CACHE_IGNORE_ERRORS
 value|4
 end_define
 
+begin_define
+DECL|macro|ADD_CACHE_IGNORE_REMOVAL
+define|#
+directive|define
+name|ADD_CACHE_IGNORE_REMOVAL
+value|8
+end_define
+
 begin_function_decl
 specifier|extern
 name|int
