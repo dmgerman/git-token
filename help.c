@@ -1227,14 +1227,6 @@ modifier|*
 name|other_cmds
 parameter_list|)
 block|{
-specifier|const
-name|char
-modifier|*
-name|exec_path
-init|=
-name|git_exec_path
-argument_list|()
-decl_stmt|;
 name|int
 name|i
 decl_stmt|,
@@ -1327,6 +1319,14 @@ operator|->
 name|cnt
 condition|)
 block|{
+specifier|const
+name|char
+modifier|*
+name|exec_path
+init|=
+name|git_exec_path
+argument_list|()
+decl_stmt|;
 name|printf
 argument_list|(
 literal|"available %s in '%s'\n"
