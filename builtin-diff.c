@@ -726,6 +726,14 @@ name|argc
 operator|--
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+name|cached
+condition|)
+name|setup_work_tree
+argument_list|()
+expr_stmt|;
 comment|/* 	 * Make sure there is one revision (i.e. pending object), 	 * and there is no revision filtering parameters. 	 */
 if|if
 condition|(
@@ -1337,6 +1345,9 @@ operator|->
 name|dense_combined_merges
 operator|=
 literal|1
+expr_stmt|;
+name|setup_work_tree
+argument_list|()
 expr_stmt|;
 if|if
 condition|(
