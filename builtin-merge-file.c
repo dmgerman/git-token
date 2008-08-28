@@ -31,7 +31,7 @@ name|char
 name|merge_file_usage
 index|[]
 init|=
-literal|"git merge-file [-p | --stdout] [-q | --quiet] [-L name1 [-L orig [-L name2]]] file1 orig_file file2"
+literal|"git merge-file [-p | --stdout] [--diff3] [-q | --quiet] [-L name1 [-L orig [-L name2]]] file1 orig_file file2"
 decl_stmt|;
 end_decl_stmt
 
@@ -95,6 +95,16 @@ init|=
 literal|0
 decl_stmt|,
 name|to_stdout
+init|=
+literal|0
+decl_stmt|;
+name|int
+name|merge_level
+init|=
+name|XDL_MERGE_ZEALOUS_ALNUM
+decl_stmt|;
+name|int
+name|merge_style
 init|=
 literal|0
 decl_stmt|;
@@ -204,6 +214,30 @@ argument_list|,
 name|stderr
 argument_list|)
 expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|argv
+index|[
+literal|1
+index|]
+argument_list|,
+literal|"--diff3"
+argument_list|)
+condition|)
+block|{
+name|merge_style
+operator|=
+name|XDL_MERGE_DIFF3
+expr_stmt|;
+name|merge_level
+operator|=
+name|XDL_MERGE_EAGER
+expr_stmt|;
+block|}
 else|else
 name|usage
 argument_list|(
@@ -346,7 +380,9 @@ argument_list|,
 operator|&
 name|xpp
 argument_list|,
-name|XDL_MERGE_ZEALOUS_ALNUM
+name|merge_level
+operator||
+name|merge_style
 argument_list|,
 operator|&
 name|result
