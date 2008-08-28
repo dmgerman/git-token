@@ -2282,6 +2282,14 @@ value|0x04
 end_define
 
 begin_define
+DECL|macro|GIT_SPECIAL
+define|#
+directive|define
+name|GIT_SPECIAL
+value|0x08
+end_define
+
+begin_define
 DECL|macro|sane_istest
 define|#
 directive|define
@@ -2336,6 +2344,17 @@ parameter_list|(
 name|x
 parameter_list|)
 value|sane_istest(x,GIT_ALPHA | GIT_DIGIT)
+end_define
+
+begin_define
+DECL|macro|isspecial
+define|#
+directive|define
+name|isspecial
+parameter_list|(
+name|x
+parameter_list|)
+value|sane_istest(x,GIT_SPECIAL)
 end_define
 
 begin_define
