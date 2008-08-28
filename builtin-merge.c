@@ -456,7 +456,7 @@ name|other_cmds
 decl_stmt|;
 specifier|static
 name|int
-name|longest
+name|loaded
 decl_stmt|;
 if|if
 condition|(
@@ -507,13 +507,17 @@ return|;
 if|if
 condition|(
 operator|!
-name|longest
+name|loaded
 condition|)
 block|{
 name|struct
 name|cmdnames
 name|not_strategies
 decl_stmt|;
+name|loaded
+operator|=
+literal|1
+expr_stmt|;
 name|memset
 argument_list|(
 operator|&
@@ -556,8 +560,6 @@ name|cmdnames
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|longest
-operator|=
 name|load_command_list
 argument_list|(
 literal|"git-merge-"
