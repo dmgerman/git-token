@@ -2010,6 +2010,16 @@ argument_list|(
 name|git_cmd
 argument_list|)
 decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|fallback
+init|=
+name|getenv
+argument_list|(
+literal|"GIT_MAN_VIEWER"
+argument_list|)
+decl_stmt|;
 name|setup_man_path
 argument_list|()
 expr_stmt|;
@@ -2039,6 +2049,17 @@ argument_list|)
 expr_stmt|;
 comment|/* will return when unable */
 block|}
+if|if
+condition|(
+name|fallback
+condition|)
+name|exec_viewer
+argument_list|(
+name|fallback
+argument_list|,
+name|page
+argument_list|)
+expr_stmt|;
 name|exec_viewer
 argument_list|(
 literal|"man"
