@@ -2271,6 +2271,25 @@ name|flags
 operator|&
 name|XDL_MERGE_STYLE_MASK
 decl_stmt|;
+if|if
+condition|(
+name|style
+operator|==
+name|XDL_MERGE_DIFF3
+condition|)
+block|{
+comment|/* 		 * "diff3 -m" output does not make sense for anything 		 * more aggressive than XDL_MERGE_EAGER. 		 */
+if|if
+condition|(
+name|XDL_MERGE_EAGER
+operator|<
+name|level
+condition|)
+name|level
+operator|=
+name|XDL_MERGE_EAGER
+expr_stmt|;
+block|}
 name|c
 operator|=
 name|changes

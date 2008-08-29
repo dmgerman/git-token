@@ -228,16 +228,10 @@ argument_list|,
 literal|"--diff3"
 argument_list|)
 condition|)
-block|{
 name|merge_style
 operator|=
 name|XDL_MERGE_DIFF3
 expr_stmt|;
-name|merge_level
-operator|=
-name|XDL_MERGE_EAGER
-expr_stmt|;
-block|}
 else|else
 name|usage
 argument_list|(
