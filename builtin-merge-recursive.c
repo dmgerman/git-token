@@ -7929,7 +7929,7 @@ literal|0
 return|;
 block|}
 return|return
-name|git_default_config
+name|git_xmerge_config
 argument_list|(
 name|var
 argument_list|,
