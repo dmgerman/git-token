@@ -275,6 +275,11 @@ name|reverse
 range|:
 literal|1
 decl_stmt|,
+DECL|member|reverse_output_stage
+name|reverse_output_stage
+range|:
+literal|1
+decl_stmt|,
 DECL|member|cherry_pick
 name|cherry_pick
 range|:
