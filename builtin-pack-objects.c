@@ -2307,7 +2307,7 @@ end_function
 begin_function
 DECL|function|write_one
 specifier|static
-name|off_t
+name|int
 name|write_one
 parameter_list|(
 name|struct
@@ -2321,6 +2321,7 @@ modifier|*
 name|e
 parameter_list|,
 name|off_t
+modifier|*
 name|offset
 parameter_list|)
 block|{
@@ -2342,7 +2343,7 @@ operator|->
 name|preferred_base
 condition|)
 return|return
-name|offset
+literal|1
 return|;
 comment|/* if we are deltified, write out base object first. */
 if|if
@@ -2350,10 +2351,8 @@ condition|(
 name|e
 operator|->
 name|delta
-condition|)
-block|{
-name|offset
-operator|=
+operator|&&
+operator|!
 name|write_one
 argument_list|(
 name|f
@@ -2364,22 +2363,17 @@ name|delta
 argument_list|,
 name|offset
 argument_list|)
-expr_stmt|;
-if|if
-condition|(
-operator|!
-name|offset
 condition|)
 return|return
 literal|0
 return|;
-block|}
 name|e
 operator|->
 name|idx
 operator|.
 name|offset
 operator|=
+operator|*
 name|offset
 expr_stmt|;
 name|size
@@ -2390,6 +2384,7 @@ name|f
 argument_list|,
 name|e
 argument_list|,
+operator|*
 name|offset
 argument_list|)
 expr_stmt|;
@@ -2425,8 +2420,10 @@ expr_stmt|;
 comment|/* make sure off_t is sufficiently large not to wrap */
 if|if
 condition|(
+operator|*
 name|offset
 operator|>
+operator|*
 name|offset
 operator|+
 name|size
@@ -2436,10 +2433,13 @@ argument_list|(
 literal|"pack too large for current definition of off_t"
 argument_list|)
 expr_stmt|;
-return|return
+operator|*
 name|offset
-operator|+
+operator|+=
 name|size
+expr_stmt|;
+return|return
+literal|1
 return|;
 block|}
 end_function
@@ -2487,12 +2487,6 @@ name|f
 decl_stmt|;
 name|off_t
 name|offset
-decl_stmt|,
-name|offset_one
-decl_stmt|,
-name|last_obj_offset
-init|=
-literal|0
 decl_stmt|;
 name|struct
 name|pack_header
@@ -2680,12 +2674,9 @@ name|i
 operator|++
 control|)
 block|{
-name|last_obj_offset
-operator|=
-name|offset
-expr_stmt|;
-name|offset_one
-operator|=
+if|if
+condition|(
+operator|!
 name|write_one
 argument_list|(
 name|f
@@ -2694,19 +2685,11 @@ name|objects
 operator|+
 name|i
 argument_list|,
+operator|&
 name|offset
 argument_list|)
-expr_stmt|;
-if|if
-condition|(
-operator|!
-name|offset_one
 condition|)
 break|break;
-name|offset
-operator|=
-name|offset_one
-expr_stmt|;
 name|display_progress
 argument_list|(
 name|progress_state
