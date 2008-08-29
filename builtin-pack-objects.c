@@ -2741,7 +2741,7 @@ name|sha1close
 argument_list|(
 name|f
 argument_list|,
-name|NULL
+name|sha1
 argument_list|,
 literal|0
 argument_list|)
@@ -2756,9 +2756,9 @@ name|pack_tmp_name
 argument_list|,
 name|nr_written
 argument_list|,
-name|NULL
+name|sha1
 argument_list|,
-literal|0
+name|offset
 argument_list|)
 expr_stmt|;
 name|close
