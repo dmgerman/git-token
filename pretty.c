@@ -1815,6 +1815,10 @@ name|msg
 parameter_list|,
 name|int
 name|len
+parameter_list|,
+name|enum
+name|date_mode
+name|dmode
 parameter_list|)
 block|{
 comment|/* currently all placeholders have same length */
@@ -2190,7 +2194,7 @@ name|date
 argument_list|,
 name|tz
 argument_list|,
-name|DATE_NORMAL
+name|dmode
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2332,6 +2336,11 @@ name|struct
 name|commit
 modifier|*
 name|commit
+decl_stmt|;
+DECL|member|dmode
+name|enum
+name|date_mode
+name|dmode
 decl_stmt|;
 comment|/* These offsets are relative to the start of the commit message. */
 DECL|member|commit_header_parsed
@@ -3420,6 +3429,10 @@ operator|->
 name|author
 operator|.
 name|len
+argument_list|,
+name|c
+operator|->
+name|dmode
 argument_list|)
 return|;
 case|case
@@ -3449,6 +3462,10 @@ operator|->
 name|committer
 operator|.
 name|len
+argument_list|,
+name|c
+operator|->
+name|dmode
 argument_list|)
 return|;
 case|case
@@ -3523,6 +3540,10 @@ name|struct
 name|strbuf
 modifier|*
 name|sb
+parameter_list|,
+name|enum
+name|date_mode
+name|dmode
 parameter_list|)
 block|{
 name|struct
@@ -3547,6 +3568,12 @@ operator|.
 name|commit
 operator|=
 name|commit
+expr_stmt|;
+name|context
+operator|.
+name|dmode
+operator|=
+name|dmode
 expr_stmt|;
 name|strbuf_expand
 argument_list|(
@@ -4355,6 +4382,8 @@ argument_list|,
 name|user_format
 argument_list|,
 name|sb
+argument_list|,
+name|dmode
 argument_list|)
 expr_stmt|;
 return|return;

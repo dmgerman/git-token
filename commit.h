@@ -412,6 +412,10 @@ name|struct
 name|strbuf
 modifier|*
 name|sb
+parameter_list|,
+name|enum
+name|date_mode
+name|dmode
 parameter_list|)
 function_decl|;
 end_function_decl
