@@ -2641,6 +2641,24 @@ name|get_git_work_tree
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|rel
+operator|&&
+operator|*
+name|rel
+operator|&&
+name|chdir
+argument_list|(
+name|get_git_work_tree
+argument_list|()
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"Could not jump to working directory"
+argument_list|)
+expr_stmt|;
 return|return
 name|rel
 operator|&&
