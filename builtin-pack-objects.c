@@ -5687,28 +5687,7 @@ operator|->
 name|size
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|entry
-operator|->
-name|type
-operator|<
-literal|0
-condition|)
-name|die
-argument_list|(
-literal|"unable to get type of object %s"
-argument_list|,
-name|sha1_to_hex
-argument_list|(
-name|entry
-operator|->
-name|idx
-operator|.
-name|sha1
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|/* 	 * The error condition is checked in prepare_pack().  This is 	 * to permit a missing preferred base object to be ignored 	 * as a preferred base.  Doing so can result in a larger 	 * pack file, but the transfer will still take place. 	 */
 block|}
 end_function
 
@@ -8743,9 +8722,33 @@ name|entry
 operator|->
 name|preferred_base
 condition|)
+block|{
 name|nr_deltas
 operator|++
 expr_stmt|;
+if|if
+condition|(
+name|entry
+operator|->
+name|type
+operator|<
+literal|0
+condition|)
+name|die
+argument_list|(
+literal|"unable to get type of object %s"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|entry
+operator|->
+name|idx
+operator|.
+name|sha1
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 name|delta_list
 index|[
 name|n
