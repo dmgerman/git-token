@@ -298,7 +298,7 @@ name|len
 condition|)
 name|die
 argument_list|(
-literal|"git-archive: expected ACK/NAK, got EOF"
+literal|"git archive: expected ACK/NAK, got EOF"
 argument_list|)
 expr_stmt|;
 if|if
@@ -346,7 +346,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"git-archive: NACK %s"
+literal|"git archive: NACK %s"
 argument_list|,
 name|buf
 operator|+
@@ -355,7 +355,7 @@ argument_list|)
 expr_stmt|;
 name|die
 argument_list|(
-literal|"git-archive: protocol error"
+literal|"git archive: protocol error"
 argument_list|)
 expr_stmt|;
 block|}
@@ -382,7 +382,7 @@ name|len
 condition|)
 name|die
 argument_list|(
-literal|"git-archive: expected a flush"
+literal|"git archive: expected a flush"
 argument_list|)
 expr_stmt|;
 comment|/* Now, start reading from fd[0] and spit it out to stdout */

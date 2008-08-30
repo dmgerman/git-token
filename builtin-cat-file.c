@@ -620,7 +620,7 @@ break|break;
 default|default:
 name|die
 argument_list|(
-literal|"git-cat-file: unknown option: %s\n"
+literal|"git cat-file: unknown option: %s\n"
 argument_list|,
 name|exp_type
 argument_list|)
@@ -633,7 +633,7 @@ name|buf
 condition|)
 name|die
 argument_list|(
-literal|"git-cat-file %s: bad file"
+literal|"git cat-file %s: bad file"
 argument_list|,
 name|obj_name
 argument_list|)

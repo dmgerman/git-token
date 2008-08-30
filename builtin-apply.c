@@ -1362,7 +1362,7 @@ literal|0
 condition|)
 name|die
 argument_list|(
-literal|"git-apply: read returned %s"
+literal|"git apply: read returned %s"
 argument_list|,
 name|strerror
 argument_list|(
