@@ -9726,14 +9726,26 @@ name|frag
 operator|->
 name|trailing
 expr_stmt|;
-comment|/* 	 * A hunk to change lines at the beginning would begin with 	 * @@ -1,L +N,M @@ 	 * 	 * And a hunk to add to an empty file would begin with 	 * @@ -0,0 +N,M @@ 	 * 	 * In other words, a hunk that is (frag->oldpos<= 1) with or 	 * without leading context must match at the beginning. 	 */
+comment|/* 	 * A hunk to change lines at the beginning would begin with 	 * @@ -1,L +N,M @@ 	 * but we need to be careful.  -U0 that inserts before the second 	 * line also has this pattern. 	 * 	 * And a hunk to add to an empty file would begin with 	 * @@ -0,0 +N,M @@ 	 * 	 * In other words, a hunk that is (frag->oldpos<= 1) with or 	 * without leading context must match at the beginning. 	 */
 name|match_beginning
 operator|=
+operator|(
+operator|!
 name|frag
 operator|->
 name|oldpos
-operator|<=
+operator|||
+operator|(
+name|frag
+operator|->
+name|oldpos
+operator|==
 literal|1
+operator|&&
+operator|!
+name|unidiff_zero
+operator|)
+operator|)
 expr_stmt|;
 comment|/* 	 * A hunk without trailing lines must match at the end. 	 * However, we simply cannot tell if a hunk must match end 	 * from the lack of trailing lines if the patch was generated 	 * with unidiff without any context. 	 */
 name|match_end
