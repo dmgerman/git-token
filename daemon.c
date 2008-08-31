@@ -3531,6 +3531,13 @@ continue|continue;
 block|}
 break|break;
 block|}
+name|signal
+argument_list|(
+name|SIGCHLD
+argument_list|,
+name|child_handler
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
