@@ -367,7 +367,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"git-show-ref: bad ref %s (%s)"
+literal|"git show-ref: bad ref %s (%s)"
 argument_list|,
 name|refname
 argument_list|,
@@ -461,7 +461,7 @@ name|obj
 condition|)
 name|die
 argument_list|(
-literal|"git-show-ref: bad ref %s (%s)"
+literal|"git show-ref: bad ref %s (%s)"
 argument_list|,
 name|refname
 argument_list|,
@@ -498,7 +498,7 @@ name|obj
 condition|)
 name|die
 argument_list|(
-literal|"git-show-ref: bad tag at ref %s (%s)"
+literal|"git show-ref: bad tag at ref %s (%s)"
 argument_list|,
 name|refname
 argument_list|,

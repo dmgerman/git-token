@@ -373,7 +373,7 @@ name|HEADERSIZE
 condition|)
 name|die
 argument_list|(
-literal|"git-get-tar-commit-id: read error"
+literal|"git get-tar-commit-id: read error"
 argument_list|)
 expr_stmt|;
 if|if
@@ -425,7 +425,7 @@ literal|41
 condition|)
 name|die
 argument_list|(
-literal|"git-get-tar-commit-id: write error"
+literal|"git get-tar-commit-id: write error"
 argument_list|)
 expr_stmt|;
 return|return
