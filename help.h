@@ -33,6 +33,7 @@ DECL|member|len
 name|size_t
 name|len
 decl_stmt|;
+comment|/* also used for similarity index in help.c */
 DECL|member|name
 name|char
 name|name
