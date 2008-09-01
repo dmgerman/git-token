@@ -2076,7 +2076,13 @@ name|path
 condition|)
 name|repo
 operator|=
-name|path
+name|xstrdup
+argument_list|(
+name|make_nonrelative_path
+argument_list|(
+name|repo_name
+argument_list|)
+argument_list|)
 expr_stmt|;
 elseif|else
 if|if
