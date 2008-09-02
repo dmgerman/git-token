@@ -390,16 +390,6 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|call_depth
-specifier|static
-name|int
-name|call_depth
-init|=
-literal|0
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|variable|obuf
 specifier|static
 name|struct
@@ -428,6 +418,8 @@ block|{
 return|return
 operator|(
 operator|!
+name|o
+operator|->
 name|call_depth
 operator|&&
 name|o
@@ -525,6 +517,8 @@ argument_list|(
 operator|&
 name|obuf
 argument_list|,
+name|o
+operator|->
 name|call_depth
 operator|*
 literal|2
@@ -544,6 +538,8 @@ name|len
 argument_list|,
 literal|' '
 argument_list|,
+name|o
+operator|->
 name|call_depth
 operator|*
 literal|2
@@ -558,6 +554,8 @@ name|obuf
 operator|.
 name|len
 operator|+
+name|o
+operator|->
 name|call_depth
 operator|*
 literal|2
@@ -724,6 +722,11 @@ name|void
 name|output_commit_title
 parameter_list|(
 name|struct
+name|merge_options
+modifier|*
+name|o
+parameter_list|,
+name|struct
 name|commit
 modifier|*
 name|commit
@@ -739,6 +742,8 @@ for|for
 control|(
 name|i
 operator|=
+name|o
+operator|->
 name|call_depth
 init|;
 name|i
@@ -7414,11 +7419,15 @@ argument_list|)
 expr_stmt|;
 name|output_commit_title
 argument_list|(
+name|o
+argument_list|,
 name|h1
 argument_list|)
 expr_stmt|;
 name|output_commit_title
 argument_list|(
+name|o
+argument_list|,
 name|h2
 argument_list|)
 expr_stmt|;
@@ -7488,6 +7497,8 @@ name|next
 control|)
 name|output_commit_title
 argument_list|(
+name|o
+argument_list|,
 name|iter
 operator|->
 name|item
@@ -7590,6 +7601,8 @@ decl_stmt|,
 modifier|*
 name|saved_b2
 decl_stmt|;
+name|o
+operator|->
 name|call_depth
 operator|++
 expr_stmt|;
@@ -7649,6 +7662,8 @@ name|branch2
 operator|=
 name|saved_b2
 expr_stmt|;
+name|o
+operator|->
 name|call_depth
 operator|--
 expr_stmt|;
@@ -7669,6 +7684,8 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
+name|o
+operator|->
 name|call_depth
 condition|)
 block|{

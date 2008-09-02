@@ -53,6 +53,10 @@ DECL|member|merge_rename_limit
 name|int
 name|merge_rename_limit
 decl_stmt|;
+DECL|member|call_depth
+name|int
+name|call_depth
+decl_stmt|;
 block|}
 struct|;
 end_struct
