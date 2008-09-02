@@ -8736,6 +8736,21 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+if|if
+condition|(
+name|entry
+operator|->
+name|type
+operator|<
+literal|0
+condition|)
+block|{
+comment|/* 				 * This object is not found, but we 				 * don't have to include it anyway. 				 */
+continue|continue;
+block|}
+block|}
 name|delta_list
 index|[
 name|n
