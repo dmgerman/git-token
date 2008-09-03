@@ -12,6 +12,12 @@ directive|define
 name|MERGE_RECURSIVE_H
 end_define
 
+begin_include
+include|#
+directive|include
+file|"string-list.h"
+end_include
+
 begin_struct
 DECL|struct|merge_options
 struct|struct
@@ -61,6 +67,16 @@ DECL|member|obuf
 name|struct
 name|strbuf
 name|obuf
+decl_stmt|;
+DECL|member|current_file_set
+name|struct
+name|string_list
+name|current_file_set
+decl_stmt|;
+DECL|member|current_directory_set
+name|struct
+name|string_list
+name|current_directory_set
 decl_stmt|;
 block|}
 struct|;
