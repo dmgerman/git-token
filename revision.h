@@ -220,6 +220,11 @@ name|topo_order
 range|:
 literal|1
 decl_stmt|,
+DECL|member|simplify_merges
+name|simplify_merges
+range|:
+literal|1
+decl_stmt|,
 DECL|member|tag_objects
 name|tag_objects
 range|:
@@ -504,6 +509,11 @@ DECL|member|children
 name|struct
 name|decoration
 name|children
+decl_stmt|;
+DECL|member|merge_simplification
+name|struct
+name|decoration
+name|merge_simplification
 decl_stmt|;
 block|}
 struct|;
