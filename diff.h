@@ -196,14 +196,6 @@ name|DIFF_FORMAT_DIRSTAT
 value|0x0040
 end_define
 
-begin_define
-DECL|macro|DIFF_FORMAT_CUMULATIVE
-define|#
-directive|define
-name|DIFF_FORMAT_CUMULATIVE
-value|0x0080
-end_define
-
 begin_comment
 comment|/* These override all above */
 end_comment
@@ -402,6 +394,14 @@ define|#
 directive|define
 name|DIFF_OPT_IGNORE_SUBMODULES
 value|(1<< 18)
+end_define
+
+begin_define
+DECL|macro|DIFF_OPT_DIRSTAT_CUMULATIVE
+define|#
+directive|define
+name|DIFF_OPT_DIRSTAT_CUMULATIVE
+value|(1<< 19)
 end_define
 
 begin_define
