@@ -2916,6 +2916,9 @@ literal|"--refresh"
 argument_list|)
 condition|)
 block|{
+name|setup_work_tree
+argument_list|()
+expr_stmt|;
 name|has_errors
 operator||=
 name|refresh_cache
@@ -2936,6 +2939,9 @@ literal|"--really-refresh"
 argument_list|)
 condition|)
 block|{
+name|setup_work_tree
+argument_list|()
+expr_stmt|;
 name|has_errors
 operator||=
 name|refresh_cache
@@ -3302,6 +3308,9 @@ literal|"-g"
 argument_list|)
 condition|)
 block|{
+name|setup_work_tree
+argument_list|()
+expr_stmt|;
 name|has_errors
 operator|=
 name|do_reupdate
@@ -3396,6 +3405,9 @@ name|path
 argument_list|)
 expr_stmt|;
 block|}
+name|setup_work_tree
+argument_list|()
+expr_stmt|;
 name|p
 operator|=
 name|prefix_path
@@ -3478,6 +3490,9 @@ name|nbuf
 argument_list|,
 literal|0
 argument_list|)
+expr_stmt|;
+name|setup_work_tree
+argument_list|()
 expr_stmt|;
 while|while
 condition|(

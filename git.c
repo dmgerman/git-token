@@ -1617,6 +1617,8 @@ block|,
 name|cmd_diff_files
 block|,
 name|RUN_SETUP
+operator||
+name|NEED_WORK_TREE
 block|}
 block|,
 block|{
