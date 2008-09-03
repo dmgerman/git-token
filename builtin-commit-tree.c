@@ -643,7 +643,7 @@ literal|0
 condition|)
 name|die
 argument_list|(
-literal|"git-commit-tree: read returned %s"
+literal|"git commit-tree: read returned %s"
 argument_list|,
 name|strerror
 argument_list|(

@@ -444,7 +444,7 @@ name|len
 condition|)
 name|die
 argument_list|(
-literal|"git-ls-files: internal error - directory entry not superset of prefix"
+literal|"git ls-files: internal error - directory entry not superset of prefix"
 argument_list|)
 expr_stmt|;
 if|if
@@ -945,7 +945,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"git-ls-files: internal error - cache entry not superset of prefix"
+literal|"git ls-files: internal error - cache entry not superset of prefix"
 argument_list|)
 expr_stmt|;
 if|if
@@ -1751,7 +1751,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"git-ls-files: cannot generate relative filenames containing '..'"
+literal|"git ls-files: cannot generate relative filenames containing '..'"
 argument_list|)
 expr_stmt|;
 name|prefix_len
