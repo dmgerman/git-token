@@ -57,6 +57,11 @@ DECL|member|call_depth
 name|int
 name|call_depth
 decl_stmt|;
+DECL|member|obuf
+name|struct
+name|strbuf
+name|obuf
+decl_stmt|;
 block|}
 struct|;
 end_struct
