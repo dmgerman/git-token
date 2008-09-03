@@ -2211,28 +2211,9 @@ name|commit
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* 	 * If the new thing isn't a branch and isn't HEAD and we're 	 * not starting a new branch, and we want messages, and we 	 * weren't on a branch, and we're moving to a new commit, 	 * describe the old commit. 	 */
+comment|/* 	 * If we were on a detached HEAD, but we are now moving to 	 * a new commit, we want to mention the old commit once more 	 * to remind the user that it might be lost. 	 */
 if|if
 condition|(
-operator|!
-name|new
-operator|->
-name|path
-operator|&&
-name|strcmp
-argument_list|(
-name|new
-operator|->
-name|name
-argument_list|,
-literal|"HEAD"
-argument_list|)
-operator|&&
-operator|!
-name|opts
-operator|->
-name|new_branch
-operator|&&
 operator|!
 name|opts
 operator|->

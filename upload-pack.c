@@ -959,7 +959,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"git-upload-pack: unable to fork git-rev-list"
+literal|"git upload-pack: unable to fork git-rev-list"
 argument_list|)
 expr_stmt|;
 name|argv
@@ -1081,7 +1081,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"git-upload-pack: unable to fork git-pack-objects"
+literal|"git upload-pack: unable to fork git-pack-objects"
 argument_list|)
 expr_stmt|;
 comment|/* We read from pack_objects.err to capture stderr output for 	 * progress bar, and pack_objects.out to capture the pack data. 	 */
@@ -1488,7 +1488,7 @@ condition|)
 block|{
 name|error
 argument_list|(
-literal|"git-upload-pack: git-pack-objects died with error."
+literal|"git upload-pack: git-pack-objects died with error."
 argument_list|)
 expr_stmt|;
 goto|goto
@@ -1576,7 +1576,7 @@ argument_list|)
 expr_stmt|;
 name|die
 argument_list|(
-literal|"git-upload-pack: %s"
+literal|"git upload-pack: %s"
 argument_list|,
 name|abort_msg
 argument_list|)
@@ -1621,7 +1621,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"git-upload-pack: expected SHA1 object, got '%s'"
+literal|"git upload-pack: expected SHA1 object, got '%s'"
 argument_list|,
 name|hex
 argument_list|)
@@ -2390,7 +2390,7 @@ return|;
 block|}
 name|die
 argument_list|(
-literal|"git-upload-pack: expected SHA1 list, got '%s'"
+literal|"git upload-pack: expected SHA1 list, got '%s'"
 argument_list|,
 name|line
 argument_list|)
@@ -2657,7 +2657,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"git-upload-pack: protocol error, "
+literal|"git upload-pack: protocol error, "
 literal|"expected to get sha, not '%s'"
 argument_list|,
 name|line
@@ -2793,7 +2793,7 @@ operator|)
 condition|)
 name|die
 argument_list|(
-literal|"git-upload-pack: not our ref %s"
+literal|"git upload-pack: not our ref %s"
 argument_list|,
 name|line
 operator|+
@@ -3214,7 +3214,7 @@ name|o
 condition|)
 name|die
 argument_list|(
-literal|"git-upload-pack: cannot find object %s:"
+literal|"git upload-pack: cannot find object %s:"
 argument_list|,
 name|sha1_to_hex
 argument_list|(

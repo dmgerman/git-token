@@ -3237,7 +3237,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"git-fetch-pack: fetch failed."
+literal|"git fetch-pack: fetch failed."
 argument_list|)
 expr_stmt|;
 name|all_done

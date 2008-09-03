@@ -151,7 +151,7 @@ name|active_nr
 condition|)
 name|die
 argument_list|(
-literal|"git-merge-index: %s not in the cache"
+literal|"git merge-index: %s not in the cache"
 argument_list|,
 name|path
 argument_list|)
@@ -345,7 +345,7 @@ name|found
 condition|)
 name|die
 argument_list|(
-literal|"git-merge-index: %s not in the cache"
+literal|"git merge-index: %s not in the cache"
 argument_list|,
 name|path
 argument_list|)
@@ -634,7 +634,7 @@ continue|continue;
 block|}
 name|die
 argument_list|(
-literal|"git-merge-index: unknown option %s"
+literal|"git merge-index: unknown option %s"
 argument_list|,
 name|arg
 argument_list|)

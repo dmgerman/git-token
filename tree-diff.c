@@ -1526,7 +1526,7 @@ continue|continue;
 block|}
 name|die
 argument_list|(
-literal|"git-diff-tree: internal error"
+literal|"git diff-tree: internal error"
 argument_list|)
 expr_stmt|;
 block|}

@@ -542,7 +542,7 @@ name|len
 condition|)
 name|die
 argument_list|(
-literal|"git-fetch-pack: expected ACK/NAK, got EOF"
+literal|"git fetch-pack: expected ACK/NAK, got EOF"
 argument_list|)
 expr_stmt|;
 if|if
@@ -622,7 +622,7 @@ block|}
 block|}
 name|die
 argument_list|(
-literal|"git-fetch_pack: expected ACK/NAK, got '%s'"
+literal|"git fetch_pack: expected ACK/NAK, got '%s'"
 argument_list|,
 name|line
 argument_list|)
