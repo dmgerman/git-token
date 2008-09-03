@@ -384,10 +384,12 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"[%d] "
+literal|"[%"
+name|PRIuMAX
+literal|"] "
 argument_list|,
 operator|(
-name|int
+name|uintmax_t
 operator|)
 name|getpid
 argument_list|()
@@ -3094,10 +3096,12 @@ literal|" (with error)"
 expr_stmt|;
 name|loginfo
 argument_list|(
-literal|"[%d] Disconnected%s"
+literal|"[%"
+name|PRIuMAX
+literal|"] Disconnected%s"
 argument_list|,
 operator|(
-name|int
+name|uintmax_t
 operator|)
 name|pid
 argument_list|,
@@ -4387,8 +4391,13 @@ name|fprintf
 argument_list|(
 name|f
 argument_list|,
-literal|"%d\n"
+literal|"%"
+name|PRIuMAX
+literal|"\n"
 argument_list|,
+operator|(
+name|uintmax_t
+operator|)
 name|getpid
 argument_list|()
 argument_list|)

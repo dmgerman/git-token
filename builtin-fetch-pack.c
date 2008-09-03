@@ -2849,8 +2849,13 @@ name|sprintf
 argument_list|(
 name|keep_arg
 argument_list|,
-literal|"--keep=fetch-pack %d on "
+literal|"--keep=fetch-pack %"
+name|PRIuMAX
+literal|" on "
 argument_list|,
+operator|(
+name|uintmax_t
+operator|)
 name|getpid
 argument_list|()
 argument_list|)
