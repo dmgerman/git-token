@@ -172,7 +172,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * A virtual commit has  * - (const char *)commit->util set to the name, and  * - *(int *)commit->object.sha1 set to the virtual id.  */
+comment|/*  * A virtual commit has (const char *)commit->util set to the name.  */
 end_comment
 
 begin_function
@@ -209,12 +209,6 @@ name|commit
 argument_list|)
 argument_list|)
 decl_stmt|;
-specifier|static
-name|unsigned
-name|virtual_id
-init|=
-literal|1
-decl_stmt|;
 name|commit
 operator|->
 name|tree
@@ -230,20 +224,6 @@ name|void
 operator|*
 operator|)
 name|comment
-expr_stmt|;
-operator|*
-operator|(
-name|int
-operator|*
-operator|)
-name|commit
-operator|->
-name|object
-operator|.
-name|sha1
-operator|=
-name|virtual_id
-operator|++
 expr_stmt|;
 comment|/* avoid warnings */
 name|commit
