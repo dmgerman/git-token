@@ -198,14 +198,6 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|cmd_is_annotate
-specifier|static
-name|int
-name|cmd_is_annotate
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|variable|xdl_opts
 specifier|static
 name|int
@@ -8567,7 +8559,11 @@ elseif|else
 if|if
 condition|(
 operator|!
-name|cmd_is_annotate
+operator|(
+name|opt
+operator|&
+name|OUTPUT_ANNOTATE_COMPAT
+operator|)
 condition|)
 block|{
 name|length
@@ -12130,8 +12126,9 @@ name|struct
 name|parse_opt_ctx_t
 name|ctx
 decl_stmt|;
+name|int
 name|cmd_is_annotate
-operator|=
+init|=
 operator|!
 name|strcmp
 argument_list|(
@@ -12142,7 +12139,7 @@ index|]
 argument_list|,
 literal|"annotate"
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|git_config
 argument_list|(
 name|git_blame_config
@@ -12282,6 +12279,14 @@ argument_list|(
 operator|&
 name|ctx
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|cmd_is_annotate
+condition|)
+name|output_option
+operator||=
+name|OUTPUT_ANNOTATE_COMPAT
 expr_stmt|;
 if|if
 condition|(
