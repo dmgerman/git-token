@@ -3490,6 +3490,11 @@ name|get_index_file
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|rollback_lock_file
+argument_list|(
+name|lock
+argument_list|)
+expr_stmt|;
 return|return
 name|clean
 condition|?
