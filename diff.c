@@ -19594,14 +19594,6 @@ condition|(
 name|options
 operator|->
 name|skip_stat_unmatch
-operator|&&
-operator|!
-name|DIFF_OPT_TST
-argument_list|(
-name|options
-argument_list|,
-name|FIND_COPIES_HARDER
-argument_list|)
 condition|)
 name|diffcore_skip_stat_unmatch
 argument_list|(
