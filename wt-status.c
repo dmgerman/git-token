@@ -515,6 +515,17 @@ name|fp
 argument_list|,
 name|c
 argument_list|,
+literal|"#   (use \"git checkout --<file>...\" to discard changes in working directory)"
+argument_list|)
+expr_stmt|;
+name|color_fprintf_ln
+argument_list|(
+name|s
+operator|->
+name|fp
+argument_list|,
+name|c
+argument_list|,
 literal|"#"
 argument_list|)
 expr_stmt|;
