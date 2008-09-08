@@ -75,7 +75,9 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|void
+specifier|const
+name|char
+modifier|*
 name|help_unknown_cmd
 parameter_list|(
 specifier|const
