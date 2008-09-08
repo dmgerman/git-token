@@ -787,7 +787,7 @@ name|loose
 argument_list|,
 name|loose_size
 operator|/
-literal|2
+literal|1024
 argument_list|)
 expr_stmt|;
 return|return
