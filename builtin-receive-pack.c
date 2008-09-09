@@ -2545,17 +2545,23 @@ block|}
 end_function
 
 begin_function
-DECL|function|main
+DECL|function|cmd_receive_pack
 name|int
-name|main
+name|cmd_receive_pack
 parameter_list|(
 name|int
 name|argc
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
 name|argv
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|prefix
 parameter_list|)
 block|{
 name|int
@@ -2584,6 +2590,7 @@ name|i
 operator|++
 control|)
 block|{
+specifier|const
 name|char
 modifier|*
 name|arg
@@ -2618,7 +2625,10 @@ argument_list|)
 expr_stmt|;
 name|dir
 operator|=
+name|xstrdup
+argument_list|(
 name|arg
+argument_list|)
 expr_stmt|;
 block|}
 if|if
