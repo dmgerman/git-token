@@ -3987,7 +3987,7 @@ operator|&&
 name|nr_heads
 condition|)
 block|{
-comment|/* If the heads to pull were given, we should have 		 * consumed all of them by matching the remote. 		 * Otherwise, 'git-fetch remote no-such-ref' would 		 * silently succeed without issuing an error. 		 */
+comment|/* If the heads to pull were given, we should have 		 * consumed all of them by matching the remote. 		 * Otherwise, 'git fetch remote no-such-ref' would 		 * silently succeed without issuing an error. 		 */
 for|for
 control|(
 name|i

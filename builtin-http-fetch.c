@@ -295,7 +295,7 @@ condition|)
 block|{
 name|usage
 argument_list|(
-literal|"git-http-fetch [-c] [-t] [-a] [-v] [--recover] [-w ref] [--stdin] commit-id url"
+literal|"git http-fetch [-c] [-t] [-a] [-v] [--recover] [-w ref] [--stdin] commit-id url"
 argument_list|)
 expr_stmt|;
 return|return
@@ -475,7 +475,7 @@ name|stderr
 argument_list|,
 literal|"Some loose object were found to be corrupt, but they might be just\n"
 literal|"a false '404 Not Found' error message sent with incorrect HTTP\n"
-literal|"status code.  Suggest running git-fsck.\n"
+literal|"status code.  Suggest running 'git fsck'.\n"
 argument_list|)
 expr_stmt|;
 block|}
