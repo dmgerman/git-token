@@ -213,7 +213,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/** Internal only **/
+comment|/*  * This can be used to see if we have heard of the object before, but  * it can return "yes we have, and here is a half-initialised object"  * for an object that we haven't loaded/parsed yet.  *  * When parsing a commit to create an in-core commit object, its  * parents list holds commit objects that represent its parents, but  * they are expected to be lazily initialized and do not know what  * their trees or parents are yet.  When this function returns such a  * half-initialised objects, the caller is expected to initialize them  * by calling parse_object() on them.  */
 end_comment
 
 begin_function_decl
