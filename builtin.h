@@ -162,6 +162,11 @@ name|unsigned
 name|char
 modifier|*
 name|ret
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|author
 parameter_list|)
 function_decl|;
 end_function_decl
