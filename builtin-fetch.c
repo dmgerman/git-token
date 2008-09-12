@@ -460,7 +460,7 @@ condition|(
 name|rm
 condition|)
 continue|continue;
-comment|/* 		 * Not fetched to a tracking branch?  We need to fetch 		 * it anyway to allow this branch's "branch.$name.merge" 		 * to be honored by git-pull, but we do not have to 		 * fail if branch.$name.merge is misconfigured to point 		 * at a nonexisting branch.  If we were indeed called by 		 * git-pull, it will notice the misconfiguration because 		 * there is no entry in the resulting FETCH_HEAD marked 		 * for merging. 		 */
+comment|/* 		 * Not fetched to a tracking branch?  We need to fetch 		 * it anyway to allow this branch's "branch.$name.merge" 		 * to be honored by 'git pull', but we do not have to 		 * fail if branch.$name.merge is misconfigured to point 		 * at a nonexisting branch.  If we were indeed called by 		 * 'git pull', it will notice the misconfiguration because 		 * there is no entry in the resulting FETCH_HEAD marked 		 * for merging. 		 */
 name|refspec
 operator|.
 name|src
@@ -2334,7 +2334,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * We would want to bypass the object transfer altogether if  * everything we are going to fetch already exists and connected  * locally.  *  * The refs we are going to fetch are in to_fetch (nr_heads in  * total).  If running  *  *  $ git-rev-list --objects to_fetch[0] to_fetch[1] ... --not --all  *  * does not error out, that means everything reachable from the  * refs we are going to fetch exists and is connected to some of  * our existing refs.  */
+comment|/*  * We would want to bypass the object transfer altogether if  * everything we are going to fetch already exists and connected  * locally.  *  * The refs we are going to fetch are in to_fetch (nr_heads in  * total).  If running  *  *  $ git rev-list --objects to_fetch[0] to_fetch[1] ... --not --all  *  * does not error out, that means everything reachable from the  * refs we are going to fetch exists and is connected to some of  * our existing refs.  */
 end_comment
 
 begin_function
