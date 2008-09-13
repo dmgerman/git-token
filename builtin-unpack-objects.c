@@ -105,7 +105,7 @@ name|char
 name|unpack_usage
 index|[]
 init|=
-literal|"git-unpack-objects [-n] [-q] [-r] [--strict]< pack-file"
+literal|"git unpack-objects [-n] [-q] [-r] [--strict]< pack-file"
 decl_stmt|;
 end_decl_stmt
 

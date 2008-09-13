@@ -515,7 +515,7 @@ operator|!
 name|index_only
 condition|)
 block|{
-comment|/* It's not dangerous to git-rm --cached a 			 * file if the index matches the file or the 			 * HEAD, since it means the deleted content is 			 * still available somewhere. 			 */
+comment|/* It's not dangerous to "git rm --cached" a 			 * file if the index matches the file or the 			 * HEAD, since it means the deleted content is 			 * still available somewhere. 			 */
 if|if
 condition|(
 name|staged_changes

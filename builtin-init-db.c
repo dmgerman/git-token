@@ -168,7 +168,7 @@ name|dirent
 modifier|*
 name|de
 decl_stmt|;
-comment|/* Note: if ".git/hooks" file exists in the repository being 	 * re-initialized, /etc/core-git/templates/hooks/update would 	 * cause git-init to fail here.  I think this is sane but 	 * it means that the set of templates we ship by default, along 	 * with the way the namespace under .git/ is organized, should 	 * be really carefully chosen. 	 */
+comment|/* Note: if ".git/hooks" file exists in the repository being 	 * re-initialized, /etc/core-git/templates/hooks/update would 	 * cause "git init" to fail here.  I think this is sane but 	 * it means that the set of templates we ship by default, along 	 * with the way the namespace under .git/ is organized, should 	 * be really carefully chosen. 	 */
 name|safe_create_dir
 argument_list|(
 name|path

@@ -42,7 +42,7 @@ name|tar_tree_usage
 index|[]
 init|=
 literal|"git tar-tree [--remote=<repo>]<tree-ish> [basedir]\n"
-literal|"*** Note that this command is now deprecated; use git-archive instead."
+literal|"*** Note that this command is now deprecated; use \"git archive\" instead."
 decl_stmt|;
 end_decl_stmt
 
@@ -66,7 +66,7 @@ modifier|*
 name|prefix
 parameter_list|)
 block|{
-comment|/* 	 * git-tar-tree is now a wrapper around git-archive --format=tar 	 * 	 * $0 --remote=<repo> arg... ==> 	 *	git-archive --format=tar --remote=<repo> arg... 	 * $0 tree-ish ==> 	 *	git-archive --format=tar tree-ish 	 * $0 tree-ish basedir ==> 	 * 	git-archive --format-tar --prefix=basedir tree-ish 	 */
+comment|/* 	 * "git tar-tree" is now a wrapper around "git archive --format=tar" 	 * 	 * $0 --remote=<repo> arg... ==> 	 *	git archive --format=tar --remote=<repo> arg... 	 * $0 tree-ish ==> 	 *	git archive --format=tar tree-ish 	 * $0 tree-ish basedir ==> 	 * 	git archive --format-tar --prefix=basedir tree-ish 	 */
 name|int
 name|i
 decl_stmt|;
@@ -229,8 +229,8 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"*** git-tar-tree is now deprecated.\n"
-literal|"*** Running git-archive instead.\n***"
+literal|"*** \"git tar-tree\" is now deprecated.\n"
+literal|"*** Running \"git archive\" instead.\n***"
 argument_list|)
 expr_stmt|;
 for|for
