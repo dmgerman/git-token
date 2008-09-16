@@ -138,7 +138,7 @@ name|char
 name|pack_usage
 index|[]
 init|=
-literal|"\ git-pack-objects [{ -q | --progress | --all-progress }] \n\ 	[--max-pack-size=N] [--local] [--incremental] \n\ 	[--window=N] [--window-memory=N] [--depth=N] \n\ 	[--no-reuse-delta] [--no-reuse-object] [--delta-base-offset] \n\ 	[--threads=N] [--non-empty] [--revs [--unpacked | --all]*] [--reflog] \n\ 	[--stdout | base-name] [--include-tag] \n\ 	[--keep-unreachable | --unpack-unreachable] \n\ 	[<ref-list |<object-list]"
+literal|"\ git pack-objects [{ -q | --progress | --all-progress }] \n\ 	[--max-pack-size=N] [--local] [--incremental] \n\ 	[--window=N] [--window-memory=N] [--depth=N] \n\ 	[--no-reuse-delta] [--no-reuse-object] [--delta-base-offset] \n\ 	[--threads=N] [--non-empty] [--revs [--unpacked | --all]*] [--reflog] \n\ 	[--stdout | base-name] [--include-tag] \n\ 	[--keep-unreachable | --unpack-unreachable] \n\ 	[<ref-list |<object-list]"
 decl_stmt|;
 end_decl_stmt
 
@@ -9558,7 +9558,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Compare the objects in the offset order, in order to emulate the  * "git-rev-list --objects" output that produced the pack originally.  */
+comment|/*  * Compare the objects in the offset order, in order to emulate the  * "git rev-list --objects" output that produced the pack originally.  */
 end_comment
 
 begin_function

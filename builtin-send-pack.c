@@ -179,7 +179,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"git-pack-objects failed (%s)"
+literal|"git pack-objects failed (%s)"
 argument_list|,
 name|strerror
 argument_list|(
