@@ -527,6 +527,10 @@ name|char
 modifier|*
 name|pattern
 decl_stmt|;
+DECL|member|cflags
+name|int
+name|cflags
+decl_stmt|;
 block|}
 struct|;
 end_struct
@@ -575,6 +579,9 @@ specifier|const
 name|char
 modifier|*
 name|value
+parameter_list|,
+name|int
+name|cflags
 parameter_list|)
 block|{
 specifier|const
@@ -706,6 +713,14 @@ name|xstrdup
 argument_list|(
 name|value
 argument_list|)
+expr_stmt|;
+name|pp
+operator|->
+name|e
+operator|.
+name|cflags
+operator|=
+name|cflags
 expr_stmt|;
 return|return
 literal|0
@@ -1103,6 +1118,8 @@ argument_list|,
 name|ep
 argument_list|,
 name|value
+argument_list|,
+literal|0
 argument_list|)
 return|;
 block|}
@@ -8287,6 +8304,8 @@ literal|"new\\|return\\|switch\\|throw\\|while\\)\n"
 literal|"^[ 	]*\\(\\([ 	]*"
 literal|"[A-Za-z_][A-Za-z_0-9]*\\)\\{2,\\}"
 literal|"[ 	]*([^;]*\\)$"
+block|,
+literal|0
 block|}
 block|,
 block|{
@@ -8297,24 +8316,32 @@ literal|"destructor\\|interface\\|implementation\\|"
 literal|"initialization\\|finalization\\)[ \t]*.*\\)$"
 literal|"\\|"
 literal|"^\\(.*=[ \t]*\\(class\\|record\\).*\\)$"
+block|,
+literal|0
 block|}
 block|,
 block|{
 literal|"bibtex"
 block|,
 literal|"\\(@[a-zA-Z]\\{1,\\}[ \t]*{\\{0,1\\}[ \t]*[^ \t\"@',\\#}{~%]*\\).*$"
+block|,
+literal|0
 block|}
 block|,
 block|{
 literal|"tex"
 block|,
 literal|"^\\(\\\\\\(\\(sub\\)*section\\|chapter\\|part\\)\\*\\{0,1\\}{.*\\)$"
+block|,
+literal|0
 block|}
 block|,
 block|{
 literal|"ruby"
 block|,
 literal|"^\\s*\\(\\(class\\|module\\|def\\)\\s.*\\)$"
+block|,
+literal|0
 block|}
 block|, }
 decl_stmt|;
@@ -9117,6 +9144,10 @@ argument_list|,
 name|pe
 operator|->
 name|pattern
+argument_list|,
+name|pe
+operator|->
+name|cflags
 argument_list|)
 expr_stmt|;
 if|if
