@@ -673,6 +673,13 @@ name|remote
 init|=
 name|NULL
 decl_stmt|;
+name|git_config
+argument_list|(
+name|git_default_config
+argument_list|,
+name|NULL
+argument_list|)
+expr_stmt|;
 name|remote
 operator|=
 name|extract_remote_arg
