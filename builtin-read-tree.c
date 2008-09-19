@@ -975,6 +975,13 @@ name|fn
 operator|=
 name|twoway_merge
 expr_stmt|;
+name|opts
+operator|.
+name|initial_checkout
+operator|=
+operator|!
+name|active_nr
+expr_stmt|;
 break|break;
 case|case
 literal|3
