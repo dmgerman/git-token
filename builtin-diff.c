@@ -1329,6 +1329,7 @@ name|argc
 operator|--
 expr_stmt|;
 block|}
+comment|/* 	 * "diff --base" should not combine merges because it was not 	 * asked to.  "diff -c" should not densify (if the user wants 	 * dense one, --cc can be explicitly asked for, or just rely 	 * on the default). 	 */
 if|if
 condition|(
 name|revs
@@ -1337,6 +1338,11 @@ name|max_count
 operator|==
 operator|-
 literal|1
+operator|&&
+operator|!
+name|revs
+operator|->
+name|combine_merges
 operator|&&
 operator|(
 name|revs
