@@ -5244,12 +5244,18 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
-name|setlinebuf
+comment|/* avoid splitting a message in the middle */
+name|setvbuf
 argument_list|(
 name|stderr
+argument_list|,
+name|NULL
+argument_list|,
+name|_IOLBF
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
-comment|/* avoid splitting a message in the middle */
 if|if
 condition|(
 name|inetd_mode
