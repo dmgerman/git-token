@@ -179,6 +179,9 @@ specifier|const
 name|char
 modifier|*
 name|line
+parameter_list|,
+name|int
+name|cflags
 parameter_list|)
 function_decl|;
 end_function_decl

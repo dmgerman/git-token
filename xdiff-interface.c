@@ -1395,6 +1395,9 @@ specifier|const
 name|char
 modifier|*
 name|value
+parameter_list|,
+name|int
+name|cflags
 parameter_list|)
 block|{
 name|int
@@ -1600,7 +1603,7 @@ name|re
 argument_list|,
 name|expression
 argument_list|,
-literal|0
+name|cflags
 argument_list|)
 condition|)
 name|die
