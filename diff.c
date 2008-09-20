@@ -8394,7 +8394,7 @@ literal|"pascal"
 block|,
 literal|"^((procedure|function|constructor|destructor|interface|"
 literal|"implementation|initialization|finalization)[ \t]*.*)$"
-literal|"|"
+literal|"\n"
 literal|"^(.*=[ \t]*(class|record).*)$"
 block|,
 name|REG_EXTENDED
