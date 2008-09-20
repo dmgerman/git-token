@@ -8335,49 +8335,45 @@ block|{
 block|{
 literal|"java"
 block|,
-literal|"!^[ 	]*\\(catch\\|do\\|for\\|if\\|instanceof\\|"
-literal|"new\\|return\\|switch\\|throw\\|while\\)\n"
-literal|"^[ 	]*\\(\\([ 	]*"
-literal|"[A-Za-z_][A-Za-z_0-9]*\\)\\{2,\\}"
-literal|"[ 	]*([^;]*\\)$"
+literal|"!^[ \t]*(catch|do|for|if|instanceof|new|return|switch|throw|while)\n"
+literal|"^[ \t]*(([ \t]*[A-Za-z_][A-Za-z_0-9]*){2,}[ \t]*\\([^;]*)$"
 block|,
-literal|0
+name|REG_EXTENDED
 block|}
 block|,
 block|{
 literal|"pascal"
 block|,
-literal|"^\\(\\(procedure\\|function\\|constructor\\|"
-literal|"destructor\\|interface\\|implementation\\|"
-literal|"initialization\\|finalization\\)[ \t]*.*\\)$"
-literal|"\\|"
-literal|"^\\(.*=[ \t]*\\(class\\|record\\).*\\)$"
+literal|"^((procedure|function|constructor|destructor|interface|"
+literal|"implementation|initialization|finalization)[ \t]*.*)$"
+literal|"|"
+literal|"^(.*=[ \t]*(class|record).*)$"
 block|,
-literal|0
+name|REG_EXTENDED
 block|}
 block|,
 block|{
 literal|"bibtex"
 block|,
-literal|"\\(@[a-zA-Z]\\{1,\\}[ \t]*{\\{0,1\\}[ \t]*[^ \t\"@',\\#}{~%]*\\).*$"
+literal|"(@[a-zA-Z]{1,}[ \t]*\{{0,1}[ \t]*[^ \t\"@',\\#}{~%]*).*$"
 block|,
-literal|0
+name|REG_EXTENDED
 block|}
 block|,
 block|{
 literal|"tex"
 block|,
-literal|"^\\(\\\\\\(\\(sub\\)*section\\|chapter\\|part\\)\\*\\{0,1\\}{.*\\)$"
+literal|"^(\\\\((sub)*section|chapter|part)\\*{0,1}\{.*)$"
 block|,
-literal|0
+name|REG_EXTENDED
 block|}
 block|,
 block|{
 literal|"ruby"
 block|,
-literal|"^\\s*\\(\\(class\\|module\\|def\\)\\s.*\\)$"
+literal|"^[ \t]*((class|module|def)[ \t].*)$"
 block|,
-literal|0
+name|REG_EXTENDED
 block|}
 block|, }
 decl_stmt|;
