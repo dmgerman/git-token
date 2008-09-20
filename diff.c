@@ -8375,9 +8375,9 @@ block|,
 block|{
 literal|"html"
 block|,
-literal|"^\\s*\\(<[Hh][1-6]\\s.*>.*\\)$"
+literal|"^[ \t]*(<[Hh][1-6][ \t].*>.*)$"
 block|,
-literal|0
+name|REG_EXTENDED
 block|}
 block|,
 block|{
@@ -8403,17 +8403,17 @@ block|,
 block|{
 literal|"php"
 block|,
-literal|"^[\t ]*\\(\\(function\\|class\\).*\\)"
+literal|"^[\t ]*((function|class).*)"
 block|,
-literal|0
+name|REG_EXTENDED
 block|}
 block|,
 block|{
 literal|"python"
 block|,
-literal|"^\\s*\\(\\(class\\|def\\)\\s.*\\)$"
+literal|"^[ \t]*((class|def)[ \t].*)$"
 block|,
-literal|0
+name|REG_EXTENDED
 block|}
 block|,
 block|{
