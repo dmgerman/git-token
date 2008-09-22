@@ -8367,7 +8367,7 @@ block|{
 block|{
 literal|"bibtex"
 block|,
-literal|"(@[a-zA-Z]{1,}[ \t]*\{{0,1}[ \t]*[^ \t\"@',\\#}{~%]*).*$"
+literal|"(@[a-zA-Z]{1,}[ \t]*\\{{0,1}[ \t]*[^ \t\"@',\\#}{~%]*).*$"
 block|,
 name|REG_EXTENDED
 block|}
