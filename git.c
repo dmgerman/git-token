@@ -926,6 +926,19 @@ operator|&
 name|new_argv
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|count
+operator|<
+literal|0
+condition|)
+name|die
+argument_list|(
+literal|"Bad alias.%s string"
+argument_list|,
+name|alias_command
+argument_list|)
+expr_stmt|;
 name|option_count
 operator|=
 name|handle_options
