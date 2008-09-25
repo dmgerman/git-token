@@ -2759,6 +2759,7 @@ end_comment
 
 begin_function
 DECL|function|free_refspecs
+specifier|static
 name|void
 name|free_refspecs
 parameter_list|(
@@ -3490,6 +3491,7 @@ end_function
 
 begin_function
 DECL|function|parse_push_refspec
+specifier|static
 name|struct
 name|refspec
 modifier|*
@@ -4574,6 +4576,7 @@ end_function
 
 begin_function
 DECL|function|free_ref
+specifier|static
 name|void
 name|free_ref
 parameter_list|(
