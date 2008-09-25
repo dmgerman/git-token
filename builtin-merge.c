@@ -4357,6 +4357,8 @@ argument_list|,
 name|parent
 argument_list|,
 name|result_commit
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 name|finish
@@ -4532,6 +4534,8 @@ argument_list|,
 name|parents
 argument_list|,
 name|result_commit
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 name|strbuf_addf
