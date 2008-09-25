@@ -5394,39 +5394,20 @@ expr_stmt|;
 if|if
 condition|(
 name|base_path
-condition|)
-block|{
-name|struct
-name|stat
-name|st
-decl_stmt|;
-if|if
-condition|(
-name|stat
+operator|&&
+operator|!
+name|is_directory
 argument_list|(
 name|base_path
-argument_list|,
-operator|&
-name|st
-argument_list|)
-operator|||
-operator|!
-name|S_ISDIR
-argument_list|(
-name|st
-operator|.
-name|st_mode
 argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"base-path '%s' does not exist or "
-literal|"is not a directory"
+literal|"base-path '%s' does not exist or is not a directory"
 argument_list|,
 name|base_path
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|inetd_mode
