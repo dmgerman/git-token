@@ -1832,9 +1832,16 @@ condition|(
 operator|!
 name|eol
 condition|)
-return|return
-literal|""
-return|;
+comment|// simulate strchrnul()
+name|eol
+operator|=
+name|buf
+operator|+
+name|strlen
+argument_list|(
+name|buf
+argument_list|)
+expr_stmt|;
 return|return
 name|xmemdupz
 argument_list|(
