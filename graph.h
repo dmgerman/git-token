@@ -41,22 +41,6 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Destroy a struct git_graph and free associated memory.  */
-end_comment
-
-begin_function_decl
-name|void
-name|graph_release
-parameter_list|(
-name|struct
-name|git_graph
-modifier|*
-name|graph
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_comment
 comment|/*  * Update a git_graph with a new commit.  * This will cause the graph to begin outputting lines for the new commit  * the next time graph_next_line() is called.  *  * If graph_update() is called before graph_is_commit_finished() returns 1,  * the next call to graph_next_line() will output an ellipsis ("...")  * to indicate that a portion of the graph is missing.  */
 end_comment
 
@@ -73,48 +57,6 @@ name|struct
 name|commit
 modifier|*
 name|commit
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_comment
-comment|/*  * Output the next line for a graph.  * This formats the next graph line into the specified strbuf.  It is not  * terminated with a newline.  *  * Returns 1 if the line includes the current commit, and 0 otherwise.  * graph_next_line() will return 1 exactly once for each time  * graph_update() is called.  */
-end_comment
-
-begin_function_decl
-name|int
-name|graph_next_line
-parameter_list|(
-name|struct
-name|git_graph
-modifier|*
-name|graph
-parameter_list|,
-name|struct
-name|strbuf
-modifier|*
-name|sb
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_comment
-comment|/*  * Output a padding line in the graph.  * This is similar to graph_next_line().  However, it is guaranteed to  * never print the current commit line.  Instead, if the commit line is  * next, it will simply output a line of vertical padding, extending the  * branch lines downwards, but leaving them otherwise unchanged.  */
-end_comment
-
-begin_function_decl
-name|void
-name|graph_padding_line
-parameter_list|(
-name|struct
-name|git_graph
-modifier|*
-name|graph
-parameter_list|,
-name|struct
-name|strbuf
-modifier|*
-name|sb
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -200,28 +142,6 @@ name|struct
 name|git_graph
 modifier|*
 name|graph
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_comment
-comment|/*  * Print a strbuf to stdout.  If the graph is non-NULL, all lines but the  * first will be prefixed with the graph output.  *  * If the strbuf ends with a newline, the output will end after this  * newline.  A new graph line will not be printed after the final newline.  * If the strbuf is empty, no output will be printed.  *  * Since the first line will not include the graph ouput, the caller is  * responsible for printing this line's graph (perhaps via  * graph_show_commit() or graph_show_oneline()) before calling  * graph_show_strbuf().  */
-end_comment
-
-begin_function_decl
-name|void
-name|graph_show_strbuf
-parameter_list|(
-name|struct
-name|git_graph
-modifier|*
-name|graph
-parameter_list|,
-name|struct
-name|strbuf
-specifier|const
-modifier|*
-name|sb
 parameter_list|)
 function_decl|;
 end_function_decl

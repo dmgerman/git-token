@@ -30,6 +30,77 @@ file|"revision.h"
 end_include
 
 begin_comment
+comment|/* Internal API */
+end_comment
+
+begin_comment
+comment|/*  * Output the next line for a graph.  * This formats the next graph line into the specified strbuf.  It is not  * terminated with a newline.  *  * Returns 1 if the line includes the current commit, and 0 otherwise.  * graph_next_line() will return 1 exactly once for each time  * graph_update() is called.  */
+end_comment
+
+begin_function_decl
+specifier|static
+name|int
+name|graph_next_line
+parameter_list|(
+name|struct
+name|git_graph
+modifier|*
+name|graph
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|sb
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/*  * Output a padding line in the graph.  * This is similar to graph_next_line().  However, it is guaranteed to  * never print the current commit line.  Instead, if the commit line is  * next, it will simply output a line of vertical padding, extending the  * branch lines downwards, but leaving them otherwise unchanged.  */
+end_comment
+
+begin_function_decl
+specifier|static
+name|void
+name|graph_padding_line
+parameter_list|(
+name|struct
+name|git_graph
+modifier|*
+name|graph
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|sb
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/*  * Print a strbuf to stdout.  If the graph is non-NULL, all lines but the  * first will be prefixed with the graph output.  *  * If the strbuf ends with a newline, the output will end after this  * newline.  A new graph line will not be printed after the final newline.  * If the strbuf is empty, no output will be printed.  *  * Since the first line will not include the graph ouput, the caller is  * responsible for printing this line's graph (perhaps via  * graph_show_commit() or graph_show_oneline()) before calling  * graph_show_strbuf().  */
+end_comment
+
+begin_function_decl
+specifier|static
+name|void
+name|graph_show_strbuf
+parameter_list|(
+name|struct
+name|git_graph
+modifier|*
+name|graph
+parameter_list|,
+name|struct
+name|strbuf
+specifier|const
+modifier|*
+name|sb
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/*  * TODO:  * - Add colors to the graph.  *   Pick a color for each column, and print all characters  *   in that column with the specified color.  *  * - Limit the number of columns, similar to the way gitk does.  *   If we reach more than a specified number of columns, omit  *   sections of some columns.  *  * - The output during the GRAPH_PRE_COMMIT and GRAPH_COLLAPSING states  *   could be made more compact by printing horizontal lines, instead of  *   long diagonal lines.  For example, during collapsing, something like  *   this:          instead of this:  *   | | | | |      | | | | |  *   | |_|_|/       | | | |/  *   |/| | |        | | |/|  *   | | | |        | |/| |  *                  |/| | |  *                  | | | |  *  *   If there are several parallel diagonal lines, they will need to be  *   replaced with horizontal lines on subsequent rows.  */
 end_comment
 
@@ -355,46 +426,6 @@ expr_stmt|;
 return|return
 name|graph
 return|;
-block|}
-end_function
-
-begin_function
-DECL|function|graph_release
-name|void
-name|graph_release
-parameter_list|(
-name|struct
-name|git_graph
-modifier|*
-name|graph
-parameter_list|)
-block|{
-name|free
-argument_list|(
-name|graph
-operator|->
-name|columns
-argument_list|)
-expr_stmt|;
-name|free
-argument_list|(
-name|graph
-operator|->
-name|new_columns
-argument_list|)
-expr_stmt|;
-name|free
-argument_list|(
-name|graph
-operator|->
-name|mapping
-argument_list|)
-expr_stmt|;
-name|free
-argument_list|(
-name|graph
-argument_list|)
-expr_stmt|;
 block|}
 end_function
 
@@ -1996,6 +2027,7 @@ end_function
 
 begin_function
 DECL|function|graph_output_commit_line
+specifier|static
 name|void
 name|graph_output_commit_line
 parameter_list|(
@@ -2293,6 +2325,7 @@ end_function
 
 begin_function
 DECL|function|graph_output_post_merge_line
+specifier|static
 name|void
 name|graph_output_post_merge_line
 parameter_list|(
@@ -2479,6 +2512,7 @@ end_function
 
 begin_function
 DECL|function|graph_output_collapsing_line
+specifier|static
 name|void
 name|graph_output_collapsing_line
 parameter_list|(
@@ -2825,6 +2859,7 @@ end_function
 
 begin_function
 DECL|function|graph_next_line
+specifier|static
 name|int
 name|graph_next_line
 parameter_list|(
@@ -2938,6 +2973,7 @@ end_function
 
 begin_function
 DECL|function|graph_padding_line
+specifier|static
 name|void
 name|graph_padding_line
 parameter_list|(
@@ -3472,6 +3508,7 @@ end_function
 
 begin_function
 DECL|function|graph_show_strbuf
+specifier|static
 name|void
 name|graph_show_strbuf
 parameter_list|(
