@@ -197,16 +197,6 @@ return|;
 block|}
 end_function
 
-begin_function_decl
-specifier|extern
-name|int
-name|_getdrive
-parameter_list|(
-name|void
-parameter_list|)
-function_decl|;
-end_function_decl
-
 begin_comment
 comment|/* We keep the do_lstat code in a separate function to avoid recursion.  * When a path ends with a slash, the stat will fail with ENOENT. In  * this case, we strip the trailing slashes and stat again.  */
 end_comment
@@ -328,13 +318,9 @@ name|buf
 operator|->
 name|st_rdev
 operator|=
-operator|(
-name|_getdrive
-argument_list|()
-operator|-
-literal|1
-operator|)
+literal|0
 expr_stmt|;
+comment|/* not used by Git */
 name|buf
 operator|->
 name|st_atime
@@ -736,13 +722,9 @@ name|buf
 operator|->
 name|st_rdev
 operator|=
-operator|(
-name|_getdrive
-argument_list|()
-operator|-
-literal|1
-operator|)
+literal|0
 expr_stmt|;
+comment|/* not used by Git */
 name|buf
 operator|->
 name|st_atime
