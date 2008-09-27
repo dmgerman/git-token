@@ -541,6 +541,22 @@ block|}
 end_function
 
 begin_function
+DECL|function|have_git_dir
+name|int
+name|have_git_dir
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+return|return
+operator|!
+operator|!
+name|git_dir
+return|;
+block|}
+end_function
+
+begin_function
 DECL|function|get_git_dir
 specifier|const
 name|char
