@@ -862,7 +862,7 @@ argument_list|(
 name|tmpfile
 argument_list|)
 argument_list|,
-literal|"%s/tmp_pack_XXXXXX"
+literal|"%s/pack/tmp_pack_XXXXXX"
 argument_list|,
 name|get_object_directory
 argument_list|()

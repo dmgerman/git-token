@@ -2789,6 +2789,19 @@ operator|&
 name|argv
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|argc
+operator|<
+literal|0
+condition|)
+name|die
+argument_list|(
+literal|"Bad branch.%s.mergeoptions string"
+argument_list|,
+name|branch
+argument_list|)
+expr_stmt|;
 name|argv
 operator|=
 name|xrealloc

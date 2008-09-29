@@ -299,7 +299,7 @@ name|option_origin
 argument_list|,
 literal|"branch"
 argument_list|,
-literal|"use<branch> instead or 'origin' to track upstream"
+literal|"use<branch> instead of 'origin' to track upstream"
 argument_list|)
 block|,
 name|OPT_STRING

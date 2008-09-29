@@ -1519,6 +1519,25 @@ block|}
 comment|/* 2-way merge to the new branch */
 name|topts
 operator|.
+name|initial_checkout
+operator|=
+operator|(
+operator|!
+name|active_nr
+operator|&&
+operator|(
+name|old
+operator|->
+name|commit
+operator|==
+name|new
+operator|->
+name|commit
+operator|)
+operator|)
+expr_stmt|;
+name|topts
+operator|.
 name|update
 operator|=
 literal|1
@@ -1808,6 +1827,11 @@ operator|!
 name|opts
 operator|->
 name|force
+operator|&&
+operator|!
+name|opts
+operator|->
+name|quiet
 condition|)
 name|show_local_changes
 argument_list|(

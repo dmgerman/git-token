@@ -140,6 +140,11 @@ name|skip_unmerged
 range|:
 literal|1
 decl_stmt|,
+DECL|member|initial_checkout
+name|initial_checkout
+range|:
+literal|1
+decl_stmt|,
 DECL|member|gently
 name|gently
 range|:

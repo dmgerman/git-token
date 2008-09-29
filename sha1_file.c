@@ -11820,13 +11820,21 @@ block|{
 name|int
 name|ret
 init|=
+literal|0
+decl_stmt|;
+if|if
+condition|(
 name|link
 argument_list|(
 name|tmpfile
 argument_list|,
 name|filename
 argument_list|)
-decl_stmt|;
+condition|)
+name|ret
+operator|=
+name|errno
+expr_stmt|;
 comment|/* 	 * Coda hack - coda doesn't like cross-directory links, 	 * so we fall back to a rename, which will mean that it 	 * won't be able to check collisions, but that's not a 	 * big deal. 	 * 	 * The same holds for FAT formatted media. 	 * 	 * When this succeeds, we just return 0. We have nothing 	 * left to unlink. 	 */
 if|if
 condition|(
