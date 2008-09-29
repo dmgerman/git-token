@@ -529,10 +529,9 @@ comment|/*  * 'diff.<what>.funcname' attribute can be specified in the configura
 end_comment
 
 begin_struct
-DECL|struct|funcname_pattern
-specifier|static
+DECL|struct|funcname_pattern_entry
 struct|struct
-name|funcname_pattern
+name|funcname_pattern_entry
 block|{
 DECL|member|name
 name|char
@@ -544,11 +543,30 @@ name|char
 modifier|*
 name|pattern
 decl_stmt|;
+DECL|member|cflags
+name|int
+name|cflags
+decl_stmt|;
+block|}
+struct|;
+end_struct
+
+begin_struct
+DECL|struct|funcname_pattern_list
+specifier|static
+struct|struct
+name|funcname_pattern_list
+block|{
 DECL|member|next
 name|struct
-name|funcname_pattern
+name|funcname_pattern_list
 modifier|*
 name|next
+decl_stmt|;
+DECL|member|e
+name|struct
+name|funcname_pattern_entry
+name|e
 decl_stmt|;
 DECL|variable|funcname_pattern_list
 block|}
@@ -577,6 +595,9 @@ specifier|const
 name|char
 modifier|*
 name|value
+parameter_list|,
+name|int
+name|cflags
 parameter_list|)
 block|{
 specifier|const
@@ -588,7 +609,7 @@ name|int
 name|namelen
 decl_stmt|;
 name|struct
-name|funcname_pattern
+name|funcname_pattern_list
 modifier|*
 name|pp
 decl_stmt|;
@@ -626,6 +647,8 @@ name|strncmp
 argument_list|(
 name|pp
 operator|->
+name|e
+operator|.
 name|name
 argument_list|,
 name|name
@@ -636,6 +659,8 @@ operator|&&
 operator|!
 name|pp
 operator|->
+name|e
+operator|.
 name|name
 index|[
 name|namelen
@@ -663,6 +688,8 @@ argument_list|)
 expr_stmt|;
 name|pp
 operator|->
+name|e
+operator|.
 name|name
 operator|=
 name|xmemdupz
@@ -687,17 +714,29 @@ name|free
 argument_list|(
 name|pp
 operator|->
+name|e
+operator|.
 name|pattern
 argument_list|)
 expr_stmt|;
 name|pp
 operator|->
+name|e
+operator|.
 name|pattern
 operator|=
 name|xstrdup
 argument_list|(
 name|value
 argument_list|)
+expr_stmt|;
+name|pp
+operator|->
+name|e
+operator|.
+name|cflags
+operator|=
+name|cflags
 expr_stmt|;
 return|return
 literal|0
@@ -1144,6 +1183,44 @@ argument_list|,
 name|ep
 argument_list|,
 name|value
+argument_list|,
+literal|0
+argument_list|)
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|ep
+argument_list|,
+literal|".xfuncname"
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
+operator|!
+name|value
+condition|)
+return|return
+name|config_error_nonbool
+argument_list|(
+name|var
+argument_list|)
+return|;
+return|return
+name|parse_funcname_pattern
+argument_list|(
+name|var
+argument_list|,
+name|ep
+argument_list|,
+name|value
+argument_list|,
+name|REG_EXTENDED
 argument_list|)
 return|;
 block|}
@@ -8314,7 +8391,8 @@ begin_function
 DECL|function|funcname_pattern
 specifier|static
 specifier|const
-name|char
+name|struct
+name|funcname_pattern_entry
 modifier|*
 name|funcname_pattern
 parameter_list|(
@@ -8325,7 +8403,7 @@ name|ident
 parameter_list|)
 block|{
 name|struct
-name|funcname_pattern
+name|funcname_pattern_list
 modifier|*
 name|pp
 decl_stmt|;
@@ -8352,13 +8430,16 @@ name|ident
 argument_list|,
 name|pp
 operator|->
+name|e
+operator|.
 name|name
 argument_list|)
 condition|)
 return|return
+operator|&
 name|pp
 operator|->
-name|pattern
+name|e
 return|;
 return|return
 name|NULL
@@ -8366,26 +8447,12 @@ return|;
 block|}
 end_function
 
-begin_struct
-DECL|struct|builtin_funcname_pattern
-specifier|static
-struct|struct
-name|builtin_funcname_pattern
-block|{
-DECL|member|name
-specifier|const
-name|char
-modifier|*
-name|name
-decl_stmt|;
-DECL|member|pattern
-specifier|const
-name|char
-modifier|*
-name|pattern
-decl_stmt|;
+begin_decl_stmt
 DECL|variable|builtin_funcname_pattern
-block|}
+specifier|static
+specifier|const
+name|struct
+name|funcname_pattern_entry
 name|builtin_funcname_pattern
 index|[]
 init|=
@@ -8393,67 +8460,88 @@ block|{
 block|{
 literal|"bibtex"
 block|,
-literal|"\\(@[a-zA-Z]\\{1,\\}[ \t]*{\\{0,1\\}[ \t]*[^ \t\"@',\\#}{~%]*\\).*$"
+literal|"(@[a-zA-Z]{1,}[ \t]*\\{{0,1}[ \t]*[^ \t\"@',\\#}{~%]*).*$"
+block|,
+name|REG_EXTENDED
 block|}
 block|,
 block|{
 literal|"html"
 block|,
-literal|"^\\s*\\(<[Hh][1-6]\\s.*>.*\\)$"
+literal|"^[ \t]*(<[Hh][1-6][ \t].*>.*)$"
+block|,
+name|REG_EXTENDED
 block|}
 block|,
 block|{
 literal|"java"
 block|,
-literal|"!^[ 	]*\\(catch\\|do\\|for\\|if\\|instanceof\\|"
-literal|"new\\|return\\|switch\\|throw\\|while\\)\n"
-literal|"^[ 	]*\\(\\([ 	]*"
-literal|"[A-Za-z_][A-Za-z_0-9]*\\)\\{2,\\}"
-literal|"[ 	]*([^;]*\\)$"
+literal|"!^[ \t]*(catch|do|for|if|instanceof|new|return|switch|throw|while)\n"
+literal|"^[ \t]*(([ \t]*[A-Za-z_][A-Za-z_0-9]*){2,}[ \t]*\\([^;]*)$"
+block|,
+name|REG_EXTENDED
 block|}
 block|,
 block|{
 literal|"pascal"
 block|,
-literal|"^\\(\\(procedure\\|function\\|constructor\\|"
-literal|"destructor\\|interface\\|implementation\\|"
-literal|"initialization\\|finalization\\)[ \t]*.*\\)$"
-literal|"\\|"
-literal|"^\\(.*=[ \t]*\\(class\\|record\\).*\\)$"
+literal|"^((procedure|function|constructor|destructor|interface|"
+literal|"implementation|initialization|finalization)[ \t]*.*)$"
+literal|"\n"
+literal|"^(.*=[ \t]*(class|record).*)$"
+block|,
+name|REG_EXTENDED
 block|}
 block|,
 block|{
 literal|"php"
 block|,
-literal|"^[\t ]*\\(\\(function\\|class\\).*\\)"
+literal|"^[\t ]*((function|class).*)"
+block|,
+name|REG_EXTENDED
 block|}
 block|,
 block|{
 literal|"python"
 block|,
-literal|"^\\s*\\(\\(class\\|def\\)\\s.*\\)$"
+literal|"^[ \t]*((class|def)[ \t].*)$"
+block|,
+name|REG_EXTENDED
 block|}
 block|,
 block|{
 literal|"ruby"
 block|,
-literal|"^\\s*\\(\\(class\\|module\\|def\\)\\s.*\\)$"
+literal|"^[ \t]*((class|module|def)[ \t].*)$"
+block|,
+name|REG_EXTENDED
+block|}
+block|,
+block|{
+literal|"bibtex"
+block|,
+literal|"(@[a-zA-Z]{1,}[ \t]*\\{{0,1}[ \t]*[^ \t\"@',\\#}{~%]*).*$"
+block|,
+name|REG_EXTENDED
 block|}
 block|,
 block|{
 literal|"tex"
 block|,
-literal|"^\\(\\\\\\(\\(sub\\)*section\\|chapter\\|part\\)\\*\\{0,1\\}{.*\\)$"
+literal|"^(\\\\((sub)*section|chapter|part)\\*{0,1}\\{.*)$"
+block|,
+name|REG_EXTENDED
 block|}
 block|, }
-struct|;
-end_struct
+decl_stmt|;
+end_decl_stmt
 
 begin_function
 DECL|function|diff_funcname_pattern
 specifier|static
 specifier|const
-name|char
+name|struct
+name|funcname_pattern_entry
 modifier|*
 name|diff_funcname_pattern
 parameter_list|(
@@ -8467,9 +8555,12 @@ specifier|const
 name|char
 modifier|*
 name|ident
-decl_stmt|,
+decl_stmt|;
+specifier|const
+name|struct
+name|funcname_pattern_entry
 modifier|*
-name|pattern
+name|pe
 decl_stmt|;
 name|int
 name|i
@@ -8498,7 +8589,7 @@ literal|"default"
 argument_list|)
 return|;
 comment|/* Look up custom "funcname.$ident" regexp from config. */
-name|pattern
+name|pe
 operator|=
 name|funcname_pattern
 argument_list|(
@@ -8507,10 +8598,10 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|pattern
+name|pe
 condition|)
 return|return
-name|pattern
+name|pe
 return|;
 comment|/* 	 * And define built-in fallback patterns here.  Note that 	 * these can be overridden by the user's config settings. 	 */
 for|for
@@ -8545,12 +8636,11 @@ name|name
 argument_list|)
 condition|)
 return|return
+operator|&
 name|builtin_funcname_pattern
 index|[
 name|i
 index|]
-operator|.
-name|pattern
 return|;
 return|return
 name|NULL
@@ -9211,11 +9301,12 @@ name|emit_callback
 name|ecbdata
 decl_stmt|;
 specifier|const
-name|char
+name|struct
+name|funcname_pattern_entry
 modifier|*
-name|funcname_pattern
+name|pe
 decl_stmt|;
-name|funcname_pattern
+name|pe
 operator|=
 name|diff_funcname_pattern
 argument_list|(
@@ -9225,9 +9316,9 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|funcname_pattern
+name|pe
 condition|)
-name|funcname_pattern
+name|pe
 operator|=
 name|diff_funcname_pattern
 argument_list|(
@@ -9333,14 +9424,20 @@ name|XDL_EMIT_FUNCNAMES
 expr_stmt|;
 if|if
 condition|(
-name|funcname_pattern
+name|pe
 condition|)
 name|xdiff_set_find_func
 argument_list|(
 operator|&
 name|xecfg
 argument_list|,
-name|funcname_pattern
+name|pe
+operator|->
+name|pattern
+argument_list|,
+name|pe
+operator|->
+name|cflags
 argument_list|)
 expr_stmt|;
 if|if
