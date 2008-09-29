@@ -113,6 +113,7 @@ define|#
 directive|define
 name|XDL_BDOP_INSB
 value|3
+comment|/* merge simplification levels */
 DECL|macro|XDL_MERGE_MINIMAL
 define|#
 directive|define
@@ -133,6 +134,22 @@ define|#
 directive|define
 name|XDL_MERGE_ZEALOUS_ALNUM
 value|3
+DECL|macro|XDL_MERGE_LEVEL_MASK
+define|#
+directive|define
+name|XDL_MERGE_LEVEL_MASK
+value|0x0f
+comment|/* merge output styles */
+DECL|macro|XDL_MERGE_DIFF3
+define|#
+directive|define
+name|XDL_MERGE_DIFF3
+value|0x8000
+DECL|macro|XDL_MERGE_STYLE_MASK
+define|#
+directive|define
+name|XDL_MERGE_STYLE_MASK
+value|0x8000
 DECL|struct|s_mmfile
 typedef|typedef
 struct|struct
