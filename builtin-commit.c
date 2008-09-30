@@ -4714,34 +4714,34 @@ name|buf
 init|=
 name|STRBUF_INIT
 decl_stmt|;
-name|strbuf_addstr
+comment|/* use shouty-caps if we're on detached HEAD */
+name|strbuf_addf
 argument_list|(
 operator|&
 name|buf
 argument_list|,
-literal|"format:%h"
-argument_list|)
-expr_stmt|;
-comment|/* Are we on a detached HEAD? */
-if|if
-condition|(
-operator|!
+literal|"format:%s"
+argument_list|,
 name|strcmp
 argument_list|(
 literal|"HEAD"
 argument_list|,
 name|head
 argument_list|)
-condition|)
+condition|?
+literal|""
+else|:
+literal|"DETACHED commit"
+argument_list|)
+expr_stmt|;
 name|strbuf_addstr
 argument_list|(
 operator|&
 name|buf
 argument_list|,
-literal|" on detached HEAD"
+literal|"%h (%s)"
 argument_list|)
 expr_stmt|;
-elseif|else
 if|if
 condition|(
 operator|!
@@ -4808,14 +4808,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|strbuf_addstr
-argument_list|(
-operator|&
-name|buf
-argument_list|,
-literal|": %s"
-argument_list|)
-expr_stmt|;
 return|return
 name|strbuf_detach
 argument_list|(
@@ -4996,11 +4988,11 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"Created %scommit "
+literal|"Created %s"
 argument_list|,
 name|initial_commit
 condition|?
-literal|"initial "
+literal|"root-commit "
 else|:
 literal|""
 argument_list|)
