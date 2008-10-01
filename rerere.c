@@ -477,7 +477,7 @@ modifier|*
 name|output
 parameter_list|)
 block|{
-name|SHA_CTX
+name|git_SHA_CTX
 name|ctx
 decl_stmt|;
 name|char
@@ -582,7 +582,7 @@ if|if
 condition|(
 name|sha1
 condition|)
-name|SHA1_Init
+name|git_SHA1_Init
 argument_list|(
 operator|&
 name|ctx
@@ -828,7 +828,7 @@ condition|(
 name|sha1
 condition|)
 block|{
-name|SHA1_Update
+name|git_SHA1_Update
 argument_list|(
 operator|&
 name|ctx
@@ -850,7 +850,7 @@ operator|+
 literal|1
 argument_list|)
 expr_stmt|;
-name|SHA1_Update
+name|git_SHA1_Update
 argument_list|(
 operator|&
 name|ctx
@@ -977,7 +977,7 @@ if|if
 condition|(
 name|sha1
 condition|)
-name|SHA1_Final
+name|git_SHA1_Final
 argument_list|(
 name|sha1
 argument_list|,

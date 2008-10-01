@@ -11789,7 +11789,7 @@ modifier|*
 name|hdrlen
 parameter_list|)
 block|{
-name|SHA_CTX
+name|git_SHA_CTX
 name|c
 decl_stmt|;
 comment|/* Generate the header */
@@ -11810,13 +11810,13 @@ operator|+
 literal|1
 expr_stmt|;
 comment|/* Sha1.. */
-name|SHA1_Init
+name|git_SHA1_Init
 argument_list|(
 operator|&
 name|c
 argument_list|)
 expr_stmt|;
-name|SHA1_Update
+name|git_SHA1_Update
 argument_list|(
 operator|&
 name|c
@@ -11827,7 +11827,7 @@ operator|*
 name|hdrlen
 argument_list|)
 expr_stmt|;
-name|SHA1_Update
+name|git_SHA1_Update
 argument_list|(
 operator|&
 name|c
@@ -11837,7 +11837,7 @@ argument_list|,
 name|len
 argument_list|)
 expr_stmt|;
-name|SHA1_Final
+name|git_SHA1_Final
 argument_list|(
 name|sha1
 argument_list|,
