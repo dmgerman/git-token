@@ -318,6 +318,12 @@ name|pathname
 range|:
 literal|1
 decl_stmt|;
+DECL|member|null_following_name
+name|unsigned
+name|null_following_name
+range|:
+literal|1
+decl_stmt|;
 DECL|member|regflags
 name|int
 name|regflags
