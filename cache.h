@@ -408,6 +408,85 @@ block|}
 struct|;
 end_struct
 
+begin_comment
+comment|/*  * This struct is used when CE_EXTENDED bit is 1  * The struct must match ondisk_cache_entry exactly from  * ctime till flags  */
+end_comment
+
+begin_struct
+DECL|struct|ondisk_cache_entry_extended
+struct|struct
+name|ondisk_cache_entry_extended
+block|{
+DECL|member|ctime
+name|struct
+name|cache_time
+name|ctime
+decl_stmt|;
+DECL|member|mtime
+name|struct
+name|cache_time
+name|mtime
+decl_stmt|;
+DECL|member|dev
+name|unsigned
+name|int
+name|dev
+decl_stmt|;
+DECL|member|ino
+name|unsigned
+name|int
+name|ino
+decl_stmt|;
+DECL|member|mode
+name|unsigned
+name|int
+name|mode
+decl_stmt|;
+DECL|member|uid
+name|unsigned
+name|int
+name|uid
+decl_stmt|;
+DECL|member|gid
+name|unsigned
+name|int
+name|gid
+decl_stmt|;
+DECL|member|size
+name|unsigned
+name|int
+name|size
+decl_stmt|;
+DECL|member|sha1
+name|unsigned
+name|char
+name|sha1
+index|[
+literal|20
+index|]
+decl_stmt|;
+DECL|member|flags
+name|unsigned
+name|short
+name|flags
+decl_stmt|;
+DECL|member|flags2
+name|unsigned
+name|short
+name|flags2
+decl_stmt|;
+DECL|member|name
+name|char
+name|name
+index|[
+name|FLEX_ARRAY
+index|]
+decl_stmt|;
+comment|/* more */
+block|}
+struct|;
+end_struct
+
 begin_struct
 DECL|struct|cache_entry
 struct|struct
@@ -525,7 +604,7 @@ value|12
 end_define
 
 begin_comment
-comment|/* In-memory only */
+comment|/*  * Range 0xFFFF0000 in ce_flags is divided into  * two parts: in-memory flags and on-disk ones.  * Flags in CE_EXTENDED_FLAGS will get saved on-disk  * if you want to save a new flag, add it in  * CE_EXTENDED_FLAGS  *  * In-memory only flags  */
 end_comment
 
 begin_define
@@ -575,6 +654,53 @@ directive|define
 name|CE_UNHASHED
 value|(0x200000)
 end_define
+
+begin_comment
+comment|/*  * Extended on-disk flags  */
+end_comment
+
+begin_comment
+comment|/* CE_EXTENDED2 is for future extension */
+end_comment
+
+begin_define
+DECL|macro|CE_EXTENDED2
+define|#
+directive|define
+name|CE_EXTENDED2
+value|0x80000000
+end_define
+
+begin_define
+DECL|macro|CE_EXTENDED_FLAGS
+define|#
+directive|define
+name|CE_EXTENDED_FLAGS
+value|(0)
+end_define
+
+begin_comment
+comment|/*  * Safeguard to avoid saving wrong flags:  *  - CE_EXTENDED2 won't get saved until its semantic is known  *  - Bits in 0x0000FFFF have been saved in ce_flags already  *  - Bits in 0x003F0000 are currently in-memory flags  */
+end_comment
+
+begin_if
+if|#
+directive|if
+name|CE_EXTENDED_FLAGS
+operator|&
+literal|0x803FFFFF
+end_if
+
+begin_error
+error|#
+directive|error
+literal|"CE_EXTENDED_FLAGS out of range"
+end_error
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_comment
 comment|/*  * Copy the sha1 and stat state of a cache entry from one to  * another. But we never change the name, or the hash state!  */
@@ -755,7 +881,7 @@ name|ondisk_ce_size
 parameter_list|(
 name|ce
 parameter_list|)
-value|ondisk_cache_entry_size(ce_namelen(ce))
+value|(((ce)->ce_flags& CE_EXTENDED) ? \ 			    ondisk_cache_entry_extended_size(ce_namelen(ce)) : \ 			    ondisk_cache_entry_size(ce_namelen(ce)))
 end_define
 
 begin_define
@@ -1023,6 +1149,19 @@ value|(S_ISREG(mode) ? (S_IFREG | ce_permissions(mode)) : \ 	S_ISLNK(mode) ? S_I
 end_define
 
 begin_define
+DECL|macro|flexible_size
+define|#
+directive|define
+name|flexible_size
+parameter_list|(
+name|STRUCT
+parameter_list|,
+name|len
+parameter_list|)
+value|((offsetof(struct STRUCT,name) + (len) + 8)& ~7)
+end_define
+
+begin_define
 DECL|macro|cache_entry_size
 define|#
 directive|define
@@ -1030,7 +1169,7 @@ name|cache_entry_size
 parameter_list|(
 name|len
 parameter_list|)
-value|((offsetof(struct cache_entry,name) + (len) + 8)& ~7)
+value|flexible_size(cache_entry,len)
 end_define
 
 begin_define
@@ -1041,7 +1180,18 @@ name|ondisk_cache_entry_size
 parameter_list|(
 name|len
 parameter_list|)
-value|((offsetof(struct ondisk_cache_entry,name) + (len) + 8)& ~7)
+value|flexible_size(ondisk_cache_entry,len)
+end_define
+
+begin_define
+DECL|macro|ondisk_cache_entry_extended_size
+define|#
+directive|define
+name|ondisk_cache_entry_extended_size
+parameter_list|(
+name|len
+parameter_list|)
+value|flexible_size(ondisk_cache_entry_extended,len)
 end_define
 
 begin_struct
