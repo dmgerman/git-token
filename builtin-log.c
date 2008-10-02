@@ -2225,7 +2225,7 @@ specifier|static
 name|int
 name|auto_number
 init|=
-literal|0
+literal|1
 decl_stmt|;
 end_decl_stmt
 
@@ -2639,6 +2639,12 @@ name|var
 argument_list|,
 name|value
 argument_list|)
+expr_stmt|;
+name|auto_number
+operator|=
+name|auto_number
+operator|&&
+name|numbered
 expr_stmt|;
 return|return
 literal|0
