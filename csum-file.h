@@ -37,7 +37,7 @@ name|int
 name|offset
 decl_stmt|;
 DECL|member|ctx
-name|SHA_CTX
+name|git_SHA_CTX
 name|ctx
 decl_stmt|;
 DECL|member|total

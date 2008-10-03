@@ -344,7 +344,7 @@ end_decl_stmt
 begin_decl_stmt
 DECL|variable|input_ctx
 specifier|static
-name|SHA_CTX
+name|git_SHA_CTX
 name|input_ctx
 decl_stmt|;
 end_decl_stmt
@@ -602,7 +602,7 @@ argument_list|,
 name|input_offset
 argument_list|)
 expr_stmt|;
-name|SHA1_Update
+name|git_SHA1_Update
 argument_list|(
 operator|&
 name|input_ctx
@@ -961,7 +961,7 @@ operator|=
 name|input_fd
 expr_stmt|;
 block|}
-name|SHA1_Init
+name|git_SHA1_Init
 argument_list|(
 operator|&
 name|input_ctx
@@ -3372,7 +3372,7 @@ comment|/* Check pack integrity */
 name|flush
 argument_list|()
 expr_stmt|;
-name|SHA1_Final
+name|git_SHA1_Final
 argument_list|(
 name|sha1
 argument_list|,

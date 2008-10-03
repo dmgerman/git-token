@@ -890,6 +890,29 @@ index|[
 name|MAXNAME
 index|]
 decl_stmt|;
+comment|/* U+FEFF Byte Order Mark in UTF8 */
+specifier|static
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|utf8_bom
+init|=
+operator|(
+name|unsigned
+name|char
+operator|*
+operator|)
+literal|"\xef\xbb\xbf"
+decl_stmt|;
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|bomptr
+init|=
+name|utf8_bom
+decl_stmt|;
 for|for
 control|(
 init|;
@@ -902,6 +925,49 @@ init|=
 name|get_next_char
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|bomptr
+operator|&&
+operator|*
+name|bomptr
+condition|)
+block|{
+comment|/* We are at the file beginning; skip UTF8-encoded BOM 			 * if present. Sane editors won't put this in on their 			 * own, but e.g. Windows Notepad will do it happily. */
+if|if
+condition|(
+operator|(
+name|unsigned
+name|char
+operator|)
+name|c
+operator|==
+operator|*
+name|bomptr
+condition|)
+block|{
+name|bomptr
+operator|++
+expr_stmt|;
+continue|continue;
+block|}
+else|else
+block|{
+comment|/* Do not tolerate partial BOM. */
+if|if
+condition|(
+name|bomptr
+operator|!=
+name|utf8_bom
+condition|)
+break|break;
+comment|/* No BOM at file beginning. Cool. */
+name|bomptr
+operator|=
+name|NULL
+expr_stmt|;
+block|}
+block|}
 if|if
 condition|(
 name|c
@@ -1140,6 +1206,7 @@ end_function
 
 begin_function
 DECL|function|git_parse_long
+specifier|static
 name|int
 name|git_parse_long
 parameter_list|(
@@ -1339,6 +1406,8 @@ parameter_list|)
 block|{
 name|long
 name|ret
+init|=
+literal|0
 decl_stmt|;
 if|if
 condition|(

@@ -280,7 +280,7 @@ name|p
 operator|->
 name|index_data
 decl_stmt|;
-name|SHA_CTX
+name|git_SHA_CTX
 name|ctx
 decl_stmt|;
 name|unsigned
@@ -322,7 +322,7 @@ modifier|*
 name|entries
 decl_stmt|;
 comment|/* Note that the pack header checks are actually performed by 	 * use_pack when it first opens the pack file.  If anything 	 * goes wrong during those checks then the call will die out 	 * immediately. 	 */
-name|SHA1_Init
+name|git_SHA1_Init
 argument_list|(
 operator|&
 name|ctx
@@ -378,7 +378,7 @@ operator|-
 name|pack_sig_ofs
 argument_list|)
 expr_stmt|;
-name|SHA1_Update
+name|git_SHA1_Update
 argument_list|(
 operator|&
 name|ctx
@@ -389,7 +389,7 @@ name|remaining
 argument_list|)
 expr_stmt|;
 block|}
-name|SHA1_Final
+name|git_SHA1_Final
 argument_list|(
 name|sha1
 argument_list|,
@@ -838,7 +838,7 @@ name|char
 modifier|*
 name|index_base
 decl_stmt|;
-name|SHA_CTX
+name|git_SHA_CTX
 name|ctx
 decl_stmt|;
 name|unsigned
@@ -890,13 +890,13 @@ operator|->
 name|index_data
 expr_stmt|;
 comment|/* Verify SHA1 sum of the index file */
-name|SHA1_Init
+name|git_SHA1_Init
 argument_list|(
 operator|&
 name|ctx
 argument_list|)
 expr_stmt|;
-name|SHA1_Update
+name|git_SHA1_Update
 argument_list|(
 operator|&
 name|ctx
@@ -914,7 +914,7 @@ literal|20
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|SHA1_Final
+name|git_SHA1_Final
 argument_list|(
 name|sha1
 argument_list|,

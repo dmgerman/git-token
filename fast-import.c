@@ -4395,7 +4395,7 @@ index|[
 name|PATH_MAX
 index|]
 decl_stmt|;
-name|SHA_CTX
+name|git_SHA_CTX
 name|ctx
 decl_stmt|;
 name|struct
@@ -4648,7 +4648,7 @@ name|int
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|SHA1_Init
+name|git_SHA1_Init
 argument_list|(
 operator|&
 name|ctx
@@ -4713,7 +4713,7 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|SHA1_Update
+name|git_SHA1_Update
 argument_list|(
 operator|&
 name|ctx
@@ -4759,7 +4759,7 @@ argument_list|(
 name|idx
 argument_list|)
 expr_stmt|;
-name|SHA1_Final
+name|git_SHA1_Final
 argument_list|(
 name|pack_data
 operator|->
@@ -5513,7 +5513,7 @@ name|hdrlen
 decl_stmt|,
 name|deltalen
 decl_stmt|;
-name|SHA_CTX
+name|git_SHA_CTX
 name|c
 decl_stmt|;
 name|z_stream
@@ -5547,13 +5547,13 @@ argument_list|)
 operator|+
 literal|1
 expr_stmt|;
-name|SHA1_Init
+name|git_SHA1_Init
 argument_list|(
 operator|&
 name|c
 argument_list|)
 expr_stmt|;
-name|SHA1_Update
+name|git_SHA1_Update
 argument_list|(
 operator|&
 name|c
@@ -5563,7 +5563,7 @@ argument_list|,
 name|hdrlen
 argument_list|)
 expr_stmt|;
-name|SHA1_Update
+name|git_SHA1_Update
 argument_list|(
 operator|&
 name|c
@@ -5577,7 +5577,7 @@ operator|->
 name|len
 argument_list|)
 expr_stmt|;
-name|SHA1_Final
+name|git_SHA1_Final
 argument_list|(
 name|sha1
 argument_list|,
