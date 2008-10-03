@@ -5488,6 +5488,19 @@ continue|continue;
 comment|/* does not exist in parent */
 if|if
 condition|(
+name|S_ISGITLINK
+argument_list|(
+name|p
+operator|->
+name|one
+operator|->
+name|mode
+argument_list|)
+condition|)
+continue|continue;
+comment|/* ignore git links */
+if|if
+condition|(
 name|porigin
 operator|&&
 operator|!
