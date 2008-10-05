@@ -57,6 +57,12 @@ name|struct
 name|userdiff_funcname
 name|funcname
 decl_stmt|;
+DECL|member|textconv
+specifier|const
+name|char
+modifier|*
+name|textconv
+decl_stmt|;
 block|}
 struct|;
 end_struct
