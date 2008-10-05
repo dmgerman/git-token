@@ -48,6 +48,10 @@ name|char
 modifier|*
 name|external
 decl_stmt|;
+DECL|member|binary
+name|int
+name|binary
+decl_stmt|;
 DECL|member|funcname
 name|struct
 name|userdiff_funcname
@@ -56,24 +60,6 @@ decl_stmt|;
 block|}
 struct|;
 end_struct
-
-begin_decl_stmt
-specifier|extern
-name|struct
-name|userdiff_driver
-modifier|*
-name|USERDIFF_ATTR_TRUE
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-specifier|extern
-name|struct
-name|userdiff_driver
-modifier|*
-name|USERDIFF_ATTR_FALSE
-decl_stmt|;
-end_decl_stmt
 
 begin_function_decl
 name|int
