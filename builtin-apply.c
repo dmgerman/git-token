@@ -12623,6 +12623,18 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+name|ce
+condition|)
+name|die
+argument_list|(
+literal|"make_cache_entry failed for path '%s'"
+argument_list|,
+name|name
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|add_index_entry
 argument_list|(
 operator|&

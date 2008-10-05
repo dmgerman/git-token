@@ -651,6 +651,20 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|ce
+condition|)
+name|die
+argument_list|(
+literal|"make_cache_entry failed for path '%s'"
+argument_list|,
+name|one
+operator|->
+name|path
+argument_list|)
+expr_stmt|;
 name|add_cache_entry
 argument_list|(
 name|ce
