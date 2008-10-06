@@ -522,21 +522,13 @@ condition|)
 block|{
 name|error_out
 label|:
-name|error
+name|die
 argument_list|(
 literal|"'%s' is outside repository"
 argument_list|,
 name|orig
 argument_list|)
 expr_stmt|;
-name|free
-argument_list|(
-name|sanitized
-argument_list|)
-expr_stmt|;
-return|return
-name|NULL
-return|;
 block|}
 if|if
 condition|(
@@ -1049,10 +1041,6 @@ operator|*
 name|src
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|p
-condition|)
 operator|*
 operator|(
 name|dst
@@ -1061,13 +1049,6 @@ operator|)
 operator|=
 name|p
 expr_stmt|;
-else|else
-name|exit
-argument_list|(
-literal|128
-argument_list|)
-expr_stmt|;
-comment|/* error message already given */
 name|src
 operator|++
 expr_stmt|;
