@@ -56,7 +56,7 @@ name|push_usage
 index|[]
 init|=
 block|{
-literal|"git push [--all | --mirror] [--dry-run] [--tags] [--receive-pack=<git-receive-pack>] [--repo=all] [-f | --force] [-v] [<repository><refspec>...]"
+literal|"git push [--all | --mirror] [--dry-run] [--tags] [--receive-pack=<git-receive-pack>] [--repo=<repository>] [-f | --force] [-v] [<repository><refspec>...]"
 block|,
 name|NULL
 block|, }
