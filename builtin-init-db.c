@@ -72,6 +72,27 @@ endif|#
 directive|endif
 end_endif
 
+begin_decl_stmt
+DECL|variable|init_is_bare_repository
+specifier|static
+name|int
+name|init_is_bare_repository
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|init_shared_repository
+specifier|static
+name|int
+name|init_shared_repository
+init|=
+operator|-
+literal|1
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|safe_create_dir
 specifier|static
@@ -971,6 +992,21 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
+name|is_bare_repository_cfg
+operator|=
+name|init_is_bare_repository
+expr_stmt|;
+if|if
+condition|(
+name|init_shared_repository
+operator|!=
+operator|-
+literal|1
+condition|)
+name|shared_repository
+operator|=
+name|init_shared_repository
+expr_stmt|;
 comment|/* 	 * We would have created the above under user's umask -- under 	 * shared-repository settings, we would need to fix them up. 	 */
 if|if
 condition|(
@@ -1403,6 +1439,11 @@ argument_list|()
 argument_list|,
 literal|0
 argument_list|)
+expr_stmt|;
+name|init_is_bare_repository
+operator|=
+name|is_bare_repository
+argument_list|()
 expr_stmt|;
 comment|/* Check to see if the repository version is right. 	 * Note that a newly created repository does not have 	 * config file, so this will not fail.  What we are catching 	 * is an attempt to reinitialize new repository with an old tool. 	 */
 name|check_repository_format
@@ -1854,7 +1895,7 @@ argument_list|,
 literal|"--shared"
 argument_list|)
 condition|)
-name|shared_repository
+name|init_shared_repository
 operator|=
 name|PERM_GROUP
 expr_stmt|;
@@ -1869,7 +1910,7 @@ argument_list|,
 literal|"--shared="
 argument_list|)
 condition|)
-name|shared_repository
+name|init_shared_repository
 operator|=
 name|git_config_perm
 argument_list|(
