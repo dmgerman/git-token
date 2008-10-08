@@ -1990,7 +1990,7 @@ decl_stmt|;
 if|if
 condition|(
 name|n
-operator|<=
+operator|<
 literal|0
 condition|)
 name|die
@@ -2001,6 +2001,20 @@ name|strerror
 argument_list|(
 name|errno
 argument_list|)
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|n
+condition|)
+name|die
+argument_list|(
+literal|"premature end of pack file, %lu bytes missing"
+argument_list|,
+name|len
+operator|-
+name|rdy
 argument_list|)
 expr_stmt|;
 name|rdy
