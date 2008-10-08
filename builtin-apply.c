@@ -8360,7 +8360,7 @@ sizeof|sizeof
 argument_list|(
 name|tgtfixbuf
 argument_list|)
-operator|<
+operator|>
 name|tgtlen
 condition|)
 name|tgtfix
