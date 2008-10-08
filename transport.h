@@ -164,6 +164,13 @@ name|verbose
 range|:
 literal|2
 decl_stmt|;
+comment|/* Force progress even if the output is not a tty */
+DECL|member|progress
+name|unsigned
+name|progress
+range|:
+literal|1
+decl_stmt|;
 block|}
 struct|;
 end_struct

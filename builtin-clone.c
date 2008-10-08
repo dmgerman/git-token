@@ -162,6 +162,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|option_verbose
+specifier|static
+name|int
+name|option_verbose
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|builtin_clone_options
 specifier|static
 name|struct
@@ -174,6 +182,12 @@ name|OPT__QUIET
 argument_list|(
 operator|&
 name|option_quiet
+argument_list|)
+block|,
+name|OPT__VERBOSE
+argument_list|(
+operator|&
+name|option_verbose
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -2665,6 +2679,17 @@ operator|->
 name|verbose
 operator|=
 operator|-
+literal|1
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|option_verbose
+condition|)
+name|transport
+operator|->
+name|progress
+operator|=
 literal|1
 expr_stmt|;
 if|if
