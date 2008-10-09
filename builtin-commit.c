@@ -2358,6 +2358,8 @@ decl_stmt|;
 name|struct
 name|strbuf
 name|sb
+init|=
+name|STRBUF_INIT
 decl_stmt|;
 name|char
 modifier|*
@@ -2403,14 +2405,6 @@ condition|)
 return|return
 literal|0
 return|;
-name|strbuf_init
-argument_list|(
-operator|&
-name|sb
-argument_list|,
-literal|0
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|message
@@ -2786,18 +2780,12 @@ block|{
 name|struct
 name|strbuf
 name|sob
+init|=
+name|STRBUF_INIT
 decl_stmt|;
 name|int
 name|i
 decl_stmt|;
-name|strbuf_init
-argument_list|(
-operator|&
-name|sob
-argument_list|,
-literal|0
-argument_list|)
-expr_stmt|;
 name|strbuf_addstr
 argument_list|(
 operator|&
@@ -3527,6 +3515,8 @@ block|{
 name|struct
 name|strbuf
 name|tmpl
+init|=
+name|STRBUF_INIT
 decl_stmt|;
 specifier|const
 name|char
@@ -3556,14 +3546,6 @@ return|return
 literal|0
 return|;
 comment|/* See if the template is just a prefix of the message. */
-name|strbuf_init
-argument_list|(
-operator|&
-name|tmpl
-argument_list|,
-literal|0
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|template_file
@@ -4987,6 +4969,8 @@ block|{
 name|struct
 name|strbuf
 name|sb
+init|=
+name|STRBUF_INIT
 decl_stmt|;
 specifier|const
 name|char
@@ -5172,6 +5156,8 @@ block|{
 name|struct
 name|strbuf
 name|m
+init|=
+name|STRBUF_INIT
 decl_stmt|;
 name|FILE
 modifier|*
@@ -5195,14 +5181,6 @@ name|pptr
 argument_list|)
 operator|->
 name|next
-expr_stmt|;
-name|strbuf_init
-argument_list|(
-operator|&
-name|m
-argument_list|,
-literal|0
-argument_list|)
 expr_stmt|;
 name|fp
 operator|=
@@ -5339,14 +5317,6 @@ name|parents
 argument_list|)
 expr_stmt|;
 comment|/* Finally, get the commit message */
-name|strbuf_init
-argument_list|(
-operator|&
-name|sb
-argument_list|,
-literal|0
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|strbuf_read_file

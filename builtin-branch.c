@@ -1671,6 +1671,8 @@ block|{
 name|struct
 name|strbuf
 name|subject
+init|=
+name|STRBUF_INIT
 decl_stmt|;
 specifier|const
 name|char
@@ -1685,14 +1687,6 @@ index|[
 literal|128
 index|]
 decl_stmt|;
-name|strbuf_init
-argument_list|(
-operator|&
-name|subject
-argument_list|,
-literal|0
-argument_list|)
-expr_stmt|;
 name|stat
 index|[
 literal|0

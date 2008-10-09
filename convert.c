@@ -1249,6 +1249,8 @@ decl_stmt|;
 name|struct
 name|strbuf
 name|nbuf
+init|=
+name|STRBUF_INIT
 decl_stmt|;
 name|struct
 name|async
@@ -1327,14 +1329,6 @@ return|return
 literal|0
 return|;
 comment|/* error was already reported */
-name|strbuf_init
-argument_list|(
-operator|&
-name|nbuf
-argument_list|,
-literal|0
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|strbuf_read

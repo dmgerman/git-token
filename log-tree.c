@@ -1257,6 +1257,8 @@ block|{
 name|struct
 name|strbuf
 name|msgbuf
+init|=
+name|STRBUF_INIT
 decl_stmt|;
 name|struct
 name|log_info
@@ -1836,14 +1838,6 @@ name|buffer
 condition|)
 return|return;
 comment|/* 	 * And then the pretty-printed message itself 	 */
-name|strbuf_init
-argument_list|(
-operator|&
-name|msgbuf
-argument_list|,
-literal|0
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|need_8bit_cte

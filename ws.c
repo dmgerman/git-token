@@ -437,15 +437,9 @@ block|{
 name|struct
 name|strbuf
 name|err
+init|=
+name|STRBUF_INIT
 decl_stmt|;
-name|strbuf_init
-argument_list|(
-operator|&
-name|err
-argument_list|,
-literal|0
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|ws

@@ -1449,6 +1449,8 @@ block|{
 name|struct
 name|strbuf
 name|sb
+init|=
+name|STRBUF_INIT
 decl_stmt|;
 if|if
 condition|(
@@ -1458,14 +1460,6 @@ operator|!=
 name|junk_pid
 condition|)
 return|return;
-name|strbuf_init
-argument_list|(
-operator|&
-name|sb
-argument_list|,
-literal|0
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|junk_git_dir
@@ -1957,6 +1951,8 @@ decl_stmt|;
 name|struct
 name|strbuf
 name|reflog_msg
+init|=
+name|STRBUF_INIT
 decl_stmt|;
 name|struct
 name|transport
@@ -2162,14 +2158,6 @@ argument_list|(
 literal|"destination directory '%s' already exists."
 argument_list|,
 name|dir
-argument_list|)
-expr_stmt|;
-name|strbuf_init
-argument_list|(
-operator|&
-name|reflog_msg
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 name|strbuf_addf
@@ -2750,6 +2738,8 @@ block|{
 name|struct
 name|strbuf
 name|head_ref
+init|=
+name|STRBUF_INIT
 decl_stmt|;
 specifier|const
 name|char
@@ -2793,14 +2783,6 @@ argument_list|,
 literal|0
 argument_list|,
 name|DIE_ON_ERR
-argument_list|)
-expr_stmt|;
-name|strbuf_init
-argument_list|(
-operator|&
-name|head_ref
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 name|strbuf_addstr

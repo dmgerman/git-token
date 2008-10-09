@@ -3675,15 +3675,9 @@ decl_stmt|;
 name|struct
 name|strbuf
 name|sb
+init|=
+name|STRBUF_INIT
 decl_stmt|;
-name|strbuf_init
-argument_list|(
-operator|&
-name|sb
-argument_list|,
-literal|0
-argument_list|)
-expr_stmt|;
 name|dot
 operator|=
 name|memchr
@@ -3883,6 +3877,8 @@ decl_stmt|;
 name|struct
 name|strbuf
 name|sb
+init|=
+name|STRBUF_INIT
 decl_stmt|;
 comment|/* 	 * Check to see if the value needs to be surrounded with a dq pair. 	 * Note that problematic characters are always backslash-quoted; this 	 * check is about not losing leading or trailing SP and strings that 	 * follow beginning-of-comment characters (i.e. ';' and '#') by the 	 * configuration parser. 	 */
 if|if
@@ -3948,14 +3944,6 @@ condition|)
 name|quote
 operator|=
 literal|"\""
-expr_stmt|;
-name|strbuf_init
-argument_list|(
-operator|&
-name|sb
-argument_list|,
-literal|0
-argument_list|)
 expr_stmt|;
 name|strbuf_addf
 argument_list|(

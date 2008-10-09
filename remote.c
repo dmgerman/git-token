@@ -1542,6 +1542,8 @@ decl_stmt|;
 name|struct
 name|strbuf
 name|branch
+init|=
+name|STRBUF_INIT
 decl_stmt|;
 name|int
 name|n
@@ -1703,14 +1705,6 @@ name|slash
 argument_list|)
 expr_stmt|;
 comment|/* 	 * With "slash", e.g. "git fetch jgarzik/netdev-2.6" when 	 * reading from $GIT_DIR/branches/jgarzik fetches "HEAD" from 	 * the partial URL obtained from the branches file plus 	 * "/netdev-2.6" and does not store it in any tracking ref. 	 * #branch specifier in the file is ignored. 	 * 	 * Otherwise, the branches file would have URL and optionally 	 * #branch specified.  The "master" (or specified) branch is 	 * fetched and stored in the local branch of the same name. 	 */
-name|strbuf_init
-argument_list|(
-operator|&
-name|branch
-argument_list|,
-literal|0
-argument_list|)
-expr_stmt|;
 name|frag
 operator|=
 name|strchr

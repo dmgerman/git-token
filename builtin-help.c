@@ -1812,6 +1812,8 @@ block|{
 name|struct
 name|strbuf
 name|new_path
+init|=
+name|STRBUF_INIT
 decl_stmt|;
 specifier|const
 name|char
@@ -1823,14 +1825,6 @@ argument_list|(
 literal|"MANPATH"
 argument_list|)
 decl_stmt|;
-name|strbuf_init
-argument_list|(
-operator|&
-name|new_path
-argument_list|,
-literal|0
-argument_list|)
-expr_stmt|;
 comment|/* We should always put ':' after our path. If there is no 	 * old_path, the ':' at the end will let 'man' to try 	 * system-wide paths after ours to find the manual page. If 	 * there is old_path, we need ':' as delimiter. */
 name|strbuf_addstr
 argument_list|(

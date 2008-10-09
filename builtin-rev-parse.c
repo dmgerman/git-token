@@ -1488,8 +1488,12 @@ decl_stmt|;
 name|struct
 name|strbuf
 name|sb
+init|=
+name|STRBUF_INIT
 decl_stmt|,
 name|parsed
+init|=
+name|STRBUF_INIT
 decl_stmt|;
 specifier|const
 name|char
@@ -1523,14 +1527,6 @@ name|usz
 init|=
 literal|0
 decl_stmt|;
-name|strbuf_init
-argument_list|(
-operator|&
-name|parsed
-argument_list|,
-literal|0
-argument_list|)
-expr_stmt|;
 name|strbuf_addstr
 argument_list|(
 operator|&
@@ -1575,14 +1571,6 @@ argument_list|(
 name|parseopt_usage
 argument_list|,
 name|parseopt_opts
-argument_list|)
-expr_stmt|;
-name|strbuf_init
-argument_list|(
-operator|&
-name|sb
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 comment|/* get the usage up to the first line with a -- on it */

@@ -2986,15 +2986,9 @@ block|{
 name|struct
 name|strbuf
 name|strbuf
+init|=
+name|STRBUF_INIT
 decl_stmt|;
-name|strbuf_init
-argument_list|(
-operator|&
-name|strbuf
-argument_list|,
-literal|0
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|convert_to_working_tree

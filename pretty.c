@@ -1385,6 +1385,8 @@ block|{
 name|struct
 name|strbuf
 name|tmp
+init|=
+name|STRBUF_INIT
 decl_stmt|;
 name|size_t
 name|start
@@ -1472,14 +1474,6 @@ name|buf
 operator|+
 name|start
 operator|)
-expr_stmt|;
-name|strbuf_init
-argument_list|(
-operator|&
-name|tmp
-argument_list|,
-literal|0
-argument_list|)
 expr_stmt|;
 name|strbuf_attach
 argument_list|(

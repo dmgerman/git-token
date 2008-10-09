@@ -285,15 +285,9 @@ decl_stmt|;
 name|struct
 name|strbuf
 name|new_path
+init|=
+name|STRBUF_INIT
 decl_stmt|;
-name|strbuf_init
-argument_list|(
-operator|&
-name|new_path
-argument_list|,
-literal|0
-argument_list|)
-expr_stmt|;
 name|add_path
 argument_list|(
 operator|&

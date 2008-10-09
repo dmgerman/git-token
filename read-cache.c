@@ -7156,15 +7156,9 @@ block|{
 name|struct
 name|strbuf
 name|sb
+init|=
+name|STRBUF_INIT
 decl_stmt|;
-name|strbuf_init
-argument_list|(
-operator|&
-name|sb
-argument_list|,
-literal|0
-argument_list|)
-expr_stmt|;
 name|cache_tree_write
 argument_list|(
 operator|&

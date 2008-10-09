@@ -167,15 +167,9 @@ decl_stmt|;
 name|struct
 name|strbuf
 name|arg0
+init|=
+name|STRBUF_INIT
 decl_stmt|;
-name|strbuf_init
-argument_list|(
-operator|&
-name|arg0
-argument_list|,
-literal|0
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|strcspn

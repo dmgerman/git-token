@@ -1273,6 +1273,8 @@ block|{
 name|struct
 name|strbuf
 name|pretty
+init|=
+name|STRBUF_INIT
 decl_stmt|;
 specifier|const
 name|char
@@ -1290,14 +1292,6 @@ name|commit
 operator|->
 name|util
 decl_stmt|;
-name|strbuf_init
-argument_list|(
-operator|&
-name|pretty
-argument_list|,
-literal|0
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|commit
