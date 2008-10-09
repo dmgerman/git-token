@@ -2153,6 +2153,19 @@ DECL|macro|ADD_CACHE_JUST_APPEND
 comment|/* Append only; tree.c::read_tree() */
 end_comment
 
+begin_define
+DECL|macro|ADD_CACHE_NEW_ONLY
+define|#
+directive|define
+name|ADD_CACHE_NEW_ONLY
+value|16
+end_define
+
+begin_comment
+DECL|macro|ADD_CACHE_NEW_ONLY
+comment|/* Do not replace existing ones */
+end_comment
+
 begin_function_decl
 specifier|extern
 name|int
@@ -2273,6 +2286,14 @@ define|#
 directive|define
 name|ADD_CACHE_IGNORE_REMOVAL
 value|8
+end_define
+
+begin_define
+DECL|macro|ADD_CACHE_INTENT
+define|#
+directive|define
+name|ADD_CACHE_INTENT
+value|16
 end_define
 
 begin_function_decl
