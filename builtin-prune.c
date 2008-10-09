@@ -52,7 +52,7 @@ name|prune_usage
 index|[]
 init|=
 block|{
-literal|"git prune [-n] [--expire<time>] [--] [<head>...]"
+literal|"git prune [-n] [-v] [--expire<time>] [--] [<head>...]"
 block|,
 name|NULL
 block|}
@@ -64,6 +64,14 @@ DECL|variable|show_only
 specifier|static
 name|int
 name|show_only
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|verbose
+specifier|static
+name|int
+name|verbose
 decl_stmt|;
 end_decl_stmt
 
@@ -247,6 +255,8 @@ block|}
 if|if
 condition|(
 name|show_only
+operator|||
+name|verbose
 condition|)
 block|{
 name|enum
@@ -284,7 +294,11 @@ literal|"unknown"
 argument_list|)
 expr_stmt|;
 block|}
-else|else
+if|if
+condition|(
+operator|!
+name|show_only
+condition|)
 name|unlink
 argument_list|(
 name|fullpath
@@ -715,6 +729,18 @@ operator|&
 name|show_only
 argument_list|,
 literal|"do not remove, show only"
+argument_list|)
+block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|'v'
+argument_list|,
+name|NULL
+argument_list|,
+operator|&
+name|verbose
+argument_list|,
+literal|"report pruned objects"
 argument_list|)
 block|,
 name|OPT_DATE
