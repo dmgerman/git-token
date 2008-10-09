@@ -8483,6 +8483,21 @@ name|REG_EXTENDED
 block|}
 block|,
 block|{
+literal|"objc"
+block|,
+comment|/* Negate C statements that can look like functions */
+literal|"!^[ \t]*(do|for|if|else|return|switch|while)\n"
+comment|/* Objective-C methods */
+literal|"^[ \t]*([-+][ \t]*\\([ \t]*[A-Za-z_][A-Za-z_0-9* \t]*\\)[ \t]*[A-Za-z_].*)$\n"
+comment|/* C functions */
+literal|"^[ \t]*(([ \t]*[A-Za-z_][A-Za-z_0-9]*){2,}[ \t]*\\([^;]*)$\n"
+comment|/* Objective-C class/protocol definitions */
+literal|"^(@(implementation|interface|protocol)[ \t].*)$"
+block|,
+name|REG_EXTENDED
+block|}
+block|,
+block|{
 literal|"pascal"
 block|,
 literal|"^((procedure|function|constructor|destructor|interface|"
