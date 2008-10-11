@@ -971,8 +971,12 @@ name|path
 argument_list|)
 condition|)
 return|return
-operator|-
-literal|1
+name|error
+argument_list|(
+literal|"Invalid path '%s'"
+argument_list|,
+name|path
+argument_list|)
 return|;
 name|len
 operator|=

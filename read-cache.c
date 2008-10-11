@@ -3147,9 +3147,18 @@ argument_list|(
 name|path
 argument_list|)
 condition|)
+block|{
+name|error
+argument_list|(
+literal|"Invalid path '%s'"
+argument_list|,
+name|path
+argument_list|)
+expr_stmt|;
 return|return
 name|NULL
 return|;
+block|}
 name|len
 operator|=
 name|strlen
@@ -4275,8 +4284,14 @@ name|name
 argument_list|)
 condition|)
 return|return
-operator|-
-literal|1
+name|error
+argument_list|(
+literal|"Invalid path '%s'"
+argument_list|,
+name|ce
+operator|->
+name|name
+argument_list|)
 return|;
 if|if
 condition|(
