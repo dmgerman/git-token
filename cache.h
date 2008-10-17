@@ -2640,6 +2640,22 @@ block|}
 struct|;
 end_struct
 
+begin_define
+DECL|macro|LOCK_DIE_ON_ERROR
+define|#
+directive|define
+name|LOCK_DIE_ON_ERROR
+value|1
+end_define
+
+begin_define
+DECL|macro|LOCK_NODEREF
+define|#
+directive|define
+name|LOCK_NODEREF
+value|2
+end_define
+
 begin_function_decl
 specifier|extern
 name|int
