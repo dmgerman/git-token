@@ -4685,6 +4685,37 @@ name|commit
 modifier|*
 name|commit
 decl_stmt|;
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|format
+init|=
+literal|"format:%h: \"%s\""
+decl_stmt|;
+name|unsigned
+name|char
+name|junk_sha1
+index|[
+literal|20
+index|]
+decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|head
+init|=
+name|resolve_ref
+argument_list|(
+literal|"HEAD"
+argument_list|,
+name|junk_sha1
+argument_list|,
+literal|0
+argument_list|,
+name|NULL
+argument_list|)
+decl_stmt|;
 name|commit
 operator|=
 name|lookup_commit
@@ -4773,7 +4804,7 @@ literal|1
 expr_stmt|;
 name|get_commit_format
 argument_list|(
-literal|"format:%h: %s"
+name|format
 argument_list|,
 operator|&
 name|rev
@@ -4819,11 +4850,35 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"Created %scommit "
+literal|"[%s%s]: created "
+argument_list|,
+operator|!
+name|prefixcmp
+argument_list|(
+name|head
+argument_list|,
+literal|"refs/heads/"
+argument_list|)
+condition|?
+name|head
+operator|+
+literal|11
+else|:
+operator|!
+name|strcmp
+argument_list|(
+name|head
+argument_list|,
+literal|"HEAD"
+argument_list|)
+condition|?
+literal|"detached HEAD"
+else|:
+name|head
 argument_list|,
 name|initial_commit
 condition|?
-literal|"initial "
+literal|" (root-commit)"
 else|:
 literal|""
 argument_list|)
@@ -4850,7 +4905,9 @@ name|format_commit_message
 argument_list|(
 name|commit
 argument_list|,
-literal|"%h: %s"
+name|format
+operator|+
+literal|7
 argument_list|,
 operator|&
 name|buf
