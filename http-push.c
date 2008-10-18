@@ -10275,7 +10275,7 @@ name|obj
 decl_stmt|;
 name|ref
 operator|=
-name|alloc_ref_from_str
+name|alloc_ref
 argument_list|(
 name|refname
 argument_list|)
@@ -10788,7 +10788,7 @@ name|ref
 decl_stmt|;
 name|ref
 operator|=
-name|alloc_ref_from_str
+name|alloc_ref
 argument_list|(
 name|ls
 operator|->

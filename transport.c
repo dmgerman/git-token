@@ -418,7 +418,7 @@ condition|)
 continue|continue;
 name|next
 operator|=
-name|alloc_ref_from_str
+name|alloc_ref
 argument_list|(
 name|path
 operator|->
@@ -719,7 +719,7 @@ name|ref
 modifier|*
 name|next
 init|=
-name|alloc_ref_from_str
+name|alloc_ref
 argument_list|(
 name|buffer
 operator|+
@@ -2894,7 +2894,7 @@ argument_list|)
 expr_stmt|;
 name|ref
 operator|=
-name|alloc_ref_from_str
+name|alloc_ref
 argument_list|(
 literal|"HEAD"
 argument_list|)
@@ -3146,7 +3146,7 @@ name|ref
 modifier|*
 name|ref
 init|=
-name|alloc_ref_from_str
+name|alloc_ref
 argument_list|(
 name|e
 operator|->

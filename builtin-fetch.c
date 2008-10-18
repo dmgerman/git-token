@@ -3050,7 +3050,7 @@ argument_list|)
 expr_stmt|;
 name|rm
 operator|=
-name|alloc_ref_from_str
+name|alloc_ref
 argument_list|(
 name|ref_name
 argument_list|)
@@ -3059,7 +3059,7 @@ name|rm
 operator|->
 name|peer_ref
 operator|=
-name|alloc_ref_from_str
+name|alloc_ref
 argument_list|(
 name|ref_name
 argument_list|)
