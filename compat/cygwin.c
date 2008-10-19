@@ -432,7 +432,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * At start up, we are trying to determine whether Win32 API or cygwin stat  * functions should be used. The choice is determined by core.ignorecygwinfstricks.  * Reading this option is not always possible immediately as git_dir may be  * not be set yet. So until it is set, use cygwin lstat/stat functions.  */
+comment|/*  * At start up, we are trying to determine whether Win32 API or cygwin stat  * functions should be used. The choice is determined by core.ignorecygwinfstricks.  * Reading this option is not always possible immediately as git_dir may be  * not be set yet. So until it is set, use cygwin lstat/stat functions.  * However, if the trust_executable_bit is set, we must use the Cygwin posix  * stat/lstat as the Windows stat fuctions do not determine posix filemode.  */
 end_comment
 
 begin_decl_stmt
@@ -442,6 +442,13 @@ name|int
 name|native_stat
 init|=
 literal|1
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
+name|int
+name|trust_executable_bit
 decl_stmt|;
 end_decl_stmt
 
@@ -476,6 +483,7 @@ argument_list|,
 literal|"core.ignorecygwinfstricks"
 argument_list|)
 condition|)
+block|{
 name|native_stat
 operator|=
 name|git_config_bool
@@ -487,6 +495,17 @@ argument_list|)
 expr_stmt|;
 return|return
 literal|0
+return|;
+block|}
+return|return
+name|git_default_config
+argument_list|(
+name|var
+argument_list|,
+name|value
+argument_list|,
+name|cb
+argument_list|)
 return|;
 block|}
 end_function
@@ -513,22 +532,34 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|trust_executable_bit
+operator|&&
+name|native_stat
+condition|)
+block|{
 name|cygwin_stat_fn
 operator|=
-name|native_stat
-condition|?
 name|cygwin_stat
-else|:
+expr_stmt|;
+name|cygwin_lstat_fn
+operator|=
+name|cygwin_lstat
+expr_stmt|;
+block|}
+else|else
+block|{
+name|cygwin_stat_fn
+operator|=
 name|stat
 expr_stmt|;
 name|cygwin_lstat_fn
 operator|=
-name|native_stat
-condition|?
-name|cygwin_lstat
-else|:
 name|lstat
 expr_stmt|;
+block|}
 return|return
 literal|0
 return|;
