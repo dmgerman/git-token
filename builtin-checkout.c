@@ -3786,26 +3786,6 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-operator|!
-name|opts
-operator|.
-name|new_branch
-operator|&&
-operator|(
-name|opts
-operator|.
-name|track
-operator|!=
-name|git_branch_track
-operator|)
-condition|)
-name|die
-argument_list|(
-literal|"git checkout: --track and --no-track require -b"
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
 name|opts
 operator|.
 name|force
