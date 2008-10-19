@@ -98,7 +98,7 @@ end_decl_stmt
 
 begin_comment
 DECL|variable|all
-comment|/* Default to annotated tags only */
+comment|/* Any valid ref can be used */
 end_comment
 
 begin_decl_stmt
@@ -111,7 +111,7 @@ end_decl_stmt
 
 begin_comment
 DECL|variable|tags
-comment|/* But allow any tags if --tags is specified */
+comment|/* Allow lightweight tags */
 end_comment
 
 begin_decl_stmt
@@ -653,33 +653,6 @@ operator|*
 operator|)
 name|b_
 decl_stmt|;
-if|if
-condition|(
-name|a
-operator|->
-name|name
-operator|->
-name|prio
-operator|!=
-name|b
-operator|->
-name|name
-operator|->
-name|prio
-condition|)
-return|return
-name|b
-operator|->
-name|name
-operator|->
-name|prio
-operator|-
-name|a
-operator|->
-name|name
-operator|->
-name|prio
-return|;
 if|if
 condition|(
 name|a
