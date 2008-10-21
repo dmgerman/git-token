@@ -3456,6 +3456,20 @@ block|}
 end_function
 
 begin_function_decl
+specifier|extern
+name|int
+name|is_empty_blob_sha1
+parameter_list|(
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|sha1
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|int
 name|git_mkstemp
 parameter_list|(

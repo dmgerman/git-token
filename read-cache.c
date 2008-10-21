@@ -810,7 +810,6 @@ end_function
 
 begin_function
 DECL|function|is_empty_blob_sha1
-specifier|static
 name|int
 name|is_empty_blob_sha1
 parameter_list|(
