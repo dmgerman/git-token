@@ -377,6 +377,27 @@ end_comment
 
 begin_function_decl
 specifier|extern
+name|char
+modifier|*
+name|reencode_commit_message
+parameter_list|(
+specifier|const
+name|struct
+name|commit
+modifier|*
+name|commit
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|encoding_p
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|void
 name|get_commit_format
 parameter_list|(
