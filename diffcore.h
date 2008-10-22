@@ -84,6 +84,12 @@ DECL|macro|MINIMUM_BREAK_SIZE
 comment|/* do not break a file smaller than this */
 end_comment
 
+begin_struct_decl
+struct_decl|struct
+name|userdiff_driver
+struct_decl|;
+end_struct_decl
+
 begin_struct
 DECL|struct|diff_filespec
 struct|struct
@@ -173,19 +179,17 @@ range|:
 literal|1
 decl_stmt|;
 comment|/* data should be munmap()'ed */
-DECL|member|checked_attr
-name|unsigned
-name|checked_attr
-range|:
-literal|1
+DECL|member|driver
+name|struct
+name|userdiff_driver
+modifier|*
+name|driver
 decl_stmt|;
+comment|/* data should be considered "binary"; -1 means "don't know yet" */
 DECL|member|is_binary
-name|unsigned
+name|int
 name|is_binary
-range|:
-literal|1
 decl_stmt|;
-comment|/* data should be considered "binary" */
 block|}
 struct|;
 end_struct
