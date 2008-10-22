@@ -4330,7 +4330,7 @@ name|lock
 argument_list|,
 name|shallow
 argument_list|,
-literal|1
+name|LOCK_DIE_ON_ERROR
 argument_list|)
 expr_stmt|;
 if|if

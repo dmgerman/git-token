@@ -677,7 +677,26 @@ break|break;
 case|case
 literal|1
 case|:
-comment|/* Unique completion -- good */
+comment|/* Unique completion -- good, only if it is a real ref */
+if|if
+condition|(
+name|track
+operator|==
+name|BRANCH_TRACK_EXPLICIT
+operator|&&
+operator|!
+name|strcmp
+argument_list|(
+name|real_ref
+argument_list|,
+literal|"HEAD"
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"Cannot setup tracking information; starting point is not a branch."
+argument_list|)
+expr_stmt|;
 break|break;
 default|default:
 name|die
