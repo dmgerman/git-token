@@ -1094,7 +1094,7 @@ name|ref
 modifier|*
 name|ref
 init|=
-name|alloc_ref_from_str
+name|alloc_ref
 argument_list|(
 name|target
 argument_list|)
