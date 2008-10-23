@@ -7213,10 +7213,6 @@ name|struct
 name|object_entry
 modifier|*
 name|entry
-init|=
-operator|*
-name|list
-operator|++
 decl_stmt|;
 name|struct
 name|unpacked
@@ -7252,6 +7248,12 @@ argument_list|()
 expr_stmt|;
 break|break;
 block|}
+name|entry
+operator|=
+operator|*
+name|list
+operator|++
+expr_stmt|;
 operator|(
 operator|*
 name|list_size
