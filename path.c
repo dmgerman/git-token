@@ -1577,7 +1577,7 @@ goto|goto
 name|next
 goto|;
 block|}
-name|memcpy
+name|memmove
 argument_list|(
 name|dst
 argument_list|,
