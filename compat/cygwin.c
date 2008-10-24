@@ -432,7 +432,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * At start up, we are trying to determine whether Win32 API or cygwin stat  * functions should be used. The choice is determined by core.ignorecygwinfstricks.  * Reading this option is not always possible immediately as git_dir may be  * not be set yet. So until it is set, use cygwin lstat/stat functions.  * However, if the trust_executable_bit is set, we must use the Cygwin posix  * stat/lstat as the Windows stat fuctions do not determine posix filemode.  */
+comment|/*  * At start up, we are trying to determine whether Win32 API or cygwin stat  * functions should be used. The choice is determined by core.ignorecygwinfstricks.  * Reading this option is not always possible immediately as git_dir may be  * not be set yet. So until it is set, use cygwin lstat/stat functions.  * However, if core.filemode is set, we must use the Cygwin posix  * stat/lstat as the Windows stat fuctions do not determine posix filemode.  *  * Note that git_cygwin_config() does NOT call git_default_config() and this  * is deliberate.  Many commands read from config to establish initial  * values in variables and later tweak them from elsewhere (e.g. command line).  * init_stat() is called lazily on demand, typically much late in the program,  * and calling git_default_config() from here would break such variables.  */
 end_comment
 
 begin_decl_stmt
@@ -446,9 +446,10 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-specifier|extern
+DECL|variable|core_filemode
+specifier|static
 name|int
-name|trust_executable_bit
+name|core_filemode
 decl_stmt|;
 end_decl_stmt
 
@@ -483,8 +484,27 @@ argument_list|,
 literal|"core.ignorecygwinfstricks"
 argument_list|)
 condition|)
-block|{
 name|native_stat
+operator|=
+name|git_config_bool
+argument_list|(
+name|var
+argument_list|,
+name|value
+argument_list|)
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|var
+argument_list|,
+literal|"core.filemode"
+argument_list|)
+condition|)
+name|core_filemode
 operator|=
 name|git_config_bool
 argument_list|(
@@ -495,17 +515,6 @@ argument_list|)
 expr_stmt|;
 return|return
 literal|0
-return|;
-block|}
-return|return
-name|git_default_config
-argument_list|(
-name|var
-argument_list|,
-name|value
-argument_list|,
-name|cb
-argument_list|)
 return|;
 block|}
 end_function
@@ -535,7 +544,7 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|trust_executable_bit
+name|core_filemode
 operator|&&
 name|native_stat
 condition|)
