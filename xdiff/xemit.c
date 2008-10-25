@@ -54,24 +54,6 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
-begin_function_decl
-specifier|static
-name|xdchange_t
-modifier|*
-name|xdl_get_hunk
-parameter_list|(
-name|xdchange_t
-modifier|*
-name|xscr
-parameter_list|,
-name|xdemitconf_t
-specifier|const
-modifier|*
-name|xecfg
-parameter_list|)
-function_decl|;
-end_function_decl
-
 begin_function
 DECL|function|xdl_get_rec
 specifier|static
@@ -202,7 +184,6 @@ end_comment
 
 begin_function
 DECL|function|xdl_get_hunk
-specifier|static
 name|xdchange_t
 modifier|*
 name|xdl_get_hunk
