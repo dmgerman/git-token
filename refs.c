@@ -5064,6 +5064,8 @@ literal|0
 decl_stmt|;
 if|if
 condition|(
+name|log
+operator|&&
 name|S_ISLNK
 argument_list|(
 name|loginfo
