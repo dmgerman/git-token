@@ -96,6 +96,10 @@ decl_stmt|,
 name|no_deref
 init|=
 literal|0
+decl_stmt|,
+name|flags
+init|=
+literal|0
 decl_stmt|;
 name|struct
 name|option
@@ -308,6 +312,14 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|no_deref
+condition|)
+name|flags
+operator|=
+name|REF_NODEREF
+expr_stmt|;
+if|if
+condition|(
 name|delete
 condition|)
 return|return
@@ -321,7 +333,7 @@ name|oldsha1
 else|:
 name|NULL
 argument_list|,
-literal|0
+name|flags
 argument_list|)
 return|;
 else|else
@@ -340,11 +352,7 @@ name|oldsha1
 else|:
 name|NULL
 argument_list|,
-name|no_deref
-condition|?
-name|REF_NODEREF
-else|:
-literal|0
+name|flags
 argument_list|,
 name|DIE_ON_ERR
 argument_list|)
