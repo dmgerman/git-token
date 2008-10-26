@@ -1890,6 +1890,25 @@ name|close_file
 operator|=
 literal|0
 expr_stmt|;
+comment|/* 	 * If we're not going to stdout, then we definitely don't 	 * want color, since we are going to the commit message 	 * file (and even the "auto" setting won't work, since it 	 * will have checked isatty on stdout). 	 */
+if|if
+condition|(
+name|s
+operator|->
+name|fp
+operator|!=
+name|stdout
+condition|)
+name|DIFF_OPT_CLR
+argument_list|(
+operator|&
+name|rev
+operator|.
+name|diffopt
+argument_list|,
+name|COLOR_DIFF
+argument_list|)
+expr_stmt|;
 name|run_diff_index
 argument_list|(
 operator|&
@@ -2664,7 +2683,7 @@ literal|0
 return|;
 block|}
 return|return
-name|git_color_default_config
+name|git_diff_ui_config
 argument_list|(
 name|k
 argument_list|,
