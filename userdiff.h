@@ -69,24 +69,7 @@ end_struct
 
 begin_function_decl
 name|int
-name|userdiff_config_basic
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|k
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|v
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-name|int
-name|userdiff_config_porcelain
+name|userdiff_config
 parameter_list|(
 specifier|const
 name|char

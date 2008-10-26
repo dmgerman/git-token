@@ -413,6 +413,14 @@ value|(1<< 20)
 end_define
 
 begin_define
+DECL|macro|DIFF_OPT_ALLOW_TEXTCONV
+define|#
+directive|define
+name|DIFF_OPT_ALLOW_TEXTCONV
+value|(1<< 21)
+end_define
+
+begin_define
 DECL|macro|DIFF_OPT_TST
 define|#
 directive|define
