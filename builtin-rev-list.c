@@ -448,6 +448,9 @@ block|}
 block|}
 name|show_decorations
 argument_list|(
+operator|&
+name|revs
+argument_list|,
 name|commit
 argument_list|)
 expr_stmt|;

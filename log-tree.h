@@ -109,6 +109,11 @@ name|void
 name|show_decorations
 parameter_list|(
 name|struct
+name|rev_info
+modifier|*
+name|opt
+parameter_list|,
+name|struct
 name|commit
 modifier|*
 name|commit

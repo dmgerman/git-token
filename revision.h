@@ -276,6 +276,11 @@ name|print_parents
 range|:
 literal|1
 decl_stmt|,
+DECL|member|show_source
+name|show_source
+range|:
+literal|1
+decl_stmt|,
 DECL|member|reverse
 name|reverse
 range|:
