@@ -1579,12 +1579,9 @@ name|char
 modifier|*
 name|defmsg
 init|=
-name|xstrdup
-argument_list|(
-name|git_path
+name|git_pathdup
 argument_list|(
 literal|"MERGE_MSG"
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|git_config

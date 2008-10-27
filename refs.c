@@ -6659,14 +6659,11 @@ name|char
 modifier|*
 name|git_HEAD
 init|=
-name|xstrdup
-argument_list|(
-name|git_path
+name|git_pathdup
 argument_list|(
 literal|"%s"
 argument_list|,
 name|ref_target
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|unsigned
