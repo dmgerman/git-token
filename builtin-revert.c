@@ -1574,7 +1574,6 @@ decl_stmt|,
 modifier|*
 name|encoding
 decl_stmt|;
-specifier|const
 name|char
 modifier|*
 name|defmsg
@@ -2338,6 +2337,11 @@ block|}
 name|free
 argument_list|(
 name|reencoded_message
+argument_list|)
+expr_stmt|;
+name|free
+argument_list|(
+name|defmsg
 argument_list|)
 expr_stmt|;
 return|return
