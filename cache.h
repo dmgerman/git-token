@@ -5502,7 +5502,7 @@ begin_function_decl
 specifier|extern
 name|unsigned
 name|long
-name|unpack_object_header_gently
+name|unpack_object_header_buffer
 parameter_list|(
 specifier|const
 name|unsigned

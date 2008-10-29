@@ -5299,7 +5299,7 @@ expr_stmt|;
 comment|/* 		 * We want in_pack_type even if we do not reuse delta 		 * since non-delta representations could still be reused. 		 */
 name|used
 operator|=
-name|unpack_object_header_gently
+name|unpack_object_header_buffer
 argument_list|(
 name|buf
 argument_list|,

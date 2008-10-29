@@ -6464,10 +6464,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|unpack_object_header_gently
+DECL|function|unpack_object_header_buffer
 name|unsigned
 name|long
-name|unpack_object_header_gently
+name|unpack_object_header_buffer
 parameter_list|(
 specifier|const
 name|unsigned
@@ -6548,12 +6548,7 @@ condition|(
 name|len
 operator|<=
 name|used
-condition|)
-return|return
-literal|0
-return|;
-if|if
-condition|(
+operator|||
 sizeof|sizeof
 argument_list|(
 name|long
@@ -6563,9 +6558,16 @@ literal|8
 operator|<=
 name|shift
 condition|)
+block|{
+name|error
+argument_list|(
+literal|"bad object header"
+argument_list|)
+expr_stmt|;
 return|return
 literal|0
 return|;
+block|}
 name|c
 operator|=
 name|buf
@@ -6727,7 +6729,7 @@ block|}
 comment|/* 	 * There used to be a second loose object header format which 	 * was meant to mimic the in-pack format, allowing for direct 	 * copy of the object data.  This format turned up not to be 	 * really worth it and we don't write it any longer.  But we 	 * can still read it. 	 */
 name|used
 operator|=
-name|unpack_object_header_gently
+name|unpack_object_header_buffer
 argument_list|(
 name|map
 argument_list|,
@@ -7857,7 +7859,7 @@ argument_list|)
 expr_stmt|;
 name|used
 operator|=
-name|unpack_object_header_gently
+name|unpack_object_header_buffer
 argument_list|(
 name|base
 argument_list|,
@@ -7874,11 +7876,13 @@ condition|(
 operator|!
 name|used
 condition|)
-name|die
-argument_list|(
-literal|"object offset outside of pack file"
-argument_list|)
+block|{
+name|type
+operator|=
+name|OBJ_BAD
 expr_stmt|;
+block|}
+else|else
 operator|*
 name|curpos
 operator|+=
