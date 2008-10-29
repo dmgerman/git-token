@@ -804,11 +804,14 @@ operator|<
 name|hi
 condition|)
 do|;
-name|die
+name|error
 argument_list|(
-literal|"internal error: pack revindex corrupt"
+literal|"bad offset for revindex"
 argument_list|)
 expr_stmt|;
+return|return
+name|NULL
+return|;
 block|}
 end_function
 

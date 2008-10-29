@@ -5579,6 +5579,14 @@ argument_list|,
 name|ofs
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|revidx
+condition|)
+goto|goto
+name|give_up
+goto|;
 name|base_ref
 operator|=
 name|nth_packed_object_sha1
