@@ -2062,6 +2062,26 @@ name|offset
 operator|-
 name|base_offset
 expr_stmt|;
+if|if
+condition|(
+name|base_offset
+operator|<=
+literal|0
+operator|||
+name|base_offset
+operator|>=
+name|obj_list
+index|[
+name|nr
+index|]
+operator|.
+name|offset
+condition|)
+name|die
+argument_list|(
+literal|"offset value out of bound for delta base object"
+argument_list|)
+expr_stmt|;
 name|delta_data
 operator|=
 name|get_data

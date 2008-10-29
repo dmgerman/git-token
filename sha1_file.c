@@ -7631,6 +7631,10 @@ expr_stmt|;
 if|if
 condition|(
 name|base_offset
+operator|<=
+literal|0
+operator|||
+name|base_offset
 operator|>=
 name|delta_obj_offset
 condition|)
