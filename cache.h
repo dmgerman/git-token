@@ -3878,6 +3878,17 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* global flag to enable extra checks when accessing packed objects */
+end_comment
+
+begin_decl_stmt
+specifier|extern
+name|int
+name|do_check_packed_object_crc
+decl_stmt|;
+end_decl_stmt
+
 begin_function_decl
 specifier|extern
 name|int

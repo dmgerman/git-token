@@ -8611,6 +8611,16 @@ decl_stmt|;
 name|get_object_details
 argument_list|()
 expr_stmt|;
+comment|/* 	 * If we're locally repacking then we need to be doubly careful 	 * from now on in order to make sure no stealth corruption gets 	 * propagated to the new pack.  Clients receiving streamed packs 	 * should validate everything they get anyway so no need to incur 	 * the additional cost here in that case. 	 */
+if|if
+condition|(
+operator|!
+name|pack_to_stdout
+condition|)
+name|do_check_packed_object_crc
+operator|=
+literal|1
+expr_stmt|;
 if|if
 condition|(
 operator|!
