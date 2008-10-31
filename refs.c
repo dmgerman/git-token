@@ -4793,6 +4793,10 @@ name|flag
 operator|&
 name|REF_ISPACKED
 operator|)
+operator|||
+name|flag
+operator|&
+name|REF_ISSYMREF
 condition|)
 block|{
 comment|/* loose */
