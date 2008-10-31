@@ -2304,7 +2304,11 @@ name|warn_on_too_large_rename
 condition|)
 name|warning
 argument_list|(
-literal|"too many files, skipping inexact rename detection"
+literal|"too many files (created: %d deleted: %d), skipping inexact rename detection"
+argument_list|,
+name|num_create
+argument_list|,
+name|num_src
 argument_list|)
 expr_stmt|;
 goto|goto
