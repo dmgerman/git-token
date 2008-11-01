@@ -397,6 +397,29 @@ expr_stmt|;
 if|if
 condition|(
 name|len
+operator|>
+literal|4
+operator|&&
+operator|!
+name|prefixcmp
+argument_list|(
+name|buffer
+argument_list|,
+literal|"ERR "
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"remote error: %s"
+argument_list|,
+name|buffer
+operator|+
+literal|4
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|len
 operator|<
 literal|42
 operator|||
