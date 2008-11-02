@@ -313,7 +313,7 @@ DECL|member|status
 name|char
 name|status
 decl_stmt|;
-comment|/* M C R N D U (see Documentation/diff-format.txt) */
+comment|/* M C R A D U etc. (see Documentation/diff-format.txt or DIFF_STATUS_* in diff.h) */
 DECL|member|broken_pair
 name|unsigned
 name|broken_pair
