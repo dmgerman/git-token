@@ -1955,13 +1955,10 @@ name|xcalloc
 argument_list|(
 literal|1
 argument_list|,
-sizeof|sizeof
+name|cache_entry_size
 argument_list|(
-expr|struct
-name|cache_entry
+literal|0
 argument_list|)
-operator|+
-literal|1
 argument_list|)
 expr_stmt|;
 name|o
