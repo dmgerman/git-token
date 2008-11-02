@@ -1360,6 +1360,19 @@ parameter_list|)
 value|index_name_exists(&the_index, (name), (namelen), (igncase))
 end_define
 
+begin_define
+DECL|macro|cache_name_is_other
+define|#
+directive|define
+name|cache_name_is_other
+parameter_list|(
+name|name
+parameter_list|,
+name|namelen
+parameter_list|)
+value|index_name_is_other(&the_index, (name), (namelen))
+end_define
+
 begin_endif
 endif|#
 directive|endif
@@ -2305,6 +2318,25 @@ name|struct
 name|cache_entry
 modifier|*
 name|b
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|index_name_is_other
+parameter_list|(
+specifier|const
+name|struct
+name|index_state
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+parameter_list|,
+name|int
 parameter_list|)
 function_decl|;
 end_function_decl
