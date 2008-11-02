@@ -2963,15 +2963,15 @@ operator|==
 name|INVALID_HANDLE_VALUE
 condition|)
 block|{
-comment|/* There is no console associated with this process. 		 * Since the child is a console process, Windows 		 * would normally create a console window. But 		 * since we'll be redirecting std streams, we do 		 * not need the console. 		 */
+comment|/* There is no console associated with this process. 		 * Since the child is a console process, Windows 		 * would normally create a console window. But 		 * since we'll be redirecting std streams, we do 		 * not need the console. 		 * It is necessary to use DETACHED_PROCESS 		 * instead of CREATE_NO_WINDOW to make ssh 		 * recognize that it has no console. 		 */
 name|flags
 operator|=
-name|CREATE_NO_WINDOW
+name|DETACHED_PROCESS
 expr_stmt|;
 block|}
 else|else
 block|{
-comment|/* There is already a console. If we specified 		 * CREATE_NO_WINDOW here, too, Windows would 		 * disassociate the child from the console. 		 * Go figure! 		 */
+comment|/* There is already a console. If we specified 		 * DETACHED_PROCESS here, too, Windows would 		 * disassociate the child from the console. 		 * The same is true for CREATE_NO_WINDOW. 		 * Go figure! 		 */
 name|flags
 operator|=
 literal|0
