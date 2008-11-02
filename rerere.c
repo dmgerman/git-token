@@ -2039,7 +2039,7 @@ name|write_lock
 argument_list|,
 name|merge_rr_path
 argument_list|,
-literal|1
+name|LOCK_DIE_ON_ERROR
 argument_list|)
 expr_stmt|;
 name|read_rr
