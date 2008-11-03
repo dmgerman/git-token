@@ -281,6 +281,11 @@ name|show_source
 range|:
 literal|1
 decl_stmt|,
+DECL|member|show_decorations
+name|show_decorations
+range|:
+literal|1
+decl_stmt|,
 DECL|member|reverse
 name|reverse
 range|:

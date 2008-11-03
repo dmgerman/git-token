@@ -402,6 +402,14 @@ operator|->
 name|util
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|opt
+operator|->
+name|show_decorations
+condition|)
+return|return;
 name|decoration
 operator|=
 name|lookup_decoration

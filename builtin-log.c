@@ -152,11 +152,6 @@ block|{
 name|int
 name|i
 decl_stmt|;
-name|int
-name|decorate
-init|=
-literal|0
-decl_stmt|;
 name|rev
 operator|->
 name|abbrev
@@ -327,7 +322,9 @@ block|{
 name|load_ref_decorations
 argument_list|()
 expr_stmt|;
-name|decorate
+name|rev
+operator|->
+name|show_decorations
 operator|=
 literal|1
 expr_stmt|;
