@@ -225,6 +225,11 @@ name|simplify_merges
 range|:
 literal|1
 decl_stmt|,
+DECL|member|simplify_by_decoration
+name|simplify_by_decoration
+range|:
+literal|1
+decl_stmt|,
 DECL|member|tag_objects
 name|tag_objects
 range|:
