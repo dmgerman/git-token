@@ -1396,6 +1396,8 @@ argument_list|(
 name|name
 argument_list|,
 name|old_sha1
+argument_list|,
+literal|0
 argument_list|)
 condition|)
 block|{

@@ -626,6 +626,8 @@ argument_list|(
 name|ref
 argument_list|,
 name|sha1
+argument_list|,
+literal|0
 argument_list|)
 condition|)
 return|return
