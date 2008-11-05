@@ -2058,12 +2058,9 @@ literal|1
 return|;
 name|merge_rr_path
 operator|=
-name|xstrdup
-argument_list|(
-name|git_path
+name|git_pathdup
 argument_list|(
 literal|"MERGE_RR"
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|fd

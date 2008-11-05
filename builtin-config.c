@@ -556,12 +556,9 @@ name|local
 operator|=
 name|repo_config
 operator|=
-name|xstrdup
-argument_list|(
-name|git_path
+name|git_pathdup
 argument_list|(
 literal|"config"
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
