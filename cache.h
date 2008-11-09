@@ -2814,6 +2814,9 @@ name|unsigned
 name|char
 modifier|*
 name|sha1
+parameter_list|,
+name|int
+name|delopt
 parameter_list|)
 function_decl|;
 end_function_decl
