@@ -161,12 +161,9 @@ name|char
 modifier|*
 name|path0
 init|=
-name|xstrdup
-argument_list|(
-name|git_path
+name|git_pathdup
 argument_list|(
 literal|"info/refs"
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|int

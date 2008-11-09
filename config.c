@@ -3105,12 +3105,9 @@ expr_stmt|;
 block|}
 name|repo_config
 operator|=
-name|xstrdup
-argument_list|(
-name|git_path
+name|git_pathdup
 argument_list|(
 literal|"config"
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|ret
@@ -4271,12 +4268,9 @@ expr_stmt|;
 else|else
 name|config_filename
 operator|=
-name|xstrdup
-argument_list|(
-name|git_path
+name|git_pathdup
 argument_list|(
 literal|"config"
-argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* 	 * Since "key" actually contains the section name and the real 	 * key name separated by a dot, we have to know where the dot is. 	 */
@@ -5541,12 +5535,9 @@ expr_stmt|;
 else|else
 name|config_filename
 operator|=
-name|xstrdup
-argument_list|(
-name|git_path
+name|git_pathdup
 argument_list|(
 literal|"config"
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|out_fd
