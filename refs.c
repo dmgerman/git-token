@@ -4057,10 +4057,6 @@ name|ref_lock
 modifier|*
 name|lock
 decl_stmt|;
-name|struct
-name|stat
-name|st
-decl_stmt|;
 name|int
 name|last_errno
 init|=
@@ -4083,6 +4079,11 @@ argument_list|(
 name|old_sha1
 argument_list|)
 operator|)
+decl_stmt|;
+name|int
+name|missing
+init|=
+literal|0
 decl_stmt|;
 name|lock
 operator|=
@@ -4215,15 +4216,19 @@ goto|goto
 name|error_return
 goto|;
 block|}
-comment|/* When the ref did not exist and we are creating it, 	 * make sure there is no existing ref that is packed 	 * whose name begins with our refname, nor a ref whose 	 * name is a proper prefix of our refname. 	 */
-if|if
-condition|(
+name|missing
+operator|=
 name|is_null_sha1
 argument_list|(
 name|lock
 operator|->
 name|old_sha1
 argument_list|)
+expr_stmt|;
+comment|/* When the ref did not exist and we are creating it, 	 * make sure there is no existing ref that is packed 	 * whose name begins with our refname, nor a ref whose 	 * name is a proper prefix of our refname. 	 */
+if|if
+condition|(
+name|missing
 operator|&&
 operator|!
 name|is_refname_available
@@ -4305,17 +4310,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|lstat
-argument_list|(
-name|ref_file
-argument_list|,
-operator|&
-name|st
-argument_list|)
-operator|&&
-name|errno
-operator|==
-name|ENOENT
+name|missing
 condition|)
 name|lock
 operator|->
