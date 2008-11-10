@@ -14299,15 +14299,6 @@ name|get_current_sha1
 argument_list|(
 name|patch
 operator|->
-name|new_name
-argument_list|,
-name|sha1
-argument_list|)
-operator|||
-name|get_current_sha1
-argument_list|(
-name|patch
-operator|->
 name|old_name
 argument_list|,
 name|sha1
