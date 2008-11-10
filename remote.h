@@ -12,6 +12,21 @@ directive|define
 name|REMOTE_H
 end_define
 
+begin_enum
+enum|enum
+block|{
+DECL|enumerator|REMOTE_CONFIG
+name|REMOTE_CONFIG
+block|,
+DECL|enumerator|REMOTE_REMOTES
+name|REMOTE_REMOTES
+block|,
+DECL|enumerator|REMOTE_BRANCHES
+name|REMOTE_BRANCHES
+block|}
+enum|;
+end_enum
+
 begin_struct
 DECL|struct|remote
 struct|struct
@@ -22,6 +37,10 @@ specifier|const
 name|char
 modifier|*
 name|name
+decl_stmt|;
+DECL|member|origin
+name|int
+name|origin
 decl_stmt|;
 DECL|member|url
 specifier|const
