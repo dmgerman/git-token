@@ -566,6 +566,8 @@ condition|)
 block|{
 name|error
 argument_list|(
+literal|"%s"
+argument_list|,
 name|errstr
 argument_list|)
 expr_stmt|;
