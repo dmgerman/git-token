@@ -4874,6 +4874,8 @@ name|path
 operator|=
 name|git_path
 argument_list|(
+literal|"%s"
+argument_list|,
 name|refname
 argument_list|)
 expr_stmt|;

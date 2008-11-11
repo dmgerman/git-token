@@ -694,6 +694,8 @@ name|make_absolute_path
 argument_list|(
 name|git_path
 argument_list|(
+literal|"%s"
+argument_list|,
 name|work_tree
 argument_list|)
 argument_list|)
