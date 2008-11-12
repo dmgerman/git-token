@@ -11072,9 +11072,7 @@ name|cached_object
 name|empty_tree
 init|=
 block|{
-comment|/* empty tree sha1: 4b825dc642cb6eb9a060e54bf8d69288fbee4904 */
-literal|"\x4b\x82\x5d\xc6\x42\xcb\x6e\xb9\xa0\x60"
-literal|"\xe5\x4b\xf8\xd6\x92\x88\xfb\xee\x49\x04"
+name|EMPTY_TREE_SHA1_BIN
 block|,
 name|OBJ_TREE
 block|,
