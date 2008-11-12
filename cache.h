@@ -1225,6 +1225,15 @@ value|read_index_from(&the_index, (path))
 end_define
 
 begin_define
+DECL|macro|is_cache_unborn
+define|#
+directive|define
+name|is_cache_unborn
+parameter_list|()
+value|is_index_unborn(&the_index)
+end_define
+
+begin_define
 DECL|macro|read_cache_unmerged
 define|#
 directive|define
@@ -2007,6 +2016,18 @@ specifier|const
 name|char
 modifier|*
 name|path
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|is_index_unborn
+parameter_list|(
+name|struct
+name|index_state
+modifier|*
 parameter_list|)
 function_decl|;
 end_function_decl
