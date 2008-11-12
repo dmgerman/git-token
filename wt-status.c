@@ -1740,6 +1740,12 @@ name|rev
 argument_list|,
 name|s
 operator|->
+name|is_initial
+condition|?
+name|EMPTY_TREE_SHA1_HEX
+else|:
+name|s
+operator|->
 name|reference
 argument_list|)
 expr_stmt|;
@@ -2186,11 +2192,6 @@ condition|(
 name|s
 operator|->
 name|verbose
-operator|&&
-operator|!
-name|s
-operator|->
-name|is_initial
 condition|)
 name|wt_status_print_verbose
 argument_list|(
