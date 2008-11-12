@@ -4870,8 +4870,15 @@ name|int
 name|pack_fd
 decl_stmt|;
 DECL|member|pack_local
-name|int
+name|unsigned
 name|pack_local
+range|:
+literal|1
+decl_stmt|,
+DECL|member|pack_keep
+name|pack_keep
+range|:
+literal|1
 decl_stmt|;
 DECL|member|sha1
 name|unsigned
