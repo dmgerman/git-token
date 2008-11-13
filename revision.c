@@ -4979,7 +4979,6 @@ argument_list|(
 specifier|const
 name|char
 operator|*
-operator|*
 argument_list|)
 operator|*
 operator|(
