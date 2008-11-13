@@ -341,6 +341,16 @@ name|arg
 argument_list|)
 expr_stmt|;
 block|}
+name|DIFF_OPT_SET
+argument_list|(
+operator|&
+name|rev
+operator|->
+name|diffopt
+argument_list|,
+name|ALLOW_TEXTCONV
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 

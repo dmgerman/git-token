@@ -1620,6 +1620,16 @@ argument_list|,
 name|RECURSIVE
 argument_list|)
 expr_stmt|;
+name|DIFF_OPT_SET
+argument_list|(
+operator|&
+name|rev
+operator|.
+name|diffopt
+argument_list|,
+name|ALLOW_TEXTCONV
+argument_list|)
+expr_stmt|;
 comment|/* 	 * If the user asked for our exit code then don't start a 	 * pager or we would end up reporting its exit code instead. 	 */
 if|if
 condition|(
