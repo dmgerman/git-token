@@ -9,6 +9,40 @@ directive|include
 file|"cache.h"
 end_include
 
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|NO_PTHREADS
+end_ifdef
+
+begin_function
+DECL|function|preload_index
+specifier|static
+name|void
+name|preload_index
+parameter_list|(
+name|struct
+name|index_state
+modifier|*
+name|index
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|pathspec
+parameter_list|)
+block|{
+empty_stmt|;
+comment|/* nothing */
+block|}
+end_function
+
+begin_else
+else|#
+directive|else
+end_else
+
 begin_include
 include|#
 directive|include
@@ -431,6 +465,11 @@ expr_stmt|;
 block|}
 block|}
 end_function
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_function
 DECL|function|read_index_preload
