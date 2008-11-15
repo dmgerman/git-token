@@ -391,7 +391,7 @@ name|util
 condition|)
 name|printf
 argument_list|(
-literal|" %s"
+literal|"\t%s"
 argument_list|,
 operator|(
 name|char
