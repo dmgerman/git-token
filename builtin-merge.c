@@ -296,6 +296,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|verbosity
+specifier|static
+name|int
+name|verbosity
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|all_strategy
 specifier|static
 name|struct
@@ -1068,6 +1076,12 @@ argument_list|,
 name|option_parse_message
 argument_list|)
 block|,
+name|OPT__VERBOSITY
+argument_list|(
+operator|&
+name|verbosity
+argument_list|)
+block|,
 name|OPT_END
 argument_list|()
 block|}
@@ -1469,6 +1483,12 @@ modifier|*
 name|msg
 parameter_list|)
 block|{
+if|if
+condition|(
+name|verbosity
+operator|>=
+literal|0
+condition|)
 name|printf
 argument_list|(
 literal|"%s%s\n"
@@ -1970,6 +1990,12 @@ argument_list|)
 expr_stmt|;
 else|else
 block|{
+if|if
+condition|(
+name|verbosity
+operator|>=
+literal|0
+condition|)
 name|printf
 argument_list|(
 literal|"%s\n"
@@ -2006,6 +2032,10 @@ else|else
 block|{
 if|if
 condition|(
+name|verbosity
+operator|>=
+literal|0
+operator|&&
 operator|!
 name|merge_msg
 operator|.
@@ -5336,6 +5366,16 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|verbosity
+operator|<
+literal|0
+condition|)
+name|show_diffstat
+operator|=
+literal|0
+expr_stmt|;
+if|if
+condition|(
 name|squash
 condition|)
 block|{
@@ -6014,6 +6054,12 @@ name|DEFAULT_ABBREV
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|verbosity
+operator|>=
+literal|0
+condition|)
 name|printf
 argument_list|(
 literal|"Updating %s..%s\n"
