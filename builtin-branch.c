@@ -526,12 +526,6 @@ decl_stmt|,
 modifier|*
 name|remote
 decl_stmt|;
-name|char
-name|section
-index|[
-name|PATH_MAX
-index|]
-decl_stmt|;
 name|int
 name|i
 decl_stmt|;
@@ -805,6 +799,12 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|struct
+name|strbuf
+name|buf
+init|=
+name|STRBUF_INIT
+decl_stmt|;
 name|printf
 argument_list|(
 literal|"Deleted %sbranch %s.\n"
@@ -817,14 +817,10 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
-name|snprintf
+name|strbuf_addf
 argument_list|(
-name|section
-argument_list|,
-sizeof|sizeof
-argument_list|(
-name|section
-argument_list|)
+operator|&
+name|buf
 argument_list|,
 literal|"branch.%s"
 argument_list|,
@@ -838,7 +834,9 @@ if|if
 condition|(
 name|git_config_rename_section
 argument_list|(
-name|section
+name|buf
+operator|.
+name|buf
 argument_list|,
 name|NULL
 argument_list|)
@@ -848,6 +846,12 @@ condition|)
 name|warning
 argument_list|(
 literal|"Update of config-file failed"
+argument_list|)
+expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|buf
 argument_list|)
 expr_stmt|;
 block|}
