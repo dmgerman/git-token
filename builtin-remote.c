@@ -58,17 +58,17 @@ name|builtin_remote_usage
 index|[]
 init|=
 block|{
-literal|"git remote"
+literal|"git remote [-v | --verbose]"
 block|,
-literal|"git remote add<name><url>"
+literal|"git remote add [-t<branch>] [-m<master>] [-f] [--mirror]<name><url>"
 block|,
 literal|"git remote rename<old><new>"
 block|,
 literal|"git remote rm<name>"
 block|,
-literal|"git remote show<name>"
+literal|"git remote show [-n]<name>"
 block|,
-literal|"git remote prune<name>"
+literal|"git remote prune [-n | --dry-run]<name>"
 block|,
 literal|"git remote update [group]"
 block|,
