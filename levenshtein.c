@@ -277,12 +277,6 @@ expr_stmt|;
 comment|/* deletion */
 if|if
 condition|(
-name|j
-operator|+
-literal|1
-operator|<
-name|len2
-operator|&&
 name|row2
 index|[
 name|j
