@@ -9737,6 +9737,12 @@ argument_list|,
 name|sha1
 argument_list|)
 expr_stmt|;
+name|unuse_pack
+argument_list|(
+operator|&
+name|w_curs
+argument_list|)
+expr_stmt|;
 return|return
 name|NULL
 return|;
