@@ -254,15 +254,6 @@ name|tcp_port
 decl_stmt|;
 end_decl_stmt
 
-begin_decl_stmt
-DECL|variable|directory
-specifier|static
-name|char
-modifier|*
-name|directory
-decl_stmt|;
-end_decl_stmt
-
 begin_function
 DECL|function|logreport
 specifier|static
@@ -647,7 +638,9 @@ name|char
 modifier|*
 name|path_ok
 parameter_list|(
-name|void
+name|char
+modifier|*
+name|directory
 parameter_list|)
 block|{
 specifier|static
@@ -1290,6 +1283,10 @@ specifier|static
 name|int
 name|run_service
 parameter_list|(
+name|char
+modifier|*
+name|dir
+parameter_list|,
 name|struct
 name|daemon_service
 modifier|*
@@ -1316,7 +1313,7 @@ name|service
 operator|->
 name|name
 argument_list|,
-name|directory
+name|dir
 argument_list|)
 expr_stmt|;
 if|if
@@ -1355,7 +1352,9 @@ operator|(
 name|path
 operator|=
 name|path_ok
-argument_list|()
+argument_list|(
+name|dir
+argument_list|)
 operator|)
 condition|)
 return|return
@@ -2540,11 +2539,6 @@ argument_list|(
 name|tcp_port
 argument_list|)
 expr_stmt|;
-name|free
-argument_list|(
-name|directory
-argument_list|)
-expr_stmt|;
 name|hostname
 operator|=
 name|canon_hostname
@@ -2552,8 +2546,6 @@ operator|=
 name|ip_address
 operator|=
 name|tcp_port
-operator|=
-name|directory
 operator|=
 name|NULL
 expr_stmt|;
@@ -2653,25 +2645,15 @@ literal|' '
 condition|)
 block|{
 comment|/* 			 * Note: The directory here is probably context sensitive, 			 * and might depend on the actual service being performed. 			 */
-name|free
-argument_list|(
-name|directory
-argument_list|)
-expr_stmt|;
-name|directory
-operator|=
-name|xstrdup
+return|return
+name|run_service
 argument_list|(
 name|line
 operator|+
 name|namelen
 operator|+
 literal|5
-argument_list|)
-expr_stmt|;
-return|return
-name|run_service
-argument_list|(
+argument_list|,
 name|s
 argument_list|)
 return|;
