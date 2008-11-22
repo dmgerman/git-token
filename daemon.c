@@ -1795,6 +1795,10 @@ name|extra_args
 operator|+
 name|buflen
 decl_stmt|;
+name|char
+modifier|*
+name|hp
+decl_stmt|;
 while|while
 condition|(
 name|extra_args
@@ -1910,22 +1914,6 @@ name|vallen
 expr_stmt|;
 block|}
 block|}
-block|}
-end_function
-
-begin_function
-DECL|function|fill_in_extra_table_entries
-specifier|static
-name|void
-name|fill_in_extra_table_entries
-parameter_list|(
-name|void
-parameter_list|)
-block|{
-name|char
-modifier|*
-name|hp
-decl_stmt|;
 comment|/* 	 * Replace literal host with lowercase-ized hostname. 	 */
 name|hp
 operator|=
@@ -2575,7 +2563,6 @@ name|len
 operator|!=
 name|pktlen
 condition|)
-block|{
 name|parse_extra_args
 argument_list|(
 name|line
@@ -2591,10 +2578,6 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
-name|fill_in_extra_table_entries
-argument_list|()
-expr_stmt|;
-block|}
 for|for
 control|(
 name|i
