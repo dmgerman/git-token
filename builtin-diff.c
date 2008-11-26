@@ -1541,6 +1541,17 @@ operator|!
 operator|!
 name|diff_auto_refresh_index
 expr_stmt|;
+comment|/* Default to let external be used */
+name|DIFF_OPT_SET
+argument_list|(
+operator|&
+name|rev
+operator|.
+name|diffopt
+argument_list|,
+name|ALLOW_EXTERNAL
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|nongit
@@ -1600,16 +1611,6 @@ literal|"diff_setup_done failed"
 argument_list|)
 expr_stmt|;
 block|}
-name|DIFF_OPT_SET
-argument_list|(
-operator|&
-name|rev
-operator|.
-name|diffopt
-argument_list|,
-name|ALLOW_EXTERNAL
-argument_list|)
-expr_stmt|;
 name|DIFF_OPT_SET
 argument_list|(
 operator|&
