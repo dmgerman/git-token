@@ -3275,6 +3275,11 @@ operator|!
 name|old
 operator|.
 name|commit
+operator|&&
+operator|!
+name|opts
+operator|->
+name|force
 condition|)
 block|{
 if|if
