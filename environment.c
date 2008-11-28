@@ -317,6 +317,19 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
+comment|/* Parallel index stat data preload? */
+end_comment
+
+begin_decl_stmt
+DECL|variable|core_preload_index
+name|int
+name|core_preload_index
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|/* This is set by setup_git_dir_gently() and/or git_default_config() */
 end_comment
 

@@ -1299,8 +1299,10 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|read_cache
-argument_list|()
+name|read_cache_preload
+argument_list|(
+name|NULL
+argument_list|)
 operator|<
 literal|0
 condition|)
@@ -1320,18 +1322,6 @@ return|;
 block|}
 if|if
 condition|(
-name|read_cache
-argument_list|()
-operator|<
-literal|0
-condition|)
-name|die
-argument_list|(
-literal|"index file corrupt"
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
 operator|*
 name|argv
 condition|)
@@ -1342,6 +1332,20 @@ argument_list|(
 name|prefix
 argument_list|,
 name|argv
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|read_cache_preload
+argument_list|(
+name|pathspec
+argument_list|)
+operator|<
+literal|0
+condition|)
+name|die
+argument_list|(
+literal|"index file corrupt"
 argument_list|)
 expr_stmt|;
 comment|/* 	 * Non partial, non as-is commit. 	 * 	 * (1) get the real index; 	 * (2) update the_index as necessary; 	 * (3) write the_index out to the real index (still locked); 	 * (4) return the name of the locked index file. 	 * 	 * The caller should run hooks on the locked real index, and 	 * (A) if all goes well, commit the real index; 	 * (B) on failure, rollback the real index. 	 */
