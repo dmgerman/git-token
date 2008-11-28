@@ -101,8 +101,7 @@ DECL|variable|append
 DECL|variable|force
 DECL|variable|keep
 DECL|variable|update_head_ok
-DECL|variable|verbose
-DECL|variable|quiet
+DECL|variable|verbosity
 specifier|static
 name|int
 name|append
@@ -113,9 +112,7 @@ name|keep
 decl_stmt|,
 name|update_head_ok
 decl_stmt|,
-name|verbose
-decl_stmt|,
-name|quiet
+name|verbosity
 decl_stmt|;
 end_decl_stmt
 
@@ -179,16 +176,10 @@ name|builtin_fetch_options
 index|[]
 init|=
 block|{
-name|OPT__QUIET
+name|OPT__VERBOSITY
 argument_list|(
 operator|&
-name|quiet
-argument_list|)
-block|,
-name|OPT__VERBOSE
-argument_list|(
-operator|&
-name|verbose
+name|verbosity
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -1104,9 +1095,6 @@ name|char
 modifier|*
 name|remote
 parameter_list|,
-name|int
-name|verbose
-parameter_list|,
 name|char
 modifier|*
 name|display
@@ -1236,7 +1224,9 @@ condition|)
 block|{
 if|if
 condition|(
-name|verbose
+name|verbosity
+operator|>
+literal|0
 condition|)
 name|sprintf
 argument_list|(
@@ -2237,8 +2227,6 @@ name|ref
 argument_list|,
 name|what
 argument_list|,
-name|verbose
-argument_list|,
 name|note
 argument_list|)
 expr_stmt|;
@@ -2276,6 +2264,10 @@ condition|)
 block|{
 if|if
 condition|(
+name|verbosity
+operator|>=
+literal|0
+operator|&&
 operator|!
 name|shown_url
 condition|)
@@ -2296,6 +2288,12 @@ operator|=
 literal|1
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|verbosity
+operator|>=
+literal|0
+condition|)
 name|fprintf
 argument_list|(
 name|stderr
@@ -3715,7 +3713,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|verbose
+name|verbosity
 operator|>=
 literal|2
 condition|)
@@ -3727,7 +3725,9 @@ literal|1
 expr_stmt|;
 if|if
 condition|(
-name|quiet
+name|verbosity
+operator|<
+literal|0
 condition|)
 name|transport
 operator|->
