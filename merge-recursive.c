@@ -84,12 +84,6 @@ end_include
 begin_include
 include|#
 directive|include
-file|"interpolate.h"
-end_include
-
-begin_include
-include|#
-directive|include
 file|"attr.h"
 end_include
 
