@@ -659,6 +659,14 @@ begin_comment
 comment|/*  * Extended on-disk flags  */
 end_comment
 
+begin_define
+DECL|macro|CE_INTENT_TO_ADD
+define|#
+directive|define
+name|CE_INTENT_TO_ADD
+value|0x20000000
+end_define
+
 begin_comment
 comment|/* CE_EXTENDED2 is for future extension */
 end_comment
@@ -676,7 +684,7 @@ DECL|macro|CE_EXTENDED_FLAGS
 define|#
 directive|define
 name|CE_EXTENDED_FLAGS
-value|(0)
+value|(CE_INTENT_TO_ADD)
 end_define
 
 begin_comment

@@ -398,12 +398,13 @@ operator|!
 name|index_only
 operator|||
 operator|!
-name|is_empty_blob_sha1
-argument_list|(
+operator|(
 name|ce
 operator|->
-name|sha1
-argument_list|)
+name|ce_flags
+operator|&
+name|CE_INTENT_TO_ADD
+operator|)
 condition|)
 name|errs
 operator|=
