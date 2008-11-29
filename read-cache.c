@@ -1314,6 +1314,22 @@ condition|)
 return|return
 literal|0
 return|;
+comment|/* 	 * Intent-to-add entries have not been added, so the index entry 	 * by definition never matches what is in the work tree until it 	 * actually gets added. 	 */
+if|if
+condition|(
+name|ce
+operator|->
+name|ce_flags
+operator|&
+name|CE_INTENT_TO_ADD
+condition|)
+return|return
+name|DATA_CHANGED
+operator||
+name|TYPE_CHANGED
+operator||
+name|MODE_CHANGED
+return|;
 name|changed
 operator|=
 name|ce_match_stat_basic

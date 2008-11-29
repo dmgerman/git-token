@@ -212,7 +212,7 @@ name|WRITE_TREE_UNMERGED_INDEX
 case|:
 name|die
 argument_list|(
-literal|"%s: error building trees; the index is unmerged?"
+literal|"%s: error building trees"
 argument_list|,
 name|me
 argument_list|)
