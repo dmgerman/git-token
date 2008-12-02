@@ -1461,6 +1461,16 @@ name|NEED_WORK_TREE
 block|}
 block|,
 block|{
+literal|"stage"
+block|,
+name|cmd_add
+block|,
+name|RUN_SETUP
+operator||
+name|NEED_WORK_TREE
+block|}
+block|,
+block|{
 literal|"annotate"
 block|,
 name|cmd_annotate
