@@ -866,6 +866,14 @@ name|ce_stage
 argument_list|(
 name|ce
 argument_list|)
+operator|||
+operator|(
+name|ce
+operator|->
+name|ce_flags
+operator|&
+name|CE_INTENT_TO_ADD
+operator|)
 condition|)
 block|{
 if|if
@@ -885,6 +893,13 @@ argument_list|)
 expr_stmt|;
 break|break;
 block|}
+if|if
+condition|(
+name|ce_stage
+argument_list|(
+name|ce
+argument_list|)
+condition|)
 name|fprintf
 argument_list|(
 name|stderr
@@ -901,6 +916,18 @@ name|ce
 operator|->
 name|sha1
 argument_list|)
+argument_list|)
+expr_stmt|;
+else|else
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"%s: not added yet\n"
+argument_list|,
+name|ce
+operator|->
+name|name
 argument_list|)
 expr_stmt|;
 block|}

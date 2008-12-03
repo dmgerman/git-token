@@ -3372,7 +3372,7 @@ condition|)
 block|{
 name|error
 argument_list|(
-literal|"Error building trees; the index is unmerged?"
+literal|"Error building trees"
 argument_list|)
 expr_stmt|;
 return|return

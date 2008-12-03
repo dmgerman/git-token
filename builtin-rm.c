@@ -168,7 +168,7 @@ name|int
 name|index_only
 parameter_list|)
 block|{
-comment|/* items in list are already sorted in the cache order, 	 * so we could do this a lot more efficiently by using 	 * tree_desc based traversal if we wanted to, but I am 	 * lazy, and who cares if removal of files is a tad 	 * slower than the theoretical maximum speed? 	 */
+comment|/* 	 * Items in list are already sorted in the cache order, 	 * so we could do this a lot more efficiently by using 	 * tree_desc based traversal if we wanted to, but I am 	 * lazy, and who cares if removal of files is a tad 	 * slower than the theoretical maximum speed? 	 */
 name|int
 name|i
 decl_stmt|,
@@ -327,6 +327,8 @@ block|{
 comment|/* if a file was removed and it is now a 			 * directory, that is the same as ENOENT as 			 * far as git is concerned; we do not track 			 * directories. 			 */
 continue|continue;
 block|}
+comment|/* 		 * "rm" of a path that has changes need to be treated 		 * carefully not to allow losing local changes 		 * accidentally.  A local change could be (1) file in 		 * work tree is different since the index; and/or (2) 		 * the user staged a content that is different from 		 * the current commit in the index. 		 * 		 * In such a case, you would need to --force the 		 * removal.  However, "rm --cached" (remove only from 		 * the index) is safe if the index matches the file in 		 * the work tree or the HEAD commit, as it means that 		 * the content being removed is available elsewhere. 		 */
+comment|/* 		 * Is the index different from the file in the work tree? 		 */
 if|if
 condition|(
 name|ce_match_stat
@@ -343,6 +345,7 @@ name|local_changes
 operator|=
 literal|1
 expr_stmt|;
+comment|/* 		 * Is the index different from the HEAD commit?  By 		 * definition, before the very initial commit, 		 * anything staged in the index is treated by the same 		 * way as changed from the HEAD. 		 */
 if|if
 condition|(
 name|no_head
@@ -381,22 +384,26 @@ name|staged_changes
 operator|=
 literal|1
 expr_stmt|;
+comment|/* 		 * If the index does not match the file in the work 		 * tree and if it does not match the HEAD commit 		 * either, (1) "git rm" without --cached definitely 		 * will lose information; (2) "git rm --cached" will 		 * lose information unless it is about removing an 		 * "intent to add" entry. 		 */
 if|if
 condition|(
 name|local_changes
 operator|&&
 name|staged_changes
-operator|&&
+condition|)
+block|{
+if|if
+condition|(
+operator|!
+name|index_only
+operator|||
 operator|!
 operator|(
-name|index_only
-operator|&&
-name|is_empty_blob_sha1
-argument_list|(
 name|ce
 operator|->
-name|sha1
-argument_list|)
+name|ce_flags
+operator|&
+name|CE_INTENT_TO_ADD
 operator|)
 condition|)
 name|errs
@@ -410,6 +417,7 @@ argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -417,7 +425,6 @@ operator|!
 name|index_only
 condition|)
 block|{
-comment|/* It's not dangerous to "git rm --cached" a 			 * file if the index matches the file or the 			 * HEAD, since it means the deleted content is 			 * still available somewhere. 			 */
 if|if
 condition|(
 name|staged_changes
