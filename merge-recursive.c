@@ -3158,11 +3158,25 @@ argument_list|(
 name|path
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|symlink
 argument_list|(
 name|lnk
 argument_list|,
 name|path
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"failed to symlink %s: %s"
+argument_list|,
+name|path
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|free
