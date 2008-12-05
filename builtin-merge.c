@@ -1754,6 +1754,8 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
 name|write
 argument_list|(
 name|fd
@@ -1766,10 +1768,34 @@ name|out
 operator|.
 name|len
 argument_list|)
+operator|<
+literal|0
+condition|)
+name|die
+argument_list|(
+literal|"Writing SQUASH_MSG: %s"
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
+argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|close
 argument_list|(
 name|fd
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"Finishing SQUASH_MSG: %s"
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|strbuf_release

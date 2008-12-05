@@ -1040,6 +1040,8 @@ condition|(
 name|buf
 condition|)
 block|{
+if|if
+condition|(
 name|fwrite
 argument_list|(
 name|buf
@@ -1049,6 +1051,20 @@ argument_list|,
 literal|1
 argument_list|,
 name|f
+argument_list|)
+operator|!=
+literal|1
+condition|)
+name|die
+argument_list|(
+literal|"Could not write %s: %s"
+argument_list|,
+name|filename
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|free
@@ -1073,9 +1089,23 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|fclose
 argument_list|(
 name|f
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"Could not finish %s: %s"
+argument_list|,
+name|filename
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
