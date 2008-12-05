@@ -1102,10 +1102,22 @@ block|}
 if|if
 condition|(
 name|subdir
-condition|)
+operator|&&
 name|chdir
 argument_list|(
 name|subdir
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"Cannot change to %s: %s"
+argument_list|,
+name|subdir
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|errno

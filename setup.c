@@ -2144,9 +2144,23 @@ literal|"Not a git repository"
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
 name|chdir
 argument_list|(
 literal|".."
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"Cannot change to %s/..: %s"
+argument_list|,
+name|cwd
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
