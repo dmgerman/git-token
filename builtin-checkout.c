@@ -1378,9 +1378,19 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|read_cache
 argument_list|()
-expr_stmt|;
+operator|<
+literal|0
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"corrupt index file"
+argument_list|)
+return|;
 if|if
 condition|(
 name|source_tree
@@ -2233,9 +2243,19 @@ argument_list|,
 literal|1
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
 name|read_cache
 argument_list|()
-expr_stmt|;
+operator|<
+literal|0
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"corrupt index file"
+argument_list|)
+return|;
 if|if
 condition|(
 name|opts
