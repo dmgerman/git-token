@@ -4127,6 +4127,13 @@ decl_stmt|;
 name|fetch_pack_setup
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+operator|&
+name|args
+operator|!=
+name|my_args
+condition|)
 name|memcpy
 argument_list|(
 operator|&
