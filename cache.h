@@ -5390,6 +5390,18 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|void
+name|free_pack_by_name
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|struct
 name|packed_git
 modifier|*
