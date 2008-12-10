@@ -113,7 +113,7 @@ literal|0
 decl_stmt|,
 name|i
 decl_stmt|;
-comment|/* 	 * Since we are walking the index as if we are warlking the directory, 	 * we have to mark the matched pathspec as seen; otherwise we will 	 * mistakenly think that the user gave a pathspec that did not match 	 * anything. 	 */
+comment|/* 	 * Since we are walking the index as if we were walking the directory, 	 * we have to mark the matched pathspec as seen; otherwise we will 	 * mistakenly think that the user gave a pathspec that did not match 	 * anything. 	 */
 for|for
 control|(
 name|i
