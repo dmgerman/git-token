@@ -2914,6 +2914,11 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|free_pack_by_name
+argument_list|(
+name|tmpname
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|adjust_perm
