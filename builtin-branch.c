@@ -807,7 +807,7 @@ name|STRBUF_INIT
 decl_stmt|;
 name|printf
 argument_list|(
-literal|"Deleted %sbranch %s.\n"
+literal|"Deleted %sbranch %s (%s).\n"
 argument_list|,
 name|remote
 argument_list|,
@@ -815,6 +815,13 @@ name|argv
 index|[
 name|i
 index|]
+argument_list|,
+name|find_unique_abbrev
+argument_list|(
+name|sha1
+argument_list|,
+name|DEFAULT_ABBREV
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|strbuf_addf
