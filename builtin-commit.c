@@ -4993,20 +4993,6 @@ return|;
 block|}
 end_function
 
-begin_decl_stmt
-DECL|variable|commit_utf8_warn
-specifier|static
-specifier|const
-name|char
-name|commit_utf8_warn
-index|[]
-init|=
-literal|"Warning: commit message does not conform to UTF-8.\n"
-literal|"You may want to amend it after fixing the message, or set the config\n"
-literal|"variable i18n.commitencoding to the encoding your project uses.\n"
-decl_stmt|;
-end_decl_stmt
-
 begin_function
 DECL|function|cmd_commit
 name|int
