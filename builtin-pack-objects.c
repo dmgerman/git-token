@@ -8133,6 +8133,25 @@ operator|-
 name|i
 operator|)
 decl_stmt|;
+comment|/* don't use too small segments or no deltas will be found */
+if|if
+condition|(
+name|sub_size
+operator|<
+literal|2
+operator|*
+name|window
+operator|&&
+name|i
+operator|+
+literal|1
+operator|<
+name|delta_search_threads
+condition|)
+name|sub_size
+operator|=
+literal|0
+expr_stmt|;
 name|p
 index|[
 name|i
