@@ -3099,7 +3099,7 @@ name|home
 init|=
 name|NULL
 decl_stmt|;
-comment|/* $GIT_CONFIG makes git read _only_ the given config file, 	 * $GIT_CONFIG_LOCAL will make it process it in addition to the 	 * global config file, the same way it would the per-repository 	 * config file otherwise. */
+comment|/* Setting $GIT_CONFIG makes git read _only_ the given config file. */
 if|if
 condition|(
 name|config_exclusive_filename
