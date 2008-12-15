@@ -467,6 +467,13 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|isatty
+argument_list|(
+literal|2
+argument_list|)
+condition|)
 name|dup2
 argument_list|(
 name|pager_process
