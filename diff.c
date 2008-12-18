@@ -10470,6 +10470,14 @@ name|err_empty
 goto|;
 name|s
 operator|->
+name|size
+operator|=
+name|sb
+operator|.
+name|len
+expr_stmt|;
+name|s
+operator|->
 name|data
 operator|=
 name|strbuf_detach
@@ -10477,10 +10485,7 @@ argument_list|(
 operator|&
 name|sb
 argument_list|,
-operator|&
-name|s
-operator|->
-name|size
+name|NULL
 argument_list|)
 expr_stmt|;
 name|s
