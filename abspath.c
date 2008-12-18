@@ -377,6 +377,19 @@ argument_list|,
 name|buf
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|PATH_MAX
+operator|<=
+name|len
+condition|)
+name|die
+argument_list|(
+literal|"symbolic link too long: %s"
+argument_list|,
+name|buf
+argument_list|)
+expr_stmt|;
 name|next_buf
 index|[
 name|len
