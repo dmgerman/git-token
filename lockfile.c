@@ -548,6 +548,13 @@ argument_list|,
 name|remove_lock_file_on_signal
 argument_list|)
 expr_stmt|;
+name|signal
+argument_list|(
+name|SIGPIPE
+argument_list|,
+name|remove_lock_file_on_signal
+argument_list|)
+expr_stmt|;
 name|atexit
 argument_list|(
 name|remove_lock_file
