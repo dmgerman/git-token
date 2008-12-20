@@ -129,6 +129,14 @@ name|ABORT
 enum|;
 end_enum
 
+begin_decl_stmt
+DECL|variable|fake_missing_tagger
+specifier|static
+name|int
+name|fake_missing_tagger
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|parse_opt_signed_tag_mode
 specifier|static
@@ -1748,20 +1756,33 @@ condition|(
 operator|!
 name|tagger
 condition|)
-name|die
+block|{
+if|if
+condition|(
+name|fake_missing_tagger
+condition|)
+name|tagger
+operator|=
+literal|"tagger Unspecified Tagger "
+literal|"<unspecified-tagger> 0 +0000"
+expr_stmt|;
+else|else
+name|tagger
+operator|=
+literal|""
+expr_stmt|;
+name|tagger_end
+operator|=
+name|tagger
+operator|+
+name|strlen
 argument_list|(
-literal|"No tagger for tag %s"
-argument_list|,
-name|sha1_to_hex
-argument_list|(
-name|tag
-operator|->
-name|object
-operator|.
-name|sha1
-argument_list|)
+name|tagger
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
 name|tagger
 operator|++
 expr_stmt|;
@@ -1774,6 +1795,7 @@ argument_list|,
 literal|'\n'
 argument_list|)
 expr_stmt|;
+block|}
 comment|/* handle signed tags */
 if|if
 condition|(
@@ -1871,7 +1893,7 @@ literal|10
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"tag %s\nfrom :%d\n%.*s\ndata %d\n%.*s\n"
+literal|"tag %s\nfrom :%d\n%.*s%sdata %d\n%.*s\n"
 argument_list|,
 name|name
 argument_list|,
@@ -1892,6 +1914,14 @@ name|tagger
 argument_list|)
 argument_list|,
 name|tagger
+argument_list|,
+name|tagger
+operator|==
+name|tagger_end
+condition|?
+literal|""
+else|:
+literal|"\n"
 argument_list|,
 operator|(
 name|int
@@ -2798,6 +2828,18 @@ argument_list|,
 literal|"FILE"
 argument_list|,
 literal|"Import marks from this file"
+argument_list|)
+block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|0
+argument_list|,
+literal|"fake-missing-tagger"
+argument_list|,
+operator|&
+name|fake_missing_tagger
+argument_list|,
+literal|"Fake a tagger when tags lack one"
 argument_list|)
 block|,
 name|OPT_END
