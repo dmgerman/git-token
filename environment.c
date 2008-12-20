@@ -329,6 +329,14 @@ literal|0
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|notes_ref_name
+name|char
+modifier|*
+name|notes_ref_name
+decl_stmt|;
+end_decl_stmt
+
 begin_comment
 comment|/* This is set by setup_git_dir_gently() and/or git_default_config() */
 end_comment
