@@ -3450,7 +3450,7 @@ name|sprintf
 argument_list|(
 name|if_header
 argument_list|,
-literal|"If: (<opaquelocktoken:%s>)"
+literal|"If: (<%s>)"
 argument_list|,
 name|lock
 operator|->
@@ -6256,19 +6256,6 @@ name|DAV_ACTIVELOCK_TOKEN
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-operator|!
-name|prefixcmp
-argument_list|(
-name|ctx
-operator|->
-name|cdata
-argument_list|,
-literal|"opaquelocktoken:"
-argument_list|)
-condition|)
-block|{
 name|lock
 operator|->
 name|token
@@ -6281,8 +6268,8 @@ name|ctx
 operator|->
 name|cdata
 argument_list|)
-operator|-
-literal|15
+operator|+
+literal|1
 argument_list|)
 expr_stmt|;
 name|strcpy
@@ -6294,11 +6281,8 @@ argument_list|,
 name|ctx
 operator|->
 name|cdata
-operator|+
-literal|16
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
@@ -7392,7 +7376,7 @@ name|sprintf
 argument_list|(
 name|lock_token_header
 argument_list|,
-literal|"Lock-Token:<opaquelocktoken:%s>"
+literal|"Lock-Token:<%s>"
 argument_list|,
 name|lock
 operator|->
@@ -9892,7 +9876,7 @@ name|sprintf
 argument_list|(
 name|if_header
 argument_list|,
-literal|"If: (<opaquelocktoken:%s>)"
+literal|"If: (<%s>)"
 argument_list|,
 name|lock
 operator|->
@@ -11112,7 +11096,7 @@ name|sprintf
 argument_list|(
 name|if_header
 argument_list|,
-literal|"If: (<opaquelocktoken:%s>)"
+literal|"If: (<%s>)"
 argument_list|,
 name|lock
 operator|->
