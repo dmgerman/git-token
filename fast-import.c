@@ -9914,6 +9914,16 @@ name|endp
 decl_stmt|,
 name|sign
 decl_stmt|;
+name|unsigned
+name|long
+name|date
+decl_stmt|;
+name|errno
+operator|=
+literal|0
+expr_stmt|;
+name|date
+operator|=
 name|strtoul
 argument_list|(
 name|src
@@ -9926,6 +9936,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|errno
+operator|||
 name|endp
 operator|==
 name|src
@@ -9966,6 +9978,8 @@ operator|=
 operator|*
 name|src
 expr_stmt|;
+name|date
+operator|=
 name|strtoul
 argument_list|(
 name|src
@@ -9980,6 +9994,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|errno
+operator|||
 name|endp
 operator|==
 name|src
