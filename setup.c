@@ -2140,7 +2140,9 @@ return|;
 block|}
 name|die
 argument_list|(
-literal|"Not a git repository"
+literal|"Not a git repository (or any of the parent directories): %s"
+argument_list|,
+name|DEFAULT_GIT_DIR_ENVIRONMENT
 argument_list|)
 expr_stmt|;
 block|}
