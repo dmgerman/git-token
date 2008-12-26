@@ -5410,6 +5410,9 @@ argument_list|(
 name|ss
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|!
 name|freopen
 argument_list|(
 literal|"/dev/null"
@@ -5417,6 +5420,16 @@ argument_list|,
 literal|"w"
 argument_list|,
 name|stderr
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"failed to redirect stderr to /dev/null: %s"
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
