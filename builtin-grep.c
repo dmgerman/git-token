@@ -1961,9 +1961,18 @@ name|name
 argument_list|)
 condition|)
 continue|continue;
+comment|/* 		 * If CE_VALID is on, we assume worktree file and its cache entry 		 * are identical, even if worktree file has been modified, so use 		 * cache version instead 		 */
 if|if
 condition|(
 name|cached
+operator|||
+operator|(
+name|ce
+operator|->
+name|ce_flags
+operator|&
+name|CE_VALID
+operator|)
 condition|)
 block|{
 if|if
