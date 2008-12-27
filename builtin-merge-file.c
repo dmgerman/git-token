@@ -327,6 +327,10 @@ if|if
 condition|(
 name|quiet
 condition|)
+block|{
+if|if
+condition|(
+operator|!
 name|freopen
 argument_list|(
 literal|"/dev/null"
@@ -335,7 +339,20 @@ literal|"w"
 argument_list|,
 name|stderr
 argument_list|)
-expr_stmt|;
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"failed to redirect stderr to /dev/null: "
+literal|"%s\n"
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
+argument_list|)
+return|;
+block|}
 for|for
 control|(
 name|i
