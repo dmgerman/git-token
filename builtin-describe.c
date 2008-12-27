@@ -963,6 +963,14 @@ name|tag
 operator|->
 name|tag
 argument_list|,
+name|all
+condition|?
+name|n
+operator|->
+name|path
+operator|+
+literal|5
+else|:
 name|n
 operator|->
 name|path
