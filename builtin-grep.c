@@ -94,6 +94,14 @@ endif|#
 directive|endif
 end_endif
 
+begin_decl_stmt
+DECL|variable|builtin_grep
+specifier|static
+name|int
+name|builtin_grep
+decl_stmt|;
+end_decl_stmt
+
 begin_comment
 comment|/*  * git grep pathspecs are somewhat different from diff-tree pathspecs;  * pathname wildcards are allowed.  */
 end_comment
@@ -1877,6 +1885,9 @@ if|if
 condition|(
 operator|!
 name|cached
+operator|&&
+operator|!
+name|builtin_grep
 condition|)
 block|{
 name|hit
@@ -2739,6 +2750,23 @@ argument_list|)
 condition|)
 block|{
 name|cached
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+literal|"--no-ext-grep"
+argument_list|,
+name|arg
+argument_list|)
+condition|)
+block|{
+name|builtin_grep
 operator|=
 literal|1
 expr_stmt|;
