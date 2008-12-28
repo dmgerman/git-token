@@ -506,6 +506,10 @@ DECL|member|context
 name|int
 name|context
 decl_stmt|;
+DECL|member|interhunkcontext
+name|int
+name|interhunkcontext
+decl_stmt|;
 DECL|member|break_opt
 name|int
 name|break_opt
