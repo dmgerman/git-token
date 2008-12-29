@@ -75,6 +75,12 @@ directive|include
 file|"shortlog.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"remote.h"
+end_include
+
 begin_comment
 comment|/* Set a default date-time format for git log ("log.date" config variable) */
 end_comment
@@ -6102,7 +6108,7 @@ name|char
 name|cherry_usage
 index|[]
 init|=
-literal|"git cherry [-v]<upstream> [<head>] [<limit>]"
+literal|"git cherry [-v] [<upstream>] [<head>] [<limit>]"
 decl_stmt|;
 end_decl_stmt
 
@@ -6145,6 +6151,11 @@ modifier|*
 name|list
 init|=
 name|NULL
+decl_stmt|;
+name|struct
+name|branch
+modifier|*
+name|current_branch
 decl_stmt|;
 specifier|const
 name|char
@@ -6238,10 +6249,67 @@ index|]
 expr_stmt|;
 break|break;
 default|default:
+name|current_branch
+operator|=
+name|branch_get
+argument_list|(
+name|NULL
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|current_branch
+operator|||
+operator|!
+name|current_branch
+operator|->
+name|merge
+operator|||
+operator|!
+name|current_branch
+operator|->
+name|merge
+index|[
+literal|0
+index|]
+operator|||
+operator|!
+name|current_branch
+operator|->
+name|merge
+index|[
+literal|0
+index|]
+operator|->
+name|dst
+condition|)
+block|{
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"Could not find a tracked"
+literal|" remote branch, please"
+literal|" specify<upstream> manually.\n"
+argument_list|)
+expr_stmt|;
 name|usage
 argument_list|(
 name|cherry_usage
 argument_list|)
+expr_stmt|;
+block|}
+name|upstream
+operator|=
+name|current_branch
+operator|->
+name|merge
+index|[
+literal|0
+index|]
+operator|->
+name|dst
 expr_stmt|;
 block|}
 name|init_revisions
