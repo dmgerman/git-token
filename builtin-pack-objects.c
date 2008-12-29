@@ -412,8 +412,6 @@ DECL|variable|delta_search_threads
 specifier|static
 name|int
 name|delta_search_threads
-init|=
-literal|1
 decl_stmt|;
 end_decl_stmt
 
@@ -8094,6 +8092,21 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+if|if
+condition|(
+name|progress
+operator|>
+name|pack_to_stdout
+condition|)
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"Delta compression using %d threads.\n"
+argument_list|,
+name|delta_search_threads
+argument_list|)
+expr_stmt|;
 comment|/* Partition the work amongst work threads. */
 for|for
 control|(
@@ -8120,6 +8133,25 @@ operator|-
 name|i
 operator|)
 decl_stmt|;
+comment|/* don't use too small segments or no deltas will be found */
+if|if
+condition|(
+name|sub_size
+operator|<
+literal|2
+operator|*
+name|window
+operator|&&
+name|i
+operator|+
+literal|1
+operator|<
+name|delta_search_threads
+condition|)
+name|sub_size
+operator|=
+literal|0
+expr_stmt|;
 name|p
 index|[
 name|i
