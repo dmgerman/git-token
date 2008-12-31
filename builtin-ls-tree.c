@@ -142,7 +142,7 @@ name|char
 name|ls_tree_usage
 index|[]
 init|=
-literal|"git ls-tree [-d] [-r] [-t] [-l] [-z] [--name-only] [--name-status] [--full-name] [--abbrev[=<n>]]<tree-ish> [path...]"
+literal|"git ls-tree [-d] [-r] [-t] [-l] [-z] [--name-only] [--name-status] [--full-name] [--full-tree] [--abbrev[=<n>]]<tree-ish> [path...]"
 decl_stmt|;
 end_decl_stmt
 
