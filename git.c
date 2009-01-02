@@ -2540,11 +2540,7 @@ init|=
 literal|0
 decl_stmt|;
 comment|/* 	 * Take the basename of argv[0] as the command 	 * name, and the dirname as the default exec_path 	 * if we don't have anything better. 	 */
-do|do
-operator|--
-name|slash
-expr_stmt|;
-do|while
+while|while
 condition|(
 name|cmd
 operator|<=
@@ -2557,7 +2553,9 @@ operator|*
 name|slash
 argument_list|)
 condition|)
-do|;
+name|slash
+operator|--
+expr_stmt|;
 if|if
 condition|(
 name|cmd
