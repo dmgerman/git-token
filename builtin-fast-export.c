@@ -2846,6 +2846,19 @@ name|OPT_END
 argument_list|()
 block|}
 decl_stmt|;
+if|if
+condition|(
+name|argc
+operator|==
+literal|1
+condition|)
+name|usage_with_options
+argument_list|(
+name|fast_export_usage
+argument_list|,
+name|options
+argument_list|)
+expr_stmt|;
 comment|/* we handle encodings */
 name|git_config
 argument_list|(
