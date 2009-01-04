@@ -907,7 +907,7 @@ literal|0
 condition|)
 name|die
 argument_list|(
-literal|"unable to create %s: %s\n"
+literal|"unable to create %s: %s"
 argument_list|,
 name|pack_name
 argument_list|,

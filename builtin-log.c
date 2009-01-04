@@ -4640,7 +4640,7 @@ name|endpos
 condition|)
 name|die
 argument_list|(
-literal|"bogus committer info %s\n"
+literal|"bogus committer info %s"
 argument_list|,
 name|committer
 argument_list|)

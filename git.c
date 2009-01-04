@@ -906,7 +906,7 @@ argument_list|)
 expr_stmt|;
 name|die
 argument_list|(
-literal|"Failed to run '%s' when expanding alias '%s'\n"
+literal|"Failed to run '%s' when expanding alias '%s'"
 argument_list|,
 name|alias_string
 operator|+

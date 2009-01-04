@@ -11938,7 +11938,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"cannot hash %s\n"
+literal|"cannot hash %s"
 argument_list|,
 name|one
 operator|->

@@ -2496,7 +2496,7 @@ name|NULL
 condition|)
 name|die
 argument_list|(
-literal|"Internal error: No complete sets found!\n"
+literal|"Internal error: No complete sets found!"
 argument_list|)
 expr_stmt|;
 comment|/* find the permutation with the smallest size */
@@ -3030,7 +3030,7 @@ literal|40
 condition|)
 name|die
 argument_list|(
-literal|"Bad pack filename: %s\n"
+literal|"Bad pack filename: %s"
 argument_list|,
 name|filename
 argument_list|)
@@ -3066,7 +3066,7 @@ expr_stmt|;
 block|}
 name|die
 argument_list|(
-literal|"Filename %s not found in packed_git\n"
+literal|"Filename %s not found in packed_git"
 argument_list|,
 name|filename
 argument_list|)
@@ -3305,7 +3305,7 @@ name|NULL
 condition|)
 name|die
 argument_list|(
-literal|"Zero packs found!\n"
+literal|"Zero packs found!"
 argument_list|)
 expr_stmt|;
 name|load_all_objects

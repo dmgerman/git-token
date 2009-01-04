@@ -2314,7 +2314,7 @@ break|break;
 default|default:
 name|die
 argument_list|(
-literal|"Unexpected node type (internal error) %d\n"
+literal|"Unexpected node type (internal error) %d"
 argument_list|,
 name|x
 operator|->

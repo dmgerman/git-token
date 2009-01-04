@@ -1044,7 +1044,7 @@ name|dir
 condition|)
 name|die
 argument_list|(
-literal|"failed to open %s\n"
+literal|"failed to open %s"
 argument_list|,
 name|src
 operator|->
@@ -1071,7 +1071,7 @@ name|EEXIST
 condition|)
 name|die
 argument_list|(
-literal|"failed to create directory %s\n"
+literal|"failed to create directory %s"
 argument_list|,
 name|dest
 operator|->
@@ -1093,7 +1093,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"failed to stat %s\n"
+literal|"failed to stat %s"
 argument_list|,
 name|dest
 operator|->
@@ -1113,7 +1113,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"%s exists and is not a directory\n"
+literal|"%s exists and is not a directory"
 argument_list|,
 name|dest
 operator|->
@@ -1262,7 +1262,7 @@ name|ENOENT
 condition|)
 name|die
 argument_list|(
-literal|"failed to unlink %s\n"
+literal|"failed to unlink %s"
 argument_list|,
 name|dest
 operator|->
@@ -1296,7 +1296,7 @@ name|option_local
 condition|)
 name|die
 argument_list|(
-literal|"failed to create link %s\n"
+literal|"failed to create link %s"
 argument_list|,
 name|dest
 operator|->
@@ -1325,7 +1325,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"failed to copy file to %s\n"
+literal|"failed to copy file to %s"
 argument_list|,
 name|dest
 operator|->

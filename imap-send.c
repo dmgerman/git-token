@@ -521,7 +521,7 @@ literal|0
 condition|)
 name|die
 argument_list|(
-literal|"Fatal: Out of memory\n"
+literal|"Fatal: Out of memory"
 argument_list|)
 expr_stmt|;
 if|if
@@ -535,7 +535,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"imap command overflow !\n"
+literal|"imap command overflow!"
 argument_list|)
 expr_stmt|;
 operator|*
@@ -2310,7 +2310,7 @@ name|blen
 condition|)
 name|die
 argument_list|(
-literal|"Fatal: buffer too small. Please report a bug.\n"
+literal|"Fatal: buffer too small. Please report a bug."
 argument_list|)
 expr_stmt|;
 name|va_end

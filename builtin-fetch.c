@@ -3547,7 +3547,7 @@ literal|0
 condition|)
 name|die
 argument_list|(
-literal|"Option \"%s\" value \"%s\" is not valid for %s\n"
+literal|"Option \"%s\" value \"%s\" is not valid for %s"
 argument_list|,
 name|name
 argument_list|,

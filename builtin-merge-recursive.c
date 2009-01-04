@@ -211,7 +211,7 @@ literal|4
 condition|)
 name|die
 argument_list|(
-literal|"Usage: %s<base>... --<head><remote> ...\n"
+literal|"Usage: %s<base>... --<head><remote> ..."
 argument_list|,
 name|argv
 index|[

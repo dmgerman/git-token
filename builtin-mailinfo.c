@@ -2672,7 +2672,7 @@ name|out
 condition|)
 name|die
 argument_list|(
-literal|"cannot convert from %s to %s\n"
+literal|"cannot convert from %s to %s"
 argument_list|,
 name|charset
 argument_list|,

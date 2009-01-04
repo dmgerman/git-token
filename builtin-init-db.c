@@ -151,7 +151,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"Could not make %s writable by group\n"
+literal|"Could not make %s writable by group"
 argument_list|,
 name|dir
 argument_list|)
