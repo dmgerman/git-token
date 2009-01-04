@@ -775,7 +775,7 @@ literal|1
 condition|)
 name|usage
 argument_list|(
-literal|"git-mktag< signaturefile"
+literal|"git mktag< signaturefile"
 argument_list|)
 expr_stmt|;
 name|git_extract_argv0_path

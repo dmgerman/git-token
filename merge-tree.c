@@ -37,7 +37,7 @@ name|char
 name|merge_tree_usage
 index|[]
 init|=
-literal|"git-merge-tree<base-tree><branch1><branch2>"
+literal|"git merge-tree<base-tree><branch1><branch2>"
 decl_stmt|;
 end_decl_stmt
 

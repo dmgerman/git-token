@@ -67,7 +67,7 @@ name|char
 name|receive_pack_usage
 index|[]
 init|=
-literal|"git-receive-pack<git-dir>"
+literal|"git receive-pack<git-dir>"
 decl_stmt|;
 end_decl_stmt
 

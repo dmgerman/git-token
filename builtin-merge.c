@@ -173,9 +173,9 @@ name|builtin_merge_usage
 index|[]
 init|=
 block|{
-literal|"git-merge [options]<remote>..."
+literal|"git merge [options]<remote>..."
 block|,
-literal|"git-merge [options]<msg> HEAD<remote>"
+literal|"git merge [options]<msg> HEAD<remote>"
 block|,
 name|NULL
 block|}

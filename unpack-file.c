@@ -164,7 +164,7 @@ literal|2
 condition|)
 name|usage
 argument_list|(
-literal|"git-unpack-file<sha1>"
+literal|"git unpack-file<sha1>"
 argument_list|)
 expr_stmt|;
 if|if
