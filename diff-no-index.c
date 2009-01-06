@@ -1105,23 +1105,6 @@ else|:
 literal|"[--no-index]"
 argument_list|)
 expr_stmt|;
-comment|/* 	 * If the user asked for our exit code then don't start a 	 * pager or we would end up reporting its exit code instead. 	 */
-if|if
-condition|(
-operator|!
-name|DIFF_OPT_TST
-argument_list|(
-operator|&
-name|revs
-operator|->
-name|diffopt
-argument_list|,
-name|EXIT_WITH_STATUS
-argument_list|)
-condition|)
-name|setup_pager
-argument_list|()
-expr_stmt|;
 name|diff_setup
 argument_list|(
 operator|&
@@ -1256,6 +1239,23 @@ name|j
 expr_stmt|;
 block|}
 block|}
+comment|/* 	 * If the user asked for our exit code then don't start a 	 * pager or we would end up reporting its exit code instead. 	 */
+if|if
+condition|(
+operator|!
+name|DIFF_OPT_TST
+argument_list|(
+operator|&
+name|revs
+operator|->
+name|diffopt
+argument_list|,
+name|EXIT_WITH_STATUS
+argument_list|)
+condition|)
+name|setup_pager
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|prefix
