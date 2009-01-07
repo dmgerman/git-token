@@ -2421,20 +2421,6 @@ literal|'0'
 operator|-
 literal|52
 expr_stmt|;
-elseif|else
-if|if
-condition|(
-name|c
-operator|==
-literal|'='
-condition|)
-block|{
-comment|/* padding is almost like (c == 0), except we do 			 * not output NUL resulting only from it; 			 * for now we just trust the data. 			 */
-name|c
-operator|=
-literal|0
-expr_stmt|;
-block|}
 else|else
 continue|continue;
 comment|/* garbage */
@@ -2803,6 +2789,48 @@ operator|!=
 name|ep
 condition|)
 block|{
+comment|/* 			 * We are about to process an encoded-word 			 * that begins at ep, but there is something 			 * before the encoded word. 			 */
+name|char
+modifier|*
+name|scan
+decl_stmt|;
+for|for
+control|(
+name|scan
+operator|=
+name|in
+init|;
+name|scan
+operator|<
+name|ep
+condition|;
+name|scan
+operator|++
+control|)
+if|if
+condition|(
+operator|!
+name|isspace
+argument_list|(
+operator|*
+name|scan
+argument_list|)
+condition|)
+break|break;
+if|if
+condition|(
+name|scan
+operator|!=
+name|ep
+operator|||
+name|in
+operator|==
+name|it
+operator|->
+name|buf
+condition|)
+block|{
+comment|/* 				 * We should not lose that "something", 				 * unless we have just processed an 				 * encoded-word, and there is only LWS 				 * before the one we are about to process. 				 */
 name|strbuf_add
 argument_list|(
 operator|&
@@ -2815,6 +2843,7 @@ operator|-
 name|in
 argument_list|)
 expr_stmt|;
+block|}
 name|in
 operator|=
 name|ep
