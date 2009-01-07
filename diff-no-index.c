@@ -1177,10 +1177,15 @@ argument_list|,
 literal|"-q"
 argument_list|)
 condition|)
+block|{
 name|options
 operator||=
 name|DIFF_SILENT_ON_REMOVED
 expr_stmt|;
+name|i
+operator|++
+expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
