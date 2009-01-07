@@ -267,6 +267,10 @@ DECL|member|ctxlen
 name|long
 name|ctxlen
 decl_stmt|;
+DECL|member|interhunkctxlen
+name|long
+name|interhunkctxlen
+decl_stmt|;
 DECL|member|flags
 name|unsigned
 name|long
