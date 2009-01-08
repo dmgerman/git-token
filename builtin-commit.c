@@ -4612,6 +4612,17 @@ name|wt_status_use_color
 operator|=
 name|git_use_color_default
 expr_stmt|;
+if|if
+condition|(
+name|diff_use_color_default
+operator|==
+operator|-
+literal|1
+condition|)
+name|diff_use_color_default
+operator|=
+name|git_use_color_default
+expr_stmt|;
 name|argc
 operator|=
 name|parse_and_validate_options
