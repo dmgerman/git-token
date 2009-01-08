@@ -424,7 +424,7 @@ name|obj_req
 operator|->
 name|zret
 operator|=
-name|inflate
+name|git_inflate
 argument_list|(
 operator|&
 name|obj_req
@@ -797,7 +797,7 @@ name|stream
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|inflateInit
+name|git_inflate_init
 argument_list|(
 operator|&
 name|obj_req
@@ -1034,7 +1034,7 @@ name|stream
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|inflateInit
+name|git_inflate_init
 argument_list|(
 operator|&
 name|obj_req
@@ -1371,7 +1371,7 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-name|inflateEnd
+name|git_inflate_end
 argument_list|(
 operator|&
 name|obj_req
