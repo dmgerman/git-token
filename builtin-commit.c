@@ -5076,6 +5076,17 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|wt_status_use_color
+operator|==
+operator|-
+literal|1
+condition|)
+name|wt_status_use_color
+operator|=
+name|git_use_color_default
+expr_stmt|;
 name|argc
 operator|=
 name|parse_and_validate_options
