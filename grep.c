@@ -1628,11 +1628,6 @@ init|=
 literal|0
 decl_stmt|;
 name|int
-name|at_true_bol
-init|=
-literal|1
-decl_stmt|;
-name|int
 name|saved_ch
 init|=
 literal|0
@@ -1885,8 +1880,6 @@ operator|.
 name|rm_so
 operator|==
 literal|0
-operator|&&
-name|at_true_bol
 operator|)
 operator|||
 operator|!
@@ -1962,7 +1955,7 @@ operator|<
 name|eol
 condition|)
 block|{
-comment|/* There could be more than one match on the 			 * line, and the first match might not be 			 * strict word match.  But later ones could be! 			 */
+comment|/* There could be more than one match on the 			 * line, and the first match might not be 			 * strict word match.  But later ones could be! 			 * Forward to the next possible start, i.e. the 			 * next position following a non-word char. 			 */
 name|bol
 operator|=
 name|pmatch
@@ -1976,10 +1969,30 @@ name|bol
 operator|+
 literal|1
 expr_stmt|;
-name|at_true_bol
-operator|=
-literal|0
+while|while
+condition|(
+name|word_char
+argument_list|(
+name|bol
+index|[
+operator|-
+literal|1
+index|]
+argument_list|)
+operator|&&
+name|bol
+operator|<
+name|eol
+condition|)
+name|bol
+operator|++
 expr_stmt|;
+if|if
+condition|(
+name|bol
+operator|<
+name|eol
+condition|)
 goto|goto
 name|again
 goto|;
