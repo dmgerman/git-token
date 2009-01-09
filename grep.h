@@ -115,6 +115,12 @@ DECL|member|regexp
 name|regex_t
 name|regexp
 decl_stmt|;
+DECL|member|fixed
+name|unsigned
+name|fixed
+range|:
+literal|1
+decl_stmt|;
 block|}
 struct|;
 end_struct
