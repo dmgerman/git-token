@@ -516,6 +516,19 @@ end_function
 
 begin_function_decl
 specifier|extern
+name|int
+name|is_empty_dir
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|dir
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|void
 name|setup_standard_excludes
 parameter_list|(

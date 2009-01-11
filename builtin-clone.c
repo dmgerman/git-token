@@ -1983,6 +1983,9 @@ decl_stmt|,
 modifier|*
 name|dir
 decl_stmt|;
+name|int
+name|dest_exists
+decl_stmt|;
 specifier|const
 name|struct
 name|ref
@@ -2206,8 +2209,8 @@ argument_list|(
 name|dir
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
+name|dest_exists
+operator|=
 operator|!
 name|stat
 argument_list|(
@@ -2216,10 +2219,21 @@ argument_list|,
 operator|&
 name|buf
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|dest_exists
+operator|&&
+operator|!
+name|is_empty_dir
+argument_list|(
+name|dir
+argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"destination directory '%s' already exists."
+literal|"destination path '%s' already exists and is not "
+literal|"an empty directory."
 argument_list|,
 name|dir
 argument_list|)
@@ -2337,6 +2351,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+name|dest_exists
+operator|&&
 name|mkdir
 argument_list|(
 name|work_tree
