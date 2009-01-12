@@ -9416,6 +9416,31 @@ expr_stmt|;
 block|}
 end_function
 
+begin_function_decl
+specifier|static
+name|void
+modifier|*
+name|read_object
+parameter_list|(
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|sha1
+parameter_list|,
+name|enum
+name|object_type
+modifier|*
+name|type
+parameter_list|,
+name|unsigned
+name|long
+modifier|*
+name|size
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function
 DECL|function|unpack_delta_entry
 specifier|static
@@ -11761,6 +11786,7 @@ end_function
 
 begin_function
 DECL|function|read_object
+specifier|static
 name|void
 modifier|*
 name|read_object
