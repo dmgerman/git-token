@@ -3919,6 +3919,12 @@ expr_stmt|;
 name|argc
 operator|--
 expr_stmt|;
+name|new
+operator|.
+name|name
+operator|=
+name|arg
+expr_stmt|;
 if|if
 condition|(
 operator|(
@@ -3935,12 +3941,6 @@ argument_list|)
 operator|)
 condition|)
 block|{
-name|new
-operator|.
-name|name
-operator|=
-name|arg
-expr_stmt|;
 name|setup_branch_path
 argument_list|(
 operator|&
