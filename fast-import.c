@@ -10528,6 +10528,16 @@ name|mode
 condition|)
 block|{
 case|case
+literal|0644
+case|:
+case|case
+literal|0755
+case|:
+name|mode
+operator||=
+name|S_IFREG
+expr_stmt|;
+case|case
 name|S_IFREG
 operator||
 literal|0644
@@ -10542,12 +10552,6 @@ name|S_IFLNK
 case|:
 case|case
 name|S_IFGITLINK
-case|:
-case|case
-literal|0644
-case|:
-case|case
-literal|0755
 case|:
 comment|/* ok */
 break|break;
@@ -10924,8 +10928,6 @@ name|p
 argument_list|,
 name|sha1
 argument_list|,
-name|S_IFREG
-operator||
 name|mode
 argument_list|,
 name|NULL
