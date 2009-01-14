@@ -2482,8 +2482,6 @@ name|int
 name|namelen
 decl_stmt|;
 name|int
-name|pos
-decl_stmt|,
 name|i
 decl_stmt|;
 name|struct
@@ -2566,42 +2564,12 @@ operator|->
 name|name
 argument_list|)
 expr_stmt|;
-name|pos
-operator|=
-name|index_name_pos
-argument_list|(
-name|o
-operator|->
-name|src_index
-argument_list|,
-name|ce
-operator|->
-name|name
-argument_list|,
-name|namelen
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-literal|0
-operator|<=
-name|pos
-condition|)
-return|return
-name|cnt
-return|;
-comment|/* we have it as nondirectory */
-name|pos
-operator|=
-operator|-
-name|pos
-operator|-
-literal|1
-expr_stmt|;
 for|for
 control|(
 name|i
 operator|=
+name|o
+operator|->
 name|pos
 init|;
 name|i
@@ -2619,7 +2587,7 @@ block|{
 name|struct
 name|cache_entry
 modifier|*
-name|ce
+name|ce2
 init|=
 name|o
 operator|->
@@ -2635,7 +2603,7 @@ name|len
 init|=
 name|ce_namelen
 argument_list|(
-name|ce
+name|ce2
 argument_list|)
 decl_stmt|;
 if|if
@@ -2650,14 +2618,14 @@ name|ce
 operator|->
 name|name
 argument_list|,
-name|ce
+name|ce2
 operator|->
 name|name
 argument_list|,
 name|namelen
 argument_list|)
 operator|||
-name|ce
+name|ce2
 operator|->
 name|name
 index|[
@@ -2667,13 +2635,13 @@ operator|!=
 literal|'/'
 condition|)
 break|break;
-comment|/* 		 * ce->name is an entry in the subdirectory. 		 */
+comment|/* 		 * ce2->name is an entry in the subdirectory. 		 */
 if|if
 condition|(
 operator|!
 name|ce_stage
 argument_list|(
-name|ce
+name|ce2
 argument_list|)
 condition|)
 block|{
@@ -2681,7 +2649,7 @@ if|if
 condition|(
 name|verify_uptodate
 argument_list|(
-name|ce
+name|ce2
 argument_list|,
 name|o
 argument_list|)
@@ -2694,7 +2662,7 @@ name|add_entry
 argument_list|(
 name|o
 argument_list|,
-name|ce
+name|ce2
 argument_list|,
 name|CE_REMOVE
 argument_list|,
@@ -2973,7 +2941,7 @@ argument_list|)
 condition|)
 block|{
 name|int
-name|cnt
+name|ret
 decl_stmt|;
 name|int
 name|dtype
@@ -3041,7 +3009,7 @@ argument_list|)
 condition|)
 block|{
 comment|/* 			 * We are checking out path "foo" and 			 * found "foo/." in the working tree. 			 * This is tricky -- if we have modified 			 * files that are in "foo/" we would lose 			 * it. 			 */
-name|cnt
+name|ret
 operator|=
 name|verify_clean_subdirectory
 argument_list|(
@@ -3052,12 +3020,21 @@ argument_list|,
 name|o
 argument_list|)
 expr_stmt|;
-comment|/* 			 * If this removed entries from the index, 			 * what that means is: 			 * 			 * (1) the caller unpack_trees_rec() saw path/foo 			 * in the index, and it has not removed it because 			 * it thinks it is handling 'path' as blob with 			 * D/F conflict; 			 * (2) we will return "ok, we placed a merged entry 			 * in the index" which would cause o->pos to be 			 * incremented by one; 			 * (3) however, original o->pos now has 'path/foo' 			 * marked with "to be removed". 			 * 			 * We need to increment it by the number of 			 * deleted entries here. 			 */
+if|if
+condition|(
+name|ret
+operator|<
+literal|0
+condition|)
+return|return
+name|ret
+return|;
+comment|/* 			 * If this removed entries from the index, 			 * what that means is: 			 * 			 * (1) the caller unpack_callback() saw path/foo 			 * in the index, and it has not removed it because 			 * it thinks it is handling 'path' as blob with 			 * D/F conflict; 			 * (2) we will return "ok, we placed a merged entry 			 * in the index" which would cause o->pos to be 			 * incremented by one; 			 * (3) however, original o->pos now has 'path/foo' 			 * marked with "to be removed". 			 * 			 * We need to increment it by the number of 			 * deleted entries here. 			 */
 name|o
 operator|->
 name|pos
 operator|+=
-name|cnt
+name|ret
 expr_stmt|;
 return|return
 literal|0
