@@ -481,8 +481,6 @@ name|how
 decl_stmt|;
 if|if
 condition|(
-name|retval
-operator|&&
 operator|*
 name|seen
 operator|==
