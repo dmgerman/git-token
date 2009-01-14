@@ -142,7 +142,7 @@ name|char
 name|ls_tree_usage
 index|[]
 init|=
-literal|"git ls-tree [-d] [-r] [-t] [-l] [-z] [--name-only] [--name-status] [--full-name] [--abbrev[=<n>]]<tree-ish> [path...]"
+literal|"git ls-tree [-d] [-r] [-t] [-l] [-z] [--name-only] [--name-status] [--full-name] [--full-tree] [--abbrev[=<n>]]<tree-ish> [path...]"
 decl_stmt|;
 end_decl_stmt
 
@@ -756,6 +756,34 @@ literal|"full-name"
 argument_list|)
 condition|)
 block|{
+name|chomp_prefix
+operator|=
+literal|0
+expr_stmt|;
+break|break;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|argv
+index|[
+literal|1
+index|]
+operator|+
+literal|2
+argument_list|,
+literal|"full-tree"
+argument_list|)
+condition|)
+block|{
+name|ls_tree_prefix
+operator|=
+name|prefix
+operator|=
+name|NULL
+expr_stmt|;
 name|chomp_prefix
 operator|=
 literal|0
