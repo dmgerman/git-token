@@ -756,10 +756,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|run_hook
+DECL|function|run_receive_hook
 specifier|static
 name|int
-name|run_hook
+name|run_receive_hook
 parameter_list|(
 specifier|const
 name|char
@@ -1958,7 +1958,7 @@ return|return;
 block|}
 if|if
 condition|(
-name|run_hook
+name|run_receive_hook
 argument_list|(
 name|pre_receive_hook
 argument_list|)
@@ -3334,7 +3334,7 @@ argument_list|(
 name|unpack_status
 argument_list|)
 expr_stmt|;
-name|run_hook
+name|run_receive_hook
 argument_list|(
 name|post_receive_hook
 argument_list|)

@@ -162,6 +162,26 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|run_hook
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|index_file
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|name
+parameter_list|,
+modifier|...
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_define
 DECL|macro|RUN_COMMAND_NO_STDIN
 define|#
