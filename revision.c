@@ -7069,6 +7069,15 @@ argument_list|,
 name|for_each_ref
 argument_list|)
 expr_stmt|;
+name|handle_refs
+argument_list|(
+name|revs
+argument_list|,
+name|flags
+argument_list|,
+name|head_ref
+argument_list|)
+expr_stmt|;
 continue|continue;
 block|}
 if|if
