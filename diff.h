@@ -586,6 +586,12 @@ DECL|member|stat_name_width
 name|int
 name|stat_name_width
 decl_stmt|;
+DECL|member|word_regex
+specifier|const
+name|char
+modifier|*
+name|word_regex
+decl_stmt|;
 comment|/* this is set by diffcore for DIFF_FORMAT_PATCH */
 DECL|member|found_changes
 name|int
