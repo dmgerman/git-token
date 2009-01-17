@@ -212,7 +212,11 @@ name|c
 parameter_list|)
 block|{
 return|return
-name|isspecial
+name|c
+operator|==
+literal|'\0'
+operator|||
+name|is_glob_special
 argument_list|(
 name|c
 argument_list|)

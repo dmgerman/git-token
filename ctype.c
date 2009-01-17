@@ -30,9 +30,9 @@ block|,
 DECL|enumerator|G
 name|G
 init|=
-name|GIT_SPECIAL
+name|GIT_GLOB_SPECIAL
 block|,
-comment|/* \0, *, ?, [, \\ */
+comment|/* *, ?, [, \\ */
 block|}
 enum|;
 end_enum
@@ -47,7 +47,7 @@ literal|256
 index|]
 init|=
 block|{
-name|G
+literal|0
 block|,
 literal|0
 block|,

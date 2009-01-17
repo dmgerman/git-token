@@ -314,7 +314,11 @@ name|name
 decl_stmt|;
 if|if
 condition|(
-name|isspecial
+name|c1
+operator|==
+literal|'\0'
+operator|||
+name|is_glob_special
 argument_list|(
 name|c1
 argument_list|)
@@ -3276,7 +3280,11 @@ operator|++
 expr_stmt|;
 if|if
 condition|(
-name|isspecial
+name|c
+operator|==
+literal|'\0'
+operator|||
+name|is_glob_special
 argument_list|(
 name|c
 argument_list|)
