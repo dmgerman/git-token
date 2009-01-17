@@ -57,6 +57,12 @@ name|struct
 name|userdiff_funcname
 name|funcname
 decl_stmt|;
+DECL|member|word_regex
+specifier|const
+name|char
+modifier|*
+name|word_regex
+decl_stmt|;
 DECL|member|textconv
 specifier|const
 name|char
