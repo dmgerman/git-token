@@ -2230,6 +2230,14 @@ value|0x08
 end_define
 
 begin_define
+DECL|macro|GIT_REGEX_SPECIAL
+define|#
+directive|define
+name|GIT_REGEX_SPECIAL
+value|0x10
+end_define
+
+begin_define
 DECL|macro|sane_istest
 define|#
 directive|define
@@ -2295,6 +2303,17 @@ parameter_list|(
 name|x
 parameter_list|)
 value|sane_istest(x,GIT_GLOB_SPECIAL)
+end_define
+
+begin_define
+DECL|macro|is_regex_special
+define|#
+directive|define
+name|is_regex_special
+parameter_list|(
+name|x
+parameter_list|)
+value|sane_istest(x,GIT_GLOB_SPECIAL | GIT_REGEX_SPECIAL)
 end_define
 
 begin_define
