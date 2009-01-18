@@ -26,6 +26,10 @@ DECL|member|flags
 name|int
 name|flags
 decl_stmt|;
+DECL|member|track_flags
+name|int
+name|track_flags
+decl_stmt|;
 DECL|variable|cache
 block|}
 name|cache
@@ -197,7 +201,8 @@ specifier|inline
 name|void
 name|reset_lstat_cache
 parameter_list|(
-name|void
+name|int
+name|track_flags
 parameter_list|)
 block|{
 name|cache
@@ -221,6 +226,12 @@ name|flags
 operator|=
 literal|0
 expr_stmt|;
+name|cache
+operator|.
+name|track_flags
+operator|=
+name|track_flags
+expr_stmt|;
 block|}
 end_function
 
@@ -233,11 +244,19 @@ value|(1<< 0)
 end_define
 
 begin_define
+DECL|macro|FL_NOENT
+define|#
+directive|define
+name|FL_NOENT
+value|(1<< 1)
+end_define
+
+begin_define
 DECL|macro|FL_SYMLINK
 define|#
 directive|define
 name|FL_SYMLINK
-value|(1<< 1)
+value|(1<< 2)
 end_define
 
 begin_define
@@ -245,7 +264,7 @@ DECL|macro|FL_LSTATERR
 define|#
 directive|define
 name|FL_LSTATERR
-value|(1<< 2)
+value|(1<< 3)
 end_define
 
 begin_define
@@ -253,11 +272,11 @@ DECL|macro|FL_ERR
 define|#
 directive|define
 name|FL_ERR
-value|(1<< 3)
+value|(1<< 4)
 end_define
 
 begin_comment
-comment|/*  * Check if name 'name' of length 'len' has a symlink leading  * component, or if the directory exists and is real.  *  * To speed up the check, some information is allowed to be cached.  * This can be indicated by the 'track_flags' argument.  */
+comment|/*  * Check if name 'name' of length 'len' has a symlink leading  * component, or if the directory exists and is real, or not.  *  * To speed up the check, some information is allowed to be cached.  * This can be indicated by the 'track_flags' argument.  */
 end_comment
 
 begin_function
@@ -298,7 +317,31 @@ name|struct
 name|stat
 name|st
 decl_stmt|;
-comment|/* 	 * Check to see if we have a match from the cache for the 	 * symlink path type. 	 */
+if|if
+condition|(
+name|cache
+operator|.
+name|track_flags
+operator|!=
+name|track_flags
+condition|)
+block|{
+comment|/* 		 * As a safeguard we clear the cache if the value of 		 * track_flags does not match with the last supplied 		 * value. 		 */
+name|reset_lstat_cache
+argument_list|(
+name|track_flags
+argument_list|)
+expr_stmt|;
+name|match_len
+operator|=
+name|last_slash
+operator|=
+literal|0
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|/* 		 * Check to see if we have a match from the cache for 		 * the 2 "excluding" path types. 		 */
 name|match_len
 operator|=
 name|last_slash
@@ -318,7 +361,11 @@ name|flags
 operator|&
 name|track_flags
 operator|&
+operator|(
+name|FL_NOENT
+operator||
 name|FL_SYMLINK
+operator|)
 expr_stmt|;
 if|if
 condition|(
@@ -333,7 +380,7 @@ condition|)
 return|return
 name|match_flags
 return|;
-comment|/* 	 * If we now have match_len> 0, we would know that the 	 * matched part will always be a directory. 	 * 	 * Also, if we are tracking directories and 'name' is a 	 * substring of the cache on a path component basis, we can 	 * return immediately. 	 */
+comment|/* 		 * If we now have match_len> 0, we would know that 		 * the matched part will always be a directory. 		 * 		 * Also, if we are tracking directories and 'name' is 		 * a substring of the cache on a path component basis, 		 * we can return immediately. 		 */
 name|match_flags
 operator|=
 name|track_flags
@@ -351,6 +398,7 @@ condition|)
 return|return
 name|match_flags
 return|;
+block|}
 comment|/* 	 * Okay, no match from the cache so far, so now we have to 	 * check the rest of the path components. 	 */
 name|ret_flags
 operator|=
@@ -446,6 +494,16 @@ name|ret_flags
 operator|=
 name|FL_LSTATERR
 expr_stmt|;
+if|if
+condition|(
+name|errno
+operator|==
+name|ENOENT
+condition|)
+name|ret_flags
+operator||=
+name|FL_NOENT
+expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -489,14 +547,18 @@ expr_stmt|;
 block|}
 break|break;
 block|}
-comment|/* 	 * At the end update the cache.  Note that max 2 different 	 * path types, FL_SYMLINK and FL_DIR, can be cached for the 	 * moment! 	 */
+comment|/* 	 * At the end update the cache.  Note that max 3 different 	 * path types, FL_NOENT, FL_SYMLINK and FL_DIR, can be cached 	 * for the moment! 	 */
 name|save_flags
 operator|=
 name|ret_flags
 operator|&
 name|track_flags
 operator|&
+operator|(
+name|FL_NOENT
+operator||
 name|FL_SYMLINK
+operator|)
 expr_stmt|;
 if|if
 condition|(
@@ -549,7 +611,7 @@ operator|<
 name|PATH_MAX
 condition|)
 block|{
-comment|/* 		 * We have a separate test for the directory case, 		 * since it could be that we have found a symlink and 		 * the track_flags says that we cannot cache this 		 * fact, so the cache would then have been left empty 		 * in this case. 		 * 		 * But if we are allowed to track real directories, we 		 * can still cache the path components before the last 		 * one (the found symlink component). 		 */
+comment|/* 		 * We have a separate test for the directory case, 		 * since it could be that we have found a symlink or a 		 * non-existing directory and the track_flags says 		 * that we cannot cache this fact, so the cache would 		 * then have been left empty in this case. 		 * 		 * But if we are allowed to track real directories, we 		 * can still cache the path components before the last 		 * one (the found symlink or non-existing component). 		 */
 name|cache
 operator|.
 name|path
@@ -575,7 +637,9 @@ block|}
 else|else
 block|{
 name|reset_lstat_cache
-argument_list|()
+argument_list|(
+name|track_flags
+argument_list|)
 expr_stmt|;
 block|}
 return|return
@@ -615,6 +679,47 @@ name|FL_DIR
 argument_list|)
 operator|&
 name|FL_SYMLINK
+return|;
+block|}
+end_function
+
+begin_comment
+comment|/*  * Return non-zero if path 'name' has a leading symlink component or  * if some leading path component does not exists.  */
+end_comment
+
+begin_function
+DECL|function|has_symlink_or_noent_leading_path
+name|int
+name|has_symlink_or_noent_leading_path
+parameter_list|(
+name|int
+name|len
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|name
+parameter_list|)
+block|{
+return|return
+name|lstat_cache
+argument_list|(
+name|len
+argument_list|,
+name|name
+argument_list|,
+name|FL_SYMLINK
+operator||
+name|FL_NOENT
+operator||
+name|FL_DIR
+argument_list|)
+operator|&
+operator|(
+name|FL_SYMLINK
+operator||
+name|FL_NOENT
+operator|)
 return|;
 block|}
 end_function

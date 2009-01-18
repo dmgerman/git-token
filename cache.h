@@ -5073,6 +5073,22 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|has_symlink_or_noent_leading_path
+parameter_list|(
+name|int
+name|len
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|name
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_struct
 DECL|struct|alternate_object_database
 specifier|extern
