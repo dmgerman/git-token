@@ -11,6 +11,12 @@ directive|include
 file|"tag.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"exec_cmd.h"
+end_include
+
 begin_comment
 comment|/*  * A signature file has a very simple fixed format: four lines  * of "object<sha1>" + "type<typename>" + "tag<tagname>" +  * "tagger<committer>", followed by a blank line, a free-form tag  * message and a signature block that git itself doesn't care about,  * but that can be verified with gpg or similar.  *  * The first four lines are guaranteed to be at least 83 bytes:  * "object<sha1>\n" is 48 bytes, "type tag\n" at 9 bytes is the  * shortest possible type-line, "tag .\n" at 6 bytes is the shortest  * single-character-tag line, and "tagger .<> 0 +0000\n" at 20 bytes is  * the shortest possible tagger-line.  */
 end_comment
@@ -770,6 +776,14 @@ condition|)
 name|usage
 argument_list|(
 literal|"git-mktag< signaturefile"
+argument_list|)
+expr_stmt|;
+name|git_extract_argv0_path
+argument_list|(
+name|argv
+index|[
+literal|0
+index|]
 argument_list|)
 expr_stmt|;
 name|setup_git_directory

@@ -11,6 +11,12 @@ directive|include
 file|"blob.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"exec_cmd.h"
+end_include
+
 begin_function
 DECL|function|create_temp_file
 specifier|static
@@ -142,6 +148,14 @@ index|[
 literal|20
 index|]
 decl_stmt|;
+name|git_extract_argv0_path
+argument_list|(
+name|argv
+index|[
+literal|0
+index|]
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|argc
