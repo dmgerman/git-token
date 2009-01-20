@@ -4030,6 +4030,9 @@ if|if
 condition|(
 operator|!
 name|match
+operator|||
+operator|!
+name|target
 condition|)
 return|return
 literal|0
