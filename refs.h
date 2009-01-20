@@ -462,6 +462,27 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|int
+name|for_each_recent_reflog_ent
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|ref
+parameter_list|,
+name|each_reflog_ent_fn
+name|fn
+parameter_list|,
+name|long
+parameter_list|,
+name|void
+modifier|*
+name|cb_data
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/*  * Calls the specified function for each reflog file until it returns nonzero,  * and returns the value  */
 end_comment
