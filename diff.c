@@ -703,6 +703,15 @@ name|strcmp
 argument_list|(
 name|var
 argument_list|,
+literal|"diff.suppressblankempty"
+argument_list|)
+operator|||
+comment|/* for backwards compatibility */
+operator|!
+name|strcmp
+argument_list|(
+name|var
+argument_list|,
 literal|"diff.suppress-blank-empty"
 argument_list|)
 condition|)
