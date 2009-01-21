@@ -53,10 +53,10 @@ name|name
 parameter_list|,
 name|pattern
 parameter_list|,
-name|wordregex
+name|word_regex
 parameter_list|)
 define|\
-value|{ name, NULL, -1, { pattern, REG_EXTENDED }, wordregex }
+value|{ name, NULL, -1, { pattern, REG_EXTENDED }, word_regex }
 end_define
 
 begin_decl_stmt
