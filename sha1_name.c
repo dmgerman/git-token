@@ -4006,9 +4006,6 @@ argument_list|(
 literal|"checkout: moving from "
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|(
 name|target
 operator|=
 name|strstr
@@ -4017,13 +4014,6 @@ name|match
 argument_list|,
 literal|" to "
 argument_list|)
-operator|)
-operator|!=
-name|NULL
-condition|)
-name|target
-operator|+=
-literal|4
 expr_stmt|;
 block|}
 if|if
@@ -4042,31 +4032,7 @@ operator|=
 name|target
 operator|-
 name|match
-operator|-
-literal|4
 expr_stmt|;
-if|if
-condition|(
-name|target
-index|[
-name|len
-index|]
-operator|==
-literal|'\n'
-operator|&&
-operator|!
-name|strncmp
-argument_list|(
-name|match
-argument_list|,
-name|target
-argument_list|,
-name|len
-argument_list|)
-condition|)
-return|return
-literal|0
-return|;
 name|nth
 operator|=
 name|cb
