@@ -23,6 +23,12 @@ directive|include
 file|"commit.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"sigchain.h"
+end_include
+
 begin_function
 DECL|function|get_stdin
 specifier|static
@@ -1105,11 +1111,9 @@ block|{
 name|remove_keep
 argument_list|()
 expr_stmt|;
-name|signal
+name|sigchain_pop
 argument_list|(
-name|SIGINT
-argument_list|,
-name|SIG_DFL
+name|signo
 argument_list|)
 expr_stmt|;
 name|raise
@@ -1382,7 +1386,7 @@ name|err
 init|=
 literal|0
 decl_stmt|;
-name|signal
+name|sigchain_push
 argument_list|(
 name|SIGINT
 argument_list|,

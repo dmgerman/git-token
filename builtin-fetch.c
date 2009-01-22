@@ -57,6 +57,12 @@ directive|include
 file|"parse-options.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"sigchain.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|builtin_fetch_usage
 specifier|static
@@ -326,11 +332,9 @@ block|{
 name|unlock_pack
 argument_list|()
 expr_stmt|;
-name|signal
+name|sigchain_pop
 argument_list|(
-name|SIGINT
-argument_list|,
-name|SIG_DFL
+name|signo
 argument_list|)
 expr_stmt|;
 name|raise
@@ -3940,7 +3944,7 @@ operator|=
 name|j
 expr_stmt|;
 block|}
-name|signal
+name|sigchain_push
 argument_list|(
 name|SIGINT
 argument_list|,
