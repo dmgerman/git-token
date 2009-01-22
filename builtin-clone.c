@@ -2375,10 +2375,8 @@ argument_list|(
 name|remove_junk
 argument_list|)
 expr_stmt|;
-name|sigchain_push
+name|sigchain_push_common
 argument_list|(
-name|SIGINT
-argument_list|,
 name|remove_junk_on_signal
 argument_list|)
 expr_stmt|;
