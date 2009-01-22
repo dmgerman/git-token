@@ -1431,7 +1431,7 @@ name|avail_in
 operator|=
 name|input_len
 expr_stmt|;
-name|inflateInit
+name|git_inflate_init
 argument_list|(
 operator|&
 name|stream
@@ -1446,7 +1446,7 @@ block|{
 name|int
 name|ret
 init|=
-name|inflate
+name|git_inflate
 argument_list|(
 operator|&
 name|stream
@@ -1507,7 +1507,7 @@ operator|=
 name|input_len
 expr_stmt|;
 block|}
-name|inflateEnd
+name|git_inflate_end
 argument_list|(
 operator|&
 name|stream
@@ -2099,7 +2099,7 @@ name|avail_in
 operator|=
 name|len
 expr_stmt|;
-name|inflateInit
+name|git_inflate_init
 argument_list|(
 operator|&
 name|stream
@@ -2110,7 +2110,7 @@ condition|(
 operator|(
 name|st
 operator|=
-name|inflate
+name|git_inflate
 argument_list|(
 operator|&
 name|stream
@@ -2122,7 +2122,7 @@ operator|==
 name|Z_OK
 condition|)
 empty_stmt|;
-name|inflateEnd
+name|git_inflate_end
 argument_list|(
 operator|&
 name|stream
