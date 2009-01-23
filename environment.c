@@ -278,6 +278,15 @@ comment|/* 1: both ways, -1: only when adding git objects */
 end_comment
 
 begin_decl_stmt
+DECL|variable|read_replace_refs
+name|int
+name|read_replace_refs
+init|=
+literal|1
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|safe_crlf
 name|enum
 name|safe_crlf

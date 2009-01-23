@@ -3293,6 +3293,13 @@ end_decl_stmt
 begin_decl_stmt
 specifier|extern
 name|int
+name|read_replace_refs
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
+name|int
 name|fsync_object_files
 decl_stmt|;
 end_decl_stmt

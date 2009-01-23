@@ -483,6 +483,14 @@ name|cur
 init|=
 name|sha1
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|read_replace_refs
+condition|)
+return|return
+name|sha1
+return|;
 name|prepare_replace_object
 argument_list|()
 expr_stmt|;

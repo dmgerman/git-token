@@ -10696,6 +10696,10 @@ decl_stmt|;
 name|int
 name|rp_ac
 decl_stmt|;
+name|read_replace_refs
+operator|=
+literal|0
+expr_stmt|;
 name|rp_av
 operator|=
 name|xcalloc
