@@ -746,6 +746,22 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|lookup_replace_object
+parameter_list|(
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|sha1
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 specifier|extern
 name|struct
 name|commit_list
