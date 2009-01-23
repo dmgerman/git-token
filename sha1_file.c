@@ -11891,10 +11891,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|read_sha1_file
+DECL|function|read_sha1_file_repl
 name|void
 modifier|*
-name|read_sha1_file
+name|read_sha1_file_repl
 parameter_list|(
 specifier|const
 name|unsigned
@@ -11911,6 +11911,13 @@ name|unsigned
 name|long
 modifier|*
 name|size
+parameter_list|,
+specifier|const
+name|unsigned
+name|char
+modifier|*
+modifier|*
+name|replacement
 parameter_list|)
 block|{
 specifier|const
@@ -11989,6 +11996,15 @@ argument_list|(
 name|repl
 argument_list|)
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|replacement
+condition|)
+operator|*
+name|replacement
+operator|=
+name|repl
 expr_stmt|;
 return|return
 name|data
