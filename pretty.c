@@ -2729,7 +2729,6 @@ end_function
 
 begin_function
 DECL|function|format_subject
-specifier|static
 specifier|const
 name|char
 modifier|*
