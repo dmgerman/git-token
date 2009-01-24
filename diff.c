@@ -14458,6 +14458,23 @@ name|xdl_opts
 operator||=
 name|XDF_IGNORE_WHITESPACE_AT_EOL
 expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--patience"
+argument_list|)
+condition|)
+name|options
+operator|->
+name|xdl_opts
+operator||=
+name|XDF_PATIENCE_DIFF
+expr_stmt|;
 comment|/* flags options */
 elseif|else
 if|if

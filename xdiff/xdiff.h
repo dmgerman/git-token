@@ -53,6 +53,11 @@ define|#
 directive|define
 name|XDF_IGNORE_WHITESPACE_AT_EOL
 value|(1<< 4)
+DECL|macro|XDF_PATIENCE_DIFF
+define|#
+directive|define
+name|XDF_PATIENCE_DIFF
+value|(1<< 5)
 DECL|macro|XDF_WHITESPACE_FLAGS
 define|#
 directive|define

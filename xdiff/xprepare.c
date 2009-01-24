@@ -1660,6 +1660,15 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+operator|(
+name|xpp
+operator|->
+name|flags
+operator|&
+name|XDF_PATIENCE_DIFF
+operator|)
+operator|&&
 name|xdl_optimize_ctxs
 argument_list|(
 operator|&
