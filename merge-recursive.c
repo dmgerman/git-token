@@ -1415,7 +1415,16 @@ name|newpath
 argument_list|)
 expr_stmt|;
 return|return
+operator|(
+name|S_ISDIR
+argument_list|(
+name|mode
+argument_list|)
+condition|?
 name|READ_TREE_RECURSIVE
+else|:
+literal|0
+operator|)
 return|;
 block|}
 end_function
