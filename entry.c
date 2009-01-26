@@ -79,13 +79,6 @@ operator|!=
 name|NULL
 condition|)
 block|{
-name|struct
-name|stat
-name|st
-decl_stmt|;
-name|int
-name|stat_status
-decl_stmt|;
 name|len
 operator|=
 name|slash
@@ -108,52 +101,23 @@ index|]
 operator|=
 literal|0
 expr_stmt|;
+comment|/* 		 * For 'checkout-index --prefix=<dir>',<dir> is 		 * allowed to be a symlink to an existing directory, 		 * and we set 'state->base_dir_len' below, such that 		 * we test the path components of the prefix with the 		 * stat() function instead of the lstat() function. 		 */
 if|if
 condition|(
+name|has_dirs_only_path
+argument_list|(
 name|len
-operator|<=
+argument_list|,
+name|buf
+argument_list|,
 name|state
 operator|->
 name|base_dir_len
-condition|)
-comment|/* 			 * checkout-index --prefix=<dir>;<dir> is 			 * allowed to be a symlink to an existing 			 * directory. 			 */
-name|stat_status
-operator|=
-name|stat
-argument_list|(
-name|buf
-argument_list|,
-operator|&
-name|st
-argument_list|)
-expr_stmt|;
-else|else
-comment|/* 			 * if there currently is a symlink, we would 			 * want to replace it with a real directory. 			 */
-name|stat_status
-operator|=
-name|lstat
-argument_list|(
-name|buf
-argument_list|,
-operator|&
-name|st
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-operator|!
-name|stat_status
-operator|&&
-name|S_ISDIR
-argument_list|(
-name|st
-operator|.
-name|st_mode
 argument_list|)
 condition|)
 continue|continue;
 comment|/* ok, it is already a directory. */
-comment|/* 		 * We know stat_status == 0 means something exists 		 * there and this mkdir would fail, but that is an 		 * error codepath; we do not care, as we unlink and 		 * mkdir again in such a case. 		 */
+comment|/* 		 * If this mkdir() would fail, it could be that there 		 * is already a symlink or something else exists 		 * there, therefore we then try to unlink it and try 		 * one more time to create the directory. 		 */
 if|if
 condition|(
 name|mkdir

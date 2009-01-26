@@ -230,7 +230,7 @@ name|name
 decl_stmt|;
 if|if
 condition|(
-name|has_symlink_leading_path
+name|has_symlink_or_noent_leading_path
 argument_list|(
 name|ce_namelen
 argument_list|(
@@ -2911,7 +2911,7 @@ literal|0
 return|;
 if|if
 condition|(
-name|has_symlink_leading_path
+name|has_symlink_or_noent_leading_path
 argument_list|(
 name|ce_namelen
 argument_list|(
