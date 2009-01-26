@@ -44,17 +44,19 @@ decl_stmt|;
 end_decl_stmt
 
 begin_define
-DECL|macro|FUNCNAME
+DECL|macro|PATTERNS
 define|#
 directive|define
-name|FUNCNAME
+name|PATTERNS
 parameter_list|(
 name|name
 parameter_list|,
 name|pattern
+parameter_list|,
+name|word_regex
 parameter_list|)
 define|\
-value|{ name, NULL, -1, { pattern, REG_EXTENDED } }
+value|{ name, NULL, -1, { pattern, REG_EXTENDED }, word_regex }
 end_define
 
 begin_decl_stmt
@@ -66,22 +68,30 @@ name|builtin_drivers
 index|[]
 init|=
 block|{
-name|FUNCNAME
+name|PATTERNS
 argument_list|(
 literal|"html"
 argument_list|,
 literal|"^[ \t]*(<[Hh][1-6][ \t].*>.*)$"
+argument_list|,
+literal|"[^<>= \t]+|[^[:space:]]|[\x80-\xff]+"
 argument_list|)
 block|,
-name|FUNCNAME
+name|PATTERNS
 argument_list|(
 literal|"java"
 argument_list|,
 literal|"!^[ \t]*(catch|do|for|if|instanceof|new|return|switch|throw|while)\n"
 literal|"^[ \t]*(([ \t]*[A-Za-z_][A-Za-z_0-9]*){2,}[ \t]*\\([^;]*)$"
+argument_list|,
+literal|"[a-zA-Z_][a-zA-Z0-9_]*"
+literal|"|[-+0-9.e]+[fFlL]?|0[xXbB]?[0-9a-fA-F]+[lL]?"
+literal|"|[-+*/<>%&^|=!]="
+literal|"|--|\\+\\+|<<=?|>>>?=?|&&|\\|\\|"
+literal|"|[^[:space:]]|[\x80-\xff]+"
 argument_list|)
 block|,
-name|FUNCNAME
+name|PATTERNS
 argument_list|(
 literal|"objc"
 argument_list|,
@@ -93,9 +103,15 @@ comment|/* C functions */
 literal|"^[ \t]*(([ \t]*[A-Za-z_][A-Za-z_0-9]*){2,}[ \t]*\\([^;]*)$\n"
 comment|/* Objective-C class/protocol definitions */
 literal|"^(@(implementation|interface|protocol)[ \t].*)$"
+argument_list|,
+comment|/* -- */
+literal|"[a-zA-Z_][a-zA-Z0-9_]*"
+literal|"|[-+0-9.e]+[fFlL]?|0[xXbB]?[0-9a-fA-F]+[lL]?"
+literal|"|[-+*/<>%&^|=!]=|--|\\+\\+|<<=?|>>=?|&&|\\|\\||::|->"
+literal|"|[^[:space:]]|[\x80-\xff]+"
 argument_list|)
 block|,
-name|FUNCNAME
+name|PATTERNS
 argument_list|(
 literal|"pascal"
 argument_list|,
@@ -103,41 +119,88 @@ literal|"^((procedure|function|constructor|destructor|interface|"
 literal|"implementation|initialization|finalization)[ \t]*.*)$"
 literal|"\n"
 literal|"^(.*=[ \t]*(class|record).*)$"
+argument_list|,
+comment|/* -- */
+literal|"[a-zA-Z_][a-zA-Z0-9_]*"
+literal|"|[-+0-9.e]+|0[xXbB]?[0-9a-fA-F]+"
+literal|"|<>|<=|>=|:=|\\.\\."
+literal|"|[^[:space:]]|[\x80-\xff]+"
 argument_list|)
 block|,
-name|FUNCNAME
+name|PATTERNS
 argument_list|(
 literal|"php"
 argument_list|,
 literal|"^[\t ]*((function|class).*)"
+argument_list|,
+comment|/* -- */
+literal|"[a-zA-Z_][a-zA-Z0-9_]*"
+literal|"|[-+0-9.e]+|0[xXbB]?[0-9a-fA-F]+"
+literal|"|[-+*/<>%&^|=!.]=|--|\\+\\+|<<=?|>>=?|===|&&|\\|\\||::|->"
+literal|"|[^[:space:]]|[\x80-\xff]+"
 argument_list|)
 block|,
-name|FUNCNAME
+name|PATTERNS
 argument_list|(
 literal|"python"
 argument_list|,
 literal|"^[ \t]*((class|def)[ \t].*)$"
+argument_list|,
+comment|/* -- */
+literal|"[a-zA-Z_][a-zA-Z0-9_]*"
+literal|"|[-+0-9.e]+[jJlL]?|0[xX]?[0-9a-fA-F]+[lL]?"
+literal|"|[-+*/<>%&^|=!]=|//=?|<<=?|>>=?|\\*\\*=?"
+literal|"|[^[:space:]|[\x80-\xff]+"
 argument_list|)
 block|,
-name|FUNCNAME
+comment|/* -- */
+name|PATTERNS
 argument_list|(
 literal|"ruby"
 argument_list|,
 literal|"^[ \t]*((class|module|def)[ \t].*)$"
+argument_list|,
+comment|/* -- */
+literal|"(@|@@|\\$)?[a-zA-Z_][a-zA-Z0-9_]*"
+literal|"|[-+0-9.e]+|0[xXbB]?[0-9a-fA-F]+|\\?(\\\\C-)?(\\\\M-)?."
+literal|"|//=?|[-+*/<>%&^|=!]=|<<=?|>>=?|===|\\.{1,3}|::|[!=]~"
+literal|"|[^[:space:]|[\x80-\xff]+"
 argument_list|)
 block|,
-name|FUNCNAME
+name|PATTERNS
 argument_list|(
 literal|"bibtex"
 argument_list|,
 literal|"(@[a-zA-Z]{1,}[ \t]*\\{{0,1}[ \t]*[^ \t\"@',\\#}{~%]*).*$"
+argument_list|,
+literal|"[={}\"]|[^={}\" \t]+"
 argument_list|)
 block|,
-name|FUNCNAME
+name|PATTERNS
 argument_list|(
 literal|"tex"
 argument_list|,
 literal|"^(\\\\((sub)*section|chapter|part)\\*{0,1}\\{.*)$"
+argument_list|,
+literal|"\\\\[a-zA-Z@]+|\\\\.|[a-zA-Z0-9\x80-\xff]+|[^[:space:]]"
+argument_list|)
+block|,
+name|PATTERNS
+argument_list|(
+literal|"cpp"
+argument_list|,
+comment|/* Jump targets or access declarations */
+literal|"!^[ \t]*[A-Za-z_][A-Za-z_0-9]*:.*$\n"
+comment|/* C/++ functions/methods at top level */
+literal|"^([A-Za-z_][A-Za-z_0-9]*([ \t]+[A-Za-z_][A-Za-z_0-9]*([ \t]*::[ \t]*[^[:space:]]+)?){1,}[ \t]*\\([^;]*)$\n"
+comment|/* compound type at top level */
+literal|"^((struct|class|enum)[^;]*)$"
+argument_list|,
+comment|/* -- */
+literal|"[a-zA-Z_][a-zA-Z0-9_]*"
+literal|"|[-+0-9.e]+[fFlL]?|0[xXbB]?[0-9a-fA-F]+[lL]?"
+literal|"|[-+*/<>%&^|=!]=|--|\\+\\+|<<=?|>>=?|&&|\\|\\||::|->"
+literal|"|[^[:space:]]|[\x80-\xff]+"
 argument_list|)
 block|,
 block|{
@@ -159,10 +222,10 @@ decl_stmt|;
 end_decl_stmt
 
 begin_undef
-DECL|macro|FUNCNAME
+DECL|macro|PATTERNS
 undef|#
 directive|undef
-name|FUNCNAME
+name|PATTERNS
 end_undef
 
 begin_decl_stmt
@@ -829,6 +892,34 @@ operator|&
 name|drv
 operator|->
 name|textconv
+argument_list|,
+name|k
+argument_list|,
+name|v
+argument_list|)
+return|;
+if|if
+condition|(
+operator|(
+name|drv
+operator|=
+name|parse_driver
+argument_list|(
+name|k
+argument_list|,
+name|v
+argument_list|,
+literal|"wordregex"
+argument_list|)
+operator|)
+condition|)
+return|return
+name|parse_string
+argument_list|(
+operator|&
+name|drv
+operator|->
+name|word_regex
 argument_list|,
 name|k
 argument_list|,
