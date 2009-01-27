@@ -1734,6 +1734,8 @@ literal|0
 expr_stmt|;
 if|if
 condition|(
+name|len
+operator|&&
 name|str
 index|[
 name|len
