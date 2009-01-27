@@ -43,13 +43,7 @@ name|buf
 init|=
 name|xmalloc
 argument_list|(
-name|strlen
-argument_list|(
-name|argv
-index|[
-literal|2
-index|]
-argument_list|)
+name|PATH_MAX
 operator|+
 literal|1
 argument_list|)
