@@ -1208,10 +1208,10 @@ struct|;
 end_struct
 
 begin_function
-DECL|function|run_command
+DECL|function|run_builtin
 specifier|static
 name|int
-name|run_command
+name|run_builtin
 parameter_list|(
 name|struct
 name|cmd_struct
@@ -2365,7 +2365,7 @@ condition|)
 continue|continue;
 name|exit
 argument_list|(
-name|run_command
+name|run_builtin
 argument_list|(
 name|p
 argument_list|,
