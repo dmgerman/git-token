@@ -957,6 +957,16 @@ condition|(
 operator|!
 name|object
 condition|)
+block|{
+if|if
+condition|(
+name|flags
+operator|&
+name|UNINTERESTING
+condition|)
+return|return
+name|NULL
+return|;
 name|die
 argument_list|(
 literal|"bad object %s"
@@ -971,6 +981,7 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/* 	 * Commit object? Just return it, we'll do all the complex 	 * reachability crud. 	 */
 if|if
@@ -2224,17 +2235,8 @@ name|next
 expr_stmt|;
 if|if
 condition|(
-name|parse_commit
-argument_list|(
 name|p
-argument_list|)
-operator|<
-literal|0
 condition|)
-return|return
-operator|-
-literal|1
-return|;
 name|p
 operator|->
 name|object
@@ -2243,6 +2245,16 @@ name|flags
 operator||=
 name|UNINTERESTING
 expr_stmt|;
+if|if
+condition|(
+name|parse_commit
+argument_list|(
+name|p
+argument_list|)
+operator|<
+literal|0
+condition|)
+continue|continue;
 if|if
 condition|(
 name|p
