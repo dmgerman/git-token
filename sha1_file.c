@@ -12477,9 +12477,10 @@ block|{
 name|int
 name|fd
 decl_stmt|,
-name|size
-decl_stmt|,
 name|ret
+decl_stmt|;
+name|size_t
+name|size
 decl_stmt|;
 name|unsigned
 name|char
