@@ -11,6 +11,12 @@ directive|include
 file|"run-command.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"sigchain.h"
+end_include
+
 begin_comment
 comment|/*  * This is split up from the rest of git so that we can do  * something different on Windows.  */
 end_comment
@@ -152,6 +158,32 @@ name|finish_command
 argument_list|(
 operator|&
 name|pager_process
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|function|wait_for_pager_signal
+specifier|static
+name|void
+name|wait_for_pager_signal
+parameter_list|(
+name|int
+name|signo
+parameter_list|)
+block|{
+name|wait_for_pager
+argument_list|()
+expr_stmt|;
+name|sigchain_pop
+argument_list|(
+name|signo
+argument_list|)
+expr_stmt|;
+name|raise
+argument_list|(
+name|signo
 argument_list|)
 expr_stmt|;
 block|}
@@ -324,6 +356,11 @@ name|in
 argument_list|)
 expr_stmt|;
 comment|/* this makes sure that the parent terminates after the pager */
+name|sigchain_push_common
+argument_list|(
+name|wait_for_pager_signal
+argument_list|)
+expr_stmt|;
 name|atexit
 argument_list|(
 name|wait_for_pager
