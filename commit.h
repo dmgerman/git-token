@@ -876,6 +876,21 @@ end_function_decl
 
 begin_function_decl
 name|int
+name|is_descendant_of
+parameter_list|(
+name|struct
+name|commit
+modifier|*
+parameter_list|,
+name|struct
+name|commit_list
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
 name|in_merge_bases
 parameter_list|(
 name|struct
