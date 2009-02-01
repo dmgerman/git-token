@@ -1831,7 +1831,10 @@ argument_list|(
 operator|&
 name|new_path
 argument_list|,
+name|system_path
+argument_list|(
 name|GIT_MAN_PATH
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|strbuf_addch
@@ -2095,7 +2098,10 @@ name|setenv
 argument_list|(
 literal|"INFOPATH"
 argument_list|,
+name|system_path
+argument_list|(
 name|GIT_INFO_PATH
+argument_list|)
 argument_list|,
 literal|1
 argument_list|)

@@ -5,6 +5,12 @@ directive|include
 file|"cache.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"exec_cmd.h"
+end_include
+
 begin_function
 DECL|function|flush_current_id
 specifier|static
@@ -398,6 +404,14 @@ condition|)
 name|usage
 argument_list|(
 name|patch_id_usage
+argument_list|)
+expr_stmt|;
+name|git_extract_argv0_path
+argument_list|(
+name|argv
+index|[
+literal|0
+index|]
 argument_list|)
 expr_stmt|;
 name|generate_id_list

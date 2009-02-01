@@ -9,6 +9,12 @@ directive|include
 file|"cache.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"exec_cmd.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|var_usage
 specifier|static
@@ -290,6 +296,14 @@ name|var_usage
 argument_list|)
 expr_stmt|;
 block|}
+name|git_extract_argv0_path
+argument_list|(
+name|argv
+index|[
+literal|0
+index|]
+argument_list|)
+expr_stmt|;
 name|setup_git_directory_gently
 argument_list|(
 operator|&

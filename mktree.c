@@ -21,6 +21,12 @@ directive|include
 file|"tree.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"exec_cmd.h"
+end_include
+
 begin_struct
 DECL|struct|treeent
 specifier|static
@@ -476,6 +482,14 @@ name|line_termination
 init|=
 literal|'\n'
 decl_stmt|;
+name|git_extract_argv0_path
+argument_list|(
+name|av
+index|[
+literal|0
+index|]
+argument_list|)
+expr_stmt|;
 name|setup_git_directory
 argument_list|()
 expr_stmt|;

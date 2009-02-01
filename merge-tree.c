@@ -23,6 +23,12 @@ directive|include
 file|"blob.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"exec_cmd.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|merge_tree_usage
 specifier|static
@@ -1842,6 +1848,14 @@ condition|)
 name|usage
 argument_list|(
 name|merge_tree_usage
+argument_list|)
+expr_stmt|;
+name|git_extract_argv0_path
+argument_list|(
+name|argv
+index|[
+literal|0
+index|]
 argument_list|)
 expr_stmt|;
 name|setup_git_directory

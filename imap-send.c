@@ -9,6 +9,12 @@ directive|include
 file|"cache.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"exec_cmd.h"
+end_include
+
 begin_ifdef
 ifdef|#
 directive|ifdef
@@ -8005,6 +8011,14 @@ decl_stmt|;
 name|int
 name|nongit_ok
 decl_stmt|;
+name|git_extract_argv0_path
+argument_list|(
+name|argv
+index|[
+literal|0
+index|]
+argument_list|)
+expr_stmt|;
 comment|/* init the random number generator */
 name|arc4_init
 argument_list|()

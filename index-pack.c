@@ -59,6 +59,12 @@ directive|include
 file|"fsck.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"exec_cmd.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|index_pack_usage
 specifier|static
@@ -5008,6 +5014,14 @@ index|[
 literal|20
 index|]
 decl_stmt|;
+name|git_extract_argv0_path
+argument_list|(
+name|argv
+index|[
+literal|0
+index|]
+argument_list|)
+expr_stmt|;
 comment|/* 	 * We wish to read the repository's config file if any, and 	 * for that it is necessary to call setup_git_directory_gently(). 	 * However if the cwd was inside .git/objects/pack/ then we need 	 * to go back there or all the pack name arguments will be wrong. 	 * And in that case we cannot rely on any prefix returned by 	 * setup_git_directory_gently() either. 	 */
 block|{
 name|char
