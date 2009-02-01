@@ -183,6 +183,19 @@ name|MAX_BOUNDARIES
 value|5
 end_define
 
+begin_function_decl
+specifier|static
+name|void
+name|cleanup_space
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+name|sb
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function
 DECL|function|get_sane_name
 specifier|static
@@ -595,7 +608,13 @@ literal|0
 operator|)
 argument_list|)
 expr_stmt|;
-comment|/* The remainder is name.  It could be "John Doe<john.doe@xz>" 	 * or "john.doe@xz (John Doe)", but we have removed the 	 * email part, so trim from both ends, possibly removing 	 * the () pair at the end. 	 */
+comment|/* The remainder is name.  It could be 	 * 	 * - "John Doe<john.doe@xz>"			(a), or 	 * - "john.doe@xz (John Doe)"			(b), or 	 * - "John (zzz) Doe<john.doe@xz> (Comment)"	(c) 	 * 	 * but we have removed the email part, so 	 * 	 * - remove extra spaces which could stay after email (case 'c'), and 	 * - trim from both ends, possibly removing the () pair at the end 	 *   (cases 'a' and 'b'). 	 */
+name|cleanup_space
+argument_list|(
+operator|&
+name|f
+argument_list|)
+expr_stmt|;
 name|strbuf_trim
 argument_list|(
 operator|&
