@@ -76,6 +76,9 @@ DECL|enum|deny_action
 enum|enum
 name|deny_action
 block|{
+DECL|enumerator|DENY_UNCONFIGURED
+name|DENY_UNCONFIGURED
+block|,
 DECL|enumerator|DENY_IGNORE
 name|DENY_IGNORE
 block|,
@@ -115,7 +118,7 @@ name|enum
 name|deny_action
 name|deny_current_branch
 init|=
-name|DENY_WARN
+name|DENY_UNCONFIGURED
 decl_stmt|;
 end_decl_stmt
 
@@ -1222,6 +1225,94 @@ return|;
 block|}
 end_function
 
+begin_decl_stmt
+DECL|variable|warn_unconfigured_deny_msg
+specifier|static
+name|char
+modifier|*
+name|warn_unconfigured_deny_msg
+index|[]
+init|=
+block|{
+literal|"Updating the currently checked out branch may cause confusion,"
+block|,
+literal|"as the index and work tree do not reflect changes that are in HEAD."
+block|,
+literal|"As a result, you may see the changes you just pushed into it"
+block|,
+literal|"reverted when you run 'git diff' over there, and you may want"
+block|,
+literal|"to run 'git reset --hard' before starting to work to recover."
+block|,
+literal|""
+block|,
+literal|"You can set 'receive.denyCurrentBranch' configuration variable to"
+block|,
+literal|"'refuse' in the remote repository to forbid pushing into its"
+block|,
+literal|"current branch."
+literal|""
+block|,
+literal|"To allow pushing into the current branch, you can set it to 'ignore';"
+block|,
+literal|"but this is not recommended unless you arranged to update its work"
+block|,
+literal|"tree to match what you pushed in some other way."
+block|,
+literal|""
+block|,
+literal|"To squelch this message, you can set it to 'warn'."
+block|,
+literal|""
+block|,
+literal|"Note that the default will change in a future version of git"
+block|,
+literal|"to refuse updating the current branch unless you have the"
+block|,
+literal|"configuration variable set to either 'ignore' or 'warn'."
+block|}
+decl_stmt|;
+end_decl_stmt
+
+begin_function
+DECL|function|warn_unconfigured_deny
+specifier|static
+name|void
+name|warn_unconfigured_deny
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+name|int
+name|i
+decl_stmt|;
+for|for
+control|(
+name|i
+operator|=
+literal|0
+init|;
+name|i
+operator|<
+name|ARRAY_SIZE
+argument_list|(
+name|warn_unconfigured_deny_msg
+argument_list|)
+condition|;
+name|i
+operator|++
+control|)
+name|warning
+argument_list|(
+name|warn_unconfigured_deny_msg
+index|[
+name|i
+index|]
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
 begin_function
 DECL|function|update
 specifier|static
@@ -1297,6 +1388,14 @@ return|return
 literal|"funny refname"
 return|;
 block|}
+if|if
+condition|(
+name|is_ref_checked_out
+argument_list|(
+name|name
+argument_list|)
+condition|)
+block|{
 switch|switch
 condition|(
 name|deny_current_branch
@@ -1307,38 +1406,29 @@ name|DENY_IGNORE
 case|:
 break|break;
 case|case
+name|DENY_UNCONFIGURED
+case|:
+case|case
 name|DENY_WARN
 case|:
-if|if
-condition|(
-operator|!
-name|is_ref_checked_out
-argument_list|(
-name|name
-argument_list|)
-condition|)
-break|break;
 name|warning
 argument_list|(
-literal|"updating the currently checked out branch; this may"
-literal|" cause confusion,\n"
-literal|"as the index and working tree do not reflect changes"
-literal|" that are now in HEAD."
+literal|"updating the current branch"
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|deny_current_branch
+operator|==
+name|DENY_UNCONFIGURED
+condition|)
+name|warn_unconfigured_deny
+argument_list|()
 expr_stmt|;
 break|break;
 case|case
 name|DENY_REFUSE
 case|:
-if|if
-condition|(
-operator|!
-name|is_ref_checked_out
-argument_list|(
-name|name
-argument_list|)
-condition|)
-break|break;
 name|error
 argument_list|(
 literal|"refusing to update checked out branch: %s"
@@ -1349,6 +1439,7 @@ expr_stmt|;
 return|return
 literal|"branch is currently checked out"
 return|;
+block|}
 block|}
 if|if
 condition|(
