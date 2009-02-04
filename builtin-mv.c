@@ -1101,6 +1101,22 @@ block|}
 elseif|else
 if|if
 condition|(
+name|cache_name_pos
+argument_list|(
+name|src
+argument_list|,
+name|length
+argument_list|)
+operator|<
+literal|0
+condition|)
+name|bad
+operator|=
+literal|"not under version control"
+expr_stmt|;
+elseif|else
+if|if
+condition|(
 name|lstat
 argument_list|(
 name|dst
@@ -1161,22 +1177,6 @@ literal|"Cannot overwrite"
 expr_stmt|;
 block|}
 block|}
-elseif|else
-if|if
-condition|(
-name|cache_name_pos
-argument_list|(
-name|src
-argument_list|,
-name|length
-argument_list|)
-operator|<
-literal|0
-condition|)
-name|bad
-operator|=
-literal|"not under version control"
-expr_stmt|;
 elseif|else
 if|if
 condition|(
