@@ -11850,6 +11850,9 @@ if|if
 condition|(
 operator|!
 name|cached
+operator|&&
+operator|!
+name|tpatch
 condition|)
 name|st_mode
 operator|=
