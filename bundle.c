@@ -1655,6 +1655,14 @@ index|]
 argument_list|)
 return|;
 block|}
+name|object_array_remove_duplicates
+argument_list|(
+operator|&
+name|revs
+operator|.
+name|pending
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|i
