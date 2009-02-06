@@ -1094,7 +1094,7 @@ name|request
 operator|->
 name|zret
 operator|=
-name|inflate
+name|git_inflate
 argument_list|(
 operator|&
 name|request
@@ -1476,7 +1476,7 @@ name|stream
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|inflateInit
+name|git_inflate_init
 argument_list|(
 operator|&
 name|request
@@ -1705,7 +1705,7 @@ name|stream
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|inflateInit
+name|git_inflate_init
 argument_list|(
 operator|&
 name|request
@@ -4275,7 +4275,7 @@ argument_list|,
 literal|"Warning: requested range invalid; we may already have all the data.\n"
 argument_list|)
 expr_stmt|;
-name|inflateEnd
+name|git_inflate_end
 argument_list|(
 operator|&
 name|request
