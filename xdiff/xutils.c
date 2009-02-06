@@ -1360,6 +1360,15 @@ if|if
 condition|(
 name|flags
 operator|&
+name|XDF_IGNORE_WHITESPACE
+condition|)
+empty_stmt|;
+comment|/* already handled */
+elseif|else
+if|if
+condition|(
+name|flags
+operator|&
 name|XDF_IGNORE_WHITESPACE_CHANGE
 operator|&&
 name|ptr
@@ -1387,6 +1396,7 @@ operator|)
 literal|' '
 expr_stmt|;
 block|}
+elseif|else
 if|if
 condition|(
 name|flags
