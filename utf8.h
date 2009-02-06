@@ -62,6 +62,18 @@ end_function_decl
 
 begin_function_decl
 name|int
+name|utf8_strwidth
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|string
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
 name|is_utf8
 parameter_list|(
 specifier|const
