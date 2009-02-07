@@ -3709,22 +3709,6 @@ end_function_decl
 
 begin_function_decl
 name|int
-name|normalize_absolute_path
-parameter_list|(
-name|char
-modifier|*
-name|buf
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|path
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-name|int
 name|normalize_path_copy
 parameter_list|(
 name|char
