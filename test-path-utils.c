@@ -76,6 +76,9 @@ argument_list|(
 name|buf
 argument_list|)
 expr_stmt|;
+return|return
+literal|0
+return|;
 block|}
 if|if
 condition|(
@@ -120,6 +123,9 @@ name|argv
 operator|++
 expr_stmt|;
 block|}
+return|return
+literal|0
+return|;
 block|}
 if|if
 condition|(
@@ -162,9 +168,36 @@ argument_list|,
 name|len
 argument_list|)
 expr_stmt|;
-block|}
 return|return
 literal|0
+return|;
+block|}
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"%s: unknown function name: %s\n"
+argument_list|,
+name|argv
+index|[
+literal|0
+index|]
+argument_list|,
+name|argv
+index|[
+literal|1
+index|]
+condition|?
+name|argv
+index|[
+literal|1
+index|]
+else|:
+literal|"(there was none)"
+argument_list|)
+expr_stmt|;
+return|return
+literal|1
 return|;
 block|}
 end_function
