@@ -3725,6 +3725,22 @@ end_function_decl
 
 begin_function_decl
 name|int
+name|normalize_path_copy
+parameter_list|(
+name|char
+modifier|*
+name|dst
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|src
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
 name|longest_ancestor_length
 parameter_list|(
 specifier|const
