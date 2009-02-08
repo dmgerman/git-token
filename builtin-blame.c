@@ -12532,8 +12532,6 @@ argument_list|(
 operator|&
 name|mailmap
 argument_list|,
-literal|".mailmap"
-argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;

@@ -21,11 +21,6 @@ name|string_list
 modifier|*
 name|map
 parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|filename
-parameter_list|,
 name|char
 modifier|*
 modifier|*
