@@ -1319,50 +1319,38 @@ block|}
 end_function
 
 begin_decl_stmt
-DECL|variable|warn_unconfigured_deny_delete_current_msg
+DECL|variable|refuse_unconfigured_deny_delete_current_msg
 specifier|static
 name|char
 modifier|*
-name|warn_unconfigured_deny_delete_current_msg
+name|refuse_unconfigured_deny_delete_current_msg
 index|[]
 init|=
 block|{
-literal|"Deleting the current branch can cause confusion by making the next"
+literal|"By default, deleting the current branch is denied, because the next"
 block|,
-literal|"'git clone' not check out any file."
+literal|"'git clone' won't result in any file checked out, causing confusion."
 block|,
 literal|""
 block|,
 literal|"You can set 'receive.denyDeleteCurrent' configuration variable to"
 block|,
-literal|"'refuse' in the remote repository to disallow deleting the current"
+literal|"'warn' or 'ignore' in the remote repository to allow deleting the"
 block|,
-literal|"branch."
-block|,
-literal|""
-block|,
-literal|"You can set it to 'ignore' to allow such a delete without a warning."
+literal|"current branch, with or without a warning message."
 block|,
 literal|""
 block|,
-literal|"To make this warning message less loud, you can set it to 'warn'."
-block|,
-literal|""
-block|,
-literal|"Note that the default will change in a future version of git"
-block|,
-literal|"to refuse deleting the current branch unless you have the"
-block|,
-literal|"configuration variable set to either 'ignore' or 'warn'."
+literal|"To squelch this message, you can set it to 'refuse'."
 block|}
 decl_stmt|;
 end_decl_stmt
 
 begin_function
-DECL|function|warn_unconfigured_deny_delete_current
+DECL|function|refuse_unconfigured_deny_delete_current
 specifier|static
 name|void
-name|warn_unconfigured_deny_delete_current
+name|refuse_unconfigured_deny_delete_current
 parameter_list|(
 name|void
 parameter_list|)
@@ -1380,17 +1368,17 @@ name|i
 operator|<
 name|ARRAY_SIZE
 argument_list|(
-name|warn_unconfigured_deny_delete_current_msg
+name|refuse_unconfigured_deny_delete_current_msg
 argument_list|)
 condition|;
 name|i
 operator|++
 control|)
-name|warning
+name|error
 argument_list|(
 literal|"%s"
 argument_list|,
-name|warn_unconfigured_deny_delete_current_msg
+name|refuse_unconfigured_deny_delete_current_msg
 index|[
 name|i
 index|]
@@ -1618,18 +1606,6 @@ break|break;
 case|case
 name|DENY_WARN
 case|:
-case|case
-name|DENY_UNCONFIGURED
-case|:
-if|if
-condition|(
-name|deny_delete_current
-operator|==
-name|DENY_UNCONFIGURED
-condition|)
-name|warn_unconfigured_deny_delete_current
-argument_list|()
-expr_stmt|;
 name|warning
 argument_list|(
 literal|"deleting the current branch"
@@ -1639,6 +1615,18 @@ break|break;
 case|case
 name|DENY_REFUSE
 case|:
+case|case
+name|DENY_UNCONFIGURED
+case|:
+if|if
+condition|(
+name|deny_delete_current
+operator|==
+name|DENY_UNCONFIGURED
+condition|)
+name|refuse_unconfigured_deny_delete_current
+argument_list|()
+expr_stmt|;
 name|error
 argument_list|(
 literal|"refusing to delete the current branch: %s"
