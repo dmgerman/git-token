@@ -106,9 +106,9 @@ if|if
 condition|(
 name|has_dirs_only_path
 argument_list|(
-name|len
-argument_list|,
 name|buf
+argument_list|,
+name|len
 argument_list|,
 name|state
 operator|->

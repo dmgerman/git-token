@@ -852,14 +852,14 @@ if|if
 condition|(
 name|has_symlink_leading_path
 argument_list|(
+operator|*
+name|p
+argument_list|,
 name|strlen
 argument_list|(
 operator|*
 name|p
 argument_list|)
-argument_list|,
-operator|*
-name|p
 argument_list|)
 condition|)
 block|{

@@ -11414,12 +11414,12 @@ if|if
 condition|(
 name|has_symlink_leading_path
 argument_list|(
+name|new_name
+argument_list|,
 name|strlen
 argument_list|(
 name|new_name
 argument_list|)
-argument_list|,
-name|new_name
 argument_list|)
 condition|)
 return|return
