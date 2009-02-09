@@ -96,8 +96,6 @@ DECL|variable|deny_deletes
 specifier|static
 name|int
 name|deny_deletes
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -106,8 +104,6 @@ DECL|variable|deny_non_fast_forwards
 specifier|static
 name|int
 name|deny_non_fast_forwards
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
