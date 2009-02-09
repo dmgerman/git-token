@@ -2955,6 +2955,12 @@ name|bisect_find_all
 operator|=
 literal|1
 expr_stmt|;
+name|revs
+operator|.
+name|show_decorations
+operator|=
+literal|1
+expr_stmt|;
 continue|continue;
 block|}
 if|if
