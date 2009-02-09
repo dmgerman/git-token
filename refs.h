@@ -166,6 +166,41 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/* can be used to learn about broken ref and symref */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|for_each_rawref
+parameter_list|(
+name|each_ref_fn
+parameter_list|,
+name|void
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|void
+name|warn_dangling_symref
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|msg_fmt
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|refname
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/*  * Extra refs will be listed by for_each_ref() before any actual refs  * for the duration of this process or until clear_extra_refs() is  * called. Only extra refs added before for_each_ref() is called will  * be listed on a given call of for_each_ref().  */
 end_comment
 

@@ -4772,6 +4772,11 @@ name|struct
 name|ref_states
 name|states
 decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|dangling_msg
+decl_stmt|;
 name|argc
 operator|=
 name|parse_options
@@ -4799,6 +4804,16 @@ name|builtin_remote_usage
 argument_list|,
 name|options
 argument_list|)
+expr_stmt|;
+name|dangling_msg
+operator|=
+operator|(
+name|dry_run
+condition|?
+literal|" %s will become dangling!\n"
+else|:
+literal|" %s has become dangling!\n"
+operator|)
 expr_stmt|;
 name|memset
 argument_list|(
@@ -4945,6 +4960,13 @@ name|refname
 argument_list|,
 literal|"refs/remotes/"
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|warn_dangling_symref
+argument_list|(
+name|dangling_msg
+argument_list|,
+name|refname
 argument_list|)
 expr_stmt|;
 block|}
