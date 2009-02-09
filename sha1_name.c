@@ -1475,6 +1475,9 @@ name|char
 modifier|*
 name|this_result
 decl_stmt|;
+name|int
+name|flag
+decl_stmt|;
 name|this_result
 operator|=
 name|refs_found
@@ -1510,7 +1513,8 @@ name|this_result
 argument_list|,
 literal|1
 argument_list|,
-name|NULL
+operator|&
+name|flag
 argument_list|)
 expr_stmt|;
 if|if
@@ -1539,6 +1543,20 @@ name|warn_ambiguous_refs
 condition|)
 break|break;
 block|}
+elseif|else
+if|if
+condition|(
+name|flag
+operator|&
+name|REF_ISSYMREF
+condition|)
+name|warning
+argument_list|(
+literal|"ignoring dangling symref %s."
+argument_list|,
+name|fullref
+argument_list|)
+expr_stmt|;
 block|}
 name|free
 argument_list|(
