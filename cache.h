@@ -5402,6 +5402,16 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|void
+name|clear_delta_base_cache
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|struct
 name|packed_git
 modifier|*
