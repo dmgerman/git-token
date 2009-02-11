@@ -8101,9 +8101,20 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-return|return
-name|NULL
-return|;
+name|die
+argument_list|(
+literal|"Failed to traverse parents of commit %s"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|commit
+operator|->
+name|object
+operator|.
+name|sha1
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 switch|switch
 condition|(
@@ -8122,9 +8133,20 @@ continue|continue;
 case|case
 name|commit_error
 case|:
-return|return
-name|NULL
-return|;
+name|die
+argument_list|(
+literal|"Failed to simplify parents of commit %s"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|commit
+operator|->
+name|object
+operator|.
+name|sha1
+argument_list|)
+argument_list|)
+expr_stmt|;
 default|default:
 return|return
 name|commit
