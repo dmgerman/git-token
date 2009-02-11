@@ -633,7 +633,6 @@ case|case
 name|READ_TREE_RECURSIVE
 case|:
 break|break;
-empty_stmt|;
 default|default:
 return|return
 operator|-
