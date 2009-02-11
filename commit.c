@@ -41,12 +41,6 @@ directive|include
 file|"revision.h"
 end_include
 
-begin_include
-include|#
-directive|include
-file|"notes.h"
-end_include
-
 begin_decl_stmt
 DECL|variable|save_commit_buffer
 name|int
