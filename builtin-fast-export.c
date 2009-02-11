@@ -2924,6 +2924,12 @@ operator|&
 name|extra_refs
 argument_list|)
 expr_stmt|;
+name|revs
+operator|.
+name|topo_order
+operator|=
+literal|1
+expr_stmt|;
 if|if
 condition|(
 name|prepare_revision_walk
