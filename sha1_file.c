@@ -4064,6 +4064,9 @@ operator|==
 literal|0
 condition|)
 block|{
+name|clear_delta_base_cache
+argument_list|()
+expr_stmt|;
 name|close_pack_windows
 argument_list|(
 name|p
