@@ -147,21 +147,20 @@ name|COLOR_MAXLEN
 index|]
 init|=
 block|{
-literal|"\033[m"
+name|GIT_COLOR_RESET
 block|,
-comment|/* reset */
-literal|""
+name|GIT_COLOR_NORMAL
 block|,
-comment|/* PLAIN (normal) */
-literal|"\033[31m"
+comment|/* PLAIN */
+name|GIT_COLOR_RED
 block|,
-comment|/* REMOTE (red) */
-literal|""
+comment|/* REMOTE */
+name|GIT_COLOR_NORMAL
 block|,
-comment|/* LOCAL (normal) */
-literal|"\033[32m"
+comment|/* LOCAL */
+name|GIT_COLOR_GREEN
 block|,
-comment|/* CURRENT (green) */
+comment|/* CURRENT */
 block|}
 decl_stmt|;
 end_decl_stmt
