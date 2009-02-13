@@ -1204,11 +1204,6 @@ name|hex
 init|=
 name|NULL
 decl_stmt|;
-specifier|const
-name|char
-modifier|*
-name|dots
-decl_stmt|;
 if|if
 condition|(
 name|abbrev
@@ -1242,23 +1237,6 @@ operator|.
 name|sha1
 argument_list|)
 expr_stmt|;
-name|dots
-operator|=
-operator|(
-name|abbrev
-operator|&&
-name|strlen
-argument_list|(
-name|hex
-argument_list|)
-operator|!=
-literal|40
-operator|)
-condition|?
-literal|"..."
-else|:
-literal|""
-expr_stmt|;
 name|parent
 operator|=
 name|parent
@@ -1269,11 +1247,9 @@ name|strbuf_addf
 argument_list|(
 name|sb
 argument_list|,
-literal|" %s%s"
+literal|" %s"
 argument_list|,
 name|hex
-argument_list|,
-name|dots
 argument_list|)
 expr_stmt|;
 block|}
