@@ -272,12 +272,12 @@ index|[
 literal|1
 index|]
 argument_list|,
-literal|"refs/heads/"
+literal|"refs/"
 argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"Refusing to point HEAD outside of refs/heads/"
+literal|"Refusing to point HEAD outside of refs/"
 argument_list|)
 expr_stmt|;
 name|create_symref
