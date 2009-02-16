@@ -3981,9 +3981,9 @@ argument_list|)
 expr_stmt|;
 name|dir
 operator|.
-name|show_ignored
-operator|=
-literal|1
+name|flags
+operator||=
+name|DIR_SHOW_IGNORED
 expr_stmt|;
 name|dir
 operator|.
