@@ -1379,6 +1379,14 @@ name|nr_paths
 operator|=
 literal|2
 expr_stmt|;
+name|revs
+operator|->
+name|diffopt
+operator|.
+name|skip_stat_unmatch
+operator|=
+literal|1
+expr_stmt|;
 name|DIFF_OPT_SET
 argument_list|(
 operator|&
