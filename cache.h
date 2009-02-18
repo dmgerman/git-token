@@ -2521,6 +2521,19 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|void
+name|remove_marked_cache_entries
+parameter_list|(
+name|struct
+name|index_state
+modifier|*
+name|istate
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|int
 name|remove_file_from_index
 parameter_list|(
