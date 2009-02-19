@@ -5926,7 +5926,7 @@ operator|.
 name|message_id
 condition|)
 block|{
-comment|/* 				 * If we've got the ID to be a reply 				 * to, discard the current ID; 				 * otherwise, make everything a reply 				 * to that. 				 */
+comment|/* 				 * Without --cover-letter and 				 * --in-reply-to, make every mail a 				 * reply to the one before. 				 * 				 * With --in-reply-to but no 				 * --cover-letter, make every mail a 				 * reply to the<reply-to>. 				 * 				 * With --cover-letter, make every 				 * mail but the cover letter a reply 				 * to the cover letter.  The cover 				 * letter is a reply to the 				 * --in-reply-to, if specified. 				 */
 if|if
 condition|(
 name|rev
@@ -5936,6 +5936,17 @@ operator|->
 name|nr
 operator|>
 literal|0
+operator|&&
+operator|(
+operator|!
+name|cover_letter
+operator|||
+name|rev
+operator|.
+name|nr
+operator|>
+literal|1
+operator|)
 condition|)
 name|free
 argument_list|(
