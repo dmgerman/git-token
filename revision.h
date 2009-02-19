@@ -438,11 +438,11 @@ name|char
 modifier|*
 name|message_id
 decl_stmt|;
-DECL|member|ref_message_id
-specifier|const
-name|char
+DECL|member|ref_message_ids
+name|struct
+name|string_list
 modifier|*
-name|ref_message_id
+name|ref_message_ids
 decl_stmt|;
 DECL|member|add_signoff
 specifier|const
