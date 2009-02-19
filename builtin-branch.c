@@ -2425,12 +2425,9 @@ name|head_commit
 expr_stmt|;
 if|if
 condition|(
-name|strlen
-argument_list|(
 name|item
 operator|.
-name|name
-argument_list|)
+name|len
 operator|>
 name|ref_list
 operator|.
@@ -2440,12 +2437,9 @@ name|ref_list
 operator|.
 name|maxwidth
 operator|=
-name|strlen
-argument_list|(
 name|item
 operator|.
-name|name
-argument_list|)
+name|len
 expr_stmt|;
 name|print_ref_item
 argument_list|(
