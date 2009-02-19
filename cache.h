@@ -526,13 +526,13 @@ struct|struct
 name|cache_entry
 block|{
 DECL|member|ce_ctime
-name|unsigned
-name|int
+name|struct
+name|cache_time
 name|ce_ctime
 decl_stmt|;
 DECL|member|ce_mtime
-name|unsigned
-name|int
+name|struct
+name|cache_time
 name|ce_mtime
 decl_stmt|;
 DECL|member|ce_dev
@@ -1265,7 +1265,8 @@ modifier|*
 name|cache_tree
 decl_stmt|;
 DECL|member|timestamp
-name|time_t
+name|struct
+name|cache_time
 name|timestamp
 decl_stmt|;
 DECL|member|alloc
