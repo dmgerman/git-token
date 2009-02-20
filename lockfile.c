@@ -606,6 +606,62 @@ block|}
 end_function
 
 begin_function
+DECL|function|unable_to_lock_index_die
+name|NORETURN
+name|void
+name|unable_to_lock_index_die
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|,
+name|int
+name|err
+parameter_list|)
+block|{
+if|if
+condition|(
+name|errno
+operator|==
+name|EEXIST
+condition|)
+block|{
+name|die
+argument_list|(
+literal|"Unable to create '%s.lock': %s.\n\n"
+literal|"If no other git process is currently running, this probably means a\n"
+literal|"git process crashed in this repository earlier. Make sure no other git\n"
+literal|"process is running and remove the file manually to continue."
+argument_list|,
+name|path
+argument_list|,
+name|strerror
+argument_list|(
+name|err
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|die
+argument_list|(
+literal|"Unable to create '%s.lock': %s"
+argument_list|,
+name|path
+argument_list|,
+name|strerror
+argument_list|(
+name|err
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+end_function
+
+begin_function
 DECL|function|hold_lock_file_for_update
 name|int
 name|hold_lock_file_for_update
@@ -648,16 +704,11 @@ operator|&
 name|LOCK_DIE_ON_ERROR
 operator|)
 condition|)
-name|die
+name|unable_to_lock_index_die
 argument_list|(
-literal|"unable to create '%s.lock': %s"
-argument_list|,
 name|path
 argument_list|,
-name|strerror
-argument_list|(
 name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return

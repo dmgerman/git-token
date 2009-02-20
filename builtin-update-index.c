@@ -3659,17 +3659,12 @@ argument_list|(
 literal|128
 argument_list|)
 expr_stmt|;
-name|die
+name|unable_to_lock_index_die
 argument_list|(
-literal|"unable to create '%s.lock': %s"
-argument_list|,
 name|get_index_file
 argument_list|()
 argument_list|,
-name|strerror
-argument_list|(
 name|lock_error
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
