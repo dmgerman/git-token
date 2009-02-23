@@ -2286,7 +2286,6 @@ specifier|extern
 name|int
 name|write_index
 parameter_list|(
-specifier|const
 name|struct
 name|index_state
 modifier|*
