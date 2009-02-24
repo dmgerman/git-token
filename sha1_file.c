@@ -4789,7 +4789,7 @@ operator|->
 name|pack_name
 argument_list|)
 expr_stmt|;
-comment|/* Since packfiles end in a hash of their content and its 	 * pointless to ask for an offset into the middle of that 	 * hash, and the in_window function above wouldn't match 	 * don't allow an offset too close to the end of the file. 	 */
+comment|/* Since packfiles end in a hash of their content and it's 	 * pointless to ask for an offset into the middle of that 	 * hash, and the in_window function above wouldn't match 	 * don't allow an offset too close to the end of the file. 	 */
 if|if
 condition|(
 name|offset
