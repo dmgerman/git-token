@@ -69,12 +69,8 @@ DECL|variable|add_interactive
 specifier|static
 name|int
 name|patch_interactive
-init|=
-literal|0
 decl_stmt|,
 name|add_interactive
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
