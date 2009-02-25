@@ -859,7 +859,9 @@ index|[
 name|PATH_MAX
 index|]
 decl_stmt|;
-name|snprintf
+name|output_fd
+operator|=
+name|odb_mkstemp
 argument_list|(
 name|tmpfile
 argument_list|,
@@ -868,17 +870,7 @@ argument_list|(
 name|tmpfile
 argument_list|)
 argument_list|,
-literal|"%s/pack/tmp_pack_XXXXXX"
-argument_list|,
-name|get_object_directory
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|output_fd
-operator|=
-name|xmkstemp
-argument_list|(
-name|tmpfile
+literal|"pack/tmp_pack_XXXXXX"
 argument_list|)
 expr_stmt|;
 name|pack_name
@@ -4540,8 +4532,9 @@ condition|(
 operator|!
 name|keep_name
 condition|)
-block|{
-name|snprintf
+name|keep_fd
+operator|=
+name|odb_pack_keep
 argument_list|(
 name|name
 argument_list|,
@@ -4550,22 +4543,10 @@ argument_list|(
 name|name
 argument_list|)
 argument_list|,
-literal|"%s/pack/pack-%s.keep"
-argument_list|,
-name|get_object_directory
-argument_list|()
-argument_list|,
-name|sha1_to_hex
-argument_list|(
 name|sha1
 argument_list|)
-argument_list|)
 expr_stmt|;
-name|keep_name
-operator|=
-name|name
-expr_stmt|;
-block|}
+else|else
 name|keep_fd
 operator|=
 name|open
@@ -4596,7 +4577,14 @@ name|EEXIST
 condition|)
 name|die
 argument_list|(
-literal|"cannot write keep file"
+literal|"cannot write keep file '%s' (%s)"
+argument_list|,
+name|keep_name
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -4639,7 +4627,14 @@ literal|0
 condition|)
 name|die
 argument_list|(
-literal|"cannot write keep file"
+literal|"cannot close written keep file '%s' (%s)"
+argument_list|,
+name|keep_name
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|report
