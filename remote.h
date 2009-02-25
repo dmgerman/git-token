@@ -684,7 +684,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Look in refs for HEAD. Then look for a matching SHA1 in mapped_refs,  * first checking if refs/heads/master matches. Return NULL if nothing matches  * or if there is no HEAD in refs. remote_head_p is assigned HEAD if not NULL.  */
+comment|/*  * Look for a ref in refs whose SHA1 matches head, first checking if  * refs/heads/master matches. Return NULL if nothing matches or if head  * is NULL.  */
 end_comment
 
 begin_function_decl
@@ -698,20 +698,13 @@ specifier|const
 name|struct
 name|ref
 modifier|*
+name|head
+parameter_list|,
+specifier|const
+name|struct
+name|ref
+modifier|*
 name|refs
-parameter_list|,
-specifier|const
-name|struct
-name|ref
-modifier|*
-name|mapped_refs
-parameter_list|,
-specifier|const
-name|struct
-name|ref
-modifier|*
-modifier|*
-name|remote_head_p
 parameter_list|)
 function_decl|;
 end_function_decl
