@@ -5292,6 +5292,9 @@ decl_stmt|,
 modifier|*
 name|matched_dst
 decl_stmt|;
+name|int
+name|copy_src
+decl_stmt|;
 specifier|const
 name|char
 modifier|*
@@ -5342,6 +5345,10 @@ block|{
 case|case
 literal|1
 case|:
+name|copy_src
+operator|=
+literal|1
+expr_stmt|;
 break|break;
 case|case
 literal|0
@@ -5371,6 +5378,10 @@ operator|->
 name|src
 argument_list|)
 return|;
+name|copy_src
+operator|=
+literal|0
+expr_stmt|;
 break|break;
 default|default:
 return|return
@@ -5568,6 +5579,13 @@ name|matched_dst
 operator|->
 name|peer_ref
 operator|=
+name|copy_src
+condition|?
+name|copy_ref
+argument_list|(
+name|matched_src
+argument_list|)
+else|:
 name|matched_src
 expr_stmt|;
 name|matched_dst
@@ -6133,7 +6151,10 @@ name|dst_peer
 operator|->
 name|peer_ref
 operator|=
+name|copy_ref
+argument_list|(
 name|src
+argument_list|)
 expr_stmt|;
 name|dst_peer
 operator|->
