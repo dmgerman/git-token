@@ -177,7 +177,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"What does '%s' for GIT_TRACE means ?\n"
+literal|"What does '%s' for GIT_TRACE mean?\n"
 argument_list|,
 name|trace
 argument_list|)
