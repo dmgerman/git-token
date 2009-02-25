@@ -322,6 +322,25 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|int
+name|ref_newer
+parameter_list|(
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|new_sha1
+parameter_list|,
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|old_sha1
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/*  * Removes and frees any duplicate refs in the map.  */
 end_comment
