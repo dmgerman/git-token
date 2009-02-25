@@ -259,7 +259,9 @@ index|[
 name|PATH_MAX
 index|]
 decl_stmt|;
-name|snprintf
+name|fd
+operator|=
+name|odb_mkstemp
 argument_list|(
 name|tmpfile
 argument_list|,
@@ -268,17 +270,7 @@ argument_list|(
 name|tmpfile
 argument_list|)
 argument_list|,
-literal|"%s/pack/tmp_idx_XXXXXX"
-argument_list|,
-name|get_object_directory
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|fd
-operator|=
-name|xmkstemp
-argument_list|(
-name|tmpfile
+literal|"pack/tmp_idx_XXXXXX"
 argument_list|)
 expr_stmt|;
 name|index_name
@@ -1255,7 +1247,7 @@ index|[
 literal|46
 index|]
 decl_stmt|;
-comment|/* 	 * The first thing we expects from index-pack's output 	 * is "pack\t%40s\n" or "keep\t%40s\n" (46 bytes) where 	 * %40s is the newly created pack SHA1 name.  In the "keep" 	 * case, we need it to remove the corresponding .keep file 	 * later on.  If we don't get that then tough luck with it. 	 */
+comment|/* 	 * The first thing we expect from index-pack's output 	 * is "pack\t%40s\n" or "keep\t%40s\n" (46 bytes) where 	 * %40s is the newly created pack SHA1 name.  In the "keep" 	 * case, we need it to remove the corresponding .keep file 	 * later on.  If we don't get that then tough luck with it. 	 */
 if|if
 condition|(
 name|read_in_full
