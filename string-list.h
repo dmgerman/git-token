@@ -139,6 +139,47 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/* Use this function to iterate over each item */
+end_comment
+
+begin_typedef
+DECL|typedef|string_list_each_func_t
+typedef|typedef
+name|int
+function_decl|(
+modifier|*
+name|string_list_each_func_t
+function_decl|)
+parameter_list|(
+name|struct
+name|string_list_item
+modifier|*
+parameter_list|,
+name|void
+modifier|*
+parameter_list|)
+function_decl|;
+end_typedef
+
+begin_function_decl
+name|int
+name|for_each_string_list
+parameter_list|(
+name|string_list_each_func_t
+parameter_list|,
+name|struct
+name|string_list
+modifier|*
+name|list
+parameter_list|,
+name|void
+modifier|*
+name|cb_data
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/* Use these functions only on sorted lists: */
 end_comment
 
