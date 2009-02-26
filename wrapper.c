@@ -1069,11 +1069,7 @@ return|return
 name|fd
 return|;
 comment|/* slow path */
-name|safe_create_leading_directories
-argument_list|(
-name|template
-argument_list|)
-expr_stmt|;
+comment|/* some mkstemp implementations erase template on failure */
 name|snprintf
 argument_list|(
 name|template
@@ -1086,6 +1082,11 @@ name|get_object_directory
 argument_list|()
 argument_list|,
 name|pattern
+argument_list|)
+expr_stmt|;
+name|safe_create_leading_directories
+argument_list|(
+name|template
 argument_list|)
 expr_stmt|;
 return|return
