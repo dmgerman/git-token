@@ -8144,6 +8144,26 @@ condition|)
 return|return
 name|NULL
 return|;
+comment|/* 	 * Some transports support directly peeking at 	 * where HEAD points; if that is the case, then 	 * we don't have to guess. 	 */
+if|if
+condition|(
+name|head
+operator|->
+name|symref
+condition|)
+return|return
+name|copy_ref
+argument_list|(
+name|find_ref_by_name
+argument_list|(
+name|refs
+argument_list|,
+name|head
+operator|->
+name|symref
+argument_list|)
+argument_list|)
+return|;
 comment|/* If refs/heads/master could be right, it is. */
 if|if
 condition|(
