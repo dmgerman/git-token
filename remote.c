@@ -8065,7 +8065,6 @@ end_function
 
 begin_function
 DECL|function|guess_remote_head
-specifier|const
 name|struct
 name|ref
 modifier|*
@@ -8082,6 +8081,9 @@ name|struct
 name|ref
 modifier|*
 name|refs
+parameter_list|,
+name|int
+name|all
 parameter_list|)
 block|{
 specifier|const
@@ -8089,6 +8091,22 @@ name|struct
 name|ref
 modifier|*
 name|r
+decl_stmt|;
+name|struct
+name|ref
+modifier|*
+name|list
+init|=
+name|NULL
+decl_stmt|;
+name|struct
+name|ref
+modifier|*
+modifier|*
+name|tail
+init|=
+operator|&
+name|list
 decl_stmt|;
 if|if
 condition|(
@@ -8099,6 +8117,12 @@ return|return
 name|NULL
 return|;
 comment|/* If refs/heads/master could be right, it is. */
+if|if
+condition|(
+operator|!
+name|all
+condition|)
+block|{
 name|r
 operator|=
 name|find_ref_by_name
@@ -8125,8 +8149,12 @@ name|old_sha1
 argument_list|)
 condition|)
 return|return
+name|copy_ref
+argument_list|(
 name|r
+argument_list|)
 return|;
+block|}
 comment|/* Look for another ref that points there */
 for|for
 control|(
@@ -8142,6 +8170,7 @@ name|r
 operator|->
 name|next
 control|)
+block|{
 if|if
 condition|(
 name|r
@@ -8160,12 +8189,37 @@ operator|->
 name|old_sha1
 argument_list|)
 condition|)
-return|return
+block|{
+operator|*
+name|tail
+operator|=
+name|copy_ref
+argument_list|(
 name|r
-return|;
-comment|/* Nothing is the same */
+argument_list|)
+expr_stmt|;
+name|tail
+operator|=
+operator|&
+operator|(
+operator|(
+operator|*
+name|tail
+operator|)
+operator|->
+name|next
+operator|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|all
+condition|)
+break|break;
+block|}
+block|}
 return|return
-name|NULL
+name|list
 return|;
 block|}
 end_function

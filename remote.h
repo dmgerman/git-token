@@ -684,11 +684,10 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Look for a ref in refs whose SHA1 matches head, first checking if  * refs/heads/master matches. Return NULL if nothing matches or if head  * is NULL.  */
+comment|/*  * Find refs from a list which are likely to be pointed to by the given HEAD  * ref. If 'all' is false, returns the most likely ref; otherwise, returns a  * list of all candidate refs. If no match is found (or 'head' is NULL),  * returns NULL. All returns are newly allocated and should be freed.  */
 end_comment
 
 begin_function_decl
-specifier|const
 name|struct
 name|ref
 modifier|*
@@ -705,6 +704,9 @@ name|struct
 name|ref
 modifier|*
 name|refs
+parameter_list|,
+name|int
+name|all
 parameter_list|)
 function_decl|;
 end_function_decl
