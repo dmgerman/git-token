@@ -8535,7 +8535,7 @@ name|revs
 operator|->
 name|unpacked
 operator|&&
-name|has_sha1_pack
+name|has_sha1_kept_pack
 argument_list|(
 name|commit
 operator|->
