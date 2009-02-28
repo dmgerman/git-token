@@ -8544,8 +8544,6 @@ operator|.
 name|sha1
 argument_list|,
 name|revs
-operator|->
-name|ignore_packed
 argument_list|)
 condition|)
 return|return

@@ -63,6 +63,18 @@ directive|include
 file|"sha1-lookup.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"diff.h"
+end_include
+
+begin_include
+include|#
+directive|include
+file|"revision.h"
+end_include
+
 begin_ifndef
 ifndef|#
 directive|ifndef
@@ -10461,10 +10473,10 @@ modifier|*
 name|e
 parameter_list|,
 specifier|const
-name|char
+name|struct
+name|rev_info
 modifier|*
-modifier|*
-name|ignore_packed
+name|revs
 parameter_list|)
 block|{
 specifier|static
@@ -10518,6 +10530,8 @@ do|do
 block|{
 if|if
 condition|(
+name|revs
+operator|->
 name|ignore_packed
 condition|)
 block|{
@@ -10531,6 +10545,8 @@ for|for
 control|(
 name|ig
 operator|=
+name|revs
+operator|->
 name|ignore_packed
 init|;
 operator|*
@@ -10768,10 +10784,10 @@ modifier|*
 name|e
 parameter_list|,
 specifier|const
-name|char
+name|struct
+name|rev_info
 modifier|*
-modifier|*
-name|ignore_packed
+name|revs
 parameter_list|)
 block|{
 return|return
@@ -10781,7 +10797,7 @@ name|sha1
 argument_list|,
 name|e
 argument_list|,
-name|ignore_packed
+name|revs
 argument_list|)
 return|;
 block|}
@@ -13203,10 +13219,10 @@ modifier|*
 name|sha1
 parameter_list|,
 specifier|const
-name|char
+name|struct
+name|rev_info
 modifier|*
-modifier|*
-name|ignore_packed
+name|revs
 parameter_list|)
 block|{
 name|struct
@@ -13221,7 +13237,7 @@ argument_list|,
 operator|&
 name|e
 argument_list|,
-name|ignore_packed
+name|revs
 argument_list|)
 return|;
 block|}
