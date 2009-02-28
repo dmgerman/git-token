@@ -874,6 +874,24 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|is_kept_pack
+parameter_list|(
+specifier|const
+name|struct
+name|packed_git
+modifier|*
+parameter_list|,
+specifier|const
+name|struct
+name|rev_info
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif

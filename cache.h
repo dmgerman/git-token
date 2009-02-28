@@ -5565,24 +5565,6 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
-begin_function_decl
-specifier|extern
-name|int
-name|matches_pack_name
-parameter_list|(
-name|struct
-name|packed_git
-modifier|*
-name|p
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|name
-parameter_list|)
-function_decl|;
-end_function_decl
-
 begin_comment
 comment|/* Dumb servers support */
 end_comment
