@@ -9779,10 +9779,9 @@ name|o
 decl_stmt|;
 if|if
 condition|(
-name|is_kept_pack
-argument_list|(
 name|p
-argument_list|)
+operator|->
+name|pack_keep
 condition|)
 continue|continue;
 if|if
@@ -10007,10 +10006,9 @@ control|)
 block|{
 if|if
 condition|(
-name|is_kept_pack
-argument_list|(
 name|p
-argument_list|)
+operator|->
+name|pack_keep
 condition|)
 continue|continue;
 if|if
