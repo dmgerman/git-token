@@ -9782,8 +9782,6 @@ condition|(
 name|is_kept_pack
 argument_list|(
 name|p
-argument_list|,
-name|revs
 argument_list|)
 condition|)
 continue|continue;
@@ -10012,8 +10010,6 @@ condition|(
 name|is_kept_pack
 argument_list|(
 name|p
-argument_list|,
-name|revs
 argument_list|)
 condition|)
 continue|continue;
@@ -11075,11 +11071,11 @@ name|arg
 argument_list|)
 operator|||
 operator|!
-name|prefixcmp
+name|strcmp
 argument_list|(
-name|arg
+literal|"--kept-pack-only"
 argument_list|,
-literal|"--unpacked="
+name|arg
 argument_list|)
 operator|||
 operator|!

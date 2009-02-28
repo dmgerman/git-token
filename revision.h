@@ -250,7 +250,11 @@ name|unpacked
 range|:
 literal|1
 decl_stmt|,
-comment|/* see also ignore_packed below */
+DECL|member|kept_pack_only
+name|kept_pack_only
+range|:
+literal|1
+decl_stmt|,
 DECL|member|boundary
 name|boundary
 range|:
@@ -366,18 +370,6 @@ DECL|member|date_mode
 name|enum
 name|date_mode
 name|date_mode
-decl_stmt|;
-DECL|member|ignore_packed
-specifier|const
-name|char
-modifier|*
-modifier|*
-name|ignore_packed
-decl_stmt|;
-comment|/* pretend objects in these are unpacked */
-DECL|member|num_ignore_packed
-name|int
-name|num_ignore_packed
 decl_stmt|;
 DECL|member|abbrev
 name|unsigned
@@ -882,11 +874,6 @@ parameter_list|(
 specifier|const
 name|struct
 name|packed_git
-modifier|*
-parameter_list|,
-specifier|const
-name|struct
-name|rev_info
 modifier|*
 parameter_list|)
 function_decl|;
