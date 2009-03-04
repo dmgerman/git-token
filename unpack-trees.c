@@ -1876,9 +1876,6 @@ name|timestamp
 operator|.
 name|sec
 expr_stmt|;
-ifdef|#
-directive|ifdef
-name|USE_NSEC
 name|o
 operator|->
 name|result
@@ -1895,8 +1892,6 @@ name|timestamp
 operator|.
 name|nsec
 expr_stmt|;
-endif|#
-directive|endif
 block|}
 name|o
 operator|->
