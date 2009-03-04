@@ -184,7 +184,9 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"not a git archive"
+literal|"'%s' does not appear to be a git repository"
+argument_list|,
+name|buf
 argument_list|)
 expr_stmt|;
 comment|/* put received options in sent_argv[] */

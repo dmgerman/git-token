@@ -3541,7 +3541,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"'%s': unable to chdir or not a git archive"
+literal|"'%s' does not appear to be a git repository"
 argument_list|,
 name|dir
 argument_list|)
