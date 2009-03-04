@@ -622,7 +622,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|errno
+name|err
 operator|==
 name|EEXIST
 condition|)
@@ -765,16 +765,11 @@ name|flags
 operator|&
 name|LOCK_DIE_ON_ERROR
 condition|)
-name|die
+name|unable_to_lock_index_die
 argument_list|(
-literal|"unable to create '%s.lock': %s"
-argument_list|,
 name|path
 argument_list|,
-name|strerror
-argument_list|(
 name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
