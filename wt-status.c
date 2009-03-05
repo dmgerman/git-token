@@ -108,21 +108,21 @@ name|COLOR_MAXLEN
 index|]
 init|=
 block|{
-literal|""
+name|GIT_COLOR_NORMAL
 block|,
-comment|/* WT_STATUS_HEADER: normal */
-literal|"\033[32m"
+comment|/* WT_STATUS_HEADER */
+name|GIT_COLOR_GREEN
 block|,
-comment|/* WT_STATUS_UPDATED: green */
-literal|"\033[31m"
+comment|/* WT_STATUS_UPDATED */
+name|GIT_COLOR_RED
 block|,
-comment|/* WT_STATUS_CHANGED: red */
-literal|"\033[31m"
+comment|/* WT_STATUS_CHANGED */
+name|GIT_COLOR_RED
 block|,
-comment|/* WT_STATUS_UNTRACKED: red */
-literal|"\033[31m"
+comment|/* WT_STATUS_UNTRACKED */
+name|GIT_COLOR_RED
 block|,
-comment|/* WT_STATUS_NOBRANCH: red */
+comment|/* WT_STATUS_NOBRANCH */
 block|}
 decl_stmt|;
 end_decl_stmt

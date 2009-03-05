@@ -191,30 +191,29 @@ name|COLOR_MAXLEN
 index|]
 init|=
 block|{
-literal|"\033[m"
+name|GIT_COLOR_RESET
 block|,
-comment|/* reset */
-literal|""
+name|GIT_COLOR_NORMAL
 block|,
-comment|/* PLAIN (normal) */
-literal|"\033[1m"
+comment|/* PLAIN */
+name|GIT_COLOR_BOLD
 block|,
-comment|/* METAINFO (bold) */
-literal|"\033[36m"
+comment|/* METAINFO */
+name|GIT_COLOR_CYAN
 block|,
-comment|/* FRAGINFO (cyan) */
-literal|"\033[31m"
+comment|/* FRAGINFO */
+name|GIT_COLOR_RED
 block|,
-comment|/* OLD (red) */
-literal|"\033[32m"
+comment|/* OLD */
+name|GIT_COLOR_GREEN
 block|,
-comment|/* NEW (green) */
-literal|"\033[33m"
+comment|/* NEW */
+name|GIT_COLOR_YELLOW
 block|,
-comment|/* COMMIT (yellow) */
-literal|"\033[41m"
+comment|/* COMMIT */
+name|GIT_COLOR_BG_RED
 block|,
-comment|/* WHITESPACE (red background) */
+comment|/* WHITESPACE */
 block|}
 decl_stmt|;
 end_decl_stmt

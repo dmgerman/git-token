@@ -147,21 +147,20 @@ name|COLOR_MAXLEN
 index|]
 init|=
 block|{
-literal|"\033[m"
+name|GIT_COLOR_RESET
 block|,
-comment|/* reset */
-literal|""
+name|GIT_COLOR_NORMAL
 block|,
-comment|/* PLAIN (normal) */
-literal|"\033[31m"
+comment|/* PLAIN */
+name|GIT_COLOR_RED
 block|,
-comment|/* REMOTE (red) */
-literal|""
+comment|/* REMOTE */
+name|GIT_COLOR_NORMAL
 block|,
-comment|/* LOCAL (normal) */
-literal|"\033[32m"
+comment|/* LOCAL */
+name|GIT_COLOR_GREEN
 block|,
-comment|/* CURRENT (green) */
+comment|/* CURRENT */
 block|}
 decl_stmt|;
 end_decl_stmt
@@ -171,28 +170,28 @@ DECL|enum|color_branch
 enum|enum
 name|color_branch
 block|{
-DECL|enumerator|COLOR_BRANCH_RESET
-name|COLOR_BRANCH_RESET
+DECL|enumerator|BRANCH_COLOR_RESET
+name|BRANCH_COLOR_RESET
 init|=
 literal|0
 block|,
-DECL|enumerator|COLOR_BRANCH_PLAIN
-name|COLOR_BRANCH_PLAIN
+DECL|enumerator|BRANCH_COLOR_PLAIN
+name|BRANCH_COLOR_PLAIN
 init|=
 literal|1
 block|,
-DECL|enumerator|COLOR_BRANCH_REMOTE
-name|COLOR_BRANCH_REMOTE
+DECL|enumerator|BRANCH_COLOR_REMOTE
+name|BRANCH_COLOR_REMOTE
 init|=
 literal|2
 block|,
-DECL|enumerator|COLOR_BRANCH_LOCAL
-name|COLOR_BRANCH_LOCAL
+DECL|enumerator|BRANCH_COLOR_LOCAL
+name|BRANCH_COLOR_LOCAL
 init|=
 literal|3
 block|,
-DECL|enumerator|COLOR_BRANCH_CURRENT
-name|COLOR_BRANCH_CURRENT
+DECL|enumerator|BRANCH_COLOR_CURRENT
+name|BRANCH_COLOR_CURRENT
 init|=
 literal|4
 block|, }
@@ -261,7 +260,7 @@ literal|"plain"
 argument_list|)
 condition|)
 return|return
-name|COLOR_BRANCH_PLAIN
+name|BRANCH_COLOR_PLAIN
 return|;
 if|if
 condition|(
@@ -276,7 +275,7 @@ literal|"reset"
 argument_list|)
 condition|)
 return|return
-name|COLOR_BRANCH_RESET
+name|BRANCH_COLOR_RESET
 return|;
 if|if
 condition|(
@@ -291,7 +290,7 @@ literal|"remote"
 argument_list|)
 condition|)
 return|return
-name|COLOR_BRANCH_REMOTE
+name|BRANCH_COLOR_REMOTE
 return|;
 if|if
 condition|(
@@ -306,7 +305,7 @@ literal|"local"
 argument_list|)
 condition|)
 return|return
-name|COLOR_BRANCH_LOCAL
+name|BRANCH_COLOR_LOCAL
 return|;
 if|if
 condition|(
@@ -321,7 +320,7 @@ literal|"current"
 argument_list|)
 condition|)
 return|return
-name|COLOR_BRANCH_CURRENT
+name|BRANCH_COLOR_CURRENT
 return|;
 name|die
 argument_list|(
@@ -1614,7 +1613,7 @@ name|REF_LOCAL_BRANCH
 case|:
 name|color
 operator|=
-name|COLOR_BRANCH_LOCAL
+name|BRANCH_COLOR_LOCAL
 expr_stmt|;
 break|break;
 case|case
@@ -1622,13 +1621,13 @@ name|REF_REMOTE_BRANCH
 case|:
 name|color
 operator|=
-name|COLOR_BRANCH_REMOTE
+name|BRANCH_COLOR_REMOTE
 expr_stmt|;
 break|break;
 default|default:
 name|color
 operator|=
-name|COLOR_BRANCH_PLAIN
+name|BRANCH_COLOR_PLAIN
 expr_stmt|;
 break|break;
 block|}
@@ -1647,7 +1646,7 @@ literal|'*'
 expr_stmt|;
 name|color
 operator|=
-name|COLOR_BRANCH_CURRENT
+name|BRANCH_COLOR_CURRENT
 expr_stmt|;
 block|}
 if|if
@@ -1753,7 +1752,7 @@ name|name
 argument_list|,
 name|branch_get_color
 argument_list|(
-name|COLOR_BRANCH_RESET
+name|BRANCH_COLOR_RESET
 argument_list|)
 argument_list|,
 name|find_unique_abbrev
@@ -1808,7 +1807,7 @@ name|name
 argument_list|,
 name|branch_get_color
 argument_list|(
-name|COLOR_BRANCH_RESET
+name|BRANCH_COLOR_RESET
 argument_list|)
 argument_list|)
 expr_stmt|;
