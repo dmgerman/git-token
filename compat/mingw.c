@@ -285,8 +285,20 @@ operator|=
 name|fdata
 operator|.
 name|nFileSizeLow
+operator||
+operator|(
+operator|(
+operator|(
+name|off_t
+operator|)
+name|fdata
+operator|.
+name|nFileSizeHigh
+operator|)
+operator|<<
+literal|32
+operator|)
 expr_stmt|;
-comment|/* Can't use nFileSizeHigh, since it's not a stat64 */
 name|buf
 operator|->
 name|st_dev
@@ -547,7 +559,7 @@ operator|!=
 name|FILE_TYPE_DISK
 condition|)
 return|return
-name|fstat
+name|_fstati64
 argument_list|(
 name|fd
 argument_list|,
@@ -607,8 +619,20 @@ operator|=
 name|fdata
 operator|.
 name|nFileSizeLow
+operator||
+operator|(
+operator|(
+operator|(
+name|off_t
+operator|)
+name|fdata
+operator|.
+name|nFileSizeHigh
+operator|)
+operator|<<
+literal|32
+operator|)
 expr_stmt|;
-comment|/* Can't use nFileSizeHigh, since it's not a stat64 */
 name|buf
 operator|->
 name|st_dev

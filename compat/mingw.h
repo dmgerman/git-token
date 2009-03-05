@@ -1107,6 +1107,30 @@ begin_comment
 comment|/* Use mingw_lstat() instead of lstat()/stat() and  * mingw_fstat() instead of fstat() on Windows.  */
 end_comment
 
+begin_define
+DECL|macro|off_t
+define|#
+directive|define
+name|off_t
+value|off64_t
+end_define
+
+begin_define
+DECL|macro|stat
+define|#
+directive|define
+name|stat
+value|_stati64
+end_define
+
+begin_define
+DECL|macro|lseek
+define|#
+directive|define
+name|lseek
+value|_lseeki64
+end_define
+
 begin_function_decl
 name|int
 name|mingw_lstat
@@ -1156,10 +1180,10 @@ value|mingw_lstat
 end_define
 
 begin_define
-DECL|macro|stat
+DECL|macro|stat64
 define|#
 directive|define
-name|stat
+name|stat64
 parameter_list|(
 name|x
 parameter_list|,
