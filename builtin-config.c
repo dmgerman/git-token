@@ -617,7 +617,7 @@ argument_list|,
 operator|&
 name|types
 argument_list|,
-name|NULL
+literal|"value is --bool or --int"
 argument_list|,
 name|TYPE_BOOL_OR_INT
 argument_list|)
