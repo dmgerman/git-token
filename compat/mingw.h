@@ -1180,10 +1180,10 @@ value|mingw_lstat
 end_define
 
 begin_define
-DECL|macro|stat64
+DECL|macro|_stati64
 define|#
 directive|define
-name|stat64
+name|_stati64
 parameter_list|(
 name|x
 parameter_list|,
