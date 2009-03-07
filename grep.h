@@ -121,6 +121,12 @@ name|fixed
 range|:
 literal|1
 decl_stmt|;
+DECL|member|word_regexp
+name|unsigned
+name|word_regexp
+range|:
+literal|1
+decl_stmt|;
 block|}
 struct|;
 end_struct
