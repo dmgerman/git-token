@@ -487,8 +487,6 @@ name|size
 parameter_list|)
 block|{
 name|char
-name|ch
-decl_stmt|,
 modifier|*
 name|cp
 decl_stmt|;
@@ -525,12 +523,8 @@ operator|<=
 operator|--
 name|cp
 operator|&&
-operator|(
-name|ch
-operator|=
 operator|*
 name|cp
-operator|)
 operator|==
 literal|'\n'
 condition|)
@@ -542,12 +536,13 @@ operator|<=
 name|cp
 condition|)
 block|{
+name|char
 name|ch
-operator|=
+init|=
 operator|*
 name|cp
 operator|--
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|ch
