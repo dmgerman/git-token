@@ -2159,6 +2159,12 @@ argument_list|,
 name|me
 argument_list|)
 expr_stmt|;
+name|rollback_lock_file
+argument_list|(
+operator|&
+name|index_lock
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
