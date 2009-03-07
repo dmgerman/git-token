@@ -353,6 +353,12 @@ index|[
 name|COLOR_MAXLEN
 index|]
 decl_stmt|;
+DECL|member|color_external
+specifier|const
+name|char
+modifier|*
+name|color_external
+decl_stmt|;
 DECL|member|regflags
 name|int
 name|regflags
