@@ -3073,13 +3073,6 @@ index|[
 literal|20
 index|]
 decl_stmt|;
-specifier|const
-name|char
-modifier|*
-name|symref
-decl_stmt|;
-name|symref
-operator|=
 name|resolve_ref
 argument_list|(
 name|item

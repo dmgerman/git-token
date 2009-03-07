@@ -1118,14 +1118,8 @@ index|[
 literal|20
 index|]
 decl_stmt|;
-name|int
-name|len
-decl_stmt|;
 while|while
 condition|(
-operator|(
-name|len
-operator|=
 name|packet_read_line
 argument_list|(
 name|fd
@@ -1140,7 +1134,6 @@ argument_list|(
 name|line
 argument_list|)
 argument_list|)
-operator|)
 condition|)
 block|{
 if|if
