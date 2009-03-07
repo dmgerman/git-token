@@ -12,6 +12,12 @@ directive|define
 name|GREP_H
 end_define
 
+begin_include
+include|#
+directive|include
+file|"color.h"
+end_include
+
 begin_enum
 DECL|enum|grep_pat_token
 enum|enum
@@ -335,6 +341,17 @@ name|unsigned
 name|null_following_name
 range|:
 literal|1
+decl_stmt|;
+DECL|member|color
+name|int
+name|color
+decl_stmt|;
+DECL|member|color_match
+name|char
+name|color_match
+index|[
+name|COLOR_MAXLEN
+index|]
 decl_stmt|;
 DECL|member|regflags
 name|int
