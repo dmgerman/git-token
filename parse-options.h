@@ -73,6 +73,11 @@ DECL|enumerator|PARSE_OPT_KEEP_ARGV0
 name|PARSE_OPT_KEEP_ARGV0
 init|=
 literal|4
+block|,
+DECL|enumerator|PARSE_OPT_KEEP_UNKNOWN
+name|PARSE_OPT_KEEP_UNKNOWN
+init|=
+literal|8
 block|, }
 enum|;
 end_enum
