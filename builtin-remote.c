@@ -2063,7 +2063,6 @@ name|status
 operator|=
 name|PUSH_STATUS_OUTOFDATE
 expr_stmt|;
-comment|// ref->peer_ref = NULL; /* local ref which is freed below */
 block|}
 name|free_refs
 argument_list|(
