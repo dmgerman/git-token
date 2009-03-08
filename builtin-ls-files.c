@@ -2444,14 +2444,14 @@ name|OPT_BIT
 argument_list|(
 literal|0
 argument_list|,
-literal|"empty-directory"
+literal|"no-empty-directory"
 argument_list|,
 operator|&
 name|dir
 operator|.
 name|flags
 argument_list|,
-literal|"list empty directories"
+literal|"don't show empty directories"
 argument_list|,
 name|DIR_HIDE_EMPTY_DIRECTORIES
 argument_list|)
