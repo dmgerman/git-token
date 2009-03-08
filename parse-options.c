@@ -1558,6 +1558,18 @@ name|usagestr
 index|[]
 parameter_list|)
 block|{
+name|int
+name|internal_help
+init|=
+operator|!
+operator|(
+name|ctx
+operator|->
+name|flags
+operator|&
+name|PARSE_OPT_NO_INTERNAL_HELP
+operator|)
+decl_stmt|;
 comment|/* we must reset ->opt, unknown short option leave it dangling */
 name|ctx
 operator|->
@@ -1657,6 +1669,8 @@ literal|1
 expr_stmt|;
 if|if
 condition|(
+name|internal_help
+operator|&&
 operator|*
 name|ctx
 operator|->
@@ -1726,6 +1740,8 @@ condition|)
 block|{
 if|if
 condition|(
+name|internal_help
+operator|&&
 operator|*
 name|ctx
 operator|->
@@ -1842,6 +1858,8 @@ break|break;
 block|}
 if|if
 condition|(
+name|internal_help
+operator|&&
 operator|!
 name|strcmp
 argument_list|(
@@ -1864,6 +1882,8 @@ argument_list|)
 return|;
 if|if
 condition|(
+name|internal_help
+operator|&&
 operator|!
 name|strcmp
 argument_list|(
