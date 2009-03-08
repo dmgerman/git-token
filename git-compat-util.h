@@ -2656,6 +2656,39 @@ else|#
 directive|else
 end_else
 
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|USE_ST_TIMESPEC
+end_ifdef
+
+begin_define
+DECL|macro|ST_CTIME_NSEC
+define|#
+directive|define
+name|ST_CTIME_NSEC
+parameter_list|(
+name|st
+parameter_list|)
+value|((unsigned int)((st).st_ctimespec.tv_nsec))
+end_define
+
+begin_define
+DECL|macro|ST_MTIME_NSEC
+define|#
+directive|define
+name|ST_MTIME_NSEC
+parameter_list|(
+name|st
+parameter_list|)
+value|((unsigned int)((st).st_mtimespec.tv_nsec))
+end_define
+
+begin_else
+else|#
+directive|else
+end_else
+
 begin_define
 DECL|macro|ST_CTIME_NSEC
 define|#
@@ -2677,6 +2710,11 @@ name|st
 parameter_list|)
 value|((unsigned int)((st).st_mtim.tv_nsec))
 end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_endif
 endif|#
