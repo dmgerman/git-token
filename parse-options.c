@@ -2221,6 +2221,14 @@ name|int
 name|full
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|usagestr
+condition|)
+return|return
+name|PARSE_OPT_HELP
+return|;
 name|fprintf
 argument_list|(
 name|stderr
