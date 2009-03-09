@@ -580,6 +580,22 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+specifier|const
+name|char
+modifier|*
+name|prettify_ref
+parameter_list|(
+specifier|const
+name|struct
+name|ref
+modifier|*
+name|ref
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/** rename ref, return 0 on success **/
 end_comment
