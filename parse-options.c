@@ -1510,6 +1510,25 @@ name|flags
 operator|=
 name|flags
 expr_stmt|;
+if|if
+condition|(
+operator|(
+name|flags
+operator|&
+name|PARSE_OPT_KEEP_UNKNOWN
+operator|)
+operator|&&
+operator|(
+name|flags
+operator|&
+name|PARSE_OPT_STOP_AT_NON_OPTION
+operator|)
+condition|)
+name|die
+argument_list|(
+literal|"STOP_AT_NON_OPTION and KEEP_UNKNOWN don't go together"
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
