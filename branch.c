@@ -347,27 +347,93 @@ name|flag
 operator|&
 name|BRANCH_CONFIG_VERBOSE
 condition|)
-name|printf
+block|{
+name|strbuf_reset
 argument_list|(
-literal|"Branch %s set up to track %s branch %s %s.\n"
-argument_list|,
-name|local
+operator|&
+name|key
+argument_list|)
+expr_stmt|;
+name|strbuf_addstr
+argument_list|(
+operator|&
+name|key
 argument_list|,
 name|origin
 condition|?
 literal|"remote"
 else|:
 literal|"local"
+argument_list|)
+expr_stmt|;
+comment|/* Are we tracking a proper "branch"? */
+if|if
+condition|(
+operator|!
+name|prefixcmp
+argument_list|(
+name|remote
+argument_list|,
+literal|"refs/heads/"
+argument_list|)
+condition|)
+block|{
+name|strbuf_addf
+argument_list|(
+operator|&
+name|key
+argument_list|,
+literal|" branch %s"
 argument_list|,
 name|remote
+operator|+
+literal|11
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|origin
+condition|)
+name|strbuf_addf
+argument_list|(
+operator|&
+name|key
+argument_list|,
+literal|" from %s"
+argument_list|,
+name|origin
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+name|strbuf_addf
+argument_list|(
+operator|&
+name|key
+argument_list|,
+literal|" ref %s"
+argument_list|,
+name|remote
+argument_list|)
+expr_stmt|;
+name|printf
+argument_list|(
+literal|"Branch %s set up to track %s%s.\n"
+argument_list|,
+name|local
+argument_list|,
+name|key
+operator|.
+name|buf
 argument_list|,
 name|rebasing
 condition|?
-literal|"by rebasing"
+literal|" by rebasing"
 else|:
-literal|"by merging"
+literal|""
 argument_list|)
 expr_stmt|;
+block|}
 name|strbuf_release
 argument_list|(
 operator|&
