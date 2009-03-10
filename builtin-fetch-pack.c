@@ -2537,8 +2537,6 @@ literal|0
 index|]
 argument_list|,
 name|fd
-argument_list|,
-literal|2
 argument_list|)
 return|;
 block|}
