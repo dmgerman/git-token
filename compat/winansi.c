@@ -45,7 +45,7 @@ comment|/* TODO: write */
 end_comment
 
 begin_comment
-comment|/*  ANSI codes used by git: m, K   This file is git-specific. Therefore, this file does not attempt  to implement any codes that are not used by git.   TODO: K */
+comment|/*  ANSI codes used by git: m, K   This file is git-specific. Therefore, this file does not attempt  to implement any codes that are not used by git. */
 end_comment
 
 begin_decl_stmt
@@ -265,6 +265,60 @@ argument_list|(
 name|console
 argument_list|,
 name|attributes
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|function|erase_in_line
+specifier|static
+name|void
+name|erase_in_line
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+name|CONSOLE_SCREEN_BUFFER_INFO
+name|sbi
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|console
+condition|)
+return|return;
+name|GetConsoleScreenBufferInfo
+argument_list|(
+name|console
+argument_list|,
+operator|&
+name|sbi
+argument_list|)
+expr_stmt|;
+name|FillConsoleOutputCharacterA
+argument_list|(
+name|console
+argument_list|,
+literal|' '
+argument_list|,
+name|sbi
+operator|.
+name|dwSize
+operator|.
+name|X
+operator|-
+name|sbi
+operator|.
+name|dwCursorPosition
+operator|.
+name|X
+argument_list|,
+name|sbi
+operator|.
+name|dwCursorPosition
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 block|}
@@ -749,7 +803,9 @@ break|break;
 case|case
 literal|'K'
 case|:
-comment|/* TODO */
+name|erase_in_line
+argument_list|()
+expr_stmt|;
 break|break;
 default|default:
 comment|/* Unsupported code */
