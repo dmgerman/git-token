@@ -75,6 +75,12 @@ directive|include
 file|"sigchain.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"run-command.h"
+end_include
+
 begin_comment
 comment|/*  * Overall FIXMEs:  *  - respect DB_ENVIRONMENT for .git/objects.  *  * Implementation notes:  *  - dropping use-separate-remote and no-separate-remote compatibility  *  */
 end_comment
@@ -2109,6 +2115,11 @@ name|src_ref_prefix
 init|=
 literal|"refs/heads/"
 decl_stmt|;
+name|int
+name|err
+init|=
+literal|0
+decl_stmt|;
 name|struct
 name|refspec
 name|refspec
@@ -3269,6 +3280,31 @@ argument_list|(
 literal|"unable to write new index file"
 argument_list|)
 expr_stmt|;
+name|err
+operator||=
+name|run_hook
+argument_list|(
+name|NULL
+argument_list|,
+literal|"post-checkout"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|null_sha1
+argument_list|)
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|remote_head
+operator|->
+name|old_sha1
+argument_list|)
+argument_list|,
+literal|"1"
+argument_list|,
+name|NULL
+argument_list|)
+expr_stmt|;
 block|}
 name|strbuf_release
 argument_list|(
@@ -3299,7 +3335,7 @@ operator|=
 literal|0
 expr_stmt|;
 return|return
-literal|0
+name|err
 return|;
 block|}
 end_function
