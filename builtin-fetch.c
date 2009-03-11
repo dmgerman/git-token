@@ -3701,6 +3701,16 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|remote
+condition|)
+name|die
+argument_list|(
+literal|"Where do you want to fetch from today?"
+argument_list|)
+expr_stmt|;
 name|transport
 operator|=
 name|transport_get
@@ -3771,18 +3781,6 @@ argument_list|(
 name|TRANS_OPT_DEPTH
 argument_list|,
 name|depth
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-operator|!
-name|transport
-operator|->
-name|url
-condition|)
-name|die
-argument_list|(
-literal|"Where do you want to fetch from today?"
 argument_list|)
 expr_stmt|;
 if|if
