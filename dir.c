@@ -582,7 +582,7 @@ name|strcspn
 argument_list|(
 name|string
 argument_list|,
-literal|"*?[{"
+literal|"*?[{\\"
 argument_list|)
 index|]
 operator|==
