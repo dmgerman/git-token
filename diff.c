@@ -10727,8 +10727,6 @@ operator|&&
 name|has_sha1_pack
 argument_list|(
 name|sha1
-argument_list|,
-name|NULL
 argument_list|)
 condition|)
 return|return
