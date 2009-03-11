@@ -525,13 +525,6 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
-name|git_config
-argument_list|(
-name|git_default_config
-argument_list|,
-name|NULL
-argument_list|)
-expr_stmt|;
 name|argc
 operator|=
 name|parse_options
@@ -586,6 +579,13 @@ name|vpath
 argument_list|)
 expr_stmt|;
 block|}
+name|git_config
+argument_list|(
+name|git_default_config
+argument_list|,
+name|NULL
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|stdin_paths
