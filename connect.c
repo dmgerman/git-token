@@ -2714,8 +2714,6 @@ name|host
 decl_stmt|,
 modifier|*
 name|path
-init|=
-name|url
 decl_stmt|;
 name|char
 modifier|*

@@ -658,10 +658,6 @@ name|NULL
 argument_list|)
 expr_stmt|;
 comment|/* no "diff" UI options */
-name|nr_sha1
-operator|=
-literal|0
-expr_stmt|;
 name|opt
 operator|->
 name|abbrev

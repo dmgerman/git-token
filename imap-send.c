@@ -2982,9 +2982,6 @@ name|cb
 operator|.
 name|dlen
 operator|||
-operator|(
-name|n
-operator|=
 name|socket_write
 argument_list|(
 operator|&
@@ -2998,7 +2995,6 @@ literal|"\r\n"
 argument_list|,
 literal|2
 argument_list|)
-operator|)
 operator|!=
 literal|2
 condition|)
