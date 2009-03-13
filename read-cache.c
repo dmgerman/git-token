@@ -7727,6 +7727,20 @@ expr_stmt|;
 case|case
 name|DIFF_STATUS_UNMERGED
 case|:
+comment|/* 			 * ADD_CACHE_IGNORE_REMOVAL is unset if "git 			 * add -u" is calling us, In such a case, a 			 * missing work tree file needs to be removed 			 * if there is an unmerged entry at stage #2, 			 * but such a diff record is followed by 			 * another with DIFF_STATUS_DELETED (and if 			 * there is no stage #2, we won't see DELETED 			 * nor MODIFIED).  We can simply continue 			 * either way. 			 */
+if|if
+condition|(
+operator|!
+operator|(
+name|data
+operator|->
+name|flags
+operator|&
+name|ADD_CACHE_IGNORE_REMOVAL
+operator|)
+condition|)
+continue|continue;
+comment|/* 			 * Otherwise, it is "git add path" is asking 			 * to explicitly add it; we fall through.  A 			 * missing work tree file is an error and is 			 * caught by add_file_to_index() in such a 			 * case. 			 */
 case|case
 name|DIFF_STATUS_MODIFIED
 case|:
