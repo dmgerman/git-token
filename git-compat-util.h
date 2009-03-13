@@ -1081,11 +1081,19 @@ return|;
 block|}
 end_function
 
-begin_ifdef
-ifdef|#
-directive|ifdef
+begin_if
+if|#
+directive|if
+name|defined
+argument_list|(
 name|NO_MMAP
-end_ifdef
+argument_list|)
+operator|||
+name|defined
+argument_list|(
+name|USE_WIN32_MMAP
+argument_list|)
+end_if
 
 begin_ifndef
 ifndef|#
@@ -1189,6 +1197,36 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_else
+else|#
+directive|else
+end_else
+
+begin_comment
+comment|/* NO_MMAP || USE_WIN32_MMAP */
+end_comment
+
+begin_include
+include|#
+directive|include
+file|<sys/mman.h>
+end_include
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
+begin_comment
+comment|/* NO_MMAP || USE_WIN32_MMAP */
+end_comment
+
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|NO_MMAP
+end_ifdef
+
 begin_comment
 comment|/* This value must be multiple of (pagesize * 2) */
 end_comment
@@ -1209,12 +1247,6 @@ end_else
 begin_comment
 comment|/* NO_MMAP */
 end_comment
-
-begin_include
-include|#
-directive|include
-file|<sys/mman.h>
-end_include
 
 begin_comment
 comment|/* This value must be multiple of (pagesize * 2) */

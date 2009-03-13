@@ -1091,6 +1091,34 @@ name|rename
 value|mingw_rename
 end_define
 
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|USE_WIN32_MMAP
+end_ifdef
+
+begin_function_decl
+name|int
+name|mingw_getpagesize
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_define
+DECL|macro|getpagesize
+define|#
+directive|define
+name|getpagesize
+value|mingw_getpagesize
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_comment
 comment|/* Use mingw_lstat() instead of lstat()/stat() and  * mingw_fstat() instead of fstat() on Windows.  */
 end_comment
