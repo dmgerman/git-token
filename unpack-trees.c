@@ -54,6 +54,12 @@ directive|include
 file|"refs.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"attr.h"
+end_include
+
 begin_comment
 comment|/*  * Error messages expected by scripts out of plumbing commands such as  * read-tree.  Non-scripted Porcelain is not required to use these messages  * and in fact are encouraged to reword them to better suit their particular  * situation better.  See how "git checkout" replaces not_uptodate_file to  * explain why it does not allow switching between branches when you have  * local changes, for example.  */
 end_comment
@@ -449,6 +455,16 @@ operator|=
 literal|0
 expr_stmt|;
 block|}
+name|git_attr_set_direction
+argument_list|(
+name|GIT_ATTR_CHECKOUT
+argument_list|,
+operator|&
+name|o
+operator|->
+name|result
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|i
@@ -599,6 +615,13 @@ name|stop_progress
 argument_list|(
 operator|&
 name|progress
+argument_list|)
+expr_stmt|;
+name|git_attr_set_direction
+argument_list|(
+name|GIT_ATTR_CHECKIN
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 return|return
