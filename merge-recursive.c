@@ -4939,9 +4939,6 @@ name|nr
 condition|;
 control|)
 block|{
-name|int
-name|compare
-decl_stmt|;
 name|char
 modifier|*
 name|src
@@ -4950,9 +4947,6 @@ name|struct
 name|string_list
 modifier|*
 name|renames1
-decl_stmt|,
-modifier|*
-name|renames2
 decl_stmt|,
 modifier|*
 name|renames2Dst
@@ -4994,10 +4988,6 @@ operator|->
 name|nr
 condition|)
 block|{
-name|compare
-operator|=
-literal|1
-expr_stmt|;
 name|ren2
 operator|=
 name|b_renames
@@ -5021,11 +5011,6 @@ operator|->
 name|nr
 condition|)
 block|{
-name|compare
-operator|=
-operator|-
-literal|1
-expr_stmt|;
 name|ren1
 operator|=
 name|a_renames
@@ -5041,8 +5026,9 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|int
 name|compare
-operator|=
+init|=
 name|strcmp
 argument_list|(
 name|a_renames
@@ -5063,7 +5049,7 @@ index|]
 operator|.
 name|string
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|compare
@@ -5111,10 +5097,6 @@ name|renames1
 operator|=
 name|a_renames
 expr_stmt|;
-name|renames2
-operator|=
-name|b_renames
-expr_stmt|;
 name|renames2Dst
 operator|=
 operator|&
@@ -5143,10 +5125,6 @@ decl_stmt|;
 name|renames1
 operator|=
 name|b_renames
-expr_stmt|;
-name|renames2
-operator|=
-name|a_renames
 expr_stmt|;
 name|renames2Dst
 operator|=
