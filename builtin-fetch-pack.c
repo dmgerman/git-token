@@ -4305,7 +4305,7 @@ ifdef|#
 directive|ifdef
 name|USE_NSEC
 operator|||
-name|ST_CTIME_NSEC
+name|ST_MTIME_NSEC
 argument_list|(
 name|st
 argument_list|)
