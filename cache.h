@@ -3372,6 +3372,34 @@ block|, }
 enum|;
 end_enum
 
+begin_enum
+DECL|enum|push_default_type
+enum|enum
+name|push_default_type
+block|{
+DECL|enumerator|PUSH_DEFAULT_UNSPECIFIED
+name|PUSH_DEFAULT_UNSPECIFIED
+init|=
+operator|-
+literal|1
+block|,
+DECL|enumerator|PUSH_DEFAULT_NOTHING
+name|PUSH_DEFAULT_NOTHING
+init|=
+literal|0
+block|,
+DECL|enumerator|PUSH_DEFAULT_MATCHING
+name|PUSH_DEFAULT_MATCHING
+block|,
+DECL|enumerator|PUSH_DEFAULT_TRACKING
+name|PUSH_DEFAULT_TRACKING
+block|,
+DECL|enumerator|PUSH_DEFAULT_CURRENT
+name|PUSH_DEFAULT_CURRENT
+block|, }
+enum|;
+end_enum
+
 begin_decl_stmt
 specifier|extern
 name|enum
@@ -3385,6 +3413,14 @@ specifier|extern
 name|enum
 name|rebase_setup_type
 name|autorebase
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
+name|enum
+name|push_default_type
+name|push_default
 decl_stmt|;
 end_decl_stmt
 
