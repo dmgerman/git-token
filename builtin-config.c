@@ -444,7 +444,7 @@ argument_list|,
 operator|&
 name|actions
 argument_list|,
-literal|"replace all matching variables: name [value [value_regex]"
+literal|"replace all matching variables: name value [value_regex]"
 argument_list|,
 name|ACTION_REPLACE_ALL
 argument_list|)
