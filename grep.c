@@ -1091,6 +1091,10 @@ name|opt
 operator|->
 name|pattern_list
 expr_stmt|;
+if|if
+condition|(
+name|p
+condition|)
 name|opt
 operator|->
 name|pattern_expression
