@@ -16040,29 +16040,39 @@ argument_list|,
 literal|"instead of applying the patch, output diffstat for the input"
 argument_list|)
 block|,
-name|OPT_BOOLEAN
-argument_list|(
-literal|0
-argument_list|,
-literal|"allow-binary-replacement"
-argument_list|,
-operator|&
-name|binary
-argument_list|,
-literal|"now no-op"
-argument_list|)
+block|{
+name|OPTION_BOOLEAN
 block|,
-name|OPT_BOOLEAN
-argument_list|(
 literal|0
-argument_list|,
-literal|"binary"
-argument_list|,
+block|,
+literal|"allow-binary-replacement"
+block|,
 operator|&
 name|binary
-argument_list|,
-literal|"now no-op"
-argument_list|)
+block|,
+name|NULL
+block|,
+literal|"old option, now no-op"
+block|,
+name|PARSE_OPT_HIDDEN
+block|}
+block|,
+block|{
+name|OPTION_BOOLEAN
+block|,
+literal|0
+block|,
+literal|"binary"
+block|,
+operator|&
+name|binary
+block|,
+name|NULL
+block|,
+literal|"old option, now no-op"
+block|,
+name|PARSE_OPT_HIDDEN
+block|}
 block|,
 name|OPT_BOOLEAN
 argument_list|(
