@@ -3884,15 +3884,6 @@ argument_list|,
 name|O_RDONLY
 argument_list|)
 operator|)
-operator|&&
-operator|!
-name|fstat
-argument_list|(
-name|fd
-argument_list|,
-operator|&
-name|st
-argument_list|)
 condition|)
 block|{
 name|size_t
