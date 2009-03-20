@@ -250,11 +250,6 @@ name|unpacked
 range|:
 literal|1
 decl_stmt|,
-DECL|member|kept_pack_only
-name|kept_pack_only
-range|:
-literal|1
-decl_stmt|,
 DECL|member|boundary
 name|boundary
 range|:
