@@ -604,9 +604,9 @@ condition|)
 block|{
 name|dir
 operator|->
-name|collect_ignored
-operator|=
-literal|1
+name|flags
+operator||=
+name|DIR_COLLECT_IGNORED
 expr_stmt|;
 name|setup_standard_excludes
 argument_list|(
