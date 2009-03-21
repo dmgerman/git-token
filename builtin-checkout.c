@@ -4144,18 +4144,21 @@ name|buf
 init|=
 name|STRBUF_INIT
 decl_stmt|;
-name|strbuf_addstr
+if|if
+condition|(
+name|strbuf_check_branch_ref
 argument_list|(
 operator|&
 name|buf
 argument_list|,
-literal|"refs/heads/"
+name|opts
+operator|.
+name|new_branch
 argument_list|)
-expr_stmt|;
-name|strbuf_addstr
+condition|)
+name|die
 argument_list|(
-operator|&
-name|buf
+literal|"git checkout: we do not like '%s' as a branch name."
 argument_list|,
 name|opts
 operator|.
@@ -4177,24 +4180,6 @@ condition|)
 name|die
 argument_list|(
 literal|"git checkout: branch %s already exists"
-argument_list|,
-name|opts
-operator|.
-name|new_branch
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|check_ref_format
-argument_list|(
-name|buf
-operator|.
-name|buf
-argument_list|)
-condition|)
-name|die
-argument_list|(
-literal|"git checkout: we do not like '%s' as a branch name."
 argument_list|,
 name|opts
 operator|.
