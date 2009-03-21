@@ -2931,7 +2931,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Already on \"%s\"\n"
+literal|"Already on '%s'\n"
 argument_list|,
 name|new
 operator|->
@@ -2943,7 +2943,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Switched to%s branch \"%s\"\n"
+literal|"Switched to%s branch '%s'\n"
 argument_list|,
 name|opts
 operator|->
@@ -3014,7 +3014,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Note: moving to \"%s\" which isn't a local branch\nIf you want to create a new branch from this checkout, you may do so\n(now or later) by using -b with the checkout command again. Example:\n  git checkout -b<new_branch_name>\n"
+literal|"Note: moving to '%s' which isn't a local branch\nIf you want to create a new branch from this checkout, you may do so\n(now or later) by using -b with the checkout command again. Example:\n  git checkout -b<new_branch_name>\n"
 argument_list|,
 name|new
 operator|->
