@@ -4636,7 +4636,7 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|int
-name|interpret_nth_last_branch
+name|interpret_branch_name
 parameter_list|(
 specifier|const
 name|char

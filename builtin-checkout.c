@@ -2105,7 +2105,7 @@ condition|(
 operator|(
 name|ret
 operator|=
-name|interpret_nth_last_branch
+name|interpret_branch_name
 argument_list|(
 name|branch
 operator|->
