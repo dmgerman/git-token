@@ -2639,6 +2639,11 @@ name|newsection
 init|=
 name|STRBUF_INIT
 decl_stmt|;
+name|int
+name|recovery
+init|=
+literal|0
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -2659,6 +2664,28 @@ argument_list|,
 name|oldname
 argument_list|)
 condition|)
+block|{
+comment|/* 		 * Bad name --- this could be an attempt to rename a 		 * ref that we used to allow to be created by accident. 		 */
+if|if
+condition|(
+name|resolve_ref
+argument_list|(
+name|oldref
+operator|.
+name|buf
+argument_list|,
+name|sha1
+argument_list|,
+literal|1
+argument_list|,
+name|NULL
+argument_list|)
+condition|)
+name|recovery
+operator|=
+literal|1
+expr_stmt|;
+else|else
 name|die
 argument_list|(
 literal|"Invalid branch name: '%s'"
@@ -2666,6 +2693,7 @@ argument_list|,
 name|oldname
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|strbuf_check_branch_ref
@@ -2754,6 +2782,21 @@ name|strbuf_release
 argument_list|(
 operator|&
 name|logmsg
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|recovery
+condition|)
+name|warning
+argument_list|(
+literal|"Renamed a misnamed branch '%s' away"
+argument_list|,
+name|oldref
+operator|.
+name|buf
+operator|+
+literal|11
 argument_list|)
 expr_stmt|;
 comment|/* no need to pass logmsg here as HEAD didn't really move */
