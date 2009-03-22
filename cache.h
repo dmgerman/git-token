@@ -4068,16 +4068,16 @@ end_function_decl
 
 begin_function_decl
 name|int
-name|normalize_absolute_path
+name|normalize_path_copy
 parameter_list|(
 name|char
 modifier|*
-name|buf
+name|dst
 parameter_list|,
 specifier|const
 name|char
 modifier|*
-name|path
+name|src
 parameter_list|)
 function_decl|;
 end_function_decl
