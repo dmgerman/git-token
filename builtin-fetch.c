@@ -3179,7 +3179,12 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"Refusing to fetch into current branch"
+literal|"Refusing to fetch into current branch %s "
+literal|"of non-bare repository"
+argument_list|,
+name|current_branch
+operator|->
+name|refname
 argument_list|)
 expr_stmt|;
 block|}
