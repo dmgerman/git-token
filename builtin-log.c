@@ -5563,17 +5563,6 @@ argument_list|(
 literal|"--subject-prefix and -k are mutually exclusive."
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|numbered_files
-operator|&&
-name|use_stdout
-condition|)
-name|die
-argument_list|(
-literal|"--numbered-files and --stdout are mutually exclusive."
-argument_list|)
-expr_stmt|;
 name|argc
 operator|=
 name|setup_revisions
