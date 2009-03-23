@@ -2160,6 +2160,22 @@ name|sha1
 argument_list|)
 expr_stmt|;
 continue|continue;
+default|default:
+name|warning
+argument_list|(
+literal|"Tag points to object of unexpected type %s, skipping."
+argument_list|,
+name|typename
+argument_list|(
+name|tag
+operator|->
+name|object
+operator|.
+name|type
+argument_list|)
+argument_list|)
+expr_stmt|;
+continue|continue;
 block|}
 break|break;
 default|default:
