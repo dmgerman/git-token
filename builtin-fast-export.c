@@ -2075,6 +2075,7 @@ name|e
 operator|->
 name|item
 expr_stmt|;
+comment|/* handle nested tags */
 while|while
 condition|(
 name|tag
@@ -2088,6 +2089,15 @@ operator|==
 name|OBJ_TAG
 condition|)
 block|{
+name|parse_object
+argument_list|(
+name|tag
+operator|->
+name|object
+operator|.
+name|sha1
+argument_list|)
+expr_stmt|;
 name|string_list_append
 argument_list|(
 name|full_name
@@ -2161,6 +2171,7 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 default|default:
+comment|/* OBJ_TAG (nested tags) is already handled */
 name|warning
 argument_list|(
 literal|"Tag points to object of unexpected type %s, skipping."
