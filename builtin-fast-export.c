@@ -2163,9 +2163,13 @@ continue|continue;
 block|}
 break|break;
 default|default:
-name|die
+name|warning
 argument_list|(
-literal|"Unexpected object of type %s"
+literal|"%s: Unexpected object of type %s, skipping."
+argument_list|,
+name|e
+operator|->
+name|name
 argument_list|,
 name|typename
 argument_list|(
@@ -2177,6 +2181,7 @@ name|type
 argument_list|)
 argument_list|)
 expr_stmt|;
+continue|continue;
 block|}
 if|if
 condition|(
