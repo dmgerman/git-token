@@ -425,6 +425,16 @@ name|char
 modifier|*
 name|mime_boundary
 decl_stmt|;
+DECL|member|patch_suffix
+specifier|const
+name|char
+modifier|*
+name|patch_suffix
+decl_stmt|;
+DECL|member|numbered_files
+name|int
+name|numbered_files
+decl_stmt|;
 DECL|member|message_id
 name|char
 modifier|*

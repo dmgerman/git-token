@@ -3376,10 +3376,6 @@ name|char
 modifier|*
 name|committer
 decl_stmt|;
-name|char
-modifier|*
-name|head_sha1
-decl_stmt|;
 specifier|const
 name|char
 modifier|*
@@ -3464,17 +3460,6 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
-name|head_sha1
-operator|=
-name|sha1_to_hex
-argument_list|(
-name|head
-operator|->
-name|object
-operator|.
-name|sha1
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -3518,7 +3503,14 @@ literal|"author %s\n"
 literal|"committer %s\n\n"
 literal|"cover letter\n"
 argument_list|,
-name|head_sha1
+name|sha1_to_hex
+argument_list|(
+name|head
+operator|->
+name|object
+operator|.
+name|sha1
+argument_list|)
 argument_list|,
 name|committer
 argument_list|,
@@ -3561,7 +3553,7 @@ name|log_write_email_headers
 argument_list|(
 name|rev
 argument_list|,
-name|head_sha1
+name|head
 argument_list|,
 operator|&
 name|subject_start
@@ -5743,6 +5735,18 @@ name|ref_message_ids
 argument_list|)
 expr_stmt|;
 block|}
+name|rev
+operator|.
+name|numbered_files
+operator|=
+name|numbered_files
+expr_stmt|;
+name|rev
+operator|.
+name|patch_suffix
+operator|=
+name|fmt_patch_suffix
+expr_stmt|;
 if|if
 condition|(
 name|cover_letter

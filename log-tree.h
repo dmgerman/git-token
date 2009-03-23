@@ -130,10 +130,10 @@ name|rev_info
 modifier|*
 name|opt
 parameter_list|,
-specifier|const
-name|char
+name|struct
+name|commit
 modifier|*
-name|name
+name|commit
 parameter_list|,
 specifier|const
 name|char
