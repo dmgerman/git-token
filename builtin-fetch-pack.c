@@ -3210,11 +3210,9 @@ operator|.
 name|keep_pack
 condition|)
 comment|/* When cloning, it is not unusual to have 			 * no common commit. 			 */
-name|fprintf
+name|warning
 argument_list|(
-name|stderr
-argument_list|,
-literal|"warning: no common commits\n"
+literal|"no common commits"
 argument_list|)
 expr_stmt|;
 if|if
