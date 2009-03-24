@@ -12613,7 +12613,12 @@ literal|0
 condition|)
 name|die
 argument_list|(
-literal|"unable to write sha1 file"
+literal|"error when closing sha1 file (%s)"
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
