@@ -3538,7 +3538,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Make sure "ref" is something reasonable to have under ".git/refs/";  * We do not like it if:  *  * - any path component of it begins with ".", or  * - it has double dots "..", or  * - it has ASCII control character, "~", "^", ":" or SP, anywhere, or  * - it ends with a "/".  */
+comment|/*  * Make sure "ref" is something reasonable to have under ".git/refs/";  * We do not like it if:  *  * - any path component of it begins with ".", or  * - it has double dots "..", or  * - it has ASCII control character, "~", "^", ":" or SP, anywhere, or  * - it ends with a "/".  * - it ends with ".lock"  */
 end_comment
 
 begin_function
@@ -3831,6 +3831,18 @@ literal|2
 condition|)
 return|return
 name|CHECK_REF_FORMAT_ONELEVEL
+return|;
+if|if
+condition|(
+name|has_extension
+argument_list|(
+name|ref
+argument_list|,
+literal|".lock"
+argument_list|)
+condition|)
+return|return
+name|CHECK_REF_FORMAT_ERROR
 return|;
 return|return
 name|ret
