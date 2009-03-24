@@ -4314,11 +4314,9 @@ name|http_code
 operator|==
 literal|416
 condition|)
-name|fprintf
+name|warning
 argument_list|(
-name|stderr
-argument_list|,
-literal|"Warning: requested range invalid; we may already have all the data.\n"
+literal|"requested range invalid; we may already have all the data."
 argument_list|)
 expr_stmt|;
 name|git_inflate_end
@@ -9181,7 +9179,7 @@ name|lock_flags
 condition|)
 name|error
 argument_list|(
-literal|"Error: no DAV locking support on %s"
+literal|"no DAV locking support on %s"
 argument_list|,
 name|remote
 operator|->
@@ -12550,11 +12548,9 @@ literal|1
 expr_stmt|;
 else|else
 block|{
-name|fprintf
+name|error
 argument_list|(
-name|stderr
-argument_list|,
-literal|"Error: cannot lock existing info/refs\n"
+literal|"cannot lock existing info/refs"
 argument_list|)
 expr_stmt|;
 name|rc
