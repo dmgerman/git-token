@@ -3306,18 +3306,14 @@ operator|->
 name|quiet
 condition|)
 block|{
-name|fprintf
+name|warning
 argument_list|(
-name|stderr
-argument_list|,
-literal|"warning: You appear to be on a branch yet to be born.\n"
+literal|"You appear to be on a branch yet to be born."
 argument_list|)
 expr_stmt|;
-name|fprintf
+name|warning
 argument_list|(
-name|stderr
-argument_list|,
-literal|"warning: Forcing checkout of %s.\n"
+literal|"Forcing checkout of %s."
 argument_list|,
 name|new
 operator|->
