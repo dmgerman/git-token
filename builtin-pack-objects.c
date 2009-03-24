@@ -6680,6 +6680,9 @@ expr_stmt|;
 block|}
 name|max_size
 operator|=
+operator|(
+name|uint64_t
+operator|)
 name|max_size
 operator|*
 operator|(
