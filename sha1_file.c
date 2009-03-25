@@ -12362,7 +12362,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Move the just written object into its final resting place  */
+comment|/*  * Move the just written object into its final resting place.  * NEEDSWORK: this should be renamed to finalize_temp_file() as  * "moving" is only a part of what it does, when no patch between  * master to pu changes the call sites of this function.  */
 end_comment
 
 begin_function
@@ -12460,6 +12460,21 @@ return|;
 block|}
 comment|/* FIXME!!! Collision check here ? */
 block|}
+if|if
+condition|(
+name|adjust_shared_perm
+argument_list|(
+name|filename
+argument_list|)
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"unable to set permission to '%s'"
+argument_list|,
+name|filename
+argument_list|)
+return|;
 return|return
 literal|0
 return|;

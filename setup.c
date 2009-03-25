@@ -2049,7 +2049,7 @@ name|PERM_GROUP
 else|:
 name|PERM_UMASK
 return|;
-comment|/* 	 * Treat values 0, 1 and 2 as compatibility cases, otherwise it is 	 * a chmod value. 	 */
+comment|/* 	 * Treat values 0, 1 and 2 as compatibility cases, otherwise it is 	 * a chmod value to restrict to. 	 */
 switch|switch
 condition|(
 name|i
@@ -2099,9 +2099,12 @@ argument_list|)
 expr_stmt|;
 comment|/* 	 * Mask filemode value. Others can not get write permission. 	 * x flags for directories are handled separately. 	 */
 return|return
+operator|-
+operator|(
 name|i
 operator|&
 literal|0666
+operator|)
 return|;
 block|}
 end_function
