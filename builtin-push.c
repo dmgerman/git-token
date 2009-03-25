@@ -399,7 +399,7 @@ literal|"You can specify what action you want to take in this case, and"
 block|,
 literal|"avoid seeing this message again, by configuring 'push.default' to:"
 block|,
-literal|"  'nothing'  : Do not push anythig"
+literal|"  'nothing'  : Do not push anything"
 block|,
 literal|"  'matching' : Push all matching branches (default)"
 block|,
