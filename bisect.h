@@ -62,6 +62,10 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * The "show_all" parameter should be 0 if this function is called  * from outside "builtin-rev-list.c" as otherwise it would use  * static "revs" from this file.  */
+end_comment
+
 begin_function_decl
 specifier|extern
 name|int
@@ -83,6 +87,19 @@ name|show_all
 parameter_list|,
 name|int
 name|show_tried
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|bisect_next_vars
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|prefix
 parameter_list|)
 function_decl|;
 end_function_decl
