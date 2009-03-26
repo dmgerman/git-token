@@ -316,6 +316,16 @@ name|AUTOREBASE_NEVER
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|push_default
+name|enum
+name|push_default_type
+name|push_default
+init|=
+name|PUSH_DEFAULT_UNSPECIFIED
+decl_stmt|;
+end_decl_stmt
+
 begin_comment
 comment|/* Parallel index stat data preload? */
 end_comment
