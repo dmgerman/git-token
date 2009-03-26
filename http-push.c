@@ -542,12 +542,12 @@ struct|;
 end_struct
 
 begin_decl_stmt
-DECL|variable|remote
+DECL|variable|repo
 specifier|static
 name|struct
 name|repo
 modifier|*
-name|remote
+name|repo
 decl_stmt|;
 end_decl_stmt
 
@@ -1806,7 +1806,7 @@ name|url
 operator|=
 name|get_remote_object_url
 argument_list|(
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|,
@@ -2142,7 +2142,7 @@ argument_list|,
 literal|"Unable to start GET request\n"
 argument_list|)
 expr_stmt|;
-name|remote
+name|repo
 operator|->
 name|can_update_info_refs
 operator|=
@@ -2193,7 +2193,7 @@ name|url
 operator|=
 name|get_remote_object_url
 argument_list|(
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|,
@@ -2399,7 +2399,7 @@ name|obj
 operator|->
 name|sha1
 argument_list|,
-name|remote
+name|repo
 operator|->
 name|packs
 argument_list|)
@@ -2426,7 +2426,7 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|remote
+name|repo
 operator|->
 name|can_update_info_refs
 operator|=
@@ -2520,7 +2520,7 @@ name|xmalloc
 argument_list|(
 name|strlen
 argument_list|(
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|)
@@ -2534,7 +2534,7 @@ name|url
 argument_list|,
 literal|"%sobjects/pack/pack-%s.pack"
 argument_list|,
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|,
@@ -2618,7 +2618,7 @@ operator|->
 name|tmpfile
 argument_list|)
 expr_stmt|;
-name|remote
+name|repo
 operator|->
 name|can_update_info_refs
 operator|=
@@ -2810,7 +2810,7 @@ argument_list|,
 literal|"Unable to start GET request\n"
 argument_list|)
 expr_stmt|;
-name|remote
+name|repo
 operator|->
 name|can_update_info_refs
 operator|=
@@ -3095,7 +3095,7 @@ argument_list|(
 operator|&
 name|buf
 argument_list|,
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|,
@@ -3121,7 +3121,7 @@ argument_list|(
 operator|&
 name|buf
 argument_list|,
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|,
@@ -3693,7 +3693,7 @@ name|remote_lock
 modifier|*
 name|lock
 init|=
-name|remote
+name|repo
 operator|->
 name|locks
 decl_stmt|;
@@ -4477,7 +4477,7 @@ argument_list|,
 name|curl_errorstr
 argument_list|)
 expr_stmt|;
-name|remote
+name|repo
 operator|->
 name|can_update_info_refs
 operator|=
@@ -4544,7 +4544,7 @@ expr_stmt|;
 name|lst
 operator|=
 operator|&
-name|remote
+name|repo
 operator|->
 name|packs
 expr_stmt|;
@@ -4591,7 +4591,7 @@ name|target
 argument_list|)
 expr_stmt|;
 else|else
-name|remote
+name|repo
 operator|->
 name|can_update_info_refs
 operator|=
@@ -4966,7 +4966,7 @@ name|obj
 operator|->
 name|sha1
 argument_list|,
-name|remote
+name|repo
 operator|->
 name|packs
 argument_list|)
@@ -5146,7 +5146,7 @@ name|xmalloc
 argument_list|(
 name|strlen
 argument_list|(
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|)
@@ -5160,7 +5160,7 @@ name|url
 argument_list|,
 literal|"%sobjects/pack/pack-%s.pack"
 argument_list|,
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|,
@@ -5288,7 +5288,7 @@ name|url
 argument_list|,
 literal|"%sobjects/pack/pack-%s.idx"
 argument_list|,
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|,
@@ -5612,11 +5612,11 @@ name|new_pack
 operator|->
 name|next
 operator|=
-name|remote
+name|repo
 operator|->
 name|packs
 expr_stmt|;
-name|remote
+name|repo
 operator|->
 name|packs
 operator|=
@@ -5689,7 +5689,7 @@ name|xmalloc
 argument_list|(
 name|strlen
 argument_list|(
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|)
@@ -5703,7 +5703,7 @@ name|url
 argument_list|,
 literal|"%sobjects/info/packs"
 argument_list|,
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|)
@@ -6791,7 +6791,7 @@ name|xmalloc
 argument_list|(
 name|strlen
 argument_list|(
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|)
@@ -6810,7 +6810,7 @@ name|url
 argument_list|,
 literal|"%s%s"
 argument_list|,
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|,
@@ -6826,7 +6826,7 @@ name|url
 operator|+
 name|strlen
 argument_list|(
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|)
@@ -7420,11 +7420,11 @@ name|lock
 operator|->
 name|next
 operator|=
-name|remote
+name|repo
 operator|->
 name|locks
 expr_stmt|;
-name|remote
+name|repo
 operator|->
 name|locks
 operator|=
@@ -7463,7 +7463,7 @@ name|remote_lock
 modifier|*
 name|prev
 init|=
-name|remote
+name|repo
 operator|->
 name|locks
 decl_stmt|;
@@ -7599,14 +7599,14 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|remote
+name|repo
 operator|->
 name|locks
 operator|==
 name|lock
 condition|)
 block|{
-name|remote
+name|repo
 operator|->
 name|locks
 operator|=
@@ -7694,7 +7694,7 @@ name|remote_lock
 modifier|*
 name|lock
 init|=
-name|remote
+name|repo
 operator|->
 name|locks
 decl_stmt|;
@@ -8188,7 +8188,7 @@ condition|)
 block|{
 name|path
 operator|+=
-name|remote
+name|repo
 operator|->
 name|path_len
 expr_stmt|;
@@ -8305,7 +8305,7 @@ name|xmalloc
 argument_list|(
 name|strlen
 argument_list|(
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|)
@@ -8403,7 +8403,7 @@ name|url
 argument_list|,
 literal|"%s%s"
 argument_list|,
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|,
@@ -8887,7 +8887,7 @@ name|buf
 argument_list|,
 name|PROPFIND_SUPPORTEDLOCK_REQUEST
 argument_list|,
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|)
@@ -8991,7 +8991,7 @@ name|curl
 argument_list|,
 name|CURLOPT_URL
 argument_list|,
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|)
@@ -9181,7 +9181,7 @@ name|error
 argument_list|(
 literal|"no DAV locking support on %s"
 argument_list|,
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|)
@@ -9193,7 +9193,7 @@ name|error
 argument_list|(
 literal|"Cannot access URL %s, return code %d"
 argument_list|,
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|,
@@ -9214,7 +9214,7 @@ name|error
 argument_list|(
 literal|"Unable to start PROPFIND request on %s"
 argument_list|,
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|)
@@ -10241,7 +10241,7 @@ if|if
 condition|(
 name|http_fetch_ref
 argument_list|(
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|,
@@ -10259,7 +10259,7 @@ literal|"Unable to fetch ref %s from %s\n"
 argument_list|,
 name|refname
 argument_list|,
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|)
@@ -10274,7 +10274,7 @@ block|}
 comment|/* 	 * Fetch a copy of the object if it doesn't exist locally - it 	 * may be required for updating server info later. 	 */
 if|if
 condition|(
-name|remote
+name|repo
 operator|->
 name|can_update_info_refs
 operator|&&
@@ -10475,7 +10475,7 @@ if|if
 condition|(
 name|http_fetch_ref
 argument_list|(
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|,
@@ -10495,7 +10495,7 @@ name|ls
 operator|->
 name|dentry_name
 argument_list|,
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|)
@@ -10962,7 +10962,7 @@ name|xmalloc
 argument_list|(
 name|strlen
 argument_list|(
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|)
@@ -10996,7 +10996,7 @@ name|url
 argument_list|,
 literal|"%s%s"
 argument_list|,
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|,
@@ -11156,7 +11156,7 @@ name|xmalloc
 argument_list|(
 name|strlen
 argument_list|(
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|)
@@ -11175,7 +11175,7 @@ name|url
 argument_list|,
 literal|"%s%s"
 argument_list|,
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|,
@@ -11811,7 +11811,7 @@ name|remote_ref
 operator|->
 name|name
 argument_list|,
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|,
@@ -11845,7 +11845,7 @@ name|xmalloc
 argument_list|(
 name|strlen
 argument_list|(
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|)
@@ -11866,7 +11866,7 @@ name|url
 argument_list|,
 literal|"%s%s"
 argument_list|,
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|,
@@ -12078,6 +12078,11 @@ decl_stmt|,
 modifier|*
 name|local_refs
 decl_stmt|;
+name|struct
+name|remote
+modifier|*
+name|remote
+decl_stmt|;
 name|char
 modifier|*
 name|rewritten_url
@@ -12095,14 +12100,14 @@ expr_stmt|;
 name|setup_git_directory
 argument_list|()
 expr_stmt|;
-name|remote
+name|repo
 operator|=
 name|xcalloc
 argument_list|(
 sizeof|sizeof
 argument_list|(
 operator|*
-name|remote
+name|repo
 argument_list|)
 argument_list|,
 literal|1
@@ -12253,7 +12258,7 @@ block|}
 if|if
 condition|(
 operator|!
-name|remote
+name|repo
 operator|->
 name|url
 condition|)
@@ -12269,13 +12274,13 @@ argument_list|,
 literal|"//"
 argument_list|)
 decl_stmt|;
-name|remote
+name|repo
 operator|->
 name|url
 operator|=
 name|arg
 expr_stmt|;
-name|remote
+name|repo
 operator|->
 name|path_len
 operator|=
@@ -12289,7 +12294,7 @@ condition|(
 name|path
 condition|)
 block|{
-name|remote
+name|repo
 operator|->
 name|path
 operator|=
@@ -12304,17 +12309,17 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|remote
+name|repo
 operator|->
 name|path
 condition|)
-name|remote
+name|repo
 operator|->
 name|path_len
 operator|=
 name|strlen
 argument_list|(
-name|remote
+name|repo
 operator|->
 name|path
 argument_list|)
@@ -12347,7 +12352,7 @@ directive|endif
 if|if
 condition|(
 operator|!
-name|remote
+name|repo
 operator|->
 name|url
 condition|)
@@ -12379,9 +12384,54 @@ argument_list|,
 literal|256
 argument_list|)
 expr_stmt|;
+comment|/* 	 * Create a minimum remote by hand to give to http_init(), 	 * primarily to allow it to look at the URL. 	 */
+name|remote
+operator|=
+name|xcalloc
+argument_list|(
+sizeof|sizeof
+argument_list|(
+operator|*
+name|remote
+argument_list|)
+argument_list|,
+literal|1
+argument_list|)
+expr_stmt|;
+name|ALLOC_GROW
+argument_list|(
+name|remote
+operator|->
+name|url
+argument_list|,
+name|remote
+operator|->
+name|url_nr
+operator|+
+literal|1
+argument_list|,
+name|remote
+operator|->
+name|url_alloc
+argument_list|)
+expr_stmt|;
+name|remote
+operator|->
+name|url
+index|[
+name|remote
+operator|->
+name|url_nr
+operator|++
+index|]
+operator|=
+name|repo
+operator|->
+name|url
+expr_stmt|;
 name|http_init
 argument_list|(
-name|NULL
+name|remote
 argument_list|)
 expr_stmt|;
 name|no_pragma_header
@@ -12395,17 +12445,17 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|remote
+name|repo
 operator|->
 name|url
 operator|&&
-name|remote
+name|repo
 operator|->
 name|url
 index|[
 name|strlen
 argument_list|(
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|)
@@ -12422,7 +12472,7 @@ name|xmalloc
 argument_list|(
 name|strlen
 argument_list|(
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|)
@@ -12434,7 +12484,7 @@ name|strcpy
 argument_list|(
 name|rewritten_url
 argument_list|,
-name|remote
+name|repo
 operator|->
 name|url
 argument_list|)
@@ -12446,28 +12496,28 @@ argument_list|,
 literal|"/"
 argument_list|)
 expr_stmt|;
-name|remote
+name|repo
 operator|->
 name|path
 operator|=
 name|rewritten_url
 operator|+
 operator|(
-name|remote
+name|repo
 operator|->
 name|path
 operator|-
-name|remote
+name|repo
 operator|->
 name|url
 operator|)
 expr_stmt|;
-name|remote
+name|repo
 operator|->
 name|path_len
 operator|++
 expr_stmt|;
-name|remote
+name|repo
 operator|->
 name|url
 operator|=
@@ -12496,13 +12546,13 @@ name|remove_locks_on_signal
 argument_list|)
 expr_stmt|;
 comment|/* Check whether the remote has server info files */
-name|remote
+name|repo
 operator|->
 name|can_update_info_refs
 operator|=
 literal|0
 expr_stmt|;
-name|remote
+name|repo
 operator|->
 name|has_info_refs
 operator|=
@@ -12511,7 +12561,7 @@ argument_list|(
 literal|"info/refs"
 argument_list|)
 expr_stmt|;
-name|remote
+name|repo
 operator|->
 name|has_info_packs
 operator|=
@@ -12522,7 +12572,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|remote
+name|repo
 operator|->
 name|has_info_refs
 condition|)
@@ -12540,7 +12590,7 @@ if|if
 condition|(
 name|info_ref_lock
 condition|)
-name|remote
+name|repo
 operator|->
 name|can_update_info_refs
 operator|=
@@ -12564,7 +12614,7 @@ block|}
 block|}
 if|if
 condition|(
-name|remote
+name|repo
 operator|->
 name|has_info_packs
 condition|)
@@ -13299,7 +13349,7 @@ block|}
 comment|/* Update remote server info if appropriate */
 if|if
 condition|(
-name|remote
+name|repo
 operator|->
 name|has_info_refs
 operator|&&
@@ -13310,7 +13360,7 @@ if|if
 condition|(
 name|info_ref_lock
 operator|&&
-name|remote
+name|repo
 operator|->
 name|can_update_info_refs
 condition|)
@@ -13362,7 +13412,7 @@ argument_list|)
 expr_stmt|;
 name|free
 argument_list|(
-name|remote
+name|repo
 argument_list|)
 expr_stmt|;
 name|curl_slist_free_all
