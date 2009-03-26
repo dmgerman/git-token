@@ -43,6 +43,11 @@ specifier|extern
 name|int
 name|show_bisect_vars
 parameter_list|(
+name|struct
+name|rev_info
+modifier|*
+name|revs
+parameter_list|,
 name|int
 name|reaches
 parameter_list|,
