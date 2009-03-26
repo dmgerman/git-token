@@ -4696,6 +4696,7 @@ literal|"cannot store pack file"
 argument_list|)
 expr_stmt|;
 block|}
+elseif|else
 if|if
 condition|(
 name|from_stdin
@@ -4760,6 +4761,7 @@ literal|"cannot store index file"
 argument_list|)
 expr_stmt|;
 block|}
+else|else
 name|chmod
 argument_list|(
 name|final_index_name

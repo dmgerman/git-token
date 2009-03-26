@@ -1290,15 +1290,6 @@ name|struct
 name|stat
 name|st
 decl_stmt|;
-name|fchmod
-argument_list|(
-name|obj_req
-operator|->
-name|local
-argument_list|,
-literal|0444
-argument_list|)
-expr_stmt|;
 name|close
 argument_list|(
 name|obj_req
