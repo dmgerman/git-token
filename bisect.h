@@ -38,6 +38,23 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|show_bisect_vars
+parameter_list|(
+name|int
+name|reaches
+parameter_list|,
+name|int
+name|all
+parameter_list|,
+name|int
+name|show_all
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif

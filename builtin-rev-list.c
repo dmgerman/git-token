@@ -963,7 +963,6 @@ end_function
 
 begin_function
 DECL|function|show_bisect_vars
-specifier|static
 name|int
 name|show_bisect_vars
 parameter_list|(
@@ -974,7 +973,7 @@ name|int
 name|all
 parameter_list|,
 name|int
-name|bisect_find_all
+name|show_all
 parameter_list|)
 block|{
 name|int
@@ -1033,7 +1032,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|bisect_find_all
+name|show_all
 condition|)
 block|{
 name|traverse_commit_list
