@@ -12399,7 +12399,7 @@ name|ret
 operator|=
 name|errno
 expr_stmt|;
-comment|/* 	 * Coda hack - coda doesn't like cross-directory links, 	 * so we fall back to a rename, which will mean that it 	 * won't be able to check collisions, but that's not a 	 * big deal. 	 * 	 * The same holds for FAT formatted media. 	 * 	 * When this succeeds, we just return 0. We have nothing 	 * left to unlink. 	 */
+comment|/* 	 * Coda hack - coda doesn't like cross-directory links, 	 * so we fall back to a rename, which will mean that it 	 * won't be able to check collisions, but that's not a 	 * big deal. 	 * 	 * The same holds for FAT formatted media. 	 * 	 * When this succeeds, we just return.  We have nothing 	 * left to unlink. 	 */
 if|if
 condition|(
 name|ret
@@ -12419,9 +12419,9 @@ argument_list|,
 name|filename
 argument_list|)
 condition|)
-return|return
-literal|0
-return|;
+goto|goto
+name|out
+goto|;
 name|ret
 operator|=
 name|errno
@@ -12460,6 +12460,8 @@ return|;
 block|}
 comment|/* FIXME!!! Collision check here ? */
 block|}
+name|out
+label|:
 if|if
 condition|(
 name|chmod
