@@ -99,6 +99,28 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Same as the above, but can be used to unwrap many arguments in the  * same string separated by space. "next" is changed to point to the  * next argument that should be passed as first parameter. When there  * is no more argument to be dequoted, "next" is updated to point to NULL.  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|char
+modifier|*
+name|sq_dequote_step
+parameter_list|(
+name|char
+modifier|*
+name|arg
+parameter_list|,
+name|char
+modifier|*
+modifier|*
+name|next
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function_decl
 specifier|extern
 name|int
