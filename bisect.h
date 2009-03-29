@@ -63,7 +63,27 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * The "show_all" parameter should be 0 if this function is called  * from outside "builtin-rev-list.c" as otherwise it would use  * static "revs" from this file.  */
+comment|/* show_bisect_vars flags */
+end_comment
+
+begin_define
+DECL|macro|BISECT_SHOW_ALL
+define|#
+directive|define
+name|BISECT_SHOW_ALL
+value|(1<<0)
+end_define
+
+begin_define
+DECL|macro|BISECT_SHOW_TRIED
+define|#
+directive|define
+name|BISECT_SHOW_TRIED
+value|(1<<1)
+end_define
+
+begin_comment
+comment|/*  * The flag BISECT_SHOW_ALL should not be set if this function is called  * from outside "builtin-rev-list.c" as otherwise it would use  * static "revs" from this file.  */
 end_comment
 
 begin_function_decl
@@ -83,10 +103,7 @@ name|int
 name|all
 parameter_list|,
 name|int
-name|show_all
-parameter_list|,
-name|int
-name|show_tried
+name|flags
 parameter_list|)
 function_decl|;
 end_function_decl

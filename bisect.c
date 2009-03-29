@@ -2814,9 +2814,7 @@ name|reaches
 argument_list|,
 name|all
 argument_list|,
-literal|0
-argument_list|,
-literal|1
+name|BISECT_SHOW_TRIED
 argument_list|)
 return|;
 block|}
