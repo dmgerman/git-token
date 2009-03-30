@@ -82,6 +82,14 @@ name|BISECT_SHOW_TRIED
 value|(1<<1)
 end_define
 
+begin_define
+DECL|macro|BISECT_SHOW_STRINGED
+define|#
+directive|define
+name|BISECT_SHOW_STRINGED
+value|(1<<2)
+end_define
+
 begin_comment
 comment|/*  * The flag BISECT_SHOW_ALL should not be set if this function is called  * from outside "builtin-rev-list.c" as otherwise it would use  * static "revs" from this file.  */
 end_comment

@@ -2815,6 +2815,8 @@ argument_list|,
 name|all
 argument_list|,
 name|BISECT_SHOW_TRIED
+operator||
+name|BISECT_SHOW_STRINGED
 argument_list|)
 return|;
 block|}
