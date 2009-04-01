@@ -2217,14 +2217,11 @@ name|setenv
 argument_list|(
 name|CONFIG_ENVIRONMENT
 argument_list|,
-name|xstrdup
-argument_list|(
 name|mkpath
 argument_list|(
 literal|"%s/config"
 argument_list|,
 name|git_dir
-argument_list|)
 argument_list|)
 argument_list|,
 literal|1
