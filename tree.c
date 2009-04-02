@@ -416,10 +416,32 @@ name|matchlen
 argument_list|)
 condition|)
 continue|continue;
-comment|/* The base is a subdirectory of a path which was specified. */
+comment|/* pathspecs match only at the directory boundaries */
+if|if
+condition|(
+operator|!
+name|matchlen
+operator|||
+name|base
+index|[
+name|matchlen
+index|]
+operator|==
+literal|'/'
+operator|||
+name|match
+index|[
+name|matchlen
+operator|-
+literal|1
+index|]
+operator|==
+literal|'/'
+condition|)
 return|return
 literal|1
 return|;
+continue|continue;
 block|}
 comment|/* Does the base match? */
 if|if
