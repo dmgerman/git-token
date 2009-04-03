@@ -72,7 +72,7 @@ literal|"git remote show [-n]<name>"
 block|,
 literal|"git remote prune [-n | --dry-run]<name>"
 block|,
-literal|"git remote [-v | --verbose] update [group]"
+literal|"git remote [-v | --verbose] update [-p | --prune] [group]"
 block|,
 name|NULL
 block|}
@@ -7701,6 +7701,10 @@ decl_stmt|,
 name|result
 init|=
 literal|0
+decl_stmt|,
+name|prune
+init|=
+literal|0
 decl_stmt|;
 name|struct
 name|string_list
@@ -7731,6 +7735,48 @@ block|,
 name|NULL
 block|}
 decl_stmt|;
+name|struct
+name|option
+name|options
+index|[]
+init|=
+block|{
+name|OPT_GROUP
+argument_list|(
+literal|"update specific options"
+argument_list|)
+block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|'p'
+argument_list|,
+literal|"prune"
+argument_list|,
+operator|&
+name|prune
+argument_list|,
+literal|"prune remotes after fecthing"
+argument_list|)
+block|,
+name|OPT_END
+argument_list|()
+block|}
+decl_stmt|;
+name|argc
+operator|=
+name|parse_options
+argument_list|(
+name|argc
+argument_list|,
+name|argv
+argument_list|,
+name|options
+argument_list|,
+name|builtin_remote_usage
+argument_list|,
+name|PARSE_OPT_KEEP_ARGV0
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|argc
@@ -7837,8 +7883,10 @@ condition|;
 name|i
 operator|++
 control|)
-name|result
-operator||=
+block|{
+name|int
+name|err
+init|=
 name|fetch_remote
 argument_list|(
 name|list
@@ -7850,7 +7898,35 @@ index|]
 operator|.
 name|string
 argument_list|)
+decl_stmt|;
+name|result
+operator||=
+name|err
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|err
+operator|&&
+name|prune
+condition|)
+name|result
+operator||=
+name|prune_remote
+argument_list|(
+name|list
+operator|.
+name|items
+index|[
+name|i
+index|]
+operator|.
+name|string
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+block|}
 comment|/* all names were strdup()ed or strndup()ed */
 name|list
 operator|.
