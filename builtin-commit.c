@@ -1293,6 +1293,8 @@ condition|(
 name|interactive
 condition|)
 block|{
+if|if
+condition|(
 name|interactive_add
 argument_list|(
 name|argc
@@ -1300,6 +1302,13 @@ argument_list|,
 name|argv
 argument_list|,
 name|prefix
+argument_list|)
+operator|!=
+literal|0
+condition|)
+name|die
+argument_list|(
+literal|"interactive add failed"
 argument_list|)
 expr_stmt|;
 if|if
