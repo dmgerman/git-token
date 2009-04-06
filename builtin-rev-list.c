@@ -96,15 +96,6 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|revs
-specifier|static
-name|struct
-name|rev_info
-name|revs
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|variable|show_timestamp
 specifier|static
 name|int
@@ -139,6 +130,10 @@ name|struct
 name|commit
 modifier|*
 name|commit
+parameter_list|,
+name|void
+modifier|*
+name|data
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -153,12 +148,23 @@ name|struct
 name|commit
 modifier|*
 name|commit
+parameter_list|,
+name|void
+modifier|*
+name|data
 parameter_list|)
 block|{
+name|struct
+name|rev_info
+modifier|*
+name|revs
+init|=
+name|data
+decl_stmt|;
 name|graph_show_commit
 argument_list|(
 name|revs
-operator|.
+operator|->
 name|graph
 argument_list|)
 expr_stmt|;
@@ -190,7 +196,7 @@ if|if
 condition|(
 operator|!
 name|revs
-operator|.
+operator|->
 name|graph
 condition|)
 block|{
@@ -229,7 +235,7 @@ elseif|else
 if|if
 condition|(
 name|revs
-operator|.
+operator|->
 name|left_right
 condition|)
 block|{
@@ -259,11 +265,11 @@ block|}
 if|if
 condition|(
 name|revs
-operator|.
+operator|->
 name|abbrev_commit
 operator|&&
 name|revs
-operator|.
+operator|->
 name|abbrev
 condition|)
 name|fputs
@@ -277,7 +283,7 @@ operator|.
 name|sha1
 argument_list|,
 name|revs
-operator|.
+operator|->
 name|abbrev
 argument_list|)
 argument_list|,
@@ -302,7 +308,7 @@ expr_stmt|;
 if|if
 condition|(
 name|revs
-operator|.
+operator|->
 name|print_parents
 condition|)
 block|{
@@ -347,7 +353,7 @@ block|}
 if|if
 condition|(
 name|revs
-operator|.
+operator|->
 name|children
 operator|.
 name|name
@@ -364,7 +370,7 @@ name|lookup_decoration
 argument_list|(
 operator|&
 name|revs
-operator|.
+operator|->
 name|children
 argument_list|,
 operator|&
@@ -404,7 +410,6 @@ block|}
 block|}
 name|show_decorations
 argument_list|(
-operator|&
 name|revs
 argument_list|,
 name|commit
@@ -413,7 +418,7 @@ expr_stmt|;
 if|if
 condition|(
 name|revs
-operator|.
+operator|->
 name|commit_format
 operator|==
 name|CMIT_FMT_ONELINE
@@ -432,7 +437,7 @@ expr_stmt|;
 if|if
 condition|(
 name|revs
-operator|.
+operator|->
 name|verbose_header
 operator|&&
 name|commit
@@ -449,7 +454,7 @@ decl_stmt|;
 name|pretty_print_commit
 argument_list|(
 name|revs
-operator|.
+operator|->
 name|commit_format
 argument_list|,
 name|commit
@@ -458,7 +463,7 @@ operator|&
 name|buf
 argument_list|,
 name|revs
-operator|.
+operator|->
 name|abbrev
 argument_list|,
 name|NULL
@@ -466,7 +471,7 @@ argument_list|,
 name|NULL
 argument_list|,
 name|revs
-operator|.
+operator|->
 name|date_mode
 argument_list|,
 literal|0
@@ -475,7 +480,7 @@ expr_stmt|;
 if|if
 condition|(
 name|revs
-operator|.
+operator|->
 name|graph
 condition|)
 block|{
@@ -489,7 +494,7 @@ block|{
 if|if
 condition|(
 name|revs
-operator|.
+operator|->
 name|commit_format
 operator|!=
 name|CMIT_FMT_ONELINE
@@ -497,14 +502,14 @@ condition|)
 name|graph_show_oneline
 argument_list|(
 name|revs
-operator|.
+operator|->
 name|graph
 argument_list|)
 expr_stmt|;
 name|graph_show_commit_msg
 argument_list|(
 name|revs
-operator|.
+operator|->
 name|graph
 argument_list|,
 operator|&
@@ -534,7 +539,7 @@ condition|)
 name|graph_show_padding
 argument_list|(
 name|revs
-operator|.
+operator|->
 name|graph
 argument_list|)
 expr_stmt|;
@@ -552,7 +557,7 @@ condition|(
 name|graph_show_remainder
 argument_list|(
 name|revs
-operator|.
+operator|->
 name|graph
 argument_list|)
 condition|)
@@ -597,7 +602,7 @@ condition|(
 name|graph_show_remainder
 argument_list|(
 name|revs
-operator|.
+operator|->
 name|graph
 argument_list|)
 condition|)
@@ -617,6 +622,8 @@ expr_stmt|;
 name|finish_commit
 argument_list|(
 name|commit
+argument_list|,
+name|data
 argument_list|)
 expr_stmt|;
 block|}
@@ -632,6 +639,10 @@ name|struct
 name|commit
 modifier|*
 name|commit
+parameter_list|,
+name|void
+modifier|*
+name|data
 parameter_list|)
 block|{
 if|if
@@ -681,6 +692,10 @@ name|struct
 name|object_array_entry
 modifier|*
 name|p
+parameter_list|,
+name|void
+modifier|*
+name|data
 parameter_list|)
 block|{
 if|if
@@ -730,6 +745,10 @@ name|struct
 name|object_array_entry
 modifier|*
 name|p
+parameter_list|,
+name|void
+modifier|*
+name|data
 parameter_list|)
 block|{
 comment|/* An object with name "foo\n0000000..." can be used to 	 * confuse downstream "git pack-objects" very badly. 	 */
@@ -750,6 +769,8 @@ decl_stmt|;
 name|finish_object
 argument_list|(
 name|p
+argument_list|,
+name|data
 argument_list|)
 expr_stmt|;
 if|if
@@ -1163,6 +1184,8 @@ argument_list|,
 name|show_commit
 argument_list|,
 name|show_object
+argument_list|,
+name|revs
 argument_list|)
 expr_stmt|;
 name|printf
@@ -1262,6 +1285,10 @@ modifier|*
 name|prefix
 parameter_list|)
 block|{
+name|struct
+name|rev_info
+name|revs
+decl_stmt|;
 name|struct
 name|commit_list
 modifier|*
@@ -1733,6 +1760,9 @@ condition|?
 name|finish_object
 else|:
 name|show_object
+argument_list|,
+operator|&
+name|revs
 argument_list|)
 expr_stmt|;
 return|return
