@@ -992,6 +992,7 @@ name|is_bare_repository_cfg
 operator|=
 name|init_is_bare_repository
 expr_stmt|;
+comment|/* reading existing config may have overwrote it */
 if|if
 condition|(
 name|init_shared_repository
@@ -1536,6 +1537,24 @@ comment|/* We do not spell "group" and such, so that 		 * the configuration can 
 if|if
 condition|(
 name|shared_repository
+operator|<
+literal|0
+condition|)
+comment|/* force to the mode value */
+name|sprintf
+argument_list|(
+name|buf
+argument_list|,
+literal|"0%o"
+argument_list|,
+operator|-
+name|shared_repository
+argument_list|)
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|shared_repository
 operator|==
 name|PERM_GROUP
 condition|)
@@ -1565,13 +1584,9 @@ name|OLD_PERM_EVERYBODY
 argument_list|)
 expr_stmt|;
 else|else
-name|sprintf
+name|die
 argument_list|(
-name|buf
-argument_list|,
-literal|"0%o"
-argument_list|,
-name|shared_repository
+literal|"oops"
 argument_list|)
 expr_stmt|;
 name|git_config_set
@@ -1947,6 +1962,17 @@ name|init_db_usage
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|init_shared_repository
+operator|!=
+operator|-
+literal|1
+condition|)
+name|shared_repository
+operator|=
+name|init_shared_repository
+expr_stmt|;
 comment|/* 	 * GIT_WORK_TREE makes sense only in conjunction with GIT_DIR 	 * without --bare.  Catch the error early. 	 */
 name|git_dir
 operator|=

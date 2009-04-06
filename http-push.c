@@ -4234,15 +4234,6 @@ operator|==
 name|RUN_FETCH_LOOSE
 condition|)
 block|{
-name|fchmod
-argument_list|(
-name|request
-operator|->
-name|local_fileno
-argument_list|,
-literal|0444
-argument_list|)
-expr_stmt|;
 name|close
 argument_list|(
 name|request
