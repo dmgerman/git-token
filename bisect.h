@@ -90,9 +90,34 @@ name|BISECT_SHOW_STRINGED
 value|(1<<2)
 end_define
 
-begin_comment
-comment|/*  * The flag BISECT_SHOW_ALL should not be set if this function is called  * from outside "builtin-rev-list.c" as otherwise it would use  * static "revs" from this file.  */
-end_comment
+begin_struct
+DECL|struct|rev_list_info
+struct|struct
+name|rev_list_info
+block|{
+DECL|member|revs
+name|struct
+name|rev_info
+modifier|*
+name|revs
+decl_stmt|;
+DECL|member|show_timestamp
+name|int
+name|show_timestamp
+decl_stmt|;
+DECL|member|hdr_termination
+name|int
+name|hdr_termination
+decl_stmt|;
+DECL|member|header_prefix
+specifier|const
+name|char
+modifier|*
+name|header_prefix
+decl_stmt|;
+block|}
+struct|;
+end_struct
 
 begin_function_decl
 specifier|extern
@@ -100,9 +125,9 @@ name|int
 name|show_bisect_vars
 parameter_list|(
 name|struct
-name|rev_info
+name|rev_list_info
 modifier|*
-name|revs
+name|info
 parameter_list|,
 name|int
 name|reaches
