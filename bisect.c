@@ -2768,6 +2768,14 @@ operator|=
 operator|&
 name|revs
 expr_stmt|;
+name|info
+operator|.
+name|bisect_show_flags
+operator|=
+name|BISECT_SHOW_TRIED
+operator||
+name|BISECT_SHOW_STRINGED
+expr_stmt|;
 name|bisect_rev_setup
 argument_list|(
 operator|&
@@ -2837,10 +2845,6 @@ argument_list|,
 name|reaches
 argument_list|,
 name|all
-argument_list|,
-name|BISECT_SHOW_TRIED
-operator||
-name|BISECT_SHOW_STRINGED
 argument_list|)
 return|;
 block|}
