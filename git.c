@@ -36,7 +36,7 @@ name|char
 name|git_usage_string
 index|[]
 init|=
-literal|"git [--version] [--exec-path[=GIT_EXEC_PATH]] [-p|--paginate|--no-pager] [--bare] [--git-dir=GIT_DIR] [--work-tree=GIT_WORK_TREE] [--help] COMMAND [ARGS]"
+literal|"git [--version] [--exec-path[=GIT_EXEC_PATH]] [--html-path] [-p|--paginate|--no-pager] [--bare] [--git-dir=GIT_DIR] [--work-tree=GIT_WORK_TREE] [--help] COMMAND [ARGS]"
 decl_stmt|;
 end_decl_stmt
 
@@ -358,6 +358,32 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|cmd
+argument_list|,
+literal|"--html-path"
+argument_list|)
+condition|)
+block|{
+name|puts
+argument_list|(
+name|system_path
+argument_list|(
+name|GIT_HTML_PATH
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|exit
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
 block|}
 elseif|else
 if|if
