@@ -227,6 +227,12 @@ name|do_generic_cmd
 block|}
 block|,
 block|{
+literal|"git-upload-archive"
+block|,
+name|do_generic_cmd
+block|}
+block|,
+block|{
 literal|"cvs"
 block|,
 name|do_cvs_cmd
