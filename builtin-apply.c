@@ -15973,7 +15973,7 @@ name|NULL
 block|,
 literal|"path"
 block|,
-literal|"donÂ´t apply changes matching the given path"
+literal|"don't apply changes matching the given path"
 block|,
 literal|0
 block|,
