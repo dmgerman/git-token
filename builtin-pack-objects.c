@@ -8097,7 +8097,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Delta compression using %d threads.\n"
+literal|"Delta compression using up to %d threads.\n"
 argument_list|,
 name|delta_search_threads
 argument_list|)
