@@ -3931,15 +3931,29 @@ end_function_decl
 
 begin_function_decl
 name|int
-name|adjust_shared_perm
+name|set_shared_perm
 parameter_list|(
 specifier|const
 name|char
 modifier|*
 name|path
+parameter_list|,
+name|int
+name|mode
 parameter_list|)
 function_decl|;
 end_function_decl
+
+begin_define
+DECL|macro|adjust_shared_perm
+define|#
+directive|define
+name|adjust_shared_perm
+parameter_list|(
+name|path
+parameter_list|)
+value|set_shared_perm((path), 0)
+end_define
 
 begin_function_decl
 name|int

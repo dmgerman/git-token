@@ -12217,7 +12217,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Move the just written object into its final resting place  */
+comment|/*  * Move the just written object into its final resting place.  * NEEDSWORK: this should be renamed to finalize_temp_file() as  * "moving" is only a part of what it does, when no patch between  * master to pu changes the call sites of this function.  */
 end_comment
 
 begin_function
@@ -12254,7 +12254,7 @@ name|ret
 operator|=
 name|errno
 expr_stmt|;
-comment|/* 	 * Coda hack - coda doesn't like cross-directory links, 	 * so we fall back to a rename, which will mean that it 	 * won't be able to check collisions, but that's not a 	 * big deal. 	 * 	 * The same holds for FAT formatted media. 	 * 	 * When this succeeds, we just return 0. We have nothing 	 * left to unlink. 	 */
+comment|/* 	 * Coda hack - coda doesn't like cross-directory links, 	 * so we fall back to a rename, which will mean that it 	 * won't be able to check collisions, but that's not a 	 * big deal. 	 * 	 * The same holds for FAT formatted media. 	 * 	 * When this succeeds, we just return.  We have nothing 	 * left to unlink. 	 */
 if|if
 condition|(
 name|ret
@@ -12274,9 +12274,9 @@ argument_list|,
 name|filename
 argument_list|)
 condition|)
-return|return
-literal|0
-return|;
+goto|goto
+name|out
+goto|;
 name|ret
 operator|=
 name|errno
@@ -12315,6 +12315,29 @@ return|;
 block|}
 comment|/* FIXME!!! Collision check here ? */
 block|}
+name|out
+label|:
+if|if
+condition|(
+name|set_shared_perm
+argument_list|(
+name|filename
+argument_list|,
+operator|(
+name|S_IFREG
+operator||
+literal|0444
+operator|)
+argument_list|)
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"unable to set permission to '%s'"
+argument_list|,
+name|filename
+argument_list|)
+return|;
 return|return
 literal|0
 return|;
@@ -12448,13 +12471,6 @@ argument_list|(
 name|fd
 argument_list|,
 literal|"sha1 file"
-argument_list|)
-expr_stmt|;
-name|fchmod
-argument_list|(
-name|fd
-argument_list|,
-literal|0444
 argument_list|)
 expr_stmt|;
 if|if
