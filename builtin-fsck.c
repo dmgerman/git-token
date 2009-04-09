@@ -948,8 +948,6 @@ argument_list|(
 name|obj
 operator|->
 name|sha1
-argument_list|,
-name|NULL
 argument_list|)
 condition|)
 return|return;
