@@ -132,13 +132,6 @@ name|flags
 operator||=
 name|SEEN
 expr_stmt|;
-name|name
-operator|=
-name|xstrdup
-argument_list|(
-name|name
-argument_list|)
-expr_stmt|;
 name|add_object
 argument_list|(
 name|obj
@@ -305,13 +298,6 @@ operator|->
 name|flags
 operator||=
 name|SEEN
-expr_stmt|;
-name|name
-operator|=
-name|xstrdup
-argument_list|(
-name|name
-argument_list|)
 expr_stmt|;
 name|add_object
 argument_list|(
