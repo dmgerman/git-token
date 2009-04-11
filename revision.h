@@ -757,6 +757,24 @@ struct|;
 end_struct
 
 begin_function_decl
+name|char
+modifier|*
+name|path_name
+parameter_list|(
+name|struct
+name|name_path
+modifier|*
+name|path
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|name
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 specifier|extern
 name|void
 name|add_object

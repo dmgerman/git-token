@@ -477,9 +477,14 @@ name|void
 name|show_object
 parameter_list|(
 name|struct
-name|object_array_entry
+name|object
 modifier|*
-name|p
+name|obj
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|name
 parameter_list|)
 block|{
 comment|/* An object with name "foo\n0000000..." can be used to 	 * confuse downstream git-pack-objects very badly. 	 */
@@ -490,8 +495,6 @@ name|ep
 init|=
 name|strchr
 argument_list|(
-name|p
-operator|->
 name|name
 argument_list|,
 literal|'\n'
@@ -510,9 +513,7 @@ literal|"%s %.*s\n"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
-name|p
-operator|->
-name|item
+name|obj
 operator|->
 name|sha1
 argument_list|)
@@ -523,13 +524,9 @@ call|)
 argument_list|(
 name|ep
 operator|-
-name|p
-operator|->
 name|name
 argument_list|)
 argument_list|,
-name|p
-operator|->
 name|name
 argument_list|)
 expr_stmt|;
@@ -543,15 +540,11 @@ literal|"%s %s\n"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
-name|p
-operator|->
-name|item
+name|obj
 operator|->
 name|sha1
 argument_list|)
 argument_list|,
-name|p
-operator|->
 name|name
 argument_list|)
 expr_stmt|;
