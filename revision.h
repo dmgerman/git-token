@@ -761,6 +761,7 @@ name|char
 modifier|*
 name|path_name
 parameter_list|(
+specifier|const
 name|struct
 name|name_path
 modifier|*
