@@ -1616,6 +1616,9 @@ specifier|const
 name|char
 modifier|*
 name|branch_name
+parameter_list|,
+name|int
+name|show_upstream_ref
 parameter_list|)
 block|{
 name|int
@@ -1646,16 +1649,78 @@ argument_list|,
 operator|&
 name|theirs
 argument_list|)
-operator|||
-operator|(
-operator|!
-name|ours
-operator|&&
-operator|!
-name|theirs
-operator|)
 condition|)
+block|{
+if|if
+condition|(
+name|branch
+operator|&&
+name|branch
+operator|->
+name|merge
+operator|&&
+name|branch
+operator|->
+name|merge
+index|[
+literal|0
+index|]
+operator|->
+name|dst
+operator|&&
+name|show_upstream_ref
+condition|)
+name|strbuf_addf
+argument_list|(
+name|stat
+argument_list|,
+literal|"[%s] "
+argument_list|,
+name|shorten_unambiguous_ref
+argument_list|(
+name|branch
+operator|->
+name|merge
+index|[
+literal|0
+index|]
+operator|->
+name|dst
+argument_list|)
+argument_list|)
+expr_stmt|;
 return|return;
+block|}
+name|strbuf_addch
+argument_list|(
+name|stat
+argument_list|,
+literal|'['
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|show_upstream_ref
+condition|)
+name|strbuf_addf
+argument_list|(
+name|stat
+argument_list|,
+literal|"%s: "
+argument_list|,
+name|shorten_unambiguous_ref
+argument_list|(
+name|branch
+operator|->
+name|merge
+index|[
+literal|0
+index|]
+operator|->
+name|dst
+argument_list|)
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -1665,7 +1730,7 @@ name|strbuf_addf
 argument_list|(
 name|stat
 argument_list|,
-literal|"[behind %d] "
+literal|"behind %d] "
 argument_list|,
 name|theirs
 argument_list|)
@@ -1680,7 +1745,7 @@ name|strbuf_addf
 argument_list|(
 name|stat
 argument_list|,
-literal|"[ahead %d] "
+literal|"ahead %d] "
 argument_list|,
 name|ours
 argument_list|)
@@ -1690,7 +1755,7 @@ name|strbuf_addf
 argument_list|(
 name|stat
 argument_list|,
-literal|"[ahead %d, behind %d] "
+literal|"ahead %d, behind %d] "
 argument_list|,
 name|ours
 argument_list|,
@@ -2032,6 +2097,10 @@ argument_list|,
 name|item
 operator|->
 name|name
+argument_list|,
+name|verbose
+operator|>
+literal|1
 argument_list|)
 expr_stmt|;
 name|strbuf_addf
