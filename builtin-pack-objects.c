@@ -9568,6 +9568,10 @@ name|struct
 name|commit
 modifier|*
 name|commit
+parameter_list|,
+name|void
+modifier|*
+name|data
 parameter_list|)
 block|{
 name|add_object_entry
@@ -9606,6 +9610,10 @@ name|struct
 name|object_array_entry
 modifier|*
 name|p
+parameter_list|,
+name|void
+modifier|*
+name|data
 parameter_list|)
 block|{
 name|add_preferred_base_object
@@ -10576,6 +10584,8 @@ argument_list|,
 name|show_commit
 argument_list|,
 name|show_object
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 if|if

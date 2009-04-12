@@ -1535,6 +1535,16 @@ name|cmd_archive
 block|}
 block|,
 block|{
+literal|"bisect--helper"
+block|,
+name|cmd_bisect__helper
+block|,
+name|RUN_SETUP
+operator||
+name|NEED_WORK_TREE
+block|}
+block|,
+block|{
 literal|"blame"
 block|,
 name|cmd_blame
