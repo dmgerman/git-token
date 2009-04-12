@@ -231,7 +231,7 @@ condition|)
 break|break;
 name|die
 argument_list|(
-literal|"oops"
+literal|"BUG: assertion failed in binary search"
 argument_list|)
 expr_stmt|;
 block|}
