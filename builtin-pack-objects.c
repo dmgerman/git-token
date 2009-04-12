@@ -9612,6 +9612,23 @@ name|flags
 operator||=
 name|OBJECT_ADDED
 expr_stmt|;
+name|free
+argument_list|(
+operator|(
+name|char
+operator|*
+operator|)
+name|p
+operator|->
+name|name
+argument_list|)
+expr_stmt|;
+name|p
+operator|->
+name|name
+operator|=
+name|NULL
+expr_stmt|;
 block|}
 end_function
 
