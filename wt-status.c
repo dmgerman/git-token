@@ -108,21 +108,21 @@ name|COLOR_MAXLEN
 index|]
 init|=
 block|{
-literal|""
+name|GIT_COLOR_NORMAL
 block|,
-comment|/* WT_STATUS_HEADER: normal */
-literal|"\033[32m"
+comment|/* WT_STATUS_HEADER */
+name|GIT_COLOR_GREEN
 block|,
-comment|/* WT_STATUS_UPDATED: green */
-literal|"\033[31m"
+comment|/* WT_STATUS_UPDATED */
+name|GIT_COLOR_RED
 block|,
-comment|/* WT_STATUS_CHANGED: red */
-literal|"\033[31m"
+comment|/* WT_STATUS_CHANGED */
+name|GIT_COLOR_RED
 block|,
-comment|/* WT_STATUS_UNTRACKED: red */
-literal|"\033[31m"
+comment|/* WT_STATUS_UNTRACKED */
+name|GIT_COLOR_RED
 block|,
-comment|/* WT_STATUS_NOBRANCH: red */
+comment|/* WT_STATUS_NOBRANCH */
 block|}
 decl_stmt|;
 end_decl_stmt
@@ -1550,20 +1550,14 @@ name|s
 operator|->
 name|untracked
 condition|)
-block|{
 name|dir
 operator|.
-name|show_other_directories
-operator|=
-literal|1
+name|flags
+operator||=
+name|DIR_SHOW_OTHER_DIRECTORIES
+operator||
+name|DIR_HIDE_EMPTY_DIRECTORIES
 expr_stmt|;
-name|dir
-operator|.
-name|hide_empty_directories
-operator|=
-literal|1
-expr_stmt|;
-block|}
 name|setup_standard_excludes
 argument_list|(
 operator|&

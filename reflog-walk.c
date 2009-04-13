@@ -1493,8 +1493,9 @@ parameter_list|,
 name|int
 name|oneline
 parameter_list|,
-name|int
-name|relative_date
+name|enum
+name|date_mode
+name|dmode
 parameter_list|)
 block|{
 if|if
@@ -1558,7 +1559,7 @@ name|commit_reflog
 operator|->
 name|flag
 operator|||
-name|relative_date
+name|dmode
 condition|)
 name|printf
 argument_list|(
@@ -1570,9 +1571,11 @@ name|info
 operator|->
 name|timestamp
 argument_list|,
-literal|0
+name|info
+operator|->
+name|tz
 argument_list|,
-literal|1
+name|dmode
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1623,7 +1626,7 @@ name|commit_reflog
 operator|->
 name|flag
 operator|||
-name|relative_date
+name|dmode
 condition|)
 name|printf
 argument_list|(
@@ -1639,7 +1642,7 @@ name|info
 operator|->
 name|tz
 argument_list|,
-name|relative_date
+name|dmode
 argument_list|)
 argument_list|)
 expr_stmt|;

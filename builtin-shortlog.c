@@ -650,12 +650,6 @@ condition|)
 name|oneline
 operator|++
 expr_stmt|;
-name|len
-operator|=
-name|eol
-operator|-
-name|oneline
-expr_stmt|;
 name|format_subject
 argument_list|(
 operator|&

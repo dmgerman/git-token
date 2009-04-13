@@ -283,16 +283,6 @@ name|ce
 decl_stmt|;
 if|if
 condition|(
-name|S_ISGITLINK
-argument_list|(
-name|mode
-argument_list|)
-condition|)
-return|return
-literal|0
-return|;
-if|if
-condition|(
 name|S_ISDIR
 argument_list|(
 name|mode
@@ -1771,6 +1761,23 @@ name|output_format
 operator||=
 name|DIFF_FORMAT_NAME_STATUS
 expr_stmt|;
+if|if
+condition|(
+name|diff_setup_done
+argument_list|(
+operator|&
+name|rev
+operator|.
+name|diffopt
+argument_list|)
+operator|<
+literal|0
+condition|)
+name|die
+argument_list|(
+literal|"diff_setup_done failed"
+argument_list|)
+expr_stmt|;
 name|add_pending_object
 argument_list|(
 operator|&
@@ -2080,35 +2087,29 @@ name|buf
 init|=
 name|STRBUF_INIT
 decl_stmt|;
-name|int
-name|ret
-decl_stmt|;
-if|if
-condition|(
-operator|(
-name|ret
-operator|=
-name|interpret_nth_last_branch
+name|strbuf_branchname
 argument_list|(
+operator|&
+name|buf
+argument_list|,
 name|branch
 operator|->
 name|name
-argument_list|,
-operator|&
-name|buf
 argument_list|)
-operator|)
-operator|&&
-name|ret
-operator|==
-name|strlen
+expr_stmt|;
+if|if
+condition|(
+name|strcmp
 argument_list|(
+name|buf
+operator|.
+name|buf
+argument_list|,
 name|branch
 operator|->
 name|name
 argument_list|)
 condition|)
-block|{
 name|branch
 operator|->
 name|name
@@ -2134,28 +2135,6 @@ argument_list|,
 literal|11
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-name|strbuf_addstr
-argument_list|(
-operator|&
-name|buf
-argument_list|,
-literal|"refs/heads/"
-argument_list|)
-expr_stmt|;
-name|strbuf_addstr
-argument_list|(
-operator|&
-name|buf
-argument_list|,
-name|branch
-operator|->
-name|name
-argument_list|)
-expr_stmt|;
-block|}
 name|branch
 operator|->
 name|path
@@ -2409,9 +2388,9 @@ name|topts
 operator|.
 name|dir
 operator|->
-name|show_ignored
-operator|=
-literal|1
+name|flags
+operator||=
+name|DIR_SHOW_IGNORED
 expr_stmt|;
 name|topts
 operator|.
@@ -2931,7 +2910,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Already on \"%s\"\n"
+literal|"Already on '%s'\n"
 argument_list|,
 name|new
 operator|->
@@ -2943,7 +2922,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Switched to%s branch \"%s\"\n"
+literal|"Switched to%s branch '%s'\n"
 argument_list|,
 name|opts
 operator|->
@@ -3014,7 +2993,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Note: moving to \"%s\" which isn't a local branch\nIf you want to create a new branch from this checkout, you may do so\n(now or later) by using -b with the checkout command again. Example:\n  git checkout -b<new_branch_name>\n"
+literal|"Note: moving to '%s' which isn't a local branch\nIf you want to create a new branch from this checkout, you may do so\n(now or later) by using -b with the checkout command again. Example:\n  git checkout -b<new_branch_name>\n"
 argument_list|,
 name|new
 operator|->
@@ -3289,18 +3268,14 @@ operator|->
 name|quiet
 condition|)
 block|{
-name|fprintf
+name|warning
 argument_list|(
-name|stderr
-argument_list|,
-literal|"warning: You appear to be on a branch yet to be born.\n"
+literal|"You appear to be on a branch yet to be born."
 argument_list|)
 expr_stmt|;
-name|fprintf
+name|warning
 argument_list|(
-name|stderr
-argument_list|,
-literal|"warning: Forcing checkout of %s.\n"
+literal|"Forcing checkout of %s."
 argument_list|,
 name|new
 operator|->
@@ -4155,18 +4130,21 @@ name|buf
 init|=
 name|STRBUF_INIT
 decl_stmt|;
-name|strbuf_addstr
+if|if
+condition|(
+name|strbuf_check_branch_ref
 argument_list|(
 operator|&
 name|buf
 argument_list|,
-literal|"refs/heads/"
+name|opts
+operator|.
+name|new_branch
 argument_list|)
-expr_stmt|;
-name|strbuf_addstr
+condition|)
+name|die
 argument_list|(
-operator|&
-name|buf
+literal|"git checkout: we do not like '%s' as a branch name."
 argument_list|,
 name|opts
 operator|.
@@ -4188,24 +4166,6 @@ condition|)
 name|die
 argument_list|(
 literal|"git checkout: branch %s already exists"
-argument_list|,
-name|opts
-operator|.
-name|new_branch
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|check_ref_format
-argument_list|(
-name|buf
-operator|.
-name|buf
-argument_list|)
-condition|)
-name|die
-argument_list|(
-literal|"git checkout: we do not like '%s' as a branch name."
 argument_list|,
 name|opts
 operator|.

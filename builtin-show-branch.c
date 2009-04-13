@@ -1848,12 +1848,9 @@ operator|<=
 name|ref_name_cnt
 condition|)
 block|{
-name|fprintf
+name|warning
 argument_list|(
-name|stderr
-argument_list|,
-literal|"warning: ignoring %s; "
-literal|"cannot handle more than %d refs\n"
+literal|"ignoring %s; cannot handle more than %d refs"
 argument_list|,
 name|refname
 argument_list|,

@@ -260,7 +260,6 @@ name|unpacked
 range|:
 literal|1
 decl_stmt|,
-comment|/* see also ignore_packed below */
 DECL|member|boundary
 name|boundary
 range|:
@@ -392,18 +391,6 @@ name|enum
 name|date_mode
 name|date_mode
 decl_stmt|;
-DECL|member|ignore_packed
-specifier|const
-name|char
-modifier|*
-modifier|*
-name|ignore_packed
-decl_stmt|;
-comment|/* pretend objects in these are unpacked */
-DECL|member|num_ignore_packed
-name|int
-name|num_ignore_packed
-decl_stmt|;
 DECL|member|abbrev
 name|unsigned
 name|int
@@ -433,16 +420,26 @@ name|char
 modifier|*
 name|mime_boundary
 decl_stmt|;
+DECL|member|patch_suffix
+specifier|const
+name|char
+modifier|*
+name|patch_suffix
+decl_stmt|;
+DECL|member|numbered_files
+name|int
+name|numbered_files
+decl_stmt|;
 DECL|member|message_id
 name|char
 modifier|*
 name|message_id
 decl_stmt|;
-DECL|member|ref_message_id
-specifier|const
-name|char
+DECL|member|ref_message_ids
+name|struct
+name|string_list
 modifier|*
-name|ref_message_id
+name|ref_message_ids
 decl_stmt|;
 DECL|member|add_signoff
 specifier|const

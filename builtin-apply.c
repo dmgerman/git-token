@@ -11414,12 +11414,12 @@ if|if
 condition|(
 name|has_symlink_leading_path
 argument_list|(
+name|new_name
+argument_list|,
 name|strlen
 argument_list|(
 name|new_name
 argument_list|)
-argument_list|,
-name|new_name
 argument_list|)
 condition|)
 return|return
@@ -11957,11 +11957,9 @@ name|patch
 operator|->
 name|old_mode
 condition|)
-name|fprintf
+name|warning
 argument_list|(
-name|stderr
-argument_list|,
-literal|"warning: %s has type %o, expected %o\n"
+literal|"%s has type %o, expected %o"
 argument_list|,
 name|old_name
 argument_list|,
@@ -14552,11 +14550,9 @@ argument_list|)
 operator|-
 literal|5
 expr_stmt|;
-name|fprintf
+name|warning
 argument_list|(
-name|stderr
-argument_list|,
-literal|"warning: truncating .rej filename to %.*s.rej"
+literal|"truncating .rej filename to %.*s.rej"
 argument_list|,
 name|cnt
 operator|-
@@ -15973,7 +15969,7 @@ name|NULL
 block|,
 literal|"path"
 block|,
-literal|"donÂ´t apply changes matching the given path"
+literal|"don't apply changes matching the given path"
 block|,
 literal|0
 block|,
@@ -16040,29 +16036,39 @@ argument_list|,
 literal|"instead of applying the patch, output diffstat for the input"
 argument_list|)
 block|,
-name|OPT_BOOLEAN
-argument_list|(
-literal|0
-argument_list|,
-literal|"allow-binary-replacement"
-argument_list|,
-operator|&
-name|binary
-argument_list|,
-literal|"now no-op"
-argument_list|)
+block|{
+name|OPTION_BOOLEAN
 block|,
-name|OPT_BOOLEAN
-argument_list|(
 literal|0
-argument_list|,
-literal|"binary"
-argument_list|,
+block|,
+literal|"allow-binary-replacement"
+block|,
 operator|&
 name|binary
-argument_list|,
-literal|"now no-op"
-argument_list|)
+block|,
+name|NULL
+block|,
+literal|"old option, now no-op"
+block|,
+name|PARSE_OPT_HIDDEN
+block|}
+block|,
+block|{
+name|OPTION_BOOLEAN
+block|,
+literal|0
+block|,
+literal|"binary"
+block|,
+operator|&
+name|binary
+block|,
+name|NULL
+block|,
+literal|"old option, now no-op"
+block|,
+name|PARSE_OPT_HIDDEN
+block|}
 block|,
 name|OPT_BOOLEAN
 argument_list|(
@@ -16569,12 +16575,10 @@ name|whitespace_error
 operator|-
 name|squelch_whitespace_errors
 decl_stmt|;
-name|fprintf
+name|warning
 argument_list|(
-name|stderr
-argument_list|,
-literal|"warning: squelched %d "
-literal|"whitespace error%s\n"
+literal|"squelched %d "
+literal|"whitespace error%s"
 argument_list|,
 name|squelched
 argument_list|,
@@ -16623,12 +16627,10 @@ name|applied_after_fixing_ws
 operator|&&
 name|apply
 condition|)
-name|fprintf
+name|warning
 argument_list|(
-name|stderr
-argument_list|,
-literal|"warning: %d line%s applied after"
-literal|" fixing whitespace errors.\n"
+literal|"%d line%s applied after"
+literal|" fixing whitespace errors."
 argument_list|,
 name|applied_after_fixing_ws
 argument_list|,
@@ -16646,11 +16648,9 @@ if|if
 condition|(
 name|whitespace_error
 condition|)
-name|fprintf
+name|warning
 argument_list|(
-name|stderr
-argument_list|,
-literal|"warning: %d line%s add%s whitespace errors.\n"
+literal|"%d line%s add%s whitespace errors."
 argument_list|,
 name|whitespace_error
 argument_list|,

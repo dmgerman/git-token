@@ -308,6 +308,16 @@ name|argv_exec_path
 operator|=
 name|exec_path
 expr_stmt|;
+comment|/* 	 * Propagate this setting to external programs. 	 */
+name|setenv
+argument_list|(
+name|EXEC_PATH_ENVIRONMENT
+argument_list|,
+name|exec_path
+argument_list|,
+literal|1
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 

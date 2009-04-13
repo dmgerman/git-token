@@ -1527,6 +1527,13 @@ name|exec
 init|=
 name|NULL
 decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|output
+init|=
+name|NULL
+decl_stmt|;
 name|int
 name|compression_level
 init|=
@@ -1583,6 +1590,20 @@ argument_list|,
 literal|"prefix"
 argument_list|,
 literal|"prepend prefix to each pathname in the archive"
+argument_list|)
+block|,
+name|OPT_STRING
+argument_list|(
+literal|0
+argument_list|,
+literal|"output"
+argument_list|,
+operator|&
+name|output
+argument_list|,
+literal|"file"
+argument_list|,
+literal|"write the archive to this file"
 argument_list|)
 block|,
 name|OPT__VERBOSE
@@ -1782,6 +1803,15 @@ condition|)
 name|die
 argument_list|(
 literal|"Option --exec can only be used together with --remote"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|output
+condition|)
+name|die
+argument_list|(
+literal|"Unexpected option --output"
 argument_list|)
 expr_stmt|;
 if|if

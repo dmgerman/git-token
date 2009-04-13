@@ -294,11 +294,9 @@ name|errno
 operator|!=
 name|ENOENT
 condition|)
-name|fprintf
+name|warning
 argument_list|(
-name|stderr
-argument_list|,
-literal|"warning: '%s': %s"
+literal|"'%s': %s"
 argument_list|,
 name|ce
 operator|->
