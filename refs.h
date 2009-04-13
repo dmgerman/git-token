@@ -623,6 +623,9 @@ specifier|const
 name|char
 modifier|*
 name|ref
+parameter_list|,
+name|int
+name|strict
 parameter_list|)
 function_decl|;
 end_function_decl
