@@ -4321,7 +4321,7 @@ name|fp
 condition|)
 name|die
 argument_list|(
-literal|"Could open %s for writing"
+literal|"Could not open %s for writing"
 argument_list|,
 name|git_path
 argument_list|(
