@@ -1508,7 +1508,7 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/* 			 * make sure no cached delta data remains from a 			 * previous attempt before a pack split occured. 			 */
+comment|/* 			 * make sure no cached delta data remains from a 			 * previous attempt before a pack split occurred. 			 */
 name|free
 argument_list|(
 name|entry

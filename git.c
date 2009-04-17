@@ -2777,7 +2777,7 @@ index|[
 literal|0
 index|]
 expr_stmt|;
-comment|/* 	 * We use PATH to find git commands, but we prepend some higher 	 * precidence paths: the "--exec-path" option, the GIT_EXEC_PATH 	 * environment, and the $(gitexecdir) from the Makefile at build 	 * time. 	 */
+comment|/* 	 * We use PATH to find git commands, but we prepend some higher 	 * precedence paths: the "--exec-path" option, the GIT_EXEC_PATH 	 * environment, and the $(gitexecdir) from the Makefile at build 	 * time. 	 */
 name|setup_path
 argument_list|()
 expr_stmt|;

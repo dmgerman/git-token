@@ -1074,7 +1074,7 @@ return|return
 name|commit
 return|;
 block|}
-comment|/* 	 * Tree object? Either mark it uniniteresting, or add it 	 * to the list of objects to look at later.. 	 */
+comment|/* 	 * Tree object? Either mark it uninteresting, or add it 	 * to the list of objects to look at later.. 	 */
 if|if
 condition|(
 name|object

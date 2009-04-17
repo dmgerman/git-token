@@ -84,7 +84,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Print a strbuf to stdout.  If the graph is non-NULL, all lines but the  * first will be prefixed with the graph output.  *  * If the strbuf ends with a newline, the output will end after this  * newline.  A new graph line will not be printed after the final newline.  * If the strbuf is empty, no output will be printed.  *  * Since the first line will not include the graph ouput, the caller is  * responsible for printing this line's graph (perhaps via  * graph_show_commit() or graph_show_oneline()) before calling  * graph_show_strbuf().  */
+comment|/*  * Print a strbuf to stdout.  If the graph is non-NULL, all lines but the  * first will be prefixed with the graph output.  *  * If the strbuf ends with a newline, the output will end after this  * newline.  A new graph line will not be printed after the final newline.  * If the strbuf is empty, no output will be printed.  *  * Since the first line will not include the graph output, the caller is  * responsible for printing this line's graph (perhaps via  * graph_show_commit() or graph_show_oneline()) before calling  * graph_show_strbuf().  */
 end_comment
 
 begin_function_decl

@@ -2371,7 +2371,7 @@ index|]
 condition|)
 empty_stmt|;
 block|}
-comment|/* 			 * Record the end-of-group position in case we are matched 			 * with a group of changes in the other file (that is, the 			 * change record before the enf-of-group index in the other 			 * file is set). 			 */
+comment|/* 			 * Record the end-of-group position in case we are matched 			 * with a group of changes in the other file (that is, the 			 * change record before the end-of-group index in the other 			 * file is set). 			 */
 name|ixref
 operator|=
 name|rchgo

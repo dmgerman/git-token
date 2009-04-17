@@ -2501,7 +2501,7 @@ operator|!
 name|pending
 condition|)
 block|{
-comment|/* The only times that we spin here is when the process 		 * that is connected through the pipes is waiting for 		 * its own input data to become available. But since 		 * the process (pack-objects) is itself CPU intensive, 		 * it will happily pick up the time slice that we are 		 * relinguishing here. 		 */
+comment|/* The only times that we spin here is when the process 		 * that is connected through the pipes is waiting for 		 * its own input data to become available. But since 		 * the process (pack-objects) is itself CPU intensive, 		 * it will happily pick up the time slice that we are 		 * relinquishing here. 		 */
 name|Sleep
 argument_list|(
 literal|0

@@ -1878,7 +1878,7 @@ expr_stmt|;
 break|break;
 block|}
 block|}
-comment|/* 	 * Then, discard all the non-relevane file pairs... 	 */
+comment|/* 	 * Then, discard all the non-relevant file pairs... 	 */
 for|for
 control|(
 name|i

@@ -1098,7 +1098,7 @@ name|path
 argument_list|)
 return|;
 block|}
-comment|/* 	 * NEEDSWORK: 	 * There is absolutely no reason to write this as a blob object 	 * and create a phoney cache entry just to leak.  This hack is 	 * primarily to get to the write_entry() machinery that massages 	 * the contents to work-tree format and writes out which only 	 * allows it for a cache entry.  The code in write_entry() needs 	 * to be refactored to allow us to feed a<buffer, size, mode> 	 * instead of a cache entry.  Such a refactoring would help 	 * merge_recursive as well (it also writes the merge result to the 	 * object database even when it may contain conflicts). 	 */
+comment|/* 	 * NEEDSWORK: 	 * There is absolutely no reason to write this as a blob object 	 * and create a phony cache entry just to leak.  This hack is 	 * primarily to get to the write_entry() machinery that massages 	 * the contents to work-tree format and writes out which only 	 * allows it for a cache entry.  The code in write_entry() needs 	 * to be refactored to allow us to feed a<buffer, size, mode> 	 * instead of a cache entry.  Such a refactoring would help 	 * merge_recursive as well (it also writes the merge result to the 	 * object database even when it may contain conflicts). 	 */
 if|if
 condition|(
 name|write_sha1_file

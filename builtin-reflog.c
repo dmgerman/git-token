@@ -1164,7 +1164,7 @@ name|long
 name|expire_limit
 parameter_list|)
 block|{
-comment|/* 	 * We need to compute if commit on either side of an reflog 	 * entry is reachable from the tip of the ref for all entries. 	 * Mark commits that are reachable from the tip down to the 	 * time threashold first; we know a commit marked thusly is 	 * reachable from the tip without running in_merge_bases() 	 * at all. 	 */
+comment|/* 	 * We need to compute if commit on either side of an reflog 	 * entry is reachable from the tip of the ref for all entries. 	 * Mark commits that are reachable from the tip down to the 	 * time threshold first; we know a commit marked thusly is 	 * reachable from the tip without running in_merge_bases() 	 * at all. 	 */
 name|struct
 name|commit_list
 modifier|*

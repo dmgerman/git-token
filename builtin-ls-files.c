@@ -2742,7 +2742,7 @@ argument_list|,
 name|argv
 argument_list|)
 expr_stmt|;
-comment|/* be nice with submodule patsh ending in a slash */
+comment|/* be nice with submodule paths ending in a slash */
 name|read_cache
 argument_list|()
 expr_stmt|;

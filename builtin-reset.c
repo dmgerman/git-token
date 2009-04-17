@@ -1275,7 +1275,7 @@ operator|+=
 literal|2
 expr_stmt|;
 block|}
-comment|/* 		 * Otherwise, argv[i] could be either<rev> or<paths> and 		 * has to be unambigous. 		 */
+comment|/* 		 * Otherwise, argv[i] could be either<rev> or<paths> and 		 * has to be unambiguous. 		 */
 elseif|else
 if|if
 condition|(

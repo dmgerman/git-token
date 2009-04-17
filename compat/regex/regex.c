@@ -3463,7 +3463,7 @@ name|c
 decl_stmt|,
 name|c1
 decl_stmt|;
-comment|/* A random tempory spot in PATTERN.  */
+comment|/* A random temporary spot in PATTERN.  */
 specifier|const
 name|char
 modifier|*
@@ -5819,7 +5819,7 @@ operator|+=
 literal|3
 expr_stmt|;
 block|}
-comment|/* Otherwise, we have a nontrivial interval.  When 		    we're all done, the pattern will look like: 		      set_number_at<jump count><upper bound> 		      set_number_at<succeed_n count><lower bound> 		      succeed_n<after jump addr><succed_n count><body of loop> 		      jump_n<succeed_n addr><jump count> 		    (The upper bound and `jump_n' are omitted if 		    `upper_bound' is 1, though.)  */
+comment|/* Otherwise, we have a nontrivial interval.  When 		    we're all done, the pattern will look like: 		      set_number_at<jump count><upper bound> 		      set_number_at<succeed_n count><lower bound> 		      succeed_n<after jump addr><succeed_n count><body of loop> 		      jump_n<succeed_n addr><jump count> 		    (The upper bound and `jump_n' are omitted if 		    `upper_bound' is 1, though.)  */
 else|else
 block|{
 comment|/* If the upper bound is> 1, we need to insert 			more at the end of the loop.  */
