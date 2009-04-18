@@ -283,16 +283,6 @@ name|ce
 decl_stmt|;
 if|if
 condition|(
-name|S_ISGITLINK
-argument_list|(
-name|mode
-argument_list|)
-condition|)
-return|return
-literal|0
-return|;
-if|if
-condition|(
 name|S_ISDIR
 argument_list|(
 name|mode
