@@ -3494,6 +3494,8 @@ operator|=
 name|shorten_unambiguous_ref
 argument_list|(
 name|refname
+argument_list|,
+name|warn_ambiguous_refs
 argument_list|)
 expr_stmt|;
 else|else
@@ -5234,6 +5236,14 @@ expr_stmt|;
 name|sort_atom_limit
 operator|=
 name|used_atom_cnt
+expr_stmt|;
+comment|/* for warn_ambiguous_refs */
+name|git_config
+argument_list|(
+name|git_default_config
+argument_list|,
+name|NULL
+argument_list|)
 expr_stmt|;
 name|memset
 argument_list|(
