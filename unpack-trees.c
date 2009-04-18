@@ -387,6 +387,12 @@ operator|=
 literal|0
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|o
+operator|->
+name|update
+condition|)
 name|git_attr_set_direction
 argument_list|(
 name|GIT_ATTR_CHECKOUT
@@ -546,6 +552,12 @@ operator|&
 name|progress
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|o
+operator|->
+name|update
+condition|)
 name|git_attr_set_direction
 argument_list|(
 name|GIT_ATTR_CHECKIN
