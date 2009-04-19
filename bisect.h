@@ -62,6 +62,29 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|void
+name|print_commit_list
+parameter_list|(
+name|struct
+name|commit_list
+modifier|*
+name|list
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|format_cur
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|format_last
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/* bisect_show_flags flags in struct rev_list_info */
 end_comment
