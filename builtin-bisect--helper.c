@@ -36,6 +36,8 @@ init|=
 block|{
 literal|"git bisect--helper --next-vars"
 block|,
+literal|"git bisect--helper --next-exit"
+block|,
 name|NULL
 block|}
 decl_stmt|;
@@ -66,6 +68,11 @@ name|next_vars
 init|=
 literal|0
 decl_stmt|;
+name|int
+name|next_exit
+init|=
+literal|0
+decl_stmt|;
 name|struct
 name|option
 name|options
@@ -82,6 +89,18 @@ operator|&
 name|next_vars
 argument_list|,
 literal|"output next bisect step variables"
+argument_list|)
+block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|0
+argument_list|,
+literal|"next-exit"
+argument_list|,
+operator|&
+name|next_exit
+argument_list|,
+literal|"output bisect result and exit instuctions"
 argument_list|)
 block|,
 name|OPT_END
@@ -105,8 +124,19 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
+name|next_vars
+operator|&&
+name|next_exit
+operator|)
+operator|||
+operator|(
 operator|!
 name|next_vars
+operator|&&
+operator|!
+name|next_exit
+operator|)
 condition|)
 name|usage_with_options
 argument_list|(
@@ -115,9 +145,20 @@ argument_list|,
 name|options
 argument_list|)
 expr_stmt|;
-comment|/* next-vars */
+if|if
+condition|(
+name|next_vars
+condition|)
 return|return
 name|bisect_next_vars
+argument_list|(
+name|prefix
+argument_list|)
+return|;
+else|else
+comment|/* next-exit */
+return|return
+name|bisect_next_exit
 argument_list|(
 name|prefix
 argument_list|)
