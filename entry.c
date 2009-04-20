@@ -783,6 +783,9 @@ expr_stmt|;
 comment|/* use fstat() only when path == ce->name */
 if|if
 condition|(
+name|fstat_is_reliable
+argument_list|()
+operator|&&
 name|state
 operator|->
 name|refresh_cache
