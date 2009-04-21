@@ -105,14 +105,6 @@ name|BISECT_SHOW_TRIED
 value|(1<<1)
 end_define
 
-begin_define
-DECL|macro|BISECT_SHOW_STRINGED
-define|#
-directive|define
-name|BISECT_SHOW_STRINGED
-value|(1<<2)
-end_define
-
 begin_struct
 DECL|struct|rev_list_info
 struct|struct
