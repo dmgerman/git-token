@@ -422,6 +422,10 @@ condition|(
 operator|!
 name|matchlen
 operator|||
+name|baselen
+operator|==
+name|matchlen
+operator|||
 name|base
 index|[
 name|matchlen
