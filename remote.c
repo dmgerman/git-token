@@ -7806,7 +7806,7 @@ condition|)
 return|return
 literal|0
 return|;
-comment|/* Run "rev-list --no-merges --left-right ours...theirs" internally... */
+comment|/* Run "rev-list --left-right ours...theirs" internally... */
 name|rev_argc
 operator|=
 literal|0
@@ -7818,14 +7818,6 @@ operator|++
 index|]
 operator|=
 name|NULL
-expr_stmt|;
-name|rev_argv
-index|[
-name|rev_argc
-operator|++
-index|]
-operator|=
-literal|"--no-merges"
 expr_stmt|;
 name|rev_argv
 index|[
