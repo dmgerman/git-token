@@ -114,7 +114,7 @@ directive|endif
 end_endif
 
 begin_comment
-comment|/* For platform which support the ISO C amendment 1 functionality we    support user defined character classes.  */
+comment|/* For platforms which support the ISO C amendment 1 functionality we    support user defined character classes.  */
 end_comment
 
 begin_if

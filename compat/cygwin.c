@@ -432,7 +432,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * At start up, we are trying to determine whether Win32 API or cygwin stat  * functions should be used. The choice is determined by core.ignorecygwinfstricks.  * Reading this option is not always possible immediately as git_dir may be  * not be set yet. So until it is set, use cygwin lstat/stat functions.  * However, if core.filemode is set, we must use the Cygwin posix  * stat/lstat as the Windows stat functions do not determine posix filemode.  *  * Note that git_cygwin_config() does NOT call git_default_config() and this  * is deliberate.  Many commands read from config to establish initial  * values in variables and later tweak them from elsewhere (e.g. command line).  * init_stat() is called lazily on demand, typically much late in the program,  * and calling git_default_config() from here would break such variables.  */
+comment|/*  * At start up, we are trying to determine whether Win32 API or cygwin stat  * functions should be used. The choice is determined by core.ignorecygwinfstricks.  * Reading this option is not always possible immediately as git_dir may  * not be set yet. So until it is set, use cygwin lstat/stat functions.  * However, if core.filemode is set, we must use the Cygwin posix  * stat/lstat as the Windows stat functions do not determine posix filemode.  *  * Note that git_cygwin_config() does NOT call git_default_config() and this  * is deliberate.  Many commands read from config to establish initial  * values in variables and later tweak them from elsewhere (e.g. command line).  * init_stat() is called lazily on demand, typically much late in the program,  * and calling git_default_config() from here would break such variables.  */
 end_comment
 
 begin_decl_stmt
