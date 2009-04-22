@@ -2187,7 +2187,7 @@ name|strbuf_addf
 argument_list|(
 name|sb
 argument_list|,
-literal|" %*s"
+literal|"%*s"
 argument_list|,
 name|graph
 operator|->
@@ -2198,7 +2198,7 @@ argument_list|)
 expr_stmt|;
 name|chars_written
 operator|+=
-literal|2
+literal|1
 operator|+
 name|graph
 operator|->
