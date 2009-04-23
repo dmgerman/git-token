@@ -2208,12 +2208,7 @@ operator|!
 name|subkey
 condition|)
 return|return
-name|error
-argument_list|(
-literal|"Config with no key for remote %s"
-argument_list|,
-name|name
-argument_list|)
+literal|0
 return|;
 name|remote
 operator|=
