@@ -1290,12 +1290,7 @@ operator|!
 name|subkey
 condition|)
 return|return
-name|error
-argument_list|(
-literal|"Config with no key for man viewer: %s"
-argument_list|,
-name|name
-argument_list|)
+literal|0
 return|;
 if|if
 condition|(
@@ -1367,13 +1362,6 @@ name|value
 argument_list|)
 return|;
 block|}
-name|warning
-argument_list|(
-literal|"'%s': unsupported man viewer sub key."
-argument_list|,
-name|subkey
-argument_list|)
-expr_stmt|;
 return|return
 literal|0
 return|;
