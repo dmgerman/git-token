@@ -12,6 +12,12 @@ directive|define
 name|CACHE_TREE_H
 end_define
 
+begin_include
+include|#
+directive|include
+file|"tree.h"
+end_include
+
 begin_struct_decl
 struct_decl|struct
 name|cache_tree
@@ -247,6 +253,22 @@ specifier|const
 name|char
 modifier|*
 name|prefix
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|void
+name|prime_cache_tree
+parameter_list|(
+name|struct
+name|cache_tree
+modifier|*
+modifier|*
+parameter_list|,
+name|struct
+name|tree
+modifier|*
 parameter_list|)
 function_decl|;
 end_function_decl
