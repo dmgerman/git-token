@@ -626,6 +626,14 @@ operator|<<
 literal|20
 condition|)
 block|{
+name|int
+name|x
+init|=
+name|total
+operator|+
+literal|5243
+decl_stmt|;
+comment|/* for rounding */
 name|l
 operator|-=
 name|snprintf
@@ -638,21 +646,13 @@ name|l
 argument_list|,
 literal|", %u.%2.2u MiB"
 argument_list|,
-call|(
-name|int
-call|)
-argument_list|(
-name|total
+name|x
 operator|>>
 literal|20
-argument_list|)
 argument_list|,
 operator|(
-call|(
-name|int
-call|)
-argument_list|(
-name|total
+operator|(
+name|x
 operator|&
 operator|(
 operator|(
@@ -663,7 +663,7 @@ operator|)
 operator|-
 literal|1
 operator|)
-argument_list|)
+operator|)
 operator|*
 literal|100
 operator|)
@@ -682,6 +682,14 @@ operator|<<
 literal|10
 condition|)
 block|{
+name|int
+name|x
+init|=
+name|total
+operator|+
+literal|5
+decl_stmt|;
+comment|/* for rounding */
 name|l
 operator|-=
 name|snprintf
@@ -694,21 +702,13 @@ name|l
 argument_list|,
 literal|", %u.%2.2u KiB"
 argument_list|,
-call|(
-name|int
-call|)
-argument_list|(
-name|total
+name|x
 operator|>>
 literal|10
-argument_list|)
 argument_list|,
 operator|(
-call|(
-name|int
-call|)
-argument_list|(
-name|total
+operator|(
+name|x
 operator|&
 operator|(
 operator|(
@@ -719,7 +719,7 @@ operator|)
 operator|-
 literal|1
 operator|)
-argument_list|)
+operator|)
 operator|*
 literal|100
 operator|)
