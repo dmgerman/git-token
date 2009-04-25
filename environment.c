@@ -326,6 +326,34 @@ name|PUSH_DEFAULT_UNSPECIFIED
 decl_stmt|;
 end_decl_stmt
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|UNRELIABLE_HARDLINKS
+end_ifndef
+
+begin_define
+DECL|macro|UNRELIABLE_HARDLINKS
+define|#
+directive|define
+name|UNRELIABLE_HARDLINKS
+value|0
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
+begin_decl_stmt
+DECL|variable|unreliable_hardlinks
+name|int
+name|unreliable_hardlinks
+init|=
+name|UNRELIABLE_HARDLINKS
+decl_stmt|;
+end_decl_stmt
+
 begin_comment
 comment|/* Parallel index stat data preload? */
 end_comment
