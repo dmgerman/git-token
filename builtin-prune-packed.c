@@ -347,6 +347,15 @@ name|DIR
 modifier|*
 name|d
 decl_stmt|;
+name|display_progress
+argument_list|(
+name|progress
+argument_list|,
+name|i
+operator|+
+literal|1
+argument_list|)
+expr_stmt|;
 name|sprintf
 argument_list|(
 name|pathname
