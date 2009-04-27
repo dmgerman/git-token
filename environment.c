@@ -329,15 +329,15 @@ end_decl_stmt
 begin_ifndef
 ifndef|#
 directive|ifndef
-name|UNRELIABLE_HARDLINKS
+name|OBJECT_CREATION_MODE
 end_ifndef
 
 begin_define
-DECL|macro|UNRELIABLE_HARDLINKS
+DECL|macro|OBJECT_CREATION_MODE
 define|#
 directive|define
-name|UNRELIABLE_HARDLINKS
-value|0
+name|OBJECT_CREATION_MODE
+value|OBJECT_CREATION_USES_HARDLINKS
 end_define
 
 begin_endif
@@ -346,11 +346,12 @@ directive|endif
 end_endif
 
 begin_decl_stmt
-DECL|variable|unreliable_hardlinks
-name|int
-name|unreliable_hardlinks
+DECL|variable|object_creation_mode
+name|enum
+name|object_creation_mode
+name|object_creation_mode
 init|=
-name|UNRELIABLE_HARDLINKS
+name|OBJECT_CREATION_MODE
 decl_stmt|;
 end_decl_stmt
 

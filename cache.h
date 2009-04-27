@@ -3437,10 +3437,29 @@ name|push_default
 decl_stmt|;
 end_decl_stmt
 
+begin_enum
+DECL|enum|object_creation_mode
+enum|enum
+name|object_creation_mode
+block|{
+DECL|enumerator|OBJECT_CREATION_USES_HARDLINKS
+name|OBJECT_CREATION_USES_HARDLINKS
+init|=
+literal|0
+block|,
+DECL|enumerator|OBJECT_CREATION_USES_RENAMES
+name|OBJECT_CREATION_USES_RENAMES
+init|=
+literal|1
+block|, }
+enum|;
+end_enum
+
 begin_decl_stmt
 specifier|extern
-name|int
-name|unreliable_hardlinks
+name|enum
+name|object_creation_mode
+name|object_creation_mode
 decl_stmt|;
 end_decl_stmt
 

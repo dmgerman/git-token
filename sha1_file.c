@@ -12243,7 +12243,9 @@ literal|0
 decl_stmt|;
 if|if
 condition|(
-name|unreliable_hardlinks
+name|object_creation_mode
+operator|==
+name|OBJECT_CREATION_USES_RENAMES
 condition|)
 goto|goto
 name|try_rename
