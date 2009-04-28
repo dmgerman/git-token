@@ -3142,7 +3142,7 @@ argument_list|)
 block|,
 name|OPT_SET_INT
 argument_list|(
-literal|0
+literal|'t'
 argument_list|,
 literal|"track"
 argument_list|,
