@@ -2378,6 +2378,18 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|config_exclusive_filename
+operator|&&
+name|nongit
+condition|)
+name|die
+argument_list|(
+literal|"not in a git directory"
+argument_list|)
+expr_stmt|;
 name|git_config
 argument_list|(
 name|git_default_config
