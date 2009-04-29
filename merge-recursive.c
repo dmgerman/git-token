@@ -3027,18 +3027,10 @@ argument_list|(
 name|mode
 argument_list|)
 condition|)
-name|die
-argument_list|(
-literal|"cannot read object %s '%s': It is a submodule!"
-argument_list|,
-name|sha1_to_hex
-argument_list|(
-name|sha
-argument_list|)
-argument_list|,
-name|path
-argument_list|)
-expr_stmt|;
+comment|/* 			 * We may later decide to recursively descend into 			 * the submodule directory and update its index 			 * and/or work tree, but we do not do that now. 			 */
+goto|goto
+name|update_index
+goto|;
 name|buf
 operator|=
 name|read_sha1_file
