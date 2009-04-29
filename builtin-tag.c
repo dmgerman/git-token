@@ -1756,7 +1756,7 @@ condition|(
 name|path
 condition|)
 block|{
-name|unlink
+name|unlink_or_warn
 argument_list|(
 name|path
 argument_list|)

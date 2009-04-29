@@ -788,7 +788,7 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
-name|unlink
+name|unlink_or_warn
 argument_list|(
 name|git_path
 argument_list|(

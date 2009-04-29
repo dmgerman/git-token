@@ -1124,7 +1124,7 @@ if|if
 condition|(
 name|output
 condition|)
-name|unlink
+name|unlink_or_warn
 argument_list|(
 name|output
 argument_list|)

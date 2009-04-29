@@ -1140,7 +1140,7 @@ index|]
 operator|.
 name|tmp_path
 condition|)
-name|unlink
+name|unlink_or_warn
 argument_list|(
 name|diff_temp
 index|[
