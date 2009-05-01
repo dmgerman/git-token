@@ -38,6 +38,11 @@ name|use_thin_pack
 range|:
 literal|1
 decl_stmt|,
+DECL|member|use_ofs_delta
+name|use_ofs_delta
+range|:
+literal|1
+decl_stmt|,
 DECL|member|dry_run
 name|dry_run
 range|:
