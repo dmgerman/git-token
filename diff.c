@@ -9936,7 +9936,7 @@ name|pos
 decl_stmt|,
 name|len
 decl_stmt|;
-comment|/* We do not read the cache ourselves here, because the 	 * benchmark with my previous version that always reads cache 	 * shows that it makes things worse for diff-tree comparing 	 * two linux-2.6 kernel trees in an already checked out work 	 * tree.  This is because most diff-tree comparisons deal with 	 * only a small number of files, while reading the cache is 	 * expensive for a large project, and its cost outweighs the 	 * savings we get by not inflating the object to a temporary 	 * file.  Practically, this code only helps when we are used 	 * by diff-cache --cached, which does read the cache before 	 * calling us. 	 */
+comment|/* 	 * We do not read the cache ourselves here, because the 	 * benchmark with my previous version that always reads cache 	 * shows that it makes things worse for diff-tree comparing 	 * two linux-2.6 kernel trees in an already checked out work 	 * tree.  This is because most diff-tree comparisons deal with 	 * only a small number of files, while reading the cache is 	 * expensive for a large project, and its cost outweighs the 	 * savings we get by not inflating the object to a temporary 	 * file.  Practically, this code only helps when we are used 	 * by diff-cache --cached, which does read the cache before 	 * calling us. 	 */
 if|if
 condition|(
 operator|!
@@ -10015,6 +10015,18 @@ name|ce
 operator|->
 name|ce_mode
 argument_list|)
+condition|)
+return|return
+literal|0
+return|;
+comment|/* 	 * If ce is marked as "assume unchanged", there is no 	 * guarantee that work tree matches what we are looking for. 	 */
+if|if
+condition|(
+name|ce
+operator|->
+name|ce_flags
+operator|&
+name|CE_VALID
 condition|)
 return|return
 literal|0
