@@ -44,6 +44,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"cache-tree.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"unpack-trees.h"
 end_include
 
@@ -2212,6 +2218,11 @@ argument_list|,
 literal|1
 argument_list|)
 decl_stmt|;
+name|int
+name|reprime_cache_tree
+init|=
+literal|0
+decl_stmt|;
 if|if
 condition|(
 name|read_cache
@@ -2225,6 +2236,12 @@ argument_list|(
 literal|"corrupt index file"
 argument_list|)
 return|;
+name|cache_tree_free
+argument_list|(
+operator|&
+name|active_cache_tree
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|opts
@@ -2254,6 +2271,10 @@ condition|)
 return|return
 name|ret
 return|;
+name|reprime_cache_tree
+operator|=
+literal|1
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -2486,10 +2507,17 @@ expr_stmt|;
 if|if
 condition|(
 name|ret
-operator|==
+operator|!=
 operator|-
 literal|1
 condition|)
+block|{
+name|reprime_cache_tree
+operator|=
+literal|1
+expr_stmt|;
+block|}
+else|else
 block|{
 comment|/* 			 * Unpack couldn't do a trivial merge; either 			 * give up or do a real merge, depending on 			 * whether the merge flag was used. 			 */
 name|struct
@@ -2637,6 +2665,22 @@ name|ret
 return|;
 block|}
 block|}
+if|if
+condition|(
+name|reprime_cache_tree
+condition|)
+name|prime_cache_tree
+argument_list|(
+operator|&
+name|active_cache_tree
+argument_list|,
+name|new
+operator|->
+name|commit
+operator|->
+name|tree
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|write_cache
