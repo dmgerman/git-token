@@ -742,10 +742,33 @@ name|matchlen
 argument_list|)
 condition|)
 continue|continue;
-comment|/* 			 * The base is a subdirectory of a path which 			 * was specified, so all of them are interesting. 			 */
+comment|/* 			 * If the base is a subdirectory of a path which 			 * was specified, all of them are interesting. 			 */
+if|if
+condition|(
+operator|!
+name|matchlen
+operator|||
+name|base
+index|[
+name|matchlen
+index|]
+operator|==
+literal|'/'
+operator|||
+name|match
+index|[
+name|matchlen
+operator|-
+literal|1
+index|]
+operator|==
+literal|'/'
+condition|)
 return|return
 literal|2
 return|;
+comment|/* Just a random prefix match */
+continue|continue;
 block|}
 comment|/* Does the base match? */
 if|if
