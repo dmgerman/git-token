@@ -93,11 +93,11 @@ end_decl_stmt
 
 begin_function
 DECL|function|path_name
-specifier|static
 name|char
 modifier|*
 name|path_name
 parameter_list|(
+specifier|const
 name|struct
 name|name_path
 modifier|*
@@ -109,6 +109,7 @@ modifier|*
 name|name
 parameter_list|)
 block|{
+specifier|const
 name|struct
 name|name_path
 modifier|*
