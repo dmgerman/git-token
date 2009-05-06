@@ -256,7 +256,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Does 'match' matches the given name?  * A match is found if  *  * (1) the 'match' string is leading directory of 'name', or  * (2) the 'match' string is a wildcard and matches 'name', or  * (3) the 'match' string is exactly the same as 'name'.  *  * and the return value tells which case it was.  *  * It returns 0 when there is no match.  */
+comment|/*  * Does 'match' match the given name?  * A match is found if  *  * (1) the 'match' string is leading directory of 'name', or  * (2) the 'match' string is a wildcard and matches 'name', or  * (3) the 'match' string is exactly the same as 'name'.  *  * and the return value tells which case it was.  *  * It returns 0 when there is no match.  */
 end_comment
 
 begin_function
@@ -1523,7 +1523,7 @@ block|}
 end_function
 
 begin_comment
-comment|/* Scan the list and let the last match determines the fate.  * Return 1 for exclude, 0 for include and -1 for undecided.  */
+comment|/* Scan the list and let the last match determine the fate.  * Return 1 for exclude, 0 for include and -1 for undecided.  */
 end_comment
 
 begin_function
