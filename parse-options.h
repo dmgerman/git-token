@@ -27,6 +27,9 @@ block|,
 DECL|enumerator|OPTION_GROUP
 name|OPTION_GROUP
 block|,
+DECL|enumerator|OPTION_NUMBER
+name|OPTION_NUMBER
+block|,
 comment|/* options with no arguments */
 DECL|enumerator|OPTION_BIT
 name|OPTION_BIT
@@ -409,6 +412,22 @@ name|f
 parameter_list|)
 define|\
 value|{ OPTION_CALLBACK, (s), (l), (v), (a), (h), 0, (f) }
+end_define
+
+begin_define
+DECL|macro|OPT_NUMBER_CALLBACK
+define|#
+directive|define
+name|OPT_NUMBER_CALLBACK
+parameter_list|(
+name|v
+parameter_list|,
+name|h
+parameter_list|,
+name|f
+parameter_list|)
+define|\
+value|{ OPTION_NUMBER, 0, NULL, (v), NULL, (h), \ 	  PARSE_OPT_NOARG | PARSE_OPT_NONEG, (f) }
 end_define
 
 begin_comment
