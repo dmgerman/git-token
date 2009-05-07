@@ -203,6 +203,20 @@ argument_list|,
 literal|4
 argument_list|)
 block|,
+name|OPT_NEGBIT
+argument_list|(
+literal|0
+argument_list|,
+literal|"neg-or4"
+argument_list|,
+operator|&
+name|boolean
+argument_list|,
+literal|"same as --no-or4"
+argument_list|,
+literal|4
+argument_list|)
+block|,
 name|OPT_GROUP
 argument_list|(
 literal|""

@@ -31,6 +31,9 @@ comment|/* options with no arguments */
 DECL|enumerator|OPTION_BIT
 name|OPTION_BIT
 block|,
+DECL|enumerator|OPTION_NEGBIT
+name|OPTION_NEGBIT
+block|,
 DECL|enumerator|OPTION_BOOLEAN
 name|OPTION_BOOLEAN
 block|,
@@ -256,6 +259,25 @@ parameter_list|,
 name|b
 parameter_list|)
 value|{ OPTION_BIT, (s), (l), (v), NULL, (h), 0, NULL, (b) }
+end_define
+
+begin_define
+DECL|macro|OPT_NEGBIT
+define|#
+directive|define
+name|OPT_NEGBIT
+parameter_list|(
+name|s
+parameter_list|,
+name|l
+parameter_list|,
+name|v
+parameter_list|,
+name|h
+parameter_list|,
+name|b
+parameter_list|)
+value|{ OPTION_NEGBIT, (s), (l), (v), NULL, (h), 0, NULL, (b) }
 end_define
 
 begin_define
