@@ -94,14 +94,6 @@ endif|#
 directive|endif
 end_endif
 
-begin_decl_stmt
-DECL|variable|builtin_grep
-specifier|static
-name|int
-name|builtin_grep
-decl_stmt|;
-end_decl_stmt
-
 begin_function
 DECL|function|grep_config
 specifier|static
@@ -2218,6 +2210,9 @@ name|paths
 parameter_list|,
 name|int
 name|cached
+parameter_list|,
+name|int
+name|external_grep_allowed
 parameter_list|)
 block|{
 name|int
@@ -2241,8 +2236,7 @@ condition|(
 operator|!
 name|cached
 operator|&&
-operator|!
-name|builtin_grep
+name|external_grep_allowed
 condition|)
 block|{
 name|hit
@@ -2989,6 +2983,11 @@ init|=
 literal|0
 decl_stmt|;
 name|int
+name|external_grep_allowed
+init|=
+literal|1
+decl_stmt|;
+name|int
 name|seen_dashdash
 init|=
 literal|0
@@ -3167,9 +3166,9 @@ name|arg
 argument_list|)
 condition|)
 block|{
-name|builtin_grep
+name|external_grep_allowed
 operator|=
-literal|1
+literal|0
 expr_stmt|;
 continue|continue;
 block|}
@@ -4225,9 +4224,9 @@ name|opt
 operator|.
 name|color_external
 condition|)
-name|builtin_grep
+name|external_grep_allowed
 operator|=
-literal|1
+literal|0
 expr_stmt|;
 if|if
 condition|(
@@ -4527,6 +4526,8 @@ argument_list|,
 name|paths
 argument_list|,
 name|cached
+argument_list|,
+name|external_grep_allowed
 argument_list|)
 return|;
 block|}
