@@ -1057,6 +1057,10 @@ name|mtime
 argument_list|,
 literal|"%011lo"
 argument_list|,
+operator|(
+name|unsigned
+name|long
+operator|)
 name|args
 operator|->
 name|time
