@@ -433,6 +433,27 @@ argument_list|,
 name|number_callback
 argument_list|)
 block|,
+block|{
+name|OPTION_BOOLEAN
+block|,
+literal|'+'
+block|,
+name|NULL
+block|,
+operator|&
+name|boolean
+block|,
+name|NULL
+block|,
+literal|"same as -b"
+block|,
+name|PARSE_OPT_NOARG
+operator||
+name|PARSE_OPT_NONEG
+operator||
+name|PARSE_OPT_NODASH
+block|}
+block|,
 name|OPT_GROUP
 argument_list|(
 literal|"Standard options"
