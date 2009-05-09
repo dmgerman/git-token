@@ -139,14 +139,6 @@ struct|;
 end_struct
 
 begin_decl_stmt
-DECL|variable|rev_argv
-name|struct
-name|argv_array
-name|rev_argv
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|variable|argv_diff_tree
 specifier|static
 specifier|const
@@ -2794,6 +2786,18 @@ modifier|*
 name|prefix
 parameter_list|)
 block|{
+name|struct
+name|argv_array
+name|rev_argv
+init|=
+block|{
+name|NULL
+block|,
+literal|0
+block|,
+literal|0
+block|}
+decl_stmt|;
 name|int
 name|i
 decl_stmt|;
@@ -2815,16 +2819,6 @@ operator|->
 name|commit_format
 operator|=
 name|CMIT_FMT_UNSPECIFIED
-expr_stmt|;
-if|if
-condition|(
-name|read_bisect_refs
-argument_list|()
-condition|)
-name|die
-argument_list|(
-literal|"reading bisect refs failed"
-argument_list|)
 expr_stmt|;
 comment|/* rev_argv.argv[0] will be ignored by setup_revisions */
 name|argv_array_push
@@ -2938,11 +2932,6 @@ name|rev_info
 modifier|*
 name|revs
 parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|prefix
-parameter_list|,
 name|int
 modifier|*
 name|reaches
@@ -2952,13 +2941,6 @@ modifier|*
 name|all
 parameter_list|)
 block|{
-name|bisect_rev_setup
-argument_list|(
-name|revs
-argument_list|,
-name|prefix
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|prepare_revision_walk
@@ -3299,12 +3281,28 @@ index|[
 literal|41
 index|]
 decl_stmt|;
-name|bisect_common
+if|if
+condition|(
+name|read_bisect_refs
+argument_list|()
+condition|)
+name|die
+argument_list|(
+literal|"reading bisect refs failed"
+argument_list|)
+expr_stmt|;
+name|bisect_rev_setup
 argument_list|(
 operator|&
 name|revs
 argument_list|,
 name|prefix
+argument_list|)
+expr_stmt|;
+name|bisect_common
+argument_list|(
+operator|&
+name|revs
 argument_list|,
 operator|&
 name|reaches
