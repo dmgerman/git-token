@@ -81,6 +81,10 @@ DECL|member|sha1_alloc
 name|int
 name|sha1_alloc
 decl_stmt|;
+DECL|member|sorted
+name|int
+name|sorted
+decl_stmt|;
 block|}
 struct|;
 end_struct
@@ -2563,6 +2567,12 @@ argument_list|,
 name|array_cmp
 argument_list|)
 expr_stmt|;
+name|array
+operator|->
+name|sorted
+operator|=
+literal|1
+expr_stmt|;
 block|}
 end_function
 
@@ -2620,6 +2630,18 @@ modifier|*
 name|sha1
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|array
+operator|->
+name|sorted
+condition|)
+name|sort_sha1_array
+argument_list|(
+name|array
+argument_list|)
+expr_stmt|;
 return|return
 name|sha1_pos
 argument_list|(
@@ -2690,12 +2712,6 @@ condition|)
 return|return
 name|list
 return|;
-name|sort_sha1_array
-argument_list|(
-operator|&
-name|skipped_revs
-argument_list|)
-expr_stmt|;
 while|while
 condition|(
 name|list
