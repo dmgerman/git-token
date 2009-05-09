@@ -5785,6 +5785,13 @@ argument_list|,
 name|ren1_dst
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|o
+operator|->
+name|call_depth
+condition|)
 name|update_stages
 argument_list|(
 name|ren1_dst
