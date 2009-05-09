@@ -160,7 +160,7 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|int
-name|bisect_next_exit
+name|bisect_next_all
 parameter_list|(
 specifier|const
 name|char

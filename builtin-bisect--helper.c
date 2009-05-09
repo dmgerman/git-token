@@ -34,7 +34,7 @@ name|git_bisect_helper_usage
 index|[]
 init|=
 block|{
-literal|"git bisect--helper --next-exit"
+literal|"git bisect--helper --next-all"
 block|,
 name|NULL
 block|}
@@ -62,7 +62,7 @@ name|prefix
 parameter_list|)
 block|{
 name|int
-name|next_exit
+name|next_all
 init|=
 literal|0
 decl_stmt|;
@@ -76,12 +76,12 @@ name|OPT_BOOLEAN
 argument_list|(
 literal|0
 argument_list|,
-literal|"next-exit"
+literal|"next-all"
 argument_list|,
 operator|&
-name|next_exit
+name|next_all
 argument_list|,
-literal|"output bisect result and exit instuctions"
+literal|"perform 'git bisect next'"
 argument_list|)
 block|,
 name|OPT_END
@@ -106,7 +106,7 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|next_exit
+name|next_all
 condition|)
 name|usage_with_options
 argument_list|(
@@ -115,9 +115,9 @@ argument_list|,
 name|options
 argument_list|)
 expr_stmt|;
-comment|/* next-exit */
+comment|/* next-all */
 return|return
-name|bisect_next_exit
+name|bisect_next_all
 argument_list|(
 name|prefix
 argument_list|)
