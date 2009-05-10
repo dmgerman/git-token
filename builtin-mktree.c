@@ -464,6 +464,9 @@ name|len
 parameter_list|,
 name|int
 name|line_termination
+parameter_list|,
+name|int
+name|allow_missing
 parameter_list|)
 block|{
 name|char
@@ -584,11 +587,19 @@ expr_stmt|;
 comment|/* It is perfectly normal if we do not have a commit from a submodule */
 if|if
 condition|(
-operator|!
 name|S_ISGITLINK
 argument_list|(
 name|mode
 argument_list|)
+condition|)
+name|allow_missing
+operator|=
+literal|1
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|allow_missing
 condition|)
 name|type
 operator|=
@@ -602,7 +613,10 @@ expr_stmt|;
 else|else
 name|type
 operator|=
-name|OBJ_COMMIT
+name|object_type
+argument_list|(
+name|mode
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
@@ -751,6 +765,11 @@ name|line_termination
 init|=
 literal|'\n'
 decl_stmt|;
+name|int
+name|allow_missing
+init|=
+literal|0
+decl_stmt|;
 specifier|const
 name|struct
 name|option
@@ -770,6 +789,20 @@ argument_list|,
 literal|"input is NUL terminated"
 argument_list|,
 literal|'\0'
+argument_list|)
+block|,
+name|OPT_SET_INT
+argument_list|(
+literal|0
+argument_list|,
+literal|"missing"
+argument_list|,
+operator|&
+name|allow_missing
+argument_list|,
+literal|"allow missing objects"
+argument_list|,
+literal|1
 argument_list|)
 block|,
 name|OPT_END
@@ -816,6 +849,8 @@ operator|.
 name|len
 argument_list|,
 name|line_termination
+argument_list|,
+name|allow_missing
 argument_list|)
 expr_stmt|;
 name|strbuf_release
