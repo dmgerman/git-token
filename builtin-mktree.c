@@ -581,6 +581,15 @@ argument_list|,
 name|buf
 argument_list|)
 expr_stmt|;
+comment|/* It is perfectly normal if we do not have a commit from a submodule */
+if|if
+condition|(
+operator|!
+name|S_ISGITLINK
+argument_list|(
+name|mode
+argument_list|)
+condition|)
 name|type
 operator|=
 name|sha1_object_info
@@ -589,6 +598,11 @@ name|sha1
 argument_list|,
 name|NULL
 argument_list|)
+expr_stmt|;
+else|else
+name|type
+operator|=
+name|OBJ_COMMIT
 expr_stmt|;
 if|if
 condition|(
