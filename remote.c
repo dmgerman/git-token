@@ -7190,7 +7190,7 @@ literal|0
 return|;
 name|theirs
 operator|=
-name|lookup_commit
+name|lookup_commit_reference
 argument_list|(
 name|sha1
 argument_list|)
@@ -7224,7 +7224,7 @@ literal|0
 return|;
 name|ours
 operator|=
-name|lookup_commit
+name|lookup_commit_reference
 argument_list|(
 name|sha1
 argument_list|)
