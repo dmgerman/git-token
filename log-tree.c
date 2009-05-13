@@ -207,6 +207,13 @@ condition|)
 return|return
 literal|0
 return|;
+name|refname
+operator|=
+name|prettify_refname
+argument_list|(
+name|refname
+argument_list|)
+expr_stmt|;
 name|add_name_decoration
 argument_list|(
 literal|""
