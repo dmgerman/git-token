@@ -2817,7 +2817,12 @@ name|fdir
 init|=
 name|opendir
 argument_list|(
+operator|*
 name|path
+condition|?
+name|path
+else|:
+literal|"."
 argument_list|)
 decl_stmt|;
 name|int
