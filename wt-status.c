@@ -1565,16 +1565,10 @@ operator|&
 name|dir
 argument_list|)
 expr_stmt|;
-name|read_directory
+name|fill_directory
 argument_list|(
 operator|&
 name|dir
-argument_list|,
-literal|"."
-argument_list|,
-literal|""
-argument_list|,
-literal|0
 argument_list|,
 name|NULL
 argument_list|)
