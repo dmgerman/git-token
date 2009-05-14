@@ -442,7 +442,7 @@ name|mktree_usage
 index|[]
 init|=
 block|{
-literal|"git mktree [-z]"
+literal|"git mktree [-z] [--missing]"
 block|,
 name|NULL
 block|}
