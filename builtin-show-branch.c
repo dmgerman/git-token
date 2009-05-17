@@ -3141,8 +3141,6 @@ argument_list|(
 literal|"unrecognized reflog param '%s'"
 argument_list|,
 name|arg
-operator|+
-literal|9
 argument_list|)
 expr_stmt|;
 else|else
