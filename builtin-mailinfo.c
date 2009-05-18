@@ -2586,7 +2586,7 @@ name|NULL
 return|;
 block|}
 return|return
-literal|"latin1"
+literal|"ISO8859-1"
 return|;
 block|}
 end_function
