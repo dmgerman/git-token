@@ -1011,8 +1011,6 @@ operator|=
 name|NULL
 expr_stmt|;
 block|}
-if|if
-condition|(
 name|slurp_attr
 argument_list|(
 name|line
@@ -1021,12 +1019,6 @@ name|buf
 argument_list|,
 literal|"charset="
 argument_list|,
-operator|&
-name|charset
-argument_list|)
-condition|)
-name|strbuf_tolower
-argument_list|(
 operator|&
 name|charset
 argument_list|)
@@ -2649,7 +2641,7 @@ block|}
 if|if
 condition|(
 operator|!
-name|strcmp
+name|strcasecmp
 argument_list|(
 name|metainfo_charset
 argument_list|,
@@ -2923,12 +2915,6 @@ argument_list|,
 name|cp
 operator|-
 name|ep
-argument_list|)
-expr_stmt|;
-name|strbuf_tolower
-argument_list|(
-operator|&
-name|charset_q
 argument_list|)
 expr_stmt|;
 name|encoding
