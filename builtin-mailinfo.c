@@ -4689,7 +4689,7 @@ name|git_commit_encoding
 condition|?
 name|git_commit_encoding
 else|:
-literal|"utf-8"
+literal|"UTF-8"
 operator|)
 expr_stmt|;
 name|metainfo_charset

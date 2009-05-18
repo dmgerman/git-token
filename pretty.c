@@ -1650,7 +1650,7 @@ name|char
 modifier|*
 name|utf8
 init|=
-literal|"utf-8"
+literal|"UTF-8"
 decl_stmt|;
 specifier|const
 name|char
@@ -4993,7 +4993,7 @@ name|encoding
 condition|)
 name|encoding
 operator|=
-literal|"utf-8"
+literal|"UTF-8"
 expr_stmt|;
 if|if
 condition|(

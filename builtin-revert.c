@@ -1817,7 +1817,7 @@ name|encoding
 condition|)
 name|encoding
 operator|=
-literal|"utf-8"
+literal|"UTF-8"
 expr_stmt|;
 if|if
 condition|(
@@ -1826,7 +1826,7 @@ name|git_commit_encoding
 condition|)
 name|git_commit_encoding
 operator|=
-literal|"utf-8"
+literal|"UTF-8"
 expr_stmt|;
 if|if
 condition|(
