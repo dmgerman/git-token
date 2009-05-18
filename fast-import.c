@@ -4990,7 +4990,7 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|unlink
+name|unlink_or_warn
 argument_list|(
 name|name
 argument_list|)
@@ -5260,7 +5260,7 @@ operator|->
 name|pack_fd
 argument_list|)
 expr_stmt|;
-name|unlink
+name|unlink_or_warn
 argument_list|(
 name|old_p
 operator|->

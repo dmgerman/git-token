@@ -3322,16 +3322,9 @@ expr_stmt|;
 if|if
 condition|(
 name|path
-operator|&&
-name|unlink
-argument_list|(
-name|path
-argument_list|)
 condition|)
-name|warning
+name|unlink_or_warn
 argument_list|(
-literal|"failed to remove '%s'"
-argument_list|,
 name|path
 argument_list|)
 expr_stmt|;

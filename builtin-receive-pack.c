@@ -3591,7 +3591,7 @@ if|if
 condition|(
 name|pack_lockfile
 condition|)
-name|unlink
+name|unlink_or_warn
 argument_list|(
 name|pack_lockfile
 argument_list|)
