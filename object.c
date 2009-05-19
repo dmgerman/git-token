@@ -278,6 +278,7 @@ name|int
 name|size
 parameter_list|)
 block|{
+name|unsigned
 name|int
 name|j
 init|=
@@ -323,6 +324,7 @@ end_function
 begin_function
 DECL|function|hashtable_index
 specifier|static
+name|unsigned
 name|int
 name|hashtable_index
 parameter_list|(
@@ -352,14 +354,9 @@ operator|)
 argument_list|)
 expr_stmt|;
 return|return
-call|(
-name|int
-call|)
-argument_list|(
 name|i
 operator|%
 name|obj_hash_size
-argument_list|)
 return|;
 block|}
 end_function
@@ -378,6 +375,7 @@ modifier|*
 name|sha1
 parameter_list|)
 block|{
+name|unsigned
 name|int
 name|i
 decl_stmt|;
