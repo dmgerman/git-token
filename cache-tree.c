@@ -2728,6 +2728,14 @@ modifier|*
 name|path
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|it
+condition|)
+return|return
+name|NULL
+return|;
 while|while
 condition|(
 operator|*
