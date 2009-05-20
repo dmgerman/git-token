@@ -213,6 +213,30 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* bitmasks to write_cache_as_tree flags */
+end_comment
+
+begin_define
+DECL|macro|WRITE_TREE_MISSING_OK
+define|#
+directive|define
+name|WRITE_TREE_MISSING_OK
+value|1
+end_define
+
+begin_define
+DECL|macro|WRITE_TREE_IGNORE_CACHE_TREE
+define|#
+directive|define
+name|WRITE_TREE_IGNORE_CACHE_TREE
+value|2
+end_define
+
+begin_comment
+comment|/* error return codes */
+end_comment
+
 begin_define
 DECL|macro|WRITE_TREE_UNREADABLE_INDEX
 define|#
@@ -247,7 +271,7 @@ modifier|*
 name|sha1
 parameter_list|,
 name|int
-name|missing_ok
+name|flags
 parameter_list|,
 specifier|const
 name|char

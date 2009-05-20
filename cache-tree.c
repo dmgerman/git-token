@@ -2849,7 +2849,7 @@ modifier|*
 name|sha1
 parameter_list|,
 name|int
-name|missing_ok
+name|flags
 parameter_list|,
 specifier|const
 name|char
@@ -2864,12 +2864,14 @@ name|was_valid
 decl_stmt|,
 name|newfd
 decl_stmt|;
-comment|/* 	 * We can't free this memory, it becomes part of a linked list 	 * parsed atexit() 	 */
 name|struct
 name|lock_file
 modifier|*
 name|lock_file
-init|=
+decl_stmt|;
+comment|/* 	 * We can't free this memory, it becomes part of a linked list 	 * parsed atexit() 	 */
+name|lock_file
+operator|=
 name|xcalloc
 argument_list|(
 literal|1
@@ -2880,7 +2882,7 @@ expr|struct
 name|lock_file
 argument_list|)
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|newfd
 operator|=
 name|hold_locked_index
@@ -2906,6 +2908,20 @@ name|WRITE_TREE_UNREADABLE_INDEX
 return|;
 if|if
 condition|(
+name|flags
+operator|&
+name|WRITE_TREE_IGNORE_CACHE_TREE
+condition|)
+name|cache_tree_free
+argument_list|(
+operator|&
+operator|(
+name|active_cache_tree
+operator|)
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 operator|!
 name|active_cache_tree
 condition|)
@@ -2927,6 +2943,13 @@ operator|!
 name|was_valid
 condition|)
 block|{
+name|int
+name|missing_ok
+init|=
+name|flags
+operator|&
+name|WRITE_TREE_MISSING_OK
+decl_stmt|;
 if|if
 condition|(
 name|cache_tree_update
