@@ -2099,6 +2099,12 @@ name|cached
 expr_stmt|;
 name|opts
 operator|.
+name|diff_index_cached
+operator|=
+name|cached
+expr_stmt|;
+name|opts
+operator|.
 name|merge
 operator|=
 literal|1
@@ -2395,6 +2401,12 @@ expr_stmt|;
 name|opts
 operator|.
 name|index_only
+operator|=
+literal|1
+expr_stmt|;
+name|opts
+operator|.
+name|diff_index_cached
 operator|=
 literal|1
 expr_stmt|;
