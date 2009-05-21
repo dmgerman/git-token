@@ -13085,7 +13085,7 @@ name|char
 modifier|*
 name|commit_argv
 index|[
-literal|4
+literal|5
 index|]
 decl_stmt|;
 name|int
@@ -13469,6 +13469,13 @@ name|commit_argc
 operator|++
 expr_stmt|;
 block|}
+name|commit_argv
+index|[
+name|commit_argc
+index|]
+operator|=
+name|NULL
+expr_stmt|;
 name|init_revisions
 argument_list|(
 operator|&
