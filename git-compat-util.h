@@ -277,6 +277,12 @@ DECL|macro|_XOPEN_SOURCE
 comment|/* glibc2 and AIX 5.3L need 500, OpenBSD needs 600 for S_ISLNK() */
 end_comment
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|__sun__
+end_ifndef
+
 begin_define
 DECL|macro|_XOPEN_SOURCE_EXTENDED
 define|#
@@ -289,6 +295,11 @@ begin_comment
 DECL|macro|_XOPEN_SOURCE_EXTENDED
 comment|/* AIX 5.3L needs this */
 end_comment
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_endif
 endif|#
