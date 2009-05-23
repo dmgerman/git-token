@@ -602,13 +602,12 @@ specifier|extern
 specifier|const
 name|char
 modifier|*
-name|prettify_ref
+name|prettify_refname
 parameter_list|(
 specifier|const
-name|struct
-name|ref
+name|char
 modifier|*
-name|ref
+name|refname
 parameter_list|)
 function_decl|;
 end_function_decl
