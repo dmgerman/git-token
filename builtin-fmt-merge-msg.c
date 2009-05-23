@@ -2310,6 +2310,15 @@ argument_list|,
 name|options
 argument_list|)
 expr_stmt|;
+name|inpath
+operator|=
+name|parse_options_fix_filename
+argument_list|(
+name|prefix
+argument_list|,
+name|inpath
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|inpath
