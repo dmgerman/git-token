@@ -333,10 +333,10 @@ value|(1<< 10)
 end_define
 
 begin_define
-DECL|macro|DIFF_OPT_QUIET
+DECL|macro|DIFF_OPT_QUICK
 define|#
 directive|define
-name|DIFF_OPT_QUIET
+name|DIFF_OPT_QUICK
 value|(1<< 11)
 end_define
 

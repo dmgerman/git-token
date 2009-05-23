@@ -1490,7 +1490,7 @@ name|revs
 operator|.
 name|diffopt
 argument_list|,
-name|QUIET
+name|QUICK
 argument_list|)
 expr_stmt|;
 for|for

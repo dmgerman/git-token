@@ -14232,7 +14232,7 @@ name|DIFF_OPT_TST
 argument_list|(
 name|options
 argument_list|,
-name|QUIET
+name|QUICK
 argument_list|)
 condition|)
 block|{
@@ -15544,7 +15544,7 @@ name|DIFF_OPT_SET
 argument_list|(
 name|options
 argument_list|,
-name|QUIET
+name|QUICK
 argument_list|)
 expr_stmt|;
 elseif|else
