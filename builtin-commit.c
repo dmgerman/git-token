@@ -502,7 +502,7 @@ argument_list|(
 literal|"Commit message options"
 argument_list|)
 block|,
-name|OPT_STRING
+name|OPT_FILENAME
 argument_list|(
 literal|'F'
 argument_list|,
@@ -510,8 +510,6 @@ literal|"file"
 argument_list|,
 operator|&
 name|logfile
-argument_list|,
-literal|"FILE"
 argument_list|,
 literal|"read log from file"
 argument_list|)
@@ -586,7 +584,7 @@ argument_list|,
 literal|"add Signed-off-by:"
 argument_list|)
 block|,
-name|OPT_STRING
+name|OPT_FILENAME
 argument_list|(
 literal|'t'
 argument_list|,
@@ -594,8 +592,6 @@ literal|"template"
 argument_list|,
 operator|&
 name|template_file
-argument_list|,
-literal|"FILE"
 argument_list|,
 literal|"use specified template file"
 argument_list|)
@@ -3681,46 +3677,6 @@ argument_list|,
 name|usage
 argument_list|,
 literal|0
-argument_list|)
-expr_stmt|;
-name|logfile
-operator|=
-name|parse_options_fix_filename
-argument_list|(
-name|prefix
-argument_list|,
-name|logfile
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|logfile
-condition|)
-name|logfile
-operator|=
-name|xstrdup
-argument_list|(
-name|logfile
-argument_list|)
-expr_stmt|;
-name|template_file
-operator|=
-name|parse_options_fix_filename
-argument_list|(
-name|prefix
-argument_list|,
-name|template_file
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|template_file
-condition|)
-name|template_file
-operator|=
-name|xstrdup
-argument_list|(
-name|template_file
 argument_list|)
 expr_stmt|;
 if|if
