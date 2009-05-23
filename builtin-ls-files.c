@@ -2440,11 +2440,11 @@ argument_list|,
 name|DIR_SHOW_OTHER_DIRECTORIES
 argument_list|)
 block|,
-name|OPT_BIT
+name|OPT_NEGBIT
 argument_list|(
 literal|0
 argument_list|,
-literal|"no-empty-directory"
+literal|"empty-directory"
 argument_list|,
 operator|&
 name|dir
