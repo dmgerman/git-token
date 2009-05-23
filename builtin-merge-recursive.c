@@ -303,9 +303,12 @@ block|}
 else|else
 name|warning
 argument_list|(
-literal|"Cannot handle more than %zu bases. "
+literal|"Cannot handle more than %d bases. "
 literal|"Ignoring %s."
 argument_list|,
+operator|(
+name|int
+operator|)
 name|ARRAY_SIZE
 argument_list|(
 name|bases
