@@ -5166,6 +5166,8 @@ name|argc
 argument_list|,
 name|argv
 argument_list|,
+name|prefix
+argument_list|,
 name|opts
 argument_list|,
 name|for_each_ref_usage

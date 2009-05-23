@@ -459,6 +459,11 @@ modifier|*
 name|argv
 parameter_list|,
 specifier|const
+name|char
+modifier|*
+name|prefix
+parameter_list|,
+specifier|const
 name|struct
 name|option
 modifier|*
@@ -561,6 +566,12 @@ DECL|member|flags
 name|int
 name|flags
 decl_stmt|;
+DECL|member|prefix
+specifier|const
+name|char
+modifier|*
+name|prefix
+decl_stmt|;
 block|}
 struct|;
 end_struct
@@ -604,6 +615,11 @@ name|char
 modifier|*
 modifier|*
 name|argv
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|prefix
 parameter_list|,
 name|int
 name|flags

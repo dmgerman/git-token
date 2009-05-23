@@ -487,6 +487,8 @@ name|argc
 argument_list|,
 name|argv
 argument_list|,
+name|prefix
+argument_list|,
 name|local_opts
 argument_list|,
 name|NULL

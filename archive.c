@@ -1910,6 +1910,8 @@ name|argc
 argument_list|,
 name|argv
 argument_list|,
+name|NULL
+argument_list|,
 name|opts
 argument_list|,
 name|archive_usage
