@@ -1282,8 +1282,10 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|read_cache
-argument_list|()
+name|read_cache_preload
+argument_list|(
+name|pathspec
+argument_list|)
 operator|<
 literal|0
 condition|)
@@ -2209,8 +2211,10 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|read_cache
-argument_list|()
+name|read_cache_preload
+argument_list|(
+name|NULL
+argument_list|)
 operator|<
 literal|0
 condition|)
