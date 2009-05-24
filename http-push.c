@@ -7637,6 +7637,15 @@ condition|(
 name|lock
 condition|)
 block|{
+name|struct
+name|remote_lock
+modifier|*
+name|next
+init|=
+name|lock
+operator|->
+name|next
+decl_stmt|;
 name|unlock_remote
 argument_list|(
 name|lock
@@ -7644,8 +7653,6 @@ argument_list|)
 expr_stmt|;
 name|lock
 operator|=
-name|lock
-operator|->
 name|next
 expr_stmt|;
 block|}
