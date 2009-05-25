@@ -1508,7 +1508,7 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/* 			 * make sure no cached delta data remains from a 			 * previous attempt before a pack split occured. 			 */
+comment|/* 			 * make sure no cached delta data remains from a 			 * previous attempt before a pack split occurred. 			 */
 name|free
 argument_list|(
 name|entry
@@ -8097,7 +8097,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Delta compression using %d threads.\n"
+literal|"Delta compression using up to %d threads.\n"
 argument_list|,
 name|delta_search_threads
 argument_list|)
@@ -9568,6 +9568,10 @@ name|struct
 name|commit
 modifier|*
 name|commit
+parameter_list|,
+name|void
+modifier|*
+name|data
 parameter_list|)
 block|{
 name|add_object_entry
@@ -10581,6 +10585,8 @@ argument_list|,
 name|show_commit
 argument_list|,
 name|show_object
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 if|if

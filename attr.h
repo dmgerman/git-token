@@ -143,6 +143,37 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_enum
+DECL|enum|git_attr_direction
+enum|enum
+name|git_attr_direction
+block|{
+DECL|enumerator|GIT_ATTR_CHECKIN
+name|GIT_ATTR_CHECKIN
+block|,
+DECL|enumerator|GIT_ATTR_CHECKOUT
+name|GIT_ATTR_CHECKOUT
+block|,
+DECL|enumerator|GIT_ATTR_INDEX
+name|GIT_ATTR_INDEX
+block|, }
+enum|;
+end_enum
+
+begin_function_decl
+name|void
+name|git_attr_set_direction
+parameter_list|(
+name|enum
+name|git_attr_direction
+parameter_list|,
+name|struct
+name|index_state
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif

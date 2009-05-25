@@ -110,7 +110,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/* descend in all linked child objects  * the return value is:  *    -1	error in processing the object  *<0	return value of the callback, which lead to an abort  *>0	return value of the first sigaled error>0 (in the case of no other errors)  *    0		everything OK  */
+comment|/* descend in all linked child objects  * the return value is:  *    -1	error in processing the object  *<0	return value of the callback, which lead to an abort  *>0	return value of the first signaled error>0 (in the case of no other errors)  *    0		everything OK  */
 end_comment
 
 begin_function_decl

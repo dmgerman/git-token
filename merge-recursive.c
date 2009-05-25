@@ -3027,18 +3027,10 @@ argument_list|(
 name|mode
 argument_list|)
 condition|)
-name|die
-argument_list|(
-literal|"cannot read object %s '%s': It is a submodule!"
-argument_list|,
-name|sha1_to_hex
-argument_list|(
-name|sha
-argument_list|)
-argument_list|,
-name|path
-argument_list|)
-expr_stmt|;
+comment|/* 			 * We may later decide to recursively descend into 			 * the submodule directory and update its index 			 * and/or work tree, but we do not do that now. 			 */
+goto|goto
+name|update_index
+goto|;
 name|buf
 operator|=
 name|read_sha1_file
@@ -4939,9 +4931,6 @@ name|nr
 condition|;
 control|)
 block|{
-name|int
-name|compare
-decl_stmt|;
 name|char
 modifier|*
 name|src
@@ -4950,9 +4939,6 @@ name|struct
 name|string_list
 modifier|*
 name|renames1
-decl_stmt|,
-modifier|*
-name|renames2
 decl_stmt|,
 modifier|*
 name|renames2Dst
@@ -4994,10 +4980,6 @@ operator|->
 name|nr
 condition|)
 block|{
-name|compare
-operator|=
-literal|1
-expr_stmt|;
 name|ren2
 operator|=
 name|b_renames
@@ -5021,11 +5003,6 @@ operator|->
 name|nr
 condition|)
 block|{
-name|compare
-operator|=
-operator|-
-literal|1
-expr_stmt|;
 name|ren1
 operator|=
 name|a_renames
@@ -5041,8 +5018,9 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|int
 name|compare
-operator|=
+init|=
 name|strcmp
 argument_list|(
 name|a_renames
@@ -5063,7 +5041,7 @@ index|]
 operator|.
 name|string
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|compare
@@ -5111,10 +5089,6 @@ name|renames1
 operator|=
 name|a_renames
 expr_stmt|;
-name|renames2
-operator|=
-name|b_renames
-expr_stmt|;
 name|renames2Dst
 operator|=
 operator|&
@@ -5143,10 +5117,6 @@ decl_stmt|;
 name|renames1
 operator|=
 name|b_renames
-expr_stmt|;
-name|renames2
-operator|=
-name|a_renames
 expr_stmt|;
 name|renames2Dst
 operator|=
@@ -5785,6 +5755,13 @@ argument_list|,
 name|ren1_dst
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|o
+operator|->
+name|call_depth
+condition|)
 name|update_stages
 argument_list|(
 name|ren1_dst

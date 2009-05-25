@@ -381,7 +381,7 @@ condition|(
 name|lock
 condition|)
 block|{
-name|unlink
+name|unlink_or_warn
 argument_list|(
 name|git_path
 argument_list|(

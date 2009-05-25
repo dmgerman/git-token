@@ -50,8 +50,6 @@ name|unsigned
 name|long
 name|delta_size
 decl_stmt|,
-name|base_size
-decl_stmt|,
 name|max_size
 decl_stmt|;
 name|unsigned
@@ -144,28 +142,6 @@ return|return
 literal|0
 return|;
 comment|/* error but caught downstream */
-name|base_size
-operator|=
-operator|(
-operator|(
-name|src
-operator|->
-name|size
-operator|<
-name|dst
-operator|->
-name|size
-operator|)
-condition|?
-name|src
-operator|->
-name|size
-else|:
-name|dst
-operator|->
-name|size
-operator|)
-expr_stmt|;
 name|max_size
 operator|=
 operator|(

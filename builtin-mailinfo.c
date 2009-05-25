@@ -2863,10 +2863,6 @@ name|in
 argument_list|)
 expr_stmt|;
 block|}
-name|in
-operator|=
-name|ep
-expr_stmt|;
 block|}
 comment|/* E.g. 		 * ep : "=?iso-2022-jp?B?GyR...?= foo" 		 * ep : "=?ISO-8859-1?Q?Foo=FCbar?= baz" 		 */
 name|ep

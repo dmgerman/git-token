@@ -66,17 +66,16 @@ decl_stmt|;
 end_decl_stmt
 
 begin_function
-DECL|function|rr_path
-specifier|static
+DECL|function|rerere_path
 specifier|const
 name|char
 modifier|*
-name|rr_path
+name|rerere_path
 parameter_list|(
 specifier|const
 name|char
 modifier|*
-name|name
+name|hex
 parameter_list|,
 specifier|const
 name|char
@@ -89,7 +88,7 @@ name|git_path
 argument_list|(
 literal|"rr-cache/%s/%s"
 argument_list|,
-name|name
+name|hex
 argument_list|,
 name|file
 argument_list|)
@@ -98,15 +97,14 @@ block|}
 end_function
 
 begin_function
-DECL|function|has_resolution
-specifier|static
+DECL|function|has_rerere_resolution
 name|int
-name|has_resolution
+name|has_rerere_resolution
 parameter_list|(
 specifier|const
 name|char
 modifier|*
-name|name
+name|hex
 parameter_list|)
 block|{
 name|struct
@@ -117,9 +115,9 @@ return|return
 operator|!
 name|stat
 argument_list|(
-name|rr_path
+name|rerere_path
 argument_list|(
-name|name
+name|hex
 argument_list|,
 literal|"postimage"
 argument_list|)
@@ -1126,7 +1124,7 @@ if|if
 condition|(
 name|output
 condition|)
-name|unlink
+name|unlink_or_warn
 argument_list|(
 name|output
 argument_list|)
@@ -1335,7 +1333,7 @@ name|path
 argument_list|,
 name|NULL
 argument_list|,
-name|rr_path
+name|rerere_path
 argument_list|(
 name|name
 argument_list|,
@@ -1355,7 +1353,7 @@ argument_list|(
 operator|&
 name|cur
 argument_list|,
-name|rr_path
+name|rerere_path
 argument_list|(
 name|name
 argument_list|,
@@ -1368,7 +1366,7 @@ argument_list|(
 operator|&
 name|base
 argument_list|,
-name|rr_path
+name|rerere_path
 argument_list|(
 name|name
 argument_list|,
@@ -1381,7 +1379,7 @@ argument_list|(
 operator|&
 name|other
 argument_list|,
-name|rr_path
+name|rerere_path
 argument_list|(
 name|name
 argument_list|,
@@ -1853,7 +1851,7 @@ name|path
 argument_list|,
 name|NULL
 argument_list|,
-name|rr_path
+name|rerere_path
 argument_list|(
 name|hex
 argument_list|,
@@ -1927,7 +1925,7 @@ name|util
 decl_stmt|;
 if|if
 condition|(
-name|has_resolution
+name|has_rerere_resolution
 argument_list|(
 name|name
 argument_list|)
@@ -2004,7 +2002,7 @@ argument_list|)
 expr_stmt|;
 name|copy_file
 argument_list|(
-name|rr_path
+name|rerere_path
 argument_list|(
 name|name
 argument_list|,

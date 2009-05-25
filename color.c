@@ -11,14 +11,6 @@ directive|include
 file|"color.h"
 end_include
 
-begin_define
-DECL|macro|COLOR_RESET
-define|#
-directive|define
-name|COLOR_RESET
-value|"\033[m"
-end_define
-
 begin_decl_stmt
 DECL|variable|git_use_color_default
 name|int
@@ -390,7 +382,7 @@ name|strcpy
 argument_list|(
 name|dst
 argument_list|,
-literal|"\033[m"
+name|GIT_COLOR_RESET
 argument_list|)
 expr_stmt|;
 return|return;
@@ -1003,7 +995,7 @@ name|fp
 argument_list|,
 literal|"%s"
 argument_list|,
-name|COLOR_RESET
+name|GIT_COLOR_RESET
 argument_list|)
 expr_stmt|;
 if|if
@@ -1251,7 +1243,7 @@ literal|1
 operator|||
 name|fputs
 argument_list|(
-name|COLOR_RESET
+name|GIT_COLOR_RESET
 argument_list|,
 name|fp
 argument_list|)

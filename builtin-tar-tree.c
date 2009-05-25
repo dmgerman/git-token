@@ -86,7 +86,7 @@ argument_list|)
 argument_list|,
 name|argc
 operator|+
-literal|2
+literal|3
 argument_list|)
 decl_stmt|;
 name|char
@@ -150,6 +150,15 @@ name|argc
 operator|--
 expr_stmt|;
 block|}
+comment|/* 	 * Because it's just a compatibility wrapper, tar-tree supports only 	 * the old behaviour of reading attributes from the work tree. 	 */
+name|nargv
+index|[
+name|nargc
+operator|++
+index|]
+operator|=
+literal|"--worktree-attributes"
+expr_stmt|;
 switch|switch
 condition|(
 name|argc

@@ -1268,7 +1268,7 @@ name|force
 argument_list|)
 expr_stmt|;
 comment|/* remove leftover rev-cache file if there is any */
-name|unlink
+name|unlink_or_warn
 argument_list|(
 name|git_path
 argument_list|(

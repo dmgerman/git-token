@@ -459,6 +459,45 @@ parameter_list|)
 value|((opts)->flags&= ~DIFF_OPT_##flag)
 end_define
 
+begin_define
+DECL|macro|DIFF_XDL_TST
+define|#
+directive|define
+name|DIFF_XDL_TST
+parameter_list|(
+name|opts
+parameter_list|,
+name|flag
+parameter_list|)
+value|((opts)->xdl_opts& XDF_##flag)
+end_define
+
+begin_define
+DECL|macro|DIFF_XDL_SET
+define|#
+directive|define
+name|DIFF_XDL_SET
+parameter_list|(
+name|opts
+parameter_list|,
+name|flag
+parameter_list|)
+value|((opts)->xdl_opts |= XDF_##flag)
+end_define
+
+begin_define
+DECL|macro|DIFF_XDL_CLR
+define|#
+directive|define
+name|DIFF_XDL_CLR
+parameter_list|(
+name|opts
+parameter_list|,
+name|flag
+parameter_list|)
+value|((opts)->xdl_opts&= ~XDF_##flag)
+end_define
+
 begin_struct
 DECL|struct|diff_options
 struct|struct

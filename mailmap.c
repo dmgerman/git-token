@@ -644,6 +644,9 @@ name|char
 modifier|*
 modifier|*
 name|email
+parameter_list|,
+name|int
+name|allow_empty_email
 parameter_list|)
 block|{
 name|char
@@ -707,11 +710,16 @@ name|NULL
 return|;
 if|if
 condition|(
+operator|!
+name|allow_empty_email
+operator|&&
+operator|(
 name|left
 operator|+
 literal|1
 operator|==
 name|right
+operator|)
 condition|)
 return|return
 name|NULL
@@ -1043,6 +1051,8 @@ name|name1
 argument_list|,
 operator|&
 name|email1
+argument_list|,
+literal|0
 argument_list|)
 operator|)
 operator|!=
@@ -1057,6 +1067,8 @@ name|name2
 argument_list|,
 operator|&
 name|email2
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 if|if

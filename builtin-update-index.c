@@ -857,9 +857,9 @@ if|if
 condition|(
 name|has_symlink_leading_path
 argument_list|(
-name|len
-argument_list|,
 name|path
+argument_list|,
+name|len
 argument_list|)
 condition|)
 return|return

@@ -1212,8 +1212,6 @@ name|struct
 name|base_data
 modifier|*
 name|b
-init|=
-name|base_cache
 decl_stmt|;
 for|for
 control|(

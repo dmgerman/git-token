@@ -1553,9 +1553,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|long
-name|ec
-decl_stmt|;
 name|xdpsplit_t
 name|spl
 decl_stmt|;
@@ -1572,9 +1569,6 @@ expr_stmt|;
 comment|/* 		 * Divide ... 		 */
 if|if
 condition|(
-operator|(
-name|ec
-operator|=
 name|xdl_split
 argument_list|(
 name|ha1
@@ -1600,7 +1594,6 @@ name|spl
 argument_list|,
 name|xenv
 argument_list|)
-operator|)
 operator|<
 literal|0
 condition|)
@@ -2378,7 +2371,7 @@ index|]
 condition|)
 empty_stmt|;
 block|}
-comment|/* 			 * Record the end-of-group position in case we are matched 			 * with a group of changes in the other file (that is, the 			 * change record before the enf-of-group index in the other 			 * file is set). 			 */
+comment|/* 			 * Record the end-of-group position in case we are matched 			 * with a group of changes in the other file (that is, the 			 * change record before the end-of-group index in the other 			 * file is set). 			 */
 name|ixref
 operator|=
 name|rchgo

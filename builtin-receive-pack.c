@@ -178,6 +178,16 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|prefer_ofs_delta
+specifier|static
+name|int
+name|prefer_ofs_delta
+init|=
+literal|1
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|head_name
 specifier|static
 specifier|const
@@ -188,21 +198,11 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|capabilities
+DECL|variable|capabilities_to_send
 specifier|static
 name|char
-name|capabilities
-index|[]
-init|=
-literal|" report-status delete-refs "
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-DECL|variable|capabilities_sent
-specifier|static
-name|int
-name|capabilities_sent
+modifier|*
+name|capabilities_to_send
 decl_stmt|;
 end_decl_stmt
 
@@ -482,6 +482,31 @@ return|return
 literal|0
 return|;
 block|}
+if|if
+condition|(
+name|strcmp
+argument_list|(
+name|var
+argument_list|,
+literal|"repack.usedeltabaseoffset"
+argument_list|)
+operator|==
+literal|0
+condition|)
+block|{
+name|prefer_ofs_delta
+operator|=
+name|git_config_bool
+argument_list|(
+name|var
+argument_list|,
+name|value
+argument_list|)
+expr_stmt|;
+return|return
+literal|0
+return|;
+block|}
 return|return
 name|git_default_config
 argument_list|(
@@ -522,7 +547,8 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|capabilities_sent
+operator|!
+name|capabilities_to_send
 condition|)
 name|packet_write
 argument_list|(
@@ -554,12 +580,12 @@ name|path
 argument_list|,
 literal|0
 argument_list|,
-name|capabilities
+name|capabilities_to_send
 argument_list|)
 expr_stmt|;
-name|capabilities_sent
+name|capabilities_to_send
 operator|=
-literal|1
+name|NULL
 expr_stmt|;
 return|return
 literal|0
@@ -585,8 +611,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|!
-name|capabilities_sent
+name|capabilities_to_send
 condition|)
 name|show_ref
 argument_list|(
@@ -3496,7 +3521,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"'%s': unable to chdir or not a git archive"
+literal|"'%s' does not appear to be a git repository"
 argument_list|,
 name|dir
 argument_list|)
@@ -3538,6 +3563,16 @@ condition|)
 name|unpack_limit
 operator|=
 name|receive_unpack_limit
+expr_stmt|;
+name|capabilities_to_send
+operator|=
+operator|(
+name|prefer_ofs_delta
+operator|)
+condition|?
+literal|" report-status delete-refs ofs-delta "
+else|:
+literal|" report-status delete-refs "
 expr_stmt|;
 name|add_alternate_refs
 argument_list|()
@@ -3591,7 +3626,7 @@ if|if
 condition|(
 name|pack_lockfile
 condition|)
-name|unlink
+name|unlink_or_warn
 argument_list|(
 name|pack_lockfile
 argument_list|)
