@@ -2853,6 +2853,22 @@ endif|#
 directive|endif
 end_endif
 
+begin_comment
+comment|/*  * Preserves errno, prints a message, but gives no warning for ENOENT.  * Always returns the return value of unlink(2).  */
+end_comment
+
+begin_function_decl
+name|int
+name|unlink_or_warn
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif

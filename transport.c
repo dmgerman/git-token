@@ -6248,7 +6248,7 @@ operator|->
 name|pack_lockfile
 condition|)
 block|{
-name|unlink
+name|unlink_or_warn
 argument_list|(
 name|transport
 operator|->

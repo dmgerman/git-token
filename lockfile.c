@@ -86,7 +86,7 @@ operator|->
 name|fd
 argument_list|)
 expr_stmt|;
-name|unlink
+name|unlink_or_warn
 argument_list|(
 name|lock_file_list
 operator|->
@@ -1149,7 +1149,7 @@ operator|->
 name|fd
 argument_list|)
 expr_stmt|;
-name|unlink
+name|unlink_or_warn
 argument_list|(
 name|lk
 operator|->

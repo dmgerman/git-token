@@ -190,20 +190,9 @@ argument_list|,
 name|pathname
 argument_list|)
 expr_stmt|;
-elseif|else
-if|if
-condition|(
-name|unlink
+else|else
+name|unlink_or_warn
 argument_list|(
-name|pathname
-argument_list|)
-operator|<
-literal|0
-condition|)
-name|error
-argument_list|(
-literal|"unable to unlink %s"
-argument_list|,
 name|pathname
 argument_list|)
 expr_stmt|;

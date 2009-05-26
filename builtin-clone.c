@@ -1286,11 +1286,16 @@ name|ENOENT
 condition|)
 name|die
 argument_list|(
-literal|"failed to unlink %s"
+literal|"failed to unlink %s: %s"
 argument_list|,
 name|dest
 operator|->
 name|buf
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if

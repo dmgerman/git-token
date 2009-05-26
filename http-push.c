@@ -1723,7 +1723,7 @@ operator|->
 name|filename
 argument_list|)
 expr_stmt|;
-name|unlink
+name|unlink_or_warn
 argument_list|(
 name|prevfile
 argument_list|)
@@ -1737,7 +1737,7 @@ argument_list|,
 name|prevfile
 argument_list|)
 expr_stmt|;
-name|unlink
+name|unlink_or_warn
 argument_list|(
 name|request
 operator|->
@@ -2025,7 +2025,7 @@ name|prevlocal
 argument_list|)
 expr_stmt|;
 block|}
-name|unlink
+name|unlink_or_warn
 argument_list|(
 name|prevfile
 argument_list|)
@@ -4435,7 +4435,7 @@ name|st_size
 operator|==
 literal|0
 condition|)
-name|unlink
+name|unlink_or_warn
 argument_list|(
 name|request
 operator|->
@@ -4488,7 +4488,7 @@ operator|!=
 name|Z_STREAM_END
 condition|)
 block|{
-name|unlink
+name|unlink_or_warn
 argument_list|(
 name|request
 operator|->
@@ -4513,7 +4513,7 @@ name|real_sha1
 argument_list|)
 condition|)
 block|{
-name|unlink
+name|unlink_or_warn
 argument_list|(
 name|request
 operator|->

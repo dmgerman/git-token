@@ -143,7 +143,7 @@ operator|->
 name|force
 operator|&&
 operator|!
-name|unlink
+name|unlink_or_warn
 argument_list|(
 name|buf
 argument_list|)
