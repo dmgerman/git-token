@@ -4060,7 +4060,7 @@ index|]
 operator|.
 name|item
 decl_stmt|;
-name|unparse_commit
+name|clear_commit_marks
 argument_list|(
 operator|(
 expr|struct
@@ -4068,6 +4068,8 @@ name|commit
 operator|*
 operator|)
 name|o
+argument_list|,
+name|ALL_REV_FLAGS
 argument_list|)
 expr_stmt|;
 block|}
