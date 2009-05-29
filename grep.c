@@ -1974,6 +1974,10 @@ condition|)
 name|bol
 operator|++
 expr_stmt|;
+name|eflags
+operator||=
+name|REG_NOTBOL
+expr_stmt|;
 if|if
 condition|(
 name|bol
