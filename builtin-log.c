@@ -5166,6 +5166,8 @@ name|argc
 argument_list|,
 name|argv
 argument_list|,
+name|prefix
+argument_list|,
 name|builtin_format_patch_options
 argument_list|,
 name|builtin_format_patch_usage

@@ -437,6 +437,8 @@ name|argc
 argument_list|,
 name|argv
 argument_list|,
+name|prefix
+argument_list|,
 name|check_attr_options
 argument_list|,
 name|check_attr_usage

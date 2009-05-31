@@ -896,6 +896,8 @@ name|ac
 argument_list|,
 name|av
 argument_list|,
+name|prefix
+argument_list|,
 name|option
 argument_list|,
 name|mktree_usage

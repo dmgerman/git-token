@@ -2642,6 +2642,8 @@ name|argc
 argument_list|,
 name|argv
 argument_list|,
+name|prefix
+argument_list|,
 name|builtin_ls_files_options
 argument_list|,
 name|ls_files_usage

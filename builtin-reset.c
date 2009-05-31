@@ -1190,6 +1190,8 @@ name|argc
 argument_list|,
 name|argv
 argument_list|,
+name|prefix
+argument_list|,
 name|options
 argument_list|,
 name|git_reset_usage
