@@ -282,6 +282,10 @@ block|{
 name|CONSOLE_SCREEN_BUFFER_INFO
 name|sbi
 decl_stmt|;
+name|DWORD
+name|dummy
+decl_stmt|;
+comment|/* Needed for Windows 7 (or Vista) regression */
 if|if
 condition|(
 operator|!
@@ -318,7 +322,8 @@ name|sbi
 operator|.
 name|dwCursorPosition
 argument_list|,
-name|NULL
+operator|&
+name|dummy
 argument_list|)
 expr_stmt|;
 block|}
