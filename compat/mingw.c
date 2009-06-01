@@ -14,6 +14,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|<conio.h>
+end_include
+
+begin_include
+include|#
+directive|include
 file|"../strbuf.h"
 end_include
 
