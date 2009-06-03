@@ -1267,7 +1267,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * The goal is to get REV_TREE_NEW as the result only if the  * diff consists of all '+' (and no other changes), and  * REV_TREE_DIFFERENT otherwise (of course if the trees are  * the same we want REV_TREE_SAME).  That means that once we  * get to REV_TREE_DIFFERENT, we do not have to look any further.  */
+comment|/*  * The goal is to get REV_TREE_NEW as the result only if the  * diff consists of all '+' (and no other changes), REV_TREE_OLD  * if the whole diff is removal of old data, and otherwise  * REV_TREE_DIFFERENT (of course if the trees are the same we  * want REV_TREE_SAME).  * That means that once we get to REV_TREE_DIFFERENT, we do not  * have to look any further.  */
 end_comment
 
 begin_decl_stmt
@@ -1312,34 +1312,16 @@ block|{
 name|int
 name|diff
 init|=
-name|REV_TREE_DIFFERENT
-decl_stmt|;
-comment|/* 	 * Is it an add of a new file? It means that the old tree 	 * didn't have it at all, so we will turn "REV_TREE_SAME" -> 	 * "REV_TREE_NEW", but leave any "REV_TREE_DIFFERENT" alone 	 * (and if it already was "REV_TREE_NEW", we'll keep it 	 * "REV_TREE_NEW" of course). 	 */
-if|if
-condition|(
 name|addremove
 operator|==
 literal|'+'
-condition|)
-block|{
-name|diff
-operator|=
-name|tree_difference
-expr_stmt|;
-if|if
-condition|(
-name|diff
-operator|!=
-name|REV_TREE_SAME
-condition|)
-return|return;
-name|diff
-operator|=
+condition|?
 name|REV_TREE_NEW
-expr_stmt|;
-block|}
+else|:
+name|REV_TREE_OLD
+decl_stmt|;
 name|tree_difference
-operator|=
+operator||=
 name|diff
 expr_stmt|;
 if|if
@@ -1457,6 +1439,14 @@ name|REV_TREE_NEW
 return|;
 if|if
 condition|(
+operator|!
+name|t2
+condition|)
+return|return
+name|REV_TREE_OLD
+return|;
+if|if
+condition|(
 name|revs
 operator|->
 name|simplify_by_decoration
@@ -1491,14 +1481,6 @@ return|return
 name|REV_TREE_SAME
 return|;
 block|}
-if|if
-condition|(
-operator|!
-name|t2
-condition|)
-return|return
-name|REV_TREE_DIFFERENT
-return|;
 name|tree_difference
 operator|=
 name|REV_TREE_SAME
@@ -1977,6 +1959,9 @@ name|NULL
 expr_stmt|;
 block|}
 comment|/* fallthrough */
+case|case
+name|REV_TREE_OLD
+case|:
 case|case
 name|REV_TREE_DIFFERENT
 case|:

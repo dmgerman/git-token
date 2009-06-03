@@ -552,13 +552,36 @@ name|REV_TREE_NEW
 value|1
 end_define
 
+begin_comment
+DECL|macro|REV_TREE_NEW
+comment|/* Only new files */
+end_comment
+
+begin_define
+DECL|macro|REV_TREE_OLD
+define|#
+directive|define
+name|REV_TREE_OLD
+value|2
+end_define
+
+begin_comment
+DECL|macro|REV_TREE_OLD
+comment|/* Only files removed */
+end_comment
+
 begin_define
 DECL|macro|REV_TREE_DIFFERENT
 define|#
 directive|define
 name|REV_TREE_DIFFERENT
-value|2
+value|3
 end_define
+
+begin_comment
+DECL|macro|REV_TREE_DIFFERENT
+comment|/* Mixed changes */
+end_comment
 
 begin_comment
 comment|/* revision.c */
