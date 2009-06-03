@@ -3950,6 +3950,28 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|int
+name|git_mkstemps
+parameter_list|(
+name|char
+modifier|*
+name|path
+parameter_list|,
+name|size_t
+name|n
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|template
+parameter_list|,
+name|int
+name|suffix_len
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/*  * NOTE NOTE NOTE!!  *  * PERM_UMASK, OLD_PERM_GROUP and OLD_PERM_EVERYBODY enumerations must  * not be changed. Old repositories have core.sharedrepository written in  * numeric format, and therefore these values are preserved for compatibility  * reasons.  */
 end_comment
