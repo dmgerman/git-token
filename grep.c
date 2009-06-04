@@ -1817,7 +1817,7 @@ name|eol
 operator|-
 name|bol
 operator|)
-operator|<=
+operator|<
 name|pmatch
 index|[
 literal|0
@@ -1919,6 +1919,21 @@ operator|)
 condition|)
 empty_stmt|;
 else|else
+name|hit
+operator|=
+literal|0
+expr_stmt|;
+comment|/* Words consist of at least one character. */
+if|if
+condition|(
+name|pmatch
+operator|->
+name|rm_so
+operator|==
+name|pmatch
+operator|->
+name|rm_eo
+condition|)
 name|hit
 operator|=
 literal|0
