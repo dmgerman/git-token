@@ -365,7 +365,7 @@ name|v
 parameter_list|,
 name|h
 parameter_list|)
-value|{ OPTION_INTEGER, (s), (l), (v), NULL, (h) }
+value|{ OPTION_INTEGER, (s), (l), (v), "n", (h) }
 end_define
 
 begin_define
