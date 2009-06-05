@@ -1799,14 +1799,14 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Separate the "extra args" information as supplied by the client connection.  */
+comment|/*  * Read the host as supplied by the client connection.  */
 end_comment
 
 begin_function
-DECL|function|parse_extra_args
+DECL|function|parse_host_arg
 specifier|static
 name|void
-name|parse_extra_args
+name|parse_host_arg
 parameter_list|(
 name|char
 modifier|*
@@ -1831,7 +1831,7 @@ name|extra_args
 operator|+
 name|buflen
 decl_stmt|;
-while|while
+if|if
 condition|(
 name|extra_args
 operator|<
@@ -1945,6 +1945,20 @@ operator|+
 name|vallen
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|extra_args
+operator|<
+name|end
+operator|&&
+operator|*
+name|extra_args
+condition|)
+name|die
+argument_list|(
+literal|"Invalid request"
+argument_list|)
+expr_stmt|;
 block|}
 comment|/* 	 * Locate canonical hostname and its IP address. 	 */
 if|if
@@ -2547,7 +2561,7 @@ name|len
 operator|!=
 name|pktlen
 condition|)
-name|parse_extra_args
+name|parse_host_arg
 argument_list|(
 name|line
 operator|+
