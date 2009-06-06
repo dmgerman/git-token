@@ -12943,10 +12943,15 @@ operator|=
 name|rewritten_url
 expr_stmt|;
 block|}
+ifdef|#
+directive|ifdef
+name|USE_CURL_MULTI
 name|is_running_queue
 operator|=
 literal|0
 expr_stmt|;
+endif|#
+directive|endif
 comment|/* Verify DAV compliance/lock support */
 if|if
 condition|(
