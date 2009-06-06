@@ -1223,6 +1223,10 @@ argument_list|,
 name|flags
 operator|&
 name|BISECT_SHOW_ALL
+argument_list|,
+name|NULL
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 comment|/* 	 * revs->commits can reach "reaches" commits among 	 * "all" commits.  If it is good, then there are 	 * (all-reaches) commits left to be bisected. 	 * On the other hand, if it is bad, then the set 	 * to bisect is "reaches". 	 * A bisect set of size N has (N-1) commits further 	 * to test, as we already know one bad one. 	 */
