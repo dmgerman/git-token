@@ -19,6 +19,13 @@ name|active_requests
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|http_is_verbose
+name|int
+name|http_is_verbose
+decl_stmt|;
+end_decl_stmt
+
 begin_ifdef
 ifdef|#
 directive|ifdef
@@ -217,6 +224,15 @@ name|struct
 name|curl_slist
 modifier|*
 name|pragma_header
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|no_pragma_header
+name|struct
+name|curl_slist
+modifier|*
+name|no_pragma_header
 decl_stmt|;
 end_decl_stmt
 
@@ -1526,6 +1542,10 @@ name|char
 modifier|*
 name|low_speed_time
 decl_stmt|;
+name|http_is_verbose
+operator|=
+literal|0
+expr_stmt|;
 name|git_config
 argument_list|(
 name|http_options
@@ -1562,6 +1582,15 @@ argument_list|(
 name|pragma_header
 argument_list|,
 literal|"Pragma: no-cache"
+argument_list|)
+expr_stmt|;
+name|no_pragma_header
+operator|=
+name|curl_slist_append
+argument_list|(
+name|no_pragma_header
+argument_list|,
+literal|"Pragma:"
 argument_list|)
 expr_stmt|;
 ifdef|#
@@ -1903,6 +1932,15 @@ name|pragma_header
 argument_list|)
 expr_stmt|;
 name|pragma_header
+operator|=
+name|NULL
+expr_stmt|;
+name|curl_slist_free_all
+argument_list|(
+name|no_pragma_header
+argument_list|)
+expr_stmt|;
+name|no_pragma_header
 operator|=
 name|NULL
 expr_stmt|;

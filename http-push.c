@@ -148,14 +148,6 @@ name|PREV_BUF_SIZE
 value|4096
 end_define
 
-begin_define
-DECL|macro|RANGE_HEADER_SIZE
-define|#
-directive|define
-name|RANGE_HEADER_SIZE
-value|30
-end_define
-
 begin_comment
 comment|/* DAV methods */
 end_comment
@@ -437,16 +429,6 @@ name|remote_dir_exists
 index|[
 literal|256
 index|]
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-DECL|variable|no_pragma_header
-specifier|static
-name|struct
-name|curl_slist
-modifier|*
-name|no_pragma_header
 decl_stmt|;
 end_decl_stmt
 
@@ -12630,6 +12612,10 @@ name|push_verbosely
 operator|=
 literal|1
 expr_stmt|;
+name|http_is_verbose
+operator|=
+literal|1
+expr_stmt|;
 continue|continue;
 block|}
 if|if
@@ -12848,15 +12834,6 @@ expr_stmt|;
 name|http_init
 argument_list|(
 name|remote
-argument_list|)
-expr_stmt|;
-name|no_pragma_header
-operator|=
-name|curl_slist_append
-argument_list|(
-name|no_pragma_header
-argument_list|,
-literal|"Pragma:"
 argument_list|)
 expr_stmt|;
 if|if
@@ -13807,11 +13784,6 @@ expr_stmt|;
 name|free
 argument_list|(
 name|repo
-argument_list|)
-expr_stmt|;
-name|curl_slist_free_all
-argument_list|(
-name|no_pragma_header
 argument_list|)
 expr_stmt|;
 name|http_cleanup

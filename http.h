@@ -520,6 +520,23 @@ endif|#
 directive|endif
 end_endif
 
+begin_decl_stmt
+specifier|extern
+name|struct
+name|curl_slist
+modifier|*
+name|no_pragma_header
+decl_stmt|;
+end_decl_stmt
+
+begin_define
+DECL|macro|RANGE_HEADER_SIZE
+define|#
+directive|define
+name|RANGE_HEADER_SIZE
+value|30
+end_define
+
 begin_function_decl
 specifier|extern
 name|void
@@ -554,6 +571,13 @@ begin_decl_stmt
 specifier|extern
 name|int
 name|active_requests
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
+name|int
+name|http_is_verbose
 decl_stmt|;
 end_decl_stmt
 
