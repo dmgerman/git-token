@@ -1781,7 +1781,7 @@ argument_list|,
 literal|0666
 argument_list|)
 expr_stmt|;
-comment|/* This could have failed due to the "lazy directory creation"; 	 * try to mkdir the last path component. 	 */
+comment|/* 	 * This could have failed due to the "lazy directory creation"; 	 * try to mkdir the last path component. 	 */
 if|if
 condition|(
 name|request
@@ -1943,7 +1943,7 @@ argument_list|(
 name|url
 argument_list|)
 expr_stmt|;
-comment|/* If a previous temp file is present, process what was already 	   fetched. */
+comment|/* 	 * If a previous temp file is present, process what was already 	 * fetched. 	 */
 name|prevlocal
 operator|=
 name|open
@@ -1996,20 +1996,16 @@ argument_list|)
 operator|==
 name|prev_read
 condition|)
-block|{
 name|prev_posn
 operator|+=
 name|prev_read
 expr_stmt|;
-block|}
 else|else
-block|{
 name|prev_read
 operator|=
 operator|-
 literal|1
 expr_stmt|;
-block|}
 block|}
 block|}
 do|while
@@ -2030,7 +2026,7 @@ argument_list|(
 name|prevfile
 argument_list|)
 expr_stmt|;
-comment|/* Reset inflate/SHA1 if there was an error reading the previous temp 	   file; also rewind to the beginning of the local file. */
+comment|/* 	 * Reset inflate/SHA1 if there was an error reading the previous temp 	 * file; also rewind to the beginning of the local file. 	 */
 if|if
 condition|(
 name|prev_read
@@ -2185,7 +2181,7 @@ argument_list|,
 name|no_pragma_header
 argument_list|)
 expr_stmt|;
-comment|/* If we have successfully processed data from a previous fetch 	   attempt, only fetch the data we don't already have. */
+comment|/* 	 * If we have successfully processed data from a previous fetch 	 * attempt, only fetch the data we don't already have. 	 */
 if|if
 condition|(
 name|prev_posn
@@ -2841,7 +2837,7 @@ name|local
 operator|=
 name|packfile
 expr_stmt|;
-comment|/* If there is data present from a previous transfer attempt, 	   resume where it left off */
+comment|/* 	 * If there is data present from a previous transfer attempt, 	 * resume where it left off 	 */
 name|prev_posn
 operator|=
 name|ftell
@@ -4557,7 +4553,6 @@ name|rename
 operator|==
 literal|0
 condition|)
-block|{
 name|request
 operator|->
 name|obj
@@ -4570,7 +4565,6 @@ operator||
 name|REMOTE
 operator|)
 expr_stmt|;
-block|}
 block|}
 block|}
 comment|/* Try fetching packed if necessary */
@@ -5597,7 +5591,7 @@ name|local
 operator|=
 name|indexfile
 expr_stmt|;
-comment|/* If there is data present from a previous transfer attempt, 	   resume where it left off */
+comment|/* 	 * If there is data present from a previous transfer attempt, 	 * resume where it left off 	 */
 name|prev_posn
 operator|=
 name|ftell
