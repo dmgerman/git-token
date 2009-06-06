@@ -782,6 +782,29 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* Helpers for fetching packs */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|http_get_info_packs
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|base_url
+parameter_list|,
+name|struct
+name|packed_git
+modifier|*
+modifier|*
+name|packs_head
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
