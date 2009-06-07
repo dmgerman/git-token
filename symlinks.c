@@ -808,9 +808,11 @@ name|FL_DIR
 expr_stmt|;
 block|}
 else|else
+block|{
 name|reset_lstat_cache
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 end_function
@@ -1059,7 +1061,6 @@ name|len
 operator|=
 name|new_len
 expr_stmt|;
-return|return;
 block|}
 end_function
 
@@ -1189,7 +1190,6 @@ operator|=
 name|last_slash
 expr_stmt|;
 block|}
-return|return;
 block|}
 end_function
 
@@ -1206,7 +1206,6 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
-return|return;
 block|}
 end_function
 
