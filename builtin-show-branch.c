@@ -3546,8 +3546,6 @@ block|,
 literal|"show<n> more commits after the common ancestor"
 block|,
 name|PARSE_OPT_OPTARG
-operator||
-name|PARSE_OPT_LASTARG_DEFAULT
 block|,
 name|NULL
 block|,
