@@ -2958,7 +2958,7 @@ argument_list|,
 name|flags
 argument_list|)
 expr_stmt|;
-comment|/* 		 * Separate original protocol components prog and path 		 * from extended components with a NUL byte. 		 */
+comment|/* 		 * Separate original protocol components prog and path 		 * from extended host header with a NUL byte. 		 * 		 * Note: Do not add any other headers here!  Doing so 		 * will cause older git-daemon servers to crash. 		 */
 name|packet_write
 argument_list|(
 name|fd
