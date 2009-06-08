@@ -43,6 +43,20 @@ name|__STDC_VERSION__
 operator|>=
 literal|199901L
 operator|)
+operator|&&
+operator|(
+operator|!
+name|defined
+argument_list|(
+name|__SUNPRO_C
+argument_list|)
+operator|||
+operator|(
+name|__SUNPRO_C
+operator|>
+literal|0x580
+operator|)
+operator|)
 end_if
 
 begin_define
