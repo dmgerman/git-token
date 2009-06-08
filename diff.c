@@ -21031,6 +21031,12 @@ operator|!=
 literal|0
 condition|)
 block|{
+name|strbuf_release
+argument_list|(
+operator|&
+name|buf
+argument_list|)
+expr_stmt|;
 name|remove_tempfile
 argument_list|()
 expr_stmt|;
