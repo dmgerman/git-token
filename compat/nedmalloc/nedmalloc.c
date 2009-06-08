@@ -39,12 +39,6 @@ name|defined
 argument_list|(
 name|WIN32
 argument_list|)
-operator|&&
-operator|!
-name|defined
-argument_list|(
-name|__MINGW32__
-argument_list|)
 end_if
 
 begin_include
