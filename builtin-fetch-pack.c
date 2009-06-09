@@ -2542,7 +2542,9 @@ name|xd
 init|=
 name|data
 decl_stmt|;
-return|return
+name|int
+name|ret
+init|=
 name|recv_sideband
 argument_list|(
 literal|"fetch-pack"
@@ -2554,6 +2556,14 @@ index|]
 argument_list|,
 name|fd
 argument_list|)
+decl_stmt|;
+name|close
+argument_list|(
+name|fd
+argument_list|)
+expr_stmt|;
+return|return
+name|ret
 return|;
 block|}
 end_function

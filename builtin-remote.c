@@ -6341,28 +6341,58 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"* remote %s\n  URL: %s\n"
+literal|"* remote %s\n"
 argument_list|,
 operator|*
 name|argv
-argument_list|,
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|states
 operator|.
 name|remote
 operator|->
 name|url_nr
-operator|>
+condition|)
+block|{
+for|for
+control|(
+name|i
+operator|=
 literal|0
-condition|?
+init|;
+name|i
+operator|<
+name|states
+operator|.
+name|remote
+operator|->
+name|url_nr
+condition|;
+name|i
+operator|++
+control|)
+name|printf
+argument_list|(
+literal|"  URL: %s\n"
+argument_list|,
 name|states
 operator|.
 name|remote
 operator|->
 name|url
 index|[
-literal|0
+name|i
 index|]
-else|:
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+name|printf
+argument_list|(
+literal|"  URL: %s\n"
+argument_list|,
 literal|"(no URL)"
 argument_list|)
 expr_stmt|;
