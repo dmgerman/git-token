@@ -7142,7 +7142,7 @@ define|#
 directive|define
 name|ensure_initialization
 parameter_list|()
-value|((void)(mparams.magic == 0 || init_mparams()))
+value|((void)(mparams.magic != 0 || init_mparams()))
 end_define
 
 begin_if
