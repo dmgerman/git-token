@@ -411,14 +411,8 @@ parameter_list|,
 name|struct
 name|ref
 modifier|*
+modifier|*
 name|dst
-parameter_list|,
-name|struct
-name|ref
-modifier|*
-modifier|*
-modifier|*
-name|dst_tail
 parameter_list|,
 name|int
 name|nr_refspec
