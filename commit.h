@@ -234,18 +234,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-name|void
-name|unparse_commit
-parameter_list|(
-name|struct
-name|commit
-modifier|*
-name|item
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
 name|struct
 name|commit_list
 modifier|*

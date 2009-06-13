@@ -58,6 +58,14 @@ name|tried
 parameter_list|,
 name|int
 name|show_all
+parameter_list|,
+name|int
+modifier|*
+name|count
+parameter_list|,
+name|int
+modifier|*
+name|skipped_first
 parameter_list|)
 function_decl|;
 end_function_decl
