@@ -2118,11 +2118,27 @@ directive|ifndef
 name|NO_ICONV
 end_ifndef
 
-begin_ifdef
-ifdef|#
-directive|ifdef
+begin_if
+if|#
+directive|if
+name|defined
+argument_list|(
 name|OLD_ICONV
-end_ifdef
+argument_list|)
+operator|||
+operator|(
+name|defined
+argument_list|(
+name|__sun__
+argument_list|)
+operator|&&
+operator|!
+name|defined
+argument_list|(
+name|_XPG6
+argument_list|)
+operator|)
+end_if
 
 begin_typedef
 DECL|typedef|iconv_ibp
