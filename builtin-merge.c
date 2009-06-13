@@ -5197,12 +5197,28 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+name|file_exists
+argument_list|(
+name|git_path
+argument_list|(
+literal|"MERGE_HEAD"
+argument_list|)
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"You have not concluded your merge. (MERGE_HEAD exists)"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|read_cache_unmerged
 argument_list|()
 condition|)
 name|die
 argument_list|(
 literal|"You are in the middle of a conflicted merge."
+literal|" (index unmerged)"
 argument_list|)
 expr_stmt|;
 comment|/* 	 * Check if we are _not_ on a detached HEAD, i.e. if there is a 	 * current branch. 	 */
