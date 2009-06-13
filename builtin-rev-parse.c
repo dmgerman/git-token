@@ -1482,6 +1482,10 @@ name|int
 name|keep_dashdash
 init|=
 literal|0
+decl_stmt|,
+name|stop_at_non_option
+init|=
+literal|0
 decl_stmt|;
 specifier|static
 name|char
@@ -1514,6 +1518,19 @@ operator|&
 name|keep_dashdash
 argument_list|,
 literal|"keep the `--` passed as an arg"
+argument_list|)
+block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|0
+argument_list|,
+literal|"stop-at-non-option"
+argument_list|,
+operator|&
+name|stop_at_non_option
+argument_list|,
+literal|"stop parsing after the "
+literal|"first non-option argument"
 argument_list|)
 block|,
 name|OPT_END
@@ -2063,6 +2080,12 @@ argument_list|,
 name|keep_dashdash
 condition|?
 name|PARSE_OPT_KEEP_DASHDASH
+else|:
+literal|0
+operator||
+name|stop_at_non_option
+condition|?
+name|PARSE_OPT_STOP_AT_NON_OPTION
 else|:
 literal|0
 argument_list|)
