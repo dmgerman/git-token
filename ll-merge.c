@@ -1261,7 +1261,7 @@ name|value
 condition|)
 name|default_ll_merge
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|value
 argument_list|)
@@ -1430,7 +1430,7 @@ name|fn
 operator|->
 name|description
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|value
 argument_list|)
@@ -1468,7 +1468,7 @@ name|fn
 operator|->
 name|cmdline
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|value
 argument_list|)
@@ -1505,7 +1505,7 @@ name|fn
 operator|->
 name|recursive
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|value
 argument_list|)
