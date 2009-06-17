@@ -82,8 +82,9 @@ argument_list|(
 literal|"java"
 argument_list|,
 literal|"!^[ \t]*(catch|do|for|if|instanceof|new|return|switch|throw|while)\n"
-literal|"^[ \t]*(([ \t]*[A-Za-z_][A-Za-z_0-9]*){2,}[ \t]*\\([^;]*)$"
+literal|"^[ \t]*(([A-Za-z_][A-Za-z_0-9]*[ \t]+)+[A-Za-z_][A-Za-z_0-9]*[ \t]*\\([^;]*)$"
 argument_list|,
+comment|/* -- */
 literal|"[a-zA-Z_][a-zA-Z0-9_]*"
 literal|"|[-+0-9.e]+[fFlL]?|0[xXbB]?[0-9a-fA-F]+[lL]?"
 literal|"|[-+*/<>%&^|=!]="
@@ -100,7 +101,7 @@ literal|"!^[ \t]*(do|for|if|else|return|switch|while)\n"
 comment|/* Objective-C methods */
 literal|"^[ \t]*([-+][ \t]*\\([ \t]*[A-Za-z_][A-Za-z_0-9* \t]*\\)[ \t]*[A-Za-z_].*)$\n"
 comment|/* C functions */
-literal|"^[ \t]*(([ \t]*[A-Za-z_][A-Za-z_0-9]*){2,}[ \t]*\\([^;]*)$\n"
+literal|"^[ \t]*(([A-Za-z_][A-Za-z_0-9]*[ \t]+)+[A-Za-z_][A-Za-z_0-9]*[ \t]*\\([^;]*)$\n"
 comment|/* Objective-C class/protocol definitions */
 literal|"^(@(implementation|interface|protocol)[ \t].*)$"
 argument_list|,
