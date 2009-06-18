@@ -1880,7 +1880,7 @@ argument_list|(
 operator|&
 name|branch
 argument_list|,
-literal|0
+name|NULL
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1933,7 +1933,7 @@ argument_list|(
 operator|&
 name|branch
 argument_list|,
-literal|0
+name|NULL
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -6275,7 +6275,7 @@ init|=
 block|{
 literal|":"
 block|,
-literal|0
+name|NULL
 block|}
 decl_stmt|;
 name|struct

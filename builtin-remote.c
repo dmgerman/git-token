@@ -4779,6 +4779,7 @@ end_function
 
 begin_function
 DECL|function|clear_push_info
+specifier|static
 name|void
 name|clear_push_info
 parameter_list|(
@@ -5191,6 +5192,7 @@ end_struct
 
 begin_function
 DECL|function|add_remote_to_show_info
+specifier|static
 name|int
 name|add_remote_to_show_info
 parameter_list|(
@@ -5254,6 +5256,7 @@ end_function
 
 begin_function
 DECL|function|show_remote_info_item
+specifier|static
 name|int
 name|show_remote_info_item
 parameter_list|(
@@ -5418,6 +5421,7 @@ end_function
 
 begin_function
 DECL|function|add_local_to_show_info
+specifier|static
 name|int
 name|add_local_to_show_info
 parameter_list|(
@@ -5556,6 +5560,7 @@ end_function
 
 begin_function
 DECL|function|show_local_info_item
+specifier|static
 name|int
 name|show_local_info_item
 parameter_list|(
@@ -5762,6 +5767,7 @@ end_function
 
 begin_function
 DECL|function|add_push_to_show_info
+specifier|static
 name|int
 name|add_push_to_show_info
 parameter_list|(
@@ -5964,6 +5970,7 @@ end_function
 
 begin_function
 DECL|function|show_push_info_item
+specifier|static
 name|int
 name|show_push_info_item
 parameter_list|(
@@ -7615,6 +7622,7 @@ end_function
 
 begin_struct
 DECL|struct|remote_group
+specifier|static
 struct|struct
 name|remote_group
 block|{

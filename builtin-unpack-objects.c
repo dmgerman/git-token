@@ -847,6 +847,7 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|nr_objects
+specifier|static
 name|unsigned
 name|nr_objects
 decl_stmt|;
@@ -1070,7 +1071,7 @@ name|obj
 argument_list|,
 name|check_object
 argument_list|,
-literal|0
+name|NULL
 argument_list|)
 condition|)
 name|die
@@ -1132,7 +1133,7 @@ name|obj
 argument_list|,
 name|OBJ_ANY
 argument_list|,
-literal|0
+name|NULL
 argument_list|)
 expr_stmt|;
 block|}

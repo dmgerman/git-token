@@ -92,6 +92,7 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|wt_status_submodule_summary
+specifier|static
 name|int
 name|wt_status_submodule_summary
 decl_stmt|;

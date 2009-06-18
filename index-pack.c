@@ -2633,7 +2633,7 @@ name|obj
 argument_list|,
 name|mark_link
 argument_list|,
-literal|0
+name|NULL
 argument_list|)
 condition|)
 name|die

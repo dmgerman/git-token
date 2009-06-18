@@ -698,6 +698,7 @@ end_function
 
 begin_function
 DECL|function|traverse_trees_recursive
+specifier|static
 name|int
 name|traverse_trees_recursive
 parameter_list|(

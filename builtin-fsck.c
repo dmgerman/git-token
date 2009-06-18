@@ -690,7 +690,7 @@ name|obj
 argument_list|,
 name|OBJ_ANY
 argument_list|,
-literal|0
+name|NULL
 argument_list|)
 expr_stmt|;
 block|}
@@ -1466,7 +1466,7 @@ name|obj
 argument_list|,
 name|mark_used
 argument_list|,
-literal|0
+name|NULL
 argument_list|)
 condition|)
 name|objerror

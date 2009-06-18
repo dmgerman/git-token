@@ -1122,7 +1122,7 @@ argument_list|(
 name|ERR_get_error
 argument_list|()
 argument_list|,
-literal|0
+name|NULL
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -2015,7 +2015,7 @@ name|getaddrinfo
 argument_list|(
 name|hostname
 argument_list|,
-literal|0
+name|NULL
 argument_list|,
 operator|&
 name|hints

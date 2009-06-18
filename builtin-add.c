@@ -1089,6 +1089,7 @@ end_function
 
 begin_function
 DECL|function|edit_patch
+specifier|static
 name|int
 name|edit_patch
 parameter_list|(
