@@ -6743,12 +6743,10 @@ name|unsigned
 name|shift
 decl_stmt|;
 name|unsigned
-name|char
-name|c
-decl_stmt|;
-name|unsigned
 name|long
 name|size
+decl_stmt|,
+name|c
 decl_stmt|;
 name|unsigned
 name|long

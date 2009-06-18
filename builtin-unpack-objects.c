@@ -2325,12 +2325,12 @@ name|unsigned
 name|char
 modifier|*
 name|pack
-decl_stmt|,
-name|c
 decl_stmt|;
 name|unsigned
 name|long
 name|size
+decl_stmt|,
+name|c
 decl_stmt|;
 name|enum
 name|object_type
