@@ -60,7 +60,7 @@ name|unused_prefix
 parameter_list|)
 block|{
 name|int
-name|missing_ok
+name|flags
 init|=
 literal|0
 decl_stmt|,
@@ -121,9 +121,9 @@ argument_list|,
 literal|"--missing-ok"
 argument_list|)
 condition|)
-name|missing_ok
-operator|=
-literal|1
+name|flags
+operator||=
+name|WRITE_TREE_MISSING_OK
 expr_stmt|;
 elseif|else
 if|if
@@ -141,6 +141,22 @@ operator|=
 name|arg
 operator|+
 literal|9
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|prefixcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--ignore-cache-tree"
+argument_list|)
+condition|)
+comment|/* 			 * This is only useful for debugging, so I 			 * do not bother documenting it. 			 */
+name|flags
+operator||=
+name|WRITE_TREE_IGNORE_CACHE_TREE
 expr_stmt|;
 else|else
 name|usage
@@ -172,7 +188,7 @@ name|write_cache_as_tree
 argument_list|(
 name|sha1
 argument_list|,
-name|missing_ok
+name|flags
 argument_list|,
 name|prefix
 argument_list|)
