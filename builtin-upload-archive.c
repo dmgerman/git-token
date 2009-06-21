@@ -439,7 +439,7 @@ end_function
 begin_function
 DECL|function|process_input
 specifier|static
-name|void
+name|ssize_t
 name|process_input
 parameter_list|(
 name|int
@@ -497,7 +497,9 @@ name|errno
 argument_list|)
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+name|sz
+return|;
 block|}
 name|send_sideband
 argument_list|(
@@ -512,6 +514,9 @@ argument_list|,
 name|LARGE_PACKET_MAX
 argument_list|)
 expr_stmt|;
+return|return
+name|sz
+return|;
 block|}
 end_function
 
@@ -740,6 +745,18 @@ index|[
 literal|2
 index|]
 decl_stmt|;
+name|ssize_t
+name|processed
+index|[
+literal|2
+index|]
+init|=
+block|{
+literal|0
+block|,
+literal|0
+block|}
+decl_stmt|;
 name|int
 name|status
 decl_stmt|;
@@ -837,6 +854,11 @@ operator|&
 name|POLLIN
 condition|)
 comment|/* Data stream ready */
+name|processed
+index|[
+literal|0
+index|]
+operator|=
 name|process_input
 argument_list|(
 name|pfd
@@ -861,6 +883,11 @@ operator|&
 name|POLLIN
 condition|)
 comment|/* Status stream ready */
+name|processed
+index|[
+literal|1
+index|]
+operator|=
 name|process_input
 argument_list|(
 name|pfd
@@ -876,23 +903,15 @@ expr_stmt|;
 comment|/* Always finish to read data when available */
 if|if
 condition|(
-operator|(
-name|pfd
+name|processed
 index|[
 literal|0
 index|]
-operator|.
-name|revents
-operator||
-name|pfd
+operator|||
+name|processed
 index|[
 literal|1
 index|]
-operator|.
-name|revents
-operator|)
-operator|&
-name|POLLIN
 condition|)
 continue|continue;
 if|if
