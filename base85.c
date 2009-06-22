@@ -635,7 +635,7 @@ operator|-=
 literal|8
 control|)
 block|{
-name|int
+name|unsigned
 name|ch
 init|=
 operator|*
