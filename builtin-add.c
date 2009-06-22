@@ -1498,6 +1498,13 @@ decl_stmt|;
 name|int
 name|require_pathspec
 decl_stmt|;
+name|git_config
+argument_list|(
+name|add_config
+argument_list|,
+name|NULL
+argument_list|)
+expr_stmt|;
 name|argc
 operator|=
 name|parse_options
@@ -1535,13 +1542,6 @@ name|argv
 argument_list|,
 name|prefix
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|git_config
-argument_list|(
-name|add_config
-argument_list|,
-name|NULL
 argument_list|)
 expr_stmt|;
 if|if
