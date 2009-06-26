@@ -2993,6 +2993,12 @@ name|show_source
 operator|=
 literal|1
 expr_stmt|;
+name|revs
+operator|.
+name|rewrite_parents
+operator|=
+literal|1
+expr_stmt|;
 name|argc
 operator|=
 name|setup_revisions
