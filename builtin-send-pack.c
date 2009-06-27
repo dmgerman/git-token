@@ -289,14 +289,9 @@ operator|&
 name|po
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"git pack-objects failed (%s)"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"git pack-objects failed"
 argument_list|)
 expr_stmt|;
 comment|/* 	 * We feed the pack-objects we just spawned with revision 	 * parameters by writing to the pipe. 	 */

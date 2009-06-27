@@ -7557,16 +7557,11 @@ name|logfd
 operator|<
 literal|0
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"Unable to read log %s: %s"
+literal|"Unable to read log '%s'"
 argument_list|,
 name|logfile
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|fstat

@@ -215,16 +215,11 @@ condition|(
 operator|!
 name|dir
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"cannot opendir %s (%s)"
+literal|"cannot opendir '%s'"
 argument_list|,
 name|path
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|strcpy
@@ -296,16 +291,11 @@ operator|&
 name|st
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"cannot lstat %s (%s)"
+literal|"cannot lstat '%s'"
 argument_list|,
 name|pathbuf
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -330,16 +320,11 @@ argument_list|(
 name|pathbuf
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"cannot unlink %s (%s)"
+literal|"cannot unlink '%s'"
 argument_list|,
 name|pathbuf
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -355,16 +340,11 @@ argument_list|(
 name|path
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"cannot rmdir %s (%s)"
+literal|"cannot rmdir '%s'"
 argument_list|,
 name|path
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

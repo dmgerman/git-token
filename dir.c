@@ -3685,14 +3685,9 @@ argument_list|,
 name|size
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"can't find the current directory: %s"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"can't find the current directory"
 argument_list|)
 expr_stmt|;
 if|if

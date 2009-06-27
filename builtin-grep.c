@@ -3092,16 +3092,11 @@ condition|(
 operator|!
 name|patterns
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"'%s': %s"
+literal|"cannot open '%s'"
 argument_list|,
 name|arg
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 while|while

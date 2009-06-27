@@ -10431,14 +10431,9 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"read error %s from stdin"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"failed to read from stdin"
 argument_list|)
 expr_stmt|;
 block|}
@@ -11791,16 +11786,11 @@ argument_list|(
 name|revs_file
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"reading graft file %s failed: %s"
+literal|"reading graft file '%s' failed"
 argument_list|,
 name|revs_file
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -12122,16 +12112,11 @@ argument_list|(
 name|path
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"cannot stat path %s: %s"
+literal|"cannot stat path '%s'"
 argument_list|,
 name|path
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

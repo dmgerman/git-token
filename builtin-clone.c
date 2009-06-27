@@ -1409,18 +1409,13 @@ name|errno
 operator|!=
 name|ENOENT
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"failed to unlink %s: %s"
+literal|"failed to unlink '%s'"
 argument_list|,
 name|dest
 operator|->
 name|buf
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -2289,16 +2284,11 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"could not create leading directories of '%s': %s"
+literal|"could not create leading directories of '%s'"
 argument_list|,
 name|work_tree
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -2313,16 +2303,11 @@ argument_list|,
 literal|0755
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"could not create work tree dir '%s': %s."
+literal|"could not create work tree dir '%s'."
 argument_list|,
 name|work_tree
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|set_git_work_tree

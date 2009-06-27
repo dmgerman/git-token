@@ -377,16 +377,11 @@ operator|&
 name|st
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"'%s': %s"
+literal|"failed to stat '%s'"
 argument_list|,
 name|path
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if

@@ -170,14 +170,9 @@ name|sz
 operator|<
 literal|0
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"test-sha1: %s"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"test-sha1"
 argument_list|)
 expr_stmt|;
 name|this_sz

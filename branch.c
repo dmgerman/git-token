@@ -884,14 +884,9 @@ condition|(
 operator|!
 name|lock
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"Failed to lock ref for update: %s."
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"Failed to lock ref for update"
 argument_list|)
 expr_stmt|;
 if|if
@@ -959,14 +954,9 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"Failed to write ref: %s."
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"Failed to write ref"
 argument_list|)
 expr_stmt|;
 name|strbuf_release

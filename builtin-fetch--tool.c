@@ -60,14 +60,9 @@ operator|<
 literal|0
 condition|)
 block|{
-name|die
+name|die_errno
 argument_list|(
-literal|"error reading standard input: %s"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"error reading standard input"
 argument_list|)
 expr_stmt|;
 block|}

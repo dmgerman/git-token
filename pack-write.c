@@ -310,16 +310,11 @@ name|fd
 operator|<
 literal|0
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"unable to create %s: %s"
+literal|"unable to create '%s'"
 argument_list|,
 name|index_name
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|f
@@ -878,16 +873,11 @@ argument_list|)
 operator|!=
 literal|0
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"Failed seeking to start of %s: %s"
+literal|"Failed seeking to start of '%s'"
 argument_list|,
 name|pack_name
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -910,16 +900,11 @@ argument_list|(
 name|hdr
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"Unable to reread header of %s: %s"
+literal|"Unable to reread header of '%s'"
 argument_list|,
 name|pack_name
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -935,16 +920,11 @@ argument_list|)
 operator|!=
 literal|0
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"Failed seeking to start of %s: %s"
+literal|"Failed seeking to start of '%s'"
 argument_list|,
 name|pack_name
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|git_SHA1_Update
@@ -1068,16 +1048,11 @@ name|n
 operator|<
 literal|0
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"Failed to checksum %s: %s"
+literal|"Failed to checksum '%s'"
 argument_list|,
 name|pack_name
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|git_SHA1_Update
