@@ -1124,9 +1124,9 @@ literal|"w"
 argument_list|)
 operator|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"Could not open %s"
+literal|"Could not open '%s'"
 argument_list|,
 name|filename
 argument_list|)

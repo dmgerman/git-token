@@ -320,9 +320,9 @@ name|errno
 operator|!=
 name|ENOENT
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"cannot stat %s"
+literal|"cannot stat '%s'"
 argument_list|,
 name|path
 argument_list|)
@@ -343,9 +343,9 @@ operator|&
 name|st_template
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"cannot stat template %s"
+literal|"cannot stat template '%s'"
 argument_list|,
 name|template
 argument_list|)
@@ -388,9 +388,9 @@ condition|(
 operator|!
 name|subdir
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"cannot opendir %s"
+literal|"cannot opendir '%s'"
 argument_list|,
 name|template
 argument_list|)
@@ -486,9 +486,9 @@ name|len
 operator|<
 literal|0
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"cannot readlink %s"
+literal|"cannot readlink '%s'"
 argument_list|,
 name|template
 argument_list|)
@@ -525,9 +525,9 @@ argument_list|,
 name|path
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"cannot symlink %s %s"
+literal|"cannot symlink '%s' '%s'"
 argument_list|,
 name|lnk
 argument_list|,
@@ -559,9 +559,9 @@ operator|.
 name|st_mode
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"cannot copy %s to %s"
+literal|"cannot copy '%s' to '%s'"
 argument_list|,
 name|template
 argument_list|,
@@ -1709,7 +1709,7 @@ name|cwd
 argument_list|)
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
 literal|"cannot tell cwd"
 argument_list|)
@@ -2133,9 +2133,9 @@ argument_list|,
 name|PATH_MAX
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"Cannot access current working directory."
+literal|"Cannot access current working directory"
 argument_list|)
 expr_stmt|;
 block|}
@@ -2149,7 +2149,7 @@ argument_list|,
 name|X_OK
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
 literal|"Cannot access work tree '%s'"
 argument_list|,

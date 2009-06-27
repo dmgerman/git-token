@@ -840,7 +840,7 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-name|die
+name|die_errno
 argument_list|(
 literal|"Could not write to MERGE_MSG"
 argument_list|)

@@ -804,7 +804,7 @@ operator|<
 literal|0
 condition|)
 block|{
-name|die
+name|die_errno
 argument_list|(
 literal|"could not read from stdin"
 argument_list|)

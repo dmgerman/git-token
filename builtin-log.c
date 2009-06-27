@@ -5602,9 +5602,9 @@ name|errno
 operator|!=
 name|EEXIST
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"Could not create directory %s"
+literal|"Could not create directory '%s'"
 argument_list|,
 name|output_directory
 argument_list|)

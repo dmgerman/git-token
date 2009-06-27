@@ -172,9 +172,9 @@ name|fd
 operator|<
 literal|0
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"Cannot open %s"
+literal|"Cannot open '%s'"
 argument_list|,
 name|path
 argument_list|)

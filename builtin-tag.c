@@ -2412,9 +2412,9 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"cannot read %s"
+literal|"cannot read '%s'"
 argument_list|,
 name|msgfile
 argument_list|)

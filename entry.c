@@ -157,9 +157,9 @@ literal|0777
 argument_list|)
 condition|)
 continue|continue;
-name|die
+name|die_errno
 argument_list|(
-literal|"cannot create directory at %s"
+literal|"cannot create directory at '%s'"
 argument_list|,
 name|buf
 argument_list|)

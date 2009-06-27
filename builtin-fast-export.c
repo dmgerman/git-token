@@ -656,9 +656,9 @@ argument_list|)
 operator|!=
 literal|1
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"Could not write blob %s"
+literal|"Could not write blob '%s'"
 argument_list|,
 name|sha1_to_hex
 argument_list|(

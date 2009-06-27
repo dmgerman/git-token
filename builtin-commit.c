@@ -2273,7 +2273,7 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-name|die
+name|die_errno
 argument_list|(
 literal|"could not read log from standard input"
 argument_list|)
@@ -5156,12 +5156,22 @@ operator|<
 literal|0
 condition|)
 block|{
+name|int
+name|saved_errno
+init|=
+name|errno
+decl_stmt|;
 name|rollback_index_files
 argument_list|()
 expr_stmt|;
 name|die
 argument_list|(
-literal|"could not read commit message"
+literal|"could not read commit message: %s"
+argument_list|,
+name|strerror
+argument_list|(
+name|saved_errno
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
