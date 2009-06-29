@@ -190,6 +190,11 @@ name|no_merges
 range|:
 literal|1
 decl_stmt|,
+DECL|member|merges_only
+name|merges_only
+range|:
+literal|1
+decl_stmt|,
 DECL|member|no_walk
 name|no_walk
 range|:
