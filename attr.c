@@ -2858,6 +2858,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|strbuf_release
+argument_list|(
+operator|&
+name|pathbuf
+argument_list|)
+expr_stmt|;
 comment|/* 	 * Finally push the "info" one at the top of the stack. 	 */
 name|info
 operator|->
