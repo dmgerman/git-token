@@ -1306,10 +1306,6 @@ operator|||
 name|opt
 operator|->
 name|post_context
-operator|||
-name|opt
-operator|->
-name|funcname
 condition|)
 block|{
 comment|/* 		 * grep handles hunk marks between files, but we need to 		 * do that ourselves between multiple calls. 		 */
@@ -1323,12 +1319,6 @@ name|write_or_die
 argument_list|(
 literal|1
 argument_list|,
-name|opt
-operator|->
-name|funcname
-condition|?
-literal|"==\n"
-else|:
 literal|"--\n"
 argument_list|,
 literal|3
