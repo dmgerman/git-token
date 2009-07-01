@@ -347,6 +347,10 @@ DECL|member|last_shown
 name|unsigned
 name|last_shown
 decl_stmt|;
+DECL|member|show_hunk_mark
+name|int
+name|show_hunk_mark
+decl_stmt|;
 block|}
 struct|;
 end_struct
