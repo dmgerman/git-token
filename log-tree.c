@@ -1758,7 +1758,7 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-comment|/* 	 * If use_terminator is set, add a newline at the end of the entry. 	 * Otherwise, add a diffopt.line_termination character before all 	 * entries but the first.  (IOW, as a separator between entries) 	 */
+comment|/* 	 * If use_terminator is set, we already handled any record termination 	 * at the end of the last record. 	 * Otherwise, add a diffopt.line_termination character before all 	 * entries but the first.  (IOW, as a separator between entries) 	 */
 if|if
 condition|(
 name|opt
