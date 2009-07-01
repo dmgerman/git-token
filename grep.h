@@ -343,6 +343,10 @@ DECL|member|post_context
 name|unsigned
 name|post_context
 decl_stmt|;
+DECL|member|last_shown
+name|unsigned
+name|last_shown
+decl_stmt|;
 block|}
 struct|;
 end_struct
