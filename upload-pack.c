@@ -187,9 +187,12 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|no_progress
+DECL|variable|daemon_mode
 specifier|static
 name|int
 name|no_progress
+decl_stmt|,
+name|daemon_mode
 decl_stmt|;
 end_decl_stmt
 
@@ -2867,6 +2870,17 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+name|use_sideband
+operator|&&
+name|daemon_mode
+condition|)
+name|no_progress
+operator|=
+literal|1
+expr_stmt|;
+if|if
+condition|(
 name|depth
 operator|==
 literal|0
@@ -3508,6 +3522,10 @@ name|arg
 operator|+
 literal|10
 argument_list|)
+expr_stmt|;
+name|daemon_mode
+operator|=
+literal|1
 expr_stmt|;
 continue|continue;
 block|}

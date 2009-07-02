@@ -707,10 +707,10 @@ decl_stmt|;
 end_decl_stmt
 
 begin_function
-DECL|function|hook_status
+DECL|function|run_status
 specifier|static
 name|int
-name|hook_status
+name|run_status
 parameter_list|(
 name|int
 name|code
@@ -718,7 +718,7 @@ parameter_list|,
 specifier|const
 name|char
 modifier|*
-name|hook_name
+name|cmd_name
 parameter_list|)
 block|{
 switch|switch
@@ -739,7 +739,9 @@ case|:
 return|return
 name|error
 argument_list|(
-literal|"hook fork failed"
+literal|"fork of %s failed"
+argument_list|,
+name|cmd_name
 argument_list|)
 return|;
 case|case
@@ -749,7 +751,9 @@ case|:
 return|return
 name|error
 argument_list|(
-literal|"hook execute failed"
+literal|"execute of %s failed"
+argument_list|,
+name|cmd_name
 argument_list|)
 return|;
 case|case
@@ -759,7 +763,7 @@ case|:
 return|return
 name|error
 argument_list|(
-literal|"hook pipe failed"
+literal|"pipe failed"
 argument_list|)
 return|;
 case|case
@@ -791,7 +795,7 @@ name|error
 argument_list|(
 literal|"%s died of signal"
 argument_list|,
-name|hook_name
+name|cmd_name
 argument_list|)
 return|;
 case|case
@@ -803,7 +807,7 @@ name|error
 argument_list|(
 literal|"%s died strangely"
 argument_list|,
-name|hook_name
+name|cmd_name
 argument_list|)
 return|;
 default|default:
@@ -811,7 +815,7 @@ name|error
 argument_list|(
 literal|"%s exited with error code %d"
 argument_list|,
-name|hook_name
+name|cmd_name
 argument_list|,
 operator|-
 name|code
@@ -985,7 +989,7 @@ condition|(
 name|code
 condition|)
 return|return
-name|hook_status
+name|run_status
 argument_list|(
 name|code
 argument_list|,
@@ -1074,7 +1078,7 @@ name|in
 argument_list|)
 expr_stmt|;
 return|return
-name|hook_status
+name|run_status
 argument_list|(
 name|finish_command
 argument_list|(
@@ -1178,7 +1182,7 @@ operator|=
 name|NULL
 expr_stmt|;
 return|return
-name|hook_status
+name|run_status
 argument_list|(
 name|run_command_v_opt
 argument_list|(
@@ -1997,6 +2001,8 @@ name|cmd_p
 decl_stmt|;
 name|int
 name|argc
+decl_stmt|,
+name|status
 decl_stmt|;
 specifier|const
 name|char
@@ -2144,6 +2150,8 @@ index|]
 operator|=
 name|NULL
 expr_stmt|;
+name|status
+operator|=
 name|run_command_v_opt
 argument_list|(
 name|argv
@@ -2151,6 +2159,13 @@ argument_list|,
 name|RUN_COMMAND_NO_STDIN
 operator||
 name|RUN_COMMAND_STDOUT_TO_STDERR
+argument_list|)
+expr_stmt|;
+name|run_status
+argument_list|(
+name|status
+argument_list|,
+name|update_post_hook
 argument_list|)
 expr_stmt|;
 block|}
@@ -2735,64 +2750,27 @@ argument_list|,
 name|RUN_GIT_CMD
 argument_list|)
 expr_stmt|;
-switch|switch
+if|if
 condition|(
+operator|!
 name|code
 condition|)
-block|{
-case|case
-literal|0
-case|:
 return|return
 name|NULL
 return|;
-case|case
-operator|-
-name|ERR_RUN_COMMAND_FORK
-case|:
+name|run_status
+argument_list|(
+name|code
+argument_list|,
+name|unpacker
+index|[
+literal|0
+index|]
+argument_list|)
+expr_stmt|;
 return|return
-literal|"unpack fork failed"
+literal|"unpack-objects abnormal exit"
 return|;
-case|case
-operator|-
-name|ERR_RUN_COMMAND_EXEC
-case|:
-return|return
-literal|"unpack execute failed"
-return|;
-case|case
-operator|-
-name|ERR_RUN_COMMAND_WAITPID
-case|:
-return|return
-literal|"waitpid failed"
-return|;
-case|case
-operator|-
-name|ERR_RUN_COMMAND_WAITPID_WRONG_PID
-case|:
-return|return
-literal|"waitpid is confused"
-return|;
-case|case
-operator|-
-name|ERR_RUN_COMMAND_WAITPID_SIGNAL
-case|:
-return|return
-literal|"unpacker died of signal"
-return|;
-case|case
-operator|-
-name|ERR_RUN_COMMAND_WAITPID_NOEXIT
-case|:
-return|return
-literal|"unpacker died strangely"
-return|;
-default|default:
-return|return
-literal|"unpacker exited with error code"
-return|;
-block|}
 block|}
 else|else
 block|{
@@ -2957,17 +2935,33 @@ name|git_cmd
 operator|=
 literal|1
 expr_stmt|;
-if|if
-condition|(
+name|status
+operator|=
 name|start_command
 argument_list|(
 operator|&
 name|ip
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|status
 condition|)
+block|{
+name|run_status
+argument_list|(
+name|status
+argument_list|,
+name|keeper
+index|[
+literal|0
+index|]
+argument_list|)
+expr_stmt|;
 return|return
 literal|"index-pack fork failed"
 return|;
+block|}
 name|pack_lockfile
 operator|=
 name|index_pack_lockfile
@@ -3005,6 +2999,16 @@ return|return
 name|NULL
 return|;
 block|}
+name|run_status
+argument_list|(
+name|status
+argument_list|,
+name|keeper
+index|[
+literal|0
+index|]
+argument_list|)
+expr_stmt|;
 return|return
 literal|"index-pack abnormal exit"
 return|;
