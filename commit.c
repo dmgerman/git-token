@@ -294,10 +294,6 @@ modifier|*
 name|tail
 parameter_list|)
 block|{
-name|unsigned
-name|long
-name|date
-decl_stmt|;
 specifier|const
 name|char
 modifier|*
@@ -418,8 +414,7 @@ return|return
 literal|0
 return|;
 comment|/* dateptr< buf&& buf[-1] == '\n', so strtoul will stop at buf-1 */
-name|date
-operator|=
+return|return
 name|strtoul
 argument_list|(
 name|dateptr
@@ -428,19 +423,6 @@ name|NULL
 argument_list|,
 literal|10
 argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|date
-operator|==
-name|ULONG_MAX
-condition|)
-name|date
-operator|=
-literal|0
-expr_stmt|;
-return|return
-name|date
 return|;
 block|}
 end_function
