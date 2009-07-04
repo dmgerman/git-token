@@ -1458,12 +1458,26 @@ name|status
 argument_list|)
 condition|)
 block|{
+name|code
+operator|=
+name|WTERMSIG
+argument_list|(
+name|status
+argument_list|)
+expr_stmt|;
 name|error
 argument_list|(
-literal|"%s died of signal"
+literal|"%s died of signal %d"
 argument_list|,
 name|argv0
+argument_list|,
+name|code
 argument_list|)
+expr_stmt|;
+comment|/* 		 * This return value is chosen so that code& 0xff 		 * mimics the exit code that a POSIX shell would report for 		 * a program that died from this signal. 		 */
+name|code
+operator|-=
+literal|128
 expr_stmt|;
 block|}
 elseif|else
