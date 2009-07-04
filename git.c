@@ -2486,7 +2486,7 @@ name|run_command_v_opt
 argument_list|(
 name|argv
 argument_list|,
-literal|0
+name|RUN_SILENT_EXEC_FAILURE
 argument_list|)
 expr_stmt|;
 if|if

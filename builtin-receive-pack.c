@@ -724,25 +724,6 @@ block|{
 if|if
 condition|(
 name|code
-operator|<
-literal|0
-operator|&&
-name|errno
-operator|==
-name|ENOENT
-condition|)
-return|return
-name|error
-argument_list|(
-literal|"execute of %s failed"
-argument_list|,
-name|cmd_name
-argument_list|)
-return|;
-elseif|else
-if|if
-condition|(
-name|code
 operator|>
 literal|0
 condition|)
