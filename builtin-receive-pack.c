@@ -721,33 +721,16 @@ modifier|*
 name|cmd_name
 parameter_list|)
 block|{
-switch|switch
+if|if
 condition|(
 name|code
+operator|<
+literal|0
+operator|&&
+name|errno
+operator|==
+name|ENOENT
 condition|)
-block|{
-case|case
-literal|0
-case|:
-return|return
-literal|0
-return|;
-case|case
-operator|-
-name|ERR_RUN_COMMAND_FORK
-case|:
-return|return
-name|error
-argument_list|(
-literal|"fork of %s failed"
-argument_list|,
-name|cmd_name
-argument_list|)
-return|;
-case|case
-operator|-
-name|ERR_RUN_COMMAND_EXEC
-case|:
 return|return
 name|error
 argument_list|(
@@ -756,61 +739,13 @@ argument_list|,
 name|cmd_name
 argument_list|)
 return|;
-case|case
-operator|-
-name|ERR_RUN_COMMAND_PIPE
-case|:
-return|return
-name|error
-argument_list|(
-literal|"pipe failed"
-argument_list|)
-return|;
-case|case
-operator|-
-name|ERR_RUN_COMMAND_WAITPID
-case|:
-return|return
-name|error
-argument_list|(
-literal|"waitpid failed"
-argument_list|)
-return|;
-case|case
-operator|-
-name|ERR_RUN_COMMAND_WAITPID_WRONG_PID
-case|:
-return|return
-name|error
-argument_list|(
-literal|"waitpid is confused"
-argument_list|)
-return|;
-case|case
-operator|-
-name|ERR_RUN_COMMAND_WAITPID_SIGNAL
-case|:
-return|return
-name|error
-argument_list|(
-literal|"%s died of signal"
-argument_list|,
-name|cmd_name
-argument_list|)
-return|;
-case|case
-operator|-
-name|ERR_RUN_COMMAND_WAITPID_NOEXIT
-case|:
-return|return
-name|error
-argument_list|(
-literal|"%s died strangely"
-argument_list|,
-name|cmd_name
-argument_list|)
-return|;
-default|default:
+elseif|else
+if|if
+condition|(
+name|code
+operator|>
+literal|0
+condition|)
 name|error
 argument_list|(
 literal|"%s exited with error code %d"
@@ -823,7 +758,6 @@ expr_stmt|;
 return|return
 name|code
 return|;
-block|}
 block|}
 end_function
 

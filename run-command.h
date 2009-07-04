@@ -12,35 +12,6 @@ directive|define
 name|RUN_COMMAND_H
 end_define
 
-begin_enum
-enum|enum
-block|{
-DECL|enumerator|ERR_RUN_COMMAND_FORK
-name|ERR_RUN_COMMAND_FORK
-init|=
-literal|10000
-block|,
-DECL|enumerator|ERR_RUN_COMMAND_EXEC
-name|ERR_RUN_COMMAND_EXEC
-block|,
-DECL|enumerator|ERR_RUN_COMMAND_PIPE
-name|ERR_RUN_COMMAND_PIPE
-block|,
-DECL|enumerator|ERR_RUN_COMMAND_WAITPID
-name|ERR_RUN_COMMAND_WAITPID
-block|,
-DECL|enumerator|ERR_RUN_COMMAND_WAITPID_WRONG_PID
-name|ERR_RUN_COMMAND_WAITPID_WRONG_PID
-block|,
-DECL|enumerator|ERR_RUN_COMMAND_WAITPID_SIGNAL
-name|ERR_RUN_COMMAND_WAITPID_SIGNAL
-block|,
-DECL|enumerator|ERR_RUN_COMMAND_WAITPID_NOEXIT
-name|ERR_RUN_COMMAND_WAITPID_NOEXIT
-block|, }
-enum|;
-end_enum
-
 begin_struct
 DECL|struct|child_process
 struct|struct
