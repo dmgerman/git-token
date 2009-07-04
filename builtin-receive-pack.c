@@ -707,42 +707,6 @@ decl_stmt|;
 end_decl_stmt
 
 begin_function
-DECL|function|run_status
-specifier|static
-name|int
-name|run_status
-parameter_list|(
-name|int
-name|code
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|cmd_name
-parameter_list|)
-block|{
-if|if
-condition|(
-name|code
-operator|>
-literal|0
-condition|)
-name|error
-argument_list|(
-literal|"%s exited with error code %d"
-argument_list|,
-name|cmd_name
-argument_list|,
-name|code
-argument_list|)
-expr_stmt|;
-return|return
-name|code
-return|;
-block|}
-end_function
-
-begin_function
 DECL|function|run_receive_hook
 specifier|static
 name|int
@@ -902,12 +866,7 @@ condition|(
 name|code
 condition|)
 return|return
-name|run_status
-argument_list|(
 name|code
-argument_list|,
-name|hook_name
-argument_list|)
 return|;
 for|for
 control|(
@@ -991,15 +950,10 @@ name|in
 argument_list|)
 expr_stmt|;
 return|return
-name|run_status
-argument_list|(
 name|finish_command
 argument_list|(
 operator|&
 name|proc
-argument_list|)
-argument_list|,
-name|hook_name
 argument_list|)
 return|;
 block|}
@@ -1095,8 +1049,6 @@ operator|=
 name|NULL
 expr_stmt|;
 return|return
-name|run_status
-argument_list|(
 name|run_command_v_opt
 argument_list|(
 name|argv
@@ -1104,9 +1056,6 @@ argument_list|,
 name|RUN_COMMAND_NO_STDIN
 operator||
 name|RUN_COMMAND_STDOUT_TO_STDERR
-argument_list|)
-argument_list|,
-name|update_hook
 argument_list|)
 return|;
 block|}
@@ -2074,13 +2023,6 @@ operator||
 name|RUN_COMMAND_STDOUT_TO_STDERR
 argument_list|)
 expr_stmt|;
-name|run_status
-argument_list|(
-name|status
-argument_list|,
-name|update_post_hook
-argument_list|)
-expr_stmt|;
 block|}
 end_function
 
@@ -2671,16 +2613,6 @@ condition|)
 return|return
 name|NULL
 return|;
-name|run_status
-argument_list|(
-name|code
-argument_list|,
-name|unpacker
-index|[
-literal|0
-index|]
-argument_list|)
-expr_stmt|;
 return|return
 literal|"unpack-objects abnormal exit"
 return|;
@@ -2861,16 +2793,6 @@ condition|(
 name|status
 condition|)
 block|{
-name|run_status
-argument_list|(
-name|status
-argument_list|,
-name|keeper
-index|[
-literal|0
-index|]
-argument_list|)
-expr_stmt|;
 return|return
 literal|"index-pack fork failed"
 return|;
@@ -2912,16 +2834,6 @@ return|return
 name|NULL
 return|;
 block|}
-name|run_status
-argument_list|(
-name|status
-argument_list|,
-name|keeper
-index|[
-literal|0
-index|]
-argument_list|)
-expr_stmt|;
 return|return
 literal|"index-pack abnormal exit"
 return|;
