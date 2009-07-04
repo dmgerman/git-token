@@ -2499,10 +2499,9 @@ condition|)
 block|{
 if|if
 condition|(
-name|IS_RUN_COMMAND_ERR
-argument_list|(
 name|status
-argument_list|)
+operator|<
+literal|0
 condition|)
 name|die
 argument_list|(
@@ -2516,7 +2515,6 @@ argument_list|)
 expr_stmt|;
 name|exit
 argument_list|(
-operator|-
 name|status
 argument_list|)
 expr_stmt|;

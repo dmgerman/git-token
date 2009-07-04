@@ -1009,21 +1009,6 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|status
-operator|<
-operator|-
-name|ERR_RUN_COMMAND_FORK
-condition|)
-empty_stmt|;
-comment|/* failure in run-command */
-else|else
-name|status
-operator|=
-operator|-
-name|status
-expr_stmt|;
 name|fd
 operator|=
 name|open

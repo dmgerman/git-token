@@ -3732,7 +3732,6 @@ literal|"failed to read the cache"
 argument_list|)
 expr_stmt|;
 return|return
-operator|-
 name|ret
 return|;
 block|}

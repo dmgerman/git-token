@@ -817,12 +817,10 @@ literal|"%s exited with error code %d"
 argument_list|,
 name|cmd_name
 argument_list|,
-operator|-
 name|code
 argument_list|)
 expr_stmt|;
 return|return
-operator|-
 name|code
 return|;
 block|}
