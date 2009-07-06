@@ -432,7 +432,7 @@ name|n
 operator|<
 literal|41
 condition|)
-name|die
+name|die_errno
 argument_list|(
 literal|"git get-tar-commit-id: write error"
 argument_list|)

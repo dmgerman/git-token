@@ -570,14 +570,9 @@ name|ret
 operator|==
 name|MAP_FAILED
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"Out of memory? mmap failed: %s"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"Out of memory? mmap failed"
 argument_list|)
 expr_stmt|;
 block|}
@@ -911,14 +906,9 @@ name|ret
 operator|<
 literal|0
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"dup failed: %s"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"dup failed"
 argument_list|)
 expr_stmt|;
 return|return
@@ -959,14 +949,9 @@ name|stream
 operator|==
 name|NULL
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"Out of memory? fdopen failed: %s"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"Out of memory? fdopen failed"
 argument_list|)
 expr_stmt|;
 return|return
@@ -1001,14 +986,9 @@ name|fd
 operator|<
 literal|0
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"Unable to create temporary file: %s"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"Unable to create temporary file"
 argument_list|)
 expr_stmt|;
 return|return

@@ -3143,7 +3143,7 @@ argument_list|,
 name|PATH_MAX
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
 literal|"unable to get current working directory"
 argument_list|)

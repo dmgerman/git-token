@@ -372,9 +372,9 @@ name|fd
 operator|<
 literal|0
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"cannot open output file %s"
+literal|"cannot open output file '%s'"
 argument_list|,
 name|name
 argument_list|)
@@ -424,7 +424,7 @@ argument_list|)
 operator|!=
 name|len
 condition|)
-name|die
+name|die_errno
 argument_list|(
 literal|"cannot write output"
 argument_list|)
@@ -464,7 +464,7 @@ literal|1
 expr_stmt|;
 break|break;
 block|}
-name|die
+name|die_errno
 argument_list|(
 literal|"cannot read mbox"
 argument_list|)

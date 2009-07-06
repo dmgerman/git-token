@@ -1128,16 +1128,11 @@ argument_list|(
 name|subdir
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"Cannot change to %s: %s"
+literal|"Cannot change to '%s'"
 argument_list|,
 name|subdir
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|errno
@@ -1404,14 +1399,9 @@ argument_list|(
 name|stdout
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"write failure on standard output: %s"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"write failure on standard output"
 argument_list|)
 expr_stmt|;
 if|if
@@ -1433,14 +1423,9 @@ argument_list|(
 name|stdout
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"close failed on standard output: %s"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"close failed on standard output"
 argument_list|)
 expr_stmt|;
 return|return

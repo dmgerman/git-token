@@ -2343,16 +2343,11 @@ if|if
 condition|(
 name|config_exclusive_filename
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"unable to read config file %s: %s"
+literal|"unable to read config file '%s'"
 argument_list|,
 name|config_exclusive_filename
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 else|else

@@ -2392,16 +2392,11 @@ condition|(
 operator|!
 name|fp
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"Could not open file '%s': %s"
+literal|"Could not open file '%s'"
 argument_list|,
 name|filename
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 while|while
@@ -3760,16 +3755,11 @@ name|fd
 operator|<
 literal|0
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"could not create file '%s': %s"
+literal|"could not create file '%s'"
 argument_list|,
 name|filename
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|bisect_rev_hex

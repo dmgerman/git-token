@@ -656,9 +656,9 @@ argument_list|)
 operator|!=
 literal|1
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"Could not write blob %s"
+literal|"Could not write blob '%s'"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -2551,16 +2551,11 @@ condition|(
 operator|!
 name|f
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"cannot read %s: %s"
+literal|"cannot read '%s'"
 argument_list|,
 name|input_file
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 while|while

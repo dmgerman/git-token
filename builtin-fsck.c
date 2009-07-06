@@ -1124,9 +1124,9 @@ literal|"w"
 argument_list|)
 operator|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"Could not open %s"
+literal|"Could not open '%s'"
 argument_list|,
 name|filename
 argument_list|)
@@ -1185,16 +1185,11 @@ argument_list|)
 operator|!=
 literal|1
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"Could not write %s: %s"
+literal|"Could not write '%s'"
 argument_list|,
 name|filename
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|free
@@ -1226,16 +1221,11 @@ argument_list|(
 name|f
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"Could not finish %s: %s"
+literal|"Could not finish '%s'"
 argument_list|,
 name|filename
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

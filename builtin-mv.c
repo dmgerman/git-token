@@ -1356,16 +1356,11 @@ operator|&&
 operator|!
 name|ignore_errors
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"renaming %s failed: %s"
+literal|"renaming '%s' failed"
 argument_list|,
 name|src
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if

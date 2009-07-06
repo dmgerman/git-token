@@ -305,14 +305,9 @@ operator|==
 operator|-
 literal|1
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"opening /dev/null failed (%s)"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"opening /dev/null failed"
 argument_list|)
 expr_stmt|;
 name|close

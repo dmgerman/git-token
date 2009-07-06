@@ -668,14 +668,9 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"git commit-tree: read returned %s"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"git commit-tree: failed to read"
 argument_list|)
 expr_stmt|;
 if|if

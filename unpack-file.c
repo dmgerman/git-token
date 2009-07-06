@@ -111,7 +111,7 @@ argument_list|)
 operator|!=
 name|size
 condition|)
-name|die
+name|die_errno
 argument_list|(
 literal|"unable to write temp-file"
 argument_list|)

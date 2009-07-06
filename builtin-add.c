@@ -1292,7 +1292,7 @@ operator|&
 name|st
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
 literal|"Could not stat '%s'"
 argument_list|,

@@ -1614,16 +1614,11 @@ name|fd
 operator|<
 literal|0
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"could not create file '%s': %s"
+literal|"could not create file '%s'"
 argument_list|,
 name|path
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -2417,9 +2412,9 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"cannot read %s"
+literal|"cannot read '%s'"
 argument_list|,
 name|msgfile
 argument_list|)
@@ -2441,16 +2436,11 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"could not open or read '%s': %s"
+literal|"could not open or read '%s'"
 argument_list|,
 name|msgfile
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

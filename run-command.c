@@ -549,9 +549,9 @@ operator|->
 name|dir
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"exec %s: cd to %s failed (%s)"
+literal|"exec '%s': cd to '%s' failed"
 argument_list|,
 name|cmd
 operator|->
@@ -563,11 +563,6 @@ argument_list|,
 name|cmd
 operator|->
 name|dir
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if

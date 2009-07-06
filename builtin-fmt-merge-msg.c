@@ -2326,9 +2326,9 @@ condition|(
 operator|!
 name|in
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"cannot open %s"
+literal|"cannot open '%s'"
 argument_list|,
 name|inpath
 argument_list|)
@@ -2351,14 +2351,9 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"could not read input file %s"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"could not read input file"
 argument_list|)
 expr_stmt|;
 name|ret

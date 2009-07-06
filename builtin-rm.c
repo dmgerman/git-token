@@ -1052,16 +1052,11 @@ condition|(
 operator|!
 name|removed
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"git rm: %s: %s"
+literal|"git rm: '%s'"
 argument_list|,
 name|path
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

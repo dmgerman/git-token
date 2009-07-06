@@ -11690,14 +11690,9 @@ name|fd
 operator|<
 literal|0
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"unable to create temp-file: %s"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"unable to create temp-file"
 argument_list|)
 expr_stmt|;
 if|if
@@ -11749,7 +11744,7 @@ argument_list|)
 operator|!=
 name|size
 condition|)
-name|die
+name|die_errno
 argument_list|(
 literal|"unable to write temp-file"
 argument_list|)
@@ -11952,16 +11947,11 @@ condition|)
 goto|goto
 name|not_a_valid_file
 goto|;
-name|die
+name|die_errno
 argument_list|(
-literal|"stat(%s): %s"
+literal|"stat(%s)"
 argument_list|,
 name|name
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -11997,7 +11987,7 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-name|die
+name|die_errno
 argument_list|(
 literal|"readlink(%s)"
 argument_list|,
@@ -13089,9 +13079,9 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"stat %s"
+literal|"stat '%s'"
 argument_list|,
 name|one
 operator|->

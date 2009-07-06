@@ -73,9 +73,9 @@ name|output_fd
 operator|<
 literal|0
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"could not create archive file: %s "
+literal|"could not create archive file '%s'"
 argument_list|,
 name|output_file
 argument_list|)
@@ -98,7 +98,7 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-name|die
+name|die_errno
 argument_list|(
 literal|"could not redirect output"
 argument_list|)

@@ -363,7 +363,7 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-name|die
+name|die_errno
 argument_list|(
 literal|"could not read the input"
 argument_list|)

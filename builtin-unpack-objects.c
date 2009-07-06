@@ -399,14 +399,9 @@ argument_list|(
 literal|"early EOF"
 argument_list|)
 expr_stmt|;
-name|die
+name|die_errno
 argument_list|(
-literal|"read error on input: %s"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"read error on input"
 argument_list|)
 expr_stmt|;
 block|}
