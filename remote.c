@@ -7151,6 +7151,13 @@ if|if
 condition|(
 operator|!
 name|name
+operator|||
+name|name
+index|[
+literal|0
+index|]
+operator|==
+literal|'\0'
 condition|)
 return|return
 name|NULL
