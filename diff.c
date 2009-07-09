@@ -9887,6 +9887,12 @@ operator|.
 name|ptr
 argument_list|)
 expr_stmt|;
+name|xdiff_clear_find_func
+argument_list|(
+operator|&
+name|xecfg
+argument_list|)
+expr_stmt|;
 block|}
 name|free_ab_and_return
 label|:

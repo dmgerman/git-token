@@ -240,6 +240,18 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|void
+name|xdiff_clear_find_func
+parameter_list|(
+name|xdemitconf_t
+modifier|*
+name|xecfg
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|int
 name|git_xmerge_config
 parameter_list|(
