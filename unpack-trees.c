@@ -2800,10 +2800,6 @@ argument_list|(
 operator|&
 name|d
 argument_list|,
-name|ce
-operator|->
-name|name
-argument_list|,
 name|pathbuf
 argument_list|,
 name|namelen
