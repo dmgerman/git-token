@@ -239,6 +239,14 @@ name|TRANSPORT_PUSH_VERBOSE
 value|16
 end_define
 
+begin_define
+DECL|macro|TRANSPORT_PUSH_PORCELAIN
+define|#
+directive|define
+name|TRANSPORT_PUSH_PORCELAIN
+value|32
+end_define
+
 begin_comment
 comment|/* Returns a transport suitable for the url */
 end_comment
