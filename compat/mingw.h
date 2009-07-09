@@ -623,6 +623,21 @@ block|}
 end_function
 
 begin_comment
+comment|/* bash cannot reliably detect negative return codes as failure */
+end_comment
+
+begin_define
+DECL|macro|exit
+define|#
+directive|define
+name|exit
+parameter_list|(
+name|code
+parameter_list|)
+value|exit((code)& 0xff)
+end_define
+
+begin_comment
 comment|/*  * simple adaptors  */
 end_comment
 

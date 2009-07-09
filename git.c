@@ -1351,8 +1351,6 @@ name|status
 condition|)
 return|return
 name|status
-operator|&
-literal|0xff
 return|;
 comment|/* Somebody closed stdout? */
 if|if
