@@ -325,6 +325,12 @@ name|defined
 argument_list|(
 name|_M_UNIX
 argument_list|)
+operator|&&
+operator|!
+name|defined
+argument_list|(
+name|sgi
+argument_list|)
 end_elif
 
 begin_define
@@ -398,6 +404,14 @@ DECL|macro|_NETBSD_SOURCE
 define|#
 directive|define
 name|_NETBSD_SOURCE
+value|1
+end_define
+
+begin_define
+DECL|macro|_SGI_SOURCE
+define|#
+directive|define
+name|_SGI_SOURCE
 value|1
 end_define
 
