@@ -643,10 +643,11 @@ operator|&
 name|UNINTERESTING
 operator|)
 condition|)
-name|die
-argument_list|(
-literal|"object ranges do not make sense when not walking revisions"
-argument_list|)
+name|revs
+operator|->
+name|no_walk
+operator|=
+literal|0
 expr_stmt|;
 if|if
 condition|(
