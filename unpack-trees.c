@@ -4816,6 +4816,12 @@ condition|(
 name|o
 operator|->
 name|reset
+operator|&&
+operator|!
+name|ce_uptodate
+argument_list|(
+name|old
+argument_list|)
 condition|)
 block|{
 name|struct
