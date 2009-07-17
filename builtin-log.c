@@ -1272,7 +1272,7 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"%s\n"
+literal|"%s"
 argument_list|,
 name|out
 operator|.
