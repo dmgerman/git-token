@@ -4783,6 +4783,12 @@ if|if
 condition|(
 operator|!
 name|a
+operator|||
+name|a
+operator|==
+name|o
+operator|->
+name|df_conflict_entry
 condition|)
 return|return
 name|deleted_entry
