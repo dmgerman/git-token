@@ -1727,6 +1727,17 @@ operator|*
 operator|)
 name|o
 decl_stmt|;
+if|if
+condition|(
+name|rev
+operator|.
+name|shown_one
+condition|)
+name|putchar
+argument_list|(
+literal|'\n'
+argument_list|)
+expr_stmt|;
 name|printf
 argument_list|(
 literal|"%stag %s%s\n"
@@ -1769,6 +1780,12 @@ argument_list|,
 operator|&
 name|rev
 argument_list|)
+expr_stmt|;
+name|rev
+operator|.
+name|shown_one
+operator|=
+literal|1
 expr_stmt|;
 if|if
 condition|(
@@ -1824,6 +1841,17 @@ block|}
 case|case
 name|OBJ_TREE
 case|:
+if|if
+condition|(
+name|rev
+operator|.
+name|shown_one
+condition|)
+name|putchar
+argument_list|(
+literal|'\n'
+argument_list|)
+expr_stmt|;
 name|printf
 argument_list|(
 literal|"%stree %s%s\n\n"
@@ -1872,6 +1900,12 @@ name|show_tree_object
 argument_list|,
 name|NULL
 argument_list|)
+expr_stmt|;
+name|rev
+operator|.
+name|shown_one
+operator|=
+literal|1
 expr_stmt|;
 break|break;
 case|case
