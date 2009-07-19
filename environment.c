@@ -322,7 +322,7 @@ name|enum
 name|push_default_type
 name|push_default
 init|=
-name|PUSH_DEFAULT_UNSPECIFIED
+name|PUSH_DEFAULT_MATCHING
 decl_stmt|;
 end_decl_stmt
 

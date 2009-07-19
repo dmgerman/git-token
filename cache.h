@@ -3390,12 +3390,6 @@ DECL|enum|push_default_type
 enum|enum
 name|push_default_type
 block|{
-DECL|enumerator|PUSH_DEFAULT_UNSPECIFIED
-name|PUSH_DEFAULT_UNSPECIFIED
-init|=
-operator|-
-literal|1
-block|,
 DECL|enumerator|PUSH_DEFAULT_NOTHING
 name|PUSH_DEFAULT_NOTHING
 init|=

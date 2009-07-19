@@ -373,84 +373,6 @@ expr_stmt|;
 block|}
 end_function
 
-begin_decl_stmt
-DECL|variable|warn_unconfigured_push_msg
-specifier|static
-specifier|const
-name|char
-modifier|*
-name|warn_unconfigured_push_msg
-index|[]
-init|=
-block|{
-literal|"You did not specify any refspecs to push, and the current remote"
-block|,
-literal|"has not configured any push refspecs. The default action in this"
-block|,
-literal|"case is to push all matching refspecs, that is, all branches"
-block|,
-literal|"that exist both locally and remotely will be updated.  This may"
-block|,
-literal|"not necessarily be what you want to happen."
-block|,
-literal|""
-block|,
-literal|"You can specify what action you want to take in this case, and"
-block|,
-literal|"avoid seeing this message again, by configuring 'push.default' to:"
-block|,
-literal|"  'nothing'  : Do not push anything"
-block|,
-literal|"  'matching' : Push all matching branches (default)"
-block|,
-literal|"  'tracking' : Push the current branch to whatever it is tracking"
-block|,
-literal|"  'current'  : Push the current branch"
-block|}
-decl_stmt|;
-end_decl_stmt
-
-begin_function
-DECL|function|warn_unconfigured_push
-specifier|static
-name|void
-name|warn_unconfigured_push
-parameter_list|(
-name|void
-parameter_list|)
-block|{
-name|int
-name|i
-decl_stmt|;
-for|for
-control|(
-name|i
-operator|=
-literal|0
-init|;
-name|i
-operator|<
-name|ARRAY_SIZE
-argument_list|(
-name|warn_unconfigured_push_msg
-argument_list|)
-condition|;
-name|i
-operator|++
-control|)
-name|warning
-argument_list|(
-literal|"%s"
-argument_list|,
-name|warn_unconfigured_push_msg
-index|[
-name|i
-index|]
-argument_list|)
-expr_stmt|;
-block|}
-end_function
-
 begin_function
 DECL|function|setup_default_push_refspecs
 specifier|static
@@ -472,13 +394,7 @@ condition|(
 name|push_default
 condition|)
 block|{
-case|case
-name|PUSH_DEFAULT_UNSPECIFIED
-case|:
-name|warn_unconfigured_push
-argument_list|()
-expr_stmt|;
-comment|/* fallthrough */
+default|default:
 case|case
 name|PUSH_DEFAULT_MATCHING
 case|:
