@@ -1092,27 +1092,14 @@ name|nb
 expr_stmt|;
 if|if
 condition|(
-operator|!
-name|state
-operator|->
-name|nb
-condition|)
-comment|/* @@ -1,2 +0,0 @@ to remove the 			 * first two lines... 			 */
-name|state
-operator|->
-name|nb
-operator|=
-literal|1
-expr_stmt|;
-if|if
-condition|(
 name|state
 operator|->
 name|nn
 operator|==
 literal|0
 condition|)
-comment|/* @@ -X,Y +N,0 @@ removed Y lines 			 * that would have come *after* line N 			 * in the result.  Our lost buckets hang 			 * to the line after the removed lines, 			 */
+block|{
+comment|/* @@ -X,Y +N,0 @@ removed Y lines 			 * that would have come *after* line N 			 * in the result.  Our lost buckets hang 			 * to the line after the removed lines, 			 * 			 * Note that this is correct even when N == 0, 			 * in which case the hunk removes the first 			 * line in the file. 			 */
 name|state
 operator|->
 name|lost_bucket
@@ -1127,7 +1114,22 @@ operator|->
 name|nb
 index|]
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|state
+operator|->
+name|nb
+condition|)
+name|state
+operator|->
+name|nb
+operator|=
+literal|1
+expr_stmt|;
+block|}
 else|else
+block|{
 name|state
 operator|->
 name|lost_bucket
@@ -1144,6 +1146,7 @@ operator|-
 literal|1
 index|]
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
