@@ -169,6 +169,17 @@ parameter_list|)
 value|(sizeof(x)/sizeof(x[0]))
 end_define
 
+begin_define
+DECL|macro|bitsizeof
+define|#
+directive|define
+name|bitsizeof
+parameter_list|(
+name|x
+parameter_list|)
+value|(CHAR_BIT * sizeof(x))
+end_define
+
 begin_ifdef
 ifdef|#
 directive|ifdef
@@ -216,7 +227,7 @@ name|x
 parameter_list|,
 name|bits
 parameter_list|)
-value|((x)& TYPEOF(x)(~0ULL<< (sizeof(x) * 8 - (bits))))
+value|((x)& TYPEOF(x)(~0ULL<< (bitsizeof(x) - (bits))))
 end_define
 
 begin_define

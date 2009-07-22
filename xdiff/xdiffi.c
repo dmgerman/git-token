@@ -30,7 +30,7 @@ DECL|macro|XDL_LINE_MAX
 define|#
 directive|define
 name|XDL_LINE_MAX
-value|(long)((1UL<< (8 * sizeof(long) - 1)) - 1)
+value|(long)((1UL<< (CHAR_BIT * sizeof(long) - 1)) - 1)
 end_define
 
 begin_define
