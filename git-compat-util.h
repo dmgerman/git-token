@@ -246,6 +246,19 @@ DECL|macro|HAS_MULTI_BITS
 comment|/* checks if an integer has more than 1 bit set */
 end_comment
 
+begin_define
+DECL|macro|DIV_ROUND_UP
+define|#
+directive|define
+name|DIV_ROUND_UP
+parameter_list|(
+name|n
+parameter_list|,
+name|d
+parameter_list|)
+value|(((n) + (d) - 1) / (d))
+end_define
+
 begin_comment
 comment|/* Approximation of the length of the decimal representation of this type. */
 end_comment
