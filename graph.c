@@ -2933,7 +2933,7 @@ index|]
 return|;
 block|}
 return|return
-literal|0
+name|NULL
 return|;
 block|}
 end_function
