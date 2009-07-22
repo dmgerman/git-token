@@ -318,6 +318,10 @@ DECL|member|color
 name|int
 name|color
 decl_stmt|;
+DECL|member|max_depth
+name|int
+name|max_depth
+decl_stmt|;
 DECL|member|funcname
 name|int
 name|funcname
