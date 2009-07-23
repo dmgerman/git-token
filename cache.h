@@ -3463,6 +3463,13 @@ name|object_creation_mode
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+specifier|extern
+name|int
+name|grafts_replace_parents
+decl_stmt|;
+end_decl_stmt
+
 begin_define
 DECL|macro|GIT_REPO_VERSION
 define|#

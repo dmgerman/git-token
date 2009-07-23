@@ -355,6 +355,15 @@ name|OBJECT_CREATION_MODE
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|grafts_replace_parents
+name|int
+name|grafts_replace_parents
+init|=
+literal|1
+decl_stmt|;
+end_decl_stmt
+
 begin_comment
 comment|/* Parallel index stat data preload? */
 end_comment
