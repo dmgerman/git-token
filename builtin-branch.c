@@ -1232,6 +1232,22 @@ condition|)
 return|return
 literal|0
 return|;
+comment|/* Don't add types the caller doesn't want */
+if|if
+condition|(
+operator|(
+name|kind
+operator|&
+name|ref_list
+operator|->
+name|kinds
+operator|)
+operator|==
+literal|0
+condition|)
+return|return
+literal|0
+return|;
 name|commit
 operator|=
 name|lookup_commit_reference_gently
@@ -1266,22 +1282,6 @@ name|ref_list
 operator|->
 name|with_commit
 argument_list|)
-condition|)
-return|return
-literal|0
-return|;
-comment|/* Don't add types the caller doesn't want */
-if|if
-condition|(
-operator|(
-name|kind
-operator|&
-name|ref_list
-operator|->
-name|kinds
-operator|)
-operator|==
-literal|0
 condition|)
 return|return
 literal|0
@@ -2337,7 +2337,7 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
-name|for_each_ref
+name|for_each_rawref
 argument_list|(
 name|append_ref
 argument_list|,
