@@ -4207,6 +4207,12 @@ while|while
 condition|(
 operator|!
 name|shown_commit_line
+operator|&&
+operator|!
+name|graph_is_commit_finished
+argument_list|(
+name|graph
+argument_list|)
 condition|)
 block|{
 name|shown_commit_line
