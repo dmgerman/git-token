@@ -2791,16 +2791,7 @@ condition|)
 return|return
 literal|0
 return|;
-if|if
-condition|(
-operator|!
-operator|(
-name|flags
-operator|&
-name|DO_FOR_EACH_INCLUDE_BROKEN
-operator|)
-condition|)
-block|{
+comment|/* Is this a "negative ref" that represents a deleted ref? */
 if|if
 condition|(
 name|is_null_sha1
@@ -2813,6 +2804,16 @@ condition|)
 return|return
 literal|0
 return|;
+if|if
+condition|(
+operator|!
+operator|(
+name|flags
+operator|&
+name|DO_FOR_EACH_INCLUDE_BROKEN
+operator|)
+condition|)
+block|{
 if|if
 condition|(
 operator|!
