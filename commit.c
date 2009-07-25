@@ -1515,9 +1515,20 @@ name|bufptr
 operator|+=
 literal|48
 expr_stmt|;
+comment|/* 		 * The clone is shallow if nr_parent< 0, and we must 		 * not traverse its real parents even when we unhide them. 		 */
 if|if
 condition|(
 name|graft
+operator|&&
+operator|(
+name|graft
+operator|->
+name|nr_parent
+operator|<
+literal|0
+operator|||
+name|grafts_replace_parents
+operator|)
 condition|)
 continue|continue;
 name|new_parent
