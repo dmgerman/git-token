@@ -157,6 +157,14 @@ name|fake_missing_tagger
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|no_data
+specifier|static
+name|int
+name|no_data
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|parse_opt_signed_tag_mode
 specifier|static
@@ -660,6 +668,11 @@ name|object
 decl_stmt|;
 if|if
 condition|(
+name|no_data
+condition|)
+return|return;
+if|if
+condition|(
 name|is_null_sha1
 argument_list|(
 name|sha1
@@ -947,6 +960,8 @@ case|:
 comment|/* 			 * Links refer to objects in another repositories; 			 * output the SHA-1 verbatim. 			 */
 if|if
 condition|(
+name|no_data
+operator|||
 name|S_ISGITLINK
 argument_list|(
 name|spec
@@ -3262,6 +3277,29 @@ name|fake_missing_tagger
 argument_list|,
 literal|"Fake a tagger when tags lack one"
 argument_list|)
+block|,
+block|{
+name|OPTION_NEGBIT
+block|,
+literal|0
+block|,
+literal|"data"
+block|,
+operator|&
+name|no_data
+block|,
+name|NULL
+block|,
+literal|"Skip output of blob data"
+block|,
+name|PARSE_OPT_NOARG
+operator||
+name|PARSE_OPT_NEGHELP
+block|,
+name|NULL
+block|,
+literal|1
+block|}
 block|,
 name|OPT_END
 argument_list|()
