@@ -1693,10 +1693,6 @@ name|idx
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|tree
-condition|)
 name|diff_unmerge
 argument_list|(
 operator|&
