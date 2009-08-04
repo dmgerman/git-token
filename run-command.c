@@ -122,6 +122,8 @@ index|]
 decl_stmt|;
 name|int
 name|failed_errno
+init|=
+name|failed_errno
 decl_stmt|;
 comment|/* 	 * In case of errors we must keep the promise to close FDs 	 * that have been passed in via ->in and ->out. 	 */
 name|need_in
