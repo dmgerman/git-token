@@ -464,6 +464,22 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* Transport methods defined outside transport.c */
+end_comment
+
+begin_function_decl
+name|int
+name|transport_helper_init
+parameter_list|(
+name|struct
+name|transport
+modifier|*
+name|transport
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
