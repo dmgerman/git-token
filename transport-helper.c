@@ -498,6 +498,7 @@ name|i
 operator|++
 control|)
 block|{
+specifier|const
 name|struct
 name|ref
 modifier|*
