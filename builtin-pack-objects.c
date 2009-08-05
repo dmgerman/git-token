@@ -477,7 +477,11 @@ name|unsigned
 name|long
 name|max_delta_cache_size
 init|=
-literal|0
+literal|256
+operator|*
+literal|1024
+operator|*
+literal|1024
 decl_stmt|;
 end_decl_stmt
 
