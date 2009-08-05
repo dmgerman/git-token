@@ -3863,7 +3863,7 @@ name|char
 name|reflog_usage
 index|[]
 init|=
-literal|"git reflog (expire | ...)"
+literal|"git reflog [ show | expire | delete ]"
 decl_stmt|;
 end_decl_stmt
 
