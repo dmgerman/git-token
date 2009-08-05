@@ -1267,6 +1267,9 @@ specifier|const
 name|char
 modifier|*
 name|prefix
+parameter_list|,
+name|int
+name|is_status
 parameter_list|)
 block|{
 name|int
@@ -1284,6 +1287,19 @@ name|pathspec
 init|=
 name|NULL
 decl_stmt|;
+name|int
+name|refresh_flags
+init|=
+name|REFRESH_QUIET
+decl_stmt|;
+if|if
+condition|(
+name|is_status
+condition|)
+name|refresh_flags
+operator||=
+name|REFRESH_UNMERGED
+expr_stmt|;
 if|if
 condition|(
 name|interactive
@@ -1399,7 +1415,7 @@ argument_list|)
 expr_stmt|;
 name|refresh_cache
 argument_list|(
-name|REFRESH_QUIET
+name|refresh_flags
 argument_list|)
 expr_stmt|;
 if|if
@@ -1457,7 +1473,7 @@ argument_list|)
 expr_stmt|;
 name|refresh_cache
 argument_list|(
-name|REFRESH_QUIET
+name|refresh_flags
 argument_list|)
 expr_stmt|;
 if|if
@@ -4329,6 +4345,8 @@ argument_list|,
 name|argv
 argument_list|,
 name|prefix
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 name|commitable
@@ -4804,6 +4822,8 @@ argument_list|,
 name|argv
 argument_list|,
 name|prefix
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 comment|/* Set up everything for writing the commit object.  This includes 	   running hooks, writing the trees, and interacting with the user.  */
