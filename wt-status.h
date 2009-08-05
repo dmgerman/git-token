@@ -43,6 +43,9 @@ name|WT_STATUS_UNTRACKED
 block|,
 DECL|enumerator|WT_STATUS_NOBRANCH
 name|WT_STATUS_NOBRANCH
+block|,
+DECL|enumerator|WT_STATUS_UNMERGED
+name|WT_STATUS_UNMERGED
 block|, }
 enum|;
 end_enum
