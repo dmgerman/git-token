@@ -128,7 +128,7 @@ name|merge_base_usage
 index|[]
 init|=
 block|{
-literal|"git merge-base [--all]<commit-id><commit-id>..."
+literal|"git merge-base [-a|--all]<commit><commit>..."
 block|,
 name|NULL
 block|}
