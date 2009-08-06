@@ -623,7 +623,7 @@ name|T_40_59
 parameter_list|(
 name|t
 parameter_list|)
-value|SHA_ROUND(t, SHA_MIX, ((B&C)|(D&(B|C))) , 0x8f1bbcdc )
+value|SHA_ROUND(t, SHA_MIX, ((B&C)+(D&(B^C))) , 0x8f1bbcdc )
 end_define
 
 begin_define
