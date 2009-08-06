@@ -23,10 +23,6 @@ index|[
 literal|16
 index|]
 decl_stmt|;
-DECL|member|lenW
-name|int
-name|lenW
-decl_stmt|;
 DECL|member|size
 name|unsigned
 name|long
