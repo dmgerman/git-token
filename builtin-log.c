@@ -141,6 +141,20 @@ name|fmt_pretty
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|builtin_log_usage
+specifier|static
+specifier|const
+name|char
+modifier|*
+specifier|const
+name|builtin_log_usage
+init|=
+literal|"git log [<options>] [<since>..<until>] [[--]<path>...]\n"
+literal|"   or: git show [options]<object>..."
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|cmd_log_init
 specifier|static
@@ -374,6 +388,24 @@ operator|->
 name|show_source
 operator|=
 literal|1
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"-h"
+argument_list|)
+condition|)
+block|{
+name|usage
+argument_list|(
+name|builtin_log_usage
+argument_list|)
 expr_stmt|;
 block|}
 else|else
