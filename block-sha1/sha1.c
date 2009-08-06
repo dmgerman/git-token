@@ -144,7 +144,14 @@ name|ctx
 operator|->
 name|size
 operator|+=
+operator|(
+name|unsigned
+name|long
+name|long
+operator|)
 name|len
+operator|<<
+literal|3
 expr_stmt|;
 comment|/* Read the data into W and process blocks as they get full 	 */
 if|if
@@ -326,11 +333,7 @@ name|ctx
 operator|->
 name|size
 operator|>>
-operator|(
 literal|32
-operator|-
-literal|3
-operator|)
 argument_list|)
 expr_stmt|;
 name|padlen
@@ -343,8 +346,6 @@ argument_list|(
 name|ctx
 operator|->
 name|size
-operator|<<
-literal|3
 argument_list|)
 expr_stmt|;
 name|blk_SHA1_Update
