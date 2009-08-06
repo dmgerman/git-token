@@ -523,6 +523,120 @@ endif|#
 directive|endif
 end_endif
 
+begin_comment
+comment|/* This "rolls" over the 512-bit array */
+end_comment
+
+begin_define
+DECL|macro|W
+define|#
+directive|define
+name|W
+parameter_list|(
+name|x
+parameter_list|)
+value|(array[(x)&15])
+end_define
+
+begin_comment
+comment|/*  * Where do we get the source from? The first 16 iterations get it from  * the input data, the next mix it from the 512-bit array.  */
+end_comment
+
+begin_define
+DECL|macro|SHA_SRC
+define|#
+directive|define
+name|SHA_SRC
+parameter_list|(
+name|t
+parameter_list|)
+value|htonl(data[t])
+end_define
+
+begin_define
+DECL|macro|SHA_MIX
+define|#
+directive|define
+name|SHA_MIX
+parameter_list|(
+name|t
+parameter_list|)
+value|SHA_ROL(W(t+13) ^ W(t+8) ^ W(t+2) ^ W(t), 1)
+end_define
+
+begin_define
+DECL|macro|SHA_ROUND
+define|#
+directive|define
+name|SHA_ROUND
+parameter_list|(
+name|t
+parameter_list|,
+name|input
+parameter_list|,
+name|fn
+parameter_list|,
+name|constant
+parameter_list|)
+define|\
+value|TEMP = input(t); W(t) = TEMP; \ 	TEMP += SHA_ROL(A,5) + (fn) + E + (constant); \ 	E = D; D = C; C = SHA_ROR(B, 2); B = A; A = TEMP
+end_define
+
+begin_define
+DECL|macro|T_0_15
+define|#
+directive|define
+name|T_0_15
+parameter_list|(
+name|t
+parameter_list|)
+value|SHA_ROUND(t, SHA_SRC, (((C^D)&B)^D) , 0x5a827999 )
+end_define
+
+begin_define
+DECL|macro|T_16_19
+define|#
+directive|define
+name|T_16_19
+parameter_list|(
+name|t
+parameter_list|)
+value|SHA_ROUND(t, SHA_MIX, (((C^D)&B)^D) , 0x5a827999 )
+end_define
+
+begin_define
+DECL|macro|T_20_39
+define|#
+directive|define
+name|T_20_39
+parameter_list|(
+name|t
+parameter_list|)
+value|SHA_ROUND(t, SHA_MIX, (B^C^D) , 0x6ed9eba1 )
+end_define
+
+begin_define
+DECL|macro|T_40_59
+define|#
+directive|define
+name|T_40_59
+parameter_list|(
+name|t
+parameter_list|)
+value|SHA_ROUND(t, SHA_MIX, ((B&C)|(D&(B|C))) , 0x8f1bbcdc )
+end_define
+
+begin_define
+DECL|macro|T_60_79
+define|#
+directive|define
+name|T_60_79
+parameter_list|(
+name|t
+parameter_list|)
+value|SHA_ROUND(t, SHA_MIX, (B^C^D) ,  0xca62c1d6 )
+end_define
+
 begin_function
 DECL|function|blk_SHA1Block
 specifier|static
@@ -606,15 +720,32 @@ index|[
 literal|4
 index|]
 expr_stmt|;
-DECL|macro|T_0_15
-define|#
-directive|define
+comment|/* Round 1 - iterations 0-16 take their input from 'data' */
 name|T_0_15
-parameter_list|(
-name|t
-parameter_list|)
-define|\
-value|TEMP = htonl(data[t]); array[t] = TEMP; \ 	TEMP += SHA_ROL(A,5) + (((C^D)&B)^D) + E + 0x5a827999; \ 	E = D; D = C; C = SHA_ROR(B, 2); B = A; A = TEMP; \  	T_0_15( 0); T_0_15( 1); T_0_15( 2); T_0_15( 3); T_0_15( 4);
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
+name|T_0_15
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+name|T_0_15
+argument_list|(
+literal|2
+argument_list|)
+expr_stmt|;
+name|T_0_15
+argument_list|(
+literal|3
+argument_list|)
+expr_stmt|;
+name|T_0_15
+argument_list|(
+literal|4
+argument_list|)
+expr_stmt|;
 name|T_0_15
 argument_list|(
 literal|5
@@ -670,42 +801,28 @@ argument_list|(
 literal|15
 argument_list|)
 expr_stmt|;
-comment|/* This "rolls" over the 512-bit array */
-DECL|macro|W
-define|#
-directive|define
-name|W
-parameter_list|(
-name|x
-parameter_list|)
-value|(array[(x)&15])
-DECL|macro|SHA_XOR
-define|#
-directive|define
-name|SHA_XOR
-parameter_list|(
-name|t
-parameter_list|)
-define|\
-value|TEMP = SHA_ROL(W(t+13) ^ W(t+8) ^ W(t+2) ^ W(t), 1); W(t) = TEMP;
-DECL|macro|T_16_19
-define|#
-directive|define
+comment|/* Round 1 - tail. Input from 512-bit mixing array */
 name|T_16_19
-parameter_list|(
-name|t
-parameter_list|)
-define|\
-value|SHA_XOR(t); \ 	TEMP += SHA_ROL(A,5) + (((C^D)&B)^D) + E + 0x5a827999; \ 	E = D; D = C; C = SHA_ROR(B, 2); B = A; A = TEMP; \  	T_16_19(16); T_16_19(17); T_16_19(18); T_16_19(19);
-DECL|macro|T_20_39
-define|#
-directive|define
-name|T_20_39
-parameter_list|(
-name|t
-parameter_list|)
-define|\
-value|SHA_XOR(t); \ 	TEMP += SHA_ROL(A,5) + (B^C^D) + E + 0x6ed9eba1; \ 	E = D; D = C; C = SHA_ROR(B, 2); B = A; A = TEMP;
+argument_list|(
+literal|16
+argument_list|)
+expr_stmt|;
+name|T_16_19
+argument_list|(
+literal|17
+argument_list|)
+expr_stmt|;
+name|T_16_19
+argument_list|(
+literal|18
+argument_list|)
+expr_stmt|;
+name|T_16_19
+argument_list|(
+literal|19
+argument_list|)
+expr_stmt|;
+comment|/* Round 2 */
 name|T_20_39
 argument_list|(
 literal|20
@@ -806,15 +923,7 @@ argument_list|(
 literal|39
 argument_list|)
 expr_stmt|;
-DECL|macro|T_40_59
-define|#
-directive|define
-name|T_40_59
-parameter_list|(
-name|t
-parameter_list|)
-define|\
-value|SHA_XOR(t); \ 	TEMP += SHA_ROL(A,5) + ((B&C)|(D&(B|C))) + E + 0x8f1bbcdc; \ 	E = D; D = C; C = SHA_ROR(B, 2); B = A; A = TEMP;
+comment|/* Round 3 */
 name|T_40_59
 argument_list|(
 literal|40
@@ -915,15 +1024,7 @@ argument_list|(
 literal|59
 argument_list|)
 expr_stmt|;
-DECL|macro|T_60_79
-define|#
-directive|define
-name|T_60_79
-parameter_list|(
-name|t
-parameter_list|)
-define|\
-value|SHA_XOR(t); \ 	TEMP += SHA_ROL(A,5) + (B^C^D) + E + 0xca62c1d6; \ 	E = D; D = C; C = SHA_ROR(B, 2); B = A; A = TEMP;
+comment|/* Round 4 */
 name|T_60_79
 argument_list|(
 literal|60
