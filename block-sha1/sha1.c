@@ -417,6 +417,66 @@ expr_stmt|;
 block|}
 end_function
 
+begin_if
+if|#
+directive|if
+name|defined
+argument_list|(
+name|__i386__
+argument_list|)
+operator|||
+name|defined
+argument_list|(
+name|__x86_64__
+argument_list|)
+end_if
+
+begin_define
+DECL|macro|SHA_ASM
+define|#
+directive|define
+name|SHA_ASM
+parameter_list|(
+name|op
+parameter_list|,
+name|x
+parameter_list|,
+name|n
+parameter_list|)
+value|({ unsigned int __res; asm(op " %1,%0":"=r" (__res):"i" (n), "0" (x)); __res; })
+end_define
+
+begin_define
+DECL|macro|SHA_ROL
+define|#
+directive|define
+name|SHA_ROL
+parameter_list|(
+name|x
+parameter_list|,
+name|n
+parameter_list|)
+value|SHA_ASM("rol", x, n)
+end_define
+
+begin_define
+DECL|macro|SHA_ROR
+define|#
+directive|define
+name|SHA_ROR
+parameter_list|(
+name|x
+parameter_list|,
+name|n
+parameter_list|)
+value|SHA_ASM("ror", x, n)
+end_define
+
+begin_else
+else|#
+directive|else
+end_else
+
 begin_define
 DECL|macro|SHA_ROT
 define|#
@@ -427,8 +487,39 @@ name|X
 parameter_list|,
 name|n
 parameter_list|)
-value|(((X)<< (n)) | ((X)>> (32-(n))))
+value|(((X)<< (l)) | ((X)>> (r)))
 end_define
+
+begin_define
+DECL|macro|SHA_ROL
+define|#
+directive|define
+name|SHA_ROL
+parameter_list|(
+name|X
+parameter_list|,
+name|n
+parameter_list|)
+value|SHA_ROT(X,n,32-(n))
+end_define
+
+begin_define
+DECL|macro|SHA_ROR
+define|#
+directive|define
+name|SHA_ROR
+parameter_list|(
+name|X
+parameter_list|,
+name|n
+parameter_list|)
+value|SHA_ROT(X,32-(n),n)
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_function
 DECL|function|blk_SHA1Block
@@ -516,7 +607,7 @@ index|[
 name|t
 index|]
 operator|=
-name|SHA_ROT
+name|SHA_ROL
 argument_list|(
 name|W
 index|[
@@ -602,7 +693,7 @@ parameter_list|(
 name|t
 parameter_list|)
 define|\
-value|TEMP = SHA_ROT(A,5) + (((C^D)&B)^D)     + E + W[t] + 0x5a827999; \ 	E = D; D = C; C = SHA_ROT(B, 30); B = A; A = TEMP;
+value|TEMP = SHA_ROL(A,5) + (((C^D)&B)^D)     + E + W[t] + 0x5a827999; \ 	E = D; D = C; C = SHA_ROR(B, 2); B = A; A = TEMP;
 name|T_0_19
 argument_list|(
 literal|0
@@ -711,7 +802,7 @@ parameter_list|(
 name|t
 parameter_list|)
 define|\
-value|TEMP = SHA_ROT(A,5) + (B^C^D)           + E + W[t] + 0x6ed9eba1; \ 	E = D; D = C; C = SHA_ROT(B, 30); B = A; A = TEMP;
+value|TEMP = SHA_ROL(A,5) + (B^C^D)           + E + W[t] + 0x6ed9eba1; \ 	E = D; D = C; C = SHA_ROR(B, 2); B = A; A = TEMP;
 name|T_20_39
 argument_list|(
 literal|20
@@ -820,7 +911,7 @@ parameter_list|(
 name|t
 parameter_list|)
 define|\
-value|TEMP = SHA_ROT(A,5) + ((B&C)|(D&(B|C))) + E + W[t] + 0x8f1bbcdc; \ 	E = D; D = C; C = SHA_ROT(B, 30); B = A; A = TEMP;
+value|TEMP = SHA_ROL(A,5) + ((B&C)|(D&(B|C))) + E + W[t] + 0x8f1bbcdc; \ 	E = D; D = C; C = SHA_ROR(B, 2); B = A; A = TEMP;
 name|T_40_59
 argument_list|(
 literal|40
@@ -929,7 +1020,7 @@ parameter_list|(
 name|t
 parameter_list|)
 define|\
-value|TEMP = SHA_ROT(A,5) + (B^C^D)           + E + W[t] + 0xca62c1d6; \ 	E = D; D = C; C = SHA_ROT(B, 30); B = A; A = TEMP;
+value|TEMP = SHA_ROL(A,5) + (B^C^D)           + E + W[t] + 0xca62c1d6; \ 	E = D; D = C; C = SHA_ROR(B, 2); B = A; A = TEMP;
 name|T_60_79
 argument_list|(
 literal|60
