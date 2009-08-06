@@ -540,9 +540,6 @@ modifier|*
 name|data
 parameter_list|)
 block|{
-name|int
-name|t
-decl_stmt|;
 name|unsigned
 name|int
 name|A
@@ -559,9 +556,9 @@ name|TEMP
 decl_stmt|;
 name|unsigned
 name|int
-name|W
+name|array
 index|[
-literal|80
+literal|16
 index|]
 decl_stmt|;
 name|A
@@ -617,7 +614,7 @@ parameter_list|(
 name|t
 parameter_list|)
 define|\
-value|TEMP = htonl(data[t]); W[t] = TEMP; \ 	TEMP += SHA_ROL(A,5) + (((C^D)&B)^D)     + E + 0x5a827999; \ 	E = D; D = C; C = SHA_ROR(B, 2); B = A; A = TEMP; \  	T_0_15( 0); T_0_15( 1); T_0_15( 2); T_0_15( 3); T_0_15( 4);
+value|TEMP = htonl(data[t]); array[t] = TEMP; \ 	TEMP += SHA_ROL(A,5) + (((C^D)&B)^D) + E + 0x5a827999; \ 	E = D; D = C; C = SHA_ROR(B, 2); B = A; A = TEMP; \  	T_0_15( 0); T_0_15( 1); T_0_15( 2); T_0_15( 3); T_0_15( 4);
 name|T_0_15
 argument_list|(
 literal|5
@@ -673,58 +670,24 @@ argument_list|(
 literal|15
 argument_list|)
 expr_stmt|;
-comment|/* Unroll it? */
-for|for
-control|(
-name|t
-operator|=
-literal|16
-init|;
-name|t
-operator|<=
-literal|79
-condition|;
-name|t
-operator|++
-control|)
+comment|/* This "rolls" over the 512-bit array */
+DECL|macro|W
+define|#
+directive|define
 name|W
-index|[
+parameter_list|(
+name|x
+parameter_list|)
+value|(array[(x)&15])
+DECL|macro|SHA_XOR
+define|#
+directive|define
+name|SHA_XOR
+parameter_list|(
 name|t
-index|]
-operator|=
-name|SHA_ROL
-argument_list|(
-name|W
-index|[
-name|t
-operator|-
-literal|3
-index|]
-operator|^
-name|W
-index|[
-name|t
-operator|-
-literal|8
-index|]
-operator|^
-name|W
-index|[
-name|t
-operator|-
-literal|14
-index|]
-operator|^
-name|W
-index|[
-name|t
-operator|-
-literal|16
-index|]
-argument_list|,
-literal|1
-argument_list|)
-expr_stmt|;
+parameter_list|)
+define|\
+value|TEMP = SHA_ROL(W(t+13) ^ W(t+8) ^ W(t+2) ^ W(t), 1); W(t) = TEMP;
 DECL|macro|T_16_19
 define|#
 directive|define
@@ -733,27 +696,7 @@ parameter_list|(
 name|t
 parameter_list|)
 define|\
-value|TEMP = SHA_ROL(A,5) + (((C^D)&B)^D)     + E + W[t] + 0x5a827999; \ 	E = D; D = C; C = SHA_ROR(B, 2); B = A; A = TEMP;
-name|T_16_19
-argument_list|(
-literal|16
-argument_list|)
-expr_stmt|;
-name|T_16_19
-argument_list|(
-literal|17
-argument_list|)
-expr_stmt|;
-name|T_16_19
-argument_list|(
-literal|18
-argument_list|)
-expr_stmt|;
-name|T_16_19
-argument_list|(
-literal|19
-argument_list|)
-expr_stmt|;
+value|SHA_XOR(t); \ 	TEMP += SHA_ROL(A,5) + (((C^D)&B)^D) + E + 0x5a827999; \ 	E = D; D = C; C = SHA_ROR(B, 2); B = A; A = TEMP; \  	T_16_19(16); T_16_19(17); T_16_19(18); T_16_19(19);
 DECL|macro|T_20_39
 define|#
 directive|define
@@ -762,7 +705,7 @@ parameter_list|(
 name|t
 parameter_list|)
 define|\
-value|TEMP = SHA_ROL(A,5) + (B^C^D)           + E + W[t] + 0x6ed9eba1; \ 	E = D; D = C; C = SHA_ROR(B, 2); B = A; A = TEMP;
+value|SHA_XOR(t); \ 	TEMP += SHA_ROL(A,5) + (B^C^D) + E + 0x6ed9eba1; \ 	E = D; D = C; C = SHA_ROR(B, 2); B = A; A = TEMP;
 name|T_20_39
 argument_list|(
 literal|20
@@ -871,7 +814,7 @@ parameter_list|(
 name|t
 parameter_list|)
 define|\
-value|TEMP = SHA_ROL(A,5) + ((B&C)|(D&(B|C))) + E + W[t] + 0x8f1bbcdc; \ 	E = D; D = C; C = SHA_ROR(B, 2); B = A; A = TEMP;
+value|SHA_XOR(t); \ 	TEMP += SHA_ROL(A,5) + ((B&C)|(D&(B|C))) + E + 0x8f1bbcdc; \ 	E = D; D = C; C = SHA_ROR(B, 2); B = A; A = TEMP;
 name|T_40_59
 argument_list|(
 literal|40
@@ -980,7 +923,7 @@ parameter_list|(
 name|t
 parameter_list|)
 define|\
-value|TEMP = SHA_ROL(A,5) + (B^C^D)           + E + W[t] + 0xca62c1d6; \ 	E = D; D = C; C = SHA_ROR(B, 2); B = A; A = TEMP;
+value|SHA_XOR(t); \ 	TEMP += SHA_ROL(A,5) + (B^C^D) + E + 0xca62c1d6; \ 	E = D; D = C; C = SHA_ROR(B, 2); B = A; A = TEMP;
 name|T_60_79
 argument_list|(
 literal|60
