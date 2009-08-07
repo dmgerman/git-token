@@ -2138,7 +2138,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"WARNING: You called a Git program named '%s', "
+literal|"WARNING: You called a Git command named '%s', "
 literal|"which does not exist.\n"
 literal|"Continuing under the assumption that you meant '%s'\n"
 argument_list|,
