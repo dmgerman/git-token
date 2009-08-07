@@ -37,6 +37,22 @@ name|MAX_CHAIN
 value|50
 end_define
 
+begin_define
+DECL|macro|VERIFY_PACK_VERBOSE
+define|#
+directive|define
+name|VERIFY_PACK_VERBOSE
+value|01
+end_define
+
+begin_define
+DECL|macro|VERIFY_PACK_STAT_ONLY
+define|#
+directive|define
+name|VERIFY_PACK_STAT_ONLY
+value|02
+end_define
+
 begin_function
 DECL|function|show_pack_info
 specifier|static
@@ -47,6 +63,10 @@ name|struct
 name|packed_git
 modifier|*
 name|p
+parameter_list|,
+name|unsigned
+name|int
+name|flags
 parameter_list|)
 block|{
 name|uint32_t
@@ -56,6 +76,13 @@ name|i
 decl_stmt|;
 name|int
 name|cnt
+decl_stmt|;
+name|int
+name|stat_only
+init|=
+name|flags
+operator|&
+name|VERIFY_PACK_STAT_ONLY
 decl_stmt|;
 name|unsigned
 name|long
@@ -185,6 +212,11 @@ argument_list|,
 name|base_sha1
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|stat_only
+condition|)
 name|printf
 argument_list|(
 literal|"%s "
@@ -201,6 +233,11 @@ operator|!
 name|delta_chain_length
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|stat_only
+condition|)
 name|printf
 argument_list|(
 literal|"%-6s %lu %lu %"
@@ -225,6 +262,11 @@ expr_stmt|;
 block|}
 else|else
 block|{
+if|if
+condition|(
+operator|!
+name|stat_only
+condition|)
 name|printf
 argument_list|(
 literal|"%-6s %lu %lu %"
@@ -381,8 +423,9 @@ name|char
 modifier|*
 name|path
 parameter_list|,
+name|unsigned
 name|int
-name|verbose
+name|flags
 parameter_list|)
 block|{
 name|char
@@ -393,6 +436,20 @@ index|]
 decl_stmt|;
 name|int
 name|len
+decl_stmt|;
+name|int
+name|verbose
+init|=
+name|flags
+operator|&
+name|VERIFY_PACK_VERBOSE
+decl_stmt|;
+name|int
+name|stat_only
+init|=
+name|flags
+operator|&
+name|VERIFY_PACK_STAT_ONLY
 decl_stmt|;
 name|struct
 name|packed_git
@@ -552,6 +609,11 @@ argument_list|(
 name|pack
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|stat_only
+condition|)
 name|err
 operator|=
 name|verify_pack
@@ -559,9 +621,19 @@ argument_list|(
 name|pack
 argument_list|)
 expr_stmt|;
+else|else
+name|err
+operator|=
+name|open_pack_index
+argument_list|(
+name|pack
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|verbose
+operator|||
+name|stat_only
 condition|)
 block|{
 if|if
@@ -582,8 +654,15 @@ block|{
 name|show_pack_info
 argument_list|(
 name|pack
+argument_list|,
+name|flags
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|stat_only
+condition|)
 name|printf
 argument_list|(
 literal|"%s: ok\n"
@@ -612,7 +691,7 @@ name|verify_pack_usage
 index|[]
 init|=
 block|{
-literal|"git verify-pack [-v|--verbose]<pack>..."
+literal|"git verify-pack [-v|--verbose] [-s|--stat-only]<pack>..."
 block|,
 name|NULL
 block|}
@@ -644,8 +723,9 @@ name|err
 init|=
 literal|0
 decl_stmt|;
+name|unsigned
 name|int
-name|verbose
+name|flags
 init|=
 literal|0
 decl_stmt|;
@@ -659,10 +739,32 @@ name|verify_pack_options
 index|[]
 init|=
 block|{
-name|OPT__VERBOSE
+name|OPT_BIT
 argument_list|(
+literal|'v'
+argument_list|,
+literal|"verbose"
+argument_list|,
 operator|&
-name|verbose
+name|flags
+argument_list|,
+literal|"verbose"
+argument_list|,
+name|VERIFY_PACK_VERBOSE
+argument_list|)
+block|,
+name|OPT_BIT
+argument_list|(
+literal|'s'
+argument_list|,
+literal|"stat-only"
+argument_list|,
+operator|&
+name|flags
+argument_list|,
+literal|"show statistics only"
+argument_list|,
+name|VERIFY_PACK_STAT_ONLY
 argument_list|)
 block|,
 name|OPT_END
@@ -729,7 +831,7 @@ index|[
 name|i
 index|]
 argument_list|,
-name|verbose
+name|flags
 argument_list|)
 condition|)
 name|err
