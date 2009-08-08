@@ -521,6 +521,19 @@ parameter_list|)
 value|(array[(x)&15])
 end_define
 
+begin_define
+DECL|macro|setW
+define|#
+directive|define
+name|setW
+parameter_list|(
+name|x
+parameter_list|,
+name|val
+parameter_list|)
+value|(*(volatile unsigned int *)&W(x) = (val))
+end_define
+
 begin_comment
 comment|/*  * Where do we get the source from? The first 16 iterations get it from  * the input data, the next mix it from the 512-bit array.  */
 end_comment
@@ -571,7 +584,7 @@ name|D
 parameter_list|,
 name|E
 parameter_list|)
-value|do { \ 	unsigned int TEMP = input(t); W(t) = TEMP; \ 	TEMP += E + SHA_ROL(A,5) + (fn) + (constant); \ 	B = SHA_ROR(B, 2); E = TEMP; } while (0)
+value|do { \ 	unsigned int TEMP = input(t); setW(t, TEMP); \ 	E += TEMP + SHA_ROL(A,5) + (fn) + (constant); \ 	B = SHA_ROR(B, 2); } while (0)
 end_define
 
 begin_define
