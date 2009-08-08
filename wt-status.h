@@ -121,6 +121,13 @@ name|char
 modifier|*
 name|reference
 decl_stmt|;
+DECL|member|pathspec
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|pathspec
+decl_stmt|;
 DECL|member|verbose
 name|int
 name|verbose
