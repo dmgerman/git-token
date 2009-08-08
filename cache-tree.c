@@ -1743,12 +1743,20 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"invalid object %s"
+literal|"invalid object %06o %s for '%.*s'"
+argument_list|,
+name|mode
 argument_list|,
 name|sha1_to_hex
 argument_list|(
 name|sha1
 argument_list|)
+argument_list|,
+name|entlen
+operator|+
+name|baselen
+argument_list|,
+name|path
 argument_list|)
 return|;
 if|if

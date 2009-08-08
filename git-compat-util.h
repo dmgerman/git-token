@@ -169,6 +169,17 @@ parameter_list|)
 value|(sizeof(x)/sizeof(x[0]))
 end_define
 
+begin_define
+DECL|macro|bitsizeof
+define|#
+directive|define
+name|bitsizeof
+parameter_list|(
+name|x
+parameter_list|)
+value|(CHAR_BIT * sizeof(x))
+end_define
+
 begin_ifdef
 ifdef|#
 directive|ifdef
@@ -216,7 +227,7 @@ name|x
 parameter_list|,
 name|bits
 parameter_list|)
-value|((x)& TYPEOF(x)(~0ULL<< (sizeof(x) * 8 - (bits))))
+value|((x)& TYPEOF(x)(~0ULL<< (bitsizeof(x) - (bits))))
 end_define
 
 begin_define
@@ -234,6 +245,19 @@ begin_comment
 DECL|macro|HAS_MULTI_BITS
 comment|/* checks if an integer has more than 1 bit set */
 end_comment
+
+begin_define
+DECL|macro|DIV_ROUND_UP
+define|#
+directive|define
+name|DIV_ROUND_UP
+parameter_list|(
+name|n
+parameter_list|,
+name|d
+parameter_list|)
+value|(((n) + (d) - 1) / (d))
+end_define
 
 begin_comment
 comment|/* Approximation of the length of the decimal representation of this type. */
@@ -325,6 +349,12 @@ name|defined
 argument_list|(
 name|_M_UNIX
 argument_list|)
+operator|&&
+operator|!
+name|defined
+argument_list|(
+name|sgi
+argument_list|)
 end_elif
 
 begin_define
@@ -398,6 +428,14 @@ DECL|macro|_NETBSD_SOURCE
 define|#
 directive|define
 name|_NETBSD_SOURCE
+value|1
+end_define
+
+begin_define
+DECL|macro|_SGI_SOURCE
+define|#
+directive|define
+name|_SGI_SOURCE
 value|1
 end_define
 

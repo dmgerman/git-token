@@ -647,6 +647,8 @@ index|]
 init|=
 block|{
 name|ce
+block|,
+name|NULL
 block|, }
 decl_stmt|;
 name|o
@@ -2800,10 +2802,6 @@ argument_list|(
 operator|&
 name|d
 argument_list|,
-name|ce
-operator|->
-name|name
-argument_list|,
 name|pathbuf
 argument_list|,
 name|namelen
@@ -4785,6 +4783,12 @@ if|if
 condition|(
 operator|!
 name|a
+operator|||
+name|a
+operator|==
+name|o
+operator|->
+name|df_conflict_entry
 condition|)
 return|return
 name|deleted_entry
@@ -4818,6 +4822,12 @@ condition|(
 name|o
 operator|->
 name|reset
+operator|&&
+operator|!
+name|ce_uptodate
+argument_list|(
+name|old
+argument_list|)
 condition|)
 block|{
 name|struct

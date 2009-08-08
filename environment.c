@@ -322,7 +322,7 @@ name|enum
 name|push_default_type
 name|push_default
 init|=
-name|PUSH_DEFAULT_UNSPECIFIED
+name|PUSH_DEFAULT_MATCHING
 decl_stmt|;
 end_decl_stmt
 
@@ -352,6 +352,15 @@ name|object_creation_mode
 name|object_creation_mode
 init|=
 name|OBJECT_CREATION_MODE
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|grafts_replace_parents
+name|int
+name|grafts_replace_parents
+init|=
+literal|1
 decl_stmt|;
 end_decl_stmt
 
