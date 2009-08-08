@@ -47,13 +47,20 @@ name|uint32_t
 name|nr_objects
 decl_stmt|,
 name|i
-decl_stmt|,
+decl_stmt|;
+name|int
+name|cnt
+decl_stmt|;
+name|unsigned
+name|long
 name|chain_histogram
 index|[
 name|MAX_CHAIN
 operator|+
 literal|1
 index|]
+decl_stmt|,
+name|baseobjects
 decl_stmt|;
 name|nr_objects
 operator|=
@@ -72,6 +79,10 @@ argument_list|(
 name|chain_histogram
 argument_list|)
 argument_list|)
+expr_stmt|;
+name|baseobjects
+operator|=
+literal|0
 expr_stmt|;
 for|for
 control|(
@@ -183,6 +194,7 @@ condition|(
 operator|!
 name|delta_chain_length
 condition|)
+block|{
 name|printf
 argument_list|(
 literal|"%-6s %lu %lu %"
@@ -201,6 +213,10 @@ operator|)
 name|offset
 argument_list|)
 expr_stmt|;
+name|baseobjects
+operator|++
+expr_stmt|;
+block|}
 else|else
 block|{
 name|printf
@@ -249,17 +265,36 @@ operator|++
 expr_stmt|;
 block|}
 block|}
+if|if
+condition|(
+name|baseobjects
+condition|)
+name|printf
+argument_list|(
+literal|"non delta: %lu object%s\n"
+argument_list|,
+name|baseobjects
+argument_list|,
+name|baseobjects
+operator|>
+literal|1
+condition|?
+literal|"s"
+else|:
+literal|""
+argument_list|)
+expr_stmt|;
 for|for
 control|(
-name|i
+name|cnt
 operator|=
-literal|0
+literal|1
 init|;
-name|i
+name|cnt
 operator|<=
 name|MAX_CHAIN
 condition|;
-name|i
+name|cnt
 operator|++
 control|)
 block|{
@@ -268,28 +303,24 @@ condition|(
 operator|!
 name|chain_histogram
 index|[
-name|i
+name|cnt
 index|]
 condition|)
 continue|continue;
 name|printf
 argument_list|(
-literal|"chain length = %"
-name|PRIu32
-literal|": %"
-name|PRIu32
-literal|" object%s\n"
+literal|"chain length = %d: %lu object%s\n"
 argument_list|,
-name|i
+name|cnt
 argument_list|,
 name|chain_histogram
 index|[
-name|i
+name|cnt
 index|]
 argument_list|,
 name|chain_histogram
 index|[
-name|i
+name|cnt
 index|]
 operator|>
 literal|1
@@ -309,9 +340,7 @@ index|]
 condition|)
 name|printf
 argument_list|(
-literal|"chain length> %d: %"
-name|PRIu32
-literal|" object%s\n"
+literal|"chain length> %d: %lu object%s\n"
 argument_list|,
 name|MAX_CHAIN
 argument_list|,
