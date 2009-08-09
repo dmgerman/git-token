@@ -2212,6 +2212,35 @@ goto|goto
 name|cleanup
 goto|;
 block|}
+if|if
+condition|(
+operator|!
+name|prefixcmp
+argument_list|(
+name|found_ref
+argument_list|,
+literal|"refs/remotes/"
+argument_list|)
+condition|)
+block|{
+name|strbuf_addf
+argument_list|(
+name|msg
+argument_list|,
+literal|"%s\t\tremote branch '%s' of .\n"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|branch_head
+argument_list|)
+argument_list|,
+name|remote
+argument_list|)
+expr_stmt|;
+goto|goto
+name|cleanup
+goto|;
+block|}
 block|}
 comment|/* See if remote matches<name>^^^.. or<name>~<number> */
 for|for
