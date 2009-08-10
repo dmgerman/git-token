@@ -365,6 +365,19 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|has_non_ascii
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|text
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_struct_decl
 struct_decl|struct
 name|rev_info
