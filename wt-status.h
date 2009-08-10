@@ -67,14 +67,6 @@ block|}
 enum|;
 end_enum
 
-begin_decl_stmt
-specifier|extern
-name|enum
-name|untracked_status_type
-name|show_untracked_files
-decl_stmt|;
-end_decl_stmt
-
 begin_struct
 DECL|struct|wt_status_change_data
 struct|struct
@@ -129,13 +121,26 @@ DECL|member|amend
 name|int
 name|amend
 decl_stmt|;
-DECL|member|untracked
-name|int
-name|untracked
-decl_stmt|;
 DECL|member|nowarn
 name|int
 name|nowarn
+decl_stmt|;
+DECL|member|use_color
+name|int
+name|use_color
+decl_stmt|;
+DECL|member|relative_paths
+name|int
+name|relative_paths
+decl_stmt|;
+DECL|member|submodule_summary
+name|int
+name|submodule_summary
+decl_stmt|;
+DECL|member|show_untracked_files
+name|enum
+name|untracked_status_type
+name|show_untracked_files
 decl_stmt|;
 comment|/* These are computed during processing of the individual sections */
 DECL|member|commitable
@@ -196,20 +201,6 @@ name|cb
 parameter_list|)
 function_decl|;
 end_function_decl
-
-begin_decl_stmt
-specifier|extern
-name|int
-name|wt_status_use_color
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-specifier|extern
-name|int
-name|wt_status_relative_paths
-decl_stmt|;
-end_decl_stmt
 
 begin_function_decl
 name|void
