@@ -197,6 +197,11 @@ name|struct
 name|string_list
 name|change
 decl_stmt|;
+DECL|member|untracked
+name|struct
+name|string_list
+name|untracked
+decl_stmt|;
 block|}
 struct|;
 end_struct
@@ -227,7 +232,7 @@ end_function_decl
 
 begin_function_decl
 name|void
-name|wt_status_collect_changes
+name|wt_status_collect
 parameter_list|(
 name|struct
 name|wt_status
