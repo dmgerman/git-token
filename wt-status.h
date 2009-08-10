@@ -202,27 +202,6 @@ struct|;
 end_struct
 
 begin_function_decl
-name|int
-name|git_status_config
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|var
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|value
-parameter_list|,
-name|void
-modifier|*
-name|cb
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
 name|void
 name|wt_status_prepare
 parameter_list|(
