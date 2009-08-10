@@ -14,12 +14,6 @@ end_include
 begin_include
 include|#
 directive|include
-file|"color.h"
-end_include
-
-begin_include
-include|#
-directive|include
 file|"object.h"
 end_include
 
@@ -72,10 +66,10 @@ file|"remote.h"
 end_include
 
 begin_decl_stmt
-DECL|variable|wt_status_colors
+DECL|variable|default_wt_status_colors
 specifier|static
 name|char
-name|wt_status_colors
+name|default_wt_status_colors
 index|[]
 index|[
 name|COLOR_MAXLEN
@@ -253,7 +247,9 @@ name|use_color
 operator|>
 literal|0
 condition|?
-name|wt_status_colors
+name|s
+operator|->
+name|color_palette
 index|[
 name|slot
 index|]
@@ -296,6 +292,20 @@ sizeof|sizeof
 argument_list|(
 operator|*
 name|s
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|memcpy
+argument_list|(
+name|s
+operator|->
+name|color_palette
+argument_list|,
+name|default_wt_status_colors
+argument_list|,
+sizeof|sizeof
+argument_list|(
+name|default_wt_status_colors
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3676,7 +3686,9 @@ name|v
 argument_list|,
 name|k
 argument_list|,
-name|wt_status_colors
+name|s
+operator|->
+name|color_palette
 index|[
 name|slot
 index|]
