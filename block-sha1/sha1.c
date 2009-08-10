@@ -455,6 +455,13 @@ parameter_list|)
 value|SHA_ASM("ror", x, n)
 end_define
 
+begin_define
+DECL|macro|SMALL_REGISTER_SET
+define|#
+directive|define
+name|SMALL_REGISTER_SET
+end_define
+
 begin_else
 else|#
 directive|else
@@ -521,6 +528,16 @@ parameter_list|)
 value|(array[(x)&15])
 end_define
 
+begin_comment
+comment|/*  * If you have 32 registers or more, the compiler can (and should)  * try to change the array[] accesses into registers. However, on  * machines with less than ~25 registers, that won't really work,  * and at least gcc will make an unholy mess of it.  *  * So to avoid that mess which just slows things down, we force  * the stores to memory to actually happen (we might be better off  * with a 'W(t)=(val);asm("":"+m" (W(t))' there instead, as  * suggested by Artur Skawina - that will also make gcc unable to  * try to do the silly "optimize away loads" part because it won't  * see what the value will be).  *  * Ben Herrenschmidt reports that on PPC, the C version comes close  * to the optimized asm with this (ie on PPC you don't want that  * 'volatile', since there are lots of registers).  */
+end_comment
+
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|SMALL_REGISTER_SET
+end_ifdef
+
 begin_define
 DECL|macro|setW
 define|#
@@ -533,6 +550,29 @@ name|val
 parameter_list|)
 value|(*(volatile unsigned int *)&W(x) = (val))
 end_define
+
+begin_else
+else|#
+directive|else
+end_else
+
+begin_define
+DECL|macro|setW
+define|#
+directive|define
+name|setW
+parameter_list|(
+name|x
+parameter_list|,
+name|val
+parameter_list|)
+value|(W(x) = (val))
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_comment
 comment|/*  * Where do we get the source from? The first 16 iterations get it from  * the input data, the next mix it from the 512-bit array.  */
