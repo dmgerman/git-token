@@ -5459,6 +5459,11 @@ argument_list|(
 name|filename
 argument_list|)
 expr_stmt|;
+name|free
+argument_list|(
+name|preq
+argument_list|)
+expr_stmt|;
 return|return
 name|NULL
 return|;
