@@ -116,13 +116,19 @@ name|WIFEXITED
 parameter_list|(
 name|x
 parameter_list|)
-value|((unsigned)(x)< 259)
+value|1
 end_define
 
-begin_comment
-DECL|macro|WIFEXITED
-comment|/* STILL_ACTIVE */
-end_comment
+begin_define
+DECL|macro|WIFSIGNALED
+define|#
+directive|define
+name|WIFSIGNALED
+parameter_list|(
+name|x
+parameter_list|)
+value|0
+end_define
 
 begin_define
 DECL|macro|WEXITSTATUS
@@ -136,14 +142,14 @@ value|((x)& 0xff)
 end_define
 
 begin_define
-DECL|macro|WIFSIGNALED
+DECL|macro|WTERMSIG
 define|#
 directive|define
-name|WIFSIGNALED
+name|WTERMSIG
 parameter_list|(
 name|x
 parameter_list|)
-value|((unsigned)(x)> 259)
+value|SIGTERM
 end_define
 
 begin_define

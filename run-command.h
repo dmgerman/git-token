@@ -12,46 +12,6 @@ directive|define
 name|RUN_COMMAND_H
 end_define
 
-begin_enum
-enum|enum
-block|{
-DECL|enumerator|ERR_RUN_COMMAND_FORK
-name|ERR_RUN_COMMAND_FORK
-init|=
-literal|10000
-block|,
-DECL|enumerator|ERR_RUN_COMMAND_EXEC
-name|ERR_RUN_COMMAND_EXEC
-block|,
-DECL|enumerator|ERR_RUN_COMMAND_PIPE
-name|ERR_RUN_COMMAND_PIPE
-block|,
-DECL|enumerator|ERR_RUN_COMMAND_WAITPID
-name|ERR_RUN_COMMAND_WAITPID
-block|,
-DECL|enumerator|ERR_RUN_COMMAND_WAITPID_WRONG_PID
-name|ERR_RUN_COMMAND_WAITPID_WRONG_PID
-block|,
-DECL|enumerator|ERR_RUN_COMMAND_WAITPID_SIGNAL
-name|ERR_RUN_COMMAND_WAITPID_SIGNAL
-block|,
-DECL|enumerator|ERR_RUN_COMMAND_WAITPID_NOEXIT
-name|ERR_RUN_COMMAND_WAITPID_NOEXIT
-block|, }
-enum|;
-end_enum
-
-begin_define
-DECL|macro|IS_RUN_COMMAND_ERR
-define|#
-directive|define
-name|IS_RUN_COMMAND_ERR
-parameter_list|(
-name|x
-parameter_list|)
-value|(-(x)>= ERR_RUN_COMMAND_FORK)
-end_define
-
 begin_struct
 DECL|struct|child_process
 struct|struct
@@ -120,6 +80,12 @@ range|:
 literal|1
 decl_stmt|;
 comment|/* if this is to be git sub-command */
+DECL|member|silent_exec_failure
+name|unsigned
+name|silent_exec_failure
+range|:
+literal|1
+decl_stmt|;
 DECL|member|stdout_to_stderr
 name|unsigned
 name|stdout_to_stderr
@@ -220,6 +186,14 @@ define|#
 directive|define
 name|RUN_COMMAND_STDOUT_TO_STDERR
 value|4
+end_define
+
+begin_define
+DECL|macro|RUN_SILENT_EXEC_FAILURE
+define|#
+directive|define
+name|RUN_SILENT_EXEC_FAILURE
+value|8
 end_define
 
 begin_function_decl

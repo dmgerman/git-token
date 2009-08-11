@@ -1196,7 +1196,6 @@ name|params
 operator|->
 name|cmd
 argument_list|,
-operator|-
 name|status
 argument_list|)
 expr_stmt|;
