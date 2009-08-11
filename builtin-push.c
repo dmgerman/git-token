@@ -865,6 +865,20 @@ init|=
 block|{
 name|OPT_BIT
 argument_list|(
+literal|'q'
+argument_list|,
+literal|"quiet"
+argument_list|,
+operator|&
+name|flags
+argument_list|,
+literal|"be quiet"
+argument_list|,
+name|TRANSPORT_PUSH_QUIET
+argument_list|)
+block|,
+name|OPT_BIT
+argument_list|(
 literal|'v'
 argument_list|,
 literal|"verbose"

@@ -202,6 +202,8 @@ block|,
 name|NULL
 block|,
 name|NULL
+block|,
+name|NULL
 block|, 	}
 decl_stmt|;
 name|struct
@@ -242,6 +244,20 @@ operator|++
 index|]
 operator|=
 literal|"--delta-base-offset"
+expr_stmt|;
+if|if
+condition|(
+name|args
+operator|->
+name|quiet
+condition|)
+name|argv
+index|[
+name|i
+operator|++
+index|]
+operator|=
+literal|"-q"
 expr_stmt|;
 name|memset
 argument_list|(

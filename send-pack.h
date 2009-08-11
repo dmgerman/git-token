@@ -23,6 +23,11 @@ name|verbose
 range|:
 literal|1
 decl_stmt|,
+DECL|member|quiet
+name|quiet
+range|:
+literal|1
+decl_stmt|,
 DECL|member|send_mirror
 name|send_mirror
 range|:
