@@ -208,6 +208,82 @@ directive|endif
 end_endif
 
 begin_comment
+comment|/*  * Performance might be improved if the CPU architecture is OK with  * unaligned 32-bit loads and a fast ntohl() is available.  * Otherwise fall back to byte loads and shifts which is portable,  * and is faster on architectures with memory alignment issues.  */
+end_comment
+
+begin_if
+if|#
+directive|if
+name|defined
+argument_list|(
+name|__i386__
+argument_list|)
+operator|||
+name|defined
+argument_list|(
+name|__x86_64__
+argument_list|)
+end_if
+
+begin_define
+DECL|macro|get_be32
+define|#
+directive|define
+name|get_be32
+parameter_list|(
+name|p
+parameter_list|)
+value|ntohl(*(unsigned int *)(p))
+end_define
+
+begin_define
+DECL|macro|put_be32
+define|#
+directive|define
+name|put_be32
+parameter_list|(
+name|p
+parameter_list|,
+name|v
+parameter_list|)
+value|do { *(unsigned int *)(p) = htonl(v); } while (0)
+end_define
+
+begin_else
+else|#
+directive|else
+end_else
+
+begin_define
+DECL|macro|get_be32
+define|#
+directive|define
+name|get_be32
+parameter_list|(
+name|p
+parameter_list|)
+value|( \ 	(*((unsigned char *)(p) + 0)<< 24) | \ 	(*((unsigned char *)(p) + 1)<< 16) | \ 	(*((unsigned char *)(p) + 2)<<  8) | \ 	(*((unsigned char *)(p) + 3)<<  0) )
+end_define
+
+begin_define
+DECL|macro|put_be32
+define|#
+directive|define
+name|put_be32
+parameter_list|(
+name|p
+parameter_list|,
+name|v
+parameter_list|)
+value|do { \ 	unsigned int __v = (v); \ 	*((unsigned char *)(p) + 0) = __v>> 24; \ 	*((unsigned char *)(p) + 1) = __v>> 16; \ 	*((unsigned char *)(p) + 2) = __v>>  8; \ 	*((unsigned char *)(p) + 3) = __v>>  0; } while (0)
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
+begin_comment
 comment|/* This "rolls" over the 512-bit array */
 end_comment
 
@@ -234,7 +310,7 @@ name|SHA_SRC
 parameter_list|(
 name|t
 parameter_list|)
-value|htonl(data[t])
+value|get_be32(data + t)
 end_define
 
 begin_define
@@ -2046,20 +2122,14 @@ condition|;
 name|i
 operator|++
 control|)
-operator|(
-operator|(
-name|unsigned
-name|int
-operator|*
-operator|)
-name|hashout
-operator|)
-index|[
-name|i
-index|]
-operator|=
-name|htonl
+name|put_be32
 argument_list|(
+name|hashout
+operator|+
+name|i
+operator|*
+literal|4
+argument_list|,
 name|ctx
 operator|->
 name|H
