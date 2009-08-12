@@ -1897,7 +1897,7 @@ literal|0
 argument_list|,
 sizeof|sizeof
 argument_list|(
-name|main_cmds
+name|other_cmds
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2135,7 +2135,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"WARNING: You called a Git program named '%s', "
+literal|"WARNING: You called a Git command named '%s', "
 literal|"which does not exist.\n"
 literal|"Continuing under the assumption that you meant '%s'\n"
 argument_list|,

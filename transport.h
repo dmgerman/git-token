@@ -398,6 +398,10 @@ name|refspec
 parameter_list|,
 name|int
 name|flags
+parameter_list|,
+name|int
+modifier|*
+name|nonfastforward
 parameter_list|)
 function_decl|;
 end_function_decl
