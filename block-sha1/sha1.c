@@ -35,6 +35,10 @@ name|__x86_64__
 argument_list|)
 end_if
 
+begin_comment
+comment|/*  * Force usage of rol or ror by selecting the one with the smaller constant.  * It _can_ generate slightly smaller code (a constant of 1 is special), but  * perhaps more importantly it's possibly faster on any uarch that does a  * rotate with a loop.  */
+end_comment
+
 begin_define
 DECL|macro|SHA_ASM
 define|#
@@ -74,13 +78,6 @@ parameter_list|,
 name|n
 parameter_list|)
 value|SHA_ASM("ror", x, n)
-end_define
-
-begin_define
-DECL|macro|SMALL_REGISTER_SET
-define|#
-directive|define
-name|SMALL_REGISTER_SET
 end_define
 
 begin_else
@@ -135,29 +132,22 @@ directive|endif
 end_endif
 
 begin_comment
-comment|/* This "rolls" over the 512-bit array */
+comment|/*  * If you have 32 registers or more, the compiler can (and should)  * try to change the array[] accesses into registers. However, on  * machines with less than ~25 registers, that won't really work,  * and at least gcc will make an unholy mess of it.  *  * So to avoid that mess which just slows things down, we force  * the stores to memory to actually happen (we might be better off  * with a 'W(t)=(val);asm("":"+m" (W(t))' there instead, as  * suggested by Artur Skawina - that will also make gcc unable to  * try to do the silly "optimize away loads" part because it won't  * see what the value will be).  *  * Ben Herrenschmidt reports that on PPC, the C version comes close  * to the optimized asm with this (ie on PPC you don't want that  * 'volatile', since there are lots of registers).  *  * On ARM we get the best code generation by forcing a full memory barrier  * between each SHA_ROUND, otherwise gcc happily get wild with spilling and  * the stack frame size simply explode and performance goes down the drain.  */
 end_comment
 
-begin_define
-DECL|macro|W
-define|#
-directive|define
-name|W
-parameter_list|(
-name|x
-parameter_list|)
-value|(array[(x)&15])
-end_define
-
-begin_comment
-comment|/*  * If you have 32 registers or more, the compiler can (and should)  * try to change the array[] accesses into registers. However, on  * machines with less than ~25 registers, that won't really work,  * and at least gcc will make an unholy mess of it.  *  * So to avoid that mess which just slows things down, we force  * the stores to memory to actually happen (we might be better off  * with a 'W(t)=(val);asm("":"+m" (W(t))' there instead, as  * suggested by Artur Skawina - that will also make gcc unable to  * try to do the silly "optimize away loads" part because it won't  * see what the value will be).  *  * Ben Herrenschmidt reports that on PPC, the C version comes close  * to the optimized asm with this (ie on PPC you don't want that  * 'volatile', since there are lots of registers).  */
-end_comment
-
-begin_ifdef
-ifdef|#
-directive|ifdef
-name|SMALL_REGISTER_SET
-end_ifdef
+begin_if
+if|#
+directive|if
+name|defined
+argument_list|(
+name|__i386__
+argument_list|)
+operator|||
+name|defined
+argument_list|(
+name|__x86_64__
+argument_list|)
+end_if
 
 begin_define
 DECL|macro|setW
@@ -170,6 +160,28 @@ parameter_list|,
 name|val
 parameter_list|)
 value|(*(volatile unsigned int *)&W(x) = (val))
+end_define
+
+begin_elif
+elif|#
+directive|elif
+name|defined
+argument_list|(
+name|__arm__
+argument_list|)
+end_elif
+
+begin_define
+DECL|macro|setW
+define|#
+directive|define
+name|setW
+parameter_list|(
+name|x
+parameter_list|,
+name|val
+parameter_list|)
+value|do { W(x) = (val); __asm__("":::"memory"); } while (0)
 end_define
 
 begin_else
@@ -194,6 +206,21 @@ begin_endif
 endif|#
 directive|endif
 end_endif
+
+begin_comment
+comment|/* This "rolls" over the 512-bit array */
+end_comment
+
+begin_define
+DECL|macro|W
+define|#
+directive|define
+name|W
+parameter_list|(
+name|x
+parameter_list|)
+value|(array[(x)&15])
+end_define
 
 begin_comment
 comment|/*  * Where do we get the source from? The first 16 iterations get it from  * the input data, the next mix it from the 512-bit array.  */
