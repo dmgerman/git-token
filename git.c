@@ -2099,16 +2099,6 @@ name|USE_PAGER
 block|}
 block|,
 block|{
-literal|"stat"
-block|,
-name|cmd_stat
-block|,
-name|RUN_SETUP
-operator||
-name|NEED_WORK_TREE
-block|}
-block|,
-block|{
 literal|"status"
 block|,
 name|cmd_status
