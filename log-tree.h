@@ -158,7 +158,8 @@ begin_function_decl
 name|void
 name|load_ref_decorations
 parameter_list|(
-name|void
+name|int
+name|flags
 parameter_list|)
 function_decl|;
 end_function_decl
