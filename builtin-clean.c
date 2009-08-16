@@ -178,6 +178,11 @@ name|errors
 init|=
 literal|0
 decl_stmt|;
+name|int
+name|rm_flags
+init|=
+name|REMOVE_DIR_KEEP_NESTED_GIT
+decl_stmt|;
 name|struct
 name|strbuf
 name|directory
@@ -374,6 +379,16 @@ literal|""
 else|:
 literal|" not"
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|force
+operator|>
+literal|1
+condition|)
+name|rm_flags
+operator|=
+literal|0
 expr_stmt|;
 name|dir
 operator|.
@@ -711,7 +726,7 @@ argument_list|(
 operator|&
 name|directory
 argument_list|,
-literal|0
+name|rm_flags
 argument_list|)
 operator|!=
 literal|0
