@@ -3,16 +3,14 @@ begin_comment
 comment|/*  * Based on the Mozilla SHA1 (see mozilla-sha1/sha1.c),  * optimized to do word accesses rather than byte accesses,  * and to avoid unnecessary copies into the context array.  */
 end_comment
 
-begin_include
-include|#
-directive|include
-file|<string.h>
-end_include
+begin_comment
+comment|/* this is only to get definitions for memcpy(), ntohl() and htonl() */
+end_comment
 
 begin_include
 include|#
 directive|include
-file|<arpa/inet.h>
+file|"../git-compat-util.h"
 end_include
 
 begin_include

@@ -1038,6 +1038,12 @@ endif|#
 directive|endif
 end_endif
 
+begin_include
+include|#
+directive|include
+file|"compat/bswap.h"
+end_include
+
 begin_comment
 comment|/* General helper functions */
 end_comment
