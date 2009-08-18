@@ -24,6 +24,12 @@ if|#
 directive|if
 name|defined
 argument_list|(
+name|__GNUC__
+argument_list|)
+operator|&&
+operator|(
+name|defined
+argument_list|(
 name|__i386__
 argument_list|)
 operator|||
@@ -31,6 +37,7 @@ name|defined
 argument_list|(
 name|__x86_64__
 argument_list|)
+operator|)
 end_if
 
 begin_comment
@@ -163,6 +170,11 @@ end_define
 begin_elif
 elif|#
 directive|elif
+name|defined
+argument_list|(
+name|__GNUC__
+argument_list|)
+operator|&&
 name|defined
 argument_list|(
 name|__arm__
