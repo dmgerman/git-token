@@ -509,11 +509,14 @@ name|mapping_size
 operator|=
 literal|0
 expr_stmt|;
+comment|/* 	 * Start the column color at the maximum value, since we'll 	 * always increment it for the first commit we output. 	 * This way we start at 0 for the first commit. 	 */
 name|graph
 operator|->
 name|default_column_color
 operator|=
-literal|0
+name|COLUMN_COLORS_MAX
+operator|-
+literal|1
 expr_stmt|;
 comment|/* 	 * Allocate a reasonably large default number of columns 	 * We'll automatically grow columns later if we need more room. 	 */
 name|graph
@@ -1544,7 +1547,7 @@ name|parent
 argument_list|)
 control|)
 block|{
-comment|/* 				 * If this is a merge increment the current 				 * color. 				 */
+comment|/* 				 * If this is a merge, or the start of a new 				 * childless column, increment the current 				 * color. 				 */
 if|if
 condition|(
 name|graph
@@ -1552,12 +1555,17 @@ operator|->
 name|num_parents
 operator|>
 literal|1
+operator|||
+operator|!
+name|is_commit_in_columns
 condition|)
+block|{
 name|graph_increment_column_color
 argument_list|(
 name|graph
 argument_list|)
 expr_stmt|;
+block|}
 name|graph_insert_into_new_columns
 argument_list|(
 name|graph
