@@ -689,6 +689,18 @@ value|(0x200000)
 end_define
 
 begin_comment
+comment|/* Only remove in work directory, not index */
+end_comment
+
+begin_define
+DECL|macro|CE_WT_REMOVE
+define|#
+directive|define
+name|CE_WT_REMOVE
+value|(0x400000)
+end_define
+
+begin_comment
 comment|/*  * Extended on-disk flags  */
 end_comment
 
