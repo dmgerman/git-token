@@ -3248,6 +3248,17 @@ return|return
 operator|-
 literal|1
 return|;
+if|if
+condition|(
+name|ce_skip_worktree
+argument_list|(
+name|old
+argument_list|)
+condition|)
+name|update
+operator||=
+name|CE_SKIP_WORKTREE
+expr_stmt|;
 name|invalidate_ce_path
 argument_list|(
 name|old
