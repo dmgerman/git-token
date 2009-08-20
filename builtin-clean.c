@@ -383,6 +383,18 @@ name|DIR_SHOW_OTHER_DIRECTORIES
 expr_stmt|;
 if|if
 condition|(
+name|read_cache
+argument_list|()
+operator|<
+literal|0
+condition|)
+name|die
+argument_list|(
+literal|"index file corrupt"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 operator|!
 name|ignored
 condition|)
@@ -400,9 +412,6 @@ name|prefix
 argument_list|,
 name|argv
 argument_list|)
-expr_stmt|;
-name|read_cache
-argument_list|()
 expr_stmt|;
 name|fill_directory
 argument_list|(

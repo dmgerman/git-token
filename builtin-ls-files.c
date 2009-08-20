@@ -2630,6 +2630,18 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|read_cache
+argument_list|()
+operator|<
+literal|0
+condition|)
+name|die
+argument_list|(
+literal|"index file corrupt"
+argument_list|)
+expr_stmt|;
 name|argc
 operator|=
 name|parse_options
@@ -2745,9 +2757,6 @@ name|argv
 argument_list|)
 expr_stmt|;
 comment|/* be nice with submodule paths ending in a slash */
-name|read_cache
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|pathspec
