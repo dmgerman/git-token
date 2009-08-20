@@ -26,6 +26,12 @@ name|unpack_trees_options
 struct_decl|;
 end_struct_decl
 
+begin_struct_decl
+struct_decl|struct
+name|exclude_list
+struct_decl|;
+end_struct_decl
+
 begin_typedef
 DECL|typedef|merge_fn_t
 typedef|typedef
@@ -128,6 +134,9 @@ decl_stmt|,
 DECL|member|diff_index_cached
 name|diff_index_cached
 decl_stmt|,
+DECL|member|skip_sparse_checkout
+name|skip_sparse_checkout
+decl_stmt|,
 DECL|member|gently
 name|gently
 decl_stmt|;
@@ -192,6 +201,13 @@ name|struct
 name|index_state
 name|result
 decl_stmt|;
+DECL|member|el
+name|struct
+name|exclude_list
+modifier|*
+name|el
+decl_stmt|;
+comment|/* for internal use */
 block|}
 struct|;
 end_struct
