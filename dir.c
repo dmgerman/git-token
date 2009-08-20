@@ -1075,10 +1075,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|add_excludes_from_file_1
-specifier|static
+DECL|function|add_excludes_from_file_to_list
 name|int
-name|add_excludes_from_file_1
+name|add_excludes_from_file_to_list
 parameter_list|(
 specifier|const
 name|char
@@ -1374,7 +1373,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|add_excludes_from_file_1
+name|add_excludes_from_file_to_list
 argument_list|(
 name|fname
 argument_list|,
@@ -1700,7 +1699,7 @@ operator|->
 name|exclude_per_dir
 argument_list|)
 expr_stmt|;
-name|add_excludes_from_file_1
+name|add_excludes_from_file_to_list
 argument_list|(
 name|dir
 operator|->
@@ -1754,10 +1753,9 @@ comment|/* Scan the list and let the last match determine the fate.  * Return 1 
 end_comment
 
 begin_function
-DECL|function|excluded_1
-specifier|static
+DECL|function|excluded_from_list
 name|int
-name|excluded_1
+name|excluded_from_list
 parameter_list|(
 specifier|const
 name|char
@@ -2182,7 +2180,7 @@ control|)
 block|{
 switch|switch
 condition|(
-name|excluded_1
+name|excluded_from_list
 argument_list|(
 name|pathname
 argument_list|,
