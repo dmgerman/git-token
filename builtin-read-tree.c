@@ -149,7 +149,7 @@ name|read_tree_usage
 index|[]
 init|=
 block|{
-literal|"git read-tree [[-m [--trivial] [--aggressive] | --reset | --prefix=<prefix>] [-u [--exclude-per-directory=<gitignore>] | -i]]  [--index-output=<file>]<tree-ish1> [<tree-ish2> [<tree-ish3>]]"
+literal|"git read-tree [[-m [--trivial] [--aggressive] | --reset | --prefix=<prefix>] [-u [--exclude-per-directory=<gitignore>] | -i]] [--no-sparse-checkout] [--index-output=<file>]<tree-ish1> [<tree-ish2> [<tree-ish3>]]"
 block|,
 name|NULL
 block|}
@@ -512,6 +512,22 @@ operator|.
 name|index_only
 argument_list|,
 literal|"don't check the working tree after merging"
+argument_list|,
+literal|1
+argument_list|)
+block|,
+name|OPT_SET_INT
+argument_list|(
+literal|0
+argument_list|,
+literal|"no-sparse-checkout"
+argument_list|,
+operator|&
+name|opts
+operator|.
+name|skip_sparse_checkout
+argument_list|,
+literal|"skip applying sparse checkout filter"
 argument_list|,
 literal|1
 argument_list|)
