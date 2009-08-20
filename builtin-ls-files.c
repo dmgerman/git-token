@@ -255,6 +255,18 @@ literal|""
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|tag_skip_worktree
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|tag_skip_worktree
+init|=
+literal|""
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|show_dir_entry
 specifier|static
@@ -1060,7 +1072,16 @@ argument_list|)
 condition|?
 name|tag_unmerged
 else|:
+operator|(
+name|ce_skip_worktree
+argument_list|(
+name|ce
+argument_list|)
+condition|?
+name|tag_skip_worktree
+else|:
 name|tag_cached
+operator|)
 argument_list|,
 name|ce
 argument_list|)
@@ -2648,6 +2669,10 @@ expr_stmt|;
 name|tag_killed
 operator|=
 literal|"K "
+expr_stmt|;
+name|tag_skip_worktree
+operator|=
+literal|"S "
 expr_stmt|;
 block|}
 if|if
