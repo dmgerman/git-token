@@ -100,18 +100,18 @@ decl_stmt|;
 end_decl_stmt
 
 begin_define
-DECL|macro|MARK_VALID
+DECL|macro|MARK_FLAG
 define|#
 directive|define
-name|MARK_VALID
+name|MARK_FLAG
 value|1
 end_define
 
 begin_define
-DECL|macro|UNMARK_VALID
+DECL|macro|UNMARK_FLAG
 define|#
 directive|define
-name|UNMARK_VALID
+name|UNMARK_FLAG
 value|2
 end_define
 
@@ -166,15 +166,21 @@ block|}
 end_function
 
 begin_function
-DECL|function|mark_valid
+DECL|function|mark_ce_flags
 specifier|static
 name|int
-name|mark_valid
+name|mark_ce_flags
 parameter_list|(
 specifier|const
 name|char
 modifier|*
 name|path
+parameter_list|,
+name|int
+name|flag
+parameter_list|,
+name|int
+name|mark
 parameter_list|)
 block|{
 name|int
@@ -202,14 +208,10 @@ operator|<=
 name|pos
 condition|)
 block|{
-switch|switch
+if|if
 condition|(
-name|mark_valid_only
+name|mark
 condition|)
-block|{
-case|case
-name|MARK_VALID
-case|:
 name|active_cache
 index|[
 name|pos
@@ -217,12 +219,9 @@ index|]
 operator|->
 name|ce_flags
 operator||=
-name|CE_VALID
+name|flag
 expr_stmt|;
-break|break;
-case|case
-name|UNMARK_VALID
-case|:
+else|else
 name|active_cache
 index|[
 name|pos
@@ -231,10 +230,8 @@ operator|->
 name|ce_flags
 operator|&=
 operator|~
-name|CE_VALID
+name|flag
 expr_stmt|;
-break|break;
-block|}
 name|cache_tree_invalidate_path
 argument_list|(
 name|active_cache_tree
@@ -1298,9 +1295,15 @@ condition|)
 block|{
 if|if
 condition|(
-name|mark_valid
+name|mark_ce_flags
 argument_list|(
 name|p
+argument_list|,
+name|CE_VALID
+argument_list|,
+name|mark_valid_only
+operator|==
+name|MARK_FLAG
 argument_list|)
 condition|)
 name|die
@@ -3117,7 +3120,7 @@ condition|)
 block|{
 name|mark_valid_only
 operator|=
-name|MARK_VALID
+name|MARK_FLAG
 expr_stmt|;
 continue|continue;
 block|}
@@ -3134,7 +3137,7 @@ condition|)
 block|{
 name|mark_valid_only
 operator|=
-name|UNMARK_VALID
+name|UNMARK_FLAG
 expr_stmt|;
 continue|continue;
 block|}
