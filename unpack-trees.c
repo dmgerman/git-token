@@ -2345,6 +2345,14 @@ name|o
 operator|->
 name|index_only
 operator|||
+operator|(
+operator|!
+name|ce_skip_worktree
+argument_list|(
+name|ce
+argument_list|)
+operator|&&
+operator|(
 name|o
 operator|->
 name|reset
@@ -2353,6 +2361,8 @@ name|ce_uptodate
 argument_list|(
 name|ce
 argument_list|)
+operator|)
+operator|)
 condition|)
 return|return
 literal|0
@@ -4825,6 +4835,12 @@ name|reset
 operator|&&
 operator|!
 name|ce_uptodate
+argument_list|(
+name|old
+argument_list|)
+operator|&&
+operator|!
+name|ce_skip_worktree
 argument_list|(
 name|old
 argument_list|)
