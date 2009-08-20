@@ -2563,6 +2563,11 @@ name|ce_flags
 operator|&
 name|CE_VALID
 operator|)
+operator|||
+name|ce_skip_worktree
+argument_list|(
+name|ce
+argument_list|)
 condition|)
 block|{
 if|if
