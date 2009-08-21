@@ -630,7 +630,7 @@ name|the_index
 argument_list|,
 name|verbose
 condition|?
-name|REFRESH_SAY_CHANGED
+name|REFRESH_IN_PORCELAIN
 else|:
 name|REFRESH_QUIET
 argument_list|,

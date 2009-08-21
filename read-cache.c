@@ -5118,7 +5118,7 @@ operator|(
 operator|(
 name|flags
 operator|&
-name|REFRESH_SAY_CHANGED
+name|REFRESH_IN_PORCELAIN
 operator|)
 condition|?
 literal|"locally modified"
