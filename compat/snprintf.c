@@ -6,7 +6,7 @@ file|"../git-compat-util.h"
 end_include
 
 begin_comment
-comment|/*  * The size parameter specifies the available space, i.e. includes  * the trailing NUL byte; but Windows's vsnprintf expects the  * number of characters to write without the trailing NUL.  */
+comment|/*  * The size parameter specifies the available space, i.e. includes  * the trailing NUL byte; but Windows's vsnprintf expects the  * number of characters to write, and does not necessarily write the  * trailing NUL.  */
 end_comment
 
 begin_ifndef
