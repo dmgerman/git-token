@@ -637,6 +637,8 @@ argument_list|,
 name|pathspec
 argument_list|,
 name|seen
+argument_list|,
+literal|"Unstaged changes after refreshing the index:"
 argument_list|)
 expr_stmt|;
 for|for
