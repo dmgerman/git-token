@@ -529,6 +529,33 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|NORETURN
+name|void
+name|usage_msg_opt
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|msg
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+specifier|const
+modifier|*
+name|usagestr
+parameter_list|,
+specifier|const
+name|struct
+name|option
+modifier|*
+name|options
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/*----- incremental advanced APIs -----*/
 end_comment

@@ -1017,11 +1017,17 @@ decl_stmt|;
 name|int
 name|eaten
 decl_stmt|;
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|repl
+decl_stmt|;
 name|void
 modifier|*
 name|buffer
 init|=
-name|read_sha1_file
+name|read_sha1_file_repl
 argument_list|(
 name|sha1
 argument_list|,
@@ -1030,6 +1036,9 @@ name|type
 argument_list|,
 operator|&
 name|size
+argument_list|,
+operator|&
+name|repl
 argument_list|)
 decl_stmt|;
 if|if
@@ -1046,7 +1055,7 @@ if|if
 condition|(
 name|check_sha1_signature
 argument_list|(
-name|sha1
+name|repl
 argument_list|,
 name|buffer
 argument_list|,
@@ -1072,7 +1081,7 @@ literal|"sha1 mismatch %s\n"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
-name|sha1
+name|repl
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1084,7 +1093,7 @@ name|obj
 operator|=
 name|parse_object_buffer
 argument_list|(
-name|sha1
+name|repl
 argument_list|,
 name|type
 argument_list|,

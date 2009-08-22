@@ -744,6 +744,10 @@ name|save_commit_buffer
 operator|=
 literal|0
 expr_stmt|;
+name|read_replace_refs
+operator|=
+literal|0
+expr_stmt|;
 name|init_revisions
 argument_list|(
 operator|&
