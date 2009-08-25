@@ -114,6 +114,22 @@ name|ALL_REV_FLAGS
 value|((1u<<9)-1)
 end_define
 
+begin_define
+DECL|macro|DECORATE_SHORT_REFS
+define|#
+directive|define
+name|DECORATE_SHORT_REFS
+value|1
+end_define
+
+begin_define
+DECL|macro|DECORATE_FULL_REFS
+define|#
+directive|define
+name|DECORATE_FULL_REFS
+value|2
+end_define
+
 begin_struct_decl
 struct_decl|struct
 name|rev_info
