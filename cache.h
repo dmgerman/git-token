@@ -2875,6 +2875,9 @@ name|struct
 name|stat
 modifier|*
 name|st
+parameter_list|,
+name|int
+name|skiplen
 parameter_list|)
 function_decl|;
 end_function_decl
