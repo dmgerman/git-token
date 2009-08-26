@@ -553,6 +553,22 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_define
+DECL|macro|REMOVE_DIR_EMPTY_ONLY
+define|#
+directive|define
+name|REMOVE_DIR_EMPTY_ONLY
+value|01
+end_define
+
+begin_define
+DECL|macro|REMOVE_DIR_KEEP_NESTED_GIT
+define|#
+directive|define
+name|REMOVE_DIR_KEEP_NESTED_GIT
+value|02
+end_define
+
 begin_function_decl
 specifier|extern
 name|int
@@ -564,7 +580,7 @@ modifier|*
 name|path
 parameter_list|,
 name|int
-name|only_empty
+name|flag
 parameter_list|)
 function_decl|;
 end_function_decl
