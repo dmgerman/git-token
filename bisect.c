@@ -4922,7 +4922,7 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"%s is first bad commit\n"
+literal|"%s is the first bad commit\n"
 argument_list|,
 name|bisect_rev_hex
 argument_list|)
