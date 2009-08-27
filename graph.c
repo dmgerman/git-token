@@ -814,25 +814,18 @@ return|return
 literal|1
 return|;
 block|}
-comment|/* 	 * Uninteresting and pruned commits won't be printed 	 */
+comment|/* 	 * Otherwise, use get_commit_action() to see if this commit is 	 * interesting 	 */
 return|return
-operator|(
-name|commit
+name|get_commit_action
+argument_list|(
+name|graph
 operator|->
-name|object
-operator|.
-name|flags
-operator|&
-operator|(
-name|UNINTERESTING
-operator||
-name|TREESAME
-operator|)
-operator|)
-condition|?
-literal|0
-else|:
-literal|1
+name|revs
+argument_list|,
+name|commit
+argument_list|)
+operator|==
+name|commit_show
 return|;
 block|}
 end_function
