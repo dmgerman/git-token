@@ -111,8 +111,6 @@ name|int
 name|buf_index
 init|=
 literal|1
-decl_stmt|,
-name|len
 decl_stmt|;
 name|int
 name|depth
@@ -276,7 +274,7 @@ condition|(
 name|last_elem
 condition|)
 block|{
-name|int
+name|size_t
 name|len
 init|=
 name|strlen
@@ -353,8 +351,9 @@ name|st_mode
 argument_list|)
 condition|)
 block|{
+name|ssize_t
 name|len
-operator|=
+init|=
 name|readlink
 argument_list|(
 name|buf
@@ -363,7 +362,7 @@ name|next_buf
 argument_list|,
 name|PATH_MAX
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|len
