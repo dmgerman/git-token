@@ -707,8 +707,19 @@ name|ce
 argument_list|)
 condition|)
 continue|continue;
+comment|/* If CE_VALID is set, don't look at workdir for file removal */
 name|changed
 operator|=
+operator|(
+name|ce
+operator|->
+name|ce_flags
+operator|&
+name|CE_VALID
+operator|)
+condition|?
+literal|0
+else|:
 name|check_removed
 argument_list|(
 name|ce
@@ -1667,13 +1678,26 @@ name|match_missing
 decl_stmt|,
 name|cached
 decl_stmt|;
-comment|/* 	 * Backward compatibility wart - "diff-index -m" does 	 * not mean "do not ignore merges", but "match_missing". 	 * 	 * But with the revision flag parsing, that's found in 	 * "!revs->ignore_merges". 	 */
+comment|/* if the entry is not checked out, don't examine work tree */
 name|cached
 operator|=
 name|o
 operator|->
 name|index_only
+operator|||
+operator|(
+name|idx
+operator|&&
+operator|(
+name|idx
+operator|->
+name|ce_flags
+operator|&
+name|CE_VALID
+operator|)
+operator|)
 expr_stmt|;
+comment|/* 	 * Backward compatibility wart - "diff-index -m" does 	 * not mean "do not ignore merges", but "match_missing". 	 * 	 * But with the revision flag parsing, that's found in 	 * "!revs->ignore_merges". 	 */
 name|match_missing
 operator|=
 operator|!
