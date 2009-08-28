@@ -1,18 +1,16 @@
 begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_comment
-comment|/*  * Based on the Mozilla SHA1 (see mozilla-sha1/sha1.c),  * optimized to do word accesses rather than byte accesses,  * and to avoid unnecessary copies into the context array.  */
+comment|/*  * SHA1 routine optimized to do word accesses rather than byte accesses,  * and to avoid unnecessary copies into the context array.  *  * This was initially based on the Mozilla SHA1 implementation, although  * none of the original Mozilla code remains.  */
+end_comment
+
+begin_comment
+comment|/* this is only to get definitions for memcpy(), ntohl() and htonl() */
 end_comment
 
 begin_include
 include|#
 directive|include
-file|<string.h>
-end_include
-
-begin_include
-include|#
-directive|include
-file|<arpa/inet.h>
+file|"../git-compat-util.h"
 end_include
 
 begin_include
@@ -26,6 +24,12 @@ if|#
 directive|if
 name|defined
 argument_list|(
+name|__GNUC__
+argument_list|)
+operator|&&
+operator|(
+name|defined
+argument_list|(
 name|__i386__
 argument_list|)
 operator|||
@@ -33,6 +37,7 @@ name|defined
 argument_list|(
 name|__x86_64__
 argument_list|)
+operator|)
 end_if
 
 begin_comment
@@ -165,6 +170,11 @@ end_define
 begin_elif
 elif|#
 directive|elif
+name|defined
+argument_list|(
+name|__GNUC__
+argument_list|)
+operator|&&
 name|defined
 argument_list|(
 name|__arm__
