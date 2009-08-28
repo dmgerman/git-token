@@ -767,11 +767,7 @@ name|unsigned
 name|long
 name|years
 init|=
-operator|(
 name|diff
-operator|+
-literal|183
-operator|)
 operator|/
 literal|365
 decl_stmt|;
