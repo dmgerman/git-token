@@ -239,7 +239,7 @@ name|OPT_BOOLEAN
 argument_list|(
 literal|'f'
 argument_list|,
-name|NULL
+literal|"force"
 argument_list|,
 operator|&
 name|force
