@@ -2169,6 +2169,14 @@ name|RUN_SETUP
 block|}
 block|,
 block|{
+literal|"update-server-info"
+block|,
+name|cmd_update_server_info
+block|,
+name|RUN_SETUP
+block|}
+block|,
+block|{
 literal|"upload-archive"
 block|,
 name|cmd_upload_archive
