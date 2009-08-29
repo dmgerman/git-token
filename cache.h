@@ -1575,7 +1575,7 @@ name|refresh_cache
 parameter_list|(
 name|flags
 parameter_list|)
-value|refresh_index(&the_index, (flags), NULL, NULL)
+value|refresh_index(&the_index, (flags), NULL, NULL, NULL)
 end_define
 
 begin_define
@@ -2948,16 +2948,16 @@ comment|/* ignore submodules */
 end_comment
 
 begin_define
-DECL|macro|REFRESH_SAY_CHANGED
+DECL|macro|REFRESH_IN_PORCELAIN
 define|#
 directive|define
-name|REFRESH_SAY_CHANGED
+name|REFRESH_IN_PORCELAIN
 value|0x0020
 end_define
 
 begin_comment
-DECL|macro|REFRESH_SAY_CHANGED
-comment|/* say "changed" not "needs update" */
+DECL|macro|REFRESH_IN_PORCELAIN
+comment|/* user friendly output, not "needs update" */
 end_comment
 
 begin_function_decl
@@ -2982,6 +2982,10 @@ parameter_list|,
 name|char
 modifier|*
 name|seen
+parameter_list|,
+name|char
+modifier|*
+name|header_msg
 parameter_list|)
 function_decl|;
 end_function_decl

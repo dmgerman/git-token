@@ -582,9 +582,20 @@ argument_list|)
 return|;
 name|result
 operator|=
-name|refresh_cache
+name|refresh_index
 argument_list|(
+operator|&
+name|the_index
+argument_list|,
+operator|(
 name|flags
+operator|)
+argument_list|,
+name|NULL
+argument_list|,
+name|NULL
+argument_list|,
+literal|"Unstaged changes after reset:"
 argument_list|)
 condition|?
 literal|1
@@ -1425,7 +1436,7 @@ name|quiet
 condition|?
 name|REFRESH_QUIET
 else|:
-name|REFRESH_SAY_CHANGED
+name|REFRESH_IN_PORCELAIN
 argument_list|)
 return|;
 block|}
@@ -1642,7 +1653,7 @@ name|quiet
 condition|?
 name|REFRESH_QUIET
 else|:
-name|REFRESH_SAY_CHANGED
+name|REFRESH_IN_PORCELAIN
 argument_list|)
 expr_stmt|;
 break|break;
