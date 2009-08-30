@@ -13992,7 +13992,7 @@ argument_list|(
 literal|"--name-only, --name-status, --check and -s are mutually exclusive"
 argument_list|)
 expr_stmt|;
-comment|/* 	 * Most of the time we can say "there are changes" 	 * only by checking if there are changed paths, but 	 * --ignore-whitespace* options force us to look 	 * inside contets. 	 */
+comment|/* 	 * Most of the time we can say "there are changes" 	 * only by checking if there are changed paths, but 	 * --ignore-whitespace* options force us to look 	 * inside contents. 	 */
 if|if
 condition|(
 name|DIFF_XDL_TST
@@ -19688,7 +19688,7 @@ operator|->
 name|file
 argument_list|)
 expr_stmt|;
-comment|/* 	 * Report the contents level differences with HAS_CHANGES; 	 * diff_addremove/diff_change does not set the bit when 	 * DIFF_FROM_CONTENTS is in effect (e.g. with -w). 	 */
+comment|/* 	 * Report the content-level differences with HAS_CHANGES; 	 * diff_addremove/diff_change does not set the bit when 	 * DIFF_FROM_CONTENTS is in effect (e.g. with -w). 	 */
 if|if
 condition|(
 name|DIFF_OPT_TST
