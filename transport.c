@@ -6100,6 +6100,9 @@ block|}
 if|if
 condition|(
 operator|!
+name|quiet
+operator|&&
+operator|!
 name|ret
 operator|&&
 operator|!
