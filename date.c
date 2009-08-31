@@ -4735,14 +4735,26 @@ condition|)
 block|{
 name|int
 name|n
-init|=
+decl_stmt|;
+name|update_tm
+argument_list|(
+name|tm
+argument_list|,
+name|now
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+comment|/* fill in date fields if needed */
+name|n
+operator|=
 name|tm
 operator|->
 name|tm_mon
 operator|-
 operator|*
 name|num
-decl_stmt|;
+expr_stmt|;
 operator|*
 name|num
 operator|=
@@ -4787,6 +4799,16 @@ operator|>=
 literal|4
 condition|)
 block|{
+name|update_tm
+argument_list|(
+name|tm
+argument_list|,
+name|now
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+comment|/* fill in date fields if needed */
 name|tm
 operator|->
 name|tm_year
