@@ -8032,10 +8032,8 @@ parameter_list|)
 block|{
 name|struct
 name|thread_params
+modifier|*
 name|p
-index|[
-name|delta_search_threads
-index|]
 decl_stmt|;
 name|int
 name|i
@@ -8082,6 +8080,19 @@ argument_list|,
 literal|"Delta compression using up to %d threads.\n"
 argument_list|,
 name|delta_search_threads
+argument_list|)
+expr_stmt|;
+name|p
+operator|=
+name|xcalloc
+argument_list|(
+name|delta_search_threads
+argument_list|,
+sizeof|sizeof
+argument_list|(
+operator|*
+name|p
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* Partition the work amongst work threads. */
@@ -8656,6 +8667,11 @@ operator|--
 expr_stmt|;
 block|}
 block|}
+name|free
+argument_list|(
+name|p
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
