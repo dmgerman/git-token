@@ -3335,12 +3335,12 @@ literal|"#"
 argument_list|)
 expr_stmt|;
 block|}
-name|wt_status_print_unmerged
+name|wt_status_print_updated
 argument_list|(
 name|s
 argument_list|)
 expr_stmt|;
-name|wt_status_print_updated
+name|wt_status_print_unmerged
 argument_list|(
 name|s
 argument_list|)
