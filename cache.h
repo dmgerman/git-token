@@ -6540,11 +6540,19 @@ value|010
 end_define
 
 begin_define
+DECL|macro|WS_BLANK_AT_EOF
+define|#
+directive|define
+name|WS_BLANK_AT_EOF
+value|020
+end_define
+
+begin_define
 DECL|macro|WS_DEFAULT_RULE
 define|#
 directive|define
 name|WS_DEFAULT_RULE
-value|(WS_TRAILING_SPACE|WS_SPACE_BEFORE_TAB)
+value|(WS_TRAILING_SPACE|WS_SPACE_BEFORE_TAB|WS_BLANK_AT_EOF)
 end_define
 
 begin_decl_stmt

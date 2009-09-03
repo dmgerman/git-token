@@ -60,6 +60,12 @@ literal|"cr-at-eol"
 block|,
 name|WS_CR_AT_EOL
 block|}
+block|,
+block|{
+literal|"blank-at-eof"
+block|,
+name|WS_BLANK_AT_EOF
+block|}
 block|, }
 struct|;
 end_struct
@@ -517,6 +523,36 @@ operator|&
 name|err
 argument_list|,
 literal|"indent with spaces"
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|ws
+operator|&
+name|WS_BLANK_AT_EOF
+condition|)
+block|{
+if|if
+condition|(
+name|err
+operator|.
+name|len
+condition|)
+name|strbuf_addstr
+argument_list|(
+operator|&
+name|err
+argument_list|,
+literal|", "
+argument_list|)
+expr_stmt|;
+name|strbuf_addstr
+argument_list|(
+operator|&
+name|err
+argument_list|,
+literal|"new blank line at EOF"
 argument_list|)
 expr_stmt|;
 block|}
