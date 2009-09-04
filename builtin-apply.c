@@ -10012,7 +10012,7 @@ name|correct_ws_error
 operator|&&
 name|new_blank_lines_at_end
 operator|&&
-name|postimage
+name|preimage
 operator|.
 name|nr
 operator|+
