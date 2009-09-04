@@ -9784,7 +9784,7 @@ name|data
 operator|.
 name|ws_rule
 operator|&
-name|WS_TRAILING_SPACE
+name|WS_BLANK_AT_EOF
 operator|)
 operator|&&
 name|data
@@ -9792,13 +9792,30 @@ operator|.
 name|trailing_blanks_start
 condition|)
 block|{
+specifier|static
+name|char
+modifier|*
+name|err
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|err
+condition|)
+name|err
+operator|=
+name|whitespace_error_string
+argument_list|(
+name|WS_BLANK_AT_EOF
+argument_list|)
+expr_stmt|;
 name|fprintf
 argument_list|(
 name|o
 operator|->
 name|file
 argument_list|,
-literal|"%s:%d: ends with blank lines.\n"
+literal|"%s:%d: %s\n"
 argument_list|,
 name|data
 operator|.
@@ -9807,6 +9824,8 @@ argument_list|,
 name|data
 operator|.
 name|trailing_blanks_start
+argument_list|,
+name|err
 argument_list|)
 expr_stmt|;
 name|data
