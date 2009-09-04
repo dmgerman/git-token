@@ -4868,6 +4868,8 @@ block|{
 name|transport_helper_init
 argument_list|(
 name|ret
+argument_list|,
+literal|"curl"
 argument_list|)
 expr_stmt|;
 ifdef|#
