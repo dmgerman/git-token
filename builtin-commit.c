@@ -5366,7 +5366,7 @@ argument_list|,
 operator|&
 name|shortstatus
 argument_list|,
-literal|"show status concicely"
+literal|"show status concisely"
 argument_list|)
 block|,
 name|OPT_BOOLEAN
