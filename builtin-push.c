@@ -819,7 +819,7 @@ name|printf
 argument_list|(
 literal|"To prevent you from losing history, non-fast-forward updates were rejected.\n"
 literal|"Merge the remote changes before pushing again.\n"
-literal|"See 'non-fast forward' section of 'git push --help' for details.\n"
+literal|"See the 'non-fast forward' section of 'git push --help' for details.\n"
 argument_list|)
 expr_stmt|;
 block|}
