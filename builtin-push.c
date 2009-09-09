@@ -813,6 +813,8 @@ expr_stmt|;
 if|if
 condition|(
 name|nonfastforward
+operator|&&
+name|advice_push_nonfastforward
 condition|)
 block|{
 name|printf
