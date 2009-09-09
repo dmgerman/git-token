@@ -14,6 +14,15 @@ literal|1
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|advice_status_hints
+name|int
+name|advice_status_hints
+init|=
+literal|1
+decl_stmt|;
+end_decl_stmt
+
 begin_struct
 specifier|static
 struct|struct
@@ -40,6 +49,13 @@ literal|"pushnonfastforward"
 block|,
 operator|&
 name|advice_push_nonfastforward
+block|}
+block|,
+block|{
+literal|"statushints"
+block|,
+operator|&
+name|advice_status_hints
 block|}
 block|, }
 struct|;
