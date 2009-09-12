@@ -36,7 +36,10 @@ name|char
 name|git_usage_string
 index|[]
 init|=
-literal|"git [--version] [--exec-path[=GIT_EXEC_PATH]] [--html-path] [-p|--paginate|--no-pager] [--bare] [--git-dir=GIT_DIR] [--work-tree=GIT_WORK_TREE] [--help] COMMAND [ARGS]"
+literal|"git [--version] [--exec-path[=GIT_EXEC_PATH]] [--html-path]\n"
+literal|"           [-p|--paginate|--no-pager]\n"
+literal|"           [--bare] [--git-dir=GIT_DIR] [--work-tree=GIT_WORK_TREE]\n"
+literal|"           [--help] COMMAND [ARGS]"
 decl_stmt|;
 end_decl_stmt
 
