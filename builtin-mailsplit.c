@@ -304,7 +304,7 @@ argument_list|)
 expr_stmt|;
 name|output
 operator|=
-name|fdopen
+name|xfdopen
 argument_list|(
 name|fd
 argument_list|,

@@ -1639,7 +1639,7 @@ literal|1
 return|;
 name|rls_fout
 operator|=
-name|fdopen
+name|xfdopen
 argument_list|(
 name|rls
 operator|.
