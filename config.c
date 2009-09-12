@@ -5499,13 +5499,11 @@ if|if
 condition|(
 name|new_line
 operator|&&
-name|write_in_full
+name|write_str_in_full
 argument_list|(
 name|fd
 argument_list|,
 literal|"\n"
-argument_list|,
-literal|1
 argument_list|)
 operator|!=
 literal|1

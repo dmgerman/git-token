@@ -404,13 +404,11 @@ argument_list|)
 operator|!=
 literal|40
 operator|||
-name|write_in_full
+name|write_str_in_full
 argument_list|(
 name|out_fd
 argument_list|,
 literal|"\t"
-argument_list|,
-literal|1
 argument_list|)
 operator|!=
 literal|1
