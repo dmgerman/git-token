@@ -1522,7 +1522,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|copy_file
+name|copy_file_with_time
 argument_list|(
 name|dest
 operator|->

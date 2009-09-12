@@ -6847,6 +6847,27 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|int
+name|copy_file_with_time
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|dst
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|src
+parameter_list|,
+name|int
+name|mode
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|void
 name|write_or_die
 parameter_list|(
