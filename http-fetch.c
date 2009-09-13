@@ -12,9 +12,9 @@ file|"walker.h"
 end_include
 
 begin_function
-DECL|function|cmd_http_fetch
+DECL|function|main
 name|int
-name|cmd_http_fetch
+name|main
 parameter_list|(
 name|int
 name|argc
@@ -24,13 +24,13 @@ name|char
 modifier|*
 modifier|*
 name|argv
-parameter_list|,
+parameter_list|)
+block|{
 specifier|const
 name|char
 modifier|*
 name|prefix
-parameter_list|)
-block|{
+decl_stmt|;
 name|struct
 name|walker
 modifier|*
@@ -103,6 +103,11 @@ name|get_recover
 init|=
 literal|0
 decl_stmt|;
+name|prefix
+operator|=
+name|setup_git_directory
+argument_list|()
+expr_stmt|;
 name|git_config
 argument_list|(
 name|git_default_config
