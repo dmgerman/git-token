@@ -235,6 +235,12 @@ name|grep_expr
 modifier|*
 name|pattern_expression
 decl_stmt|;
+DECL|member|prefix
+specifier|const
+name|char
+modifier|*
+name|prefix
+decl_stmt|;
 DECL|member|prefix_length
 name|int
 name|prefix_length
