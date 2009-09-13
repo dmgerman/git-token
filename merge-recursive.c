@@ -1025,6 +1025,29 @@ name|struct
 name|unpack_trees_options
 name|opts
 decl_stmt|;
+specifier|static
+specifier|const
+name|struct
+name|unpack_trees_error_msgs
+name|msgs
+init|=
+block|{
+comment|/* would_overwrite */
+literal|"Your local changes to '%s' would be overwritten by merge.  Aborting."
+block|,
+comment|/* not_uptodate_file */
+literal|"Your local changes to '%s' would be overwritten by merge.  Aborting."
+block|,
+comment|/* not_uptodate_dir */
+literal|"Updating '%s' would lose untracked files in it.  Aborting."
+block|,
+comment|/* would_lose_untracked */
+literal|"Untracked working tree file '%s' would be %s by merge.  Aborting"
+block|,
+comment|/* bind_overlap -- will not happen here */
+name|NULL
+block|, 	}
+decl_stmt|;
 name|memset
 argument_list|(
 operator|&
@@ -1086,6 +1109,12 @@ name|dst_index
 operator|=
 operator|&
 name|the_index
+expr_stmt|;
+name|opts
+operator|.
+name|msgs
+operator|=
+name|msgs
 expr_stmt|;
 name|init_tree_desc_from_tree
 argument_list|(
@@ -7343,6 +7372,20 @@ name|code
 operator|!=
 literal|0
 condition|)
+block|{
+if|if
+condition|(
+name|show
+argument_list|(
+name|o
+argument_list|,
+literal|4
+argument_list|)
+operator|||
+name|o
+operator|->
+name|call_depth
+condition|)
 name|die
 argument_list|(
 literal|"merging of trees %s and %s failed"
@@ -7366,6 +7409,13 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
+else|else
+name|exit
+argument_list|(
+literal|128
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|unmerged_cache
