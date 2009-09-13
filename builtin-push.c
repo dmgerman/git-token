@@ -56,7 +56,7 @@ name|push_usage
 index|[]
 init|=
 block|{
-literal|"git push [--all | --mirror] [--dry-run] [--porcelain] [--tags] [--receive-pack=<git-receive-pack>] [--repo=<repository>] [-f | --force] [-v] [<repository><refspec>...]"
+literal|"git push [--all | --mirror] [-n | --dry-run] [--porcelain] [--tags] [--receive-pack=<git-receive-pack>] [--repo=<repository>] [-f | --force] [-v] [<repository><refspec>...]"
 block|,
 name|NULL
 block|, }
@@ -972,7 +972,7 @@ argument_list|)
 block|,
 name|OPT_BIT
 argument_list|(
-literal|0
+literal|'n'
 argument_list|,
 literal|"dry-run"
 argument_list|,
