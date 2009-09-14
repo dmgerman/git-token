@@ -4431,6 +4431,8 @@ decl_stmt|;
 name|char
 modifier|*
 name|url
+init|=
+name|NULL
 decl_stmt|;
 name|struct
 name|strbuf
