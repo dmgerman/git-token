@@ -128,6 +128,9 @@ decl_stmt|,
 DECL|member|diff_index_cached
 name|diff_index_cached
 decl_stmt|,
+DECL|member|debug_unpack
+name|debug_unpack
+decl_stmt|,
 DECL|member|gently
 name|gently
 decl_stmt|;
