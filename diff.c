@@ -2425,12 +2425,8 @@ return|return
 name|ws_blank_line
 argument_list|(
 name|line
-operator|+
-literal|1
 argument_list|,
 name|len
-operator|-
-literal|1
 argument_list|,
 name|ecbdata
 operator|->
@@ -2499,7 +2495,7 @@ operator|!
 operator|*
 name|ws
 condition|)
-name|emit_line
+name|emit_line_0
 argument_list|(
 name|ecbdata
 operator|->
@@ -2508,6 +2504,8 @@ argument_list|,
 name|set
 argument_list|,
 name|reset
+argument_list|,
+literal|'+'
 argument_list|,
 name|line
 argument_list|,
@@ -2527,7 +2525,7 @@ name|len
 argument_list|)
 condition|)
 comment|/* Blank line at EOF - paint '+' as well */
-name|emit_line
+name|emit_line_0
 argument_list|(
 name|ecbdata
 operator|->
@@ -2537,6 +2535,8 @@ name|ws
 argument_list|,
 name|reset
 argument_list|,
+literal|'+'
+argument_list|,
 name|line
 argument_list|,
 name|len
@@ -2545,7 +2545,7 @@ expr_stmt|;
 else|else
 block|{
 comment|/* Emit just the prefix, then the rest. */
-name|emit_line
+name|emit_line_0
 argument_list|(
 name|ecbdata
 operator|->
@@ -2555,20 +2555,18 @@ name|set
 argument_list|,
 name|reset
 argument_list|,
-name|line
+literal|'+'
 argument_list|,
-literal|1
+literal|""
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|ws_check_emit
 argument_list|(
 name|line
-operator|+
-literal|1
 argument_list|,
 name|len
-operator|-
-literal|1
 argument_list|,
 name|ecbdata
 operator|->
@@ -4554,8 +4552,12 @@ argument_list|,
 name|ecbdata
 argument_list|,
 name|line
+operator|+
+literal|1
 argument_list|,
 name|len
+operator|-
+literal|1
 argument_list|)
 expr_stmt|;
 block|}
