@@ -32,7 +32,7 @@ end_decl_stmt
 begin_ifndef
 ifndef|#
 directive|ifndef
-name|__MINGW32__
+name|WIN32
 end_ifndef
 
 begin_function
@@ -324,7 +324,7 @@ expr_stmt|;
 block|}
 ifndef|#
 directive|ifndef
-name|__MINGW32__
+name|WIN32
 name|pager_process
 operator|.
 name|preexec_cb

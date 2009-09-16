@@ -281,7 +281,7 @@ decl_stmt|;
 comment|/* caller reads from here and closes it */
 ifndef|#
 directive|ifndef
-name|__MINGW32__
+name|WIN32
 DECL|member|pid
 name|pid_t
 name|pid

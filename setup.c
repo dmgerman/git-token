@@ -266,7 +266,7 @@ index|]
 decl_stmt|;
 ifndef|#
 directive|ifndef
-name|__MINGW32__
+name|WIN32
 if|if
 condition|(
 operator|!

@@ -783,7 +783,7 @@ literal|0
 return|;
 ifdef|#
 directive|ifdef
-name|__MINGW32__
+name|WIN32
 block|{
 comment|/* cannot trust the executable bit, peek into the file instead */
 name|char
