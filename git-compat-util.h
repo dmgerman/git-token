@@ -428,6 +428,45 @@ name|_SGI_SOURCE
 value|1
 end_define
 
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|WIN32
+end_ifdef
+
+begin_comment
+comment|/* Both MinGW and MSVC */
+end_comment
+
+begin_define
+DECL|macro|WIN32_LEAN_AND_MEAN
+define|#
+directive|define
+name|WIN32_LEAN_AND_MEAN
+end_define
+
+begin_comment
+DECL|macro|WIN32_LEAN_AND_MEAN
+comment|/* stops windows.h including winsock.h */
+end_comment
+
+begin_include
+include|#
+directive|include
+file|<winsock2.h>
+end_include
+
+begin_include
+include|#
+directive|include
+file|<windows.h>
+end_include
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_include
 include|#
 directive|include

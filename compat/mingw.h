@@ -262,6 +262,12 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|POLLIN
+end_ifndef
+
 begin_struct
 DECL|struct|pollfd
 struct|struct
@@ -301,6 +307,11 @@ directive|define
 name|POLLHUP
 value|2
 end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_typedef
 DECL|typedef|sig_handler_t

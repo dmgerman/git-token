@@ -16,11 +16,26 @@ begin_comment
 comment|/* common Win32 functions for MinGW and Cygwin */
 end_comment
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|WIN32
+end_ifndef
+
+begin_comment
+comment|/* Not defined by Cygwin */
+end_comment
+
 begin_include
 include|#
 directive|include
 file|<windows.h>
 end_include
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_function
 DECL|function|file_attr_to_st_mode
