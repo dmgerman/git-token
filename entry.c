@@ -900,7 +900,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * This is like 'lstat()', except it refuses to follow symlinks  * in the path.  */
+comment|/*  * This is like 'lstat()', except it refuses to follow symlinks  * in the path, after skipping "skiplen".  */
 end_comment
 
 begin_function
@@ -920,15 +920,46 @@ name|struct
 name|stat
 modifier|*
 name|st
+parameter_list|,
+name|int
+name|skiplen
 parameter_list|)
 block|{
+specifier|const
+name|char
+modifier|*
+name|slash
+init|=
+name|path
+operator|+
+name|len
+decl_stmt|;
+while|while
+condition|(
+name|path
+operator|<
+name|slash
+operator|&&
+operator|*
+name|slash
+operator|!=
+literal|'/'
+condition|)
+name|slash
+operator|--
+expr_stmt|;
 if|if
 condition|(
-name|has_symlink_leading_path
+operator|!
+name|has_dirs_only_path
 argument_list|(
 name|path
 argument_list|,
-name|len
+name|slash
+operator|-
+name|path
+argument_list|,
+name|skiplen
 argument_list|)
 condition|)
 block|{
@@ -1049,6 +1080,10 @@ name|len
 argument_list|,
 operator|&
 name|st
+argument_list|,
+name|state
+operator|->
+name|base_dir_len
 argument_list|)
 condition|)
 block|{
