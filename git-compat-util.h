@@ -731,6 +731,23 @@ begin_comment
 comment|/* __MINGW32__ */
 end_comment
 
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|_MSC_VER
+end_ifdef
+
+begin_include
+include|#
+directive|include
+file|"compat/msvc.h"
+end_include
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_ifndef
 ifndef|#
 directive|ifndef
