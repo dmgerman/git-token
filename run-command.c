@@ -1808,8 +1808,8 @@ end_ifdef
 begin_function
 DECL|function|run_thread
 specifier|static
-name|__stdcall
 name|unsigned
+name|__stdcall
 name|run_thread
 parameter_list|(
 name|void

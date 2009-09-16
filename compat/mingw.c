@@ -5848,8 +5848,8 @@ end_comment
 begin_function
 DECL|function|ticktack
 specifier|static
-name|__stdcall
 name|unsigned
+name|__stdcall
 name|ticktack
 parameter_list|(
 name|void
@@ -6534,11 +6534,11 @@ parameter_list|)
 block|{
 typedef|typedef
 name|BOOL
+function_decl|(
 name|WINAPI
-typedef|(
 modifier|*
 name|T
-typedef|)
+function_decl|)
 parameter_list|(
 specifier|const
 name|char
@@ -6550,7 +6550,7 @@ modifier|*
 parameter_list|,
 name|LPSECURITY_ATTRIBUTES
 parameter_list|)
-typedef|;
+function_decl|;
 specifier|static
 name|T
 name|create_hard_link
