@@ -73,6 +73,22 @@ parameter_list|)
 value|((dst) = (src))
 end_define
 
+begin_define
+DECL|macro|strncasecmp
+define|#
+directive|define
+name|strncasecmp
+value|_strnicmp
+end_define
+
+begin_define
+DECL|macro|ftruncate
+define|#
+directive|define
+name|ftruncate
+value|_chsize
+end_define
+
 begin_function
 DECL|function|strcasecmp
 specifier|static
