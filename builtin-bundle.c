@@ -22,14 +22,17 @@ comment|/*  * Basic handler for bundle files to connect repositories via sneaker
 end_comment
 
 begin_decl_stmt
-DECL|variable|bundle_usage
+DECL|variable|builtin_bundle_usage
 specifier|static
 specifier|const
 name|char
-modifier|*
-name|bundle_usage
+name|builtin_bundle_usage
+index|[]
 init|=
-literal|"git bundle (create<bundle><git rev-list args> | verify<bundle> | list-heads<bundle> [refname]... | unbundle<bundle> [refname]... )"
+literal|"git bundle create<file><git-rev-list args>\n"
+literal|"   or: git bundle verify<file>\n"
+literal|"   or: git bundle list-heads<file> [refname...]\n"
+literal|"   or: git bundle unbundle<file> [refname...]"
 decl_stmt|;
 end_decl_stmt
 
@@ -88,7 +91,7 @@ literal|3
 condition|)
 name|usage
 argument_list|(
-name|bundle_usage
+name|builtin_bundle_usage
 argument_list|)
 expr_stmt|;
 name|cmd
@@ -347,7 +350,7 @@ block|}
 else|else
 name|usage
 argument_list|(
-name|bundle_usage
+name|builtin_bundle_usage
 argument_list|)
 expr_stmt|;
 block|}
