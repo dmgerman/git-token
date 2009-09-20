@@ -3066,7 +3066,7 @@ name|st_mode
 argument_list|)
 condition|)
 block|{
-comment|/* 			 * We are checking out path "foo" and 			 * found "foo/." in the working tree. 			 * This is tricky -- if we have modified 			 * files that are in "foo/" we would lose 			 * it. 			 */
+comment|/* 			 * We are checking out path "foo" and 			 * found "foo/." in the working tree. 			 * This is tricky -- if we have modified 			 * files that are in "foo/" we would lose 			 * them. 			 */
 name|ret
 operator|=
 name|verify_clean_subdirectory
