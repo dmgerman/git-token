@@ -5892,6 +5892,11 @@ modifier|*
 name|nonfastforward
 parameter_list|)
 block|{
+operator|*
+name|nonfastforward
+operator|=
+literal|0
+expr_stmt|;
 name|verify_remote_names
 argument_list|(
 name|refspec_nr
