@@ -2047,6 +2047,14 @@ else|:
 literal|"w/"
 argument_list|)
 expr_stmt|;
+name|diffcore_fix_diff_index
+argument_list|(
+operator|&
+name|revs
+operator|->
+name|diffopt
+argument_list|)
+expr_stmt|;
 name|diffcore_std
 argument_list|(
 operator|&
