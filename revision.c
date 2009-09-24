@@ -6588,6 +6588,12 @@ name|date_mode
 operator|=
 name|DATE_RELATIVE
 expr_stmt|;
+name|revs
+operator|->
+name|date_mode_explicit
+operator|=
+literal|1
+expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -6613,6 +6619,12 @@ name|arg
 operator|+
 literal|7
 argument_list|)
+expr_stmt|;
+name|revs
+operator|->
+name|date_mode_explicit
+operator|=
+literal|1
 expr_stmt|;
 block|}
 elseif|else
