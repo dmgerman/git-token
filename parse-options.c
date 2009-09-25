@@ -1495,6 +1495,16 @@ name|flags
 expr_stmt|;
 continue|continue;
 block|}
+comment|/* negation allowed? */
+if|if
+condition|(
+name|options
+operator|->
+name|flags
+operator|&
+name|PARSE_OPT_NONEG
+condition|)
+continue|continue;
 comment|/* negated and abbreviated very much? */
 if|if
 condition|(
