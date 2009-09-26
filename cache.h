@@ -3048,6 +3048,22 @@ end_define
 
 begin_function_decl
 specifier|extern
+name|int
+name|unable_to_lock_error
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|,
+name|int
+name|err
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|NORETURN
 name|void
 name|unable_to_lock_index_die

@@ -5032,6 +5032,17 @@ name|fd
 operator|<
 literal|0
 condition|)
+block|{
+name|unable_to_lock_error
+argument_list|(
+name|git_path
+argument_list|(
+literal|"packed-refs"
+argument_list|)
+argument_list|,
+name|errno
+argument_list|)
+expr_stmt|;
 return|return
 name|error
 argument_list|(
@@ -5040,6 +5051,7 @@ argument_list|,
 name|refname
 argument_list|)
 return|;
+block|}
 for|for
 control|(
 name|list
