@@ -3947,11 +3947,24 @@ block|{
 name|int
 name|i
 decl_stmt|;
-name|rewind
+if|if
+condition|(
+name|fseek
 argument_list|(
 name|cmitmsg
+argument_list|,
+literal|0L
+argument_list|,
+name|SEEK_SET
+argument_list|)
+condition|)
+name|die_errno
+argument_list|(
+literal|"Could not rewind output message file"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|ftruncate
 argument_list|(
 name|fileno
@@ -3960,6 +3973,11 @@ name|cmitmsg
 argument_list|)
 argument_list|,
 literal|0
+argument_list|)
+condition|)
+name|die_errno
+argument_list|(
+literal|"Could not truncate output message file at scissors"
 argument_list|)
 expr_stmt|;
 name|still_looking
