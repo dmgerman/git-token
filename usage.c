@@ -187,7 +187,7 @@ end_comment
 begin_function_decl
 DECL|variable|usage_routine
 specifier|static
-name|NORETURN
+name|NORETURN_PTR
 name|void
 function_decl|(
 modifier|*
@@ -207,7 +207,7 @@ end_function_decl
 begin_function_decl
 DECL|variable|die_routine
 specifier|static
-name|NORETURN
+name|NORETURN_PTR
 name|void
 function_decl|(
 modifier|*
@@ -276,7 +276,7 @@ DECL|function|set_die_routine
 name|void
 name|set_die_routine
 argument_list|(
-name|NORETURN
+name|NORETURN_PTR
 name|void
 argument_list|(
 argument|*routine
