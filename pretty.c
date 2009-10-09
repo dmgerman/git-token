@@ -50,6 +50,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"notes.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"color.h"
 end_include
 
@@ -5409,6 +5415,21 @@ argument_list|(
 name|sb
 argument_list|,
 literal|'\n'
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|fmt
+operator|!=
+name|CMIT_FMT_ONELINE
+condition|)
+name|get_commit_notes
+argument_list|(
+name|commit
+argument_list|,
+name|sb
+argument_list|,
+name|encoding
 argument_list|)
 expr_stmt|;
 name|free

@@ -1840,6 +1840,22 @@ name|ATTRIBUTE_MACRO_PREFIX
 value|"[attr]"
 end_define
 
+begin_define
+DECL|macro|GIT_NOTES_REF_ENVIRONMENT
+define|#
+directive|define
+name|GIT_NOTES_REF_ENVIRONMENT
+value|"GIT_NOTES_REF"
+end_define
+
+begin_define
+DECL|macro|GIT_NOTES_DEFAULT_REF
+define|#
+directive|define
+name|GIT_NOTES_DEFAULT_REF
+value|"refs/notes/commits"
+end_define
+
 begin_decl_stmt
 specifier|extern
 name|int
@@ -3524,6 +3540,14 @@ specifier|extern
 name|enum
 name|object_creation_mode
 name|object_creation_mode
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
+name|char
+modifier|*
+name|notes_ref_name
 decl_stmt|;
 end_decl_stmt
 
