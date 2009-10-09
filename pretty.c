@@ -4097,6 +4097,27 @@ expr_stmt|;
 return|return
 literal|1
 return|;
+case|case
+literal|'N'
+case|:
+name|get_commit_notes
+argument_list|(
+name|commit
+argument_list|,
+name|sb
+argument_list|,
+name|git_log_output_encoding
+condition|?
+name|git_log_output_encoding
+else|:
+name|git_commit_encoding
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+return|return
+literal|1
+return|;
 block|}
 comment|/* For the rest we have to parse the commit header. */
 if|if
