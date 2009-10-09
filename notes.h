@@ -12,6 +12,19 @@ directive|define
 name|NOTES_H
 end_define
 
+begin_comment
+comment|/* Free (and de-initialize) the internal notes tree structure */
+end_comment
+
+begin_function_decl
+name|void
+name|free_notes
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_define
 DECL|macro|NOTES_SHOW_HEADER
 define|#
