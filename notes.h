@@ -12,6 +12,22 @@ directive|define
 name|NOTES_H
 end_define
 
+begin_define
+DECL|macro|NOTES_SHOW_HEADER
+define|#
+directive|define
+name|NOTES_SHOW_HEADER
+value|1
+end_define
+
+begin_define
+DECL|macro|NOTES_INDENT
+define|#
+directive|define
+name|NOTES_INDENT
+value|2
+end_define
+
 begin_function_decl
 name|void
 name|get_commit_notes
@@ -31,6 +47,9 @@ specifier|const
 name|char
 modifier|*
 name|output_encoding
+parameter_list|,
+name|int
+name|flags
 parameter_list|)
 function_decl|;
 end_function_decl

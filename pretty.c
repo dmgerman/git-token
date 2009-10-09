@@ -5430,6 +5430,10 @@ argument_list|,
 name|sb
 argument_list|,
 name|encoding
+argument_list|,
+name|NOTES_SHOW_HEADER
+operator||
+name|NOTES_INDENT
 argument_list|)
 expr_stmt|;
 name|free
