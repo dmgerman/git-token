@@ -2783,25 +2783,11 @@ operator|&&
 operator|!
 name|exc_given
 condition|)
-block|{
-name|fprintf
+name|die
 argument_list|(
-name|stderr
-argument_list|,
-literal|"%s: --ignored needs some exclude pattern\n"
-argument_list|,
-name|argv
-index|[
-literal|0
-index|]
+literal|"ls-files --ignored needs some exclude pattern"
 argument_list|)
 expr_stmt|;
-name|exit
-argument_list|(
-literal|1
-argument_list|)
-expr_stmt|;
-block|}
 comment|/* With no flags, we default to showing the cached files */
 if|if
 condition|(
