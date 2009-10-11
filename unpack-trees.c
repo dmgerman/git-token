@@ -3664,7 +3664,7 @@ operator|=
 name|NULL
 expr_stmt|;
 block|}
-comment|/* First, if there's a #16 situation, note that to prevent #13 	 * and #14. 	 */
+comment|/* 	 * First, if there's a #16 situation, note that to prevent #13 	 * and #14. 	 */
 if|if
 condition|(
 operator|!
@@ -3730,7 +3730,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/* We start with cases where the index is allowed to match 	 * something other than the head: #14(ALT) and #2ALT, where it 	 * is permitted to match the result instead. 	 */
+comment|/* 	 * We start with cases where the index is allowed to match 	 * something other than the head: #14(ALT) and #2ALT, where it 	 * is permitted to match the result instead. 	 */
 comment|/* #14, #14ALT, #2ALT */
 if|if
 condition|(
@@ -3880,7 +3880,7 @@ condition|)
 return|return
 literal|0
 return|;
-comment|/* Under the new "aggressive" rule, we resolve mostly trivial 	 * cases that we historically had git-merge-one-file resolve. 	 */
+comment|/* 	 * Under the "aggressive" rule, we resolve mostly trivial 	 * cases that we historically had git-merge-one-file resolve. 	 */
 if|if
 condition|(
 name|o
@@ -3893,18 +3893,12 @@ name|head_deleted
 init|=
 operator|!
 name|head
-operator|&&
-operator|!
-name|df_conflict_head
 decl_stmt|;
 name|int
 name|remote_deleted
 init|=
 operator|!
 name|remote
-operator|&&
-operator|!
-name|df_conflict_remote
 decl_stmt|;
 name|struct
 name|cache_entry
