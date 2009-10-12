@@ -37,7 +37,7 @@ name|git_usage_string
 index|[]
 init|=
 literal|"git [--version] [--exec-path[=GIT_EXEC_PATH]] [--html-path]\n"
-literal|"           [-p|--paginate|--no-pager]\n"
+literal|"           [-p|--paginate|--no-pager] [--no-replace-objects]\n"
 literal|"           [--bare] [--git-dir=GIT_DIR] [--work-tree=GIT_WORK_TREE]\n"
 literal|"           [--help] COMMAND [ARGS]"
 decl_stmt|;
@@ -437,6 +437,23 @@ operator|*
 name|envchanged
 operator|=
 literal|1
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|cmd
+argument_list|,
+literal|"--no-replace-objects"
+argument_list|)
+condition|)
+block|{
+name|read_replace_refs
+operator|=
+literal|0
 expr_stmt|;
 block|}
 elseif|else
