@@ -312,6 +312,14 @@ operator|&
 name|flags
 argument_list|)
 expr_stmt|;
+name|head_ref
+argument_list|(
+name|add_ref_decoration
+argument_list|,
+operator|&
+name|flags
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_function
