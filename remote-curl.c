@@ -29,6 +29,12 @@ directive|include
 file|"http.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"exec_cmd.h"
+end_include
+
 begin_function
 DECL|function|get_refs
 specifier|static
