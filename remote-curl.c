@@ -29,6 +29,12 @@ directive|include
 file|"http.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"exec_cmd.h"
+end_include
+
 begin_function
 DECL|function|get_refs
 specifier|static
@@ -435,6 +441,14 @@ name|walker
 init|=
 name|NULL
 decl_stmt|;
+name|git_extract_argv0_path
+argument_list|(
+name|argv
+index|[
+literal|0
+index|]
+argument_list|)
+expr_stmt|;
 name|setup_git_directory
 argument_list|()
 expr_stmt|;

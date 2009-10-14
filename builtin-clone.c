@@ -3339,7 +3339,7 @@ argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
-name|remote_head
+name|our_head_points_at
 operator|->
 name|old_sha1
 argument_list|)
