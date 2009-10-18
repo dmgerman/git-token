@@ -3643,6 +3643,11 @@ name|patch_mode
 init|=
 literal|0
 decl_stmt|;
+name|int
+name|dwim_new_local_branch
+init|=
+literal|1
+decl_stmt|;
 name|struct
 name|option
 name|options
@@ -3788,6 +3793,25 @@ name|patch_mode
 argument_list|,
 literal|"select hunks interactively"
 argument_list|)
+block|,
+block|{
+name|OPTION_BOOLEAN
+block|,
+literal|0
+block|,
+literal|"guess"
+block|,
+operator|&
+name|dwim_new_local_branch
+block|,
+name|NULL
+block|,
+literal|"second guess 'git checkout no-such-branch'"
+block|,
+name|PARSE_OPT_NOARG
+operator||
+name|PARSE_OPT_HIDDEN
+block|}
 block|,
 name|OPT_END
 argument_list|()
@@ -4124,6 +4148,8 @@ if|if
 condition|(
 operator|!
 name|patch_mode
+operator|&&
+name|dwim_new_local_branch
 operator|&&
 name|opts
 operator|.
