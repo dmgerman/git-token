@@ -2129,6 +2129,14 @@ name|after_subject
 operator|=
 name|extra_headers
 expr_stmt|;
+name|ctx
+operator|.
+name|reflog_info
+operator|=
+name|opt
+operator|->
+name|reflog_info
+expr_stmt|;
 name|pretty_print_commit
 argument_list|(
 name|opt
