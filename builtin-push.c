@@ -56,7 +56,7 @@ name|push_usage
 index|[]
 init|=
 block|{
-literal|"git push [--all | --mirror] [-n | --dry-run] [--porcelain] [--tags] [--receive-pack=<git-receive-pack>] [--repo=<repository>] [-f | --force] [-v] [<repository><refspec>...]"
+literal|"git push [<options>] [<repository><refspec>...]"
 block|,
 name|NULL
 block|, }
@@ -967,7 +967,7 @@ argument_list|,
 operator|&
 name|tags
 argument_list|,
-literal|"push tags"
+literal|"push tags (can't be used with --all or --mirror"
 argument_list|)
 block|,
 name|OPT_BIT
