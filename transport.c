@@ -4001,7 +4001,7 @@ name|ref
 operator|->
 name|peer_ref
 argument_list|,
-literal|"non-fast forward"
+literal|"non-fast-forward"
 argument_list|,
 name|porcelain
 argument_list|)
