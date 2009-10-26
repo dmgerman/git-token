@@ -132,6 +132,8 @@ DECL|variable|check_full
 specifier|static
 name|int
 name|check_full
+init|=
+literal|1
 decl_stmt|;
 end_decl_stmt
 
