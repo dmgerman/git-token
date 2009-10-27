@@ -2090,6 +2090,11 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
+name|die
+argument_list|(
+literal|"no info viewer handled the request"
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
