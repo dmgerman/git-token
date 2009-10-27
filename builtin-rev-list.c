@@ -1481,6 +1481,16 @@ operator|=
 operator|&
 name|revs
 expr_stmt|;
+if|if
+condition|(
+name|revs
+operator|.
+name|bisect
+condition|)
+name|bisect_list
+operator|=
+literal|1
+expr_stmt|;
 name|quiet
 operator|=
 name|DIFF_OPT_TST
