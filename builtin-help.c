@@ -2090,6 +2090,11 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
+name|die
+argument_list|(
+literal|"no info viewer handled the request"
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
@@ -2303,19 +2308,6 @@ operator|&
 name|other_cmds
 argument_list|)
 expr_stmt|;
-name|setup_git_directory_gently
-argument_list|(
-operator|&
-name|nongit
-argument_list|)
-expr_stmt|;
-name|git_config
-argument_list|(
-name|git_help_config
-argument_list|,
-name|NULL
-argument_list|)
-expr_stmt|;
 name|argc
 operator|=
 name|parse_options
@@ -2367,6 +2359,19 @@ return|return
 literal|0
 return|;
 block|}
+name|setup_git_directory_gently
+argument_list|(
+operator|&
+name|nongit
+argument_list|)
+expr_stmt|;
+name|git_config
+argument_list|(
+name|git_help_config
+argument_list|,
+name|NULL
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
