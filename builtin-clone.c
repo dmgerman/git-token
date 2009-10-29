@@ -2111,12 +2111,31 @@ expr_stmt|;
 if|if
 condition|(
 name|argc
+operator|>
+literal|2
+condition|)
+name|usage_msg_opt
+argument_list|(
+literal|"Too many arguments."
+argument_list|,
+name|builtin_clone_usage
+argument_list|,
+name|builtin_clone_options
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|argc
 operator|==
 literal|0
 condition|)
-name|die
+name|usage_msg_opt
 argument_list|(
 literal|"You must specify a repository to clone."
+argument_list|,
+name|builtin_clone_usage
+argument_list|,
+name|builtin_clone_options
 argument_list|)
 expr_stmt|;
 if|if
