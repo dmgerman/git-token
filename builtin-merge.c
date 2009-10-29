@@ -214,6 +214,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|fast_forward_only
+specifier|static
+name|int
+name|fast_forward_only
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|allow_trivial
 DECL|variable|have_message
 specifier|static
@@ -1042,6 +1050,18 @@ operator|&
 name|allow_fast_forward
 argument_list|,
 literal|"allow fast forward (default)"
+argument_list|)
+block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|0
+argument_list|,
+literal|"ff-only"
+argument_list|,
+operator|&
+name|fast_forward_only
+argument_list|,
+literal|"abort if fast forward is not possible"
 argument_list|)
 block|,
 name|OPT_CALLBACK
@@ -5339,6 +5359,18 @@ block|}
 if|if
 condition|(
 operator|!
+name|allow_fast_forward
+operator|&&
+name|fast_forward_only
+condition|)
+name|die
+argument_list|(
+literal|"You cannot combine --no-ff with --ff-only."
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
 name|argc
 condition|)
 name|usage_with_options
@@ -6147,6 +6179,9 @@ expr_stmt|;
 if|if
 condition|(
 name|allow_trivial
+operator|&&
+operator|!
+name|fast_forward_only
 condition|)
 block|{
 comment|/* See if it is really trivial. */
@@ -6289,6 +6324,15 @@ literal|0
 return|;
 block|}
 block|}
+if|if
+condition|(
+name|fast_forward_only
+condition|)
+name|die
+argument_list|(
+literal|"Not possible to fast forward, aborting."
+argument_list|)
+expr_stmt|;
 comment|/* We are going to make a new commit. */
 name|git_committer_info
 argument_list|(
