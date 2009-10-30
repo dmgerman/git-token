@@ -967,7 +967,7 @@ argument_list|,
 operator|&
 name|tags
 argument_list|,
-literal|"push tags (can't be used with --all or --mirror"
+literal|"push tags (can't be used with --all or --mirror)"
 argument_list|)
 block|,
 name|OPT_BIT
