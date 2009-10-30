@@ -252,17 +252,24 @@ argument_list|,
 literal|"create a bare repository"
 argument_list|)
 block|,
-name|OPT_BOOLEAN
-argument_list|(
+block|{
+name|OPTION_BOOLEAN
+block|,
 literal|0
-argument_list|,
+block|,
 literal|"naked"
-argument_list|,
+block|,
 operator|&
 name|option_bare
-argument_list|,
+block|,
+name|NULL
+block|,
 literal|"create a bare repository"
-argument_list|)
+block|,
+name|PARSE_OPT_NOARG
+operator||
+name|PARSE_OPT_HIDDEN
+block|}
 block|,
 name|OPT_BOOLEAN
 argument_list|(
@@ -321,7 +328,7 @@ argument_list|,
 operator|&
 name|option_recursive
 argument_list|,
-literal|"setup as shared repository"
+literal|"initialize submodules in the clone"
 argument_list|)
 block|,
 name|OPT_STRING
