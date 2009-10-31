@@ -3327,7 +3327,7 @@ name|finish_http_pack_request
 argument_list|(
 name|preq
 argument_list|)
-operator|>
+operator|==
 literal|0
 condition|)
 name|fail
