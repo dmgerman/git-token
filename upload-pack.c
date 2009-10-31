@@ -2900,11 +2900,6 @@ literal|20
 index|]
 decl_stmt|;
 name|char
-name|hex
-index|[
-literal|41
-index|]
-decl_stmt|,
 name|last_hex
 index|[
 literal|41
@@ -3005,23 +3000,48 @@ operator|&&
 name|ok_to_give_up
 argument_list|()
 condition|)
+block|{
+specifier|const
+name|char
+modifier|*
+name|hex
+init|=
+name|sha1_to_hex
+argument_list|(
+name|sha1
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|multi_ack
+operator|==
+literal|2
+condition|)
+name|packet_write
+argument_list|(
+literal|1
+argument_list|,
+literal|"ACK %s ready\n"
+argument_list|,
+name|hex
+argument_list|)
+expr_stmt|;
+else|else
 name|packet_write
 argument_list|(
 literal|1
 argument_list|,
 literal|"ACK %s continue\n"
 argument_list|,
-name|sha1_to_hex
-argument_list|(
-name|sha1
-argument_list|)
+name|hex
 argument_list|)
 expr_stmt|;
+block|}
 break|break;
 default|default:
 name|memcpy
 argument_list|(
-name|hex
+name|last_hex
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -3034,34 +3054,32 @@ expr_stmt|;
 if|if
 condition|(
 name|multi_ack
+operator|==
+literal|2
 condition|)
-block|{
-specifier|const
-name|char
-modifier|*
-name|msg
-init|=
-literal|"ACK %s continue\n"
-decl_stmt|;
 name|packet_write
 argument_list|(
 literal|1
 argument_list|,
-name|msg
+literal|"ACK %s common\n"
 argument_list|,
-name|hex
-argument_list|)
-expr_stmt|;
-name|memcpy
-argument_list|(
 name|last_hex
-argument_list|,
-name|hex
-argument_list|,
-literal|41
 argument_list|)
 expr_stmt|;
-block|}
+elseif|else
+if|if
+condition|(
+name|multi_ack
+condition|)
+name|packet_write
+argument_list|(
+literal|1
+argument_list|,
+literal|"ACK %s continue\n"
+argument_list|,
+name|last_hex
+argument_list|)
+expr_stmt|;
 elseif|else
 if|if
 condition|(
@@ -3077,7 +3095,7 @@ literal|1
 argument_list|,
 literal|"ACK %s\n"
 argument_list|,
-name|hex
+name|last_hex
 argument_list|)
 expr_stmt|;
 break|break;
@@ -3402,6 +3420,22 @@ argument_list|,
 name|line
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|strstr
+argument_list|(
+name|line
+operator|+
+literal|45
+argument_list|,
+literal|"multi_ack_detailed"
+argument_list|)
+condition|)
+name|multi_ack
+operator|=
+literal|2
+expr_stmt|;
+elseif|else
 if|if
 condition|(
 name|strstr
@@ -3962,7 +3996,7 @@ name|capabilities
 init|=
 literal|"multi_ack thin-pack side-band"
 literal|" side-band-64k ofs-delta shallow no-progress"
-literal|" include-tag"
+literal|" include-tag multi_ack_detailed"
 decl_stmt|;
 name|struct
 name|object
