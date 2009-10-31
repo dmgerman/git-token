@@ -176,7 +176,7 @@ name|strcspn
 argument_list|(
 name|editor
 argument_list|,
-literal|"$ \t'"
+literal|"|&;<>()$`\\\"' \t\n*?[#~=%"
 argument_list|)
 operator|!=
 name|len
