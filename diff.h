@@ -421,6 +421,14 @@ value|(1<< 21)
 end_define
 
 begin_define
+DECL|macro|DIFF_OPT_SUBMODULE_LOG
+define|#
+directive|define
+name|DIFF_OPT_SUBMODULE_LOG
+value|(1<< 23)
+end_define
+
+begin_define
 DECL|macro|DIFF_OPT_TST
 define|#
 directive|define
