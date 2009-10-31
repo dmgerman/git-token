@@ -5336,6 +5336,18 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+specifier|const
+name|char
+modifier|*
+name|git_pager
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_struct
 DECL|struct|checkout
 struct|struct
