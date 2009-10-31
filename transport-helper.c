@@ -1598,6 +1598,17 @@ literal|'\n'
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|buf
+operator|.
+name|len
+operator|==
+literal|0
+condition|)
+return|return
+literal|0
+return|;
 name|transport
 operator|->
 name|verbose
