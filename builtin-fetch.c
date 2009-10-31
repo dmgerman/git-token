@@ -3769,7 +3769,13 @@ name|transport
 operator|->
 name|verbose
 operator|=
-literal|1
+name|verbosity
+operator|<=
+literal|3
+condition|?
+name|verbosity
+else|:
+literal|3
 expr_stmt|;
 if|if
 condition|(
