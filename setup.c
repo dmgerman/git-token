@@ -373,14 +373,10 @@ return|;
 block|}
 end_function
 
-begin_comment
-comment|/*  * Verify a filename that we got as an argument for a pathspec  * entry. Note that a filename that begins with "-" never verifies  * as true, because even if such a filename were to exist, we want  * it to be preceded by the "--" marker (or we want the user to  * use a format like "./-filename")  */
-end_comment
-
 begin_function
-DECL|function|verify_filename
-name|void
-name|verify_filename
+DECL|function|check_filename
+name|int
+name|check_filename
 parameter_list|(
 specifier|const
 name|char
@@ -402,20 +398,6 @@ name|struct
 name|stat
 name|st
 decl_stmt|;
-if|if
-condition|(
-operator|*
-name|arg
-operator|==
-literal|'-'
-condition|)
-name|die
-argument_list|(
-literal|"bad flag '%s' used after filename"
-argument_list|,
-name|arg
-argument_list|)
-expr_stmt|;
 name|name
 operator|=
 name|prefix
@@ -445,24 +427,82 @@ operator|&
 name|st
 argument_list|)
 condition|)
-return|return;
+return|return
+literal|1
+return|;
+comment|/* file exists */
 if|if
 condition|(
 name|errno
 operator|==
 name|ENOENT
+operator|||
+name|errno
+operator|==
+name|ENOTDIR
 condition|)
-name|die
+return|return
+literal|0
+return|;
+comment|/* file does not exist */
+name|die_errno
 argument_list|(
-literal|"ambiguous argument '%s': unknown revision or path not in the working tree.\n"
-literal|"Use '--' to separate paths from revisions"
+literal|"failed to stat '%s'"
 argument_list|,
 name|arg
 argument_list|)
 expr_stmt|;
-name|die_errno
+block|}
+end_function
+
+begin_comment
+comment|/*  * Verify a filename that we got as an argument for a pathspec  * entry. Note that a filename that begins with "-" never verifies  * as true, because even if such a filename were to exist, we want  * it to be preceded by the "--" marker (or we want the user to  * use a format like "./-filename")  */
+end_comment
+
+begin_function
+DECL|function|verify_filename
+name|void
+name|verify_filename
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|prefix
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|arg
+parameter_list|)
+block|{
+if|if
+condition|(
+operator|*
+name|arg
+operator|==
+literal|'-'
+condition|)
+name|die
 argument_list|(
-literal|"failed to stat '%s'"
+literal|"bad flag '%s' used after filename"
+argument_list|,
+name|arg
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|check_filename
+argument_list|(
+name|prefix
+argument_list|,
+name|arg
+argument_list|)
+condition|)
+return|return;
+name|die
+argument_list|(
+literal|"ambiguous argument '%s': unknown revision or path not in the working tree.\n"
+literal|"Use '--' to separate paths from revisions"
 argument_list|,
 name|arg
 argument_list|)
@@ -490,15 +530,6 @@ modifier|*
 name|arg
 parameter_list|)
 block|{
-specifier|const
-name|char
-modifier|*
-name|name
-decl_stmt|;
-name|struct
-name|stat
-name|st
-decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -518,56 +549,21 @@ literal|'-'
 condition|)
 return|return;
 comment|/* flag */
-name|name
-operator|=
-name|prefix
-condition|?
-name|prefix_filename
-argument_list|(
-name|prefix
-argument_list|,
-name|strlen
-argument_list|(
-name|prefix
-argument_list|)
-argument_list|,
-name|arg
-argument_list|)
-else|:
-name|arg
-expr_stmt|;
 if|if
 condition|(
 operator|!
-name|lstat
+name|check_filename
 argument_list|(
-name|name
+name|prefix
 argument_list|,
-operator|&
-name|st
+name|arg
 argument_list|)
 condition|)
+return|return;
 name|die
 argument_list|(
 literal|"ambiguous argument '%s': both revision and filename\n"
 literal|"Use '--' to separate filenames from revisions"
-argument_list|,
-name|arg
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|errno
-operator|!=
-name|ENOENT
-operator|&&
-name|errno
-operator|!=
-name|ENOTDIR
-condition|)
-name|die_errno
-argument_list|(
-literal|"failed to stat '%s'"
 argument_list|,
 name|arg
 argument_list|)
