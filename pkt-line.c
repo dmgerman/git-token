@@ -621,7 +621,9 @@ literal|0
 condition|)
 name|die
 argument_list|(
-literal|"protocol error: bad line length character"
+literal|"protocol error: bad line length character: %.4s"
+argument_list|,
+name|linelen
 argument_list|)
 expr_stmt|;
 if|if
