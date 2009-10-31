@@ -6005,22 +6005,6 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
-begin_function_decl
-specifier|extern
-name|int
-name|get_ack
-parameter_list|(
-name|int
-name|fd
-parameter_list|,
-name|unsigned
-name|char
-modifier|*
-name|result_sha1
-parameter_list|)
-function_decl|;
-end_function_decl
-
 begin_struct
 DECL|struct|extra_have_objects
 struct|struct
