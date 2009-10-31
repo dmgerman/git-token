@@ -17,6 +17,25 @@ directive|include
 file|"sigchain.h"
 end_include
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|DEFAULT_PAGER
+end_ifndef
+
+begin_define
+DECL|macro|DEFAULT_PAGER
+define|#
+directive|define
+name|DEFAULT_PAGER
+value|"less"
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_comment
 comment|/*  * This is split up from the rest of git so that we can do  * something different on Windows.  */
 end_comment
@@ -255,7 +274,7 @@ name|pager
 condition|)
 name|pager
 operator|=
-literal|"less"
+name|DEFAULT_PAGER
 expr_stmt|;
 elseif|else
 if|if
