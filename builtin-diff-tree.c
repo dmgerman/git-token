@@ -670,6 +670,12 @@ name|diff
 operator|=
 literal|1
 expr_stmt|;
+name|opt
+operator|->
+name|disable_stdin
+operator|=
+literal|1
+expr_stmt|;
 name|argc
 operator|=
 name|setup_revisions

@@ -4829,6 +4829,7 @@ end_function
 
 begin_function
 DECL|function|read_revisions_from_stdin
+specifier|static
 name|void
 name|read_revisions_from_stdin
 parameter_list|(
@@ -7104,6 +7105,8 @@ decl_stmt|,
 name|left
 decl_stmt|,
 name|seen_dashdash
+decl_stmt|,
+name|read_from_stdin
 decl_stmt|;
 comment|/* First, search for "--" */
 name|seen_dashdash
@@ -7189,6 +7192,10 @@ break|break;
 block|}
 comment|/* Second, deal with arguments and options */
 name|flags
+operator|=
+literal|0
+expr_stmt|;
+name|read_from_stdin
 operator|=
 literal|0
 expr_stmt|;
@@ -7398,6 +7405,51 @@ operator|->
 name|no_walk
 operator|=
 literal|0
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--stdin"
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
+name|revs
+operator|->
+name|disable_stdin
+condition|)
+block|{
+name|argv
+index|[
+name|left
+operator|++
+index|]
+operator|=
+name|arg
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+name|read_from_stdin
+operator|++
+condition|)
+name|die
+argument_list|(
+literal|"--stdin given twice?"
+argument_list|)
+expr_stmt|;
+name|read_revisions_from_stdin
+argument_list|(
+name|revs
+argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
