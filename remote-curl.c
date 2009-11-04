@@ -441,6 +441,9 @@ name|walker
 init|=
 name|NULL
 decl_stmt|;
+name|int
+name|nongit
+decl_stmt|;
 name|git_extract_argv0_path
 argument_list|(
 name|argv
@@ -449,8 +452,11 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
-name|setup_git_directory
-argument_list|()
+name|setup_git_directory_gently
+argument_list|(
+operator|&
+name|nongit
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
@@ -550,6 +556,15 @@ argument_list|(
 literal|"fetch "
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|nongit
+condition|)
+name|die
+argument_list|(
+literal|"Fetch attempted without a local repo"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
