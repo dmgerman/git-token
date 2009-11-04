@@ -326,6 +326,7 @@ DECL|variable|verbose
 DECL|variable|no_verify
 DECL|variable|allow_empty
 DECL|variable|dry_run
+DECL|variable|renew_authorship
 specifier|static
 name|int
 name|quiet
@@ -337,6 +338,8 @@ decl_stmt|,
 name|allow_empty
 decl_stmt|,
 name|dry_run
+decl_stmt|,
+name|renew_authorship
 decl_stmt|;
 end_decl_stmt
 
@@ -558,7 +561,7 @@ name|edit_message
 argument_list|,
 literal|"COMMIT"
 argument_list|,
-literal|"reuse and edit message from specified commit "
+literal|"reuse and edit message from specified commit"
 argument_list|)
 block|,
 name|OPT_STRING
@@ -573,6 +576,18 @@ argument_list|,
 literal|"COMMIT"
 argument_list|,
 literal|"reuse message from specified commit"
+argument_list|)
+block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|0
+argument_list|,
+literal|"reset-author"
+argument_list|,
+operator|&
+name|renew_authorship
+argument_list|,
+literal|"the commit is authored by me now (used with -C-c/--amend)"
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -1925,6 +1940,9 @@ expr_stmt|;
 if|if
 condition|(
 name|use_message
+operator|&&
+operator|!
+name|renew_authorship
 condition|)
 block|{
 specifier|const
@@ -3944,6 +3962,17 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|force_author
+operator|&&
+name|renew_authorship
+condition|)
+name|die
+argument_list|(
+literal|"Using both --reset-author and --author does not make sense"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|logfile
 operator|||
 name|message
@@ -4093,6 +4122,18 @@ condition|)
 name|use_message
 operator|=
 literal|"HEAD"
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|use_message
+operator|&&
+name|renew_authorship
+condition|)
+name|die
+argument_list|(
+literal|"--reset-author can be used only with -C, -c or --amend."
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
