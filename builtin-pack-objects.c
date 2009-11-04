@@ -8181,6 +8181,17 @@ literal|0
 decl_stmt|;
 if|if
 condition|(
+operator|!
+name|delta_search_threads
+condition|)
+comment|/* --threads=0 means autodetect */
+name|delta_search_threads
+operator|=
+name|online_cpus
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
 name|delta_search_threads
 operator|<=
 literal|1
@@ -11782,22 +11793,6 @@ argument_list|(
 literal|"--keep-unreachable and --unpack-unreachable are incompatible."
 argument_list|)
 expr_stmt|;
-ifdef|#
-directive|ifdef
-name|THREADED_DELTA_SEARCH
-if|if
-condition|(
-operator|!
-name|delta_search_threads
-condition|)
-comment|/* --threads=0 means autodetect */
-name|delta_search_threads
-operator|=
-name|online_cpus
-argument_list|()
-expr_stmt|;
-endif|#
-directive|endif
 name|prepare_packed_git
 argument_list|()
 expr_stmt|;
