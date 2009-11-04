@@ -4814,6 +4814,16 @@ name|ret
 argument_list|)
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|remote
+condition|)
+name|die
+argument_list|(
+literal|"No remote provided to transport_get()"
+argument_list|)
+expr_stmt|;
 name|ret
 operator|->
 name|remote
@@ -5040,8 +5050,6 @@ expr_stmt|;
 if|if
 condition|(
 name|remote
-operator|&&
-name|remote
 operator|->
 name|uploadpack
 condition|)
@@ -5061,8 +5069,6 @@ literal|"git-receive-pack"
 expr_stmt|;
 if|if
 condition|(
-name|remote
-operator|&&
 name|remote
 operator|->
 name|receivepack
