@@ -2898,6 +2898,9 @@ block|{
 if|if
 condition|(
 operator|!
+name|i
+operator|||
+operator|!
 name|ends_rfc2822_footer
 argument_list|(
 operator|&
