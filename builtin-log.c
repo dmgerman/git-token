@@ -5133,18 +5133,6 @@ argument_list|)
 block|,
 name|OPT_BOOLEAN
 argument_list|(
-literal|'p'
-argument_list|,
-name|NULL
-argument_list|,
-operator|&
-name|use_patch_format
-argument_list|,
-literal|"show patch format instead of default (patch + stat)"
-argument_list|)
-block|,
-name|OPT_BOOLEAN
-argument_list|(
 literal|0
 argument_list|,
 literal|"ignore-if-in-upstream"
@@ -5153,6 +5141,18 @@ operator|&
 name|ignore_if_in_upstream
 argument_list|,
 literal|"don't include a patch matching a commit upstream"
+argument_list|)
+block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|'p'
+argument_list|,
+name|NULL
+argument_list|,
+operator|&
+name|use_patch_format
+argument_list|,
+literal|"show patch format instead of default (patch + stat)"
 argument_list|)
 block|,
 name|OPT_GROUP
@@ -5701,19 +5701,55 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|use_patch_format
-condition|)
 name|rev
 operator|.
 name|diffopt
 operator|.
 name|output_format
-operator||=
-name|DIFF_FORMAT_PATCH
+operator|&
+name|DIFF_FORMAT_NAME
+condition|)
+name|die
+argument_list|(
+literal|"--name-only does not make sense"
+argument_list|)
 expr_stmt|;
-elseif|else
 if|if
 condition|(
+name|rev
+operator|.
+name|diffopt
+operator|.
+name|output_format
+operator|&
+name|DIFF_FORMAT_NAME_STATUS
+condition|)
+name|die
+argument_list|(
+literal|"--name-status does not make sense"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|rev
+operator|.
+name|diffopt
+operator|.
+name|output_format
+operator|&
+name|DIFF_FORMAT_CHECKDIFF
+condition|)
+name|die
+argument_list|(
+literal|"--check does not make sense"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|use_patch_format
+operator|&&
+operator|(
 operator|!
 name|rev
 operator|.
@@ -5728,6 +5764,7 @@ operator|.
 name|output_format
 operator|==
 name|DIFF_FORMAT_PATCH
+operator|)
 condition|)
 name|rev
 operator|.
@@ -5738,7 +5775,14 @@ operator|=
 name|DIFF_FORMAT_DIFFSTAT
 operator||
 name|DIFF_FORMAT_SUMMARY
-operator||
+expr_stmt|;
+comment|/* Always generate a patch */
+name|rev
+operator|.
+name|diffopt
+operator|.
+name|output_format
+operator||=
 name|DIFF_FORMAT_PATCH
 expr_stmt|;
 if|if
