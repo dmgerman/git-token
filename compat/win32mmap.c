@@ -5,35 +5,6 @@ directive|include
 file|"../git-compat-util.h"
 end_include
 
-begin_comment
-comment|/*  * Note that this doesn't return the actual pagesize, but  * the allocation granularity. If future Windows specific git code  * needs the real getpagesize function, we need to find another solution.  */
-end_comment
-
-begin_function
-DECL|function|mingw_getpagesize
-name|int
-name|mingw_getpagesize
-parameter_list|(
-name|void
-parameter_list|)
-block|{
-name|SYSTEM_INFO
-name|si
-decl_stmt|;
-name|GetSystemInfo
-argument_list|(
-operator|&
-name|si
-argument_list|)
-expr_stmt|;
-return|return
-name|si
-operator|.
-name|dwAllocationGranularity
-return|;
-block|}
-end_function
-
 begin_function
 DECL|function|git_mmap
 name|void
