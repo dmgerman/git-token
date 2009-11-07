@@ -5143,17 +5143,24 @@ argument_list|,
 literal|"don't include a patch matching a commit upstream"
 argument_list|)
 block|,
-name|OPT_BOOLEAN
-argument_list|(
+block|{
+name|OPTION_BOOLEAN
+block|,
 literal|'p'
-argument_list|,
-name|NULL
-argument_list|,
+block|,
+literal|"no-stat"
+block|,
 operator|&
 name|use_patch_format
-argument_list|,
+block|,
+name|NULL
+block|,
 literal|"show patch format instead of default (patch + stat)"
-argument_list|)
+block|,
+name|PARSE_OPT_NONEG
+operator||
+name|PARSE_OPT_NOARG
+block|}
 block|,
 name|OPT_GROUP
 argument_list|(
