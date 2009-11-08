@@ -3543,10 +3543,6 @@ condition|(
 name|c
 operator|->
 name|wrap_start
-operator|&&
-name|c
-operator|->
-name|wrap_start
 operator|<
 name|sb
 operator|->
