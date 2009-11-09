@@ -3673,6 +3673,13 @@ name|list
 init|=
 name|priv
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|remote
+operator|->
+name|skip_default_update
+condition|)
 name|string_list_append
 argument_list|(
 name|remote
