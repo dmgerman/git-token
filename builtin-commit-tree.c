@@ -528,6 +528,17 @@ condition|(
 name|argc
 operator|<
 literal|2
+operator|||
+operator|!
+name|strcmp
+argument_list|(
+name|argv
+index|[
+literal|1
+index|]
+argument_list|,
+literal|"-h"
+argument_list|)
 condition|)
 name|usage
 argument_list|(
