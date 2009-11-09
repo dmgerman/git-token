@@ -318,8 +318,8 @@ decl_stmt|;
 if|if
 condition|(
 name|argc
-operator|>
-literal|1
+operator|==
+literal|2
 operator|&&
 operator|(
 operator|!
@@ -348,6 +348,18 @@ condition|)
 name|strip_comments
 operator|=
 literal|1
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|argc
+operator|>
+literal|1
+condition|)
+name|usage
+argument_list|(
+literal|"git stripspace [-s | --strip-comments]<<stream>"
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
