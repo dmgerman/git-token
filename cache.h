@@ -4299,6 +4299,18 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|int
+name|daemon_avoid_alias
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/* Read and unpack a sha1 file into memory, write memory to a sha1 file */
 end_comment
