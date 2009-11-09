@@ -1730,14 +1730,6 @@ name|RUN_SETUP
 block|}
 block|,
 block|{
-literal|"fetch--tool"
-block|,
-name|cmd_fetch__tool
-block|,
-name|RUN_SETUP
-block|}
-block|,
-block|{
 literal|"fmt-merge-msg"
 block|,
 name|cmd_fmt_merge_msg
