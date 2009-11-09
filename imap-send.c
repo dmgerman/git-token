@@ -356,6 +356,18 @@ block|}
 struct|;
 end_struct
 
+begin_decl_stmt
+DECL|variable|imap_send_usage
+specifier|static
+specifier|const
+name|char
+name|imap_send_usage
+index|[]
+init|=
+literal|"git imap-send<<mbox>"
+decl_stmt|;
+end_decl_stmt
+
 begin_define
 DECL|macro|DRV_OK
 define|#
@@ -8654,6 +8666,17 @@ name|argv
 index|[
 literal|0
 index|]
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|argc
+operator|!=
+literal|1
+condition|)
+name|usage
+argument_list|(
+name|imap_send_usage
 argument_list|)
 expr_stmt|;
 comment|/* init the random number generator */
