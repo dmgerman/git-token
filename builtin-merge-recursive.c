@@ -209,9 +209,9 @@ name|argc
 operator|<
 literal|4
 condition|)
-name|die
+name|usagef
 argument_list|(
-literal|"Usage: %s<base>... --<head><remote> ..."
+literal|"%s<base>... --<head><remote> ..."
 argument_list|,
 name|argv
 index|[
