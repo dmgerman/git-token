@@ -78,6 +78,8 @@ literal|"git fetch [options] [<repository><refspec>...]"
 block|,
 literal|"git fetch [options]<group>"
 block|,
+literal|"git fetch --multiple [options] [<repository> |<group>]..."
+block|,
 literal|"git fetch --all [options]"
 block|,
 name|NULL
@@ -111,6 +113,7 @@ DECL|variable|all
 DECL|variable|append
 DECL|variable|force
 DECL|variable|keep
+DECL|variable|multiple
 DECL|variable|update_head_ok
 DECL|variable|verbosity
 specifier|static
@@ -122,6 +125,8 @@ decl_stmt|,
 name|force
 decl_stmt|,
 name|keep
+decl_stmt|,
+name|multiple
 decl_stmt|,
 name|update_head_ok
 decl_stmt|,
@@ -243,6 +248,18 @@ operator|&
 name|force
 argument_list|,
 literal|"force overwrite of local branch"
+argument_list|)
+block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|'m'
+argument_list|,
+literal|"multiple"
+argument_list|,
+operator|&
+name|multiple
+argument_list|,
+literal|"fetch from multiple remotes"
 argument_list|)
 block|,
 name|OPT_SET_INT
@@ -4561,6 +4578,59 @@ argument_list|,
 name|argc
 argument_list|,
 name|argv
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|multiple
+condition|)
+block|{
+comment|/* All arguments are assumed to be remotes or groups */
+for|for
+control|(
+name|i
+operator|=
+literal|0
+init|;
+name|i
+operator|<
+name|argc
+condition|;
+name|i
+operator|++
+control|)
+if|if
+condition|(
+operator|!
+name|add_remote_or_group
+argument_list|(
+name|argv
+index|[
+name|i
+index|]
+argument_list|,
+operator|&
+name|list
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"No such remote or remote group: %s"
+argument_list|,
+name|argv
+index|[
+name|i
+index|]
+argument_list|)
+expr_stmt|;
+name|result
+operator|=
+name|fetch_multiple
+argument_list|(
+operator|&
+name|list
 argument_list|)
 expr_stmt|;
 block|}
