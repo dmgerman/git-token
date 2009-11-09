@@ -27,6 +27,19 @@ directive|include
 file|"strbuf.h"
 end_include
 
+begin_decl_stmt
+DECL|variable|builtin_check_ref_format_usage
+specifier|static
+specifier|const
+name|char
+name|builtin_check_ref_format_usage
+index|[]
+init|=
+literal|"git check-ref-format [--print]<refname>\n"
+literal|"   or: git check-ref-format --branch<branchname-shorthand>"
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|cmd_check_ref_format
 name|int
@@ -119,7 +132,7 @@ literal|2
 condition|)
 name|usage
 argument_list|(
-literal|"git check-ref-format refname"
+name|builtin_check_ref_format_usage
 argument_list|)
 expr_stmt|;
 return|return
