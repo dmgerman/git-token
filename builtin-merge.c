@@ -5199,9 +5199,6 @@ init|=
 operator|&
 name|remoteheads
 decl_stmt|;
-name|setup_work_tree
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|file_exists
