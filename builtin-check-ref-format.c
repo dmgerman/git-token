@@ -27,6 +27,19 @@ directive|include
 file|"strbuf.h"
 end_include
 
+begin_decl_stmt
+DECL|variable|builtin_check_ref_format_usage
+specifier|static
+specifier|const
+name|char
+name|builtin_check_ref_format_usage
+index|[]
+init|=
+literal|"git check-ref-format [--print]<refname>\n"
+literal|"   or: git check-ref-format --branch<branchname-shorthand>"
+decl_stmt|;
+end_decl_stmt
+
 begin_comment
 comment|/*  * Replace each run of adjacent slashes in src with a single slash,  * and write the result to dst.  *  * This function is similar to normalize_path_copy(), but stripped down  * to meet check_ref_format's simpler needs.  */
 end_comment
@@ -263,7 +276,7 @@ literal|2
 condition|)
 name|usage
 argument_list|(
-literal|"git check-ref-format refname"
+name|builtin_check_ref_format_usage
 argument_list|)
 expr_stmt|;
 return|return
