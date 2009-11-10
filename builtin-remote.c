@@ -7468,6 +7468,8 @@ argument_list|)
 expr_stmt|;
 name|warn_dangling_symref
 argument_list|(
+name|stdout
+argument_list|,
 name|dangling_msg
 argument_list|,
 name|refname

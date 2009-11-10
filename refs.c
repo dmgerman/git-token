@@ -1484,6 +1484,11 @@ DECL|struct|warn_if_dangling_data
 struct|struct
 name|warn_if_dangling_data
 block|{
+DECL|member|fp
+name|FILE
+modifier|*
+name|fp
+decl_stmt|;
 DECL|member|refname
 specifier|const
 name|char
@@ -1586,8 +1591,12 @@ condition|)
 return|return
 literal|0
 return|;
-name|printf
+name|fprintf
 argument_list|(
+name|d
+operator|->
+name|fp
+argument_list|,
 name|d
 operator|->
 name|msg_fmt
@@ -1606,6 +1615,10 @@ DECL|function|warn_dangling_symref
 name|void
 name|warn_dangling_symref
 parameter_list|(
+name|FILE
+modifier|*
+name|fp
+parameter_list|,
 specifier|const
 name|char
 modifier|*
@@ -1622,6 +1635,8 @@ name|warn_if_dangling_data
 name|data
 init|=
 block|{
+name|fp
+block|,
 name|refname
 block|,
 name|msg_fmt
