@@ -35,7 +35,7 @@ name|char
 name|builtin_check_ref_format_usage
 index|[]
 init|=
-literal|"git check-ref-format [--print]<refname>\n"
+literal|"git check-ref-format<refname>\n"
 literal|"   or: git check-ref-format --branch<branchname-shorthand>"
 decl_stmt|;
 end_decl_stmt
