@@ -123,7 +123,7 @@ name|ptr
 operator|->
 name|read
 argument_list|(
-name|IDENT_WARN_ON_NO_NAME
+literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
