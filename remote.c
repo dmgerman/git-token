@@ -4423,6 +4423,12 @@ argument_list|(
 name|ref_map
 argument_list|)
 expr_stmt|;
+name|ref_map
+operator|=
+name|prev
+expr_stmt|;
+comment|/* skip this; we freed it */
+continue|continue;
 block|}
 name|item
 operator|=
