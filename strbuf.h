@@ -708,7 +708,7 @@ end_function_decl
 begin_macro
 name|__attribute__
 argument_list|(
-argument|(format(printf,
+argument|(format (printf,
 literal|2
 argument|,
 literal|3

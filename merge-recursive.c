@@ -414,6 +414,17 @@ block|}
 block|}
 end_function
 
+begin_macro
+name|__attribute__
+argument_list|(
+argument|(format (printf,
+literal|3
+argument|,
+literal|4
+argument|))
+argument_list|)
+end_macro
+
 begin_function
 DECL|function|output
 specifier|static
@@ -1249,6 +1260,9 @@ argument_list|(
 name|ce
 argument_list|)
 argument_list|,
+operator|(
+name|int
+operator|)
 name|ce_namelen
 argument_list|(
 name|ce
