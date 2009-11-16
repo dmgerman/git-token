@@ -1356,7 +1356,7 @@ name|ref
 operator|->
 name|peer_ref
 argument_list|,
-literal|"non-fast forward"
+literal|"non-fast-forward"
 argument_list|)
 expr_stmt|;
 break|break;

@@ -1761,14 +1761,14 @@ condition|)
 block|{
 name|error
 argument_list|(
-literal|"denying non-fast forward %s"
+literal|"denying non-fast-forward %s"
 literal|" (you should pull first)"
 argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
 return|return
-literal|"non-fast forward"
+literal|"non-fast-forward"
 return|;
 block|}
 block|}

@@ -1049,7 +1049,7 @@ argument_list|,
 operator|&
 name|allow_fast_forward
 argument_list|,
-literal|"allow fast forward (default)"
+literal|"allow fast-forward (default)"
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -1061,7 +1061,7 @@ argument_list|,
 operator|&
 name|fast_forward_only
 argument_list|,
-literal|"abort if fast forward is not possible"
+literal|"abort if fast-forward is not possible"
 argument_list|)
 block|,
 name|OPT_CALLBACK
@@ -6069,7 +6069,7 @@ argument_list|(
 operator|&
 name|msg
 argument_list|,
-literal|"Fast forward"
+literal|"Fast-forward"
 argument_list|)
 expr_stmt|;
 if|if
@@ -6163,7 +6163,7 @@ operator|->
 name|next
 condition|)
 empty_stmt|;
-comment|/* 		 * We are not doing octopus and not fast forward.  Need 		 * a real merge. 		 */
+comment|/* 		 * We are not doing octopus and not fast-forward.  Need 		 * a real merge. 		 */
 elseif|else
 if|if
 condition|(
@@ -6180,7 +6180,7 @@ operator|&&
 name|option_commit
 condition|)
 block|{
-comment|/* 		 * We are not doing octopus, not fast forward, and have 		 * only one common. 		 */
+comment|/* 		 * We are not doing octopus, not fast-forward, and have 		 * only one common. 		 */
 name|refresh_cache
 argument_list|(
 name|REFRESH_QUIET
@@ -6340,7 +6340,7 @@ name|fast_forward_only
 condition|)
 name|die
 argument_list|(
-literal|"Not possible to fast forward, aborting."
+literal|"Not possible to fast-forward, aborting."
 argument_list|)
 expr_stmt|;
 comment|/* We are going to make a new commit. */

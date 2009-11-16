@@ -4242,7 +4242,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Two-way merge.  *  * The rule is to "carry forward" what is in the index without losing  * information across a "fast forward", favoring a successful merge  * over a merge failure when it makes sense.  For details of the  * "carry forward" rule, please see<Documentation/git-read-tree.txt>.  *  */
+comment|/*  * Two-way merge.  *  * The rule is to "carry forward" what is in the index without losing  * information across a "fast-forward", favoring a successful merge  * over a merge failure when it makes sense.  For details of the  * "carry forward" rule, please see<Documentation/git-read-tree.txt>.  *  */
 end_comment
 
 begin_function
