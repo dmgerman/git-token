@@ -326,6 +326,11 @@ name|cherry_pick
 range|:
 literal|1
 decl_stmt|,
+DECL|member|bisect
+name|bisect
+range|:
+literal|1
+decl_stmt|,
 DECL|member|first_parent_only
 name|first_parent_only
 range|:
