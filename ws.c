@@ -72,6 +72,22 @@ name|WS_CR_AT_EOL
 block|,
 literal|1
 block|}
+block|,
+block|{
+literal|"blank-at-eol"
+block|,
+name|WS_BLANK_AT_EOL
+block|,
+literal|0
+block|}
+block|,
+block|{
+literal|"blank-at-eof"
+block|,
+name|WS_BLANK_AT_EOF
+block|,
+literal|0
+block|}
 block|, }
 struct|;
 end_struct
@@ -464,8 +480,12 @@ name|STRBUF_INIT
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|ws
 operator|&
+name|WS_TRAILING_SPACE
+operator|)
+operator|==
 name|WS_TRAILING_SPACE
 condition|)
 name|strbuf_addstr
@@ -476,6 +496,53 @@ argument_list|,
 literal|"trailing whitespace"
 argument_list|)
 expr_stmt|;
+else|else
+block|{
+if|if
+condition|(
+name|ws
+operator|&
+name|WS_BLANK_AT_EOL
+condition|)
+name|strbuf_addstr
+argument_list|(
+operator|&
+name|err
+argument_list|,
+literal|"trailing whitespace"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|ws
+operator|&
+name|WS_BLANK_AT_EOF
+condition|)
+block|{
+if|if
+condition|(
+name|err
+operator|.
+name|len
+condition|)
+name|strbuf_addstr
+argument_list|(
+operator|&
+name|err
+argument_list|,
+literal|", "
+argument_list|)
+expr_stmt|;
+name|strbuf_addstr
+argument_list|(
+operator|&
+name|err
+argument_list|,
+literal|"new blank line at EOF"
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 if|if
 condition|(
 name|ws
@@ -678,7 +745,7 @@ if|if
 condition|(
 name|ws_rule
 operator|&
-name|WS_TRAILING_SPACE
+name|WS_BLANK_AT_EOL
 condition|)
 block|{
 for|for
@@ -714,7 +781,7 @@ name|i
 expr_stmt|;
 name|result
 operator||=
-name|WS_TRAILING_SPACE
+name|WS_BLANK_AT_EOL
 expr_stmt|;
 block|}
 else|else
@@ -1256,7 +1323,7 @@ if|if
 condition|(
 name|ws_rule
 operator|&
-name|WS_TRAILING_SPACE
+name|WS_BLANK_AT_EOL
 condition|)
 block|{
 if|if
