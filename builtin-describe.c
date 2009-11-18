@@ -1219,6 +1219,18 @@ expr_stmt|;
 if|if
 condition|(
 name|n
+operator|&&
+operator|(
+name|tags
+operator|||
+name|all
+operator|||
+name|n
+operator|->
+name|prio
+operator|==
+literal|2
+operator|)
 condition|)
 block|{
 comment|/* 		 * Exact match to an existing ref. 		 */
