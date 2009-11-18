@@ -93,7 +93,7 @@ name|bswap32
 parameter_list|(
 name|x
 parameter_list|)
-value|({ \ 	uint32_t __res; \ 	if (__builtin_constant_p(x)) { \ 		__res = default_swab32(x); \ 	} else { \ 		__asm__("bswap %0" : "=r" (__res) : "0" (x)); \ 	} \ 	__res; })
+value|({ \ 	uint32_t __res; \ 	if (__builtin_constant_p(x)) { \ 		__res = default_swab32(x); \ 	} else { \ 		__asm__("bswap %0" : "=r" (__res) : "0" ((uint32_t)(x))); \ 	} \ 	__res; })
 end_define
 
 begin_elif
