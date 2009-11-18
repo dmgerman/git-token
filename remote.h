@@ -42,6 +42,12 @@ DECL|member|origin
 name|int
 name|origin
 decl_stmt|;
+DECL|member|foreign_vcs
+specifier|const
+name|char
+modifier|*
+name|foreign_vcs
+decl_stmt|;
 DECL|member|url
 specifier|const
 name|char
