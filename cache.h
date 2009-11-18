@@ -1817,6 +1817,14 @@ value|"GIT_CEILING_DIRECTORIES"
 end_define
 
 begin_define
+DECL|macro|NO_REPLACE_OBJECTS_ENVIRONMENT
+define|#
+directive|define
+name|NO_REPLACE_OBJECTS_ENVIRONMENT
+value|"GIT_NO_REPLACE_OBJECTS"
+end_define
+
+begin_define
 DECL|macro|GITATTRIBUTES_FILE
 define|#
 directive|define
