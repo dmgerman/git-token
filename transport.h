@@ -77,6 +77,7 @@ modifier|*
 name|value
 parameter_list|)
 function_decl|;
+comment|/** 	 * Returns a list of the remote side's refs. In order to allow 	 * the transport to try to share connections, for_push is a 	 * hint as to whether the ultimate operation is a push or a fetch. 	 * 	 * If the transport is able to determine the remote hash for 	 * the ref without a huge amount of effort, it should store it 	 * in the ref's old_sha1 field; otherwise it should be all 0. 	 **/
 DECL|member|get_refs_list
 name|struct
 name|ref
@@ -95,6 +96,7 @@ name|int
 name|for_push
 parameter_list|)
 function_decl|;
+comment|/** 	 * Fetch the objects for the given refs. Note that this gets 	 * an array, and should ignore the list structure. 	 * 	 * If the transport did not get hashes for refs in 	 * get_refs_list(), it should set the old_sha1 fields in the 	 * provided refs now. 	 **/
 DECL|member|fetch
 name|int
 function_decl|(
@@ -110,7 +112,6 @@ parameter_list|,
 name|int
 name|refs_nr
 parameter_list|,
-specifier|const
 name|struct
 name|ref
 modifier|*
@@ -118,6 +119,7 @@ modifier|*
 name|refs
 parameter_list|)
 function_decl|;
+comment|/** 	 * Push the objects and refs. Send the necessary objects, and 	 * then, for any refs where peer_ref is set and 	 * peer_ref->new_sha1 is different from old_sha1, tell the 	 * remote side to update each ref in the list from old_sha1 to 	 * peer_ref->new_sha1. 	 * 	 * Where possible, set the status for each ref appropriately. 	 * 	 * The transport must modify new_sha1 in the ref to the new 	 * value if the remote accepted the change. Note that this 	 * could be a different value from peer_ref->new_sha1 if the 	 * process involved generating new commits. 	 **/
 DECL|member|push_refs
 name|int
 function_decl|(
@@ -164,6 +166,7 @@ name|int
 name|flags
 parameter_list|)
 function_decl|;
+comment|/** get_refs_list(), fetch(), and push_refs() can keep 	 * resources (such as a connection) reserved for futher 	 * use. disconnect() releases these resources. 	 **/
 DECL|member|disconnect
 name|int
 function_decl|(
@@ -430,7 +433,6 @@ name|transport
 modifier|*
 name|transport
 parameter_list|,
-specifier|const
 name|struct
 name|ref
 modifier|*
