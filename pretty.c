@@ -50,6 +50,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"notes.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"color.h"
 end_include
 
@@ -4558,6 +4564,27 @@ return|return
 literal|0
 return|;
 comment|/* unknown %g placeholder */
+case|case
+literal|'N'
+case|:
+name|get_commit_notes
+argument_list|(
+name|commit
+argument_list|,
+name|sb
+argument_list|,
+name|git_log_output_encoding
+condition|?
+name|git_log_output_encoding
+else|:
+name|git_commit_encoding
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+return|return
+literal|1
+return|;
 block|}
 comment|/* For the rest we have to parse the commit header. */
 if|if
@@ -5907,6 +5934,25 @@ argument_list|(
 name|sb
 argument_list|,
 literal|'\n'
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|fmt
+operator|!=
+name|CMIT_FMT_ONELINE
+condition|)
+name|get_commit_notes
+argument_list|(
+name|commit
+argument_list|,
+name|sb
+argument_list|,
+name|encoding
+argument_list|,
+name|NOTES_SHOW_HEADER
+operator||
+name|NOTES_INDENT
 argument_list|)
 expr_stmt|;
 name|free
