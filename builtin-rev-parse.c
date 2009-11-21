@@ -2246,6 +2246,22 @@ expr_stmt|;
 block|}
 end_function
 
+begin_decl_stmt
+DECL|variable|builtin_rev_parse_usage
+specifier|static
+specifier|const
+name|char
+name|builtin_rev_parse_usage
+index|[]
+init|=
+literal|"git rev-parse --parseopt [options] -- [<args>...]\n"
+literal|"   or: git rev-parse --sq-quote [<arg>...]\n"
+literal|"   or: git rev-parse [options] [<arg>...]\n"
+literal|"\n"
+literal|"Run \"git rev-parse --parseopt -h\" for more information on the first usage."
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|cmd_rev_parse
 name|int
@@ -2363,6 +2379,28 @@ operator|+
 literal|2
 argument_list|)
 return|;
+if|if
+condition|(
+name|argc
+operator|>
+literal|1
+operator|&&
+operator|!
+name|strcmp
+argument_list|(
+literal|"-h"
+argument_list|,
+name|argv
+index|[
+literal|1
+index|]
+argument_list|)
+condition|)
+name|usage
+argument_list|(
+name|builtin_rev_parse_usage
+argument_list|)
+expr_stmt|;
 name|prefix
 operator|=
 name|setup_git_directory

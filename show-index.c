@@ -11,6 +11,18 @@ directive|include
 file|"pack.h"
 end_include
 
+begin_decl_stmt
+DECL|variable|show_index_usage
+specifier|static
+specifier|const
+name|char
+name|show_index_usage
+index|[]
+init|=
+literal|"git show-index<<packed archive index>"
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|main
 name|int
@@ -43,6 +55,17 @@ index|[
 literal|256
 index|]
 decl_stmt|;
+if|if
+condition|(
+name|argc
+operator|!=
+literal|1
+condition|)
+name|usage
+argument_list|(
+name|show_index_usage
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|fread

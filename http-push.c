@@ -10047,9 +10047,6 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
-name|setup_git_directory
-argument_list|()
-expr_stmt|;
 name|repo
 operator|=
 name|xcalloc
@@ -10208,6 +10205,21 @@ literal|1
 expr_stmt|;
 continue|continue;
 block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"-h"
+argument_list|)
+condition|)
+name|usage
+argument_list|(
+name|http_push_usage
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(
@@ -10327,6 +10339,9 @@ name|die
 argument_list|(
 literal|"You must specify only one branch name when deleting a remote branch"
 argument_list|)
+expr_stmt|;
+name|setup_git_directory
+argument_list|()
 expr_stmt|;
 name|memset
 argument_list|(
