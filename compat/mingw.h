@@ -1265,11 +1265,19 @@ name|rename
 value|mingw_rename
 end_define
 
-begin_ifdef
-ifdef|#
-directive|ifdef
+begin_if
+if|#
+directive|if
+name|defined
+argument_list|(
 name|USE_WIN32_MMAP
-end_ifdef
+argument_list|)
+operator|||
+name|defined
+argument_list|(
+name|_MSC_VER
+argument_list|)
+end_if
 
 begin_function_decl
 name|int
