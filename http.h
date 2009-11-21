@@ -447,6 +447,19 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|void
+name|finish_active_slot
+parameter_list|(
+name|struct
+name|active_request_slot
+modifier|*
+name|slot
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|void
 name|finish_all_active_slots
 parameter_list|(
 name|void
@@ -561,6 +574,13 @@ begin_decl_stmt
 specifier|extern
 name|int
 name|http_is_verbose
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
+name|size_t
+name|http_post_buffer
 decl_stmt|;
 end_decl_stmt
 

@@ -891,8 +891,10 @@ specifier|extern
 name|int
 name|write_shallow_commits
 parameter_list|(
-name|int
-name|fd
+name|struct
+name|strbuf
+modifier|*
+name|out
 parameter_list|,
 name|int
 name|use_pack_protocol
