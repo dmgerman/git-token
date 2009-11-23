@@ -175,6 +175,16 @@ name|use_scissors
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|use_inbody_headers
+specifier|static
+name|int
+name|use_inbody_headers
+init|=
+literal|1
+decl_stmt|;
+end_decl_stmt
+
 begin_define
 DECL|macro|MAX_HDR_PARSED
 define|#
@@ -3901,6 +3911,14 @@ condition|)
 return|return
 literal|0
 return|;
+block|}
+if|if
+condition|(
+name|use_inbody_headers
+operator|&&
+name|still_looking
+condition|)
+block|{
 name|still_looking
 operator|=
 name|check_header
@@ -3920,6 +3938,12 @@ return|return
 literal|0
 return|;
 block|}
+else|else
+comment|/* Only trim the first (blank) line of the commit message 		 * when ignoring in-body headers. 		 */
+name|still_looking
+operator|=
+literal|0
+expr_stmt|;
 comment|/* normalize the log message to UTF-8. */
 if|if
 condition|(
@@ -5136,6 +5160,24 @@ literal|"--no-scissors"
 argument_list|)
 condition|)
 name|use_scissors
+operator|=
+literal|0
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|argv
+index|[
+literal|1
+index|]
+argument_list|,
+literal|"--no-inbody-headers"
+argument_list|)
+condition|)
+name|use_inbody_headers
 operator|=
 literal|0
 expr_stmt|;
