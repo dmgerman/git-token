@@ -2221,7 +2221,7 @@ index|[
 literal|1
 index|]
 operator|=
-literal|"--all-progress"
+literal|"--all-progress-implied"
 expr_stmt|;
 name|argv_pack
 index|[

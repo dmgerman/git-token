@@ -139,6 +139,7 @@ name|pack_usage
 index|[]
 init|=
 literal|"git pack-objects [{ -q | --progress | --all-progress }]\n"
+literal|"        [--all-progress-implied]\n"
 literal|"        [--max-pack-size=N] [--local] [--incremental]\n"
 literal|"        [--window=N] [--window-memory=N] [--depth=N]\n"
 literal|"        [--no-reuse-delta] [--no-reuse-object] [--delta-base-offset]\n"
@@ -10807,6 +10808,11 @@ name|thin
 init|=
 literal|0
 decl_stmt|;
+name|int
+name|all_progress_implied
+init|=
+literal|0
+decl_stmt|;
 name|uint32_t
 name|i
 decl_stmt|;
@@ -11355,6 +11361,23 @@ condition|(
 operator|!
 name|strcmp
 argument_list|(
+literal|"--all-progress-implied"
+argument_list|,
+name|arg
+argument_list|)
+condition|)
+block|{
+name|all_progress_implied
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
 literal|"-q"
 argument_list|,
 name|arg
@@ -11798,6 +11821,16 @@ argument_list|()
 expr_stmt|;
 endif|#
 directive|endif
+if|if
+condition|(
+name|progress
+operator|&&
+name|all_progress_implied
+condition|)
+name|progress
+operator|=
+literal|2
+expr_stmt|;
 name|prepare_packed_git
 argument_list|()
 expr_stmt|;
