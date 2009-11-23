@@ -115,6 +115,17 @@ name|UNMARK_VALID
 value|2
 end_define
 
+begin_macro
+name|__attribute__
+argument_list|(
+argument|(format (printf,
+literal|1
+argument|,
+literal|2
+argument|))
+argument_list|)
+end_macro
+
 begin_function
 DECL|function|report
 specifier|static

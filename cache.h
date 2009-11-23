@@ -7275,6 +7275,17 @@ begin_comment
 comment|/* trace.c */
 end_comment
 
+begin_macro
+name|__attribute__
+argument_list|(
+argument|(format (printf,
+literal|1
+argument|,
+literal|2
+argument|))
+argument_list|)
+end_macro
+
 begin_function_decl
 specifier|extern
 name|void
@@ -7289,6 +7300,17 @@ modifier|...
 parameter_list|)
 function_decl|;
 end_function_decl
+
+begin_macro
+name|__attribute__
+argument_list|(
+argument|(format (printf,
+literal|2
+argument|,
+literal|3
+argument|))
+argument_list|)
+end_macro
 
 begin_function_decl
 specifier|extern
