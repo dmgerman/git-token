@@ -602,6 +602,17 @@ argument_list|(
 literal|"info/grafts"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|getenv
+argument_list|(
+name|NO_REPLACE_OBJECTS_ENVIRONMENT
+argument_list|)
+condition|)
+name|read_replace_refs
+operator|=
+literal|0
+expr_stmt|;
 block|}
 end_function
 
