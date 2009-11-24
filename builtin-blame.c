@@ -12158,6 +12158,12 @@ name|path
 argument_list|)
 expr_stmt|;
 block|}
+name|revs
+operator|.
+name|disable_stdin
+operator|=
+literal|1
+expr_stmt|;
 name|setup_revisions
 argument_list|(
 name|argc

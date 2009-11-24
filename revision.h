@@ -417,6 +417,13 @@ name|date_mode_explicit
 range|:
 literal|1
 decl_stmt|;
+DECL|member|disable_stdin
+name|unsigned
+name|int
+name|disable_stdin
+range|:
+literal|1
+decl_stmt|;
 DECL|member|date_mode
 name|enum
 name|date_mode
@@ -617,18 +624,6 @@ end_comment
 begin_comment
 comment|/* revision.c */
 end_comment
-
-begin_function_decl
-name|void
-name|read_revisions_from_stdin
-parameter_list|(
-name|struct
-name|rev_info
-modifier|*
-name|revs
-parameter_list|)
-function_decl|;
-end_function_decl
 
 begin_typedef
 DECL|typedef|show_early_output_fn_t
