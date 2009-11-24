@@ -434,7 +434,14 @@ block|{
 name|int
 name|opts
 init|=
+name|isatty
+argument_list|(
+literal|2
+argument_list|)
+condition|?
 name|VERBOSE
+else|:
+literal|0
 decl_stmt|;
 specifier|const
 name|struct

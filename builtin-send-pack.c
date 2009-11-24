@@ -203,7 +203,7 @@ init|=
 block|{
 literal|"pack-objects"
 block|,
-literal|"--all-progress"
+literal|"--all-progress-implied"
 block|,
 literal|"--revs"
 block|,
