@@ -35,12 +35,22 @@ name|char
 modifier|*
 name|branch2
 decl_stmt|;
-DECL|member|subtree_merge
-name|unsigned
-name|subtree_merge
-range|:
+enum|enum
+block|{
+DECL|enumerator|MERGE_RECURSIVE_SUBTREE
+name|MERGE_RECURSIVE_SUBTREE
+init|=
 literal|1
-decl_stmt|;
+block|,
+DECL|enumerator|MERGE_RECURSIVE_OURS
+name|MERGE_RECURSIVE_OURS
+block|,
+DECL|enumerator|MERGE_RECURSIVE_THEIRS
+name|MERGE_RECURSIVE_THEIRS
+block|, 	}
+DECL|member|recursive_variant
+name|recursive_variant
+enum|;
 DECL|member|buffer_output
 name|unsigned
 name|buffer_output

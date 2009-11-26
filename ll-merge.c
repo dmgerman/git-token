@@ -85,7 +85,7 @@ modifier|*
 name|name2
 parameter_list|,
 name|int
-name|virtual_ancestor
+name|flag
 parameter_list|)
 function_decl|;
 end_typedef
@@ -180,7 +180,7 @@ modifier|*
 name|name2
 parameter_list|,
 name|int
-name|virtual_ancestor
+name|flag
 parameter_list|)
 block|{
 comment|/* 	 * The tentative merge result is "ours" for the final round, 	 * or common ancestor for an internal merge.  Still return 	 * "conflicted merge" status. 	 */
@@ -188,7 +188,11 @@ name|mmfile_t
 modifier|*
 name|stolen
 init|=
-name|virtual_ancestor
+operator|(
+name|flag
+operator|&
+literal|01
+operator|)
 condition|?
 name|orig
 else|:
@@ -266,7 +270,7 @@ modifier|*
 name|name2
 parameter_list|,
 name|int
-name|virtual_ancestor
+name|flag
 parameter_list|)
 block|{
 name|xpparam_t
@@ -276,6 +280,17 @@ name|int
 name|style
 init|=
 literal|0
+decl_stmt|;
+name|int
+name|favor
+init|=
+operator|(
+name|flag
+operator|>>
+literal|1
+operator|)
+operator|&
+literal|03
 decl_stmt|;
 if|if
 condition|(
@@ -343,7 +358,7 @@ name|src2
 argument_list|,
 name|name2
 argument_list|,
-name|virtual_ancestor
+name|flag
 argument_list|)
 return|;
 block|}
@@ -386,9 +401,14 @@ argument_list|,
 operator|&
 name|xpp
 argument_list|,
+name|XDL_MERGE_FLAGS
+argument_list|(
 name|XDL_MERGE_ZEALOUS
-operator||
+argument_list|,
 name|style
+argument_list|,
+name|favor
+argument_list|)
 argument_list|,
 name|result
 argument_list|)
@@ -440,7 +460,7 @@ modifier|*
 name|name2
 parameter_list|,
 name|int
-name|virtual_ancestor
+name|flag
 parameter_list|)
 block|{
 name|char
@@ -493,7 +513,7 @@ name|src2
 argument_list|,
 name|NULL
 argument_list|,
-name|virtual_ancestor
+name|flag
 argument_list|)
 expr_stmt|;
 name|git_xmerge_style
@@ -834,7 +854,7 @@ modifier|*
 name|name2
 parameter_list|,
 name|int
-name|virtual_ancestor
+name|flag
 parameter_list|)
 block|{
 name|char
@@ -1784,7 +1804,7 @@ modifier|*
 name|their_label
 parameter_list|,
 name|int
-name|virtual_ancestor
+name|flag
 parameter_list|)
 block|{
 specifier|const
@@ -1797,6 +1817,13 @@ name|struct
 name|ll_merge_driver
 modifier|*
 name|driver
+decl_stmt|;
+name|int
+name|virtual_ancestor
+init|=
+name|flag
+operator|&
+literal|01
 decl_stmt|;
 name|ll_driver_name
 operator|=
@@ -1850,7 +1877,7 @@ name|theirs
 argument_list|,
 name|their_label
 argument_list|,
-name|virtual_ancestor
+name|flag
 argument_list|)
 return|;
 block|}

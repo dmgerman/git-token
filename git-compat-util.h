@@ -1308,6 +1308,24 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|int
+name|suffixcmp
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|str
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|suffix
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|time_t
 name|tm_to_time_t
 parameter_list|(
