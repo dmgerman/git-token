@@ -5353,6 +5353,8 @@ argument_list|,
 name|PARSE_OPT_KEEP_ARGV0
 operator||
 name|PARSE_OPT_KEEP_UNKNOWN
+operator||
+name|PARSE_OPT_KEEP_DASHDASH
 argument_list|)
 expr_stmt|;
 if|if
