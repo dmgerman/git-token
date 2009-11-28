@@ -1690,6 +1690,14 @@ operator|=
 literal|0
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|len
+operator|||
+operator|!
+name|nofirst
+condition|)
+block|{
 name|fputs
 argument_list|(
 name|set
@@ -1727,6 +1735,7 @@ argument_list|,
 name|file
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|has_trailing_carriage_return
