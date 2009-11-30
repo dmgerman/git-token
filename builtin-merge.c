@@ -4073,6 +4073,13 @@ name|fn
 operator|=
 name|twoway_merge
 expr_stmt|;
+name|opts
+operator|.
+name|msgs
+operator|=
+name|get_porcelain_error_msgs
+argument_list|()
+expr_stmt|;
 name|trees
 index|[
 name|nr_trees

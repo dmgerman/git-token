@@ -83,6 +83,20 @@ struct|;
 end_struct
 
 begin_comment
+comment|/* Return a list of user-friendly error messages to be used by merge */
+end_comment
+
+begin_function_decl
+name|struct
+name|unpack_trees_error_msgs
+name|get_porcelain_error_msgs
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/* merge_trees() but with recursive ancestor consolidation */
 end_comment
 
