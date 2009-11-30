@@ -52,6 +52,11 @@ DECL|member|dry_run
 name|dry_run
 range|:
 literal|1
+decl_stmt|,
+DECL|member|stateless_rpc
+name|stateless_rpc
+range|:
+literal|1
 decl_stmt|;
 block|}
 struct|;

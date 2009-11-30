@@ -1817,6 +1817,14 @@ value|"GIT_CEILING_DIRECTORIES"
 end_define
 
 begin_define
+DECL|macro|NO_REPLACE_OBJECTS_ENVIRONMENT
+define|#
+directive|define
+name|NO_REPLACE_OBJECTS_ENVIRONMENT
+value|"GIT_NO_REPLACE_OBJECTS"
+end_define
+
+begin_define
 DECL|macro|GITATTRIBUTES_FILE
 define|#
 directive|define
@@ -1838,6 +1846,22 @@ define|#
 directive|define
 name|ATTRIBUTE_MACRO_PREFIX
 value|"[attr]"
+end_define
+
+begin_define
+DECL|macro|GIT_NOTES_REF_ENVIRONMENT
+define|#
+directive|define
+name|GIT_NOTES_REF_ENVIRONMENT
+value|"GIT_NOTES_REF"
+end_define
+
+begin_define
+DECL|macro|GIT_NOTES_DEFAULT_REF
+define|#
+directive|define
+name|GIT_NOTES_DEFAULT_REF
+value|"refs/notes/commits"
 end_define
 
 begin_decl_stmt
@@ -2100,6 +2124,24 @@ specifier|const
 name|char
 modifier|*
 name|path
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|check_filename
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|prefix
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|name
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -3529,6 +3571,14 @@ end_decl_stmt
 
 begin_decl_stmt
 specifier|extern
+name|char
+modifier|*
+name|notes_ref_name
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
 name|int
 name|grafts_replace_parents
 decl_stmt|;
@@ -4147,6 +4197,20 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+specifier|extern
+name|char
+modifier|*
+name|expand_user_path
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|char
 modifier|*
 name|enter_repo
@@ -4295,6 +4359,18 @@ specifier|const
 name|char
 modifier|*
 name|suffix
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
+name|daemon_avoid_alias
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -5324,6 +5400,30 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+specifier|const
+name|char
+modifier|*
+name|git_editor
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+specifier|const
+name|char
+modifier|*
+name|git_pager
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_struct
 DECL|struct|checkout
 struct|struct
@@ -6005,22 +6105,6 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
-begin_function_decl
-specifier|extern
-name|int
-name|get_ack
-parameter_list|(
-name|int
-name|fd
-parameter_list|,
-name|unsigned
-name|char
-modifier|*
-name|result_sha1
-parameter_list|)
-function_decl|;
-end_function_decl
-
 begin_struct
 DECL|struct|extra_have_objects
 struct|struct
@@ -6605,6 +6689,27 @@ begin_function_decl
 specifier|extern
 name|int
 name|git_config_string
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|git_config_pathname
 parameter_list|(
 specifier|const
 name|char
@@ -7213,6 +7318,17 @@ begin_comment
 comment|/* trace.c */
 end_comment
 
+begin_macro
+name|__attribute__
+argument_list|(
+argument|(format (printf,
+literal|1
+argument|,
+literal|2
+argument|))
+argument_list|)
+end_macro
+
 begin_function_decl
 specifier|extern
 name|void
@@ -7227,6 +7343,17 @@ modifier|...
 parameter_list|)
 function_decl|;
 end_function_decl
+
+begin_macro
+name|__attribute__
+argument_list|(
+argument|(format (printf,
+literal|2
+argument|,
+literal|3
+argument|))
+argument_list|)
+end_macro
 
 begin_function_decl
 specifier|extern
@@ -7385,10 +7512,10 @@ comment|/*  * whitespace rules.  * used by both diff and apply  */
 end_comment
 
 begin_define
-DECL|macro|WS_TRAILING_SPACE
+DECL|macro|WS_BLANK_AT_EOL
 define|#
 directive|define
-name|WS_TRAILING_SPACE
+name|WS_BLANK_AT_EOL
 value|01
 end_define
 
@@ -7414,6 +7541,22 @@ define|#
 directive|define
 name|WS_CR_AT_EOL
 value|010
+end_define
+
+begin_define
+DECL|macro|WS_BLANK_AT_EOF
+define|#
+directive|define
+name|WS_BLANK_AT_EOF
+value|020
+end_define
+
+begin_define
+DECL|macro|WS_TRAILING_SPACE
+define|#
+directive|define
+name|WS_TRAILING_SPACE
+value|(WS_BLANK_AT_EOL|WS_BLANK_AT_EOF)
 end_define
 
 begin_define

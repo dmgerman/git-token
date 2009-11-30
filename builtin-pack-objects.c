@@ -139,6 +139,7 @@ name|pack_usage
 index|[]
 init|=
 literal|"git pack-objects [{ -q | --progress | --all-progress }]\n"
+literal|"        [--all-progress-implied]\n"
 literal|"        [--max-pack-size=N] [--local] [--incremental]\n"
 literal|"        [--window=N] [--window-memory=N] [--depth=N]\n"
 literal|"        [--no-reuse-delta] [--no-reuse-object] [--delta-base-offset]\n"
@@ -8181,6 +8182,17 @@ literal|0
 decl_stmt|;
 if|if
 condition|(
+operator|!
+name|delta_search_threads
+condition|)
+comment|/* --threads=0 means autodetect */
+name|delta_search_threads
+operator|=
+name|online_cpus
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
 name|delta_search_threads
 operator|<=
 literal|1
@@ -10807,6 +10819,11 @@ name|thin
 init|=
 literal|0
 decl_stmt|;
+name|int
+name|all_progress_implied
+init|=
+literal|0
+decl_stmt|;
 name|uint32_t
 name|i
 decl_stmt|;
@@ -11355,6 +11372,23 @@ condition|(
 operator|!
 name|strcmp
 argument_list|(
+literal|"--all-progress-implied"
+argument_list|,
+name|arg
+argument_list|)
+condition|)
+block|{
+name|all_progress_implied
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
 literal|"-q"
 argument_list|,
 name|arg
@@ -11782,22 +11816,16 @@ argument_list|(
 literal|"--keep-unreachable and --unpack-unreachable are incompatible."
 argument_list|)
 expr_stmt|;
-ifdef|#
-directive|ifdef
-name|THREADED_DELTA_SEARCH
 if|if
 condition|(
-operator|!
-name|delta_search_threads
+name|progress
+operator|&&
+name|all_progress_implied
 condition|)
-comment|/* --threads=0 means autodetect */
-name|delta_search_threads
+name|progress
 operator|=
-name|online_cpus
-argument_list|()
+literal|2
 expr_stmt|;
-endif|#
-directive|endif
 name|prepare_packed_git
 argument_list|()
 expr_stmt|;

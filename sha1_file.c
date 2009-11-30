@@ -8761,6 +8761,8 @@ operator|.
 name|avail_out
 operator|=
 name|size
+operator|+
+literal|1
 expr_stmt|;
 name|git_inflate_init
 argument_list|(
@@ -8802,6 +8804,15 @@ argument_list|,
 name|Z_FINISH
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|stream
+operator|.
+name|avail_out
+condition|)
+break|break;
+comment|/* the payload is larger than it should be */
 name|curpos
 operator|+=
 name|stream

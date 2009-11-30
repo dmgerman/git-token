@@ -132,6 +132,8 @@ DECL|variable|check_full
 specifier|static
 name|int
 name|check_full
+init|=
+literal|1
 decl_stmt|;
 end_decl_stmt
 
@@ -334,6 +336,17 @@ expr_stmt|;
 block|}
 end_function
 
+begin_macro
+name|__attribute__
+argument_list|(
+argument|(format (printf,
+literal|2
+argument|,
+literal|3
+argument|))
+argument_list|)
+end_macro
+
 begin_function
 DECL|function|objerror
 specifier|static
@@ -389,6 +402,17 @@ literal|1
 return|;
 block|}
 end_function
+
+begin_macro
+name|__attribute__
+argument_list|(
+argument|(format (printf,
+literal|3
+argument|,
+literal|4
+argument|))
+argument_list|)
+end_macro
 
 begin_function
 DECL|function|fsck_error_func

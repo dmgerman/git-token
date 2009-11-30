@@ -46,6 +46,18 @@ literal|"*** Note that this command is now deprecated; use \"git archive\" inste
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|builtin_get_tar_commit_id_usage
+specifier|static
+specifier|const
+name|char
+name|builtin_get_tar_commit_id_usage
+index|[]
+init|=
+literal|"git get-tar-commit-id<<tarfile>"
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|cmd_tar_tree
 name|int
@@ -363,6 +375,17 @@ decl_stmt|;
 name|ssize_t
 name|n
 decl_stmt|;
+if|if
+condition|(
+name|argc
+operator|!=
+literal|1
+condition|)
+name|usage
+argument_list|(
+name|builtin_get_tar_commit_id_usage
+argument_list|)
+expr_stmt|;
 name|n
 operator|=
 name|read_in_full

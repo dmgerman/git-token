@@ -252,17 +252,24 @@ argument_list|,
 literal|"create a bare repository"
 argument_list|)
 block|,
-name|OPT_BOOLEAN
-argument_list|(
+block|{
+name|OPTION_BOOLEAN
+block|,
 literal|0
-argument_list|,
+block|,
 literal|"naked"
-argument_list|,
+block|,
 operator|&
 name|option_bare
-argument_list|,
+block|,
+name|NULL
+block|,
 literal|"create a bare repository"
-argument_list|)
+block|,
+name|PARSE_OPT_NOARG
+operator||
+name|PARSE_OPT_HIDDEN
+block|}
 block|,
 name|OPT_BOOLEAN
 argument_list|(
@@ -321,7 +328,7 @@ argument_list|,
 operator|&
 name|option_recursive
 argument_list|,
-literal|"setup as shared repository"
+literal|"initialize submodules in the clone"
 argument_list|)
 block|,
 name|OPT_STRING
@@ -2104,12 +2111,31 @@ expr_stmt|;
 if|if
 condition|(
 name|argc
+operator|>
+literal|2
+condition|)
+name|usage_msg_opt
+argument_list|(
+literal|"Too many arguments."
+argument_list|,
+name|builtin_clone_usage
+argument_list|,
+name|builtin_clone_options
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|argc
 operator|==
 literal|0
 condition|)
-name|die
+name|usage_msg_opt
 argument_list|(
 literal|"You must specify a repository to clone."
+argument_list|,
+name|builtin_clone_usage
+argument_list|,
+name|builtin_clone_options
 argument_list|)
 expr_stmt|;
 if|if
@@ -3339,7 +3365,7 @@ argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
-name|remote_head
+name|our_head_points_at
 operator|->
 name|old_sha1
 argument_list|)

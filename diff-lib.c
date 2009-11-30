@@ -1842,7 +1842,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * The unpack_trees() interface is designed for merging, so  * the different source entries are designed primarily for  * the source trees, with the old index being really mainly  * used for being replaced by the result.  *  * For diffing, the index is more important, and we only have a  * single tree.  *  * We're supposed to return how many index entries we want to skip.  *  * This wrapper makes it all more readable, and takes care of all  * the fairly complex unpack_trees() semantic requirements, including  * the skipping, the path matching, the type conflict cases etc.  */
+comment|/*  * The unpack_trees() interface is designed for merging, so  * the different source entries are designed primarily for  * the source trees, with the old index being really mainly  * used for being replaced by the result.  *  * For diffing, the index is more important, and we only have a  * single tree.  *  * We're supposed to advance o->pos to skip what we have already processed.  *  * This wrapper makes it all more readable, and takes care of all  * the fairly complex unpack_trees() semantic requirements, including  * the skipping, the path matching, the type conflict cases etc.  */
 end_comment
 
 begin_function

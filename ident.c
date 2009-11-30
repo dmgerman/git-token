@@ -964,7 +964,7 @@ name|env_hint
 operator|=
 name|NULL
 expr_stmt|;
-comment|/* warn only once, for "git var -l" */
+comment|/* warn only once */
 block|}
 if|if
 condition|(
