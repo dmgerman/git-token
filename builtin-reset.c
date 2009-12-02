@@ -1177,6 +1177,12 @@ name|options
 index|[]
 init|=
 block|{
+name|OPT__QUIET
+argument_list|(
+operator|&
+name|quiet
+argument_list|)
+block|,
 name|OPT_SET_INT
 argument_list|(
 literal|0
@@ -1231,18 +1237,6 @@ argument_list|,
 literal|"reset HEAD, index and working tree"
 argument_list|,
 name|MERGE
-argument_list|)
-block|,
-name|OPT_BOOLEAN
-argument_list|(
-literal|'q'
-argument_list|,
-name|NULL
-argument_list|,
-operator|&
-name|quiet
-argument_list|,
-literal|"disable showing new HEAD in hard reset and progress message"
 argument_list|)
 block|,
 name|OPT_BOOLEAN
