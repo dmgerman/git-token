@@ -345,10 +345,14 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|untracked_files_arg
+DECL|variable|force_date
 specifier|static
 name|char
 modifier|*
 name|untracked_files_arg
+decl_stmt|,
+modifier|*
+name|force_date
 decl_stmt|;
 end_decl_stmt
 
@@ -532,6 +536,20 @@ argument_list|,
 literal|"AUTHOR"
 argument_list|,
 literal|"override author for commit"
+argument_list|)
+block|,
+name|OPT_STRING
+argument_list|(
+literal|0
+argument_list|,
+literal|"date"
+argument_list|,
+operator|&
+name|force_date
+argument_list|,
+literal|"DATE"
+argument_list|,
+literal|"override date for commit"
 argument_list|)
 block|,
 name|OPT_CALLBACK
@@ -2154,6 +2172,14 @@ operator|)
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|force_date
+condition|)
+name|date
+operator|=
+name|force_date
+expr_stmt|;
 name|author_name
 operator|=
 name|name
