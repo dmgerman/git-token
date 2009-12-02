@@ -424,7 +424,15 @@ name|strbuf_addf
 argument_list|(
 name|buf
 argument_list|,
-literal|"%s\n\n"
+literal|"%s%s"
+argument_list|,
+name|buf
+operator|->
+name|len
+condition|?
+literal|"\n\n"
+else|:
+literal|""
 argument_list|,
 name|arg
 argument_list|)
@@ -5008,7 +5016,7 @@ if|if
 condition|(
 name|argc
 operator|>
-literal|1
+literal|2
 condition|)
 block|{
 name|unsigned
@@ -5576,6 +5584,12 @@ operator|=
 literal|"HEAD"
 expr_stmt|;
 comment|/* 		 * All the rest are the commits being merged; 		 * prepare the standard merge summary message to 		 * be appended to the given message.  If remote 		 * is invalid we will die later in the common 		 * codepath so we discard the error in this 		 * loop. 		 */
+if|if
+condition|(
+operator|!
+name|have_message
+condition|)
+block|{
 for|for
 control|(
 name|i
@@ -5629,6 +5643,7 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
