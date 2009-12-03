@@ -23,6 +23,15 @@ literal|1
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|advice_commit_before_merge
+name|int
+name|advice_commit_before_merge
+init|=
+literal|1
+decl_stmt|;
+end_decl_stmt
+
 begin_struct
 specifier|static
 struct|struct
@@ -56,6 +65,13 @@ literal|"statushints"
 block|,
 operator|&
 name|advice_status_hints
+block|}
+block|,
+block|{
+literal|"commitbeforemerge"
+block|,
+operator|&
+name|advice_commit_before_merge
 block|}
 block|, }
 struct|;
