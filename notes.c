@@ -1629,6 +1629,18 @@ operator|<
 literal|20
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|S_ISDIR
+argument_list|(
+name|entry
+operator|.
+name|mode
+argument_list|)
+condition|)
+continue|continue;
+comment|/* entry cannot be subtree */
 name|l
 operator|->
 name|key_sha1
