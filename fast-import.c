@@ -959,6 +959,14 @@ name|import_marks_file
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|import_marks_file_from_stream
+specifier|static
+name|int
+name|import_marks_file_from_stream
+decl_stmt|;
+end_decl_stmt
+
 begin_comment
 comment|/* Our last blob */
 end_comment
@@ -14157,14 +14165,45 @@ specifier|const
 name|char
 modifier|*
 name|marks
+parameter_list|,
+name|int
+name|from_stream
 parameter_list|)
 block|{
+if|if
+condition|(
+name|import_marks_file
+condition|)
+block|{
+if|if
+condition|(
+name|from_stream
+condition|)
+name|die
+argument_list|(
+literal|"Only one import-marks command allowed per stream"
+argument_list|)
+expr_stmt|;
+comment|/* read previous mark file */
+if|if
+condition|(
+operator|!
+name|import_marks_file_from_stream
+condition|)
+name|read_marks
+argument_list|()
+expr_stmt|;
+block|}
 name|import_marks_file
 operator|=
 name|xstrdup
 argument_list|(
 name|marks
 argument_list|)
+expr_stmt|;
+name|import_marks_file_from_stream
+operator|=
+name|from_stream
 expr_stmt|;
 block|}
 end_function
@@ -14545,6 +14584,9 @@ specifier|const
 name|char
 modifier|*
 name|feature
+parameter_list|,
+name|int
+name|from_stream
 parameter_list|)
 block|{
 if|if
@@ -14583,6 +14625,8 @@ argument_list|(
 name|feature
 operator|+
 literal|13
+argument_list|,
+name|from_stream
 argument_list|)
 expr_stmt|;
 block|}
@@ -14670,6 +14714,8 @@ condition|(
 name|parse_one_feature
 argument_list|(
 name|feature
+argument_list|,
+literal|1
 argument_list|)
 condition|)
 return|return;
@@ -14943,6 +14989,8 @@ argument_list|(
 name|a
 operator|+
 literal|2
+argument_list|,
+literal|0
 argument_list|)
 condition|)
 continue|continue;
