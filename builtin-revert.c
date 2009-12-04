@@ -175,6 +175,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|allow_rerere_auto
+specifier|static
+name|int
+name|allow_rerere_auto
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|me
 specifier|static
 specifier|const
@@ -314,6 +322,12 @@ operator|&
 name|mainline
 argument_list|,
 literal|"parent number"
+argument_list|)
+block|,
+name|OPT_RERERE_AUTOUPDATE
+argument_list|(
+operator|&
+name|allow_rerere_auto
 argument_list|)
 block|,
 name|OPT_END
@@ -2215,7 +2229,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|rerere
-argument_list|()
+argument_list|(
+name|allow_rerere_auto
+argument_list|)
 expr_stmt|;
 name|exit
 argument_list|(
