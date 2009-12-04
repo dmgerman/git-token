@@ -318,6 +318,16 @@ literal|"rr-cache"
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|dir
+condition|)
+name|die_errno
+argument_list|(
+literal|"unable to open rr-cache directory"
+argument_list|)
+expr_stmt|;
 while|while
 condition|(
 operator|(
