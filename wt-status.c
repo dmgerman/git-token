@@ -3622,9 +3622,20 @@ expr_stmt|;
 break|break;
 comment|/* both modified */
 block|}
-name|printf
+name|color_fprintf
 argument_list|(
-literal|"%s "
+name|s
+operator|->
+name|fp
+argument_list|,
+name|color
+argument_list|(
+name|WT_STATUS_UNMERGED
+argument_list|,
+name|s
+argument_list|)
+argument_list|,
+literal|"%s"
 argument_list|,
 name|how
 argument_list|)
@@ -3638,7 +3649,7 @@ name|fprintf
 argument_list|(
 name|stdout
 argument_list|,
-literal|"%s%c"
+literal|" %s%c"
 argument_list|,
 name|it
 operator|->
@@ -3682,7 +3693,7 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"%s\n"
+literal|" %s\n"
 argument_list|,
 name|one
 argument_list|)
@@ -3726,31 +3737,73 @@ name|it
 operator|->
 name|util
 decl_stmt|;
-name|printf
+if|if
+condition|(
+name|d
+operator|->
+name|index_status
+condition|)
+name|color_fprintf
 argument_list|(
-literal|"%c%c "
+name|s
+operator|->
+name|fp
 argument_list|,
-operator|!
+name|color
+argument_list|(
+name|WT_STATUS_UPDATED
+argument_list|,
+name|s
+argument_list|)
+argument_list|,
+literal|"%c"
+argument_list|,
 name|d
 operator|->
 name|index_status
-condition|?
+argument_list|)
+expr_stmt|;
+else|else
+name|putchar
+argument_list|(
 literal|' '
-else|:
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|d
 operator|->
-name|index_status
+name|worktree_status
+condition|)
+name|color_fprintf
+argument_list|(
+name|s
+operator|->
+name|fp
 argument_list|,
-operator|!
+name|color
+argument_list|(
+name|WT_STATUS_CHANGED
+argument_list|,
+name|s
+argument_list|)
+argument_list|,
+literal|"%c"
+argument_list|,
 name|d
 operator|->
 name|worktree_status
-condition|?
+argument_list|)
+expr_stmt|;
+else|else
+name|putchar
+argument_list|(
 literal|' '
-else|:
-name|d
-operator|->
-name|worktree_status
+argument_list|)
+expr_stmt|;
+name|putchar
+argument_list|(
+literal|' '
 argument_list|)
 expr_stmt|;
 if|if
@@ -3951,9 +4004,25 @@ operator|->
 name|prefix
 argument_list|)
 expr_stmt|;
+name|color_fprintf
+argument_list|(
+name|s
+operator|->
+name|fp
+argument_list|,
+name|color
+argument_list|(
+name|WT_STATUS_UNTRACKED
+argument_list|,
+name|s
+argument_list|)
+argument_list|,
+literal|"??"
+argument_list|)
+expr_stmt|;
 name|printf
 argument_list|(
-literal|"?? %s\n"
+literal|" %s\n"
 argument_list|,
 name|one
 argument_list|)
