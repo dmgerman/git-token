@@ -249,6 +249,21 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|void
+name|wt_shortstatus_print
+parameter_list|(
+name|struct
+name|wt_status
+modifier|*
+name|s
+parameter_list|,
+name|int
+name|null_termination
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
