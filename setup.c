@@ -455,6 +455,61 @@ expr_stmt|;
 block|}
 end_function
 
+begin_function
+DECL|function|die_verify_filename
+specifier|static
+name|void
+name|NORETURN
+name|die_verify_filename
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|prefix
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|arg
+parameter_list|)
+block|{
+name|unsigned
+name|char
+name|sha1
+index|[
+literal|20
+index|]
+decl_stmt|;
+name|unsigned
+name|mode
+decl_stmt|;
+comment|/* try a detailed diagnostic ... */
+name|get_sha1_with_mode_1
+argument_list|(
+name|arg
+argument_list|,
+name|sha1
+argument_list|,
+operator|&
+name|mode
+argument_list|,
+literal|0
+argument_list|,
+name|prefix
+argument_list|)
+expr_stmt|;
+comment|/* ... or fall back the most general message. */
+name|die
+argument_list|(
+literal|"ambiguous argument '%s': unknown revision or path not in the working tree.\n"
+literal|"Use '--' to separate paths from revisions"
+argument_list|,
+name|arg
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
 begin_comment
 comment|/*  * Verify a filename that we got as an argument for a pathspec  * entry. Note that a filename that begins with "-" never verifies  * as true, because even if such a filename were to exist, we want  * it to be preceded by the "--" marker (or we want the user to  * use a format like "./-filename")  */
 end_comment
@@ -499,10 +554,9 @@ name|arg
 argument_list|)
 condition|)
 return|return;
-name|die
+name|die_verify_filename
 argument_list|(
-literal|"ambiguous argument '%s': unknown revision or path not in the working tree.\n"
-literal|"Use '--' to separate paths from revisions"
+name|prefix
 argument_list|,
 name|arg
 argument_list|)
