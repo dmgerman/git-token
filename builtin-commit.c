@@ -326,6 +326,7 @@ DECL|variable|verbose
 DECL|variable|no_verify
 DECL|variable|allow_empty
 DECL|variable|dry_run
+DECL|variable|renew_authorship
 specifier|static
 name|int
 name|quiet
@@ -337,6 +338,8 @@ decl_stmt|,
 name|allow_empty
 decl_stmt|,
 name|dry_run
+decl_stmt|,
+name|renew_authorship
 decl_stmt|;
 end_decl_stmt
 
@@ -558,7 +561,7 @@ name|edit_message
 argument_list|,
 literal|"COMMIT"
 argument_list|,
-literal|"reuse and edit message from specified commit "
+literal|"reuse and edit message from specified commit"
 argument_list|)
 block|,
 name|OPT_STRING
@@ -573,6 +576,18 @@ argument_list|,
 literal|"COMMIT"
 argument_list|,
 literal|"reuse message from specified commit"
+argument_list|)
+block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|0
+argument_list|,
+literal|"reset-author"
+argument_list|,
+operator|&
+name|renew_authorship
+argument_list|,
+literal|"the commit is authored by me now (used with -C-c/--amend)"
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -1925,6 +1940,9 @@ expr_stmt|;
 if|if
 condition|(
 name|use_message
+operator|&&
+operator|!
+name|renew_authorship
 condition|)
 block|{
 specifier|const
@@ -2898,6 +2916,9 @@ block|{
 if|if
 condition|(
 operator|!
+name|i
+operator|||
+operator|!
 name|ends_rfc2822_footer
 argument_list|(
 operator|&
@@ -3815,6 +3836,20 @@ condition|(
 name|commit
 condition|)
 block|{
+name|struct
+name|pretty_print_context
+name|ctx
+init|=
+block|{
+literal|0
+block|}
+decl_stmt|;
+name|ctx
+operator|.
+name|date_mode
+operator|=
+name|DATE_NORMAL
+expr_stmt|;
 name|strbuf_release
 argument_list|(
 operator|&
@@ -3830,7 +3865,8 @@ argument_list|,
 operator|&
 name|buf
 argument_list|,
-name|DATE_NORMAL
+operator|&
+name|ctx
 argument_list|)
 expr_stmt|;
 return|return
@@ -3925,6 +3961,17 @@ operator|=
 name|find_author_by_nickname
 argument_list|(
 name|force_author
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|force_author
+operator|&&
+name|renew_authorship
+condition|)
+name|die
+argument_list|(
+literal|"Using both --reset-author and --author does not make sense"
 argument_list|)
 expr_stmt|;
 if|if
@@ -4078,6 +4125,18 @@ condition|)
 name|use_message
 operator|=
 literal|"HEAD"
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|use_message
+operator|&&
+name|renew_authorship
+condition|)
+name|die
+argument_list|(
+literal|"--reset-author can be used only with -C, -c or --amend."
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
@@ -5344,11 +5403,25 @@ argument_list|)
 condition|)
 block|{
 name|struct
+name|pretty_print_context
+name|ctx
+init|=
+block|{
+literal|0
+block|}
+decl_stmt|;
+name|struct
 name|strbuf
 name|buf
 init|=
 name|STRBUF_INIT
 decl_stmt|;
+name|ctx
+operator|.
+name|date_mode
+operator|=
+name|DATE_NORMAL
+expr_stmt|;
 name|format_commit_message
 argument_list|(
 name|commit
@@ -5360,7 +5433,8 @@ argument_list|,
 operator|&
 name|buf
 argument_list|,
-name|DATE_NORMAL
+operator|&
+name|ctx
 argument_list|)
 expr_stmt|;
 name|printf
@@ -5421,7 +5495,7 @@ literal|"commit.template"
 argument_list|)
 condition|)
 return|return
-name|git_config_string
+name|git_config_pathname
 argument_list|(
 operator|&
 name|template_file

@@ -189,7 +189,7 @@ DECL|member|verbose
 name|signed
 name|verbose
 range|:
-literal|2
+literal|3
 decl_stmt|;
 comment|/* Force progress even if the output is not a tty */
 DECL|member|progress

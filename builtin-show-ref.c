@@ -52,7 +52,7 @@ name|show_ref_usage
 index|[]
 init|=
 block|{
-literal|"git show-ref [-q|--quiet] [--verify] [-h|--head] [-d|--dereference] [-s|--hash[=<n>]] [--abbrev[=<n>]] [--tags] [--heads] [--] [pattern*] "
+literal|"git show-ref [-q|--quiet] [--verify] [--head] [-d|--dereference] [-s|--hash[=<n>]] [--abbrev[=<n>]] [--tags] [--heads] [--] [pattern*] "
 block|,
 literal|"git show-ref --exclude-existing[=pattern]< ref-list"
 block|,
@@ -1004,9 +1004,28 @@ literal|"stricter reference checking, "
 literal|"requires exact ref path"
 argument_list|)
 block|,
+block|{
+name|OPTION_BOOLEAN
+block|,
+literal|'h'
+block|,
+name|NULL
+block|,
+operator|&
+name|show_head
+block|,
+name|NULL
+block|,
+literal|"show the HEAD reference"
+block|,
+name|PARSE_OPT_NOARG
+operator||
+name|PARSE_OPT_HIDDEN
+block|}
+block|,
 name|OPT_BOOLEAN
 argument_list|(
-literal|'h'
+literal|0
 argument_list|,
 literal|"head"
 argument_list|,
@@ -1127,6 +1146,30 @@ modifier|*
 name|prefix
 parameter_list|)
 block|{
+if|if
+condition|(
+name|argc
+operator|==
+literal|2
+operator|&&
+operator|!
+name|strcmp
+argument_list|(
+name|argv
+index|[
+literal|1
+index|]
+argument_list|,
+literal|"-h"
+argument_list|)
+condition|)
+name|usage_with_options
+argument_list|(
+name|show_ref_usage
+argument_list|,
+name|show_ref_options
+argument_list|)
+expr_stmt|;
 name|argc
 operator|=
 name|parse_options

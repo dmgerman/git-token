@@ -217,6 +217,10 @@ specifier|extern
 name|void
 name|warn_dangling_symref
 parameter_list|(
+name|FILE
+modifier|*
+name|fp
+parameter_list|,
 specifier|const
 name|char
 modifier|*

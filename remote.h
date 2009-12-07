@@ -774,6 +774,29 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* Return refs which no longer exist on remote */
+end_comment
+
+begin_function_decl
+name|struct
+name|ref
+modifier|*
+name|get_stale_heads
+parameter_list|(
+name|struct
+name|remote
+modifier|*
+name|remote
+parameter_list|,
+name|struct
+name|ref
+modifier|*
+name|fetch_map
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif

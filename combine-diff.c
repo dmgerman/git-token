@@ -2795,6 +2795,18 @@ decl_stmt|;
 specifier|const
 name|char
 modifier|*
+name|c_func
+init|=
+name|diff_get_color
+argument_list|(
+name|use_color
+argument_list|,
+name|DIFF_FUNCINFO
+argument_list|)
+decl_stmt|;
+specifier|const
+name|char
+modifier|*
 name|c_new
 init|=
 name|diff_get_color
@@ -3164,9 +3176,17 @@ if|if
 condition|(
 name|comment_end
 condition|)
-name|putchar
+name|printf
 argument_list|(
-literal|' '
+literal|"%s%s %s%s"
+argument_list|,
+name|c_reset
+argument_list|,
+name|c_plain
+argument_list|,
+name|c_reset
+argument_list|,
+name|c_func
 argument_list|)
 expr_stmt|;
 for|for

@@ -374,6 +374,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|notes_ref_name
+name|char
+modifier|*
+name|notes_ref_name
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|grafts_replace_parents
 name|int
 name|grafts_replace_parents
@@ -593,6 +601,17 @@ name|git_pathdup
 argument_list|(
 literal|"info/grafts"
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|getenv
+argument_list|(
+name|NO_REPLACE_OBJECTS_ENVIRONMENT
+argument_list|)
+condition|)
+name|read_replace_refs
+operator|=
+literal|0
 expr_stmt|;
 block|}
 end_function

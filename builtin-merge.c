@@ -214,6 +214,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|fast_forward_only
+specifier|static
+name|int
+name|fast_forward_only
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|allow_trivial
 DECL|variable|have_message
 specifier|static
@@ -416,7 +424,15 @@ name|strbuf_addf
 argument_list|(
 name|buf
 argument_list|,
-literal|"%s\n\n"
+literal|"%s%s"
+argument_list|,
+name|buf
+operator|->
+name|len
+condition|?
+literal|"\n\n"
+else|:
+literal|""
 argument_list|,
 name|arg
 argument_list|)
@@ -665,6 +681,7 @@ operator|->
 name|len
 argument_list|)
 expr_stmt|;
+block|}
 name|exclude_cmds
 argument_list|(
 operator|&
@@ -674,7 +691,6 @@ operator|&
 name|not_strategies
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 if|if
 condition|(
@@ -1041,7 +1057,19 @@ argument_list|,
 operator|&
 name|allow_fast_forward
 argument_list|,
-literal|"allow fast forward (default)"
+literal|"allow fast-forward (default)"
+argument_list|)
+block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|0
+argument_list|,
+literal|"ff-only"
+argument_list|,
+operator|&
+name|fast_forward_only
+argument_list|,
+literal|"abort if fast-forward is not possible"
 argument_list|)
 block|,
 name|OPT_CALLBACK
@@ -1540,6 +1568,14 @@ decl_stmt|;
 name|int
 name|fd
 decl_stmt|;
+name|struct
+name|pretty_print_context
+name|ctx
+init|=
+block|{
+literal|0
+block|}
+decl_stmt|;
 name|printf
 argument_list|(
 literal|"Squash commit -- not updating HEAD\n"
@@ -1679,6 +1715,22 @@ argument_list|(
 literal|"revision walk setup failed"
 argument_list|)
 expr_stmt|;
+name|ctx
+operator|.
+name|abbrev
+operator|=
+name|rev
+operator|.
+name|abbrev
+expr_stmt|;
+name|ctx
+operator|.
+name|date_mode
+operator|=
+name|rev
+operator|.
+name|date_mode
+expr_stmt|;
 name|strbuf_addstr
 argument_list|(
 operator|&
@@ -1738,19 +1790,8 @@ argument_list|,
 operator|&
 name|out
 argument_list|,
-name|rev
-operator|.
-name|abbrev
-argument_list|,
-name|NULL
-argument_list|,
-name|NULL
-argument_list|,
-name|rev
-operator|.
-name|date_mode
-argument_list|,
-literal|0
+operator|&
+name|ctx
 argument_list|)
 expr_stmt|;
 block|}
@@ -4040,6 +4081,13 @@ name|fn
 operator|=
 name|twoway_merge
 expr_stmt|;
+name|opts
+operator|.
+name|msgs
+operator|=
+name|get_porcelain_error_msgs
+argument_list|()
+expr_stmt|;
 name|trees
 index|[
 name|nr_trees
@@ -4925,6 +4973,20 @@ return|;
 block|}
 end_function
 
+begin_decl_stmt
+DECL|variable|deprecation_warning
+specifier|static
+specifier|const
+name|char
+name|deprecation_warning
+index|[]
+init|=
+literal|"'git merge<msg> HEAD<commit>' is deprecated. Please update\n"
+literal|"your script to use 'git merge -m<msg><commit>' instead.\n"
+literal|"In future versions of git, this syntax will be removed."
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|is_old_style_invocation
 specifier|static
@@ -4954,7 +5016,7 @@ if|if
 condition|(
 name|argc
 operator|>
-literal|1
+literal|2
 condition|)
 block|{
 name|unsigned
@@ -5019,6 +5081,11 @@ condition|)
 return|return
 name|NULL
 return|;
+name|warning
+argument_list|(
+name|deprecation_warning
+argument_list|)
+expr_stmt|;
 block|}
 return|return
 name|second_token
@@ -5199,9 +5266,6 @@ init|=
 operator|&
 name|remoteheads
 decl_stmt|;
-name|setup_work_tree
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|file_exists
@@ -5336,6 +5400,18 @@ operator|=
 literal|0
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+name|allow_fast_forward
+operator|&&
+name|fast_forward_only
+condition|)
+name|die
+argument_list|(
+literal|"You cannot combine --no-ff with --ff-only."
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -5508,6 +5584,12 @@ operator|=
 literal|"HEAD"
 expr_stmt|;
 comment|/* 		 * All the rest are the commits being merged; 		 * prepare the standard merge summary message to 		 * be appended to the given message.  If remote 		 * is invalid we will die later in the common 		 * codepath so we discard the error in this 		 * loop. 		 */
+if|if
+condition|(
+operator|!
+name|have_message
+condition|)
+block|{
 for|for
 control|(
 name|i
@@ -5561,6 +5643,7 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -6027,7 +6110,7 @@ argument_list|(
 operator|&
 name|msg
 argument_list|,
-literal|"Fast forward"
+literal|"Fast-forward"
 argument_list|)
 expr_stmt|;
 if|if
@@ -6121,7 +6204,7 @@ operator|->
 name|next
 condition|)
 empty_stmt|;
-comment|/* 		 * We are not doing octopus and not fast forward.  Need 		 * a real merge. 		 */
+comment|/* 		 * We are not doing octopus and not fast-forward.  Need 		 * a real merge. 		 */
 elseif|else
 if|if
 condition|(
@@ -6138,7 +6221,7 @@ operator|&&
 name|option_commit
 condition|)
 block|{
-comment|/* 		 * We are not doing octopus, not fast forward, and have 		 * only one common. 		 */
+comment|/* 		 * We are not doing octopus, not fast-forward, and have 		 * only one common. 		 */
 name|refresh_cache
 argument_list|(
 name|REFRESH_QUIET
@@ -6147,6 +6230,9 @@ expr_stmt|;
 if|if
 condition|(
 name|allow_trivial
+operator|&&
+operator|!
+name|fast_forward_only
 condition|)
 block|{
 comment|/* See if it is really trivial. */
@@ -6289,6 +6375,15 @@ literal|0
 return|;
 block|}
 block|}
+if|if
+condition|(
+name|fast_forward_only
+condition|)
+name|die
+argument_list|(
+literal|"Not possible to fast-forward, aborting."
+argument_list|)
+expr_stmt|;
 comment|/* We are going to make a new commit. */
 name|git_committer_info
 argument_list|(

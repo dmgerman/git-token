@@ -11,6 +11,12 @@ directive|include
 file|"pack.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"sideband.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|data_received
 name|int
@@ -29,6 +35,17 @@ begin_decl_stmt
 DECL|variable|http_is_verbose
 name|int
 name|http_is_verbose
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|http_post_buffer
+name|size_t
+name|http_post_buffer
+init|=
+literal|16
+operator|*
+name|LARGE_PACKET_MAX
 decl_stmt|;
 end_decl_stmt
 
@@ -572,19 +589,6 @@ return|;
 block|}
 end_function
 
-begin_function_decl
-specifier|static
-name|void
-name|finish_active_slot
-parameter_list|(
-name|struct
-name|active_request_slot
-modifier|*
-name|slot
-parameter_list|)
-function_decl|;
-end_function_decl
-
 begin_ifdef
 ifdef|#
 directive|ifdef
@@ -1043,6 +1047,40 @@ argument_list|,
 name|value
 argument_list|)
 return|;
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+literal|"http.postbuffer"
+argument_list|,
+name|var
+argument_list|)
+condition|)
+block|{
+name|http_post_buffer
+operator|=
+name|git_config_int
+argument_list|(
+name|var
+argument_list|,
+name|value
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|http_post_buffer
+operator|<
+name|LARGE_PACKET_MAX
+condition|)
+name|http_post_buffer
+operator|=
+name|LARGE_PACKET_MAX
+expr_stmt|;
+return|return
+literal|0
+return|;
+block|}
 comment|/* Fall back on the default ones */
 return|return
 name|git_default_config
@@ -3174,7 +3212,6 @@ end_function
 
 begin_function
 DECL|function|finish_active_slot
-specifier|static
 name|void
 name|finish_active_slot
 parameter_list|(
