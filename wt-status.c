@@ -4178,5 +4178,35 @@ block|}
 block|}
 end_function
 
+begin_function
+DECL|function|wt_porcelain_print
+name|void
+name|wt_porcelain_print
+parameter_list|(
+name|struct
+name|wt_status
+modifier|*
+name|s
+parameter_list|,
+name|int
+name|null_termination
+parameter_list|)
+block|{
+name|s
+operator|->
+name|use_color
+operator|=
+literal|0
+expr_stmt|;
+name|wt_shortstatus_print
+argument_list|(
+name|s
+argument_list|,
+name|null_termination
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
 end_unit
 
