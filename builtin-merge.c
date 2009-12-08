@@ -4973,20 +4973,6 @@ return|;
 block|}
 end_function
 
-begin_decl_stmt
-DECL|variable|deprecation_warning
-specifier|static
-specifier|const
-name|char
-name|deprecation_warning
-index|[]
-init|=
-literal|"'git merge<msg> HEAD<commit>' is deprecated. Please update\n"
-literal|"your script to use 'git merge -m<msg><commit>' instead.\n"
-literal|"In future versions of git, this syntax will be removed."
-decl_stmt|;
-end_decl_stmt
-
 begin_function
 DECL|function|is_old_style_invocation
 specifier|static
@@ -5081,11 +5067,6 @@ condition|)
 return|return
 name|NULL
 return|;
-name|warning
-argument_list|(
-name|deprecation_warning
-argument_list|)
-expr_stmt|;
 block|}
 return|return
 name|second_token
