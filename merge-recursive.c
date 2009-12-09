@@ -1031,44 +1031,6 @@ name|struct
 name|unpack_trees_options
 name|opts
 decl_stmt|;
-name|struct
-name|unpack_trees_error_msgs
-name|msgs
-init|=
-block|{
-comment|/* would_overwrite */
-literal|"Your local changes to '%s' would be overwritten by merge.  Aborting."
-block|,
-comment|/* not_uptodate_file */
-literal|"Your local changes to '%s' would be overwritten by merge.  Aborting."
-block|,
-comment|/* not_uptodate_dir */
-literal|"Updating '%s' would lose untracked files in it.  Aborting."
-block|,
-comment|/* would_lose_untracked */
-literal|"Untracked working tree file '%s' would be %s by merge.  Aborting"
-block|,
-comment|/* bind_overlap -- will not happen here */
-name|NULL
-block|, 	}
-decl_stmt|;
-if|if
-condition|(
-name|advice_commit_before_merge
-condition|)
-block|{
-name|msgs
-operator|.
-name|would_overwrite
-operator|=
-name|msgs
-operator|.
-name|not_uptodate_file
-operator|=
-literal|"Your local changes to '%s' would be overwritten by merge.  Aborting.\n"
-literal|"Please, commit your changes or stash them before you can merge."
-expr_stmt|;
-block|}
 name|memset
 argument_list|(
 operator|&
@@ -1135,7 +1097,8 @@ name|opts
 operator|.
 name|msgs
 operator|=
-name|msgs
+name|get_porcelain_error_msgs
+argument_list|()
 expr_stmt|;
 name|init_tree_desc_from_tree
 argument_list|(
@@ -7269,6 +7232,59 @@ argument_list|)
 expr_stmt|;
 return|return
 name|clean_merge
+return|;
+block|}
+end_function
+
+begin_function
+DECL|function|get_porcelain_error_msgs
+name|struct
+name|unpack_trees_error_msgs
+name|get_porcelain_error_msgs
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+name|struct
+name|unpack_trees_error_msgs
+name|msgs
+init|=
+block|{
+comment|/* would_overwrite */
+literal|"Your local changes to '%s' would be overwritten by merge.  Aborting."
+block|,
+comment|/* not_uptodate_file */
+literal|"Your local changes to '%s' would be overwritten by merge.  Aborting."
+block|,
+comment|/* not_uptodate_dir */
+literal|"Updating '%s' would lose untracked files in it.  Aborting."
+block|,
+comment|/* would_lose_untracked */
+literal|"Untracked working tree file '%s' would be %s by merge.  Aborting"
+block|,
+comment|/* bind_overlap -- will not happen here */
+name|NULL
+block|, 	}
+decl_stmt|;
+if|if
+condition|(
+name|advice_commit_before_merge
+condition|)
+block|{
+name|msgs
+operator|.
+name|would_overwrite
+operator|=
+name|msgs
+operator|.
+name|not_uptodate_file
+operator|=
+literal|"Your local changes to '%s' would be overwritten by merge.  Aborting.\n"
+literal|"Please, commit your changes or stash them before you can merge."
+expr_stmt|;
+block|}
+return|return
+name|msgs
 return|;
 block|}
 end_function
