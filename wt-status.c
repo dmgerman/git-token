@@ -344,7 +344,7 @@ name|fp
 argument_list|,
 name|c
 argument_list|,
-literal|"#   (use \"git add<file>...\" to mark resolution)"
+literal|"#   (use \"git add/rm<file>...\" as appropriate to mark resolution)"
 argument_list|)
 expr_stmt|;
 name|color_fprintf_ln
