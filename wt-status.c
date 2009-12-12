@@ -304,6 +304,14 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|s
+operator|->
+name|in_merge
+condition|)
+empty_stmt|;
+elseif|else
+if|if
+condition|(
 operator|!
 name|s
 operator|->
@@ -398,12 +406,20 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|s
+operator|->
+name|in_merge
+condition|)
+empty_stmt|;
+comment|/* NEEDSWORK: use "git reset --unresolve"??? */
+elseif|else
+if|if
+condition|(
 operator|!
 name|s
 operator|->
 name|is_initial
 condition|)
-block|{
 name|color_fprintf_ln
 argument_list|(
 name|s
@@ -419,9 +435,7 @@ operator|->
 name|reference
 argument_list|)
 expr_stmt|;
-block|}
 else|else
-block|{
 name|color_fprintf_ln
 argument_list|(
 name|s
@@ -433,7 +447,6 @@ argument_list|,
 literal|"#   (use \"git rm --cached<file>...\" to unstage)"
 argument_list|)
 expr_stmt|;
-block|}
 name|color_fprintf_ln
 argument_list|(
 name|s

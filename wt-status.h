@@ -136,6 +136,10 @@ DECL|member|amend
 name|int
 name|amend
 decl_stmt|;
+DECL|member|in_merge
+name|int
+name|in_merge
+decl_stmt|;
 DECL|member|nowarn
 name|int
 name|nowarn

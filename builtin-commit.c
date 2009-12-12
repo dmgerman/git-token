@@ -5153,6 +5153,12 @@ literal|1
 else|:
 literal|0
 expr_stmt|;
+name|s
+operator|.
+name|in_merge
+operator|=
+name|in_merge
+expr_stmt|;
 name|wt_status_collect
 argument_list|(
 operator|&
@@ -5690,6 +5696,12 @@ argument_list|(
 literal|"MERGE_HEAD"
 argument_list|)
 argument_list|)
+expr_stmt|;
+name|s
+operator|.
+name|in_merge
+operator|=
+name|in_merge
 expr_stmt|;
 if|if
 condition|(
