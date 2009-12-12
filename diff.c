@@ -371,13 +371,10 @@ condition|)
 return|return
 name|DIFF_WHITESPACE
 return|;
-name|die
-argument_list|(
-literal|"bad config variable '%s'"
-argument_list|,
-name|var
-argument_list|)
-expr_stmt|;
+return|return
+operator|-
+literal|1
+return|;
 block|}
 end_function
 
@@ -728,6 +725,15 @@ argument_list|,
 literal|11
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|slot
+operator|<
+literal|0
+condition|)
+return|return
+literal|0
+return|;
 if|if
 condition|(
 operator|!
