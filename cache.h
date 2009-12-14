@@ -2740,6 +2740,18 @@ name|CE_MATCH_RACY_IS_DIRTY
 value|02
 end_define
 
+begin_comment
+comment|/* do stat comparison even if CE_SKIP_WORKTREE is true */
+end_comment
+
+begin_define
+DECL|macro|CE_MATCH_IGNORE_SKIP_WORKTREE
+define|#
+directive|define
+name|CE_MATCH_IGNORE_SKIP_WORKTREE
+value|04
+end_define
+
 begin_function_decl
 specifier|extern
 name|int
