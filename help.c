@@ -1849,6 +1849,21 @@ expr_stmt|;
 block|}
 end_function
 
+begin_comment
+comment|/* An empirically derived magic number */
+end_comment
+
+begin_define
+DECL|macro|SIMILAR_ENOUGH
+define|#
+directive|define
+name|SIMILAR_ENOUGH
+parameter_list|(
+name|x
+parameter_list|)
+value|((x)< 6)
+end_define
+
 begin_function
 DECL|function|help_unknown_cmd
 specifier|const
@@ -2102,6 +2117,11 @@ operator|&&
 name|n
 operator|==
 literal|1
+operator|&&
+name|SIMILAR_ENOUGH
+argument_list|(
+name|best_similarity
+argument_list|)
 condition|)
 block|{
 specifier|const
@@ -2194,9 +2214,10 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|SIMILAR_ENOUGH
+argument_list|(
 name|best_similarity
-operator|<
-literal|6
+argument_list|)
 condition|)
 block|{
 name|fprintf
