@@ -3835,15 +3835,6 @@ parameter_list|(
 name|void
 parameter_list|)
 block|{
-specifier|const
-name|struct
-name|index_state
-modifier|*
-name|state
-init|=
-operator|&
-name|the_index
-decl_stmt|;
 name|int
 name|i
 decl_stmt|,
@@ -3859,9 +3850,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|state
-operator|->
-name|cache_nr
+name|active_nr
 condition|;
 name|i
 operator|++
@@ -3870,9 +3859,7 @@ if|if
 condition|(
 name|ce_stage
 argument_list|(
-name|state
-operator|->
-name|cache
+name|active_cache
 index|[
 name|i
 index|]
