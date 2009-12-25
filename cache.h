@@ -1264,6 +1264,12 @@ name|cache_alloc
 decl_stmt|,
 name|cache_changed
 decl_stmt|;
+DECL|member|resolve_undo
+name|struct
+name|string_list
+modifier|*
+name|resolve_undo
+decl_stmt|;
 DECL|member|cache_tree
 name|struct
 name|cache_tree
@@ -1640,6 +1646,15 @@ parameter_list|,
 name|namelen
 parameter_list|)
 value|index_name_is_other(&the_index, (name), (namelen))
+end_define
+
+begin_define
+DECL|macro|resolve_undo_clear
+define|#
+directive|define
+name|resolve_undo_clear
+parameter_list|()
+value|resolve_undo_clear_index(&the_index)
 end_define
 
 begin_endif

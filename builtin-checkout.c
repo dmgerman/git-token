@@ -113,6 +113,12 @@ directive|include
 file|"ll-merge.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"resolve-undo.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|checkout_usage
 specifier|static
@@ -2225,6 +2231,9 @@ argument_list|(
 literal|"corrupt index file"
 argument_list|)
 return|;
+name|resolve_undo_clear
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|opts
