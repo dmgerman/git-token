@@ -1658,6 +1658,17 @@ value|resolve_undo_clear_index(&the_index)
 end_define
 
 begin_define
+DECL|macro|unmerge_cache_entry_at
+define|#
+directive|define
+name|unmerge_cache_entry_at
+parameter_list|(
+name|at
+parameter_list|)
+value|unmerge_index_entry_at(&the_index, at)
+end_define
+
+begin_define
 DECL|macro|unmerge_cache
 define|#
 directive|define
