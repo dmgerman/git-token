@@ -1657,6 +1657,17 @@ parameter_list|()
 value|resolve_undo_clear_index(&the_index)
 end_define
 
+begin_define
+DECL|macro|unmerge_cache
+define|#
+directive|define
+name|unmerge_cache
+parameter_list|(
+name|pathspec
+parameter_list|)
+value|unmerge_index(&the_index, pathspec)
+end_define
+
 begin_endif
 endif|#
 directive|endif

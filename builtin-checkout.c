@@ -1393,6 +1393,18 @@ condition|)
 return|return
 literal|1
 return|;
+comment|/* "checkout -m path" to recreate conflicted state */
+if|if
+condition|(
+name|opts
+operator|->
+name|merge
+condition|)
+name|unmerge_cache
+argument_list|(
+name|pathspec
+argument_list|)
+expr_stmt|;
 comment|/* Any unmerged paths? */
 for|for
 control|(
