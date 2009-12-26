@@ -3848,7 +3848,7 @@ name|revs
 operator|->
 name|pruning
 argument_list|,
-name|QUIET
+name|QUICK
 argument_list|)
 expr_stmt|;
 name|revs

@@ -3099,7 +3099,7 @@ name|rev
 operator|->
 name|diffopt
 argument_list|,
-name|QUIET
+name|QUICK
 argument_list|)
 condition|)
 name|fprintf

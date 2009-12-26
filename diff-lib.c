@@ -302,7 +302,7 @@ name|revs
 operator|->
 name|diffopt
 argument_list|,
-name|QUIET
+name|QUICK
 argument_list|)
 operator|&&
 name|DIFF_OPT_TST
@@ -2509,7 +2509,7 @@ name|rev
 operator|.
 name|diffopt
 argument_list|,
-name|QUIET
+name|QUICK
 argument_list|)
 expr_stmt|;
 name|DIFF_OPT_SET
