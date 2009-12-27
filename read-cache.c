@@ -4854,8 +4854,7 @@ literal|8
 condition|)
 block|{
 comment|/* After an array of active_nr index entries, 		 * there can be arbitrary number of extended 		 * sections, each of which is prefixed with 		 * extension name (4-byte) and section length 		 * in 4-byte network byte order. 		 */
-name|unsigned
-name|long
+name|uint32_t
 name|extsize
 decl_stmt|;
 name|memcpy
