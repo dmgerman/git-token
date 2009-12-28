@@ -74,6 +74,49 @@ parameter_list|)
 value|0
 end_define
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|_STAT_H_
+end_ifndef
+
+begin_define
+DECL|macro|S_IRUSR
+define|#
+directive|define
+name|S_IRUSR
+value|0
+end_define
+
+begin_define
+DECL|macro|S_IWUSR
+define|#
+directive|define
+name|S_IWUSR
+value|0
+end_define
+
+begin_define
+DECL|macro|S_IXUSR
+define|#
+directive|define
+name|S_IXUSR
+value|0
+end_define
+
+begin_define
+DECL|macro|S_IRWXU
+define|#
+directive|define
+name|S_IRWXU
+value|(S_IRUSR | S_IWUSR | S_IXUSR)
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_define
 DECL|macro|S_IRGRP
 define|#
@@ -99,11 +142,11 @@ value|0
 end_define
 
 begin_define
-DECL|macro|S_ISGID
+DECL|macro|S_IRWXG
 define|#
 directive|define
-name|S_ISGID
-value|0
+name|S_IRWXG
+value|(S_IRGRP | S_IWGRP | S_IXGRP)
 end_define
 
 begin_define
@@ -115,10 +158,50 @@ value|0
 end_define
 
 begin_define
+DECL|macro|S_IWOTH
+define|#
+directive|define
+name|S_IWOTH
+value|0
+end_define
+
+begin_define
 DECL|macro|S_IXOTH
 define|#
 directive|define
 name|S_IXOTH
+value|0
+end_define
+
+begin_define
+DECL|macro|S_IRWXO
+define|#
+directive|define
+name|S_IRWXO
+value|(S_IROTH | S_IWOTH | S_IXOTH)
+end_define
+
+begin_define
+DECL|macro|S_ISUID
+define|#
+directive|define
+name|S_ISUID
+value|0
+end_define
+
+begin_define
+DECL|macro|S_ISGID
+define|#
+directive|define
+name|S_ISGID
+value|0
+end_define
+
+begin_define
+DECL|macro|S_ISVTX
+define|#
+directive|define
+name|S_ISVTX
 value|0
 end_define
 
