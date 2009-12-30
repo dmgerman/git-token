@@ -1557,7 +1557,6 @@ expr_stmt|;
 comment|/* by default */
 if|if
 condition|(
-operator|(
 name|reset_type
 operator|==
 name|HARD
@@ -1565,21 +1564,9 @@ operator|||
 name|reset_type
 operator|==
 name|MERGE
-operator|)
-operator|&&
-operator|!
-name|is_inside_work_tree
-argument_list|()
 condition|)
-name|die
-argument_list|(
-literal|"%s reset requires a work tree"
-argument_list|,
-name|reset_type_names
-index|[
-name|reset_type
-index|]
-argument_list|)
+name|setup_work_tree
+argument_list|()
 expr_stmt|;
 comment|/* Soft reset does not touch the index file nor the working tree 	 * at all, but requires them in a good order.  Other resets reset 	 * the index file to the tree object we are switching to. */
 if|if
