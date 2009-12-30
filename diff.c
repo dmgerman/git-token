@@ -22147,6 +22147,12 @@ argument_list|)
 expr_stmt|;
 name|child
 operator|.
+name|use_shell
+operator|=
+literal|1
+expr_stmt|;
+name|child
+operator|.
 name|argv
 operator|=
 name|argv
