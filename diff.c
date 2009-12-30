@@ -13479,7 +13479,7 @@ name|run_command_v_opt
 argument_list|(
 name|spawn_arg
 argument_list|,
-literal|0
+name|RUN_USING_SHELL
 argument_list|)
 expr_stmt|;
 name|remove_tempfile
