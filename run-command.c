@@ -162,6 +162,27 @@ argument_list|(
 literal|"BUG: shell command is empty"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|strcspn
+argument_list|(
+name|argv
+index|[
+literal|0
+index|]
+argument_list|,
+literal|"|&;<>()$`\\\"' \t\n*?[#~=%"
+argument_list|)
+operator|!=
+name|strlen
+argument_list|(
+name|argv
+index|[
+literal|0
+index|]
+argument_list|)
+condition|)
+block|{
 name|nargv
 index|[
 name|nargc
@@ -230,6 +251,7 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 for|for
 control|(
