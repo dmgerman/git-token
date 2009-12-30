@@ -52,8 +52,7 @@ name|long
 modifier|*
 name|loose
 parameter_list|,
-name|unsigned
-name|long
+name|off_t
 modifier|*
 name|loose_size
 parameter_list|,
@@ -458,8 +457,7 @@ name|garbage
 init|=
 literal|0
 decl_stmt|;
-name|unsigned
-name|long
+name|off_t
 name|loose_size
 init|=
 literal|0
@@ -626,8 +624,7 @@ name|num_pack
 init|=
 literal|0
 decl_stmt|;
-name|unsigned
-name|long
+name|off_t
 name|size_pack
 init|=
 literal|0
@@ -702,9 +699,15 @@ name|printf
 argument_list|(
 literal|"size: %lu\n"
 argument_list|,
+call|(
+name|unsigned
+name|long
+call|)
+argument_list|(
 name|loose_size
 operator|/
 literal|1024
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|printf
@@ -725,9 +728,15 @@ name|printf
 argument_list|(
 literal|"size-pack: %lu\n"
 argument_list|,
+call|(
+name|unsigned
+name|long
+call|)
+argument_list|(
 name|size_pack
 operator|/
 literal|1024
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|printf
@@ -752,9 +761,15 @@ literal|"%lu objects, %lu kilobytes\n"
 argument_list|,
 name|loose
 argument_list|,
+call|(
+name|unsigned
+name|long
+call|)
+argument_list|(
 name|loose_size
 operator|/
 literal|1024
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
