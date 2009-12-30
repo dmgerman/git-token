@@ -1581,6 +1581,25 @@ name|reset_type
 index|]
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|reset_type
+operator|==
+name|MIXED
+operator|&&
+name|is_bare_repository
+argument_list|()
+condition|)
+name|die
+argument_list|(
+literal|"%s reset is not allowed in a bare repository"
+argument_list|,
+name|reset_type_names
+index|[
+name|reset_type
+index|]
+argument_list|)
+expr_stmt|;
 comment|/* Soft reset does not touch the index file nor the working tree 	 * at all, but requires them in a good order.  Other resets reset 	 * the index file to the tree object we are switching to. */
 if|if
 condition|(
