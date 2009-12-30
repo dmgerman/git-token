@@ -22191,6 +22191,13 @@ operator|!=
 literal|0
 condition|)
 block|{
+name|close
+argument_list|(
+name|child
+operator|.
+name|out
+argument_list|)
+expr_stmt|;
 name|strbuf_release
 argument_list|(
 operator|&
@@ -22211,6 +22218,13 @@ return|return
 name|NULL
 return|;
 block|}
+name|close
+argument_list|(
+name|child
+operator|.
+name|out
+argument_list|)
+expr_stmt|;
 name|remove_tempfile
 argument_list|()
 expr_stmt|;

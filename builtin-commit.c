@@ -626,6 +626,21 @@ argument_list|,
 literal|"force edit of commit"
 argument_list|)
 block|,
+name|OPT_STRING
+argument_list|(
+literal|0
+argument_list|,
+literal|"cleanup"
+argument_list|,
+operator|&
+name|cleanup_arg
+argument_list|,
+literal|"default"
+argument_list|,
+literal|"how to strip spaces and #comments from message"
+argument_list|)
+block|,
+comment|/* end commit message options */
 name|OPT_GROUP
 argument_list|(
 literal|"Commit contents options"
@@ -751,20 +766,7 @@ argument_list|,
 literal|"ok to record an empty change"
 argument_list|)
 block|,
-name|OPT_STRING
-argument_list|(
-literal|0
-argument_list|,
-literal|"cleanup"
-argument_list|,
-operator|&
-name|cleanup_arg
-argument_list|,
-literal|"default"
-argument_list|,
-literal|"how to strip spaces and #comments from message"
-argument_list|)
-block|,
+comment|/* end commit contents options */
 name|OPT_END
 argument_list|()
 block|}
