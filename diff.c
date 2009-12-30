@@ -20267,6 +20267,13 @@ operator|!=
 literal|0
 condition|)
 block|{
+name|close
+argument_list|(
+name|child
+operator|.
+name|out
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|temp
@@ -20295,6 +20302,13 @@ return|return
 name|NULL
 return|;
 block|}
+name|close
+argument_list|(
+name|child
+operator|.
+name|out
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|temp
