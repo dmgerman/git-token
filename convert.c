@@ -1068,10 +1068,6 @@ name|argv
 index|[]
 init|=
 block|{
-literal|"sh"
-block|,
-literal|"-c"
-block|,
 name|params
 operator|->
 name|cmd
@@ -1097,6 +1093,12 @@ operator|.
 name|argv
 operator|=
 name|argv
+expr_stmt|;
+name|child_process
+operator|.
+name|use_shell
+operator|=
+literal|1
 expr_stmt|;
 name|child_process
 operator|.

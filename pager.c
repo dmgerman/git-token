@@ -114,10 +114,6 @@ name|pager_argv
 index|[]
 init|=
 block|{
-literal|"sh"
-block|,
-literal|"-c"
-block|,
 name|NULL
 block|,
 name|NULL
@@ -331,10 +327,16 @@ comment|/* means we are emitting to terminal */
 comment|/* spawn the pager */
 name|pager_argv
 index|[
-literal|2
+literal|0
 index|]
 operator|=
 name|pager
+expr_stmt|;
+name|pager_process
+operator|.
+name|use_shell
+operator|=
+literal|1
 expr_stmt|;
 name|pager_process
 operator|.
