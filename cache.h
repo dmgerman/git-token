@@ -694,6 +694,14 @@ name|CE_UNHASHED
 value|(0x200000)
 end_define
 
+begin_define
+DECL|macro|CE_CONFLICTED
+define|#
+directive|define
+name|CE_CONFLICTED
+value|(0x400000)
+end_define
+
 begin_comment
 comment|/*  * Extended on-disk flags  */
 end_comment
