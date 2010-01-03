@@ -6462,11 +6462,9 @@ operator|==
 literal|416
 condition|)
 block|{
-name|fprintf
+name|warning
 argument_list|(
-name|stderr
-argument_list|,
-literal|"Warning: requested range invalid; we may already have all the data.\n"
+literal|"requested range invalid; we may already have all the data."
 argument_list|)
 expr_stmt|;
 block|}

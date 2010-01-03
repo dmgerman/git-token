@@ -1143,12 +1143,9 @@ name|st_mode
 argument_list|)
 condition|)
 block|{
-name|fprintf
+name|warning
 argument_list|(
-name|stderr
-argument_list|,
-literal|"Warning: %s;"
-literal|" will overwrite!\n"
+literal|"%s; will overwrite!"
 argument_list|,
 name|bad
 argument_list|)
