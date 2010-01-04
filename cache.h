@@ -699,7 +699,7 @@ DECL|macro|CE_CONFLICTED
 define|#
 directive|define
 name|CE_CONFLICTED
-value|(0x400000)
+value|(0x800000)
 end_define
 
 begin_comment
