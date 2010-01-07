@@ -137,9 +137,9 @@ name|char
 modifier|*
 name|prefix
 decl_stmt|;
-DECL|member|pos
+DECL|member|cache_bottom
 name|int
-name|pos
+name|cache_bottom
 decl_stmt|;
 DECL|member|dir
 name|struct

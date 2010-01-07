@@ -694,6 +694,14 @@ name|CE_UNHASHED
 value|(0x200000)
 end_define
 
+begin_define
+DECL|macro|CE_UNPACKED
+define|#
+directive|define
+name|CE_UNPACKED
+value|(0x1000000)
+end_define
+
 begin_comment
 comment|/*  * Extended on-disk flags  */
 end_comment
