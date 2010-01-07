@@ -697,9 +697,16 @@ literal|1
 return|;
 name|printf
 argument_list|(
-literal|"Deleted tag '%s'\n"
+literal|"Deleted tag '%s' (was %s)\n"
 argument_list|,
 name|name
+argument_list|,
+name|find_unique_abbrev
+argument_list|(
+name|sha1
+argument_list|,
+name|DEFAULT_ABBREV
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -2638,6 +2645,31 @@ argument_list|(
 literal|"%s: cannot update the ref"
 argument_list|,
 name|ref
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|force
+operator|&&
+name|hashcmp
+argument_list|(
+name|prev
+argument_list|,
+name|object
+argument_list|)
+condition|)
+name|printf
+argument_list|(
+literal|"Updated tag '%s' (was %s)\n"
+argument_list|,
+name|tag
+argument_list|,
+name|find_unique_abbrev
+argument_list|(
+name|prev
+argument_list|,
+name|DEFAULT_ABBREV
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|strbuf_release
