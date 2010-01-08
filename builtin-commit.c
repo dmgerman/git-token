@@ -3285,8 +3285,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|!
 name|user_ident_explicitly_given
+operator|!=
+name|IDENT_ALL_GIVEN
 condition|)
 name|fprintf
 argument_list|(
