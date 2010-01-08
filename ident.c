@@ -446,6 +446,7 @@ index|[
 literal|0
 index|]
 condition|)
+block|{
 name|strlcpy
 argument_list|(
 name|git_default_email
@@ -458,6 +459,11 @@ name|git_default_email
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|user_ident_explicitly_given
+operator||=
+name|IDENT_MAIL_GIVEN
+expr_stmt|;
+block|}
 else|else
 block|{
 if|if
