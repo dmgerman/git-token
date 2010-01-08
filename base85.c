@@ -599,9 +599,6 @@ name|int
 name|bytes
 parameter_list|)
 block|{
-name|prep_base85
-argument_list|()
-expr_stmt|;
 name|say
 argument_list|(
 literal|"encode 85"
