@@ -485,10 +485,12 @@ argument_list|,
 name|ch
 argument_list|)
 return|;
-comment|/* 		 * Detect overflow.  The largest 		 * 5-letter possible is "|NsC0" to 		 * encode 0xffffffff, and "|NsC" gives 		 * 0x03030303 at this point (i.e. 		 * 0xffffffff = 0x03030303 * 85). 		 */
+comment|/* Detect overflow. */
 if|if
 condition|(
-literal|0x03030303
+literal|0xffffffff
+operator|/
+literal|85
 operator|<
 name|acc
 operator|||
