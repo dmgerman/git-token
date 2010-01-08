@@ -1986,9 +1986,19 @@ condition|(
 operator|!
 name|remote_refs
 condition|)
+block|{
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"No refs in common and none specified; doing nothing.\n"
+literal|"Perhaps you should specify a branch such as 'master'.\n"
+argument_list|)
+expr_stmt|;
 return|return
 literal|0
 return|;
+block|}
 name|helper
 operator|=
 name|get_helper
