@@ -5099,6 +5099,13 @@ name|url
 operator|=
 name|url
 expr_stmt|;
+comment|/* In case previous URL had helper forced, reset it. */
+name|remote
+operator|->
+name|foreign_vcs
+operator|=
+name|NULL
+expr_stmt|;
 comment|/* maybe it is a foreign URL? */
 if|if
 condition|(
