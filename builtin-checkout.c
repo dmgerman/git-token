@@ -2362,6 +2362,10 @@ operator|=
 name|opts
 operator|->
 name|merge
+operator|&&
+name|old
+operator|->
+name|commit
 expr_stmt|;
 name|topts
 operator|.
@@ -2527,13 +2531,17 @@ condition|)
 return|return
 literal|1
 return|;
-name|parse_commit
-argument_list|(
+comment|/* 			 * Without old->commit, the below is the same as 			 * the two-tree unpack we already tried and failed. 			 */
+if|if
+condition|(
+operator|!
 name|old
 operator|->
 name|commit
-argument_list|)
-expr_stmt|;
+condition|)
+return|return
+literal|1
+return|;
 comment|/* Do more real merge */
 comment|/* 			 * We update the index fully, then write the 			 * tree from the index, then merge the new 			 * branch with the current tree, with the old 			 * branch as the base. Then we reset the index 			 * (but not the working tree) to the new 			 * branch, leaving the working tree as the 			 * merged version, but skipping unmerged 			 * entries in the index. 			 */
 name|add_files_to_cache
