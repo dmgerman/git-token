@@ -27,23 +27,6 @@ comment|/* assuming 32bit int */
 end_comment
 
 begin_function_decl
-name|ucs_char_t
-name|pick_one_utf8_char
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-modifier|*
-name|start
-parameter_list|,
-name|size_t
-modifier|*
-name|remainder_p
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
 name|int
 name|utf8_width
 parameter_list|(
