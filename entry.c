@@ -905,6 +905,7 @@ end_comment
 
 begin_function
 DECL|function|check_path
+specifier|static
 name|int
 name|check_path
 parameter_list|(

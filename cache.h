@@ -2902,34 +2902,6 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
-begin_comment
-comment|/* "careful lstat()" */
-end_comment
-
-begin_function_decl
-specifier|extern
-name|int
-name|check_path
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|path
-parameter_list|,
-name|int
-name|len
-parameter_list|,
-name|struct
-name|stat
-modifier|*
-name|st
-parameter_list|,
-name|int
-name|skiplen
-parameter_list|)
-function_decl|;
-end_function_decl
-
 begin_define
 DECL|macro|REFRESH_REALLY
 define|#
