@@ -1278,6 +1278,34 @@ block|}
 end_function
 
 begin_function
+DECL|function|refresh_cache_or_die
+specifier|static
+name|void
+name|refresh_cache_or_die
+parameter_list|(
+name|int
+name|refresh_flags
+parameter_list|)
+block|{
+comment|/* 	 * refresh_flags contains REFRESH_QUIET, so the only errors 	 * are for unmerged entries. 	 */
+if|if
+condition|(
+name|refresh_cache
+argument_list|(
+name|refresh_flags
+operator||
+name|REFRESH_IN_PORCELAIN
+argument_list|)
+condition|)
+name|die_resolve_conflict
+argument_list|(
+literal|"commit"
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
 DECL|function|prepare_index
 specifier|static
 name|char
@@ -1443,7 +1471,7 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-name|refresh_cache
+name|refresh_cache_or_die
 argument_list|(
 name|refresh_flags
 argument_list|)
@@ -1501,7 +1529,7 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
-name|refresh_cache
+name|refresh_cache_or_die
 argument_list|(
 name|refresh_flags
 argument_list|)

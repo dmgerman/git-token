@@ -12,6 +12,12 @@ directive|define
 name|ADVICE_H
 end_define
 
+begin_include
+include|#
+directive|include
+file|"git-compat-util.h"
+end_include
+
 begin_decl_stmt
 specifier|extern
 name|int
@@ -33,6 +39,13 @@ name|advice_commit_before_merge
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+specifier|extern
+name|int
+name|advice_resolve_conflict
+decl_stmt|;
+end_decl_stmt
+
 begin_function_decl
 name|int
 name|git_default_advice_config
@@ -46,6 +59,20 @@ specifier|const
 name|char
 modifier|*
 name|value
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|void
+name|NORETURN
+name|die_resolve_conflict
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|me
 parameter_list|)
 function_decl|;
 end_function_decl

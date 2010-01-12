@@ -5249,6 +5249,18 @@ name|remoteheads
 decl_stmt|;
 if|if
 condition|(
+name|read_cache_unmerged
+argument_list|()
+condition|)
+block|{
+name|die_resolve_conflict
+argument_list|(
+literal|"merge"
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
 name|file_exists
 argument_list|(
 name|git_path
@@ -5257,22 +5269,25 @@ literal|"MERGE_HEAD"
 argument_list|)
 argument_list|)
 condition|)
-name|die
-argument_list|(
-literal|"You have not concluded your merge. (MERGE_HEAD exists)"
-argument_list|)
-expr_stmt|;
+block|{
+comment|/* 		 * There is no unmerged entry, don't advise 'git 		 * add/rm<file>', just 'git commit'. 		 */
 if|if
 condition|(
-name|read_cache_unmerged
-argument_list|()
+name|advice_resolve_conflict
 condition|)
 name|die
 argument_list|(
-literal|"You are in the middle of a conflicted merge."
-literal|" (index unmerged)"
+literal|"You have not concluded your merge (MERGE_HEAD exists).\n"
+literal|"Please, commit your changes before you can merge."
 argument_list|)
 expr_stmt|;
+else|else
+name|die
+argument_list|(
+literal|"You have not concluded your merge (MERGE_HEAD exists)."
+argument_list|)
+expr_stmt|;
+block|}
 comment|/* 	 * Check if we are _not_ on a detached HEAD, i.e. if there is a 	 * current branch. 	 */
 name|branch
 operator|=
