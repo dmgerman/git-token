@@ -2500,24 +2500,6 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|struct
-name|cache_entry
-modifier|*
-name|refresh_cache_entry
-parameter_list|(
-name|struct
-name|cache_entry
-modifier|*
-name|ce
-parameter_list|,
-name|int
-name|really
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-specifier|extern
 name|void
 name|rename_index_entry_at
 parameter_list|(
@@ -3991,20 +3973,6 @@ argument_list|)
 expr_stmt|;
 block|}
 end_function
-
-begin_function_decl
-specifier|extern
-name|int
-name|is_empty_blob_sha1
-parameter_list|(
-specifier|const
-name|unsigned
-name|char
-modifier|*
-name|sha1
-parameter_list|)
-function_decl|;
-end_function_decl
 
 begin_define
 DECL|macro|EMPTY_TREE_SHA1_HEX
