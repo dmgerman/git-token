@@ -953,17 +953,6 @@ block|}
 if|if
 condition|(
 operator|!
-name|st
-operator|.
-name|st_size
-condition|)
-return|return
-literal|0
-return|;
-comment|/* empty file -- no grep hit */
-if|if
-condition|(
-operator|!
 name|S_ISREG
 argument_list|(
 name|st
