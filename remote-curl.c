@@ -2677,7 +2677,7 @@ argument_list|(
 operator|&
 name|buf
 argument_list|,
-literal|"Accept: application/x-%s-response"
+literal|"Accept: application/x-%s-result"
 argument_list|,
 name|svc
 argument_list|)
