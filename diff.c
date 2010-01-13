@@ -12016,11 +12016,18 @@ return|;
 comment|/* 	 * If ce is marked as "assume unchanged", there is no 	 * guarantee that work tree matches what we are looking for. 	 */
 if|if
 condition|(
+operator|(
 name|ce
 operator|->
 name|ce_flags
 operator|&
 name|CE_VALID
+operator|)
+operator|||
+name|ce_skip_worktree
+argument_list|(
+name|ce
+argument_list|)
 condition|)
 return|return
 literal|0

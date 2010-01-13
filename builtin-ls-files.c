@@ -255,6 +255,18 @@ literal|""
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|tag_skip_worktree
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|tag_skip_worktree
+init|=
+literal|""
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|show_dir_entry
 specifier|static
@@ -1057,7 +1069,16 @@ argument_list|)
 condition|?
 name|tag_unmerged
 else|:
+operator|(
+name|ce_skip_worktree
+argument_list|(
+name|ce
+argument_list|)
+condition|?
+name|tag_skip_worktree
+else|:
 name|tag_cached
+operator|)
 argument_list|,
 name|ce
 argument_list|)
@@ -1139,6 +1160,14 @@ operator|->
 name|ce_flags
 operator|&
 name|CE_UPDATE
+condition|)
+continue|continue;
+if|if
+condition|(
+name|ce_skip_worktree
+argument_list|(
+name|ce
+argument_list|)
 condition|)
 continue|continue;
 name|err
@@ -2595,6 +2624,18 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|read_cache
+argument_list|()
+operator|<
+literal|0
+condition|)
+name|die
+argument_list|(
+literal|"index file corrupt"
+argument_list|)
+expr_stmt|;
 name|argc
 operator|=
 name|parse_options
@@ -2642,6 +2683,10 @@ expr_stmt|;
 name|tag_killed
 operator|=
 literal|"K "
+expr_stmt|;
+name|tag_skip_worktree
+operator|=
+literal|"S "
 expr_stmt|;
 block|}
 if|if
@@ -2706,9 +2751,6 @@ name|argv
 argument_list|)
 expr_stmt|;
 comment|/* be nice with submodule paths ending in a slash */
-name|read_cache
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|pathspec

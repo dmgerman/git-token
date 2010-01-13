@@ -12855,6 +12855,8 @@ argument_list|,
 name|st
 argument_list|,
 name|CE_MATCH_IGNORE_VALID
+operator||
+name|CE_MATCH_IGNORE_SKIP_WORKTREE
 argument_list|)
 return|;
 block|}

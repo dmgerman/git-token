@@ -705,6 +705,11 @@ name|ce_uptodate
 argument_list|(
 name|ce
 argument_list|)
+operator|||
+name|ce_skip_worktree
+argument_list|(
+name|ce
+argument_list|)
 condition|)
 continue|continue;
 comment|/* If CE_VALID is set, don't look at workdir for file removal */
@@ -1630,11 +1635,18 @@ operator|(
 name|idx
 operator|&&
 operator|(
+operator|(
 name|idx
 operator|->
 name|ce_flags
 operator|&
 name|CE_VALID
+operator|)
+operator|||
+name|ce_skip_worktree
+argument_list|(
+name|idx
+argument_list|)
 operator|)
 operator|)
 expr_stmt|;

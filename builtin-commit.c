@@ -1067,6 +1067,11 @@ index|[
 name|i
 index|]
 decl_stmt|;
+name|struct
+name|string_list_item
+modifier|*
+name|item
+decl_stmt|;
 if|if
 condition|(
 name|ce
@@ -1098,6 +1103,8 @@ name|m
 argument_list|)
 condition|)
 continue|continue;
+name|item
+operator|=
 name|string_list_insert
 argument_list|(
 name|ce
@@ -1107,6 +1114,20 @@ argument_list|,
 name|list
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|ce_skip_worktree
+argument_list|(
+name|ce
+argument_list|)
+condition|)
+name|item
+operator|->
+name|util
+operator|=
+name|item
+expr_stmt|;
+comment|/* better a valid pointer than a fake one */
 block|}
 return|return
 name|report_path_error
@@ -1178,6 +1199,14 @@ name|i
 index|]
 operator|)
 decl_stmt|;
+comment|/* p->util is skip-worktree */
+if|if
+condition|(
+name|p
+operator|->
+name|util
+condition|)
+continue|continue;
 if|if
 condition|(
 operator|!

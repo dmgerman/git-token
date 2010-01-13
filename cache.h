@@ -695,6 +695,18 @@ value|(0x200000)
 end_define
 
 begin_comment
+comment|/* Only remove in work directory, not index */
+end_comment
+
+begin_define
+DECL|macro|CE_WT_REMOVE
+define|#
+directive|define
+name|CE_WT_REMOVE
+value|(0x400000)
+end_define
+
+begin_comment
 comment|/*  * Extended on-disk flags  */
 end_comment
 
@@ -704,6 +716,14 @@ define|#
 directive|define
 name|CE_INTENT_TO_ADD
 value|0x20000000
+end_define
+
+begin_define
+DECL|macro|CE_SKIP_WORKTREE
+define|#
+directive|define
+name|CE_SKIP_WORKTREE
+value|0x40000000
 end_define
 
 begin_comment
@@ -723,7 +743,7 @@ DECL|macro|CE_EXTENDED_FLAGS
 define|#
 directive|define
 name|CE_EXTENDED_FLAGS
-value|(CE_INTENT_TO_ADD)
+value|(CE_INTENT_TO_ADD | CE_SKIP_WORKTREE)
 end_define
 
 begin_comment
@@ -951,6 +971,17 @@ parameter_list|(
 name|ce
 parameter_list|)
 value|((ce)->ce_flags& CE_UPTODATE)
+end_define
+
+begin_define
+DECL|macro|ce_skip_worktree
+define|#
+directive|define
+name|ce_skip_worktree
+parameter_list|(
+name|ce
+parameter_list|)
+value|((ce)->ce_flags& CE_SKIP_WORKTREE)
 end_define
 
 begin_define
@@ -2757,6 +2788,18 @@ name|CE_MATCH_RACY_IS_DIRTY
 value|02
 end_define
 
+begin_comment
+comment|/* do stat comparison even if CE_SKIP_WORKTREE is true */
+end_comment
+
+begin_define
+DECL|macro|CE_MATCH_IGNORE_SKIP_WORKTREE
+define|#
+directive|define
+name|CE_MATCH_IGNORE_SKIP_WORKTREE
+value|04
+end_define
+
 begin_function_decl
 specifier|extern
 name|int
@@ -3413,6 +3456,13 @@ begin_decl_stmt
 specifier|extern
 name|int
 name|core_preload_index
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
+name|int
+name|core_apply_sparse_checkout
 decl_stmt|;
 end_decl_stmt
 

@@ -26,6 +26,12 @@ name|unpack_trees_options
 struct_decl|;
 end_struct_decl
 
+begin_struct_decl
+struct_decl|struct
+name|exclude_list
+struct_decl|;
+end_struct_decl
+
 begin_typedef
 DECL|typedef|merge_fn_t
 typedef|typedef
@@ -84,6 +90,18 @@ name|char
 modifier|*
 name|bind_overlap
 decl_stmt|;
+DECL|member|sparse_not_uptodate_file
+specifier|const
+name|char
+modifier|*
+name|sparse_not_uptodate_file
+decl_stmt|;
+DECL|member|would_lose_orphaned
+specifier|const
+name|char
+modifier|*
+name|would_lose_orphaned
+decl_stmt|;
 block|}
 struct|;
 end_struct
@@ -127,6 +145,9 @@ name|initial_checkout
 decl_stmt|,
 DECL|member|diff_index_cached
 name|diff_index_cached
+decl_stmt|,
+DECL|member|skip_sparse_checkout
+name|skip_sparse_checkout
 decl_stmt|,
 DECL|member|gently
 name|gently
@@ -192,6 +213,13 @@ name|struct
 name|index_state
 name|result
 decl_stmt|;
+DECL|member|el
+name|struct
+name|exclude_list
+modifier|*
+name|el
+decl_stmt|;
+comment|/* for internal use */
 block|}
 struct|;
 end_struct

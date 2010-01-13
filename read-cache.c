@@ -1396,13 +1396,33 @@ operator|&
 name|CE_MATCH_IGNORE_VALID
 decl_stmt|;
 name|int
+name|ignore_skip_worktree
+init|=
+name|options
+operator|&
+name|CE_MATCH_IGNORE_SKIP_WORKTREE
+decl_stmt|;
+name|int
 name|assume_racy_is_modified
 init|=
 name|options
 operator|&
 name|CE_MATCH_RACY_IS_DIRTY
 decl_stmt|;
-comment|/* 	 * If it's marked as always valid in the index, it's 	 * valid whatever the checked-out copy says. 	 */
+comment|/* 	 * If it's marked as always valid in the index, it's 	 * valid whatever the checked-out copy says. 	 * 	 * skip-worktree has the same effect with higher precedence 	 */
+if|if
+condition|(
+operator|!
+name|ignore_skip_worktree
+operator|&&
+name|ce_skip_worktree
+argument_list|(
+name|ce
+argument_list|)
+condition|)
+return|return
+literal|0
+return|;
 if|if
 condition|(
 operator|!
@@ -2837,6 +2857,8 @@ name|unsigned
 name|ce_option
 init|=
 name|CE_MATCH_IGNORE_VALID
+operator||
+name|CE_MATCH_IGNORE_SKIP_WORKTREE
 operator||
 name|CE_MATCH_RACY_IS_DIRTY
 decl_stmt|;
@@ -4807,6 +4829,13 @@ name|options
 operator|&
 name|CE_MATCH_IGNORE_VALID
 decl_stmt|;
+name|int
+name|ignore_skip_worktree
+init|=
+name|options
+operator|&
+name|CE_MATCH_IGNORE_SKIP_WORKTREE
+decl_stmt|;
 if|if
 condition|(
 name|ce_uptodate
@@ -4817,7 +4846,27 @@ condition|)
 return|return
 name|ce
 return|;
-comment|/* 	 * CE_VALID means the user promised us that the change to 	 * the work tree does not matter and told us not to worry. 	 */
+comment|/* 	 * CE_VALID or CE_SKIP_WORKTREE means the user promised us 	 * that the change to the work tree does not matter and told 	 * us not to worry. 	 */
+if|if
+condition|(
+operator|!
+name|ignore_skip_worktree
+operator|&&
+name|ce_skip_worktree
+argument_list|(
+name|ce
+argument_list|)
+condition|)
+block|{
+name|ce_mark_uptodate
+argument_list|(
+name|ce
+argument_list|)
+expr_stmt|;
+return|return
+name|ce
+return|;
+block|}
 if|if
 condition|(
 operator|!
