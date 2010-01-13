@@ -5387,6 +5387,11 @@ operator|&
 name|committer_ident
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|advice_implicit_identity
+condition|)
+block|{
 name|strbuf_addch
 argument_list|(
 operator|&
@@ -5403,6 +5408,7 @@ argument_list|,
 name|implicit_ident_advice
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|strbuf_release
 argument_list|(
