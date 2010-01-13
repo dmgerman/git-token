@@ -4060,7 +4060,7 @@ argument_list|(
 literal|"git checkout: -f and -m are incompatible"
 argument_list|)
 expr_stmt|;
-comment|/* 	 * case 1: git checkout<ref> -- [<paths>] 	 * 	 *<ref> must be a valid tree, everything after the '--' must be 	 *   a path. 	 * 	 * case 2: git checkout -- [<paths>] 	 * 	 *   everything after the '--' must be paths. 	 * 	 * case 3: git checkout<something> [<paths>] 	 * 	 *   With no paths, if<something> is a commit, that is to 	 *   switch to the branch or detach HEAD at it. 	 * 	 *   With no paths, if<something> is _not_ a commit, no -t nor -b 	 *   was given, and there is a tracking branch whose name is 	 *<something> in one and only one remote, then this is a short-hand 	 *   to fork local<something> from that remote tracking branch. 	 * 	 *   Otherwise<something> shall not be ambiguous. 	 *   - If it's *only* a reference, treat it like case (1). 	 *   - If it's only a path, treat it like case (2). 	 *   - else: fail. 	 * 	 */
+comment|/* 	 * case 1: git checkout<ref> -- [<paths>] 	 * 	 *<ref> must be a valid tree, everything after the '--' must be 	 *   a path. 	 * 	 * case 2: git checkout -- [<paths>] 	 * 	 *   everything after the '--' must be paths. 	 * 	 * case 3: git checkout<something> [<paths>] 	 * 	 *   With no paths, if<something> is a commit, that is to 	 *   switch to the branch or detach HEAD at it.  As a special case, 	 *   if<something> is A...B (missing A or B means HEAD but you can 	 *   omit at most one side), and if there is a unique merge base 	 *   between A and B, A...B names that merge base. 	 * 	 *   With no paths, if<something> is _not_ a commit, no -t nor -b 	 *   was given, and there is a tracking branch whose name is 	 *<something> in one and only one remote, then this is a short-hand 	 *   to fork local<something> from that remote tracking branch. 	 * 	 *   Otherwise<something> shall not be ambiguous. 	 *   - If it's *only* a reference, treat it like case (1). 	 *   - If it's only a path, treat it like case (2). 	 *   - else: fail. 	 * 	 */
 if|if
 condition|(
 name|argc
@@ -4133,7 +4133,7 @@ literal|"@{-1}"
 expr_stmt|;
 if|if
 condition|(
-name|get_sha1
+name|get_sha1_mb
 argument_list|(
 name|arg
 argument_list|,
