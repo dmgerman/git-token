@@ -8028,17 +8028,6 @@ argument_list|,
 name|size
 argument_list|)
 expr_stmt|;
-name|hashcpy
-argument_list|(
-name|new_ce
-operator|->
-name|sha1
-argument_list|,
-name|ce
-operator|->
-name|sha1
-argument_list|)
-expr_stmt|;
 name|memcpy
 argument_list|(
 name|new_ce
@@ -8062,6 +8051,8 @@ name|len
 argument_list|,
 literal|0
 argument_list|)
+operator||
+name|CE_CONFLICTED
 expr_stmt|;
 name|new_ce
 operator|->
