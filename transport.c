@@ -808,6 +808,10 @@ decl_stmt|;
 name|struct
 name|ref
 name|dummy
+init|=
+block|{
+literal|0
+block|}
 decl_stmt|,
 modifier|*
 name|tail
