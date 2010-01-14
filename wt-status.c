@@ -2050,7 +2050,9 @@ argument_list|(
 operator|&
 name|dir
 argument_list|,
-name|NULL
+name|s
+operator|->
+name|pathspec
 argument_list|)
 expr_stmt|;
 for|for
