@@ -2018,5 +2018,20 @@ begin_comment
 comment|// !NO_MINGW_REPLACE_READDIR
 end_comment
 
+begin_comment
+comment|/*  * Used by Pthread API implementation for Windows  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|err_win_to_posix
+parameter_list|(
+name|DWORD
+name|winerr
+parameter_list|)
+function_decl|;
+end_function_decl
+
 end_unit
 
