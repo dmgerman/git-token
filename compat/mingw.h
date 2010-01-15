@@ -1418,19 +1418,25 @@ value|off64_t
 end_define
 
 begin_define
-DECL|macro|stat
-define|#
-directive|define
-name|stat
-value|_stati64
-end_define
-
-begin_define
 DECL|macro|lseek
 define|#
 directive|define
 name|lseek
 value|_lseeki64
+end_define
+
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|ALREADY_DECLARED_STAT_FUNCS
+end_ifndef
+
+begin_define
+DECL|macro|stat
+define|#
+directive|define
+name|stat
+value|_stati64
 end_define
 
 begin_function_decl
@@ -1493,6 +1499,11 @@ name|y
 parameter_list|)
 value|mingw_lstat(x,y)
 end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_function_decl
 name|int
