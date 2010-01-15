@@ -1539,6 +1539,15 @@ name|char
 modifier|*
 modifier|*
 name|env
+parameter_list|,
+name|int
+name|fhin
+parameter_list|,
+name|int
+name|fhout
+parameter_list|,
+name|int
+name|fherr
 parameter_list|)
 function_decl|;
 end_function_decl
