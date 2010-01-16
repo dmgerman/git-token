@@ -12182,7 +12182,31 @@ name|xmalloc
 argument_list|(
 literal|100
 argument_list|)
+decl_stmt|,
+modifier|*
+name|dirty
+init|=
+literal|""
 decl_stmt|;
+comment|/* Are we looking at the work tree? */
+if|if
+condition|(
+operator|!
+name|s
+operator|->
+name|sha1_valid
+operator|&&
+name|is_submodule_modified
+argument_list|(
+name|s
+operator|->
+name|path
+argument_list|)
+condition|)
+name|dirty
+operator|=
+literal|"-dirty"
+expr_stmt|;
 name|len
 operator|=
 name|snprintf
@@ -12191,7 +12215,7 @@ name|data
 argument_list|,
 literal|100
 argument_list|,
-literal|"Subproject commit %s\n"
+literal|"Subproject commit %s%s\n"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -12199,6 +12223,8 @@ name|s
 operator|->
 name|sha1
 argument_list|)
+argument_list|,
+name|dirty
 argument_list|)
 expr_stmt|;
 name|s
