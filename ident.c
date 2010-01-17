@@ -1280,5 +1280,37 @@ return|;
 block|}
 end_function
 
+begin_function
+DECL|function|user_ident_sufficiently_given
+name|int
+name|user_ident_sufficiently_given
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+ifndef|#
+directive|ifndef
+name|WINDOWS
+return|return
+operator|(
+name|user_ident_explicitly_given
+operator|&
+name|IDENT_MAIL_GIVEN
+operator|)
+return|;
+else|#
+directive|else
+return|return
+operator|(
+name|user_ident_explicitly_given
+operator|==
+name|IDENT_ALL_GIVEN
+operator|)
+return|;
+endif|#
+directive|endif
+block|}
+end_function
+
 end_unit
 
