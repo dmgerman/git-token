@@ -263,6 +263,10 @@ name|void
 modifier|*
 name|merge_file
 parameter_list|(
+specifier|const
+name|char
+modifier|*
+parameter_list|,
 name|struct
 name|blob
 modifier|*
@@ -410,6 +414,10 @@ expr_stmt|;
 return|return
 name|merge_file
 argument_list|(
+name|entry
+operator|->
+name|path
+argument_list|,
 name|base
 argument_list|,
 name|our
