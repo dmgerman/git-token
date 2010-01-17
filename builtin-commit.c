@@ -3156,7 +3156,8 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|user_ident_explicitly_given
+name|user_ident_sufficiently_given
+argument_list|()
 condition|)
 name|fprintf
 argument_list|(
@@ -5367,7 +5368,8 @@ block|}
 if|if
 condition|(
 operator|!
-name|user_ident_explicitly_given
+name|user_ident_sufficiently_given
+argument_list|()
 condition|)
 block|{
 name|strbuf_addstr

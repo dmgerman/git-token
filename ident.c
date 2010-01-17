@@ -1296,5 +1296,19 @@ return|;
 block|}
 end_function
 
+begin_function
+DECL|function|user_ident_sufficiently_given
+name|int
+name|user_ident_sufficiently_given
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+return|return
+name|user_ident_explicitly_given
+return|;
+block|}
+end_function
+
 end_unit
 
