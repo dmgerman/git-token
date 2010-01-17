@@ -154,8 +154,8 @@ block|{
 name|mmbuffer_t
 name|res
 decl_stmt|;
-name|xpparam_t
-name|xpp
+name|xmparam_t
+name|xmp
 decl_stmt|;
 name|int
 name|merge_status
@@ -163,13 +163,13 @@ decl_stmt|;
 name|memset
 argument_list|(
 operator|&
-name|xpp
+name|xmp
 argument_list|,
 literal|0
 argument_list|,
 sizeof|sizeof
 argument_list|(
-name|xpp
+name|xmp
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -188,7 +188,7 @@ argument_list|,
 literal|".their"
 argument_list|,
 operator|&
-name|xpp
+name|xmp
 argument_list|,
 name|XDL_MERGE_ZEALOUS
 argument_list|,
