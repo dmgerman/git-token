@@ -517,8 +517,6 @@ operator|=
 name|git_attr
 argument_list|(
 literal|"export-ignore"
-argument_list|,
-literal|13
 argument_list|)
 expr_stmt|;
 name|attr_export_subst
@@ -526,8 +524,6 @@ operator|=
 name|git_attr
 argument_list|(
 literal|"export-subst"
-argument_list|,
-literal|12
 argument_list|)
 expr_stmt|;
 block|}

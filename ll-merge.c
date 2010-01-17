@@ -1720,8 +1720,6 @@ operator|=
 name|git_attr
 argument_list|(
 literal|"merge"
-argument_list|,
-literal|5
 argument_list|)
 expr_stmt|;
 if|if
