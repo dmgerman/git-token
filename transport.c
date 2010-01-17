@@ -2845,7 +2845,7 @@ operator|&&
 operator|!
 name|isatty
 argument_list|(
-literal|1
+literal|2
 argument_list|)
 operator|)
 expr_stmt|;
