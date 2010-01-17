@@ -931,11 +931,11 @@ operator|&&
 name|env_hint
 condition|)
 block|{
-name|fprintf
+name|fputs
 argument_list|(
-name|stderr
-argument_list|,
 name|env_hint
+argument_list|,
+name|stderr
 argument_list|)
 expr_stmt|;
 name|env_hint
