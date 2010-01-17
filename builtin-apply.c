@@ -1994,6 +1994,14 @@ name|j
 init|=
 literal|0
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|name
+condition|)
+return|return
+name|NULL
+return|;
 while|while
 condition|(
 name|name
@@ -2077,8 +2085,18 @@ name|char
 modifier|*
 name|start
 init|=
-name|line
+name|NULL
 decl_stmt|;
+if|if
+condition|(
+name|p_value
+operator|==
+literal|0
+condition|)
+name|start
+operator|=
+name|line
+expr_stmt|;
 if|if
 condition|(
 operator|*
@@ -5997,7 +6015,10 @@ name|def_name
 condition|)
 name|die
 argument_list|(
-literal|"git diff header lacks filename information (line %d)"
+literal|"git diff header lacks filename information when removing "
+literal|"%d leading pathname components (line %d)"
+argument_list|,
+name|p_value
 argument_list|,
 name|linenr
 argument_list|)
