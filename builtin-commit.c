@@ -5486,12 +5486,6 @@ operator|&
 name|rev
 argument_list|)
 expr_stmt|;
-name|strbuf_release
-argument_list|(
-operator|&
-name|format
-argument_list|)
-expr_stmt|;
 name|rev
 operator|.
 name|always_show_header
@@ -5630,6 +5624,12 @@ name|buf
 argument_list|)
 expr_stmt|;
 block|}
+name|strbuf_release
+argument_list|(
+operator|&
+name|format
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
