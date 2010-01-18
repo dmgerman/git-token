@@ -3228,6 +3228,20 @@ argument_list|,
 name|BRANCH_TRACK_EXPLICIT
 argument_list|)
 block|,
+name|OPT_SET_INT
+argument_list|(
+literal|0
+argument_list|,
+literal|"set-upstream"
+argument_list|,
+operator|&
+name|track
+argument_list|,
+literal|"change upstream info"
+argument_list|,
+name|BRANCH_TRACK_OVERRIDE
+argument_list|)
+block|,
 name|OPT_BOOLEAN
 argument_list|(
 literal|0

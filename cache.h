@@ -3529,6 +3529,9 @@ name|BRANCH_TRACK_ALWAYS
 block|,
 DECL|enumerator|BRANCH_TRACK_EXPLICIT
 name|BRANCH_TRACK_EXPLICIT
+block|,
+DECL|enumerator|BRANCH_TRACK_OVERRIDE
+name|BRANCH_TRACK_OVERRIDE
 block|, }
 enum|;
 end_enum
