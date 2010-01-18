@@ -1308,6 +1308,9 @@ specifier|const
 name|char
 modifier|*
 name|fullpath
+parameter_list|,
+name|unsigned
+name|dirty_submodule
 parameter_list|)
 block|{
 name|int
@@ -1374,6 +1377,12 @@ specifier|const
 name|char
 modifier|*
 name|fullpath
+parameter_list|,
+name|unsigned
+name|old_dirty_submodule
+parameter_list|,
+name|unsigned
+name|new_dirty_submodule
 parameter_list|)
 block|{
 name|tree_difference

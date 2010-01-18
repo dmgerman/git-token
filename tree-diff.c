@@ -515,6 +515,10 @@ argument_list|,
 name|sha2
 argument_list|,
 name|newbase
+argument_list|,
+literal|0
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|newbase
@@ -577,6 +581,10 @@ argument_list|,
 name|sha2
 argument_list|,
 name|fullname
+argument_list|,
+literal|0
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|free
@@ -1196,6 +1204,8 @@ argument_list|,
 name|sha1
 argument_list|,
 name|newbase
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|newbase
@@ -1280,6 +1290,8 @@ argument_list|,
 name|sha1
 argument_list|,
 name|fullname
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|free

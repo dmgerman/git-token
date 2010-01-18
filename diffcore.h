@@ -179,6 +179,13 @@ range|:
 literal|1
 decl_stmt|;
 comment|/* data should be munmap()'ed */
+DECL|member|dirty_submodule
+name|unsigned
+name|dirty_submodule
+range|:
+literal|1
+decl_stmt|;
+comment|/* For submodules: its work tree is dirty */
 DECL|member|driver
 name|struct
 name|userdiff_driver
