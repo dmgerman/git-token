@@ -3357,6 +3357,8 @@ argument_list|,
 name|name
 argument_list|,
 name|len
+operator|+
+literal|1
 argument_list|)
 condition|)
 name|die
