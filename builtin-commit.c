@@ -391,6 +391,7 @@ begin_decl_stmt
 DECL|variable|use_editor
 DECL|variable|initial_commit
 DECL|variable|in_merge
+DECL|variable|include_status
 specifier|static
 name|int
 name|use_editor
@@ -400,6 +401,10 @@ decl_stmt|,
 name|initial_commit
 decl_stmt|,
 name|in_merge
+decl_stmt|,
+name|include_status
+init|=
+literal|1
 decl_stmt|;
 end_decl_stmt
 
@@ -684,6 +689,18 @@ argument_list|,
 literal|"default"
 argument_list|,
 literal|"how to strip spaces and #comments from message"
+argument_list|)
+block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|0
+argument_list|,
+literal|"status"
+argument_list|,
+operator|&
+name|include_status
+argument_list|,
+literal|"include status in commit message template"
 argument_list|)
 block|,
 comment|/* end commit message options */
@@ -3174,6 +3191,8 @@ expr_stmt|;
 if|if
 condition|(
 name|use_editor
+operator|&&
+name|include_status
 condition|)
 block|{
 name|char
@@ -5939,6 +5958,30 @@ argument_list|,
 name|v
 argument_list|)
 return|;
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|k
+argument_list|,
+literal|"commit.status"
+argument_list|)
+condition|)
+block|{
+name|include_status
+operator|=
+name|git_config_bool
+argument_list|(
+name|k
+argument_list|,
+name|v
+argument_list|)
+expr_stmt|;
+return|return
+literal|0
+return|;
+block|}
 return|return
 name|git_status_config
 argument_list|(
