@@ -1418,19 +1418,25 @@ value|off64_t
 end_define
 
 begin_define
-DECL|macro|stat
-define|#
-directive|define
-name|stat
-value|_stati64
-end_define
-
-begin_define
 DECL|macro|lseek
 define|#
 directive|define
 name|lseek
 value|_lseeki64
+end_define
+
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|ALREADY_DECLARED_STAT_FUNCS
+end_ifndef
+
+begin_define
+DECL|macro|stat
+define|#
+directive|define
+name|stat
+value|_stati64
 end_define
 
 begin_function_decl
@@ -1494,6 +1500,11 @@ parameter_list|)
 value|mingw_lstat(x,y)
 end_define
 
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_function_decl
 name|int
 name|mingw_utime
@@ -1539,6 +1550,15 @@ name|char
 modifier|*
 modifier|*
 name|env
+parameter_list|,
+name|int
+name|fhin
+parameter_list|,
+name|int
+name|fhout
+parameter_list|,
+name|int
+name|fherr
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -1997,6 +2017,21 @@ end_endif
 begin_comment
 comment|// !NO_MINGW_REPLACE_READDIR
 end_comment
+
+begin_comment
+comment|/*  * Used by Pthread API implementation for Windows  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|err_win_to_posix
+parameter_list|(
+name|DWORD
+name|winerr
+parameter_list|)
+function_decl|;
+end_function_decl
 
 end_unit
 
