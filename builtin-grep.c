@@ -1046,6 +1046,13 @@ argument_list|(
 name|i
 argument_list|)
 expr_stmt|;
+name|data
+index|[
+name|sz
+index|]
+operator|=
+literal|0
+expr_stmt|;
 if|if
 condition|(
 name|opt
