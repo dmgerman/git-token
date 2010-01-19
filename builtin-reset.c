@@ -1736,12 +1736,12 @@ comment|/* by default */
 if|if
 condition|(
 name|reset_type
-operator|==
-name|HARD
-operator|||
+operator|!=
+name|SOFT
+operator|&&
 name|reset_type
-operator|==
-name|MERGE
+operator|!=
+name|MIXED
 condition|)
 name|setup_work_tree
 argument_list|()
