@@ -312,6 +312,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|allow_rerere_auto
+specifier|static
+name|int
+name|allow_rerere_auto
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|all_strategy
 specifier|static
 name|struct
@@ -1070,6 +1078,12 @@ operator|&
 name|fast_forward_only
 argument_list|,
 literal|"abort if fast-forward is not possible"
+argument_list|)
+block|,
+name|OPT_RERERE_AUTOUPDATE
+argument_list|(
+operator|&
+name|allow_rerere_auto
 argument_list|)
 block|,
 name|OPT_CALLBACK
@@ -4959,7 +4973,9 @@ name|fp
 argument_list|)
 expr_stmt|;
 name|rerere
-argument_list|()
+argument_list|(
+name|allow_rerere_auto
+argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
