@@ -3694,6 +3694,18 @@ name|argc
 operator|<=
 literal|2
 condition|)
+block|{
+if|if
+condition|(
+name|kinds
+operator|!=
+name|REF_LOCAL_BRANCH
+condition|)
+name|die
+argument_list|(
+literal|"-a and -r options to 'git branch' do not make sense with a branch name"
+argument_list|)
+expr_stmt|;
 name|create_branch
 argument_list|(
 name|head
@@ -3723,6 +3735,7 @@ argument_list|,
 name|track
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 name|usage_with_options
 argument_list|(
