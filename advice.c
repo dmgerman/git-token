@@ -33,6 +33,15 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|advice_resolve_conflict
+name|int
+name|advice_resolve_conflict
+init|=
+literal|1
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|advice_implicit_identity
 name|int
 name|advice_implicit_identity
@@ -81,6 +90,13 @@ literal|"commitbeforemerge"
 block|,
 operator|&
 name|advice_commit_before_merge
+block|}
+block|,
+block|{
+literal|"resolveconflict"
+block|,
+operator|&
+name|advice_resolve_conflict
 block|}
 block|,
 block|{
@@ -178,6 +194,43 @@ block|}
 return|return
 literal|0
 return|;
+block|}
+end_function
+
+begin_function
+DECL|function|die_resolve_conflict
+name|void
+name|NORETURN
+name|die_resolve_conflict
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|me
+parameter_list|)
+block|{
+if|if
+condition|(
+name|advice_resolve_conflict
+condition|)
+comment|/* 		 * Message used both when 'git commit' fails and when 		 * other commands doing a merge do. 		 */
+name|die
+argument_list|(
+literal|"'%s' is not possible because you have unmerged files.\n"
+literal|"Please, fix them up in the work tree, and then use 'git add/rm<file>' as\n"
+literal|"appropriate to mark resolution and make a commit, or use 'git commit -a'."
+argument_list|,
+name|me
+argument_list|)
+expr_stmt|;
+else|else
+name|die
+argument_list|(
+literal|"'%s' is not possible because you have unmerged files."
+argument_list|,
+name|me
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
