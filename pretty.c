@@ -471,6 +471,7 @@ end_comment
 
 begin_function
 DECL|function|non_ascii
+specifier|static
 name|int
 name|non_ascii
 parameter_list|(

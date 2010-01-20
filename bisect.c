@@ -2980,6 +2980,7 @@ end_comment
 
 begin_function
 DECL|function|get_prn
+specifier|static
 name|int
 name|get_prn
 parameter_list|(

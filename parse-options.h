@@ -647,27 +647,6 @@ end_struct
 
 begin_function_decl
 specifier|extern
-name|int
-name|parse_options_usage
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-specifier|const
-modifier|*
-name|usagestr
-parameter_list|,
-specifier|const
-name|struct
-name|option
-modifier|*
-name|opts
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-specifier|extern
 name|void
 name|parse_options_start
 parameter_list|(

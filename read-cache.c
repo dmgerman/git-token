@@ -70,6 +70,24 @@ directive|include
 file|"blob.h"
 end_include
 
+begin_function_decl
+specifier|static
+name|struct
+name|cache_entry
+modifier|*
+name|refresh_cache_entry
+parameter_list|(
+name|struct
+name|cache_entry
+modifier|*
+name|ce
+parameter_list|,
+name|int
+name|really
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/* Index extensions.  *  * The first letter should be 'A'..'Z' for extensions that are not  * necessary for a correct operation (i.e. optimization data).  * When new extensions are added that _needs_ to be understood in  * order to correctly interpret the index file, pick character that  * is outside the range, to cause the reader to abort.  */
 end_comment
@@ -821,6 +839,7 @@ end_function
 
 begin_function
 DECL|function|is_empty_blob_sha1
+specifier|static
 name|int
 name|is_empty_blob_sha1
 parameter_list|(
@@ -5514,6 +5533,7 @@ end_function
 
 begin_function
 DECL|function|refresh_cache_entry
+specifier|static
 name|struct
 name|cache_entry
 modifier|*

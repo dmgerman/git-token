@@ -398,16 +398,6 @@ end_struct
 begin_function_decl
 specifier|extern
 name|int
-name|non_ascii
-parameter_list|(
-name|int
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-specifier|extern
-name|int
 name|has_non_ascii
 parameter_list|(
 specifier|const

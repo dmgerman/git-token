@@ -23,6 +23,27 @@ directive|include
 file|"commit.h"
 end_include
 
+begin_function_decl
+specifier|static
+name|int
+name|parse_options_usage
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+specifier|const
+modifier|*
+name|usagestr
+parameter_list|,
+specifier|const
+name|struct
+name|option
+modifier|*
+name|opts
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_define
 DECL|macro|OPT_SHORT
 define|#
@@ -3392,6 +3413,7 @@ end_function
 
 begin_function
 DECL|function|parse_options_usage
+specifier|static
 name|int
 name|parse_options_usage
 parameter_list|(
