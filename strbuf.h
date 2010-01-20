@@ -693,6 +693,25 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|void
+name|strbuf_addbuf_percentquote
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+name|dst
+parameter_list|,
+specifier|const
+name|struct
+name|strbuf
+modifier|*
+name|src
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_macro
 name|__attribute__
 argument_list|(

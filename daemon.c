@@ -722,12 +722,6 @@ name|directory
 block|}
 block|,
 block|{
-literal|"%"
-block|,
-literal|"%"
-block|}
-block|,
-block|{
 name|NULL
 block|}
 block|}

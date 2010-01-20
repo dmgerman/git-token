@@ -32,6 +32,15 @@ literal|1
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|advice_implicit_identity
+name|int
+name|advice_implicit_identity
+init|=
+literal|1
+decl_stmt|;
+end_decl_stmt
+
 begin_struct
 specifier|static
 struct|struct
@@ -72,6 +81,13 @@ literal|"commitbeforemerge"
 block|,
 operator|&
 name|advice_commit_before_merge
+block|}
+block|,
+block|{
+literal|"implicitidentity"
+block|,
+operator|&
+name|advice_implicit_identity
 block|}
 block|, }
 struct|;
