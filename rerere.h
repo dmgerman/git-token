@@ -91,6 +91,19 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|rerere_forget
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_define
 DECL|macro|OPT_RERERE_AUTOUPDATE
 define|#

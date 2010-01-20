@@ -111,6 +111,12 @@ directive|include
 file|"merge-recursive.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"resolve-undo.h"
+end_include
+
 begin_define
 DECL|macro|DEFAULT_TWOHEAD
 define|#
@@ -3794,6 +3800,9 @@ argument_list|(
 literal|"failed to read the cache"
 argument_list|)
 expr_stmt|;
+name|resolve_undo_clear
+argument_list|()
+expr_stmt|;
 return|return
 name|ret
 return|;
@@ -3849,15 +3858,6 @@ parameter_list|(
 name|void
 parameter_list|)
 block|{
-specifier|const
-name|struct
-name|index_state
-modifier|*
-name|state
-init|=
-operator|&
-name|the_index
-decl_stmt|;
 name|int
 name|i
 decl_stmt|,
@@ -3873,9 +3873,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|state
-operator|->
-name|cache_nr
+name|active_nr
 condition|;
 name|i
 operator|++
@@ -3884,9 +3882,7 @@ if|if
 condition|(
 name|ce_stage
 argument_list|(
-name|state
-operator|->
-name|cache
+name|active_cache
 index|[
 name|i
 index|]
@@ -5304,6 +5300,9 @@ literal|"You have not concluded your merge (MERGE_HEAD exists)."
 argument_list|)
 expr_stmt|;
 block|}
+name|resolve_undo_clear
+argument_list|()
+expr_stmt|;
 comment|/* 	 * Check if we are _not_ on a detached HEAD, i.e. if there is a 	 * current branch. 	 */
 name|branch
 operator|=

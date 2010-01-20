@@ -57,6 +57,12 @@ directive|include
 file|"parse-options.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"resolve-undo.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|nr_trees
 specifier|static
@@ -677,6 +683,9 @@ operator|=
 literal|1
 expr_stmt|;
 block|}
+name|resolve_undo_clear
+argument_list|()
+expr_stmt|;
 for|for
 control|(
 name|i
