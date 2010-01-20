@@ -1223,6 +1223,20 @@ argument_list|,
 literal|"receive pack program"
 argument_list|)
 block|,
+name|OPT_BIT
+argument_list|(
+literal|'u'
+argument_list|,
+literal|"set-upstream"
+argument_list|,
+operator|&
+name|flags
+argument_list|,
+literal|"set upstream for git pull/status"
+argument_list|,
+name|TRANSPORT_PUSH_SET_UPSTREAM
+argument_list|)
+block|,
 name|OPT_END
 argument_list|()
 block|}
