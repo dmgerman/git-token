@@ -564,6 +564,15 @@ modifier|*
 name|sb2
 parameter_list|)
 block|{
+name|strbuf_grow
+argument_list|(
+name|sb
+argument_list|,
+name|sb2
+operator|->
+name|len
+argument_list|)
+expr_stmt|;
 name|strbuf_add
 argument_list|(
 name|sb
