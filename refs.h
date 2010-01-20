@@ -195,6 +195,24 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|for_each_glob_ref
+parameter_list|(
+name|each_ref_fn
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|pattern
+parameter_list|,
+name|void
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/* can be used to learn about broken ref and symref */
 end_comment
