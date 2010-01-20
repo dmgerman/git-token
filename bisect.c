@@ -4753,6 +4753,8 @@ init|=
 literal|0
 decl_stmt|,
 name|nr
+decl_stmt|,
+name|steps
 decl_stmt|;
 specifier|const
 name|unsigned
@@ -4951,17 +4953,41 @@ name|reaches
 operator|-
 literal|1
 expr_stmt|;
-name|printf
-argument_list|(
-literal|"Bisecting: %d revisions left to test after this "
-literal|"(roughly %d steps)\n"
-argument_list|,
-name|nr
-argument_list|,
+name|steps
+operator|=
 name|estimate_bisect_steps
 argument_list|(
 name|all
 argument_list|)
+expr_stmt|;
+name|printf
+argument_list|(
+literal|"Bisecting: %d revision%s left to test after this "
+literal|"(roughly %d step%s)\n"
+argument_list|,
+name|nr
+argument_list|,
+operator|(
+name|nr
+operator|==
+literal|1
+condition|?
+literal|""
+else|:
+literal|"s"
+operator|)
+argument_list|,
+name|steps
+argument_list|,
+operator|(
+name|steps
+operator|==
+literal|1
+condition|?
+literal|""
+else|:
+literal|"s"
+operator|)
 argument_list|)
 expr_stmt|;
 return|return
