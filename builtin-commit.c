@@ -1500,7 +1500,8 @@ argument_list|(
 operator|&
 name|index_lock
 argument_list|,
-literal|1
+operator|!
+name|is_status
 argument_list|)
 expr_stmt|;
 name|refresh_cache
@@ -1508,6 +1509,13 @@ argument_list|(
 name|refresh_flags
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+literal|0
+operator|<=
+name|fd
+condition|)
+block|{
 if|if
 condition|(
 name|write_cache
@@ -1530,6 +1538,7 @@ argument_list|(
 literal|"unable to write new_index file"
 argument_list|)
 expr_stmt|;
+block|}
 name|commit_style
 operator|=
 name|COMMIT_AS_IS
