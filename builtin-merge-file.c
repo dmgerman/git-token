@@ -167,11 +167,13 @@ block|,
 literal|0
 block|}
 decl_stmt|;
-name|xpparam_t
-name|xpp
+name|xmparam_t
+name|xmp
 init|=
 block|{
+block|{
 name|XDF_NEED_MINIMAL
+block|}
 block|}
 decl_stmt|;
 name|int
@@ -496,7 +498,7 @@ literal|2
 index|]
 argument_list|,
 operator|&
-name|xpp
+name|xmp
 argument_list|,
 name|XDL_MERGE_FLAGS
 argument_list|(
