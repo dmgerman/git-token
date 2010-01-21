@@ -144,6 +144,37 @@ define|#
 directive|define
 name|XDL_MERGE_LEVEL_MASK
 value|0x0f
+comment|/* merge favor modes */
+DECL|macro|XDL_MERGE_FAVOR_OURS
+define|#
+directive|define
+name|XDL_MERGE_FAVOR_OURS
+value|1
+DECL|macro|XDL_MERGE_FAVOR_THEIRS
+define|#
+directive|define
+name|XDL_MERGE_FAVOR_THEIRS
+value|2
+DECL|macro|XDL_MERGE_FAVOR
+define|#
+directive|define
+name|XDL_MERGE_FAVOR
+parameter_list|(
+name|flags
+parameter_list|)
+value|(((flags)>>4)& 3)
+DECL|macro|XDL_MERGE_FLAGS
+define|#
+directive|define
+name|XDL_MERGE_FLAGS
+parameter_list|(
+name|level
+parameter_list|,
+name|style
+parameter_list|,
+name|favor
+parameter_list|)
+value|((level)|(style)|((favor)<<4))
 comment|/* merge output styles */
 DECL|macro|XDL_MERGE_DIFF3
 define|#
@@ -432,7 +463,7 @@ modifier|*
 name|xpp
 parameter_list|,
 name|int
-name|level
+name|flags
 parameter_list|,
 name|mmbuffer_t
 modifier|*
