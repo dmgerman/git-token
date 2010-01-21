@@ -686,11 +686,6 @@ argument_list|(
 literal|"index file corrupt"
 argument_list|)
 expr_stmt|;
-name|refresh_cache
-argument_list|(
-name|REFRESH_QUIET
-argument_list|)
-expr_stmt|;
 name|pathspec
 operator|=
 name|get_pathspec
@@ -698,6 +693,20 @@ argument_list|(
 name|prefix
 argument_list|,
 name|argv
+argument_list|)
+expr_stmt|;
+name|refresh_index
+argument_list|(
+operator|&
+name|the_index
+argument_list|,
+name|REFRESH_QUIET
+argument_list|,
+name|pathspec
+argument_list|,
+name|NULL
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 name|seen
