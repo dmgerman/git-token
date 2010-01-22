@@ -1225,13 +1225,11 @@ block|{
 name|int
 name|i
 decl_stmt|;
-name|output
+name|fprintf
 argument_list|(
-name|o
+name|stderr
 argument_list|,
-literal|0
-argument_list|,
-literal|"There are unmerged index entries:"
+literal|"BUG: There are unmerged index entries:\n"
 argument_list|)
 expr_stmt|;
 for|for
@@ -1265,13 +1263,11 @@ argument_list|(
 name|ce
 argument_list|)
 condition|)
-name|output
+name|fprintf
 argument_list|(
-name|o
+name|stderr
 argument_list|,
-literal|0
-argument_list|,
-literal|"%d %.*s"
+literal|"BUG: %d %.*s"
 argument_list|,
 name|ce_stage
 argument_list|(
@@ -1292,9 +1288,11 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
-return|return
-name|NULL
-return|;
+name|die
+argument_list|(
+literal|"Bug in merge-recursive.c"
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(
