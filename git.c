@@ -2245,6 +2245,14 @@ name|cmd_tar_tree
 block|}
 block|,
 block|{
+literal|"unpack-file"
+block|,
+name|cmd_unpack_file
+block|,
+name|RUN_SETUP
+block|}
+block|,
+block|{
 literal|"unpack-objects"
 block|,
 name|cmd_unpack_objects
