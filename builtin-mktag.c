@@ -751,17 +751,23 @@ name|PD_FMT
 end_undef
 
 begin_function
-DECL|function|main
+DECL|function|cmd_mktag
 name|int
-name|main
+name|cmd_mktag
 parameter_list|(
 name|int
 name|argc
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
 name|argv
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|prefix
 parameter_list|)
 block|{
 name|struct
@@ -787,17 +793,6 @@ name|usage
 argument_list|(
 literal|"git mktag< signaturefile"
 argument_list|)
-expr_stmt|;
-name|git_extract_argv0_path
-argument_list|(
-name|argv
-index|[
-literal|0
-index|]
-argument_list|)
-expr_stmt|;
-name|setup_git_directory
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
