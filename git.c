@@ -2037,6 +2037,14 @@ name|RUN_SETUP
 block|}
 block|,
 block|{
+literal|"pack-redundant"
+block|,
+name|cmd_pack_redundant
+block|,
+name|RUN_SETUP
+block|}
+block|,
+block|{
 literal|"patch-id"
 block|,
 name|cmd_patch_id

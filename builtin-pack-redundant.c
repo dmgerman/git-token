@@ -3011,6 +3011,7 @@ name|pack_list
 modifier|*
 name|add_pack_file
 parameter_list|(
+specifier|const
 name|char
 modifier|*
 name|filename
@@ -3115,17 +3116,23 @@ block|}
 end_function
 
 begin_function
-DECL|function|main
+DECL|function|cmd_pack_redundant
 name|int
-name|main
+name|cmd_pack_redundant
 parameter_list|(
 name|int
 name|argc
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
 name|argv
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|prefix
 parameter_list|)
 block|{
 name|int
@@ -3159,14 +3166,6 @@ literal|42
 index|]
 decl_stmt|;
 comment|/* 40 byte sha1 + \n + \0 */
-name|git_extract_argv0_path
-argument_list|(
-name|argv
-index|[
-literal|0
-index|]
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|argc
@@ -3188,9 +3187,6 @@ name|usage
 argument_list|(
 name|pack_redundant_usage
 argument_list|)
-expr_stmt|;
-name|setup_git_directory
-argument_list|()
 expr_stmt|;
 for|for
 control|(
