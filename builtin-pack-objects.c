@@ -2863,10 +2863,12 @@ name|struct
 name|stat
 name|st
 decl_stmt|;
+specifier|const
 name|char
 modifier|*
 name|idx_tmp_name
-decl_stmt|,
+decl_stmt|;
+name|char
 name|tmpname
 index|[
 name|PATH_MAX
@@ -3085,6 +3087,10 @@ argument_list|)
 expr_stmt|;
 name|free
 argument_list|(
+operator|(
+name|void
+operator|*
+operator|)
 name|idx_tmp_name
 argument_list|)
 expr_stmt|;

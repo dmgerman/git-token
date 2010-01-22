@@ -162,10 +162,12 @@ end_struct
 
 begin_function_decl
 specifier|extern
+specifier|const
 name|char
 modifier|*
 name|write_idx_file
 parameter_list|(
+specifier|const
 name|char
 modifier|*
 name|index_name

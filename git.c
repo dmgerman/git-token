@@ -1851,6 +1851,12 @@ name|cmd_help
 block|}
 block|,
 block|{
+literal|"index-pack"
+block|,
+name|cmd_index_pack
+block|}
+block|,
+block|{
 literal|"init"
 block|,
 name|cmd_init_db
