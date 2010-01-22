@@ -1973,6 +1973,14 @@ name|NEED_WORK_TREE
 block|}
 block|,
 block|{
+literal|"merge-tree"
+block|,
+name|cmd_merge_tree
+block|,
+name|RUN_SETUP
+block|}
+block|,
+block|{
 literal|"mktree"
 block|,
 name|cmd_mktree

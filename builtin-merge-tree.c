@@ -1817,17 +1817,23 @@ block|}
 end_function
 
 begin_function
-DECL|function|main
+DECL|function|cmd_merge_tree
 name|int
-name|main
+name|cmd_merge_tree
 parameter_list|(
 name|int
 name|argc
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
 name|argv
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|prefix
 parameter_list|)
 block|{
 name|struct
@@ -1865,9 +1871,6 @@ index|[
 literal|0
 index|]
 argument_list|)
-expr_stmt|;
-name|setup_git_directory
-argument_list|()
 expr_stmt|;
 name|buf1
 operator|=
