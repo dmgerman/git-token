@@ -1839,6 +1839,12 @@ name|USE_PAGER
 block|}
 block|,
 block|{
+literal|"hash-object"
+block|,
+name|cmd_hash_object
+block|}
+block|,
+block|{
 literal|"help"
 block|,
 name|cmd_help
