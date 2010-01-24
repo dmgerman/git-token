@@ -39,6 +39,9 @@ index|[
 literal|20
 index|]
 parameter_list|,
+name|unsigned
+name|dirty_submodule
+parameter_list|,
 specifier|const
 name|char
 modifier|*
