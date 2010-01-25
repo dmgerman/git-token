@@ -1350,6 +1350,18 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|void
+name|diffcore_fix_diff_index
+parameter_list|(
+name|struct
+name|diff_options
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_define
 DECL|macro|COMMON_DIFF_OPTIONS_HELP
 define|#

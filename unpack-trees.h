@@ -146,6 +146,9 @@ decl_stmt|,
 DECL|member|diff_index_cached
 name|diff_index_cached
 decl_stmt|,
+DECL|member|debug_unpack
+name|debug_unpack
+decl_stmt|,
 DECL|member|skip_sparse_checkout
 name|skip_sparse_checkout
 decl_stmt|,
@@ -158,9 +161,9 @@ name|char
 modifier|*
 name|prefix
 decl_stmt|;
-DECL|member|pos
+DECL|member|cache_bottom
 name|int
-name|pos
+name|cache_bottom
 decl_stmt|;
 DECL|member|dir
 name|struct
