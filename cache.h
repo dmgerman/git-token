@@ -5199,13 +5199,27 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_define
+DECL|macro|approxidate
+define|#
+directive|define
+name|approxidate
+parameter_list|(
+name|s
+parameter_list|)
+value|approxidate_careful((s), NULL)
+end_define
+
 begin_function_decl
 name|unsigned
 name|long
-name|approxidate
+name|approxidate_careful
 parameter_list|(
 specifier|const
 name|char
+modifier|*
+parameter_list|,
+name|int
 modifier|*
 parameter_list|)
 function_decl|;
