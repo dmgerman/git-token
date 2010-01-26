@@ -1157,6 +1157,7 @@ end_function
 
 begin_function
 DECL|function|show_bisect_vars
+specifier|static
 name|int
 name|show_bisect_vars
 parameter_list|(
@@ -1508,7 +1509,7 @@ name|revs
 operator|.
 name|diffopt
 argument_list|,
-name|QUIET
+name|QUICK
 argument_list|)
 expr_stmt|;
 for|for

@@ -385,6 +385,10 @@ DECL|member|need_8bit_cte
 name|int
 name|need_8bit_cte
 decl_stmt|;
+DECL|member|show_notes
+name|int
+name|show_notes
+decl_stmt|;
 DECL|member|reflog_info
 name|struct
 name|reflog_walk_info
@@ -394,16 +398,6 @@ decl_stmt|;
 block|}
 struct|;
 end_struct
-
-begin_function_decl
-specifier|extern
-name|int
-name|non_ascii
-parameter_list|(
-name|int
-parameter_list|)
-function_decl|;
-end_function_decl
 
 begin_function_decl
 specifier|extern

@@ -113,6 +113,12 @@ directive|include
 file|"ll-merge.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"resolve-undo.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|checkout_usage
 specifier|static
@@ -1052,7 +1058,7 @@ name|theirs
 argument_list|,
 literal|"theirs"
 argument_list|,
-literal|1
+literal|0
 argument_list|)
 expr_stmt|;
 name|free
@@ -1387,6 +1393,18 @@ condition|)
 return|return
 literal|1
 return|;
+comment|/* "checkout -m path" to recreate conflicted state */
+if|if
+condition|(
+name|opts
+operator|->
+name|merge
+condition|)
+name|unmerge_cache
+argument_list|(
+name|pathspec
+argument_list|)
+expr_stmt|;
 comment|/* Any unmerged paths? */
 for|for
 control|(
@@ -2225,6 +2243,9 @@ argument_list|(
 literal|"corrupt index file"
 argument_list|)
 return|;
+name|resolve_undo_clear
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|opts
@@ -4060,7 +4081,7 @@ argument_list|(
 literal|"git checkout: -f and -m are incompatible"
 argument_list|)
 expr_stmt|;
-comment|/* 	 * case 1: git checkout<ref> -- [<paths>] 	 * 	 *<ref> must be a valid tree, everything after the '--' must be 	 *   a path. 	 * 	 * case 2: git checkout -- [<paths>] 	 * 	 *   everything after the '--' must be paths. 	 * 	 * case 3: git checkout<something> [<paths>] 	 * 	 *   With no paths, if<something> is a commit, that is to 	 *   switch to the branch or detach HEAD at it. 	 * 	 *   With no paths, if<something> is _not_ a commit, no -t nor -b 	 *   was given, and there is a tracking branch whose name is 	 *<something> in one and only one remote, then this is a short-hand 	 *   to fork local<something> from that remote tracking branch. 	 * 	 *   Otherwise<something> shall not be ambiguous. 	 *   - If it's *only* a reference, treat it like case (1). 	 *   - If it's only a path, treat it like case (2). 	 *   - else: fail. 	 * 	 */
+comment|/* 	 * case 1: git checkout<ref> -- [<paths>] 	 * 	 *<ref> must be a valid tree, everything after the '--' must be 	 *   a path. 	 * 	 * case 2: git checkout -- [<paths>] 	 * 	 *   everything after the '--' must be paths. 	 * 	 * case 3: git checkout<something> [<paths>] 	 * 	 *   With no paths, if<something> is a commit, that is to 	 *   switch to the branch or detach HEAD at it.  As a special case, 	 *   if<something> is A...B (missing A or B means HEAD but you can 	 *   omit at most one side), and if there is a unique merge base 	 *   between A and B, A...B names that merge base. 	 * 	 *   With no paths, if<something> is _not_ a commit, no -t nor -b 	 *   was given, and there is a tracking branch whose name is 	 *<something> in one and only one remote, then this is a short-hand 	 *   to fork local<something> from that remote tracking branch. 	 * 	 *   Otherwise<something> shall not be ambiguous. 	 *   - If it's *only* a reference, treat it like case (1). 	 *   - If it's only a path, treat it like case (2). 	 *   - else: fail. 	 * 	 */
 if|if
 condition|(
 name|argc
@@ -4133,7 +4154,7 @@ literal|"@{-1}"
 expr_stmt|;
 if|if
 condition|(
-name|get_sha1
+name|get_sha1_mb
 argument_list|(
 name|arg
 argument_list|,
@@ -4263,6 +4284,17 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
+name|check_ref_format
+argument_list|(
+name|new
+operator|.
+name|path
+argument_list|)
+operator|==
+name|CHECK_REF_FORMAT_OK
+operator|)
+operator|&&
 name|resolve_ref
 argument_list|(
 name|new
@@ -4276,15 +4308,7 @@ argument_list|,
 name|NULL
 argument_list|)
 condition|)
-name|new
-operator|.
-name|commit
-operator|=
-name|lookup_commit_reference
-argument_list|(
-name|rev
-argument_list|)
-expr_stmt|;
+empty_stmt|;
 else|else
 name|new
 operator|.

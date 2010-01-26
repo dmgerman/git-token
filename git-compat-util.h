@@ -617,6 +617,12 @@ directive|include
 file|<sys/ioctl.h>
 end_include
 
+begin_include
+include|#
+directive|include
+file|<termios.h>
+end_include
+
 begin_ifndef
 ifndef|#
 directive|ifndef
@@ -1053,6 +1059,30 @@ name|NORETURN_PTR
 value|__attribute__((__noreturn__))
 end_define
 
+begin_elif
+elif|#
+directive|elif
+name|defined
+argument_list|(
+name|_MSC_VER
+argument_list|)
+end_elif
+
+begin_define
+DECL|macro|NORETURN
+define|#
+directive|define
+name|NORETURN
+value|__declspec(noreturn)
+end_define
+
+begin_define
+DECL|macro|NORETURN_PTR
+define|#
+directive|define
+name|NORETURN_PTR
+end_define
+
 begin_else
 else|#
 directive|else
@@ -1308,14 +1338,18 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|time_t
-name|tm_to_time_t
+name|int
+name|suffixcmp
 parameter_list|(
 specifier|const
-name|struct
-name|tm
+name|char
 modifier|*
-name|tm
+name|str
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|suffix
 parameter_list|)
 function_decl|;
 end_function_decl

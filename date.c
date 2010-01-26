@@ -15,6 +15,7 @@ end_comment
 
 begin_function
 DECL|function|tm_to_time_t
+specifier|static
 name|time_t
 name|tm_to_time_t
 parameter_list|(

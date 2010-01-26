@@ -175,6 +175,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|allow_rerere_auto
+specifier|static
+name|int
+name|allow_rerere_auto
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|me
 specifier|static
 specifier|const
@@ -314,6 +322,12 @@ operator|&
 name|mainline
 argument_list|,
 literal|"parent number"
+argument_list|)
+block|,
+name|OPT_RERERE_AUTOUPDATE
+argument_list|(
+operator|&
+name|allow_rerere_auto
 argument_list|)
 block|,
 name|OPT_END
@@ -1369,6 +1383,57 @@ block|}
 end_function
 
 begin_function
+DECL|function|die_dirty_index
+specifier|static
+name|NORETURN
+name|void
+name|die_dirty_index
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|me
+parameter_list|)
+block|{
+if|if
+condition|(
+name|read_cache_unmerged
+argument_list|()
+condition|)
+block|{
+name|die_resolve_conflict
+argument_list|(
+name|me
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+if|if
+condition|(
+name|advice_commit_before_merge
+condition|)
+name|die
+argument_list|(
+literal|"Your local changes would be overwritten by %s.\n"
+literal|"Please, commit your changes or stash them to proceed."
+argument_list|,
+name|me
+argument_list|)
+expr_stmt|;
+else|else
+name|die
+argument_list|(
+literal|"Your local changes would be overwritten by %s.\n"
+argument_list|,
+name|me
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+end_function
+
+begin_function
 DECL|function|revert_or_cherry_pick
 specifier|static
 name|int
@@ -1568,10 +1633,8 @@ argument_list|,
 literal|0
 argument_list|)
 condition|)
-name|die
+name|die_dirty_index
 argument_list|(
-literal|"Dirty index: cannot %s"
-argument_list|,
 name|me
 argument_list|)
 expr_stmt|;
@@ -2215,7 +2278,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|rerere
-argument_list|()
+argument_list|(
+name|allow_rerere_auto
+argument_list|)
 expr_stmt|;
 name|exit
 argument_list|(

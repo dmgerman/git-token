@@ -33,14 +33,6 @@ directive|include
 file|"utf8.h"
 end_include
 
-begin_define
-DECL|macro|BLOCKING
-define|#
-directive|define
-name|BLOCKING
-value|(1ul<< 14)
-end_define
-
 begin_comment
 comment|/*  * FIXME! Share the code with "write-tree.c"  */
 end_comment

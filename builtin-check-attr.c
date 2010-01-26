@@ -630,11 +630,6 @@ operator|=
 name|git_attr
 argument_list|(
 name|name
-argument_list|,
-name|strlen
-argument_list|(
-name|name
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if

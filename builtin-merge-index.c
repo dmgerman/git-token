@@ -382,17 +382,23 @@ block|}
 end_function
 
 begin_function
-DECL|function|main
+DECL|function|cmd_merge_index
 name|int
-name|main
+name|cmd_merge_index
 parameter_list|(
 name|int
 name|argc
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
 name|argv
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|prefix
 parameter_list|)
 block|{
 name|int
@@ -420,17 +426,6 @@ name|usage
 argument_list|(
 literal|"git merge-index [-o] [-q]<merge-program> (-a | [--]<filename>*)"
 argument_list|)
-expr_stmt|;
-name|git_extract_argv0_path
-argument_list|(
-name|argv
-index|[
-literal|0
-index|]
-argument_list|)
-expr_stmt|;
-name|setup_git_directory
-argument_list|()
 expr_stmt|;
 name|read_cache
 argument_list|()
@@ -502,6 +497,7 @@ name|i
 operator|++
 control|)
 block|{
+specifier|const
 name|char
 modifier|*
 name|arg

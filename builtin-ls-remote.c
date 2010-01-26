@@ -497,12 +497,7 @@ name|transport_get
 argument_list|(
 name|remote
 argument_list|,
-name|remote
-operator|->
-name|url
-index|[
-literal|0
-index|]
+name|NULL
 argument_list|)
 expr_stmt|;
 if|if

@@ -76,6 +76,12 @@ specifier|const
 name|char
 modifier|*
 name|fullpath
+parameter_list|,
+name|unsigned
+name|old_dirty_submodule
+parameter_list|,
+name|unsigned
+name|new_dirty_submodule
 parameter_list|)
 function_decl|;
 end_typedef
@@ -110,6 +116,9 @@ specifier|const
 name|char
 modifier|*
 name|fullpath
+parameter_list|,
+name|unsigned
+name|dirty_submodule
 parameter_list|)
 function_decl|;
 end_typedef
@@ -333,10 +342,10 @@ value|(1<< 10)
 end_define
 
 begin_define
-DECL|macro|DIFF_OPT_QUIET
+DECL|macro|DIFF_OPT_QUICK
 define|#
 directive|define
-name|DIFF_OPT_QUIET
+name|DIFF_OPT_QUICK
 value|(1<< 11)
 end_define
 
@@ -418,6 +427,14 @@ define|#
 directive|define
 name|DIFF_OPT_ALLOW_TEXTCONV
 value|(1<< 21)
+end_define
+
+begin_define
+DECL|macro|DIFF_OPT_DIFF_FROM_CONTENTS
+define|#
+directive|define
+name|DIFF_OPT_DIFF_FROM_CONTENTS
+value|(1<< 22)
 end_define
 
 begin_define
@@ -1097,6 +1114,9 @@ specifier|const
 name|char
 modifier|*
 name|fullpath
+parameter_list|,
+name|unsigned
+name|dirty_submodule
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -1132,6 +1152,12 @@ specifier|const
 name|char
 modifier|*
 name|fullpath
+parameter_list|,
+name|unsigned
+name|dirty_submodule1
+parameter_list|,
+name|unsigned
+name|dirty_submodule2
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -1316,6 +1342,18 @@ begin_function_decl
 specifier|extern
 name|void
 name|diffcore_std
+parameter_list|(
+name|struct
+name|diff_options
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|void
+name|diffcore_fix_diff_index
 parameter_list|(
 name|struct
 name|diff_options

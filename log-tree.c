@@ -1573,6 +1573,14 @@ name|loginfo
 operator|=
 name|NULL
 expr_stmt|;
+name|ctx
+operator|.
+name|show_notes
+operator|=
+name|opt
+operator|->
+name|show_notes
+expr_stmt|;
 if|if
 condition|(
 operator|!
