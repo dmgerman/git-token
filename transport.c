@@ -5328,8 +5328,6 @@ operator|!
 name|url
 operator|&&
 name|remote
-operator|&&
-name|remote
 operator|->
 name|url
 condition|)
