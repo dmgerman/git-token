@@ -2224,10 +2224,7 @@ argument_list|(
 name|prefix
 argument_list|)
 argument_list|,
-name|argv
-index|[
-literal|2
-index|]
+name|given_config_file
 argument_list|)
 expr_stmt|;
 else|else
