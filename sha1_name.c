@@ -2269,6 +2269,22 @@ name|co_tz
 decl_stmt|,
 name|co_cnt
 decl_stmt|;
+comment|/* a @{-N} placed anywhere except the start is an error */
+if|if
+condition|(
+name|str
+index|[
+name|at
+operator|+
+literal|2
+index|]
+operator|==
+literal|'-'
+condition|)
+return|return
+operator|-
+literal|1
+return|;
 comment|/* Is it asking for N-th entry, or approxidate? */
 for|for
 control|(
