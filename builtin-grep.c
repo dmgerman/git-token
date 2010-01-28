@@ -4505,7 +4505,7 @@ name|OPT_BOOLEAN
 argument_list|(
 literal|'q'
 argument_list|,
-literal|"quick"
+literal|"quiet"
 argument_list|,
 operator|&
 name|opt
