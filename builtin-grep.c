@@ -1002,6 +1002,16 @@ name|w
 argument_list|)
 expr_stmt|;
 block|}
+name|free_grep_patterns
+argument_list|(
+name|arg
+argument_list|)
+expr_stmt|;
+name|free
+argument_list|(
+name|arg
+argument_list|)
+expr_stmt|;
 return|return
 operator|(
 name|void
