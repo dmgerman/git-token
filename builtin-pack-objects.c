@@ -107,11 +107,11 @@ directive|include
 file|"refs.h"
 end_include
 
-begin_ifdef
-ifdef|#
-directive|ifdef
-name|THREADED_DELTA_SEARCH
-end_ifdef
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|NO_PTHREADS
+end_ifndef
 
 begin_include
 include|#
@@ -6474,11 +6474,11 @@ return|;
 block|}
 end_function
 
-begin_ifdef
-ifdef|#
-directive|ifdef
-name|THREADED_DELTA_SEARCH
-end_ifdef
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|NO_PTHREADS
+end_ifndef
 
 begin_decl_stmt
 DECL|variable|read_mutex
@@ -7157,7 +7157,7 @@ literal|0
 return|;
 block|}
 block|}
-comment|/* 	 * Handle memory allocation outside of the cache 	 * accounting lock.  Compiler will optimize the strangeness 	 * away when THREADED_DELTA_SEARCH is not defined. 	 */
+comment|/* 	 * Handle memory allocation outside of the cache 	 * accounting lock.  Compiler will optimize the strangeness 	 * away when NO_PTHREADS is defined. 	 */
 name|free
 argument_list|(
 name|trg_entry
@@ -7942,11 +7942,11 @@ expr_stmt|;
 block|}
 end_function
 
-begin_ifdef
-ifdef|#
-directive|ifdef
-name|THREADED_DELTA_SEARCH
-end_ifdef
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|NO_PTHREADS
+end_ifndef
 
 begin_comment
 comment|/*  * The main thread waits on the condition that (at least) one of the workers  * has stopped working (which is indicated in the .working member of  * struct thread_params).  * When a work thread has completed its work, it sets .working to 0 and  * signals the main thread and waits on the condition that .data_ready  * becomes 1.  */
@@ -9518,9 +9518,9 @@ argument_list|,
 name|delta_search_threads
 argument_list|)
 expr_stmt|;
-ifndef|#
-directive|ifndef
-name|THREADED_DELTA_SEARCH
+ifdef|#
+directive|ifdef
+name|NO_PTHREADS
 if|if
 condition|(
 name|delta_search_threads
@@ -11354,9 +11354,9 @@ argument_list|(
 name|pack_usage
 argument_list|)
 expr_stmt|;
-ifndef|#
-directive|ifndef
-name|THREADED_DELTA_SEARCH
+ifdef|#
+directive|ifdef
+name|NO_PTHREADS
 if|if
 condition|(
 name|delta_search_threads
