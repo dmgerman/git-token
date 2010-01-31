@@ -12,7 +12,7 @@ file|"pkt-line.h"
 end_include
 
 begin_comment
-comment|/*  * Write a packetized stream, where each line is preceded by  * its length (including the header) as a 4-byte hex number.  * A length of 'zero' means end of stream (and a length of 1-3  * would be an error).   *  * This is all pretty stupid, but we use this packetized line  * format to make a streaming format possible without ever  * over-running the read buffers. That way we'll never read  * into what might be the pack data (which should go to another  * process entirely).  *  * The writing side could use stdio, but since the reading  * side can't, we stay with pure read/write interfaces.  */
+comment|/*  * Write a packetized stream, where each line is preceded by  * its length (including the header) as a 4-byte hex number.  * A length of 'zero' means end of stream (and a length of 1-3  * would be an error).  *  * This is all pretty stupid, but we use this packetized line  * format to make a streaming format possible without ever  * over-running the read buffers. That way we'll never read  * into what might be the pack data (which should go to another  * process entirely).  *  * The writing side could use stdio, but since the reading  * side can't, we stay with pure read/write interfaces.  */
 end_comment
 
 begin_function
@@ -87,14 +87,9 @@ argument_list|(
 literal|"write error (disk full?)"
 argument_list|)
 expr_stmt|;
-name|die
+name|die_errno
 argument_list|(
-literal|"write error (%s)"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"write error"
 argument_list|)
 expr_stmt|;
 block|}
@@ -303,36 +298,16 @@ name|unsigned
 name|size
 parameter_list|)
 block|{
-name|int
-name|n
-init|=
-literal|0
-decl_stmt|;
-while|while
-condition|(
-name|n
-operator|<
-name|size
-condition|)
-block|{
-name|int
+name|ssize_t
 name|ret
 init|=
-name|xread
+name|read_in_full
 argument_list|(
 name|fd
 argument_list|,
-operator|(
-name|char
-operator|*
-operator|)
 name|buffer
-operator|+
-name|n
 argument_list|,
 name|size
-operator|-
-name|n
 argument_list|)
 decl_stmt|;
 if|if
@@ -341,31 +316,23 @@ name|ret
 operator|<
 literal|0
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"read error (%s)"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"read error"
 argument_list|)
 expr_stmt|;
+elseif|else
 if|if
 condition|(
-operator|!
 name|ret
+operator|<
+name|size
 condition|)
 name|die
 argument_list|(
 literal|"The remote end hung up unexpectedly"
 argument_list|)
 expr_stmt|;
-name|n
-operator|+=
-name|ret
-expr_stmt|;
-block|}
 block|}
 end_function
 

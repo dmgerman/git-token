@@ -5,6 +5,12 @@ directive|include
 file|"cache.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"exec_cmd.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|update_server_info_usage
 specifier|static
@@ -13,7 +19,7 @@ name|char
 name|update_server_info_usage
 index|[]
 init|=
-literal|"git-update-server-info [--force]"
+literal|"git update-server-info [--force]"
 decl_stmt|;
 end_decl_stmt
 
@@ -111,6 +117,14 @@ condition|)
 name|usage
 argument_list|(
 name|update_server_info_usage
+argument_list|)
+expr_stmt|;
+name|git_extract_argv0_path
+argument_list|(
+name|av
+index|[
+literal|0
+index|]
 argument_list|)
 expr_stmt|;
 name|setup_git_directory

@@ -18,7 +18,7 @@ end_include
 begin_function_decl
 specifier|extern
 name|void
-name|sha_transform
+name|arm_sha_transform
 parameter_list|(
 name|uint32_t
 modifier|*
@@ -38,11 +38,11 @@ function_decl|;
 end_function_decl
 
 begin_function
-DECL|function|SHA1_Init
+DECL|function|arm_SHA1_Init
 name|void
-name|SHA1_Init
+name|arm_SHA1_Init
 parameter_list|(
-name|SHA_CTX
+name|arm_SHA_CTX
 modifier|*
 name|c
 parameter_list|)
@@ -102,11 +102,11 @@ block|}
 end_function
 
 begin_function
-DECL|function|SHA1_Update
+DECL|function|arm_SHA1_Update
 name|void
-name|SHA1_Update
+name|arm_SHA1_Update
 parameter_list|(
-name|SHA_CTX
+name|arm_SHA_CTX
 modifier|*
 name|c
 parameter_list|,
@@ -183,7 +183,7 @@ argument_list|,
 name|done
 argument_list|)
 expr_stmt|;
-name|sha_transform
+name|arm_sha_transform
 argument_list|(
 name|c
 operator|->
@@ -215,7 +215,7 @@ operator|+
 literal|64
 condition|)
 block|{
-name|sha_transform
+name|arm_sha_transform
 argument_list|(
 name|c
 operator|->
@@ -266,16 +266,16 @@ block|}
 end_function
 
 begin_function
-DECL|function|SHA1_Final
+DECL|function|arm_SHA1_Final
 name|void
-name|SHA1_Final
+name|arm_SHA1_Final
 parameter_list|(
 name|unsigned
 name|char
 modifier|*
 name|hash
 parameter_list|,
-name|SHA_CTX
+name|arm_SHA_CTX
 modifier|*
 name|c
 parameter_list|)
@@ -352,7 +352,7 @@ operator|)
 operator|-
 name|offset
 expr_stmt|;
-name|SHA1_Update
+name|arm_SHA1_Update
 argument_list|(
 name|c
 argument_list|,
@@ -441,7 +441,7 @@ index|]
 operator|=
 name|bitlen_lo
 expr_stmt|;
-name|SHA1_Update
+name|arm_SHA1_Update
 argument_list|(
 name|c
 argument_list|,

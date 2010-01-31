@@ -41,7 +41,7 @@ name|char
 name|upload_archive_usage
 index|[]
 init|=
-literal|"git-upload-archive<repo>"
+literal|"git upload-archive<repo>"
 decl_stmt|;
 end_decl_stmt
 
@@ -53,7 +53,7 @@ name|char
 name|deadchild
 index|[]
 init|=
-literal|"git-upload-archive: archiver died with error"
+literal|"git upload-archive: archiver died with error"
 decl_stmt|;
 end_decl_stmt
 
@@ -65,9 +65,17 @@ name|char
 name|lostchild
 index|[]
 init|=
-literal|"git-upload-archive: archiver process was lost"
+literal|"git upload-archive: archiver process was lost"
 decl_stmt|;
 end_decl_stmt
+
+begin_define
+DECL|macro|MAX_ARGS
+define|#
+directive|define
+name|MAX_ARGS
+value|(64)
+end_define
 
 begin_function
 DECL|function|run_upload_archive
@@ -90,10 +98,6 @@ modifier|*
 name|prefix
 parameter_list|)
 block|{
-name|struct
-name|archiver
-name|ar
-decl_stmt|;
 specifier|const
 name|char
 modifier|*
@@ -117,9 +121,6 @@ name|buf
 index|[
 literal|4096
 index|]
-decl_stmt|;
-name|int
-name|treeish_idx
 decl_stmt|;
 name|int
 name|sent_argc
@@ -147,6 +148,8 @@ index|[
 literal|1
 index|]
 argument_list|)
+operator|+
+literal|1
 operator|>
 sizeof|sizeof
 argument_list|(
@@ -181,7 +184,9 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"not a git archive"
+literal|"'%s' does not appear to be a git repository"
+argument_list|,
+name|buf
 argument_list|)
 expr_stmt|;
 comment|/* put received options in sent_argv[] */
@@ -242,7 +247,11 @@ literal|2
 condition|)
 name|die
 argument_list|(
-literal|"Too many options (>29)"
+literal|"Too many options (>%d)"
+argument_list|,
+name|MAX_ARGS
+operator|-
+literal|2
 argument_list|)
 expr_stmt|;
 if|if
@@ -340,55 +349,16 @@ operator|=
 name|NULL
 expr_stmt|;
 comment|/* parse all options sent by the client */
-name|treeish_idx
-operator|=
-name|parse_archive_args
+return|return
+name|write_archive
 argument_list|(
 name|sent_argc
 argument_list|,
 name|sent_argv
 argument_list|,
-operator|&
-name|ar
-argument_list|)
-expr_stmt|;
-name|parse_treeish_arg
-argument_list|(
-name|sent_argv
-operator|+
-name|treeish_idx
-argument_list|,
-operator|&
-name|ar
-operator|.
-name|args
-argument_list|,
 name|prefix
-argument_list|)
-expr_stmt|;
-name|parse_pathspec_arg
-argument_list|(
-name|sent_argv
-operator|+
-name|treeish_idx
-operator|+
-literal|1
 argument_list|,
-operator|&
-name|ar
-operator|.
-name|args
-argument_list|)
-expr_stmt|;
-return|return
-name|ar
-operator|.
-name|write_archive
-argument_list|(
-operator|&
-name|ar
-operator|.
-name|args
+literal|0
 argument_list|)
 return|;
 block|}
@@ -469,7 +439,7 @@ end_function
 begin_function
 DECL|function|process_input
 specifier|static
-name|void
+name|ssize_t
 name|process_input
 parameter_list|(
 name|int
@@ -527,7 +497,9 @@ name|errno
 argument_list|)
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+name|sz
+return|;
 block|}
 name|send_sideband
 argument_list|(
@@ -542,6 +514,9 @@ argument_list|,
 name|LARGE_PACKET_MAX
 argument_list|)
 expr_stmt|;
+return|return
+name|sz
+return|;
 block|}
 end_function
 
@@ -770,6 +745,18 @@ index|[
 literal|2
 index|]
 decl_stmt|;
+name|ssize_t
+name|processed
+index|[
+literal|2
+index|]
+init|=
+block|{
+literal|0
+block|,
+literal|0
+block|}
+decl_stmt|;
 name|int
 name|status
 decl_stmt|;
@@ -867,6 +854,11 @@ operator|&
 name|POLLIN
 condition|)
 comment|/* Data stream ready */
+name|processed
+index|[
+literal|0
+index|]
+operator|=
 name|process_input
 argument_list|(
 name|pfd
@@ -891,6 +883,11 @@ operator|&
 name|POLLIN
 condition|)
 comment|/* Status stream ready */
+name|processed
+index|[
+literal|1
+index|]
+operator|=
 name|process_input
 argument_list|(
 name|pfd
@@ -906,23 +903,15 @@ expr_stmt|;
 comment|/* Always finish to read data when available */
 if|if
 condition|(
-operator|(
-name|pfd
+name|processed
 index|[
 literal|0
 index|]
-operator|.
-name|revents
-operator||
-name|pfd
+operator|||
+name|processed
 index|[
 literal|1
 index|]
-operator|.
-name|revents
-operator|)
-operator|&
-name|POLLIN
 condition|)
 continue|continue;
 if|if

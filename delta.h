@@ -63,6 +63,24 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/*  * sizeof_delta_index: returns memory usage of delta index  *  * Given pointer must be what create_delta_index() returned, or NULL.  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|unsigned
+name|long
+name|sizeof_delta_index
+parameter_list|(
+name|struct
+name|delta_index
+modifier|*
+name|index
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/*  * create_delta: create a delta from given index for the given buffer  *  * This function may be called multiple times with different buffers using  * the same delta_index pointer.  If max_delta_size is non-zero and the  * resulting delta is to be larger than max_delta_size then NULL is returned.  * On success, a non-NULL pointer to the buffer with the delta data is  * returned and *delta_size is updated with its size.  The returned buffer  * must be freed by the caller.  */
 end_comment
 
@@ -272,11 +290,9 @@ operator|*
 name|datap
 decl_stmt|;
 name|unsigned
-name|char
-name|cmd
-decl_stmt|;
-name|unsigned
 name|long
+name|cmd
+decl_stmt|,
 name|size
 init|=
 literal|0
@@ -299,8 +315,7 @@ operator||=
 operator|(
 name|cmd
 operator|&
-operator|~
-literal|0x80
+literal|0x7f
 operator|)
 operator|<<
 name|i

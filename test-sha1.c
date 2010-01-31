@@ -19,7 +19,7 @@ modifier|*
 name|av
 parameter_list|)
 block|{
-name|SHA_CTX
+name|git_SHA_CTX
 name|ctx
 decl_stmt|;
 name|unsigned
@@ -110,7 +110,7 @@ literal|"OOPS"
 argument_list|)
 expr_stmt|;
 block|}
-name|SHA1_Init
+name|git_SHA1_Init
 argument_list|(
 operator|&
 name|ctx
@@ -170,14 +170,9 @@ name|sz
 operator|<
 literal|0
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"test-sha1: %s"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"test-sha1"
 argument_list|)
 expr_stmt|;
 name|this_sz
@@ -200,7 +195,7 @@ operator|==
 literal|0
 condition|)
 break|break;
-name|SHA1_Update
+name|git_SHA1_Update
 argument_list|(
 operator|&
 name|ctx
@@ -211,7 +206,7 @@ name|this_sz
 argument_list|)
 expr_stmt|;
 block|}
-name|SHA1_Final
+name|git_SHA1_Final
 argument_list|(
 name|sha1
 argument_list|,

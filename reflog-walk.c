@@ -32,7 +32,7 @@ end_include
 begin_include
 include|#
 directive|include
-file|"path-list.h"
+file|"string-list.h"
 end_include
 
 begin_include
@@ -813,7 +813,7 @@ name|reflogs
 decl_stmt|;
 DECL|member|complete_reflogs
 name|struct
-name|path_list
+name|string_list
 name|complete_reflogs
 decl_stmt|;
 DECL|member|last_commit_reflog
@@ -857,7 +857,7 @@ end_function
 
 begin_function
 DECL|function|add_reflog_for_walk
-name|void
+name|int
 name|add_reflog_for_walk
 parameter_list|(
 name|struct
@@ -889,7 +889,7 @@ operator|-
 literal|1
 decl_stmt|;
 name|struct
-name|path_list_item
+name|string_list_item
 modifier|*
 name|item
 decl_stmt|;
@@ -1011,7 +1011,7 @@ literal|0
 expr_stmt|;
 name|item
 operator|=
-name|path_list_lookup
+name|string_list_lookup
 argument_list|(
 name|branch
 argument_list|,
@@ -1184,14 +1184,11 @@ name|nr
 operator|==
 literal|0
 condition|)
-name|die
-argument_list|(
-literal|"No reflogs found for '%s'"
-argument_list|,
-name|branch
-argument_list|)
-expr_stmt|;
-name|path_list_insert
+return|return
+operator|-
+literal|1
+return|;
+name|string_list_insert
 argument_list|(
 name|branch
 argument_list|,
@@ -1262,7 +1259,10 @@ argument_list|(
 name|commit_reflog
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+operator|-
+literal|1
+return|;
 block|}
 block|}
 else|else
@@ -1296,6 +1296,9 @@ operator|->
 name|reflogs
 argument_list|)
 expr_stmt|;
+return|return
+literal|0
+return|;
 block|}
 end_function
 
@@ -1490,8 +1493,9 @@ parameter_list|,
 name|int
 name|oneline
 parameter_list|,
-name|int
-name|relative_date
+name|enum
+name|date_mode
+name|dmode
 parameter_list|)
 block|{
 if|if
@@ -1555,7 +1559,7 @@ name|commit_reflog
 operator|->
 name|flag
 operator|||
-name|relative_date
+name|dmode
 condition|)
 name|printf
 argument_list|(
@@ -1567,9 +1571,11 @@ name|info
 operator|->
 name|timestamp
 argument_list|,
-literal|0
+name|info
+operator|->
+name|tz
 argument_list|,
-literal|1
+name|dmode
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1620,7 +1626,7 @@ name|commit_reflog
 operator|->
 name|flag
 operator|||
-name|relative_date
+name|dmode
 condition|)
 name|printf
 argument_list|(
@@ -1636,7 +1642,7 @@ name|info
 operator|->
 name|tz
 argument_list|,
-name|relative_date
+name|dmode
 argument_list|)
 argument_list|)
 expr_stmt|;

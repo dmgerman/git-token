@@ -37,7 +37,7 @@ name|char
 name|diff_cache_usage
 index|[]
 init|=
-literal|"git-diff-index [-m] [--cached] "
+literal|"git diff-index [-m] [--cached] "
 literal|"[<common diff options>]<tree-ish> [<path>...]"
 name|COMMON_DIFF_OPTIONS_HELP
 decl_stmt|;
@@ -88,7 +88,9 @@ argument_list|)
 expr_stmt|;
 name|git_config
 argument_list|(
-name|git_default_config
+name|git_diff_basic_config
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 comment|/* no "diff" UI options */
@@ -213,6 +215,14 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+name|cached
+condition|)
+name|setup_work_tree
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
 name|read_cache
 argument_list|()
 operator|<
@@ -240,19 +250,15 @@ name|cached
 argument_list|)
 expr_stmt|;
 return|return
+name|diff_result_code
+argument_list|(
+operator|&
 name|rev
 operator|.
 name|diffopt
-operator|.
-name|exit_with_status
-condition|?
-name|rev
-operator|.
-name|diffopt
-operator|.
-name|has_changes
-else|:
+argument_list|,
 name|result
+argument_list|)
 return|;
 block|}
 end_function

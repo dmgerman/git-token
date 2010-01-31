@@ -337,6 +337,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+name|commit
+operator|||
 name|commit
 operator|->
 name|object
@@ -421,9 +424,16 @@ name|util
 expr_stmt|;
 block|}
 block|}
+if|if
+condition|(
 name|parse_commit
 argument_list|(
 name|commit
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"invalid commit"
 argument_list|)
 expr_stmt|;
 name|commit

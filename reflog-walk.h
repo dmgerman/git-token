@@ -12,6 +12,12 @@ directive|define
 name|REFLOG_WALK_H
 end_define
 
+begin_include
+include|#
+directive|include
+file|"cache.h"
+end_include
+
 begin_function_decl
 specifier|extern
 name|void
@@ -28,7 +34,7 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|void
+name|int
 name|add_reflog_for_walk
 parameter_list|(
 name|struct
@@ -79,7 +85,8 @@ name|info
 parameter_list|,
 name|int
 parameter_list|,
-name|int
+name|enum
+name|date_mode
 parameter_list|)
 function_decl|;
 end_function_decl

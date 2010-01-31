@@ -58,9 +58,6 @@ name|in_stream
 parameter_list|,
 name|int
 name|out
-parameter_list|,
-name|int
-name|err
 parameter_list|)
 function_decl|;
 end_function_decl

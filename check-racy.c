@@ -122,7 +122,7 @@ argument_list|,
 operator|&
 name|st
 argument_list|,
-literal|2
+name|CE_MATCH_RACY_IS_DIRTY
 argument_list|)
 condition|)
 name|racy
