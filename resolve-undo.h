@@ -79,7 +79,8 @@ name|string_list
 modifier|*
 name|resolve_undo_read
 parameter_list|(
-name|void
+specifier|const
+name|char
 modifier|*
 parameter_list|,
 name|unsigned

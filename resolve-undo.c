@@ -352,7 +352,8 @@ name|string_list
 modifier|*
 name|resolve_undo_read
 parameter_list|(
-name|void
+specifier|const
+name|char
 modifier|*
 name|data
 parameter_list|,
@@ -594,6 +595,12 @@ index|[
 name|i
 index|]
 argument_list|,
+operator|(
+specifier|const
+name|unsigned
+name|char
+operator|*
+operator|)
 name|data
 argument_list|)
 expr_stmt|;
