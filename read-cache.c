@@ -114,7 +114,7 @@ end_define
 
 begin_comment
 DECL|macro|CACHE_EXT_RESOLVE_UNDO
-comment|/* "REUN" */
+comment|/* "REUC" */
 end_comment
 
 begin_decl_stmt
