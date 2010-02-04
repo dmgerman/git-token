@@ -1915,7 +1915,7 @@ name|end
 condition|)
 name|die
 argument_list|(
-literal|"Invalid reqeuest ('[' without ']')"
+literal|"Invalid request ('[' without ']')"
 argument_list|)
 expr_stmt|;
 operator|*

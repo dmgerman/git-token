@@ -3003,7 +3003,7 @@ argument_list|(
 name|var
 argument_list|)
 return|;
-comment|/* 		 * default_arg is now passed to parse_options(), so we need to 		 * mimick the real argv a bit better. 		 */
+comment|/* 		 * default_arg is now passed to parse_options(), so we need to 		 * mimic the real argv a bit better. 		 */
 if|if
 condition|(
 operator|!

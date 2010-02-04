@@ -998,7 +998,7 @@ condition|)
 block|{
 name|die
 argument_list|(
-literal|"Unknown madatory capability %s. This remote "
+literal|"Unknown mandatory capability %s. This remote "
 literal|"helper probably needs newer version of Git.\n"
 argument_list|,
 name|capname
