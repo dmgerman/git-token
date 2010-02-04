@@ -370,14 +370,14 @@ name|force
 condition|)
 name|die
 argument_list|(
-literal|"clean.requireForce%s set and -n or -f not given; "
+literal|"clean.requireForce %s to true and neither -n nor -f given; "
 literal|"refusing to clean"
 argument_list|,
 name|config_set
 condition|?
-literal|""
+literal|"set"
 else|:
-literal|" not"
+literal|"defaults"
 argument_list|)
 expr_stmt|;
 if|if
