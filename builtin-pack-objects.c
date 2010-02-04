@@ -1299,7 +1299,7 @@ name|entry
 operator|->
 name|type
 expr_stmt|;
-comment|/* write limit if limited packsize and not first object */
+comment|/* apply size limit if limited packsize and not first object */
 if|if
 condition|(
 operator|!
@@ -2429,16 +2429,16 @@ operator|->
 name|preferred_base
 condition|)
 return|return
+operator|-
 literal|1
 return|;
-comment|/* if we are deltified, write out base object first. */
+comment|/* 	 * If we are deltified, attempt to write out base object first. 	 * If that fails due to the pack size limit then the current 	 * object might still possibly fit undeltified within that limit. 	 */
 if|if
 condition|(
 name|e
 operator|->
 name|delta
-operator|&&
-operator|!
+condition|)
 name|write_one
 argument_list|(
 name|f
@@ -2449,10 +2449,7 @@ name|delta
 argument_list|,
 name|offset
 argument_list|)
-condition|)
-return|return
-literal|0
-return|;
+expr_stmt|;
 name|e
 operator|->
 name|idx
@@ -2743,6 +2740,9 @@ literal|0
 expr_stmt|;
 for|for
 control|(
+name|i
+operator|=
+literal|0
 init|;
 name|i
 operator|<
@@ -2751,10 +2751,8 @@ condition|;
 name|i
 operator|++
 control|)
-block|{
 if|if
 condition|(
-operator|!
 name|write_one
 argument_list|(
 name|f
@@ -2766,8 +2764,9 @@ argument_list|,
 operator|&
 name|offset
 argument_list|)
+operator|==
+literal|1
 condition|)
-break|break;
 name|display_progress
 argument_list|(
 name|progress_state
@@ -2775,7 +2774,6 @@ argument_list|,
 name|written
 argument_list|)
 expr_stmt|;
-block|}
 comment|/* 		 * Did we write the wrong # entries in the header? 		 * If so, rewrite it like in fast-import 		 */
 if|if
 condition|(
@@ -3145,10 +3143,6 @@ block|}
 do|while
 condition|(
 name|nr_remaining
-operator|&&
-name|i
-operator|<
-name|nr_objects
 condition|)
 do|;
 name|free
@@ -3178,62 +3172,6 @@ argument_list|,
 name|written
 argument_list|,
 name|nr_result
-argument_list|)
-expr_stmt|;
-comment|/* 	 * We have scanned through [0 ... i).  Since we have written 	 * the correct number of objects,  the remaining [i ... nr_objects) 	 * items must be either already written (due to out-of-order delta base) 	 * or a preferred base.  Count those which are neither and complain if any. 	 */
-for|for
-control|(
-name|j
-operator|=
-literal|0
-init|;
-name|i
-operator|<
-name|nr_objects
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|struct
-name|object_entry
-modifier|*
-name|e
-init|=
-name|objects
-operator|+
-name|i
-decl_stmt|;
-name|j
-operator|+=
-operator|!
-name|e
-operator|->
-name|idx
-operator|.
-name|offset
-operator|&&
-operator|!
-name|e
-operator|->
-name|preferred_base
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|j
-condition|)
-name|die
-argument_list|(
-literal|"wrote %"
-name|PRIu32
-literal|" objects as expected but %"
-name|PRIu32
-literal|" unwritten"
-argument_list|,
-name|written
-argument_list|,
-name|j
 argument_list|)
 expr_stmt|;
 block|}
