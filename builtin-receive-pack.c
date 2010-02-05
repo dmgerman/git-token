@@ -216,11 +216,10 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|capabilities_to_send
+DECL|variable|sent_capabilities
 specifier|static
-name|char
-modifier|*
-name|capabilities_to_send
+name|int
+name|sent_capabilities
 decl_stmt|;
 end_decl_stmt
 
@@ -615,8 +614,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|!
-name|capabilities_to_send
+name|sent_capabilities
 condition|)
 name|packet_write
 argument_list|(
@@ -637,7 +635,7 @@ name|packet_write
 argument_list|(
 literal|1
 argument_list|,
-literal|"%s %s%c%s\n"
+literal|"%s %s%c%s%s\n"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -648,12 +646,18 @@ name|path
 argument_list|,
 literal|0
 argument_list|,
-name|capabilities_to_send
+literal|" report-status delete-refs"
+argument_list|,
+name|prefer_ofs_delta
+condition|?
+literal|" ofs-delta"
+else|:
+literal|""
 argument_list|)
 expr_stmt|;
-name|capabilities_to_send
+name|sent_capabilities
 operator|=
-name|NULL
+literal|1
 expr_stmt|;
 return|return
 literal|0
@@ -679,7 +683,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|capabilities_to_send
+operator|!
+name|sent_capabilities
 condition|)
 name|show_ref
 argument_list|(
@@ -3471,16 +3476,6 @@ condition|)
 name|unpack_limit
 operator|=
 name|receive_unpack_limit
-expr_stmt|;
-name|capabilities_to_send
-operator|=
-operator|(
-name|prefer_ofs_delta
-operator|)
-condition|?
-literal|" report-status delete-refs ofs-delta "
-else|:
-literal|" report-status delete-refs "
 expr_stmt|;
 if|if
 condition|(
