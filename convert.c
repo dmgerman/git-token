@@ -1032,7 +1032,10 @@ name|int
 name|filter_buffer
 parameter_list|(
 name|int
-name|fd
+name|in
+parameter_list|,
+name|int
+name|out
 parameter_list|,
 name|void
 modifier|*
@@ -1109,7 +1112,7 @@ name|child_process
 operator|.
 name|out
 operator|=
-name|fd
+name|out
 expr_stmt|;
 if|if
 condition|(
@@ -1292,6 +1295,13 @@ name|data
 operator|=
 operator|&
 name|params
+expr_stmt|;
+name|async
+operator|.
+name|out
+operator|=
+operator|-
+literal|1
 expr_stmt|;
 name|params
 operator|.

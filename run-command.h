@@ -253,7 +253,7 @@ DECL|struct|async
 struct|struct
 name|async
 block|{
-comment|/* 	 * proc writes to fd and closes it; 	 * returns 0 on success, non-zero on failure 	 */
+comment|/* 	 * proc reads from in; closes it before return 	 * proc writes to out; closes it before return 	 * returns 0 on success, non-zero on failure 	 */
 DECL|member|proc
 name|int
 function_decl|(
@@ -262,7 +262,10 @@ name|proc
 function_decl|)
 parameter_list|(
 name|int
-name|fd
+name|in
+parameter_list|,
+name|int
+name|out
 parameter_list|,
 name|void
 modifier|*
@@ -274,6 +277,11 @@ name|void
 modifier|*
 name|data
 decl_stmt|;
+DECL|member|in
+name|int
+name|in
+decl_stmt|;
+comment|/* caller writes here and closes it */
 DECL|member|out
 name|int
 name|out
@@ -292,9 +300,13 @@ DECL|member|tid
 name|HANDLE
 name|tid
 decl_stmt|;
-DECL|member|fd_for_proc
+DECL|member|proc_in
 name|int
-name|fd_for_proc
+name|proc_in
+decl_stmt|;
+DECL|member|proc_out
+name|int
+name|proc_out
 decl_stmt|;
 endif|#
 directive|endif
