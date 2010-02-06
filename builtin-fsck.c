@@ -2979,7 +2979,7 @@ argument_list|,
 operator|&
 name|check_full
 argument_list|,
-literal|"also consider alternate objects"
+literal|"also consider packs and alternate objects"
 argument_list|)
 block|,
 name|OPT_BOOLEAN
