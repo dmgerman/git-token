@@ -445,7 +445,7 @@ literal|"zip"
 argument_list|)
 condition|)
 return|return
-literal|"zip"
+literal|"--format=zip"
 return|;
 return|return
 name|NULL
@@ -505,7 +505,7 @@ decl_stmt|;
 specifier|const
 name|char
 modifier|*
-name|format
+name|format_option
 init|=
 name|NULL
 decl_stmt|;
@@ -557,29 +557,9 @@ argument_list|,
 literal|"path to the remote git-upload-archive command"
 argument_list|)
 block|,
-name|OPT_STRING
-argument_list|(
-literal|0
-argument_list|,
-literal|"format"
-argument_list|,
-operator|&
-name|format
-argument_list|,
-literal|"fmt"
-argument_list|,
-literal|"archive format"
-argument_list|)
-block|,
 name|OPT_END
 argument_list|()
 block|}
-decl_stmt|;
-name|char
-name|fmt_opt
-index|[
-literal|32
-index|]
 decl_stmt|;
 name|argc
 operator|=
@@ -608,12 +588,7 @@ argument_list|(
 name|output
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|format
-condition|)
-name|format
+name|format_option
 operator|=
 name|format_from_name
 argument_list|(
@@ -621,21 +596,12 @@ name|output
 argument_list|)
 expr_stmt|;
 block|}
+comment|/* 	 * We have enough room in argv[] to muck it in place, because 	 * --output must have been given on the original command line 	 * if we get to this point, and parse_options() must have eaten 	 * it, i.e. we can add back one element to the array. 	 * 	 * We add a fake --format option at the beginning, with the 	 * format inferred from our output filename.  This way explicit 	 * --format options can override it, and the fake option is 	 * inserted before any "--" that might have been given. 	 */
 if|if
 condition|(
-name|format
+name|format_option
 condition|)
 block|{
-name|sprintf
-argument_list|(
-name|fmt_opt
-argument_list|,
-literal|"--format=%s"
-argument_list|,
-name|format
-argument_list|)
-expr_stmt|;
-comment|/* 		 * We have enough room in argv[] to muck it in place, 		 * because either --format and/or --output must have 		 * been given on the original command line if we get 		 * to this point, and parse_options() must have eaten 		 * it, i.e. we can add back one element to the array. 		 * But argv[] may contain "--"; we should make it the 		 * first option. 		 */
 name|memmove
 argument_list|(
 name|argv
@@ -660,7 +626,7 @@ index|[
 literal|1
 index|]
 operator|=
-name|fmt_opt
+name|format_option
 expr_stmt|;
 name|argv
 index|[
