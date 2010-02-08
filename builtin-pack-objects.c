@@ -2433,13 +2433,14 @@ return|return
 operator|-
 literal|1
 return|;
-comment|/* 	 * If we are deltified, attempt to write out base object first. 	 * If that fails due to the pack size limit then the current 	 * object might still possibly fit undeltified within that limit. 	 */
+comment|/* if we are deltified, write out base object first. */
 if|if
 condition|(
 name|e
 operator|->
 name|delta
-condition|)
+operator|&&
+operator|!
 name|write_one
 argument_list|(
 name|f
@@ -2450,7 +2451,10 @@ name|delta
 argument_list|,
 name|offset
 argument_list|)
-expr_stmt|;
+condition|)
+return|return
+literal|0
+return|;
 name|e
 operator|->
 name|idx
@@ -2741,9 +2745,6 @@ literal|0
 expr_stmt|;
 for|for
 control|(
-name|i
-operator|=
-literal|0
 init|;
 name|i
 operator|<
@@ -2752,8 +2753,10 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 if|if
 condition|(
+operator|!
 name|write_one
 argument_list|(
 name|f
@@ -2765,9 +2768,8 @@ argument_list|,
 operator|&
 name|offset
 argument_list|)
-operator|==
-literal|1
 condition|)
+break|break;
 name|display_progress
 argument_list|(
 name|progress_state
@@ -2775,6 +2777,7 @@ argument_list|,
 name|written
 argument_list|)
 expr_stmt|;
+block|}
 comment|/* 		 * Did we write the wrong # entries in the header? 		 * If so, rewrite it like in fast-import 		 */
 if|if
 condition|(
@@ -3144,6 +3147,10 @@ block|}
 do|while
 condition|(
 name|nr_remaining
+operator|&&
+name|i
+operator|<
+name|nr_objects
 condition|)
 do|;
 name|free
