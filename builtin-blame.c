@@ -12572,6 +12572,10 @@ condition|(
 name|lno
 operator|<
 name|top
+operator|||
+name|lno
+operator|<
+name|bottom
 condition|)
 name|die
 argument_list|(
