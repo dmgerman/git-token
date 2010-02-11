@@ -1280,8 +1280,8 @@ argument_list|(
 name|helpbuf
 argument_list|,
 literal|"  After resolving the conflicts,\n"
-literal|"mark the corrected paths with 'git add<paths>' "
-literal|"or 'git rm<paths>' and commit the result."
+literal|"mark the corrected paths with 'git add<paths>' or 'git rm<paths>'\n"
+literal|"and commit the result."
 argument_list|)
 expr_stmt|;
 if|if
@@ -1300,8 +1300,8 @@ argument_list|(
 name|helpbuf
 argument_list|)
 argument_list|,
-literal|"\nWhen commiting, use the option "
-literal|"'-c %s' to retain authorship and message."
+literal|"  When committing, use the option '-c %s'\n"
+literal|"to retain authorship and message."
 argument_list|,
 name|find_unique_abbrev
 argument_list|(
