@@ -1222,7 +1222,7 @@ name|helpbuf
 argument_list|,
 literal|"  After resolving the conflicts,\n"
 literal|"mark the corrected paths with 'git add<paths>' or 'git rm<paths>'\n"
-literal|"and commit the result."
+literal|"and commit the result"
 argument_list|)
 expr_stmt|;
 if|if
@@ -1237,13 +1237,23 @@ argument_list|(
 operator|&
 name|helpbuf
 argument_list|,
-literal|"  When committing, use the option '-c %s'\n"
-literal|"to retain authorship and message."
+literal|" with: \n"
+literal|"\n"
+literal|"        git commit -c %s\n"
 argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+name|strbuf_addch
+argument_list|(
+operator|&
+name|helpbuf
+argument_list|,
+literal|'.'
+argument_list|)
+expr_stmt|;
 return|return
 name|strbuf_detach
 argument_list|(
