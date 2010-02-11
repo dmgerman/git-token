@@ -1189,12 +1189,11 @@ modifier|*
 name|sha1
 parameter_list|)
 block|{
-specifier|static
-name|char
+name|struct
+name|strbuf
 name|helpbuf
-index|[
-literal|1024
-index|]
+init|=
+name|STRBUF_INIT
 decl_stmt|;
 name|char
 modifier|*
@@ -1212,8 +1211,9 @@ condition|)
 return|return
 name|msg
 return|;
-name|strcpy
+name|strbuf_addstr
 argument_list|(
+operator|&
 name|helpbuf
 argument_list|,
 literal|"  After resolving the conflicts,\n"
@@ -1228,14 +1228,10 @@ operator|==
 name|CHERRY_PICK
 condition|)
 block|{
-name|sprintf
+name|strbuf_addf
 argument_list|(
+operator|&
 name|helpbuf
-operator|+
-name|strlen
-argument_list|(
-name|helpbuf
-argument_list|)
 argument_list|,
 literal|"  When committing, use the option '-c %s'\n"
 literal|"to retain authorship and message."
@@ -1250,7 +1246,13 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
+name|strbuf_detach
+argument_list|(
+operator|&
 name|helpbuf
+argument_list|,
+name|NULL
+argument_list|)
 return|;
 block|}
 end_function
