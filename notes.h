@@ -67,6 +67,23 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/* Remove the given note object from the internal notes tree structure */
+end_comment
+
+begin_function_decl
+name|void
+name|remove_note
+parameter_list|(
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|object_sha1
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/* Free (and de-initialize) the internal notes tree structure */
 end_comment
 
