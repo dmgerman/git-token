@@ -8,12 +8,6 @@ end_include
 begin_include
 include|#
 directive|include
-file|"commit.h"
-end_include
-
-begin_include
-include|#
-directive|include
 file|"notes.h"
 end_include
 
@@ -57,7 +51,7 @@ struct|;
 end_struct
 
 begin_comment
-comment|/*  * Leaf nodes come in two variants, note entries and subtree entries,  * distinguished by the LSb of the leaf node pointer (see above).  * As a note entry, the key is the SHA1 of the referenced commit, and the  * value is the SHA1 of the note object.  * As a subtree entry, the key is the prefix SHA1 (w/trailing NULs) of the  * referenced commit, using the last byte of the key to store the length of  * the prefix. The value is the SHA1 of the tree object containing the notes  * subtree.  */
+comment|/*  * Leaf nodes come in two variants, note entries and subtree entries,  * distinguished by the LSb of the leaf node pointer (see above).  * As a note entry, the key is the SHA1 of the referenced object, and the  * value is the SHA1 of the note object.  * As a subtree entry, the key is the prefix SHA1 (w/trailing NULs) of the  * referenced object, using the last byte of the key to store the length of  * the prefix. The value is the SHA1 of the tree object containing the notes  * subtree.  */
 end_comment
 
 begin_struct
@@ -985,7 +979,7 @@ condition|)
 name|die
 argument_list|(
 literal|"failed to concatenate note %s "
-literal|"into note %s for commit %s"
+literal|"into note %s for object %s"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -1433,7 +1427,7 @@ parameter_list|)
 block|{
 name|unsigned
 name|char
-name|commit_sha1
+name|object_sha1
 index|[
 literal|20
 index|]
@@ -1503,7 +1497,7 @@ argument_list|)
 expr_stmt|;
 name|memcpy
 argument_list|(
-name|commit_sha1
+name|object_sha1
 argument_list|,
 name|subtree
 operator|->
@@ -1540,7 +1534,7 @@ operator|.
 name|path
 argument_list|)
 argument_list|,
-name|commit_sha1
+name|object_sha1
 operator|+
 name|prefix_len
 argument_list|,
@@ -1561,7 +1555,7 @@ name|len
 operator|+=
 name|prefix_len
 expr_stmt|;
-comment|/* 		 * If commit SHA1 is complete (len == 20), assume note object 		 * If commit SHA1 is incomplete (len< 20), assume note subtree 		 */
+comment|/* 		 * If object SHA1 is complete (len == 20), assume note object 		 * If object SHA1 is incomplete (len< 20), assume note subtree 		 */
 if|if
 condition|(
 name|len
@@ -1602,7 +1596,7 @@ name|l
 operator|->
 name|key_sha1
 argument_list|,
-name|commit_sha1
+name|object_sha1
 argument_list|)
 expr_stmt|;
 name|hashcpy
@@ -1693,7 +1687,7 @@ index|[
 literal|20
 index|]
 decl_stmt|,
-name|commit_sha1
+name|object_sha1
 index|[
 literal|20
 index|]
@@ -1714,12 +1708,12 @@ name|read_ref
 argument_list|(
 name|notes_ref_name
 argument_list|,
-name|commit_sha1
+name|object_sha1
 argument_list|)
 operator|||
 name|get_tree_entry
 argument_list|(
-name|commit_sha1
+name|object_sha1
 argument_list|,
 literal|""
 argument_list|,
@@ -1772,7 +1766,7 @@ specifier|const
 name|unsigned
 name|char
 modifier|*
-name|commit_sha1
+name|object_sha1
 parameter_list|)
 block|{
 name|struct
@@ -1787,7 +1781,7 @@ name|root_node
 argument_list|,
 literal|0
 argument_list|,
-name|commit_sha1
+name|object_sha1
 argument_list|)
 decl_stmt|;
 if|if
@@ -1841,15 +1835,15 @@ block|}
 end_function
 
 begin_function
-DECL|function|get_commit_notes
+DECL|function|format_note
 name|void
-name|get_commit_notes
+name|format_note
 parameter_list|(
 specifier|const
-name|struct
-name|commit
+name|unsigned
+name|char
 modifier|*
-name|commit
+name|object_sha1
 parameter_list|,
 name|struct
 name|strbuf
@@ -1946,11 +1940,7 @@ name|sha1
 operator|=
 name|lookup_notes
 argument_list|(
-name|commit
-operator|->
-name|object
-operator|.
-name|sha1
+name|object_sha1
 argument_list|)
 expr_stmt|;
 if|if

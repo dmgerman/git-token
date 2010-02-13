@@ -25,6 +25,10 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* Flags controlling how notes are formatted */
+end_comment
+
 begin_define
 DECL|macro|NOTES_SHOW_HEADER
 define|#
@@ -41,15 +45,19 @@ name|NOTES_INDENT
 value|2
 end_define
 
+begin_comment
+comment|/*  * Fill the given strbuf with the notes associated with the given object.  *  * If the internal notes structure is not initialized, it will be auto-  * initialized to the default value (see documentation for init_notes() above).  *  * 'flags' is a bitwise combination of the above formatting flags.  */
+end_comment
+
 begin_function_decl
 name|void
-name|get_commit_notes
+name|format_note
 parameter_list|(
 specifier|const
-name|struct
-name|commit
+name|unsigned
+name|char
 modifier|*
-name|commit
+name|object_sha1
 parameter_list|,
 name|struct
 name|strbuf
