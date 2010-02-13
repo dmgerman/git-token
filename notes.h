@@ -44,7 +44,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/* Add the given note object to the internal notes tree structure */
+comment|/*  * Add the given note object to the internal notes tree structure  *  * IMPORTANT: The changes made by add_note() to the internal notes tree structure  * are not persistent until a subsequent call to write_notes_tree() returns  * zero.  */
 end_comment
 
 begin_function_decl
@@ -67,7 +67,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/* Remove the given note object from the internal notes tree structure */
+comment|/*  * Remove the given note object from the internal notes tree structure  *  * IMPORTANT: The changes made by remove_note() to the internal notes tree  * structure are not persistent until a subsequent call to write_notes_tree()  * returns zero.  */
 end_comment
 
 begin_function_decl
@@ -174,7 +174,23 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/* Free (and de-initialize) the internal notes tree structure */
+comment|/*  * Write the internal notes tree structure to the object database  *  * Creates a new tree object encapsulating the current state of the  * internal notes tree, and stores its SHA1 into the 'result' argument.  *  * Returns zero on success, non-zero on failure.  *  * IMPORTANT: Changes made to the internal notes tree structure are not  * persistent until this function has returned zero. Please also remember  * to create a corresponding commit object, and update the appropriate  * notes ref.  */
+end_comment
+
+begin_function_decl
+name|int
+name|write_notes_tree
+parameter_list|(
+name|unsigned
+name|char
+modifier|*
+name|result
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/*  * Free (and de-initialize) the internal notes tree structure  *  * IMPORTANT: Changes made to the notes tree since the last, successful  * call to write_notes_tree() will be lost.  */
 end_comment
 
 begin_function_decl
