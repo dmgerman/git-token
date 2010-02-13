@@ -1645,13 +1645,9 @@ operator|==
 literal|0
 condition|)
 block|{
-name|setenv
+name|set_git_dir
 argument_list|(
-name|GIT_DIR_ENVIRONMENT
-argument_list|,
 literal|"."
-argument_list|,
-literal|1
 argument_list|)
 expr_stmt|;
 name|check_repository_format
