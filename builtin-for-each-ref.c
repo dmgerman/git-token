@@ -721,7 +721,7 @@ operator|==
 literal|'%'
 condition|)
 block|{
-comment|/* %( is the start of an atom; 			 * %% is a quoted per-cent. 			 */
+comment|/* 			 * %( is the start of an atom; 			 * %% is a quoted per-cent. 			 */
 if|if
 condition|(
 name|cp
@@ -2442,7 +2442,7 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* For a tag or a commit object, if "creator" or "creatordate" is 	 * requested, do something special. 	 */
+comment|/* 	 * For a tag or a commit object, if "creator" or "creatordate" is 	 * requested, do something special. 	 */
 if|if
 condition|(
 name|strcmp
@@ -2942,7 +2942,7 @@ block|}
 end_function
 
 begin_comment
-comment|/* We want to have empty print-string for field requests  * that do not apply (e.g. "authordate" for a tag object)  */
+comment|/*  * We want to have empty print-string for field requests  * that do not apply (e.g. "authordate" for a tag object)  */
 end_comment
 
 begin_function
@@ -3641,7 +3641,7 @@ argument_list|(
 name|buf
 argument_list|)
 expr_stmt|;
-comment|/* If there is no atom that wants to know about tagged 	 * object, we are done. 	 */
+comment|/* 	 * If there is no atom that wants to know about tagged 	 * object, we are done. 	 */
 if|if
 condition|(
 operator|!
@@ -3656,7 +3656,7 @@ name|OBJ_TAG
 operator|)
 condition|)
 return|return;
-comment|/* If it is a tag object, see if we use a value that derefs 	 * the object, and if we do grab the object it refers to. 	 */
+comment|/* 	 * If it is a tag object, see if we use a value that derefs 	 * the object, and if we do grab the object it refers to. 	 */
 name|tagged
 operator|=
 operator|(
@@ -3672,7 +3672,7 @@ name|tagged
 operator|->
 name|sha1
 expr_stmt|;
-comment|/* NEEDSWORK: This derefs tag only once, which 	 * is good to deal with chains of trust, but 	 * is not consistent with what deref_tag() does 	 * which peels the onion to the core. 	 */
+comment|/* 	 * NEEDSWORK: This derefs tag only once, which 	 * is good to deal with chains of trust, but 	 * is not consistent with what deref_tag() does 	 * which peels the onion to the core. 	 */
 name|buf
 operator|=
 name|get_obj
@@ -3843,7 +3843,7 @@ struct|;
 end_struct
 
 begin_comment
-comment|/*  * A call-back given to for_each_ref().  It is unfortunate that we  * need to use global variables to pass extra information to this  * function.  */
+comment|/*  * A call-back given to for_each_ref().  Filter refs and keep them for  * later object processing.  */
 end_comment
 
 begin_function
@@ -4007,7 +4007,7 @@ return|return
 literal|0
 return|;
 block|}
-comment|/* We do not open the object yet; sort may only need refname 	 * to do its job and the resulting list may yet to be pruned 	 * by maxcount logic. 	 */
+comment|/* 	 * We do not open the object yet; sort may only need refname 	 * to do its job and the resulting list may yet to be pruned 	 * by maxcount logic. 	 */
 name|ref
 operator|=
 name|xcalloc
