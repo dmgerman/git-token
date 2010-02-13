@@ -70,6 +70,8 @@ init|=
 block|{
 literal|"git notes [list [<object>]]"
 block|,
+literal|"git notes add [-f] [-m<msg> | -F<file>] [<object>]"
+block|,
 literal|"git notes edit [-m<msg> | -F<file>] [<object>]"
 block|,
 literal|"git notes show [<object>]"
@@ -1087,6 +1089,10 @@ name|list
 init|=
 literal|0
 decl_stmt|,
+name|add
+init|=
+literal|0
+decl_stmt|,
 name|edit
 init|=
 literal|0
@@ -1100,6 +1106,10 @@ init|=
 literal|0
 decl_stmt|,
 name|prune
+init|=
+literal|0
+decl_stmt|,
+name|force
 init|=
 literal|0
 decl_stmt|;
@@ -1162,6 +1172,18 @@ argument_list|,
 literal|"note contents in a file"
 argument_list|)
 block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|'f'
+argument_list|,
+literal|"force"
+argument_list|,
+operator|&
+name|force
+argument_list|,
+literal|"replace existing notes"
+argument_list|)
+block|,
 name|OPT_END
 argument_list|()
 block|}
@@ -1206,6 +1228,26 @@ literal|"list"
 argument_list|)
 condition|)
 name|list
+operator|=
+literal|1
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|argc
+operator|&&
+operator|!
+name|strcmp
+argument_list|(
+name|argv
+index|[
+literal|0
+index|]
+argument_list|,
+literal|"add"
+argument_list|)
+condition|)
+name|add
 operator|=
 literal|1
 expr_stmt|;
@@ -1304,6 +1346,8 @@ if|if
 condition|(
 name|list
 operator|+
+name|add
+operator|+
 name|edit
 operator|+
 name|show
@@ -1332,7 +1376,11 @@ name|msgfile
 operator|)
 operator|&&
 operator|!
+operator|(
+name|add
+operator|||
 name|edit
+operator|)
 condition|)
 block|{
 name|error
@@ -1365,6 +1413,32 @@ block|{
 name|error
 argument_list|(
 literal|"mixing -m and -F options is not allowed."
+argument_list|)
+expr_stmt|;
+name|usage_with_options
+argument_list|(
+name|git_notes_usage
+argument_list|,
+name|options
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|force
+operator|&&
+operator|!
+name|add
+condition|)
+block|{
+name|error
+argument_list|(
+literal|"cannot use -f option with %s subcommand."
+argument_list|,
+name|argv
+index|[
+literal|0
+index|]
 argument_list|)
 expr_stmt|;
 name|usage_with_options
@@ -1588,7 +1662,48 @@ name|show_args
 argument_list|)
 return|;
 block|}
-comment|/* edit/remove/prune command */
+comment|/* add/edit/remove/prune command */
+if|if
+condition|(
+name|add
+operator|&&
+name|note
+condition|)
+block|{
+if|if
+condition|(
+name|force
+condition|)
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"Overwriting existing notes for object %s\n"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|object
+argument_list|)
+argument_list|)
+expr_stmt|;
+else|else
+block|{
+name|error
+argument_list|(
+literal|"Cannot add notes. Found existing notes for object %s. "
+literal|"Use '-f' to overwrite existing notes"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|object
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return
+literal|1
+return|;
+block|}
+block|}
 if|if
 condition|(
 name|remove
