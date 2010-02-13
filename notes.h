@@ -84,6 +84,26 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/*  * Get the note object SHA1 containing the note data for the given object  *  * Return NULL if the given object has no notes.  */
+end_comment
+
+begin_function_decl
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|get_note
+parameter_list|(
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|object_sha1
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/* Free (and de-initialize) the internal notes tree structure */
 end_comment
 
