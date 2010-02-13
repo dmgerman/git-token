@@ -74,6 +74,8 @@ literal|"git notes show [<object>]"
 block|,
 literal|"git notes remove [<object>]"
 block|,
+literal|"git notes prune"
+block|,
 name|NULL
 block|}
 decl_stmt|;
@@ -1042,6 +1044,10 @@ decl_stmt|,
 name|remove
 init|=
 literal|0
+decl_stmt|,
+name|prune
+init|=
+literal|0
 decl_stmt|;
 specifier|const
 name|char
@@ -1186,6 +1192,26 @@ name|remove
 operator|=
 literal|1
 expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|argc
+operator|&&
+operator|!
+name|strcmp
+argument_list|(
+name|argv
+index|[
+literal|0
+index|]
+argument_list|,
+literal|"prune"
+argument_list|)
+condition|)
+name|prune
+operator|=
+literal|1
+expr_stmt|;
 if|if
 condition|(
 name|edit
@@ -1193,6 +1219,8 @@ operator|+
 name|show
 operator|+
 name|remove
+operator|+
+name|prune
 operator|!=
 literal|1
 condition|)
@@ -1275,6 +1303,14 @@ condition|(
 name|argc
 operator|>
 literal|2
+operator|||
+operator|(
+name|prune
+operator|&&
+name|argc
+operator|>
+literal|1
+operator|)
 condition|)
 block|{
 name|error
@@ -1411,7 +1447,7 @@ name|show_args
 argument_list|)
 return|;
 block|}
-comment|/* edit/remove command */
+comment|/* edit/remove/prune command */
 if|if
 condition|(
 name|remove
@@ -1504,6 +1540,24 @@ name|msgfile
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|prune
+condition|)
+block|{
+name|hashclr
+argument_list|(
+name|new_note
+argument_list|)
+expr_stmt|;
+name|prune_notes
+argument_list|(
+name|t
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|create_note
 argument_list|(
 name|object
@@ -1550,6 +1604,7 @@ argument_list|,
 name|combine_notes_overwrite
 argument_list|)
 expr_stmt|;
+block|}
 name|snprintf
 argument_list|(
 name|logmsg
