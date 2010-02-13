@@ -110,6 +110,16 @@ name|int_node
 modifier|*
 name|root
 decl_stmt|;
+DECL|member|first_non_note
+DECL|member|prev_non_note
+name|struct
+name|non_note
+modifier|*
+name|first_non_note
+decl_stmt|,
+modifier|*
+name|prev_non_note
+decl_stmt|;
 DECL|member|ref
 name|char
 modifier|*
