@@ -353,6 +353,22 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/*  * Remove all notes annotating non-existing objects from the given notes tree  *  * All notes in the given notes_tree that are associated with objects that no  * longer exist in the database, are removed from the notes tree.  *  * IMPORTANT: The changes made by prune_notes() to the given notes_tree  * structure are not persistent until a subsequent call to write_notes_tree()  * returns zero.  */
+end_comment
+
+begin_function_decl
+name|void
+name|prune_notes
+parameter_list|(
+name|struct
+name|notes_tree
+modifier|*
+name|t
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/*  * Free (and de-initialize) the given notes_tree structure  *  * IMPORTANT: Changes made to the given notes_tree since the last, successful  * call to write_notes_tree() will be lost.  */
 end_comment
 
