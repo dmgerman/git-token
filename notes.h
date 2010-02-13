@@ -13,6 +13,88 @@ name|NOTES_H
 end_define
 
 begin_comment
+comment|/*  * Function type for combining two notes annotating the same object.  *  * When adding a new note annotating the same object as an existing note, it is  * up to the caller to decide how to combine the two notes. The decision is  * made by passing in a function of the following form. The function accepts  * two SHA1s -- of the existing note and the new note, respectively. The  * function then combines the notes in whatever way it sees fit, and writes the  * resulting SHA1 into the first SHA1 argument (cur_sha1). A non-zero return  * value indicates failure.  *  * The two given SHA1s must both be non-NULL and different from each other.  *  * The default combine_notes function (you get this when passing NULL) is  * combine_notes_concatenate(), which appends the contents of the new note to  * the contents of the existing note.  */
+end_comment
+
+begin_typedef
+DECL|typedef|combine_notes_fn
+typedef|typedef
+name|int
+name|combine_notes_fn
+parameter_list|(
+name|unsigned
+name|char
+modifier|*
+name|cur_sha1
+parameter_list|,
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|new_sha1
+parameter_list|)
+function_decl|;
+end_typedef
+
+begin_comment
+comment|/* Common notes combinators */
+end_comment
+
+begin_function_decl
+name|int
+name|combine_notes_concatenate
+parameter_list|(
+name|unsigned
+name|char
+modifier|*
+name|cur_sha1
+parameter_list|,
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|new_sha1
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
+name|combine_notes_overwrite
+parameter_list|(
+name|unsigned
+name|char
+modifier|*
+name|cur_sha1
+parameter_list|,
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|new_sha1
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
+name|combine_notes_ignore
+parameter_list|(
+name|unsigned
+name|char
+modifier|*
+name|cur_sha1
+parameter_list|,
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|new_sha1
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/*  * Notes tree object  *  * Encapsulates the internal notes tree structure associated with a notes ref.  * Whenever a struct notes_tree pointer is required below, you may pass NULL in  * order to use the default/internal notes tree. E.g. you only need to pass a  * non-NULL value if you need to refer to several different notes trees  * simultaneously.  */
 end_comment
 
@@ -32,6 +114,11 @@ DECL|member|ref
 name|char
 modifier|*
 name|ref
+decl_stmt|;
+DECL|member|combine_notes
+name|combine_notes_fn
+modifier|*
+name|combine_notes
 decl_stmt|;
 DECL|member|initialized
 name|int
@@ -55,7 +142,7 @@ value|1
 end_define
 
 begin_comment
-comment|/*  * Initialize the given notes_tree with the notes tree structure at the given  * ref. If given ref is NULL, the value of the $GIT_NOTES_REF environment  * variable is used, and if that is missing, the default notes ref is used  * ("refs/notes/commits").  *  * If you need to re-intialize a notes_tree structure (e.g. when switching from  * one notes ref to another), you must first de-initialize the notes_tree  * structure by calling free_notes(struct notes_tree *).  *  * If you pass t == NULL, the default internal notes_tree will be initialized.  *  * Precondition: The notes_tree structure is zeroed (this can be achieved with  * memset(t, 0, sizeof(struct notes_tree)))  */
+comment|/*  * Initialize the given notes_tree with the notes tree structure at the given  * ref. If given ref is NULL, the value of the $GIT_NOTES_REF environment  * variable is used, and if that is missing, the default notes ref is used  * ("refs/notes/commits").  *  * If you need to re-intialize a notes_tree structure (e.g. when switching from  * one notes ref to another), you must first de-initialize the notes_tree  * structure by calling free_notes(struct notes_tree *).  *  * If you pass t == NULL, the default internal notes_tree will be initialized.  *  * The combine_notes function that is passed becomes the default combine_notes  * function for the given notes_tree. If NULL is passed, the default  * combine_notes function is combine_notes_concatenate().  *  * Precondition: The notes_tree structure is zeroed (this can be achieved with  * memset(t, 0, sizeof(struct notes_tree)))  */
 end_comment
 
 begin_function_decl
@@ -71,6 +158,9 @@ specifier|const
 name|char
 modifier|*
 name|notes_ref
+parameter_list|,
+name|combine_notes_fn
+name|combine_notes
 parameter_list|,
 name|int
 name|flags
@@ -102,6 +192,9 @@ name|unsigned
 name|char
 modifier|*
 name|note_sha1
+parameter_list|,
+name|combine_notes_fn
+name|combine_notes
 parameter_list|)
 function_decl|;
 end_function_decl
