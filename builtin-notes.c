@@ -1664,6 +1664,16 @@ literal|0
 decl_stmt|;
 name|int
 name|given_object
+init|=
+literal|0
+decl_stmt|,
+name|i
+init|=
+literal|1
+decl_stmt|,
+name|retval
+init|=
+literal|0
 decl_stmt|;
 name|struct
 name|msg_arg
@@ -1937,11 +1947,17 @@ condition|(
 operator|!
 name|argc
 condition|)
+block|{
 name|list
 operator|=
 literal|1
 expr_stmt|;
 comment|/* Default to 'list' if no other subcommand given */
+name|i
+operator|=
+literal|0
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|list
@@ -2049,8 +2065,8 @@ block|}
 name|given_object
 operator|=
 name|argc
-operator|==
-literal|2
+operator|>
+name|i
 expr_stmt|;
 name|object_ref
 operator|=
@@ -2058,7 +2074,8 @@ name|given_object
 condition|?
 name|argv
 index|[
-literal|1
+name|i
+operator|++
 index|]
 else|:
 literal|"HEAD"
@@ -2067,14 +2084,12 @@ if|if
 condition|(
 name|argc
 operator|>
-literal|2
+name|i
 operator|||
 operator|(
 name|prune
 operator|&&
-name|argc
-operator|>
-literal|1
+name|given_object
 operator|)
 condition|)
 block|{
@@ -2181,13 +2196,15 @@ name|note
 argument_list|)
 argument_list|)
 expr_stmt|;
-return|return
-literal|0
-return|;
+goto|goto
+name|end
+goto|;
 block|}
 block|}
 else|else
-return|return
+block|{
+name|retval
+operator|=
 name|for_each_note
 argument_list|(
 name|t
@@ -2198,7 +2215,11 @@ name|list_each_note
 argument_list|,
 name|NULL
 argument_list|)
-return|;
+expr_stmt|;
+goto|goto
+name|end
+goto|;
+block|}
 block|}
 comment|/* show command */
 if|if
@@ -2223,9 +2244,13 @@ name|object
 argument_list|)
 argument_list|)
 expr_stmt|;
-return|return
+name|retval
+operator|=
 literal|1
-return|;
+expr_stmt|;
+goto|goto
+name|end
+goto|;
 block|}
 elseif|else
 if|if
@@ -2252,12 +2277,16 @@ block|,
 name|NULL
 block|}
 decl_stmt|;
-return|return
+name|retval
+operator|=
 name|execv_git_cmd
 argument_list|(
 name|show_args
 argument_list|)
-return|;
+expr_stmt|;
+goto|goto
+name|end
+goto|;
 block|}
 comment|/* add/append/edit/remove/prune command */
 if|if
@@ -2269,8 +2298,29 @@ condition|)
 block|{
 if|if
 condition|(
+operator|!
 name|force
 condition|)
+block|{
+name|error
+argument_list|(
+literal|"Cannot add notes. Found existing notes for object"
+literal|" %s. Use '-f' to overwrite existing notes"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|object
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|retval
+operator|=
+literal|1
+expr_stmt|;
+goto|goto
+name|end
+goto|;
+block|}
 name|fprintf
 argument_list|(
 name|stderr
@@ -2283,23 +2333,6 @@ name|object
 argument_list|)
 argument_list|)
 expr_stmt|;
-else|else
-block|{
-name|error
-argument_list|(
-literal|"Cannot add notes. Found existing notes for object %s. "
-literal|"Use '-f' to overwrite existing notes"
-argument_list|,
-name|sha1_to_hex
-argument_list|(
-name|object
-argument_list|)
-argument_list|)
-expr_stmt|;
-return|return
-literal|1
-return|;
-block|}
 block|}
 if|if
 condition|(
@@ -2344,9 +2377,11 @@ argument_list|(
 name|t
 argument_list|)
 expr_stmt|;
+goto|goto
+name|commit
+goto|;
 block|}
 else|else
-block|{
 name|create_note
 argument_list|(
 name|object
@@ -2387,7 +2422,8 @@ argument_list|,
 name|combine_notes_overwrite
 argument_list|)
 expr_stmt|;
-block|}
+name|commit
+label|:
 name|snprintf
 argument_list|(
 name|logmsg
@@ -2397,7 +2433,7 @@ argument_list|(
 name|logmsg
 argument_list|)
 argument_list|,
-literal|"Note %s by 'git notes %s'"
+literal|"Notes %s by 'git notes %s'"
 argument_list|,
 name|is_null_sha1
 argument_list|(
@@ -2421,6 +2457,8 @@ argument_list|,
 name|logmsg
 argument_list|)
 expr_stmt|;
+name|end
+label|:
 name|free_notes
 argument_list|(
 name|t
@@ -2437,7 +2475,7 @@ operator|)
 argument_list|)
 expr_stmt|;
 return|return
-literal|0
+name|retval
 return|;
 block|}
 end_function
