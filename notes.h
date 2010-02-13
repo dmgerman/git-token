@@ -13,6 +13,37 @@ name|NOTES_H
 end_define
 
 begin_comment
+comment|/*  * Flags controlling behaviour of notes tree initialization  *  * Default behaviour is to initialize the notes tree from the tree object  * specified by the given (or default) notes ref.  */
+end_comment
+
+begin_define
+DECL|macro|NOTES_INIT_EMPTY
+define|#
+directive|define
+name|NOTES_INIT_EMPTY
+value|1
+end_define
+
+begin_comment
+comment|/*  * Initialize internal notes tree structure with the notes tree at the given  * ref. If given ref is NULL, the value of the $GIT_NOTES_REF environment  * variable is used, and if that is missing, the default notes ref is used  * ("refs/notes/commits").  *  * If you need to re-intialize the internal notes tree structure (e.g. loading  * from a different notes ref), please first de-initialize the current notes  * tree by calling free_notes().  */
+end_comment
+
+begin_function_decl
+name|void
+name|init_notes
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|notes_ref
+parameter_list|,
+name|int
+name|flags
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/* Free (and de-initialize) the internal notes tree structure */
 end_comment
 
