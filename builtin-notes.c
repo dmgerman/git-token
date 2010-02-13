@@ -538,9 +538,6 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|skip_editor
-operator|&&
-operator|!
 name|buf
 operator|->
 name|len
@@ -1024,6 +1021,9 @@ specifier|const
 name|char
 modifier|*
 name|object_ref
+decl_stmt|,
+modifier|*
+name|logmsg
 decl_stmt|;
 name|int
 name|edit
@@ -1457,6 +1457,28 @@ argument_list|,
 name|new_note
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|is_null_sha1
+argument_list|(
+name|new_note
+argument_list|)
+condition|)
+block|{
+name|remove_note
+argument_list|(
+name|t
+argument_list|,
+name|object
+argument_list|)
+expr_stmt|;
+name|logmsg
+operator|=
+literal|"Note removed by 'git notes edit'"
+expr_stmt|;
+block|}
+else|else
+block|{
 name|add_note
 argument_list|(
 name|t
@@ -1468,11 +1490,16 @@ argument_list|,
 name|combine_notes_overwrite
 argument_list|)
 expr_stmt|;
+name|logmsg
+operator|=
+literal|"Note added by 'git notes edit'"
+expr_stmt|;
+block|}
 name|commit_notes
 argument_list|(
 name|t
 argument_list|,
-literal|"Note added by 'git notes edit'"
+name|logmsg
 argument_list|)
 expr_stmt|;
 name|free_notes
