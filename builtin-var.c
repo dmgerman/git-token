@@ -23,7 +23,7 @@ name|char
 name|var_usage
 index|[]
 init|=
-literal|"git var [-l |<variable>]"
+literal|"git var (-l |<variable>)"
 decl_stmt|;
 end_decl_stmt
 
