@@ -5530,7 +5530,8 @@ name|char
 modifier|*
 name|git_pager
 parameter_list|(
-name|void
+name|int
+name|stdout_is_tty
 parameter_list|)
 function_decl|;
 end_function_decl

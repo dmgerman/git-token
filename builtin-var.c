@@ -85,7 +85,9 @@ modifier|*
 name|pgm
 init|=
 name|git_pager
-argument_list|()
+argument_list|(
+literal|1
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
