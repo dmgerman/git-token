@@ -2172,6 +2172,11 @@ argument_list|,
 name|root
 argument_list|)
 expr_stmt|;
+name|free
+argument_list|(
+name|tree
+argument_list|)
+expr_stmt|;
 return|return
 literal|0
 return|;
