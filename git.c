@@ -2929,7 +2929,7 @@ argument_list|(
 name|stderr
 argument_list|,
 literal|"Expansion of alias '%s' failed; "
-literal|"'%s' is not a git-command\n"
+literal|"'%s' is not a git command\n"
 argument_list|,
 name|cmd
 argument_list|,
