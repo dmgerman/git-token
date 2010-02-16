@@ -17060,6 +17060,25 @@ argument_list|,
 literal|"w"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|options
+operator|->
+name|file
+condition|)
+name|die_errno
+argument_list|(
+literal|"Could not open '%s'"
+argument_list|,
+name|arg
+operator|+
+name|strlen
+argument_list|(
+literal|"--output="
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|options
 operator|->
 name|close_file
