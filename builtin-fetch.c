@@ -63,6 +63,12 @@ directive|include
 file|"sigchain.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"transport.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|builtin_fetch_usage
 specifier|static
@@ -1169,14 +1175,6 @@ block|}
 end_function
 
 begin_define
-DECL|macro|SUMMARY_WIDTH
-define|#
-directive|define
-name|SUMMARY_WIDTH
-value|(2 * DEFAULT_ABBREV + 3)
-end_define
-
-begin_define
 DECL|macro|REFCOL_WIDTH
 define|#
 directive|define
@@ -1302,7 +1300,7 @@ name|display
 argument_list|,
 literal|"= %-*s %-*s -> %s"
 argument_list|,
-name|SUMMARY_WIDTH
+name|TRANSPORT_SUMMARY_WIDTH
 argument_list|,
 literal|"[up to date]"
 argument_list|,
@@ -1357,7 +1355,7 @@ name|display
 argument_list|,
 literal|"! %-*s %-*s -> %s  (can't fetch in current branch)"
 argument_list|,
-name|SUMMARY_WIDTH
+name|TRANSPORT_SUMMARY_WIDTH
 argument_list|,
 literal|"[rejected]"
 argument_list|,
@@ -1419,7 +1417,7 @@ literal|'!'
 else|:
 literal|'-'
 argument_list|,
-name|SUMMARY_WIDTH
+name|TRANSPORT_SUMMARY_WIDTH
 argument_list|,
 literal|"[tag update]"
 argument_list|,
@@ -1542,7 +1540,7 @@ literal|'!'
 else|:
 literal|'*'
 argument_list|,
-name|SUMMARY_WIDTH
+name|TRANSPORT_SUMMARY_WIDTH
 argument_list|,
 name|what
 argument_list|,
@@ -1645,7 +1643,7 @@ literal|'!'
 else|:
 literal|' '
 argument_list|,
-name|SUMMARY_WIDTH
+name|TRANSPORT_SUMMARY_WIDTH
 argument_list|,
 name|quickref
 argument_list|,
@@ -1745,7 +1743,7 @@ literal|'!'
 else|:
 literal|'+'
 argument_list|,
-name|SUMMARY_WIDTH
+name|TRANSPORT_SUMMARY_WIDTH
 argument_list|,
 name|quickref
 argument_list|,
@@ -1774,7 +1772,7 @@ name|display
 argument_list|,
 literal|"! %-*s %-*s -> %s  (non-fast-forward)"
 argument_list|,
-name|SUMMARY_WIDTH
+name|TRANSPORT_SUMMARY_WIDTH
 argument_list|,
 literal|"[rejected]"
 argument_list|,
@@ -2370,7 +2368,7 @@ name|note
 argument_list|,
 literal|"* %-*s %-*s -> FETCH_HEAD"
 argument_list|,
-name|SUMMARY_WIDTH
+name|TRANSPORT_SUMMARY_WIDTH
 argument_list|,
 operator|*
 name|kind
@@ -2895,7 +2893,7 @@ name|stderr
 argument_list|,
 literal|" x %-*s %-*s -> %s\n"
 argument_list|,
-name|SUMMARY_WIDTH
+name|TRANSPORT_SUMMARY_WIDTH
 argument_list|,
 literal|"[deleted]"
 argument_list|,
