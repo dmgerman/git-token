@@ -789,6 +789,15 @@ goto|goto
 name|auto_color
 goto|;
 block|}
+if|if
+condition|(
+operator|!
+name|var
+condition|)
+return|return
+operator|-
+literal|1
+return|;
 comment|/* Missing or explicit false to turn off colorization */
 if|if
 condition|(

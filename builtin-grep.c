@@ -4146,20 +4146,14 @@ argument_list|,
 literal|"show the number of matches instead of matching lines"
 argument_list|)
 block|,
-name|OPT_SET_INT
+name|OPT__COLOR
 argument_list|(
-literal|0
-argument_list|,
-literal|"color"
-argument_list|,
 operator|&
 name|opt
 operator|.
 name|color
 argument_list|,
 literal|"highlight matches"
-argument_list|,
-literal|1
 argument_list|)
 block|,
 name|OPT_GROUP

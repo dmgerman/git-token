@@ -3441,12 +3441,8 @@ argument_list|,
 name|BRANCH_TRACK_OVERRIDE
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT__COLOR
 argument_list|(
-literal|0
-argument_list|,
-literal|"color"
-argument_list|,
 operator|&
 name|branch_use_color
 argument_list|,
