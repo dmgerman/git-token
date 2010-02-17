@@ -9733,7 +9733,7 @@ return|return
 operator|-
 literal|1
 return|;
-comment|/* 	 * If match_begining or match_end is specified, there is no 	 * point starting from a wrong line that will never match and 	 * wander around and wait for a match at the specified end. 	 */
+comment|/* 	 * If match_beginning or match_end is specified, there is no 	 * point starting from a wrong line that will never match and 	 * wander around and wait for a match at the specified end. 	 */
 if|if
 condition|(
 name|match_beginning

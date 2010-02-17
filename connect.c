@@ -2612,7 +2612,7 @@ operator|=
 literal|':'
 expr_stmt|;
 block|}
-comment|/* 	 * Don't do destructive transforms with git:// as that 	 * protocol code does '[]' dewrapping of its own. 	 */
+comment|/* 	 * Don't do destructive transforms with git:// as that 	 * protocol code does '[]' unwrapping of its own. 	 */
 if|if
 condition|(
 name|host

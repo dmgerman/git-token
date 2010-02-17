@@ -5962,7 +5962,7 @@ expr_stmt|;
 block|}
 comment|/* 		 * Otherwise, it is "format-patch -22 HEAD", and/or 		 * "format-patch --root HEAD".  The user wants 		 * get_revision() to do the usual traversal. 		 */
 block|}
-comment|/* 	 * We cannot move this anywhere earlier because we do want to 	 * know if --root was given explicitly from the comand line. 	 */
+comment|/* 	 * We cannot move this anywhere earlier because we do want to 	 * know if --root was given explicitly from the command line. 	 */
 name|rev
 operator|.
 name|show_root_diff

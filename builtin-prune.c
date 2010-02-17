@@ -575,7 +575,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Write errors (particularly out of space) can result in  * failed temporary packs (and more rarely indexes and other  * files begining with "tmp_") accumulating in the object  * and the pack directories.  */
+comment|/*  * Write errors (particularly out of space) can result in  * failed temporary packs (and more rarely indexes and other  * files beginning with "tmp_") accumulating in the object  * and the pack directories.  */
 end_comment
 
 begin_function

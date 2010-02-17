@@ -1033,7 +1033,7 @@ argument_list|,
 operator|&
 name|batch
 argument_list|,
-literal|"show info and content of objects feeded on stdin"
+literal|"show info and content of objects fed from the standard input"
 argument_list|,
 name|BATCH
 argument_list|)
@@ -1047,7 +1047,7 @@ argument_list|,
 operator|&
 name|batch
 argument_list|,
-literal|"show info about objects feeded on stdin"
+literal|"show info about objects fed from the standard input"
 argument_list|,
 name|BATCH_CHECK
 argument_list|)

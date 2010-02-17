@@ -21514,7 +21514,7 @@ index|[
 name|i
 index|]
 decl_stmt|;
-comment|/* 		 * 1. Entries that come from stat info dirtyness 		 *    always have both sides (iow, not create/delete), 		 *    one side of the object name is unknown, with 		 *    the same mode and size.  Keep the ones that 		 *    do not match these criteria.  They have real 		 *    differences. 		 * 		 * 2. At this point, the file is known to be modified, 		 *    with the same mode and size, and the object 		 *    name of one side is unknown.  Need to inspect 		 *    the identical contents. 		 */
+comment|/* 		 * 1. Entries that come from stat info dirtiness 		 *    always have both sides (iow, not create/delete), 		 *    one side of the object name is unknown, with 		 *    the same mode and size.  Keep the ones that 		 *    do not match these criteria.  They have real 		 *    differences. 		 * 		 * 2. At this point, the file is known to be modified, 		 *    with the same mode and size, and the object 		 *    name of one side is unknown.  Need to inspect 		 *    the identical contents. 		 */
 if|if
 condition|(
 operator|!
