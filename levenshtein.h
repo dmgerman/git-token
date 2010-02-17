@@ -30,7 +30,7 @@ name|int
 name|swap_penalty
 parameter_list|,
 name|int
-name|substition_penalty
+name|substitution_penalty
 parameter_list|,
 name|int
 name|insertion_penalty

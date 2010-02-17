@@ -2852,7 +2852,7 @@ name|sl
 decl_stmt|,
 name|ndot
 decl_stmt|;
-comment|/* 	 * This resurrects the belts and suspenders paranoia check by HPA 	 * done in<435560F7.4080006@zytor.com> thread, now enter_repo() 	 * does not do getcwd() based path canonicalizations. 	 * 	 * sl becomes true immediately after seeing '/' and continues to 	 * be true as long as dots continue after that without intervening 	 * non-dot character. 	 */
+comment|/* 	 * This resurrects the belts and suspenders paranoia check by HPA 	 * done in<435560F7.4080006@zytor.com> thread, now enter_repo() 	 * does not do getcwd() based path canonicalization. 	 * 	 * sl becomes true immediately after seeing '/' and continues to 	 * be true as long as dots continue after that without intervening 	 * non-dot character. 	 */
 if|if
 condition|(
 operator|!
