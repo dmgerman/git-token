@@ -4657,6 +4657,37 @@ operator||
 name|PARSE_OPT_NO_INTERNAL_HELP
 argument_list|)
 expr_stmt|;
+comment|/* 	 * skip a -- separator; we know it cannot be 	 * separating revisions from pathnames if 	 * we haven't even had any patterns yet 	 */
+if|if
+condition|(
+name|argc
+operator|>
+literal|0
+operator|&&
+operator|!
+name|opt
+operator|.
+name|pattern_list
+operator|&&
+operator|!
+name|strcmp
+argument_list|(
+name|argv
+index|[
+literal|0
+index|]
+argument_list|,
+literal|"--"
+argument_list|)
+condition|)
+block|{
+name|argv
+operator|++
+expr_stmt|;
+name|argc
+operator|--
+expr_stmt|;
+block|}
 comment|/* First unrecognized non-option token */
 if|if
 condition|(
