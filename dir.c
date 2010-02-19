@@ -4226,6 +4226,8 @@ name|rmdir
 argument_list|(
 name|dirs
 argument_list|)
+operator|==
+literal|0
 operator|&&
 operator|(
 name|slash
