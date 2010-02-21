@@ -1021,7 +1021,10 @@ name|int
 name|write_discovery
 parameter_list|(
 name|int
-name|fd
+name|in
+parameter_list|,
+name|int
+name|out
 parameter_list|,
 name|void
 modifier|*
@@ -1044,7 +1047,7 @@ if|if
 condition|(
 name|write_in_full
 argument_list|(
-name|fd
+name|out
 argument_list|,
 name|heads
 operator|->
@@ -1065,7 +1068,7 @@ literal|1
 expr_stmt|;
 name|close
 argument_list|(
-name|fd
+name|out
 argument_list|)
 expr_stmt|;
 return|return
@@ -1123,6 +1126,13 @@ operator|.
 name|data
 operator|=
 name|heads
+expr_stmt|;
+name|async
+operator|.
+name|out
+operator|=
+operator|-
+literal|1
 expr_stmt|;
 if|if
 condition|(
