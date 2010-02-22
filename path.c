@@ -1147,10 +1147,6 @@ index|]
 operator|=
 literal|'\0'
 expr_stmt|;
-name|errno
-operator|=
-name|EINVAL
-expr_stmt|;
 return|return
 operator|-
 literal|1
