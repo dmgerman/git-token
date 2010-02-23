@@ -6599,29 +6599,6 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * The per-object header is a pretty dense thing, which is  *  - first byte: low four bits are "size", then three bits of "type",  *    and the high bit is "size continues".  *  - each byte afterwards: low seven bits are size continuation,  *    with the high bit being "size continues"  */
-end_comment
-
-begin_function_decl
-name|int
-name|encode_in_pack_object_header
-parameter_list|(
-name|enum
-name|object_type
-name|type
-parameter_list|,
-name|uintmax_t
-name|size
-parameter_list|,
-name|unsigned
-name|char
-modifier|*
-name|hdr
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_comment
 comment|/* Dumb servers support */
 end_comment
 

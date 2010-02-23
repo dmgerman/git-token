@@ -268,6 +268,23 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|encode_in_pack_object_header
+parameter_list|(
+name|enum
+name|object_type
+parameter_list|,
+name|uintmax_t
+parameter_list|,
+name|unsigned
+name|char
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_define
 DECL|macro|PH_ERROR_EOF
 define|#
