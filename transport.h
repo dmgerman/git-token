@@ -318,7 +318,7 @@ DECL|macro|TRANSPORT_PUSH_PORCELAIN
 define|#
 directive|define
 name|TRANSPORT_PUSH_PORCELAIN
-value|32
+value|16
 end_define
 
 begin_define
@@ -326,7 +326,7 @@ DECL|macro|TRANSPORT_PUSH_SET_UPSTREAM
 define|#
 directive|define
 name|TRANSPORT_PUSH_SET_UPSTREAM
-value|128
+value|32
 end_define
 
 begin_comment
