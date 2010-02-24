@@ -98,6 +98,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|progress
+specifier|static
+name|int
+name|progress
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|refspec
 specifier|static
 specifier|const
@@ -561,7 +569,7 @@ name|transport
 argument_list|,
 name|verbosity
 argument_list|,
-literal|0
+name|progress
 argument_list|)
 expr_stmt|;
 if|if
@@ -1232,6 +1240,18 @@ argument_list|,
 literal|"set upstream for git pull/status"
 argument_list|,
 name|TRANSPORT_PUSH_SET_UPSTREAM
+argument_list|)
+block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|0
+argument_list|,
+literal|"progress"
+argument_list|,
+operator|&
+name|progress
+argument_list|,
+literal|"force progress reporting"
 argument_list|)
 block|,
 name|OPT_END
