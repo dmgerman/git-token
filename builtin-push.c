@@ -90,6 +90,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|verbosity
+specifier|static
+name|int
+name|verbosity
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|refspec
 specifier|static
 specifier|const
@@ -547,6 +555,13 @@ decl_stmt|;
 name|int
 name|nonfastforward
 decl_stmt|;
+name|transport_set_verbosity
+argument_list|(
+name|transport
+argument_list|,
+name|verbosity
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|receivepack
@@ -575,9 +590,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|flags
-operator|&
-name|TRANSPORT_PUSH_VERBOSE
+name|verbosity
+operator|>
+literal|0
 condition|)
 name|fprintf
 argument_list|(
@@ -1045,32 +1060,10 @@ name|options
 index|[]
 init|=
 block|{
-name|OPT_BIT
+name|OPT__VERBOSITY
 argument_list|(
-literal|'q'
-argument_list|,
-literal|"quiet"
-argument_list|,
 operator|&
-name|flags
-argument_list|,
-literal|"be quiet"
-argument_list|,
-name|TRANSPORT_PUSH_QUIET
-argument_list|)
-block|,
-name|OPT_BIT
-argument_list|(
-literal|'v'
-argument_list|,
-literal|"verbose"
-argument_list|,
-operator|&
-name|flags
-argument_list|,
-literal|"be verbose"
-argument_list|,
-name|TRANSPORT_PUSH_VERBOSE
+name|verbosity
 argument_list|)
 block|,
 name|OPT_STRING

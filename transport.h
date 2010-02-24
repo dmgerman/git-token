@@ -314,27 +314,11 @@ value|8
 end_define
 
 begin_define
-DECL|macro|TRANSPORT_PUSH_VERBOSE
-define|#
-directive|define
-name|TRANSPORT_PUSH_VERBOSE
-value|16
-end_define
-
-begin_define
 DECL|macro|TRANSPORT_PUSH_PORCELAIN
 define|#
 directive|define
 name|TRANSPORT_PUSH_PORCELAIN
 value|32
-end_define
-
-begin_define
-DECL|macro|TRANSPORT_PUSH_QUIET
-define|#
-directive|define
-name|TRANSPORT_PUSH_QUIET
-value|64
 end_define
 
 begin_define
