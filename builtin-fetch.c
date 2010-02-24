@@ -4582,6 +4582,8 @@ argument_list|(
 name|transport
 argument_list|,
 name|verbosity
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 if|if
