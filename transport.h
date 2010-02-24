@@ -469,6 +469,21 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+name|void
+name|transport_set_verbosity
+parameter_list|(
+name|struct
+name|transport
+modifier|*
+name|transport
+parameter_list|,
+name|int
+name|verbosity
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|int
 name|transport_push
 parameter_list|(
