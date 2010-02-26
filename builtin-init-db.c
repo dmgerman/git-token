@@ -908,17 +908,6 @@ block|{
 if|if
 condition|(
 operator|!
-name|v
-condition|)
-return|return
-name|config_error_nonbool
-argument_list|(
-name|k
-argument_list|)
-return|;
-if|if
-condition|(
-operator|!
 name|strcmp
 argument_list|(
 name|k
