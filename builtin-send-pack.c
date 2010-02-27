@@ -2403,6 +2403,15 @@ condition|)
 return|return
 name|ret
 return|;
+if|if
+condition|(
+name|args
+operator|->
+name|porcelain
+condition|)
+return|return
+literal|0
+return|;
 for|for
 control|(
 name|ref
