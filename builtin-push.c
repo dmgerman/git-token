@@ -643,8 +643,10 @@ operator|&&
 name|advice_push_nonfastforward
 condition|)
 block|{
-name|printf
+name|fprintf
 argument_list|(
+name|stderr
+argument_list|,
 literal|"To prevent you from losing history, non-fast-forward updates were rejected\n"
 literal|"Merge the remote changes before pushing again.  See the 'Note about\n"
 literal|"fast-forwards' section of 'git push --help' for details.\n"
