@@ -5405,6 +5405,13 @@ name|pos
 operator|-
 literal|1
 expr_stmt|;
+if|if
+condition|(
+name|pos
+operator|<
+name|active_nr
+condition|)
+block|{
 name|ce
 operator|=
 name|active_cache
@@ -5450,6 +5457,7 @@ argument_list|,
 name|filename
 argument_list|)
 expr_stmt|;
+block|}
 comment|/* Confusion between relative and absolute filenames? */
 name|fullnamelen
 operator|=
@@ -5505,6 +5513,13 @@ name|pos
 operator|-
 literal|1
 expr_stmt|;
+if|if
+condition|(
+name|pos
+operator|<
+name|active_nr
+condition|)
+block|{
 name|ce
 operator|=
 name|active_cache
@@ -5550,6 +5565,7 @@ argument_list|,
 name|fullname
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
