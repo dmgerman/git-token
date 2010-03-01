@@ -155,6 +155,11 @@ define|#
 directive|define
 name|XDL_MERGE_FAVOR_THEIRS
 value|2
+DECL|macro|XDL_MERGE_FAVOR_UNION
+define|#
+directive|define
+name|XDL_MERGE_FAVOR_UNION
+value|3
 DECL|macro|XDL_MERGE_FAVOR
 define|#
 directive|define

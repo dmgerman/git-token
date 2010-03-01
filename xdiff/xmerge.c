@@ -21,7 +21,7 @@ name|s_xdmerge
 modifier|*
 name|next
 decl_stmt|;
-comment|/* 	 * 0 = conflict, 	 * 1 = no conflict, take first, 	 * 2 = no conflict, take second. 	 */
+comment|/* 	 * 0 = conflict, 	 * 1 = no conflict, take first, 	 * 2 = no conflict, take second. 	 * 3 = no conflict, take both. 	 */
 DECL|member|mode
 name|int
 name|mode
@@ -1283,9 +1283,11 @@ condition|(
 name|m
 operator|->
 name|mode
-operator|==
-literal|1
+operator|&
+literal|3
 condition|)
+block|{
+comment|/* Before conflicting part */
 name|size
 operator|+=
 name|xdl_recs_copy
@@ -1297,10 +1299,6 @@ argument_list|,
 name|m
 operator|->
 name|i1
-operator|+
-name|m
-operator|->
-name|chg1
 operator|-
 name|i
 argument_list|,
@@ -1315,13 +1313,47 @@ else|:
 name|NULL
 argument_list|)
 expr_stmt|;
-elseif|else
+comment|/* Postimage from side #1 */
 if|if
 condition|(
 name|m
 operator|->
 name|mode
-operator|==
+operator|&
+literal|1
+condition|)
+name|size
+operator|+=
+name|xdl_recs_copy
+argument_list|(
+name|xe1
+argument_list|,
+name|m
+operator|->
+name|i1
+argument_list|,
+name|m
+operator|->
+name|chg1
+argument_list|,
+literal|1
+argument_list|,
+name|dest
+condition|?
+name|dest
+operator|+
+name|size
+else|:
+name|NULL
+argument_list|)
+expr_stmt|;
+comment|/* Postimage from side #2 */
+if|if
+condition|(
+name|m
+operator|->
+name|mode
+operator|&
 literal|2
 condition|)
 name|size
@@ -1333,24 +1365,12 @@ argument_list|,
 name|m
 operator|->
 name|i2
-operator|-
-name|m
-operator|->
-name|i1
-operator|+
-name|i
 argument_list|,
-name|m
-operator|->
-name|i1
-operator|+
 name|m
 operator|->
 name|chg2
-operator|-
-name|i
 argument_list|,
-literal|0
+literal|1
 argument_list|,
 name|dest
 condition|?
@@ -1361,6 +1381,7 @@ else|:
 name|NULL
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 continue|continue;
 name|i
