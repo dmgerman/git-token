@@ -263,6 +263,20 @@ argument_list|,
 name|XDL_MERGE_FAVOR_THEIRS
 argument_list|)
 block|,
+name|OPT_INTEGER
+argument_list|(
+literal|0
+argument_list|,
+literal|"marker-size"
+argument_list|,
+operator|&
+name|xmp
+operator|.
+name|marker_size
+argument_list|,
+literal|"for conflicts, use this marker size"
+argument_list|)
+block|,
 name|OPT__QUIET
 argument_list|(
 operator|&
