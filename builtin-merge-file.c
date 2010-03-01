@@ -263,6 +263,22 @@ argument_list|,
 name|XDL_MERGE_FAVOR_THEIRS
 argument_list|)
 block|,
+name|OPT_SET_INT
+argument_list|(
+literal|0
+argument_list|,
+literal|"union"
+argument_list|,
+operator|&
+name|xmp
+operator|.
+name|favor
+argument_list|,
+literal|"for conflicts, use a union version"
+argument_list|,
+name|XDL_MERGE_FAVOR_UNION
+argument_list|)
+block|,
 name|OPT_INTEGER
 argument_list|(
 literal|0
