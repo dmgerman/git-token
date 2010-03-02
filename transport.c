@@ -3359,10 +3359,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|refs_pushed
-specifier|static
+DECL|function|transport_refs_pushed
 name|int
-name|refs_pushed
+name|transport_refs_pushed
 parameter_list|(
 name|struct
 name|ref
@@ -3409,10 +3408,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|update_tracking_ref
-specifier|static
+DECL|function|transport_update_tracking_ref
 name|void
-name|update_tracking_ref
+name|transport_update_tracking_ref
 parameter_list|(
 name|struct
 name|remote
@@ -3538,14 +3536,6 @@ block|}
 block|}
 end_function
 
-begin_define
-DECL|macro|SUMMARY_WIDTH
-define|#
-directive|define
-name|SUMMARY_WIDTH
-value|(2 * DEFAULT_ABBREV + 3)
-end_define
-
 begin_function
 DECL|function|print_ref_status
 specifier|static
@@ -3655,7 +3645,7 @@ literal|" %c %-*s "
 argument_list|,
 name|flag
 argument_list|,
-name|SUMMARY_WIDTH
+name|TRANSPORT_SUMMARY_WIDTH
 argument_list|,
 name|summary
 argument_list|)
@@ -4141,10 +4131,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|print_push_status
-specifier|static
+DECL|function|transport_print_push_status
 name|void
-name|print_push_status
+name|transport_print_push_status
 parameter_list|(
 specifier|const
 name|char
@@ -4324,10 +4313,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|verify_remote_names
-specifier|static
+DECL|function|transport_verify_remote_names
 name|void
-name|verify_remote_names
+name|transport_verify_remote_names
 parameter_list|(
 name|int
 name|nr_heads
@@ -5898,7 +5886,7 @@ name|nonfastforward
 operator|=
 literal|0
 expr_stmt|;
-name|verify_remote_names
+name|transport_verify_remote_names
 argument_list|(
 name|refspec_nr
 argument_list|,
@@ -6093,7 +6081,7 @@ name|quiet
 operator|||
 name|err
 condition|)
-name|print_push_status
+name|transport_print_push_status
 argument_list|(
 name|transport
 operator|->
@@ -6154,7 +6142,7 @@ name|ref
 operator|->
 name|next
 control|)
-name|update_tracking_ref
+name|transport_update_tracking_ref
 argument_list|(
 name|transport
 operator|->
@@ -6175,7 +6163,7 @@ operator|!
 name|ret
 operator|&&
 operator|!
-name|refs_pushed
+name|transport_refs_pushed
 argument_list|(
 name|remote_refs
 argument_list|)
