@@ -1392,9 +1392,6 @@ name|i
 operator|++
 expr_stmt|;
 block|}
-name|init_walker
-argument_list|()
-expr_stmt|;
 name|ref
 operator|=
 name|alloc_ref
@@ -1405,11 +1402,9 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|walker
-operator|->
-name|fetch_ref
+name|http_fetch_ref
 argument_list|(
-name|walker
+name|url
 argument_list|,
 name|ref
 argument_list|)
