@@ -203,6 +203,23 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+name|void
+name|read_mmblob
+parameter_list|(
+name|mmfile_t
+modifier|*
+name|ptr
+parameter_list|,
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|sha1
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|int
 name|buffer_is_binary
 parameter_list|(
