@@ -482,6 +482,24 @@ parameter_list|)
 value|{ OPTION_FILENAME, (s), (l), (v), \ 				       "FILE", (h) }
 end_define
 
+begin_define
+DECL|macro|OPT_COLOR_FLAG
+define|#
+directive|define
+name|OPT_COLOR_FLAG
+parameter_list|(
+name|s
+parameter_list|,
+name|l
+parameter_list|,
+name|v
+parameter_list|,
+name|h
+parameter_list|)
+define|\
+value|{ OPTION_CALLBACK, (s), (l), (v), "when", (h), PARSE_OPT_OPTARG, \ 		parse_opt_color_flag_cb, (intptr_t)"always" }
+end_define
+
 begin_comment
 comment|/* parse_options() will filter out the processed options and leave the  * non-option arguments in argv[].  * Returns the number of arguments left in argv[].  */
 end_comment
@@ -759,6 +777,25 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|int
+name|parse_opt_color_flag_cb
+parameter_list|(
+specifier|const
+name|struct
+name|option
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+parameter_list|,
+name|int
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
 name|parse_opt_verbosity_cb
 parameter_list|(
 specifier|const
@@ -868,6 +905,20 @@ name|var
 parameter_list|)
 define|\
 value|{ OPTION_CALLBACK, 0, "abbrev", (var), "n", \ 	  "use<n> digits to display SHA-1s", \ 	  PARSE_OPT_OPTARG,&parse_opt_abbrev_cb, 0 }
+end_define
+
+begin_define
+DECL|macro|OPT__COLOR
+define|#
+directive|define
+name|OPT__COLOR
+parameter_list|(
+name|var
+parameter_list|,
+name|h
+parameter_list|)
+define|\
+value|OPT_COLOR_FLAG(0, "color", (var), (h))
 end_define
 
 begin_endif

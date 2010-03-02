@@ -45,7 +45,7 @@ name|show_branch_usage
 index|[]
 init|=
 block|{
-literal|"git show-branch [-a|--all] [-r|--remotes] [--topo-order | --date-order] [--current] [--color | --no-color] [--sparse] [--more=<n> | --list | --independent | --merge-base] [--no-name | --sha1-name] [--topics] [<rev> |<glob>]..."
+literal|"git show-branch [-a|--all] [-r|--remotes] [--topo-order | --date-order] [--current] [--color[=<when>] | --no-color] [--sparse] [--more=<n> | --list | --independent | --merge-base] [--no-name | --sha1-name] [--topics] [<rev> |<glob>]..."
 block|,
 literal|"git show-branch (-g|--reflog)[=<n>[,<base>]] [--list] [<ref>]"
 block|,
@@ -3554,12 +3554,8 @@ argument_list|,
 literal|"show remote-tracking branches"
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT__COLOR
 argument_list|(
-literal|0
-argument_list|,
-literal|"color"
-argument_list|,
 operator|&
 name|showbranch_use_color
 argument_list|,
