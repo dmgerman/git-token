@@ -4731,6 +4731,15 @@ name|pattern_list
 expr_stmt|;
 name|opt
 operator|.
+name|header_tail
+operator|=
+operator|&
+name|opt
+operator|.
+name|header_list
+expr_stmt|;
+name|opt
+operator|.
 name|regflags
 operator|=
 name|REG_NEWLINE
