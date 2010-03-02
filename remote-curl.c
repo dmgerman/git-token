@@ -150,8 +150,6 @@ operator|=
 name|get_http_walker
 argument_list|(
 name|url
-argument_list|,
-name|remote
 argument_list|)
 expr_stmt|;
 block|}
@@ -4646,6 +4644,11 @@ literal|0
 index|]
 expr_stmt|;
 block|}
+name|http_init
+argument_list|(
+name|remote
+argument_list|)
+expr_stmt|;
 do|do
 block|{
 if|if
@@ -4919,6 +4922,9 @@ condition|(
 literal|1
 condition|)
 do|;
+name|http_cleanup
+argument_list|()
+expr_stmt|;
 return|return
 literal|0
 return|;

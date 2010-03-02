@@ -14,6 +14,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"http.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"walker.h"
 end_include
 
@@ -442,13 +448,16 @@ operator|=
 name|rewritten_url
 expr_stmt|;
 block|}
+name|http_init
+argument_list|(
+name|NULL
+argument_list|)
+expr_stmt|;
 name|walker
 operator|=
 name|get_http_walker
 argument_list|(
 name|url
-argument_list|,
-name|NULL
 argument_list|)
 expr_stmt|;
 name|walker
@@ -530,6 +539,9 @@ name|walker_free
 argument_list|(
 name|walker
 argument_list|)
+expr_stmt|;
+name|http_cleanup
+argument_list|()
 expr_stmt|;
 name|free
 argument_list|(
