@@ -28,7 +28,7 @@ DECL|member|pid
 name|pid_t
 name|pid
 decl_stmt|;
-comment|/* 	 * Using .in, .out, .err: 	 * - Specify 0 for no redirections (child inherits stdin, stdout, 	 *   stderr from parent). 	 * - Specify -1 to have a pipe allocated as follows: 	 *     .in: returns the writable pipe end; parent writes to it, 	 *          the readable pipe end becomes child's stdin 	 *     .out, .err: returns the readable pipe end; parent reads from 	 *          it, the writable pipe end becomes child's stdout/stderr 	 *   The caller of start_command() must close the returned FDs 	 *   after it has completed reading from/writing to it! 	 * - Specify> 0 to set a channel to a particular FD as follows: 	 *     .in: a readable FD, becomes child's stdin 	 *     .out: a writable FD, becomes child's stdout/stderr 	 *     .err> 0 not supported 	 *   The specified FD is closed by start_command(), even in case 	 *   of errors! 	 */
+comment|/* 	 * Using .in, .out, .err: 	 * - Specify 0 for no redirections (child inherits stdin, stdout, 	 *   stderr from parent). 	 * - Specify -1 to have a pipe allocated as follows: 	 *     .in: returns the writable pipe end; parent writes to it, 	 *          the readable pipe end becomes child's stdin 	 *     .out, .err: returns the readable pipe end; parent reads from 	 *          it, the writable pipe end becomes child's stdout/stderr 	 *   The caller of start_command() must close the returned FDs 	 *   after it has completed reading from/writing to it! 	 * - Specify> 0 to set a channel to a particular FD as follows: 	 *     .in: a readable FD, becomes child's stdin 	 *     .out: a writable FD, becomes child's stdout/stderr 	 *     .err: a writable FD, becomes child's stderr 	 *   The specified FD is closed by start_command(), even in case 	 *   of errors! 	 */
 DECL|member|in
 name|int
 name|in
@@ -267,7 +267,7 @@ DECL|struct|async
 struct|struct
 name|async
 block|{
-comment|/* 	 * proc writes to fd and closes it; 	 * returns 0 on success, non-zero on failure 	 */
+comment|/* 	 * proc reads from in; closes it before return 	 * proc writes to out; closes it before return 	 * returns 0 on success, non-zero on failure 	 */
 DECL|member|proc
 name|int
 function_decl|(
@@ -276,7 +276,10 @@ name|proc
 function_decl|)
 parameter_list|(
 name|int
-name|fd
+name|in
+parameter_list|,
+name|int
+name|out
 parameter_list|,
 name|void
 modifier|*
@@ -288,6 +291,11 @@ name|void
 modifier|*
 name|data
 decl_stmt|;
+DECL|member|in
+name|int
+name|in
+decl_stmt|;
+comment|/* caller writes here and closes it */
 DECL|member|out
 name|int
 name|out
@@ -306,9 +314,13 @@ DECL|member|tid
 name|HANDLE
 name|tid
 decl_stmt|;
-DECL|member|fd_for_proc
+DECL|member|proc_in
 name|int
-name|fd_for_proc
+name|proc_in
+decl_stmt|;
+DECL|member|proc_out
+name|int
+name|proc_out
 decl_stmt|;
 endif|#
 directive|endif
