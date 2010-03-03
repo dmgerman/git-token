@@ -96,6 +96,13 @@ name|ref
 modifier|*
 name|remote_refs
 decl_stmt|;
+comment|/** 	 * Indicates whether we already called get_refs_list(); set by 	 * transport.c::transport_get_remote_refs(). 	 */
+DECL|member|got_remote_refs
+name|unsigned
+name|got_remote_refs
+range|:
+literal|1
+decl_stmt|;
 comment|/** 	 * Returns 0 if successful, positive if the option is not 	 * recognized or is inapplicable, and negative if the option 	 * is applicable but the value is invalid. 	 **/
 DECL|member|set_option
 name|int
