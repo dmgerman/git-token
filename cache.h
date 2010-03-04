@@ -6129,6 +6129,20 @@ end_define
 
 begin_function_decl
 specifier|extern
+name|char
+modifier|*
+name|git_getpass
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|prompt
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|struct
 name|child_process
 modifier|*
