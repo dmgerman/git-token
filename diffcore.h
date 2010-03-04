@@ -183,9 +183,19 @@ DECL|member|dirty_submodule
 name|unsigned
 name|dirty_submodule
 range|:
-literal|1
+literal|2
 decl_stmt|;
 comment|/* For submodules: its work tree is dirty */
+DECL|macro|DIRTY_SUBMODULE_UNTRACKED
+define|#
+directive|define
+name|DIRTY_SUBMODULE_UNTRACKED
+value|1
+DECL|macro|DIRTY_SUBMODULE_MODIFIED
+define|#
+directive|define
+name|DIRTY_SUBMODULE_MODIFIED
+value|2
 DECL|member|driver
 name|struct
 name|userdiff_driver

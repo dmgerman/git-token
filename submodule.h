@@ -61,7 +61,7 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-name|int
+name|unsigned
 name|is_submodule_modified
 parameter_list|(
 specifier|const
