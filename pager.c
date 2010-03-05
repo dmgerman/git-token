@@ -202,7 +202,8 @@ name|char
 modifier|*
 name|git_pager
 parameter_list|(
-name|void
+name|int
+name|stdout_is_tty
 parameter_list|)
 block|{
 specifier|const
@@ -213,10 +214,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|isatty
-argument_list|(
-literal|1
-argument_list|)
+name|stdout_is_tty
 condition|)
 return|return
 name|NULL
@@ -311,7 +309,12 @@ modifier|*
 name|pager
 init|=
 name|git_pager
-argument_list|()
+argument_list|(
+name|isatty
+argument_list|(
+literal|1
+argument_list|)
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
