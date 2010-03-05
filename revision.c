@@ -2604,6 +2604,15 @@ name|right_count
 operator|++
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+name|left_count
+operator|||
+operator|!
+name|right_count
+condition|)
+return|return;
 name|left_first
 operator|=
 name|left_count
