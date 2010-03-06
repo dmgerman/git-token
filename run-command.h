@@ -12,6 +12,23 @@ directive|define
 name|RUN_COMMAND_H
 end_define
 
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|ASYNC_AS_THREAD
+end_ifdef
+
+begin_include
+include|#
+directive|include
+file|<pthread.h>
+end_include
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_struct
 DECL|struct|child_process
 struct|struct
@@ -303,7 +320,7 @@ decl_stmt|;
 comment|/* caller reads from here and closes it */
 ifndef|#
 directive|ifndef
-name|WIN32
+name|ASYNC_AS_THREAD
 DECL|member|pid
 name|pid_t
 name|pid
@@ -311,7 +328,7 @@ decl_stmt|;
 else|#
 directive|else
 DECL|member|tid
-name|HANDLE
+name|pthread_t
 name|tid
 decl_stmt|;
 DECL|member|proc_in
