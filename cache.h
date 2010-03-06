@@ -7926,6 +7926,29 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* builtin/merge.c */
+end_comment
+
+begin_function_decl
+name|int
+name|checkout_fast_forward
+parameter_list|(
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|from
+parameter_list|,
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|to
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif

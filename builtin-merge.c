@@ -4196,15 +4196,16 @@ end_function
 
 begin_function
 DECL|function|checkout_fast_forward
-specifier|static
 name|int
 name|checkout_fast_forward
 parameter_list|(
+specifier|const
 name|unsigned
 name|char
 modifier|*
 name|head
 parameter_list|,
+specifier|const
 name|unsigned
 name|char
 modifier|*
