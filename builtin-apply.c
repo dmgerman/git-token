@@ -9356,7 +9356,7 @@ operator|+=
 name|prelen
 expr_stmt|;
 block|}
-comment|/* 		 * Ok, the preimage matches with whitespace fuzz. Update it and 		 * the common postimage lines to use the same whitespace as the 		 * target. imgoff now holds the true length of the target that 		 * matches the preimage, and we need to update the line lengths 		 * of the preimage to match the target ones. 		 */
+comment|/* 		 * Ok, the preimage matches with whitespace fuzz. 		 * 		 * imgoff now holds the true length of the target that 		 * matches the preimage.  Update the preimage and 		 * the common postimage context lines to use the same 		 * whitespace as the target. 		 */
 name|fixed_buf
 operator|=
 name|xmalloc
@@ -9377,42 +9377,6 @@ argument_list|,
 name|imgoff
 argument_list|)
 expr_stmt|;
-for|for
-control|(
-name|i
-operator|=
-literal|0
-init|;
-name|i
-operator|<
-name|preimage
-operator|->
-name|nr
-condition|;
-name|i
-operator|++
-control|)
-name|preimage
-operator|->
-name|line
-index|[
-name|i
-index|]
-operator|.
-name|len
-operator|=
-name|img
-operator|->
-name|line
-index|[
-name|try_lno
-operator|+
-name|i
-index|]
-operator|.
-name|len
-expr_stmt|;
-comment|/* 		 * Update the preimage buffer and the postimage context lines. 		 */
 name|update_pre_post_images
 argument_list|(
 name|preimage
