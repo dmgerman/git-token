@@ -732,6 +732,26 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|parse_options_concat
+parameter_list|(
+name|struct
+name|option
+modifier|*
+name|dst
+parameter_list|,
+name|size_t
+parameter_list|,
+name|struct
+name|option
+modifier|*
+name|src
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/*----- some often used options -----*/
 end_comment
