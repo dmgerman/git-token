@@ -9683,21 +9683,7 @@ name|forwards_lno
 decl_stmt|,
 name|try_lno
 decl_stmt|;
-if|if
-condition|(
-name|preimage
-operator|->
-name|nr
-operator|>
-name|img
-operator|->
-name|nr
-condition|)
-return|return
-operator|-
-literal|1
-return|;
-comment|/* 	 * If match_begining or match_end is specified, there is no 	 * point starting from a wrong line that will never match and 	 * wander around and wait for a match at the specified end. 	 */
+comment|/* 	 * If match_beginning or match_end is specified, there is no 	 * point starting from a wrong line that will never match and 	 * wander around and wait for a match at the specified end. 	 */
 if|if
 condition|(
 name|match_beginning
@@ -9721,8 +9707,12 @@ name|preimage
 operator|->
 name|nr
 expr_stmt|;
+comment|/* 	 * Because the comparison is unsigned, the following test 	 * will also take care of a negative line number that can 	 * result when match_end and preimage is larger than the target. 	 */
 if|if
 condition|(
+operator|(
+name|size_t
+operator|)
 name|line
 operator|>
 name|img
