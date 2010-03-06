@@ -2907,12 +2907,6 @@ name|va_list
 name|params
 parameter_list|)
 block|{
-name|char
-name|buffer
-index|[
-literal|1000
-index|]
-decl_stmt|;
 name|http_status
 argument_list|(
 literal|500
@@ -2926,27 +2920,13 @@ expr_stmt|;
 name|end_headers
 argument_list|()
 expr_stmt|;
-name|vsnprintf
+name|vreportf
 argument_list|(
-name|buffer
-argument_list|,
-sizeof|sizeof
-argument_list|(
-name|buffer
-argument_list|)
+literal|"fatal: "
 argument_list|,
 name|err
 argument_list|,
 name|params
-argument_list|)
-expr_stmt|;
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-literal|"fatal: %s\n"
-argument_list|,
-name|buffer
 argument_list|)
 expr_stmt|;
 name|exit
