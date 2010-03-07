@@ -1872,6 +1872,20 @@ operator|==
 literal|0
 condition|)
 block|{
+if|if
+condition|(
+name|isatty
+argument_list|(
+literal|0
+argument_list|)
+condition|)
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"(reading log message from standard input)\n"
+argument_list|)
+expr_stmt|;
 name|read_from_stdin
 argument_list|(
 operator|&
