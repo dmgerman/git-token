@@ -413,6 +413,11 @@ operator|!
 name|branch
 operator|->
 name|merge_nr
+operator|||
+operator|!
+name|branch
+operator|->
+name|merge
 condition|)
 name|die
 argument_list|(
