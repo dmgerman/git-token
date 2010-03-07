@@ -4744,11 +4744,13 @@ literal|1
 expr_stmt|;
 name|strcpy
 argument_list|(
-argument|opt.color_match
+name|opt
+operator|.
+name|color_match
 argument_list|,
-argument|GIT_COLOR_RED GIT_COLOR_BOLD
+name|GIT_COLOR_BOLD_RED
 argument_list|)
-empty_stmt|;
+expr_stmt|;
 name|opt
 operator|.
 name|color
