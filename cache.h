@@ -1948,6 +1948,33 @@ name|GIT_NOTES_DEFAULT_REF
 value|"refs/notes/commits"
 end_define
 
+begin_comment
+comment|/*  * Repository-local GIT_* environment variables  * The array is NULL-terminated to simplify its usage in contexts such  * environment creation or simple walk of the list.  * The number of non-NULL entries is available as a macro.  */
+end_comment
+
+begin_define
+DECL|macro|LOCAL_REPO_ENV_SIZE
+define|#
+directive|define
+name|LOCAL_REPO_ENV_SIZE
+value|8
+end_define
+
+begin_decl_stmt
+specifier|extern
+specifier|const
+name|char
+modifier|*
+specifier|const
+name|local_repo_env
+index|[
+name|LOCAL_REPO_ENV_SIZE
+operator|+
+literal|1
+index|]
+decl_stmt|;
+end_decl_stmt
+
 begin_decl_stmt
 specifier|extern
 name|int
