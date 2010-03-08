@@ -1035,6 +1035,48 @@ return|;
 block|}
 end_function
 
+begin_function
+DECL|function|xmkstemp_mode
+name|int
+name|xmkstemp_mode
+parameter_list|(
+name|char
+modifier|*
+name|template
+parameter_list|,
+name|int
+name|mode
+parameter_list|)
+block|{
+name|int
+name|fd
+decl_stmt|;
+name|fd
+operator|=
+name|git_mkstemp_mode
+argument_list|(
+name|template
+argument_list|,
+name|mode
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|fd
+operator|<
+literal|0
+condition|)
+name|die_errno
+argument_list|(
+literal|"Unable to create temporary file"
+argument_list|)
+expr_stmt|;
+return|return
+name|fd
+return|;
+block|}
+end_function
+
 begin_comment
 comment|/*  * zlib wrappers to make sure we don't silently miss errors  * at init time.  */
 end_comment
@@ -1273,6 +1315,12 @@ block|{
 name|int
 name|fd
 decl_stmt|;
+comment|/* 	 * we let the umask do its job, don't try to be more 	 * restrictive except to remove write permission. 	 */
+name|int
+name|mode
+init|=
+literal|0444
+decl_stmt|;
 name|snprintf
 argument_list|(
 name|template
@@ -1289,9 +1337,11 @@ argument_list|)
 expr_stmt|;
 name|fd
 operator|=
-name|mkstemp
+name|git_mkstemp_mode
 argument_list|(
 name|template
+argument_list|,
+name|mode
 argument_list|)
 expr_stmt|;
 if|if
@@ -1325,9 +1375,11 @@ name|template
 argument_list|)
 expr_stmt|;
 return|return
-name|xmkstemp
+name|xmkstemp_mode
 argument_list|(
 name|template
+argument_list|,
+name|mode
 argument_list|)
 return|;
 block|}
