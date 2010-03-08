@@ -50,6 +50,15 @@ literal|1
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|advice_detached_head
+name|int
+name|advice_detached_head
+init|=
+literal|1
+decl_stmt|;
+end_decl_stmt
+
 begin_struct
 specifier|static
 struct|struct
@@ -104,6 +113,13 @@ literal|"implicitidentity"
 block|,
 operator|&
 name|advice_implicit_identity
+block|}
+block|,
+block|{
+literal|"detachedhead"
+block|,
+operator|&
+name|advice_detached_head
 block|}
 block|, }
 struct|;
