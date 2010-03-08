@@ -1747,6 +1747,7 @@ argument_list|)
 expr_stmt|;
 name|save_commit_buffer
 operator|=
+operator|(
 name|revs
 operator|.
 name|verbose_header
@@ -1756,6 +1757,13 @@ operator|.
 name|grep_filter
 operator|.
 name|pattern_list
+operator|||
+name|revs
+operator|.
+name|grep_filter
+operator|.
+name|header_list
+operator|)
 expr_stmt|;
 if|if
 condition|(
