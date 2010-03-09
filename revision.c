@@ -7687,10 +7687,10 @@ name|rev_info
 modifier|*
 name|revs
 parameter_list|,
-specifier|const
-name|char
+name|struct
+name|setup_revision_opt
 modifier|*
-name|def
+name|opt
 parameter_list|)
 block|{
 name|int
@@ -8401,7 +8401,13 @@ name|revs
 operator|->
 name|def
 operator|=
+name|opt
+condition|?
+name|opt
+operator|->
 name|def
+else|:
+name|NULL
 expr_stmt|;
 if|if
 condition|(

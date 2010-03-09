@@ -668,6 +668,21 @@ name|show_early_output
 decl_stmt|;
 end_decl_stmt
 
+begin_struct
+DECL|struct|setup_revision_opt
+struct|struct
+name|setup_revision_opt
+block|{
+DECL|member|def
+specifier|const
+name|char
+modifier|*
+name|def
+decl_stmt|;
+block|}
+struct|;
+end_struct
+
 begin_function_decl
 specifier|extern
 name|void
@@ -705,10 +720,9 @@ name|rev_info
 modifier|*
 name|revs
 parameter_list|,
-specifier|const
-name|char
+name|struct
+name|setup_revision_opt
 modifier|*
-name|def
 parameter_list|)
 function_decl|;
 end_function_decl
