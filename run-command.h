@@ -12,11 +12,11 @@ directive|define
 name|RUN_COMMAND_H
 end_define
 
-begin_ifdef
-ifdef|#
-directive|ifdef
-name|ASYNC_AS_THREAD
-end_ifdef
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|NO_PTHREADS
+end_ifndef
 
 begin_include
 include|#
@@ -318,9 +318,9 @@ name|int
 name|out
 decl_stmt|;
 comment|/* caller reads from here and closes it */
-ifndef|#
-directive|ifndef
-name|ASYNC_AS_THREAD
+ifdef|#
+directive|ifdef
+name|NO_PTHREADS
 DECL|member|pid
 name|pid_t
 name|pid
