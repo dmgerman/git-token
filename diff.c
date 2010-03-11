@@ -15427,6 +15427,22 @@ argument_list|,
 name|RECURSIVE
 argument_list|)
 expr_stmt|;
+comment|/* 	 * When patches are generated, submodules diffed against the work tree 	 * must be checked for dirtiness too so it can be shown in the output 	 */
+if|if
+condition|(
+name|options
+operator|->
+name|output_format
+operator|&
+name|DIFF_FORMAT_PATCH
+condition|)
+name|DIFF_OPT_SET
+argument_list|(
+name|options
+argument_list|,
+name|DIRTY_SUBMODULES
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|options
