@@ -1940,6 +1940,14 @@ name|GIT_NOTES_DEFAULT_REF
 value|"refs/notes/commits"
 end_define
 
+begin_define
+DECL|macro|GIT_NOTES_DISPLAY_REF_ENVIRONMENT
+define|#
+directive|define
+name|GIT_NOTES_DISPLAY_REF_ENVIRONMENT
+value|"GIT_NOTES_DISPLAY_REF"
+end_define
+
 begin_decl_stmt
 specifier|extern
 name|int
