@@ -1416,6 +1416,17 @@ argument_list|(
 literal|"Cannot commit uninitialized/unreferenced notes tree"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|t
+operator|->
+name|dirty
+condition|)
+return|return
+literal|0
+return|;
+comment|/* don't have to commit an unchanged tree */
 comment|/* Prepare commit message and reflog message */
 name|strbuf_addstr
 argument_list|(
