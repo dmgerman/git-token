@@ -257,6 +257,40 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/*  * Copy a note from one object to another in the given notes_tree.  *  * Fails if the to_obj already has a note unless 'force' is true.  */
+end_comment
+
+begin_function_decl
+name|int
+name|copy_note
+parameter_list|(
+name|struct
+name|notes_tree
+modifier|*
+name|t
+parameter_list|,
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|from_obj
+parameter_list|,
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|to_obj
+parameter_list|,
+name|int
+name|force
+parameter_list|,
+name|combine_notes_fn
+name|combine_fn
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/*  * Flags controlling behaviour of for_each_note()  *  * Default behaviour of for_each_note() is to traverse every single note object  * in the given notes tree, unpacking subtree entries along the way.  * The following flags can be used to alter the default behaviour:  *  * - DONT_UNPACK_SUBTREES causes for_each_note() NOT to unpack and recurse into  *   subtree entries while traversing the notes tree. This causes notes within  *   those subtrees NOT to be passed to the callback. Use this flag if you  *   don't want to traverse _all_ notes, but only want to traverse the parts  *   of the notes tree that have already been unpacked (this includes at least  *   all notes that have been added/changed).  *  * - YIELD_SUBTREES causes any subtree entries that are encountered to be  *   passed to the callback, before recursing into them. Subtree entries are  *   not note objects, but represent intermediate directories in the notes  *   tree. When passed to the callback, subtree entries will have a trailing  *   slash in their path, which the callback may use to differentiate between  *   note entries and subtree entries. Note that already-unpacked subtree  *   entries are not part of the notes tree, and will therefore not be yielded.  *   If this flag is used together with DONT_UNPACK_SUBTREES, for_each_note()  *   will yield the subtree entry, but not recurse into it.  */
 end_comment
 
