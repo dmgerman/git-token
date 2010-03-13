@@ -7727,6 +7727,10 @@ decl_stmt|,
 name|seen_dashdash
 decl_stmt|,
 name|read_from_stdin
+decl_stmt|,
+name|got_rev_arg
+init|=
+literal|0
 decl_stmt|;
 specifier|const
 name|char
@@ -8395,6 +8399,11 @@ argument_list|)
 expr_stmt|;
 break|break;
 block|}
+else|else
+name|got_rev_arg
+operator|=
+literal|1
+expr_stmt|;
 block|}
 if|if
 condition|(
@@ -8450,6 +8459,9 @@ operator|->
 name|pending
 operator|.
 name|nr
+operator|&&
+operator|!
+name|got_rev_arg
 condition|)
 block|{
 name|unsigned
