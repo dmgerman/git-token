@@ -270,6 +270,13 @@ argument_list|(
 name|ce
 operator|->
 name|name
+argument_list|,
+name|DIFF_OPT_TST
+argument_list|(
+name|diffopt
+argument_list|,
+name|IGNORE_UNTRACKED_IN_SUBMODULES
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
