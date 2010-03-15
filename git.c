@@ -2060,6 +2060,14 @@ name|RUN_SETUP
 block|}
 block|,
 block|{
+literal|"notes"
+block|,
+name|cmd_notes
+block|,
+name|RUN_SETUP
+block|}
+block|,
+block|{
 literal|"pack-objects"
 block|,
 name|cmd_pack_objects
