@@ -270,7 +270,7 @@ name|verbose
 range|:
 literal|3
 decl_stmt|;
-comment|/* Force progress even if stderr is not a tty */
+comment|/** 	 * Transports should not set this directly, and should use this 	 * value without having to check isatty(2), -q/--quiet 	 * (transport->verbose< 0), etc. - checking has already been done 	 * in transport_set_verbosity(). 	 **/
 DECL|member|progress
 name|unsigned
 name|progress
@@ -321,27 +321,11 @@ value|8
 end_define
 
 begin_define
-DECL|macro|TRANSPORT_PUSH_VERBOSE
-define|#
-directive|define
-name|TRANSPORT_PUSH_VERBOSE
-value|16
-end_define
-
-begin_define
 DECL|macro|TRANSPORT_PUSH_PORCELAIN
 define|#
 directive|define
 name|TRANSPORT_PUSH_PORCELAIN
-value|32
-end_define
-
-begin_define
-DECL|macro|TRANSPORT_PUSH_QUIET
-define|#
-directive|define
-name|TRANSPORT_PUSH_QUIET
-value|64
+value|16
 end_define
 
 begin_define
@@ -349,7 +333,7 @@ DECL|macro|TRANSPORT_PUSH_SET_UPSTREAM
 define|#
 directive|define
 name|TRANSPORT_PUSH_SET_UPSTREAM
-value|128
+value|32
 end_define
 
 begin_define
@@ -479,6 +463,24 @@ specifier|const
 name|char
 modifier|*
 name|value
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|void
+name|transport_set_verbosity
+parameter_list|(
+name|struct
+name|transport
+modifier|*
+name|transport
+parameter_list|,
+name|int
+name|verbosity
+parameter_list|,
+name|int
+name|force_progress
 parameter_list|)
 function_decl|;
 end_function_decl
