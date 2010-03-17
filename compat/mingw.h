@@ -1635,6 +1635,23 @@ end_function_decl
 
 begin_function_decl
 name|int
+name|mingw_stat
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|file_name
+parameter_list|,
+name|struct
+name|stat
+modifier|*
+name|buf
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
 name|mingw_fstat
 parameter_list|(
 name|int
@@ -1674,7 +1691,7 @@ name|x
 parameter_list|,
 name|y
 parameter_list|)
-value|mingw_lstat(x,y)
+value|mingw_stat(x,y)
 end_define
 
 begin_endif
