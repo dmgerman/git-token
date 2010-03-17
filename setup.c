@@ -2011,6 +2011,14 @@ argument_list|(
 literal|".."
 argument_list|)
 condition|)
+block|{
+name|cwd
+index|[
+name|offset
+index|]
+operator|=
+literal|'\0'
+expr_stmt|;
 name|die_errno
 argument_list|(
 literal|"Cannot change to '%s/..'"
@@ -2018,6 +2026,7 @@ argument_list|,
 name|cwd
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|inside_git_dir
 operator|=
