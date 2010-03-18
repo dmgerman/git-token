@@ -4562,7 +4562,6 @@ operator|.
 name|val_sha1
 argument_list|)
 expr_stmt|;
-return|return
 name|note_tree_remove
 argument_list|(
 name|t
@@ -4576,7 +4575,7 @@ argument_list|,
 operator|&
 name|l
 argument_list|)
-return|;
+expr_stmt|;
 block|}
 end_function
 
