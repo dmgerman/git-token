@@ -7875,6 +7875,9 @@ decl_stmt|;
 name|HMODULE
 name|shell32
 decl_stmt|;
+name|int
+name|r
+decl_stmt|;
 name|shell32
 operator|=
 name|LoadLibrary
@@ -7919,6 +7922,11 @@ argument_list|(
 literal|"Launching default browser to display HTML ...\n"
 argument_list|)
 expr_stmt|;
+name|r
+operator|=
+operator|(
+name|int
+operator|)
 name|ShellExecute
 argument_list|(
 name|NULL
@@ -7931,7 +7939,7 @@ name|NULL
 argument_list|,
 literal|"\\"
 argument_list|,
-literal|0
+name|SW_SHOWNORMAL
 argument_list|)
 expr_stmt|;
 name|FreeLibrary
@@ -7939,6 +7947,24 @@ argument_list|(
 name|shell32
 argument_list|)
 expr_stmt|;
+comment|/* see the MSDN documentation referring to the result codes here */
+if|if
+condition|(
+name|r
+operator|<=
+literal|32
+condition|)
+block|{
+name|die
+argument_list|(
+literal|"failed to launch browser for %.*s"
+argument_list|,
+name|MAX_PATH
+argument_list|,
+name|unixpath
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_function
 
