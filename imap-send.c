@@ -6962,7 +6962,7 @@ argument_list|)
 expr_stmt|;
 name|arg
 operator|=
-name|getpass
+name|git_getpass
 argument_list|(
 name|prompt
 argument_list|)
