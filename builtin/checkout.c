@@ -2518,6 +2518,14 @@ name|ret
 return|;
 name|o
 operator|.
+name|ancestor
+operator|=
+name|old
+operator|->
+name|name
+expr_stmt|;
+name|o
+operator|.
 name|branch1
 operator|=
 name|new
