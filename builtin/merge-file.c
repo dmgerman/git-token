@@ -515,6 +515,15 @@ return|;
 block|}
 name|xmp
 operator|.
+name|ancestor
+operator|=
+name|names
+index|[
+literal|1
+index|]
+expr_stmt|;
+name|xmp
+operator|.
 name|file1
 operator|=
 name|names
