@@ -1573,10 +1573,7 @@ name|char
 modifier|*
 name|defmsg
 init|=
-name|git_pathdup
-argument_list|(
-literal|"MERGE_MSG"
-argument_list|)
+name|NULL
 decl_stmt|;
 name|struct
 name|merge_options
@@ -1994,6 +1991,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* 	 * "commit" is an existing commit.  We would want to apply 	 * the difference it introduces since its first parent "prev" 	 * on top of the current HEAD if we are cherry-pick.  Or the 	 * reverse of it if we are revert. 	 */
+name|defmsg
+operator|=
+name|git_pathdup
+argument_list|(
+literal|"MERGE_MSG"
+argument_list|)
+expr_stmt|;
 name|msg_fd
 operator|=
 name|hold_lock_file_for_update
