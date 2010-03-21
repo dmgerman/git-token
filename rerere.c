@@ -2066,6 +2066,8 @@ index|[
 literal|0
 index|]
 argument_list|,
+name|NULL
+argument_list|,
 operator|&
 name|mmfile
 index|[
@@ -2499,6 +2501,8 @@ name|path
 argument_list|,
 operator|&
 name|base
+argument_list|,
+name|NULL
 argument_list|,
 operator|&
 name|cur
