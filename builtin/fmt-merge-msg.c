@@ -1787,6 +1787,16 @@ name|p
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+name|srcs
+operator|.
+name|nr
+condition|)
+return|return
+literal|0
+return|;
 name|strbuf_addstr
 argument_list|(
 name|out
