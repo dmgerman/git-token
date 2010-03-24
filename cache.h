@@ -1948,6 +1948,30 @@ name|GIT_NOTES_DEFAULT_REF
 value|"refs/notes/commits"
 end_define
 
+begin_define
+DECL|macro|GIT_NOTES_DISPLAY_REF_ENVIRONMENT
+define|#
+directive|define
+name|GIT_NOTES_DISPLAY_REF_ENVIRONMENT
+value|"GIT_NOTES_DISPLAY_REF"
+end_define
+
+begin_define
+DECL|macro|GIT_NOTES_REWRITE_REF_ENVIRONMENT
+define|#
+directive|define
+name|GIT_NOTES_REWRITE_REF_ENVIRONMENT
+value|"GIT_NOTES_REWRITE_REF"
+end_define
+
+begin_define
+DECL|macro|GIT_NOTES_REWRITE_MODE_ENVIRONMENT
+define|#
+directive|define
+name|GIT_NOTES_REWRITE_MODE_ENVIRONMENT
+value|"GIT_NOTES_REWRITE_MODE"
+end_define
+
 begin_comment
 comment|/*  * Repository-local GIT_* environment variables  * The array is NULL-terminated to simplify its usage in contexts such  * environment creation or simple walk of the list.  * The number of non-NULL entries is available as a macro.  */
 end_comment

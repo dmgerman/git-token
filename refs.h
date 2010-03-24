@@ -236,6 +236,32 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function
+DECL|function|has_glob_specials
+specifier|static
+specifier|inline
+specifier|const
+name|char
+modifier|*
+name|has_glob_specials
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|pattern
+parameter_list|)
+block|{
+return|return
+name|strpbrk
+argument_list|(
+name|pattern
+argument_list|,
+literal|"?*["
+argument_list|)
+return|;
+block|}
+end_function
+
 begin_comment
 comment|/* can be used to learn about broken ref and symref */
 end_comment
