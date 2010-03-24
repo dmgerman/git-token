@@ -7850,6 +7850,33 @@ directive|ifndef
 name|NO_PTHREADS
 end_ifndef
 
+begin_function
+DECL|function|try_to_free_from_threads
+specifier|static
+name|void
+name|try_to_free_from_threads
+parameter_list|(
+name|size_t
+name|size
+parameter_list|)
+block|{
+name|read_lock
+argument_list|()
+expr_stmt|;
+name|release_pack_memory
+argument_list|(
+name|size
+argument_list|,
+operator|-
+literal|1
+argument_list|)
+expr_stmt|;
+name|read_unlock
+argument_list|()
+expr_stmt|;
+block|}
+end_function
+
 begin_comment
 comment|/*  * The main thread waits on the condition that (at least) one of the workers  * has stopped working (which is indicated in the .working member of  * struct thread_params).  * When a work thread has completed its work, it sets .working to 0 and  * signals the main thread and waits on the condition that .data_ready  * becomes 1.  */
 end_comment
@@ -7964,6 +7991,11 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
+name|set_try_to_free_routine
+argument_list|(
+name|try_to_free_from_threads
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
@@ -7976,6 +8008,11 @@ parameter_list|(
 name|void
 parameter_list|)
 block|{
+name|set_try_to_free_routine
+argument_list|(
+name|NULL
+argument_list|)
+expr_stmt|;
 name|pthread_cond_destroy
 argument_list|(
 operator|&
