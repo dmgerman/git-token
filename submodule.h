@@ -61,13 +61,16 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-name|int
+name|unsigned
 name|is_submodule_modified
 parameter_list|(
 specifier|const
 name|char
 modifier|*
 name|path
+parameter_list|,
+name|int
+name|ignore_untracked
 parameter_list|)
 function_decl|;
 end_function_decl
