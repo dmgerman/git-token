@@ -1927,17 +1927,24 @@ argument_list|,
 literal|"populate log with the shortlog"
 argument_list|)
 block|,
-name|OPT_BOOLEAN
-argument_list|(
+block|{
+name|OPTION_BOOLEAN
+block|,
 literal|0
-argument_list|,
+block|,
 literal|"summary"
-argument_list|,
+block|,
 operator|&
 name|merge_summary
-argument_list|,
-literal|"alias for --log"
-argument_list|)
+block|,
+name|NULL
+block|,
+literal|"alias for --log (deprecated)"
+block|,
+name|PARSE_OPT_NOARG
+operator||
+name|PARSE_OPT_HIDDEN
+block|}
 block|,
 name|OPT_FILENAME
 argument_list|(
