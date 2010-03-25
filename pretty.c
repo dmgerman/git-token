@@ -4708,6 +4708,27 @@ expr_stmt|;
 return|return
 literal|1
 return|;
+case|case
+literal|'B'
+case|:
+comment|/* raw body */
+comment|/* message_off is always left at the initial newline */
+name|strbuf_addstr
+argument_list|(
+name|sb
+argument_list|,
+name|msg
+operator|+
+name|c
+operator|->
+name|message_off
+operator|+
+literal|1
+argument_list|)
+expr_stmt|;
+return|return
+literal|1
+return|;
 block|}
 comment|/* Now we need to parse the commit message. */
 if|if
