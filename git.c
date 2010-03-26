@@ -39,6 +39,7 @@ init|=
 literal|"git [--version] [--exec-path[=GIT_EXEC_PATH]] [--html-path]\n"
 literal|"           [-p|--paginate|--no-pager] [--no-replace-objects]\n"
 literal|"           [--bare] [--git-dir=GIT_DIR] [--work-tree=GIT_WORK_TREE]\n"
+literal|"           [-c name=value\n"
 literal|"           [--help] COMMAND [ARGS]"
 decl_stmt|;
 end_decl_stmt
@@ -758,6 +759,63 @@ operator|*
 name|envchanged
 operator|=
 literal|1
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|cmd
+argument_list|,
+literal|"-c"
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
+operator|*
+name|argc
+operator|<
+literal|2
+condition|)
+block|{
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"-c expects a configuration string\n"
+argument_list|)
+expr_stmt|;
+name|usage
+argument_list|(
+name|git_usage_string
+argument_list|)
+expr_stmt|;
+block|}
+name|git_config_parse_parameter
+argument_list|(
+operator|(
+operator|*
+name|argv
+operator|)
+index|[
+literal|1
+index|]
+argument_list|)
+expr_stmt|;
+operator|(
+operator|*
+name|argv
+operator|)
+operator|++
+expr_stmt|;
+operator|(
+operator|*
+name|argc
+operator|)
+operator|--
 expr_stmt|;
 block|}
 else|else
