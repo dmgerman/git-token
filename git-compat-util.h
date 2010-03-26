@@ -3225,6 +3225,22 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Likewise for rmdir(2).  */
+end_comment
+
+begin_function_decl
+name|int
+name|rmdir_or_warn
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif

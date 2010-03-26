@@ -1562,5 +1562,32 @@ return|;
 block|}
 end_function
 
+begin_function
+DECL|function|rmdir_or_warn
+name|int
+name|rmdir_or_warn
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|file
+parameter_list|)
+block|{
+return|return
+name|warn_if_unremovable
+argument_list|(
+literal|"rmdir"
+argument_list|,
+name|file
+argument_list|,
+name|rmdir
+argument_list|(
+name|file
+argument_list|)
+argument_list|)
+return|;
+block|}
+end_function
+
 end_unit
 
