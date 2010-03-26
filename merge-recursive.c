@@ -2537,10 +2537,6 @@ name|remove_path
 argument_list|(
 name|path
 argument_list|)
-operator|&&
-name|errno
-operator|!=
-name|ENOENT
 condition|)
 return|return
 operator|-
