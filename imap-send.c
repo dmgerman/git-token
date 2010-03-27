@@ -7050,23 +7050,6 @@ goto|;
 block|}
 if|if
 condition|(
-operator|!
-name|imap
-operator|->
-name|buf
-operator|.
-name|sock
-operator|.
-name|ssl
-condition|)
-name|imap_warn
-argument_list|(
-literal|"*** IMAP Warning *** Password is being "
-literal|"sent in the clear\n"
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
 name|srvc
 operator|->
 name|auth_method
@@ -7182,6 +7165,23 @@ block|}
 block|}
 else|else
 block|{
+if|if
+condition|(
+operator|!
+name|imap
+operator|->
+name|buf
+operator|.
+name|sock
+operator|.
+name|ssl
+condition|)
+name|imap_warn
+argument_list|(
+literal|"*** IMAP Warning *** Password is being "
+literal|"sent in the clear\n"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|imap_exec
