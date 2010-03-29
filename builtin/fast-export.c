@@ -2786,7 +2786,7 @@ condition|(
 operator|!
 name|f
 condition|)
-name|error
+name|die_errno
 argument_list|(
 literal|"Unable to open marks file %s for writing."
 argument_list|,
