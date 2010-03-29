@@ -6720,6 +6720,14 @@ literal|"refs/remotes/"
 argument_list|)
 operator|||
 operator|!
+name|prefixcmp
+argument_list|(
+name|ref_name
+argument_list|,
+literal|"refs/notes/"
+argument_list|)
+operator|||
+operator|!
 name|strcmp
 argument_list|(
 name|ref_name
