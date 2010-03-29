@@ -2646,6 +2646,7 @@ name|key
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 name|strbuf_addf
 argument_list|(
 operator|&
@@ -2671,7 +2672,6 @@ operator|&
 name|key
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|option_reference
