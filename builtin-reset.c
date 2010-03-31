@@ -94,7 +94,9 @@ init|=
 block|{
 literal|"git reset [--mixed | --soft | --hard | --merge] [-q] [<commit>]"
 block|,
-literal|"git reset [--mixed]<commit> [--]<paths>..."
+literal|"git reset [-q]<commit> [--]<paths>..."
+block|,
+literal|"git reset --patch [<commit>] [--] [<paths>...]"
 block|,
 name|NULL
 block|}
