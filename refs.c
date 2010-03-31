@@ -41,6 +41,14 @@ name|REF_KNOWS_PEELED
 value|04
 end_define
 
+begin_define
+DECL|macro|REF_BROKEN
+define|#
+directive|define
+name|REF_BROKEN
+value|010
+end_define
+
 begin_struct
 DECL|struct|ref_list
 struct|struct
@@ -1438,11 +1446,17 @@ operator|&
 name|flag
 argument_list|)
 condition|)
+block|{
 name|hashclr
 argument_list|(
 name|sha1
 argument_list|)
 expr_stmt|;
+name|flag
+operator||=
+name|REF_BROKEN
+expr_stmt|;
+block|}
 name|list
 operator|=
 name|add_ref
@@ -2835,19 +2849,6 @@ condition|)
 return|return
 literal|0
 return|;
-comment|/* Is this a "negative ref" that represents a deleted ref? */
-if|if
-condition|(
-name|is_null_sha1
-argument_list|(
-name|entry
-operator|->
-name|sha1
-argument_list|)
-condition|)
-return|return
-literal|0
-return|;
 if|if
 condition|(
 operator|!
@@ -2858,6 +2859,18 @@ name|DO_FOR_EACH_INCLUDE_BROKEN
 operator|)
 condition|)
 block|{
+if|if
+condition|(
+name|entry
+operator|->
+name|flag
+operator|&
+name|REF_BROKEN
+condition|)
+return|return
+literal|0
+return|;
+comment|/* ignore dangling symref */
 if|if
 condition|(
 operator|!
