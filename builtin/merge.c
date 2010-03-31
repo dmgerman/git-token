@@ -3344,7 +3344,6 @@ end_function
 
 begin_function
 DECL|function|try_merge_command
-specifier|static
 name|int
 name|try_merge_command
 parameter_list|(
