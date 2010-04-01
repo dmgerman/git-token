@@ -735,6 +735,14 @@ argument_list|,
 name|refs_url
 argument_list|)
 expr_stmt|;
+case|case
+name|HTTP_NOAUTH
+case|:
+name|die
+argument_list|(
+literal|"Authentication failed"
+argument_list|)
+expr_stmt|;
 default|default:
 name|http_error
 argument_list|(
