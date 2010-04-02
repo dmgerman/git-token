@@ -12,6 +12,12 @@ directive|define
 name|USERDIFF_H
 end_define
 
+begin_include
+include|#
+directive|include
+file|"notes-cache.h"
+end_include
+
 begin_struct
 DECL|struct|userdiff_funcname
 struct|struct
@@ -68,6 +74,16 @@ specifier|const
 name|char
 modifier|*
 name|textconv
+decl_stmt|;
+DECL|member|textconv_cache
+name|struct
+name|notes_cache
+modifier|*
+name|textconv_cache
+decl_stmt|;
+DECL|member|textconv_want_cache
+name|int
+name|textconv_want_cache
 decl_stmt|;
 block|}
 struct|;
