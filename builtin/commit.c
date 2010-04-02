@@ -1683,7 +1683,7 @@ operator|.
 name|filename
 return|;
 block|}
-comment|/* 	 * As-is commit. 	 * 	 * (1) return the name of the real index file. 	 * 	 * The caller should run hooks on the real index, and run 	 * hooks on the real index, and create commit from the_index. 	 * We still need to refresh the index here. 	 */
+comment|/* 	 * As-is commit. 	 * 	 * (1) return the name of the real index file. 	 * 	 * The caller should run hooks on the real index, 	 * and create commit from the_index. 	 * We still need to refresh the index here. 	 */
 if|if
 condition|(
 operator|!
