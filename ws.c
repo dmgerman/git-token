@@ -1379,15 +1379,16 @@ block|}
 end_function
 
 begin_comment
-comment|/* Copy the line to the buffer while fixing whitespaces */
+comment|/* Copy the line onto the end of the strbuf while fixing whitespaces */
 end_comment
 
 begin_function
 DECL|function|ws_fix_copy
-name|int
+name|void
 name|ws_fix_copy
 parameter_list|(
-name|char
+name|struct
+name|strbuf
 modifier|*
 name|dst
 parameter_list|,
@@ -1442,10 +1443,6 @@ name|int
 name|need_fix_leading_space
 init|=
 literal|0
-decl_stmt|;
-name|char
-modifier|*
-name|buf
 decl_stmt|;
 comment|/* 	 * Strip trailing whitespace 	 */
 if|if
@@ -1636,10 +1633,6 @@ block|}
 else|else
 break|break;
 block|}
-name|buf
-operator|=
-name|dst
-expr_stmt|;
 if|if
 condition|(
 name|need_fix_leading_space
@@ -1720,11 +1713,12 @@ name|consecutive_spaces
 operator|=
 literal|0
 expr_stmt|;
-operator|*
+name|strbuf_addch
+argument_list|(
 name|dst
-operator|++
-operator|=
+argument_list|,
 name|ch
+argument_list|)
 expr_stmt|;
 block|}
 else|else
@@ -1739,11 +1733,12 @@ operator|==
 literal|8
 condition|)
 block|{
-operator|*
+name|strbuf_addch
+argument_list|(
 name|dst
-operator|++
-operator|=
+argument_list|,
 literal|'\t'
+argument_list|)
 expr_stmt|;
 name|consecutive_spaces
 operator|=
@@ -1759,11 +1754,12 @@ operator|<
 name|consecutive_spaces
 operator|--
 condition|)
-operator|*
+name|strbuf_addch
+argument_list|(
 name|dst
-operator|++
-operator|=
+argument_list|,
 literal|' '
+argument_list|)
 expr_stmt|;
 name|len
 operator|-=
@@ -1778,7 +1774,7 @@ operator|=
 literal|1
 expr_stmt|;
 block|}
-name|memcpy
+name|strbuf_add
 argument_list|(
 name|dst
 argument_list|,
@@ -1791,25 +1787,23 @@ if|if
 condition|(
 name|add_cr_to_tail
 condition|)
+name|strbuf_addch
+argument_list|(
 name|dst
-index|[
-name|len
-operator|++
-index|]
-operator|=
+argument_list|,
 literal|'\r'
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
 name|add_nl_to_tail
 condition|)
+name|strbuf_addch
+argument_list|(
 name|dst
-index|[
-name|len
-operator|++
-index|]
-operator|=
+argument_list|,
 literal|'\n'
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
@@ -1823,13 +1817,6 @@ name|error_count
 operator|)
 operator|++
 expr_stmt|;
-return|return
-name|dst
-operator|+
-name|len
-operator|-
-name|buf
-return|;
 block|}
 end_function
 
