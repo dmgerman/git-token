@@ -3338,6 +3338,24 @@ argument_list|,
 name|size_two
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|textconv_one
+condition|)
+name|free
+argument_list|(
+name|data_one
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|textconv_two
+condition|)
+name|free
+argument_list|(
+name|data_two
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
