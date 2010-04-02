@@ -1622,9 +1622,8 @@ name|pathspec
 operator|)
 condition|)
 block|{
-name|int
 name|fd
-init|=
+operator|=
 name|hold_locked_index
 argument_list|(
 operator|&
@@ -1632,7 +1631,7 @@ name|index_lock
 argument_list|,
 literal|1
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|add_files_to_cache
 argument_list|(
 name|also
