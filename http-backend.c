@@ -2907,24 +2907,25 @@ name|va_list
 name|params
 parameter_list|)
 block|{
+specifier|static
+name|int
+name|dead
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|dead
+condition|)
+block|{
 name|char
 name|buffer
 index|[
 literal|1000
 index|]
 decl_stmt|;
-name|http_status
-argument_list|(
-literal|500
-argument_list|,
-literal|"Internal Server Error"
-argument_list|)
-expr_stmt|;
-name|hdr_nocache
-argument_list|()
-expr_stmt|;
-name|end_headers
-argument_list|()
+name|dead
+operator|=
+literal|1
 expr_stmt|;
 name|vsnprintf
 argument_list|(
@@ -2949,11 +2950,26 @@ argument_list|,
 name|buffer
 argument_list|)
 expr_stmt|;
+name|http_status
+argument_list|(
+literal|500
+argument_list|,
+literal|"Internal Server Error"
+argument_list|)
+expr_stmt|;
+name|hdr_nocache
+argument_list|()
+expr_stmt|;
+name|end_headers
+argument_list|()
+expr_stmt|;
+block|}
 name|exit
 argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
+comment|/* we successfully reported a failure ;-) */
 block|}
 end_function
 
