@@ -946,6 +946,8 @@ argument_list|,
 operator|&
 name|ancestor
 argument_list|,
+literal|"base"
+argument_list|,
 operator|&
 name|ours
 argument_list|,
@@ -2514,6 +2516,14 @@ condition|)
 return|return
 name|ret
 return|;
+name|o
+operator|.
+name|ancestor
+operator|=
+name|old
+operator|->
+name|name
+expr_stmt|;
 name|o
 operator|.
 name|branch1

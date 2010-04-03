@@ -23,6 +23,12 @@ DECL|struct|merge_options
 struct|struct
 name|merge_options
 block|{
+DECL|member|ancestor
+specifier|const
+name|char
+modifier|*
+name|ancestor
+decl_stmt|;
 DECL|member|branch1
 specifier|const
 name|char

@@ -33,6 +33,11 @@ name|mmfile_t
 modifier|*
 name|ancestor
 parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|ancestor_label
+parameter_list|,
 name|mmfile_t
 modifier|*
 name|ours
