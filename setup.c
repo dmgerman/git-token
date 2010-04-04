@@ -1854,9 +1854,10 @@ argument_list|)
 expr_stmt|;
 name|one_filesystem
 operator|=
+operator|!
 name|git_env_bool
 argument_list|(
-literal|"GIT_ONE_FILESYSTEM"
+literal|"GIT_DISCOVERY_ACROSS_FILESYSTEM"
 argument_list|,
 literal|0
 argument_list|)
@@ -2129,7 +2130,7 @@ expr_stmt|;
 name|die
 argument_list|(
 literal|"Not a git repository (or any parent up to mount parent %s)\n"
-literal|"Stopping at filesystem boundary since GIT_ONE_FILESYSTEM is true."
+literal|"Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set)."
 argument_list|,
 name|cwd
 argument_list|)
