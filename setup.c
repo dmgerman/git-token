@@ -1605,7 +1605,7 @@ literal|0
 decl_stmt|,
 name|one_filesystem
 init|=
-literal|0
+literal|1
 decl_stmt|;
 name|struct
 name|stat
@@ -2129,7 +2129,7 @@ expr_stmt|;
 name|die
 argument_list|(
 literal|"Not a git repository (or any parent up to mount parent %s)\n"
-literal|"Stopping at filesystem boundary since GIT_ONE_FILESYSTEM is set."
+literal|"Stopping at filesystem boundary since GIT_ONE_FILESYSTEM is true."
 argument_list|,
 name|cwd
 argument_list|)
