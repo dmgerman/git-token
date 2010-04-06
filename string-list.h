@@ -334,6 +334,25 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|struct
+name|string_list_item
+modifier|*
+name|unsorted_string_list_lookup
+parameter_list|(
+name|struct
+name|string_list
+modifier|*
+name|list
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|string
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
