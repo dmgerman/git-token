@@ -268,6 +268,11 @@ block|{
 name|int
 name|i
 decl_stmt|;
+name|int
+name|decoration_given
+init|=
+literal|0
+decl_stmt|;
 name|rev
 operator|->
 name|abbrev
@@ -490,6 +495,10 @@ name|decoration_style
 operator|=
 name|DECORATE_SHORT_REFS
 expr_stmt|;
+name|decoration_given
+operator|=
+literal|1
+expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -536,6 +545,10 @@ literal|"invalid --decorate option: %s"
 argument_list|,
 name|arg
 argument_list|)
+expr_stmt|;
+name|decoration_given
+operator|=
+literal|1
 expr_stmt|;
 block|}
 elseif|else
@@ -601,6 +614,20 @@ name|arg
 argument_list|)
 expr_stmt|;
 block|}
+comment|/* 	 * defeat log.decorate configuration interacting with --pretty 	 * from the command line. 	 */
+if|if
+condition|(
+operator|!
+name|decoration_given
+operator|&&
+name|rev
+operator|->
+name|pretty_given
+condition|)
+name|decoration_style
+operator|=
+literal|0
+expr_stmt|;
 if|if
 condition|(
 name|decoration_style
