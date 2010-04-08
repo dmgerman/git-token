@@ -116,13 +116,13 @@ end_ifndef
 begin_include
 include|#
 directive|include
-file|"thread-utils.h"
+file|<pthread.h>
 end_include
 
 begin_include
 include|#
 directive|include
-file|<pthread.h>
+file|"thread-utils.h"
 end_include
 
 begin_endif
@@ -7959,12 +7959,10 @@ parameter_list|(
 name|void
 parameter_list|)
 block|{
-name|pthread_mutex_init
+name|init_recursive_mutex
 argument_list|(
 operator|&
 name|read_mutex
-argument_list|,
-name|NULL
 argument_list|)
 expr_stmt|;
 name|pthread_mutex_init

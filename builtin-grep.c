@@ -78,13 +78,13 @@ end_ifndef
 begin_include
 include|#
 directive|include
-file|"thread-utils.h"
+file|<pthread.h>
 end_include
 
 begin_include
 include|#
 directive|include
-file|<pthread.h>
+file|"thread-utils.h"
 end_include
 
 begin_endif
