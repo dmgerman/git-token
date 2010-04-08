@@ -614,7 +614,7 @@ name|arg
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* 	 * defeat log.decorate configuration interacting with --pretty 	 * from the command line. 	 */
+comment|/* 	 * defeat log.decorate configuration interacting with --pretty=raw 	 * from the command line. 	 */
 if|if
 condition|(
 operator|!
@@ -623,6 +623,12 @@ operator|&&
 name|rev
 operator|->
 name|pretty_given
+operator|&&
+name|rev
+operator|->
+name|commit_format
+operator|==
+name|CMIT_FMT_RAW
 condition|)
 name|decoration_style
 operator|=
