@@ -4644,6 +4644,7 @@ specifier|extern
 name|int
 name|write_sha1_file
 parameter_list|(
+specifier|const
 name|void
 modifier|*
 name|buf
