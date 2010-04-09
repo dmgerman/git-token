@@ -1867,7 +1867,7 @@ argument_list|,
 sizeof|sizeof
 name|msg
 argument_list|,
-literal|"branch: Reset from %s"
+literal|"branch: Reset to %s"
 argument_list|,
 name|start_name
 argument_list|)
