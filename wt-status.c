@@ -597,15 +597,25 @@ block|}
 end_function
 
 begin_function
-DECL|function|wt_status_print_untracked_header
+DECL|function|wt_status_print_other_header
 specifier|static
 name|void
-name|wt_status_print_untracked_header
+name|wt_status_print_other_header
 parameter_list|(
 name|struct
 name|wt_status
 modifier|*
 name|s
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|what
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|how
 parameter_list|)
 block|{
 specifier|const
@@ -628,7 +638,9 @@ name|fp
 argument_list|,
 name|c
 argument_list|,
-literal|"# Untracked files:"
+literal|"# %s files:"
+argument_list|,
+name|what
 argument_list|)
 expr_stmt|;
 if|if
@@ -645,7 +657,9 @@ name|fp
 argument_list|,
 name|c
 argument_list|,
-literal|"#   (use \"git add<file>...\" to include in what will be committed)"
+literal|"#   (use \"git %s<file>...\" to include in what will be committed)"
+argument_list|,
+name|how
 argument_list|)
 expr_stmt|;
 name|color_fprintf_ln
@@ -3216,15 +3230,30 @@ block|}
 end_function
 
 begin_function
-DECL|function|wt_status_print_untracked
+DECL|function|wt_status_print_other
 specifier|static
 name|void
-name|wt_status_print_untracked
+name|wt_status_print_other
 parameter_list|(
 name|struct
 name|wt_status
 modifier|*
 name|s
+parameter_list|,
+name|struct
+name|string_list
+modifier|*
+name|l
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|what
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|how
 parameter_list|)
 block|{
 name|int
@@ -3246,9 +3275,13 @@ operator|.
 name|nr
 condition|)
 return|return;
-name|wt_status_print_untracked_header
+name|wt_status_print_other_header
 argument_list|(
 name|s
+argument_list|,
+name|what
+argument_list|,
+name|how
 argument_list|)
 expr_stmt|;
 for|for
@@ -3259,10 +3292,8 @@ literal|0
 init|;
 name|i
 operator|<
-name|s
+name|l
 operator|->
-name|untracked
-operator|.
 name|nr
 condition|;
 name|i
@@ -3278,10 +3309,8 @@ name|it
 operator|=
 operator|&
 operator|(
-name|s
+name|l
 operator|->
-name|untracked
-operator|.
 name|items
 index|[
 name|i
@@ -3879,9 +3908,18 @@ name|s
 operator|->
 name|show_untracked_files
 condition|)
-name|wt_status_print_untracked
+name|wt_status_print_other
 argument_list|(
 name|s
+argument_list|,
+operator|&
+name|s
+operator|->
+name|untracked
+argument_list|,
+literal|"Untracked"
+argument_list|,
+literal|"add"
 argument_list|)
 expr_stmt|;
 elseif|else
