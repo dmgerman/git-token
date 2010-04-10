@@ -56,7 +56,7 @@ name|push_usage
 index|[]
 init|=
 block|{
-literal|"git push [<options>] [<repository><refspec>...]"
+literal|"git push [<options>] [<repository> [<refspec>...]]"
 block|,
 name|NULL
 block|, }

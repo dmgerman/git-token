@@ -74,13 +74,13 @@ name|builtin_fetch_usage
 index|[]
 init|=
 block|{
-literal|"git fetch [options] [<repository><refspec>...]"
+literal|"git fetch [<options>] [<repository> [<refspec>...]]"
 block|,
-literal|"git fetch [options]<group>"
+literal|"git fetch [<options>]<group>"
 block|,
-literal|"git fetch --multiple [options] [<repository> |<group>]..."
+literal|"git fetch --multiple [<options>] [<repository> |<group>]..."
 block|,
-literal|"git fetch --all [options]"
+literal|"git fetch --all [<options>]"
 block|,
 name|NULL
 block|}
