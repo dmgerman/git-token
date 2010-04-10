@@ -194,10 +194,6 @@ DECL|member|workdir_dirty
 name|int
 name|workdir_dirty
 decl_stmt|;
-DECL|member|workdir_untracked
-name|int
-name|workdir_untracked
-decl_stmt|;
 DECL|member|index_file
 specifier|const
 name|char

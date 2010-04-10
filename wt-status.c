@@ -2358,12 +2358,6 @@ name|NULL
 argument_list|)
 condition|)
 continue|continue;
-name|s
-operator|->
-name|workdir_untracked
-operator|=
-literal|1
-expr_stmt|;
 name|string_list_insert
 argument_list|(
 name|ent
