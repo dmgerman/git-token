@@ -2370,7 +2370,19 @@ operator|->
 name|untracked
 argument_list|)
 expr_stmt|;
+name|free
+argument_list|(
+name|ent
+argument_list|)
+expr_stmt|;
 block|}
+name|free
+argument_list|(
+name|dir
+operator|.
+name|entries
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
