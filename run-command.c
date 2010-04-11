@@ -1788,17 +1788,6 @@ if|if
 condition|(
 name|cmd
 operator|->
-name|dir
-condition|)
-name|die
-argument_list|(
-literal|"chdir in start_command() not implemented"
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|cmd
-operator|->
 name|env
 condition|)
 name|env
@@ -1867,6 +1856,10 @@ operator|->
 name|argv
 argument_list|,
 name|env
+argument_list|,
+name|cmd
+operator|->
+name|dir
 argument_list|,
 name|fhin
 argument_list|,
