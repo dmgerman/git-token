@@ -48,6 +48,11 @@ name|char
 modifier|*
 name|tag
 decl_stmt|;
+DECL|member|date
+name|unsigned
+name|long
+name|date
+decl_stmt|;
 block|}
 struct|;
 end_struct
