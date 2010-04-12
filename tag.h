@@ -48,12 +48,6 @@ name|char
 modifier|*
 name|tag
 decl_stmt|;
-DECL|member|signature
-name|char
-modifier|*
-name|signature
-decl_stmt|;
-comment|/* not actually implemented */
 block|}
 struct|;
 end_struct
