@@ -495,7 +495,7 @@ argument_list|(
 operator|&
 name|new_path
 argument_list|,
-literal|"/usr/local/bin:/usr/bin:/bin"
+name|_PATH_DEFPATH
 argument_list|)
 expr_stmt|;
 name|setenv
