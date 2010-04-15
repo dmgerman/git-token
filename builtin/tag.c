@@ -745,7 +745,7 @@ name|argv_verify_tag
 index|[]
 init|=
 block|{
-literal|"git-verify-tag"
+literal|"verify-tag"
 block|,
 literal|"-v"
 block|,
@@ -770,7 +770,7 @@ name|run_command_v_opt
 argument_list|(
 name|argv_verify_tag
 argument_list|,
-literal|0
+name|RUN_GIT_CMD
 argument_list|)
 condition|)
 return|return
