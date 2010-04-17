@@ -5867,8 +5867,7 @@ literal|1
 decl_stmt|;
 DECL|member|added
 DECL|member|deleted
-name|unsigned
-name|int
+name|uintmax_t
 name|added
 decl_stmt|,
 name|deleted
@@ -6420,7 +6419,7 @@ name|dels
 init|=
 literal|0
 decl_stmt|;
-name|int
+name|uintmax_t
 name|max_change
 init|=
 literal|0
@@ -6589,7 +6588,7 @@ index|[
 name|i
 index|]
 decl_stmt|;
-name|int
+name|uintmax_t
 name|change
 init|=
 name|file
@@ -6722,7 +6721,7 @@ index|]
 operator|->
 name|print_name
 decl_stmt|;
-name|int
+name|uintmax_t
 name|added
 init|=
 name|data
@@ -6734,7 +6733,7 @@ index|]
 operator|->
 name|added
 decl_stmt|;
-name|int
+name|uintmax_t
 name|deleted
 init|=
 name|data
@@ -6844,7 +6843,9 @@ name|options
 operator|->
 name|file
 argument_list|,
-literal|"%s%d%s"
+literal|"%s%"
+name|PRIuMAX
+literal|"%s"
 argument_list|,
 name|del_c
 argument_list|,
@@ -6868,7 +6869,9 @@ name|options
 operator|->
 name|file
 argument_list|,
-literal|"%s%d%s"
+literal|"%s%"
+name|PRIuMAX
+literal|"%s"
 argument_list|,
 name|add_c
 argument_list|,
@@ -7027,7 +7030,9 @@ name|options
 operator|->
 name|file
 argument_list|,
-literal|"%5d%s"
+literal|"%5"
+name|PRIuMAX
+literal|"%s"
 argument_list|,
 name|added
 operator|+
@@ -7341,7 +7346,11 @@ name|options
 operator|->
 name|file
 argument_list|,
-literal|"%d\t%d\t"
+literal|"%"
+name|PRIuMAX
+literal|"\t%"
+name|PRIuMAX
+literal|"\t"
 argument_list|,
 name|file
 operator|->
