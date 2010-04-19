@@ -4569,18 +4569,6 @@ literal|0
 decl_stmt|;
 name|char
 modifier|*
-name|hex
-init|=
-name|xstrdup
-argument_list|(
-name|sha1_to_hex
-argument_list|(
-name|sha1
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|char
-modifier|*
 name|filename
 decl_stmt|;
 name|char
@@ -4621,7 +4609,10 @@ name|stderr
 argument_list|,
 literal|"Getting index for pack %s\n"
 argument_list|,
-name|hex
+name|sha1_to_hex
+argument_list|(
+name|sha1
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|end_url_with_slash
@@ -4639,7 +4630,10 @@ name|buf
 argument_list|,
 literal|"objects/pack/pack-%s.idx"
 argument_list|,
-name|hex
+name|sha1_to_hex
+argument_list|(
+name|sha1
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|url
@@ -4683,11 +4677,6 @@ argument_list|)
 expr_stmt|;
 name|cleanup
 label|:
-name|free
-argument_list|(
-name|hex
-argument_list|)
-expr_stmt|;
 name|free
 argument_list|(
 name|url
