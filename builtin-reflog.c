@@ -65,7 +65,7 @@ name|char
 name|reflog_expire_usage
 index|[]
 init|=
-literal|"git reflog (show|expire) [--verbose] [--dry-run] [--stale-fix] [--expire=<time>] [--expire-unreachable=<time>] [--all]<refs>..."
+literal|"git reflog expire [--verbose] [--dry-run] [--stale-fix] [--expire=<time>] [--expire-unreachable=<time>] [--all]<refs>..."
 decl_stmt|;
 end_decl_stmt
 
