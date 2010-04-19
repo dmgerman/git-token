@@ -6338,6 +6338,11 @@ name|unsigned
 name|char
 modifier|*
 name|sha1
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|idx_path
 parameter_list|)
 function_decl|;
 end_function_decl
