@@ -3767,7 +3767,13 @@ name|s
 operator|->
 name|fp
 argument_list|,
-literal|"# Untracked files not listed (use -u option to show untracked files)\n"
+literal|"# Untracked files not listed%s\n"
+argument_list|,
+name|advice_status_hints
+condition|?
+literal|" (use -u option to show untracked files)"
+else|:
+literal|""
 argument_list|)
 expr_stmt|;
 if|if
@@ -3822,7 +3828,13 @@ name|workdir_dirty
 condition|)
 name|printf
 argument_list|(
-literal|"no changes added to commit (use \"git add\" and/or \"git commit -a\")\n"
+literal|"no changes added to commit%s\n"
+argument_list|,
+name|advice_status_hints
+condition|?
+literal|" (use \"git add\" and/or \"git commit -a\")"
+else|:
+literal|""
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -3836,7 +3848,13 @@ name|nr
 condition|)
 name|printf
 argument_list|(
-literal|"nothing added to commit but untracked files present (use \"git add\" to track)\n"
+literal|"nothing added to commit but untracked files present%s\n"
+argument_list|,
+name|advice_status_hints
+condition|?
+literal|" (use \"git add\" to track)"
+else|:
+literal|""
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -3848,7 +3866,13 @@ name|is_initial
 condition|)
 name|printf
 argument_list|(
-literal|"nothing to commit (create/copy files and use \"git add\" to track)\n"
+literal|"nothing to commit%s\n"
+argument_list|,
+name|advice_status_hints
+condition|?
+literal|" (create/copy files and use \"git add\" to track)"
+else|:
+literal|""
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -3861,13 +3885,25 @@ name|show_untracked_files
 condition|)
 name|printf
 argument_list|(
-literal|"nothing to commit (use -u to show untracked files)\n"
+literal|"nothing to commit%s\n"
+argument_list|,
+name|advice_status_hints
+condition|?
+literal|" (use -u to show untracked files)"
+else|:
+literal|""
 argument_list|)
 expr_stmt|;
 else|else
 name|printf
 argument_list|(
-literal|"nothing to commit (working directory clean)\n"
+literal|"nothing to commit%s\n"
+argument_list|,
+name|advice_status_hints
+condition|?
+literal|" (working directory clean)"
+else|:
+literal|""
 argument_list|)
 expr_stmt|;
 block|}
