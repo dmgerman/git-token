@@ -1467,7 +1467,7 @@ name|revs
 operator|.
 name|abbrev
 operator|=
-literal|0
+name|DEFAULT_ABBREV
 expr_stmt|;
 name|revs
 operator|.
