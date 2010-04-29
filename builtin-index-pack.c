@@ -73,7 +73,7 @@ name|char
 name|index_pack_usage
 index|[]
 init|=
-literal|"git index-pack [-v] [-o<index-file>] [{ ---keep | --keep=<msg> }] [--strict] {<pack-file> | --stdin [--fix-thin] [<pack-file>] }"
+literal|"git index-pack [-v] [-o<index-file>] [{ --keep | --keep=<msg> }] [--strict] {<pack-file> | --stdin [--fix-thin] [<pack-file>] }"
 decl_stmt|;
 end_decl_stmt
 
