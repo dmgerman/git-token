@@ -4573,6 +4573,8 @@ argument_list|,
 name|s
 argument_list|)
 argument_list|,
+literal|"%s"
+argument_list|,
 name|sign
 argument_list|)
 expr_stmt|;
