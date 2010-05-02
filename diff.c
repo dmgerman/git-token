@@ -4439,7 +4439,7 @@ name|xpp
 operator|.
 name|flags
 operator|=
-name|XDF_NEED_MINIMAL
+literal|0
 expr_stmt|;
 comment|/* as only the hunk header will be parsed, we need a 0-context */
 name|xecfg
@@ -10771,8 +10771,6 @@ name|xpp
 operator|.
 name|flags
 operator|=
-name|XDF_NEED_MINIMAL
-operator||
 name|o
 operator|->
 name|xdl_opts
@@ -11345,8 +11343,6 @@ name|xpp
 operator|.
 name|flags
 operator|=
-name|XDF_NEED_MINIMAL
-operator||
 name|o
 operator|->
 name|xdl_opts
@@ -11581,7 +11577,7 @@ name|xpp
 operator|.
 name|flags
 operator|=
-name|XDF_NEED_MINIMAL
+literal|0
 expr_stmt|;
 name|xdi_diff_outf
 argument_list|(
@@ -20315,7 +20311,7 @@ name|xpp
 operator|.
 name|flags
 operator|=
-name|XDF_NEED_MINIMAL
+literal|0
 expr_stmt|;
 name|xecfg
 operator|.
