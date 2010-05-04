@@ -117,10 +117,6 @@ name|xdemitconf_t
 specifier|const
 modifier|*
 name|xecfg
-parameter_list|,
-name|xdemitcb_t
-modifier|*
-name|xecb
 parameter_list|)
 function_decl|;
 end_function_decl
