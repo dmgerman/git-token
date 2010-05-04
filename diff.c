@@ -4304,9 +4304,6 @@ decl_stmt|;
 name|xdemitconf_t
 name|xecfg
 decl_stmt|;
-name|xdemitcb_t
-name|ecb
-decl_stmt|;
 name|mmfile_t
 name|minus
 decl_stmt|,
@@ -4465,9 +4462,6 @@ name|xpp
 argument_list|,
 operator|&
 name|xecfg
-argument_list|,
-operator|&
-name|ecb
 argument_list|)
 expr_stmt|;
 name|free
@@ -10503,9 +10497,6 @@ decl_stmt|;
 name|xdemitconf_t
 name|xecfg
 decl_stmt|;
-name|xdemitcb_t
-name|ecb
-decl_stmt|;
 name|struct
 name|emit_callback
 name|ecbdata
@@ -11028,9 +11019,6 @@ name|xpp
 argument_list|,
 operator|&
 name|xecfg
-argument_list|,
-operator|&
-name|ecb
 argument_list|)
 expr_stmt|;
 if|if
@@ -11312,9 +11300,6 @@ decl_stmt|;
 name|xdemitconf_t
 name|xecfg
 decl_stmt|;
-name|xdemitcb_t
-name|ecb
-decl_stmt|;
 name|memset
 argument_list|(
 operator|&
@@ -11368,9 +11353,6 @@ name|xpp
 argument_list|,
 operator|&
 name|xecfg
-argument_list|,
-operator|&
-name|ecb
 argument_list|)
 expr_stmt|;
 block|}
@@ -11541,9 +11523,6 @@ decl_stmt|;
 name|xdemitconf_t
 name|xecfg
 decl_stmt|;
-name|xdemitcb_t
-name|ecb
-decl_stmt|;
 name|memset
 argument_list|(
 operator|&
@@ -11601,9 +11580,6 @@ name|xpp
 argument_list|,
 operator|&
 name|xecfg
-argument_list|,
-operator|&
-name|ecb
 argument_list|)
 expr_stmt|;
 if|if
@@ -19922,9 +19898,6 @@ decl_stmt|;
 name|xdemitconf_t
 name|xecfg
 decl_stmt|;
-name|xdemitcb_t
-name|ecb
-decl_stmt|;
 name|mmfile_t
 name|mf1
 decl_stmt|,
@@ -20347,9 +20320,6 @@ name|xpp
 argument_list|,
 operator|&
 name|xecfg
-argument_list|,
-operator|&
-name|ecb
 argument_list|)
 expr_stmt|;
 block|}
