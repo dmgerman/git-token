@@ -22014,6 +22014,14 @@ modifier|*
 name|options
 parameter_list|)
 block|{
+comment|/* We never run this function more than one time, because the 	 * rename/copy detection logic can only run once. 	 */
+if|if
+condition|(
+name|diff_queued_diff
+operator|.
+name|run
+condition|)
+return|return;
 if|if
 condition|(
 name|options
@@ -22132,6 +22140,12 @@ name|options
 argument_list|,
 name|HAS_CHANGES
 argument_list|)
+expr_stmt|;
+name|diff_queued_diff
+operator|.
+name|run
+operator|=
+literal|1
 expr_stmt|;
 block|}
 end_function
