@@ -15,6 +15,17 @@ directive|include
 file|"quote.h"
 end_include
 
+begin_function
+DECL|function|do_nothing
+name|void
+name|do_nothing
+parameter_list|(
+name|size_t
+name|unused
+parameter_list|)
+block|{ }
+end_function
+
 begin_comment
 comment|/* Get a trace file descriptor from GIT_TRACE env variable. */
 end_comment
@@ -260,6 +271,12 @@ operator|!
 name|fd
 condition|)
 return|return;
+name|set_try_to_free_routine
+argument_list|(
+name|do_nothing
+argument_list|)
+expr_stmt|;
+comment|/* is never reset */
 name|strbuf_init
 argument_list|(
 operator|&
@@ -463,6 +480,12 @@ operator|!
 name|fd
 condition|)
 return|return;
+name|set_try_to_free_routine
+argument_list|(
+name|do_nothing
+argument_list|)
+expr_stmt|;
+comment|/* is never reset */
 name|strbuf_init
 argument_list|(
 operator|&
