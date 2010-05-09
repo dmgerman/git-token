@@ -7828,6 +7828,14 @@ value|020
 end_define
 
 begin_define
+DECL|macro|WS_TAB_IN_INDENT
+define|#
+directive|define
+name|WS_TAB_IN_INDENT
+value|040
+end_define
+
+begin_define
 DECL|macro|WS_TRAILING_SPACE
 define|#
 directive|define
@@ -7945,10 +7953,11 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|int
+name|void
 name|ws_fix_copy
 parameter_list|(
-name|char
+name|struct
+name|strbuf
 modifier|*
 parameter_list|,
 specifier|const
