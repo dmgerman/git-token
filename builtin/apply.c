@@ -9162,11 +9162,9 @@ name|ws_rule
 operator|&
 name|WS_BLANK_AT_EOF
 operator|)
-operator|&&
-name|match_end
 condition|)
 block|{
-comment|/* 		 * This hunk that matches at the end extends beyond 		 * the end of img, and we are removing blank lines 		 * at the end of the file.  This many lines from the 		 * beginning of the preimage must match with img, and 		 * the remainder of the preimage must be blank. 		 */
+comment|/* 		 * This hunk extends beyond the end of img, and we are 		 * removing blank lines at the end of the file.  This 		 * many lines from the beginning of the preimage must 		 * match with img, and the remainder of the preimage 		 * must be blank. 		 */
 name|preimage_limit
 operator|=
 name|img
