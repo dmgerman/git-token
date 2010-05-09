@@ -366,9 +366,12 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|no_post_rewrite
+DECL|variable|allow_empty_message
 specifier|static
 name|int
 name|no_post_rewrite
+decl_stmt|,
+name|allow_empty_message
 decl_stmt|;
 end_decl_stmt
 
@@ -898,19 +901,45 @@ operator|)
 literal|"all"
 block|}
 block|,
-name|OPT_BOOLEAN
-argument_list|(
+comment|/* end commit contents options */
+block|{
+name|OPTION_BOOLEAN
+block|,
 literal|0
-argument_list|,
+block|,
 literal|"allow-empty"
-argument_list|,
+block|,
 operator|&
 name|allow_empty
-argument_list|,
-literal|"ok to record an empty change"
-argument_list|)
 block|,
-comment|/* end commit contents options */
+name|NULL
+block|,
+literal|"ok to record an empty change"
+block|,
+name|PARSE_OPT_NOARG
+operator||
+name|PARSE_OPT_HIDDEN
+block|}
+block|,
+block|{
+name|OPTION_BOOLEAN
+block|,
+literal|0
+block|,
+literal|"allow-empty-message"
+block|,
+operator|&
+name|allow_empty_message
+block|,
+name|NULL
+block|,
+literal|"ok to record a change with an empty message"
+block|,
+name|PARSE_OPT_NOARG
+operator||
+name|PARSE_OPT_HIDDEN
+block|}
+block|,
 name|OPT_END
 argument_list|()
 block|}
@@ -7093,6 +7122,9 @@ argument_list|(
 operator|&
 name|sb
 argument_list|)
+operator|&&
+operator|!
+name|allow_empty_message
 condition|)
 block|{
 name|rollback_index_files
