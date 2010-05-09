@@ -262,6 +262,37 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* builtin/merge.c */
+end_comment
+
+begin_function_decl
+name|int
+name|try_merge_command
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|strategy
+parameter_list|,
+name|struct
+name|commit_list
+modifier|*
+name|common
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|head_arg
+parameter_list|,
+name|struct
+name|commit_list
+modifier|*
+name|remotes
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
