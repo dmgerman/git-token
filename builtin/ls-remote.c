@@ -31,7 +31,8 @@ name|char
 name|ls_remote_usage
 index|[]
 init|=
-literal|"git ls-remote [--heads] [--tags]  [-u<exec> | --upload-pack<exec>]<repository><refs>..."
+literal|"git ls-remote [--heads] [--tags]  [-u<exec> | --upload-pack<exec>]\n"
+literal|"                     [<repository> [<refs>...]]"
 decl_stmt|;
 end_decl_stmt
 
@@ -374,16 +375,6 @@ break|break;
 block|}
 if|if
 condition|(
-operator|!
-name|dest
-condition|)
-name|usage
-argument_list|(
-name|ls_remote_usage
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
 name|argv
 index|[
 name|i
@@ -477,6 +468,29 @@ argument_list|(
 name|dest
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|remote
+condition|)
+block|{
+if|if
+condition|(
+name|dest
+condition|)
+name|die
+argument_list|(
+literal|"bad repository '%s'"
+argument_list|,
+name|dest
+argument_list|)
+expr_stmt|;
+name|die
+argument_list|(
+literal|"No remote configured to list refs from."
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
