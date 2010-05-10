@@ -5892,13 +5892,7 @@ name|head_arg
 operator|=
 literal|"HEAD"
 expr_stmt|;
-comment|/* 		 * All the rest are the commits being merged; 		 * prepare the standard merge summary message to 		 * used as the merge message.  If remote 		 * is invalid we will die later in the common 		 * codepath so we discard the error in this 		 * loop. 		 */
-if|if
-condition|(
-operator|!
-name|have_message
-condition|)
-block|{
+comment|/* 		 * All the rest are the commits being merged; 		 * prepare the standard merge summary message to 		 * be appended to the given message.  If remote 		 * is invalid we will die later in the common 		 * codepath so we discard the error in this 		 * loop. 		 */
 for|for
 control|(
 name|i
@@ -5923,6 +5917,27 @@ operator|&
 name|merge_names
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|have_message
+operator|&&
+name|option_log
+condition|)
+name|fmt_merge_msg_shortlog
+argument_list|(
+operator|&
+name|merge_names
+argument_list|,
+operator|&
+name|merge_msg
+argument_list|)
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|have_message
+condition|)
 name|fmt_merge_msg
 argument_list|(
 name|option_log
@@ -5936,6 +5951,14 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+operator|(
+name|have_message
+operator|&&
+operator|!
+name|option_log
+operator|)
+operator|&&
 name|merge_msg
 operator|.
 name|len
@@ -5952,7 +5975,6 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 if|if
 condition|(
