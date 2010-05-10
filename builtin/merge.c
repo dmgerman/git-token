@@ -5883,7 +5883,7 @@ else|else
 block|{
 name|struct
 name|strbuf
-name|msg
+name|merge_names
 init|=
 name|STRBUF_INIT
 decl_stmt|;
@@ -5920,7 +5920,7 @@ name|i
 index|]
 argument_list|,
 operator|&
-name|msg
+name|merge_names
 argument_list|)
 expr_stmt|;
 name|fmt_merge_msg
@@ -5928,7 +5928,7 @@ argument_list|(
 name|option_log
 argument_list|,
 operator|&
-name|msg
+name|merge_names
 argument_list|,
 operator|&
 name|merge_msg
