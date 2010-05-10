@@ -5892,7 +5892,7 @@ name|head_arg
 operator|=
 literal|"HEAD"
 expr_stmt|;
-comment|/* 		 * All the rest are the commits being merged; 		 * prepare the standard merge summary message to 		 * be appended to the given message.  If remote 		 * is invalid we will die later in the common 		 * codepath so we discard the error in this 		 * loop. 		 */
+comment|/* 		 * All the rest are the commits being merged; 		 * prepare the standard merge summary message to 		 * used as the merge message.  If remote 		 * is invalid we will die later in the common 		 * codepath so we discard the error in this 		 * loop. 		 */
 if|if
 condition|(
 operator|!
