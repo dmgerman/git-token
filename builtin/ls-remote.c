@@ -32,7 +32,7 @@ name|ls_remote_usage
 index|[]
 init|=
 literal|"git ls-remote [--heads] [--tags]  [-u<exec> | --upload-pack<exec>]\n"
-literal|"                     [<repository> [<refs>...]]"
+literal|"                     [-q|--quiet] [<repository> [<refs>...]]"
 decl_stmt|;
 end_decl_stmt
 
@@ -181,6 +181,11 @@ name|nongit
 decl_stmt|;
 name|unsigned
 name|flags
+init|=
+literal|0
+decl_stmt|;
+name|int
+name|quiet
 init|=
 literal|0
 decl_stmt|;
@@ -355,6 +360,31 @@ block|{
 name|flags
 operator||=
 name|REF_NORMAL
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+literal|"--quiet"
+argument_list|,
+name|arg
+argument_list|)
+operator|||
+operator|!
+name|strcmp
+argument_list|(
+literal|"-q"
+argument_list|,
+name|arg
+argument_list|)
+condition|)
+block|{
+name|quiet
+operator|=
+literal|1
 expr_stmt|;
 continue|continue;
 block|}
@@ -546,6 +576,26 @@ condition|)
 return|return
 literal|1
 return|;
+if|if
+condition|(
+operator|!
+name|dest
+operator|&&
+operator|!
+name|quiet
+condition|)
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"From %s\n"
+argument_list|,
+operator|*
+name|remote
+operator|->
+name|url
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 init|;
