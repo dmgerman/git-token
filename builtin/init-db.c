@@ -2267,6 +2267,8 @@ name|git_dir
 argument_list|)
 argument_list|)
 argument_list|,
+name|argc
+operator|>
 literal|0
 argument_list|)
 expr_stmt|;
