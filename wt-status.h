@@ -54,7 +54,7 @@ name|WT_STATUS_NOBRANCH
 block|,
 DECL|enumerator|WT_STATUS_UNMERGED
 name|WT_STATUS_UNMERGED
-block|, }
+block|}
 enum|;
 end_enum
 

@@ -741,7 +741,7 @@ name|PROTO_SSH
 block|,
 DECL|enumerator|PROTO_GIT
 name|PROTO_GIT
-block|, }
+block|}
 enum|;
 end_enum
 

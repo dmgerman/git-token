@@ -283,8 +283,8 @@ name|die_on_ws_error
 block|,
 DECL|enumerator|correct_ws_error
 name|correct_ws_error
-block|, }
 DECL|variable|ws_error_action
+block|}
 name|ws_error_action
 init|=
 name|warn_on_ws_error
@@ -328,8 +328,8 @@ name|ignore_ws_none
 block|,
 DECL|enumerator|ignore_ws_change
 name|ignore_ws_change
-block|, }
 DECL|variable|ws_ignore_action
+block|}
 name|ws_ignore_action
 init|=
 name|ignore_ws_none

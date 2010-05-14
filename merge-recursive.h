@@ -53,8 +53,8 @@ name|MERGE_RECURSIVE_OURS
 block|,
 DECL|enumerator|MERGE_RECURSIVE_THEIRS
 name|MERGE_RECURSIVE_THEIRS
-block|, 	}
 DECL|member|recursive_variant
+block|}
 name|recursive_variant
 enum|;
 DECL|member|subtree_shift

@@ -1783,7 +1783,7 @@ name|OBJ_ANY
 block|,
 DECL|enumerator|OBJ_MAX
 name|OBJ_MAX
-block|, }
+block|}
 enum|;
 end_enum
 
@@ -3543,7 +3543,7 @@ DECL|enumerator|SAFE_CRLF_WARN
 name|SAFE_CRLF_WARN
 init|=
 literal|2
-block|, }
+block|}
 enum|;
 end_enum
 
@@ -3582,7 +3582,7 @@ name|BRANCH_TRACK_EXPLICIT
 block|,
 DECL|enumerator|BRANCH_TRACK_OVERRIDE
 name|BRANCH_TRACK_OVERRIDE
-block|, }
+block|}
 enum|;
 end_enum
 
@@ -3604,7 +3604,7 @@ name|AUTOREBASE_REMOTE
 block|,
 DECL|enumerator|AUTOREBASE_ALWAYS
 name|AUTOREBASE_ALWAYS
-block|, }
+block|}
 enum|;
 end_enum
 
@@ -3626,7 +3626,7 @@ name|PUSH_DEFAULT_TRACKING
 block|,
 DECL|enumerator|PUSH_DEFAULT_CURRENT
 name|PUSH_DEFAULT_CURRENT
-block|, }
+block|}
 enum|;
 end_enum
 
@@ -3668,7 +3668,7 @@ DECL|enumerator|OBJECT_CREATION_USES_RENAMES
 name|OBJECT_CREATION_USES_RENAMES
 init|=
 literal|1
-block|, }
+block|}
 enum|;
 end_enum
 
@@ -4258,7 +4258,7 @@ DECL|enumerator|PERM_EVERYBODY
 name|PERM_EVERYBODY
 init|=
 literal|0664
-block|, }
+block|}
 enum|;
 end_enum
 
@@ -6146,8 +6146,8 @@ name|REF_STATUS_REMOTE_REJECT
 block|,
 DECL|enumerator|REF_STATUS_EXPECTING_REPORT
 name|REF_STATUS_EXPECTING_REPORT
-block|, 	}
 DECL|member|status
+block|}
 name|status
 enum|;
 DECL|member|remote_status
