@@ -3875,16 +3875,6 @@ modifier|*
 name|fetch_refspec_str
 parameter_list|)
 block|{
-specifier|const
-name|char
-modifier|*
-name|fetch_refspec
-index|[]
-init|=
-block|{
-name|fetch_refspec_str
-block|}
-decl_stmt|;
 name|struct
 name|refspec
 modifier|*
@@ -3896,7 +3886,8 @@ name|parse_refspec_internal
 argument_list|(
 literal|1
 argument_list|,
-name|fetch_refspec
+operator|&
+name|fetch_refspec_str
 argument_list|,
 literal|1
 argument_list|,

@@ -1508,14 +1508,19 @@ literal|5
 index|]
 init|=
 block|{
-name|ce
-block|,
 name|NULL
-block|, }
+block|}
 decl_stmt|;
 name|int
 name|ret
 decl_stmt|;
+name|src
+index|[
+literal|0
+index|]
+operator|=
+name|ce
+expr_stmt|;
 name|mark_ce_used
 argument_list|(
 name|ce
