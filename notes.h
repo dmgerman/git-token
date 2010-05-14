@@ -391,6 +391,26 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/* Flags controlling the operation of prune */
+end_comment
+
+begin_define
+DECL|macro|NOTES_PRUNE_VERBOSE
+define|#
+directive|define
+name|NOTES_PRUNE_VERBOSE
+value|1
+end_define
+
+begin_define
+DECL|macro|NOTES_PRUNE_DRYRUN
+define|#
+directive|define
+name|NOTES_PRUNE_DRYRUN
+value|2
+end_define
+
+begin_comment
 comment|/*  * Remove all notes annotating non-existing objects from the given notes tree  *  * All notes in the given notes_tree that are associated with objects that no  * longer exist in the database, are removed from the notes tree.  *  * IMPORTANT: The changes made by prune_notes() to the given notes_tree  * structure are not persistent until a subsequent call to write_notes_tree()  * returns zero.  */
 end_comment
 
@@ -402,6 +422,9 @@ name|struct
 name|notes_tree
 modifier|*
 name|t
+parameter_list|,
+name|int
+name|flags
 parameter_list|)
 function_decl|;
 end_function_decl

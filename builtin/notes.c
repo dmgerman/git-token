@@ -88,7 +88,7 @@ literal|"git notes [--ref<notes_ref>] show [<object>]"
 block|,
 literal|"git notes [--ref<notes_ref>] remove [<object>]"
 block|,
-literal|"git notes [--ref<notes_ref>] prune"
+literal|"git notes [--ref<notes_ref>] prune [-n | -v]"
 block|,
 name|NULL
 block|}
@@ -234,7 +234,7 @@ name|git_notes_prune_usage
 index|[]
 init|=
 block|{
-literal|"git notes prune"
+literal|"git notes prune [<options>]"
 block|,
 name|NULL
 block|}
@@ -4421,12 +4421,45 @@ name|notes_tree
 modifier|*
 name|t
 decl_stmt|;
+name|int
+name|show_only
+init|=
+literal|0
+decl_stmt|,
+name|verbose
+init|=
+literal|0
+decl_stmt|;
 name|struct
 name|option
 name|options
 index|[]
 init|=
 block|{
+name|OPT_BOOLEAN
+argument_list|(
+literal|'n'
+argument_list|,
+name|NULL
+argument_list|,
+operator|&
+name|show_only
+argument_list|,
+literal|"do not remove, show only"
+argument_list|)
+block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|'v'
+argument_list|,
+name|NULL
+argument_list|,
+operator|&
+name|verbose
+argument_list|,
+literal|"report pruned notes"
+argument_list|)
+block|,
 name|OPT_END
 argument_list|()
 block|}
@@ -4476,8 +4509,31 @@ expr_stmt|;
 name|prune_notes
 argument_list|(
 name|t
+argument_list|,
+operator|(
+name|verbose
+condition|?
+name|NOTES_PRUNE_VERBOSE
+else|:
+literal|0
+operator|)
+operator||
+operator|(
+name|show_only
+condition|?
+name|NOTES_PRUNE_VERBOSE
+operator||
+name|NOTES_PRUNE_DRYRUN
+else|:
+literal|0
+operator|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|show_only
+condition|)
 name|commit_notes
 argument_list|(
 name|t
