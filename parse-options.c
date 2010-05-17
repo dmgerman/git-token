@@ -46,6 +46,9 @@ name|struct
 name|option
 modifier|*
 name|opts
+parameter_list|,
+name|int
+name|err
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -2171,6 +2174,8 @@ name|option
 modifier|*
 parameter_list|,
 name|int
+parameter_list|,
+name|int
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -2344,6 +2349,8 @@ argument_list|(
 name|usagestr
 argument_list|,
 name|options
+argument_list|,
+literal|0
 argument_list|)
 return|;
 switch|switch
@@ -2366,6 +2373,8 @@ argument_list|(
 name|usagestr
 argument_list|,
 name|options
+argument_list|,
+literal|1
 argument_list|)
 return|;
 case|case
@@ -2415,6 +2424,8 @@ argument_list|(
 name|usagestr
 argument_list|,
 name|options
+argument_list|,
+literal|0
 argument_list|)
 return|;
 switch|switch
@@ -2437,6 +2448,8 @@ argument_list|(
 name|usagestr
 argument_list|,
 name|options
+argument_list|,
+literal|1
 argument_list|)
 return|;
 case|case
@@ -2538,6 +2551,8 @@ argument_list|,
 name|options
 argument_list|,
 literal|1
+argument_list|,
+literal|0
 argument_list|)
 return|;
 if|if
@@ -2560,6 +2575,8 @@ argument_list|(
 name|usagestr
 argument_list|,
 name|options
+argument_list|,
+literal|0
 argument_list|)
 return|;
 switch|switch
@@ -2586,6 +2603,8 @@ argument_list|(
 name|usagestr
 argument_list|,
 name|options
+argument_list|,
+literal|1
 argument_list|)
 return|;
 case|case
@@ -2861,6 +2880,10 @@ name|struct
 name|option
 modifier|*
 name|opts
+parameter_list|,
+name|FILE
+modifier|*
+name|outfile
 parameter_list|)
 block|{
 specifier|const
@@ -2927,7 +2950,7 @@ expr_stmt|;
 return|return
 name|fprintf
 argument_list|(
-name|stderr
+name|outfile
 argument_list|,
 name|s
 argument_list|,
@@ -2982,8 +3005,21 @@ name|opts
 parameter_list|,
 name|int
 name|full
+parameter_list|,
+name|int
+name|err
 parameter_list|)
 block|{
+name|FILE
+modifier|*
+name|outfile
+init|=
+name|err
+condition|?
+name|stderr
+else|:
+name|stdout
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -2994,7 +3030,7 @@ name|PARSE_OPT_HELP
 return|;
 name|fprintf
 argument_list|(
-name|stderr
+name|outfile
 argument_list|,
 literal|"usage: %s\n"
 argument_list|,
@@ -3014,7 +3050,7 @@ name|usagestr
 condition|)
 name|fprintf
 argument_list|(
-name|stderr
+name|outfile
 argument_list|,
 literal|"   or: %s\n"
 argument_list|,
@@ -3031,7 +3067,7 @@ condition|)
 block|{
 name|fprintf
 argument_list|(
-name|stderr
+name|outfile
 argument_list|,
 literal|"%s%s\n"
 argument_list|,
@@ -3063,7 +3099,7 @@ name|fputc
 argument_list|(
 literal|'\n'
 argument_list|,
-name|stderr
+name|outfile
 argument_list|)
 expr_stmt|;
 for|for
@@ -3098,7 +3134,7 @@ name|fputc
 argument_list|(
 literal|'\n'
 argument_list|,
-name|stderr
+name|outfile
 argument_list|)
 expr_stmt|;
 if|if
@@ -3110,7 +3146,7 @@ name|help
 condition|)
 name|fprintf
 argument_list|(
-name|stderr
+name|outfile
 argument_list|,
 literal|"%s\n"
 argument_list|,
@@ -3139,7 +3175,7 @@ name|pos
 operator|=
 name|fprintf
 argument_list|(
-name|stderr
+name|outfile
 argument_list|,
 literal|"    "
 argument_list|)
@@ -3172,7 +3208,7 @@ name|pos
 operator|+=
 name|fprintf
 argument_list|(
-name|stderr
+name|outfile
 argument_list|,
 literal|"%c"
 argument_list|,
@@ -3186,7 +3222,7 @@ name|pos
 operator|+=
 name|fprintf
 argument_list|(
-name|stderr
+name|outfile
 argument_list|,
 literal|"-%c"
 argument_list|,
@@ -3210,7 +3246,7 @@ name|pos
 operator|+=
 name|fprintf
 argument_list|(
-name|stderr
+name|outfile
 argument_list|,
 literal|", "
 argument_list|)
@@ -3225,7 +3261,7 @@ name|pos
 operator|+=
 name|fprintf
 argument_list|(
-name|stderr
+name|outfile
 argument_list|,
 literal|"--%s%s"
 argument_list|,
@@ -3258,7 +3294,7 @@ name|pos
 operator|+=
 name|fprintf
 argument_list|(
-name|stderr
+name|outfile
 argument_list|,
 literal|"-NUM"
 argument_list|)
@@ -3279,6 +3315,8 @@ operator|+=
 name|usage_argh
 argument_list|(
 name|opts
+argument_list|,
+name|outfile
 argument_list|)
 expr_stmt|;
 if|if
@@ -3299,7 +3337,7 @@ name|fputc
 argument_list|(
 literal|'\n'
 argument_list|,
-name|stderr
+name|outfile
 argument_list|)
 expr_stmt|;
 name|pad
@@ -3309,7 +3347,7 @@ expr_stmt|;
 block|}
 name|fprintf
 argument_list|(
-name|stderr
+name|outfile
 argument_list|,
 literal|"%*s%s\n"
 argument_list|,
@@ -3329,7 +3367,7 @@ name|fputc
 argument_list|(
 literal|'\n'
 argument_list|,
-name|stderr
+name|outfile
 argument_list|)
 expr_stmt|;
 return|return
@@ -3364,6 +3402,8 @@ argument_list|,
 name|opts
 argument_list|,
 literal|0
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 name|exit
@@ -3435,6 +3475,9 @@ name|struct
 name|option
 modifier|*
 name|opts
+parameter_list|,
+name|int
+name|err
 parameter_list|)
 block|{
 return|return
@@ -3445,6 +3488,8 @@ argument_list|,
 name|opts
 argument_list|,
 literal|0
+argument_list|,
+name|err
 argument_list|)
 return|;
 block|}
