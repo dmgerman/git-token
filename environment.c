@@ -274,17 +274,13 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|auto_crlf
-name|int
+name|enum
+name|auto_crlf
 name|auto_crlf
 init|=
-literal|0
+name|AUTO_CRLF_FALSE
 decl_stmt|;
 end_decl_stmt
-
-begin_comment
-DECL|variable|auto_crlf
-comment|/* 1: both ways, -1: only when adding git objects */
-end_comment
 
 begin_decl_stmt
 DECL|variable|read_replace_refs

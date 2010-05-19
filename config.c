@@ -2247,8 +2247,7 @@ condition|)
 block|{
 name|auto_crlf
 operator|=
-operator|-
-literal|1
+name|AUTO_CRLF_INPUT
 expr_stmt|;
 return|return
 literal|0
