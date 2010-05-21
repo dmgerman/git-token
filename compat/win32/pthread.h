@@ -62,7 +62,7 @@ name|a
 parameter_list|,
 name|b
 parameter_list|)
-value|InitializeCriticalSection((a))
+value|(InitializeCriticalSection((a)), 0)
 end_define
 
 begin_define
@@ -90,6 +90,57 @@ define|#
 directive|define
 name|pthread_mutex_unlock
 value|LeaveCriticalSection
+end_define
+
+begin_typedef
+DECL|typedef|pthread_mutexattr_t
+typedef|typedef
+name|int
+name|pthread_mutexattr_t
+typedef|;
+end_typedef
+
+begin_define
+DECL|macro|pthread_mutexattr_init
+define|#
+directive|define
+name|pthread_mutexattr_init
+parameter_list|(
+name|a
+parameter_list|)
+value|(*(a) = 0)
+end_define
+
+begin_define
+DECL|macro|pthread_mutexattr_destroy
+define|#
+directive|define
+name|pthread_mutexattr_destroy
+parameter_list|(
+name|a
+parameter_list|)
+value|do {} while (0)
+end_define
+
+begin_define
+DECL|macro|pthread_mutexattr_settype
+define|#
+directive|define
+name|pthread_mutexattr_settype
+parameter_list|(
+name|a
+parameter_list|,
+name|t
+parameter_list|)
+value|0
+end_define
+
+begin_define
+DECL|macro|PTHREAD_MUTEX_RECURSIVE
+define|#
+directive|define
+name|PTHREAD_MUTEX_RECURSIVE
+value|0
 end_define
 
 begin_comment
