@@ -1738,11 +1738,13 @@ argument_list|,
 name|RECURSIVE
 argument_list|)
 expr_stmt|;
+name|DIFF_OPT_SET
+argument_list|(
+operator|&
 name|diff_opts
-operator|.
-name|detect_rename
-operator|=
-name|DIFF_DETECT_RENAME
+argument_list|,
+name|FIND_COPIES_HARDER
+argument_list|)
 expr_stmt|;
 name|diff_opts
 operator|.

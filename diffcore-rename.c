@@ -2766,21 +2766,11 @@ expr_stmt|;
 name|cleanup
 label|:
 comment|/* At this point, we have found some renames and copies and they 	 * are recorded in rename_dst.  The original list is still in *q. 	 */
+name|DIFF_QUEUE_CLEAR
+argument_list|(
+operator|&
 name|outq
-operator|.
-name|queue
-operator|=
-name|NULL
-expr_stmt|;
-name|outq
-operator|.
-name|nr
-operator|=
-name|outq
-operator|.
-name|alloc
-operator|=
-literal|0
+argument_list|)
 expr_stmt|;
 for|for
 control|(

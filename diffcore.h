@@ -458,9 +458,25 @@ DECL|member|nr
 name|int
 name|nr
 decl_stmt|;
+DECL|member|run
+name|int
+name|run
+decl_stmt|;
 block|}
 struct|;
 end_struct
+
+begin_define
+DECL|macro|DIFF_QUEUE_CLEAR
+define|#
+directive|define
+name|DIFF_QUEUE_CLEAR
+parameter_list|(
+name|q
+parameter_list|)
+define|\
+value|do { \ 		(q)->queue = NULL; \ 		(q)->nr = (q)->alloc = 0; \ 		(q)->run = 0; \ 	} while(0);
+end_define
 
 begin_decl_stmt
 specifier|extern
