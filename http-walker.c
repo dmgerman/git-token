@@ -2463,9 +2463,12 @@ name|error
 argument_list|(
 literal|"unable to write sha1 filename %s"
 argument_list|,
+name|sha1_file_name
+argument_list|(
 name|req
 operator|->
-name|filename
+name|sha1
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
