@@ -6764,7 +6764,14 @@ begin_function_decl
 specifier|extern
 name|int
 name|git_config_from_parameters
-parameter_list|()
+parameter_list|(
+name|config_fn_t
+name|fn
+parameter_list|,
+name|void
+modifier|*
+name|data
+parameter_list|)
 function_decl|;
 end_function_decl
 
