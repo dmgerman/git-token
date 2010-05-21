@@ -325,13 +325,9 @@ name|DIFF_OPT_COLOR_DIFF
 value|(1<<  8)
 end_define
 
-begin_define
-DECL|macro|DIFF_OPT_COLOR_DIFF_WORDS
-define|#
-directive|define
-name|DIFF_OPT_COLOR_DIFF_WORDS
-value|(1<<  9)
-end_define
+begin_comment
+comment|/* (1<<  9) unused */
+end_comment
 
 begin_define
 DECL|macro|DIFF_OPT_HAS_CHANGES
@@ -539,6 +535,28 @@ parameter_list|)
 value|((opts)->xdl_opts&= ~XDF_##flag)
 end_define
 
+begin_enum
+DECL|enum|diff_words_type
+enum|enum
+name|diff_words_type
+block|{
+DECL|enumerator|DIFF_WORDS_NONE
+name|DIFF_WORDS_NONE
+init|=
+literal|0
+block|,
+DECL|enumerator|DIFF_WORDS_PORCELAIN
+name|DIFF_WORDS_PORCELAIN
+block|,
+DECL|enumerator|DIFF_WORDS_PLAIN
+name|DIFF_WORDS_PLAIN
+block|,
+DECL|enumerator|DIFF_WORDS_COLOR
+name|DIFF_WORDS_COLOR
+block|}
+enum|;
+end_enum
+
 begin_struct
 DECL|struct|diff_options
 struct|struct
@@ -671,6 +689,11 @@ specifier|const
 name|char
 modifier|*
 name|word_regex
+decl_stmt|;
+DECL|member|word_diff
+name|enum
+name|diff_words_type
+name|word_diff
 decl_stmt|;
 comment|/* this is set by diffcore for DIFF_FORMAT_PATCH */
 DECL|member|found_changes
