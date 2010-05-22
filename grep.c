@@ -4931,6 +4931,15 @@ literal|1
 return|;
 if|if
 condition|(
+name|opt
+operator|->
+name|count
+condition|)
+goto|goto
+name|next_line
+goto|;
+if|if
+condition|(
 name|binary_match_only
 condition|)
 block|{
@@ -4994,7 +5003,7 @@ return|return
 literal|1
 return|;
 block|}
-comment|/* Hit at this line.  If we haven't shown the 			 * pre-context lines, we would need to show them. 			 * When asked to do "count", this still show 			 * the context which is nonsense, but the user 			 * deserves to get that ;-). 			 */
+comment|/* Hit at this line.  If we haven't shown the 			 * pre-context lines, we would need to show them. 			 */
 if|if
 condition|(
 name|opt
@@ -5034,13 +5043,6 @@ argument_list|,
 name|lno
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|opt
-operator|->
-name|count
-condition|)
 name|show_line
 argument_list|(
 name|opt
@@ -5227,6 +5229,9 @@ name|buf
 argument_list|)
 argument_list|)
 expr_stmt|;
+return|return
+literal|1
+return|;
 block|}
 return|return
 operator|!
