@@ -494,6 +494,27 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/** Setup reflog before using. **/
+end_comment
+
+begin_function_decl
+name|int
+name|log_ref_setup
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|ref_name
+parameter_list|,
+name|char
+modifier|*
+modifier|*
+name|log_file
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/** Reads log for the value of ref during at_time. **/
 end_comment
 
