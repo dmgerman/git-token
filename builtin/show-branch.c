@@ -1521,7 +1521,7 @@ name|object
 operator|.
 name|sha1
 argument_list|,
-literal|7
+name|DEFAULT_ABBREV
 argument_list|)
 argument_list|)
 expr_stmt|;
