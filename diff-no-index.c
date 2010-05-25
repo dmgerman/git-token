@@ -889,7 +889,6 @@ modifier|*
 name|path
 parameter_list|)
 block|{
-comment|/* 	 * We have already done setup_git_directory_gently() so we 	 * know we are inside a git work tree already. 	 */
 specifier|const
 name|char
 modifier|*
@@ -914,6 +913,14 @@ operator|=
 name|get_git_work_tree
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|work_tree
+condition|)
+return|return
+literal|1
+return|;
 name|len
 operator|=
 name|strlen
