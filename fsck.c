@@ -1816,26 +1816,6 @@ name|err
 return|;
 if|if
 condition|(
-operator|*
-name|buffer
-operator|!=
-literal|'\n'
-condition|)
-return|return
-name|error_func
-argument_list|(
-operator|&
-name|commit
-operator|->
-name|object
-argument_list|,
-name|FSCK_ERROR
-argument_list|,
-literal|"invalid format - expected blank line"
-argument_list|)
-return|;
-if|if
-condition|(
 operator|!
 name|commit
 operator|->
