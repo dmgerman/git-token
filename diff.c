@@ -14523,24 +14523,29 @@ name|strbuf_addf
 argument_list|(
 name|msg
 argument_list|,
-literal|"index %.*s..%.*s"
+literal|"index %s.."
 argument_list|,
-name|abbrev
-argument_list|,
-name|sha1_to_hex
+name|find_unique_abbrev
 argument_list|(
 name|one
 operator|->
 name|sha1
-argument_list|)
 argument_list|,
 name|abbrev
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|strbuf_addstr
+argument_list|(
+name|msg
 argument_list|,
-name|sha1_to_hex
+name|find_unique_abbrev
 argument_list|(
 name|two
 operator|->
 name|sha1
+argument_list|,
+name|abbrev
 argument_list|)
 argument_list|)
 expr_stmt|;
