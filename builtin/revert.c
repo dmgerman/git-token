@@ -316,18 +316,6 @@ argument_list|)
 block|,
 name|OPT_BOOLEAN
 argument_list|(
-literal|'x'
-argument_list|,
-name|NULL
-argument_list|,
-operator|&
-name|no_replay
-argument_list|,
-literal|"append commit name when cherry-picking"
-argument_list|)
-block|,
-name|OPT_BOOLEAN
-argument_list|(
 literal|'r'
 argument_list|,
 name|NULL
@@ -405,6 +393,18 @@ name|cp_extra
 index|[]
 init|=
 block|{
+name|OPT_BOOLEAN
+argument_list|(
+literal|'x'
+argument_list|,
+name|NULL
+argument_list|,
+operator|&
+name|no_replay
+argument_list|,
+literal|"append commit name"
+argument_list|)
+block|,
 name|OPT_BOOLEAN
 argument_list|(
 literal|0
@@ -2211,21 +2211,6 @@ argument_list|,
 name|argv
 argument_list|)
 expr_stmt|;
-comment|/* this is copied from the shell script, but it's never triggered... */
-if|if
-condition|(
-name|action
-operator|==
-name|REVERT
-operator|&&
-operator|!
-name|no_replay
-condition|)
-name|die
-argument_list|(
-literal|"revert is incompatible with replay"
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|allow_ff
@@ -3039,10 +3024,6 @@ name|edit
 operator|=
 literal|1
 expr_stmt|;
-name|no_replay
-operator|=
-literal|1
-expr_stmt|;
 name|action
 operator|=
 name|REVERT
@@ -3078,10 +3059,6 @@ modifier|*
 name|prefix
 parameter_list|)
 block|{
-name|no_replay
-operator|=
-literal|0
-expr_stmt|;
 name|action
 operator|=
 name|CHERRY_PICK
