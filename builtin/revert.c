@@ -1423,10 +1423,7 @@ name|char
 modifier|*
 name|help_msg
 parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|name
+name|void
 parameter_list|)
 block|{
 name|struct
@@ -1477,7 +1474,14 @@ literal|" with: \n"
 literal|"\n"
 literal|"        git commit -c %s\n"
 argument_list|,
-name|name
+name|sha1_to_hex
+argument_list|(
+name|commit
+operator|->
+name|object
+operator|.
+name|sha1
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2073,9 +2077,7 @@ argument_list|,
 name|me
 argument_list|,
 name|help_msg
-argument_list|(
-name|commit_name
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|rerere
@@ -2777,9 +2779,7 @@ argument_list|,
 name|strategy
 argument_list|,
 name|help_msg
-argument_list|(
-name|commit_name
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|rerere
