@@ -6297,6 +6297,12 @@ literal|1
 expr_stmt|;
 name|revs
 operator|->
+name|simplify_history
+operator|=
+literal|0
+expr_stmt|;
+name|revs
+operator|->
 name|limited
 operator|=
 literal|1
