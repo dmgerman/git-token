@@ -3426,7 +3426,7 @@ name|bottom
 condition|)
 name|die
 argument_list|(
-literal|"--ancestry-path given but there is no bottom commits"
+literal|"--ancestry-path given but there are no bottom commits"
 argument_list|)
 expr_stmt|;
 block|}
