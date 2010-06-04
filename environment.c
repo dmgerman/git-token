@@ -292,6 +292,16 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|eol
+name|enum
+name|eol
+name|eol
+init|=
+name|EOL_UNSET
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|safe_crlf
 name|enum
 name|safe_crlf
