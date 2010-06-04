@@ -1533,9 +1533,7 @@ name|refname
 argument_list|)
 expr_stmt|;
 return|return
-name|cb
-operator|->
-name|ret
+literal|0
 return|;
 block|}
 comment|/* Filter with with_commit if specified */
@@ -2984,6 +2982,17 @@ name|free_ref_list
 argument_list|(
 operator|&
 name|ref_list
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|cb
+operator|.
+name|ret
+condition|)
+name|error
+argument_list|(
+literal|"some refs could not be read"
 argument_list|)
 expr_stmt|;
 return|return
