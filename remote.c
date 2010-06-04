@@ -3111,7 +3111,7 @@ if|if
 condition|(
 name|default_remote_name
 condition|)
-comment|// did this already
+comment|/* did this already */
 return|return;
 name|default_remote_name
 operator|=

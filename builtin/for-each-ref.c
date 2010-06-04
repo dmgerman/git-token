@@ -3212,12 +3212,12 @@ break|break;
 case|case
 name|OBJ_TREE
 case|:
-comment|// grab_tree_values(val, deref, obj, buf, sz);
+comment|/* grab_tree_values(val, deref, obj, buf, sz); */
 break|break;
 case|case
 name|OBJ_BLOB
 case|:
-comment|// grab_blob_values(val, deref, obj, buf, sz);
+comment|/* grab_blob_values(val, deref, obj, buf, sz); */
 break|break;
 default|default:
 name|die
