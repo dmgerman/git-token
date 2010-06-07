@@ -2582,6 +2582,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Returns the "prefix", a path to the current working directory  * relative to the work tree root, or NULL, if the current working  * directory is not a strict subdirectory of the work tree root. The  * prefix always ends with a '/' character.  */
+end_comment
+
 begin_function
 DECL|function|setup_git_directory
 specifier|const
