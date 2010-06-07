@@ -233,42 +233,6 @@ block|}
 decl_stmt|;
 end_decl_stmt
 
-begin_function_decl
-specifier|static
-name|void
-name|diff_filespec_load_driver
-parameter_list|(
-name|struct
-name|diff_filespec
-modifier|*
-name|one
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-specifier|static
-name|size_t
-name|fill_textconv
-parameter_list|(
-name|struct
-name|userdiff_driver
-modifier|*
-name|driver
-parameter_list|,
-name|struct
-name|diff_filespec
-modifier|*
-name|df
-parameter_list|,
-name|char
-modifier|*
-modifier|*
-name|outbuf
-parameter_list|)
-function_decl|;
-end_function_decl
-
 begin_function
 DECL|function|parse_diff_color_slot
 specifier|static
@@ -10017,7 +9981,6 @@ end_function
 
 begin_function
 DECL|function|get_textconv
-specifier|static
 name|struct
 name|userdiff_driver
 modifier|*
@@ -23635,7 +23598,6 @@ end_function
 
 begin_function
 DECL|function|fill_textconv
-specifier|static
 name|size_t
 name|fill_textconv
 parameter_list|(
