@@ -7956,7 +7956,7 @@ literal|' '
 else|:
 literal|'*'
 argument_list|,
-comment|// purely for debugging
+comment|/* purely for debugging */
 name|ent
 operator|->
 name|s_lno
