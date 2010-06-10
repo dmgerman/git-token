@@ -2803,8 +2803,10 @@ name|int
 name|temp
 decl_stmt|;
 name|char
-modifier|*
 name|log_file
+index|[
+name|PATH_MAX
+index|]
 decl_stmt|;
 name|char
 modifier|*
@@ -2833,8 +2835,12 @@ name|log_ref_setup
 argument_list|(
 name|ref_name
 argument_list|,
-operator|&
 name|log_file
+argument_list|,
+sizeof|sizeof
+argument_list|(
+name|log_file
+argument_list|)
 argument_list|)
 condition|)
 block|{

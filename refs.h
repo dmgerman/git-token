@@ -508,8 +508,10 @@ name|ref_name
 parameter_list|,
 name|char
 modifier|*
-modifier|*
-name|log_file
+name|logfile
+parameter_list|,
+name|int
+name|bufsize
 parameter_list|)
 function_decl|;
 end_function_decl
