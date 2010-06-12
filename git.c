@@ -1917,8 +1917,6 @@ block|{
 literal|"grep"
 block|,
 name|cmd_grep
-block|,
-name|USE_PAGER
 block|}
 block|,
 block|{
