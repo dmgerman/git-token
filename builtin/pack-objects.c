@@ -7771,6 +7771,13 @@ expr_stmt|;
 block|}
 end_function
 
+begin_decl_stmt
+DECL|variable|old_try_to_free_routine
+name|try_to_free_t
+name|old_try_to_free_routine
+decl_stmt|;
+end_decl_stmt
+
 begin_comment
 comment|/*  * The main thread waits on the condition that (at least) one of the workers  * has stopped working (which is indicated in the .working member of  * struct thread_params).  * When a work thread has completed its work, it sets .working to 0 and  * signals the main thread and waits on the condition that .data_ready  * becomes 1.  */
 end_comment
@@ -7883,6 +7890,8 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
+name|old_try_to_free_routine
+operator|=
 name|set_try_to_free_routine
 argument_list|(
 name|try_to_free_from_threads
@@ -7902,7 +7911,7 @@ parameter_list|)
 block|{
 name|set_try_to_free_routine
 argument_list|(
-name|NULL
+name|old_try_to_free_routine
 argument_list|)
 expr_stmt|;
 name|pthread_cond_destroy
