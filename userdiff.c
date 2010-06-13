@@ -138,7 +138,8 @@ name|PATTERNS
 argument_list|(
 literal|"php"
 argument_list|,
-literal|"^[\t ]*((function|class).*)"
+literal|"^[\t ]*(((public|protected|private|static)[\t ]+)*function.*)$\n"
+literal|"^[\t ]*(class.*)$"
 argument_list|,
 comment|/* -- */
 literal|"[a-zA-Z_][a-zA-Z0-9_]*"
