@@ -457,7 +457,7 @@ name|options
 argument_list|,
 name|usage_str
 argument_list|,
-literal|0
+name|PARSE_OPT_KEEP_UNKNOWN
 argument_list|)
 expr_stmt|;
 if|if
