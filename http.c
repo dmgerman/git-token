@@ -3593,7 +3593,6 @@ end_function
 
 begin_function
 DECL|function|end_url_with_slash
-specifier|static
 name|void
 name|end_url_with_slash
 parameter_list|(

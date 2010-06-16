@@ -691,6 +691,24 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|void
+name|end_url_with_slash
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+name|buf
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|url
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/* Options for http_request_*() */
 end_comment
