@@ -2327,6 +2327,23 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|void
+name|set_try_to_free_routine
+parameter_list|(
+name|void
+function_decl|(
+modifier|*
+name|routine
+function_decl|)
+parameter_list|(
+name|size_t
+parameter_list|)
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|char
 modifier|*
 name|xstrdup
