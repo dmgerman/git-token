@@ -757,6 +757,22 @@ name|HTTP_START_FAILED
 value|3
 end_define
 
+begin_define
+DECL|macro|HTTP_REAUTH
+define|#
+directive|define
+name|HTTP_REAUTH
+value|4
+end_define
+
+begin_define
+DECL|macro|HTTP_NOAUTH
+define|#
+directive|define
+name|HTTP_NOAUTH
+value|5
+end_define
+
 begin_comment
 comment|/*  * Requests an url and stores the result in a strbuf.  *  * If the result pointer is NULL, a HTTP HEAD request is made instead of GET.  */
 end_comment
