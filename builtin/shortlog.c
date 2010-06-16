@@ -1051,7 +1051,9 @@ name|ctx
 operator|.
 name|abbrev
 operator|=
-name|DEFAULT_ABBREV
+name|log
+operator|->
+name|abbrev
 expr_stmt|;
 name|ctx
 operator|.
@@ -1836,6 +1838,14 @@ operator|.
 name|commit_format
 operator|==
 name|CMIT_FMT_USERFORMAT
+expr_stmt|;
+name|log
+operator|.
+name|abbrev
+operator|=
+name|rev
+operator|.
+name|abbrev
 expr_stmt|;
 comment|/* assume HEAD if from a tty */
 if|if
