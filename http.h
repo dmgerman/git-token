@@ -869,13 +869,6 @@ name|FILE
 modifier|*
 name|packfile
 decl_stmt|;
-DECL|member|filename
-name|char
-name|filename
-index|[
-name|PATH_MAX
-index|]
-decl_stmt|;
 DECL|member|tmpfile
 name|char
 name|tmpfile
@@ -958,13 +951,6 @@ DECL|member|url
 name|char
 modifier|*
 name|url
-decl_stmt|;
-DECL|member|filename
-name|char
-name|filename
-index|[
-name|PATH_MAX
-index|]
 decl_stmt|;
 DECL|member|tmpfile
 name|char
