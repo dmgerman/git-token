@@ -2920,8 +2920,6 @@ DECL|variable|thread
 specifier|static
 name|int
 name|thread
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -2930,8 +2928,18 @@ DECL|variable|do_signoff
 specifier|static
 name|int
 name|do_signoff
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|signature
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|signature
 init|=
-literal|0
+name|git_version_string
 decl_stmt|;
 end_decl_stmt
 
@@ -3278,6 +3286,27 @@ return|return
 literal|0
 return|;
 block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|var
+argument_list|,
+literal|"format.signature"
+argument_list|)
+condition|)
+return|return
+name|git_config_string
+argument_list|(
+operator|&
+name|signature
+argument_list|,
+name|var
+argument_list|,
+name|value
+argument_list|)
+return|;
 return|return
 name|git_log_config
 argument_list|(
@@ -3876,6 +3905,32 @@ block|}
 end_function
 
 begin_function
+DECL|function|print_signature
+specifier|static
+name|void
+name|print_signature
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+if|if
+condition|(
+name|signature
+operator|&&
+operator|*
+name|signature
+condition|)
+name|printf
+argument_list|(
+literal|"-- \n%s\n\n"
+argument_list|,
+name|signature
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
 DECL|function|make_cover_letter
 specifier|static
 name|void
@@ -4345,6 +4400,9 @@ name|printf
 argument_list|(
 literal|"\n"
 argument_list|)
+expr_stmt|;
+name|print_signature
+argument_list|()
 expr_stmt|;
 block|}
 end_function
@@ -5736,6 +5794,20 @@ block|,
 name|thread_callback
 block|}
 block|,
+name|OPT_STRING
+argument_list|(
+literal|0
+argument_list|,
+literal|"signature"
+argument_list|,
+operator|&
+name|signature
+argument_list|,
+literal|"signature"
+argument_list|,
+literal|"add a signature"
+argument_list|)
+block|,
 name|OPT_END
 argument_list|()
 block|}
@@ -7076,12 +7148,8 @@ name|mime_boundary
 argument_list|)
 expr_stmt|;
 else|else
-name|printf
-argument_list|(
-literal|"-- \n%s\n\n"
-argument_list|,
-name|git_version_string
-argument_list|)
+name|print_signature
+argument_list|()
 expr_stmt|;
 block|}
 if|if
