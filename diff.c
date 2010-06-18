@@ -11158,6 +11158,9 @@ name|char
 modifier|*
 name|xfrm_msg
 parameter_list|,
+name|int
+name|must_show_header
+parameter_list|,
 name|struct
 name|diff_options
 modifier|*
@@ -11593,6 +11596,10 @@ argument_list|,
 name|xfrm_msg
 argument_list|)
 expr_stmt|;
+name|must_show_header
+operator|=
+literal|1
+expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -11637,6 +11644,10 @@ name|header
 argument_list|,
 name|xfrm_msg
 argument_list|)
+expr_stmt|;
+name|must_show_header
+operator|=
+literal|1
 expr_stmt|;
 block|}
 else|else
@@ -11687,6 +11698,10 @@ name|mode
 argument_list|,
 name|reset
 argument_list|)
+expr_stmt|;
+name|must_show_header
+operator|=
+literal|1
 expr_stmt|;
 block|}
 if|if
@@ -11878,9 +11893,28 @@ operator|.
 name|size
 argument_list|)
 condition|)
+block|{
+if|if
+condition|(
+name|must_show_header
+condition|)
+name|fprintf
+argument_list|(
+name|o
+operator|->
+name|file
+argument_list|,
+literal|"%s"
+argument_list|,
+name|header
+operator|.
+name|buf
+argument_list|)
+expr_stmt|;
 goto|goto
 name|free_ab_and_return
 goto|;
+block|}
 name|fprintf
 argument_list|(
 name|o
@@ -11991,6 +12025,8 @@ name|o
 argument_list|,
 name|WHITESPACE_FLAGS
 argument_list|)
+operator|||
+name|must_show_header
 condition|)
 block|{
 name|fprintf
@@ -15256,6 +15292,10 @@ modifier|*
 name|p
 parameter_list|,
 name|int
+modifier|*
+name|must_show_header
+parameter_list|,
+name|int
 name|use_color
 parameter_list|)
 block|{
@@ -15294,6 +15334,11 @@ name|line_prefix
 init|=
 literal|""
 decl_stmt|;
+operator|*
+name|must_show_header
+operator|=
+literal|1
+expr_stmt|;
 if|if
 condition|(
 name|o
@@ -15526,7 +15571,11 @@ block|}
 comment|/* fallthru */
 default|default:
 comment|/* nothing */
-empty_stmt|;
+operator|*
+name|must_show_header
+operator|=
+literal|0
+expr_stmt|;
 block|}
 if|if
 condition|(
@@ -15754,6 +15803,11 @@ name|p
 operator|->
 name|score
 decl_stmt|;
+name|int
+name|must_show_header
+init|=
+literal|0
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -15816,6 +15870,9 @@ argument_list|,
 name|o
 argument_list|,
 name|p
+argument_list|,
+operator|&
+name|must_show_header
 argument_list|,
 name|DIFF_OPT_TST
 argument_list|(
@@ -15886,6 +15943,8 @@ argument_list|,
 name|two
 argument_list|,
 name|xfrm_msg
+argument_list|,
+name|must_show_header
 argument_list|,
 name|o
 argument_list|,
