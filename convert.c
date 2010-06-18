@@ -1919,6 +1919,13 @@ operator|++
 expr_stmt|;
 break|break;
 block|}
+if|if
+condition|(
+name|ch
+operator|==
+literal|'\n'
+condition|)
+break|break;
 block|}
 block|}
 return|return
@@ -2105,6 +2112,27 @@ operator|!
 name|dollar
 condition|)
 break|break;
+if|if
+condition|(
+name|memchr
+argument_list|(
+name|src
+operator|+
+literal|3
+argument_list|,
+literal|'\n'
+argument_list|,
+name|dollar
+operator|-
+name|src
+operator|-
+literal|3
+argument_list|)
+condition|)
+block|{
+comment|/* Line break before the next dollar. */
+continue|continue;
+block|}
 name|memcpy
 argument_list|(
 name|dst
@@ -2205,6 +2233,9 @@ name|NULL
 decl_stmt|,
 modifier|*
 name|dollar
+decl_stmt|,
+modifier|*
+name|spc
 decl_stmt|;
 name|int
 name|cnt
@@ -2373,7 +2404,7 @@ operator|==
 literal|':'
 condition|)
 block|{
-comment|/* 			 * It's possible that an expanded Id has crept its way into the 			 * repository, we cope with that by stripping the expansion out 			 */
+comment|/* 			 * It's possible that an expanded Id has crept its way into the 			 * repository, we cope with that by stripping the expansion out. 			 * This is probably not a good idea, since it will cause changes 			 * on checkout, which won't go away by stash, but let's keep it 			 * for git-style ids. 			 */
 name|dollar
 operator|=
 name|memchr
@@ -2397,6 +2428,58 @@ condition|)
 block|{
 comment|/* incomplete keyword, no more '$', so just quit the loop */
 break|break;
+block|}
+if|if
+condition|(
+name|memchr
+argument_list|(
+name|src
+operator|+
+literal|3
+argument_list|,
+literal|'\n'
+argument_list|,
+name|dollar
+operator|-
+name|src
+operator|-
+literal|3
+argument_list|)
+condition|)
+block|{
+comment|/* Line break before the next dollar. */
+continue|continue;
+block|}
+name|spc
+operator|=
+name|memchr
+argument_list|(
+name|src
+operator|+
+literal|4
+argument_list|,
+literal|' '
+argument_list|,
+name|dollar
+operator|-
+name|src
+operator|-
+literal|4
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|spc
+operator|&&
+name|spc
+operator|<
+name|dollar
+operator|-
+literal|1
+condition|)
+block|{
+comment|/* There are spaces in unexpected places. 				 * This is probably an id from some other 				 * versioning system. Keep it for now. 				 */
+continue|continue;
 block|}
 name|len
 operator|-=
