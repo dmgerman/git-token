@@ -2510,10 +2510,15 @@ name|option_verbosity
 condition|)
 name|printf
 argument_list|(
-literal|"Cloning into %s...\n"
+literal|"Cloning into %s%s...\n"
 argument_list|,
-name|get_git_dir
-argument_list|()
+name|option_bare
+condition|?
+literal|"bare repository "
+else|:
+literal|""
+argument_list|,
+name|dir
 argument_list|)
 expr_stmt|;
 name|init_db
