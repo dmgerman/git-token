@@ -140,6 +140,11 @@ DECL|enumerator|PARSE_OPT_NEGHELP
 name|PARSE_OPT_NEGHELP
 init|=
 literal|128
+block|,
+DECL|enumerator|PARSE_OPT_SHELL_EVAL
+name|PARSE_OPT_SHELL_EVAL
+init|=
+literal|256
 block|}
 enum|;
 end_enum
