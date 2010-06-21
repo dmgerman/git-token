@@ -208,8 +208,6 @@ DECL|variable|xdl_opts
 specifier|static
 name|int
 name|xdl_opts
-init|=
-name|XDF_NEED_MINIMAL
 decl_stmt|;
 end_decl_stmt
 
