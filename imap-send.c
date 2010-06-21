@@ -1099,7 +1099,7 @@ name|STARTTLS
 block|,
 DECL|enumerator|AUTH_CRAM_MD5
 name|AUTH_CRAM_MD5
-block|, }
+block|}
 enum|;
 end_enum
 

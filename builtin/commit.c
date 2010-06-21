@@ -255,8 +255,8 @@ name|COMMIT_NORMAL
 block|,
 DECL|enumerator|COMMIT_PARTIAL
 name|COMMIT_PARTIAL
-block|, }
 DECL|variable|commit_style
+block|}
 name|commit_style
 enum|;
 end_enum
@@ -404,8 +404,8 @@ name|CLEANUP_NONE
 block|,
 DECL|enumerator|CLEANUP_ALL
 name|CLEANUP_ALL
-block|, }
 DECL|variable|cleanup_mode
+block|}
 name|cleanup_mode
 enum|;
 end_enum
@@ -487,8 +487,8 @@ name|STATUS_FORMAT_SHORT
 block|,
 DECL|enumerator|STATUS_FORMAT_PORCELAIN
 name|STATUS_FORMAT_PORCELAIN
-block|, }
 DECL|variable|status_format
+block|}
 name|status_format
 init|=
 name|STATUS_FORMAT_LONG
@@ -3773,11 +3773,16 @@ literal|2
 index|]
 init|=
 block|{
-name|index
-block|,
 name|NULL
 block|}
 decl_stmt|;
+name|env
+index|[
+literal|0
+index|]
+operator|=
+name|index
+expr_stmt|;
 name|snprintf
 argument_list|(
 name|index

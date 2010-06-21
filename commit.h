@@ -351,7 +351,7 @@ name|CMIT_FMT_USERFORMAT
 block|,
 DECL|enumerator|CMIT_FMT_UNSPECIFIED
 name|CMIT_FMT_UNSPECIFIED
-block|, }
+block|}
 enum|;
 end_enum
 

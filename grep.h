@@ -46,7 +46,7 @@ name|GREP_NOT
 block|,
 DECL|enumerator|GREP_OR
 name|GREP_OR
-block|, }
+block|}
 enum|;
 end_enum
 
@@ -60,7 +60,7 @@ name|GREP_CONTEXT_HEAD
 block|,
 DECL|enumerator|GREP_CONTEXT_BODY
 name|GREP_CONTEXT_BODY
-block|, }
+block|}
 enum|;
 end_enum
 
@@ -76,7 +76,7 @@ literal|0
 block|,
 DECL|enumerator|GREP_HEADER_COMMITTER
 name|GREP_HEADER_COMMITTER
-block|, }
+block|}
 enum|;
 end_enum
 
@@ -163,7 +163,7 @@ name|GREP_NODE_AND
 block|,
 DECL|enumerator|GREP_NODE_OR
 name|GREP_NODE_OR
-block|, }
+block|}
 enum|;
 end_enum
 

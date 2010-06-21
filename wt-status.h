@@ -60,7 +60,7 @@ name|WT_STATUS_LOCAL_BRANCH
 block|,
 DECL|enumerator|WT_STATUS_REMOTE_BRANCH
 name|WT_STATUS_REMOTE_BRANCH
-block|, }
+block|}
 enum|;
 end_enum
 
