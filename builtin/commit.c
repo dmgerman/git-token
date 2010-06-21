@@ -181,6 +181,20 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|empty_amend_advice
+specifier|static
+specifier|const
+name|char
+name|empty_amend_advice
+index|[]
+init|=
+literal|"You asked to amend the most recent commit, but doing so would make\n"
+literal|"it empty. You can repeat your command with --allow-empty, or you can\n"
+literal|"remove the commit entirely with \"git reset HEAD^\".\n"
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|head_sha1
 specifier|static
 name|unsigned
@@ -3678,6 +3692,17 @@ argument_list|,
 literal|0
 argument_list|,
 name|s
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|amend
+condition|)
+name|fputs
+argument_list|(
+name|empty_amend_advice
+argument_list|,
+name|stderr
 argument_list|)
 expr_stmt|;
 return|return
