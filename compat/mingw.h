@@ -620,8 +620,7 @@ parameter_list|,
 name|int
 name|cmd
 parameter_list|,
-name|long
-name|arg
+modifier|...
 parameter_list|)
 block|{
 if|if

@@ -1183,6 +1183,27 @@ end_comment
 
 begin_function_decl
 specifier|extern
+name|void
+name|vreportf
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|prefix
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|err
+parameter_list|,
+name|va_list
+name|params
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|NORETURN
 name|void
 name|usage
