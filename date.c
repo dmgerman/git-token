@@ -1381,6 +1381,15 @@ block|, }
 block|,
 comment|/* Universal (Coordinated) */
 block|{
+literal|"Z"
+block|,
+literal|0
+block|,
+literal|0
+block|, }
+block|,
+comment|/* Zulu, alias for UTC */
+block|{
 literal|"WET"
 block|,
 literal|0
@@ -1892,6 +1901,18 @@ condition|(
 name|match
 operator|>=
 literal|3
+operator|||
+name|match
+operator|==
+name|strlen
+argument_list|(
+name|timezone_names
+index|[
+name|i
+index|]
+operator|.
+name|name
+argument_list|)
 condition|)
 block|{
 name|int
