@@ -343,6 +343,11 @@ name|bisect
 range|:
 literal|1
 decl_stmt|,
+DECL|member|ancestry_path
+name|ancestry_path
+range|:
+literal|1
+decl_stmt|,
 DECL|member|first_parent_only
 name|first_parent_only
 range|:
