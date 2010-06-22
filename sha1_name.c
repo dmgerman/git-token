@@ -3778,7 +3778,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * This interprets names like ':/Initial revision of "git"' by searching  * through history and returning the first commit whose message starts  * with the given string.  *  * For future extension, ':/!' is reserved. If you want to match a message  * beginning with a '!', you have to repeat the exclamation mark.  */
+comment|/*  * This interprets names like ':/Initial revision of "git"' by searching  * through history and returning the first commit whose message matches  * the given regular expression.  *  * For future extension, ':/!' is reserved. If you want to match a message  * beginning with a '!', you have to repeat the exclamation mark.  */
 end_comment
 
 begin_define
@@ -3833,6 +3833,9 @@ name|temp_commit_buffer
 init|=
 name|NULL
 decl_stmt|;
+name|regex_t
+name|regex
+decl_stmt|;
 if|if
 condition|(
 name|prefix
@@ -3863,6 +3866,25 @@ name|prefix
 operator|++
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|regcomp
+argument_list|(
+operator|&
+name|regex
+argument_list|,
+name|prefix
+argument_list|,
+name|REG_EXTENDED
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"Invalid search pattern: %s"
+argument_list|,
+name|prefix
+argument_list|)
+expr_stmt|;
 name|for_each_ref
 argument_list|(
 name|handle_one_ref
@@ -4005,13 +4027,20 @@ continue|continue;
 if|if
 condition|(
 operator|!
-name|prefixcmp
+name|regexec
 argument_list|(
+operator|&
+name|regex
+argument_list|,
 name|p
 operator|+
 literal|2
 argument_list|,
-name|prefix
+literal|0
+argument_list|,
+name|NULL
+argument_list|,
+literal|0
 argument_list|)
 condition|)
 block|{
@@ -4033,6 +4062,12 @@ expr_stmt|;
 break|break;
 block|}
 block|}
+name|regfree
+argument_list|(
+operator|&
+name|regex
+argument_list|)
+expr_stmt|;
 name|free
 argument_list|(
 name|temp_commit_buffer
