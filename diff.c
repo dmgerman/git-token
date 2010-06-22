@@ -15570,7 +15570,6 @@ break|break;
 block|}
 comment|/* fallthru */
 default|default:
-comment|/* nothing */
 operator|*
 name|must_show_header
 operator|=
