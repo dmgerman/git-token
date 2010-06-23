@@ -3826,9 +3826,9 @@ name|opts
 operator|.
 name|new_branch
 argument_list|,
-literal|"new branch"
-argument_list|,
 literal|"branch"
+argument_list|,
+literal|"create and checkout a new branch"
 argument_list|)
 block|,
 name|OPT_BOOLEAN
