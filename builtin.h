@@ -218,7 +218,6 @@ name|enabled
 decl_stmt|;
 DECL|member|combine
 name|combine_notes_fn
-modifier|*
 name|combine
 decl_stmt|;
 DECL|member|refs
@@ -241,7 +240,6 @@ end_struct
 
 begin_function_decl
 name|combine_notes_fn
-modifier|*
 name|parse_combine_notes_fn
 parameter_list|(
 specifier|const
