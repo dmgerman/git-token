@@ -164,11 +164,22 @@ DECL|member|writeout_error
 name|int
 name|writeout_error
 decl_stmt|;
+comment|/* not set by parse_options */
+DECL|member|branch_exists
+name|int
+name|branch_exists
+decl_stmt|;
 DECL|member|new_branch
 specifier|const
 name|char
 modifier|*
 name|new_branch
+decl_stmt|;
+DECL|member|new_branch_force
+specifier|const
+name|char
+modifier|*
+name|new_branch_force
 decl_stmt|;
 DECL|member|new_orphan_branch
 specifier|const
@@ -2882,6 +2893,12 @@ name|new
 operator|->
 name|name
 argument_list|,
+name|opts
+operator|->
+name|new_branch_force
+condition|?
+literal|1
+else|:
 literal|0
 argument_list|,
 name|opts
@@ -3019,11 +3036,11 @@ literal|"Switched to%s branch '%s'\n"
 argument_list|,
 name|opts
 operator|->
-name|new_branch
+name|branch_exists
 condition|?
-literal|" a new"
+literal|" and reset"
 else|:
-literal|""
+literal|" a new"
 argument_list|,
 name|new
 operator|->
@@ -3831,6 +3848,22 @@ argument_list|,
 literal|"create and checkout a new branch"
 argument_list|)
 block|,
+name|OPT_STRING
+argument_list|(
+literal|'B'
+argument_list|,
+name|NULL
+argument_list|,
+operator|&
+name|opts
+operator|.
+name|new_branch_force
+argument_list|,
+literal|"branch"
+argument_list|,
+literal|"create/reset and checkout a branch"
+argument_list|)
+block|,
 name|OPT_BOOLEAN
 argument_list|(
 literal|'l'
@@ -4045,6 +4078,37 @@ argument_list|,
 name|PARSE_OPT_KEEP_DASHDASH
 argument_list|)
 expr_stmt|;
+comment|/* we can assume from now on new_branch = !new_branch_force */
+if|if
+condition|(
+name|opts
+operator|.
+name|new_branch
+operator|&&
+name|opts
+operator|.
+name|new_branch_force
+condition|)
+name|die
+argument_list|(
+literal|"-B cannot be used with -b"
+argument_list|)
+expr_stmt|;
+comment|/* copy -B over to -b, so that we can just check the latter */
+if|if
+condition|(
+name|opts
+operator|.
+name|new_branch_force
+condition|)
+name|opts
+operator|.
+name|new_branch
+operator|=
+name|opts
+operator|.
+name|new_branch_force
+expr_stmt|;
 if|if
 condition|(
 name|patch_mode
@@ -4198,7 +4262,7 @@ name|new_branch
 condition|)
 name|die
 argument_list|(
-literal|"--orphan and -b are mutually exclusive"
+literal|"--orphan and -b|-B are mutually exclusive"
 argument_list|)
 expr_stmt|;
 if|if
@@ -4760,6 +4824,20 @@ argument_list|,
 name|rev
 argument_list|)
 condition|)
+block|{
+name|opts
+operator|.
+name|branch_exists
+operator|=
+literal|1
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|opts
+operator|.
+name|new_branch_force
+condition|)
 name|die
 argument_list|(
 literal|"git checkout: branch %s already exists"
@@ -4769,6 +4847,7 @@ operator|.
 name|new_branch
 argument_list|)
 expr_stmt|;
+block|}
 name|strbuf_release
 argument_list|(
 operator|&
