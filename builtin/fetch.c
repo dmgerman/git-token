@@ -3507,10 +3507,10 @@ expr_stmt|;
 comment|/* 	 * For all the tags in the remote_refs string list, call 	 * add_to_tail to add them to the list of refs to be fetched 	 */
 name|for_each_string_list
 argument_list|(
-name|add_to_tail
-argument_list|,
 operator|&
 name|remote_refs
+argument_list|,
+name|add_to_tail
 argument_list|,
 operator|&
 name|data

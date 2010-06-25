@@ -165,12 +165,12 @@ begin_function_decl
 name|int
 name|for_each_string_list
 parameter_list|(
-name|string_list_each_func_t
-parameter_list|,
 name|struct
 name|string_list
 modifier|*
 name|list
+parameter_list|,
+name|string_list_each_func_t
 parameter_list|,
 name|void
 modifier|*

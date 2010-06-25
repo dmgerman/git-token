@@ -4994,9 +4994,9 @@ name|trees
 expr_stmt|;
 name|for_each_string_list
 argument_list|(
-name|load_one_display_note_ref
-argument_list|,
 name|refs
+argument_list|,
+name|load_one_display_note_ref
 argument_list|,
 operator|&
 name|cb_data
@@ -5118,11 +5118,11 @@ name|extra_notes_refs
 condition|)
 name|for_each_string_list
 argument_list|(
-name|string_list_add_refs_from_list
-argument_list|,
 name|opt
 operator|->
 name|extra_notes_refs
+argument_list|,
+name|string_list_add_refs_from_list
 argument_list|,
 operator|&
 name|display_notes_refs

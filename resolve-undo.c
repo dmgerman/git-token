@@ -335,9 +335,9 @@ parameter_list|)
 block|{
 name|for_each_string_list
 argument_list|(
-name|write_one
-argument_list|,
 name|resolve_undo
+argument_list|,
+name|write_one
 argument_list|,
 name|sb
 argument_list|)
