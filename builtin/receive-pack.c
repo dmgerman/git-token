@@ -2953,12 +2953,12 @@ name|item
 init|=
 name|string_list_append
 argument_list|(
+operator|&
+name|ref_list
+argument_list|,
 name|cmd
 operator|->
 name|ref_name
-argument_list|,
-operator|&
-name|ref_list
 argument_list|)
 decl_stmt|;
 name|item

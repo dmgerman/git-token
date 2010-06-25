@@ -745,11 +745,11 @@ block|}
 block|}
 name|string_list_append
 argument_list|(
-name|buffer
-argument_list|,
 name|item
 operator|->
 name|util
+argument_list|,
+name|buffer
 argument_list|)
 expr_stmt|;
 block|}

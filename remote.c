@@ -9592,12 +9592,12 @@ name|next
 control|)
 name|string_list_append
 argument_list|(
+operator|&
+name|ref_names
+argument_list|,
 name|ref
 operator|->
 name|name
-argument_list|,
-operator|&
-name|ref_names
 argument_list|)
 expr_stmt|;
 name|sort_string_list
