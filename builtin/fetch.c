@@ -3862,14 +3862,14 @@ name|peer_item
 operator|=
 name|string_list_lookup
 argument_list|(
+operator|&
+name|existing_refs
+argument_list|,
 name|rm
 operator|->
 name|peer_ref
 operator|->
 name|name
-argument_list|,
-operator|&
-name|existing_refs
 argument_list|)
 expr_stmt|;
 if|if

@@ -12477,10 +12477,10 @@ name|item
 operator|=
 name|string_list_lookup
 argument_list|(
-name|name
-argument_list|,
 operator|&
 name|fn_table
+argument_list|,
+name|name
 argument_list|)
 expr_stmt|;
 if|if

@@ -4500,14 +4500,14 @@ name|item
 operator|=
 name|string_list_lookup
 argument_list|(
+operator|&
+name|refs
+argument_list|,
 name|ref_map
 operator|->
 name|peer_ref
 operator|->
 name|name
-argument_list|,
-operator|&
-name|refs
 argument_list|)
 expr_stmt|;
 if|if

@@ -1019,12 +1019,12 @@ name|item
 operator|=
 name|string_list_lookup
 argument_list|(
-name|branch
-argument_list|,
 operator|&
 name|info
 operator|->
 name|complete_reflogs
+argument_list|,
+name|branch
 argument_list|)
 expr_stmt|;
 if|if

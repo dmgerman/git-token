@@ -1354,9 +1354,9 @@ name|item
 operator|=
 name|string_list_lookup
 argument_list|(
-name|mailbuf
-argument_list|,
 name|map
+argument_list|,
+name|mailbuf
 argument_list|)
 expr_stmt|;
 if|if
@@ -1395,12 +1395,12 @@ name|subitem
 init|=
 name|string_list_lookup
 argument_list|(
-name|name
-argument_list|,
 operator|&
 name|me
 operator|->
 name|namemap
+argument_list|,
+name|name
 argument_list|)
 decl_stmt|;
 if|if

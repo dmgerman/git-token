@@ -795,13 +795,13 @@ name|item
 operator|=
 name|string_list_lookup
 argument_list|(
-name|ce
-operator|->
-name|name
-argument_list|,
 name|istate
 operator|->
 name|resolve_undo
+argument_list|,
+name|ce
+operator|->
+name|name
 argument_list|)
 expr_stmt|;
 if|if
