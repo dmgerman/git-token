@@ -392,12 +392,12 @@ literal|86400
 condition|)
 name|string_list_append
 argument_list|(
+operator|&
+name|to_remove
+argument_list|,
 name|e
 operator|->
 name|d_name
-argument_list|,
-operator|&
-name|to_remove
 argument_list|)
 expr_stmt|;
 block|}

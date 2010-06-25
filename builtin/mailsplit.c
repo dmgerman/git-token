@@ -659,9 +659,9 @@ argument_list|)
 expr_stmt|;
 name|string_list_insert
 argument_list|(
-name|name
-argument_list|,
 name|list
+argument_list|,
+name|name
 argument_list|)
 expr_stmt|;
 block|}
