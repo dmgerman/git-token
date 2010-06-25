@@ -415,11 +415,11 @@ name|item
 init|=
 name|string_list_insert_at_index
 argument_list|(
+name|map
+argument_list|,
 name|index
 argument_list|,
 name|old_email
-argument_list|,
-name|map
 argument_list|)
 decl_stmt|;
 name|item
