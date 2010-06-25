@@ -520,12 +520,12 @@ name|item
 operator|=
 name|string_list_insert
 argument_list|(
-name|namebuf
-argument_list|,
 operator|&
 name|log
 operator|->
 name|list
+argument_list|,
+name|namebuf
 argument_list|)
 expr_stmt|;
 if|if

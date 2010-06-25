@@ -595,12 +595,12 @@ argument_list|)
 expr_stmt|;
 name|string_list_insert
 argument_list|(
-name|old_name
-argument_list|,
 operator|&
 name|me
 operator|->
 name|namemap
+argument_list|,
+name|old_name
 argument_list|)
 operator|->
 name|util

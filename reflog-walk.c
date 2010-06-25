@@ -1196,12 +1196,12 @@ literal|1
 return|;
 name|string_list_insert
 argument_list|(
-name|branch
-argument_list|,
 operator|&
 name|info
 operator|->
 name|complete_reflogs
+argument_list|,
+name|branch
 argument_list|)
 operator|->
 name|util

@@ -1202,11 +1202,11 @@ name|item
 operator|=
 name|string_list_insert
 argument_list|(
+name|list
+argument_list|,
 name|ce
 operator|->
 name|name
-argument_list|,
-name|list
 argument_list|)
 expr_stmt|;
 if|if

@@ -2999,9 +2999,9 @@ name|item
 init|=
 name|string_list_insert
 argument_list|(
-name|refname
-argument_list|,
 name|list
+argument_list|,
+name|refname
 argument_list|)
 decl_stmt|;
 name|item
@@ -3446,12 +3446,12 @@ name|item
 operator|=
 name|string_list_insert
 argument_list|(
+operator|&
+name|remote_refs
+argument_list|,
 name|ref
 operator|->
 name|name
-argument_list|,
-operator|&
-name|remote_refs
 argument_list|)
 expr_stmt|;
 name|item

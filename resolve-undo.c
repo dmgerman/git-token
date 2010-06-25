@@ -116,11 +116,11 @@ name|lost
 operator|=
 name|string_list_insert
 argument_list|(
+name|resolve_undo
+argument_list|,
 name|ce
 operator|->
 name|name
-argument_list|,
-name|resolve_undo
 argument_list|)
 expr_stmt|;
 if|if
@@ -433,9 +433,9 @@ name|lost
 operator|=
 name|string_list_insert
 argument_list|(
-name|data
-argument_list|,
 name|resolve_undo
+argument_list|,
+name|data
 argument_list|)
 expr_stmt|;
 if|if
