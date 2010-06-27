@@ -434,7 +434,6 @@ end_comment
 
 begin_function
 DECL|function|textconv_object
-specifier|static
 name|int
 name|textconv_object
 parameter_list|(
