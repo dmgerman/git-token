@@ -3477,6 +3477,26 @@ block|}
 block|}
 if|if
 condition|(
+name|argc
+operator|<
+literal|2
+condition|)
+block|{
+name|error
+argument_list|(
+literal|"too few parameters"
+argument_list|)
+expr_stmt|;
+name|usage_with_options
+argument_list|(
+name|git_notes_copy_usage
+argument_list|,
+name|options
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
 literal|2
 operator|<
 name|argc
