@@ -1191,10 +1191,10 @@ expr_stmt|;
 else|else
 name|string_list_insert
 argument_list|(
-name|dst
-argument_list|,
 operator|&
 name|src_for_dst
+argument_list|,
+name|dst
 argument_list|)
 expr_stmt|;
 if|if

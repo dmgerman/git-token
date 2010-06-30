@@ -242,9 +242,9 @@ name|i
 operator|=
 name|string_list_lookup
 argument_list|(
-name|name
-argument_list|,
 name|query_params
+argument_list|,
+name|name
 argument_list|)
 expr_stmt|;
 if|if
@@ -256,9 +256,9 @@ name|i
 operator|=
 name|string_list_insert
 argument_list|(
-name|name
-argument_list|,
 name|query_params
+argument_list|,
+name|name
 argument_list|)
 expr_stmt|;
 else|else
@@ -306,10 +306,10 @@ name|i
 operator|=
 name|string_list_lookup
 argument_list|(
-name|name
-argument_list|,
 name|get_parameters
 argument_list|()
+argument_list|,
+name|name
 argument_list|)
 expr_stmt|;
 return|return

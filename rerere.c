@@ -300,9 +300,9 @@ argument_list|)
 expr_stmt|;
 name|string_list_insert
 argument_list|(
-name|buf
-argument_list|,
 name|rr
+argument_list|,
+name|buf
 argument_list|)
 operator|->
 name|util
@@ -2341,6 +2341,8 @@ condition|)
 block|{
 name|string_list_insert
 argument_list|(
+name|conflict
+argument_list|,
 operator|(
 specifier|const
 name|char
@@ -2349,8 +2351,6 @@ operator|)
 name|e2
 operator|->
 name|name
-argument_list|,
-name|conflict
 argument_list|)
 expr_stmt|;
 name|i
@@ -2924,9 +2924,9 @@ argument_list|)
 expr_stmt|;
 name|string_list_insert
 argument_list|(
-name|path
-argument_list|,
 name|rr
+argument_list|,
+name|path
 argument_list|)
 operator|->
 name|util
@@ -3051,10 +3051,10 @@ name|rerere_autoupdate
 condition|)
 name|string_list_insert
 argument_list|(
-name|path
-argument_list|,
 operator|&
 name|update
+argument_list|,
+name|path
 argument_list|)
 expr_stmt|;
 name|fprintf
@@ -3590,9 +3590,9 @@ argument_list|)
 expr_stmt|;
 name|string_list_insert
 argument_list|(
-name|path
-argument_list|,
 name|rr
+argument_list|,
+name|path
 argument_list|)
 operator|->
 name|util

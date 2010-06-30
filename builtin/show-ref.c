@@ -584,9 +584,9 @@ name|cbdata
 decl_stmt|;
 name|string_list_insert
 argument_list|(
-name|refname
-argument_list|,
 name|list
+argument_list|,
+name|refname
 argument_list|)
 expr_stmt|;
 return|return

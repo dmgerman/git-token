@@ -1142,11 +1142,11 @@ condition|)
 return|return;
 name|for_each_string_list
 argument_list|(
-name|show_one_ru
-argument_list|,
 name|the_index
 operator|.
 name|resolve_undo
+argument_list|,
+name|show_one_ru
 argument_list|,
 name|NULL
 argument_list|)
