@@ -298,6 +298,11 @@ name|boundary
 range|:
 literal|2
 decl_stmt|,
+DECL|member|count
+name|count
+range|:
+literal|1
+decl_stmt|,
 DECL|member|left_right
 name|left_right
 range|:
@@ -607,6 +612,15 @@ DECL|member|notes_opt
 name|struct
 name|display_notes_opt
 name|notes_opt
+decl_stmt|;
+comment|/* commit counts */
+DECL|member|count_left
+name|int
+name|count_left
+decl_stmt|;
+DECL|member|count_right
+name|int
+name|count_right
 decl_stmt|;
 block|}
 struct|;
