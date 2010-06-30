@@ -142,6 +142,10 @@ name|name_decoration
 modifier|*
 name|next
 decl_stmt|;
+DECL|member|type
+name|int
+name|type
+decl_stmt|;
 DECL|member|name
 name|char
 name|name
