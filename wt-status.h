@@ -183,6 +183,12 @@ name|enum
 name|untracked_status_type
 name|show_untracked_files
 decl_stmt|;
+DECL|member|ignore_submodule_arg
+specifier|const
+name|char
+modifier|*
+name|ignore_submodule_arg
+decl_stmt|;
 DECL|member|color_palette
 name|char
 name|color_palette
