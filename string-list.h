@@ -139,7 +139,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/* Use this function to iterate over each item */
+comment|/* Use this function or the macro below to iterate over each item */
 end_comment
 
 begin_typedef
@@ -178,6 +178,20 @@ name|cb_data
 parameter_list|)
 function_decl|;
 end_function_decl
+
+begin_define
+DECL|macro|for_each_string_list_item
+define|#
+directive|define
+name|for_each_string_list_item
+parameter_list|(
+name|item
+parameter_list|,
+name|list
+parameter_list|)
+define|\
+value|for (item = (list)->items; item< (list)->items + (list)->nr; ++item)
+end_define
 
 begin_comment
 comment|/* Use these functions only on sorted lists: */
