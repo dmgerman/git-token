@@ -5483,6 +5483,12 @@ condition|)
 block|{
 name|opt
 operator|.
+name|color
+operator|=
+literal|0
+expr_stmt|;
+name|opt
+operator|.
 name|name_only
 operator|=
 literal|1
