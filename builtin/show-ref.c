@@ -616,15 +616,7 @@ name|struct
 name|string_list
 name|existing_refs
 init|=
-block|{
-name|NULL
-block|,
-literal|0
-block|,
-literal|0
-block|,
-literal|0
-block|}
+name|STRING_LIST_INIT_NODUP
 decl_stmt|;
 name|char
 name|buf

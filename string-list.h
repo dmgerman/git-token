@@ -61,6 +61,22 @@ block|}
 struct|;
 end_struct
 
+begin_define
+DECL|macro|STRING_LIST_INIT_NODUP
+define|#
+directive|define
+name|STRING_LIST_INIT_NODUP
+value|{ NULL, 0, 0, 0 }
+end_define
+
+begin_define
+DECL|macro|STRING_LIST_INIT_DUP
+define|#
+directive|define
+name|STRING_LIST_INIT_DUP
+value|{ NULL, 0, 0, 1 }
+end_define
+
 begin_function_decl
 name|void
 name|print_string_list
