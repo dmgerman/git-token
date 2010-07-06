@@ -125,7 +125,8 @@ index|[
 literal|100
 index|]
 decl_stmt|;
-name|time_t
+name|unsigned
+name|long
 name|t
 decl_stmt|;
 name|int
@@ -157,7 +158,7 @@ name|sscanf
 argument_list|(
 name|result
 argument_list|,
-literal|"%ld %d"
+literal|"%lu %d"
 argument_list|,
 operator|&
 name|t
