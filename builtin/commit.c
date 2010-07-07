@@ -1724,6 +1724,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|active_cache_changed
+condition|)
+block|{
+if|if
+condition|(
 name|write_cache
 argument_list|(
 name|fd
@@ -1744,6 +1749,16 @@ argument_list|(
 literal|"unable to write new_index file"
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|rollback_lock_file
+argument_list|(
+operator|&
+name|index_lock
+argument_list|)
+expr_stmt|;
+block|}
 name|commit_style
 operator|=
 name|COMMIT_AS_IS
@@ -5679,6 +5694,8 @@ condition|)
 block|{
 if|if
 condition|(
+name|active_cache_changed
+operator|&&
 operator|!
 name|write_cache
 argument_list|(
@@ -5695,6 +5712,7 @@ operator|&
 name|index_lock
 argument_list|)
 expr_stmt|;
+else|else
 name|rollback_lock_file
 argument_list|(
 operator|&
