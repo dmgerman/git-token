@@ -167,6 +167,15 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|apply_default_ignorewhitespace
+specifier|const
+name|char
+modifier|*
+name|apply_default_ignorewhitespace
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|zlib_compression_level
 name|int
 name|zlib_compression_level
@@ -265,17 +274,32 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|auto_crlf
-name|int
+name|enum
+name|auto_crlf
 name|auto_crlf
 init|=
-literal|0
+name|AUTO_CRLF_FALSE
 decl_stmt|;
 end_decl_stmt
 
-begin_comment
-DECL|variable|auto_crlf
-comment|/* 1: both ways, -1: only when adding git objects */
-end_comment
+begin_decl_stmt
+DECL|variable|read_replace_refs
+name|int
+name|read_replace_refs
+init|=
+literal|1
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|eol
+name|enum
+name|eol
+name|eol
+init|=
+name|EOL_UNSET
+decl_stmt|;
+end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|safe_crlf
@@ -356,11 +380,26 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|notes_ref_name
+name|char
+modifier|*
+name|notes_ref_name
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|grafts_replace_parents
 name|int
 name|grafts_replace_parents
 init|=
 literal|1
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|core_apply_sparse_checkout
+name|int
+name|core_apply_sparse_checkout
 decl_stmt|;
 end_decl_stmt
 
@@ -426,6 +465,45 @@ name|git_refs_dir
 decl_stmt|,
 modifier|*
 name|git_graft_file
+decl_stmt|;
+end_decl_stmt
+
+begin_comment
+comment|/*  * Repository-local GIT_* environment variables  * Remember to update local_repo_env_size in cache.h when  * the size of the list changes  */
+end_comment
+
+begin_decl_stmt
+DECL|variable|local_repo_env
+specifier|const
+name|char
+modifier|*
+specifier|const
+name|local_repo_env
+index|[
+name|LOCAL_REPO_ENV_SIZE
+operator|+
+literal|1
+index|]
+init|=
+block|{
+name|ALTERNATE_DB_ENVIRONMENT
+block|,
+name|CONFIG_ENVIRONMENT
+block|,
+name|DB_ENVIRONMENT
+block|,
+name|GIT_DIR_ENVIRONMENT
+block|,
+name|GIT_WORK_TREE_ENVIRONMENT
+block|,
+name|GRAFT_ENVIRONMENT
+block|,
+name|INDEX_ENVIRONMENT
+block|,
+name|NO_REPLACE_OBJECTS_ENVIRONMENT
+block|,
+name|NULL
+block|}
 decl_stmt|;
 end_decl_stmt
 
@@ -575,6 +653,17 @@ name|git_pathdup
 argument_list|(
 literal|"info/grafts"
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|getenv
+argument_list|(
+name|NO_REPLACE_OBJECTS_ENVIRONMENT
+argument_list|)
+condition|)
+name|read_replace_refs
+operator|=
+literal|0
 expr_stmt|;
 block|}
 end_function

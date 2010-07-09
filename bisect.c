@@ -2980,6 +2980,7 @@ end_comment
 
 begin_function
 DECL|function|get_prn
+specifier|static
 name|int
 name|get_prn
 parameter_list|(
@@ -4138,15 +4139,13 @@ argument_list|,
 literal|' '
 argument_list|)
 decl_stmt|;
-name|fprintf
+name|warning
 argument_list|(
-name|stderr
-argument_list|,
-literal|"Warning: the merge base between %s and [%s] "
+literal|"the merge base between %s and [%s] "
 literal|"must be skipped.\n"
 literal|"So we cannot be sure the first bad commit is "
 literal|"between %s and %s.\n"
-literal|"We continue anyway.\n"
+literal|"We continue anyway."
 argument_list|,
 name|bad_hex
 argument_list|,
@@ -4755,6 +4754,8 @@ init|=
 literal|0
 decl_stmt|,
 name|nr
+decl_stmt|,
+name|steps
 decl_stmt|;
 specifier|const
 name|unsigned
@@ -4878,6 +4879,26 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+name|all
+condition|)
+block|{
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"No testable commit found.\n"
+literal|"Maybe you started with bad path parameters?\n"
+argument_list|)
+expr_stmt|;
+name|exit
+argument_list|(
+literal|4
+argument_list|)
+expr_stmt|;
+block|}
 name|bisect_rev
 operator|=
 name|revs
@@ -4953,17 +4974,41 @@ name|reaches
 operator|-
 literal|1
 expr_stmt|;
-name|printf
-argument_list|(
-literal|"Bisecting: %d revisions left to test after this "
-literal|"(roughly %d steps)\n"
-argument_list|,
-name|nr
-argument_list|,
+name|steps
+operator|=
 name|estimate_bisect_steps
 argument_list|(
 name|all
 argument_list|)
+expr_stmt|;
+name|printf
+argument_list|(
+literal|"Bisecting: %d revision%s left to test after this "
+literal|"(roughly %d step%s)\n"
+argument_list|,
+name|nr
+argument_list|,
+operator|(
+name|nr
+operator|==
+literal|1
+condition|?
+literal|""
+else|:
+literal|"s"
+operator|)
+argument_list|,
+name|steps
+argument_list|,
+operator|(
+name|steps
+operator|==
+literal|1
+condition|?
+literal|""
+else|:
+literal|"s"
+operator|)
 argument_list|)
 expr_stmt|;
 return|return

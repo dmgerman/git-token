@@ -905,6 +905,7 @@ end_comment
 
 begin_function
 DECL|function|check_path
+specifier|static
 name|int
 name|check_path
 parameter_list|(
@@ -1098,6 +1099,8 @@ operator|&
 name|st
 argument_list|,
 name|CE_MATCH_IGNORE_VALID
+operator||
+name|CE_MATCH_IGNORE_SKIP_WORKTREE
 argument_list|)
 decl_stmt|;
 if|if

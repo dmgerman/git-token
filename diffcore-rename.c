@@ -2515,18 +2515,18 @@ operator|&
 name|this_src
 argument_list|)
 expr_stmt|;
+comment|/* 			 * Once we run estimate_similarity, 			 * We do not need the text anymore. 			 */
 name|diff_free_filespec_blob
 argument_list|(
 name|one
 argument_list|)
 expr_stmt|;
-block|}
-comment|/* We do not need the text anymore */
 name|diff_free_filespec_blob
 argument_list|(
 name|two
 argument_list|)
 expr_stmt|;
+block|}
 name|dst_cnt
 operator|++
 expr_stmt|;
@@ -2766,21 +2766,11 @@ expr_stmt|;
 name|cleanup
 label|:
 comment|/* At this point, we have found some renames and copies and they 	 * are recorded in rename_dst.  The original list is still in *q. 	 */
+name|DIFF_QUEUE_CLEAR
+argument_list|(
+operator|&
 name|outq
-operator|.
-name|queue
-operator|=
-name|NULL
-expr_stmt|;
-name|outq
-operator|.
-name|nr
-operator|=
-name|outq
-operator|.
-name|alloc
-operator|=
-literal|0
+argument_list|)
 expr_stmt|;
 for|for
 control|(

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_comment
-comment|/*  * diff-delta.c: generate a delta between two buffers  *  * This code was greatly inspired by parts of LibXDiff from Davide Libenzi  * http://www.xmailserver.org/xdiff-lib.html  *  * Rewritten for GIT by Nicolas Pitre<nico@cam.org>, (C) 2005-2007  *  * This code is free software; you can redistribute it and/or modify  * it under the terms of the GNU General Public License version 2 as  * published by the Free Software Foundation.  */
+comment|/*  * diff-delta.c: generate a delta between two buffers  *  * This code was greatly inspired by parts of LibXDiff from Davide Libenzi  * http://www.xmailserver.org/xdiff-lib.html  *  * Rewritten for GIT by Nicolas Pitre<nico@fluxnic.net>, (C) 2005-2007  *  * This code is free software; you can redistribute it and/or modify  * it under the terms of the GNU General Public License version 2 as  * published by the Free Software Foundation.  */
 end_comment
 
 begin_include

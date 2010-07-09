@@ -148,11 +148,11 @@ argument_list|)
 condition|)
 name|string_list_insert
 argument_list|(
+name|list
+argument_list|,
 name|e
 operator|->
 name|d_name
-argument_list|,
-name|list
 argument_list|)
 expr_stmt|;
 name|closedir
@@ -889,7 +889,6 @@ modifier|*
 name|path
 parameter_list|)
 block|{
-comment|/* 	 * We have already done setup_git_directory_gently() so we 	 * know we are inside a git work tree already. 	 */
 specifier|const
 name|char
 modifier|*
@@ -914,6 +913,14 @@ operator|=
 name|get_git_work_tree
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|work_tree
+condition|)
+return|return
+literal|1
+return|;
 name|len
 operator|=
 name|strlen
@@ -1115,9 +1122,9 @@ name|i
 operator|+
 literal|2
 condition|)
-name|die
+name|usagef
 argument_list|(
-literal|"git diff %s takes two paths"
+literal|"git diff %s<path><path>"
 argument_list|,
 name|no_index
 condition|?

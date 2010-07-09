@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_comment
-comment|/*  * Simple text-based progress display module for GIT  *  * Copyright (c) 2007 by Nicolas Pitre<nico@cam.org>  *  * This code is free software; you can redistribute it and/or modify  * it under the terms of the GNU General Public License version 2 as  * published by the Free Software Foundation.  */
+comment|/*  * Simple text-based progress display module for GIT  *  * Copyright (c) 2007 by Nicolas Pitre<nico@fluxnic.net>  *  * This code is free software; you can redistribute it and/or modify  * it under the terms of the GNU General Public License version 2 as  * published by the Free Software Foundation.  */
 end_comment
 
 begin_include
@@ -749,6 +749,69 @@ name|total
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|rate
+operator|>
+literal|1
+operator|<<
+literal|10
+condition|)
+block|{
+name|int
+name|x
+init|=
+name|rate
+operator|+
+literal|5
+decl_stmt|;
+comment|/* for rounding */
+name|snprintf
+argument_list|(
+name|tp
+operator|->
+name|display
+operator|+
+sizeof|sizeof
+argument_list|(
+name|tp
+operator|->
+name|display
+argument_list|)
+operator|-
+name|l
+argument_list|,
+name|l
+argument_list|,
+literal|" | %u.%2.2u MiB/s"
+argument_list|,
+name|x
+operator|>>
+literal|10
+argument_list|,
+operator|(
+operator|(
+name|x
+operator|&
+operator|(
+operator|(
+literal|1
+operator|<<
+literal|10
+operator|)
+operator|-
+literal|1
+operator|)
+operator|)
+operator|*
+literal|100
+operator|)
+operator|>>
+literal|10
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
 if|if
 condition|(
 name|rate

@@ -2,6 +2,12 @@ begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_include
 include|#
 directive|include
+file|"cache.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"userdiff.h"
 end_include
 
@@ -132,7 +138,8 @@ name|PATTERNS
 argument_list|(
 literal|"php"
 argument_list|,
-literal|"^[\t ]*((function|class).*)"
+literal|"^[\t ]*(((public|protected|private|static)[\t ]+)*function.*)$\n"
+literal|"^[\t ]*(class.*)$"
 argument_list|,
 comment|/* -- */
 literal|"[a-zA-Z_][a-zA-Z0-9_]*"
@@ -735,6 +742,43 @@ block|}
 end_function
 
 begin_function
+DECL|function|parse_bool
+specifier|static
+name|int
+name|parse_bool
+parameter_list|(
+name|int
+modifier|*
+name|b
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|k
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|v
+parameter_list|)
+block|{
+operator|*
+name|b
+operator|=
+name|git_config_bool
+argument_list|(
+name|k
+argument_list|,
+name|v
+argument_list|)
+expr_stmt|;
+return|return
+literal|1
+return|;
+block|}
+end_function
+
+begin_function
 DECL|function|userdiff_config
 name|int
 name|userdiff_config
@@ -910,6 +954,34 @@ name|k
 argument_list|,
 name|v
 argument_list|,
+literal|"cachetextconv"
+argument_list|)
+operator|)
+condition|)
+return|return
+name|parse_bool
+argument_list|(
+operator|&
+name|drv
+operator|->
+name|textconv_want_cache
+argument_list|,
+name|k
+argument_list|,
+name|v
+argument_list|)
+return|;
+if|if
+condition|(
+operator|(
+name|drv
+operator|=
+name|parse_driver
+argument_list|(
+name|k
+argument_list|,
+name|v
+argument_list|,
 literal|"wordregex"
 argument_list|)
 operator|)
@@ -998,8 +1070,6 @@ operator|=
 name|git_attr
 argument_list|(
 literal|"diff"
-argument_list|,
-literal|4
 argument_list|)
 expr_stmt|;
 name|check

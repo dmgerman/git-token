@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_comment
-comment|/*  * patch-delta.c:  * recreate a buffer from a source and the delta produced by diff-delta.c  *  * (C) 2005 Nicolas Pitre<nico@cam.org>  *  * This code is free software; you can redistribute it and/or modify  * it under the terms of the GNU General Public License version 2 as  * published by the Free Software Foundation.  */
+comment|/*  * patch-delta.c:  * recreate a buffer from a source and the delta produced by diff-delta.c  *  * (C) 2005 Nicolas Pitre<nico@fluxnic.net>  *  * This code is free software; you can redistribute it and/or modify  * it under the terms of the GNU General Public License version 2 as  * published by the Free Software Foundation.  */
 end_comment
 
 begin_include
@@ -126,19 +126,10 @@ argument_list|)
 expr_stmt|;
 name|dst_buf
 operator|=
-name|xmalloc
+name|xmallocz
 argument_list|(
 name|size
-operator|+
-literal|1
 argument_list|)
-expr_stmt|;
-name|dst_buf
-index|[
-name|size
-index|]
-operator|=
-literal|0
 expr_stmt|;
 name|out
 operator|=

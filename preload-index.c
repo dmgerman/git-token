@@ -217,6 +217,16 @@ condition|)
 continue|continue;
 if|if
 condition|(
+name|S_ISGITLINK
+argument_list|(
+name|ce
+operator|->
+name|ce_mode
+argument_list|)
+condition|)
+continue|continue;
+if|if
+condition|(
 name|ce_uptodate
 argument_list|(
 name|ce

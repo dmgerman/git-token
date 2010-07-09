@@ -515,6 +515,10 @@ argument_list|,
 name|sha2
 argument_list|,
 name|newbase
+argument_list|,
+literal|0
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|newbase
@@ -577,6 +581,10 @@ argument_list|,
 name|sha2
 argument_list|,
 name|fullname
+argument_list|,
+literal|0
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|free
@@ -1196,6 +1204,8 @@ argument_list|,
 name|sha1
 argument_list|,
 name|newbase
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|newbase
@@ -1280,6 +1290,8 @@ argument_list|,
 name|sha1
 argument_list|,
 name|fullname
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|free
@@ -1442,7 +1454,7 @@ name|DIFF_OPT_TST
 argument_list|(
 name|opt
 argument_list|,
-name|QUIET
+name|QUICK
 argument_list|)
 operator|&&
 name|DIFF_OPT_TST
@@ -1726,11 +1738,13 @@ argument_list|,
 name|RECURSIVE
 argument_list|)
 expr_stmt|;
+name|DIFF_OPT_SET
+argument_list|(
+operator|&
 name|diff_opts
-operator|.
-name|detect_rename
-operator|=
-name|DIFF_DETECT_RENAME
+argument_list|,
+name|FIND_COPIES_HARDER
+argument_list|)
 expr_stmt|;
 name|diff_opts
 operator|.

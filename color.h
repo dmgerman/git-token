@@ -13,7 +13,15 @@ name|COLOR_H
 end_define
 
 begin_comment
-comment|/* "\033[1;38;5;2xx;48;5;2xxm\0" is 23 bytes */
+comment|/*  2 + (2 * num_attrs) + 8 + 1 + 8 + 'm' + NUL */
+end_comment
+
+begin_comment
+comment|/* "\033[1;2;4;5;7;38;5;2xx;48;5;2xxm\0" */
+end_comment
+
+begin_comment
+comment|/*  * The maximum length of ANSI color sequence we would generate:  * - leading ESC '['            2  * - attr + ';'                 2 * 8 (e.g. "1;")  * - fg color + ';'             9 (e.g. "38;5;2xx;")  * - fg color + ';'             9 (e.g. "48;5;2xx;")  * - terminating 'm' NUL        2  *  * The above overcounts attr (we only use 5 not 8) and one semicolon  * but it is close enough.  */
 end_comment
 
 begin_define
@@ -21,8 +29,12 @@ DECL|macro|COLOR_MAXLEN
 define|#
 directive|define
 name|COLOR_MAXLEN
-value|24
+value|40
 end_define
+
+begin_comment
+comment|/*  * IMPORTANT: Due to the way these color codes are emulated on Windows,  * write them only using printf(), fprintf(), and fputs(). In particular,  * do not use puts() or write().  */
+end_comment
 
 begin_define
 DECL|macro|GIT_COLOR_NORMAL
@@ -97,11 +109,99 @@ value|"\033[36m"
 end_define
 
 begin_define
+DECL|macro|GIT_COLOR_BOLD_RED
+define|#
+directive|define
+name|GIT_COLOR_BOLD_RED
+value|"\033[1;31m"
+end_define
+
+begin_define
+DECL|macro|GIT_COLOR_BOLD_GREEN
+define|#
+directive|define
+name|GIT_COLOR_BOLD_GREEN
+value|"\033[1;32m"
+end_define
+
+begin_define
+DECL|macro|GIT_COLOR_BOLD_YELLOW
+define|#
+directive|define
+name|GIT_COLOR_BOLD_YELLOW
+value|"\033[1;33m"
+end_define
+
+begin_define
+DECL|macro|GIT_COLOR_BOLD_BLUE
+define|#
+directive|define
+name|GIT_COLOR_BOLD_BLUE
+value|"\033[1;34m"
+end_define
+
+begin_define
+DECL|macro|GIT_COLOR_BOLD_MAGENTA
+define|#
+directive|define
+name|GIT_COLOR_BOLD_MAGENTA
+value|"\033[1;35m"
+end_define
+
+begin_define
+DECL|macro|GIT_COLOR_BOLD_CYAN
+define|#
+directive|define
+name|GIT_COLOR_BOLD_CYAN
+value|"\033[1;36m"
+end_define
+
+begin_define
 DECL|macro|GIT_COLOR_BG_RED
 define|#
 directive|define
 name|GIT_COLOR_BG_RED
 value|"\033[41m"
+end_define
+
+begin_define
+DECL|macro|GIT_COLOR_BG_GREEN
+define|#
+directive|define
+name|GIT_COLOR_BG_GREEN
+value|"\033[42m"
+end_define
+
+begin_define
+DECL|macro|GIT_COLOR_BG_YELLOW
+define|#
+directive|define
+name|GIT_COLOR_BG_YELLOW
+value|"\033[43m"
+end_define
+
+begin_define
+DECL|macro|GIT_COLOR_BG_BLUE
+define|#
+directive|define
+name|GIT_COLOR_BG_BLUE
+value|"\033[44m"
+end_define
+
+begin_define
+DECL|macro|GIT_COLOR_BG_MAGENTA
+define|#
+directive|define
+name|GIT_COLOR_BG_MAGENTA
+value|"\033[45m"
+end_define
+
+begin_define
+DECL|macro|GIT_COLOR_BG_CYAN
+define|#
+directive|define
+name|GIT_COLOR_BG_CYAN
+value|"\033[46m"
 end_define
 
 begin_comment
@@ -205,6 +305,17 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_macro
+name|__attribute__
+argument_list|(
+argument|(format (printf,
+literal|3
+argument|,
+literal|4
+argument|))
+argument_list|)
+end_macro
+
 begin_function_decl
 name|int
 name|color_fprintf
@@ -228,6 +339,17 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_macro
+name|__attribute__
+argument_list|(
+argument|(format (printf,
+literal|3
+argument|,
+literal|4
+argument|))
+argument_list|)
+end_macro
+
 begin_function_decl
 name|int
 name|color_fprintf_ln
@@ -247,30 +369,6 @@ modifier|*
 name|fmt
 parameter_list|,
 modifier|...
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-name|int
-name|color_fwrite_lines
-parameter_list|(
-name|FILE
-modifier|*
-name|fp
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|color
-parameter_list|,
-name|size_t
-name|count
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|buf
 parameter_list|)
 function_decl|;
 end_function_decl
