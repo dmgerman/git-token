@@ -23,6 +23,27 @@ struct_decl|;
 end_struct_decl
 
 begin_comment
+comment|/*  * Set up a custom scheme for column colors.  *  * The default column color scheme inserts ANSI color escapes to colorize  * the graph. The various color escapes are stored in an array of strings  * where each entry corresponds to a color, except for the last entry,  * which denotes the escape for resetting the color back to the default.  * When generating the graph, strings from this array are inserted before  * and after the various column characters.  *  * This function allows you to enable a custom array of color escapes.  * The 'colors_max' argument is the index of the last "reset" entry.  *  * This functions must be called BEFORE graph_init() is called.  */
+end_comment
+
+begin_function_decl
+name|void
+name|graph_set_column_colors
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|colors
+parameter_list|,
+name|unsigned
+name|short
+name|colors_max
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/*  * Create a new struct git_graph.  */
 end_comment
 
