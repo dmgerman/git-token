@@ -79,6 +79,27 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/*  * Output the next line for a graph.  * This formats the next graph line into the specified strbuf.  It is not  * terminated with a newline.  *  * Returns 1 if the line includes the current commit, and 0 otherwise.  * graph_next_line() will return 1 exactly once for each time  * graph_update() is called.  */
+end_comment
+
+begin_function_decl
+name|int
+name|graph_next_line
+parameter_list|(
+name|struct
+name|git_graph
+modifier|*
+name|graph
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|sb
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/*  * graph_show_*: helper functions for printing to stdout  */
 end_comment
 
