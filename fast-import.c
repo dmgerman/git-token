@@ -9474,15 +9474,15 @@ name|dump_marks_helper
 argument_list|(
 name|f
 argument_list|,
-operator|(
 name|base
 operator|+
+operator|(
 name|k
-operator|)
 operator|<<
 name|m
 operator|->
 name|shift
+operator|)
 argument_list|,
 name|m
 operator|->
