@@ -2369,6 +2369,26 @@ name|find_last_dir_sep
 value|mingw_find_last_dir_sep
 end_define
 
+begin_function_decl
+name|int
+name|mingw_offset_1st_component
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_define
+DECL|macro|offset_1st_component
+define|#
+directive|define
+name|offset_1st_component
+value|mingw_offset_1st_component
+end_define
+
 begin_define
 DECL|macro|PATH_SEP
 define|#
