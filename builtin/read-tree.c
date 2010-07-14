@@ -1201,7 +1201,7 @@ return|return
 literal|0
 return|;
 comment|/* do not write the index out */
-comment|/* 	 * When reading only one tree (either the most basic form, 	 * "-m ent" or "--reset ent" form), we can obtain a fully 	 * valid cache-tree because the index must match exactly 	 * what came from the tree. 	 * 	 * The same holds true if we are switching between two trees 	 * using read-tree -m A B.  The index must match B after that. 	 */
+comment|/* 	 * When reading only one tree (either the most basic form, 	 * "-m ent" or "--reset ent" form), we can obtain a fully 	 * valid cache-tree because the index must match exactly 	 * what came from the tree. 	 */
 if|if
 condition|(
 name|nr_trees
@@ -1221,28 +1221,6 @@ argument_list|,
 name|trees
 index|[
 literal|0
-index|]
-argument_list|)
-expr_stmt|;
-elseif|else
-if|if
-condition|(
-name|nr_trees
-operator|==
-literal|2
-operator|&&
-name|opts
-operator|.
-name|merge
-condition|)
-name|prime_cache_tree
-argument_list|(
-operator|&
-name|active_cache_tree
-argument_list|,
-name|trees
-index|[
-literal|1
 index|]
 argument_list|)
 expr_stmt|;
