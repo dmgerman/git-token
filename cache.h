@@ -5626,6 +5626,27 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+name|int
+name|parse_date_basic
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|date
+parameter_list|,
+name|unsigned
+name|long
+modifier|*
+name|timestamp
+parameter_list|,
+name|int
+modifier|*
+name|offset
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|void
 name|datestamp
 parameter_list|(

@@ -3176,9 +3176,9 @@ comment|/* Gr. strptime is crap for this; it doesn't have a way to require RFC28
 end_comment
 
 begin_function
-DECL|function|parse_date_toffset
+DECL|function|parse_date_basic
 name|int
-name|parse_date_toffset
+name|parse_date_basic
 parameter_list|(
 specifier|const
 name|char
@@ -3482,7 +3482,7 @@ operator|*
 literal|60
 expr_stmt|;
 return|return
-literal|1
+literal|0
 return|;
 comment|/* success */
 block|}
@@ -3515,7 +3515,7 @@ name|offset
 decl_stmt|;
 if|if
 condition|(
-name|parse_date_toffset
+name|parse_date_basic
 argument_list|(
 name|date
 argument_list|,
@@ -3525,9 +3525,11 @@ argument_list|,
 operator|&
 name|offset
 argument_list|)
-operator|>
-literal|0
 condition|)
+return|return
+operator|-
+literal|1
+return|;
 return|return
 name|date_string
 argument_list|(
@@ -3539,11 +3541,6 @@ name|result
 argument_list|,
 name|maxlen
 argument_list|)
-return|;
-else|else
-return|return
-operator|-
-literal|1
 return|;
 block|}
 end_function
@@ -5525,7 +5522,8 @@ literal|0
 decl_stmt|;
 if|if
 condition|(
-name|parse_date_toffset
+operator|!
+name|parse_date_basic
 argument_list|(
 name|date
 argument_list|,
@@ -5535,8 +5533,6 @@ argument_list|,
 operator|&
 name|offset
 argument_list|)
-operator|>
-literal|0
 condition|)
 return|return
 name|timestamp
@@ -5599,7 +5595,8 @@ name|dummy
 expr_stmt|;
 if|if
 condition|(
-name|parse_date_toffset
+operator|!
+name|parse_date_basic
 argument_list|(
 name|date
 argument_list|,
@@ -5609,8 +5606,6 @@ argument_list|,
 operator|&
 name|offset
 argument_list|)
-operator|>
-literal|0
 condition|)
 block|{
 operator|*
