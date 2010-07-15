@@ -956,6 +956,9 @@ operator|==
 literal|'!'
 condition|)
 block|{
+name|commit_pager_choice
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 operator|*
@@ -2660,6 +2663,9 @@ decl_stmt|;
 name|int
 name|status
 decl_stmt|;
+name|commit_pager_choice
+argument_list|()
+expr_stmt|;
 name|strbuf_addf
 argument_list|(
 operator|&
@@ -2903,9 +2909,6 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
-name|commit_pager_choice
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|argc
@@ -2937,6 +2940,9 @@ block|}
 else|else
 block|{
 comment|/* The user didn't specify a command; give them help */
+name|commit_pager_choice
+argument_list|()
+expr_stmt|;
 name|printf
 argument_list|(
 literal|"usage: %s\n\n"
