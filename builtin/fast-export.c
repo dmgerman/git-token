@@ -170,8 +170,6 @@ DECL|variable|full_tree
 specifier|static
 name|int
 name|full_tree
-init|=
-literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -3298,6 +3296,18 @@ operator|&
 name|fake_missing_tagger
 argument_list|,
 literal|"Fake a tagger when tags lack one"
+argument_list|)
+block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|0
+argument_list|,
+literal|"full-tree"
+argument_list|,
+operator|&
+name|full_tree
+argument_list|,
+literal|"Output full tree for each commit"
 argument_list|)
 block|,
 block|{
