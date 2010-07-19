@@ -1710,6 +1710,7 @@ begin_decl_stmt
 DECL|variable|ignore_add_errors
 DECL|variable|addremove
 DECL|variable|intent_to_add
+DECL|variable|ignore_missing
 specifier|static
 name|int
 name|ignore_add_errors
@@ -1717,6 +1718,10 @@ decl_stmt|,
 name|addremove
 decl_stmt|,
 name|intent_to_add
+decl_stmt|,
+name|ignore_missing
+init|=
+literal|0
 decl_stmt|;
 end_decl_stmt
 
@@ -1852,6 +1857,18 @@ operator|&
 name|ignore_add_errors
 argument_list|,
 literal|"just skip files which cannot be added because of errors"
+argument_list|)
+block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|0
+argument_list|,
+literal|"ignore-missing"
+argument_list|,
+operator|&
+name|ignore_missing
+argument_list|,
+literal|"check if - even missing - files are ignored in dry run"
 argument_list|)
 block|,
 name|OPT_END
@@ -2191,6 +2208,18 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+name|show_only
+operator|&&
+name|ignore_missing
+condition|)
+name|die
+argument_list|(
+literal|"Option --ignore-missing can only be used together with --dry-run"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 operator|(
 name|addremove
 operator|||
@@ -2497,6 +2526,48 @@ name|i
 index|]
 argument_list|)
 condition|)
+block|{
+if|if
+condition|(
+name|ignore_missing
+condition|)
+block|{
+if|if
+condition|(
+name|excluded
+argument_list|(
+operator|&
+name|dir
+argument_list|,
+name|pathspec
+index|[
+name|i
+index|]
+argument_list|,
+name|DT_UNKNOWN
+argument_list|)
+condition|)
+name|dir_add_ignored
+argument_list|(
+operator|&
+name|dir
+argument_list|,
+name|pathspec
+index|[
+name|i
+index|]
+argument_list|,
+name|strlen
+argument_list|(
+name|pathspec
+index|[
+name|i
+index|]
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 name|die
 argument_list|(
 literal|"pathspec '%s' did not match any files"
@@ -2507,6 +2578,7 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|free
 argument_list|(
