@@ -837,6 +837,26 @@ argument_list|(
 name|suspect
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|PATH_MAX
+operator|<=
+name|len
+operator|+
+name|strlen
+argument_list|(
+literal|"/objects"
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"Too long path: %.*s"
+argument_list|,
+literal|60
+argument_list|,
+name|suspect
+argument_list|)
+expr_stmt|;
 name|strcpy
 argument_list|(
 name|path
