@@ -548,19 +548,19 @@ decl_stmt|;
 specifier|const
 name|char
 modifier|*
-name|p
+name|abbrev
 decl_stmt|,
 modifier|*
-name|abbrev
-decl_stmt|;
-name|char
-modifier|*
-name|q
+name|subject
 decl_stmt|;
 name|int
 name|abbrev_len
 decl_stmt|,
-name|oneline_len
+name|subject_len
+decl_stmt|;
+name|char
+modifier|*
+name|q
 decl_stmt|;
 if|if
 condition|(
@@ -664,7 +664,7 @@ argument_list|(
 name|abbrev
 argument_list|)
 expr_stmt|;
-name|oneline_len
+name|subject_len
 operator|=
 name|find_commit_subject
 argument_list|(
@@ -673,7 +673,7 @@ operator|->
 name|message
 argument_list|,
 operator|&
-name|p
+name|subject
 argument_list|)
 expr_stmt|;
 name|out
@@ -694,7 +694,7 @@ argument_list|(
 literal|"... "
 argument_list|)
 operator|+
-name|oneline_len
+name|subject_len
 operator|+
 literal|1
 argument_list|)
@@ -762,9 +762,9 @@ name|mempcpy
 argument_list|(
 name|q
 argument_list|,
-name|p
+name|subject
 argument_list|,
-name|oneline_len
+name|subject_len
 argument_list|)
 expr_stmt|;
 operator|*
