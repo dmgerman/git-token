@@ -233,6 +233,28 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* Find beginning and length of commit subject. */
+end_comment
+
+begin_function_decl
+name|int
+name|find_commit_subject
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|commit_buffer
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|subject
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function_decl
 name|struct
 name|commit_list
