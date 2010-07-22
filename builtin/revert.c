@@ -711,8 +711,6 @@ control|(
 name|eol
 operator|=
 name|p
-operator|+
-literal|1
 init|;
 operator|*
 name|eol
