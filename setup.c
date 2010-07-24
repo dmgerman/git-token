@@ -1853,6 +1853,18 @@ operator|!=
 name|len
 condition|)
 block|{
+if|if
+condition|(
+name|chdir
+argument_list|(
+name|cwd
+argument_list|)
+condition|)
+name|die_errno
+argument_list|(
+literal|"Cannot come back to cwd"
+argument_list|)
+expr_stmt|;
 name|root_len
 operator|=
 name|offset_1st_component
