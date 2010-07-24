@@ -327,6 +327,9 @@ name|struct
 name|strbuf
 modifier|*
 name|out
+parameter_list|,
+name|int
+name|decode_plus
 parameter_list|)
 block|{
 specifier|const
@@ -409,6 +412,8 @@ block|}
 block|}
 if|if
 condition|(
+name|decode_plus
+operator|&&
 name|c
 operator|==
 literal|'+'
@@ -520,6 +525,8 @@ name|NULL
 argument_list|,
 operator|&
 name|out
+argument_list|,
+literal|0
 argument_list|)
 return|;
 block|}
@@ -553,6 +560,8 @@ literal|"&="
 argument_list|,
 operator|&
 name|out
+argument_list|,
+literal|1
 argument_list|)
 return|;
 block|}
@@ -586,6 +595,8 @@ literal|"&"
 argument_list|,
 operator|&
 name|out
+argument_list|,
+literal|1
 argument_list|)
 return|;
 block|}
