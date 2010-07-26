@@ -39,8 +39,8 @@ init|=
 literal|"git [--version] [--exec-path[=GIT_EXEC_PATH]] [--html-path]\n"
 literal|"           [-p|--paginate|--no-pager] [--no-replace-objects]\n"
 literal|"           [--bare] [--git-dir=GIT_DIR] [--work-tree=GIT_WORK_TREE]\n"
-literal|"           [-c name=value\n"
-literal|"           [--help] COMMAND [ARGS]"
+literal|"           [-c name=value] [--help]\n"
+literal|"           COMMAND [ARGS]"
 decl_stmt|;
 end_decl_stmt
 
