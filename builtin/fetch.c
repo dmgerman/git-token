@@ -4676,7 +4676,8 @@ name|remote
 condition|)
 name|die
 argument_list|(
-literal|"Where do you want to fetch from today?"
+literal|"No remote repository specified.  Please, specify either a URL or a\n"
+literal|"remote name from which new revisions should be fetched."
 argument_list|)
 expr_stmt|;
 name|transport
