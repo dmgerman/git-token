@@ -1705,6 +1705,20 @@ name|off_t
 name|len
 parameter_list|)
 block|{
+if|if
+condition|(
+name|len
+operator|>
+operator|(
+name|size_t
+operator|)
+name|len
+condition|)
+name|die
+argument_list|(
+literal|"Cannot handle files this big"
+argument_list|)
+expr_stmt|;
 return|return
 operator|(
 name|size_t
