@@ -2254,6 +2254,25 @@ unit|)))
 empty_stmt|;
 end_empty_stmt
 
+begin_function_decl
+name|int
+name|winansi_vfprintf
+parameter_list|(
+name|FILE
+modifier|*
+name|stream
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|format
+parameter_list|,
+name|va_list
+name|list
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_define
 DECL|macro|fputs
 define|#
@@ -2282,6 +2301,14 @@ parameter_list|(
 modifier|...
 parameter_list|)
 value|winansi_fprintf(__VA_ARGS__)
+end_define
+
+begin_define
+DECL|macro|vfprintf
+define|#
+directive|define
+name|vfprintf
+value|winansi_vfprintf
 end_define
 
 begin_comment
