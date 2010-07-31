@@ -820,18 +820,28 @@ operator|&=
 operator|~
 name|CE_SKIP_WORKTREE
 expr_stmt|;
-comment|/* 	 * We only care about files getting into the checkout area 	 * If merge strategies want to remove some, go ahead, this 	 * flag will be removed eventually in unpack_trees() if it's 	 * outside checkout area. 	 */
+comment|/* 	 * if (!was_skip_worktree&& !ce_skip_worktree()) { 	 *	This is perfectly normal. Move on; 	 * } 	 */
+comment|/* 	 * Merge strategies may set CE_UPDATE|CE_REMOVE outside checkout 	 * area as a result of ce_skip_worktree() shortcuts in 	 * verify_absent() and verify_uptodate(). Clear them. 	 */
 if|if
 condition|(
+name|was_skip_worktree
+operator|&&
+name|ce_skip_worktree
+argument_list|(
+name|ce
+argument_list|)
+condition|)
 name|ce
 operator|->
 name|ce_flags
-operator|&
+operator|&=
+operator|~
+operator|(
+name|CE_UPDATE
+operator||
 name|CE_REMOVE
-condition|)
-return|return
-literal|0
-return|;
+operator|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -4104,26 +4114,14 @@ goto|goto
 name|done
 goto|;
 block|}
-comment|/* 			 * Merge strategies may set CE_UPDATE|CE_REMOVE outside checkout 			 * area as a result of ce_skip_worktree() shortcuts in 			 * verify_absent() and verify_uptodate(). Clear them. 			 */
 if|if
 condition|(
+operator|!
 name|ce_skip_worktree
 argument_list|(
 name|ce
 argument_list|)
 condition|)
-name|ce
-operator|->
-name|ce_flags
-operator|&=
-operator|~
-operator|(
-name|CE_UPDATE
-operator||
-name|CE_REMOVE
-operator|)
-expr_stmt|;
-else|else
 name|empty_worktree
 operator|=
 literal|0
