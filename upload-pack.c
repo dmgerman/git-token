@@ -3082,9 +3082,10 @@ name|die
 argument_list|(
 literal|"git upload-pack: not our ref %s"
 argument_list|,
-name|line
-operator|+
-literal|5
+name|sha1_to_hex
+argument_list|(
+name|sha1_buf
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
