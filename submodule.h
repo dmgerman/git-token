@@ -36,6 +36,13 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+name|void
+name|gitmodules_config
+parameter_list|()
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|int
 name|parse_submodule_config_option
 parameter_list|(
