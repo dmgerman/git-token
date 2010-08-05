@@ -940,6 +940,7 @@ operator|->
 name|sha1
 argument_list|)
 expr_stmt|;
+comment|/* 	 * NEEDSWORK: re-create conflicts from merges with 	 * merge.renormalize set, too 	 */
 name|status
 operator|=
 name|ll_merge

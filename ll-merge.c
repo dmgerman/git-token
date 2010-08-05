@@ -519,13 +519,12 @@ parameter_list|)
 block|{
 comment|/* Use union favor */
 name|flag
-operator|=
-operator|(
+operator|&=
+operator|~
+name|LL_OPT_FAVOR_MASK
+expr_stmt|;
 name|flag
-operator|&
-name|LL_OPT_VIRTUAL_ANCESTOR
-operator|)
-operator||
+operator||=
 name|create_ll_flag
 argument_list|(
 name|XDL_MERGE_FAVOR_UNION
@@ -1895,7 +1894,9 @@ name|LL_OPT_VIRTUAL_ANCESTOR
 decl_stmt|;
 if|if
 condition|(
-name|merge_renormalize
+name|flag
+operator|&
+name|LL_OPT_RENORMALIZE
 condition|)
 block|{
 name|normalize_file

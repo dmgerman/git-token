@@ -40,6 +40,14 @@ name|LL_OPT_FAVOR_SHIFT
 value|1
 end_define
 
+begin_define
+DECL|macro|LL_OPT_RENORMALIZE
+define|#
+directive|define
+name|LL_OPT_RENORMALIZE
+value|(1<< 3)
+end_define
+
 begin_function
 DECL|function|ll_opt_favor
 specifier|static
