@@ -6672,6 +6672,9 @@ name|char
 modifier|*
 name|a_sha
 parameter_list|,
+name|int
+name|renormalize
+parameter_list|,
 specifier|const
 name|char
 modifier|*
@@ -6711,7 +6714,7 @@ return|;
 if|if
 condition|(
 operator|!
-name|merge_renormalize
+name|renormalize
 condition|)
 return|return
 literal|0
@@ -6859,6 +6862,11 @@ name|clean_merge
 init|=
 literal|1
 decl_stmt|;
+name|int
+name|normalize
+init|=
+name|merge_renormalize
+decl_stmt|;
 name|unsigned
 name|o_mode
 init|=
@@ -6986,6 +6994,8 @@ name|o_sha
 argument_list|,
 name|a_sha
 argument_list|,
+name|normalize
+argument_list|,
 name|path
 argument_list|)
 operator|)
@@ -6999,6 +7009,8 @@ argument_list|(
 name|o_sha
 argument_list|,
 name|b_sha
+argument_list|,
+name|normalize
 argument_list|,
 name|path
 argument_list|)
