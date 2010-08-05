@@ -1309,6 +1309,35 @@ name|DIFF_SETUP_USE_SIZE_CACHE
 value|4
 end_define
 
+begin_comment
+comment|/*  * Poor man's alternative to parse-option, to allow both sticked form  * (--option=value) and separate form (--option value).  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|parse_long_opt
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|opt
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|argv
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|optarg
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function_decl
 specifier|extern
 name|int
