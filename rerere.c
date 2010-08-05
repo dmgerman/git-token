@@ -2377,9 +2377,6 @@ name|char
 modifier|*
 name|name
 parameter_list|,
-name|int
-name|renormalize
-parameter_list|,
 specifier|const
 name|char
 modifier|*
@@ -2518,10 +2515,6 @@ name|other
 argument_list|,
 literal|""
 argument_list|,
-name|renormalize
-condition|?
-name|LL_OPT_RENORMALIZE
-else|:
 literal|0
 argument_list|)
 expr_stmt|;
@@ -2807,9 +2800,6 @@ name|rr
 parameter_list|,
 name|int
 name|fd
-parameter_list|,
-name|int
-name|renormalize
 parameter_list|)
 block|{
 name|struct
@@ -3051,8 +3041,6 @@ operator|!
 name|merge
 argument_list|(
 name|name
-argument_list|,
-name|renormalize
 argument_list|,
 name|path
 argument_list|)
@@ -3460,8 +3448,6 @@ operator|&
 name|merge_rr
 argument_list|,
 name|fd
-argument_list|,
-name|merge_renormalize
 argument_list|)
 return|;
 block|}
