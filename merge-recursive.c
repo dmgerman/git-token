@@ -9065,7 +9065,7 @@ name|o
 operator|->
 name|renormalize
 operator|=
-name|merge_renormalize
+literal|0
 expr_stmt|;
 name|git_config
 argument_list|(
