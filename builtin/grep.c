@@ -4526,10 +4526,6 @@ name|int
 name|dummy
 decl_stmt|;
 name|int
-name|nongit
-init|=
-literal|0
-decl_stmt|,
 name|use_index
 init|=
 literal|1
@@ -5171,14 +5167,6 @@ name|OPT_END
 argument_list|()
 block|}
 decl_stmt|;
-name|prefix
-operator|=
-name|setup_git_directory_gently
-argument_list|(
-operator|&
-name|nongit
-argument_list|)
-expr_stmt|;
 comment|/* 	 * 'git grep -h', unlike 'git grep -h<pattern>', is a request 	 * to show usage information and exit. 	 */
 if|if
 condition|(
@@ -5403,7 +5391,10 @@ if|if
 condition|(
 name|use_index
 operator|&&
-name|nongit
+operator|!
+name|startup_info
+operator|->
+name|have_repository
 condition|)
 comment|/* die the same way as if we did it at the beginning */
 name|setup_git_directory

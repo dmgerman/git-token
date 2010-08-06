@@ -1962,6 +1962,8 @@ block|{
 literal|"grep"
 block|,
 name|cmd_grep
+block|,
+name|RUN_SETUP_GENTLY
 block|}
 block|,
 block|{
