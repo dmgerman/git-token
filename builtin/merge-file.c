@@ -194,9 +194,6 @@ name|quiet
 init|=
 literal|0
 decl_stmt|;
-name|int
-name|nongit
-decl_stmt|;
 name|struct
 name|option
 name|options
@@ -337,18 +334,11 @@ name|favor
 operator|=
 literal|0
 expr_stmt|;
-name|prefix
-operator|=
-name|setup_git_directory_gently
-argument_list|(
-operator|&
-name|nongit
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
-operator|!
-name|nongit
+name|startup_info
+operator|->
+name|have_repository
 condition|)
 block|{
 comment|/* Read the configuration file */
