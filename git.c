@@ -1834,6 +1834,8 @@ block|{
 literal|"config"
 block|,
 name|cmd_config
+block|,
+name|RUN_SETUP_GENTLY
 block|}
 block|,
 block|{
@@ -2276,6 +2278,8 @@ block|{
 literal|"repo-config"
 block|,
 name|cmd_config
+block|,
+name|RUN_SETUP_GENTLY
 block|}
 block|,
 block|{
