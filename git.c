@@ -1298,11 +1298,19 @@ value|(1<<0)
 end_define
 
 begin_define
+DECL|macro|RUN_SETUP_GENTLY
+define|#
+directive|define
+name|RUN_SETUP_GENTLY
+value|(1<<1)
+end_define
+
+begin_define
 DECL|macro|USE_PAGER
 define|#
 directive|define
 name|USE_PAGER
-value|(1<<1)
+value|(1<<2)
 end_define
 
 begin_comment
@@ -1314,7 +1322,7 @@ DECL|macro|NEED_WORK_TREE
 define|#
 directive|define
 name|NEED_WORK_TREE
-value|(1<<2)
+value|(1<<3)
 end_define
 
 begin_struct
@@ -1432,6 +1440,27 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+name|p
+operator|->
+name|option
+operator|&
+name|RUN_SETUP_GENTLY
+condition|)
+block|{
+name|int
+name|nongit_ok
+decl_stmt|;
+name|prefix
+operator|=
+name|setup_git_directory_gently
+argument_list|(
+operator|&
+name|nongit_ok
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
 name|use_pager
 operator|==
 operator|-
@@ -1441,7 +1470,11 @@ name|p
 operator|->
 name|option
 operator|&
+operator|(
 name|RUN_SETUP
+operator||
+name|RUN_SETUP_GENTLY
+operator|)
 condition|)
 name|use_pager
 operator|=
