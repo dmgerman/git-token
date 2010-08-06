@@ -129,6 +129,15 @@ name|sb
 init|=
 name|STRBUF_INIT
 decl_stmt|;
+name|int
+name|nongit
+decl_stmt|;
+name|setup_git_directory_gently
+argument_list|(
+operator|&
+name|nongit
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|strbuf_check_branch_ref
