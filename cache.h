@@ -8313,7 +8313,12 @@ begin_struct
 DECL|struct|startup_info
 struct|struct
 name|startup_info
-block|{ }
+block|{
+DECL|member|have_repository
+name|int
+name|have_repository
+decl_stmt|;
+block|}
 struct|;
 end_struct
 
