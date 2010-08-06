@@ -1988,6 +1988,8 @@ block|{
 literal|"index-pack"
 block|,
 name|cmd_index_pack
+block|,
+name|RUN_SETUP_GENTLY
 block|}
 block|,
 block|{

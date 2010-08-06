@@ -4986,9 +4986,6 @@ index|[
 literal|20
 index|]
 decl_stmt|;
-name|int
-name|nongit
-decl_stmt|;
 if|if
 condition|(
 name|argc
@@ -5009,14 +5006,6 @@ condition|)
 name|usage
 argument_list|(
 name|index_pack_usage
-argument_list|)
-expr_stmt|;
-name|prefix
-operator|=
-name|setup_git_directory_gently
-argument_list|(
-operator|&
-name|nongit
 argument_list|)
 expr_stmt|;
 name|git_config
