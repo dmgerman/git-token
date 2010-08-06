@@ -2333,6 +2333,8 @@ literal|"shortlog"
 block|,
 name|cmd_shortlog
 block|,
+name|RUN_SETUP_GENTLY
+operator||
 name|USE_PAGER
 block|}
 block|,
