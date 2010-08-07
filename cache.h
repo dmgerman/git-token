@@ -8306,6 +8306,22 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/* Takes a negative value returned by split_cmdline */
+end_comment
+
+begin_function_decl
+specifier|const
+name|char
+modifier|*
+name|split_cmdline_strerror
+parameter_list|(
+name|int
+name|cmdline_errno
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/* builtin/merge.c */
 end_comment
 

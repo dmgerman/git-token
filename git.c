@@ -1090,9 +1090,14 @@ literal|0
 condition|)
 name|die
 argument_list|(
-literal|"Bad alias.%s string"
+literal|"Bad alias.%s string: %s"
 argument_list|,
 name|alias_command
+argument_list|,
+name|split_cmdline_strerror
+argument_list|(
+name|count
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|option_count
