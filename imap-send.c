@@ -2674,6 +2674,15 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|cmd
+operator|->
+name|cb
+operator|.
+name|data
+condition|)
 name|bufl
 operator|=
 name|nfsnprintf
@@ -2685,22 +2694,30 @@ argument_list|(
 name|buf
 argument_list|)
 argument_list|,
+literal|"%d %s\r\n"
+argument_list|,
 name|cmd
 operator|->
-name|cb
-operator|.
-name|data
-condition|?
-name|CAP
-argument_list|(
-name|LITERALPLUS
+name|tag
+argument_list|,
+name|cmd
+operator|->
+name|cmd
 argument_list|)
-condition|?
-literal|"%d %s{%d+}\r\n"
-else|:
-literal|"%d %s{%d}\r\n"
-else|:
-literal|"%d %s\r\n"
+expr_stmt|;
+else|else
+name|bufl
+operator|=
+name|nfsnprintf
+argument_list|(
+name|buf
+argument_list|,
+sizeof|sizeof
+argument_list|(
+name|buf
+argument_list|)
+argument_list|,
+literal|"%d %s{%d%s}\r\n"
 argument_list|,
 name|cmd
 operator|->
@@ -2715,6 +2732,15 @@ operator|->
 name|cb
 operator|.
 name|dlen
+argument_list|,
+name|CAP
+argument_list|(
+name|LITERALPLUS
+argument_list|)
+condition|?
+literal|"+"
+else|:
+literal|""
 argument_list|)
 expr_stmt|;
 if|if
@@ -6226,7 +6252,7 @@ argument_list|(
 name|portstr
 argument_list|)
 argument_list|,
-literal|"%hu"
+literal|"%d"
 argument_list|,
 name|srvc
 operator|->

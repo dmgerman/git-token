@@ -688,7 +688,7 @@ name|OPT_BOOLEAN
 argument_list|(
 literal|'n'
 argument_list|,
-name|NULL
+literal|"dry-run"
 argument_list|,
 operator|&
 name|show_only
@@ -700,7 +700,7 @@ name|OPT_BOOLEAN
 argument_list|(
 literal|'v'
 argument_list|,
-name|NULL
+literal|"verbose"
 argument_list|,
 operator|&
 name|verbose
