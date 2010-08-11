@@ -4437,6 +4437,12 @@ name|fn
 operator|=
 name|twoway_merge
 expr_stmt|;
+name|opts
+operator|.
+name|show_all_errors
+operator|=
+literal|1
+expr_stmt|;
 name|set_porcelain_error_msgs
 argument_list|(
 name|opts

@@ -7360,13 +7360,13 @@ name|advice_commit_before_merge
 condition|)
 name|msg
 operator|=
-literal|"Your local changes to '%%s' would be overwritten by %s.  Aborting.\n"
+literal|"Your local changes to the following files would be overwritten by %s:\n%%s"
 literal|"Please, commit your changes or stash them before you can %s."
 expr_stmt|;
 else|else
 name|msg
 operator|=
-literal|"Your local changes to '%%s' would be overwritten by %s.  Aborting."
+literal|"Your local changes to the following files would be overwritten by %s:\n%%s"
 expr_stmt|;
 name|tmp
 operator|=
@@ -7387,7 +7387,7 @@ argument_list|(
 name|cmd2
 argument_list|)
 operator|-
-literal|3
+literal|2
 argument_list|)
 expr_stmt|;
 name|sprintf
@@ -7420,7 +7420,7 @@ index|[
 name|ERROR_NOT_UPTODATE_DIR
 index|]
 operator|=
-literal|"Updating '%s' would lose untracked files in it.  Aborting."
+literal|"Updating the following directories would lose untracked files in it:\n%s"
 expr_stmt|;
 if|if
 condition|(
@@ -7428,13 +7428,13 @@ name|advice_commit_before_merge
 condition|)
 name|msg
 operator|=
-literal|"Untracked working tree file '%%s' would be %s by %s.  Aborting"
+literal|"The following untracked working tree files would be %s by %s:\n%%s"
 literal|"Please move or remove them before you can %s."
 expr_stmt|;
 else|else
 name|msg
 operator|=
-literal|"Untracked working tree file '%%s' would be %s by %s.  Aborting"
+literal|"The following untracked working tree files would be %s by %s:\n%%s"
 expr_stmt|;
 name|tmp
 operator|=
@@ -7529,6 +7529,35 @@ name|ERROR_WOULD_LOSE_UNTRACKED_OVERWRITTEN
 index|]
 operator|=
 name|tmp
+expr_stmt|;
+comment|/* 	 * Special case: ERROR_BIND_OVERLAP refers to a pair of paths, we 	 * cannot easily display it as a list. 	 */
+name|msgs
+index|[
+name|ERROR_BIND_OVERLAP
+index|]
+operator|=
+literal|"Entry '%s' overlaps with '%s'.  Cannot bind."
+expr_stmt|;
+name|msgs
+index|[
+name|ERROR_SPARSE_NOT_UPTODATE_FILE
+index|]
+operator|=
+literal|"Cannot update sparse checkout: the following entries are not up-to-date:\n%s"
+expr_stmt|;
+name|msgs
+index|[
+name|ERROR_WOULD_LOSE_ORPHANED_OVERWRITTEN
+index|]
+operator|=
+literal|"The following Working tree files would be overwritten by sparse checkout update:\n%s"
+expr_stmt|;
+name|msgs
+index|[
+name|ERROR_WOULD_LOSE_ORPHANED_REMOVED
+index|]
+operator|=
+literal|"The following Working tree files would be removed by sparse checkout update:\n%s"
 expr_stmt|;
 block|}
 end_function

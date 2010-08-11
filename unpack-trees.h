@@ -96,6 +96,26 @@ enum|;
 end_enum
 
 begin_struct
+DECL|struct|rejected_paths_list
+struct|struct
+name|rejected_paths_list
+block|{
+DECL|member|path
+name|char
+modifier|*
+name|path
+decl_stmt|;
+DECL|member|next
+name|struct
+name|rejected_paths_list
+modifier|*
+name|next
+decl_stmt|;
+block|}
+struct|;
+end_struct
+
+begin_struct
 DECL|struct|unpack_trees_options
 struct|struct
 name|unpack_trees_options
@@ -143,6 +163,9 @@ name|skip_sparse_checkout
 decl_stmt|,
 DECL|member|gently
 name|gently
+decl_stmt|,
+DECL|member|show_all_errors
+name|show_all_errors
 decl_stmt|;
 DECL|member|prefix
 specifier|const
@@ -169,6 +192,16 @@ specifier|const
 name|char
 modifier|*
 name|msgs
+index|[
+name|NB_UNPACK_TREES_ERROR_TYPES
+index|]
+decl_stmt|;
+comment|/* 	 * Store error messages in an array, each case 	 * corresponding to a error message type 	 */
+DECL|member|unpack_rejects
+name|struct
+name|rejected_paths_list
+modifier|*
+name|unpack_rejects
 index|[
 name|NB_UNPACK_TREES_ERROR_TYPES
 index|]
