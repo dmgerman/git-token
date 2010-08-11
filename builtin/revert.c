@@ -1450,21 +1450,14 @@ block|}
 end_function
 
 begin_function
-DECL|function|help_msg
+DECL|function|print_advice
 specifier|static
-name|char
-modifier|*
-name|help_msg
+name|void
+name|print_advice
 parameter_list|(
 name|void
 parameter_list|)
 block|{
-name|struct
-name|strbuf
-name|helpbuf
-init|=
-name|STRBUF_INIT
-decl_stmt|;
 name|char
 modifier|*
 name|msg
@@ -1478,17 +1471,26 @@ if|if
 condition|(
 name|msg
 condition|)
-return|return
-name|msg
-return|;
-name|strbuf_addstr
+block|{
+name|fprintf
 argument_list|(
-operator|&
-name|helpbuf
+name|stderr
 argument_list|,
-literal|"  After resolving the conflicts,\n"
-literal|"mark the corrected paths with 'git add<paths>' or 'git rm<paths>'\n"
-literal|"and commit the result"
+literal|"%s\n"
+argument_list|,
+name|msg
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+name|advise
+argument_list|(
+literal|"after resolving the conflicts, mark the corrected paths"
+argument_list|)
+expr_stmt|;
+name|advise
+argument_list|(
+literal|"with 'git add<paths>' or 'git rm<paths>'"
 argument_list|)
 expr_stmt|;
 if|if
@@ -1497,45 +1499,22 @@ name|action
 operator|==
 name|CHERRY_PICK
 condition|)
-block|{
-name|strbuf_addf
+name|advise
 argument_list|(
-operator|&
-name|helpbuf
+literal|"and commit the result with 'git commit -c %s'"
 argument_list|,
-literal|" with: \n"
-literal|"\n"
-literal|"        git commit -c %s\n"
-argument_list|,
-name|sha1_to_hex
+name|find_unique_abbrev
 argument_list|(
 name|commit
 operator|->
 name|object
 operator|.
 name|sha1
+argument_list|,
+name|DEFAULT_ABBREV
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-name|strbuf_addch
-argument_list|(
-operator|&
-name|helpbuf
-argument_list|,
-literal|'.'
-argument_list|)
-expr_stmt|;
-return|return
-name|strbuf_detach
-argument_list|(
-operator|&
-name|helpbuf
-argument_list|,
-name|NULL
-argument_list|)
-return|;
 block|}
 end_function
 
@@ -2260,12 +2239,6 @@ name|msgbuf
 init|=
 name|STRBUF_INIT
 decl_stmt|;
-name|struct
-name|strbuf
-name|mebuf
-init|=
-name|STRBUF_INIT
-decl_stmt|;
 name|int
 name|res
 decl_stmt|;
@@ -2755,27 +2728,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|strbuf_addf
-argument_list|(
-operator|&
-name|mebuf
-argument_list|,
-literal|"%s of commit %s"
-argument_list|,
-name|me
-argument_list|,
-name|find_unique_abbrev
-argument_list|(
-name|commit
-operator|->
-name|object
-operator|.
-name|sha1
-argument_list|,
-name|DEFAULT_ABBREV
-argument_list|)
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -2837,16 +2789,6 @@ name|remotes
 init|=
 name|NULL
 decl_stmt|;
-name|strbuf_addf
-argument_list|(
-operator|&
-name|mebuf
-argument_list|,
-literal|" with strategy %s"
-argument_list|,
-name|strategy
-argument_list|)
-expr_stmt|;
 name|write_message
 argument_list|(
 operator|&
@@ -2931,13 +2873,8 @@ operator|.
 name|subject
 argument_list|)
 expr_stmt|;
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-name|help_msg
+name|print_advice
 argument_list|()
-argument_list|)
 expr_stmt|;
 name|rerere
 argument_list|(
@@ -2960,12 +2897,6 @@ name|defmsg
 argument_list|)
 expr_stmt|;
 block|}
-name|strbuf_release
-argument_list|(
-operator|&
-name|mebuf
-argument_list|)
-expr_stmt|;
 name|free_message
 argument_list|(
 operator|&
