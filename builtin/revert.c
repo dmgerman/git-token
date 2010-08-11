@@ -2896,22 +2896,6 @@ argument_list|(
 name|defmsg
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|res
-condition|)
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-literal|"Finished %s.\n"
-argument_list|,
-name|mebuf
-operator|.
-name|buf
-argument_list|)
-expr_stmt|;
 block|}
 name|strbuf_release
 argument_list|(
