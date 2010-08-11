@@ -61,36 +61,39 @@ file|"attr.h"
 end_include
 
 begin_comment
-comment|/*  * Error messages expected by scripts out of plumbing commands such as  * read-tree.  Non-scripted Porcelain is not required to use these messages  * and in fact are encouraged to reword them to better suit their particular  * situation better.  See how "git checkout" replaces not_uptodate_file to  * explain why it does not allow switching between branches when you have  * local changes, for example.  */
+comment|/*  * Error messages expected by scripts out of plumbing commands such as  * read-tree.  Non-scripted Porcelain is not required to use these messages  * and in fact are encouraged to reword them to better suit their particular  * situation better.  See how "git checkout" replaces ERROR_NOT_UPTODATE_FILE to  * explain why it does not allow switching between branches when you have  * local changes, for example.  */
 end_comment
 
 begin_decl_stmt
 DECL|variable|unpack_plumbing_errors
-specifier|static
-name|struct
-name|unpack_trees_error_msgs
+specifier|const
+name|char
+modifier|*
 name|unpack_plumbing_errors
+index|[
+name|NB_UNPACK_TREES_ERROR_TYPES
+index|]
 init|=
 block|{
-comment|/* would_overwrite */
+comment|/* ERROR_WOULD_OVERWRITE */
 literal|"Entry '%s' would be overwritten by merge. Cannot merge."
 block|,
-comment|/* not_uptodate_file */
+comment|/* ERROR_NOT_UPTODATE_FILE */
 literal|"Entry '%s' not uptodate. Cannot merge."
 block|,
-comment|/* not_uptodate_dir */
+comment|/* ERROR_NOT_UPTODATE_DIR */
 literal|"Updating '%s' would lose untracked files in it"
 block|,
-comment|/* would_lose_untracked */
+comment|/* ERROR_WOULD_LOSE_UNTRACKED */
 literal|"Untracked working tree file '%s' would be %s by merge."
 block|,
-comment|/* bind_overlap */
+comment|/* ERROR_BIND_OVERLAP */
 literal|"Entry '%s' overlaps with '%s'.  Cannot bind."
 block|,
-comment|/* sparse_not_uptodate_file */
+comment|/* ERROR_SPARSE_NOT_UPTODATE_FILE */
 literal|"Entry '%s' not uptodate. Cannot update sparse checkout."
 block|,
-comment|/* would_lose_orphaned */
+comment|/* ERROR_WOULD_LOSE_ORPHANED */
 literal|"Working tree file '%s' would be %s by sparse checkout update."
 block|, }
 decl_stmt|;
@@ -104,10 +107,10 @@ name|ERRORMSG
 parameter_list|(
 name|o
 parameter_list|,
-name|fld
+name|type
 parameter_list|)
 define|\
-value|( ((o)&& (o)->msgs.fld) \ 	? ((o)->msgs.fld) \ 	: (unpack_plumbing_errors.fld) )
+value|( ((o)&& (o)->msgs[(type)]) \ 	  ? ((o)->msgs[(type)])      \ 	  : (unpack_plumbing_errors[(type)]) )
 end_define
 
 begin_function
@@ -4271,7 +4274,7 @@ name|ERRORMSG
 argument_list|(
 name|o
 argument_list|,
-name|would_overwrite
+name|ERROR_WOULD_OVERWRITE
 argument_list|)
 argument_list|,
 name|ce
@@ -4565,7 +4568,7 @@ name|ERRORMSG
 argument_list|(
 name|o
 argument_list|,
-name|not_uptodate_file
+name|ERROR_NOT_UPTODATE_FILE
 argument_list|)
 argument_list|)
 return|;
@@ -4600,7 +4603,7 @@ name|ERRORMSG
 argument_list|(
 name|o
 argument_list|,
-name|sparse_not_uptodate_file
+name|ERROR_SPARSE_NOT_UPTODATE_FILE
 argument_list|)
 argument_list|)
 return|;
@@ -4998,7 +5001,7 @@ name|ERRORMSG
 argument_list|(
 name|o
 argument_list|,
-name|not_uptodate_dir
+name|ERROR_NOT_UPTODATE_DIR
 argument_list|)
 argument_list|,
 name|ce
@@ -5314,7 +5317,7 @@ name|ERRORMSG
 argument_list|(
 name|o
 argument_list|,
-name|would_lose_untracked
+name|ERROR_WOULD_LOSE_UNTRACKED
 argument_list|)
 argument_list|,
 name|ce
@@ -5383,7 +5386,7 @@ name|ERRORMSG
 argument_list|(
 name|o
 argument_list|,
-name|would_lose_untracked
+name|ERROR_WOULD_LOSE_UNTRACKED
 argument_list|)
 argument_list|)
 return|;
@@ -5425,7 +5428,7 @@ name|ERRORMSG
 argument_list|(
 name|o
 argument_list|,
-name|would_lose_orphaned
+name|ERROR_WOULD_LOSE_ORPHANED
 argument_list|)
 argument_list|)
 return|;
@@ -6982,7 +6985,7 @@ name|ERRORMSG
 argument_list|(
 name|o
 argument_list|,
-name|bind_overlap
+name|ERROR_BIND_OVERLAP
 argument_list|)
 argument_list|,
 name|a

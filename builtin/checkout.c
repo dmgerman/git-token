@@ -2237,8 +2237,9 @@ expr_stmt|;
 name|topts
 operator|.
 name|msgs
-operator|.
-name|not_uptodate_file
+index|[
+name|ERROR_NOT_UPTODATE_FILE
+index|]
 operator|=
 literal|"You have local changes to '%s'; cannot switch branches."
 expr_stmt|;

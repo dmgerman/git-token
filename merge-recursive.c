@@ -1138,12 +1138,12 @@ operator|=
 operator|&
 name|the_index
 expr_stmt|;
+name|set_porcelain_error_msgs
+argument_list|(
 name|opts
 operator|.
 name|msgs
-operator|=
-name|get_porcelain_error_msgs
-argument_list|()
+argument_list|)
 expr_stmt|;
 name|init_tree_desc_from_tree
 argument_list|(
@@ -7311,55 +7311,61 @@ block|}
 end_function
 
 begin_function
-DECL|function|get_porcelain_error_msgs
-name|struct
-name|unpack_trees_error_msgs
-name|get_porcelain_error_msgs
-parameter_list|(
+DECL|function|set_porcelain_error_msgs
 name|void
+name|set_porcelain_error_msgs
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|msgs
 parameter_list|)
 block|{
-name|struct
-name|unpack_trees_error_msgs
-name|msgs
-init|=
-block|{
-comment|/* would_overwrite */
-literal|"Your local changes to '%s' would be overwritten by merge.  Aborting."
-block|,
-comment|/* not_uptodate_file */
-literal|"Your local changes to '%s' would be overwritten by merge.  Aborting."
-block|,
-comment|/* not_uptodate_dir */
-literal|"Updating '%s' would lose untracked files in it.  Aborting."
-block|,
-comment|/* would_lose_untracked */
-literal|"Untracked working tree file '%s' would be %s by merge.  Aborting"
-block|,
-comment|/* bind_overlap -- will not happen here */
-name|NULL
-block|, 	}
-decl_stmt|;
 if|if
 condition|(
 name|advice_commit_before_merge
 condition|)
-block|{
 name|msgs
-operator|.
-name|would_overwrite
+index|[
+name|ERROR_WOULD_OVERWRITE
+index|]
 operator|=
 name|msgs
-operator|.
-name|not_uptodate_file
+index|[
+name|ERROR_NOT_UPTODATE_FILE
+index|]
 operator|=
 literal|"Your local changes to '%s' would be overwritten by merge.  Aborting.\n"
 literal|"Please, commit your changes or stash them before you can merge."
 expr_stmt|;
-block|}
-return|return
+else|else
 name|msgs
-return|;
+index|[
+name|ERROR_WOULD_OVERWRITE
+index|]
+operator|=
+name|msgs
+index|[
+name|ERROR_NOT_UPTODATE_FILE
+index|]
+operator|=
+literal|"Your local changes to '%s' would be overwritten by merge.  Aborting."
+expr_stmt|;
+name|msgs
+index|[
+name|ERROR_NOT_UPTODATE_DIR
+index|]
+operator|=
+literal|"Updating '%s' would lose untracked files in it.  Aborting."
+expr_stmt|;
+name|msgs
+index|[
+name|ERROR_WOULD_LOSE_UNTRACKED
+index|]
+operator|=
+literal|"Untracked working tree file '%s' would be %s by merge.  Aborting"
+expr_stmt|;
 block|}
 end_function
 
