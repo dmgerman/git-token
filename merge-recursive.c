@@ -7428,13 +7428,13 @@ name|advice_commit_before_merge
 condition|)
 name|msg
 operator|=
-literal|"Untracked working tree file '%%s' would be %%s by %s.  Aborting"
+literal|"Untracked working tree file '%%s' would be %s by %s.  Aborting"
 literal|"Please move or remove them before you can %s."
 expr_stmt|;
 else|else
 name|msg
 operator|=
-literal|"Untracked working tree file '%%s' would be %%s by %s.  Aborting"
+literal|"Untracked working tree file '%%s' would be %s by %s.  Aborting"
 expr_stmt|;
 name|tmp
 operator|=
@@ -7452,10 +7452,15 @@ argument_list|)
 operator|+
 name|strlen
 argument_list|(
+literal|"removed"
+argument_list|)
+operator|+
+name|strlen
+argument_list|(
 name|cmd2
 argument_list|)
 operator|-
-literal|3
+literal|4
 argument_list|)
 expr_stmt|;
 name|sprintf
@@ -7464,6 +7469,8 @@ name|tmp
 argument_list|,
 name|msg
 argument_list|,
+literal|"removed"
+argument_list|,
 name|cmd
 argument_list|,
 name|cmd2
@@ -7471,7 +7478,54 @@ argument_list|)
 expr_stmt|;
 name|msgs
 index|[
-name|ERROR_WOULD_LOSE_UNTRACKED
+name|ERROR_WOULD_LOSE_UNTRACKED_REMOVED
+index|]
+operator|=
+name|tmp
+expr_stmt|;
+name|tmp
+operator|=
+name|xmalloc
+argument_list|(
+name|strlen
+argument_list|(
+name|msg
+argument_list|)
+operator|+
+name|strlen
+argument_list|(
+name|cmd
+argument_list|)
+operator|+
+name|strlen
+argument_list|(
+literal|"overwritten"
+argument_list|)
+operator|+
+name|strlen
+argument_list|(
+name|cmd2
+argument_list|)
+operator|-
+literal|4
+argument_list|)
+expr_stmt|;
+name|sprintf
+argument_list|(
+name|tmp
+argument_list|,
+name|msg
+argument_list|,
+literal|"overwritten"
+argument_list|,
+name|cmd
+argument_list|,
+name|cmd2
+argument_list|)
+expr_stmt|;
+name|msgs
+index|[
+name|ERROR_WOULD_LOSE_UNTRACKED_OVERWRITTEN
 index|]
 operator|=
 name|tmp

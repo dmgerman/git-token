@@ -84,8 +84,11 @@ block|,
 comment|/* ERROR_NOT_UPTODATE_DIR */
 literal|"Updating '%s' would lose untracked files in it"
 block|,
-comment|/* ERROR_WOULD_LOSE_UNTRACKED */
-literal|"Untracked working tree file '%s' would be %s by merge."
+comment|/* ERROR_WOULD_LOSE_UNTRACKED_OVERWRITTEN */
+literal|"Untracked working tree file '%s' would be overwritten by merge."
+block|,
+comment|/* ERROR_WOULD_LOSE_UNTRACKED_REMOVED */
+literal|"Untracked working tree file '%s' would be removed by merge."
 block|,
 comment|/* ERROR_BIND_OVERLAP */
 literal|"Entry '%s' overlaps with '%s'.  Cannot bind."
@@ -93,8 +96,11 @@ block|,
 comment|/* ERROR_SPARSE_NOT_UPTODATE_FILE */
 literal|"Entry '%s' not uptodate. Cannot update sparse checkout."
 block|,
-comment|/* ERROR_WOULD_LOSE_ORPHANED */
-literal|"Working tree file '%s' would be %s by sparse checkout update."
+comment|/* ERROR_WOULD_LOSE_ORPHANED_OVERWRITTEN */
+literal|"Working tree file '%s' would be overwritten by sparse checkout update."
+block|,
+comment|/* ERROR_WOULD_LOSE_ORPHANED_REMOVED */
+literal|"Working tree file '%s' would be removed by sparse checkout update."
 block|, }
 decl_stmt|;
 end_decl_stmt
@@ -646,10 +652,8 @@ name|cache_entry
 modifier|*
 name|ce
 parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|action
+name|enum
+name|unpack_trees_error_types
 parameter_list|,
 name|struct
 name|unpack_trees_options
@@ -859,7 +863,7 @@ name|verify_absent_sparse
 argument_list|(
 name|ce
 argument_list|,
-literal|"overwritten"
+name|ERROR_WOULD_LOSE_UNTRACKED_OVERWRITTEN
 argument_list|,
 name|o
 argument_list|)
@@ -4387,10 +4391,9 @@ name|unpack_trees_options
 modifier|*
 name|o
 parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|error_msg
+name|enum
+name|unpack_trees_error_types
+name|error_type
 parameter_list|)
 block|{
 name|struct
@@ -4513,7 +4516,12 @@ literal|1
 else|:
 name|error
 argument_list|(
-name|error_msg
+name|ERRORMSG
+argument_list|(
+name|o
+argument_list|,
+name|error_type
+argument_list|)
 argument_list|,
 name|ce
 operator|->
@@ -4564,12 +4572,7 @@ name|ce
 argument_list|,
 name|o
 argument_list|,
-name|ERRORMSG
-argument_list|(
-name|o
-argument_list|,
 name|ERROR_NOT_UPTODATE_FILE
-argument_list|)
 argument_list|)
 return|;
 block|}
@@ -4599,12 +4602,7 @@ name|ce
 argument_list|,
 name|o
 argument_list|,
-name|ERRORMSG
-argument_list|(
-name|o
-argument_list|,
 name|ERROR_SPARSE_NOT_UPTODATE_FILE
-argument_list|)
 argument_list|)
 return|;
 block|}
@@ -4662,10 +4660,9 @@ name|cache_entry
 modifier|*
 name|ce
 parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|action
+name|enum
+name|unpack_trees_error_types
+name|error_type
 parameter_list|,
 name|struct
 name|unpack_trees_options
@@ -4690,10 +4687,9 @@ name|cache_entry
 modifier|*
 name|ce
 parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|action
+name|enum
+name|unpack_trees_error_types
+name|error_type
 parameter_list|,
 name|struct
 name|unpack_trees_options
@@ -4772,7 +4768,7 @@ name|verify_clean_submodule
 argument_list|(
 name|ce
 argument_list|,
-name|action
+name|error_type
 argument_list|,
 name|o
 argument_list|)
@@ -5108,20 +5104,14 @@ name|cache_entry
 modifier|*
 name|ce
 parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|action
+name|enum
+name|unpack_trees_error_types
+name|error_type
 parameter_list|,
 name|struct
 name|unpack_trees_options
 modifier|*
 name|o
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|error_msg
 parameter_list|)
 block|{
 name|struct
@@ -5249,7 +5239,7 @@ name|verify_clean_subdirectory
 argument_list|(
 name|ce
 argument_list|,
-name|action
+name|error_type
 argument_list|,
 name|o
 argument_list|)
@@ -5317,14 +5307,12 @@ name|ERRORMSG
 argument_list|(
 name|o
 argument_list|,
-name|ERROR_WOULD_LOSE_UNTRACKED
+name|error_type
 argument_list|)
 argument_list|,
 name|ce
 operator|->
 name|name
-argument_list|,
-name|action
 argument_list|)
 return|;
 block|}
@@ -5345,10 +5333,9 @@ name|cache_entry
 modifier|*
 name|ce
 parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|action
+name|enum
+name|unpack_trees_error_types
+name|error_type
 parameter_list|,
 name|struct
 name|unpack_trees_options
@@ -5378,16 +5365,9 @@ name|verify_absent_1
 argument_list|(
 name|ce
 argument_list|,
-name|action
+name|error_type
 argument_list|,
 name|o
-argument_list|,
-name|ERRORMSG
-argument_list|(
-name|o
-argument_list|,
-name|ERROR_WOULD_LOSE_UNTRACKED
-argument_list|)
 argument_list|)
 return|;
 block|}
@@ -5404,10 +5384,9 @@ name|cache_entry
 modifier|*
 name|ce
 parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|action
+name|enum
+name|unpack_trees_error_types
+name|error_type
 parameter_list|,
 name|struct
 name|unpack_trees_options
@@ -5415,21 +5394,30 @@ modifier|*
 name|o
 parameter_list|)
 block|{
+name|enum
+name|unpack_trees_error_types
+name|orphaned_error
+init|=
+name|error_type
+decl_stmt|;
+if|if
+condition|(
+name|orphaned_error
+operator|==
+name|ERROR_WOULD_LOSE_UNTRACKED_OVERWRITTEN
+condition|)
+name|orphaned_error
+operator|=
+name|ERROR_WOULD_LOSE_ORPHANED_OVERWRITTEN
+expr_stmt|;
 return|return
 name|verify_absent_1
 argument_list|(
 name|ce
 argument_list|,
-name|action
+name|orphaned_error
 argument_list|,
 name|o
-argument_list|,
-name|ERRORMSG
-argument_list|(
-name|o
-argument_list|,
-name|ERROR_WOULD_LOSE_ORPHANED
-argument_list|)
 argument_list|)
 return|;
 block|}
@@ -5474,7 +5462,7 @@ name|verify_absent
 argument_list|(
 name|merge
 argument_list|,
-literal|"overwritten"
+name|ERROR_WOULD_LOSE_UNTRACKED_OVERWRITTEN
 argument_list|,
 name|o
 argument_list|)
@@ -5625,7 +5613,7 @@ name|verify_absent
 argument_list|(
 name|ce
 argument_list|,
-literal|"removed"
+name|ERROR_WOULD_LOSE_UNTRACKED_REMOVED
 argument_list|,
 name|o
 argument_list|)
@@ -6339,7 +6327,7 @@ name|verify_absent
 argument_list|(
 name|ce
 argument_list|,
-literal|"removed"
+name|ERROR_WOULD_LOSE_UNTRACKED_REMOVED
 argument_list|,
 name|o
 argument_list|)
