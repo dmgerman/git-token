@@ -2234,14 +2234,14 @@ operator|=
 operator|&
 name|the_index
 expr_stmt|;
+name|set_porcelain_error_msgs
+argument_list|(
 name|topts
 operator|.
 name|msgs
-index|[
-name|ERROR_NOT_UPTODATE_FILE
-index|]
-operator|=
-literal|"You have local changes to '%s'; cannot switch branches."
+argument_list|,
+literal|"checkout"
+argument_list|)
 expr_stmt|;
 name|refresh_cache
 argument_list|(

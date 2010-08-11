@@ -61,7 +61,7 @@ file|"attr.h"
 end_include
 
 begin_comment
-comment|/*  * Error messages expected by scripts out of plumbing commands such as  * read-tree.  Non-scripted Porcelain is not required to use these messages  * and in fact are encouraged to reword them to better suit their particular  * situation better.  See how "git checkout" replaces ERROR_NOT_UPTODATE_FILE to  * explain why it does not allow switching between branches when you have  * local changes, for example.  */
+comment|/*  * Error messages expected by scripts out of plumbing commands such as  * read-tree.  Non-scripted Porcelain is not required to use these messages  * and in fact are encouraged to reword them to better suit their particular  * situation better.  See how "git checkout" and "git merge" replaces  * them using set_porcelain_error_msgs(), for example.  */
 end_comment
 
 begin_decl_stmt

@@ -4442,6 +4442,8 @@ argument_list|(
 name|opts
 operator|.
 name|msgs
+argument_list|,
+literal|"merge"
 argument_list|)
 expr_stmt|;
 name|trees
