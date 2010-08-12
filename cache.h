@@ -2370,7 +2370,7 @@ parameter_list|,
 name|alloc
 parameter_list|)
 define|\
-value|do { \ 		if ((nr)> alloc) { \ 			if (alloc_nr(alloc)< (nr)) \ 				alloc = (nr); \ 			else \ 				alloc = alloc_nr(alloc); \ 			x = xrealloc((x), alloc * sizeof(*(x))); \ 		} \ 	} while(0)
+value|do { \ 		if ((nr)> alloc) { \ 			if (alloc_nr(alloc)< (nr)) \ 				alloc = (nr); \ 			else \ 				alloc = alloc_nr(alloc); \ 			x = xrealloc((x), alloc * sizeof(*(x))); \ 		} \ 	} while (0)
 end_define
 
 begin_comment
