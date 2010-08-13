@@ -24014,14 +24014,6 @@ modifier|*
 name|options
 parameter_list|)
 block|{
-comment|/* We never run this function more than one time, because the 	 * rename/copy detection logic can only run once. 	 */
-if|if
-condition|(
-name|diff_queued_diff
-operator|.
-name|run
-condition|)
-return|return;
 if|if
 condition|(
 name|options
@@ -24033,6 +24025,15 @@ argument_list|(
 name|options
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|options
+operator|->
+name|found_follow
+condition|)
+block|{
+comment|/* See try_to_follow_renames() in tree-diff.c */
 if|if
 condition|(
 name|options
@@ -24072,6 +24073,7 @@ condition|)
 name|diffcore_merge_broken
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|options
@@ -24102,6 +24104,14 @@ operator|->
 name|orderfile
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|options
+operator|->
+name|found_follow
+condition|)
+comment|/* See try_to_follow_renames() in tree-diff.c */
 name|diff_resolve_rename_copy
 argument_list|()
 expr_stmt|;
@@ -24141,11 +24151,11 @@ argument_list|,
 name|HAS_CHANGES
 argument_list|)
 expr_stmt|;
-name|diff_queued_diff
-operator|.
-name|run
+name|options
+operator|->
+name|found_follow
 operator|=
-literal|1
+literal|0
 expr_stmt|;
 block|}
 end_function
