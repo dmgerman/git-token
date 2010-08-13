@@ -97,7 +97,7 @@ name|curl_global_cleanup
 parameter_list|()
 value|do {
 comment|/* nothing */
-value|} while(0)
+value|} while (0)
 end_define
 
 begin_endif
@@ -123,7 +123,7 @@ name|a
 parameter_list|)
 value|do {
 comment|/* nothing */
-value|} while(0)
+value|} while (0)
 end_define
 
 begin_endif

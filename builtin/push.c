@@ -672,8 +672,8 @@ argument_list|(
 name|stderr
 argument_list|,
 literal|"To prevent you from losing history, non-fast-forward updates were rejected\n"
-literal|"Merge the remote changes before pushing again.  See the 'Note about\n"
-literal|"fast-forwards' section of 'git push --help' for details.\n"
+literal|"Merge the remote changes (e.g. 'git pull') before pushing again.  See the\n"
+literal|"'Note about fast-forwards' section of 'git push --help' for details.\n"
 argument_list|)
 expr_stmt|;
 block|}
