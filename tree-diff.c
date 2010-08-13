@@ -2136,6 +2136,10 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+operator|*
+name|base
+operator|&&
 name|DIFF_OPT_TST
 argument_list|(
 name|opt
