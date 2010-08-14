@@ -268,8 +268,14 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"data %zd\n%s%s\n"
+literal|"data %"
+name|PRIu32
+literal|"\n%s%s\n"
 argument_list|,
+call|(
+name|uint32_t
+call|)
+argument_list|(
 name|strlen
 argument_list|(
 name|log
@@ -278,6 +284,7 @@ operator|+
 name|strlen
 argument_list|(
 name|gitsvnline
+argument_list|)
 argument_list|)
 argument_list|,
 name|log
