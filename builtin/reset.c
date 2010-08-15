@@ -1721,7 +1721,7 @@ name|MIXED
 condition|)
 name|warning
 argument_list|(
-literal|"--mixed option is deprecated with paths."
+literal|"--mixed with paths is deprecated; use 'git reset --<paths>' instead."
 argument_list|)
 expr_stmt|;
 elseif|else
