@@ -17634,7 +17634,7 @@ parameter_list|,
 specifier|const
 name|char
 modifier|*
-name|unused_prefix
+name|prefix_
 parameter_list|)
 block|{
 name|int
@@ -17647,6 +17647,11 @@ literal|0
 decl_stmt|;
 name|int
 name|is_not_gitdir
+init|=
+operator|!
+name|startup_info
+operator|->
+name|have_repository
 decl_stmt|;
 name|int
 name|binary
@@ -18048,11 +18053,7 @@ block|}
 decl_stmt|;
 name|prefix
 operator|=
-name|setup_git_directory_gently
-argument_list|(
-operator|&
-name|is_not_gitdir
-argument_list|)
+name|prefix_
 expr_stmt|;
 name|prefix_length
 operator|=
