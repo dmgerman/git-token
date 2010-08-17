@@ -1,4 +1,16 @@
 begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
+begin_include
+include|#
+directive|include
+file|<stdio.h>
+end_include
+
+begin_include
+include|#
+directive|include
+file|<stddef.h>
+end_include
+
 begin_comment
 comment|/* Definitions for data structures and routines for the regular    expression library.    Copyright (C) 1985,1989-93,1995-98,2000,2001,2002,2003,2005,2006,2008    Free Software Foundation, Inc.    This file is part of the GNU C Library.     The GNU C Library is free software; you can redistribute it and/or    modify it under the terms of the GNU Lesser General Public    License as published by the Free Software Foundation; either    version 2.1 of the License, or (at your option) any later version.     The GNU C Library is distributed in the hope that it will be useful,    but WITHOUT ANY WARRANTY; without even the implied warranty of    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU    Lesser General Public License for more details.     You should have received a copy of the GNU Lesser General Public    License along with the GNU C Library; if not, write to the Free    Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA    02110-1301 USA.  */
 end_comment
