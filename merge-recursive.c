@@ -6371,7 +6371,7 @@ operator|->
 name|mode
 condition|)
 block|{
-comment|/* 					 * This messaged is part of 					 * t6022 test. If you change 					 * it update the test too. 					 */
+comment|/* 					 * This message is part of 					 * t6022 test. If you change 					 * it update the test too. 					 */
 name|output
 argument_list|(
 name|o
