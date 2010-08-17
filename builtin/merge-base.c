@@ -130,6 +130,8 @@ init|=
 block|{
 literal|"git merge-base [-a|--all] [--octopus]<commit><commit>..."
 block|,
+literal|"git merge-base --independent<commit>..."
+block|,
 name|NULL
 block|}
 decl_stmt|;
@@ -203,10 +205,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|show_octopus_merge_bases
+DECL|function|handle_octopus
 specifier|static
 name|int
-name|show_octopus_merge_bases
+name|handle_octopus
 parameter_list|(
 name|int
 name|count
@@ -216,6 +218,9 @@ name|char
 modifier|*
 modifier|*
 name|args
+parameter_list|,
+name|int
+name|reduce
 parameter_list|,
 name|int
 name|show_all
@@ -236,6 +241,14 @@ decl_stmt|;
 name|int
 name|i
 decl_stmt|;
+if|if
+condition|(
+name|reduce
+condition|)
+name|show_all
+operator|=
+literal|1
+expr_stmt|;
 for|for
 control|(
 name|i
@@ -249,7 +262,7 @@ operator|>=
 literal|0
 condition|;
 name|i
-operator|++
+operator|--
 control|)
 name|commit_list_insert
 argument_list|(
@@ -267,6 +280,13 @@ argument_list|)
 expr_stmt|;
 name|result
 operator|=
+name|reduce
+condition|?
+name|reduce_heads
+argument_list|(
+name|revs
+argument_list|)
+else|:
 name|get_octopus_merge_bases
 argument_list|(
 name|revs
@@ -363,6 +383,11 @@ name|octopus
 init|=
 literal|0
 decl_stmt|;
+name|int
+name|reduce
+init|=
+literal|0
+decl_stmt|;
 name|struct
 name|option
 name|options
@@ -391,6 +416,18 @@ operator|&
 name|octopus
 argument_list|,
 literal|"find ancestors for a single n-way merge"
+argument_list|)
+block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|0
+argument_list|,
+literal|"independent"
+argument_list|,
+operator|&
+name|reduce
+argument_list|,
+literal|"list revs not reachable from others"
 argument_list|)
 block|,
 name|OPT_END
@@ -426,6 +463,9 @@ condition|(
 operator|!
 name|octopus
 operator|&&
+operator|!
+name|reduce
+operator|&&
 name|argc
 operator|<
 literal|2
@@ -439,14 +479,33 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|reduce
+operator|&&
+operator|(
+name|show_all
+operator|||
 name|octopus
+operator|)
+condition|)
+name|die
+argument_list|(
+literal|"--independent cannot be used with other options"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|octopus
+operator|||
+name|reduce
 condition|)
 return|return
-name|show_octopus_merge_bases
+name|handle_octopus
 argument_list|(
 name|argc
 argument_list|,
 name|argv
+argument_list|,
+name|reduce
 argument_list|,
 name|show_all
 argument_list|)
