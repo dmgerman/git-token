@@ -29,6 +29,12 @@ directive|include
 file|"builtin.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"submodule.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|log_tree_opt
 specifier|static
@@ -707,6 +713,9 @@ name|opt
 argument_list|,
 name|prefix
 argument_list|)
+expr_stmt|;
+name|gitmodules_config
+argument_list|()
 expr_stmt|;
 name|git_config
 argument_list|(
