@@ -1692,12 +1692,6 @@ argument_list|)
 expr_stmt|;
 name|rev
 operator|.
-name|abbrev
-operator|=
-literal|0
-expr_stmt|;
-name|rev
-operator|.
 name|diffopt
 operator|.
 name|output_format
