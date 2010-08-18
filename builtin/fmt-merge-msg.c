@@ -227,15 +227,7 @@ name|struct
 name|string_list
 name|srcs
 init|=
-block|{
-name|NULL
-block|,
-literal|0
-block|,
-literal|0
-block|,
-literal|1
-block|}
+name|STRING_LIST_INIT_DUP
 decl_stmt|;
 end_decl_stmt
 
@@ -246,15 +238,7 @@ name|struct
 name|string_list
 name|origins
 init|=
-block|{
-name|NULL
-block|,
-literal|0
-block|,
-literal|0
-block|,
-literal|1
-block|}
+name|STRING_LIST_INIT_DUP
 decl_stmt|;
 end_decl_stmt
 
@@ -959,15 +943,7 @@ name|struct
 name|string_list
 name|subjects
 init|=
-block|{
-name|NULL
-block|,
-literal|0
-block|,
-literal|0
-block|,
-literal|1
-block|}
+name|STRING_LIST_INIT_DUP
 decl_stmt|;
 name|int
 name|flags
