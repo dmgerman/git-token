@@ -1826,6 +1826,12 @@ name|diff_opts
 argument_list|)
 expr_stmt|;
 comment|/* Go through the new set of filepairing, and see if we find a more interesting one */
+name|opt
+operator|->
+name|found_follow
+operator|=
+literal|0
+expr_stmt|;
 for|for
 control|(
 name|i
@@ -1933,6 +1939,13 @@ name|paths
 argument_list|,
 name|opt
 argument_list|)
+expr_stmt|;
+comment|/* 			 * The caller expects us to return a set of vanilla 			 * filepairs to let a later call to diffcore_std() 			 * it makes to sort the renames out (among other 			 * things), but we already have found renames 			 * ourselves; signal diffcore_std() not to muck with 			 * rename information. 			 */
+name|opt
+operator|->
+name|found_follow
+operator|=
+literal|1
 expr_stmt|;
 break|break;
 block|}
@@ -2136,6 +2149,10 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+operator|*
+name|base
+operator|&&
 name|DIFF_OPT_TST
 argument_list|(
 name|opt

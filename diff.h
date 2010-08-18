@@ -757,6 +757,11 @@ DECL|member|found_changes
 name|int
 name|found_changes
 decl_stmt|;
+comment|/* to support internal diff recursion by --follow hack*/
+DECL|member|found_follow
+name|int
+name|found_follow
+decl_stmt|;
 DECL|member|file
 name|FILE
 modifier|*
