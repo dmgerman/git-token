@@ -809,6 +809,8 @@ operator|!
 name|is_bare_repository
 argument_list|()
 operator|&&
+name|head
+operator|&&
 operator|!
 name|strcmp
 argument_list|(
