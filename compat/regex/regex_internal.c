@@ -3682,6 +3682,9 @@ block|}
 block|}
 else|else
 block|{
+ifdef|#
+directive|ifdef
+name|RE_ENABLE_I18N
 comment|/* No, skip all characters until IDX.  */
 name|int
 name|prev_valid_len
@@ -3690,9 +3693,6 @@ name|pstr
 operator|->
 name|valid_len
 decl_stmt|;
-ifdef|#
-directive|ifdef
-name|RE_ENABLE_I18N
 if|if
 condition|(
 name|BE

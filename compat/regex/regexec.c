@@ -15057,11 +15057,16 @@ decl_stmt|;
 name|int
 name|cur_idx
 decl_stmt|;
+ifdef|#
+directive|ifdef
+name|RE_ENABLE_I18N
 name|reg_errcode_t
 name|err
 init|=
 name|REG_NOERROR
 decl_stmt|;
+endif|#
+directive|endif
 name|re_node_set
 name|union_set
 decl_stmt|;
