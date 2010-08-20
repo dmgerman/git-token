@@ -3021,7 +3021,13 @@ operator|->
 name|name
 argument_list|)
 expr_stmt|;
-else|else
+elseif|else
+if|if
+condition|(
+name|opts
+operator|->
+name|new_branch
+condition|)
 name|fprintf
 argument_list|(
 name|stderr
@@ -3035,6 +3041,18 @@ condition|?
 literal|" and reset"
 else|:
 literal|" a new"
+argument_list|,
+name|new
+operator|->
+name|name
+argument_list|)
+expr_stmt|;
+else|else
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"Switched to branch '%s'\n"
 argument_list|,
 name|new
 operator|->
