@@ -6371,9 +6371,6 @@ operator|->
 name|mode
 condition|)
 block|{
-name|int
-name|i
-decl_stmt|;
 comment|/* 					 * This message is part of 					 * t6022 test. If you change 					 * it update the test too. 					 */
 name|output
 argument_list|(
@@ -6387,20 +6384,6 @@ name|ren1_dst
 argument_list|)
 expr_stmt|;
 comment|/* There may be higher stage entries left 					 * in the index (e.g. due to a D/F 					 * conflict) that need to be resolved. 					 */
-for|for
-control|(
-name|i
-operator|=
-literal|1
-init|;
-name|i
-operator|<=
-literal|3
-condition|;
-name|i
-operator|++
-control|)
-block|{
 if|if
 condition|(
 operator|!
@@ -6410,12 +6393,23 @@ name|dst_entry
 operator|->
 name|stages
 index|[
-name|i
+literal|2
+index|]
+operator|.
+name|mode
+operator|!=
+operator|!
+name|ren1
+operator|->
+name|dst_entry
+operator|->
+name|stages
+index|[
+literal|3
 index|]
 operator|.
 name|mode
 condition|)
-continue|continue;
 name|ren1
 operator|->
 name|dst_entry
@@ -6424,8 +6418,6 @@ name|processed
 operator|=
 literal|0
 expr_stmt|;
-break|break;
-block|}
 block|}
 else|else
 block|{
