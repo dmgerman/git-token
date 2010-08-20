@@ -170,6 +170,12 @@ name|date_mode
 operator|=
 name|DATE_NORMAL
 expr_stmt|;
+name|ctx
+operator|.
+name|abbrev
+operator|=
+name|DEFAULT_ABBREV
+expr_stmt|;
 if|if
 condition|(
 name|src

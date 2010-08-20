@@ -6232,12 +6232,6 @@ argument_list|)
 expr_stmt|;
 name|rev
 operator|.
-name|abbrev
-operator|=
-literal|0
-expr_stmt|;
-name|rev
-operator|.
 name|diff
 operator|=
 literal|1
