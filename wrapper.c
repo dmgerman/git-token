@@ -206,7 +206,13 @@ name|ret
 condition|)
 name|die
 argument_list|(
-literal|"Out of memory, malloc failed"
+literal|"Out of memory, malloc failed (tried to allocate %lu bytes)"
+argument_list|,
+operator|(
+name|unsigned
+name|long
+operator|)
+name|size
 argument_list|)
 expr_stmt|;
 block|}
