@@ -211,6 +211,28 @@ literal|"|[-+*/<>%&^|=!]=|--|\\+\\+|<<=?|>>=?|&&|\\|\\||::|->"
 literal|"|[^[:space:]]|[\x80-\xff]+"
 argument_list|)
 block|,
+name|PATTERNS
+argument_list|(
+literal|"csharp"
+argument_list|,
+comment|/* Keywords */
+literal|"!^[ \t]*(do|while|for|if|else|instanceof|new|return|switch|case|throw|catch|using)\n"
+comment|/* Methods and constructors */
+literal|"^[ \t]*(((static|public|internal|private|protected|new|virtual|sealed|override|unsafe)[ \t]+)*[][<>@.~_[:alnum:]]+[ \t]+[<>@._[:alnum:]]+[ \t]*\\(.*\\))[ \t]*$\n"
+comment|/* Properties */
+literal|"^[ \t]*(((static|public|internal|private|protected|new|virtual|sealed|override|unsafe)[ \t]+)*[][<>@.~_[:alnum:]]+[ \t]+[@._[:alnum:]]+)[ \t]*$\n"
+comment|/* Type definitions */
+literal|"^[ \t]*(((static|public|internal|private|protected|new|unsafe|sealed|abstract|partial)[ \t]+)*(class|enum|interface|struct)[ \t]+.*)$\n"
+comment|/* Namespace */
+literal|"^[ \t]*(namespace[ \t]+.*)$"
+argument_list|,
+comment|/* -- */
+literal|"[a-zA-Z_][a-zA-Z0-9_]*"
+literal|"|[-+0-9.e]+[fFlL]?|0[xXbB]?[0-9a-fA-F]+[lL]?"
+literal|"|[-+*/<>%&^|=!]=|--|\\+\\+|<<=?|>>=?|&&|\\|\\||::|->"
+literal|"|[^[:space:]]|[\x80-\xff]+"
+argument_list|)
+block|,
 block|{
 literal|"default"
 block|,
