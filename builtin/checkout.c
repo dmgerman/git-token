@@ -2239,13 +2239,14 @@ operator|=
 operator|&
 name|the_index
 expr_stmt|;
+name|set_porcelain_error_msgs
+argument_list|(
 name|topts
 operator|.
 name|msgs
-operator|.
-name|not_uptodate_file
-operator|=
-literal|"You have local changes to '%s'; cannot switch branches."
+argument_list|,
+literal|"checkout"
+argument_list|)
 expr_stmt|;
 name|refresh_cache
 argument_list|(
@@ -2346,6 +2347,12 @@ operator|->
 name|exclude_per_dir
 operator|=
 literal|".gitignore"
+expr_stmt|;
+name|topts
+operator|.
+name|show_all_errors
+operator|=
+literal|1
 expr_stmt|;
 name|tree
 operator|=
