@@ -127,6 +127,39 @@ return|;
 block|}
 end_function
 
+begin_define
+DECL|macro|SPLIT_CMDLINE_BAD_ENDING
+define|#
+directive|define
+name|SPLIT_CMDLINE_BAD_ENDING
+value|1
+end_define
+
+begin_define
+DECL|macro|SPLIT_CMDLINE_UNCLOSED_QUOTE
+define|#
+directive|define
+name|SPLIT_CMDLINE_UNCLOSED_QUOTE
+value|2
+end_define
+
+begin_decl_stmt
+DECL|variable|split_cmdline_errors
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|split_cmdline_errors
+index|[]
+init|=
+block|{
+literal|"cmdline ends with \\"
+block|,
+literal|"unclosed quote"
+block|}
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|split_cmdline
 name|int
@@ -356,10 +389,8 @@ operator|=
 name|NULL
 expr_stmt|;
 return|return
-name|error
-argument_list|(
-literal|"cmdline ends with \\"
-argument_list|)
+operator|-
+name|SPLIT_CMDLINE_BAD_ENDING
 return|;
 block|}
 block|}
@@ -400,10 +431,8 @@ operator|=
 name|NULL
 expr_stmt|;
 return|return
-name|error
-argument_list|(
-literal|"unclosed quote"
-argument_list|)
+operator|-
+name|SPLIT_CMDLINE_UNCLOSED_QUOTE
 return|;
 block|}
 name|ALLOC_GROW
@@ -430,6 +459,29 @@ name|NULL
 expr_stmt|;
 return|return
 name|count
+return|;
+block|}
+end_function
+
+begin_function
+DECL|function|split_cmdline_strerror
+specifier|const
+name|char
+modifier|*
+name|split_cmdline_strerror
+parameter_list|(
+name|int
+name|split_cmdline_errno
+parameter_list|)
+block|{
+return|return
+name|split_cmdline_errors
+index|[
+operator|-
+name|split_cmdline_errno
+operator|-
+literal|1
+index|]
 return|;
 block|}
 end_function

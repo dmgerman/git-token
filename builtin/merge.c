@@ -2878,9 +2878,14 @@ literal|0
 condition|)
 name|die
 argument_list|(
-literal|"Bad branch.%s.mergeoptions string"
+literal|"Bad branch.%s.mergeoptions string: %s"
 argument_list|,
 name|branch
+argument_list|,
+name|split_cmdline_strerror
+argument_list|(
+name|argc
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|argv
