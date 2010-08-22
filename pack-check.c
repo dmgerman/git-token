@@ -458,7 +458,7 @@ name|err
 operator|=
 name|error
 argument_list|(
-literal|"%s SHA1 does not match its inddex"
+literal|"%s SHA1 does not match its index"
 argument_list|,
 name|p
 operator|->

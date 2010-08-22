@@ -1349,7 +1349,7 @@ condition|)
 name|max_cols
 operator|++
 expr_stmt|;
-comment|/* 	 * We added a column for the the current commit as part of 	 * graph->num_parents.  If the current commit was already in 	 * graph->columns, then we have double counted it. 	 */
+comment|/* 	 * We added a column for the current commit as part of 	 * graph->num_parents.  If the current commit was already in 	 * graph->columns, then we have double counted it. 	 */
 if|if
 condition|(
 name|is_commit_in_existing_columns
