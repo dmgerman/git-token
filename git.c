@@ -794,7 +794,7 @@ name|git_usage_string
 argument_list|)
 expr_stmt|;
 block|}
-name|git_config_parse_parameter
+name|git_config_push_parameter
 argument_list|(
 operator|(
 operator|*

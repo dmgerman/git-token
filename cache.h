@@ -1885,6 +1885,14 @@ value|"GIT_CONFIG"
 end_define
 
 begin_define
+DECL|macro|CONFIG_DATA_ENVIRONMENT
+define|#
+directive|define
+name|CONFIG_DATA_ENVIRONMENT
+value|"GIT_CONFIG_PARAMETERS"
+end_define
+
+begin_define
 DECL|macro|EXEC_PATH_ENVIRONMENT
 define|#
 directive|define
@@ -6987,6 +6995,19 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|void
+name|git_config_push_parameter
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|text
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|int
 name|git_config_parse_parameter
 parameter_list|(
@@ -6994,6 +7015,16 @@ specifier|const
 name|char
 modifier|*
 name|text
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|git_config_parse_environment
+parameter_list|(
+name|void
 parameter_list|)
 function_decl|;
 end_function_decl
