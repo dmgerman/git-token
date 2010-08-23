@@ -1477,6 +1477,32 @@ name|DIFF_PICKAXE_REGEX
 value|2
 end_define
 
+begin_define
+DECL|macro|DIFF_PICKAXE_KIND_S
+define|#
+directive|define
+name|DIFF_PICKAXE_KIND_S
+value|4
+end_define
+
+begin_comment
+DECL|macro|DIFF_PICKAXE_KIND_S
+comment|/* traditional plumbing counter */
+end_comment
+
+begin_define
+DECL|macro|DIFF_PICKAXE_KIND_G
+define|#
+directive|define
+name|DIFF_PICKAXE_KIND_G
+value|8
+end_define
+
+begin_comment
+DECL|macro|DIFF_PICKAXE_KIND_G
+comment|/* grep in the patch */
+end_comment
+
 begin_function_decl
 specifier|extern
 name|void
