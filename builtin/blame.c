@@ -12252,7 +12252,7 @@ name|blame_copy_score
 operator|=
 name|BLAME_DEFAULT_COPY_SCORE
 expr_stmt|;
-comment|/* 	 * We have collected options unknown to us in argv[1..unk] 	 * which are to be passed to revision machinery if we are 	 * going to do the "bottom" processing. 	 * 	 * The remaining are: 	 * 	 * (1) if dashdash_pos != 0, its either 	 *     "blame [revisions] --<path>" or 	 *     "blame --<path><rev>" 	 * 	 * (2) otherwise, its one of the two: 	 *     "blame [revisions]<path>" 	 *     "blame<path><rev>" 	 * 	 * Note that we must strip out<path> from the arguments: we do not 	 * want the path pruning but we may want "bottom" processing. 	 */
+comment|/* 	 * We have collected options unknown to us in argv[1..unk] 	 * which are to be passed to revision machinery if we are 	 * going to do the "bottom" processing. 	 * 	 * The remaining are: 	 * 	 * (1) if dashdash_pos != 0, it is either 	 *     "blame [revisions] --<path>" or 	 *     "blame --<path><rev>" 	 * 	 * (2) otherwise, it is one of the two: 	 *     "blame [revisions]<path>" 	 *     "blame<path><rev>" 	 * 	 * Note that we must strip out<path> from the arguments: we do not 	 * want the path pruning but we may want "bottom" processing. 	 */
 if|if
 condition|(
 name|dashdash_pos

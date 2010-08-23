@@ -9652,7 +9652,7 @@ comment|/* not emacs */
 end_comment
 
 begin_comment
-comment|/* re_match_2 matches the compiled pattern in BUFP against the    the (virtual) concatenation of STRING1 and STRING2 (of length SIZE1    and SIZE2, respectively).  We start matching at POS, and stop    matching at STOP.     If REGS is non-null and the `no_sub' field of BUFP is nonzero, we    store offsets for the substring each group matched in REGS.  See the    documentation for exactly how many groups we fill.     We return -1 if no match, -2 if an internal error (such as the    failure stack overflowing).  Otherwise, we return the length of the    matched substring.  */
+comment|/* re_match_2 matches the compiled pattern in BUFP against the    (virtual) concatenation of STRING1 and STRING2 (of length SIZE1    and SIZE2, respectively).  We start matching at POS, and stop    matching at STOP.     If REGS is non-null and the `no_sub' field of BUFP is nonzero, we    store offsets for the substring each group matched in REGS.  See the    documentation for exactly how many groups we fill.     We return -1 if no match, -2 if an internal error (such as the    failure stack overflowing).  Otherwise, we return the length of the    matched substring.  */
 end_comment
 
 begin_function
