@@ -819,11 +819,17 @@ operator|==
 operator|-
 literal|1
 condition|)
+block|{
 name|die
 argument_list|(
-literal|"Sorry, the interactive git-shell is not enabled"
+literal|"Interactive git shell is not enabled.\n"
+literal|"hint: ~/"
+name|COMMAND_DIR
+literal|" should exist "
+literal|"and have read and execute access."
 argument_list|)
 expr_stmt|;
+block|}
 name|run_shell
 argument_list|()
 expr_stmt|;
