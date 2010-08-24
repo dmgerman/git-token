@@ -1989,7 +1989,7 @@ DECL|macro|LOCAL_REPO_ENV_SIZE
 define|#
 directive|define
 name|LOCAL_REPO_ENV_SIZE
-value|8
+value|9
 end_define
 
 begin_decl_stmt
