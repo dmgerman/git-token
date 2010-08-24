@@ -2464,12 +2464,15 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 else|else
-name|fprintf
+block|{
+name|free
 argument_list|(
-name|stderr
-argument_list|,
-literal|"warning: Log for '%.*s' only has "
-literal|"%d entries.\n"
+name|real_ref
+argument_list|)
+expr_stmt|;
+name|die
+argument_list|(
+literal|"Log for '%.*s' only has %d entries."
 argument_list|,
 name|len
 argument_list|,
@@ -2478,6 +2481,7 @@ argument_list|,
 name|co_cnt
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 name|free
