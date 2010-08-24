@@ -1949,9 +1949,9 @@ specifier|static
 specifier|const
 name|char
 modifier|*
-name|warning
+name|warn_msg
 init|=
-literal|"warning: refname '%.*s' is ambiguous.\n"
+literal|"refname '%.*s' is ambiguous."
 decl_stmt|;
 name|char
 modifier|*
@@ -2229,11 +2229,9 @@ name|refs_found
 operator|>
 literal|1
 condition|)
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
 name|warning
+argument_list|(
+name|warn_msg
 argument_list|,
 name|len
 argument_list|,
@@ -2442,12 +2440,10 @@ if|if
 condition|(
 name|at_time
 condition|)
-name|fprintf
+name|warning
 argument_list|(
-name|stderr
-argument_list|,
-literal|"warning: Log for '%.*s' only goes "
-literal|"back to %s.\n"
+literal|"Log for '%.*s' only goes "
+literal|"back to %s."
 argument_list|,
 name|len
 argument_list|,
