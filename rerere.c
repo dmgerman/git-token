@@ -2085,7 +2085,7 @@ index|]
 argument_list|,
 literal|"theirs"
 argument_list|,
-literal|0
+name|NULL
 argument_list|)
 expr_stmt|;
 for|for
