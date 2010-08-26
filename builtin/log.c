@@ -701,6 +701,9 @@ name|decoration_style
 argument_list|)
 expr_stmt|;
 block|}
+name|setup_pager
+argument_list|()
+expr_stmt|;
 block|}
 end_function
 
@@ -2599,10 +2602,6 @@ operator|.
 name|always_show_header
 operator|=
 literal|1
-expr_stmt|;
-comment|/* 	 * We get called through "git reflog", so unlike the other log 	 * routines, we need to set up our pager manually.. 	 */
-name|setup_pager
-argument_list|()
 expr_stmt|;
 return|return
 name|cmd_log_walk
