@@ -189,7 +189,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/* Helper function that does both of the above and returns true for success */
+comment|/*  * Helper function that does both tree_entry_extract() and update_tree_entry()  * and returns true for success  */
 end_comment
 
 begin_function_decl
