@@ -420,6 +420,16 @@ name|opts
 operator|->
 name|variant
 expr_stmt|;
+name|xmp
+operator|.
+name|xpp
+operator|.
+name|flags
+operator|=
+name|opts
+operator|->
+name|xdl_opts
+expr_stmt|;
 if|if
 condition|(
 name|git_xmerge_style

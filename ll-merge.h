@@ -40,6 +40,10 @@ name|renormalize
 range|:
 literal|1
 decl_stmt|;
+DECL|member|xdl_opts
+name|long
+name|xdl_opts
+decl_stmt|;
 block|}
 struct|;
 end_struct
