@@ -661,7 +661,7 @@ operator|->
 name|nr_paths
 condition|)
 return|return
-literal|1
+literal|2
 return|;
 name|sha1
 operator|=
