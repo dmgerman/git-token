@@ -268,6 +268,23 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|int
+name|parse_merge_opt
+parameter_list|(
+name|struct
+name|merge_options
+modifier|*
+name|out
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|s
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/* builtin/merge.c */
 end_comment
