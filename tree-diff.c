@@ -599,7 +599,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Is a tree entry interesting given the pathspec we have?  *  * Return:  *  - 2 for "yes, and all subsequent entries will be"  *  - 1 for yes  *  - zero for no  *  - negative for "no, and no subsequent entries will be either"  */
+comment|/*  * Is a tree entry interesting given the pathspec we have?  *  * Pre-condition: baselen == 0 || base[baselen-1] == '/'  *  * Return:  *  - 2 for "yes, and all subsequent entries will be"  *  - 1 for yes  *  - zero for no  *  - negative for "no, and no subsequent entries will be either"  */
 end_comment
 
 begin_function
