@@ -2689,13 +2689,7 @@ name|struct
 name|object_array
 name|shallows
 init|=
-block|{
-literal|0
-block|,
-literal|0
-block|,
-name|NULL
-block|}
+name|OBJECT_ARRAY_INIT
 decl_stmt|;
 specifier|static
 name|char
