@@ -264,6 +264,15 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|askpass_program
+specifier|const
+name|char
+modifier|*
+name|askpass_program
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|excludes_file
 specifier|const
 name|char

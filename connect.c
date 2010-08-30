@@ -3128,6 +3128,7 @@ modifier|*
 name|prompt
 parameter_list|)
 block|{
+specifier|const
 name|char
 modifier|*
 name|askpass
@@ -3157,6 +3158,15 @@ name|getenv
 argument_list|(
 literal|"GIT_ASKPASS"
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|askpass
+condition|)
+name|askpass
+operator|=
+name|askpass_program
 expr_stmt|;
 if|if
 condition|(
