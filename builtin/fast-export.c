@@ -165,6 +165,14 @@ name|no_data
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|full_tree
+specifier|static
+name|int
+name|full_tree
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|parse_opt_signed_tag_mode
 specifier|static
@@ -1358,6 +1366,9 @@ name|object
 argument_list|)
 operator|!=
 literal|0
+operator|&&
+operator|!
+name|full_tree
 condition|)
 block|{
 name|parse_commit
@@ -1655,6 +1666,15 @@ name|i
 operator|++
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|full_tree
+condition|)
+name|printf
+argument_list|(
+literal|"deleteall\n"
+argument_list|)
+expr_stmt|;
 name|log_tree_diff_flush
 argument_list|(
 name|rev
@@ -3264,6 +3284,18 @@ argument_list|,
 literal|"Fake a tagger when tags lack one"
 argument_list|)
 block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|0
+argument_list|,
+literal|"full-tree"
+argument_list|,
+operator|&
+name|full_tree
+argument_list|,
+literal|"Output full tree for each commit"
+argument_list|)
+block|,
 block|{
 name|OPTION_NEGBIT
 block|,
@@ -3390,6 +3422,18 @@ name|import_marks
 argument_list|(
 name|import_filename
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|import_filename
+operator|&&
+name|revs
+operator|.
+name|prune_data
+condition|)
+name|full_tree
+operator|=
+literal|1
 expr_stmt|;
 name|get_tags_and_duplicates
 argument_list|(
