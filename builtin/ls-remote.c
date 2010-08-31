@@ -176,9 +176,6 @@ name|dest
 init|=
 name|NULL
 decl_stmt|;
-name|int
-name|nongit
-decl_stmt|;
 name|unsigned
 name|flags
 init|=
@@ -220,12 +217,6 @@ name|ref
 modifier|*
 name|ref
 decl_stmt|;
-name|setup_git_directory_gently
-argument_list|(
-operator|&
-name|nongit
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|i

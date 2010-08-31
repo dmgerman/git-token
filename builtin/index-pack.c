@@ -4986,9 +4986,6 @@ index|[
 literal|20
 index|]
 decl_stmt|;
-name|int
-name|nongit
-decl_stmt|;
 if|if
 condition|(
 name|argc
@@ -5014,14 +5011,6 @@ expr_stmt|;
 name|read_replace_refs
 operator|=
 literal|0
-expr_stmt|;
-name|prefix
-operator|=
-name|setup_git_directory_gently
-argument_list|(
-operator|&
-name|nongit
-argument_list|)
 expr_stmt|;
 name|git_config
 argument_list|(

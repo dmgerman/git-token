@@ -56,6 +56,15 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|git_startup_info
+specifier|static
+name|struct
+name|startup_info
+name|git_startup_info
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|use_pager
 specifier|static
 name|int
@@ -1294,11 +1303,19 @@ value|(1<<0)
 end_define
 
 begin_define
+DECL|macro|RUN_SETUP_GENTLY
+define|#
+directive|define
+name|RUN_SETUP_GENTLY
+value|(1<<1)
+end_define
+
+begin_define
 DECL|macro|USE_PAGER
 define|#
 directive|define
 name|USE_PAGER
-value|(1<<1)
+value|(1<<2)
 end_define
 
 begin_comment
@@ -1310,7 +1327,7 @@ DECL|macro|NEED_WORK_TREE
 define|#
 directive|define
 name|NEED_WORK_TREE
-value|(1<<2)
+value|(1<<3)
 end_define
 
 begin_struct
@@ -1428,6 +1445,27 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+name|p
+operator|->
+name|option
+operator|&
+name|RUN_SETUP_GENTLY
+condition|)
+block|{
+name|int
+name|nongit_ok
+decl_stmt|;
+name|prefix
+operator|=
+name|setup_git_directory_gently
+argument_list|(
+operator|&
+name|nongit_ok
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
 name|use_pager
 operator|==
 operator|-
@@ -1437,7 +1475,11 @@ name|p
 operator|->
 name|option
 operator|&
+operator|(
 name|RUN_SETUP
+operator||
+name|RUN_SETUP_GENTLY
+operator|)
 condition|)
 name|use_pager
 operator|=
@@ -1655,6 +1697,8 @@ block|{
 literal|"apply"
 block|,
 name|cmd_apply
+block|,
+name|RUN_SETUP_GENTLY
 block|}
 block|,
 block|{
@@ -1693,6 +1737,8 @@ block|{
 literal|"bundle"
 block|,
 name|cmd_bundle
+block|,
+name|RUN_SETUP_GENTLY
 block|}
 block|,
 block|{
@@ -1793,6 +1839,8 @@ block|{
 literal|"config"
 block|,
 name|cmd_config
+block|,
+name|RUN_SETUP_GENTLY
 block|}
 block|,
 block|{
@@ -1925,6 +1973,8 @@ block|{
 literal|"grep"
 block|,
 name|cmd_grep
+block|,
+name|RUN_SETUP_GENTLY
 block|}
 block|,
 block|{
@@ -1943,6 +1993,8 @@ block|{
 literal|"index-pack"
 block|,
 name|cmd_index_pack
+block|,
+name|RUN_SETUP_GENTLY
 block|}
 block|,
 block|{
@@ -1985,6 +2037,8 @@ block|{
 literal|"ls-remote"
 block|,
 name|cmd_ls_remote
+block|,
+name|RUN_SETUP_GENTLY
 block|}
 block|,
 block|{
@@ -2021,6 +2075,8 @@ block|{
 literal|"merge-file"
 block|,
 name|cmd_merge_file
+block|,
+name|RUN_SETUP_GENTLY
 block|}
 block|,
 block|{
@@ -2155,6 +2211,8 @@ block|{
 literal|"peek-remote"
 block|,
 name|cmd_ls_remote
+block|,
+name|RUN_SETUP_GENTLY
 block|}
 block|,
 block|{
@@ -2231,6 +2289,8 @@ block|{
 literal|"repo-config"
 block|,
 name|cmd_config
+block|,
+name|RUN_SETUP_GENTLY
 block|}
 block|,
 block|{
@@ -2294,6 +2354,8 @@ literal|"shortlog"
 block|,
 name|cmd_shortlog
 block|,
+name|RUN_SETUP_GENTLY
+operator||
 name|USE_PAGER
 block|}
 block|,
@@ -2401,6 +2463,8 @@ block|{
 literal|"var"
 block|,
 name|cmd_var
+block|,
+name|RUN_SETUP_GENTLY
 block|}
 block|,
 block|{
@@ -2833,6 +2897,11 @@ name|char
 modifier|*
 name|cmd
 decl_stmt|;
+name|startup_info
+operator|=
+operator|&
+name|git_startup_info
+expr_stmt|;
 name|cmd
 operator|=
 name|git_extract_argv0_path
