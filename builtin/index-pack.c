@@ -4986,6 +4986,9 @@ index|[
 literal|20
 index|]
 decl_stmt|;
+name|int
+name|nongit
+decl_stmt|;
 if|if
 condition|(
 name|argc
@@ -5012,39 +5015,8 @@ name|read_replace_refs
 operator|=
 literal|0
 expr_stmt|;
-comment|/* 	 * We wish to read the repository's config file if any, and 	 * for that it is necessary to call setup_git_directory_gently(). 	 * However if the cwd was inside .git/objects/pack/ then we need 	 * to go back there or all the pack name arguments will be wrong. 	 * And in that case we cannot rely on any prefix returned by 	 * setup_git_directory_gently() either. 	 */
-block|{
-name|char
-name|cwd
-index|[
-name|PATH_MAX
-operator|+
-literal|1
-index|]
-decl_stmt|;
-name|int
-name|nongit
-decl_stmt|;
-if|if
-condition|(
-operator|!
-name|getcwd
-argument_list|(
-name|cwd
-argument_list|,
-sizeof|sizeof
-argument_list|(
-name|cwd
-argument_list|)
-operator|-
-literal|1
-argument_list|)
-condition|)
-name|die
-argument_list|(
-literal|"Unable to get current working directory"
-argument_list|)
-expr_stmt|;
+name|prefix
+operator|=
 name|setup_git_directory_gently
 argument_list|(
 operator|&
@@ -5060,9 +5032,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|prefix
+operator|&&
 name|chdir
 argument_list|(
-name|cwd
+name|prefix
 argument_list|)
 condition|)
 name|die
@@ -5070,7 +5044,6 @@ argument_list|(
 literal|"Cannot come back to cwd"
 argument_list|)
 expr_stmt|;
-block|}
 for|for
 control|(
 name|i
