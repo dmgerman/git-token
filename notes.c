@@ -1206,7 +1206,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * To remove a leaf_node:  * Search to the tree location appropriate for the given leaf_node's key:  * - If location does not hold a matching entry, abort and do nothing.  * - Replace the matching leaf_node with a NULL entry (and free the leaf_node).  * - Consolidate int_nodes repeatedly, while walking up the tree towards root.  */
+comment|/*  * To remove a leaf_node:  * Search to the tree location appropriate for the given leaf_node's key:  * - If location does not hold a matching entry, abort and do nothing.  * - Copy the matching entry's value into the given entry.  * - Replace the matching leaf_node with a NULL entry (and free the leaf_node).  * - Consolidate int_nodes repeatedly, while walking up the tree towards root.  */
 end_comment
 
 begin_function
@@ -1326,6 +1326,17 @@ condition|)
 return|return;
 comment|/* key mismatch, nothing to remove */
 comment|/* we have found a matching entry */
+name|hashcpy
+argument_list|(
+name|entry
+operator|->
+name|val_sha1
+argument_list|,
+name|l
+operator|->
+name|val_sha1
+argument_list|)
+expr_stmt|;
 name|free
 argument_list|(
 name|l
@@ -5180,7 +5191,7 @@ end_function
 
 begin_function
 DECL|function|remove_note
-name|void
+name|int
 name|remove_note
 parameter_list|(
 name|struct
@@ -5216,12 +5227,6 @@ operator|->
 name|initialized
 argument_list|)
 expr_stmt|;
-name|t
-operator|->
-name|dirty
-operator|=
-literal|1
-expr_stmt|;
 name|hashcpy
 argument_list|(
 name|l
@@ -5252,6 +5257,28 @@ operator|&
 name|l
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|is_null_sha1
+argument_list|(
+name|l
+operator|.
+name|val_sha1
+argument_list|)
+condition|)
+comment|// no note was removed
+return|return
+literal|1
+return|;
+name|t
+operator|->
+name|dirty
+operator|=
+literal|1
+expr_stmt|;
+return|return
+literal|0
+return|;
 block|}
 end_function
 
