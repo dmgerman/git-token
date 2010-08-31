@@ -8598,6 +8598,27 @@ condition|)
 block|{
 if|if
 condition|(
+name|slash1
+operator|&&
+operator|!
+name|S_ISDIR
+argument_list|(
+name|e
+operator|->
+name|versions
+index|[
+literal|1
+index|]
+operator|.
+name|mode
+argument_list|)
+condition|)
+comment|/* 				 * If p names a file in some subdirectory, and a 				 * file or symlink matching the name of the 				 * parent directory of p exists, then p cannot 				 * exist and need not be deleted. 				 */
+return|return
+literal|1
+return|;
+if|if
+condition|(
 operator|!
 name|slash1
 operator|||
