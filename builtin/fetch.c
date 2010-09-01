@@ -3740,6 +3740,13 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|tags
+operator|==
+name|TAGS_DEFAULT
+condition|)
+block|{
+if|if
+condition|(
 name|transport
 operator|->
 name|remote
@@ -3747,10 +3754,6 @@ operator|->
 name|fetch_tags
 operator|==
 literal|2
-operator|&&
-name|tags
-operator|!=
-name|TAGS_UNSET
 condition|)
 name|tags
 operator|=
@@ -3771,6 +3774,7 @@ name|tags
 operator|=
 name|TAGS_UNSET
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
