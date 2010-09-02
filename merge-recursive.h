@@ -105,28 +105,6 @@ struct|;
 end_struct
 
 begin_comment
-comment|/*  * Sets the list of user-friendly error messages to be used by the  * command "cmd" (either merge or checkout)  */
-end_comment
-
-begin_function_decl
-name|void
-name|set_porcelain_error_msgs
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-modifier|*
-name|msgs
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|cmd
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_comment
 comment|/* merge_trees() but with recursive ancestor consolidation */
 end_comment
 

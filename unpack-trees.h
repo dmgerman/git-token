@@ -95,6 +95,28 @@ block|}
 enum|;
 end_enum
 
+begin_comment
+comment|/*  * Sets the list of user-friendly error messages to be used by the  * command "cmd" (either merge or checkout)  */
+end_comment
+
+begin_function_decl
+name|void
+name|setup_unpack_trees_porcelain
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|msgs
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|cmd
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_struct
 DECL|struct|rejected_paths_list
 struct|struct
