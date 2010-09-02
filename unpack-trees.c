@@ -375,6 +375,12 @@ index|]
 operator|=
 literal|"The following Working tree files would be removed by sparse checkout update:\n%s"
 expr_stmt|;
+name|opts
+operator|->
+name|show_all_errors
+operator|=
+literal|1
+expr_stmt|;
 block|}
 end_function
 
@@ -505,32 +511,6 @@ name|rejected_paths_list
 modifier|*
 name|newentry
 decl_stmt|;
-name|int
-name|porcelain
-init|=
-name|o
-operator|&&
-operator|(
-name|o
-operator|)
-operator|->
-name|msgs
-index|[
-name|e
-index|]
-decl_stmt|;
-comment|/* 	 * simply display the given error message if in plumbing mode 	 */
-if|if
-condition|(
-operator|!
-name|porcelain
-condition|)
-name|o
-operator|->
-name|show_all_errors
-operator|=
-literal|0
-expr_stmt|;
 if|if
 condition|(
 operator|!

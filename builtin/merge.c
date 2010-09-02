@@ -4437,12 +4437,6 @@ name|fn
 operator|=
 name|twoway_merge
 expr_stmt|;
-name|opts
-operator|.
-name|show_all_errors
-operator|=
-literal|1
-expr_stmt|;
 name|setup_unpack_trees_porcelain
 argument_list|(
 operator|&

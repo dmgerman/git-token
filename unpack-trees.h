@@ -96,7 +96,7 @@ enum|;
 end_enum
 
 begin_comment
-comment|/*  * Sets the list of user-friendly error messages to be used by the  * command "cmd" (either merge or checkout)  */
+comment|/*  * Sets the list of user-friendly error messages to be used by the  * command "cmd" (either merge or checkout), and show_all_errors to 1.  */
 end_comment
 
 begin_function_decl
