@@ -103,11 +103,10 @@ begin_function_decl
 name|void
 name|setup_unpack_trees_porcelain
 parameter_list|(
-specifier|const
-name|char
+name|struct
+name|unpack_trees_options
 modifier|*
-modifier|*
-name|msgs
+name|opts
 parameter_list|,
 specifier|const
 name|char

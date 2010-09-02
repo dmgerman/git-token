@@ -2236,9 +2236,8 @@ name|the_index
 expr_stmt|;
 name|setup_unpack_trees_porcelain
 argument_list|(
+operator|&
 name|topts
-operator|.
-name|msgs
 argument_list|,
 literal|"checkout"
 argument_list|)
