@@ -2584,7 +2584,7 @@ name|buf
 argument_list|,
 name|buf_sha
 argument_list|,
-literal|0
+literal|1
 argument_list|,
 name|NULL
 argument_list|)
