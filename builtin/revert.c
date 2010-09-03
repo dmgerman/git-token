@@ -1798,6 +1798,7 @@ expr_stmt|;
 name|read_cache
 argument_list|()
 expr_stmt|;
+comment|/* 	 * NEEDSWORK: cherry-picking between branches with 	 * different end-of-line normalization is a pain; 	 * plumb in an option to set o.renormalize? 	 * (or better: arbitrary -X options) 	 */
 name|init_merge_options
 argument_list|(
 operator|&

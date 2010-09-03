@@ -7986,6 +7986,32 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|renormalize_buffer
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|src
+parameter_list|,
+name|size_t
+name|len
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|dst
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/* add */
 end_comment
