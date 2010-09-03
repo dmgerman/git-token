@@ -2007,6 +2007,8 @@ name|int
 name|is_bundle
 init|=
 literal|0
+decl_stmt|,
+name|is_local
 decl_stmt|;
 name|struct
 name|stat
@@ -2256,6 +2258,24 @@ else|else
 name|repo
 operator|=
 name|repo_name
+expr_stmt|;
+name|is_local
+operator|=
+name|path
+operator|&&
+operator|!
+name|is_bundle
+expr_stmt|;
+if|if
+condition|(
+name|is_local
+operator|&&
+name|option_depth
+condition|)
+name|warning
+argument_list|(
+literal|"--depth is ignored in local clones; use file:// instead."
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
@@ -2727,10 +2747,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|path
-operator|&&
-operator|!
-name|is_bundle
+name|is_local
 condition|)
 block|{
 name|refs
