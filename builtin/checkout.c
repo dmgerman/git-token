@@ -2240,11 +2240,10 @@ operator|=
 operator|&
 name|the_index
 expr_stmt|;
-name|set_porcelain_error_msgs
+name|setup_unpack_trees_porcelain
 argument_list|(
+operator|&
 name|topts
-operator|.
-name|msgs
 argument_list|,
 literal|"checkout"
 argument_list|)
@@ -2348,12 +2347,6 @@ operator|->
 name|exclude_per_dir
 operator|=
 literal|".gitignore"
-expr_stmt|;
-name|topts
-operator|.
-name|show_all_errors
-operator|=
-literal|1
 expr_stmt|;
 name|tree
 operator|=
