@@ -2792,7 +2792,7 @@ operator|&
 name|msg
 argument_list|)
 expr_stmt|;
-comment|/* 	 * 	 * If we are cherry-pick, and if the merge did not result in 	 * hand-editing, we will hit this commit and inherit the original 	 * author date and name. 	 * If we are revert, or if our cherry-pick results in a hand merge, 	 * we had better say that the current user is responsible for that. 	 */
+comment|/* 	 * If we are cherry-pick, and if the merge did not result in 	 * hand-editing, we will hit this commit and inherit the original 	 * author date and name. 	 * If we are revert, or if our cherry-pick results in a hand merge, 	 * we had better say that the current user is responsible for that. 	 */
 if|if
 condition|(
 operator|!
