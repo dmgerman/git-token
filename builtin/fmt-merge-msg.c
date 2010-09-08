@@ -52,7 +52,7 @@ name|fmt_merge_msg_usage
 index|[]
 init|=
 block|{
-literal|"git fmt-merge-msg [-m<message>] [--log|--no-log] [--file<file>]"
+literal|"git fmt-merge-msg [-m<message>] [--log[=<n>]|--no-log] [--file<file>]"
 block|,
 name|NULL
 block|}
@@ -60,10 +60,10 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|merge_summary
+DECL|variable|shortlog_len
 specifier|static
 name|int
-name|merge_summary
+name|shortlog_len
 decl_stmt|;
 end_decl_stmt
 
@@ -109,7 +109,7 @@ name|found_merge_log
 operator|=
 literal|1
 expr_stmt|;
-name|merge_summary
+name|shortlog_len
 operator|=
 name|git_config_bool
 argument_list|(
@@ -117,7 +117,14 @@ name|key
 argument_list|,
 name|value
 argument_list|)
+condition|?
+name|DEFAULT_MERGE_LOG_LEN
+else|:
+literal|0
 expr_stmt|;
+return|return
+literal|0
+return|;
 block|}
 if|if
 condition|(
@@ -132,7 +139,8 @@ argument_list|,
 name|key
 argument_list|)
 condition|)
-name|merge_summary
+block|{
+name|shortlog_len
 operator|=
 name|git_config_bool
 argument_list|(
@@ -140,7 +148,15 @@ name|key
 argument_list|,
 name|value
 argument_list|)
+condition|?
+name|DEFAULT_MERGE_LOG_LEN
+else|:
+literal|0
 expr_stmt|;
+return|return
+literal|0
+return|;
+block|}
 return|return
 literal|0
 return|;
@@ -2013,35 +2029,48 @@ name|options
 index|[]
 init|=
 block|{
-name|OPT_BOOLEAN
-argument_list|(
+block|{
+name|OPTION_INTEGER
+block|,
 literal|0
-argument_list|,
+block|,
 literal|"log"
-argument_list|,
+block|,
 operator|&
-name|merge_summary
-argument_list|,
-literal|"populate log with the shortlog"
-argument_list|)
+name|shortlog_len
+block|,
+literal|"n"
+block|,
+literal|"populate log with at most<n> entries from shortlog"
+block|,
+name|PARSE_OPT_OPTARG
+block|,
+name|NULL
+block|,
+name|DEFAULT_MERGE_LOG_LEN
+block|}
 block|,
 block|{
-name|OPTION_BOOLEAN
+name|OPTION_INTEGER
 block|,
 literal|0
 block|,
 literal|"summary"
 block|,
 operator|&
-name|merge_summary
+name|shortlog_len
 block|,
-name|NULL
+literal|"n"
 block|,
 literal|"alias for --log (deprecated)"
 block|,
-name|PARSE_OPT_NOARG
+name|PARSE_OPT_OPTARG
 operator||
 name|PARSE_OPT_HIDDEN
+block|,
+name|NULL
+block|,
+name|DEFAULT_MERGE_LOG_LEN
 block|}
 block|,
 name|OPT_STRING
@@ -2135,7 +2164,7 @@ condition|(
 name|message
 operator|&&
 operator|!
-name|merge_summary
+name|shortlog_len
 condition|)
 block|{
 name|char
@@ -2169,6 +2198,19 @@ return|return
 literal|0
 return|;
 block|}
+if|if
+condition|(
+name|shortlog_len
+operator|<
+literal|0
+condition|)
+name|die
+argument_list|(
+literal|"Negative --log=%d"
+argument_list|,
+name|shortlog_len
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|inpath
@@ -2253,11 +2295,7 @@ literal|0
 else|:
 literal|1
 argument_list|,
-name|merge_summary
-condition|?
-name|DEFAULT_MERGE_LOG_LEN
-else|:
-literal|0
+name|shortlog_len
 argument_list|)
 expr_stmt|;
 if|if

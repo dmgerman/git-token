@@ -190,7 +190,7 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|show_diffstat
-DECL|variable|option_log
+DECL|variable|shortlog_len
 DECL|variable|squash
 specifier|static
 name|int
@@ -198,7 +198,7 @@ name|show_diffstat
 init|=
 literal|1
 decl_stmt|,
-name|option_log
+name|shortlog_len
 decl_stmt|,
 name|squash
 decl_stmt|;
@@ -1104,17 +1104,26 @@ argument_list|,
 literal|"(synonym to --stat)"
 argument_list|)
 block|,
-name|OPT_BOOLEAN
-argument_list|(
+block|{
+name|OPTION_INTEGER
+block|,
 literal|0
-argument_list|,
+block|,
 literal|"log"
-argument_list|,
+block|,
 operator|&
-name|option_log
-argument_list|,
-literal|"add list of one-line log to merge commit message"
-argument_list|)
+name|shortlog_len
+block|,
+literal|"n"
+block|,
+literal|"add (at most<n>) entries from shortlog to merge commit message"
+block|,
+name|PARSE_OPT_OPTARG
+block|,
+name|NULL
+block|,
+name|DEFAULT_MERGE_LOG_LEN
+block|}
 block|,
 name|OPT_BOOLEAN
 argument_list|(
@@ -3037,7 +3046,8 @@ argument_list|,
 literal|"merge.summary"
 argument_list|)
 condition|)
-name|option_log
+block|{
+name|shortlog_len
 operator|=
 name|git_config_bool
 argument_list|(
@@ -3045,7 +3055,15 @@ name|k
 argument_list|,
 name|v
 argument_list|)
+condition|?
+name|DEFAULT_MERGE_LOG_LEN
+else|:
+literal|0
 expr_stmt|;
+return|return
+literal|0
+return|;
+block|}
 return|return
 name|git_diff_ui_config
 argument_list|(
@@ -5970,7 +5988,7 @@ condition|(
 operator|!
 name|have_message
 operator|||
-name|option_log
+name|shortlog_len
 condition|)
 block|{
 name|fmt_merge_msg
@@ -5984,11 +6002,7 @@ argument_list|,
 operator|!
 name|have_message
 argument_list|,
-name|option_log
-condition|?
-name|DEFAULT_MERGE_LOG_LEN
-else|:
-literal|0
+name|shortlog_len
 argument_list|)
 expr_stmt|;
 if|if
