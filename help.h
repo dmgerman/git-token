@@ -80,6 +80,32 @@ block|}
 end_function
 
 begin_function_decl
+specifier|extern
+name|void
+name|list_common_cmds_help
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+specifier|const
+name|char
+modifier|*
+name|help_unknown_cmd
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|cmd
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|void
 name|load_command_list
 parameter_list|(
@@ -102,6 +128,7 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+specifier|extern
 name|void
 name|add_cmdname
 parameter_list|(
@@ -126,6 +153,7 @@ comment|/* Here we require that excludes is a sorted list. */
 end_comment
 
 begin_function_decl
+specifier|extern
 name|void
 name|exclude_cmds
 parameter_list|(
@@ -143,23 +171,25 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+specifier|extern
 name|int
 name|is_in_cmdlist
 parameter_list|(
 name|struct
 name|cmdnames
 modifier|*
-name|c
+name|cmds
 parameter_list|,
 specifier|const
 name|char
 modifier|*
-name|s
+name|name
 parameter_list|)
 function_decl|;
 end_function_decl
 
 begin_function_decl
+specifier|extern
 name|void
 name|list_commands
 parameter_list|(

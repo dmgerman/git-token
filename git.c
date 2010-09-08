@@ -8,13 +8,19 @@ end_include
 begin_include
 include|#
 directive|include
+file|"cache.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"exec_cmd.h"
 end_include
 
 begin_include
 include|#
 directive|include
-file|"cache.h"
+file|"help.h"
 end_include
 
 begin_include
