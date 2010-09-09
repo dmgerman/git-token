@@ -113,7 +113,11 @@ block|{
 comment|/* Mode must be 100644, 100755, 120000, or 160000. */
 name|printf
 argument_list|(
-literal|"M %06o :%d "
+literal|"M %06"
+name|PRIo32
+literal|" :%"
+name|PRIu32
+literal|" "
 argument_list|,
 name|mode
 argument_list|,
@@ -200,7 +204,9 @@ name|gitsvnline
 argument_list|,
 name|MAX_GITSVN_LINE_LEN
 argument_list|,
-literal|"\n\ngit-svn-id: %s@%d %s\n"
+literal|"\n\ngit-svn-id: %s@%"
+name|PRIu32
+literal|" %s\n"
 argument_list|,
 name|pool_fetch
 argument_list|(
@@ -332,7 +338,9 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"progress Imported commit %d.\n\n"
+literal|"progress Imported commit %"
+name|PRIu32
+literal|".\n\n"
 argument_list|,
 name|revision
 argument_list|)
@@ -375,7 +383,11 @@ expr_stmt|;
 block|}
 name|printf
 argument_list|(
-literal|"blob\nmark :%d\ndata %d\n"
+literal|"blob\nmark :%"
+name|PRIu32
+literal|"\ndata %"
+name|PRIu32
+literal|"\n"
 argument_list|,
 name|mark
 argument_list|,

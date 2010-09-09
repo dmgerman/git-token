@@ -965,6 +965,25 @@ end_endif
 begin_ifndef
 ifndef|#
 directive|ifndef
+name|PRIo32
+end_ifndef
+
+begin_define
+DECL|macro|PRIo32
+define|#
+directive|define
+name|PRIo32
+value|"o"
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
+begin_ifndef
+ifndef|#
+directive|ifndef
 name|PATH_SEP
 end_ifndef
 

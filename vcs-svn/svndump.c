@@ -1711,7 +1711,9 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Unexpected content length header: %d\n"
+literal|"Unexpected content length header: %"
+name|PRIu32
+literal|"\n"
 argument_list|,
 name|len
 argument_list|)
