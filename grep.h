@@ -80,6 +80,14 @@ block|}
 enum|;
 end_enum
 
+begin_define
+DECL|macro|GREP_HEADER_FIELD_MAX
+define|#
+directive|define
+name|GREP_HEADER_FIELD_MAX
+value|(GREP_HEADER_COMMITTER + 1)
+end_define
+
 begin_struct
 DECL|struct|grep_pat
 struct|struct
@@ -160,6 +168,9 @@ name|GREP_NODE_NOT
 block|,
 DECL|enumerator|GREP_NODE_AND
 name|GREP_NODE_AND
+block|,
+DECL|enumerator|GREP_NODE_TRUE
+name|GREP_NODE_TRUE
 block|,
 DECL|enumerator|GREP_NODE_OR
 name|GREP_NODE_OR
