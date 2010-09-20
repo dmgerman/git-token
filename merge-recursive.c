@@ -4860,9 +4860,9 @@ modifier|*
 name|o
 parameter_list|,
 name|struct
-name|rename
+name|diff_filepair
 modifier|*
-name|ren1
+name|pair1
 parameter_list|,
 specifier|const
 name|char
@@ -4870,9 +4870,9 @@ modifier|*
 name|branch1
 parameter_list|,
 name|struct
-name|rename
+name|diff_filepair
 modifier|*
-name|ren2
+name|pair2
 parameter_list|,
 specifier|const
 name|char
@@ -4898,9 +4898,7 @@ name|char
 modifier|*
 name|ren1_dst
 init|=
-name|ren1
-operator|->
-name|pair
+name|pair1
 operator|->
 name|two
 operator|->
@@ -4911,9 +4909,7 @@ name|char
 modifier|*
 name|ren2_dst
 init|=
-name|ren2
-operator|->
-name|pair
+name|pair2
 operator|->
 name|two
 operator|->
@@ -5064,7 +5060,7 @@ argument_list|(
 name|dst_name2
 argument_list|)
 expr_stmt|;
-comment|/* 		 * Uncomment to leave the conflicting names in the resulting tree 		 * 		 * update_file(o, 0, ren1->pair->two->sha1, ren1->pair->two->mode, dst_name1); 		 * update_file(o, 0, ren2->pair->two->sha1, ren2->pair->two->mode, dst_name2); 		 */
+comment|/* 		 * Uncomment to leave the conflicting names in the resulting tree 		 * 		 * update_file(o, 0, pair1->two->sha1, pair1->two->mode, dst_name1); 		 * update_file(o, 0, pair2->two->sha1, pair2->two->mode, dst_name2); 		 */
 block|}
 else|else
 block|{
@@ -5074,9 +5070,7 @@ name|dst_name1
 argument_list|,
 name|NULL
 argument_list|,
-name|ren1
-operator|->
-name|pair
+name|pair1
 operator|->
 name|two
 argument_list|,
@@ -5093,9 +5087,7 @@ name|NULL
 argument_list|,
 name|NULL
 argument_list|,
-name|ren2
-operator|->
-name|pair
+name|pair2
 operator|->
 name|two
 argument_list|,
@@ -5896,10 +5888,14 @@ argument_list|(
 name|o
 argument_list|,
 name|ren1
+operator|->
+name|pair
 argument_list|,
 name|branch1
 argument_list|,
 name|ren2
+operator|->
+name|pair
 argument_list|,
 name|branch2
 argument_list|)
