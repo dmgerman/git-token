@@ -6112,18 +6112,6 @@ operator|->
 name|dst_entry
 argument_list|)
 expr_stmt|;
-name|remove_file
-argument_list|(
-name|o
-argument_list|,
-literal|0
-argument_list|,
-name|ren1_dst
-argument_list|,
-literal|0
-argument_list|)
-expr_stmt|;
-comment|/* ren2_dst not in head, so no need to delete */
 block|}
 else|else
 block|{
@@ -6350,17 +6338,6 @@ operator|->
 name|dst_entry
 argument_list|,
 name|NULL
-argument_list|)
-expr_stmt|;
-name|remove_file
-argument_list|(
-name|o
-argument_list|,
-literal|0
-argument_list|,
-name|ren1_dst
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 block|}
@@ -6891,17 +6868,6 @@ operator|->
 name|dst_entry
 argument_list|,
 name|NULL
-argument_list|)
-expr_stmt|;
-name|remove_file
-argument_list|(
-name|o
-argument_list|,
-literal|0
-argument_list|,
-name|ren1_dst
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 block|}
@@ -8074,7 +8040,7 @@ expr_stmt|;
 return|return
 literal|1
 return|;
-comment|/* Assume clean till processed */
+comment|/* Assume clean until processed */
 block|}
 else|else
 block|{
@@ -8181,39 +8147,10 @@ name|processed
 operator|=
 literal|0
 expr_stmt|;
-comment|/* But get any file out of the way now, so conflicted 			 * entries below the directory of the same name can 			 * be put in the working directory. 			 */
-if|if
-condition|(
-name|a_sha
-condition|)
-name|output
-argument_list|(
-name|o
-argument_list|,
-literal|2
-argument_list|,
-literal|"Removing %s"
-argument_list|,
-name|path
-argument_list|)
-expr_stmt|;
-comment|/* do not touch working file if it did not exist */
-name|remove_file
-argument_list|(
-name|o
-argument_list|,
-literal|0
-argument_list|,
-name|path
-argument_list|,
-operator|!
-name|a_sha
-argument_list|)
-expr_stmt|;
 return|return
 literal|1
 return|;
-comment|/* Assume clean till processed */
+comment|/* Assume clean until processed */
 block|}
 else|else
 block|{
@@ -8908,17 +8845,6 @@ argument_list|,
 name|path
 argument_list|,
 name|new_path
-argument_list|)
-expr_stmt|;
-name|remove_file
-argument_list|(
-name|o
-argument_list|,
-literal|0
-argument_list|,
-name|path
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 name|update_file
