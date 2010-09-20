@@ -7771,6 +7771,16 @@ argument_list|,
 name|b_mode
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|entry
+operator|->
+name|rename_df_conflict_info
+condition|)
+return|return
+literal|1
+return|;
+comment|/* Such cases are handled elsewhere. */
 name|entry
 operator|->
 name|processed
