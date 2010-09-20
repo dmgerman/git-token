@@ -8111,7 +8111,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Per entry merge function for D/F conflicts, to be called only after  * all files below dir have been processed.  We do this because in the  * cases we can cleanly resolve D/F conflicts, process_entry() can clean  * out all the files below the directory for us.  */
+comment|/*  * Per entry merge function for D/F (and/or rename) conflicts.  In the  * cases we can cleanly resolve D/F conflicts, process_entry() can  * clean out all the files below the directory for us.  All D/F  * conflict cases must be handled here at the end to make sure any  * directories that can be cleaned out, are.  *  * Some rename conflicts may also be handled here that don't necessarily  * involve D/F conflicts, since the code to handle them is generic enough  * to handle those rename conflicts with or without D/F conflicts also  * being involved.  */
 end_comment
 
 begin_function
@@ -8234,6 +8234,45 @@ argument_list|,
 name|b_mode
 argument_list|)
 decl_stmt|;
+name|struct
+name|stat
+name|st
+decl_stmt|;
+name|entry
+operator|->
+name|processed
+operator|=
+literal|1
+expr_stmt|;
+if|if
+condition|(
+name|entry
+operator|->
+name|rename_df_conflict_info
+condition|)
+block|{
+name|die
+argument_list|(
+literal|"Not yet implemented."
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|o_sha
+operator|&&
+operator|!
+operator|!
+name|a_sha
+operator|!=
+operator|!
+operator|!
+name|b_sha
+condition|)
+block|{
+comment|/* directory -> (directory, file) */
 specifier|const
 name|char
 modifier|*
@@ -8258,45 +8297,6 @@ name|char
 modifier|*
 name|conf
 decl_stmt|;
-name|struct
-name|stat
-name|st
-decl_stmt|;
-if|if
-condition|(
-operator|!
-operator|(
-operator|(
-operator|!
-name|o_sha
-operator|&&
-name|a_sha
-operator|&&
-operator|!
-name|b_sha
-operator|)
-operator|||
-operator|(
-operator|!
-name|o_sha
-operator|&&
-operator|!
-name|a_sha
-operator|&&
-name|b_sha
-operator|)
-operator|)
-condition|)
-return|return
-literal|1
-return|;
-comment|/* we don't handle non D-F cases */
-name|entry
-operator|->
-name|processed
-operator|=
-literal|1
-expr_stmt|;
 if|if
 condition|(
 name|a_sha
@@ -8463,6 +8463,20 @@ argument_list|,
 name|path
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+name|entry
+operator|->
+name|processed
+operator|=
+literal|0
+expr_stmt|;
+return|return
+literal|1
+return|;
+comment|/* not handled; assume clean until processed */
 block|}
 return|return
 name|clean_merge
