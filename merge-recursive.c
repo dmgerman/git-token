@@ -4297,10 +4297,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|conflict_rename_rename
+DECL|function|conflict_rename_rename_1to2
 specifier|static
 name|void
-name|conflict_rename_rename
+name|conflict_rename_rename_1to2
 parameter_list|(
 name|struct
 name|merge_options
@@ -4328,6 +4328,7 @@ modifier|*
 name|branch2
 parameter_list|)
 block|{
+comment|/* One file was renamed in both branches, but to different names. */
 name|char
 modifier|*
 name|del
@@ -4677,10 +4678,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|conflict_rename_rename_2
+DECL|function|conflict_rename_rename_2to1
 specifier|static
 name|void
-name|conflict_rename_rename_2
+name|conflict_rename_rename_2to1
 parameter_list|(
 name|struct
 name|merge_options
@@ -4708,6 +4709,7 @@ modifier|*
 name|branch2
 parameter_list|)
 block|{
+comment|/* Two files were renamed to the same thing. */
 name|char
 modifier|*
 name|new_path1
@@ -5447,7 +5449,7 @@ name|src
 argument_list|)
 expr_stmt|;
 block|}
-name|conflict_rename_rename
+name|conflict_rename_rename_1to2
 argument_list|(
 name|o
 argument_list|,
@@ -6221,7 +6223,7 @@ argument_list|,
 name|branch2
 argument_list|)
 expr_stmt|;
-name|conflict_rename_rename_2
+name|conflict_rename_rename_2to1
 argument_list|(
 name|o
 argument_list|,
