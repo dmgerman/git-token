@@ -5800,7 +5800,7 @@ condition|)
 return|return
 name|ret
 return|;
-comment|/* sha1:path --> object name of path in ent sha1 	 * :path -> object name of path in index 	 * :[0-3]:path -> object name of path in index at stage 	 */
+comment|/* sha1:path --> object name of path in ent sha1 	 * :path -> object name of path in index 	 * :[0-3]:path -> object name of path in index at stage 	 * :/foo -> recent commit matching foo 	 */
 if|if
 condition|(
 name|name
