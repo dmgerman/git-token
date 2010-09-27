@@ -2422,7 +2422,6 @@ index|]
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|cache_name_is_other
 argument_list|(
 name|ent
@@ -2433,11 +2432,7 @@ name|ent
 operator|->
 name|len
 argument_list|)
-condition|)
-continue|continue;
-if|if
-condition|(
-operator|!
+operator|&&
 name|match_pathspec
 argument_list|(
 name|s
@@ -2457,7 +2452,6 @@ argument_list|,
 name|NULL
 argument_list|)
 condition|)
-continue|continue;
 name|string_list_insert
 argument_list|(
 operator|&
@@ -2537,7 +2531,6 @@ index|]
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|cache_name_is_other
 argument_list|(
 name|ent
@@ -2548,11 +2541,7 @@ name|ent
 operator|->
 name|len
 argument_list|)
-condition|)
-continue|continue;
-if|if
-condition|(
-operator|!
+operator|&&
 name|match_pathspec
 argument_list|(
 name|s
@@ -2572,7 +2561,6 @@ argument_list|,
 name|NULL
 argument_list|)
 condition|)
-continue|continue;
 name|string_list_insert
 argument_list|(
 operator|&
