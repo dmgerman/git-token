@@ -1778,6 +1778,20 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|parse_rename_score
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|cp_p
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif

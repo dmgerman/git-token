@@ -19233,10 +19233,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|parse_num
-specifier|static
+DECL|function|parse_rename_score
 name|int
-name|parse_num
+name|parse_rename_score
 parameter_list|(
 specifier|const
 name|char
@@ -19466,7 +19465,7 @@ return|;
 comment|/* that is not a -M, -C nor -B option */
 name|opt1
 operator|=
-name|parse_num
+name|parse_rename_score
 argument_list|(
 operator|&
 name|opt
@@ -19515,7 +19514,7 @@ operator|++
 expr_stmt|;
 name|opt2
 operator|=
-name|parse_num
+name|parse_rename_score
 argument_list|(
 operator|&
 name|opt
