@@ -487,6 +487,22 @@ value|0
 end_define
 
 begin_comment
+comment|/*  * sanitize preprocessor namespace polluted by Windows headers defining  * macros which collide with git local versions  */
+end_comment
+
+begin_undef
+DECL|macro|HELP_COMMAND
+undef|#
+directive|undef
+name|HELP_COMMAND
+end_undef
+
+begin_comment
+DECL|macro|HELP_COMMAND
+comment|/* from winuser.h */
+end_comment
+
+begin_comment
 comment|/*  * trivial stubs  */
 end_comment
 
