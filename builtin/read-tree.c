@@ -72,6 +72,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|read_empty
+specifier|static
+name|int
+name|read_empty
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|trees
 specifier|static
 name|struct
@@ -155,7 +163,7 @@ name|read_tree_usage
 index|[]
 init|=
 block|{
-literal|"git read-tree [[-m [--trivial] [--aggressive] | --reset | --prefix=<prefix>] [-u [--exclude-per-directory=<gitignore>] | -i]] [--no-sparse-checkout] [--index-output=<file>]<tree-ish1> [<tree-ish2> [<tree-ish3>]]"
+literal|"git read-tree [[-m [--trivial] [--aggressive] | --reset | --prefix=<prefix>] [-u [--exclude-per-directory=<gitignore>] | -i]] [--no-sparse-checkout] [--index-output=<file>] (--empty |<tree-ish1> [<tree-ish2> [<tree-ish3>]])"
 block|,
 name|NULL
 block|}
@@ -547,6 +555,20 @@ block|,
 name|index_output_cb
 block|}
 block|,
+name|OPT_SET_INT
+argument_list|(
+literal|0
+argument_list|,
+literal|"empty"
+argument_list|,
+operator|&
+name|read_empty
+argument_list|,
+literal|"only empty the index"
+argument_list|,
+literal|1
+argument_list|)
+block|,
 name|OPT__VERBOSE
 argument_list|(
 operator|&
@@ -936,6 +958,34 @@ name|stage
 operator|++
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|nr_trees
+operator|==
+literal|0
+operator|&&
+operator|!
+name|read_empty
+condition|)
+name|warning
+argument_list|(
+literal|"read-tree: emptying the index with no arguments is deprecated; use --empty"
+argument_list|)
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|nr_trees
+operator|>
+literal|0
+operator|&&
+name|read_empty
+condition|)
+name|die
+argument_list|(
+literal|"passing trees as arguments contradicts --empty"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 literal|1
