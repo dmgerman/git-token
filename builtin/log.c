@@ -5884,13 +5884,7 @@ literal|1
 expr_stmt|;
 name|rev
 operator|.
-name|combine_merges
-operator|=
-literal|0
-expr_stmt|;
-name|rev
-operator|.
-name|ignore_merges
+name|no_merges
 operator|=
 literal|1
 expr_stmt|;
@@ -6779,20 +6773,6 @@ name|NULL
 expr_stmt|;
 continue|continue;
 block|}
-comment|/* ignore merges */
-if|if
-condition|(
-name|commit
-operator|->
-name|parents
-operator|&&
-name|commit
-operator|->
-name|parents
-operator|->
-name|next
-condition|)
-continue|continue;
 if|if
 condition|(
 name|ignore_if_in_upstream
