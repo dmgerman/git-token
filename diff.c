@@ -19808,12 +19808,7 @@ name|die_errno
 argument_list|(
 literal|"Could not open '%s'"
 argument_list|,
-name|arg
-operator|+
-name|strlen
-argument_list|(
-literal|"--output="
-argument_list|)
+name|optarg
 argument_list|)
 expr_stmt|;
 name|options
