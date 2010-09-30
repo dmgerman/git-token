@@ -145,7 +145,7 @@ literal|"        [--window=N] [--window-memory=N] [--depth=N]\n"
 literal|"        [--no-reuse-delta] [--no-reuse-object] [--delta-base-offset]\n"
 literal|"        [--threads=N] [--non-empty] [--revs [--unpacked | --all]*]\n"
 literal|"        [--reflog] [--stdout | base-name] [--include-tag]\n"
-literal|"        [--keep-unreachable | --unpack-unreachable \n"
+literal|"        [--keep-unreachable | --unpack-unreachable]\n"
 literal|"        [<ref-list |<object-list]"
 decl_stmt|;
 end_decl_stmt
