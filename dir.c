@@ -2088,7 +2088,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|strcmp
+name|strcmp_icase
 argument_list|(
 name|exclude
 argument_list|,
@@ -2120,7 +2120,7 @@ operator|<=
 name|pathlen
 operator|&&
 operator|!
-name|strcmp
+name|strcmp_icase
 argument_list|(
 name|exclude
 operator|+
@@ -2145,7 +2145,7 @@ else|else
 block|{
 if|if
 condition|(
-name|fnmatch
+name|fnmatch_icase
 argument_list|(
 name|exclude
 argument_list|,
@@ -2200,7 +2200,7 @@ operator|!=
 literal|'/'
 operator|)
 operator|||
-name|strncmp
+name|strncmp_icase
 argument_list|(
 name|pathname
 argument_list|,
@@ -2224,7 +2224,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|strcmp
+name|strcmp_icase
 argument_list|(
 name|exclude
 argument_list|,
@@ -2241,7 +2241,7 @@ else|else
 block|{
 if|if
 condition|(
-name|fnmatch
+name|fnmatch_icase
 argument_list|(
 name|exclude
 argument_list|,
