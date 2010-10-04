@@ -1529,19 +1529,17 @@ name|pickaxe_opts
 operator|&
 name|DIFF_PICKAXE_KIND_G
 condition|)
-return|return
 name|diffcore_pickaxe_grep
 argument_list|(
 name|o
 argument_list|)
-return|;
+expr_stmt|;
 else|else
-return|return
 name|diffcore_pickaxe_count
 argument_list|(
 name|o
 argument_list|)
-return|;
+expr_stmt|;
 block|}
 end_function
 
