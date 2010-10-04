@@ -715,14 +715,12 @@ name|opts
 operator|&
 name|DIFF_PICKAXE_REGEX
 condition|)
-block|{
 name|regfree
 argument_list|(
 operator|&
 name|regex
 argument_list|)
 expr_stmt|;
-block|}
 name|free
 argument_list|(
 name|q
