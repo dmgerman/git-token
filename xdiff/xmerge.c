@@ -1986,6 +1986,10 @@ if|if
 condition|(
 name|isalnum
 argument_list|(
+operator|(
+name|unsigned
+name|char
+operator|)
 operator|*
 operator|(
 name|ptr
