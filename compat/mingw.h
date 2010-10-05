@@ -23,6 +23,14 @@ name|pid_t
 typedef|;
 end_typedef
 
+begin_typedef
+DECL|typedef|uid_t
+typedef|typedef
+name|int
+name|uid_t
+typedef|;
+end_typedef
+
 begin_define
 DECL|macro|hstrerror
 define|#
@@ -66,6 +74,49 @@ parameter_list|)
 value|0
 end_define
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|_STAT_H_
+end_ifndef
+
+begin_define
+DECL|macro|S_IRUSR
+define|#
+directive|define
+name|S_IRUSR
+value|0
+end_define
+
+begin_define
+DECL|macro|S_IWUSR
+define|#
+directive|define
+name|S_IWUSR
+value|0
+end_define
+
+begin_define
+DECL|macro|S_IXUSR
+define|#
+directive|define
+name|S_IXUSR
+value|0
+end_define
+
+begin_define
+DECL|macro|S_IRWXU
+define|#
+directive|define
+name|S_IRWXU
+value|(S_IRUSR | S_IWUSR | S_IXUSR)
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_define
 DECL|macro|S_IRGRP
 define|#
@@ -91,11 +142,11 @@ value|0
 end_define
 
 begin_define
-DECL|macro|S_ISGID
+DECL|macro|S_IRWXG
 define|#
 directive|define
-name|S_ISGID
-value|0
+name|S_IRWXG
+value|(S_IRGRP | S_IWGRP | S_IXGRP)
 end_define
 
 begin_define
@@ -107,10 +158,50 @@ value|0
 end_define
 
 begin_define
+DECL|macro|S_IWOTH
+define|#
+directive|define
+name|S_IWOTH
+value|0
+end_define
+
+begin_define
 DECL|macro|S_IXOTH
 define|#
 directive|define
 name|S_IXOTH
+value|0
+end_define
+
+begin_define
+DECL|macro|S_IRWXO
+define|#
+directive|define
+name|S_IRWXO
+value|(S_IROTH | S_IWOTH | S_IXOTH)
+end_define
+
+begin_define
+DECL|macro|S_ISUID
+define|#
+directive|define
+name|S_ISUID
+value|0
+end_define
+
+begin_define
+DECL|macro|S_ISGID
+define|#
+directive|define
+name|S_ISGID
+value|0
+end_define
+
+begin_define
+DECL|macro|S_ISVTX
+define|#
+directive|define
+name|S_ISVTX
 value|0
 end_define
 
@@ -396,6 +487,22 @@ value|0
 end_define
 
 begin_comment
+comment|/*  * sanitize preprocessor namespace polluted by Windows headers defining  * macros which collide with git local versions  */
+end_comment
+
+begin_undef
+DECL|macro|HELP_COMMAND
+undef|#
+directive|undef
+name|HELP_COMMAND
+end_undef
+
+begin_comment
+DECL|macro|HELP_COMMAND
+comment|/* from winuser.h */
+end_comment
+
+begin_comment
 comment|/*  * trivial stubs  */
 end_comment
 
@@ -488,7 +595,7 @@ begin_function
 DECL|function|fork
 specifier|static
 specifier|inline
-name|int
+name|pid_t
 name|fork
 parameter_list|(
 name|void
@@ -548,7 +655,7 @@ begin_function
 DECL|function|getppid
 specifier|static
 specifier|inline
-name|int
+name|pid_t
 name|getppid
 parameter_list|(
 name|void
@@ -576,9 +683,11 @@ begin_function
 DECL|function|getuid
 specifier|static
 specifier|inline
-name|int
+name|uid_t
 name|getuid
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 return|return
 literal|1
@@ -741,7 +850,7 @@ begin_function
 DECL|function|waitpid
 specifier|static
 specifier|inline
-name|int
+name|pid_t
 name|waitpid
 parameter_list|(
 name|pid_t
@@ -1042,7 +1151,7 @@ name|passwd
 modifier|*
 name|getpwuid
 parameter_list|(
-name|int
+name|uid_t
 name|uid
 parameter_list|)
 function_decl|;
@@ -1542,6 +1651,23 @@ end_function_decl
 
 begin_function_decl
 name|int
+name|mingw_stat
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|file_name
+parameter_list|,
+name|struct
+name|stat
+modifier|*
+name|buf
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
 name|mingw_fstat
 parameter_list|(
 name|int
@@ -1581,7 +1707,7 @@ name|x
 parameter_list|,
 name|y
 parameter_list|)
-value|mingw_lstat(x,y)
+value|mingw_stat(x,y)
 end_define
 
 begin_endif
@@ -1676,6 +1802,32 @@ define|#
 directive|define
 name|execvp
 value|mingw_execvp
+end_define
+
+begin_function_decl
+name|void
+name|mingw_execv
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|cmd
+parameter_list|,
+name|char
+modifier|*
+specifier|const
+modifier|*
+name|argv
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_define
+DECL|macro|execv
+define|#
+directive|define
+name|execv
+value|mingw_execv
 end_define
 
 begin_function
