@@ -2402,13 +2402,13 @@ expr_stmt|;
 comment|/* make sure off_t is sufficiently large not to wrap */
 if|if
 condition|(
+name|signed_add_overflows
+argument_list|(
 operator|*
 name|offset
-operator|>
-operator|*
-name|offset
-operator|+
+argument_list|,
 name|size
+argument_list|)
 condition|)
 name|die
 argument_list|(

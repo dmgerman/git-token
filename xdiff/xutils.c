@@ -988,7 +988,7 @@ name|i1
 operator|<
 name|s1
 operator|&&
-name|isspace
+name|XDL_ISSPACE
 argument_list|(
 name|l1
 index|[
@@ -1005,7 +1005,7 @@ name|i2
 operator|<
 name|s2
 operator|&&
-name|isspace
+name|XDL_ISSPACE
 argument_list|(
 name|l2
 index|[
@@ -1039,7 +1039,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|isspace
+name|XDL_ISSPACE
 argument_list|(
 name|l1
 index|[
@@ -1047,7 +1047,7 @@ name|i1
 index|]
 argument_list|)
 operator|&&
-name|isspace
+name|XDL_ISSPACE
 argument_list|(
 name|l2
 index|[
@@ -1063,7 +1063,7 @@ name|i1
 operator|<
 name|s1
 operator|&&
-name|isspace
+name|XDL_ISSPACE
 argument_list|(
 name|l1
 index|[
@@ -1080,7 +1080,7 @@ name|i2
 operator|<
 name|s2
 operator|&&
-name|isspace
+name|XDL_ISSPACE
 argument_list|(
 name|l2
 index|[
@@ -1159,7 +1159,7 @@ name|i1
 operator|<
 name|s1
 operator|&&
-name|isspace
+name|XDL_ISSPACE
 argument_list|(
 name|l1
 index|[
@@ -1193,7 +1193,7 @@ name|i2
 operator|<
 name|s2
 operator|&&
-name|isspace
+name|XDL_ISSPACE
 argument_list|(
 name|l2
 index|[
@@ -1272,7 +1272,7 @@ control|)
 block|{
 if|if
 condition|(
-name|isspace
+name|XDL_ISSPACE
 argument_list|(
 operator|*
 name|ptr
@@ -1297,7 +1297,7 @@ literal|1
 operator|<
 name|top
 operator|&&
-name|isspace
+name|XDL_ISSPACE
 argument_list|(
 name|ptr
 index|[
