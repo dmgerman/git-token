@@ -146,7 +146,7 @@ literal|"        [--no-reuse-delta] [--no-reuse-object] [--delta-base-offset]\n"
 literal|"        [--threads=<n>] [--non-empty] [--revs [--unpacked | --all]]\n"
 literal|"        [--reflog] [--stdout | base-name] [--include-tag]\n"
 literal|"        [--keep-unreachable | --unpack-unreachable]\n"
-literal|"        [<ref-list |<object-list]"
+literal|"        [< ref-list |< object-list]"
 decl_stmt|;
 end_decl_stmt
 
