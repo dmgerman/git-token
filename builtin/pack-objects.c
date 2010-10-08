@@ -138,7 +138,7 @@ name|char
 name|pack_usage
 index|[]
 init|=
-literal|"git pack-objects [{ -q | --progress | --all-progress }]\n"
+literal|"git pack-objects [ -q | --progress | --all-progress ]\n"
 literal|"        [--all-progress-implied]\n"
 literal|"        [--max-pack-size=<n>] [--local] [--incremental]\n"
 literal|"        [--window=<n>] [--window-memory=<n>] [--depth=<n>]\n"
