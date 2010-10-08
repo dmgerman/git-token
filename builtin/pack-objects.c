@@ -140,10 +140,10 @@ index|[]
 init|=
 literal|"git pack-objects [{ -q | --progress | --all-progress }]\n"
 literal|"        [--all-progress-implied]\n"
-literal|"        [--max-pack-size=N] [--local] [--incremental]\n"
-literal|"        [--window=N] [--window-memory=N] [--depth=N]\n"
+literal|"        [--max-pack-size=<n>] [--local] [--incremental]\n"
+literal|"        [--window=<n>] [--window-memory=<n>] [--depth=<n>]\n"
 literal|"        [--no-reuse-delta] [--no-reuse-object] [--delta-base-offset]\n"
-literal|"        [--threads=N] [--non-empty] [--revs [--unpacked | --all]*]\n"
+literal|"        [--threads=<n>] [--non-empty] [--revs [--unpacked | --all]]\n"
 literal|"        [--reflog] [--stdout | base-name] [--include-tag]\n"
 literal|"        [--keep-unreachable | --unpack-unreachable]\n"
 literal|"        [<ref-list |<object-list]"

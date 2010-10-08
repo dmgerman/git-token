@@ -72,7 +72,7 @@ literal|"git remote [-v | --verbose] show [-n]<name>"
 block|,
 literal|"git remote prune [-n | --dry-run]<name>"
 block|,
-literal|"git remote [-v | --verbose] update [-p | --prune] [group | remote]"
+literal|"git remote [-v | --verbose] update [-p | --prune] [<group> |<remote>]"
 block|,
 literal|"git remote set-branches<name> [--add]<branch>..."
 block|,

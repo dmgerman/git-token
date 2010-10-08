@@ -106,15 +106,15 @@ name|daemon_usage
 index|[]
 init|=
 literal|"git daemon [--verbose] [--syslog] [--export-all]\n"
-literal|"           [--timeout=n] [--init-timeout=n] [--max-connections=n]\n"
-literal|"           [--strict-paths] [--base-path=path] [--base-path-relaxed]\n"
-literal|"           [--user-path | --user-path=path]\n"
-literal|"           [--interpolated-path=path]\n"
-literal|"           [--reuseaddr] [--detach] [--pid-file=file]\n"
-literal|"           [--[enable|disable|allow-override|forbid-override]=service]\n"
-literal|"           [--inetd | [--listen=host_or_ipaddr] [--port=n]\n"
-literal|"                      [--user=user [--group=group]]\n"
-literal|"           [directory...]"
+literal|"           [--timeout=<n>] [--init-timeout=<n>] [--max-connections=<n>]\n"
+literal|"           [--strict-paths] [--base-path=<path>] [--base-path-relaxed]\n"
+literal|"           [--user-path | --user-path=<path>]\n"
+literal|"           [--interpolated-path=<path>]\n"
+literal|"           [--reuseaddr] [--detach] [--pid-file=<file>]\n"
+literal|"           [--(enable|disable|allow-override|forbid-override)=<service>]\n"
+literal|"           [--inetd | [--listen=<host_or_ipaddr>] [--port=<n>]\n"
+literal|"                      [--user=<user> [--group=<group>]]\n"
+literal|"           [<directory>...]"
 decl_stmt|;
 end_decl_stmt
 
