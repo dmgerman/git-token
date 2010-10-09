@@ -872,13 +872,13 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Return non-zero if path 'name' has a leading symlink component or  * if some leading path component does not exists.  */
+comment|/*  * Return zero if path 'name' has a leading symlink component or  * if some leading path component does not exists.  *  * Return -1 if leading path exists and is a directory.  *  * Return path length if leading path exists and is neither a  * directory nor a symlink.  */
 end_comment
 
 begin_function
-DECL|function|has_symlink_or_noent_leading_path
+DECL|function|check_leading_path
 name|int
-name|has_symlink_or_noent_leading_path
+name|check_leading_path
 parameter_list|(
 specifier|const
 name|char
@@ -898,14 +898,22 @@ operator|&
 name|default_cache
 decl_stmt|;
 comment|/* FIXME */
-return|return
-name|lstat_cache
+name|int
+name|flags
+decl_stmt|;
+name|int
+name|match_len
+init|=
+name|lstat_cache_matchlen
 argument_list|(
 name|cache
 argument_list|,
 name|name
 argument_list|,
 name|len
+argument_list|,
+operator|&
+name|flags
 argument_list|,
 name|FL_SYMLINK
 operator||
@@ -915,12 +923,34 @@ name|FL_DIR
 argument_list|,
 name|USE_ONLY_LSTAT
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|flags
 operator|&
 operator|(
 name|FL_SYMLINK
 operator||
 name|FL_NOENT
 operator|)
+condition|)
+return|return
+literal|0
+return|;
+elseif|else
+if|if
+condition|(
+name|flags
+operator|&
+name|FL_DIR
+condition|)
+return|return
+operator|-
+literal|1
+return|;
+else|else
+return|return
+name|match_len
 return|;
 block|}
 end_function

@@ -6057,7 +6057,7 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|int
-name|has_symlink_or_noent_leading_path
+name|check_leading_path
 parameter_list|(
 specifier|const
 name|char
