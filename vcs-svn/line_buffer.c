@@ -646,7 +646,7 @@ end_function
 
 begin_function
 DECL|function|buffer_skip_bytes
-name|void
+name|off_t
 name|buffer_skip_bytes
 parameter_list|(
 name|struct
@@ -655,7 +655,7 @@ modifier|*
 name|buf
 parameter_list|,
 name|off_t
-name|len
+name|nbytes
 parameter_list|)
 block|{
 name|char
@@ -664,14 +664,16 @@ index|[
 name|COPY_BUFFER_LEN
 index|]
 decl_stmt|;
-name|uint32_t
-name|in
+name|off_t
+name|done
+init|=
+literal|0
 decl_stmt|;
 while|while
 condition|(
-name|len
-operator|>
-literal|0
+name|done
+operator|<
+name|nbytes
 operator|&&
 operator|!
 name|feof
@@ -690,8 +692,16 @@ name|infile
 argument_list|)
 condition|)
 block|{
+name|off_t
+name|len
+init|=
+name|nbytes
+operator|-
+name|done
+decl_stmt|;
+name|size_t
 name|in
-operator|=
+init|=
 name|len
 operator|<
 name|COPY_BUFFER_LEN
@@ -699,9 +709,9 @@ condition|?
 name|len
 else|:
 name|COPY_BUFFER_LEN
-expr_stmt|;
-name|in
-operator|=
+decl_stmt|;
+name|done
+operator|+=
 name|fread
 argument_list|(
 name|byte_buffer
@@ -715,11 +725,10 @@ operator|->
 name|infile
 argument_list|)
 expr_stmt|;
-name|len
-operator|-=
-name|in
-expr_stmt|;
 block|}
+return|return
+name|done
+return|;
 block|}
 end_function
 
