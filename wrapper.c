@@ -252,11 +252,12 @@ name|ret
 decl_stmt|;
 if|if
 condition|(
+name|unsigned_add_overflows
+argument_list|(
 name|size
-operator|+
+argument_list|,
 literal|1
-operator|<
-name|size
+argument_list|)
 condition|)
 name|die
 argument_list|(
