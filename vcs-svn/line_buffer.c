@@ -64,17 +64,6 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|byte_buffer
-specifier|static
-name|char
-name|byte_buffer
-index|[
-name|COPY_BUFFER_LEN
-index|]
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|variable|infile
 specifier|static
 name|FILE
@@ -320,6 +309,12 @@ name|uint32_t
 name|len
 parameter_list|)
 block|{
+name|char
+name|byte_buffer
+index|[
+name|COPY_BUFFER_LEN
+index|]
+decl_stmt|;
 name|uint32_t
 name|in
 decl_stmt|;
@@ -408,6 +403,12 @@ name|uint32_t
 name|len
 parameter_list|)
 block|{
+name|char
+name|byte_buffer
+index|[
+name|COPY_BUFFER_LEN
+index|]
+decl_stmt|;
 name|uint32_t
 name|in
 decl_stmt|;
