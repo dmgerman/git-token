@@ -159,6 +159,22 @@ value|SIGTERM
 end_define
 
 begin_define
+DECL|macro|EWOULDBLOCK
+define|#
+directive|define
+name|EWOULDBLOCK
+value|EAGAIN
+end_define
+
+begin_define
+DECL|macro|SHUT_WR
+define|#
+directive|define
+name|SHUT_WR
+value|SD_SEND
+end_define
+
+begin_define
 DECL|macro|SIGHUP
 define|#
 directive|define
@@ -312,6 +328,22 @@ define|#
 directive|define
 name|POLLHUP
 value|2
+end_define
+
+begin_define
+DECL|macro|POLLOUT
+define|#
+directive|define
+name|POLLOUT
+value|4
+end_define
+
+begin_define
+DECL|macro|POLLNVAL
+define|#
+directive|define
+name|POLLNVAL
+value|8
 end_define
 
 begin_endif
