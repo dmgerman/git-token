@@ -2259,6 +2259,12 @@ name|RUN_SETUP
 block|}
 block|,
 block|{
+literal|"remote-fd"
+block|,
+name|cmd_remote_fd
+block|}
+block|,
+block|{
 literal|"replace"
 block|,
 name|cmd_replace
