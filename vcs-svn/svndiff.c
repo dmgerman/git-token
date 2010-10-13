@@ -1085,6 +1085,22 @@ return|return
 operator|-
 literal|1
 return|;
+if|if
+condition|(
+name|data_pos
+operator|!=
+name|ctx
+operator|->
+name|data
+operator|.
+name|len
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"invalid delta: does not copy all inline data"
+argument_list|)
+return|;
 return|return
 literal|0
 return|;
