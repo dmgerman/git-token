@@ -12,6 +12,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"sliding_window.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"line_buffer.h"
 end_include
 
@@ -630,6 +636,15 @@ name|pre_len
 argument_list|,
 operator|&
 name|delta_len
+argument_list|)
+operator|||
+name|move_window
+argument_list|(
+name|preimage
+argument_list|,
+name|pre_off
+argument_list|,
+name|pre_len
 argument_list|)
 operator|||
 name|apply_one_window
