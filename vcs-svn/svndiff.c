@@ -60,6 +60,11 @@ DECL|struct|window
 struct|struct
 name|window
 block|{
+DECL|member|instructions
+name|struct
+name|strbuf
+name|instructions
+decl_stmt|;
 DECL|member|data
 name|struct
 name|strbuf
@@ -74,7 +79,7 @@ DECL|macro|WINDOW_INIT
 define|#
 directive|define
 name|WINDOW_INIT
-value|{ STRBUF_INIT }
+value|{ STRBUF_INIT, STRBUF_INIT }
 end_define
 
 begin_function
@@ -89,6 +94,14 @@ modifier|*
 name|ctx
 parameter_list|)
 block|{
+name|strbuf_release
+argument_list|(
+operator|&
+name|ctx
+operator|->
+name|instructions
+argument_list|)
+expr_stmt|;
 name|strbuf_release
 argument_list|(
 operator|&
@@ -617,6 +630,20 @@ operator|&
 name|data_len
 argument_list|,
 name|delta_len
+argument_list|)
+operator|||
+name|read_chunk
+argument_list|(
+name|delta
+argument_list|,
+name|delta_len
+argument_list|,
+operator|&
+name|ctx
+operator|.
+name|instructions
+argument_list|,
+name|instructions_len
 argument_list|)
 condition|)
 goto|goto
