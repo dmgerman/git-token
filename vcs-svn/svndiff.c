@@ -28,7 +28,7 @@ file|"svndiff.h"
 end_include
 
 begin_comment
-comment|/*  * svndiff0 applier  *  * See http://svn.apache.org/repos/asf/subversion/trunk/notes/svndiff.  *  * svndiff0 ::= 'SVN\0' window*  * window ::= int int int int int instructions inline_data;  * instructions ::= instruction*;  * instruction ::= view_selector int int  *   | copyfrom_data int  *   | packed_view_selector int  *   | packed_copyfrom_data  *   ;  * view_selector ::= copyfrom_source  *   | copyfrom_target  *   ;  * copyfrom_target ::= # binary 01 000000;  * copyfrom_data ::= # binary 10 000000;  * packed_view_selector ::= # view_selector OR-ed with 6 bit value;  * packed_copyfrom_data ::= # copyfrom_data OR-ed with 6 bit value;  * int ::= highdigit* lowdigit;  * highdigit ::= # binary 1000 0000 OR-ed with 7 bit value;  * lowdigit ::= # 7 bit value;  */
+comment|/*  * svndiff0 applier  *  * See http://svn.apache.org/repos/asf/subversion/trunk/notes/svndiff.  *  * svndiff0 ::= 'SVN\0' window*  * window ::= int int int int int instructions inline_data;  * instructions ::= instruction*;  * instruction ::= view_selector int int  *   | copyfrom_data int  *   | packed_view_selector int  *   | packed_copyfrom_data  *   ;  * view_selector ::= copyfrom_source  *   | copyfrom_target  *   ;  * copyfrom_source ::= # binary 00 000000;  * copyfrom_target ::= # binary 01 000000;  * copyfrom_data ::= # binary 10 000000;  * packed_view_selector ::= # view_selector OR-ed with 6 bit value;  * packed_copyfrom_data ::= # copyfrom_data OR-ed with 6 bit value;  * int ::= highdigit* lowdigit;  * highdigit ::= # binary 1000 0000 OR-ed with 7 bit value;  * lowdigit ::= # 7 bit value;  */
 end_comment
 
 begin_define
@@ -37,6 +37,14 @@ define|#
 directive|define
 name|INSN_MASK
 value|0xc0
+end_define
+
+begin_define
+DECL|macro|INSN_COPYFROM_SOURCE
+define|#
+directive|define
+name|INSN_COPYFROM_SOURCE
+value|0x00
 end_define
 
 begin_define
@@ -92,6 +100,12 @@ DECL|struct|window
 struct|struct
 name|window
 block|{
+DECL|member|in
+name|struct
+name|sliding_view
+modifier|*
+name|in
+decl_stmt|;
 DECL|member|out
 name|struct
 name|strbuf
@@ -116,7 +130,10 @@ DECL|macro|WINDOW_INIT
 define|#
 directive|define
 name|WINDOW_INIT
-value|{ STRBUF_INIT, STRBUF_INIT, STRBUF_INIT }
+parameter_list|(
+name|w
+parameter_list|)
+value|{ (w), STRBUF_INIT, STRBUF_INIT, STRBUF_INIT }
 end_define
 
 begin_function
@@ -762,6 +779,102 @@ block|}
 end_function
 
 begin_function
+DECL|function|copyfrom_source
+specifier|static
+name|int
+name|copyfrom_source
+parameter_list|(
+name|struct
+name|window
+modifier|*
+name|ctx
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|instructions
+parameter_list|,
+name|size_t
+name|nbytes
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|insns_end
+parameter_list|)
+block|{
+name|size_t
+name|offset
+decl_stmt|;
+if|if
+condition|(
+name|parse_int
+argument_list|(
+name|instructions
+argument_list|,
+operator|&
+name|offset
+argument_list|,
+name|insns_end
+argument_list|)
+condition|)
+return|return
+operator|-
+literal|1
+return|;
+if|if
+condition|(
+name|unsigned_add_overflows
+argument_list|(
+name|offset
+argument_list|,
+name|nbytes
+argument_list|)
+operator|||
+name|offset
+operator|+
+name|nbytes
+operator|>
+name|ctx
+operator|->
+name|in
+operator|->
+name|width
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"invalid delta: copies source data outside view"
+argument_list|)
+return|;
+name|strbuf_add
+argument_list|(
+operator|&
+name|ctx
+operator|->
+name|out
+argument_list|,
+name|ctx
+operator|->
+name|in
+operator|->
+name|buf
+operator|.
+name|buf
+operator|+
+name|offset
+argument_list|,
+name|nbytes
+argument_list|)
+expr_stmt|;
+return|return
+literal|0
+return|;
+block|}
+end_function
+
+begin_function
 DECL|function|copyfrom_target
 specifier|static
 name|int
@@ -1100,6 +1213,21 @@ name|INSN_MASK
 condition|)
 block|{
 case|case
+name|INSN_COPYFROM_SOURCE
+case|:
+return|return
+name|copyfrom_source
+argument_list|(
+name|ctx
+argument_list|,
+name|instructions
+argument_list|,
+name|nbytes
+argument_list|,
+name|insns_end
+argument_list|)
+return|;
+case|case
 name|INSN_COPYFROM_TARGET
 case|:
 return|return
@@ -1131,9 +1259,7 @@ default|default:
 return|return
 name|error
 argument_list|(
-literal|"Unknown instruction %x"
-argument_list|,
-name|instruction
+literal|"invalid delta: unrecognized instruction"
 argument_list|)
 return|;
 block|}
@@ -1242,6 +1368,11 @@ name|off_t
 modifier|*
 name|delta_len
 parameter_list|,
+name|struct
+name|sliding_view
+modifier|*
+name|preimage
+parameter_list|,
 name|FILE
 modifier|*
 name|out
@@ -1252,6 +1383,9 @@ name|window
 name|ctx
 init|=
 name|WINDOW_INIT
+argument_list|(
+name|preimage
+argument_list|)
 decl_stmt|;
 name|size_t
 name|out_len
@@ -1508,6 +1642,8 @@ name|delta
 argument_list|,
 operator|&
 name|delta_len
+argument_list|,
+name|preimage
 argument_list|,
 name|postimage
 argument_list|)
