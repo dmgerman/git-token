@@ -222,6 +222,8 @@ block|,
 name|NULL
 block|,
 name|NULL
+block|,
+name|NULL
 block|, 	}
 decl_stmt|;
 name|struct
@@ -276,6 +278,20 @@ operator|++
 index|]
 operator|=
 literal|"-q"
+expr_stmt|;
+if|if
+condition|(
+name|args
+operator|->
+name|progress
+condition|)
+name|argv
+index|[
+name|i
+operator|++
+index|]
+operator|=
+literal|"--progress"
 expr_stmt|;
 name|memset
 argument_list|(
