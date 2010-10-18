@@ -12702,6 +12702,29 @@ name|void
 modifier|*
 name|dst
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|fragment
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"missing binary patch data for '%s'"
+argument_list|,
+name|patch
+operator|->
+name|new_name
+condition|?
+name|patch
+operator|->
+name|new_name
+else|:
+name|patch
+operator|->
+name|old_name
+argument_list|)
+return|;
 comment|/* Binary patch is irreversible without the optional second hunk */
 if|if
 condition|(
