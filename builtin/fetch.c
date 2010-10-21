@@ -84,7 +84,7 @@ literal|"git fetch [<options>] [<repository> [<refspec>...]]"
 block|,
 literal|"git fetch [<options>]<group>"
 block|,
-literal|"git fetch --multiple [<options>] [<repository> |<group>]..."
+literal|"git fetch --multiple [<options>] [(<repository> |<group>)...]"
 block|,
 literal|"git fetch --all [<options>]"
 block|,

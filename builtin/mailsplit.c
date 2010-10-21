@@ -35,7 +35,7 @@ name|char
 name|git_mailsplit_usage
 index|[]
 init|=
-literal|"git mailsplit [-d<prec>] [-f<n>] [-b] [--keep-cr] -o<directory> [<mbox>|<Maildir>...]"
+literal|"git mailsplit [-d<prec>] [-f<n>] [-b] [--keep-cr] -o<directory> [(<mbox>|<Maildir>)...]"
 decl_stmt|;
 end_decl_stmt
 
