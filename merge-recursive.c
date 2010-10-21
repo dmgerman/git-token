@@ -2103,6 +2103,8 @@ name|NULL
 decl_stmt|;
 name|int
 name|last_len
+init|=
+literal|0
 decl_stmt|;
 name|struct
 name|stage_data
