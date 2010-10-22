@@ -31,8 +31,8 @@ index|[]
 init|=
 literal|"git bundle create<file><git-rev-list args>\n"
 literal|"   or: git bundle verify<file>\n"
-literal|"   or: git bundle list-heads<file> [refname...]\n"
-literal|"   or: git bundle unbundle<file> [refname...]"
+literal|"   or: git bundle list-heads<file> [<refname>...]\n"
+literal|"   or: git bundle unbundle<file> [<refname>...]"
 decl_stmt|;
 end_decl_stmt
 

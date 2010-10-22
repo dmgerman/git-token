@@ -16445,7 +16445,7 @@ name|char
 name|fast_import_usage
 index|[]
 init|=
-literal|"git fast-import [--date-format=f] [--max-pack-size=n] [--big-file-threshold=n] [--depth=n] [--active-branches=n] [--export-marks=marks.file]"
+literal|"git fast-import [--date-format=<f>] [--max-pack-size=<n>] [--big-file-threshold=<n>] [--depth=<n>] [--active-branches=<n>] [--export-marks=<marks.file>]"
 decl_stmt|;
 end_decl_stmt
 

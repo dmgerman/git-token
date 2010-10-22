@@ -121,7 +121,7 @@ name|grep_usage
 index|[]
 init|=
 block|{
-literal|"git grep [options] [-e]<pattern> [<rev>...] [[--] path...]"
+literal|"git grep [options] [-e]<pattern> [<rev>...] [[--]<path>...]"
 block|,
 name|NULL
 block|}

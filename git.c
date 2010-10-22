@@ -42,11 +42,11 @@ name|char
 name|git_usage_string
 index|[]
 init|=
-literal|"git [--version] [--exec-path[=GIT_EXEC_PATH]] [--html-path]\n"
+literal|"git [--version] [--exec-path[=<path>]] [--html-path]\n"
 literal|"           [-p|--paginate|--no-pager] [--no-replace-objects]\n"
-literal|"           [--bare] [--git-dir=GIT_DIR] [--work-tree=GIT_WORK_TREE]\n"
+literal|"           [--bare] [--git-dir=<path>] [--work-tree=<path>]\n"
 literal|"           [-c name=value] [--help]\n"
-literal|"           COMMAND [ARGS]"
+literal|"<command> [<args>]"
 decl_stmt|;
 end_decl_stmt
 
@@ -57,7 +57,7 @@ name|char
 name|git_more_info_string
 index|[]
 init|=
-literal|"See 'git help COMMAND' for more information on a specific command."
+literal|"See 'git help<command>' for more information on a specific command."
 decl_stmt|;
 end_decl_stmt
 
