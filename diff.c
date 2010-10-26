@@ -21091,7 +21091,7 @@ argument_list|)
 operator|)
 condition|)
 return|return;
-comment|/* no tree diffs in patch format */
+comment|/* no useful stat for tree diffs */
 name|run_diffstat
 argument_list|(
 name|p
@@ -21168,7 +21168,7 @@ argument_list|)
 operator|)
 condition|)
 return|return;
-comment|/* no tree diffs in patch format */
+comment|/* nothing to check in tree diffs */
 name|run_checkdiff
 argument_list|(
 name|p
