@@ -599,7 +599,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Is a tree entry interesting given the pathspec we have?  *  * Return:  *  - 2 for "yes, and all subsequent entries will be"  *  - 1 for yes  *  - zero for no  *  - negative for "no, and no subsequent entries will be either"  */
+comment|/*  * Is a tree entry interesting given the pathspec we have?  *  * Pre-condition: baselen == 0 || base[baselen-1] == '/'  *  * Return:  *  - 2 for "yes, and all subsequent entries will be"  *  - 1 for yes  *  - zero for no  *  - negative for "no, and no subsequent entries will be either"  */
 end_comment
 
 begin_function
@@ -661,7 +661,7 @@ operator|->
 name|nr_paths
 condition|)
 return|return
-literal|1
+literal|2
 return|;
 name|sha1
 operator|=
@@ -1326,13 +1326,12 @@ name|struct
 name|diff_options
 modifier|*
 name|opt
+parameter_list|,
+name|int
+modifier|*
+name|all_interesting
 parameter_list|)
 block|{
-name|int
-name|all_interesting
-init|=
-literal|0
-decl_stmt|;
 while|while
 condition|(
 name|t
@@ -1342,19 +1341,7 @@ condition|)
 block|{
 name|int
 name|show
-decl_stmt|;
-if|if
-condition|(
-name|all_interesting
-condition|)
-name|show
-operator|=
-literal|1
-expr_stmt|;
-else|else
-block|{
-name|show
-operator|=
+init|=
 name|tree_entry_interesting
 argument_list|(
 name|t
@@ -1365,18 +1352,18 @@ name|baselen
 argument_list|,
 name|opt
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|show
 operator|==
 literal|2
 condition|)
+operator|*
 name|all_interesting
 operator|=
 literal|1
 expr_stmt|;
-block|}
 if|if
 condition|(
 operator|!
@@ -1442,6 +1429,16 @@ argument_list|(
 name|base
 argument_list|)
 decl_stmt|;
+name|int
+name|all_t1_interesting
+init|=
+literal|0
+decl_stmt|;
+name|int
+name|all_t2_interesting
+init|=
+literal|0
+decl_stmt|;
 for|for
 control|(
 init|;
@@ -1472,6 +1469,11 @@ operator|->
 name|nr_paths
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|all_t1_interesting
+condition|)
 name|skip_uninteresting
 argument_list|(
 name|t1
@@ -1481,8 +1483,16 @@ argument_list|,
 name|baselen
 argument_list|,
 name|opt
+argument_list|,
+operator|&
+name|all_t1_interesting
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|all_t2_interesting
+condition|)
 name|skip_uninteresting
 argument_list|(
 name|t2
@@ -1492,6 +1502,9 @@ argument_list|,
 name|baselen
 argument_list|,
 name|opt
+argument_list|,
+operator|&
+name|all_t2_interesting
 argument_list|)
 expr_stmt|;
 block|}
