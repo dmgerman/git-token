@@ -636,11 +636,33 @@ directive|include
 file|<sys/wait.h>
 end_include
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|NO_SYS_POLL_H
+end_ifndef
+
 begin_include
 include|#
 directive|include
 file|<sys/poll.h>
 end_include
+
+begin_else
+else|#
+directive|else
+end_else
+
+begin_include
+include|#
+directive|include
+file|<poll.h>
+end_include
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_include
 include|#
@@ -707,11 +729,33 @@ directive|include
 file|<pwd.h>
 end_include
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|NO_INTTYPES_H
+end_ifndef
+
 begin_include
 include|#
 directive|include
 file|<inttypes.h>
 end_include
+
+begin_else
+else|#
+directive|else
+end_else
+
+begin_include
+include|#
+directive|include
+file|<stdint.h>
+end_include
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_if
 if|#

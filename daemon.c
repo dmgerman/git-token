@@ -79,6 +79,35 @@ endif|#
 directive|endif
 end_endif
 
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|NO_INITGROUPS
+end_ifdef
+
+begin_define
+DECL|macro|initgroups
+define|#
+directive|define
+name|initgroups
+parameter_list|(
+name|x
+parameter_list|,
+name|y
+parameter_list|)
+value|(0)
+end_define
+
+begin_comment
+DECL|macro|initgroups
+comment|/* nothing */
+end_comment
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_decl_stmt
 DECL|variable|log_syslog
 specifier|static
