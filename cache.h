@@ -3448,6 +3448,15 @@ end_decl_stmt
 begin_decl_stmt
 specifier|extern
 name|int
+name|minimum_abbrev
+decl_stmt|,
+name|default_abbrev
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
+name|int
 name|ignore_case
 decl_stmt|;
 end_decl_stmt
@@ -5041,7 +5050,7 @@ DECL|macro|MINIMUM_ABBREV
 define|#
 directive|define
 name|MINIMUM_ABBREV
-value|4
+value|minimum_abbrev
 end_define
 
 begin_define
@@ -5049,7 +5058,7 @@ DECL|macro|DEFAULT_ABBREV
 define|#
 directive|define
 name|DEFAULT_ABBREV
-value|7
+value|default_abbrev
 end_define
 
 begin_struct
