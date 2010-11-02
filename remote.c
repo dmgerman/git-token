@@ -3203,7 +3203,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * We need to make sure the tracking branches are well formed, but a  * wildcard refspec in "struct refspec" must have a trailing slash. We  * temporarily drop the trailing '/' while calling check_ref_format(),  * and put it back.  The caller knows that a CHECK_REF_FORMAT_ONELEVEL  * error return is Ok for a wildcard refspec.  */
+comment|/*  * We need to make sure the remote-tracking branches are well formed, but a  * wildcard refspec in "struct refspec" must have a trailing slash. We  * temporarily drop the trailing '/' while calling check_ref_format(),  * and put it back.  The caller knows that a CHECK_REF_FORMAT_ONELEVEL  * error return is Ok for a wildcard refspec.  */
 end_comment
 
 begin_function
