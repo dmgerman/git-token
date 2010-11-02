@@ -2405,7 +2405,7 @@ name|strbuf_addf
 argument_list|(
 name|msg
 argument_list|,
-literal|"%s\t\tremote branch '%s' of .\n"
+literal|"%s\t\tremote-tracking branch '%s' of .\n"
 argument_list|,
 name|sha1_to_hex
 argument_list|(

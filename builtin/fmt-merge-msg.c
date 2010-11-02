@@ -593,7 +593,7 @@ name|prefixcmp
 argument_list|(
 name|line
 argument_list|,
-literal|"remote branch "
+literal|"remote-tracking branch "
 argument_list|)
 condition|)
 block|{
@@ -601,7 +601,10 @@ name|origin
 operator|=
 name|line
 operator|+
-literal|14
+name|strlen
+argument_list|(
+literal|"remote-tracking branch "
+argument_list|)
 expr_stmt|;
 name|string_list_append
 argument_list|(
@@ -1476,9 +1479,9 @@ literal|", "
 expr_stmt|;
 name|print_joined
 argument_list|(
-literal|"remote branch "
+literal|"remote-tracking branch "
 argument_list|,
-literal|"remote branches "
+literal|"remote-tracking branches "
 argument_list|,
 operator|&
 name|src_data
