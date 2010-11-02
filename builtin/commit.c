@@ -319,6 +319,15 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|fixup_message
+specifier|static
+name|char
+modifier|*
+name|fixup_message
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|author_name
 DECL|variable|author_email
 DECL|variable|author_date
@@ -699,6 +708,20 @@ argument_list|,
 literal|"COMMIT"
 argument_list|,
 literal|"reuse message from specified commit"
+argument_list|)
+block|,
+name|OPT_STRING
+argument_list|(
+literal|0
+argument_list|,
+literal|"fixup"
+argument_list|,
+operator|&
+name|fixup_message
+argument_list|,
+literal|"COMMIT"
+argument_list|,
+literal|"use autosquash formatted message to fixup specified commit"
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -3054,6 +3077,69 @@ block|}
 elseif|else
 if|if
 condition|(
+name|fixup_message
+condition|)
+block|{
+name|struct
+name|pretty_print_context
+name|ctx
+init|=
+block|{
+literal|0
+block|}
+decl_stmt|;
+name|struct
+name|commit
+modifier|*
+name|commit
+decl_stmt|;
+name|commit
+operator|=
+name|lookup_commit_reference_by_name
+argument_list|(
+name|fixup_message
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|commit
+condition|)
+name|die
+argument_list|(
+literal|"could not lookup commit %s"
+argument_list|,
+name|fixup_message
+argument_list|)
+expr_stmt|;
+name|ctx
+operator|.
+name|output_encoding
+operator|=
+name|get_commit_output_encoding
+argument_list|()
+expr_stmt|;
+name|format_commit_message
+argument_list|(
+name|commit
+argument_list|,
+literal|"fixup! %s\n\n"
+argument_list|,
+operator|&
+name|sb
+argument_list|,
+operator|&
+name|ctx
+argument_list|)
+expr_stmt|;
+name|hook_arg1
+operator|=
+literal|"message"
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
 operator|!
 name|stat
 argument_list|(
@@ -4495,6 +4581,8 @@ operator|.
 name|len
 operator|||
 name|use_message
+operator|||
+name|fixup_message
 condition|)
 name|use_editor
 operator|=
@@ -4574,6 +4662,13 @@ operator|++
 expr_stmt|;
 if|if
 condition|(
+name|fixup_message
+condition|)
+name|f
+operator|++
+expr_stmt|;
+if|if
+condition|(
 name|logfile
 condition|)
 name|f
@@ -4587,7 +4682,7 @@ literal|1
 condition|)
 name|die
 argument_list|(
-literal|"Only one of -c/-C/-F can be used."
+literal|"Only one of -c/-C/-F/--fixup can be used."
 argument_list|)
 expr_stmt|;
 if|if
@@ -4602,7 +4697,7 @@ literal|0
 condition|)
 name|die
 argument_list|(
-literal|"Option -m cannot be combined with -c/-C/-F."
+literal|"Option -m cannot be combined with -c/-C/-F/--fixup."
 argument_list|)
 expr_stmt|;
 if|if
@@ -4619,6 +4714,9 @@ name|amend
 operator|&&
 operator|!
 name|use_message
+operator|&&
+operator|!
+name|fixup_message
 condition|)
 name|use_message
 operator|=
