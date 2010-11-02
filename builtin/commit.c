@@ -320,10 +320,14 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|fixup_message
+DECL|variable|squash_message
 specifier|static
 name|char
 modifier|*
 name|fixup_message
+decl_stmt|,
+modifier|*
+name|squash_message
 decl_stmt|;
 end_decl_stmt
 
@@ -722,6 +726,20 @@ argument_list|,
 literal|"COMMIT"
 argument_list|,
 literal|"use autosquash formatted message to fixup specified commit"
+argument_list|)
+block|,
+name|OPT_STRING
+argument_list|(
+literal|0
+argument_list|,
+literal|"squash"
+argument_list|,
+operator|&
+name|squash_message
+argument_list|,
+literal|"COMMIT"
+argument_list|,
+literal|"use autosquash formatted message to squash specified commit"
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -2913,6 +2931,88 @@ literal|0
 return|;
 if|if
 condition|(
+name|squash_message
+condition|)
+block|{
+comment|/* 		 * Insert the proper subject line before other commit 		 * message options add their content. 		 */
+if|if
+condition|(
+name|use_message
+operator|&&
+operator|!
+name|strcmp
+argument_list|(
+name|use_message
+argument_list|,
+name|squash_message
+argument_list|)
+condition|)
+name|strbuf_addstr
+argument_list|(
+operator|&
+name|sb
+argument_list|,
+literal|"squash! "
+argument_list|)
+expr_stmt|;
+else|else
+block|{
+name|struct
+name|pretty_print_context
+name|ctx
+init|=
+block|{
+literal|0
+block|}
+decl_stmt|;
+name|struct
+name|commit
+modifier|*
+name|c
+decl_stmt|;
+name|c
+operator|=
+name|lookup_commit_reference_by_name
+argument_list|(
+name|squash_message
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|c
+condition|)
+name|die
+argument_list|(
+literal|"could not lookup commit %s"
+argument_list|,
+name|squash_message
+argument_list|)
+expr_stmt|;
+name|ctx
+operator|.
+name|output_encoding
+operator|=
+name|get_commit_output_encoding
+argument_list|()
+expr_stmt|;
+name|format_commit_message
+argument_list|(
+name|c
+argument_list|,
+literal|"squash! %s\n\n"
+argument_list|,
+operator|&
+name|sb
+argument_list|,
+operator|&
+name|ctx
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+if|if
+condition|(
 name|message
 operator|.
 name|len
@@ -3274,6 +3374,21 @@ name|hook_arg1
 operator|=
 literal|"merge"
 expr_stmt|;
+if|if
+condition|(
+name|squash_message
+condition|)
+block|{
+comment|/* 		 * If squash_commit was used for the commit subject, 		 * then we're possibly hijacking other commit log options. 		 * Reset the hook args to tell the real story. 		 */
+name|hook_arg1
+operator|=
+literal|"message"
+expr_stmt|;
+name|hook_arg2
+operator|=
+literal|""
+expr_stmt|;
+block|}
 name|fp
 operator|=
 name|fopen
@@ -4644,6 +4759,17 @@ condition|)
 name|die
 argument_list|(
 literal|"You are in the middle of a merge -- cannot amend."
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|fixup_message
+operator|&&
+name|squash_message
+condition|)
+name|die
+argument_list|(
+literal|"Options --squash and --fixup cannot be used together"
 argument_list|)
 expr_stmt|;
 if|if
