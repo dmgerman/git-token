@@ -206,6 +206,20 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+name|struct
+name|commit
+modifier|*
+name|lookup_commit_reference_by_name
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|name
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|int
 name|parse_commit_buffer
 parameter_list|(
