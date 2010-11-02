@@ -537,7 +537,7 @@ name|fp
 argument_list|,
 name|c
 argument_list|,
-literal|"# Changed but not updated:"
+literal|"# Changes not staged for commit:"
 argument_list|)
 expr_stmt|;
 if|if
