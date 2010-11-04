@@ -42,13 +42,7 @@ end_endif
 begin_include
 include|#
 directive|include
-file|<config.h>
-end_include
-
-begin_include
-include|#
-directive|include
-file|<alloca.h>
+file|<malloc.h>
 end_include
 
 begin_include
