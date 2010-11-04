@@ -321,7 +321,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|/* 		 * Since stderr is set to linebuffered mode, the 		 * logging of different processes will not overlap 		 */
+comment|/* 		 * Since stderr is set to buffered mode, the 		 * logging of different processes will not overlap 		 * unless they overflow the (rather big) buffers. 		 */
 name|fprintf
 argument_list|(
 name|stderr
@@ -350,6 +350,11 @@ name|fputc
 argument_list|(
 literal|'\n'
 argument_list|,
+name|stderr
+argument_list|)
+expr_stmt|;
+name|fflush
+argument_list|(
 name|stderr
 argument_list|)
 expr_stmt|;
@@ -5753,9 +5758,9 @@ name|stderr
 argument_list|,
 name|NULL
 argument_list|,
-name|_IOLBF
+name|_IOFBF
 argument_list|,
-literal|0
+literal|4096
 argument_list|)
 expr_stmt|;
 if|if
