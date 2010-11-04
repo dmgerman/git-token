@@ -3041,7 +3041,7 @@ name|sockaddr
 modifier|*
 name|addr
 parameter_list|,
-name|int
+name|socklen_t
 name|addrlen
 parameter_list|)
 block|{
@@ -3376,7 +3376,7 @@ name|sockaddr
 modifier|*
 name|addr
 parameter_list|,
-name|int
+name|socklen_t
 name|addrlen
 parameter_list|)
 block|{
@@ -4704,8 +4704,7 @@ directive|endif
 block|}
 name|ss
 union|;
-name|unsigned
-name|int
+name|socklen_t
 name|sslen
 init|=
 sizeof|sizeof
