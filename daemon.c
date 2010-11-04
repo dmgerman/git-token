@@ -110,10 +110,10 @@ literal|"           [--timeout=<n>] [--init-timeout=<n>] [--max-connections=<n>]
 literal|"           [--strict-paths] [--base-path=<path>] [--base-path-relaxed]\n"
 literal|"           [--user-path | --user-path=<path>]\n"
 literal|"           [--interpolated-path=<path>]\n"
-literal|"           [--reuseaddr] [--detach] [--pid-file=<file>]\n"
+literal|"           [--reuseaddr] [--pid-file=<file>]\n"
 literal|"           [--(enable|disable|allow-override|forbid-override)=<service>]\n"
 literal|"           [--inetd | [--listen=<host_or_ipaddr>] [--port=<n>]\n"
-literal|"                      [--user=<user> [--group=<group>]]\n"
+literal|"                      [--detach] [--user=<user> [--group=<group>]]\n"
 literal|"           [<directory>...]"
 decl_stmt|;
 end_decl_stmt
@@ -5824,6 +5824,8 @@ condition|(
 name|inetd_mode
 operator|&&
 operator|(
+name|detach
+operator|||
 name|group_name
 operator|||
 name|user_name
@@ -5831,7 +5833,7 @@ operator|)
 condition|)
 name|die
 argument_list|(
-literal|"--user and --group are incompatible with --inetd"
+literal|"--detach, --user and --group are incompatible with --inetd"
 argument_list|)
 expr_stmt|;
 if|if
