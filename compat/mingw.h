@@ -895,6 +895,27 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_define
+DECL|macro|kill
+define|#
+directive|define
+name|kill
+value|mingw_kill
+end_define
+
+begin_function_decl
+name|int
+name|mingw_kill
+parameter_list|(
+name|pid_t
+name|pid
+parameter_list|,
+name|int
+name|sig
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_ifndef
 ifndef|#
 directive|ifndef
