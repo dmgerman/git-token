@@ -104,7 +104,7 @@ name|char
 name|builtin_diff_usage
 index|[]
 init|=
-literal|"git diff<options><rev>{0,2} --<path>*"
+literal|"git diff [<options>] [<commit> [<commit>]] [--] [<path>...]"
 decl_stmt|;
 end_decl_stmt
 
