@@ -342,6 +342,18 @@ argument_list|,
 literal|"initialize submodules in the clone"
 argument_list|)
 block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|0
+argument_list|,
+literal|"recurse_submodules"
+argument_list|,
+operator|&
+name|option_recursive
+argument_list|,
+literal|"initialize submodules in the clone"
+argument_list|)
+block|,
 name|OPT_STRING
 argument_list|(
 literal|0
