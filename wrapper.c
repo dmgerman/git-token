@@ -10,24 +10,15 @@ file|"cache.h"
 end_include
 
 begin_function
-DECL|function|try_to_free_builtin
+DECL|function|do_nothing
 specifier|static
 name|void
-name|try_to_free_builtin
+name|do_nothing
 parameter_list|(
 name|size_t
 name|size
 parameter_list|)
-block|{
-name|release_pack_memory
-argument_list|(
-name|size
-argument_list|,
-operator|-
-literal|1
-argument_list|)
-expr_stmt|;
-block|}
+block|{ }
 end_function
 
 begin_function_decl
@@ -43,7 +34,7 @@ name|size_t
 name|size
 parameter_list|)
 init|=
-name|try_to_free_builtin
+name|do_nothing
 function_decl|;
 end_function_decl
 
