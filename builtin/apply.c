@@ -18993,6 +18993,8 @@ name|OPT__VERBOSE
 argument_list|(
 operator|&
 name|apply_verbosely
+argument_list|,
+literal|"be verbose"
 argument_list|)
 block|,
 name|OPT_BIT
