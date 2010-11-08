@@ -7514,6 +7514,8 @@ name|OPT__DRY_RUN
 argument_list|(
 operator|&
 name|dry_run
+argument_list|,
+literal|"dry run"
 argument_list|)
 block|,
 name|OPT_END

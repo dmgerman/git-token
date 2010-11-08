@@ -4481,12 +4481,8 @@ name|options
 index|[]
 init|=
 block|{
-name|OPT_BOOLEAN
+name|OPT__DRY_RUN
 argument_list|(
-literal|'n'
-argument_list|,
-literal|"dry-run"
-argument_list|,
 operator|&
 name|show_only
 argument_list|,

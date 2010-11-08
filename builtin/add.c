@@ -1738,6 +1738,8 @@ name|OPT__DRY_RUN
 argument_list|(
 operator|&
 name|show_only
+argument_list|,
+literal|"dry run"
 argument_list|)
 block|,
 name|OPT__VERBOSE
