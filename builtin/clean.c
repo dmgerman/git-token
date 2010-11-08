@@ -283,7 +283,7 @@ argument_list|(
 operator|&
 name|quiet
 argument_list|,
-literal|"be quiet"
+literal|"do not print names of files removed"
 argument_list|)
 block|,
 name|OPT__DRY_RUN

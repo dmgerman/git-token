@@ -176,7 +176,7 @@ argument_list|(
 operator|&
 name|quiet
 argument_list|,
-literal|"be quiet"
+literal|"suppress error message for non-symbolic (detached) refs"
 argument_list|)
 block|,
 name|OPT_STRING

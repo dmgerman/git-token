@@ -295,7 +295,7 @@ argument_list|(
 operator|&
 name|quiet
 argument_list|,
-literal|"be quiet"
+literal|"do not warn about conflicts"
 argument_list|)
 block|,
 name|OPT_CALLBACK

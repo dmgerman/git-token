@@ -1070,7 +1070,7 @@ argument_list|(
 operator|&
 name|quiet
 argument_list|,
-literal|"be quiet"
+literal|"do not print results to stdout (useful with --verify)"
 argument_list|)
 block|,
 block|{

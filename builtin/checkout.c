@@ -3926,7 +3926,7 @@ name|opts
 operator|.
 name|quiet
 argument_list|,
-literal|"be quiet"
+literal|"suppress progress reporting"
 argument_list|)
 block|,
 name|OPT_STRING

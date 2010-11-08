@@ -532,7 +532,7 @@ argument_list|(
 operator|&
 name|quiet
 argument_list|,
-literal|"be quiet"
+literal|"do not list removed files"
 argument_list|)
 block|,
 name|OPT_BOOLEAN

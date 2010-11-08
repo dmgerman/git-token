@@ -1028,7 +1028,7 @@ argument_list|(
 operator|&
 name|quiet
 argument_list|,
-literal|"be quiet"
+literal|"no warning for existing files and files not in index"
 argument_list|)
 block|,
 name|OPT_BOOLEAN
