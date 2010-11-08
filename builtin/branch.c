@@ -3481,7 +3481,7 @@ argument_list|(
 operator|&
 name|verbose
 argument_list|,
-literal|"be verbose"
+literal|"show hash and subject, give twice for upstream branch"
 argument_list|)
 block|,
 name|OPT_SET_INT
