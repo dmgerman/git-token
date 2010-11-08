@@ -5059,12 +5059,8 @@ block|,
 name|close_callback
 block|}
 block|,
-name|OPT_BOOLEAN
+name|OPT__QUIET
 argument_list|(
-literal|'q'
-argument_list|,
-literal|"quiet"
-argument_list|,
 operator|&
 name|opt
 operator|.
