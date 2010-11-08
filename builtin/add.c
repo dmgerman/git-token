@@ -1791,12 +1791,8 @@ argument_list|,
 literal|"edit current diff and apply"
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT__FORCE
 argument_list|(
-literal|'f'
-argument_list|,
-literal|"force"
-argument_list|,
 operator|&
 name|ignored_too
 argument_list|,

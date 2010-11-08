@@ -381,12 +381,8 @@ argument_list|,
 literal|"dry run"
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT__FORCE
 argument_list|(
-literal|'f'
-argument_list|,
-literal|"force"
-argument_list|,
 operator|&
 name|force
 argument_list|,

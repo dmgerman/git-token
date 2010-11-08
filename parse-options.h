@@ -927,6 +927,19 @@ value|OPT_BOOLEAN('n', "dry-run", (var), (h))
 end_define
 
 begin_define
+DECL|macro|OPT__FORCE
+define|#
+directive|define
+name|OPT__FORCE
+parameter_list|(
+name|var
+parameter_list|,
+name|h
+parameter_list|)
+value|OPT_BOOLEAN('f', "force",   (var), (h))
+end_define
+
+begin_define
 DECL|macro|OPT__ABBREV
 define|#
 directive|define
