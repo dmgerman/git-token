@@ -5035,17 +5035,29 @@ name|default_notes_ref
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|strbuf_add
+argument_list|(
+operator|&
+operator|(
 name|o
 operator|.
 name|commit_msg
-operator|=
+operator|)
+argument_list|,
 name|msg
 operator|.
 name|buf
 operator|+
 literal|7
+argument_list|,
+name|msg
+operator|.
+name|len
+operator|-
+literal|7
+argument_list|)
 expr_stmt|;
-comment|// skip "notes: " prefix
+comment|/* skip "notes: " */
 name|result
 operator|=
 name|notes_merge

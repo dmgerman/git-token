@@ -56,9 +56,8 @@ modifier|*
 name|remote_ref
 decl_stmt|;
 DECL|member|commit_msg
-specifier|const
-name|char
-modifier|*
+name|struct
+name|strbuf
 name|commit_msg
 decl_stmt|;
 DECL|member|verbosity
