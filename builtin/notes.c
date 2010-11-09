@@ -4610,10 +4610,15 @@ name|DIE_ON_ERR
 argument_list|)
 expr_stmt|;
 else|else
-comment|/* TODO: */
-name|die
+comment|/* Merge has unresolved conflicts */
+name|printf
 argument_list|(
-literal|"'git notes merge' cannot yet handle conflicts!"
+literal|"Automatic notes merge failed. Fix conflicts in %s.\n"
+argument_list|,
+name|git_path
+argument_list|(
+name|NOTES_MERGE_WORKTREE
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|free_notes
@@ -4634,8 +4639,11 @@ name|msg
 argument_list|)
 expr_stmt|;
 return|return
+name|result
+operator|<
 literal|0
 return|;
+comment|/* return non-zero on conflicts */
 block|}
 end_function
 
