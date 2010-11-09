@@ -263,7 +263,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Copy a note from one object to another in the given notes_tree.  *  * Fails if the to_obj already has a note unless 'force' is true.  */
+comment|/*  * Copy a note from one object to another in the given notes_tree.  *  * Fails if the to_obj already has a note unless 'force' is true.  *  * IMPORTANT: The changes made by copy_note() to the given notes_tree structure  * are not persistent until a subsequent call to write_notes_tree() returns  * zero.  */
 end_comment
 
 begin_function_decl
@@ -317,7 +317,7 @@ value|2
 end_define
 
 begin_comment
-comment|/*  * Invoke the specified callback function for each note in the given notes_tree  *  * If the callback returns nonzero, the note walk is aborted, and the return  * value from the callback is returned from for_each_note(). Hence, a zero  * return value from for_each_note() indicates that all notes were walked  * successfully.  *  * IMPORTANT: The callback function is NOT allowed to change the notes tree.  * In other words, the following functions can NOT be invoked (on the current  * notes tree) from within the callback:  * - add_note()  * - remove_note()  * - free_notes()  */
+comment|/*  * Invoke the specified callback function for each note in the given notes_tree  *  * If the callback returns nonzero, the note walk is aborted, and the return  * value from the callback is returned from for_each_note(). Hence, a zero  * return value from for_each_note() indicates that all notes were walked  * successfully.  *  * IMPORTANT: The callback function is NOT allowed to change the notes tree.  * In other words, the following functions can NOT be invoked (on the current  * notes tree) from within the callback:  * - add_note()  * - remove_note()  * - copy_note()  * - free_notes()  */
 end_comment
 
 begin_typedef
