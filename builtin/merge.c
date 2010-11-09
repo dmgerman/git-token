@@ -5605,50 +5605,6 @@ init|=
 operator|&
 name|remoteheads
 decl_stmt|;
-if|if
-condition|(
-name|read_cache_unmerged
-argument_list|()
-condition|)
-block|{
-name|die_resolve_conflict
-argument_list|(
-literal|"merge"
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|file_exists
-argument_list|(
-name|git_path
-argument_list|(
-literal|"MERGE_HEAD"
-argument_list|)
-argument_list|)
-condition|)
-block|{
-comment|/* 		 * There is no unmerged entry, don't advise 'git 		 * add/rm<file>', just 'git commit'. 		 */
-if|if
-condition|(
-name|advice_resolve_conflict
-condition|)
-name|die
-argument_list|(
-literal|"You have not concluded your merge (MERGE_HEAD exists).\n"
-literal|"Please, commit your changes before you can merge."
-argument_list|)
-expr_stmt|;
-else|else
-name|die
-argument_list|(
-literal|"You have not concluded your merge (MERGE_HEAD exists)."
-argument_list|)
-expr_stmt|;
-block|}
-name|resolve_undo_clear
-argument_list|()
-expr_stmt|;
 comment|/* 	 * Check if we are _not_ on a detached HEAD, i.e. if there is a 	 * current branch. 	 */
 name|branch
 operator|=
@@ -5726,6 +5682,48 @@ name|builtin_merge_usage
 argument_list|,
 literal|0
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|read_cache_unmerged
+argument_list|()
+condition|)
+name|die_resolve_conflict
+argument_list|(
+literal|"merge"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|file_exists
+argument_list|(
+name|git_path
+argument_list|(
+literal|"MERGE_HEAD"
+argument_list|)
+argument_list|)
+condition|)
+block|{
+comment|/* 		 * There is no unmerged entry, don't advise 'git 		 * add/rm<file>', just 'git commit'. 		 */
+if|if
+condition|(
+name|advice_resolve_conflict
+condition|)
+name|die
+argument_list|(
+literal|"You have not concluded your merge (MERGE_HEAD exists).\n"
+literal|"Please, commit your changes before you can merge."
+argument_list|)
+expr_stmt|;
+else|else
+name|die
+argument_list|(
+literal|"You have not concluded your merge (MERGE_HEAD exists)."
+argument_list|)
+expr_stmt|;
+block|}
+name|resolve_undo_clear
+argument_list|()
 expr_stmt|;
 if|if
 condition|(
