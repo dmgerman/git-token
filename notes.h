@@ -13,7 +13,7 @@ name|NOTES_H
 end_define
 
 begin_comment
-comment|/*  * Function type for combining two notes annotating the same object.  *  * When adding a new note annotating the same object as an existing note, it is  * up to the caller to decide how to combine the two notes. The decision is  * made by passing in a function of the following form. The function accepts  * two SHA1s -- of the existing note and the new note, respectively. The  * function then combines the notes in whatever way it sees fit, and writes the  * resulting SHA1 into the first SHA1 argument (cur_sha1). A non-zero return  * value indicates failure.  *  * The two given SHA1s must both be non-NULL and different from each other.  *  * The default combine_notes function (you get this when passing NULL) is  * combine_notes_concatenate(), which appends the contents of the new note to  * the contents of the existing note.  */
+comment|/*  * Function type for combining two notes annotating the same object.  *  * When adding a new note annotating the same object as an existing note, it is  * up to the caller to decide how to combine the two notes. The decision is  * made by passing in a function of the following form. The function accepts  * two SHA1s -- of the existing note and the new note, respectively. The  * function then combines the notes in whatever way it sees fit, and writes the  * resulting SHA1 into the first SHA1 argument (cur_sha1). A non-zero return  * value indicates failure.  *  * The two given SHA1s shall both be non-NULL and different from each other.  * Either of them (but not both) may be == null_sha1, which indicates an  * empty/non-existent note. If the resulting SHA1 (cur_sha1) is == null_sha1,  * the note will be removed from the notes tree.  *  * The default combine_notes function (you get this when passing NULL) is  * combine_notes_concatenate(), which appends the contents of the new note to  * the contents of the existing note.  */
 end_comment
 
 begin_typedef
@@ -200,7 +200,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Add the given note object to the given notes_tree structure  *  * IMPORTANT: The changes made by add_note() to the given notes_tree structure  * are not persistent until a subsequent call to write_notes_tree() returns  * zero.  */
+comment|/*  * Add the given note object to the given notes_tree structure  *  * If there already exists a note for the given object_sha1, the given  * combine_notes function is invoked to break the tie. If not given (i.e.  * combine_notes == NULL), the default combine_notes function for the given  * notes_tree is used.  *  * Passing note_sha1 == null_sha1 indicates the addition of an  * empty/non-existent note. This is a (potentially expensive) no-op unless  * there already exists a note for the given object_sha1, AND combining that  * note with the empty note (using the given combine_notes function) results  * in a new/changed note.  *  * IMPORTANT: The changes made by add_note() to the given notes_tree structure  * are not persistent until a subsequent call to write_notes_tree() returns  * zero.  */
 end_comment
 
 begin_function_decl
