@@ -37,6 +37,14 @@ name|PGP_SIGNATURE
 value|"-----BEGIN PGP SIGNATURE-----"
 end_define
 
+begin_define
+DECL|macro|PGP_MESSAGE
+define|#
+directive|define
+name|PGP_MESSAGE
+value|"-----BEGIN PGP MESSAGE-----"
+end_define
+
 begin_decl_stmt
 DECL|variable|tag_type
 specifier|const
@@ -894,6 +902,15 @@ operator|+
 name|len
 argument_list|,
 name|PGP_SIGNATURE
+argument_list|)
+operator|&&
+name|prefixcmp
+argument_list|(
+name|buf
+operator|+
+name|len
+argument_list|,
+name|PGP_MESSAGE
 argument_list|)
 condition|)
 block|{
