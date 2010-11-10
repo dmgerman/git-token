@@ -145,6 +145,16 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+name|void
+name|set_config_fetch_recurse_submodules
+parameter_list|(
+name|int
+name|value
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|int
 name|fetch_populated_submodules
 parameter_list|(
@@ -161,6 +171,9 @@ specifier|const
 name|char
 modifier|*
 name|prefix
+parameter_list|,
+name|int
+name|ignore_config
 parameter_list|,
 name|int
 name|quiet

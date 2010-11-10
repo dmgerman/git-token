@@ -120,6 +120,27 @@ block|}
 enum|;
 end_enum
 
+begin_enum
+enum|enum
+block|{
+DECL|enumerator|RECURSE_SUBMODULES_OFF
+name|RECURSE_SUBMODULES_OFF
+init|=
+literal|0
+block|,
+DECL|enumerator|RECURSE_SUBMODULES_DEFAULT
+name|RECURSE_SUBMODULES_DEFAULT
+init|=
+literal|1
+block|,
+DECL|enumerator|RECURSE_SUBMODULES_ON
+name|RECURSE_SUBMODULES_ON
+init|=
+literal|2
+block|}
+enum|;
+end_enum
+
 begin_decl_stmt
 DECL|variable|all
 DECL|variable|append
@@ -160,6 +181,8 @@ name|int
 name|progress
 decl_stmt|,
 name|recurse_submodules
+init|=
+name|RECURSE_SUBMODULES_DEFAULT
 decl_stmt|;
 end_decl_stmt
 
@@ -343,7 +366,7 @@ argument_list|,
 literal|"prune tracking branches no longer on remote"
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_SET_INT
 argument_list|(
 literal|0
 argument_list|,
@@ -353,6 +376,8 @@ operator|&
 name|recurse_submodules
 argument_list|,
 literal|"control recursive fetching of submodules"
+argument_list|,
+name|RECURSE_SUBMODULES_ON
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -4410,6 +4435,8 @@ expr_stmt|;
 if|if
 condition|(
 name|recurse_submodules
+operator|==
+name|RECURSE_SUBMODULES_ON
 condition|)
 name|argv
 index|[
@@ -5239,7 +5266,11 @@ condition|(
 operator|!
 name|result
 operator|&&
+operator|(
 name|recurse_submodules
+operator|!=
+name|RECURSE_SUBMODULES_OFF
+operator|)
 condition|)
 block|{
 specifier|const
@@ -5255,6 +5286,19 @@ name|num_options
 init|=
 literal|0
 decl_stmt|;
+comment|/* Set recursion as default when we already are recursing */
+if|if
+condition|(
+name|submodule_prefix
+index|[
+literal|0
+index|]
+condition|)
+name|set_config_fetch_recurse_submodules
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
 name|gitmodules_config
 argument_list|()
 expr_stmt|;
@@ -5282,6 +5326,10 @@ argument_list|,
 name|options
 argument_list|,
 name|submodule_prefix
+argument_list|,
+name|recurse_submodules
+operator|==
+name|RECURSE_SUBMODULES_ON
 argument_list|,
 name|verbosity
 operator|<
