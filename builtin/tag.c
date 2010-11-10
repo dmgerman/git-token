@@ -291,6 +291,15 @@ literal|0
 return|;
 block|}
 comment|/* only take up to "lines" lines, and strip the signature */
+name|size
+operator|=
+name|parse_signature
+argument_list|(
+name|buf
+argument_list|,
+name|size
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|i
@@ -312,14 +321,6 @@ operator|<
 name|buf
 operator|+
 name|size
-operator|&&
-name|prefixcmp
-argument_list|(
-name|sp
-argument_list|,
-name|PGP_SIGNATURE
-literal|"\n"
-argument_list|)
 condition|;
 name|i
 operator|++
