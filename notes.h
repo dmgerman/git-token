@@ -97,6 +97,24 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|int
+name|combine_notes_cat_sort_uniq
+parameter_list|(
+name|unsigned
+name|char
+modifier|*
+name|cur_sha1
+parameter_list|,
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|new_sha1
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/*  * Notes tree object  *  * Encapsulates the internal notes tree structure associated with a notes ref.  * Whenever a struct notes_tree pointer is required below, you may pass NULL in  * order to use the default/internal notes tree. E.g. you only need to pass a  * non-NULL value if you need to refer to several different notes trees  * simultaneously.  */
 end_comment
