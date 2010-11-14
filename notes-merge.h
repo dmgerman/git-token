@@ -47,6 +47,12 @@ name|char
 modifier|*
 name|remote_ref
 decl_stmt|;
+DECL|member|commit_msg
+specifier|const
+name|char
+modifier|*
+name|commit_msg
+decl_stmt|;
 DECL|member|verbosity
 name|int
 name|verbosity
@@ -99,7 +105,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Merge notes from o->remote_ref into o->local_ref  *  * The commits given by the two refs are merged, producing one of the following  * outcomes:  *  * 1. The merge trivially results in an existing commit (e.g. fast-forward or  *    already-up-to-date). The SHA1 of the result is written into 'result_sha1'  *    and 0 is returned.  * 2. The merge fails. result_sha1 is set to null_sha1, and non-zero returned.  *  * Both o->local_ref and o->remote_ref must be given (non-NULL), but either ref  * (although not both) may refer to a non-existing notes ref, in which case  * that notes ref is interpreted as an empty notes tree, and the merge  * trivially results in what the other ref points to.  */
+comment|/*  * Merge notes from o->remote_ref into o->local_ref  *  * The given notes_tree 'local_tree' must be the notes_tree referenced by the  * o->local_ref. This is the notes_tree in which the object-level merge is  * performed.  *  * The commits given by the two refs are merged, producing one of the following  * outcomes:  *  * 1. The merge trivially results in an existing commit (e.g. fast-forward or  *    already-up-to-date). 'local_tree' is untouched, the SHA1 of the result  *    is written into 'result_sha1' and 0 is returned.  * 2. The merge successfully completes, producing a merge commit. local_tree  *    contains the updated notes tree, the SHA1 of the resulting commit is  *    written into 'result_sha1', and 1 is returned.  * 3. The merge fails. result_sha1 is set to null_sha1, and -1 is returned.  *  * Both o->local_ref and o->remote_ref must be given (non-NULL), but either ref  * (although not both) may refer to a non-existing notes ref, in which case  * that notes ref is interpreted as an empty notes tree, and the merge  * trivially results in what the other ref points to.  */
 end_comment
 
 begin_function_decl
@@ -110,6 +116,11 @@ name|struct
 name|notes_merge_options
 modifier|*
 name|o
+parameter_list|,
+name|struct
+name|notes_tree
+modifier|*
+name|local_tree
 parameter_list|,
 name|unsigned
 name|char
