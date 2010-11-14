@@ -1067,7 +1067,7 @@ end_comment
 begin_function
 DECL|function|note_tree_insert
 specifier|static
-name|void
+name|int
 name|note_tree_insert
 parameter_list|(
 name|struct
@@ -1126,6 +1126,11 @@ name|entry
 operator|->
 name|key_sha1
 argument_list|)
+decl_stmt|;
+name|int
+name|ret
+init|=
+literal|0
 decl_stmt|;
 name|assert
 argument_list|(
@@ -1195,7 +1200,9 @@ argument_list|,
 name|type
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|0
+return|;
 case|case
 name|PTR_TYPE_NOTE
 case|:
@@ -1237,9 +1244,11 @@ operator|->
 name|val_sha1
 argument_list|)
 condition|)
-return|return;
-if|if
-condition|(
+return|return
+literal|0
+return|;
+name|ret
+operator|=
 name|combine_notes
 argument_list|(
 name|l
@@ -1250,36 +1259,12 @@ name|entry
 operator|->
 name|val_sha1
 argument_list|)
-condition|)
-name|die
-argument_list|(
-literal|"failed to combine notes %s and %s"
-literal|" for object %s"
-argument_list|,
-name|sha1_to_hex
-argument_list|(
-name|l
-operator|->
-name|val_sha1
-argument_list|)
-argument_list|,
-name|sha1_to_hex
-argument_list|(
-name|entry
-operator|->
-name|val_sha1
-argument_list|)
-argument_list|,
-name|sha1_to_hex
-argument_list|(
-name|l
-operator|->
-name|key_sha1
-argument_list|)
-argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+name|ret
+operator|&&
 name|is_null_sha1
 argument_list|(
 name|l
@@ -1303,7 +1288,9 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+name|ret
+return|;
 block|}
 break|break;
 case|case
@@ -1341,7 +1328,9 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|0
+return|;
 block|}
 break|break;
 block|}
@@ -1386,6 +1375,7 @@ argument_list|(
 name|l
 argument_list|)
 expr_stmt|;
+return|return
 name|note_tree_insert
 argument_list|(
 name|t
@@ -1400,8 +1390,7 @@ name|type
 argument_list|,
 name|combine_notes
 argument_list|)
-expr_stmt|;
-return|return;
+return|;
 block|}
 break|break;
 block|}
@@ -1441,7 +1430,9 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|0
+return|;
 block|}
 name|new_node
 operator|=
@@ -1461,6 +1452,8 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
+name|ret
+operator|=
 name|note_tree_insert
 argument_list|(
 name|t
@@ -1482,6 +1475,13 @@ argument_list|,
 name|combine_notes
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|ret
+condition|)
+return|return
+name|ret
+return|;
 operator|*
 name|p
 operator|=
@@ -1492,6 +1492,7 @@ argument_list|,
 name|PTR_TYPE_INTERNAL
 argument_list|)
 expr_stmt|;
+return|return
 name|note_tree_insert
 argument_list|(
 name|t
@@ -1508,7 +1509,7 @@ name|type
 argument_list|,
 name|combine_notes
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 end_function
 
@@ -2297,6 +2298,8 @@ operator|=
 name|PTR_TYPE_SUBTREE
 expr_stmt|;
 block|}
+if|if
+condition|(
 name|note_tree_insert
 argument_list|(
 name|t
@@ -2310,6 +2313,31 @@ argument_list|,
 name|type
 argument_list|,
 name|combine_notes_concatenate
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"Failed to load %s %s into notes tree "
+literal|"from %s"
+argument_list|,
+name|type
+operator|==
+name|PTR_TYPE_NOTE
+condition|?
+literal|"note"
+else|:
+literal|"subtree"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|l
+operator|->
+name|key_sha1
+argument_list|)
+argument_list|,
+name|t
+operator|->
+name|ref
 argument_list|)
 expr_stmt|;
 block|}
@@ -5206,7 +5234,7 @@ end_function
 
 begin_function
 DECL|function|add_note
-name|void
+name|int
 name|add_note
 parameter_list|(
 name|struct
@@ -5303,6 +5331,7 @@ argument_list|,
 name|note_sha1
 argument_list|)
 expr_stmt|;
+return|return
 name|note_tree_insert
 argument_list|(
 name|t
@@ -5319,7 +5348,7 @@ name|PTR_TYPE_NOTE
 argument_list|,
 name|combine_notes
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 end_function
 
@@ -6345,7 +6374,7 @@ name|int
 name|force
 parameter_list|,
 name|combine_notes_fn
-name|combine_fn
+name|combine_notes
 parameter_list|)
 block|{
 specifier|const
@@ -6388,6 +6417,7 @@ if|if
 condition|(
 name|note
 condition|)
+return|return
 name|add_note
 argument_list|(
 name|t
@@ -6396,14 +6426,15 @@ name|to_obj
 argument_list|,
 name|note
 argument_list|,
-name|combine_fn
+name|combine_notes
 argument_list|)
-expr_stmt|;
+return|;
 elseif|else
 if|if
 condition|(
 name|existing_note
 condition|)
+return|return
 name|add_note
 argument_list|(
 name|t
@@ -6412,9 +6443,9 @@ name|to_obj
 argument_list|,
 name|null_sha1
 argument_list|,
-name|combine_fn
+name|combine_notes
 argument_list|)
-expr_stmt|;
+return|;
 return|return
 literal|0
 return|;

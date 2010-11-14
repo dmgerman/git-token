@@ -200,11 +200,11 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Add the given note object to the given notes_tree structure  *  * If there already exists a note for the given object_sha1, the given  * combine_notes function is invoked to break the tie. If not given (i.e.  * combine_notes == NULL), the default combine_notes function for the given  * notes_tree is used.  *  * Passing note_sha1 == null_sha1 indicates the addition of an  * empty/non-existent note. This is a (potentially expensive) no-op unless  * there already exists a note for the given object_sha1, AND combining that  * note with the empty note (using the given combine_notes function) results  * in a new/changed note.  *  * IMPORTANT: The changes made by add_note() to the given notes_tree structure  * are not persistent until a subsequent call to write_notes_tree() returns  * zero.  */
+comment|/*  * Add the given note object to the given notes_tree structure  *  * If there already exists a note for the given object_sha1, the given  * combine_notes function is invoked to break the tie. If not given (i.e.  * combine_notes == NULL), the default combine_notes function for the given  * notes_tree is used.  *  * Passing note_sha1 == null_sha1 indicates the addition of an  * empty/non-existent note. This is a (potentially expensive) no-op unless  * there already exists a note for the given object_sha1, AND combining that  * note with the empty note (using the given combine_notes function) results  * in a new/changed note.  *  * Returns zero on success; non-zero means combine_notes failed.  *  * IMPORTANT: The changes made by add_note() to the given notes_tree structure  * are not persistent until a subsequent call to write_notes_tree() returns  * zero.  */
 end_comment
 
 begin_function_decl
-name|void
+name|int
 name|add_note
 parameter_list|(
 name|struct
@@ -278,7 +278,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Copy a note from one object to another in the given notes_tree.  *  * Fails if the to_obj already has a note unless 'force' is true.  *  * IMPORTANT: The changes made by copy_note() to the given notes_tree structure  * are not persistent until a subsequent call to write_notes_tree() returns  * zero.  */
+comment|/*  * Copy a note from one object to another in the given notes_tree.  *  * Returns 1 if the to_obj already has a note and 'force' is false. Otherwise,  * returns non-zero if 'force' is true, but the given combine_notes function  * failed to combine from_obj's note with to_obj's existing note.  * Returns zero on success.  *  * IMPORTANT: The changes made by copy_note() to the given notes_tree structure  * are not persistent until a subsequent call to write_notes_tree() returns  * zero.  */
 end_comment
 
 begin_function_decl
@@ -306,7 +306,7 @@ name|int
 name|force
 parameter_list|,
 name|combine_notes_fn
-name|combine_fn
+name|combine_notes
 parameter_list|)
 function_decl|;
 end_function_decl

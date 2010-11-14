@@ -3235,7 +3235,9 @@ argument_list|,
 name|object
 argument_list|)
 expr_stmt|;
-else|else
+elseif|else
+if|if
+condition|(
 name|add_note
 argument_list|(
 name|t
@@ -3245,6 +3247,11 @@ argument_list|,
 name|new_note
 argument_list|,
 name|combine_notes_overwrite
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"BUG: combine_notes_overwrite failed"
 argument_list|)
 expr_stmt|;
 name|snprintf
@@ -3656,6 +3663,8 @@ goto|goto
 name|out
 goto|;
 block|}
+if|if
+condition|(
 name|add_note
 argument_list|(
 name|t
@@ -3665,6 +3674,11 @@ argument_list|,
 name|from_note
 argument_list|,
 name|combine_notes_overwrite
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"BUG: combine_notes_overwrite failed"
 argument_list|)
 expr_stmt|;
 name|commit_notes
@@ -4000,7 +4014,9 @@ argument_list|,
 name|object
 argument_list|)
 expr_stmt|;
-else|else
+elseif|else
+if|if
+condition|(
 name|add_note
 argument_list|(
 name|t
@@ -4010,6 +4026,11 @@ argument_list|,
 name|new_note
 argument_list|,
 name|combine_notes_overwrite
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"BUG: combine_notes_overwrite failed"
 argument_list|)
 expr_stmt|;
 name|snprintf
