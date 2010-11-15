@@ -12,6 +12,12 @@ directive|define
 name|UNPACK_TREES_H
 end_define
 
+begin_include
+include|#
+directive|include
+file|"string-list.h"
+end_include
+
 begin_define
 DECL|macro|MAX_UNPACK_TREES
 define|#
@@ -117,26 +123,6 @@ function_decl|;
 end_function_decl
 
 begin_struct
-DECL|struct|rejected_paths_list
-struct|struct
-name|rejected_paths_list
-block|{
-DECL|member|path
-name|char
-modifier|*
-name|path
-decl_stmt|;
-DECL|member|next
-name|struct
-name|rejected_paths_list
-modifier|*
-name|next
-decl_stmt|;
-block|}
-struct|;
-end_struct
-
-begin_struct
 DECL|struct|unpack_trees_options
 struct|struct
 name|unpack_trees_options
@@ -220,8 +206,7 @@ decl_stmt|;
 comment|/* 	 * Store error messages in an array, each case 	 * corresponding to a error message type 	 */
 DECL|member|unpack_rejects
 name|struct
-name|rejected_paths_list
-modifier|*
+name|string_list
 name|unpack_rejects
 index|[
 name|NB_UNPACK_TREES_ERROR_TYPES
