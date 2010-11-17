@@ -89,6 +89,10 @@ argument_list|)
 expr_stmt|;
 while|while
 condition|(
+name|i
+operator|>
+literal|0
+operator|&&
 name|isspace
 argument_list|(
 name|buffer
@@ -222,12 +226,12 @@ decl_stmt|;
 if|if
 condition|(
 name|argc
-operator|<
+operator|!=
 literal|3
 condition|)
 name|die
 argument_list|(
-literal|"URL missing"
+literal|"Expected two arguments"
 argument_list|)
 expr_stmt|;
 name|input_fd
