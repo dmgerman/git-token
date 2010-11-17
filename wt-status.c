@@ -112,6 +112,9 @@ comment|/* WT_STATUS_LOCAL_BRANCH */
 name|GIT_COLOR_RED
 block|,
 comment|/* WT_STATUS_REMOTE_BRANCH */
+name|GIT_COLOR_NORMAL
+block|,
+comment|/* WT_STATUS_ONBRANCH */
 block|}
 decl_stmt|;
 end_decl_stmt
@@ -3804,6 +3807,18 @@ name|branch_color
 init|=
 name|color
 argument_list|(
+name|WT_STATUS_ONBRANCH
+argument_list|,
+name|s
+argument_list|)
+decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|branch_status_color
+init|=
+name|color
+argument_list|(
 name|WT_STATUS_HEADER
 argument_list|,
 name|s
@@ -3862,7 +3877,7 @@ name|branch_name
 operator|=
 literal|""
 expr_stmt|;
-name|branch_color
+name|branch_status_color
 operator|=
 name|color
 argument_list|(
@@ -3892,6 +3907,19 @@ argument_list|,
 literal|"# "
 argument_list|)
 expr_stmt|;
+name|color_fprintf
+argument_list|(
+name|s
+operator|->
+name|fp
+argument_list|,
+name|branch_status_color
+argument_list|,
+literal|"%s"
+argument_list|,
+name|on_what
+argument_list|)
+expr_stmt|;
 name|color_fprintf_ln
 argument_list|(
 name|s
@@ -3900,9 +3928,7 @@ name|fp
 argument_list|,
 name|branch_color
 argument_list|,
-literal|"%s%s"
-argument_list|,
-name|on_what
+literal|"%s"
 argument_list|,
 name|branch_name
 argument_list|)
