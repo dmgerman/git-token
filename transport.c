@@ -4599,6 +4599,14 @@ operator|)
 expr_stmt|;
 name|args
 operator|.
+name|progress
+operator|=
+name|transport
+operator|->
+name|progress
+expr_stmt|;
+name|args
+operator|.
 name|dry_run
 operator|=
 operator|!
