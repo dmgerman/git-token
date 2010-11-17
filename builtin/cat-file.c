@@ -657,6 +657,10 @@ name|obj_context
 operator|.
 name|path
 argument_list|,
+name|obj_context
+operator|.
+name|mode
+argument_list|,
 name|sha1
 argument_list|,
 operator|&
