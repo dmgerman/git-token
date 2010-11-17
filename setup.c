@@ -294,11 +294,7 @@ name|WIN32
 if|if
 condition|(
 operator|!
-name|pfx
-operator|||
-operator|!
-operator|*
-name|pfx
+name|pfx_len
 operator|||
 name|is_absolute_path
 argument_list|(
@@ -344,7 +340,11 @@ name|pfx_len
 operator|=
 literal|0
 expr_stmt|;
-else|else
+elseif|else
+if|if
+condition|(
+name|pfx_len
+condition|)
 name|memcpy
 argument_list|(
 name|path
