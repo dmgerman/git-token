@@ -10747,12 +10747,22 @@ modifier|*
 name|one
 parameter_list|)
 block|{
+comment|/* Use already-loaded driver */
 if|if
 condition|(
-operator|!
 name|one
 operator|->
 name|driver
+condition|)
+return|return;
+if|if
+condition|(
+name|S_ISREG
+argument_list|(
+name|one
+operator|->
+name|mode
+argument_list|)
 condition|)
 name|one
 operator|->
@@ -10765,6 +10775,7 @@ operator|->
 name|path
 argument_list|)
 expr_stmt|;
+comment|/* Fallback to default settings */
 if|if
 condition|(
 operator|!
@@ -11037,19 +11048,6 @@ operator|!
 name|DIFF_FILE_VALID
 argument_list|(
 name|one
-argument_list|)
-condition|)
-return|return
-name|NULL
-return|;
-if|if
-condition|(
-operator|!
-name|S_ISREG
-argument_list|(
-name|one
-operator|->
-name|mode
 argument_list|)
 condition|)
 return|return
