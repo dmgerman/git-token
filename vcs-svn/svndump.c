@@ -193,7 +193,6 @@ DECL|member|action
 DECL|member|propLength
 DECL|member|textLength
 DECL|member|srcRev
-DECL|member|mark
 DECL|member|type
 name|uint32_t
 name|action
@@ -203,8 +202,6 @@ decl_stmt|,
 name|textLength
 decl_stmt|,
 name|srcRev
-decl_stmt|,
-name|mark
 decl_stmt|,
 name|type
 decl_stmt|;
@@ -410,12 +407,6 @@ literal|"/"
 argument_list|,
 name|fname
 argument_list|)
-expr_stmt|;
-name|node_ctx
-operator|.
-name|mark
-operator|=
-literal|0
 expr_stmt|;
 name|node_ctx
 operator|.
@@ -930,6 +921,10 @@ name|uint32_t
 name|old_mode
 init|=
 literal|0
+decl_stmt|,
+name|mark
+init|=
+literal|0
 decl_stmt|;
 if|if
 condition|(
@@ -998,8 +993,6 @@ name|type
 operator|!=
 name|REPO_MODE_DIR
 condition|)
-name|node_ctx
-operator|.
 name|mark
 operator|=
 name|next_blob_mark
@@ -1058,8 +1051,6 @@ name|node_ctx
 operator|.
 name|dst
 argument_list|,
-name|node_ctx
-operator|.
 name|mark
 argument_list|)
 expr_stmt|;
@@ -1082,8 +1073,6 @@ name|node_ctx
 operator|.
 name|type
 argument_list|,
-name|node_ctx
-operator|.
 name|mark
 argument_list|)
 expr_stmt|;
@@ -1104,8 +1093,6 @@ name|node_ctx
 operator|.
 name|dst
 argument_list|,
-name|node_ctx
-operator|.
 name|mark
 argument_list|)
 expr_stmt|;
@@ -1142,8 +1129,6 @@ name|node_ctx
 operator|.
 name|type
 argument_list|,
-name|node_ctx
-operator|.
 name|mark
 argument_list|)
 expr_stmt|;
@@ -1168,8 +1153,6 @@ name|node_ctx
 operator|.
 name|dst
 argument_list|,
-name|node_ctx
-operator|.
 name|mark
 argument_list|)
 expr_stmt|;
@@ -1205,8 +1188,6 @@ name|node_ctx
 operator|.
 name|type
 argument_list|,
-name|node_ctx
-operator|.
 name|mark
 argument_list|)
 expr_stmt|;
@@ -1229,8 +1210,6 @@ name|old_mode
 expr_stmt|;
 if|if
 condition|(
-name|node_ctx
-operator|.
 name|mark
 condition|)
 name|fast_export_blob
@@ -1239,8 +1218,6 @@ name|node_ctx
 operator|.
 name|type
 argument_list|,
-name|node_ctx
-operator|.
 name|mark
 argument_list|,
 name|node_ctx
