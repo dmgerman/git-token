@@ -685,6 +685,10 @@ name|val
 parameter_list|,
 name|uint32_t
 name|len
+parameter_list|,
+name|uint32_t
+modifier|*
+name|type_set
 parameter_list|)
 block|{
 if|if
@@ -696,6 +700,16 @@ operator|.
 name|svn_log
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|val
+condition|)
+name|die
+argument_list|(
+literal|"invalid dump: unsets svn:log"
+argument_list|)
+expr_stmt|;
 comment|/* Value length excludes terminating nul. */
 name|rev_ctx
 operator|.
@@ -743,6 +757,16 @@ condition|)
 block|{
 if|if
 condition|(
+operator|!
+name|val
+condition|)
+name|die
+argument_list|(
+literal|"invalid dump: unsets svn:date"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|parse_date_basic
 argument_list|(
 name|val
@@ -755,11 +779,9 @@ argument_list|,
 name|NULL
 argument_list|)
 condition|)
-name|fprintf
+name|warning
 argument_list|(
-name|stderr
-argument_list|,
-literal|"Invalid timestamp: %s\n"
+literal|"invalid timestamp: %s"
 argument_list|,
 name|val
 argument_list|)
@@ -773,18 +795,7 @@ operator|==
 name|keys
 operator|.
 name|svn_executable
-condition|)
-block|{
-name|node_ctx
-operator|.
-name|type
-operator|=
-name|REPO_MODE_EXE
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
+operator|||
 name|key
 operator|==
 name|keys
@@ -792,10 +803,55 @@ operator|.
 name|svn_special
 condition|)
 block|{
+if|if
+condition|(
+operator|*
+name|type_set
+condition|)
+block|{
+if|if
+condition|(
+operator|!
+name|val
+condition|)
+return|return;
+name|die
+argument_list|(
+literal|"invalid dump: sets type twice"
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+operator|!
+name|val
+condition|)
+block|{
 name|node_ctx
 operator|.
 name|type
 operator|=
+name|REPO_MODE_BLB
+expr_stmt|;
+return|return;
+block|}
+operator|*
+name|type_set
+operator|=
+literal|1
+expr_stmt|;
+name|node_ctx
+operator|.
+name|type
+operator|=
+name|key
+operator|==
+name|keys
+operator|.
+name|svn_executable
+condition|?
+name|REPO_MODE_EXE
+else|:
 name|REPO_MODE_LNK
 expr_stmt|;
 block|}
@@ -821,6 +877,12 @@ specifier|const
 name|char
 modifier|*
 name|t
+decl_stmt|;
+comment|/* 	 * NEEDSWORK: to support simple mode changes like 	 *	K 11 	 *	svn:special 	 *	V 1 	 *	* 	 *	D 14 	 *	svn:executable 	 * we keep track of whether a mode has been set and reset to 	 * plain file only if not.  We should be keeping track of the 	 * symlink and executable bits separately instead. 	 */
+name|uint32_t
+name|type_set
+init|=
+literal|0
 decl_stmt|;
 while|while
 condition|(
@@ -916,6 +978,25 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 case|case
+literal|'D'
+case|:
+name|key
+operator|=
+name|pool_intern
+argument_list|(
+name|val
+argument_list|)
+expr_stmt|;
+name|val
+operator|=
+name|NULL
+expr_stmt|;
+name|len
+operator|=
+literal|0
+expr_stmt|;
+comment|/* fall through */
+case|case
 literal|'V'
 case|:
 name|handle_property
@@ -925,6 +1006,9 @@ argument_list|,
 name|val
 argument_list|,
 name|len
+argument_list|,
+operator|&
+name|type_set
 argument_list|)
 expr_stmt|;
 name|key
@@ -983,14 +1067,10 @@ condition|(
 name|node_ctx
 operator|.
 name|text_delta
-operator|||
-name|node_ctx
-operator|.
-name|prop_delta
 condition|)
 name|die
 argument_list|(
-literal|"text and property deltas not supported"
+literal|"text deltas not supported"
 argument_list|)
 expr_stmt|;
 if|if
@@ -1240,6 +1320,13 @@ name|node_ctx
 operator|.
 name|type
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|node_ctx
+operator|.
+name|prop_delta
+condition|)
 name|node_ctx
 operator|.
 name|type
