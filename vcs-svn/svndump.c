@@ -1083,7 +1083,7 @@ if|if
 condition|(
 name|have_props
 condition|)
-name|repo_modify
+name|repo_modify_path
 argument_list|(
 name|node_ctx
 operator|.
@@ -1103,11 +1103,13 @@ name|mark
 condition|)
 name|old_mode
 operator|=
-name|repo_replace
+name|repo_modify_path
 argument_list|(
 name|node_ctx
 operator|.
 name|dst
+argument_list|,
+literal|0
 argument_list|,
 name|mark
 argument_list|)
@@ -1131,7 +1133,7 @@ name|srcRev
 operator|&&
 name|have_props
 condition|)
-name|repo_modify
+name|repo_modify_path
 argument_list|(
 name|node_ctx
 operator|.
@@ -1155,11 +1157,13 @@ name|mark
 condition|)
 name|old_mode
 operator|=
-name|repo_replace
+name|repo_modify_path
 argument_list|(
 name|node_ctx
 operator|.
 name|dst
+argument_list|,
+literal|0
 argument_list|,
 name|mark
 argument_list|)
