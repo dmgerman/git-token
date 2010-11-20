@@ -128,6 +128,18 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+name|uint32_t
+name|repo_read_path
+parameter_list|(
+specifier|const
+name|uint32_t
+modifier|*
+name|path
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|void
 name|repo_delete
 parameter_list|(
