@@ -10804,6 +10804,7 @@ name|revs
 operator|->
 name|reflog_info
 condition|)
+block|{
 name|fake_reflog_parent
 argument_list|(
 name|revs
@@ -10813,6 +10814,22 @@ argument_list|,
 name|commit
 argument_list|)
 expr_stmt|;
+name|commit
+operator|->
+name|object
+operator|.
+name|flags
+operator|&=
+operator|~
+operator|(
+name|ADDED
+operator||
+name|SEEN
+operator||
+name|SHOWN
+operator|)
+expr_stmt|;
+block|}
 comment|/* 		 * If we haven't done the list limiting, we need to look at 		 * the parents here. We also need to do the date-based limiting 		 * that we'd otherwise have done in limit_list(). 		 */
 if|if
 condition|(
