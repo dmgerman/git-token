@@ -1265,6 +1265,9 @@ modifier|*
 name|buf
 parameter_list|)
 block|{
+name|int
+name|err
+decl_stmt|;
 name|WIN32_FILE_ATTRIBUTE_DATA
 name|fdata
 decl_stmt|;
@@ -1272,7 +1275,7 @@ if|if
 condition|(
 operator|!
 operator|(
-name|errno
+name|err
 operator|=
 name|get_file_attr
 argument_list|(
@@ -1397,6 +1400,10 @@ return|return
 literal|0
 return|;
 block|}
+name|errno
+operator|=
+name|err
+expr_stmt|;
 return|return
 operator|-
 literal|1
