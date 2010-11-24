@@ -501,6 +501,11 @@ name|index
 argument_list|)
 expr_stmt|;
 comment|/* Replace current name and new email for simple entry */
+if|if
+condition|(
+name|new_name
+condition|)
+block|{
 name|free
 argument_list|(
 name|me
@@ -508,17 +513,6 @@ operator|->
 name|name
 argument_list|)
 expr_stmt|;
-name|free
-argument_list|(
-name|me
-operator|->
-name|email
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|new_name
-condition|)
 name|me
 operator|->
 name|name
@@ -528,10 +522,19 @@ argument_list|(
 name|new_name
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|new_email
 condition|)
+block|{
+name|free
+argument_list|(
+name|me
+operator|->
+name|email
+argument_list|)
+expr_stmt|;
 name|me
 operator|->
 name|email
@@ -541,6 +544,7 @@ argument_list|(
 name|new_email
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
