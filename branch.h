@@ -66,7 +66,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Configure local branch "local" to merge remote branch "remote"  * taken from origin "origin".  */
+comment|/*  * Configure local branch "local" as downstream to branch "remote"  * from remote "origin".  Used by git branch --set-upstream.  */
 end_comment
 
 begin_define

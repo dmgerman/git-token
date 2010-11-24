@@ -319,7 +319,7 @@ argument_list|,
 operator|&
 name|prune
 argument_list|,
-literal|"prune tracking branches no longer on remote"
+literal|"prune remote-tracking branches no longer on remote"
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -547,7 +547,7 @@ condition|(
 name|rm
 condition|)
 continue|continue;
-comment|/* 		 * Not fetched to a tracking branch?  We need to fetch 		 * it anyway to allow this branch's "branch.$name.merge" 		 * to be honored by 'git pull', but we do not have to 		 * fail if branch.$name.merge is misconfigured to point 		 * at a nonexisting branch.  If we were indeed called by 		 * 'git pull', it will notice the misconfiguration because 		 * there is no entry in the resulting FETCH_HEAD marked 		 * for merging. 		 */
+comment|/* 		 * Not fetched to a remote-tracking branch?  We need to fetch 		 * it anyway to allow this branch's "branch.$name.merge" 		 * to be honored by 'git pull', but we do not have to 		 * fail if branch.$name.merge is misconfigured to point 		 * at a nonexisting branch.  If we were indeed called by 		 * 'git pull', it will notice the misconfiguration because 		 * there is no entry in the resulting FETCH_HEAD marked 		 * for merging. 		 */
 name|memset
 argument_list|(
 operator|&
@@ -2162,7 +2162,7 @@ condition|)
 block|{
 name|kind
 operator|=
-literal|"remote branch"
+literal|"remote-tracking branch"
 expr_stmt|;
 name|what
 operator|=
