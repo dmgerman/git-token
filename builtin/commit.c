@@ -604,12 +604,16 @@ name|OPT__QUIET
 argument_list|(
 operator|&
 name|quiet
+argument_list|,
+literal|"suppress summary after successful commit"
 argument_list|)
 block|,
 name|OPT__VERBOSE
 argument_list|(
 operator|&
 name|verbose
+argument_list|,
+literal|"show diff in commit message template"
 argument_list|)
 block|,
 name|OPT_GROUP
@@ -5579,6 +5583,8 @@ name|OPT__VERBOSE
 argument_list|(
 operator|&
 name|verbose
+argument_list|,
+literal|"be verbose"
 argument_list|)
 block|,
 name|OPT_SET_INT

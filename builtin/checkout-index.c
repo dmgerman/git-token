@@ -1015,12 +1015,8 @@ argument_list|,
 literal|"checks out all files in the index"
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT__FORCE
 argument_list|(
-literal|'f'
-argument_list|,
-literal|"force"
-argument_list|,
 operator|&
 name|force
 argument_list|,
@@ -1031,6 +1027,8 @@ name|OPT__QUIET
 argument_list|(
 operator|&
 name|quiet
+argument_list|,
+literal|"no warning for existing files and files not in index"
 argument_list|)
 block|,
 name|OPT_BOOLEAN

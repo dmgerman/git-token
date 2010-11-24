@@ -299,6 +299,8 @@ name|OPT__QUIET
 argument_list|(
 operator|&
 name|quiet
+argument_list|,
+literal|"do not warn about conflicts"
 argument_list|)
 block|,
 name|OPT_CALLBACK

@@ -881,6 +881,8 @@ name|OPT__QUIET
 argument_list|(
 operator|&
 name|quiet
+argument_list|,
+literal|"suppress progress reporting"
 argument_list|)
 block|,
 block|{

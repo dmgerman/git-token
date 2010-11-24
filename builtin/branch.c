@@ -3480,6 +3480,8 @@ name|OPT__VERBOSE
 argument_list|(
 operator|&
 name|verbose
+argument_list|,
+literal|"show hash and subject, give twice for upstream branch"
 argument_list|)
 block|,
 name|OPT_SET_INT
@@ -3677,12 +3679,8 @@ argument_list|,
 literal|"create the branch's reflog"
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT__FORCE
 argument_list|(
-literal|'f'
-argument_list|,
-literal|"force"
-argument_list|,
 operator|&
 name|force_create
 argument_list|,

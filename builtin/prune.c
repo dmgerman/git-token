@@ -684,24 +684,16 @@ name|options
 index|[]
 init|=
 block|{
-name|OPT_BOOLEAN
+name|OPT__DRY_RUN
 argument_list|(
-literal|'n'
-argument_list|,
-literal|"dry-run"
-argument_list|,
 operator|&
 name|show_only
 argument_list|,
 literal|"do not remove, show only"
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT__VERBOSE
 argument_list|(
-literal|'v'
-argument_list|,
-literal|"verbose"
-argument_list|,
 operator|&
 name|verbose
 argument_list|,

@@ -1738,12 +1738,16 @@ name|OPT__DRY_RUN
 argument_list|(
 operator|&
 name|show_only
+argument_list|,
+literal|"dry run"
 argument_list|)
 block|,
 name|OPT__VERBOSE
 argument_list|(
 operator|&
 name|verbose
+argument_list|,
+literal|"be verbose"
 argument_list|)
 block|,
 name|OPT_GROUP
@@ -1787,12 +1791,8 @@ argument_list|,
 literal|"edit current diff and apply"
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT__FORCE
 argument_list|(
-literal|'f'
-argument_list|,
-literal|"force"
-argument_list|,
 operator|&
 name|ignored_too
 argument_list|,

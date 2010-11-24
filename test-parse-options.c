@@ -547,18 +547,24 @@ name|OPT__VERBOSE
 argument_list|(
 operator|&
 name|verbose
+argument_list|,
+literal|"be verbose"
 argument_list|)
 block|,
 name|OPT__DRY_RUN
 argument_list|(
 operator|&
 name|dry_run
+argument_list|,
+literal|"dry run"
 argument_list|)
 block|,
 name|OPT__QUIET
 argument_list|(
 operator|&
 name|quiet
+argument_list|,
+literal|"be quiet"
 argument_list|)
 block|,
 name|OPT_END

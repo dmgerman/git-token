@@ -1904,6 +1904,8 @@ name|OPT__VERBOSE
 argument_list|(
 operator|&
 name|verbose
+argument_list|,
+literal|"report archived files on stderr"
 argument_list|)
 block|,
 name|OPT__COMPR

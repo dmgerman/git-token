@@ -517,6 +517,8 @@ name|OPT__VERBOSE
 argument_list|(
 operator|&
 name|verbose
+argument_list|,
+literal|"print tag contents"
 argument_list|)
 block|,
 name|OPT_END

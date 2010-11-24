@@ -523,12 +523,16 @@ name|OPT__DRY_RUN
 argument_list|(
 operator|&
 name|show_only
+argument_list|,
+literal|"dry run"
 argument_list|)
 block|,
 name|OPT__QUIET
 argument_list|(
 operator|&
 name|quiet
+argument_list|,
+literal|"do not list removed files"
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -543,12 +547,8 @@ argument_list|,
 literal|"only remove from the index"
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT__FORCE
 argument_list|(
-literal|'f'
-argument_list|,
-literal|"force"
-argument_list|,
 operator|&
 name|force
 argument_list|,
