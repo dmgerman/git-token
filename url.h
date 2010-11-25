@@ -101,6 +101,24 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|void
+name|str_end_url_with_slash
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|url
+parameter_list|,
+name|char
+modifier|*
+modifier|*
+name|dest
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
