@@ -42,6 +42,12 @@ directive|include
 file|"remote.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"url.h"
+end_include
+
 begin_comment
 comment|/*  * We detect based on the cURL version if multi-transfer is  * usable in this implementation and define this symbol accordingly.  * This is not something Makefile should set nor users should pass  * via CFLAGS.  */
 end_comment
@@ -687,24 +693,6 @@ name|hex
 parameter_list|,
 name|int
 name|only_two_digit_prefix
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-specifier|extern
-name|void
-name|end_url_with_slash
-parameter_list|(
-name|struct
-name|strbuf
-modifier|*
-name|buf
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|url
 parameter_list|)
 function_decl|;
 end_function_decl
