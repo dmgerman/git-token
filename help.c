@@ -29,6 +29,12 @@ directive|include
 file|"help.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"common-cmds.h"
+end_include
+
 begin_comment
 comment|/* most GUI terminals set COLUMNS (although some don't export it) */
 end_comment
@@ -1854,6 +1860,14 @@ comment|/* An empirically derived magic number */
 end_comment
 
 begin_define
+DECL|macro|SIMILARITY_FLOOR
+define|#
+directive|define
+name|SIMILARITY_FLOOR
+value|7
+end_define
+
+begin_define
 DECL|macro|SIMILAR_ENOUGH
 define|#
 directive|define
@@ -1861,7 +1875,7 @@ name|SIMILAR_ENOUGH
 parameter_list|(
 name|x
 parameter_list|)
-value|((x)< 6)
+value|((x)< SIMILARITY_FLOOR)
 end_define
 
 begin_function
@@ -1993,10 +2007,14 @@ operator|&
 name|main_cmds
 argument_list|)
 expr_stmt|;
-comment|/* This reuses cmdname->len for similarity index */
+comment|/* This abuses cmdname->len for levenshtein distance */
 for|for
 control|(
 name|i
+operator|=
+literal|0
+operator|,
+name|n
 operator|=
 literal|0
 init|;
@@ -2006,9 +2024,107 @@ name|main_cmds
 operator|.
 name|cnt
 condition|;
-operator|++
 name|i
+operator|++
 control|)
+block|{
+name|int
+name|cmp
+init|=
+literal|0
+decl_stmt|;
+comment|/* avoid compiler stupidity */
+specifier|const
+name|char
+modifier|*
+name|candidate
+init|=
+name|main_cmds
+operator|.
+name|names
+index|[
+name|i
+index|]
+operator|->
+name|name
+decl_stmt|;
+comment|/* Does the candidate appear in common_cmds list? */
+while|while
+condition|(
+name|n
+operator|<
+name|ARRAY_SIZE
+argument_list|(
+name|common_cmds
+argument_list|)
+operator|&&
+operator|(
+name|cmp
+operator|=
+name|strcmp
+argument_list|(
+name|common_cmds
+index|[
+name|n
+index|]
+operator|.
+name|name
+argument_list|,
+name|candidate
+argument_list|)
+operator|)
+operator|<
+literal|0
+condition|)
+name|n
+operator|++
+expr_stmt|;
+if|if
+condition|(
+operator|(
+name|n
+operator|<
+name|ARRAY_SIZE
+argument_list|(
+name|common_cmds
+argument_list|)
+operator|)
+operator|&&
+operator|!
+name|cmp
+condition|)
+block|{
+comment|/* Yes, this is one of the common commands */
+name|n
+operator|++
+expr_stmt|;
+comment|/* use the entry from common_cmds[] */
+if|if
+condition|(
+operator|!
+name|prefixcmp
+argument_list|(
+name|candidate
+argument_list|,
+name|cmd
+argument_list|)
+condition|)
+block|{
+comment|/* Give prefix match a very good score */
+name|main_cmds
+operator|.
+name|names
+index|[
+name|i
+index|]
+operator|->
+name|len
+operator|=
+literal|0
+expr_stmt|;
+continue|continue;
+block|}
+block|}
 name|main_cmds
 operator|.
 name|names
@@ -2022,14 +2138,7 @@ name|levenshtein
 argument_list|(
 name|cmd
 argument_list|,
-name|main_cmds
-operator|.
-name|names
-index|[
-name|i
-index|]
-operator|->
-name|name
+name|candidate
 argument_list|,
 literal|0
 argument_list|,
@@ -2039,7 +2148,10 @@ literal|1
 argument_list|,
 literal|4
 argument_list|)
+operator|+
+literal|1
 expr_stmt|;
+block|}
 name|qsort
 argument_list|(
 name|main_cmds
@@ -2073,23 +2185,69 @@ argument_list|(
 literal|"Uh oh. Your system reports no Git commands at all."
 argument_list|)
 expr_stmt|;
+comment|/* skip and count prefix matches */
+for|for
+control|(
+name|n
+operator|=
+literal|0
+init|;
+name|n
+operator|<
+name|main_cmds
+operator|.
+name|cnt
+operator|&&
+operator|!
+name|main_cmds
+operator|.
+name|names
+index|[
+name|n
+index|]
+operator|->
+name|len
+condition|;
+name|n
+operator|++
+control|)
+empty_stmt|;
+comment|/* still counting */
+if|if
+condition|(
+name|main_cmds
+operator|.
+name|cnt
+operator|<=
+name|n
+condition|)
+block|{
+comment|/* prefix matches with everything? that is too ambiguous */
+name|best_similarity
+operator|=
+name|SIMILARITY_FLOOR
+operator|+
+literal|1
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|/* count all the most similar ones */
+for|for
+control|(
 name|best_similarity
 operator|=
 name|main_cmds
 operator|.
 name|names
 index|[
-literal|0
+name|n
+operator|++
 index|]
 operator|->
 name|len
-expr_stmt|;
-name|n
-operator|=
-literal|1
-expr_stmt|;
-while|while
-condition|(
+init|;
+operator|(
 name|n
 operator|<
 name|main_cmds
@@ -2106,10 +2264,14 @@ name|n
 index|]
 operator|->
 name|len
-condition|)
-operator|++
+operator|)
+condition|;
 name|n
-expr_stmt|;
+operator|++
+control|)
+empty_stmt|;
+comment|/* still counting */
+block|}
 if|if
 condition|(
 name|autocorrect
