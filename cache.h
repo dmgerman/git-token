@@ -8530,10 +8530,6 @@ DECL|member|have_repository
 name|int
 name|have_repository
 decl_stmt|;
-DECL|member|setup_explicit
-name|int
-name|setup_explicit
-decl_stmt|;
 block|}
 struct|;
 end_struct
