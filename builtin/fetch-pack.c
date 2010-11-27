@@ -273,7 +273,7 @@ name|commit
 argument_list|)
 condition|)
 return|return;
-name|insert_by_date
+name|commit_list_insert_by_date
 argument_list|(
 name|commit
 argument_list|,
@@ -2326,7 +2326,7 @@ name|flags
 operator||=
 name|COMPLETE
 expr_stmt|;
-name|insert_by_date
+name|commit_list_insert_by_date
 argument_list|(
 name|commit
 argument_list|,
