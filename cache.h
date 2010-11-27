@@ -723,6 +723,14 @@ name|CE_UNPACKED
 value|(1<< 24)
 end_define
 
+begin_define
+DECL|macro|CE_NEW_SKIP_WORKTREE
+define|#
+directive|define
+name|CE_NEW_SKIP_WORKTREE
+value|(1<< 25)
+end_define
+
 begin_comment
 comment|/*  * Extended on-disk flags  */
 end_comment
