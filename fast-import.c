@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_comment
-comment|/* (See Documentation/git-fast-import.txt for maintained documentation.) Format of STDIN stream:    stream ::= cmd*;    cmd ::= new_blob         | new_commit         | new_tag         | reset_branch         | checkpoint         | progress         ;    new_blob ::= 'blob' lf     mark?     file_content;   file_content ::= data;    new_commit ::= 'commit' sp ref_str lf     mark?     ('author' (sp name)? sp '<' email '>' sp when lf)?     'committer' (sp name)? sp '<' email '>' sp when lf     commit_msg     ('from' sp committish lf)?     ('merge' sp committish lf)*     file_change*     lf?;   commit_msg ::= data;    file_change ::= file_clr     | file_del     | file_rnm     | file_cpy     | file_obm     | file_inm;   file_clr ::= 'deleteall' lf;   file_del ::= 'D' sp path_str lf;   file_rnm ::= 'R' sp path_str sp path_str lf;   file_cpy ::= 'C' sp path_str sp path_str lf;   file_obm ::= 'M' sp mode sp (hexsha1 | idnum) sp path_str lf;   file_inm ::= 'M' sp mode sp 'inline' sp path_str lf     data;   note_obm ::= 'N' sp (hexsha1 | idnum) sp committish lf;   note_inm ::= 'N' sp 'inline' sp committish lf     data;    new_tag ::= 'tag' sp tag_str lf     'from' sp committish lf     ('tagger' (sp name)? sp '<' email '>' sp when lf)?     tag_msg;   tag_msg ::= data;    reset_branch ::= 'reset' sp ref_str lf     ('from' sp committish lf)?     lf?;    cat_blob ::= 'cat-blob' sp (hexsha1 | idnum) lf;    checkpoint ::= 'checkpoint' lf     lf?;    progress ::= 'progress' sp not_lf* lf     lf?;       # note: the first idnum in a stream should be 1 and subsequent      # idnums should not have gaps between values as this will cause      # the stream parser to reserve space for the gapped values.  An      # idnum can be updated in the future to a new object by issuing      # a new mark directive with the old idnum.      #   mark ::= 'mark' sp idnum lf;   data ::= (delimited_data | exact_data)     lf?;      # note: delim may be any string but must not contain lf.     # data_line may contain any data but must not be exactly     # delim.   delimited_data ::= 'data' sp '<<' delim lf     (data_line lf)*     delim lf;       # note: declen indicates the length of binary_data in bytes.      # declen does not include the lf preceding the binary data.      #   exact_data ::= 'data' sp declen lf     binary_data;       # note: quoted strings are C-style quoting supporting \c for      # common escapes of 'c' (e..g \n, \t, \\, \") or \nnn where nnn      # is the signed byte value in octal.  Note that the only      # characters which must actually be escaped to protect the      # stream formatting is: \, " and LF.  Otherwise these values      # are UTF8.      #   committish  ::= (ref_str | hexsha1 | sha1exp_str | idnum);   ref_str     ::= ref;   sha1exp_str ::= sha1exp;   tag_str     ::= tag;   path_str    ::= path    | '"' quoted(path)    '"' ;   mode        ::= '100644' | '644'                 | '100755' | '755'                 | '120000'                 ;    declen ::= # unsigned 32 bit value, ascii base10 notation;   bigint ::= # unsigned integer value, ascii base10 notation;   binary_data ::= # file content, not interpreted;    when         ::= raw_when | rfc2822_when;   raw_when     ::= ts sp tz;   rfc2822_when ::= # Valid RFC 2822 date and time;    sp ::= # ASCII space character;   lf ::= # ASCII newline (LF) character;       # note: a colon (':') must precede the numerical value assigned to      # an idnum.  This is to distinguish it from a ref or tag name as      # GIT does not permit ':' in ref or tag strings.      #   idnum   ::= ':' bigint;   path    ::= # GIT style file path, e.g. "a/b/c";   ref     ::= # GIT ref name, e.g. "refs/heads/MOZ_GECKO_EXPERIMENT";   tag     ::= # GIT tag name, e.g. "FIREFOX_1_5";   sha1exp ::= # Any valid GIT SHA1 expression;   hexsha1 ::= # SHA1 in hexadecimal format;       # note: name and email are UTF8 strings, however name must not      # contain '<' or lf and email must not contain any of the      # following: '<', '>', lf.      #   name  ::= # valid GIT author/committer name;   email ::= # valid GIT author/committer email;   ts    ::= # time since the epoch in seconds, ascii base10 notation;   tz    ::= # GIT style timezone;       # note: comments may appear anywhere in the input, except      # within a data command.  Any form of the data command      # always escapes the related input from comment processing.      #      # In case it is not clear, the '#' that starts the comment      # must be the first character on that line (an lf      # preceded it).      #   comment ::= '#' not_lf* lf;   not_lf  ::= # Any byte that is not ASCII newline (LF); */
+comment|/* (See Documentation/git-fast-import.txt for maintained documentation.) Format of STDIN stream:    stream ::= cmd*;    cmd ::= new_blob         | new_commit         | new_tag         | reset_branch         | checkpoint         | progress         ;    new_blob ::= 'blob' lf     mark?     file_content;   file_content ::= data;    new_commit ::= 'commit' sp ref_str lf     mark?     ('author' (sp name)? sp '<' email '>' sp when lf)?     'committer' (sp name)? sp '<' email '>' sp when lf     commit_msg     ('from' sp committish lf)?     ('merge' sp committish lf)*     file_change*     lf?;   commit_msg ::= data;    file_change ::= file_clr     | file_del     | file_rnm     | file_cpy     | file_obm     | file_inm;   file_clr ::= 'deleteall' lf;   file_del ::= 'D' sp path_str lf;   file_rnm ::= 'R' sp path_str sp path_str lf;   file_cpy ::= 'C' sp path_str sp path_str lf;   file_obm ::= 'M' sp mode sp (hexsha1 | idnum) sp path_str lf;   file_inm ::= 'M' sp mode sp 'inline' sp path_str lf     data;   note_obm ::= 'N' sp (hexsha1 | idnum) sp committish lf;   note_inm ::= 'N' sp 'inline' sp committish lf     data;    new_tag ::= 'tag' sp tag_str lf     'from' sp committish lf     ('tagger' (sp name)? sp '<' email '>' sp when lf)?     tag_msg;   tag_msg ::= data;    reset_branch ::= 'reset' sp ref_str lf     ('from' sp committish lf)?     lf?;    checkpoint ::= 'checkpoint' lf     lf?;    progress ::= 'progress' sp not_lf* lf     lf?;       # note: the first idnum in a stream should be 1 and subsequent      # idnums should not have gaps between values as this will cause      # the stream parser to reserve space for the gapped values.  An      # idnum can be updated in the future to a new object by issuing      # a new mark directive with the old idnum.      #   mark ::= 'mark' sp idnum lf;   data ::= (delimited_data | exact_data)     lf?;      # note: delim may be any string but must not contain lf.     # data_line may contain any data but must not be exactly     # delim.   delimited_data ::= 'data' sp '<<' delim lf     (data_line lf)*     delim lf;       # note: declen indicates the length of binary_data in bytes.      # declen does not include the lf preceding the binary data.      #   exact_data ::= 'data' sp declen lf     binary_data;       # note: quoted strings are C-style quoting supporting \c for      # common escapes of 'c' (e..g \n, \t, \\, \") or \nnn where nnn      # is the signed byte value in octal.  Note that the only      # characters which must actually be escaped to protect the      # stream formatting is: \, " and LF.  Otherwise these values      # are UTF8.      #   committish  ::= (ref_str | hexsha1 | sha1exp_str | idnum);   ref_str     ::= ref;   sha1exp_str ::= sha1exp;   tag_str     ::= tag;   path_str    ::= path    | '"' quoted(path)    '"' ;   mode        ::= '100644' | '644'                 | '100755' | '755'                 | '120000'                 ;    declen ::= # unsigned 32 bit value, ascii base10 notation;   bigint ::= # unsigned integer value, ascii base10 notation;   binary_data ::= # file content, not interpreted;    when         ::= raw_when | rfc2822_when;   raw_when     ::= ts sp tz;   rfc2822_when ::= # Valid RFC 2822 date and time;    sp ::= # ASCII space character;   lf ::= # ASCII newline (LF) character;       # note: a colon (':') must precede the numerical value assigned to      # an idnum.  This is to distinguish it from a ref or tag name as      # GIT does not permit ':' in ref or tag strings.      #   idnum   ::= ':' bigint;   path    ::= # GIT style file path, e.g. "a/b/c";   ref     ::= # GIT ref name, e.g. "refs/heads/MOZ_GECKO_EXPERIMENT";   tag     ::= # GIT tag name, e.g. "FIREFOX_1_5";   sha1exp ::= # Any valid GIT SHA1 expression;   hexsha1 ::= # SHA1 in hexadecimal format;       # note: name and email are UTF8 strings, however name must not      # contain '<' or lf and email must not contain any of the      # following: '<', '>', lf.      #   name  ::= # valid GIT author/committer name;   email ::= # valid GIT author/committer email;   ts    ::= # time since the epoch in seconds, ascii base10 notation;   tz    ::= # GIT style timezone;       # note: comments and cat requests may appear anywhere      # in the input, except within a data command.  Any form      # of the data command always escapes the related input      # from comment processing.      #      # In case it is not clear, the '#' that starts the comment      # must be the first character on that line (an lf      # preceded it).      #   cat_blob ::= 'cat-blob' sp (hexsha1 | idnum) lf;    comment ::= '#' not_lf* lf;   not_lf  ::= # Any byte that is not ASCII newline (LF); */
 end_comment
 
 begin_include
@@ -1289,6 +1289,16 @@ begin_function_decl
 specifier|static
 name|void
 name|parse_argv
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|static
+name|void
+name|parse_cat_blob
 parameter_list|(
 name|void
 parameter_list|)
@@ -10115,7 +10125,11 @@ return|return
 name|EOF
 return|;
 block|}
-do|do
+for|for
+control|(
+init|;
+condition|;
+control|)
 block|{
 if|if
 condition|(
@@ -10271,8 +10285,25 @@ operator|=
 name|rc
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+name|prefixcmp
+argument_list|(
+name|command_buf
+operator|.
+name|buf
+argument_list|,
+literal|"cat-blob "
+argument_list|)
+condition|)
+block|{
+name|parse_cat_blob
+argument_list|()
+expr_stmt|;
+continue|continue;
 block|}
-do|while
+if|if
 condition|(
 name|command_buf
 operator|.
@@ -10283,10 +10314,11 @@ index|]
 operator|==
 literal|'#'
 condition|)
-do|;
+continue|continue;
 return|return
 literal|0
 return|;
+block|}
 block|}
 end_function
 
@@ -17459,22 +17491,6 @@ literal|"reset "
 argument_list|)
 condition|)
 name|parse_reset_branch
-argument_list|()
-expr_stmt|;
-elseif|else
-if|if
-condition|(
-operator|!
-name|prefixcmp
-argument_list|(
-name|command_buf
-operator|.
-name|buf
-argument_list|,
-literal|"cat-blob "
-argument_list|)
-condition|)
-name|parse_cat_blob
 argument_list|()
 expr_stmt|;
 elseif|else
