@@ -18901,6 +18901,14 @@ name|arg
 argument_list|,
 literal|"--find-copies-harder"
 argument_list|)
+operator|||
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--detect-copies-harder"
+argument_list|)
 condition|)
 name|DIFF_OPT_SET
 argument_list|(
