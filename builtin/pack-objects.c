@@ -6783,6 +6783,45 @@ name|src
 operator|->
 name|data
 condition|)
+block|{
+if|if
+condition|(
+name|src_entry
+operator|->
+name|preferred_base
+condition|)
+block|{
+specifier|static
+name|int
+name|warned
+init|=
+literal|0
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|warned
+operator|++
+condition|)
+name|warning
+argument_list|(
+literal|"object %s cannot be read"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|src_entry
+operator|->
+name|idx
+operator|.
+name|sha1
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|/* 				 * Those objects are not included in the 				 * resulting pack.  Be resilient and ignore 				 * them if they can't be read, in case the 				 * pack could be created nevertheless. 				 */
+return|return
+literal|0
+return|;
+block|}
 name|die
 argument_list|(
 literal|"object %s cannot be read"
@@ -6797,6 +6836,7 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|sz
