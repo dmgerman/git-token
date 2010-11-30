@@ -13214,7 +13214,7 @@ name|blank_at_eof
 operator|=
 name|ecbdata
 operator|.
-name|blank_at_eof_in_preimage
+name|blank_at_eof_in_postimage
 expr_stmt|;
 if|if
 condition|(
