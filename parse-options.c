@@ -3402,6 +3402,14 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
+name|opts
+operator|->
+name|flags
+operator|&
+name|PARSE_OPT_LITERAL_ARGHELP
+operator|)
+operator|||
 operator|!
 operator|(
 name|opts
