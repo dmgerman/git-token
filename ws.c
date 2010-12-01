@@ -1790,6 +1790,13 @@ condition|)
 block|{
 comment|/* Expand tabs into spaces */
 name|int
+name|start
+init|=
+name|dst
+operator|->
+name|len
+decl_stmt|;
+name|int
 name|last
 init|=
 name|last_tab_in_indent
@@ -1831,9 +1838,13 @@ expr_stmt|;
 block|}
 do|while
 condition|(
+operator|(
 name|dst
 operator|->
 name|len
+operator|-
+name|start
+operator|)
 operator|%
 literal|8
 condition|)
