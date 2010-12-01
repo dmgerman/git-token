@@ -1881,6 +1881,14 @@ name|strcasecmp
 argument_list|(
 name|var
 argument_list|,
+literal|"add.ignoreerrors"
+argument_list|)
+operator|||
+operator|!
+name|strcasecmp
+argument_list|(
+name|var
+argument_list|,
 literal|"add.ignore-errors"
 argument_list|)
 condition|)
