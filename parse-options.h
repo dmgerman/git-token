@@ -644,6 +644,9 @@ block|,
 DECL|enumerator|PARSE_OPT_DONE
 name|PARSE_OPT_DONE
 block|,
+DECL|enumerator|PARSE_OPT_NON_OPTION
+name|PARSE_OPT_NON_OPTION
+block|,
 DECL|enumerator|PARSE_OPT_UNKNOWN
 name|PARSE_OPT_UNKNOWN
 block|}

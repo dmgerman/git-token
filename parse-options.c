@@ -2376,7 +2376,9 @@ name|flags
 operator|&
 name|PARSE_OPT_STOP_AT_NON_OPTION
 condition|)
-break|break;
+return|return
+name|PARSE_OPT_NON_OPTION
+return|;
 name|ctx
 operator|->
 name|out
@@ -2900,6 +2902,9 @@ argument_list|(
 literal|129
 argument_list|)
 expr_stmt|;
+case|case
+name|PARSE_OPT_NON_OPTION
+case|:
 case|case
 name|PARSE_OPT_DONE
 case|:
