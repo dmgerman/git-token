@@ -65,6 +65,22 @@ define|\
 value|{ name, NULL, -1, { pattern, REG_EXTENDED }, word_regex }
 end_define
 
+begin_define
+DECL|macro|IPATTERN
+define|#
+directive|define
+name|IPATTERN
+parameter_list|(
+name|name
+parameter_list|,
+name|pattern
+parameter_list|,
+name|word_regex
+parameter_list|)
+define|\
+value|{ name, NULL, -1, { pattern, REG_EXTENDED | REG_ICASE }, word_regex }
+end_define
+
 begin_decl_stmt
 DECL|variable|builtin_drivers
 specifier|static
@@ -74,6 +90,24 @@ name|builtin_drivers
 index|[]
 init|=
 block|{
+name|IPATTERN
+argument_list|(
+literal|"fortran"
+argument_list|,
+literal|"!^([C*]|[ \t]*!)\n"
+literal|"!^[ \t]*MODULE[ \t]+PROCEDURE[ \t]\n"
+literal|"^[ \t]*((END[ \t]+)?(PROGRAM|MODULE|BLOCK[ \t]+DATA"
+literal|"|([^'\" \t]+[ \t]+)*(SUBROUTINE|FUNCTION))[ \t]+[A-Z].*)$"
+argument_list|,
+comment|/* -- */
+literal|"[a-zA-Z][a-zA-Z0-9_]*"
+literal|"|\\.([Ee][Qq]|[Nn][Ee]|[Gg][TtEe]|[Ll][TtEe]|[Tt][Rr][Uu][Ee]|[Ff][Aa][Ll][Ss][Ee]|[Aa][Nn][Dd]|[Oo][Rr]|[Nn]?[Ee][Qq][Vv]|[Nn][Oo][Tt])\\."
+comment|/* numbers and format statements like 2E14.4, or ES12.6, 9X. 	  * Don't worry about format statements without leading digits since 	  * they would have been matched above as a variable anyway. */
+literal|"|[-+]?[0-9.]+([AaIiDdEeFfLlTtXx][Ss]?[-+]?[0-9.]*)?(_[a-zA-Z0-9][a-zA-Z0-9_]*)?"
+literal|"|//|\\*\\*|::|[/<>=]="
+literal|"|[^[:space:]]|[\x80-\xff]+"
+argument_list|)
+block|,
 name|PATTERNS
 argument_list|(
 literal|"html"
@@ -256,6 +290,13 @@ DECL|macro|PATTERNS
 undef|#
 directive|undef
 name|PATTERNS
+end_undef
+
+begin_undef
+DECL|macro|IPATTERN
+undef|#
+directive|undef
+name|IPATTERN
 end_undef
 
 begin_decl_stmt
