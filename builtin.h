@@ -265,6 +265,9 @@ name|char
 modifier|*
 name|path
 parameter_list|,
+name|unsigned
+name|mode
+parameter_list|,
 specifier|const
 name|unsigned
 name|char

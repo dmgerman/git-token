@@ -417,6 +417,10 @@ index|[
 literal|20
 index|]
 decl_stmt|;
+DECL|member|mode
+name|unsigned
+name|mode
+decl_stmt|;
 DECL|member|path
 name|char
 name|path
@@ -441,6 +445,9 @@ specifier|const
 name|char
 modifier|*
 name|path
+parameter_list|,
+name|unsigned
+name|mode
 parameter_list|,
 specifier|const
 name|unsigned
@@ -482,9 +489,7 @@ name|df
 argument_list|,
 name|sha1
 argument_list|,
-name|S_IFREG
-operator||
-literal|0664
+name|mode
 argument_list|)
 expr_stmt|;
 name|textconv
@@ -592,6 +597,10 @@ argument_list|(
 name|o
 operator|->
 name|path
+argument_list|,
+name|o
+operator|->
+name|mode
 argument_list|,
 name|o
 operator|->
@@ -1312,14 +1321,14 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Fill the blob_sha1 field of an origin if it hasn't, so that later  * call to fill_origin_blob() can use it to locate the data.  blob_sha1  * for an origin is also used to pass the blame for the entire file to  * the parent to detect the case where a child's blob is identical to  * that of its parent's.  */
+comment|/*  * Fill the blob_sha1 field of an origin if it hasn't, so that later  * call to fill_origin_blob() can use it to locate the data.  blob_sha1  * for an origin is also used to pass the blame for the entire file to  * the parent to detect the case where a child's blob is identical to  * that of its parent's.  *  * This also fills origin->mode for corresponding tree path.  */
 end_comment
 
 begin_function
-DECL|function|fill_blob_sha1
+DECL|function|fill_blob_sha1_and_mode
 specifier|static
 name|int
-name|fill_blob_sha1
+name|fill_blob_sha1_and_mode
 parameter_list|(
 name|struct
 name|origin
@@ -1327,9 +1336,6 @@ modifier|*
 name|origin
 parameter_list|)
 block|{
-name|unsigned
-name|mode
-decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -1364,6 +1370,8 @@ operator|->
 name|blob_sha1
 argument_list|,
 operator|&
+name|origin
+operator|->
 name|mode
 argument_list|)
 condition|)
@@ -1397,6 +1405,12 @@ name|origin
 operator|->
 name|blob_sha1
 argument_list|)
+expr_stmt|;
+name|origin
+operator|->
+name|mode
+operator|=
+name|S_IFINVALID
 expr_stmt|;
 return|return
 operator|-
@@ -1498,7 +1512,7 @@ operator|->
 name|path
 argument_list|)
 expr_stmt|;
-comment|/* 			 * If the origin was newly created (i.e. get_origin 			 * would call make_origin if none is found in the 			 * scoreboard), it does not know the blob_sha1, 			 * so copy it.  Otherwise porigin was in the 			 * scoreboard and already knows blob_sha1. 			 */
+comment|/* 			 * If the origin was newly created (i.e. get_origin 			 * would call make_origin if none is found in the 			 * scoreboard), it does not know the blob_sha1/mode, 			 * so copy it.  Otherwise porigin was in the 			 * scoreboard and already knows blob_sha1/mode. 			 */
 if|if
 condition|(
 name|porigin
@@ -1507,6 +1521,7 @@ name|refcnt
 operator|==
 literal|1
 condition|)
+block|{
 name|hashcpy
 argument_list|(
 name|porigin
@@ -1518,6 +1533,15 @@ operator|->
 name|blob_sha1
 argument_list|)
 expr_stmt|;
+name|porigin
+operator|->
+name|mode
+operator|=
+name|cached
+operator|->
+name|mode
+expr_stmt|;
+block|}
 return|return
 name|porigin
 return|;
@@ -1696,6 +1720,14 @@ operator|->
 name|blob_sha1
 argument_list|)
 expr_stmt|;
+name|porigin
+operator|->
+name|mode
+operator|=
+name|origin
+operator|->
+name|mode
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -1830,6 +1862,16 @@ operator|->
 name|sha1
 argument_list|)
 expr_stmt|;
+name|porigin
+operator|->
+name|mode
+operator|=
+name|p
+operator|->
+name|one
+operator|->
+name|mode
+expr_stmt|;
 break|break;
 case|case
 literal|'A'
@@ -1887,6 +1929,14 @@ name|porigin
 operator|->
 name|blob_sha1
 argument_list|)
+expr_stmt|;
+name|cached
+operator|->
+name|mode
+operator|=
+name|porigin
+operator|->
+name|mode
 expr_stmt|;
 name|parent
 operator|->
@@ -2161,6 +2211,16 @@ name|one
 operator|->
 name|sha1
 argument_list|)
+expr_stmt|;
+name|porigin
+operator|->
+name|mode
+operator|=
+name|p
+operator|->
+name|one
+operator|->
+name|mode
 expr_stmt|;
 break|break;
 block|}
@@ -5383,6 +5443,16 @@ name|one
 operator|->
 name|sha1
 argument_list|)
+expr_stmt|;
+name|norigin
+operator|->
+name|mode
+operator|=
+name|p
+operator|->
+name|one
+operator|->
+name|mode
 expr_stmt|;
 name|fill_origin_blob
 argument_list|(
@@ -10637,6 +10707,8 @@ name|textconv_object
 argument_list|(
 name|read_from
 argument_list|,
+name|mode
+argument_list|,
 name|null_sha1
 argument_list|,
 operator|&
@@ -12677,7 +12749,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|fill_blob_sha1
+name|fill_blob_sha1_and_mode
 argument_list|(
 name|o
 argument_list|)
@@ -12708,6 +12780,10 @@ operator|&&
 name|textconv_object
 argument_list|(
 name|path
+argument_list|,
+name|o
+operator|->
+name|mode
 argument_list|,
 name|o
 operator|->
