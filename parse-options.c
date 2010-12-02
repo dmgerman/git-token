@@ -75,6 +75,57 @@ value|2
 end_define
 
 begin_function
+DECL|function|optbug
+specifier|static
+name|int
+name|optbug
+parameter_list|(
+specifier|const
+name|struct
+name|option
+modifier|*
+name|opt
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|reason
+parameter_list|)
+block|{
+if|if
+condition|(
+name|opt
+operator|->
+name|long_name
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"BUG: option '%s' %s"
+argument_list|,
+name|opt
+operator|->
+name|long_name
+argument_list|,
+name|reason
+argument_list|)
+return|;
+return|return
+name|error
+argument_list|(
+literal|"BUG: switch '%c' %s"
+argument_list|,
+name|opt
+operator|->
+name|short_name
+argument_list|,
+name|reason
+argument_list|)
+return|;
+block|}
+end_function
+
+begin_function
 DECL|function|opterror
 specifier|static
 name|int
@@ -2001,43 +2052,16 @@ operator|&
 name|PARSE_OPT_OPTARG
 operator|)
 condition|)
-block|{
-if|if
-condition|(
-name|opts
-operator|->
-name|long_name
-condition|)
-block|{
-name|error
-argument_list|(
-literal|"`--%s` uses incompatible flags "
-literal|"LASTARG_DEFAULT and OPTARG"
-argument_list|,
-name|opts
-operator|->
-name|long_name
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|error
-argument_list|(
-literal|"`-%c` uses incompatible flags "
-literal|"LASTARG_DEFAULT and OPTARG"
-argument_list|,
-name|opts
-operator|->
-name|short_name
-argument_list|)
-expr_stmt|;
-block|}
 name|err
 operator||=
-literal|1
+name|optbug
+argument_list|(
+name|opts
+argument_list|,
+literal|"uses incompatible flags "
+literal|"LASTARG_DEFAULT and OPTARG"
+argument_list|)
 expr_stmt|;
-block|}
 block|}
 if|if
 condition|(
@@ -2045,7 +2069,7 @@ name|err
 condition|)
 name|exit
 argument_list|(
-literal|129
+literal|128
 argument_list|)
 expr_stmt|;
 block|}
