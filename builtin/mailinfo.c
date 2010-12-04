@@ -5090,13 +5090,8 @@ argument_list|)
 expr_stmt|;
 name|def_charset
 operator|=
-operator|(
-name|git_commit_encoding
-condition|?
-name|git_commit_encoding
-else|:
-literal|"UTF-8"
-operator|)
+name|get_commit_output_encoding
+argument_list|()
 expr_stmt|;
 name|metainfo_charset
 operator|=

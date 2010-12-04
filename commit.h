@@ -206,6 +206,20 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+name|struct
+name|commit
+modifier|*
+name|lookup_commit_reference_by_name
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|name
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|int
 name|parse_commit_buffer
 parameter_list|(
@@ -421,6 +435,12 @@ name|reflog_walk_info
 modifier|*
 name|reflog_info
 decl_stmt|;
+DECL|member|output_encoding
+specifier|const
+name|char
+modifier|*
+name|output_encoding
+decl_stmt|;
 block|}
 struct|;
 end_struct
@@ -462,6 +482,26 @@ end_struct_decl
 begin_comment
 comment|/* in revision.h, it circularly uses enum cmit_fmt */
 end_comment
+
+begin_function_decl
+specifier|extern
+name|char
+modifier|*
+name|logmsg_reencode
+parameter_list|(
+specifier|const
+name|struct
+name|commit
+modifier|*
+name|commit
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|output_encoding
+parameter_list|)
+function_decl|;
+end_function_decl
 
 begin_function_decl
 specifier|extern

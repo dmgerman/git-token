@@ -1663,11 +1663,8 @@ name|rev
 operator|->
 name|date_mode
 argument_list|,
-name|git_log_output_encoding
-condition|?
-name|git_log_output_encoding
-else|:
-name|git_commit_encoding
+name|get_log_output_encoding
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|printf
