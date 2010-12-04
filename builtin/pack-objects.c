@@ -7813,6 +7813,7 @@ end_function
 
 begin_decl_stmt
 DECL|variable|old_try_to_free_routine
+specifier|static
 name|try_to_free_t
 name|old_try_to_free_routine
 decl_stmt|;
