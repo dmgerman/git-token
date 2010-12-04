@@ -124,6 +124,13 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|unique_abbrev_extra_length
+name|int
+name|unique_abbrev_extra_length
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|repository_format_version
 name|int
 name|repository_format_version

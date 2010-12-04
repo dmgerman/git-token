@@ -3476,6 +3476,13 @@ end_decl_stmt
 begin_decl_stmt
 specifier|extern
 name|int
+name|unique_abbrev_extra_length
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
+name|int
 name|shared_repository
 decl_stmt|;
 end_decl_stmt
