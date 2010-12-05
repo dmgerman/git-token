@@ -730,6 +730,8 @@ name|content_offset
 operator|=
 literal|0
 expr_stmt|;
+name|dent
+operator|=
 name|dent_insert
 argument_list|(
 operator|&
@@ -805,6 +807,8 @@ name|content_offset
 operator|=
 name|dir_o
 expr_stmt|;
+name|dent
+operator|=
 name|dent_insert
 argument_list|(
 operator|&
