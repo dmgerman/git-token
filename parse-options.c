@@ -2075,6 +2075,12 @@ name|char
 modifier|*
 name|prefix
 parameter_list|,
+specifier|const
+name|struct
+name|option
+modifier|*
+name|options
+parameter_list|,
 name|int
 name|flags
 parameter_list|)
@@ -2159,6 +2165,11 @@ argument_list|(
 literal|"STOP_AT_NON_OPTION and KEEP_UNKNOWN don't go together"
 argument_list|)
 expr_stmt|;
+name|parse_options_check
+argument_list|(
+name|options
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
@@ -2225,11 +2236,6 @@ operator|&
 name|PARSE_OPT_NO_INTERNAL_HELP
 operator|)
 decl_stmt|;
-name|parse_options_check
-argument_list|(
-name|options
-argument_list|)
-expr_stmt|;
 comment|/* we must reset ->opt, unknown short option leave it dangling */
 name|ctx
 operator|->
@@ -2800,6 +2806,8 @@ argument_list|,
 name|argv
 argument_list|,
 name|prefix
+argument_list|,
+name|options
 argument_list|,
 name|flags
 argument_list|)

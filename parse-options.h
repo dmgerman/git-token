@@ -692,6 +692,12 @@ name|char
 modifier|*
 name|prefix
 parameter_list|,
+specifier|const
+name|struct
+name|option
+modifier|*
+name|options
+parameter_list|,
 name|int
 name|flags
 parameter_list|)

@@ -1728,6 +1728,8 @@ name|argv
 argument_list|,
 name|prefix
 argument_list|,
+name|options
+argument_list|,
 name|PARSE_OPT_KEEP_DASHDASH
 operator||
 name|PARSE_OPT_KEEP_ARGV0
