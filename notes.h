@@ -13,7 +13,7 @@ name|NOTES_H
 end_define
 
 begin_comment
-comment|/*  * Function type for combining two notes annotating the same object.  *  * When adding a new note annotating the same object as an existing note, it is  * up to the caller to decide how to combine the two notes. The decision is  * made by passing in a function of the following form. The function accepts  * two SHA1s -- of the existing note and the new note, respectively. The  * function then combines the notes in whatever way it sees fit, and writes the  * resulting SHA1 into the first SHA1 argument (cur_sha1). A non-zero return  * value indicates failure.  *  * The two given SHA1s must both be non-NULL and different from each other.  *  * The default combine_notes function (you get this when passing NULL) is  * combine_notes_concatenate(), which appends the contents of the new note to  * the contents of the existing note.  */
+comment|/*  * Function type for combining two notes annotating the same object.  *  * When adding a new note annotating the same object as an existing note, it is  * up to the caller to decide how to combine the two notes. The decision is  * made by passing in a function of the following form. The function accepts  * two SHA1s -- of the existing note and the new note, respectively. The  * function then combines the notes in whatever way it sees fit, and writes the  * resulting SHA1 into the first SHA1 argument (cur_sha1). A non-zero return  * value indicates failure.  *  * The two given SHA1s shall both be non-NULL and different from each other.  * Either of them (but not both) may be == null_sha1, which indicates an  * empty/non-existent note. If the resulting SHA1 (cur_sha1) is == null_sha1,  * the note will be removed from the notes tree.  *  * The default combine_notes function (you get this when passing NULL) is  * combine_notes_concatenate(), which appends the contents of the new note to  * the contents of the existing note.  */
 end_comment
 
 begin_typedef
@@ -97,6 +97,24 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|int
+name|combine_notes_cat_sort_uniq
+parameter_list|(
+name|unsigned
+name|char
+modifier|*
+name|cur_sha1
+parameter_list|,
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|new_sha1
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/*  * Notes tree object  *  * Encapsulates the internal notes tree structure associated with a notes ref.  * Whenever a struct notes_tree pointer is required below, you may pass NULL in  * order to use the default/internal notes tree. E.g. you only need to pass a  * non-NULL value if you need to refer to several different notes trees  * simultaneously.  */
 end_comment
@@ -146,6 +164,21 @@ struct|;
 end_struct
 
 begin_comment
+comment|/*  * Return the default notes ref.  *  * The default notes ref is the notes ref that is used when notes_ref == NULL  * is passed to init_notes().  *  * This the first of the following to be defined:  * 1. The '--ref' option to 'git notes', if given  * 2. The $GIT_NOTES_REF environment variable, if set  * 3. The value of the core.notesRef config variable, if set  * 4. GIT_NOTES_DEFAULT_REF (i.e. "refs/notes/commits")  */
+end_comment
+
+begin_function_decl
+specifier|const
+name|char
+modifier|*
+name|default_notes_ref
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/*  * Flags controlling behaviour of notes tree initialization  *  * Default behaviour is to initialize the notes tree from the tree object  * specified by the given (or default) notes ref.  */
 end_comment
 
@@ -185,11 +218,11 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Add the given note object to the given notes_tree structure  *  * IMPORTANT: The changes made by add_note() to the given notes_tree structure  * are not persistent until a subsequent call to write_notes_tree() returns  * zero.  */
+comment|/*  * Add the given note object to the given notes_tree structure  *  * If there already exists a note for the given object_sha1, the given  * combine_notes function is invoked to break the tie. If not given (i.e.  * combine_notes == NULL), the default combine_notes function for the given  * notes_tree is used.  *  * Passing note_sha1 == null_sha1 indicates the addition of an  * empty/non-existent note. This is a (potentially expensive) no-op unless  * there already exists a note for the given object_sha1, AND combining that  * note with the empty note (using the given combine_notes function) results  * in a new/changed note.  *  * Returns zero on success; non-zero means combine_notes failed.  *  * IMPORTANT: The changes made by add_note() to the given notes_tree structure  * are not persistent until a subsequent call to write_notes_tree() returns  * zero.  */
 end_comment
 
 begin_function_decl
-name|void
+name|int
 name|add_note
 parameter_list|(
 name|struct
@@ -263,7 +296,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Copy a note from one object to another in the given notes_tree.  *  * Fails if the to_obj already has a note unless 'force' is true.  */
+comment|/*  * Copy a note from one object to another in the given notes_tree.  *  * Returns 1 if the to_obj already has a note and 'force' is false. Otherwise,  * returns non-zero if 'force' is true, but the given combine_notes function  * failed to combine from_obj's note with to_obj's existing note.  * Returns zero on success.  *  * IMPORTANT: The changes made by copy_note() to the given notes_tree structure  * are not persistent until a subsequent call to write_notes_tree() returns  * zero.  */
 end_comment
 
 begin_function_decl
@@ -291,7 +324,7 @@ name|int
 name|force
 parameter_list|,
 name|combine_notes_fn
-name|combine_fn
+name|combine_notes
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -317,7 +350,7 @@ value|2
 end_define
 
 begin_comment
-comment|/*  * Invoke the specified callback function for each note in the given notes_tree  *  * If the callback returns nonzero, the note walk is aborted, and the return  * value from the callback is returned from for_each_note(). Hence, a zero  * return value from for_each_note() indicates that all notes were walked  * successfully.  *  * IMPORTANT: The callback function is NOT allowed to change the notes tree.  * In other words, the following functions can NOT be invoked (on the current  * notes tree) from within the callback:  * - add_note()  * - remove_note()  * - free_notes()  */
+comment|/*  * Invoke the specified callback function for each note in the given notes_tree  *  * If the callback returns nonzero, the note walk is aborted, and the return  * value from the callback is returned from for_each_note(). Hence, a zero  * return value from for_each_note() indicates that all notes were walked  * successfully.  *  * IMPORTANT: The callback function is NOT allowed to change the notes tree.  * In other words, the following functions can NOT be invoked (on the current  * notes tree) from within the callback:  * - add_note()  * - remove_note()  * - copy_note()  * - free_notes()  */
 end_comment
 
 begin_typedef

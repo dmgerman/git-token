@@ -534,6 +534,7 @@ return|return
 operator|-
 literal|1
 return|;
+return|return
 name|add_note
 argument_list|(
 operator|&
@@ -547,9 +548,6 @@ name|value_sha1
 argument_list|,
 name|NULL
 argument_list|)
-expr_stmt|;
-return|return
-literal|0
 return|;
 block|}
 end_function
