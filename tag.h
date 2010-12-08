@@ -127,6 +127,23 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|size_t
+name|parse_signature
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|buf
+parameter_list|,
+name|unsigned
+name|long
+name|size
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
