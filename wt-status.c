@@ -112,7 +112,7 @@ comment|/* WT_STATUS_LOCAL_BRANCH */
 name|GIT_COLOR_RED
 block|,
 comment|/* WT_STATUS_REMOTE_BRANCH */
-name|GIT_COLOR_NORMAL
+name|GIT_COLOR_NIL
 block|,
 comment|/* WT_STATUS_ONBRANCH */
 block|}
@@ -136,7 +136,11 @@ modifier|*
 name|s
 parameter_list|)
 block|{
-return|return
+specifier|const
+name|char
+modifier|*
+name|c
+init|=
 name|s
 operator|->
 name|use_color
@@ -151,6 +155,29 @@ name|slot
 index|]
 else|:
 literal|""
+decl_stmt|;
+if|if
+condition|(
+name|slot
+operator|==
+name|WT_STATUS_ONBRANCH
+operator|&&
+name|color_is_nil
+argument_list|(
+name|c
+argument_list|)
+condition|)
+name|c
+operator|=
+name|s
+operator|->
+name|color_palette
+index|[
+name|WT_STATUS_HEADER
+index|]
+expr_stmt|;
+return|return
+name|c
 return|;
 block|}
 end_function

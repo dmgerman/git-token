@@ -205,6 +205,18 @@ value|"\033[46m"
 end_define
 
 begin_comment
+comment|/* A special value meaning "no color selected" */
+end_comment
+
+begin_define
+DECL|macro|GIT_COLOR_NIL
+define|#
+directive|define
+name|GIT_COLOR_NIL
+value|"NIL"
+end_define
+
+begin_comment
 comment|/*  * This variable stores the value of color.ui  */
 end_comment
 
@@ -369,6 +381,18 @@ modifier|*
 name|fmt
 parameter_list|,
 modifier|...
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
+name|color_is_nil
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|color
 parameter_list|)
 function_decl|;
 end_function_decl
