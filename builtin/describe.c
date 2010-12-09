@@ -2488,7 +2488,7 @@ name|prefix
 argument_list|)
 return|;
 block|}
-name|for_each_ref
+name|for_each_rawref
 argument_list|(
 name|get_name
 argument_list|,
