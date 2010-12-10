@@ -318,6 +318,15 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
+literal|"mark :%"
+name|PRIu32
+literal|"\n"
+argument_list|,
+name|revision
+argument_list|)
+expr_stmt|;
+name|printf
+argument_list|(
 literal|"committer %s<%s@%s> %ld +0000\n"
 argument_list|,
 operator|~
