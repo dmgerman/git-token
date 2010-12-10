@@ -1747,13 +1747,14 @@ argument_list|(
 literal|"index file corrupt"
 argument_list|)
 expr_stmt|;
+comment|/* 4: "fetch" (options) "--submodule-prefix" prefix NULL */
 name|argv
 operator|=
 name|xcalloc
 argument_list|(
 name|num_options
 operator|+
-literal|5
+literal|4
 argument_list|,
 sizeof|sizeof
 argument_list|(
