@@ -64,6 +64,7 @@ parameter_list|(
 name|uint32_t
 name|len
 parameter_list|,
+specifier|const
 name|uint32_t
 modifier|*
 name|seq
