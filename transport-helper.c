@@ -59,28 +59,11 @@ directive|include
 file|"string-list.h"
 end_include
 
-begin_ifndef
-ifndef|#
-directive|ifndef
-name|NO_PTHREADS
-end_ifndef
-
-begin_include
-include|#
-directive|include
-file|<pthread.h>
-end_include
-
 begin_include
 include|#
 directive|include
 file|"thread-utils.h"
 end_include
-
-begin_endif
-endif|#
-directive|endif
-end_endif
 
 begin_decl_stmt
 DECL|variable|debug
