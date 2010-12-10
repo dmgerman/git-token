@@ -76,16 +76,18 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-name|uint32_t
+name|void
 name|repo_copy
 parameter_list|(
 name|uint32_t
 name|revision
 parameter_list|,
+specifier|const
 name|uint32_t
 modifier|*
 name|src
 parameter_list|,
+specifier|const
 name|uint32_t
 modifier|*
 name|dst
@@ -112,24 +114,19 @@ end_function_decl
 
 begin_function_decl
 name|uint32_t
-name|repo_modify_path
+name|repo_read_path
 parameter_list|(
+specifier|const
 name|uint32_t
 modifier|*
 name|path
-parameter_list|,
-name|uint32_t
-name|mode
-parameter_list|,
-name|uint32_t
-name|blob_mark
 parameter_list|)
 function_decl|;
 end_function_decl
 
 begin_function_decl
 name|uint32_t
-name|repo_read_path
+name|repo_read_mode
 parameter_list|(
 specifier|const
 name|uint32_t

@@ -1277,25 +1277,11 @@ argument_list|)
 expr_stmt|;
 name|mode
 operator|=
-name|repo_modify_path
+name|repo_read_mode
 argument_list|(
 name|node_ctx
 operator|.
 name|dst
-argument_list|,
-literal|0
-argument_list|,
-literal|0
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-operator|!
-name|mode
-condition|)
-name|die
-argument_list|(
-literal|"invalid dump: path to be modified is missing"
 argument_list|)
 expr_stmt|;
 if|if
