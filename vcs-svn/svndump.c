@@ -1082,6 +1082,16 @@ name|propLength
 operator|!=
 name|LENGTH_UNKNOWN
 decl_stmt|;
+specifier|const
+name|int
+name|have_text
+init|=
+name|node_ctx
+operator|.
+name|textLength
+operator|!=
+name|LENGTH_UNKNOWN
+decl_stmt|;
 if|if
 condition|(
 name|node_ctx
@@ -1095,11 +1105,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|node_ctx
-operator|.
-name|textLength
-operator|!=
-name|LENGTH_UNKNOWN
+name|have_text
 condition|)
 name|mark
 operator|=
@@ -1117,7 +1123,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|mark
+name|have_text
 operator|||
 name|have_props
 operator|||
@@ -1202,7 +1208,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|mark
+name|have_text
 operator|&&
 name|type
 operator|==
@@ -1213,6 +1219,7 @@ argument_list|(
 literal|"invalid dump: directories cannot have text attached"
 argument_list|)
 expr_stmt|;
+comment|/* 	 * Decide on the new content (mark) and mode (node_ctx.type). 	 */
 if|if
 condition|(
 name|node_ctx
@@ -1253,7 +1260,23 @@ condition|)
 block|{
 name|uint32_t
 name|mode
-init|=
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|have_text
+condition|)
+name|mark
+operator|=
+name|repo_read_path
+argument_list|(
+name|node_ctx
+operator|.
+name|dst
+argument_list|)
+expr_stmt|;
+name|mode
+operator|=
 name|repo_modify_path
 argument_list|(
 name|node_ctx
@@ -1262,9 +1285,9 @@ name|dst
 argument_list|,
 literal|0
 argument_list|,
-name|mark
+literal|0
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -1325,7 +1348,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|mark
+name|have_text
 operator|&&
 name|type
 operator|!=
@@ -1334,17 +1357,6 @@ condition|)
 name|die
 argument_list|(
 literal|"invalid dump: adds node without text"
-argument_list|)
-expr_stmt|;
-name|repo_add
-argument_list|(
-name|node_ctx
-operator|.
-name|dst
-argument_list|,
-name|type
-argument_list|,
-name|mark
 argument_list|)
 expr_stmt|;
 block|}
@@ -1356,19 +1368,12 @@ literal|"invalid dump: Node-path block lacks Node-action"
 argument_list|)
 expr_stmt|;
 block|}
+comment|/* 	 * Adjust mode to reflect properties. 	 */
 if|if
 condition|(
 name|have_props
 condition|)
 block|{
-specifier|const
-name|uint32_t
-name|old_mode
-init|=
-name|node_ctx
-operator|.
-name|type
-decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -1391,15 +1396,9 @@ condition|)
 name|read_props
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|node_ctx
-operator|.
-name|type
-operator|!=
-name|old_mode
-condition|)
-name|repo_modify_path
+block|}
+comment|/* 	 * Save the result. 	 */
+name|repo_add
 argument_list|(
 name|node_ctx
 operator|.
@@ -1412,10 +1411,9 @@ argument_list|,
 name|mark
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
-name|mark
+name|have_text
 condition|)
 name|fast_export_blob
 argument_list|(
