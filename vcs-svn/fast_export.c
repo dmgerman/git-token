@@ -150,17 +150,12 @@ modifier|*
 name|path
 parameter_list|)
 block|{
-name|putchar
+name|printf
 argument_list|(
-literal|'D'
+literal|"D \""
 argument_list|)
 expr_stmt|;
-name|putchar
-argument_list|(
-literal|' '
-argument_list|)
-expr_stmt|;
-name|pool_print_seq
+name|pool_print_seq_q
 argument_list|(
 name|depth
 argument_list|,
@@ -171,9 +166,9 @@ argument_list|,
 name|stdout
 argument_list|)
 expr_stmt|;
-name|putchar
+name|printf
 argument_list|(
-literal|'\n'
+literal|"\"\n"
 argument_list|)
 expr_stmt|;
 block|}
@@ -260,14 +255,14 @@ name|printf
 argument_list|(
 literal|"M %06"
 name|PRIo32
-literal|" %s "
+literal|" %s \""
 argument_list|,
 name|mode
 argument_list|,
 name|dataref
 argument_list|)
 expr_stmt|;
-name|pool_print_seq
+name|pool_print_seq_q
 argument_list|(
 name|depth
 argument_list|,
@@ -278,9 +273,9 @@ argument_list|,
 name|stdout
 argument_list|)
 expr_stmt|;
-name|putchar
+name|printf
 argument_list|(
-literal|'\n'
+literal|"\"\n"
 argument_list|)
 expr_stmt|;
 block|}
@@ -519,12 +514,12 @@ name|printf
 argument_list|(
 literal|"ls :%"
 name|PRIu32
-literal|" "
+literal|" \""
 argument_list|,
 name|rev
 argument_list|)
 expr_stmt|;
-name|pool_print_seq
+name|pool_print_seq_q
 argument_list|(
 name|depth
 argument_list|,
@@ -535,9 +530,9 @@ argument_list|,
 name|stdout
 argument_list|)
 expr_stmt|;
-name|putchar
+name|printf
 argument_list|(
-literal|'\n'
+literal|"\"\n"
 argument_list|)
 expr_stmt|;
 name|fflush
