@@ -569,7 +569,7 @@ argument_list|(
 literal|"ls \""
 argument_list|)
 expr_stmt|;
-name|pool_print_seq
+name|pool_print_seq_q
 argument_list|(
 name|depth
 argument_list|,
