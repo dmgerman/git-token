@@ -539,6 +539,17 @@ argument_list|(
 name|GIT_DIR_ENVIRONMENT
 argument_list|)
 expr_stmt|;
+name|git_dir
+operator|=
+name|git_dir
+condition|?
+name|xstrdup
+argument_list|(
+name|git_dir
+argument_list|)
+else|:
+name|NULL
+expr_stmt|;
 if|if
 condition|(
 operator|!
