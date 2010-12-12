@@ -459,7 +459,13 @@ literal|1
 condition|)
 name|printf
 argument_list|(
-literal|"from refs/heads/master^0\n"
+literal|"from :%"
+name|PRIu32
+literal|"\n"
+argument_list|,
+name|revision
+operator|-
+literal|1
 argument_list|)
 expr_stmt|;
 name|first_commit_done
