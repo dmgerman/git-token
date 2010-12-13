@@ -57,6 +57,9 @@ block|,
 DECL|enumerator|OPTION_CALLBACK
 name|OPTION_CALLBACK
 block|,
+DECL|enumerator|OPTION_LOWLEVEL_CALLBACK
+name|OPTION_LOWLEVEL_CALLBACK
+block|,
 DECL|enumerator|OPTION_FILENAME
 name|OPTION_FILENAME
 block|}
@@ -177,8 +180,37 @@ parameter_list|)
 function_decl|;
 end_typedef
 
+begin_struct_decl
+struct_decl|struct
+name|parse_opt_ctx_t
+struct_decl|;
+end_struct_decl
+
+begin_typedef
+DECL|typedef|parse_opt_ll_cb
+typedef|typedef
+name|int
+name|parse_opt_ll_cb
+parameter_list|(
+name|struct
+name|parse_opt_ctx_t
+modifier|*
+name|ctx
+parameter_list|,
+specifier|const
+name|struct
+name|option
+modifier|*
+name|opt
+parameter_list|,
+name|int
+name|unset
+parameter_list|)
+function_decl|;
+end_typedef
+
 begin_comment
-comment|/*  * `type`::  *   holds the type of the option, you must have an OPTION_END last in your  *   array.  *  * `short_name`::  *   the character to use as a short option name, '\0' if none.  *  * `long_name`::  *   the long option name, without the leading dashes, NULL if none.  *  * `value`::  *   stores pointers to the values to be filled.  *  * `argh`::  *   token to explain the kind of argument this option wants. Keep it  *   homogeneous across the repository.  *  * `help`::  *   the short help associated to what the option does.  *   Must never be NULL (except for OPTION_END).  *   OPTION_GROUP uses this pointer to store the group header.  *  * `flags`::  *   mask of parse_opt_option_flags.  *   PARSE_OPT_OPTARG: says that the argument is optional (not for BOOLEANs)  *   PARSE_OPT_NOARG: says that this option does not take an argument  *   PARSE_OPT_NONEG: says that this option cannot be negated  *   PARSE_OPT_HIDDEN: this option is skipped in the default usage, and  *                     shown only in the full usage.  *   PARSE_OPT_LASTARG_DEFAULT: says that this option will take the default  *				value if no argument is given when the option  *				is last on the command line. If the option is  *				not last it will require an argument.  *				Should not be used with PARSE_OPT_OPTARG.  *   PARSE_OPT_NODASH: this option doesn't start with a dash.  *   PARSE_OPT_LITERAL_ARGHELP: says that argh shouldn't be enclosed in brackets  *				(i.e. '<argh>') in the help message.  *				Useful for options with multiple parameters.  *   PARSE_OPT_NEGHELP: says that the long option should always be shown with  *				the --no prefix in the usage message. Sometimes  *				useful for users of OPTION_NEGBIT.  *  * `callback`::  *   pointer to the callback to use for OPTION_CALLBACK.  *  * `defval`::  *   default value to fill (*->value) with for PARSE_OPT_OPTARG.  *   OPTION_{BIT,SET_INT,SET_PTR} store the {mask,integer,pointer} to put in  *   the value when met.  *   CALLBACKS can use it like they want.  */
+comment|/*  * `type`::  *   holds the type of the option, you must have an OPTION_END last in your  *   array.  *  * `short_name`::  *   the character to use as a short option name, '\0' if none.  *  * `long_name`::  *   the long option name, without the leading dashes, NULL if none.  *  * `value`::  *   stores pointers to the values to be filled.  *  * `argh`::  *   token to explain the kind of argument this option wants. Keep it  *   homogeneous across the repository.  *  * `help`::  *   the short help associated to what the option does.  *   Must never be NULL (except for OPTION_END).  *   OPTION_GROUP uses this pointer to store the group header.  *  * `flags`::  *   mask of parse_opt_option_flags.  *   PARSE_OPT_OPTARG: says that the argument is optional (not for BOOLEANs)  *   PARSE_OPT_NOARG: says that this option does not take an argument  *   PARSE_OPT_NONEG: says that this option cannot be negated  *   PARSE_OPT_HIDDEN: this option is skipped in the default usage, and  *                     shown only in the full usage.  *   PARSE_OPT_LASTARG_DEFAULT: says that this option will take the default  *				value if no argument is given when the option  *				is last on the command line. If the option is  *				not last it will require an argument.  *				Should not be used with PARSE_OPT_OPTARG.  *   PARSE_OPT_NODASH: this option doesn't start with a dash.  *   PARSE_OPT_LITERAL_ARGHELP: says that argh shouldn't be enclosed in brackets  *				(i.e. '<argh>') in the help message.  *				Useful for options with multiple parameters.  *   PARSE_OPT_NEGHELP: says that the long option should always be shown with  *				the --no prefix in the usage message. Sometimes  *				useful for users of OPTION_NEGBIT.  *  * `callback`::  *   pointer to the callback to use for OPTION_CALLBACK or  *   OPTION_LOWLEVEL_CALLBACK.  *  * `defval`::  *   default value to fill (*->value) with for PARSE_OPT_OPTARG.  *   OPTION_{BIT,SET_INT,SET_PTR} store the {mask,integer,pointer} to put in  *   the value when met.  *   CALLBACKS can use it like they want.  */
 end_comment
 
 begin_struct
@@ -612,6 +644,9 @@ block|,
 DECL|enumerator|PARSE_OPT_DONE
 name|PARSE_OPT_DONE
 block|,
+DECL|enumerator|PARSE_OPT_NON_OPTION
+name|PARSE_OPT_NON_OPTION
+block|,
 DECL|enumerator|PARSE_OPT_UNKNOWN
 name|PARSE_OPT_UNKNOWN
 block|}
@@ -691,6 +726,12 @@ specifier|const
 name|char
 modifier|*
 name|prefix
+parameter_list|,
+specifier|const
+name|struct
+name|option
+modifier|*
+name|options
 parameter_list|,
 name|int
 name|flags
