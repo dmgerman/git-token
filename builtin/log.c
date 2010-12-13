@@ -6454,6 +6454,10 @@ argument_list|,
 name|output_directory
 argument_list|)
 expr_stmt|;
+else|else
+name|setup_pager
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|output_directory
