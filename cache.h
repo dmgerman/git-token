@@ -8218,7 +8218,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * whitespace rules.  * used by both diff and apply  */
+comment|/*  * whitespace rules.  * used by both diff and apply  * last two digits are tab width  */
 end_comment
 
 begin_define
@@ -8226,7 +8226,7 @@ DECL|macro|WS_BLANK_AT_EOL
 define|#
 directive|define
 name|WS_BLANK_AT_EOL
-value|01
+value|0100
 end_define
 
 begin_define
@@ -8234,7 +8234,7 @@ DECL|macro|WS_SPACE_BEFORE_TAB
 define|#
 directive|define
 name|WS_SPACE_BEFORE_TAB
-value|02
+value|0200
 end_define
 
 begin_define
@@ -8242,7 +8242,7 @@ DECL|macro|WS_INDENT_WITH_NON_TAB
 define|#
 directive|define
 name|WS_INDENT_WITH_NON_TAB
-value|04
+value|0400
 end_define
 
 begin_define
@@ -8250,7 +8250,7 @@ DECL|macro|WS_CR_AT_EOL
 define|#
 directive|define
 name|WS_CR_AT_EOL
-value|010
+value|01000
 end_define
 
 begin_define
@@ -8258,7 +8258,7 @@ DECL|macro|WS_BLANK_AT_EOF
 define|#
 directive|define
 name|WS_BLANK_AT_EOF
-value|020
+value|02000
 end_define
 
 begin_define
@@ -8266,7 +8266,7 @@ DECL|macro|WS_TAB_IN_INDENT
 define|#
 directive|define
 name|WS_TAB_IN_INDENT
-value|040
+value|04000
 end_define
 
 begin_define
@@ -8282,7 +8282,15 @@ DECL|macro|WS_DEFAULT_RULE
 define|#
 directive|define
 name|WS_DEFAULT_RULE
-value|(WS_TRAILING_SPACE|WS_SPACE_BEFORE_TAB)
+value|(WS_TRAILING_SPACE|WS_SPACE_BEFORE_TAB|8)
+end_define
+
+begin_define
+DECL|macro|WS_TAB_WIDTH_MASK
+define|#
+directive|define
+name|WS_TAB_WIDTH_MASK
+value|077
 end_define
 
 begin_decl_stmt
@@ -8426,6 +8434,17 @@ name|ws_rule
 parameter_list|)
 function_decl|;
 end_function_decl
+
+begin_define
+DECL|macro|ws_tab_width
+define|#
+directive|define
+name|ws_tab_width
+parameter_list|(
+name|rule
+parameter_list|)
+value|((rule)& WS_TAB_WIDTH_MASK)
+end_define
 
 begin_comment
 comment|/* ls-files */
