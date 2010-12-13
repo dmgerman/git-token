@@ -1323,15 +1323,9 @@ argument_list|(
 name|node_ctx
 operator|.
 name|dst
-argument_list|)
-expr_stmt|;
+argument_list|,
+operator|&
 name|mode
-operator|=
-name|repo_read_mode
-argument_list|(
-name|node_ctx
-operator|.
-name|dst
 argument_list|)
 expr_stmt|;
 if|if
