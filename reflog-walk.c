@@ -1468,21 +1468,6 @@ name|commit_info
 operator|->
 name|commit
 expr_stmt|;
-name|commit
-operator|->
-name|object
-operator|.
-name|flags
-operator|&=
-operator|~
-operator|(
-name|ADDED
-operator||
-name|SEEN
-operator||
-name|SHOWN
-operator|)
-expr_stmt|;
 block|}
 end_function
 
