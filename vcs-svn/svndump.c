@@ -1459,11 +1459,11 @@ condition|)
 block|{
 name|val
 operator|=
-name|strstr
+name|strchr
 argument_list|(
 name|t
 argument_list|,
-literal|": "
+literal|':'
 argument_list|)
 expr_stmt|;
 if|if
@@ -1473,8 +1473,18 @@ name|val
 condition|)
 continue|continue;
 name|val
-operator|+=
-literal|2
+operator|++
+expr_stmt|;
+if|if
+condition|(
+operator|*
+name|val
+operator|!=
+literal|' '
+condition|)
+continue|continue;
+name|val
+operator|++
 expr_stmt|;
 comment|/* strlen(key) + 1 */
 switch|switch
