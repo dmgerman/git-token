@@ -3378,6 +3378,19 @@ name|list
 init|=
 name|NULL
 decl_stmt|;
+comment|/* 		 * $commit^{/}. Some regex implementation may reject. 		 * We don't need regex anyway. '' pattern always matches. 		 */
+if|if
+condition|(
+name|sp
+index|[
+literal|1
+index|]
+operator|==
+literal|'}'
+condition|)
+return|return
+literal|0
+return|;
 name|prefix
 operator|=
 name|xstrndup
