@@ -441,7 +441,6 @@ name|struct
 name|name_entry
 modifier|*
 parameter_list|,
-specifier|const
 name|struct
 name|strbuf
 modifier|*

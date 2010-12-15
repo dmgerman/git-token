@@ -3009,6 +3009,12 @@ DECL|member|nr
 name|int
 name|nr
 decl_stmt|;
+DECL|member|has_wildcard
+name|int
+name|has_wildcard
+range|:
+literal|1
+decl_stmt|;
 DECL|member|recursive
 name|int
 name|recursive
@@ -3032,6 +3038,12 @@ decl_stmt|;
 DECL|member|len
 name|int
 name|len
+decl_stmt|;
+DECL|member|has_wildcard
+name|int
+name|has_wildcard
+range|:
+literal|1
 decl_stmt|;
 DECL|member|items
 block|}
