@@ -800,7 +800,9 @@ name|revs
 operator|->
 name|diffopt
 operator|.
-name|paths
+name|pathspec
+operator|.
+name|raw
 argument_list|)
 operator|<
 literal|0
@@ -1404,7 +1406,9 @@ name|revs
 operator|->
 name|diffopt
 operator|.
-name|paths
+name|pathspec
+operator|.
+name|raw
 argument_list|)
 operator|<
 literal|0

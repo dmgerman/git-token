@@ -496,7 +496,9 @@ name|rev
 operator|->
 name|diffopt
 operator|.
-name|nr_paths
+name|pathspec
+operator|.
+name|nr
 operator|!=
 literal|1
 condition|)

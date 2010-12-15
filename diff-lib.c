@@ -2472,7 +2472,9 @@ name|prune_data
 operator|=
 name|opt
 operator|->
-name|paths
+name|pathspec
+operator|.
+name|raw
 expr_stmt|;
 name|tree
 operator|=
