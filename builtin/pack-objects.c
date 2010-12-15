@@ -138,15 +138,15 @@ name|char
 name|pack_usage
 index|[]
 init|=
-literal|"git pack-objects [{ -q | --progress | --all-progress }]\n"
+literal|"git pack-objects [ -q | --progress | --all-progress ]\n"
 literal|"        [--all-progress-implied]\n"
-literal|"        [--max-pack-size=N] [--local] [--incremental]\n"
-literal|"        [--window=N] [--window-memory=N] [--depth=N]\n"
+literal|"        [--max-pack-size=<n>] [--local] [--incremental]\n"
+literal|"        [--window=<n>] [--window-memory=<n>] [--depth=<n>]\n"
 literal|"        [--no-reuse-delta] [--no-reuse-object] [--delta-base-offset]\n"
-literal|"        [--threads=N] [--non-empty] [--revs [--unpacked | --all]*]\n"
+literal|"        [--threads=<n>] [--non-empty] [--revs [--unpacked | --all]]\n"
 literal|"        [--reflog] [--stdout | base-name] [--include-tag]\n"
-literal|"        [--keep-unreachable | --unpack-unreachable \n"
-literal|"        [<ref-list |<object-list]"
+literal|"        [--keep-unreachable | --unpack-unreachable]\n"
+literal|"        [< ref-list |< object-list]"
 decl_stmt|;
 end_decl_stmt
 
@@ -2402,13 +2402,13 @@ expr_stmt|;
 comment|/* make sure off_t is sufficiently large not to wrap */
 if|if
 condition|(
+name|signed_add_overflows
+argument_list|(
 operator|*
 name|offset
-operator|>
-operator|*
-name|offset
-operator|+
+argument_list|,
 name|size
+argument_list|)
 condition|)
 name|die
 argument_list|(

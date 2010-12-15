@@ -557,13 +557,9 @@ specifier|extern
 name|void
 name|diffcore_pickaxe
 parameter_list|(
-specifier|const
-name|char
+name|struct
+name|diff_options
 modifier|*
-name|needle
-parameter_list|,
-name|int
-name|opts
 parameter_list|)
 function_decl|;
 end_function_decl

@@ -73,7 +73,7 @@ name|char
 name|index_pack_usage
 index|[]
 init|=
-literal|"git index-pack [-v] [-o<index-file>] [{ --keep | --keep=<msg> }] [--strict] {<pack-file> | --stdin [--fix-thin] [<pack-file>] }"
+literal|"git index-pack [-v] [-o<index-file>] [ --keep | --keep=<msg> ] [--strict] (<pack-file> | --stdin [--fix-thin] [<pack-file>])"
 decl_stmt|;
 end_decl_stmt
 
@@ -802,11 +802,12 @@ expr_stmt|;
 comment|/* make sure off_t is sufficiently large not to wrap */
 if|if
 condition|(
+name|signed_add_overflows
+argument_list|(
 name|consumed_bytes
-operator|>
-name|consumed_bytes
-operator|+
+argument_list|,
 name|bytes
+argument_list|)
 condition|)
 name|die
 argument_list|(
@@ -5012,45 +5013,6 @@ name|read_replace_refs
 operator|=
 literal|0
 expr_stmt|;
-comment|/* 	 * We wish to read the repository's config file if any, and 	 * for that it is necessary to call setup_git_directory_gently(). 	 * However if the cwd was inside .git/objects/pack/ then we need 	 * to go back there or all the pack name arguments will be wrong. 	 * And in that case we cannot rely on any prefix returned by 	 * setup_git_directory_gently() either. 	 */
-block|{
-name|char
-name|cwd
-index|[
-name|PATH_MAX
-operator|+
-literal|1
-index|]
-decl_stmt|;
-name|int
-name|nongit
-decl_stmt|;
-if|if
-condition|(
-operator|!
-name|getcwd
-argument_list|(
-name|cwd
-argument_list|,
-sizeof|sizeof
-argument_list|(
-name|cwd
-argument_list|)
-operator|-
-literal|1
-argument_list|)
-condition|)
-name|die
-argument_list|(
-literal|"Unable to get current working directory"
-argument_list|)
-expr_stmt|;
-name|setup_git_directory_gently
-argument_list|(
-operator|&
-name|nongit
-argument_list|)
-expr_stmt|;
 name|git_config
 argument_list|(
 name|git_index_pack_config
@@ -5060,9 +5022,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|prefix
+operator|&&
 name|chdir
 argument_list|(
-name|cwd
+name|prefix
 argument_list|)
 condition|)
 name|die
@@ -5070,7 +5034,6 @@ argument_list|(
 literal|"Cannot come back to cwd"
 argument_list|)
 expr_stmt|;
-block|}
 for|for
 control|(
 name|i

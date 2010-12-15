@@ -61,6 +61,22 @@ block|}
 struct|;
 end_struct
 
+begin_define
+DECL|macro|STRING_LIST_INIT_NODUP
+define|#
+directive|define
+name|STRING_LIST_INIT_NODUP
+value|{ NULL, 0, 0, 0 }
+end_define
+
+begin_define
+DECL|macro|STRING_LIST_INIT_DUP
+define|#
+directive|define
+name|STRING_LIST_INIT_DUP
+value|{ NULL, 0, 0, 1 }
+end_define
+
 begin_function_decl
 name|void
 name|print_string_list
@@ -139,7 +155,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/* Use this function to iterate over each item */
+comment|/* Use this function or the macro below to iterate over each item */
 end_comment
 
 begin_typedef
@@ -178,6 +194,20 @@ name|cb_data
 parameter_list|)
 function_decl|;
 end_function_decl
+
+begin_define
+DECL|macro|for_each_string_list_item
+define|#
+directive|define
+name|for_each_string_list_item
+parameter_list|(
+name|item
+parameter_list|,
+name|list
+parameter_list|)
+define|\
+value|for (item = (list)->items; item< (list)->items + (list)->nr; ++item)
+end_define
 
 begin_comment
 comment|/* Use these functions only on sorted lists: */

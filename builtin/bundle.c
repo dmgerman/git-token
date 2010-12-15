@@ -31,8 +31,8 @@ index|[]
 init|=
 literal|"git bundle create<file><git-rev-list args>\n"
 literal|"   or: git bundle verify<file>\n"
-literal|"   or: git bundle list-heads<file> [refname...]\n"
-literal|"   or: git bundle unbundle<file> [refname...]"
+literal|"   or: git bundle list-heads<file> [<refname>...]\n"
+literal|"   or: git bundle unbundle<file> [<refname>...]"
 decl_stmt|;
 end_decl_stmt
 
@@ -59,9 +59,6 @@ block|{
 name|struct
 name|bundle_header
 name|header
-decl_stmt|;
-name|int
-name|nongit
 decl_stmt|;
 specifier|const
 name|char
@@ -115,14 +112,6 @@ expr_stmt|;
 name|argv
 operator|+=
 literal|2
-expr_stmt|;
-name|prefix
-operator|=
-name|setup_git_directory_gently
-argument_list|(
-operator|&
-name|nongit
-argument_list|)
 expr_stmt|;
 if|if
 condition|(
@@ -281,7 +270,10 @@ condition|)
 block|{
 if|if
 condition|(
-name|nongit
+operator|!
+name|startup_info
+operator|->
+name|have_repository
 condition|)
 name|die
 argument_list|(
@@ -318,7 +310,10 @@ condition|)
 block|{
 if|if
 condition|(
-name|nongit
+operator|!
+name|startup_info
+operator|->
+name|have_repository
 condition|)
 name|die
 argument_list|(

@@ -318,6 +318,10 @@ name|void
 modifier|*
 name|data
 decl_stmt|;
+DECL|member|show_all_errors
+name|int
+name|show_all_errors
+decl_stmt|;
 block|}
 struct|;
 end_struct

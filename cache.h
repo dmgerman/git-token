@@ -702,10 +702,6 @@ name|CE_CONFLICTED
 value|(0x800000)
 end_define
 
-begin_comment
-comment|/* Only remove in work directory, not index */
-end_comment
-
 begin_define
 DECL|macro|CE_WT_REMOVE
 define|#
@@ -713,6 +709,11 @@ directive|define
 name|CE_WT_REMOVE
 value|(0x400000)
 end_define
+
+begin_comment
+DECL|macro|CE_WT_REMOVE
+comment|/* remove in work directory */
+end_comment
 
 begin_define
 DECL|macro|CE_UNPACKED
@@ -1230,17 +1231,59 @@ return|;
 block|}
 end_function
 
-begin_define
-DECL|macro|canon_mode
-define|#
-directive|define
+begin_function
+DECL|function|canon_mode
+specifier|static
+specifier|inline
+name|unsigned
+name|int
 name|canon_mode
 parameter_list|(
+name|unsigned
+name|int
 name|mode
 parameter_list|)
-define|\
-value|(S_ISREG(mode) ? (S_IFREG | ce_permissions(mode)) : \ 	S_ISLNK(mode) ? S_IFLNK : S_ISDIR(mode) ? S_IFDIR : S_IFGITLINK)
-end_define
+block|{
+if|if
+condition|(
+name|S_ISREG
+argument_list|(
+name|mode
+argument_list|)
+condition|)
+return|return
+name|S_IFREG
+operator||
+name|ce_permissions
+argument_list|(
+name|mode
+argument_list|)
+return|;
+if|if
+condition|(
+name|S_ISLNK
+argument_list|(
+name|mode
+argument_list|)
+condition|)
+return|return
+name|S_IFLNK
+return|;
+if|if
+condition|(
+name|S_ISDIR
+argument_list|(
+name|mode
+argument_list|)
+condition|)
+return|return
+name|S_IFDIR
+return|;
+return|return
+name|S_IFGITLINK
+return|;
+block|}
+end_function
 
 begin_define
 DECL|macro|flexible_size
@@ -1885,6 +1928,14 @@ value|"GIT_CONFIG"
 end_define
 
 begin_define
+DECL|macro|CONFIG_DATA_ENVIRONMENT
+define|#
+directive|define
+name|CONFIG_DATA_ENVIRONMENT
+value|"GIT_CONFIG_PARAMETERS"
+end_define
+
+begin_define
 DECL|macro|EXEC_PATH_ENVIRONMENT
 define|#
 directive|define
@@ -1981,7 +2032,7 @@ DECL|macro|LOCAL_REPO_ENV_SIZE
 define|#
 directive|define
 name|LOCAL_REPO_ENV_SIZE
-value|8
+value|9
 end_define
 
 begin_decl_stmt
@@ -2354,7 +2405,7 @@ value|(((x)+16)*3/2)
 end_define
 
 begin_comment
-comment|/*  * Realloc the buffer pointed at by variable 'x' so that it can hold  * at least 'nr' entries; the number of entries currently allocated  * is 'alloc', using the standard growing factor alloc_nr() macro.  *  * DO NOT USE any expression with side-effect for 'x' or 'alloc'.  */
+comment|/*  * Realloc the buffer pointed at by variable 'x' so that it can hold  * at least 'nr' entries; the number of entries currently allocated  * is 'alloc', using the standard growing factor alloc_nr() macro.  *  * DO NOT USE any expression with side-effect for 'x', 'nr', or 'alloc'.  */
 end_comment
 
 begin_define
@@ -4008,6 +4059,40 @@ begin_function_decl
 specifier|extern
 name|char
 modifier|*
+name|git_path_submodule
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|fmt
+parameter_list|,
+modifier|...
+parameter_list|)
+function_decl|__attribute__
+parameter_list|(
+function_decl|(format
+parameter_list|(
+name|printf
+parameter_list|,
+function_decl|2
+operator|,
+function_decl|3
+end_function_decl
+
+begin_empty_stmt
+unit|)))
+empty_stmt|;
+end_empty_stmt
+
+begin_function_decl
+specifier|extern
+name|char
+modifier|*
 name|sha1_file_name
 parameter_list|(
 specifier|const
@@ -5626,6 +5711,27 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+name|int
+name|parse_date_basic
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|date
+parameter_list|,
+name|unsigned
+name|long
+modifier|*
+name|timestamp
+parameter_list|,
+name|int
+modifier|*
+name|offset
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|void
 name|datestamp
 parameter_list|(
@@ -6987,6 +7093,19 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|void
+name|git_config_push_parameter
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|text
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|int
 name|git_config_parse_parameter
 parameter_list|(
@@ -6994,6 +7113,16 @@ specifier|const
 name|char
 modifier|*
 name|text
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|git_config_parse_environment
+parameter_list|(
+name|void
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -7688,6 +7817,15 @@ specifier|extern
 specifier|const
 name|char
 modifier|*
+name|askpass_program
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
+specifier|const
+name|char
+modifier|*
 name|excludes_file
 decl_stmt|;
 end_decl_stmt
@@ -7908,6 +8046,32 @@ begin_function_decl
 specifier|extern
 name|int
 name|convert_to_working_tree
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|src
+parameter_list|,
+name|size_t
+name|len
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|dst
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|renormalize_buffer
 parameter_list|(
 specifier|const
 name|char
@@ -8304,6 +8468,48 @@ name|argv
 parameter_list|)
 function_decl|;
 end_function_decl
+
+begin_comment
+comment|/* Takes a negative value returned by split_cmdline */
+end_comment
+
+begin_function_decl
+specifier|const
+name|char
+modifier|*
+name|split_cmdline_strerror
+parameter_list|(
+name|int
+name|cmdline_errno
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/* git.c */
+end_comment
+
+begin_struct
+DECL|struct|startup_info
+struct|struct
+name|startup_info
+block|{
+DECL|member|have_repository
+name|int
+name|have_repository
+decl_stmt|;
+block|}
+struct|;
+end_struct
+
+begin_decl_stmt
+specifier|extern
+name|struct
+name|startup_info
+modifier|*
+name|startup_info
+decl_stmt|;
+end_decl_stmt
 
 begin_comment
 comment|/* builtin/merge.c */

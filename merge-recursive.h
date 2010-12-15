@@ -69,6 +69,16 @@ name|buffer_output
 range|:
 literal|1
 decl_stmt|;
+DECL|member|renormalize
+name|unsigned
+name|renormalize
+range|:
+literal|1
+decl_stmt|;
+DECL|member|xdl_opts
+name|long
+name|xdl_opts
+decl_stmt|;
 DECL|member|verbosity
 name|int
 name|verbosity
@@ -80,6 +90,10 @@ decl_stmt|;
 DECL|member|merge_rename_limit
 name|int
 name|merge_rename_limit
+decl_stmt|;
+DECL|member|rename_score
+name|int
+name|rename_score
 decl_stmt|;
 DECL|member|call_depth
 name|int
@@ -103,20 +117,6 @@ decl_stmt|;
 block|}
 struct|;
 end_struct
-
-begin_comment
-comment|/* Return a list of user-friendly error messages to be used by merge */
-end_comment
-
-begin_function_decl
-name|struct
-name|unpack_trees_error_msgs
-name|get_porcelain_error_msgs
-parameter_list|(
-name|void
-parameter_list|)
-function_decl|;
-end_function_decl
 
 begin_comment
 comment|/* merge_trees() but with recursive ancestor consolidation */
@@ -258,6 +258,23 @@ name|struct
 name|merge_options
 modifier|*
 name|o
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
+name|parse_merge_opt
+parameter_list|(
+name|struct
+name|merge_options
+modifier|*
+name|out
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|s
 parameter_list|)
 function_decl|;
 end_function_decl

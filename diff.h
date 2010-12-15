@@ -507,6 +507,14 @@ value|(1<< 26)
 end_define
 
 begin_define
+DECL|macro|DIFF_OPT_OVERRIDE_SUBMODULE_CONFIG
+define|#
+directive|define
+name|DIFF_OPT_OVERRIDE_SUBMODULE_CONFIG
+value|(1<< 27)
+end_define
+
+begin_define
 DECL|macro|DIFF_OPT_TST
 define|#
 directive|define
@@ -1314,6 +1322,35 @@ name|DIFF_SETUP_USE_SIZE_CACHE
 value|4
 end_define
 
+begin_comment
+comment|/*  * Poor man's alternative to parse-option, to allow both sticked form  * (--option=value) and separate form (--option value).  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|parse_long_opt
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|opt
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|argv
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|optarg
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function_decl
 specifier|extern
 name|int
@@ -1439,6 +1476,32 @@ directive|define
 name|DIFF_PICKAXE_REGEX
 value|2
 end_define
+
+begin_define
+DECL|macro|DIFF_PICKAXE_KIND_S
+define|#
+directive|define
+name|DIFF_PICKAXE_KIND_S
+value|4
+end_define
+
+begin_comment
+DECL|macro|DIFF_PICKAXE_KIND_S
+comment|/* traditional plumbing counter */
+end_comment
+
+begin_define
+DECL|macro|DIFF_PICKAXE_KIND_G
+define|#
+directive|define
+name|DIFF_PICKAXE_KIND_G
+value|8
+end_define
+
+begin_comment
+DECL|macro|DIFF_PICKAXE_KIND_G
+comment|/* grep in the patch */
+end_comment
 
 begin_function_decl
 specifier|extern
@@ -1779,6 +1842,20 @@ name|struct
 name|diff_filespec
 modifier|*
 name|one
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|parse_rename_score
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|cp_p
 parameter_list|)
 function_decl|;
 end_function_decl

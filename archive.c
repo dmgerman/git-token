@@ -52,11 +52,11 @@ name|archive_usage
 index|[]
 init|=
 block|{
-literal|"git archive [options]<tree-ish> [path...]"
+literal|"git archive [options]<tree-ish> [<path>...]"
 block|,
 literal|"git archive --list"
 block|,
-literal|"git archive --remote<repo> [--exec<cmd>] [options]<tree-ish> [path...]"
+literal|"git archive --remote<repo> [--exec<cmd>] [options]<tree-ish> [<path>...]"
 block|,
 literal|"git archive --remote<repo> [--exec<cmd>] --list"
 block|,

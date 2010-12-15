@@ -732,6 +732,12 @@ name|setup_revision_opt
 modifier|*
 parameter_list|)
 function_decl|;
+DECL|member|submodule
+specifier|const
+name|char
+modifier|*
+name|submodule
+decl_stmt|;
 block|}
 struct|;
 end_struct

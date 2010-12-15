@@ -2365,12 +2365,23 @@ condition|(
 operator|!
 name|bundle_to_stdout
 condition|)
+block|{
+if|if
+condition|(
 name|commit_lock_file
 argument_list|(
 operator|&
 name|lock
 argument_list|)
+condition|)
+name|die_errno
+argument_list|(
+literal|"cannot create '%s'"
+argument_list|,
+name|path
+argument_list|)
 expr_stmt|;
+block|}
 return|return
 literal|0
 return|;

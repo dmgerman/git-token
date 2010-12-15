@@ -32,6 +32,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"string-list.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|<syslog.h>
 end_include
 
@@ -106,15 +112,15 @@ name|daemon_usage
 index|[]
 init|=
 literal|"git daemon [--verbose] [--syslog] [--export-all]\n"
-literal|"           [--timeout=n] [--init-timeout=n] [--max-connections=n]\n"
-literal|"           [--strict-paths] [--base-path=path] [--base-path-relaxed]\n"
-literal|"           [--user-path | --user-path=path]\n"
-literal|"           [--interpolated-path=path]\n"
-literal|"           [--reuseaddr] [--detach] [--pid-file=file]\n"
-literal|"           [--[enable|disable|allow-override|forbid-override]=service]\n"
-literal|"           [--inetd | [--listen=host_or_ipaddr] [--port=n]\n"
-literal|"                      [--user=user [--group=group]]\n"
-literal|"           [directory...]"
+literal|"           [--timeout=<n>] [--init-timeout=<n>] [--max-connections=<n>]\n"
+literal|"           [--strict-paths] [--base-path=<path>] [--base-path-relaxed]\n"
+literal|"           [--user-path | --user-path=<path>]\n"
+literal|"           [--interpolated-path=<path>]\n"
+literal|"           [--reuseaddr] [--detach] [--pid-file=<file>]\n"
+literal|"           [--(enable|disable|allow-override|forbid-override)=<service>]\n"
+literal|"           [--inetd | [--listen=<host_or_ipaddr>] [--port=<n>]\n"
+literal|"                      [--user=<user> [--group=<group>]]\n"
+literal|"           [<directory>...]"
 decl_stmt|;
 end_decl_stmt
 
@@ -3720,6 +3726,28 @@ return|;
 block|}
 end_function
 
+begin_struct
+DECL|struct|socketlist
+struct|struct
+name|socketlist
+block|{
+DECL|member|list
+name|int
+modifier|*
+name|list
+decl_stmt|;
+DECL|member|nr
+name|size_t
+name|nr
+decl_stmt|;
+DECL|member|alloc
+name|size_t
+name|alloc
+decl_stmt|;
+block|}
+struct|;
+end_struct
+
 begin_ifndef
 ifndef|#
 directive|ifndef
@@ -3727,10 +3755,10 @@ name|NO_IPV6
 end_ifndef
 
 begin_function
-DECL|function|socksetup
+DECL|function|setup_named_sock
 specifier|static
 name|int
-name|socksetup
+name|setup_named_sock
 parameter_list|(
 name|char
 modifier|*
@@ -3739,21 +3767,16 @@ parameter_list|,
 name|int
 name|listen_port
 parameter_list|,
-name|int
+name|struct
+name|socketlist
 modifier|*
-modifier|*
-name|socklist_p
+name|socklist
 parameter_list|)
 block|{
 name|int
 name|socknum
 init|=
 literal|0
-decl_stmt|,
-modifier|*
-name|socklist
-init|=
-name|NULL
 decl_stmt|;
 name|int
 name|maxfd
@@ -3848,9 +3871,12 @@ if|if
 condition|(
 name|gai
 condition|)
-name|die
+block|{
+name|logerror
 argument_list|(
-literal|"getaddrinfo() failed: %s"
+literal|"getaddrinfo() for %s failed: %s"
+argument_list|,
+name|listen_addr
 argument_list|,
 name|gai_strerror
 argument_list|(
@@ -3858,6 +3884,10 @@ name|gai
 argument_list|)
 argument_list|)
 expr_stmt|;
+return|return
+literal|0
+return|;
+block|}
 for|for
 control|(
 name|ai
@@ -4046,31 +4076,37 @@ operator||
 name|FD_CLOEXEC
 argument_list|)
 expr_stmt|;
-name|socklist
-operator|=
-name|xrealloc
+name|ALLOC_GROW
 argument_list|(
 name|socklist
+operator|->
+name|list
 argument_list|,
-sizeof|sizeof
-argument_list|(
-name|int
-argument_list|)
-operator|*
-operator|(
-name|socknum
+name|socklist
+operator|->
+name|nr
 operator|+
 literal|1
-operator|)
+argument_list|,
+name|socklist
+operator|->
+name|alloc
 argument_list|)
 expr_stmt|;
 name|socklist
+operator|->
+name|list
 index|[
-name|socknum
+name|socklist
+operator|->
+name|nr
 operator|++
 index|]
 operator|=
 name|sockfd
+expr_stmt|;
+name|socknum
+operator|++
 expr_stmt|;
 if|if
 condition|(
@@ -4088,11 +4124,6 @@ argument_list|(
 name|ai0
 argument_list|)
 expr_stmt|;
-operator|*
-name|socklist_p
-operator|=
-name|socklist
-expr_stmt|;
 return|return
 name|socknum
 return|;
@@ -4109,10 +4140,10 @@ comment|/* NO_IPV6 */
 end_comment
 
 begin_function
-DECL|function|socksetup
+DECL|function|setup_named_sock
 specifier|static
 name|int
-name|socksetup
+name|setup_named_sock
 parameter_list|(
 name|char
 modifier|*
@@ -4121,10 +4152,10 @@ parameter_list|,
 name|int
 name|listen_port
 parameter_list|,
-name|int
+name|struct
+name|socketlist
 modifier|*
-modifier|*
-name|socklist_p
+name|socklist
 parameter_list|)
 block|{
 name|struct
@@ -4321,20 +4352,32 @@ operator||
 name|FD_CLOEXEC
 argument_list|)
 expr_stmt|;
-operator|*
-name|socklist_p
-operator|=
-name|xmalloc
+name|ALLOC_GROW
 argument_list|(
-sizeof|sizeof
-argument_list|(
-name|int
-argument_list|)
+name|socklist
+operator|->
+name|list
+argument_list|,
+name|socklist
+operator|->
+name|nr
+operator|+
+literal|1
+argument_list|,
+name|socklist
+operator|->
+name|alloc
 argument_list|)
 expr_stmt|;
-operator|*
-operator|*
-name|socklist_p
+name|socklist
+operator|->
+name|list
+index|[
+name|socklist
+operator|->
+name|nr
+operator|++
+index|]
 operator|=
 name|sockfd
 expr_stmt|;
@@ -4350,15 +4393,117 @@ directive|endif
 end_endif
 
 begin_function
+DECL|function|socksetup
+specifier|static
+name|void
+name|socksetup
+parameter_list|(
+name|struct
+name|string_list
+modifier|*
+name|listen_addr
+parameter_list|,
+name|int
+name|listen_port
+parameter_list|,
+name|struct
+name|socketlist
+modifier|*
+name|socklist
+parameter_list|)
+block|{
+if|if
+condition|(
+operator|!
+name|listen_addr
+operator|->
+name|nr
+condition|)
+name|setup_named_sock
+argument_list|(
+name|NULL
+argument_list|,
+name|listen_port
+argument_list|,
+name|socklist
+argument_list|)
+expr_stmt|;
+else|else
+block|{
+name|int
+name|i
+decl_stmt|,
+name|socknum
+decl_stmt|;
+for|for
+control|(
+name|i
+operator|=
+literal|0
+init|;
+name|i
+operator|<
+name|listen_addr
+operator|->
+name|nr
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|socknum
+operator|=
+name|setup_named_sock
+argument_list|(
+name|listen_addr
+operator|->
+name|items
+index|[
+name|i
+index|]
+operator|.
+name|string
+argument_list|,
+name|listen_port
+argument_list|,
+name|socklist
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|socknum
+operator|==
+literal|0
+condition|)
+name|logerror
+argument_list|(
+literal|"unable to allocate any listen sockets for host %s on port %u"
+argument_list|,
+name|listen_addr
+operator|->
+name|items
+index|[
+name|i
+index|]
+operator|.
+name|string
+argument_list|,
+name|listen_port
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
+end_function
+
+begin_function
 DECL|function|service_loop
 specifier|static
 name|int
 name|service_loop
 parameter_list|(
-name|int
-name|socknum
-parameter_list|,
-name|int
+name|struct
+name|socketlist
 modifier|*
 name|socklist
 parameter_list|)
@@ -4375,7 +4520,9 @@ name|pfd
 operator|=
 name|xcalloc
 argument_list|(
-name|socknum
+name|socklist
+operator|->
+name|nr
 argument_list|,
 sizeof|sizeof
 argument_list|(
@@ -4392,7 +4539,9 @@ literal|0
 init|;
 name|i
 operator|<
-name|socknum
+name|socklist
+operator|->
+name|nr
 condition|;
 name|i
 operator|++
@@ -4406,6 +4555,8 @@ operator|.
 name|fd
 operator|=
 name|socklist
+operator|->
+name|list
 index|[
 name|i
 index|]
@@ -4445,7 +4596,9 @@ name|poll
 argument_list|(
 name|pfd
 argument_list|,
-name|socknum
+name|socklist
+operator|->
+name|nr
 argument_list|,
 operator|-
 literal|1
@@ -4487,7 +4640,9 @@ literal|0
 init|;
 name|i
 operator|<
-name|socknum
+name|socklist
+operator|->
+name|nr
 condition|;
 name|i
 operator|++
@@ -4808,7 +4963,8 @@ specifier|static
 name|int
 name|serve
 parameter_list|(
-name|char
+name|struct
+name|string_list
 modifier|*
 name|listen_addr
 parameter_list|,
@@ -4824,14 +4980,18 @@ name|gid_t
 name|gid
 parameter_list|)
 block|{
-name|int
-name|socknum
-decl_stmt|,
-modifier|*
+name|struct
+name|socketlist
 name|socklist
+init|=
+block|{
+name|NULL
+block|,
+literal|0
+block|,
+literal|0
+block|}
 decl_stmt|;
-name|socknum
-operator|=
 name|socksetup
 argument_list|(
 name|listen_addr
@@ -4844,15 +5004,15 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|socknum
+name|socklist
+operator|.
+name|nr
 operator|==
 literal|0
 condition|)
 name|die
 argument_list|(
-literal|"unable to allocate any listen sockets on host %s port %u"
-argument_list|,
-name|listen_addr
+literal|"unable to allocate any listen sockets on port %u"
 argument_list|,
 name|listen_port
 argument_list|)
@@ -4894,8 +5054,7 @@ expr_stmt|;
 return|return
 name|service_loop
 argument_list|(
-name|socknum
-argument_list|,
+operator|&
 name|socklist
 argument_list|)
 return|;
@@ -4921,11 +5080,11 @@ name|listen_port
 init|=
 literal|0
 decl_stmt|;
-name|char
-modifier|*
+name|struct
+name|string_list
 name|listen_addr
 init|=
-name|NULL
+name|STRING_LIST_INIT_NODUP
 decl_stmt|;
 name|int
 name|inetd_mode
@@ -5016,13 +5175,17 @@ literal|"--listen="
 argument_list|)
 condition|)
 block|{
+name|string_list_append
+argument_list|(
+operator|&
 name|listen_addr
-operator|=
+argument_list|,
 name|xstrdup_tolower
 argument_list|(
 name|arg
 operator|+
 literal|9
+argument_list|)
 argument_list|)
 expr_stmt|;
 continue|continue;
@@ -5624,7 +5787,13 @@ operator|&&
 operator|(
 name|listen_port
 operator|||
+operator|(
 name|listen_addr
+operator|.
+name|nr
+operator|>
+literal|0
+operator|)
 operator|)
 condition|)
 name|die
@@ -5854,6 +6023,7 @@ expr_stmt|;
 return|return
 name|serve
 argument_list|(
+operator|&
 name|listen_addr
 argument_list|,
 name|listen_port

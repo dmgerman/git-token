@@ -79,7 +79,7 @@ name|char
 name|upload_pack_usage
 index|[]
 init|=
-literal|"git upload-pack [--strict] [--timeout=nn]<dir>"
+literal|"git upload-pack [--strict] [--timeout=<n>]<dir>"
 decl_stmt|;
 end_decl_stmt
 
@@ -663,7 +663,7 @@ name|out
 parameter_list|,
 name|void
 modifier|*
-name|create_full_pack
+name|user_data
 parameter_list|)
 block|{
 name|int
@@ -718,40 +718,6 @@ name|edge_hint
 operator|=
 literal|1
 expr_stmt|;
-if|if
-condition|(
-name|create_full_pack
-condition|)
-block|{
-specifier|const
-name|char
-modifier|*
-name|args
-index|[]
-init|=
-block|{
-literal|"rev-list"
-block|,
-literal|"--all"
-block|,
-name|NULL
-block|}
-decl_stmt|;
-name|setup_revisions
-argument_list|(
-literal|2
-argument_list|,
-name|args
-argument_list|,
-operator|&
-name|revs
-argument_list|,
-name|NULL
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
 for|for
 control|(
 name|i
@@ -860,7 +826,6 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|prepare_revision_walk
@@ -2724,13 +2689,7 @@ name|struct
 name|object_array
 name|shallows
 init|=
-block|{
-literal|0
-block|,
-literal|0
-block|,
-name|NULL
-block|}
+name|OBJECT_ARRAY_INIT
 decl_stmt|;
 specifier|static
 name|char
@@ -3117,9 +3076,10 @@ name|die
 argument_list|(
 literal|"git upload-pack: not our ref %s"
 argument_list|,
-name|line
-operator|+
-literal|5
+name|sha1_to_hex
+argument_list|(
+name|sha1_buf
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if

@@ -190,7 +190,7 @@ name|their
 argument_list|,
 literal|".their"
 argument_list|,
-literal|0
+name|NULL
 argument_list|)
 expr_stmt|;
 if|if

@@ -702,7 +702,7 @@ name|builtin_checkout_index_usage
 index|[]
 init|=
 block|{
-literal|"git checkout-index [options] [--]<file>..."
+literal|"git checkout-index [options] [--] [<file>...]"
 block|,
 name|NULL
 block|}

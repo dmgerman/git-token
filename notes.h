@@ -216,11 +216,11 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Remove the given note object from the given notes_tree structure  *  * IMPORTANT: The changes made by remove_note() to the given notes_tree  * structure are not persistent until a subsequent call to write_notes_tree()  * returns zero.  */
+comment|/*  * Remove the given note object from the given notes_tree structure  *  * IMPORTANT: The changes made by remove_note() to the given notes_tree  * structure are not persistent until a subsequent call to write_notes_tree()  * returns zero.  *  * Return 0 if a note was removed; 1 if there was no note to remove.  */
 end_comment
 
 begin_function_decl
-name|void
+name|int
 name|remove_note
 parameter_list|(
 name|struct

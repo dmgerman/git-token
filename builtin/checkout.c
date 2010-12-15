@@ -119,6 +119,12 @@ directive|include
 file|"resolve-undo.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"submodule.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|checkout_usage
 specifier|static
@@ -164,11 +170,22 @@ DECL|member|writeout_error
 name|int
 name|writeout_error
 decl_stmt|;
+comment|/* not set by parse_options */
+DECL|member|branch_exists
+name|int
+name|branch_exists
+decl_stmt|;
 DECL|member|new_branch
 specifier|const
 name|char
 modifier|*
 name|new_branch
+decl_stmt|;
+DECL|member|new_branch_force
+specifier|const
+name|char
+modifier|*
+name|new_branch_force
 decl_stmt|;
 DECL|member|new_orphan_branch
 specifier|const
@@ -184,6 +201,11 @@ DECL|member|track
 name|enum
 name|branch_track
 name|track
+decl_stmt|;
+DECL|member|diff_options
+name|struct
+name|diff_options
+name|diff_options
 decl_stmt|;
 block|}
 struct|;
@@ -940,6 +962,7 @@ operator|->
 name|sha1
 argument_list|)
 expr_stmt|;
+comment|/* 	 * NEEDSWORK: re-create conflicts from merges with 	 * merge.renormalize set, too 	 */
 name|status
 operator|=
 name|ll_merge
@@ -964,7 +987,7 @@ name|theirs
 argument_list|,
 literal|"theirs"
 argument_list|,
-literal|0
+name|NULL
 argument_list|)
 expr_stmt|;
 name|free
@@ -1664,6 +1687,11 @@ name|struct
 name|object
 modifier|*
 name|head
+parameter_list|,
+name|struct
+name|diff_options
+modifier|*
+name|opts
 parameter_list|)
 block|{
 name|struct
@@ -1678,6 +1706,16 @@ name|rev
 argument_list|,
 name|NULL
 argument_list|)
+expr_stmt|;
+name|rev
+operator|.
+name|diffopt
+operator|.
+name|flags
+operator|=
+name|opts
+operator|->
+name|flags
 expr_stmt|;
 name|rev
 operator|.
@@ -2228,13 +2266,13 @@ operator|=
 operator|&
 name|the_index
 expr_stmt|;
+name|setup_unpack_trees_porcelain
+argument_list|(
+operator|&
 name|topts
-operator|.
-name|msgs
-operator|.
-name|not_uptodate_file
-operator|=
-literal|"You have local changes to '%s'; cannot switch branches."
+argument_list|,
+literal|"checkout"
+argument_list|)
 expr_stmt|;
 name|refresh_cache
 argument_list|(
@@ -2474,6 +2512,7 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+comment|/* 			 * NEEDSWORK: carrying over local changes 			 * when branches have different end-of-line 			 * normalization (or clean+smudge rules) is 			 * a pain; plumb in an option to set 			 * o.renormalize? 			 */
 name|init_merge_options
 argument_list|(
 operator|&
@@ -2626,6 +2665,11 @@ operator|->
 name|commit
 operator|->
 name|object
+argument_list|,
+operator|&
+name|opts
+operator|->
+name|diff_options
 argument_list|)
 expr_stmt|;
 return|return
@@ -2876,6 +2920,12 @@ name|new
 operator|->
 name|name
 argument_list|,
+name|opts
+operator|->
+name|new_branch_force
+condition|?
+literal|1
+else|:
 literal|0
 argument_list|,
 name|opts
@@ -3004,7 +3054,13 @@ operator|->
 name|name
 argument_list|)
 expr_stmt|;
-else|else
+elseif|else
+if|if
+condition|(
+name|opts
+operator|->
+name|new_branch
+condition|)
 name|fprintf
 argument_list|(
 name|stderr
@@ -3013,11 +3069,23 @@ literal|"Switched to%s branch '%s'\n"
 argument_list|,
 name|opts
 operator|->
-name|new_branch
+name|branch_exists
 condition|?
-literal|" a new"
+literal|" and reset"
 else|:
-literal|""
+literal|" a new"
+argument_list|,
+name|new
+operator|->
+name|name
+argument_list|)
+expr_stmt|;
+else|else
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"Switched to branch '%s'\n"
 argument_list|,
 name|new
 operator|->
@@ -3484,6 +3552,56 @@ modifier|*
 name|cb
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|var
+argument_list|,
+literal|"diff.ignoresubmodules"
+argument_list|)
+condition|)
+block|{
+name|struct
+name|checkout_opts
+modifier|*
+name|opts
+init|=
+name|cb
+decl_stmt|;
+name|handle_ignore_submodules_arg
+argument_list|(
+operator|&
+name|opts
+operator|->
+name|diff_options
+argument_list|,
+name|value
+argument_list|)
+expr_stmt|;
+return|return
+literal|0
+return|;
+block|}
+if|if
+condition|(
+operator|!
+name|prefixcmp
+argument_list|(
+name|var
+argument_list|,
+literal|"submodule."
+argument_list|)
+condition|)
+return|return
+name|parse_submodule_config_option
+argument_list|(
+name|var
+argument_list|,
+name|value
+argument_list|)
+return|;
 return|return
 name|git_xmerge_config
 argument_list|(
@@ -3491,7 +3609,7 @@ name|var
 argument_list|,
 name|value
 argument_list|,
-name|cb
+name|NULL
 argument_list|)
 return|;
 block|}
@@ -3820,9 +3938,25 @@ name|opts
 operator|.
 name|new_branch
 argument_list|,
-literal|"new branch"
+literal|"branch"
+argument_list|,
+literal|"create and checkout a new branch"
+argument_list|)
+block|,
+name|OPT_STRING
+argument_list|(
+literal|'B'
+argument_list|,
+name|NULL
+argument_list|,
+operator|&
+name|opts
+operator|.
+name|new_branch_force
 argument_list|,
 literal|"branch"
+argument_list|,
+literal|"create/reset and checkout a branch"
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -3836,7 +3970,7 @@ name|opts
 operator|.
 name|new_branch_log
 argument_list|,
-literal|"log for new branch"
+literal|"create reflog for new branch"
 argument_list|)
 block|,
 name|OPT_SET_INT
@@ -3850,7 +3984,7 @@ name|opts
 operator|.
 name|track
 argument_list|,
-literal|"track"
+literal|"set upstream info for new branch"
 argument_list|,
 name|BRANCH_TRACK_EXPLICIT
 argument_list|)
@@ -3882,7 +4016,7 @@ name|opts
 operator|.
 name|writeout_stage
 argument_list|,
-literal|"stage"
+literal|"checkout our version for unmerged files"
 argument_list|,
 literal|2
 argument_list|)
@@ -3898,7 +4032,7 @@ name|opts
 operator|.
 name|writeout_stage
 argument_list|,
-literal|"stage"
+literal|"checkout their version for unmerged files"
 argument_list|,
 literal|3
 argument_list|)
@@ -3914,7 +4048,7 @@ name|opts
 operator|.
 name|force
 argument_list|,
-literal|"force"
+literal|"force checkout (throw away local modifications)"
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -3928,7 +4062,7 @@ name|opts
 operator|.
 name|merge
 argument_list|,
-literal|"merge"
+literal|"perform a 3-way merge with the new branch"
 argument_list|)
 block|,
 name|OPT_STRING
@@ -4009,11 +4143,15 @@ name|new
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|gitmodules_config
+argument_list|()
+expr_stmt|;
 name|git_config
 argument_list|(
 name|git_checkout_config
 argument_list|,
-name|NULL
+operator|&
+name|opts
 argument_list|)
 expr_stmt|;
 name|opts
@@ -4038,6 +4176,37 @@ name|checkout_usage
 argument_list|,
 name|PARSE_OPT_KEEP_DASHDASH
 argument_list|)
+expr_stmt|;
+comment|/* we can assume from now on new_branch = !new_branch_force */
+if|if
+condition|(
+name|opts
+operator|.
+name|new_branch
+operator|&&
+name|opts
+operator|.
+name|new_branch_force
+condition|)
+name|die
+argument_list|(
+literal|"-B cannot be used with -b"
+argument_list|)
+expr_stmt|;
+comment|/* copy -B over to -b, so that we can just check the latter */
+if|if
+condition|(
+name|opts
+operator|.
+name|new_branch_force
+condition|)
+name|opts
+operator|.
+name|new_branch
+operator|=
+name|opts
+operator|.
+name|new_branch_force
 expr_stmt|;
 if|if
 condition|(
@@ -4192,7 +4361,7 @@ name|new_branch
 condition|)
 name|die
 argument_list|(
-literal|"--orphan and -b are mutually exclusive"
+literal|"--orphan and -b|-B are mutually exclusive"
 argument_list|)
 expr_stmt|;
 if|if
@@ -4754,6 +4923,20 @@ argument_list|,
 name|rev
 argument_list|)
 condition|)
+block|{
+name|opts
+operator|.
+name|branch_exists
+operator|=
+literal|1
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|opts
+operator|.
+name|new_branch_force
+condition|)
 name|die
 argument_list|(
 literal|"git checkout: branch %s already exists"
@@ -4763,6 +4946,7 @@ operator|.
 name|new_branch
 argument_list|)
 expr_stmt|;
+block|}
 name|strbuf_release
 argument_list|(
 operator|&

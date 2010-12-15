@@ -14,6 +14,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"unpack-trees.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"tree.h"
 end_include
 
@@ -1424,6 +1430,11 @@ name|ret
 init|=
 literal|0
 decl_stmt|;
+name|int
+name|error
+init|=
+literal|0
+decl_stmt|;
 name|struct
 name|name_entry
 modifier|*
@@ -1810,7 +1821,20 @@ name|ret
 operator|<
 literal|0
 condition|)
+block|{
+name|error
+operator|=
+name|ret
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|info
+operator|->
+name|show_all_errors
+condition|)
 break|break;
+block|}
 name|mask
 operator|&=
 name|ret
@@ -1885,7 +1909,7 @@ name|tx
 argument_list|)
 expr_stmt|;
 return|return
-name|ret
+name|error
 return|;
 block|}
 end_function

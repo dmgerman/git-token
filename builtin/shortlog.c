@@ -1612,6 +1612,11 @@ name|rev
 decl_stmt|;
 name|int
 name|nongit
+init|=
+operator|!
+name|startup_info
+operator|->
+name|have_repository
 decl_stmt|;
 specifier|static
 specifier|const
@@ -1691,14 +1696,6 @@ name|struct
 name|parse_opt_ctx_t
 name|ctx
 decl_stmt|;
-name|prefix
-operator|=
-name|setup_git_directory_gently
-argument_list|(
-operator|&
-name|nongit
-argument_list|)
-expr_stmt|;
 name|git_config
 argument_list|(
 name|git_default_config

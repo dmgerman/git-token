@@ -35,7 +35,7 @@ name|char
 name|git_mailsplit_usage
 index|[]
 init|=
-literal|"git mailsplit [-d<prec>] [-f<n>] [-b] [--keep-cr] -o<directory> [<mbox>|<Maildir>...]"
+literal|"git mailsplit [-d<prec>] [-f<n>] [-b] [--keep-cr] -o<directory> [(<mbox>|<Maildir>)...]"
 decl_stmt|;
 end_decl_stmt
 
@@ -725,15 +725,7 @@ name|struct
 name|string_list
 name|list
 init|=
-block|{
-name|NULL
-block|,
-literal|0
-block|,
-literal|0
-block|,
-literal|1
-block|}
+name|STRING_LIST_INIT_DUP
 decl_stmt|;
 if|if
 condition|(
