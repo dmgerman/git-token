@@ -3009,6 +3009,16 @@ DECL|member|nr
 name|int
 name|nr
 decl_stmt|;
+DECL|member|recursive
+name|int
+name|recursive
+range|:
+literal|1
+decl_stmt|;
+DECL|member|max_depth
+name|int
+name|max_depth
+decl_stmt|;
 DECL|struct|pathspec_item
 struct|struct
 name|pathspec_item
