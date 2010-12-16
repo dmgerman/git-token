@@ -1188,5 +1188,28 @@ return|;
 block|}
 end_function
 
+begin_function
+DECL|function|color_is_nil
+name|int
+name|color_is_nil
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|c
+parameter_list|)
+block|{
+return|return
+operator|!
+name|strcmp
+argument_list|(
+name|c
+argument_list|,
+literal|"NIL"
+argument_list|)
+return|;
+block|}
+end_function
+
 end_unit
 
