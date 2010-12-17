@@ -4797,11 +4797,10 @@ name|ce_path_match
 argument_list|(
 name|ce
 argument_list|,
+operator|&
 name|revs
 operator|->
 name|prune_data
-operator|.
-name|raw
 argument_list|)
 condition|)
 block|{

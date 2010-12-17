@@ -2219,9 +2219,23 @@ modifier|*
 name|s
 parameter_list|)
 block|{
+name|struct
+name|pathspec
+name|pathspec
+decl_stmt|;
 name|int
 name|i
 decl_stmt|;
+name|init_pathspec
+argument_list|(
+operator|&
+name|pathspec
+argument_list|,
+name|s
+operator|->
+name|pathspec
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|i
@@ -2263,8 +2277,7 @@ name|ce_path_match
 argument_list|(
 name|ce
 argument_list|,
-name|s
-operator|->
+operator|&
 name|pathspec
 argument_list|)
 condition|)
@@ -2355,6 +2368,12 @@ operator|=
 name|DIFF_STATUS_ADDED
 expr_stmt|;
 block|}
+name|free_pathspec
+argument_list|(
+operator|&
+name|pathspec
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
