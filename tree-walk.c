@@ -2474,7 +2474,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Is a tree entry interesting given the pathspec we have?  *  * Pre-condition: baselen == 0 || base[baselen-1] == '/'  *  * Return:  *  - 2 for "yes, and all subsequent entries will be"  *  - 1 for yes  *  - zero for no  *  - negative for "no, and no subsequent entries will be either"  */
+comment|/*  * Is a tree entry interesting given the pathspec we have?  *  * Pre-condition: either baselen == base_offset (i.e. empty path)  * or base[baselen-1] == '/' (i.e. with trailing slash).  *  * Return:  *  - 2 for "yes, and all subsequent entries will be"  *  - 1 for yes  *  - zero for no  *  - negative for "no, and no subsequent entries will be either"  */
 end_comment
 
 begin_function
@@ -2492,6 +2492,9 @@ name|struct
 name|strbuf
 modifier|*
 name|base
+parameter_list|,
+name|int
+name|base_offset
 parameter_list|,
 specifier|const
 name|struct
@@ -2511,6 +2514,8 @@ init|=
 name|base
 operator|->
 name|len
+operator|-
+name|base_offset
 decl_stmt|;
 name|int
 name|never_interesting
@@ -2557,6 +2562,8 @@ argument_list|(
 name|base
 operator|->
 name|buf
+operator|+
+name|base_offset
 argument_list|,
 name|baselen
 argument_list|,
@@ -2627,6 +2634,17 @@ name|item
 operator|->
 name|match
 decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|base_str
+init|=
+name|base
+operator|->
+name|buf
+operator|+
+name|base_offset
+decl_stmt|;
 name|int
 name|matchlen
 init|=
@@ -2647,9 +2665,7 @@ condition|(
 operator|!
 name|match_dir_prefix
 argument_list|(
-name|base
-operator|->
-name|buf
+name|base_str
 argument_list|,
 name|baselen
 argument_list|,
@@ -2683,9 +2699,7 @@ operator|!
 operator|!
 name|within_depth
 argument_list|(
-name|base
-operator|->
-name|buf
+name|base_str
 operator|+
 name|matchlen
 operator|+
@@ -2718,9 +2732,7 @@ condition|(
 operator|!
 name|strncmp
 argument_list|(
-name|base
-operator|->
-name|buf
+name|base_str
 argument_list|,
 name|match
 argument_list|,
@@ -2839,6 +2851,8 @@ argument_list|,
 name|base
 operator|->
 name|buf
+operator|+
+name|base_offset
 argument_list|,
 literal|0
 argument_list|)
@@ -2848,6 +2862,8 @@ name|strbuf_setlen
 argument_list|(
 name|base
 argument_list|,
+name|base_offset
+operator|+
 name|baselen
 argument_list|)
 expr_stmt|;
@@ -2859,6 +2875,8 @@ name|strbuf_setlen
 argument_list|(
 name|base
 argument_list|,
+name|base_offset
+operator|+
 name|baselen
 argument_list|)
 expr_stmt|;
