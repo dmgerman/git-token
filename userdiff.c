@@ -192,7 +192,7 @@ comment|/* -- */
 literal|"[a-zA-Z_][a-zA-Z0-9_]*"
 literal|"|[-+0-9.e]+[jJlL]?|0[xX]?[0-9a-fA-F]+[lL]?"
 literal|"|[-+*/<>%&^|=!]=|//=?|<<=?|>>=?|\\*\\*=?"
-literal|"|[^[:space:]|[\x80-\xff]+"
+literal|"|[^[:space:]]|[\x80-\xff]+"
 argument_list|)
 block|,
 comment|/* -- */
@@ -206,7 +206,7 @@ comment|/* -- */
 literal|"(@|@@|\\$)?[a-zA-Z_][a-zA-Z0-9_]*"
 literal|"|[-+0-9.e]+|0[xXbB]?[0-9a-fA-F]+|\\?(\\\\C-)?(\\\\M-)?."
 literal|"|//=?|[-+*/<>%&^|=!]=|<<=?|>>=?|===|\\.{1,3}|::|[!=]~"
-literal|"|[^[:space:]|[\x80-\xff]+"
+literal|"|[^[:space:]]|[\x80-\xff]+"
 argument_list|)
 block|,
 name|PATTERNS
