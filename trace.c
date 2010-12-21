@@ -15,18 +15,6 @@ directive|include
 file|"quote.h"
 end_include
 
-begin_function
-DECL|function|do_nothing
-specifier|static
-name|void
-name|do_nothing
-parameter_list|(
-name|size_t
-name|unused
-parameter_list|)
-block|{ }
-end_function
-
 begin_comment
 comment|/* Get a trace file descriptor from GIT_TRACE env variable. */
 end_comment
@@ -274,7 +262,7 @@ condition|)
 return|return;
 name|set_try_to_free_routine
 argument_list|(
-name|do_nothing
+name|NULL
 argument_list|)
 expr_stmt|;
 comment|/* is never reset */
@@ -483,7 +471,7 @@ condition|)
 return|return;
 name|set_try_to_free_routine
 argument_list|(
-name|do_nothing
+name|NULL
 argument_list|)
 expr_stmt|;
 comment|/* is never reset */

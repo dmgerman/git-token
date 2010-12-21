@@ -52,6 +52,15 @@ name|old
 init|=
 name|try_to_free_routine
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|routine
+condition|)
+name|routine
+operator|=
+name|do_nothing
+expr_stmt|;
 name|try_to_free_routine
 operator|=
 name|routine
