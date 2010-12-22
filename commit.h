@@ -288,7 +288,7 @@ name|struct
 name|commit_list
 modifier|*
 modifier|*
-name|list_p
+name|list
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -310,7 +310,7 @@ begin_function_decl
 name|struct
 name|commit_list
 modifier|*
-name|insert_by_date
+name|commit_list_insert_by_date
 parameter_list|(
 name|struct
 name|commit
@@ -328,10 +328,11 @@ end_function_decl
 
 begin_function_decl
 name|void
-name|free_commit_list
+name|commit_list_sort_by_date
 parameter_list|(
 name|struct
 name|commit_list
+modifier|*
 modifier|*
 name|list
 parameter_list|)
@@ -340,11 +341,10 @@ end_function_decl
 
 begin_function_decl
 name|void
-name|sort_by_date
+name|free_commit_list
 parameter_list|(
 name|struct
 name|commit_list
-modifier|*
 modifier|*
 name|list
 parameter_list|)
