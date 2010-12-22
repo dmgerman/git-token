@@ -518,6 +518,19 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|void
+name|free_excludes
+parameter_list|(
+name|struct
+name|exclude_list
+modifier|*
+name|el
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|int
 name|file_exists
 parameter_list|(
