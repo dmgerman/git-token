@@ -1007,7 +1007,15 @@ operator|!
 name|name_addr_only
 operator|&&
 name|date_str
+operator|&&
+name|date_str
+index|[
+literal|0
+index|]
 condition|)
+block|{
+if|if
+condition|(
 name|parse_date
 argument_list|(
 name|date_str
@@ -1019,7 +1027,17 @@ argument_list|(
 name|date
 argument_list|)
 argument_list|)
+operator|<
+literal|0
+condition|)
+name|die
+argument_list|(
+literal|"invalid date format: %s"
+argument_list|,
+name|date_str
+argument_list|)
 expr_stmt|;
+block|}
 name|i
 operator|=
 name|copy
