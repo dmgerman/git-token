@@ -1374,6 +1374,12 @@ argument_list|)
 operator|!=
 literal|1
 condition|)
+block|{
+name|fclose
+argument_list|(
+name|f
+argument_list|)
+expr_stmt|;
 return|return
 name|error
 argument_list|(
@@ -1382,6 +1388,7 @@ argument_list|,
 name|filename
 argument_list|)
 return|;
+block|}
 name|fclose
 argument_list|(
 name|f
