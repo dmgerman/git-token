@@ -173,8 +173,12 @@ argument_list|(
 literal|"perl"
 argument_list|,
 literal|"^[ \t]*package .*;\n"
-literal|"^[ \t]*sub .* \\{"
+literal|"^[ \t]*sub .* \\{\n"
+literal|"^[A-Z]+ \\{\n"
+comment|/* BEGIN, END, ... */
+literal|"^=head[0-9] "
 argument_list|,
+comment|/* POD */
 comment|/* -- */
 literal|"[[:alpha:]_'][[:alnum:]_']*"
 literal|"|0[xb]?[0-9a-fA-F_]*"
