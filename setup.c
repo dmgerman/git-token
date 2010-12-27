@@ -1081,6 +1081,23 @@ argument_list|(
 literal|"This operation must be run in a work tree"
 argument_list|)
 expr_stmt|;
+comment|/* 	 * Make sure subsequent git processes find correct worktree 	 * if $GIT_WORK_TREE is set relative 	 */
+if|if
+condition|(
+name|getenv
+argument_list|(
+name|GIT_WORK_TREE_ENVIRONMENT
+argument_list|)
+condition|)
+name|setenv
+argument_list|(
+name|GIT_WORK_TREE_ENVIRONMENT
+argument_list|,
+literal|"."
+argument_list|,
+literal|1
+argument_list|)
+expr_stmt|;
 name|set_git_dir
 argument_list|(
 name|make_relative_path
