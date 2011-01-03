@@ -119,6 +119,18 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+name|int
+name|buffer_read_char
+parameter_list|(
+name|struct
+name|line_buffer
+modifier|*
+name|buf
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|void
 name|buffer_read_binary
 parameter_list|(

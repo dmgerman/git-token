@@ -131,6 +131,28 @@ return|;
 block|}
 end_function
 
+begin_function
+DECL|function|buffer_read_char
+name|int
+name|buffer_read_char
+parameter_list|(
+name|struct
+name|line_buffer
+modifier|*
+name|buf
+parameter_list|)
+block|{
+return|return
+name|fgetc
+argument_list|(
+name|buf
+operator|->
+name|infile
+argument_list|)
+return|;
+block|}
+end_function
+
 begin_comment
 comment|/* Read a line without trailing newline. */
 end_comment
