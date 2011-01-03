@@ -120,6 +120,26 @@ end_function_decl
 
 begin_function_decl
 name|void
+name|buffer_read_binary
+parameter_list|(
+name|struct
+name|line_buffer
+modifier|*
+name|buf
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|sb
+parameter_list|,
+name|uint32_t
+name|len
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|void
 name|buffer_copy_bytes
 parameter_list|(
 name|struct
