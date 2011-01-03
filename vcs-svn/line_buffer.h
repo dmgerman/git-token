@@ -79,6 +79,21 @@ end_function_decl
 
 begin_function_decl
 name|int
+name|buffer_fdinit
+parameter_list|(
+name|struct
+name|line_buffer
+modifier|*
+name|buf
+parameter_list|,
+name|int
+name|fd
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
 name|buffer_deinit
 parameter_list|(
 name|struct
