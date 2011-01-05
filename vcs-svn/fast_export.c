@@ -224,6 +224,27 @@ expr_stmt|;
 block|}
 end_function
 
+begin_function
+DECL|function|fast_export_begin_commit
+name|void
+name|fast_export_begin_commit
+parameter_list|(
+name|uint32_t
+name|revision
+parameter_list|)
+block|{
+name|printf
+argument_list|(
+literal|"# commit %"
+name|PRIu32
+literal|".\n"
+argument_list|,
+name|revision
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
 begin_decl_stmt
 DECL|variable|gitsvnline
 specifier|static

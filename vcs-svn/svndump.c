@@ -87,6 +87,10 @@ name|NODEACT_UNKNOWN
 value|0
 end_define
 
+begin_comment
+comment|/* States: */
+end_comment
+
 begin_define
 DECL|macro|DUMP_CTX
 define|#
@@ -94,6 +98,11 @@ directive|define
 name|DUMP_CTX
 value|0
 end_define
+
+begin_comment
+DECL|macro|DUMP_CTX
+comment|/* dump metadata */
+end_comment
 
 begin_define
 DECL|macro|REV_CTX
@@ -103,6 +112,11 @@ name|REV_CTX
 value|1
 end_define
 
+begin_comment
+DECL|macro|REV_CTX
+comment|/* revision metadata */
+end_comment
+
 begin_define
 DECL|macro|NODE_CTX
 define|#
@@ -110,6 +124,24 @@ directive|define
 name|NODE_CTX
 value|2
 end_define
+
+begin_comment
+DECL|macro|NODE_CTX
+comment|/* node metadata */
+end_comment
+
+begin_define
+DECL|macro|INTERNODE_CTX
+define|#
+directive|define
+name|INTERNODE_CTX
+value|3
+end_define
+
+begin_comment
+DECL|macro|INTERNODE_CTX
+comment|/* between nodes */
+end_comment
 
 begin_define
 DECL|macro|LENGTH_UNKNOWN
@@ -1429,10 +1461,38 @@ block|}
 end_function
 
 begin_function
-DECL|function|handle_revision
+DECL|function|begin_revision
 specifier|static
 name|void
-name|handle_revision
+name|begin_revision
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+if|if
+condition|(
+operator|!
+name|rev_ctx
+operator|.
+name|revision
+condition|)
+comment|/* revision 0 gets no git commit. */
+return|return;
+name|fast_export_begin_commit
+argument_list|(
+name|rev_ctx
+operator|.
+name|revision
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|function|end_revision
+specifier|static
+name|void
+name|end_revision
 parameter_list|(
 name|void
 parameter_list|)
@@ -1637,10 +1697,19 @@ expr_stmt|;
 if|if
 condition|(
 name|active_ctx
+operator|==
+name|REV_CTX
+condition|)
+name|begin_revision
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|active_ctx
 operator|!=
 name|DUMP_CTX
 condition|)
-name|handle_revision
+name|end_revision
 argument_list|()
 expr_stmt|;
 name|active_ctx
@@ -1673,6 +1742,15 @@ operator|==
 name|NODE_CTX
 condition|)
 name|handle_node
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|active_ctx
+operator|==
+name|REV_CTX
+condition|)
+name|begin_revision
 argument_list|()
 expr_stmt|;
 name|active_ctx
@@ -2020,7 +2098,7 @@ argument_list|()
 expr_stmt|;
 name|active_ctx
 operator|=
-name|REV_CTX
+name|INTERNODE_CTX
 expr_stmt|;
 block|}
 else|else
@@ -2059,10 +2137,19 @@ expr_stmt|;
 if|if
 condition|(
 name|active_ctx
+operator|==
+name|REV_CTX
+condition|)
+name|begin_revision
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|active_ctx
 operator|!=
 name|DUMP_CTX
 condition|)
-name|handle_revision
+name|end_revision
 argument_list|()
 expr_stmt|;
 block|}
