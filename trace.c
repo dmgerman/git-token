@@ -788,6 +788,11 @@ modifier|*
 name|prefix
 parameter_list|)
 block|{
+specifier|const
+name|char
+modifier|*
+name|git_work_tree
+decl_stmt|;
 name|char
 name|cwd
 index|[
@@ -848,6 +853,29 @@ argument_list|(
 literal|"Unable to get current working directory"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+operator|(
+name|git_work_tree
+operator|=
+name|get_git_work_tree
+argument_list|()
+operator|)
+condition|)
+name|git_work_tree
+operator|=
+literal|"(null)"
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|prefix
+condition|)
+name|prefix
+operator|=
+literal|"(null)"
+expr_stmt|;
 name|trace_printf
 argument_list|(
 literal|"setup: git_dir: %s\n"
@@ -865,8 +893,7 @@ literal|"setup: worktree: %s\n"
 argument_list|,
 name|quote_crnl
 argument_list|(
-name|get_git_work_tree
-argument_list|()
+name|git_work_tree
 argument_list|)
 argument_list|)
 expr_stmt|;
