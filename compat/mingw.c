@@ -9904,5 +9904,67 @@ return|;
 block|}
 end_function
 
+begin_function
+DECL|function|mingw_startup
+name|void
+name|mingw_startup
+parameter_list|()
+block|{
+comment|/* copy executable name to argv[0] */
+name|__argv
+index|[
+literal|0
+index|]
+operator|=
+name|xstrdup
+argument_list|(
+name|_pgmptr
+argument_list|)
+expr_stmt|;
+comment|/* initialize critical section for waitpid pinfo_t list */
+name|InitializeCriticalSection
+argument_list|(
+operator|&
+name|pinfo_cs
+argument_list|)
+expr_stmt|;
+comment|/* set up default file mode and file modes for stdin/out/err */
+name|_fmode
+operator|=
+name|_O_BINARY
+expr_stmt|;
+name|_setmode
+argument_list|(
+name|_fileno
+argument_list|(
+name|stdin
+argument_list|)
+argument_list|,
+name|_O_BINARY
+argument_list|)
+expr_stmt|;
+name|_setmode
+argument_list|(
+name|_fileno
+argument_list|(
+name|stdout
+argument_list|)
+argument_list|,
+name|_O_BINARY
+argument_list|)
+expr_stmt|;
+name|_setmode
+argument_list|(
+name|_fileno
+argument_list|(
+name|stderr
+argument_list|)
+argument_list|,
+name|_O_BINARY
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
 end_unit
 
