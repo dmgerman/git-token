@@ -66,22 +66,12 @@ name|FILENAME_MAX
 index|]
 decl_stmt|;
 comment|/* File name. */
-union|union
-block|{
-DECL|member|d_reclen
-name|unsigned
-name|short
-name|d_reclen
-decl_stmt|;
-comment|/* Always zero. */
 DECL|member|d_type
 name|unsigned
 name|char
 name|d_type
 decl_stmt|;
-comment|/* Reimplementation adds this */
-block|}
-union|;
+comment|/* file type to prevent lstat after readdir */
 block|}
 struct|;
 end_struct
