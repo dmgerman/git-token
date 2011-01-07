@@ -2482,7 +2482,6 @@ block|{
 name|int
 name|namelen
 decl_stmt|;
-specifier|static
 name|char
 name|alt_name
 index|[
