@@ -10489,6 +10489,19 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Disable MSVCRT command line wildcard expansion (__getmainargs called from  * mingw startup code, see init.c in mingw runtime).  */
+end_comment
+
+begin_decl_stmt
+DECL|variable|_CRT_glob
+name|int
+name|_CRT_glob
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|mingw_startup
 name|void
