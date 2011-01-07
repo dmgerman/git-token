@@ -58,20 +58,20 @@ DECL|struct|dirent
 struct|struct
 name|dirent
 block|{
-DECL|member|d_name
-name|char
-name|d_name
-index|[
-name|FILENAME_MAX
-index|]
-decl_stmt|;
-comment|/* File name. */
 DECL|member|d_type
 name|unsigned
 name|char
 name|d_type
 decl_stmt|;
 comment|/* file type to prevent lstat after readdir */
+DECL|member|d_name
+name|char
+name|d_name
+index|[
+name|MAX_PATH
+index|]
+decl_stmt|;
+comment|/* file name */
 block|}
 struct|;
 end_struct
