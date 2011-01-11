@@ -156,7 +156,7 @@ name|PATTERNS
 argument_list|(
 literal|"pascal"
 argument_list|,
-literal|"^((procedure|function|constructor|destructor|interface|"
+literal|"^(((class[ \t]+)?(procedure|function)|constructor|destructor|interface|"
 literal|"implementation|initialization|finalization)[ \t]*.*)$"
 literal|"\n"
 literal|"^(.*=[ \t]*(class|record).*)$"
