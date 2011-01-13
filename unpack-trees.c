@@ -5933,7 +5933,6 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|!
 name|lstat
 argument_list|(
 name|ce
@@ -5944,6 +5943,34 @@ operator|&
 name|st
 argument_list|)
 condition|)
+block|{
+if|if
+condition|(
+name|errno
+operator|!=
+name|ENOENT
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"cannot stat '%s': %s"
+argument_list|,
+name|ce
+operator|->
+name|name
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
+argument_list|)
+return|;
+return|return
+literal|0
+return|;
+block|}
+else|else
+block|{
 return|return
 name|check_ok_to_remove
 argument_list|(
@@ -5971,9 +5998,7 @@ argument_list|,
 name|o
 argument_list|)
 return|;
-return|return
-literal|0
-return|;
+block|}
 block|}
 end_function
 
