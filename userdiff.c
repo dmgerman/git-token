@@ -170,6 +170,31 @@ argument_list|)
 block|,
 name|PATTERNS
 argument_list|(
+literal|"perl"
+argument_list|,
+literal|"^[ \t]*package .*;\n"
+literal|"^[ \t]*sub .* \\{\n"
+literal|"^[A-Z]+ \\{\n"
+comment|/* BEGIN, END, ... */
+literal|"^=head[0-9] "
+argument_list|,
+comment|/* POD */
+comment|/* -- */
+literal|"[[:alpha:]_'][[:alnum:]_']*"
+literal|"|0[xb]?[0-9a-fA-F_]*"
+comment|/* taking care not to interpret 3..5 as (3.)(.5) */
+literal|"|[0-9a-fA-F_]+(\\.[0-9a-fA-F_]+)?([eE][-+]?[0-9_]+)?"
+literal|"|=>|-[rwxoRWXOezsfdlpSugkbctTBMAC>]|~~|::"
+literal|"|&&=|\\|\\|=|//=|\\*\\*="
+literal|"|&&|\\|\\||//|\\+\\+|--|\\*\\*|\\.\\.\\.?"
+literal|"|[-+*/%.^&<>=!|]="
+literal|"|=~|!~"
+literal|"|<<|<>|<=>|>>"
+literal|"|[^[:space:]]"
+argument_list|)
+block|,
+name|PATTERNS
+argument_list|(
 literal|"php"
 argument_list|,
 literal|"^[\t ]*(((public|protected|private|static)[\t ]+)*function.*)$\n"
