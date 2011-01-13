@@ -180,9 +180,9 @@ literal|"\n"
 literal|"    git config --global user.name \"Your Name\"\n"
 literal|"    git config --global user.email you@example.com\n"
 literal|"\n"
-literal|"If the identity used for this commit is wrong, you can fix it with:\n"
+literal|"After doing this, you may fix the identity used for this commit with:\n"
 literal|"\n"
-literal|"    git commit --amend --author='Your Name<you@example.com>'\n"
+literal|"    git commit --amend --reset-author\n"
 decl_stmt|;
 end_decl_stmt
 
