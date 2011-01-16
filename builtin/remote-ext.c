@@ -952,7 +952,7 @@ literal|1
 condition|)
 block|{
 name|size_t
-name|length
+name|i
 decl_stmt|;
 if|if
 condition|(
@@ -988,7 +988,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/* Strip end of line characters. */
-name|length
+name|i
 operator|=
 name|strlen
 argument_list|(
@@ -997,15 +997,15 @@ argument_list|)
 expr_stmt|;
 while|while
 condition|(
+name|i
+operator|>
+literal|0
+operator|&&
 name|isspace
 argument_list|(
-operator|(
-name|unsigned
-name|char
-operator|)
 name|buffer
 index|[
-name|length
+name|i
 operator|-
 literal|1
 index|]
@@ -1014,7 +1014,7 @@ condition|)
 name|buffer
 index|[
 operator|--
-name|length
+name|i
 index|]
 operator|=
 literal|0
