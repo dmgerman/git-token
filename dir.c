@@ -4650,6 +4650,20 @@ operator|+
 literal|1
 return|;
 default|default:
+comment|/* 		 * dir can end with a path separator when it's root 		 * directory. Return proper prefix in that case. 		 */
+if|if
+condition|(
+name|dir
+index|[
+operator|-
+literal|1
+index|]
+operator|==
+literal|'/'
+condition|)
+return|return
+name|cwd
+return|;
 return|return
 name|NULL
 return|;
