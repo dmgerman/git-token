@@ -5679,11 +5679,36 @@ condition|(
 name|last_dot
 operator|==
 name|NULL
+operator|||
+name|last_dot
+operator|==
+name|key
 condition|)
 block|{
 name|error
 argument_list|(
 literal|"key does not contain a section: %s"
+argument_list|,
+name|key
+argument_list|)
+expr_stmt|;
+return|return
+operator|-
+literal|2
+return|;
+block|}
+if|if
+condition|(
+operator|!
+name|last_dot
+index|[
+literal|1
+index|]
+condition|)
+block|{
+name|error
+argument_list|(
+literal|"key does not contain variable name: %s"
 argument_list|,
 name|key
 argument_list|)
