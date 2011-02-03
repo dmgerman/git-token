@@ -97,6 +97,16 @@ DECL|struct|pack_idx_option
 struct|struct
 name|pack_idx_option
 block|{
+DECL|member|flags
+name|unsigned
+name|flags
+decl_stmt|;
+comment|/* flag bits */
+DECL|macro|WRITE_IDX_VERIFY
+define|#
+directive|define
+name|WRITE_IDX_VERIFY
+value|01
 DECL|member|version
 name|uint32_t
 name|version
