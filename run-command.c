@@ -1070,6 +1070,11 @@ argument_list|,
 literal|"trace: run_command:"
 argument_list|)
 expr_stmt|;
+name|fflush
+argument_list|(
+name|NULL
+argument_list|)
+expr_stmt|;
 ifndef|#
 directive|ifndef
 name|WIN32
@@ -1099,11 +1104,6 @@ index|]
 operator|=
 operator|-
 literal|1
-expr_stmt|;
-name|fflush
-argument_list|(
-name|NULL
-argument_list|)
 expr_stmt|;
 name|cmd
 operator|->
