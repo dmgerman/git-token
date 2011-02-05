@@ -1348,6 +1348,7 @@ name|commit
 modifier|*
 name|item
 parameter_list|,
+specifier|const
 name|void
 modifier|*
 name|buffer
@@ -1357,12 +1358,14 @@ name|long
 name|size
 parameter_list|)
 block|{
+specifier|const
 name|char
 modifier|*
 name|tail
 init|=
 name|buffer
 decl_stmt|;
+specifier|const
 name|char
 modifier|*
 name|bufptr

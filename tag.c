@@ -350,6 +350,7 @@ name|tag
 modifier|*
 name|item
 parameter_list|,
+specifier|const
 name|void
 modifier|*
 name|data
