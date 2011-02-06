@@ -1445,7 +1445,7 @@ name|argv_pack
 init|=
 name|xmalloc
 argument_list|(
-literal|5
+literal|6
 operator|*
 sizeof|sizeof
 argument_list|(
@@ -2194,6 +2194,13 @@ expr_stmt|;
 name|argv_pack
 index|[
 literal|4
+index|]
+operator|=
+literal|"--delta-base-offset"
+expr_stmt|;
+name|argv_pack
+index|[
+literal|5
 index|]
 operator|=
 name|NULL
