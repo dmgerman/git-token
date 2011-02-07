@@ -1173,6 +1173,26 @@ end_define
 
 begin_function_decl
 name|int
+name|mingw_rmdir
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_define
+DECL|macro|rmdir
+define|#
+directive|define
+name|rmdir
+value|mingw_rmdir
+end_define
+
+begin_function_decl
+name|int
 name|mingw_open
 parameter_list|(
 specifier|const
