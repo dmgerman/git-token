@@ -279,7 +279,7 @@ name|cached_object
 name|empty_tree
 init|=
 block|{
-name|EMPTY_TREE_SHA1_BIN
+name|EMPTY_TREE_SHA1_BIN_LITERAL
 block|,
 name|OBJ_TREE
 block|,

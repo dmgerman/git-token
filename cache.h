@@ -4305,12 +4305,21 @@ value|"4b825dc642cb6eb9a060e54bf8d69288fbee4904"
 end_define
 
 begin_define
+DECL|macro|EMPTY_TREE_SHA1_BIN_LITERAL
+define|#
+directive|define
+name|EMPTY_TREE_SHA1_BIN_LITERAL
+define|\
+value|"\x4b\x82\x5d\xc6\x42\xcb\x6e\xb9\xa0\x60" \ 	 "\xe5\x4b\xf8\xd6\x92\x88\xfb\xee\x49\x04"
+end_define
+
+begin_define
 DECL|macro|EMPTY_TREE_SHA1_BIN
 define|#
 directive|define
 name|EMPTY_TREE_SHA1_BIN
 define|\
-value|"\x4b\x82\x5d\xc6\x42\xcb\x6e\xb9\xa0\x60" \ 	 "\xe5\x4b\xf8\xd6\x92\x88\xfb\xee\x49\x04"
+value|((const unsigned char *) EMPTY_TREE_SHA1_BIN_LITERAL)
 end_define
 
 begin_function_decl
