@@ -162,6 +162,10 @@ DECL|member|force
 name|int
 name|force
 decl_stmt|;
+DECL|member|force_detach
+name|int
+name|force_detach
+decl_stmt|;
 DECL|member|writeout_stage
 name|int
 name|writeout_stage
@@ -3170,6 +3174,10 @@ block|}
 elseif|else
 if|if
 condition|(
+name|opts
+operator|->
+name|force_detach
+operator|||
 name|strcmp
 argument_list|(
 name|new
@@ -3262,6 +3270,12 @@ name|new
 operator|->
 name|path
 operator|||
+operator|(
+operator|!
+name|opts
+operator|->
+name|force_detach
+operator|&&
 operator|!
 name|strcmp
 argument_list|(
@@ -3271,6 +3285,7 @@ name|name
 argument_list|,
 literal|"HEAD"
 argument_list|)
+operator|)
 operator|)
 condition|)
 name|report_tracking
@@ -3868,6 +3883,9 @@ parameter_list|,
 name|int
 name|dwim_new_local_branch_ok
 parameter_list|,
+name|int
+name|force_detach
+parameter_list|,
 name|struct
 name|branch_info
 modifier|*
@@ -4084,6 +4102,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+name|force_detach
+operator|&&
 name|check_ref_format
 argument_list|(
 name|new
@@ -4337,6 +4358,20 @@ operator|.
 name|new_branch_log
 argument_list|,
 literal|"create reflog for new branch"
+argument_list|)
+block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|0
+argument_list|,
+literal|"detach"
+argument_list|,
+operator|&
+name|opts
+operator|.
+name|force_detach
+argument_list|,
+literal|"detach the HEAD at named commit"
 argument_list|)
 block|,
 name|OPT_SET_INT
@@ -4597,11 +4632,53 @@ operator|||
 name|opts
 operator|.
 name|force
+operator|||
+name|opts
+operator|.
+name|force_detach
 operator|)
 condition|)
 name|die
 argument_list|(
 literal|"--patch is incompatible with all other options"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|opts
+operator|.
+name|force_detach
+operator|&&
+operator|(
+name|opts
+operator|.
+name|new_branch
+operator|||
+name|opts
+operator|.
+name|new_orphan_branch
+operator|)
+condition|)
+name|die
+argument_list|(
+literal|"--detach cannot be used with -b/-B/--orphan"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|opts
+operator|.
+name|force_detach
+operator|&&
+literal|0
+operator|<
+name|opts
+operator|.
+name|track
+condition|)
+name|die
+argument_list|(
+literal|"--detach cannot be used with -t"
 argument_list|)
 expr_stmt|;
 comment|/* --track without -b should DWIM */
@@ -4822,6 +4899,10 @@ name|argv
 argument_list|,
 name|dwim_ok
 argument_list|,
+name|opts
+operator|.
+name|force_detach
+argument_list|,
 operator|&
 name|new
 argument_list|,
@@ -4939,6 +5020,17 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+if|if
+condition|(
+name|opts
+operator|.
+name|force_detach
+condition|)
+name|die
+argument_list|(
+literal|"git checkout: --detach does not take a path argument"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 literal|1
