@@ -16093,6 +16093,21 @@ operator|=
 literal|1
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|feature
+argument_list|,
+literal|"notes"
+argument_list|)
+condition|)
+block|{
+empty_stmt|;
+comment|/* do nothing; we have the feature */
+block|}
 else|else
 block|{
 return|return
