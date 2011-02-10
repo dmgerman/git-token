@@ -284,11 +284,12 @@ literal|0x10000
 expr_stmt|;
 if|if
 condition|(
+name|unsigned_add_overflows
+argument_list|(
 name|cp_off
-operator|+
+argument_list|,
 name|cp_size
-operator|<
-name|cp_size
+argument_list|)
 operator|||
 name|cp_off
 operator|+

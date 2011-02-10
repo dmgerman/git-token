@@ -192,6 +192,18 @@ define|\
 value|(INTMAX_MAX>> (bitsizeof(intmax_t) - bitsizeof(a)))
 end_define
 
+begin_define
+DECL|macro|maximum_unsigned_value_of_type
+define|#
+directive|define
+name|maximum_unsigned_value_of_type
+parameter_list|(
+name|a
+parameter_list|)
+define|\
+value|(UINTMAX_MAX>> (bitsizeof(uintmax_t) - bitsizeof(a)))
+end_define
+
 begin_comment
 comment|/*  * Signed integer overflow is undefined in C, so here's a helper macro  * to detect if the sum of two integers will overflow.  *  * Requires: a>= 0, typeof(a) equals typeof(b)  */
 end_comment
@@ -208,6 +220,20 @@ name|b
 parameter_list|)
 define|\
 value|((b)> maximum_signed_value_of_type(a) - (a))
+end_define
+
+begin_define
+DECL|macro|unsigned_add_overflows
+define|#
+directive|define
+name|unsigned_add_overflows
+parameter_list|(
+name|a
+parameter_list|,
+name|b
+parameter_list|)
+define|\
+value|((b)> maximum_unsigned_value_of_type(a) - (a))
 end_define
 
 begin_ifdef
