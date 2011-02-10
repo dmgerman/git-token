@@ -62,7 +62,7 @@ parameter_list|,
 name|word_regex
 parameter_list|)
 define|\
-value|{ name, NULL, -1, { pattern, REG_EXTENDED }, word_regex }
+value|{ name, NULL, -1, { pattern, REG_EXTENDED },		\ 	  word_regex "|[^[:space:]]|[\xc0-\xff][\x80-\xbf]+" }
 end_define
 
 begin_define
@@ -78,7 +78,7 @@ parameter_list|,
 name|word_regex
 parameter_list|)
 define|\
-value|{ name, NULL, -1, { pattern, REG_EXTENDED | REG_ICASE }, word_regex }
+value|{ name, NULL, -1, { pattern, REG_EXTENDED | REG_ICASE }, \ 	  word_regex "|[^[:space:]]|[\xc0-\xff][\x80-\xbf]+" }
 end_define
 
 begin_decl_stmt
@@ -105,7 +105,6 @@ literal|"|\\.([Ee][Qq]|[Nn][Ee]|[Gg][TtEe]|[Ll][TtEe]|[Tt][Rr][Uu][Ee]|[Ff][Aa][
 comment|/* numbers and format statements like 2E14.4, or ES12.6, 9X. 	  * Don't worry about format statements without leading digits since 	  * they would have been matched above as a variable anyway. */
 literal|"|[-+]?[0-9.]+([AaIiDdEeFfLlTtXx][Ss]?[-+]?[0-9.]*)?(_[a-zA-Z0-9][a-zA-Z0-9_]*)?"
 literal|"|//|\\*\\*|::|[/<>=]="
-literal|"|[^[:space:]]|[\x80-\xff]+"
 argument_list|)
 block|,
 name|PATTERNS
@@ -114,7 +113,7 @@ literal|"html"
 argument_list|,
 literal|"^[ \t]*(<[Hh][1-6][ \t].*>.*)$"
 argument_list|,
-literal|"[^<>= \t]+|[^[:space:]]|[\x80-\xff]+"
+literal|"[^<>= \t]+"
 argument_list|)
 block|,
 name|PATTERNS
@@ -129,7 +128,6 @@ literal|"[a-zA-Z_][a-zA-Z0-9_]*"
 literal|"|[-+0-9.e]+[fFlL]?|0[xXbB]?[0-9a-fA-F]+[lL]?"
 literal|"|[-+*/<>%&^|=!]="
 literal|"|--|\\+\\+|<<=?|>>>?=?|&&|\\|\\|"
-literal|"|[^[:space:]]|[\x80-\xff]+"
 argument_list|)
 block|,
 name|PATTERNS
@@ -149,7 +147,6 @@ comment|/* -- */
 literal|"[a-zA-Z_][a-zA-Z0-9_]*"
 literal|"|[-+0-9.e]+[fFlL]?|0[xXbB]?[0-9a-fA-F]+[lL]?"
 literal|"|[-+*/<>%&^|=!]=|--|\\+\\+|<<=?|>>=?|&&|\\|\\||::|->"
-literal|"|[^[:space:]]|[\x80-\xff]+"
 argument_list|)
 block|,
 name|PATTERNS
@@ -165,7 +162,6 @@ comment|/* -- */
 literal|"[a-zA-Z_][a-zA-Z0-9_]*"
 literal|"|[-+0-9.e]+|0[xXbB]?[0-9a-fA-F]+"
 literal|"|<>|<=|>=|:=|\\.\\."
-literal|"|[^[:space:]]|[\x80-\xff]+"
 argument_list|)
 block|,
 name|PATTERNS
@@ -190,7 +186,6 @@ literal|"|&&|\\|\\||//|\\+\\+|--|\\*\\*|\\.\\.\\.?"
 literal|"|[-+*/%.^&<>=!|]="
 literal|"|=~|!~"
 literal|"|<<|<>|<=>|>>"
-literal|"|[^[:space:]]"
 argument_list|)
 block|,
 name|PATTERNS
@@ -204,7 +199,6 @@ comment|/* -- */
 literal|"[a-zA-Z_][a-zA-Z0-9_]*"
 literal|"|[-+0-9.e]+|0[xXbB]?[0-9a-fA-F]+"
 literal|"|[-+*/<>%&^|=!.]=|--|\\+\\+|<<=?|>>=?|===|&&|\\|\\||::|->"
-literal|"|[^[:space:]]|[\x80-\xff]+"
 argument_list|)
 block|,
 name|PATTERNS
@@ -217,7 +211,6 @@ comment|/* -- */
 literal|"[a-zA-Z_][a-zA-Z0-9_]*"
 literal|"|[-+0-9.e]+[jJlL]?|0[xX]?[0-9a-fA-F]+[lL]?"
 literal|"|[-+*/<>%&^|=!]=|//=?|<<=?|>>=?|\\*\\*=?"
-literal|"|[^[:space:]]|[\x80-\xff]+"
 argument_list|)
 block|,
 comment|/* -- */
@@ -231,7 +224,6 @@ comment|/* -- */
 literal|"(@|@@|\\$)?[a-zA-Z_][a-zA-Z0-9_]*"
 literal|"|[-+0-9.e]+|0[xXbB]?[0-9a-fA-F]+|\\?(\\\\C-)?(\\\\M-)?."
 literal|"|//=?|[-+*/<>%&^|=!]=|<<=?|>>=?|===|\\.{1,3}|::|[!=]~"
-literal|"|[^[:space:]]|[\x80-\xff]+"
 argument_list|)
 block|,
 name|PATTERNS
@@ -249,7 +241,7 @@ literal|"tex"
 argument_list|,
 literal|"^(\\\\((sub)*section|chapter|part)\\*{0,1}\\{.*)$"
 argument_list|,
-literal|"\\\\[a-zA-Z@]+|\\\\.|[a-zA-Z0-9\x80-\xff]+|[^[:space:]]"
+literal|"\\\\[a-zA-Z@]+|\\\\.|[a-zA-Z0-9\x80-\xff]+"
 argument_list|)
 block|,
 name|PATTERNS
@@ -267,7 +259,6 @@ comment|/* -- */
 literal|"[a-zA-Z_][a-zA-Z0-9_]*"
 literal|"|[-+0-9.e]+[fFlL]?|0[xXbB]?[0-9a-fA-F]+[lL]?"
 literal|"|[-+*/<>%&^|=!]=|--|\\+\\+|<<=?|>>=?|&&|\\|\\||::|->"
-literal|"|[^[:space:]]|[\x80-\xff]+"
 argument_list|)
 block|,
 name|PATTERNS
@@ -289,7 +280,6 @@ comment|/* -- */
 literal|"[a-zA-Z_][a-zA-Z0-9_]*"
 literal|"|[-+0-9.e]+[fFlL]?|0[xXbB]?[0-9a-fA-F]+[lL]?"
 literal|"|[-+*/<>%&^|=!]=|--|\\+\\+|<<=?|>>=?|&&|\\|\\||::|->"
-literal|"|[^[:space:]]|[\x80-\xff]+"
 argument_list|)
 block|,
 block|{
