@@ -3568,6 +3568,15 @@ name|char
 modifier|*
 name|strategy
 parameter_list|,
+name|size_t
+name|xopts_nr
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|xopts
+parameter_list|,
 name|struct
 name|commit_list
 modifier|*
@@ -4291,6 +4300,10 @@ return|return
 name|try_merge_command
 argument_list|(
 name|strategy
+argument_list|,
+name|xopts_nr
+argument_list|,
+name|xopts
 argument_list|,
 name|common
 argument_list|,

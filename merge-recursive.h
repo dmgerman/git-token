@@ -292,6 +292,15 @@ name|char
 modifier|*
 name|strategy
 parameter_list|,
+name|size_t
+name|xopts_nr
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|xopts
+parameter_list|,
 name|struct
 name|commit_list
 modifier|*
