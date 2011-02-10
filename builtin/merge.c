@@ -179,9 +179,11 @@ name|builtin_merge_usage
 index|[]
 init|=
 block|{
-literal|"git merge [options]<remote>..."
+literal|"git merge [options]<commit>..."
 block|,
-literal|"git merge [options]<msg> HEAD<remote>"
+literal|"git merge [options]<msg> HEAD<commit>"
+block|,
+literal|"git merge --abort"
 block|,
 name|NULL
 block|}
