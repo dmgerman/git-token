@@ -346,7 +346,7 @@ name|OPT_BOOLEAN
 argument_list|(
 literal|0
 argument_list|,
-literal|"recurse_submodules"
+literal|"recurse-submodules"
 argument_list|,
 operator|&
 name|option_recursive
