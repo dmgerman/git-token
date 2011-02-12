@@ -3105,5 +3105,45 @@ return|;
 block|}
 end_function
 
+begin_function
+DECL|function|cmd_repo_config
+name|int
+name|cmd_repo_config
+parameter_list|(
+name|int
+name|argc
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|argv
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|prefix
+parameter_list|)
+block|{
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"WARNING: git repo-config is deprecated in favor of git config.\n"
+argument_list|)
+expr_stmt|;
+return|return
+name|cmd_config
+argument_list|(
+name|argc
+argument_list|,
+name|argv
+argument_list|,
+name|prefix
+argument_list|)
+return|;
+block|}
+end_function
+
 end_unit
 
