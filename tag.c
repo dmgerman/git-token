@@ -652,6 +652,13 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+name|bufptr
+operator|+
+literal|4
+operator|<
+name|tail
+operator|&&
+operator|!
 name|prefixcmp
 argument_list|(
 name|bufptr
@@ -659,6 +666,9 @@ argument_list|,
 literal|"tag "
 argument_list|)
 condition|)
+empty_stmt|;
+comment|/* good */
+else|else
 return|return
 operator|-
 literal|1
@@ -710,6 +720,12 @@ literal|1
 expr_stmt|;
 if|if
 condition|(
+name|bufptr
+operator|+
+literal|7
+operator|<
+name|tail
+operator|&&
 operator|!
 name|prefixcmp
 argument_list|(
