@@ -1776,7 +1776,7 @@ argument_list|,
 operator|&
 name|patch_interactive
 argument_list|,
-literal|"interactive patching"
+literal|"select hunks interactively"
 argument_list|)
 block|,
 name|OPT_BOOLEAN
