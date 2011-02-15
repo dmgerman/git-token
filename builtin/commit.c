@@ -638,7 +638,7 @@ argument_list|,
 operator|&
 name|force_author
 argument_list|,
-literal|"AUTHOR"
+literal|"author"
 argument_list|,
 literal|"override author for commit"
 argument_list|)
@@ -652,7 +652,7 @@ argument_list|,
 operator|&
 name|force_date
 argument_list|,
-literal|"DATE"
+literal|"date"
 argument_list|,
 literal|"override date for commit"
 argument_list|)
@@ -666,7 +666,7 @@ argument_list|,
 operator|&
 name|message
 argument_list|,
-literal|"MESSAGE"
+literal|"message"
 argument_list|,
 literal|"commit message"
 argument_list|,
@@ -682,7 +682,7 @@ argument_list|,
 operator|&
 name|edit_message
 argument_list|,
-literal|"COMMIT"
+literal|"commit"
 argument_list|,
 literal|"reuse and edit message from specified commit"
 argument_list|)
@@ -696,7 +696,7 @@ argument_list|,
 operator|&
 name|use_message
 argument_list|,
-literal|"COMMIT"
+literal|"commit"
 argument_list|,
 literal|"reuse message from specified commit"
 argument_list|)
@@ -710,7 +710,7 @@ argument_list|,
 operator|&
 name|fixup_message
 argument_list|,
-literal|"COMMIT"
+literal|"commit"
 argument_list|,
 literal|"use autosquash formatted message to fixup specified commit"
 argument_list|)
@@ -724,7 +724,7 @@ argument_list|,
 operator|&
 name|squash_message
 argument_list|,
-literal|"COMMIT"
+literal|"commit"
 argument_list|,
 literal|"use autosquash formatted message to squash specified commit"
 argument_list|)

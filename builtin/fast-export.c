@@ -3463,7 +3463,7 @@ argument_list|,
 operator|&
 name|export_filename
 argument_list|,
-literal|"FILE"
+literal|"file"
 argument_list|,
 literal|"Dump marks to this file"
 argument_list|)
@@ -3477,7 +3477,7 @@ argument_list|,
 operator|&
 name|import_filename
 argument_list|,
-literal|"FILE"
+literal|"file"
 argument_list|,
 literal|"Import marks from this file"
 argument_list|)
