@@ -626,7 +626,7 @@ argument_list|,
 operator|&
 name|logfile
 argument_list|,
-literal|"read log from file"
+literal|"read message from file"
 argument_list|)
 block|,
 name|OPT_STRING

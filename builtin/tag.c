@@ -2060,7 +2060,7 @@ argument_list|,
 operator|&
 name|msgfile
 argument_list|,
-literal|"message in a file"
+literal|"read message from file"
 argument_list|)
 block|,
 name|OPT_BOOLEAN
