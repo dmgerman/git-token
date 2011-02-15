@@ -916,7 +916,7 @@ argument_list|,
 operator|&
 name|status_format
 argument_list|,
-literal|"show porcelain output format"
+literal|"machine-readable output"
 argument_list|,
 name|STATUS_FORMAT_PORCELAIN
 argument_list|)
@@ -5812,7 +5812,7 @@ argument_list|,
 operator|&
 name|status_format
 argument_list|,
-literal|"show porcelain output format"
+literal|"machine-readable output"
 argument_list|,
 name|STATUS_FORMAT_PORCELAIN
 argument_list|)
