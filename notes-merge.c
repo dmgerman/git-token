@@ -3499,11 +3499,6 @@ name|null_sha1
 expr_stmt|;
 name|base_tree_sha1
 operator|=
-operator|(
-name|unsigned
-name|char
-operator|*
-operator|)
 name|EMPTY_TREE_SHA1_BIN
 expr_stmt|;
 name|OUTPUT

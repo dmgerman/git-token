@@ -363,9 +363,9 @@ argument_list|,
 operator|&
 name|option_template
 argument_list|,
-literal|"path"
+literal|"template-directory"
 argument_list|,
-literal|"path the template repository"
+literal|"directory from which templates will be used"
 argument_list|)
 block|,
 name|OPT_STRING

@@ -1242,9 +1242,9 @@ argument_list|,
 operator|&
 name|merge_msg
 argument_list|,
-literal|"message"
+literal|"MESSAGE"
 argument_list|,
-literal|"message to be used for the merge commit (if any)"
+literal|"merge commit message (for a non-fast-forward merge)"
 argument_list|,
 name|option_parse_message
 argument_list|)

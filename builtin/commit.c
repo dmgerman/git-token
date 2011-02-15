@@ -626,7 +626,7 @@ argument_list|,
 operator|&
 name|logfile
 argument_list|,
-literal|"read log from file"
+literal|"read message from file"
 argument_list|)
 block|,
 name|OPT_STRING
@@ -668,7 +668,7 @@ name|message
 argument_list|,
 literal|"MESSAGE"
 argument_list|,
-literal|"specify commit message"
+literal|"commit message"
 argument_list|,
 name|opt_parse_m
 argument_list|)
@@ -916,7 +916,7 @@ argument_list|,
 operator|&
 name|status_format
 argument_list|,
-literal|"show porcelain output format"
+literal|"machine-readable output"
 argument_list|,
 name|STATUS_FORMAT_PORCELAIN
 argument_list|)
@@ -969,7 +969,7 @@ name|untracked_files_arg
 block|,
 literal|"mode"
 block|,
-literal|"show untracked files, optional modes: all, normal, no (Default: all)"
+literal|"show untracked files, optional modes: all, normal, no. (Default: all)"
 block|,
 name|PARSE_OPT_OPTARG
 block|,
@@ -5812,7 +5812,7 @@ argument_list|,
 operator|&
 name|status_format
 argument_list|,
-literal|"show porcelain output format"
+literal|"machine-readable output"
 argument_list|,
 name|STATUS_FORMAT_PORCELAIN
 argument_list|)
