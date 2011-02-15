@@ -969,7 +969,7 @@ name|untracked_files_arg
 block|,
 literal|"mode"
 block|,
-literal|"show untracked files, optional modes: all, normal, no (Default: all)"
+literal|"show untracked files, optional modes: all, normal, no. (Default: all)"
 block|,
 name|PARSE_OPT_OPTARG
 block|,
