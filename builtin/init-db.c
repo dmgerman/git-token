@@ -2034,7 +2034,7 @@ name|template_dir
 argument_list|,
 literal|"template-directory"
 argument_list|,
-literal|"provide the directory from which templates will be used"
+literal|"directory from which templates will be used"
 argument_list|)
 block|,
 name|OPT_SET_INT
