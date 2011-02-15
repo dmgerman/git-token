@@ -668,7 +668,7 @@ name|message
 argument_list|,
 literal|"MESSAGE"
 argument_list|,
-literal|"specify commit message"
+literal|"commit message"
 argument_list|,
 name|opt_parse_m
 argument_list|)
