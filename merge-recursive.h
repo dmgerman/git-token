@@ -95,6 +95,10 @@ DECL|member|rename_score
 name|int
 name|rename_score
 decl_stmt|;
+DECL|member|needed_rename_limit
+name|int
+name|needed_rename_limit
+decl_stmt|;
 DECL|member|call_depth
 name|int
 name|call_depth

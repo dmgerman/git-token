@@ -2293,6 +2293,12 @@ goto|goto
 name|cleanup
 goto|;
 comment|/* 	 * This basically does a test for the rename matrix not 	 * growing larger than a "rename_limit" square matrix, ie: 	 * 	 *    num_create * num_src> rename_limit * rename_limit 	 * 	 * but handles the potential overflow case specially (and we 	 * assume at least 32-bit integers) 	 */
+name|options
+operator|->
+name|needed_rename_limit
+operator|=
+literal|0
+expr_stmt|;
 if|if
 condition|(
 name|rename_limit
@@ -2330,20 +2336,17 @@ name|rename_limit
 operator|)
 condition|)
 block|{
-if|if
-condition|(
 name|options
 operator|->
-name|warn_on_too_large_rename
-condition|)
-name|warning
-argument_list|(
-literal|"too many files (created: %d deleted: %d), skipping inexact rename detection"
-argument_list|,
-name|num_create
-argument_list|,
+name|needed_rename_limit
+operator|=
 name|num_src
-argument_list|)
+operator|>
+name|num_create
+condition|?
+name|num_src
+else|:
+name|num_create
 expr_stmt|;
 goto|goto
 name|cleanup
