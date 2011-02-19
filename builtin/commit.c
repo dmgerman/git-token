@@ -6515,14 +6515,6 @@ name|rev
 operator|.
 name|diffopt
 operator|.
-name|rename_limit
-operator|=
-literal|100
-expr_stmt|;
-name|rev
-operator|.
-name|diffopt
-operator|.
 name|break_opt
 operator|=
 literal|0
