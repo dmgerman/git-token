@@ -2422,7 +2422,7 @@ name|o
 operator|->
 name|diff_rename_limit
 else|:
-literal|500
+literal|1000
 expr_stmt|;
 name|opts
 operator|.
