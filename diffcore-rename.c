@@ -27,6 +27,12 @@ directive|include
 file|"hash.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"progress.h"
+end_include
+
 begin_comment
 comment|/* Table of rename/copy destinations */
 end_comment
@@ -2075,6 +2081,13 @@ name|num_src
 decl_stmt|,
 name|dst_cnt
 decl_stmt|;
+name|struct
+name|progress
+modifier|*
+name|progress
+init|=
+name|NULL
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -2352,6 +2365,29 @@ goto|goto
 name|cleanup
 goto|;
 block|}
+if|if
+condition|(
+name|options
+operator|->
+name|show_rename_progress
+condition|)
+block|{
+name|progress
+operator|=
+name|start_progress_delay
+argument_list|(
+literal|"Performing inexact rename detection"
+argument_list|,
+name|rename_dst_nr
+operator|*
+name|rename_src_nr
+argument_list|,
+literal|50
+argument_list|,
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
 name|mx
 operator|=
 name|xcalloc
@@ -2533,7 +2569,26 @@ block|}
 name|dst_cnt
 operator|++
 expr_stmt|;
+name|display_progress
+argument_list|(
+name|progress
+argument_list|,
+operator|(
+name|i
+operator|+
+literal|1
+operator|)
+operator|*
+name|rename_src_nr
+argument_list|)
+expr_stmt|;
 block|}
+name|stop_progress
+argument_list|(
+operator|&
+name|progress
+argument_list|)
+expr_stmt|;
 comment|/* cost matrix sorted by most to least similar pair */
 name|qsort
 argument_list|(
