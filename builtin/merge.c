@@ -5948,6 +5948,34 @@ literal|"You have not concluded your merge (MERGE_HEAD exists)."
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|file_exists
+argument_list|(
+name|git_path
+argument_list|(
+literal|"CHERRY_PICK_HEAD"
+argument_list|)
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
+name|advice_resolve_conflict
+condition|)
+name|die
+argument_list|(
+literal|"You have not concluded your cherry-pick (CHERRY_PICK_HEAD exists).\n"
+literal|"Please, commit your changes before you can merge."
+argument_list|)
+expr_stmt|;
+else|else
+name|die
+argument_list|(
+literal|"You have not concluded your cherry-pick (CHERRY_PICK_HEAD exists)."
+argument_list|)
+expr_stmt|;
+block|}
 name|resolve_undo_clear
 argument_list|()
 expr_stmt|;
