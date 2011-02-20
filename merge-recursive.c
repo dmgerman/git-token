@@ -2434,6 +2434,14 @@ name|rename_score
 expr_stmt|;
 name|opts
 operator|.
+name|show_rename_progress
+operator|=
+name|o
+operator|->
+name|show_rename_progress
+expr_stmt|;
+name|opts
+operator|.
 name|output_format
 operator|=
 name|DIFF_FORMAT_NO_OUTPUT

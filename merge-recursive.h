@@ -99,6 +99,10 @@ DECL|member|needed_rename_limit
 name|int
 name|needed_rename_limit
 decl_stmt|;
+DECL|member|show_rename_progress
+name|int
+name|show_rename_progress
+decl_stmt|;
 DECL|member|call_depth
 name|int
 name|call_depth
