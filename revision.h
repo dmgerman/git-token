@@ -308,6 +308,16 @@ name|left_right
 range|:
 literal|1
 decl_stmt|,
+DECL|member|left_only
+name|left_only
+range|:
+literal|1
+decl_stmt|,
+DECL|member|right_only
+name|right_only
+range|:
+literal|1
+decl_stmt|,
 DECL|member|rewrite_parents
 name|rewrite_parents
 range|:
