@@ -5842,7 +5842,10 @@ operator|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--open-files-in-pager only works on the worktree"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
