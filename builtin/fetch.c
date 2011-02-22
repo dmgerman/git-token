@@ -1910,17 +1910,25 @@ name|sprintf
 argument_list|(
 name|display
 argument_list|,
-literal|"! %-*s %-*s -> %s  (non-fast-forward)"
+literal|"! %-*s %-*s -> %s  %s"
 argument_list|,
 name|TRANSPORT_SUMMARY_WIDTH
 argument_list|,
+name|_
+argument_list|(
 literal|"[rejected]"
+argument_list|)
 argument_list|,
 name|REFCOL_WIDTH
 argument_list|,
 name|remote
 argument_list|,
 name|pretty_ref
+argument_list|,
+name|_
+argument_list|(
+literal|"(non-fast-forward)"
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
