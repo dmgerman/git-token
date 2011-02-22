@@ -3008,15 +3008,19 @@ condition|)
 block|{
 name|error
 argument_list|(
-literal|"could not %s %s... %s"
-argument_list|,
 name|action
 operator|==
 name|REVERT
 condition|?
-literal|"revert"
+name|_
+argument_list|(
+literal|"could not revert %s... %s"
+argument_list|)
 else|:
-literal|"apply"
+name|_
+argument_list|(
+literal|"could not apply %s... %s"
+argument_list|)
 argument_list|,
 name|find_unique_abbrev
 argument_list|(
