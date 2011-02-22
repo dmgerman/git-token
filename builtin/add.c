@@ -996,7 +996,10 @@ name|pathspec
 argument_list|,
 name|seen
 argument_list|,
+name|_
+argument_list|(
 literal|"Unstaged changes after refreshing the index:"
+argument_list|)
 argument_list|)
 expr_stmt|;
 for|for
