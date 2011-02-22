@@ -6809,7 +6809,10 @@ literal|0
 condition|)
 name|printf
 argument_list|(
+name|_
+argument_list|(
 literal|"Updating %s..%s\n"
+argument_list|)
 argument_list|,
 name|hex
 argument_list|,
