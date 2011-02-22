@@ -1404,7 +1404,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"updating files failed"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1517,7 +1520,10 @@ name|tree
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"failed to unpack HEAD tree object"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|parse_tree
@@ -1662,7 +1668,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"interactive add failed"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -1676,7 +1685,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"index file corrupt"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|commit_style
@@ -1713,7 +1725,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"index file corrupt"
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* 	 * Non partial, non as-is commit. 	 * 	 * (1) get the real index; 	 * (2) update the_index as necessary; 	 * (3) write the_index out to the real index (still locked); 	 * (4) return the name of the locked index file. 	 * 	 * The caller should run hooks on the locked real index, and 	 * (A) if all goes well, commit the real index; 	 * (B) on failure, rollback the real index. 	 */
@@ -1778,7 +1793,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"unable to write new_index file"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|commit_style
@@ -1841,7 +1859,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"unable to write new_index file"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1874,7 +1895,10 @@ name|in_merge
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"cannot do a partial commit during a merge."
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|memset
@@ -1931,7 +1955,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"cannot read the index"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|fd
@@ -1974,7 +2001,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"unable to write new_index file"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|fd
@@ -2032,7 +2062,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"unable to write temporary index file"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|discard_cache
@@ -2247,7 +2280,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"could not parse HEAD commit"
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -2361,7 +2397,10 @@ name|a
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"invalid commit: %s"
+argument_list|)
 argument_list|,
 name|use_message
 argument_list|)
@@ -2414,7 +2453,10 @@ name|eol
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"invalid commit: %s"
+argument_list|)
 argument_list|,
 name|use_message
 argument_list|)
@@ -2557,7 +2599,10 @@ name|rb
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"malformed --author parameter"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|name
@@ -2879,7 +2924,10 @@ literal|' '
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Malformed ident string: '%s'"
+argument_list|)
 argument_list|,
 name|string
 argument_list|)
@@ -3039,7 +3087,10 @@ name|c
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"could not lookup commit %s"
+argument_list|)
 argument_list|,
 name|squash_message
 argument_list|)
@@ -3112,7 +3163,10 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
+name|_
+argument_list|(
 literal|"(reading log message from standard input)\n"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -3131,7 +3185,10 @@ literal|0
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"could not read log from standard input"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|hook_arg1
@@ -3161,7 +3218,10 @@ literal|0
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"could not read log file '%s'"
+argument_list|)
 argument_list|,
 name|logfile
 argument_list|)
@@ -3200,7 +3260,10 @@ literal|'\0'
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"commit has empty message"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|strbuf_add
@@ -3262,7 +3325,10 @@ name|commit
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"could not lookup commit %s"
+argument_list|)
 argument_list|,
 name|fixup_message
 argument_list|)
@@ -3327,7 +3393,10 @@ literal|0
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"could not read MERGE_MSG"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|hook_arg1
@@ -3370,7 +3439,10 @@ literal|0
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"could not read SQUASH_MSG"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|hook_arg1
@@ -3409,7 +3481,10 @@ literal|0
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"could not read '%s'"
+argument_list|)
 argument_list|,
 name|template_file
 argument_list|)
@@ -3468,7 +3543,10 @@ name|NULL
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"could not open '%s'"
+argument_list|)
 argument_list|,
 name|git_path
 argument_list|(
@@ -3647,7 +3725,10 @@ name|len
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"could not write commit template"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|strbuf_release
@@ -3941,7 +4022,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Cannot read index"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -4080,7 +4164,10 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Error building trees"
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -4173,7 +4260,10 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
+name|_
+argument_list|(
 literal|"Please supply the message using either -m or -F option.\n"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|exit
@@ -4619,7 +4709,10 @@ return|;
 block|}
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"No existing author found with '%s'"
+argument_list|)
 argument_list|,
 name|name
 argument_list|)
@@ -4700,7 +4793,10 @@ expr_stmt|;
 else|else
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Invalid untracked files mode '%s'"
+argument_list|)
 argument_list|,
 name|untracked_files_arg
 argument_list|)
@@ -4790,7 +4886,10 @@ name|renew_authorship
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Using both --reset-author and --author does not make sense"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -4853,7 +4952,10 @@ name|initial_commit
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"You have nothing to amend."
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -4914,7 +5016,10 @@ literal|1
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Only one of -c/-C/-F/--fixup can be used."
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -4929,7 +5034,12 @@ literal|0
 condition|)
 name|die
 argument_list|(
+operator|(
+name|_
+argument_list|(
 literal|"Option -m cannot be combined with -c/-C/-F/--fixup."
+argument_list|)
+operator|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -4963,7 +5073,10 @@ name|renew_authorship
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--reset-author can be used only with -C, -c or --amend."
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -4995,7 +5108,10 @@ name|commit
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"could not lookup commit %s"
+argument_list|)
 argument_list|,
 name|use_message
 argument_list|)
@@ -5053,7 +5169,10 @@ literal|1
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Only one of --include/--only/--all/--interactive can be used."
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -5075,7 +5194,10 @@ operator|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"No paths with --include/--only does not make sense."
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -5090,7 +5212,10 @@ name|amend
 condition|)
 name|only_include_assumed
 operator|=
+name|_
+argument_list|(
 literal|"Clever... amending the last one with dirty index."
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
@@ -5106,7 +5231,10 @@ name|only
 condition|)
 name|only_include_assumed
 operator|=
+name|_
+argument_list|(
 literal|"Explicit paths specified without -i nor -o; assuming --only paths..."
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
@@ -5177,7 +5305,10 @@ expr_stmt|;
 else|else
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Invalid cleanup mode %s"
+argument_list|)
 argument_list|,
 name|cleanup_arg
 argument_list|)
@@ -5197,7 +5328,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Paths with -a does not make sense."
+argument_list|)
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -5211,7 +5345,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Paths with --interactive does not make sense."
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -5736,7 +5873,10 @@ else|else
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Invalid untracked files mode '%s'"
+argument_list|)
 argument_list|,
 name|v
 argument_list|)
@@ -6328,7 +6468,10 @@ name|commit
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"couldn't look up newly created commit"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -6343,7 +6486,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"could not parse newly created commit"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|strbuf_addstr
@@ -7235,7 +7381,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"could not parse HEAD commit"
+argument_list|)
 argument_list|)
 expr_stmt|;
 for|for
@@ -7329,7 +7478,10 @@ name|NULL
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"could not open '%s' for reading"
+argument_list|)
 argument_list|,
 name|git_path
 argument_list|(
@@ -7374,7 +7526,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Corrupt MERGE_HEAD file (%s)"
+argument_list|)
 argument_list|,
 name|m
 operator|.
@@ -7442,7 +7597,10 @@ literal|0
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"could not read MERGE_MODE"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -7536,7 +7694,10 @@ argument_list|()
 expr_stmt|;
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"could not read commit message: %s"
+argument_list|)
 argument_list|,
 name|strerror
 argument_list|(
@@ -7618,7 +7779,10 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
+name|_
+argument_list|(
 literal|"Aborting commit due to empty commit message.\n"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|exit
@@ -7654,7 +7818,10 @@ argument_list|()
 expr_stmt|;
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"failed to write commit object"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -7758,7 +7925,10 @@ argument_list|()
 expr_stmt|;
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"cannot lock HEAD ref"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -7783,7 +7953,10 @@ argument_list|()
 expr_stmt|;
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"cannot update HEAD ref"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -7826,9 +7999,12 @@ argument_list|()
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Repository has been updated, but unable to write\n"
 literal|"new_index file. Check that disk is not full or quota is\n"
 literal|"not exceeded, and then \"git reset HEAD\" to recover."
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|rerere
