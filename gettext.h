@@ -50,14 +50,15 @@ directive|ifdef
 name|GETTEXT_POISON
 end_ifdef
 
-begin_define
-DECL|macro|use_gettext_poison
-define|#
-directive|define
+begin_function_decl
+specifier|extern
+name|int
 name|use_gettext_poison
-parameter_list|()
-value|1
-end_define
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
 
 begin_else
 else|#
