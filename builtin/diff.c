@@ -385,7 +385,10 @@ argument_list|)
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"failed to stat '%s'"
+argument_list|)
 argument_list|,
 name|path
 argument_list|)
@@ -411,7 +414,10 @@ operator|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"'%s': not a regular file or symlink"
+argument_list|)
 argument_list|,
 name|path
 argument_list|)
@@ -1343,7 +1349,10 @@ else|else
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"invalid option: %s"
+argument_list|)
 argument_list|,
 name|argv
 index|[
@@ -1603,7 +1612,10 @@ name|nongit
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Not a git repository"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|argc
@@ -1652,7 +1664,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"diff_setup_done failed"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1905,7 +1920,10 @@ name|obj
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"invalid object '%s' given."
+argument_list|)
 argument_list|,
 name|name
 argument_list|)
@@ -1954,7 +1972,10 @@ name|ents
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"more than %d trees given: '%s'"
+argument_list|)
 argument_list|,
 operator|(
 name|int
@@ -2013,7 +2034,10 @@ name|blobs
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"more than two blobs given: '%s'"
+argument_list|)
 argument_list|,
 name|name
 argument_list|)
@@ -2059,7 +2083,10 @@ continue|continue;
 block|}
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"unhandled object '%s' given."
+argument_list|)
 argument_list|,
 name|name
 argument_list|)
