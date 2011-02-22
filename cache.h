@@ -39,6 +39,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"gettext.h"
+end_include
+
+begin_include
+include|#
+directive|include
 include|SHA1_HEADER
 end_include
 
