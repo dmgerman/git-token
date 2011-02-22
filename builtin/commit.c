@@ -3779,12 +3779,15 @@ name|s
 argument_list|,
 name|GIT_COLOR_NORMAL
 argument_list|,
+name|_
+argument_list|(
 literal|"\n"
 literal|"It looks like you may be committing a MERGE.\n"
 literal|"If this is not correct, please remove the file\n"
 literal|"	%s\n"
 literal|"and try again.\n"
 literal|""
+argument_list|)
 argument_list|,
 name|git_path
 argument_list|(
@@ -3893,8 +3896,11 @@ name|s
 argument_list|,
 name|GIT_COLOR_NORMAL
 argument_list|,
+name|_
+argument_list|(
 literal|"%s"
 literal|"Author:    %s"
+argument_list|)
 argument_list|,
 name|ident_shown
 operator|++
@@ -3920,8 +3926,11 @@ name|s
 argument_list|,
 name|GIT_COLOR_NORMAL
 argument_list|,
+name|_
+argument_list|(
 literal|"%s"
 literal|"Committer: %s"
+argument_list|)
 argument_list|,
 name|ident_shown
 operator|++
