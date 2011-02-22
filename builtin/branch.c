@@ -1058,7 +1058,10 @@ name|STRBUF_INIT
 decl_stmt|;
 name|printf
 argument_list|(
+name|_
+argument_list|(
 literal|"Deleted %sbranch %s (was %s).\n"
+argument_list|)
 argument_list|,
 name|remote
 argument_list|,
