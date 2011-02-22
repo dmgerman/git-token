@@ -6750,13 +6750,19 @@ argument_list|,
 literal|"HEAD"
 argument_list|)
 condition|?
+name|_
+argument_list|(
 literal|"detached HEAD"
+argument_list|)
 else|:
 name|head
 argument_list|,
 name|initial_commit
 condition|?
+name|_
+argument_list|(
 literal|" (root-commit)"
+argument_list|)
 else|:
 literal|""
 argument_list|)
