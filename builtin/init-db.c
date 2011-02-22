@@ -1788,19 +1788,32 @@ argument_list|(
 name|git_dir
 argument_list|)
 decl_stmt|;
+comment|/* 		 * TRANSLATORS: The first '%s' is either "Reinitialized 		 * existing" or "Initialized empty", the second " shared" or 		 * "", and the last '%s%s' is the verbatim directory name. 		 */
 name|printf
 argument_list|(
+name|_
+argument_list|(
 literal|"%s%s Git repository in %s%s\n"
+argument_list|)
 argument_list|,
 name|reinit
 condition|?
+name|_
+argument_list|(
 literal|"Reinitialized existing"
+argument_list|)
 else|:
+name|_
+argument_list|(
 literal|"Initialized empty"
+argument_list|)
 argument_list|,
 name|shared_repository
 condition|?
+name|_
+argument_list|(
 literal|" shared"
+argument_list|)
 else|:
 literal|""
 argument_list|,
