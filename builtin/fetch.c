@@ -1072,7 +1072,10 @@ name|ref_map
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Couldn't find remote ref HEAD"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|ref_map
@@ -1364,7 +1367,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"object %s not found"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -1989,7 +1995,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"cannot open %s: %s\n"
+argument_list|)
 argument_list|,
 name|filename
 argument_list|,
@@ -2562,9 +2571,12 @@ name|STORE_REF_ERROR_DF_CONFLICT
 condition|)
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"some local refs could not be updated; try running\n"
 literal|" 'git remote prune %s' to remove any old, conflicting "
 literal|"branches"
+argument_list|)
 argument_list|,
 name|remote_name
 argument_list|)
@@ -2701,7 +2713,10 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"could not run rev-list"
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -2775,7 +2790,10 @@ name|EINVAL
 condition|)
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"failed write to rev-list: %s"
+argument_list|)
 argument_list|,
 name|strerror
 argument_list|(
@@ -2803,7 +2821,10 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"failed to close rev-list's stdin: %s"
+argument_list|)
 argument_list|,
 name|strerror
 argument_list|(
@@ -3580,8 +3601,11 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Refusing to fetch into current branch %s "
 literal|"of non-bare repository"
+argument_list|)
 argument_list|,
 name|current_branch
 operator|->
@@ -3628,7 +3652,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"cannot open %s: %s\n"
+argument_list|)
 argument_list|,
 name|filename
 argument_list|,
@@ -3764,7 +3791,10 @@ name|fetch
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Don't know how to fetch from %s"
+argument_list|)
 argument_list|,
 name|transport
 operator|->
@@ -4042,7 +4072,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Option \"%s\" value \"%s\" is not valid for %s"
+argument_list|)
 argument_list|,
 name|name
 argument_list|,
@@ -4061,7 +4094,10 @@ literal|0
 condition|)
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"Option \"%s\" is ignored for %s\n"
+argument_list|)
 argument_list|,
 name|name
 argument_list|,
@@ -4642,7 +4678,10 @@ literal|0
 condition|)
 name|printf
 argument_list|(
+name|_
+argument_list|(
 literal|"Fetching %s\n"
+argument_list|)
 argument_list|,
 name|name
 argument_list|)
@@ -4659,7 +4698,10 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not fetch %s"
+argument_list|)
 argument_list|,
 name|name
 argument_list|)
@@ -4724,8 +4766,11 @@ name|remote
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"No remote repository specified.  Please, specify either a URL or a\n"
 literal|"remote name from which new revisions should be fetched."
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|transport
@@ -4850,7 +4895,10 @@ name|argc
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"You need to specify a tag name."
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|ref
@@ -5083,7 +5131,10 @@ literal|1
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"fetch --all does not take a repository argument"
+argument_list|)
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -5095,7 +5146,10 @@ literal|1
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"fetch --all does not make sense with refspecs"
+argument_list|)
 argument_list|)
 expr_stmt|;
 operator|(
@@ -5182,7 +5236,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"No such remote or remote group: %s"
+argument_list|)
 argument_list|,
 name|argv
 index|[
@@ -5234,7 +5291,10 @@ literal|1
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Fetching a group and specifying refspecs does not make sense"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|result
