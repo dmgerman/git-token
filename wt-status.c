@@ -4487,7 +4487,10 @@ argument_list|,
 name|s
 argument_list|)
 argument_list|,
+name|_
+argument_list|(
 literal|"Initial commit"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|status_printf_ln
