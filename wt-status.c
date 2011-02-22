@@ -5531,7 +5531,10 @@ condition|)
 block|{
 name|branch_name
 operator|=
+name|_
+argument_list|(
 literal|"HEAD (no branch)"
+argument_list|)
 expr_stmt|;
 name|branch_color_local
 operator|=
@@ -5568,7 +5571,10 @@ name|fp
 argument_list|,
 name|header_color
 argument_list|,
+name|_
+argument_list|(
 literal|"Initial commit on "
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -5683,7 +5689,10 @@ name|fp
 argument_list|,
 name|header_color
 argument_list|,
+name|_
+argument_list|(
 literal|"behind "
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|color_fprintf
@@ -5715,7 +5724,10 @@ name|fp
 argument_list|,
 name|header_color
 argument_list|,
+name|_
+argument_list|(
 literal|"ahead "
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|color_fprintf
@@ -5742,7 +5754,10 @@ name|fp
 argument_list|,
 name|header_color
 argument_list|,
+name|_
+argument_list|(
 literal|"ahead "
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|color_fprintf
@@ -5766,7 +5781,10 @@ name|fp
 argument_list|,
 name|header_color
 argument_list|,
+name|_
+argument_list|(
 literal|", behind "
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|color_fprintf
