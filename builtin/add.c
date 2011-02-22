@@ -200,7 +200,10 @@ block|{
 default|default:
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"unexpected diff status %c"
+argument_list|)
 argument_list|,
 name|p
 operator|->
@@ -258,7 +261,10 @@ operator|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"updating files failed"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|data
@@ -899,7 +905,10 @@ expr_stmt|;
 else|else
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Path '%s' is in submodule '%.*s'"
+argument_list|)
 argument_list|,
 name|pathspec
 index|[
@@ -1011,7 +1020,10 @@ index|]
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"pathspec '%s' did not match any files"
+argument_list|)
 argument_list|,
 name|pathspec
 index|[
@@ -1118,7 +1130,10 @@ literal|0
 decl_stmt|;
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"'%s' is beyond a symbolic link"
+argument_list|)
 argument_list|,
 operator|*
 name|p
@@ -1468,7 +1483,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not read the index"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|init_revisions
@@ -1530,7 +1548,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not open '%s' for writing."
+argument_list|)
 argument_list|,
 name|file
 argument_list|)
@@ -1568,7 +1589,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not write patch"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|launch_editor
@@ -1592,7 +1616,10 @@ argument_list|)
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not stat '%s'"
+argument_list|)
 argument_list|,
 name|file
 argument_list|)
@@ -1606,7 +1633,10 @@ name|st_size
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Empty patch. Aborted."
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|memset
@@ -1644,7 +1674,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not apply '%s'"
+argument_list|)
 argument_list|,
 name|file
 argument_list|)
@@ -2062,7 +2095,10 @@ name|ignore_add_errors
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"adding files failed"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|exit_status
@@ -2211,7 +2247,10 @@ name|take_worktree_changes
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"-A and -u are mutually incompatible"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -2223,7 +2262,10 @@ name|ignore_missing
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Option --ignore-missing can only be used together with --dry-run"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -2347,14 +2389,20 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
+name|_
+argument_list|(
 literal|"Nothing specified, nothing added.\n"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
+name|_
+argument_list|(
 literal|"Maybe you wanted to say 'git add .'?\n"
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -2381,7 +2429,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"index file corrupt"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|treat_gitlinks
@@ -2651,7 +2702,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Unable to write new index file"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
