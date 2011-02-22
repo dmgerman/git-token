@@ -1768,7 +1768,10 @@ name|s
 argument_list|,
 name|c
 argument_list|,
+name|_
+argument_list|(
 literal|"renamed:    %s -> %s"
+argument_list|)
 argument_list|,
 name|one
 argument_list|,
