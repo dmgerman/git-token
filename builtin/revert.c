@@ -1756,22 +1756,59 @@ if|if
 condition|(
 name|advice_commit_before_merge
 condition|)
+block|{
+if|if
+condition|(
+name|action
+operator|==
+name|REVERT
+condition|)
 name|die
 argument_list|(
-literal|"Your local changes would be overwritten by %s.\n"
+name|_
+argument_list|(
+literal|"Your local changes would be overwritten by revert.\n"
 literal|"Please, commit your changes or stash them to proceed."
-argument_list|,
-name|me
+argument_list|)
 argument_list|)
 expr_stmt|;
 else|else
 name|die
 argument_list|(
-literal|"Your local changes would be overwritten by %s.\n"
-argument_list|,
-name|me
+name|_
+argument_list|(
+literal|"Your local changes would be overwritten by cherry-pick.\n"
+literal|"Please, commit your changes or stash them to proceed."
+argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+if|if
+condition|(
+name|action
+operator|==
+name|REVERT
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"Your local changes would be overwritten by revert.\n"
+argument_list|)
+argument_list|)
+expr_stmt|;
+else|else
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"Your local changes would be overwritten by cherry-pick.\n"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 end_function
