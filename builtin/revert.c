@@ -557,7 +557,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"program error"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -951,7 +954,10 @@ name|p
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not read commit message of %s"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -1165,7 +1171,10 @@ name|p
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not read commit message of %s"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -1267,7 +1276,10 @@ name|email
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not extract author email from %s"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -1341,7 +1353,10 @@ name|timestamp
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not extract author time from %s"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -1428,7 +1443,10 @@ expr_stmt|;
 block|}
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"No author information found in %s"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -1607,7 +1625,10 @@ literal|0
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not write to %s."
+argument_list|)
 argument_list|,
 name|filename
 argument_list|)
@@ -1629,7 +1650,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Error wrapping up %s"
+argument_list|)
 argument_list|,
 name|filename
 argument_list|)
@@ -2326,7 +2350,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Your index file is unmerged."
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2343,7 +2370,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"You do not have a valid HEAD"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -2380,7 +2410,10 @@ name|REVERT
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Cannot revert a root commit"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|parent
@@ -2414,7 +2447,10 @@ name|mainline
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Commit %s is a merge but no -m option was given."
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -2464,7 +2500,10 @@ name|p
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Commit %s does not have parent %d"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -2494,7 +2533,10 @@ name|mainline
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Mainline was specified but commit %s is not a merge."
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -2588,7 +2630,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Cannot get commit message for %s"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -3060,7 +3105,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"revision walk setup failed"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -3072,7 +3120,10 @@ name|commits
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"empty commit set passed"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3120,7 +3171,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"git %s: failed to read the index"
+argument_list|)
 argument_list|,
 name|me
 argument_list|)
@@ -3166,7 +3220,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"git %s: failed to refresh the index"
+argument_list|)
 argument_list|,
 name|me
 argument_list|)
@@ -3245,7 +3302,10 @@ name|signoff
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"cherry-pick --ff cannot be used with --signoff"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -3254,7 +3314,10 @@ name|no_commit
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"cherry-pick --ff cannot be used with --no-commit"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -3263,7 +3326,10 @@ name|no_replay
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"cherry-pick --ff cannot be used with -x"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -3272,7 +3338,10 @@ name|edit
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"cherry-pick --ff cannot be used with --edit"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
