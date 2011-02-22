@@ -3302,7 +3302,10 @@ argument_list|)
 expr_stmt|;
 name|describe_detached_head
 argument_list|(
+name|_
+argument_list|(
 literal|"HEAD is now at"
+argument_list|)
 argument_list|,
 name|new
 operator|->
