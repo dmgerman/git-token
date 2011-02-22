@@ -6389,7 +6389,10 @@ name|DIFF_FORMAT_NAME
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--name-only does not make sense"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -6404,7 +6407,10 @@ name|DIFF_FORMAT_NAME_STATUS
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--name-status does not make sense"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -6419,7 +6425,10 @@ name|DIFF_FORMAT_CHECKDIFF
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--check does not make sense"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
