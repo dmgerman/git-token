@@ -680,7 +680,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"path '%s' does not have all three versions"
+argument_list|)
 argument_list|,
 name|ce
 operator|->
@@ -914,7 +917,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"path '%s' does not have all 3 versions"
+argument_list|)
 argument_list|,
 name|path
 argument_list|)
@@ -1033,7 +1039,10 @@ expr_stmt|;
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"path '%s': cannot merge"
+argument_list|)
 argument_list|,
 name|path
 argument_list|)
@@ -1059,7 +1068,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Unable to add merge result for '%s'"
+argument_list|)
 argument_list|,
 name|path
 argument_list|)
@@ -1096,7 +1108,10 @@ name|ce
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"make_cache_entry failed for path '%s'"
+argument_list|)
 argument_list|,
 name|path
 argument_list|)
@@ -1227,7 +1242,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"corrupt index file"
+argument_list|)
 argument_list|)
 return|;
 if|if
@@ -1398,7 +1416,10 @@ condition|)
 block|{
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"path '%s' is unmerged"
+argument_list|)
 argument_list|,
 name|ce
 operator|->
@@ -1450,7 +1471,10 @@ literal|1
 expr_stmt|;
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"path '%s' is unmerged"
+argument_list|)
 argument_list|,
 name|ce
 operator|->
@@ -1636,7 +1660,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"unable to write new index file"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|resolve_ref
@@ -1739,7 +1766,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"diff_setup_done failed"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|add_pending_object
@@ -2179,7 +2209,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"corrupt index file"
+argument_list|)
 argument_list|)
 return|;
 name|resolve_undo_clear
@@ -2288,7 +2321,10 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"you need to resolve your current index first"
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -2638,7 +2674,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"unable to write new index file"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -2882,7 +2921,10 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
+name|_
+argument_list|(
 literal|"Can not do reflog for '%s'\n"
+argument_list|)
 argument_list|,
 name|opts
 operator|->
@@ -3043,7 +3085,10 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
+name|_
+argument_list|(
 literal|"Already on '%s'\n"
+argument_list|)
 argument_list|,
 name|new
 operator|->
@@ -3081,7 +3126,10 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
+name|_
+argument_list|(
 literal|"Switched to branch '%s'\n"
+argument_list|)
 argument_list|,
 name|new
 operator|->
@@ -3428,7 +3476,10 @@ name|commit
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"You are on a branch yet to be born"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|parse_commit
@@ -4184,7 +4235,10 @@ name|new_branch_force
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"-B cannot be used with -b"
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* copy -B over to -b, so that we can just check the latter */
@@ -4232,7 +4286,10 @@ operator|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--patch is incompatible with all other options"
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* --track without -b should DWIM */
@@ -4275,7 +4332,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--track needs a branch name"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -4328,7 +4388,10 @@ index|]
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Missing branch name; try -b"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|opts
@@ -4355,7 +4418,10 @@ name|new_branch
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--orphan and -b|-B are mutually exclusive"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -4368,7 +4434,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--orphan cannot be used with -t"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|opts
@@ -4414,7 +4483,10 @@ name|merge
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"git checkout: -f and -m are incompatible"
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* 	 * case 1: git checkout<ref> -- [<paths>] 	 * 	 *<ref> must be a valid tree, everything after the '--' must be 	 *   a path. 	 * 	 * case 2: git checkout -- [<paths>] 	 * 	 *   everything after the '--' must be paths. 	 * 	 * case 3: git checkout<something> [<paths>] 	 * 	 *   With no paths, if<something> is a commit, that is to 	 *   switch to the branch or detach HEAD at it.  As a special case, 	 *   if<something> is A...B (missing A or B means HEAD but you can 	 *   omit at most one side), and if there is a unique merge base 	 *   between A and B, A...B names that merge base. 	 * 	 *   With no paths, if<something> is _not_ a commit, no -t nor -b 	 *   was given, and there is a remote-tracking branch whose name is 	 *<something> in one and only one remote, then this is a short-hand 	 *   to fork local<something> from that remote-tracking branch. 	 * 	 *   Otherwise<something> shall not be ambiguous. 	 *   - If it's *only* a reference, treat it like case (1). 	 *   - If it's only a path, treat it like case (2). 	 *   - else: fail. 	 * 	 */
@@ -4505,7 +4577,10 @@ condition|)
 comment|/* case (1) */
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"invalid reference: %s"
+argument_list|)
 argument_list|,
 name|arg
 argument_list|)
@@ -4684,7 +4759,10 @@ condition|)
 comment|/* case (1): want a tree */
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"reference is not a tree: %s"
+argument_list|)
 argument_list|,
 name|arg
 argument_list|)
@@ -4760,7 +4838,10 @@ name|pathspec
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"invalid path specification"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -4797,7 +4878,10 @@ condition|)
 block|{
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"git checkout: updating paths is incompatible with switching branches.\nDid you intend to checkout '%s' which can not be resolved as commit?"
+argument_list|)
 argument_list|,
 name|argv
 index|[
@@ -4810,7 +4894,10 @@ else|else
 block|{
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"git checkout: updating paths is incompatible with switching branches."
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -4839,7 +4926,10 @@ name|merge
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"git checkout: --ours/--theirs, --force and --merge are incompatible when\nchecking out of the index."
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -4898,7 +4988,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"git checkout: we do not like '%s' as a branch name."
+argument_list|)
 argument_list|,
 name|opts
 operator|.
@@ -4933,7 +5026,10 @@ name|new_branch_force
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"git checkout: branch %s already exists"
+argument_list|)
 argument_list|,
 name|opts
 operator|.
@@ -4962,7 +5058,10 @@ condition|)
 block|{
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Cannot switch branch to a non-commit."
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -4974,7 +5073,10 @@ name|writeout_stage
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--ours/--theirs is incompatible with switching branches."
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
