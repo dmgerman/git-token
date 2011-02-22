@@ -1097,21 +1097,31 @@ condition|)
 return|return
 literal|0
 return|;
+if|if
+condition|(
+name|quiet
+condition|)
 name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Auto packing the repository for optimum performance.%s\n"
+name|_
+argument_list|(
+literal|"Auto packing the repository for optimum performance.\n"
+argument_list|)
+argument_list|)
+expr_stmt|;
+else|else
+name|fprintf
+argument_list|(
+name|stderr
 argument_list|,
-name|quiet
-condition|?
-literal|""
-else|:
-operator|(
-literal|" You may also\n"
+name|_
+argument_list|(
+literal|"Auto packing the repository for optimum performance. You may also\n"
 literal|"run \"git gc\" manually. See "
 literal|"\"git help gc\" for more information."
-operator|)
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
