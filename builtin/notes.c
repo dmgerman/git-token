@@ -2162,11 +2162,15 @@ name|c
 operator|->
 name|combine
 condition|)
+comment|/* TRANSLATORS: The first %s is the name of the 			   environment variable, the second %s is its value */
 name|error
 argument_list|(
-literal|"Bad "
+name|_
+argument_list|(
+literal|"Bad %s value: '%s'"
+argument_list|)
+argument_list|,
 name|GIT_NOTES_REWRITE_MODE_ENVIRONMENT
-literal|" value: '%s'"
 argument_list|,
 name|rewrite_mode_env
 argument_list|)
