@@ -2647,7 +2647,10 @@ block|}
 else|else
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"pathspec '%s' did not match any files"
+argument_list|)
 argument_list|,
 name|pathspec
 index|[
