@@ -319,7 +319,10 @@ operator|)
 condition|)
 name|printf
 argument_list|(
+name|_
+argument_list|(
 literal|"remove '%s'\n"
+argument_list|)
 argument_list|,
 name|path
 argument_list|)
