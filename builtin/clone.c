@@ -2604,7 +2604,10 @@ name|option_bare
 condition|)
 name|printf
 argument_list|(
+name|_
+argument_list|(
 literal|"Cloning into bare repository %s...\n"
+argument_list|)
 argument_list|,
 name|dir
 argument_list|)
@@ -2612,7 +2615,10 @@ expr_stmt|;
 else|else
 name|printf
 argument_list|(
+name|_
+argument_list|(
 literal|"Cloning into %s...\n"
+argument_list|)
 argument_list|,
 name|dir
 argument_list|)
