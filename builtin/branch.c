@@ -761,9 +761,13 @@ name|fmt
 operator|=
 literal|"refs/remotes/%s"
 expr_stmt|;
+comment|/* TRANSLATORS: This is "remote " in "remote branch '%s' not found" */
 name|remote
 operator|=
+name|_
+argument_list|(
 literal|"remote "
+argument_list|)
 expr_stmt|;
 name|force
 operator|=
