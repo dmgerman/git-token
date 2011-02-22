@@ -800,7 +800,10 @@ name|NULL
 argument_list|,
 name|NULL
 argument_list|,
+name|_
+argument_list|(
 literal|"Unstaged changes after reset:"
+argument_list|)
 argument_list|)
 condition|?
 literal|1
