@@ -441,18 +441,31 @@ operator|&&
 operator|!
 name|force
 condition|)
+block|{
+if|if
+condition|(
+name|config_set
+condition|)
 name|die
 argument_list|(
-literal|"clean.requireForce %s to true and neither -n nor -f given; "
+name|_
+argument_list|(
+literal|"clean.requireForce set to true and neither -n nor -f given; "
 literal|"refusing to clean"
-argument_list|,
-name|config_set
-condition|?
-literal|"set"
-else|:
-literal|"defaults"
+argument_list|)
 argument_list|)
 expr_stmt|;
+else|else
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"clean.requireForce defaults to true and neither -n nor -f given; "
+literal|"refusing to clean"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|force
