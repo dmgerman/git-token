@@ -2597,19 +2597,27 @@ literal|0
 operator|<=
 name|option_verbosity
 condition|)
+block|{
+if|if
+condition|(
+name|option_bare
+condition|)
 name|printf
 argument_list|(
-literal|"Cloning into %s%s...\n"
-argument_list|,
-name|option_bare
-condition|?
-literal|"bare repository "
-else|:
-literal|""
+literal|"Cloning into bare repository %s...\n"
 argument_list|,
 name|dir
 argument_list|)
 expr_stmt|;
+else|else
+name|printf
+argument_list|(
+literal|"Cloning into %s...\n"
+argument_list|,
+name|dir
+argument_list|)
+expr_stmt|;
+block|}
 name|init_db
 argument_list|(
 name|option_template
