@@ -3562,7 +3562,10 @@ name|commit
 condition|)
 name|describe_detached_head
 argument_list|(
+name|_
+argument_list|(
 literal|"Previous HEAD position was"
+argument_list|)
 argument_list|,
 name|old
 operator|.
