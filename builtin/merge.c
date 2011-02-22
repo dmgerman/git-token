@@ -5161,7 +5161,10 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
+name|_
+argument_list|(
 literal|"Wonderful.\n"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|parent
