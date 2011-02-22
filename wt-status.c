@@ -802,7 +802,10 @@ name|s
 argument_list|,
 name|c
 argument_list|,
+name|_
+argument_list|(
 literal|"Unmerged paths:"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -832,7 +835,10 @@ name|s
 argument_list|,
 name|c
 argument_list|,
+name|_
+argument_list|(
 literal|"  (use \"git reset %s<file>...\" to unstage)"
+argument_list|)
 argument_list|,
 name|s
 operator|->
@@ -846,7 +852,10 @@ name|s
 argument_list|,
 name|c
 argument_list|,
+name|_
+argument_list|(
 literal|"  (use \"git rm --cached<file>...\" to unstage)"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|status_printf_ln
@@ -855,7 +864,10 @@ name|s
 argument_list|,
 name|c
 argument_list|,
+name|_
+argument_list|(
 literal|"  (use \"git add/rm<file>...\" as appropriate to mark resolution)"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|status_printf_ln
@@ -931,7 +943,10 @@ name|s
 argument_list|,
 name|c
 argument_list|,
+name|_
+argument_list|(
 literal|"  (use \"git reset %s<file>...\" to unstage)"
+argument_list|)
 argument_list|,
 name|s
 operator|->
@@ -945,7 +960,10 @@ name|s
 argument_list|,
 name|c
 argument_list|,
+name|_
+argument_list|(
 literal|"  (use \"git rm --cached<file>...\" to unstage)"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|status_printf_ln
@@ -996,7 +1014,10 @@ name|s
 argument_list|,
 name|c
 argument_list|,
+name|_
+argument_list|(
 literal|"Changes not staged for commit:"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -1016,7 +1037,10 @@ name|s
 argument_list|,
 name|c
 argument_list|,
+name|_
+argument_list|(
 literal|"  (use \"git add<file>...\" to update what will be committed)"
+argument_list|)
 argument_list|)
 expr_stmt|;
 else|else
@@ -1026,7 +1050,10 @@ name|s
 argument_list|,
 name|c
 argument_list|,
+name|_
+argument_list|(
 literal|"  (use \"git add/rm<file>...\" to update what will be committed)"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|status_printf_ln
@@ -1035,7 +1062,10 @@ name|s
 argument_list|,
 name|c
 argument_list|,
+name|_
+argument_list|(
 literal|"  (use \"git checkout --<file>...\" to discard changes in working directory)"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -1048,7 +1078,10 @@ name|s
 argument_list|,
 name|c
 argument_list|,
+name|_
+argument_list|(
 literal|"  (commit or discard the untracked or modified content in submodules)"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|status_printf_ln
@@ -1103,7 +1136,10 @@ name|s
 argument_list|,
 name|c
 argument_list|,
+name|_
+argument_list|(
 literal|"%s files:"
+argument_list|)
 argument_list|,
 name|what
 argument_list|)
@@ -1120,7 +1156,10 @@ name|s
 argument_list|,
 name|c
 argument_list|,
+name|_
+argument_list|(
 literal|"  (use \"git %s<file>...\" to include in what will be committed)"
+argument_list|)
 argument_list|,
 name|how
 argument_list|)
@@ -1226,7 +1265,10 @@ decl_stmt|,
 modifier|*
 name|how
 init|=
+name|_
+argument_list|(
 literal|"bug"
+argument_list|)
 decl_stmt|;
 name|one
 operator|=
@@ -1273,7 +1315,10 @@ literal|1
 case|:
 name|how
 operator|=
+name|_
+argument_list|(
 literal|"both deleted:"
+argument_list|)
 expr_stmt|;
 break|break;
 case|case
@@ -1281,7 +1326,10 @@ literal|2
 case|:
 name|how
 operator|=
+name|_
+argument_list|(
 literal|"added by us:"
+argument_list|)
 expr_stmt|;
 break|break;
 case|case
@@ -1289,7 +1337,10 @@ literal|3
 case|:
 name|how
 operator|=
+name|_
+argument_list|(
 literal|"deleted by them:"
+argument_list|)
 expr_stmt|;
 break|break;
 case|case
@@ -1297,7 +1348,10 @@ literal|4
 case|:
 name|how
 operator|=
+name|_
+argument_list|(
 literal|"added by them:"
+argument_list|)
 expr_stmt|;
 break|break;
 case|case
@@ -1305,7 +1359,10 @@ literal|5
 case|:
 name|how
 operator|=
+name|_
+argument_list|(
 literal|"deleted by us:"
+argument_list|)
 expr_stmt|;
 break|break;
 case|case
@@ -1313,7 +1370,10 @@ literal|6
 case|:
 name|how
 operator|=
+name|_
+argument_list|(
 literal|"both added:"
+argument_list|)
 expr_stmt|;
 break|break;
 case|case
@@ -1321,7 +1381,10 @@ literal|7
 case|:
 name|how
 operator|=
+name|_
+argument_list|(
 literal|"both modified:"
+argument_list|)
 expr_stmt|;
 break|break;
 block|}
@@ -1493,7 +1556,10 @@ argument_list|(
 operator|&
 name|extra
 argument_list|,
+name|_
+argument_list|(
 literal|"new commits, "
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -1509,7 +1575,10 @@ argument_list|(
 operator|&
 name|extra
 argument_list|,
+name|_
+argument_list|(
 literal|"modified content, "
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -1525,7 +1594,10 @@ argument_list|(
 operator|&
 name|extra
 argument_list|,
+name|_
+argument_list|(
 literal|"untracked content, "
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|strbuf_setlen
@@ -1619,7 +1691,10 @@ name|s
 argument_list|,
 name|c
 argument_list|,
+name|_
+argument_list|(
 literal|"new file:   %s"
+argument_list|)
 argument_list|,
 name|one
 argument_list|)
@@ -1634,7 +1709,10 @@ name|s
 argument_list|,
 name|c
 argument_list|,
+name|_
+argument_list|(
 literal|"copied:     %s -> %s"
+argument_list|)
 argument_list|,
 name|one
 argument_list|,
@@ -1651,7 +1729,10 @@ name|s
 argument_list|,
 name|c
 argument_list|,
+name|_
+argument_list|(
 literal|"deleted:    %s"
+argument_list|)
 argument_list|,
 name|one
 argument_list|)
@@ -1666,7 +1747,10 @@ name|s
 argument_list|,
 name|c
 argument_list|,
+name|_
+argument_list|(
 literal|"modified:   %s"
+argument_list|)
 argument_list|,
 name|one
 argument_list|)
@@ -1698,7 +1782,10 @@ name|s
 argument_list|,
 name|c
 argument_list|,
+name|_
+argument_list|(
 literal|"typechange: %s"
+argument_list|)
 argument_list|,
 name|one
 argument_list|)
@@ -1713,7 +1800,10 @@ name|s
 argument_list|,
 name|c
 argument_list|,
+name|_
+argument_list|(
 literal|"unknown:    %s"
+argument_list|)
 argument_list|,
 name|one
 argument_list|)
@@ -1728,7 +1818,10 @@ name|s
 argument_list|,
 name|c
 argument_list|,
+name|_
+argument_list|(
 literal|"unmerged:   %s"
+argument_list|)
 argument_list|,
 name|one
 argument_list|)
@@ -1737,7 +1830,10 @@ break|break;
 default|default:
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"bug: unhandled diff status %c"
+argument_list|)
 argument_list|,
 name|status
 argument_list|)
@@ -4246,7 +4342,10 @@ name|char
 modifier|*
 name|on_what
 init|=
+name|_
+argument_list|(
 literal|"On branch "
+argument_list|)
 decl_stmt|;
 specifier|const
 name|char
@@ -4298,7 +4397,10 @@ argument_list|)
 expr_stmt|;
 name|on_what
 operator|=
+name|_
+argument_list|(
 literal|"Not currently on any branch."
+argument_list|)
 expr_stmt|;
 block|}
 name|status_printf
@@ -4471,7 +4573,10 @@ name|s
 operator|->
 name|untracked
 argument_list|,
+name|_
+argument_list|(
 literal|"Untracked"
+argument_list|)
 argument_list|,
 literal|"add"
 argument_list|)
@@ -4491,7 +4596,10 @@ name|s
 operator|->
 name|ignored
 argument_list|,
+name|_
+argument_list|(
 literal|"Ignored"
+argument_list|)
 argument_list|,
 literal|"add -f"
 argument_list|)
@@ -4510,11 +4618,17 @@ name|s
 argument_list|,
 name|GIT_COLOR_NORMAL
 argument_list|,
+name|_
+argument_list|(
 literal|"Untracked files not listed%s"
+argument_list|)
 argument_list|,
 name|advice_status_hints
 condition|?
+name|_
+argument_list|(
 literal|" (use -u option to show untracked files)"
+argument_list|)
 else|:
 literal|""
 argument_list|)
@@ -4550,7 +4664,10 @@ name|s
 argument_list|,
 name|GIT_COLOR_NORMAL
 argument_list|,
+name|_
+argument_list|(
 literal|"No changes"
+argument_list|)
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -4571,11 +4688,17 @@ name|workdir_dirty
 condition|)
 name|printf
 argument_list|(
+name|_
+argument_list|(
 literal|"no changes added to commit%s\n"
+argument_list|)
 argument_list|,
 name|advice_status_hints
 condition|?
+name|_
+argument_list|(
 literal|" (use \"git add\" and/or \"git commit -a\")"
+argument_list|)
 else|:
 literal|""
 argument_list|)
@@ -4591,11 +4714,17 @@ name|nr
 condition|)
 name|printf
 argument_list|(
+name|_
+argument_list|(
 literal|"nothing added to commit but untracked files present%s\n"
+argument_list|)
 argument_list|,
 name|advice_status_hints
 condition|?
+name|_
+argument_list|(
 literal|" (use \"git add\" to track)"
+argument_list|)
 else|:
 literal|""
 argument_list|)
