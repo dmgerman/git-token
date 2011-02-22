@@ -2590,7 +2590,10 @@ name|name
 operator|=
 name|xstrdup
 argument_list|(
+name|_
+argument_list|(
 literal|"(no branch)"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|item
