@@ -1710,7 +1710,10 @@ name|char
 name|ignore_error
 index|[]
 init|=
+name|N_
+argument_list|(
 literal|"The following paths are ignored by one of your .gitignore files:\n"
+argument_list|)
 decl_stmt|;
 end_decl_stmt
 
@@ -2009,7 +2012,10 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
+name|_
+argument_list|(
 name|ignore_error
+argument_list|)
 argument_list|)
 expr_stmt|;
 for|for
@@ -2047,12 +2053,18 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
+name|_
+argument_list|(
 literal|"Use -f if you really want to add them.\n"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"no files added"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
