@@ -6997,6 +6997,17 @@ literal|"--left-only"
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+name|revs
+operator|->
+name|right_only
+condition|)
+name|die
+argument_list|(
+literal|"--left-only is incompatible with --right-only"
+argument_list|)
+expr_stmt|;
 name|revs
 operator|->
 name|left_only
@@ -7016,6 +7027,17 @@ literal|"--right-only"
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+name|revs
+operator|->
+name|left_only
+condition|)
+name|die
+argument_list|(
+literal|"--right-only is incompatible with --left-only"
+argument_list|)
+expr_stmt|;
 name|revs
 operator|->
 name|right_only
