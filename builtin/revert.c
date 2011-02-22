@@ -2086,9 +2086,13 @@ name|index_lock
 argument_list|)
 operator|)
 condition|)
+comment|/* TRANSLATORS: %s will be "revert" or "cherry-pick" */
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"%s: Unable to write new index file"
+argument_list|)
 argument_list|,
 name|me
 argument_list|)
@@ -2635,9 +2639,13 @@ argument_list|)
 operator|<
 literal|0
 condition|)
+comment|/* TRANSLATORS: The first %s will be "revert" or 		   "cherry-pick", the second %s a SHA1 */
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"%s: cannot parse parent commit %s"
+argument_list|)
 argument_list|,
 name|me
 argument_list|,
