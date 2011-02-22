@@ -4738,11 +4738,17 @@ name|is_initial
 condition|)
 name|printf
 argument_list|(
+name|_
+argument_list|(
 literal|"nothing to commit%s\n"
+argument_list|)
 argument_list|,
 name|advice_status_hints
 condition|?
+name|_
+argument_list|(
 literal|" (create/copy files and use \"git add\" to track)"
+argument_list|)
 else|:
 literal|""
 argument_list|)
@@ -4757,11 +4763,17 @@ name|show_untracked_files
 condition|)
 name|printf
 argument_list|(
+name|_
+argument_list|(
 literal|"nothing to commit%s\n"
+argument_list|)
 argument_list|,
 name|advice_status_hints
 condition|?
+name|_
+argument_list|(
 literal|" (use -u to show untracked files)"
+argument_list|)
 else|:
 literal|""
 argument_list|)
@@ -4769,11 +4781,17 @@ expr_stmt|;
 else|else
 name|printf
 argument_list|(
+name|_
+argument_list|(
 literal|"nothing to commit%s\n"
+argument_list|)
 argument_list|,
 name|advice_status_hints
 condition|?
+name|_
+argument_list|(
 literal|" (working directory clean)"
+argument_list|)
 else|:
 literal|""
 argument_list|)
