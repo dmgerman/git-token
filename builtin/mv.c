@@ -731,7 +731,10 @@ literal|0
 condition|)
 name|bad
 operator|=
+name|_
+argument_list|(
 literal|"bad source"
+argument_list|)
 expr_stmt|;
 elseif|else
 if|if
@@ -765,7 +768,10 @@ condition|)
 block|{
 name|bad
 operator|=
+name|_
+argument_list|(
 literal|"can not move directory into itself"
+argument_list|)
 expr_stmt|;
 block|}
 elseif|else
@@ -794,7 +800,10 @@ literal|0
 condition|)
 name|bad
 operator|=
+name|_
+argument_list|(
 literal|"cannot move directory over file"
+argument_list|)
 expr_stmt|;
 elseif|else
 if|if
@@ -923,7 +932,10 @@ literal|1
 condition|)
 name|bad
 operator|=
+name|_
+argument_list|(
 literal|"source directory is empty"
+argument_list|)
 expr_stmt|;
 else|else
 block|{
@@ -1110,7 +1122,10 @@ literal|0
 condition|)
 name|bad
 operator|=
+name|_
+argument_list|(
 literal|"not under version control"
+argument_list|)
 expr_stmt|;
 elseif|else
 if|if
@@ -1128,7 +1143,10 @@ condition|)
 block|{
 name|bad
 operator|=
+name|_
+argument_list|(
 literal|"destination exists"
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
@@ -1171,7 +1189,10 @@ block|}
 else|else
 name|bad
 operator|=
+name|_
+argument_list|(
 literal|"Cannot overwrite"
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -1188,7 +1209,10 @@ argument_list|)
 condition|)
 name|bad
 operator|=
+name|_
+argument_list|(
 literal|"multiple sources for the same target"
+argument_list|)
 expr_stmt|;
 else|else
 name|string_list_insert
