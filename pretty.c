@@ -1242,6 +1242,10 @@ name|non_ascii
 argument_list|(
 name|ch
 argument_list|)
+operator|||
+name|ch
+operator|==
+literal|'\n'
 condition|)
 goto|goto
 name|needquote
@@ -1396,6 +1400,10 @@ operator|||
 name|ch
 operator|==
 literal|' '
+operator|||
+name|ch
+operator|==
+literal|'\n'
 condition|)
 block|{
 name|strbuf_addf
