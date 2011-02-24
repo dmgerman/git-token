@@ -8137,6 +8137,18 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|void
+name|packet_trace_identity
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|prog
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/* convert.c */
 end_comment

@@ -5018,6 +5018,11 @@ name|result
 init|=
 literal|0
 decl_stmt|;
+name|packet_trace_identity
+argument_list|(
+literal|"fetch"
+argument_list|)
+expr_stmt|;
 comment|/* Record the command line for the reflog */
 name|strbuf_addstr
 argument_list|(
