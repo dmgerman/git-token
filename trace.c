@@ -716,6 +716,14 @@ modifier|*
 name|prefix
 parameter_list|)
 block|{
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|key
+init|=
+literal|"GIT_TRACE_SETUP"
+decl_stmt|;
 specifier|const
 name|char
 modifier|*
@@ -732,7 +740,7 @@ condition|(
 operator|!
 name|trace_want
 argument_list|(
-literal|"GIT_TRACE"
+name|key
 argument_list|)
 condition|)
 return|return;
@@ -774,8 +782,10 @@ name|prefix
 operator|=
 literal|"(null)"
 expr_stmt|;
-name|trace_printf
+name|trace_printf_key
 argument_list|(
+name|key
+argument_list|,
 literal|"setup: git_dir: %s\n"
 argument_list|,
 name|quote_crnl
@@ -785,8 +795,10 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|trace_printf
+name|trace_printf_key
 argument_list|(
+name|key
+argument_list|,
 literal|"setup: worktree: %s\n"
 argument_list|,
 name|quote_crnl
@@ -795,8 +807,10 @@ name|git_work_tree
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|trace_printf
+name|trace_printf_key
 argument_list|(
+name|key
+argument_list|,
 literal|"setup: cwd: %s\n"
 argument_list|,
 name|quote_crnl
@@ -805,8 +819,10 @@ name|cwd
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|trace_printf
+name|trace_printf_key
 argument_list|(
+name|key
+argument_list|,
 literal|"setup: prefix: %s\n"
 argument_list|,
 name|quote_crnl
