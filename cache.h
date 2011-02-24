@@ -8047,6 +8047,11 @@ parameter_list|(
 specifier|const
 name|char
 modifier|*
+name|key
+parameter_list|,
+specifier|const
+name|char
+modifier|*
 name|format
 parameter_list|,
 name|va_list

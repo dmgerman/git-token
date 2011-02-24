@@ -16,7 +16,7 @@ file|"quote.h"
 end_include
 
 begin_comment
-comment|/* Get a trace file descriptor from GIT_TRACE env variable. */
+comment|/* Get a trace file descriptor from "key" env variable. */
 end_comment
 
 begin_function
@@ -25,6 +25,11 @@ specifier|static
 name|int
 name|get_trace_fd
 parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|key
+parameter_list|,
 name|int
 modifier|*
 name|need_close
@@ -36,7 +41,7 @@ name|trace
 init|=
 name|getenv
 argument_list|(
-literal|"GIT_TRACE"
+name|key
 argument_list|)
 decl_stmt|;
 if|if
@@ -177,9 +182,11 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"What does '%s' for GIT_TRACE mean?\n"
+literal|"What does '%s' for %s mean?\n"
 argument_list|,
 name|trace
+argument_list|,
+name|key
 argument_list|)
 expr_stmt|;
 name|fprintf
@@ -187,8 +194,10 @@ argument_list|(
 name|stderr
 argument_list|,
 literal|"If you want to trace into a file, "
-literal|"then please set GIT_TRACE to an absolute pathname "
+literal|"then please set %s to an absolute pathname "
 literal|"(starting with /).\n"
+argument_list|,
+name|key
 argument_list|)
 expr_stmt|;
 name|fprintf
@@ -225,6 +234,11 @@ parameter_list|(
 specifier|const
 name|char
 modifier|*
+name|key
+parameter_list|,
+specifier|const
+name|char
+modifier|*
 name|fmt
 parameter_list|,
 name|va_list
@@ -248,6 +262,8 @@ name|fd
 operator|=
 name|get_trace_fd
 argument_list|(
+name|key
+argument_list|,
 operator|&
 name|need_close
 argument_list|)
@@ -308,6 +324,51 @@ block|}
 end_function
 
 begin_function
+DECL|function|trace_printf_key
+name|void
+name|trace_printf_key
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|key
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|fmt
+parameter_list|,
+modifier|...
+parameter_list|)
+block|{
+name|va_list
+name|ap
+decl_stmt|;
+name|va_start
+argument_list|(
+name|ap
+argument_list|,
+name|fmt
+argument_list|)
+expr_stmt|;
+name|trace_vprintf
+argument_list|(
+name|key
+argument_list|,
+name|fmt
+argument_list|,
+name|ap
+argument_list|)
+expr_stmt|;
+name|va_end
+argument_list|(
+name|ap
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
 DECL|function|trace_printf
 name|void
 name|trace_printf
@@ -332,6 +393,8 @@ argument_list|)
 expr_stmt|;
 name|trace_vprintf
 argument_list|(
+literal|"GIT_TRACE"
+argument_list|,
 name|fmt
 argument_list|,
 name|ap
@@ -384,6 +447,8 @@ name|fd
 operator|=
 name|get_trace_fd
 argument_list|(
+literal|"GIT_TRACE"
+argument_list|,
 operator|&
 name|need_close
 argument_list|)
