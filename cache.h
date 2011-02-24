@@ -8039,6 +8039,22 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|void
+name|trace_vprintf
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|format
+parameter_list|,
+name|va_list
+name|ap
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_macro
 name|__attribute__
 argument_list|(
