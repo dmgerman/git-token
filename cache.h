@@ -8118,6 +8118,25 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|void
+name|trace_strbuf
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|key
+parameter_list|,
+specifier|const
+name|struct
+name|strbuf
+modifier|*
+name|buf
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/* convert.c */
 end_comment
