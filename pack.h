@@ -92,23 +92,34 @@ DECL|macro|PACK_IDX_SIGNATURE
 comment|/* "\377tOc" */
 end_comment
 
-begin_comment
-comment|/* These may be overridden by command-line parameters */
-end_comment
-
-begin_decl_stmt
-specifier|extern
+begin_struct
+DECL|struct|pack_idx_option
+struct|struct
+name|pack_idx_option
+block|{
+DECL|member|version
 name|uint32_t
-name|pack_idx_default_version
+name|version
 decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-specifier|extern
+DECL|member|off32_limit
 name|uint32_t
-name|pack_idx_off32_limit
+name|off32_limit
 decl_stmt|;
-end_decl_stmt
+block|}
+struct|;
+end_struct
+
+begin_function_decl
+specifier|extern
+name|void
+name|reset_pack_idx_option
+parameter_list|(
+name|struct
+name|pack_idx_option
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
 
 begin_comment
 comment|/*  * Packed object index header  */
@@ -180,6 +191,11 @@ name|objects
 parameter_list|,
 name|int
 name|nr_objects
+parameter_list|,
+specifier|const
+name|struct
+name|pack_idx_option
+modifier|*
 parameter_list|,
 name|unsigned
 name|char
