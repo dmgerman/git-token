@@ -115,6 +115,19 @@ DECL|member|off32_limit
 name|uint32_t
 name|off32_limit
 decl_stmt|;
+comment|/* 	 * List of offsets that would fit within off32_limit but 	 * need to be written out as 64-bit entity for byte-for-byte 	 * verification. 	 */
+DECL|member|anomaly_alloc
+DECL|member|anomaly_nr
+name|int
+name|anomaly_alloc
+decl_stmt|,
+name|anomaly_nr
+decl_stmt|;
+DECL|member|anomaly
+name|uint32_t
+modifier|*
+name|anomaly
+decl_stmt|;
 block|}
 struct|;
 end_struct
