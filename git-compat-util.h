@@ -3635,6 +3635,30 @@ endif|#
 directive|endif
 end_endif
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|va_copy
+end_ifndef
+
+begin_define
+DECL|macro|va_copy
+define|#
+directive|define
+name|va_copy
+parameter_list|(
+name|dst
+parameter_list|,
+name|src
+parameter_list|)
+value|(dst) = (src)
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_comment
 comment|/*  * Preserves errno, prints a message, but gives no warning for ENOENT.  * Always returns the return value of unlink(2).  */
 end_comment
