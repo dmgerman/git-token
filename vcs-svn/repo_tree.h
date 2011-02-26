@@ -112,21 +112,7 @@ end_function_decl
 
 begin_function_decl
 name|uint32_t
-name|repo_replace
-parameter_list|(
-name|uint32_t
-modifier|*
-name|path
-parameter_list|,
-name|uint32_t
-name|blob_mark
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-name|void
-name|repo_modify
+name|repo_modify_path
 parameter_list|(
 name|uint32_t
 modifier|*

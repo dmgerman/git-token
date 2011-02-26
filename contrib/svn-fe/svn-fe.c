@@ -29,11 +29,16 @@ modifier|*
 name|argv
 parameter_list|)
 block|{
+if|if
+condition|(
 name|svndump_init
 argument_list|(
 name|NULL
 argument_list|)
-expr_stmt|;
+condition|)
+return|return
+literal|1
+return|;
 name|svndump_read
 argument_list|(
 operator|(
