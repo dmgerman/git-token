@@ -651,7 +651,7 @@ condition|)
 name|warning
 argument_list|(
 literal|"deleting branch '%s' that has been merged to\n"
-literal|"         '%s', but it is not yet merged to HEAD."
+literal|"         '%s', but not yet been merged to HEAD."
 argument_list|,
 name|name
 argument_list|,
