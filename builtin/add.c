@@ -1832,7 +1832,7 @@ argument_list|,
 operator|&
 name|addremove
 argument_list|,
-literal|"add all, noticing removal of tracked files"
+literal|"add changes from all tracked and untracked files"
 argument_list|)
 block|,
 name|OPT_BOOLEAN
