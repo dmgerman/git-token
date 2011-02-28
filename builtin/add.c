@@ -372,11 +372,15 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
+name|init_pathspec
+argument_list|(
+operator|&
 name|rev
 operator|.
 name|prune_data
-operator|=
+argument_list|,
 name|pathspec
+argument_list|)
 expr_stmt|;
 name|rev
 operator|.

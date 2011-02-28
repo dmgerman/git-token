@@ -191,8 +191,8 @@ modifier|*
 name|def
 decl_stmt|;
 DECL|member|prune_data
-name|void
-modifier|*
+name|struct
+name|pathspec
 name|prune_data
 decl_stmt|;
 DECL|member|early_output
