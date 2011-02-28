@@ -554,6 +554,8 @@ argument_list|,
 name|ce
 operator|->
 name|name
+argument_list|,
+literal|0
 argument_list|)
 condition|)
 name|match
