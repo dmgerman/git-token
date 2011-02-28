@@ -383,10 +383,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|setup_push_tracking
+DECL|function|setup_push_upstream
 specifier|static
 name|void
-name|setup_push_tracking
+name|setup_push_upstream
 parameter_list|(
 name|void
 parameter_list|)
@@ -431,7 +431,7 @@ name|merge
 condition|)
 name|die
 argument_list|(
-literal|"The current branch %s is not tracking anything."
+literal|"The current branch %s has no upstream branch."
 argument_list|,
 name|branch
 operator|->
@@ -448,7 +448,7 @@ literal|1
 condition|)
 name|die
 argument_list|(
-literal|"The current branch %s is tracking multiple branches, "
+literal|"The current branch %s has multiple upstream branches, "
 literal|"refusing to push."
 argument_list|,
 name|branch
@@ -512,9 +512,9 @@ argument_list|)
 expr_stmt|;
 break|break;
 case|case
-name|PUSH_DEFAULT_TRACKING
+name|PUSH_DEFAULT_UPSTREAM
 case|:
-name|setup_push_tracking
+name|setup_push_upstream
 argument_list|()
 expr_stmt|;
 break|break;
