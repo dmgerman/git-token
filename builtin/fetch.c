@@ -297,7 +297,7 @@ argument_list|,
 operator|&
 name|upload_pack
 argument_list|,
-literal|"PATH"
+literal|"path"
 argument_list|,
 literal|"path to upload pack on remote end"
 argument_list|)
@@ -433,7 +433,7 @@ argument_list|,
 operator|&
 name|depth
 argument_list|,
-literal|"DEPTH"
+literal|"depth"
 argument_list|,
 literal|"deepen history of shallow clone"
 argument_list|)
@@ -448,7 +448,7 @@ block|,
 operator|&
 name|submodule_prefix
 block|,
-literal|"DIR"
+literal|"dir"
 block|,
 literal|"prepend this to submodule path output"
 block|,

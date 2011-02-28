@@ -406,7 +406,7 @@ argument_list|,
 operator|&
 name|given_config_file
 argument_list|,
-literal|"FILE"
+literal|"file"
 argument_list|,
 literal|"use given config file"
 argument_list|)
