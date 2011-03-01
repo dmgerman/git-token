@@ -673,6 +673,10 @@ DECL|member|detect_rename
 name|int
 name|detect_rename
 decl_stmt|;
+DECL|member|irreversible_delete
+name|int
+name|irreversible_delete
+decl_stmt|;
 DECL|member|skip_stat_unmatch
 name|int
 name|skip_stat_unmatch
