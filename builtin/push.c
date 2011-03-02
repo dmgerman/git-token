@@ -388,7 +388,10 @@ specifier|static
 name|void
 name|setup_push_upstream
 parameter_list|(
-name|void
+name|struct
+name|remote
+modifier|*
+name|remote
 parameter_list|)
 block|{
 name|struct
@@ -414,7 +417,15 @@ name|branch
 condition|)
 name|die
 argument_list|(
-literal|"You are not currently on a branch."
+literal|"You are not currently on a branch.\n"
+literal|"To push the history leading to the current (detached HEAD)\n"
+literal|"state now, use\n"
+literal|"\n"
+literal|"    git push %s HEAD:<name-of-remote-branch>\n"
+argument_list|,
+name|remote
+operator|->
+name|name
 argument_list|)
 expr_stmt|;
 if|if
@@ -431,7 +442,18 @@ name|merge
 condition|)
 name|die
 argument_list|(
-literal|"The current branch %s has no upstream branch."
+literal|"The current branch %s has no upstream branch.\n"
+literal|"To push the current branch and set the remote as upstream, use\n"
+literal|"\n"
+literal|"    git push --set-upstream %s %s\n"
+argument_list|,
+name|branch
+operator|->
+name|name
+argument_list|,
+name|remote
+operator|->
+name|name
 argument_list|,
 name|branch
 operator|->
@@ -493,7 +515,10 @@ specifier|static
 name|void
 name|setup_default_push_refspecs
 parameter_list|(
-name|void
+name|struct
+name|remote
+modifier|*
+name|remote
 parameter_list|)
 block|{
 switch|switch
@@ -515,7 +540,9 @@ case|case
 name|PUSH_DEFAULT_UPSTREAM
 case|:
 name|setup_push_upstream
-argument_list|()
+argument_list|(
+name|remote
+argument_list|)
 expr_stmt|;
 break|break;
 case|case
@@ -899,7 +926,9 @@ name|TRANSPORT_PUSH_MIRROR
 operator|)
 condition|)
 name|setup_default_push_refspecs
-argument_list|()
+argument_list|(
+name|remote
+argument_list|)
 expr_stmt|;
 block|}
 name|errs
