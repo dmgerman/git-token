@@ -4460,6 +4460,12 @@ name|pack_fd
 operator|=
 name|pack_fd
 expr_stmt|;
+name|p
+operator|->
+name|do_not_close
+operator|=
+literal|1
+expr_stmt|;
 name|pack_file
 operator|=
 name|sha1fd
