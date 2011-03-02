@@ -768,7 +768,14 @@ argument_list|)
 expr_stmt|;
 name|die
 argument_list|(
-literal|"No destination configured to push to."
+literal|"No configured push destination.\n"
+literal|"Either specify the URL from the command-line or configure a remote repository using\n"
+literal|"\n"
+literal|"    git remote add<name><url>\n"
+literal|"\n"
+literal|"and then push using the remote name\n"
+literal|"\n"
+literal|"    git push<name>\n"
 argument_list|)
 expr_stmt|;
 block|}
