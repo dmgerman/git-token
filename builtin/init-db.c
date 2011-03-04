@@ -2371,11 +2371,6 @@ operator|!
 name|is_bare_repository_cfg
 condition|)
 block|{
-if|if
-condition|(
-name|git_dir
-condition|)
-block|{
 specifier|const
 name|char
 modifier|*
@@ -2421,7 +2416,6 @@ argument_list|(
 name|rel
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 if|if
 condition|(
