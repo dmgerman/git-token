@@ -5260,7 +5260,7 @@ modifier|*
 name|t
 parameter_list|)
 block|{
-name|size_t
+name|ssize_t
 name|bytes
 decl_stmt|;
 if|if
