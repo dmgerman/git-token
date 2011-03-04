@@ -2256,14 +2256,11 @@ argument_list|,
 literal|':'
 argument_list|)
 condition|)
-name|repo
-operator|=
-name|xstrdup
+name|die
 argument_list|(
-name|make_absolute_path
-argument_list|(
+literal|"repository '%s' does not exist"
+argument_list|,
 name|repo_name
-argument_list|)
 argument_list|)
 expr_stmt|;
 else|else
