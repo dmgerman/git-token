@@ -40,6 +40,14 @@ file|"string_pool.h"
 end_include
 
 begin_define
+DECL|macro|REPORT_FILENO
+define|#
+directive|define
+name|REPORT_FILENO
+value|3
+end_define
+
+begin_define
 DECL|macro|NODEACT_REPLACE
 define|#
 directive|define
@@ -2097,6 +2105,11 @@ return|;
 name|repo_init
 argument_list|()
 expr_stmt|;
+name|fast_export_init
+argument_list|(
+name|REPORT_FILENO
+argument_list|)
+expr_stmt|;
 name|reset_dump_ctx
 argument_list|(
 operator|~
@@ -2131,6 +2144,9 @@ name|void
 parameter_list|)
 block|{
 name|log_reset
+argument_list|()
+expr_stmt|;
+name|fast_export_deinit
 argument_list|()
 expr_stmt|;
 name|repo_reset
@@ -2193,6 +2209,9 @@ name|void
 parameter_list|)
 block|{
 name|log_reset
+argument_list|()
+expr_stmt|;
+name|fast_export_reset
 argument_list|()
 expr_stmt|;
 name|buffer_reset
