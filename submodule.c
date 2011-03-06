@@ -463,7 +463,7 @@ condition|)
 block|{
 name|config_fetch_recurse_submodules
 operator|=
-name|git_config_bool
+name|parse_fetch_recurse_submodules_arg
 argument_list|(
 name|var
 argument_list|,
