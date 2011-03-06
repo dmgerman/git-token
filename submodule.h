@@ -231,7 +231,7 @@ modifier|*
 name|prefix
 parameter_list|,
 name|int
-name|ignore_config
+name|command_line_option
 parameter_list|,
 name|int
 name|quiet
