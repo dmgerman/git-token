@@ -113,11 +113,19 @@ value|(1u<<8)
 end_define
 
 begin_define
+DECL|macro|PATCHSAME
+define|#
+directive|define
+name|PATCHSAME
+value|(1u<<9)
+end_define
+
+begin_define
 DECL|macro|ALL_REV_FLAGS
 define|#
 directive|define
 name|ALL_REV_FLAGS
-value|((1u<<9)-1)
+value|((1u<<10)-1)
 end_define
 
 begin_define
@@ -350,6 +358,11 @@ literal|1
 decl_stmt|,
 DECL|member|cherry_pick
 name|cherry_pick
+range|:
+literal|1
+decl_stmt|,
+DECL|member|cherry_mark
+name|cherry_mark
 range|:
 literal|1
 decl_stmt|,
