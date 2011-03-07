@@ -881,6 +881,27 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|char
+modifier|*
+name|get_revision_mark
+parameter_list|(
+specifier|const
+name|struct
+name|rev_info
+modifier|*
+name|revs
+parameter_list|,
+specifier|const
+name|struct
+name|commit
+modifier|*
+name|commit
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|void
 name|mark_parents_uninteresting
 parameter_list|(
