@@ -1080,6 +1080,14 @@ name|unlink
 argument_list|(
 name|git_path
 argument_list|(
+literal|"CHERRY_PICK_HEAD"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|unlink
+argument_list|(
+name|git_path
+argument_list|(
 literal|"MERGE_HEAD"
 argument_list|)
 argument_list|)

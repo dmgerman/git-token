@@ -87,6 +87,30 @@ block|}
 enum|;
 end_enum
 
+begin_comment
+comment|/* from where does this commit originate */
+end_comment
+
+begin_enum
+DECL|enum|commit_whence
+enum|enum
+name|commit_whence
+block|{
+DECL|enumerator|FROM_COMMIT
+name|FROM_COMMIT
+block|,
+comment|/* normal */
+DECL|enumerator|FROM_MERGE
+name|FROM_MERGE
+block|,
+comment|/* commit came from merge */
+DECL|enumerator|FROM_CHERRY_PICK
+name|FROM_CHERRY_PICK
+comment|/* commit came from cherry-pick */
+block|}
+enum|;
+end_enum
+
 begin_struct
 DECL|struct|wt_status_change_data
 struct|struct
@@ -160,9 +184,10 @@ DECL|member|amend
 name|int
 name|amend
 decl_stmt|;
-DECL|member|in_merge
-name|int
-name|in_merge
+DECL|member|whence
+name|enum
+name|commit_whence
+name|whence
 decl_stmt|;
 DECL|member|nowarn
 name|int
