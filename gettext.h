@@ -16,16 +16,24 @@ directive|define
 name|GETTEXT_H
 end_define
 
-begin_ifdef
-ifdef|#
-directive|ifdef
+begin_if
+if|#
+directive|if
+name|defined
+argument_list|(
 name|_
-end_ifdef
+argument_list|)
+operator|||
+name|defined
+argument_list|(
+name|Q_
+argument_list|)
+end_if
 
 begin_error
 error|#
 directive|error
-literal|"namespace conflict: '_' is pre-defined?"
+literal|"namespace conflict: '_' or 'Q_' is pre-defined?"
 end_error
 
 begin_endif
@@ -106,7 +114,54 @@ return|;
 block|}
 end_expr_stmt
 
+begin_expr_stmt
+specifier|static
+specifier|inline
+name|FORMAT_PRESERVING
+argument_list|(
+literal|1
+argument_list|)
+name|FORMAT_PRESERVING
+argument_list|(
+literal|2
+argument_list|)
+DECL|function|Q_
+specifier|const
+name|char
+operator|*
+name|Q_
+argument_list|(
+argument|const char *msgid
+argument_list|,
+argument|const char *plu
+argument_list|,
+argument|unsigned long n
+argument_list|)
+block|{
+if|if
+condition|(
+name|use_gettext_poison
+argument_list|()
+condition|)
+return|return
+literal|"# GETTEXT POISON #"
+return|;
+end_expr_stmt
+
+begin_return
+return|return
+name|n
+operator|==
+literal|1
+condition|?
+name|msgid
+else|:
+name|plu
+return|;
+end_return
+
 begin_comment
+unit|}
 comment|/* Mark msgid for translation but do not translate it. */
 end_comment
 
