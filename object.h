@@ -34,29 +34,6 @@ struct|;
 end_struct
 
 begin_struct
-DECL|struct|object_refs
-struct|struct
-name|object_refs
-block|{
-DECL|member|count
-name|unsigned
-name|count
-decl_stmt|;
-DECL|member|ref
-name|struct
-name|object
-modifier|*
-name|ref
-index|[
-name|FLEX_ARRAY
-index|]
-decl_stmt|;
-comment|/* more */
-block|}
-struct|;
-end_struct
-
-begin_struct
 DECL|struct|object_array
 struct|struct
 name|object_array
