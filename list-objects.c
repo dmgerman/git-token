@@ -722,6 +722,13 @@ operator|!=
 name|NULL
 condition|)
 block|{
+comment|/* 		 * an uninteresting boundary commit may not have its tree 		 * parsed yet, but we are not going to show them anyway 		 */
+if|if
+condition|(
+name|commit
+operator|->
+name|tree
+condition|)
 name|add_pending_tree
 argument_list|(
 name|revs
