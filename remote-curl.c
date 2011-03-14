@@ -2396,12 +2396,6 @@ operator|->
 name|hdr_accept
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|large_request
-condition|)
-block|{
-comment|/* The request body is large and the size cannot be predicted. 		 * We must use chunked encoding to send it. 		 */
 name|headers
 operator|=
 name|curl_slist_append
@@ -2411,6 +2405,12 @@ argument_list|,
 literal|"Expect:"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|large_request
+condition|)
+block|{
+comment|/* The request body is large and the size cannot be predicted. 		 * We must use chunked encoding to send it. 		 */
 name|headers
 operator|=
 name|curl_slist_append
