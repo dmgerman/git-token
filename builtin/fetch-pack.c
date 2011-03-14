@@ -2023,6 +2023,16 @@ name|got_continue
 operator|=
 literal|1
 expr_stmt|;
+if|if
+condition|(
+name|ack
+operator|==
+name|ACK_ready
+condition|)
+name|rev_list
+operator|=
+name|NULL
+expr_stmt|;
 break|break;
 block|}
 block|}
