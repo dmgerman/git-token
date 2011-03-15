@@ -7562,16 +7562,6 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|int
-name|git_config_global
-parameter_list|(
-name|void
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-specifier|extern
-name|int
 name|config_error_nonbool
 parameter_list|(
 specifier|const

@@ -4208,26 +4208,6 @@ block|}
 end_function
 
 begin_function
-DECL|function|git_config_global
-name|int
-name|git_config_global
-parameter_list|(
-name|void
-parameter_list|)
-block|{
-return|return
-operator|!
-name|git_env_bool
-argument_list|(
-literal|"GIT_CONFIG_NOGLOBAL"
-argument_list|,
-literal|0
-argument_list|)
-return|;
-block|}
-end_function
-
-begin_function
 DECL|function|git_config_from_parameters
 name|int
 name|git_config_from_parameters
@@ -4403,9 +4383,6 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|git_config_global
-argument_list|()
-operator|&&
 name|home
 condition|)
 block|{
