@@ -2565,26 +2565,6 @@ block|}
 end_function
 
 begin_function
-DECL|function|git_attr_global
-name|int
-name|git_attr_global
-parameter_list|(
-name|void
-parameter_list|)
-block|{
-return|return
-operator|!
-name|git_env_bool
-argument_list|(
-literal|"GIT_ATTR_NOGLOBAL"
-argument_list|,
-literal|0
-argument_list|)
-return|;
-block|}
-end_function
-
-begin_function
 DECL|function|git_attr_config
 specifier|static
 name|int
@@ -2723,9 +2703,6 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|git_attr_global
-argument_list|()
-operator|&&
 name|attributes_file
 condition|)
 block|{
