@@ -6416,6 +6416,11 @@ DECL|member|pack_keep
 name|pack_keep
 range|:
 literal|1
+decl_stmt|,
+DECL|member|do_not_close
+name|do_not_close
+range|:
+literal|1
 decl_stmt|;
 DECL|member|sha1
 name|unsigned
