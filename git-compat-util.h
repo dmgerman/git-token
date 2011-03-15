@@ -3661,6 +3661,63 @@ endif|#
 directive|endif
 end_endif
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|va_copy
+end_ifndef
+
+begin_comment
+comment|/*  * Since an obvious implementation of va_list would be to make it a  * pointer into the stack frame, a simple assignment will work on  * many systems.  But let's try to be more portable.  */
+end_comment
+
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|__va_copy
+end_ifdef
+
+begin_define
+DECL|macro|va_copy
+define|#
+directive|define
+name|va_copy
+parameter_list|(
+name|dst
+parameter_list|,
+name|src
+parameter_list|)
+value|__va_copy(dst, src)
+end_define
+
+begin_else
+else|#
+directive|else
+end_else
+
+begin_define
+DECL|macro|va_copy
+define|#
+directive|define
+name|va_copy
+parameter_list|(
+name|dst
+parameter_list|,
+name|src
+parameter_list|)
+value|((dst) = (src))
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_comment
 comment|/*  * Preserves errno, prints a message, but gives no warning for ENOENT.  * Always returns the return value of unlink(2).  */
 end_comment
