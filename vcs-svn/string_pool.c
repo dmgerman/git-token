@@ -151,24 +151,22 @@ begin_comment
 comment|/* Build a Treap from the node structure (a trp_node w/ offset) */
 end_comment
 
-begin_expr_stmt
+begin_macro
 name|trp_gen
 argument_list|(
-specifier|static
+argument|static
 argument_list|,
-name|tree_
+argument|tree_
 argument_list|,
-expr|struct
-name|node
+argument|struct node
 argument_list|,
-name|children
+argument|children
 argument_list|,
-name|node
+argument|node
 argument_list|,
-name|node_cmp
+argument|node_cmp
 argument_list|)
-expr_stmt|;
-end_expr_stmt
+end_macro
 
 begin_function
 DECL|function|pool_fetch
