@@ -3626,7 +3626,7 @@ name|AUTO_CRLF_INPUT
 init|=
 operator|-
 literal|1
-block|, }
+block|}
 enum|;
 end_enum
 
