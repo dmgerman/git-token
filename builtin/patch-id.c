@@ -448,6 +448,27 @@ name|p
 operator|+=
 literal|5
 expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|memcmp
+argument_list|(
+name|line
+argument_list|,
+literal|"\\ "
+argument_list|,
+literal|2
+argument_list|)
+operator|&&
+literal|12
+operator|<
+name|strlen
+argument_list|(
+name|line
+argument_list|)
+condition|)
+continue|continue;
 if|if
 condition|(
 operator|!
