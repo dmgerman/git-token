@@ -3010,12 +3010,14 @@ name|int
 name|nr
 decl_stmt|;
 DECL|member|has_wildcard
+name|unsigned
 name|int
 name|has_wildcard
 range|:
 literal|1
 decl_stmt|;
 DECL|member|recursive
+name|unsigned
 name|int
 name|recursive
 range|:
@@ -3040,6 +3042,7 @@ name|int
 name|len
 decl_stmt|;
 DECL|member|has_wildcard
+name|unsigned
 name|int
 name|has_wildcard
 range|:
