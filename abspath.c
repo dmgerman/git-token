@@ -127,6 +127,20 @@ name|struct
 name|stat
 name|st
 decl_stmt|;
+comment|/* We've already done it */
+if|if
+condition|(
+name|path
+operator|==
+name|buf
+operator|||
+name|path
+operator|==
+name|next_buf
+condition|)
+return|return
+name|path
+return|;
 if|if
 condition|(
 name|strlcpy
