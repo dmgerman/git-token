@@ -408,7 +408,7 @@ name|strbuf_addstr
 argument_list|(
 name|out
 argument_list|,
-name|make_nonrelative_path
+name|absolute_path
 argument_list|(
 name|path
 argument_list|)

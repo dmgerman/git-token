@@ -5382,7 +5382,7 @@ argument_list|)
 condition|)
 name|dir
 operator|=
-name|make_absolute_path
+name|real_path
 argument_list|(
 name|dir
 argument_list|)

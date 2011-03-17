@@ -2405,7 +2405,7 @@ name|git_work_tree_cfg
 operator|=
 name|xstrdup
 argument_list|(
-name|make_absolute_path
+name|real_path
 argument_list|(
 name|rel
 argument_list|)
@@ -2454,7 +2454,7 @@ name|work_tree
 condition|)
 name|set_git_work_tree
 argument_list|(
-name|make_absolute_path
+name|real_path
 argument_list|(
 name|work_tree
 argument_list|)
@@ -2493,7 +2493,7 @@ name|work_tree
 condition|)
 name|set_git_work_tree
 argument_list|(
-name|make_absolute_path
+name|real_path
 argument_list|(
 name|work_tree
 argument_list|)
@@ -2502,7 +2502,7 @@ expr_stmt|;
 block|}
 name|set_git_dir
 argument_list|(
-name|make_absolute_path
+name|real_path
 argument_list|(
 name|git_dir
 argument_list|)

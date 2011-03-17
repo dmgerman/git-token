@@ -4665,7 +4665,7 @@ begin_function_decl
 specifier|const
 name|char
 modifier|*
-name|make_absolute_path
+name|real_path
 parameter_list|(
 specifier|const
 name|char
@@ -4679,7 +4679,7 @@ begin_function_decl
 specifier|const
 name|char
 modifier|*
-name|make_nonrelative_path
+name|absolute_path
 parameter_list|(
 specifier|const
 name|char
@@ -4693,7 +4693,7 @@ begin_function_decl
 specifier|const
 name|char
 modifier|*
-name|make_relative_path
+name|relative_path
 parameter_list|(
 specifier|const
 name|char

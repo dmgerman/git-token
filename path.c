@@ -1953,11 +1953,11 @@ block|}
 end_function
 
 begin_function
-DECL|function|make_relative_path
+DECL|function|relative_path
 specifier|const
 name|char
 modifier|*
-name|make_relative_path
+name|relative_path
 parameter_list|(
 specifier|const
 name|char

@@ -92,7 +92,7 @@ index|[
 literal|1
 index|]
 argument_list|,
-literal|"make_absolute_path"
+literal|"real_path"
 argument_list|)
 condition|)
 block|{
@@ -105,7 +105,7 @@ condition|)
 block|{
 name|puts
 argument_list|(
-name|make_absolute_path
+name|real_path
 argument_list|(
 name|argv
 index|[
