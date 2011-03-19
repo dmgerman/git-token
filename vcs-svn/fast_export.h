@@ -147,6 +147,32 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|void
+name|fast_export_blob_delta
+parameter_list|(
+name|uint32_t
+name|mode
+parameter_list|,
+name|uint32_t
+name|old_mode
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|old_data
+parameter_list|,
+name|uint32_t
+name|len
+parameter_list|,
+name|struct
+name|line_buffer
+modifier|*
+name|input
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/* If there is no such file at that rev, returns -1, errno == ENOENT. */
 end_comment
