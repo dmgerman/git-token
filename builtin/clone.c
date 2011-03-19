@@ -186,6 +186,16 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|real_git_dir
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|real_git_dir
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|option_upload_pack
 specifier|static
 name|char
@@ -436,6 +446,20 @@ argument_list|,
 literal|"depth"
 argument_list|,
 literal|"create a shallow clone of that depth"
+argument_list|)
+block|,
+name|OPT_STRING
+argument_list|(
+literal|'L'
+argument_list|,
+literal|"separate-git-dir"
+argument_list|,
+operator|&
+name|real_git_dir
+argument_list|,
+literal|"gitdir"
+argument_list|,
+literal|"separate git dir from working tree"
 argument_list|)
 block|,
 name|OPT_END
@@ -2523,13 +2547,22 @@ argument_list|,
 name|git_dir
 argument_list|)
 expr_stmt|;
-name|set_git_dir
-argument_list|(
-name|real_path
+name|set_git_dir_init
 argument_list|(
 name|git_dir
+argument_list|,
+name|real_git_dir
+argument_list|,
+literal|0
 argument_list|)
-argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|real_git_dir
+condition|)
+name|git_dir
+operator|=
+name|real_git_dir
 expr_stmt|;
 if|if
 condition|(
