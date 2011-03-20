@@ -3516,7 +3516,30 @@ name|strbuf_addstr
 argument_list|(
 name|sb
 argument_list|,
-literal|" - "
+literal|"  "
+argument_list|)
+expr_stmt|;
+name|strbuf_addstr
+argument_list|(
+name|sb
+argument_list|,
+name|find_unique_abbrev
+argument_list|(
+name|commit
+operator|->
+name|object
+operator|.
+name|sha1
+argument_list|,
+name|DEFAULT_ABBREV
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|strbuf_addch
+argument_list|(
+name|sb
+argument_list|,
+literal|' '
 argument_list|)
 expr_stmt|;
 name|pretty_print_commit
