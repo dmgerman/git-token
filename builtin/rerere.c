@@ -58,7 +58,7 @@ name|rerere_usage
 index|[]
 init|=
 block|{
-literal|"git rerere [clear | status | remaining | diff | gc]"
+literal|"git rerere [clear | forget path... | status | remaining | diff | gc]"
 block|,
 name|NULL
 block|, }
@@ -858,7 +858,20 @@ name|char
 modifier|*
 modifier|*
 name|pathspec
-init|=
+decl_stmt|;
+if|if
+condition|(
+name|argc
+operator|<
+literal|2
+condition|)
+name|warning
+argument_list|(
+literal|"'git rerere forget' without paths is deprecated"
+argument_list|)
+expr_stmt|;
+name|pathspec
+operator|=
 name|get_pathspec
 argument_list|(
 name|prefix
@@ -867,7 +880,7 @@ name|argv
 operator|+
 literal|1
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 return|return
 name|rerere_forget
 argument_list|(
