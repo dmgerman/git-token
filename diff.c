@@ -133,7 +133,7 @@ specifier|static
 name|int
 name|diff_rename_limit_default
 init|=
-literal|200
+literal|400
 decl_stmt|;
 end_decl_stmt
 

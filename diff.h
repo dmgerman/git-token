@@ -697,9 +697,13 @@ DECL|member|rename_limit
 name|int
 name|rename_limit
 decl_stmt|;
-DECL|member|warn_on_too_large_rename
+DECL|member|needed_rename_limit
 name|int
-name|warn_on_too_large_rename
+name|needed_rename_limit
+decl_stmt|;
+DECL|member|show_rename_progress
+name|int
+name|show_rename_progress
 decl_stmt|;
 DECL|member|dirstat_percent
 name|int

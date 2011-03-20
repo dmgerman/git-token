@@ -111,6 +111,20 @@ directive|include
 file|"submodule.h"
 end_include
 
+begin_decl_stmt
+DECL|variable|rename_limit_advice
+specifier|static
+specifier|const
+name|char
+name|rename_limit_advice
+index|[]
+init|=
+literal|"inexact rename detection was skipped because there were too many\n"
+literal|"  files. You may want to set your merge.renamelimit variable to at least\n"
+literal|"  %d and retry this merge."
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|shift_tree_object
 specifier|static
@@ -2276,7 +2290,7 @@ name|o
 operator|->
 name|diff_rename_limit
 else|:
-literal|500
+literal|1000
 expr_stmt|;
 name|opts
 operator|.
@@ -2288,9 +2302,11 @@ name|rename_score
 expr_stmt|;
 name|opts
 operator|.
-name|warn_on_too_large_rename
+name|show_rename_progress
 operator|=
-literal|1
+name|o
+operator|->
+name|show_rename_progress
 expr_stmt|;
 name|opts
 operator|.
@@ -2338,6 +2354,24 @@ argument_list|(
 operator|&
 name|opts
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|opts
+operator|.
+name|needed_rename_limit
+operator|>
+name|o
+operator|->
+name|needed_rename_limit
+condition|)
+name|o
+operator|->
+name|needed_rename_limit
+operator|=
+name|opts
+operator|.
+name|needed_rename_limit
 expr_stmt|;
 for|for
 control|(
@@ -9802,6 +9836,21 @@ block|}
 name|flush_output
 argument_list|(
 name|o
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|o
+operator|->
+name|needed_rename_limit
+condition|)
+name|warning
+argument_list|(
+name|rename_limit_advice
+argument_list|,
+name|o
+operator|->
+name|needed_rename_limit
 argument_list|)
 expr_stmt|;
 return|return
