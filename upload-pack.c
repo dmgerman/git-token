@@ -3828,6 +3828,11 @@ name|strict
 init|=
 literal|0
 decl_stmt|;
+name|packet_trace_identity
+argument_list|(
+literal|"upload-pack"
+argument_list|)
+expr_stmt|;
 name|git_extract_argv0_path
 argument_list|(
 name|argv

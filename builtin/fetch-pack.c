@@ -4274,6 +4274,11 @@ name|child_process
 modifier|*
 name|conn
 decl_stmt|;
+name|packet_trace_identity
+argument_list|(
+literal|"fetch-pack"
+argument_list|)
+expr_stmt|;
 name|nr_heads
 operator|=
 literal|0

@@ -1295,6 +1295,11 @@ name|OPT_END
 argument_list|()
 block|}
 decl_stmt|;
+name|packet_trace_identity
+argument_list|(
+literal|"push"
+argument_list|)
+expr_stmt|;
 name|git_config
 argument_list|(
 name|git_default_config

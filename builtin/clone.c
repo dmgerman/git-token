@@ -2129,6 +2129,11 @@ operator|=
 name|getpid
 argument_list|()
 expr_stmt|;
+name|packet_trace_identity
+argument_list|(
+literal|"clone"
+argument_list|)
+expr_stmt|;
 name|argc
 operator|=
 name|parse_options

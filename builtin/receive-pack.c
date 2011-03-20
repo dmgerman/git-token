@@ -4334,6 +4334,11 @@ name|command
 modifier|*
 name|commands
 decl_stmt|;
+name|packet_trace_identity
+argument_list|(
+literal|"receive-pack"
+argument_list|)
+expr_stmt|;
 name|argv
 operator|++
 expr_stmt|;
