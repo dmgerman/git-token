@@ -3100,10 +3100,6 @@ name|char
 modifier|*
 name|buffer
 decl_stmt|;
-name|FILE
-modifier|*
-name|fp
-decl_stmt|;
 specifier|const
 name|char
 modifier|*
@@ -3610,6 +3606,8 @@ operator|=
 literal|""
 expr_stmt|;
 block|}
+name|s
+operator|->
 name|fp
 operator|=
 name|fopen
@@ -3624,6 +3622,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|s
+operator|->
 name|fp
 operator|==
 name|NULL
@@ -3798,6 +3798,8 @@ name|sb
 operator|.
 name|len
 argument_list|,
+name|s
+operator|->
 name|fp
 argument_list|)
 operator|<
@@ -3854,16 +3856,18 @@ name|whence
 operator|!=
 name|FROM_COMMIT
 condition|)
-name|fprintf
+name|status_printf_ln
 argument_list|(
-name|fp
+name|s
 argument_list|,
-literal|"#\n"
-literal|"# It looks like you may be committing a %s.\n"
-literal|"# If this is not correct, please remove the file\n"
-literal|"#	%s\n"
-literal|"# and try again.\n"
-literal|"#\n"
+name|GIT_COLOR_NORMAL
+argument_list|,
+literal|"\n"
+literal|"It looks like you may be committing a %s.\n"
+literal|"If this is not correct, please remove the file\n"
+literal|"	%s\n"
+literal|"and try again.\n"
+literal|""
 argument_list|,
 name|whence_s
 argument_list|()
@@ -3882,10 +3886,20 @@ argument_list|)
 expr_stmt|;
 name|fprintf
 argument_list|(
+name|s
+operator|->
 name|fp
 argument_list|,
 literal|"\n"
-literal|"# Please enter the commit message for your changes."
+argument_list|)
+expr_stmt|;
+name|status_printf
+argument_list|(
+name|s
+argument_list|,
+name|GIT_COLOR_NORMAL
+argument_list|,
+literal|"Please enter the commit message for your changes."
 argument_list|)
 expr_stmt|;
 if|if
@@ -3894,36 +3908,42 @@ name|cleanup_mode
 operator|==
 name|CLEANUP_ALL
 condition|)
-name|fprintf
+name|status_printf_more
 argument_list|(
-name|fp
+name|s
+argument_list|,
+name|GIT_COLOR_NORMAL
 argument_list|,
 literal|" Lines starting\n"
-literal|"# with '#' will be ignored, and an empty"
+literal|"with '#' will be ignored, and an empty"
 literal|" message aborts the commit.\n"
 argument_list|)
 expr_stmt|;
 else|else
 comment|/* CLEANUP_SPACE, that is. */
-name|fprintf
+name|status_printf_more
 argument_list|(
-name|fp
+name|s
+argument_list|,
+name|GIT_COLOR_NORMAL
 argument_list|,
 literal|" Lines starting\n"
-literal|"# with '#' will be kept; you may remove them"
+literal|"with '#' will be kept; you may remove them"
 literal|" yourself if you want to.\n"
-literal|"# An empty message aborts the commit.\n"
+literal|"An empty message aborts the commit.\n"
 argument_list|)
 expr_stmt|;
 if|if
 condition|(
 name|only_include_assumed
 condition|)
-name|fprintf
+name|status_printf_ln
 argument_list|(
-name|fp
+name|s
 argument_list|,
-literal|"# %s\n"
+name|GIT_COLOR_NORMAL
+argument_list|,
+literal|"%s"
 argument_list|,
 name|only_include_assumed
 argument_list|)
@@ -3959,19 +3979,21 @@ operator|.
 name|buf
 argument_list|)
 condition|)
-name|fprintf
+name|status_printf_ln
 argument_list|(
-name|fp
+name|s
+argument_list|,
+name|GIT_COLOR_NORMAL
 argument_list|,
 literal|"%s"
-literal|"# Author:    %s\n"
+literal|"Author:    %s"
 argument_list|,
 name|ident_shown
 operator|++
 condition|?
 literal|""
 else|:
-literal|"#\n"
+literal|"\n"
 argument_list|,
 name|author_ident
 operator|->
@@ -3984,19 +4006,21 @@ operator|!
 name|user_ident_sufficiently_given
 argument_list|()
 condition|)
-name|fprintf
+name|status_printf_ln
 argument_list|(
-name|fp
+name|s
+argument_list|,
+name|GIT_COLOR_NORMAL
 argument_list|,
 literal|"%s"
-literal|"# Committer: %s\n"
+literal|"Committer: %s"
 argument_list|,
 name|ident_shown
 operator|++
 condition|?
 literal|""
 else|:
-literal|"#\n"
+literal|"\n"
 argument_list|,
 name|committer_ident
 operator|.
@@ -4007,11 +4031,13 @@ if|if
 condition|(
 name|ident_shown
 condition|)
-name|fprintf
+name|status_printf_ln
 argument_list|(
-name|fp
+name|s
 argument_list|,
-literal|"#\n"
+name|GIT_COLOR_NORMAL
+argument_list|,
+literal|""
 argument_list|)
 expr_stmt|;
 name|saved_color_setting
@@ -4030,6 +4056,8 @@ name|commitable
 operator|=
 name|run_status
 argument_list|(
+name|s
+operator|->
 name|fp
 argument_list|,
 name|index_file
@@ -4131,6 +4159,8 @@ argument_list|)
 expr_stmt|;
 name|fclose
 argument_list|(
+name|s
+operator|->
 name|fp
 argument_list|)
 expr_stmt|;
