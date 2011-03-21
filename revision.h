@@ -221,16 +221,6 @@ name|prune
 range|:
 literal|1
 decl_stmt|,
-DECL|member|no_merges
-name|no_merges
-range|:
-literal|1
-decl_stmt|,
-DECL|member|merges_only
-name|merges_only
-range|:
-literal|1
-decl_stmt|,
 DECL|member|no_walk
 name|no_walk
 range|:
@@ -602,6 +592,14 @@ DECL|member|min_age
 name|unsigned
 name|long
 name|min_age
+decl_stmt|;
+DECL|member|min_parents
+name|int
+name|min_parents
+decl_stmt|;
+DECL|member|max_parents
+name|int
+name|max_parents
 decl_stmt|;
 comment|/* diff info for patches and for paths limiting */
 DECL|member|diffopt
