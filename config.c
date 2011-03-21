@@ -2669,7 +2669,7 @@ name|strcmp
 argument_list|(
 name|var
 argument_list|,
-literal|"core.abbrevlength"
+literal|"core.abbrev"
 argument_list|)
 condition|)
 block|{
