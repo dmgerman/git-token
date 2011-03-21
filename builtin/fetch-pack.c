@@ -1162,7 +1162,7 @@ DECL|macro|INITIAL_FLUSH
 define|#
 directive|define
 name|INITIAL_FLUSH
-value|32
+value|16
 end_define
 
 begin_define
@@ -1183,6 +1183,19 @@ name|int
 name|count
 parameter_list|)
 block|{
+if|if
+condition|(
+name|count
+operator|<
+name|INITIAL_FLUSH
+operator|*
+literal|2
+condition|)
+name|count
+operator|+=
+name|INITIAL_FLUSH
+expr_stmt|;
+elseif|else
 if|if
 condition|(
 name|count
