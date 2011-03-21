@@ -3283,6 +3283,22 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|void
+name|update_index_if_able
+parameter_list|(
+name|struct
+name|index_state
+modifier|*
+parameter_list|,
+name|struct
+name|lock_file
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|int
 name|hold_locked_index
 parameter_list|(
