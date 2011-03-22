@@ -7635,9 +7635,6 @@ modifier|*
 name|reset
 decl_stmt|,
 modifier|*
-name|set
-decl_stmt|,
-modifier|*
 name|add_c
 decl_stmt|,
 modifier|*
@@ -7761,15 +7758,6 @@ argument_list|(
 name|options
 argument_list|,
 name|DIFF_RESET
-argument_list|)
-expr_stmt|;
-name|set
-operator|=
-name|diff_get_color_opt
-argument_list|(
-name|options
-argument_list|,
-name|DIFF_PLAIN
 argument_list|)
 expr_stmt|;
 name|add_c

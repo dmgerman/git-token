@@ -118,11 +118,6 @@ name|base
 operator|->
 name|len
 decl_stmt|;
-name|int
-name|retval
-init|=
-literal|0
-decl_stmt|;
 name|sha1
 operator|=
 name|tree_entry_extract
@@ -359,8 +354,6 @@ argument_list|,
 literal|'/'
 argument_list|)
 expr_stmt|;
-name|retval
-operator|=
 name|diff_tree_sha1
 argument_list|(
 name|sha1

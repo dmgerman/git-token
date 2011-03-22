@@ -25,11 +25,6 @@ modifier|*
 name|argv
 parameter_list|)
 block|{
-specifier|const
-name|char
-modifier|*
-name|prefix
-decl_stmt|;
 name|struct
 name|child_process
 name|cp
@@ -39,8 +34,6 @@ name|nogit
 init|=
 literal|0
 decl_stmt|;
-name|prefix
-operator|=
 name|setup_git_directory_gently
 argument_list|(
 operator|&
