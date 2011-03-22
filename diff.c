@@ -3840,6 +3840,7 @@ end_struct
 
 begin_decl_stmt
 DECL|variable|diff_words_styles
+specifier|static
 name|struct
 name|diff_words_style
 name|diff_words_styles

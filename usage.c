@@ -307,6 +307,7 @@ end_decl_stmt
 begin_function
 DECL|function|usagef
 name|void
+name|NORETURN
 name|usagef
 parameter_list|(
 specifier|const
@@ -345,6 +346,7 @@ end_function
 begin_function
 DECL|function|usage
 name|void
+name|NORETURN
 name|usage
 parameter_list|(
 specifier|const
@@ -366,6 +368,7 @@ end_function
 begin_function
 DECL|function|die
 name|void
+name|NORETURN
 name|die
 parameter_list|(
 specifier|const
@@ -404,6 +407,7 @@ end_function
 begin_function
 DECL|function|die_errno
 name|void
+name|NORETURN
 name|die_errno
 parameter_list|(
 specifier|const

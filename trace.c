@@ -295,6 +295,7 @@ end_function
 
 begin_function
 DECL|function|trace_printf_key
+specifier|static
 name|void
 name|trace_printf_key
 parameter_list|(
