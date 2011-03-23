@@ -158,6 +158,18 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+name|int
+name|buffer_ferror
+parameter_list|(
+name|struct
+name|line_buffer
+modifier|*
+name|buf
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|char
 modifier|*
 name|buffer_read_line
@@ -218,8 +230,12 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* Returns number of bytes read (not necessarily written). */
+end_comment
+
 begin_function_decl
-name|void
+name|off_t
 name|buffer_copy_bytes
 parameter_list|(
 name|struct
@@ -227,14 +243,14 @@ name|line_buffer
 modifier|*
 name|buf
 parameter_list|,
-name|uint32_t
+name|off_t
 name|len
 parameter_list|)
 function_decl|;
 end_function_decl
 
 begin_function_decl
-name|void
+name|off_t
 name|buffer_skip_bytes
 parameter_list|(
 name|struct
@@ -242,7 +258,7 @@ name|line_buffer
 modifier|*
 name|buf
 parameter_list|,
-name|uint32_t
+name|off_t
 name|len
 parameter_list|)
 function_decl|;
