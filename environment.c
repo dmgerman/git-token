@@ -64,6 +64,20 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|minimum_abbrev
+DECL|variable|default_abbrev
+name|int
+name|minimum_abbrev
+init|=
+literal|4
+decl_stmt|,
+name|default_abbrev
+init|=
+literal|7
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|ignore_case
 name|int
 name|ignore_case
