@@ -425,13 +425,10 @@ name|strbuf
 modifier|*
 name|key_buf
 parameter_list|,
-specifier|const
-name|char
+name|struct
+name|strbuf
 modifier|*
 name|val
-parameter_list|,
-name|uint32_t
-name|len
 parameter_list|,
 name|uint32_t
 modifier|*
@@ -487,15 +484,7 @@ argument_list|(
 literal|"invalid dump: unsets svn:log"
 argument_list|)
 expr_stmt|;
-name|strbuf_reset
-argument_list|(
-operator|&
-name|rev_ctx
-operator|.
-name|log
-argument_list|)
-expr_stmt|;
-name|strbuf_add
+name|strbuf_swap
 argument_list|(
 operator|&
 name|rev_ctx
@@ -503,8 +492,6 @@ operator|.
 name|log
 argument_list|,
 name|val
-argument_list|,
-name|len
 argument_list|)
 expr_stmt|;
 break|break;
@@ -524,6 +511,11 @@ literal|"svn:author"
 argument_list|)
 condition|)
 break|break;
+if|if
+condition|(
+operator|!
+name|val
+condition|)
 name|strbuf_reset
 argument_list|(
 operator|&
@@ -532,11 +524,8 @@ operator|.
 name|author
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|val
-condition|)
-name|strbuf_add
+else|else
+name|strbuf_swap
 argument_list|(
 operator|&
 name|rev_ctx
@@ -544,8 +533,6 @@ operator|.
 name|author
 argument_list|,
 name|val
-argument_list|,
-name|len
 argument_list|)
 expr_stmt|;
 break|break;
@@ -580,6 +567,8 @@ condition|(
 name|parse_date_basic
 argument_list|(
 name|val
+operator|->
+name|buf
 argument_list|,
 operator|&
 name|rev_ctx
@@ -594,6 +583,8 @@ argument_list|(
 literal|"invalid timestamp: %s"
 argument_list|,
 name|val
+operator|->
+name|buf
 argument_list|)
 expr_stmt|;
 break|break;
@@ -917,8 +908,6 @@ name|val
 argument_list|,
 name|NULL
 argument_list|,
-literal|0
-argument_list|,
 operator|&
 name|type_set
 argument_list|)
@@ -932,11 +921,8 @@ argument_list|(
 operator|&
 name|key
 argument_list|,
+operator|&
 name|val
-operator|.
-name|buf
-argument_list|,
-name|len
 argument_list|,
 operator|&
 name|type_set
