@@ -1345,11 +1345,10 @@ name|author
 operator|.
 name|buf
 argument_list|,
+operator|&
 name|rev_ctx
 operator|.
 name|log
-operator|.
-name|buf
 argument_list|,
 name|dump_ctx
 operator|.
