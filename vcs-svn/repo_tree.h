@@ -12,11 +12,11 @@ directive|define
 name|REPO_TREE_H_
 end_define
 
-begin_include
-include|#
-directive|include
-file|"git-compat-util.h"
-end_include
+begin_struct_decl
+struct_decl|struct
+name|strbuf
+struct_decl|;
+end_struct_decl
 
 begin_define
 DECL|macro|REPO_MODE_DIR
@@ -159,7 +159,9 @@ name|char
 modifier|*
 name|author
 parameter_list|,
-name|char
+specifier|const
+name|struct
+name|strbuf
 modifier|*
 name|log
 parameter_list|,

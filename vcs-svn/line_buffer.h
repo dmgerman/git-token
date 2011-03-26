@@ -38,11 +38,6 @@ index|[
 name|LINE_BUFFER_LEN
 index|]
 decl_stmt|;
-DECL|member|blob_buffer
-name|struct
-name|strbuf
-name|blob_buffer
-decl_stmt|;
 DECL|member|infile
 name|FILE
 modifier|*
@@ -57,7 +52,7 @@ DECL|macro|LINE_BUFFER_INIT
 define|#
 directive|define
 name|LINE_BUFFER_INIT
-value|{"", STRBUF_INIT, NULL}
+value|{ "", NULL }
 end_define
 
 begin_function_decl
@@ -178,22 +173,6 @@ name|struct
 name|line_buffer
 modifier|*
 name|buf
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-name|char
-modifier|*
-name|buffer_read_string
-parameter_list|(
-name|struct
-name|line_buffer
-modifier|*
-name|buf
-parameter_list|,
-name|uint32_t
-name|len
 parameter_list|)
 function_decl|;
 end_function_decl
