@@ -575,6 +575,24 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|dir_inside_of
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|subdir
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|dir
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function
 DECL|function|is_dot_or_dotdot
 specifier|static
