@@ -3152,17 +3152,10 @@ init|=
 name|STRBUF_INIT
 decl_stmt|;
 name|struct
-name|child_process
-modifier|*
-name|helper
-decl_stmt|;
-name|struct
 name|ref
 modifier|*
 name|ref
 decl_stmt|;
-name|helper
-operator|=
 name|get_helper
 argument_list|(
 name|transport

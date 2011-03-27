@@ -849,9 +849,6 @@ name|struct
 name|object
 modifier|*
 name|obj
-decl_stmt|,
-modifier|*
-name|parent
 decl_stmt|;
 name|entry
 operator|=
@@ -869,17 +866,6 @@ operator|=
 name|entry
 operator|->
 name|item
-expr_stmt|;
-name|parent
-operator|=
-operator|(
-expr|struct
-name|object
-operator|*
-operator|)
-name|entry
-operator|->
-name|name
 expr_stmt|;
 name|result
 operator||=
