@@ -4329,7 +4329,7 @@ name|OPT_BOOLEAN
 argument_list|(
 literal|'n'
 argument_list|,
-name|NULL
+literal|"line-number"
 argument_list|,
 operator|&
 name|opt
