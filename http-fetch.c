@@ -51,11 +51,6 @@ modifier|*
 name|argv
 parameter_list|)
 block|{
-specifier|const
-name|char
-modifier|*
-name|prefix
-decl_stmt|;
 name|struct
 name|walker
 modifier|*
@@ -394,8 +389,6 @@ operator|&
 name|url
 argument_list|)
 expr_stmt|;
-name|prefix
-operator|=
 name|setup_git_directory
 argument_list|()
 expr_stmt|;
