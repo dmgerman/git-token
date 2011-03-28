@@ -280,6 +280,10 @@ literal|"data %"
 name|PRIuMAX
 literal|"\n"
 argument_list|,
+call|(
+name|uintmax_t
+call|)
+argument_list|(
 name|log
 operator|->
 name|len
@@ -287,6 +291,7 @@ operator|+
 name|strlen
 argument_list|(
 name|gitsvnline
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
