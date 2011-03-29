@@ -670,6 +670,22 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* Expand inplace a note ref like "foo" or "notes/foo" into "refs/notes/foo" */
+end_comment
+
+begin_function_decl
+name|void
+name|expand_notes_ref
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+name|sb
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
