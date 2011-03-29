@@ -3938,6 +3938,12 @@ argument_list|,
 literal|"Server supports no-done\n"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|args
+operator|.
+name|stateless_rpc
+condition|)
 name|no_done
 operator|=
 literal|1
