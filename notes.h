@@ -12,6 +12,12 @@ directive|define
 name|NOTES_H
 end_define
 
+begin_include
+include|#
+directive|include
+file|"string-list.h"
+end_include
+
 begin_comment
 comment|/*  * Function type for combining two notes annotating the same object.  *  * When adding a new note annotating the same object as an existing note, it is  * up to the caller to decide how to combine the two notes. The decision is  * made by passing in a function of the following form. The function accepts  * two SHA1s -- of the existing note and the new note, respectively. The  * function then combines the notes in whatever way it sees fit, and writes the  * resulting SHA1 into the first SHA1 argument (cur_sha1). A non-zero return  * value indicates failure.  *  * The two given SHA1s shall both be non-NULL and different from each other.  * Either of them (but not both) may be == null_sha1, which indicates an  * empty/non-existent note. If the resulting SHA1 (cur_sha1) is == null_sha1,  * the note will be removed from the notes tree.  *  * The default combine_notes function (you get this when passing NULL) is  * combine_notes_concatenate(), which appends the contents of the new note to  * the contents of the existing note.  */
 end_comment
@@ -556,7 +562,6 @@ decl_stmt|;
 DECL|member|extra_notes_refs
 name|struct
 name|string_list
-modifier|*
 name|extra_notes_refs
 decl_stmt|;
 block|}
