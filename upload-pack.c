@@ -3614,7 +3614,7 @@ name|capabilities
 init|=
 literal|"multi_ack thin-pack side-band"
 literal|" side-band-64k ofs-delta shallow no-progress"
-literal|" include-tag multi_ack_detailed no-done"
+literal|" include-tag multi_ack_detailed"
 decl_stmt|;
 name|struct
 name|object
@@ -3649,7 +3649,7 @@ name|packet_write
 argument_list|(
 literal|1
 argument_list|,
-literal|"%s %s%c%s\n"
+literal|"%s %s%c%s%s\n"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -3661,6 +3661,12 @@ argument_list|,
 literal|0
 argument_list|,
 name|capabilities
+argument_list|,
+name|stateless_rpc
+condition|?
+literal|" no-done"
+else|:
+literal|""
 argument_list|)
 expr_stmt|;
 else|else
