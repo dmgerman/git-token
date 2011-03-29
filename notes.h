@@ -552,12 +552,9 @@ DECL|struct|display_notes_opt
 struct|struct
 name|display_notes_opt
 block|{
-DECL|member|suppress_default_notes
-name|unsigned
+DECL|member|use_default_notes
 name|int
-name|suppress_default_notes
-range|:
-literal|1
+name|use_default_notes
 decl_stmt|;
 DECL|member|extra_notes_refs
 name|struct
