@@ -802,6 +802,30 @@ argument_list|,
 name|options
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|mirror
+operator|&&
+name|master
+condition|)
+name|die
+argument_list|(
+literal|"specifying a master branch makes no sense with --mirror"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|mirror
+operator|&&
+name|track
+operator|.
+name|nr
+condition|)
+name|die
+argument_list|(
+literal|"specifying branches to track makes no sense with --mirror"
+argument_list|)
+expr_stmt|;
 name|name
 operator|=
 name|argv
