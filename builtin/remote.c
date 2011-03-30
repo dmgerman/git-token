@@ -644,6 +644,19 @@ return|;
 block|}
 end_function
 
+begin_decl_stmt
+DECL|variable|mirror_advice
+specifier|static
+specifier|const
+name|char
+name|mirror_advice
+index|[]
+init|=
+literal|"--mirror is dangerous and deprecated; please\n"
+literal|"\t use --mirror=fetch or --mirror=push instead"
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|parse_mirror_opt
 specifier|static
@@ -688,11 +701,20 @@ condition|(
 operator|!
 name|arg
 condition|)
+block|{
+name|warning
+argument_list|(
+literal|"%s"
+argument_list|,
+name|mirror_advice
+argument_list|)
+expr_stmt|;
 operator|*
 name|mirror
 operator|=
 name|MIRROR_BOTH
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
