@@ -1035,14 +1035,14 @@ literal|"invalid dump: deletion node has "
 literal|"copyfrom info, text, or properties"
 argument_list|)
 expr_stmt|;
-return|return
 name|repo_delete
 argument_list|(
 name|node_ctx
 operator|.
 name|dst
 argument_list|)
-return|;
+expr_stmt|;
+return|return;
 block|}
 if|if
 condition|(
