@@ -463,6 +463,13 @@ argument_list|,
 name|QUICK
 argument_list|)
 operator|&&
+operator|!
+name|revs
+operator|->
+name|diffopt
+operator|.
+name|filter
+operator|&&
 name|DIFF_OPT_TST
 argument_list|(
 operator|&
