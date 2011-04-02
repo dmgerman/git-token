@@ -1159,7 +1159,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"reference repository '%s' is not a local directory."
+argument_list|)
 argument_list|,
 name|option_reference
 argument_list|)
@@ -1286,7 +1289,10 @@ name|dir
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"failed to open '%s'"
+argument_list|)
 argument_list|,
 name|src
 operator|->
@@ -1313,7 +1319,10 @@ name|EEXIST
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"failed to create directory '%s'"
+argument_list|)
 argument_list|,
 name|dest
 operator|->
@@ -1335,7 +1344,10 @@ argument_list|)
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"failed to stat '%s'"
+argument_list|)
 argument_list|,
 name|dest
 operator|->
@@ -1355,7 +1367,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"%s exists and is not a directory"
+argument_list|)
 argument_list|,
 name|dest
 operator|->
@@ -1450,7 +1465,10 @@ condition|)
 block|{
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"failed to stat %s\n"
+argument_list|)
 argument_list|,
 name|src
 operator|->
@@ -1504,7 +1522,10 @@ name|ENOENT
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"failed to unlink '%s'"
+argument_list|)
 argument_list|,
 name|dest
 operator|->
@@ -1538,7 +1559,10 @@ name|option_local
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"failed to create link '%s'"
+argument_list|)
 argument_list|,
 name|dest
 operator|->
@@ -1567,7 +1591,10 @@ argument_list|)
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"failed to copy file to '%s'"
+argument_list|)
 argument_list|,
 name|dest
 operator|->
@@ -1720,7 +1747,10 @@ name|option_verbosity
 condition|)
 name|printf
 argument_list|(
+name|_
+argument_list|(
 literal|"done.\n"
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -2159,7 +2189,10 @@ literal|2
 condition|)
 name|usage_msg_opt
 argument_list|(
+name|_
+argument_list|(
 literal|"Too many arguments."
+argument_list|)
 argument_list|,
 name|builtin_clone_usage
 argument_list|,
@@ -2174,7 +2207,10 @@ literal|0
 condition|)
 name|usage_msg_opt
 argument_list|(
+name|_
+argument_list|(
 literal|"You must specify a repository to clone."
+argument_list|)
 argument_list|,
 name|builtin_clone_usage
 argument_list|,
@@ -2200,7 +2236,10 @@ name|option_origin
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--bare and --origin %s options are incompatible."
+argument_list|)
 argument_list|,
 name|option_origin
 argument_list|)
@@ -2288,7 +2327,10 @@ name|option_depth
 condition|)
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"--depth is ignored in local clones; use file:// instead."
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -2347,8 +2389,11 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"destination path '%s' already exists and is not "
 literal|"an empty directory."
+argument_list|)
 argument_list|,
 name|dir
 argument_list|)
@@ -2395,7 +2440,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"working tree '%s' already exists."
+argument_list|)
 argument_list|,
 name|work_tree
 argument_list|)
@@ -2454,7 +2502,10 @@ literal|0
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"could not create leading directories of '%s'"
+argument_list|)
 argument_list|,
 name|work_tree
 argument_list|)
@@ -2473,7 +2524,10 @@ argument_list|)
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"could not create work tree dir '%s'."
+argument_list|)
 argument_list|,
 name|work_tree
 argument_list|)
@@ -2523,7 +2577,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"could not create leading directories of '%s'"
+argument_list|)
 argument_list|,
 name|git_dir
 argument_list|)
@@ -2542,19 +2599,33 @@ literal|0
 operator|<=
 name|option_verbosity
 condition|)
+block|{
+if|if
+condition|(
+name|option_bare
+condition|)
 name|printf
 argument_list|(
-literal|"Cloning into %s%s...\n"
-argument_list|,
-name|option_bare
-condition|?
-literal|"bare repository "
-else|:
-literal|""
+name|_
+argument_list|(
+literal|"Cloning into bare repository %s...\n"
+argument_list|)
 argument_list|,
 name|dir
 argument_list|)
 expr_stmt|;
+else|else
+name|printf
+argument_list|(
+name|_
+argument_list|(
+literal|"Cloning into %s...\n"
+argument_list|)
+argument_list|,
+name|dir
+argument_list|)
+expr_stmt|;
+block|}
 name|init_db
 argument_list|(
 name|option_template
@@ -2823,7 +2894,10 @@ name|fetch
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Don't know how to clone %s"
+argument_list|)
 argument_list|,
 name|transport
 operator|->
@@ -2989,8 +3063,11 @@ condition|)
 block|{
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"Remote branch %s not found in "
 literal|"upstream %s, using HEAD instead"
+argument_list|)
 argument_list|,
 name|option_branch
 argument_list|,
@@ -3013,7 +3090,10 @@ else|else
 block|{
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"You appear to have cloned an empty repository."
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|our_head_points_at
@@ -3218,8 +3298,11 @@ name|option_no_checkout
 condition|)
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"remote HEAD refers to nonexistent ref, "
 literal|"unable to checkout.\n"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|option_no_checkout
@@ -3404,7 +3487,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"unable to write new index file"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|err

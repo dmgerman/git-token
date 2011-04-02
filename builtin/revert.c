@@ -551,7 +551,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"program error"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -945,7 +948,10 @@ name|p
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not read commit message of %s"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -1192,7 +1198,10 @@ literal|0
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not open '%s' for writing"
+argument_list|)
 argument_list|,
 name|git_path
 argument_list|(
@@ -1226,7 +1235,10 @@ argument_list|)
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not write to '%s'"
+argument_list|)
 argument_list|,
 name|git_path
 argument_list|(
@@ -1399,7 +1411,10 @@ literal|0
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not write to %s."
+argument_list|)
 argument_list|,
 name|filename
 argument_list|)
@@ -1421,7 +1436,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Error wrapping up %s"
+argument_list|)
 argument_list|,
 name|filename
 argument_list|)
@@ -1524,22 +1542,59 @@ if|if
 condition|(
 name|advice_commit_before_merge
 condition|)
+block|{
+if|if
+condition|(
+name|action
+operator|==
+name|REVERT
+condition|)
 name|die
 argument_list|(
-literal|"Your local changes would be overwritten by %s.\n"
+name|_
+argument_list|(
+literal|"Your local changes would be overwritten by revert.\n"
 literal|"Please, commit your changes or stash them to proceed."
-argument_list|,
-name|me
+argument_list|)
 argument_list|)
 expr_stmt|;
 else|else
 name|die
 argument_list|(
-literal|"Your local changes would be overwritten by %s.\n"
-argument_list|,
-name|me
+name|_
+argument_list|(
+literal|"Your local changes would be overwritten by cherry-pick.\n"
+literal|"Please, commit your changes or stash them to proceed."
+argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+if|if
+condition|(
+name|action
+operator|==
+name|REVERT
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"Your local changes would be overwritten by revert.\n"
+argument_list|)
+argument_list|)
+expr_stmt|;
+else|else
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"Your local changes would be overwritten by cherry-pick.\n"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 end_function
@@ -1817,9 +1872,13 @@ name|index_lock
 argument_list|)
 operator|)
 condition|)
+comment|/* TRANSLATORS: %s will be "revert" or "cherry-pick" */
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"%s: Unable to write new index file"
+argument_list|)
 argument_list|,
 name|me
 argument_list|)
@@ -2118,7 +2177,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Your index file is unmerged."
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2135,7 +2197,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"You do not have a valid HEAD"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -2172,7 +2237,10 @@ name|REVERT
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Cannot revert a root commit"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|parent
@@ -2206,7 +2274,10 @@ name|mainline
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Commit %s is a merge but no -m option was given."
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -2256,7 +2327,10 @@ name|p
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Commit %s does not have parent %d"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -2286,7 +2360,10 @@ name|mainline
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Mainline was specified but commit %s is not a merge."
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -2348,9 +2425,13 @@ argument_list|)
 operator|<
 literal|0
 condition|)
+comment|/* TRANSLATORS: The first %s will be "revert" or 		   "cherry-pick", the second %s a SHA1 */
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"%s: cannot parse parent commit %s"
+argument_list|)
 argument_list|,
 name|me
 argument_list|,
@@ -2380,7 +2461,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Cannot get commit message for %s"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -2711,15 +2795,19 @@ condition|)
 block|{
 name|error
 argument_list|(
-literal|"could not %s %s... %s"
-argument_list|,
 name|action
 operator|==
 name|REVERT
 condition|?
-literal|"revert"
+name|_
+argument_list|(
+literal|"could not revert %s... %s"
+argument_list|)
 else|:
-literal|"apply"
+name|_
+argument_list|(
+literal|"could not apply %s... %s"
+argument_list|)
 argument_list|,
 name|find_unique_abbrev
 argument_list|(
@@ -2853,7 +2941,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"revision walk setup failed"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -2865,7 +2956,10 @@ name|commits
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"empty commit set passed"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2913,7 +3007,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"git %s: failed to read the index"
+argument_list|)
 argument_list|,
 name|me
 argument_list|)
@@ -2959,7 +3056,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"git %s: failed to refresh the index"
+argument_list|)
 argument_list|,
 name|me
 argument_list|)
@@ -3038,7 +3138,10 @@ name|signoff
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"cherry-pick --ff cannot be used with --signoff"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -3047,7 +3150,10 @@ name|no_commit
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"cherry-pick --ff cannot be used with --no-commit"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -3056,7 +3162,10 @@ name|no_replay
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"cherry-pick --ff cannot be used with -x"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -3065,7 +3174,10 @@ name|edit
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"cherry-pick --ff cannot be used with --edit"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
