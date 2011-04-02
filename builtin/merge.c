@@ -6385,6 +6385,15 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
+name|read_empty
+argument_list|(
+name|remote_head
+operator|->
+name|sha1
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
 name|update_ref
 argument_list|(
 literal|"initial pull"
@@ -6400,15 +6409,6 @@ argument_list|,
 literal|0
 argument_list|,
 name|DIE_ON_ERR
-argument_list|)
-expr_stmt|;
-name|read_empty
-argument_list|(
-name|remote_head
-operator|->
-name|sha1
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 return|return
