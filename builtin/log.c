@@ -1235,12 +1235,27 @@ operator|!=
 name|NULL
 condition|)
 block|{
+if|if
+condition|(
+operator|!
 name|log_tree_commit
 argument_list|(
 name|rev
 argument_list|,
 name|commit
 argument_list|)
+operator|&&
+name|rev
+operator|->
+name|max_count
+operator|>=
+literal|0
+condition|)
+comment|/* 			 * We decremented max_count in get_revision, 			 * but we didn't actually show the commit. 			 */
+name|rev
+operator|->
+name|max_count
+operator|++
 expr_stmt|;
 if|if
 condition|(
