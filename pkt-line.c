@@ -13,6 +13,7 @@ end_include
 
 begin_decl_stmt
 DECL|variable|packet_trace_prefix
+specifier|static
 specifier|const
 name|char
 modifier|*

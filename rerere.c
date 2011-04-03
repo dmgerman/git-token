@@ -2823,7 +2823,7 @@ name|other
 argument_list|,
 literal|""
 argument_list|,
-literal|0
+name|NULL
 argument_list|)
 expr_stmt|;
 if|if

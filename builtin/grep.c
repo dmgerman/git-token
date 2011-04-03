@@ -2147,7 +2147,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
-literal|0
+name|NULL
 return|;
 block|}
 if|if
@@ -2161,7 +2161,7 @@ name|st_mode
 argument_list|)
 condition|)
 return|return
-literal|0
+name|NULL
 return|;
 operator|*
 name|sz
@@ -2244,7 +2244,7 @@ name|data
 argument_list|)
 expr_stmt|;
 return|return
-literal|0
+name|NULL
 return|;
 block|}
 name|close
