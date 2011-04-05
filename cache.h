@@ -3041,10 +3041,10 @@ DECL|member|len
 name|int
 name|len
 decl_stmt|;
-DECL|member|has_wildcard
+DECL|member|use_wildcard
 name|unsigned
 name|int
-name|has_wildcard
+name|use_wildcard
 range|:
 literal|1
 decl_stmt|;
