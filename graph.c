@@ -136,57 +136,6 @@ block|}
 enum|;
 end_enum
 
-begin_comment
-comment|/*  * The list of available column colors.  */
-end_comment
-
-begin_decl_stmt
-DECL|variable|column_colors_ansi
-specifier|static
-specifier|const
-name|char
-modifier|*
-name|column_colors_ansi
-index|[]
-init|=
-block|{
-name|GIT_COLOR_RED
-block|,
-name|GIT_COLOR_GREEN
-block|,
-name|GIT_COLOR_YELLOW
-block|,
-name|GIT_COLOR_BLUE
-block|,
-name|GIT_COLOR_MAGENTA
-block|,
-name|GIT_COLOR_CYAN
-block|,
-name|GIT_COLOR_BOLD_RED
-block|,
-name|GIT_COLOR_BOLD_GREEN
-block|,
-name|GIT_COLOR_BOLD_YELLOW
-block|,
-name|GIT_COLOR_BOLD_BLUE
-block|,
-name|GIT_COLOR_BOLD_MAGENTA
-block|,
-name|GIT_COLOR_BOLD_CYAN
-block|,
-name|GIT_COLOR_RESET
-block|, }
-decl_stmt|;
-end_decl_stmt
-
-begin_define
-DECL|macro|COLUMN_COLORS_ANSI_MAX
-define|#
-directive|define
-name|COLUMN_COLORS_ANSI_MAX
-value|(ARRAY_SIZE(column_colors_ansi) - 1)
-end_define
-
 begin_decl_stmt
 DECL|variable|column_colors
 specifier|static
@@ -531,7 +480,7 @@ name|graph_set_column_colors
 argument_list|(
 name|column_colors_ansi
 argument_list|,
-name|COLUMN_COLORS_ANSI_MAX
+name|column_colors_ansi_max
 argument_list|)
 expr_stmt|;
 name|graph
