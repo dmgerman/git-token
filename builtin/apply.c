@@ -210,6 +210,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|allow_overlap
+specifier|static
+name|int
+name|allow_overlap
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|no_add
 specifier|static
 name|int
@@ -11929,6 +11937,11 @@ name|line
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|allow_overlap
+condition|)
 for|for
 control|(
 name|i
@@ -19292,6 +19305,18 @@ operator|&
 name|apply_with_reject
 argument_list|,
 literal|"leave the rejected hunks in corresponding *.rej files"
+argument_list|)
+block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|0
+argument_list|,
+literal|"allow-overlap"
+argument_list|,
+operator|&
+name|allow_overlap
+argument_list|,
+literal|"allow overlapping hunks"
 argument_list|)
 block|,
 name|OPT__VERBOSE
