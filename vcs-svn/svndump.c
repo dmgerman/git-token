@@ -39,6 +39,12 @@ directive|include
 file|"strbuf.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"svndump.h"
+end_include
+
 begin_comment
 comment|/*  * Compare start of string to literal of equal length;  * must be guarded by length test.  */
 end_comment
