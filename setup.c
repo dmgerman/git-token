@@ -948,6 +948,21 @@ name|copyfrom
 operator|++
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|elt
+index|[
+literal|1
+index|]
+condition|)
+block|{
+comment|/* Just ':' -- no element! */
+return|return
+name|NULL
+return|;
+block|}
 else|else
 block|{
 comment|/* shorthand */
@@ -977,6 +992,15 @@ init|=
 operator|*
 name|copyfrom
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|is_pathspec_magic
+argument_list|(
+name|ch
+argument_list|)
+condition|)
+break|break;
 for|for
 control|(
 name|i
@@ -1025,7 +1049,15 @@ argument_list|)
 operator|<=
 name|i
 condition|)
-break|break;
+name|die
+argument_list|(
+literal|"Unimplemented pathspec magic '%c' in '%s'"
+argument_list|,
+name|ch
+argument_list|,
+name|elt
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(
