@@ -6077,7 +6077,10 @@ name|branch
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"No current branch."
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -6089,7 +6092,10 @@ name|remote
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"No remote for the current branch."
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -6101,7 +6107,10 @@ name|merge_nr
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"No default upstream defined for the current branch."
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|args
@@ -6151,7 +6160,10 @@ name|dst
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"No remote tracking branch for %s from %s"
+argument_list|)
 argument_list|,
 name|branch
 operator|->
