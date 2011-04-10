@@ -5394,7 +5394,10 @@ operator|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--detach cannot be used with -b/-B/--orphan"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -5411,7 +5414,10 @@ name|track
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--detach cannot be used with -t"
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* --track without -b should DWIM */
@@ -5781,7 +5787,10 @@ name|force_detach
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"git checkout: --detach does not take a path argument"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
