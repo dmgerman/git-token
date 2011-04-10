@@ -5320,7 +5320,10 @@ literal|0
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not read from '%s'"
+argument_list|)
 argument_list|,
 name|git_path
 argument_list|(
