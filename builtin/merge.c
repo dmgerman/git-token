@@ -6535,14 +6535,20 @@ name|advice_resolve_conflict
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"You have not concluded your cherry-pick (CHERRY_PICK_HEAD exists).\n"
 literal|"Please, commit your changes before you can merge."
+argument_list|)
 argument_list|)
 expr_stmt|;
 else|else
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"You have not concluded your cherry-pick (CHERRY_PICK_HEAD exists)."
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
