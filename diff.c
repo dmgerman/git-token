@@ -9391,6 +9391,21 @@ literal|1
 expr_stmt|;
 if|if
 condition|(
+operator|!
+name|content_changed
+condition|)
+block|{
+comment|/* 			 * The SHA1 has not changed, so pre-/post-content is 			 * identical. We can therefore skip looking at the 			 * file contents altogether. 			 */
+name|damage
+operator|=
+literal|0
+expr_stmt|;
+goto|goto
+name|found_damage
+goto|;
+block|}
+if|if
+condition|(
 name|DIFF_OPT_TST
 argument_list|(
 name|options
@@ -9402,11 +9417,7 @@ block|{
 comment|/* 			 * In --dirstat-by-file mode, we don't really need to 			 * look at the actual file contents at all. 			 * The fact that the SHA1 changed is enough for us to 			 * add this file to the list of results 			 * (with each file contributing equal damage). 			 */
 name|damage
 operator|=
-name|content_changed
-condition|?
 literal|1
-else|:
-literal|0
 expr_stmt|;
 goto|goto
 name|found_damage
@@ -9561,7 +9572,7 @@ expr_stmt|;
 block|}
 else|else
 continue|continue;
-comment|/* 		 * Original minus copied is the removed material, 		 * added is the new material.  They are both damages 		 * made to the preimage. 		 */
+comment|/* 		 * Original minus copied is the removed material, 		 * added is the new material.  They are both damages 		 * made to the preimage. 		 * If the resulting damage is zero, we know that 		 * diffcore_count_changes() considers the two entries to 		 * be identical, but since content_changed is true, we 		 * know that there must have been _some_ kind of change, 		 * so we force all entries to have damage> 0. 		 */
 name|damage
 operator|=
 operator|(
@@ -9575,6 +9586,15 @@ name|copied
 operator|)
 operator|+
 name|added
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|damage
+condition|)
+name|damage
+operator|=
+literal|1
 expr_stmt|;
 name|found_damage
 label|:
