@@ -412,17 +412,28 @@ argument_list|,
 literal|"edit the commit message"
 argument_list|)
 block|,
-name|OPT_BOOLEAN
-argument_list|(
+block|{
+name|OPTION_BOOLEAN
+block|,
 literal|'r'
-argument_list|,
+block|,
 name|NULL
-argument_list|,
+block|,
 operator|&
 name|noop
-argument_list|,
+block|,
+name|NULL
+block|,
 literal|"no-op (backward compatibility)"
-argument_list|)
+block|,
+name|PARSE_OPT_NOARG
+operator||
+name|PARSE_OPT_HIDDEN
+block|,
+name|NULL
+block|,
+literal|0
+block|}
 block|,
 name|OPT_BOOLEAN
 argument_list|(
