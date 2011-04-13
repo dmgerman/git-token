@@ -7705,7 +7705,7 @@ name|enum
 name|object_type
 name|type
 decl_stmt|;
-comment|/* use_pack() assures us we have [base, base + 20) available 	 * as a range that we can look at at.  (Its actually the hash 	 * size that is assured.)  With our object header encoding 	 * the maximum deflated object size is 2^137, which is just 	 * insane, so we know won't exceed what we have been given. 	 */
+comment|/* use_pack() assures us we have [base, base + 20) available 	 * as a range that we can look at.  (Its actually the hash 	 * size that is assured.)  With our object header encoding 	 * the maximum deflated object size is 2^137, which is just 	 * insane, so we know won't exceed what we have been given. 	 */
 name|base
 operator|=
 name|use_pack

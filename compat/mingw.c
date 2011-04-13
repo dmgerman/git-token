@@ -6352,7 +6352,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Note, this isn't a complete replacement for getaddrinfo. It assumes  * that service contains a numerical port, or that it it is null. It  * does a simple search using gethostbyname, and returns one IPv4 host  * if one was found.  */
+comment|/*  * Note, this isn't a complete replacement for getaddrinfo. It assumes  * that service contains a numerical port, or that it is null. It  * does a simple search using gethostbyname, and returns one IPv4 host  * if one was found.  */
 end_comment
 
 begin_function
