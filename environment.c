@@ -790,7 +790,7 @@ condition|)
 block|{
 name|new_work_tree
 operator|=
-name|make_absolute_path
+name|real_path
 argument_list|(
 name|new_work_tree
 argument_list|)
@@ -824,7 +824,7 @@ name|work_tree
 operator|=
 name|xstrdup
 argument_list|(
-name|make_absolute_path
+name|real_path
 argument_list|(
 name|new_work_tree
 argument_list|)

@@ -58,12 +58,16 @@ name|MAXDEPTH
 value|5
 end_define
 
+begin_comment
+comment|/*  * Use this to get the real path, i.e. resolve links. If you want an  * absolute path but don't mind links, use absolute_path.  *  * If path is our buffer, then return path, as it's already what the  * user wants.  */
+end_comment
+
 begin_function
-DECL|function|make_absolute_path
+DECL|function|real_path
 specifier|const
 name|char
 modifier|*
-name|make_absolute_path
+name|real_path
 parameter_list|(
 specifier|const
 name|char
@@ -582,12 +586,16 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Use this to get an absolute path from a relative one. If you want  * to resolve links, you should use real_path.  *  * If the path is already absolute, then return path. As the user is  * never meant to free the return value, we're safe.  */
+end_comment
+
 begin_function
-DECL|function|make_nonrelative_path
+DECL|function|absolute_path
 specifier|const
 name|char
 modifier|*
-name|make_nonrelative_path
+name|absolute_path
 parameter_list|(
 specifier|const
 name|char

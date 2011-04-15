@@ -324,7 +324,9 @@ name|rev
 operator|.
 name|diffopt
 operator|.
-name|paths
+name|pathspec
+operator|.
+name|raw
 argument_list|)
 operator|<
 literal|0

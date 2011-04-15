@@ -133,7 +133,7 @@ specifier|static
 name|int
 name|diff_rename_limit_default
 init|=
-literal|200
+literal|400
 decl_stmt|;
 end_decl_stmt
 
@@ -3840,6 +3840,7 @@ end_struct
 
 begin_decl_stmt
 DECL|variable|diff_words_styles
+specifier|static
 name|struct
 name|diff_words_style
 name|diff_words_styles
@@ -7634,9 +7635,6 @@ modifier|*
 name|reset
 decl_stmt|,
 modifier|*
-name|set
-decl_stmt|,
-modifier|*
 name|add_c
 decl_stmt|,
 modifier|*
@@ -7760,15 +7758,6 @@ argument_list|(
 name|options
 argument_list|,
 name|DIFF_RESET
-argument_list|)
-expr_stmt|;
-name|set
-operator|=
-name|diff_get_color_opt
-argument_list|(
-name|options
-argument_list|,
-name|DIFF_PLAIN
 argument_list|)
 expr_stmt|;
 name|add_c

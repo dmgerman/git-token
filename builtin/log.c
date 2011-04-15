@@ -496,7 +496,9 @@ name|rev
 operator|->
 name|diffopt
 operator|.
-name|nr_paths
+name|pathspec
+operator|.
+name|nr
 operator|!=
 literal|1
 condition|)
@@ -591,7 +593,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"invalid --decorate option: %s"
+argument_list|)
 argument_list|,
 name|arg
 argument_list|)
@@ -658,7 +663,10 @@ block|}
 else|else
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"unrecognized argument: %s"
+argument_list|)
 argument_list|,
 name|arg
 argument_list|)
@@ -839,7 +847,10 @@ expr_stmt|;
 block|}
 name|printf
 argument_list|(
+name|_
+argument_list|(
 literal|"Final output: %d %s\n"
+argument_list|)
 argument_list|,
 name|nr
 argument_list|,
@@ -1206,7 +1217,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"revision walk setup failed"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -1757,7 +1771,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not read object %s"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -2317,7 +2334,10 @@ name|ret
 operator|=
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not read object %s"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -2464,7 +2484,10 @@ name|ret
 operator|=
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Unknown type: %d"
+argument_list|)
 argument_list|,
 name|o
 operator|->
@@ -3013,7 +3036,10 @@ name|value
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"format.headers without value"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|add_header
@@ -3443,7 +3469,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"name of output directory is too long"
+argument_list|)
 argument_list|)
 return|;
 if|if
@@ -3528,7 +3557,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Cannot open patch file %s"
+argument_list|)
 argument_list|,
 name|filename
 operator|.
@@ -3603,7 +3635,10 @@ literal|2
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Need exactly one range."
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|o1
@@ -3660,7 +3695,10 @@ operator|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Not a range."
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|init_patch_ids
@@ -3719,7 +3757,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"revision walk setup failed"
+argument_list|)
 argument_list|)
 expr_stmt|;
 while|while
@@ -3883,7 +3924,10 @@ literal|1
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not extract email from committer identity."
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|strbuf_addf
@@ -4080,7 +4124,10 @@ name|CMIT_FMT_EMAIL
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Cover letter needs email format"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|committer
@@ -4542,7 +4589,10 @@ name|z
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"insane in-reply-to: %s"
+argument_list|)
 argument_list|,
 name|msg_id
 argument_list|)
@@ -4929,7 +4979,10 @@ name|dir
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Two output directories?"
+argument_list|)
 argument_list|)
 expr_stmt|;
 operator|*
@@ -5896,7 +5949,7 @@ literal|1
 expr_stmt|;
 name|rev
 operator|.
-name|no_merges
+name|max_parents
 operator|=
 literal|1
 expr_stmt|;
@@ -6013,7 +6066,10 @@ name|endpos
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"bogus committer info %s"
+argument_list|)
 argument_list|,
 name|committer
 argument_list|)
@@ -6284,7 +6340,10 @@ name|keep_subject
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"-n and -k are mutually exclusive."
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -6295,7 +6354,10 @@ name|subject_prefix
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--subject-prefix and -k are mutually exclusive."
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|argc
@@ -6321,7 +6383,10 @@ literal|1
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"unrecognized argument: %s"
+argument_list|)
 argument_list|,
 name|argv
 index|[
@@ -6341,7 +6406,10 @@ name|DIFF_FORMAT_NAME
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--name-only does not make sense"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -6356,7 +6424,10 @@ name|DIFF_FORMAT_NAME_STATUS
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--name-status does not make sense"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -6371,7 +6442,10 @@ name|DIFF_FORMAT_CHECKDIFF
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--check does not make sense"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -6484,7 +6558,10 @@ name|use_stdout
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"standard output, or directory, which one?"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -6504,7 +6581,10 @@ name|EEXIST
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not create directory '%s'"
+argument_list|)
 argument_list|,
 name|output_directory
 argument_list|)
@@ -6737,7 +6817,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"revision walk setup failed"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|rev
@@ -7102,7 +7185,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Failed to create output files"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|shown
@@ -7627,9 +7713,12 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
+name|_
+argument_list|(
 literal|"Could not find a tracked"
 literal|" remote branch, please"
 literal|" specify<upstream> manually.\n"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|usage_with_options
@@ -7702,7 +7791,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Unknown commit %s"
+argument_list|)
 argument_list|,
 name|head
 argument_list|)
@@ -7721,7 +7813,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Unknown commit %s"
+argument_list|)
 argument_list|,
 name|upstream
 argument_list|)
@@ -7805,7 +7900,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Unknown commit %s"
+argument_list|)
 argument_list|,
 name|limit
 argument_list|)
@@ -7821,7 +7919,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"revision walk setup failed"
+argument_list|)
 argument_list|)
 expr_stmt|;
 while|while

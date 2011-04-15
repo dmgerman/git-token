@@ -12,6 +12,12 @@ directive|define
 name|COLOR_H
 end_define
 
+begin_struct_decl
+struct_decl|struct
+name|strbuf
+struct_decl|;
+end_struct_decl
+
 begin_comment
 comment|/*  2 + (2 * num_attrs) + 8 + 1 + 8 + 'm' + NUL */
 end_comment
@@ -381,6 +387,28 @@ modifier|*
 name|fmt
 parameter_list|,
 modifier|...
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|void
+name|color_print_strbuf
+parameter_list|(
+name|FILE
+modifier|*
+name|fp
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|color
+parameter_list|,
+specifier|const
+name|struct
+name|strbuf
+modifier|*
+name|sb
 parameter_list|)
 function_decl|;
 end_function_decl

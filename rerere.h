@@ -34,6 +34,18 @@ name|RERERE_NOAUTOUPDATE
 value|02
 end_define
 
+begin_comment
+comment|/*  * Marks paths that have been hand-resolved and added to the  * index. Set in the util field of such paths after calling  * rerere_remaining.  */
+end_comment
+
+begin_decl_stmt
+specifier|extern
+name|void
+modifier|*
+name|RERERE_RESOLVED
+decl_stmt|;
+end_decl_stmt
+
 begin_function_decl
 specifier|extern
 name|int
@@ -99,6 +111,18 @@ parameter_list|(
 specifier|const
 name|char
 modifier|*
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|rerere_remaining
+parameter_list|(
+name|struct
+name|string_list
 modifier|*
 parameter_list|)
 function_decl|;

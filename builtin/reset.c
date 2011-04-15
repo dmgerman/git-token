@@ -6,7 +6,7 @@ end_comment
 begin_include
 include|#
 directive|include
-file|"cache.h"
+file|"builtin.h"
 end_include
 
 begin_include
@@ -139,15 +139,30 @@ name|reset_type_names
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"mixed"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"soft"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"hard"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"merge"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"keep"
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -479,7 +494,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"You do not have a valid HEAD."
+argument_list|)
 argument_list|)
 return|;
 if|if
@@ -495,7 +513,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Failed to find tree of HEAD."
+argument_list|)
 argument_list|)
 return|;
 name|nr
@@ -525,7 +546,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Failed to find tree of %s."
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -568,7 +592,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not write new index file."
+argument_list|)
 argument_list|)
 return|;
 return|return
@@ -612,7 +639,10 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
+name|_
+argument_list|(
 literal|"HEAD is now at %s"
+argument_list|)
 argument_list|,
 name|hex
 argument_list|)
@@ -749,7 +779,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not read index"
+argument_list|)
 argument_list|)
 return|;
 name|result
@@ -767,7 +800,10 @@ name|NULL
 argument_list|,
 name|NULL
 argument_list|,
+name|_
+argument_list|(
 literal|"Unstaged changes after reset:"
+argument_list|)
 argument_list|)
 condition|?
 literal|1
@@ -914,7 +950,10 @@ name|ce
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"make_cache_entry failed for path '%s'"
+argument_list|)
 argument_list|,
 name|one
 operator|->
@@ -1242,7 +1281,10 @@ name|size
 condition|)
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"Reflog action message too long: %.*s..."
+argument_list|)
 argument_list|,
 literal|50
 argument_list|,
@@ -1277,12 +1319,18 @@ argument_list|()
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Cannot do a %s reset in the middle of a merge."
+argument_list|)
 argument_list|,
+name|_
+argument_list|(
 name|reset_type_names
 index|[
 name|reset_type
 index|]
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1643,7 +1691,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Failed to resolve '%s' as a valid ref."
+argument_list|)
 argument_list|,
 name|rev
 argument_list|)
@@ -1662,7 +1713,10 @@ name|commit
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not parse object '%s'."
+argument_list|)
 argument_list|,
 name|rev
 argument_list|)
@@ -1691,7 +1745,10 @@ name|NONE
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--patch is incompatible with --{hard,mixed,soft}"
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -1723,7 +1780,10 @@ name|MIXED
 condition|)
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"--mixed with paths is deprecated; use 'git reset --<paths>' instead."
+argument_list|)
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -1735,12 +1795,18 @@ name|NONE
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Cannot do %s reset with paths."
+argument_list|)
 argument_list|,
+name|_
+argument_list|(
 name|reset_type_names
 index|[
 name|reset_type
 index|]
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -1797,12 +1863,18 @@ argument_list|()
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"%s reset is not allowed in a bare repository"
+argument_list|)
 argument_list|,
+name|_
+argument_list|(
 name|reset_type_names
 index|[
 name|reset_type
 index|]
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* Soft reset does not touch the index file nor the working tree 	 * at all, but requires them in a good order.  Other resets reset 	 * the index file to the tree object we are switching to. */
@@ -1869,7 +1941,10 @@ name|err
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not reset index file to revision '%s'."
+argument_list|)
 argument_list|,
 name|rev
 argument_list|)

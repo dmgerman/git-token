@@ -68,6 +68,10 @@ literal|"    --max-age=<epoch>\n"
 literal|"    --min-age=<epoch>\n"
 literal|"    --sparse\n"
 literal|"    --no-merges\n"
+literal|"    --min-parents=<n>\n"
+literal|"    --no-min-parents\n"
+literal|"    --max-parents=<n>\n"
+literal|"    --no-max-parents\n"
 literal|"    --remove-empty\n"
 literal|"    --all\n"
 literal|"    --branches\n"
@@ -225,69 +229,18 @@ name|revs
 operator|->
 name|graph
 condition|)
-block|{
-if|if
-condition|(
-name|commit
-operator|->
-name|object
-operator|.
-name|flags
-operator|&
-name|BOUNDARY
-condition|)
-name|putchar
+name|fputs
 argument_list|(
-literal|'-'
-argument_list|)
-expr_stmt|;
-elseif|else
-if|if
-condition|(
-name|commit
-operator|->
-name|object
-operator|.
-name|flags
-operator|&
-name|UNINTERESTING
-condition|)
-name|putchar
+name|get_revision_mark
 argument_list|(
-literal|'^'
-argument_list|)
-expr_stmt|;
-elseif|else
-if|if
-condition|(
 name|revs
-operator|->
-name|left_right
-condition|)
-block|{
-if|if
-condition|(
+argument_list|,
 name|commit
-operator|->
-name|object
-operator|.
-name|flags
-operator|&
-name|SYMMETRIC_LEFT
-condition|)
-name|putchar
-argument_list|(
-literal|'<'
+argument_list|)
+argument_list|,
+name|stdout
 argument_list|)
 expr_stmt|;
-else|else
-name|putchar
-argument_list|(
-literal|'>'
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 if|if
 condition|(
 name|revs

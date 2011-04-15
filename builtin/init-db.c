@@ -109,6 +109,16 @@ name|init_db_template_dir
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|git_link
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|git_link
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|safe_create_dir
 specifier|static
@@ -167,7 +177,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not make %s writable by group"
+argument_list|)
 argument_list|,
 name|dir
 argument_list|)
@@ -282,7 +295,10 @@ operator|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"insanely long template name %s"
+argument_list|)
 argument_list|,
 name|de
 operator|->
@@ -338,7 +354,10 @@ name|ENOENT
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"cannot stat '%s'"
+argument_list|)
 argument_list|,
 name|path
 argument_list|)
@@ -361,7 +380,10 @@ argument_list|)
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"cannot stat template '%s'"
+argument_list|)
 argument_list|,
 name|template
 argument_list|)
@@ -406,7 +428,10 @@ name|subdir
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"cannot opendir '%s'"
+argument_list|)
 argument_list|,
 name|template
 argument_list|)
@@ -504,7 +529,10 @@ literal|0
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"cannot readlink '%s'"
+argument_list|)
 argument_list|,
 name|template
 argument_list|)
@@ -520,7 +548,10 @@ name|len
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"insanely long symlink %s"
+argument_list|)
 argument_list|,
 name|template
 argument_list|)
@@ -543,7 +574,10 @@ argument_list|)
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"cannot symlink '%s' '%s'"
+argument_list|)
 argument_list|,
 name|lnk
 argument_list|,
@@ -577,7 +611,10 @@ argument_list|)
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"cannot copy '%s' to '%s'"
+argument_list|)
 argument_list|,
 name|template
 argument_list|,
@@ -588,7 +625,10 @@ block|}
 else|else
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"ignoring template %s"
+argument_list|)
 argument_list|,
 name|template
 argument_list|)
@@ -708,7 +748,10 @@ operator|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"insanely long template path %s"
+argument_list|)
 argument_list|,
 name|template_dir
 argument_list|)
@@ -763,7 +806,10 @@ condition|)
 block|{
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"templates not found %s"
+argument_list|)
 argument_list|,
 name|template_dir
 argument_list|)
@@ -811,8 +857,11 @@ condition|)
 block|{
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"not copying templates of "
 literal|"a wrong format version %d from '%s'"
+argument_list|)
 argument_list|,
 name|repository_format_version
 argument_list|,
@@ -1002,7 +1051,10 @@ literal|50
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"insane git directory %s"
+argument_list|)
 argument_list|,
 name|git_dir
 argument_list|)
@@ -1594,6 +1646,250 @@ block|}
 end_function
 
 begin_function
+DECL|function|set_git_dir_init
+name|int
+name|set_git_dir_init
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|git_dir
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|real_git_dir
+parameter_list|,
+name|int
+name|exist_ok
+parameter_list|)
+block|{
+if|if
+condition|(
+name|real_git_dir
+condition|)
+block|{
+name|struct
+name|stat
+name|st
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|exist_ok
+operator|&&
+operator|!
+name|stat
+argument_list|(
+name|git_dir
+argument_list|,
+operator|&
+name|st
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"%s already exists"
+argument_list|,
+name|git_dir
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|exist_ok
+operator|&&
+operator|!
+name|stat
+argument_list|(
+name|real_git_dir
+argument_list|,
+operator|&
+name|st
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"%s already exists"
+argument_list|,
+name|real_git_dir
+argument_list|)
+expr_stmt|;
+comment|/* 		 * make sure symlinks are resolved because we'll be 		 * moving the target repo later on in separate_git_dir() 		 */
+name|git_link
+operator|=
+name|xstrdup
+argument_list|(
+name|real_path
+argument_list|(
+name|git_dir
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|real_git_dir
+operator|=
+name|real_path
+argument_list|(
+name|git_dir
+argument_list|)
+expr_stmt|;
+name|git_link
+operator|=
+name|NULL
+expr_stmt|;
+block|}
+name|set_git_dir
+argument_list|(
+name|real_path
+argument_list|(
+name|real_git_dir
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return
+literal|0
+return|;
+block|}
+end_function
+
+begin_function
+DECL|function|separate_git_dir
+specifier|static
+name|void
+name|separate_git_dir
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|git_dir
+parameter_list|)
+block|{
+name|struct
+name|stat
+name|st
+decl_stmt|;
+name|FILE
+modifier|*
+name|fp
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|stat
+argument_list|(
+name|git_link
+argument_list|,
+operator|&
+name|st
+argument_list|)
+condition|)
+block|{
+specifier|const
+name|char
+modifier|*
+name|src
+decl_stmt|;
+if|if
+condition|(
+name|S_ISREG
+argument_list|(
+name|st
+operator|.
+name|st_mode
+argument_list|)
+condition|)
+name|src
+operator|=
+name|read_gitfile_gently
+argument_list|(
+name|git_link
+argument_list|)
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|S_ISDIR
+argument_list|(
+name|st
+operator|.
+name|st_mode
+argument_list|)
+condition|)
+name|src
+operator|=
+name|git_link
+expr_stmt|;
+else|else
+name|die
+argument_list|(
+literal|"unable to handle file type %d"
+argument_list|,
+name|st
+operator|.
+name|st_mode
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|rename
+argument_list|(
+name|src
+argument_list|,
+name|git_dir
+argument_list|)
+condition|)
+name|die_errno
+argument_list|(
+literal|"unable to move %s to %s"
+argument_list|,
+name|src
+argument_list|,
+name|git_dir
+argument_list|)
+expr_stmt|;
+block|}
+name|fp
+operator|=
+name|fopen
+argument_list|(
+name|git_link
+argument_list|,
+literal|"w"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|fp
+condition|)
+name|die
+argument_list|(
+literal|"Could not create git link %s"
+argument_list|,
+name|git_link
+argument_list|)
+expr_stmt|;
+name|fprintf
+argument_list|(
+name|fp
+argument_list|,
+literal|"gitdir: %s\n"
+argument_list|,
+name|git_dir
+argument_list|)
+expr_stmt|;
+name|fclose
+argument_list|(
+name|fp
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
 DECL|function|init_db
 name|int
 name|init_db
@@ -1611,10 +1907,26 @@ block|{
 name|int
 name|reinit
 decl_stmt|;
-name|safe_create_dir
-argument_list|(
+specifier|const
+name|char
+modifier|*
+name|git_dir
+init|=
 name|get_git_dir
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|git_link
+condition|)
+name|separate_git_dir
+argument_list|(
+name|git_dir
+argument_list|)
+expr_stmt|;
+name|safe_create_dir
+argument_list|(
+name|git_dir
 argument_list|,
 literal|0
 argument_list|)
@@ -1730,14 +2042,6 @@ name|INIT_DB_QUIET
 operator|)
 condition|)
 block|{
-specifier|const
-name|char
-modifier|*
-name|git_dir
-init|=
-name|get_git_dir
-argument_list|()
-decl_stmt|;
 name|int
 name|len
 init|=
@@ -1746,19 +2050,32 @@ argument_list|(
 name|git_dir
 argument_list|)
 decl_stmt|;
+comment|/* 		 * TRANSLATORS: The first '%s' is either "Reinitialized 		 * existing" or "Initialized empty", the second " shared" or 		 * "", and the last '%s%s' is the verbatim directory name. 		 */
 name|printf
 argument_list|(
+name|_
+argument_list|(
 literal|"%s%s Git repository in %s%s\n"
+argument_list|)
 argument_list|,
 name|reinit
 condition|?
+name|_
+argument_list|(
 literal|"Reinitialized existing"
+argument_list|)
 else|:
+name|_
+argument_list|(
 literal|"Initialized empty"
+argument_list|)
 argument_list|,
 name|shared_repository
 condition|?
+name|_
+argument_list|(
 literal|" shared"
+argument_list|)
 else|:
 literal|""
 argument_list|,
@@ -1839,7 +2156,10 @@ argument_list|)
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"cannot tell cwd"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -2001,6 +2321,13 @@ decl_stmt|;
 specifier|const
 name|char
 modifier|*
+name|real_git_dir
+init|=
+name|NULL
+decl_stmt|;
+specifier|const
+name|char
+modifier|*
 name|work_tree
 decl_stmt|;
 specifier|const
@@ -2088,6 +2415,20 @@ argument_list|,
 name|INIT_DB_QUIET
 argument_list|)
 block|,
+name|OPT_STRING
+argument_list|(
+literal|'L'
+argument_list|,
+literal|"separate-git-dir"
+argument_list|,
+operator|&
+name|real_git_dir
+argument_list|,
+literal|"gitdir"
+argument_list|,
+literal|"separate git dir from working tree"
+argument_list|)
+block|,
 name|OPT_END
 argument_list|()
 block|}
@@ -2107,6 +2448,26 @@ argument_list|,
 name|init_db_usage
 argument_list|,
 literal|0
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|real_git_dir
+operator|&&
+operator|!
+name|is_absolute_path
+argument_list|(
+name|real_git_dir
+argument_list|)
+condition|)
+name|real_git_dir
+operator|=
+name|xstrdup
+argument_list|(
+name|real_path
+argument_list|(
+name|real_git_dir
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -2180,7 +2541,10 @@ literal|1
 case|:
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"cannot mkdir %s"
+argument_list|)
 argument_list|,
 name|argv
 index|[
@@ -2212,7 +2576,10 @@ literal|0
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"cannot mkdir %s"
+argument_list|)
 argument_list|,
 name|argv
 index|[
@@ -2230,7 +2597,10 @@ goto|;
 block|}
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"cannot chdir to %s"
+argument_list|)
 argument_list|,
 name|argv
 index|[
@@ -2334,8 +2704,11 @@ name|work_tree
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"%s (or --work-tree=<directory>) not allowed without "
 literal|"specifying %s (or --git-dir=<directory>)"
+argument_list|)
 argument_list|,
 name|GIT_WORK_TREE_ENVIRONMENT
 argument_list|,
@@ -2405,7 +2778,7 @@ name|git_work_tree_cfg
 operator|=
 name|xstrdup
 argument_list|(
-name|make_absolute_path
+name|real_path
 argument_list|(
 name|rel
 argument_list|)
@@ -2444,7 +2817,10 @@ argument_list|)
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"Cannot access current working directory"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2454,7 +2830,7 @@ name|work_tree
 condition|)
 name|set_git_work_tree
 argument_list|(
-name|make_absolute_path
+name|real_path
 argument_list|(
 name|work_tree
 argument_list|)
@@ -2478,7 +2854,10 @@ argument_list|)
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"Cannot access work tree '%s'"
+argument_list|)
 argument_list|,
 name|get_git_work_tree
 argument_list|()
@@ -2493,19 +2872,20 @@ name|work_tree
 condition|)
 name|set_git_work_tree
 argument_list|(
-name|make_absolute_path
+name|real_path
 argument_list|(
 name|work_tree
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|set_git_dir
-argument_list|(
-name|make_absolute_path
+name|set_git_dir_init
 argument_list|(
 name|git_dir
-argument_list|)
+argument_list|,
+name|real_git_dir
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 return|return

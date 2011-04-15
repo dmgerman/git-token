@@ -420,6 +420,7 @@ end_function
 
 begin_function
 DECL|function|remove_ext_force
+specifier|static
 specifier|const
 name|char
 modifier|*
@@ -3151,17 +3152,10 @@ init|=
 name|STRBUF_INIT
 decl_stmt|;
 name|struct
-name|child_process
-modifier|*
-name|helper
-decl_stmt|;
-name|struct
 name|ref
 modifier|*
 name|ref
 decl_stmt|;
-name|helper
-operator|=
 name|get_helper
 argument_list|(
 name|transport
@@ -5260,7 +5254,7 @@ modifier|*
 name|t
 parameter_list|)
 block|{
-name|size_t
+name|ssize_t
 name|bytes
 decl_stmt|;
 if|if

@@ -218,6 +218,14 @@ literal|"--min-age="
 block|,
 literal|"--no-merges"
 block|,
+literal|"--min-parents="
+block|,
+literal|"--no-min-parents"
+block|,
+literal|"--max-parents="
+block|,
+literal|"--no-max-parents"
+block|,
 literal|"--objects"
 block|,
 literal|"--objects-edge"

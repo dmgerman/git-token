@@ -1080,6 +1080,7 @@ end_empty_stmt
 begin_function
 DECL|function|bad_object
 specifier|static
+name|NORETURN
 name|void
 name|bad_object
 parameter_list|(
@@ -1539,7 +1540,7 @@ name|crc32
 argument_list|(
 literal|0
 argument_list|,
-name|Z_NULL
+name|NULL
 argument_list|,
 literal|0
 argument_list|)
