@@ -6881,10 +6881,20 @@ name|person
 operator|<
 name|tmp
 operator|&&
+operator|!
+operator|(
 operator|*
 name|tmp
-operator|!=
+operator|==
 literal|' '
+operator|&&
+name|tmp
+index|[
+literal|1
+index|]
+operator|==
+literal|'<'
+operator|)
 condition|)
 name|tmp
 operator|--
