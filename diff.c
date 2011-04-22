@@ -25349,7 +25349,9 @@ end_function
 
 begin_function
 DECL|function|diff_unmerge
-name|void
+name|struct
+name|diff_filepair
+modifier|*
 name|diff_unmerge
 parameter_list|(
 name|struct
@@ -25372,6 +25374,11 @@ modifier|*
 name|sha1
 parameter_list|)
 block|{
+name|struct
+name|diff_filepair
+modifier|*
+name|pair
+decl_stmt|;
 name|struct
 name|diff_filespec
 modifier|*
@@ -25399,7 +25406,9 @@ operator|->
 name|prefix_length
 argument_list|)
 condition|)
-return|return;
+return|return
+name|NULL
+return|;
 name|one
 operator|=
 name|alloc_filespec
@@ -25423,6 +25432,8 @@ argument_list|,
 name|mode
 argument_list|)
 expr_stmt|;
+name|pair
+operator|=
 name|diff_queue
 argument_list|(
 operator|&
@@ -25432,11 +25443,16 @@ name|one
 argument_list|,
 name|two
 argument_list|)
+expr_stmt|;
+name|pair
 operator|->
 name|is_unmerged
 operator|=
 literal|1
 expr_stmt|;
+return|return
+name|pair
+return|;
 block|}
 end_function
 
