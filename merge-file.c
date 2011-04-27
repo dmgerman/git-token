@@ -29,6 +29,12 @@ directive|include
 file|"blob.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"merge-file.h"
+end_include
+
 begin_function
 DECL|function|fill_mmfile_blob
 specifier|static

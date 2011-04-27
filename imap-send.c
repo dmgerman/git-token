@@ -6878,7 +6878,7 @@ name|imap_exec
 argument_list|(
 name|ctx
 argument_list|,
-literal|0
+name|NULL
 argument_list|,
 literal|"STARTTLS"
 argument_list|)
@@ -6916,7 +6916,7 @@ name|imap_exec
 argument_list|(
 name|ctx
 argument_list|,
-literal|0
+name|NULL
 argument_list|,
 literal|"CAPABILITY"
 argument_list|)

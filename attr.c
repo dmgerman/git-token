@@ -2512,6 +2512,7 @@ end_function
 
 begin_function
 DECL|function|git_etc_gitattributes
+specifier|static
 specifier|const
 name|char
 modifier|*
@@ -2546,6 +2547,7 @@ end_function
 
 begin_function
 DECL|function|git_attr_system
+specifier|static
 name|int
 name|git_attr_system
 parameter_list|(
