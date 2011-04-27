@@ -218,6 +218,17 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|abbrev
+specifier|static
+name|int
+name|abbrev
+init|=
+operator|-
+literal|1
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|blame_date_mode
 specifier|static
 name|enum
@@ -8485,7 +8496,7 @@ operator|)
 condition|?
 literal|40
 else|:
-literal|8
+name|abbrev
 decl_stmt|;
 if|if
 condition|(
@@ -12076,6 +12087,12 @@ argument_list|,
 name|blame_bottomtop_callback
 argument_list|)
 block|,
+name|OPT__ABBREV
+argument_list|(
+operator|&
+name|abbrev
+argument_list|)
+block|,
 name|OPT_END
 argument_list|()
 block|}
@@ -12257,6 +12274,21 @@ argument_list|(
 operator|&
 name|ctx
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|abbrev
+operator|==
+operator|-
+literal|1
+condition|)
+name|abbrev
+operator|=
+name|default_abbrev
+expr_stmt|;
+comment|/* one more abbrev length is needed for the boundary commit */
+name|abbrev
+operator|++
 expr_stmt|;
 if|if
 condition|(
