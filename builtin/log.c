@@ -3495,6 +3495,9 @@ name|struct
 name|rev_info
 modifier|*
 name|rev
+parameter_list|,
+name|int
+name|quiet
 parameter_list|)
 block|{
 name|struct
@@ -3588,15 +3591,7 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|DIFF_OPT_TST
-argument_list|(
-operator|&
-name|rev
-operator|->
-name|diffopt
-argument_list|,
-name|QUICK
-argument_list|)
+name|quiet
 condition|)
 name|fprintf
 argument_list|(
@@ -4115,6 +4110,9 @@ name|struct
 name|commit
 modifier|*
 name|head
+parameter_list|,
+name|int
+name|quiet
 parameter_list|)
 block|{
 specifier|const
@@ -4277,6 +4275,8 @@ argument_list|(
 name|commit
 argument_list|,
 name|rev
+argument_list|,
+name|quiet
 argument_list|)
 condition|)
 return|return;
@@ -5597,6 +5597,11 @@ name|use_patch_format
 init|=
 literal|0
 decl_stmt|;
+name|int
+name|quiet
+init|=
+literal|0
+decl_stmt|;
 specifier|const
 name|struct
 name|option
@@ -5962,6 +5967,18 @@ argument_list|,
 literal|"signature"
 argument_list|,
 literal|"add a signature"
+argument_list|)
+block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|0
+argument_list|,
+literal|"quiet"
+argument_list|,
+operator|&
+name|quiet
+argument_list|,
+literal|"don't print the patch filenames"
 argument_list|)
 block|,
 name|OPT_END
@@ -7115,6 +7132,8 @@ argument_list|,
 name|list
 argument_list|,
 name|head
+argument_list|,
+name|quiet
 argument_list|)
 expr_stmt|;
 name|total
@@ -7253,6 +7272,8 @@ name|commit
 argument_list|,
 operator|&
 name|rev
+argument_list|,
+name|quiet
 argument_list|)
 condition|)
 name|die
