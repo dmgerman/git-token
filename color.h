@@ -234,6 +234,28 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
+comment|/* A default list of colors to use for commit graphs and show-branch output */
+end_comment
+
+begin_decl_stmt
+specifier|extern
+specifier|const
+name|char
+modifier|*
+name|column_colors_ansi
+index|[]
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
+specifier|const
+name|int
+name|column_colors_ansi_max
+decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|/*  * Use this instead of git_default_config if you need the value of color.ui.  */
 end_comment
 
