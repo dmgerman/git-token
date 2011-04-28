@@ -2782,6 +2782,17 @@ name|slot
 operator|->
 name|curl
 argument_list|,
+name|CURLOPT_POSTFIELDS
+argument_list|,
+name|NULL
+argument_list|)
+expr_stmt|;
+name|curl_easy_setopt
+argument_list|(
+name|slot
+operator|->
+name|curl
+argument_list|,
 name|CURLOPT_UPLOAD
 argument_list|,
 literal|0
