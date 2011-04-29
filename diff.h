@@ -713,9 +713,9 @@ DECL|member|show_rename_progress
 name|int
 name|show_rename_progress
 decl_stmt|;
-DECL|member|dirstat_percent
+DECL|member|dirstat_permille
 name|int
-name|dirstat_percent
+name|dirstat_permille
 decl_stmt|;
 DECL|member|setup
 name|int
