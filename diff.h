@@ -515,6 +515,14 @@ value|(1<< 27)
 end_define
 
 begin_define
+DECL|macro|DIFF_OPT_DIRSTAT_BY_LINE
+define|#
+directive|define
+name|DIFF_OPT_DIRSTAT_BY_LINE
+value|(1<< 28)
+end_define
+
+begin_define
 DECL|macro|DIFF_OPT_TST
 define|#
 directive|define
