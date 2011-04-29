@@ -2452,8 +2452,6 @@ decl_stmt|;
 name|int
 name|num_create
 decl_stmt|,
-name|num_src
-decl_stmt|,
 name|dst_cnt
 decl_stmt|;
 name|struct
@@ -2656,10 +2654,6 @@ name|rename_dst_nr
 operator|-
 name|rename_count
 operator|)
-expr_stmt|;
-name|num_src
-operator|=
-name|rename_src_nr
 expr_stmt|;
 comment|/* All done? */
 if|if
