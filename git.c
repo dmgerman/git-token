@@ -42,7 +42,7 @@ name|char
 name|git_usage_string
 index|[]
 init|=
-literal|"git [--version] [--exec-path[=<path>]] [--html-path]\n"
+literal|"git [--version] [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n"
 literal|"           [-p|--paginate|--no-pager] [--no-replace-objects]\n"
 literal|"           [--bare] [--git-dir=<path>] [--work-tree=<path>]\n"
 literal|"           [-c name=value] [--help]\n"
@@ -449,6 +449,58 @@ argument_list|(
 name|system_path
 argument_list|(
 name|GIT_HTML_PATH
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|exit
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|cmd
+argument_list|,
+literal|"--man-path"
+argument_list|)
+condition|)
+block|{
+name|puts
+argument_list|(
+name|system_path
+argument_list|(
+name|GIT_MAN_PATH
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|exit
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|cmd
+argument_list|,
+literal|"--info-path"
+argument_list|)
+condition|)
+block|{
+name|puts
+argument_list|(
+name|system_path
+argument_list|(
+name|GIT_INFO_PATH
 argument_list|)
 argument_list|)
 expr_stmt|;
