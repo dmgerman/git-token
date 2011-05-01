@@ -16,12 +16,6 @@ begin_comment
 comment|/* See Documentation/technical/api-strbuf.txt */
 end_comment
 
-begin_include
-include|#
-directive|include
-file|<assert.h>
-end_include
-
 begin_decl_stmt
 specifier|extern
 name|char
@@ -234,25 +228,25 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|!
-name|sb
-operator|->
-name|alloc
-condition|)
-name|strbuf_grow
-argument_list|(
-name|sb
-argument_list|,
-literal|0
-argument_list|)
-expr_stmt|;
-name|assert
-argument_list|(
 name|len
-operator|<
+operator|>
+operator|(
 name|sb
 operator|->
 name|alloc
+condition|?
+name|sb
+operator|->
+name|alloc
+operator|-
+literal|1
+else|:
+literal|0
+operator|)
+condition|)
+name|die
+argument_list|(
+literal|"BUG: strbuf_setlen() beyond buffer"
 argument_list|)
 expr_stmt|;
 name|sb
