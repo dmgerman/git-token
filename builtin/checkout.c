@@ -3779,7 +3779,10 @@ argument_list|(
 operator|&
 name|sb
 argument_list|,
+name|_
+argument_list|(
 literal|" ... and %d more.\n"
+argument_list|)
 argument_list|,
 name|more
 argument_list|)
@@ -3789,7 +3792,19 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Warning: you are leaving %d commit%s behind, "
+name|Q_
+argument_list|(
+comment|/* The singular version */
+literal|"Warning: you are leaving %d commit behind, "
+literal|"not connected to\n"
+literal|"any of your branches:\n\n"
+literal|"%s\n"
+literal|"If you want to keep it by creating a new branch, "
+literal|"this may be a good time\nto do so with:\n\n"
+literal|" git branch new_branch_name %s\n\n"
+argument_list|,
+comment|/* The plural version */
+literal|"Warning: you are leaving %d commits behind, "
 literal|"not connected to\n"
 literal|"any of your branches:\n\n"
 literal|"%s\n"
@@ -3797,19 +3812,11 @@ literal|"If you want to keep them by creating a new branch, "
 literal|"this may be a good time\nto do so with:\n\n"
 literal|" git branch new_branch_name %s\n\n"
 argument_list|,
+comment|/* Give ngettext() the count */
 name|lost
+argument_list|)
 argument_list|,
-operator|(
-operator|(
-literal|1
-operator|<
 name|lost
-operator|)
-condition|?
-literal|"s"
-else|:
-literal|""
-operator|)
 argument_list|,
 name|sb
 operator|.
@@ -5394,7 +5401,10 @@ operator|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--detach cannot be used with -b/-B/--orphan"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -5411,7 +5421,10 @@ name|track
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--detach cannot be used with -t"
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* --track without -b should DWIM */
@@ -5781,7 +5794,10 @@ name|force_detach
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"git checkout: --detach does not take a path argument"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
