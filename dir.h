@@ -594,17 +594,9 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|char
-modifier|*
-name|get_relative_cwd
-parameter_list|(
-name|char
-modifier|*
-name|buffer
-parameter_list|,
 name|int
-name|size
-parameter_list|,
+name|is_inside_dir
+parameter_list|(
 specifier|const
 name|char
 modifier|*
@@ -616,8 +608,13 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|int
-name|is_inside_dir
+name|dir_inside_of
 parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|subdir
+parameter_list|,
 specifier|const
 name|char
 modifier|*

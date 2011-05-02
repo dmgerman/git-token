@@ -1609,6 +1609,9 @@ name|char
 modifier|*
 name|gitfile
 decl_stmt|;
+name|int
+name|offset
+decl_stmt|;
 if|if
 condition|(
 name|PATH_MAX
@@ -1884,28 +1887,23 @@ return|return
 name|NULL
 return|;
 block|}
-if|if
-condition|(
-operator|!
-name|prefixcmp
+name|offset
+operator|=
+name|dir_inside_of
 argument_list|(
 name|cwd
 argument_list|,
 name|worktree
 argument_list|)
-operator|&&
-name|cwd
-index|[
-name|strlen
-argument_list|(
-name|worktree
-argument_list|)
-index|]
-operator|==
-literal|'/'
+expr_stmt|;
+if|if
+condition|(
+name|offset
+operator|>=
+literal|0
 condition|)
 block|{
-comment|/* cwd inside worktree */
+comment|/* cwd inside worktree? */
 name|set_git_dir
 argument_list|(
 name|real_path
@@ -1951,12 +1949,7 @@ expr_stmt|;
 return|return
 name|cwd
 operator|+
-name|strlen
-argument_list|(
-name|worktree
-argument_list|)
-operator|+
-literal|1
+name|offset
 return|;
 block|}
 comment|/* cwd outside worktree */
