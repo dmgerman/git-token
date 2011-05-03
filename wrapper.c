@@ -1022,7 +1022,7 @@ name|origtemplate
 expr_stmt|;
 name|nonrelative_template
 operator|=
-name|make_nonrelative_path
+name|absolute_path
 argument_list|(
 name|template
 argument_list|)
@@ -1686,7 +1686,7 @@ name|origtemplate
 expr_stmt|;
 name|nonrelative_template
 operator|=
-name|make_nonrelative_path
+name|absolute_path
 argument_list|(
 name|template
 argument_list|)

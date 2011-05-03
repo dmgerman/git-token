@@ -928,11 +928,7 @@ if|if
 condition|(
 name|flags
 operator|&
-operator|(
-name|FL_SYMLINK
-operator||
 name|FL_NOENT
-operator|)
 condition|)
 return|return
 literal|0

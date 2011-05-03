@@ -187,6 +187,7 @@ end_struct
 
 begin_function
 DECL|function|init_src_data
+specifier|static
 name|void
 name|init_src_data
 parameter_list|(

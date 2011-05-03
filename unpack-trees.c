@@ -66,6 +66,7 @@ end_comment
 
 begin_decl_stmt
 DECL|variable|unpack_plumbing_errors
+specifier|static
 specifier|const
 name|char
 modifier|*

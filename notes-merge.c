@@ -1983,7 +1983,7 @@ name|o
 operator|->
 name|remote_ref
 argument_list|,
-literal|0
+name|NULL
 argument_list|)
 expr_stmt|;
 name|free

@@ -81,7 +81,10 @@ literal|0
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"could not create archive file '%s'"
+argument_list|)
 argument_list|,
 name|output_file
 argument_list|)
@@ -106,7 +109,10 @@ literal|0
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"could not redirect output"
+argument_list|)
 argument_list|)
 expr_stmt|;
 else|else
@@ -192,7 +198,10 @@ index|]
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"git archive: Remote with no URL"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|transport
@@ -280,7 +289,10 @@ name|len
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"git archive: expected ACK/NAK, got EOF"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -328,7 +340,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"git archive: NACK %s"
+argument_list|)
 argument_list|,
 name|buf
 operator|+
@@ -337,7 +352,10 @@ argument_list|)
 expr_stmt|;
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"git archive: protocol error"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -364,7 +382,10 @@ name|len
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"git archive: expected a flush"
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* Now, start reading from fd[0] and spit it out to stdout */

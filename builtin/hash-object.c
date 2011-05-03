@@ -6,7 +6,7 @@ end_comment
 begin_include
 include|#
 directive|include
-file|"cache.h"
+file|"builtin.h"
 end_include
 
 begin_include
@@ -96,6 +96,8 @@ name|type
 argument_list|)
 argument_list|,
 name|path
+argument_list|,
+literal|1
 argument_list|)
 condition|)
 name|die

@@ -516,7 +516,7 @@ name|v
 parameter_list|,
 name|h
 parameter_list|)
-value|{ OPTION_FILENAME, (s), (l), (v), \ 				       "FILE", (h) }
+value|{ OPTION_FILENAME, (s), (l), (v), \ 				       "file", (h) }
 end_define
 
 begin_define

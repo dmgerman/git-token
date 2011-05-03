@@ -167,24 +167,22 @@ begin_comment
 comment|/* Treap for directory entries */
 end_comment
 
-begin_expr_stmt
+begin_macro
 name|trp_gen
 argument_list|(
-specifier|static
+argument|static
 argument_list|,
-name|dent_
+argument|dent_
 argument_list|,
-expr|struct
-name|repo_dirent
+argument|struct repo_dirent
 argument_list|,
-name|children
+argument|children
 argument_list|,
-name|dent
+argument|dent
 argument_list|,
-name|repo_dirent_name_cmp
+argument|repo_dirent_name_cmp
 argument_list|)
-expr_stmt|;
-end_expr_stmt
+end_macro
 
 begin_function
 DECL|function|next_blob_mark

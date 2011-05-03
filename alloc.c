@@ -140,37 +140,6 @@ argument|union any_object
 argument_list|)
 end_macro
 
-begin_ifdef
-ifdef|#
-directive|ifdef
-name|NO_C99_FORMAT
-end_ifdef
-
-begin_define
-DECL|macro|SZ_FMT
-define|#
-directive|define
-name|SZ_FMT
-value|"%u"
-end_define
-
-begin_else
-else|#
-directive|else
-end_else
-
-begin_define
-define|#
-directive|define
-name|SZ_FMT
-value|"%zu"
-end_define
-
-begin_endif
-endif|#
-directive|endif
-end_endif
-
 begin_function
 DECL|function|report
 specifier|static
@@ -194,26 +163,22 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"%10s: %8u ("
-name|SZ_FMT
+literal|"%10s: %8u (%"
+name|PRIuMAX
 literal|" kB)\n"
 argument_list|,
 name|name
 argument_list|,
 name|count
 argument_list|,
+operator|(
+name|uintmax_t
+operator|)
 name|size
 argument_list|)
 expr_stmt|;
 block|}
 end_function
-
-begin_undef
-DECL|macro|SZ_FMT
-undef|#
-directive|undef
-name|SZ_FMT
-end_undef
 
 begin_define
 DECL|macro|REPORT

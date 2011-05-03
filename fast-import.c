@@ -4481,6 +4481,12 @@ name|pack_fd
 operator|=
 name|pack_fd
 expr_stmt|;
+name|p
+operator|->
+name|do_not_close
+operator|=
+literal|1
+expr_stmt|;
 name|pack_file
 operator|=
 name|sha1fd
@@ -16786,7 +16792,7 @@ name|tree_entry
 name|leaf
 init|=
 block|{
-literal|0
+name|NULL
 block|}
 decl_stmt|;
 comment|/* ls SP (<treeish> SP)?<path> */

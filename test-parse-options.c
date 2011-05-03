@@ -369,7 +369,7 @@ argument_list|,
 operator|&
 name|file
 argument_list|,
-literal|"set file to<FILE>"
+literal|"set file to<file>"
 argument_list|)
 block|,
 name|OPT_GROUP

@@ -64,6 +64,20 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|minimum_abbrev
+DECL|variable|default_abbrev
+name|int
+name|minimum_abbrev
+init|=
+literal|4
+decl_stmt|,
+name|default_abbrev
+init|=
+literal|7
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|ignore_case
 name|int
 name|ignore_case
@@ -120,13 +134,6 @@ name|int
 name|warn_ambiguous_refs
 init|=
 literal|1
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-DECL|variable|unique_abbrev_extra_length
-name|int
-name|unique_abbrev_extra_length
 decl_stmt|;
 end_decl_stmt
 
@@ -783,7 +790,7 @@ condition|)
 block|{
 name|new_work_tree
 operator|=
-name|make_absolute_path
+name|real_path
 argument_list|(
 name|new_work_tree
 argument_list|)
@@ -817,7 +824,7 @@ name|work_tree
 operator|=
 name|xstrdup
 argument_list|(
-name|make_absolute_path
+name|real_path
 argument_list|(
 name|new_work_tree
 argument_list|)

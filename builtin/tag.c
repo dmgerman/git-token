@@ -585,7 +585,10 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"tag name too long: %.*s..."
+argument_list|)
 argument_list|,
 literal|50
 argument_list|,
@@ -616,7 +619,10 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"tag '%s' not found."
+argument_list|)
 argument_list|,
 operator|*
 name|p
@@ -690,7 +696,10 @@ literal|1
 return|;
 name|printf
 argument_list|(
+name|_
+argument_list|(
 literal|"Deleted tag '%s' (was %s)\n"
+argument_list|)
 argument_list|,
 name|name
 argument_list|,
@@ -769,7 +778,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"could not verify the tag '%s'"
+argument_list|)
 argument_list|,
 name|name
 argument_list|)
@@ -850,7 +862,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"committer info too long."
+argument_list|)
 argument_list|)
 return|;
 name|bracket
@@ -954,7 +969,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"could not run gpg."
+argument_list|)
 argument_list|)
 return|;
 if|if
@@ -1002,7 +1020,10 @@ expr_stmt|;
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"gpg did not accept the tag data"
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -1051,7 +1072,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"gpg failed to sign the tag"
+argument_list|)
 argument_list|)
 return|;
 comment|/* Strip CR from the line endings, in case we are on Windows. */
@@ -1129,10 +1153,13 @@ name|char
 name|tag_template
 index|[]
 init|=
+name|N_
+argument_list|(
 literal|"\n"
 literal|"#\n"
 literal|"# Write a tag message\n"
 literal|"#\n"
+argument_list|)
 decl_stmt|;
 end_decl_stmt
 
@@ -1169,7 +1196,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"signing key value too long (%.10s...)"
+argument_list|)
 argument_list|,
 name|value
 argument_list|)
@@ -1387,7 +1417,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"unable to sign the tag"
+argument_list|)
 argument_list|)
 return|;
 if|if
@@ -1412,7 +1445,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"unable to write tag file"
+argument_list|)
 argument_list|)
 return|;
 return|return
@@ -1496,7 +1532,10 @@ name|OBJ_NONE
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"bad object type."
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|header_len
@@ -1546,7 +1585,10 @@ literal|1
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"tag header too big."
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -1589,7 +1631,10 @@ literal|0
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"could not create file '%s'"
+argument_list|)
 argument_list|,
 name|path
 argument_list|)
@@ -1614,11 +1659,17 @@ name|write_or_die
 argument_list|(
 name|fd
 argument_list|,
+name|_
+argument_list|(
 name|tag_template
+argument_list|)
 argument_list|,
 name|strlen
 argument_list|(
+name|_
+argument_list|(
 name|tag_template
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1643,7 +1694,10 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
+name|_
+argument_list|(
 literal|"Please supply the message using either -m or -F option.\n"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|exit
@@ -1672,7 +1726,10 @@ name|len
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"no tag message?"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|strbuf_insert
@@ -1708,7 +1765,10 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
+name|_
+argument_list|(
 literal|"The tag message has been left in %s\n"
+argument_list|)
 argument_list|,
 name|path
 argument_list|)
@@ -2044,7 +2104,7 @@ argument_list|,
 operator|&
 name|msg
 argument_list|,
-literal|"MESSAGE"
+literal|"message"
 argument_list|,
 literal|"tag message"
 argument_list|,
@@ -2273,7 +2333,10 @@ literal|1
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"-n option is only allowed with -l."
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -2282,7 +2345,10 @@ name|with_commit
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--contains option is only allowed with -l."
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -2328,7 +2394,10 @@ name|msgfile
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"only one -F or -m option is allowed."
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|annotate
@@ -2383,7 +2452,10 @@ literal|0
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"cannot read '%s'"
+argument_list|)
 argument_list|,
 name|msgfile
 argument_list|)
@@ -2407,7 +2479,10 @@ literal|0
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"could not open or read '%s'"
+argument_list|)
 argument_list|,
 name|msgfile
 argument_list|)
@@ -2443,7 +2518,10 @@ literal|2
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"too many params"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -2457,7 +2535,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Failed to resolve '%s' as a valid ref."
+argument_list|)
 argument_list|,
 name|object_ref
 argument_list|)
@@ -2487,7 +2568,10 @@ literal|1
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"tag name too long: %.*s..."
+argument_list|)
 argument_list|,
 literal|50
 argument_list|,
@@ -2503,7 +2587,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"'%s' is not a valid tag name."
+argument_list|)
 argument_list|,
 name|tag
 argument_list|)
@@ -2535,7 +2622,10 @@ name|force
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"tag '%s' already exists"
+argument_list|)
 argument_list|,
 name|tag
 argument_list|)
@@ -2584,7 +2674,10 @@ name|lock
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"%s: cannot lock the ref"
+argument_list|)
 argument_list|,
 name|ref
 argument_list|)
@@ -2604,7 +2697,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"%s: cannot update the ref"
+argument_list|)
 argument_list|,
 name|ref
 argument_list|)
@@ -2622,7 +2718,10 @@ argument_list|)
 condition|)
 name|printf
 argument_list|(
+name|_
+argument_list|(
 literal|"Updated tag '%s' (was %s)\n"
+argument_list|)
 argument_list|,
 name|tag
 argument_list|,

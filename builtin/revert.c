@@ -32,12 +32,6 @@ end_include
 begin_include
 include|#
 directive|include
-file|"wt-status.h"
-end_include
-
-begin_include
-include|#
-directive|include
 file|"run-command.h"
 end_include
 
@@ -418,17 +412,28 @@ argument_list|,
 literal|"edit the commit message"
 argument_list|)
 block|,
-name|OPT_BOOLEAN
-argument_list|(
+block|{
+name|OPTION_BOOLEAN
+block|,
 literal|'r'
-argument_list|,
+block|,
 name|NULL
-argument_list|,
+block|,
 operator|&
 name|noop
-argument_list|,
+block|,
+name|NULL
+block|,
 literal|"no-op (backward compatibility)"
-argument_list|)
+block|,
+name|PARSE_OPT_NOARG
+operator||
+name|PARSE_OPT_HIDDEN
+block|,
+name|NULL
+block|,
+literal|0
+block|}
 block|,
 name|OPT_BOOLEAN
 argument_list|(
@@ -557,7 +562,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"program error"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -951,7 +959,10 @@ name|p
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not read commit message of %s"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -1140,32 +1151,29 @@ block|}
 end_function
 
 begin_function
-DECL|function|set_author_ident_env
+DECL|function|write_cherry_pick_head
 specifier|static
 name|void
-name|set_author_ident_env
+name|write_cherry_pick_head
 parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|message
+name|void
 parameter_list|)
 block|{
-specifier|const
-name|char
-modifier|*
-name|p
+name|int
+name|fd
+decl_stmt|;
+name|struct
+name|strbuf
+name|buf
 init|=
-name|message
+name|STRBUF_INIT
 decl_stmt|;
-if|if
-condition|(
-operator|!
-name|p
-condition|)
-name|die
+name|strbuf_addf
 argument_list|(
-literal|"Could not read commit message of %s"
+operator|&
+name|buf
+argument_list|,
+literal|"%s\n"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -1177,267 +1185,82 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
-while|while
+name|fd
+operator|=
+name|open
+argument_list|(
+name|git_path
+argument_list|(
+literal|"CHERRY_PICK_HEAD"
+argument_list|)
+argument_list|,
+name|O_WRONLY
+operator||
+name|O_CREAT
+argument_list|,
+literal|0666
+argument_list|)
+expr_stmt|;
+if|if
 condition|(
-operator|*
-name|p
-operator|&&
-operator|*
-name|p
+name|fd
+operator|<
+literal|0
+condition|)
+name|die_errno
+argument_list|(
+name|_
+argument_list|(
+literal|"Could not open '%s' for writing"
+argument_list|)
+argument_list|,
+name|git_path
+argument_list|(
+literal|"CHERRY_PICK_HEAD"
+argument_list|)
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|write_in_full
+argument_list|(
+name|fd
+argument_list|,
+name|buf
+operator|.
+name|buf
+argument_list|,
+name|buf
+operator|.
+name|len
+argument_list|)
 operator|!=
-literal|'\n'
-condition|)
-block|{
-specifier|const
-name|char
-modifier|*
-name|eol
-decl_stmt|;
-for|for
-control|(
-name|eol
-operator|=
-name|p
-init|;
-operator|*
-name|eol
-operator|&&
-operator|*
-name|eol
-operator|!=
-literal|'\n'
-condition|;
-name|eol
-operator|++
-control|)
-empty_stmt|;
-comment|/* do nothing */
-if|if
-condition|(
-operator|!
-name|prefixcmp
-argument_list|(
-name|p
-argument_list|,
-literal|"author "
-argument_list|)
-condition|)
-block|{
-name|char
-modifier|*
-name|line
-decl_stmt|,
-modifier|*
-name|pend
-decl_stmt|,
-modifier|*
-name|email
-decl_stmt|,
-modifier|*
-name|timestamp
-decl_stmt|;
-name|p
-operator|+=
-literal|7
-expr_stmt|;
-name|line
-operator|=
-name|xmemdupz
-argument_list|(
-name|p
-argument_list|,
-name|eol
-operator|-
-name|p
-argument_list|)
-expr_stmt|;
-name|email
-operator|=
-name|strchr
-argument_list|(
-name|line
-argument_list|,
-literal|'<'
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-operator|!
-name|email
-condition|)
-name|die
-argument_list|(
-literal|"Could not extract author email from %s"
-argument_list|,
-name|sha1_to_hex
-argument_list|(
-name|commit
-operator|->
-name|object
+name|buf
 operator|.
-name|sha1
+name|len
+operator|||
+name|close
+argument_list|(
+name|fd
 argument_list|)
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|email
-operator|==
-name|line
 condition|)
-name|pend
-operator|=
-name|line
-expr_stmt|;
-else|else
-for|for
-control|(
-name|pend
-operator|=
-name|email
-init|;
-name|pend
-operator|!=
-name|line
-operator|+
-literal|1
-operator|&&
-name|isspace
+name|die_errno
 argument_list|(
-name|pend
-index|[
-operator|-
-literal|1
-index|]
+name|_
+argument_list|(
+literal|"Could not write to '%s'"
 argument_list|)
-condition|;
-name|pend
-operator|--
-control|)
-empty_stmt|;
-empty_stmt|;
-comment|/* do nothing */
-operator|*
-name|pend
-operator|=
-literal|'\0'
-expr_stmt|;
-name|email
-operator|++
-expr_stmt|;
-name|timestamp
-operator|=
-name|strchr
-argument_list|(
-name|email
 argument_list|,
-literal|'>'
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-operator|!
-name|timestamp
-condition|)
-name|die
+name|git_path
 argument_list|(
-literal|"Could not extract author time from %s"
-argument_list|,
-name|sha1_to_hex
-argument_list|(
-name|commit
-operator|->
-name|object
-operator|.
-name|sha1
+literal|"CHERRY_PICK_HEAD"
 argument_list|)
 argument_list|)
 expr_stmt|;
-operator|*
-name|timestamp
-operator|=
-literal|'\0'
-expr_stmt|;
-for|for
-control|(
-name|timestamp
-operator|++
-init|;
-operator|*
-name|timestamp
-operator|&&
-name|isspace
+name|strbuf_release
 argument_list|(
-operator|*
-name|timestamp
-argument_list|)
-condition|;
-name|timestamp
-operator|++
-control|)
-empty_stmt|;
-comment|/* do nothing */
-name|setenv
-argument_list|(
-literal|"GIT_AUTHOR_NAME"
-argument_list|,
-name|line
-argument_list|,
-literal|1
-argument_list|)
-expr_stmt|;
-name|setenv
-argument_list|(
-literal|"GIT_AUTHOR_EMAIL"
-argument_list|,
-name|email
-argument_list|,
-literal|1
-argument_list|)
-expr_stmt|;
-name|setenv
-argument_list|(
-literal|"GIT_AUTHOR_DATE"
-argument_list|,
-name|timestamp
-argument_list|,
-literal|1
-argument_list|)
-expr_stmt|;
-name|free
-argument_list|(
-name|line
-argument_list|)
-expr_stmt|;
-return|return;
-block|}
-name|p
-operator|=
-name|eol
-expr_stmt|;
-if|if
-condition|(
-operator|*
-name|p
-operator|==
-literal|'\n'
-condition|)
-name|p
-operator|++
-expr_stmt|;
-block|}
-name|die
-argument_list|(
-literal|"No author information found in %s"
-argument_list|,
-name|sha1_to_hex
-argument_list|(
-name|commit
-operator|->
-name|object
-operator|.
-name|sha1
-argument_list|)
+operator|&
+name|buf
 argument_list|)
 expr_stmt|;
 block|}
@@ -1516,6 +1339,15 @@ argument_list|,
 name|msg
 argument_list|)
 expr_stmt|;
+comment|/* 		 * A conflict has occured but the porcelain 		 * (typically rebase --interactive) wants to take care 		 * of the commit itself so remove CHERRY_PICK_HEAD 		 */
+name|unlink
+argument_list|(
+name|git_path
+argument_list|(
+literal|"CHERRY_PICK_HEAD"
+argument_list|)
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
 name|advise
@@ -1528,26 +1360,9 @@ argument_list|(
 literal|"with 'git add<paths>' or 'git rm<paths>'"
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|action
-operator|==
-name|CHERRY_PICK
-condition|)
 name|advise
 argument_list|(
-literal|"and commit the result with 'git commit -c %s'"
-argument_list|,
-name|find_unique_abbrev
-argument_list|(
-name|commit
-operator|->
-name|object
-operator|.
-name|sha1
-argument_list|,
-name|DEFAULT_ABBREV
-argument_list|)
+literal|"and commit the result with 'git commit'"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1607,7 +1422,10 @@ literal|0
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not write to %s."
+argument_list|)
 argument_list|,
 name|filename
 argument_list|)
@@ -1629,7 +1447,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Error wrapping up %s"
+argument_list|)
 argument_list|,
 name|filename
 argument_list|)
@@ -1732,22 +1553,59 @@ if|if
 condition|(
 name|advice_commit_before_merge
 condition|)
+block|{
+if|if
+condition|(
+name|action
+operator|==
+name|REVERT
+condition|)
 name|die
 argument_list|(
-literal|"Your local changes would be overwritten by %s.\n"
+name|_
+argument_list|(
+literal|"Your local changes would be overwritten by revert.\n"
 literal|"Please, commit your changes or stash them to proceed."
-argument_list|,
-name|me
+argument_list|)
 argument_list|)
 expr_stmt|;
 else|else
 name|die
 argument_list|(
-literal|"Your local changes would be overwritten by %s.\n"
-argument_list|,
-name|me
+name|_
+argument_list|(
+literal|"Your local changes would be overwritten by cherry-pick.\n"
+literal|"Please, commit your changes or stash them to proceed."
+argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+if|if
+condition|(
+name|action
+operator|==
+name|REVERT
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"Your local changes would be overwritten by revert.\n"
+argument_list|)
+argument_list|)
+expr_stmt|;
+else|else
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"Your local changes would be overwritten by cherry-pick.\n"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 end_function
@@ -2025,9 +1883,13 @@ name|index_lock
 argument_list|)
 operator|)
 condition|)
+comment|/* TRANSLATORS: %s will be "revert" or "cherry-pick" */
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"%s: Unable to write new index file"
+argument_list|)
 argument_list|,
 name|me
 argument_list|)
@@ -2326,7 +2188,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Your index file is unmerged."
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2343,7 +2208,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"You do not have a valid HEAD"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -2380,7 +2248,10 @@ name|REVERT
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Cannot revert a root commit"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|parent
@@ -2414,7 +2285,10 @@ name|mainline
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Commit %s is a merge but no -m option was given."
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -2464,7 +2338,10 @@ name|p
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Commit %s does not have parent %d"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -2494,7 +2371,10 @@ name|mainline
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Mainline was specified but commit %s is not a merge."
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -2556,9 +2436,13 @@ argument_list|)
 operator|<
 literal|0
 condition|)
+comment|/* TRANSLATORS: The first %s will be "revert" or 		   "cherry-pick", the second %s a SHA1 */
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"%s: cannot parse parent commit %s"
+argument_list|)
 argument_list|,
 name|me
 argument_list|,
@@ -2588,7 +2472,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Cannot get commit message for %s"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -2740,13 +2627,6 @@ name|msg
 operator|.
 name|label
 expr_stmt|;
-name|set_author_ident_env
-argument_list|(
-name|msg
-operator|.
-name|message
-argument_list|)
-expr_stmt|;
 name|add_message_to_msg
 argument_list|(
 operator|&
@@ -2794,6 +2674,14 @@ literal|")\n"
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+name|no_commit
+condition|)
+name|write_cherry_pick_head
+argument_list|()
+expr_stmt|;
 block|}
 if|if
 condition|(
@@ -2918,15 +2806,19 @@ condition|)
 block|{
 name|error
 argument_list|(
-literal|"could not %s %s... %s"
-argument_list|,
 name|action
 operator|==
 name|REVERT
 condition|?
-literal|"revert"
+name|_
+argument_list|(
+literal|"could not revert %s... %s"
+argument_list|)
 else|:
-literal|"apply"
+name|_
+argument_list|(
+literal|"could not apply %s... %s"
+argument_list|)
 argument_list|,
 name|find_unique_abbrev
 argument_list|(
@@ -3060,7 +2952,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"revision walk setup failed"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -3072,7 +2967,10 @@ name|commits
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"empty commit set passed"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3120,7 +3018,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"git %s: failed to read the index"
+argument_list|)
 argument_list|,
 name|me
 argument_list|)
@@ -3166,7 +3067,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"git %s: failed to refresh the index"
+argument_list|)
 argument_list|,
 name|me
 argument_list|)
@@ -3245,7 +3149,10 @@ name|signoff
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"cherry-pick --ff cannot be used with --signoff"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -3254,7 +3161,10 @@ name|no_commit
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"cherry-pick --ff cannot be used with --no-commit"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -3263,7 +3173,10 @@ name|no_replay
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"cherry-pick --ff cannot be used with -x"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -3272,7 +3185,10 @@ name|edit
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"cherry-pick --ff cannot be used with --edit"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

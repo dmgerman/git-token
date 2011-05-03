@@ -546,9 +546,9 @@ literal|"index-output"
 block|,
 name|NULL
 block|,
-literal|"FILE"
+literal|"file"
 block|,
-literal|"write resulting index to<FILE>"
+literal|"write resulting index to<file>"
 block|,
 name|PARSE_OPT_NONEG
 block|,

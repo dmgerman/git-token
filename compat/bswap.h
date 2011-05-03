@@ -97,11 +97,44 @@ DECL|macro|bswap32
 define|#
 directive|define
 name|bswap32
+value|git_bswap32
+end_define
+
+begin_function
+DECL|function|git_bswap32
+specifier|static
+specifier|inline
+name|uint32_t
+name|git_bswap32
 parameter_list|(
+name|uint32_t
 name|x
 parameter_list|)
-value|({ \ 	uint32_t __res; \ 	if (__builtin_constant_p(x)) { \ 		__res = default_swab32(x); \ 	} else { \ 		__asm__("bswap %0" : "=r" (__res) : "0" ((uint32_t)(x))); \ 	} \ 	__res; })
-end_define
+block|{
+name|uint32_t
+name|result
+decl_stmt|;
+if|if
+condition|(
+name|__builtin_constant_p
+argument_list|(
+name|x
+argument_list|)
+condition|)
+name|result
+operator|=
+name|default_swab32
+argument_list|(
+name|x
+argument_list|)
+expr_stmt|;
+else|else
+asm|__asm__("bswap %0" : "=r" (result) : "0" (x));
+return|return
+name|result
+return|;
+block|}
+end_function
 
 begin_elif
 elif|#

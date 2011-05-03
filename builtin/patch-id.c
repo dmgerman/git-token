@@ -2,13 +2,7 @@ begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_include
 include|#
 directive|include
-file|"cache.h"
-end_include
-
-begin_include
-include|#
-directive|include
-file|"exec_cmd.h"
+file|"builtin.h"
 end_include
 
 begin_function
@@ -332,6 +326,7 @@ end_function
 
 begin_function
 DECL|function|get_one_patchid
+specifier|static
 name|int
 name|get_one_patchid
 parameter_list|(
@@ -448,6 +443,27 @@ name|p
 operator|+=
 literal|5
 expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|memcmp
+argument_list|(
+name|line
+argument_list|,
+literal|"\\ "
+argument_list|,
+literal|2
+argument_list|)
+operator|&&
+literal|12
+operator|<
+name|strlen
+argument_list|(
+name|line
+argument_list|)
+condition|)
+continue|continue;
 if|if
 condition|(
 operator|!

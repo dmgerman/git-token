@@ -619,7 +619,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"unable to start 'show' for object '%s'"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -647,7 +650,10 @@ name|NULL
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"can't fdopen 'show' output fd"
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* Prepend "# " to each output line and write result to 'fd' */
@@ -713,7 +719,10 @@ argument_list|)
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"failed to close pipe to 'show' for object '%s'"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -731,7 +740,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"failed to finish 'show' for object '%s'"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -826,7 +838,10 @@ literal|0
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"could not create file '%s'"
+argument_list|)
 argument_list|,
 name|path
 argument_list|)
@@ -922,9 +937,12 @@ condition|)
 block|{
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Please supply the note contents using either -m"
 expr|\
 literal|" or -F option"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1056,7 +1074,10 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
+name|_
+argument_list|(
 literal|"Removing note for object %s\n"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -1096,7 +1117,10 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"unable to write note object"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -1105,7 +1129,10 @@ name|path
 condition|)
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"The note contents has been left in %s"
+argument_list|)
 argument_list|,
 name|path
 argument_list|)
@@ -1320,7 +1347,10 @@ literal|0
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"cannot read '%s'"
+argument_list|)
 argument_list|,
 name|arg
 argument_list|)
@@ -1347,7 +1377,10 @@ literal|0
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"could not open or read '%s'"
+argument_list|)
 argument_list|,
 name|arg
 argument_list|)
@@ -1456,7 +1489,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Failed to resolve '%s' as a valid ref."
+argument_list|)
 argument_list|,
 name|arg
 argument_list|)
@@ -1490,7 +1526,10 @@ argument_list|)
 expr_stmt|;
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Failed to read object '%s'."
+argument_list|)
 argument_list|,
 name|arg
 argument_list|)
@@ -1636,7 +1675,10 @@ name|ref
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Cannot commit uninitialized/unreferenced notes tree"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -1918,7 +1960,10 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Bad notes.rewriteMode value: '%s'"
+argument_list|)
 argument_list|,
 name|v
 argument_list|)
@@ -1971,8 +2016,11 @@ expr_stmt|;
 else|else
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"Refusing to rewrite notes in %s"
 literal|" (outside of refs/notes/)"
+argument_list|)
 argument_list|,
 name|v
 argument_list|)
@@ -2114,11 +2162,15 @@ name|c
 operator|->
 name|combine
 condition|)
+comment|/* TRANSLATORS: The first %s is the name of the 			   environment variable, the second %s is its value */
 name|error
 argument_list|(
-literal|"Bad "
+name|_
+argument_list|(
+literal|"Bad %s value: '%s'"
+argument_list|)
+argument_list|,
 name|GIT_NOTES_REWRITE_MODE_ENVIRONMENT
-literal|" value: '%s'"
 argument_list|,
 name|rewrite_mode_env
 argument_list|)
@@ -2373,6 +2425,7 @@ end_function
 
 begin_function
 DECL|function|notes_copy_from_stdin
+specifier|static
 name|int
 name|notes_copy_from_stdin
 parameter_list|(
@@ -2512,7 +2565,10 @@ index|]
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Malformed input line: '%s'."
+argument_list|)
 argument_list|,
 name|buf
 operator|.
@@ -2551,7 +2607,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Failed to resolve '%s' as a valid ref."
+argument_list|)
 argument_list|,
 name|split
 index|[
@@ -2577,7 +2636,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Failed to resolve '%s' as a valid ref."
+argument_list|)
 argument_list|,
 name|split
 index|[
@@ -2625,7 +2687,10 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Failed to copy notes from '%s' to '%s'"
+argument_list|)
 argument_list|,
 name|split
 index|[
@@ -2834,7 +2899,10 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"too many parameters"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|usage_with_options
@@ -2871,7 +2939,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Failed to resolve '%s' as a valid ref."
+argument_list|)
 argument_list|,
 name|argv
 index|[
@@ -2911,7 +2982,10 @@ name|retval
 operator|=
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"No note found for object %s."
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -3037,7 +3111,7 @@ block|,
 operator|&
 name|msg
 block|,
-literal|"MSG"
+literal|"msg"
 block|,
 literal|"note contents as a string"
 block|,
@@ -3056,7 +3130,7 @@ block|,
 operator|&
 name|msg
 block|,
-literal|"FILE"
+literal|"file"
 block|,
 literal|"note contents in a file"
 block|,
@@ -3075,7 +3149,7 @@ block|,
 operator|&
 name|msg
 block|,
-literal|"OBJECT"
+literal|"object"
 block|,
 literal|"reuse and edit specified note object"
 block|,
@@ -3094,7 +3168,7 @@ block|,
 operator|&
 name|msg
 block|,
-literal|"OBJECT"
+literal|"object"
 block|,
 literal|"reuse specified note object"
 block|,
@@ -3141,7 +3215,10 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"too many parameters"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|usage_with_options
@@ -3174,7 +3251,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Failed to resolve '%s' as a valid ref."
+argument_list|)
 argument_list|,
 name|object_ref
 argument_list|)
@@ -3210,9 +3290,12 @@ name|retval
 operator|=
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Cannot add notes. Found existing notes "
 literal|"for object %s. Use '-f' to overwrite "
 literal|"existing notes"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -3228,7 +3311,10 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
+name|_
+argument_list|(
 literal|"Overwriting existing notes for object %s\n"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -3485,7 +3571,10 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"too many parameters"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|usage_with_options
@@ -3517,7 +3606,10 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"too few parameters"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|usage_with_options
@@ -3537,7 +3629,10 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"too many parameters"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|usage_with_options
@@ -3562,7 +3657,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Failed to resolve '%s' as a valid ref."
+argument_list|)
 argument_list|,
 name|argv
 index|[
@@ -3594,7 +3692,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Failed to resolve '%s' as a valid ref."
+argument_list|)
 argument_list|,
 name|object_ref
 argument_list|)
@@ -3630,9 +3731,12 @@ name|retval
 operator|=
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Cannot copy notes. Found existing "
 literal|"notes for object %s. Use '-f' to "
 literal|"overwrite existing notes"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -3648,7 +3752,10 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
+name|_
+argument_list|(
 literal|"Overwriting existing notes for object %s\n"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -3676,8 +3783,11 @@ name|retval
 operator|=
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Missing notes on source object %s. Cannot "
 literal|"copy."
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -3817,7 +3927,7 @@ block|,
 operator|&
 name|msg
 block|,
-literal|"MSG"
+literal|"msg"
 block|,
 literal|"note contents as a string"
 block|,
@@ -3836,7 +3946,7 @@ block|,
 operator|&
 name|msg
 block|,
-literal|"FILE"
+literal|"file"
 block|,
 literal|"note contents in a file"
 block|,
@@ -3855,7 +3965,7 @@ block|,
 operator|&
 name|msg
 block|,
-literal|"OBJECT"
+literal|"object"
 block|,
 literal|"reuse and edit specified note object"
 block|,
@@ -3874,7 +3984,7 @@ block|,
 operator|&
 name|msg
 block|,
-literal|"OBJECT"
+literal|"object"
 block|,
 literal|"reuse specified note object"
 block|,
@@ -3935,7 +4045,10 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"too many parameters"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|usage_with_options
@@ -3958,9 +4071,12 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
+name|_
+argument_list|(
 literal|"The -m/-F/-c/-C options have been deprecated "
 literal|"for the 'edit' subcommand.\n"
 literal|"Please use 'git notes add -f -m/-F/-c/-C' instead.\n"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|object_ref
@@ -3987,7 +4103,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Failed to resolve '%s' as a valid ref."
+argument_list|)
 argument_list|,
 name|object_ref
 argument_list|)
@@ -4196,7 +4315,10 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"too many parameters"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|usage_with_options
@@ -4229,7 +4351,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Failed to resolve '%s' as a valid ref."
+argument_list|)
 argument_list|,
 name|object_ref
 argument_list|)
@@ -4259,7 +4384,10 @@ name|retval
 operator|=
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"No note found for object %s."
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -4534,7 +4662,7 @@ name|sha1
 argument_list|,
 literal|0
 argument_list|,
-literal|0
+name|NULL
 argument_list|)
 expr_stmt|;
 if|if
@@ -5336,7 +5464,10 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"too many parameters"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|usage_with_options
@@ -5369,7 +5500,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Failed to resolve '%s' as a valid ref."
+argument_list|)
 argument_list|,
 name|object_ref
 argument_list|)
@@ -5398,7 +5532,10 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
+name|_
+argument_list|(
 literal|"Object %s has no note\n"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -5412,7 +5549,10 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
+name|_
+argument_list|(
 literal|"Removing note for object %s\n"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -5524,7 +5664,10 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"too many parameters"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|usage_with_options
@@ -6032,7 +6175,10 @@ name|result
 operator|=
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Unknown subcommand: %s"
+argument_list|)
 argument_list|,
 name|argv
 index|[

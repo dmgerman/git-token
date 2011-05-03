@@ -650,8 +650,11 @@ name|merged
 condition|)
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"deleting branch '%s' that has been merged to\n"
-literal|"         '%s', but it is not yet merged to HEAD."
+literal|"         '%s', but not yet merged to HEAD."
+argument_list|)
 argument_list|,
 name|name
 argument_list|,
@@ -661,8 +664,11 @@ expr_stmt|;
 else|else
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"not deleting branch '%s' that is not yet merged to\n"
 literal|"         '%s', even though it is merged to HEAD."
+argument_list|)
 argument_list|,
 name|name
 argument_list|,
@@ -755,9 +761,13 @@ name|fmt
 operator|=
 literal|"refs/remotes/%s"
 expr_stmt|;
+comment|/* TRANSLATORS: This is "remote " in "remote branch '%s' not found" */
 name|remote
 operator|=
+name|_
+argument_list|(
 literal|"remote "
+argument_list|)
 expr_stmt|;
 name|force
 operator|=
@@ -779,7 +789,10 @@ break|break;
 default|default:
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"cannot use -a with -d"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -803,7 +816,10 @@ name|head_rev
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Couldn't look up commit object for HEAD"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -857,8 +873,11 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Cannot delete the branch '%s' "
 literal|"which you are currently on."
+argument_list|)
 argument_list|,
 name|bname
 operator|.
@@ -907,7 +926,10 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"%sbranch '%s' not found."
+argument_list|)
 argument_list|,
 name|remote
 argument_list|,
@@ -937,7 +959,10 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Couldn't look up commit object for '%s'"
+argument_list|)
 argument_list|,
 name|name
 argument_list|)
@@ -970,9 +995,12 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"The branch '%s' is not fully merged.\n"
 literal|"If you are sure you want to delete it, "
 literal|"run 'git branch -D %s'."
+argument_list|)
 argument_list|,
 name|bname
 operator|.
@@ -1003,7 +1031,10 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Error deleting %sbranch '%s'"
+argument_list|)
 argument_list|,
 name|remote
 argument_list|,
@@ -1027,7 +1058,10 @@ name|STRBUF_INIT
 decl_stmt|;
 name|printf
 argument_list|(
+name|_
+argument_list|(
 literal|"Deleted %sbranch %s (was %s).\n"
+argument_list|)
 argument_list|,
 name|remote
 argument_list|,
@@ -1070,7 +1104,10 @@ literal|0
 condition|)
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"Update of config-file failed"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|strbuf_release
@@ -1527,7 +1564,10 @@ name|ret
 operator|=
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"branch '%s' does not point at a commit"
+argument_list|)
 argument_list|,
 name|refname
 argument_list|)
@@ -1973,7 +2013,10 @@ name|strbuf_addf
 argument_list|(
 name|stat
 argument_list|,
+name|_
+argument_list|(
 literal|"behind %d] "
+argument_list|)
 argument_list|,
 name|theirs
 argument_list|)
@@ -1988,7 +2031,10 @@ name|strbuf_addf
 argument_list|(
 name|stat
 argument_list|,
+name|_
+argument_list|(
 literal|"ahead %d] "
+argument_list|)
 argument_list|,
 name|ours
 argument_list|)
@@ -1998,7 +2044,10 @@ name|strbuf_addf
 argument_list|(
 name|stat
 argument_list|,
+name|_
+argument_list|(
 literal|"ahead %d, behind %d] "
+argument_list|)
 argument_list|,
 name|ours
 argument_list|,
@@ -2057,6 +2106,157 @@ name|SHOW_MERGED
 operator|)
 operator|)
 return|;
+block|}
+end_function
+
+begin_function
+DECL|function|add_verbose_info
+specifier|static
+name|void
+name|add_verbose_info
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+name|out
+parameter_list|,
+name|struct
+name|ref_item
+modifier|*
+name|item
+parameter_list|,
+name|int
+name|verbose
+parameter_list|,
+name|int
+name|abbrev
+parameter_list|)
+block|{
+name|struct
+name|strbuf
+name|subject
+init|=
+name|STRBUF_INIT
+decl_stmt|,
+name|stat
+init|=
+name|STRBUF_INIT
+decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|sub
+init|=
+literal|" **** invalid ref ****"
+decl_stmt|;
+name|struct
+name|commit
+modifier|*
+name|commit
+init|=
+name|item
+operator|->
+name|commit
+decl_stmt|;
+if|if
+condition|(
+name|commit
+operator|&&
+operator|!
+name|parse_commit
+argument_list|(
+name|commit
+argument_list|)
+condition|)
+block|{
+name|struct
+name|pretty_print_context
+name|ctx
+init|=
+block|{
+literal|0
+block|}
+decl_stmt|;
+name|pretty_print_commit
+argument_list|(
+name|CMIT_FMT_ONELINE
+argument_list|,
+name|commit
+argument_list|,
+operator|&
+name|subject
+argument_list|,
+operator|&
+name|ctx
+argument_list|)
+expr_stmt|;
+name|sub
+operator|=
+name|subject
+operator|.
+name|buf
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|item
+operator|->
+name|kind
+operator|==
+name|REF_LOCAL_BRANCH
+condition|)
+name|fill_tracking_info
+argument_list|(
+operator|&
+name|stat
+argument_list|,
+name|item
+operator|->
+name|name
+argument_list|,
+name|verbose
+operator|>
+literal|1
+argument_list|)
+expr_stmt|;
+name|strbuf_addf
+argument_list|(
+name|out
+argument_list|,
+literal|" %s %s%s"
+argument_list|,
+name|find_unique_abbrev
+argument_list|(
+name|item
+operator|->
+name|commit
+operator|->
+name|object
+operator|.
+name|sha1
+argument_list|,
+name|abbrev
+argument_list|)
+argument_list|,
+name|stat
+operator|.
+name|buf
+argument_list|,
+name|sub
+argument_list|)
+expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|stat
+argument_list|)
+expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|subject
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
@@ -2262,131 +2462,19 @@ if|if
 condition|(
 name|verbose
 condition|)
-block|{
-name|struct
-name|strbuf
-name|subject
-init|=
-name|STRBUF_INIT
-decl_stmt|,
-name|stat
-init|=
-name|STRBUF_INIT
-decl_stmt|;
-specifier|const
-name|char
-modifier|*
-name|sub
-init|=
-literal|" **** invalid ref ****"
-decl_stmt|;
-name|commit
-operator|=
-name|item
-operator|->
-name|commit
-expr_stmt|;
-if|if
-condition|(
-name|commit
-operator|&&
-operator|!
-name|parse_commit
-argument_list|(
-name|commit
-argument_list|)
-condition|)
-block|{
-name|struct
-name|pretty_print_context
-name|ctx
-init|=
-block|{
-literal|0
-block|}
-decl_stmt|;
-name|pretty_print_commit
-argument_list|(
-name|CMIT_FMT_ONELINE
-argument_list|,
-name|commit
-argument_list|,
-operator|&
-name|subject
-argument_list|,
-operator|&
-name|ctx
-argument_list|)
-expr_stmt|;
-name|sub
-operator|=
-name|subject
-operator|.
-name|buf
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|item
-operator|->
-name|kind
-operator|==
-name|REF_LOCAL_BRANCH
-condition|)
-name|fill_tracking_info
-argument_list|(
-operator|&
-name|stat
-argument_list|,
-name|item
-operator|->
-name|name
-argument_list|,
-name|verbose
-operator|>
-literal|1
-argument_list|)
-expr_stmt|;
-name|strbuf_addf
+comment|/* " f7c0c00 [ahead 58, behind 197] vcs-svn: drop obj_pool.h" */
+name|add_verbose_info
 argument_list|(
 operator|&
 name|out
 argument_list|,
-literal|" %s %s%s"
-argument_list|,
-name|find_unique_abbrev
-argument_list|(
 name|item
-operator|->
-name|commit
-operator|->
-name|object
-operator|.
-name|sha1
+argument_list|,
+name|verbose
 argument_list|,
 name|abbrev
 argument_list|)
-argument_list|,
-name|stat
-operator|.
-name|buf
-argument_list|,
-name|sub
-argument_list|)
 expr_stmt|;
-name|strbuf_release
-argument_list|(
-operator|&
-name|stat
-argument_list|)
-expr_stmt|;
-name|strbuf_release
-argument_list|(
-operator|&
-name|subject
-argument_list|)
-expr_stmt|;
-block|}
 name|printf
 argument_list|(
 literal|"%s\n"
@@ -2541,7 +2629,10 @@ name|name
 operator|=
 name|xstrdup
 argument_list|(
+name|_
+argument_list|(
 literal|"(no branch)"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|item
@@ -2964,7 +3055,10 @@ name|ret
 condition|)
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"some refs could not be read"
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -3038,7 +3132,10 @@ name|oldname
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"cannot rename the current branch while not on any."
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -3075,7 +3172,10 @@ expr_stmt|;
 else|else
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Invalid branch name: '%s'"
+argument_list|)
 argument_list|,
 name|oldname
 argument_list|)
@@ -3093,7 +3193,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Invalid branch name: '%s'"
+argument_list|)
 argument_list|,
 name|newname
 argument_list|)
@@ -3118,7 +3221,10 @@ name|force
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"A branch named '%s' already exists."
+argument_list|)
 argument_list|,
 name|newref
 operator|.
@@ -3162,7 +3268,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Branch rename failed"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|strbuf_release
@@ -3177,7 +3286,10 @@ name|recovery
 condition|)
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"Renamed a misnamed branch '%s' away"
+argument_list|)
 argument_list|,
 name|oldref
 operator|.
@@ -3210,7 +3322,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Branch renamed to %s, but HEAD is not updated!"
+argument_list|)
 argument_list|,
 name|newname
 argument_list|)
@@ -3272,7 +3387,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Branch is renamed, but update of config-file failed"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|strbuf_release
@@ -3359,7 +3477,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"malformed object name %s"
+argument_list|)
 argument_list|,
 name|arg
 argument_list|)
@@ -3781,7 +3902,10 @@ name|head
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Failed to resolve HEAD as a valid ref."
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|head
@@ -3820,7 +3944,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"HEAD not found below refs/heads!"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|head
@@ -3983,7 +4110,10 @@ name|REF_LOCAL_BRANCH
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"-a and -r options to 'git branch' do not make sense with a branch name"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|create_branch
