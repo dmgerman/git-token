@@ -643,6 +643,10 @@ DECL|member|count_right
 name|int
 name|count_right
 decl_stmt|;
+DECL|member|count_same
+name|int
+name|count_same
+decl_stmt|;
 block|}
 struct|;
 end_struct
