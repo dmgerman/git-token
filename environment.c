@@ -251,6 +251,20 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|big_file_threshold
+name|unsigned
+name|long
+name|big_file_threshold
+init|=
+literal|512
+operator|*
+literal|1024
+operator|*
+literal|1024
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|pager_program
 specifier|const
 name|char
