@@ -989,7 +989,7 @@ if|if
 condition|(
 name|item
 operator|->
-name|has_wildcard
+name|use_wildcard
 operator|&&
 operator|!
 name|fnmatch
@@ -6237,7 +6237,7 @@ argument_list|)
 expr_stmt|;
 name|item
 operator|->
-name|has_wildcard
+name|use_wildcard
 operator|=
 operator|!
 name|no_wildcard
@@ -6249,7 +6249,7 @@ if|if
 condition|(
 name|item
 operator|->
-name|has_wildcard
+name|use_wildcard
 condition|)
 name|pathspec
 operator|->

@@ -2858,7 +2858,7 @@ name|hit
 init|=
 literal|0
 decl_stmt|,
-name|matched
+name|match
 init|=
 literal|0
 decl_stmt|;
@@ -2900,12 +2900,12 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|matched
+name|match
 operator|!=
 literal|2
 condition|)
 block|{
-name|matched
+name|match
 operator|=
 name|tree_entry_interesting
 argument_list|(
@@ -2921,17 +2921,16 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|matched
-operator|==
-operator|-
-literal|1
+name|match
+operator|<
+literal|0
 condition|)
 break|break;
-comment|/* no more matches */
 if|if
 condition|(
-operator|!
-name|matched
+name|match
+operator|==
+literal|0
 condition|)
 continue|continue;
 block|}
