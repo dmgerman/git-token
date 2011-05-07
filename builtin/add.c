@@ -1350,6 +1350,9 @@ specifier|const
 name|char
 modifier|*
 name|prefix
+parameter_list|,
+name|int
+name|patch
 parameter_list|)
 block|{
 specifier|const
@@ -1391,7 +1394,7 @@ name|run_add_interactive
 argument_list|(
 name|NULL
 argument_list|,
-name|patch_interactive
+name|patch
 condition|?
 literal|"--patch"
 else|:
@@ -2236,6 +2239,8 @@ operator|+
 literal|1
 argument_list|,
 name|prefix
+argument_list|,
+name|patch_interactive
 argument_list|)
 argument_list|)
 expr_stmt|;

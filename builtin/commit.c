@@ -381,6 +381,7 @@ DECL|variable|all
 DECL|variable|edit_flag
 DECL|variable|also
 DECL|variable|interactive
+DECL|variable|patch_interactive
 DECL|variable|only
 DECL|variable|amend
 DECL|variable|signoff
@@ -393,6 +394,8 @@ decl_stmt|,
 name|also
 decl_stmt|,
 name|interactive
+decl_stmt|,
+name|patch_interactive
 decl_stmt|,
 name|only
 decl_stmt|,
@@ -894,6 +897,18 @@ operator|&
 name|interactive
 argument_list|,
 literal|"interactively add files"
+argument_list|)
+block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|'p'
+argument_list|,
+literal|"patch"
+argument_list|,
+operator|&
+name|patch_interactive
+argument_list|,
+literal|"interactively add changes"
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -1916,6 +1931,8 @@ argument_list|,
 name|argv
 argument_list|,
 name|prefix
+argument_list|,
+name|patch_interactive
 argument_list|)
 operator|!=
 literal|0
@@ -5533,6 +5550,14 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+name|patch_interactive
+condition|)
+name|interactive
+operator|=
+literal|1
+expr_stmt|;
+if|if
+condition|(
 operator|!
 operator|!
 name|also
@@ -5555,7 +5580,7 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"Only one of --include/--only/--all/--interactive can be used."
+literal|"Only one of --include/--only/--all/--interactive/--patch can be used."
 argument_list|)
 argument_list|)
 expr_stmt|;
