@@ -5718,23 +5718,6 @@ literal|"Paths with -a does not make sense."
 argument_list|)
 argument_list|)
 expr_stmt|;
-elseif|else
-if|if
-condition|(
-name|interactive
-operator|&&
-name|argc
-operator|>
-literal|0
-condition|)
-name|die
-argument_list|(
-name|_
-argument_list|(
-literal|"Paths with --interactive does not make sense."
-argument_list|)
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|null_termination
