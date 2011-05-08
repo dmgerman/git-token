@@ -506,8 +506,11 @@ name|path
 argument_list|,
 name|st
 argument_list|,
-operator|!
 name|info_only
+condition|?
+literal|0
+else|:
+name|HASH_WRITE_OBJECT
 argument_list|)
 condition|)
 return|return
