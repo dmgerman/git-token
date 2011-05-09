@@ -4414,6 +4414,20 @@ argument_list|,
 literal|"interpret patterns as fixed strings"
 argument_list|)
 block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|'P'
+argument_list|,
+literal|"perl-regexp"
+argument_list|,
+operator|&
+name|opt
+operator|.
+name|pcre
+argument_list|,
+literal|"use Perl-compatible regular expressions"
+argument_list|)
+block|,
 name|OPT_GROUP
 argument_list|(
 literal|""
