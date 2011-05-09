@@ -5258,6 +5258,26 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|opt
+operator|.
+name|regflags
+operator|!=
+name|REG_NEWLINE
+operator|&&
+name|opt
+operator|.
+name|pcre
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"cannot mix --extended-regexp and --perl-regexp"
+argument_list|)
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 operator|!
 name|opt
 operator|.
@@ -5281,6 +5301,10 @@ operator|.
 name|regflags
 operator|!=
 name|REG_NEWLINE
+operator|||
+name|opt
+operator|.
+name|pcre
 operator|)
 operator|&&
 name|opt
