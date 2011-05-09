@@ -5222,7 +5222,7 @@ decl_stmt|;
 name|int
 name|hit
 decl_stmt|;
-comment|/* 		 * look_ahead() skips quicly to the line that possibly 		 * has the next hit; don't call it if we need to do 		 * something more than just skipping the current line 		 * in response to an unmatch for the current line.  E.g. 		 * inside a post-context window, we will show the current 		 * line as a context around the previous hit when it 		 * doesn't hit. 		 */
+comment|/* 		 * look_ahead() skips quickly to the line that possibly 		 * has the next hit; don't call it if we need to do 		 * something more than just skipping the current line 		 * in response to an unmatch for the current line.  E.g. 		 * inside a post-context window, we will show the current 		 * line as a context around the previous hit when it 		 * doesn't hit. 		 */
 if|if
 condition|(
 name|try_lookahead
