@@ -420,7 +420,7 @@ return|;
 elseif|else
 if|if
 condition|(
-name|eol
+name|core_eol
 operator|==
 name|EOL_UNSET
 condition|)
@@ -429,7 +429,7 @@ name|EOL_NATIVE
 return|;
 block|}
 return|return
-name|eol
+name|core_eol
 return|;
 block|}
 end_function

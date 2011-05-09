@@ -3831,7 +3831,7 @@ begin_decl_stmt
 specifier|extern
 name|enum
 name|eol
-name|eol
+name|core_eol
 decl_stmt|;
 end_decl_stmt
 

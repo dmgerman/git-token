@@ -329,10 +329,10 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|eol
+DECL|variable|core_eol
 name|enum
 name|eol
-name|eol
+name|core_eol
 init|=
 name|EOL_UNSET
 decl_stmt|;
