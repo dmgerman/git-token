@@ -534,6 +534,28 @@ decl_stmt|;
 name|unsigned
 name|mode
 decl_stmt|;
+comment|/* 	 * Saying "'(icase)foo' does not exist in the index" when the 	 * user gave us ":(icase)foo" is just stupid.  A magic pathspec 	 * begins with a colon and is followed by a non-alnum; do not 	 * let get_sha1_with_mode_1(only_to_die=1) to even trigger. 	 */
+if|if
+condition|(
+operator|!
+operator|(
+name|arg
+index|[
+literal|0
+index|]
+operator|==
+literal|':'
+operator|&&
+operator|!
+name|isalnum
+argument_list|(
+name|arg
+index|[
+literal|1
+index|]
+argument_list|)
+operator|)
+condition|)
 comment|/* try a detailed diagnostic ... */
 name|get_sha1_with_mode_1
 argument_list|(
