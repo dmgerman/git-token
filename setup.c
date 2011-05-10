@@ -948,21 +948,6 @@ name|copyfrom
 operator|++
 expr_stmt|;
 block|}
-elseif|else
-if|if
-condition|(
-operator|!
-name|elt
-index|[
-literal|1
-index|]
-condition|)
-block|{
-comment|/* Just ':' -- no element! */
-return|return
-name|NULL
-return|;
-block|}
 else|else
 block|{
 comment|/* shorthand */
