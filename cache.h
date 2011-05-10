@@ -5224,7 +5224,7 @@ modifier|*
 name|mode
 parameter_list|,
 name|int
-name|gently
+name|only_to_die
 parameter_list|,
 specifier|const
 name|char
@@ -5265,7 +5265,7 @@ name|sha1
 argument_list|,
 name|mode
 argument_list|,
-literal|1
+literal|0
 argument_list|,
 name|NULL
 argument_list|)
@@ -5294,7 +5294,7 @@ modifier|*
 name|orc
 parameter_list|,
 name|int
-name|gently
+name|only_to_die
 parameter_list|,
 specifier|const
 name|char
@@ -5336,7 +5336,7 @@ name|sha1
 argument_list|,
 name|orc
 argument_list|,
-literal|1
+literal|0
 argument_list|,
 name|NULL
 argument_list|)

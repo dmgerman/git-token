@@ -544,7 +544,7 @@ argument_list|,
 operator|&
 name|mode
 argument_list|,
-literal|0
+literal|1
 argument_list|,
 name|prefix
 argument_list|)
