@@ -7279,9 +7279,7 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-specifier|const
-name|char
-modifier|*
+name|int
 name|packed_object_info_detail
 parameter_list|(
 name|struct
