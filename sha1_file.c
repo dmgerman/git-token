@@ -7655,7 +7655,6 @@ end_function
 
 begin_function
 DECL|function|unpack_object_header
-specifier|static
 name|int
 name|unpack_object_header
 parameter_list|(
