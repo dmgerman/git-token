@@ -328,6 +328,11 @@ literal|1
 decl_stmt|;
 end_decl_stmt
 
+begin_comment
+DECL|variable|read_replace_refs
+comment|/* NEEDSWORK: rename to use_replace_refs */
+end_comment
+
 begin_decl_stmt
 DECL|variable|eol
 name|enum

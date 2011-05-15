@@ -444,6 +444,15 @@ name|replace_object_prepared
 operator|=
 literal|1
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|replace_object_nr
+condition|)
+name|read_replace_refs
+operator|=
+literal|0
+expr_stmt|;
 block|}
 end_function
 
@@ -460,12 +469,12 @@ value|5
 end_define
 
 begin_function
-DECL|function|lookup_replace_object
+DECL|function|do_lookup_replace_object
 specifier|const
 name|unsigned
 name|char
 modifier|*
-name|lookup_replace_object
+name|do_lookup_replace_object
 parameter_list|(
 specifier|const
 name|unsigned
