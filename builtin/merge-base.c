@@ -128,7 +128,9 @@ name|merge_base_usage
 index|[]
 init|=
 block|{
-literal|"git merge-base [-a|--all] [--octopus]<commit><commit>..."
+literal|"git merge-base [-a|--all]<commit><commit>..."
+block|,
+literal|"git merge-base [-a|--all] --octopus<commit>..."
 block|,
 literal|"git merge-base --independent<commit>..."
 block|,
