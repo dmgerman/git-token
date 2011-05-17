@@ -712,6 +712,7 @@ end_define
 
 begin_struct
 DECL|struct|pathspec_magic
+specifier|static
 struct|struct
 name|pathspec_magic
 block|{
@@ -753,6 +754,7 @@ end_comment
 
 begin_function
 DECL|function|prefix_pathspec
+specifier|static
 specifier|const
 name|char
 modifier|*
