@@ -2557,6 +2557,9 @@ operator|==
 name|ACTION_SET
 condition|)
 block|{
+name|int
+name|ret
+decl_stmt|;
 name|check_argc
 argument_list|(
 name|argc
@@ -2581,7 +2584,8 @@ literal|1
 index|]
 argument_list|)
 expr_stmt|;
-return|return
+name|ret
+operator|=
 name|git_config_set
 argument_list|(
 name|argv
@@ -2591,6 +2595,26 @@ index|]
 argument_list|,
 name|value
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|ret
+operator|==
+name|CONFIG_NOTHING_SET
+condition|)
+name|error
+argument_list|(
+literal|"cannot overwrite multiple values with a single value\n"
+literal|"       Use a regexp, --add or --set-all to change %s."
+argument_list|,
+name|argv
+index|[
+literal|0
+index|]
+argument_list|)
+expr_stmt|;
+return|return
+name|ret
 return|;
 block|}
 elseif|else
