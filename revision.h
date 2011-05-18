@@ -452,6 +452,11 @@ name|abbrev_commit
 range|:
 literal|1
 decl_stmt|,
+DECL|member|abbrev_commit_given
+name|abbrev_commit_given
+range|:
+literal|1
+decl_stmt|,
 DECL|member|use_terminator
 name|use_terminator
 range|:
