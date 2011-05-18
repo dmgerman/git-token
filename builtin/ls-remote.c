@@ -32,7 +32,7 @@ name|ls_remote_usage
 index|[]
 init|=
 literal|"git ls-remote [--heads] [--tags]  [-u<exec> | --upload-pack<exec>]\n"
-literal|"                     [-q|--quiet] [<repository> [<refs>...]]"
+literal|"                     [-q|--quiet] [--exit-code] [<repository> [<refs>...]]"
 decl_stmt|;
 end_decl_stmt
 
@@ -188,6 +188,11 @@ literal|0
 decl_stmt|;
 name|int
 name|quiet
+init|=
+literal|0
+decl_stmt|;
+name|int
+name|status
 init|=
 literal|0
 decl_stmt|;
@@ -398,6 +403,24 @@ block|{
 name|get_url
 operator|=
 literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+literal|"--exit-code"
+argument_list|,
+name|arg
+argument_list|)
+condition|)
+block|{
+comment|/* return this code if no refs are reported */
+name|status
+operator|=
+literal|2
 expr_stmt|;
 continue|continue;
 block|}
@@ -680,9 +703,14 @@ operator|->
 name|name
 argument_list|)
 expr_stmt|;
+name|status
+operator|=
+literal|0
+expr_stmt|;
+comment|/* we found something */
 block|}
 return|return
-literal|0
+name|status
 return|;
 block|}
 end_function
