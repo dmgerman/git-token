@@ -472,7 +472,7 @@ argument_list|,
 operator|&
 name|quiet
 argument_list|,
-literal|"supress diff output"
+literal|"suppress diff output"
 argument_list|)
 block|,
 name|OPT_BOOLEAN
