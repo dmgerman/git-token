@@ -4040,6 +4040,12 @@ operator|||
 operator|(
 name|crlf_action
 operator|==
+name|CRLF_INPUT
+operator|)
+operator|||
+operator|(
+name|crlf_action
+operator|==
 name|CRLF_GUESS
 operator|&&
 name|auto_crlf
