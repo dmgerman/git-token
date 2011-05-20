@@ -1132,6 +1132,8 @@ modifier|*
 name|fd
 init|=
 name|data
+decl_stmt|,
+name|ret
 decl_stmt|;
 ifdef|#
 directive|ifdef
@@ -1146,9 +1148,8 @@ argument_list|)
 expr_stmt|;
 endif|#
 directive|endif
-name|int
 name|ret
-init|=
+operator|=
 name|recv_sideband
 argument_list|(
 literal|"send-pack"
@@ -1160,7 +1161,7 @@ index|]
 argument_list|,
 name|out
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|close
 argument_list|(
 name|out
