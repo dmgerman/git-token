@@ -164,6 +164,10 @@ name|nlen
 operator|-
 literal|1
 expr_stmt|;
+name|len
+operator|+=
+name|nlen
+expr_stmt|;
 block|}
 block|}
 if|if
