@@ -52,6 +52,10 @@ parameter_list|,
 name|unsigned
 name|long
 modifier|*
+parameter_list|,
+name|struct
+name|stream_filter
+modifier|*
 parameter_list|)
 function_decl|;
 end_function_decl
