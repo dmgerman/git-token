@@ -168,8 +168,8 @@ name|PATTERNS
 argument_list|(
 literal|"perl"
 argument_list|,
-literal|"^[ \t]*package .*;\n"
-literal|"^[ \t]*sub .* \\{\n"
+literal|"^package .*;\n"
+literal|"^sub .* \\{\n"
 literal|"^[A-Z]+ \\{\n"
 comment|/* BEGIN, END, ... */
 literal|"^=head[0-9] "
