@@ -172,7 +172,7 @@ literal|"^package .*;\n"
 literal|"^sub .* \\{\n"
 literal|"^[A-Z]+ \\{\n"
 comment|/* BEGIN, END, ... */
-literal|"^=head[0-9] "
+literal|"^=head[0-9] .*"
 argument_list|,
 comment|/* POD */
 comment|/* -- */
