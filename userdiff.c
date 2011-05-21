@@ -168,10 +168,21 @@ name|PATTERNS
 argument_list|(
 literal|"perl"
 argument_list|,
-literal|"^package .*;\n"
-literal|"^sub .* \\{\n"
-literal|"^[A-Z]+ \\{\n"
+literal|"^package .*\n"
+literal|"^sub [[:alnum:]_':]+[ \t]*"
+literal|"(\\([^)]*\\)[ \t]*)?"
+comment|/* prototype */
+comment|/* 		 * Attributes.  A regex can't count nested parentheses, 		 * so just slurp up whatever we see, taking care not 		 * to accept lines like "sub foo; # defined elsewhere". 		 * 		 * An attribute could contain a semicolon, but at that 		 * point it seems reasonable enough to give up. 		 */
+literal|"(:[^;#]*)?"
+literal|"(\\{[ \t]*)?"
+comment|/* brace can come here or on the next line */
+literal|"(#.*)?$\n"
+comment|/* comment */
+literal|"^[A-Z]+[ \t]*"
 comment|/* BEGIN, END, ... */
+literal|"(\\{[ \t]*)?"
+comment|/* brace can come here or on the next line */
+literal|"(#.*)?$\n"
 literal|"^=head[0-9] .*"
 argument_list|,
 comment|/* POD */
