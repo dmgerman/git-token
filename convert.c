@@ -4072,10 +4072,21 @@ parameter_list|)
 block|{
 name|size_t
 name|count
-init|=
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|input
+condition|)
+return|return
+literal|0
+return|;
+comment|/* we do not keep any states */
+name|count
+operator|=
 operator|*
 name|isize_p
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
 operator|*
