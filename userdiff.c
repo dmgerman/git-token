@@ -178,8 +178,7 @@ literal|"(\\{[ \t]*)?"
 comment|/* brace can come here or on the next line */
 literal|"(#.*)?$\n"
 comment|/* comment */
-literal|"^[A-Z]+[ \t]*"
-comment|/* BEGIN, END, ... */
+literal|"^(BEGIN|END|INIT|CHECK|UNITCHECK|AUTOLOAD|DESTROY)[ \t]*"
 literal|"(\\{[ \t]*)?"
 comment|/* brace can come here or on the next line */
 literal|"(#.*)?$\n"
