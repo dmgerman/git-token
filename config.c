@@ -5716,7 +5716,7 @@ argument_list|)
 expr_stmt|;
 return|return
 operator|-
-literal|2
+name|CONFIG_NO_SECTION_OR_NAME
 return|;
 block|}
 if|if
@@ -5737,7 +5737,7 @@ argument_list|)
 expr_stmt|;
 return|return
 operator|-
-literal|2
+name|CONFIG_NO_SECTION_OR_NAME
 return|;
 block|}
 name|baselen
@@ -5913,7 +5913,7 @@ argument_list|)
 expr_stmt|;
 return|return
 operator|-
-literal|1
+name|CONFIG_INVALID_KEY
 return|;
 block|}
 end_function
@@ -6073,8 +6073,7 @@ argument_list|)
 expr_stmt|;
 name|ret
 operator|=
-operator|-
-literal|1
+name|CONFIG_NO_LOCK
 expr_stmt|;
 goto|goto
 name|out_free
@@ -6125,7 +6124,7 @@ argument_list|)
 expr_stmt|;
 name|ret
 operator|=
-literal|3
+name|CONFIG_INVALID_FILE
 expr_stmt|;
 comment|/* same as "invalid config file" */
 goto|goto
@@ -6142,7 +6141,7 @@ condition|)
 block|{
 name|ret
 operator|=
-literal|5
+name|CONFIG_NOTHING_SET
 expr_stmt|;
 goto|goto
 name|out_free
@@ -6293,7 +6292,7 @@ argument_list|)
 expr_stmt|;
 name|ret
 operator|=
-literal|6
+name|CONFIG_INVALID_PATTERN
 expr_stmt|;
 goto|goto
 name|out_free
@@ -6374,7 +6373,7 @@ expr_stmt|;
 block|}
 name|ret
 operator|=
-literal|3
+name|CONFIG_INVALID_FILE
 expr_stmt|;
 goto|goto
 name|out_free
@@ -6441,7 +6440,7 @@ condition|)
 block|{
 name|ret
 operator|=
-literal|5
+name|CONFIG_NOTHING_SET
 expr_stmt|;
 goto|goto
 name|out_free
@@ -6765,7 +6764,7 @@ argument_list|)
 expr_stmt|;
 name|ret
 operator|=
-literal|4
+name|CONFIG_NO_WRITE
 expr_stmt|;
 goto|goto
 name|out_free
