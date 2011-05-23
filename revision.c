@@ -9703,6 +9703,7 @@ operator|.
 name|nr
 condition|)
 block|{
+comment|/* 		 * If we need to introduce the magic "a lone ':' means no 		 * pathspec whatsoever", here is the place to do so. 		 * 		 * if (prune_data.nr == 1&& !strcmp(prune_data[0], ":")) { 		 *	prune_data.nr = 0; 		 *	prune_data.alloc = 0; 		 *	free(prune_data.path); 		 *	prune_data.path = NULL; 		 * } else { 		 *	terminate prune_data.alloc with NULL and 		 *	call init_pathspec() to set revs->prune_data here. 		 * } 		 */
 name|ALLOC_GROW
 argument_list|(
 name|prune_data

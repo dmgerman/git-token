@@ -3139,6 +3139,14 @@ value|0x10
 end_define
 
 begin_define
+DECL|macro|GIT_PATHSPEC_MAGIC
+define|#
+directive|define
+name|GIT_PATHSPEC_MAGIC
+value|0x20
+end_define
+
+begin_define
 DECL|macro|sane_istest
 define|#
 directive|define
@@ -3248,6 +3256,17 @@ parameter_list|(
 name|x
 parameter_list|)
 value|sane_case((unsigned char)(x), 0)
+end_define
+
+begin_define
+DECL|macro|is_pathspec_magic
+define|#
+directive|define
+name|is_pathspec_magic
+parameter_list|(
+name|x
+parameter_list|)
+value|sane_istest(x,GIT_PATHSPEC_MAGIC)
 end_define
 
 begin_function
