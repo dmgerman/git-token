@@ -1528,6 +1528,27 @@ end_define
 
 begin_function_decl
 name|int
+name|mingw_shutdown
+parameter_list|(
+name|int
+name|sockfd
+parameter_list|,
+name|int
+name|how
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_define
+DECL|macro|shutdown
+define|#
+directive|define
+name|shutdown
+value|mingw_shutdown
+end_define
+
+begin_function_decl
+name|int
 name|mingw_listen
 parameter_list|(
 name|int
