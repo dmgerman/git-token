@@ -4236,7 +4236,9 @@ operator|-
 literal|1
 return|;
 return|return
-literal|0
+name|config_parameters
+operator|!=
+name|NULL
 return|;
 block|}
 end_function
@@ -4413,23 +4415,37 @@ operator|+=
 literal|1
 expr_stmt|;
 block|}
-name|ret
-operator|+=
+switch|switch
+condition|(
 name|git_config_from_parameters
 argument_list|(
 name|fn
 argument_list|,
 name|data
 argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|config_parameters
 condition|)
-name|found
-operator|+=
+block|{
+case|case
+operator|-
 literal|1
+case|:
+comment|/* error */
+name|ret
+operator|--
 expr_stmt|;
+break|break;
+case|case
+literal|0
+case|:
+comment|/* found nothing */
+break|break;
+default|default:
+comment|/* found at least one item */
+name|found
+operator|++
+expr_stmt|;
+break|break;
+block|}
 if|if
 condition|(
 name|found
