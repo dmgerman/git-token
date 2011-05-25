@@ -720,6 +720,16 @@ argument_list|,
 literal|1
 argument_list|)
 block|,
+name|OPT__DRY_RUN
+argument_list|(
+operator|&
+name|opts
+operator|.
+name|dry_run
+argument_list|,
+literal|"don't update the index or the work tree"
+argument_list|)
+block|,
 name|OPT_SET_INT
 argument_list|(
 literal|0
@@ -1248,6 +1258,10 @@ condition|(
 name|opts
 operator|.
 name|debug_unpack
+operator|||
+name|opts
+operator|.
+name|dry_run
 condition|)
 return|return
 literal|0
