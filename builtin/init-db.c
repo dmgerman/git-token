@@ -2432,7 +2432,7 @@ argument_list|)
 block|,
 name|OPT_STRING
 argument_list|(
-literal|'L'
+literal|0
 argument_list|,
 literal|"separate-git-dir"
 argument_list|,
