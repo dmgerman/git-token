@@ -5793,7 +5793,7 @@ argument_list|(
 operator|&
 name|buf
 argument_list|,
-literal|"Merge made by %s."
+literal|"Merge made by the '%s' strategy."
 argument_list|,
 name|wt_strategy
 argument_list|)
