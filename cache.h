@@ -3132,6 +3132,22 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_define
+DECL|macro|HASH_WRITE_OBJECT
+define|#
+directive|define
+name|HASH_WRITE_OBJECT
+value|1
+end_define
+
+begin_define
+DECL|macro|HASH_FORMAT_CHECK
+define|#
+directive|define
+name|HASH_FORMAT_CHECK
+value|2
+end_define
+
 begin_function_decl
 specifier|extern
 name|int
@@ -3150,9 +3166,6 @@ name|stat
 modifier|*
 name|st
 parameter_list|,
-name|int
-name|write_object
-parameter_list|,
 name|enum
 name|object_type
 name|type
@@ -3162,8 +3175,8 @@ name|char
 modifier|*
 name|path
 parameter_list|,
-name|int
-name|format_check
+name|unsigned
+name|flags
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -3188,8 +3201,8 @@ name|stat
 modifier|*
 name|st
 parameter_list|,
-name|int
-name|write_object
+name|unsigned
+name|flags
 parameter_list|)
 function_decl|;
 end_function_decl
