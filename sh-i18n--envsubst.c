@@ -116,13 +116,7 @@ index|[]
 parameter_list|)
 block|{
 comment|/* Default values for command line options.  */
-name|unsigned
-name|short
-name|int
-name|show_variables
-init|=
-literal|0
-decl_stmt|;
+comment|/* unsigned short int show_variables = 0; */
 switch|switch
 condition|(
 name|argc
@@ -178,10 +172,7 @@ argument_list|(
 literal|"first argument must be --variables when two are given"
 argument_list|)
 expr_stmt|;
-name|show_variables
-operator|=
-literal|1
-expr_stmt|;
+comment|/* show_variables = 1; */
 name|print_variables
 argument_list|(
 name|argv
