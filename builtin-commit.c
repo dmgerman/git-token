@@ -5696,18 +5696,6 @@ name|OPT_END
 argument_list|()
 block|, 	}
 decl_stmt|;
-if|if
-condition|(
-name|null_termination
-operator|&&
-name|status_format
-operator|==
-name|STATUS_FORMAT_LONG
-condition|)
-name|status_format
-operator|=
-name|STATUS_FORMAT_PORCELAIN
-expr_stmt|;
 name|wt_status_prepare
 argument_list|(
 operator|&
@@ -5738,6 +5726,18 @@ name|builtin_status_usage
 argument_list|,
 literal|0
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|null_termination
+operator|&&
+name|status_format
+operator|==
+name|STATUS_FORMAT_LONG
+condition|)
+name|status_format
+operator|=
+name|STATUS_FORMAT_PORCELAIN
 expr_stmt|;
 name|handle_untracked_files_arg
 argument_list|(
