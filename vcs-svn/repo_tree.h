@@ -50,22 +50,6 @@ name|REPO_MODE_LNK
 value|0120000
 end_define
 
-begin_define
-DECL|macro|REPO_MAX_PATH_LEN
-define|#
-directive|define
-name|REPO_MAX_PATH_LEN
-value|4096
-end_define
-
-begin_define
-DECL|macro|REPO_MAX_PATH_DEPTH
-define|#
-directive|define
-name|REPO_MAX_PATH_DEPTH
-value|1000
-end_define
-
 begin_function_decl
 name|uint32_t
 name|next_blob_mark
@@ -83,12 +67,12 @@ name|uint32_t
 name|revision
 parameter_list|,
 specifier|const
-name|uint32_t
+name|char
 modifier|*
 name|src
 parameter_list|,
 specifier|const
-name|uint32_t
+name|char
 modifier|*
 name|dst
 parameter_list|)
@@ -99,7 +83,8 @@ begin_function_decl
 name|void
 name|repo_add
 parameter_list|(
-name|uint32_t
+specifier|const
+name|char
 modifier|*
 name|path
 parameter_list|,
@@ -119,7 +104,7 @@ modifier|*
 name|repo_read_path
 parameter_list|(
 specifier|const
-name|uint32_t
+name|char
 modifier|*
 name|path
 parameter_list|,
@@ -134,7 +119,8 @@ begin_function_decl
 name|void
 name|repo_delete
 parameter_list|(
-name|uint32_t
+specifier|const
+name|char
 modifier|*
 name|path
 parameter_list|)

@@ -35,7 +35,7 @@ modifier|*
 name|repo_read_path
 parameter_list|(
 specifier|const
-name|uint32_t
+name|char
 modifier|*
 name|path
 parameter_list|,
@@ -64,8 +64,6 @@ name|err
 operator|=
 name|fast_export_ls
 argument_list|(
-name|REPO_MAX_PATH_DEPTH
-argument_list|,
 name|path
 argument_list|,
 name|mode_out
@@ -117,12 +115,12 @@ name|uint32_t
 name|revision
 parameter_list|,
 specifier|const
-name|uint32_t
+name|char
 modifier|*
 name|src
 parameter_list|,
 specifier|const
-name|uint32_t
+name|char
 modifier|*
 name|dst
 parameter_list|)
@@ -152,8 +150,6 @@ name|fast_export_ls_rev
 argument_list|(
 name|revision
 argument_list|,
-name|REPO_MAX_PATH_DEPTH
-argument_list|,
 name|src
 argument_list|,
 operator|&
@@ -181,8 +177,6 @@ argument_list|)
 expr_stmt|;
 name|fast_export_delete
 argument_list|(
-name|REPO_MAX_PATH_DEPTH
-argument_list|,
 name|dst
 argument_list|)
 expr_stmt|;
@@ -190,8 +184,6 @@ return|return;
 block|}
 name|fast_export_modify
 argument_list|(
-name|REPO_MAX_PATH_DEPTH
-argument_list|,
 name|dst
 argument_list|,
 name|mode
@@ -209,15 +201,14 @@ DECL|function|repo_delete
 name|void
 name|repo_delete
 parameter_list|(
-name|uint32_t
+specifier|const
+name|char
 modifier|*
 name|path
 parameter_list|)
 block|{
 name|fast_export_delete
 argument_list|(
-name|REPO_MAX_PATH_DEPTH
-argument_list|,
 name|path
 argument_list|)
 expr_stmt|;
