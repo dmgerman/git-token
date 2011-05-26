@@ -57,6 +57,14 @@ value|memcmp(s, ref, sizeof(ref) - 1)
 end_define
 
 begin_define
+DECL|macro|REPORT_FILENO
+define|#
+directive|define
+name|REPORT_FILENO
+value|3
+end_define
+
+begin_define
 DECL|macro|NODEACT_REPLACE
 define|#
 directive|define
@@ -96,6 +104,10 @@ name|NODEACT_UNKNOWN
 value|0
 end_define
 
+begin_comment
+comment|/* States: */
+end_comment
+
 begin_define
 DECL|macro|DUMP_CTX
 define|#
@@ -103,6 +115,11 @@ directive|define
 name|DUMP_CTX
 value|0
 end_define
+
+begin_comment
+DECL|macro|DUMP_CTX
+comment|/* dump metadata */
+end_comment
 
 begin_define
 DECL|macro|REV_CTX
@@ -112,6 +129,11 @@ name|REV_CTX
 value|1
 end_define
 
+begin_comment
+DECL|macro|REV_CTX
+comment|/* revision metadata */
+end_comment
+
 begin_define
 DECL|macro|NODE_CTX
 define|#
@@ -119,6 +141,24 @@ directive|define
 name|NODE_CTX
 value|2
 end_define
+
+begin_comment
+DECL|macro|NODE_CTX
+comment|/* node metadata */
+end_comment
+
+begin_define
+DECL|macro|INTERNODE_CTX
+define|#
+directive|define
+name|INTERNODE_CTX
+value|3
+end_define
+
+begin_comment
+DECL|macro|INTERNODE_CTX
+comment|/* between nodes */
+end_comment
 
 begin_define
 DECL|macro|LENGTH_UNKNOWN
@@ -957,11 +997,6 @@ parameter_list|(
 name|void
 parameter_list|)
 block|{
-name|uint32_t
-name|mark
-init|=
-literal|0
-decl_stmt|;
 specifier|const
 name|uint32_t
 name|type
@@ -990,6 +1025,23 @@ name|textLength
 operator|!=
 name|LENGTH_UNKNOWN
 decl_stmt|;
+comment|/* 	 * Old text for this node: 	 *  NULL	- directory or bug 	 *  empty_blob	- empty 	 *  "<dataref>"	- data retrievable from fast-import 	 */
+specifier|static
+specifier|const
+name|char
+modifier|*
+specifier|const
+name|empty_blob
+init|=
+literal|"::empty::"
+decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|old_data
+init|=
+name|NULL
+decl_stmt|;
 if|if
 condition|(
 name|node_ctx
@@ -1000,15 +1052,6 @@ name|die
 argument_list|(
 literal|"text deltas not supported"
 argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|have_text
-condition|)
-name|mark
-operator|=
-name|next_blob_mark
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -1117,7 +1160,7 @@ argument_list|(
 literal|"invalid dump: directories cannot have text attached"
 argument_list|)
 expr_stmt|;
-comment|/* 	 * Decide on the new content (mark) and mode (node_ctx.type). 	 */
+comment|/* 	 * Find old content (old_data) and decide on the new mode. 	 */
 if|if
 condition|(
 name|node_ctx
@@ -1145,6 +1188,10 @@ argument_list|(
 literal|"invalid dump: root of tree is not a regular file"
 argument_list|)
 expr_stmt|;
+name|old_data
+operator|=
+name|NULL
+expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -1159,27 +1206,16 @@ block|{
 name|uint32_t
 name|mode
 decl_stmt|;
-if|if
-condition|(
-operator|!
-name|have_text
-condition|)
-name|mark
+name|old_data
 operator|=
 name|repo_read_path
 argument_list|(
 name|node_ctx
 operator|.
 name|dst
-argument_list|)
-expr_stmt|;
+argument_list|,
+operator|&
 name|mode
-operator|=
-name|repo_read_mode
-argument_list|(
-name|node_ctx
-operator|.
-name|dst
 argument_list|)
 expr_stmt|;
 if|if
@@ -1231,13 +1267,24 @@ condition|)
 block|{
 if|if
 condition|(
-operator|!
-name|have_text
-operator|&&
 name|type
-operator|!=
+operator|==
 name|REPO_MODE_DIR
 condition|)
+name|old_data
+operator|=
+name|NULL
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|have_text
+condition|)
+name|old_data
+operator|=
+name|empty_blob
+expr_stmt|;
+else|else
 name|die
 argument_list|(
 literal|"invalid dump: adds node without text"
@@ -1282,8 +1329,40 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/* 	 * Save the result. 	 */
-name|repo_add
+if|if
+condition|(
+name|type
+operator|==
+name|REPO_MODE_DIR
+condition|)
+comment|/* directories are not tracked. */
+return|return;
+name|assert
 argument_list|(
+name|old_data
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|old_data
+operator|==
+name|empty_blob
+condition|)
+comment|/* For the fast_export_* functions, NULL means empty. */
+name|old_data
+operator|=
+name|NULL
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|have_text
+condition|)
+block|{
+name|fast_export_modify
+argument_list|(
+name|REPO_MAX_PATH_DEPTH
+argument_list|,
 name|node_ctx
 operator|.
 name|dst
@@ -1292,20 +1371,31 @@ name|node_ctx
 operator|.
 name|type
 argument_list|,
-name|mark
+name|old_data
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|have_text
-condition|)
-name|fast_export_blob
+return|return;
+block|}
+name|fast_export_modify
 argument_list|(
+name|REPO_MAX_PATH_DEPTH
+argument_list|,
+name|node_ctx
+operator|.
+name|dst
+argument_list|,
 name|node_ctx
 operator|.
 name|type
 argument_list|,
-name|mark
+literal|"inline"
+argument_list|)
+expr_stmt|;
+name|fast_export_data
+argument_list|(
+name|node_ctx
+operator|.
+name|type
 argument_list|,
 name|node_ctx
 operator|.
@@ -1319,21 +1409,24 @@ block|}
 end_function
 
 begin_function
-DECL|function|handle_revision
+DECL|function|begin_revision
 specifier|static
 name|void
-name|handle_revision
+name|begin_revision
 parameter_list|(
 name|void
 parameter_list|)
 block|{
 if|if
 condition|(
+operator|!
 name|rev_ctx
 operator|.
 name|revision
 condition|)
-name|repo_commit
+comment|/* revision 0 gets no git commit. */
+return|return;
+name|fast_export_begin_commit
 argument_list|(
 name|rev_ctx
 operator|.
@@ -1365,6 +1458,31 @@ argument_list|,
 name|rev_ctx
 operator|.
 name|timestamp
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|function|end_revision
+specifier|static
+name|void
+name|end_revision
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+if|if
+condition|(
+name|rev_ctx
+operator|.
+name|revision
+condition|)
+name|fast_export_end_commit
+argument_list|(
+name|rev_ctx
+operator|.
+name|revision
 argument_list|)
 expr_stmt|;
 block|}
@@ -1561,10 +1679,19 @@ expr_stmt|;
 if|if
 condition|(
 name|active_ctx
+operator|==
+name|REV_CTX
+condition|)
+name|begin_revision
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|active_ctx
 operator|!=
 name|DUMP_CTX
 condition|)
-name|handle_revision
+name|end_revision
 argument_list|()
 expr_stmt|;
 name|active_ctx
@@ -1619,6 +1746,15 @@ operator|==
 name|NODE_CTX
 condition|)
 name|handle_node
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|active_ctx
+operator|==
+name|REV_CTX
+condition|)
+name|begin_revision
 argument_list|()
 expr_stmt|;
 name|active_ctx
@@ -2032,7 +2168,7 @@ argument_list|()
 expr_stmt|;
 name|active_ctx
 operator|=
-name|REV_CTX
+name|INTERNODE_CTX
 expr_stmt|;
 block|}
 else|else
@@ -2089,10 +2225,19 @@ expr_stmt|;
 if|if
 condition|(
 name|active_ctx
+operator|==
+name|REV_CTX
+condition|)
+name|begin_revision
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|active_ctx
 operator|!=
 name|DUMP_CTX
 condition|)
-name|handle_revision
+name|end_revision
 argument_list|()
 expr_stmt|;
 block|}
@@ -2132,8 +2277,10 @@ name|errno
 argument_list|)
 argument_list|)
 return|;
-name|repo_init
-argument_list|()
+name|fast_export_init
+argument_list|(
+name|REPORT_FILENO
+argument_list|)
 expr_stmt|;
 name|strbuf_init
 argument_list|(
@@ -2204,7 +2351,7 @@ parameter_list|(
 name|void
 parameter_list|)
 block|{
-name|repo_reset
+name|fast_export_deinit
 argument_list|()
 expr_stmt|;
 name|reset_dump_ctx
@@ -2270,14 +2417,14 @@ parameter_list|(
 name|void
 parameter_list|)
 block|{
+name|fast_export_reset
+argument_list|()
+expr_stmt|;
 name|buffer_reset
 argument_list|(
 operator|&
 name|input
 argument_list|)
-expr_stmt|;
-name|repo_reset
-argument_list|()
 expr_stmt|;
 name|strbuf_release
 argument_list|(
