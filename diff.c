@@ -6493,7 +6493,24 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|/* don't print the prefix character */
+comment|/* 			 * Skip the prefix character, if any.  With 			 * diff_suppress_blank_empty, there may be 			 * none. 			 */
+if|if
+condition|(
+name|line
+index|[
+literal|0
+index|]
+operator|!=
+literal|'\n'
+condition|)
+block|{
+name|line
+operator|++
+expr_stmt|;
+name|len
+operator|--
+expr_stmt|;
+block|}
 name|emit_line
 argument_list|(
 name|ecbdata
@@ -6505,12 +6522,8 @@ argument_list|,
 name|reset
 argument_list|,
 name|line
-operator|+
-literal|1
 argument_list|,
 name|len
-operator|-
-literal|1
 argument_list|)
 expr_stmt|;
 block|}
