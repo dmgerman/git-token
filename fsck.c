@@ -2058,18 +2058,12 @@ name|sb
 argument_list|,
 literal|"object %s:"
 argument_list|,
-name|obj
-operator|->
-name|sha1
-condition|?
 name|sha1_to_hex
 argument_list|(
 name|obj
 operator|->
 name|sha1
 argument_list|)
-else|:
-literal|"(null)"
 argument_list|)
 expr_stmt|;
 name|va_start
