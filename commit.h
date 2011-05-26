@@ -421,6 +421,10 @@ name|char
 modifier|*
 name|after_subject
 decl_stmt|;
+DECL|member|preserve_subject
+name|int
+name|preserve_subject
+decl_stmt|;
 DECL|member|date_mode
 name|enum
 name|date_mode

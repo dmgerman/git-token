@@ -6307,6 +6307,12 @@ argument_list|(
 literal|"--subject-prefix and -k are mutually exclusive."
 argument_list|)
 expr_stmt|;
+name|rev
+operator|.
+name|preserve_subject
+operator|=
+name|keep_subject
+expr_stmt|;
 name|argc
 operator|=
 name|setup_revisions

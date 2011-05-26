@@ -453,6 +453,11 @@ DECL|member|date_mode_explicit
 name|date_mode_explicit
 range|:
 literal|1
+decl_stmt|,
+DECL|member|preserve_subject
+name|preserve_subject
+range|:
+literal|1
 decl_stmt|;
 DECL|member|disable_stdin
 name|unsigned

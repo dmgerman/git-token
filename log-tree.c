@@ -2551,6 +2551,14 @@ name|extra_headers
 expr_stmt|;
 name|ctx
 operator|.
+name|preserve_subject
+operator|=
+name|opt
+operator|->
+name|preserve_subject
+expr_stmt|;
+name|ctx
+operator|.
 name|reflog_info
 operator|=
 name|opt
