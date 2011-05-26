@@ -2240,20 +2240,6 @@ operator|->
 name|parents
 condition|)
 block|{
-if|if
-condition|(
-name|action
-operator|==
-name|REVERT
-condition|)
-name|die
-argument_list|(
-name|_
-argument_list|(
-literal|"Cannot revert a root commit"
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|parent
 operator|=
 name|NULL
@@ -2565,6 +2551,10 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|commit
+operator|->
+name|parents
+operator|&&
 name|commit
 operator|->
 name|parents
