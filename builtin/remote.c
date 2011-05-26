@@ -975,13 +975,20 @@ if|if
 condition|(
 name|mirror
 operator|&&
+operator|!
+operator|(
+name|mirror
+operator|&
+name|MIRROR_FETCH
+operator|)
+operator|&&
 name|track
 operator|.
 name|nr
 condition|)
 name|die
 argument_list|(
-literal|"specifying branches to track makes no sense with --mirror"
+literal|"specifying branches to track makes sense only with fetch mirrors"
 argument_list|)
 expr_stmt|;
 name|name
