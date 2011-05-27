@@ -873,6 +873,9 @@ argument_list|(
 name|header
 argument_list|)
 decl_stmt|;
+name|uintmax_t
+name|n
+decl_stmt|;
 specifier|const
 name|char
 modifier|*
@@ -931,8 +934,7 @@ argument_list|,
 name|header
 argument_list|)
 return|;
-operator|*
-name|len
+name|n
 operator|=
 name|strtoumax
 argument_list|(
@@ -975,6 +977,61 @@ argument_list|)
 return|;
 if|if
 condition|(
+name|memchr
+argument_list|(
+name|type
+operator|+
+name|strlen
+argument_list|(
+literal|" blob "
+argument_list|)
+argument_list|,
+literal|'-'
+argument_list|,
+name|end
+operator|-
+name|type
+operator|-
+name|strlen
+argument_list|(
+literal|" blob "
+argument_list|)
+argument_list|)
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"cat-blob header contains negative length: %s"
+argument_list|,
+name|header
+argument_list|)
+return|;
+if|if
+condition|(
+name|n
+operator|==
+name|UINTMAX_MAX
+operator|||
+name|n
+operator|>
+name|maximum_signed_value_of_type
+argument_list|(
+name|off_t
+argument_list|)
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"blob too large for current definition of off_t"
+argument_list|)
+return|;
+operator|*
+name|len
+operator|=
+name|n
+expr_stmt|;
+if|if
+condition|(
 operator|*
 name|end
 condition|)
@@ -989,6 +1046,36 @@ return|;
 return|return
 literal|0
 return|;
+block|}
+end_function
+
+begin_function
+DECL|function|check_preimage_overflow
+specifier|static
+name|void
+name|check_preimage_overflow
+parameter_list|(
+name|off_t
+name|a
+parameter_list|,
+name|off_t
+name|b
+parameter_list|)
+block|{
+if|if
+condition|(
+name|signed_add_overflows
+argument_list|(
+name|a
+argument_list|,
+name|b
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"blob too large for current definition of off_t"
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
@@ -1133,6 +1220,16 @@ operator|.
 name|buf
 argument_list|,
 literal|"link "
+argument_list|)
+expr_stmt|;
+name|check_preimage_overflow
+argument_list|(
+name|preimage_len
+argument_list|,
+name|strlen
+argument_list|(
+literal|"link "
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|preimage_len
