@@ -327,6 +327,28 @@ argument_list|(
 literal|"invalid delta: window slides left"
 argument_list|)
 return|;
+if|if
+condition|(
+name|view
+operator|->
+name|max_off
+operator|>=
+literal|0
+operator|&&
+name|view
+operator|->
+name|max_off
+operator|<
+name|off
+operator|+
+name|width
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"delta preimage ends early"
+argument_list|)
+return|;
 name|file_offset
 operator|=
 name|view

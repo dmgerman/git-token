@@ -80,6 +80,9 @@ name|SLIDING_VIEW_INIT
 argument_list|(
 operator|&
 name|preimage
+argument_list|,
+operator|-
+literal|1
 argument_list|)
 decl_stmt|;
 if|if
