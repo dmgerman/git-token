@@ -1211,6 +1211,28 @@ endif|#
 directive|endif
 end_endif
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|find_last_dir_sep
+end_ifndef
+
+begin_define
+DECL|macro|find_last_dir_sep
+define|#
+directive|define
+name|find_last_dir_sep
+parameter_list|(
+name|path
+parameter_list|)
+value|strrchr(path, '/')
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_if
 if|#
 directive|if
