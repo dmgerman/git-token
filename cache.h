@@ -4562,12 +4562,13 @@ name|path
 parameter_list|)
 block|{
 return|return
+name|is_dir_sep
+argument_list|(
 name|path
 index|[
 literal|0
 index|]
-operator|==
-literal|'/'
+argument_list|)
 operator|||
 name|has_dos_drive_prefix
 argument_list|(
