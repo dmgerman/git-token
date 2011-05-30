@@ -1699,7 +1699,7 @@ decl_stmt|;
 name|int
 name|fd
 decl_stmt|;
-name|size_t
+name|ssize_t
 name|len
 decl_stmt|;
 if|if
