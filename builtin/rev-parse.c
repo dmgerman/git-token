@@ -210,6 +210,8 @@ literal|"--branches"
 block|,
 literal|"--header"
 block|,
+literal|"--ignore-missing"
+block|,
 literal|"--max-age="
 block|,
 literal|"--max-count="

@@ -207,6 +207,13 @@ DECL|member|early_output
 name|unsigned
 name|int
 name|early_output
+range|:
+literal|1
+decl_stmt|,
+DECL|member|ignore_missing
+name|ignore_missing
+range|:
+literal|1
 decl_stmt|;
 comment|/* Traversal flags */
 DECL|member|dense
