@@ -759,17 +759,13 @@ end_typedef
 
 begin_function_decl
 specifier|extern
-name|int
-name|refs_from_alternate_cb
+name|void
+name|for_each_alternate_ref
 parameter_list|(
-name|struct
-name|alternate_object_database
-modifier|*
-name|e
+name|alternate_ref_fn
 parameter_list|,
 name|void
 modifier|*
-name|cb
 parameter_list|)
 function_decl|;
 end_function_decl

@@ -1205,11 +1205,11 @@ parameter_list|(
 name|void
 parameter_list|)
 block|{
-name|foreach_alt_odb
+name|for_each_alternate_ref
 argument_list|(
-name|refs_from_alternate_cb
-argument_list|,
 name|insert_one_alternate_ref
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 block|}
