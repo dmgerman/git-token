@@ -173,6 +173,9 @@ name|gently
 decl_stmt|,
 DECL|member|show_all_errors
 name|show_all_errors
+decl_stmt|,
+DECL|member|dry_run
+name|dry_run
 decl_stmt|;
 DECL|member|prefix
 specifier|const
