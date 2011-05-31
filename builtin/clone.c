@@ -2326,7 +2326,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"repository '%s' does not exist"
+argument_list|)
 argument_list|,
 name|repo_name
 argument_list|)
