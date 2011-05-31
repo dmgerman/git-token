@@ -1445,6 +1445,11 @@ argument_list|,
 name|QUICK
 argument_list|)
 operator|&&
+operator|!
+name|opt
+operator|->
+name|filter
+operator|&&
 name|DIFF_OPT_TST
 argument_list|(
 name|opt
