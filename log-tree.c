@@ -1524,11 +1524,20 @@ argument_list|(
 name|buffer
 argument_list|)
 argument_list|,
-literal|"Subject: [%s %0*d/%d] "
+literal|"Subject: [%s%s%0*d/%d] "
 argument_list|,
 name|opt
 operator|->
 name|subject_prefix
+argument_list|,
+operator|*
+name|opt
+operator|->
+name|subject_prefix
+condition|?
+literal|" "
+else|:
+literal|""
 argument_list|,
 name|digits_in_number
 argument_list|(
