@@ -6121,7 +6121,7 @@ argument_list|(
 operator|&
 name|dummy
 argument_list|,
-name|user_format
+name|fmt
 argument_list|,
 name|userformat_want_item
 argument_list|,
