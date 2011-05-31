@@ -2,14 +2,14 @@ begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_ifndef
 ifndef|#
 directive|ifndef
-name|PATH_LIST_H
+name|STRING_LIST_H
 end_ifndef
 
 begin_define
-DECL|macro|PATH_LIST_H
+DECL|macro|STRING_LIST_H
 define|#
 directive|define
-name|PATH_LIST_H
+name|STRING_LIST_H
 end_define
 
 begin_struct
@@ -61,20 +61,36 @@ block|}
 struct|;
 end_struct
 
+begin_define
+DECL|macro|STRING_LIST_INIT_NODUP
+define|#
+directive|define
+name|STRING_LIST_INIT_NODUP
+value|{ NULL, 0, 0, 0 }
+end_define
+
+begin_define
+DECL|macro|STRING_LIST_INIT_DUP
+define|#
+directive|define
+name|STRING_LIST_INIT_DUP
+value|{ NULL, 0, 0, 1 }
+end_define
+
 begin_function_decl
 name|void
 name|print_string_list
 parameter_list|(
 specifier|const
-name|char
-modifier|*
-name|text
-parameter_list|,
-specifier|const
 name|struct
 name|string_list
 modifier|*
 name|p
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|text
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -139,7 +155,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/* Use this function to iterate over each item */
+comment|/* Use this function or the macro below to iterate over each item */
 end_comment
 
 begin_typedef
@@ -165,12 +181,12 @@ begin_function_decl
 name|int
 name|for_each_string_list
 parameter_list|(
-name|string_list_each_func_t
-parameter_list|,
 name|struct
 name|string_list
 modifier|*
 name|list
+parameter_list|,
+name|string_list_each_func_t
 parameter_list|,
 name|void
 modifier|*
@@ -178,6 +194,20 @@ name|cb_data
 parameter_list|)
 function_decl|;
 end_function_decl
+
+begin_define
+DECL|macro|for_each_string_list_item
+define|#
+directive|define
+name|for_each_string_list_item
+parameter_list|(
+name|item
+parameter_list|,
+name|list
+parameter_list|)
+define|\
+value|for (item = (list)->items; item< (list)->items + (list)->nr; ++item)
+end_define
 
 begin_comment
 comment|/* Use these functions only on sorted lists: */
@@ -228,15 +258,15 @@ name|string_list_item
 modifier|*
 name|string_list_insert
 parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|string
-parameter_list|,
 name|struct
 name|string_list
 modifier|*
 name|list
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|string
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -247,6 +277,11 @@ name|string_list_item
 modifier|*
 name|string_list_insert_at_index
 parameter_list|(
+name|struct
+name|string_list
+modifier|*
+name|list
+parameter_list|,
 name|int
 name|insert_at
 parameter_list|,
@@ -254,11 +289,6 @@ specifier|const
 name|char
 modifier|*
 name|string
-parameter_list|,
-name|struct
-name|string_list
-modifier|*
-name|list
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -269,15 +299,15 @@ name|string_list_item
 modifier|*
 name|string_list_lookup
 parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|string
-parameter_list|,
 name|struct
 name|string_list
 modifier|*
 name|list
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|string
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -292,15 +322,15 @@ name|string_list_item
 modifier|*
 name|string_list_append
 parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|string
-parameter_list|,
 name|struct
 name|string_list
 modifier|*
 name|list
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|string
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -334,13 +364,32 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|struct
+name|string_list_item
+modifier|*
+name|unsorted_string_list_lookup
+parameter_list|(
+name|struct
+name|string_list
+modifier|*
+name|list
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|string
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
 end_endif
 
 begin_comment
-comment|/* PATH_LIST_H */
+comment|/* STRING_LIST_H */
 end_comment
 
 end_unit

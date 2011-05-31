@@ -70,7 +70,9 @@ name|say
 parameter_list|(
 name|a
 parameter_list|)
-value|do {} while(0)
+value|do {
+comment|/* nothing */
+value|} while (0)
 end_define
 
 begin_define
@@ -83,7 +85,9 @@ name|a
 parameter_list|,
 name|b
 parameter_list|)
-value|do {} while(0)
+value|do {
+comment|/* nothing */
+value|} while (0)
 end_define
 
 begin_define
@@ -98,7 +102,9 @@ name|b
 parameter_list|,
 name|c
 parameter_list|)
-value|do {} while(0)
+value|do {
+comment|/* nothing */
+value|} while (0)
 end_define
 
 begin_endif
@@ -485,10 +491,12 @@ argument_list|,
 name|ch
 argument_list|)
 return|;
-comment|/* 		 * Detect overflow.  The largest 		 * 5-letter possible is "|NsC0" to 		 * encode 0xffffffff, and "|NsC" gives 		 * 0x03030303 at this point (i.e. 		 * 0xffffffff = 0x03030303 * 85). 		 */
+comment|/* Detect overflow. */
 if|if
 condition|(
-literal|0x03030303
+literal|0xffffffff
+operator|/
+literal|85
 operator|<
 name|acc
 operator|||
@@ -599,9 +607,6 @@ name|int
 name|bytes
 parameter_list|)
 block|{
-name|prep_base85
-argument_list|()
-expr_stmt|;
 name|say
 argument_list|(
 literal|"encode 85"
@@ -803,7 +808,7 @@ operator|+
 literal|'a'
 operator|-
 literal|26
-operator|+
+operator|-
 literal|1
 expr_stmt|;
 name|printf

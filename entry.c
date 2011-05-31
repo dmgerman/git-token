@@ -557,7 +557,7 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"git checkout-index: unable to read sha1 file of %s (%s)"
+literal|"unable to read sha1 file of %s (%s)"
 argument_list|,
 name|path
 argument_list|,
@@ -602,7 +602,7 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"git checkout-index: unable to create symlink %s (%s)"
+literal|"unable to create symlink %s (%s)"
 argument_list|,
 name|path
 argument_list|,
@@ -738,7 +738,7 @@ expr_stmt|;
 return|return
 name|error
 argument_list|(
-literal|"git checkout-index: unable to create file %s (%s)"
+literal|"unable to create file %s (%s)"
 argument_list|,
 name|path
 argument_list|,
@@ -811,7 +811,7 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"git checkout-index: unable to write file %s"
+literal|"unable to write file %s"
 argument_list|,
 name|path
 argument_list|)
@@ -827,7 +827,7 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"git checkout-index: cannot create temporary subproject %s"
+literal|"cannot create temporary subproject %s"
 argument_list|,
 name|path
 argument_list|)
@@ -846,7 +846,7 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"git checkout-index: cannot create subproject directory %s"
+literal|"cannot create subproject directory %s"
 argument_list|,
 name|path
 argument_list|)
@@ -856,7 +856,7 @@ default|default:
 return|return
 name|error
 argument_list|(
-literal|"git checkout-index: unknown file mode for %s"
+literal|"unknown file mode for %s in index"
 argument_list|,
 name|path
 argument_list|)
@@ -895,6 +895,91 @@ expr_stmt|;
 block|}
 return|return
 literal|0
+return|;
+block|}
+end_function
+
+begin_comment
+comment|/*  * This is like 'lstat()', except it refuses to follow symlinks  * in the path, after skipping "skiplen".  */
+end_comment
+
+begin_function
+DECL|function|check_path
+specifier|static
+name|int
+name|check_path
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|,
+name|int
+name|len
+parameter_list|,
+name|struct
+name|stat
+modifier|*
+name|st
+parameter_list|,
+name|int
+name|skiplen
+parameter_list|)
+block|{
+specifier|const
+name|char
+modifier|*
+name|slash
+init|=
+name|path
+operator|+
+name|len
+decl_stmt|;
+while|while
+condition|(
+name|path
+operator|<
+name|slash
+operator|&&
+operator|*
+name|slash
+operator|!=
+literal|'/'
+condition|)
+name|slash
+operator|--
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|has_dirs_only_path
+argument_list|(
+name|path
+argument_list|,
+name|slash
+operator|-
+name|path
+argument_list|,
+name|skiplen
+argument_list|)
+condition|)
+block|{
+name|errno
+operator|=
+name|ENOENT
+expr_stmt|;
+return|return
+operator|-
+literal|1
+return|;
+block|}
+return|return
+name|lstat
+argument_list|(
+name|path
+argument_list|,
+name|st
+argument_list|)
 return|;
 block|}
 end_function
@@ -988,12 +1073,18 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|lstat
+name|check_path
 argument_list|(
 name|path
 argument_list|,
+name|len
+argument_list|,
 operator|&
 name|st
+argument_list|,
+name|state
+operator|->
+name|base_dir_len
 argument_list|)
 condition|)
 block|{
@@ -1008,6 +1099,8 @@ operator|&
 name|st
 argument_list|,
 name|CE_MATCH_IGNORE_VALID
+operator||
+name|CE_MATCH_IGNORE_SKIP_WORKTREE
 argument_list|)
 decl_stmt|;
 if|if
@@ -1037,7 +1130,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"git-checkout-index: %s already exists\n"
+literal|"%s already exists, no checkout\n"
 argument_list|,
 name|path
 argument_list|)

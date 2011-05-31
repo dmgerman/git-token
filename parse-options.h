@@ -57,6 +57,9 @@ block|,
 DECL|enumerator|OPTION_CALLBACK
 name|OPTION_CALLBACK
 block|,
+DECL|enumerator|OPTION_LOWLEVEL_CALLBACK
+name|OPTION_LOWLEVEL_CALLBACK
+block|,
 DECL|enumerator|OPTION_FILENAME
 name|OPTION_FILENAME
 block|}
@@ -92,7 +95,7 @@ DECL|enumerator|PARSE_OPT_NO_INTERNAL_HELP
 name|PARSE_OPT_NO_INTERNAL_HELP
 init|=
 literal|16
-block|, }
+block|}
 enum|;
 end_enum
 
@@ -135,7 +138,17 @@ DECL|enumerator|PARSE_OPT_LITERAL_ARGHELP
 name|PARSE_OPT_LITERAL_ARGHELP
 init|=
 literal|64
-block|, }
+block|,
+DECL|enumerator|PARSE_OPT_NEGHELP
+name|PARSE_OPT_NEGHELP
+init|=
+literal|128
+block|,
+DECL|enumerator|PARSE_OPT_SHELL_EVAL
+name|PARSE_OPT_SHELL_EVAL
+init|=
+literal|256
+block|}
 enum|;
 end_enum
 
@@ -167,8 +180,37 @@ parameter_list|)
 function_decl|;
 end_typedef
 
+begin_struct_decl
+struct_decl|struct
+name|parse_opt_ctx_t
+struct_decl|;
+end_struct_decl
+
+begin_typedef
+DECL|typedef|parse_opt_ll_cb
+typedef|typedef
+name|int
+name|parse_opt_ll_cb
+parameter_list|(
+name|struct
+name|parse_opt_ctx_t
+modifier|*
+name|ctx
+parameter_list|,
+specifier|const
+name|struct
+name|option
+modifier|*
+name|opt
+parameter_list|,
+name|int
+name|unset
+parameter_list|)
+function_decl|;
+end_typedef
+
 begin_comment
-comment|/*  * `type`::  *   holds the type of the option, you must have an OPTION_END last in your  *   array.  *  * `short_name`::  *   the character to use as a short option name, '\0' if none.  *  * `long_name`::  *   the long option name, without the leading dashes, NULL if none.  *  * `value`::  *   stores pointers to the values to be filled.  *  * `argh`::  *   token to explain the kind of argument this option wants. Keep it  *   homogeneous across the repository.  *  * `help`::  *   the short help associated to what the option does.  *   Must never be NULL (except for OPTION_END).  *   OPTION_GROUP uses this pointer to store the group header.  *  * `flags`::  *   mask of parse_opt_option_flags.  *   PARSE_OPT_OPTARG: says that the argument is optional (not for BOOLEANs)  *   PARSE_OPT_NOARG: says that this option takes no argument  *   PARSE_OPT_NONEG: says that this option cannot be negated  *   PARSE_OPT_HIDDEN: this option is skipped in the default usage, and  *                     shown only in the full usage.  *   PARSE_OPT_LASTARG_DEFAULT: says that this option will take the default  *				value if no argument is given when the option  *				is last on the command line. If the option is  *				not last it will require an argument.  *				Should not be used with PARSE_OPT_OPTARG.  *   PARSE_OPT_NODASH: this option doesn't start with a dash.  *   PARSE_OPT_LITERAL_ARGHELP: says that argh shouldn't be enclosed in brackets  *				(i.e. '<argh>') in the help message.  *				Useful for options with multiple parameters.  *  * `callback`::  *   pointer to the callback to use for OPTION_CALLBACK.  *  * `defval`::  *   default value to fill (*->value) with for PARSE_OPT_OPTARG.  *   OPTION_{BIT,SET_INT,SET_PTR} store the {mask,integer,pointer} to put in  *   the value when met.  *   CALLBACKS can use it like they want.  */
+comment|/*  * `type`::  *   holds the type of the option, you must have an OPTION_END last in your  *   array.  *  * `short_name`::  *   the character to use as a short option name, '\0' if none.  *  * `long_name`::  *   the long option name, without the leading dashes, NULL if none.  *  * `value`::  *   stores pointers to the values to be filled.  *  * `argh`::  *   token to explain the kind of argument this option wants. Keep it  *   homogeneous across the repository.  *  * `help`::  *   the short help associated to what the option does.  *   Must never be NULL (except for OPTION_END).  *   OPTION_GROUP uses this pointer to store the group header.  *  * `flags`::  *   mask of parse_opt_option_flags.  *   PARSE_OPT_OPTARG: says that the argument is optional (not for BOOLEANs)  *   PARSE_OPT_NOARG: says that this option does not take an argument  *   PARSE_OPT_NONEG: says that this option cannot be negated  *   PARSE_OPT_HIDDEN: this option is skipped in the default usage, and  *                     shown only in the full usage.  *   PARSE_OPT_LASTARG_DEFAULT: says that this option will take the default  *				value if no argument is given when the option  *				is last on the command line. If the option is  *				not last it will require an argument.  *				Should not be used with PARSE_OPT_OPTARG.  *   PARSE_OPT_NODASH: this option doesn't start with a dash.  *   PARSE_OPT_LITERAL_ARGHELP: says that argh shouldn't be enclosed in brackets  *				(i.e. '<argh>') in the help message.  *				Useful for options with multiple parameters.  *   PARSE_OPT_NEGHELP: says that the long option should always be shown with  *				the --no prefix in the usage message. Sometimes  *				useful for users of OPTION_NEGBIT.  *  * `callback`::  *   pointer to the callback to use for OPTION_CALLBACK or  *   OPTION_LOWLEVEL_CALLBACK.  *  * `defval`::  *   default value to fill (*->value) with for PARSE_OPT_OPTARG.  *   OPTION_{BIT,SET_INT,SET_PTR} store the {mask,integer,pointer} to put in  *   the value when met.  *   CALLBACKS can use it like they want.  */
 end_comment
 
 begin_struct
@@ -388,6 +430,23 @@ value|{ OPTION_STRING,  (s), (l), (v), (a), (h) }
 end_define
 
 begin_define
+DECL|macro|OPT_UYN
+define|#
+directive|define
+name|OPT_UYN
+parameter_list|(
+name|s
+parameter_list|,
+name|l
+parameter_list|,
+name|v
+parameter_list|,
+name|h
+parameter_list|)
+value|{ OPTION_CALLBACK, (s), (l), (v), NULL, \ 				      (h), PARSE_OPT_NOARG,&parse_opt_tertiary }
+end_define
+
+begin_define
 DECL|macro|OPT_DATE
 define|#
 directive|define
@@ -457,7 +516,25 @@ name|v
 parameter_list|,
 name|h
 parameter_list|)
-value|{ OPTION_FILENAME, (s), (l), (v), \ 				       "FILE", (h) }
+value|{ OPTION_FILENAME, (s), (l), (v), \ 				       "file", (h) }
+end_define
+
+begin_define
+DECL|macro|OPT_COLOR_FLAG
+define|#
+directive|define
+name|OPT_COLOR_FLAG
+parameter_list|(
+name|s
+parameter_list|,
+name|l
+parameter_list|,
+name|v
+parameter_list|,
+name|h
+parameter_list|)
+define|\
+value|{ OPTION_CALLBACK, (s), (l), (v), "when", (h), PARSE_OPT_OPTARG, \ 		parse_opt_color_flag_cb, (intptr_t)"always" }
 end_define
 
 begin_comment
@@ -524,6 +601,33 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|NORETURN
+name|void
+name|usage_msg_opt
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|msg
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+specifier|const
+modifier|*
+name|usagestr
+parameter_list|,
+specifier|const
+name|struct
+name|option
+modifier|*
+name|options
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/*----- incremental advanced APIs -----*/
 end_comment
@@ -540,9 +644,12 @@ block|,
 DECL|enumerator|PARSE_OPT_DONE
 name|PARSE_OPT_DONE
 block|,
+DECL|enumerator|PARSE_OPT_NON_OPTION
+name|PARSE_OPT_NON_OPTION
+block|,
 DECL|enumerator|PARSE_OPT_UNKNOWN
 name|PARSE_OPT_UNKNOWN
-block|, }
+block|}
 enum|;
 end_enum
 
@@ -598,27 +705,6 @@ end_struct
 
 begin_function_decl
 specifier|extern
-name|int
-name|parse_options_usage
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-specifier|const
-modifier|*
-name|usagestr
-parameter_list|,
-specifier|const
-name|struct
-name|option
-modifier|*
-name|opts
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-specifier|extern
 name|void
 name|parse_options_start
 parameter_list|(
@@ -640,6 +726,12 @@ specifier|const
 name|char
 modifier|*
 name|prefix
+parameter_list|,
+specifier|const
+name|struct
+name|option
+modifier|*
+name|options
 parameter_list|,
 name|int
 name|flags
@@ -686,6 +778,26 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|parse_options_concat
+parameter_list|(
+name|struct
+name|option
+modifier|*
+name|dst
+parameter_list|,
+name|size_t
+parameter_list|,
+name|struct
+name|option
+modifier|*
+name|src
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/*----- some often used options -----*/
 end_comment
@@ -713,6 +825,25 @@ begin_function_decl
 specifier|extern
 name|int
 name|parse_opt_approxidate_cb
+parameter_list|(
+specifier|const
+name|struct
+name|option
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+parameter_list|,
+name|int
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|parse_opt_color_flag_cb
 parameter_list|(
 specifier|const
 name|struct
@@ -766,6 +897,25 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|parse_opt_tertiary
+parameter_list|(
+specifier|const
+name|struct
+name|option
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+parameter_list|,
+name|int
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_define
 DECL|macro|OPT__VERBOSE
 define|#
@@ -773,8 +923,10 @@ directive|define
 name|OPT__VERBOSE
 parameter_list|(
 name|var
+parameter_list|,
+name|h
 parameter_list|)
-value|OPT_BOOLEAN('v', "verbose", (var), "be verbose")
+value|OPT_BOOLEAN('v', "verbose", (var), (h))
 end_define
 
 begin_define
@@ -784,8 +936,10 @@ directive|define
 name|OPT__QUIET
 parameter_list|(
 name|var
+parameter_list|,
+name|h
 parameter_list|)
-value|OPT_BOOLEAN('q', "quiet",   (var), "be quiet")
+value|OPT_BOOLEAN('q', "quiet",   (var), (h))
 end_define
 
 begin_define
@@ -807,8 +961,23 @@ directive|define
 name|OPT__DRY_RUN
 parameter_list|(
 name|var
+parameter_list|,
+name|h
 parameter_list|)
-value|OPT_BOOLEAN('n', "dry-run", (var), "dry run")
+value|OPT_BOOLEAN('n', "dry-run", (var), (h))
+end_define
+
+begin_define
+DECL|macro|OPT__FORCE
+define|#
+directive|define
+name|OPT__FORCE
+parameter_list|(
+name|var
+parameter_list|,
+name|h
+parameter_list|)
+value|OPT_BOOLEAN('f', "force",   (var), (h))
 end_define
 
 begin_define
@@ -821,6 +990,20 @@ name|var
 parameter_list|)
 define|\
 value|{ OPTION_CALLBACK, 0, "abbrev", (var), "n", \ 	  "use<n> digits to display SHA-1s", \ 	  PARSE_OPT_OPTARG,&parse_opt_abbrev_cb, 0 }
+end_define
+
+begin_define
+DECL|macro|OPT__COLOR
+define|#
+directive|define
+name|OPT__COLOR
+parameter_list|(
+name|var
+parameter_list|,
+name|h
+parameter_list|)
+define|\
+value|OPT_COLOR_FLAG(0, "color", (var), (h))
 end_define
 
 begin_endif

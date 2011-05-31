@@ -71,6 +71,11 @@ DECL|member|include_tag
 name|include_tag
 range|:
 literal|1
+decl_stmt|,
+DECL|member|stateless_rpc
+name|stateless_rpc
+range|:
+literal|1
 decl_stmt|;
 block|}
 struct|;

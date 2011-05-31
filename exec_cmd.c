@@ -26,15 +26,6 @@ value|32
 end_define
 
 begin_decl_stmt
-specifier|extern
-name|char
-modifier|*
-modifier|*
-name|environ
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|variable|argv_exec_path
 specifier|static
 specifier|const
@@ -166,10 +157,8 @@ name|prefix
 operator|=
 name|PREFIX
 expr_stmt|;
-name|fprintf
+name|trace_printf
 argument_list|(
-name|stderr
-argument_list|,
 literal|"RUNTIME_PREFIX requested, "
 literal|"but prefix computation failed.  "
 literal|"Using static fallback '%s'.\n"
@@ -419,7 +408,7 @@ name|strbuf_addstr
 argument_list|(
 name|out
 argument_list|,
-name|make_nonrelative_path
+name|absolute_path
 argument_list|(
 name|path
 argument_list|)
@@ -495,7 +484,7 @@ argument_list|(
 operator|&
 name|new_path
 argument_list|,
-literal|"/usr/local/bin:/usr/bin:/bin"
+name|_PATH_DEFPATH
 argument_list|)
 expr_stmt|;
 name|setenv

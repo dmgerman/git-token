@@ -87,6 +87,17 @@ parameter_list|)
 function_decl|;
 end_typedef
 
+begin_macro
+name|__attribute__
+argument_list|(
+argument|(format (printf,
+literal|3
+argument|,
+literal|4
+argument|))
+argument_list|)
+end_macro
+
 begin_function_decl
 name|int
 name|fsck_error_function

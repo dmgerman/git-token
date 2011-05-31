@@ -6,7 +6,7 @@ file|"../git-compat-util.h"
 end_include
 
 begin_comment
-comment|/*  * The size parameter specifies the available space, i.e. includes  * the trailing NUL byte; but Windows's vsnprintf expects the  * number of characters to write without the trailing NUL.  */
+comment|/*  * The size parameter specifies the available space, i.e. includes  * the trailing NUL byte; but Windows's vsnprintf uses the entire  * buffer and avoids the trailing NUL, should the buffer be exactly  * big enough for the result. Defining SNPRINTF_SIZE_CORR to 1 will  * therefore remove 1 byte from the reported buffer size, so we  * always have room for a trailing NUL byte.  */
 end_comment
 
 begin_ifndef
@@ -20,17 +20,20 @@ if|#
 directive|if
 name|defined
 argument_list|(
-name|__MINGW32__
+name|WIN32
 argument_list|)
 operator|&&
+operator|(
+operator|!
 name|defined
 argument_list|(
 name|__GNUC__
 argument_list|)
-operator|&&
+operator|||
 name|__GNUC__
 operator|<
 literal|4
+operator|)
 end_if
 
 begin_define

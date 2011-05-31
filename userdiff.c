@@ -2,6 +2,12 @@ begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_include
 include|#
 directive|include
+file|"cache.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"userdiff.h"
 end_include
 
@@ -56,7 +62,23 @@ parameter_list|,
 name|word_regex
 parameter_list|)
 define|\
-value|{ name, NULL, -1, { pattern, REG_EXTENDED }, word_regex }
+value|{ name, NULL, -1, { pattern, REG_EXTENDED },		\ 	  word_regex "|[^[:space:]]|[\xc0-\xff][\x80-\xbf]+" }
+end_define
+
+begin_define
+DECL|macro|IPATTERN
+define|#
+directive|define
+name|IPATTERN
+parameter_list|(
+name|name
+parameter_list|,
+name|pattern
+parameter_list|,
+name|word_regex
+parameter_list|)
+define|\
+value|{ name, NULL, -1, { pattern, REG_EXTENDED | REG_ICASE }, \ 	  word_regex "|[^[:space:]]|[\xc0-\xff][\x80-\xbf]+" }
 end_define
 
 begin_decl_stmt
@@ -68,13 +90,30 @@ name|builtin_drivers
 index|[]
 init|=
 block|{
+name|IPATTERN
+argument_list|(
+literal|"fortran"
+argument_list|,
+literal|"!^([C*]|[ \t]*!)\n"
+literal|"!^[ \t]*MODULE[ \t]+PROCEDURE[ \t]\n"
+literal|"^[ \t]*((END[ \t]+)?(PROGRAM|MODULE|BLOCK[ \t]+DATA"
+literal|"|([^'\" \t]+[ \t]+)*(SUBROUTINE|FUNCTION))[ \t]+[A-Z].*)$"
+argument_list|,
+comment|/* -- */
+literal|"[a-zA-Z][a-zA-Z0-9_]*"
+literal|"|\\.([Ee][Qq]|[Nn][Ee]|[Gg][TtEe]|[Ll][TtEe]|[Tt][Rr][Uu][Ee]|[Ff][Aa][Ll][Ss][Ee]|[Aa][Nn][Dd]|[Oo][Rr]|[Nn]?[Ee][Qq][Vv]|[Nn][Oo][Tt])\\."
+comment|/* numbers and format statements like 2E14.4, or ES12.6, 9X. 	  * Don't worry about format statements without leading digits since 	  * they would have been matched above as a variable anyway. */
+literal|"|[-+]?[0-9.]+([AaIiDdEeFfLlTtXx][Ss]?[-+]?[0-9.]*)?(_[a-zA-Z0-9][a-zA-Z0-9_]*)?"
+literal|"|//|\\*\\*|::|[/<>=]="
+argument_list|)
+block|,
 name|PATTERNS
 argument_list|(
 literal|"html"
 argument_list|,
 literal|"^[ \t]*(<[Hh][1-6][ \t].*>.*)$"
 argument_list|,
-literal|"[^<>= \t]+|[^[:space:]]|[\x80-\xff]+"
+literal|"[^<>= \t]+"
 argument_list|)
 block|,
 name|PATTERNS
@@ -89,7 +128,6 @@ literal|"[a-zA-Z_][a-zA-Z0-9_]*"
 literal|"|[-+0-9.e]+[fFlL]?|0[xXbB]?[0-9a-fA-F]+[lL]?"
 literal|"|[-+*/<>%&^|=!]="
 literal|"|--|\\+\\+|<<=?|>>>?=?|&&|\\|\\|"
-literal|"|[^[:space:]]|[\x80-\xff]+"
 argument_list|)
 block|,
 name|PATTERNS
@@ -109,14 +147,13 @@ comment|/* -- */
 literal|"[a-zA-Z_][a-zA-Z0-9_]*"
 literal|"|[-+0-9.e]+[fFlL]?|0[xXbB]?[0-9a-fA-F]+[lL]?"
 literal|"|[-+*/<>%&^|=!]=|--|\\+\\+|<<=?|>>=?|&&|\\|\\||::|->"
-literal|"|[^[:space:]]|[\x80-\xff]+"
 argument_list|)
 block|,
 name|PATTERNS
 argument_list|(
 literal|"pascal"
 argument_list|,
-literal|"^((procedure|function|constructor|destructor|interface|"
+literal|"^(((class[ \t]+)?(procedure|function)|constructor|destructor|interface|"
 literal|"implementation|initialization|finalization)[ \t]*.*)$"
 literal|"\n"
 literal|"^(.*=[ \t]*(class|record).*)$"
@@ -125,20 +162,43 @@ comment|/* -- */
 literal|"[a-zA-Z_][a-zA-Z0-9_]*"
 literal|"|[-+0-9.e]+|0[xXbB]?[0-9a-fA-F]+"
 literal|"|<>|<=|>=|:=|\\.\\."
-literal|"|[^[:space:]]|[\x80-\xff]+"
+argument_list|)
+block|,
+name|PATTERNS
+argument_list|(
+literal|"perl"
+argument_list|,
+literal|"^[ \t]*package .*;\n"
+literal|"^[ \t]*sub .* \\{\n"
+literal|"^[A-Z]+ \\{\n"
+comment|/* BEGIN, END, ... */
+literal|"^=head[0-9] "
+argument_list|,
+comment|/* POD */
+comment|/* -- */
+literal|"[[:alpha:]_'][[:alnum:]_']*"
+literal|"|0[xb]?[0-9a-fA-F_]*"
+comment|/* taking care not to interpret 3..5 as (3.)(.5) */
+literal|"|[0-9a-fA-F_]+(\\.[0-9a-fA-F_]+)?([eE][-+]?[0-9_]+)?"
+literal|"|=>|-[rwxoRWXOezsfdlpSugkbctTBMAC>]|~~|::"
+literal|"|&&=|\\|\\|=|//=|\\*\\*="
+literal|"|&&|\\|\\||//|\\+\\+|--|\\*\\*|\\.\\.\\.?"
+literal|"|[-+*/%.^&<>=!|]="
+literal|"|=~|!~"
+literal|"|<<|<>|<=>|>>"
 argument_list|)
 block|,
 name|PATTERNS
 argument_list|(
 literal|"php"
 argument_list|,
-literal|"^[\t ]*((function|class).*)"
+literal|"^[\t ]*(((public|protected|private|static)[\t ]+)*function.*)$\n"
+literal|"^[\t ]*(class.*)$"
 argument_list|,
 comment|/* -- */
 literal|"[a-zA-Z_][a-zA-Z0-9_]*"
 literal|"|[-+0-9.e]+|0[xXbB]?[0-9a-fA-F]+"
 literal|"|[-+*/<>%&^|=!.]=|--|\\+\\+|<<=?|>>=?|===|&&|\\|\\||::|->"
-literal|"|[^[:space:]]|[\x80-\xff]+"
 argument_list|)
 block|,
 name|PATTERNS
@@ -151,7 +211,6 @@ comment|/* -- */
 literal|"[a-zA-Z_][a-zA-Z0-9_]*"
 literal|"|[-+0-9.e]+[jJlL]?|0[xX]?[0-9a-fA-F]+[lL]?"
 literal|"|[-+*/<>%&^|=!]=|//=?|<<=?|>>=?|\\*\\*=?"
-literal|"|[^[:space:]|[\x80-\xff]+"
 argument_list|)
 block|,
 comment|/* -- */
@@ -165,7 +224,6 @@ comment|/* -- */
 literal|"(@|@@|\\$)?[a-zA-Z_][a-zA-Z0-9_]*"
 literal|"|[-+0-9.e]+|0[xXbB]?[0-9a-fA-F]+|\\?(\\\\C-)?(\\\\M-)?."
 literal|"|//=?|[-+*/<>%&^|=!]=|<<=?|>>=?|===|\\.{1,3}|::|[!=]~"
-literal|"|[^[:space:]|[\x80-\xff]+"
 argument_list|)
 block|,
 name|PATTERNS
@@ -183,7 +241,7 @@ literal|"tex"
 argument_list|,
 literal|"^(\\\\((sub)*section|chapter|part)\\*{0,1}\\{.*)$"
 argument_list|,
-literal|"\\\\[a-zA-Z@]+|\\\\.|[a-zA-Z0-9\x80-\xff]+|[^[:space:]]"
+literal|"\\\\[a-zA-Z@]+|\\\\.|[a-zA-Z0-9\x80-\xff]+"
 argument_list|)
 block|,
 name|PATTERNS
@@ -201,7 +259,27 @@ comment|/* -- */
 literal|"[a-zA-Z_][a-zA-Z0-9_]*"
 literal|"|[-+0-9.e]+[fFlL]?|0[xXbB]?[0-9a-fA-F]+[lL]?"
 literal|"|[-+*/<>%&^|=!]=|--|\\+\\+|<<=?|>>=?|&&|\\|\\||::|->"
-literal|"|[^[:space:]]|[\x80-\xff]+"
+argument_list|)
+block|,
+name|PATTERNS
+argument_list|(
+literal|"csharp"
+argument_list|,
+comment|/* Keywords */
+literal|"!^[ \t]*(do|while|for|if|else|instanceof|new|return|switch|case|throw|catch|using)\n"
+comment|/* Methods and constructors */
+literal|"^[ \t]*(((static|public|internal|private|protected|new|virtual|sealed|override|unsafe)[ \t]+)*[][<>@.~_[:alnum:]]+[ \t]+[<>@._[:alnum:]]+[ \t]*\\(.*\\))[ \t]*$\n"
+comment|/* Properties */
+literal|"^[ \t]*(((static|public|internal|private|protected|new|virtual|sealed|override|unsafe)[ \t]+)*[][<>@.~_[:alnum:]]+[ \t]+[@._[:alnum:]]+)[ \t]*$\n"
+comment|/* Type definitions */
+literal|"^[ \t]*(((static|public|internal|private|protected|new|unsafe|sealed|abstract|partial)[ \t]+)*(class|enum|interface|struct)[ \t]+.*)$\n"
+comment|/* Namespace */
+literal|"^[ \t]*(namespace[ \t]+.*)$"
+argument_list|,
+comment|/* -- */
+literal|"[a-zA-Z_][a-zA-Z0-9_]*"
+literal|"|[-+0-9.e]+[fFlL]?|0[xXbB]?[0-9a-fA-F]+[lL]?"
+literal|"|[-+*/<>%&^|=!]=|--|\\+\\+|<<=?|>>=?|&&|\\|\\||::|->"
 argument_list|)
 block|,
 block|{
@@ -227,6 +305,13 @@ DECL|macro|PATTERNS
 undef|#
 directive|undef
 name|PATTERNS
+end_undef
+
+begin_undef
+DECL|macro|IPATTERN
+undef|#
+directive|undef
+name|IPATTERN
 end_undef
 
 begin_decl_stmt
@@ -735,6 +820,43 @@ block|}
 end_function
 
 begin_function
+DECL|function|parse_bool
+specifier|static
+name|int
+name|parse_bool
+parameter_list|(
+name|int
+modifier|*
+name|b
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|k
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|v
+parameter_list|)
+block|{
+operator|*
+name|b
+operator|=
+name|git_config_bool
+argument_list|(
+name|k
+argument_list|,
+name|v
+argument_list|)
+expr_stmt|;
+return|return
+literal|1
+return|;
+block|}
+end_function
+
+begin_function
 DECL|function|userdiff_config
 name|int
 name|userdiff_config
@@ -910,6 +1032,34 @@ name|k
 argument_list|,
 name|v
 argument_list|,
+literal|"cachetextconv"
+argument_list|)
+operator|)
+condition|)
+return|return
+name|parse_bool
+argument_list|(
+operator|&
+name|drv
+operator|->
+name|textconv_want_cache
+argument_list|,
+name|k
+argument_list|,
+name|v
+argument_list|)
+return|;
+if|if
+condition|(
+operator|(
+name|drv
+operator|=
+name|parse_driver
+argument_list|(
+name|k
+argument_list|,
+name|v
+argument_list|,
 literal|"wordregex"
 argument_list|)
 operator|)
@@ -998,8 +1148,6 @@ operator|=
 name|git_attr
 argument_list|(
 literal|"diff"
-argument_list|,
-literal|4
 argument_list|)
 expr_stmt|;
 name|check

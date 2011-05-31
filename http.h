@@ -42,6 +42,12 @@ directive|include
 file|"remote.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"url.h"
+end_include
+
 begin_comment
 comment|/*  * We detect based on the cURL version if multi-transfer is  * usable in this implementation and define this symbol accordingly.  * This is not something Makefile should set nor users should pass  * via CFLAGS.  */
 end_comment
@@ -97,7 +103,7 @@ name|curl_global_cleanup
 parameter_list|()
 value|do {
 comment|/* nothing */
-value|} while(0)
+value|} while (0)
 end_define
 
 begin_endif
@@ -123,7 +129,7 @@ name|a
 parameter_list|)
 value|do {
 comment|/* nothing */
-value|} while(0)
+value|} while (0)
 end_define
 
 begin_endif
@@ -447,9 +453,12 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|void
-name|finish_all_active_slots
+name|finish_active_slot
 parameter_list|(
-name|void
+name|struct
+name|active_request_slot
+modifier|*
+name|slot
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -457,12 +466,9 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|void
-name|release_active_slot
+name|finish_all_active_slots
 parameter_list|(
-name|struct
-name|active_request_slot
-modifier|*
-name|slot
+name|void
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -561,6 +567,13 @@ begin_decl_stmt
 specifier|extern
 name|int
 name|http_is_verbose
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
+name|size_t
+name|http_post_buffer
 decl_stmt|;
 end_decl_stmt
 
@@ -732,6 +745,22 @@ name|HTTP_START_FAILED
 value|3
 end_define
 
+begin_define
+DECL|macro|HTTP_REAUTH
+define|#
+directive|define
+name|HTTP_REAUTH
+value|4
+end_define
+
+begin_define
+DECL|macro|HTTP_NOAUTH
+define|#
+directive|define
+name|HTTP_NOAUTH
+value|5
+end_define
+
 begin_comment
 comment|/*  * Requests an url and stores the result in a strbuf.  *  * If the result pointer is NULL, a HTTP HEAD request is made instead of GET.  */
 end_comment
@@ -749,30 +778,6 @@ name|struct
 name|strbuf
 modifier|*
 name|result
-parameter_list|,
-name|int
-name|options
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_comment
-comment|/*  * Downloads an url and stores the result in the given file.  *  * If a previous interrupted download is detected (i.e. a previous temporary  * file is still around) the download is resumed.  */
-end_comment
-
-begin_function_decl
-name|int
-name|http_get_file
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|url
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|filename
 parameter_list|,
 name|int
 name|options
@@ -868,13 +873,6 @@ name|FILE
 modifier|*
 name|packfile
 decl_stmt|;
-DECL|member|filename
-name|char
-name|filename
-index|[
-name|PATH_MAX
-index|]
-decl_stmt|;
 DECL|member|tmpfile
 name|char
 name|tmpfile
@@ -957,13 +955,6 @@ DECL|member|url
 name|char
 modifier|*
 name|url
-decl_stmt|;
-DECL|member|filename
-name|char
-name|filename
-index|[
-name|PATH_MAX
-index|]
 decl_stmt|;
 DECL|member|tmpfile
 name|char

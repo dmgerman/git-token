@@ -13,7 +13,7 @@ name|STRBUF_H
 end_define
 
 begin_comment
-comment|/*  * Strbuf's can be use in many ways: as a byte array, or to store arbitrary  * long, overflow safe strings.  *  * Strbufs has some invariants that are very important to keep in mind:  *  * 1. the ->buf member is always malloc-ed, hence strbuf's can be used to  *    build complex strings/buffers whose final size isn't easily known.  *  *    It is NOT legal to copy the ->buf pointer away.  *    `strbuf_detach' is the operation that detaches a buffer from its shell  *    while keeping the shell valid wrt its invariants.  *  * 2. the ->buf member is a byte array that has at least ->len + 1 bytes  *    allocated. The extra byte is used to store a '\0', allowing the ->buf  *    member to be a valid C-string. Every strbuf function ensure this  *    invariant is preserved.  *  *    Note that it is OK to "play" with the buffer directly if you work it  *    that way:  *  *    strbuf_grow(sb, SOME_SIZE);  *       ... Here, the memory array starting at sb->buf, and of length  *       ... strbuf_avail(sb) is all yours, and you are sure that  *       ... strbuf_avail(sb) is at least SOME_SIZE.  *    strbuf_setlen(sb, sb->len + SOME_OTHER_SIZE);  *  *    Of course, SOME_OTHER_SIZE must be smaller or equal to strbuf_avail(sb).  *  *    Doing so is safe, though if it has to be done in many places, adding the  *    missing API to the strbuf module is the way to go.  *  *    XXX: do _not_ assume that the area that is yours is of size ->alloc - 1  *         even if it's true in the current implementation. Alloc is somehow a  *         "private" member that should not be messed with.  */
+comment|/* See Documentation/technical/api-strbuf.txt */
 end_comment
 
 begin_include
@@ -344,18 +344,6 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|void
-name|strbuf_tolower
-parameter_list|(
-name|struct
-name|strbuf
-modifier|*
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-specifier|extern
 name|struct
 name|strbuf
 modifier|*
@@ -576,6 +564,15 @@ modifier|*
 name|sb2
 parameter_list|)
 block|{
+name|strbuf_grow
+argument_list|(
+name|sb
+argument_list|,
+name|sb2
+operator|->
+name|len
+argument_list|)
+expr_stmt|;
 name|strbuf_add
 argument_list|(
 name|sb
@@ -705,10 +702,29 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|void
+name|strbuf_addbuf_percentquote
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+name|dst
+parameter_list|,
+specifier|const
+name|struct
+name|strbuf
+modifier|*
+name|src
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_macro
 name|__attribute__
 argument_list|(
-argument|(format(printf,
+argument|(format (printf,
 literal|2
 argument|,
 literal|3
@@ -732,6 +748,38 @@ modifier|*
 name|fmt
 parameter_list|,
 modifier|...
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_macro
+name|__attribute__
+argument_list|(
+argument|(format (printf,
+literal|2
+argument|,
+literal|0
+argument|))
+argument_list|)
+end_macro
+
+begin_function_decl
+specifier|extern
+name|void
+name|strbuf_vaddf
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+name|sb
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|fmt
+parameter_list|,
+name|va_list
+name|ap
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -813,6 +861,23 @@ name|path
 parameter_list|,
 name|size_t
 name|hint
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|strbuf_getwholeline
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+parameter_list|,
+name|FILE
+modifier|*
+parameter_list|,
+name|int
 parameter_list|)
 function_decl|;
 end_function_decl
