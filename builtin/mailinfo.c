@@ -2176,7 +2176,7 @@ index|[
 literal|0
 index|]
 operator|=
-literal|'\n'
+literal|' '
 expr_stmt|;
 name|strbuf_rtrim
 argument_list|(

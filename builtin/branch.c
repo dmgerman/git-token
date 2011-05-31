@@ -2169,15 +2169,7 @@ name|commit
 argument_list|)
 condition|)
 block|{
-name|struct
-name|pretty_print_context
-name|ctx
-init|=
-block|{
-literal|0
-block|}
-decl_stmt|;
-name|pretty_print_commit
+name|pp_commit_easy
 argument_list|(
 name|CMIT_FMT_ONELINE
 argument_list|,
@@ -2185,9 +2177,6 @@ name|commit
 argument_list|,
 operator|&
 name|subject
-argument_list|,
-operator|&
-name|ctx
 argument_list|)
 expr_stmt|;
 name|sub
