@@ -3268,10 +3268,8 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|s
+name|l
 operator|->
-name|untracked
-operator|.
 name|nr
 condition|)
 return|return;
