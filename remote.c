@@ -9291,6 +9291,16 @@ operator|!=
 name|head
 operator|&&
 operator|!
+name|prefixcmp
+argument_list|(
+name|r
+operator|->
+name|name
+argument_list|,
+literal|"refs/heads/"
+argument_list|)
+operator|&&
+operator|!
 name|hashcmp
 argument_list|(
 name|r
