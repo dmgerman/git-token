@@ -4618,6 +4618,20 @@ argument_list|,
 literal|"print empty line between matches from different files"
 argument_list|)
 block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|0
+argument_list|,
+literal|"heading"
+argument_list|,
+operator|&
+name|opt
+operator|.
+name|heading
+argument_list|,
+literal|"show filename only once above matches from same file"
+argument_list|)
+block|,
 name|OPT_GROUP
 argument_list|(
 literal|""

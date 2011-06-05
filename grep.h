@@ -495,6 +495,10 @@ DECL|member|file_break
 name|int
 name|file_break
 decl_stmt|;
+DECL|member|heading
+name|int
+name|heading
+decl_stmt|;
 DECL|member|priv
 name|void
 modifier|*
