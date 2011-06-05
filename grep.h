@@ -491,6 +491,10 @@ DECL|member|show_hunk_mark
 name|int
 name|show_hunk_mark
 decl_stmt|;
+DECL|member|file_break
+name|int
+name|file_break
+decl_stmt|;
 DECL|member|priv
 name|void
 modifier|*

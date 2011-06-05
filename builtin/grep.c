@@ -4604,6 +4604,20 @@ argument_list|,
 literal|"highlight matches"
 argument_list|)
 block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|0
+argument_list|,
+literal|"break"
+argument_list|,
+operator|&
+name|opt
+operator|.
+name|file_break
+argument_list|,
+literal|"print empty line between matches from different files"
+argument_list|)
+block|,
 name|OPT_GROUP
 argument_list|(
 literal|""
@@ -5423,6 +5437,10 @@ operator|||
 name|opt
 operator|.
 name|post_context
+operator|||
+name|opt
+operator|.
+name|file_break
 condition|)
 name|skip_first_line
 operator|=
