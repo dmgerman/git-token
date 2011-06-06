@@ -340,6 +340,17 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|int
+name|ref_exists
+parameter_list|(
+name|char
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
 name|peel_ref
 parameter_list|(
 specifier|const

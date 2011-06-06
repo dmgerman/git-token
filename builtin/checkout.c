@@ -4814,14 +4814,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|!
-name|get_sha1
+name|ref_exists
 argument_list|(
 name|buf
 operator|.
 name|buf
-argument_list|,
-name|rev
 argument_list|)
 condition|)
 block|{
