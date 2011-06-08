@@ -3837,22 +3837,29 @@ name|rest
 parameter_list|)
 block|{
 comment|/* 	 * The first character was '.', but that 	 * has already been discarded, we now test 	 * the rest. 	 */
+comment|/* "." is not allowed */
+if|if
+condition|(
+operator|*
+name|rest
+operator|==
+literal|'\0'
+operator|||
+name|is_dir_sep
+argument_list|(
+operator|*
+name|rest
+argument_list|)
+condition|)
+return|return
+literal|0
+return|;
 switch|switch
 condition|(
 operator|*
 name|rest
 condition|)
 block|{
-comment|/* "." is not allowed */
-case|case
-literal|'\0'
-case|:
-case|case
-literal|'/'
-case|:
-return|return
-literal|0
-return|;
 comment|/* 	 * ".git" followed by  NUL or slash is bad. This 	 * shares the path end test with the ".." case. 	 */
 case|case
 literal|'g'
@@ -3894,12 +3901,13 @@ index|]
 operator|==
 literal|'\0'
 operator|||
+name|is_dir_sep
+argument_list|(
 name|rest
 index|[
 literal|1
 index|]
-operator|==
-literal|'/'
+argument_list|)
 condition|)
 return|return
 literal|0
