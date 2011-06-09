@@ -645,12 +645,12 @@ block|}
 end_function
 
 begin_function
-DECL|function|strbuf_split
+DECL|function|strbuf_split_max
 name|struct
 name|strbuf
 modifier|*
 modifier|*
-name|strbuf_split
+name|strbuf_split_max
 parameter_list|(
 specifier|const
 name|struct
@@ -660,6 +660,9 @@ name|sb
 parameter_list|,
 name|int
 name|delim
+parameter_list|,
+name|int
+name|max
 parameter_list|)
 block|{
 name|int
@@ -727,6 +730,18 @@ block|{
 name|int
 name|len
 decl_stmt|;
+if|if
+condition|(
+name|max
+operator|<=
+literal|0
+operator|||
+name|pos
+operator|+
+literal|1
+operator|<
+name|max
+condition|)
 name|n
 operator|=
 name|memchr
@@ -747,6 +762,11 @@ operator|->
 name|buf
 operator|)
 argument_list|)
+expr_stmt|;
+else|else
+name|n
+operator|=
+name|NULL
 expr_stmt|;
 if|if
 condition|(
