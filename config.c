@@ -251,6 +251,22 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+name|pair
+index|[
+literal|0
+index|]
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"bogus config parameter: %s"
+argument_list|,
+name|text
+argument_list|)
+return|;
+if|if
+condition|(
 name|pair
 index|[
 literal|0
