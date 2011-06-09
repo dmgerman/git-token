@@ -239,12 +239,14 @@ argument_list|)
 expr_stmt|;
 name|pair
 operator|=
-name|strbuf_split
+name|strbuf_split_max
 argument_list|(
 operator|&
 name|tmp
 argument_list|,
 literal|'='
+argument_list|,
+literal|2
 argument_list|)
 expr_stmt|;
 if|if
