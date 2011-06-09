@@ -4404,8 +4404,10 @@ operator|-
 literal|1
 case|:
 comment|/* error */
-name|ret
-operator|--
+name|die
+argument_list|(
+literal|"unable to parse command-line config"
+argument_list|)
 expr_stmt|;
 break|break;
 case|case
