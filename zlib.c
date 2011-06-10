@@ -10,6 +10,61 @@ file|"cache.h"
 end_include
 
 begin_function
+DECL|function|zerr_to_string
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|zerr_to_string
+parameter_list|(
+name|int
+name|status
+parameter_list|)
+block|{
+switch|switch
+condition|(
+name|status
+condition|)
+block|{
+case|case
+name|Z_MEM_ERROR
+case|:
+return|return
+literal|"out of memory"
+return|;
+case|case
+name|Z_VERSION_ERROR
+case|:
+return|return
+literal|"wrong version"
+return|;
+case|case
+name|Z_NEED_DICT
+case|:
+return|return
+literal|"needs dictionary"
+return|;
+case|case
+name|Z_DATA_ERROR
+case|:
+return|return
+literal|"data stream error"
+return|;
+case|case
+name|Z_STREAM_ERROR
+case|:
+return|return
+literal|"stream consistency error"
+return|;
+default|default:
+return|return
+literal|"unknown error"
+return|;
+block|}
+block|}
+end_function
+
+begin_function
 DECL|function|git_inflate_init
 name|void
 name|git_inflate_init
@@ -18,50 +73,29 @@ name|z_streamp
 name|strm
 parameter_list|)
 block|{
-specifier|const
-name|char
-modifier|*
-name|err
-decl_stmt|;
-switch|switch
-condition|(
+name|int
+name|status
+init|=
 name|inflateInit
 argument_list|(
 name|strm
 argument_list|)
-condition|)
-block|{
-case|case
+decl_stmt|;
+if|if
+condition|(
+name|status
+operator|==
 name|Z_OK
-case|:
+condition|)
 return|return;
-case|case
-name|Z_MEM_ERROR
-case|:
-name|err
-operator|=
-literal|"out of memory"
-expr_stmt|;
-break|break;
-case|case
-name|Z_VERSION_ERROR
-case|:
-name|err
-operator|=
-literal|"wrong version"
-expr_stmt|;
-break|break;
-default|default:
-name|err
-operator|=
-literal|"error"
-expr_stmt|;
-block|}
 name|die
 argument_list|(
 literal|"inflateInit: %s (%s)"
 argument_list|,
-name|err
+name|zerr_to_string
+argument_list|(
+name|status
+argument_list|)
 argument_list|,
 name|strm
 operator|->
@@ -86,18 +120,29 @@ name|z_streamp
 name|strm
 parameter_list|)
 block|{
-if|if
-condition|(
+name|int
+name|status
+init|=
 name|inflateEnd
 argument_list|(
 name|strm
 argument_list|)
-operator|!=
+decl_stmt|;
+if|if
+condition|(
+name|status
+operator|==
 name|Z_OK
 condition|)
+return|return;
 name|error
 argument_list|(
-literal|"inflateEnd: %s"
+literal|"inflateEnd: %s (%s)"
+argument_list|,
+name|zerr_to_string
+argument_list|(
+name|status
+argument_list|)
 argument_list|,
 name|strm
 operator|->
@@ -107,7 +152,7 @@ name|strm
 operator|->
 name|msg
 else|:
-literal|"failed"
+literal|"no message"
 argument_list|)
 expr_stmt|;
 block|}
@@ -126,7 +171,7 @@ name|flush
 parameter_list|)
 block|{
 name|int
-name|ret
+name|status
 init|=
 name|inflate
 argument_list|(
@@ -135,56 +180,11 @@ argument_list|,
 name|flush
 argument_list|)
 decl_stmt|;
-specifier|const
-name|char
-modifier|*
-name|err
-decl_stmt|;
 switch|switch
 condition|(
-name|ret
+name|status
 condition|)
 block|{
-comment|/* Out of memory is fatal. */
-case|case
-name|Z_MEM_ERROR
-case|:
-name|die
-argument_list|(
-literal|"inflate: out of memory"
-argument_list|)
-expr_stmt|;
-comment|/* Data corruption errors: we may want to recover from them (fsck) */
-case|case
-name|Z_NEED_DICT
-case|:
-name|err
-operator|=
-literal|"needs dictionary"
-expr_stmt|;
-break|break;
-case|case
-name|Z_DATA_ERROR
-case|:
-name|err
-operator|=
-literal|"data stream error"
-expr_stmt|;
-break|break;
-case|case
-name|Z_STREAM_ERROR
-case|:
-name|err
-operator|=
-literal|"stream consistency error"
-expr_stmt|;
-break|break;
-default|default:
-name|err
-operator|=
-literal|"unknown error"
-expr_stmt|;
-break|break;
 comment|/* Z_BUF_ERROR: normal, needs more space in the output buffer */
 case|case
 name|Z_BUF_ERROR
@@ -196,14 +196,27 @@ case|case
 name|Z_STREAM_END
 case|:
 return|return
-name|ret
+name|status
 return|;
+case|case
+name|Z_MEM_ERROR
+case|:
+name|die
+argument_list|(
+literal|"inflate: out of memory"
+argument_list|)
+expr_stmt|;
+default|default:
+break|break;
 block|}
 name|error
 argument_list|(
 literal|"inflate: %s (%s)"
 argument_list|,
-name|err
+name|zerr_to_string
+argument_list|(
+name|status
+argument_list|)
 argument_list|,
 name|strm
 operator|->
@@ -217,7 +230,7 @@ literal|"no message"
 argument_list|)
 expr_stmt|;
 return|return
-name|ret
+name|status
 return|;
 block|}
 end_function
