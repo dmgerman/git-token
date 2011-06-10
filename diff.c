@@ -10377,7 +10377,7 @@ argument_list|)
 expr_stmt|;
 name|bound
 operator|=
-name|deflateBound
+name|git_deflate_bound
 argument_list|(
 operator|&
 name|stream

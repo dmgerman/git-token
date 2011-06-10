@@ -2547,7 +2547,7 @@ argument_list|)
 expr_stmt|;
 name|size
 operator|=
-name|deflateBound
+name|git_deflate_bound
 argument_list|(
 operator|&
 name|stream
