@@ -1367,7 +1367,7 @@ block|{
 name|int
 name|status
 decl_stmt|;
-name|z_stream
+name|git_zstream
 name|stream
 decl_stmt|;
 name|void
@@ -1932,7 +1932,7 @@ decl_stmt|,
 modifier|*
 name|inbuf
 decl_stmt|;
-name|z_stream
+name|git_zstream
 name|stream
 decl_stmt|;
 name|int
@@ -3707,7 +3707,7 @@ name|int
 name|size
 parameter_list|)
 block|{
-name|z_stream
+name|git_zstream
 name|stream
 decl_stmt|;
 name|int

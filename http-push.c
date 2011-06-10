@@ -1858,7 +1858,7 @@ decl_stmt|;
 name|ssize_t
 name|size
 decl_stmt|;
-name|z_stream
+name|git_zstream
 name|stream
 decl_stmt|;
 name|unpacked

@@ -2518,7 +2518,7 @@ comment|/* The client backend isn't giving us compressed data so 		 * we can try
 name|size_t
 name|size
 decl_stmt|;
-name|z_stream
+name|git_zstream
 name|stream
 decl_stmt|;
 name|int

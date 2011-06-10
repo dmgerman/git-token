@@ -5354,7 +5354,7 @@ decl_stmt|;
 name|git_SHA_CTX
 name|c
 decl_stmt|;
-name|z_stream
+name|git_zstream
 name|s
 decl_stmt|;
 name|hdrlen
@@ -6271,7 +6271,7 @@ decl_stmt|;
 name|git_SHA_CTX
 name|pack_file_ctx
 decl_stmt|;
-name|z_stream
+name|git_zstream
 name|s
 decl_stmt|;
 name|int

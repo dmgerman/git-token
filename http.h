@@ -1003,7 +1003,7 @@ name|git_SHA_CTX
 name|c
 decl_stmt|;
 DECL|member|stream
-name|z_stream
+name|git_zstream
 name|stream
 decl_stmt|;
 DECL|member|zret
