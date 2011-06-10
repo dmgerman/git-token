@@ -611,7 +611,7 @@ name|stream
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|deflateInit
+name|git_deflate_init
 argument_list|(
 operator|&
 name|stream
@@ -664,7 +664,7 @@ do|do
 block|{
 name|result
 operator|=
-name|deflate
+name|git_deflate
 argument_list|(
 operator|&
 name|stream
@@ -696,7 +696,7 @@ return|return
 name|NULL
 return|;
 block|}
-name|deflateEnd
+name|git_deflate_end
 argument_list|(
 operator|&
 name|stream
