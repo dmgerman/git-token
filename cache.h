@@ -140,6 +140,16 @@ end_function_decl
 
 begin_function_decl
 name|void
+name|git_inflate_init_gzip_only
+parameter_list|(
+name|z_streamp
+name|strm
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|void
 name|git_inflate_end
 parameter_list|(
 name|z_streamp
