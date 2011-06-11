@@ -92,8 +92,7 @@ specifier|static
 name|int
 name|core_clock_skew
 init|=
-operator|-
-literal|1
+literal|86400
 decl_stmt|;
 end_decl_stmt
 
