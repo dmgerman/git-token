@@ -2452,6 +2452,14 @@ name|cmd_pack_refs
 block|,
 name|RUN_SETUP
 block|}
+block|,
+block|{
+literal|"skew"
+block|,
+name|cmd_skew
+block|,
+name|RUN_SETUP
+block|}
 block|, 	}
 decl_stmt|;
 name|int
