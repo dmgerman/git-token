@@ -1031,6 +1031,9 @@ name|SLIDING_VIEW_INIT
 argument_list|(
 operator|&
 name|report_buffer
+argument_list|,
+operator|-
+literal|1
 argument_list|)
 decl_stmt|;
 name|FILE
