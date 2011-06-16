@@ -7699,7 +7699,7 @@ condition|)
 block|{
 name|error
 argument_list|(
-literal|"Trying to write ref %s with nonexistant object %s"
+literal|"Trying to write ref %s with nonexistent object %s"
 argument_list|,
 name|lock
 operator|->
