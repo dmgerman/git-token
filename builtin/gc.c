@@ -1120,7 +1120,7 @@ name|_
 argument_list|(
 literal|"Auto packing the repository for optimum performance. You may also\n"
 literal|"run \"git gc\" manually. See "
-literal|"\"git help gc\" for more information."
+literal|"\"git help gc\" for more information.\n"
 argument_list|)
 argument_list|)
 expr_stmt|;
