@@ -4683,7 +4683,9 @@ argument_list|)
 operator|==
 name|EOF
 condition|)
-return|return;
+goto|goto
+name|free_specs
+goto|;
 if|if
 condition|(
 operator|!
@@ -4714,6 +4716,18 @@ literal|128
 argument_list|)
 expr_stmt|;
 comment|/* error already reported */
+name|printf
+argument_list|(
+literal|"\n"
+argument_list|)
+expr_stmt|;
+name|fflush
+argument_list|(
+name|stdout
+argument_list|)
+expr_stmt|;
+name|free_specs
+label|:
 for|for
 control|(
 name|i
@@ -4738,16 +4752,6 @@ expr_stmt|;
 name|free
 argument_list|(
 name|specs
-argument_list|)
-expr_stmt|;
-name|printf
-argument_list|(
-literal|"\n"
-argument_list|)
-expr_stmt|;
-name|fflush
-argument_list|(
-name|stdout
 argument_list|)
 expr_stmt|;
 block|}

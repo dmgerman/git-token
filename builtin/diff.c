@@ -1112,6 +1112,11 @@ argument_list|,
 name|revs
 argument_list|)
 expr_stmt|;
+name|free
+argument_list|(
+name|parent
+argument_list|)
+expr_stmt|;
 return|return
 literal|0
 return|;

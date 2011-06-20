@@ -513,10 +513,17 @@ else|:
 name|HASH_WRITE_OBJECT
 argument_list|)
 condition|)
+block|{
+name|free
+argument_list|(
+name|ce
+argument_list|)
+expr_stmt|;
 return|return
 operator|-
 literal|1
 return|;
+block|}
 name|option
 operator|=
 name|allow_add

@@ -853,6 +853,17 @@ argument_list|(
 name|stdout
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|print_contents
+operator|==
+name|BATCH
+condition|)
+name|free
+argument_list|(
+name|contents
+argument_list|)
+expr_stmt|;
 return|return
 literal|0
 return|;
