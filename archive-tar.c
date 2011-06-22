@@ -1418,14 +1418,7 @@ literal|0
 return|;
 block|}
 return|return
-name|git_default_config
-argument_list|(
-name|var
-argument_list|,
-name|value
-argument_list|,
-name|cb
-argument_list|)
+literal|0
 return|;
 block|}
 end_function
