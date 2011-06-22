@@ -2094,6 +2094,24 @@ operator|&
 name|tar_archiver
 argument_list|)
 expr_stmt|;
+name|tar_filter_config
+argument_list|(
+literal|"tar.tgz.command"
+argument_list|,
+literal|"gzip -cn"
+argument_list|,
+name|NULL
+argument_list|)
+expr_stmt|;
+name|tar_filter_config
+argument_list|(
+literal|"tar.tar.gz.command"
+argument_list|,
+literal|"gzip -cn"
+argument_list|,
+name|NULL
+argument_list|)
+expr_stmt|;
 name|git_config
 argument_list|(
 name|git_tar_config
