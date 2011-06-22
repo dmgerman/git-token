@@ -88,6 +88,14 @@ name|ARCHIVER_WANT_COMPRESSION_LEVELS
 value|1
 end_define
 
+begin_define
+DECL|macro|ARCHIVER_REMOTE
+define|#
+directive|define
+name|ARCHIVER_REMOTE
+value|2
+end_define
+
 begin_struct
 DECL|struct|archiver
 struct|struct
@@ -246,6 +254,9 @@ specifier|const
 name|char
 modifier|*
 name|name_hint
+parameter_list|,
+name|int
+name|remote
 parameter_list|)
 function_decl|;
 end_function_decl

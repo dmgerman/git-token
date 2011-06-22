@@ -624,6 +624,8 @@ argument_list|,
 literal|1
 argument_list|,
 name|output
+argument_list|,
+literal|0
 argument_list|)
 return|;
 block|}

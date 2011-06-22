@@ -1738,6 +1738,8 @@ block|,
 name|write_zip_archive
 block|,
 name|ARCHIVER_WANT_COMPRESSION_LEVELS
+operator||
+name|ARCHIVER_REMOTE
 block|}
 decl_stmt|;
 end_decl_stmt
