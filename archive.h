@@ -106,6 +106,11 @@ modifier|*
 name|write_archive
 function_decl|)
 parameter_list|(
+specifier|const
+name|struct
+name|archiver
+modifier|*
+parameter_list|,
 name|struct
 name|archiver_args
 modifier|*
@@ -114,6 +119,11 @@ function_decl|;
 DECL|member|flags
 name|unsigned
 name|flags
+decl_stmt|;
+DECL|member|data
+name|void
+modifier|*
+name|data
 decl_stmt|;
 block|}
 struct|;

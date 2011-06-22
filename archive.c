@@ -2432,6 +2432,8 @@ name|ar
 operator|->
 name|write_archive
 argument_list|(
+name|ar
+argument_list|,
 operator|&
 name|args
 argument_list|)

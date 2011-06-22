@@ -1429,6 +1429,12 @@ specifier|static
 name|int
 name|write_tar_archive
 parameter_list|(
+specifier|const
+name|struct
+name|archiver
+modifier|*
+name|ar
+parameter_list|,
 name|struct
 name|archiver_args
 modifier|*
