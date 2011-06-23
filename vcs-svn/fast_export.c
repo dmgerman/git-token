@@ -142,6 +142,10 @@ name|int
 name|fd
 parameter_list|)
 block|{
+name|first_commit_done
+operator|=
+literal|0
+expr_stmt|;
 if|if
 condition|(
 name|buffer_fdinit
