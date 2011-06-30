@@ -761,6 +761,10 @@ DECL|member|stat_name_width
 name|int
 name|stat_name_width
 decl_stmt|;
+DECL|member|stat_count
+name|int
+name|stat_count
+decl_stmt|;
 DECL|member|word_regex
 specifier|const
 name|char
