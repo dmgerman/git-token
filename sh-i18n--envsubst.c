@@ -124,6 +124,7 @@ argument_list|(
 literal|"we won't substitute all variables on stdin for you"
 argument_list|)
 expr_stmt|;
+break|break;
 comment|/* 	  all_variables = 1;       subst_from_stdin (); 	  */
 case|case
 literal|2
