@@ -3796,18 +3796,12 @@ literal|"Warning: you are leaving %d commit behind, "
 literal|"not connected to\n"
 literal|"any of your branches:\n\n"
 literal|"%s\n"
-literal|"If you want to keep it by creating a new branch, "
-literal|"this may be a good time\nto do so with:\n\n"
-literal|" git branch new_branch_name %s\n\n"
 argument_list|,
 comment|/* The plural version */
 literal|"Warning: you are leaving %d commits behind, "
 literal|"not connected to\n"
 literal|"any of your branches:\n\n"
 literal|"%s\n"
-literal|"If you want to keep them by creating a new branch, "
-literal|"this may be a good time\nto do so with:\n\n"
-literal|" git branch new_branch_name %s\n\n"
 argument_list|,
 comment|/* Give ngettext() the count */
 name|lost
@@ -3818,6 +3812,28 @@ argument_list|,
 name|sb
 operator|.
 name|buf
+argument_list|)
+expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|sb
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|advice_detached_head
+condition|)
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+name|_
+argument_list|(
+literal|"If you want to keep them by creating a new branch, "
+literal|"this may be a good time\nto do so with:\n\n"
+literal|" git branch new_branch_name %s\n\n"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -3827,12 +3843,6 @@ name|object
 operator|.
 name|sha1
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|strbuf_release
-argument_list|(
-operator|&
-name|sb
 argument_list|)
 expr_stmt|;
 block|}
