@@ -194,6 +194,8 @@ argument_list|)
 expr_stmt|;
 name|type
 operator|=
+name|typename
+argument_list|(
 name|packed_object_info_detail
 argument_list|(
 name|p
@@ -210,6 +212,7 @@ operator|&
 name|delta_chain_length
 argument_list|,
 name|base_sha1
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
