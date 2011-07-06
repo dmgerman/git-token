@@ -41,7 +41,7 @@ name|char
 name|builtin_verify_tag_usage
 index|[]
 init|=
-literal|"git-verify-tag [-v|--verbose]<tag>..."
+literal|"git verify-tag [-v|--verbose]<tag>..."
 decl_stmt|;
 end_decl_stmt
 
@@ -266,12 +266,6 @@ operator|=
 operator|-
 literal|1
 expr_stmt|;
-name|gpg
-operator|.
-name|out
-operator|=
-literal|1
-expr_stmt|;
 name|args_gpg
 index|[
 literal|2
@@ -287,12 +281,19 @@ operator|&
 name|gpg
 argument_list|)
 condition|)
+block|{
+name|unlink
+argument_list|(
+name|path
+argument_list|)
+expr_stmt|;
 return|return
 name|error
 argument_list|(
 literal|"could not run gpg."
 argument_list|)
 return|;
+block|}
 name|write_in_full
 argument_list|(
 name|gpg
@@ -310,12 +311,6 @@ name|gpg
 operator|.
 name|in
 argument_list|)
-expr_stmt|;
-name|gpg
-operator|.
-name|close_in
-operator|=
-literal|0
 expr_stmt|;
 name|ret
 operator|=
@@ -502,21 +497,17 @@ decl_stmt|;
 name|git_config
 argument_list|(
 name|git_default_config
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 if|if
 condition|(
 name|argc
-operator|==
+operator|>
 literal|1
-condition|)
-name|usage
-argument_list|(
-name|builtin_verify_tag_usage
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
+operator|&&
+operator|(
 operator|!
 name|strcmp
 argument_list|(
@@ -538,6 +529,7 @@ index|]
 argument_list|,
 literal|"--verbose"
 argument_list|)
+operator|)
 condition|)
 block|{
 name|verbose
@@ -548,6 +540,17 @@ name|i
 operator|++
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|argc
+operator|<=
+name|i
+condition|)
+name|usage
+argument_list|(
+name|builtin_verify_tag_usage
+argument_list|)
+expr_stmt|;
 comment|/* sometimes the program was terminated because this signal 	 * was received in the process of writing the gpg input: */
 name|signal
 argument_list|(

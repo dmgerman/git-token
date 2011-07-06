@@ -584,7 +584,9 @@ name|printf
 argument_list|(
 literal|"%"
 name|PRIuMAX
-literal|" %s (%08x)\n"
+literal|" %s (%08"
+name|PRIx32
+literal|")\n"
 argument_list|,
 operator|(
 name|uintmax_t

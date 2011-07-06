@@ -34,9 +34,37 @@ name|WT_STATUS_CHANGED
 block|,
 DECL|enumerator|WT_STATUS_UNTRACKED
 name|WT_STATUS_UNTRACKED
+block|,
+DECL|enumerator|WT_STATUS_NOBRANCH
+name|WT_STATUS_NOBRANCH
 block|, }
 enum|;
 end_enum
+
+begin_enum
+DECL|enum|untracked_status_type
+enum|enum
+name|untracked_status_type
+block|{
+DECL|enumerator|SHOW_NO_UNTRACKED_FILES
+name|SHOW_NO_UNTRACKED_FILES
+block|,
+DECL|enumerator|SHOW_NORMAL_UNTRACKED_FILES
+name|SHOW_NORMAL_UNTRACKED_FILES
+block|,
+DECL|enumerator|SHOW_ALL_UNTRACKED_FILES
+name|SHOW_ALL_UNTRACKED_FILES
+block|}
+enum|;
+end_enum
+
+begin_decl_stmt
+specifier|extern
+name|enum
+name|untracked_status_type
+name|show_untracked_files
+decl_stmt|;
+end_decl_stmt
 
 begin_struct
 DECL|struct|wt_status
@@ -121,19 +149,23 @@ specifier|const
 name|char
 modifier|*
 name|value
+parameter_list|,
+name|void
+modifier|*
+name|cb
 parameter_list|)
 function_decl|;
 end_function_decl
 
 begin_decl_stmt
-DECL|variable|wt_status_use_color
+specifier|extern
 name|int
 name|wt_status_use_color
 decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|wt_status_relative_paths
+specifier|extern
 name|int
 name|wt_status_relative_paths
 decl_stmt|;

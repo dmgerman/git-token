@@ -17,7 +17,7 @@ name|int
 name|read_mailmap
 parameter_list|(
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|map
 parameter_list|,
@@ -39,7 +39,7 @@ name|int
 name|map_email
 parameter_list|(
 name|struct
-name|path_list
+name|string_list
 modifier|*
 name|mailmap
 parameter_list|,

@@ -2458,6 +2458,16 @@ argument_list|(
 name|sha1
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|new_pack
+condition|)
+return|return
+operator|-
+literal|1
+return|;
+comment|/* parse_pack_index() already issued error message */
 name|new_pack
 operator|->
 name|next
@@ -4274,8 +4284,6 @@ condition|(
 name|verify_pack
 argument_list|(
 name|target
-argument_list|,
-literal|0
 argument_list|)
 condition|)
 return|return
@@ -4808,14 +4816,10 @@ name|walker
 modifier|*
 name|walker
 parameter_list|,
-name|char
+name|struct
+name|ref
 modifier|*
 name|ref
-parameter_list|,
-name|unsigned
-name|char
-modifier|*
-name|sha1
 parameter_list|)
 block|{
 name|struct
@@ -4837,8 +4841,6 @@ operator|->
 name|base
 argument_list|,
 name|ref
-argument_list|,
-name|sha1
 argument_list|)
 return|;
 block|}
@@ -4889,6 +4891,11 @@ specifier|const
 name|char
 modifier|*
 name|url
+parameter_list|,
+name|struct
+name|remote
+modifier|*
+name|remote
 parameter_list|)
 block|{
 name|char
@@ -4924,7 +4931,9 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 name|http_init
-argument_list|()
+argument_list|(
+name|remote
+argument_list|)
 expr_stmt|;
 name|data
 operator|->

@@ -346,7 +346,7 @@ argument_list|,
 operator|&
 name|xpp
 argument_list|,
-name|XDL_MERGE_ZEALOUS
+name|XDL_MERGE_ZEALOUS_ALNUM
 argument_list|,
 operator|&
 name|result
@@ -424,6 +424,10 @@ expr_stmt|;
 elseif|else
 if|if
 condition|(
+name|result
+operator|.
+name|size
+operator|&&
 name|fwrite
 argument_list|(
 name|result

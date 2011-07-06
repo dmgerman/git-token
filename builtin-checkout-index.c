@@ -693,7 +693,7 @@ name|char
 name|checkout_cache_usage
 index|[]
 init|=
-literal|"git-checkout-index [-u] [-q] [-a] [-f] [-n] [--stage=[123]|all] [--prefix=<string>] [--temp] [--]<file>..."
+literal|"git checkout-index [-u] [-q] [-a] [-f] [-n] [--stage=[123]|all] [--prefix=<string>] [--temp] [--]<file>..."
 decl_stmt|;
 end_decl_stmt
 
@@ -751,6 +751,8 @@ decl_stmt|;
 name|git_config
 argument_list|(
 name|git_default_config
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 name|state

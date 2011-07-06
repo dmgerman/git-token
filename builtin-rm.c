@@ -50,7 +50,7 @@ name|builtin_rm_usage
 index|[]
 init|=
 block|{
-literal|"git-rm [options] [--]<file>..."
+literal|"git rm [options] [--]<file>..."
 block|,
 name|NULL
 block|}
@@ -640,7 +640,7 @@ name|OPT_BOOLEAN
 argument_list|(
 literal|'f'
 argument_list|,
-name|NULL
+literal|"force"
 argument_list|,
 operator|&
 name|force
@@ -716,28 +716,8 @@ decl_stmt|;
 name|git_config
 argument_list|(
 name|git_default_config
-argument_list|)
-expr_stmt|;
-name|newfd
-operator|=
-name|hold_locked_index
-argument_list|(
-operator|&
-name|lock_file
 argument_list|,
-literal|1
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|read_cache
-argument_list|()
-operator|<
-literal|0
-condition|)
-name|die
-argument_list|(
-literal|"index file corrupt"
+name|NULL
 argument_list|)
 expr_stmt|;
 name|argc
@@ -774,6 +754,28 @@ name|index_only
 condition|)
 name|setup_work_tree
 argument_list|()
+expr_stmt|;
+name|newfd
+operator|=
+name|hold_locked_index
+argument_list|(
+operator|&
+name|lock_file
+argument_list|,
+literal|1
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|read_cache
+argument_list|()
+operator|<
+literal|0
+condition|)
+name|die
+argument_list|(
+literal|"index file corrupt"
+argument_list|)
 expr_stmt|;
 name|pathspec
 operator|=

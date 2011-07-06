@@ -51,10 +51,6 @@ name|newval
 init|=
 name|NULL
 decl_stmt|;
-if|if
-condition|(
-name|oldval
-condition|)
 name|free
 argument_list|(
 name|oldval

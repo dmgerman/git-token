@@ -9,12 +9,16 @@ directive|include
 file|"cache.h"
 end_include
 
+begin_comment
+comment|/*  * This is like mktime, but without normalization of tm_wday and tm_yday.  */
+end_comment
+
 begin_function
-DECL|function|my_mktime
-specifier|static
+DECL|function|tm_to_time_t
 name|time_t
-name|my_mktime
+name|tm_to_time_t
 parameter_list|(
+specifier|const
 name|struct
 name|tm
 modifier|*
@@ -385,7 +389,7 @@ argument_list|)
 expr_stmt|;
 name|t_local
 operator|=
-name|my_mktime
+name|tm_to_time_t
 argument_list|(
 operator|&
 name|tm
@@ -1362,7 +1366,7 @@ block|{
 literal|"NZT"
 block|,
 operator|+
-literal|11
+literal|12
 block|,
 literal|0
 block|, }
@@ -1372,7 +1376,7 @@ block|{
 literal|"NZST"
 block|,
 operator|+
-literal|11
+literal|12
 block|,
 literal|0
 block|, }
@@ -1382,7 +1386,7 @@ block|{
 literal|"NZDT"
 block|,
 operator|+
-literal|11
+literal|12
 block|,
 literal|1
 block|, }
@@ -1971,7 +1975,7 @@ literal|1
 return|;
 name|specified
 operator|=
-name|my_mktime
+name|tm_to_time_t
 argument_list|(
 name|r
 argument_list|)
@@ -3131,7 +3135,7 @@ block|}
 comment|/* mktime uses local timezone */
 name|then
 operator|=
-name|my_mktime
+name|tm_to_time_t
 argument_list|(
 operator|&
 name|tm
@@ -3344,7 +3348,7 @@ argument_list|)
 expr_stmt|;
 name|offset
 operator|=
-name|my_mktime
+name|tm_to_time_t
 argument_list|(
 name|localtime
 argument_list|(
@@ -3727,43 +3731,18 @@ modifier|*
 name|num
 parameter_list|)
 block|{
-name|tm
-operator|->
-name|tm_mon
-operator|=
-name|tm
-operator|->
-name|tm_wday
-operator|=
-name|tm
-operator|->
-name|tm_yday
-operator|=
-name|tm
-operator|->
-name|tm_hour
-operator|=
-name|tm
-operator|->
-name|tm_min
-operator|=
-name|tm
-operator|->
-name|tm_sec
-operator|=
+name|time_t
+name|n
+init|=
 literal|0
-expr_stmt|;
+decl_stmt|;
+name|localtime_r
+argument_list|(
+operator|&
+name|n
+argument_list|,
 name|tm
-operator|->
-name|tm_year
-operator|=
-literal|70
-expr_stmt|;
-name|tm
-operator|->
-name|tm_mday
-operator|=
-literal|1
+argument_list|)
 expr_stmt|;
 block|}
 end_function

@@ -1775,7 +1775,7 @@ name|char
 name|update_index_usage
 index|[]
 init|=
-literal|"git-update-index [-q] [--add] [--replace] [--remove] [--unmerged] [--refresh] [--really-refresh] [--cacheinfo] [--chmod=(+|-)x] [--assume-unchanged] [--info-only] [--force-remove] [--stdin] [--index-info] [--unresolve] [--again | -g] [--ignore-missing] [-z] [--verbose] [--]<file>..."
+literal|"git update-index [-q] [--add] [--replace] [--remove] [--unmerged] [--refresh] [--really-refresh] [--cacheinfo] [--chmod=(+|-)x] [--assume-unchanged] [--info-only] [--force-remove] [--stdin] [--index-info] [--unresolve] [--again | -g] [--ignore-missing] [-z] [--verbose] [--]<file>..."
 decl_stmt|;
 end_decl_stmt
 
@@ -2694,6 +2694,8 @@ decl_stmt|;
 name|git_config
 argument_list|(
 name|git_default_config
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 comment|/* We can't free this memory, it becomes part of a linked list parsed atexit() */
@@ -2815,6 +2817,23 @@ block|{
 name|refresh_flags
 operator||=
 name|REFRESH_QUIET
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|path
+argument_list|,
+literal|"--ignore-submodules"
+argument_list|)
+condition|)
+block|{
+name|refresh_flags
+operator||=
+name|REFRESH_IGNORE_SUBMODULES
 expr_stmt|;
 continue|continue;
 block|}

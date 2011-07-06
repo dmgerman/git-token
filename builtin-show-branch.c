@@ -31,7 +31,7 @@ name|char
 name|show_branch_usage
 index|[]
 init|=
-literal|"git-show-branch [--sparse] [--current] [--all] [--remotes] [--topo-order] [--more=count | --list | --independent | --merge-base ] [--topics] [<refs>...] | --reflog[=n[,b]]<branch>"
+literal|"git show-branch [--sparse] [--current] [--all] [--remotes] [--topo-order] [--more=count | --list | --independent | --merge-base ] [--topics] [<refs>...] | --reflog[=n[,b]]<branch>"
 decl_stmt|;
 end_decl_stmt
 
@@ -2879,6 +2879,10 @@ specifier|const
 name|char
 modifier|*
 name|value
+parameter_list|,
+name|void
+modifier|*
+name|cb
 parameter_list|)
 block|{
 if|if
@@ -2892,6 +2896,17 @@ literal|"showbranch.default"
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|value
+condition|)
+return|return
+name|config_error_nonbool
+argument_list|(
+name|var
+argument_list|)
+return|;
 if|if
 condition|(
 name|default_alloc
@@ -2953,6 +2968,8 @@ argument_list|(
 name|var
 argument_list|,
 name|value
+argument_list|,
+name|cb
 argument_list|)
 return|;
 block|}
@@ -3325,6 +3342,8 @@ decl_stmt|;
 name|git_config
 argument_list|(
 name|git_show_branch_config
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 comment|/* If nothing is specified, try the default first */
@@ -4284,18 +4303,25 @@ name|has_head
 condition|)
 block|{
 name|int
-name|pfxlen
+name|offset
 init|=
-name|strlen
+operator|!
+name|prefixcmp
 argument_list|(
+name|head
+argument_list|,
 literal|"refs/heads/"
 argument_list|)
+condition|?
+literal|11
+else|:
+literal|0
 decl_stmt|;
 name|append_one_rev
 argument_list|(
 name|head
 operator|+
-name|pfxlen
+name|offset
 argument_list|)
 expr_stmt|;
 block|}

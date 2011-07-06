@@ -12,6 +12,12 @@ directive|define
 name|WALKER_H
 end_define
 
+begin_include
+include|#
+directive|include
+file|"remote.h"
+end_include
+
 begin_struct
 DECL|struct|walker
 struct|struct
@@ -33,14 +39,10 @@ name|struct
 name|walker
 modifier|*
 parameter_list|,
-name|char
+name|struct
+name|ref
 modifier|*
 name|ref
-parameter_list|,
-name|unsigned
-name|char
-modifier|*
-name|sha1
 parameter_list|)
 function_decl|;
 DECL|member|prefetch
@@ -251,6 +253,11 @@ specifier|const
 name|char
 modifier|*
 name|url
+parameter_list|,
+name|struct
+name|remote
+modifier|*
+name|remote
 parameter_list|)
 function_decl|;
 end_function_decl

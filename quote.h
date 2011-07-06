@@ -214,6 +214,36 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/* quote path as relative to the given prefix */
+end_comment
+
+begin_function_decl
+name|char
+modifier|*
+name|quote_path_relative
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|in
+parameter_list|,
+name|int
+name|len
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|out
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|prefix
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/* quoting as a string literal for other languages */
 end_comment
 

@@ -747,6 +747,8 @@ condition|(
 name|blob
 condition|)
 block|{
+if|if
+condition|(
 name|parse_blob_buffer
 argument_list|(
 name|blob
@@ -755,7 +757,10 @@ name|buffer
 argument_list|,
 name|size
 argument_list|)
-expr_stmt|;
+condition|)
+return|return
+name|NULL
+return|;
 name|obj
 operator|=
 operator|&
@@ -805,6 +810,8 @@ operator|.
 name|parsed
 condition|)
 block|{
+if|if
+condition|(
 name|parse_tree_buffer
 argument_list|(
 name|tree
@@ -813,7 +820,10 @@ name|buffer
 argument_list|,
 name|size
 argument_list|)
-expr_stmt|;
+condition|)
+return|return
+name|NULL
+return|;
 name|eaten
 operator|=
 literal|1
@@ -844,6 +854,8 @@ condition|(
 name|commit
 condition|)
 block|{
+if|if
+condition|(
 name|parse_commit_buffer
 argument_list|(
 name|commit
@@ -852,7 +864,10 @@ name|buffer
 argument_list|,
 name|size
 argument_list|)
-expr_stmt|;
+condition|)
+return|return
+name|NULL
+return|;
 if|if
 condition|(
 operator|!
@@ -904,6 +919,8 @@ condition|(
 name|tag
 condition|)
 block|{
+if|if
+condition|(
 name|parse_tag_buffer
 argument_list|(
 name|tag
@@ -912,7 +929,10 @@ name|buffer
 argument_list|,
 name|size
 argument_list|)
-expr_stmt|;
+condition|)
+return|return
+name|NULL
+return|;
 name|obj
 operator|=
 operator|&

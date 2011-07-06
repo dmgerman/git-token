@@ -413,7 +413,7 @@ name|count_objects_usage
 index|[]
 init|=
 block|{
-literal|"git-count-objects [-v]"
+literal|"git count-objects [-v]"
 block|,
 name|NULL
 block|}

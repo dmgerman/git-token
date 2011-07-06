@@ -31,6 +31,7 @@ name|unsigned
 name|int
 name|hash
 parameter_list|,
+specifier|const
 name|struct
 name|hash_table
 modifier|*
@@ -324,6 +325,7 @@ name|unsigned
 name|int
 name|hash
 parameter_list|,
+specifier|const
 name|struct
 name|hash_table
 modifier|*
@@ -341,7 +343,6 @@ return|return
 name|NULL
 return|;
 return|return
-operator|&
 name|lookup_hash_entry
 argument_list|(
 name|hash
@@ -416,6 +417,7 @@ DECL|function|for_each_hash
 name|int
 name|for_each_hash
 parameter_list|(
+specifier|const
 name|struct
 name|hash_table
 modifier|*

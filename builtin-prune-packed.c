@@ -25,7 +25,7 @@ name|char
 name|prune_packed_usage
 index|[]
 init|=
-literal|"git-prune-packed [-n] [-q]"
+literal|"git prune-packed [-n] [-q]"
 decl_stmt|;
 end_decl_stmt
 
@@ -508,9 +508,6 @@ name|prune_packed_usage
 argument_list|)
 expr_stmt|;
 block|}
-name|sync
-argument_list|()
-expr_stmt|;
 name|prune_packed_objects
 argument_list|(
 name|opts

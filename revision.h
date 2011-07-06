@@ -12,6 +12,12 @@ directive|define
 name|REVISION_H
 end_define
 
+begin_include
+include|#
+directive|include
+file|"parse-options.h"
+end_include
+
 begin_define
 DECL|macro|SEEN
 define|#
@@ -95,17 +101,12 @@ value|(1u<<8)
 end_define
 
 begin_define
-DECL|macro|TOPOSORT
+DECL|macro|ALL_REV_FLAGS
 define|#
 directive|define
-name|TOPOSORT
-value|(1u<<9)
+name|ALL_REV_FLAGS
+value|((1u<<9)-1)
 end_define
-
-begin_comment
-DECL|macro|TOPOSORT
-comment|/* In the active toposort list.. */
-end_comment
 
 begin_struct_decl
 struct_decl|struct
@@ -149,6 +150,12 @@ name|char
 modifier|*
 name|prefix
 decl_stmt|;
+DECL|member|def
+specifier|const
+name|char
+modifier|*
+name|def
+decl_stmt|;
 DECL|member|prune_data
 name|void
 modifier|*
@@ -179,6 +186,11 @@ literal|1
 decl_stmt|,
 DECL|member|no_walk
 name|no_walk
+range|:
+literal|1
+decl_stmt|,
+DECL|member|show_all
+name|show_all
 range|:
 literal|1
 decl_stmt|,
@@ -243,8 +255,13 @@ name|left_right
 range|:
 literal|1
 decl_stmt|,
-DECL|member|parents
-name|parents
+DECL|member|rewrite_parents
+name|rewrite_parents
+range|:
+literal|1
+decl_stmt|,
+DECL|member|print_parents
+name|print_parents
 range|:
 literal|1
 decl_stmt|,
@@ -319,8 +336,23 @@ name|shown_one
 range|:
 literal|1
 decl_stmt|,
+DECL|member|show_merge
+name|show_merge
+range|:
+literal|1
+decl_stmt|,
 DECL|member|abbrev_commit
 name|abbrev_commit
+range|:
+literal|1
+decl_stmt|,
+DECL|member|use_terminator
+name|use_terminator
+range|:
+literal|1
+decl_stmt|,
+DECL|member|missing_newline
+name|missing_newline
 range|:
 literal|1
 decl_stmt|;
@@ -371,7 +403,6 @@ modifier|*
 name|mime_boundary
 decl_stmt|;
 DECL|member|message_id
-specifier|const
 name|char
 modifier|*
 name|message_id
@@ -421,6 +452,13 @@ name|grep_opt
 modifier|*
 name|grep_filter
 decl_stmt|;
+comment|/* Display history graph */
+DECL|member|graph
+name|struct
+name|git_graph
+modifier|*
+name|graph
+decl_stmt|;
 comment|/* special limits */
 DECL|member|skip_count
 name|int
@@ -457,6 +495,11 @@ name|reflog_walk_info
 modifier|*
 name|reflog_info
 decl_stmt|;
+DECL|member|children
+name|struct
+name|decoration
+name|children
+decl_stmt|;
 block|}
 struct|;
 end_struct
@@ -488,6 +531,18 @@ end_define
 begin_comment
 comment|/* revision.c */
 end_comment
+
+begin_function_decl
+name|void
+name|read_revisions_from_stdin
+parameter_list|(
+name|struct
+name|rev_info
+modifier|*
+name|revs
+parameter_list|)
+function_decl|;
+end_function_decl
 
 begin_typedef
 DECL|typedef|show_early_output_fn_t
@@ -558,6 +613,37 @@ specifier|const
 name|char
 modifier|*
 name|def
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|void
+name|parse_revision_opt
+parameter_list|(
+name|struct
+name|rev_info
+modifier|*
+name|revs
+parameter_list|,
+name|struct
+name|parse_opt_ctx_t
+modifier|*
+name|ctx
+parameter_list|,
+specifier|const
+name|struct
+name|option
+modifier|*
+name|options
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+specifier|const
+name|usagestr
+index|[]
 parameter_list|)
 function_decl|;
 end_function_decl

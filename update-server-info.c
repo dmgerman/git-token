@@ -13,7 +13,7 @@ name|char
 name|update_server_info_usage
 index|[]
 init|=
-literal|"git-update-server-info [--force]"
+literal|"git update-server-info [--force]"
 decl_stmt|;
 end_decl_stmt
 

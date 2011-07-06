@@ -34,7 +34,7 @@ name|git_symbolic_ref_usage
 index|[]
 init|=
 block|{
-literal|"git-symbolic-ref [options] name [ref]"
+literal|"git symbolic-ref [options] name [ref]"
 block|,
 name|NULL
 block|}
@@ -198,6 +198,8 @@ decl_stmt|;
 name|git_config
 argument_list|(
 name|git_default_config
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 name|argc

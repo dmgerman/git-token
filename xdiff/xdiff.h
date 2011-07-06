@@ -128,6 +128,11 @@ define|#
 directive|define
 name|XDL_MERGE_ZEALOUS
 value|2
+DECL|macro|XDL_MERGE_ZEALOUS_ALNUM
+define|#
+directive|define
+name|XDL_MERGE_ZEALOUS_ALNUM
+value|3
 DECL|struct|s_mmfile
 typedef|typedef
 struct|struct

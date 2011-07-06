@@ -815,7 +815,7 @@ modifier|*
 name|env_hint
 init|=
 literal|"\n"
-literal|"*** Your name cannot be determined from your system services (gecos).\n"
+literal|"*** Please tell me who you are.\n"
 literal|"\n"
 literal|"Run\n"
 literal|"\n"
@@ -960,7 +960,7 @@ name|env_hint
 operator|=
 name|NULL
 expr_stmt|;
-comment|/* warn only once, for "git-var -l" */
+comment|/* warn only once, for "git var -l" */
 block|}
 if|if
 condition|(
@@ -1252,6 +1252,22 @@ name|int
 name|flag
 parameter_list|)
 block|{
+if|if
+condition|(
+name|getenv
+argument_list|(
+literal|"GIT_COMMITTER_NAME"
+argument_list|)
+operator|&&
+name|getenv
+argument_list|(
+literal|"GIT_COMMITTER_EMAIL"
+argument_list|)
+condition|)
+name|user_ident_explicitly_given
+operator|=
+literal|1
+expr_stmt|;
 return|return
 name|fmt_ident
 argument_list|(

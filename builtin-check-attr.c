@@ -31,7 +31,7 @@ name|char
 name|check_attr_usage
 index|[]
 init|=
-literal|"git-check-attr attr... [--] pathname..."
+literal|"git check-attr attr... [--] pathname..."
 decl_stmt|;
 end_decl_stmt
 

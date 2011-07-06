@@ -37,7 +37,7 @@ name|char
 name|diff_cache_usage
 index|[]
 init|=
-literal|"git-diff-index [-m] [--cached] "
+literal|"git diff-index [-m] [--cached] "
 literal|"[<common diff options>]<tree-ish> [<path>...]"
 name|COMMON_DIFF_OPTIONS_HELP
 decl_stmt|;
@@ -89,6 +89,8 @@ expr_stmt|;
 name|git_config
 argument_list|(
 name|git_diff_basic_config
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 comment|/* no "diff" UI options */

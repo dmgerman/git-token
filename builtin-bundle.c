@@ -59,8 +59,6 @@ name|header
 decl_stmt|;
 name|int
 name|nongit
-init|=
-literal|0
 decl_stmt|;
 specifier|const
 name|char
