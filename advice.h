@@ -53,6 +53,13 @@ name|advice_implicit_identity
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+specifier|extern
+name|int
+name|advice_detached_head
+decl_stmt|;
+end_decl_stmt
+
 begin_function_decl
 name|int
 name|git_default_advice_config

@@ -61,19 +61,6 @@ parameter_list|)
 end_define
 
 begin_define
-DECL|macro|va_copy
-define|#
-directive|define
-name|va_copy
-parameter_list|(
-name|dst
-parameter_list|,
-name|src
-parameter_list|)
-value|((dst) = (src))
-end_define
-
-begin_define
 DECL|macro|strncasecmp
 define|#
 directive|define

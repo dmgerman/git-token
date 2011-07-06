@@ -154,7 +154,7 @@ name|GIT_ATTR_CHECKOUT
 block|,
 DECL|enumerator|GIT_ATTR_INDEX
 name|GIT_ATTR_INDEX
-block|, }
+block|}
 enum|;
 end_enum
 

@@ -68,7 +68,7 @@ end_define
 
 begin_comment
 DECL|macro|DEFAULT_MERGE_SCORE
-comment|/* maximum for break-merge to happen 60%) */
+comment|/* maximum for break-merge to happen (60%) */
 end_comment
 
 begin_define
@@ -183,9 +183,19 @@ DECL|member|dirty_submodule
 name|unsigned
 name|dirty_submodule
 range|:
-literal|1
+literal|2
 decl_stmt|;
 comment|/* For submodules: its work tree is dirty */
+DECL|macro|DIRTY_SUBMODULE_UNTRACKED
+define|#
+directive|define
+name|DIRTY_SUBMODULE_UNTRACKED
+value|1
+DECL|macro|DIRTY_SUBMODULE_MODIFIED
+define|#
+directive|define
+name|DIRTY_SUBMODULE_MODIFIED
+value|2
 DECL|member|driver
 name|struct
 name|userdiff_driver
@@ -452,6 +462,18 @@ block|}
 struct|;
 end_struct
 
+begin_define
+DECL|macro|DIFF_QUEUE_CLEAR
+define|#
+directive|define
+name|DIFF_QUEUE_CLEAR
+parameter_list|(
+name|q
+parameter_list|)
+define|\
+value|do { \ 		(q)->queue = NULL; \ 		(q)->nr = (q)->alloc = 0; \ 	} while (0)
+end_define
+
 begin_decl_stmt
 specifier|extern
 name|struct
@@ -535,13 +557,9 @@ specifier|extern
 name|void
 name|diffcore_pickaxe
 parameter_list|(
-specifier|const
-name|char
+name|struct
+name|diff_options
 modifier|*
-name|needle
-parameter_list|,
-name|int
-name|opts
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -636,7 +654,9 @@ name|b
 parameter_list|,
 name|c
 parameter_list|)
-value|do {} while(0)
+value|do {
+comment|/* nothing */
+value|} while (0)
 end_define
 
 begin_define
@@ -649,7 +669,9 @@ name|a
 parameter_list|,
 name|b
 parameter_list|)
-value|do {} while(0)
+value|do {
+comment|/* nothing */
+value|} while (0)
 end_define
 
 begin_define
@@ -662,7 +684,9 @@ name|a
 parameter_list|,
 name|b
 parameter_list|)
-value|do {} while(0)
+value|do {
+comment|/* nothing */
+value|} while (0)
 end_define
 
 begin_endif

@@ -70,7 +70,9 @@ name|say
 parameter_list|(
 name|a
 parameter_list|)
-value|do {} while(0)
+value|do {
+comment|/* nothing */
+value|} while (0)
 end_define
 
 begin_define
@@ -83,7 +85,9 @@ name|a
 parameter_list|,
 name|b
 parameter_list|)
-value|do {} while(0)
+value|do {
+comment|/* nothing */
+value|} while (0)
 end_define
 
 begin_define
@@ -98,7 +102,9 @@ name|b
 parameter_list|,
 name|c
 parameter_list|)
-value|do {} while(0)
+value|do {
+comment|/* nothing */
+value|} while (0)
 end_define
 
 begin_endif

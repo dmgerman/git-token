@@ -52,11 +52,11 @@ name|archive_usage
 index|[]
 init|=
 block|{
-literal|"git archive [options]<tree-ish> [path...]"
+literal|"git archive [options]<tree-ish> [<path>...]"
 block|,
 literal|"git archive --list"
 block|,
-literal|"git archive --remote<repo> [--exec<cmd>] [options]<tree-ish> [path...]"
+literal|"git archive --remote<repo> [--exec<cmd>] [options]<tree-ish> [<path>...]"
 block|,
 literal|"git archive --remote<repo> [--exec<cmd>] --list"
 block|,
@@ -169,6 +169,12 @@ operator|.
 name|date_mode
 operator|=
 name|DATE_NORMAL
+expr_stmt|;
+name|ctx
+operator|.
+name|abbrev
+operator|=
+name|DEFAULT_ABBREV
 expr_stmt|;
 if|if
 condition|(
@@ -983,6 +989,10 @@ name|struct
 name|tree_desc
 name|t
 decl_stmt|;
+name|struct
+name|pathspec
+name|pathspec
+decl_stmt|;
 name|int
 name|err
 decl_stmt|;
@@ -1203,6 +1213,16 @@ name|the_index
 argument_list|)
 expr_stmt|;
 block|}
+name|init_pathspec
+argument_list|(
+operator|&
+name|pathspec
+argument_list|,
+name|args
+operator|->
+name|pathspec
+argument_list|)
+expr_stmt|;
 name|err
 operator|=
 name|read_tree_recursive
@@ -1217,14 +1237,19 @@ literal|0
 argument_list|,
 literal|0
 argument_list|,
-name|args
-operator|->
+operator|&
 name|pathspec
 argument_list|,
 name|write_archive_entry
 argument_list|,
 operator|&
 name|context
+argument_list|)
+expr_stmt|;
+name|free_pathspec
+argument_list|(
+operator|&
+name|pathspec
 argument_list|)
 expr_stmt|;
 if|if
@@ -1378,7 +1403,7 @@ block|{
 specifier|const
 name|char
 modifier|*
-name|pathspec
+name|paths
 index|[]
 init|=
 block|{
@@ -1387,8 +1412,23 @@ block|,
 name|NULL
 block|}
 decl_stmt|;
-if|if
-condition|(
+name|struct
+name|pathspec
+name|pathspec
+decl_stmt|;
+name|int
+name|ret
+decl_stmt|;
+name|init_pathspec
+argument_list|(
+operator|&
+name|pathspec
+argument_list|,
+name|paths
+argument_list|)
+expr_stmt|;
+name|ret
+operator|=
 name|read_tree_recursive
 argument_list|(
 name|tree
@@ -1399,17 +1439,23 @@ literal|0
 argument_list|,
 literal|0
 argument_list|,
+operator|&
 name|pathspec
 argument_list|,
 name|reject_entry
 argument_list|,
 name|NULL
 argument_list|)
-condition|)
+expr_stmt|;
+name|free_pathspec
+argument_list|(
+operator|&
+name|pathspec
+argument_list|)
+expr_stmt|;
 return|return
-literal|1
-return|;
-return|return
+name|ret
+operator|!=
 literal|0
 return|;
 block|}
@@ -1898,6 +1944,8 @@ name|OPT__VERBOSE
 argument_list|(
 operator|&
 name|verbose
+argument_list|,
+literal|"report archived files on stderr"
 argument_list|)
 block|,
 name|OPT__COMPR

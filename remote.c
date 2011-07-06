@@ -2849,6 +2849,23 @@ operator|=
 operator|-
 literal|1
 expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|value
+argument_list|,
+literal|"--tags"
+argument_list|)
+condition|)
+name|remote
+operator|->
+name|fetch_tags
+operator|=
+literal|2
+expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -3111,7 +3128,7 @@ if|if
 condition|(
 name|default_remote_name
 condition|)
-comment|// did this already
+comment|/* did this already */
 return|return;
 name|default_remote_name
 operator|=
@@ -3186,7 +3203,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * We need to make sure the tracking branches are well formed, but a  * wildcard refspec in "struct refspec" must have a trailing slash. We  * temporarily drop the trailing '/' while calling check_ref_format(),  * and put it back.  The caller knows that a CHECK_REF_FORMAT_ONELEVEL  * error return is Ok for a wildcard refspec.  */
+comment|/*  * We need to make sure the remote-tracking branches are well formed, but a  * wildcard refspec in "struct refspec" must have a trailing slash. We  * temporarily drop the trailing '/' while calling check_ref_format(),  * and put it back.  The caller knows that a CHECK_REF_FORMAT_ONELEVEL  * error return is Ok for a wildcard refspec.  */
 end_comment
 
 begin_function
@@ -3875,16 +3892,6 @@ modifier|*
 name|fetch_refspec_str
 parameter_list|)
 block|{
-specifier|const
-name|char
-modifier|*
-name|fetch_refspec
-index|[]
-init|=
-block|{
-name|fetch_refspec_str
-block|}
-decl_stmt|;
 name|struct
 name|refspec
 modifier|*
@@ -3896,7 +3903,8 @@ name|parse_refspec_internal
 argument_list|(
 literal|1
 argument_list|,
-name|fetch_refspec
+operator|&
+name|fetch_refspec_str
 argument_list|,
 literal|1
 argument_list|,
@@ -4422,15 +4430,7 @@ name|struct
 name|string_list
 name|refs
 init|=
-block|{
-name|NULL
-block|,
-literal|0
-block|,
-literal|0
-block|,
-literal|0
-block|}
+name|STRING_LIST_INIT_NODUP
 decl_stmt|;
 name|struct
 name|string_list_item
@@ -4483,14 +4483,14 @@ name|item
 operator|=
 name|string_list_lookup
 argument_list|(
+operator|&
+name|refs
+argument_list|,
 name|ref_map
 operator|->
 name|peer_ref
 operator|->
 name|name
-argument_list|,
-operator|&
-name|refs
 argument_list|)
 expr_stmt|;
 if|if
@@ -4579,14 +4579,14 @@ name|item
 operator|=
 name|string_list_insert
 argument_list|(
+operator|&
+name|refs
+argument_list|,
 name|ref_map
 operator|->
 name|peer_ref
 operator|->
 name|name
-argument_list|,
-operator|&
-name|refs
 argument_list|)
 expr_stmt|;
 name|item
@@ -9525,15 +9525,7 @@ name|struct
 name|string_list
 name|ref_names
 init|=
-block|{
-name|NULL
-block|,
-literal|0
-block|,
-literal|0
-block|,
-literal|0
-block|}
+name|STRING_LIST_INIT_NODUP
 decl_stmt|;
 name|struct
 name|stale_heads_info
@@ -9575,12 +9567,12 @@ name|next
 control|)
 name|string_list_append
 argument_list|(
+operator|&
+name|ref_names
+argument_list|,
 name|ref
 operator|->
 name|name
-argument_list|,
-operator|&
-name|ref_names
 argument_list|)
 expr_stmt|;
 name|sort_string_list

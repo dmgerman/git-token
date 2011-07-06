@@ -42,6 +42,12 @@ directive|include
 file|"remote.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"url.h"
+end_include
+
 begin_comment
 comment|/*  * We detect based on the cURL version if multi-transfer is  * usable in this implementation and define this symbol accordingly.  * This is not something Makefile should set nor users should pass  * via CFLAGS.  */
 end_comment
@@ -97,7 +103,7 @@ name|curl_global_cleanup
 parameter_list|()
 value|do {
 comment|/* nothing */
-value|} while(0)
+value|} while (0)
 end_define
 
 begin_endif
@@ -123,7 +129,7 @@ name|a
 parameter_list|)
 value|do {
 comment|/* nothing */
-value|} while(0)
+value|} while (0)
 end_define
 
 begin_endif
@@ -309,7 +315,7 @@ specifier|extern
 name|size_t
 name|fread_buffer
 parameter_list|(
-name|void
+name|char
 modifier|*
 name|ptr
 parameter_list|,
@@ -331,8 +337,7 @@ specifier|extern
 name|size_t
 name|fwrite_buffer
 parameter_list|(
-specifier|const
-name|void
+name|char
 modifier|*
 name|ptr
 parameter_list|,
@@ -354,8 +359,7 @@ specifier|extern
 name|size_t
 name|fwrite_null
 parameter_list|(
-specifier|const
-name|void
+name|char
 modifier|*
 name|ptr
 parameter_list|,
@@ -739,6 +743,22 @@ name|HTTP_START_FAILED
 value|3
 end_define
 
+begin_define
+DECL|macro|HTTP_REAUTH
+define|#
+directive|define
+name|HTTP_REAUTH
+value|4
+end_define
+
+begin_define
+DECL|macro|HTTP_NOAUTH
+define|#
+directive|define
+name|HTTP_NOAUTH
+value|5
+end_define
+
 begin_comment
 comment|/*  * Requests an url and stores the result in a strbuf.  *  * If the result pointer is NULL, a HTTP HEAD request is made instead of GET.  */
 end_comment
@@ -851,13 +871,6 @@ name|FILE
 modifier|*
 name|packfile
 decl_stmt|;
-DECL|member|filename
-name|char
-name|filename
-index|[
-name|PATH_MAX
-index|]
-decl_stmt|;
 DECL|member|tmpfile
 name|char
 name|tmpfile
@@ -940,13 +953,6 @@ DECL|member|url
 name|char
 modifier|*
 name|url
-decl_stmt|;
-DECL|member|filename
-name|char
-name|filename
-index|[
-name|PATH_MAX
-index|]
 decl_stmt|;
 DECL|member|tmpfile
 name|char

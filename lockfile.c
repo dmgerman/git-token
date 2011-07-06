@@ -644,7 +644,7 @@ literal|"If no other git process is currently running, this probably means a\n"
 literal|"git process crashed in this repository earlier. Make sure no other git\n"
 literal|"process is running and remove the file manually to continue."
 argument_list|,
-name|make_nonrelative_path
+name|absolute_path
 argument_list|(
 name|path
 argument_list|)
@@ -664,7 +664,7 @@ name|buf
 argument_list|,
 literal|"Unable to create '%s.lock': %s"
 argument_list|,
-name|make_nonrelative_path
+name|absolute_path
 argument_list|(
 name|path
 argument_list|)

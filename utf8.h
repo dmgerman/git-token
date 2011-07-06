@@ -81,8 +81,13 @@ end_function_decl
 
 begin_function_decl
 name|int
-name|print_wrapped_text
+name|strbuf_add_wrapped_text
 parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+name|buf
+parameter_list|,
 specifier|const
 name|char
 modifier|*
@@ -95,14 +100,14 @@ name|int
 name|indent2
 parameter_list|,
 name|int
-name|len
+name|width
 parameter_list|)
 function_decl|;
 end_function_decl
 
 begin_function_decl
 name|int
-name|strbuf_add_wrapped_text
+name|strbuf_add_wrapped_bytes
 parameter_list|(
 name|struct
 name|strbuf
@@ -112,7 +117,10 @@ parameter_list|,
 specifier|const
 name|char
 modifier|*
-name|text
+name|data
+parameter_list|,
+name|int
+name|len
 parameter_list|,
 name|int
 name|indent

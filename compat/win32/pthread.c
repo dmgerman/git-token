@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_comment
-comment|/*  * Copyright (C) 2009 Andrzej K. Haczewski<ahaczewski@gmail.com>  *  * DISCLAMER: The implementation is Git-specific, it is subset of original  * Pthreads API, without lots of other features that Git doesn't use.  * Git also makes sure that the passed arguments are valid, so there's  * no need for double-checking.  */
+comment|/*  * Copyright (C) 2009 Andrzej K. Haczewski<ahaczewski@gmail.com>  *  * DISCLAIMER: The implementation is Git-specific, it is subset of original  * Pthreads API, without lots of other features that Git doesn't use.  * Git also makes sure that the passed arguments are valid, so there's  * no need for double-checking.  */
 end_comment
 
 begin_include
@@ -45,6 +45,13 @@ name|thread
 init|=
 name|arg
 decl_stmt|;
+name|thread
+operator|->
+name|tid
+operator|=
+name|GetCurrentThreadId
+argument_list|()
+expr_stmt|;
 name|thread
 operator|->
 name|arg
@@ -209,6 +216,34 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+block|}
+end_function
+
+begin_function
+DECL|function|pthread_self
+name|pthread_t
+name|pthread_self
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+name|pthread_t
+name|t
+init|=
+block|{
+literal|0
+block|}
+decl_stmt|;
+name|t
+operator|.
+name|tid
+operator|=
+name|GetCurrentThreadId
+argument_list|()
+expr_stmt|;
+return|return
+name|t
+return|;
 block|}
 end_function
 

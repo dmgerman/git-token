@@ -1445,7 +1445,7 @@ name|argv_pack
 init|=
 name|xmalloc
 argument_list|(
-literal|5
+literal|6
 operator|*
 sizeof|sizeof
 argument_list|(
@@ -2196,6 +2196,13 @@ index|[
 literal|4
 index|]
 operator|=
+literal|"--delta-base-offset"
+expr_stmt|;
+name|argv_pack
+index|[
+literal|5
+index|]
+operator|=
 name|NULL
 expr_stmt|;
 name|memset
@@ -2365,12 +2372,23 @@ condition|(
 operator|!
 name|bundle_to_stdout
 condition|)
+block|{
+if|if
+condition|(
 name|commit_lock_file
 argument_list|(
 operator|&
 name|lock
 argument_list|)
+condition|)
+name|die_errno
+argument_list|(
+literal|"cannot create '%s'"
+argument_list|,
+name|path
+argument_list|)
 expr_stmt|;
+block|}
 return|return
 literal|0
 return|;

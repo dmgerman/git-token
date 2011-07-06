@@ -189,7 +189,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/* Helper function that does both of the above and returns true for success */
+comment|/*  * Helper function that does both tree_entry_extract() and update_tree_entry()  * and returns true for success  */
 end_comment
 
 begin_function_decl
@@ -318,6 +318,10 @@ name|void
 modifier|*
 name|data
 decl_stmt|;
+DECL|member|show_all_errors
+name|int
+name|show_all_errors
+decl_stmt|;
 block|}
 struct|;
 end_struct
@@ -426,6 +430,31 @@ argument_list|)
 return|;
 block|}
 end_function
+
+begin_function_decl
+specifier|extern
+name|int
+name|tree_entry_interesting
+parameter_list|(
+specifier|const
+name|struct
+name|name_entry
+modifier|*
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+parameter_list|,
+name|int
+parameter_list|,
+specifier|const
+name|struct
+name|pathspec
+modifier|*
+name|ps
+parameter_list|)
+function_decl|;
+end_function_decl
 
 begin_endif
 endif|#

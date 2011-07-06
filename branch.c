@@ -809,6 +809,8 @@ operator|!
 name|is_bare_repository
 argument_list|()
 operator|&&
+name|head
+operator|&&
 operator|!
 name|strcmp
 argument_list|(
@@ -882,24 +884,39 @@ break|break;
 case|case
 literal|1
 case|:
-comment|/* Unique completion -- good, only if it is a real ref */
+comment|/* Unique completion -- good, only if it is a real branch */
 if|if
 condition|(
-name|explicit_tracking
-operator|&&
-operator|!
-name|strcmp
+name|prefixcmp
 argument_list|(
 name|real_ref
 argument_list|,
-literal|"HEAD"
+literal|"refs/heads/"
 argument_list|)
+operator|&&
+name|prefixcmp
+argument_list|(
+name|real_ref
+argument_list|,
+literal|"refs/remotes/"
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
+name|explicit_tracking
 condition|)
 name|die
 argument_list|(
 literal|"Cannot setup tracking information; starting point is not a branch."
 argument_list|)
 expr_stmt|;
+else|else
+name|real_ref
+operator|=
+name|NULL
+expr_stmt|;
+block|}
 break|break;
 default|default:
 name|die
@@ -991,7 +1008,7 @@ argument_list|,
 sizeof|sizeof
 name|msg
 argument_list|,
-literal|"branch: Reset from %s"
+literal|"branch: Reset to %s"
 argument_list|,
 name|start_name
 argument_list|)
@@ -1074,6 +1091,14 @@ parameter_list|(
 name|void
 parameter_list|)
 block|{
+name|unlink
+argument_list|(
+name|git_path
+argument_list|(
+literal|"CHERRY_PICK_HEAD"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|unlink
 argument_list|(
 name|git_path

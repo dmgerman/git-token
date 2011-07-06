@@ -29,6 +29,12 @@ directive|include
 file|"blob.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"merge-file.h"
+end_include
+
 begin_function
 DECL|function|fill_mmfile_blob
 specifier|static
@@ -168,6 +174,7 @@ decl_stmt|;
 name|mmbuffer_t
 name|res
 decl_stmt|;
+comment|/* 	 * This function is only used by cmd_merge_tree, which 	 * does not respect the merge.conflictstyle option. 	 * There is no need to worry about a label for the 	 * common ancestor. 	 */
 name|merge_status
 operator|=
 name|ll_merge
@@ -179,6 +186,8 @@ name|path
 argument_list|,
 name|base
 argument_list|,
+name|NULL
+argument_list|,
 name|our
 argument_list|,
 literal|".our"
@@ -187,7 +196,7 @@ name|their
 argument_list|,
 literal|".their"
 argument_list|,
-literal|0
+name|NULL
 argument_list|)
 expr_stmt|;
 if|if
@@ -372,7 +381,7 @@ name|xpp
 operator|.
 name|flags
 operator|=
-name|XDF_NEED_MINIMAL
+literal|0
 expr_stmt|;
 name|memset
 argument_list|(
