@@ -272,6 +272,7 @@ argument_list|(
 name|diff_files_usage
 argument_list|)
 expr_stmt|;
+comment|/* 	 * "diff-files --base -p" should not combine merges because it 	 * was not asked to.  "diff-files -c -p" should not densify 	 * (the user should ask with "diff-files --cc" explicitly). 	 */
 if|if
 condition|(
 name|rev
@@ -280,6 +281,11 @@ name|max_count
 operator|==
 operator|-
 literal|1
+operator|&&
+operator|!
+name|rev
+operator|.
+name|combine_merges
 operator|&&
 operator|(
 name|rev
@@ -303,15 +309,21 @@ literal|1
 expr_stmt|;
 if|if
 condition|(
-name|read_cache
-argument_list|()
+name|read_cache_preload
+argument_list|(
+name|rev
+operator|.
+name|diffopt
+operator|.
+name|paths
+argument_list|)
 operator|<
 literal|0
 condition|)
 block|{
 name|perror
 argument_list|(
-literal|"read_cache"
+literal|"read_cache_preload"
 argument_list|)
 expr_stmt|;
 return|return

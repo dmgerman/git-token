@@ -41,6 +41,12 @@ directive|include
 file|"parse-options.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"diff.h"
+end_include
+
 begin_define
 DECL|macro|SEEN
 define|#
@@ -70,6 +76,8 @@ init|=
 block|{
 literal|"git describe [options]<committish>*"
 block|,
+literal|"git describe [options] --dirty"
+block|,
 name|NULL
 block|}
 decl_stmt|;
@@ -98,7 +106,7 @@ end_decl_stmt
 
 begin_comment
 DECL|variable|all
-comment|/* Default to annotated tags only */
+comment|/* Any valid ref can be used */
 end_comment
 
 begin_decl_stmt
@@ -111,7 +119,7 @@ end_decl_stmt
 
 begin_comment
 DECL|variable|tags
-comment|/* But allow any tags if --tags is specified */
+comment|/* Allow lightweight tags */
 end_comment
 
 begin_decl_stmt
@@ -143,6 +151,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|found_names
+specifier|static
+name|int
+name|found_names
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|pattern
 specifier|static
 specifier|const
@@ -157,6 +173,43 @@ DECL|variable|always
 specifier|static
 name|int
 name|always
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|dirty
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|dirty
+decl_stmt|;
+end_decl_stmt
+
+begin_comment
+comment|/* diff-index command arguments to check if working tree is dirty. */
+end_comment
+
+begin_decl_stmt
+DECL|variable|diff_index_args
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|diff_index_args
+index|[]
+init|=
+block|{
+literal|"diff-index"
+block|,
+literal|"--quiet"
+block|,
+literal|"HEAD"
+block|,
+literal|"--"
+block|,
+name|NULL
+block|}
 decl_stmt|;
 end_decl_stmt
 
@@ -329,6 +382,10 @@ operator|=
 name|e
 expr_stmt|;
 block|}
+name|found_names
+operator|=
+literal|1
+expr_stmt|;
 block|}
 end_function
 
@@ -547,18 +604,6 @@ condition|)
 return|return
 literal|0
 return|;
-if|if
-condition|(
-operator|!
-name|tags
-operator|&&
-name|prio
-operator|<
-literal|2
-condition|)
-return|return
-literal|0
-return|;
 block|}
 name|add_to_known_names
 argument_list|(
@@ -653,33 +698,6 @@ operator|*
 operator|)
 name|b_
 decl_stmt|;
-if|if
-condition|(
-name|a
-operator|->
-name|name
-operator|->
-name|prio
-operator|!=
-name|b
-operator|->
-name|name
-operator|->
-name|prio
-condition|)
-return|return
-name|b
-operator|->
-name|name
-operator|->
-name|prio
-operator|-
-name|a
-operator|->
-name|name
-operator|->
-name|prio
-return|;
 if|if
 condition|(
 name|a
@@ -990,6 +1008,14 @@ name|tag
 operator|->
 name|tag
 argument_list|,
+name|all
+condition|?
+name|n
+operator|->
+name|path
+operator|+
+literal|5
+else|:
 name|n
 operator|->
 name|path
@@ -1111,12 +1137,6 @@ name|commit_list
 modifier|*
 name|list
 decl_stmt|;
-specifier|static
-name|int
-name|initialized
-init|=
-literal|0
-decl_stmt|;
 name|struct
 name|commit_name
 modifier|*
@@ -1144,6 +1164,12 @@ decl_stmt|;
 name|unsigned
 name|long
 name|seen_commits
+init|=
+literal|0
+decl_stmt|;
+name|unsigned
+name|int
+name|unannotated_cnt
 init|=
 literal|0
 decl_stmt|;
@@ -1184,24 +1210,6 @@ argument_list|,
 name|commit_type
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|initialized
-condition|)
-block|{
-name|initialized
-operator|=
-literal|1
-expr_stmt|;
-name|for_each_ref
-argument_list|(
-name|get_name
-argument_list|,
-name|NULL
-argument_list|)
-expr_stmt|;
-block|}
 name|n
 operator|=
 name|cmit
@@ -1211,6 +1219,18 @@ expr_stmt|;
 if|if
 condition|(
 name|n
+operator|&&
+operator|(
+name|tags
+operator|||
+name|all
+operator|||
+name|n
+operator|->
+name|prio
+operator|==
+literal|2
+operator|)
 condition|)
 block|{
 comment|/* 		 * Exact match to an existing ref. 		 */
@@ -1240,6 +1260,17 @@ operator|->
 name|sha1
 else|:
 name|sha1
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|dirty
+condition|)
+name|printf
+argument_list|(
+literal|"%s"
+argument_list|,
+name|dirty
 argument_list|)
 expr_stmt|;
 name|printf
@@ -1340,6 +1371,26 @@ condition|(
 name|n
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|tags
+operator|&&
+operator|!
+name|all
+operator|&&
+name|n
+operator|->
+name|prio
+operator|<
+literal|2
+condition|)
+block|{
+name|unannotated_cnt
+operator|++
+expr_stmt|;
+block|}
+elseif|else
 if|if
 condition|(
 name|match_cnt
@@ -1579,7 +1630,7 @@ condition|)
 block|{
 name|printf
 argument_list|(
-literal|"%s\n"
+literal|"%s"
 argument_list|,
 name|find_unique_abbrev
 argument_list|(
@@ -1589,11 +1640,44 @@ name|abbrev
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|dirty
+condition|)
+name|printf
+argument_list|(
+literal|"%s"
+argument_list|,
+name|dirty
+argument_list|)
+expr_stmt|;
+name|printf
+argument_list|(
+literal|"\n"
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
+if|if
+condition|(
+name|unannotated_cnt
+condition|)
 name|die
 argument_list|(
-literal|"cannot describe '%s'"
+literal|"No annotated tags can describe '%s'.\n"
+literal|"However, there were unannotated tags: try --tags."
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|sha1
+argument_list|)
+argument_list|)
+expr_stmt|;
+else|else
+name|die
+argument_list|(
+literal|"No tags can describe '%s'.\n"
+literal|"Try --always, or create some tags."
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -1779,6 +1863,17 @@ operator|.
 name|sha1
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|dirty
+condition|)
+name|printf
+argument_list|(
+literal|"%s"
+argument_list|,
+name|dirty
+argument_list|)
+expr_stmt|;
 name|printf
 argument_list|(
 literal|"\n"
@@ -1949,6 +2044,30 @@ argument_list|,
 literal|"show abbreviated commit object as fallback"
 argument_list|)
 block|,
+block|{
+name|OPTION_STRING
+block|,
+literal|0
+block|,
+literal|"dirty"
+block|,
+operator|&
+name|dirty
+block|,
+literal|"mark"
+block|,
+literal|"append<mark> on dirty working tree (default: \"-dirty\")"
+block|,
+name|PARSE_OPT_OPTARG
+block|,
+name|NULL
+block|,
+operator|(
+name|intptr_t
+operator|)
+literal|"-dirty"
+block|}
+block|,
 name|OPT_END
 argument_list|()
 block|, 	}
@@ -1960,6 +2079,8 @@ argument_list|(
 name|argc
 argument_list|,
 name|argv
+argument_list|,
+name|prefix
 argument_list|,
 name|options
 argument_list|,
@@ -2169,6 +2290,26 @@ name|prefix
 argument_list|)
 return|;
 block|}
+name|for_each_ref
+argument_list|(
+name|get_name
+argument_list|,
+name|NULL
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|found_names
+operator|&&
+operator|!
+name|always
+condition|)
+name|die
+argument_list|(
+literal|"No names found, cannot describe anything."
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|argc
@@ -2176,11 +2317,46 @@ operator|==
 literal|0
 condition|)
 block|{
+if|if
+condition|(
+name|dirty
+operator|&&
+operator|!
+name|cmd_diff_index
+argument_list|(
+name|ARRAY_SIZE
+argument_list|(
+name|diff_index_args
+argument_list|)
+operator|-
+literal|1
+argument_list|,
+name|diff_index_args
+argument_list|,
+name|prefix
+argument_list|)
+condition|)
+name|dirty
+operator|=
+name|NULL
+expr_stmt|;
 name|describe
 argument_list|(
 literal|"HEAD"
 argument_list|,
 literal|1
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|dirty
+condition|)
+block|{
+name|die
+argument_list|(
+literal|"--dirty is incompatible with committishes"
 argument_list|)
 expr_stmt|;
 block|}

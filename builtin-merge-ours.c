@@ -16,6 +16,18 @@ file|"builtin.h"
 end_include
 
 begin_decl_stmt
+DECL|variable|builtin_merge_ours_usage
+specifier|static
+specifier|const
+name|char
+name|builtin_merge_ours_usage
+index|[]
+init|=
+literal|"git merge-ours<base>... -- HEAD<remote>..."
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|diff_index_args
 specifier|static
 specifier|const
@@ -68,6 +80,28 @@ modifier|*
 name|prefix
 parameter_list|)
 block|{
+if|if
+condition|(
+name|argc
+operator|==
+literal|2
+operator|&&
+operator|!
+name|strcmp
+argument_list|(
+name|argv
+index|[
+literal|1
+index|]
+argument_list|,
+literal|"-h"
+argument_list|)
+condition|)
+name|usage
+argument_list|(
+name|builtin_merge_ours_usage
+argument_list|)
+expr_stmt|;
 comment|/* 	 * We need to exit with 2 if the index does not match our HEAD tree, 	 * because the current index is what we will be committing as the 	 * merge result. 	 */
 if|if
 condition|(

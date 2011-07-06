@@ -6,6 +6,47 @@ file|"cache.h"
 end_include
 
 begin_comment
+comment|/*  * Do not use this for inspecting *tracked* content.  When path is a  * symlink to a directory, we do not want to say it is a directory when  * dealing with tracked content in the working tree.  */
+end_comment
+
+begin_function
+DECL|function|is_directory
+name|int
+name|is_directory
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|)
+block|{
+name|struct
+name|stat
+name|st
+decl_stmt|;
+return|return
+operator|(
+operator|!
+name|stat
+argument_list|(
+name|path
+argument_list|,
+operator|&
+name|st
+argument_list|)
+operator|&&
+name|S_ISDIR
+argument_list|(
+name|st
+operator|.
+name|st_mode
+argument_list|)
+operator|)
+return|;
+block|}
+end_function
+
+begin_comment
 comment|/* We allow "recursive" symbolic links. Only within reason, though. */
 end_comment
 
@@ -70,8 +111,6 @@ name|int
 name|buf_index
 init|=
 literal|1
-decl_stmt|,
-name|len
 decl_stmt|;
 name|int
 name|depth
@@ -118,20 +157,10 @@ condition|)
 block|{
 if|if
 condition|(
-name|stat
+operator|!
+name|is_directory
 argument_list|(
 name|buf
-argument_list|,
-operator|&
-name|st
-argument_list|)
-operator|||
-operator|!
-name|S_ISDIR
-argument_list|(
-name|st
-operator|.
-name|st_mode
 argument_list|)
 condition|)
 block|{
@@ -205,7 +234,7 @@ name|cwd
 argument_list|)
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
 literal|"Could not get current working directory"
 argument_list|)
@@ -217,7 +246,7 @@ argument_list|(
 name|buf
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
 literal|"Could not switch to '%s'"
 argument_list|,
@@ -235,7 +264,7 @@ argument_list|,
 name|PATH_MAX
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
 literal|"Could not get current working directory"
 argument_list|)
@@ -245,7 +274,7 @@ condition|(
 name|last_elem
 condition|)
 block|{
-name|int
+name|size_t
 name|len
 init|=
 name|strlen
@@ -322,8 +351,9 @@ name|st_mode
 argument_list|)
 condition|)
 block|{
+name|ssize_t
 name|len
-operator|=
+init|=
 name|readlink
 argument_list|(
 name|buf
@@ -332,16 +362,29 @@ name|next_buf
 argument_list|,
 name|PATH_MAX
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|len
 operator|<
 literal|0
 condition|)
+name|die_errno
+argument_list|(
+literal|"Invalid symlink '%s'"
+argument_list|,
+name|buf
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|PATH_MAX
+operator|<=
+name|len
+condition|)
 name|die
 argument_list|(
-literal|"Invalid symlink: %s"
+literal|"symbolic link too long: %s"
 argument_list|,
 name|buf
 argument_list|)
@@ -384,7 +427,7 @@ argument_list|(
 name|cwd
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
 literal|"Could not change back to '%s'"
 argument_list|,
@@ -581,7 +624,7 @@ condition|(
 operator|!
 name|cwd
 condition|)
-name|die
+name|die_errno
 argument_list|(
 literal|"Cannot determine the current working directory"
 argument_list|)

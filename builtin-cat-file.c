@@ -620,7 +620,7 @@ break|break;
 default|default:
 name|die
 argument_list|(
-literal|"git-cat-file: unknown option: %s\n"
+literal|"git cat-file: unknown option: %s"
 argument_list|,
 name|exp_type
 argument_list|)
@@ -633,7 +633,7 @@ name|buf
 condition|)
 name|die
 argument_list|(
-literal|"git-cat-file %s: bad file"
+literal|"git cat-file %s: bad file"
 argument_list|,
 name|obj_name
 argument_list|)
@@ -851,15 +851,9 @@ block|{
 name|struct
 name|strbuf
 name|buf
+init|=
+name|STRBUF_INIT
 decl_stmt|;
-name|strbuf_init
-argument_list|(
-operator|&
-name|buf
-argument_list|,
-literal|0
-argument_list|)
-expr_stmt|;
 while|while
 condition|(
 name|strbuf_getline
@@ -912,9 +906,9 @@ name|cat_file_usage
 index|[]
 init|=
 block|{
-literal|"git cat-file [-t|-s|-e|-p|<type>]<sha1>"
+literal|"git cat-file (-t|-s|-e|-p|<type>)<object>"
 block|,
-literal|"git cat-file [--batch|--batch-check]<<list_of_sha1s>"
+literal|"git cat-file (--batch|--batch-check)<<list_of_objects>"
 block|,
 name|NULL
 block|}
@@ -1093,6 +1087,8 @@ argument_list|(
 name|argc
 argument_list|,
 name|argv
+argument_list|,
+name|prefix
 argument_list|,
 name|options
 argument_list|,

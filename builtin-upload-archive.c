@@ -184,7 +184,9 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"not a git archive"
+literal|"'%s' does not appear to be a git repository"
+argument_list|,
+name|buf
 argument_list|)
 expr_stmt|;
 comment|/* put received options in sent_argv[] */
@@ -362,6 +364,17 @@ return|;
 block|}
 end_function
 
+begin_macro
+name|__attribute__
+argument_list|(
+argument|(format (printf,
+literal|1
+argument|,
+literal|2
+argument|))
+argument_list|)
+end_macro
+
 begin_function
 DECL|function|error_clnt
 specifier|static
@@ -437,7 +450,7 @@ end_function
 begin_function
 DECL|function|process_input
 specifier|static
-name|void
+name|ssize_t
 name|process_input
 parameter_list|(
 name|int
@@ -495,7 +508,9 @@ name|errno
 argument_list|)
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+name|sz
+return|;
 block|}
 name|send_sideband
 argument_list|(
@@ -510,6 +525,9 @@ argument_list|,
 name|LARGE_PACKET_MAX
 argument_list|)
 expr_stmt|;
+return|return
+name|sz
+return|;
 block|}
 end_function
 
@@ -827,30 +845,6 @@ if|if
 condition|(
 name|pfd
 index|[
-literal|0
-index|]
-operator|.
-name|revents
-operator|&
-name|POLLIN
-condition|)
-comment|/* Data stream ready */
-name|process_input
-argument_list|(
-name|pfd
-index|[
-literal|0
-index|]
-operator|.
-name|fd
-argument_list|,
-literal|1
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|pfd
-index|[
 literal|1
 index|]
 operator|.
@@ -859,6 +853,8 @@ operator|&
 name|POLLIN
 condition|)
 comment|/* Status stream ready */
+if|if
+condition|(
 name|process_input
 argument_list|(
 name|pfd
@@ -870,27 +866,33 @@ name|fd
 argument_list|,
 literal|2
 argument_list|)
-expr_stmt|;
-comment|/* Always finish to read data when available */
+condition|)
+continue|continue;
 if|if
 condition|(
-operator|(
 name|pfd
 index|[
 literal|0
 index|]
 operator|.
 name|revents
-operator||
-name|pfd
-index|[
-literal|1
-index|]
-operator|.
-name|revents
-operator|)
 operator|&
 name|POLLIN
+condition|)
+comment|/* Data stream ready */
+if|if
+condition|(
+name|process_input
+argument_list|(
+name|pfd
+index|[
+literal|0
+index|]
+operator|.
+name|fd
+argument_list|,
+literal|1
+argument_list|)
 condition|)
 continue|continue;
 if|if

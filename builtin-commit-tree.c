@@ -33,14 +33,6 @@ directive|include
 file|"utf8.h"
 end_include
 
-begin_define
-DECL|macro|BLOCKING
-define|#
-directive|define
-name|BLOCKING
-value|(1ul<< 14)
-end_define
-
 begin_comment
 comment|/*  * FIXME! Share the code with "write-tree.c"  */
 end_comment
@@ -120,7 +112,7 @@ name|char
 name|commit_tree_usage
 index|[]
 init|=
-literal|"git-commit-tree<sha1> [-p<sha1>]*< changelog"
+literal|"git commit-tree<sha1> [-p<sha1>]*< changelog"
 decl_stmt|;
 end_decl_stmt
 
@@ -251,8 +243,16 @@ name|unsigned
 name|char
 modifier|*
 name|ret
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|author
 parameter_list|)
 block|{
+name|int
+name|result
+decl_stmt|;
 name|int
 name|encoding_is_utf8
 decl_stmt|;
@@ -342,6 +342,18 @@ name|next
 expr_stmt|;
 block|}
 comment|/* Person/date information */
+if|if
+condition|(
+operator|!
+name|author
+condition|)
+name|author
+operator|=
+name|git_author_info
+argument_list|(
+name|IDENT_ERROR_ON_NO_NAME
+argument_list|)
+expr_stmt|;
 name|strbuf_addf
 argument_list|(
 operator|&
@@ -349,10 +361,7 @@ name|buffer
 argument_list|,
 literal|"author %s\n"
 argument_list|,
-name|git_author_info
-argument_list|(
-name|IDENT_ERROR_ON_NO_NAME
-argument_list|)
+name|author
 argument_list|)
 expr_stmt|;
 name|strbuf_addf
@@ -420,7 +429,8 @@ argument_list|,
 name|commit_utf8_warn
 argument_list|)
 expr_stmt|;
-return|return
+name|result
+operator|=
 name|write_sha1_file
 argument_list|(
 name|buffer
@@ -435,6 +445,15 @@ name|commit_type
 argument_list|,
 name|ret
 argument_list|)
+expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|buffer
+argument_list|)
+expr_stmt|;
+return|return
+name|result
 return|;
 block|}
 end_function
@@ -501,6 +520,17 @@ condition|(
 name|argc
 operator|<
 literal|2
+operator|||
+operator|!
+name|strcmp
+argument_list|(
+name|argv
+index|[
+literal|1
+index|]
+argument_list|,
+literal|"-h"
+argument_list|)
 condition|)
 name|usage
 argument_list|(
@@ -641,14 +671,9 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"git-commit-tree: read returned %s"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"git commit-tree: failed to read"
 argument_list|)
 expr_stmt|;
 if|if
@@ -665,6 +690,8 @@ argument_list|,
 name|parents
 argument_list|,
 name|commit_sha1
+argument_list|,
+name|NULL
 argument_list|)
 condition|)
 block|{

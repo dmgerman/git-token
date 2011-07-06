@@ -154,116 +154,6 @@ block|}
 end_function
 
 begin_function
-DECL|function|remove_file
-specifier|static
-name|int
-name|remove_file
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|name
-parameter_list|)
-block|{
-name|int
-name|ret
-decl_stmt|;
-name|char
-modifier|*
-name|slash
-decl_stmt|;
-name|ret
-operator|=
-name|unlink
-argument_list|(
-name|name
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|ret
-operator|&&
-name|errno
-operator|==
-name|ENOENT
-condition|)
-comment|/* The user has removed it from the filesystem by hand */
-name|ret
-operator|=
-name|errno
-operator|=
-literal|0
-expr_stmt|;
-if|if
-condition|(
-operator|!
-name|ret
-operator|&&
-operator|(
-name|slash
-operator|=
-name|strrchr
-argument_list|(
-name|name
-argument_list|,
-literal|'/'
-argument_list|)
-operator|)
-condition|)
-block|{
-name|char
-modifier|*
-name|n
-init|=
-name|xstrdup
-argument_list|(
-name|name
-argument_list|)
-decl_stmt|;
-do|do
-block|{
-name|n
-index|[
-name|slash
-operator|-
-name|name
-index|]
-operator|=
-literal|0
-expr_stmt|;
-name|name
-operator|=
-name|n
-expr_stmt|;
-block|}
-do|while
-condition|(
-operator|!
-name|rmdir
-argument_list|(
-name|name
-argument_list|)
-operator|&&
-operator|(
-name|slash
-operator|=
-name|strrchr
-argument_list|(
-name|name
-argument_list|,
-literal|'/'
-argument_list|)
-operator|)
-condition|)
-do|;
-block|}
-return|return
-name|ret
-return|;
-block|}
-end_function
-
-begin_function
 DECL|function|check_local_mod
 specifier|static
 name|int
@@ -278,7 +168,7 @@ name|int
 name|index_only
 parameter_list|)
 block|{
-comment|/* items in list are already sorted in the cache order, 	 * so we could do this a lot more efficiently by using 	 * tree_desc based traversal if we wanted to, but I am 	 * lazy, and who cares if removal of files is a tad 	 * slower than the theoretical maximum speed? 	 */
+comment|/* 	 * Items in list are already sorted in the cache order, 	 * so we could do this a lot more efficiently by using 	 * tree_desc based traversal if we wanted to, but I am 	 * lazy, and who cares if removal of files is a tad 	 * slower than the theoretical maximum speed? 	 */
 name|int
 name|i
 decl_stmt|,
@@ -404,11 +294,9 @@ name|errno
 operator|!=
 name|ENOENT
 condition|)
-name|fprintf
+name|warning
 argument_list|(
-name|stderr
-argument_list|,
-literal|"warning: '%s': %s"
+literal|"'%s': %s"
 argument_list|,
 name|ce
 operator|->
@@ -437,6 +325,8 @@ block|{
 comment|/* if a file was removed and it is now a 			 * directory, that is the same as ENOENT as 			 * far as git is concerned; we do not track 			 * directories. 			 */
 continue|continue;
 block|}
+comment|/* 		 * "rm" of a path that has changes need to be treated 		 * carefully not to allow losing local changes 		 * accidentally.  A local change could be (1) file in 		 * work tree is different since the index; and/or (2) 		 * the user staged a content that is different from 		 * the current commit in the index. 		 * 		 * In such a case, you would need to --force the 		 * removal.  However, "rm --cached" (remove only from 		 * the index) is safe if the index matches the file in 		 * the work tree or the HEAD commit, as it means that 		 * the content being removed is available elsewhere. 		 */
+comment|/* 		 * Is the index different from the file in the work tree? 		 */
 if|if
 condition|(
 name|ce_match_stat
@@ -453,6 +343,7 @@ name|local_changes
 operator|=
 literal|1
 expr_stmt|;
+comment|/* 		 * Is the index different from the HEAD commit?  By 		 * definition, before the very initial commit, 		 * anything staged in the index is treated by the same 		 * way as changed from the HEAD. 		 */
 if|if
 condition|(
 name|no_head
@@ -491,11 +382,27 @@ name|staged_changes
 operator|=
 literal|1
 expr_stmt|;
+comment|/* 		 * If the index does not match the file in the work 		 * tree and if it does not match the HEAD commit 		 * either, (1) "git rm" without --cached definitely 		 * will lose information; (2) "git rm --cached" will 		 * lose information unless it is about removing an 		 * "intent to add" entry. 		 */
 if|if
 condition|(
 name|local_changes
 operator|&&
 name|staged_changes
+condition|)
+block|{
+if|if
+condition|(
+operator|!
+name|index_only
+operator|||
+operator|!
+operator|(
+name|ce
+operator|->
+name|ce_flags
+operator|&
+name|CE_INTENT_TO_ADD
+operator|)
 condition|)
 name|errs
 operator|=
@@ -508,6 +415,7 @@ argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -515,7 +423,6 @@ operator|!
 name|index_only
 condition|)
 block|{
-comment|/* It's not dangerous to git-rm --cached a 			 * file if the index matches the file or the 			 * HEAD, since it means the deleted content is 			 * still available somewhere. 			 */
 if|if
 condition|(
 name|staged_changes
@@ -728,6 +635,8 @@ name|argc
 argument_list|,
 name|argv
 argument_list|,
+name|prefix
+argument_list|,
 name|builtin_rm_options
 argument_list|,
 name|builtin_rm_usage
@@ -784,6 +693,20 @@ argument_list|(
 name|prefix
 argument_list|,
 name|argv
+argument_list|)
+expr_stmt|;
+name|refresh_index
+argument_list|(
+operator|&
+name|the_index
+argument_list|,
+name|REFRESH_QUIET
+argument_list|,
+name|pathspec
+argument_list|,
+name|NULL
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 name|seen
@@ -1065,7 +988,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"git-rm: unable to remove %s"
+literal|"git rm: unable to remove %s"
 argument_list|,
 name|path
 argument_list|)
@@ -1121,7 +1044,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|remove_file
+name|remove_path
 argument_list|(
 name|path
 argument_list|)
@@ -1138,16 +1061,11 @@ condition|(
 operator|!
 name|removed
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"git-rm: %s: %s"
+literal|"git rm: '%s'"
 argument_list|,
 name|path
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

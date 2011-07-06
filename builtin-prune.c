@@ -41,6 +41,12 @@ directive|include
 file|"parse-options.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"dir.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|prune_usage
 specifier|static
@@ -52,7 +58,7 @@ name|prune_usage
 index|[]
 init|=
 block|{
-literal|"git prune [-n] [--expire<time>] [--] [<head>...]"
+literal|"git prune [-n] [-v] [--expire<time>] [--] [<head>...]"
 block|,
 name|NULL
 block|}
@@ -64,6 +70,14 @@ DECL|variable|show_only
 specifier|static
 name|int
 name|show_only
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|verbose
+specifier|static
+name|int
+name|verbose
 decl_stmt|;
 end_decl_stmt
 
@@ -82,6 +96,7 @@ specifier|static
 name|int
 name|prune_tmp_object
 parameter_list|(
+specifier|const
 name|char
 modifier|*
 name|path
@@ -157,7 +172,7 @@ condition|(
 operator|!
 name|show_only
 condition|)
-name|unlink
+name|unlink_or_warn
 argument_list|(
 name|fullpath
 argument_list|)
@@ -246,6 +261,8 @@ block|}
 if|if
 condition|(
 name|show_only
+operator|||
+name|verbose
 condition|)
 block|{
 name|enum
@@ -283,8 +300,12 @@ literal|"unknown"
 argument_list|)
 expr_stmt|;
 block|}
-else|else
-name|unlink
+if|if
+condition|(
+operator|!
+name|show_only
+condition|)
+name|unlink_or_warn
 argument_list|(
 name|fullpath
 argument_list|)
@@ -358,55 +379,28 @@ index|[
 literal|20
 index|]
 decl_stmt|;
-name|int
-name|len
-init|=
+if|if
+condition|(
+name|is_dot_or_dotdot
+argument_list|(
+name|de
+operator|->
+name|d_name
+argument_list|)
+condition|)
+continue|continue;
+if|if
+condition|(
 name|strlen
 argument_list|(
 name|de
 operator|->
 name|d_name
 argument_list|)
-decl_stmt|;
-switch|switch
-condition|(
-name|len
+operator|==
+literal|38
 condition|)
 block|{
-case|case
-literal|2
-case|:
-if|if
-condition|(
-name|de
-operator|->
-name|d_name
-index|[
-literal|1
-index|]
-operator|!=
-literal|'.'
-condition|)
-break|break;
-case|case
-literal|1
-case|:
-if|if
-condition|(
-name|de
-operator|->
-name|d_name
-index|[
-literal|0
-index|]
-operator|!=
-literal|'.'
-condition|)
-break|break;
-continue|continue;
-case|case
-literal|38
-case|:
 name|sprintf
 argument_list|(
 name|name
@@ -426,9 +420,7 @@ name|de
 operator|->
 name|d_name
 argument_list|,
-name|len
-operator|+
-literal|1
+literal|39
 argument_list|)
 expr_stmt|;
 if|if
@@ -583,7 +575,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Write errors (particularly out of space) can result in  * failed temporary packs (and more rarely indexes and other  * files begining with "tmp_") accumulating in the  * object directory.  */
+comment|/*  * Write errors (particularly out of space) can result in  * failed temporary packs (and more rarely indexes and other  * files begining with "tmp_") accumulating in the object  * and the pack directories.  */
 end_comment
 
 begin_function
@@ -592,7 +584,10 @@ specifier|static
 name|void
 name|remove_temporary_files
 parameter_list|(
-name|void
+specifier|const
+name|char
+modifier|*
+name|path
 parameter_list|)
 block|{
 name|DIR
@@ -604,18 +599,11 @@ name|dirent
 modifier|*
 name|de
 decl_stmt|;
-name|char
-modifier|*
-name|dirname
-init|=
-name|get_object_directory
-argument_list|()
-decl_stmt|;
 name|dir
 operator|=
 name|opendir
 argument_list|(
-name|dirname
+name|path
 argument_list|)
 expr_stmt|;
 if|if
@@ -628,9 +616,9 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Unable to open object directory %s\n"
+literal|"Unable to open directory %s\n"
 argument_list|,
-name|dirname
+name|path
 argument_list|)
 expr_stmt|;
 return|return;
@@ -662,7 +650,7 @@ argument_list|)
 condition|)
 name|prune_tmp_object
 argument_list|(
-name|dirname
+name|path
 argument_list|,
 name|de
 operator|->
@@ -720,6 +708,18 @@ argument_list|,
 literal|"do not remove, show only"
 argument_list|)
 block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|'v'
+argument_list|,
+name|NULL
+argument_list|,
+operator|&
+name|verbose
+argument_list|,
+literal|"report pruned objects"
+argument_list|)
+block|,
 name|OPT_DATE
 argument_list|(
 literal|0
@@ -736,7 +736,15 @@ name|OPT_END
 argument_list|()
 block|}
 decl_stmt|;
+name|char
+modifier|*
+name|s
+decl_stmt|;
 name|save_commit_buffer
+operator|=
+literal|0
+expr_stmt|;
+name|read_replace_refs
 operator|=
 literal|0
 expr_stmt|;
@@ -755,6 +763,8 @@ argument_list|(
 name|argc
 argument_list|,
 name|argv
+argument_list|,
+name|prefix
 argument_list|,
 name|options
 argument_list|,
@@ -858,7 +868,33 @@ name|show_only
 argument_list|)
 expr_stmt|;
 name|remove_temporary_files
+argument_list|(
+name|get_object_directory
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|s
+operator|=
+name|xstrdup
+argument_list|(
+name|mkpath
+argument_list|(
+literal|"%s/pack"
+argument_list|,
+name|get_object_directory
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|remove_temporary_files
+argument_list|(
+name|s
+argument_list|)
+expr_stmt|;
+name|free
+argument_list|(
+name|s
+argument_list|)
 expr_stmt|;
 return|return
 literal|0

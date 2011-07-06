@@ -5,28 +5,9 @@ directive|include
 file|"cache.h"
 end_include
 
-begin_ifdef
-ifdef|#
-directive|ifdef
-name|_WIN32
-end_ifdef
-
-begin_define
-DECL|macro|WIN32_LEAN_AND_MEAN
-define|#
-directive|define
-name|WIN32_LEAN_AND_MEAN
-end_define
-
-begin_include
-include|#
-directive|include
-file|<windows.h>
-end_include
-
-begin_elif
-elif|#
-directive|elif
+begin_if
+if|#
+directive|if
 name|defined
 argument_list|(
 name|hpux
@@ -41,7 +22,7 @@ name|defined
 argument_list|(
 name|_hpux
 argument_list|)
-end_elif
+end_if
 
 begin_include
 include|#

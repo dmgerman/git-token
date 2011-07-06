@@ -105,7 +105,7 @@ name|char
 name|unpack_usage
 index|[]
 init|=
-literal|"git-unpack-objects [-n] [-q] [-r] [--strict]< pack-file"
+literal|"git unpack-objects [-n] [-q] [-r] [--strict]< pack-file"
 decl_stmt|;
 end_decl_stmt
 
@@ -148,7 +148,7 @@ end_decl_stmt
 begin_decl_stmt
 DECL|variable|ctx
 specifier|static
-name|SHA_CTX
+name|git_SHA_CTX
 name|ctx
 decl_stmt|;
 end_decl_stmt
@@ -335,7 +335,7 @@ condition|(
 name|offset
 condition|)
 block|{
-name|SHA1_Update
+name|git_SHA1_Update
 argument_list|(
 operator|&
 name|ctx
@@ -399,14 +399,9 @@ argument_list|(
 literal|"early EOF"
 argument_list|)
 expr_stmt|;
-name|die
+name|die_errno
 argument_list|(
-literal|"read error on input: %s"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"read error on input"
 argument_list|)
 expr_stmt|;
 block|}
@@ -542,7 +537,7 @@ name|avail_in
 operator|=
 name|len
 expr_stmt|;
-name|inflateInit
+name|git_inflate_init
 argument_list|(
 operator|&
 name|stream
@@ -557,7 +552,7 @@ block|{
 name|int
 name|ret
 init|=
-name|inflate
+name|git_inflate
 argument_list|(
 operator|&
 name|stream
@@ -642,7 +637,7 @@ operator|=
 name|len
 expr_stmt|;
 block|}
-name|inflateEnd
+name|git_inflate_end
 argument_list|(
 operator|&
 name|stream
@@ -847,6 +842,7 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|nr_objects
+specifier|static
 name|unsigned
 name|nr_objects
 decl_stmt|;
@@ -959,7 +955,7 @@ operator|!
 name|obj
 condition|)
 return|return
-literal|0
+literal|1
 return|;
 if|if
 condition|(
@@ -970,7 +966,7 @@ operator|&
 name|FLAG_WRITTEN
 condition|)
 return|return
-literal|1
+literal|0
 return|;
 if|if
 condition|(
@@ -1042,7 +1038,7 @@ operator||=
 name|FLAG_WRITTEN
 expr_stmt|;
 return|return
-literal|1
+literal|0
 return|;
 block|}
 if|if
@@ -1063,14 +1059,13 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|!
 name|fsck_walk
 argument_list|(
 name|obj
 argument_list|,
 name|check_object
 argument_list|,
-literal|0
+name|NULL
 argument_list|)
 condition|)
 name|die
@@ -1091,7 +1086,7 @@ name|obj
 argument_list|)
 expr_stmt|;
 return|return
-literal|1
+literal|0
 return|;
 block|}
 end_function
@@ -1121,6 +1116,16 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
+if|if
+condition|(
+name|obj_list
+index|[
+name|i
+index|]
+operator|.
+name|obj
+condition|)
 name|check_object
 argument_list|(
 name|obj_list
@@ -1132,9 +1137,10 @@ name|obj
 argument_list|,
 name|OBJ_ANY
 argument_list|,
-literal|0
+name|NULL
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 end_function
 
@@ -2062,6 +2068,26 @@ name|offset
 operator|-
 name|base_offset
 expr_stmt|;
+if|if
+condition|(
+name|base_offset
+operator|<=
+literal|0
+operator|||
+name|base_offset
+operator|>=
+name|obj_list
+index|[
+name|nr
+index|]
+operator|.
+name|offset
+condition|)
+name|die
+argument_list|(
+literal|"offset value out of bound for delta base object"
+argument_list|)
+expr_stmt|;
 name|delta_data
 operator|=
 name|get_data
@@ -2305,12 +2331,12 @@ name|unsigned
 name|char
 modifier|*
 name|pack
-decl_stmt|,
-name|c
 decl_stmt|;
 name|unsigned
 name|long
 name|size
+decl_stmt|,
+name|c
 decl_stmt|;
 name|enum
 name|object_type
@@ -2578,25 +2604,10 @@ argument_list|)
 expr_stmt|;
 name|obj_list
 operator|=
-name|xmalloc
+name|xcalloc
 argument_list|(
 name|nr_objects
-operator|*
-sizeof|sizeof
-argument_list|(
-operator|*
-name|obj_list
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|memset
-argument_list|(
-name|obj_list
 argument_list|,
-literal|0
-argument_list|,
-name|nr_objects
-operator|*
 sizeof|sizeof
 argument_list|(
 operator|*
@@ -2681,6 +2692,10 @@ index|[
 literal|20
 index|]
 decl_stmt|;
+name|read_replace_refs
+operator|=
+literal|0
+expr_stmt|;
 name|git_config
 argument_list|(
 name|git_default_config
@@ -2921,7 +2936,7 @@ name|unpack_usage
 argument_list|)
 expr_stmt|;
 block|}
-name|SHA1_Init
+name|git_SHA1_Init
 argument_list|(
 operator|&
 name|ctx
@@ -2930,7 +2945,7 @@ expr_stmt|;
 name|unpack_all
 argument_list|()
 expr_stmt|;
-name|SHA1_Update
+name|git_SHA1_Update
 argument_list|(
 operator|&
 name|ctx
@@ -2940,7 +2955,7 @@ argument_list|,
 name|offset
 argument_list|)
 expr_stmt|;
-name|SHA1_Final
+name|git_SHA1_Final
 argument_list|(
 name|sha1
 argument_list|,

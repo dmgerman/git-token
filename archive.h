@@ -65,6 +65,13 @@ name|verbose
 range|:
 literal|1
 decl_stmt|;
+DECL|member|worktree_attributes
+name|unsigned
+name|int
+name|worktree_attributes
+range|:
+literal|1
+decl_stmt|;
 DECL|member|compression_level
 name|int
 name|compression_level

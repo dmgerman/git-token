@@ -215,6 +215,14 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+name|cached
+condition|)
+name|setup_work_tree
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
 name|read_cache
 argument_list|()
 operator|<

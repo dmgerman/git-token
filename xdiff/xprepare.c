@@ -25,6 +25,14 @@ name|XDL_MAX_EQLIMIT
 value|1024
 end_define
 
+begin_define
+DECL|macro|XDL_SIMSCAN_WINDOW
+define|#
+directive|define
+name|XDL_SIMSCAN_WINDOW
+value|100
+end_define
+
 begin_typedef
 DECL|struct|s_xdlclass
 typedef|typedef
@@ -1652,6 +1660,15 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+operator|(
+name|xpp
+operator|->
+name|flags
+operator|&
+name|XDF_PATIENCE_DIFF
+operator|)
+operator|&&
 name|xdl_optimize_ctxs
 argument_list|(
 operator|&
@@ -1756,6 +1773,35 @@ name|rdis1
 decl_stmt|,
 name|rpdis1
 decl_stmt|;
+comment|/* 	 * Limits the window the is examined during the similar-lines 	 * scan. The loops below stops when dis[i - r] == 1 (line that 	 * has no match), but there are corner cases where the loop 	 * proceed all the way to the extremities by causing huge 	 * performance penalties in case of big files. 	 */
+if|if
+condition|(
+name|i
+operator|-
+name|s
+operator|>
+name|XDL_SIMSCAN_WINDOW
+condition|)
+name|s
+operator|=
+name|i
+operator|-
+name|XDL_SIMSCAN_WINDOW
+expr_stmt|;
+if|if
+condition|(
+name|e
+operator|-
+name|i
+operator|>
+name|XDL_SIMSCAN_WINDOW
+condition|)
+name|e
+operator|=
+name|i
+operator|+
+name|XDL_SIMSCAN_WINDOW
+expr_stmt|;
 comment|/* 	 * Scans the lines before 'i' to find a run of lines that either 	 * have no match (dis[j] == 0) or have multiple matches (dis[j]> 1). 	 * Note that we always call this function with dis[i]> 1, so the 	 * current line (i) is already a multimatch line. 	 */
 for|for
 control|(

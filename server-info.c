@@ -161,12 +161,9 @@ name|char
 modifier|*
 name|path0
 init|=
-name|xstrdup
-argument_list|(
-name|git_path
+name|git_pathdup
 argument_list|(
 literal|"info/refs"
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|int
@@ -1271,7 +1268,7 @@ name|force
 argument_list|)
 expr_stmt|;
 comment|/* remove leftover rev-cache file if there is any */
-name|unlink
+name|unlink_or_warn
 argument_list|(
 name|git_path
 argument_list|(
