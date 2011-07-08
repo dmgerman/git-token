@@ -1878,6 +1878,22 @@ parameter_list|)
 value|((x)< SIMILARITY_FLOOR)
 end_define
 
+begin_decl_stmt
+DECL|variable|bad_interpreter_advice
+specifier|static
+specifier|const
+name|char
+name|bad_interpreter_advice
+index|[]
+init|=
+name|N_
+argument_list|(
+literal|"'%s' appears to be a git command, but we were not\n"
+literal|"able to execute it. Maybe git-%s is broken?"
+argument_list|)
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|help_unknown_cmd
 specifier|const
@@ -2048,6 +2064,29 @@ index|]
 operator|->
 name|name
 decl_stmt|;
+comment|/* 		 * An exact match means we have the command, but 		 * for some reason exec'ing it gave us ENOENT; probably 		 * it's a bad interpreter in the #! line. 		 */
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|candidate
+argument_list|,
+name|cmd
+argument_list|)
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+name|bad_interpreter_advice
+argument_list|)
+argument_list|,
+name|cmd
+argument_list|,
+name|cmd
+argument_list|)
+expr_stmt|;
 comment|/* Does the candidate appear in common_cmds list? */
 while|while
 condition|(
