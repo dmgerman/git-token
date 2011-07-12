@@ -9,14 +9,6 @@ directive|include
 file|"xinclude.h"
 end_include
 
-begin_define
-DECL|macro|XDL_GUESS_NLINES
-define|#
-directive|define
-name|XDL_GUESS_NLINES
-value|256
-end_define
-
 begin_function
 DECL|function|xdl_bogosqrt
 name|long
@@ -703,6 +695,9 @@ parameter_list|(
 name|mmfile_t
 modifier|*
 name|mf
+parameter_list|,
+name|long
+name|sample
 parameter_list|)
 block|{
 name|long
@@ -756,7 +751,7 @@ name|size
 init|;
 name|nl
 operator|<
-name|XDL_GUESS_NLINES
+name|sample
 condition|;
 control|)
 block|{

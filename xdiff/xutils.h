@@ -128,6 +128,9 @@ parameter_list|(
 name|mmfile_t
 modifier|*
 name|mf
+parameter_list|,
+name|long
+name|sample
 parameter_list|)
 function_decl|;
 end_function_decl
