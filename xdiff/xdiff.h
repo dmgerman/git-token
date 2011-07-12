@@ -58,6 +58,11 @@ define|#
 directive|define
 name|XDF_PATIENCE_DIFF
 value|(1<< 5)
+DECL|macro|XDF_HISTOGRAM_DIFF
+define|#
+directive|define
+name|XDF_HISTOGRAM_DIFF
+value|(1<< 6)
 DECL|macro|XDF_WHITESPACE_FLAGS
 define|#
 directive|define

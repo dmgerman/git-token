@@ -19811,6 +19811,24 @@ argument_list|,
 name|PATIENCE_DIFF
 argument_list|)
 expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--histogram"
+argument_list|)
+condition|)
+name|DIFF_XDL_SET
+argument_list|(
+name|options
+argument_list|,
+name|HISTOGRAM_DIFF
+argument_list|)
+expr_stmt|;
 comment|/* flags options */
 elseif|else
 if|if
