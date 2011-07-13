@@ -450,8 +450,15 @@ DECL|variable|core_filemode
 specifier|static
 name|int
 name|core_filemode
+init|=
+literal|1
 decl_stmt|;
 end_decl_stmt
+
+begin_comment
+DECL|variable|core_filemode
+comment|/* matches trust_executable_bit default */
+end_comment
 
 begin_function
 DECL|function|git_cygwin_config
