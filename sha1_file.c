@@ -6168,11 +6168,15 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * There used to be a second loose object header format which  * was meant to mimic the in-pack format, allowing for direct  * copy of the object data.  This format turned up not to be  * really worth it and we no longer write loose objects in that  * format.  */
+end_comment
+
 begin_function
-DECL|function|legacy_loose_object
+DECL|function|experimental_loose_object
 specifier|static
 name|int
-name|legacy_loose_object
+name|experimental_loose_object
 parameter_list|(
 name|unsigned
 name|char
@@ -6184,7 +6188,7 @@ name|unsigned
 name|int
 name|word
 decl_stmt|;
-comment|/* 	 * Is it a zlib-compressed buffer? If so, the first byte 	 * must be 0x78 (15-bit window size, deflated), and the 	 * first 16-bit word is evenly divisible by 31 	 */
+comment|/* 	 * Is it a zlib-compressed buffer? If so, the first byte 	 * must be 0x78 (15-bit window size, deflated), and the 	 * first 16-bit word is evenly divisible by 31. If so, 	 * we are looking at the official format, not the experimental 	 * one. 	 */
 name|word
 operator|=
 operator|(
@@ -6218,11 +6222,11 @@ literal|31
 operator|)
 condition|)
 return|return
-literal|1
+literal|0
 return|;
 else|else
 return|return
-literal|0
+literal|1
 return|;
 block|}
 end_function
@@ -6465,27 +6469,13 @@ name|bufsiz
 expr_stmt|;
 if|if
 condition|(
-name|legacy_loose_object
+name|experimental_loose_object
 argument_list|(
 name|map
 argument_list|)
 condition|)
 block|{
-name|git_inflate_init
-argument_list|(
-name|stream
-argument_list|)
-expr_stmt|;
-return|return
-name|git_inflate
-argument_list|(
-name|stream
-argument_list|,
-literal|0
-argument_list|)
-return|;
-block|}
-comment|/* 	 * There used to be a second loose object header format which 	 * was meant to mimic the in-pack format, allowing for direct 	 * copy of the object data.  This format turned up not to be 	 * really worth it and we don't write it any longer.  But we 	 * can still read it. 	 */
+comment|/* 		 * The old experimental format we no longer produce; 		 * we can still read it. 		 */
 name|used
 operator|=
 name|unpack_object_header_buffer
@@ -6567,6 +6557,20 @@ argument_list|)
 expr_stmt|;
 return|return
 literal|0
+return|;
+block|}
+name|git_inflate_init
+argument_list|(
+name|stream
+argument_list|)
+expr_stmt|;
+return|return
+name|git_inflate
+argument_list|(
+name|stream
+argument_list|,
+literal|0
+argument_list|)
 return|;
 block|}
 end_function
