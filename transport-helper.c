@@ -2417,6 +2417,17 @@ name|buf
 argument_list|)
 expr_stmt|;
 block|}
+name|write_constant
+argument_list|(
+name|data
+operator|->
+name|helper
+operator|->
+name|in
+argument_list|,
+literal|"\n"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|finish_command
