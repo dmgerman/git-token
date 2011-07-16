@@ -4011,6 +4011,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|free
+argument_list|(
+name|private
+argument_list|)
+expr_stmt|;
 name|string_list_append
 argument_list|(
 operator|&
