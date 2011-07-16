@@ -1284,6 +1284,21 @@ operator|==
 literal|'\n'
 condition|)
 block|{
+if|if
+condition|(
+name|mid
+operator|-
+name|start
+operator|!=
+literal|40
+condition|)
+name|die
+argument_list|(
+literal|"%sinfo/refs not valid: is this a git repository?"
+argument_list|,
+name|url
+argument_list|)
+expr_stmt|;
 name|data
 index|[
 name|i
