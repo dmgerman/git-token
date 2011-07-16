@@ -4193,6 +4193,13 @@ argument_list|(
 literal|"Error while running fast-export"
 argument_list|)
 expr_stmt|;
+name|push_update_refs_status
+argument_list|(
+name|data
+argument_list|,
+name|remote_refs
+argument_list|)
+expr_stmt|;
 return|return
 literal|0
 return|;
