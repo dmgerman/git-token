@@ -1043,9 +1043,7 @@ index|]
 operator|=
 name|strdup
 argument_list|(
-name|buf
-operator|.
-name|buf
+name|capname
 operator|+
 name|strlen
 argument_list|(
