@@ -670,6 +670,10 @@ condition|(
 name|http_ret
 operator|!=
 name|HTTP_OK
+operator|&&
+name|http_ret
+operator|!=
+name|HTTP_NOAUTH
 condition|)
 block|{
 name|free
