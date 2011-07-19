@@ -223,7 +223,6 @@ end_function
 
 begin_function
 DECL|function|git_config_parse_parameter
-specifier|static
 name|int
 name|git_config_parse_parameter
 parameter_list|(
