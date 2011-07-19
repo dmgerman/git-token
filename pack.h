@@ -92,23 +92,57 @@ DECL|macro|PACK_IDX_SIGNATURE
 comment|/* "\377tOc" */
 end_comment
 
-begin_comment
-comment|/* These may be overridden by command-line parameters */
-end_comment
-
-begin_decl_stmt
-specifier|extern
-name|uint32_t
-name|pack_idx_default_version
+begin_struct
+DECL|struct|pack_idx_option
+struct|struct
+name|pack_idx_option
+block|{
+DECL|member|flags
+name|unsigned
+name|flags
 decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-specifier|extern
+comment|/* flag bits */
+DECL|macro|WRITE_IDX_VERIFY
+define|#
+directive|define
+name|WRITE_IDX_VERIFY
+value|01
+DECL|member|version
 name|uint32_t
-name|pack_idx_off32_limit
+name|version
 decl_stmt|;
-end_decl_stmt
+DECL|member|off32_limit
+name|uint32_t
+name|off32_limit
+decl_stmt|;
+comment|/* 	 * List of offsets that would fit within off32_limit but 	 * need to be written out as 64-bit entity for byte-for-byte 	 * verification. 	 */
+DECL|member|anomaly_alloc
+DECL|member|anomaly_nr
+name|int
+name|anomaly_alloc
+decl_stmt|,
+name|anomaly_nr
+decl_stmt|;
+DECL|member|anomaly
+name|uint32_t
+modifier|*
+name|anomaly
+decl_stmt|;
+block|}
+struct|;
+end_struct
+
+begin_function_decl
+specifier|extern
+name|void
+name|reset_pack_idx_option
+parameter_list|(
+name|struct
+name|pack_idx_option
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
 
 begin_comment
 comment|/*  * Packed object index header  */
@@ -180,6 +214,11 @@ name|objects
 parameter_list|,
 name|int
 name|nr_objects
+parameter_list|,
+specifier|const
+name|struct
+name|pack_idx_option
+modifier|*
 parameter_list|,
 name|unsigned
 name|char
