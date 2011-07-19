@@ -11154,7 +11154,7 @@ name|char
 modifier|*
 name|deflated
 decl_stmt|;
-name|z_stream
+name|git_zstream
 name|stream
 decl_stmt|;
 name|memset
@@ -11170,7 +11170,7 @@ name|stream
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|deflateInit
+name|git_deflate_init
 argument_list|(
 operator|&
 name|stream
@@ -11180,7 +11180,7 @@ argument_list|)
 expr_stmt|;
 name|bound
 operator|=
-name|deflateBound
+name|git_deflate_bound
 argument_list|(
 operator|&
 name|stream
@@ -11226,7 +11226,7 @@ name|size
 expr_stmt|;
 while|while
 condition|(
-name|deflate
+name|git_deflate
 argument_list|(
 operator|&
 name|stream
@@ -11238,7 +11238,7 @@ name|Z_OK
 condition|)
 empty_stmt|;
 comment|/* nothing */
-name|deflateEnd
+name|git_deflate_end
 argument_list|(
 operator|&
 name|stream

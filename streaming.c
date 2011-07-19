@@ -311,7 +311,7 @@ name|size
 decl_stmt|;
 comment|/* inflated size of full object */
 DECL|member|z
-name|z_stream
+name|git_zstream
 name|z
 decl_stmt|;
 DECL|enumerator|z_unused

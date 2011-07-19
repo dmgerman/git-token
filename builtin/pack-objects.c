@@ -724,7 +724,7 @@ name|long
 name|size
 parameter_list|)
 block|{
-name|z_stream
+name|git_zstream
 name|stream
 decl_stmt|;
 name|void
@@ -751,7 +751,7 @@ name|stream
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|deflateInit
+name|git_deflate_init
 argument_list|(
 operator|&
 name|stream
@@ -761,7 +761,7 @@ argument_list|)
 expr_stmt|;
 name|maxsize
 operator|=
-name|deflateBound
+name|git_deflate_bound
 argument_list|(
 operator|&
 name|stream
@@ -812,7 +812,7 @@ name|maxsize
 expr_stmt|;
 while|while
 condition|(
-name|deflate
+name|git_deflate
 argument_list|(
 operator|&
 name|stream
@@ -824,7 +824,7 @@ name|Z_OK
 condition|)
 empty_stmt|;
 comment|/* nothing */
-name|deflateEnd
+name|git_deflate_end
 argument_list|(
 operator|&
 name|stream
@@ -875,7 +875,7 @@ name|long
 name|expect
 parameter_list|)
 block|{
-name|z_stream
+name|git_zstream
 name|stream
 decl_stmt|;
 name|unsigned
@@ -1047,7 +1047,7 @@ modifier|*
 name|in
 decl_stmt|;
 name|unsigned
-name|int
+name|long
 name|avail
 decl_stmt|;
 while|while
@@ -1079,7 +1079,7 @@ name|avail
 operator|=
 operator|(
 name|unsigned
-name|int
+name|long
 operator|)
 name|len
 expr_stmt|;
@@ -5268,7 +5268,7 @@ decl_stmt|,
 name|used_0
 decl_stmt|;
 name|unsigned
-name|int
+name|long
 name|avail
 decl_stmt|;
 name|off_t
