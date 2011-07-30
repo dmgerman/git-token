@@ -5627,10 +5627,13 @@ condition|(
 name|o
 operator|->
 name|index_only
-operator|||
-operator|(
-operator|!
-operator|(
+condition|)
+return|return
+literal|0
+return|;
+comment|/* 	 * CE_VALID and CE_SKIP_WORKTREE cheat, we better check again 	 * if this entry is truly up-to-date because this file may be 	 * overwritten. 	 */
+if|if
+condition|(
 operator|(
 name|ce
 operator|->
@@ -5643,9 +5646,12 @@ name|ce_skip_worktree
 argument_list|(
 name|ce
 argument_list|)
-operator|)
-operator|&&
-operator|(
+condition|)
+empty_stmt|;
+comment|/* keep checking */
+elseif|else
+if|if
+condition|(
 name|o
 operator|->
 name|reset
@@ -5654,8 +5660,6 @@ name|ce_uptodate
 argument_list|(
 name|ce
 argument_list|)
-operator|)
-operator|)
 condition|)
 return|return
 literal|0
@@ -5674,6 +5678,13 @@ name|st
 argument_list|)
 condition|)
 block|{
+name|int
+name|flags
+init|=
+name|CE_MATCH_IGNORE_VALID
+operator||
+name|CE_MATCH_IGNORE_SKIP_WORKTREE
+decl_stmt|;
 name|unsigned
 name|changed
 init|=
@@ -5688,9 +5699,7 @@ argument_list|,
 operator|&
 name|st
 argument_list|,
-name|CE_MATCH_IGNORE_VALID
-operator||
-name|CE_MATCH_IGNORE_SKIP_WORKTREE
+name|flags
 argument_list|)
 decl_stmt|;
 if|if
