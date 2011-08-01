@@ -1219,6 +1219,9 @@ operator|=
 name|ai
 operator|->
 name|ai_next
+operator|,
+name|cnt
+operator|++
 control|)
 block|{
 name|sockfd
