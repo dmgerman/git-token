@@ -4641,7 +4641,7 @@ name|OPT_CALLBACK
 argument_list|(
 literal|'C'
 argument_list|,
-name|NULL
+literal|"context"
 argument_list|,
 operator|&
 name|opt
@@ -4657,7 +4657,7 @@ name|OPT_INTEGER
 argument_list|(
 literal|'B'
 argument_list|,
-name|NULL
+literal|"before-context"
 argument_list|,
 operator|&
 name|opt
@@ -4671,7 +4671,7 @@ name|OPT_INTEGER
 argument_list|(
 literal|'A'
 argument_list|,
-name|NULL
+literal|"after-context"
 argument_list|,
 operator|&
 name|opt
@@ -4709,7 +4709,7 @@ name|OPT_BOOLEAN
 argument_list|(
 literal|'W'
 argument_list|,
-name|NULL
+literal|"function-context"
 argument_list|,
 operator|&
 name|opt
