@@ -1478,13 +1478,6 @@ argument_list|,
 name|pattern
 argument_list|,
 name|prefix
-condition|?
-name|strlen
-argument_list|(
-name|prefix
-argument_list|)
-else|:
-literal|0
 argument_list|)
 return|;
 block|}
