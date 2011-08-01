@@ -421,7 +421,9 @@ modifier|*
 name|st
 parameter_list|)
 block|{
-return|return
+name|int
+name|r
+init|=
 name|st
 operator|->
 name|vtbl
@@ -430,6 +432,14 @@ name|close
 argument_list|(
 name|st
 argument_list|)
+decl_stmt|;
+name|free
+argument_list|(
+name|st
+argument_list|)
+expr_stmt|;
+return|return
+name|r
 return|;
 block|}
 end_function
