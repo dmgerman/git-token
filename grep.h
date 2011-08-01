@@ -422,6 +422,10 @@ DECL|member|funcname
 name|int
 name|funcname
 decl_stmt|;
+DECL|member|funcbody
+name|int
+name|funcbody
+decl_stmt|;
 DECL|member|color_context
 name|char
 name|color_context
