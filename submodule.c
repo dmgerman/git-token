@@ -2417,6 +2417,14 @@ operator|&
 name|diff_opts
 argument_list|)
 expr_stmt|;
+name|DIFF_OPT_SET
+argument_list|(
+operator|&
+name|diff_opts
+argument_list|,
+name|RECURSIVE
+argument_list|)
+expr_stmt|;
 name|diff_opts
 operator|.
 name|output_format
