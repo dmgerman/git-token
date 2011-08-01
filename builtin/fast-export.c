@@ -158,6 +158,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|use_done_feature
+specifier|static
+name|int
+name|use_done_feature
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|no_data
 specifier|static
 name|int
@@ -3506,6 +3514,18 @@ argument_list|,
 literal|"Output full tree for each commit"
 argument_list|)
 block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|0
+argument_list|,
+literal|"use-done-feature"
+argument_list|,
+operator|&
+name|use_done_feature
+argument_list|,
+literal|"Use the done feature to terminate the stream"
+argument_list|)
+block|,
 block|{
 name|OPTION_NEGBIT
 block|,
@@ -3622,6 +3642,15 @@ argument_list|(
 name|fast_export_usage
 argument_list|,
 name|options
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|use_done_feature
+condition|)
+name|printf
+argument_list|(
+literal|"feature done\n"
 argument_list|)
 expr_stmt|;
 if|if
@@ -3758,6 +3787,15 @@ condition|)
 name|export_marks
 argument_list|(
 name|export_filename
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|use_done_feature
+condition|)
+name|printf
+argument_list|(
+literal|"done\n"
 argument_list|)
 expr_stmt|;
 return|return
