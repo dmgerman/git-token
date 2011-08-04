@@ -662,7 +662,6 @@ operator|<
 literal|0
 condition|)
 block|{
-comment|/* 		 * There is no double dash; treat the first 		 * argument as an attribute. 		 */
 if|if
 condition|(
 operator|!
@@ -673,6 +672,24 @@ argument_list|(
 literal|"No attribute specified"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|stdin_paths
+condition|)
+block|{
+comment|/* Treat all arguments as attribute names. */
+name|cnt
+operator|=
+name|argc
+expr_stmt|;
+name|filei
+operator|=
+name|argc
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|/* Treat exactly one argument as an attribute name. */
 name|cnt
 operator|=
 literal|1
@@ -681,6 +698,7 @@ name|filei
 operator|=
 literal|1
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
