@@ -270,7 +270,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|git_checkattr
+name|git_check_attr
 argument_list|(
 name|file
 argument_list|,
@@ -281,7 +281,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"git_checkattr died"
+literal|"git_check_attr died"
 argument_list|)
 expr_stmt|;
 name|output_attr
