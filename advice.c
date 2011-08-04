@@ -126,6 +126,46 @@ struct|;
 end_struct
 
 begin_function
+DECL|function|advise
+name|void
+name|advise
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|advice
+parameter_list|,
+modifier|...
+parameter_list|)
+block|{
+name|va_list
+name|params
+decl_stmt|;
+name|va_start
+argument_list|(
+name|params
+argument_list|,
+name|advice
+argument_list|)
+expr_stmt|;
+name|vreportf
+argument_list|(
+literal|"hint: "
+argument_list|,
+name|advice
+argument_list|,
+name|params
+argument_list|)
+expr_stmt|;
+name|va_end
+argument_list|(
+name|params
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
 DECL|function|git_default_advice_config
 name|int
 name|git_default_advice_config
@@ -214,6 +254,58 @@ block|}
 end_function
 
 begin_function
+DECL|function|error_resolve_conflict
+name|int
+name|error_resolve_conflict
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|me
+parameter_list|)
+block|{
+name|error
+argument_list|(
+literal|"'%s' is not possible because you have unmerged files."
+argument_list|,
+name|me
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|advice_resolve_conflict
+condition|)
+block|{
+comment|/* 		 * Message used both when 'git commit' fails and when 		 * other commands doing a merge do. 		 */
+name|advise
+argument_list|(
+literal|"Fix them up in the work tree,"
+argument_list|)
+expr_stmt|;
+name|advise
+argument_list|(
+literal|"and then use 'git add/rm<file>' as"
+argument_list|)
+expr_stmt|;
+name|advise
+argument_list|(
+literal|"appropriate to mark resolution and make a commit,"
+argument_list|)
+expr_stmt|;
+name|advise
+argument_list|(
+literal|"or use 'git commit -a'."
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+operator|-
+literal|1
+return|;
+block|}
+end_function
+
+begin_function
 DECL|function|die_resolve_conflict
 name|void
 name|NORETURN
@@ -225,26 +317,14 @@ modifier|*
 name|me
 parameter_list|)
 block|{
-if|if
-condition|(
-name|advice_resolve_conflict
-condition|)
-comment|/* 		 * Message used both when 'git commit' fails and when 		 * other commands doing a merge do. 		 */
-name|die
+name|error_resolve_conflict
 argument_list|(
-literal|"'%s' is not possible because you have unmerged files.\n"
-literal|"Please, fix them up in the work tree, and then use 'git add/rm<file>' as\n"
-literal|"appropriate to mark resolution and make a commit, or use 'git commit -a'."
-argument_list|,
 name|me
 argument_list|)
 expr_stmt|;
-else|else
 name|die
 argument_list|(
-literal|"'%s' is not possible because you have unmerged files."
-argument_list|,
-name|me
+literal|"Exiting because of an unresolved conflict."
 argument_list|)
 expr_stmt|;
 block|}
