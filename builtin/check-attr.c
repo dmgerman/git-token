@@ -608,7 +608,10 @@ comment|/* Check file argument(s): */
 if|if
 condition|(
 name|stdin_paths
-operator|&&
+condition|)
+block|{
+if|if
+condition|(
 name|filei
 operator|<
 name|argc
@@ -618,6 +621,21 @@ argument_list|(
 literal|"Can't specify files with --stdin"
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+if|if
+condition|(
+name|filei
+operator|>=
+name|argc
+condition|)
+name|error_with_usage
+argument_list|(
+literal|"No file specified"
+argument_list|)
+expr_stmt|;
+block|}
 name|check
 operator|=
 name|xcalloc
