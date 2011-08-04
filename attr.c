@@ -2934,11 +2934,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* 	 * At the bottom of the attribute stack is the built-in 	 * set of attribute definitions, followed by the contents 	 * of $(prefix)/etc/gitattributes and a file specified by 	 * core.attributesfile.  Then, contents from 	 * .gitattribute files from directories closer to the 	 * root to the ones in deeper directories are pushed 	 * to the stack.  Finally, at the very top of the stack 	 * we always keep the contents of $GIT_DIR/info/attributes. 	 * 	 * When checking, we use entries from near the top of the 	 * stack, preferring $GIT_DIR/info/attributes, then 	 * .gitattributes in deeper directories to shallower ones, 	 * and finally use the built-in set as the default. 	 */
-if|if
-condition|(
-operator|!
-name|attr_stack
-condition|)
 name|bootstrap_attr_stack
 argument_list|()
 expr_stmt|;
