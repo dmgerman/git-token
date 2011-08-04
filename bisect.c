@@ -166,6 +166,29 @@ block|}
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|argv_update_ref
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|argv_update_ref
+index|[]
+init|=
+block|{
+literal|"update-ref"
+block|,
+literal|"--no-deref"
+block|,
+literal|"BISECT_HEAD"
+block|,
+name|NULL
+block|,
+name|NULL
+block|}
+decl_stmt|;
+end_decl_stmt
+
 begin_comment
 comment|/* bits #0-15 in revision.h */
 end_comment
@@ -3560,6 +3583,9 @@ parameter_list|(
 name|char
 modifier|*
 name|bisect_rev_hex
+parameter_list|,
+name|int
+name|no_checkout
 parameter_list|)
 block|{
 name|int
@@ -3577,6 +3603,37 @@ index|]
 operator|=
 name|bisect_rev_hex
 expr_stmt|;
+if|if
+condition|(
+name|no_checkout
+condition|)
+block|{
+name|argv_update_ref
+index|[
+literal|3
+index|]
+operator|=
+name|bisect_rev_hex
+expr_stmt|;
+if|if
+condition|(
+name|run_command_v_opt
+argument_list|(
+name|argv_update_ref
+argument_list|,
+name|RUN_GIT_CMD
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"update-ref --no-deref HEAD failed on %s"
+argument_list|,
+name|bisect_rev_hex
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|res
 operator|=
 name|run_command_v_opt
@@ -3595,6 +3652,7 @@ argument_list|(
 name|res
 argument_list|)
 expr_stmt|;
+block|}
 name|argv_show_branch
 index|[
 literal|1
@@ -3913,7 +3971,8 @@ specifier|static
 name|void
 name|check_merge_bases
 parameter_list|(
-name|void
+name|int
+name|no_checkout
 parameter_list|)
 block|{
 name|struct
@@ -4048,6 +4107,8 @@ name|sha1_to_hex
 argument_list|(
 name|mb
 argument_list|)
+argument_list|,
+name|no_checkout
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4244,6 +4305,9 @@ specifier|const
 name|char
 modifier|*
 name|prefix
+parameter_list|,
+name|int
+name|no_checkout
 parameter_list|)
 block|{
 specifier|const
@@ -4312,7 +4376,9 @@ name|prefix
 argument_list|)
 condition|)
 name|check_merge_bases
-argument_list|()
+argument_list|(
+name|no_checkout
+argument_list|)
 expr_stmt|;
 comment|/* Create file BISECT_ANCESTORS_OK. */
 name|fd
@@ -4460,7 +4526,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * We use the convention that exiting with an exit code 10 means that  * the bisection process finished successfully.  * In this case the calling shell script should exit 0.  */
+comment|/*  * We use the convention that exiting with an exit code 10 means that  * the bisection process finished successfully.  * In this case the calling shell script should exit 0.  *  * If no_checkout is non-zero, the bisection process does not  * checkout the trial commit but instead simply updates BISECT_HEAD.  */
 end_comment
 
 begin_function
@@ -4472,6 +4538,9 @@ specifier|const
 name|char
 modifier|*
 name|prefix
+parameter_list|,
+name|int
+name|no_checkout
 parameter_list|)
 block|{
 name|struct
@@ -4521,6 +4590,8 @@ expr_stmt|;
 name|check_good_are_ancestors_of_bad
 argument_list|(
 name|prefix
+argument_list|,
+name|no_checkout
 argument_list|)
 expr_stmt|;
 name|bisect_rev_setup
@@ -4754,6 +4825,8 @@ return|return
 name|bisect_checkout
 argument_list|(
 name|bisect_rev_hex
+argument_list|,
+name|no_checkout
 argument_list|)
 return|;
 block|}
