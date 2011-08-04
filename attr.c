@@ -275,6 +275,10 @@ block|{
 comment|/* 	 * Attribute name cannot begin with '-' and must consist of 	 * characters from [-A-Za-z0-9_.]. 	 */
 if|if
 condition|(
+name|namelen
+operator|<=
+literal|0
+operator|||
 operator|*
 name|name
 operator|==
