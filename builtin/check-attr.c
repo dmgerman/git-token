@@ -122,12 +122,6 @@ parameter_list|,
 specifier|const
 name|char
 modifier|*
-modifier|*
-name|name
-parameter_list|,
-specifier|const
-name|char
-modifier|*
 name|file
 parameter_list|)
 block|{
@@ -226,10 +220,15 @@ name|printf
 argument_list|(
 literal|": %s: %s\n"
 argument_list|,
-name|name
+name|git_attr_name
+argument_list|(
+name|check
 index|[
 name|j
 index|]
+operator|.
+name|attr
+argument_list|)
 argument_list|,
 name|value
 argument_list|)
@@ -251,12 +250,6 @@ name|struct
 name|git_attr_check
 modifier|*
 name|check
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-modifier|*
-name|name
 parameter_list|)
 block|{
 name|struct
@@ -359,8 +352,6 @@ argument_list|(
 name|cnt
 argument_list|,
 name|check
-argument_list|,
-name|name
 argument_list|,
 name|buf
 operator|.
@@ -664,8 +655,6 @@ argument_list|(
 name|cnt
 argument_list|,
 name|check
-argument_list|,
-name|argv
 argument_list|)
 expr_stmt|;
 else|else
@@ -688,8 +677,6 @@ argument_list|(
 name|cnt
 argument_list|,
 name|check
-argument_list|,
-name|argv
 argument_list|,
 name|argv
 index|[
