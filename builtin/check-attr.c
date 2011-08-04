@@ -496,18 +496,6 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|!
-name|argc
-condition|)
-name|usage_with_options
-argument_list|(
-name|check_attr_usage
-argument_list|,
-name|check_attr_options
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
 name|read_cache
 argument_list|()
 operator|<
@@ -561,7 +549,21 @@ operator|=
 name|i
 expr_stmt|;
 block|}
-comment|/* If there is no double dash, we handle only one attribute */
+comment|/* Check attribute argument(s): */
+if|if
+condition|(
+name|doubledash
+operator|==
+literal|0
+condition|)
+block|{
+name|error_with_usage
+argument_list|(
+literal|"No attribute specified"
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
 if|if
 condition|(
 name|doubledash
@@ -569,6 +571,17 @@ operator|<
 literal|0
 condition|)
 block|{
+comment|/* 		 * There is no double dash; treat the first 		 * argument as an attribute. 		 */
+if|if
+condition|(
+operator|!
+name|argc
+condition|)
+name|error_with_usage
+argument_list|(
+literal|"No attribute specified"
+argument_list|)
+expr_stmt|;
 name|cnt
 operator|=
 literal|1
@@ -591,17 +604,7 @@ operator|+
 literal|1
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|cnt
-operator|<=
-literal|0
-condition|)
-name|error_with_usage
-argument_list|(
-literal|"No attribute specified"
-argument_list|)
-expr_stmt|;
+comment|/* Check file argument(s): */
 if|if
 condition|(
 name|stdin_paths
