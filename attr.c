@@ -199,6 +199,26 @@ empty_stmt|;
 end_empty_stmt
 
 begin_function
+DECL|function|git_attr_name
+name|char
+modifier|*
+name|git_attr_name
+parameter_list|(
+name|struct
+name|git_attr
+modifier|*
+name|attr
+parameter_list|)
+block|{
+return|return
+name|attr
+operator|->
+name|name
+return|;
+block|}
+end_function
+
+begin_function
 DECL|function|hash_name
 specifier|static
 name|unsigned

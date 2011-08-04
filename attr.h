@@ -123,6 +123,22 @@ block|}
 struct|;
 end_struct
 
+begin_comment
+comment|/*  * Return the name of the attribute represented by the argument.  The  * return value is a pointer to a null-delimited string that is part  * of the internal data structure; it should not be modified or freed.  */
+end_comment
+
+begin_function_decl
+name|char
+modifier|*
+name|git_attr_name
+parameter_list|(
+name|struct
+name|git_attr
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function_decl
 name|int
 name|git_checkattr
