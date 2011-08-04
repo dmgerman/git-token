@@ -272,7 +272,7 @@ name|int
 name|namelen
 parameter_list|)
 block|{
-comment|/* 	 * Attribute name cannot begin with '-' and from 	 * [-A-Za-z0-9_.].  We'd specifically exclude '=' for now, 	 * as we might later want to allow non-binary value for 	 * attributes, e.g. "*.svg	merge=special-merge-program-for-svg" 	 */
+comment|/* 	 * Attribute name cannot begin with '-' and must consist of 	 * characters from [-A-Za-z0-9_.]. 	 */
 if|if
 condition|(
 operator|*
