@@ -3767,9 +3767,6 @@ name|pathlen
 decl_stmt|,
 name|rem
 decl_stmt|;
-name|bootstrap_attr_stack
-argument_list|()
-expr_stmt|;
 name|prepare_attr_stack
 argument_list|(
 name|path
