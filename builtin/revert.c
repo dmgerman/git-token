@@ -131,7 +131,7 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|edit
-DECL|variable|no_replay
+DECL|variable|record_origin
 DECL|variable|no_commit
 DECL|variable|mainline
 DECL|variable|signoff
@@ -140,7 +140,7 @@ specifier|static
 name|int
 name|edit
 decl_stmt|,
-name|no_replay
+name|record_origin
 decl_stmt|,
 name|no_commit
 decl_stmt|,
@@ -525,7 +525,7 @@ argument_list|,
 name|NULL
 argument_list|,
 operator|&
-name|no_replay
+name|record_origin
 argument_list|,
 literal|"append commit name"
 argument_list|)
@@ -2511,7 +2511,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|no_replay
+name|record_origin
 condition|)
 block|{
 name|strbuf_addstr
@@ -3041,7 +3041,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|no_replay
+name|record_origin
 condition|)
 name|die
 argument_list|(
