@@ -477,13 +477,6 @@ name|doubledash
 decl_stmt|,
 name|filei
 decl_stmt|;
-specifier|const
-name|char
-modifier|*
-name|errstr
-init|=
-name|NULL
-decl_stmt|;
 name|argc
 operator|=
 name|parse_options
@@ -604,11 +597,11 @@ name|cnt
 operator|<=
 literal|0
 condition|)
-name|errstr
-operator|=
+name|error_with_usage
+argument_list|(
 literal|"No attribute specified"
+argument_list|)
 expr_stmt|;
-elseif|else
 if|if
 condition|(
 name|stdin_paths
@@ -617,21 +610,11 @@ name|filei
 operator|<
 name|argc
 condition|)
-name|errstr
-operator|=
-literal|"Can't specify files with --stdin"
-expr_stmt|;
-if|if
-condition|(
-name|errstr
-condition|)
-block|{
 name|error_with_usage
 argument_list|(
-name|errstr
+literal|"Can't specify files with --stdin"
 argument_list|)
 expr_stmt|;
-block|}
 name|check
 operator|=
 name|xcalloc
