@@ -265,47 +265,6 @@ value|"GIT_REFLOG_ACTION"
 end_define
 
 begin_function
-DECL|function|fatal
-specifier|static
-name|void
-name|fatal
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|advice
-parameter_list|,
-modifier|...
-parameter_list|)
-block|{
-name|va_list
-name|params
-decl_stmt|;
-name|va_start
-argument_list|(
-name|params
-argument_list|,
-name|advice
-argument_list|)
-expr_stmt|;
-name|vreportf
-argument_list|(
-literal|"fatal: "
-argument_list|,
-name|advice
-argument_list|,
-name|params
-argument_list|)
-expr_stmt|;
-name|va_end
-argument_list|(
-name|params
-argument_list|)
-expr_stmt|;
-block|}
-end_function
-
-begin_function
 DECL|function|action_name
 specifier|static
 specifier|const
@@ -1953,11 +1912,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|die_dirty_index
+DECL|function|error_dirty_index
 specifier|static
-name|NORETURN
-name|void
-name|die_dirty_index
+name|int
+name|error_dirty_index
 parameter_list|(
 name|struct
 name|replay_opts
@@ -1970,80 +1928,57 @@ condition|(
 name|read_cache_unmerged
 argument_list|()
 condition|)
-block|{
-name|die_resolve_conflict
+return|return
+name|error_resolve_conflict
 argument_list|(
 name|action_name
 argument_list|(
 name|opts
 argument_list|)
 argument_list|)
+return|;
+comment|/* Different translation strings for cherry-pick and revert */
+if|if
+condition|(
+name|opts
+operator|->
+name|action
+operator|==
+name|CHERRY_PICK
+condition|)
+name|error
+argument_list|(
+name|_
+argument_list|(
+literal|"Your local changes would be overwritten by cherry-pick."
+argument_list|)
+argument_list|)
 expr_stmt|;
-block|}
 else|else
-block|{
+name|error
+argument_list|(
+name|_
+argument_list|(
+literal|"Your local changes would be overwritten by revert."
+argument_list|)
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|advice_commit_before_merge
 condition|)
-block|{
-if|if
-condition|(
-name|opts
-operator|->
-name|action
-operator|==
-name|REVERT
-condition|)
-name|die
+name|advise
 argument_list|(
 name|_
 argument_list|(
-literal|"Your local changes would be overwritten by revert.\n"
-literal|"Please, commit your changes or stash them to proceed."
+literal|"Commit your changes or stash them to proceed."
 argument_list|)
 argument_list|)
 expr_stmt|;
-else|else
-name|die
-argument_list|(
-name|_
-argument_list|(
-literal|"Your local changes would be overwritten by cherry-pick.\n"
-literal|"Please, commit your changes or stash them to proceed."
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-if|if
-condition|(
-name|opts
-operator|->
-name|action
-operator|==
-name|REVERT
-condition|)
-name|die
-argument_list|(
-name|_
-argument_list|(
-literal|"Your local changes would be overwritten by revert.\n"
-argument_list|)
-argument_list|)
-expr_stmt|;
-else|else
-name|die
-argument_list|(
-name|_
-argument_list|(
-literal|"Your local changes would be overwritten by cherry-pick.\n"
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-block|}
+return|return
+operator|-
+literal|1
+return|;
 block|}
 end_function
 
@@ -2676,14 +2611,15 @@ argument_list|,
 name|head
 argument_list|)
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
 literal|"You do not have a valid HEAD"
 argument_list|)
 argument_list|)
-expr_stmt|;
+return|;
 if|if
 condition|(
 name|index_differs_from
@@ -2693,11 +2629,12 @@ argument_list|,
 literal|0
 argument_list|)
 condition|)
-name|die_dirty_index
+return|return
+name|error_dirty_index
 argument_list|(
 name|opts
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 name|discard_cache
 argument_list|()
@@ -2741,7 +2678,8 @@ name|opts
 operator|->
 name|mainline
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -2757,7 +2695,7 @@ operator|.
 name|sha1
 argument_list|)
 argument_list|)
-expr_stmt|;
+return|;
 for|for
 control|(
 name|cnt
@@ -2798,7 +2736,8 @@ operator|||
 operator|!
 name|p
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -2818,7 +2757,7 @@ name|opts
 operator|->
 name|mainline
 argument_list|)
-expr_stmt|;
+return|;
 name|parent
 operator|=
 name|p
@@ -2835,7 +2774,8 @@ name|opts
 operator|->
 name|mainline
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -2851,7 +2791,7 @@ operator|.
 name|sha1
 argument_list|)
 argument_list|)
-expr_stmt|;
+return|;
 else|else
 name|parent
 operator|=
@@ -2905,7 +2845,8 @@ operator|<
 literal|0
 condition|)
 comment|/* TRANSLATORS: The first %s will be "revert" or 		   "cherry-pick", the second %s a SHA1 */
-name|die
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -2926,7 +2867,7 @@ operator|.
 name|sha1
 argument_list|)
 argument_list|)
-expr_stmt|;
+return|;
 if|if
 condition|(
 name|get_message
@@ -2939,7 +2880,8 @@ argument_list|)
 operator|!=
 literal|0
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -2955,7 +2897,7 @@ operator|.
 name|sha1
 argument_list|)
 argument_list|)
-expr_stmt|;
+return|;
 comment|/* 	 * "commit" is an existing commit.  We would want to apply 	 * the difference it introduces since its first parent "prev" 	 * on top of the current HEAD if we are cherry-pick.  Or the 	 * reverse of it if we are revert. 	 */
 name|defmsg
 operator|=
@@ -5532,7 +5474,7 @@ operator|<
 literal|0
 condition|)
 block|{
-name|fatal
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -5556,11 +5498,10 @@ literal|"or --reset to forget about it"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|exit
-argument_list|(
-literal|128
-argument_list|)
-expr_stmt|;
+return|return
+operator|-
+literal|1
+return|;
 block|}
 if|if
 condition|(
@@ -5580,22 +5521,24 @@ name|action
 operator|==
 name|REVERT
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
 literal|"Can't revert as initial commit"
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|die
+return|;
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
 literal|"Can't cherry-pick into empty head"
 argument_list|)
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 name|save_head
 argument_list|(
@@ -5621,7 +5564,8 @@ argument_list|)
 return|;
 name|error
 label|:
-name|die
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -5633,7 +5577,7 @@ argument_list|(
 name|opts
 argument_list|)
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 end_function
 
@@ -5660,6 +5604,9 @@ block|{
 name|struct
 name|replay_opts
 name|opts
+decl_stmt|;
+name|int
+name|res
 decl_stmt|;
 name|memset
 argument_list|(
@@ -5710,12 +5657,30 @@ operator|&
 name|opts
 argument_list|)
 expr_stmt|;
-return|return
+name|res
+operator|=
 name|pick_revisions
 argument_list|(
 operator|&
 name|opts
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|res
+operator|<
+literal|0
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"revert failed"
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return
+name|res
 return|;
 block|}
 end_function
@@ -5743,6 +5708,9 @@ block|{
 name|struct
 name|replay_opts
 name|opts
+decl_stmt|;
+name|int
+name|res
 decl_stmt|;
 name|memset
 argument_list|(
@@ -5780,12 +5748,30 @@ operator|&
 name|opts
 argument_list|)
 expr_stmt|;
-return|return
+name|res
+operator|=
 name|pick_revisions
 argument_list|(
 operator|&
 name|opts
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|res
+operator|<
+literal|0
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"cherry-pick failed"
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return
+name|res
 return|;
 block|}
 end_function
