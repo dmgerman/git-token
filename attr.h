@@ -157,6 +157,32 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Retrieve all attributes that apply to the specified path.  *num  * will be set the the number of attributes on the path; **check will  * be set to point at a newly-allocated array of git_attr_check  * objects describing the attributes and their values.  *check must be  * free()ed by the caller.  */
+end_comment
+
+begin_function_decl
+name|int
+name|git_all_attrs
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|,
+name|int
+modifier|*
+name|num
+parameter_list|,
+name|struct
+name|git_attr_check
+modifier|*
+modifier|*
+name|check
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_enum
 DECL|enum|git_attr_direction
 enum|enum
