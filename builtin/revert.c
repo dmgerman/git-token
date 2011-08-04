@@ -262,6 +262,47 @@ value|"GIT_REFLOG_ACTION"
 end_define
 
 begin_function
+DECL|function|fatal
+specifier|static
+name|void
+name|fatal
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|advice
+parameter_list|,
+modifier|...
+parameter_list|)
+block|{
+name|va_list
+name|params
+decl_stmt|;
+name|va_start
+argument_list|(
+name|params
+argument_list|,
+name|advice
+argument_list|)
+expr_stmt|;
+name|vreportf
+argument_list|(
+literal|"fatal: "
+argument_list|,
+name|advice
+argument_list|,
+name|params
+argument_list|)
+expr_stmt|;
+name|va_end
+argument_list|(
+name|params
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
 DECL|function|action_name
 specifier|static
 specifier|const
@@ -3686,7 +3727,7 @@ end_function
 begin_function
 DECL|function|create_seq_dir
 specifier|static
-name|void
+name|int
 name|create_seq_dir
 parameter_list|(
 name|void
@@ -3704,19 +3745,25 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
-operator|(
 name|file_exists
 argument_list|(
 name|seq_dir
 argument_list|)
-operator|&&
-name|is_directory
+condition|)
+return|return
+name|error
 argument_list|(
+name|_
+argument_list|(
+literal|"%s already exists."
+argument_list|)
+argument_list|,
 name|seq_dir
 argument_list|)
-operator|)
-operator|&&
+return|;
+elseif|else
+if|if
+condition|(
 name|mkdir
 argument_list|(
 name|seq_dir
@@ -3736,6 +3783,9 @@ argument_list|,
 name|seq_dir
 argument_list|)
 expr_stmt|;
+return|return
+literal|0
+return|;
 block|}
 end_function
 
@@ -4390,7 +4440,7 @@ return|;
 block|}
 else|else
 block|{
-comment|/* Start a new cherry-pick/ revert sequence */
+comment|/* 		 * Start a new cherry-pick/ revert sequence; but 		 * first, make sure that an existing one isn't in 		 * progress 		 */
 name|walk_revs_populate_todo
 argument_list|(
 operator|&
@@ -4399,9 +4449,36 @@ argument_list|,
 name|opts
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|create_seq_dir
 argument_list|()
+operator|<
+literal|0
+condition|)
+block|{
+name|fatal
+argument_list|(
+name|_
+argument_list|(
+literal|"A cherry-pick or revert is in progress."
+argument_list|)
+argument_list|)
 expr_stmt|;
+name|advise
+argument_list|(
+name|_
+argument_list|(
+literal|"Use --reset to forget about it"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|exit
+argument_list|(
+literal|128
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|get_sha1
