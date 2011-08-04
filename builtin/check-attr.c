@@ -247,6 +247,11 @@ specifier|static
 name|void
 name|check_attr
 parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|prefix
+parameter_list|,
 name|int
 name|cnt
 parameter_list|,
@@ -261,6 +266,26 @@ modifier|*
 name|file
 parameter_list|)
 block|{
+name|char
+modifier|*
+name|full_path
+init|=
+name|prefix_path
+argument_list|(
+name|prefix
+argument_list|,
+name|prefix
+condition|?
+name|strlen
+argument_list|(
+name|prefix
+argument_list|)
+else|:
+literal|0
+argument_list|,
+name|file
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|check
@@ -272,7 +297,7 @@ if|if
 condition|(
 name|git_check_attr
 argument_list|(
-name|file
+name|full_path
 argument_list|,
 name|cnt
 argument_list|,
@@ -300,7 +325,7 @@ if|if
 condition|(
 name|git_all_attrs
 argument_list|(
-name|file
+name|full_path
 argument_list|,
 operator|&
 name|cnt
@@ -329,6 +354,11 @@ name|check
 argument_list|)
 expr_stmt|;
 block|}
+name|free
+argument_list|(
+name|full_path
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
@@ -338,6 +368,11 @@ specifier|static
 name|void
 name|check_attr_stdin_paths
 parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|prefix
+parameter_list|,
 name|int
 name|cnt
 parameter_list|,
@@ -444,6 +479,8 @@ expr_stmt|;
 block|}
 name|check_attr
 argument_list|(
+name|prefix
+argument_list|,
 name|cnt
 argument_list|,
 name|check
@@ -838,6 +875,8 @@ name|stdin_paths
 condition|)
 name|check_attr_stdin_paths
 argument_list|(
+name|prefix
+argument_list|,
 name|cnt
 argument_list|,
 name|check
@@ -860,6 +899,8 @@ operator|++
 control|)
 name|check_attr
 argument_list|(
+name|prefix
+argument_list|,
 name|cnt
 argument_list|,
 name|check
