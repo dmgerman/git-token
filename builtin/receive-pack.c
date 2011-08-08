@@ -3583,7 +3583,7 @@ name|char
 modifier|*
 name|unpacker
 index|[
-literal|4
+literal|5
 index|]
 decl_stmt|;
 name|unpacker
