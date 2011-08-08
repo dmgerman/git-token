@@ -943,6 +943,9 @@ argument_list|(
 literal|"not a tree object"
 argument_list|)
 expr_stmt|;
+return|return
+operator|!
+operator|!
 name|read_tree_recursive
 argument_list|(
 name|tree
@@ -960,9 +963,6 @@ name|show_tree
 argument_list|,
 name|NULL
 argument_list|)
-expr_stmt|;
-return|return
-literal|0
 return|;
 block|}
 end_function
