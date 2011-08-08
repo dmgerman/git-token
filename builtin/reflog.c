@@ -4366,12 +4366,16 @@ argument_list|,
 name|prefix
 argument_list|)
 return|;
-comment|/* Not a recognized reflog command..*/
-name|usage
+return|return
+name|cmd_log_reflog
 argument_list|(
-name|reflog_usage
+name|argc
+argument_list|,
+name|argv
+argument_list|,
+name|prefix
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 end_function
 
