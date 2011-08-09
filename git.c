@@ -1811,8 +1811,6 @@ block|,
 name|cmd_bisect__helper
 block|,
 name|RUN_SETUP
-operator||
-name|NEED_WORK_TREE
 block|}
 block|,
 block|{
