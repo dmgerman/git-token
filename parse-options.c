@@ -82,7 +82,6 @@ end_define
 
 begin_function
 DECL|function|optbug
-specifier|static
 name|int
 name|optbug
 parameter_list|(
@@ -133,7 +132,6 @@ end_function
 
 begin_function
 DECL|function|opterror
-specifier|static
 name|int
 name|opterror
 parameter_list|(
