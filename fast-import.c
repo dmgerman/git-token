@@ -11051,6 +11051,17 @@ name|char
 modifier|*
 name|ident
 decl_stmt|;
+comment|/* ensure there is a space delimiter even if there is no name */
+if|if
+condition|(
+operator|*
+name|buf
+operator|==
+literal|'<'
+condition|)
+operator|--
+name|buf
+expr_stmt|;
 name|gt
 operator|=
 name|strrchr
