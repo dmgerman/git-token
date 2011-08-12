@@ -5860,6 +5860,10 @@ else|:
 name|renamed
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|renamed
+condition|)
 name|update_file
 argument_list|(
 name|o
@@ -5871,12 +5875,9 @@ argument_list|,
 name|a_mode
 argument_list|,
 name|renamed
-condition|?
-name|renamed
-else|:
-name|path
 argument_list|)
 expr_stmt|;
+comment|/* 		 * No need to call update_file() on path when !renamed, since 		 * that would needlessly touch path.  We could call 		 * update_file_flags() with update_cache=0 and update_wd=0, 		 * but that's a no-op. 		 */
 block|}
 name|free
 argument_list|(
@@ -7970,12 +7971,10 @@ name|sha1
 argument_list|)
 condition|)
 block|{
-comment|/* Added file on the other side 				   identical to the file being 				   renamed: clean merge */
-name|update_file
+comment|/* 				 * Added file on the other side identical to 				 * the file being renamed: clean merge. 				 * Also, there is no need to overwrite the 				 * file already in the working copy, so call 				 * update_file_flags() instead of 				 * update_file(). 				 */
+name|update_file_flags
 argument_list|(
 name|o
-argument_list|,
-literal|1
 argument_list|,
 name|ren1
 operator|->
@@ -7994,6 +7993,12 @@ operator|->
 name|mode
 argument_list|,
 name|ren1_dst
+argument_list|,
+literal|1
+argument_list|,
+comment|/* update_cache */
+literal|0
+comment|/* update_wd    */
 argument_list|)
 expr_stmt|;
 block|}
@@ -9902,17 +9907,21 @@ argument_list|,
 name|path
 argument_list|)
 expr_stmt|;
-name|update_file
+comment|/* do not overwrite file if already present */
+name|update_file_flags
 argument_list|(
 name|o
-argument_list|,
-literal|1
 argument_list|,
 name|sha
 argument_list|,
 name|mode
 argument_list|,
 name|path
+argument_list|,
+literal|1
+argument_list|,
+operator|!
+name|a_sha
 argument_list|)
 expr_stmt|;
 block|}
