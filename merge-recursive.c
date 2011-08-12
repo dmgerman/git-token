@@ -6324,6 +6324,7 @@ name|processed
 operator|=
 literal|1
 expr_stmt|;
+comment|/* BUG: We should only mark src_entry as processed if we 		 * are not dealing with a rename + add-source case. 		 */
 name|ren1
 operator|->
 name|src_entry
@@ -6467,6 +6468,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
+comment|/* BUG: We should only remove ren1_src in 				 * the base stage (think of rename + 				 * add-source cases). 				 */
 name|remove_file
 argument_list|(
 name|o
@@ -6554,6 +6556,7 @@ literal|3
 else|:
 literal|2
 decl_stmt|;
+comment|/* BUG: We should only remove ren1_src in the base 			 * stage and in other_stage (think of rename + 			 * add-source case). 			 */
 name|remove_file
 argument_list|(
 name|o
