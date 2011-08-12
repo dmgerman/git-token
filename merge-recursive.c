@@ -1977,6 +1977,14 @@ decl_stmt|;
 name|int
 name|i
 decl_stmt|;
+comment|/* 	 * If we're merging merge-bases, we don't want to bother with 	 * any working directory changes. 	 */
+if|if
+condition|(
+name|o
+operator|->
+name|call_depth
+condition|)
+return|return;
 for|for
 control|(
 name|i
