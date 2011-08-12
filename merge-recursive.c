@@ -8714,6 +8714,17 @@ argument_list|,
 name|new_path
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|o
+operator|->
+name|call_depth
+condition|)
+name|remove_file_from_cache
+argument_list|(
+name|path
+argument_list|)
+expr_stmt|;
 name|free
 argument_list|(
 name|new_path
