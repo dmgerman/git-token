@@ -122,6 +122,11 @@ name|struct
 name|string_list
 name|current_directory_set
 decl_stmt|;
+DECL|member|df_conflict_file_set
+name|struct
+name|string_list
+name|df_conflict_file_set
+decl_stmt|;
 block|}
 struct|;
 end_struct
