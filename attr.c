@@ -619,6 +619,10 @@ block|}
 struct|;
 end_struct
 
+begin_comment
+comment|/*  * One rule, as from a .gitattributes file.  *  * If is_macro is true, then u.attr is a pointer to the git_attr being  * defined.  *  * If is_macro is false, then u.pattern points at the filename pattern  * to which the rule applies.  (The memory pointed to is part of the  * memory block allocated for the match_attr instance.)  *  * In either case, num_attr is the number of attributes affected by  * this rule, and state is an array listing them.  The attributes are  * listed as they appear in the file (macros unexpanded).  */
+end_comment
+
 begin_struct
 DECL|struct|match_attr
 struct|struct
