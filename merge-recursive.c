@@ -8595,7 +8595,7 @@ operator|!
 name|b_sha
 condition|)
 block|{
-comment|/* directory -> (directory, file) */
+comment|/* directory -> (directory, file) or<nothing> -> (directory, file) */
 specifier|const
 name|char
 modifier|*
