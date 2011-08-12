@@ -1,4 +1,8 @@
 begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
+begin_comment
+comment|/*  * Handle git attributes.  See gitattributes(5) for a description of  * the file syntax, and Documentation/technical/api-gitattributes.txt  * for a description of the API.  *  * One basic design decision here is that we are not going to support  * an insanely large number of attributes.  */
+end_comment
+
 begin_define
 DECL|macro|NO_THE_INDEX_COMPATIBILITY_MACROS
 define|#
@@ -101,7 +105,7 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
-comment|/*  * The basic design decision here is that we are not going to have  * insanely large number of attributes.  *  * This is a randomly chosen prime.  */
+comment|/* This is a randomly chosen prime. */
 end_comment
 
 begin_define
@@ -589,10 +593,6 @@ argument_list|)
 return|;
 block|}
 end_function
-
-begin_comment
-comment|/*  * .gitattributes file is one line per record, each of which is  *  * (1) glob pattern.  * (2) whitespace  * (3) whitespace separated list of attribute names, each of which  *     could be prefixed with '-' to mean "set to false", '!' to mean  *     "unset".  */
-end_comment
 
 begin_comment
 comment|/* What does a matched pattern decide? */
