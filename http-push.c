@@ -2026,7 +2026,7 @@ decl_stmt|;
 name|ssize_t
 name|size
 decl_stmt|;
-name|z_stream
+name|git_zstream
 name|stream
 decl_stmt|;
 name|unpacked
@@ -2078,7 +2078,7 @@ name|stream
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|deflateInit
+name|git_deflate_init
 argument_list|(
 operator|&
 name|stream
@@ -2088,7 +2088,7 @@ argument_list|)
 expr_stmt|;
 name|size
 operator|=
-name|deflateBound
+name|git_deflate_bound
 argument_list|(
 operator|&
 name|stream
@@ -2161,7 +2161,7 @@ name|hdrlen
 expr_stmt|;
 while|while
 condition|(
-name|deflate
+name|git_deflate
 argument_list|(
 operator|&
 name|stream
@@ -2171,8 +2171,8 @@ argument_list|)
 operator|==
 name|Z_OK
 condition|)
-comment|/* nothing */
 empty_stmt|;
+comment|/* nothing */
 comment|/* Then the data itself.. */
 name|stream
 operator|.
@@ -2188,7 +2188,7 @@ name|len
 expr_stmt|;
 while|while
 condition|(
-name|deflate
+name|git_deflate
 argument_list|(
 operator|&
 name|stream
@@ -2198,9 +2198,9 @@ argument_list|)
 operator|==
 name|Z_OK
 condition|)
-comment|/* nothing */
 empty_stmt|;
-name|deflateEnd
+comment|/* nothing */
+name|git_deflate_end
 argument_list|(
 operator|&
 name|stream
