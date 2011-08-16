@@ -81,6 +81,12 @@ directive|include
 file|"parse-options.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"quote.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|fast_export_usage
 specifier|static
@@ -998,6 +1004,58 @@ block|}
 end_function
 
 begin_function
+DECL|function|print_path
+specifier|static
+name|void
+name|print_path
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|)
+block|{
+name|int
+name|need_quote
+init|=
+name|quote_c_style
+argument_list|(
+name|path
+argument_list|,
+name|NULL
+argument_list|,
+name|NULL
+argument_list|,
+literal|0
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|need_quote
+condition|)
+name|quote_c_style
+argument_list|(
+name|path
+argument_list|,
+name|NULL
+argument_list|,
+name|stdout
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+else|else
+name|printf
+argument_list|(
+literal|"%s"
+argument_list|,
+name|path
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
 DECL|function|show_filemodify
 specifier|static
 name|void
@@ -1106,11 +1164,19 @@ name|DIFF_STATUS_DELETED
 case|:
 name|printf
 argument_list|(
-literal|"D %s\n"
-argument_list|,
+literal|"D "
+argument_list|)
+expr_stmt|;
+name|print_path
+argument_list|(
 name|spec
 operator|->
 name|path
+argument_list|)
+expr_stmt|;
+name|putchar
+argument_list|(
+literal|'\n'
 argument_list|)
 expr_stmt|;
 break|break;
@@ -1122,7 +1188,7 @@ name|DIFF_STATUS_RENAMED
 case|:
 name|printf
 argument_list|(
-literal|"%c \"%s\" \"%s\"\n"
+literal|"%c "
 argument_list|,
 name|q
 operator|->
@@ -1132,14 +1198,30 @@ name|i
 index|]
 operator|->
 name|status
-argument_list|,
+argument_list|)
+expr_stmt|;
+name|print_path
+argument_list|(
 name|ospec
 operator|->
 name|path
-argument_list|,
+argument_list|)
+expr_stmt|;
+name|putchar
+argument_list|(
+literal|' '
+argument_list|)
+expr_stmt|;
+name|print_path
+argument_list|(
 name|spec
 operator|->
 name|path
+argument_list|)
+expr_stmt|;
+name|putchar
+argument_list|(
+literal|'\n'
 argument_list|)
 expr_stmt|;
 if|if
@@ -1189,7 +1271,7 @@ argument_list|)
 condition|)
 name|printf
 argument_list|(
-literal|"M %06o %s %s\n"
+literal|"M %06o %s "
 argument_list|,
 name|spec
 operator|->
@@ -1201,10 +1283,6 @@ name|spec
 operator|->
 name|sha1
 argument_list|)
-argument_list|,
-name|spec
-operator|->
-name|path
 argument_list|)
 expr_stmt|;
 else|else
@@ -1223,7 +1301,7 @@ argument_list|)
 decl_stmt|;
 name|printf
 argument_list|(
-literal|"M %06o :%d %s\n"
+literal|"M %06o :%d "
 argument_list|,
 name|spec
 operator|->
@@ -1233,13 +1311,21 @@ name|get_object_mark
 argument_list|(
 name|object
 argument_list|)
-argument_list|,
+argument_list|)
+expr_stmt|;
+block|}
+name|print_path
+argument_list|(
 name|spec
 operator|->
 name|path
 argument_list|)
 expr_stmt|;
-block|}
+name|putchar
+argument_list|(
+literal|'\n'
+argument_list|)
+expr_stmt|;
 break|break;
 default|default:
 name|die
