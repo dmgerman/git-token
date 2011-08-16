@@ -543,6 +543,16 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
+name|cwd_stat
+operator|.
+name|st_dev
+operator|||
+name|cwd_stat
+operator|.
+name|st_ino
+operator|)
+operator|&&
 operator|!
 name|stat
 argument_list|(
