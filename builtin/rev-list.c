@@ -833,7 +833,7 @@ name|obj
 argument_list|,
 name|path
 argument_list|,
-name|name
+name|component
 argument_list|)
 expr_stmt|;
 if|if
