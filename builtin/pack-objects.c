@@ -4134,7 +4134,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|git_checkattr
+name|git_check_attr
 argument_list|(
 name|path
 argument_list|,
