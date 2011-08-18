@@ -58,6 +58,11 @@ define|#
 directive|define
 name|XDF_PATIENCE_DIFF
 value|(1<< 5)
+DECL|macro|XDF_HISTOGRAM_DIFF
+define|#
+directive|define
+name|XDF_HISTOGRAM_DIFF
+value|(1<< 6)
 DECL|macro|XDF_WHITESPACE_FLAGS
 define|#
 directive|define
@@ -350,19 +355,6 @@ value|realloc(ptr,x)
 name|void
 modifier|*
 name|xdl_mmfile_first
-parameter_list|(
-name|mmfile_t
-modifier|*
-name|mmf
-parameter_list|,
-name|long
-modifier|*
-name|size
-parameter_list|)
-function_decl|;
-name|void
-modifier|*
-name|xdl_mmfile_next
 parameter_list|(
 name|mmfile_t
 modifier|*
