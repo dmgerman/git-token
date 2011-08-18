@@ -256,6 +256,17 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
+comment|/*  * Generally the color code will lazily figure this out itself, but  * this provides a mechanism for callers to override autodetection.  */
+end_comment
+
+begin_decl_stmt
+specifier|extern
+name|int
+name|color_stdout_is_tty
+decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|/*  * Use this instead of git_default_config if you need the value of color.ui.  */
 end_comment
 
@@ -293,9 +304,6 @@ specifier|const
 name|char
 modifier|*
 name|value
-parameter_list|,
-name|int
-name|stdout_is_tty
 parameter_list|)
 function_decl|;
 end_function_decl

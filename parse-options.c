@@ -3880,9 +3880,6 @@ argument_list|(
 name|NULL
 argument_list|,
 name|arg
-argument_list|,
-operator|-
-literal|1
 argument_list|)
 expr_stmt|;
 if|if

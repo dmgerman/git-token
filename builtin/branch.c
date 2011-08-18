@@ -368,9 +368,6 @@ argument_list|(
 name|var
 argument_list|,
 name|value
-argument_list|,
-operator|-
-literal|1
 argument_list|)
 expr_stmt|;
 return|return

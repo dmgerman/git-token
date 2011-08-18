@@ -6097,9 +6097,6 @@ argument_list|(
 name|k
 argument_list|,
 name|v
-argument_list|,
-operator|-
-literal|1
 argument_list|)
 expr_stmt|;
 return|return
