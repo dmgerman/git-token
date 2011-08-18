@@ -303,8 +303,29 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
-comment|/*  * Use this instead of git_default_config if you need the value of color.ui.  */
+comment|/*  * Use the first one if you need only color config; the second is a convenience  * if you are just going to change to git_default_config, too.  */
 end_comment
+
+begin_function_decl
+name|int
+name|git_color_config
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|var
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|value
+parameter_list|,
+name|void
+modifier|*
+name|cb
+parameter_list|)
+function_decl|;
+end_function_decl
 
 begin_function_decl
 name|int
