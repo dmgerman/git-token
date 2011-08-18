@@ -471,7 +471,7 @@ name|prefixcmp
 argument_list|(
 name|refname
 argument_list|,
-literal|"refs/heads"
+literal|"refs/heads/"
 argument_list|)
 condition|)
 name|type
@@ -486,7 +486,7 @@ name|prefixcmp
 argument_list|(
 name|refname
 argument_list|,
-literal|"refs/remotes"
+literal|"refs/remotes/"
 argument_list|)
 condition|)
 name|type
@@ -501,7 +501,7 @@ name|prefixcmp
 argument_list|(
 name|refname
 argument_list|,
-literal|"refs/tags"
+literal|"refs/tags/"
 argument_list|)
 condition|)
 name|type
