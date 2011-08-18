@@ -150,6 +150,8 @@ block|{
 if|if
 condition|(
 name|decorate_use_color
+operator|>
+literal|0
 condition|)
 return|return
 name|decoration_colors
@@ -331,7 +333,7 @@ parameter_list|,
 name|ix
 parameter_list|)
 define|\
-value|decorate_get_color(DIFF_OPT_TST((o), COLOR_DIFF), ix)
+value|decorate_get_color((o)->use_color, ix)
 end_define
 
 begin_function
