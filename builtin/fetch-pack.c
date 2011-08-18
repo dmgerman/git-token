@@ -2116,6 +2116,21 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
+name|commit
+condition|)
+name|die
+argument_list|(
+literal|"invalid commit %s"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|result_sha1
+argument_list|)
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|args
 operator|.
 name|stateless_rpc
