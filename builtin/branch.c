@@ -3854,17 +3854,6 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|branch_use_color
-operator|==
-operator|-
-literal|1
-condition|)
-name|branch_use_color
-operator|=
-name|git_use_color_default
-expr_stmt|;
 name|track
 operator|=
 name|git_branch_track

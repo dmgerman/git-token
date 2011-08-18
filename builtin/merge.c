@@ -6493,18 +6493,6 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
-comment|/* for color.ui */
-if|if
-condition|(
-name|diff_use_color_default
-operator|==
-operator|-
-literal|1
-condition|)
-name|diff_use_color_default
-operator|=
-name|git_use_color_default
-expr_stmt|;
 if|if
 condition|(
 name|branch_mergeoptions

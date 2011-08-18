@@ -13,6 +13,7 @@ end_include
 
 begin_decl_stmt
 DECL|variable|git_use_color_default
+specifier|static
 name|int
 name|git_use_color_default
 init|=
@@ -1008,6 +1009,16 @@ decl_stmt|;
 if|if
 condition|(
 name|var
+operator|<
+literal|0
+condition|)
+name|var
+operator|=
+name|git_use_color_default
+expr_stmt|;
+if|if
+condition|(
+name|var
 operator|==
 name|GIT_COLOR_AUTO
 condition|)
@@ -1029,8 +1040,6 @@ return|;
 block|}
 return|return
 name|var
-operator|>
-literal|0
 return|;
 block|}
 end_function

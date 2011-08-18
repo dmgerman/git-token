@@ -5073,21 +5073,6 @@ operator|&
 name|opt
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|opt
-operator|.
-name|color
-operator|==
-operator|-
-literal|1
-condition|)
-name|opt
-operator|.
-name|color
-operator|=
-name|git_use_color_default
-expr_stmt|;
 comment|/* 	 * If there is no -- then the paths must exist in the working 	 * tree.  If there is no explicit pattern specified with -e or 	 * -f, we take the first unrecognized non option to be the 	 * pattern, but then what follows it must be zero or more 	 * valid refs up to the -- (if exists), and then existing 	 * paths.  If there is an explicit pattern, then the first 	 * unrecognized non option is the beginning of the refs list 	 * that continues up to the -- (if exists), and then paths. 	 */
 name|argc
 operator|=
