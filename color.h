@@ -223,6 +223,42 @@ value|"NIL"
 end_define
 
 begin_comment
+comment|/*  * The first three are chosen to match common usage in the code, and what is  * returned from git_config_colorbool. The "auto" value can be returned from  * config_colorbool, and will be converted by want_color() into either 0 or 1.  */
+end_comment
+
+begin_define
+DECL|macro|GIT_COLOR_UNKNOWN
+define|#
+directive|define
+name|GIT_COLOR_UNKNOWN
+value|-1
+end_define
+
+begin_define
+DECL|macro|GIT_COLOR_NEVER
+define|#
+directive|define
+name|GIT_COLOR_NEVER
+value|0
+end_define
+
+begin_define
+DECL|macro|GIT_COLOR_ALWAYS
+define|#
+directive|define
+name|GIT_COLOR_ALWAYS
+value|1
+end_define
+
+begin_define
+DECL|macro|GIT_COLOR_AUTO
+define|#
+directive|define
+name|GIT_COLOR_AUTO
+value|2
+end_define
+
+begin_comment
 comment|/*  * This variable stores the value of color.ui  */
 end_comment
 
@@ -304,6 +340,16 @@ specifier|const
 name|char
 modifier|*
 name|value
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
+name|want_color
+parameter_list|(
+name|int
+name|var
 parameter_list|)
 function_decl|;
 end_function_decl

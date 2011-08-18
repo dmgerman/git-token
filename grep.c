@@ -2422,9 +2422,12 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|want_color
+argument_list|(
 name|opt
 operator|->
 name|color
+argument_list|)
 operator|&&
 name|color
 operator|&&

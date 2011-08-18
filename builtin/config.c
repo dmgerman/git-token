@@ -2064,6 +2064,13 @@ operator|=
 name|git_use_color_default
 expr_stmt|;
 block|}
+name|get_colorbool_found
+operator|=
+name|want_color
+argument_list|(
+name|get_colorbool_found
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|print

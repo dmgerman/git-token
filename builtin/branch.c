@@ -459,9 +459,10 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|want_color
+argument_list|(
 name|branch_use_color
-operator|>
-literal|0
+argument_list|)
 condition|)
 return|return
 name|branch_colors
