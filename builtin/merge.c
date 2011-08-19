@@ -269,16 +269,10 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|head
-DECL|variable|stash
 specifier|static
 name|unsigned
 name|char
 name|head
-index|[
-literal|20
-index|]
-decl_stmt|,
-name|stash
 index|[
 literal|20
 index|]
@@ -1378,10 +1372,13 @@ end_function
 begin_function
 DECL|function|save_state
 specifier|static
-name|void
+name|int
 name|save_state
 parameter_list|(
-name|void
+name|unsigned
+name|char
+modifier|*
+name|stash
 parameter_list|)
 block|{
 name|int
@@ -1506,7 +1503,11 @@ condition|(
 operator|!
 name|len
 condition|)
-return|return;
+comment|/* no changes */
+return|return
+operator|-
+literal|1
+return|;
 name|strbuf_setlen
 argument_list|(
 operator|&
@@ -1542,6 +1543,9 @@ operator|.
 name|buf
 argument_list|)
 expr_stmt|;
+return|return
+literal|0
+return|;
 block|}
 end_function
 
@@ -1765,7 +1769,11 @@ specifier|static
 name|void
 name|restore_state
 parameter_list|(
-name|void
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|stash
 parameter_list|)
 block|{
 name|struct
@@ -6372,6 +6380,13 @@ index|[
 literal|20
 index|]
 decl_stmt|;
+name|unsigned
+name|char
+name|stash
+index|[
+literal|20
+index|]
+decl_stmt|;
 name|struct
 name|strbuf
 name|buf
@@ -7806,27 +7821,22 @@ comment|/* 	 * At this point, we need a real merge.  No matter what strategy 	 *
 if|if
 condition|(
 name|use_strategies_nr
-operator|!=
+operator|==
 literal|1
-condition|)
-block|{
-comment|/* 		 * Stash away the local changes so that we can try more 		 * than one. 		 */
+operator|||
+comment|/* 	     * Stash away the local changes so that we can try more than one. 	     */
 name|save_state
-argument_list|()
-expr_stmt|;
-block|}
-else|else
-block|{
-name|memcpy
+argument_list|(
+name|stash
+argument_list|)
+condition|)
+name|hashcpy
 argument_list|(
 name|stash
 argument_list|,
 name|null_sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
-block|}
 for|for
 control|(
 name|i
@@ -7858,7 +7868,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|restore_state
-argument_list|()
+argument_list|(
+name|stash
+argument_list|)
 expr_stmt|;
 block|}
 if|if
@@ -8015,7 +8027,9 @@ name|best_strategy
 condition|)
 block|{
 name|restore_state
-argument_list|()
+argument_list|(
+name|stash
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
@@ -8075,7 +8089,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|restore_state
-argument_list|()
+argument_list|(
+name|stash
+argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
