@@ -1039,7 +1039,11 @@ name|track
 condition|)
 name|setup_tracking
 argument_list|(
-name|name
+name|ref
+operator|.
+name|buf
+operator|+
+literal|11
 argument_list|,
 name|real_ref
 argument_list|,
