@@ -196,6 +196,13 @@ define|#
 directive|define
 name|DIRTY_SUBMODULE_MODIFIED
 value|2
+DECL|member|has_more_entries
+name|unsigned
+name|has_more_entries
+range|:
+literal|1
+decl_stmt|;
+comment|/* only appear in combined diff */
 DECL|member|driver
 name|struct
 name|userdiff_driver
