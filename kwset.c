@@ -1,5 +1,9 @@
 begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_comment
+comment|/*  * This file has been copied from commit e7ac713d^ in the GNU grep git  * repository. A few small changes have been made to adapt the code to  * Git.  */
+end_comment
+
+begin_comment
 comment|/* kwset.c - search for any of a set of keywords.    Copyright 1989, 1998, 2000, 2005 Free Software Foundation, Inc.     This program is free software; you can redistribute it and/or modify    it under the terms of the GNU General Public License as published by    the Free Software Foundation; either version 2, or (at your option)    any later version.     This program is distributed in the hope that it will be useful,    but WITHOUT ANY WARRANTY; without even the implied warranty of    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the    GNU General Public License for more details.     You should have received a copy of the GNU General Public License    along with this program; if not, write to the Free Software    Foundation, Inc., 51 Franklin Street - Fifth Floor, Boston, MA    02110-1301, USA.  */
 end_comment
 
@@ -11,33 +15,10 @@ begin_comment
 comment|/* The algorithm implemented by these routines bears a startling resemblence    to one discovered by Beate Commentz-Walter, although it is not identical.    See "A String Matching Algorithm Fast on the Average," Technical Report,    IBM-Germany, Scientific Center Heidelberg, Tiergartenstrasse 15, D-6900    Heidelberg, Germany.  See also Aho, A.V., and M. Corasick, "Efficient    String Matching:  An Aid to Bibliographic Search," CACM June 1975,    Vol. 18, No. 6, which describes the failure function used below. */
 end_comment
 
-begin_ifdef
-ifdef|#
-directive|ifdef
-name|HAVE_CONFIG_H
-end_ifdef
-
 begin_include
 include|#
 directive|include
-file|<config.h>
-end_include
-
-begin_endif
-endif|#
-directive|endif
-end_endif
-
-begin_include
-include|#
-directive|include
-file|<sys/types.h>
-end_include
-
-begin_include
-include|#
-directive|include
-file|"system.h"
+file|"cache.h"
 end_include
 
 begin_include
@@ -52,41 +33,6 @@ directive|include
 file|"obstack.h"
 end_include
 
-begin_ifdef
-ifdef|#
-directive|ifdef
-name|GREP
-end_ifdef
-
-begin_function_decl
-specifier|extern
-name|char
-modifier|*
-name|xmalloc
-parameter_list|()
-function_decl|;
-end_function_decl
-
-begin_undef
-DECL|macro|malloc
-undef|#
-directive|undef
-name|malloc
-end_undef
-
-begin_define
-DECL|macro|malloc
-define|#
-directive|define
-name|malloc
-value|xmalloc
-end_define
-
-begin_endif
-endif|#
-directive|endif
-end_endif
-
 begin_define
 DECL|macro|NCHAR
 define|#
@@ -100,7 +46,7 @@ DECL|macro|obstack_chunk_alloc
 define|#
 directive|define
 name|obstack_chunk_alloc
-value|malloc
+value|xmalloc
 end_define
 
 begin_define
@@ -334,7 +280,7 @@ expr|struct
 name|kwset
 operator|*
 operator|)
-name|malloc
+name|xmalloc
 argument_list|(
 sizeof|sizeof
 argument_list|(
@@ -343,14 +289,6 @@ name|kwset
 argument_list|)
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|kwset
-condition|)
-return|return
-name|NULL
-return|;
 name|obstack_init
 argument_list|(
 operator|&
@@ -766,10 +704,7 @@ operator|!
 name|link
 condition|)
 return|return
-name|_
-argument_list|(
 literal|"memory exhausted"
-argument_list|)
 return|;
 name|link
 operator|->
@@ -825,10 +760,7 @@ name|link
 argument_list|)
 expr_stmt|;
 return|return
-name|_
-argument_list|(
 literal|"memory exhausted"
-argument_list|)
 return|;
 block|}
 name|link
@@ -2046,10 +1978,7 @@ operator|->
 name|target
 condition|)
 return|return
-name|_
-argument_list|(
 literal|"memory exhausted"
-argument_list|)
 return|;
 for|for
 control|(
@@ -3304,15 +3233,10 @@ specifier|const
 modifier|*
 name|trans
 decl_stmt|;
-ifdef|#
-directive|ifdef
-name|lint
 name|accept
 operator|=
 name|NULL
 expr_stmt|;
-endif|#
-directive|endif
 comment|/* Initialize register copies and look for easy ways out. */
 name|kwset
 operator|=
