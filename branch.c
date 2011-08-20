@@ -717,7 +717,14 @@ name|die
 argument_list|(
 literal|"A branch named '%s' already exists."
 argument_list|,
-name|name
+name|ref
+operator|->
+name|buf
+operator|+
+name|strlen
+argument_list|(
+literal|"refs/heads/"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|head
