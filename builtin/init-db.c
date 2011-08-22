@@ -1809,7 +1809,7 @@ argument_list|)
 condition|)
 name|src
 operator|=
-name|read_gitfile_gently
+name|read_gitfile
 argument_list|(
 name|git_link
 argument_list|)

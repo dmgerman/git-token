@@ -2397,7 +2397,7 @@ literal|5
 expr_stmt|;
 name|tmp
 operator|=
-name|read_gitfile_gently
+name|read_gitfile
 argument_list|(
 name|gitdir
 argument_list|)

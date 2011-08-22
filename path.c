@@ -740,7 +740,7 @@ argument_list|)
 expr_stmt|;
 name|git_dir
 operator|=
-name|read_gitfile_gently
+name|read_gitfile
 argument_list|(
 name|buf
 operator|.
