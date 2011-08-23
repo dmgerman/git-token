@@ -5787,7 +5787,7 @@ operator|.
 name|val_sha1
 argument_list|)
 condition|)
-comment|// no note was removed
+comment|/* no note was removed */
 return|return
 literal|1
 return|;
