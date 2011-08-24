@@ -373,6 +373,18 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+name|get_all
+operator|==
+literal|0
+condition|)
+name|warning
+argument_list|(
+literal|"http-fetch: use without -a is deprecated.\n"
+literal|"In a future release, -a will become the default."
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|argv
 index|[
 name|arg
