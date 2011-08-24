@@ -2904,6 +2904,12 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
+name|o
+condition|)
+continue|continue;
+if|if
+condition|(
+operator|!
 operator|(
 name|o
 operator|->
