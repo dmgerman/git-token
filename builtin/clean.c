@@ -322,7 +322,7 @@ name|exclude_list
 block|,
 literal|"pattern"
 block|,
-literal|"exclude<pattern>"
+literal|"add<pattern> to ignore rules"
 block|,
 name|PARSE_OPT_NONEG
 block|,
@@ -538,9 +538,13 @@ literal|""
 argument_list|,
 literal|0
 argument_list|,
+operator|&
 name|dir
 operator|.
 name|exclude_list
+index|[
+name|EXC_CMDL
+index|]
 argument_list|)
 expr_stmt|;
 name|pathspec
