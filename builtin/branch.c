@@ -3607,7 +3607,7 @@ name|OPT_SET_INT
 argument_list|(
 literal|'r'
 argument_list|,
-name|NULL
+literal|"remotes"
 argument_list|,
 operator|&
 name|kinds
@@ -3682,7 +3682,7 @@ name|OPT_SET_INT
 argument_list|(
 literal|'a'
 argument_list|,
-name|NULL
+literal|"all"
 argument_list|,
 operator|&
 name|kinds
@@ -3698,7 +3698,7 @@ name|OPT_BIT
 argument_list|(
 literal|'d'
 argument_list|,
-name|NULL
+literal|"delete"
 argument_list|,
 operator|&
 name|delete
@@ -3726,7 +3726,7 @@ name|OPT_BIT
 argument_list|(
 literal|'m'
 argument_list|,
-name|NULL
+literal|"move"
 argument_list|,
 operator|&
 name|rename
@@ -3754,7 +3754,7 @@ name|OPT_BOOLEAN
 argument_list|(
 literal|'l'
 argument_list|,
-name|NULL
+literal|"create-reflog"
 argument_list|,
 operator|&
 name|reflog
