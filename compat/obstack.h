@@ -330,11 +330,9 @@ parameter_list|(
 name|struct
 name|obstack
 modifier|*
-name|__obstack
 parameter_list|,
 name|void
 modifier|*
-specifier|__block
 parameter_list|)
 function_decl|;
 comment|/* Error handler called when `obstack_chunk_alloc' failed to allocate    more memory.  This can be set to a user defined function which    should either abort gracefully or use longjump - but shouldn't    return.  The default action is to print a message and abort.  */
@@ -348,11 +346,6 @@ parameter_list|(
 name|void
 parameter_list|)
 function_decl|;
-comment|/* Exit value used when `print_and_abort' is used.  */
-specifier|extern
-name|int
-name|obstack_exit_failure
-decl_stmt|;
 comment|/* Pointer to beginning of object being allocated or to be allocated next.    Note that this might not be the final address of the object    because a new chunk might be needed to hold the final size.  */
 DECL|macro|obstack_base
 define|#
