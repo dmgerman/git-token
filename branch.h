@@ -53,6 +53,30 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/*  * Validates that the requested branch may be created, returning the  * interpreted ref in ref, force indicates whether (non-head) branches  * may be overwritten. A non-zero return value indicates that the force  * parameter was non-zero and the branch already exists.  */
+end_comment
+
+begin_function_decl
+name|int
+name|validate_new_branchname
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|name
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|ref
+parameter_list|,
+name|int
+name|force
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/*  * Remove information about the state of working on the current  * branch. (E.g., MERGE_HEAD)  */
 end_comment
 
