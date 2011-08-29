@@ -113,6 +113,18 @@ name|MAX_DEPTH
 value|((1<<DEPTH_BITS)-1)
 end_define
 
+begin_comment
+comment|/*  * We abuse the setuid bit on directories to mean "do not delta".  */
+end_comment
+
+begin_define
+DECL|macro|NO_DELTA
+define|#
+directive|define
+name|NO_DELTA
+value|S_ISUID
+end_define
+
 begin_struct
 DECL|struct|object_entry
 struct|struct
@@ -7738,10 +7750,11 @@ name|b
 argument_list|,
 literal|"%o %s%c"
 argument_list|,
-operator|(
+call|(
 name|unsigned
 name|int
-operator|)
+call|)
+argument_list|(
 name|e
 operator|->
 name|versions
@@ -7750,6 +7763,10 @@ name|v
 index|]
 operator|.
 name|mode
+operator|&
+operator|~
+name|NO_DELTA
+argument_list|)
 argument_list|,
 name|e
 operator|->
@@ -7828,6 +7845,8 @@ name|struct
 name|object_entry
 modifier|*
 name|le
+init|=
+name|NULL
 decl_stmt|;
 if|if
 condition|(
@@ -7883,6 +7902,22 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+operator|(
+name|root
+operator|->
+name|versions
+index|[
+literal|0
+index|]
+operator|.
+name|mode
+operator|&
+name|NO_DELTA
+operator|)
+condition|)
 name|le
 operator|=
 name|find_object
@@ -8152,6 +8187,18 @@ condition|)
 name|die
 argument_list|(
 literal|"Root cannot be a non-directory"
+argument_list|)
+expr_stmt|;
+name|hashclr
+argument_list|(
+name|root
+operator|->
+name|versions
+index|[
+literal|0
+index|]
+operator|.
+name|sha1
 argument_list|)
 expr_stmt|;
 name|hashcpy
@@ -8452,6 +8499,32 @@ operator|->
 name|tree
 operator|=
 name|subtree
+expr_stmt|;
+comment|/* 				 * We need to leave e->versions[0].sha1 alone 				 * to avoid modifying the preimage tree used 				 * when writing out the parent directory. 				 * But after replacing the subdir with a 				 * completely different one, it's not a good 				 * delta base any more, and besides, we've 				 * thrown away the tree entries needed to 				 * make a delta against it. 				 * 				 * So let's just explicitly disable deltas 				 * for the subtree. 				 */
+if|if
+condition|(
+name|S_ISDIR
+argument_list|(
+name|e
+operator|->
+name|versions
+index|[
+literal|0
+index|]
+operator|.
+name|mode
+argument_list|)
+condition|)
+name|e
+operator|->
+name|versions
+index|[
+literal|0
+index|]
+operator|.
+name|mode
+operator||=
+name|NO_DELTA
 expr_stmt|;
 name|hashclr
 argument_list|(
@@ -16790,6 +16863,9 @@ argument_list|,
 literal|"%06o %s %s\t"
 argument_list|,
 name|mode
+operator|&
+operator|~
+name|NO_DELTA
 argument_list|,
 name|type
 argument_list|,
