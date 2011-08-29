@@ -193,6 +193,12 @@ name|dir_struct
 modifier|*
 name|dir
 decl_stmt|;
+DECL|member|pathspec
+name|struct
+name|pathspec
+modifier|*
+name|pathspec
+decl_stmt|;
 DECL|member|fn
 name|merge_fn_t
 name|fn
