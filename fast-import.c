@@ -703,6 +703,19 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|delta_count_attempts_by_type
+specifier|static
+name|uintmax_t
+name|delta_count_attempts_by_type
+index|[
+literal|1
+operator|<<
+name|TYPE_BITS
+index|]
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|object_count
 specifier|static
 name|unsigned
@@ -5568,6 +5581,12 @@ operator|>
 literal|20
 condition|)
 block|{
+name|delta_count_attempts_by_type
+index|[
+name|type
+index|]
+operator|++
+expr_stmt|;
 name|delta
 operator|=
 name|diff_delta
@@ -16122,6 +16141,51 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|oe
+operator|&&
+name|oe
+operator|->
+name|pack_id
+operator|==
+name|pack_id
+condition|)
+block|{
+name|last_blob
+operator|.
+name|offset
+operator|=
+name|oe
+operator|->
+name|idx
+operator|.
+name|offset
+expr_stmt|;
+name|strbuf_attach
+argument_list|(
+operator|&
+name|last_blob
+operator|.
+name|data
+argument_list|,
+name|buf
+argument_list|,
+name|size
+argument_list|,
+name|size
+argument_list|)
+expr_stmt|;
+name|last_blob
+operator|.
+name|depth
+operator|=
+name|oe
+operator|->
+name|depth
+expr_stmt|;
+block|}
+else|else
 name|free
 argument_list|(
 name|buf
@@ -19205,7 +19269,9 @@ literal|" (%10"
 name|PRIuMAX
 literal|" duplicates %10"
 name|PRIuMAX
-literal|" deltas)\n"
+literal|" deltas of %10"
+name|PRIuMAX
+literal|" attempts)\n"
 argument_list|,
 name|object_count_by_type
 index|[
@@ -19218,6 +19284,11 @@ name|OBJ_BLOB
 index|]
 argument_list|,
 name|delta_count_by_type
+index|[
+name|OBJ_BLOB
+index|]
+argument_list|,
+name|delta_count_attempts_by_type
 index|[
 name|OBJ_BLOB
 index|]
@@ -19233,7 +19304,9 @@ literal|" (%10"
 name|PRIuMAX
 literal|" duplicates %10"
 name|PRIuMAX
-literal|" deltas)\n"
+literal|" deltas of %10"
+name|PRIuMAX
+literal|" attempts)\n"
 argument_list|,
 name|object_count_by_type
 index|[
@@ -19246,6 +19319,11 @@ name|OBJ_TREE
 index|]
 argument_list|,
 name|delta_count_by_type
+index|[
+name|OBJ_TREE
+index|]
+argument_list|,
+name|delta_count_attempts_by_type
 index|[
 name|OBJ_TREE
 index|]
@@ -19261,7 +19339,9 @@ literal|" (%10"
 name|PRIuMAX
 literal|" duplicates %10"
 name|PRIuMAX
-literal|" deltas)\n"
+literal|" deltas of %10"
+name|PRIuMAX
+literal|" attempts)\n"
 argument_list|,
 name|object_count_by_type
 index|[
@@ -19274,6 +19354,11 @@ name|OBJ_COMMIT
 index|]
 argument_list|,
 name|delta_count_by_type
+index|[
+name|OBJ_COMMIT
+index|]
+argument_list|,
+name|delta_count_attempts_by_type
 index|[
 name|OBJ_COMMIT
 index|]
@@ -19289,7 +19374,9 @@ literal|" (%10"
 name|PRIuMAX
 literal|" duplicates %10"
 name|PRIuMAX
-literal|" deltas)\n"
+literal|" deltas of %10"
+name|PRIuMAX
+literal|" attempts)\n"
 argument_list|,
 name|object_count_by_type
 index|[
@@ -19302,6 +19389,11 @@ name|OBJ_TAG
 index|]
 argument_list|,
 name|delta_count_by_type
+index|[
+name|OBJ_TAG
+index|]
+argument_list|,
+name|delta_count_attempts_by_type
 index|[
 name|OBJ_TAG
 index|]
