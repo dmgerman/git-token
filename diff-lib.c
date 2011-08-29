@@ -2276,6 +2276,17 @@ name|dst_index
 operator|=
 name|NULL
 expr_stmt|;
+name|opts
+operator|.
+name|pathspec
+operator|=
+operator|&
+name|revs
+operator|->
+name|diffopt
+operator|.
+name|pathspec
+expr_stmt|;
 name|init_tree_desc
 argument_list|(
 operator|&
