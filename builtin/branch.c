@@ -3520,7 +3520,8 @@ literal|0
 decl_stmt|,
 name|abbrev
 init|=
-name|DEFAULT_ABBREV
+operator|-
+literal|1
 decl_stmt|,
 name|detached
 init|=
@@ -3990,6 +3991,17 @@ name|builtin_branch_usage
 argument_list|,
 name|options
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|abbrev
+operator|==
+operator|-
+literal|1
+condition|)
+name|abbrev
+operator|=
+name|DEFAULT_ABBREV
 expr_stmt|;
 if|if
 condition|(
