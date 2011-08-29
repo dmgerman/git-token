@@ -1714,11 +1714,11 @@ comment|/*  * Try to read the location of the git directory from the .git file, 
 end_comment
 
 begin_function
-DECL|function|read_gitfile_gently
+DECL|function|read_gitfile
 specifier|const
 name|char
 modifier|*
-name|read_gitfile_gently
+name|read_gitfile
 parameter_list|(
 specifier|const
 name|char
@@ -2105,7 +2105,7 @@ operator|(
 name|char
 operator|*
 operator|)
-name|read_gitfile_gently
+name|read_gitfile
 argument_list|(
 name|gitdirenv
 argument_list|)
@@ -3100,7 +3100,7 @@ operator|(
 name|char
 operator|*
 operator|)
-name|read_gitfile_gently
+name|read_gitfile
 argument_list|(
 name|DEFAULT_GIT_DIR_ENVIRONMENT
 argument_list|)

@@ -778,7 +778,7 @@ condition|)
 block|{
 name|git_dir
 operator|=
-name|read_gitfile_gently
+name|read_gitfile
 argument_list|(
 name|DEFAULT_GIT_DIR_ENVIRONMENT
 argument_list|)
