@@ -1,4 +1,8 @@
 begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
+begin_comment
+comment|/*  * Handle git attributes.  See gitattributes(5) for a description of  * the file syntax, and Documentation/technical/api-gitattributes.txt  * for a description of the API.  *  * One basic design decision here is that we are not going to support  * an insanely large number of attributes.  */
+end_comment
+
 begin_define
 DECL|macro|NO_THE_INDEX_COMPATIBILITY_MACROS
 define|#
@@ -101,7 +105,7 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
-comment|/*  * The basic design decision here is that we are not going to have  * insanely large number of attributes.  *  * This is a randomly chosen prime.  */
+comment|/* This is a randomly chosen prime. */
 end_comment
 
 begin_define
@@ -615,10 +619,6 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * .gitattributes file is one line per record, each of which is  *  * (1) glob pattern.  * (2) whitespace  * (3) whitespace separated list of attribute names, each of which  *     could be prefixed with '-' to mean "set to false", '!' to mean  *     "unset".  */
-end_comment
-
-begin_comment
 comment|/* What does a matched pattern decide? */
 end_comment
 
@@ -642,6 +642,10 @@ decl_stmt|;
 block|}
 struct|;
 end_struct
+
+begin_comment
+comment|/*  * One rule, as from a .gitattributes file.  *  * If is_macro is true, then u.attr is a pointer to the git_attr being  * defined.  *  * If is_macro is false, then u.pattern points at the filename pattern  * to which the rule applies.  (The memory pointed to is part of the  * memory block allocated for the match_attr instance.)  *  * In either case, num_attr is the number of attributes affected by  * this rule, and state is an array listing them.  The attributes are  * listed as they appear in the file (macros unexpanded).  */
+end_comment
 
 begin_struct
 DECL|struct|match_attr
@@ -697,6 +701,10 @@ literal|" \t\r\n"
 decl_stmt|;
 end_decl_stmt
 
+begin_comment
+comment|/*  * Parse a whitespace-delimited attribute state (i.e., "attr",  * "-attr", "!attr", or "attr=value") from the string starting at src.  * If e is not NULL, write the results to *e.  Return a pointer to the  * remainder of the string (with leading whitespace removed), or NULL  * if there was an error.  */
+end_comment
+
 begin_function
 DECL|function|parse_attr
 specifier|static
@@ -718,14 +726,10 @@ name|char
 modifier|*
 name|cp
 parameter_list|,
-name|int
-modifier|*
-name|num_attr
-parameter_list|,
 name|struct
-name|match_attr
+name|attr_state
 modifier|*
-name|res
+name|e
 parameter_list|)
 block|{
 specifier|const
@@ -791,7 +795,7 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|res
+name|e
 condition|)
 block|{
 if|if
@@ -846,24 +850,6 @@ block|}
 block|}
 else|else
 block|{
-name|struct
-name|attr_state
-modifier|*
-name|e
-decl_stmt|;
-name|e
-operator|=
-operator|&
-operator|(
-name|res
-operator|->
-name|state
-index|[
-operator|*
-name|num_attr
-index|]
-operator|)
-expr_stmt|;
 if|if
 condition|(
 operator|*
@@ -943,12 +929,6 @@ name|len
 argument_list|)
 expr_stmt|;
 block|}
-operator|(
-operator|*
-name|num_attr
-operator|)
-operator|++
-expr_stmt|;
 return|return
 name|ep
 operator|+
@@ -992,6 +972,8 @@ name|namelen
 decl_stmt|;
 name|int
 name|num_attr
+decl_stmt|,
+name|i
 decl_stmt|;
 specifier|const
 name|char
@@ -1000,6 +982,9 @@ name|cp
 decl_stmt|,
 modifier|*
 name|name
+decl_stmt|,
+modifier|*
+name|states
 decl_stmt|;
 name|struct
 name|match_attr
@@ -1007,9 +992,6 @@ modifier|*
 name|res
 init|=
 name|NULL
-decl_stmt|;
-name|int
-name|pass
 decl_stmt|;
 name|int
 name|is_macro
@@ -1157,47 +1139,38 @@ name|is_macro
 operator|=
 literal|0
 expr_stmt|;
-for|for
-control|(
-name|pass
-operator|=
-literal|0
-init|;
-name|pass
-operator|<
-literal|2
-condition|;
-name|pass
-operator|++
-control|)
-block|{
-comment|/* pass 0 counts and allocates, pass 1 fills */
-name|num_attr
-operator|=
-literal|0
-expr_stmt|;
-name|cp
+name|states
 operator|=
 name|name
 operator|+
 name|namelen
 expr_stmt|;
-name|cp
-operator|=
-name|cp
-operator|+
+name|states
+operator|+=
 name|strspn
 argument_list|(
-name|cp
+name|states
 argument_list|,
 name|blank
 argument_list|)
 expr_stmt|;
-while|while
-condition|(
+comment|/* First pass to count the attr_states */
+for|for
+control|(
+name|cp
+operator|=
+name|states
+operator|,
+name|num_attr
+operator|=
+literal|0
+init|;
 operator|*
 name|cp
-condition|)
+condition|;
+name|num_attr
+operator|++
+control|)
 block|{
 name|cp
 operator|=
@@ -1209,10 +1182,7 @@ name|lineno
 argument_list|,
 name|cp
 argument_list|,
-operator|&
-name|num_attr
-argument_list|,
-name|res
+name|NULL
 argument_list|)
 expr_stmt|;
 if|if
@@ -1224,11 +1194,6 @@ return|return
 name|NULL
 return|;
 block|}
-if|if
-condition|(
-name|pass
-condition|)
-break|break;
 name|res
 operator|=
 name|xcalloc
@@ -1335,6 +1300,45 @@ operator|->
 name|num_attr
 operator|=
 name|num_attr
+expr_stmt|;
+comment|/* Second pass to fill the attr_states */
+for|for
+control|(
+name|cp
+operator|=
+name|states
+operator|,
+name|i
+operator|=
+literal|0
+init|;
+operator|*
+name|cp
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|cp
+operator|=
+name|parse_attr
+argument_list|(
+name|src
+argument_list|,
+name|lineno
+argument_list|,
+name|cp
+argument_list|,
+operator|&
+operator|(
+name|res
+operator|->
+name|state
+index|[
+name|i
+index|]
+operator|)
+argument_list|)
 expr_stmt|;
 block|}
 return|return
