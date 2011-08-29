@@ -304,6 +304,12 @@ DECL|member|pathlen
 name|int
 name|pathlen
 decl_stmt|;
+DECL|member|pathspec
+name|struct
+name|pathspec
+modifier|*
+name|pathspec
+decl_stmt|;
 DECL|member|conflicts
 name|unsigned
 name|long
