@@ -40,14 +40,6 @@ begin_comment
 comment|/*  * This is split up from the rest of git so that we can do  * something different on Windows.  */
 end_comment
 
-begin_decl_stmt
-DECL|variable|spawned_pager
-specifier|static
-name|int
-name|spawned_pager
-decl_stmt|;
-end_decl_stmt
-
 begin_ifndef
 ifndef|#
 directive|ifndef
@@ -322,11 +314,15 @@ operator|!
 name|pager
 condition|)
 return|return;
-name|spawned_pager
-operator|=
+name|setenv
+argument_list|(
+literal|"GIT_PAGER_IN_USE"
+argument_list|,
+literal|"true"
+argument_list|,
 literal|1
+argument_list|)
 expr_stmt|;
-comment|/* means we are emitting to terminal */
 comment|/* spawn the pager */
 name|pager_argv
 index|[
@@ -463,13 +459,6 @@ name|char
 modifier|*
 name|env
 decl_stmt|;
-if|if
-condition|(
-name|spawned_pager
-condition|)
-return|return
-literal|1
-return|;
 name|env
 operator|=
 name|getenv

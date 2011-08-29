@@ -223,15 +223,40 @@ value|"NIL"
 end_define
 
 begin_comment
-comment|/*  * This variable stores the value of color.ui  */
+comment|/*  * The first three are chosen to match common usage in the code, and what is  * returned from git_config_colorbool. The "auto" value can be returned from  * config_colorbool, and will be converted by want_color() into either 0 or 1.  */
 end_comment
 
-begin_decl_stmt
-specifier|extern
-name|int
-name|git_use_color_default
-decl_stmt|;
-end_decl_stmt
+begin_define
+DECL|macro|GIT_COLOR_UNKNOWN
+define|#
+directive|define
+name|GIT_COLOR_UNKNOWN
+value|-1
+end_define
+
+begin_define
+DECL|macro|GIT_COLOR_NEVER
+define|#
+directive|define
+name|GIT_COLOR_NEVER
+value|0
+end_define
+
+begin_define
+DECL|macro|GIT_COLOR_ALWAYS
+define|#
+directive|define
+name|GIT_COLOR_ALWAYS
+value|1
+end_define
+
+begin_define
+DECL|macro|GIT_COLOR_AUTO
+define|#
+directive|define
+name|GIT_COLOR_AUTO
+value|2
+end_define
 
 begin_comment
 comment|/* A default list of colors to use for commit graphs and show-branch output */
@@ -256,8 +281,40 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
-comment|/*  * Use this instead of git_default_config if you need the value of color.ui.  */
+comment|/*  * Generally the color code will lazily figure this out itself, but  * this provides a mechanism for callers to override autodetection.  */
 end_comment
+
+begin_decl_stmt
+specifier|extern
+name|int
+name|color_stdout_is_tty
+decl_stmt|;
+end_decl_stmt
+
+begin_comment
+comment|/*  * Use the first one if you need only color config; the second is a convenience  * if you are just going to change to git_default_config, too.  */
+end_comment
+
+begin_function_decl
+name|int
+name|git_color_config
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|var
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|value
+parameter_list|,
+name|void
+modifier|*
+name|cb
+parameter_list|)
+function_decl|;
+end_function_decl
 
 begin_function_decl
 name|int
@@ -293,9 +350,16 @@ specifier|const
 name|char
 modifier|*
 name|value
-parameter_list|,
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|int
-name|stdout_is_tty
+name|want_color
+parameter_list|(
+name|int
+name|var
 parameter_list|)
 function_decl|;
 end_function_decl
