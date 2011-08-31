@@ -1422,6 +1422,19 @@ decl_stmt|;
 name|xdlclassifier_t
 name|cf
 decl_stmt|;
+name|memset
+argument_list|(
+operator|&
+name|cf
+argument_list|,
+literal|0
+argument_list|,
+sizeof|sizeof
+argument_list|(
+name|cf
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|/* 	 * For histogram diff, we can afford a smaller sample size and 	 * thus a poorer estimate of the number of lines, as the hash 	 * table (rhash) won't be filled up/grown. The number of lines 	 * (nrecs) will be updated correctly anyway by 	 * xdl_prepare_ctx(). 	 */
 name|sample
 operator|=
