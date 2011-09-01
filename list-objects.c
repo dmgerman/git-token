@@ -81,6 +81,10 @@ specifier|const
 name|char
 modifier|*
 name|name
+parameter_list|,
+name|void
+modifier|*
+name|cb_data
 parameter_list|)
 block|{
 name|struct
@@ -137,6 +141,8 @@ argument_list|,
 name|path
 argument_list|,
 name|name
+argument_list|,
+name|cb_data
 argument_list|)
 expr_stmt|;
 block|}
@@ -175,6 +181,10 @@ specifier|const
 name|char
 modifier|*
 name|name
+parameter_list|,
+name|void
+modifier|*
+name|cb_data
 parameter_list|)
 block|{
 comment|/* Nothing to do */
@@ -214,6 +224,10 @@ specifier|const
 name|char
 modifier|*
 name|name
+parameter_list|,
+name|void
+modifier|*
+name|cb_data
 parameter_list|)
 block|{
 name|struct
@@ -327,6 +341,8 @@ argument_list|,
 name|path
 argument_list|,
 name|name
+argument_list|,
+name|cb_data
 argument_list|)
 expr_stmt|;
 name|me
@@ -474,6 +490,8 @@ argument_list|,
 name|entry
 operator|.
 name|path
+argument_list|,
+name|cb_data
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -502,6 +520,8 @@ argument_list|,
 name|entry
 operator|.
 name|path
+argument_list|,
+name|cb_data
 argument_list|)
 expr_stmt|;
 else|else
@@ -524,6 +544,8 @@ argument_list|,
 name|entry
 operator|.
 name|path
+argument_list|,
+name|cb_data
 argument_list|)
 expr_stmt|;
 block|}
@@ -926,6 +948,8 @@ argument_list|,
 name|NULL
 argument_list|,
 name|name
+argument_list|,
+name|data
 argument_list|)
 expr_stmt|;
 continue|continue;
@@ -958,6 +982,8 @@ operator|&
 name|base
 argument_list|,
 name|name
+argument_list|,
+name|data
 argument_list|)
 expr_stmt|;
 continue|continue;
@@ -987,6 +1013,8 @@ argument_list|,
 name|NULL
 argument_list|,
 name|name
+argument_list|,
+name|data
 argument_list|)
 expr_stmt|;
 continue|continue;
