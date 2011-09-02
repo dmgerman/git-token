@@ -297,6 +297,25 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|int
+name|check_submodule_needs_pushing
+parameter_list|(
+name|unsigned
+name|char
+name|new_sha1
+index|[
+literal|20
+index|]
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|remotes_name
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
