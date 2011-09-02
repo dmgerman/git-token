@@ -3362,7 +3362,7 @@ argument_list|(
 operator|&
 name|buf
 argument_list|,
-literal|"refs/remotes/%s"
+literal|"refs/remotes/%s/"
 argument_list|,
 name|rename
 operator|->
