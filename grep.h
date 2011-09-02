@@ -56,6 +56,12 @@ endif|#
 directive|endif
 end_endif
 
+begin_include
+include|#
+directive|include
+file|"kwset.h"
+end_include
+
 begin_enum
 DECL|enum|grep_pat_token
 enum|enum
@@ -180,6 +186,10 @@ DECL|member|pcre_extra_info
 name|pcre_extra
 modifier|*
 name|pcre_extra_info
+decl_stmt|;
+DECL|member|kws
+name|kwset_t
+name|kws
 decl_stmt|;
 DECL|member|fixed
 name|unsigned
