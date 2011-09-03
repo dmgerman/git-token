@@ -4146,6 +4146,18 @@ name|new
 argument_list|)
 argument_list|)
 expr_stmt|;
+else|else
+name|warning
+argument_list|(
+literal|"Not updating non-default fetch respec\n"
+literal|"\t%s\n"
+literal|"\tPlease update the configuration manually if necessary."
+argument_list|,
+name|buf2
+operator|.
+name|buf
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|git_config_set_multivar
