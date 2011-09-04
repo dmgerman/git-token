@@ -1258,16 +1258,10 @@ end_function
 
 begin_function
 DECL|function|pathspec_prefix
-specifier|const
 name|char
 modifier|*
 name|pathspec_prefix
 parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|prefix
-parameter_list|,
 specifier|const
 name|char
 modifier|*
@@ -1297,18 +1291,6 @@ operator|!
 name|pathspec
 condition|)
 return|return
-name|prefix
-condition|?
-name|xmemdupz
-argument_list|(
-name|prefix
-argument_list|,
-name|strlen
-argument_list|(
-name|prefix
-argument_list|)
-argument_list|)
-else|:
 name|NULL
 return|;
 name|prev
