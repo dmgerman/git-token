@@ -1382,7 +1382,7 @@ name|char
 modifier|*
 name|max_prefix
 init|=
-name|pathspec_prefix
+name|common_prefix
 argument_list|(
 name|pattern
 argument_list|)

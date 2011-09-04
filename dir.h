@@ -296,8 +296,9 @@ end_define
 
 begin_function_decl
 specifier|extern
-name|size_t
-name|common_prefix_len
+name|char
+modifier|*
+name|common_prefix
 parameter_list|(
 specifier|const
 name|char
