@@ -4557,7 +4557,7 @@ name|HTTP_START_FAILED
 condition|)
 name|error
 argument_list|(
-literal|"%s while accessing %s\n"
+literal|"%s while accessing %s"
 argument_list|,
 name|curl_errorstr
 argument_list|,
