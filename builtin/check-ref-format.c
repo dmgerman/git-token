@@ -41,7 +41,7 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
-comment|/*  * Replace each run of adjacent slashes in src with a single slash,  * and write the result to dst.  *  * This function is similar to normalize_path_copy(), but stripped down  * to meet check_ref_format's simpler needs.  */
+comment|/*  * Remove leading slashes and replace each run of adjacent slashes in  * src with a single slash, and write the result to dst.  *  * This function is similar to normalize_path_copy(), but stripped down  * to meet check_ref_format's simpler needs.  */
 end_comment
 
 begin_function
@@ -66,7 +66,7 @@ decl_stmt|;
 name|char
 name|prev
 init|=
-literal|'\0'
+literal|'/'
 decl_stmt|;
 while|while
 condition|(
