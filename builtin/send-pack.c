@@ -1637,7 +1637,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"receive-pack: unable to fork off sideband demultiplexer"
+literal|"send-pack: unable to fork off sideband demultiplexer"
 argument_list|)
 expr_stmt|;
 name|in
