@@ -882,6 +882,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Look at a signed tag object, and return the offset where  * the embedded detached signature begins, or the end of the  * data when there is no such signature.  */
+end_comment
+
 begin_function
 DECL|function|parse_signature
 name|size_t
