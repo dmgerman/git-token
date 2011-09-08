@@ -4097,17 +4097,9 @@ operator|&&
 operator|!
 name|force_create
 operator|&&
-operator|(
 name|argc
 operator|==
 literal|0
-operator|||
-operator|(
-name|verbose
-operator|&&
-name|argc
-operator|)
-operator|)
 condition|)
 name|list
 operator|=
