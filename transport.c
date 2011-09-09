@@ -6000,7 +6000,7 @@ name|MATCH_REFS_MIRROR
 expr_stmt|;
 if|if
 condition|(
-name|match_refs
+name|match_push_refs
 argument_list|(
 name|local_refs
 argument_list|,
