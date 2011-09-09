@@ -2415,9 +2415,6 @@ name|char
 modifier|*
 name|base
 parameter_list|,
-name|int
-name|baselen
-parameter_list|,
 specifier|const
 name|char
 modifier|*
@@ -2666,8 +2663,6 @@ operator|!
 name|match_dir_prefix
 argument_list|(
 name|base_str
-argument_list|,
-name|baselen
 argument_list|,
 name|match
 argument_list|,
