@@ -3788,6 +3788,10 @@ name|rename
 decl_stmt|;
 name|int
 name|i
+decl_stmt|,
+name|refspec_updated
+init|=
+literal|0
 decl_stmt|;
 if|if
 condition|(
@@ -4111,6 +4115,11 @@ if|if
 condition|(
 name|ptr
 condition|)
+block|{
+name|refspec_updated
+operator|=
+literal|1
+expr_stmt|;
 name|strbuf_splice
 argument_list|(
 operator|&
@@ -4146,6 +4155,7 @@ name|new
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 name|warning
 argument_list|(
@@ -4289,6 +4299,14 @@ return|;
 block|}
 block|}
 block|}
+if|if
+condition|(
+operator|!
+name|refspec_updated
+condition|)
+return|return
+literal|0
+return|;
 comment|/* 	 * First remove symrefs, then rename the rest, finally create 	 * the new symrefs. 	 */
 name|for_each_ref
 argument_list|(
