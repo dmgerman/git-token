@@ -529,6 +529,8 @@ name|opt1
 decl_stmt|,
 modifier|*
 name|opt2
+init|=
+name|NULL
 decl_stmt|;
 name|va_list
 name|ap
