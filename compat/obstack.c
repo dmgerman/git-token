@@ -604,7 +604,7 @@ name|chunk
 operator|->
 name|prev
 operator|=
-literal|0
+name|NULL
 expr_stmt|;
 comment|/* The initial chunk now contains no empty object.  */
 name|h
@@ -881,7 +881,7 @@ name|chunk
 operator|->
 name|prev
 operator|=
-literal|0
+name|NULL
 expr_stmt|;
 comment|/* The initial chunk now contains no empty object.  */
 name|h
@@ -1327,7 +1327,7 @@ while|while
 condition|(
 name|lp
 operator|!=
-literal|0
+name|NULL
 operator|&&
 operator|(
 operator|(
@@ -1366,7 +1366,7 @@ block|}
 return|return
 name|lp
 operator|!=
-literal|0
+name|NULL
 return|;
 block|}
 end_function
@@ -1425,7 +1425,7 @@ while|while
 condition|(
 name|lp
 operator|!=
-literal|0
+name|NULL
 operator|&&
 operator|(
 operator|(
@@ -1516,7 +1516,7 @@ if|if
 condition|(
 name|obj
 operator|!=
-literal|0
+name|NULL
 condition|)
 comment|/* obj is not in any of the chunks! */
 name|abort
@@ -1585,7 +1585,7 @@ name|chunk
 init|;
 name|lp
 operator|!=
-literal|0
+name|NULL
 condition|;
 name|lp
 operator|=
@@ -1686,20 +1686,14 @@ endif|#
 directive|endif
 end_endif
 
-begin_decl_stmt
+begin_function
 specifier|static
 name|void
-name|__attribute__
-argument_list|(
-operator|(
-name|noreturn
-operator|)
-argument_list|)
 DECL|function|print_and_abort
 name|print_and_abort
-argument_list|(
+parameter_list|(
 name|void
-argument_list|)
+parameter_list|)
 block|{
 comment|/* Don't change any of these strings.  Yes, it would be possible to add      the newline to the string and use fputs or so.  But this must not      happen because the "memory exhausted" message appears in other places      like this and the translation should be reused instead of creating      a very similar string which requires a separate translation.  */
 ifdef|#
@@ -1742,7 +1736,7 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-end_decl_stmt
+end_function
 
 begin_endif
 endif|#
