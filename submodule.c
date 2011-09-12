@@ -3022,6 +3022,15 @@ argument_list|)
 operator|-
 literal|1
 decl_stmt|;
+comment|/* No need to check if there are no submodules configured */
+if|if
+condition|(
+operator|!
+name|config_name_for_path
+operator|.
+name|nr
+condition|)
+return|return;
 name|init_revisions
 argument_list|(
 operator|&
