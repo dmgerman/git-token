@@ -94,7 +94,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Same as the above, but can be used to unwrap many arguments in the  * same string separated by space. "next" is changed to point to the  * next argument that should be passed as first parameter. When there  * is no more argument to be dequoted, "next" is updated to point to NULL.  */
+comment|/*  * Same as the above, but can be used to unwrap many arguments in the  * same string separated by space. Like sq_quote, it works in place,  * modifying arg and appending pointers into it to argv.  */
 end_comment
 
 begin_function_decl
