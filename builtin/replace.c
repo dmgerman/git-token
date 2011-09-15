@@ -484,9 +484,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|check_ref_format
+name|check_refname_format
 argument_list|(
 name|ref
+argument_list|,
+literal|0
 argument_list|)
 condition|)
 name|die

@@ -119,12 +119,12 @@ operator|&
 name|REF_NORMAL
 operator|)
 operator|&&
-name|check_ref_format
+name|check_refname_format
 argument_list|(
 name|name
-argument_list|)
-operator|<
+argument_list|,
 literal|0
+argument_list|)
 condition|)
 return|return
 literal|0

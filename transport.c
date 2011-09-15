@@ -4405,28 +4405,17 @@ operator|)
 else|:
 name|local
 expr_stmt|;
-switch|switch
+if|if
 condition|(
-name|check_ref_format
+name|check_refname_format
 argument_list|(
 name|remote
+argument_list|,
+name|REFNAME_ALLOW_ONELEVEL
+operator||
+name|REFNAME_REFSPEC_PATTERN
 argument_list|)
 condition|)
-block|{
-case|case
-literal|0
-case|:
-comment|/* ok */
-case|case
-name|CHECK_REF_FORMAT_ONELEVEL
-case|:
-comment|/* ok but a single level -- that is fine for 			 * a match pattern. 			 */
-case|case
-name|CHECK_REF_FORMAT_WILDCARD
-case|:
-comment|/* ok but ends with a pattern-match character */
-continue|continue;
-block|}
 name|die
 argument_list|(
 literal|"remote part of refspec is not a valid name in %s"

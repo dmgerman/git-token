@@ -826,46 +826,37 @@ function_decl|;
 end_function_decl
 
 begin_define
-DECL|macro|CHECK_REF_FORMAT_OK
+DECL|macro|REFNAME_ALLOW_ONELEVEL
 define|#
 directive|define
-name|CHECK_REF_FORMAT_OK
-value|0
+name|REFNAME_ALLOW_ONELEVEL
+value|1
 end_define
 
 begin_define
-DECL|macro|CHECK_REF_FORMAT_ERROR
+DECL|macro|REFNAME_REFSPEC_PATTERN
 define|#
 directive|define
-name|CHECK_REF_FORMAT_ERROR
-value|(-1)
+name|REFNAME_REFSPEC_PATTERN
+value|2
 end_define
 
-begin_define
-DECL|macro|CHECK_REF_FORMAT_ONELEVEL
-define|#
-directive|define
-name|CHECK_REF_FORMAT_ONELEVEL
-value|(-2)
-end_define
-
-begin_define
-DECL|macro|CHECK_REF_FORMAT_WILDCARD
-define|#
-directive|define
-name|CHECK_REF_FORMAT_WILDCARD
-value|(-3)
-end_define
+begin_comment
+comment|/*  * Return 0 iff ref has the correct format for a refname according to  * the rules described in Documentation/git-check-ref-format.txt.  If  * REFNAME_ALLOW_ONELEVEL is set in flags, then accept one-level  * reference names.  If REFNAME_REFSPEC_PATTERN is set in flags, then  * allow a "*" wildcard character in place of one of the name  * components.  */
+end_comment
 
 begin_function_decl
 specifier|extern
 name|int
-name|check_ref_format
+name|check_refname_format
 parameter_list|(
 specifier|const
 name|char
 modifier|*
-name|target
+name|ref
+parameter_list|,
+name|int
+name|flags
 parameter_list|)
 function_decl|;
 end_function_decl

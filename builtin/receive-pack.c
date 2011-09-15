@@ -1966,11 +1966,13 @@ argument_list|,
 literal|"refs/"
 argument_list|)
 operator|||
-name|check_ref_format
+name|check_refname_format
 argument_list|(
 name|name
 operator|+
 literal|5
+argument_list|,
+literal|0
 argument_list|)
 condition|)
 block|{
