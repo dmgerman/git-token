@@ -4826,17 +4826,6 @@ condition|(
 literal|1
 condition|)
 block|{
-while|while
-condition|(
-operator|*
-name|ref
-operator|==
-literal|'/'
-condition|)
-name|ref
-operator|++
-expr_stmt|;
-comment|/* tolerate leading and repeated slashes */
 comment|/* We are at the start of a path component. */
 name|component_len
 operator|=
