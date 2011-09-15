@@ -280,6 +280,24 @@ operator|->
 name|peeled
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|check_refname_format
+argument_list|(
+name|name
+argument_list|,
+name|REFNAME_ALLOW_ONELEVEL
+operator||
+name|REFNAME_DOT_COMPONENT
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"Reference has invalid format: '%s'"
+argument_list|,
+name|name
+argument_list|)
+expr_stmt|;
 name|memcpy
 argument_list|(
 name|entry
@@ -4761,6 +4779,9 @@ specifier|const
 name|char
 modifier|*
 name|ref
+parameter_list|,
+name|int
+name|flags
 parameter_list|)
 block|{
 specifier|const
@@ -4868,11 +4889,37 @@ index|]
 operator|==
 literal|'.'
 condition|)
+block|{
+if|if
+condition|(
+operator|!
+operator|(
+name|flags
+operator|&
+name|REFNAME_DOT_COMPONENT
+operator|)
+condition|)
 return|return
 operator|-
 literal|1
 return|;
 comment|/* Component starts with '.'. */
+comment|/* 		 * Even if leading dots are allowed, don't allow "." 		 * as a component (".." is prevented by a rule above). 		 */
+if|if
+condition|(
+name|ref
+index|[
+literal|1
+index|]
+operator|==
+literal|'\0'
+condition|)
+return|return
+operator|-
+literal|1
+return|;
+comment|/* Component equals ".". */
+block|}
 if|if
 condition|(
 name|cp
@@ -4938,6 +4985,8 @@ operator|=
 name|check_refname_component
 argument_list|(
 name|ref
+argument_list|,
+name|flags
 argument_list|)
 expr_stmt|;
 if|if
