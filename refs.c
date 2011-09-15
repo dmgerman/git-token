@@ -2730,6 +2730,14 @@ name|buffer
 argument_list|,
 literal|"refs/"
 argument_list|)
+operator|&&
+operator|!
+name|check_refname_format
+argument_list|(
+name|buffer
+argument_list|,
+literal|0
+argument_list|)
 condition|)
 block|{
 name|strcpy
