@@ -5710,6 +5710,10 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Resolve a reference, recursively following symbolic refererences.  *  * Store the referred-to object's name in sha1 and return the name of  * the non-symbolic reference that ultimately pointed at it.  The  * return value, if not NULL, is a pointer into either a static buffer  * or the input ref.  *  * If the reference cannot be resolved to an object, the behavior  * depends on the "reading" argument:  *  * - If reading is set, return NULL.  *  * - If reading is not set, clear sha1 and return the name of the last  *   reference name in the chain, which will either be a non-symbolic  *   reference or an undefined reference.  If this is a prelude to  *   "writing" to the ref, the return value is the name of the ref  *   that will actually be created or changed.  *  * If flag is non-NULL, set the value that it points to the  * combination of REF_ISPACKED (if the reference was found among the  * packed references) and REF_ISSYMREF (if the initial reference was a  * symbolic reference).  *  * If ref is not a properly-formatted, normalized reference, return  * NULL.  If more than MAXDEPTH recursive symbolic lookups are needed,  * give up and return NULL.  *  * errno is sometimes set on errors, but not always.  */
+end_comment
+
 begin_function_decl
 specifier|extern
 specifier|const
@@ -5720,7 +5724,7 @@ parameter_list|(
 specifier|const
 name|char
 modifier|*
-name|path
+name|ref
 parameter_list|,
 name|unsigned
 name|char
@@ -5728,9 +5732,11 @@ modifier|*
 name|sha1
 parameter_list|,
 name|int
+name|reading
 parameter_list|,
 name|int
 modifier|*
+name|flag
 parameter_list|)
 function_decl|;
 end_function_decl
