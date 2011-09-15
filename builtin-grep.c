@@ -3309,12 +3309,6 @@ name|dir
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|setup_standard_excludes
-argument_list|(
-operator|&
-name|dir
-argument_list|)
-expr_stmt|;
 name|fill_directory
 argument_list|(
 operator|&
