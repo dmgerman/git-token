@@ -4767,6 +4767,31 @@ operator|-
 literal|1
 return|;
 comment|/* Component starts with '.'. */
+if|if
+condition|(
+name|cp
+operator|-
+name|ref
+operator|>=
+literal|5
+operator|&&
+operator|!
+name|memcmp
+argument_list|(
+name|cp
+operator|-
+literal|5
+argument_list|,
+literal|".lock"
+argument_list|,
+literal|5
+argument_list|)
+condition|)
+return|return
+operator|-
+literal|1
+return|;
+comment|/* Refname ends with ".lock". */
 return|return
 name|cp
 operator|-
@@ -4915,33 +4940,6 @@ operator|-
 literal|1
 return|;
 comment|/* Refname ends with '.'. */
-if|if
-condition|(
-name|component_len
-operator|>=
-literal|5
-operator|&&
-operator|!
-name|memcmp
-argument_list|(
-operator|&
-name|ref
-index|[
-name|component_len
-operator|-
-literal|5
-index|]
-argument_list|,
-literal|".lock"
-argument_list|,
-literal|5
-argument_list|)
-condition|)
-return|return
-operator|-
-literal|1
-return|;
-comment|/* Refname ends with ".lock". */
 if|if
 condition|(
 operator|!
