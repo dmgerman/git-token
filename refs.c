@@ -2607,6 +2607,12 @@ index|[
 literal|256
 index|]
 decl_stmt|;
+name|char
+name|path
+index|[
+name|PATH_MAX
+index|]
+decl_stmt|;
 if|if
 condition|(
 name|flag
@@ -2634,12 +2640,6 @@ init|;
 condition|;
 control|)
 block|{
-name|char
-name|path
-index|[
-name|PATH_MAX
-index|]
-decl_stmt|;
 name|struct
 name|stat
 name|st
@@ -2998,9 +2998,18 @@ argument_list|,
 name|sha1
 argument_list|)
 condition|)
+block|{
+name|warning
+argument_list|(
+literal|"reference in %s is formatted incorrectly"
+argument_list|,
+name|path
+argument_list|)
+expr_stmt|;
 return|return
 name|NULL
 return|;
+block|}
 return|return
 name|ref
 return|;
