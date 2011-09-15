@@ -4567,6 +4567,10 @@ begin_comment
 comment|/*  * Make sure "ref" is something reasonable to have under ".git/refs/";  * We do not like it if:  *  * - any path component of it begins with ".", or  * - it has double dots "..", or  * - it has ASCII control character, "~", "^", ":" or SP, anywhere, or  * - it ends with a "/".  * - it ends with ".lock"  * - it contains a "\" (backslash)  */
 end_comment
 
+begin_comment
+comment|/* Return true iff ch is not allowed in reference names. */
+end_comment
+
 begin_function
 DECL|function|bad_ref_char
 specifier|static
@@ -4617,6 +4621,10 @@ if|if
 condition|(
 name|ch
 operator|==
+literal|'*'
+operator|||
+name|ch
+operator|==
 literal|'?'
 operator|||
 name|ch
@@ -4626,16 +4634,6 @@ condition|)
 comment|/* Unsupported */
 return|return
 literal|1
-return|;
-if|if
-condition|(
-name|ch
-operator|==
-literal|'*'
-condition|)
-comment|/* Supported at the end */
-return|return
-literal|2
 return|;
 return|return
 literal|0
@@ -4658,8 +4656,6 @@ name|int
 name|ch
 decl_stmt|,
 name|level
-decl_stmt|,
-name|bad_type
 decl_stmt|,
 name|last
 decl_stmt|;
@@ -4717,23 +4713,19 @@ condition|)
 return|return
 name|CHECK_REF_FORMAT_ERROR
 return|;
-name|bad_type
-operator|=
+if|if
+condition|(
 name|bad_ref_char
 argument_list|(
 name|ch
 argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|bad_type
 condition|)
 block|{
 if|if
 condition|(
-name|bad_type
+name|ch
 operator|==
-literal|2
+literal|'*'
 operator|&&
 operator|(
 operator|!
@@ -4777,16 +4769,12 @@ operator|!=
 literal|0
 condition|)
 block|{
-name|bad_type
-operator|=
+if|if
+condition|(
 name|bad_ref_char
 argument_list|(
 name|ch
 argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|bad_type
 condition|)
 return|return
 name|CHECK_REF_FORMAT_ERROR
