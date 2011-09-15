@@ -2989,6 +2989,7 @@ operator||=
 name|REF_ISSYMREF
 expr_stmt|;
 block|}
+comment|/* Please note that FETCH_HEAD has a second line containing other data. */
 if|if
 condition|(
 name|get_sha1_hex
@@ -2997,6 +2998,24 @@ name|buffer
 argument_list|,
 name|sha1
 argument_list|)
+operator|||
+operator|(
+name|buffer
+index|[
+literal|40
+index|]
+operator|!=
+literal|'\0'
+operator|&&
+operator|!
+name|isspace
+argument_list|(
+name|buffer
+index|[
+literal|40
+index|]
+argument_list|)
+operator|)
 condition|)
 block|{
 name|warning
