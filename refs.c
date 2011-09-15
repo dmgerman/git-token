@@ -2937,6 +2937,27 @@ condition|)
 name|buf
 operator|++
 expr_stmt|;
+if|if
+condition|(
+name|check_refname_format
+argument_list|(
+name|buf
+argument_list|,
+name|REFNAME_ALLOW_ONELEVEL
+argument_list|)
+condition|)
+block|{
+name|warning
+argument_list|(
+literal|"symbolic reference in %s is formatted incorrectly"
+argument_list|,
+name|path
+argument_list|)
+expr_stmt|;
+return|return
+name|NULL
+return|;
+block|}
 name|ref
 operator|=
 name|strcpy
