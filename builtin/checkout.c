@@ -5914,6 +5914,8 @@ operator|!
 name|opts
 operator|.
 name|new_branch_force
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|strbuf_release

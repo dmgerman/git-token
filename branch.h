@@ -53,7 +53,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Validates that the requested branch may be created, returning the  * interpreted ref in ref, force indicates whether (non-head) branches  * may be overwritten. A non-zero return value indicates that the force  * parameter was non-zero and the branch already exists.  */
+comment|/*  * Validates that the requested branch may be created, returning the  * interpreted ref in ref, force indicates whether (non-head) branches  * may be overwritten. A non-zero return value indicates that the force  * parameter was non-zero and the branch already exists.  *  * Contrary to all of the above, when attr_only is 1, the caller is  * not interested in verifying if it is Ok to update the named  * branch to point at a potentially different commit. It is merely  * asking if it is OK to change some attribute for the named branch  * (e.g. tracking upstream).  *  * NEEDSWORK: This needs to be split into two separate functions in the  * longer run for sanity.  *  */
 end_comment
 
 begin_function_decl
@@ -72,6 +72,9 @@ name|ref
 parameter_list|,
 name|int
 name|force
+parameter_list|,
+name|int
+name|attr_only
 parameter_list|)
 function_decl|;
 end_function_decl
