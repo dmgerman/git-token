@@ -728,8 +728,10 @@ if|if
 condition|(
 name|something_displayed
 condition|)
-name|printf
+name|fprintf
 argument_list|(
+name|stderr
+argument_list|,
 literal|"Aborting\n"
 argument_list|)
 expr_stmt|;
