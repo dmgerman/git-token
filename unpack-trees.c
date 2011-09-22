@@ -5401,6 +5401,7 @@ condition|)
 goto|goto
 name|return_failed
 goto|;
+comment|/* 		 * Sparse checkout is meant to narrow down checkout area 		 * but it does not make sense to narrow down to empty working 		 * tree. This is usually a mistake in sparse checkout rules. 		 * Do not allow users to do that. 		 */
 if|if
 condition|(
 name|o
@@ -5412,7 +5413,6 @@ operator|&&
 name|empty_worktree
 condition|)
 block|{
-comment|/* dubious---why should this fail??? */
 name|ret
 operator|=
 name|unpack_failed
