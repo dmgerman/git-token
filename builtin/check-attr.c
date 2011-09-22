@@ -38,6 +38,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|cached_attrs
+specifier|static
+name|int
+name|cached_attrs
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|stdin_paths
 specifier|static
 name|int
@@ -93,6 +101,18 @@ operator|&
 name|all_attrs
 argument_list|,
 literal|"report all attributes set on file"
+argument_list|)
+block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|0
+argument_list|,
+literal|"cached"
+argument_list|,
+operator|&
+name|cached_attrs
+argument_list|,
+literal|"use .gitattributes only from the index"
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -608,6 +628,17 @@ literal|"invalid cache"
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|cached_attrs
+condition|)
+name|git_attr_set_direction
+argument_list|(
+name|GIT_ATTR_INDEX
+argument_list|,
+name|NULL
+argument_list|)
+expr_stmt|;
 name|doubledash
 operator|=
 operator|-
