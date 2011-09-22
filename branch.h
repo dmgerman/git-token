@@ -130,6 +130,27 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Read branch description  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|read_branch_desc
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|branch_name
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
