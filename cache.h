@@ -2294,7 +2294,7 @@ specifier|extern
 specifier|const
 name|char
 modifier|*
-name|read_gitfile_gently
+name|read_gitfile
 parameter_list|(
 specifier|const
 name|char
