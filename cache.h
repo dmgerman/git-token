@@ -9010,8 +9010,10 @@ modifier|*
 modifier|*
 name|pathspec
 parameter_list|,
-name|int
-name|prefix_offset
+specifier|const
+name|char
+modifier|*
+name|prefix
 parameter_list|)
 function_decl|;
 end_function_decl
