@@ -834,7 +834,22 @@ block|{
 name|unsigned
 name|int
 name|val
-init|=
+decl_stmt|;
+comment|/* 		 * hex[1]=='\0' is caught when val is checked below, 		 * but if hex[0] is NUL we have to avoid reading 		 * past the end of the string: 		 */
+if|if
+condition|(
+operator|!
+name|hex
+index|[
+literal|0
+index|]
+condition|)
+return|return
+operator|-
+literal|1
+return|;
+name|val
+operator|=
 operator|(
 name|hexval
 argument_list|(
@@ -854,7 +869,7 @@ index|[
 literal|1
 index|]
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
 name|val

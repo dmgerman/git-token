@@ -5651,6 +5651,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Try to read a SHA1 in hexadecimal format from the 40 characters  * starting at hex.  Write the 20-byte result to sha1 in binary form.  * Return 0 on success.  Reading stops if a NUL is encountered in the  * input, so it is safe to pass this function an arbitrary  * null-terminated string.  */
+end_comment
+
 begin_function_decl
 specifier|extern
 name|int
