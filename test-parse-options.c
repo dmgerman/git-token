@@ -448,6 +448,13 @@ argument_list|,
 literal|"get another string"
 argument_list|)
 block|,
+name|OPT_NOOP_NOARG
+argument_list|(
+literal|0
+argument_list|,
+literal|"obsolete"
+argument_list|)
+block|,
 name|OPT_SET_PTR
 argument_list|(
 literal|0

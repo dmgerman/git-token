@@ -585,6 +585,20 @@ define|\
 value|{ OPTION_CALLBACK, (s), (l), (v), "when", (h), PARSE_OPT_OPTARG, \ 		parse_opt_color_flag_cb, (intptr_t)"always" }
 end_define
 
+begin_define
+DECL|macro|OPT_NOOP_NOARG
+define|#
+directive|define
+name|OPT_NOOP_NOARG
+parameter_list|(
+name|s
+parameter_list|,
+name|l
+parameter_list|)
+define|\
+value|{ OPTION_CALLBACK, (s), (l), NULL, NULL, \ 	  "no-op (backward compatibility)", \ 	  PARSE_OPT_HIDDEN | PARSE_OPT_NOARG, parse_opt_noop_cb }
+end_define
+
 begin_comment
 comment|/* Deprecated synonym */
 end_comment
@@ -1021,6 +1035,25 @@ begin_function_decl
 specifier|extern
 name|int
 name|parse_opt_string_list
+parameter_list|(
+specifier|const
+name|struct
+name|option
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+parameter_list|,
+name|int
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|parse_opt_noop_cb
 parameter_list|(
 specifier|const
 name|struct

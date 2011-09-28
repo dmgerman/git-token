@@ -683,5 +683,31 @@ return|;
 block|}
 end_function
 
+begin_function
+DECL|function|parse_opt_noop_cb
+name|int
+name|parse_opt_noop_cb
+parameter_list|(
+specifier|const
+name|struct
+name|option
+modifier|*
+name|opt
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|arg
+parameter_list|,
+name|int
+name|unset
+parameter_list|)
+block|{
+return|return
+literal|0
+return|;
+block|}
+end_function
+
 end_unit
 
