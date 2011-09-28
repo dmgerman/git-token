@@ -379,9 +379,6 @@ init|=
 name|revert_or_cherry_pick_usage
 argument_list|()
 decl_stmt|;
-name|int
-name|noop
-decl_stmt|;
 name|struct
 name|option
 name|options
@@ -412,28 +409,12 @@ argument_list|,
 literal|"edit the commit message"
 argument_list|)
 block|,
-block|{
-name|OPTION_BOOLEAN
-block|,
+name|OPT_NOOP_NOARG
+argument_list|(
 literal|'r'
-block|,
+argument_list|,
 name|NULL
-block|,
-operator|&
-name|noop
-block|,
-name|NULL
-block|,
-literal|"no-op (backward compatibility)"
-block|,
-name|PARSE_OPT_NOARG
-operator||
-name|PARSE_OPT_HIDDEN
-block|,
-name|NULL
-block|,
-literal|0
-block|}
+argument_list|)
 block|,
 name|OPT_BOOLEAN
 argument_list|(
