@@ -974,7 +974,11 @@ name|name_rev_usage
 index|[]
 init|=
 block|{
-literal|"git name-rev [options] ( --all | --stdin |<commit>... )"
+literal|"git name-rev [options]<commit>..."
+block|,
+literal|"git name-rev [options] --all"
+block|,
+literal|"git name-rev [options] --stdin"
 block|,
 name|NULL
 block|}
