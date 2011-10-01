@@ -177,6 +177,13 @@ argument_list|,
 literal|"$()*+.?[\\^{|"
 argument_list|)
 expr_stmt|;
+name|TEST_CLASS
+argument_list|(
+name|is_pathspec_magic
+argument_list|,
+literal|"!\"#%&',-/:;<=>@_`~"
+argument_list|)
+expr_stmt|;
 return|return
 name|rc
 return|;
