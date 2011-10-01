@@ -491,6 +491,13 @@ name|disable_stdin
 range|:
 literal|1
 decl_stmt|;
+DECL|member|leak_pending
+name|unsigned
+name|int
+name|leak_pending
+range|:
+literal|1
+decl_stmt|;
 DECL|member|date_mode
 name|enum
 name|date_mode
