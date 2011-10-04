@@ -4780,10 +4780,12 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+specifier|const
 name|char
 modifier|*
 name|enter_repo
 parameter_list|(
+specifier|const
 name|char
 modifier|*
 name|path

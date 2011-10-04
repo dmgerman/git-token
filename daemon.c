@@ -537,6 +537,7 @@ end_function
 begin_function
 DECL|function|path_ok
 specifier|static
+specifier|const
 name|char
 modifier|*
 name|path_ok
@@ -560,6 +561,7 @@ index|[
 name|PATH_MAX
 index|]
 decl_stmt|;
+specifier|const
 name|char
 modifier|*
 name|path
