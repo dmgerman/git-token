@@ -545,6 +545,10 @@ specifier|const
 name|char
 modifier|*
 name|component
+parameter_list|,
+name|void
+modifier|*
+name|cb_data
 parameter_list|)
 block|{
 name|show_object_with_name

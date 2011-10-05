@@ -10447,6 +10447,10 @@ specifier|const
 name|char
 modifier|*
 name|last
+parameter_list|,
+name|void
+modifier|*
+name|data
 parameter_list|)
 block|{
 name|char
