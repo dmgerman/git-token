@@ -94,7 +94,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Same as the above, but can be used to unwrap many arguments in the  * same string separated by space. "next" is changed to point to the  * next argument that should be passed as first parameter. When there  * is no more argument to be dequoted, "next" is updated to point to NULL.  */
+comment|/*  * Same as the above, but can be used to unwrap many arguments in the  * same string separated by space. Like sq_quote, it works in place,  * modifying arg and appending pointers into it to argv.  */
 end_comment
 
 begin_function_decl
@@ -120,6 +120,32 @@ parameter_list|,
 name|int
 modifier|*
 name|alloc
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/*  * Same as above, but store the unquoted strings in an argv_array. We will  * still modify arg in place, but unlike sq_dequote_to_argv, the argv_array  * will duplicate and take ownership of the strings.  */
+end_comment
+
+begin_struct_decl
+struct_decl|struct
+name|argv_array
+struct_decl|;
+end_struct_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|sq_dequote_to_argv_array
+parameter_list|(
+name|char
+modifier|*
+name|arg
+parameter_list|,
+name|struct
+name|argv_array
+modifier|*
 parameter_list|)
 function_decl|;
 end_function_decl
