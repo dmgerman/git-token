@@ -3474,6 +3474,9 @@ name|struct
 name|pathspec
 modifier|*
 name|pathspec
+parameter_list|,
+name|int
+name|exc_std
 parameter_list|)
 block|{
 name|struct
@@ -3500,6 +3503,10 @@ name|dir
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|exc_std
+condition|)
 name|setup_standard_excludes
 argument_list|(
 operator|&
@@ -4181,6 +4188,15 @@ name|int
 name|cached
 init|=
 literal|0
+decl_stmt|,
+name|untracked
+init|=
+literal|0
+decl_stmt|,
+name|opt_exclude
+init|=
+operator|-
+literal|1
 decl_stmt|;
 name|int
 name|seen_dashdash
@@ -4279,16 +4295,49 @@ argument_list|,
 literal|"search in index instead of in the work tree"
 argument_list|)
 block|,
+block|{
+name|OPTION_BOOLEAN
+block|,
+literal|0
+block|,
+literal|"index"
+block|,
+operator|&
+name|use_index
+block|,
+name|NULL
+block|,
+literal|"finds in contents not managed by git"
+block|,
+name|PARSE_OPT_NOARG
+operator||
+name|PARSE_OPT_NEGHELP
+block|}
+block|,
 name|OPT_BOOLEAN
 argument_list|(
 literal|0
 argument_list|,
-literal|"index"
+literal|"untracked"
 argument_list|,
 operator|&
-name|use_index
+name|untracked
 argument_list|,
-literal|"--no-index finds in contents not managed by git"
+literal|"search in both tracked and untracked files"
+argument_list|)
+block|,
+name|OPT_SET_INT
+argument_list|(
+literal|0
+argument_list|,
+literal|"exclude-standard"
+argument_list|,
+operator|&
+name|opt_exclude
+argument_list|,
+literal|"search also in ignored files"
+argument_list|,
+literal|1
 argument_list|)
 block|,
 name|OPT_GROUP
@@ -5812,20 +5861,44 @@ if|if
 condition|(
 operator|!
 name|use_index
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
+operator|(
+name|untracked
+operator|||
 name|cached
+operator|)
 condition|)
 name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"--cached cannot be used with --no-index."
+literal|"--cached or --untracked cannot be used with --no-index."
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|use_index
+operator|||
+name|untracked
+condition|)
+block|{
+name|int
+name|use_exclude
+init|=
+operator|(
+name|opt_exclude
+operator|<
+literal|0
+operator|)
+condition|?
+name|use_index
+else|:
+operator|!
+operator|!
+name|opt_exclude
+decl_stmt|;
 if|if
 condition|(
 name|list
@@ -5836,7 +5909,7 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"--no-index cannot be used with revs."
+literal|"--no-index or --untracked cannot be used with revs."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -5849,6 +5922,25 @@ name|opt
 argument_list|,
 operator|&
 name|pathspec
+argument_list|,
+name|use_exclude
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+literal|0
+operator|<=
+name|opt_exclude
+condition|)
+block|{
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"--exclude or --no-exclude cannot be used for tracked contents."
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
