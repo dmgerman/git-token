@@ -5007,7 +5007,7 @@ name|name
 argument_list|)
 condition|)
 return|return
-name|strdup
+name|xstrdup
 argument_list|(
 name|refspec
 operator|->

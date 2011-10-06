@@ -2792,7 +2792,7 @@ name|elem
 operator|->
 name|origin
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 literal|""
 argument_list|)

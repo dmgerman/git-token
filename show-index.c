@@ -341,7 +341,7 @@ block|}
 modifier|*
 name|entries
 init|=
-name|malloc
+name|xmalloc
 argument_list|(
 name|nr
 operator|*

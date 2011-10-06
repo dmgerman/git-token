@@ -6591,7 +6591,7 @@ name|ai_canonname
 operator|=
 name|h
 condition|?
-name|strdup
+name|xstrdup
 argument_list|(
 name|h
 operator|->

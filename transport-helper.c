@@ -1051,7 +1051,7 @@ name|refspec_nr
 operator|++
 index|]
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|capname
 operator|+
@@ -2633,7 +2633,7 @@ expr_stmt|;
 else|else
 name|private
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|posn
 operator|->

@@ -214,7 +214,7 @@ index|]
 operator|=
 name|base_name
 condition|?
-name|strdup
+name|xstrdup
 argument_list|(
 name|basename
 argument_list|(
