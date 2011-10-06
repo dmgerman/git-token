@@ -532,8 +532,6 @@ decl_stmt|;
 name|int
 name|i
 decl_stmt|,
-name|has_changes
-decl_stmt|,
 name|err
 decl_stmt|;
 name|regex_t
@@ -626,13 +624,8 @@ for|for
 control|(
 name|i
 operator|=
-name|has_changes
-operator|=
 literal|0
 init|;
-operator|!
-name|has_changes
-operator|&&
 name|i
 operator|<
 name|q
@@ -667,16 +660,11 @@ argument_list|,
 name|o
 argument_list|)
 condition|)
-name|has_changes
-operator|++
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|has_changes
-condition|)
-return|return;
+goto|goto
+name|out
+goto|;
 comment|/* do not munge the queue */
+block|}
 comment|/* 		 * Otherwise we will clear the whole queue by copying 		 * the empty outq at the end of this function, but 		 * first clear the current entries in the queue. 		 */
 for|for
 control|(
@@ -763,12 +751,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|regfree
-argument_list|(
-operator|&
-name|regex
-argument_list|)
-expr_stmt|;
 name|free
 argument_list|(
 name|q
@@ -780,6 +762,14 @@ operator|*
 name|q
 operator|=
 name|outq
+expr_stmt|;
+name|out
+label|:
+name|regfree
+argument_list|(
+operator|&
+name|regex
+argument_list|)
 expr_stmt|;
 return|return;
 block|}
