@@ -3831,6 +3831,15 @@ end_decl_stmt
 
 begin_decl_stmt
 specifier|extern
+specifier|const
+name|char
+modifier|*
+name|git_attributes_file
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
 name|int
 name|zlib_compression_level
 decl_stmt|;
