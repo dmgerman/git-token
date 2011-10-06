@@ -596,6 +596,12 @@ name|cache_entry
 modifier|*
 name|next
 decl_stmt|;
+DECL|member|dir_next
+name|struct
+name|cache_entry
+modifier|*
+name|dir_next
+decl_stmt|;
 DECL|member|name
 name|char
 name|name
