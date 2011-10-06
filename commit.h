@@ -1317,6 +1317,11 @@ specifier|const
 name|char
 modifier|*
 name|author
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|sign_commit
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -1350,6 +1355,11 @@ specifier|const
 name|char
 modifier|*
 name|author
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|sign_commit
 parameter_list|,
 name|struct
 name|commit_extra_header
