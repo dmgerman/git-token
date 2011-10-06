@@ -2222,13 +2222,6 @@ block|{
 name|int
 name|ch
 decl_stmt|;
-name|strbuf_grow
-argument_list|(
-name|sb
-argument_list|,
-literal|0
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|feof
