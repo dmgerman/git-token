@@ -461,6 +461,16 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|merge_log_config
+name|int
+name|merge_log_config
+init|=
+operator|-
+literal|1
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|startup_info
 name|struct
 name|startup_info
