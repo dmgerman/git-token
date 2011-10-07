@@ -5228,8 +5228,10 @@ argument_list|,
 name|ref_nr
 argument_list|)
 expr_stmt|;
-name|free
+name|free_refspec
 argument_list|(
+name|ref_nr
+argument_list|,
 name|refspec
 argument_list|)
 expr_stmt|;
