@@ -620,6 +620,16 @@ condition|)
 return|return
 name|NULL
 return|;
+if|if
+condition|(
+operator|!
+name|array
+operator|->
+name|nr
+condition|)
+return|return
+name|NULL
+return|;
 name|len
 operator|=
 name|strlen
