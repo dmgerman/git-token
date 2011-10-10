@@ -5340,7 +5340,8 @@ operator|==
 literal|'-'
 condition|)
 return|return
-name|CHECK_REF_FORMAT_ERROR
+operator|-
+literal|1
 return|;
 name|strbuf_splice
 argument_list|(
@@ -5356,11 +5357,13 @@ literal|11
 argument_list|)
 expr_stmt|;
 return|return
-name|check_ref_format
+name|check_refname_format
 argument_list|(
 name|sb
 operator|->
 name|buf
+argument_list|,
+literal|0
 argument_list|)
 return|;
 block|}

@@ -1082,9 +1082,11 @@ return|;
 if|if
 condition|(
 operator|!
-name|check_ref_format
+name|check_refname_format
 argument_list|(
 name|target
+argument_list|,
+literal|0
 argument_list|)
 condition|)
 block|{

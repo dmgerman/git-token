@@ -3580,25 +3580,15 @@ argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
-switch|switch
+if|if
 condition|(
-name|check_ref_format
+name|check_refname_format
 argument_list|(
 name|name
+argument_list|,
+name|REFNAME_ALLOW_ONELEVEL
 argument_list|)
 condition|)
-block|{
-case|case
-literal|0
-case|:
-break|break;
-comment|/* its valid */
-case|case
-name|CHECK_REF_FORMAT_ONELEVEL
-case|:
-break|break;
-comment|/* valid, but too few '/', allow anyway */
-default|default:
 name|die
 argument_list|(
 literal|"Branch name doesn't conform to GIT standards: %s"
@@ -3606,7 +3596,6 @@ argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
-block|}
 name|b
 operator|=
 name|pool_calloc

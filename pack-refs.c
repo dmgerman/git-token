@@ -399,7 +399,7 @@ condition|)
 name|p
 operator|++
 expr_stmt|;
-comment|/* tolerate duplicate slashes; see check_ref_format() */
+comment|/* tolerate duplicate slashes; see check_refname_format() */
 while|while
 condition|(
 operator|*
