@@ -2592,9 +2592,6 @@ name|char
 modifier|*
 name|base
 parameter_list|,
-name|int
-name|baselen
-parameter_list|,
 specifier|const
 name|char
 modifier|*
@@ -2844,8 +2841,6 @@ name|match_dir_prefix
 argument_list|(
 name|base_str
 argument_list|,
-name|baselen
-argument_list|,
 name|match
 argument_list|,
 name|matchlen
@@ -2903,9 +2898,13 @@ name|max_depth
 argument_list|)
 return|;
 block|}
-comment|/* Does the base match? */
+comment|/* Either there must be no base, or the base must match. */
 if|if
 condition|(
+name|baselen
+operator|==
+literal|0
+operator|||
 operator|!
 name|strncmp
 argument_list|(
