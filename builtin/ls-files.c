@@ -2972,10 +2972,8 @@ expr_stmt|;
 comment|/* Find common prefix for all pathspec's */
 name|max_prefix
 operator|=
-name|pathspec_prefix
+name|common_prefix
 argument_list|(
-name|prefix
-argument_list|,
 name|pathspec
 argument_list|)
 expr_stmt|;

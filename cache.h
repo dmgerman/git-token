@@ -2405,27 +2405,6 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-specifier|const
-name|char
-modifier|*
-name|pathspec_prefix
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|prefix
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-modifier|*
-name|pathspec
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-specifier|extern
 name|void
 name|setup_work_tree
 parameter_list|(

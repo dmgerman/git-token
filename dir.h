@@ -296,6 +296,21 @@ end_define
 
 begin_function_decl
 specifier|extern
+name|char
+modifier|*
+name|common_prefix
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|pathspec
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|int
 name|match_pathspec
 parameter_list|(
