@@ -3748,5 +3748,37 @@ return|;
 block|}
 end_function
 
+begin_function
+DECL|function|resolve_gitdir
+specifier|const
+name|char
+modifier|*
+name|resolve_gitdir
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|suspect
+parameter_list|)
+block|{
+if|if
+condition|(
+name|is_git_directory
+argument_list|(
+name|suspect
+argument_list|)
+condition|)
+return|return
+name|suspect
+return|;
+return|return
+name|read_gitfile
+argument_list|(
+name|suspect
+argument_list|)
+return|;
+block|}
+end_function
+
 end_unit
 
