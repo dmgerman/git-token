@@ -5140,10 +5140,12 @@ name|st
 operator|.
 name|st_size
 operator|>
+literal|9
+operator|+
 name|PATH_MAX
 condition|)
 return|return
-literal|1
+literal|0
 return|;
 name|fd
 operator|=
