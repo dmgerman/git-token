@@ -28,6 +28,12 @@ directive|include
 file|"attr.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"dir.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|git_attr__true
 specifier|const
@@ -3159,7 +3165,7 @@ name|pathname
 expr_stmt|;
 return|return
 operator|(
-name|fnmatch
+name|fnmatch_icase
 argument_list|(
 name|pattern
 argument_list|,
@@ -3222,7 +3228,7 @@ name|baselen
 operator|++
 expr_stmt|;
 return|return
-name|fnmatch
+name|fnmatch_icase
 argument_list|(
 name|pattern
 argument_list|,
