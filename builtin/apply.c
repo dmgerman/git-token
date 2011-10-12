@@ -7273,6 +7273,26 @@ operator|->
 name|def_name
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+name|patch
+operator|->
+name|is_delete
+operator|&&
+operator|!
+name|patch
+operator|->
+name|new_name
+condition|)
+name|die
+argument_list|(
+literal|"git diff header lacks filename information "
+literal|"(line %d)"
+argument_list|,
+name|linenr
+argument_list|)
+expr_stmt|;
 name|patch
 operator|->
 name|is_toplevel_relative
