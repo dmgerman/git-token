@@ -601,7 +601,7 @@ return|return
 literal|0
 return|;
 case|case
-name|OPTION_BOOLEAN
+name|OPTION_COUNTUP
 case|:
 operator|*
 operator|(
@@ -2054,7 +2054,7 @@ name|type
 condition|)
 block|{
 case|case
-name|OPTION_BOOLEAN
+name|OPTION_COUNTUP
 case|:
 case|case
 name|OPTION_BIT
