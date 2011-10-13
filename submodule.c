@@ -4802,6 +4802,9 @@ name|b
 index|[
 literal|20
 index|]
+parameter_list|,
+name|int
+name|search
 parameter_list|)
 block|{
 name|struct
@@ -5014,6 +5017,15 @@ literal|1
 return|;
 block|}
 comment|/* 	 * Case #2: There are one or more merges that contain a and b in 	 * the submodule. If there is only one, then present it as a 	 * suggestion to the user, but leave it marked unmerged so the 	 * user needs to confirm the resolution. 	 */
+comment|/* Skip the search if makes no sense to the calling context.  */
+if|if
+condition|(
+operator|!
+name|search
+condition|)
+return|return
+literal|0
+return|;
 comment|/* find commit which merges them */
 name|parent_count
 operator|=
