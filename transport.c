@@ -5346,6 +5346,13 @@ name|is_file
 argument_list|(
 name|url
 argument_list|)
+operator|&&
+name|is_bundle
+argument_list|(
+name|url
+argument_list|,
+literal|1
+argument_list|)
 condition|)
 block|{
 name|struct
