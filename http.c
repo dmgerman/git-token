@@ -306,6 +306,7 @@ end_decl_stmt
 begin_decl_stmt
 DECL|variable|user_name
 DECL|variable|user_pass
+DECL|variable|description
 specifier|static
 name|char
 modifier|*
@@ -313,6 +314,9 @@ name|user_name
 decl_stmt|,
 modifier|*
 name|user_pass
+decl_stmt|,
+modifier|*
+name|description
 decl_stmt|;
 end_decl_stmt
 
@@ -817,6 +821,86 @@ directive|endif
 end_endif
 
 begin_function
+DECL|function|git_getpass_with_description
+specifier|static
+name|char
+modifier|*
+name|git_getpass_with_description
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|what
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|desc
+parameter_list|)
+block|{
+name|struct
+name|strbuf
+name|prompt
+init|=
+name|STRBUF_INIT
+decl_stmt|;
+name|char
+modifier|*
+name|r
+decl_stmt|;
+if|if
+condition|(
+name|desc
+condition|)
+name|strbuf_addf
+argument_list|(
+operator|&
+name|prompt
+argument_list|,
+literal|"%s for '%s': "
+argument_list|,
+name|what
+argument_list|,
+name|desc
+argument_list|)
+expr_stmt|;
+else|else
+name|strbuf_addf
+argument_list|(
+operator|&
+name|prompt
+argument_list|,
+literal|"%s: "
+argument_list|,
+name|what
+argument_list|)
+expr_stmt|;
+comment|/* 	 * NEEDSWORK: for usernames, we should do something less magical that 	 * actually echoes the characters. However, we need to read from 	 * /dev/tty and not stdio, which is not portable (but getpass will do 	 * it for us). http.c uses the same workaround. 	 */
+name|r
+operator|=
+name|git_getpass
+argument_list|(
+name|prompt
+operator|.
+name|buf
+argument_list|)
+expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|prompt
+argument_list|)
+expr_stmt|;
+return|return
+name|xstrdup
+argument_list|(
+name|r
+argument_list|)
+return|;
+block|}
+end_function
+
+begin_function
 DECL|function|http_options
 specifier|static
 name|int
@@ -1275,9 +1359,11 @@ name|user_pass
 operator|=
 name|xstrdup
 argument_list|(
-name|git_getpass
+name|git_getpass_with_description
 argument_list|(
-literal|"Password: "
+literal|"Password"
+argument_list|,
+name|description
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1351,9 +1437,11 @@ literal|1
 expr_stmt|;
 name|ssl_cert_password
 operator|=
-name|git_getpass
+name|git_getpass_with_description
 argument_list|(
-literal|"Certificate Password: "
+literal|"Certificate Password"
+argument_list|,
+name|description
 argument_list|)
 expr_stmt|;
 if|if
@@ -1720,6 +1808,7 @@ modifier|*
 name|url
 parameter_list|)
 block|{
+specifier|const
 name|char
 modifier|*
 name|at
@@ -1732,6 +1821,9 @@ name|cp
 decl_stmt|,
 modifier|*
 name|slash
+decl_stmt|,
+modifier|*
+name|host
 decl_stmt|;
 name|cp
 operator|=
@@ -1789,8 +1881,14 @@ name|slash
 operator|<=
 name|at
 condition|)
-return|return;
-comment|/* No credentials */
+block|{
+comment|/* No credentials, but we may have to ask for some later */
+name|host
+operator|=
+name|cp
+expr_stmt|;
+block|}
+elseif|else
 if|if
 condition|(
 operator|!
@@ -1816,6 +1914,12 @@ expr_stmt|;
 name|user_pass
 operator|=
 name|NULL
+expr_stmt|;
+name|host
+operator|=
+name|at
+operator|+
+literal|1
 expr_stmt|;
 block|}
 else|else
@@ -1848,7 +1952,24 @@ literal|1
 operator|)
 argument_list|)
 expr_stmt|;
+name|host
+operator|=
+name|at
+operator|+
+literal|1
+expr_stmt|;
 block|}
+name|description
+operator|=
+name|url_decode_mem
+argument_list|(
+name|host
+argument_list|,
+name|slash
+operator|-
+name|host
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
@@ -4206,9 +4327,11 @@ name|user_name
 operator|=
 name|xstrdup
 argument_list|(
-name|git_getpass
+name|git_getpass_with_description
 argument_list|(
-literal|"Username: "
+literal|"Username"
+argument_list|,
+name|description
 argument_list|)
 argument_list|)
 expr_stmt|;
