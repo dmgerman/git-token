@@ -127,6 +127,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|informative_errors
+specifier|static
+name|int
+name|informative_errors
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|daemon_usage
 specifier|static
 specifier|const
@@ -1234,6 +1242,50 @@ block|}
 end_function
 
 begin_function
+DECL|function|daemon_error
+specifier|static
+name|int
+name|daemon_error
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|dir
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|msg
+parameter_list|)
+block|{
+if|if
+condition|(
+operator|!
+name|informative_errors
+condition|)
+name|msg
+operator|=
+literal|"access denied or repository not exported"
+expr_stmt|;
+name|packet_write
+argument_list|(
+literal|1
+argument_list|,
+literal|"ERR %s: %s"
+argument_list|,
+name|msg
+argument_list|,
+name|dir
+argument_list|)
+expr_stmt|;
+return|return
+operator|-
+literal|1
+return|;
+block|}
+end_function
+
+begin_function
 DECL|function|run_service
 specifier|static
 name|int
@@ -1297,8 +1349,12 @@ operator|=
 name|EACCES
 expr_stmt|;
 return|return
-operator|-
-literal|1
+name|daemon_error
+argument_list|(
+name|dir
+argument_list|,
+literal|"service not enabled"
+argument_list|)
 return|;
 block|}
 if|if
@@ -1314,8 +1370,12 @@ argument_list|)
 operator|)
 condition|)
 return|return
-operator|-
-literal|1
+name|daemon_error
+argument_list|(
+name|dir
+argument_list|,
+literal|"no such repository"
+argument_list|)
 return|;
 comment|/* 	 * Security on the cheap. 	 * 	 * We want a readable HEAD, usable "objects" directory, and 	 * a "git-daemon-export-ok" flag that says that the other side 	 * is ok with us doing this. 	 * 	 * path_ok() uses enter_repo() and does whitelist checking. 	 * We only need to make sure the repository is exported. 	 */
 if|if
@@ -1343,8 +1403,12 @@ operator|=
 name|EACCES
 expr_stmt|;
 return|return
-operator|-
-literal|1
+name|daemon_error
+argument_list|(
+name|dir
+argument_list|,
+literal|"repository not exported"
+argument_list|)
 return|;
 block|}
 if|if
@@ -1403,8 +1467,12 @@ operator|=
 name|EACCES
 expr_stmt|;
 return|return
-operator|-
-literal|1
+name|daemon_error
+argument_list|(
+name|dir
+argument_list|,
+literal|"service not enabled"
+argument_list|)
 return|;
 block|}
 comment|/* 	 * We'll ignore SIGTERM from now on, we have a 	 * good client. 	 */
@@ -5978,6 +6046,40 @@ literal|18
 argument_list|,
 literal|0
 argument_list|)
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|prefixcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--informative-errors"
+argument_list|)
+condition|)
+block|{
+name|informative_errors
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|prefixcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--no-informative-errors"
+argument_list|)
+condition|)
+block|{
+name|informative_errors
+operator|=
+literal|0
 expr_stmt|;
 continue|continue;
 block|}
