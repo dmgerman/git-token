@@ -1826,9 +1826,11 @@ name|rev
 decl_stmt|;
 name|head
 operator|=
-name|lookup_commit
+name|lookup_commit_or_die
 argument_list|(
 name|head_sha1
+argument_list|,
+literal|"HEAD"
 argument_list|)
 expr_stmt|;
 name|init_revisions
