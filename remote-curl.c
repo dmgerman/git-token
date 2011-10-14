@@ -4871,6 +4871,8 @@ expr_stmt|;
 name|http_init
 argument_list|(
 name|remote
+argument_list|,
+name|url
 argument_list|)
 expr_stmt|;
 do|do
