@@ -842,6 +842,21 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|void
+name|clear_commit_marks_for_object_array
+parameter_list|(
+name|struct
+name|object_array
+modifier|*
+name|a
+parameter_list|,
+name|unsigned
+name|mark
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/*  * Performs an in-place topological sort of list supplied.  *  *   invariant of resulting list is:  *      a reachable from b => ord(b)< ord(a)  *   in addition, when lifo == 0, commits on parallel tracks are  *   sorted in the dates order.  */
 end_comment
