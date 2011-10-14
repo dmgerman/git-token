@@ -3506,12 +3506,6 @@ name|dir
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|setup_standard_excludes
-argument_list|(
-operator|&
-name|dir
-argument_list|)
-expr_stmt|;
 name|fill_directory
 argument_list|(
 operator|&
@@ -4285,17 +4279,24 @@ argument_list|,
 literal|"search in index instead of in the work tree"
 argument_list|)
 block|,
-name|OPT_BOOLEAN
-argument_list|(
+block|{
+name|OPTION_BOOLEAN
+block|,
 literal|0
-argument_list|,
+block|,
 literal|"index"
-argument_list|,
+block|,
 operator|&
 name|use_index
-argument_list|,
-literal|"--no-index finds in contents not managed by git"
-argument_list|)
+block|,
+name|NULL
+block|,
+literal|"finds in contents not managed by git"
+block|,
+name|PARSE_OPT_NOARG
+operator||
+name|PARSE_OPT_NEGHELP
+block|}
 block|,
 name|OPT_GROUP
 argument_list|(
