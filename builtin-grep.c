@@ -5205,7 +5205,7 @@ name|opt_exclude
 condition|)
 name|die
 argument_list|(
-literal|"--exclude or --no-exclude cannot be used for tracked contents."
+literal|"--[no-]exclude-standard cannot be used for tracked contents."
 argument_list|)
 expr_stmt|;
 if|if
