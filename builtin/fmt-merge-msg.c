@@ -232,7 +232,7 @@ literal|20
 index|]
 decl_stmt|;
 DECL|member|is_local_branch
-name|int
+name|unsigned
 name|is_local_branch
 range|:
 literal|1
