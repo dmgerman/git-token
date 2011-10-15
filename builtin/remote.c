@@ -1997,6 +1997,14 @@ argument_list|(
 name|states
 operator|->
 name|remote
+operator|->
+name|fetch
+argument_list|,
+name|states
+operator|->
+name|remote
+operator|->
+name|fetch_refspec_nr
 argument_list|,
 name|fetch_map
 argument_list|)
