@@ -5945,7 +5945,7 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"--exclude or --no-exclude cannot be used for tracked contents."
+literal|"--[no-]exclude-standard cannot be used for tracked contents."
 argument_list|)
 argument_list|)
 expr_stmt|;
