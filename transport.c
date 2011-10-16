@@ -2466,6 +2466,14 @@ argument_list|,
 name|data
 operator|->
 name|fd
+argument_list|,
+name|transport
+operator|->
+name|progress
+condition|?
+name|BUNDLE_VERBOSE
+else|:
+literal|0
 argument_list|)
 return|;
 block|}
