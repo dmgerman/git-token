@@ -738,14 +738,14 @@ comment|/*  * Future: need to be in "struct repository"  * when doing a full lib
 end_comment
 
 begin_struct
-DECL|struct|cached_refs
+DECL|struct|ref_cache
 specifier|static
 struct|struct
-name|cached_refs
+name|ref_cache
 block|{
 DECL|member|next
 name|struct
-name|cached_refs
+name|ref_cache
 modifier|*
 name|next
 decl_stmt|;
@@ -775,10 +775,10 @@ index|[
 name|FLEX_ARRAY
 index|]
 decl_stmt|;
-DECL|variable|cached_refs
+DECL|variable|ref_cache
 block|}
 modifier|*
-name|cached_refs
+name|ref_cache
 struct|;
 end_struct
 
@@ -868,13 +868,13 @@ block|}
 end_function
 
 begin_function
-DECL|function|clear_cached_refs
+DECL|function|clear_ref_cache
 specifier|static
 name|void
-name|clear_cached_refs
+name|clear_ref_cache
 parameter_list|(
 name|struct
-name|cached_refs
+name|ref_cache
 modifier|*
 name|ca
 parameter_list|)
@@ -921,12 +921,12 @@ block|}
 end_function
 
 begin_function
-DECL|function|create_cached_refs
+DECL|function|create_ref_cache
 specifier|static
 name|struct
-name|cached_refs
+name|ref_cache
 modifier|*
-name|create_cached_refs
+name|create_ref_cache
 parameter_list|(
 specifier|const
 name|char
@@ -938,7 +938,7 @@ name|int
 name|len
 decl_stmt|;
 name|struct
-name|cached_refs
+name|ref_cache
 modifier|*
 name|refs
 decl_stmt|;
@@ -969,7 +969,7 @@ argument_list|,
 sizeof|sizeof
 argument_list|(
 expr|struct
-name|cached_refs
+name|ref_cache
 argument_list|)
 operator|+
 name|len
@@ -993,16 +993,16 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Return a pointer to a cached_refs for the specified submodule. For  * the main repository, use submodule==NULL. The returned structure  * will be allocated and initialized but not necessarily populated; it  * should not be freed.  */
+comment|/*  * Return a pointer to a ref_cache for the specified submodule. For  * the main repository, use submodule==NULL. The returned structure  * will be allocated and initialized but not necessarily populated; it  * should not be freed.  */
 end_comment
 
 begin_function
-DECL|function|get_cached_refs
+DECL|function|get_ref_cache
 specifier|static
 name|struct
-name|cached_refs
+name|ref_cache
 modifier|*
-name|get_cached_refs
+name|get_ref_cache
 parameter_list|(
 specifier|const
 name|char
@@ -1011,11 +1011,11 @@ name|submodule
 parameter_list|)
 block|{
 name|struct
-name|cached_refs
+name|ref_cache
 modifier|*
 name|refs
 init|=
-name|cached_refs
+name|ref_cache
 decl_stmt|;
 if|if
 condition|(
@@ -1055,7 +1055,7 @@ expr_stmt|;
 block|}
 name|refs
 operator|=
-name|create_cached_refs
+name|create_ref_cache
 argument_list|(
 name|submodule
 argument_list|)
@@ -1064,9 +1064,9 @@ name|refs
 operator|->
 name|next
 operator|=
-name|cached_refs
+name|ref_cache
 expr_stmt|;
-name|cached_refs
+name|ref_cache
 operator|=
 name|refs
 expr_stmt|;
@@ -1077,27 +1077,27 @@ block|}
 end_function
 
 begin_function
-DECL|function|invalidate_cached_refs
+DECL|function|invalidate_ref_cache
 specifier|static
 name|void
-name|invalidate_cached_refs
+name|invalidate_ref_cache
 parameter_list|(
 name|void
 parameter_list|)
 block|{
 name|struct
-name|cached_refs
+name|ref_cache
 modifier|*
 name|refs
 init|=
-name|cached_refs
+name|ref_cache
 decl_stmt|;
 while|while
 condition|(
 name|refs
 condition|)
 block|{
-name|clear_cached_refs
+name|clear_ref_cache
 argument_list|(
 name|refs
 argument_list|)
@@ -1381,11 +1381,11 @@ name|submodule
 parameter_list|)
 block|{
 name|struct
-name|cached_refs
+name|ref_cache
 modifier|*
 name|refs
 init|=
-name|get_cached_refs
+name|get_ref_cache
 argument_list|(
 name|submodule
 argument_list|)
@@ -2034,11 +2034,11 @@ name|submodule
 parameter_list|)
 block|{
 name|struct
-name|cached_refs
+name|ref_cache
 modifier|*
 name|refs
 init|=
-name|get_cached_refs
+name|get_ref_cache
 argument_list|(
 name|submodule
 argument_list|)
@@ -6679,7 +6679,7 @@ name|ref_name
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|invalidate_cached_refs
+name|invalidate_ref_cache
 argument_list|()
 expr_stmt|;
 name|unlock_ref
@@ -8325,7 +8325,7 @@ operator|-
 literal|1
 return|;
 block|}
-name|invalidate_cached_refs
+name|invalidate_ref_cache
 argument_list|()
 expr_stmt|;
 if|if
