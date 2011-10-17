@@ -1078,7 +1078,6 @@ end_function
 
 begin_function
 DECL|function|invalidate_ref_cache
-specifier|static
 name|void
 name|invalidate_ref_cache
 parameter_list|(
