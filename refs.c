@@ -8355,9 +8355,12 @@ operator|-
 literal|1
 return|;
 block|}
-name|invalidate_ref_cache
+name|clear_loose_ref_cache
+argument_list|(
+name|get_ref_cache
 argument_list|(
 name|NULL
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
