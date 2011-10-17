@@ -2107,6 +2107,10 @@ name|MAXREFLEN
 value|(1024)
 end_define
 
+begin_comment
+comment|/*  * Called by resolve_gitlink_ref_recursive() after it failed to read  * from "name", which is "module/.git/<refname>". Find<refname> in  * the packed-refs file for the submodule.  */
+end_comment
+
 begin_function
 DECL|function|resolve_gitlink_packed_ref
 specifier|static
@@ -2146,12 +2150,49 @@ name|struct
 name|ref_array
 modifier|*
 name|array
-init|=
+decl_stmt|;
+comment|/* being defensive: resolve_gitlink_ref() did this for us */
+if|if
+condition|(
+name|pathlen
+operator|<
+literal|6
+operator|||
+name|memcmp
+argument_list|(
+name|name
+operator|+
+name|pathlen
+operator|-
+literal|6
+argument_list|,
+literal|"/.git/"
+argument_list|,
+literal|6
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"Oops"
+argument_list|)
+expr_stmt|;
+name|name
+index|[
+name|pathlen
+operator|-
+literal|6
+index|]
+operator|=
+literal|'\0'
+expr_stmt|;
+comment|/* make it path to the submodule */
+name|array
+operator|=
 name|get_packed_refs
 argument_list|(
 name|name
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|ref
 operator|=
 name|search_ref_array
