@@ -2833,6 +2833,8 @@ name|int
 name|i
 decl_stmt|,
 name|wo_end
+decl_stmt|,
+name|last_untagged
 decl_stmt|;
 name|struct
 name|object_entry
@@ -2963,7 +2965,7 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
-comment|/* 	 * Give the commits in the original recency order until 	 * we see a tagged tip. 	 */
+comment|/* 	 * Give the objects in the original recency order until 	 * we see a tagged tip. 	 */
 for|for
 control|(
 name|i
@@ -3005,6 +3007,10 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
+name|last_untagged
+operator|=
+name|i
+expr_stmt|;
 comment|/* 	 * Then fill all the tagged tips. 	 */
 for|for
 control|(
@@ -3046,7 +3052,7 @@ for|for
 control|(
 name|i
 operator|=
-literal|0
+name|last_untagged
 init|;
 name|i
 operator|<
@@ -3097,7 +3103,7 @@ for|for
 control|(
 name|i
 operator|=
-literal|0
+name|last_untagged
 init|;
 name|i
 operator|<
@@ -3139,7 +3145,7 @@ for|for
 control|(
 name|i
 operator|=
-literal|0
+name|last_untagged
 init|;
 name|i
 operator|<
@@ -3148,6 +3154,17 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
+if|if
+condition|(
+operator|!
+name|objects
+index|[
+name|i
+index|]
+operator|.
+name|filled
+condition|)
 name|add_family_to_write_order
 argument_list|(
 name|wo
@@ -3160,6 +3177,23 @@ name|objects
 index|[
 name|i
 index|]
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|wo_end
+operator|!=
+name|nr_objects
+condition|)
+name|die
+argument_list|(
+literal|"ordered %u objects, expected %"
+name|PRIu32
+argument_list|,
+name|wo_end
+argument_list|,
+name|nr_objects
 argument_list|)
 expr_stmt|;
 return|return
