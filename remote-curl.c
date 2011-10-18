@@ -670,6 +670,10 @@ condition|(
 name|http_ret
 operator|!=
 name|HTTP_OK
+operator|&&
+name|http_ret
+operator|!=
+name|HTTP_NOAUTH
 condition|)
 block|{
 name|free
@@ -4922,6 +4926,8 @@ expr_stmt|;
 name|http_init
 argument_list|(
 name|remote
+argument_list|,
+name|url
 argument_list|)
 expr_stmt|;
 do|do
