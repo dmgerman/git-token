@@ -98,6 +98,11 @@ define|#
 directive|define
 name|XDL_EMIT_COMMON
 value|(1<< 1)
+DECL|macro|XDL_EMIT_FUNCCONTEXT
+define|#
+directive|define
+name|XDL_EMIT_FUNCCONTEXT
+value|(1<< 2)
 DECL|macro|XDL_MMB_READONLY
 define|#
 directive|define
