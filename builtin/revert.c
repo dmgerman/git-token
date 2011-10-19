@@ -1685,7 +1685,8 @@ specifier|static
 name|void
 name|print_advice
 parameter_list|(
-name|void
+name|int
+name|show_hint
 parameter_list|)
 block|{
 name|char
@@ -1722,6 +1723,11 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+if|if
+condition|(
+name|show_hint
+condition|)
+block|{
 name|advise
 argument_list|(
 literal|"after resolving the conflicts, mark the corrected paths"
@@ -1737,6 +1743,7 @@ argument_list|(
 literal|"and commit the result with 'git commit'"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 end_function
 
@@ -3063,18 +3070,6 @@ literal|")\n"
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-operator|!
-name|opts
-operator|->
-name|no_commit
-condition|)
-name|write_cherry_pick_head
-argument_list|(
-name|commit
-argument_list|)
-expr_stmt|;
 block|}
 if|if
 condition|(
@@ -3206,6 +3201,35 @@ name|remotes
 argument_list|)
 expr_stmt|;
 block|}
+comment|/* 	 * If the merge was clean or if it failed due to conflict, we write 	 * CHERRY_PICK_HEAD for the subsequent invocation of commit to use. 	 * However, if the merge did not even start, then we don't want to 	 * write it at all. 	 */
+if|if
+condition|(
+name|opts
+operator|->
+name|action
+operator|==
+name|CHERRY_PICK
+operator|&&
+operator|!
+name|opts
+operator|->
+name|no_commit
+operator|&&
+operator|(
+name|res
+operator|==
+literal|0
+operator|||
+name|res
+operator|==
+literal|1
+operator|)
+condition|)
+name|write_cherry_pick_head
+argument_list|(
+name|commit
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|res
@@ -3246,7 +3270,11 @@ name|subject
 argument_list|)
 expr_stmt|;
 name|print_advice
-argument_list|()
+argument_list|(
+name|res
+operator|==
+literal|1
+argument_list|)
 expr_stmt|;
 name|rerere
 argument_list|(
