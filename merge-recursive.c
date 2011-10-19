@@ -5317,6 +5317,11 @@ argument_list|,
 name|b
 operator|->
 name|sha1
+argument_list|,
+operator|!
+name|o
+operator|->
+name|call_depth
 argument_list|)
 expr_stmt|;
 block|}

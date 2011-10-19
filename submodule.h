@@ -293,6 +293,9 @@ name|b
 index|[
 literal|20
 index|]
+parameter_list|,
+name|int
+name|search
 parameter_list|)
 function_decl|;
 end_function_decl
