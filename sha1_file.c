@@ -10143,7 +10143,6 @@ end_function
 
 begin_function
 DECL|function|is_pack_valid
-specifier|static
 name|int
 name|is_pack_valid
 parameter_list|(
@@ -10349,7 +10348,7 @@ name|p
 argument_list|)
 condition|)
 block|{
-name|error
+name|warning
 argument_list|(
 literal|"packfile %s cannot be accessed"
 argument_list|,
