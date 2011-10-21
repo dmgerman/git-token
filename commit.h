@@ -219,6 +219,30 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Look up object named by "sha1", dereference tag as necessary,  * get a commit and return it. If "sha1" does not dereference to  * a commit, use ref_name to report an error and die.  */
+end_comment
+
+begin_function_decl
+name|struct
+name|commit
+modifier|*
+name|lookup_commit_or_die
+parameter_list|(
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|sha1
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|ref_name
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function_decl
 name|int
 name|parse_commit_buffer
