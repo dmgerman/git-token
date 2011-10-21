@@ -6629,13 +6629,13 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Note. This is used only by "push"; refspec matching rules for  * push and fetch are subtly different, so do not try to reuse it  * without thinking.  */
+comment|/*  * Given the set of refs the local repository has, the set of refs the  * remote repository has, and the refspec used for push, determine  * what remote refs we will update and with what value by setting  * peer_ref (which object is being pushed) and force (if the push is  * forced) in elements of "dst". The function may add new elements to  * dst (e.g. pushing to a new branch, done in match_explicit_refs).  */
 end_comment
 
 begin_function
-DECL|function|match_refs
+DECL|function|match_push_refs
 name|int
-name|match_refs
+name|match_push_refs
 parameter_list|(
 name|struct
 name|ref

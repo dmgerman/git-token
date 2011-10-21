@@ -2190,7 +2190,7 @@ argument_list|(
 name|remote_refs
 argument_list|)
 expr_stmt|;
-name|match_refs
+name|match_push_refs
 argument_list|(
 name|local_refs
 argument_list|,

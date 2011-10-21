@@ -1637,7 +1637,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"receive-pack: unable to fork off sideband demultiplexer"
+literal|"send-pack: unable to fork off sideband demultiplexer"
 argument_list|)
 expr_stmt|;
 name|in
@@ -2450,7 +2450,7 @@ expr_stmt|;
 comment|/* match them up */
 if|if
 condition|(
-name|match_refs
+name|match_push_refs
 argument_list|(
 name|local_refs
 argument_list|,
