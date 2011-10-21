@@ -72,6 +72,21 @@ end_struct
 
 begin_function_decl
 name|int
+name|is_bundle
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|,
+name|int
+name|quiet
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
 name|read_bundle_header
 parameter_list|(
 specifier|const
