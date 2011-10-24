@@ -1497,11 +1497,6 @@ name|struct
 name|cache_time
 name|timestamp
 decl_stmt|;
-DECL|member|alloc
-name|void
-modifier|*
-name|alloc
-decl_stmt|;
 DECL|member|name_hash_initialized
 name|unsigned
 name|name_hash_initialized
