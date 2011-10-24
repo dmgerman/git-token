@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_comment
-comment|/* Emulation for poll(2)    Contributed by Paolo Bonzini.     Copyright 2001-2003, 2006-2010 Free Software Foundation, Inc.     This file is part of gnulib.     This program is free software; you can redistribute it and/or modify    it under the terms of the GNU General Public License as published by    the Free Software Foundation; either version 2, or (at your option)    any later version.     This program is distributed in the hope that it will be useful,    but WITHOUT ANY WARRANTY; without even the implied warranty of    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the    GNU General Public License for more details.     You should have received a copy of the GNU General Public License along    with this program; if not, write to the Free Software Foundation,    Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */
+comment|/* Emulation for poll(2)    Contributed by Paolo Bonzini.     Copyright 2001-2003, 2006-2011 Free Software Foundation, Inc.     This file is part of gnulib.     This program is free software; you can redistribute it and/or modify    it under the terms of the GNU General Public License as published by    the Free Software Foundation; either version 2, or (at your option)    any later version.     This program is distributed in the hope that it will be useful,    but WITHOUT ANY WARRANTY; without even the implied warranty of    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the    GNU General Public License for more details.     You should have received a copy of the GNU General Public License along    with this program; if not, write to the Free Software Foundation,    Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  */
 end_comment
 
 begin_comment
@@ -51,10 +51,14 @@ directive|include
 file|<sys/types.h>
 end_include
 
+begin_comment
+comment|/* Specification.  */
+end_comment
+
 begin_include
 include|#
 directive|include
-file|"poll.h"
+file|<poll.h>
 end_include
 
 begin_include
@@ -1424,23 +1428,17 @@ name|int
 DECL|function|poll
 name|poll
 parameter_list|(
-name|pfd
-parameter_list|,
-name|nfd
-parameter_list|,
-name|timeout
-parameter_list|)
 name|struct
 name|pollfd
 modifier|*
 name|pfd
-decl_stmt|;
+parameter_list|,
 name|nfds_t
 name|nfd
-decl_stmt|;
+parameter_list|,
 name|int
 name|timeout
-decl_stmt|;
+parameter_list|)
 block|{
 ifndef|#
 directive|ifndef
@@ -2063,6 +2061,8 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
+name|restart
+label|:
 name|handle_array
 index|[
 literal|0
@@ -2755,6 +2755,23 @@ condition|)
 name|rc
 operator|++
 expr_stmt|;
+block|}
+if|if
+condition|(
+operator|!
+name|rc
+operator|&&
+name|timeout
+operator|==
+name|INFTIM
+condition|)
+block|{
+name|SwitchToThread
+argument_list|()
+expr_stmt|;
+goto|goto
+name|restart
+goto|;
 block|}
 return|return
 name|rc
