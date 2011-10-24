@@ -2628,12 +2628,13 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Is a tree entry interesting given the pathspec we have?  *  * Pre-condition: either baselen == base_offset (i.e. empty path)  * or base[baselen-1] == '/' (i.e. with trailing slash).  *  * Return:  *  - 2 for "yes, and all subsequent entries will be"  *  - 1 for yes  *  - zero for no  *  - negative for "no, and no subsequent entries will be either"  */
+comment|/*  * Is a tree entry interesting given the pathspec we have?  *  * Pre-condition: either baselen == base_offset (i.e. empty path)  * or base[baselen-1] == '/' (i.e. with trailing slash).  */
 end_comment
 
 begin_function
 DECL|function|tree_entry_interesting
-name|int
+name|enum
+name|interesting
 name|tree_entry_interesting
 parameter_list|(
 specifier|const
@@ -2678,10 +2679,9 @@ name|ps
 operator|->
 name|has_wildcard
 condition|?
-literal|0
+name|entry_not_interesting
 else|:
-operator|-
-literal|1
+name|all_entries_not_interesting
 decl_stmt|;
 if|if
 condition|(
@@ -2706,11 +2706,9 @@ operator|-
 literal|1
 condition|)
 return|return
-literal|2
+name|all_entries_interesting
 return|;
 return|return
-operator|!
-operator|!
 name|within_depth
 argument_list|(
 name|base
@@ -2734,6 +2732,10 @@ name|ps
 operator|->
 name|max_depth
 argument_list|)
+condition|?
+name|entry_interesting
+else|:
+name|entry_not_interesting
 return|;
 block|}
 name|pathlen
@@ -2838,11 +2840,9 @@ operator|-
 literal|1
 condition|)
 return|return
-literal|2
+name|all_entries_interesting
 return|;
 return|return
-operator|!
-operator|!
 name|within_depth
 argument_list|(
 name|base_str
@@ -2870,6 +2870,10 @@ name|ps
 operator|->
 name|max_depth
 argument_list|)
+condition|?
+name|entry_interesting
+else|:
+name|entry_not_interesting
 return|;
 block|}
 comment|/* Either there must be no base, or the base must match. */
@@ -2911,7 +2915,7 @@ name|never_interesting
 argument_list|)
 condition|)
 return|return
-literal|1
+name|entry_interesting
 return|;
 if|if
 condition|(
@@ -2942,7 +2946,7 @@ literal|0
 argument_list|)
 condition|)
 return|return
-literal|1
+name|entry_interesting
 return|;
 comment|/* 				 * Match all directories. We'll try to 				 * match files later on. 				 */
 if|if
@@ -2959,7 +2963,7 @@ name|mode
 argument_list|)
 condition|)
 return|return
-literal|1
+name|entry_interesting
 return|;
 block|}
 continue|continue;
@@ -3018,7 +3022,7 @@ name|baselen
 argument_list|)
 expr_stmt|;
 return|return
-literal|1
+name|entry_interesting
 return|;
 block|}
 name|strbuf_setlen
@@ -3045,7 +3049,7 @@ name|mode
 argument_list|)
 condition|)
 return|return
-literal|1
+name|entry_interesting
 return|;
 block|}
 return|return

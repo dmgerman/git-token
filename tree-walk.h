@@ -430,9 +430,45 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/* in general, positive means "kind of interesting" */
+end_comment
+
+begin_enum
+DECL|enum|interesting
+enum|enum
+name|interesting
+block|{
+DECL|enumerator|all_entries_not_interesting
+name|all_entries_not_interesting
+init|=
+operator|-
+literal|1
+block|,
+comment|/* no, and no subsequent entries will be either */
+DECL|enumerator|entry_not_interesting
+name|entry_not_interesting
+init|=
+literal|0
+block|,
+DECL|enumerator|entry_interesting
+name|entry_interesting
+init|=
+literal|1
+block|,
+DECL|enumerator|all_entries_interesting
+name|all_entries_interesting
+init|=
+literal|2
+comment|/* yes, and all subsequent entries will be */
+block|}
+enum|;
+end_enum
+
 begin_function_decl
 specifier|extern
-name|int
+name|enum
+name|interesting
 name|tree_entry_interesting
 parameter_list|(
 specifier|const
