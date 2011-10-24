@@ -538,27 +538,6 @@ block|}
 end_function
 
 begin_function
-DECL|function|fork
-specifier|static
-specifier|inline
-name|pid_t
-name|fork
-parameter_list|(
-name|void
-parameter_list|)
-block|{
-name|errno
-operator|=
-name|ENOSYS
-expr_stmt|;
-return|return
-operator|-
-literal|1
-return|;
-block|}
-end_function
-
-begin_function
 DECL|function|alarm
 specifier|static
 specifier|inline
