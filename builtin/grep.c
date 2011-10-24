@@ -2900,13 +2900,8 @@ name|te_len
 init|=
 name|tree_entry_len
 argument_list|(
+operator|&
 name|entry
-operator|.
-name|path
-argument_list|,
-name|entry
-operator|.
-name|sha1
 argument_list|)
 decl_stmt|;
 if|if
