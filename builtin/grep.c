@@ -326,12 +326,23 @@ decl_stmt|;
 end_decl_stmt
 
 begin_define
+DECL|macro|WHEN_THREADED
+define|#
+directive|define
+name|WHEN_THREADED
+parameter_list|(
+name|x
+parameter_list|)
+value|do { if (use_threads) (x); } while (0)
+end_define
+
+begin_define
 DECL|macro|grep_lock
 define|#
 directive|define
 name|grep_lock
 parameter_list|()
-value|pthread_mutex_lock(&grep_mutex)
+value|WHEN_THREADED(pthread_mutex_lock(&grep_mutex))
 end_define
 
 begin_define
@@ -340,7 +351,7 @@ define|#
 directive|define
 name|grep_unlock
 parameter_list|()
-value|pthread_mutex_unlock(&grep_mutex)
+value|WHEN_THREADED(pthread_mutex_unlock(&grep_mutex))
 end_define
 
 begin_define
@@ -349,7 +360,7 @@ define|#
 directive|define
 name|read_sha1_lock
 parameter_list|()
-value|pthread_mutex_lock(&read_sha1_mutex)
+value|WHEN_THREADED(pthread_mutex_lock(&read_sha1_mutex))
 end_define
 
 begin_define
@@ -358,7 +369,7 @@ define|#
 directive|define
 name|read_sha1_unlock
 parameter_list|()
-value|pthread_mutex_unlock(&read_sha1_mutex)
+value|WHEN_THREADED(pthread_mutex_unlock(&read_sha1_mutex))
 end_define
 
 begin_comment
