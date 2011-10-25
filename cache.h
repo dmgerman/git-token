@@ -1432,7 +1432,7 @@ name|cache_entry_size
 parameter_list|(
 name|len
 parameter_list|)
-value|flexible_size(cache_entry,len)
+value|(offsetof(struct cache_entry,name) + (len) + 1)
 end_define
 
 begin_define
