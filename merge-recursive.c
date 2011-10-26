@@ -2210,7 +2210,7 @@ modifier|*
 name|entries
 parameter_list|)
 block|{
-comment|/* If there is a D/F conflict and the file for such a conflict 	 * currently exist in the working copy, we want to allow it to be 	 * removed to make room for the corresponding directory if needed. 	 * The files underneath the directories of such D/F conflicts will 	 * be processed before the corresponding file involved in the D/F 	 * conflict.  If the D/F directory ends up being removed by the 	 * merge, then we won't have to touch the D/F file.  If the D/F 	 * directory needs to be written to the working copy, then the D/F 	 * file will simply be removed (in make_room_for_path()) to make 	 * room for the necessary paths.  Note that if both the directory 	 * and the file need to be present, then the D/F file will be 	 * reinstated with a new unique name at the time it is processed. 	 */
+comment|/* If there is a D/F conflict and the file for such a conflict 	 * currently exist in the working tree, we want to allow it to be 	 * removed to make room for the corresponding directory if needed. 	 * The files underneath the directories of such D/F conflicts will 	 * be processed before the corresponding file involved in the D/F 	 * conflict.  If the D/F directory ends up being removed by the 	 * merge, then we won't have to touch the D/F file.  If the D/F 	 * directory needs to be written to the working copy, then the D/F 	 * file will simply be removed (in make_room_for_path()) to make 	 * room for the necessary paths.  Note that if both the directory 	 * and the file need to be present, then the D/F file will be 	 * reinstated with a new unique name at the time it is processed. 	 */
 name|struct
 name|string_list
 name|df_sorted_entries
