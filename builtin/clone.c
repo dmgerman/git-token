@@ -3253,7 +3253,7 @@ name|printf
 argument_list|(
 name|_
 argument_list|(
-literal|"Cloning into bare repository %s...\n"
+literal|"Cloning into bare repository '%s'...\n"
 argument_list|)
 argument_list|,
 name|dir
@@ -3264,7 +3264,7 @@ name|printf
 argument_list|(
 name|_
 argument_list|(
-literal|"Cloning into %s...\n"
+literal|"Cloning into '%s'...\n"
 argument_list|)
 argument_list|,
 name|dir
