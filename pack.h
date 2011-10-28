@@ -18,6 +18,12 @@ directive|include
 file|"object.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"csum-file.h"
+end_include
+
 begin_comment
 comment|/*  * Packed object header  */
 end_comment
@@ -277,6 +283,21 @@ parameter_list|(
 name|struct
 name|packed_git
 modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|off_t
+name|write_pack_header
+parameter_list|(
+name|struct
+name|sha1file
+modifier|*
+name|f
+parameter_list|,
+name|uint32_t
 parameter_list|)
 function_decl|;
 end_function_decl
