@@ -63,6 +63,12 @@ directive|include
 file|"revision.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"bulk-checkin.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|builtin_add_usage
 specifier|static
@@ -2734,6 +2740,9 @@ name|seen
 argument_list|)
 expr_stmt|;
 block|}
+name|plug_bulk_checkin
+argument_list|()
+expr_stmt|;
 name|exit_status
 operator||=
 name|add_files_to_cache
@@ -2758,6 +2767,9 @@ name|dir
 argument_list|,
 name|flags
 argument_list|)
+expr_stmt|;
+name|unplug_bulk_checkin
+argument_list|()
 expr_stmt|;
 name|finish
 label|:

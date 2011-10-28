@@ -478,6 +478,14 @@ name|startup_info
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|pack_size_limit_cfg
+name|unsigned
+name|long
+name|pack_size_limit_cfg
+decl_stmt|;
+end_decl_stmt
+
 begin_comment
 comment|/* Parallel index stat data preload? */
 end_comment

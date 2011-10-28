@@ -400,13 +400,10 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|pack_size_limit
-DECL|variable|pack_size_limit_cfg
 specifier|static
 name|unsigned
 name|long
 name|pack_size_limit
-decl_stmt|,
-name|pack_size_limit_cfg
 decl_stmt|;
 end_decl_stmt
 
@@ -10049,30 +10046,6 @@ argument_list|,
 name|pack_idx_opts
 operator|.
 name|version
-argument_list|)
-expr_stmt|;
-return|return
-literal|0
-return|;
-block|}
-if|if
-condition|(
-operator|!
-name|strcmp
-argument_list|(
-name|k
-argument_list|,
-literal|"pack.packsizelimit"
-argument_list|)
-condition|)
-block|{
-name|pack_size_limit_cfg
-operator|=
-name|git_config_ulong
-argument_list|(
-name|k
-argument_list|,
-name|v
 argument_list|)
 expr_stmt|;
 return|return
