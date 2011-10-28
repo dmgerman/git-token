@@ -396,6 +396,21 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|struct
+name|sha1file
+modifier|*
+name|create_tmp_packfile
+parameter_list|(
+name|char
+modifier|*
+modifier|*
+name|pack_tmp_name
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
