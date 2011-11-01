@@ -818,9 +818,12 @@ modifier|*
 name|get_stale_heads
 parameter_list|(
 name|struct
-name|remote
+name|refspec
 modifier|*
-name|remote
+name|refs
+parameter_list|,
+name|int
+name|ref_count
 parameter_list|,
 name|struct
 name|ref
