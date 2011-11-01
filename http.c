@@ -4340,10 +4340,37 @@ expr_stmt|;
 block|}
 block|}
 else|else
+block|{
+if|if
+condition|(
+operator|!
+name|curl_errorstr
+index|[
+literal|0
+index|]
+condition|)
+name|strlcpy
+argument_list|(
+name|curl_errorstr
+argument_list|,
+name|curl_easy_strerror
+argument_list|(
+name|results
+operator|.
+name|curl_result
+argument_list|)
+argument_list|,
+sizeof|sizeof
+argument_list|(
+name|curl_errorstr
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|ret
 operator|=
 name|HTTP_ERROR
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -4599,7 +4626,7 @@ name|HTTP_START_FAILED
 condition|)
 name|error
 argument_list|(
-literal|"%s while accessing %s\n"
+literal|"%s while accessing %s"
 argument_list|,
 name|curl_errorstr
 argument_list|,
