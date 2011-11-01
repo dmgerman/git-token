@@ -273,6 +273,10 @@ name|ce
 operator|->
 name|next
 operator|=
+name|ce
+operator|->
+name|dir_next
+operator|=
 name|NULL
 expr_stmt|;
 name|hash
