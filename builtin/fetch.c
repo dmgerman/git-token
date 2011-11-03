@@ -2664,14 +2664,6 @@ literal|"%s\t%s\t%s"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
-name|commit
-condition|?
-name|commit
-operator|->
-name|object
-operator|.
-name|sha1
-else|:
 name|rm
 operator|->
 name|old_sha1
