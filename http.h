@@ -233,11 +233,6 @@ name|CURL
 modifier|*
 name|curl
 decl_stmt|;
-DECL|member|local
-name|FILE
-modifier|*
-name|local
-decl_stmt|;
 DECL|member|in_use
 name|int
 name|in_use
