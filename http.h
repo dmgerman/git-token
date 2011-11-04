@@ -550,13 +550,6 @@ end_function_decl
 begin_decl_stmt
 specifier|extern
 name|int
-name|data_received
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-specifier|extern
-name|int
 name|active_requests
 decl_stmt|;
 end_decl_stmt
