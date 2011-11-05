@@ -53,6 +53,12 @@ directive|include
 file|"cache-tree.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"progress.h"
+end_include
+
 begin_function
 DECL|function|process_blob
 specifier|static
@@ -495,6 +501,11 @@ name|struct
 name|rev_info
 modifier|*
 name|revs
+parameter_list|,
+name|struct
+name|progress
+modifier|*
+name|progress
 parameter_list|)
 block|{
 name|int
@@ -511,6 +522,11 @@ name|objects
 init|=
 name|OBJECT_ARRAY_INIT
 decl_stmt|;
+name|uint32_t
+name|count
+init|=
+literal|0
+decl_stmt|;
 comment|/* Walk all commits, process their trees */
 while|while
 condition|(
@@ -525,6 +541,7 @@ operator|)
 operator|!=
 name|NULL
 condition|)
+block|{
 name|process_tree
 argument_list|(
 name|commit
@@ -539,6 +556,15 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
+name|display_progress
+argument_list|(
+name|progress
+argument_list|,
+operator|++
+name|count
+argument_list|)
+expr_stmt|;
+block|}
 comment|/* Then walk all the pending objects, recursively processing them too */
 for|for
 control|(
@@ -589,6 +615,14 @@ name|pending
 operator|->
 name|name
 decl_stmt|;
+name|display_progress
+argument_list|(
+name|progress
+argument_list|,
+operator|++
+name|count
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|obj
@@ -1109,6 +1143,11 @@ name|revs
 parameter_list|,
 name|int
 name|mark_reflog
+parameter_list|,
+name|struct
+name|progress
+modifier|*
+name|progress
 parameter_list|)
 block|{
 comment|/* 	 * Set up revision parsing, and mark us as being interested 	 * in all object types, not just commits. 	 */
@@ -1172,6 +1211,8 @@ expr_stmt|;
 name|walk_commit_list
 argument_list|(
 name|revs
+argument_list|,
+name|progress
 argument_list|)
 expr_stmt|;
 block|}
