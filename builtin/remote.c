@@ -8293,7 +8293,7 @@ argument_list|)
 expr_stmt|;
 name|usage_with_options
 argument_list|(
-name|builtin_remote_seturl_usage
+name|builtin_remote_setbranches_usage
 argument_list|,
 name|options
 argument_list|)
