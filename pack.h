@@ -194,6 +194,12 @@ block|}
 struct|;
 end_struct
 
+begin_struct_decl
+struct_decl|struct
+name|progress
+struct_decl|;
+end_struct_decl
+
 begin_typedef
 DECL|typedef|verify_fn
 typedef|typedef
@@ -309,6 +315,12 @@ modifier|*
 parameter_list|,
 name|verify_fn
 name|fn
+parameter_list|,
+name|struct
+name|progress
+modifier|*
+parameter_list|,
+name|uint32_t
 parameter_list|)
 function_decl|;
 end_function_decl
