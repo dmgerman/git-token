@@ -215,6 +215,14 @@ name|ERROR_REACHABLE
 value|02
 end_define
 
+begin_define
+DECL|macro|ERROR_PACK
+define|#
+directive|define
+name|ERROR_PACK
+value|04
+end_define
+
 begin_ifdef
 ifdef|#
 directive|ifdef
@@ -3195,10 +3203,16 @@ operator|->
 name|next
 control|)
 comment|/* verify gives error messages itself */
+if|if
+condition|(
 name|verify_pack
 argument_list|(
 name|p
 argument_list|)
+condition|)
+name|errors_found
+operator||=
+name|ERROR_PACK
 expr_stmt|;
 for|for
 control|(
