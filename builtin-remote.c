@@ -8056,7 +8056,7 @@ name|NULL
 argument_list|,
 name|options
 argument_list|,
-name|builtin_remote_update_usage
+name|builtin_remote_seturl_usage
 argument_list|,
 name|PARSE_OPT_KEEP_ARGV0
 argument_list|)
