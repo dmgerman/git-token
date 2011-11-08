@@ -195,6 +195,8 @@ block|,
 name|NULL
 block|,
 name|NULL
+block|,
+name|NULL
 block|}
 decl_stmt|;
 end_decl_stmt
@@ -1220,6 +1222,17 @@ literal|2
 index|]
 operator|=
 name|prune_expire
+expr_stmt|;
+if|if
+condition|(
+name|quiet
+condition|)
+name|argv_prune
+index|[
+literal|3
+index|]
+operator|=
+literal|"--no-progress"
 expr_stmt|;
 if|if
 condition|(

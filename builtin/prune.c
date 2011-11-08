@@ -96,6 +96,17 @@ name|expire
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|show_progress
+specifier|static
+name|int
+name|show_progress
+init|=
+operator|-
+literal|1
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|prune_tmp_object
 specifier|static
@@ -687,6 +698,8 @@ name|struct
 name|progress
 modifier|*
 name|progress
+init|=
+name|NULL
 decl_stmt|;
 specifier|const
 name|struct
@@ -709,6 +722,18 @@ operator|&
 name|verbose
 argument_list|,
 literal|"report pruned objects"
+argument_list|)
+block|,
+name|OPT_BOOL
+argument_list|(
+literal|0
+argument_list|,
+literal|"progress"
+argument_list|,
+operator|&
+name|show_progress
+argument_list|,
+literal|"show progress"
 argument_list|)
 block|,
 name|OPT_DATE
@@ -843,6 +868,24 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|show_progress
+operator|==
+operator|-
+literal|1
+condition|)
+name|show_progress
+operator|=
+name|isatty
+argument_list|(
+literal|2
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|show_progress
+condition|)
 name|progress
 operator|=
 name|start_progress_delay
