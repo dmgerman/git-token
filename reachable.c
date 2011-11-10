@@ -92,6 +92,16 @@ name|object
 decl_stmt|;
 if|if
 condition|(
+operator|!
+name|blob
+condition|)
+name|die
+argument_list|(
+literal|"bad blob object"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|obj
 operator|->
 name|flags
@@ -192,6 +202,16 @@ name|me
 decl_stmt|;
 if|if
 condition|(
+operator|!
+name|tree
+condition|)
+name|die
+argument_list|(
+literal|"bad tree object"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|obj
 operator|->
 name|flags
@@ -224,13 +244,6 @@ name|obj
 operator|->
 name|sha1
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|name
-operator|=
-name|xstrdup
-argument_list|(
-name|name
 argument_list|)
 expr_stmt|;
 name|add_object
@@ -472,6 +485,12 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|tag
+operator|->
+name|tagged
+condition|)
 name|add_object
 argument_list|(
 name|tag
@@ -946,6 +965,10 @@ argument_list|(
 name|sha1
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|tree
+condition|)
 name|add_pending_object
 argument_list|(
 name|revs
@@ -1067,15 +1090,12 @@ if|if
 condition|(
 name|S_ISGITLINK
 argument_list|(
-name|ntohl
-argument_list|(
 name|active_cache
 index|[
 name|i
 index|]
 operator|->
 name|ce_mode
-argument_list|)
 argument_list|)
 condition|)
 continue|continue;
@@ -1165,9 +1185,16 @@ name|revs
 argument_list|)
 expr_stmt|;
 comment|/* 	 * Set up the revision walk - this will move all commits 	 * from the pending list to the commit walking list. 	 */
+if|if
+condition|(
 name|prepare_revision_walk
 argument_list|(
 name|revs
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"revision walk setup failed"
 argument_list|)
 expr_stmt|;
 name|walk_commit_list

@@ -31,7 +31,7 @@ name|char
 name|show_branch_usage
 index|[]
 init|=
-literal|"git-show-branch [--sparse] [--current] [--all] [--remotes] [--topo-order] [--more=count | --list | --independent | --merge-base ] [--topics] [<refs>...] | --reflog[=n[,b]]<branch>"
+literal|"git show-branch [--sparse] [--current] [--all] [--remotes] [--topo-order] [--more=count | --list | --independent | --merge-base ] [--topics] [<refs>...] | --reflog[=n[,b]]<branch>"
 decl_stmt|;
 end_decl_stmt
 
@@ -1270,11 +1270,11 @@ name|int
 name|no_name
 parameter_list|)
 block|{
-name|char
-modifier|*
+name|struct
+name|strbuf
 name|pretty
 init|=
-name|NULL
+name|STRBUF_INIT
 decl_stmt|;
 specifier|const
 name|char
@@ -1282,12 +1282,6 @@ modifier|*
 name|pretty_str
 init|=
 literal|"(unavailable)"
-decl_stmt|;
-name|unsigned
-name|long
-name|pretty_len
-init|=
-literal|0
 decl_stmt|;
 name|struct
 name|commit_name
@@ -1313,20 +1307,16 @@ name|CMIT_FMT_ONELINE
 argument_list|,
 name|commit
 argument_list|,
-operator|~
-literal|0
-argument_list|,
 operator|&
 name|pretty
 argument_list|,
-operator|&
-name|pretty_len
-argument_list|,
 literal|0
 argument_list|,
 name|NULL
 argument_list|,
 name|NULL
+argument_list|,
+literal|0
 argument_list|,
 literal|0
 argument_list|)
@@ -1334,6 +1324,8 @@ expr_stmt|;
 name|pretty_str
 operator|=
 name|pretty
+operator|.
+name|buf
 expr_stmt|;
 block|}
 if|if
@@ -1434,8 +1426,9 @@ argument_list|(
 name|pretty_str
 argument_list|)
 expr_stmt|;
-name|free
+name|strbuf_release
 argument_list|(
+operator|&
 name|pretty
 argument_list|)
 expr_stmt|;
@@ -1855,12 +1848,9 @@ operator|<=
 name|ref_name_cnt
 condition|)
 block|{
-name|fprintf
+name|warning
 argument_list|(
-name|stderr
-argument_list|,
-literal|"warning: ignoring %s; "
-literal|"cannot handle more than %d refs\n"
+literal|"ignoring %s; cannot handle more than %d refs"
 argument_list|,
 name|refname
 argument_list|,
@@ -2880,6 +2870,10 @@ specifier|const
 name|char
 modifier|*
 name|value
+parameter_list|,
+name|void
+modifier|*
+name|cb
 parameter_list|)
 block|{
 if|if
@@ -2893,6 +2887,17 @@ literal|"showbranch.default"
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|value
+condition|)
+return|return
+name|config_error_nonbool
+argument_list|(
+name|var
+argument_list|)
+return|;
 if|if
 condition|(
 name|default_alloc
@@ -2954,6 +2959,8 @@ argument_list|(
 name|var
 argument_list|,
 name|value
+argument_list|,
+name|cb
 argument_list|)
 return|;
 block|}
@@ -3326,6 +3333,8 @@ decl_stmt|;
 name|git_config
 argument_list|(
 name|git_show_branch_config
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 comment|/* If nothing is specified, try the default first */
@@ -4285,18 +4294,25 @@ name|has_head
 condition|)
 block|{
 name|int
-name|pfxlen
+name|offset
 init|=
-name|strlen
+operator|!
+name|prefixcmp
 argument_list|(
+name|head
+argument_list|,
 literal|"refs/heads/"
 argument_list|)
+condition|?
+literal|11
+else|:
+literal|0
 decl_stmt|;
 name|append_one_rev
 argument_list|(
 name|head
 operator|+
-name|pfxlen
+name|offset
 argument_list|)
 expr_stmt|;
 block|}

@@ -35,17 +35,17 @@ name|sizeHi
 decl_stmt|,
 name|sizeLo
 decl_stmt|;
-DECL|typedef|SHA_CTX
+DECL|typedef|moz_SHA_CTX
 block|}
-name|SHA_CTX
+name|moz_SHA_CTX
 typedef|;
 end_typedef
 
 begin_function_decl
 name|void
-name|SHA1_Init
+name|moz_SHA1_Init
 parameter_list|(
-name|SHA_CTX
+name|moz_SHA_CTX
 modifier|*
 name|ctx
 parameter_list|)
@@ -54,9 +54,9 @@ end_function_decl
 
 begin_function_decl
 name|void
-name|SHA1_Update
+name|moz_SHA1_Update
 parameter_list|(
-name|SHA_CTX
+name|moz_SHA_CTX
 modifier|*
 name|ctx
 parameter_list|,
@@ -73,7 +73,7 @@ end_function_decl
 
 begin_function_decl
 name|void
-name|SHA1_Final
+name|moz_SHA1_Final
 parameter_list|(
 name|unsigned
 name|char
@@ -82,12 +82,44 @@ index|[
 literal|20
 index|]
 parameter_list|,
-name|SHA_CTX
+name|moz_SHA_CTX
 modifier|*
 name|ctx
 parameter_list|)
 function_decl|;
 end_function_decl
+
+begin_define
+DECL|macro|git_SHA_CTX
+define|#
+directive|define
+name|git_SHA_CTX
+value|moz_SHA_CTX
+end_define
+
+begin_define
+DECL|macro|git_SHA1_Init
+define|#
+directive|define
+name|git_SHA1_Init
+value|moz_SHA1_Init
+end_define
+
+begin_define
+DECL|macro|git_SHA1_Update
+define|#
+directive|define
+name|git_SHA1_Update
+value|moz_SHA1_Update
+end_define
+
+begin_define
+DECL|macro|git_SHA1_Final
+define|#
+directive|define
+name|git_SHA1_Final
+value|moz_SHA1_Final
+end_define
 
 end_unit
 

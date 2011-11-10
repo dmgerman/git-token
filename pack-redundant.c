@@ -9,6 +9,12 @@ directive|include
 file|"cache.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"exec_cmd.h"
+end_include
+
 begin_define
 DECL|macro|BLKSIZE
 define|#
@@ -25,7 +31,7 @@ name|char
 name|pack_redundant_usage
 index|[]
 init|=
-literal|"git-pack-redundant [ --verbose ] [ --alt-odb ]< --all |<.pack filename> ...>"
+literal|"git pack-redundant [ --verbose ] [ --alt-odb ]< --all |<.pack filename> ...>"
 decl_stmt|;
 end_decl_stmt
 
@@ -2496,7 +2502,7 @@ name|NULL
 condition|)
 name|die
 argument_list|(
-literal|"Internal error: No complete sets found!\n"
+literal|"Internal error: No complete sets found!"
 argument_list|)
 expr_stmt|;
 comment|/* find the permutation with the smallest size */
@@ -3030,7 +3036,7 @@ literal|40
 condition|)
 name|die
 argument_list|(
-literal|"Bad pack filename: %s\n"
+literal|"Bad pack filename: %s"
 argument_list|,
 name|filename
 argument_list|)
@@ -3066,7 +3072,7 @@ expr_stmt|;
 block|}
 name|die
 argument_list|(
-literal|"Filename %s not found in packed_git\n"
+literal|"Filename %s not found in packed_git"
 argument_list|,
 name|filename
 argument_list|)
@@ -3155,6 +3161,14 @@ literal|42
 index|]
 decl_stmt|;
 comment|/* 40 byte sha1 + \n + \0 */
+name|git_extract_argv0_path
+argument_list|(
+name|argv
+index|[
+literal|0
+index|]
+argument_list|)
+expr_stmt|;
 name|setup_git_directory
 argument_list|()
 expr_stmt|;
@@ -3305,7 +3319,7 @@ name|NULL
 condition|)
 name|die
 argument_list|(
-literal|"Zero packs found!\n"
+literal|"Zero packs found!"
 argument_list|)
 expr_stmt|;
 name|load_all_objects

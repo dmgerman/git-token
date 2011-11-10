@@ -28,6 +28,7 @@ name|unsigned
 name|int
 name|hash_obj
 parameter_list|(
+specifier|const
 name|struct
 name|object
 modifier|*
@@ -72,6 +73,7 @@ name|decoration
 modifier|*
 name|n
 parameter_list|,
+specifier|const
 name|struct
 name|object
 modifier|*
@@ -221,19 +223,11 @@ name|struct
 name|object_decoration
 modifier|*
 name|old_hash
-decl_stmt|;
-name|old_size
-operator|=
-name|n
-operator|->
-name|size
-expr_stmt|;
-name|old_hash
-operator|=
+init|=
 name|n
 operator|->
 name|hash
-expr_stmt|;
+decl_stmt|;
 name|n
 operator|->
 name|size
@@ -285,6 +279,7 @@ name|i
 operator|++
 control|)
 block|{
+specifier|const
 name|struct
 name|object
 modifier|*
@@ -347,6 +342,7 @@ name|decoration
 modifier|*
 name|n
 parameter_list|,
+specifier|const
 name|struct
 name|object
 modifier|*
@@ -411,6 +407,7 @@ name|decoration
 modifier|*
 name|n
 parameter_list|,
+specifier|const
 name|struct
 name|object
 modifier|*

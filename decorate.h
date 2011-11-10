@@ -18,6 +18,7 @@ struct|struct
 name|object_decoration
 block|{
 DECL|member|base
+specifier|const
 name|struct
 name|object
 modifier|*
@@ -72,6 +73,7 @@ name|decoration
 modifier|*
 name|n
 parameter_list|,
+specifier|const
 name|struct
 name|object
 modifier|*
@@ -95,6 +97,7 @@ name|decoration
 modifier|*
 name|n
 parameter_list|,
+specifier|const
 name|struct
 name|object
 modifier|*

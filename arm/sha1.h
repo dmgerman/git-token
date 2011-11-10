@@ -10,10 +10,8 @@ file|<stdint.h>
 end_include
 
 begin_typedef
-DECL|struct|sha_context
 typedef|typedef
 struct|struct
-name|sha_context
 block|{
 DECL|member|len
 name|uint64_t
@@ -34,17 +32,17 @@ index|[
 literal|64
 index|]
 decl_stmt|;
-DECL|typedef|SHA_CTX
+DECL|typedef|arm_SHA_CTX
 block|}
-name|SHA_CTX
+name|arm_SHA_CTX
 typedef|;
 end_typedef
 
 begin_function_decl
 name|void
-name|SHA1_Init
+name|arm_SHA1_Init
 parameter_list|(
-name|SHA_CTX
+name|arm_SHA_CTX
 modifier|*
 name|c
 parameter_list|)
@@ -53,9 +51,9 @@ end_function_decl
 
 begin_function_decl
 name|void
-name|SHA1_Update
+name|arm_SHA1_Update
 parameter_list|(
-name|SHA_CTX
+name|arm_SHA_CTX
 modifier|*
 name|c
 parameter_list|,
@@ -73,19 +71,51 @@ end_function_decl
 
 begin_function_decl
 name|void
-name|SHA1_Final
+name|arm_SHA1_Final
 parameter_list|(
 name|unsigned
 name|char
 modifier|*
 name|hash
 parameter_list|,
-name|SHA_CTX
+name|arm_SHA_CTX
 modifier|*
 name|c
 parameter_list|)
 function_decl|;
 end_function_decl
+
+begin_define
+DECL|macro|git_SHA_CTX
+define|#
+directive|define
+name|git_SHA_CTX
+value|arm_SHA_CTX
+end_define
+
+begin_define
+DECL|macro|git_SHA1_Init
+define|#
+directive|define
+name|git_SHA1_Init
+value|arm_SHA1_Init
+end_define
+
+begin_define
+DECL|macro|git_SHA1_Update
+define|#
+directive|define
+name|git_SHA1_Update
+value|arm_SHA1_Update
+end_define
+
+begin_define
+DECL|macro|git_SHA1_Final
+define|#
+directive|define
+name|git_SHA1_Final
+value|arm_SHA1_Final
+end_define
 
 end_unit
 

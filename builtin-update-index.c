@@ -12,12 +12,6 @@ end_include
 begin_include
 include|#
 directive|include
-file|"strbuf.h"
-end_include
-
-begin_include
-include|#
-directive|include
 file|"quote.h"
 end_include
 
@@ -46,7 +40,7 @@ file|"refs.h"
 end_include
 
 begin_comment
-comment|/*  * Default to not allowing changes to the list of files. The  * tool doesn't actually care, but this makes it harder to add  * files to the revision control by mistake by doing something  * like "git-update-index *" and suddenly having all the object  * files be revision controlled.  */
+comment|/*  * Default to not allowing changes to the list of files. The  * tool doesn't actually care, but this makes it harder to add  * files to the revision control by mistake by doing something  * like "git update-index *" and suddenly having all the object  * files be revision controlled.  */
 end_comment
 
 begin_decl_stmt
@@ -223,10 +217,7 @@ index|]
 operator|->
 name|ce_flags
 operator||=
-name|htons
-argument_list|(
 name|CE_VALID
-argument_list|)
 expr_stmt|;
 break|break;
 case|case
@@ -240,10 +231,7 @@ operator|->
 name|ce_flags
 operator|&=
 operator|~
-name|htons
-argument_list|(
 name|CE_VALID
-argument_list|)
 expr_stmt|;
 break|break;
 block|}
@@ -456,10 +444,7 @@ name|ce
 operator|->
 name|ce_flags
 operator|=
-name|htons
-argument_list|(
 name|len
-argument_list|)
 expr_stmt|;
 name|fill_stat_cache_info
 argument_list|(
@@ -603,12 +588,9 @@ if|if
 condition|(
 name|S_ISGITLINK
 argument_list|(
-name|ntohl
-argument_list|(
 name|ce
 operator|->
 name|ce_mode
-argument_list|)
 argument_list|)
 condition|)
 block|{
@@ -817,12 +799,9 @@ name|ce
 operator|&&
 name|S_ISGITLINK
 argument_list|(
-name|ntohl
-argument_list|(
 name|ce
 operator|->
 name|ce_mode
-argument_list|)
 argument_list|)
 condition|)
 return|return
@@ -867,14 +846,30 @@ name|struct
 name|stat
 name|st
 decl_stmt|;
-comment|/* We probably want to do this in remove_file_from_cache() and 	 * add_cache_entry() instead... 	 */
-name|cache_tree_invalidate_path
+name|len
+operator|=
+name|strlen
 argument_list|(
-name|active_cache_tree
-argument_list|,
 name|path
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|has_symlink_leading_path
+argument_list|(
+name|path
+argument_list|,
+name|len
+argument_list|)
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"'%s' is beyond a symbolic link"
+argument_list|,
+name|path
+argument_list|)
+return|;
 comment|/* 	 * First things first: get the stat information, to decide 	 * what to do about the pathname! 	 */
 if|if
 condition|(
@@ -896,13 +891,6 @@ argument_list|,
 name|errno
 argument_list|)
 return|;
-name|len
-operator|=
-name|strlen
-argument_list|(
-name|path
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|S_ISDIR
@@ -983,8 +971,12 @@ name|path
 argument_list|)
 condition|)
 return|return
-operator|-
-literal|1
+name|error
+argument_list|(
+literal|"Invalid path '%s'"
+argument_list|,
+name|path
+argument_list|)
 return|;
 name|len
 operator|=
@@ -1057,10 +1049,7 @@ name|ce
 operator|->
 name|ce_flags
 operator||=
-name|htons
-argument_list|(
 name|CE_VALID
-argument_list|)
 expr_stmt|;
 name|option
 operator|=
@@ -1098,13 +1087,6 @@ return|;
 name|report
 argument_list|(
 literal|"add '%s'"
-argument_list|,
-name|path
-argument_list|)
-expr_stmt|;
-name|cache_tree_invalidate_path
-argument_list|(
-name|active_cache_tree
 argument_list|,
 name|path
 argument_list|)
@@ -1172,12 +1154,9 @@ index|]
 expr_stmt|;
 name|mode
 operator|=
-name|ntohl
-argument_list|(
 name|ce
 operator|->
 name|ce_mode
-argument_list|)
 expr_stmt|;
 if|if
 condition|(
@@ -1202,10 +1181,7 @@ name|ce
 operator|->
 name|ce_mode
 operator||=
-name|htonl
-argument_list|(
 literal|0111
-argument_list|)
 expr_stmt|;
 break|break;
 case|case
@@ -1215,11 +1191,8 @@ name|ce
 operator|->
 name|ce_mode
 operator|&=
-name|htonl
-argument_list|(
 operator|~
 literal|0111
-argument_list|)
 expr_stmt|;
 break|break;
 default|default:
@@ -1252,7 +1225,7 @@ name|fail
 label|:
 name|die
 argument_list|(
-literal|"git-update-index: cannot chmod %cx '%s'"
+literal|"git update-index: cannot chmod %cx '%s'"
 argument_list|,
 name|flip
 argument_list|,
@@ -1341,13 +1314,6 @@ goto|goto
 name|free_return
 goto|;
 block|}
-name|cache_tree_invalidate_path
-argument_list|(
-name|active_cache_tree
-argument_list|,
-name|path
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|force_remove
@@ -1362,7 +1328,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"git-update-index: unable to remove %s"
+literal|"git update-index: unable to remove %s"
 argument_list|,
 name|path
 argument_list|)
@@ -1441,16 +1407,28 @@ block|{
 name|struct
 name|strbuf
 name|buf
+init|=
+name|STRBUF_INIT
 decl_stmt|;
-name|strbuf_init
+name|struct
+name|strbuf
+name|uq
+init|=
+name|STRBUF_INIT
+decl_stmt|;
+while|while
+condition|(
+name|strbuf_getline
 argument_list|(
 operator|&
 name|buf
+argument_list|,
+name|stdin
+argument_list|,
+name|line_termination
 argument_list|)
-expr_stmt|;
-while|while
-condition|(
-literal|1
+operator|!=
+name|EOF
 condition|)
 block|{
 name|char
@@ -1482,24 +1460,7 @@ decl_stmt|;
 name|int
 name|stage
 decl_stmt|;
-comment|/* This reads lines formatted in one of three formats: 		 * 		 * (1) mode         SP sha1          TAB path 		 * The first format is what "git-apply --index-info" 		 * reports, and used to reconstruct a partial tree 		 * that is used for phony merge base tree when falling 		 * back on 3-way merge. 		 * 		 * (2) mode SP type SP sha1          TAB path 		 * The second format is to stuff git-ls-tree output 		 * into the index file. 		 * 		 * (3) mode         SP sha1 SP stage TAB path 		 * This format is to put higher order stages into the 		 * index file and matches git-ls-files --stage output. 		 */
-name|read_line
-argument_list|(
-operator|&
-name|buf
-argument_list|,
-name|stdin
-argument_list|,
-name|line_termination
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|buf
-operator|.
-name|eof
-condition|)
-break|break;
+comment|/* This reads lines formatted in one of three formats: 		 * 		 * (1) mode         SP sha1          TAB path 		 * The first format is what "git apply --index-info" 		 * reports, and used to reconstruct a partial tree 		 * that is used for phony merge base tree when falling 		 * back on 3-way merge. 		 * 		 * (2) mode SP type SP sha1          TAB path 		 * The second format is to stuff "git ls-tree" output 		 * into the index file. 		 * 		 * (3) mode         SP sha1 SP stage TAB path 		 * This format is to put higher order stages into the 		 * index file and matches "git ls-files --stage" output. 		 */
 name|errno
 operator|=
 literal|0
@@ -1659,31 +1620,54 @@ condition|)
 goto|goto
 name|bad_line
 goto|;
+name|path_name
+operator|=
+name|ptr
+expr_stmt|;
 if|if
 condition|(
 name|line_termination
 operator|&&
-name|ptr
+name|path_name
 index|[
 literal|0
 index|]
 operator|==
 literal|'"'
 condition|)
-name|path_name
-operator|=
+block|{
+name|strbuf_reset
+argument_list|(
+operator|&
+name|uq
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|unquote_c_style
 argument_list|(
-name|ptr
+operator|&
+name|uq
+argument_list|,
+name|path_name
 argument_list|,
 name|NULL
 argument_list|)
+condition|)
+block|{
+name|die
+argument_list|(
+literal|"git update-index: bad quoting of path name"
+argument_list|)
 expr_stmt|;
-else|else
+block|}
 name|path_name
 operator|=
-name|ptr
+name|uq
+operator|.
+name|buf
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -1702,26 +1686,8 @@ argument_list|,
 name|path_name
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|path_name
-operator|!=
-name|ptr
-condition|)
-name|free
-argument_list|(
-name|path_name
-argument_list|)
-expr_stmt|;
 continue|continue;
 block|}
-name|cache_tree_invalidate_path
-argument_list|(
-name|active_cache_tree
-argument_list|,
-name|path_name
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -1738,7 +1704,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"git-update-index: unable to remove %s"
+literal|"git update-index: unable to remove %s"
 argument_list|,
 name|ptr
 argument_list|)
@@ -1776,23 +1742,12 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"git-update-index: unable to update %s"
+literal|"git update-index: unable to update %s"
 argument_list|,
 name|path_name
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|path_name
-operator|!=
-name|ptr
-condition|)
-name|free
-argument_list|(
-name|path_name
-argument_list|)
-expr_stmt|;
 continue|continue;
 name|bad_line
 label|:
@@ -1806,6 +1761,18 @@ name|buf
 argument_list|)
 expr_stmt|;
 block|}
+name|strbuf_release
+argument_list|(
+operator|&
+name|buf
+argument_list|)
+expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|uq
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
@@ -1817,7 +1784,7 @@ name|char
 name|update_index_usage
 index|[]
 init|=
-literal|"git-update-index [-q] [--add] [--replace] [--remove] [--unmerged] [--refresh] [--really-refresh] [--cacheinfo] [--chmod=(+|-)x] [--assume-unchanged] [--info-only] [--force-remove] [--stdin] [--index-info] [--unresolve] [--again | -g] [--ignore-missing] [-z] [--verbose] [--]<file>..."
+literal|"git update-index [-q] [--add] [--replace] [--remove] [--unmerged] [--refresh] [--really-refresh] [--cacheinfo] [--chmod=(+|-)x] [--assume-unchanged] [--info-only] [--force-remove] [--stdin] [--index-info] [--unresolve] [--again | -g] [--ignore-missing] [-z] [--verbose] [--]<file>..."
 decl_stmt|;
 end_decl_stmt
 
@@ -2215,13 +2182,6 @@ goto|goto
 name|free_return
 goto|;
 block|}
-name|cache_tree_invalidate_path
-argument_list|(
-name|active_cache_tree
-argument_list|,
-name|path
-argument_list|)
-expr_stmt|;
 name|remove_file_from_cache
 argument_list|(
 name|path
@@ -2316,7 +2276,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"No HEAD -- no initial commit yet?\n"
+literal|"No HEAD -- no initial commit yet?"
 argument_list|)
 expr_stmt|;
 if|if
@@ -2743,6 +2703,8 @@ decl_stmt|;
 name|git_config
 argument_list|(
 name|git_default_config
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 comment|/* We can't free this memory, it becomes part of a linked list parsed atexit() */
@@ -2874,6 +2836,23 @@ name|strcmp
 argument_list|(
 name|path
 argument_list|,
+literal|"--ignore-submodules"
+argument_list|)
+condition|)
+block|{
+name|refresh_flags
+operator||=
+name|REFRESH_IGNORE_SUBMODULES
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|path
+argument_list|,
 literal|"--add"
 argument_list|)
 condition|)
@@ -2946,6 +2925,9 @@ literal|"--refresh"
 argument_list|)
 condition|)
 block|{
+name|setup_work_tree
+argument_list|()
+expr_stmt|;
 name|has_errors
 operator||=
 name|refresh_cache
@@ -2966,6 +2948,9 @@ literal|"--really-refresh"
 argument_list|)
 condition|)
 block|{
+name|setup_work_tree
+argument_list|()
+expr_stmt|;
 name|has_errors
 operator||=
 name|refresh_cache
@@ -3009,7 +2994,7 @@ name|argc
 condition|)
 name|die
 argument_list|(
-literal|"git-update-index: --cacheinfo<mode><sha1><path>"
+literal|"git update-index: --cacheinfo<mode><sha1><path>"
 argument_list|)
 expr_stmt|;
 if|if
@@ -3059,7 +3044,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"git-update-index: --cacheinfo"
+literal|"git update-index: --cacheinfo"
 literal|" cannot add %s"
 argument_list|,
 name|argv
@@ -3105,7 +3090,7 @@ literal|1
 condition|)
 name|die
 argument_list|(
-literal|"git-update-index: %s<path>"
+literal|"git update-index: %s<path>"
 argument_list|,
 name|path
 argument_list|)
@@ -3332,6 +3317,9 @@ literal|"-g"
 argument_list|)
 condition|)
 block|{
+name|setup_work_tree
+argument_list|()
+expr_stmt|;
 name|has_errors
 operator|=
 name|do_reupdate
@@ -3426,6 +3414,9 @@ name|path
 argument_list|)
 expr_stmt|;
 block|}
+name|setup_work_tree
+argument_list|()
+expr_stmt|;
 name|p
 operator|=
 name|prefix_path
@@ -3490,28 +3481,19 @@ block|{
 name|struct
 name|strbuf
 name|buf
+init|=
+name|STRBUF_INIT
+decl_stmt|,
+name|nbuf
+init|=
+name|STRBUF_INIT
 decl_stmt|;
-name|strbuf_init
-argument_list|(
-operator|&
-name|buf
-argument_list|)
+name|setup_work_tree
+argument_list|()
 expr_stmt|;
 while|while
 condition|(
-literal|1
-condition|)
-block|{
-name|char
-modifier|*
-name|path_name
-decl_stmt|;
-specifier|const
-name|char
-modifier|*
-name|p
-decl_stmt|;
-name|read_line
+name|strbuf_getline
 argument_list|(
 operator|&
 name|buf
@@ -3520,14 +3502,15 @@ name|stdin
 argument_list|,
 name|line_termination
 argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|buf
-operator|.
-name|eof
+operator|!=
+name|EOF
 condition|)
-break|break;
+block|{
+specifier|const
+name|char
+modifier|*
+name|p
+decl_stmt|;
 if|if
 condition|(
 name|line_termination
@@ -3541,24 +3524,42 @@ index|]
 operator|==
 literal|'"'
 condition|)
-name|path_name
-operator|=
+block|{
+name|strbuf_reset
+argument_list|(
+operator|&
+name|nbuf
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|unquote_c_style
 argument_list|(
+operator|&
+name|nbuf
+argument_list|,
 name|buf
 operator|.
 name|buf
 argument_list|,
 name|NULL
 argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"line is badly quoted"
+argument_list|)
 expr_stmt|;
-else|else
-name|path_name
-operator|=
+name|strbuf_swap
+argument_list|(
+operator|&
 name|buf
-operator|.
-name|buf
+argument_list|,
+operator|&
+name|nbuf
+argument_list|)
 expr_stmt|;
+block|}
 name|p
 operator|=
 name|prefix_path
@@ -3567,7 +3568,9 @@ name|prefix
 argument_list|,
 name|prefix_length
 argument_list|,
-name|path_name
+name|buf
+operator|.
+name|buf
 argument_list|)
 expr_stmt|;
 name|update_one
@@ -3594,16 +3597,19 @@ if|if
 condition|(
 name|p
 operator|<
-name|path_name
+name|buf
+operator|.
+name|buf
 operator|||
 name|p
 operator|>
-name|path_name
+name|buf
+operator|.
+name|buf
 operator|+
-name|strlen
-argument_list|(
-name|path_name
-argument_list|)
+name|buf
+operator|.
+name|len
 condition|)
 name|free
 argument_list|(
@@ -3614,20 +3620,19 @@ operator|)
 name|p
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|path_name
-operator|!=
-name|buf
-operator|.
-name|buf
-condition|)
-name|free
+block|}
+name|strbuf_release
 argument_list|(
-name|path_name
+operator|&
+name|nbuf
 argument_list|)
 expr_stmt|;
-block|}
+name|strbuf_release
+argument_list|(
+operator|&
+name|buf
+argument_list|)
+expr_stmt|;
 block|}
 name|finish
 label|:
@@ -3654,17 +3659,12 @@ argument_list|(
 literal|128
 argument_list|)
 expr_stmt|;
-name|die
+name|unable_to_lock_index_die
 argument_list|(
-literal|"unable to create '%s.lock': %s"
-argument_list|,
 name|get_index_file
 argument_list|()
 argument_list|,
-name|strerror
-argument_list|(
 name|lock_error
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3677,11 +3677,6 @@ argument_list|,
 name|active_cache
 argument_list|,
 name|active_nr
-argument_list|)
-operator|||
-name|close
-argument_list|(
-name|newfd
 argument_list|)
 operator|||
 name|commit_locked_index

@@ -11,6 +11,12 @@ directive|include
 file|"blob.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"exec_cmd.h"
+end_include
+
 begin_function
 DECL|function|create_temp_file
 specifier|static
@@ -142,6 +148,14 @@ index|[
 literal|20
 index|]
 decl_stmt|;
+name|git_extract_argv0_path
+argument_list|(
+name|argv
+index|[
+literal|0
+index|]
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|argc
@@ -150,7 +164,7 @@ literal|2
 condition|)
 name|usage
 argument_list|(
-literal|"git-unpack-file<sha1>"
+literal|"git unpack-file<sha1>"
 argument_list|)
 expr_stmt|;
 if|if
@@ -181,6 +195,8 @@ expr_stmt|;
 name|git_config
 argument_list|(
 name|git_default_config
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 name|puts

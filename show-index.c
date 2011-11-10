@@ -582,12 +582,14 @@ expr_stmt|;
 block|}
 name|printf
 argument_list|(
-literal|"%llu %s (%08x)\n"
+literal|"%"
+name|PRIuMAX
+literal|" %s (%08"
+name|PRIx32
+literal|")\n"
 argument_list|,
 operator|(
-name|unsigned
-name|long
-name|long
+name|uintmax_t
 operator|)
 name|offset
 argument_list|,

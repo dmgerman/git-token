@@ -161,12 +161,9 @@ name|char
 modifier|*
 name|path0
 init|=
-name|xstrdup
-argument_list|(
-name|git_path
+name|git_pathdup
 argument_list|(
 literal|"info/refs"
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|int
@@ -228,7 +225,7 @@ name|error
 argument_list|(
 literal|"unable to update %s"
 argument_list|,
-name|path0
+name|path1
 argument_list|)
 return|;
 name|for_each_ref
@@ -549,6 +546,8 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|len
+operator|&&
 name|line
 index|[
 name|len

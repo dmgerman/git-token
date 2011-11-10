@@ -5,6 +5,12 @@ directive|include
 file|"cache.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"exec_cmd.h"
+end_include
+
 begin_function
 DECL|function|flush_current_id
 specifier|static
@@ -19,7 +25,7 @@ name|char
 modifier|*
 name|id
 parameter_list|,
-name|SHA_CTX
+name|git_SHA_CTX
 modifier|*
 name|c
 parameter_list|)
@@ -43,7 +49,7 @@ operator|!
 name|patchlen
 condition|)
 return|return;
-name|SHA1_Final
+name|git_SHA1_Final
 argument_list|(
 name|result
 argument_list|,
@@ -74,7 +80,7 @@ argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
-name|SHA1_Init
+name|git_SHA1_Init
 argument_list|(
 name|c
 argument_list|)
@@ -169,7 +175,7 @@ index|[
 literal|1000
 index|]
 decl_stmt|;
-name|SHA_CTX
+name|git_SHA_CTX
 name|ctx
 decl_stmt|;
 name|int
@@ -177,7 +183,7 @@ name|patchlen
 init|=
 literal|0
 decl_stmt|;
-name|SHA1_Init
+name|git_SHA1_Init
 argument_list|(
 operator|&
 name|ctx
@@ -339,7 +345,7 @@ name|patchlen
 operator|+=
 name|len
 expr_stmt|;
-name|SHA1_Update
+name|git_SHA1_Update
 argument_list|(
 operator|&
 name|ctx
@@ -371,7 +377,7 @@ name|char
 name|patch_id_usage
 index|[]
 init|=
-literal|"git-patch-id< patch"
+literal|"git patch-id< patch"
 decl_stmt|;
 end_decl_stmt
 
@@ -398,6 +404,14 @@ condition|)
 name|usage
 argument_list|(
 name|patch_id_usage
+argument_list|)
+expr_stmt|;
+name|git_extract_argv0_path
+argument_list|(
+name|argv
+index|[
+literal|0
+index|]
 argument_list|)
 expr_stmt|;
 name|generate_id_list

@@ -57,7 +57,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Usage: %s<seed_string> [<size>]"
+literal|"Usage: %s<seed_string> [<size>]\n"
 argument_list|,
 name|argv
 index|[

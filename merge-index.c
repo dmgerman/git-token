@@ -11,6 +11,12 @@ directive|include
 file|"run-command.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"exec_cmd.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|pgm
 specifier|static
@@ -151,7 +157,7 @@ name|active_nr
 condition|)
 name|die
 argument_list|(
-literal|"git-merge-index: %s not in the cache"
+literal|"git merge-index: %s not in the cache"
 argument_list|,
 name|path
 argument_list|)
@@ -302,12 +308,9 @@ index|]
 argument_list|,
 literal|"%o"
 argument_list|,
-name|ntohl
-argument_list|(
 name|ce
 operator|->
 name|ce_mode
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|arguments
@@ -348,7 +351,7 @@ name|found
 condition|)
 name|die
 argument_list|(
-literal|"git-merge-index: %s not in the cache"
+literal|"git merge-index: %s not in the cache"
 argument_list|,
 name|path
 argument_list|)
@@ -506,7 +509,15 @@ literal|3
 condition|)
 name|usage
 argument_list|(
-literal|"git-merge-index [-o] [-q]<merge-program> (-a |<filename>*)"
+literal|"git merge-index [-o] [-q]<merge-program> (-a | [--]<filename>*)"
+argument_list|)
+expr_stmt|;
+name|git_extract_argv0_path
+argument_list|(
+name|argv
+index|[
+literal|0
+index|]
 argument_list|)
 expr_stmt|;
 name|setup_git_directory
@@ -637,7 +648,7 @@ continue|continue;
 block|}
 name|die
 argument_list|(
-literal|"git-merge-index: unknown option %s"
+literal|"git merge-index: unknown option %s"
 argument_list|,
 name|arg
 argument_list|)

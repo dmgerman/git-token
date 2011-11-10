@@ -142,7 +142,7 @@ name|char
 name|ls_tree_usage
 index|[]
 init|=
-literal|"git-ls-tree [-d] [-r] [-t] [-l] [-z] [--name-only] [--name-status] [--full-name] [--abbrev[=<n>]]<tree-ish> [path...]"
+literal|"git ls-tree [-d] [-r] [-t] [-l] [-z] [--name-only] [--name-status] [--full-name] [--full-tree] [--abbrev[=<n>]]<tree-ish> [path...]"
 decl_stmt|;
 end_decl_stmt
 
@@ -307,6 +307,10 @@ name|mode
 parameter_list|,
 name|int
 name|stage
+parameter_list|,
+name|void
+modifier|*
+name|context
 parameter_list|)
 block|{
 name|int
@@ -321,10 +325,6 @@ name|type
 init|=
 name|blob_type
 decl_stmt|;
-name|unsigned
-name|long
-name|size
-decl_stmt|;
 if|if
 condition|(
 name|S_ISGITLINK
@@ -333,7 +333,7 @@ name|mode
 argument_list|)
 condition|)
 block|{
-comment|/* 		 * Maybe we want to have some recursive version here? 		 * 		 * Something like: 		 * 		if (show_subprojects(base, baselen, pathname)) { 			if (fork()) { 				chdir(base); 				exec ls-tree; 			} 			waitpid(); 		} 		 * 		 * ..or similar.. 		 */
+comment|/* 		 * Maybe we want to have some recursive version here? 		 * 		 * Something similar to this incomplete example: 		 * 		if (show_subprojects(base, baselen, pathname)) 			retval = READ_TREE_RECURSIVE; 		 * 		 */
 name|type
 operator|=
 name|commit_type
@@ -431,6 +431,12 @@ operator|&
 name|LS_SHOW_SIZE
 condition|)
 block|{
+name|char
+name|size_text
+index|[
+literal|24
+index|]
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -442,6 +448,12 @@ name|blob_type
 argument_list|)
 condition|)
 block|{
+name|unsigned
+name|long
+name|size
+decl_stmt|;
+if|if
+condition|(
 name|sha1_object_info
 argument_list|(
 name|sha1
@@ -449,37 +461,43 @@ argument_list|,
 operator|&
 name|size
 argument_list|)
+operator|==
+name|OBJ_BAD
+condition|)
+name|strcpy
+argument_list|(
+name|size_text
+argument_list|,
+literal|"BAD"
+argument_list|)
 expr_stmt|;
-name|printf
+else|else
+name|snprintf
 argument_list|(
-literal|"%06o %s %s %7lu\t"
+name|size_text
 argument_list|,
-name|mode
-argument_list|,
-name|type
-argument_list|,
-name|abbrev
-condition|?
-name|find_unique_abbrev
+sizeof|sizeof
 argument_list|(
-name|sha1
-argument_list|,
-name|abbrev
+name|size_text
 argument_list|)
-else|:
-name|sha1_to_hex
-argument_list|(
-name|sha1
-argument_list|)
+argument_list|,
+literal|"%lu"
 argument_list|,
 name|size
 argument_list|)
 expr_stmt|;
 block|}
 else|else
+name|strcpy
+argument_list|(
+name|size_text
+argument_list|,
+literal|"-"
+argument_list|)
+expr_stmt|;
 name|printf
 argument_list|(
-literal|"%06o %s %s %7c\t"
+literal|"%06o %s %s %7s\t"
 argument_list|,
 name|mode
 argument_list|,
@@ -499,7 +517,7 @@ argument_list|(
 name|sha1
 argument_list|)
 argument_list|,
-literal|'-'
+name|size_text
 argument_list|)
 expr_stmt|;
 block|}
@@ -528,7 +546,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|write_name_quoted
+name|write_name_quotedpfx
 argument_list|(
 name|base
 operator|+
@@ -540,13 +558,8 @@ name|chomp_prefix
 argument_list|,
 name|pathname
 argument_list|,
-name|line_termination
-argument_list|,
 name|stdout
-argument_list|)
-expr_stmt|;
-name|putchar
-argument_list|(
+argument_list|,
 name|line_termination
 argument_list|)
 expr_stmt|;
@@ -591,6 +604,8 @@ decl_stmt|;
 name|git_config
 argument_list|(
 name|git_default_config
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 name|ls_tree_prefix
@@ -755,6 +770,34 @@ literal|"full-name"
 argument_list|)
 condition|)
 block|{
+name|chomp_prefix
+operator|=
+literal|0
+expr_stmt|;
+break|break;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|argv
+index|[
+literal|1
+index|]
+operator|+
+literal|2
+argument_list|,
+literal|"full-tree"
+argument_list|)
+condition|)
+block|{
+name|ls_tree_prefix
+operator|=
+name|prefix
+operator|=
+name|NULL
+expr_stmt|;
 name|chomp_prefix
 operator|=
 literal|0
@@ -952,6 +995,8 @@ argument_list|,
 name|pathspec
 argument_list|,
 name|show_tree
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 return|return
