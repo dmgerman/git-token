@@ -111,8 +111,6 @@ name|int
 name|buf_index
 init|=
 literal|1
-decl_stmt|,
-name|len
 decl_stmt|;
 name|int
 name|depth
@@ -236,7 +234,7 @@ name|cwd
 argument_list|)
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
 literal|"Could not get current working directory"
 argument_list|)
@@ -248,7 +246,7 @@ argument_list|(
 name|buf
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
 literal|"Could not switch to '%s'"
 argument_list|,
@@ -266,7 +264,7 @@ argument_list|,
 name|PATH_MAX
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
 literal|"Could not get current working directory"
 argument_list|)
@@ -276,7 +274,7 @@ condition|(
 name|last_elem
 condition|)
 block|{
-name|int
+name|size_t
 name|len
 init|=
 name|strlen
@@ -353,8 +351,9 @@ name|st_mode
 argument_list|)
 condition|)
 block|{
+name|ssize_t
 name|len
-operator|=
+init|=
 name|readlink
 argument_list|(
 name|buf
@@ -363,16 +362,16 @@ name|next_buf
 argument_list|,
 name|PATH_MAX
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|len
 operator|<
 literal|0
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"Invalid symlink: %s"
+literal|"Invalid symlink '%s'"
 argument_list|,
 name|buf
 argument_list|)
@@ -428,7 +427,7 @@ argument_list|(
 name|cwd
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
 literal|"Could not change back to '%s'"
 argument_list|,
@@ -625,7 +624,7 @@ condition|(
 operator|!
 name|cwd
 condition|)
-name|die
+name|die_errno
 argument_list|(
 literal|"Cannot determine the current working directory"
 argument_list|)

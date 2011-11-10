@@ -105,24 +105,6 @@ end_comment
 
 begin_function_decl
 specifier|extern
-name|char
-modifier|*
-name|sq_dequote_step
-parameter_list|(
-name|char
-modifier|*
-name|arg
-parameter_list|,
-name|char
-modifier|*
-modifier|*
-name|next
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-specifier|extern
 name|int
 name|sq_dequote_to_argv
 parameter_list|(

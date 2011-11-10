@@ -2515,18 +2515,18 @@ operator|&
 name|this_src
 argument_list|)
 expr_stmt|;
+comment|/* 			 * Once we run estimate_similarity, 			 * We do not need the text anymore. 			 */
 name|diff_free_filespec_blob
 argument_list|(
 name|one
 argument_list|)
 expr_stmt|;
-block|}
-comment|/* We do not need the text anymore */
 name|diff_free_filespec_blob
 argument_list|(
 name|two
 argument_list|)
 expr_stmt|;
+block|}
 name|dst_cnt
 operator|++
 expr_stmt|;

@@ -35,11 +35,27 @@ name|char
 modifier|*
 name|branch2
 decl_stmt|;
-DECL|member|subtree_merge
-name|unsigned
-name|subtree_merge
-range|:
-literal|1
+enum|enum
+block|{
+DECL|enumerator|MERGE_RECURSIVE_NORMAL
+name|MERGE_RECURSIVE_NORMAL
+init|=
+literal|0
+block|,
+DECL|enumerator|MERGE_RECURSIVE_OURS
+name|MERGE_RECURSIVE_OURS
+block|,
+DECL|enumerator|MERGE_RECURSIVE_THEIRS
+name|MERGE_RECURSIVE_THEIRS
+block|, 	}
+DECL|member|recursive_variant
+name|recursive_variant
+enum|;
+DECL|member|subtree_shift
+specifier|const
+name|char
+modifier|*
+name|subtree_shift
 decl_stmt|;
 DECL|member|buffer_output
 name|unsigned
@@ -81,6 +97,20 @@ decl_stmt|;
 block|}
 struct|;
 end_struct
+
+begin_comment
+comment|/* Return a list of user-friendly error messages to be used by merge */
+end_comment
+
+begin_function_decl
+name|struct
+name|unpack_trees_error_msgs
+name|get_porcelain_error_msgs
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
 
 begin_comment
 comment|/* merge_trees() but with recursive ancestor consolidation */

@@ -120,18 +120,13 @@ operator|->
 name|name
 argument_list|)
 expr_stmt|;
-name|die
+name|die_errno
 argument_list|(
-literal|"sha1 file '%s' write error (%s)"
+literal|"sha1 file '%s' write error"
 argument_list|,
 name|f
 operator|->
 name|name
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -298,18 +293,13 @@ operator|->
 name|fd
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"%s: sha1 file error on close (%s)"
+literal|"%s: sha1 file error on close"
 argument_list|,
 name|f
 operator|->
 name|name
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|fd

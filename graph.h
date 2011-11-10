@@ -23,7 +23,7 @@ struct_decl|;
 end_struct_decl
 
 begin_comment
-comment|/*  * Create a new struct git_graph.  * The graph should be freed with graph_release() when no longer needed.  */
+comment|/*  * Create a new struct git_graph.  */
 end_comment
 
 begin_function_decl

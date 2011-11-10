@@ -1115,9 +1115,9 @@ name|i
 operator|+
 literal|2
 condition|)
-name|die
+name|usagef
 argument_list|(
-literal|"git diff %s takes two paths"
+literal|"git diff %s<path><path>"
 argument_list|,
 name|no_index
 condition|?

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_comment
-comment|/*  * This program can either change modification time of the given  * file(s) or just print it. The program does not change atime nor  * ctime (their values are explicitely preserved).  *  * The mtime can be changed to an absolute value:  *  *	test-chmtime =<seconds> file...  *  * Relative to the current time as returned by time(3):  *  *	test-chmtime =+<seconds> (or =-<seconds>) file...  *  * Or relative to the current mtime of the file:  *  *	test-chmtime<seconds> file...  *	test-chmtime +<seconds> (or -<seconds>) file...  *  * Examples:  *  * To just print the mtime use --verbose and set the file mtime offset to 0:  *  *	test-chmtime -v +0 file  *  * To set the mtime to current time:  *  *	test-chmtime =+0 file  *  */
+comment|/*  * This program can either change modification time of the given  * file(s) or just print it. The program does not change atime nor  * ctime (their values are explicitly preserved).  *  * The mtime can be changed to an absolute value:  *  *	test-chmtime =<seconds> file...  *  * Relative to the current time as returned by time(3):  *  *	test-chmtime =+<seconds> (or =-<seconds>) file...  *  * Or relative to the current mtime of the file:  *  *	test-chmtime<seconds> file...  *	test-chmtime +<seconds> (or -<seconds>) file...  *  * Examples:  *  * To just print the mtime use --verbose and set the file mtime offset to 0:  *  *	test-chmtime -v +0 file  *  * To set the mtime to current time:  *  *	test-chmtime =+0 file  *  */
 end_comment
 
 begin_include
@@ -333,6 +333,59 @@ operator|-
 literal|1
 return|;
 block|}
+ifdef|#
+directive|ifdef
+name|WIN32
+if|if
+condition|(
+operator|!
+operator|(
+name|sb
+operator|.
+name|st_mode
+operator|&
+name|S_IWUSR
+operator|)
+operator|&&
+name|chmod
+argument_list|(
+name|argv
+index|[
+name|i
+index|]
+argument_list|,
+name|sb
+operator|.
+name|st_mode
+operator||
+name|S_IWUSR
+argument_list|)
+condition|)
+block|{
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"Could not make user-writable %s: %s"
+argument_list|,
+name|argv
+index|[
+name|i
+index|]
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return
+operator|-
+literal|1
+return|;
+block|}
+endif|#
+directive|endif
 name|utb
 operator|.
 name|actime

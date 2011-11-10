@@ -114,6 +114,22 @@ name|ALL_REV_FLAGS
 value|((1u<<9)-1)
 end_define
 
+begin_define
+DECL|macro|DECORATE_SHORT_REFS
+define|#
+directive|define
+name|DECORATE_SHORT_REFS
+value|1
+end_define
+
+begin_define
+DECL|macro|DECORATE_FULL_REFS
+define|#
+directive|define
+name|DECORATE_FULL_REFS
+value|2
+end_define
+
 begin_struct_decl
 struct_decl|struct
 name|rev_info
@@ -187,6 +203,11 @@ literal|1
 decl_stmt|,
 DECL|member|no_merges
 name|no_merges
+range|:
+literal|1
+decl_stmt|,
+DECL|member|merges_only
+name|merges_only
 range|:
 literal|1
 decl_stmt|,
@@ -305,6 +326,11 @@ name|cherry_pick
 range|:
 literal|1
 decl_stmt|,
+DECL|member|bisect
+name|bisect
+range|:
+literal|1
+decl_stmt|,
 DECL|member|first_parent_only
 name|first_parent_only
 range|:
@@ -371,6 +397,21 @@ name|show_merge
 range|:
 literal|1
 decl_stmt|,
+DECL|member|show_notes
+name|show_notes
+range|:
+literal|1
+decl_stmt|,
+DECL|member|show_notes_given
+name|show_notes_given
+range|:
+literal|1
+decl_stmt|,
+DECL|member|pretty_given
+name|pretty_given
+range|:
+literal|1
+decl_stmt|,
 DECL|member|abbrev_commit
 name|abbrev_commit
 range|:
@@ -383,6 +424,18 @@ literal|1
 decl_stmt|,
 DECL|member|missing_newline
 name|missing_newline
+range|:
+literal|1
+decl_stmt|,
+DECL|member|date_mode_explicit
+name|date_mode_explicit
+range|:
+literal|1
+decl_stmt|;
+DECL|member|disable_stdin
+name|unsigned
+name|int
+name|disable_stdin
 range|:
 literal|1
 decl_stmt|;
@@ -552,29 +605,40 @@ name|REV_TREE_NEW
 value|1
 end_define
 
+begin_comment
+DECL|macro|REV_TREE_NEW
+comment|/* Only new files */
+end_comment
+
+begin_define
+DECL|macro|REV_TREE_OLD
+define|#
+directive|define
+name|REV_TREE_OLD
+value|2
+end_define
+
+begin_comment
+DECL|macro|REV_TREE_OLD
+comment|/* Only files removed */
+end_comment
+
 begin_define
 DECL|macro|REV_TREE_DIFFERENT
 define|#
 directive|define
 name|REV_TREE_DIFFERENT
-value|2
+value|3
 end_define
+
+begin_comment
+DECL|macro|REV_TREE_DIFFERENT
+comment|/* Mixed changes */
+end_comment
 
 begin_comment
 comment|/* revision.c */
 end_comment
-
-begin_function_decl
-name|void
-name|read_revisions_from_stdin
-parameter_list|(
-name|struct
-name|rev_info
-modifier|*
-name|revs
-parameter_list|)
-function_decl|;
-end_function_decl
 
 begin_typedef
 DECL|typedef|show_early_output_fn_t
@@ -881,6 +945,25 @@ name|commit_error
 block|}
 enum|;
 end_enum
+
+begin_function_decl
+specifier|extern
+name|enum
+name|commit_action
+name|get_commit_action
+parameter_list|(
+name|struct
+name|rev_info
+modifier|*
+name|revs
+parameter_list|,
+name|struct
+name|commit
+modifier|*
+name|commit
+parameter_list|)
+function_decl|;
+end_function_decl
 
 begin_function_decl
 specifier|extern

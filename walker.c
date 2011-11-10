@@ -1443,11 +1443,6 @@ expr_stmt|;
 if|if
 condition|(
 name|write_ref
-operator|&&
-name|write_ref
-index|[
-name|targets
-index|]
 condition|)
 name|free
 argument_list|(

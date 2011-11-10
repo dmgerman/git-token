@@ -18,6 +18,22 @@ directive|include
 file|"string-list.h"
 end_include
 
+begin_define
+DECL|macro|RERERE_AUTOUPDATE
+define|#
+directive|define
+name|RERERE_AUTOUPDATE
+value|01
+end_define
+
+begin_define
+DECL|macro|RERERE_NOAUTOUPDATE
+define|#
+directive|define
+name|RERERE_NOAUTOUPDATE
+value|02
+end_define
+
 begin_function_decl
 specifier|extern
 name|int
@@ -26,6 +42,8 @@ parameter_list|(
 name|struct
 name|string_list
 modifier|*
+parameter_list|,
+name|int
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -35,7 +53,7 @@ specifier|extern
 name|int
 name|rerere
 parameter_list|(
-name|void
+name|int
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -72,6 +90,30 @@ name|hex
 parameter_list|)
 function_decl|;
 end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|rerere_forget
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_define
+DECL|macro|OPT_RERERE_AUTOUPDATE
+define|#
+directive|define
+name|OPT_RERERE_AUTOUPDATE
+parameter_list|(
+name|v
+parameter_list|)
+value|OPT_UYN(0, "rerere-autoupdate", (v), \ 	"update the index with reused conflict resolution if possible")
+end_define
 
 begin_endif
 endif|#

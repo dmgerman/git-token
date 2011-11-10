@@ -18,6 +18,12 @@ directive|include
 file|"tree.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"tree-walk.h"
+end_include
+
 begin_struct_decl
 struct_decl|struct
 name|cache_tree
@@ -213,6 +219,30 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* bitmasks to write_cache_as_tree flags */
+end_comment
+
+begin_define
+DECL|macro|WRITE_TREE_MISSING_OK
+define|#
+directive|define
+name|WRITE_TREE_MISSING_OK
+value|1
+end_define
+
+begin_define
+DECL|macro|WRITE_TREE_IGNORE_CACHE_TREE
+define|#
+directive|define
+name|WRITE_TREE_IGNORE_CACHE_TREE
+value|2
+end_define
+
+begin_comment
+comment|/* error return codes */
+end_comment
+
 begin_define
 DECL|macro|WRITE_TREE_UNREADABLE_INDEX
 define|#
@@ -247,7 +277,7 @@ modifier|*
 name|sha1
 parameter_list|,
 name|int
-name|missing_ok
+name|flags
 parameter_list|,
 specifier|const
 name|char
@@ -269,6 +299,28 @@ parameter_list|,
 name|struct
 name|tree
 modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|cache_tree_matches_traversal
+parameter_list|(
+name|struct
+name|cache_tree
+modifier|*
+parameter_list|,
+name|struct
+name|name_entry
+modifier|*
+name|ent
+parameter_list|,
+name|struct
+name|traverse_info
+modifier|*
+name|info
 parameter_list|)
 function_decl|;
 end_function_decl

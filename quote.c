@@ -344,6 +344,7 @@ end_function
 
 begin_function
 DECL|function|sq_dequote_step
+specifier|static
 name|char
 modifier|*
 name|sq_dequote_step
@@ -1045,11 +1046,17 @@ name|len
 operator|==
 name|maxlen
 operator|||
+operator|(
+name|maxlen
+operator|<
+literal|0
+operator|&&
 operator|!
 name|p
 index|[
 name|len
 index|]
+operator|)
 condition|)
 break|break;
 if|if
@@ -1091,6 +1098,18 @@ operator|)
 operator|*
 name|p
 operator|++
+expr_stmt|;
+if|if
+condition|(
+name|maxlen
+operator|>=
+literal|0
+condition|)
+name|maxlen
+operator|-=
+name|len
+operator|+
+literal|1
 expr_stmt|;
 if|if
 condition|(
@@ -1407,7 +1426,6 @@ end_function
 
 begin_function
 DECL|function|write_name_quotedpfx
-specifier|extern
 name|void
 name|write_name_quotedpfx
 parameter_list|(

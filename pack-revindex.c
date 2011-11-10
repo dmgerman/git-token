@@ -844,15 +844,6 @@ condition|;
 name|i
 operator|++
 control|)
-if|if
-condition|(
-name|pack_revindex
-index|[
-name|i
-index|]
-operator|.
-name|revindex
-condition|)
 name|free
 argument_list|(
 name|pack_revindex

@@ -143,7 +143,7 @@ operator|->
 name|force
 operator|&&
 operator|!
-name|unlink
+name|unlink_or_warn
 argument_list|(
 name|buf
 argument_list|)
@@ -157,9 +157,9 @@ literal|0777
 argument_list|)
 condition|)
 continue|continue;
-name|die
+name|die_errno
 argument_list|(
-literal|"cannot create directory at %s"
+literal|"cannot create directory at '%s'"
 argument_list|,
 name|buf
 argument_list|)
@@ -215,16 +215,11 @@ condition|(
 operator|!
 name|dir
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"cannot opendir %s (%s)"
+literal|"cannot opendir '%s'"
 argument_list|,
 name|path
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|strcpy
@@ -296,16 +291,11 @@ operator|&
 name|st
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"cannot lstat %s (%s)"
+literal|"cannot lstat '%s'"
 argument_list|,
 name|pathbuf
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -330,16 +320,11 @@ argument_list|(
 name|pathbuf
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"cannot unlink %s (%s)"
+literal|"cannot unlink '%s'"
 argument_list|,
 name|pathbuf
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -355,16 +340,11 @@ argument_list|(
 name|path
 argument_list|)
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"cannot rmdir %s (%s)"
+literal|"cannot rmdir '%s'"
 argument_list|,
 name|path
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -919,6 +899,91 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * This is like 'lstat()', except it refuses to follow symlinks  * in the path, after skipping "skiplen".  */
+end_comment
+
+begin_function
+DECL|function|check_path
+specifier|static
+name|int
+name|check_path
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|,
+name|int
+name|len
+parameter_list|,
+name|struct
+name|stat
+modifier|*
+name|st
+parameter_list|,
+name|int
+name|skiplen
+parameter_list|)
+block|{
+specifier|const
+name|char
+modifier|*
+name|slash
+init|=
+name|path
+operator|+
+name|len
+decl_stmt|;
+while|while
+condition|(
+name|path
+operator|<
+name|slash
+operator|&&
+operator|*
+name|slash
+operator|!=
+literal|'/'
+condition|)
+name|slash
+operator|--
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|has_dirs_only_path
+argument_list|(
+name|path
+argument_list|,
+name|slash
+operator|-
+name|path
+argument_list|,
+name|skiplen
+argument_list|)
+condition|)
+block|{
+name|errno
+operator|=
+name|ENOENT
+expr_stmt|;
+return|return
+operator|-
+literal|1
+return|;
+block|}
+return|return
+name|lstat
+argument_list|(
+name|path
+argument_list|,
+name|st
+argument_list|)
+return|;
+block|}
+end_function
+
 begin_function
 DECL|function|checkout_entry
 name|int
@@ -1008,12 +1073,18 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|lstat
+name|check_path
 argument_list|(
 name|path
 argument_list|,
+name|len
+argument_list|,
 operator|&
 name|st
+argument_list|,
+name|state
+operator|->
+name|base_dir_len
 argument_list|)
 condition|)
 block|{
@@ -1028,6 +1099,8 @@ operator|&
 name|st
 argument_list|,
 name|CE_MATCH_IGNORE_VALID
+operator||
+name|CE_MATCH_IGNORE_SKIP_WORKTREE
 argument_list|)
 decl_stmt|;
 if|if
