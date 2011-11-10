@@ -435,6 +435,12 @@ argument_list|,
 name|sha1
 argument_list|)
 expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|buf
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
