@@ -531,11 +531,6 @@ name|remote
 init|=
 name|NULL
 decl_stmt|;
-name|int
-name|is_remote
-init|=
-literal|0
-decl_stmt|;
 name|struct
 name|option
 name|local_opts
@@ -583,25 +578,6 @@ literal|"cmd"
 argument_list|,
 literal|"path to the remote git-upload-archive command"
 argument_list|)
-block|,
-block|{
-name|OPTION_BOOLEAN
-block|,
-literal|0
-block|,
-literal|"remote-request"
-block|,
-operator|&
-name|is_remote
-block|,
-name|NULL
-block|,
-literal|"indicate we are serving a remote request"
-block|,
-name|PARSE_OPT_NOARG
-operator||
-name|PARSE_OPT_HIDDEN
-block|}
 block|,
 name|OPT_END
 argument_list|()
@@ -675,7 +651,7 @@ literal|1
 argument_list|,
 name|output
 argument_list|,
-name|is_remote
+literal|0
 argument_list|)
 return|;
 block|}
