@@ -1572,6 +1572,11 @@ modifier|*
 name|commit
 parameter_list|)
 block|{
+specifier|const
+name|char
+modifier|*
+name|filename
+decl_stmt|;
 name|int
 name|fd
 decl_stmt|;
@@ -1598,14 +1603,18 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|fd
+name|filename
 operator|=
-name|open
-argument_list|(
 name|git_path
 argument_list|(
 literal|"CHERRY_PICK_HEAD"
 argument_list|)
+expr_stmt|;
+name|fd
+operator|=
+name|open
+argument_list|(
+name|filename
 argument_list|,
 name|O_WRONLY
 operator||
@@ -1627,10 +1636,7 @@ argument_list|(
 literal|"Could not open '%s' for writing"
 argument_list|)
 argument_list|,
-name|git_path
-argument_list|(
-literal|"CHERRY_PICK_HEAD"
-argument_list|)
+name|filename
 argument_list|)
 expr_stmt|;
 if|if
@@ -1664,10 +1670,7 @@ argument_list|(
 literal|"Could not write to '%s'"
 argument_list|)
 argument_list|,
-name|git_path
-argument_list|(
-literal|"CHERRY_PICK_HEAD"
-argument_list|)
+name|filename
 argument_list|)
 expr_stmt|;
 name|strbuf_release
