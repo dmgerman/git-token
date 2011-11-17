@@ -2268,10 +2268,44 @@ return|;
 block|}
 end_function
 
+begin_enum
+DECL|enum|write_one_status
+enum|enum
+name|write_one_status
+block|{
+DECL|enumerator|WRITE_ONE_SKIP
+name|WRITE_ONE_SKIP
+init|=
+operator|-
+literal|1
+block|,
+comment|/* already written */
+DECL|enumerator|WRITE_ONE_BREAK
+name|WRITE_ONE_BREAK
+init|=
+literal|0
+block|,
+comment|/* writing this will bust the limit; not written */
+DECL|enumerator|WRITE_ONE_WRITTEN
+name|WRITE_ONE_WRITTEN
+init|=
+literal|1
+block|,
+comment|/* normal */
+DECL|enumerator|WRITE_ONE_RECURSIVE
+name|WRITE_ONE_RECURSIVE
+init|=
+literal|2
+comment|/* already scheduled to be written */
+block|}
+enum|;
+end_enum
+
 begin_function
 DECL|function|write_one
 specifier|static
-name|int
+name|enum
+name|write_one_status
 name|write_one
 parameter_list|(
 name|struct
@@ -2293,7 +2327,46 @@ name|unsigned
 name|long
 name|size
 decl_stmt|;
-comment|/* offset is non zero if object is written already. */
+name|int
+name|recursing
+decl_stmt|;
+comment|/* 	 * we set offset to 1 (which is an impossible value) to mark 	 * the fact that this object is involved in "write its base 	 * first before writing a deltified object" recursion. 	 */
+name|recursing
+operator|=
+operator|(
+name|e
+operator|->
+name|idx
+operator|.
+name|offset
+operator|==
+literal|1
+operator|)
+expr_stmt|;
+if|if
+condition|(
+name|recursing
+condition|)
+block|{
+name|warning
+argument_list|(
+literal|"recursive delta detected for object %s"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|e
+operator|->
+name|idx
+operator|.
+name|sha1
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return
+name|WRITE_ONE_RECURSIVE
+return|;
+block|}
+elseif|else
 if|if
 condition|(
 name|e
@@ -2306,18 +2379,31 @@ name|e
 operator|->
 name|preferred_base
 condition|)
+block|{
+comment|/* offset is non zero if object is written already. */
 return|return
-operator|-
-literal|1
+name|WRITE_ONE_SKIP
 return|;
+block|}
 comment|/* if we are deltified, write out base object first. */
 if|if
 condition|(
 name|e
 operator|->
 name|delta
-operator|&&
-operator|!
+condition|)
+block|{
+name|e
+operator|->
+name|idx
+operator|.
+name|offset
+operator|=
+literal|1
+expr_stmt|;
+comment|/* now recurse */
+switch|switch
+condition|(
 name|write_one
 argument_list|(
 name|f
@@ -2329,9 +2415,36 @@ argument_list|,
 name|offset
 argument_list|)
 condition|)
+block|{
+case|case
+name|WRITE_ONE_RECURSIVE
+case|:
+comment|/* we cannot depend on this one */
+name|e
+operator|->
+name|delta
+operator|=
+name|NULL
+expr_stmt|;
+break|break;
+default|default:
+break|break;
+case|case
+name|WRITE_ONE_BREAK
+case|:
+name|e
+operator|->
+name|idx
+operator|.
+name|offset
+operator|=
+name|recursing
+expr_stmt|;
 return|return
-literal|0
+name|WRITE_ONE_BREAK
 return|;
+block|}
+block|}
 name|e
 operator|->
 name|idx
@@ -2365,10 +2478,10 @@ name|idx
 operator|.
 name|offset
 operator|=
-literal|0
+name|recursing
 expr_stmt|;
 return|return
-literal|0
+name|WRITE_ONE_BREAK
 return|;
 block|}
 name|written_list
@@ -2404,7 +2517,7 @@ operator|+=
 name|size
 expr_stmt|;
 return|return
-literal|1
+name|WRITE_ONE_WRITTEN
 return|;
 block|}
 end_function
@@ -2613,7 +2726,6 @@ control|)
 block|{
 if|if
 condition|(
-operator|!
 name|write_one
 argument_list|(
 name|f
@@ -2625,6 +2737,8 @@ argument_list|,
 operator|&
 name|offset
 argument_list|)
+operator|==
+name|WRITE_ONE_BREAK
 condition|)
 break|break;
 name|display_progress
