@@ -197,6 +197,9 @@ name|prefix
 parameter_list|,
 name|int
 name|setup_prefix
+parameter_list|,
+name|int
+name|remote
 parameter_list|)
 function_decl|;
 end_function_decl
