@@ -1693,6 +1693,12 @@ if|if
 condition|(
 operator|!
 name|obj
+operator|||
+name|obj
+operator|->
+name|type
+operator|!=
+name|OBJ_COMMIT
 condition|)
 continue|continue;
 name|show_name
