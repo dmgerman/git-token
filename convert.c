@@ -2992,7 +2992,7 @@ begin_function
 DECL|function|git_path_check_eol
 specifier|static
 name|enum
-name|crlf_action
+name|eol
 name|git_path_check_eol
 parameter_list|(
 specifier|const
