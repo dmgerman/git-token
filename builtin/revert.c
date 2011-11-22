@@ -831,25 +831,6 @@ argument_list|,
 name|option_parse_x
 argument_list|)
 block|,
-block|{
-name|OPTION_BOOLEAN
-block|,
-literal|0
-block|,
-literal|"reset"
-block|,
-operator|&
-name|remove_state
-block|,
-name|NULL
-block|,
-literal|"alias for --quit (deprecated)"
-block|,
-name|PARSE_OPT_HIDDEN
-operator||
-name|PARSE_OPT_NOARG
-block|}
-block|,
 name|OPT_END
 argument_list|()
 block|,
