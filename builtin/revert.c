@@ -4707,17 +4707,28 @@ argument_list|(
 name|seq_dir
 argument_list|)
 condition|)
-return|return
+block|{
 name|error
 argument_list|(
 name|_
 argument_list|(
-literal|"%s already exists."
+literal|"a cherry-pick or revert is already in progress"
 argument_list|)
-argument_list|,
-name|seq_dir
 argument_list|)
+expr_stmt|;
+name|advise
+argument_list|(
+name|_
+argument_list|(
+literal|"try \"git cherry-pick (--continue | --quit)\""
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return
+operator|-
+literal|1
 return|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -5485,36 +5496,10 @@ argument_list|()
 operator|<
 literal|0
 condition|)
-block|{
-name|error
-argument_list|(
-name|_
-argument_list|(
-literal|"A cherry-pick or revert is in progress."
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|advise
-argument_list|(
-name|_
-argument_list|(
-literal|"Use --continue to continue the operation"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|advise
-argument_list|(
-name|_
-argument_list|(
-literal|"or --quit to forget about it"
-argument_list|)
-argument_list|)
-expr_stmt|;
 return|return
 operator|-
 literal|1
 return|;
-block|}
 if|if
 condition|(
 name|get_sha1
