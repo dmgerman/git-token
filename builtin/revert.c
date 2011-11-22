@@ -5395,7 +5395,6 @@ return|return
 literal|0
 return|;
 block|}
-elseif|else
 if|if
 condition|(
 name|opts
@@ -5416,9 +5415,20 @@ name|SEQ_TODO_FILE
 argument_list|)
 argument_list|)
 condition|)
-goto|goto
+return|return
 name|error
-goto|;
+argument_list|(
+name|_
+argument_list|(
+literal|"No %s in progress"
+argument_list|)
+argument_list|,
+name|action_name
+argument_list|(
+name|opts
+argument_list|)
+argument_list|)
+return|;
 name|read_populate_opts
 argument_list|(
 operator|&
@@ -5450,10 +5460,16 @@ name|todo_list
 operator|->
 name|next
 expr_stmt|;
+return|return
+name|pick_commits
+argument_list|(
+name|todo_list
+argument_list|,
+name|opts
+argument_list|)
+return|;
 block|}
-else|else
-block|{
-comment|/* 		 * Start a new cherry-pick/ revert sequence; but 		 * first, make sure that an existing one isn't in 		 * progress 		 */
+comment|/* 	 * Start a new cherry-pick/ revert sequence; but 	 * first, make sure that an existing one isn't in 	 * progress 	 */
 name|walk_revs_populate_todo
 argument_list|(
 operator|&
@@ -5549,29 +5565,12 @@ argument_list|(
 name|opts
 argument_list|)
 expr_stmt|;
-block|}
 return|return
 name|pick_commits
 argument_list|(
 name|todo_list
 argument_list|,
 name|opts
-argument_list|)
-return|;
-name|error
-label|:
-return|return
-name|error
-argument_list|(
-name|_
-argument_list|(
-literal|"No %s in progress"
-argument_list|)
-argument_list|,
-name|action_name
-argument_list|(
-name|opts
-argument_list|)
 argument_list|)
 return|;
 block|}
