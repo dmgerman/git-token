@@ -24,7 +24,7 @@ end_include
 begin_function_decl
 specifier|extern
 name|void
-name|sha1_core
+name|ppc_sha1_core
 parameter_list|(
 name|uint32_t
 modifier|*
@@ -44,11 +44,11 @@ function_decl|;
 end_function_decl
 
 begin_function
-DECL|function|SHA1_Init
+DECL|function|ppc_SHA1_Init
 name|int
-name|SHA1_Init
+name|ppc_SHA1_Init
 parameter_list|(
-name|SHA_CTX
+name|ppc_SHA_CTX
 modifier|*
 name|c
 parameter_list|)
@@ -117,11 +117,11 @@ block|}
 end_function
 
 begin_function
-DECL|function|SHA1_Update
+DECL|function|ppc_SHA1_Update
 name|int
-name|SHA1_Update
+name|ppc_SHA1_Update
 parameter_list|(
-name|SHA_CTX
+name|ppc_SHA_CTX
 modifier|*
 name|c
 parameter_list|,
@@ -151,6 +151,9 @@ name|c
 operator|->
 name|len
 operator|+=
+operator|(
+name|uint64_t
+operator|)
 name|n
 operator|<<
 literal|3
@@ -223,7 +226,7 @@ operator|==
 literal|64
 condition|)
 block|{
-name|sha1_core
+name|ppc_sha1_core
 argument_list|(
 name|c
 operator|->
@@ -254,7 +257,7 @@ name|n
 operator|>>
 literal|6
 expr_stmt|;
-name|sha1_core
+name|ppc_sha1_core
 argument_list|(
 name|c
 operator|->
@@ -286,16 +289,16 @@ block|}
 end_function
 
 begin_function
-DECL|function|SHA1_Final
+DECL|function|ppc_SHA1_Final
 name|int
-name|SHA1_Final
+name|ppc_SHA1_Final
 parameter_list|(
 name|unsigned
 name|char
 modifier|*
 name|hash
 parameter_list|,
-name|SHA_CTX
+name|ppc_SHA_CTX
 modifier|*
 name|c
 parameter_list|)
@@ -352,7 +355,7 @@ operator|-
 name|cnt
 argument_list|)
 expr_stmt|;
-name|sha1_core
+name|ppc_sha1_core
 argument_list|(
 name|c
 operator|->
@@ -410,7 +413,7 @@ name|c
 operator|->
 name|len
 expr_stmt|;
-name|sha1_core
+name|ppc_sha1_core
 argument_list|(
 name|c
 operator|->

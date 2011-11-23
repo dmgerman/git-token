@@ -1,48 +1,12 @@
 begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_comment
-comment|/*  * test-delta.c: test code to exercise diff-delta.c and patch-delta.c  *  * (C) 2005 Nicolas Pitre<nico@cam.org>  *  * This code is free software; you can redistribute it and/or modify  * it under the terms of the GNU General Public License version 2 as  * published by the Free Software Foundation.  */
+comment|/*  * test-delta.c: test code to exercise diff-delta.c and patch-delta.c  *  * (C) 2005 Nicolas Pitre<nico@fluxnic.net>  *  * This code is free software; you can redistribute it and/or modify  * it under the terms of the GNU General Public License version 2 as  * published by the Free Software Foundation.  */
 end_comment
 
 begin_include
 include|#
 directive|include
-file|<stdio.h>
-end_include
-
-begin_include
-include|#
-directive|include
-file|<unistd.h>
-end_include
-
-begin_include
-include|#
-directive|include
-file|<string.h>
-end_include
-
-begin_include
-include|#
-directive|include
-file|<fcntl.h>
-end_include
-
-begin_include
-include|#
-directive|include
-file|<sys/types.h>
-end_include
-
-begin_include
-include|#
-directive|include
-file|<sys/stat.h>
-end_include
-
-begin_include
-include|#
-directive|include
-file|<sys/mman.h>
+file|"git-compat-util.h"
 end_include
 
 begin_include
@@ -51,12 +15,18 @@ directive|include
 file|"delta.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"cache.h"
+end_include
+
 begin_decl_stmt
-DECL|variable|usage
+DECL|variable|usage_str
 specifier|static
 specifier|const
 name|char
-name|usage
+name|usage_str
 index|[]
 init|=
 literal|"test-delta (-d|-p)<from_file><data_file><out_file>"
@@ -137,7 +107,7 @@ name|stderr
 argument_list|,
 literal|"Usage: %s\n"
 argument_list|,
-name|usage
+name|usage_str
 argument_list|)
 expr_stmt|;
 return|return
@@ -414,7 +384,7 @@ name|fd
 operator|<
 literal|0
 operator|||
-name|write
+name|write_in_full
 argument_list|(
 name|fd
 argument_list|,

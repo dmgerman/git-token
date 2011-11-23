@@ -6,14 +6,14 @@ end_comment
 begin_ifndef
 ifndef|#
 directive|ifndef
-name|_DIFFCORE_H_
+name|DIFFCORE_H
 end_ifndef
 
 begin_define
-DECL|macro|_DIFFCORE_H_
+DECL|macro|DIFFCORE_H
 define|#
 directive|define
-name|_DIFFCORE_H_
+name|DIFFCORE_H
 end_define
 
 begin_comment
@@ -55,7 +55,7 @@ end_define
 
 begin_comment
 DECL|macro|DEFAULT_BREAK_SCORE
-comment|/* minimum for break to happen (50%)*/
+comment|/* minimum for break to happen (50%) */
 end_comment
 
 begin_define
@@ -63,12 +63,12 @@ DECL|macro|DEFAULT_MERGE_SCORE
 define|#
 directive|define
 name|DEFAULT_MERGE_SCORE
-value|48000
+value|36000
 end_define
 
 begin_comment
 DECL|macro|DEFAULT_MERGE_SCORE
-comment|/* maximum for break-merge to happen (80%)*/
+comment|/* maximum for break-merge to happen (60%) */
 end_comment
 
 begin_define
@@ -83,6 +83,12 @@ begin_comment
 DECL|macro|MINIMUM_BREAK_SIZE
 comment|/* do not break a file smaller than this */
 end_comment
+
+begin_struct_decl
+struct_decl|struct
+name|userdiff_driver
+struct_decl|;
+end_struct_decl
 
 begin_struct
 DECL|struct|diff_filespec
@@ -107,16 +113,37 @@ name|void
 modifier|*
 name|data
 decl_stmt|;
+DECL|member|cnt_data
+name|void
+modifier|*
+name|cnt_data
+decl_stmt|;
+DECL|member|funcname_pattern_ident
+specifier|const
+name|char
+modifier|*
+name|funcname_pattern_ident
+decl_stmt|;
 DECL|member|size
 name|unsigned
 name|long
 name|size
 decl_stmt|;
+DECL|member|count
+name|int
+name|count
+decl_stmt|;
+comment|/* Reference count */
 DECL|member|xfrm_flags
 name|int
 name|xfrm_flags
 decl_stmt|;
 comment|/* for use by the xfrm */
+DECL|member|rename_used
+name|int
+name|rename_used
+decl_stmt|;
+comment|/* Count of rename users */
 DECL|member|mode
 name|unsigned
 name|short
@@ -152,6 +179,41 @@ range|:
 literal|1
 decl_stmt|;
 comment|/* data should be munmap()'ed */
+DECL|member|dirty_submodule
+name|unsigned
+name|dirty_submodule
+range|:
+literal|2
+decl_stmt|;
+comment|/* For submodules: its work tree is dirty */
+DECL|macro|DIRTY_SUBMODULE_UNTRACKED
+define|#
+directive|define
+name|DIRTY_SUBMODULE_UNTRACKED
+value|1
+DECL|macro|DIRTY_SUBMODULE_MODIFIED
+define|#
+directive|define
+name|DIRTY_SUBMODULE_MODIFIED
+value|2
+DECL|member|has_more_entries
+name|unsigned
+name|has_more_entries
+range|:
+literal|1
+decl_stmt|;
+comment|/* only appear in combined diff */
+DECL|member|driver
+name|struct
+name|userdiff_driver
+modifier|*
+name|driver
+decl_stmt|;
+comment|/* data should be considered "binary"; -1 means "don't know yet" */
+DECL|member|is_binary
+name|int
+name|is_binary
+decl_stmt|;
 block|}
 struct|;
 end_struct
@@ -165,6 +227,18 @@ name|alloc_filespec
 parameter_list|(
 specifier|const
 name|char
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|void
+name|free_filespec
+parameter_list|(
+name|struct
+name|diff_filespec
 modifier|*
 parameter_list|)
 function_decl|;
@@ -216,6 +290,30 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|void
+name|diff_free_filespec_blob
+parameter_list|(
+name|struct
+name|diff_filespec
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|diff_filespec_is_binary
+parameter_list|(
+name|struct
+name|diff_filespec
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_struct
 DECL|struct|diff_filepair
 struct|struct
@@ -243,17 +341,22 @@ DECL|member|status
 name|char
 name|status
 decl_stmt|;
-comment|/* M C R N D U (see Documentation/diff-format.txt) */
-DECL|member|source_stays
-name|unsigned
-name|source_stays
-range|:
-literal|1
-decl_stmt|;
-comment|/* all of R/C are copies */
+comment|/* M C R A D U etc. (see Documentation/diff-format.txt or DIFF_STATUS_* in diff.h) */
 DECL|member|broken_pair
 name|unsigned
 name|broken_pair
+range|:
+literal|1
+decl_stmt|;
+DECL|member|renamed_pair
+name|unsigned
+name|renamed_pair
+range|:
+literal|1
+decl_stmt|;
+DECL|member|is_unmerged
+name|unsigned
+name|is_unmerged
 range|:
 literal|1
 decl_stmt|;
@@ -269,8 +372,7 @@ name|DIFF_PAIR_UNMERGED
 parameter_list|(
 name|p
 parameter_list|)
-define|\
-value|(!DIFF_FILE_VALID((p)->one)&& !DIFF_FILE_VALID((p)->two))
+value|((p)->is_unmerged)
 end_define
 
 begin_define
@@ -281,7 +383,7 @@ name|DIFF_PAIR_RENAME
 parameter_list|(
 name|p
 parameter_list|)
-value|(strcmp((p)->one->path, (p)->two->path))
+value|((p)->renamed_pair)
 end_define
 
 begin_define
@@ -367,6 +469,18 @@ block|}
 struct|;
 end_struct
 
+begin_define
+DECL|macro|DIFF_QUEUE_CLEAR
+define|#
+directive|define
+name|DIFF_QUEUE_CLEAR
+parameter_list|(
+name|q
+parameter_list|)
+define|\
+value|do { \ 		(q)->queue = NULL; \ 		(q)->nr = (q)->alloc = 0; \ 	} while (0)
+end_define
+
 begin_decl_stmt
 specifier|extern
 name|struct
@@ -416,20 +530,6 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|void
-name|diffcore_pathspec
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-modifier|*
-name|pathspec
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-specifier|extern
-name|void
 name|diffcore_break
 parameter_list|(
 name|int
@@ -464,13 +564,9 @@ specifier|extern
 name|void
 name|diffcore_pickaxe
 parameter_list|(
-specifier|const
-name|char
+name|struct
+name|diff_options
 modifier|*
-name|needle
-parameter_list|,
-name|int
-name|opts
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -565,7 +661,9 @@ name|b
 parameter_list|,
 name|c
 parameter_list|)
-value|do {} while(0)
+value|do {
+comment|/* nothing */
+value|} while (0)
 end_define
 
 begin_define
@@ -578,7 +676,9 @@ name|a
 parameter_list|,
 name|b
 parameter_list|)
-value|do {} while(0)
+value|do {
+comment|/* nothing */
+value|} while (0)
 end_define
 
 begin_define
@@ -591,7 +691,9 @@ name|a
 parameter_list|,
 name|b
 parameter_list|)
-value|do {} while(0)
+value|do {
+comment|/* nothing */
+value|} while (0)
 end_define
 
 begin_endif
@@ -604,21 +706,25 @@ specifier|extern
 name|int
 name|diffcore_count_changes
 parameter_list|(
-name|void
+name|struct
+name|diff_filespec
 modifier|*
 name|src
 parameter_list|,
-name|unsigned
-name|long
-name|src_size
-parameter_list|,
-name|void
+name|struct
+name|diff_filespec
 modifier|*
 name|dst
 parameter_list|,
-name|unsigned
-name|long
-name|dst_size
+name|void
+modifier|*
+modifier|*
+name|src_count_p
+parameter_list|,
+name|void
+modifier|*
+modifier|*
+name|dst_count_p
 parameter_list|,
 name|unsigned
 name|long
