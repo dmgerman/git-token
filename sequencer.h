@@ -53,7 +53,7 @@ value|"sequencer/opts"
 end_define
 
 begin_comment
-comment|/*  * Removes SEQ_OLD_DIR and renames SEQ_DIR to SEQ_OLD_DIR, ignoring  * any errors.  Intended to be used by 'git reset'.  *  * With the aggressive flag, it additionally removes SEQ_OLD_DIR,  * ignoring any errors.  Inteded to be used by the sequencer's  * '--reset' subcommand.  */
+comment|/*  * Removes SEQ_OLD_DIR and renames SEQ_DIR to SEQ_OLD_DIR, ignoring  * any errors.  Intended to be used by 'git reset'.  *  * With the aggressive flag, it additionally removes SEQ_OLD_DIR,  * ignoring any errors.  Inteded to be used by the sequencer's  * '--quit' subcommand.  */
 end_comment
 
 begin_function_decl
