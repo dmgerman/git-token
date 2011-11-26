@@ -45,6 +45,9 @@ parameter_list|,
 name|int
 name|reflog
 parameter_list|,
+name|int
+name|clobber_head
+parameter_list|,
 name|enum
 name|branch_track
 name|track
