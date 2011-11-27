@@ -252,6 +252,16 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|overwrite_ignore
+specifier|static
+name|int
+name|overwrite_ignore
+init|=
+literal|1
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|merge_msg
 specifier|static
 name|struct
@@ -1324,6 +1334,18 @@ argument_list|,
 literal|"force progress reporting"
 argument_list|,
 literal|1
+argument_list|)
+block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|0
+argument_list|,
+literal|"overwrite-ignore"
+argument_list|,
+operator|&
+name|overwrite_ignore
+argument_list|,
+literal|"update ignored files (default)"
 argument_list|)
 block|,
 name|OPT_END
@@ -4899,6 +4921,11 @@ name|t
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|overwrite_ignore
+condition|)
+block|{
 name|memset
 argument_list|(
 operator|&
@@ -4931,6 +4958,7 @@ operator|=
 operator|&
 name|dir
 expr_stmt|;
+block|}
 name|opts
 operator|.
 name|head_idx
