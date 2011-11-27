@@ -2366,13 +2366,12 @@ name|flags
 operator||=
 name|DIR_SHOW_IGNORED
 expr_stmt|;
+name|setup_standard_excludes
+argument_list|(
 name|topts
 operator|.
 name|dir
-operator|->
-name|exclude_per_dir
-operator|=
-literal|".gitignore"
+argument_list|)
 expr_stmt|;
 name|tree
 operator|=
