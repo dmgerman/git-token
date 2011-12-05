@@ -107,6 +107,12 @@ define|#
 directive|define
 name|WRITE_IDX_VERIFY
 value|01
+comment|/* verify only, do not write the idx file */
+DECL|macro|WRITE_IDX_STRICT
+define|#
+directive|define
+name|WRITE_IDX_STRICT
+value|02
 DECL|member|version
 name|uint32_t
 name|version
