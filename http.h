@@ -233,11 +233,6 @@ name|CURL
 modifier|*
 name|curl
 decl_stmt|;
-DECL|member|local
-name|FILE
-modifier|*
-name|local
-decl_stmt|;
 DECL|member|in_use
 name|int
 name|in_use
@@ -551,13 +546,6 @@ name|void
 parameter_list|)
 function_decl|;
 end_function_decl
-
-begin_decl_stmt
-specifier|extern
-name|int
-name|data_received
-decl_stmt|;
-end_decl_stmt
 
 begin_decl_stmt
 specifier|extern
