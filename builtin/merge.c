@@ -7267,7 +7267,10 @@ if|if
 condition|(
 operator|!
 name|argc
-operator|&&
+condition|)
+block|{
+if|if
+condition|(
 name|default_to_upstream
 condition|)
 name|argc
@@ -7278,6 +7281,16 @@ operator|&
 name|argv
 argument_list|)
 expr_stmt|;
+else|else
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"No commit specified and merge.defaultToUpstream not set."
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
