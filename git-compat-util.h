@@ -684,11 +684,44 @@ endif|#
 directive|endif
 end_endif
 
-begin_ifndef
-ifndef|#
-directive|ifndef
+begin_if
+if|#
+directive|if
+name|defined
+argument_list|(
 name|__MINGW32__
-end_ifndef
+argument_list|)
+end_if
+
+begin_comment
+comment|/* pull in Windows compatibility stuff */
+end_comment
+
+begin_include
+include|#
+directive|include
+file|"compat/mingw.h"
+end_include
+
+begin_elif
+elif|#
+directive|elif
+name|defined
+argument_list|(
+name|_MSC_VER
+argument_list|)
+end_elif
+
+begin_include
+include|#
+directive|include
+file|"compat/msvc.h"
+end_include
+
+begin_else
+else|#
+directive|else
+end_else
 
 begin_include
 include|#
@@ -866,46 +899,6 @@ begin_endif
 endif|#
 directive|endif
 end_endif
-
-begin_else
-else|#
-directive|else
-end_else
-
-begin_comment
-comment|/* __MINGW32__ */
-end_comment
-
-begin_comment
-comment|/* pull in Windows compatibility stuff */
-end_comment
-
-begin_include
-include|#
-directive|include
-file|"compat/mingw.h"
-end_include
-
-begin_endif
-endif|#
-directive|endif
-end_endif
-
-begin_comment
-comment|/* __MINGW32__ */
-end_comment
-
-begin_ifdef
-ifdef|#
-directive|ifdef
-name|_MSC_VER
-end_ifdef
-
-begin_include
-include|#
-directive|include
-file|"compat/msvc.h"
-end_include
 
 begin_endif
 endif|#
