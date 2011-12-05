@@ -132,6 +132,15 @@ argument_list|)
 block|,
 name|PATTERNS
 argument_list|(
+literal|"matlab"
+argument_list|,
+literal|"^[[:space:]]*((classdef|function)[[:space:]].*)$|^%%[[:space:]].*$"
+argument_list|,
+literal|"[a-zA-Z_][a-zA-Z0-9_]*|[-+0-9.e]+|[=~<>]=|\\.[*/\\^']|\\|\\||&&"
+argument_list|)
+block|,
+name|PATTERNS
+argument_list|(
 literal|"objc"
 argument_list|,
 comment|/* Negate C statements that can look like functions */
