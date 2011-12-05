@@ -65,7 +65,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Remove empty lines from the beginning and end  * and also trailing spaces from every line.  *  * Note that the buffer will not be NUL-terminated.  *  * Turn multiple consecutive empty lines between paragraphs  * into just one empty line.  *  * If the input has only empty lines and spaces,  * no output will be produced.  *  * If last line does not have a newline at the end, one is added.  *  * Enable skip_comments to skip every line starting with "#".  */
+comment|/*  * Remove empty lines from the beginning and end  * and also trailing spaces from every line.  *  * Turn multiple consecutive empty lines between paragraphs  * into just one empty line.  *  * If the input has only empty lines and spaces,  * no output will be produced.  *  * If last line does not have a newline at the end, one is added.  *  * Enable skip_comments to skip every line starting with "#".  */
 end_comment
 
 begin_function
