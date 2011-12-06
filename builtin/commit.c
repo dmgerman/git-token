@@ -366,7 +366,6 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|all
-DECL|variable|edit_flag
 DECL|variable|also
 DECL|variable|interactive
 DECL|variable|patch_interactive
@@ -376,8 +375,6 @@ DECL|variable|signoff
 specifier|static
 name|int
 name|all
-decl_stmt|,
-name|edit_flag
 decl_stmt|,
 name|also
 decl_stmt|,
@@ -392,6 +389,22 @@ decl_stmt|,
 name|signoff
 decl_stmt|;
 end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|edit_flag
+specifier|static
+name|int
+name|edit_flag
+init|=
+operator|-
+literal|1
+decl_stmt|;
+end_decl_stmt
+
+begin_comment
+DECL|variable|edit_flag
+comment|/* unspecified */
+end_comment
 
 begin_decl_stmt
 DECL|variable|quiet
@@ -804,7 +817,7 @@ argument_list|,
 literal|"use specified template file"
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'e'
 argument_list|,
@@ -5323,11 +5336,13 @@ literal|0
 expr_stmt|;
 if|if
 condition|(
+literal|0
+operator|<=
 name|edit_flag
 condition|)
 name|use_editor
 operator|=
-literal|1
+name|edit_flag
 expr_stmt|;
 if|if
 condition|(
