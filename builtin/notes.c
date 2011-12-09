@@ -4544,6 +4544,9 @@ name|struct
 name|pretty_print_context
 name|pretty_ctx
 decl_stmt|;
+name|int
+name|ret
+decl_stmt|;
 comment|/* 	 * Read partial merge result from .git/NOTES_MERGE_PARTIAL, 	 * and target notes ref from .git/NOTES_MERGE_REF. 	 */
 if|if
 condition|(
@@ -4668,6 +4671,17 @@ argument_list|(
 literal|"Failed to resolve NOTES_MERGE_REF"
 argument_list|)
 expr_stmt|;
+name|o
+operator|->
+name|local_ref
+operator|=
+name|xstrdup
+argument_list|(
+name|o
+operator|->
+name|local_ref
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|notes_merge_commit
@@ -4768,11 +4782,26 @@ operator|&
 name|msg
 argument_list|)
 expr_stmt|;
-return|return
+name|ret
+operator|=
 name|merge_abort
 argument_list|(
 name|o
 argument_list|)
+expr_stmt|;
+name|free
+argument_list|(
+operator|(
+name|char
+operator|*
+operator|)
+name|o
+operator|->
+name|local_ref
+argument_list|)
+expr_stmt|;
+return|return
+name|ret
 return|;
 block|}
 end_function

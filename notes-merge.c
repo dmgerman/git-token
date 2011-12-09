@@ -3262,8 +3262,7 @@ expr_stmt|;
 comment|/* Dereference o->local_ref into local_sha1 */
 if|if
 condition|(
-operator|!
-name|resolve_ref
+name|read_ref_full
 argument_list|(
 name|o
 operator|->
