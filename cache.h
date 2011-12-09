@@ -1432,7 +1432,7 @@ name|cache_entry_size
 parameter_list|(
 name|len
 parameter_list|)
-value|flexible_size(cache_entry,len)
+value|(offsetof(struct cache_entry,name) + (len) + 1)
 end_define
 
 begin_define
@@ -1496,11 +1496,6 @@ DECL|member|timestamp
 name|struct
 name|cache_time
 name|timestamp
-decl_stmt|;
-DECL|member|alloc
-name|void
-modifier|*
-name|alloc
 decl_stmt|;
 DECL|member|name_hash_initialized
 name|unsigned
