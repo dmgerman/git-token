@@ -15,6 +15,12 @@ directive|include
 file|"refs.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"fmt-merge-msg.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|git_default_email
 name|char
@@ -466,6 +472,16 @@ begin_decl_stmt
 DECL|variable|core_apply_sparse_checkout
 name|int
 name|core_apply_sparse_checkout
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|merge_log_config
+name|int
+name|merge_log_config
+init|=
+operator|-
+literal|1
 decl_stmt|;
 end_decl_stmt
 
