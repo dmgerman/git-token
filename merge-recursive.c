@@ -217,10 +217,6 @@ return|;
 block|}
 end_function
 
-begin_comment
-comment|/*  * A virtual commit has (const char *)commit->util set to the name.  */
-end_comment
-
 begin_function
 DECL|function|make_virtual_commit
 specifier|static
@@ -256,6 +252,37 @@ name|commit
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|struct
+name|merge_remote_desc
+modifier|*
+name|desc
+init|=
+name|xmalloc
+argument_list|(
+sizeof|sizeof
+argument_list|(
+operator|*
+name|desc
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|desc
+operator|->
+name|name
+operator|=
+name|comment
+expr_stmt|;
+name|desc
+operator|->
+name|obj
+operator|=
+operator|(
+expr|struct
+name|object
+operator|*
+operator|)
+name|commit
+expr_stmt|;
 name|commit
 operator|->
 name|tree
@@ -266,13 +293,8 @@ name|commit
 operator|->
 name|util
 operator|=
-operator|(
-name|void
-operator|*
-operator|)
-name|comment
+name|desc
 expr_stmt|;
-comment|/* avoid warnings */
 name|commit
 operator|->
 name|object
@@ -1032,13 +1054,12 @@ name|printf
 argument_list|(
 literal|"virtual %s\n"
 argument_list|,
-operator|(
-name|char
-operator|*
-operator|)
+name|merge_remote_util
+argument_list|(
 name|commit
+argument_list|)
 operator|->
-name|util
+name|name
 argument_list|)
 expr_stmt|;
 else|else

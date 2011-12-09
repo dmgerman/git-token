@@ -5868,15 +5868,13 @@ index|[]
 decl_stmt|;
 end_decl_stmt
 
-begin_decl_stmt
-specifier|extern
-specifier|const
-name|char
-modifier|*
+begin_define
+DECL|macro|ref_fetch_rules
+define|#
+directive|define
 name|ref_fetch_rules
-index|[]
-decl_stmt|;
-end_decl_stmt
+value|ref_rev_parse_rules
+end_define
 
 begin_function_decl
 specifier|extern
