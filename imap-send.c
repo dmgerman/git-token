@@ -6965,14 +6965,15 @@ operator|->
 name|pass
 condition|)
 block|{
-name|char
+name|struct
+name|strbuf
 name|prompt
-index|[
-literal|80
-index|]
+init|=
+name|STRBUF_INIT
 decl_stmt|;
-name|sprintf
+name|strbuf_addf
 argument_list|(
+operator|&
 name|prompt
 argument_list|,
 literal|"Password (%s@%s): "
@@ -6990,6 +6991,14 @@ name|arg
 operator|=
 name|git_getpass
 argument_list|(
+name|prompt
+operator|.
+name|buf
+argument_list|)
+expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
 name|prompt
 argument_list|)
 expr_stmt|;
