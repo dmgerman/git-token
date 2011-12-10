@@ -29,6 +29,12 @@ directive|include
 file|"url.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"prompt.h"
+end_include
+
 begin_function
 DECL|function|credential_init
 name|void
