@@ -5786,24 +5786,9 @@ if|if
 condition|(
 name|res
 condition|)
-block|{
-if|if
-condition|(
-operator|!
-name|cur
-operator|->
-name|next
-condition|)
-comment|/* 				 * An error was encountered while 				 * picking the last commit; the 				 * sequencer state is useless now -- 				 * the user simply needs to resolve 				 * the conflict and commit 				 */
-name|remove_sequencer_state
-argument_list|(
-literal|0
-argument_list|)
-expr_stmt|;
 return|return
 name|res
 return|;
-block|}
 block|}
 comment|/* 	 * Sequence of picks finished successfully; cleanup by 	 * removing the .git/sequencer directory 	 */
 name|remove_sequencer_state
