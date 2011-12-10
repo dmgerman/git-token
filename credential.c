@@ -622,6 +622,9 @@ name|struct
 name|credential
 modifier|*
 name|c
+parameter_list|,
+name|int
+name|flags
 parameter_list|)
 block|{
 name|struct
@@ -679,14 +682,15 @@ argument_list|,
 name|what
 argument_list|)
 expr_stmt|;
-comment|/* FIXME: for usernames, we should do something less magical that 	 * actually echoes the characters. However, we need to read from 	 * /dev/tty and not stdio, which is not portable (but getpass will do 	 * it for us). http.c uses the same workaround. */
 name|r
 operator|=
-name|git_getpass
+name|git_prompt
 argument_list|(
 name|prompt
 operator|.
 name|buf
+argument_list|,
+name|flags
 argument_list|)
 expr_stmt|;
 name|strbuf_release
@@ -738,6 +742,10 @@ argument_list|(
 literal|"Username"
 argument_list|,
 name|c
+argument_list|,
+name|PROMPT_ASKPASS
+operator||
+name|PROMPT_ECHO
 argument_list|)
 expr_stmt|;
 if|if
@@ -756,6 +764,8 @@ argument_list|(
 literal|"Password"
 argument_list|,
 name|c
+argument_list|,
+name|PROMPT_ASKPASS
 argument_list|)
 expr_stmt|;
 block|}
