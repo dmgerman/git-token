@@ -20,6 +20,14 @@ name|PROMPT_ASKPASS
 value|(1<<0)
 end_define
 
+begin_define
+DECL|macro|PROMPT_ECHO
+define|#
+directive|define
+name|PROMPT_ECHO
+value|(1<<1)
+end_define
+
 begin_function_decl
 name|char
 modifier|*
