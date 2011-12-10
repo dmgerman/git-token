@@ -140,6 +140,22 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|void
+name|credential_from_url
+parameter_list|(
+name|struct
+name|credential
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|url
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
