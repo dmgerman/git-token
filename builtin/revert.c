@@ -5298,9 +5298,7 @@ goto|goto
 name|fail
 goto|;
 name|remove_sequencer_state
-argument_list|(
-literal|1
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|strbuf_release
 argument_list|(
@@ -5792,9 +5790,7 @@ return|;
 block|}
 comment|/* 	 * Sequence of picks finished successfully; cleanup by 	 * removing the .git/sequencer directory 	 */
 name|remove_sequencer_state
-argument_list|(
-literal|1
-argument_list|)
+argument_list|()
 expr_stmt|;
 return|return
 literal|0
@@ -6074,9 +6070,7 @@ name|REPLAY_REMOVE_STATE
 condition|)
 block|{
 name|remove_sequencer_state
-argument_list|(
-literal|1
-argument_list|)
+argument_list|()
 expr_stmt|;
 return|return
 literal|0
