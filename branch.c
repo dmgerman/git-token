@@ -29,12 +29,6 @@ directive|include
 file|"commit.h"
 end_include
 
-begin_include
-include|#
-directive|include
-file|"sequencer.h"
-end_include
-
 begin_struct
 DECL|struct|tracking
 struct|struct
@@ -1236,11 +1230,6 @@ name|git_path
 argument_list|(
 literal|"SQUASH_MSG"
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|remove_sequencer_state
-argument_list|(
-literal|0
 argument_list|)
 expr_stmt|;
 block|}
