@@ -213,6 +213,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/* Add a ref_entry to the end of the ref_array (unsorted). */
+end_comment
+
 begin_function
 DECL|function|add_ref
 specifier|static
