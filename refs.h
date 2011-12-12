@@ -957,7 +957,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/** resolve ref in nested "gitlink" repository */
+comment|/**  * Resolve refname in the nested "gitlink" repository that is located  * at path.  If the resolution is successful, return 0 and set sha1 to  * the name of the object; otherwise, return a non-zero value.  */
 end_comment
 
 begin_function_decl
@@ -968,7 +968,7 @@ parameter_list|(
 specifier|const
 name|char
 modifier|*
-name|name
+name|path
 parameter_list|,
 specifier|const
 name|char
