@@ -5594,9 +5594,15 @@ block|{
 comment|/* If this condition is true, then we may use the attribute 	 * machinery in grep_buffer_1. The attribute code is not 	 * thread safe, so we disable the use of threads. 	 */
 if|if
 condition|(
+operator|(
 name|opt
 operator|->
 name|funcname
+operator|||
+name|opt
+operator|->
+name|funcbody
+operator|)
 operator|&&
 operator|!
 name|opt
@@ -5869,9 +5875,15 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|opt
 operator|->
 name|funcname
+operator|||
+name|opt
+operator|->
+name|funcbody
+operator|)
 operator|&&
 operator|!
 name|opt
