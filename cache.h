@@ -5706,7 +5706,7 @@ parameter_list|(
 specifier|const
 name|char
 modifier|*
-name|filename
+name|refname
 parameter_list|,
 name|unsigned
 name|char
@@ -5731,7 +5731,7 @@ parameter_list|(
 specifier|const
 name|char
 modifier|*
-name|filename
+name|refname
 parameter_list|,
 name|unsigned
 name|char
@@ -5755,7 +5755,7 @@ parameter_list|(
 specifier|const
 name|char
 modifier|*
-name|ref
+name|refname
 parameter_list|,
 name|unsigned
 name|char
