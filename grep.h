@@ -62,6 +62,12 @@ directive|include
 file|"kwset.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"thread-utils.h"
+end_include
+
 begin_enum
 DECL|enum|grep_pat_token
 enum|enum
@@ -513,6 +519,10 @@ DECL|member|heading
 name|int
 name|heading
 decl_stmt|;
+DECL|member|use_threads
+name|int
+name|use_threads
+decl_stmt|;
 DECL|member|priv
 name|void
 modifier|*
@@ -711,6 +721,28 @@ name|opt
 parameter_list|)
 function_decl|;
 end_function_decl
+
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|NO_PTHREADS
+end_ifndef
+
+begin_comment
+comment|/*  * Mutex used around access to the attributes machinery if  * opt->use_threads.  Must be initialized/destroyed by callers!  */
+end_comment
+
+begin_decl_stmt
+specifier|extern
+name|pthread_mutex_t
+name|grep_attr_mutex
+decl_stmt|;
+end_decl_stmt
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_endif
 endif|#
