@@ -103,6 +103,10 @@ block|}
 struct|;
 end_struct
 
+begin_comment
+comment|/*  * Parse one line from a packed-refs file.  Write the SHA1 to sha1.  * Return a pointer to the refname within the line (null-terminated),  * or NULL if there was a problem.  */
+end_comment
+
 begin_function
 DECL|function|parse_ref_line
 specifier|static
