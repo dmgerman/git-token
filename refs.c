@@ -68,6 +68,7 @@ index|[
 literal|20
 index|]
 decl_stmt|;
+comment|/* The full name of the reference (e.g., "refs/heads/master"): */
 DECL|member|name
 name|char
 name|name
