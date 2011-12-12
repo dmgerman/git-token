@@ -978,7 +978,7 @@ parameter_list|,
 name|unsigned
 name|char
 modifier|*
-name|result
+name|sha1
 parameter_list|)
 function_decl|;
 end_function_decl
