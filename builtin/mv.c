@@ -645,11 +645,14 @@ name|argc
 operator|!=
 literal|1
 condition|)
-name|usage_with_options
+name|die
 argument_list|(
-name|builtin_mv_usage
+literal|"destination '%s' is not a directory"
 argument_list|,
-name|builtin_mv_options
+name|dest_path
+index|[
+literal|0
+index|]
 argument_list|)
 expr_stmt|;
 name|destination
