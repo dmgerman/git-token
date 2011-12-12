@@ -3133,7 +3133,7 @@ argument_list|)
 expr_stmt|;
 name|dst_name
 operator|=
-name|resolve_ref
+name|resolve_ref_unsafe
 argument_list|(
 name|buf
 operator|.

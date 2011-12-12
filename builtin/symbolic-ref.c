@@ -71,7 +71,7 @@ name|char
 modifier|*
 name|refs_heads_master
 init|=
-name|resolve_ref
+name|resolve_ref_unsafe
 argument_list|(
 name|HEAD
 argument_list|,

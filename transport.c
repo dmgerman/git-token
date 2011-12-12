@@ -880,7 +880,7 @@ name|name
 expr_stmt|;
 name|tmp
 operator|=
-name|resolve_ref
+name|resolve_ref_unsafe
 argument_list|(
 name|localname
 argument_list|,

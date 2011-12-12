@@ -1936,7 +1936,7 @@ literal|0
 return|;
 name|resolves_to
 operator|=
-name|resolve_ref
+name|resolve_ref_unsafe
 argument_list|(
 name|refname
 argument_list|,
@@ -2724,11 +2724,11 @@ block|}
 end_function
 
 begin_function
-DECL|function|resolve_ref
+DECL|function|resolve_ref_unsafe
 specifier|const
 name|char
 modifier|*
-name|resolve_ref
+name|resolve_ref_unsafe
 parameter_list|(
 specifier|const
 name|char
@@ -3230,7 +3230,7 @@ name|char
 modifier|*
 name|ret
 init|=
-name|resolve_ref
+name|resolve_ref_unsafe
 argument_list|(
 name|ref
 argument_list|,
@@ -3308,7 +3308,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|resolve_ref
+name|resolve_ref_unsafe
 argument_list|(
 name|ref
 argument_list|,
@@ -6085,7 +6085,7 @@ argument_list|)
 expr_stmt|;
 name|r
 operator|=
-name|resolve_ref
+name|resolve_ref_unsafe
 argument_list|(
 name|fullref
 argument_list|,
@@ -6295,7 +6295,7 @@ argument_list|)
 expr_stmt|;
 name|ref
 operator|=
-name|resolve_ref
+name|resolve_ref_unsafe
 argument_list|(
 name|path
 argument_list|,
@@ -6510,7 +6510,7 @@ literal|1
 expr_stmt|;
 name|ref
 operator|=
-name|resolve_ref
+name|resolve_ref_unsafe
 argument_list|(
 name|ref
 argument_list|,
@@ -6569,7 +6569,7 @@ goto|;
 block|}
 name|ref
 operator|=
-name|resolve_ref
+name|resolve_ref_unsafe
 argument_list|(
 name|orig_ref
 argument_list|,
@@ -7468,7 +7468,7 @@ argument_list|)
 return|;
 name|symref
 operator|=
-name|resolve_ref
+name|resolve_ref_unsafe
 argument_list|(
 name|oldref
 argument_list|,
@@ -9034,7 +9034,7 @@ name|head_ref
 decl_stmt|;
 name|head_ref
 operator|=
-name|resolve_ref
+name|resolve_ref_unsafe
 argument_list|(
 literal|"HEAD"
 argument_list|,
@@ -11165,7 +11165,7 @@ decl_stmt|;
 return|return
 operator|!
 operator|!
-name|resolve_ref
+name|resolve_ref_unsafe
 argument_list|(
 name|refname
 argument_list|,

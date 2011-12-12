@@ -1254,7 +1254,7 @@ name|cp
 decl_stmt|;
 name|dst
 operator|=
-name|resolve_ref
+name|resolve_ref_unsafe
 argument_list|(
 name|src
 argument_list|,

@@ -4195,7 +4195,7 @@ block|}
 block|}
 name|head_p
 operator|=
-name|resolve_ref
+name|resolve_ref_unsafe
 argument_list|(
 literal|"HEAD"
 argument_list|,
