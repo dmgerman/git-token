@@ -1182,6 +1182,10 @@ name|st_mode
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+name|verbose
+condition|)
 name|warning
 argument_list|(
 name|_
