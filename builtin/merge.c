@@ -6921,6 +6921,10 @@ init|=
 operator|&
 name|remoteheads
 decl_stmt|;
+name|void
+modifier|*
+name|branch_to_free
+decl_stmt|;
 if|if
 condition|(
 name|argc
@@ -6948,7 +6952,9 @@ expr_stmt|;
 comment|/* 	 * Check if we are _not_ on a detached HEAD, i.e. if there is a 	 * current branch. 	 */
 name|branch
 operator|=
-name|resolve_ref
+name|branch_to_free
+operator|=
+name|resolve_refdup
 argument_list|(
 literal|"HEAD"
 argument_list|,
@@ -6963,10 +6969,7 @@ expr_stmt|;
 if|if
 condition|(
 name|branch
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 operator|!
 name|prefixcmp
 argument_list|(
@@ -6979,14 +6982,6 @@ name|branch
 operator|+=
 literal|11
 expr_stmt|;
-name|branch
-operator|=
-name|xstrdup
-argument_list|(
-name|branch
-argument_list|)
-expr_stmt|;
-block|}
 if|if
 condition|(
 operator|!
@@ -8765,11 +8760,7 @@ name|done
 label|:
 name|free
 argument_list|(
-operator|(
-name|char
-operator|*
-operator|)
-name|branch
+name|branch_to_free
 argument_list|)
 expr_stmt|;
 return|return

@@ -516,6 +516,12 @@ name|reference_name
 init|=
 name|NULL
 decl_stmt|;
+name|void
+modifier|*
+name|reference_name_to_free
+init|=
+name|NULL
+decl_stmt|;
 name|int
 name|merged
 decl_stmt|;
@@ -570,7 +576,9 @@ operator|&&
 operator|(
 name|reference_name
 operator|=
-name|resolve_ref
+name|reference_name_to_free
+operator|=
+name|resolve_refdup
 argument_list|(
 name|branch
 operator|->
@@ -591,14 +599,6 @@ operator|)
 operator|!=
 name|NULL
 condition|)
-block|{
-name|reference_name
-operator|=
-name|xstrdup
-argument_list|(
-name|reference_name
-argument_list|)
-expr_stmt|;
 name|reference_rev
 operator|=
 name|lookup_commit_reference
@@ -606,7 +606,6 @@ argument_list|(
 name|sha1
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 if|if
 condition|(
@@ -685,11 +684,7 @@ expr_stmt|;
 block|}
 name|free
 argument_list|(
-operator|(
-name|char
-operator|*
-operator|)
-name|reference_name
+name|reference_name_to_free
 argument_list|)
 expr_stmt|;
 return|return
@@ -4189,7 +4184,7 @@ name|git_branch_track
 expr_stmt|;
 name|head
 operator|=
-name|resolve_ref
+name|resolve_refdup
 argument_list|(
 literal|"HEAD"
 argument_list|,
@@ -4211,13 +4206,6 @@ name|_
 argument_list|(
 literal|"Failed to resolve HEAD as a valid ref."
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|head
-operator|=
-name|xstrdup
-argument_list|(
-name|head
 argument_list|)
 expr_stmt|;
 if|if
