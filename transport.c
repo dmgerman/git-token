@@ -2873,10 +2873,6 @@ argument_list|,
 operator|&
 name|refs
 argument_list|,
-literal|0
-argument_list|,
-name|NULL
-argument_list|,
 name|for_push
 condition|?
 name|REF_NORMAL
@@ -3157,10 +3153,6 @@ index|]
 argument_list|,
 operator|&
 name|refs_tmp
-argument_list|,
-literal|0
-argument_list|,
-name|NULL
 argument_list|,
 literal|0
 argument_list|,
@@ -4507,10 +4499,6 @@ index|]
 argument_list|,
 operator|&
 name|tmp_refs
-argument_list|,
-literal|0
-argument_list|,
-name|NULL
 argument_list|,
 name|REF_NORMAL
 argument_list|,
