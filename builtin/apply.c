@@ -1120,19 +1120,6 @@ name|result
 init|=
 literal|0
 decl_stmt|;
-if|if
-condition|(
-name|n1
-operator|<
-literal|0
-operator|||
-name|n2
-operator|<
-literal|0
-condition|)
-return|return
-literal|0
-return|;
 comment|/* ignore line endings */
 while|while
 condition|(
