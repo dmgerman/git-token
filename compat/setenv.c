@@ -41,6 +41,13 @@ condition|(
 operator|!
 name|name
 operator|||
+name|strchr
+argument_list|(
+name|name
+argument_list|,
+literal|'='
+argument_list|)
+operator|||
 operator|!
 name|value
 condition|)
