@@ -6334,9 +6334,13 @@ argument_list|(
 literal|"bad object header"
 argument_list|)
 expr_stmt|;
-return|return
+name|size
+operator|=
+name|used
+operator|=
 literal|0
-return|;
+expr_stmt|;
+break|break;
 block|}
 name|c
 operator|=
