@@ -8019,9 +8019,14 @@ condition|(
 name|show_raw_time
 condition|)
 block|{
-name|sprintf
+name|snprintf
 argument_list|(
 name|time_buf
+argument_list|,
+sizeof|sizeof
+argument_list|(
+name|time_buf
+argument_list|)
 argument_list|,
 literal|"%lu %s"
 argument_list|,
