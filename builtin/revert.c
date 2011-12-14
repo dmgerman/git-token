@@ -3866,6 +3866,12 @@ operator|.
 name|subject
 argument_list|)
 expr_stmt|;
+name|free_message
+argument_list|(
+operator|&
+name|msg
+argument_list|)
+expr_stmt|;
 block|}
 return|return
 literal|0
