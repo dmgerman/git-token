@@ -1005,6 +1005,9 @@ parameter_list|,
 name|int
 name|reflog
 parameter_list|,
+name|int
+name|clobber_head
+parameter_list|,
 name|enum
 name|branch_track
 name|track
@@ -1089,6 +1092,8 @@ argument_list|,
 name|track
 operator|==
 name|BRANCH_TRACK_OVERRIDE
+operator|||
+name|clobber_head
 argument_list|)
 condition|)
 block|{
