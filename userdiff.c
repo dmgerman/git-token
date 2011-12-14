@@ -270,7 +270,7 @@ argument_list|,
 comment|/* Jump targets or access declarations */
 literal|"!^[ \t]*[A-Za-z_][A-Za-z_0-9]*:.*$\n"
 comment|/* C/++ functions/methods at top level */
-literal|"^([A-Za-z_][A-Za-z_0-9]*([ \t]+[A-Za-z_][A-Za-z_0-9]*([ \t]*::[ \t]*[^[:space:]]+)?){1,}[ \t]*\\([^;]*)$\n"
+literal|"^([A-Za-z_][A-Za-z_0-9]*([ \t*]+[A-Za-z_][A-Za-z_0-9]*([ \t]*::[ \t]*[^[:space:]]+)?){1,}[ \t]*\\([^;]*)$\n"
 comment|/* compound type at top level */
 literal|"^((struct|class|enum)[^;]*)$"
 argument_list|,
