@@ -180,6 +180,10 @@ DECL|member|writeout_error
 name|int
 name|writeout_error
 decl_stmt|;
+DECL|member|overwrite_ignore
+name|int
+name|overwrite_ignore
+decl_stmt|;
 comment|/* not set by parse_options */
 DECL|member|branch_exists
 name|int
@@ -2457,6 +2461,13 @@ name|fn
 operator|=
 name|twoway_merge
 expr_stmt|;
+if|if
+condition|(
+name|opts
+operator|->
+name|overwrite_ignore
+condition|)
+block|{
 name|topts
 operator|.
 name|dir
@@ -2489,6 +2500,7 @@ operator|.
 name|dir
 argument_list|)
 expr_stmt|;
+block|}
 name|tree
 operator|=
 name|parse_tree_indirect
@@ -5164,6 +5176,20 @@ argument_list|,
 literal|"perform a 3-way merge with the new branch"
 argument_list|)
 block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|0
+argument_list|,
+literal|"overwrite-ignore"
+argument_list|,
+operator|&
+name|opts
+operator|.
+name|overwrite_ignore
+argument_list|,
+literal|"update ignored files (default)"
+argument_list|)
+block|,
 name|OPT_STRING
 argument_list|(
 literal|0
@@ -5238,6 +5264,12 @@ argument_list|(
 name|new
 argument_list|)
 argument_list|)
+expr_stmt|;
+name|opts
+operator|.
+name|overwrite_ignore
+operator|=
+literal|1
 expr_stmt|;
 name|gitmodules_config
 argument_list|()
