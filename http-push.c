@@ -9849,6 +9849,8 @@ argument_list|,
 name|repo
 operator|->
 name|url
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 ifdef|#

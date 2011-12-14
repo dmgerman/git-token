@@ -321,6 +321,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|http_proactive_auth
+specifier|static
+name|int
+name|http_proactive_auth
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|user_agent
 specifier|static
 specifier|const
@@ -1566,6 +1574,15 @@ endif|#
 directive|endif
 if|if
 condition|(
+name|http_proactive_auth
+condition|)
+name|init_curl_http_auth
+argument_list|(
+name|result
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|ssl_cert
 operator|!=
 name|NULL
@@ -2022,6 +2039,9 @@ specifier|const
 name|char
 modifier|*
 name|url
+parameter_list|,
+name|int
+name|proactive_auth
 parameter_list|)
 block|{
 name|char
@@ -2047,6 +2067,10 @@ name|curl_global_init
 argument_list|(
 name|CURL_GLOBAL_ALL
 argument_list|)
+expr_stmt|;
+name|http_proactive_auth
+operator|=
+name|proactive_auth
 expr_stmt|;
 if|if
 condition|(
