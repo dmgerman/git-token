@@ -5839,6 +5839,8 @@ expr_stmt|;
 name|prepare_to_commit
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
 name|commit_tree
 argument_list|(
 name|merge_msg
@@ -5852,6 +5854,14 @@ argument_list|,
 name|result_commit
 argument_list|,
 name|NULL
+argument_list|)
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"failed to write commit object"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|finish
@@ -6020,6 +6030,8 @@ argument_list|(
 name|remoteheads
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|commit_tree
 argument_list|(
 name|merge_msg
@@ -6033,6 +6045,14 @@ argument_list|,
 name|result_commit
 argument_list|,
 name|NULL
+argument_list|)
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"failed to write commit object"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|strbuf_addf
