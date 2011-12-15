@@ -884,6 +884,8 @@ index|]
 decl_stmt|;
 name|unsigned
 name|mode
+init|=
+literal|0
 decl_stmt|;
 name|memset
 argument_list|(
