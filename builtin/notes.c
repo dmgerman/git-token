@@ -1631,15 +1631,6 @@ argument_list|(
 operator|&
 name|buf
 argument_list|,
-literal|"notes: "
-argument_list|)
-expr_stmt|;
-comment|/* commit message starts at index 7 */
-name|strbuf_addstr
-argument_list|(
-operator|&
-name|buf
-argument_list|,
 name|msg
 argument_list|)
 expr_stmt|;
@@ -1673,15 +1664,25 @@ name|t
 argument_list|,
 name|NULL
 argument_list|,
+operator|&
 name|buf
-operator|.
-name|buf
-operator|+
-literal|7
 argument_list|,
 name|commit_sha1
 argument_list|)
 expr_stmt|;
+name|strbuf_insert
+argument_list|(
+operator|&
+name|buf
+argument_list|,
+literal|0
+argument_list|,
+literal|"notes: "
+argument_list|,
+literal|7
+argument_list|)
+expr_stmt|;
+comment|/* commit message starts at index 7 */
 name|update_ref
 argument_list|(
 name|buf

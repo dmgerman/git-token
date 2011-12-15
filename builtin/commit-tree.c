@@ -356,9 +356,8 @@ if|if
 condition|(
 name|commit_tree
 argument_list|(
+operator|&
 name|buffer
-operator|.
-name|buf
 argument_list|,
 name|tree_sha1
 argument_list|,
