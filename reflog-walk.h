@@ -117,6 +117,21 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+specifier|const
+name|char
+modifier|*
+name|get_reflog_ident
+parameter_list|(
+name|struct
+name|reflog_walk_info
+modifier|*
+name|reflog_info
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|void
 name|get_reflog_selector
 parameter_list|(
