@@ -232,6 +232,16 @@ end_function_decl
 
 begin_function_decl
 name|int
+name|git_deflate_abort
+parameter_list|(
+name|git_zstream
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
 name|git_deflate_end_gently
 parameter_list|(
 name|git_zstream
@@ -3880,6 +3890,14 @@ specifier|extern
 name|unsigned
 name|long
 name|big_file_threshold
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
+name|unsigned
+name|long
+name|pack_size_limit_cfg
 decl_stmt|;
 end_decl_stmt
 
