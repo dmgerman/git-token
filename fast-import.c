@@ -12094,6 +12094,19 @@ argument_list|)
 condition|)
 block|{
 comment|/* This is a note entry */
+if|if
+condition|(
+name|fanout
+operator|==
+literal|0xff
+condition|)
+block|{
+comment|/* Counting mode, no rename */
+name|num_notes
+operator|++
+expr_stmt|;
+continue|continue;
+block|}
 name|construct_path_with_fanout
 argument_list|(
 name|hex_sha1
@@ -13283,6 +13296,7 @@ name|b
 parameter_list|,
 name|unsigned
 name|char
+modifier|*
 name|old_fanout
 parameter_list|)
 block|{
@@ -13343,6 +13357,48 @@ name|unsigned
 name|char
 name|new_fanout
 decl_stmt|;
+comment|/* 	 * When loading a branch, we don't traverse its tree to count the real 	 * number of notes (too expensive to do this for all non-note refs). 	 * This means that recently loaded notes refs might incorrectly have 	 * b->num_notes == 0, and consequently, old_fanout might be wrong. 	 * 	 * Fix this by traversing the tree and counting the number of notes 	 * when b->num_notes == 0. If the notes tree is truly empty, the 	 * calculation should not take long. 	 */
+if|if
+condition|(
+name|b
+operator|->
+name|num_notes
+operator|==
+literal|0
+operator|&&
+operator|*
+name|old_fanout
+operator|==
+literal|0
+condition|)
+block|{
+comment|/* Invoke change_note_fanout() in "counting mode". */
+name|b
+operator|->
+name|num_notes
+operator|=
+name|change_note_fanout
+argument_list|(
+operator|&
+name|b
+operator|->
+name|branch_tree
+argument_list|,
+literal|0xff
+argument_list|)
+expr_stmt|;
+operator|*
+name|old_fanout
+operator|=
+name|convert_num_notes_to_fanout
+argument_list|(
+name|b
+operator|->
+name|num_notes
+argument_list|)
+expr_stmt|;
+block|}
+comment|/* Now parse the notemodify command. */
 comment|/*<dataref> or 'inline' */
 if|if
 condition|(
@@ -13758,6 +13814,7 @@ argument_list|(
 name|commit_sha1
 argument_list|)
 argument_list|,
+operator|*
 name|old_fanout
 argument_list|,
 name|path
@@ -15015,6 +15072,7 @@ name|note_change_n
 argument_list|(
 name|b
 argument_list|,
+operator|&
 name|prev_fanout
 argument_list|)
 expr_stmt|;
