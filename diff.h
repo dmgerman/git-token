@@ -58,6 +58,12 @@ name|userdiff_driver
 struct_decl|;
 end_struct_decl
 
+begin_struct_decl
+struct_decl|struct
+name|sha1_array
+struct_decl|;
+end_struct_decl
+
 begin_typedef
 DECL|typedef|change_fn_t
 typedef|typedef
@@ -1156,16 +1162,10 @@ modifier|*
 name|sha1
 parameter_list|,
 specifier|const
-name|unsigned
-name|char
-name|parent
-index|[]
-index|[
-literal|20
-index|]
-parameter_list|,
-name|int
-name|num_parent
+name|struct
+name|sha1_array
+modifier|*
+name|parents
 parameter_list|,
 name|int
 name|dense
