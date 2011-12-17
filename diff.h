@@ -64,6 +64,12 @@ name|sha1_array
 struct_decl|;
 end_struct_decl
 
+begin_struct_decl
+struct_decl|struct
+name|commit
+struct_decl|;
+end_struct_decl
+
 begin_typedef
 DECL|typedef|change_fn_t
 typedef|typedef
@@ -1184,16 +1190,18 @@ name|void
 name|diff_tree_combined_merge
 parameter_list|(
 specifier|const
-name|unsigned
-name|char
+name|struct
+name|commit
 modifier|*
-name|sha1
+name|commit
 parameter_list|,
 name|int
+name|dense
 parameter_list|,
 name|struct
 name|rev_info
 modifier|*
+name|rev
 parameter_list|)
 function_decl|;
 end_function_decl
