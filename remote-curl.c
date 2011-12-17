@@ -1067,6 +1067,9 @@ name|struct
 name|discovery
 modifier|*
 name|heads
+parameter_list|,
+name|int
+name|for_push
 parameter_list|)
 block|{
 name|struct
@@ -1138,6 +1141,10 @@ literal|0
 argument_list|,
 name|NULL
 argument_list|,
+name|for_push
+condition|?
+name|REF_NORMAL
+else|:
 literal|0
 argument_list|,
 name|NULL
@@ -1494,6 +1501,8 @@ return|return
 name|parse_git_refs
 argument_list|(
 name|heads
+argument_list|,
+name|for_push
 argument_list|)
 return|;
 return|return
