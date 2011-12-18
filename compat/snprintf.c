@@ -6,7 +6,7 @@ file|"../git-compat-util.h"
 end_include
 
 begin_comment
-comment|/*  * The size parameter specifies the available space, i.e. includes  * the trailing NUL byte; but Windows's vsnprintf expects the  * number of characters to write without the trailing NUL.  */
+comment|/*  * The size parameter specifies the available space, i.e. includes  * the trailing NUL byte; but Windows's vsnprintf uses the entire  * buffer and avoids the trailing NUL, should the buffer be exactly  * big enough for the result. Defining SNPRINTF_SIZE_CORR to 1 will  * therefore remove 1 byte from the reported buffer size, so we  * always have room for a trailing NUL byte.  */
 end_comment
 
 begin_ifndef
@@ -15,6 +15,40 @@ directive|ifndef
 name|SNPRINTF_SIZE_CORR
 end_ifndef
 
+begin_if
+if|#
+directive|if
+name|defined
+argument_list|(
+name|WIN32
+argument_list|)
+operator|&&
+operator|(
+operator|!
+name|defined
+argument_list|(
+name|__GNUC__
+argument_list|)
+operator|||
+name|__GNUC__
+operator|<
+literal|4
+operator|)
+end_if
+
+begin_define
+DECL|macro|SNPRINTF_SIZE_CORR
+define|#
+directive|define
+name|SNPRINTF_SIZE_CORR
+value|1
+end_define
+
+begin_else
+else|#
+directive|else
+end_else
+
 begin_define
 DECL|macro|SNPRINTF_SIZE_CORR
 define|#
@@ -22,6 +56,11 @@ directive|define
 name|SNPRINTF_SIZE_CORR
 value|0
 end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_endif
 endif|#
@@ -87,6 +126,19 @@ name|format
 argument_list|,
 name|ap
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|ret
+operator|==
+name|maxsize
+operator|-
+literal|1
+condition|)
+name|ret
+operator|=
+operator|-
+literal|1
 expr_stmt|;
 comment|/* Windows does not NUL-terminate if result fills buffer */
 name|str
@@ -168,6 +220,19 @@ name|format
 argument_list|,
 name|ap
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|ret
+operator|==
+name|maxsize
+operator|-
+literal|1
+condition|)
+name|ret
+operator|=
+operator|-
+literal|1
 expr_stmt|;
 block|}
 name|free

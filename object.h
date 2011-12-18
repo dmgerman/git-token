@@ -213,7 +213,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/** Internal only **/
+comment|/*  * This can be used to see if we have heard of the object before, but  * it can return "yes we have, and here is a half-initialised object"  * for an object that we haven't loaded/parsed yet.  *  * When parsing a commit to create an in-core commit object, its  * parents list holds commit objects that represent its parents, but  * they are expected to be lazily initialized and do not know what  * their trees or parents are yet.  When this function returns such a  * half-initialised objects, the caller is expected to initialize them  * by calling parse_object() on them.  */
 end_comment
 
 begin_function_decl
@@ -347,36 +347,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-name|void
-name|object_list_append
-parameter_list|(
-name|struct
-name|object
-modifier|*
-name|item
-parameter_list|,
-name|struct
-name|object_list
-modifier|*
-modifier|*
-name|list_p
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-name|unsigned
-name|object_list_length
-parameter_list|(
-name|struct
-name|object_list
-modifier|*
-name|list
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
 name|int
 name|object_list_contains
 parameter_list|(
@@ -440,6 +410,17 @@ name|array
 parameter_list|,
 name|unsigned
 name|mode
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|void
+name|object_array_remove_duplicates
+parameter_list|(
+name|struct
+name|object_array
+modifier|*
 parameter_list|)
 function_decl|;
 end_function_decl

@@ -24,11 +24,19 @@ end_decl_stmt
 begin_decl_stmt
 DECL|variable|integer
 specifier|static
-name|unsigned
-name|long
+name|int
 name|integer
 init|=
 literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|timestamp
+specifier|static
+name|unsigned
+name|long
+name|timestamp
 decl_stmt|;
 end_decl_stmt
 
@@ -73,8 +81,28 @@ name|NULL
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|file
+specifier|static
+name|char
+modifier|*
+name|file
+init|=
+name|NULL
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|ambiguous
+specifier|static
+name|int
+name|ambiguous
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|length_callback
+specifier|static
 name|int
 name|length_callback
 parameter_list|(
@@ -118,8 +146,7 @@ return|;
 comment|/* do not support unset */
 operator|*
 operator|(
-name|unsigned
-name|long
+name|int
 operator|*
 operator|)
 name|opt
@@ -129,6 +156,51 @@ operator|=
 name|strlen
 argument_list|(
 name|arg
+argument_list|)
+expr_stmt|;
+return|return
+literal|0
+return|;
+block|}
+end_function
+
+begin_function
+DECL|function|number_callback
+specifier|static
+name|int
+name|number_callback
+parameter_list|(
+specifier|const
+name|struct
+name|option
+modifier|*
+name|opt
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|arg
+parameter_list|,
+name|int
+name|unset
+parameter_list|)
+block|{
+operator|*
+operator|(
+name|int
+operator|*
+operator|)
+name|opt
+operator|->
+name|value
+operator|=
+name|strtol
+argument_list|(
+name|arg
+argument_list|,
+name|NULL
+argument_list|,
+literal|10
 argument_list|)
 expr_stmt|;
 return|return
@@ -152,6 +224,13 @@ modifier|*
 name|argv
 parameter_list|)
 block|{
+specifier|const
+name|char
+modifier|*
+name|prefix
+init|=
+literal|"prefix/"
+decl_stmt|;
 specifier|const
 name|char
 modifier|*
@@ -192,6 +271,20 @@ operator|&
 name|boolean
 argument_list|,
 literal|"bitwise-or boolean with ...0100"
+argument_list|,
+literal|4
+argument_list|)
+block|,
+name|OPT_NEGBIT
+argument_list|(
+literal|0
+argument_list|,
+literal|"neg-or4"
+argument_list|,
+operator|&
+name|boolean
+argument_list|,
+literal|"same as --no-or4"
 argument_list|,
 literal|4
 argument_list|)
@@ -246,7 +339,7 @@ argument_list|,
 name|NULL
 argument_list|,
 operator|&
-name|integer
+name|timestamp
 argument_list|,
 literal|"get timestamp of<time>"
 argument_list|)
@@ -265,6 +358,18 @@ argument_list|,
 literal|"get length of<str>"
 argument_list|,
 name|length_callback
+argument_list|)
+block|,
+name|OPT_FILENAME
+argument_list|(
+literal|'F'
+argument_list|,
+literal|"file"
+argument_list|,
+operator|&
+name|file
+argument_list|,
+literal|"set file to<FILE>"
 argument_list|)
 block|,
 name|OPT_GROUP
@@ -358,6 +463,75 @@ argument_list|,
 literal|"means --quux"
 argument_list|)
 block|,
+name|OPT_NUMBER_CALLBACK
+argument_list|(
+operator|&
+name|integer
+argument_list|,
+literal|"set integer to NUM"
+argument_list|,
+name|number_callback
+argument_list|)
+block|,
+block|{
+name|OPTION_BOOLEAN
+block|,
+literal|'+'
+block|,
+name|NULL
+block|,
+operator|&
+name|boolean
+block|,
+name|NULL
+block|,
+literal|"same as -b"
+block|,
+name|PARSE_OPT_NOARG
+operator||
+name|PARSE_OPT_NONEG
+operator||
+name|PARSE_OPT_NODASH
+block|}
+block|,
+block|{
+name|OPTION_BOOLEAN
+block|,
+literal|0
+block|,
+literal|"ambiguous"
+block|,
+operator|&
+name|ambiguous
+block|,
+name|NULL
+block|,
+literal|"positive ambiguity"
+block|,
+name|PARSE_OPT_NOARG
+operator||
+name|PARSE_OPT_NONEG
+block|}
+block|,
+block|{
+name|OPTION_BOOLEAN
+block|,
+literal|0
+block|,
+literal|"no-ambiguous"
+block|,
+operator|&
+name|ambiguous
+block|,
+name|NULL
+block|,
+literal|"negative ambiguity"
+block|,
+name|PARSE_OPT_NOARG
+operator||
+name|PARSE_OPT_NONEG
+block|}
+block|,
 name|OPT_GROUP
 argument_list|(
 literal|"Standard options"
@@ -402,6 +576,8 @@ name|argc
 argument_list|,
 name|argv
 argument_list|,
+name|prefix
+argument_list|,
 name|options
 argument_list|,
 name|usage
@@ -418,9 +594,16 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"integer: %lu\n"
+literal|"integer: %u\n"
 argument_list|,
 name|integer
+argument_list|)
+expr_stmt|;
+name|printf
+argument_list|(
+literal|"timestamp: %lu\n"
+argument_list|,
+name|timestamp
 argument_list|)
 expr_stmt|;
 name|printf
@@ -468,6 +651,17 @@ condition|?
 literal|"yes"
 else|:
 literal|"no"
+argument_list|)
+expr_stmt|;
+name|printf
+argument_list|(
+literal|"file: %s\n"
+argument_list|,
+name|file
+condition|?
+name|file
+else|:
+literal|"(not set)"
 argument_list|)
 expr_stmt|;
 for|for

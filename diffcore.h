@@ -84,6 +84,12 @@ DECL|macro|MINIMUM_BREAK_SIZE
 comment|/* do not break a file smaller than this */
 end_comment
 
+begin_struct_decl
+struct_decl|struct
+name|userdiff_driver
+struct_decl|;
+end_struct_decl
+
 begin_struct
 DECL|struct|diff_filespec
 struct|struct
@@ -173,19 +179,24 @@ range|:
 literal|1
 decl_stmt|;
 comment|/* data should be munmap()'ed */
-DECL|member|checked_attr
+DECL|member|dirty_submodule
 name|unsigned
-name|checked_attr
+name|dirty_submodule
 range|:
 literal|1
 decl_stmt|;
+comment|/* For submodules: its work tree is dirty */
+DECL|member|driver
+name|struct
+name|userdiff_driver
+modifier|*
+name|driver
+decl_stmt|;
+comment|/* data should be considered "binary"; -1 means "don't know yet" */
 DECL|member|is_binary
-name|unsigned
+name|int
 name|is_binary
-range|:
-literal|1
 decl_stmt|;
-comment|/* data should be considered "binary" */
 block|}
 struct|;
 end_struct
@@ -313,7 +324,7 @@ DECL|member|status
 name|char
 name|status
 decl_stmt|;
-comment|/* M C R N D U (see Documentation/diff-format.txt) */
+comment|/* M C R A D U etc. (see Documentation/diff-format.txt or DIFF_STATUS_* in diff.h) */
 DECL|member|broken_pair
 name|unsigned
 name|broken_pair
@@ -483,20 +494,6 @@ parameter_list|,
 name|struct
 name|diff_filepair
 modifier|*
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-specifier|extern
-name|void
-name|diffcore_pathspec
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-modifier|*
-name|pathspec
 parameter_list|)
 function_decl|;
 end_function_decl

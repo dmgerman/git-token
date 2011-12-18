@@ -12,35 +12,6 @@ directive|define
 name|RUN_COMMAND_H
 end_define
 
-begin_enum
-enum|enum
-block|{
-DECL|enumerator|ERR_RUN_COMMAND_FORK
-name|ERR_RUN_COMMAND_FORK
-init|=
-literal|10000
-block|,
-DECL|enumerator|ERR_RUN_COMMAND_EXEC
-name|ERR_RUN_COMMAND_EXEC
-block|,
-DECL|enumerator|ERR_RUN_COMMAND_PIPE
-name|ERR_RUN_COMMAND_PIPE
-block|,
-DECL|enumerator|ERR_RUN_COMMAND_WAITPID
-name|ERR_RUN_COMMAND_WAITPID
-block|,
-DECL|enumerator|ERR_RUN_COMMAND_WAITPID_WRONG_PID
-name|ERR_RUN_COMMAND_WAITPID_WRONG_PID
-block|,
-DECL|enumerator|ERR_RUN_COMMAND_WAITPID_SIGNAL
-name|ERR_RUN_COMMAND_WAITPID_SIGNAL
-block|,
-DECL|enumerator|ERR_RUN_COMMAND_WAITPID_NOEXIT
-name|ERR_RUN_COMMAND_WAITPID_NOEXIT
-block|, }
-enum|;
-end_enum
-
 begin_struct
 DECL|struct|child_process
 struct|struct
@@ -57,7 +28,7 @@ DECL|member|pid
 name|pid_t
 name|pid
 decl_stmt|;
-comment|/* 	 * Using .in, .out, .err: 	 * - Specify 0 for no redirections (child inherits stdin, stdout, 	 *   stderr from parent). 	 * - Specify -1 to have a pipe allocated as follows: 	 *     .in: returns the writable pipe end; parent writes to it, 	 *          the readable pipe end becomes child's stdin 	 *     .out, .err: returns the readable pipe end; parent reads from 	 *          it, the writable pipe end becomes child's stdout/stderr 	 *   The caller of start_command() must close the returned FDs 	 *   after it has completed reading from/writing to it! 	 * - Specify> 0 to set a channel to a particular FD as follows: 	 *     .in: a readable FD, becomes child's stdin 	 *     .out: a writable FD, becomes child's stdout/stderr 	 *     .err> 0 not supported 	 *   The specified FD is closed by start_command(), even in case 	 *   of errors! 	 */
+comment|/* 	 * Using .in, .out, .err: 	 * - Specify 0 for no redirections (child inherits stdin, stdout, 	 *   stderr from parent). 	 * - Specify -1 to have a pipe allocated as follows: 	 *     .in: returns the writable pipe end; parent writes to it, 	 *          the readable pipe end becomes child's stdin 	 *     .out, .err: returns the readable pipe end; parent reads from 	 *          it, the writable pipe end becomes child's stdout/stderr 	 *   The caller of start_command() must close the returned FDs 	 *   after it has completed reading from/writing to it! 	 * - Specify> 0 to set a channel to a particular FD as follows: 	 *     .in: a readable FD, becomes child's stdin 	 *     .out: a writable FD, becomes child's stdout/stderr 	 *     .err: a writable FD, becomes child's stderr 	 *   The specified FD is closed by start_command(), even in case 	 *   of errors! 	 */
 DECL|member|in
 name|int
 name|in
@@ -109,12 +80,34 @@ range|:
 literal|1
 decl_stmt|;
 comment|/* if this is to be git sub-command */
+DECL|member|silent_exec_failure
+name|unsigned
+name|silent_exec_failure
+range|:
+literal|1
+decl_stmt|;
 DECL|member|stdout_to_stderr
 name|unsigned
 name|stdout_to_stderr
 range|:
 literal|1
 decl_stmt|;
+DECL|member|use_shell
+name|unsigned
+name|use_shell
+range|:
+literal|1
+decl_stmt|;
+DECL|member|preexec_cb
+name|void
+function_decl|(
+modifier|*
+name|preexec_cb
+function_decl|)
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
 block|}
 struct|;
 end_struct
@@ -152,6 +145,26 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|run_hook
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|index_file
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|name
+parameter_list|,
+modifier|...
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_define
 DECL|macro|RUN_COMMAND_NO_STDIN
 define|#
@@ -181,6 +194,22 @@ name|RUN_COMMAND_STDOUT_TO_STDERR
 value|4
 end_define
 
+begin_define
+DECL|macro|RUN_SILENT_EXEC_FAILURE
+define|#
+directive|define
+name|RUN_SILENT_EXEC_FAILURE
+value|8
+end_define
+
+begin_define
+DECL|macro|RUN_USING_SHELL
+define|#
+directive|define
+name|RUN_USING_SHELL
+value|16
+end_define
+
 begin_function_decl
 name|int
 name|run_command_v_opt
@@ -193,27 +222,6 @@ name|argv
 parameter_list|,
 name|int
 name|opt
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-name|int
-name|run_command_v_opt_cd
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-modifier|*
-name|argv
-parameter_list|,
-name|int
-name|opt
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|dir
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -259,7 +267,7 @@ DECL|struct|async
 struct|struct
 name|async
 block|{
-comment|/* 	 * proc writes to fd and closes it; 	 * returns 0 on success, non-zero on failure 	 */
+comment|/* 	 * proc reads from in; closes it before return 	 * proc writes to out; closes it before return 	 * returns 0 on success, non-zero on failure 	 */
 DECL|member|proc
 name|int
 function_decl|(
@@ -268,7 +276,10 @@ name|proc
 function_decl|)
 parameter_list|(
 name|int
-name|fd
+name|in
+parameter_list|,
+name|int
+name|out
 parameter_list|,
 name|void
 modifier|*
@@ -280,6 +291,11 @@ name|void
 modifier|*
 name|data
 decl_stmt|;
+DECL|member|in
+name|int
+name|in
+decl_stmt|;
+comment|/* caller writes here and closes it */
 DECL|member|out
 name|int
 name|out
@@ -287,7 +303,7 @@ decl_stmt|;
 comment|/* caller reads from here and closes it */
 ifndef|#
 directive|ifndef
-name|__MINGW32__
+name|WIN32
 DECL|member|pid
 name|pid_t
 name|pid
@@ -298,9 +314,13 @@ DECL|member|tid
 name|HANDLE
 name|tid
 decl_stmt|;
-DECL|member|fd_for_proc
+DECL|member|proc_in
 name|int
-name|fd_for_proc
+name|proc_in
+decl_stmt|;
+DECL|member|proc_out
+name|int
+name|proc_out
 decl_stmt|;
 endif|#
 directive|endif

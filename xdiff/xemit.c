@@ -54,24 +54,6 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
-begin_function_decl
-specifier|static
-name|xdchange_t
-modifier|*
-name|xdl_get_hunk
-parameter_list|(
-name|xdchange_t
-modifier|*
-name|xscr
-parameter_list|,
-name|xdemitconf_t
-specifier|const
-modifier|*
-name|xecfg
-parameter_list|)
-function_decl|;
-end_function_decl
-
 begin_function
 DECL|function|xdl_get_rec
 specifier|static
@@ -202,7 +184,6 @@ end_comment
 
 begin_function
 DECL|function|xdl_get_hunk
-specifier|static
 name|xdchange_t
 modifier|*
 name|xdl_get_hunk
@@ -223,6 +204,19 @@ name|xch
 decl_stmt|,
 modifier|*
 name|xchp
+decl_stmt|;
+name|long
+name|max_common
+init|=
+literal|2
+operator|*
+name|xecfg
+operator|->
+name|ctxlen
+operator|+
+name|xecfg
+operator|->
+name|interhunkctxlen
 decl_stmt|;
 for|for
 control|(
@@ -264,11 +258,7 @@ operator|->
 name|chg1
 operator|)
 operator|>
-literal|2
-operator|*
-name|xecfg
-operator|->
-name|ctxlen
+name|max_common
 condition|)
 break|break;
 return|return
@@ -662,8 +652,6 @@ return|;
 for|for
 control|(
 name|xch
-operator|=
-name|xche
 operator|=
 name|xscr
 init|;

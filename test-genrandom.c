@@ -6,13 +6,7 @@ end_comment
 begin_include
 include|#
 directive|include
-file|<stdio.h>
-end_include
-
-begin_include
-include|#
-directive|include
-file|<stdlib.h>
+file|"git-compat-util.h"
 end_include
 
 begin_function
@@ -57,7 +51,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Usage: %s<seed_string> [<size>]"
+literal|"Usage: %s<seed_string> [<size>]\n"
 argument_list|,
 name|argv
 index|[

@@ -515,6 +515,10 @@ argument_list|,
 name|sha2
 argument_list|,
 name|newbase
+argument_list|,
+literal|0
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|newbase
@@ -577,6 +581,10 @@ argument_list|,
 name|sha2
 argument_list|,
 name|fullname
+argument_list|,
+literal|0
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|free
@@ -742,10 +750,33 @@ name|matchlen
 argument_list|)
 condition|)
 continue|continue;
-comment|/* 			 * The base is a subdirectory of a path which 			 * was specified, so all of them are interesting. 			 */
+comment|/* 			 * If the base is a subdirectory of a path which 			 * was specified, all of them are interesting. 			 */
+if|if
+condition|(
+operator|!
+name|matchlen
+operator|||
+name|base
+index|[
+name|matchlen
+index|]
+operator|==
+literal|'/'
+operator|||
+name|match
+index|[
+name|matchlen
+operator|-
+literal|1
+index|]
+operator|==
+literal|'/'
+condition|)
 return|return
 literal|2
 return|;
+comment|/* Just a random prefix match */
+continue|continue;
 block|}
 comment|/* Does the base match? */
 if|if
@@ -1140,6 +1171,53 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|DIFF_OPT_TST
+argument_list|(
+name|opt
+argument_list|,
+name|TREE_IN_RECURSIVE
+argument_list|)
+condition|)
+block|{
+name|newbase
+index|[
+name|baselen
+operator|+
+name|pathlen
+index|]
+operator|=
+literal|0
+expr_stmt|;
+name|opt
+operator|->
+name|add_remove
+argument_list|(
+name|opt
+argument_list|,
+operator|*
+name|prefix
+argument_list|,
+name|mode
+argument_list|,
+name|sha1
+argument_list|,
+name|newbase
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+name|newbase
+index|[
+name|baselen
+operator|+
+name|pathlen
+index|]
+operator|=
+literal|'/'
+expr_stmt|;
+block|}
 name|init_tree_desc
 argument_list|(
 operator|&
@@ -1212,6 +1290,8 @@ argument_list|,
 name|sha1
 argument_list|,
 name|fullname
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|free
@@ -1374,7 +1454,7 @@ name|DIFF_OPT_TST
 argument_list|(
 name|opt
 argument_list|,
-name|QUIET
+name|QUICK
 argument_list|)
 operator|&&
 name|DIFF_OPT_TST
@@ -1526,7 +1606,7 @@ continue|continue;
 block|}
 name|die
 argument_list|(
-literal|"git-diff-tree: internal error"
+literal|"git diff-tree: internal error"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1855,7 +1935,7 @@ expr_stmt|;
 break|break;
 block|}
 block|}
-comment|/* 	 * Then, discard all the non-relevane file pairs... 	 */
+comment|/* 	 * Then, discard all the non-relevant file pairs... 	 */
 for|for
 control|(
 name|i
