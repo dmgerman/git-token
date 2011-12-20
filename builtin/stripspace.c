@@ -358,7 +358,7 @@ literal|1
 condition|)
 name|usage
 argument_list|(
-literal|"git stripspace [-s | --strip-comments]<<stream>"
+literal|"git stripspace [-s | --strip-comments]< input"
 argument_list|)
 expr_stmt|;
 if|if
