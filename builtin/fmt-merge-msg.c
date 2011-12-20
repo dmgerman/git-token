@@ -2315,10 +2315,16 @@ name|char
 modifier|*
 name|current_branch
 decl_stmt|;
+name|void
+modifier|*
+name|current_branch_to_free
+decl_stmt|;
 comment|/* get current branch */
 name|current_branch
 operator|=
-name|resolve_ref
+name|current_branch_to_free
+operator|=
+name|resolve_refdup
 argument_list|(
 literal|"HEAD"
 argument_list|,
@@ -2352,13 +2358,6 @@ condition|)
 name|current_branch
 operator|+=
 literal|11
-expr_stmt|;
-name|current_branch
-operator|=
-name|xstrdup
-argument_list|(
-name|current_branch
-argument_list|)
 expr_stmt|;
 comment|/* get a line */
 while|while
@@ -2597,11 +2596,7 @@ argument_list|)
 expr_stmt|;
 name|free
 argument_list|(
-operator|(
-name|char
-operator|*
-operator|)
-name|current_branch
+name|current_branch_to_free
 argument_list|)
 expr_stmt|;
 return|return

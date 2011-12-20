@@ -5067,8 +5067,7 @@ argument_list|)
 return|;
 if|if
 condition|(
-operator|!
-name|resolve_ref
+name|read_ref_full
 argument_list|(
 literal|"HEAD"
 argument_list|,

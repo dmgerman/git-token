@@ -2866,7 +2866,7 @@ argument_list|)
 expr_stmt|;
 name|head_points_at
 operator|=
-name|resolve_ref
+name|resolve_ref_unsafe
 argument_list|(
 literal|"HEAD"
 argument_list|,

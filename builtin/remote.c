@@ -3341,7 +3341,7 @@ argument_list|)
 expr_stmt|;
 name|symref
 operator|=
-name|resolve_ref
+name|resolve_ref_unsafe
 argument_list|(
 name|refname
 argument_list|,
