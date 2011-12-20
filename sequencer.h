@@ -21,14 +21,6 @@ value|"sequencer"
 end_define
 
 begin_define
-DECL|macro|SEQ_OLD_DIR
-define|#
-directive|define
-name|SEQ_OLD_DIR
-value|"sequencer-old"
-end_define
-
-begin_define
 DECL|macro|SEQ_HEAD_FILE
 define|#
 directive|define
@@ -53,15 +45,15 @@ value|"sequencer/opts"
 end_define
 
 begin_comment
-comment|/*  * Removes SEQ_OLD_DIR and renames SEQ_DIR to SEQ_OLD_DIR, ignoring  * any errors.  Intended to be used by 'git reset'.  *  * With the aggressive flag, it additionally removes SEQ_OLD_DIR,  * ignoring any errors.  Inteded to be used by the sequencer's  * '--quit' subcommand.  */
+comment|/* Removes SEQ_DIR. */
 end_comment
 
 begin_function_decl
+specifier|extern
 name|void
 name|remove_sequencer_state
 parameter_list|(
-name|int
-name|aggressive
+name|void
 parameter_list|)
 function_decl|;
 end_function_decl
