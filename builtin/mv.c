@@ -388,6 +388,14 @@ name|builtin_mv_options
 index|[]
 init|=
 block|{
+name|OPT__VERBOSE
+argument_list|(
+operator|&
+name|verbose
+argument_list|,
+literal|"be verbose"
+argument_list|)
+block|,
 name|OPT__DRY_RUN
 argument_list|(
 operator|&
@@ -652,11 +660,14 @@ name|argc
 operator|!=
 literal|1
 condition|)
-name|usage_with_options
+name|die
 argument_list|(
-name|builtin_mv_usage
+literal|"destination '%s' is not a directory"
 argument_list|,
-name|builtin_mv_options
+name|dest_path
+index|[
+literal|0
+index|]
 argument_list|)
 expr_stmt|;
 name|destination
@@ -1186,14 +1197,18 @@ name|st_mode
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+name|verbose
+condition|)
 name|warning
 argument_list|(
 name|_
 argument_list|(
-literal|"%s; will overwrite!"
+literal|"overwriting '%s'"
 argument_list|)
 argument_list|,
-name|bad
+name|dst
 argument_list|)
 expr_stmt|;
 name|bad
