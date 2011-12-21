@@ -591,12 +591,12 @@ decl_stmt|,
 name|dir_o
 init|=
 operator|~
-literal|0
+literal|0U
 decl_stmt|,
 name|parent_dir_o
 init|=
 operator|~
-literal|0
+literal|0U
 decl_stmt|;
 name|struct
 name|repo_dir
