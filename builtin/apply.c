@@ -17788,9 +17788,6 @@ name|struct
 name|patch
 modifier|*
 name|list
-parameter_list|,
-name|int
-name|skipped_patch
 parameter_list|)
 block|{
 name|int
@@ -17806,20 +17803,6 @@ name|patch
 modifier|*
 name|l
 decl_stmt|;
-if|if
-condition|(
-operator|!
-name|list
-operator|&&
-operator|!
-name|skipped_patch
-condition|)
-return|return
-name|error
-argument_list|(
-literal|"No changes"
-argument_list|)
-return|;
 for|for
 control|(
 name|phase
@@ -18472,6 +18455,19 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|!
+name|list
+operator|&&
+operator|!
+name|skipped_patch
+condition|)
+name|die
+argument_list|(
+literal|"unrecognized input"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|whitespace_error
 operator|&&
 operator|(
@@ -18556,8 +18552,6 @@ operator|&&
 name|write_out_results
 argument_list|(
 name|list
-argument_list|,
-name|skipped_patch
 argument_list|)
 condition|)
 name|exit
