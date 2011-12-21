@@ -4432,7 +4432,7 @@ parameter_list|)
 block|{
 specifier|static
 name|char
-name|tmpfile
+name|tmp_file
 index|[
 name|PATH_MAX
 index|]
@@ -4453,11 +4453,11 @@ name|pack_fd
 operator|=
 name|odb_mkstemp
 argument_list|(
-name|tmpfile
+name|tmp_file
 argument_list|,
 sizeof|sizeof
 argument_list|(
-name|tmpfile
+name|tmp_file
 argument_list|)
 argument_list|,
 literal|"pack/tmp_pack_XXXXXX"
@@ -4477,7 +4477,7 @@ argument_list|)
 operator|+
 name|strlen
 argument_list|(
-name|tmpfile
+name|tmp_file
 argument_list|)
 operator|+
 literal|2
@@ -4489,7 +4489,7 @@ name|p
 operator|->
 name|pack_name
 argument_list|,
-name|tmpfile
+name|tmp_file
 argument_list|)
 expr_stmt|;
 name|p
