@@ -4213,8 +4213,10 @@ name|stream_filter
 name|filter
 decl_stmt|;
 DECL|member|want_lf
-name|int
+name|unsigned
 name|want_lf
+range|:
+literal|1
 decl_stmt|;
 block|}
 struct|;
@@ -4291,15 +4293,22 @@ operator|=
 literal|0
 expr_stmt|;
 block|}
+comment|/* We are told to drain */
 if|if
 condition|(
 operator|!
 name|input
 condition|)
+block|{
+operator|*
+name|osize_p
+operator|-=
+name|o
+expr_stmt|;
 return|return
 literal|0
 return|;
-comment|/* We've already dealt with the state */
+block|}
 name|count
 operator|=
 operator|*
@@ -4450,8 +4459,10 @@ name|lf_to_crlf_filter
 modifier|*
 name|lf_to_crlf
 init|=
-name|xmalloc
+name|xcalloc
 argument_list|(
+literal|1
+argument_list|,
 sizeof|sizeof
 argument_list|(
 operator|*
@@ -4467,12 +4478,6 @@ name|vtbl
 operator|=
 operator|&
 name|lf_to_crlf_vtbl
-expr_stmt|;
-name|lf_to_crlf
-operator|->
-name|want_lf
-operator|=
-literal|0
 expr_stmt|;
 return|return
 operator|(

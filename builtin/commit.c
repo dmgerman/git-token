@@ -790,7 +790,7 @@ argument_list|,
 operator|&
 name|renew_authorship
 argument_list|,
-literal|"the commit is authored by me now (used with -C-c/--amend)"
+literal|"the commit is authored by me now (used with -C/-c/--amend)"
 argument_list|)
 block|,
 name|OPT_BOOLEAN

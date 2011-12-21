@@ -470,9 +470,9 @@ argument_list|,
 operator|&
 name|option_origin
 argument_list|,
-literal|"branch"
+literal|"name"
 argument_list|,
-literal|"use<branch> instead of 'origin' to track upstream"
+literal|"use<name> instead of 'origin' to track upstream"
 argument_list|)
 block|,
 name|OPT_STRING
