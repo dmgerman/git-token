@@ -198,7 +198,7 @@ name|root
 init|=
 block|{
 operator|~
-literal|0
+literal|0U
 block|}
 decl_stmt|;
 name|uint32_t

@@ -36,7 +36,7 @@ name|tree
 init|=
 block|{
 operator|~
-literal|0
+literal|0U
 block|}
 decl_stmt|;
 end_decl_stmt
@@ -477,7 +477,7 @@ name|uint32_t
 name|token
 init|=
 operator|~
-literal|0
+literal|0U
 decl_stmt|;
 name|uint32_t
 name|length
