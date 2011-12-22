@@ -1796,23 +1796,16 @@ if|if
 condition|(
 name|show_hint
 condition|)
-block|{
 name|advise
 argument_list|(
-literal|"after resolving the conflicts, mark the corrected paths"
-argument_list|)
-expr_stmt|;
-name|advise
+name|_
 argument_list|(
-literal|"with 'git add<paths>' or 'git rm<paths>'"
-argument_list|)
-expr_stmt|;
-name|advise
-argument_list|(
+literal|"after resolving the conflicts, mark the corrected paths\n"
+literal|"with 'git add<paths>' or 'git rm<paths>'\n"
 literal|"and commit the result with 'git commit'"
 argument_list|)
+argument_list|)
 expr_stmt|;
-block|}
 block|}
 end_function
 
