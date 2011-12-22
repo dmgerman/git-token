@@ -127,7 +127,8 @@ modifier|*
 name|parents
 parameter_list|,
 specifier|const
-name|char
+name|struct
+name|strbuf
 modifier|*
 name|msg
 parameter_list|,
