@@ -741,12 +741,6 @@ name|imap_server_conf
 modifier|*
 name|server
 decl_stmt|;
-DECL|member|use_namespace
-name|unsigned
-name|use_namespace
-range|:
-literal|1
-decl_stmt|;
 block|}
 struct|;
 end_struct
