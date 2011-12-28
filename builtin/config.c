@@ -2621,7 +2621,7 @@ condition|)
 name|error
 argument_list|(
 literal|"cannot overwrite multiple values with a single value\n"
-literal|"       Use a regexp, --add or --set-all to change %s."
+literal|"       Use a regexp, --add or --replace-all to change %s."
 argument_list|,
 name|argv
 index|[
