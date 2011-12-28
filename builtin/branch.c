@@ -3213,6 +3213,9 @@ name|recovery
 init|=
 literal|0
 decl_stmt|;
+name|int
+name|clobber_head_ok
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -3269,6 +3272,17 @@ name|oldname
 argument_list|)
 expr_stmt|;
 block|}
+comment|/* 	 * A command like "git branch -M currentbranch currentbranch" cannot 	 * cause the worktree to become inconsistent with HEAD, so allow it. 	 */
+name|clobber_head_ok
+operator|=
+operator|!
+name|strcmp
+argument_list|(
+name|oldname
+argument_list|,
+name|newname
+argument_list|)
+expr_stmt|;
 name|validate_new_branchname
 argument_list|(
 name|newname
@@ -3278,7 +3292,7 @@ name|newref
 argument_list|,
 name|force
 argument_list|,
-literal|0
+name|clobber_head_ok
 argument_list|)
 expr_stmt|;
 name|strbuf_addf
@@ -4236,6 +4250,8 @@ argument_list|,
 name|force_create
 argument_list|,
 name|reflog
+argument_list|,
+literal|0
 argument_list|,
 name|track
 argument_list|)
