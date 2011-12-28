@@ -2403,10 +2403,6 @@ argument_list|,
 operator|&
 name|remote_refs
 argument_list|,
-literal|0
-argument_list|,
-name|NULL
-argument_list|,
 name|REF_NORMAL
 argument_list|,
 operator|&
