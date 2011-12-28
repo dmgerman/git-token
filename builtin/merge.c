@@ -257,6 +257,8 @@ specifier|static
 name|struct
 name|strbuf
 name|merge_msg
+init|=
+name|STRBUF_INIT
 decl_stmt|;
 end_decl_stmt
 
