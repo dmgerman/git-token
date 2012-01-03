@@ -230,12 +230,11 @@ decl_stmt|;
 if|if
 condition|(
 name|len
-operator|<
+operator|<=
 literal|0
 condition|)
 return|return
-operator|-
-literal|1
+name|len
 return|;
 name|strbuf_addch
 argument_list|(
