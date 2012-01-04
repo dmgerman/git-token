@@ -492,7 +492,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Run "gpg" to see if the payload matches the detached signature.  * gpg_output_to tells where the output from "gpg" should go:  *< 0: /dev/null  *   = 0: standard error of the calling process  *> 0: the specified file descriptor  */
+comment|/*  * Run "gpg" to see if the payload matches the detached signature.  * gpg_output, when set, receives the diagnostic output from GPG.  */
 end_comment
 
 begin_function
