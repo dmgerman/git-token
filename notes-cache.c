@@ -356,6 +356,8 @@ argument_list|,
 name|commit_sha1
 argument_list|,
 name|NULL
+argument_list|,
+name|NULL
 argument_list|)
 operator|<
 literal|0
