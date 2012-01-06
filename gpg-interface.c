@@ -38,6 +38,18 @@ name|configured_signing_key
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|gpg_program
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|gpg_program
+init|=
+literal|"gpg"
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|set_signing_key
 name|void
@@ -95,6 +107,23 @@ literal|"user.signingkey"
 argument_list|)
 condition|)
 block|{
+name|set_signing_key
+argument_list|(
+name|value
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|var
+argument_list|,
+literal|"gpg.program"
+argument_list|)
+condition|)
+block|{
 if|if
 condition|(
 operator|!
@@ -106,7 +135,9 @@ argument_list|(
 name|var
 argument_list|)
 return|;
-name|set_signing_key
+name|gpg_program
+operator|=
+name|xstrdup
 argument_list|(
 name|value
 argument_list|)
@@ -231,7 +262,7 @@ index|[
 literal|0
 index|]
 operator|=
-literal|"gpg"
+name|gpg_program
 expr_stmt|;
 name|args
 index|[
@@ -461,7 +492,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Run "gpg" to see if the payload matches the detached signature.  * gpg_output_to tells where the output from "gpg" should go:  *< 0: /dev/null  *   = 0: standard error of the calling process  *> 0: the specified file descriptor  */
+comment|/*  * Run "gpg" to see if the payload matches the detached signature.  * gpg_output, when set, receives the diagnostic output from GPG.  */
 end_comment
 
 begin_function
@@ -502,7 +533,7 @@ name|args_gpg
 index|[]
 init|=
 block|{
-literal|"gpg"
+name|NULL
 block|,
 literal|"--verify"
 block|,
@@ -524,6 +555,13 @@ name|fd
 decl_stmt|,
 name|ret
 decl_stmt|;
+name|args_gpg
+index|[
+literal|0
+index|]
+operator|=
+name|gpg_program
+expr_stmt|;
 name|fd
 operator|=
 name|git_mkstemp

@@ -129,6 +129,12 @@ directive|include
 file|"submodule.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"gpg-interface.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|builtin_commit_usage
 specifier|static
@@ -454,6 +460,15 @@ name|force_date
 decl_stmt|,
 modifier|*
 name|ignore_submodule_arg
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|sign_commit
+specifier|static
+name|char
+modifier|*
+name|sign_commit
 decl_stmt|;
 end_decl_stmt
 
@@ -856,6 +871,30 @@ name|include_status
 argument_list|,
 literal|"include status in commit message template"
 argument_list|)
+block|,
+block|{
+name|OPTION_STRING
+block|,
+literal|'S'
+block|,
+literal|"gpg-sign"
+block|,
+operator|&
+name|sign_commit
+block|,
+literal|"key id"
+block|,
+literal|"GPG sign commit"
+block|,
+name|PARSE_OPT_OPTARG
+block|,
+name|NULL
+block|,
+operator|(
+name|intptr_t
+operator|)
+literal|""
+block|}
 block|,
 comment|/* end commit message options */
 name|OPT_GROUP
@@ -7167,6 +7206,9 @@ name|s
 init|=
 name|cb
 decl_stmt|;
+name|int
+name|status
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -7212,6 +7254,24 @@ return|return
 literal|0
 return|;
 block|}
+name|status
+operator|=
+name|git_gpg_config
+argument_list|(
+name|k
+argument_list|,
+name|v
+argument_list|,
+name|NULL
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|status
+condition|)
+return|return
+name|status
+return|;
 return|return
 name|git_status_config
 argument_list|(
@@ -8145,11 +8205,27 @@ condition|(
 name|amend
 condition|)
 block|{
+specifier|const
+name|char
+modifier|*
+name|exclude_gpgsig
+index|[
+literal|2
+index|]
+init|=
+block|{
+literal|"gpgsig"
+block|,
+name|NULL
+block|}
+decl_stmt|;
 name|extra
 operator|=
 name|read_commit_extra_headers
 argument_list|(
 name|current_head
+argument_list|,
+name|exclude_gpgsig
 argument_list|)
 expr_stmt|;
 block|}
@@ -8191,6 +8267,8 @@ argument_list|,
 name|author_ident
 operator|.
 name|buf
+argument_list|,
+name|sign_commit
 argument_list|,
 name|extra
 argument_list|)

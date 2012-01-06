@@ -129,6 +129,12 @@ directive|include
 file|"fmt-merge-msg.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"gpg-interface.h"
+end_include
+
 begin_define
 DECL|macro|DEFAULT_TWOHEAD
 define|#
@@ -402,6 +408,16 @@ DECL|variable|default_to_upstream
 specifier|static
 name|int
 name|default_to_upstream
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|sign_commit
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|sign_commit
 decl_stmt|;
 end_decl_stmt
 
@@ -1346,6 +1362,30 @@ literal|"force progress reporting"
 argument_list|,
 literal|1
 argument_list|)
+block|,
+block|{
+name|OPTION_STRING
+block|,
+literal|'S'
+block|,
+literal|"gpg-sign"
+block|,
+operator|&
+name|sign_commit
+block|,
+literal|"key id"
+block|,
+literal|"GPG sign commit"
+block|,
+name|PARSE_OPT_OPTARG
+block|,
+name|NULL
+block|,
+operator|(
+name|intptr_t
+operator|)
+literal|""
+block|}
 block|,
 name|OPT_BOOLEAN
 argument_list|(
@@ -3512,6 +3552,24 @@ argument_list|,
 name|v
 argument_list|,
 name|cb
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|status
+condition|)
+return|return
+name|status
+return|;
+name|status
+operator|=
+name|git_gpg_config
+argument_list|(
+name|k
+argument_list|,
+name|v
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 if|if
@@ -5807,6 +5865,8 @@ argument_list|,
 name|result_commit
 argument_list|,
 name|NULL
+argument_list|,
+name|sign_commit
 argument_list|)
 condition|)
 name|die
@@ -5997,6 +6057,8 @@ argument_list|,
 name|result_commit
 argument_list|,
 name|NULL
+argument_list|,
+name|sign_commit
 argument_list|)
 condition|)
 name|die

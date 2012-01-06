@@ -524,6 +524,11 @@ name|show_notes_given
 range|:
 literal|1
 decl_stmt|,
+DECL|member|show_signature
+name|show_signature
+range|:
+literal|1
+decl_stmt|,
 DECL|member|pretty_given
 name|pretty_given
 range|:
