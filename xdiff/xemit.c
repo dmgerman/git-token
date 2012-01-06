@@ -409,7 +409,7 @@ init|=
 operator|&
 name|xe
 operator|->
-name|xdf1
+name|xdf2
 decl_stmt|;
 specifier|const
 name|char
@@ -825,13 +825,13 @@ comment|/* 		 * Emit pre-context. 		 */
 for|for
 control|(
 init|;
-name|s1
+name|s2
 operator|<
 name|xch
 operator|->
-name|i1
+name|i2
 condition|;
-name|s1
+name|s2
 operator|++
 control|)
 if|if
@@ -841,9 +841,9 @@ argument_list|(
 operator|&
 name|xe
 operator|->
-name|xdf1
+name|xdf2
 argument_list|,
-name|s1
+name|s2
 argument_list|,
 literal|" "
 argument_list|,
@@ -907,9 +907,9 @@ argument_list|(
 operator|&
 name|xe
 operator|->
-name|xdf1
+name|xdf2
 argument_list|,
-name|s1
+name|s2
 argument_list|,
 literal|" "
 argument_list|,
@@ -1041,21 +1041,21 @@ block|}
 comment|/* 		 * Emit post-context. 		 */
 for|for
 control|(
-name|s1
+name|s2
 operator|=
 name|xche
 operator|->
-name|i1
+name|i2
 operator|+
 name|xche
 operator|->
-name|chg1
+name|chg2
 init|;
-name|s1
+name|s2
 operator|<
-name|e1
+name|e2
 condition|;
-name|s1
+name|s2
 operator|++
 control|)
 if|if
@@ -1065,9 +1065,9 @@ argument_list|(
 operator|&
 name|xe
 operator|->
-name|xdf1
+name|xdf2
 argument_list|,
-name|s1
+name|s2
 argument_list|,
 literal|" "
 argument_list|,
