@@ -782,10 +782,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|add_one_alternate_sha1
+DECL|function|show_one_alternate_sha1
 specifier|static
 name|void
-name|add_one_alternate_sha1
+name|show_one_alternate_sha1
 parameter_list|(
 specifier|const
 name|unsigned
@@ -800,13 +800,11 @@ modifier|*
 name|unused
 parameter_list|)
 block|{
-name|add_extra_ref
+name|show_ref
 argument_list|(
 literal|".have"
 argument_list|,
 name|sha1
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 block|}
@@ -876,7 +874,7 @@ argument_list|(
 operator|&
 name|sa
 argument_list|,
-name|add_one_alternate_sha1
+name|show_one_alternate_sha1
 argument_list|,
 name|NULL
 argument_list|)
@@ -905,9 +903,6 @@ literal|"capabilities^{}"
 argument_list|,
 name|null_sha1
 argument_list|)
-expr_stmt|;
-name|clear_extra_refs
-argument_list|()
 expr_stmt|;
 comment|/* EOF */
 name|packet_flush
