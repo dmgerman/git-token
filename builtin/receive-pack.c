@@ -661,7 +661,7 @@ end_function
 begin_function
 DECL|function|show_ref
 specifier|static
-name|int
+name|void
 name|show_ref
 parameter_list|(
 specifier|const
@@ -674,13 +674,6 @@ name|unsigned
 name|char
 modifier|*
 name|sha1
-parameter_list|,
-name|int
-name|flag
-parameter_list|,
-name|void
-modifier|*
-name|cb_data
 parameter_list|)
 block|{
 if|if
@@ -730,9 +723,6 @@ name|sent_capabilities
 operator|=
 literal|1
 expr_stmt|;
-return|return
-literal|0
-return|;
 block|}
 end_function
 
@@ -758,7 +748,7 @@ name|flag
 parameter_list|,
 name|void
 modifier|*
-name|cb_data
+name|unused
 parameter_list|)
 block|{
 name|path
@@ -778,17 +768,15 @@ name|path
 operator|=
 literal|".have"
 expr_stmt|;
-return|return
 name|show_ref
 argument_list|(
 name|path
 argument_list|,
 name|sha1
-argument_list|,
-name|flag
-argument_list|,
-name|cb_data
 argument_list|)
+expr_stmt|;
+return|return
+literal|0
 return|;
 block|}
 end_function
@@ -916,10 +904,6 @@ argument_list|(
 literal|"capabilities^{}"
 argument_list|,
 name|null_sha1
-argument_list|,
-literal|0
-argument_list|,
-name|NULL
 argument_list|)
 expr_stmt|;
 name|clear_extra_refs
