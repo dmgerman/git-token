@@ -130,6 +130,20 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|struct
+name|object
+modifier|*
+name|deref_tag_noverify
+parameter_list|(
+name|struct
+name|object
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|size_t
 name|parse_signature
 parameter_list|(
