@@ -5651,6 +5651,11 @@ argument_list|(
 name|cred
 argument_list|)
 expr_stmt|;
+name|loginfo
+argument_list|(
+literal|"Ready to rumble"
+argument_list|)
+expr_stmt|;
 return|return
 name|service_loop
 argument_list|(
@@ -6559,16 +6564,9 @@ if|if
 condition|(
 name|detach
 condition|)
-block|{
 name|daemonize
 argument_list|()
 expr_stmt|;
-name|loginfo
-argument_list|(
-literal|"Ready to rumble"
-argument_list|)
-expr_stmt|;
-block|}
 else|else
 name|sanitize_stdfds
 argument_list|()
