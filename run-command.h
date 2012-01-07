@@ -115,6 +115,12 @@ name|use_shell
 range|:
 literal|1
 decl_stmt|;
+DECL|member|clean_on_exit
+name|unsigned
+name|clean_on_exit
+range|:
+literal|1
+decl_stmt|;
 DECL|member|preexec_cb
 name|void
 function_decl|(
