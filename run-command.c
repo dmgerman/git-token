@@ -2656,6 +2656,18 @@ literal|1
 else|:
 literal|0
 expr_stmt|;
+name|cmd
+operator|->
+name|clean_on_exit
+operator|=
+name|opt
+operator|&
+name|RUN_CLEAN_ON_EXIT
+condition|?
+literal|1
+else|:
+literal|0
+expr_stmt|;
 block|}
 end_function
 
