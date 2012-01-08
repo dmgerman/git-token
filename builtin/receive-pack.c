@@ -224,6 +224,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|quiet
+specifier|static
+name|int
+name|quiet
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|prefer_ofs_delta
 specifier|static
 name|int
@@ -726,7 +734,7 @@ name|path
 argument_list|,
 literal|0
 argument_list|,
-literal|" report-status delete-refs side-band-64k"
+literal|" report-status delete-refs side-band-64k quiet"
 argument_list|,
 name|prefer_ofs_delta
 condition|?
@@ -4060,6 +4068,19 @@ name|use_sideband
 operator|=
 name|LARGE_PACKET_MAX
 expr_stmt|;
+if|if
+condition|(
+name|parse_feature_request
+argument_list|(
+name|feature_list
+argument_list|,
+literal|"quiet"
+argument_list|)
+condition|)
+name|quiet
+operator|=
+literal|1
+expr_stmt|;
 block|}
 name|cmd
 operator|=
@@ -4309,7 +4330,7 @@ name|char
 modifier|*
 name|unpacker
 index|[
-literal|4
+literal|5
 index|]
 decl_stmt|;
 name|unpacker
@@ -4319,6 +4340,18 @@ operator|++
 index|]
 operator|=
 literal|"unpack-objects"
+expr_stmt|;
+if|if
+condition|(
+name|quiet
+condition|)
+name|unpacker
+index|[
+name|i
+operator|++
+index|]
+operator|=
+literal|"-q"
 expr_stmt|;
 if|if
 condition|(
@@ -4981,6 +5014,23 @@ operator|==
 literal|'-'
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--quiet"
+argument_list|)
+condition|)
+block|{
+name|quiet
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
 if|if
 condition|(
 operator|!
