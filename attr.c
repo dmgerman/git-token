@@ -2599,17 +2599,16 @@ parameter_list|(
 name|void
 parameter_list|)
 block|{
-if|if
-condition|(
-operator|!
-name|attr_stack
-condition|)
-block|{
 name|struct
 name|attr_stack
 modifier|*
 name|elem
 decl_stmt|;
+if|if
+condition|(
+name|attr_stack
+condition|)
+return|return;
 name|elem
 operator|=
 name|read_attr_from_array
@@ -2801,7 +2800,6 @@ operator|=
 name|elem
 expr_stmt|;
 block|}
-block|}
 end_function
 
 begin_function
@@ -2874,11 +2872,9 @@ name|info
 operator|->
 name|prev
 expr_stmt|;
-comment|/* 	 * Pop the ones from directories that are not the prefix of 	 * the path we are checking. 	 */
+comment|/* 	 * Pop the ones from directories that are not the prefix of 	 * the path we are checking. Break out of the loop when we see 	 * the root one (whose origin is an empty string "") or the builtin 	 * one (whose origin is NULL) without popping it. 	 */
 while|while
 condition|(
-name|attr_stack
-operator|&&
 name|attr_stack
 operator|->
 name|origin
@@ -2915,6 +2911,18 @@ name|path
 argument_list|,
 name|namelen
 argument_list|)
+operator|&&
+operator|(
+operator|!
+name|namelen
+operator|||
+name|path
+index|[
+name|namelen
+index|]
+operator|==
+literal|'/'
+operator|)
 condition|)
 break|break;
 name|debug_pop
@@ -2946,12 +2954,20 @@ operator|==
 name|GIT_ATTR_INDEX
 condition|)
 block|{
+comment|/* 		 * bootstrap_attr_stack() should have added, and the 		 * above loop should have stopped before popping, the 		 * root element whose attr_stack->origin is set to an 		 * empty string. 		 */
 name|struct
 name|strbuf
 name|pathbuf
 init|=
 name|STRBUF_INIT
 decl_stmt|;
+name|assert
+argument_list|(
+name|attr_stack
+operator|->
+name|origin
+argument_list|)
+expr_stmt|;
 while|while
 condition|(
 literal|1
