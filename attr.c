@@ -2623,17 +2623,16 @@ parameter_list|(
 name|void
 parameter_list|)
 block|{
-if|if
-condition|(
-operator|!
-name|attr_stack
-condition|)
-block|{
 name|struct
 name|attr_stack
 modifier|*
 name|elem
 decl_stmt|;
+if|if
+condition|(
+name|attr_stack
+condition|)
+return|return;
 name|elem
 operator|=
 name|read_attr_from_array
@@ -2831,7 +2830,6 @@ name|attr_stack
 operator|=
 name|elem
 expr_stmt|;
-block|}
 block|}
 end_function
 
