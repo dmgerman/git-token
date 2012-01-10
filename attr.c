@@ -2898,7 +2898,7 @@ name|info
 operator|->
 name|prev
 expr_stmt|;
-comment|/* 	 * Pop the ones from directories that are not the prefix of 	 * the path we are checking. 	 */
+comment|/* 	 * Pop the ones from directories that are not the prefix of 	 * the path we are checking. Break out of the loop when we see 	 * the root one (whose origin is an empty string "") or the builtin 	 * one (whose origin is NULL) without popping it. 	 */
 while|while
 condition|(
 name|attr_stack
@@ -2980,6 +2980,14 @@ operator|==
 name|GIT_ATTR_INDEX
 condition|)
 block|{
+comment|/* 		 * bootstrap_attr_stack() should have added, and the 		 * above loop should have stopped before popping, the 		 * root element whose attr_stack->origin is set to an 		 * empty string. 		 */
+name|assert
+argument_list|(
+name|attr_stack
+operator|->
+name|origin
+argument_list|)
+expr_stmt|;
 while|while
 condition|(
 literal|1
