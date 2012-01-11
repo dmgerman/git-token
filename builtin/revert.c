@@ -147,14 +147,14 @@ end_decl_stmt
 
 begin_enum
 DECL|enum|replay_action
-DECL|enumerator|REVERT
-DECL|enumerator|CHERRY_PICK
 enum|enum
 name|replay_action
 block|{
-name|REVERT
+DECL|enumerator|REPLAY_REVERT
+name|REPLAY_REVERT
 block|,
-name|CHERRY_PICK
+DECL|enumerator|REPLAY_PICK
+name|REPLAY_PICK
 block|}
 enum|;
 end_enum
@@ -283,7 +283,7 @@ name|opts
 operator|->
 name|action
 operator|==
-name|REVERT
+name|REPLAY_REVERT
 condition|?
 literal|"revert"
 else|:
@@ -327,7 +327,7 @@ name|opts
 operator|->
 name|action
 operator|==
-name|REVERT
+name|REPLAY_REVERT
 condition|?
 name|revert_usage
 else|:
@@ -843,7 +843,7 @@ name|opts
 operator|->
 name|action
 operator|==
-name|CHERRY_PICK
+name|REPLAY_PICK
 condition|)
 block|{
 name|struct
@@ -2029,7 +2029,7 @@ name|opts
 operator|->
 name|action
 operator|==
-name|CHERRY_PICK
+name|REPLAY_PICK
 condition|)
 name|error
 argument_list|(
@@ -2997,7 +2997,7 @@ name|opts
 operator|->
 name|action
 operator|==
-name|REVERT
+name|REPLAY_REVERT
 condition|)
 block|{
 name|base
@@ -3225,7 +3225,7 @@ name|opts
 operator|->
 name|action
 operator|==
-name|REVERT
+name|REPLAY_REVERT
 condition|)
 block|{
 name|res
@@ -3341,7 +3341,7 @@ name|opts
 operator|->
 name|action
 operator|==
-name|CHERRY_PICK
+name|REPLAY_PICK
 operator|&&
 operator|!
 name|opts
@@ -3371,7 +3371,7 @@ name|opts
 operator|->
 name|action
 operator|==
-name|REVERT
+name|REPLAY_REVERT
 operator|&&
 operator|(
 operator|(
@@ -3407,7 +3407,7 @@ name|opts
 operator|->
 name|action
 operator|==
-name|REVERT
+name|REPLAY_REVERT
 condition|?
 name|_
 argument_list|(
@@ -3504,7 +3504,7 @@ name|opts
 operator|->
 name|action
 operator|!=
-name|REVERT
+name|REPLAY_REVERT
 condition|)
 name|opts
 operator|->
@@ -3776,7 +3776,7 @@ name|opts
 operator|->
 name|action
 operator|==
-name|REVERT
+name|REPLAY_REVERT
 condition|?
 literal|"revert"
 else|:
@@ -3913,7 +3913,7 @@ condition|)
 block|{
 name|action
 operator|=
-name|CHERRY_PICK
+name|REPLAY_PICK
 expr_stmt|;
 name|bol
 operator|+=
@@ -3937,7 +3937,7 @@ condition|)
 block|{
 name|action
 operator|=
-name|REVERT
+name|REPLAY_REVERT
 expr_stmt|;
 name|bol
 operator|+=
@@ -4027,7 +4027,7 @@ name|action_str
 operator|=
 name|action
 operator|==
-name|REVERT
+name|REPLAY_REVERT
 condition|?
 literal|"revert"
 else|:
@@ -6231,7 +6231,7 @@ name|opts
 operator|->
 name|action
 operator|==
-name|REVERT
+name|REPLAY_REVERT
 condition|)
 return|return
 name|error
@@ -6333,7 +6333,7 @@ name|opts
 operator|.
 name|action
 operator|=
-name|REVERT
+name|REPLAY_REVERT
 expr_stmt|;
 name|git_config
 argument_list|(
@@ -6424,7 +6424,7 @@ name|opts
 operator|.
 name|action
 operator|=
-name|CHERRY_PICK
+name|REPLAY_PICK
 expr_stmt|;
 name|git_config
 argument_list|(
