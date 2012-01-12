@@ -1508,6 +1508,13 @@ block|}
 name|free
 argument_list|(
 name|e
+operator|->
+name|attrs
+argument_list|)
+expr_stmt|;
+name|free
+argument_list|(
+name|e
 argument_list|)
 expr_stmt|;
 block|}
