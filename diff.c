@@ -6867,6 +6867,21 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|prefixcmp
+argument_list|(
+name|line
+argument_list|,
+literal|"\\ "
+argument_list|)
+condition|)
+block|{
+comment|/* 			 * Eat the "no newline at eof" marker as if we 			 * saw a "+" or "-" line with nothing on it, 			 * and return without diff_words_flush() to 			 * defer processing. If this is the end of 			 * preimage, more "+" lines may come after it. 			 */
+return|return;
+block|}
 name|diff_words_flush
 argument_list|(
 name|ecbdata
