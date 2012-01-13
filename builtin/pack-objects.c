@@ -7327,7 +7327,7 @@ return|return
 operator|-
 literal|1
 return|;
-comment|/* 	 * We do not bother to try a delta that we discarded 	 * on an earlier try, but only when reusing delta data. 	 */
+comment|/* 	 * We do not bother to try a delta that we discarded on an 	 * earlier try, but only when reusing delta data.  Note that 	 * src_entry that is marked as the preferred_base should always 	 * be considered, as even if we produce a suboptimal delta against 	 * it, we will still save the transfer cost, as we already know 	 * the other side has it and we won't send src_entry at all. 	 */
 if|if
 condition|(
 name|reuse_delta
@@ -7343,6 +7343,11 @@ operator|==
 name|src_entry
 operator|->
 name|in_pack
+operator|&&
+operator|!
+name|src_entry
+operator|->
+name|preferred_base
 operator|&&
 name|trg_entry
 operator|->
