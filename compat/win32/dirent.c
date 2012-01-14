@@ -42,13 +42,13 @@ name|dirent
 modifier|*
 name|ent
 parameter_list|,
-name|WIN32_FIND_DATAA
+name|WIN32_FIND_DATAW
 modifier|*
 name|fdata
 parameter_list|)
 block|{
-comment|/* copy file name from WIN32_FIND_DATA to dirent */
-name|memcpy
+comment|/* convert UTF-16 name to UTF-8 */
+name|xwcstoutf
 argument_list|(
 name|ent
 operator|->
@@ -103,13 +103,16 @@ modifier|*
 name|name
 parameter_list|)
 block|{
-name|char
+name|wchar_t
 name|pattern
 index|[
 name|MAX_PATH
+operator|+
+literal|2
 index|]
 decl_stmt|;
-name|WIN32_FIND_DATAA
+comment|/* + 2 for '/' '*' */
+name|WIN32_FIND_DATAW
 name|fdata
 decl_stmt|;
 name|HANDLE
@@ -122,58 +125,25 @@ name|DIR
 modifier|*
 name|dir
 decl_stmt|;
-comment|/* check that name is not NULL */
+comment|/* convert name to UTF-16 and check length< MAX_PATH */
 if|if
 condition|(
-operator|!
-name|name
-condition|)
-block|{
-name|errno
-operator|=
-name|EINVAL
-expr_stmt|;
-return|return
-name|NULL
-return|;
-block|}
-comment|/* check that the pattern won't be too long for FindFirstFileA */
+operator|(
 name|len
 operator|=
-name|strlen
-argument_list|(
-name|name
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|len
-operator|+
-literal|2
-operator|>=
-name|MAX_PATH
-condition|)
-block|{
-name|errno
-operator|=
-name|ENAMETOOLONG
-expr_stmt|;
-return|return
-name|NULL
-return|;
-block|}
-comment|/* copy name to temp buffer */
-name|memcpy
+name|xutftowcs_path
 argument_list|(
 name|pattern
 argument_list|,
 name|name
-argument_list|,
-name|len
-operator|+
-literal|1
 argument_list|)
-expr_stmt|;
+operator|)
+operator|<
+literal|0
+condition|)
+return|return
+name|NULL
+return|;
 comment|/* append optional '/' and wildcard '*' */
 if|if
 condition|(
@@ -216,7 +186,7 @@ expr_stmt|;
 comment|/* open find handle */
 name|h
 operator|=
-name|FindFirstFileA
+name|FindFirstFileW
 argument_list|(
 name|pattern
 argument_list|,
@@ -332,12 +302,12 @@ name|dd_stat
 condition|)
 block|{
 comment|/* get next entry and convert from WIN32_FIND_DATA to dirent */
-name|WIN32_FIND_DATAA
+name|WIN32_FIND_DATAW
 name|fdata
 decl_stmt|;
 if|if
 condition|(
-name|FindNextFileA
+name|FindNextFileW
 argument_list|(
 name|dir
 operator|->
