@@ -365,11 +365,7 @@ name|active_cache
 argument_list|,
 name|active_nr
 argument_list|,
-literal|0
-argument_list|,
-literal|1
-argument_list|,
-literal|0
+name|WRITE_TREE_DRY_RUN
 argument_list|)
 expr_stmt|;
 return|return

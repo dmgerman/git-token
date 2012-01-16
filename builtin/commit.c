@@ -2099,7 +2099,7 @@ argument_list|)
 expr_stmt|;
 name|update_main_cache_tree
 argument_list|(
-literal|1
+name|WRITE_TREE_SILENT
 argument_list|)
 expr_stmt|;
 if|if
@@ -2170,7 +2170,7 @@ condition|)
 block|{
 name|update_main_cache_tree
 argument_list|(
-literal|1
+name|WRITE_TREE_SILENT
 argument_list|)
 expr_stmt|;
 if|if
