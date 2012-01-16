@@ -2985,7 +2985,7 @@ condition|(
 name|remote
 condition|)
 block|{
-comment|/* 		 * We know remote HEAD points to a non-branch, or 		 * HEAD points to a branch but we don't know which one, or 		 * we asked for a specific branch but it did not exist. 		 * Detach HEAD in all these cases. 		 */
+comment|/* 		 * We know remote HEAD points to a non-branch, or 		 * HEAD points to a branch but we don't know which one. 		 * Detach HEAD in all these cases. 		 */
 name|update_ref
 argument_list|(
 name|msg
@@ -4445,13 +4445,11 @@ condition|(
 operator|!
 name|our_head_points_at
 condition|)
-block|{
-name|warning
+name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"Remote branch %s not found in "
-literal|"upstream %s, using HEAD instead"
+literal|"Remote branch %s not found in upstream %s"
 argument_list|)
 argument_list|,
 name|option_branch
@@ -4459,11 +4457,6 @@ argument_list|,
 name|option_origin
 argument_list|)
 expr_stmt|;
-name|our_head_points_at
-operator|=
-name|remote_head_points_at
-expr_stmt|;
-block|}
 block|}
 else|else
 name|our_head_points_at
