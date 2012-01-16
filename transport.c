@@ -5263,6 +5263,7 @@ argument_list|,
 literal|"::"
 argument_list|)
 condition|)
+block|{
 name|helper
 operator|=
 name|xstrndup
@@ -5274,6 +5275,13 @@ operator|-
 name|url
 argument_list|)
 expr_stmt|;
+name|remote
+operator|->
+name|foreign_vcs
+operator|=
+name|helper
+expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -5563,6 +5571,12 @@ name|url
 argument_list|,
 name|len
 argument_list|)
+expr_stmt|;
+name|remote
+operator|->
+name|foreign_vcs
+operator|=
+name|handler
 expr_stmt|;
 name|transport_helper_init
 argument_list|(
