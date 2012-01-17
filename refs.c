@@ -92,6 +92,11 @@ name|nr
 decl_stmt|,
 name|alloc
 decl_stmt|;
+comment|/* 	 * Entries with index 0<= i< sorted are sorted by name.  New 	 * entries are appended to the list unsorted, and are sorted 	 * only when required; thus we avoid the need to sort the list 	 * after the addition of every reference. 	 */
+DECL|member|sorted
+name|int
+name|sorted
+decl_stmt|;
 DECL|member|refs
 name|struct
 name|ref_entry
@@ -524,6 +529,10 @@ block|}
 block|}
 end_function
 
+begin_comment
+comment|/*  * Sort the entries in array (if they are not already sorted).  */
+end_comment
+
 begin_function
 DECL|function|sort_ref_array
 specifier|static
@@ -541,14 +550,16 @@ name|i
 decl_stmt|,
 name|j
 decl_stmt|;
-comment|/* Nothing to sort unless there are at least two entries */
+comment|/* 	 * This check also prevents passing a zero-length array to qsort(), 	 * which is a problem on some platforms. 	 */
 if|if
 condition|(
 name|array
 operator|->
+name|sorted
+operator|==
+name|array
+operator|->
 name|nr
-operator|<
-literal|2
 condition|)
 return|return;
 name|qsort
@@ -643,6 +654,10 @@ expr_stmt|;
 block|}
 name|array
 operator|->
+name|sorted
+operator|=
+name|array
+operator|->
 name|nr
 operator|=
 name|i
@@ -702,6 +717,11 @@ condition|)
 return|return
 name|NULL
 return|;
+name|sort_ref_array
+argument_list|(
+name|array
+argument_list|)
+expr_stmt|;
 name|len
 operator|=
 name|strlen
@@ -841,6 +861,10 @@ name|current_ref
 decl_stmt|;
 end_decl_stmt
 
+begin_comment
+comment|/*  * Never call sort_ref_array() on the extra_refs, because it is  * allowed to contain entries with duplicate names.  */
+end_comment
+
 begin_decl_stmt
 DECL|variable|extra_refs
 specifier|static
@@ -897,6 +921,10 @@ operator|->
 name|refs
 argument_list|)
 expr_stmt|;
+name|array
+operator|->
+name|sorted
+operator|=
 name|array
 operator|->
 name|nr
@@ -1374,11 +1402,6 @@ name|sha1
 argument_list|)
 expr_stmt|;
 block|}
-name|sort_ref_array
-argument_list|(
-name|array
-argument_list|)
-expr_stmt|;
 block|}
 end_function
 
@@ -2132,14 +2155,6 @@ name|refs
 argument_list|,
 literal|"refs"
 argument_list|,
-operator|&
-name|refs
-operator|->
-name|loose
-argument_list|)
-expr_stmt|;
-name|sort_ref_array
-argument_list|(
 operator|&
 name|refs
 operator|->
@@ -3842,6 +3857,16 @@ name|refs
 index|[
 name|i
 index|]
+argument_list|)
+expr_stmt|;
+name|sort_ref_array
+argument_list|(
+name|packed
+argument_list|)
+expr_stmt|;
+name|sort_ref_array
+argument_list|(
+name|loose
 argument_list|)
 expr_stmt|;
 while|while
