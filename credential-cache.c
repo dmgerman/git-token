@@ -440,6 +440,10 @@ condition|(
 name|errno
 operator|!=
 name|ENOENT
+operator|&&
+name|errno
+operator|!=
+name|ECONNREFUSED
 condition|)
 name|die_errno
 argument_list|(
