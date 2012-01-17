@@ -753,14 +753,6 @@ argument_list|(
 literal|"unable to overwrite old ref-pack file"
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|cbdata
-operator|.
-name|flags
-operator|&
-name|PACK_REFS_PRUNE
-condition|)
 name|prune_refs
 argument_list|(
 name|cbdata
