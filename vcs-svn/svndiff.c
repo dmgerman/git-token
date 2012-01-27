@@ -1599,7 +1599,10 @@ block|{
 comment|/* For each window: */
 name|off_t
 name|pre_off
+init|=
+name|pre_off
 decl_stmt|;
+comment|/* stupid GCC... */
 name|size_t
 name|pre_len
 decl_stmt|;
