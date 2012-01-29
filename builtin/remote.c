@@ -3130,7 +3130,7 @@ name|prefixcmp
 argument_list|(
 name|refname
 argument_list|,
-literal|"refs/remotes"
+literal|"refs/remotes/"
 argument_list|)
 condition|)
 block|{
