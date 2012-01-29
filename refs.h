@@ -465,6 +465,29 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/*  * Add a reference to the in-memory packed reference cache.  To actually  * write the reference to the packed-refs file, call pack_refs().  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|void
+name|add_packed_ref
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|refname
+parameter_list|,
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|sha1
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/*  * Extra refs will be listed by for_each_ref() before any actual refs  * for the duration of this process or until clear_extra_refs() is  * called. Only extra refs added before for_each_ref() is called will  * be listed on a given call of for_each_ref().  */
 end_comment
 
