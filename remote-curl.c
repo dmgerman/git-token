@@ -4666,6 +4666,8 @@ init|=
 literal|0
 decl_stmt|,
 name|i
+decl_stmt|,
+name|ret
 decl_stmt|;
 do|do
 block|{
@@ -4755,21 +4757,15 @@ condition|(
 literal|1
 condition|)
 do|;
-if|if
-condition|(
+name|ret
+operator|=
 name|push
 argument_list|(
 name|nr_spec
 argument_list|,
 name|specs
 argument_list|)
-condition|)
-name|exit
-argument_list|(
-literal|128
-argument_list|)
 expr_stmt|;
-comment|/* error already reported */
 name|printf
 argument_list|(
 literal|"\n"
@@ -4780,6 +4776,16 @@ argument_list|(
 name|stdout
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|ret
+condition|)
+name|exit
+argument_list|(
+literal|128
+argument_list|)
+expr_stmt|;
+comment|/* error already reported */
 name|free_specs
 label|:
 for|for
