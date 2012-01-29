@@ -115,6 +115,12 @@ name|use_shell
 range|:
 literal|1
 decl_stmt|;
+DECL|member|clean_on_exit
+name|unsigned
+name|clean_on_exit
+range|:
+literal|1
+decl_stmt|;
 DECL|member|preexec_cb
 name|void
 function_decl|(
@@ -225,6 +231,14 @@ define|#
 directive|define
 name|RUN_USING_SHELL
 value|16
+end_define
+
+begin_define
+DECL|macro|RUN_CLEAN_ON_EXIT
+define|#
+directive|define
+name|RUN_CLEAN_ON_EXIT
+value|32
 end_define
 
 begin_function_decl
