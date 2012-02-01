@@ -117,6 +117,18 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|void
+name|detach_advice
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|new_name
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif

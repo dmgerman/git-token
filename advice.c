@@ -395,5 +395,41 @@ expr_stmt|;
 block|}
 end_function
 
+begin_function
+DECL|function|detach_advice
+name|void
+name|detach_advice
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|new_name
+parameter_list|)
+block|{
+specifier|const
+name|char
+name|fmt
+index|[]
+init|=
+literal|"Note: checking out '%s'.\n\n"
+literal|"You are in 'detached HEAD' state. You can look around, make experimental\n"
+literal|"changes and commit them, and you can discard any commits you make in this\n"
+literal|"state without impacting any branches by performing another checkout.\n\n"
+literal|"If you want to create a new branch to retain commits you create, you may\n"
+literal|"do so (now or later) by using -b with the checkout command again. Example:\n\n"
+literal|"  git checkout -b new_branch_name\n\n"
+decl_stmt|;
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+name|fmt
+argument_list|,
+name|new_name
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
 end_unit
 
