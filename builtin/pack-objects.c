@@ -12479,7 +12479,6 @@ name|pack_usage
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* Traditionally "pack-objects [options] base extra" failed; 	 * we would however want to take refs parameter that would 	 * have been given to upstream rev-list ourselves, which means 	 * we somehow want to say what the base name is.  So the 	 * syntax would be: 	 * 	 * pack-objects [options] base<refs...> 	 * 	 * in other words, we would treat the first non-option as the 	 * base_name and send everything else to the internal revision 	 * walker. 	 */
 if|if
 condition|(
 operator|!
@@ -12499,6 +12498,11 @@ name|pack_to_stdout
 operator|!=
 operator|!
 name|base_name
+operator|||
+name|argv
+index|[
+name|i
+index|]
 condition|)
 name|usage
 argument_list|(
