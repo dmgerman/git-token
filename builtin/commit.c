@@ -1201,6 +1201,7 @@ parameter_list|(
 name|void
 parameter_list|)
 block|{
+specifier|const
 name|char
 modifier|*
 name|s
@@ -1221,7 +1222,10 @@ name|FROM_MERGE
 case|:
 name|s
 operator|=
+name|_
+argument_list|(
 literal|"merge"
+argument_list|)
 expr_stmt|;
 break|break;
 case|case
@@ -1229,7 +1233,10 @@ name|FROM_CHERRY_PICK
 case|:
 name|s
 operator|=
+name|_
+argument_list|(
 literal|"cherry-pick"
+argument_list|)
 expr_stmt|;
 break|break;
 block|}
