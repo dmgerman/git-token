@@ -6787,11 +6787,6 @@ name|grep_opt
 modifier|*
 name|opt
 parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|name
-parameter_list|,
 name|char
 modifier|*
 name|buf
@@ -6815,7 +6810,7 @@ name|gs
 argument_list|,
 name|GREP_SOURCE_BUF
 argument_list|,
-name|name
+name|NULL
 argument_list|,
 name|NULL
 argument_list|)

@@ -12266,9 +12266,6 @@ name|opt
 operator|->
 name|grep_filter
 argument_list|,
-name|NULL
-argument_list|,
-comment|/* we say nothing, not even filename */
 name|commit
 operator|->
 name|buffer
