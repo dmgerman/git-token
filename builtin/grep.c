@@ -1236,6 +1236,10 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
+name|grep_use_locks
+operator|=
+literal|1
+expr_stmt|;
 for|for
 control|(
 name|i
@@ -1474,6 +1478,10 @@ argument_list|(
 operator|&
 name|cond_result
 argument_list|)
+expr_stmt|;
+name|grep_use_locks
+operator|=
+literal|0
 expr_stmt|;
 return|return
 name|hit
@@ -5644,12 +5652,6 @@ literal|0
 expr_stmt|;
 endif|#
 directive|endif
-name|opt
-operator|.
-name|use_threads
-operator|=
-name|use_threads
-expr_stmt|;
 ifndef|#
 directive|ifndef
 name|NO_PTHREADS

@@ -4803,6 +4803,13 @@ directive|ifndef
 name|NO_PTHREADS
 end_ifndef
 
+begin_decl_stmt
+DECL|variable|grep_use_locks
+name|int
+name|grep_use_locks
+decl_stmt|;
+end_decl_stmt
+
 begin_comment
 comment|/*  * This lock protects access to the gitattributes machinery, which is  * not thread-safe.  */
 end_comment
@@ -4821,17 +4828,12 @@ specifier|inline
 name|void
 name|grep_attr_lock
 parameter_list|(
-name|struct
-name|grep_opt
-modifier|*
-name|opt
+name|void
 parameter_list|)
 block|{
 if|if
 condition|(
-name|opt
-operator|->
-name|use_threads
+name|grep_use_locks
 condition|)
 name|pthread_mutex_lock
 argument_list|(
@@ -4849,17 +4851,12 @@ specifier|inline
 name|void
 name|grep_attr_unlock
 parameter_list|(
-name|struct
-name|grep_opt
-modifier|*
-name|opt
+name|void
 parameter_list|)
 block|{
 if|if
 condition|(
-name|opt
-operator|->
-name|use_threads
+name|grep_use_locks
 condition|)
 name|pthread_mutex_unlock
 argument_list|(
@@ -4880,9 +4877,7 @@ DECL|macro|grep_attr_lock
 define|#
 directive|define
 name|grep_attr_lock
-parameter_list|(
-name|opt
-parameter_list|)
+parameter_list|()
 end_define
 
 begin_define
@@ -4890,9 +4885,7 @@ DECL|macro|grep_attr_unlock
 define|#
 directive|define
 name|grep_attr_unlock
-parameter_list|(
-name|opt
-parameter_list|)
+parameter_list|()
 end_define
 
 begin_endif
@@ -4949,9 +4942,7 @@ modifier|*
 name|drv
 decl_stmt|;
 name|grep_attr_lock
-argument_list|(
-name|opt
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|drv
 operator|=
@@ -4961,9 +4952,7 @@ name|name
 argument_list|)
 expr_stmt|;
 name|grep_attr_unlock
-argument_list|(
-name|opt
-argument_list|)
+argument_list|()
 expr_stmt|;
 if|if
 condition|(

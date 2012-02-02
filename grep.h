@@ -519,10 +519,6 @@ DECL|member|heading
 name|int
 name|heading
 decl_stmt|;
-DECL|member|use_threads
-name|int
-name|use_threads
-decl_stmt|;
 DECL|member|priv
 name|void
 modifier|*
@@ -731,6 +727,13 @@ end_ifndef
 begin_comment
 comment|/*  * Mutex used around access to the attributes machinery if  * opt->use_threads.  Must be initialized/destroyed by callers!  */
 end_comment
+
+begin_decl_stmt
+specifier|extern
+name|int
+name|grep_use_locks
+decl_stmt|;
+end_decl_stmt
 
 begin_decl_stmt
 specifier|extern
