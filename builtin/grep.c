@@ -354,64 +354,6 @@ block|}
 end_function
 
 begin_comment
-comment|/* Used to serialize calls to read_sha1_file. */
-end_comment
-
-begin_decl_stmt
-DECL|variable|read_sha1_mutex
-specifier|static
-name|pthread_mutex_t
-name|read_sha1_mutex
-decl_stmt|;
-end_decl_stmt
-
-begin_function
-DECL|function|read_sha1_lock
-specifier|static
-specifier|inline
-name|void
-name|read_sha1_lock
-parameter_list|(
-name|void
-parameter_list|)
-block|{
-if|if
-condition|(
-name|use_threads
-condition|)
-name|pthread_mutex_lock
-argument_list|(
-operator|&
-name|read_sha1_mutex
-argument_list|)
-expr_stmt|;
-block|}
-end_function
-
-begin_function
-DECL|function|read_sha1_unlock
-specifier|static
-specifier|inline
-name|void
-name|read_sha1_unlock
-parameter_list|(
-name|void
-parameter_list|)
-block|{
-if|if
-condition|(
-name|use_threads
-condition|)
-name|pthread_mutex_unlock
-argument_list|(
-operator|&
-name|read_sha1_mutex
-argument_list|)
-expr_stmt|;
-block|}
-end_function
-
-begin_comment
 comment|/* Signalled when a new work_item is added to todo. */
 end_comment
 
@@ -1199,7 +1141,7 @@ expr_stmt|;
 name|pthread_mutex_init
 argument_list|(
 operator|&
-name|read_sha1_mutex
+name|grep_read_mutex
 argument_list|,
 name|NULL
 argument_list|)
@@ -1452,7 +1394,7 @@ expr_stmt|;
 name|pthread_mutex_destroy
 argument_list|(
 operator|&
-name|read_sha1_mutex
+name|grep_read_mutex
 argument_list|)
 expr_stmt|;
 name|pthread_mutex_destroy
@@ -1497,22 +1439,6 @@ end_else
 begin_comment
 comment|/* !NO_PTHREADS */
 end_comment
-
-begin_define
-DECL|macro|read_sha1_lock
-define|#
-directive|define
-name|read_sha1_lock
-parameter_list|()
-end_define
-
-begin_define
-DECL|macro|read_sha1_unlock
-define|#
-directive|define
-name|read_sha1_unlock
-parameter_list|()
-end_define
 
 begin_function
 DECL|function|wait_all
@@ -1870,7 +1796,7 @@ name|void
 modifier|*
 name|data
 decl_stmt|;
-name|read_sha1_lock
+name|grep_read_lock
 argument_list|()
 expr_stmt|;
 name|data
@@ -1884,7 +1810,7 @@ argument_list|,
 name|size
 argument_list|)
 expr_stmt|;
-name|read_sha1_unlock
+name|grep_read_unlock
 argument_list|()
 expr_stmt|;
 return|return
@@ -3243,7 +3169,7 @@ name|hit
 decl_stmt|,
 name|len
 decl_stmt|;
-name|read_sha1_lock
+name|grep_read_lock
 argument_list|()
 expr_stmt|;
 name|data
@@ -3262,7 +3188,7 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
-name|read_sha1_unlock
+name|grep_read_unlock
 argument_list|()
 expr_stmt|;
 if|if

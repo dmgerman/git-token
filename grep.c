@@ -4867,6 +4867,17 @@ expr_stmt|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Same as git_attr_mutex, but protecting the thread-unsafe object db access.  */
+end_comment
+
+begin_decl_stmt
+DECL|variable|grep_read_mutex
+name|pthread_mutex_t
+name|grep_read_mutex
+decl_stmt|;
+end_decl_stmt
+
 begin_else
 else|#
 directive|else
