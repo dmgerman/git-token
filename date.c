@@ -3503,10 +3503,17 @@ literal|0
 expr_stmt|;
 if|if
 condition|(
+operator|*
+name|date
+operator|==
+literal|'@'
+operator|&&
 operator|!
 name|match_object_header_date
 argument_list|(
 name|date
+operator|+
+literal|1
 argument_list|,
 name|timestamp
 argument_list|,
