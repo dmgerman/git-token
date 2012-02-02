@@ -68,6 +68,12 @@ directive|include
 file|"thread-utils.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"userdiff.h"
+end_include
+
 begin_enum
 DECL|enum|grep_pat_token
 enum|enum
@@ -724,6 +730,12 @@ name|unsigned
 name|long
 name|size
 decl_stmt|;
+DECL|member|driver
+name|struct
+name|userdiff_driver
+modifier|*
+name|driver
+decl_stmt|;
 block|}
 struct|;
 end_struct
@@ -781,6 +793,18 @@ end_function_decl
 begin_function_decl
 name|void
 name|grep_source_clear
+parameter_list|(
+name|struct
+name|grep_source
+modifier|*
+name|gs
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|void
+name|grep_source_load_driver
 parameter_list|(
 name|struct
 name|grep_source
