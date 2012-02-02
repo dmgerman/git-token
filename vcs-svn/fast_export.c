@@ -1330,7 +1330,7 @@ parameter_list|(
 name|uint32_t
 name|mode
 parameter_list|,
-name|uint32_t
+name|off_t
 name|len
 parameter_list|,
 name|struct
@@ -1339,6 +1339,13 @@ modifier|*
 name|input
 parameter_list|)
 block|{
+name|assert
+argument_list|(
+name|len
+operator|>=
+literal|0
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|mode
@@ -1347,6 +1354,17 @@ name|REPO_MODE_LNK
 condition|)
 block|{
 comment|/* svn symlink blobs start with "link " */
+if|if
+condition|(
+name|len
+operator|<
+literal|5
+condition|)
+name|die
+argument_list|(
+literal|"invalid dump: symlink too short for \"link\" prefix"
+argument_list|)
+expr_stmt|;
 name|len
 operator|-=
 literal|5
@@ -1371,9 +1389,12 @@ block|}
 name|printf
 argument_list|(
 literal|"data %"
-name|PRIu32
+name|PRIuMAX
 literal|"\n"
 argument_list|,
+operator|(
+name|uintmax_t
+operator|)
 name|len
 argument_list|)
 expr_stmt|;
@@ -1732,7 +1753,7 @@ name|char
 modifier|*
 name|old_data
 parameter_list|,
-name|uint32_t
+name|off_t
 name|len
 parameter_list|,
 name|struct
@@ -1744,27 +1765,17 @@ block|{
 name|long
 name|postimage_len
 decl_stmt|;
-if|if
-condition|(
+name|assert
+argument_list|(
 name|len
-operator|>
-name|maximum_signed_value_of_type
-argument_list|(
-name|off_t
-argument_list|)
-condition|)
-name|die
-argument_list|(
-literal|"enormous delta"
+operator|>=
+literal|0
 argument_list|)
 expr_stmt|;
 name|postimage_len
 operator|=
 name|apply_delta
 argument_list|(
-operator|(
-name|off_t
-operator|)
 name|len
 argument_list|,
 name|input

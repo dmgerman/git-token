@@ -136,7 +136,7 @@ parameter_list|(
 name|uint32_t
 name|mode
 parameter_list|,
-name|uint32_t
+name|off_t
 name|len
 parameter_list|,
 name|struct
@@ -162,7 +162,7 @@ name|char
 modifier|*
 name|old_data
 parameter_list|,
-name|uint32_t
+name|off_t
 name|len
 parameter_list|,
 name|struct
