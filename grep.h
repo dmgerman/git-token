@@ -816,6 +816,18 @@ end_function_decl
 
 begin_function_decl
 name|int
+name|grep_source_is_binary
+parameter_list|(
+name|struct
+name|grep_source
+modifier|*
+name|gs
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
 name|grep_source
 parameter_list|(
 name|struct
