@@ -3018,6 +3018,8 @@ argument_list|(
 name|argv
 argument_list|,
 name|RUN_SILENT_EXEC_FAILURE
+operator||
+name|RUN_CLEAN_ON_EXIT
 argument_list|)
 expr_stmt|;
 if|if
