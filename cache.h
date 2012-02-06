@@ -7153,6 +7153,26 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+specifier|const
+name|char
+modifier|*
+name|parse_feature_request
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|features
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|feature
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|struct
 name|packed_git
 modifier|*
