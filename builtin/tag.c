@@ -448,11 +448,30 @@ if|if
 condition|(
 operator|!
 name|buf
-operator|||
+condition|)
+name|die_errno
+argument_list|(
+literal|"unable to read object %s"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|sha1
+argument_list|)
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 operator|!
 name|size
 condition|)
+block|{
+name|free
+argument_list|(
+name|buf
+argument_list|)
+expr_stmt|;
 return|return;
+block|}
 comment|/* skip header */
 name|sp
 operator|=
