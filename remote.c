@@ -8815,22 +8815,18 @@ name|strbuf_addf
 argument_list|(
 name|sb
 argument_list|,
-literal|"Your branch is ahead of '%s' "
-literal|"by %d commit%s.\n"
+name|Q_
+argument_list|(
+literal|"Your branch is ahead of '%s' by %d commit.\n"
+argument_list|,
+literal|"Your branch is ahead of '%s' by %d commits.\n"
+argument_list|,
+name|num_ours
+argument_list|)
 argument_list|,
 name|base
 argument_list|,
 name|num_ours
-argument_list|,
-operator|(
-name|num_ours
-operator|==
-literal|1
-operator|)
-condition|?
-literal|""
-else|:
-literal|"s"
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -8843,23 +8839,20 @@ name|strbuf_addf
 argument_list|(
 name|sb
 argument_list|,
-literal|"Your branch is behind '%s' "
-literal|"by %d commit%s, "
+name|Q_
+argument_list|(
+literal|"Your branch is behind '%s' by %d commit, "
 literal|"and can be fast-forwarded.\n"
+argument_list|,
+literal|"Your branch is behind '%s' by %d commits, "
+literal|"and can be fast-forwarded.\n"
+argument_list|,
+name|num_theirs
+argument_list|)
 argument_list|,
 name|base
 argument_list|,
 name|num_theirs
-argument_list|,
-operator|(
-name|num_theirs
-operator|==
-literal|1
-operator|)
-condition|?
-literal|""
-else|:
-literal|"s"
 argument_list|)
 expr_stmt|;
 else|else
@@ -8867,9 +8860,18 @@ name|strbuf_addf
 argument_list|(
 name|sb
 argument_list|,
+name|Q_
+argument_list|(
 literal|"Your branch and '%s' have diverged,\n"
-literal|"and have %d and %d different commit(s) each, "
+literal|"and have %d and %d different commit each, "
 literal|"respectively.\n"
+argument_list|,
+literal|"Your branch and '%s' have diverged,\n"
+literal|"and have %d and %d different commits each, "
+literal|"respectively.\n"
+argument_list|,
+name|num_theirs
+argument_list|)
 argument_list|,
 name|base
 argument_list|,
