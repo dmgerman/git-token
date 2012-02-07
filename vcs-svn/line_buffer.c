@@ -450,7 +450,7 @@ end_function
 
 begin_function
 DECL|function|buffer_read_binary
-name|void
+name|size_t
 name|buffer_read_binary
 parameter_list|(
 name|struct
@@ -463,10 +463,11 @@ name|strbuf
 modifier|*
 name|sb
 parameter_list|,
-name|uint32_t
+name|size_t
 name|size
 parameter_list|)
 block|{
+return|return
 name|strbuf_fread
 argument_list|(
 name|sb
@@ -477,7 +478,7 @@ name|buf
 operator|->
 name|infile
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 end_function
 
