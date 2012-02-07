@@ -884,14 +884,6 @@ name|ce_stage
 argument_list|(
 name|ce
 argument_list|)
-operator|||
-operator|(
-name|ce
-operator|->
-name|ce_flags
-operator|&
-name|CE_INTENT_TO_ADD
-operator|)
 condition|)
 block|{
 if|if
@@ -1785,10 +1777,14 @@ name|ce
 operator|->
 name|ce_flags
 operator|&
+operator|(
 name|CE_REMOVE
+operator||
+name|CE_INTENT_TO_ADD
+operator|)
 condition|)
 continue|continue;
-comment|/* entry being removed */
+comment|/* entry being removed or placeholder */
 name|strbuf_grow
 argument_list|(
 operator|&
