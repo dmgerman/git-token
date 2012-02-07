@@ -1593,6 +1593,16 @@ name|output_format
 operator|=
 name|DIFF_FORMAT_PATCH
 expr_stmt|;
+name|DIFF_OPT_SET
+argument_list|(
+operator|&
+name|rev
+operator|.
+name|diffopt
+argument_list|,
+name|IGNORE_DIRTY_SUBMODULES
+argument_list|)
+expr_stmt|;
 name|out
 operator|=
 name|open
