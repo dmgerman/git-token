@@ -4484,20 +4484,21 @@ argument_list|(
 name|transport
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|refs
+condition|)
+block|{
 name|mapped_refs
 operator|=
-name|refs
-condition|?
 name|wanted_peer_refs
 argument_list|(
 name|refs
 argument_list|,
 name|refspec
 argument_list|)
-else|:
-name|NULL
 expr_stmt|;
-comment|/* 	 * transport_get_remote_refs() may return refs with null sha-1 	 * in mapped_refs (see struct transport->get_refs_list 	 * comment). In that case we need fetch it early because 	 * remote_head code below relies on it. 	 * 	 * for normal clones, transport_get_remote_refs() should 	 * return reliable ref set, we can delay cloning until after 	 * remote HEAD check. 	 */
+comment|/* 		 * transport_get_remote_refs() may return refs with null sha-1 		 * in mapped_refs (see struct transport->get_refs_list 		 * comment). In that case we need fetch it early because 		 * remote_head code below relies on it. 		 * 		 * for normal clones, transport_get_remote_refs() should 		 * return reliable ref set, we can delay cloning until after 		 * remote HEAD check. 		 */
 for|for
 control|(
 name|ref
@@ -4535,8 +4536,6 @@ name|is_local
 operator|&&
 operator|!
 name|complete_refs_before_fetch
-operator|&&
-name|refs
 condition|)
 name|transport_fetch_refs
 argument_list|(
@@ -4545,11 +4544,6 @@ argument_list|,
 name|mapped_refs
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|refs
-condition|)
-block|{
 name|remote_head
 operator|=
 name|find_ref_by_name
@@ -4617,6 +4611,10 @@ argument_list|(
 literal|"You appear to have cloned an empty repository."
 argument_list|)
 argument_list|)
+expr_stmt|;
+name|mapped_refs
+operator|=
+name|NULL
 expr_stmt|;
 name|our_head_points_at
 operator|=
