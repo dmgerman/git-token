@@ -346,7 +346,7 @@ parameter_list|(
 specifier|const
 name|char
 modifier|*
-name|path
+name|refname
 parameter_list|,
 specifier|const
 name|unsigned
@@ -374,7 +374,7 @@ argument_list|(
 name|sha1
 argument_list|)
 argument_list|,
-name|path
+name|refname
 argument_list|,
 literal|0
 argument_list|)
@@ -416,7 +416,7 @@ parameter_list|(
 specifier|const
 name|char
 modifier|*
-name|path
+name|refname
 parameter_list|,
 specifier|const
 name|unsigned
@@ -444,7 +444,7 @@ argument_list|(
 name|sha1
 argument_list|)
 argument_list|,
-name|path
+name|refname
 argument_list|,
 literal|0
 argument_list|)
@@ -2603,7 +2603,7 @@ parameter_list|(
 specifier|const
 name|char
 modifier|*
-name|path
+name|refname
 parameter_list|,
 specifier|const
 name|unsigned
