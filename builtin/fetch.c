@@ -164,6 +164,9 @@ DECL|variable|recurse_submodules
 specifier|static
 name|int
 name|progress
+init|=
+operator|-
+literal|1
 decl_stmt|,
 name|recurse_submodules
 init|=
@@ -471,7 +474,7 @@ argument_list|,
 literal|"allow updating of HEAD ref"
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
