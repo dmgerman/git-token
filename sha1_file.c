@@ -6145,6 +6145,28 @@ operator|.
 name|st_size
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+operator|*
+name|size
+condition|)
+block|{
+comment|/* mmap() is forbidden on empty files */
+name|error
+argument_list|(
+literal|"object file %s is empty"
+argument_list|,
+name|sha1_file_name
+argument_list|(
+name|sha1
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return
+name|NULL
+return|;
+block|}
 name|map
 operator|=
 name|xmmap
