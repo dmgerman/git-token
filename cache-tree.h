@@ -213,10 +213,6 @@ parameter_list|,
 name|int
 parameter_list|,
 name|int
-parameter_list|,
-name|int
-parameter_list|,
-name|int
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -248,6 +244,22 @@ define|#
 directive|define
 name|WRITE_TREE_IGNORE_CACHE_TREE
 value|2
+end_define
+
+begin_define
+DECL|macro|WRITE_TREE_DRY_RUN
+define|#
+directive|define
+name|WRITE_TREE_DRY_RUN
+value|4
+end_define
+
+begin_define
+DECL|macro|WRITE_TREE_SILENT
+define|#
+directive|define
+name|WRITE_TREE_SILENT
+value|8
 end_define
 
 begin_comment
