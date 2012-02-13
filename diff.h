@@ -1913,6 +1913,27 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|print_stat_summary
+parameter_list|(
+name|FILE
+modifier|*
+name|fp
+parameter_list|,
+name|int
+name|files
+parameter_list|,
+name|int
+name|insertions
+parameter_list|,
+name|int
+name|deletions
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
