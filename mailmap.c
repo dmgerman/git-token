@@ -1208,7 +1208,7 @@ parameter_list|)
 block|{
 name|char
 modifier|*
-name|p
+name|end_of_email
 decl_stmt|;
 name|struct
 name|string_list_item
@@ -1233,7 +1233,7 @@ name|int
 name|i
 decl_stmt|;
 comment|/* figure out space requirement for email */
-name|p
+name|end_of_email
 operator|=
 name|strchr
 argument_list|(
@@ -1245,11 +1245,11 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|p
+name|end_of_email
 condition|)
 block|{
 comment|/* email passed in might not be wrapped in<>, but end with a \0 */
-name|p
+name|end_of_email
 operator|=
 name|memchr
 argument_list|(
@@ -1263,7 +1263,7 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|p
+name|end_of_email
 condition|)
 return|return
 literal|0
@@ -1271,7 +1271,7 @@ return|;
 block|}
 if|if
 condition|(
-name|p
+name|end_of_email
 operator|-
 name|email
 operator|+
@@ -1291,7 +1291,7 @@ name|mailbuf
 operator|=
 name|xmalloc
 argument_list|(
-name|p
+name|end_of_email
 operator|-
 name|email
 operator|+
@@ -1307,7 +1307,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|p
+name|end_of_email
 operator|-
 name|email
 condition|;
@@ -1486,6 +1486,12 @@ name|email
 argument_list|,
 name|maxlen_email
 argument_list|)
+expr_stmt|;
+else|else
+operator|*
+name|end_of_email
+operator|=
+literal|'\0'
 expr_stmt|;
 if|if
 condition|(
