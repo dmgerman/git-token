@@ -618,9 +618,11 @@ init|=
 block|{
 literal|"/.git"
 block|,
-literal|".git"
-block|,
 literal|""
+block|,
+literal|".git/.git"
+block|,
+literal|".git"
 block|}
 decl_stmt|;
 specifier|static
@@ -696,6 +698,11 @@ argument_list|(
 name|st
 operator|.
 name|st_mode
+argument_list|)
+operator|&&
+name|is_git_directory
+argument_list|(
+name|path
 argument_list|)
 condition|)
 block|{
