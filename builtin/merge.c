@@ -250,6 +250,9 @@ name|int
 name|fast_forward_only
 decl_stmt|,
 name|option_edit
+init|=
+operator|-
+literal|1
 decl_stmt|;
 end_decl_stmt
 
@@ -1241,7 +1244,7 @@ argument_list|,
 literal|"perform a commit if the merge succeeds (default)"
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'e'
 argument_list|,
@@ -7905,6 +7908,12 @@ operator|==
 name|OBJ_TAG
 condition|)
 block|{
+if|if
+condition|(
+name|option_edit
+operator|<
+literal|0
+condition|)
 name|option_edit
 operator|=
 literal|1
@@ -7915,6 +7924,16 @@ literal|0
 expr_stmt|;
 block|}
 block|}
+if|if
+condition|(
+name|option_edit
+operator|<
+literal|0
+condition|)
+name|option_edit
+operator|=
+literal|0
+expr_stmt|;
 if|if
 condition|(
 operator|!
