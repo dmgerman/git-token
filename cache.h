@@ -8047,6 +8047,26 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|int
+name|git_config_rename_section_in_file
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 specifier|const
 name|char
 modifier|*
