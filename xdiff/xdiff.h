@@ -53,6 +53,11 @@ define|#
 directive|define
 name|XDF_IGNORE_WHITESPACE_AT_EOL
 value|(1<< 4)
+DECL|macro|XDF_WHITESPACE_FLAGS
+define|#
+directive|define
+name|XDF_WHITESPACE_FLAGS
+value|(XDF_IGNORE_WHITESPACE | XDF_IGNORE_WHITESPACE_CHANGE | XDF_IGNORE_WHITESPACE_AT_EOL)
 DECL|macro|XDF_PATIENCE_DIFF
 define|#
 directive|define
@@ -63,11 +68,19 @@ define|#
 directive|define
 name|XDF_HISTOGRAM_DIFF
 value|(1<< 6)
-DECL|macro|XDF_WHITESPACE_FLAGS
+DECL|macro|XDF_DIFF_ALGORITHM_MASK
 define|#
 directive|define
-name|XDF_WHITESPACE_FLAGS
-value|(XDF_IGNORE_WHITESPACE | XDF_IGNORE_WHITESPACE_CHANGE | XDF_IGNORE_WHITESPACE_AT_EOL)
+name|XDF_DIFF_ALGORITHM_MASK
+value|(XDF_PATIENCE_DIFF | XDF_HISTOGRAM_DIFF)
+DECL|macro|XDF_DIFF_ALG
+define|#
+directive|define
+name|XDF_DIFF_ALG
+parameter_list|(
+name|x
+parameter_list|)
+value|((x)& XDF_DIFF_ALGORITHM_MASK)
 DECL|macro|XDL_EMIT_FUNCNAMES
 define|#
 directive|define
