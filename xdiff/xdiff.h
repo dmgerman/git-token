@@ -68,26 +68,6 @@ define|#
 directive|define
 name|XDF_WHITESPACE_FLAGS
 value|(XDF_IGNORE_WHITESPACE | XDF_IGNORE_WHITESPACE_CHANGE | XDF_IGNORE_WHITESPACE_AT_EOL)
-DECL|macro|XDL_PATCH_NORMAL
-define|#
-directive|define
-name|XDL_PATCH_NORMAL
-value|'-'
-DECL|macro|XDL_PATCH_REVERSE
-define|#
-directive|define
-name|XDL_PATCH_REVERSE
-value|'+'
-DECL|macro|XDL_PATCH_MODEMASK
-define|#
-directive|define
-name|XDL_PATCH_MODEMASK
-value|((1<< 8) - 1)
-DECL|macro|XDL_PATCH_IGNOREBSPACE
-define|#
-directive|define
-name|XDL_PATCH_IGNOREBSPACE
-value|(1<< 8)
 DECL|macro|XDL_EMIT_FUNCNAMES
 define|#
 directive|define
