@@ -3533,6 +3533,14 @@ name|cmd
 operator|->
 name|next
 control|)
+block|{
+if|if
+condition|(
+operator|!
+name|cmd
+operator|->
+name|error_string
+condition|)
 name|check_aliased_update
 argument_list|(
 name|cmd
@@ -3541,6 +3549,7 @@ operator|&
 name|ref_list
 argument_list|)
 expr_stmt|;
+block|}
 name|string_list_clear
 argument_list|(
 operator|&
@@ -3880,12 +3889,21 @@ name|cmd
 operator|->
 name|next
 control|)
+block|{
+if|if
+condition|(
+operator|!
+name|cmd
+operator|->
+name|error_string
+condition|)
 name|cmd
 operator|->
 name|error_string
 operator|=
 literal|"pre-receive hook declined"
 expr_stmt|;
+block|}
 return|return;
 block|}
 name|check_aliased_updates
@@ -3927,13 +3945,21 @@ name|cmd
 operator|->
 name|next
 control|)
+block|{
 if|if
 condition|(
-operator|!
+name|cmd
+operator|->
+name|error_string
+condition|)
+continue|continue;
+if|if
+condition|(
 name|cmd
 operator|->
 name|skip_update
 condition|)
+continue|continue;
 name|cmd
 operator|->
 name|error_string
@@ -3943,6 +3969,7 @@ argument_list|(
 name|cmd
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 end_function
 
