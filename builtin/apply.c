@@ -54,6 +54,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"diff.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"parse-options.h"
 end_include
 
@@ -15894,9 +15900,9 @@ name|patch
 argument_list|)
 expr_stmt|;
 block|}
-name|printf
+name|print_stat_summary
 argument_list|(
-literal|" %d files changed, %d insertions(+), %d deletions(-)\n"
+name|stdout
 argument_list|,
 name|files
 argument_list|,
