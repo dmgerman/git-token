@@ -6015,6 +6015,16 @@ name|MATCH_REFS_MIRROR
 expr_stmt|;
 if|if
 condition|(
+name|flags
+operator|&
+name|TRANSPORT_PUSH_PRUNE
+condition|)
+name|match_flags
+operator||=
+name|MATCH_REFS_PRUNE
+expr_stmt|;
+if|if
+condition|(
 name|match_push_refs
 argument_list|(
 name|local_refs
