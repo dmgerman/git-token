@@ -6684,6 +6684,9 @@ decl_stmt|;
 name|struct
 name|ref
 modifier|*
+name|ref
+decl_stmt|,
+modifier|*
 modifier|*
 name|dst_tail
 init|=
@@ -6742,12 +6745,15 @@ expr_stmt|;
 comment|/* pick the remainder */
 for|for
 control|(
-init|;
-name|src
-condition|;
-name|src
+name|ref
 operator|=
 name|src
+init|;
+name|ref
+condition|;
+name|ref
+operator|=
+name|ref
 operator|->
 name|next
 control|)
@@ -6771,7 +6777,7 @@ name|dst_name
 decl_stmt|;
 if|if
 condition|(
-name|src
+name|ref
 operator|->
 name|peer_ref
 condition|)
@@ -6784,7 +6790,7 @@ name|rs
 argument_list|,
 name|nr_refspec
 argument_list|,
-name|src
+name|ref
 argument_list|)
 expr_stmt|;
 if|if
@@ -6808,7 +6814,7 @@ name|send_mirror
 operator|&&
 name|prefixcmp
 argument_list|(
-name|src
+name|ref
 operator|->
 name|name
 argument_list|,
@@ -6820,7 +6826,7 @@ name|dst_name
 operator|=
 name|xstrdup
 argument_list|(
-name|src
+name|ref
 operator|->
 name|name
 argument_list|)
@@ -6854,7 +6860,7 @@ name|pat
 operator|->
 name|src
 argument_list|,
-name|src
+name|ref
 operator|->
 name|name
 argument_list|,
@@ -6932,7 +6938,7 @@ name|dst_peer
 operator|->
 name|new_sha1
 argument_list|,
-name|src
+name|ref
 operator|->
 name|new_sha1
 argument_list|)
@@ -6944,7 +6950,7 @@ name|peer_ref
 operator|=
 name|copy_ref
 argument_list|(
-name|src
+name|ref
 argument_list|)
 expr_stmt|;
 name|dst_peer
