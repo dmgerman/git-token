@@ -813,11 +813,27 @@ operator|==
 name|AUTO_CRLF_FALSE
 operator|)
 operator|||
+operator|(
+name|src
+operator|&&
 operator|!
 name|len
+operator|)
 condition|)
 return|return
 literal|0
+return|;
+comment|/* 	 * If we are doing a dry-run and have no source buffer, there is 	 * nothing to analyze; we must assume we would convert. 	 */
+if|if
+condition|(
+operator|!
+name|buf
+operator|&&
+operator|!
+name|src
+condition|)
+return|return
+literal|1
 return|;
 name|gather_stats
 argument_list|(
@@ -2339,6 +2355,9 @@ condition|(
 operator|!
 name|ident
 operator|||
+operator|(
+name|src
+operator|&&
 operator|!
 name|count_ident
 argument_list|(
@@ -2346,6 +2365,7 @@ name|src
 argument_list|,
 name|len
 argument_list|)
+operator|)
 condition|)
 return|return
 literal|0
