@@ -12406,9 +12406,7 @@ literal|1
 condition|)
 name|warning
 argument_list|(
-literal|"no threads support, ignoring %s"
-argument_list|,
-name|arg
+literal|"no threads support, ignoring --threads"
 argument_list|)
 expr_stmt|;
 endif|#
