@@ -8552,6 +8552,16 @@ end_decl_stmt
 begin_function_decl
 specifier|extern
 name|int
+name|term_columns
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
 name|decimal_width
 parameter_list|(
 name|int
