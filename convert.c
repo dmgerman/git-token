@@ -819,11 +819,27 @@ operator|==
 name|AUTO_CRLF_FALSE
 operator|)
 operator|||
+operator|(
+name|src
+operator|&&
 operator|!
 name|len
+operator|)
 condition|)
 return|return
 literal|0
+return|;
+comment|/* 	 * If we are doing a dry-run and have no source buffer, there is 	 * nothing to analyze; we must assume we would convert. 	 */
+if|if
+condition|(
+operator|!
+name|buf
+operator|&&
+operator|!
+name|src
+condition|)
+return|return
+literal|1
 return|;
 name|gather_stats
 argument_list|(
@@ -916,6 +932,15 @@ name|cr
 condition|)
 return|return
 literal|0
+return|;
+comment|/* 	 * At this point all of our source analysis is done, and we are sure we 	 * would convert. If we are in dry-run mode, we can give an answer. 	 */
+if|if
+condition|(
+operator|!
+name|buf
+condition|)
+return|return
+literal|1
 return|;
 comment|/* only grow if not in place */
 if|if
@@ -1732,6 +1757,14 @@ condition|)
 return|return
 literal|0
 return|;
+if|if
+condition|(
+operator|!
+name|dst
+condition|)
+return|return
+literal|1
+return|;
 name|memset
 argument_list|(
 operator|&
@@ -2340,6 +2373,9 @@ condition|(
 operator|!
 name|ident
 operator|||
+operator|(
+name|src
+operator|&&
 operator|!
 name|count_ident
 argument_list|(
@@ -2347,9 +2383,18 @@ name|src
 argument_list|,
 name|len
 argument_list|)
+operator|)
 condition|)
 return|return
 literal|0
+return|;
+if|if
+condition|(
+operator|!
+name|buf
+condition|)
+return|return
+literal|1
 return|;
 comment|/* only grow if not in place */
 if|if
@@ -3590,6 +3635,8 @@ expr_stmt|;
 if|if
 condition|(
 name|ret
+operator|&&
+name|dst
 condition|)
 block|{
 name|src
@@ -3642,6 +3689,8 @@ expr_stmt|;
 if|if
 condition|(
 name|ret
+operator|&&
+name|dst
 condition|)
 block|{
 name|src
