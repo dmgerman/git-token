@@ -345,6 +345,14 @@ value|64
 end_define
 
 begin_define
+DECL|macro|TRANSPORT_PUSH_PRUNE
+define|#
+directive|define
+name|TRANSPORT_PUSH_PRUNE
+value|128
+end_define
+
+begin_define
 DECL|macro|TRANSPORT_SUMMARY_WIDTH
 define|#
 directive|define

@@ -723,6 +723,15 @@ literal|1
 operator|<<
 literal|1
 operator|)
+block|,
+DECL|enumerator|MATCH_REFS_PRUNE
+name|MATCH_REFS_PRUNE
+init|=
+operator|(
+literal|1
+operator|<<
+literal|2
+operator|)
 block|}
 enum|;
 end_enum

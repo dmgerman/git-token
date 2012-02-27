@@ -1445,6 +1445,20 @@ argument_list|,
 literal|"force progress reporting"
 argument_list|)
 block|,
+name|OPT_BIT
+argument_list|(
+literal|0
+argument_list|,
+literal|"prune"
+argument_list|,
+operator|&
+name|flags
+argument_list|,
+literal|"prune locally removed refs"
+argument_list|,
+name|TRANSPORT_PUSH_PRUNE
+argument_list|)
+block|,
 name|OPT_END
 argument_list|()
 block|}
