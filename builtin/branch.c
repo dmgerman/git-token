@@ -2926,6 +2926,21 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|filter
+condition|)
+name|die
+argument_list|(
+literal|"object '%s' does not point to a commit"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|merge_filter_ref
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|filter
 operator|->
 name|object
