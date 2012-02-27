@@ -524,7 +524,7 @@ decl_stmt|;
 name|int
 name|options
 init|=
-literal|0
+name|PCRE_MULTILINE
 decl_stmt|;
 if|if
 condition|(
