@@ -5821,14 +5821,26 @@ operator|=
 operator|-
 literal|1
 expr_stmt|;
-comment|/** 	 * Rules used to determine whether to report progress (processing aborts 	 * when a rule is satisfied): 	 * 	 *   1. Report progress, if force_progress is 1 (ie. --progress). 	 *   2. Don't report progress, if verbosity< 0 (ie. -q/--quiet ). 	 *   3. Report progress if isatty(2) is 1. 	 **/
+comment|/** 	 * Rules used to determine whether to report progress (processing aborts 	 * when a rule is satisfied): 	 * 	 *   . Report progress, if force_progress is 1 (ie. --progress). 	 *   . Don't report progress, if force_progress is 0 (ie. --no-progress). 	 *   . Don't report progress, if verbosity< 0 (ie. -q/--quiet ). 	 *   . Report progress if isatty(2) is 1. 	 **/
+if|if
+condition|(
+name|force_progress
+operator|>=
+literal|0
+condition|)
 name|transport
 operator|->
 name|progress
 operator|=
+operator|!
+operator|!
 name|force_progress
-operator|||
-operator|(
+expr_stmt|;
+else|else
+name|transport
+operator|->
+name|progress
+operator|=
 name|verbosity
 operator|>=
 literal|0
@@ -5837,7 +5849,6 @@ name|isatty
 argument_list|(
 literal|2
 argument_list|)
-operator|)
 expr_stmt|;
 block|}
 end_function
@@ -6012,6 +6023,16 @@ condition|)
 name|match_flags
 operator||=
 name|MATCH_REFS_MIRROR
+expr_stmt|;
+if|if
+condition|(
+name|flags
+operator|&
+name|TRANSPORT_PUSH_PRUNE
+condition|)
+name|match_flags
+operator||=
+name|MATCH_REFS_PRUNE
 expr_stmt|;
 if|if
 condition|(

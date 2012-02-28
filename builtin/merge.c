@@ -7081,6 +7081,11 @@ argument_list|(
 literal|0
 argument_list|)
 operator|&&
+name|isatty
+argument_list|(
+literal|1
+argument_list|)
+operator|&&
 name|st_stdin
 operator|.
 name|st_dev
@@ -8091,6 +8096,12 @@ operator|==
 name|OBJ_TAG
 condition|)
 block|{
+if|if
+condition|(
+name|option_edit
+operator|<
+literal|0
+condition|)
 name|option_edit
 operator|=
 literal|1

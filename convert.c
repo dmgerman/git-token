@@ -23,6 +23,12 @@ directive|include
 file|"quote.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"sigchain.h"
+end_include
+
 begin_comment
 comment|/*  * convert.c - convert a file when checking it out and checking it in.  *  * This should use the pathname to decide on whether it wants to do some  * more interesting conversions (automatic gzip/unzip, general format  * conversions etc etc), but by default it just does automatic CRLF<->LF  * translation when the "text" attribute or "auto_crlf" option is set.  */
 end_comment
@@ -813,11 +819,27 @@ operator|==
 name|AUTO_CRLF_FALSE
 operator|)
 operator|||
+operator|(
+name|src
+operator|&&
 operator|!
 name|len
+operator|)
 condition|)
 return|return
 literal|0
+return|;
+comment|/* 	 * If we are doing a dry-run and have no source buffer, there is 	 * nothing to analyze; we must assume we would convert. 	 */
+if|if
+condition|(
+operator|!
+name|buf
+operator|&&
+operator|!
+name|src
+condition|)
+return|return
+literal|1
 return|;
 name|gather_stats
 argument_list|(
@@ -910,6 +932,15 @@ name|cr
 condition|)
 return|return
 literal|0
+return|;
+comment|/* 	 * At this point all of our source analysis is done, and we are sure we 	 * would convert. If we are in dry-run mode, we can give an answer. 	 */
+if|if
+condition|(
+operator|!
+name|buf
+condition|)
+return|return
+literal|1
 return|;
 comment|/* only grow if not in place */
 if|if
@@ -1570,6 +1601,13 @@ operator|->
 name|cmd
 argument_list|)
 return|;
+name|sigchain_push
+argument_list|(
+name|SIGPIPE
+argument_list|,
+name|SIG_IGN
+argument_list|)
+expr_stmt|;
 name|write_err
 operator|=
 operator|(
@@ -1615,6 +1653,11 @@ argument_list|,
 name|params
 operator|->
 name|cmd
+argument_list|)
+expr_stmt|;
+name|sigchain_pop
+argument_list|(
+name|SIGPIPE
 argument_list|)
 expr_stmt|;
 name|status
@@ -1713,6 +1756,14 @@ name|cmd
 condition|)
 return|return
 literal|0
+return|;
+if|if
+condition|(
+operator|!
+name|dst
+condition|)
+return|return
+literal|1
 return|;
 name|memset
 argument_list|(
@@ -2322,6 +2373,9 @@ condition|(
 operator|!
 name|ident
 operator|||
+operator|(
+name|src
+operator|&&
 operator|!
 name|count_ident
 argument_list|(
@@ -2329,9 +2383,18 @@ name|src
 argument_list|,
 name|len
 argument_list|)
+operator|)
 condition|)
 return|return
 literal|0
+return|;
+if|if
+condition|(
+operator|!
+name|buf
+condition|)
+return|return
+literal|1
 return|;
 comment|/* only grow if not in place */
 if|if
@@ -3572,6 +3635,8 @@ expr_stmt|;
 if|if
 condition|(
 name|ret
+operator|&&
+name|dst
 condition|)
 block|{
 name|src
@@ -3624,6 +3689,8 @@ expr_stmt|;
 if|if
 condition|(
 name|ret
+operator|&&
+name|dst
 condition|)
 block|{
 name|src
