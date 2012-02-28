@@ -4285,16 +4285,18 @@ argument_list|,
 literal|"search in index instead of in the work tree"
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_NEGBIT
 argument_list|(
 literal|0
 argument_list|,
-literal|"index"
+literal|"no-index"
 argument_list|,
 operator|&
 name|use_index
 argument_list|,
-literal|"--no-index finds in contents not managed by git"
+literal|"finds in contents not managed by git"
+argument_list|,
+literal|1
 argument_list|)
 block|,
 name|OPT_GROUP
