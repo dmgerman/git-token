@@ -781,6 +781,10 @@ DECL|member|stat_name_width
 name|int
 name|stat_name_width
 decl_stmt|;
+DECL|member|stat_graph_width
+name|int
+name|stat_graph_width
+decl_stmt|;
 DECL|member|stat_count
 name|int
 name|stat_count
