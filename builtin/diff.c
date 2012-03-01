@@ -1534,6 +1534,16 @@ operator|!
 operator|!
 name|diff_auto_refresh_index
 expr_stmt|;
+comment|/* Scale to real terminal size */
+name|rev
+operator|.
+name|diffopt
+operator|.
+name|stat_width
+operator|=
+operator|-
+literal|1
+expr_stmt|;
 comment|/* Default to let external and textconv be used */
 name|DIFF_OPT_SET
 argument_list|(
