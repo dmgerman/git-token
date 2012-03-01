@@ -2304,6 +2304,16 @@ name|no_walk
 operator|=
 literal|1
 expr_stmt|;
+name|rev
+operator|.
+name|diffopt
+operator|.
+name|stat_width
+operator|=
+operator|-
+literal|1
+expr_stmt|;
+comment|/* Scale to real terminal size */
 name|memset
 argument_list|(
 operator|&
