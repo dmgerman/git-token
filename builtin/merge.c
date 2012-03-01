@@ -2471,6 +2471,14 @@ argument_list|)
 expr_stmt|;
 name|opts
 operator|.
+name|stat_width
+operator|=
+operator|-
+literal|1
+expr_stmt|;
+comment|/* use full terminal width */
+name|opts
+operator|.
 name|output_format
 operator||=
 name|DIFF_FORMAT_SUMMARY
