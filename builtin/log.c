@@ -378,6 +378,16 @@ argument_list|)
 expr_stmt|;
 name|rev
 operator|->
+name|diffopt
+operator|.
+name|stat_width
+operator|=
+operator|-
+literal|1
+expr_stmt|;
+comment|/* use full terminal width */
+name|rev
+operator|->
 name|abbrev_commit
 operator|=
 name|default_abbrev_commit
