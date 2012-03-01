@@ -1534,12 +1534,21 @@ operator|!
 operator|!
 name|diff_auto_refresh_index
 expr_stmt|;
-comment|/* Scale to real terminal size */
+comment|/* Scale to real terminal size and respect statGraphWidth config */
 name|rev
 operator|.
 name|diffopt
 operator|.
 name|stat_width
+operator|=
+operator|-
+literal|1
+expr_stmt|;
+name|rev
+operator|.
+name|diffopt
+operator|.
+name|stat_graph_width
 operator|=
 operator|-
 literal|1
