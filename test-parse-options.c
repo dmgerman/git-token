@@ -264,7 +264,54 @@ name|options
 index|[]
 init|=
 block|{
-name|OPT_BOOLEAN
+name|OPT_BOOL
+argument_list|(
+literal|0
+argument_list|,
+literal|"yes"
+argument_list|,
+operator|&
+name|boolean
+argument_list|,
+literal|"get a boolean"
+argument_list|)
+block|,
+name|OPT_BOOL
+argument_list|(
+literal|'D'
+argument_list|,
+literal|"no-doubt"
+argument_list|,
+operator|&
+name|boolean
+argument_list|,
+literal|"begins with 'no-'"
+argument_list|)
+block|,
+block|{
+name|OPTION_SET_INT
+block|,
+literal|'B'
+block|,
+literal|"no-fear"
+block|,
+operator|&
+name|boolean
+block|,
+name|NULL
+block|,
+literal|"be brave"
+block|,
+name|PARSE_OPT_NOARG
+operator||
+name|PARSE_OPT_NONEG
+block|,
+name|NULL
+block|,
+literal|1
+block|}
+block|,
+name|OPT_COUNTUP
 argument_list|(
 literal|'b'
 argument_list|,
@@ -273,7 +320,7 @@ argument_list|,
 operator|&
 name|boolean
 argument_list|,
-literal|"get a boolean"
+literal|"increment by one"
 argument_list|)
 block|,
 name|OPT_BIT
@@ -510,7 +557,7 @@ name|number_callback
 argument_list|)
 block|,
 block|{
-name|OPTION_BOOLEAN
+name|OPTION_COUNTUP
 block|,
 literal|'+'
 block|,
@@ -531,7 +578,7 @@ name|PARSE_OPT_NODASH
 block|}
 block|,
 block|{
-name|OPTION_BOOLEAN
+name|OPTION_COUNTUP
 block|,
 literal|0
 block|,
@@ -550,7 +597,7 @@ name|PARSE_OPT_NONEG
 block|}
 block|,
 block|{
-name|OPTION_BOOLEAN
+name|OPTION_COUNTUP
 block|,
 literal|0
 block|,
