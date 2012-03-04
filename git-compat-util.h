@@ -3143,6 +3143,21 @@ block|}
 end_function
 
 begin_comment
+comment|/* in ctype.c, for kwset users */
+end_comment
+
+begin_decl_stmt
+specifier|extern
+specifier|const
+name|char
+name|tolower_trans_tbl
+index|[
+literal|256
+index|]
+decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|/* Sane ctype - no locale, and works with signed chars */
 end_comment
 
