@@ -23,6 +23,12 @@ directive|include
 file|"quote.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"sigchain.h"
+end_include
+
 begin_comment
 comment|/*  * convert.c - convert a file when checking it out and checking it in.  *  * This should use the pathname to decide on whether it wants to do some  * more interesting conversions (automatic gzip/unzip, general format  * conversions etc etc), but by default it just does automatic CRLF<->LF  * translation when the "text" attribute or "auto_crlf" option is set.  */
 end_comment
@@ -1570,6 +1576,13 @@ operator|->
 name|cmd
 argument_list|)
 return|;
+name|sigchain_push
+argument_list|(
+name|SIGPIPE
+argument_list|,
+name|SIG_IGN
+argument_list|)
+expr_stmt|;
 name|write_err
 operator|=
 operator|(
@@ -1615,6 +1628,11 @@ argument_list|,
 name|params
 operator|->
 name|cmd
+argument_list|)
+expr_stmt|;
+name|sigchain_pop
+argument_list|(
+name|SIGPIPE
 argument_list|)
 expr_stmt|;
 name|status
