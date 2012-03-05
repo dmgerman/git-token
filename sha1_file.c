@@ -13820,7 +13820,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * This creates one packfile per large blob unless bulk-checkin  * machinery is "plugged".  *  * This also bypasses the usual "convert-to-git" dance, and that is on  * purpose. We could write a streaming version of the converting  * functions and insert that before feeding the data to fast-import  * (or equivalent in-core API described above), but the primary  * motivation for trying to stream from the working tree file and to  * avoid mmaping it in core is to deal with large binary blobs, and  * by definition they do _not_ want to get any conversion.  */
+comment|/*  * This creates one packfile per large blob unless bulk-checkin  * machinery is "plugged".  *  * This also bypasses the usual "convert-to-git" dance, and that is on  * purpose. We could write a streaming version of the converting  * functions and insert that before feeding the data to fast-import  * (or equivalent in-core API described above). However, that is  * somewhat complicated, as we do not know the size of the filter  * result, which we need to know beforehand when writing a git object.  * Since the primary motivation for trying to stream from the working  * tree file and to avoid mmaping it in core is to deal with large  * binary blobs, they generally do not want to get any conversion, and  * callers should avoid this code path when filters are requested.  */
 end_comment
 
 begin_function
@@ -13951,6 +13951,21 @@ operator|||
 name|type
 operator|!=
 name|OBJ_BLOB
+operator|||
+operator|(
+name|path
+operator|&&
+name|would_convert_to_git
+argument_list|(
+name|path
+argument_list|,
+name|NULL
+argument_list|,
+literal|0
+argument_list|,
+literal|0
+argument_list|)
+operator|)
 condition|)
 name|ret
 operator|=
