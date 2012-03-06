@@ -1689,6 +1689,7 @@ if|if
 condition|(
 name|curl_http_proxy
 condition|)
+block|{
 name|curl_easy_setopt
 argument_list|(
 name|result
@@ -1698,6 +1699,16 @@ argument_list|,
 name|curl_http_proxy
 argument_list|)
 expr_stmt|;
+name|curl_easy_setopt
+argument_list|(
+name|result
+argument_list|,
+name|CURLOPT_PROXYAUTH
+argument_list|,
+name|CURLAUTH_ANY
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|result
 return|;
