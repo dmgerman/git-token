@@ -13278,14 +13278,6 @@ name|pe
 decl_stmt|;
 if|if
 condition|(
-operator|!
-name|DIFF_XDL_TST
-argument_list|(
-name|o
-argument_list|,
-name|WHITESPACE_FLAGS
-argument_list|)
-operator|||
 name|must_show_header
 condition|)
 block|{
