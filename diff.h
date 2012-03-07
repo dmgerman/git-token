@@ -539,6 +539,14 @@ value|(1<< 29)
 end_define
 
 begin_define
+DECL|macro|DIFF_OPT_PICKAXE_IGNORE_CASE
+define|#
+directive|define
+name|DIFF_OPT_PICKAXE_IGNORE_CASE
+value|(1<< 30)
+end_define
+
+begin_define
 DECL|macro|DIFF_OPT_TST
 define|#
 directive|define
