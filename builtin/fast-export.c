@@ -3612,28 +3612,17 @@ argument_list|,
 literal|"Use the done feature to terminate the stream"
 argument_list|)
 block|,
-block|{
-name|OPTION_NEGBIT
-block|,
+name|OPT_BOOL
+argument_list|(
 literal|0
-block|,
-literal|"data"
-block|,
+argument_list|,
+literal|"no-data"
+argument_list|,
 operator|&
 name|no_data
-block|,
-name|NULL
-block|,
+argument_list|,
 literal|"Skip output of blob data"
-block|,
-name|PARSE_OPT_NOARG
-operator||
-name|PARSE_OPT_NEGHELP
-block|,
-name|NULL
-block|,
-literal|1
-block|}
+argument_list|)
 block|,
 name|OPT_END
 argument_list|()

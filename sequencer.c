@@ -769,6 +769,11 @@ name|print_advice
 parameter_list|(
 name|int
 name|show_hint
+parameter_list|,
+name|struct
+name|replay_opts
+modifier|*
+name|opts
 parameter_list|)
 block|{
 name|char
@@ -809,6 +814,23 @@ if|if
 condition|(
 name|show_hint
 condition|)
+block|{
+if|if
+condition|(
+name|opts
+operator|->
+name|no_commit
+condition|)
+name|advise
+argument_list|(
+name|_
+argument_list|(
+literal|"after resolving the conflicts, mark the corrected paths\n"
+literal|"with 'git add<paths>' or 'git rm<paths>'"
+argument_list|)
+argument_list|)
+expr_stmt|;
+else|else
 name|advise
 argument_list|(
 name|_
@@ -819,6 +841,7 @@ literal|"and commit the result with 'git commit'"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 end_function
 
@@ -2382,6 +2405,8 @@ argument_list|(
 name|res
 operator|==
 literal|1
+argument_list|,
+name|opts
 argument_list|)
 expr_stmt|;
 name|rerere

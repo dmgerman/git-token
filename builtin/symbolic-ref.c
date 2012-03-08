@@ -41,6 +41,14 @@ block|}
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|shorten
+specifier|static
+name|int
+name|shorten
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|check_symref
 specifier|static
@@ -69,7 +77,7 @@ decl_stmt|;
 specifier|const
 name|char
 modifier|*
-name|refs_heads_master
+name|refname
 init|=
 name|resolve_ref_unsafe
 argument_list|(
@@ -86,7 +94,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|refs_heads_master
+name|refname
 condition|)
 name|die
 argument_list|(
@@ -125,9 +133,22 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|shorten
+condition|)
+name|refname
+operator|=
+name|shorten_unambiguous_ref
+argument_list|(
+name|refname
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
 name|puts
 argument_list|(
-name|refs_heads_master
+name|refname
 argument_list|)
 expr_stmt|;
 block|}
@@ -177,6 +198,18 @@ operator|&
 name|quiet
 argument_list|,
 literal|"suppress error message for non-symbolic (detached) refs"
+argument_list|)
+block|,
+name|OPT_BOOL
+argument_list|(
+literal|0
+argument_list|,
+literal|"short"
+argument_list|,
+operator|&
+name|shorten
+argument_list|,
+literal|"shorten ref output"
 argument_list|)
 block|,
 name|OPT_STRING

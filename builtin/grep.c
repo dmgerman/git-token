@@ -3736,24 +3736,19 @@ argument_list|,
 literal|"search in index instead of in the work tree"
 argument_list|)
 block|,
-block|{
-name|OPTION_BOOLEAN
-block|,
+name|OPT_NEGBIT
+argument_list|(
 literal|0
-block|,
-literal|"index"
-block|,
+argument_list|,
+literal|"no-index"
+argument_list|,
 operator|&
 name|use_index
-block|,
-name|NULL
-block|,
+argument_list|,
 literal|"finds in contents not managed by git"
-block|,
-name|PARSE_OPT_NOARG
-operator||
-name|PARSE_OPT_NEGHELP
-block|}
+argument_list|,
+literal|1
+argument_list|)
 block|,
 name|OPT_BOOLEAN
 argument_list|(

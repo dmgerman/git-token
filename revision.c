@@ -9231,6 +9231,16 @@ name|regflags
 operator||=
 name|REG_ICASE
 expr_stmt|;
+name|DIFF_OPT_SET
+argument_list|(
+operator|&
+name|revs
+operator|->
+name|diffopt
+argument_list|,
+name|PICKAXE_IGNORE_CASE
+argument_list|)
+expr_stmt|;
 block|}
 elseif|else
 if|if

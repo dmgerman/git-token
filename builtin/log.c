@@ -378,6 +378,26 @@ argument_list|)
 expr_stmt|;
 name|rev
 operator|->
+name|diffopt
+operator|.
+name|stat_width
+operator|=
+operator|-
+literal|1
+expr_stmt|;
+comment|/* use full terminal width */
+name|rev
+operator|->
+name|diffopt
+operator|.
+name|stat_graph_width
+operator|=
+operator|-
+literal|1
+expr_stmt|;
+comment|/* respect statGraphWidth config */
+name|rev
+operator|->
 name|abbrev_commit
 operator|=
 name|default_abbrev_commit
@@ -2304,6 +2324,16 @@ name|no_walk
 operator|=
 literal|1
 expr_stmt|;
+name|rev
+operator|.
+name|diffopt
+operator|.
+name|stat_width
+operator|=
+operator|-
+literal|1
+expr_stmt|;
+comment|/* Scale to real terminal size */
 name|memset
 argument_list|(
 operator|&
