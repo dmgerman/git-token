@@ -24,7 +24,7 @@ file|"connected.h"
 end_include
 
 begin_comment
-comment|/*  * If we feed all the commits we want to verify to this command  *  *  $ git rev-list --verify-objects --stdin --not --all  *  * and if it does not error out, that means everything reachable from  * these commits locally exists and is connected to some of our  * existing refs.  *  * Returns 0 if everything is connected, non-zero otherwise.  */
+comment|/*  * If we feed all the commits we want to verify to this command  *  *  $ git rev-list --objects --stdin --not --all  *  * and if it does not error out, that means everything reachable from  * these commits locally exists and is connected to our existing refs.  * Note that this does _not_ validate the individual objects.  *  * Returns 0 if everything is connected, non-zero otherwise.  */
 end_comment
 
 begin_function
@@ -56,7 +56,7 @@ init|=
 block|{
 literal|"rev-list"
 block|,
-literal|"--verify-objects"
+literal|"--objects"
 block|,
 literal|"--stdin"
 block|,
