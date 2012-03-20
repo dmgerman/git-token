@@ -138,8 +138,22 @@ parameter_list|,
 modifier|...
 parameter_list|)
 block|{
+name|struct
+name|strbuf
+name|buf
+init|=
+name|STRBUF_INIT
+decl_stmt|;
 name|va_list
 name|params
+decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|cp
+decl_stmt|,
+modifier|*
+name|np
 decl_stmt|;
 name|va_start
 argument_list|(
@@ -148,9 +162,10 @@ argument_list|,
 name|advice
 argument_list|)
 expr_stmt|;
-name|vreportf
+name|strbuf_addf
 argument_list|(
-literal|"hint: "
+operator|&
+name|buf
 argument_list|,
 name|advice
 argument_list|,
@@ -160,6 +175,67 @@ expr_stmt|;
 name|va_end
 argument_list|(
 name|params
+argument_list|)
+expr_stmt|;
+for|for
+control|(
+name|cp
+operator|=
+name|buf
+operator|.
+name|buf
+init|;
+operator|*
+name|cp
+condition|;
+name|cp
+operator|=
+name|np
+control|)
+block|{
+name|np
+operator|=
+name|strchrnul
+argument_list|(
+name|cp
+argument_list|,
+literal|'\n'
+argument_list|)
+expr_stmt|;
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+name|_
+argument_list|(
+literal|"hint: %.*s\n"
+argument_list|)
+argument_list|,
+call|(
+name|int
+call|)
+argument_list|(
+name|np
+operator|-
+name|cp
+argument_list|)
+argument_list|,
+name|cp
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|*
+name|np
+condition|)
+name|np
+operator|++
+expr_stmt|;
+block|}
+name|strbuf_release
+argument_list|(
+operator|&
+name|buf
 argument_list|)
 expr_stmt|;
 block|}
@@ -275,29 +351,18 @@ if|if
 condition|(
 name|advice_resolve_conflict
 condition|)
-block|{
 comment|/* 		 * Message used both when 'git commit' fails and when 		 * other commands doing a merge do. 		 */
 name|advise
 argument_list|(
-literal|"Fix them up in the work tree,"
-argument_list|)
-expr_stmt|;
-name|advise
+name|_
 argument_list|(
-literal|"and then use 'git add/rm<file>' as"
-argument_list|)
-expr_stmt|;
-name|advise
-argument_list|(
-literal|"appropriate to mark resolution and make a commit,"
-argument_list|)
-expr_stmt|;
-name|advise
-argument_list|(
+literal|"Fix them up in the work tree,\n"
+literal|"and then use 'git add/rm<file>' as\n"
+literal|"appropriate to mark resolution and make a commit,\n"
 literal|"or use 'git commit -a'."
 argument_list|)
+argument_list|)
 expr_stmt|;
-block|}
 return|return
 operator|-
 literal|1
