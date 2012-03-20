@@ -141,6 +141,14 @@ name|refspec_alloc
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|default_matching_used
+specifier|static
+name|int
+name|default_matching_used
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|add_refspec
 specifier|static
@@ -552,6 +560,14 @@ condition|)
 block|{
 default|default:
 case|case
+name|PUSH_DEFAULT_UNSPECIFIED
+case|:
+name|default_matching_used
+operator|=
+literal|1
+expr_stmt|;
+comment|/* fallthru */
+case|case
 name|PUSH_DEFAULT_MATCHING
 case|:
 name|add_refspec
@@ -592,6 +608,147 @@ argument_list|)
 expr_stmt|;
 break|break;
 block|}
+block|}
+end_function
+
+begin_decl_stmt
+DECL|variable|message_advice_pull_before_push
+specifier|static
+specifier|const
+name|char
+name|message_advice_pull_before_push
+index|[]
+init|=
+name|N_
+argument_list|(
+literal|"Updates were rejected because the tip of your current branch is behind\n"
+literal|"its remote counterpart. Merge the remote changes (e.g. 'git pull')\n"
+literal|"before pushing again.\n"
+literal|"See the 'Note about fast-forwards' in 'git push --help' for details."
+argument_list|)
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|message_advice_use_upstream
+specifier|static
+specifier|const
+name|char
+name|message_advice_use_upstream
+index|[]
+init|=
+name|N_
+argument_list|(
+literal|"Updates were rejected because a pushed branch tip is behind its remote\n"
+literal|"counterpart. If you did not intend to push that branch, you may want to\n"
+literal|"specify branches to push or set the 'push.default' configuration\n"
+literal|"variable to 'current' or 'upstream' to push only the current branch."
+argument_list|)
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|message_advice_checkout_pull_push
+specifier|static
+specifier|const
+name|char
+name|message_advice_checkout_pull_push
+index|[]
+init|=
+name|N_
+argument_list|(
+literal|"Updates were rejected because a pushed branch tip is behind its remote\n"
+literal|"counterpart. Check out this branch and merge the remote changes\n"
+literal|"(e.g. 'git pull') before pushing again.\n"
+literal|"See the 'Note about fast-forwards' in 'git push --help' for details."
+argument_list|)
+decl_stmt|;
+end_decl_stmt
+
+begin_function
+DECL|function|advise_pull_before_push
+specifier|static
+name|void
+name|advise_pull_before_push
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+if|if
+condition|(
+operator|!
+name|advice_push_non_ff_current
+operator|||
+operator|!
+name|advice_push_nonfastforward
+condition|)
+return|return;
+name|advise
+argument_list|(
+name|_
+argument_list|(
+name|message_advice_pull_before_push
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|function|advise_use_upstream
+specifier|static
+name|void
+name|advise_use_upstream
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+if|if
+condition|(
+operator|!
+name|advice_push_non_ff_default
+operator|||
+operator|!
+name|advice_push_nonfastforward
+condition|)
+return|return;
+name|advise
+argument_list|(
+name|_
+argument_list|(
+name|message_advice_use_upstream
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|function|advise_checkout_pull_push
+specifier|static
+name|void
+name|advise_checkout_pull_push
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+if|if
+condition|(
+operator|!
+name|advice_push_non_ff_matching
+operator|||
+operator|!
+name|advice_push_nonfastforward
+condition|)
+return|return;
+name|advise
+argument_list|(
+name|_
+argument_list|(
+name|message_advice_checkout_pull_push
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
@@ -720,25 +877,35 @@ condition|)
 return|return
 literal|0
 return|;
-if|if
+switch|switch
 condition|(
 name|nonfastforward
-operator|&&
-name|advice_push_nonfastforward
 condition|)
 block|{
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-name|_
-argument_list|(
-literal|"To prevent you from losing history, non-fast-forward updates were rejected\n"
-literal|"Merge the remote changes (e.g. 'git pull') before pushing again.  See the\n"
-literal|"'Note about fast-forwards' section of 'git push --help' for details.\n"
-argument_list|)
-argument_list|)
+default|default:
+break|break;
+case|case
+name|NON_FF_HEAD
+case|:
+name|advise_pull_before_push
+argument_list|()
 expr_stmt|;
+break|break;
+case|case
+name|NON_FF_OTHER
+case|:
+if|if
+condition|(
+name|default_matching_used
+condition|)
+name|advise_use_upstream
+argument_list|()
+expr_stmt|;
+else|else
+name|advise_checkout_pull_push
+argument_list|()
+expr_stmt|;
+break|break;
 block|}
 return|return
 literal|1
