@@ -997,6 +997,13 @@ expr_stmt|;
 name|free
 argument_list|(
 name|patch
+operator|->
+name|result
+argument_list|)
+expr_stmt|;
+name|free
+argument_list|(
+name|patch
 argument_list|)
 expr_stmt|;
 block|}
