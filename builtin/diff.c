@@ -1767,12 +1767,6 @@ name|tree
 operator|=
 name|lookup_tree
 argument_list|(
-operator|(
-specifier|const
-name|unsigned
-name|char
-operator|*
-operator|)
 name|EMPTY_TREE_SHA1_BIN
 argument_list|)
 expr_stmt|;
