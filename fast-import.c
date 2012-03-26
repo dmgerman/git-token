@@ -9196,6 +9196,16 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
+name|n
+condition|)
+name|die
+argument_list|(
+literal|"Empty path component found in input"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
 name|root
 operator|->
 name|tree
@@ -17274,6 +17284,19 @@ operator|.
 name|sha1
 argument_list|,
 name|p
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|leaf
+operator|.
+name|tree
+condition|)
+name|release_tree_content_recursive
+argument_list|(
+name|leaf
+operator|.
+name|tree
 argument_list|)
 expr_stmt|;
 if|if
