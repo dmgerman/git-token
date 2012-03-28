@@ -2397,11 +2397,6 @@ name|given_config_file
 argument_list|)
 argument_list|)
 expr_stmt|;
-else|else
-name|given_config_file
-operator|=
-name|given_config_file
-expr_stmt|;
 block|}
 if|if
 condition|(
