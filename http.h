@@ -756,7 +756,7 @@ value|5
 end_define
 
 begin_comment
-comment|/*  * Requests an url and stores the result in a strbuf.  *  * If the result pointer is NULL, a HTTP HEAD request is made instead of GET.  */
+comment|/*  * Requests a URL and stores the result in a strbuf.  *  * If the result pointer is NULL, a HTTP HEAD request is made instead of GET.  */
 end_comment
 
 begin_function_decl

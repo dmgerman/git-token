@@ -6649,7 +6649,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Strip username (and password) from an url and return  * it in a newly allocated string.  */
+comment|/*  * Strip username (and password) from a URL and return  * it in a newly allocated string.  */
 end_comment
 
 begin_function

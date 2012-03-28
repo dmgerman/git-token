@@ -4269,7 +4269,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Downloads an url and stores the result in the given file.  *  * If a previous interrupted download is detected (i.e. a previous temporary  * file is still around) the download is resumed.  */
+comment|/*  * Downloads a URL and stores the result in the given file.  *  * If a previous interrupted download is detected (i.e. a previous temporary  * file is still around) the download is resumed.  */
 end_comment
 
 begin_function
