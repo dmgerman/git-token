@@ -302,7 +302,7 @@ end_function_decl
 
 begin_function_decl
 name|int
-name|check_submodule_needs_pushing
+name|find_unpushed_submodules
 parameter_list|(
 name|unsigned
 name|char
@@ -315,6 +315,11 @@ specifier|const
 name|char
 modifier|*
 name|remotes_name
+parameter_list|,
+name|struct
+name|string_list
+modifier|*
+name|needs_pushing
 parameter_list|)
 function_decl|;
 end_function_decl
