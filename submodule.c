@@ -2572,6 +2572,9 @@ operator|&
 name|needs_pushing
 argument_list|)
 expr_stmt|;
+name|reset_revision_walk
+argument_list|()
+expr_stmt|;
 name|free
 argument_list|(
 name|sha1_copy
@@ -4444,6 +4447,9 @@ name|merges
 argument_list|)
 expr_stmt|;
 block|}
+name|reset_revision_walk
+argument_list|()
+expr_stmt|;
 comment|/* Now we've got all merges that contain a and b. Prune all 	 * merges that contain another found merge and save them in 	 * result. 	 */
 for|for
 control|(

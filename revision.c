@@ -11840,6 +11840,26 @@ block|}
 end_function
 
 begin_function
+DECL|function|reset_revision_walk
+name|void
+name|reset_revision_walk
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+name|clear_object_flags
+argument_list|(
+name|SEEN
+operator||
+name|ADDED
+operator||
+name|SHOWN
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
 DECL|function|prepare_revision_walk
 name|int
 name|prepare_revision_walk
