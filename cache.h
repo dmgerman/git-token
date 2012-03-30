@@ -9275,6 +9275,24 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|int
+name|sane_execvp
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|file
+parameter_list|,
+name|char
+modifier|*
+specifier|const
+name|argv
+index|[]
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
