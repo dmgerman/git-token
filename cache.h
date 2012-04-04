@@ -472,6 +472,22 @@ block|}
 struct|;
 end_struct
 
+begin_define
+DECL|macro|INDEX_FORMAT_LB
+define|#
+directive|define
+name|INDEX_FORMAT_LB
+value|2
+end_define
+
+begin_define
+DECL|macro|INDEX_FORMAT_UB
+define|#
+directive|define
+name|INDEX_FORMAT_UB
+value|4
+end_define
+
 begin_comment
 comment|/*  * The "cache_time" is just the low 32 bits of the  * time. It doesn't matter if it overflows - we only  * check it for equality in the 32 bits we save.  */
 end_comment
@@ -1279,6 +1295,11 @@ name|cache_entry
 modifier|*
 modifier|*
 name|cache
+decl_stmt|;
+DECL|member|version
+name|unsigned
+name|int
+name|version
 decl_stmt|;
 DECL|member|cache_nr
 DECL|member|cache_alloc
