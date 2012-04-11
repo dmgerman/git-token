@@ -12116,6 +12116,20 @@ argument_list|,
 name|XDF_IGNORE_WHITESPACE
 argument_list|)
 block|,
+name|OPT_BIT
+argument_list|(
+literal|0
+argument_list|,
+literal|"minimal"
+argument_list|,
+operator|&
+name|xdl_opts
+argument_list|,
+literal|"Spend extra cycles to find better match"
+argument_list|,
+name|XDF_NEED_MINIMAL
+argument_list|)
+block|,
 name|OPT_STRING
 argument_list|(
 literal|'S'
