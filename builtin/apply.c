@@ -5741,6 +5741,7 @@ name|char
 modifier|*
 name|git_header_name
 parameter_list|(
+specifier|const
 name|char
 modifier|*
 name|line
@@ -6374,6 +6375,7 @@ specifier|static
 name|int
 name|parse_git_header
 parameter_list|(
+specifier|const
 name|char
 modifier|*
 name|line
@@ -7000,6 +7002,7 @@ specifier|static
 name|void
 name|recount_diff
 parameter_list|(
+specifier|const
 name|char
 modifier|*
 name|line
@@ -7198,6 +7201,7 @@ specifier|static
 name|int
 name|parse_fragment_header
 parameter_list|(
+specifier|const
 name|char
 modifier|*
 name|line
@@ -7291,6 +7295,7 @@ specifier|static
 name|int
 name|find_header
 parameter_list|(
+specifier|const
 name|char
 modifier|*
 name|line
@@ -7828,6 +7833,7 @@ specifier|static
 name|int
 name|parse_fragment
 parameter_list|(
+specifier|const
 name|char
 modifier|*
 name|line
@@ -8256,6 +8262,7 @@ specifier|static
 name|int
 name|parse_single_patch
 parameter_list|(
+specifier|const
 name|char
 modifier|*
 name|line
