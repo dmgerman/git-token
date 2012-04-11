@@ -118,6 +118,10 @@ DECL|member|allow_rerere_auto
 name|int
 name|allow_rerere_auto
 decl_stmt|;
+DECL|member|allow_empty
+name|int
+name|allow_empty
+decl_stmt|;
 DECL|member|mainline
 name|int
 name|mainline

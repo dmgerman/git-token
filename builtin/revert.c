@@ -649,6 +649,9 @@ argument_list|()
 block|,
 name|OPT_END
 argument_list|()
+block|,
+name|OPT_END
+argument_list|()
 block|, 	}
 decl_stmt|;
 if|if
@@ -692,6 +695,20 @@ operator|->
 name|allow_ff
 argument_list|,
 literal|"allow fast-forward"
+argument_list|)
+block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|0
+argument_list|,
+literal|"allow-empty"
+argument_list|,
+operator|&
+name|opts
+operator|->
+name|allow_empty
+argument_list|,
+literal|"preserve empty commits"
 argument_list|)
 block|,
 name|OPT_END

@@ -1461,13 +1461,13 @@ modifier|*
 name|opts
 parameter_list|)
 block|{
-comment|/* 6 is max possible length of our args array including NULL */
+comment|/* 7 is max possible length of our args array including NULL */
 specifier|const
 name|char
 modifier|*
 name|args
 index|[
-literal|6
+literal|7
 index|]
 decl_stmt|;
 name|int
@@ -1530,6 +1530,20 @@ operator|=
 name|defmsg
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|opts
+operator|->
+name|allow_empty
+condition|)
+name|args
+index|[
+name|i
+operator|++
+index|]
+operator|=
+literal|"--allow-empty"
+expr_stmt|;
 name|args
 index|[
 name|i
