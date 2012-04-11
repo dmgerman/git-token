@@ -1895,14 +1895,6 @@ block|}
 end_function
 
 begin_define
-DECL|macro|CHUNKSIZE
-define|#
-directive|define
-name|CHUNKSIZE
-value|(8192)
-end_define
-
-begin_define
 DECL|macro|SLOP
 define|#
 directive|define
