@@ -312,6 +312,9 @@ if|if
 condition|(
 operator|!
 name|pager
+operator|||
+name|pager_in_use
+argument_list|()
 condition|)
 return|return;
 comment|/* 	 * force computing the width of the terminal before we redirect 	 * the standard output to the pager. 	 */
