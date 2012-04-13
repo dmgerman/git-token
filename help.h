@@ -198,6 +198,10 @@ name|char
 modifier|*
 name|title
 parameter_list|,
+name|unsigned
+name|int
+name|colopts
+parameter_list|,
 name|struct
 name|cmdnames
 modifier|*

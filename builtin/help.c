@@ -42,6 +42,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"column.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"help.h"
 end_include
 
@@ -130,6 +136,15 @@ name|int
 name|show_all
 init|=
 literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|colopts
+specifier|static
+name|unsigned
+name|int
+name|colopts
 decl_stmt|;
 end_decl_stmt
 
@@ -1394,6 +1409,29 @@ block|{
 if|if
 condition|(
 operator|!
+name|prefixcmp
+argument_list|(
+name|var
+argument_list|,
+literal|"column."
+argument_list|)
+condition|)
+return|return
+name|git_column_config
+argument_list|(
+name|var
+argument_list|,
+name|value
+argument_list|,
+literal|"help"
+argument_list|,
+operator|&
+name|colopts
+argument_list|)
+return|;
+if|if
+condition|(
+operator|!
 name|strcmp
 argument_list|(
 name|var
@@ -2365,6 +2403,13 @@ condition|(
 name|show_all
 condition|)
 block|{
+name|git_config
+argument_list|(
+name|git_help_config
+argument_list|,
+name|NULL
+argument_list|)
+expr_stmt|;
 name|printf
 argument_list|(
 literal|"usage: %s\n\n"
@@ -2375,6 +2420,8 @@ expr_stmt|;
 name|list_commands
 argument_list|(
 literal|"git commands"
+argument_list|,
+name|colopts
 argument_list|,
 operator|&
 name|main_cmds
