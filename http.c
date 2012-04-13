@@ -1263,6 +1263,7 @@ operator|.
 name|username
 condition|)
 block|{
+specifier|static
 name|struct
 name|strbuf
 name|up
@@ -1273,6 +1274,12 @@ name|credential_fill
 argument_list|(
 operator|&
 name|http_auth
+argument_list|)
+expr_stmt|;
+name|strbuf_reset
+argument_list|(
+operator|&
+name|up
 argument_list|)
 expr_stmt|;
 name|strbuf_addf
@@ -1297,13 +1304,9 @@ name|result
 argument_list|,
 name|CURLOPT_USERPWD
 argument_list|,
-name|strbuf_detach
-argument_list|(
-operator|&
 name|up
-argument_list|,
-name|NULL
-argument_list|)
+operator|.
+name|buf
 argument_list|)
 expr_stmt|;
 block|}
