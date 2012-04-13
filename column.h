@@ -47,6 +47,19 @@ comment|/* --column is given from cmdline */
 end_comment
 
 begin_define
+DECL|macro|COL_DENSE
+define|#
+directive|define
+name|COL_DENSE
+value|0x0080
+end_define
+
+begin_comment
+DECL|macro|COL_DENSE
+comment|/* Shrink columns when possible, 				      making space for more columns */
+end_comment
+
+begin_define
 DECL|macro|COL_DISABLED
 define|#
 directive|define
