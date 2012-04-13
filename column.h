@@ -87,6 +87,32 @@ value|((c)& COL_LAYOUT_MASK)
 end_define
 
 begin_define
+DECL|macro|COL_COLUMN
+define|#
+directive|define
+name|COL_COLUMN
+value|0
+end_define
+
+begin_comment
+DECL|macro|COL_COLUMN
+comment|/* Fill columns before rows */
+end_comment
+
+begin_define
+DECL|macro|COL_ROW
+define|#
+directive|define
+name|COL_ROW
+value|1
+end_define
+
+begin_comment
+DECL|macro|COL_ROW
+comment|/* Fill rows before columns */
+end_comment
+
+begin_define
 DECL|macro|COL_PLAIN
 define|#
 directive|define
