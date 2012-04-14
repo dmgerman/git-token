@@ -4706,6 +4706,25 @@ index|]
 operator|->
 name|dst
 condition|)
+block|{
+if|if
+condition|(
+operator|!
+name|ref_exists
+argument_list|(
+name|upstream
+operator|->
+name|refname
+argument_list|)
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"No such branch: '%s'"
+argument_list|,
+name|cp
+argument_list|)
+return|;
 return|return
 name|error
 argument_list|(
@@ -4716,6 +4735,7 @@ operator|->
 name|name
 argument_list|)
 return|;
+block|}
 name|free
 argument_list|(
 name|cp
