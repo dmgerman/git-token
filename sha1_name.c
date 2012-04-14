@@ -4725,14 +4725,36 @@ argument_list|,
 name|cp
 argument_list|)
 return|;
+if|if
+condition|(
+operator|!
+name|upstream
+operator|->
+name|merge
+condition|)
 return|return
 name|error
 argument_list|(
-literal|"No upstream branch found for '%s'"
+literal|"No upstream configured for branch '%s'"
 argument_list|,
 name|upstream
 operator|->
 name|name
+argument_list|)
+return|;
+return|return
+name|error
+argument_list|(
+literal|"Upstream branch '%s' not stored as a remote-tracking branch"
+argument_list|,
+name|upstream
+operator|->
+name|merge
+index|[
+literal|0
+index|]
+operator|->
+name|src
 argument_list|)
 return|;
 block|}
