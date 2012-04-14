@@ -4677,11 +4677,20 @@ else|:
 name|NULL
 argument_list|)
 expr_stmt|;
+comment|/* 	 * Upstream can be NULL only if cp refers to HEAD and HEAD 	 * points to something different than a branch. 	 */
 if|if
 condition|(
 operator|!
 name|upstream
-operator|||
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"HEAD does not point to a branch"
+argument_list|)
+return|;
+if|if
+condition|(
 operator|!
 name|upstream
 operator|->
@@ -4702,7 +4711,9 @@ name|error
 argument_list|(
 literal|"No upstream branch found for '%s'"
 argument_list|,
-name|cp
+name|upstream
+operator|->
+name|name
 argument_list|)
 return|;
 name|free
