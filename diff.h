@@ -624,6 +624,19 @@ parameter_list|)
 value|((opts)->xdl_opts&= ~XDF_##flag)
 end_define
 
+begin_define
+DECL|macro|DIFF_WITH_ALG
+define|#
+directive|define
+name|DIFF_WITH_ALG
+parameter_list|(
+name|opts
+parameter_list|,
+name|flag
+parameter_list|)
+value|(((opts)->xdl_opts& ~XDF_DIFF_ALGORITHM_MASK) | XDF_##flag)
+end_define
+
 begin_enum
 DECL|enum|diff_words_type
 enum|enum
