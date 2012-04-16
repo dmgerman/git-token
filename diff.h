@@ -370,9 +370,13 @@ name|DIFF_OPT_FOLLOW_RENAMES
 value|(1<<  7)
 end_define
 
-begin_comment
-comment|/* (1<<  8) unused */
-end_comment
+begin_define
+DECL|macro|DIFF_OPT_RENAME_EMPTY
+define|#
+directive|define
+name|DIFF_OPT_RENAME_EMPTY
+value|(1<<  8)
+end_define
 
 begin_comment
 comment|/* (1<<  9) unused */

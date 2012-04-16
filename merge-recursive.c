@@ -2611,6 +2611,14 @@ argument_list|,
 name|RECURSIVE
 argument_list|)
 expr_stmt|;
+name|DIFF_OPT_CLR
+argument_list|(
+operator|&
+name|opts
+argument_list|,
+name|RENAME_EMPTY
+argument_list|)
+expr_stmt|;
 name|opts
 operator|.
 name|detect_rename
@@ -10901,12 +10909,6 @@ name|tree
 operator|=
 name|lookup_tree
 argument_list|(
-operator|(
-specifier|const
-name|unsigned
-name|char
-operator|*
-operator|)
 name|EMPTY_TREE_SHA1_BIN
 argument_list|)
 expr_stmt|;
