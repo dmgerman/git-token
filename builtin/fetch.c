@@ -1381,6 +1381,12 @@ name|char
 modifier|*
 name|remote
 parameter_list|,
+specifier|const
+name|struct
+name|ref
+modifier|*
+name|remote_ref
+parameter_list|,
 name|struct
 name|strbuf
 modifier|*
@@ -2760,6 +2766,8 @@ argument_list|(
 name|ref
 argument_list|,
 name|what
+argument_list|,
+name|rm
 argument_list|,
 operator|&
 name|note
