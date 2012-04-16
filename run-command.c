@@ -29,6 +29,25 @@ directive|include
 file|"argv-array.h"
 end_include
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|SHELL_PATH
+end_ifndef
+
+begin_define
+DECL|macro|SHELL_PATH
+define|#
+directive|define
+name|SHELL_PATH
+value|"/bin/sh"
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_struct
 DECL|struct|child_to_clean
 struct|struct
@@ -470,7 +489,7 @@ name|nargc
 operator|++
 index|]
 operator|=
-literal|"sh"
+name|SHELL_PATH
 expr_stmt|;
 name|nargv
 index|[
