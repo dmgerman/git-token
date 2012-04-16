@@ -731,6 +731,14 @@ name|REMOVE_DIR_KEEP_NESTED_GIT
 value|02
 end_define
 
+begin_define
+DECL|macro|REMOVE_DIR_KEEP_TOPLEVEL
+define|#
+directive|define
+name|REMOVE_DIR_KEEP_TOPLEVEL
+value|04
+end_define
+
 begin_function_decl
 specifier|extern
 name|int
