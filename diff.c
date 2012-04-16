@@ -8518,6 +8518,10 @@ name|width
 operator|=
 name|term_columns
 argument_list|()
+operator|-
+name|options
+operator|->
+name|output_prefix_length
 expr_stmt|;
 else|else
 name|width
