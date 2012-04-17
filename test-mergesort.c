@@ -254,7 +254,7 @@ expr_stmt|;
 block|}
 name|lines
 operator|=
-name|mergesort
+name|llist_mergesort
 argument_list|(
 name|lines
 argument_list|,
