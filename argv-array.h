@@ -17,8 +17,8 @@ specifier|extern
 specifier|const
 name|char
 modifier|*
-modifier|*
 name|empty_argv
+index|[]
 decl_stmt|;
 end_decl_stmt
 

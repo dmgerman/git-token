@@ -18,27 +18,16 @@ file|"strbuf.h"
 end_include
 
 begin_decl_stmt
-DECL|variable|empty_argv_storage
-specifier|static
-specifier|const
-name|char
-modifier|*
-name|empty_argv_storage
-init|=
-name|NULL
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|variable|empty_argv
 specifier|const
 name|char
 modifier|*
-modifier|*
 name|empty_argv
+index|[]
 init|=
-operator|&
-name|empty_argv_storage
+block|{
+name|NULL
+block|}
 decl_stmt|;
 end_decl_stmt
 
