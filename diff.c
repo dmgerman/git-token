@@ -8641,6 +8641,7 @@ name|number_width
 operator|-
 literal|6
 condition|)
+block|{
 name|graph_width
 operator|=
 name|width
@@ -8653,6 +8654,17 @@ name|number_width
 operator|-
 literal|6
 expr_stmt|;
+if|if
+condition|(
+name|graph_width
+operator|<
+literal|6
+condition|)
+name|graph_width
+operator|=
+literal|6
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|options
