@@ -501,6 +501,22 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_define
+DECL|macro|NON_FF_HEAD
+define|#
+directive|define
+name|NON_FF_HEAD
+value|1
+end_define
+
+begin_define
+DECL|macro|NON_FF_OTHER
+define|#
+directive|define
+name|NON_FF_OTHER
+value|2
+end_define
+
 begin_function_decl
 name|int
 name|transport_push
