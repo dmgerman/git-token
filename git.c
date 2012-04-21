@@ -2017,6 +2017,14 @@ name|cmd_clone
 block|}
 block|,
 block|{
+literal|"column"
+block|,
+name|cmd_column
+block|,
+name|RUN_SETUP_GENTLY
+block|}
+block|,
+block|{
 literal|"commit"
 block|,
 name|cmd_commit
