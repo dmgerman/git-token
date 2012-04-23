@@ -519,7 +519,10 @@ return|return;
 block|}
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"unrecognized whitespace option '%s'"
+argument_list|)
 argument_list|,
 name|option
 argument_list|)
@@ -602,7 +605,10 @@ return|return;
 block|}
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"unrecognized whitespace ignore option '%s'"
+argument_list|)
 argument_list|,
 name|option
 argument_list|)
@@ -3930,7 +3936,10 @@ condition|)
 block|{
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"Cannot prepare timestamp regexp %s"
+argument_list|)
 argument_list|,
 name|stamp_regexp
 argument_list|)
@@ -3971,7 +3980,10 @@ name|REG_NOMATCH
 condition|)
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"regexec returned %d for input: %s"
+argument_list|)
 argument_list|,
 name|status
 argument_list|,
@@ -4432,7 +4444,10 @@ name|name
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"unable to find filename in patch at line %d"
+argument_list|)
 argument_list|,
 name|linenr
 argument_list|)
@@ -4547,7 +4562,10 @@ name|isnull
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"git apply: bad git-diff - expected /dev/null, got %s on line %d"
+argument_list|)
 argument_list|,
 name|name
 argument_list|,
@@ -4585,7 +4603,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"git apply: bad git-diff - inconsistent %s filename on line %d"
+argument_list|)
 argument_list|,
 name|oldnew
 argument_list|,
@@ -4624,7 +4645,10 @@ literal|'\n'
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"git apply: bad git-diff - expected /dev/null on line %d"
+argument_list|)
 argument_list|,
 name|linenr
 argument_list|)
@@ -6881,7 +6905,10 @@ condition|)
 block|{
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"recount: unexpected line: %.*s"
+argument_list|)
 argument_list|,
 operator|(
 name|int
@@ -7177,7 +7204,10 @@ condition|)
 continue|continue;
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"patch fragment without header at line %d: %.*s"
+argument_list|)
 argument_list|,
 name|linenr
 argument_list|,
@@ -7258,8 +7288,16 @@ name|def_name
 condition|)
 name|die
 argument_list|(
+name|Q_
+argument_list|(
+literal|"git diff header lacks filename information when removing "
+literal|"%d leading pathname component (line %d)"
+argument_list|,
 literal|"git diff header lacks filename information when removing "
 literal|"%d leading pathname components (line %d)"
+argument_list|,
+name|p_value
+argument_list|)
 argument_list|,
 name|p_value
 argument_list|,
@@ -7942,7 +7980,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"new file depends on old contents"
+argument_list|)
 argument_list|)
 return|;
 if|if
@@ -7958,7 +7999,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"deleted file still has contents"
+argument_list|)
 argument_list|)
 return|;
 return|return
@@ -8083,7 +8127,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"corrupt patch at line %d"
+argument_list|)
 argument_list|,
 name|linenr
 argument_list|)
@@ -8220,7 +8267,10 @@ name|oldlines
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"new file %s depends on old contents"
+argument_list|)
 argument_list|,
 name|patch
 operator|->
@@ -8239,7 +8289,10 @@ name|newlines
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"deleted file %s still has contents"
+argument_list|)
 argument_list|,
 name|patch
 operator|->
@@ -8258,12 +8311,15 @@ name|newlines
 operator|&&
 name|context
 condition|)
-name|fprintf
+name|fprintf_ln
 argument_list|(
 name|stderr
 argument_list|,
-literal|"** warning: file %s becomes empty but "
-literal|"is not deleted\n"
+name|_
+argument_list|(
+literal|"** warning: "
+literal|"file %s becomes empty but is not deleted"
+argument_list|)
 argument_list|,
 name|patch
 operator|->
@@ -8891,7 +8947,10 @@ literal|1
 expr_stmt|;
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"corrupt binary patch at line %d: %.*s"
+argument_list|)
 argument_list|,
 name|linenr
 operator|-
@@ -8978,7 +9037,10 @@ comment|/* there has to be one hunk (forward hunk) */
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"unrecognized binary patch at line %d"
+argument_list|)
 argument_list|,
 name|linenr
 operator|-
@@ -9386,7 +9448,10 @@ operator|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"patch with only garbage at line %d"
+argument_list|)
 argument_list|,
 name|linenr
 argument_list|)
@@ -9908,7 +9973,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"unable to read symlink %s"
+argument_list|)
 argument_list|,
 name|path
 argument_list|)
@@ -9939,7 +10007,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"unable to open or read %s"
+argument_list|)
 argument_list|,
 name|path
 argument_list|)
@@ -10246,7 +10317,10 @@ name|ctx
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"oops"
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* and copy it in, while fixing the line length */
@@ -12499,7 +12573,10 @@ name|apply_verbosely
 condition|)
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"invalid start of line: '%c'"
+argument_list|)
 argument_list|,
 name|first
 argument_list|)
@@ -12922,11 +12999,18 @@ literal|0
 operator|-
 name|offset
 expr_stmt|;
-name|fprintf
+name|fprintf_ln
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Hunk #%d succeeded at %d (offset %d lines).\n"
+name|Q_
+argument_list|(
+literal|"Hunk #%d succeeded at %d (offset %d line)."
+argument_list|,
+literal|"Hunk #%d succeeded at %d (offset %d lines)."
+argument_list|,
+name|offset
+argument_list|)
 argument_list|,
 name|nth_fragment
 argument_list|,
@@ -12957,12 +13041,15 @@ operator|->
 name|trailing
 operator|)
 condition|)
-name|fprintf
+name|fprintf_ln
 argument_list|(
 name|stderr
 argument_list|,
+name|_
+argument_list|(
 literal|"Context reduced to (%ld/%ld)"
-literal|" to apply fragment at %d\n"
+literal|" to apply fragment at %d"
+argument_list|)
 argument_list|,
 name|leading
 argument_list|,
@@ -12995,7 +13082,10 @@ name|apply_verbosely
 condition|)
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"while searching for:\n%.*s"
+argument_list|)
 argument_list|,
 call|(
 name|int
@@ -13087,7 +13177,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"missing binary patch data for '%s'"
+argument_list|)
 argument_list|,
 name|patch
 operator|->
@@ -13543,7 +13636,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"binary patch does not apply to '%s'"
+argument_list|)
 argument_list|,
 name|name
 argument_list|)
@@ -13581,7 +13677,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"binary patch to '%s' creates incorrect result (expecting %s, got %s)"
+argument_list|)
 argument_list|,
 name|name
 argument_list|,
@@ -13704,7 +13803,10 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"patch failed: %s:%ld"
+argument_list|)
 argument_list|,
 name|name
 argument_list|,
@@ -14221,7 +14323,10 @@ block|{
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"patch %s has been renamed/deleted"
+argument_list|)
 argument_list|,
 name|patch
 operator|->
@@ -14264,7 +14369,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"read of %s failed"
+argument_list|)
 argument_list|,
 name|patch
 operator|->
@@ -14334,7 +14442,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"read of %s failed"
+argument_list|)
 argument_list|,
 name|patch
 operator|->
@@ -14429,7 +14540,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"removal patch leaves file contents"
+argument_list|)
 argument_list|)
 return|;
 return|return
@@ -14502,7 +14616,10 @@ return|;
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"%s: already exists in working directory"
+argument_list|)
 argument_list|,
 name|new_name
 argument_list|)
@@ -14710,7 +14827,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"%s: has been deleted/renamed"
+argument_list|)
 argument_list|,
 name|old_name
 argument_list|)
@@ -14749,7 +14869,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"%s: %s"
+argument_list|)
 argument_list|,
 name|old_name
 argument_list|,
@@ -14813,7 +14936,10 @@ goto|;
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"%s: does not exist in index"
+argument_list|)
 argument_list|,
 name|old_name
 argument_list|)
@@ -14905,7 +15031,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"%s: does not match index"
+argument_list|)
 argument_list|,
 name|old_name
 argument_list|)
@@ -14946,7 +15075,10 @@ goto|;
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"%s: %s"
+argument_list|)
 argument_list|,
 name|old_name
 argument_list|,
@@ -15019,7 +15151,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"%s: wrong type"
+argument_list|)
 argument_list|,
 name|old_name
 argument_list|)
@@ -15034,7 +15169,10 @@ name|old_mode
 condition|)
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"%s has type %o, expected %o"
+argument_list|)
 argument_list|,
 name|old_name
 argument_list|,
@@ -15270,7 +15408,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"%s: already exists in index"
+argument_list|)
 argument_list|,
 name|new_name
 argument_list|)
@@ -15384,7 +15525,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"new mode (%o) of %s does not match old mode (%o)%s%s"
+argument_list|)
 argument_list|,
 name|patch
 operator|->
@@ -15427,7 +15571,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"%s: patch does not apply"
+argument_list|)
 argument_list|,
 name|name
 argument_list|)
@@ -15768,7 +15915,10 @@ name|ce
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"make_cache_entry failed for path '%s'"
+argument_list|)
 argument_list|,
 name|name
 argument_list|)
@@ -16601,7 +16751,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"unable to remove %s from index"
+argument_list|)
 argument_list|,
 name|patch
 operator|->
@@ -16766,7 +16919,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"corrupt patch for subproject %s"
+argument_list|)
 argument_list|,
 name|path
 argument_list|)
@@ -16794,7 +16950,10 @@ literal|0
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"unable to stat newly created file '%s'"
+argument_list|)
 argument_list|,
 name|path
 argument_list|)
@@ -16827,7 +16986,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"unable to create backing store for newly created file %s"
+argument_list|)
 argument_list|,
 name|path
 argument_list|)
@@ -16846,7 +17008,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"unable to add cache entry for %s"
+argument_list|)
 argument_list|,
 name|path
 argument_list|)
@@ -17035,7 +17200,10 @@ literal|0
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"closing file '%s'"
+argument_list|)
 argument_list|,
 name|path
 argument_list|)
@@ -17261,7 +17429,10 @@ block|}
 block|}
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"unable to write file '%s' mode %o"
+argument_list|)
 argument_list|,
 name|path
 argument_list|,
@@ -17549,7 +17720,10 @@ name|new_name
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"internal error"
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* Say this even without --verbose */
@@ -17605,7 +17779,10 @@ literal|5
 expr_stmt|;
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"truncating .rej filename to %.*s.rej"
+argument_list|)
 argument_list|,
 name|cnt
 operator|-
@@ -17656,7 +17833,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"cannot open %s: %s"
+argument_list|)
 argument_list|,
 name|namebuf
 argument_list|,
@@ -17714,22 +17894,28 @@ operator|->
 name|rejected
 condition|)
 block|{
-name|fprintf
+name|fprintf_ln
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Hunk #%d applied cleanly.\n"
+name|_
+argument_list|(
+literal|"Hunk #%d applied cleanly."
+argument_list|)
 argument_list|,
 name|cnt
 argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
-name|fprintf
+name|fprintf_ln
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Rejected hunk #%d.\n"
+name|_
+argument_list|(
+literal|"Rejected hunk #%d."
+argument_list|)
 argument_list|,
 name|cnt
 argument_list|)
@@ -18469,7 +18655,10 @@ name|skipped_patch
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"unrecognized input"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -18524,7 +18713,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"unable to read index file"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -19532,7 +19724,10 @@ name|is_not_gitdir
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--index outside a repository"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -19546,7 +19741,10 @@ name|is_not_gitdir
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--cached outside a repository"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|check_index
@@ -19644,7 +19842,10 @@ literal|0
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"can't open patch '%s'"
+argument_list|)
 argument_list|,
 name|arg
 argument_list|)
@@ -19718,18 +19919,16 @@ name|squelch_whitespace_errors
 decl_stmt|;
 name|warning
 argument_list|(
-literal|"squelched %d "
-literal|"whitespace error%s"
+name|Q_
+argument_list|(
+literal|"squelched %d whitespace error"
+argument_list|,
+literal|"squelched %d whitespace errors"
 argument_list|,
 name|squelched
+argument_list|)
 argument_list|,
 name|squelched
-operator|==
-literal|1
-condition|?
-literal|""
-else|:
-literal|"s"
 argument_list|)
 expr_stmt|;
 block|}
@@ -19741,25 +19940,16 @@ name|die_on_ws_error
 condition|)
 name|die
 argument_list|(
-literal|"%d line%s add%s whitespace errors."
+name|Q_
+argument_list|(
+literal|"%d line adds whitespace errors."
+argument_list|,
+literal|"%d lines add whitespace errors."
 argument_list|,
 name|whitespace_error
+argument_list|)
 argument_list|,
 name|whitespace_error
-operator|==
-literal|1
-condition|?
-literal|""
-else|:
-literal|"s"
-argument_list|,
-name|whitespace_error
-operator|==
-literal|1
-condition|?
-literal|"s"
-else|:
-literal|""
 argument_list|)
 expr_stmt|;
 if|if
@@ -19791,25 +19981,16 @@ name|whitespace_error
 condition|)
 name|warning
 argument_list|(
-literal|"%d line%s add%s whitespace errors."
+name|Q_
+argument_list|(
+literal|"%d line adds whitespace errors."
+argument_list|,
+literal|"%d lines add whitespace errors."
 argument_list|,
 name|whitespace_error
+argument_list|)
 argument_list|,
 name|whitespace_error
-operator|==
-literal|1
-condition|?
-literal|""
-else|:
-literal|"s"
-argument_list|,
-name|whitespace_error
-operator|==
-literal|1
-condition|?
-literal|"s"
-else|:
-literal|""
 argument_list|)
 expr_stmt|;
 block|}
@@ -19837,7 +20018,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Unable to write new index file"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
