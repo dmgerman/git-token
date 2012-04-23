@@ -366,6 +366,19 @@ end_function_decl
 
 begin_function_decl
 name|void
+name|commit_list_reverse
+parameter_list|(
+name|struct
+name|commit_list
+modifier|*
+modifier|*
+name|list_p
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|void
 name|free_commit_list
 parameter_list|(
 name|struct
