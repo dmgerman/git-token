@@ -6242,9 +6242,7 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-specifier|const
-name|char
-modifier|*
+name|void
 name|show_date_relative
 parameter_list|(
 name|unsigned
@@ -6260,12 +6258,10 @@ name|timeval
 modifier|*
 name|now
 parameter_list|,
-name|char
+name|struct
+name|strbuf
 modifier|*
 name|timebuf
-parameter_list|,
-name|size_t
-name|timebuf_size
 parameter_list|)
 function_decl|;
 end_function_decl
