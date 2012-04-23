@@ -1616,6 +1616,10 @@ expr_stmt|;
 block|}
 end_function
 
+begin_comment
+comment|/* fmt must contain _one_ %s and no other substitution */
+end_comment
+
 begin_function
 DECL|function|say_patch_name
 specifier|static
@@ -1629,26 +1633,20 @@ parameter_list|,
 specifier|const
 name|char
 modifier|*
-name|pre
+name|fmt
 parameter_list|,
 name|struct
 name|patch
 modifier|*
 name|patch
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|post
 parameter_list|)
 block|{
-name|fputs
-argument_list|(
-name|pre
-argument_list|,
-name|output
-argument_list|)
-expr_stmt|;
+name|struct
+name|strbuf
+name|sb
+init|=
+name|STRBUF_INIT
+decl_stmt|;
 if|if
 condition|(
 name|patch
@@ -1677,18 +1675,20 @@ name|patch
 operator|->
 name|old_name
 argument_list|,
-name|NULL
+operator|&
+name|sb
 argument_list|,
-name|output
+name|NULL
 argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-name|fputs
+name|strbuf_addstr
 argument_list|(
-literal|" => "
+operator|&
+name|sb
 argument_list|,
-name|output
+literal|" => "
 argument_list|)
 expr_stmt|;
 name|quote_c_style
@@ -1697,9 +1697,10 @@ name|patch
 operator|->
 name|new_name
 argument_list|,
-name|NULL
+operator|&
+name|sb
 argument_list|,
-name|output
+name|NULL
 argument_list|,
 literal|0
 argument_list|)
@@ -1731,19 +1732,37 @@ name|quote_c_style
 argument_list|(
 name|n
 argument_list|,
-name|NULL
+operator|&
+name|sb
 argument_list|,
-name|output
+name|NULL
 argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
 block|}
-name|fputs
+name|fprintf
 argument_list|(
-name|post
+name|output
+argument_list|,
+name|fmt
+argument_list|,
+name|sb
+operator|.
+name|buf
+argument_list|)
+expr_stmt|;
+name|fputc
+argument_list|(
+literal|'\n'
 argument_list|,
 name|output
+argument_list|)
+expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|sb
 argument_list|)
 expr_stmt|;
 block|}
@@ -15626,11 +15645,12 @@ name|say_patch_name
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Checking patch "
+name|_
+argument_list|(
+literal|"Checking patch %s..."
+argument_list|)
 argument_list|,
 name|patch
-argument_list|,
-literal|"...\n"
 argument_list|)
 expr_stmt|;
 name|err
@@ -17652,6 +17672,12 @@ name|cnt
 init|=
 literal|0
 decl_stmt|;
+name|struct
+name|strbuf
+name|sb
+init|=
+name|STRBUF_INIT
+decl_stmt|;
 for|for
 control|(
 name|cnt
@@ -17699,11 +17725,12 @@ name|say_patch_name
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Applied patch "
+name|_
+argument_list|(
+literal|"Applied patch %s cleanly."
+argument_list|)
 argument_list|,
 name|patch
-argument_list|,
-literal|" cleanly.\n"
 argument_list|)
 expr_stmt|;
 return|return
@@ -17727,24 +17754,38 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* Say this even without --verbose */
+name|strbuf_addf
+argument_list|(
+operator|&
+name|sb
+argument_list|,
+name|Q_
+argument_list|(
+literal|"Applying patch %%s with %d reject..."
+argument_list|,
+literal|"Applying patch %%s with %d rejects..."
+argument_list|,
+name|cnt
+argument_list|)
+argument_list|,
+name|cnt
+argument_list|)
+expr_stmt|;
 name|say_patch_name
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Applying patch "
+name|sb
+operator|.
+name|buf
 argument_list|,
 name|patch
-argument_list|,
-literal|" with"
 argument_list|)
 expr_stmt|;
-name|fprintf
+name|strbuf_release
 argument_list|(
-name|stderr
-argument_list|,
-literal|" %d rejects...\n"
-argument_list|,
-name|cnt
+operator|&
+name|sb
 argument_list|)
 expr_stmt|;
 name|cnt
