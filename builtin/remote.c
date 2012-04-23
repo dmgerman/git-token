@@ -7795,9 +7795,9 @@ name|dangling_msg
 init|=
 name|dry_run
 condition|?
-literal|" %s will become dangling!\n"
+literal|" %s will become dangling!"
 else|:
-literal|" %s has become dangling!\n"
+literal|" %s has become dangling!"
 decl_stmt|;
 name|memset
 argument_list|(

@@ -3064,12 +3064,12 @@ name|dry_run
 condition|?
 name|_
 argument_list|(
-literal|"   (%s will become dangling)\n"
+literal|"   (%s will become dangling)"
 argument_list|)
 else|:
 name|_
 argument_list|(
-literal|"   (%s has become dangling)\n"
+literal|"   (%s has become dangling)"
 argument_list|)
 decl_stmt|;
 for|for
