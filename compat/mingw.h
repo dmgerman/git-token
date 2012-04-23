@@ -151,7 +151,7 @@ DECL|macro|S_ISUID
 define|#
 directive|define
 name|S_ISUID
-value|0
+value|0004000
 end_define
 
 begin_define
@@ -159,7 +159,7 @@ DECL|macro|S_ISGID
 define|#
 directive|define
 name|S_ISGID
-value|0
+value|0002000
 end_define
 
 begin_define
@@ -167,7 +167,7 @@ DECL|macro|S_ISVTX
 define|#
 directive|define
 name|S_ISVTX
-value|0
+value|0001000
 end_define
 
 begin_define
