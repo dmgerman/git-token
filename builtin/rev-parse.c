@@ -3365,6 +3365,12 @@ argument_list|(
 name|prefix
 argument_list|)
 expr_stmt|;
+else|else
+name|putchar
+argument_list|(
+literal|'\n'
+argument_list|)
+expr_stmt|;
 continue|continue;
 block|}
 if|if
