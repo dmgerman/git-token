@@ -293,7 +293,10 @@ name|HELP_FORMAT_WEB
 return|;
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"unrecognized help format '%s'"
+argument_list|)
 argument_list|,
 name|format
 argument_list|)
@@ -439,7 +442,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Failed to start emacsclient."
+argument_list|)
 argument_list|)
 return|;
 name|strbuf_read
@@ -489,7 +495,10 @@ expr_stmt|;
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Failed to parse emacsclient version."
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -531,7 +540,10 @@ expr_stmt|;
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"emacsclient version '%d' too old (< 22)."
+argument_list|)
 argument_list|,
 name|version
 argument_list|)
@@ -620,7 +632,10 @@ argument_list|)
 expr_stmt|;
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"failed to exec '%s': %s"
+argument_list|)
 argument_list|,
 name|path
 argument_list|,
@@ -795,7 +810,10 @@ argument_list|)
 expr_stmt|;
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"failed to exec '%s': %s"
+argument_list|)
 argument_list|,
 name|path
 argument_list|,
@@ -852,7 +870,10 @@ argument_list|)
 expr_stmt|;
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"failed to exec '%s': %s"
+argument_list|)
 argument_list|,
 name|path
 argument_list|,
@@ -921,7 +942,10 @@ argument_list|)
 expr_stmt|;
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"failed to exec '%s': %s"
+argument_list|)
 argument_list|,
 name|cmd
 argument_list|,
@@ -1183,8 +1207,11 @@ expr_stmt|;
 else|else
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"'%s': path for unsupported man viewer.\n"
 literal|"Please consider using 'man.<tool>.cmd' instead."
+argument_list|)
 argument_list|,
 name|name
 argument_list|)
@@ -1226,8 +1253,11 @@ argument_list|)
 condition|)
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"'%s': cmd for supported man viewer.\n"
 literal|"Please consider using 'man.<tool>.path' instead."
+argument_list|)
 argument_list|,
 name|name
 argument_list|)
@@ -1559,7 +1589,10 @@ expr_stmt|;
 block|}
 name|puts
 argument_list|(
+name|_
+argument_list|(
 literal|"The most commonly used git commands are:"
+argument_list|)
 argument_list|)
 expr_stmt|;
 for|for
@@ -1610,12 +1643,15 @@ argument_list|)
 expr_stmt|;
 name|puts
 argument_list|(
+name|_
+argument_list|(
 name|common_cmds
 index|[
 name|i
 index|]
 operator|.
 name|help
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1962,7 +1998,10 @@ expr_stmt|;
 else|else
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"'%s': unknown man viewer."
+argument_list|)
 argument_list|,
 name|name
 argument_list|)
@@ -2056,7 +2095,10 @@ argument_list|)
 expr_stmt|;
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"no man viewer handled the request"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2115,7 +2157,10 @@ argument_list|)
 expr_stmt|;
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"no info viewer handled the request"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2178,7 +2223,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"'%s': not a documentation directory."
+argument_list|)
 argument_list|,
 name|html_path
 argument_list|)
@@ -2367,14 +2415,25 @@ condition|)
 block|{
 name|printf
 argument_list|(
-literal|"usage: %s\n\n"
+name|_
+argument_list|(
+literal|"usage: %s%s"
+argument_list|)
 argument_list|,
+name|_
+argument_list|(
 name|git_usage_string
+argument_list|)
+argument_list|,
+literal|"\n\n"
 argument_list|)
 expr_stmt|;
 name|list_commands
 argument_list|(
+name|_
+argument_list|(
 literal|"git commands"
+argument_list|)
 argument_list|,
 operator|&
 name|main_cmds
@@ -2387,7 +2446,10 @@ name|printf
 argument_list|(
 literal|"%s\n"
 argument_list|,
+name|_
+argument_list|(
 name|git_more_info_string
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -2405,9 +2467,17 @@ condition|)
 block|{
 name|printf
 argument_list|(
-literal|"usage: %s\n\n"
+name|_
+argument_list|(
+literal|"usage: %s%s"
+argument_list|)
 argument_list|,
+name|_
+argument_list|(
 name|git_usage_string
+argument_list|)
+argument_list|,
+literal|"\n\n"
 argument_list|)
 expr_stmt|;
 name|list_common_cmds_help
@@ -2417,7 +2487,10 @@ name|printf
 argument_list|(
 literal|"\n%s\n"
 argument_list|,
+name|_
+argument_list|(
 name|git_more_info_string
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -2471,9 +2544,12 @@ index|]
 argument_list|)
 condition|)
 block|{
-name|printf
+name|printf_ln
 argument_list|(
-literal|"`git %s' is aliased to `%s'\n"
+name|_
+argument_list|(
+literal|"`git %s' is aliased to `%s'"
+argument_list|)
 argument_list|,
 name|argv
 index|[
