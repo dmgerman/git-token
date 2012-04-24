@@ -3589,7 +3589,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Read the loose references for refs from the namespace dirname.  * dirname must end with '/'.  */
+comment|/*  * Read the loose references for refs from the namespace dirname.  * dirname must end with '/'.  dir must be the directory entry  * corresponding to dirname.  */
 end_comment
 
 begin_function
@@ -3842,7 +3842,21 @@ name|refname
 operator|.
 name|buf
 argument_list|,
+operator|&
+name|search_for_subdir
+argument_list|(
 name|dir
+argument_list|,
+name|refname
+operator|.
+name|buf
+argument_list|,
+literal|1
+argument_list|)
+operator|->
+name|u
+operator|.
+name|subdir
 argument_list|)
 expr_stmt|;
 block|}
@@ -3922,7 +3936,7 @@ operator||=
 name|REF_ISBROKEN
 expr_stmt|;
 block|}
-name|add_ref
+name|add_entry_to_dir
 argument_list|(
 name|dir
 argument_list|,
@@ -3993,9 +4007,21 @@ argument_list|,
 literal|"refs/"
 argument_list|,
 operator|&
+name|search_for_subdir
+argument_list|(
+operator|&
 name|refs
 operator|->
 name|loose
+argument_list|,
+literal|"refs/"
+argument_list|,
+literal|1
+argument_list|)
+operator|->
+name|u
+operator|.
+name|subdir
 argument_list|)
 expr_stmt|;
 name|refs
