@@ -1380,6 +1380,26 @@ name|value
 decl_stmt|;
 if|if
 condition|(
+operator|*
+name|flags
+operator|&
+operator|(
+name|TRANSPORT_RECURSE_SUBMODULES_CHECK
+operator||
+name|TRANSPORT_RECURSE_SUBMODULES_ON_DEMAND
+operator|)
+condition|)
+name|die
+argument_list|(
+literal|"%s can only be used once."
+argument_list|,
+name|opt
+operator|->
+name|long_name
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|arg
 condition|)
 block|{
@@ -1398,6 +1418,22 @@ name|flags
 operator||=
 name|TRANSPORT_RECURSE_SUBMODULES_CHECK
 expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"on-demand"
+argument_list|)
+condition|)
+operator|*
+name|flags
+operator||=
+name|TRANSPORT_RECURSE_SUBMODULES_ON_DEMAND
+expr_stmt|;
 else|else
 name|die
 argument_list|(
@@ -1414,7 +1450,7 @@ block|}
 else|else
 name|die
 argument_list|(
-literal|"option %s needs an argument (check)"
+literal|"option %s needs an argument (check|on-demand)"
 argument_list|,
 name|opt
 operator|->
