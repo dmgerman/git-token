@@ -319,6 +319,27 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+name|struct
+name|commit_list
+modifier|*
+modifier|*
+name|commit_list_append
+parameter_list|(
+name|struct
+name|commit
+modifier|*
+name|commit
+parameter_list|,
+name|struct
+name|commit_list
+modifier|*
+modifier|*
+name|next
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|unsigned
 name|commit_list_count
 parameter_list|(
