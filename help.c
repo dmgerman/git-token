@@ -1238,11 +1238,6 @@ DECL|function|list_commands
 name|void
 name|list_commands
 parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|title
-parameter_list|,
 name|struct
 name|cmdnames
 modifier|*
@@ -1358,36 +1353,10 @@ name|printf_ln
 argument_list|(
 name|_
 argument_list|(
-literal|"available %s in '%s'"
+literal|"available git commands in '%s'"
 argument_list|)
-argument_list|,
-name|title
 argument_list|,
 name|exec_path
-argument_list|)
-expr_stmt|;
-comment|/* TRANSLATORS: this must align with "available %s in '%s'" */
-name|printf
-argument_list|(
-name|_
-argument_list|(
-literal|"----------------"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|mput_char
-argument_list|(
-literal|'-'
-argument_list|,
-name|strlen
-argument_list|(
-name|title
-argument_list|)
-operator|+
-name|strlen
-argument_list|(
-name|exec_path
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|putchar
@@ -1419,28 +1388,7 @@ name|printf_ln
 argument_list|(
 name|_
 argument_list|(
-literal|"%s available from elsewhere on your $PATH"
-argument_list|)
-argument_list|,
-name|title
-argument_list|)
-expr_stmt|;
-comment|/* TRANSLATORS: 		 * this must align with 		 * "%s available from elsewhere on your $PATH" 		 */
-name|printf
-argument_list|(
-name|_
-argument_list|(
-literal|"---------------------------------------"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|mput_char
-argument_list|(
-literal|'-'
-argument_list|,
-name|strlen
-argument_list|(
-name|title
+literal|"git commands available from elsewhere on your $PATH"
 argument_list|)
 argument_list|)
 expr_stmt|;
