@@ -3611,10 +3611,10 @@ comment|/*  * Read the loose references for refs from the namespace dirname.  * 
 end_comment
 
 begin_function
-DECL|function|get_ref_dir
+DECL|function|read_loose_refs
 specifier|static
 name|void
-name|get_ref_dir
+name|read_loose_refs
 parameter_list|(
 name|struct
 name|ref_cache
@@ -3852,7 +3852,7 @@ argument_list|,
 literal|'/'
 argument_list|)
 expr_stmt|;
-name|get_ref_dir
+name|read_loose_refs
 argument_list|(
 name|refs
 argument_list|,
@@ -4027,7 +4027,7 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
-name|get_ref_dir
+name|read_loose_refs
 argument_list|(
 name|refs
 argument_list|,
