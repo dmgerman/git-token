@@ -455,6 +455,10 @@ name|ref_entry
 struct_decl|;
 end_struct_decl
 
+begin_comment
+comment|/*  * Information used (along with the information in ref_entry) to  * describe a single cached reference.  This data structure only  * occurs embedded in a union in struct ref_entry, and only when  * (ref_entry->flag& REF_DIR) is zero.  */
+end_comment
+
 begin_struct
 DECL|struct|ref_value
 struct|struct
@@ -485,6 +489,10 @@ struct_decl|struct
 name|ref_cache
 struct_decl|;
 end_struct_decl
+
+begin_comment
+comment|/*  * Information used (along with the information in ref_entry) to  * describe a level in the hierarchy of references.  This data  * structure only occurs embedded in a union in struct ref_entry, and  * only when (ref_entry.flag& REF_DIR) is set.  In that case,  * (ref_entry.flag& REF_INCOMPLETE) determines whether the references  * in the directory have already been read:  *  *     (ref_entry.flag& REF_INCOMPLETE) unset -- a directory of loose  *         or packed references, already read.  *  *     (ref_entry.flag& REF_INCOMPLETE) set -- a directory of loose  *         references that hasn't been read yet (nor has any of its  *         subdirectories).  *  * Entries within a directory are stored within a growable array of  * pointers to ref_entries (entries, nr, alloc).  Entries 0<= i<  * sorted are sorted by their component name in strcmp() order and the  * remaining entries are unsorted.  *  * Loose references are read lazily, one directory at a time.  When a  * directory of loose references is read, then all of the references  * in that directory are stored, and REF_INCOMPLETE stubs are created  * for any subdirectories, but the subdirectories themselves are not  * read.  The reading is triggered by get_ref_dir().  */
+end_comment
 
 begin_struct
 DECL|struct|ref_dir
@@ -533,6 +541,10 @@ name|REF_KNOWS_PEELED
 value|0x08
 end_define
 
+begin_comment
+comment|/* ref_entry represents a directory of references */
+end_comment
+
 begin_define
 DECL|macro|REF_DIR
 define|#
@@ -542,7 +554,19 @@ value|0x10
 end_define
 
 begin_comment
-comment|/*  * A ref_entry represents either a reference or a "subdirectory" of  * references.  Each directory in the reference namespace is  * represented by a ref_entry with (flags& REF_DIR) set and  * containing a subdir member that holds the entries in that  * directory.  References are represented by a ref_entry with (flags&  * REF_DIR) unset and a value member that describes the reference's  * value.  The flag member is at the ref_entry level, but it is also  * needed to interpret the contents of the value field (in other  * words, a ref_value object is not very much use without the  * enclosing ref_entry).  *  * Reference names cannot end with slash and directories' names are  * always stored with a trailing slash (except for the top-level  * directory, which is always denoted by "").  This has two nice  * consequences: (1) when the entries in each subdir are sorted  * lexicographically by name (as they usually are), the references in  * a whole tree can be generated in lexicographic order by traversing  * the tree in left-to-right, depth-first order; (2) the names of  * references and subdirectories cannot conflict, and therefore the  * presence of an empty subdirectory does not block the creation of a  * similarly-named reference.  (The fact that reference names with the  * same leading components can conflict *with each other* is a  * separate issue that is regulated by is_refname_available().)  *  * Please note that the name field contains the fully-qualified  * reference (or subdirectory) name.  Space could be saved by only  * storing the relative names.  But that would require the full names  * to be generated on the fly when iterating in do_for_each_ref(), and  * would break callback functions, who have always been able to assume  * that the name strings that they are passed will not be freed during  * the iteration.  */
+comment|/*  * Entry has not yet been read from disk (used only for REF_DIR  * entries representing loose references)  */
+end_comment
+
+begin_define
+DECL|macro|REF_INCOMPLETE
+define|#
+directive|define
+name|REF_INCOMPLETE
+value|0x20
+end_define
+
+begin_comment
+comment|/*  * A ref_entry represents either a reference or a "subdirectory" of  * references.  *  * Each directory in the reference namespace is represented by a  * ref_entry with (flags& REF_DIR) set and containing a subdir member  * that holds the entries in that directory that have been read so  * far.  If (flags& REF_INCOMPLETE) is set, then the directory and  * its subdirectories haven't been read yet.  REF_INCOMPLETE is only  * used for loose reference directories.  *  * References are represented by a ref_entry with (flags& REF_DIR)  * unset and a value member that describes the reference's value.  The  * flag member is at the ref_entry level, but it is also needed to  * interpret the contents of the value field (in other words, a  * ref_value object is not very much use without the enclosing  * ref_entry).  *  * Reference names cannot end with slash and directories' names are  * always stored with a trailing slash (except for the top-level  * directory, which is always denoted by "").  This has two nice  * consequences: (1) when the entries in each subdir are sorted  * lexicographically by name (as they usually are), the references in  * a whole tree can be generated in lexicographic order by traversing  * the tree in left-to-right, depth-first order; (2) the names of  * references and subdirectories cannot conflict, and therefore the  * presence of an empty subdirectory does not block the creation of a  * similarly-named reference.  (The fact that reference names with the  * same leading components can conflict *with each other* is a  * separate issue that is regulated by is_refname_available().)  *  * Please note that the name field contains the fully-qualified  * reference (or subdirectory) name.  Space could be saved by only  * storing the relative names.  But that would require the full names  * to be generated on the fly when iterating in do_for_each_ref(), and  * would break callback functions, who have always been able to assume  * that the name strings that they are passed will not be freed during  * the iteration.  */
 end_comment
 
 begin_struct
@@ -586,6 +610,24 @@ block|}
 struct|;
 end_struct
 
+begin_function_decl
+specifier|static
+name|void
+name|read_loose_refs
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|dirname
+parameter_list|,
+name|struct
+name|ref_dir
+modifier|*
+name|dir
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function
 DECL|function|get_ref_dir
 specifier|static
@@ -600,6 +642,11 @@ modifier|*
 name|entry
 parameter_list|)
 block|{
+name|struct
+name|ref_dir
+modifier|*
+name|dir
+decl_stmt|;
 name|assert
 argument_list|(
 name|entry
@@ -609,13 +656,43 @@ operator|&
 name|REF_DIR
 argument_list|)
 expr_stmt|;
-return|return
+name|dir
+operator|=
 operator|&
 name|entry
 operator|->
 name|u
 operator|.
 name|subdir
+expr_stmt|;
+if|if
+condition|(
+name|entry
+operator|->
+name|flag
+operator|&
+name|REF_INCOMPLETE
+condition|)
+block|{
+name|read_loose_refs
+argument_list|(
+name|entry
+operator|->
+name|name
+argument_list|,
+name|dir
+argument_list|)
+expr_stmt|;
+name|entry
+operator|->
+name|flag
+operator|&=
+operator|~
+name|REF_INCOMPLETE
+expr_stmt|;
+block|}
+return|return
+name|dir
 return|;
 block|}
 end_function
@@ -940,6 +1017,9 @@ specifier|const
 name|char
 modifier|*
 name|dirname
+parameter_list|,
+name|int
+name|incomplete
 parameter_list|)
 block|{
 name|struct
@@ -1000,6 +1080,14 @@ operator|->
 name|flag
 operator|=
 name|REF_DIR
+operator||
+operator|(
+name|incomplete
+condition|?
+name|REF_INCOMPLETE
+else|:
+literal|0
+operator|)
 expr_stmt|;
 return|return
 name|direntry
@@ -1081,7 +1169,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Return the entry with the given refname from the ref_dir  * (non-recursively), sorting dir if necessary.  Return NULL if no  * such entry is found.  */
+comment|/*  * Return the entry with the given refname from the ref_dir  * (non-recursively), sorting dir if necessary.  Return NULL if no  * such entry is found.  dir must already be complete.  */
 end_comment
 
 begin_function
@@ -1215,7 +1303,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Search for a directory entry directly within dir (without  * recursing).  Sort dir if necessary.  subdirname must be a directory  * name (i.e., end in '/').  If mkdir is set, then create the  * directory if it is missing; otherwise, return NULL if the desired  * directory cannot be found.  */
+comment|/*  * Search for a directory entry directly within dir (without  * recursing).  Sort dir if necessary.  subdirname must be a directory  * name (i.e., end in '/').  If mkdir is set, then create the  * directory if it is missing; otherwise, return NULL if the desired  * directory cannot be found.  dir must already be complete.  */
 end_comment
 
 begin_function
@@ -1266,6 +1354,7 @@ condition|)
 return|return
 name|NULL
 return|;
+comment|/* 		 * Since dir is complete, the absence of a subdir 		 * means that the subdir really doesn't exist; 		 * therefore, create an empty record for it but mark 		 * the record complete. 		 */
 name|entry
 operator|=
 name|create_dir_entry
@@ -1275,6 +1364,8 @@ operator|->
 name|ref_cache
 argument_list|,
 name|subdirname
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|add_entry_to_dir
@@ -1295,7 +1386,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * If refname is a reference name, find the ref_dir within the dir  * tree that should hold refname.  If refname is a directory name  * (i.e., ends in '/'), then return that ref_dir itself.  dir must  * represent the top-level directory.  Sort ref_dirs and recurse into  * subdirectories as necessary.  If mkdir is set, then create any  * missing directories; otherwise, return NULL if the desired  * directory cannot be found.  */
+comment|/*  * If refname is a reference name, find the ref_dir within the dir  * tree that should hold refname.  If refname is a directory name  * (i.e., ends in '/'), then return that ref_dir itself.  dir must  * represent the top-level directory and must already be complete.  * Sort ref_dirs and recurse into subdirectories as necessary.  If  * mkdir is set, then create any missing directories; otherwise,  * return NULL if the desired directory cannot be found.  */
 end_comment
 
 begin_function
@@ -3543,6 +3634,8 @@ argument_list|(
 name|refs
 argument_list|,
 literal|""
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 if|if
@@ -3658,7 +3751,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Read the loose references for refs from the namespace dirname.  * dirname must end with '/'.  dir must be the directory entry  * corresponding to dirname.  */
+comment|/*  * Read the loose references from the namespace dirname into dir  * (without recursing).  dirname must end with '/'.  dir must be the  * directory entry corresponding to dirname.  */
 end_comment
 
 begin_function
@@ -3907,15 +4000,13 @@ argument_list|,
 literal|'/'
 argument_list|)
 expr_stmt|;
-name|read_loose_refs
-argument_list|(
-name|refname
-operator|.
-name|buf
-argument_list|,
-name|search_for_subdir
+name|add_entry_to_dir
 argument_list|(
 name|dir
+argument_list|,
+name|create_dir_entry
+argument_list|(
+name|refs
 argument_list|,
 name|refname
 operator|.
@@ -4066,6 +4157,7 @@ operator|->
 name|loose
 condition|)
 block|{
+comment|/* 		 * Mark the top-level directory complete because we 		 * are about to read the only subdirectory that can 		 * hold references: 		 */
 name|refs
 operator|->
 name|loose
@@ -4075,13 +4167,12 @@ argument_list|(
 name|refs
 argument_list|,
 literal|""
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
-name|read_loose_refs
-argument_list|(
-literal|"refs/"
-argument_list|,
-name|search_for_subdir
+comment|/* 		 * Create an incomplete entry for "refs/": 		 */
+name|add_entry_to_dir
 argument_list|(
 name|get_ref_dir
 argument_list|(
@@ -4089,6 +4180,10 @@ name|refs
 operator|->
 name|loose
 argument_list|)
+argument_list|,
+name|create_dir_entry
+argument_list|(
+name|refs
 argument_list|,
 literal|"refs/"
 argument_list|,
