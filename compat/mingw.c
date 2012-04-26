@@ -5671,7 +5671,7 @@ end_function
 
 begin_function
 DECL|function|mingw_execvp
-name|void
+name|int
 name|mingw_execvp
 parameter_list|(
 specifier|const
@@ -5737,12 +5737,16 @@ argument_list|(
 name|path
 argument_list|)
 expr_stmt|;
+return|return
+operator|-
+literal|1
+return|;
 block|}
 end_function
 
 begin_function
 DECL|function|mingw_execv
-name|void
+name|int
 name|mingw_execv
 parameter_list|(
 specifier|const
@@ -5766,6 +5770,10 @@ argument_list|,
 name|environ
 argument_list|)
 expr_stmt|;
+return|return
+operator|-
+literal|1
+return|;
 block|}
 end_function
 
