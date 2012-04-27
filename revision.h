@@ -867,6 +867,10 @@ name|char
 modifier|*
 name|submodule
 decl_stmt|;
+DECL|member|assume_dashdash
+name|int
+name|assume_dashdash
+decl_stmt|;
 block|}
 struct|;
 end_struct

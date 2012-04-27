@@ -10153,6 +10153,22 @@ operator|->
 name|submodule
 expr_stmt|;
 comment|/* First, search for "--" */
+if|if
+condition|(
+name|opt
+operator|&&
+name|opt
+operator|->
+name|assume_dashdash
+condition|)
+block|{
+name|seen_dashdash
+operator|=
+literal|1
+expr_stmt|;
+block|}
+else|else
+block|{
 name|seen_dashdash
 operator|=
 literal|0
@@ -10228,6 +10244,7 @@ operator|=
 literal|1
 expr_stmt|;
 break|break;
+block|}
 block|}
 comment|/* Second, deal with arguments and options */
 name|flags
