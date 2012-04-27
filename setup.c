@@ -2680,6 +2680,9 @@ specifier|const
 name|char
 modifier|*
 name|prefix
+parameter_list|,
+name|int
+name|prefix_len
 parameter_list|)
 block|{
 name|struct
@@ -2696,9 +2699,12 @@ operator|&
 name|buf
 argument_list|)
 condition|)
+block|{
 name|die_errno
 argument_list|(
-literal|"failed to stat '%s%s%s'"
+literal|"failed to stat '%*s%s%s'"
+argument_list|,
+name|prefix_len
 argument_list|,
 name|prefix
 condition|?
@@ -2715,6 +2721,7 @@ argument_list|,
 name|path
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|buf
 operator|.
@@ -2775,6 +2782,8 @@ name|int
 name|len
 decl_stmt|,
 name|offset
+decl_stmt|,
+name|offset_parent
 decl_stmt|,
 name|ceil_offset
 decl_stmt|;
@@ -2897,6 +2906,8 @@ argument_list|(
 literal|"."
 argument_list|,
 name|NULL
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 for|for
@@ -2996,16 +3007,20 @@ argument_list|,
 name|nongit_ok
 argument_list|)
 return|;
+name|offset_parent
+operator|=
+name|offset
+expr_stmt|;
 while|while
 condition|(
 operator|--
-name|offset
+name|offset_parent
 operator|>
 name|ceil_offset
 operator|&&
 name|cwd
 index|[
-name|offset
+name|offset_parent
 index|]
 operator|!=
 literal|'/'
@@ -3013,7 +3028,7 @@ condition|)
 empty_stmt|;
 if|if
 condition|(
-name|offset
+name|offset_parent
 operator|<=
 name|ceil_offset
 condition|)
@@ -3038,6 +3053,8 @@ argument_list|(
 literal|".."
 argument_list|,
 name|cwd
+argument_list|,
+name|offset
 argument_list|)
 decl_stmt|;
 if|if
@@ -3082,7 +3099,7 @@ literal|'\0'
 expr_stmt|;
 name|die
 argument_list|(
-literal|"Not a git repository (or any parent up to mount parent %s)\n"
+literal|"Not a git repository (or any parent up to mount point %s)\n"
 literal|"Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set)."
 argument_list|,
 name|cwd
@@ -3113,6 +3130,10 @@ name|cwd
 argument_list|)
 expr_stmt|;
 block|}
+name|offset
+operator|=
+name|offset_parent
+expr_stmt|;
 block|}
 block|}
 end_function
