@@ -151,7 +151,7 @@ DECL|macro|S_ISUID
 define|#
 directive|define
 name|S_ISUID
-value|0
+value|0004000
 end_define
 
 begin_define
@@ -159,7 +159,7 @@ DECL|macro|S_ISGID
 define|#
 directive|define
 name|S_ISGID
-value|0
+value|0002000
 end_define
 
 begin_define
@@ -167,7 +167,7 @@ DECL|macro|S_ISVTX
 define|#
 directive|define
 name|S_ISVTX
-value|0
+value|0001000
 end_define
 
 begin_define
@@ -1923,7 +1923,7 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-name|void
+name|int
 name|mingw_execvp
 parameter_list|(
 specifier|const
@@ -1949,7 +1949,7 @@ value|mingw_execvp
 end_define
 
 begin_function_decl
-name|void
+name|int
 name|mingw_execv
 parameter_list|(
 specifier|const

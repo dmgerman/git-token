@@ -353,6 +353,14 @@ value|128
 end_define
 
 begin_define
+DECL|macro|TRANSPORT_RECURSE_SUBMODULES_ON_DEMAND
+define|#
+directive|define
+name|TRANSPORT_RECURSE_SUBMODULES_ON_DEMAND
+value|256
+end_define
+
+begin_define
 DECL|macro|TRANSPORT_SUMMARY_WIDTH
 define|#
 directive|define
@@ -500,6 +508,22 @@ name|force_progress
 parameter_list|)
 function_decl|;
 end_function_decl
+
+begin_define
+DECL|macro|NON_FF_HEAD
+define|#
+directive|define
+name|NON_FF_HEAD
+value|1
+end_define
+
+begin_define
+DECL|macro|NON_FF_OTHER
+define|#
+directive|define
+name|NON_FF_OTHER
+value|2
+end_define
 
 begin_function_decl
 name|int

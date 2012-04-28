@@ -57,6 +57,11 @@ name|fetch_all
 range|:
 literal|1
 decl_stmt|,
+DECL|member|stdin_refs
+name|stdin_refs
+range|:
+literal|1
+decl_stmt|,
 DECL|member|verbose
 name|verbose
 range|:

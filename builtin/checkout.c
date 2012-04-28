@@ -3065,6 +3065,10 @@ literal|0
 argument_list|,
 name|opts
 operator|->
+name|quiet
+argument_list|,
+name|opts
+operator|->
 name|track
 argument_list|)
 expr_stmt|;

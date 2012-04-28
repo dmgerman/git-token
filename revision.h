@@ -867,6 +867,10 @@ name|char
 modifier|*
 name|submodule
 decl_stmt|;
+DECL|member|assume_dashdash
+name|int
+name|assume_dashdash
+decl_stmt|;
 block|}
 struct|;
 end_struct
@@ -966,6 +970,16 @@ name|flags
 parameter_list|,
 name|int
 name|cant_be_filename
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|void
+name|reset_revision_walk
+parameter_list|(
+name|void
 parameter_list|)
 function_decl|;
 end_function_decl

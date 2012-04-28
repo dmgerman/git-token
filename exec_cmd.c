@@ -643,7 +643,7 @@ literal|"trace: exec:"
 argument_list|)
 expr_stmt|;
 comment|/* execvp() can only ever return if it fails */
-name|execvp
+name|sane_execvp
 argument_list|(
 literal|"git"
 argument_list|,

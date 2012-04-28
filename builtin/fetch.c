@@ -1381,6 +1381,12 @@ name|char
 modifier|*
 name|remote
 parameter_list|,
+specifier|const
+name|struct
+name|ref
+modifier|*
+name|remote_ref
+parameter_list|,
 name|struct
 name|strbuf
 modifier|*
@@ -1679,18 +1685,28 @@ decl_stmt|;
 name|int
 name|r
 decl_stmt|;
+comment|/* 		 * Nicely describe the new ref we're fetching. 		 * Base this on the remote's ref name, as it's 		 * more likely to follow a standard layout. 		 */
+specifier|const
+name|char
+modifier|*
+name|name
+init|=
+name|remote_ref
+condition|?
+name|remote_ref
+operator|->
+name|name
+else|:
+literal|""
+decl_stmt|;
 if|if
 condition|(
 operator|!
-name|strncmp
+name|prefixcmp
 argument_list|(
-name|ref
-operator|->
 name|name
 argument_list|,
 literal|"refs/tags/"
-argument_list|,
-literal|10
 argument_list|)
 condition|)
 block|{
@@ -1706,7 +1722,17 @@ literal|"[new tag]"
 argument_list|)
 expr_stmt|;
 block|}
-else|else
+elseif|else
+if|if
+condition|(
+operator|!
+name|prefixcmp
+argument_list|(
+name|name
+argument_list|,
+literal|"refs/heads/"
+argument_list|)
+condition|)
 block|{
 name|msg
 operator|=
@@ -1719,6 +1745,21 @@ argument_list|(
 literal|"[new branch]"
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|msg
+operator|=
+literal|"storing ref"
+expr_stmt|;
+name|what
+operator|=
+name|_
+argument_list|(
+literal|"[new ref]"
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -1740,7 +1781,6 @@ operator|->
 name|new_sha1
 argument_list|)
 expr_stmt|;
-block|}
 name|r
 operator|=
 name|s_update_ref
@@ -2760,6 +2800,8 @@ argument_list|(
 name|ref
 argument_list|,
 name|what
+argument_list|,
+name|rm
 argument_list|,
 operator|&
 name|note

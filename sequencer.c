@@ -949,12 +949,6 @@ block|{
 return|return
 name|lookup_tree
 argument_list|(
-operator|(
-specifier|const
-name|unsigned
-name|char
-operator|*
-operator|)
 name|EMPTY_TREE_SHA1_BIN
 argument_list|)
 return|;
@@ -1349,7 +1343,7 @@ name|strbuf_addstr
 argument_list|(
 name|msgbuf
 argument_list|,
-literal|"\nConflicts:\n\n"
+literal|"\nConflicts:\n"
 argument_list|)
 expr_stmt|;
 for|for

@@ -60,7 +60,7 @@ init|=
 block|{
 literal|"git remote [-v | --verbose]"
 block|,
-literal|"git remote add [-t<branch>] [-m<master>] [-f] [--mirror=<fetch|push>]<name><url>"
+literal|"git remote add [-t<branch>] [-m<master>] [-f] [--tags|--no-tags] [--mirror=<fetch|push>]<name><url>"
 block|,
 literal|"git remote rename<old><new>"
 block|,
@@ -76,7 +76,7 @@ literal|"git remote [-v | --verbose] update [-p | --prune] [(<group> |<remote>).
 block|,
 literal|"git remote set-branches [--add]<name><branch>..."
 block|,
-literal|"git remote set-url<name><newurl> [<oldurl>]"
+literal|"git remote set-url [--push]<name><newurl> [<oldurl>]"
 block|,
 literal|"git remote set-url --add<name><newurl>"
 block|,
