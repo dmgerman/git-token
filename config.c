@@ -153,6 +153,32 @@ name|buf
 init|=
 name|STRBUF_INIT
 decl_stmt|;
+name|char
+modifier|*
+name|expanded
+init|=
+name|expand_user_path
+argument_list|(
+name|path
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|expanded
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"Could not expand include path '%s'"
+argument_list|,
+name|path
+argument_list|)
+return|;
+name|path
+operator|=
+name|expanded
+expr_stmt|;
 comment|/* 	 * Use an absolute path as-is, but interpret relative paths 	 * based on the including config file. 	 */
 if|if
 condition|(
@@ -291,6 +317,11 @@ name|strbuf_release
 argument_list|(
 operator|&
 name|buf
+argument_list|)
+expr_stmt|;
+name|free
+argument_list|(
+name|expanded
 argument_list|)
 expr_stmt|;
 return|return
