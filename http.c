@@ -4743,7 +4743,7 @@ condition|)
 block|{
 name|error
 argument_list|(
-literal|"Unable to get pack index %s\n"
+literal|"Unable to get pack index %s"
 argument_list|,
 name|url
 argument_list|)

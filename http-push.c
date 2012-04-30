@@ -6040,7 +6040,7 @@ argument_list|)
 condition|)
 name|error
 argument_list|(
-literal|"Parsed path '%s' does not match url: '%s'\n"
+literal|"Parsed path '%s' does not match url: '%s'"
 argument_list|,
 name|path
 argument_list|,
@@ -9325,7 +9325,7 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"DELETE request failed (%d/%ld)\n"
+literal|"DELETE request failed (%d/%ld)"
 argument_list|,
 name|results
 operator|.

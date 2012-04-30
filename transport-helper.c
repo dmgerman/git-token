@@ -1200,7 +1200,7 @@ block|{
 name|die
 argument_list|(
 literal|"Unknown mandatory capability %s. This remote "
-literal|"helper probably needs newer version of Git.\n"
+literal|"helper probably needs newer version of Git."
 argument_list|,
 name|capname
 argument_list|)
@@ -3365,7 +3365,7 @@ block|}
 else|else
 name|die
 argument_list|(
-literal|"expected ok/error, helper said '%s'\n"
+literal|"expected ok/error, helper said '%s'"
 argument_list|,
 name|buf
 operator|->

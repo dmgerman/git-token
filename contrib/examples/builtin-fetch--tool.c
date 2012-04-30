@@ -2856,7 +2856,7 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"cannot open %s: %s\n"
+literal|"cannot open %s: %s"
 argument_list|,
 name|filename
 argument_list|,
@@ -2982,7 +2982,7 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"cannot open %s: %s\n"
+literal|"cannot open %s: %s"
 argument_list|,
 name|filename
 argument_list|,

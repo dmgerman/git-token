@@ -5872,7 +5872,7 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"IMAP error: sending response failed\n"
+literal|"IMAP error: sending response failed"
 argument_list|)
 return|;
 name|free

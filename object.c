@@ -965,7 +965,7 @@ else|else
 block|{
 name|warning
 argument_list|(
-literal|"object %s has unknown type id %d\n"
+literal|"object %s has unknown type id %d"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -1120,7 +1120,7 @@ condition|)
 block|{
 name|error
 argument_list|(
-literal|"sha1 mismatch %s\n"
+literal|"sha1 mismatch %s"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -1195,7 +1195,7 @@ argument_list|)
 expr_stmt|;
 name|error
 argument_list|(
-literal|"sha1 mismatch %s\n"
+literal|"sha1 mismatch %s"
 argument_list|,
 name|sha1_to_hex
 argument_list|(

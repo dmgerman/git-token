@@ -3714,7 +3714,7 @@ name|error
 argument_list|(
 name|_
 argument_list|(
-literal|"could not write branch description template: %s\n"
+literal|"could not write branch description template: %s"
 argument_list|)
 argument_list|,
 name|strerror
