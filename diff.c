@@ -8656,6 +8656,8 @@ init|=
 name|data
 operator|->
 name|nr
+decl_stmt|,
+name|count
 decl_stmt|;
 name|int
 name|width
@@ -8666,9 +8668,11 @@ name|graph_width
 decl_stmt|,
 name|number_width
 init|=
-literal|4
+literal|0
 decl_stmt|,
-name|count
+name|bin_width
+init|=
+literal|0
 decl_stmt|;
 specifier|const
 name|char
@@ -8878,13 +8882,66 @@ if|if
 condition|(
 name|file
 operator|->
-name|is_binary
-operator|||
-name|file
-operator|->
 name|is_unmerged
 condition|)
+block|{
+comment|/* "Unmerged" is 8 characters */
+name|bin_width
+operator|=
+name|bin_width
+operator|<
+literal|8
+condition|?
+literal|8
+else|:
+name|bin_width
+expr_stmt|;
 continue|continue;
+block|}
+if|if
+condition|(
+name|file
+operator|->
+name|is_binary
+condition|)
+block|{
+comment|/* "Bin XXX -> YYY bytes" */
+name|int
+name|w
+init|=
+literal|14
+operator|+
+name|decimal_width
+argument_list|(
+name|file
+operator|->
+name|added
+argument_list|)
+operator|+
+name|decimal_width
+argument_list|(
+name|file
+operator|->
+name|deleted
+argument_list|)
+decl_stmt|;
+name|bin_width
+operator|=
+name|bin_width
+operator|<
+name|w
+condition|?
+name|w
+else|:
+name|bin_width
+expr_stmt|;
+comment|/* Display change counts aligned with "Bin" */
+name|number_width
+operator|=
+literal|3
+expr_stmt|;
+continue|continue;
+block|}
 if|if
 condition|(
 name|max_change
@@ -8901,7 +8958,7 @@ operator|=
 name|i
 expr_stmt|;
 comment|/* min(count, data->nr) */
-comment|/* 	 * We have width = stat_width or term_columns() columns total. 	 * We want a maximum of min(max_len, stat_name_width) for the name part. 	 * We want a maximum of min(max_change, stat_graph_width) for the +- part. 	 * We also need 1 for " " and 4 + decimal_width(max_change) 	 * for " | NNNN " and one the empty column at the end, altogether 	 * 6 + decimal_width(max_change). 	 * 	 * If there's not enough space, we will use the smaller of 	 * stat_name_width (if set) and 5/8*width for the filename, 	 * and the rest for constant elements + graph part, but no more 	 * than stat_graph_width for the graph part. 	 * (5/8 gives 50 for filename and 30 for the constant parts + graph 	 * for the standard terminal size). 	 * 	 * In other words: stat_width limits the maximum width, and 	 * stat_name_width fixes the maximum width of the filename, 	 * and is also used to divide available columns if there 	 * aren't enough. 	 */
+comment|/* 	 * We have width = stat_width or term_columns() columns total. 	 * We want a maximum of min(max_len, stat_name_width) for the name part. 	 * We want a maximum of min(max_change, stat_graph_width) for the +- part. 	 * We also need 1 for " " and 4 + decimal_width(max_change) 	 * for " | NNNN " and one the empty column at the end, altogether 	 * 6 + decimal_width(max_change). 	 * 	 * If there's not enough space, we will use the smaller of 	 * stat_name_width (if set) and 5/8*width for the filename, 	 * and the rest for constant elements + graph part, but no more 	 * than stat_graph_width for the graph part. 	 * (5/8 gives 50 for filename and 30 for the constant parts + graph 	 * for the standard terminal size). 	 * 	 * In other words: stat_width limits the maximum width, and 	 * stat_name_width fixes the maximum width of the filename, 	 * and is also used to divide available columns if there 	 * aren't enough. 	 * 	 * Binary files are displayed with "Bin XXX -> YYY bytes" 	 * instead of the change count and graph. This part is treated 	 * similarly to the graph part, except that it is not 	 * "scaled". If total width is too small to accomodate the 	 * guaranteed minimum width of the filename part and the 	 * separators and this message, this message will "overflow" 	 * making the line longer than the maximum width. 	 */
 if|if
 condition|(
 name|options
@@ -8928,6 +8985,22 @@ operator|->
 name|stat_width
 else|:
 literal|80
+expr_stmt|;
+name|number_width
+operator|=
+name|decimal_width
+argument_list|(
+name|max_change
+argument_list|)
+operator|>
+name|number_width
+condition|?
+name|decimal_width
+argument_list|(
+name|max_change
+argument_list|)
+else|:
+name|number_width
 expr_stmt|;
 if|if
 condition|(
@@ -8963,10 +9036,23 @@ literal|6
 operator|+
 name|number_width
 expr_stmt|;
-comment|/* 	 * First assign sizes that are wanted, ignoring available width. 	 */
+comment|/* 	 * First assign sizes that are wanted, ignoring available width. 	 * strlen("Bin XXX -> YYY bytes") == bin_width, and the part 	 * starting from "XXX" should fit in graph_width. 	 */
 name|graph_width
 operator|=
-operator|(
+name|max_change
+operator|+
+literal|4
+operator|>
+name|bin_width
+condition|?
+name|max_change
+else|:
+name|bin_width
+operator|-
+literal|4
+expr_stmt|;
+if|if
+condition|(
 name|options
 operator|->
 name|stat_graph_width
@@ -8975,14 +9061,13 @@ name|options
 operator|->
 name|stat_graph_width
 operator|<
-name|max_change
-operator|)
-condition|?
+name|graph_width
+condition|)
+name|graph_width
+operator|=
 name|options
 operator|->
 name|stat_graph_width
-else|:
-name|max_change
 expr_stmt|;
 name|name_width
 operator|=
@@ -9283,7 +9368,11 @@ name|options
 operator|->
 name|file
 argument_list|,
-literal|"  Bin "
+literal|" %*s "
+argument_list|,
+name|number_width
+argument_list|,
+literal|"Bin"
 argument_list|)
 expr_stmt|;
 name|fprintf
@@ -9392,7 +9481,7 @@ name|options
 operator|->
 name|file
 argument_list|,
-literal|"  Unmerged\n"
+literal|" Unmerged\n"
 argument_list|)
 expr_stmt|;
 continue|continue;
@@ -9532,9 +9621,11 @@ name|options
 operator|->
 name|file
 argument_list|,
-literal|"%5"
+literal|" %*"
 name|PRIuMAX
 literal|"%s"
+argument_list|,
+name|number_width
 argument_list|,
 name|added
 operator|+
