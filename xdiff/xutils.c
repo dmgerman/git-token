@@ -1460,18 +1460,6 @@ return|;
 block|}
 end_function
 
-begin_if
-if|#
-directive|if
-name|__WORDSIZE
-operator|==
-literal|64
-end_if
-
-begin_comment
-comment|/*  * Jan Achrenius on G+: microoptimized version of  * the simpler "(mask& ONEBYTES) * ONEBYTES>> 56"  * that works for the bytemasks without having to  * mask them first.  */
-end_comment
-
 begin_function
 DECL|function|count_masked_bytes
 specifier|static
@@ -1484,6 +1472,17 @@ name|long
 name|mask
 parameter_list|)
 block|{
+if|if
+condition|(
+sizeof|sizeof
+argument_list|(
+name|long
+argument_list|)
+operator|==
+literal|8
+condition|)
+block|{
+comment|/* 		 * Jan Achrenius on G+: microoptimized version of 		 * the simpler "(mask& ONEBYTES) * ONEBYTES>> 56" 		 * that works for the bytemasks without having to 		 * mask them first. 		 */
 return|return
 name|mask
 operator|*
@@ -1492,33 +1491,9 @@ operator|>>
 literal|56
 return|;
 block|}
-end_function
-
-begin_else
-else|#
-directive|else
-end_else
-
-begin_comment
-comment|/* 32-bit case */
-end_comment
-
-begin_comment
-comment|/* Modified Carl Chatfield G+ version for 32-bit */
-end_comment
-
-begin_function
-DECL|function|count_masked_bytes
-specifier|static
-specifier|inline
-name|long
-name|count_masked_bytes
-parameter_list|(
-name|long
-name|mask
-parameter_list|)
+else|else
 block|{
-comment|/* 	 * (a) gives us 	 *   -1 (0, ff), 0 (ffff) or 1 (ffffff) 	 * (b) gives us 	 *   0 for 0, 1 for (ff ffff ffffff) 	 * (a+b+1) gives us 	 *   correct 0-3 bytemask count result 	 */
+comment|/* 		 * Modified Carl Chatfield G+ version for 32-bit * 		 * 		 * (a) gives us 		 *   -1 (0, ff), 0 (ffff) or 1 (ffffff) 		 * (b) gives us 		 *   0 for 0, 1 for (ff ffff ffffff) 		 * (a+b+1) gives us 		 *   correct 0-3 bytemask count result 		 */
 name|long
 name|a
 init|=
@@ -1545,12 +1520,8 @@ operator|+
 literal|1
 return|;
 block|}
+block|}
 end_function
-
-begin_endif
-endif|#
-directive|endif
-end_endif
 
 begin_function
 DECL|function|xdl_hash_record
