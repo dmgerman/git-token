@@ -418,9 +418,12 @@ operator|=
 name|name
 expr_stmt|;
 block|}
-name|printf
+name|printf_ln
 argument_list|(
-literal|"Updating %s\n"
+name|_
+argument_list|(
+literal|"Updating %s"
+argument_list|)
 argument_list|,
 name|name
 argument_list|)
@@ -437,7 +440,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not fetch %s"
+argument_list|)
 argument_list|,
 name|name
 argument_list|)
@@ -597,8 +603,11 @@ name|char
 name|mirror_advice
 index|[]
 init|=
+name|N_
+argument_list|(
 literal|"--mirror is dangerous and deprecated; please\n"
 literal|"\t use --mirror=fetch or --mirror=push instead"
+argument_list|)
 decl_stmt|;
 end_decl_stmt
 
@@ -651,7 +660,10 @@ name|warning
 argument_list|(
 literal|"%s"
 argument_list|,
+name|_
+argument_list|(
 name|mirror_advice
+argument_list|)
 argument_list|)
 expr_stmt|;
 operator|*
@@ -696,7 +708,10 @@ else|else
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"unknown mirror argument: %s"
+argument_list|)
 argument_list|,
 name|arg
 argument_list|)
@@ -911,7 +926,10 @@ name|master
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"specifying a master branch makes no sense with --mirror"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -931,7 +949,10 @@ name|nr
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"specifying branches to track makes sense only with fetch mirrors"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|name
@@ -985,7 +1006,10 @@ operator|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"remote %s already exists."
+argument_list|)
 argument_list|,
 name|name
 argument_list|)
@@ -1012,7 +1036,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"'%s' is not a valid remote name"
+argument_list|)
 argument_list|,
 name|name
 argument_list|)
@@ -1280,7 +1307,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not setup master '%s'"
+argument_list|)
 argument_list|,
 name|master
 argument_list|)
@@ -1615,7 +1645,10 @@ name|remote_name
 condition|)
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"more than one %s"
+argument_list|)
 argument_list|,
 name|orig_key
 argument_list|)
@@ -1882,7 +1915,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not get fetch map for refspec %s"
+argument_list|)
 argument_list|,
 name|states
 operator|->
@@ -2497,7 +2533,10 @@ name|states
 operator|->
 name|push
 argument_list|,
+name|_
+argument_list|(
 literal|"(matching)"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|info
@@ -2577,7 +2616,10 @@ name|states
 operator|->
 name|push
 argument_list|,
+name|_
+argument_list|(
 literal|"(matching)"
+argument_list|)
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -2614,7 +2656,10 @@ name|states
 operator|->
 name|push
 argument_list|,
+name|_
+argument_list|(
 literal|"(delete)"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|info
@@ -3459,7 +3504,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not append '%s' to '%s'"
+argument_list|)
 argument_list|,
 name|remote
 operator|->
@@ -3529,7 +3577,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not append '%s' to '%s'"
+argument_list|)
 argument_list|,
 name|remote
 operator|->
@@ -3599,7 +3650,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not append '%s' to '%s'"
+argument_list|)
 argument_list|,
 name|remote
 operator|->
@@ -3790,7 +3844,10 @@ name|oldremote
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"No such remote: %s"
+argument_list|)
 argument_list|,
 name|rename
 operator|.
@@ -3850,7 +3907,10 @@ operator|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"remote %s already exists."
+argument_list|)
 argument_list|,
 name|rename
 operator|.
@@ -3881,7 +3941,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"'%s' is not a valid remote name"
+argument_list|)
 argument_list|,
 name|rename
 operator|.
@@ -3936,7 +3999,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not rename config section '%s' to '%s'"
+argument_list|)
 argument_list|,
 name|buf
 operator|.
@@ -3983,7 +4049,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not remove config section '%s'"
+argument_list|)
 argument_list|,
 name|buf
 operator|.
@@ -4102,9 +4171,12 @@ block|}
 else|else
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"Not updating non-default fetch respec\n"
 literal|"\t%s\n"
 literal|"\tPlease update the configuration manually if necessary."
+argument_list|)
 argument_list|,
 name|buf2
 operator|.
@@ -4131,7 +4203,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not append '%s'"
+argument_list|)
 argument_list|,
 name|buf
 operator|.
@@ -4232,7 +4307,10 @@ block|{
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not set '%s'"
+argument_list|)
 argument_list|,
 name|buf
 operator|.
@@ -4337,7 +4415,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"deleting '%s' failed"
+argument_list|)
 argument_list|,
 name|item
 operator|->
@@ -4465,7 +4546,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"renaming '%s' failed"
+argument_list|)
 argument_list|,
 name|item
 operator|->
@@ -4639,7 +4723,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"creating '%s' failed"
+argument_list|)
 argument_list|,
 name|buf
 operator|.
@@ -4732,7 +4819,10 @@ name|result
 operator||=
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not remove branch %s"
+argument_list|)
 argument_list|,
 name|refname
 argument_list|)
@@ -4876,7 +4966,10 @@ name|remote
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"No such remote: %s"
+argument_list|)
 argument_list|,
 name|argv
 index|[
@@ -4926,7 +5019,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not remove config section '%s'"
+argument_list|)
 argument_list|,
 name|buf
 operator|.
@@ -5120,21 +5216,22 @@ operator|.
 name|nr
 condition|)
 block|{
-name|fprintf
+name|fprintf_ln
 argument_list|(
 name|stderr
+argument_list|,
+name|Q_
+argument_list|(
+literal|"Note: A branch outside the refs/remotes/ hierarchy was not removed;\n"
+literal|"to delete it, use:"
+argument_list|,
+literal|"Note: Some branches outside the refs/remotes/ hierarchy were not removed;\n"
+literal|"to delete them, use:"
 argument_list|,
 name|skipped
 operator|.
 name|nr
-operator|==
-literal|1
-condition|?
-literal|"Note: A branch outside the refs/remotes/ hierarchy was not removed;\n"
-literal|"to delete it, use:\n"
-else|:
-literal|"Note: Some branches outside the refs/remotes/ hierarchy were not removed;\n"
-literal|"to delete them, use:\n"
+argument_list|)
 argument_list|)
 expr_stmt|;
 for|for
@@ -5438,7 +5535,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"No such remote: %s"
+argument_list|)
 argument_list|,
 name|name
 argument_list|)
@@ -5739,7 +5839,10 @@ condition|)
 block|{
 name|fmt
 operator|=
+name|_
+argument_list|(
 literal|" new (next fetch will store in remotes/%s)"
+argument_list|)
 expr_stmt|;
 name|arg
 operator|=
@@ -5765,7 +5868,10 @@ argument_list|)
 condition|)
 name|arg
 operator|=
+name|_
+argument_list|(
 literal|" tracked"
+argument_list|)
 expr_stmt|;
 elseif|else
 if|if
@@ -5782,12 +5888,18 @@ argument_list|)
 condition|)
 name|arg
 operator|=
+name|_
+argument_list|(
 literal|" stale (use 'git remote prune' to remove)"
+argument_list|)
 expr_stmt|;
 else|else
 name|arg
 operator|=
+name|_
+argument_list|(
 literal|" ???"
+argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
@@ -6033,7 +6145,10 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"invalid branch.%s.merge; cannot rebase onto> 1 branch"
+argument_list|)
 argument_list|,
 name|item
 operator|->
@@ -6064,9 +6179,12 @@ operator|->
 name|rebase
 condition|)
 block|{
-name|printf
+name|printf_ln
 argument_list|(
-literal|"rebases onto remote %s\n"
+name|_
+argument_list|(
+literal|"rebases onto remote %s"
+argument_list|)
 argument_list|,
 name|merge
 operator|->
@@ -6090,9 +6208,12 @@ operator|->
 name|any_rebase
 condition|)
 block|{
-name|printf
+name|printf_ln
 argument_list|(
-literal|" merges with remote %s\n"
+name|_
+argument_list|(
+literal|" merges with remote %s"
+argument_list|)
 argument_list|,
 name|merge
 operator|->
@@ -6106,14 +6227,20 @@ argument_list|)
 expr_stmt|;
 name|also
 operator|=
+name|_
+argument_list|(
 literal|"    and with remote"
+argument_list|)
 expr_stmt|;
 block|}
 else|else
 block|{
-name|printf
+name|printf_ln
 argument_list|(
-literal|"merges with remote %s\n"
+name|_
+argument_list|(
+literal|"merges with remote %s"
+argument_list|)
 argument_list|,
 name|merge
 operator|->
@@ -6127,7 +6254,10 @@ argument_list|)
 expr_stmt|;
 name|also
 operator|=
+name|_
+argument_list|(
 literal|"   and with remote"
+argument_list|)
 expr_stmt|;
 block|}
 for|for
@@ -6408,6 +6538,7 @@ name|item
 operator|->
 name|util
 decl_stmt|;
+specifier|const
 name|char
 modifier|*
 name|src
@@ -6433,7 +6564,10 @@ name|PUSH_STATUS_CREATE
 case|:
 name|status
 operator|=
+name|_
+argument_list|(
 literal|"create"
+argument_list|)
 expr_stmt|;
 break|break;
 case|case
@@ -6441,11 +6575,17 @@ name|PUSH_STATUS_DELETE
 case|:
 name|status
 operator|=
+name|_
+argument_list|(
 literal|"delete"
+argument_list|)
 expr_stmt|;
 name|src
 operator|=
+name|_
+argument_list|(
 literal|"(none)"
+argument_list|)
 expr_stmt|;
 break|break;
 case|case
@@ -6453,7 +6593,10 @@ name|PUSH_STATUS_UPTODATE
 case|:
 name|status
 operator|=
+name|_
+argument_list|(
 literal|"up to date"
+argument_list|)
 expr_stmt|;
 break|break;
 case|case
@@ -6461,7 +6604,10 @@ name|PUSH_STATUS_FASTFORWARD
 case|:
 name|status
 operator|=
+name|_
+argument_list|(
 literal|"fast-forwardable"
+argument_list|)
 expr_stmt|;
 break|break;
 case|case
@@ -6469,7 +6615,10 @@ name|PUSH_STATUS_OUTOFDATE
 case|:
 name|status
 operator|=
+name|_
+argument_list|(
 literal|"local out of date"
+argument_list|)
 expr_stmt|;
 break|break;
 case|case
@@ -6481,23 +6630,25 @@ if|if
 condition|(
 name|status
 condition|)
-name|printf
+block|{
+if|if
+condition|(
+name|push_info
+operator|->
+name|forced
+condition|)
+name|printf_ln
 argument_list|(
-literal|"    %-*s %s to %-*s (%s)\n"
+name|_
+argument_list|(
+literal|"    %-*s forces to %-*s (%s)"
+argument_list|)
 argument_list|,
 name|show_info
 operator|->
 name|width
 argument_list|,
 name|src
-argument_list|,
-name|push_info
-operator|->
-name|forced
-condition|?
-literal|"forces"
-else|:
-literal|"pushes"
 argument_list|,
 name|show_info
 operator|->
@@ -6511,9 +6662,45 @@ name|status
 argument_list|)
 expr_stmt|;
 else|else
-name|printf
+name|printf_ln
 argument_list|(
-literal|"    %-*s %s to %s\n"
+name|_
+argument_list|(
+literal|"    %-*s pushes to %-*s (%s)"
+argument_list|)
+argument_list|,
+name|show_info
+operator|->
+name|width
+argument_list|,
+name|src
+argument_list|,
+name|show_info
+operator|->
+name|width2
+argument_list|,
+name|push_info
+operator|->
+name|dest
+argument_list|,
+name|status
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+if|if
+condition|(
+name|push_info
+operator|->
+name|forced
+condition|)
+name|printf_ln
+argument_list|(
+name|_
+argument_list|(
+literal|"    %-*s forces to %s"
+argument_list|)
 argument_list|,
 name|show_info
 operator|->
@@ -6523,17 +6710,29 @@ name|src
 argument_list|,
 name|push_info
 operator|->
-name|forced
-condition|?
-literal|"forces"
-else|:
-literal|"pushes"
+name|dest
+argument_list|)
+expr_stmt|;
+else|else
+name|printf_ln
+argument_list|(
+name|_
+argument_list|(
+literal|"    %-*s pushes to %s"
+argument_list|)
+argument_list|,
+name|show_info
+operator|->
+name|width
+argument_list|,
+name|src
 argument_list|,
 name|push_info
 operator|->
 name|dest
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 literal|0
 return|;
@@ -6722,17 +6921,23 @@ argument_list|,
 name|query_flag
 argument_list|)
 expr_stmt|;
-name|printf
+name|printf_ln
 argument_list|(
-literal|"* remote %s\n"
+name|_
+argument_list|(
+literal|"* remote %s"
+argument_list|)
 argument_list|,
 operator|*
 name|argv
 argument_list|)
 expr_stmt|;
-name|printf
+name|printf_ln
 argument_list|(
-literal|"  Fetch URL: %s\n"
+name|_
+argument_list|(
+literal|"  Fetch URL: %s"
+argument_list|)
 argument_list|,
 name|states
 operator|.
@@ -6751,7 +6956,10 @@ index|[
 literal|0
 index|]
 else|:
+name|_
+argument_list|(
 literal|"(no URL)"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -6812,9 +7020,12 @@ condition|;
 name|i
 operator|++
 control|)
-name|printf
+name|printf_ln
 argument_list|(
-literal|"  Push  URL: %s\n"
+name|_
+argument_list|(
+literal|"  Push  URL: %s"
+argument_list|)
 argument_list|,
 name|url
 index|[
@@ -6827,9 +7038,12 @@ condition|(
 operator|!
 name|i
 condition|)
-name|printf
+name|printf_ln
 argument_list|(
-literal|"  Push  URL: %s\n"
+name|_
+argument_list|(
+literal|"  Push  URL: %s"
+argument_list|)
 argument_list|,
 literal|"(no URL)"
 argument_list|)
@@ -6838,9 +7052,14 @@ if|if
 condition|(
 name|no_query
 condition|)
-name|printf
+name|printf_ln
 argument_list|(
-literal|"  HEAD branch: (not queried)\n"
+name|_
+argument_list|(
+literal|"  HEAD branch: %s"
+argument_list|)
+argument_list|,
+literal|"(not queried)"
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -6853,9 +7072,14 @@ name|heads
 operator|.
 name|nr
 condition|)
-name|printf
+name|printf_ln
 argument_list|(
-literal|"  HEAD branch: (unknown)\n"
+name|_
+argument_list|(
+literal|"  HEAD branch: %s"
+argument_list|)
+argument_list|,
+literal|"(unknown)"
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -6869,9 +7093,12 @@ name|nr
 operator|==
 literal|1
 condition|)
-name|printf
+name|printf_ln
 argument_list|(
-literal|"  HEAD branch: %s\n"
+name|_
+argument_list|(
+literal|"  HEAD branch: %s"
+argument_list|)
 argument_list|,
 name|states
 operator|.
@@ -6889,8 +7116,11 @@ else|else
 block|{
 name|printf
 argument_list|(
+name|_
+argument_list|(
 literal|"  HEAD branch (remote HEAD is ambiguous,"
 literal|" may be one of the following):\n"
+argument_list|)
 argument_list|)
 expr_stmt|;
 for|for
@@ -6981,25 +7211,27 @@ name|list
 operator|->
 name|nr
 condition|)
-name|printf
+name|printf_ln
 argument_list|(
-literal|"  Remote branch%s:%s\n"
+name|Q_
+argument_list|(
+literal|"  Remote branch:%s"
+argument_list|,
+literal|"  Remote branches:%s"
 argument_list|,
 name|info
 operator|.
 name|list
 operator|->
 name|nr
-operator|>
-literal|1
-condition|?
-literal|"es"
-else|:
-literal|""
+argument_list|)
 argument_list|,
 name|no_query
 condition|?
+name|_
+argument_list|(
 literal|" (status not queried)"
+argument_list|)
 else|:
 literal|""
 argument_list|)
@@ -7057,21 +7289,20 @@ name|list
 operator|->
 name|nr
 condition|)
-name|printf
+name|printf_ln
 argument_list|(
-literal|"  Local branch%s configured for 'git pull':\n"
+name|Q_
+argument_list|(
+literal|"  Local branch configured for 'git pull':"
+argument_list|,
+literal|"  Local branches configured for 'git pull':"
 argument_list|,
 name|info
 operator|.
 name|list
 operator|->
 name|nr
-operator|>
-literal|1
-condition|?
-literal|"es"
-else|:
-literal|""
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|for_each_string_list
@@ -7104,9 +7335,12 @@ name|remote
 operator|->
 name|mirror
 condition|)
-name|printf
+name|printf_ln
 argument_list|(
-literal|"  Local refs will be mirrored by 'git push'\n"
+name|_
+argument_list|(
+literal|"  Local refs will be mirrored by 'git push'"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|info
@@ -7167,25 +7401,27 @@ name|list
 operator|->
 name|nr
 condition|)
-name|printf
+name|printf_ln
 argument_list|(
-literal|"  Local ref%s configured for 'git push'%s:\n"
+name|Q_
+argument_list|(
+literal|"  Local ref configured for 'git push'%s:"
+argument_list|,
+literal|"  Local refs configured for 'git push'%s:"
 argument_list|,
 name|info
 operator|.
 name|list
 operator|->
 name|nr
-operator|>
-literal|1
-condition|?
-literal|"s"
-else|:
-literal|""
+argument_list|)
 argument_list|,
 name|no_query
 condition|?
+name|_
+argument_list|(
 literal|" (status not queried)"
+argument_list|)
 else|:
 literal|""
 argument_list|)
@@ -7419,7 +7655,10 @@ name|result
 operator||=
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Cannot determine remote HEAD"
+argument_list|)
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -7438,8 +7677,11 @@ name|result
 operator||=
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Multiple remote HEAD branches. "
 literal|"Please choose one explicitly with:"
+argument_list|)
 argument_list|)
 expr_stmt|;
 for|for
@@ -7537,7 +7779,10 @@ name|result
 operator||=
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not delete %s"
+argument_list|)
 argument_list|,
 name|buf
 operator|.
@@ -7588,7 +7833,10 @@ name|result
 operator||=
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Not a valid ref: %s"
+argument_list|)
 argument_list|,
 name|buf2
 operator|.
@@ -7615,7 +7863,10 @@ name|result
 operator||=
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not setup %s"
+argument_list|)
 argument_list|,
 name|buf
 operator|.
@@ -7795,9 +8046,15 @@ name|dangling_msg
 init|=
 name|dry_run
 condition|?
-literal|" %s will become dangling!\n"
+name|_
+argument_list|(
+literal|" %s will become dangling!"
+argument_list|)
 else|:
-literal|" %s has become dangling!\n"
+name|_
+argument_list|(
+literal|" %s has become dangling!"
+argument_list|)
 decl_stmt|;
 name|memset
 argument_list|(
@@ -7831,16 +8088,22 @@ operator|.
 name|nr
 condition|)
 block|{
-name|printf
+name|printf_ln
 argument_list|(
-literal|"Pruning %s\n"
+name|_
+argument_list|(
+literal|"Pruning %s"
+argument_list|)
 argument_list|,
 name|remote
 argument_list|)
 expr_stmt|;
-name|printf
+name|printf_ln
 argument_list|(
-literal|"URL: %s\n"
+name|_
+argument_list|(
+literal|"URL: %s"
+argument_list|)
 argument_list|,
 name|states
 operator|.
@@ -7857,7 +8120,10 @@ index|[
 literal|0
 index|]
 else|:
+name|_
+argument_list|(
 literal|"(no URL)"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -7911,15 +8177,32 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-name|printf
-argument_list|(
-literal|" * [%s] %s\n"
-argument_list|,
+if|if
+condition|(
 name|dry_run
-condition|?
-literal|"would prune"
-else|:
-literal|"pruned"
+condition|)
+name|printf_ln
+argument_list|(
+name|_
+argument_list|(
+literal|" * [would prune] %s"
+argument_list|)
+argument_list|,
+name|abbrev_ref
+argument_list|(
+name|refname
+argument_list|,
+literal|"refs/remotes/"
+argument_list|)
+argument_list|)
+expr_stmt|;
+else|else
+name|printf_ln
+argument_list|(
+name|_
+argument_list|(
+literal|" * [pruned] %s"
+argument_list|)
 argument_list|,
 name|abbrev_ref
 argument_list|(
@@ -8411,7 +8694,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"No such remote '%s'"
+argument_list|)
 argument_list|,
 name|remotename
 argument_list|)
@@ -8553,7 +8839,10 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"no remote specified"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|usage_with_options
@@ -8744,7 +9033,10 @@ name|delete_mode
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--add --delete doesn't make sense"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -8821,7 +9113,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"No such remote '%s'"
+argument_list|)
 argument_list|,
 name|remotename
 argument_list|)
@@ -8952,7 +9247,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Invalid old URL pattern: %s"
+argument_list|)
 argument_list|,
 name|oldurl
 argument_list|)
@@ -9007,7 +9305,10 @@ name|matches
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"No such URL found: %s"
+argument_list|)
 argument_list|,
 name|oldurl
 argument_list|)
@@ -9024,7 +9325,10 @@ name|push_mode
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Will not delete all non-push URLs"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|regfree
@@ -9690,7 +9994,10 @@ else|else
 block|{
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Unknown subcommand: %s"
+argument_list|)
 argument_list|,
 name|argv
 index|[

@@ -193,11 +193,6 @@ specifier|extern
 name|void
 name|list_commands
 parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|title
-parameter_list|,
 name|struct
 name|cmdnames
 modifier|*

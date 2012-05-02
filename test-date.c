@@ -37,11 +37,11 @@ modifier|*
 name|now
 parameter_list|)
 block|{
-name|char
+name|struct
+name|strbuf
 name|buf
-index|[
-literal|128
-index|]
+init|=
+name|STRBUF_INIT
 decl_stmt|;
 for|for
 control|(
@@ -70,12 +70,8 @@ literal|0
 argument_list|,
 name|now
 argument_list|,
+operator|&
 name|buf
-argument_list|,
-sizeof|sizeof
-argument_list|(
-name|buf
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|printf
@@ -86,9 +82,17 @@ operator|*
 name|argv
 argument_list|,
 name|buf
+operator|.
+name|buf
 argument_list|)
 expr_stmt|;
 block|}
+name|strbuf_release
+argument_list|(
+operator|&
+name|buf
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 

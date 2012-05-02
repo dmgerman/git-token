@@ -57,7 +57,10 @@ name|char
 name|git_more_info_string
 index|[]
 init|=
+name|N_
+argument_list|(
 literal|"See 'git help<command>' for more information on a specific command."
+argument_list|)
 decl_stmt|;
 end_decl_stmt
 

@@ -449,7 +449,10 @@ name|type
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"object type mismatch at %s"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -548,7 +551,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"object of unexpected type"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|obj
@@ -704,7 +710,14 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|Q_
+argument_list|(
+literal|"cannot fill %d byte"
+argument_list|,
 literal|"cannot fill %d bytes"
+argument_list|,
+name|min
+argument_list|)
 argument_list|,
 name|min
 argument_list|)
@@ -747,12 +760,18 @@ name|ret
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"early EOF"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"read error on input"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -805,7 +824,10 @@ name|input_len
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"used more bytes than were available"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|input_crc32
@@ -841,7 +863,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"pack too large for current definition of off_t"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|consumed_bytes
@@ -933,7 +958,10 @@ literal|0
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"unable to create '%s'"
+argument_list|)
 argument_list|,
 name|pack_name
 argument_list|)
@@ -962,7 +990,10 @@ literal|0
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"cannot open packfile '%s'"
+argument_list|)
 argument_list|,
 name|pack_name
 argument_list|)
@@ -1026,7 +1057,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"pack signature mismatch"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -1163,7 +1197,10 @@ argument_list|)
 expr_stmt|;
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"pack has bad object at offset %lu: %s"
+argument_list|)
 argument_list|,
 name|offset
 argument_list|,
@@ -1558,7 +1595,10 @@ name|bad_object
 argument_list|(
 name|offset
 argument_list|,
+name|_
+argument_list|(
 literal|"inflate returned %d"
+argument_list|)
 argument_list|,
 name|status
 argument_list|)
@@ -1817,7 +1857,10 @@ name|idx
 operator|.
 name|offset
 argument_list|,
+name|_
+argument_list|(
 literal|"offset value overflow for delta base object"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|p
@@ -1890,7 +1933,10 @@ name|idx
 operator|.
 name|offset
 argument_list|,
+name|_
+argument_list|(
 literal|"delta base offset is out of bound"
+argument_list|)
 argument_list|)
 expr_stmt|;
 break|break;
@@ -1916,7 +1962,10 @@ name|idx
 operator|.
 name|offset
 argument_list|,
+name|_
+argument_list|(
 literal|"unknown object type %d"
+argument_list|)
 argument_list|,
 name|obj
 operator|->
@@ -2127,7 +2176,10 @@ literal|0
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"cannot pread pack file"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -2137,7 +2189,14 @@ name|n
 condition|)
 name|die
 argument_list|(
+name|Q_
+argument_list|(
+literal|"premature end of pack file, %lu byte missing"
+argument_list|,
 literal|"premature end of pack file, %lu bytes missing"
+argument_list|,
+name|len
+argument_list|)
 argument_list|,
 name|len
 argument_list|)
@@ -2204,7 +2263,10 @@ name|size
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"serious inflate inconsistency"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|git_inflate_end
@@ -2609,7 +2671,10 @@ name|has_data
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"cannot read existing object %s"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -2640,7 +2705,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"SHA1 COLLISION FOUND WITH %s !"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -2691,7 +2759,10 @@ expr_stmt|;
 else|else
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"invalid blob object %s"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -2744,7 +2815,10 @@ name|obj
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"invalid %s"
+argument_list|)
 argument_list|,
 name|typename
 argument_list|(
@@ -2765,7 +2839,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Error in object"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -2781,7 +2858,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Not all child objects of %s are reachable"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -3107,7 +3187,10 @@ name|idx
 operator|.
 name|offset
 argument_list|,
+name|_
+argument_list|(
 literal|"failed to apply delta"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|base_cache_used
@@ -3275,7 +3358,10 @@ name|idx
 operator|.
 name|offset
 argument_list|,
+name|_
+argument_list|(
 literal|"failed to apply delta"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|sha1_object
@@ -3818,9 +3904,15 @@ name|start_progress
 argument_list|(
 name|from_stdin
 condition|?
+name|_
+argument_list|(
 literal|"Receiving objects"
+argument_list|)
 else|:
+name|_
+argument_list|(
 literal|"Indexing objects"
+argument_list|)
 argument_list|,
 name|nr_objects
 argument_list|)
@@ -3973,7 +4065,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"pack is corrupted (SHA1 mismatch)"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|use
@@ -3994,7 +4089,10 @@ argument_list|)
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"cannot fstat packfile"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -4023,7 +4121,10 @@ name|st_size
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"pack has junk at the end"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -4057,7 +4158,10 @@ name|progress
 operator|=
 name|start_progress
 argument_list|(
+name|_
+argument_list|(
 literal|"Resolving deltas"
+argument_list|)
 argument_list|,
 name|nr_deltas
 argument_list|)
@@ -4258,7 +4362,10 @@ name|Z_STREAM_END
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"unable to deflate appended object (%d)"
+argument_list|)
 argument_list|,
 name|status
 argument_list|)
@@ -4784,7 +4891,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"local object %s is corrupt"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -4934,7 +5044,10 @@ name|err
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"error while closing pack file"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -5003,7 +5116,10 @@ name|EEXIST
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"cannot write keep file '%s'"
+argument_list|)
 argument_list|,
 name|keep_name
 argument_list|)
@@ -5048,7 +5164,10 @@ literal|0
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"cannot close written keep file '%s'"
+argument_list|)
 argument_list|,
 name|keep_name
 argument_list|)
@@ -5108,7 +5227,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"cannot store pack file"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -5173,7 +5295,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"cannot store index file"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -5660,7 +5785,10 @@ name|p
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Cannot open existing pack file '%s'"
+argument_list|)
 argument_list|,
 name|pack_name
 argument_list|)
@@ -5674,7 +5802,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Cannot open existing pack idx file for '%s'"
+argument_list|)
 argument_list|,
 name|pack_name
 argument_list|)
@@ -5917,19 +6048,18 @@ if|if
 condition|(
 name|baseobjects
 condition|)
-name|printf
+name|printf_ln
 argument_list|(
-literal|"non delta: %d object%s\n"
+name|Q_
+argument_list|(
+literal|"non delta: %d object"
+argument_list|,
+literal|"non delta: %d objects"
 argument_list|,
 name|baseobjects
+argument_list|)
 argument_list|,
 name|baseobjects
-operator|>
-literal|1
-condition|?
-literal|"s"
-else|:
-literal|""
 argument_list|)
 expr_stmt|;
 for|for
@@ -5955,9 +6085,19 @@ name|i
 index|]
 condition|)
 continue|continue;
-name|printf
+name|printf_ln
 argument_list|(
-literal|"chain length = %d: %lu object%s\n"
+name|Q_
+argument_list|(
+literal|"chain length = %d: %lu object"
+argument_list|,
+literal|"chain length = %d: %lu objects"
+argument_list|,
+name|chain_histogram
+index|[
+name|i
+index|]
+argument_list|)
 argument_list|,
 name|i
 operator|+
@@ -5967,17 +6107,6 @@ name|chain_histogram
 index|[
 name|i
 index|]
-argument_list|,
-name|chain_histogram
-index|[
-name|i
-index|]
-operator|>
-literal|1
-condition|?
-literal|"s"
-else|:
-literal|""
 argument_list|)
 expr_stmt|;
 block|}
@@ -6134,7 +6263,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Cannot come back to cwd"
+argument_list|)
 argument_list|)
 expr_stmt|;
 for|for
@@ -6385,7 +6517,10 @@ literal|','
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"bad %s"
+argument_list|)
 argument_list|,
 name|arg
 argument_list|)
@@ -6416,7 +6551,10 @@ name|c
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"bad %s"
+argument_list|)
 argument_list|,
 name|arg
 argument_list|)
@@ -6527,7 +6665,10 @@ literal|2
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"bad %s"
+argument_list|)
 argument_list|,
 name|arg
 argument_list|)
@@ -6568,7 +6709,10 @@ literal|0x80000000
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"bad %s"
+argument_list|)
 argument_list|,
 name|arg
 argument_list|)
@@ -6618,7 +6762,10 @@ name|from_stdin
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--fix-thin cannot be used without --stdin"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -6649,7 +6796,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"packfile name '%s' does not end with '.pack'"
+argument_list|)
 argument_list|,
 name|pack_name
 argument_list|)
@@ -6718,7 +6868,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"packfile name '%s' does not end with '.pack'"
+argument_list|)
 argument_list|,
 name|pack_name
 argument_list|)
@@ -6769,7 +6922,10 @@ name|index_name
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--verify with no packfile name given"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|read_idx_option
@@ -6910,7 +7066,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"confusion beyond insanity"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|objects
@@ -7030,7 +7189,16 @@ name|nr_resolved_deltas
 condition|)
 name|die
 argument_list|(
+name|Q_
+argument_list|(
+literal|"pack has %d unresolved delta"
+argument_list|,
 literal|"pack has %d unresolved deltas"
+argument_list|,
+name|nr_deltas
+operator|-
+name|nr_resolved_deltas
+argument_list|)
 argument_list|,
 name|nr_deltas
 operator|-

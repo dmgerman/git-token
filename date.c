@@ -485,9 +485,7 @@ end_function
 
 begin_function
 DECL|function|show_date_relative
-specifier|const
-name|char
-modifier|*
+name|void
 name|show_date_relative
 parameter_list|(
 name|unsigned
@@ -503,12 +501,10 @@ name|timeval
 modifier|*
 name|now
 parameter_list|,
-name|char
+name|struct
+name|strbuf
 modifier|*
 name|timebuf
-parameter_list|,
-name|size_t
-name|timebuf_size
 parameter_list|)
 block|{
 name|unsigned
@@ -523,9 +519,19 @@ name|tv_sec
 operator|<
 name|time
 condition|)
-return|return
+block|{
+name|strbuf_addstr
+argument_list|(
+name|timebuf
+argument_list|,
+name|_
+argument_list|(
 literal|"in the future"
-return|;
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 name|diff
 operator|=
 name|now
@@ -541,20 +547,23 @@ operator|<
 literal|90
 condition|)
 block|{
-name|snprintf
+name|strbuf_addf
 argument_list|(
 name|timebuf
 argument_list|,
-name|timebuf_size
+name|Q_
+argument_list|(
+literal|"%lu second ago"
 argument_list|,
 literal|"%lu seconds ago"
 argument_list|,
 name|diff
 argument_list|)
+argument_list|,
+name|diff
+argument_list|)
 expr_stmt|;
-return|return
-name|timebuf
-return|;
+return|return;
 block|}
 comment|/* Turn it into minutes */
 name|diff
@@ -574,20 +583,23 @@ operator|<
 literal|90
 condition|)
 block|{
-name|snprintf
+name|strbuf_addf
 argument_list|(
 name|timebuf
 argument_list|,
-name|timebuf_size
+name|Q_
+argument_list|(
+literal|"%lu minute ago"
 argument_list|,
 literal|"%lu minutes ago"
 argument_list|,
 name|diff
 argument_list|)
+argument_list|,
+name|diff
+argument_list|)
 expr_stmt|;
-return|return
-name|timebuf
-return|;
+return|return;
 block|}
 comment|/* Turn it into hours */
 name|diff
@@ -607,20 +619,23 @@ operator|<
 literal|36
 condition|)
 block|{
-name|snprintf
+name|strbuf_addf
 argument_list|(
 name|timebuf
 argument_list|,
-name|timebuf_size
+name|Q_
+argument_list|(
+literal|"%lu hour ago"
 argument_list|,
 literal|"%lu hours ago"
 argument_list|,
 name|diff
 argument_list|)
+argument_list|,
+name|diff
+argument_list|)
 expr_stmt|;
-return|return
-name|timebuf
-return|;
+return|return;
 block|}
 comment|/* We deal with number of days from here on */
 name|diff
@@ -640,20 +655,23 @@ operator|<
 literal|14
 condition|)
 block|{
-name|snprintf
+name|strbuf_addf
 argument_list|(
 name|timebuf
 argument_list|,
-name|timebuf_size
+name|Q_
+argument_list|(
+literal|"%lu day ago"
 argument_list|,
 literal|"%lu days ago"
 argument_list|,
 name|diff
 argument_list|)
+argument_list|,
+name|diff
+argument_list|)
 expr_stmt|;
-return|return
-name|timebuf
-return|;
+return|return;
 block|}
 comment|/* Say weeks for the past 10 weeks or so */
 if|if
@@ -663,11 +681,13 @@ operator|<
 literal|70
 condition|)
 block|{
-name|snprintf
+name|strbuf_addf
 argument_list|(
 name|timebuf
 argument_list|,
-name|timebuf_size
+name|Q_
+argument_list|(
+literal|"%lu week ago"
 argument_list|,
 literal|"%lu weeks ago"
 argument_list|,
@@ -679,10 +699,17 @@ operator|)
 operator|/
 literal|7
 argument_list|)
+argument_list|,
+operator|(
+name|diff
+operator|+
+literal|3
+operator|)
+operator|/
+literal|7
+argument_list|)
 expr_stmt|;
-return|return
-name|timebuf
-return|;
+return|return;
 block|}
 comment|/* Say months for the past 12 months or so */
 if|if
@@ -692,11 +719,13 @@ operator|<
 literal|365
 condition|)
 block|{
-name|snprintf
+name|strbuf_addf
 argument_list|(
 name|timebuf
 argument_list|,
-name|timebuf_size
+name|Q_
+argument_list|(
+literal|"%lu month ago"
 argument_list|,
 literal|"%lu months ago"
 argument_list|,
@@ -708,10 +737,17 @@ operator|)
 operator|/
 literal|30
 argument_list|)
+argument_list|,
+operator|(
+name|diff
+operator|+
+literal|15
+operator|)
+operator|/
+literal|30
+argument_list|)
 expr_stmt|;
-return|return
-name|timebuf
-return|;
+return|return;
 block|}
 comment|/* Give years and months for 5 years or so */
 if|if
@@ -757,85 +793,89 @@ name|totalmonths
 operator|%
 literal|12
 decl_stmt|;
-name|int
-name|n
-decl_stmt|;
-name|n
-operator|=
-name|snprintf
-argument_list|(
-name|timebuf
-argument_list|,
-name|timebuf_size
-argument_list|,
-literal|"%lu year%s"
-argument_list|,
-name|years
-argument_list|,
-operator|(
-name|years
-operator|>
-literal|1
-condition|?
-literal|"s"
-else|:
-literal|""
-operator|)
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|months
 condition|)
-name|snprintf
+block|{
+name|struct
+name|strbuf
+name|sb
+init|=
+name|STRBUF_INIT
+decl_stmt|;
+name|strbuf_addf
 argument_list|(
-name|timebuf
-operator|+
-name|n
+operator|&
+name|sb
 argument_list|,
-name|timebuf_size
-operator|-
-name|n
+name|Q_
+argument_list|(
+literal|"%lu year"
 argument_list|,
-literal|", %lu month%s ago"
+literal|"%lu years"
 argument_list|,
-name|months
+name|years
+argument_list|)
 argument_list|,
-operator|(
-name|months
-operator|>
-literal|1
-condition|?
-literal|"s"
-else|:
-literal|""
-operator|)
+name|years
 argument_list|)
 expr_stmt|;
+comment|/* TRANSLATORS: "%s" is "<n> years" */
+name|strbuf_addf
+argument_list|(
+name|timebuf
+argument_list|,
+name|Q_
+argument_list|(
+literal|"%s, %lu month ago"
+argument_list|,
+literal|"%s, %lu months ago"
+argument_list|,
+name|months
+argument_list|)
+argument_list|,
+name|sb
+operator|.
+name|buf
+argument_list|,
+name|months
+argument_list|)
+expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|sb
+argument_list|)
+expr_stmt|;
+block|}
 else|else
-name|snprintf
+name|strbuf_addf
 argument_list|(
 name|timebuf
-operator|+
-name|n
 argument_list|,
-name|timebuf_size
-operator|-
-name|n
+name|Q_
+argument_list|(
+literal|"%lu year ago"
 argument_list|,
-literal|" ago"
+literal|"%lu years ago"
+argument_list|,
+name|years
+argument_list|)
+argument_list|,
+name|years
 argument_list|)
 expr_stmt|;
-return|return
-name|timebuf
-return|;
+return|return;
 block|}
 comment|/* Otherwise, just years. Centuries is probably overkill. */
-name|snprintf
+name|strbuf_addf
 argument_list|(
 name|timebuf
 argument_list|,
-name|timebuf_size
+name|Q_
+argument_list|(
+literal|"%lu year ago"
 argument_list|,
 literal|"%lu years ago"
 argument_list|,
@@ -847,10 +887,16 @@ operator|)
 operator|/
 literal|365
 argument_list|)
+argument_list|,
+operator|(
+name|diff
+operator|+
+literal|183
+operator|)
+operator|/
+literal|365
+argument_list|)
 expr_stmt|;
-return|return
-name|timebuf
-return|;
 block|}
 end_function
 
@@ -879,11 +925,11 @@ modifier|*
 name|tm
 decl_stmt|;
 specifier|static
-name|char
+name|struct
+name|strbuf
 name|timebuf
-index|[
-literal|200
-index|]
+init|=
+name|STRBUF_INIT
 decl_stmt|;
 if|if
 condition|(
@@ -892,14 +938,16 @@ operator|==
 name|DATE_RAW
 condition|)
 block|{
-name|snprintf
+name|strbuf_reset
 argument_list|(
-name|timebuf
-argument_list|,
-sizeof|sizeof
-argument_list|(
+operator|&
 name|timebuf
 argument_list|)
+expr_stmt|;
+name|strbuf_addf
+argument_list|(
+operator|&
+name|timebuf
 argument_list|,
 literal|"%lu %+05d"
 argument_list|,
@@ -910,6 +958,8 @@ argument_list|)
 expr_stmt|;
 return|return
 name|timebuf
+operator|.
+name|buf
 return|;
 block|}
 if|if
@@ -923,6 +973,12 @@ name|struct
 name|timeval
 name|now
 decl_stmt|;
+name|strbuf_reset
+argument_list|(
+operator|&
+name|timebuf
+argument_list|)
+expr_stmt|;
 name|gettimeofday
 argument_list|(
 operator|&
@@ -931,7 +987,6 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
-return|return
 name|show_date_relative
 argument_list|(
 name|time
@@ -941,13 +996,14 @@ argument_list|,
 operator|&
 name|now
 argument_list|,
-name|timebuf
-argument_list|,
-sizeof|sizeof
-argument_list|(
+operator|&
 name|timebuf
 argument_list|)
-argument_list|)
+expr_stmt|;
+return|return
+name|timebuf
+operator|.
+name|buf
 return|;
 block|}
 if|if
@@ -980,14 +1036,21 @@ condition|)
 return|return
 name|NULL
 return|;
+name|strbuf_reset
+argument_list|(
+operator|&
+name|timebuf
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|mode
 operator|==
 name|DATE_SHORT
 condition|)
-name|sprintf
+name|strbuf_addf
 argument_list|(
+operator|&
 name|timebuf
 argument_list|,
 literal|"%04d-%02d-%02d"
@@ -1016,8 +1079,9 @@ name|mode
 operator|==
 name|DATE_ISO8601
 condition|)
-name|sprintf
+name|strbuf_addf
 argument_list|(
+operator|&
 name|timebuf
 argument_list|,
 literal|"%04d-%02d-%02d %02d:%02d:%02d %+05d"
@@ -1060,8 +1124,9 @@ name|mode
 operator|==
 name|DATE_RFC2822
 condition|)
-name|sprintf
+name|strbuf_addf
 argument_list|(
+operator|&
 name|timebuf
 argument_list|,
 literal|"%.3s, %d %.3s %d %02d:%02d:%02d %+05d"
@@ -1106,8 +1171,9 @@ name|tz
 argument_list|)
 expr_stmt|;
 else|else
-name|sprintf
+name|strbuf_addf
 argument_list|(
+operator|&
 name|timebuf
 argument_list|,
 literal|"%.3s %.3s %d %02d:%02d:%02d %d%c%+05d"
@@ -1163,6 +1229,8 @@ argument_list|)
 expr_stmt|;
 return|return
 name|timebuf
+operator|.
+name|buf
 return|;
 block|}
 end_function

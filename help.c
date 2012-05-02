@@ -1238,11 +1238,6 @@ DECL|function|list_commands
 name|void
 name|list_commands
 parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|title
-parameter_list|,
 name|struct
 name|cmdnames
 modifier|*
@@ -1354,33 +1349,14 @@ init|=
 name|git_exec_path
 argument_list|()
 decl_stmt|;
-name|printf
+name|printf_ln
 argument_list|(
-literal|"available %s in '%s'\n"
-argument_list|,
-name|title
+name|_
+argument_list|(
+literal|"available git commands in '%s'"
+argument_list|)
 argument_list|,
 name|exec_path
-argument_list|)
-expr_stmt|;
-name|printf
-argument_list|(
-literal|"----------------"
-argument_list|)
-expr_stmt|;
-name|mput_char
-argument_list|(
-literal|'-'
-argument_list|,
-name|strlen
-argument_list|(
-name|title
-argument_list|)
-operator|+
-name|strlen
-argument_list|(
-name|exec_path
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|putchar
@@ -1408,25 +1384,11 @@ operator|->
 name|cnt
 condition|)
 block|{
-name|printf
+name|printf_ln
 argument_list|(
-literal|"%s available from elsewhere on your $PATH\n"
-argument_list|,
-name|title
-argument_list|)
-expr_stmt|;
-name|printf
+name|_
 argument_list|(
-literal|"---------------------------------------"
-argument_list|)
-expr_stmt|;
-name|mput_char
-argument_list|(
-literal|'-'
-argument_list|,
-name|strlen
-argument_list|(
-name|title
+literal|"git commands available from elsewhere on your $PATH"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2163,7 +2125,10 @@ name|cnt
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Uh oh. Your system reports no Git commands at all."
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* skip and count prefix matches */
@@ -2296,13 +2261,16 @@ operator|&
 name|main_cmds
 argument_list|)
 expr_stmt|;
-name|fprintf
+name|fprintf_ln
 argument_list|(
 name|stderr
 argument_list|,
+name|_
+argument_list|(
 literal|"WARNING: You called a Git command named '%s', "
 literal|"which does not exist.\n"
-literal|"Continuing under the assumption that you meant '%s'\n"
+literal|"Continuing under the assumption that you meant '%s'"
+argument_list|)
 argument_list|,
 name|cmd
 argument_list|,
@@ -2316,11 +2284,14 @@ operator|>
 literal|0
 condition|)
 block|{
-name|fprintf
+name|fprintf_ln
 argument_list|(
 name|stderr
 argument_list|,
-literal|"in %0.1f seconds automatically...\n"
+name|_
+argument_list|(
+literal|"in %0.1f seconds automatically..."
+argument_list|)
 argument_list|,
 operator|(
 name|float
@@ -2346,11 +2317,14 @@ return|return
 name|assumed
 return|;
 block|}
-name|fprintf
+name|fprintf_ln
 argument_list|(
 name|stderr
 argument_list|,
-literal|"git: '%s' is not a git command. See 'git --help'.\n"
+name|_
+argument_list|(
+literal|"git: '%s' is not a git command. See 'git --help'."
+argument_list|)
 argument_list|,
 name|cmd
 argument_list|)
@@ -2363,19 +2337,18 @@ name|best_similarity
 argument_list|)
 condition|)
 block|{
-name|fprintf
+name|fprintf_ln
 argument_list|(
 name|stderr
 argument_list|,
-literal|"\nDid you mean %s?\n"
+name|Q_
+argument_list|(
+literal|"\nDid you mean this?"
+argument_list|,
+literal|"\nDid you mean one of these?"
 argument_list|,
 name|n
-operator|<
-literal|2
-condition|?
-literal|"this"
-else|:
-literal|"one of these"
+argument_list|)
 argument_list|)
 expr_stmt|;
 for|for
