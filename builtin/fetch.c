@@ -1719,6 +1719,7 @@ argument_list|(
 literal|"[new branch]"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -1740,7 +1741,6 @@ operator|->
 name|new_sha1
 argument_list|)
 expr_stmt|;
-block|}
 name|r
 operator|=
 name|s_update_ref
