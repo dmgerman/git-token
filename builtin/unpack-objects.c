@@ -592,7 +592,7 @@ condition|)
 block|{
 name|error
 argument_list|(
-literal|"inflate returned %d\n"
+literal|"inflate returned %d"
 argument_list|,
 name|ret
 argument_list|)

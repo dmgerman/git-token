@@ -12200,7 +12200,7 @@ block|{
 return|return
 name|error
 argument_list|(
-literal|"unable to write sha1 filename %s: %s\n"
+literal|"unable to write sha1 filename %s: %s"
 argument_list|,
 name|filename
 argument_list|,
@@ -12690,7 +12690,7 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"insufficient permission for adding an object to repository database %s\n"
+literal|"insufficient permission for adding an object to repository database %s"
 argument_list|,
 name|get_object_directory
 argument_list|()
@@ -12700,9 +12700,7 @@ else|else
 return|return
 name|error
 argument_list|(
-literal|"unable to create temporary sha1 filename %s: %s\n"
-argument_list|,
-name|tmp_file
+literal|"unable to create temporary file: %s"
 argument_list|,
 name|strerror
 argument_list|(

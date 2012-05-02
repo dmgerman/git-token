@@ -8444,7 +8444,7 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"Cannot do a bind merge of %d trees\n"
+literal|"Cannot do a bind merge of %d trees"
 argument_list|,
 name|o
 operator|->

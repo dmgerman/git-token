@@ -182,7 +182,7 @@ argument_list|)
 condition|)
 name|warning
 argument_list|(
-literal|"unable to close file mapping handle\n"
+literal|"unable to close file mapping handle"
 argument_list|)
 expr_stmt|;
 return|return

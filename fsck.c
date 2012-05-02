@@ -199,7 +199,7 @@ name|result
 operator|=
 name|error
 argument_list|(
-literal|"in tree %s: entry %s has bad mode %.6o\n"
+literal|"in tree %s: entry %s has bad mode %.6o"
 argument_list|,
 name|sha1_to_hex
 argument_list|(

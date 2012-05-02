@@ -357,7 +357,7 @@ condition|)
 block|{
 name|warning
 argument_list|(
-literal|"Cannot merge binary files: %s (%s vs. %s)\n"
+literal|"Cannot merge binary files: %s (%s vs. %s)"
 argument_list|,
 name|path
 argument_list|,
