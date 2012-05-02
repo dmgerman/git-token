@@ -745,15 +745,17 @@ specifier|const
 name|char
 modifier|*
 name|fmt
-decl_stmt|,
-modifier|*
-name|remote
 decl_stmt|;
 name|int
 name|i
 decl_stmt|;
 name|int
 name|ret
+init|=
+literal|0
+decl_stmt|;
+name|int
+name|remote_branch
 init|=
 literal|0
 decl_stmt|;
@@ -775,13 +777,10 @@ name|fmt
 operator|=
 literal|"refs/remotes/%s"
 expr_stmt|;
-comment|/* TRANSLATORS: This is "remote " in "remote branch '%s' not found" */
-name|remote
+comment|/* For subsequent UI messages */
+name|remote_branch
 operator|=
-name|_
-argument_list|(
-literal|"remote "
-argument_list|)
+literal|1
 expr_stmt|;
 name|force
 operator|=
@@ -794,10 +793,6 @@ case|:
 name|fmt
 operator|=
 literal|"refs/heads/%s"
-expr_stmt|;
-name|remote
-operator|=
-literal|""
 expr_stmt|;
 break|break;
 default|default:
@@ -935,12 +930,17 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|remote_branch
+condition|?
 name|_
 argument_list|(
-literal|"%sbranch '%s' not found."
+literal|"remote branch '%s' not found."
 argument_list|)
-argument_list|,
-name|remote
+else|:
+name|_
+argument_list|(
+literal|"branch '%s' not found."
+argument_list|)
 argument_list|,
 name|bname
 operator|.
@@ -1040,12 +1040,17 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|remote_branch
+condition|?
 name|_
 argument_list|(
-literal|"Error deleting %sbranch '%s'"
+literal|"Error deleting remote branch '%s'"
 argument_list|)
-argument_list|,
-name|remote
+else|:
+name|_
+argument_list|(
+literal|"Error deleting branch '%s'"
+argument_list|)
 argument_list|,
 name|bname
 operator|.
@@ -1072,12 +1077,17 @@ name|quiet
 condition|)
 name|printf
 argument_list|(
+name|remote_branch
+condition|?
 name|_
 argument_list|(
-literal|"Deleted %sbranch %s (was %s).\n"
+literal|"Deleted remote branch %s (was %s).\n"
 argument_list|)
-argument_list|,
-name|remote
+else|:
+name|_
+argument_list|(
+literal|"Deleted branch %s (was %s).\n"
+argument_list|)
 argument_list|,
 name|bname
 operator|.

@@ -1191,62 +1191,6 @@ block|}
 end_function
 
 begin_function
-DECL|function|whence_s
-specifier|static
-specifier|const
-name|char
-modifier|*
-name|whence_s
-parameter_list|(
-name|void
-parameter_list|)
-block|{
-specifier|const
-name|char
-modifier|*
-name|s
-init|=
-literal|""
-decl_stmt|;
-switch|switch
-condition|(
-name|whence
-condition|)
-block|{
-case|case
-name|FROM_COMMIT
-case|:
-break|break;
-case|case
-name|FROM_MERGE
-case|:
-name|s
-operator|=
-name|_
-argument_list|(
-literal|"merge"
-argument_list|)
-expr_stmt|;
-break|break;
-case|case
-name|FROM_CHERRY_PICK
-case|:
-name|s
-operator|=
-name|_
-argument_list|(
-literal|"cherry-pick"
-argument_list|)
-expr_stmt|;
-break|break;
-block|}
-return|return
-name|s
-return|;
-block|}
-end_function
-
-begin_function
 DECL|function|rollback_index_files
 specifier|static
 name|void
@@ -2235,17 +2179,37 @@ name|whence
 operator|!=
 name|FROM_COMMIT
 condition|)
+block|{
+if|if
+condition|(
+name|whence
+operator|==
+name|FROM_MERGE
+condition|)
 name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"cannot do a partial commit during a %s."
+literal|"cannot do a partial commit during a merge."
 argument_list|)
-argument_list|,
-name|whence_s
-argument_list|()
 argument_list|)
 expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|whence
+operator|==
+name|FROM_CHERRY_PICK
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"cannot do a partial commit during a cherry-pick."
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 name|memset
 argument_list|(
 operator|&
@@ -4329,18 +4293,27 @@ name|s
 argument_list|,
 name|GIT_COLOR_NORMAL
 argument_list|,
+name|whence
+operator|==
+name|FROM_MERGE
+condition|?
 name|_
 argument_list|(
 literal|"\n"
-literal|"It looks like you may be committing a %s.\n"
+literal|"It looks like you may be committing a merge.\n"
 literal|"If this is not correct, please remove the file\n"
 literal|"	%s\n"
 literal|"and try again.\n"
-literal|""
 argument_list|)
-argument_list|,
-name|whence_s
-argument_list|()
+else|:
+name|_
+argument_list|(
+literal|"\n"
+literal|"It looks like you may be committing a cherry-pick.\n"
+literal|"If this is not correct, please remove the file\n"
+literal|"	%s\n"
+literal|"and try again.\n"
+argument_list|)
 argument_list|,
 name|git_path
 argument_list|(
@@ -4363,6 +4336,12 @@ argument_list|,
 literal|"\n"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|cleanup_mode
+operator|==
+name|CLEANUP_ALL
+condition|)
 name|status_printf
 argument_list|(
 name|s
@@ -4372,32 +4351,14 @@ argument_list|,
 name|_
 argument_list|(
 literal|"Please enter the commit message for your changes."
-argument_list|)
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|cleanup_mode
-operator|==
-name|CLEANUP_ALL
-condition|)
-name|status_printf_more
-argument_list|(
-name|s
-argument_list|,
-name|GIT_COLOR_NORMAL
-argument_list|,
-name|_
-argument_list|(
-literal|" Lines starting\n"
-literal|"with '#' will be ignored, and an empty"
+literal|" Lines starting\nwith '#' will be ignored, and an empty"
 literal|" message aborts the commit.\n"
 argument_list|)
 argument_list|)
 expr_stmt|;
 else|else
 comment|/* CLEANUP_SPACE, that is. */
-name|status_printf_more
+name|status_printf
 argument_list|(
 name|s
 argument_list|,
@@ -4405,6 +4366,7 @@ name|GIT_COLOR_NORMAL
 argument_list|,
 name|_
 argument_list|(
+literal|"Please enter the commit message for your changes."
 literal|" Lines starting\n"
 literal|"with '#' will be kept; you may remove them"
 literal|" yourself if you want to.\n"
@@ -5687,17 +5649,37 @@ name|whence
 operator|!=
 name|FROM_COMMIT
 condition|)
+block|{
+if|if
+condition|(
+name|whence
+operator|==
+name|FROM_MERGE
+condition|)
 name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"You are in the middle of a %s -- cannot amend."
+literal|"You are in the middle of a merge -- cannot amend."
 argument_list|)
-argument_list|,
-name|whence_s
-argument_list|()
 argument_list|)
 expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|whence
+operator|==
+name|FROM_CHERRY_PICK
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"You are in the middle of a cherry-pick -- cannot amend."
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|fixup_message
