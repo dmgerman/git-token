@@ -4245,6 +4245,21 @@ name|strcmp
 argument_list|(
 name|value
 argument_list|,
+literal|"simple"
+argument_list|)
+condition|)
+name|push_default
+operator|=
+name|PUSH_DEFAULT_SIMPLE
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|value
+argument_list|,
 literal|"upstream"
 argument_list|)
 condition|)
@@ -4297,8 +4312,8 @@ expr_stmt|;
 return|return
 name|error
 argument_list|(
-literal|"Must be one of nothing, matching, "
-literal|"tracking or current."
+literal|"Must be one of nothing, matching, simple, "
+literal|"upstream or current."
 argument_list|)
 return|;
 block|}
