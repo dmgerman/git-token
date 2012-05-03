@@ -1502,7 +1502,13 @@ condition|(
 operator|!
 name|subdir
 condition|)
+block|{
+name|dir
+operator|=
+name|NULL
+expr_stmt|;
 break|break;
+block|}
 name|dir
 operator|=
 name|subdir
