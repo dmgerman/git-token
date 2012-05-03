@@ -763,10 +763,6 @@ name|compressed_size
 decl_stmt|;
 name|unsigned
 name|long
-name|uncompressed_size
-decl_stmt|;
-name|unsigned
-name|long
 name|crc
 decl_stmt|;
 name|unsigned
@@ -857,7 +853,7 @@ name|out
 operator|=
 name|NULL
 expr_stmt|;
-name|uncompressed_size
+name|size
 operator|=
 literal|0
 expr_stmt|;
@@ -995,10 +991,6 @@ expr_stmt|;
 name|out
 operator|=
 name|buffer
-expr_stmt|;
-name|uncompressed_size
-operator|=
-name|size
 expr_stmt|;
 name|compressed_size
 operator|=
@@ -1223,7 +1215,7 @@ name|dirent
 operator|.
 name|size
 argument_list|,
-name|uncompressed_size
+name|size
 argument_list|)
 expr_stmt|;
 name|copy_le16
@@ -1401,7 +1393,7 @@ name|header
 operator|.
 name|size
 argument_list|,
-name|uncompressed_size
+name|size
 argument_list|)
 expr_stmt|;
 name|copy_le16
