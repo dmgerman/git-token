@@ -987,33 +987,6 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|!
-name|sha1
-condition|)
-block|{
-name|die
-argument_list|(
-literal|"BUG: sha1 == NULL is not supported"
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-operator|!
-name|path
-condition|)
-block|{
-name|die
-argument_list|(
-literal|"BUG: path == NULL is not supported"
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-if|if
-condition|(
 name|S_ISDIR
 argument_list|(
 name|mode
@@ -1242,7 +1215,6 @@ argument_list|,
 name|pathlen
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|S_ISLNK
