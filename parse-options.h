@@ -1154,6 +1154,24 @@ define|\
 value|OPT_COLOR_FLAG(0, "color", (var), (h))
 end_define
 
+begin_define
+DECL|macro|OPT_COLUMN
+define|#
+directive|define
+name|OPT_COLUMN
+parameter_list|(
+name|s
+parameter_list|,
+name|l
+parameter_list|,
+name|v
+parameter_list|,
+name|h
+parameter_list|)
+define|\
+value|{ OPTION_CALLBACK, (s), (l), (v), "style", (h), PARSE_OPT_OPTARG, parseopt_column_callback }
+end_define
+
 begin_endif
 endif|#
 directive|endif

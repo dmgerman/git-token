@@ -230,6 +230,10 @@ index|[
 name|COLOR_MAXLEN
 index|]
 decl_stmt|;
+DECL|member|colopts
+name|int
+name|colopts
+decl_stmt|;
 comment|/* These are computed during processing of the individual sections */
 DECL|member|commitable
 name|int

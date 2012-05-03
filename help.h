@@ -193,6 +193,10 @@ specifier|extern
 name|void
 name|list_commands
 parameter_list|(
+name|unsigned
+name|int
+name|colopts
+parameter_list|,
 name|struct
 name|cmdnames
 modifier|*
