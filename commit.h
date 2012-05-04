@@ -455,6 +455,12 @@ name|enum
 name|date_mode
 name|date_mode
 decl_stmt|;
+DECL|member|date_mode_explicit
+name|unsigned
+name|date_mode_explicit
+range|:
+literal|1
+decl_stmt|;
 DECL|member|need_8bit_cte
 name|int
 name|need_8bit_cte

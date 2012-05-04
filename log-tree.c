@@ -2578,6 +2578,14 @@ name|date_mode
 expr_stmt|;
 name|ctx
 operator|.
+name|date_mode_explicit
+operator|=
+name|opt
+operator|->
+name|date_mode_explicit
+expr_stmt|;
+name|ctx
+operator|.
 name|abbrev
 operator|=
 name|opt

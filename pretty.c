@@ -5506,7 +5506,15 @@ name|c
 operator|->
 name|pretty_ctx
 operator|->
+name|date_mode_explicit
+condition|?
+name|c
+operator|->
+name|pretty_ctx
+operator|->
 name|date_mode
+else|:
+name|DATE_NORMAL
 argument_list|,
 operator|(
 name|placeholder
