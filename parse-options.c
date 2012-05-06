@@ -3104,11 +3104,17 @@ name|opts
 operator|->
 name|argh
 condition|?
+name|_
+argument_list|(
 name|opts
 operator|->
 name|argh
+argument_list|)
 else|:
+name|_
+argument_list|(
 literal|"..."
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -3199,15 +3205,21 @@ argument_list|,
 literal|"cat<<\\EOF\n"
 argument_list|)
 expr_stmt|;
-name|fprintf
+name|fprintf_ln
 argument_list|(
 name|outfile
 argument_list|,
-literal|"usage: %s\n"
+name|_
+argument_list|(
+literal|"usage: %s"
+argument_list|)
 argument_list|,
+name|_
+argument_list|(
 operator|*
 name|usagestr
 operator|++
+argument_list|)
 argument_list|)
 expr_stmt|;
 while|while
@@ -3219,15 +3231,22 @@ operator|*
 operator|*
 name|usagestr
 condition|)
-name|fprintf
+comment|/* TRANSLATORS: the colon here should align with the 		   one in "usage: %s" translation */
+name|fprintf_ln
 argument_list|(
 name|outfile
 argument_list|,
-literal|"   or: %s\n"
+name|_
+argument_list|(
+literal|"   or: %s"
+argument_list|)
 argument_list|,
+name|_
+argument_list|(
 operator|*
 name|usagestr
 operator|++
+argument_list|)
 argument_list|)
 expr_stmt|;
 while|while
@@ -3236,22 +3255,32 @@ operator|*
 name|usagestr
 condition|)
 block|{
-name|fprintf
+if|if
+condition|(
+operator|*
+operator|*
+name|usagestr
+condition|)
+name|fprintf_ln
 argument_list|(
 name|outfile
 argument_list|,
-literal|"%s%s\n"
+name|_
+argument_list|(
+literal|"    %s"
+argument_list|)
 argument_list|,
-operator|*
+name|_
+argument_list|(
 operator|*
 name|usagestr
-condition|?
-literal|"    "
-else|:
-literal|""
-argument_list|,
-operator|*
-name|usagestr
+argument_list|)
+argument_list|)
+expr_stmt|;
+else|else
+name|putchar
+argument_list|(
+literal|'\n'
 argument_list|)
 expr_stmt|;
 name|usagestr
@@ -3321,9 +3350,12 @@ name|outfile
 argument_list|,
 literal|"%s\n"
 argument_list|,
+name|_
+argument_list|(
 name|opts
 operator|->
 name|help
+argument_list|)
 argument_list|)
 expr_stmt|;
 continue|continue;
@@ -3515,9 +3547,12 @@ name|USAGE_GAP
 argument_list|,
 literal|""
 argument_list|,
+name|_
+argument_list|(
 name|opts
 operator|->
 name|help
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

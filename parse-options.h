@@ -216,7 +216,7 @@ function_decl|;
 end_typedef
 
 begin_comment
-comment|/*  * `type`::  *   holds the type of the option, you must have an OPTION_END last in your  *   array.  *  * `short_name`::  *   the character to use as a short option name, '\0' if none.  *  * `long_name`::  *   the long option name, without the leading dashes, NULL if none.  *  * `value`::  *   stores pointers to the values to be filled.  *  * `argh`::  *   token to explain the kind of argument this option wants. Keep it  *   homogeneous across the repository.  *  * `help`::  *   the short help associated to what the option does.  *   Must never be NULL (except for OPTION_END).  *   OPTION_GROUP uses this pointer to store the group header.  *  * `flags`::  *   mask of parse_opt_option_flags.  *   PARSE_OPT_OPTARG: says that the argument is optional (not for BOOLEANs)  *   PARSE_OPT_NOARG: says that this option does not take an argument  *   PARSE_OPT_NONEG: says that this option cannot be negated  *   PARSE_OPT_HIDDEN: this option is skipped in the default usage, and  *                     shown only in the full usage.  *   PARSE_OPT_LASTARG_DEFAULT: says that this option will take the default  *				value if no argument is given when the option  *				is last on the command line. If the option is  *				not last it will require an argument.  *				Should not be used with PARSE_OPT_OPTARG.  *   PARSE_OPT_NODASH: this option doesn't start with a dash.  *   PARSE_OPT_LITERAL_ARGHELP: says that argh shouldn't be enclosed in brackets  *				(i.e. '<argh>') in the help message.  *				Useful for options with multiple parameters.  *  * `callback`::  *   pointer to the callback to use for OPTION_CALLBACK or  *   OPTION_LOWLEVEL_CALLBACK.  *  * `defval`::  *   default value to fill (*->value) with for PARSE_OPT_OPTARG.  *   OPTION_{BIT,SET_INT,SET_PTR} store the {mask,integer,pointer} to put in  *   the value when met.  *   CALLBACKS can use it like they want.  */
+comment|/*  * `type`::  *   holds the type of the option, you must have an OPTION_END last in your  *   array.  *  * `short_name`::  *   the character to use as a short option name, '\0' if none.  *  * `long_name`::  *   the long option name, without the leading dashes, NULL if none.  *  * `value`::  *   stores pointers to the values to be filled.  *  * `argh`::  *   token to explain the kind of argument this option wants. Keep it  *   homogeneous across the repository. Should be wrapped by N_() for  *   translation.  *  * `help`::  *   the short help associated to what the option does.  *   Must never be NULL (except for OPTION_END).  *   OPTION_GROUP uses this pointer to store the group header.  *   Should be wrapped by N_() for translation.  *  * `flags`::  *   mask of parse_opt_option_flags.  *   PARSE_OPT_OPTARG: says that the argument is optional (not for BOOLEANs)  *   PARSE_OPT_NOARG: says that this option does not take an argument  *   PARSE_OPT_NONEG: says that this option cannot be negated  *   PARSE_OPT_HIDDEN: this option is skipped in the default usage, and  *                     shown only in the full usage.  *   PARSE_OPT_LASTARG_DEFAULT: says that this option will take the default  *				value if no argument is given when the option  *				is last on the command line. If the option is  *				not last it will require an argument.  *				Should not be used with PARSE_OPT_OPTARG.  *   PARSE_OPT_NODASH: this option doesn't start with a dash.  *   PARSE_OPT_LITERAL_ARGHELP: says that argh shouldn't be enclosed in brackets  *				(i.e. '<argh>') in the help message.  *				Useful for options with multiple parameters.  *  * `callback`::  *   pointer to the callback to use for OPTION_CALLBACK or  *   OPTION_LOWLEVEL_CALLBACK.  *  * `defval`::  *   default value to fill (*->value) with for PARSE_OPT_OPTARG.  *   OPTION_{BIT,SET_INT,SET_PTR} store the {mask,integer,pointer} to put in  *   the value when met.  *   CALLBACKS can use it like they want.  */
 end_comment
 
 begin_struct
@@ -430,7 +430,7 @@ name|v
 parameter_list|,
 name|h
 parameter_list|)
-value|{ OPTION_INTEGER, (s), (l), (v), "n", (h) }
+value|{ OPTION_INTEGER, (s), (l), (v), N_("n"), (h) }
 end_define
 
 begin_define
@@ -504,7 +504,7 @@ parameter_list|,
 name|h
 parameter_list|)
 define|\
-value|{ OPTION_CALLBACK, (s), (l), (v), "time",(h), 0, \ 	  parse_opt_approxidate_cb }
+value|{ OPTION_CALLBACK, (s), (l), (v), N_("time"),(h), 0,	\ 	  parse_opt_approxidate_cb }
 end_define
 
 begin_define
@@ -559,7 +559,7 @@ name|v
 parameter_list|,
 name|h
 parameter_list|)
-value|{ OPTION_FILENAME, (s), (l), (v), \ 				       "file", (h) }
+value|{ OPTION_FILENAME, (s), (l), (v), \ 				       N_("file"), (h) }
 end_define
 
 begin_define
@@ -577,7 +577,7 @@ parameter_list|,
 name|h
 parameter_list|)
 define|\
-value|{ OPTION_CALLBACK, (s), (l), (v), "when", (h), PARSE_OPT_OPTARG, \ 		parse_opt_color_flag_cb, (intptr_t)"always" }
+value|{ OPTION_CALLBACK, (s), (l), (v), N_("when"), (h), PARSE_OPT_OPTARG, \ 		parse_opt_color_flag_cb, (intptr_t)"always" }
 end_define
 
 begin_define
@@ -591,7 +591,7 @@ parameter_list|,
 name|l
 parameter_list|)
 define|\
-value|{ OPTION_CALLBACK, (s), (l), NULL, NULL, \ 	  "no-op (backward compatibility)", \ 	  PARSE_OPT_HIDDEN | PARSE_OPT_NOARG, parse_opt_noop_cb }
+value|{ OPTION_CALLBACK, (s), (l), NULL, NULL, \ 	  N_("no-op (backward compatibility)"),		\ 	  PARSE_OPT_HIDDEN | PARSE_OPT_NOARG, parse_opt_noop_cb }
 end_define
 
 begin_comment
@@ -607,7 +607,7 @@ value|OPT_COUNTUP
 end_define
 
 begin_comment
-comment|/* parse_options() will filter out the processed options and leave the  * non-option arguments in argv[].  * Returns the number of arguments left in argv[].  */
+comment|/* parse_options() will filter out the processed options and leave the  * non-option arguments in argv[]. usagestr strings should be marked  * for translation with N_().  * Returns the number of arguments left in argv[].  */
 end_comment
 
 begin_function_decl
@@ -1099,7 +1099,7 @@ parameter_list|(
 name|var
 parameter_list|)
 define|\
-value|{ OPTION_CALLBACK, 'v', "verbose", (var), NULL, "be more verbose", \ 	  PARSE_OPT_NOARG,&parse_opt_verbosity_cb, 0 }, \ 	{ OPTION_CALLBACK, 'q', "quiet", (var), NULL, "be more quiet", \ 	  PARSE_OPT_NOARG,&parse_opt_verbosity_cb, 0 }
+value|{ OPTION_CALLBACK, 'v', "verbose", (var), NULL, N_("be more verbose"), \ 	  PARSE_OPT_NOARG,&parse_opt_verbosity_cb, 0 }, \ 	{ OPTION_CALLBACK, 'q', "quiet", (var), NULL, N_("be more quiet"), \ 	  PARSE_OPT_NOARG,&parse_opt_verbosity_cb, 0 }
 end_define
 
 begin_define
@@ -1137,7 +1137,7 @@ parameter_list|(
 name|var
 parameter_list|)
 define|\
-value|{ OPTION_CALLBACK, 0, "abbrev", (var), "n", \ 	  "use<n> digits to display SHA-1s", \ 	  PARSE_OPT_OPTARG,&parse_opt_abbrev_cb, 0 }
+value|{ OPTION_CALLBACK, 0, "abbrev", (var), N_("n"),	\ 	  N_("use<n> digits to display SHA-1s"),	\ 	  PARSE_OPT_OPTARG,&parse_opt_abbrev_cb, 0 }
 end_define
 
 begin_define
