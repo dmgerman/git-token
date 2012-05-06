@@ -273,7 +273,10 @@ name|apply_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git apply [options] [<patch>...]"
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -19619,9 +19622,15 @@ literal|"exclude"
 block|,
 name|NULL
 block|,
+name|N_
+argument_list|(
 literal|"path"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"don't apply changes matching the given path"
+argument_list|)
 block|,
 literal|0
 block|,
@@ -19637,9 +19646,15 @@ literal|"include"
 block|,
 name|NULL
 block|,
+name|N_
+argument_list|(
 literal|"path"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"apply changes matching the given path"
+argument_list|)
 block|,
 literal|0
 block|,
@@ -19655,9 +19670,15 @@ name|NULL
 block|,
 name|NULL
 block|,
+name|N_
+argument_list|(
 literal|"num"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"remove<num> leading slashes from traditional diff paths"
+argument_list|)
 block|,
 literal|0
 block|,
@@ -19673,7 +19694,10 @@ argument_list|,
 operator|&
 name|no_add
 argument_list|,
+name|N_
+argument_list|(
 literal|"ignore additions made by the patch"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -19685,7 +19709,10 @@ argument_list|,
 operator|&
 name|diffstat
 argument_list|,
+name|N_
+argument_list|(
 literal|"instead of applying the patch, output diffstat for the input"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_NOOP_NOARG
@@ -19711,7 +19738,10 @@ argument_list|,
 operator|&
 name|numstat
 argument_list|,
+name|N_
+argument_list|(
 literal|"shows number of added and deleted lines in decimal notation"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -19723,7 +19753,10 @@ argument_list|,
 operator|&
 name|summary
 argument_list|,
+name|N_
+argument_list|(
 literal|"instead of applying the patch, output a summary for the input"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -19735,7 +19768,10 @@ argument_list|,
 operator|&
 name|check
 argument_list|,
+name|N_
+argument_list|(
 literal|"instead of applying the patch, see if the patch is applicable"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -19747,7 +19783,10 @@ argument_list|,
 operator|&
 name|check_index
 argument_list|,
+name|N_
+argument_list|(
 literal|"make sure the patch is applicable to the current index"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -19759,7 +19798,10 @@ argument_list|,
 operator|&
 name|cached
 argument_list|,
+name|N_
+argument_list|(
 literal|"apply a patch without touching the working tree"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -19771,7 +19813,10 @@ argument_list|,
 operator|&
 name|force_apply
 argument_list|,
+name|N_
+argument_list|(
 literal|"also apply the patch (use with --stat/--summary/--check)"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_FILENAME
@@ -19783,7 +19828,10 @@ argument_list|,
 operator|&
 name|fake_ancestor
 argument_list|,
+name|N_
+argument_list|(
 literal|"build a temporary index based on embedded index information"
+argument_list|)
 argument_list|)
 block|,
 block|{
@@ -19797,7 +19845,10 @@ name|NULL
 block|,
 name|NULL
 block|,
+name|N_
+argument_list|(
 literal|"paths are separated with NUL character"
+argument_list|)
 block|,
 name|PARSE_OPT_NOARG
 block|,
@@ -19813,7 +19864,10 @@ argument_list|,
 operator|&
 name|p_context
 argument_list|,
+name|N_
+argument_list|(
 literal|"ensure at least<n> lines of context match"
+argument_list|)
 argument_list|)
 block|,
 block|{
@@ -19826,9 +19880,15 @@ block|,
 operator|&
 name|whitespace_option
 block|,
+name|N_
+argument_list|(
 literal|"action"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"detect new or modified lines that have whitespace errors"
+argument_list|)
 block|,
 literal|0
 block|,
@@ -19846,7 +19906,10 @@ name|NULL
 block|,
 name|NULL
 block|,
+name|N_
+argument_list|(
 literal|"ignore changes in whitespace when finding context"
+argument_list|)
 block|,
 name|PARSE_OPT_NOARG
 block|,
@@ -19864,7 +19927,10 @@ name|NULL
 block|,
 name|NULL
 block|,
+name|N_
+argument_list|(
 literal|"ignore changes in whitespace when finding context"
+argument_list|)
 block|,
 name|PARSE_OPT_NOARG
 block|,
@@ -19880,7 +19946,10 @@ argument_list|,
 operator|&
 name|apply_in_reverse
 argument_list|,
+name|N_
+argument_list|(
 literal|"apply the patch in reverse"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -19892,7 +19961,10 @@ argument_list|,
 operator|&
 name|unidiff_zero
 argument_list|,
+name|N_
+argument_list|(
 literal|"don't expect at least one line of context"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -19904,7 +19976,10 @@ argument_list|,
 operator|&
 name|apply_with_reject
 argument_list|,
+name|N_
+argument_list|(
 literal|"leave the rejected hunks in corresponding *.rej files"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -19916,7 +19991,10 @@ argument_list|,
 operator|&
 name|allow_overlap
 argument_list|,
+name|N_
+argument_list|(
 literal|"allow overlapping hunks"
+argument_list|)
 argument_list|)
 block|,
 name|OPT__VERBOSE
@@ -19924,7 +20002,10 @@ argument_list|(
 operator|&
 name|apply_verbosely
 argument_list|,
+name|N_
+argument_list|(
 literal|"be verbose"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BIT
@@ -19936,7 +20017,10 @@ argument_list|,
 operator|&
 name|options
 argument_list|,
+name|N_
+argument_list|(
 literal|"tolerate incorrectly detected missing new-line at the end of file"
+argument_list|)
 argument_list|,
 name|INACCURATE_EOF
 argument_list|)
@@ -19950,7 +20034,10 @@ argument_list|,
 operator|&
 name|options
 argument_list|,
+name|N_
+argument_list|(
 literal|"do not trust the line counts in the hunk headers"
+argument_list|)
 argument_list|,
 name|RECOUNT
 argument_list|)
@@ -19964,9 +20051,15 @@ literal|"directory"
 block|,
 name|NULL
 block|,
+name|N_
+argument_list|(
 literal|"root"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"prepend<root> to all filenames"
+argument_list|)
 block|,
 literal|0
 block|,
