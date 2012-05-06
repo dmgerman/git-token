@@ -197,6 +197,37 @@ block|}
 struct|;
 end_struct
 
+begin_if
+if|#
+directive|if
+operator|!
+name|defined
+argument_list|(
+name|NO_PTHREADS
+argument_list|)
+operator|&&
+name|defined
+argument_list|(
+name|NO_PREAD
+argument_list|)
+end_if
+
+begin_comment
+comment|/* NO_PREAD uses compat/pread.c, which is not thread-safe. Disable threading. */
+end_comment
+
+begin_define
+DECL|macro|NO_PTHREADS
+define|#
+directive|define
+name|NO_PTHREADS
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_struct
 DECL|struct|thread_local
 struct|struct
