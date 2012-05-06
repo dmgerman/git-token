@@ -1724,12 +1724,6 @@ condition|)
 return|return
 name|NULL
 return|;
-name|p
-operator|=
-name|opt
-operator|->
-name|header_list
-expr_stmt|;
 for|for
 control|(
 name|p
