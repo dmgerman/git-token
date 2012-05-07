@@ -1519,6 +1519,9 @@ name|date_mode
 name|dmode
 parameter_list|,
 name|int
+name|force_date
+parameter_list|,
+name|int
 name|shorten
 parameter_list|)
 block|{
@@ -1622,7 +1625,7 @@ name|selector
 operator|==
 name|SELECTOR_NONE
 operator|&&
-name|dmode
+name|force_date
 operator|)
 condition|)
 block|{
@@ -1797,6 +1800,9 @@ parameter_list|,
 name|enum
 name|date_mode
 name|dmode
+parameter_list|,
+name|int
+name|force_date
 parameter_list|)
 block|{
 if|if
@@ -1852,6 +1858,8 @@ argument_list|,
 name|reflog_info
 argument_list|,
 name|dmode
+argument_list|,
+name|force_date
 argument_list|,
 literal|0
 argument_list|)

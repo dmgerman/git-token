@@ -2520,13 +2520,11 @@ name|CMIT_FMT_ONELINE
 argument_list|,
 name|opt
 operator|->
-name|date_mode_explicit
-condition|?
+name|date_mode
+argument_list|,
 name|opt
 operator|->
-name|date_mode
-else|:
-name|DATE_NORMAL
+name|date_mode_explicit
 argument_list|)
 expr_stmt|;
 if|if
