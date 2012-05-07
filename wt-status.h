@@ -231,7 +231,7 @@ name|COLOR_MAXLEN
 index|]
 decl_stmt|;
 DECL|member|colopts
-name|int
+name|unsigned
 name|colopts
 decl_stmt|;
 DECL|member|null_termination
