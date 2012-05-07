@@ -576,14 +576,6 @@ name|STATUS_FORMAT_LONG
 enum|;
 end_enum
 
-begin_decl_stmt
-DECL|variable|status_show_branch
-specifier|static
-name|int
-name|status_show_branch
-decl_stmt|;
-end_decl_stmt
-
 begin_function
 DECL|function|opt_parse_m
 specifier|static
@@ -2074,8 +2066,6 @@ case|:
 name|wt_shortstatus_print
 argument_list|(
 name|s
-argument_list|,
-name|status_show_branch
 argument_list|)
 expr_stmt|;
 break|break;
@@ -6216,7 +6206,9 @@ argument_list|,
 literal|"branch"
 argument_list|,
 operator|&
-name|status_show_branch
+name|s
+operator|.
+name|show_branch
 argument_list|,
 literal|"show branch information"
 argument_list|)
@@ -6526,8 +6518,6 @@ name|wt_shortstatus_print
 argument_list|(
 operator|&
 name|s
-argument_list|,
-name|status_show_branch
 argument_list|)
 expr_stmt|;
 break|break;
@@ -7668,7 +7658,9 @@ argument_list|,
 literal|"branch"
 argument_list|,
 operator|&
-name|status_show_branch
+name|s
+operator|.
+name|show_branch
 argument_list|,
 literal|"show branch information"
 argument_list|)
