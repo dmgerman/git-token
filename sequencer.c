@@ -1343,7 +1343,7 @@ name|strbuf_addstr
 argument_list|(
 name|msgbuf
 argument_list|,
-literal|"\nConflicts:\n\n"
+literal|"\nConflicts:\n"
 argument_list|)
 expr_stmt|;
 for|for
