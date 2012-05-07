@@ -1491,33 +1491,17 @@ argument_list|(
 name|head_sha1
 argument_list|)
 expr_stmt|;
+comment|/* 	 * If head_commit is NULL, check_commit, called from 	 * lookup_commit, would have indicated that head_commit is not 	 * a commit object already.  parse_commit() will return failure 	 * without further complaints in such a case.  Otherwise, if 	 * the commit is invalid, parse_commit() will complain.  So 	 * there is nothing for us to say here.  Just return failure. 	 */
 if|if
 condition|(
-operator|!
-name|head_commit
-operator|||
 name|parse_commit
 argument_list|(
 name|head_commit
 argument_list|)
 condition|)
 return|return
-name|error
-argument_list|(
-name|_
-argument_list|(
-literal|"could not parse commit %s\n"
-argument_list|)
-argument_list|,
-name|sha1_to_hex
-argument_list|(
-name|head_commit
-operator|->
-name|object
-operator|.
-name|sha1
-argument_list|)
-argument_list|)
+operator|-
+literal|1
 return|;
 if|if
 condition|(
