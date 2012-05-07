@@ -4831,9 +4831,6 @@ specifier|static
 name|void
 name|wt_shortstatus_unmerged
 parameter_list|(
-name|int
-name|null_termination
-parameter_list|,
 name|struct
 name|string_list_item
 modifier|*
@@ -4952,6 +4949,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|s
+operator|->
 name|null_termination
 condition|)
 block|{
@@ -5024,9 +5023,6 @@ specifier|static
 name|void
 name|wt_shortstatus_status
 parameter_list|(
-name|int
-name|null_termination
-parameter_list|,
 name|struct
 name|string_list_item
 modifier|*
@@ -5118,6 +5114,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|s
+operator|->
 name|null_termination
 condition|)
 block|{
@@ -5323,9 +5321,6 @@ specifier|static
 name|void
 name|wt_shortstatus_other
 parameter_list|(
-name|int
-name|null_termination
-parameter_list|,
 name|struct
 name|string_list_item
 modifier|*
@@ -5344,6 +5339,8 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|s
+operator|->
 name|null_termination
 condition|)
 block|{
@@ -5851,9 +5848,6 @@ modifier|*
 name|s
 parameter_list|,
 name|int
-name|null_termination
-parameter_list|,
-name|int
 name|show_branch
 parameter_list|)
 block|{
@@ -5925,8 +5919,6 @@ name|stagemask
 condition|)
 name|wt_shortstatus_unmerged
 argument_list|(
-name|null_termination
-argument_list|,
 name|it
 argument_list|,
 name|s
@@ -5935,8 +5927,6 @@ expr_stmt|;
 else|else
 name|wt_shortstatus_status
 argument_list|(
-name|null_termination
-argument_list|,
 name|it
 argument_list|,
 name|s
@@ -5982,8 +5972,6 @@ operator|)
 expr_stmt|;
 name|wt_shortstatus_other
 argument_list|(
-name|null_termination
-argument_list|,
 name|it
 argument_list|,
 name|s
@@ -6031,8 +6019,6 @@ operator|)
 expr_stmt|;
 name|wt_shortstatus_other
 argument_list|(
-name|null_termination
-argument_list|,
 name|it
 argument_list|,
 name|s
@@ -6053,9 +6039,6 @@ name|struct
 name|wt_status
 modifier|*
 name|s
-parameter_list|,
-name|int
-name|null_termination
 parameter_list|)
 block|{
 name|s
@@ -6079,8 +6062,6 @@ expr_stmt|;
 name|wt_shortstatus_print
 argument_list|(
 name|s
-argument_list|,
-name|null_termination
 argument_list|,
 literal|0
 argument_list|)

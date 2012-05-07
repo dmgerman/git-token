@@ -230,6 +230,10 @@ index|[
 name|COLOR_MAXLEN
 index|]
 decl_stmt|;
+DECL|member|null_termination
+name|int
+name|null_termination
+decl_stmt|;
 comment|/* These are computed during processing of the individual sections */
 DECL|member|commitable
 name|int
@@ -321,9 +325,6 @@ modifier|*
 name|s
 parameter_list|,
 name|int
-name|null_termination
-parameter_list|,
-name|int
 name|show_branch
 parameter_list|)
 function_decl|;
@@ -337,9 +338,6 @@ name|struct
 name|wt_status
 modifier|*
 name|s
-parameter_list|,
-name|int
-name|null_termination
 parameter_list|)
 function_decl|;
 end_function_decl
