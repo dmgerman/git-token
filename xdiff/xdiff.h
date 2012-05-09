@@ -324,14 +324,6 @@ name|void
 modifier|*
 name|find_func_priv
 decl_stmt|;
-DECL|member|emit_func
-name|void
-function_decl|(
-modifier|*
-name|emit_func
-function_decl|)
-parameter_list|()
-function_decl|;
 DECL|member|hunk_func
 name|xdl_emit_hunk_consume_func_t
 name|hunk_func
