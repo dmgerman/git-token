@@ -4696,6 +4696,22 @@ begin_comment
 comment|/*  * We're anal about diff header consistency, to make  * sure that we don't end up having strange ambiguous  * patches floating around.  *  * As a result, gitdiff_{old|new}name() will check  * their names against any previous information, just  * to make sure..  */
 end_comment
 
+begin_define
+DECL|macro|DIFF_OLD_NAME
+define|#
+directive|define
+name|DIFF_OLD_NAME
+value|0
+end_define
+
+begin_define
+DECL|macro|DIFF_NEW_NAME
+define|#
+directive|define
+name|DIFF_NEW_NAME
+value|1
+end_define
+
 begin_function
 DECL|function|gitdiff_verify_name
 specifier|static
@@ -4715,10 +4731,8 @@ name|char
 modifier|*
 name|orig_name
 parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|oldnew
+name|int
+name|side
 parameter_list|)
 block|{
 if|if
@@ -4816,12 +4830,21 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+operator|(
+name|side
+operator|==
+name|DIFF_NEW_NAME
+operator|)
+condition|?
 name|_
 argument_list|(
-literal|"git apply: bad git-diff - inconsistent %s filename on line %d"
+literal|"git apply: bad git-diff - inconsistent new filename on line %d"
 argument_list|)
-argument_list|,
-name|oldnew
+else|:
+name|_
+argument_list|(
+literal|"git apply: bad git-diff - inconsistent old filename on line %d"
+argument_list|)
 argument_list|,
 name|linenr
 argument_list|)
@@ -4914,7 +4937,7 @@ name|patch
 operator|->
 name|old_name
 argument_list|,
-literal|"old"
+name|DIFF_OLD_NAME
 argument_list|)
 expr_stmt|;
 if|if
@@ -4977,7 +5000,7 @@ name|patch
 operator|->
 name|new_name
 argument_list|,
-literal|"new"
+name|DIFF_NEW_NAME
 argument_list|)
 expr_stmt|;
 if|if
