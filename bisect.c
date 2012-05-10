@@ -4067,14 +4067,16 @@ name|int
 name|no_checkout
 parameter_list|)
 block|{
-specifier|const
 name|char
 modifier|*
 name|filename
 init|=
+name|xstrdup
+argument_list|(
 name|git_path
 argument_list|(
 literal|"BISECT_ANCESTORS_OK"
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|struct
@@ -4113,7 +4115,9 @@ operator|.
 name|st_mode
 argument_list|)
 condition|)
-return|return;
+goto|goto
+name|done
+goto|;
 comment|/* Bisecting with no good rev is ok. */
 if|if
 condition|(
@@ -4123,7 +4127,9 @@ name|nr
 operator|==
 literal|0
 condition|)
-return|return;
+goto|goto
+name|done
+goto|;
 comment|/* Check if all good revs are ancestor of the bad rev. */
 if|if
 condition|(
@@ -4175,6 +4181,13 @@ else|else
 name|close
 argument_list|(
 name|fd
+argument_list|)
+expr_stmt|;
+name|done
+label|:
+name|free
+argument_list|(
+name|filename
 argument_list|)
 expr_stmt|;
 block|}
