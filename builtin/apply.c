@@ -75,6 +75,12 @@ directive|include
 file|"ll-merge.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"rerere.h"
+end_include
+
 begin_comment
 comment|/*  *  --check turns on checking that the working tree matches the  *    files that are being modified, but doesn't apply the patch  *  --stat does just a diffstat, and doesn't actually apply  *  --numstat does numeric diffstat, and doesn't actually apply  *  --index-info shows the old and new index info for paths if available.  *  --index updates the cache as well.  *  --cached updates only the cache without ever touching the working tree.  */
 end_comment
@@ -19969,6 +19975,11 @@ argument_list|(
 operator|&
 name|cpath
 argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+name|rerere
+argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
