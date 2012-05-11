@@ -5999,6 +5999,10 @@ operator|!
 name|new
 operator|.
 name|commit
+operator|&&
+name|opts
+operator|.
+name|new_branch
 condition|)
 block|{
 name|unsigned
