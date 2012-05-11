@@ -17,8 +17,8 @@ specifier|extern
 specifier|const
 name|char
 modifier|*
-modifier|*
 name|empty_argv
+index|[]
 decl_stmt|;
 end_decl_stmt
 
@@ -103,6 +103,19 @@ specifier|const
 name|char
 modifier|*
 name|fmt
+parameter_list|,
+modifier|...
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|void
+name|argv_array_pushl
+parameter_list|(
+name|struct
+name|argv_array
+modifier|*
 parameter_list|,
 modifier|...
 parameter_list|)
