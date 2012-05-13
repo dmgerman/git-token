@@ -486,7 +486,7 @@ name|xdemitcb_t
 name|ecb
 init|=
 block|{
-literal|0
+name|NULL
 block|}
 decl_stmt|;
 name|xpp
