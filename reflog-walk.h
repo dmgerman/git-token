@@ -93,6 +93,9 @@ name|int
 parameter_list|,
 name|enum
 name|date_mode
+parameter_list|,
+name|int
+name|force_date
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -148,6 +151,9 @@ parameter_list|,
 name|enum
 name|date_mode
 name|dmode
+parameter_list|,
+name|int
+name|force_date
 parameter_list|,
 name|int
 name|shorten
