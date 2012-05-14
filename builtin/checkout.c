@@ -3811,7 +3811,12 @@ parameter_list|(
 name|struct
 name|commit
 modifier|*
+name|old
+parameter_list|,
+name|struct
 name|commit
+modifier|*
+name|new
 parameter_list|)
 block|{
 name|struct
@@ -3824,7 +3829,7 @@ modifier|*
 name|object
 init|=
 operator|&
-name|commit
+name|old
 operator|->
 name|object
 decl_stmt|;
@@ -3882,6 +3887,22 @@ operator|&
 name|revs
 argument_list|)
 expr_stmt|;
+name|add_pending_sha1
+argument_list|(
+operator|&
+name|revs
+argument_list|,
+literal|"HEAD"
+argument_list|,
+name|new
+operator|->
+name|object
+operator|.
+name|sha1
+argument_list|,
+name|UNINTERESTING
+argument_list|)
+expr_stmt|;
 name|refs
 operator|=
 name|revs
@@ -3914,7 +3935,7 @@ if|if
 condition|(
 operator|!
 operator|(
-name|commit
+name|old
 operator|->
 name|object
 operator|.
@@ -3925,7 +3946,7 @@ operator|)
 condition|)
 name|suggest_reattach
 argument_list|(
-name|commit
+name|old
 argument_list|,
 operator|&
 name|revs
@@ -3939,7 +3960,7 @@ argument_list|(
 literal|"Previous HEAD position was"
 argument_list|)
 argument_list|,
-name|commit
+name|old
 argument_list|)
 expr_stmt|;
 name|clear_commit_marks_for_object_array
@@ -4185,6 +4206,10 @@ name|orphaned_commit_warning
 argument_list|(
 name|old
 operator|.
+name|commit
+argument_list|,
+name|new
+operator|->
 name|commit
 argument_list|)
 expr_stmt|;
