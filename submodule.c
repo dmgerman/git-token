@@ -380,6 +380,16 @@ name|alt_odb_list
 operator|=
 name|alt_odb
 expr_stmt|;
+comment|/* add possible alternates from the submodule */
+name|read_info_alternates
+argument_list|(
+name|objects_directory
+operator|.
+name|buf
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
 name|prepare_alt_odb
 argument_list|()
 expr_stmt|;
