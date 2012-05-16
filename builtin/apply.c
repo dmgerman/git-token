@@ -14371,7 +14371,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * item->util in the filename table records the status of the path.  * Usually it points at a patch (whose result records the contents  * of it after applying it), but it could be PATH_WAS_DELETED for a  * path that a previously applied patch has already removed.  */
+comment|/*  * item->util in the filename table records the status of the path.  * Usually it points at a patch (whose result records the contents  * of it after applying it), but it could be PATH_WAS_DELETED for a  * path that a previously applied patch has already removed, or  * PATH_TO_BE_DELETED for a path that a later patch would remove.  *  * The latter is needed to deal with a case where two paths A and B  * are swapped by first renaming A to B and then renaming B to A;  * moving A to B should not be prevented due to presense of B as we  * will remove it in a later patch.  */
 end_comment
 
 begin_define
