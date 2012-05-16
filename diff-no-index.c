@@ -749,13 +749,13 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-name|strbuf_reset
+name|strbuf_release
 argument_list|(
 operator|&
 name|buffer1
 argument_list|)
 expr_stmt|;
-name|strbuf_reset
+name|strbuf_release
 argument_list|(
 operator|&
 name|buffer2
