@@ -6792,7 +6792,7 @@ expr_stmt|;
 if|if
 condition|(
 name|big_file_threshold
-operator|<=
+operator|<
 name|entry
 operator|->
 name|size
