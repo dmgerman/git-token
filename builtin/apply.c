@@ -15694,6 +15694,7 @@ name|patch
 operator|->
 name|old_name
 expr_stmt|;
+comment|/* 	 * A type-change diff is always split into a patch to delete 	 * old, immediately followed by a patch to create new (see 	 * diff.c::run_diff()); in such a case it is Ok that the entry 	 * to be deleted by the previous patch is still in the working 	 * tree and in the index. 	 * 	 * A patch to swap-rename between A and B would first rename A 	 * to B and then rename B to A.  While applying the first one, 	 * the presense of B should not stop A from getting renamed to 	 * B; ask to_be_deleted() about the later rename.  Removal of 	 * B and rename from A to B is handled the same way by asking 	 * was_deleted(). 	 */
 if|if
 condition|(
 operator|(
@@ -15717,7 +15718,6 @@ name|tpatch
 argument_list|)
 operator|)
 condition|)
-comment|/* 		 * A type-change diff is always split into a patch to 		 * delete old, immediately followed by a patch to 		 * create new (see diff.c::run_diff()); in such a case 		 * it is Ok that the entry to be deleted by the 		 * previous patch is still in the working tree and in 		 * the index. 		 */
 name|ok_if_exists
 operator|=
 literal|1
