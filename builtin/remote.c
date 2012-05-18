@@ -4173,7 +4173,7 @@ name|warning
 argument_list|(
 name|_
 argument_list|(
-literal|"Not updating non-default fetch respec\n"
+literal|"Not updating non-default fetch refspec\n"
 literal|"\t%s\n"
 literal|"\tPlease update the configuration manually if necessary."
 argument_list|)
