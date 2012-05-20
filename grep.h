@@ -153,7 +153,6 @@ name|grep_pat_token
 name|token
 decl_stmt|;
 DECL|member|pattern
-specifier|const
 name|char
 modifier|*
 name|pattern
