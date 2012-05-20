@@ -5801,7 +5801,7 @@ condition|)
 return|return
 literal|0
 return|;
-comment|/* 		 * NEEDSWORK: the current default policy is to allow 		 * submodule to be out of sync wrt the supermodule 		 * index.  This needs to be tightened later for 		 * submodules that are marked to be automatically 		 * checked out. 		 */
+comment|/* 		 * NEEDSWORK: the current default policy is to allow 		 * submodule to be out of sync wrt the superproject 		 * index.  This needs to be tightened later for 		 * submodules that are marked to be automatically 		 * checked out. 		 */
 if|if
 condition|(
 name|S_ISGITLINK
