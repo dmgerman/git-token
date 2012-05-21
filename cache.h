@@ -6204,19 +6204,11 @@ function_decl|;
 end_function_decl
 
 begin_define
-DECL|macro|IDENT_WARN_ON_NO_NAME
-define|#
-directive|define
-name|IDENT_WARN_ON_NO_NAME
-value|1
-end_define
-
-begin_define
 DECL|macro|IDENT_ERROR_ON_NO_NAME
 define|#
 directive|define
 name|IDENT_ERROR_ON_NO_NAME
-value|2
+value|1
 end_define
 
 begin_define
@@ -6224,7 +6216,7 @@ DECL|macro|IDENT_NO_DATE
 define|#
 directive|define
 name|IDENT_NO_DATE
-value|4
+value|2
 end_define
 
 begin_function_decl

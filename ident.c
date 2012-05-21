@@ -1553,15 +1553,6 @@ name|IDENT_ERROR_ON_NO_NAME
 operator|)
 decl_stmt|;
 name|int
-name|warn_on_no_name
-init|=
-operator|(
-name|flag
-operator|&
-name|IDENT_WARN_ON_NO_NAME
-operator|)
-decl_stmt|;
-name|int
 name|name_addr_only
 init|=
 operator|(
@@ -1604,19 +1595,15 @@ name|pw
 decl_stmt|;
 if|if
 condition|(
-operator|(
-name|warn_on_no_name
-operator|||
 name|error_on_no_name
-operator|)
-operator|&&
+condition|)
+block|{
+if|if
+condition|(
 name|name
 operator|==
 name|git_default_name
-operator|&&
-name|env_hint
 condition|)
-block|{
 name|fputs
 argument_list|(
 name|env_hint
@@ -1624,16 +1611,6 @@ argument_list|,
 name|stderr
 argument_list|)
 expr_stmt|;
-name|env_hint
-operator|=
-name|NULL
-expr_stmt|;
-comment|/* warn only once */
-block|}
-if|if
-condition|(
-name|error_on_no_name
-condition|)
 name|die
 argument_list|(
 literal|"empty ident %s<%s> not allowed"
@@ -1643,6 +1620,7 @@ argument_list|,
 name|email
 argument_list|)
 expr_stmt|;
+block|}
 name|pw
 operator|=
 name|getpwuid
