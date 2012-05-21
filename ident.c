@@ -1639,23 +1639,11 @@ argument_list|(
 literal|"You don't exist. Go away!"
 argument_list|)
 expr_stmt|;
-name|strlcpy
-argument_list|(
-name|git_default_name
-argument_list|,
+name|name
+operator|=
 name|pw
 operator|->
 name|pw_name
-argument_list|,
-sizeof|sizeof
-argument_list|(
-name|git_default_name
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|name
-operator|=
-name|git_default_name
 expr_stmt|;
 block|}
 name|strcpy
