@@ -202,6 +202,11 @@ name|commit
 modifier|*
 name|commit
 parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|subject
+parameter_list|,
 name|int
 name|nr
 parameter_list|,
