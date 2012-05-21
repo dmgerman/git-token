@@ -4178,6 +4178,14 @@ index|[
 literal|20
 index|]
 decl_stmt|;
+name|sort_ref_list
+argument_list|(
+operator|&
+name|ref
+argument_list|,
+name|ref_compare_name
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|is_repository_shallow
