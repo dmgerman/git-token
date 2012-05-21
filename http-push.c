@@ -4874,7 +4874,8 @@ name|escaped
 operator|=
 name|xml_entities
 argument_list|(
-name|git_default_email
+name|ident_default_email
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|strbuf_addf
