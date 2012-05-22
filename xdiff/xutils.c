@@ -1403,11 +1403,22 @@ name|XDL_FAST_HASH
 end_ifdef
 
 begin_define
+DECL|macro|REPEAT_BYTE
+define|#
+directive|define
+name|REPEAT_BYTE
+parameter_list|(
+name|x
+parameter_list|)
+value|((~0ul / 0xff) * (x))
+end_define
+
+begin_define
 DECL|macro|ONEBYTES
 define|#
 directive|define
 name|ONEBYTES
-value|0x0101010101010101ul
+value|REPEAT_BYTE(0x01)
 end_define
 
 begin_define
@@ -1415,7 +1426,7 @@ DECL|macro|NEWLINEBYTES
 define|#
 directive|define
 name|NEWLINEBYTES
-value|0x0a0a0a0a0a0a0a0aul
+value|REPEAT_BYTE(0x0a)
 end_define
 
 begin_define
@@ -1423,7 +1434,7 @@ DECL|macro|HIGHBITS
 define|#
 directive|define
 name|HIGHBITS
-value|0x8080808080808080ul
+value|REPEAT_BYTE(0x80)
 end_define
 
 begin_comment
