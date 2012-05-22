@@ -454,7 +454,7 @@ name|git_istream
 modifier|*
 name|st
 parameter_list|,
-name|char
+name|void
 modifier|*
 name|buf
 parameter_list|,

@@ -490,6 +490,14 @@ name|date_mode
 expr_stmt|;
 name|ctx
 operator|.
+name|date_mode_explicit
+operator|=
+name|revs
+operator|->
+name|date_mode_explicit
+expr_stmt|;
+name|ctx
+operator|.
 name|fmt
 operator|=
 name|revs

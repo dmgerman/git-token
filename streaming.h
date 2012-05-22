@@ -81,7 +81,7 @@ name|struct
 name|git_istream
 modifier|*
 parameter_list|,
-name|char
+name|void
 modifier|*
 parameter_list|,
 name|size_t
