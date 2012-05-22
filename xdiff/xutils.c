@@ -1526,31 +1526,24 @@ return|;
 block|}
 else|else
 block|{
-comment|/* 		 * Modified Carl Chatfield G+ version for 32-bit * 		 * 		 * (a) gives us 		 *   -1 (0, ff), 0 (ffff) or 1 (ffffff) 		 * (b) gives us 		 *   0 for 0, 1 for (ff ffff ffffff) 		 * (a+b+1) gives us 		 *   correct 0-3 bytemask count result 		 */
+comment|/* Carl Chatfield / Jan Achrenius G+ version for 32-bit */
+comment|/* (000000 0000ff 00ffff ffffff) -> ( 1 1 2 3 ) */
 name|long
 name|a
 init|=
 operator|(
+literal|0x0ff0001
+operator|+
 name|mask
-operator|-
-literal|256
 operator|)
 operator|>>
 literal|23
 decl_stmt|;
-name|long
-name|b
-init|=
-name|mask
-operator|&
-literal|1
-decl_stmt|;
+comment|/* Fix the 1 for 00 case */
 return|return
 name|a
-operator|+
-name|b
-operator|+
-literal|1
+operator|&
+name|mask
 return|;
 block|}
 block|}
