@@ -1494,12 +1494,34 @@ literal|8
 condition|)
 block|{
 comment|/* 		 * Jan Achrenius on G+: microoptimized version of 		 * the simpler "(mask& ONEBYTES) * ONEBYTES>> 56" 		 * that works for the bytemasks without having to 		 * mask them first. 		 */
+comment|/* 		 * return mask * 0x0001020304050608>> 56; 		 * 		 * Doing it like this avoids warnings on 32-bit machines. 		 */
+name|long
+name|a
+init|=
+operator|(
+name|REPEAT_BYTE
+argument_list|(
+literal|0x01
+argument_list|)
+operator|/
+literal|0xff
+operator|+
+literal|1
+operator|)
+decl_stmt|;
 return|return
 name|mask
 operator|*
-literal|0x0001020304050608
+name|a
 operator|>>
-literal|56
+operator|(
+sizeof|sizeof
+argument_list|(
+name|long
+argument_list|)
+operator|*
+literal|7
+operator|)
 return|;
 block|}
 else|else
