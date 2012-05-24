@@ -2585,7 +2585,7 @@ name|email
 argument_list|,
 name|date
 argument_list|,
-name|IDENT_ERROR_ON_NO_NAME
+name|IDENT_STRICT
 argument_list|)
 argument_list|)
 expr_stmt|;
