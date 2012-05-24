@@ -4148,8 +4148,12 @@ argument_list|(
 name|NULL
 argument_list|)
 argument_list|,
-name|ident_default_email
-argument_list|()
+name|git_committer_info
+argument_list|(
+name|IDENT_NO_NAME
+operator||
+name|IDENT_NO_DATE
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|info
