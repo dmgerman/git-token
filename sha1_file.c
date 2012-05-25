@@ -1114,22 +1114,6 @@ end_decl_stmt
 
 begin_function_decl
 specifier|static
-name|void
-name|read_info_alternates
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|alternates
-parameter_list|,
-name|int
-name|depth
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-specifier|static
 name|int
 name|git_open_noatime
 parameter_list|(
@@ -1691,7 +1675,6 @@ end_function
 
 begin_function
 DECL|function|read_info_alternates
-specifier|static
 name|void
 name|read_info_alternates
 parameter_list|(
