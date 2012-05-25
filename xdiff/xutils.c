@@ -1253,11 +1253,22 @@ name|XDL_FAST_HASH
 end_ifdef
 
 begin_define
+DECL|macro|REPEAT_BYTE
+define|#
+directive|define
+name|REPEAT_BYTE
+parameter_list|(
+name|x
+parameter_list|)
+value|((~0ul / 0xff) * (x))
+end_define
+
+begin_define
 DECL|macro|ONEBYTES
 define|#
 directive|define
 name|ONEBYTES
-value|0x0101010101010101ul
+value|REPEAT_BYTE(0x01)
 end_define
 
 begin_define
@@ -1265,7 +1276,7 @@ DECL|macro|NEWLINEBYTES
 define|#
 directive|define
 name|NEWLINEBYTES
-value|0x0a0a0a0a0a0a0a0aul
+value|REPEAT_BYTE(0x0a)
 end_define
 
 begin_define
@@ -1273,7 +1284,7 @@ DECL|macro|HIGHBITS
 define|#
 directive|define
 name|HIGHBITS
-value|0x8080808080808080ul
+value|REPEAT_BYTE(0x80)
 end_define
 
 begin_comment
@@ -1333,41 +1344,56 @@ literal|8
 condition|)
 block|{
 comment|/* 		 * Jan Achrenius on G+: microoptimized version of 		 * the simpler "(mask& ONEBYTES) * ONEBYTES>> 56" 		 * that works for the bytemasks without having to 		 * mask them first. 		 */
-return|return
-name|mask
-operator|*
-literal|0x0001020304050608
-operator|>>
-literal|56
-return|;
-block|}
-else|else
-block|{
-comment|/* 		 * Modified Carl Chatfield G+ version for 32-bit * 		 * 		 * (a) gives us 		 *   -1 (0, ff), 0 (ffff) or 1 (ffffff) 		 * (b) gives us 		 *   0 for 0, 1 for (ff ffff ffffff) 		 * (a+b+1) gives us 		 *   correct 0-3 bytemask count result 		 */
+comment|/* 		 * return mask * 0x0001020304050608>> 56; 		 * 		 * Doing it like this avoids warnings on 32-bit machines. 		 */
 name|long
 name|a
 init|=
 operator|(
+name|REPEAT_BYTE
+argument_list|(
+literal|0x01
+argument_list|)
+operator|/
+literal|0xff
+operator|+
+literal|1
+operator|)
+decl_stmt|;
+return|return
 name|mask
-operator|-
-literal|256
+operator|*
+name|a
+operator|>>
+operator|(
+sizeof|sizeof
+argument_list|(
+name|long
+argument_list|)
+operator|*
+literal|7
+operator|)
+return|;
+block|}
+else|else
+block|{
+comment|/* Carl Chatfield / Jan Achrenius G+ version for 32-bit */
+comment|/* (000000 0000ff 00ffff ffffff) -> ( 1 1 2 3 ) */
+name|long
+name|a
+init|=
+operator|(
+literal|0x0ff0001
+operator|+
+name|mask
 operator|)
 operator|>>
 literal|23
 decl_stmt|;
-name|long
-name|b
-init|=
-name|mask
-operator|&
-literal|1
-decl_stmt|;
+comment|/* Fix the 1 for 00 case */
 return|return
 name|a
-operator|+
-name|b
-operator|+
-literal|1
+operator|&
+name|mask
 return|;
 block|}
 block|}
