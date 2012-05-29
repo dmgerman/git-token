@@ -568,7 +568,7 @@ operator|.
 name|is_delta
 operator|&&
 name|big_file_threshold
-operator|<=
+operator|<
 name|size
 condition|)
 return|return
