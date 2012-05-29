@@ -853,14 +853,19 @@ name|flag
 operator|&
 name|REF_DIR
 condition|)
+block|{
+comment|/* 		 * Do not use get_ref_dir() here, as that might 		 * trigger the reading of loose refs. 		 */
 name|clear_ref_dir
 argument_list|(
-name|get_ref_dir
-argument_list|(
+operator|&
 name|entry
-argument_list|)
+operator|->
+name|u
+operator|.
+name|subdir
 argument_list|)
 expr_stmt|;
+block|}
 name|free
 argument_list|(
 name|entry
