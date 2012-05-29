@@ -169,7 +169,7 @@ return|;
 return|return
 name|git_committer_info
 argument_list|(
-name|IDENT_ERROR_ON_NO_NAME
+name|IDENT_STRICT
 operator||
 name|IDENT_NO_DATE
 argument_list|)

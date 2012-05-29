@@ -8774,7 +8774,7 @@ block|{
 comment|/* See if it is really trivial. */
 name|git_committer_info
 argument_list|(
-name|IDENT_ERROR_ON_NO_NAME
+name|IDENT_STRICT
 argument_list|)
 expr_stmt|;
 name|printf
@@ -8943,7 +8943,7 @@ expr_stmt|;
 comment|/* We are going to make a new commit. */
 name|git_committer_info
 argument_list|(
-name|IDENT_ERROR_ON_NO_NAME
+name|IDENT_STRICT
 argument_list|)
 expr_stmt|;
 comment|/* 	 * At this point, we need a real merge.  No matter what strategy 	 * we use, it would operate on the index, possibly affecting the 	 * working tree, and when resolved cleanly, have the desired 	 * tree in the index -- this means that the index must be in 	 * sync with the head commit.  The strategies are responsible 	 * to ensure this. 	 */
