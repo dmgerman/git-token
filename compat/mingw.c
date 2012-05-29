@@ -5669,7 +5669,7 @@ end_function
 begin_function
 DECL|function|mingw_execve
 specifier|static
-name|void
+name|int
 name|mingw_execve
 parameter_list|(
 specifier|const
@@ -5744,7 +5744,10 @@ name|pid
 operator|<
 literal|0
 condition|)
-return|return;
+return|return
+operator|-
+literal|1
+return|;
 if|if
 condition|(
 name|waitpid
@@ -5769,6 +5772,10 @@ name|status
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+operator|-
+literal|1
+return|;
 block|}
 end_function
 
