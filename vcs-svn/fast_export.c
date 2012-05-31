@@ -1470,6 +1470,9 @@ name|response_end
 operator|-
 name|response
 operator|<
+operator|(
+name|signed
+operator|)
 name|strlen
 argument_list|(
 literal|"100644"
@@ -1552,6 +1555,9 @@ name|response_end
 operator|-
 name|response
 operator|<
+operator|(
+name|signed
+operator|)
 name|strlen
 argument_list|(
 literal|" blob "
