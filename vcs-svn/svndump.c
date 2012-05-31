@@ -1772,7 +1772,7 @@ argument_list|)
 case|:
 if|if
 condition|(
-name|prefixcmp
+name|constcmp
 argument_list|(
 name|t
 argument_list|,
