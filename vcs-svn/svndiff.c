@@ -1378,6 +1378,12 @@ modifier|*
 name|out
 parameter_list|)
 block|{
+name|int
+name|rv
+init|=
+operator|-
+literal|1
+decl_stmt|;
 name|struct
 name|window
 name|ctx
@@ -1497,6 +1503,8 @@ operator|!=
 name|out_len
 condition|)
 block|{
+name|rv
+operator|=
 name|error
 argument_list|(
 literal|"invalid delta: incorrect postimage length"
@@ -1521,15 +1529,10 @@ condition|)
 goto|goto
 name|error_out
 goto|;
-name|window_release
-argument_list|(
-operator|&
-name|ctx
-argument_list|)
-expr_stmt|;
-return|return
+name|rv
+operator|=
 literal|0
-return|;
+expr_stmt|;
 name|error_out
 label|:
 name|window_release
@@ -1539,8 +1542,7 @@ name|ctx
 argument_list|)
 expr_stmt|;
 return|return
-operator|-
-literal|1
+name|rv
 return|;
 block|}
 end_function
