@@ -502,12 +502,6 @@ argument_list|(
 literal|"output error"
 argument_list|)
 expr_stmt|;
-name|buffer_reset
-argument_list|(
-operator|&
-name|stdin_buf
-argument_list|)
-expr_stmt|;
 return|return
 literal|0
 return|;

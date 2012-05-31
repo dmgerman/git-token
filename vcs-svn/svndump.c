@@ -2569,15 +2569,6 @@ parameter_list|(
 name|void
 parameter_list|)
 block|{
-name|fast_export_reset
-argument_list|()
-expr_stmt|;
-name|buffer_reset
-argument_list|(
-operator|&
-name|input
-argument_list|)
-expr_stmt|;
 name|strbuf_release
 argument_list|(
 operator|&

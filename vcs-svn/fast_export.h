@@ -45,15 +45,6 @@ end_function_decl
 
 begin_function_decl
 name|void
-name|fast_export_reset
-parameter_list|(
-name|void
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-name|void
 name|fast_export_delete
 parameter_list|(
 specifier|const

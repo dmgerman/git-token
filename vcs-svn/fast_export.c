@@ -191,23 +191,6 @@ block|}
 end_function
 
 begin_function
-DECL|function|fast_export_reset
-name|void
-name|fast_export_reset
-parameter_list|(
-name|void
-parameter_list|)
-block|{
-name|buffer_reset
-argument_list|(
-operator|&
-name|report_buffer
-argument_list|)
-expr_stmt|;
-block|}
-end_function
-
-begin_function
 DECL|function|fast_export_delete
 name|void
 name|fast_export_delete
