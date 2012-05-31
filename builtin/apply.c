@@ -15916,12 +15916,39 @@ operator|)
 operator|&
 name|S_IFMT
 condition|)
+block|{
+if|if
+condition|(
+name|same
+condition|)
 return|return
 name|error
 argument_list|(
 name|_
 argument_list|(
-literal|"new mode (%o) of %s does not match old mode (%o)%s%s"
+literal|"new mode (%o) of %s does not "
+literal|"match old mode (%o)"
+argument_list|)
+argument_list|,
+name|patch
+operator|->
+name|new_mode
+argument_list|,
+name|new_name
+argument_list|,
+name|patch
+operator|->
+name|old_mode
+argument_list|)
+return|;
+else|else
+return|return
+name|error
+argument_list|(
+name|_
+argument_list|(
+literal|"new mode (%o) of %s does not "
+literal|"match old mode (%o) of %s"
 argument_list|)
 argument_list|,
 name|patch
@@ -15934,19 +15961,10 @@ name|patch
 operator|->
 name|old_mode
 argument_list|,
-name|same
-condition|?
-literal|""
-else|:
-literal|" of "
-argument_list|,
-name|same
-condition|?
-literal|""
-else|:
 name|old_name
 argument_list|)
 return|;
+block|}
 block|}
 if|if
 condition|(
