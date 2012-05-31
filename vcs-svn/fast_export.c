@@ -849,18 +849,11 @@ argument_list|)
 return|;
 name|type
 operator|=
-name|memmem
+name|strstr
 argument_list|(
 name|header
 argument_list|,
-name|headerlen
-argument_list|,
 literal|" blob "
-argument_list|,
-name|strlen
-argument_list|(
-literal|" blob "
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
