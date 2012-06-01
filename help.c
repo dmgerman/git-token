@@ -1969,7 +1969,7 @@ literal|2
 argument_list|,
 literal|1
 argument_list|,
-literal|4
+literal|3
 argument_list|)
 operator|+
 literal|1
