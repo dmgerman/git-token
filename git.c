@@ -1473,17 +1473,6 @@ return|;
 block|}
 end_function
 
-begin_decl_stmt
-DECL|variable|git_version_string
-specifier|const
-name|char
-name|git_version_string
-index|[]
-init|=
-name|GIT_VERSION
-decl_stmt|;
-end_decl_stmt
-
 begin_define
 DECL|macro|RUN_SETUP
 define|#
