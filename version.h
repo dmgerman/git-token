@@ -21,6 +21,17 @@ index|[]
 decl_stmt|;
 end_decl_stmt
 
+begin_function_decl
+specifier|const
+name|char
+modifier|*
+name|git_user_agent
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
