@@ -121,16 +121,6 @@ name|clean_on_exit
 range|:
 literal|1
 decl_stmt|;
-DECL|member|preexec_cb
-name|void
-function_decl|(
-modifier|*
-name|preexec_cb
-function_decl|)
-parameter_list|(
-name|void
-parameter_list|)
-function_decl|;
 block|}
 struct|;
 end_struct
