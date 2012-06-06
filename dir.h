@@ -471,25 +471,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-specifier|extern
-name|int
-name|excluded
-parameter_list|(
-name|struct
-name|dir_struct
-modifier|*
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-parameter_list|,
-name|int
-modifier|*
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
 name|struct
 name|dir_entry
 modifier|*
