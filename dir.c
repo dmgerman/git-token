@@ -3062,7 +3062,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Is the ce->name excluded?  This is for a caller like show_files() that  * do not honor directory hierarchy and iterate through paths that are  * possibly in an ignored directory.  *  * A path to a directory known to be excluded is left in check->path to  * optimize for repeated checks for files in the same excluded directory.  */
+comment|/*  * Is this name excluded?  This is for a caller like show_files() that  * do not honor directory hierarchy and iterate through paths that are  * possibly in an ignored directory.  *  * A path to a directory known to be excluded is left in check->path to  * optimize for repeated checks for files in the same excluded directory.  */
 end_comment
 
 begin_function
@@ -3075,16 +3075,21 @@ name|path_exclude_check
 modifier|*
 name|check
 parameter_list|,
-name|struct
-name|cache_entry
+specifier|const
+name|char
 modifier|*
-name|ce
+name|name
+parameter_list|,
+name|int
+name|namelen
+parameter_list|,
+name|int
+modifier|*
+name|dtype
 parameter_list|)
 block|{
 name|int
 name|i
-decl_stmt|,
-name|dtype
 decl_stmt|;
 name|struct
 name|strbuf
@@ -3096,6 +3101,20 @@ name|check
 operator|->
 name|path
 decl_stmt|;
+comment|/* 	 * we allow the caller to pass namelen as an optimization; it 	 * must match the length of the name, as we eventually call 	 * excluded() on the whole name string. 	 */
+if|if
+condition|(
+name|namelen
+operator|<
+literal|0
+condition|)
+name|namelen
+operator|=
+name|strlen
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|path
@@ -3106,16 +3125,11 @@ name|path
 operator|->
 name|len
 operator|<=
-name|ce_namelen
-argument_list|(
-name|ce
-argument_list|)
+name|namelen
 operator|&&
 operator|!
 name|memcmp
 argument_list|(
-name|ce
-operator|->
 name|name
 argument_list|,
 name|path
@@ -3129,8 +3143,6 @@ argument_list|)
 operator|&&
 operator|(
 operator|!
-name|ce
-operator|->
 name|name
 index|[
 name|path
@@ -3138,8 +3150,6 @@ operator|->
 name|len
 index|]
 operator|||
-name|ce
-operator|->
 name|name
 index|[
 name|path
@@ -3166,8 +3176,6 @@ name|i
 operator|=
 literal|0
 init|;
-name|ce
-operator|->
 name|name
 index|[
 name|i
@@ -3180,8 +3188,6 @@ block|{
 name|int
 name|ch
 init|=
-name|ce
-operator|->
 name|name
 index|[
 name|i
@@ -3194,10 +3200,11 @@ operator|==
 literal|'/'
 condition|)
 block|{
-name|dtype
-operator|=
+name|int
+name|dt
+init|=
 name|DT_DIR
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|excluded
@@ -3211,7 +3218,7 @@ operator|->
 name|buf
 argument_list|,
 operator|&
-name|dtype
+name|dt
 argument_list|)
 condition|)
 return|return
@@ -3234,13 +3241,6 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-name|dtype
-operator|=
-name|ce_to_dtype
-argument_list|(
-name|ce
-argument_list|)
-expr_stmt|;
 return|return
 name|excluded
 argument_list|(
@@ -3248,11 +3248,8 @@ name|check
 operator|->
 name|dir
 argument_list|,
-name|ce
-operator|->
 name|name
 argument_list|,
-operator|&
 name|dtype
 argument_list|)
 return|;
