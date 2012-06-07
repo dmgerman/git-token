@@ -3394,10 +3394,16 @@ name|path
 argument_list|)
 condition|)
 block|{
+specifier|const
+name|char
+modifier|*
+name|msg
+decl_stmt|;
 if|if
 condition|(
 name|rerere_autoupdate
 condition|)
+block|{
 name|string_list_insert
 argument_list|(
 operator|&
@@ -3406,17 +3412,21 @@ argument_list|,
 name|path
 argument_list|)
 expr_stmt|;
+name|msg
+operator|=
+literal|"Staged '%s' using previous resolution.\n"
+expr_stmt|;
+block|}
+else|else
+name|msg
+operator|=
+literal|"Resolved '%s' using previous resolution.\n"
+expr_stmt|;
 name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"%s '%s' using previous resolution.\n"
-argument_list|,
-name|rerere_autoupdate
-condition|?
-literal|"Staged"
-else|:
-literal|"Resolved"
+name|msg
 argument_list|,
 name|path
 argument_list|)
