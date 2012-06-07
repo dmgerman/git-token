@@ -386,6 +386,12 @@ literal|"true"
 argument_list|)
 expr_stmt|;
 block|}
+name|strbuf_release
+argument_list|(
+operator|&
+name|key
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|flag
@@ -393,90 +399,102 @@ operator|&
 name|BRANCH_CONFIG_VERBOSE
 condition|)
 block|{
-name|strbuf_reset
-argument_list|(
-operator|&
-name|key
-argument_list|)
-expr_stmt|;
-name|strbuf_addstr
-argument_list|(
-operator|&
-name|key
-argument_list|,
-name|origin
-condition|?
-literal|"remote"
-else|:
-literal|"local"
-argument_list|)
-expr_stmt|;
-comment|/* Are we tracking a proper "branch"? */
 if|if
 condition|(
 name|remote_is_branch
+operator|&&
+name|origin
 condition|)
-block|{
-name|strbuf_addf
+name|printf
 argument_list|(
-operator|&
-name|key
+name|rebasing
+condition|?
+literal|"Branch %s set up to track remote branch %s from %s by rebasing.\n"
+else|:
+literal|"Branch %s set up to track remote branch %s from %s.\n"
 argument_list|,
-literal|" branch %s"
+name|local
+argument_list|,
+name|shortname
+argument_list|,
+name|origin
+argument_list|)
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|remote_is_branch
+operator|&&
+operator|!
+name|origin
+condition|)
+name|printf
+argument_list|(
+name|rebasing
+condition|?
+literal|"Branch %s set up to track local branch %s by rebasing.\n"
+else|:
+literal|"Branch %s set up to track local branch %s.\n"
+argument_list|,
+name|local
 argument_list|,
 name|shortname
 argument_list|)
 expr_stmt|;
+elseif|else
 if|if
 condition|(
+operator|!
+name|remote_is_branch
+operator|&&
 name|origin
 condition|)
-name|strbuf_addf
+name|printf
 argument_list|(
-operator|&
-name|key
+name|rebasing
+condition|?
+literal|"Branch %s set up to track remote ref %s by rebasing.\n"
+else|:
+literal|"Branch %s set up to track remote ref %s.\n"
 argument_list|,
-literal|" from %s"
-argument_list|,
-name|origin
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-name|strbuf_addf
-argument_list|(
-operator|&
-name|key
-argument_list|,
-literal|" ref %s"
+name|local
 argument_list|,
 name|remote
 argument_list|)
 expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|remote_is_branch
+operator|&&
+operator|!
+name|origin
+condition|)
 name|printf
 argument_list|(
-literal|"Branch %s set up to track %s%s.\n"
+name|rebasing
+condition|?
+literal|"Branch %s set up to track local ref %s by rebasing.\n"
+else|:
+literal|"Branch %s set up to track local ref %s.\n"
 argument_list|,
 name|local
 argument_list|,
-name|key
-operator|.
-name|buf
+name|remote
+argument_list|)
+expr_stmt|;
+else|else
+name|die
+argument_list|(
+literal|"BUG: impossible combination of %d and %p"
 argument_list|,
-name|rebasing
-condition|?
-literal|" by rebasing"
-else|:
-literal|""
+name|remote_is_branch
+argument_list|,
+name|origin
 argument_list|)
 expr_stmt|;
 block|}
-name|strbuf_release
-argument_list|(
-operator|&
-name|key
-argument_list|)
-expr_stmt|;
 block|}
 end_function
 
