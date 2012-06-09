@@ -926,26 +926,6 @@ operator|&
 name|st
 argument_list|)
 return|;
-comment|/* 	 * Process a regular file 	 */
-if|if
-condition|(
-name|ce
-operator|&&
-name|S_ISGITLINK
-argument_list|(
-name|ce
-operator|->
-name|ce_mode
-argument_list|)
-condition|)
-return|return
-name|error
-argument_list|(
-literal|"%s is already a gitlink, not replacing"
-argument_list|,
-name|path
-argument_list|)
-return|;
 return|return
 name|add_one_path
 argument_list|(
