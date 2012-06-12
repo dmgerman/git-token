@@ -1835,7 +1835,7 @@ condition|)
 block|{
 name|label
 operator|=
-literal|"\nBy "
+literal|"\n# By "
 expr_stmt|;
 name|me
 operator|=
@@ -1849,7 +1849,7 @@ else|else
 block|{
 name|label
 operator|=
-literal|"\nvia "
+literal|"\n# Via "
 expr_stmt|;
 name|me
 operator|=
