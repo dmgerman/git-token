@@ -2466,7 +2466,10 @@ name|error
 argument_list|(
 literal|"Object %s already has a mark"
 argument_list|,
+name|sha1_to_hex
+argument_list|(
 name|sha1
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|mark_object
