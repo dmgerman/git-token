@@ -265,6 +265,24 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_struct_decl
+struct_decl|struct
+name|diff_options
+struct_decl|;
+end_struct_decl
+
+begin_function_decl
+specifier|extern
+name|void
+name|setup_diff_pager
+parameter_list|(
+name|struct
+name|diff_options
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function_decl
 specifier|extern
 name|int
