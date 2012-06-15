@@ -9851,8 +9851,21 @@ name|total_files
 operator|--
 expr_stmt|;
 block|}
-else|else
+elseif|else
+if|if
+condition|(
+operator|!
+name|data
+operator|->
+name|files
+index|[
+name|i
+index|]
+operator|->
+name|is_binary
+condition|)
 block|{
+comment|/* don't count bytes */
 name|adds
 operator|+=
 name|added
