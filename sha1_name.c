@@ -115,6 +115,7 @@ operator|!
 name|fakeent
 condition|)
 block|{
+comment|/* 		 * Create a "fake" alternate object database that 		 * points to our own object database, to make it 		 * easier to get a temporary working space in 		 * alt->name/alt->base while iterating over the 		 * object databases including our own. 		 */
 specifier|const
 name|char
 modifier|*
