@@ -381,6 +381,9 @@ specifier|const
 name|char
 modifier|*
 name|arg
+parameter_list|,
+name|int
+name|diagnose_misspelt_rev
 parameter_list|)
 block|{
 name|unsigned
@@ -393,6 +396,19 @@ decl_stmt|;
 name|unsigned
 name|mode
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|diagnose_misspelt_rev
+condition|)
+name|die
+argument_list|(
+literal|"%s: no such path in the working tree.\n"
+literal|"Use '--<path>...' to specify paths that do not exist locally."
+argument_list|,
+name|arg
+argument_list|)
+expr_stmt|;
 comment|/* 	 * Saying "'(icase)foo' does not exist in the index" when the 	 * user gave us ":(icase)foo" is just stupid.  A magic pathspec 	 * begins with a colon and is followed by a non-alnum; do not 	 * let get_sha1_with_mode_1(only_to_die=1) to even trigger. 	 */
 if|if
 condition|(
@@ -443,7 +459,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Verify a filename that we got as an argument for a pathspec  * entry. Note that a filename that begins with "-" never verifies  * as true, because even if such a filename were to exist, we want  * it to be preceded by the "--" marker (or we want the user to  * use a format like "./-filename")  */
+comment|/*  * Verify a filename that we got as an argument for a pathspec  * entry. Note that a filename that begins with "-" never verifies  * as true, because even if such a filename were to exist, we want  * it to be preceded by the "--" marker (or we want the user to  * use a format like "./-filename")  *  * The "diagnose_misspelt_rev" is used to provide a user-friendly  * diagnosis when dying upon finding that "name" is not a pathname.  * If set to 1, the diagnosis will try to diagnose "name" as an  * invalid object name (e.g. HEAD:foo). If set to 0, the diagnosis  * will only complain about an inexisting file.  *  * This function is typically called to check that a "file or rev"  * argument is unambiguous. In this case, the caller will want  * diagnose_misspelt_rev == 1 when verifying the first non-rev  * argument (which could have been a revision), and  * diagnose_misspelt_rev == 0 for the next ones (because we already  * saw a filename, there's not ambiguity anymore).  */
 end_comment
 
 begin_function
@@ -460,6 +476,9 @@ specifier|const
 name|char
 modifier|*
 name|arg
+parameter_list|,
+name|int
+name|diagnose_misspelt_rev
 parameter_list|)
 block|{
 if|if
@@ -491,6 +510,8 @@ argument_list|(
 name|prefix
 argument_list|,
 name|arg
+argument_list|,
+name|diagnose_misspelt_rev
 argument_list|)
 expr_stmt|;
 block|}
