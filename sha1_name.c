@@ -3151,6 +3151,13 @@ name|char
 modifier|*
 name|cp
 decl_stmt|;
+name|unsigned
+name|flags
+init|=
+name|GET_SHA1_QUIETLY
+operator||
+name|GET_SHA1_COMMIT
+decl_stmt|;
 for|for
 control|(
 name|cp
@@ -3222,7 +3229,7 @@ name|len
 argument_list|,
 name|sha1
 argument_list|,
-name|GET_SHA1_QUIETLY
+name|flags
 argument_list|)
 return|;
 block|}
