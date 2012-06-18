@@ -5517,6 +5517,14 @@ block|}
 struct|;
 end_struct
 
+begin_define
+DECL|macro|GET_SHA1_QUIETLY
+define|#
+directive|define
+name|GET_SHA1_QUIETLY
+value|01
+end_define
+
 begin_function_decl
 specifier|extern
 name|int
