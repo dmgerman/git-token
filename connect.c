@@ -283,6 +283,36 @@ expr_stmt|;
 block|}
 end_function
 
+begin_function
+DECL|function|die_initial_contact
+specifier|static
+name|void
+name|die_initial_contact
+parameter_list|(
+name|int
+name|got_at_least_one_head
+parameter_list|)
+block|{
+if|if
+condition|(
+name|got_at_least_one_head
+condition|)
+name|die
+argument_list|(
+literal|"The remote end hung up upon initial contact"
+argument_list|)
+expr_stmt|;
+else|else
+name|die
+argument_list|(
+literal|"Could not read from remote repository.\n\n"
+literal|"Please make sure you have the correct access rights\n"
+literal|"and the repository exists."
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
 begin_comment
 comment|/*  * Read all the refs from the other end  */
 end_comment
@@ -322,6 +352,11 @@ modifier|*
 name|extra_have
 parameter_list|)
 block|{
+name|int
+name|got_at_least_one_head
+init|=
+literal|0
+decl_stmt|;
 operator|*
 name|list
 operator|=
@@ -363,7 +398,7 @@ name|name_len
 decl_stmt|;
 name|len
 operator|=
-name|packet_read_line
+name|packet_read
 argument_list|(
 name|in
 argument_list|,
@@ -373,6 +408,17 @@ sizeof|sizeof
 argument_list|(
 name|buffer
 argument_list|)
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|len
+operator|<
+literal|0
+condition|)
+name|die_initial_contact
+argument_list|(
+name|got_at_least_one_head
 argument_list|)
 expr_stmt|;
 if|if
@@ -574,6 +620,10 @@ operator|&
 name|ref
 operator|->
 name|next
+expr_stmt|;
+name|got_at_least_one_head
+operator|=
+literal|1
 expr_stmt|;
 block|}
 return|return
