@@ -196,6 +196,12 @@ name|dir_struct
 modifier|*
 name|dir
 decl_stmt|;
+DECL|member|path_exclude_check
+name|struct
+name|path_exclude_check
+modifier|*
+name|path_exclude_check
+decl_stmt|;
 DECL|member|pathspec
 name|struct
 name|pathspec
