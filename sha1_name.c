@@ -79,7 +79,7 @@ parameter_list|,
 specifier|const
 name|char
 modifier|*
-name|name
+name|hex_pfx
 parameter_list|,
 name|unsigned
 name|char
@@ -198,7 +198,7 @@ name|hex
 argument_list|,
 literal|"%.2s"
 argument_list|,
-name|name
+name|hex_pfx
 argument_list|)
 expr_stmt|;
 for|for
@@ -237,7 +237,7 @@ name|name
 argument_list|,
 literal|"%.2s/"
 argument_list|,
-name|name
+name|hex_pfx
 argument_list|)
 expr_stmt|;
 name|dir
@@ -289,7 +289,7 @@ name|de
 operator|->
 name|d_name
 argument_list|,
-name|name
+name|hex_pfx
 operator|+
 literal|2
 argument_list|,
@@ -465,7 +465,7 @@ specifier|const
 name|unsigned
 name|char
 modifier|*
-name|match
+name|bin_pfx
 parameter_list|,
 name|struct
 name|packed_git
@@ -557,7 +557,7 @@ name|cmp
 operator|=
 name|hashcmp
 argument_list|(
-name|match
+name|bin_pfx
 argument_list|,
 name|current
 argument_list|)
@@ -594,7 +594,7 @@ operator|=
 name|mid
 expr_stmt|;
 block|}
-comment|/* 	 * At this point, "first" is the location of the lowest object 	 * with an object name that could match "match".  See if we have 	 * 0, 1 or more objects that actually match(es). 	 */
+comment|/* 	 * At this point, "first" is the location of the lowest object 	 * with an object name that could match "bin_pfx".  See if we have 	 * 0, 1 or more objects that actually match(es). 	 */
 for|for
 control|(
 name|i
@@ -625,7 +625,7 @@ name|match_sha
 argument_list|(
 name|len
 argument_list|,
-name|match
+name|bin_pfx
 argument_list|,
 name|current
 argument_list|)
@@ -689,7 +689,7 @@ specifier|const
 name|unsigned
 name|char
 modifier|*
-name|match
+name|bin_pfx
 parameter_list|,
 name|unsigned
 name|char
@@ -742,7 +742,7 @@ name|unique_in_pack
 argument_list|(
 name|len
 argument_list|,
-name|match
+name|bin_pfx
 argument_list|,
 name|p
 argument_list|,
@@ -798,12 +798,12 @@ name|len
 parameter_list|,
 name|char
 modifier|*
-name|canonical
+name|hex_pfx
 parameter_list|,
 name|unsigned
 name|char
 modifier|*
-name|res
+name|bin_pfx
 parameter_list|,
 name|unsigned
 name|char
@@ -837,7 +837,7 @@ name|find_short_object_filename
 argument_list|(
 name|len
 argument_list|,
-name|canonical
+name|hex_pfx
 argument_list|,
 name|unpacked_sha1
 argument_list|)
@@ -848,7 +848,7 @@ name|find_short_packed_object
 argument_list|(
 name|len
 argument_list|,
-name|res
+name|bin_pfx
 argument_list|,
 name|packed_sha1
 argument_list|)
@@ -956,14 +956,14 @@ decl_stmt|,
 name|status
 decl_stmt|;
 name|char
-name|canonical
+name|hex_pfx
 index|[
 literal|40
 index|]
 decl_stmt|;
 name|unsigned
 name|char
-name|res
+name|bin_pfx
 index|[
 literal|20
 index|]
@@ -984,12 +984,12 @@ literal|1
 return|;
 name|hashclr
 argument_list|(
-name|res
+name|bin_pfx
 argument_list|)
 expr_stmt|;
 name|memset
 argument_list|(
-name|canonical
+name|hex_pfx
 argument_list|,
 literal|'x'
 argument_list|,
@@ -1090,7 +1090,7 @@ return|return
 operator|-
 literal|1
 return|;
-name|canonical
+name|hex_pfx
 index|[
 name|i
 index|]
@@ -1110,7 +1110,7 @@ name|val
 operator|<<=
 literal|4
 expr_stmt|;
-name|res
+name|bin_pfx
 index|[
 name|i
 operator|>>
@@ -1126,9 +1126,9 @@ name|find_unique_short_object
 argument_list|(
 name|i
 argument_list|,
-name|canonical
+name|hex_pfx
 argument_list|,
-name|res
+name|bin_pfx
 argument_list|,
 name|sha1
 argument_list|)
@@ -1151,7 +1151,7 @@ literal|"short SHA1 %.*s is ambiguous."
 argument_list|,
 name|len
 argument_list|,
-name|canonical
+name|hex_pfx
 argument_list|)
 return|;
 return|return
