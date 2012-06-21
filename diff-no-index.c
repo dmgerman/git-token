@@ -1453,11 +1453,15 @@ expr_stmt|;
 comment|/* 	 * The return code for --no-index imitates diff(1): 	 * 0 = no changes, 1 = changes, else error 	 */
 name|exit
 argument_list|(
+name|diff_result_code
+argument_list|(
+operator|&
 name|revs
 operator|->
 name|diffopt
-operator|.
-name|found_changes
+argument_list|,
+literal|0
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
