@@ -105,6 +105,12 @@ directive|include
 file|"streaming.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"version.h"
+end_include
+
 begin_comment
 comment|/* Set a default date-time format for git log ("log.date" config variable) */
 end_comment
