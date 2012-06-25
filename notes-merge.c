@@ -2994,17 +2994,15 @@ literal|4
 condition|)
 name|printf
 argument_list|(
-literal|"Merge result: %i unmerged notes and a %s notes tree\n"
-argument_list|,
-name|conflicts
-argument_list|,
 name|t
 operator|->
 name|dirty
 condition|?
-literal|"dirty"
+literal|"Merge result: %i unmerged notes and a dirty notes tree\n"
 else|:
-literal|"clean"
+literal|"Merge result: %i unmerged notes and a clean notes tree\n"
+argument_list|,
+name|conflicts
 argument_list|)
 expr_stmt|;
 return|return

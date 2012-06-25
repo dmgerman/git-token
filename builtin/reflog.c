@@ -1677,7 +1677,17 @@ operator|!
 name|cb
 operator|->
 name|newlog
-operator|||
+condition|)
+name|printf
+argument_list|(
+literal|"would prune %s"
+argument_list|,
+name|message
+argument_list|)
+expr_stmt|;
+elseif|else
+if|if
+condition|(
 name|cb
 operator|->
 name|cmd
@@ -1686,15 +1696,7 @@ name|verbose
 condition|)
 name|printf
 argument_list|(
-literal|"%sprune %s"
-argument_list|,
-name|cb
-operator|->
-name|newlog
-condition|?
-literal|""
-else|:
-literal|"would "
+literal|"prune %s"
 argument_list|,
 name|message
 argument_list|)
