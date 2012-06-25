@@ -2768,7 +2768,7 @@ name|port
 operator|=
 name|get_port
 argument_list|(
-name|host
+name|end
 argument_list|)
 expr_stmt|;
 if|if
