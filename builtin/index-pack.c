@@ -208,12 +208,12 @@ argument_list|)
 operator|&&
 name|defined
 argument_list|(
-name|NO_PREAD
+name|NO_THREAD_SAFE_PREAD
 argument_list|)
 end_if
 
 begin_comment
-comment|/* NO_PREAD uses compat/pread.c, which is not thread-safe. Disable threading. */
+comment|/* pread() emulation is not thread-safe. Disable threading. */
 end_comment
 
 begin_define
