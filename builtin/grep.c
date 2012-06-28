@@ -5106,6 +5106,10 @@ name|argv
 index|[
 name|j
 index|]
+argument_list|,
+name|j
+operator|==
+name|i
 argument_list|)
 expr_stmt|;
 block|}
