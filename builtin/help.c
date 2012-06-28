@@ -2283,6 +2283,17 @@ expr_stmt|;
 comment|/* Check that we have a git documentation directory. */
 if|if
 condition|(
+operator|!
+name|strstr
+argument_list|(
+name|html_path
+argument_list|,
+literal|"://"
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
 name|stat
 argument_list|(
 name|mkpath
@@ -2306,14 +2317,12 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-name|_
-argument_list|(
 literal|"'%s': not a documentation directory."
-argument_list|)
 argument_list|,
 name|html_path
 argument_list|)
 expr_stmt|;
+block|}
 name|strbuf_init
 argument_list|(
 name|page_path
