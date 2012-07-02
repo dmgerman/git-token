@@ -5262,6 +5262,8 @@ name|get_sha1_with_context
 argument_list|(
 name|name
 argument_list|,
+literal|0
+argument_list|,
 name|sha1
 argument_list|,
 operator|&
@@ -5824,6 +5826,14 @@ modifier|*
 name|name
 parameter_list|,
 name|unsigned
+name|flags
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|prefix
+parameter_list|,
+name|unsigned
 name|char
 modifier|*
 name|sha1
@@ -5832,14 +5842,6 @@ name|struct
 name|object_context
 modifier|*
 name|oc
-parameter_list|,
-name|int
-name|only_to_die
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|prefix
 parameter_list|)
 block|{
 name|int
@@ -5859,6 +5861,13 @@ specifier|const
 name|char
 modifier|*
 name|cp
+decl_stmt|;
+name|int
+name|only_to_die
+init|=
+name|flags
+operator|&
+name|GET_SHA1_ONLY_TO_DIE
 decl_stmt|;
 name|memset
 argument_list|(
@@ -5889,7 +5898,7 @@ name|namelen
 argument_list|,
 name|sha1
 argument_list|,
-literal|0
+name|flags
 argument_list|)
 expr_stmt|;
 if|if
@@ -5900,7 +5909,7 @@ condition|)
 return|return
 name|ret
 return|;
-comment|/* sha1:path --> object name of path in ent sha1 	 * :path -> object name of absolute path in index 	 * :./path -> object name of path relative to cwd in index 	 * :[0-3]:path -> object name of path in index at stage 	 * :/foo -> recent commit matching foo 	 */
+comment|/* 	 * sha1:path --> object name of path in ent sha1 	 * :path -> object name of absolute path in index 	 * :./path -> object name of path relative to cwd in index 	 * :[0-3]:path -> object name of path in index at stage 	 * :/foo -> recent commit matching foo 	 */
 if|if
 condition|(
 name|name
@@ -6538,14 +6547,14 @@ name|get_sha1_with_context_1
 argument_list|(
 name|name
 argument_list|,
+name|GET_SHA1_ONLY_TO_DIE
+argument_list|,
+name|prefix
+argument_list|,
 name|sha1
 argument_list|,
 operator|&
 name|oc
-argument_list|,
-literal|1
-argument_list|,
-name|prefix
 argument_list|)
 expr_stmt|;
 block|}
@@ -6560,6 +6569,9 @@ specifier|const
 name|char
 modifier|*
 name|str
+parameter_list|,
+name|unsigned
+name|flags
 parameter_list|,
 name|unsigned
 name|char
@@ -6577,13 +6589,13 @@ name|get_sha1_with_context_1
 argument_list|(
 name|str
 argument_list|,
+name|flags
+argument_list|,
+name|NULL
+argument_list|,
 name|sha1
 argument_list|,
 name|orc
-argument_list|,
-literal|0
-argument_list|,
-name|NULL
 argument_list|)
 return|;
 block|}

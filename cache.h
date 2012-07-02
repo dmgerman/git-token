@@ -5541,6 +5541,14 @@ name|GET_SHA1_COMMITTISH
 value|04
 end_define
 
+begin_define
+DECL|macro|GET_SHA1_ONLY_TO_DIE
+define|#
+directive|define
+name|GET_SHA1_ONLY_TO_DIE
+value|04000
+end_define
+
 begin_function_decl
 specifier|extern
 name|int
@@ -5586,6 +5594,9 @@ specifier|const
 name|char
 modifier|*
 name|str
+parameter_list|,
+name|unsigned
+name|flags
 parameter_list|,
 name|unsigned
 name|char

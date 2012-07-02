@@ -6045,6 +6045,8 @@ name|get_sha1_with_context
 argument_list|(
 name|arg
 argument_list|,
+literal|0
+argument_list|,
 name|sha1
 argument_list|,
 operator|&
@@ -10535,6 +10537,8 @@ argument_list|(
 name|revs
 operator|->
 name|def
+argument_list|,
+literal|0
 argument_list|,
 name|sha1
 argument_list|,

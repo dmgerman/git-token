@@ -413,6 +413,8 @@ name|get_sha1_with_context
 argument_list|(
 name|obj_name
 argument_list|,
+literal|0
+argument_list|,
 name|sha1
 argument_list|,
 operator|&
