@@ -395,7 +395,7 @@ name|commit
 decl_stmt|;
 if|if
 condition|(
-name|get_sha1
+name|get_sha1_committish
 argument_list|(
 name|name
 argument_list|,

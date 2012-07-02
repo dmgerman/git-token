@@ -5569,6 +5569,24 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|int
+name|get_sha1_committish
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|str
+parameter_list|,
+name|unsigned
+name|char
+modifier|*
+name|sha1
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|void
 name|maybe_die_on_misspelt_object_name
 parameter_list|(
