@@ -383,17 +383,7 @@ modifier|*
 name|arg
 parameter_list|)
 block|{
-name|unsigned
-name|char
-name|sha1
-index|[
-literal|20
-index|]
-decl_stmt|;
-name|unsigned
-name|mode
-decl_stmt|;
-comment|/* 	 * Saying "'(icase)foo' does not exist in the index" when the 	 * user gave us ":(icase)foo" is just stupid.  A magic pathspec 	 * begins with a colon and is followed by a non-alnum; do not 	 * let get_sha1_with_mode_1(only_to_die=1) to even trigger. 	 */
+comment|/* 	 * Saying "'(icase)foo' does not exist in the index" when the 	 * user gave us ":(icase)foo" is just stupid.  A magic pathspec 	 * begins with a colon and is followed by a non-alnum; do not 	 * let maybe_die_on_misspelt_object_name() even trigger. 	 */
 if|if
 condition|(
 operator|!
@@ -415,17 +405,9 @@ index|]
 argument_list|)
 operator|)
 condition|)
-comment|/* try a detailed diagnostic ... */
-name|get_sha1_with_mode_1
+name|maybe_die_on_misspelt_object_name
 argument_list|(
 name|arg
-argument_list|,
-name|sha1
-argument_list|,
-operator|&
-name|mode
-argument_list|,
-literal|1
 argument_list|,
 name|prefix
 argument_list|)
