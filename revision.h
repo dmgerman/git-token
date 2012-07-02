@@ -867,6 +867,10 @@ name|char
 modifier|*
 name|submodule
 decl_stmt|;
+DECL|member|revarg_opt
+name|unsigned
+name|revarg_opt
+decl_stmt|;
 block|}
 struct|;
 end_struct
@@ -952,6 +956,14 @@ define|#
 directive|define
 name|REVARG_CANNOT_BE_FILENAME
 value|01
+end_define
+
+begin_define
+DECL|macro|REVARG_COMMITTISH
+define|#
+directive|define
+name|REVARG_COMMITTISH
+value|02
 end_define
 
 begin_function_decl
