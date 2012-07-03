@@ -285,7 +285,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|get_sha1
+name|get_sha1_tree
 argument_list|(
 name|argv
 index|[
@@ -297,7 +297,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"Not a valid object name %s"
+literal|"Not a valid tree object name %s"
 argument_list|,
 name|argv
 index|[
@@ -361,7 +361,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|get_sha1
+name|get_sha1_commit
 argument_list|(
 name|argv
 index|[
@@ -619,7 +619,7 @@ continue|continue;
 block|}
 if|if
 condition|(
-name|get_sha1
+name|get_sha1_tree
 argument_list|(
 name|arg
 argument_list|,
