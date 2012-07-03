@@ -1537,7 +1537,7 @@ elseif|else
 if|if
 condition|(
 operator|!
-name|get_sha1
+name|get_sha1_committish
 argument_list|(
 name|argv
 index|[
@@ -1585,7 +1585,7 @@ block|}
 block|}
 if|if
 condition|(
-name|get_sha1
+name|get_sha1_committish
 argument_list|(
 name|rev
 argument_list|,
@@ -1602,6 +1602,7 @@ argument_list|,
 name|rev
 argument_list|)
 expr_stmt|;
+comment|/* 	 * NOTE: As "git reset $treeish -- $path" should be usable on 	 * any tree-ish, this is not strictly correct. We are not 	 * moving the HEAD to any commit; we are merely resetting the 	 * entries in the index to that of a treeish. 	 */
 name|commit
 operator|=
 name|lookup_commit_reference
