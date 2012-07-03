@@ -1020,7 +1020,7 @@ operator|->
 name|candidate_ok
 condition|)
 return|return
-name|SHORT_NAME_NOT_FOUND
+name|SHORT_NAME_AMBIGUOUS
 return|;
 name|hashcpy
 argument_list|(
