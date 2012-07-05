@@ -131,6 +131,23 @@ end_function_decl
 
 begin_function_decl
 name|int
+name|packet_read
+parameter_list|(
+name|int
+name|fd
+parameter_list|,
+name|char
+modifier|*
+name|buffer
+parameter_list|,
+name|unsigned
+name|size
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
 name|packet_get_line
 parameter_list|(
 name|struct
