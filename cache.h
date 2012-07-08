@@ -3764,6 +3764,13 @@ name|core_apply_sparse_checkout
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+specifier|extern
+name|int
+name|precomposed_unicode
+decl_stmt|;
+end_decl_stmt
+
 begin_enum
 DECL|enum|branch_track
 enum|enum
