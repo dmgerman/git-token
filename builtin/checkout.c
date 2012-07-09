@@ -4982,6 +4982,21 @@ name|branch_ref
 init|=
 name|STRBUF_INIT
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|opts
+operator|->
+name|new_branch
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"You are on a branch yet to be born"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|strbuf_addf
 argument_list|(
 operator|&
