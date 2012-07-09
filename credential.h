@@ -152,6 +152,21 @@ end_function_decl
 
 begin_function_decl
 name|void
+name|credential_write
+parameter_list|(
+specifier|const
+name|struct
+name|credential
+modifier|*
+parameter_list|,
+name|FILE
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|void
 name|credential_from_url
 parameter_list|(
 name|struct
