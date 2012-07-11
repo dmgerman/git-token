@@ -6167,6 +6167,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|ret
+operator|&&
 name|only_to_die
 condition|)
 block|{
