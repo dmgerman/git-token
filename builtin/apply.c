@@ -17297,6 +17297,15 @@ name|ce
 operator|->
 name|ce_flags
 operator|=
+name|create_ce_flags
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
+name|ce
+operator|->
+name|ce_namelen
+operator|=
 name|namelen
 expr_stmt|;
 if|if
