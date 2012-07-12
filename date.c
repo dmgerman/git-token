@@ -3229,7 +3229,7 @@ operator|<
 literal|'0'
 operator|||
 literal|'9'
-operator|<=
+operator|<
 operator|*
 name|date
 condition|)
