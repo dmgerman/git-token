@@ -692,18 +692,5 @@ return|;
 block|}
 end_function
 
-begin_function
-DECL|function|buffer_reset
-name|void
-name|buffer_reset
-parameter_list|(
-name|struct
-name|line_buffer
-modifier|*
-name|buf
-parameter_list|)
-block|{ }
-end_function
-
 end_unit
 

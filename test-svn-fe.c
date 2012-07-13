@@ -189,24 +189,12 @@ argument_list|(
 literal|"cannot close delta"
 argument_list|)
 expr_stmt|;
-name|buffer_reset
-argument_list|(
-operator|&
-name|preimage
-argument_list|)
-expr_stmt|;
 name|strbuf_release
 argument_list|(
 operator|&
 name|preimage_view
 operator|.
 name|buf
-argument_list|)
-expr_stmt|;
-name|buffer_reset
-argument_list|(
-operator|&
-name|delta
 argument_list|)
 expr_stmt|;
 return|return

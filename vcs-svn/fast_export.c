@@ -191,23 +191,6 @@ block|}
 end_function
 
 begin_function
-DECL|function|fast_export_reset
-name|void
-name|fast_export_reset
-parameter_list|(
-name|void
-parameter_list|)
-block|{
-name|buffer_reset
-argument_list|(
-operator|&
-name|report_buffer
-argument_list|)
-expr_stmt|;
-block|}
-end_function
-
-begin_function
 DECL|function|fast_export_delete
 name|void
 name|fast_export_delete
@@ -866,18 +849,11 @@ argument_list|)
 return|;
 name|type
 operator|=
-name|memmem
+name|strstr
 argument_list|(
 name|header
 argument_list|,
-name|headerlen
-argument_list|,
 literal|" blob "
-argument_list|,
-name|strlen
-argument_list|(
-literal|" blob "
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -1494,6 +1470,9 @@ name|response_end
 operator|-
 name|response
 operator|<
+operator|(
+name|signed
+operator|)
 name|strlen
 argument_list|(
 literal|"100644"
@@ -1576,6 +1555,9 @@ name|response_end
 operator|-
 name|response
 operator|<
+operator|(
+name|signed
+operator|)
 name|strlen
 argument_list|(
 literal|" blob "
