@@ -3005,6 +3005,13 @@ name|options
 argument_list|)
 expr_stmt|;
 block|}
+name|precompose_argv
+argument_list|(
+name|argc
+argument_list|,
+name|argv
+argument_list|)
+expr_stmt|;
 return|return
 name|parse_options_end
 argument_list|(
