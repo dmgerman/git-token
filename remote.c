@@ -6447,6 +6447,23 @@ expr_stmt|;
 elseif|else
 if|if
 condition|(
+name|is_null_sha1
+argument_list|(
+name|matched_src
+operator|->
+name|new_sha1
+argument_list|)
+condition|)
+name|error
+argument_list|(
+literal|"unable to delete '%s': remote ref does not exist"
+argument_list|,
+name|dst_value
+argument_list|)
+expr_stmt|;
+elseif|else
+if|if
+condition|(
 operator|(
 name|dst_guess
 operator|=
