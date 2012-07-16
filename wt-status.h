@@ -64,9 +64,6 @@ block|,
 DECL|enumerator|WT_STATUS_ONBRANCH
 name|WT_STATUS_ONBRANCH
 block|,
-DECL|enumerator|WT_STATUS_IN_PROGRESS
-name|WT_STATUS_IN_PROGRESS
-block|,
 DECL|enumerator|WT_STATUS_MAXSLOT
 name|WT_STATUS_MAXSLOT
 block|}

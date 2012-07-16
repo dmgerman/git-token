@@ -127,9 +127,6 @@ comment|/* WT_STATUS_REMOTE_BRANCH */
 name|GIT_COLOR_NIL
 block|,
 comment|/* WT_STATUS_ONBRANCH */
-name|GIT_COLOR_NORMAL
-block|,
-comment|/* WT_STATUS_IN_PROGRESS */
 block|}
 decl_stmt|;
 end_decl_stmt
@@ -5570,7 +5567,7 @@ name|state_color
 init|=
 name|color
 argument_list|(
-name|WT_STATUS_IN_PROGRESS
+name|WT_STATUS_HEADER
 argument_list|,
 name|s
 argument_list|)
