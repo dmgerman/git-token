@@ -3284,7 +3284,7 @@ name|hex
 expr_stmt|;
 if|if
 condition|(
-name|mkdir
+name|mkdir_in_gitdir
 argument_list|(
 name|git_path
 argument_list|(
@@ -3292,8 +3292,6 @@ literal|"rr-cache/%s"
 argument_list|,
 name|hex
 argument_list|)
-argument_list|,
-literal|0755
 argument_list|)
 condition|)
 continue|continue;

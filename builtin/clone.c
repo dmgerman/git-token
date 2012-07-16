@@ -4005,7 +4005,7 @@ name|mkdir
 argument_list|(
 name|work_tree
 argument_list|,
-literal|0755
+literal|0777
 argument_list|)
 condition|)
 name|die_errno
