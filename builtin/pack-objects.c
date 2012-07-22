@@ -12008,7 +12008,7 @@ name|revs
 argument_list|,
 name|flags
 argument_list|,
-literal|1
+name|REVARG_CANNOT_BE_FILENAME
 argument_list|)
 condition|)
 name|die

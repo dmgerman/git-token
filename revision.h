@@ -871,6 +871,10 @@ DECL|member|assume_dashdash
 name|int
 name|assume_dashdash
 decl_stmt|;
+DECL|member|revarg_opt
+name|unsigned
+name|revarg_opt
+decl_stmt|;
 block|}
 struct|;
 end_struct
@@ -950,6 +954,22 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_define
+DECL|macro|REVARG_CANNOT_BE_FILENAME
+define|#
+directive|define
+name|REVARG_CANNOT_BE_FILENAME
+value|01
+end_define
+
+begin_define
+DECL|macro|REVARG_COMMITTISH
+define|#
+directive|define
+name|REVARG_COMMITTISH
+value|02
+end_define
+
 begin_function_decl
 specifier|extern
 name|int
@@ -968,8 +988,8 @@ parameter_list|,
 name|int
 name|flags
 parameter_list|,
-name|int
-name|cant_be_filename
+name|unsigned
+name|revarg_opt
 parameter_list|)
 function_decl|;
 end_function_decl

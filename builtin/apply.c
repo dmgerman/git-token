@@ -17497,7 +17497,7 @@ continue|continue;
 elseif|else
 if|if
 condition|(
-name|get_sha1
+name|get_sha1_blob
 argument_list|(
 name|patch
 operator|->
