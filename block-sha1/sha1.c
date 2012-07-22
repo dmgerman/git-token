@@ -353,7 +353,7 @@ name|SHA_SRC
 parameter_list|(
 name|t
 parameter_list|)
-value|get_be32(data + t)
+value|get_be32((unsigned char *) block + t*4)
 end_define
 
 begin_define
@@ -510,10 +510,9 @@ modifier|*
 name|ctx
 parameter_list|,
 specifier|const
-name|unsigned
-name|int
+name|void
 modifier|*
-name|data
+name|block
 parameter_list|)
 block|{
 name|unsigned
@@ -580,7 +579,7 @@ index|[
 literal|4
 index|]
 expr_stmt|;
-comment|/* Round 1 - iterations 0-16 take their input from 'data' */
+comment|/* Round 1 - iterations 0-16 take their input from 'block' */
 name|T_0_15
 argument_list|(
 literal|0
