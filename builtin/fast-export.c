@@ -1052,6 +1052,23 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|strchr
+argument_list|(
+name|path
+argument_list|,
+literal|' '
+argument_list|)
+condition|)
+name|printf
+argument_list|(
+literal|"\"%s\""
+argument_list|,
+name|path
+argument_list|)
+expr_stmt|;
 else|else
 name|printf
 argument_list|(
