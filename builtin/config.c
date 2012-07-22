@@ -2354,12 +2354,25 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+name|user_config
+condition|)
+comment|/* 			 * It is unknown if HOME/.gitconfig exists, so 			 * we do not know if we should write to XDG 			 * location; error out even if XDG_CONFIG_HOME 			 * is set and points at a sane location. 			 */
+name|die
+argument_list|(
+literal|"$HOME not set"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|access
 argument_list|(
 name|user_config
 argument_list|,
 name|R_OK
 argument_list|)
+operator|&&
+name|xdg_config
 operator|&&
 operator|!
 name|access
@@ -2373,20 +2386,10 @@ name|given_config_file
 operator|=
 name|xdg_config
 expr_stmt|;
-elseif|else
-if|if
-condition|(
-name|user_config
-condition|)
+else|else
 name|given_config_file
 operator|=
 name|user_config
-expr_stmt|;
-else|else
-name|die
-argument_list|(
-literal|"$HOME not set"
-argument_list|)
 expr_stmt|;
 block|}
 elseif|else
