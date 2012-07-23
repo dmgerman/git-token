@@ -4149,7 +4149,7 @@ name|committer_ident
 argument_list|,
 name|git_committer_info
 argument_list|(
-literal|0
+name|IDENT_STRICT
 argument_list|)
 argument_list|)
 expr_stmt|;
