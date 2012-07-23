@@ -162,7 +162,7 @@ argument_list|,
 name|advice
 argument_list|)
 expr_stmt|;
-name|strbuf_addf
+name|strbuf_vaddf
 argument_list|(
 operator|&
 name|buf
