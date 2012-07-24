@@ -2703,6 +2703,11 @@ operator|=
 name|xdg_attributes_file
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|git_attributes_file
+condition|)
+block|{
 name|elem
 operator|=
 name|read_attr_from_file
@@ -2733,6 +2738,7 @@ name|attr_stack
 operator|=
 name|elem
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
