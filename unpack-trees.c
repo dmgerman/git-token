@@ -2758,10 +2758,14 @@ name|ce_flags
 operator|=
 name|create_ce_flags
 argument_list|(
-name|len
-argument_list|,
 name|stage
 argument_list|)
+expr_stmt|;
+name|ce
+operator|->
+name|ce_namelen
+operator|=
+name|len
 expr_stmt|;
 name|hashcpy
 argument_list|(
