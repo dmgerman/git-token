@@ -1008,6 +1008,26 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|key
+argument_list|,
+literal|"url"
+argument_list|)
+condition|)
+block|{
+name|credential_from_url
+argument_list|(
+name|c
+argument_list|,
+name|value
+argument_list|)
+expr_stmt|;
+block|}
 comment|/* 		 * Ignore other lines; we don't know what they mean, but 		 * this future-proofs us when later versions of git do 		 * learn new lines, and the helpers are updated to match. 		 */
 block|}
 name|strbuf_release
