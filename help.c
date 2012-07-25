@@ -312,8 +312,10 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 if|if
 condition|(
+operator|!
 name|strcmp
 argument_list|(
 name|cmds
@@ -329,7 +331,7 @@ name|cmds
 operator|->
 name|names
 index|[
-name|i
+name|j
 operator|-
 literal|1
 index|]
@@ -337,6 +339,17 @@ operator|->
 name|name
 argument_list|)
 condition|)
+name|free
+argument_list|(
+name|cmds
+operator|->
+name|names
+index|[
+name|i
+index|]
+argument_list|)
+expr_stmt|;
+else|else
 name|cmds
 operator|->
 name|names
@@ -352,6 +365,7 @@ index|[
 name|i
 index|]
 expr_stmt|;
+block|}
 name|cmds
 operator|->
 name|cnt
