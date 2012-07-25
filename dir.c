@@ -6320,6 +6320,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|excludes_file
+operator|&&
 operator|!
 name|access
 argument_list|(
