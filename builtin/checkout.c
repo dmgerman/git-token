@@ -3456,8 +3456,6 @@ name|refname
 argument_list|,
 name|sha1
 argument_list|,
-name|flags
-operator||
 name|UNINTERESTING
 argument_list|)
 expr_stmt|;
