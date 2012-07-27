@@ -3882,11 +3882,6 @@ name|struct
 name|patch_ids
 modifier|*
 name|ids
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|prefix
 parameter_list|)
 block|{
 name|struct
@@ -4000,6 +3995,8 @@ argument_list|(
 operator|&
 name|check_rev
 argument_list|,
+name|rev
+operator|->
 name|prefix
 argument_list|)
 expr_stmt|;
@@ -7338,8 +7335,6 @@ name|rev
 argument_list|,
 operator|&
 name|ids
-argument_list|,
-name|prefix
 argument_list|)
 expr_stmt|;
 block|}
@@ -8435,8 +8430,6 @@ name|revs
 argument_list|,
 operator|&
 name|ids
-argument_list|,
-name|prefix
 argument_list|)
 expr_stmt|;
 if|if
