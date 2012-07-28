@@ -834,6 +834,8 @@ name|d1
 argument_list|,
 name|null_sha1
 argument_list|,
+literal|0
+argument_list|,
 name|mode1
 argument_list|)
 expr_stmt|;
@@ -842,6 +844,8 @@ argument_list|(
 name|d2
 argument_list|,
 name|null_sha1
+argument_list|,
+literal|0
 argument_list|,
 name|mode2
 argument_list|)

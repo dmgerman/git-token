@@ -466,6 +466,9 @@ name|char
 modifier|*
 name|sha1
 parameter_list|,
+name|int
+name|sha1_valid
+parameter_list|,
 name|char
 modifier|*
 modifier|*
@@ -499,6 +502,8 @@ argument_list|(
 name|df
 argument_list|,
 name|sha1
+argument_list|,
+name|sha1_valid
 argument_list|,
 name|mode
 argument_list|)
@@ -616,6 +621,8 @@ argument_list|,
 name|o
 operator|->
 name|blob_sha1
+argument_list|,
+literal|1
 argument_list|,
 operator|&
 name|file
@@ -10882,6 +10889,8 @@ name|mode
 argument_list|,
 name|null_sha1
 argument_list|,
+literal|0
+argument_list|,
 operator|&
 name|buf_ptr
 argument_list|,
@@ -13018,6 +13027,8 @@ argument_list|,
 name|o
 operator|->
 name|blob_sha1
+argument_list|,
+literal|1
 argument_list|,
 operator|(
 name|char
