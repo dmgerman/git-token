@@ -4000,6 +4000,12 @@ operator|->
 name|prefix
 argument_list|)
 expr_stmt|;
+name|check_rev
+operator|.
+name|max_parents
+operator|=
+literal|1
+expr_stmt|;
 name|o1
 operator|->
 name|flags
@@ -4063,20 +4069,6 @@ operator|!=
 name|NULL
 condition|)
 block|{
-comment|/* ignore merges */
-if|if
-condition|(
-name|commit
-operator|->
-name|parents
-operator|&&
-name|commit
-operator|->
-name|parents
-operator|->
-name|next
-condition|)
-continue|continue;
 name|add_commit_patch_id
 argument_list|(
 name|commit
@@ -8299,6 +8291,12 @@ argument_list|,
 name|prefix
 argument_list|)
 expr_stmt|;
+name|revs
+operator|.
+name|max_parents
+operator|=
+literal|1
+expr_stmt|;
 if|if
 condition|(
 name|add_pending_commit
@@ -8460,20 +8458,6 @@ operator|!=
 name|NULL
 condition|)
 block|{
-comment|/* ignore merges */
-if|if
-condition|(
-name|commit
-operator|->
-name|parents
-operator|&&
-name|commit
-operator|->
-name|parents
-operator|->
-name|next
-condition|)
-continue|continue;
 name|commit_list_insert
 argument_list|(
 name|commit
