@@ -8491,14 +8491,16 @@ literal|0
 argument_list|)
 expr_stmt|;
 return|return
-name|fputs
+name|fprintf
 argument_list|(
+name|fp
+argument_list|,
+literal|"%s\n"
+argument_list|,
 name|_
 argument_list|(
-literal|" 0 files changed\n"
+literal|" 0 files changed"
 argument_list|)
-argument_list|,
-name|fp
 argument_list|)
 return|;
 block|}
