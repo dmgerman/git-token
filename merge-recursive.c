@@ -1091,7 +1091,10 @@ literal|0
 condition|)
 name|printf
 argument_list|(
+name|_
+argument_list|(
 literal|"(bad commit)\n"
+argument_list|)
 argument_list|)
 expr_stmt|;
 else|else
@@ -1195,7 +1198,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"addinfo_cache failed for path '%s'"
+argument_list|)
 argument_list|,
 name|path
 argument_list|)
@@ -1540,7 +1546,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"error building trees"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|result
@@ -2685,7 +2694,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"diff setup failed"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|diff_tree_sha1
@@ -3549,7 +3561,10 @@ condition|)
 block|{
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"merge-recursive: disk full?"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3856,7 +3871,10 @@ name|char
 modifier|*
 name|msg
 init|=
+name|_
+argument_list|(
 literal|"failed to create path '%s'%s"
+argument_list|)
 decl_stmt|;
 comment|/* Unlink any D/F conflict files that are in the way */
 for|for
@@ -3940,7 +3958,10 @@ name|o
 argument_list|,
 literal|3
 argument_list|,
+name|_
+argument_list|(
 literal|"Removing %s to make room for subdirectory\n"
+argument_list|)
 argument_list|,
 name|df_path
 argument_list|)
@@ -3993,7 +4014,10 @@ name|msg
 argument_list|,
 name|path
 argument_list|,
+name|_
+argument_list|(
 literal|": perhaps a D/F conflict?"
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -4022,7 +4046,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"refusing to lose untracked file at '%s'"
+argument_list|)
 argument_list|,
 name|path
 argument_list|)
@@ -4057,7 +4084,10 @@ name|msg
 argument_list|,
 name|path
 argument_list|,
+name|_
+argument_list|(
 literal|": perhaps a D/F conflict?"
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -4159,7 +4189,10 @@ name|buf
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"cannot read object %s '%s'"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -4177,7 +4210,10 @@ name|OBJ_BLOB
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"blob expected for %s '%s'"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -4323,7 +4359,10 @@ literal|0
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"failed to open '%s'"
+argument_list|)
 argument_list|,
 name|path
 argument_list|)
@@ -4384,7 +4423,10 @@ argument_list|)
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"failed to symlink '%s'"
+argument_list|)
 argument_list|,
 name|path
 argument_list|)
@@ -4398,7 +4440,10 @@ block|}
 else|else
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"do not know what to do with %06o %s '%s'"
+argument_list|)
 argument_list|,
 name|mode
 argument_list|,
@@ -5259,7 +5304,10 @@ name|ptr
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Failed to execute internal merge"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -5283,7 +5331,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Unable to add %s to database"
+argument_list|)
 argument_list|,
 name|a
 operator|->
@@ -5399,7 +5450,10 @@ else|else
 block|{
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"unsupported object type in the tree"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -5865,14 +5919,72 @@ operator|!
 name|a_sha
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|renamed
+condition|)
+block|{
 name|output
 argument_list|(
 name|o
 argument_list|,
 literal|1
 argument_list|,
+name|_
+argument_list|(
 literal|"CONFLICT (%s/delete): %s deleted in %s "
-literal|"and %s in %s. Version %s of %s left in tree%s%s."
+literal|"and %s in %s. Version %s of %s left in tree."
+argument_list|)
+argument_list|,
+name|change
+argument_list|,
+name|path
+argument_list|,
+name|o
+operator|->
+name|branch1
+argument_list|,
+name|change_past
+argument_list|,
+name|o
+operator|->
+name|branch2
+argument_list|,
+name|o
+operator|->
+name|branch2
+argument_list|,
+name|path
+argument_list|)
+expr_stmt|;
+name|update_file
+argument_list|(
+name|o
+argument_list|,
+literal|0
+argument_list|,
+name|b_sha
+argument_list|,
+name|b_mode
+argument_list|,
+name|path
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|output
+argument_list|(
+name|o
+argument_list|,
+literal|1
+argument_list|,
+name|_
+argument_list|(
+literal|"CONFLICT (%s/delete): %s deleted in %s "
+literal|"and %s in %s. Version %s of %s left in tree at %s."
+argument_list|)
 argument_list|,
 name|change
 argument_list|,
@@ -5894,20 +6006,6 @@ name|branch2
 argument_list|,
 name|path
 argument_list|,
-name|NULL
-operator|==
-name|renamed
-condition|?
-literal|""
-else|:
-literal|" at "
-argument_list|,
-name|NULL
-operator|==
-name|renamed
-condition|?
-literal|""
-else|:
 name|renamed
 argument_list|)
 expr_stmt|;
@@ -5922,9 +6020,48 @@ argument_list|,
 name|b_mode
 argument_list|,
 name|renamed
-condition|?
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+if|if
+condition|(
+operator|!
 name|renamed
-else|:
+condition|)
+block|{
+name|output
+argument_list|(
+name|o
+argument_list|,
+literal|1
+argument_list|,
+name|_
+argument_list|(
+literal|"CONFLICT (%s/delete): %s deleted in %s "
+literal|"and %s in %s. Version %s of %s left in tree."
+argument_list|)
+argument_list|,
+name|change
+argument_list|,
+name|path
+argument_list|,
+name|o
+operator|->
+name|branch2
+argument_list|,
+name|change_past
+argument_list|,
+name|o
+operator|->
+name|branch1
+argument_list|,
+name|o
+operator|->
+name|branch1
+argument_list|,
 name|path
 argument_list|)
 expr_stmt|;
@@ -5937,8 +6074,11 @@ name|o
 argument_list|,
 literal|1
 argument_list|,
+name|_
+argument_list|(
 literal|"CONFLICT (%s/delete): %s deleted in %s "
-literal|"and %s in %s. Version %s of %s left in tree%s%s."
+literal|"and %s in %s. Version %s of %s left in tree at %s."
+argument_list|)
 argument_list|,
 name|change
 argument_list|,
@@ -5960,27 +6100,9 @@ name|branch1
 argument_list|,
 name|path
 argument_list|,
-name|NULL
-operator|==
-name|renamed
-condition|?
-literal|""
-else|:
-literal|" at "
-argument_list|,
-name|NULL
-operator|==
-name|renamed
-condition|?
-literal|""
-else|:
 name|renamed
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|renamed
-condition|)
 name|update_file
 argument_list|(
 name|o
@@ -5994,6 +6116,7 @@ argument_list|,
 name|renamed
 argument_list|)
 expr_stmt|;
+block|}
 comment|/* 		 * No need to call update_file() on path when !renamed, since 		 * that would needlessly touch path.  We could call 		 * update_file_flags() with update_cache=0 and update_wd=0, 		 * but that's a no-op. 		 */
 block|}
 name|free
@@ -6146,9 +6269,15 @@ name|b_sha
 argument_list|,
 name|b_mode
 argument_list|,
+name|_
+argument_list|(
 literal|"rename"
+argument_list|)
 argument_list|,
+name|_
+argument_list|(
 literal|"renamed"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -6500,7 +6629,10 @@ name|o
 argument_list|,
 literal|1
 argument_list|,
+name|_
+argument_list|(
 literal|"%s is a directory in %s adding as %s instead"
+argument_list|)
 argument_list|,
 name|rename
 operator|->
@@ -6636,9 +6768,12 @@ name|o
 argument_list|,
 literal|1
 argument_list|,
+name|_
+argument_list|(
 literal|"CONFLICT (rename/rename): "
 literal|"Rename \"%s\"->\"%s\" in branch \"%s\" "
 literal|"rename \"%s\"->\"%s\" in \"%s\"%s"
+argument_list|)
 argument_list|,
 name|one
 operator|->
@@ -6668,7 +6803,10 @@ name|o
 operator|->
 name|call_depth
 condition|?
+name|_
+argument_list|(
 literal|" (left unresolved)"
+argument_list|)
 else|:
 literal|""
 argument_list|)
@@ -6965,9 +7103,12 @@ name|o
 argument_list|,
 literal|1
 argument_list|,
+name|_
+argument_list|(
 literal|"CONFLICT (rename/rename): "
 literal|"Rename %s->%s in %s. "
 literal|"Rename %s->%s in %s"
+argument_list|)
 argument_list|,
 name|a
 operator|->
@@ -7194,7 +7335,10 @@ name|o
 argument_list|,
 literal|1
 argument_list|,
+name|_
+argument_list|(
 literal|"Renaming %s to %s and %s to %s instead"
+argument_list|)
 argument_list|,
 name|a
 operator|->
@@ -8237,8 +8381,11 @@ name|o
 argument_list|,
 literal|1
 argument_list|,
+name|_
+argument_list|(
 literal|"CONFLICT (rename/add): Rename %s->%s in %s. "
 literal|"%s added in %s"
+argument_list|)
 argument_list|,
 name|ren1_src
 argument_list|,
@@ -8309,7 +8456,10 @@ name|o
 argument_list|,
 literal|1
 argument_list|,
+name|_
+argument_list|(
 literal|"Adding merged %s"
+argument_list|)
 argument_list|,
 name|ren1_dst
 argument_list|)
@@ -8357,7 +8507,10 @@ name|o
 argument_list|,
 literal|1
 argument_list|,
+name|_
+argument_list|(
 literal|"Adding as %s instead"
+argument_list|)
 argument_list|,
 name|new_path
 argument_list|)
@@ -8620,7 +8773,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"cannot read object %s"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -8643,7 +8799,10 @@ expr_stmt|;
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"object %s is not a blob"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -8906,9 +9065,15 @@ name|b_sha
 argument_list|,
 name|b_mode
 argument_list|,
+name|_
+argument_list|(
 literal|"modify"
+argument_list|)
 argument_list|,
+name|_
+argument_list|(
 literal|"modified"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -8965,7 +9130,10 @@ name|char
 modifier|*
 name|reason
 init|=
+name|_
+argument_list|(
 literal|"content"
+argument_list|)
 decl_stmt|;
 specifier|const
 name|char
@@ -9004,7 +9172,10 @@ condition|)
 block|{
 name|reason
 operator|=
+name|_
+argument_list|(
 literal|"add/add"
+argument_list|)
 expr_stmt|;
 name|o_sha
 operator|=
@@ -9225,7 +9396,10 @@ name|o
 argument_list|,
 literal|3
 argument_list|,
+name|_
+argument_list|(
 literal|"Skipped %s (merged same as existing)"
+argument_list|)
 argument_list|,
 name|path
 argument_list|)
@@ -9288,7 +9462,10 @@ name|o
 argument_list|,
 literal|2
 argument_list|,
+name|_
+argument_list|(
 literal|"Auto-merging %s"
+argument_list|)
 argument_list|,
 name|path
 argument_list|)
@@ -9312,7 +9489,10 @@ argument_list|)
 condition|)
 name|reason
 operator|=
+name|_
+argument_list|(
 literal|"submodule"
+argument_list|)
 expr_stmt|;
 name|output
 argument_list|(
@@ -9320,7 +9500,10 @@ name|o
 argument_list|,
 literal|1
 argument_list|,
+name|_
+argument_list|(
 literal|"CONFLICT (%s): Merge conflict in %s"
+argument_list|)
 argument_list|,
 name|reason
 argument_list|,
@@ -9469,7 +9652,10 @@ name|o
 argument_list|,
 literal|1
 argument_list|,
+name|_
+argument_list|(
 literal|"Adding as %s instead"
+argument_list|)
 argument_list|,
 name|new_path
 argument_list|)
@@ -9858,7 +10044,10 @@ name|o
 argument_list|,
 literal|2
 argument_list|,
+name|_
+argument_list|(
 literal|"Removing %s"
+argument_list|)
 argument_list|,
 name|path
 argument_list|)
@@ -9982,7 +10171,10 @@ name|a_sha
 expr_stmt|;
 name|conf
 operator|=
+name|_
+argument_list|(
 literal|"file/directory"
+argument_list|)
 expr_stmt|;
 block|}
 else|else
@@ -10009,7 +10201,10 @@ name|b_sha
 expr_stmt|;
 name|conf
 operator|=
+name|_
+argument_list|(
 literal|"directory/file"
+argument_list|)
 expr_stmt|;
 block|}
 if|if
@@ -10048,8 +10243,11 @@ name|o
 argument_list|,
 literal|1
 argument_list|,
+name|_
+argument_list|(
 literal|"CONFLICT (%s): There is a directory with name %s in %s. "
 literal|"Adding %s as %s"
+argument_list|)
 argument_list|,
 name|conf
 argument_list|,
@@ -10111,7 +10309,10 @@ name|o
 argument_list|,
 literal|2
 argument_list|,
+name|_
+argument_list|(
 literal|"Adding %s"
+argument_list|)
 argument_list|,
 name|path
 argument_list|)
@@ -10199,7 +10400,10 @@ block|}
 else|else
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Fatal merge failure, shouldn't happen."
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -10303,7 +10507,10 @@ name|o
 argument_list|,
 literal|0
 argument_list|,
+name|_
+argument_list|(
 literal|"Already up-to-date!"
+argument_list|)
 argument_list|)
 expr_stmt|;
 operator|*
@@ -10352,7 +10559,10 @@ name|call_depth
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"merging of trees %s and %s failed"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -10598,7 +10808,10 @@ name|processed
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Unprocessed path??? %s"
+argument_list|)
 argument_list|,
 name|entries
 operator|->
@@ -10793,7 +11006,10 @@ name|o
 argument_list|,
 literal|4
 argument_list|,
+name|_
+argument_list|(
 literal|"Merging:"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|output_commit_title
@@ -10852,7 +11068,10 @@ name|o
 argument_list|,
 literal|5
 argument_list|,
+name|_
+argument_list|(
 literal|"found %u common ancestor(s):"
+argument_list|)
 argument_list|,
 name|commit_list_count
 argument_list|(
@@ -11018,7 +11237,10 @@ name|merged_common_ancestors
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"merge returned no commit"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -11396,7 +11618,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not parse object '%s'"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -11464,7 +11689,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Unable to write index."
+argument_list|)
 argument_list|)
 return|;
 return|return
