@@ -122,6 +122,10 @@ DECL|member|allow_empty
 name|int
 name|allow_empty
 decl_stmt|;
+DECL|member|allow_empty_message
+name|int
+name|allow_empty_message
+decl_stmt|;
 DECL|member|keep_redundant_commits
 name|int
 name|keep_redundant_commits
