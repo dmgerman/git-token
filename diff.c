@@ -18108,7 +18108,7 @@ end_function
 
 begin_function
 DECL|function|diff_setup_done
-name|int
+name|void
 name|diff_setup_done
 parameter_list|(
 name|struct
@@ -18451,9 +18451,6 @@ name|EXIT_WITH_STATUS
 argument_list|)
 expr_stmt|;
 block|}
-return|return
-literal|0
-return|;
 block|}
 end_function
 

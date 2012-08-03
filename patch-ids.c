@@ -265,8 +265,6 @@ argument_list|,
 name|RECURSIVE
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
 name|diff_setup_done
 argument_list|(
 operator|&
@@ -274,15 +272,7 @@ name|ids
 operator|->
 name|diffopts
 argument_list|)
-operator|<
-literal|0
-condition|)
-return|return
-name|error
-argument_list|(
-literal|"diff_setup_done failed"
-argument_list|)
-return|;
+expr_stmt|;
 return|return
 literal|0
 return|;
