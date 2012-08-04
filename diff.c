@@ -3459,6 +3459,17 @@ argument_list|,
 name|DIFF_PLAIN
 argument_list|)
 decl_stmt|;
+name|putc
+argument_list|(
+literal|'\n'
+argument_list|,
+name|ecb
+operator|->
+name|opt
+operator|->
+name|file
+argument_list|)
+expr_stmt|;
 name|emit_line_0
 argument_list|(
 name|ecb
