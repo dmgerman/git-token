@@ -11062,21 +11062,30 @@ literal|5
 argument_list|)
 condition|)
 block|{
+name|unsigned
+name|cnt
+init|=
+name|commit_list_count
+argument_list|(
+name|ca
+argument_list|)
+decl_stmt|;
 name|output
 argument_list|(
 name|o
 argument_list|,
 literal|5
 argument_list|,
-name|_
+name|Q_
 argument_list|(
-literal|"found %u common ancestor(s):"
+literal|"found %u common ancestor:"
+argument_list|,
+literal|"found %u common ancestors:"
+argument_list|,
+name|cnt
 argument_list|)
 argument_list|,
-name|commit_list_count
-argument_list|(
-name|ca
-argument_list|)
+name|cnt
 argument_list|)
 expr_stmt|;
 for|for
