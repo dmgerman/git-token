@@ -5272,11 +5272,18 @@ block|,
 name|NULL
 block|, 			}
 decl_stmt|;
+name|int
+name|opt
+init|=
+name|RUN_GIT_CMD
+operator||
+name|RUN_COMMAND_STDOUT_TO_STDERR
+decl_stmt|;
 name|run_command_v_opt
 argument_list|(
 name|argv_gc_auto
 argument_list|,
-name|RUN_GIT_CMD
+name|opt
 argument_list|)
 expr_stmt|;
 block|}
