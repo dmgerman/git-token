@@ -150,6 +150,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|agent_supported
+specifier|static
+name|int
+name|agent_supported
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|args
 specifier|static
 name|struct
@@ -1771,6 +1779,10 @@ argument_list|,
 literal|" ofs-delta"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|agent_supported
+condition|)
 name|strbuf_addf
 argument_list|(
 operator|&
@@ -4405,6 +4417,17 @@ else|else
 name|prefer_ofs_delta
 operator|=
 literal|0
+expr_stmt|;
+if|if
+condition|(
+name|server_supports
+argument_list|(
+literal|"agent"
+argument_list|)
+condition|)
+name|agent_supported
+operator|=
+literal|1
 expr_stmt|;
 if|if
 condition|(
