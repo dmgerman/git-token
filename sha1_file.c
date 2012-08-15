@@ -1427,15 +1427,13 @@ block|}
 if|if
 condition|(
 operator|!
-name|memcmp
+name|strcmp
 argument_list|(
 name|ent
 operator|->
 name|base
 argument_list|,
 name|objdir
-argument_list|,
-name|pfxlen
 argument_list|)
 condition|)
 block|{
