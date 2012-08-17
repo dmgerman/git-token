@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_comment
-comment|/*  * Converts filenames from decomposed unicode into precomposed unicode.  * Used on MacOS X. */
+comment|/*  * Converts filenames from decomposed unicode into precomposed unicode.  * Used on MacOS X.  */
 end_comment
 
 begin_define
@@ -39,8 +39,8 @@ end_typedef
 
 begin_decl_stmt
 DECL|variable|repo_encoding
-specifier|const
 specifier|static
+specifier|const
 name|char
 modifier|*
 name|repo_encoding
@@ -51,8 +51,8 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|path_encoding
-specifier|const
 specifier|static
+specifier|const
 name|char
 modifier|*
 name|path_encoding
@@ -104,28 +104,20 @@ literal|0
 decl_stmt|;
 if|if
 condition|(
-operator|(
 operator|!
 name|utf8p
-operator|)
 operator|||
-operator|(
 operator|!
 operator|*
 name|utf8p
-operator|)
 condition|)
-block|{
 return|return
 literal|0
 return|;
-block|}
 while|while
 condition|(
-operator|(
 operator|*
 name|utf8p
-operator|)
 operator|&&
 name|maxlen
 condition|)
@@ -178,16 +170,16 @@ name|int
 name|len
 parameter_list|)
 block|{
-specifier|const
 specifier|static
+specifier|const
 name|char
 modifier|*
 name|auml_nfc
 init|=
 literal|"\xc3\xa4"
 decl_stmt|;
-specifier|const
 specifier|static
+specifier|const
 name|char
 modifier|*
 name|auml_nfd
@@ -206,13 +198,6 @@ literal|1
 condition|)
 return|return;
 comment|/* We found it defined in the global config, respect it */
-name|path
-index|[
-name|len
-index|]
-operator|=
-literal|0
-expr_stmt|;
 name|strcpy
 argument_list|(
 name|path
@@ -249,13 +234,6 @@ argument_list|(
 name|output_fd
 argument_list|)
 expr_stmt|;
-name|path
-index|[
-name|len
-index|]
-operator|=
-literal|0
-expr_stmt|;
 name|strcpy
 argument_list|(
 name|path
@@ -268,8 +246,7 @@ expr_stmt|;
 comment|/* Indicate to the user, that we can configure it to true */
 if|if
 condition|(
-literal|0
-operator|==
+operator|!
 name|access
 argument_list|(
 name|path
@@ -289,13 +266,6 @@ name|precomposed_unicode
 operator|=
 literal|0
 expr_stmt|;
-name|path
-index|[
-name|len
-index|]
-operator|=
-literal|0
-expr_stmt|;
 name|strcpy
 argument_list|(
 name|path
@@ -305,8 +275,20 @@ argument_list|,
 name|auml_nfc
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|unlink
 argument_list|(
+name|path
+argument_list|)
+condition|)
+name|die_errno
+argument_list|(
+name|_
+argument_list|(
+literal|"failed to unlink '%s'"
+argument_list|)
+argument_list|,
 name|path
 argument_list|)
 expr_stmt|;
