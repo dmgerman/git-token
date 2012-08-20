@@ -80,29 +80,65 @@ name|git_notes_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git notes [--ref<notes_ref>] [list [<object>]]"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"git notes [--ref<notes_ref>] add [-f] [-m<msg> | -F<file> | (-c | -C)<object>] [<object>]"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"git notes [--ref<notes_ref>] copy [-f]<from-object><to-object>"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"git notes [--ref<notes_ref>] append [-m<msg> | -F<file> | (-c | -C)<object>] [<object>]"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"git notes [--ref<notes_ref>] edit [<object>]"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"git notes [--ref<notes_ref>] show [<object>]"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"git notes [--ref<notes_ref>] merge [-v | -q] [-s<strategy> ]<notes_ref>"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"git notes merge --commit [-v | -q]"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"git notes merge --abort [-v | -q]"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"git notes [--ref<notes_ref>] remove [<object>...]"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"git notes [--ref<notes_ref>] prune [-n | -v]"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"git notes [--ref<notes_ref>] get-ref"
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -120,7 +156,10 @@ name|git_notes_list_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git notes [list [<object>]]"
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -138,7 +177,10 @@ name|git_notes_add_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git notes add [<options>] [<object>]"
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -156,9 +198,15 @@ name|git_notes_copy_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git notes copy [<options>]<from-object><to-object>"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"git notes copy --stdin [<from-object><to-object>]..."
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -176,7 +224,10 @@ name|git_notes_append_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git notes append [<options>] [<object>]"
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -194,7 +245,10 @@ name|git_notes_edit_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git notes edit [<object>]"
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -212,7 +266,10 @@ name|git_notes_show_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git notes show [<object>]"
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -230,11 +287,20 @@ name|git_notes_merge_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git notes merge [<options>]<notes_ref>"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"git notes merge --commit [<options>]"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"git notes merge --abort [<options>]"
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -252,7 +318,10 @@ name|git_notes_remove_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git notes remove [<object>]"
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -270,7 +339,10 @@ name|git_notes_prune_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git notes prune [<options>]"
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -288,7 +360,10 @@ name|git_notes_get_ref_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git notes get-ref"
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -3069,9 +3144,15 @@ block|,
 operator|&
 name|msg
 block|,
+name|N_
+argument_list|(
 literal|"msg"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"note contents as a string"
+argument_list|)
 block|,
 name|PARSE_OPT_NONEG
 block|,
@@ -3088,9 +3169,15 @@ block|,
 operator|&
 name|msg
 block|,
+name|N_
+argument_list|(
 literal|"file"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"note contents in a file"
+argument_list|)
 block|,
 name|PARSE_OPT_NONEG
 block|,
@@ -3107,9 +3194,15 @@ block|,
 operator|&
 name|msg
 block|,
+name|N_
+argument_list|(
 literal|"object"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"reuse and edit specified note object"
+argument_list|)
 block|,
 name|PARSE_OPT_NONEG
 block|,
@@ -3126,9 +3219,15 @@ block|,
 operator|&
 name|msg
 block|,
+name|N_
+argument_list|(
 literal|"object"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"reuse specified note object"
+argument_list|)
 block|,
 name|PARSE_OPT_NONEG
 block|,
@@ -3140,7 +3239,10 @@ argument_list|(
 operator|&
 name|force
 argument_list|,
+name|N_
+argument_list|(
 literal|"replace existing notes"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_END
@@ -3498,7 +3600,10 @@ argument_list|(
 operator|&
 name|force
 argument_list|,
+name|N_
+argument_list|(
 literal|"replace existing notes"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -3510,7 +3615,10 @@ argument_list|,
 operator|&
 name|from_stdin
 argument_list|,
+name|N_
+argument_list|(
 literal|"read objects from stdin"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_STRING
@@ -3522,10 +3630,16 @@ argument_list|,
 operator|&
 name|rewrite_cmd
 argument_list|,
+name|N_
+argument_list|(
 literal|"command"
+argument_list|)
 argument_list|,
+name|N_
+argument_list|(
 literal|"load rewriting config for<command> (implies "
 literal|"--stdin)"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_END
@@ -3919,9 +4033,15 @@ block|,
 operator|&
 name|msg
 block|,
+name|N_
+argument_list|(
 literal|"msg"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"note contents as a string"
+argument_list|)
 block|,
 name|PARSE_OPT_NONEG
 block|,
@@ -3938,9 +4058,15 @@ block|,
 operator|&
 name|msg
 block|,
+name|N_
+argument_list|(
 literal|"file"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"note contents in a file"
+argument_list|)
 block|,
 name|PARSE_OPT_NONEG
 block|,
@@ -3957,9 +4083,15 @@ block|,
 operator|&
 name|msg
 block|,
+name|N_
+argument_list|(
 literal|"object"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"reuse and edit specified note object"
+argument_list|)
 block|,
 name|PARSE_OPT_NONEG
 block|,
@@ -3976,9 +4108,15 @@ block|,
 operator|&
 name|msg
 block|,
+name|N_
+argument_list|(
 literal|"object"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"reuse specified note object"
+argument_list|)
 block|,
 name|PARSE_OPT_NONEG
 block|,
@@ -4878,7 +5016,10 @@ init|=
 block|{
 name|OPT_GROUP
 argument_list|(
+name|N_
+argument_list|(
 literal|"General options"
+argument_list|)
 argument_list|)
 block|,
 name|OPT__VERBOSITY
@@ -4889,7 +5030,10 @@ argument_list|)
 block|,
 name|OPT_GROUP
 argument_list|(
+name|N_
+argument_list|(
 literal|"Merge options"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_STRING
@@ -4901,15 +5045,24 @@ argument_list|,
 operator|&
 name|strategy
 argument_list|,
+name|N_
+argument_list|(
 literal|"strategy"
+argument_list|)
 argument_list|,
+name|N_
+argument_list|(
 literal|"resolve notes conflicts using the given strategy "
 literal|"(manual/ours/theirs/union/cat_sort_uniq)"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_GROUP
 argument_list|(
+name|N_
+argument_list|(
 literal|"Committing unmerged notes"
+argument_list|)
 argument_list|)
 block|,
 block|{
@@ -4924,7 +5077,10 @@ name|do_commit
 block|,
 name|NULL
 block|,
+name|N_
+argument_list|(
 literal|"finalize notes merge by committing unmerged notes"
+argument_list|)
 block|,
 name|PARSE_OPT_NOARG
 operator||
@@ -4933,7 +5089,10 @@ block|}
 block|,
 name|OPT_GROUP
 argument_list|(
+name|N_
+argument_list|(
 literal|"Aborting notes merge resolution"
+argument_list|)
 argument_list|)
 block|,
 block|{
@@ -4948,7 +5107,10 @@ name|do_abort
 block|,
 name|NULL
 block|,
+name|N_
+argument_list|(
 literal|"abort notes merge"
+argument_list|)
 block|,
 name|PARSE_OPT_NOARG
 operator||
@@ -5553,7 +5715,10 @@ argument_list|,
 operator|&
 name|flag
 argument_list|,
+name|N_
+argument_list|(
 literal|"attempt to remove non-existent note is not an error"
+argument_list|)
 argument_list|,
 name|IGNORE_MISSING
 argument_list|)
@@ -5567,7 +5732,10 @@ argument_list|,
 operator|&
 name|from_stdin
 argument_list|,
+name|N_
+argument_list|(
 literal|"read object names from the standard input"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_END
@@ -6005,9 +6173,15 @@ argument_list|,
 operator|&
 name|override_notes_ref
 argument_list|,
+name|N_
+argument_list|(
 literal|"notes_ref"
+argument_list|)
 argument_list|,
+name|N_
+argument_list|(
 literal|"use notes from<notes_ref>"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_END
