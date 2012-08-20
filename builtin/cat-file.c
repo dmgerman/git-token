@@ -1143,9 +1143,15 @@ name|cat_file_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git cat-file (-t|-s|-e|-p|<type>|--textconv)<object>"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"git cat-file (--batch|--batch-check)<<list_of_objects>"
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -1251,7 +1257,10 @@ init|=
 block|{
 name|OPT_GROUP
 argument_list|(
+name|N_
+argument_list|(
 literal|"<type> can be one of: blob, tree, commit, tag"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_SET_INT
@@ -1263,7 +1272,10 @@ argument_list|,
 operator|&
 name|opt
 argument_list|,
+name|N_
+argument_list|(
 literal|"show object type"
+argument_list|)
 argument_list|,
 literal|'t'
 argument_list|)
@@ -1277,7 +1289,10 @@ argument_list|,
 operator|&
 name|opt
 argument_list|,
+name|N_
+argument_list|(
 literal|"show object size"
+argument_list|)
 argument_list|,
 literal|'s'
 argument_list|)
@@ -1291,7 +1306,10 @@ argument_list|,
 operator|&
 name|opt
 argument_list|,
+name|N_
+argument_list|(
 literal|"exit with zero when there's no error"
+argument_list|)
 argument_list|,
 literal|'e'
 argument_list|)
@@ -1305,7 +1323,10 @@ argument_list|,
 operator|&
 name|opt
 argument_list|,
+name|N_
+argument_list|(
 literal|"pretty-print object's content"
+argument_list|)
 argument_list|,
 literal|'p'
 argument_list|)
@@ -1319,7 +1340,10 @@ argument_list|,
 operator|&
 name|opt
 argument_list|,
+name|N_
+argument_list|(
 literal|"for blob objects, run textconv on object's content"
+argument_list|)
 argument_list|,
 literal|'c'
 argument_list|)
@@ -1333,7 +1357,10 @@ argument_list|,
 operator|&
 name|batch
 argument_list|,
+name|N_
+argument_list|(
 literal|"show info and content of objects fed from the standard input"
+argument_list|)
 argument_list|,
 name|BATCH
 argument_list|)
@@ -1347,7 +1374,10 @@ argument_list|,
 operator|&
 name|batch
 argument_list|,
+name|N_
+argument_list|(
 literal|"show info about objects fed from the standard input"
+argument_list|)
 argument_list|,
 name|BATCH_CHECK
 argument_list|)
