@@ -128,11 +128,20 @@ name|merge_base_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git merge-base [-a|--all]<commit><commit>..."
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"git merge-base [-a|--all] --octopus<commit>..."
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"git merge-base --independent<commit>..."
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -405,7 +414,10 @@ argument_list|,
 operator|&
 name|show_all
 argument_list|,
+name|N_
+argument_list|(
 literal|"output all common ancestors"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -417,7 +429,10 @@ argument_list|,
 operator|&
 name|octopus
 argument_list|,
+name|N_
+argument_list|(
 literal|"find ancestors for a single n-way merge"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -429,7 +444,10 @@ argument_list|,
 operator|&
 name|reduce
 argument_list|,
+name|N_
+argument_list|(
 literal|"list revs not reachable from others"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_END
