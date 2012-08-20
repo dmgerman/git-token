@@ -70,7 +70,10 @@ name|fmt_merge_msg_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git fmt-merge-msg [-m<message>] [--log[=<n>]|--no-log] [--file<file>]"
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -4024,9 +4027,15 @@ block|,
 operator|&
 name|shortlog_len
 block|,
+name|N_
+argument_list|(
 literal|"n"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"populate log with at most<n> entries from shortlog"
+argument_list|)
 block|,
 name|PARSE_OPT_OPTARG
 block|,
@@ -4045,9 +4054,15 @@ block|,
 operator|&
 name|shortlog_len
 block|,
+name|N_
+argument_list|(
 literal|"n"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"alias for --log (deprecated)"
+argument_list|)
 block|,
 name|PARSE_OPT_OPTARG
 operator||
@@ -4067,9 +4082,15 @@ argument_list|,
 operator|&
 name|message
 argument_list|,
+name|N_
+argument_list|(
 literal|"text"
+argument_list|)
 argument_list|,
+name|N_
+argument_list|(
 literal|"use<text> as start of message"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_FILENAME
@@ -4081,7 +4102,10 @@ argument_list|,
 operator|&
 name|inpath
 argument_list|,
+name|N_
+argument_list|(
 literal|"file to read from"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_END
