@@ -80,14 +80,26 @@ name|git_tag_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git tag [-a|-s|-u<key-id>] [-f] [-m<msg>|-F<file>]<tagname> [<head>]"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"git tag -d<tagname>..."
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"git tag -l [-n[<num>]] [--contains<commit>] [--points-at<object>] "
 literal|"\n\t\t[<pattern>...]"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"git tag -v<tagname>..."
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -2429,7 +2441,10 @@ argument_list|,
 operator|&
 name|list
 argument_list|,
+name|N_
+argument_list|(
 literal|"list tag names"
+argument_list|)
 argument_list|)
 block|,
 block|{
@@ -2442,9 +2457,15 @@ block|,
 operator|&
 name|lines
 block|,
+name|N_
+argument_list|(
 literal|"n"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"print<n> lines of each tag message"
+argument_list|)
 block|,
 name|PARSE_OPT_OPTARG
 block|,
@@ -2462,7 +2483,10 @@ argument_list|,
 operator|&
 name|delete
 argument_list|,
+name|N_
+argument_list|(
 literal|"delete tags"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -2474,12 +2498,18 @@ argument_list|,
 operator|&
 name|verify
 argument_list|,
+name|N_
+argument_list|(
 literal|"verify tags"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_GROUP
 argument_list|(
+name|N_
+argument_list|(
 literal|"Tag creation options"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -2491,7 +2521,10 @@ argument_list|,
 operator|&
 name|annotate
 argument_list|,
+name|N_
+argument_list|(
 literal|"annotated tag, needs a message"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_CALLBACK
@@ -2503,9 +2536,15 @@ argument_list|,
 operator|&
 name|msg
 argument_list|,
+name|N_
+argument_list|(
 literal|"message"
+argument_list|)
 argument_list|,
+name|N_
+argument_list|(
 literal|"tag message"
+argument_list|)
 argument_list|,
 name|parse_msg_arg
 argument_list|)
@@ -2519,7 +2558,10 @@ argument_list|,
 operator|&
 name|msgfile
 argument_list|,
+name|N_
+argument_list|(
 literal|"read message from file"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -2533,7 +2575,10 @@ name|opt
 operator|.
 name|sign
 argument_list|,
+name|N_
+argument_list|(
 literal|"annotated and GPG-signed tag"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_STRING
@@ -2545,9 +2590,15 @@ argument_list|,
 operator|&
 name|cleanup_arg
 argument_list|,
+name|N_
+argument_list|(
 literal|"mode"
+argument_list|)
 argument_list|,
+name|N_
+argument_list|(
 literal|"how to strip spaces and #comments from message"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_STRING
@@ -2559,9 +2610,15 @@ argument_list|,
 operator|&
 name|keyid
 argument_list|,
+name|N_
+argument_list|(
 literal|"key-id"
+argument_list|)
 argument_list|,
+name|N_
+argument_list|(
 literal|"use another key to sign the tag"
+argument_list|)
 argument_list|)
 block|,
 name|OPT__FORCE
@@ -2569,7 +2626,10 @@ argument_list|(
 operator|&
 name|force
 argument_list|,
+name|N_
+argument_list|(
 literal|"replace the tag if exists"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_COLUMN
@@ -2581,12 +2641,18 @@ argument_list|,
 operator|&
 name|colopts
 argument_list|,
+name|N_
+argument_list|(
 literal|"show tag list in columns"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_GROUP
 argument_list|(
+name|N_
+argument_list|(
 literal|"Tag listing options"
+argument_list|)
 argument_list|)
 block|,
 block|{
@@ -2599,9 +2665,15 @@ block|,
 operator|&
 name|with_commit
 block|,
+name|N_
+argument_list|(
 literal|"commit"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"print only tags that contain the commit"
+argument_list|)
 block|,
 name|PARSE_OPT_LASTARG_DEFAULT
 block|,
@@ -2622,9 +2694,15 @@ literal|"points-at"
 block|,
 name|NULL
 block|,
+name|N_
+argument_list|(
 literal|"object"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"print only tags of the object"
+argument_list|)
 block|,
 literal|0
 block|,
