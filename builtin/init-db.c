@@ -2307,7 +2307,10 @@ name|init_db_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git init [-q | --quiet] [--bare] [--template=<template-directory>] [--shared[=<permissions>]] [directory]"
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -2384,9 +2387,15 @@ argument_list|,
 operator|&
 name|template_dir
 argument_list|,
+name|N_
+argument_list|(
 literal|"template-directory"
+argument_list|)
 argument_list|,
+name|N_
+argument_list|(
 literal|"directory from which templates will be used"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_SET_INT
@@ -2398,7 +2407,10 @@ argument_list|,
 operator|&
 name|is_bare_repository_cfg
 argument_list|,
+name|N_
+argument_list|(
 literal|"create a bare repository"
+argument_list|)
 argument_list|,
 literal|1
 argument_list|)
@@ -2413,9 +2425,15 @@ block|,
 operator|&
 name|init_shared_repository
 block|,
+name|N_
+argument_list|(
 literal|"permissions"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"specify that the git repository is to be shared amongst several users"
+argument_list|)
 block|,
 name|PARSE_OPT_OPTARG
 operator||
@@ -2435,7 +2453,10 @@ argument_list|,
 operator|&
 name|flags
 argument_list|,
+name|N_
+argument_list|(
 literal|"be quiet"
+argument_list|)
 argument_list|,
 name|INIT_DB_QUIET
 argument_list|)
@@ -2449,9 +2470,15 @@ argument_list|,
 operator|&
 name|real_git_dir
 argument_list|,
+name|N_
+argument_list|(
 literal|"gitdir"
+argument_list|)
 argument_list|,
+name|N_
+argument_list|(
 literal|"separate git dir from working tree"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_END
