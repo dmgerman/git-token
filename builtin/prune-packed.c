@@ -34,7 +34,10 @@ name|prune_packed_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git prune-packed [-n|--dry-run] [-q|--quiet]"
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -461,7 +464,10 @@ argument_list|,
 operator|&
 name|opts
 argument_list|,
+name|N_
+argument_list|(
 literal|"dry run"
+argument_list|)
 argument_list|,
 name|DRY_RUN
 argument_list|)
@@ -475,7 +481,10 @@ argument_list|,
 operator|&
 name|opts
 argument_list|,
+name|N_
+argument_list|(
 literal|"be quiet"
+argument_list|)
 argument_list|,
 name|VERBOSE
 argument_list|)
