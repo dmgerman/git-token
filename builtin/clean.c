@@ -66,7 +66,10 @@ name|builtin_clean_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git clean [-d] [-f] [-n] [-q] [-e<pattern>] [-x | -X] [--]<paths>..."
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -279,7 +282,10 @@ argument_list|(
 operator|&
 name|quiet
 argument_list|,
+name|N_
+argument_list|(
 literal|"do not print names of files removed"
+argument_list|)
 argument_list|)
 block|,
 name|OPT__DRY_RUN
@@ -287,7 +293,10 @@ argument_list|(
 operator|&
 name|show_only
 argument_list|,
+name|N_
+argument_list|(
 literal|"dry run"
+argument_list|)
 argument_list|)
 block|,
 name|OPT__FORCE
@@ -295,7 +304,10 @@ argument_list|(
 operator|&
 name|force
 argument_list|,
+name|N_
+argument_list|(
 literal|"force"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -307,7 +319,10 @@ argument_list|,
 operator|&
 name|remove_directories
 argument_list|,
+name|N_
+argument_list|(
 literal|"remove whole directories"
+argument_list|)
 argument_list|)
 block|,
 block|{
@@ -320,9 +335,15 @@ block|,
 operator|&
 name|exclude_list
 block|,
+name|N_
+argument_list|(
 literal|"pattern"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"add<pattern> to ignore rules"
+argument_list|)
 block|,
 name|PARSE_OPT_NONEG
 block|,
@@ -338,7 +359,10 @@ argument_list|,
 operator|&
 name|ignored
 argument_list|,
+name|N_
+argument_list|(
 literal|"remove ignored files, too"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -350,7 +374,10 @@ argument_list|,
 operator|&
 name|ignored_only
 argument_list|,
+name|N_
+argument_list|(
 literal|"remove only ignored files"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_END
