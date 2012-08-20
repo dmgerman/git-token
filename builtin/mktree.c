@@ -448,7 +448,10 @@ name|mktree_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git mktree [-z] [--missing] [--batch]"
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -857,7 +860,10 @@ argument_list|,
 operator|&
 name|line_termination
 argument_list|,
+name|N_
+argument_list|(
 literal|"input is NUL terminated"
+argument_list|)
 argument_list|,
 literal|'\0'
 argument_list|)
@@ -871,7 +877,10 @@ argument_list|,
 operator|&
 name|allow_missing
 argument_list|,
+name|N_
+argument_list|(
 literal|"allow missing objects"
+argument_list|)
 argument_list|,
 literal|1
 argument_list|)
@@ -885,7 +894,10 @@ argument_list|,
 operator|&
 name|is_batch_mode
 argument_list|,
+name|N_
+argument_list|(
 literal|"allow creation of more than one tree"
+argument_list|)
 argument_list|,
 literal|1
 argument_list|)
