@@ -225,22 +225,33 @@ argument_list|(
 argument|const char *msgid
 argument_list|)
 block|{
+if|if
+condition|(
+operator|!
+operator|*
+name|msgid
+condition|)
+return|return
+literal|""
+return|;
+end_expr_stmt
+
+begin_return
 return|return
 name|use_gettext_poison
 argument_list|()
-operator|?
+condition|?
 literal|"# GETTEXT POISON #"
-operator|:
+else|:
 name|gettext
 argument_list|(
 name|msgid
 argument_list|)
 return|;
-block|}
-end_expr_stmt
+end_return
 
 begin_expr_stmt
-specifier|static
+unit|}  static
 specifier|inline
 name|FORMAT_PRESERVING
 argument_list|(
