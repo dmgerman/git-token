@@ -144,7 +144,7 @@ name|delete
 argument_list|,
 name|N_
 argument_list|(
-literal|"deletes the reference"
+literal|"delete the reference"
 argument_list|)
 argument_list|)
 block|,

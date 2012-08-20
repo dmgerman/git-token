@@ -1831,7 +1831,7 @@ argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"controls recursive pushing of submodules"
+literal|"control recursive pushing of submodules"
 argument_list|)
 block|,
 name|PARSE_OPT_OPTARG
