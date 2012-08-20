@@ -194,8 +194,14 @@ name|builtin_log_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git log [<options>] [<since>..<until>] [[--]<path>...]\n"
+argument_list|)
+name|N_
+argument_list|(
 literal|"   or: git show [options]<object>..."
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -512,7 +518,10 @@ argument_list|,
 operator|&
 name|quiet
 argument_list|,
+name|N_
+argument_list|(
 literal|"suppress diff output"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -524,7 +533,10 @@ argument_list|,
 operator|&
 name|source
 argument_list|,
+name|N_
+argument_list|(
 literal|"show source"
+argument_list|)
 argument_list|)
 block|,
 block|{
@@ -538,7 +550,10 @@ name|NULL
 block|,
 name|NULL
 block|,
+name|N_
+argument_list|(
 literal|"decorate options"
+argument_list|)
 block|,
 name|PARSE_OPT_OPTARG
 block|,
