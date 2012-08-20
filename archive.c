@@ -2188,7 +2188,7 @@ name|exec
 argument_list|,
 name|N_
 argument_list|(
-literal|"cmd"
+literal|"command"
 argument_list|)
 argument_list|,
 name|N_

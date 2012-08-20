@@ -2612,7 +2612,7 @@ name|keyid
 argument_list|,
 name|N_
 argument_list|(
-literal|"key-id"
+literal|"key id"
 argument_list|)
 argument_list|,
 name|N_
