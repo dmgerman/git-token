@@ -40,7 +40,10 @@ name|merge_file_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git merge-file [options] [-L name1 [-L orig [-L name2]]] file1 orig_file file2"
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -214,7 +217,10 @@ argument_list|,
 operator|&
 name|to_stdout
 argument_list|,
+name|N_
+argument_list|(
 literal|"send results to standard output"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_SET_INT
@@ -228,7 +234,10 @@ name|xmp
 operator|.
 name|style
 argument_list|,
+name|N_
+argument_list|(
 literal|"use a diff3 based merge"
+argument_list|)
 argument_list|,
 name|XDL_MERGE_DIFF3
 argument_list|)
@@ -244,7 +253,10 @@ name|xmp
 operator|.
 name|favor
 argument_list|,
+name|N_
+argument_list|(
 literal|"for conflicts, use our version"
+argument_list|)
 argument_list|,
 name|XDL_MERGE_FAVOR_OURS
 argument_list|)
@@ -260,7 +272,10 @@ name|xmp
 operator|.
 name|favor
 argument_list|,
+name|N_
+argument_list|(
 literal|"for conflicts, use their version"
+argument_list|)
 argument_list|,
 name|XDL_MERGE_FAVOR_THEIRS
 argument_list|)
@@ -276,7 +291,10 @@ name|xmp
 operator|.
 name|favor
 argument_list|,
+name|N_
+argument_list|(
 literal|"for conflicts, use a union version"
+argument_list|)
 argument_list|,
 name|XDL_MERGE_FAVOR_UNION
 argument_list|)
@@ -292,7 +310,10 @@ name|xmp
 operator|.
 name|marker_size
 argument_list|,
+name|N_
+argument_list|(
 literal|"for conflicts, use this marker size"
+argument_list|)
 argument_list|)
 block|,
 name|OPT__QUIET
@@ -300,7 +321,10 @@ argument_list|(
 operator|&
 name|quiet
 argument_list|,
+name|N_
+argument_list|(
 literal|"do not warn about conflicts"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_CALLBACK
@@ -311,9 +335,15 @@ name|NULL
 argument_list|,
 name|names
 argument_list|,
+name|N_
+argument_list|(
 literal|"name"
+argument_list|)
 argument_list|,
+name|N_
+argument_list|(
 literal|"set labels for file1/orig_file/file2"
+argument_list|)
 argument_list|,
 operator|&
 name|label_cb
