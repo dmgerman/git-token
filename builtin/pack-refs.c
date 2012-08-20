@@ -28,7 +28,10 @@ name|pack_refs_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git pack-refs [options]"
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -76,7 +79,10 @@ argument_list|,
 operator|&
 name|flags
 argument_list|,
+name|N_
+argument_list|(
 literal|"pack everything"
+argument_list|)
 argument_list|,
 name|PACK_REFS_ALL
 argument_list|)
@@ -90,7 +96,10 @@ argument_list|,
 operator|&
 name|flags
 argument_list|,
+name|N_
+argument_list|(
 literal|"prune loose refs (default)"
+argument_list|)
 argument_list|,
 name|PACK_REFS_PRUNE
 argument_list|)
