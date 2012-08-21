@@ -4069,6 +4069,25 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/* Call access(2), but warn for any error besides ENOENT. */
+end_comment
+
+begin_function_decl
+name|int
+name|access_or_warn
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|,
+name|int
+name|mode
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/* Get the passwd entry for the UID of the current process. */
 end_comment
 
