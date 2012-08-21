@@ -4088,6 +4088,22 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/* Warn on an inaccessible file that ought to be accessible */
+end_comment
+
+begin_function_decl
+name|void
+name|warn_on_inaccessible
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/* Get the passwd entry for the UID of the current process. */
 end_comment
 

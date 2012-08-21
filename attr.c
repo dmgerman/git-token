@@ -1801,19 +1801,9 @@ name|errno
 operator|!=
 name|ENOENT
 condition|)
-name|warning
+name|warn_on_inaccessible
 argument_list|(
-name|_
-argument_list|(
-literal|"unable to access '%s': %s"
-argument_list|)
-argument_list|,
 name|path
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
