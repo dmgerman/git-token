@@ -2504,22 +2504,10 @@ name|detect_rename
 operator|=
 name|DIFF_DETECT_RENAME
 expr_stmt|;
-if|if
-condition|(
 name|diff_setup_done
 argument_list|(
 operator|&
 name|opts
-argument_list|)
-operator|<
-literal|0
-condition|)
-name|die
-argument_list|(
-name|_
-argument_list|(
-literal|"diff_setup_done failed"
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|diff_tree_sha1
