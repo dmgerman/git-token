@@ -276,6 +276,15 @@ operator|!
 name|echo
 condition|)
 block|{
+name|fseek
+argument_list|(
+name|fh
+argument_list|,
+name|SEEK_CUR
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
 name|putc
 argument_list|(
 literal|'\n'
