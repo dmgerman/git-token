@@ -75,6 +75,12 @@ directive|include
 file|"column.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"utf8.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|builtin_branch_usage
 specifier|static
@@ -1226,12 +1232,12 @@ modifier|*
 name|dest
 decl_stmt|;
 DECL|member|kind
-DECL|member|len
+DECL|member|width
 name|unsigned
 name|int
 name|kind
 decl_stmt|,
-name|len
+name|width
 decl_stmt|;
 DECL|member|commit
 name|struct
@@ -1833,9 +1839,9 @@ name|commit
 expr_stmt|;
 name|newitem
 operator|->
-name|len
+name|width
 operator|=
-name|strlen
+name|utf8_strwidth
 argument_list|(
 name|refname
 argument_list|)
@@ -1868,7 +1874,7 @@ name|REF_REMOTE_BRANCH
 condition|)
 name|newitem
 operator|->
-name|len
+name|width
 operator|+=
 literal|8
 expr_stmt|;
@@ -1876,7 +1882,7 @@ if|if
 condition|(
 name|newitem
 operator|->
-name|len
+name|width
 operator|>
 name|ref_list
 operator|->
@@ -1888,7 +1894,7 @@ name|maxwidth
 operator|=
 name|newitem
 operator|->
-name|len
+name|width
 expr_stmt|;
 return|return
 literal|0
@@ -2609,6 +2615,24 @@ if|if
 condition|(
 name|verbose
 condition|)
+block|{
+name|int
+name|utf8_compensation
+init|=
+name|strlen
+argument_list|(
+name|name
+operator|.
+name|buf
+argument_list|)
+operator|-
+name|utf8_strwidth
+argument_list|(
+name|name
+operator|.
+name|buf
+argument_list|)
+decl_stmt|;
 name|strbuf_addf
 argument_list|(
 operator|&
@@ -2624,6 +2648,8 @@ name|color
 argument_list|)
 argument_list|,
 name|maxwidth
+operator|+
+name|utf8_compensation
 argument_list|,
 name|name
 operator|.
@@ -2635,6 +2661,7 @@ name|BRANCH_COLOR_RESET
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 name|strbuf_addf
 argument_list|(
@@ -2810,7 +2837,7 @@ index|[
 name|i
 index|]
 operator|.
-name|len
+name|width
 operator|>
 name|w
 condition|)
@@ -2823,7 +2850,7 @@ index|[
 name|i
 index|]
 operator|.
-name|len
+name|width
 expr_stmt|;
 block|}
 return|return
@@ -2888,9 +2915,9 @@ argument_list|)
 expr_stmt|;
 name|item
 operator|.
-name|len
+name|width
 operator|=
-name|strlen
+name|utf8_strwidth
 argument_list|(
 name|item
 operator|.
@@ -2919,7 +2946,7 @@ if|if
 condition|(
 name|item
 operator|.
-name|len
+name|width
 operator|>
 name|ref_list
 operator|->
@@ -2931,7 +2958,7 @@ name|maxwidth
 operator|=
 name|item
 operator|.
-name|len
+name|width
 expr_stmt|;
 name|print_ref_item
 argument_list|(
