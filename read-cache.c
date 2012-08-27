@@ -9057,6 +9057,25 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|is_null_sha1
+argument_list|(
+name|ce
+operator|->
+name|sha1
+argument_list|)
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"cache entry has null sha1: %s"
+argument_list|,
+name|ce
+operator|->
+name|name
+argument_list|)
+return|;
+if|if
+condition|(
 name|ce_write_entry
 argument_list|(
 operator|&
