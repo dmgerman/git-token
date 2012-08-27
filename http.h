@@ -466,6 +466,19 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|handle_curl_result
+parameter_list|(
+name|struct
+name|active_request_slot
+modifier|*
+name|slot
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_ifdef
 ifdef|#
 directive|ifdef
