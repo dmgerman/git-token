@@ -774,6 +774,64 @@ expr_stmt|;
 block|}
 end_function
 
+begin_decl_stmt
+DECL|variable|warn_unspecified_push_default_msg
+specifier|static
+name|char
+name|warn_unspecified_push_default_msg
+index|[]
+init|=
+name|N_
+argument_list|(
+literal|"push.default is unset; its implicit value is changing in\n"
+literal|"Git 2.0 from 'matching' to 'simple'. To squelch this message\n"
+literal|"and maintain the current behavior after the default changes, use:\n"
+literal|"\n"
+literal|"  git config --global push.default matching\n"
+literal|"\n"
+literal|"To squelch this message and adopt the new behavior now, use:\n"
+literal|"\n"
+literal|"  git config --global push.default simple\n"
+literal|"\n"
+literal|"See 'git help config' and search for 'push.default' for further information.\n"
+literal|"(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode\n"
+literal|"'current' instead of 'simple' if you sometimes use older versions of Git)"
+argument_list|)
+decl_stmt|;
+end_decl_stmt
+
+begin_function
+DECL|function|warn_unspecified_push_default_configuration
+specifier|static
+name|void
+name|warn_unspecified_push_default_configuration
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+specifier|static
+name|int
+name|warn_once
+decl_stmt|;
+if|if
+condition|(
+name|warn_once
+operator|++
+condition|)
+return|return;
+name|warning
+argument_list|(
+literal|"%s\n"
+argument_list|,
+name|_
+argument_list|(
+name|warn_unspecified_push_default_msg
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
 begin_function
 DECL|function|setup_default_push_refspecs
 specifier|static
@@ -798,6 +856,9 @@ case|:
 name|default_matching_used
 operator|=
 literal|1
+expr_stmt|;
+name|warn_unspecified_push_default_configuration
+argument_list|()
 expr_stmt|;
 comment|/* fallthru */
 case|case
@@ -887,8 +948,8 @@ name|N_
 argument_list|(
 literal|"Updates were rejected because a pushed branch tip is behind its remote\n"
 literal|"counterpart. If you did not intend to push that branch, you may want to\n"
-literal|"specify branches to push or set the 'push.default' configuration\n"
-literal|"variable to 'current' or 'upstream' to push only the current branch."
+literal|"specify branches to push or set the 'push.default' configuration variable\n"
+literal|"to 'simple', 'current' or 'upstream' to push only the current branch."
 argument_list|)
 decl_stmt|;
 end_decl_stmt
