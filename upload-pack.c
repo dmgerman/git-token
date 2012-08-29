@@ -77,6 +77,12 @@ directive|include
 file|"sigchain.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"version.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|upload_pack_usage
 specifier|static
@@ -3998,7 +4004,7 @@ name|packet_write
 argument_list|(
 literal|1
 argument_list|,
-literal|"%s %s%c%s%s\n"
+literal|"%s %s%c%s%s agent=%s\n"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -4016,6 +4022,9 @@ condition|?
 literal|" no-done"
 else|:
 literal|""
+argument_list|,
+name|git_user_agent_sanitized
+argument_list|()
 argument_list|)
 expr_stmt|;
 else|else
