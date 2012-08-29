@@ -171,6 +171,12 @@ condition|)
 return|return
 literal|0
 return|;
+if|if
+condition|(
+name|show_only
+operator|||
+name|verbose
+condition|)
 name|printf
 argument_list|(
 literal|"Removing stale temporary file %s\n"
