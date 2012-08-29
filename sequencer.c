@@ -2852,13 +2852,21 @@ modifier|*
 name|opts
 parameter_list|)
 block|{
+comment|/* 	 * picking (but not reverting) ranges (but not individual revisions) 	 * should be done in reverse 	 */
 if|if
 condition|(
 name|opts
 operator|->
 name|action
-operator|!=
-name|REPLAY_REVERT
+operator|==
+name|REPLAY_PICK
+operator|&&
+operator|!
+name|opts
+operator|->
+name|revs
+operator|->
+name|no_walk
 condition|)
 name|opts
 operator|->
