@@ -191,11 +191,11 @@ block|}
 end_function
 
 begin_function
-DECL|function|git_vsnpath
+DECL|function|vsnpath
 specifier|static
 name|char
 modifier|*
-name|git_vsnpath
+name|vsnpath
 parameter_list|(
 name|char
 modifier|*
@@ -357,7 +357,7 @@ expr_stmt|;
 operator|(
 name|void
 operator|)
-name|git_vsnpath
+name|vsnpath
 argument_list|(
 name|buf
 argument_list|,
@@ -412,7 +412,7 @@ expr_stmt|;
 operator|(
 name|void
 operator|)
-name|git_vsnpath
+name|vsnpath
 argument_list|(
 name|path
 argument_list|,
