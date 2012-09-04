@@ -961,16 +961,13 @@ argument_list|)
 expr_stmt|;
 name|name
 operator|=
-name|xstrdup
-argument_list|(
-name|mkpath
+name|mkpathdup
 argument_list|(
 name|fmt
 argument_list|,
 name|bname
 operator|.
 name|buf
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
