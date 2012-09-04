@@ -1488,11 +1488,12 @@ name|display
 argument_list|,
 literal|"= %-*s %-*s -> %s"
 argument_list|,
-name|TRANSPORT_SUMMARY_WIDTH
-argument_list|,
+name|TRANSPORT_SUMMARY
+argument_list|(
 name|_
 argument_list|(
 literal|"[up to date]"
+argument_list|)
 argument_list|)
 argument_list|,
 name|REFCOL_WIDTH
@@ -1549,11 +1550,12 @@ argument_list|(
 literal|"! %-*s %-*s -> %s  (can't fetch in current branch)"
 argument_list|)
 argument_list|,
-name|TRANSPORT_SUMMARY_WIDTH
-argument_list|,
+name|TRANSPORT_SUMMARY
+argument_list|(
 name|_
 argument_list|(
 literal|"[rejected]"
+argument_list|)
 argument_list|)
 argument_list|,
 name|REFCOL_WIDTH
@@ -1614,11 +1616,12 @@ literal|'!'
 else|:
 literal|'-'
 argument_list|,
-name|TRANSPORT_SUMMARY_WIDTH
-argument_list|,
+name|TRANSPORT_SUMMARY
+argument_list|(
 name|_
 argument_list|(
 literal|"[tag update]"
+argument_list|)
 argument_list|)
 argument_list|,
 name|REFCOL_WIDTH
@@ -1804,9 +1807,10 @@ literal|'!'
 else|:
 literal|'*'
 argument_list|,
-name|TRANSPORT_SUMMARY_WIDTH
-argument_list|,
+name|TRANSPORT_SUMMARY
+argument_list|(
 name|what
+argument_list|)
 argument_list|,
 name|REFCOL_WIDTH
 argument_list|,
@@ -2090,11 +2094,12 @@ name|display
 argument_list|,
 literal|"! %-*s %-*s -> %s  %s"
 argument_list|,
-name|TRANSPORT_SUMMARY_WIDTH
-argument_list|,
+name|TRANSPORT_SUMMARY
+argument_list|(
 name|_
 argument_list|(
 literal|"[rejected]"
+argument_list|)
 argument_list|)
 argument_list|,
 name|REFCOL_WIDTH
@@ -3160,11 +3165,12 @@ name|stderr
 argument_list|,
 literal|" x %-*s %-*s -> %s\n"
 argument_list|,
-name|TRANSPORT_SUMMARY_WIDTH
-argument_list|,
+name|TRANSPORT_SUMMARY
+argument_list|(
 name|_
 argument_list|(
 literal|"[deleted]"
+argument_list|)
 argument_list|)
 argument_list|,
 name|REFCOL_WIDTH

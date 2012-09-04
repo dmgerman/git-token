@@ -152,6 +152,19 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|gettext_width
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|s
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_else
 else|#
 directive|else
@@ -167,6 +180,28 @@ parameter_list|(
 name|void
 parameter_list|)
 block|{ }
+end_function
+
+begin_function
+DECL|function|gettext_width
+specifier|static
+specifier|inline
+name|int
+name|gettext_width
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|s
+parameter_list|)
+block|{
+return|return
+name|strlen
+argument_list|(
+name|s
+argument_list|)
+return|;
+block|}
 end_function
 
 begin_endif
