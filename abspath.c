@@ -147,6 +147,17 @@ name|path
 return|;
 if|if
 condition|(
+operator|!
+operator|*
+name|path
+condition|)
+name|die
+argument_list|(
+literal|"The empty string is not a valid path"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|strlcpy
 argument_list|(
 name|buf
