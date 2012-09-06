@@ -624,6 +624,20 @@ index|]
 decl_stmt|;
 if|if
 condition|(
+operator|!
+operator|*
+name|path
+condition|)
+block|{
+name|die
+argument_list|(
+literal|"The empty string is not a valid path"
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
 name|is_absolute_path
 argument_list|(
 name|path
