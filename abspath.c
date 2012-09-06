@@ -207,11 +207,6 @@ condition|(
 name|last_slash
 condition|)
 block|{
-operator|*
-name|last_slash
-operator|=
-literal|'\0'
-expr_stmt|;
 name|last_elem
 operator|=
 name|xstrdup
@@ -220,6 +215,13 @@ name|last_slash
 operator|+
 literal|1
 argument_list|)
+expr_stmt|;
+name|last_slash
+index|[
+literal|1
+index|]
+operator|=
+literal|'\0'
 expr_stmt|;
 block|}
 else|else
