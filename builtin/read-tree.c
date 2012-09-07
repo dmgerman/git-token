@@ -163,7 +163,10 @@ name|read_tree_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git read-tree [[-m [--trivial] [--aggressive] | --reset | --prefix=<prefix>] [-u [--exclude-per-directory=<gitignore>] | -i]] [--no-sparse-checkout] [--index-output=<file>] (--empty |<tree-ish1> [<tree-ish2> [<tree-ish3>]])"
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -546,9 +549,15 @@ literal|"index-output"
 block|,
 name|NULL
 block|,
+name|N_
+argument_list|(
 literal|"file"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"write resulting index to<file>"
+argument_list|)
 block|,
 name|PARSE_OPT_NONEG
 block|,
@@ -564,7 +573,10 @@ argument_list|,
 operator|&
 name|read_empty
 argument_list|,
+name|N_
+argument_list|(
 literal|"only empty the index"
+argument_list|)
 argument_list|,
 literal|1
 argument_list|)
@@ -576,12 +588,18 @@ name|opts
 operator|.
 name|verbose_update
 argument_list|,
+name|N_
+argument_list|(
 literal|"be verbose"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_GROUP
 argument_list|(
+name|N_
+argument_list|(
 literal|"Merging"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_SET_INT
@@ -595,7 +613,10 @@ name|opts
 operator|.
 name|merge
 argument_list|,
+name|N_
+argument_list|(
 literal|"perform a merge in addition to a read"
+argument_list|)
 argument_list|,
 literal|1
 argument_list|)
@@ -611,7 +632,10 @@ name|opts
 operator|.
 name|trivial_merges_only
 argument_list|,
+name|N_
+argument_list|(
 literal|"3-way merge if no file level merging required"
+argument_list|)
 argument_list|,
 literal|1
 argument_list|)
@@ -627,7 +651,10 @@ name|opts
 operator|.
 name|aggressive
 argument_list|,
+name|N_
+argument_list|(
 literal|"3-way merge in presence of adds and removes"
+argument_list|)
 argument_list|,
 literal|1
 argument_list|)
@@ -643,7 +670,10 @@ name|opts
 operator|.
 name|reset
 argument_list|,
+name|N_
+argument_list|(
 literal|"same as -m, but discard unmerged entries"
+argument_list|)
 argument_list|,
 literal|1
 argument_list|)
@@ -660,9 +690,15 @@ name|opts
 operator|.
 name|prefix
 block|,
+name|N_
+argument_list|(
 literal|"<subdirectory>/"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"read the tree into the index under<subdirectory>/"
+argument_list|)
 block|,
 name|PARSE_OPT_NONEG
 operator||
@@ -680,7 +716,10 @@ name|opts
 operator|.
 name|update
 argument_list|,
+name|N_
+argument_list|(
 literal|"update working tree with merge result"
+argument_list|)
 argument_list|,
 literal|1
 argument_list|)
@@ -695,9 +734,15 @@ block|,
 operator|&
 name|opts
 block|,
+name|N_
+argument_list|(
 literal|"gitignore"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"allow explicitly ignored files to be overwritten"
+argument_list|)
 block|,
 name|PARSE_OPT_NONEG
 block|,
@@ -715,7 +760,10 @@ name|opts
 operator|.
 name|index_only
 argument_list|,
+name|N_
+argument_list|(
 literal|"don't check the working tree after merging"
+argument_list|)
 argument_list|,
 literal|1
 argument_list|)
@@ -727,7 +775,10 @@ name|opts
 operator|.
 name|dry_run
 argument_list|,
+name|N_
+argument_list|(
 literal|"don't update the index or the work tree"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_SET_INT
@@ -741,7 +792,10 @@ name|opts
 operator|.
 name|skip_sparse_checkout
 argument_list|,
+name|N_
+argument_list|(
 literal|"skip applying sparse checkout filter"
+argument_list|)
 argument_list|,
 literal|1
 argument_list|)
@@ -757,7 +811,10 @@ name|opts
 operator|.
 name|debug_unpack
 argument_list|,
+name|N_
+argument_list|(
 literal|"debug unpack-trees"
+argument_list|)
 argument_list|,
 literal|1
 argument_list|)

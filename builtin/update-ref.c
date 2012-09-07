@@ -34,9 +34,15 @@ name|git_update_ref_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git update-ref [options] -d<refname> [<oldval>]"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"git update-ref [options]<refname><newval> [<oldval>]"
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -116,9 +122,15 @@ argument_list|,
 operator|&
 name|msg
 argument_list|,
+name|N_
+argument_list|(
 literal|"reason"
+argument_list|)
 argument_list|,
+name|N_
+argument_list|(
 literal|"reason of the update"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -130,7 +142,10 @@ argument_list|,
 operator|&
 name|delete
 argument_list|,
-literal|"deletes the reference"
+name|N_
+argument_list|(
+literal|"delete the reference"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -142,7 +157,10 @@ argument_list|,
 operator|&
 name|no_deref
 argument_list|,
+name|N_
+argument_list|(
 literal|"update<refname> not the one it points to"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_END

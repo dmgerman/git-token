@@ -62,9 +62,15 @@ name|revert_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git revert [options]<commit-ish>"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"git revert<subcommand>"
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -82,9 +88,15 @@ name|cherry_pick_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git cherry-pick [options]<commit-ish>"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"git cherry-pick<subcommand>"
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -516,7 +528,10 @@ argument_list|,
 operator|&
 name|remove_state
 argument_list|,
+name|N_
+argument_list|(
 literal|"end revert or cherry-pick sequence"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -528,7 +543,10 @@ argument_list|,
 operator|&
 name|contin
 argument_list|,
+name|N_
+argument_list|(
 literal|"resume revert or cherry-pick sequence"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -540,7 +558,10 @@ argument_list|,
 operator|&
 name|rollback
 argument_list|,
+name|N_
+argument_list|(
 literal|"cancel revert or cherry-pick sequence"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -554,7 +575,10 @@ name|opts
 operator|->
 name|no_commit
 argument_list|,
+name|N_
+argument_list|(
 literal|"don't automatically commit"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -568,7 +592,10 @@ name|opts
 operator|->
 name|edit
 argument_list|,
+name|N_
+argument_list|(
 literal|"edit the commit message"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_NOOP_NOARG
@@ -589,7 +616,10 @@ name|opts
 operator|->
 name|signoff
 argument_list|,
+name|N_
+argument_list|(
 literal|"add Signed-off-by:"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_INTEGER
@@ -603,7 +633,10 @@ name|opts
 operator|->
 name|mainline
 argument_list|,
+name|N_
+argument_list|(
 literal|"parent number"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_RERERE_AUTOUPDATE
@@ -625,9 +658,15 @@ name|opts
 operator|->
 name|strategy
 argument_list|,
+name|N_
+argument_list|(
 literal|"strategy"
+argument_list|)
 argument_list|,
+name|N_
+argument_list|(
 literal|"merge strategy"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_CALLBACK
@@ -639,9 +678,15 @@ argument_list|,
 operator|&
 name|opts
 argument_list|,
+name|N_
+argument_list|(
 literal|"option"
+argument_list|)
 argument_list|,
+name|N_
+argument_list|(
 literal|"option for merge strategy"
+argument_list|)
 argument_list|,
 name|option_parse_x
 argument_list|)
@@ -691,7 +736,10 @@ name|opts
 operator|->
 name|record_origin
 argument_list|,
+name|N_
+argument_list|(
 literal|"append commit name"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -705,7 +753,10 @@ name|opts
 operator|->
 name|allow_ff
 argument_list|,
+name|N_
+argument_list|(
 literal|"allow fast-forward"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -719,7 +770,10 @@ name|opts
 operator|->
 name|allow_empty
 argument_list|,
+name|N_
+argument_list|(
 literal|"preserve initially empty commits"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -733,7 +787,10 @@ name|opts
 operator|->
 name|allow_empty_message
 argument_list|,
+name|N_
+argument_list|(
 literal|"allow commits with empty messages"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -747,7 +804,10 @@ name|opts
 operator|->
 name|keep_redundant_commits
 argument_list|,
+name|N_
+argument_list|(
 literal|"keep redundant, empty commits"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_END

@@ -112,7 +112,10 @@ name|char
 name|blame_usage
 index|[]
 init|=
+name|N_
+argument_list|(
 literal|"git blame [options] [rev-opts] [rev] [--] file"
+argument_list|)
 decl_stmt|;
 end_decl_stmt
 
@@ -130,7 +133,10 @@ name|blame_usage
 block|,
 literal|""
 block|,
+name|N_
+argument_list|(
 literal|"[rev-opts] are documented in git-rev-list(1)"
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -11957,7 +11963,10 @@ argument_list|,
 operator|&
 name|incremental
 argument_list|,
+name|N_
+argument_list|(
 literal|"Show blame entries as we find them, incrementally"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -11969,7 +11978,10 @@ argument_list|,
 operator|&
 name|blank_boundary
 argument_list|,
+name|N_
+argument_list|(
 literal|"Show blank SHA-1 for boundary commits (Default: off)"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -11981,7 +11993,10 @@ argument_list|,
 operator|&
 name|show_root
 argument_list|,
+name|N_
+argument_list|(
 literal|"Do not treat root commits as boundaries (Default: off)"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -11993,7 +12008,10 @@ argument_list|,
 operator|&
 name|show_stats
 argument_list|,
+name|N_
+argument_list|(
 literal|"Show work cost statistics"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BIT
@@ -12005,7 +12023,10 @@ argument_list|,
 operator|&
 name|output_option
 argument_list|,
+name|N_
+argument_list|(
 literal|"Show output score for blame entries"
+argument_list|)
 argument_list|,
 name|OUTPUT_SHOW_SCORE
 argument_list|)
@@ -12019,7 +12040,10 @@ argument_list|,
 operator|&
 name|output_option
 argument_list|,
+name|N_
+argument_list|(
 literal|"Show original filename (Default: auto)"
+argument_list|)
 argument_list|,
 name|OUTPUT_SHOW_NAME
 argument_list|)
@@ -12033,7 +12057,10 @@ argument_list|,
 operator|&
 name|output_option
 argument_list|,
+name|N_
+argument_list|(
 literal|"Show original linenumber (Default: off)"
+argument_list|)
 argument_list|,
 name|OUTPUT_SHOW_NUMBER
 argument_list|)
@@ -12047,7 +12074,10 @@ argument_list|,
 operator|&
 name|output_option
 argument_list|,
+name|N_
+argument_list|(
 literal|"Show in a format designed for machine consumption"
+argument_list|)
 argument_list|,
 name|OUTPUT_PORCELAIN
 argument_list|)
@@ -12061,7 +12091,10 @@ argument_list|,
 operator|&
 name|output_option
 argument_list|,
+name|N_
+argument_list|(
 literal|"Show porcelain format with per-line commit information"
+argument_list|)
 argument_list|,
 name|OUTPUT_PORCELAIN
 operator||
@@ -12077,7 +12110,10 @@ argument_list|,
 operator|&
 name|output_option
 argument_list|,
+name|N_
+argument_list|(
 literal|"Use the same output mode as git-annotate (Default: off)"
+argument_list|)
 argument_list|,
 name|OUTPUT_ANNOTATE_COMPAT
 argument_list|)
@@ -12091,7 +12127,10 @@ argument_list|,
 operator|&
 name|output_option
 argument_list|,
+name|N_
+argument_list|(
 literal|"Show raw timestamp (Default: off)"
+argument_list|)
 argument_list|,
 name|OUTPUT_RAW_TIMESTAMP
 argument_list|)
@@ -12105,7 +12144,10 @@ argument_list|,
 operator|&
 name|output_option
 argument_list|,
+name|N_
+argument_list|(
 literal|"Show long commit SHA1 (Default: off)"
+argument_list|)
 argument_list|,
 name|OUTPUT_LONG_OBJECT_NAME
 argument_list|)
@@ -12119,7 +12161,10 @@ argument_list|,
 operator|&
 name|output_option
 argument_list|,
+name|N_
+argument_list|(
 literal|"Suppress author name and timestamp (Default: off)"
+argument_list|)
 argument_list|,
 name|OUTPUT_NO_AUTHOR
 argument_list|)
@@ -12133,7 +12178,10 @@ argument_list|,
 operator|&
 name|output_option
 argument_list|,
+name|N_
+argument_list|(
 literal|"Show author email instead of name (Default: off)"
+argument_list|)
 argument_list|,
 name|OUTPUT_SHOW_EMAIL
 argument_list|)
@@ -12147,7 +12195,10 @@ argument_list|,
 operator|&
 name|xdl_opts
 argument_list|,
+name|N_
+argument_list|(
 literal|"Ignore whitespace differences"
+argument_list|)
 argument_list|,
 name|XDF_IGNORE_WHITESPACE
 argument_list|)
@@ -12161,7 +12212,10 @@ argument_list|,
 operator|&
 name|xdl_opts
 argument_list|,
+name|N_
+argument_list|(
 literal|"Spend extra cycles to find better match"
+argument_list|)
 argument_list|,
 name|XDF_NEED_MINIMAL
 argument_list|)
@@ -12175,9 +12229,15 @@ argument_list|,
 operator|&
 name|revs_file
 argument_list|,
+name|N_
+argument_list|(
 literal|"file"
+argument_list|)
 argument_list|,
+name|N_
+argument_list|(
 literal|"Use revisions from<file> instead of calling git-rev-list"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_STRING
@@ -12189,9 +12249,15 @@ argument_list|,
 operator|&
 name|contents_from
 argument_list|,
+name|N_
+argument_list|(
 literal|"file"
+argument_list|)
 argument_list|,
+name|N_
+argument_list|(
 literal|"Use<file>'s contents as the final image"
+argument_list|)
 argument_list|)
 block|,
 block|{
@@ -12204,9 +12270,15 @@ block|,
 operator|&
 name|opt
 block|,
+name|N_
+argument_list|(
 literal|"score"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"Find line copies within and across files"
+argument_list|)
 block|,
 name|PARSE_OPT_OPTARG
 block|,
@@ -12223,9 +12295,15 @@ block|,
 operator|&
 name|opt
 block|,
+name|N_
+argument_list|(
 literal|"score"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"Find line movements within and across files"
+argument_list|)
 block|,
 name|PARSE_OPT_OPTARG
 block|,
@@ -12241,9 +12319,15 @@ argument_list|,
 operator|&
 name|bottomtop
 argument_list|,
+name|N_
+argument_list|(
 literal|"n,m"
+argument_list|)
 argument_list|,
+name|N_
+argument_list|(
 literal|"Process only line range n,m, counting from 1"
+argument_list|)
 argument_list|,
 name|blame_bottomtop_callback
 argument_list|)

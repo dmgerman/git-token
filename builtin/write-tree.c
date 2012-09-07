@@ -44,7 +44,10 @@ name|write_tree_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git write-tree [--missing-ok] [--prefix=<prefix>/]"
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -114,7 +117,10 @@ argument_list|,
 operator|&
 name|flags
 argument_list|,
+name|N_
+argument_list|(
 literal|"allow missing objects"
+argument_list|)
 argument_list|,
 name|WRITE_TREE_MISSING_OK
 argument_list|)
@@ -129,9 +135,15 @@ block|,
 operator|&
 name|prefix
 block|,
+name|N_
+argument_list|(
 literal|"<prefix>/"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"write tree object for a subdirectory<prefix>"
+argument_list|)
 block|,
 name|PARSE_OPT_LITERAL_ARGHELP
 block|}
@@ -148,7 +160,10 @@ name|flags
 block|,
 name|NULL
 block|,
+name|N_
+argument_list|(
 literal|"only useful for debugging"
+argument_list|)
 block|,
 name|PARSE_OPT_HIDDEN
 operator||

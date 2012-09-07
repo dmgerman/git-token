@@ -206,7 +206,10 @@ argument_list|,
 operator|&
 name|show_all
 argument_list|,
+name|N_
+argument_list|(
 literal|"print all available commands"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_SET_INT
@@ -218,7 +221,10 @@ argument_list|,
 operator|&
 name|help_format
 argument_list|,
+name|N_
+argument_list|(
 literal|"show man page"
+argument_list|)
 argument_list|,
 name|HELP_FORMAT_MAN
 argument_list|)
@@ -232,7 +238,10 @@ argument_list|,
 operator|&
 name|help_format
 argument_list|,
+name|N_
+argument_list|(
 literal|"show manual in web browser"
+argument_list|)
 argument_list|,
 name|HELP_FORMAT_WEB
 argument_list|)
@@ -246,7 +255,10 @@ argument_list|,
 operator|&
 name|help_format
 argument_list|,
+name|N_
+argument_list|(
 literal|"show info page"
+argument_list|)
 argument_list|,
 name|HELP_FORMAT_INFO
 argument_list|)
@@ -268,7 +280,10 @@ name|builtin_help_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git help [--all] [--man|--web|--info] [command]"
+argument_list|)
 block|,
 name|NULL
 block|}

@@ -80,7 +80,10 @@ name|builtin_add_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git add [options] [--]<filepattern>..."
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -1857,7 +1860,10 @@ argument_list|(
 operator|&
 name|show_only
 argument_list|,
+name|N_
+argument_list|(
 literal|"dry run"
+argument_list|)
 argument_list|)
 block|,
 name|OPT__VERBOSE
@@ -1865,7 +1871,10 @@ argument_list|(
 operator|&
 name|verbose
 argument_list|,
+name|N_
+argument_list|(
 literal|"be verbose"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_GROUP
@@ -1882,7 +1891,10 @@ argument_list|,
 operator|&
 name|add_interactive
 argument_list|,
+name|N_
+argument_list|(
 literal|"interactive picking"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -1894,7 +1906,10 @@ argument_list|,
 operator|&
 name|patch_interactive
 argument_list|,
+name|N_
+argument_list|(
 literal|"select hunks interactively"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -1906,7 +1921,10 @@ argument_list|,
 operator|&
 name|edit_interactive
 argument_list|,
+name|N_
+argument_list|(
 literal|"edit current diff and apply"
+argument_list|)
 argument_list|)
 block|,
 name|OPT__FORCE
@@ -1914,7 +1932,10 @@ argument_list|(
 operator|&
 name|ignored_too
 argument_list|,
+name|N_
+argument_list|(
 literal|"allow adding otherwise ignored files"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -1926,7 +1947,10 @@ argument_list|,
 operator|&
 name|take_worktree_changes
 argument_list|,
+name|N_
+argument_list|(
 literal|"update tracked files"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -1938,7 +1962,10 @@ argument_list|,
 operator|&
 name|intent_to_add
 argument_list|,
+name|N_
+argument_list|(
 literal|"record only the fact that the path will be added later"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -1950,7 +1977,10 @@ argument_list|,
 operator|&
 name|addremove
 argument_list|,
+name|N_
+argument_list|(
 literal|"add changes from all tracked and untracked files"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -1962,7 +1992,10 @@ argument_list|,
 operator|&
 name|refresh_only
 argument_list|,
+name|N_
+argument_list|(
 literal|"don't add, only refresh the index"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -1974,7 +2007,10 @@ argument_list|,
 operator|&
 name|ignore_add_errors
 argument_list|,
+name|N_
+argument_list|(
 literal|"just skip files which cannot be added because of errors"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -1986,7 +2022,10 @@ argument_list|,
 operator|&
 name|ignore_missing
 argument_list|,
+name|N_
+argument_list|(
 literal|"check if - even missing - files are ignored in dry run"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_END

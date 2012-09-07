@@ -38,11 +38,20 @@ name|git_replace_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git replace [-f]<object><replacement>"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"git replace -d<object>..."
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"git replace -l [<pattern>]"
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -617,7 +626,10 @@ argument_list|,
 operator|&
 name|list
 argument_list|,
+name|N_
+argument_list|(
 literal|"list replace refs"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -629,7 +641,10 @@ argument_list|,
 operator|&
 name|delete
 argument_list|,
+name|N_
+argument_list|(
 literal|"delete replace refs"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -641,7 +656,10 @@ argument_list|,
 operator|&
 name|force
 argument_list|,
+name|N_
+argument_list|(
 literal|"replace the ref if it exists"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_END

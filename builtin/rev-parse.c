@@ -1586,7 +1586,10 @@ name|parseopt_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git rev-parse --parseopt [options] -- [<args>...]"
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -1607,7 +1610,10 @@ argument_list|,
 operator|&
 name|keep_dashdash
 argument_list|,
+name|N_
+argument_list|(
 literal|"keep the `--` passed as an arg"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -1619,8 +1625,11 @@ argument_list|,
 operator|&
 name|stop_at_non_option
 argument_list|,
+name|N_
+argument_list|(
 literal|"stop parsing after the "
 literal|"first non-option argument"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_END
@@ -2310,11 +2319,14 @@ name|char
 name|builtin_rev_parse_usage
 index|[]
 init|=
+name|N_
+argument_list|(
 literal|"git rev-parse --parseopt [options] -- [<args>...]\n"
 literal|"   or: git rev-parse --sq-quote [<arg>...]\n"
 literal|"   or: git rev-parse [options] [<arg>...]\n"
 literal|"\n"
 literal|"Run \"git rev-parse --parseopt -h\" for more information on the first usage."
+argument_list|)
 decl_stmt|;
 end_decl_stmt
 

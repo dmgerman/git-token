@@ -293,7 +293,10 @@ name|verify_pack_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git verify-pack [-v|--verbose] [-s|--stat-only]<pack>..."
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -350,7 +353,10 @@ argument_list|,
 operator|&
 name|flags
 argument_list|,
+name|N_
+argument_list|(
 literal|"verbose"
+argument_list|)
 argument_list|,
 name|VERIFY_PACK_VERBOSE
 argument_list|)
@@ -364,7 +370,10 @@ argument_list|,
 operator|&
 name|flags
 argument_list|,
+name|N_
+argument_list|(
 literal|"show statistics only"
+argument_list|)
 argument_list|,
 name|VERIFY_PACK_STAT_ONLY
 argument_list|)

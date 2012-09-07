@@ -50,7 +50,10 @@ name|builtin_mv_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git mv [options]<source>...<destination>"
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -393,7 +396,10 @@ argument_list|(
 operator|&
 name|verbose
 argument_list|,
+name|N_
+argument_list|(
 literal|"be verbose"
+argument_list|)
 argument_list|)
 block|,
 name|OPT__DRY_RUN
@@ -401,7 +407,10 @@ argument_list|(
 operator|&
 name|show_only
 argument_list|,
+name|N_
+argument_list|(
 literal|"dry run"
+argument_list|)
 argument_list|)
 block|,
 name|OPT__FORCE
@@ -409,7 +418,10 @@ argument_list|(
 operator|&
 name|force
 argument_list|,
+name|N_
+argument_list|(
 literal|"force move/rename even if target exists"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -421,7 +433,10 @@ argument_list|,
 operator|&
 name|ignore_errors
 argument_list|,
+name|N_
+argument_list|(
 literal|"skip move/rename errors"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_END

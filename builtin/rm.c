@@ -50,7 +50,10 @@ name|builtin_rm_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git rm [options] [--]<file>..."
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -461,7 +464,10 @@ argument_list|(
 operator|&
 name|show_only
 argument_list|,
+name|N_
+argument_list|(
 literal|"dry run"
+argument_list|)
 argument_list|)
 block|,
 name|OPT__QUIET
@@ -469,7 +475,10 @@ argument_list|(
 operator|&
 name|quiet
 argument_list|,
+name|N_
+argument_list|(
 literal|"do not list removed files"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -481,7 +490,10 @@ argument_list|,
 operator|&
 name|index_only
 argument_list|,
+name|N_
+argument_list|(
 literal|"only remove from the index"
+argument_list|)
 argument_list|)
 block|,
 name|OPT__FORCE
@@ -489,7 +501,10 @@ argument_list|(
 operator|&
 name|force
 argument_list|,
+name|N_
+argument_list|(
 literal|"override the up-to-date check"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -501,7 +516,10 @@ argument_list|,
 operator|&
 name|recursive
 argument_list|,
+name|N_
+argument_list|(
 literal|"allow recursive removal"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -513,7 +531,10 @@ argument_list|,
 operator|&
 name|ignore_unmatch
 argument_list|,
+name|N_
+argument_list|(
 literal|"exit with a zero status even if nothing matched"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_END

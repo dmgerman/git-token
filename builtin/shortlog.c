@@ -70,11 +70,17 @@ name|shortlog_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git shortlog [-n] [-s] [-e] [-w] [rev-opts] [--] [<commit-id>... ]"
+argument_list|)
 block|,
 literal|""
 block|,
+name|N_
+argument_list|(
 literal|"[rev-opts] are documented in git-rev-list(1)"
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -1612,7 +1618,10 @@ name|log
 operator|.
 name|sort_by_number
 argument_list|,
+name|N_
+argument_list|(
 literal|"sort output according to the number of commits per author"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -1626,7 +1635,10 @@ name|log
 operator|.
 name|summary
 argument_list|,
+name|N_
+argument_list|(
 literal|"Suppress commit descriptions, only provides commit count"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -1640,7 +1652,10 @@ name|log
 operator|.
 name|email
 argument_list|,
+name|N_
+argument_list|(
 literal|"Show the email address of each author"
+argument_list|)
 argument_list|)
 block|,
 block|{
@@ -1653,9 +1668,15 @@ block|,
 operator|&
 name|log
 block|,
+name|N_
+argument_list|(
 literal|"w[,i1[,i2]]"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"Linewrap output"
+argument_list|)
 block|,
 name|PARSE_OPT_OPTARG
 block|,

@@ -378,7 +378,10 @@ name|count_objects_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git count-objects [-v]"
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -473,7 +476,10 @@ argument_list|(
 operator|&
 name|verbose
 argument_list|,
+name|N_
+argument_list|(
 literal|"be verbose"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_END

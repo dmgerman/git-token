@@ -702,7 +702,10 @@ name|builtin_checkout_index_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git checkout-index [options] [--] [<file>...]"
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -1012,7 +1015,10 @@ argument_list|,
 operator|&
 name|all
 argument_list|,
-literal|"checks out all files in the index"
+name|N_
+argument_list|(
+literal|"check out all files in the index"
+argument_list|)
 argument_list|)
 block|,
 name|OPT__FORCE
@@ -1020,7 +1026,10 @@ argument_list|(
 operator|&
 name|force
 argument_list|,
-literal|"forces overwrite of existing files"
+name|N_
+argument_list|(
+literal|"force overwrite of existing files"
+argument_list|)
 argument_list|)
 block|,
 name|OPT__QUIET
@@ -1028,7 +1037,10 @@ argument_list|(
 operator|&
 name|quiet
 argument_list|,
+name|N_
+argument_list|(
 literal|"no warning for existing files and files not in index"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -1040,7 +1052,10 @@ argument_list|,
 operator|&
 name|not_new
 argument_list|,
+name|N_
+argument_list|(
 literal|"don't checkout new files"
+argument_list|)
 argument_list|)
 block|,
 block|{
@@ -1055,7 +1070,10 @@ name|newfd
 block|,
 name|NULL
 block|,
+name|N_
+argument_list|(
 literal|"update stat information in the index file"
+argument_list|)
 block|,
 name|PARSE_OPT_NOARG
 block|,
@@ -1073,7 +1091,10 @@ name|NULL
 block|,
 name|NULL
 block|,
+name|N_
+argument_list|(
 literal|"paths are separated with NUL character"
+argument_list|)
 block|,
 name|PARSE_OPT_NOARG
 block|,
@@ -1089,7 +1110,10 @@ argument_list|,
 operator|&
 name|read_from_stdin
 argument_list|,
+name|N_
+argument_list|(
 literal|"read list of paths from the standard input"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -1101,7 +1125,10 @@ argument_list|,
 operator|&
 name|to_tempfile
 argument_list|,
+name|N_
+argument_list|(
 literal|"write the content to temporary files"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_CALLBACK
@@ -1112,9 +1139,15 @@ literal|"prefix"
 argument_list|,
 name|NULL
 argument_list|,
+name|N_
+argument_list|(
 literal|"string"
+argument_list|)
 argument_list|,
+name|N_
+argument_list|(
 literal|"when creating files, prepend<string>"
+argument_list|)
 argument_list|,
 name|option_parse_prefix
 argument_list|)
@@ -1129,7 +1162,10 @@ name|NULL
 argument_list|,
 name|NULL
 argument_list|,
+name|N_
+argument_list|(
 literal|"copy out the files from named stage"
+argument_list|)
 argument_list|,
 name|option_parse_stage
 argument_list|)

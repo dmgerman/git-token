@@ -349,9 +349,15 @@ name|hash_object_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git hash-object [-t<type>] [-w] [--path=<file>|--no-filters] [--stdin] [--]<file>..."
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"git hash-object  --stdin-paths<<list-of-paths>"
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -421,9 +427,15 @@ argument_list|,
 operator|&
 name|type
 argument_list|,
+name|N_
+argument_list|(
 literal|"type"
+argument_list|)
 argument_list|,
+name|N_
+argument_list|(
 literal|"object type"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -435,7 +447,10 @@ argument_list|,
 operator|&
 name|write_object
 argument_list|,
+name|N_
+argument_list|(
 literal|"write the object into the object database"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -447,7 +462,10 @@ argument_list|,
 operator|&
 name|hashstdin
 argument_list|,
+name|N_
+argument_list|(
 literal|"read the object from stdin"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -459,7 +477,10 @@ argument_list|,
 operator|&
 name|stdin_paths
 argument_list|,
+name|N_
+argument_list|(
 literal|"read file names from stdin"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -471,7 +492,10 @@ argument_list|,
 operator|&
 name|no_filters
 argument_list|,
+name|N_
+argument_list|(
 literal|"store file as is without filters"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_STRING
@@ -483,9 +507,15 @@ argument_list|,
 operator|&
 name|vpath
 argument_list|,
+name|N_
+argument_list|(
 literal|"file"
+argument_list|)
 argument_list|,
+name|N_
+argument_list|(
 literal|"process file as it were from this path"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_END

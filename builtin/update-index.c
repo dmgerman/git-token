@@ -1852,7 +1852,10 @@ name|update_index_usage
 index|[]
 init|=
 block|{
+name|N_
+argument_list|(
 literal|"git update-index [options] [--] [<file>...]"
+argument_list|)
 block|,
 name|NULL
 block|}
@@ -3545,7 +3548,10 @@ name|refresh_args
 operator|.
 name|flags
 argument_list|,
+name|N_
+argument_list|(
 literal|"continue refresh even when index needs update"
+argument_list|)
 argument_list|,
 name|REFRESH_QUIET
 argument_list|)
@@ -3561,7 +3567,10 @@ name|refresh_args
 operator|.
 name|flags
 argument_list|,
+name|N_
+argument_list|(
 literal|"refresh: ignore submodules"
+argument_list|)
 argument_list|,
 name|REFRESH_IGNORE_SUBMODULES
 argument_list|)
@@ -3575,7 +3584,10 @@ argument_list|,
 operator|&
 name|allow_add
 argument_list|,
+name|N_
+argument_list|(
 literal|"do not ignore new files"
+argument_list|)
 argument_list|,
 literal|1
 argument_list|)
@@ -3589,7 +3601,10 @@ argument_list|,
 operator|&
 name|allow_replace
 argument_list|,
+name|N_
+argument_list|(
 literal|"let files replace directories and vice-versa"
+argument_list|)
 argument_list|,
 literal|1
 argument_list|)
@@ -3603,7 +3618,10 @@ argument_list|,
 operator|&
 name|allow_remove
 argument_list|,
+name|N_
+argument_list|(
 literal|"notice files missing from worktree"
+argument_list|)
 argument_list|,
 literal|1
 argument_list|)
@@ -3619,7 +3637,10 @@ name|refresh_args
 operator|.
 name|flags
 argument_list|,
+name|N_
+argument_list|(
 literal|"refresh even if index contains unmerged entries"
+argument_list|)
 argument_list|,
 name|REFRESH_UNMERGED
 argument_list|)
@@ -3636,7 +3657,10 @@ name|refresh_args
 block|,
 name|NULL
 block|,
+name|N_
+argument_list|(
 literal|"refresh stat information"
+argument_list|)
 block|,
 name|PARSE_OPT_NOARG
 operator||
@@ -3657,7 +3681,10 @@ name|refresh_args
 block|,
 name|NULL
 block|,
+name|N_
+argument_list|(
 literal|"like --refresh, but ignore assume-unchanged setting"
+argument_list|)
 block|,
 name|PARSE_OPT_NOARG
 operator||
@@ -3675,9 +3702,15 @@ literal|"cacheinfo"
 block|,
 name|NULL
 block|,
+name|N_
+argument_list|(
 literal|"<mode><object><path>"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"add the specified entry to the index"
+argument_list|)
 block|,
 name|PARSE_OPT_NOARG
 operator||
@@ -3703,9 +3736,15 @@ block|,
 operator|&
 name|set_executable_bit
 block|,
+name|N_
+argument_list|(
 literal|"(+/-)x"
+argument_list|)
 block|,
+name|N_
+argument_list|(
 literal|"override the executable bit of the listed files"
+argument_list|)
 block|,
 name|PARSE_OPT_NONEG
 operator||
@@ -3726,7 +3765,10 @@ name|mark_valid_only
 block|,
 name|NULL
 block|,
+name|N_
+argument_list|(
 literal|"mark files as \"not changing\""
+argument_list|)
 block|,
 name|PARSE_OPT_NOARG
 operator||
@@ -3749,7 +3791,10 @@ name|mark_valid_only
 block|,
 name|NULL
 block|,
+name|N_
+argument_list|(
 literal|"clear assumed-unchanged bit"
+argument_list|)
 block|,
 name|PARSE_OPT_NOARG
 operator||
@@ -3772,7 +3817,10 @@ name|mark_skip_worktree_only
 block|,
 name|NULL
 block|,
+name|N_
+argument_list|(
 literal|"mark files as \"index-only\""
+argument_list|)
 block|,
 name|PARSE_OPT_NOARG
 operator||
@@ -3795,7 +3843,10 @@ name|mark_skip_worktree_only
 block|,
 name|NULL
 block|,
+name|N_
+argument_list|(
 literal|"clear skip-worktree bit"
+argument_list|)
 block|,
 name|PARSE_OPT_NOARG
 operator||
@@ -3815,7 +3866,10 @@ argument_list|,
 operator|&
 name|info_only
 argument_list|,
+name|N_
+argument_list|(
 literal|"add to index only; do not add content to object database"
+argument_list|)
 argument_list|,
 literal|1
 argument_list|)
@@ -3829,7 +3883,10 @@ argument_list|,
 operator|&
 name|force_remove
 argument_list|,
+name|N_
+argument_list|(
 literal|"remove named paths even if present in worktree"
+argument_list|)
 argument_list|,
 literal|1
 argument_list|)
@@ -3843,7 +3900,10 @@ argument_list|,
 operator|&
 name|line_termination
 argument_list|,
+name|N_
+argument_list|(
 literal|"with --stdin: input lines are terminated by null bytes"
+argument_list|)
 argument_list|,
 literal|'\0'
 argument_list|)
@@ -3860,7 +3920,10 @@ name|read_from_stdin
 block|,
 name|NULL
 block|,
+name|N_
+argument_list|(
 literal|"read list of paths to be updated from standard input"
+argument_list|)
 block|,
 name|PARSE_OPT_NONEG
 operator||
@@ -3885,7 +3948,10 @@ name|line_termination
 block|,
 name|NULL
 block|,
+name|N_
+argument_list|(
 literal|"add entries from standard input to the index"
+argument_list|)
 block|,
 name|PARSE_OPT_NONEG
 operator||
@@ -3910,7 +3976,10 @@ name|has_errors
 block|,
 name|NULL
 block|,
+name|N_
+argument_list|(
 literal|"repopulate stages #2 and #3 for the listed paths"
+argument_list|)
 block|,
 name|PARSE_OPT_NONEG
 operator||
@@ -3935,7 +4004,10 @@ name|has_errors
 block|,
 name|NULL
 block|,
+name|N_
+argument_list|(
 literal|"only update entries that differ from HEAD"
+argument_list|)
 block|,
 name|PARSE_OPT_NONEG
 operator||
@@ -3959,7 +4031,10 @@ name|refresh_args
 operator|.
 name|flags
 argument_list|,
+name|N_
+argument_list|(
 literal|"ignore files missing from worktree"
+argument_list|)
 argument_list|,
 name|REFRESH_IGNORE_MISSING
 argument_list|)
@@ -3973,7 +4048,10 @@ argument_list|,
 operator|&
 name|verbose
 argument_list|,
+name|N_
+argument_list|(
 literal|"report actions to standard output"
+argument_list|)
 argument_list|,
 literal|1
 argument_list|)
@@ -3989,7 +4067,10 @@ name|NULL
 block|,
 name|NULL
 block|,
+name|N_
+argument_list|(
 literal|"(for porcelains) forget saved unresolved conflicts"
+argument_list|)
 block|,
 name|PARSE_OPT_NOARG
 operator||
@@ -4007,7 +4088,10 @@ argument_list|,
 operator|&
 name|preferred_index_format
 argument_list|,
+name|N_
+argument_list|(
 literal|"write index in this format"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_END
