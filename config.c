@@ -258,7 +258,7 @@ block|}
 if|if
 condition|(
 operator|!
-name|access
+name|access_or_warn
 argument_list|(
 name|path
 argument_list|,
@@ -4776,7 +4776,7 @@ name|git_config_system
 argument_list|()
 operator|&&
 operator|!
-name|access
+name|access_or_warn
 argument_list|(
 name|git_etc_gitconfig
 argument_list|()
@@ -4807,7 +4807,7 @@ condition|(
 name|xdg_config
 operator|&&
 operator|!
-name|access
+name|access_or_warn
 argument_list|(
 name|xdg_config
 argument_list|,
@@ -4836,7 +4836,7 @@ condition|(
 name|user_config
 operator|&&
 operator|!
-name|access
+name|access_or_warn
 argument_list|(
 name|user_config
 argument_list|,
@@ -4865,7 +4865,7 @@ condition|(
 name|repo_config
 operator|&&
 operator|!
-name|access
+name|access_or_warn
 argument_list|(
 name|repo_config
 argument_list|,
