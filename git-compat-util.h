@@ -973,42 +973,68 @@ endif|#
 directive|endif
 end_endif
 
-begin_ifndef
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|NO_STRUCT_ITIMERVAL
+end_ifdef
+
+begin_struct
+DECL|struct|itimerval
+struct|struct
+name|itimerval
+block|{
+DECL|member|it_interval
+name|struct
+name|timeval
+name|it_interval
+decl_stmt|;
+DECL|member|it_value
+name|struct
+name|timeval
+name|it_value
+decl_stmt|;
+block|}
+endif|#
+directive|endif
+ifdef|#
+directive|ifdef
+name|NO_SETITIMER
+DECL|macro|setitimer
+define|#
+directive|define
+name|setitimer
+parameter_list|(
+name|which
+parameter_list|,
+name|value
+parameter_list|,
+name|ovalue
+parameter_list|)
+endif|#
+directive|endif
 ifndef|#
 directive|ifndef
 name|NO_LIBGEN_H
-end_ifndef
-
-begin_include
 include|#
 directive|include
 file|<libgen.h>
-end_include
-
-begin_else
 else|#
 directive|else
-end_else
-
-begin_define
-DECL|macro|basename
 define|#
 directive|define
 name|basename
 value|gitbasename
-end_define
-
-begin_function_decl
-specifier|extern
+decl|extern
 name|char
 modifier|*
 name|gitbasename
-parameter_list|(
+argument_list|(
 name|char
-modifier|*
-parameter_list|)
-function_decl|;
-end_function_decl
+operator|*
+argument_list|)
+struct|;
+end_struct
 
 begin_endif
 endif|#
@@ -1340,7 +1366,6 @@ argument_list|)
 end_elif
 
 begin_define
-DECL|macro|NORETURN
 define|#
 directive|define
 name|NORETURN
@@ -1348,7 +1373,6 @@ value|__attribute__((__noreturn__))
 end_define
 
 begin_define
-DECL|macro|NORETURN_PTR
 define|#
 directive|define
 name|NORETURN_PTR
@@ -1365,7 +1389,6 @@ argument_list|)
 end_elif
 
 begin_define
-DECL|macro|NORETURN
 define|#
 directive|define
 name|NORETURN
@@ -1373,7 +1396,6 @@ value|__declspec(noreturn)
 end_define
 
 begin_define
-DECL|macro|NORETURN_PTR
 define|#
 directive|define
 name|NORETURN_PTR
@@ -1385,14 +1407,12 @@ directive|else
 end_else
 
 begin_define
-DECL|macro|NORETURN
 define|#
 directive|define
 name|NORETURN
 end_define
 
 begin_define
-DECL|macro|NORETURN_PTR
 define|#
 directive|define
 name|NORETURN_PTR
@@ -1405,7 +1425,6 @@ name|__attribute__
 end_ifndef
 
 begin_define
-DECL|macro|__attribute__
 define|#
 directive|define
 name|__attribute__
