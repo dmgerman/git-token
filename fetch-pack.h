@@ -12,6 +12,12 @@ directive|define
 name|FETCH_PACK_H
 end_define
 
+begin_include
+include|#
+directive|include
+file|"string-list.h"
+end_include
+
 begin_struct
 DECL|struct|fetch_pack_args
 struct|struct
@@ -117,13 +123,10 @@ name|char
 modifier|*
 name|dest
 parameter_list|,
-name|int
-name|nr_heads
-parameter_list|,
-name|char
+name|struct
+name|string_list
 modifier|*
-modifier|*
-name|heads
+name|sought
 parameter_list|,
 name|char
 modifier|*
