@@ -5427,8 +5427,6 @@ name|ref
 expr_stmt|;
 if|if
 condition|(
-name|ref
-operator|&&
 name|sought
 operator|.
 name|nr
