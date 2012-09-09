@@ -5417,10 +5417,9 @@ argument_list|(
 name|conn
 argument_list|)
 condition|)
-name|ref
-operator|=
-name|NULL
-expr_stmt|;
+return|return
+literal|1
+return|;
 name|ret
 operator|=
 operator|!
@@ -5428,8 +5427,7 @@ name|ref
 expr_stmt|;
 if|if
 condition|(
-operator|!
-name|ret
+name|ref
 operator|&&
 name|sought
 operator|.
