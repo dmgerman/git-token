@@ -5424,15 +5424,12 @@ name|ret
 operator|=
 operator|!
 name|ref
-expr_stmt|;
-if|if
-condition|(
+operator|||
 name|sought
 operator|.
 name|nr
-condition|)
-block|{
-comment|/* If the heads to pull were given, we should have 		 * consumed all of them by matching the remote. 		 * Otherwise, 'git fetch remote no-such-ref' would 		 * silently succeed without issuing an error. 		 */
+expr_stmt|;
+comment|/* 	 * If the heads to pull were given, we should have consumed 	 * all of them by matching the remote.  Otherwise, 'git fetch 	 * remote no-such-ref' would silently succeed without issuing 	 * an error. 	 */
 for|for
 control|(
 name|i
@@ -5462,11 +5459,6 @@ operator|.
 name|string
 argument_list|)
 expr_stmt|;
-name|ret
-operator|=
-literal|1
-expr_stmt|;
-block|}
 while|while
 condition|(
 name|ref
