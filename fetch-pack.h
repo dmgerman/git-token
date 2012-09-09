@@ -92,6 +92,10 @@ block|}
 struct|;
 end_struct
 
+begin_comment
+comment|/*  * sought contains the full names of remote references that should be  * updated from.  On return, the names that were found on the remote  * will have been removed from the list.  The util members of the  * string_list_items are used internally; they must be NULL on entry  * (and will be NULL on exit).  */
+end_comment
+
 begin_function_decl
 name|struct
 name|ref
