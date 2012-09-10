@@ -264,6 +264,8 @@ name|unsigned
 name|char
 modifier|*
 parameter_list|,
+name|int
+parameter_list|,
 name|unsigned
 name|short
 parameter_list|)

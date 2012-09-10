@@ -302,6 +302,9 @@ name|char
 modifier|*
 name|sha1
 parameter_list|,
+name|int
+name|sha1_valid
+parameter_list|,
 name|char
 modifier|*
 modifier|*

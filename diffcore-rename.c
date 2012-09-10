@@ -283,6 +283,10 @@ name|sha1
 argument_list|,
 name|two
 operator|->
+name|sha1_valid
+argument_list|,
+name|two
+operator|->
 name|mode
 argument_list|)
 expr_stmt|;
