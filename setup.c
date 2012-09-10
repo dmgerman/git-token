@@ -508,7 +508,7 @@ condition|)
 name|die
 argument_list|(
 literal|"%s: no such path in the working tree.\n"
-literal|"Use '--<path>...' to specify paths that do not exist locally."
+literal|"Use 'git<command> --<path>...' to specify paths that do not exist locally."
 argument_list|,
 name|arg
 argument_list|)
@@ -546,7 +546,8 @@ comment|/* ... or fall back the most general message. */
 name|die
 argument_list|(
 literal|"ambiguous argument '%s': unknown revision or path not in the working tree.\n"
-literal|"Use '--' to separate paths from revisions"
+literal|"Use '--' to separate paths from revisions, like this:\n"
+literal|"'git<command> [<revision>...] -- [<file>...]'"
 argument_list|,
 name|arg
 argument_list|)
@@ -666,7 +667,8 @@ return|return;
 name|die
 argument_list|(
 literal|"ambiguous argument '%s': both revision and filename\n"
-literal|"Use '--' to separate filenames from revisions"
+literal|"Use '--' to separate paths from revisions, like this:\n"
+literal|"'git<command> [<revision>...] -- [<file>...]'"
 argument_list|,
 name|arg
 argument_list|)
