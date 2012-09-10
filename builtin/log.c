@@ -585,6 +585,18 @@ operator||
 name|PARSE_OPT_KEEP_DASHDASH
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|quiet
+condition|)
+name|rev
+operator|->
+name|diffopt
+operator|.
+name|output_format
+operator||=
+name|DIFF_FORMAT_NO_OUTPUT
+expr_stmt|;
 name|argc
 operator|=
 name|setup_revisions
@@ -597,18 +609,6 @@ name|rev
 argument_list|,
 name|opt
 argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|quiet
-condition|)
-name|rev
-operator|->
-name|diffopt
-operator|.
-name|output_format
-operator||=
-name|DIFF_FORMAT_NO_OUTPUT
 expr_stmt|;
 comment|/* Any arguments at this point are not recognized */
 if|if
