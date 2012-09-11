@@ -1636,24 +1636,12 @@ name|output_format
 operator|=
 name|DIFF_FORMAT_PATCH
 expr_stmt|;
-if|if
-condition|(
 name|diff_setup_done
 argument_list|(
 operator|&
 name|rev
 operator|.
 name|diffopt
-argument_list|)
-operator|<
-literal|0
-condition|)
-name|die
-argument_list|(
-name|_
-argument_list|(
-literal|"diff_setup_done failed"
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

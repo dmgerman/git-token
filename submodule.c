@@ -3470,19 +3470,10 @@ name|format_callback
 operator|=
 name|submodule_collect_changed_cb
 expr_stmt|;
-if|if
-condition|(
 name|diff_setup_done
 argument_list|(
 operator|&
 name|diff_opts
-argument_list|)
-operator|<
-literal|0
-condition|)
-name|die
-argument_list|(
-literal|"diff_setup_done failed"
 argument_list|)
 expr_stmt|;
 name|diff_tree_sha1

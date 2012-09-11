@@ -1299,19 +1299,10 @@ operator|&
 name|diff_opts
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
 name|diff_setup_done
 argument_list|(
 operator|&
 name|diff_opts
-argument_list|)
-operator|<
-literal|0
-condition|)
-name|die
-argument_list|(
-literal|"unable to set up diff options to follow renames"
 argument_list|)
 expr_stmt|;
 name|diff_tree
