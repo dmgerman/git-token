@@ -4156,6 +4156,11 @@ block|}
 block|}
 else|else
 block|{
+if|#
+directive|if
+name|LIBCURL_VERSION_NUM
+operator|>=
+literal|0x070c00
 if|if
 condition|(
 operator|!
@@ -4181,6 +4186,8 @@ name|curl_errorstr
 argument_list|)
 argument_list|)
 expr_stmt|;
+endif|#
+directive|endif
 name|ret
 operator|=
 name|HTTP_ERROR
