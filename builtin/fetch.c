@@ -1906,10 +1906,7 @@ name|in_merge_bases
 argument_list|(
 name|current
 argument_list|,
-operator|&
 name|updated
-argument_list|,
-literal|1
 argument_list|)
 condition|)
 block|{

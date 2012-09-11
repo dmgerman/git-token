@@ -695,10 +695,7 @@ name|in_merge_bases
 argument_list|(
 name|rev
 argument_list|,
-operator|&
 name|reference_rev
-argument_list|,
-literal|1
 argument_list|)
 expr_stmt|;
 comment|/* 	 * After the safety valve is fully redefined to "check with 	 * upstream, if any, otherwise with HEAD", we should just 	 * return the result of the in_merge_bases() above without 	 * any of the following code, but during the transition period, 	 * a gentle reminder is in order. 	 */
@@ -714,10 +711,7 @@ name|in_merge_bases
 argument_list|(
 name|rev
 argument_list|,
-operator|&
 name|head_rev
-argument_list|,
-literal|1
 argument_list|)
 operator|!=
 name|merged
