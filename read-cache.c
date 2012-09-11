@@ -6931,10 +6931,6 @@ decl_stmt|,
 modifier|*
 name|previous_name
 decl_stmt|;
-name|errno
-operator|=
-name|EBUSY
-expr_stmt|;
 if|if
 condition|(
 name|istate
@@ -6946,10 +6942,6 @@ name|istate
 operator|->
 name|cache_nr
 return|;
-name|errno
-operator|=
-name|ENOENT
-expr_stmt|;
 name|istate
 operator|->
 name|timestamp
@@ -7012,10 +7004,6 @@ argument_list|(
 literal|"cannot stat the open index"
 argument_list|)
 expr_stmt|;
-name|errno
-operator|=
-name|EINVAL
-expr_stmt|;
 name|mmap_size
 operator|=
 name|xsize_t
@@ -7061,11 +7049,6 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-name|close
-argument_list|(
-name|fd
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|mmap
@@ -7075,6 +7058,11 @@ condition|)
 name|die_errno
 argument_list|(
 literal|"unable to map index file"
+argument_list|)
+expr_stmt|;
+name|close
+argument_list|(
+name|fd
 argument_list|)
 expr_stmt|;
 name|hdr
@@ -7380,10 +7368,6 @@ name|mmap
 argument_list|,
 name|mmap_size
 argument_list|)
-expr_stmt|;
-name|errno
-operator|=
-name|EINVAL
 expr_stmt|;
 name|die
 argument_list|(
