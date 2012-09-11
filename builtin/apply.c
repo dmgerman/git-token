@@ -850,11 +850,6 @@ DECL|member|ws_rule
 name|unsigned
 name|ws_rule
 decl_stmt|;
-DECL|member|deflate_origlen
-name|unsigned
-name|long
-name|deflate_origlen
-decl_stmt|;
 DECL|member|lines_added
 DECL|member|lines_deleted
 name|int

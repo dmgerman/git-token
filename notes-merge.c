@@ -698,19 +698,10 @@ name|output_format
 operator|=
 name|DIFF_FORMAT_NO_OUTPUT
 expr_stmt|;
-if|if
-condition|(
 name|diff_setup_done
 argument_list|(
 operator|&
 name|opt
-argument_list|)
-operator|<
-literal|0
-condition|)
-name|die
-argument_list|(
-literal|"diff_setup_done failed"
 argument_list|)
 expr_stmt|;
 name|diff_tree_sha1
@@ -1129,19 +1120,10 @@ name|output_format
 operator|=
 name|DIFF_FORMAT_NO_OUTPUT
 expr_stmt|;
-if|if
-condition|(
 name|diff_setup_done
 argument_list|(
 operator|&
 name|opt
-argument_list|)
-operator|<
-literal|0
-condition|)
-name|die
-argument_list|(
-literal|"diff_setup_done failed"
 argument_list|)
 expr_stmt|;
 name|diff_tree_sha1

@@ -10914,21 +10914,12 @@ name|revs
 operator|->
 name|abbrev
 expr_stmt|;
-if|if
-condition|(
 name|diff_setup_done
 argument_list|(
 operator|&
 name|revs
 operator|->
 name|diffopt
-argument_list|)
-operator|<
-literal|0
-condition|)
-name|die
-argument_list|(
-literal|"diff_setup_done failed"
 argument_list|)
 expr_stmt|;
 name|compile_grep_patterns
