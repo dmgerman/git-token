@@ -316,6 +316,10 @@ begin_comment
 comment|/* Use these functions only on unsorted lists: */
 end_comment
 
+begin_comment
+comment|/*  * Add string to the end of list.  If list->strdup_string is set, then  * string is copied; otherwise the new string_list_entry refers to the  * input string.  */
+end_comment
+
 begin_function_decl
 name|struct
 name|string_list_item
@@ -328,6 +332,28 @@ modifier|*
 name|list
 parameter_list|,
 specifier|const
+name|char
+modifier|*
+name|string
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/*  * Like string_list_append(), except string is never copied.  When  * list->strdup_strings is set, this function can be used to hand  * ownership of a malloc()ed string to list without making an extra  * copy.  */
+end_comment
+
+begin_function_decl
+name|struct
+name|string_list_item
+modifier|*
+name|string_list_append_nodup
+parameter_list|(
+name|struct
+name|string_list
+modifier|*
+name|list
+parameter_list|,
 name|char
 modifier|*
 name|string
