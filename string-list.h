@@ -339,6 +339,25 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/*  * Remove all but the first of consecutive entries with the same  * string value.  If free_util is true, call free() on the util  * members of any items that have to be deleted.  */
+end_comment
+
+begin_function_decl
+name|void
+name|string_list_remove_duplicates
+parameter_list|(
+name|struct
+name|string_list
+modifier|*
+name|sorted_list
+parameter_list|,
+name|int
+name|free_util
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/* Use these functions only on unsorted lists: */
 end_comment
 
