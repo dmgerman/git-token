@@ -210,6 +210,32 @@ value|for (item = (list)->items; item< (list)->items + (list)->nr; ++item)
 end_define
 
 begin_comment
+comment|/*  * Apply want to each item in list, retaining only the ones for which  * the function returns true.  If free_util is true, call free() on  * the util members of any items that have to be deleted.  Preserve  * the order of the items that are retained.  */
+end_comment
+
+begin_function_decl
+name|void
+name|filter_string_list
+parameter_list|(
+name|struct
+name|string_list
+modifier|*
+name|list
+parameter_list|,
+name|int
+name|free_util
+parameter_list|,
+name|string_list_each_func_t
+name|want
+parameter_list|,
+name|void
+modifier|*
+name|cb_data
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/* Use these functions only on sorted lists: */
 end_comment
 
