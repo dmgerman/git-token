@@ -75,7 +75,7 @@ argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git remote rm<name>"
+literal|"git remote remove<name>"
 argument_list|)
 block|,
 name|N_
@@ -178,7 +178,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git remote rm<name>"
+literal|"git remote remove<name>"
 argument_list|)
 block|,
 name|NULL
@@ -9970,6 +9970,17 @@ literal|0
 index|]
 argument_list|,
 literal|"rm"
+argument_list|)
+operator|||
+operator|!
+name|strcmp
+argument_list|(
+name|argv
+index|[
+literal|0
+index|]
+argument_list|,
+literal|"remove"
 argument_list|)
 condition|)
 name|result
