@@ -392,6 +392,10 @@ DECL|member|all_match
 name|int
 name|all_match
 decl_stmt|;
+DECL|member|debug
+name|int
+name|debug
+decl_stmt|;
 DECL|macro|GREP_BINARY_DEFAULT
 define|#
 directive|define
