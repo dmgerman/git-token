@@ -1800,6 +1800,10 @@ condition|(
 name|errno
 operator|!=
 name|ENOENT
+operator|&&
+name|errno
+operator|!=
+name|ENOTDIR
 condition|)
 name|warn_on_inaccessible
 argument_list|(
