@@ -1000,6 +1000,12 @@ name|output
 operator|=
 name|strbuf_out
 expr_stmt|;
+name|o
+operator|->
+name|debug
+operator|=
+literal|0
+expr_stmt|;
 name|compile_grep_patterns
 argument_list|(
 name|o
