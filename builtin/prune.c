@@ -955,15 +955,12 @@ argument_list|)
 expr_stmt|;
 name|s
 operator|=
-name|xstrdup
-argument_list|(
-name|mkpath
+name|mkpathdup
 argument_list|(
 literal|"%s/pack"
 argument_list|,
 name|get_object_directory
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|remove_temporary_files

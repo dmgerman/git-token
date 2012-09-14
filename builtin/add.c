@@ -1493,12 +1493,9 @@ name|char
 modifier|*
 name|file
 init|=
-name|xstrdup
-argument_list|(
-name|git_path
+name|git_pathdup
 argument_list|(
 literal|"ADD_EDIT.patch"
-argument_list|)
 argument_list|)
 decl_stmt|;
 specifier|const
@@ -1768,6 +1765,11 @@ name|file
 argument_list|)
 expr_stmt|;
 name|unlink
+argument_list|(
+name|file
+argument_list|)
+expr_stmt|;
+name|free
 argument_list|(
 name|file
 argument_list|)
