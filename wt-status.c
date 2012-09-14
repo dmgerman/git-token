@@ -1307,10 +1307,7 @@ name|s
 argument_list|,
 name|c
 argument_list|,
-name|_
-argument_list|(
-literal|"%s files:"
-argument_list|)
+literal|"%s:"
 argument_list|,
 name|what
 argument_list|)
@@ -6153,7 +6150,7 @@ name|untracked
 argument_list|,
 name|_
 argument_list|(
-literal|"Untracked"
+literal|"Untracked files"
 argument_list|)
 argument_list|,
 literal|"add"
@@ -6176,7 +6173,7 @@ name|ignored
 argument_list|,
 name|_
 argument_list|(
-literal|"Ignored"
+literal|"Ignored files"
 argument_list|)
 argument_list|,
 literal|"add -f"
@@ -6264,23 +6261,30 @@ name|s
 operator|->
 name|workdir_dirty
 condition|)
+block|{
+if|if
+condition|(
+name|advice_status_hints
+condition|)
 name|printf
 argument_list|(
 name|_
 argument_list|(
-literal|"no changes added to commit%s\n"
+literal|"no changes added to commit "
+literal|"(use \"git add\" and/or \"git commit -a\")\n"
 argument_list|)
-argument_list|,
-name|advice_status_hints
-condition|?
-name|_
-argument_list|(
-literal|" (use \"git add\" and/or \"git commit -a\")"
-argument_list|)
-else|:
-literal|""
 argument_list|)
 expr_stmt|;
+else|else
+name|printf
+argument_list|(
+name|_
+argument_list|(
+literal|"no changes added to commit\n"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -6290,23 +6294,30 @@ name|untracked
 operator|.
 name|nr
 condition|)
+block|{
+if|if
+condition|(
+name|advice_status_hints
+condition|)
 name|printf
 argument_list|(
 name|_
 argument_list|(
-literal|"nothing added to commit but untracked files present%s\n"
+literal|"nothing added to commit but untracked files "
+literal|"present (use \"git add\" to track)\n"
 argument_list|)
-argument_list|,
-name|advice_status_hints
-condition|?
-name|_
-argument_list|(
-literal|" (use \"git add\" to track)"
-argument_list|)
-else|:
-literal|""
 argument_list|)
 expr_stmt|;
+else|else
+name|printf
+argument_list|(
+name|_
+argument_list|(
+literal|"nothing added to commit but untracked files present\n"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -6314,23 +6325,30 @@ name|s
 operator|->
 name|is_initial
 condition|)
+block|{
+if|if
+condition|(
+name|advice_status_hints
+condition|)
 name|printf
 argument_list|(
 name|_
 argument_list|(
-literal|"nothing to commit%s\n"
+literal|"nothing to commit (create/copy files "
+literal|"and use \"git add\" to track)\n"
 argument_list|)
-argument_list|,
-name|advice_status_hints
-condition|?
-name|_
-argument_list|(
-literal|" (create/copy files and use \"git add\" to track)"
-argument_list|)
-else|:
-literal|""
 argument_list|)
 expr_stmt|;
+else|else
+name|printf
+argument_list|(
+name|_
+argument_list|(
+literal|"nothing to commit\n"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -6339,21 +6357,17 @@ name|s
 operator|->
 name|show_untracked_files
 condition|)
+block|{
+if|if
+condition|(
+name|advice_status_hints
+condition|)
 name|printf
 argument_list|(
 name|_
 argument_list|(
-literal|"nothing to commit%s\n"
+literal|"nothing to commit (use -u to show untracked files)\n"
 argument_list|)
-argument_list|,
-name|advice_status_hints
-condition|?
-name|_
-argument_list|(
-literal|" (use -u to show untracked files)"
-argument_list|)
-else|:
-literal|""
 argument_list|)
 expr_stmt|;
 else|else
@@ -6361,17 +6375,18 @@ name|printf
 argument_list|(
 name|_
 argument_list|(
-literal|"nothing to commit%s\n"
+literal|"nothing to commit\n"
 argument_list|)
-argument_list|,
-name|advice_status_hints
-condition|?
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+name|printf
+argument_list|(
 name|_
 argument_list|(
-literal|" (working directory clean)"
+literal|"nothing to commit, working directory clean\n"
 argument_list|)
-else|:
-literal|""
 argument_list|)
 expr_stmt|;
 block|}
