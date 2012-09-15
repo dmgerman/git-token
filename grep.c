@@ -23,6 +23,32 @@ directive|include
 file|"xdiff-interface.h"
 end_include
 
+begin_function_decl
+specifier|static
+name|int
+name|grep_source_load
+parameter_list|(
+name|struct
+name|grep_source
+modifier|*
+name|gs
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|static
+name|int
+name|grep_source_is_binary
+parameter_list|(
+name|struct
+name|grep_source
+modifier|*
+name|gs
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function
 DECL|function|create_grep_pat
 specifier|static
@@ -2346,6 +2372,7 @@ end_function
 
 begin_function
 DECL|function|dump_grep_expression
+specifier|static
 name|void
 name|dump_grep_expression
 parameter_list|(
