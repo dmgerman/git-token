@@ -971,9 +971,17 @@ name|split
 operator|->
 name|name_end
 condition|)
-return|return
-name|status
-return|;
+block|{
+comment|/* no human readable name */
+name|split
+operator|->
+name|name_end
+operator|=
+name|split
+operator|->
+name|name_begin
+expr_stmt|;
+block|}
 for|for
 control|(
 name|cp
