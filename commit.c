@@ -59,6 +59,29 @@ directive|include
 file|"mergesort.h"
 end_include
 
+begin_function_decl
+specifier|static
+name|struct
+name|commit_extra_header
+modifier|*
+name|read_commit_extra_header_lines
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|buf
+parameter_list|,
+name|size_t
+name|len
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_decl_stmt
 DECL|variable|save_commit_buffer
 name|int
@@ -5988,6 +6011,7 @@ end_function
 
 begin_function
 DECL|function|read_commit_extra_header_lines
+specifier|static
 name|struct
 name|commit_extra_header
 modifier|*
