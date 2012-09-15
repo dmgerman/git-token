@@ -1058,7 +1058,7 @@ name|revs
 operator|->
 name|no_walk
 operator|=
-literal|1
+name|REVISION_WALK_NO_WALK_UNSORTED
 expr_stmt|;
 if|if
 condition|(

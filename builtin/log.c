@@ -2378,7 +2378,7 @@ name|rev
 operator|.
 name|no_walk
 operator|=
-literal|1
+name|REVISION_WALK_NO_WALK_SORTED
 expr_stmt|;
 name|rev
 operator|.
