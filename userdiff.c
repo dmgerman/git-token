@@ -92,6 +92,21 @@ init|=
 block|{
 name|IPATTERN
 argument_list|(
+literal|"ada"
+argument_list|,
+literal|"!^(.*[ \t])?(is new|renames|is separate)([ \t].*)?$\n"
+literal|"!^[ \t]*with[ \t].*$\n"
+literal|"^[ \t]*((procedure|function)[ \t]+.*)$\n"
+literal|"^[ \t]*((package|protected|task)[ \t]+.*)$"
+argument_list|,
+comment|/* -- */
+literal|"[a-zA-Z][a-zA-Z0-9_]*"
+literal|"|[0-9][-+0-9#_.eE]"
+literal|"|=>|\\.\\.|\\*\\*|:=|/=|>=|<=|<<|>>|<>"
+argument_list|)
+block|,
+name|IPATTERN
+argument_list|(
 literal|"fortran"
 argument_list|,
 literal|"!^([C*]|[ \t]*!)\n"
