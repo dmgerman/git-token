@@ -2007,6 +2007,7 @@ end_function
 
 begin_function
 DECL|function|index_name_stage_pos
+specifier|static
 name|int
 name|index_name_stage_pos
 parameter_list|(
