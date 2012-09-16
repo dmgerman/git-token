@@ -105,6 +105,7 @@ end_function
 
 begin_function
 DECL|function|sha1_array_sort
+specifier|static
 name|void
 name|sha1_array_sort
 parameter_list|(

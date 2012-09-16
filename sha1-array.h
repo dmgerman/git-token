@@ -69,18 +69,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-name|void
-name|sha1_array_sort
-parameter_list|(
-name|struct
-name|sha1_array
-modifier|*
-name|array
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
 name|int
 name|sha1_array_lookup
 parameter_list|(
