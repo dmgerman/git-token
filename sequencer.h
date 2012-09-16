@@ -166,20 +166,6 @@ block|}
 struct|;
 end_struct
 
-begin_comment
-comment|/* Removes SEQ_DIR. */
-end_comment
-
-begin_function_decl
-specifier|extern
-name|void
-name|remove_sequencer_state
-parameter_list|(
-name|void
-parameter_list|)
-function_decl|;
-end_function_decl
-
 begin_function_decl
 name|int
 name|sequencer_pick_revisions
