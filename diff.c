@@ -8508,10 +8508,7 @@ name|fp
 argument_list|,
 literal|"%s\n"
 argument_list|,
-name|_
-argument_list|(
 literal|" 0 files changed"
-argument_list|)
 argument_list|)
 return|;
 block|}
@@ -8520,14 +8517,15 @@ argument_list|(
 operator|&
 name|sb
 argument_list|,
-name|Q_
-argument_list|(
-literal|" %d file changed"
-argument_list|,
-literal|" %d files changed"
-argument_list|,
+operator|(
 name|files
-argument_list|)
+operator|==
+literal|1
+operator|)
+condition|?
+literal|" %d file changed"
+else|:
+literal|" %d files changed"
 argument_list|,
 name|files
 argument_list|)
@@ -8548,14 +8546,15 @@ argument_list|(
 operator|&
 name|sb
 argument_list|,
-name|Q_
-argument_list|(
-literal|", %d insertion(+)"
-argument_list|,
-literal|", %d insertions(+)"
-argument_list|,
+operator|(
 name|insertions
-argument_list|)
+operator|==
+literal|1
+operator|)
+condition|?
+literal|", %d insertion(+)"
+else|:
+literal|", %d insertions(+)"
 argument_list|,
 name|insertions
 argument_list|)
@@ -8576,14 +8575,15 @@ argument_list|(
 operator|&
 name|sb
 argument_list|,
-name|Q_
-argument_list|(
-literal|", %d deletion(-)"
-argument_list|,
-literal|", %d deletions(-)"
-argument_list|,
+operator|(
 name|deletions
-argument_list|)
+operator|==
+literal|1
+operator|)
+condition|?
+literal|", %d deletion(-)"
+else|:
+literal|", %d deletions(-)"
 argument_list|,
 name|deletions
 argument_list|)
