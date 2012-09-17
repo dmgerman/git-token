@@ -1887,10 +1887,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|fetch_pack
+DECL|function|http_fetch_pack
 specifier|static
 name|int
-name|fetch_pack
+name|http_fetch_pack
 parameter_list|(
 name|struct
 name|walker
@@ -2549,7 +2549,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|fetch_pack
+name|http_fetch_pack
 argument_list|(
 name|walker
 argument_list|,

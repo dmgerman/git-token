@@ -12,6 +12,12 @@ directive|define
 name|FETCH_PACK_H
 end_define
 
+begin_include
+include|#
+directive|include
+file|"string-list.h"
+end_include
+
 begin_struct
 DECL|struct|fetch_pack_args
 struct|struct
@@ -86,6 +92,10 @@ block|}
 struct|;
 end_struct
 
+begin_comment
+comment|/*  * sought contains the full names of remote references that should be  * updated from.  On return, the names that were found on the remote  * will have been removed from the list.  The util members of the  * string_list_items are used internally; they must be NULL on entry  * (and will be NULL on exit).  */
+end_comment
+
 begin_function_decl
 name|struct
 name|ref
@@ -117,13 +127,10 @@ name|char
 modifier|*
 name|dest
 parameter_list|,
-name|int
-name|nr_heads
-parameter_list|,
-name|char
+name|struct
+name|string_list
 modifier|*
-modifier|*
-name|heads
+name|sought
 parameter_list|,
 name|char
 modifier|*
