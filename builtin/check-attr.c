@@ -66,7 +66,7 @@ init|=
 block|{
 literal|"git check-attr [-a | --all | attr...] [--] pathname..."
 block|,
-literal|"git check-attr --stdin [-a | --all | attr...]<<list-of-paths>"
+literal|"git check-attr --stdin [-z] [-a | --all | attr...]<<list-of-paths>"
 block|,
 name|NULL
 block|}
