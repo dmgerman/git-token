@@ -1579,6 +1579,8 @@ if|if
 condition|(
 operator|!
 name|pfd
+operator|&&
+name|nfd
 condition|)
 block|{
 name|errno
