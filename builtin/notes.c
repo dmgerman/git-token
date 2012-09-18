@@ -69,6 +69,37 @@ directive|include
 file|"notes-merge.h"
 end_include
 
+begin_function_decl
+specifier|static
+name|void
+name|commit_notes
+parameter_list|(
+name|struct
+name|notes_tree
+modifier|*
+name|t
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|msg
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|static
+name|combine_notes_fn
+name|parse_combine_notes_fn
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|v
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_decl_stmt
 DECL|variable|git_notes_usage
 specifier|static
@@ -1628,6 +1659,7 @@ end_function
 
 begin_function
 DECL|function|commit_notes
+specifier|static
 name|void
 name|commit_notes
 parameter_list|(
@@ -1788,6 +1820,7 @@ end_function
 
 begin_function
 DECL|function|parse_combine_notes_fn
+specifier|static
 name|combine_notes_fn
 name|parse_combine_notes_fn
 parameter_list|(

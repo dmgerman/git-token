@@ -6304,8 +6304,13 @@ expr_stmt|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Fill the given strbuf with the notes associated with the given object.  *  * If the given notes_tree structure is not initialized, it will be auto-  * initialized to the default value (see documentation for init_notes() above).  * If the given notes_tree is NULL, the internal/default notes_tree will be  * used instead.  *  * 'flags' is a bitwise combination of the flags for format_display_notes.  */
+end_comment
+
 begin_function
 DECL|function|format_note
+specifier|static
 name|void
 name|format_note
 parameter_list|(

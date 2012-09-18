@@ -40,6 +40,50 @@ comment|/* Internal API */
 end_comment
 
 begin_comment
+comment|/*  * Output the next line for a graph.  * This formats the next graph line into the specified strbuf.  It is not  * terminated with a newline.  *  * Returns 1 if the line includes the current commit, and 0 otherwise.  * graph_next_line() will return 1 exactly once for each time  * graph_update() is called.  */
+end_comment
+
+begin_function_decl
+specifier|static
+name|int
+name|graph_next_line
+parameter_list|(
+name|struct
+name|git_graph
+modifier|*
+name|graph
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|sb
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/*  * Set up a custom scheme for column colors.  *  * The default column color scheme inserts ANSI color escapes to colorize  * the graph. The various color escapes are stored in an array of strings  * where each entry corresponds to a color, except for the last entry,  * which denotes the escape for resetting the color back to the default.  * When generating the graph, strings from this array are inserted before  * and after the various column characters.  *  * This function allows you to enable a custom array of color escapes.  * The 'colors_max' argument is the index of the last "reset" entry.  *  * This functions must be called BEFORE graph_init() is called.  */
+end_comment
+
+begin_function_decl
+specifier|static
+name|void
+name|graph_set_column_colors
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|colors
+parameter_list|,
+name|unsigned
+name|short
+name|colors_max
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/*  * Output a padding line in the graph.  * This is similar to graph_next_line().  However, it is guaranteed to  * never print the current commit line.  Instead, if the commit line is  * next, it will simply output a line of vertical padding, extending the  * branch lines downwards, but leaving them otherwise unchanged.  */
 end_comment
 
@@ -158,6 +202,7 @@ end_decl_stmt
 
 begin_function
 DECL|function|graph_set_column_colors
+specifier|static
 name|void
 name|graph_set_column_colors
 parameter_list|(
@@ -3848,6 +3893,7 @@ end_function
 
 begin_function
 DECL|function|graph_next_line
+specifier|static
 name|int
 name|graph_next_line
 parameter_list|(

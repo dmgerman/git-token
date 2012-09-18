@@ -151,6 +151,7 @@ end_function
 
 begin_function
 DECL|function|has_rerere_resolution
+specifier|static
 name|int
 name|has_rerere_resolution
 parameter_list|(

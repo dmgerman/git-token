@@ -5,6 +5,51 @@ directive|include
 file|"cache.h"
 end_include
 
+begin_function_decl
+specifier|static
+name|int
+name|threaded_check_leading_path
+parameter_list|(
+name|struct
+name|cache_def
+modifier|*
+name|cache
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|name
+parameter_list|,
+name|int
+name|len
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|static
+name|int
+name|threaded_has_dirs_only_path
+parameter_list|(
+name|struct
+name|cache_def
+modifier|*
+name|cache
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|name
+parameter_list|,
+name|int
+name|len
+parameter_list|,
+name|int
+name|prefix_len
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/*  * Returns the length (on a path component basis) of the longest  * common prefix match of 'name_a' and 'name_b'.  */
 end_comment
@@ -909,6 +954,7 @@ end_comment
 
 begin_function
 DECL|function|threaded_check_leading_path
+specifier|static
 name|int
 name|threaded_check_leading_path
 parameter_list|(
@@ -1022,6 +1068,7 @@ end_comment
 
 begin_function
 DECL|function|threaded_has_dirs_only_path
+specifier|static
 name|int
 name|threaded_has_dirs_only_path
 parameter_list|(

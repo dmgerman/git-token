@@ -119,24 +119,6 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
-begin_function_decl
-specifier|extern
-name|void
-name|commit_notes
-parameter_list|(
-name|struct
-name|notes_tree
-modifier|*
-name|t
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|msg
-parameter_list|)
-function_decl|;
-end_function_decl
-
 begin_struct
 DECL|struct|notes_rewrite_cfg
 struct|struct
@@ -180,18 +162,6 @@ decl_stmt|;
 block|}
 struct|;
 end_struct
-
-begin_function_decl
-name|combine_notes_fn
-name|parse_combine_notes_fn
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|v
-parameter_list|)
-function_decl|;
-end_function_decl
 
 begin_function_decl
 name|struct
