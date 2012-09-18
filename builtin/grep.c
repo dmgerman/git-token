@@ -1003,6 +1003,12 @@ name|output
 operator|=
 name|strbuf_out
 expr_stmt|;
+name|o
+operator|->
+name|debug
+operator|=
+literal|0
+expr_stmt|;
 name|compile_grep_patterns
 argument_list|(
 name|o
@@ -4704,6 +4710,34 @@ argument_list|(
 literal|"show only matches from files that match all patterns"
 argument_list|)
 argument_list|)
+block|,
+block|{
+name|OPTION_SET_INT
+block|,
+literal|0
+block|,
+literal|"debug"
+block|,
+operator|&
+name|opt
+operator|.
+name|debug
+block|,
+name|NULL
+block|,
+name|N_
+argument_list|(
+literal|"show parse tree for grep expression"
+argument_list|)
+block|,
+name|PARSE_OPT_NOARG
+operator||
+name|PARSE_OPT_HIDDEN
+block|,
+name|NULL
+block|,
+literal|1
+block|}
 block|,
 name|OPT_GROUP
 argument_list|(
