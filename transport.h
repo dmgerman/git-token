@@ -368,6 +368,17 @@ name|TRANSPORT_SUMMARY_WIDTH
 value|(2 * DEFAULT_ABBREV + 3)
 end_define
 
+begin_define
+DECL|macro|TRANSPORT_SUMMARY
+define|#
+directive|define
+name|TRANSPORT_SUMMARY
+parameter_list|(
+name|x
+parameter_list|)
+value|(int)(TRANSPORT_SUMMARY_WIDTH + strlen(x) - gettext_width(x)), (x)
+end_define
+
 begin_comment
 comment|/* Returns a transport suitable for the url */
 end_comment
