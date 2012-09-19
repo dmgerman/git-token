@@ -342,8 +342,19 @@ parameter_list|,
 name|unsigned
 name|long
 name|timestamp
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|note_ref
 parameter_list|)
 block|{
+specifier|static
+name|int
+name|firstnote
+init|=
+literal|1
+decl_stmt|;
 name|size_t
 name|loglen
 init|=
@@ -354,7 +365,9 @@ argument_list|)
 decl_stmt|;
 name|printf
 argument_list|(
-literal|"commit refs/notes/svn/revs\n"
+literal|"commit %s\n"
+argument_list|,
+name|note_ref
 argument_list|)
 expr_stmt|;
 name|printf
@@ -393,6 +406,29 @@ argument_list|,
 name|stdout
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|firstnote
+condition|)
+block|{
+if|if
+condition|(
+name|revision
+operator|>
+literal|1
+condition|)
+name|printf
+argument_list|(
+literal|"from %s^0"
+argument_list|,
+name|note_ref
+argument_list|)
+expr_stmt|;
+name|firstnote
+operator|=
+literal|0
+expr_stmt|;
+block|}
 name|fputc
 argument_list|(
 literal|'\n'
