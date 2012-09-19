@@ -93,6 +93,16 @@ literal|"refs/heads/master"
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|marksfilename
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|marksfilename
+decl_stmt|;
+end_decl_stmt
+
 begin_function_decl
 specifier|static
 name|int
@@ -441,6 +451,17 @@ operator|.
 name|out
 expr_stmt|;
 block|}
+comment|/* setup marks file import/export */
+name|printf
+argument_list|(
+literal|"feature import-marks-if-exists=%s\n"
+literal|"feature export-marks=%s\n"
+argument_list|,
+name|marksfilename
+argument_list|,
+name|marksfilename
+argument_list|)
+expr_stmt|;
 name|svndump_init_fd
 argument_list|(
 name|dumpin_fd
@@ -817,6 +838,10 @@ decl_stmt|,
 name|private_ref_sb
 init|=
 name|STRBUF_INIT
+decl_stmt|,
+name|marksfilename_sb
+init|=
+name|STRBUF_INIT
 decl_stmt|;
 specifier|static
 name|struct
@@ -959,6 +984,27 @@ name|private_ref_sb
 operator|.
 name|buf
 expr_stmt|;
+name|strbuf_addf
+argument_list|(
+operator|&
+name|marksfilename_sb
+argument_list|,
+literal|"%s/info/fast-import/remote-svn/%s.marks"
+argument_list|,
+name|get_git_dir
+argument_list|()
+argument_list|,
+name|remote
+operator|->
+name|name
+argument_list|)
+expr_stmt|;
+name|marksfilename
+operator|=
+name|marksfilename_sb
+operator|.
+name|buf
+expr_stmt|;
 while|while
 condition|(
 literal|1
@@ -1030,6 +1076,12 @@ name|strbuf_release
 argument_list|(
 operator|&
 name|private_ref_sb
+argument_list|)
+expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|marksfilename_sb
 argument_list|)
 expr_stmt|;
 return|return
