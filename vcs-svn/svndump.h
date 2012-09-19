@@ -45,6 +45,11 @@ specifier|const
 name|char
 modifier|*
 name|url
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|local_ref
 parameter_list|)
 function_decl|;
 end_function_decl

@@ -1465,7 +1465,10 @@ specifier|static
 name|void
 name|begin_revision
 parameter_list|(
-name|void
+specifier|const
+name|char
+modifier|*
+name|remote_ref
 parameter_list|)
 block|{
 if|if
@@ -1509,6 +1512,8 @@ argument_list|,
 name|rev_ctx
 operator|.
 name|timestamp
+argument_list|,
+name|remote_ref
 argument_list|)
 expr_stmt|;
 block|}
@@ -1548,6 +1553,11 @@ specifier|const
 name|char
 modifier|*
 name|url
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|local_ref
 parameter_list|)
 block|{
 name|char
@@ -1734,7 +1744,9 @@ operator|==
 name|REV_CTX
 condition|)
 name|begin_revision
-argument_list|()
+argument_list|(
+name|local_ref
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
@@ -1806,7 +1818,9 @@ operator|==
 name|REV_CTX
 condition|)
 name|begin_revision
-argument_list|()
+argument_list|(
+name|local_ref
+argument_list|)
 expr_stmt|;
 name|active_ctx
 operator|=
@@ -2355,7 +2369,9 @@ operator|==
 name|REV_CTX
 condition|)
 name|begin_revision
-argument_list|()
+argument_list|(
+name|local_ref
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
