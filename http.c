@@ -4205,6 +4205,17 @@ argument_list|,
 name|headers
 argument_list|)
 expr_stmt|;
+name|curl_easy_setopt
+argument_list|(
+name|slot
+operator|->
+name|curl
+argument_list|,
+name|CURLOPT_ENCODING
+argument_list|,
+literal|"gzip"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|start_active_slot
