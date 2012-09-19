@@ -418,6 +418,13 @@ name|defined
 argument_list|(
 name|__DragonFly__
 argument_list|)
+operator|&&
+expr|\
+operator|!
+name|defined
+argument_list|(
+name|__TANDEM
+argument_list|)
 end_elif
 
 begin_define
@@ -577,6 +584,31 @@ include|#
 directive|include
 file|<string.h>
 end_include
+
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|__TANDEM
+end_ifdef
+
+begin_comment
+comment|/* or HAVE_STRINGS_H or !NO_STRINGS_H? */
+end_comment
+
+begin_include
+include|#
+directive|include
+file|<strings.h>
+end_include
+
+begin_comment
+comment|/* for strcasecmp() */
+end_comment
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_include
 include|#
@@ -828,6 +860,38 @@ include|#
 directive|include
 file|<stdint.h>
 end_include
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|NO_INTPTR_T
+end_ifdef
+
+begin_comment
+comment|/*  * On I16LP32, ILP32 and LP64 "long" is the save bet, however  * on LLP86, IL33LLP64 and P64 it needs to be "long long",  * while on IP16 and IP16L32 it is "int" (resp. "short")  * Size needs to match (or exceed) 'sizeof(void *)'.  * We can't take "long long" here as not everybody has it.  */
+end_comment
+
+begin_typedef
+DECL|typedef|intptr_t
+typedef|typedef
+name|long
+name|intptr_t
+typedef|;
+end_typedef
+
+begin_typedef
+DECL|typedef|uintptr_t
+typedef|typedef
+name|unsigned
+name|long
+name|uintptr_t
+typedef|;
+end_typedef
 
 begin_endif
 endif|#
