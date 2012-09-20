@@ -541,7 +541,7 @@ decl_stmt|;
 name|int
 name|http_ret
 decl_stmt|,
-name|is_http
+name|maybe_smart
 init|=
 literal|0
 decl_stmt|;
@@ -596,7 +596,7 @@ literal|"https://"
 argument_list|)
 condition|)
 block|{
-name|is_http
+name|maybe_smart
 operator|=
 literal|1
 expr_stmt|;
@@ -746,7 +746,7 @@ name|buf_alloc
 expr_stmt|;
 if|if
 condition|(
-name|is_http
+name|maybe_smart
 operator|&&
 literal|5
 operator|<=
