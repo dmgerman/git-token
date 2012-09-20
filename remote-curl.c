@@ -579,6 +579,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 operator|!
 name|prefixcmp
 argument_list|(
@@ -593,6 +594,14 @@ argument_list|(
 name|url
 argument_list|,
 literal|"https://"
+argument_list|)
+operator|)
+operator|&&
+name|git_env_bool
+argument_list|(
+literal|"GIT_SMART_HTTP"
+argument_list|,
+literal|1
 argument_list|)
 condition|)
 block|{
