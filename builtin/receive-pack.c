@@ -3847,7 +3847,7 @@ name|cmd
 operator|->
 name|error_string
 operator|=
-literal|"n/a (unpacker error)"
+literal|"unpacker error"
 expr_stmt|;
 return|return;
 block|}
