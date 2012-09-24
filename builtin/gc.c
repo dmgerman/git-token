@@ -1078,19 +1078,9 @@ literal|0
 return|;
 if|if
 condition|(
+operator|!
 name|quiet
 condition|)
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-name|_
-argument_list|(
-literal|"Auto packing the repository for optimum performance.\n"
-argument_list|)
-argument_list|)
-expr_stmt|;
-else|else
 name|fprintf
 argument_list|(
 name|stderr
