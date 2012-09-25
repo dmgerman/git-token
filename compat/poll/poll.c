@@ -39,11 +39,25 @@ endif|#
 directive|endif
 end_endif
 
+begin_if
+if|#
+directive|if
+name|defined
+argument_list|(
+name|WIN32
+argument_list|)
+end_if
+
 begin_include
 include|#
 directive|include
 file|<malloc.h>
 end_include
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_include
 include|#
@@ -171,11 +185,22 @@ directive|include
 file|<sys/socket.h>
 end_include
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|NO_SYS_SELECT_H
+end_ifndef
+
 begin_include
 include|#
 directive|include
 file|<sys/select.h>
 end_include
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_include
 include|#
@@ -1362,6 +1387,25 @@ name|happened
 operator||=
 name|POLLHUP
 expr_stmt|;
+comment|/* some systems can't use recv() on non-socket, including HP NonStop */
+elseif|else
+if|if
+condition|(
+comment|/* (r == -1)&& */
+name|socket_errno
+operator|==
+name|ENOTSOCK
+condition|)
+name|happened
+operator||=
+operator|(
+name|POLLIN
+operator||
+name|POLLRDNORM
+operator|)
+operator|&
+name|sought
+expr_stmt|;
 else|else
 name|happened
 operator||=
@@ -1554,6 +1598,8 @@ if|if
 condition|(
 operator|!
 name|pfd
+operator|&&
+name|nfd
 condition|)
 block|{
 name|errno
