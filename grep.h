@@ -132,17 +132,13 @@ literal|0
 block|,
 DECL|enumerator|GREP_HEADER_COMMITTER
 name|GREP_HEADER_COMMITTER
+block|,
+comment|/* Must be at the end of the enum */
+DECL|enumerator|GREP_HEADER_FIELD_MAX
+name|GREP_HEADER_FIELD_MAX
 block|}
 enum|;
 end_enum
-
-begin_define
-DECL|macro|GREP_HEADER_FIELD_MAX
-define|#
-directive|define
-name|GREP_HEADER_FIELD_MAX
-value|(GREP_HEADER_COMMITTER + 1)
-end_define
 
 begin_struct
 DECL|struct|grep_pat
