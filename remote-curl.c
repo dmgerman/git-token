@@ -541,7 +541,7 @@ decl_stmt|;
 name|int
 name|http_ret
 decl_stmt|,
-name|is_http
+name|maybe_smart
 init|=
 literal|0
 decl_stmt|;
@@ -579,6 +579,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 operator|!
 name|prefixcmp
 argument_list|(
@@ -594,9 +595,17 @@ name|url
 argument_list|,
 literal|"https://"
 argument_list|)
+operator|)
+operator|&&
+name|git_env_bool
+argument_list|(
+literal|"GIT_SMART_HTTP"
+argument_list|,
+literal|1
+argument_list|)
 condition|)
 block|{
-name|is_http
+name|maybe_smart
 operator|=
 literal|1
 expr_stmt|;
@@ -746,7 +755,7 @@ name|buf_alloc
 expr_stmt|;
 if|if
 condition|(
-name|is_http
+name|maybe_smart
 operator|&&
 literal|5
 operator|<=
