@@ -388,6 +388,18 @@ argument_list|,
 name|field
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|field
+operator|==
+name|GREP_HEADER_REFLOG
+condition|)
+name|opt
+operator|->
+name|use_reflog_filter
+operator|=
+literal|1
+expr_stmt|;
 name|do_append_grep_pat
 argument_list|(
 operator|&
@@ -3972,6 +3984,12 @@ literal|"committer "
 block|,
 literal|10
 block|}
+block|,
+block|{
+literal|"reflog "
+block|,
+literal|7
+block|}
 block|, }
 struct|;
 end_struct
@@ -4122,6 +4140,19 @@ name|bol
 operator|+=
 name|len
 expr_stmt|;
+switch|switch
+condition|(
+name|p
+operator|->
+name|field
+condition|)
+block|{
+case|case
+name|GREP_HEADER_AUTHOR
+case|:
+case|case
+name|GREP_HEADER_COMMITTER
+case|:
 name|saved_ch
 operator|=
 name|strip_timestamp
@@ -4132,6 +4163,10 @@ operator|&
 name|eol
 argument_list|)
 expr_stmt|;
+break|break;
+default|default:
+break|break;
+block|}
 block|}
 name|again
 label|:
