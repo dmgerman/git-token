@@ -5814,13 +5814,9 @@ condition|)
 block|{
 name|o
 operator|=
-name|deref_tag
+name|deref_tag_noverify
 argument_list|(
 name|o
-argument_list|,
-name|refname
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 if|if
