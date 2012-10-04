@@ -10233,13 +10233,6 @@ name|peeled
 argument_list|)
 operator|&&
 comment|/* peelable? */
-operator|!
-name|is_null_sha1
-argument_list|(
-name|peeled
-argument_list|)
-operator|&&
-comment|/* annotated tag? */
 name|locate_object_entry
 argument_list|(
 name|peeled
