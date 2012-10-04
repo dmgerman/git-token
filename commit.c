@@ -3079,6 +3079,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/* all input commits in one and twos[] must have been parsed! */
+end_comment
+
 begin_function
 DECL|function|paint_down_to_common
 specifier|static
@@ -3135,6 +3139,14 @@ operator|&
 name|list
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|n
+condition|)
+return|return
+name|list
+return|;
 for|for
 control|(
 name|i
@@ -3785,6 +3797,27 @@ name|cnt
 operator|-
 literal|1
 operator|)
+argument_list|)
+expr_stmt|;
+for|for
+control|(
+name|i
+operator|=
+literal|0
+init|;
+name|i
+operator|<
+name|cnt
+condition|;
+name|i
+operator|++
+control|)
+name|parse_commit
+argument_list|(
+name|array
+index|[
+name|i
+index|]
 argument_list|)
 expr_stmt|;
 for|for
