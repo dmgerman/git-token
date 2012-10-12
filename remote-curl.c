@@ -1998,8 +1998,6 @@ name|err
 operator|=
 name|handle_curl_result
 argument_list|(
-name|slot
-argument_list|,
 operator|&
 name|results
 argument_list|)
