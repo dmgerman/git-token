@@ -4069,7 +4069,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/* Call access(2), but warn for any error besides ENOENT. */
+comment|/*  * Call access(2), but warn for any error except "missing file"  * (ENOENT or ENOTDIR).  */
 end_comment
 
 begin_function_decl
