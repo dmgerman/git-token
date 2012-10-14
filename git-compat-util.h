@@ -4087,6 +4087,21 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|int
+name|access_or_die
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|,
+name|int
+name|mode
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/* Warn on an inaccessible file that ought to be accessible */
 end_comment

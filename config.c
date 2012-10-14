@@ -4807,7 +4807,7 @@ condition|(
 name|xdg_config
 operator|&&
 operator|!
-name|access_or_warn
+name|access_or_die
 argument_list|(
 name|xdg_config
 argument_list|,
@@ -4836,7 +4836,7 @@ condition|(
 name|user_config
 operator|&&
 operator|!
-name|access_or_warn
+name|access_or_die
 argument_list|(
 name|user_config
 argument_list|,
