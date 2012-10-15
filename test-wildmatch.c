@@ -52,6 +52,8 @@ name|argv
 index|[
 literal|2
 index|]
+argument_list|,
+literal|0
 argument_list|)
 return|;
 elseif|else
@@ -71,7 +73,7 @@ condition|)
 return|return
 operator|!
 operator|!
-name|iwildmatch
+name|wildmatch
 argument_list|(
 name|argv
 index|[
@@ -82,6 +84,8 @@ name|argv
 index|[
 literal|2
 index|]
+argument_list|,
+name|FNM_CASEFOLD
 argument_list|)
 return|;
 elseif|else
