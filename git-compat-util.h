@@ -3225,6 +3225,7 @@ end_undef
 
 begin_decl_stmt
 specifier|extern
+specifier|const
 name|unsigned
 name|char
 name|sane_ctype
