@@ -64,6 +64,14 @@ name|EXC_FLAG_MUSTBEDIR
 value|8
 end_define
 
+begin_define
+DECL|macro|EXC_FLAG_NEGATIVE
+define|#
+directive|define
+name|EXC_FLAG_NEGATIVE
+value|16
+end_define
+
 begin_struct
 DECL|struct|exclude_list
 struct|struct
@@ -104,10 +112,6 @@ decl_stmt|;
 DECL|member|baselen
 name|int
 name|baselen
-decl_stmt|;
-DECL|member|to_exclude
-name|int
-name|to_exclude
 decl_stmt|;
 DECL|member|flags
 name|int
