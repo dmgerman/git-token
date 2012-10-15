@@ -61,6 +61,22 @@ value|1
 end_define
 
 begin_define
+DECL|macro|NOMATCH
+define|#
+directive|define
+name|NOMATCH
+value|1
+end_define
+
+begin_define
+DECL|macro|MATCH
+define|#
+directive|define
+name|MATCH
+value|0
+end_define
+
+begin_define
 DECL|macro|ABORT_ALL
 define|#
 directive|define
@@ -441,7 +457,7 @@ operator|!=
 name|p_ch
 condition|)
 return|return
-name|FALSE
+name|NOMATCH
 return|;
 continue|continue;
 case|case
@@ -455,7 +471,7 @@ operator|==
 literal|'/'
 condition|)
 return|return
-name|FALSE
+name|NOMATCH
 return|;
 continue|continue;
 case|case
@@ -520,11 +536,11 @@ operator|!=
 name|NULL
 condition|)
 return|return
-name|FALSE
+name|NOMATCH
 return|;
 block|}
 return|return
-name|TRUE
+name|MATCH
 return|;
 block|}
 while|while
@@ -552,7 +568,7 @@ name|text
 argument_list|)
 operator|)
 operator|!=
-name|FALSE
+name|NOMATCH
 condition|)
 block|{
 if|if
@@ -1210,7 +1226,7 @@ operator|==
 literal|'/'
 condition|)
 return|return
-name|FALSE
+name|NOMATCH
 return|;
 continue|continue;
 block|}
@@ -1219,9 +1235,9 @@ return|return
 operator|*
 name|text
 condition|?
-name|FALSE
+name|NOMATCH
 else|:
-name|TRUE
+name|MATCH
 return|;
 block|}
 end_function
@@ -1263,8 +1279,6 @@ operator|*
 operator|)
 name|text
 argument_list|)
-operator|==
-name|TRUE
 return|;
 block|}
 end_function
@@ -1314,8 +1328,6 @@ operator|*
 operator|)
 name|text
 argument_list|)
-operator|==
-name|TRUE
 expr_stmt|;
 name|force_lower_case
 operator|=
