@@ -1324,6 +1324,19 @@ name|char
 name|ch
 parameter_list|)
 block|{
+if|if
+condition|(
+name|ch
+operator|==
+literal|' '
+operator|||
+name|ch
+operator|==
+literal|'\n'
+condition|)
+return|return
+literal|1
+return|;
 return|return
 operator|(
 name|non_ascii
@@ -1386,6 +1399,14 @@ init|=
 literal|78
 decl_stmt|;
 comment|/* per rfc2822 */
+specifier|static
+specifier|const
+name|int
+name|max_encoded_length
+init|=
+literal|76
+decl_stmt|;
+comment|/* per rfc2047 */
 name|int
 name|i
 decl_stmt|;
@@ -1577,13 +1598,30 @@ index|]
 operator|&
 literal|0xFF
 decl_stmt|;
+name|int
+name|is_special
+init|=
+name|is_rfc2047_special
+argument_list|(
+name|ch
+argument_list|)
+decl_stmt|;
+comment|/* 		 * According to RFC 2047, we could encode the special character 		 * ' ' (space) with '_' (underscore) for readability. But many 		 * programs do not understand this and just leave the 		 * underscore in place. Thus, we do nothing special here, which 		 * causes ' ' to be encoded as '=20', avoiding this problem. 		 */
 if|if
 condition|(
 name|line_len
-operator|>=
-name|max_length
-operator|-
+operator|+
 literal|2
+operator|+
+operator|(
+name|is_special
+condition|?
+literal|3
+else|:
+literal|1
+operator|)
+operator|>
+name|max_encoded_length
 condition|)
 block|{
 name|strbuf_addf
@@ -1608,21 +1646,9 @@ literal|1
 expr_stmt|;
 comment|/* =??q? plus SP */
 block|}
-comment|/* 		 * We encode ' ' using '=20' even though rfc2047 		 * allows using '_' for readability.  Unfortunately, 		 * many programs do not understand this and just 		 * leave the underscore in place. 		 */
 if|if
 condition|(
-name|is_rfc2047_special
-argument_list|(
-name|ch
-argument_list|)
-operator|||
-name|ch
-operator|==
-literal|' '
-operator|||
-name|ch
-operator|==
-literal|'\n'
+name|is_special
 condition|)
 block|{
 name|strbuf_addf
