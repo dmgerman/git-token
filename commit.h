@@ -486,9 +486,10 @@ DECL|member|need_8bit_cte
 name|int
 name|need_8bit_cte
 decl_stmt|;
-DECL|member|show_notes
-name|int
-name|show_notes
+DECL|member|notes_message
+name|char
+modifier|*
+name|notes_message
 decl_stmt|;
 DECL|member|reflog_info
 name|struct
