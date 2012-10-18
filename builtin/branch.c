@@ -1281,14 +1281,14 @@ name|ret
 operator|=
 literal|1
 expr_stmt|;
+continue|continue;
 block|}
-else|else
-block|{
 if|if
 condition|(
 operator|!
 name|quiet
 condition|)
+block|{
 name|printf
 argument_list|(
 name|remote_branch
@@ -1307,6 +1307,14 @@ name|bname
 operator|.
 name|buf
 argument_list|,
+operator|(
+name|flags
+operator|&
+name|REF_ISSYMREF
+operator|)
+condition|?
+name|target
+else|:
 name|find_unique_abbrev
 argument_list|(
 name|sha1
@@ -1315,6 +1323,7 @@ name|DEFAULT_ABBREV
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|delete_branch_config
 argument_list|(
 name|bname
@@ -1322,7 +1331,6 @@ operator|.
 name|buf
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|free
 argument_list|(
