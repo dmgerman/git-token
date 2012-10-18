@@ -1507,13 +1507,12 @@ name|line
 argument_list|,
 name|len
 argument_list|,
-literal|0
+operator|-
+name|line_len
 argument_list|,
 literal|1
 argument_list|,
 name|max_length
-operator|-
-name|line_len
 argument_list|)
 expr_stmt|;
 return|return;
