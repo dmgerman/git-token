@@ -6305,7 +6305,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Fill the given strbuf with the notes associated with the given object.  *  * If the given notes_tree structure is not initialized, it will be auto-  * initialized to the default value (see documentation for init_notes() above).  * If the given notes_tree is NULL, the internal/default notes_tree will be  * used instead.  *  * 'flags' is a bitwise combination of the flags for format_display_notes.  */
+comment|/*  * Fill the given strbuf with the notes associated with the given object.  *  * If the given notes_tree structure is not initialized, it will be auto-  * initialized to the default value (see documentation for init_notes() above).  * If the given notes_tree is NULL, the internal/default notes_tree will be  * used instead.  *  * (raw != 0) gives the %N userformat; otherwise, the note message is given  * for human consumption.  */
 end_comment
 
 begin_function
@@ -6336,7 +6336,7 @@ modifier|*
 name|output_encoding
 parameter_list|,
 name|int
-name|flags
+name|raw
 parameter_list|)
 block|{
 specifier|static
@@ -6516,9 +6516,8 @@ operator|--
 expr_stmt|;
 if|if
 condition|(
-name|flags
-operator|&
-name|NOTES_SHOW_HEADER
+operator|!
+name|raw
 condition|)
 block|{
 specifier|const
@@ -6625,9 +6624,8 @@ name|msg_p
 expr_stmt|;
 if|if
 condition|(
-name|flags
-operator|&
-name|NOTES_INDENT
+operator|!
+name|raw
 condition|)
 name|strbuf_addstr
 argument_list|(
@@ -6683,7 +6681,7 @@ modifier|*
 name|output_encoding
 parameter_list|,
 name|int
-name|flags
+name|raw
 parameter_list|)
 block|{
 name|int
@@ -6721,7 +6719,7 @@ name|sb
 argument_list|,
 name|output_encoding
 argument_list|,
-name|flags
+name|raw
 argument_list|)
 expr_stmt|;
 block|}
