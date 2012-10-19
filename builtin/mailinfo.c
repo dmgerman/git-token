@@ -2695,8 +2695,7 @@ return|return;
 block|}
 if|if
 condition|(
-operator|!
-name|strcasecmp
+name|same_encoding
 argument_list|(
 name|metainfo_charset
 argument_list|,

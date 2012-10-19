@@ -81,6 +81,21 @@ end_function_decl
 
 begin_function_decl
 name|int
+name|same_encoding
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
 name|strbuf_add_wrapped_text
 parameter_list|(
 name|struct

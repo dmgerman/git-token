@@ -6448,10 +6448,9 @@ operator|&&
 operator|*
 name|output_encoding
 operator|&&
-name|strcmp
+operator|!
+name|is_encoding_utf8
 argument_list|(
-name|utf8
-argument_list|,
 name|output_encoding
 argument_list|)
 condition|)
