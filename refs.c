@@ -8956,7 +8956,9 @@ name|ret
 operator||=
 name|repack_without_ref
 argument_list|(
-name|refname
+name|lock
+operator|->
+name|ref_name
 argument_list|)
 expr_stmt|;
 name|unlink_or_warn
