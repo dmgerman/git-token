@@ -860,12 +860,6 @@ name|path
 argument_list|,
 name|peeled
 argument_list|)
-operator|&&
-operator|!
-name|is_null_sha1
-argument_list|(
-name|peeled
-argument_list|)
 condition|)
 block|{
 name|is_tag
