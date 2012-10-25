@@ -1256,6 +1256,25 @@ value|mingw_freopen
 end_define
 
 begin_function_decl
+name|int
+name|mingw_fflush
+parameter_list|(
+name|FILE
+modifier|*
+name|stream
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_define
+DECL|macro|fflush
+define|#
+directive|define
+name|fflush
+value|mingw_fflush
+end_define
+
+begin_function_decl
 name|char
 modifier|*
 name|mingw_getcwd
