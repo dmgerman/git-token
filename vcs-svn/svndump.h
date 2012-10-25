@@ -25,6 +25,19 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+name|int
+name|svndump_init_fd
+parameter_list|(
+name|int
+name|in_fd
+parameter_list|,
+name|int
+name|back_fd
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|void
 name|svndump_read
 parameter_list|(
@@ -32,6 +45,16 @@ specifier|const
 name|char
 modifier|*
 name|url
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|local_ref
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|notes_ref
 parameter_list|)
 function_decl|;
 end_function_decl
