@@ -8830,6 +8830,19 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|check_pager_config
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|cmd
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_decl_stmt
 specifier|extern
 specifier|const
