@@ -236,29 +236,6 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Return the longest string in prefixes that is a prefix (in the  * sense of prefixcmp()) of string, or NULL if no such prefix exists.  * This function does not require the string_list to be sorted (it  * does a linear search).  */
-end_comment
-
-begin_function_decl
-name|char
-modifier|*
-name|string_list_longest_prefix
-parameter_list|(
-specifier|const
-name|struct
-name|string_list
-modifier|*
-name|prefixes
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|string
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_comment
 comment|/* Use these functions only on sorted lists: */
 end_comment
 
