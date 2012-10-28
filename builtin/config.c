@@ -1298,7 +1298,7 @@ name|strbuf_list
 name|values
 init|=
 block|{
-literal|0
+name|NULL
 block|}
 decl_stmt|;
 name|int
