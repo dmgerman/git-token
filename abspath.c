@@ -113,6 +113,7 @@ name|retval
 init|=
 name|NULL
 decl_stmt|;
+comment|/* 	 * If we have to temporarily chdir(), store the original CWD 	 * here so that we can chdir() back to it at the end of the 	 * function: 	 */
 name|char
 name|cwd
 index|[
