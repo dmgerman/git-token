@@ -2663,7 +2663,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * path = Canonical absolute path  * prefixes = string_list containing absolute paths  *  * Determines, for each path in prefixes, whether the "prefix" really  * is an ancestor directory of path.  Returns the length of the longest  * ancestor directory, excluding any trailing slashes, or -1 if no prefix  * is an ancestor.  (Note that this means 0 is returned if prefixes is  * ["/"].) "/foo" is not considered an ancestor of "/foobar".  Directories  * are not considered to be their own ancestors.  path must be in a  * canonical form: empty components, or "." or ".." components are not  * allowed.  Empty strings in prefixes are ignored.  */
+comment|/*  * path = Canonical absolute path  * prefixes = string_list containing normalized, absolute paths without  * trailing slashes (except for the root directory, which is denoted by "/").  *  * Determines, for each path in prefixes, whether the "prefix"  * is an ancestor directory of path.  Returns the length of the longest  * ancestor directory, excluding any trailing slashes, or -1 if no prefix  * is an ancestor.  (Note that this means 0 is returned if prefixes is  * ["/"].) "/foo" is not considered an ancestor of "/foobar".  Directories  * are not considered to be their own ancestors.  path must be in a  * canonical form: empty components, or "." or ".." components are not  * allowed.  */
 end_comment
 
 begin_function
@@ -2682,14 +2682,6 @@ modifier|*
 name|prefixes
 parameter_list|)
 block|{
-name|char
-name|buf
-index|[
-name|PATH_MAX
-operator|+
-literal|1
-index|]
-decl_stmt|;
 name|int
 name|i
 decl_stmt|,
@@ -2754,61 +2746,21 @@ if|if
 condition|(
 name|len
 operator|==
-literal|0
-operator|||
-name|len
-operator|>
-name|PATH_MAX
-operator|||
-operator|!
-name|is_absolute_path
-argument_list|(
-name|ceil
-argument_list|)
-condition|)
-continue|continue;
-if|if
-condition|(
-name|normalize_path_copy
-argument_list|(
-name|buf
-argument_list|,
-name|ceil
-argument_list|)
-operator|<
-literal|0
-condition|)
-continue|continue;
-name|len
-operator|=
-name|strlen
-argument_list|(
-name|buf
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|len
-operator|>
-literal|0
-operator|&&
-name|buf
-index|[
-name|len
-operator|-
 literal|1
+operator|&&
+name|ceil
+index|[
+literal|0
 index|]
 operator|==
 literal|'/'
 condition|)
-name|buf
-index|[
-operator|--
 name|len
-index|]
 operator|=
-literal|'\0'
+literal|0
 expr_stmt|;
+comment|/* root matches anything, with length 0 */
+elseif|else
 if|if
 condition|(
 operator|!
@@ -2816,7 +2768,7 @@ name|strncmp
 argument_list|(
 name|path
 argument_list|,
-name|buf
+name|ceil
 argument_list|,
 name|len
 argument_list|)
@@ -2827,17 +2779,22 @@ name|len
 index|]
 operator|==
 literal|'/'
-operator|&&
+condition|)
+empty_stmt|;
+comment|/* match of length len */
+else|else
+continue|continue;
+comment|/* no match */
+if|if
+condition|(
 name|len
 operator|>
 name|max_len
 condition|)
-block|{
 name|max_len
 operator|=
 name|len
 expr_stmt|;
-block|}
 block|}
 return|return
 name|max_len
