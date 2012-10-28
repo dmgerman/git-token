@@ -4862,10 +4862,10 @@ name|char
 modifier|*
 name|path
 parameter_list|,
-specifier|const
-name|char
+name|struct
+name|string_list
 modifier|*
-name|prefix_list
+name|prefixes
 parameter_list|)
 function_decl|;
 end_function_decl

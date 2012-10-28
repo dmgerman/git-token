@@ -2663,7 +2663,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * path = Canonical absolute path  * prefix_list = Colon-separated list of absolute paths  *  * Determines, for each path in prefix_list, whether the "prefix" really  * is an ancestor directory of path.  Returns the length of the longest  * ancestor directory, excluding any trailing slashes, or -1 if no prefix  * is an ancestor.  (Note that this means 0 is returned if prefix_list is  * "/".) "/foo" is not considered an ancestor of "/foobar".  Directories  * are not considered to be their own ancestors.  path must be in a  * canonical form: empty components, or "." or ".." components are not  * allowed.  prefix_list may be null, which is like "".  */
+comment|/*  * path = Canonical absolute path  * prefixes = string_list containing absolute paths  *  * Determines, for each path in prefixes, whether the "prefix" really  * is an ancestor directory of path.  Returns the length of the longest  * ancestor directory, excluding any trailing slashes, or -1 if no prefix  * is an ancestor.  (Note that this means 0 is returned if prefixes is  * ["/"].) "/foo" is not considered an ancestor of "/foobar".  Directories  * are not considered to be their own ancestors.  path must be in a  * canonical form: empty components, or "." or ".." components are not  * allowed.  Empty strings in prefixes are ignored.  */
 end_comment
 
 begin_function
@@ -2676,18 +2676,12 @@ name|char
 modifier|*
 name|path
 parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|prefix_list
-parameter_list|)
-block|{
 name|struct
 name|string_list
+modifier|*
 name|prefixes
-init|=
-name|STRING_LIST_INIT_DUP
-decl_stmt|;
+parameter_list|)
+block|{
 name|char
 name|buf
 index|[
@@ -2706,10 +2700,6 @@ literal|1
 decl_stmt|;
 if|if
 condition|(
-name|prefix_list
-operator|==
-name|NULL
-operator|||
 operator|!
 name|strcmp
 argument_list|(
@@ -2722,19 +2712,6 @@ return|return
 operator|-
 literal|1
 return|;
-name|string_list_split
-argument_list|(
-operator|&
-name|prefixes
-argument_list|,
-name|prefix_list
-argument_list|,
-name|PATH_SEP
-argument_list|,
-operator|-
-literal|1
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|i
@@ -2744,7 +2721,7 @@ init|;
 name|i
 operator|<
 name|prefixes
-operator|.
+operator|->
 name|nr
 condition|;
 name|i
@@ -2757,7 +2734,7 @@ modifier|*
 name|ceil
 init|=
 name|prefixes
-operator|.
+operator|->
 name|items
 index|[
 name|i
@@ -2862,14 +2839,6 @@ name|len
 expr_stmt|;
 block|}
 block|}
-name|string_list_clear
-argument_list|(
-operator|&
-name|prefixes
-argument_list|,
-literal|0
-argument_list|)
-expr_stmt|;
 return|return
 name|max_len
 return|;
