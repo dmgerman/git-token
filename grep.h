@@ -847,6 +847,12 @@ name|unsigned
 name|long
 name|size
 decl_stmt|;
+DECL|member|path
+name|char
+modifier|*
+name|path
+decl_stmt|;
+comment|/* for attribute lookups */
 DECL|member|driver
 name|struct
 name|userdiff_driver
@@ -874,6 +880,11 @@ specifier|const
 name|char
 modifier|*
 name|name
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|path
 parameter_list|,
 specifier|const
 name|void
