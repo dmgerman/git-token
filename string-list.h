@@ -236,6 +236,25 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/*  * Remove any empty strings from the list.  If free_util is true, call  * free() on the util members of any items that have to be deleted.  * Preserve the order of the items that are retained.  */
+end_comment
+
+begin_function_decl
+name|void
+name|string_list_remove_empty_items
+parameter_list|(
+name|struct
+name|string_list
+modifier|*
+name|list
+parameter_list|,
+name|int
+name|free_util
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/*  * Return the longest string in prefixes that is a prefix (in the  * sense of prefixcmp()) of string, or NULL if no such prefix exists.  * This function does not require the string_list to be sorted (it  * does a linear search).  */
 end_comment
 
