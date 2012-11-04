@@ -682,7 +682,7 @@ name|size_t
 name|slen
 parameter_list|,
 name|int
-name|delim
+name|terminator
 parameter_list|,
 name|int
 name|max
@@ -742,7 +742,7 @@ name|memchr
 argument_list|(
 name|str
 argument_list|,
-name|delim
+name|terminator
 argument_list|,
 name|slen
 argument_list|)
