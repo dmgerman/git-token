@@ -2426,7 +2426,8 @@ parameter_list|,
 name|int
 name|matchlen
 parameter_list|,
-name|int
+name|enum
+name|interesting
 modifier|*
 name|never_interesting
 parameter_list|)
@@ -2442,6 +2443,8 @@ if|if
 condition|(
 operator|*
 name|never_interesting
+operator|!=
+name|entry_not_interesting
 condition|)
 block|{
 comment|/* 		 * We have not seen any match that sorts later 		 * than the current path. 		 */
@@ -2480,7 +2483,7 @@ comment|/* 		 * If we come here even once, that means there is at 		 * least one
 operator|*
 name|never_interesting
 operator|=
-literal|0
+name|entry_not_interesting
 expr_stmt|;
 block|}
 if|if
@@ -2672,7 +2675,8 @@ name|len
 operator|-
 name|base_offset
 decl_stmt|;
-name|int
+name|enum
+name|interesting
 name|never_interesting
 init|=
 name|ps
