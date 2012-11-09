@@ -8830,6 +8830,19 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|check_pager_config
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|cmd
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_decl_stmt
 specifier|extern
 specifier|const
@@ -9533,8 +9546,50 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
-comment|/* builtin/merge.c */
+comment|/* merge.c */
 end_comment
+
+begin_struct_decl
+struct_decl|struct
+name|commit_list
+struct_decl|;
+end_struct_decl
+
+begin_function_decl
+name|int
+name|try_merge_command
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|strategy
+parameter_list|,
+name|size_t
+name|xopts_nr
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|xopts
+parameter_list|,
+name|struct
+name|commit_list
+modifier|*
+name|common
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|head_arg
+parameter_list|,
+name|struct
+name|commit_list
+modifier|*
+name|remotes
+parameter_list|)
+function_decl|;
+end_function_decl
 
 begin_function_decl
 name|int
@@ -9551,6 +9606,9 @@ name|unsigned
 name|char
 modifier|*
 name|to
+parameter_list|,
+name|int
+name|overwrite_ignore
 parameter_list|)
 function_decl|;
 end_function_decl

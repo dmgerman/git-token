@@ -2315,40 +2315,5 @@ return|;
 block|}
 end_function
 
-begin_function
-DECL|function|setup_diff_pager
-name|void
-name|setup_diff_pager
-parameter_list|(
-name|struct
-name|diff_options
-modifier|*
-name|opt
-parameter_list|)
-block|{
-comment|/* 	 * If the user asked for our exit code, then either they want --quiet 	 * or --exit-code. We should definitely not bother with a pager in the 	 * former case, as we will generate no output. Since we still properly 	 * report our exit code even when a pager is run, we _could_ run a 	 * pager with --exit-code. But since we have not done so historically, 	 * and because it is easy to find people oneline advising "git diff 	 * --exit-code" in hooks and other scripts, we do not do so. 	 */
-if|if
-condition|(
-operator|!
-name|DIFF_OPT_TST
-argument_list|(
-name|opt
-argument_list|,
-name|EXIT_WITH_STATUS
-argument_list|)
-operator|&&
-name|check_pager_config
-argument_list|(
-literal|"diff"
-argument_list|)
-operator|!=
-literal|0
-condition|)
-name|setup_pager
-argument_list|()
-expr_stmt|;
-block|}
-end_function
-
 end_unit
 
