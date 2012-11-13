@@ -13181,6 +13181,8 @@ name|two
 operator|->
 name|dirty_submodule
 argument_list|,
+name|meta
+argument_list|,
 name|del
 argument_list|,
 name|add

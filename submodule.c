@@ -1667,6 +1667,11 @@ parameter_list|,
 specifier|const
 name|char
 modifier|*
+name|meta
+parameter_list|,
+specifier|const
+name|char
+modifier|*
 name|del
 parameter_list|,
 specifier|const
@@ -1861,7 +1866,9 @@ argument_list|(
 operator|&
 name|sb
 argument_list|,
-literal|"Submodule %s %s.."
+literal|"%sSubmodule %s %s.."
+argument_list|,
+name|meta
 argument_list|,
 name|path
 argument_list|,
@@ -1913,9 +1920,11 @@ argument_list|(
 operator|&
 name|sb
 argument_list|,
-literal|" %s\n"
+literal|" %s%s\n"
 argument_list|,
 name|message
+argument_list|,
+name|reset
 argument_list|)
 expr_stmt|;
 else|else
@@ -1924,13 +1933,15 @@ argument_list|(
 operator|&
 name|sb
 argument_list|,
-literal|"%s:\n"
+literal|"%s:%s\n"
 argument_list|,
 name|fast_backward
 condition|?
 literal|" (rewind)"
 else|:
 literal|""
+argument_list|,
+name|reset
 argument_list|)
 expr_stmt|;
 name|fwrite
