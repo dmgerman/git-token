@@ -3921,7 +3921,6 @@ operator|->
 name|no_commit_id
 condition|)
 block|{
-comment|/* When showing a verbose header (i.e. log message), 		 * and not in --pretty=oneline format, we would want 		 * an extra newline between the end of log and the 		 * output for readability. 		 */
 name|show_log
 argument_list|(
 name|opt
@@ -3951,6 +3950,7 @@ operator|!=
 name|CMIT_FMT_ONELINE
 condition|)
 block|{
+comment|/* 			 * When showing a verbose header (i.e. log message), 			 * and not in --pretty=oneline format, we would want 			 * an extra newline between the end of log and the 			 * diff/diffstat output for readability. 			 */
 name|int
 name|pch
 init|=
@@ -4010,16 +4010,14 @@ name|stdout
 argument_list|)
 expr_stmt|;
 block|}
+comment|/* 			 * We may have shown three-dashes line early 			 * between notes and the log message, in which 			 * case we only want a blank line after the 			 * notes without (an extra) three-dashes line. 			 * Otherwise, we show the three-dashes line if 			 * we are showing the patch with diffstat, but 			 * in that case, there is no extra blank line 			 * after the three-dashes line. 			 */
 if|if
 condition|(
 operator|!
 name|opt
 operator|->
 name|shown_dashes
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 operator|(
 name|pch
 operator|&
@@ -4042,7 +4040,6 @@ argument_list|(
 literal|'\n'
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 name|diff_flush
