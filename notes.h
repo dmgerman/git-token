@@ -486,26 +486,6 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
-begin_comment
-comment|/* Flags controlling how notes are formatted */
-end_comment
-
-begin_define
-DECL|macro|NOTES_SHOW_HEADER
-define|#
-directive|define
-name|NOTES_SHOW_HEADER
-value|1
-end_define
-
-begin_define
-DECL|macro|NOTES_INDENT
-define|#
-directive|define
-name|NOTES_INDENT
-value|2
-end_define
-
 begin_struct_decl
 struct_decl|struct
 name|string_list
@@ -571,7 +551,7 @@ modifier|*
 name|output_encoding
 parameter_list|,
 name|int
-name|flags
+name|raw
 parameter_list|)
 function_decl|;
 end_function_decl
