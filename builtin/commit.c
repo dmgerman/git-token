@@ -3846,7 +3846,7 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|user_ident_sufficiently_given
+name|committer_ident_sufficiently_given
 argument_list|()
 condition|)
 name|status_printf_ln
@@ -6752,7 +6752,7 @@ block|}
 if|if
 condition|(
 operator|!
-name|user_ident_sufficiently_given
+name|committer_ident_sufficiently_given
 argument_list|()
 condition|)
 block|{
