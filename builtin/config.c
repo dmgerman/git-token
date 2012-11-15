@@ -1047,6 +1047,8 @@ operator|==
 name|TYPE_PATH
 condition|)
 block|{
+if|if
+condition|(
 name|git_config_pathname
 argument_list|(
 operator|&
@@ -1056,7 +1058,13 @@ name|key_
 argument_list|,
 name|value_
 argument_list|)
-expr_stmt|;
+operator|<
+literal|0
+condition|)
+return|return
+operator|-
+literal|1
+return|;
 name|must_free_vptr
 operator|=
 literal|1
