@@ -9,7 +9,7 @@ end_define
 begin_ifdef
 ifdef|#
 directive|ifdef
-name|V15_MINGW_HEADERS
+name|CYGWIN_V15_WIN32API
 end_ifdef
 
 begin_include
