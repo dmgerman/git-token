@@ -2925,7 +2925,11 @@ if|if
 condition|(
 name|item
 operator|->
-name|use_wildcard
+name|nowildcard_len
+operator|<
+name|item
+operator|->
+name|len
 condition|)
 block|{
 if|if
@@ -2971,10 +2975,13 @@ name|match_wildcards
 label|:
 if|if
 condition|(
-operator|!
 name|item
 operator|->
-name|use_wildcard
+name|nowildcard_len
+operator|==
+name|item
+operator|->
+name|len
 condition|)
 continue|continue;
 comment|/* 		 * Concatenate base and entry->path into one and do 		 * fnmatch() on it. 		 */

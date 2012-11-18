@@ -3034,12 +3034,9 @@ DECL|member|len
 name|int
 name|len
 decl_stmt|;
-DECL|member|use_wildcard
-name|unsigned
+DECL|member|nowildcard_len
 name|int
-name|use_wildcard
-range|:
-literal|1
+name|nowildcard_len
 decl_stmt|;
 DECL|member|items
 block|}
