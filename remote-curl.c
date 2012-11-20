@@ -2199,6 +2199,9 @@ name|gzip_body
 init|=
 name|NULL
 decl_stmt|;
+name|size_t
+name|gzip_size
+decl_stmt|;
 name|int
 name|err
 decl_stmt|,
@@ -2498,6 +2501,36 @@ block|}
 elseif|else
 if|if
 condition|(
+name|gzip_body
+condition|)
+block|{
+comment|/* 		 * If we are looping to retry authentication, then the previous 		 * run will have set up the headers and gzip buffer already, 		 * and we just need to send it. 		 */
+name|curl_easy_setopt
+argument_list|(
+name|slot
+operator|->
+name|curl
+argument_list|,
+name|CURLOPT_POSTFIELDS
+argument_list|,
+name|gzip_body
+argument_list|)
+expr_stmt|;
+name|curl_easy_setopt
+argument_list|(
+name|slot
+operator|->
+name|curl
+argument_list|,
+name|CURLOPT_POSTFIELDSIZE
+argument_list|,
+name|gzip_size
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
 name|use_gzip
 operator|&&
 literal|1024
@@ -2508,9 +2541,6 @@ name|len
 condition|)
 block|{
 comment|/* The client backend isn't giving us compressed data so 		 * we can try to deflate it ourselves, this may save on. 		 * the transfer time. 		 */
-name|size_t
-name|size
-decl_stmt|;
 name|git_zstream
 name|stream
 decl_stmt|;
@@ -2538,7 +2568,7 @@ argument_list|,
 name|Z_BEST_COMPRESSION
 argument_list|)
 expr_stmt|;
-name|size
+name|gzip_size
 operator|=
 name|git_deflate_bound
 argument_list|(
@@ -2554,7 +2584,7 @@ name|gzip_body
 operator|=
 name|xmalloc
 argument_list|(
-name|size
+name|gzip_size
 argument_list|)
 expr_stmt|;
 name|stream
@@ -2593,7 +2623,7 @@ name|stream
 operator|.
 name|avail_out
 operator|=
-name|size
+name|gzip_size
 expr_stmt|;
 name|ret
 operator|=
@@ -2639,7 +2669,7 @@ argument_list|,
 name|ret
 argument_list|)
 expr_stmt|;
-name|size
+name|gzip_size
 operator|=
 name|stream
 operator|.
@@ -2673,7 +2703,7 @@ name|curl
 argument_list|,
 name|CURLOPT_POSTFIELDSIZE
 argument_list|,
-name|size
+name|gzip_size
 argument_list|)
 expr_stmt|;
 if|if
@@ -2707,7 +2737,7 @@ operator|(
 name|unsigned
 name|long
 operator|)
-name|size
+name|gzip_size
 argument_list|)
 expr_stmt|;
 name|fflush
@@ -2829,9 +2859,6 @@ name|HTTP_REAUTH
 operator|&&
 operator|!
 name|large_request
-operator|&&
-operator|!
-name|use_gzip
 condition|)
 goto|goto
 name|retry
