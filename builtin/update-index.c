@@ -2816,6 +2816,11 @@ block|{
 name|setup_work_tree
 argument_list|()
 expr_stmt|;
+name|read_cache_preload
+argument_list|(
+name|NULL
+argument_list|)
+expr_stmt|;
 operator|*
 name|o
 operator|->
