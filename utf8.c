@@ -2162,7 +2162,7 @@ block|{
 if|if
 condition|(
 name|w
-operator|<
+operator|<=
 name|width
 operator|||
 operator|!
