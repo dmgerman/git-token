@@ -2258,6 +2258,8 @@ name|NULL
 decl_stmt|;
 name|size_t
 name|gzip_size
+init|=
+literal|0
 decl_stmt|;
 name|int
 name|err
