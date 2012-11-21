@@ -6397,6 +6397,11 @@ operator|*
 name|store_key
 argument_list|)
 expr_stmt|;
+operator|*
+name|store_key
+operator|=
+name|NULL
+expr_stmt|;
 return|return
 operator|-
 name|CONFIG_INVALID_KEY
