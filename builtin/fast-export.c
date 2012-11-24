@@ -3437,6 +3437,16 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|object
+operator|->
+name|type
+operator|!=
+name|OBJ_COMMIT
+condition|)
+comment|/* only commits */
+continue|continue;
 name|mark_object
 argument_list|(
 name|object
