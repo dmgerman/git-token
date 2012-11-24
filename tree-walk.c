@@ -2935,7 +2935,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|fnmatch
+name|git_fnmatch
 argument_list|(
 name|match
 operator|+
@@ -2946,6 +2946,12 @@ operator|->
 name|path
 argument_list|,
 literal|0
+argument_list|,
+name|item
+operator|->
+name|nowildcard_len
+operator|-
+name|baselen
 argument_list|)
 condition|)
 return|return
@@ -2999,7 +3005,7 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|fnmatch
+name|git_fnmatch
 argument_list|(
 name|match
 argument_list|,
@@ -3010,6 +3016,10 @@ operator|+
 name|base_offset
 argument_list|,
 literal|0
+argument_list|,
+name|item
+operator|->
+name|nowildcard_len
 argument_list|)
 condition|)
 block|{
