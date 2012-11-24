@@ -995,6 +995,19 @@ DECL|macro|GFNM_PATHNAME
 comment|/* similar to FNM_PATHNAME */
 end_comment
 
+begin_define
+DECL|macro|GFNM_ONESTAR
+define|#
+directive|define
+name|GFNM_ONESTAR
+value|2
+end_define
+
+begin_comment
+DECL|macro|GFNM_ONESTAR
+comment|/* there is only _one_ wildcard, a star */
+end_comment
+
 begin_function_decl
 specifier|extern
 name|int

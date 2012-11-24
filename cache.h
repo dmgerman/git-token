@@ -2985,6 +2985,19 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_define
+DECL|macro|PATHSPEC_ONESTAR
+define|#
+directive|define
+name|PATHSPEC_ONESTAR
+value|1
+end_define
+
+begin_comment
+DECL|macro|PATHSPEC_ONESTAR
+comment|/* the pathspec pattern sastisfies GFNM_ONESTAR */
+end_comment
+
 begin_struct
 DECL|struct|pathspec
 struct|struct
@@ -3037,6 +3050,10 @@ decl_stmt|;
 DECL|member|nowildcard_len
 name|int
 name|nowildcard_len
+decl_stmt|;
+DECL|member|flags
+name|int
+name|flags
 decl_stmt|;
 DECL|member|items
 block|}
