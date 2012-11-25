@@ -8155,9 +8155,15 @@ argument_list|)
 condition|)
 do|;
 return|return
-name|all_msgs
-operator|->
-name|len
+name|ferror
+argument_list|(
+name|f
+argument_list|)
+condition|?
+operator|-
+literal|1
+else|:
+literal|0
 return|;
 block|}
 end_function
@@ -8946,7 +8952,6 @@ block|}
 comment|/* read the messages */
 if|if
 condition|(
-operator|!
 name|read_message
 argument_list|(
 name|stdin
@@ -8954,6 +8959,26 @@ argument_list|,
 operator|&
 name|all_msgs
 argument_list|)
+condition|)
+block|{
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"error reading input\n"
+argument_list|)
+expr_stmt|;
+return|return
+literal|1
+return|;
+block|}
+if|if
+condition|(
+name|all_msgs
+operator|.
+name|len
+operator|==
+literal|0
 condition|)
 block|{
 name|fprintf
