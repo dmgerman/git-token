@@ -181,6 +181,11 @@ parameter_list|,
 specifier|const
 name|char
 modifier|*
+name|meta
+parameter_list|,
+specifier|const
+name|char
+modifier|*
 name|del
 parameter_list|,
 specifier|const
