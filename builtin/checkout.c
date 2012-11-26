@@ -5198,6 +5198,27 @@ operator|&
 name|branch_ref
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|opts
+operator|->
+name|quiet
+condition|)
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+name|_
+argument_list|(
+literal|"Switched to a new branch '%s'\n"
+argument_list|)
+argument_list|,
+name|opts
+operator|->
+name|new_branch
+argument_list|)
+expr_stmt|;
 return|return
 name|status
 return|;
