@@ -9934,10 +9934,8 @@ name|i
 index|]
 operator|->
 name|is_unmerged
-condition|)
-continue|continue;
-if|if
-condition|(
+operator|||
+operator|(
 operator|!
 name|data
 operator|->
@@ -9954,6 +9952,7 @@ operator|+
 name|deleted
 operator|==
 literal|0
+operator|)
 operator|)
 condition|)
 block|{
