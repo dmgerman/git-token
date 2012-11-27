@@ -1629,7 +1629,7 @@ block|{
 if|if
 condition|(
 name|c1
-operator|==
+operator|>
 name|CHAR_CLASS_MAX_LENGTH
 condition|)
 comment|/* The name is too long and therefore the pattern 			     is ill-formed.  */
