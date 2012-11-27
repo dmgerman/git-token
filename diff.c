@@ -9744,6 +9744,11 @@ name|deleted
 decl_stmt|;
 if|if
 condition|(
+name|file
+operator|->
+name|is_unmerged
+operator|||
+operator|(
 operator|!
 name|file
 operator|->
@@ -9755,6 +9760,7 @@ operator|+
 name|deleted
 operator|==
 literal|0
+operator|)
 operator|)
 condition|)
 block|{
@@ -9769,11 +9775,6 @@ operator|!
 name|file
 operator|->
 name|is_binary
-operator|&&
-operator|!
-name|file
-operator|->
-name|is_unmerged
 condition|)
 block|{
 name|adds
