@@ -8972,7 +8972,7 @@ name|count
 operator|=
 name|i
 expr_stmt|;
-comment|/* min(count, data->nr) */
+comment|/* where we can stop scanning in data->files[] */
 comment|/* 	 * We have width = stat_width or term_columns() columns total. 	 * We want a maximum of min(max_len, stat_name_width) for the name part. 	 * We want a maximum of min(max_change, stat_graph_width) for the +- part. 	 * We also need 1 for " " and 4 + decimal_width(max_change) 	 * for " | NNNN " and one the empty column at the end, altogether 	 * 6 + decimal_width(max_change). 	 * 	 * If there's not enough space, we will use the smaller of 	 * stat_name_width (if set) and 5/8*width for the filename, 	 * and the rest for constant elements + graph part, but no more 	 * than stat_graph_width for the graph part. 	 * (5/8 gives 50 for filename and 30 for the constant parts + graph 	 * for the standard terminal size). 	 * 	 * In other words: stat_width limits the maximum width, and 	 * stat_name_width fixes the maximum width of the filename, 	 * and is also used to divide available columns if there 	 * aren't enough. 	 * 	 * Binary files are displayed with "Bin XXX -> YYY bytes" 	 * instead of the change count and graph. This part is treated 	 * similarly to the graph part, except that it is not 	 * "scaled". If total width is too small to accomodate the 	 * guaranteed minimum width of the filename part and the 	 * separators and this message, this message will "overflow" 	 * making the line longer than the maximum width. 	 */
 if|if
 condition|(
@@ -9288,12 +9288,7 @@ operator|==
 literal|0
 operator|)
 condition|)
-block|{
-name|total_files
-operator|--
-expr_stmt|;
 continue|continue;
-block|}
 comment|/* 		 * "scale" the filename 		 */
 name|len
 operator|=
@@ -9528,14 +9523,6 @@ name|del
 operator|=
 name|deleted
 expr_stmt|;
-name|adds
-operator|+=
-name|add
-expr_stmt|;
-name|dels
-operator|+=
-name|del
-expr_stmt|;
 if|if
 condition|(
 name|graph_width
@@ -9717,7 +9704,7 @@ for|for
 control|(
 name|i
 operator|=
-name|count
+literal|0
 init|;
 name|i
 operator|<
@@ -9776,6 +9763,19 @@ operator|--
 expr_stmt|;
 continue|continue;
 block|}
+if|if
+condition|(
+operator|!
+name|file
+operator|->
+name|is_binary
+operator|&&
+operator|!
+name|file
+operator|->
+name|is_unmerged
+condition|)
+block|{
 name|adds
 operator|+=
 name|added
@@ -9784,6 +9784,14 @@ name|dels
 operator|+=
 name|deleted
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|i
+operator|<
+name|count
+condition|)
+continue|continue;
 if|if
 condition|(
 operator|!
