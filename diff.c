@@ -14262,7 +14262,7 @@ name|p
 operator|->
 name|status
 operator|!=
-literal|0
+name|DIFF_STATUS_UNKNOWN
 expr_stmt|;
 if|if
 condition|(
