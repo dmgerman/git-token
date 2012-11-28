@@ -9188,6 +9188,7 @@ condition|(
 operator|!
 name|num_theirs
 condition|)
+block|{
 name|strbuf_addf
 argument_list|(
 name|sb
@@ -9206,12 +9207,24 @@ argument_list|,
 name|num_ours
 argument_list|)
 expr_stmt|;
+name|strbuf_addf
+argument_list|(
+name|sb
+argument_list|,
+name|_
+argument_list|(
+literal|"  (use \"git push\" to publish your local commits)\n"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
 operator|!
 name|num_ours
 condition|)
+block|{
 name|strbuf_addf
 argument_list|(
 name|sb
@@ -9232,7 +9245,19 @@ argument_list|,
 name|num_theirs
 argument_list|)
 expr_stmt|;
+name|strbuf_addf
+argument_list|(
+name|sb
+argument_list|,
+name|_
+argument_list|(
+literal|"  (use \"git pull\" to update your local branch)\n"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 else|else
+block|{
 name|strbuf_addf
 argument_list|(
 name|sb
@@ -9257,6 +9282,17 @@ argument_list|,
 name|num_theirs
 argument_list|)
 expr_stmt|;
+name|strbuf_addf
+argument_list|(
+name|sb
+argument_list|,
+name|_
+argument_list|(
+literal|"  (use \"git pull\" to merge the remote branch into yours)\n"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 literal|1
 return|;
