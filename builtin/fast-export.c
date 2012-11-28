@@ -2721,8 +2721,6 @@ name|struct
 name|commit
 modifier|*
 name|commit
-init|=
-name|commit
 decl_stmt|;
 name|char
 modifier|*
