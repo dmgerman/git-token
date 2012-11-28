@@ -759,6 +759,11 @@ init|=
 literal|0
 decl_stmt|;
 name|int
+name|has_dotgit
+init|=
+literal|0
+decl_stmt|;
+name|int
 name|has_zero_pad
 init|=
 literal|0
@@ -906,6 +911,20 @@ literal|".."
 argument_list|)
 condition|)
 name|has_dotdot
+operator|=
+literal|1
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|name
+argument_list|,
+literal|".git"
+argument_list|)
+condition|)
+name|has_dotgit
 operator|=
 literal|1
 expr_stmt|;
@@ -1112,6 +1131,24 @@ argument_list|,
 name|FSCK_WARN
 argument_list|,
 literal|"contains '..'"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|has_dotgit
+condition|)
+name|retval
+operator|+=
+name|error_func
+argument_list|(
+operator|&
+name|item
+operator|->
+name|object
+argument_list|,
+name|FSCK_WARN
+argument_list|,
+literal|"contains '.git'"
 argument_list|)
 expr_stmt|;
 if|if
