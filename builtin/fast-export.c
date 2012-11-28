@@ -2932,13 +2932,21 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
+comment|/* 		 * This ref will not be updated through a commit, lets make 		 * sure it gets properly updated eventually. 		 */
 if|if
 condition|(
 name|commit
 operator|->
 name|util
+operator|||
+name|commit
+operator|->
+name|object
+operator|.
+name|flags
+operator|&
+name|SHOWN
 condition|)
-comment|/* more than one name for the same object */
 name|string_list_append
 argument_list|(
 name|extra_refs
@@ -2950,7 +2958,13 @@ name|util
 operator|=
 name|commit
 expr_stmt|;
-else|else
+if|if
+condition|(
+operator|!
+name|commit
+operator|->
+name|util
+condition|)
 name|commit
 operator|->
 name|util
