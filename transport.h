@@ -521,19 +521,19 @@ function_decl|;
 end_function_decl
 
 begin_define
-DECL|macro|NON_FF_HEAD
+DECL|macro|REJECT_NON_FF_HEAD
 define|#
 directive|define
-name|NON_FF_HEAD
-value|1
+name|REJECT_NON_FF_HEAD
+value|0x01
 end_define
 
 begin_define
-DECL|macro|NON_FF_OTHER
+DECL|macro|REJECT_NON_FF_OTHER
 define|#
 directive|define
-name|NON_FF_OTHER
-value|2
+name|REJECT_NON_FF_OTHER
+value|0x02
 end_define
 
 begin_function_decl
@@ -557,9 +557,10 @@ parameter_list|,
 name|int
 name|flags
 parameter_list|,
+name|unsigned
 name|int
 modifier|*
-name|nonfastforward
+name|reject_reasons
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -784,9 +785,10 @@ parameter_list|,
 name|int
 name|porcelain
 parameter_list|,
+name|unsigned
 name|int
 modifier|*
-name|nonfastforward
+name|reject_reasons
 parameter_list|)
 function_decl|;
 end_function_decl
