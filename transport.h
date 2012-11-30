@@ -536,6 +536,14 @@ name|REJECT_NON_FF_OTHER
 value|0x02
 end_define
 
+begin_define
+DECL|macro|REJECT_ALREADY_EXISTS
+define|#
+directive|define
+name|REJECT_ALREADY_EXISTS
+value|0x04
+end_define
+
 begin_function_decl
 name|int
 name|transport_push

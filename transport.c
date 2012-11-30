@@ -4302,6 +4302,17 @@ condition|)
 block|{
 if|if
 condition|(
+name|ref
+operator|->
+name|not_forwardable
+condition|)
+operator|*
+name|reject_reasons
+operator||=
+name|REJECT_ALREADY_EXISTS
+expr_stmt|;
+if|if
+condition|(
 operator|!
 name|strcmp
 argument_list|(

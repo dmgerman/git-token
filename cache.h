@@ -7075,6 +7075,11 @@ name|nonfastforward
 range|:
 literal|1
 decl_stmt|,
+DECL|member|not_forwardable
+name|not_forwardable
+range|:
+literal|1
+decl_stmt|,
 DECL|member|deletion
 name|deletion
 range|:
