@@ -7355,6 +7355,11 @@ modifier|*
 name|ref
 parameter_list|)
 block|{
+name|struct
+name|object
+modifier|*
+name|o
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -7366,6 +7371,30 @@ name|name
 argument_list|,
 literal|"refs/tags/"
 argument_list|)
+condition|)
+return|return
+literal|0
+return|;
+comment|/* old object must be a commit */
+name|o
+operator|=
+name|parse_object
+argument_list|(
+name|ref
+operator|->
+name|old_sha1
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|o
+operator|||
+name|o
+operator|->
+name|type
+operator|!=
+name|OBJ_COMMIT
 condition|)
 return|return
 literal|0
@@ -7487,7 +7516,7 @@ name|REF_STATUS_UPTODATE
 expr_stmt|;
 continue|continue;
 block|}
-comment|/* This part determines what can overwrite what. 		 * The rules are: 		 * 		 * (0) you can always use --force or +A:B notation to 		 *     selectively force individual ref pairs. 		 * 		 * (1) if the old thing does not exist, it is OK. 		 * 		 * (2) if the destination is under refs/tags/ you are 		 *     not allowed to overwrite it; tags are expected 		 *     to be static once created 		 * 		 * (3) if you do not have the old thing, you are not allowed 		 *     to overwrite it; you would not know what you are losing 		 *     otherwise. 		 * 		 * (4) if both new and old are commit-ish, and new is a 		 *     descendant of old, it is OK. 		 * 		 * (5) regardless of all of the above, removing :B is 		 *     always allowed. 		 */
+comment|/* This part determines what can overwrite what. 		 * The rules are: 		 * 		 * (0) you can always use --force or +A:B notation to 		 *     selectively force individual ref pairs. 		 * 		 * (1) if the old thing does not exist, it is OK. 		 * 		 * (2) if the destination is under refs/tags/ you are 		 *     not allowed to overwrite it; tags are expected 		 *     to be static once created 		 * 		 * (3) if you do not have the old thing, you are not allowed 		 *     to overwrite it; you would not know what you are losing 		 *     otherwise. 		 * 		 * (4) if old is a commit and new is a descendant of old 		 *     (implying new is commit-ish), it is OK. 		 * 		 * (5) regardless of all of the above, removing :B is 		 *     always allowed. 		 */
 name|ref
 operator|->
 name|not_forwardable
