@@ -7080,6 +7080,11 @@ name|not_forwardable
 range|:
 literal|1
 decl_stmt|,
+DECL|member|update
+name|update
+range|:
+literal|1
+decl_stmt|,
 DECL|member|deletion
 name|deletion
 range|:

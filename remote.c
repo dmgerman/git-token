@@ -7491,7 +7491,7 @@ argument_list|)
 expr_stmt|;
 name|ref
 operator|->
-name|nonfastforward
+name|update
 operator|=
 operator|!
 name|ref
@@ -7505,8 +7505,18 @@ name|ref
 operator|->
 name|old_sha1
 argument_list|)
-operator|&&
-operator|(
+expr_stmt|;
+if|if
+condition|(
+name|ref
+operator|->
+name|update
+condition|)
+block|{
+name|ref
+operator|->
+name|nonfastforward
+operator|=
 operator|!
 name|has_sha1_file
 argument_list|(
@@ -7526,7 +7536,6 @@ name|ref
 operator|->
 name|old_sha1
 argument_list|)
-operator|)
 expr_stmt|;
 if|if
 condition|(
@@ -7550,6 +7559,7 @@ operator|=
 name|REF_STATUS_REJECT_NONFASTFORWARD
 expr_stmt|;
 continue|continue;
+block|}
 block|}
 block|}
 block|}
