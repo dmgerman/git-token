@@ -1216,6 +1216,16 @@ argument_list|(
 name|status
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|code
+operator|!=
+name|SIGINT
+operator|&&
+name|code
+operator|!=
+name|SIGQUIT
+condition|)
 name|error
 argument_list|(
 literal|"%s died of signal %d"
