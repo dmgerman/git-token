@@ -7547,7 +7547,7 @@ name|REF_STATUS_UPTODATE
 expr_stmt|;
 continue|continue;
 block|}
-comment|/* This part determines what can overwrite what. 		 * The rules are: 		 * 		 * (0) you can always use --force or +A:B notation to 		 *     selectively force individual ref pairs. 		 * 		 * (1) if the old thing does not exist, it is OK. 		 * 		 * (2) if the destination is under refs/tags/ you are 		 *     not allowed to overwrite it; tags are expected 		 *     to be static once created 		 * 		 * (3) if you do not have the old thing, you are not allowed 		 *     to overwrite it; you would not know what you are losing 		 *     otherwise. 		 * 		 * (4) if old is a commit and new is a descendant of old 		 *     (implying new is commit-ish), it is OK. 		 * 		 * (5) regardless of all of the above, removing :B is 		 *     always allowed. 		 */
+comment|/* 		 * The below logic determines whether an individual 		 * refspec A:B can be pushed.  The push will succeed 		 * if any of the following are true: 		 * 		 * (1) the remote reference B does not exist 		 * 		 * (2) the remote reference B is being removed (i.e., 		 *     pushing :B where no source is specified) 		 * 		 * (3) the update meets all fast-forwarding criteria: 		 * 		 *     (a) the destination is not under refs/tags/ 		 *     (b) the old is a commit 		 *     (c) the new is a descendant of the old 		 * 		 *     NOTE: We must actually have the old object in 		 *     order to overwrite it in the remote reference, 		 *     and the new object must be commit-ish.  These are 		 *     implied by (b) and (c) respectively. 		 * 		 * (4) it is forced using the +A:B notation, or by 		 *     passing the --force argument 		 */
 name|ref
 operator|->
 name|not_forwardable
