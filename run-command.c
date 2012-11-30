@@ -1118,9 +1118,6 @@ specifier|const
 name|char
 modifier|*
 name|argv0
-parameter_list|,
-name|int
-name|silent_exec_failure
 parameter_list|)
 block|{
 name|int
@@ -2173,10 +2170,6 @@ name|argv
 index|[
 literal|0
 index|]
-argument_list|,
-name|cmd
-operator|->
-name|silent_exec_failure
 argument_list|)
 expr_stmt|;
 name|failed_errno
@@ -2793,10 +2786,6 @@ name|argv
 index|[
 literal|0
 index|]
-argument_list|,
-name|cmd
-operator|->
-name|silent_exec_failure
 argument_list|)
 return|;
 block|}
