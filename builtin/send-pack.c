@@ -181,6 +181,18 @@ literal|"non-fast forward"
 expr_stmt|;
 break|break;
 case|case
+name|REF_STATUS_REJECT_ALREADY_EXISTS
+case|:
+name|res
+operator|=
+literal|"error"
+expr_stmt|;
+name|msg
+operator|=
+literal|"already exists"
+expr_stmt|;
+break|break;
+case|case
 name|REF_STATUS_REJECT_NODELETE
 case|:
 case|case

@@ -1192,6 +1192,9 @@ case|case
 name|REF_STATUS_REJECT_NONFASTFORWARD
 case|:
 case|case
+name|REF_STATUS_REJECT_ALREADY_EXISTS
+case|:
+case|case
 name|REF_STATUS_UPTODATE
 case|:
 continue|continue;

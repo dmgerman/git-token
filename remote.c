@@ -7487,7 +7487,7 @@ name|REF_STATUS_UPTODATE
 expr_stmt|;
 continue|continue;
 block|}
-comment|/* This part determines what can overwrite what. 		 * The rules are: 		 * 		 * (0) you can always use --force or +A:B notation to 		 *     selectively force individual ref pairs. 		 * 		 * (1) if the old thing does not exist, it is OK. 		 * 		 * (2) if you do not have the old thing, you are not allowed 		 *     to overwrite it; you would not know what you are losing 		 *     otherwise. 		 * 		 * (3) if both new and old are commit-ish, and new is a 		 *     descendant of old, it is OK. 		 * 		 * (4) regardless of all of the above, removing :B is 		 *     always allowed. 		 */
+comment|/* This part determines what can overwrite what. 		 * The rules are: 		 * 		 * (0) you can always use --force or +A:B notation to 		 *     selectively force individual ref pairs. 		 * 		 * (1) if the old thing does not exist, it is OK. 		 * 		 * (2) if the destination is under refs/tags/ you are 		 *     not allowed to overwrite it; tags are expected 		 *     to be static once created 		 * 		 * (3) if you do not have the old thing, you are not allowed 		 *     to overwrite it; you would not know what you are losing 		 *     otherwise. 		 * 		 * (4) if both new and old are commit-ish, and new is a 		 *     descendant of old, it is OK. 		 * 		 * (5) regardless of all of the above, removing :B is 		 *     always allowed. 		 */
 name|ref
 operator|->
 name|not_forwardable
@@ -7546,6 +7546,35 @@ operator|->
 name|old_sha1
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|ref
+operator|->
+name|not_forwardable
+condition|)
+block|{
+name|ref
+operator|->
+name|requires_force
+operator|=
+literal|1
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|force_ref_update
+condition|)
+block|{
+name|ref
+operator|->
+name|status
+operator|=
+name|REF_STATUS_REJECT_ALREADY_EXISTS
+expr_stmt|;
+continue|continue;
+block|}
+block|}
+elseif|else
 if|if
 condition|(
 name|ref
