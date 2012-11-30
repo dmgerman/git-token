@@ -3829,7 +3829,7 @@ if|if
 condition|(
 name|ref
 operator|->
-name|nonfastforward
+name|requires_force
 condition|)
 block|{
 name|strcat
