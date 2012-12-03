@@ -9195,6 +9195,10 @@ argument_list|,
 name|num_ours
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|advice_status_hints
+condition|)
 name|strbuf_addf
 argument_list|(
 name|sb
@@ -9233,6 +9237,10 @@ argument_list|,
 name|num_theirs
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|advice_status_hints
+condition|)
 name|strbuf_addf
 argument_list|(
 name|sb
@@ -9270,6 +9278,10 @@ argument_list|,
 name|num_theirs
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|advice_status_hints
+condition|)
 name|strbuf_addf
 argument_list|(
 name|sb
