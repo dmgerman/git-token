@@ -6,9 +6,9 @@ file|"cache.h"
 end_include
 
 begin_decl_stmt
-DECL|variable|advice_push_nonfastforward
+DECL|variable|advice_push_update_rejected
 name|int
-name|advice_push_nonfastforward
+name|advice_push_update_rejected
 init|=
 literal|1
 decl_stmt|;
@@ -108,10 +108,10 @@ index|[]
 init|=
 block|{
 block|{
-literal|"pushnonfastforward"
+literal|"pushupdaterejected"
 block|,
 operator|&
-name|advice_push_nonfastforward
+name|advice_push_update_rejected
 block|}
 block|,
 block|{
@@ -169,7 +169,15 @@ block|,
 operator|&
 name|advice_detached_head
 block|}
-block|, }
+block|,
+comment|/* make this an alias for backward compatibility */
+block|{
+literal|"pushnonfastforward"
+block|,
+operator|&
+name|advice_push_update_rejected
+block|}
+block|}
 struct|;
 end_struct
 
