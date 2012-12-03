@@ -49,6 +49,13 @@ end_decl_stmt
 begin_decl_stmt
 specifier|extern
 name|int
+name|advice_push_already_exists
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
+name|int
 name|advice_status_hints
 decl_stmt|;
 end_decl_stmt

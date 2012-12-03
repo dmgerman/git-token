@@ -42,6 +42,15 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|advice_push_already_exists
+name|int
+name|advice_push_already_exists
+init|=
+literal|1
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|advice_status_hints
 name|int
 name|advice_status_hints
@@ -133,6 +142,13 @@ literal|"pushnonffmatching"
 block|,
 operator|&
 name|advice_push_non_ff_matching
+block|}
+block|,
+block|{
+literal|"pushalreadyexists"
+block|,
+operator|&
+name|advice_push_already_exists
 block|}
 block|,
 block|{

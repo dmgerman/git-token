@@ -1087,6 +1087,15 @@ parameter_list|(
 name|void
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|advice_push_already_exists
+operator|||
+operator|!
+name|advice_push_update_rejected
+condition|)
+return|return;
 name|advise
 argument_list|(
 name|_
