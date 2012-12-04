@@ -342,20 +342,6 @@ block|}
 struct|;
 end_struct
 
-begin_function_decl
-specifier|extern
-name|char
-modifier|*
-name|getpass
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|prompt
-parameter_list|)
-function_decl|;
-end_function_decl
-
 begin_typedef
 DECL|typedef|sig_handler_t
 typedef|typedef
