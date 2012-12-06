@@ -47,16 +47,6 @@ literal|"git merge-tree<base-tree><branch1><branch2>"
 decl_stmt|;
 end_decl_stmt
 
-begin_decl_stmt
-DECL|variable|resolve_directories
-specifier|static
-name|int
-name|resolve_directories
-init|=
-literal|1
-decl_stmt|;
-end_decl_stmt
-
 begin_struct
 DECL|struct|merge_list
 struct|struct
@@ -1158,14 +1148,6 @@ decl_stmt|,
 modifier|*
 name|buf2
 decl_stmt|;
-if|if
-condition|(
-operator|!
-name|resolve_directories
-condition|)
-return|return
-literal|0
-return|;
 name|p
 operator|=
 name|n
