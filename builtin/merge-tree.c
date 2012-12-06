@@ -81,11 +81,6 @@ name|int
 name|stage
 range|:
 literal|2
-decl_stmt|,
-DECL|member|flags
-name|flags
-range|:
-literal|30
 decl_stmt|;
 DECL|member|mode
 name|unsigned
