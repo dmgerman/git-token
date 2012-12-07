@@ -2903,8 +2903,7 @@ name|utf8
 expr_stmt|;
 if|if
 condition|(
-operator|!
-name|strcmp
+name|same_encoding
 argument_list|(
 name|use_encoding
 argument_list|,
