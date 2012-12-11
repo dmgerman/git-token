@@ -2009,7 +2009,7 @@ end_comment
 
 begin_function
 DECL|function|strbuf_add_wrapped_text
-name|int
+name|void
 name|strbuf_add_wrapped_text
 parameter_list|(
 name|struct
@@ -2079,9 +2079,7 @@ argument_list|,
 name|indent2
 argument_list|)
 expr_stmt|;
-return|return
-literal|1
-return|;
+return|return;
 block|}
 name|retry
 label|:
@@ -2185,9 +2183,7 @@ name|text
 operator|==
 name|start
 condition|)
-return|return
-name|w
-return|;
+return|return;
 if|if
 condition|(
 name|space
@@ -2222,9 +2218,7 @@ condition|(
 operator|!
 name|c
 condition|)
-return|return
-name|w
-return|;
+return|return;
 name|space
 operator|=
 name|text
@@ -2390,7 +2384,7 @@ end_function
 
 begin_function
 DECL|function|strbuf_add_wrapped_bytes
-name|int
+name|void
 name|strbuf_add_wrapped_bytes
 parameter_list|(
 name|struct
@@ -2427,9 +2421,6 @@ argument_list|,
 name|len
 argument_list|)
 decl_stmt|;
-name|int
-name|r
-init|=
 name|strbuf_add_wrapped_text
 argument_list|(
 name|buf
@@ -2442,15 +2433,12 @@ name|indent2
 argument_list|,
 name|width
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|free
 argument_list|(
 name|tmp
 argument_list|)
 expr_stmt|;
-return|return
-name|r
-return|;
 block|}
 end_function
 
