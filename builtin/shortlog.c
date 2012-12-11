@@ -1928,9 +1928,6 @@ modifier|*
 name|log
 parameter_list|)
 block|{
-name|int
-name|col
-init|=
 name|strbuf_add_wrapped_text
 argument_list|(
 name|sb
@@ -1949,15 +1946,7 @@ name|log
 operator|->
 name|wrap
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|col
-operator|!=
-name|log
-operator|->
-name|wrap
-condition|)
+expr_stmt|;
 name|strbuf_addch
 argument_list|(
 name|sb
