@@ -4230,6 +4230,27 @@ argument_list|,
 name|value
 argument_list|)
 return|;
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|var
+argument_list|,
+literal|"mailmap.blob"
+argument_list|)
+condition|)
+return|return
+name|git_config_string
+argument_list|(
+operator|&
+name|git_mailmap_blob
+argument_list|,
+name|var
+argument_list|,
+name|value
+argument_list|)
+return|;
 comment|/* Add other config variables here and to Documentation/config.txt. */
 return|return
 literal|0
