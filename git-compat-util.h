@@ -1757,6 +1757,34 @@ unit|)))
 empty_stmt|;
 end_empty_stmt
 
+begin_comment
+comment|/*  * Let callers be aware of the constant return value; this can help  * gcc with -Wuninitialized analysis. We have to restrict this trick to  * gcc, though, because of the variadic macro and the magic ## comma pasting  * behavior. But since we're only trying to help gcc, anyway, it's OK; other  * compilers will fall back to using the function as usual.  */
+end_comment
+
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|__GNUC__
+end_ifdef
+
+begin_define
+DECL|macro|error
+define|#
+directive|define
+name|error
+parameter_list|(
+name|fmt
+parameter_list|,
+modifier|...
+parameter_list|)
+value|(error((fmt), ##__VA_ARGS__), -1)
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_decl_stmt
 specifier|extern
 name|void
