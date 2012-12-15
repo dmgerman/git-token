@@ -8085,6 +8085,13 @@ begin_comment
 comment|/*  * Call this to report error for your variable that should not  * get a boolean value (i.e. "[my] var" means "true").  */
 end_comment
 
+begin_undef
+DECL|macro|config_error_nonbool
+undef|#
+directive|undef
+name|config_error_nonbool
+end_undef
+
 begin_function
 DECL|function|config_error_nonbool
 name|int

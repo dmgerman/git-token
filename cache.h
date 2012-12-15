@@ -8381,6 +8381,28 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|__GNUC__
+end_ifdef
+
+begin_define
+DECL|macro|config_error_nonbool
+define|#
+directive|define
+name|config_error_nonbool
+parameter_list|(
+name|s
+parameter_list|)
+value|(config_error_nonbool(s), -1)
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_function_decl
 specifier|extern
 specifier|const
