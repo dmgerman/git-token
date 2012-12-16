@@ -41,6 +41,11 @@ name|cache_tree
 modifier|*
 name|cache_tree
 decl_stmt|;
+DECL|member|count
+name|int
+name|count
+decl_stmt|;
+comment|/* internally used by update_one() */
 DECL|member|namelen
 name|int
 name|namelen
