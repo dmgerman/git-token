@@ -1313,6 +1313,11 @@ operator|&
 name|WRITE_TREE_DRY_RUN
 decl_stmt|;
 name|int
+name|to_invalidate
+init|=
+literal|0
+decl_stmt|;
+name|int
 name|i
 decl_stmt|;
 operator|*
@@ -1734,6 +1739,20 @@ name|mode
 operator|=
 name|S_IFDIR
 expr_stmt|;
+if|if
+condition|(
+name|sub
+operator|->
+name|cache_tree
+operator|->
+name|entry_count
+operator|<
+literal|0
+condition|)
+name|to_invalidate
+operator|=
+literal|1
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -1821,6 +1840,7 @@ literal|1
 expr_stmt|;
 continue|continue;
 block|}
+comment|/* 		 * CE_INTENT_TO_ADD entries exist on on-disk index but 		 * they are not part of generated trees. Invalidate up 		 * to root to force cache-tree users to read elsewhere. 		 */
 if|if
 condition|(
 name|ce
@@ -1829,7 +1849,13 @@ name|ce_flags
 operator|&
 name|CE_INTENT_TO_ADD
 condition|)
+block|{
+name|to_invalidate
+operator|=
+literal|1
+expr_stmt|;
 continue|continue;
+block|}
 name|strbuf_grow
 argument_list|(
 operator|&
@@ -1952,6 +1978,11 @@ name|it
 operator|->
 name|entry_count
 operator|=
+name|to_invalidate
+condition|?
+operator|-
+literal|1
+else|:
 name|i
 operator|-
 operator|*
