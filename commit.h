@@ -502,6 +502,10 @@ name|char
 modifier|*
 name|output_encoding
 decl_stmt|;
+DECL|member|color
+name|int
+name|color
+decl_stmt|;
 block|}
 struct|;
 end_struct
