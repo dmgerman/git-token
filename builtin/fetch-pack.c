@@ -4654,15 +4654,6 @@ return|;
 block|}
 end_function
 
-begin_decl_stmt
-DECL|variable|lock
-specifier|static
-name|struct
-name|lock_file
-name|lock
-decl_stmt|;
-end_decl_stmt
-
 begin_function
 DECL|function|fetch_pack_setup
 specifier|static
@@ -5654,6 +5645,11 @@ operator|>
 literal|0
 condition|)
 block|{
+specifier|static
+name|struct
+name|lock_file
+name|lock
+decl_stmt|;
 name|struct
 name|cache_time
 name|mtime
