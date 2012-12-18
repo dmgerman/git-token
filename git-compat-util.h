@@ -618,11 +618,11 @@ directive|include
 file|<limits.h>
 end_include
 
-begin_ifndef
-ifndef|#
-directive|ifndef
-name|NO_SYS_PARAM_H
-end_ifndef
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|NEEDS_SYS_PARAM_H
+end_ifdef
 
 begin_include
 include|#
