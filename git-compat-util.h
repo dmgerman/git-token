@@ -425,6 +425,12 @@ name|defined
 argument_list|(
 name|__TANDEM
 argument_list|)
+operator|&&
+operator|!
+name|defined
+argument_list|(
+name|__QNX__
+argument_list|)
 end_elif
 
 begin_define
@@ -2581,6 +2587,26 @@ name|needlelen
 parameter_list|)
 function_decl|;
 end_function_decl
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|NO_GETPAGESIZE
+end_ifdef
+
+begin_define
+DECL|macro|getpagesize
+define|#
+directive|define
+name|getpagesize
+parameter_list|()
+value|sysconf(_SC_PAGESIZE)
+end_define
 
 begin_endif
 endif|#
