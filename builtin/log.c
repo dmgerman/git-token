@@ -4329,9 +4329,6 @@ name|int
 name|use_stdout
 parameter_list|,
 name|int
-name|numbered
-parameter_list|,
-name|int
 name|numbered_files
 parameter_list|,
 name|struct
@@ -7694,8 +7691,6 @@ operator|&
 name|rev
 argument_list|,
 name|use_stdout
-argument_list|,
-name|numbered
 argument_list|,
 name|numbered_files
 argument_list|,
