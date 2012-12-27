@@ -566,7 +566,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * The excluded() API is meant for callers that check each level of leading  * directory hierarchies with excluded() to avoid recursing into excluded  * directories.  Callers that do not do so should use this API instead.  */
+comment|/*  * The is_excluded() API is meant for callers that check each level of leading  * directory hierarchies with is_excluded() to avoid recursing into excluded  * directories.  Callers that do not do so should use this API instead.  */
 end_comment
 
 begin_struct

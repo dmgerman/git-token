@@ -1425,7 +1425,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Like info/exclude and .gitignore, the attribute information can  * come from many places.  *  * (1) .gitattribute file of the same directory;  * (2) .gitattribute file of the parent directory if (1) does not have  *      any match; this goes recursively upwards, just like .gitignore.  * (3) $GIT_DIR/info/attributes, which overrides both of the above.  *  * In the same file, later entries override the earlier match, so in the  * global list, we would have entries from info/attributes the earliest  * (reading the file from top to bottom), .gitattribute of the root  * directory (again, reading the file from top to bottom) down to the  * current directory, and then scan the list backwards to find the first match.  * This is exactly the same as what excluded() does in dir.c to deal with  * .gitignore  */
+comment|/*  * Like info/exclude and .gitignore, the attribute information can  * come from many places.  *  * (1) .gitattribute file of the same directory;  * (2) .gitattribute file of the parent directory if (1) does not have  *      any match; this goes recursively upwards, just like .gitignore.  * (3) $GIT_DIR/info/attributes, which overrides both of the above.  *  * In the same file, later entries override the earlier match, so in the  * global list, we would have entries from info/attributes the earliest  * (reading the file from top to bottom), .gitattribute of the root  * directory (again, reading the file from top to bottom) down to the  * current directory, and then scan the list backwards to find the first match.  * This is exactly the same as what is_excluded() does in dir.c to deal with  * .gitignore  */
 end_comment
 
 begin_struct
