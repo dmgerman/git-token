@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_comment
-comment|/*  * This handles recursive filename detection with exclude  * files, index knowledge etc..  *  * Copyright (C) Linus Torvalds, 2005-2006  *		 Junio Hamano, 2005-2006  */
+comment|/*  * This handles recursive filename detection with exclude  * files, index knowledge etc..  *  * See Documentation/technical/api-directory-listing.txt  *  * Copyright (C) Linus Torvalds, 2005-2006  *		 Junio Hamano, 2005-2006  */
 end_comment
 
 begin_include
@@ -2332,6 +2332,10 @@ expr_stmt|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Loads the per-directory exclude list for the substring of base  * which has a char length of baselen.  */
+end_comment
+
 begin_function
 DECL|function|prep_exclude
 specifier|static
@@ -2391,7 +2395,7 @@ operator|)
 condition|)
 return|return;
 comment|/* too long a path -- ignore */
-comment|/* Pop the ones that are not the prefix of the path being checked. */
+comment|/* Pop the directories that are not the prefix of the path being checked. */
 name|el
 operator|=
 operator|&
