@@ -2962,9 +2962,9 @@ comment|/* Scan the list and let the last match determine the fate.  * Return 1 
 end_comment
 
 begin_function
-DECL|function|excluded_from_list
+DECL|function|is_excluded_from_list
 name|int
-name|excluded_from_list
+name|is_excluded_from_list
 parameter_list|(
 specifier|const
 name|char
@@ -3295,7 +3295,7 @@ control|)
 block|{
 switch|switch
 condition|(
-name|excluded_from_list
+name|is_excluded_from_list
 argument_list|(
 name|pathname
 argument_list|,

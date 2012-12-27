@@ -458,7 +458,7 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|int
-name|excluded_from_list
+name|is_excluded_from_list
 parameter_list|(
 specifier|const
 name|char
