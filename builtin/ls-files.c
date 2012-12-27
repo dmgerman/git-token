@@ -1243,7 +1243,7 @@ name|ce
 argument_list|)
 decl_stmt|;
 return|return
-name|path_excluded
+name|is_path_excluded
 argument_list|(
 name|check
 argument_list|,

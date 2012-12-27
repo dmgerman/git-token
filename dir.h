@@ -620,7 +620,7 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|int
-name|path_excluded
+name|is_path_excluded
 parameter_list|(
 name|struct
 name|path_exclude_check

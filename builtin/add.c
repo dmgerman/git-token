@@ -2707,7 +2707,7 @@ name|DT_UNKNOWN
 decl_stmt|;
 if|if
 condition|(
-name|path_excluded
+name|is_path_excluded
 argument_list|(
 operator|&
 name|check

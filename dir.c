@@ -3397,9 +3397,9 @@ comment|/*  * Is this name excluded?  This is for a caller like show_files() tha
 end_comment
 
 begin_function
-DECL|function|path_excluded
+DECL|function|is_path_excluded
 name|int
-name|path_excluded
+name|is_path_excluded
 parameter_list|(
 name|struct
 name|path_exclude_check

@@ -6537,7 +6537,7 @@ name|o
 operator|->
 name|dir
 operator|&&
-name|path_excluded
+name|is_path_excluded
 argument_list|(
 name|o
 operator|->
