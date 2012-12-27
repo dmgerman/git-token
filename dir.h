@@ -666,7 +666,7 @@ parameter_list|,
 name|struct
 name|exclude_list
 modifier|*
-name|which
+name|el
 parameter_list|,
 name|int
 name|check_index
@@ -738,7 +738,7 @@ parameter_list|,
 name|struct
 name|exclude_list
 modifier|*
-name|which
+name|el
 parameter_list|)
 function_decl|;
 end_function_decl
