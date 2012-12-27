@@ -5556,7 +5556,7 @@ name|result
 expr_stmt|;
 name|done
 label|:
-name|free_excludes
+name|clear_exclude_list
 argument_list|(
 operator|&
 name|el

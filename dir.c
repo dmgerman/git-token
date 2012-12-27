@@ -1878,10 +1878,14 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Frees memory within el which was allocated for exclude patterns and  * the file buffer.  Does not free el itself.  */
+end_comment
+
 begin_function
-DECL|function|free_excludes
+DECL|function|clear_exclude_list
 name|void
-name|free_excludes
+name|clear_exclude_list
 parameter_list|(
 name|struct
 name|exclude_list
