@@ -97,6 +97,11 @@ name|unsigned
 name|add_title
 range|:
 literal|1
+decl_stmt|,
+DECL|member|credit_people
+name|credit_people
+range|:
+literal|1
 decl_stmt|;
 DECL|member|shortlog_len
 name|int

@@ -8113,6 +8113,16 @@ name|shortlog_len
 operator|=
 name|shortlog_len
 expr_stmt|;
+name|opts
+operator|.
+name|credit_people
+operator|=
+operator|(
+literal|0
+operator|<
+name|option_edit
+operator|)
+expr_stmt|;
 name|fmt_merge_msg
 argument_list|(
 operator|&
