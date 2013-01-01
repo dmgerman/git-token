@@ -308,8 +308,9 @@ name|uchar
 modifier|*
 name|text
 parameter_list|,
+name|unsigned
 name|int
-name|force_lower_case
+name|flags
 parameter_list|)
 block|{
 name|uchar
@@ -373,7 +374,11 @@ name|WM_ABORT_ALL
 return|;
 if|if
 condition|(
-name|force_lower_case
+operator|(
+name|flags
+operator|&
+name|WM_CASEFOLD
+operator|)
 operator|&&
 name|ISUPPER
 argument_list|(
@@ -389,7 +394,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|force_lower_case
+operator|(
+name|flags
+operator|&
+name|WM_CASEFOLD
+operator|)
 operator|&&
 name|ISUPPER
 argument_list|(
@@ -534,7 +543,7 @@ literal|1
 argument_list|,
 name|text
 argument_list|,
-name|force_lower_case
+name|flags
 argument_list|)
 operator|==
 name|WM_MATCH
@@ -618,7 +627,7 @@ name|p
 argument_list|,
 name|text
 argument_list|,
-name|force_lower_case
+name|flags
 argument_list|)
 operator|)
 operator|!=
@@ -1343,12 +1352,6 @@ operator|)
 name|text
 argument_list|,
 name|flags
-operator|&
-name|WM_CASEFOLD
-condition|?
-literal|1
-else|:
-literal|0
 argument_list|)
 return|;
 block|}
