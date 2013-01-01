@@ -360,7 +360,9 @@ block|{
 name|int
 name|matched
 decl_stmt|,
-name|special
+name|match_slash
+decl_stmt|,
+name|negated
 decl_stmt|;
 name|uchar
 name|t_ch
@@ -556,7 +558,7 @@ condition|)
 return|return
 name|MATCH
 return|;
-name|special
+name|match_slash
 operator|=
 name|TRUE
 expr_stmt|;
@@ -567,7 +569,7 @@ name|ABORT_MALFORMED
 return|;
 block|}
 else|else
-name|special
+name|match_slash
 operator|=
 name|FALSE
 expr_stmt|;
@@ -583,7 +585,7 @@ comment|/* Trailing "**" matches everything.  Trailing "*" matches 				 * only i
 if|if
 condition|(
 operator|!
-name|special
+name|match_slash
 condition|)
 block|{
 if|if
@@ -642,7 +644,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|special
+name|match_slash
 operator|||
 name|matched
 operator|!=
@@ -656,7 +658,7 @@ elseif|else
 if|if
 condition|(
 operator|!
-name|special
+name|match_slash
 operator|&&
 name|t_ch
 operator|==
@@ -700,7 +702,7 @@ expr_stmt|;
 endif|#
 directive|endif
 comment|/* Assign literal TRUE/FALSE because of "matched" comparison. */
-name|special
+name|negated
 operator|=
 name|p_ch
 operator|==
@@ -712,7 +714,7 @@ name|FALSE
 expr_stmt|;
 if|if
 condition|(
-name|special
+name|negated
 condition|)
 block|{
 comment|/* Inverted character class. */
@@ -1287,7 +1289,7 @@ if|if
 condition|(
 name|matched
 operator|==
-name|special
+name|negated
 operator|||
 name|t_ch
 operator|==
