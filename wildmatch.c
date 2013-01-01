@@ -445,6 +445,12 @@ case|:
 comment|/* Match anything but '/'. */
 if|if
 condition|(
+operator|(
+name|flags
+operator|&
+name|WM_PATHNAME
+operator|)
+operator|&&
 name|t_ch
 operator|==
 literal|'/'
@@ -483,6 +489,21 @@ operator|==
 literal|'*'
 condition|)
 block|{}
+if|if
+condition|(
+operator|!
+operator|(
+name|flags
+operator|&
+name|WM_PATHNAME
+operator|)
+condition|)
+comment|/* without WM_PATHNAME, '*' == '**' */
+name|match_slash
+operator|=
+literal|1
+expr_stmt|;
+elseif|else
 if|if
 condition|(
 operator|(
@@ -562,9 +583,16 @@ name|WM_ABORT_MALFORMED
 return|;
 block|}
 else|else
+comment|/* without WM_PATHNAME, '*' == '**' */
 name|match_slash
 operator|=
+name|flags
+operator|&
+name|WM_PATHNAME
+condition|?
 literal|0
+else|:
+literal|1
 expr_stmt|;
 if|if
 condition|(
@@ -1284,9 +1312,17 @@ name|matched
 operator|==
 name|negated
 operator|||
+operator|(
+operator|(
+name|flags
+operator|&
+name|WM_PATHNAME
+operator|)
+operator|&&
 name|t_ch
 operator|==
 literal|'/'
+operator|)
 condition|)
 return|return
 name|WM_NOMATCH

@@ -2951,11 +2951,15 @@ name|pattern
 argument_list|,
 name|name
 argument_list|,
+name|WM_PATHNAME
+operator||
+operator|(
 name|ignore_case
 condition|?
 name|WM_CASEFOLD
 else|:
 literal|0
+operator|)
 argument_list|,
 name|NULL
 argument_list|)
