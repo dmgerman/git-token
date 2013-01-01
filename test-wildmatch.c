@@ -113,6 +113,8 @@ literal|2
 index|]
 argument_list|,
 literal|0
+argument_list|,
+name|NULL
 argument_list|)
 return|;
 elseif|else
@@ -144,7 +146,9 @@ index|[
 literal|2
 index|]
 argument_list|,
-name|FNM_CASEFOLD
+name|WM_CASEFOLD
+argument_list|,
+name|NULL
 argument_list|)
 return|;
 elseif|else
