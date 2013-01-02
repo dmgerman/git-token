@@ -6169,7 +6169,7 @@ argument_list|)
 block|,
 name|OPT_INTEGER
 argument_list|(
-literal|0
+literal|'v'
 argument_list|,
 literal|"reroll-count"
 argument_list|,
