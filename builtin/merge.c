@@ -5809,6 +5809,8 @@ operator|&
 name|msg
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|run_hook
 argument_list|(
 name|get_index_file
@@ -5824,6 +5826,13 @@ argument_list|,
 literal|"merge"
 argument_list|,
 name|NULL
+argument_list|,
+name|NULL
+argument_list|)
+condition|)
+name|abort_commit
+argument_list|(
+name|remoteheads
 argument_list|,
 name|NULL
 argument_list|)
