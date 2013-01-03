@@ -3456,8 +3456,14 @@ name|badexit
 goto|;
 block|}
 comment|/* We really want to make sure this goes into memory now but we 		have to be careful of breaking aliasing rules, so write it twice */
-operator|*
-operator|(
+block|{
+specifier|volatile
+name|struct
+name|malloc_state
+modifier|*
+modifier|*
+name|_m
+init|=
 operator|(
 specifier|volatile
 expr|struct
@@ -3472,8 +3478,11 @@ name|m
 index|[
 name|end
 index|]
-operator|)
+decl_stmt|;
+operator|*
+name|_m
 operator|=
+operator|(
 name|p
 operator|->
 name|m
@@ -3482,7 +3491,9 @@ name|end
 index|]
 operator|=
 name|temp
+operator|)
 expr_stmt|;
+block|}
 name|ACQUIRE_LOCK
 argument_list|(
 operator|&
