@@ -3951,7 +3951,13 @@ name|buf
 argument_list|,
 name|buf
 operator|.
+name|len
+condition|?
 name|buf
+operator|.
+name|buf
+else|:
+name|NULL
 argument_list|)
 expr_stmt|;
 name|strbuf_release
