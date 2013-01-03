@@ -588,12 +588,8 @@ end_include
 begin_ifdef
 ifdef|#
 directive|ifdef
-name|__TANDEM
+name|HAVE_STRINGS_H
 end_ifdef
-
-begin_comment
-comment|/* or HAVE_STRINGS_H or !NO_STRINGS_H? */
-end_comment
 
 begin_include
 include|#
@@ -622,11 +618,22 @@ directive|include
 file|<limits.h>
 end_include
 
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|NEEDS_SYS_PARAM_H
+end_ifdef
+
 begin_include
 include|#
 directive|include
 file|<sys/param.h>
 end_include
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_include
 include|#
