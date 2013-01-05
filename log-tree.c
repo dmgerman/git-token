@@ -3616,6 +3616,14 @@ name|opt
 operator|->
 name|commit_format
 expr_stmt|;
+name|ctx
+operator|.
+name|mailmap
+operator|=
+name|opt
+operator|->
+name|mailmap
+expr_stmt|;
 name|pretty_print_commit
 argument_list|(
 operator|&
