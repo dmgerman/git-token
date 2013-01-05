@@ -1237,7 +1237,7 @@ argument_list|)
 expr_stmt|;
 comment|/* 		 * This return value is chosen so that code& 0xff 		 * mimics the exit code that a POSIX shell would report for 		 * a program that died from this signal. 		 */
 name|code
-operator|-=
+operator|+=
 literal|128
 expr_stmt|;
 block|}
