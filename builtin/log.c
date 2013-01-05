@@ -111,6 +111,12 @@ directive|include
 file|"version.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"mailmap.h"
+end_include
+
 begin_comment
 comment|/* Set a default date-time format for git log ("log.date" config variable) */
 end_comment
@@ -501,6 +507,10 @@ decl_stmt|,
 name|source
 init|=
 literal|0
+decl_stmt|,
+name|mailmap
+init|=
+literal|0
 decl_stmt|;
 specifier|const
 name|struct
@@ -536,6 +546,21 @@ argument_list|,
 name|N_
 argument_list|(
 literal|"show source"
+argument_list|)
+argument_list|)
+block|,
+name|OPT_BOOLEAN
+argument_list|(
+literal|0
+argument_list|,
+literal|"use-mailmap"
+argument_list|,
+operator|&
+name|mailmap
+argument_list|,
+name|N_
+argument_list|(
+literal|"Use mail map file"
 argument_list|)
 argument_list|)
 block|,
@@ -753,6 +778,36 @@ name|show_source
 operator|=
 literal|1
 expr_stmt|;
+if|if
+condition|(
+name|mailmap
+condition|)
+block|{
+name|rev
+operator|->
+name|mailmap
+operator|=
+name|xcalloc
+argument_list|(
+literal|1
+argument_list|,
+sizeof|sizeof
+argument_list|(
+expr|struct
+name|string_list
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|read_mailmap
+argument_list|(
+name|rev
+operator|->
+name|mailmap
+argument_list|,
+name|NULL
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|rev
