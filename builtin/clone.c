@@ -2560,10 +2560,16 @@ if|if
 condition|(
 name|real_git_dir
 condition|)
+block|{
 name|git_dir
 operator|=
 name|real_git_dir
 expr_stmt|;
+name|junk_git_dir
+operator|=
+name|real_git_dir
+expr_stmt|;
+block|}
 if|if
 condition|(
 literal|0
