@@ -24,15 +24,6 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|advice_push_non_ff_default
-name|int
-name|advice_push_non_ff_default
-init|=
-literal|1
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|variable|advice_push_non_ff_matching
 name|int
 name|advice_push_non_ff_matching
@@ -182,13 +173,6 @@ literal|"pushnonffcurrent"
 block|,
 operator|&
 name|advice_push_non_ff_current
-block|}
-block|,
-block|{
-literal|"pushnonffdefault"
-block|,
-operator|&
-name|advice_push_non_ff_default
 block|}
 block|,
 block|{
