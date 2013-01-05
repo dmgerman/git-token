@@ -144,14 +144,6 @@ name|refspec_alloc
 decl_stmt|;
 end_decl_stmt
 
-begin_decl_stmt
-DECL|variable|default_matching_used
-specifier|static
-name|int
-name|default_matching_used
-decl_stmt|;
-end_decl_stmt
-
 begin_function
 DECL|function|add_refspec
 specifier|static
@@ -786,9 +778,9 @@ index|[]
 init|=
 name|N_
 argument_list|(
-literal|"push.default is unset; its implicit value is changing in\n"
+literal|"push.default is unset; its implicit value has changed in\n"
 literal|"Git 2.0 from 'matching' to 'simple'. To squelch this message\n"
-literal|"and maintain the current behavior after the default changes, use:\n"
+literal|"and maintain the traditional behavior, use:\n"
 literal|"\n"
 literal|"  git config --global push.default matching\n"
 literal|"\n"
@@ -854,17 +846,6 @@ condition|)
 block|{
 default|default:
 case|case
-name|PUSH_DEFAULT_UNSPECIFIED
-case|:
-name|default_matching_used
-operator|=
-literal|1
-expr_stmt|;
-name|warn_unspecified_push_default_configuration
-argument_list|()
-expr_stmt|;
-comment|/* fallthru */
-case|case
 name|PUSH_DEFAULT_MATCHING
 case|:
 name|add_refspec
@@ -873,6 +854,13 @@ literal|":"
 argument_list|)
 expr_stmt|;
 break|break;
+case|case
+name|PUSH_DEFAULT_UNSPECIFIED
+case|:
+name|warn_unspecified_push_default_configuration
+argument_list|()
+expr_stmt|;
+comment|/* fallthru */
 case|case
 name|PUSH_DEFAULT_SIMPLE
 case|:
@@ -940,24 +928,6 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|message_advice_use_upstream
-specifier|static
-specifier|const
-name|char
-name|message_advice_use_upstream
-index|[]
-init|=
-name|N_
-argument_list|(
-literal|"Updates were rejected because a pushed branch tip is behind its remote\n"
-literal|"counterpart. If you did not intend to push that branch, you may want to\n"
-literal|"specify branches to push or set the 'push.default' configuration variable\n"
-literal|"to 'simple', 'current' or 'upstream' to push only the current branch."
-argument_list|)
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|variable|message_advice_checkout_pull_push
 specifier|static
 specifier|const
@@ -998,35 +968,6 @@ argument_list|(
 name|_
 argument_list|(
 name|message_advice_pull_before_push
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-end_function
-
-begin_function
-DECL|function|advise_use_upstream
-specifier|static
-name|void
-name|advise_use_upstream
-parameter_list|(
-name|void
-parameter_list|)
-block|{
-if|if
-condition|(
-operator|!
-name|advice_push_non_ff_default
-operator|||
-operator|!
-name|advice_push_nonfastforward
-condition|)
-return|return;
-name|advise
-argument_list|(
-name|_
-argument_list|(
-name|message_advice_use_upstream
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1204,14 +1145,6 @@ break|break;
 case|case
 name|NON_FF_OTHER
 case|:
-if|if
-condition|(
-name|default_matching_used
-condition|)
-name|advise_use_upstream
-argument_list|()
-expr_stmt|;
-else|else
 name|advise_checkout_pull_push
 argument_list|()
 expr_stmt|;

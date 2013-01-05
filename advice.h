@@ -35,13 +35,6 @@ end_decl_stmt
 begin_decl_stmt
 specifier|extern
 name|int
-name|advice_push_non_ff_default
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-specifier|extern
-name|int
 name|advice_push_non_ff_matching
 decl_stmt|;
 end_decl_stmt
