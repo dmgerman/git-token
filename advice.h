@@ -21,7 +21,7 @@ end_include
 begin_decl_stmt
 specifier|extern
 name|int
-name|advice_push_nonfastforward
+name|advice_push_update_rejected
 decl_stmt|;
 end_decl_stmt
 
@@ -43,6 +43,13 @@ begin_decl_stmt
 specifier|extern
 name|int
 name|advice_push_non_ff_matching
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
+name|int
+name|advice_push_already_exists
 decl_stmt|;
 end_decl_stmt
 
