@@ -746,6 +746,13 @@ expr_stmt|;
 block|}
 end_function
 
+begin_undef
+DECL|macro|error
+undef|#
+directive|undef
+name|error
+end_undef
+
 begin_function
 DECL|function|error
 name|int
