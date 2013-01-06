@@ -16,7 +16,7 @@ begin_function_decl
 specifier|extern
 name|char
 modifier|*
-name|find_used_pathspec
+name|find_pathspecs_matching_against_index
 parameter_list|(
 specifier|const
 name|char
@@ -30,7 +30,7 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|void
-name|fill_pathspec_matches
+name|add_pathspec_matches_against_index
 parameter_list|(
 specifier|const
 name|char

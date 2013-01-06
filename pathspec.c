@@ -18,13 +18,13 @@ file|"pathspec.h"
 end_include
 
 begin_comment
-comment|/*  * Finds which of the given pathspecs match items in the index.  *  * For each pathspec, sets the corresponding entry in the seen[] array  * (which should be specs items long, i.e. the same size as pathspec)  * to the nature of the "closest" (i.e. most specific) match found for  * that pathspec in the index, if it was a closer type of match than  * the existing entry.  As an optimization, matching is skipped  * altogether if seen[] already only contains non-zero entries.  *  * If seen[] has not already been written to, it may make sense  * to use find_used_pathspec() instead.  */
+comment|/*  * Finds which of the given pathspecs match items in the index.  *  * For each pathspec, sets the corresponding entry in the seen[] array  * (which should be specs items long, i.e. the same size as pathspec)  * to the nature of the "closest" (i.e. most specific) match found for  * that pathspec in the index, if it was a closer type of match than  * the existing entry.  As an optimization, matching is skipped  * altogether if seen[] already only contains non-zero entries.  *  * If seen[] has not already been written to, it may make sense  * to use find_pathspecs_matching_against_index() instead.  */
 end_comment
 
 begin_function
-DECL|function|fill_pathspec_matches
+DECL|function|add_pathspec_matches_against_index
 name|void
-name|fill_pathspec_matches
+name|add_pathspec_matches_against_index
 parameter_list|(
 specifier|const
 name|char
@@ -125,14 +125,14 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Finds which of the given pathspecs match items in the index.  *  * This is a one-shot wrapper around fill_pathspec_matches() which  * allocates, populates, and returns a seen[] array indicating the  * nature of the "closest" (i.e. most specific) matches which each of  * the given pathspecs achieves against all items in the index.  */
+comment|/*  * Finds which of the given pathspecs match items in the index.  *  * This is a one-shot wrapper around add_pathspec_matches_against_index()  * which allocates, populates, and returns a seen[] array indicating the  * nature of the "closest" (i.e. most specific) matches which each of the  * given pathspecs achieves against all items in the index.  */
 end_comment
 
 begin_function
-DECL|function|find_used_pathspec
+DECL|function|find_pathspecs_matching_against_index
 name|char
 modifier|*
-name|find_used_pathspec
+name|find_pathspecs_matching_against_index
 parameter_list|(
 specifier|const
 name|char
@@ -173,7 +173,7 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
-name|fill_pathspec_matches
+name|add_pathspec_matches_against_index
 argument_list|(
 name|pathspec
 argument_list|,
