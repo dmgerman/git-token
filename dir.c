@@ -1566,6 +1566,9 @@ name|struct
 name|exclude_list
 modifier|*
 name|el
+parameter_list|,
+name|int
+name|srcpos
 parameter_list|)
 block|{
 name|struct
@@ -1708,6 +1711,12 @@ name|flags
 operator|=
 name|flags
 expr_stmt|;
+name|x
+operator|->
+name|srcpos
+operator|=
+name|srcpos
+expr_stmt|;
 name|ALLOC_GROW
 argument_list|(
 name|el
@@ -1736,6 +1745,12 @@ operator|++
 index|]
 operator|=
 name|x
+expr_stmt|;
+name|x
+operator|->
+name|el
+operator|=
+name|el
 expr_stmt|;
 block|}
 end_function
@@ -1991,6 +2006,10 @@ name|int
 name|fd
 decl_stmt|,
 name|i
+decl_stmt|,
+name|lineno
+init|=
+literal|1
 decl_stmt|;
 name|size_t
 name|size
@@ -2271,9 +2290,14 @@ argument_list|,
 name|baselen
 argument_list|,
 name|el
+argument_list|,
+name|lineno
 argument_list|)
 expr_stmt|;
 block|}
+name|lineno
+operator|++
+expr_stmt|;
 name|entry
 operator|=
 name|buf
@@ -2304,6 +2328,11 @@ name|dir
 parameter_list|,
 name|int
 name|group_type
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|src
 parameter_list|)
 block|{
 name|struct
@@ -2369,6 +2398,12 @@ name|el
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|el
+operator|->
+name|src
+operator|=
+name|src
+expr_stmt|;
 return|return
 name|el
 return|;
@@ -2407,6 +2442,8 @@ argument_list|(
 name|dir
 argument_list|,
 name|EXC_FILE
+argument_list|,
+name|fname
 argument_list|)
 expr_stmt|;
 if|if
@@ -2573,6 +2610,18 @@ name|stk
 operator|->
 name|prev
 expr_stmt|;
+name|free
+argument_list|(
+operator|(
+name|char
+operator|*
+operator|)
+name|el
+operator|->
+name|src
+argument_list|)
+expr_stmt|;
+comment|/* see strdup() below */
 name|clear_exclude_list
 argument_list|(
 name|el
@@ -2724,6 +2773,7 @@ operator|->
 name|exclude_per_dir
 argument_list|)
 expr_stmt|;
+comment|/* 		 * dir->basebuf gets reused by the traversal, but we 		 * need fname to remain unchanged to ensure the src 		 * member of each struct exclude correctly 		 * back-references its source file.  Other invocations 		 * of add_exclude_list provide stable strings, so we 		 * strdup() and free() here in the caller. 		 */
 name|el
 operator|=
 name|add_exclude_list
@@ -2731,6 +2781,13 @@ argument_list|(
 name|dir
 argument_list|,
 name|EXC_DIRS
+argument_list|,
+name|strdup
+argument_list|(
+name|dir
+operator|->
+name|basebuf
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|stk

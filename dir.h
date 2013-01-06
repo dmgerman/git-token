@@ -99,10 +99,24 @@ name|char
 modifier|*
 name|filebuf
 decl_stmt|;
+comment|/* origin of list, e.g. path to filename, or descriptive string */
+DECL|member|src
+specifier|const
+name|char
+modifier|*
+name|src
+decl_stmt|;
 DECL|struct|exclude
 struct|struct
 name|exclude
 block|{
+comment|/* 		 * This allows callers of last_exclude_matching() etc. 		 * to determine the origin of the matching pattern. 		 */
+DECL|member|el
+name|struct
+name|exclude_list
+modifier|*
+name|el
+decl_stmt|;
 DECL|member|pattern
 specifier|const
 name|char
@@ -130,6 +144,11 @@ decl_stmt|;
 DECL|member|flags
 name|int
 name|flags
+decl_stmt|;
+comment|/* 		 * Counting starts from 1 for line numbers in ignore files, 		 * and from -1 decrementing for patterns from CLI args. 		 */
+DECL|member|srcpos
+name|int
+name|srcpos
 decl_stmt|;
 DECL|member|excludes
 block|}
@@ -708,6 +727,11 @@ name|dir
 parameter_list|,
 name|int
 name|group_type
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|src
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -806,6 +830,9 @@ name|struct
 name|exclude_list
 modifier|*
 name|el
+parameter_list|,
+name|int
+name|srcpos
 parameter_list|)
 function_decl|;
 end_function_decl

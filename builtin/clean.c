@@ -514,6 +514,8 @@ operator|&
 name|dir
 argument_list|,
 name|EXC_CMDL
+argument_list|,
+literal|"--exclude option"
 argument_list|)
 expr_stmt|;
 for|for
@@ -558,6 +560,13 @@ name|el
 index|[
 literal|0
 index|]
+argument_list|,
+operator|-
+operator|(
+name|i
+operator|+
+literal|1
+operator|)
 argument_list|)
 expr_stmt|;
 name|pathspec
