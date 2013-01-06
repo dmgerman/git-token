@@ -3432,6 +3432,15 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|!
+operator|(
+name|dir
+operator|->
+name|flags
+operator|&
+name|DIR_SHOW_IGNORED
+operator|)
+operator|&&
 name|cache_name_exists
 argument_list|(
 name|pathname
@@ -4136,7 +4145,7 @@ operator|&
 name|DIR_SHOW_IGNORED
 condition|)
 block|{
-comment|/* 		 * Optimization: 		 * Don't spend time on indexed files, they won't be 		 * added to the list anyway 		 */
+comment|/* Always exclude indexed files */
 name|struct
 name|cache_entry
 modifier|*
