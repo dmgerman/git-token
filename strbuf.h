@@ -943,6 +943,28 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Append s to sb, with the characters '<', '>', '&' and '"' converted  * into XML entities.  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|void
+name|strbuf_addstr_xml_quoted
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+name|sb
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|s
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function
 DECL|function|strbuf_complete_line
 specifier|static
