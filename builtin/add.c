@@ -1118,9 +1118,6 @@ modifier|*
 modifier|*
 name|validate_pathspec
 parameter_list|(
-name|int
-name|argc
-parameter_list|,
 specifier|const
 name|char
 modifier|*
@@ -1431,8 +1428,6 @@ name|pathspec
 operator|=
 name|validate_pathspec
 argument_list|(
-name|argc
-argument_list|,
 name|argv
 argument_list|,
 name|prefix
@@ -2509,8 +2504,6 @@ name|pathspec
 operator|=
 name|validate_pathspec
 argument_list|(
-name|argc
-argument_list|,
 name|argv
 argument_list|,
 name|prefix
