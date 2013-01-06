@@ -3796,8 +3796,6 @@ operator|->
 name|pid
 argument_list|,
 literal|"child process"
-argument_list|,
-literal|0
 argument_list|)
 return|;
 else|#
