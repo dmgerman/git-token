@@ -77,7 +77,7 @@ value|16
 end_define
 
 begin_comment
-comment|/*  * Each .gitignore file will be parsed into patterns which are then  * appended to the relevant exclude_list (either EXC_DIRS or  * EXC_FILE).  exclude_lists are also used to represent the list of  * --exclude values passed via CLI args (EXC_CMDL).  */
+comment|/*  * Each excludes file will be parsed into a fresh exclude_list which  * is appended to the relevant exclude_list_group (either EXC_DIRS or  * EXC_FILE).  An exclude_list within the EXC_CMDL exclude_list_group  * can also be used to represent the list of --exclude values passed  * via CLI args.  */
 end_comment
 
 begin_struct
@@ -92,6 +92,12 @@ decl_stmt|;
 DECL|member|alloc
 name|int
 name|alloc
+decl_stmt|;
+comment|/* remember pointer to exclude file contents so we can free() */
+DECL|member|filebuf
+name|char
+modifier|*
+name|filebuf
 decl_stmt|;
 DECL|struct|exclude
 struct|struct
@@ -151,12 +157,6 @@ modifier|*
 name|prev
 decl_stmt|;
 comment|/* the struct exclude_stack for the parent directory */
-DECL|member|filebuf
-name|char
-modifier|*
-name|filebuf
-decl_stmt|;
-comment|/* remember pointer to per-directory exclude file contents so we can free() */
 DECL|member|baselen
 name|int
 name|baselen
@@ -164,6 +164,29 @@ decl_stmt|;
 DECL|member|exclude_ix
 name|int
 name|exclude_ix
+decl_stmt|;
+comment|/* index of exclude_list within EXC_DIRS exclude_list_group */
+block|}
+struct|;
+end_struct
+
+begin_struct
+DECL|struct|exclude_list_group
+struct|struct
+name|exclude_list_group
+block|{
+DECL|member|nr
+DECL|member|alloc
+name|int
+name|nr
+decl_stmt|,
+name|alloc
+decl_stmt|;
+DECL|member|el
+name|struct
+name|exclude_list
+modifier|*
+name|el
 decl_stmt|;
 block|}
 struct|;
@@ -249,15 +272,7 @@ name|char
 modifier|*
 name|exclude_per_dir
 decl_stmt|;
-DECL|member|exclude_list
-name|struct
-name|exclude_list
-name|exclude_list
-index|[
-literal|3
-index|]
-decl_stmt|;
-comment|/* 	 * We maintain three exclude pattern lists: 	 * EXC_CMDL lists patterns explicitly given on the command line. 	 * EXC_DIRS lists patterns obtained from per-directory ignore files. 	 * EXC_FILE lists patterns from fallback ignore files. 	 */
+comment|/* 	 * We maintain three groups of exclude pattern lists: 	 * 	 * EXC_CMDL lists patterns explicitly given on the command line. 	 * EXC_DIRS lists patterns obtained from per-directory ignore files. 	 * EXC_FILE lists patterns from fallback ignore files, e.g. 	 *   - .git/info/exclude 	 *   - core.excludesfile 	 * 	 * Each group contains multiple exclude lists, a single list 	 * per source. 	 */
 DECL|macro|EXC_CMDL
 define|#
 directive|define
@@ -273,6 +288,14 @@ define|#
 directive|define
 name|EXC_FILE
 value|2
+DECL|member|exclude_list_group
+name|struct
+name|exclude_list_group
+name|exclude_list_group
+index|[
+literal|3
+index|]
+decl_stmt|;
 comment|/* 	 * Temporary variables which are used during loading of the 	 * per-directory exclude lists. 	 * 	 * exclude_stack points to the top of the exclude_stack, and 	 * basebuf contains the full path to the current 	 * (sub)directory in the traversal. 	 */
 DECL|member|exclude_stack
 name|struct
@@ -673,6 +696,24 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|struct
+name|exclude_list
+modifier|*
+name|add_exclude_list
+parameter_list|(
+name|struct
+name|dir_struct
+modifier|*
+name|dir
+parameter_list|,
+name|int
+name|group_type
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|int
 name|add_excludes_from_file_to_list
 parameter_list|(
@@ -688,11 +729,6 @@ name|base
 parameter_list|,
 name|int
 name|baselen
-parameter_list|,
-name|char
-modifier|*
-modifier|*
-name|buf_p
 parameter_list|,
 name|struct
 name|exclude_list
