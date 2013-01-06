@@ -744,7 +744,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Given a name and a list of pathspecs, see if the name matches  * any of the pathspecs.  The caller is also interested in seeing  * all pathspec matches some names it calls this function with  * (otherwise the user could have mistyped the unmatched pathspec),  * and a mark is left in seen[] array for pathspec element that  * actually matched anything.  */
+comment|/*  * Given a name and a list of pathspecs, returns the nature of the  * closest (i.e. most specific) match of the name to any of the  * pathspecs.  *  * The caller typically calls this multiple times with the same  * pathspec and seen[] array but with different name/namelen  * (e.g. entries from the index) and is interested in seeing if and  * how each pathspec matches all the names it calls this function  * with.  A mark is left in the seen[] array for each pathspec element  * indicating the closest type of match that element achieved, so if  * seen[n] remains zero after multiple invocations, that means the nth  * pathspec did not match any names, which could indicate that the  * user mistyped the nth pathspec.  */
 end_comment
 
 begin_function
@@ -1026,7 +1026,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Given a name and a list of pathspecs, see if the name matches  * any of the pathspecs.  The caller is also interested in seeing  * all pathspec matches some names it calls this function with  * (otherwise the user could have mistyped the unmatched pathspec),  * and a mark is left in seen[] array for pathspec element that  * actually matched anything.  */
+comment|/*  * Given a name and a list of pathspecs, returns the nature of the  * closest (i.e. most specific) match of the name to any of the  * pathspecs.  *  * The caller typically calls this multiple times with the same  * pathspec and seen[] array but with different name/namelen  * (e.g. entries from the index) and is interested in seeing if and  * how each pathspec matches all the names it calls this function  * with.  A mark is left in the seen[] array for each pathspec element  * indicating the closest type of match that element achieved, so if  * seen[n] remains zero after multiple invocations, that means the nth  * pathspec did not match any names, which could indicate that the  * user mistyped the nth pathspec.  */
 end_comment
 
 begin_function

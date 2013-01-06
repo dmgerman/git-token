@@ -333,6 +333,10 @@ block|}
 struct|;
 end_struct
 
+begin_comment
+comment|/*  * The ordering of these constants is significant, with  * higher-numbered match types signifying "closer" (i.e. more  * specific) matches which will override lower-numbered match types  * when populating the seen[] array.  */
+end_comment
+
 begin_define
 DECL|macro|MATCHED_RECURSIVELY
 define|#
