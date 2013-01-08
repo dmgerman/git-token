@@ -3248,6 +3248,24 @@ argument_list|,
 name|line
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|object
+operator|->
+name|type
+operator|!=
+name|OBJ_COMMIT
+condition|)
+name|die
+argument_list|(
+literal|"invalid shallow object %s"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|sha1
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|object
 operator|->
 name|flags
