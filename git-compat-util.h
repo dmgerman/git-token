@@ -3474,8 +3474,30 @@ directive|undef
 name|toupper
 end_undef
 
+begin_undef
+DECL|macro|iscntrl
+undef|#
+directive|undef
+name|iscntrl
+end_undef
+
+begin_undef
+DECL|macro|ispunct
+undef|#
+directive|undef
+name|ispunct
+end_undef
+
+begin_undef
+DECL|macro|isxdigit
+undef|#
+directive|undef
+name|isxdigit
+end_undef
+
 begin_decl_stmt
 specifier|extern
+specifier|const
 name|unsigned
 name|char
 name|sane_ctype
@@ -3531,6 +3553,22 @@ define|#
 directive|define
 name|GIT_PATHSPEC_MAGIC
 value|0x20
+end_define
+
+begin_define
+DECL|macro|GIT_CNTRL
+define|#
+directive|define
+name|GIT_CNTRL
+value|0x40
+end_define
+
+begin_define
+DECL|macro|GIT_PUNCT
+define|#
+directive|define
+name|GIT_PUNCT
+value|0x80
 end_define
 
 begin_define
@@ -3654,6 +3692,39 @@ parameter_list|(
 name|x
 parameter_list|)
 value|sane_istest(x,GIT_GLOB_SPECIAL | GIT_REGEX_SPECIAL)
+end_define
+
+begin_define
+DECL|macro|iscntrl
+define|#
+directive|define
+name|iscntrl
+parameter_list|(
+name|x
+parameter_list|)
+value|(sane_istest(x,GIT_CNTRL))
+end_define
+
+begin_define
+DECL|macro|ispunct
+define|#
+directive|define
+name|ispunct
+parameter_list|(
+name|x
+parameter_list|)
+value|sane_istest(x, GIT_PUNCT | GIT_REGEX_SPECIAL | \ 		GIT_GLOB_SPECIAL | GIT_PATHSPEC_MAGIC)
+end_define
+
+begin_define
+DECL|macro|isxdigit
+define|#
+directive|define
+name|isxdigit
+parameter_list|(
+name|x
+parameter_list|)
+value|(hexval_table[x] != -1)
 end_define
 
 begin_define

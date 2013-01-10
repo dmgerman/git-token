@@ -161,6 +161,13 @@ begin_if
 if|#
 directive|if
 name|defined
+name|NO_FNMATCH
+operator|||
+name|defined
+name|NO_FNMATCH_CASEFOLD
+operator|||
+expr|\
+name|defined
 name|_LIBC
 operator|||
 operator|!

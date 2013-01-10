@@ -21,6 +21,12 @@ directive|include
 file|"refs.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"wildmatch.h"
+end_include
+
 begin_struct
 DECL|struct|path_simplify
 struct|struct
@@ -3126,13 +3132,17 @@ name|prefix
 expr_stmt|;
 block|}
 return|return
-name|fnmatch_icase
+name|wildmatch
 argument_list|(
 name|pattern
 argument_list|,
 name|name
 argument_list|,
-name|FNM_PATHNAME
+name|ignore_case
+condition|?
+name|FNM_CASEFOLD
+else|:
+literal|0
 argument_list|)
 operator|==
 literal|0
