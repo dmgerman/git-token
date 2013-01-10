@@ -12,6 +12,10 @@ directive|define
 name|DIR_H
 end_define
 
+begin_comment
+comment|/* See Documentation/technical/api-directory-listing.txt */
+end_comment
+
 begin_include
 include|#
 directive|include
@@ -72,6 +76,10 @@ name|EXC_FLAG_NEGATIVE
 value|16
 end_define
 
+begin_comment
+comment|/*  * Each .gitignore file will be parsed into patterns which are then  * appended to the relevant exclude_list (either EXC_DIRS or  * EXC_FILE).  exclude_lists are also used to represent the list of  * --exclude values passed via CLI args (EXC_CMDL).  */
+end_comment
+
 begin_struct
 DECL|struct|exclude_list
 struct|struct
@@ -127,6 +135,10 @@ block|}
 struct|;
 end_struct
 
+begin_comment
+comment|/*  * The contents of the per-directory exclude files are lazily read on  * demand and then cached in memory, one per exclude_stack struct, in  * order to avoid opening and parsing each one every time that  * directory is traversed.  */
+end_comment
+
 begin_struct
 DECL|struct|exclude_stack
 struct|struct
@@ -138,11 +150,13 @@ name|exclude_stack
 modifier|*
 name|prev
 decl_stmt|;
+comment|/* the struct exclude_stack for the parent directory */
 DECL|member|filebuf
 name|char
 modifier|*
 name|filebuf
 decl_stmt|;
+comment|/* remember pointer to per-directory exclude file contents so we can free() */
 DECL|member|baselen
 name|int
 name|baselen
@@ -259,6 +273,7 @@ define|#
 directive|define
 name|EXC_FILE
 value|2
+comment|/* 	 * Temporary variables which are used during loading of the 	 * per-directory exclude lists. 	 * 	 * exclude_stack points to the top of the exclude_stack, and 	 * basebuf contains the full path to the current 	 * (sub)directory in the traversal. 	 */
 DECL|member|exclude_stack
 name|struct
 name|exclude_stack
@@ -443,7 +458,7 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|int
-name|excluded_from_list
+name|is_excluded_from_list
 parameter_list|(
 specifier|const
 name|char
@@ -551,7 +566,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * The excluded() API is meant for callers that check each level of leading  * directory hierarchies with excluded() to avoid recursing into excluded  * directories.  Callers that do not do so should use this API instead.  */
+comment|/*  * The is_excluded() API is meant for callers that check each level of leading  * directory hierarchies with is_excluded() to avoid recursing into excluded  * directories.  Callers that do not do so should use this API instead.  */
 end_comment
 
 begin_struct
@@ -564,6 +579,12 @@ name|struct
 name|dir_struct
 modifier|*
 name|dir
+decl_stmt|;
+DECL|member|exclude
+name|struct
+name|exclude
+modifier|*
+name|exclude
 decl_stmt|;
 DECL|member|path
 name|struct
@@ -604,8 +625,33 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|struct
+name|exclude
+modifier|*
+name|last_exclude_matching_path
+parameter_list|(
+name|struct
+name|path_exclude_check
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+parameter_list|,
 name|int
-name|path_excluded
+name|namelen
+parameter_list|,
+name|int
+modifier|*
+name|dtype
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|is_path_excluded
 parameter_list|(
 name|struct
 name|path_exclude_check
@@ -651,7 +697,7 @@ parameter_list|,
 name|struct
 name|exclude_list
 modifier|*
-name|which
+name|el
 parameter_list|,
 name|int
 name|check_index
@@ -723,7 +769,7 @@ parameter_list|,
 name|struct
 name|exclude_list
 modifier|*
-name|which
+name|el
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -731,7 +777,7 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|void
-name|free_excludes
+name|clear_exclude_list
 parameter_list|(
 name|struct
 name|exclude_list

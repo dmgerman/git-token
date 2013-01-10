@@ -4207,7 +4207,7 @@ decl_stmt|;
 name|int
 name|ret
 init|=
-name|excluded_from_list
+name|is_excluded_from_list
 argument_list|(
 name|prefix
 argument_list|,
@@ -4279,7 +4279,7 @@ argument_list|)
 condition|)
 break|break;
 block|}
-comment|/* 	 * TODO: check el, if there are no patterns that may conflict 	 * with ret (iow, we know in advance the incl/excl 	 * decision for the entire directory), clear flag here without 	 * calling clear_ce_flags_1(). That function will call 	 * the expensive excluded_from_list() on every entry. 	 */
+comment|/* 	 * TODO: check el, if there are no patterns that may conflict 	 * with ret (iow, we know in advance the incl/excl 	 * decision for the entire directory), clear flag here without 	 * calling clear_ce_flags_1(). That function will call 	 * the expensive is_excluded_from_list() on every entry. 	 */
 return|return
 name|clear_ce_flags_1
 argument_list|(
@@ -4563,7 +4563,7 @@ argument_list|)
 expr_stmt|;
 name|ret
 operator|=
-name|excluded_from_list
+name|is_excluded_from_list
 argument_list|(
 name|ce
 operator|->
@@ -5560,7 +5560,7 @@ name|result
 expr_stmt|;
 name|done
 label|:
-name|free_excludes
+name|clear_exclude_list
 argument_list|(
 operator|&
 name|el
@@ -6539,7 +6539,7 @@ name|o
 operator|->
 name|dir
 operator|&&
-name|path_excluded
+name|is_path_excluded
 argument_list|(
 name|o
 operator|->
