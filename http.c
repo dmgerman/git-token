@@ -1393,6 +1393,15 @@ argument_list|)
 expr_stmt|;
 name|cert_auth
 operator|.
+name|username
+operator|=
+name|xstrdup
+argument_list|(
+literal|""
+argument_list|)
+expr_stmt|;
+name|cert_auth
+operator|.
 name|path
 operator|=
 name|xstrdup
