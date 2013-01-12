@@ -32,7 +32,7 @@ end_include
 begin_include
 include|#
 directive|include
-file|"merge-file.h"
+file|"merge-blobs.h"
 end_include
 
 begin_function
@@ -453,10 +453,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|merge_file
+DECL|function|merge_blobs
 name|void
 modifier|*
-name|merge_file
+name|merge_blobs
 parameter_list|(
 specifier|const
 name|char
