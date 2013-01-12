@@ -651,6 +651,10 @@ DECL|member|numbered_files
 name|int
 name|numbered_files
 decl_stmt|;
+DECL|member|reroll_count
+name|int
+name|reroll_count
+decl_stmt|;
 DECL|member|message_id
 name|char
 modifier|*
