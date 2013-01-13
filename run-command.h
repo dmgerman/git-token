@@ -160,6 +160,20 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|char
+modifier|*
+name|find_hook
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|name
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|int
 name|run_hook
 parameter_list|(
