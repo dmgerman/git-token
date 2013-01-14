@@ -298,7 +298,7 @@ expr_stmt|;
 name|sig
 operator|=
 name|ret
-operator|+
+operator|-
 literal|128
 expr_stmt|;
 name|sigchain_pop
