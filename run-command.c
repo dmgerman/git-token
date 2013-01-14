@@ -1118,9 +1118,6 @@ specifier|const
 name|char
 modifier|*
 name|argv0
-parameter_list|,
-name|int
-name|silent_exec_failure
 parameter_list|)
 block|{
 name|int
@@ -1219,6 +1216,16 @@ argument_list|(
 name|status
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|code
+operator|!=
+name|SIGINT
+operator|&&
+name|code
+operator|!=
+name|SIGQUIT
+condition|)
 name|error
 argument_list|(
 literal|"%s died of signal %d"
@@ -2173,10 +2180,6 @@ name|argv
 index|[
 literal|0
 index|]
-argument_list|,
-name|cmd
-operator|->
-name|silent_exec_failure
 argument_list|)
 expr_stmt|;
 name|failed_errno
@@ -2793,10 +2796,6 @@ name|argv
 index|[
 literal|0
 index|]
-argument_list|,
-name|cmd
-operator|->
-name|silent_exec_failure
 argument_list|)
 return|;
 block|}
@@ -3797,8 +3796,6 @@ operator|->
 name|pid
 argument_list|,
 literal|"child process"
-argument_list|,
-literal|0
 argument_list|)
 return|;
 else|#
