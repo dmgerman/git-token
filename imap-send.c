@@ -542,10 +542,6 @@ name|struct
 name|store
 name|gen
 decl_stmt|;
-DECL|member|uidvalidity
-name|int
-name|uidvalidity
-decl_stmt|;
 DECL|member|imap
 name|struct
 name|imap
