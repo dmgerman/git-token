@@ -1907,10 +1907,20 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|!
 name|err
-operator|&&
-operator|(
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"Could not reset index file to revision '%s'."
+argument_list|)
+argument_list|,
+name|rev
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|write_cache
 argument_list|(
 name|newfd
@@ -1924,32 +1934,13 @@ name|commit_locked_index
 argument_list|(
 name|lock
 argument_list|)
-operator|)
-condition|)
-block|{
-name|err
-operator|=
-name|error
-argument_list|(
-name|_
-argument_list|(
-literal|"Could not write new index file."
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|err
 condition|)
 name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"Could not reset index file to revision '%s'."
+literal|"Could not write new index file."
 argument_list|)
-argument_list|,
-name|rev
 argument_list|)
 expr_stmt|;
 block|}
