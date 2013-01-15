@@ -64,53 +64,6 @@ endif|#
 directive|endif
 end_endif
 
-begin_struct
-DECL|struct|store_conf
-struct|struct
-name|store_conf
-block|{
-DECL|member|name
-name|char
-modifier|*
-name|name
-decl_stmt|;
-DECL|member|path
-specifier|const
-name|char
-modifier|*
-name|path
-decl_stmt|;
-comment|/* should this be here? its interpretation is driver-specific */
-DECL|member|map_inbox
-name|char
-modifier|*
-name|map_inbox
-decl_stmt|;
-DECL|member|trash
-name|char
-modifier|*
-name|trash
-decl_stmt|;
-DECL|member|max_size
-name|unsigned
-name|max_size
-decl_stmt|;
-comment|/* off_t is overkill */
-DECL|member|trash_remote_new
-DECL|member|trash_only_new
-name|unsigned
-name|trash_remote_new
-range|:
-literal|1
-decl_stmt|,
-name|trash_only_new
-range|:
-literal|1
-decl_stmt|;
-block|}
-struct|;
-end_struct
-
 begin_comment
 comment|/* For message->status */
 end_comment
@@ -191,13 +144,6 @@ DECL|struct|store
 struct|struct
 name|store
 block|{
-DECL|member|conf
-name|struct
-name|store_conf
-modifier|*
-name|conf
-decl_stmt|;
-comment|/* foreign */
 comment|/* currently open mailbox */
 DECL|member|name
 specifier|const
