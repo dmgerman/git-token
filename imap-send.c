@@ -77,33 +77,10 @@ modifier|*
 name|name
 decl_stmt|;
 comment|/* foreign! maybe preset? */
-DECL|member|path
-name|char
-modifier|*
-name|path
-decl_stmt|;
-comment|/* own */
 DECL|member|uidvalidity
 name|int
 name|uidvalidity
 decl_stmt|;
-DECL|member|opts
-name|unsigned
-name|char
-name|opts
-decl_stmt|;
-comment|/* maybe preset? */
-comment|/* note that the following do _not_ reflect stats from msgs, but mailbox totals */
-DECL|member|count
-name|int
-name|count
-decl_stmt|;
-comment|/* # of messages */
-DECL|member|recent
-name|int
-name|recent
-decl_stmt|;
-comment|/* # of recent messages - don't trust this beyond the initial read */
 block|}
 struct|;
 end_struct
@@ -4287,6 +4264,7 @@ argument_list|,
 name|arg
 argument_list|)
 condition|)
+block|{
 name|parse_capability
 argument_list|(
 name|imap
@@ -4294,6 +4272,7 @@ argument_list|,
 name|cmd
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -4308,49 +4287,8 @@ argument_list|)
 operator|)
 condition|)
 block|{
-if|if
-condition|(
-operator|!
-name|strcmp
-argument_list|(
-literal|"EXISTS"
-argument_list|,
-name|arg1
-argument_list|)
-condition|)
-name|ctx
-operator|->
-name|gen
-operator|.
-name|count
-operator|=
-name|atoi
-argument_list|(
-name|arg
-argument_list|)
-expr_stmt|;
-elseif|else
-if|if
-condition|(
-operator|!
-name|strcmp
-argument_list|(
-literal|"RECENT"
-argument_list|,
-name|arg1
-argument_list|)
-condition|)
-name|ctx
-operator|->
-name|gen
-operator|.
-name|recent
-operator|=
-name|atoi
-argument_list|(
-name|arg
-argument_list|)
-expr_stmt|;
+empty_stmt|;
+comment|/* 				   * Unhandled response-data with at least two words. 				   * Ignore it. 				   * 				   * NEEDSWORK: Previously this case handled '<num> EXISTS' 				   * and '<num> RECENT' but as a probably-unintended side 				   * effect it ignores other unrecognized two-word 				   * responses.  imap-send doesn't ever try to read 				   * messages or mailboxes these days, so consider 				   * eliminating this case. 				   */
 block|}
 else|else
 block|{
@@ -7299,11 +7237,6 @@ condition|)
 return|return
 name|ret
 return|;
-name|gctx
-operator|->
-name|count
-operator|++
-expr_stmt|;
 return|return
 name|DRV_OK
 return|;
