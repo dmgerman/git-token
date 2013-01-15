@@ -982,7 +982,7 @@ index|[
 literal|20
 index|]
 decl_stmt|;
-comment|/* 	 * Possible arguments are: 	 * 	 * git reset [-opts]<rev><paths>... 	 * git reset [-opts]<rev> --<paths>... 	 * git reset [-opts] --<paths>... 	 * git reset [-opts]<paths>... 	 * 	 * At this point, argv points immediately after [-opts]. 	 */
+comment|/* 	 * Possible arguments are: 	 * 	 * git reset [-opts] [<rev>] 	 * git reset [-opts]<tree> [<paths>...] 	 * git reset [-opts]<tree> -- [<paths>...] 	 * git reset [-opts] -- [<paths>...] 	 * git reset [-opts]<paths>... 	 * 	 * At this point, argv points immediately after [-opts]. 	 */
 if|if
 condition|(
 name|argv
@@ -1042,10 +1042,17 @@ operator|+=
 literal|2
 expr_stmt|;
 block|}
-comment|/* 		 * Otherwise, argv[0] could be either<rev> or<paths> and 		 * has to be unambiguous. 		 */
+comment|/* 		 * Otherwise, argv[0] could be either<rev> or<paths> and 		 * has to be unambiguous. If there is a single argument, it 		 * can not be a tree 		 */
 elseif|else
 if|if
 condition|(
+operator|(
+operator|!
+name|argv
+index|[
+literal|1
+index|]
+operator|&&
 operator|!
 name|get_sha1_committish
 argument_list|(
@@ -1056,9 +1063,28 @@ index|]
 argument_list|,
 name|unused
 argument_list|)
+operator|)
+operator|||
+operator|(
+name|argv
+index|[
+literal|1
+index|]
+operator|&&
+operator|!
+name|get_sha1_treeish
+argument_list|(
+name|argv
+index|[
+literal|0
+index|]
+argument_list|,
+name|unused
+argument_list|)
+operator|)
 condition|)
 block|{
-comment|/* 			 * Ok, argv[0] looks like a rev; it should not 			 * be a filename. 			 */
+comment|/* 			 * Ok, argv[0] looks like a commit/tree; it should not 			 * be a filename. 			 */
 name|verify_non_filename
 argument_list|(
 name|prefix
@@ -1335,11 +1361,6 @@ name|pathspec
 init|=
 name|NULL
 decl_stmt|;
-name|struct
-name|commit
-modifier|*
-name|commit
-decl_stmt|;
 specifier|const
 name|struct
 name|option
@@ -1500,6 +1521,17 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+name|pathspec
+condition|)
+block|{
+name|struct
+name|commit
+modifier|*
+name|commit
+decl_stmt|;
+if|if
+condition|(
 name|get_sha1_committish
 argument_list|(
 name|rev
@@ -1511,13 +1543,12 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"Failed to resolve '%s' as a valid ref."
+literal|"Failed to resolve '%s' as a valid revision."
 argument_list|)
 argument_list|,
 name|rev
 argument_list|)
 expr_stmt|;
-comment|/* 	 * NOTE: As "git reset $treeish -- $path" should be usable on 	 * any tree-ish, this is not strictly correct. We are not 	 * moving the HEAD to any commit; we are merely resetting the 	 * entries in the index to that of a treeish. 	 */
 name|commit
 operator|=
 name|lookup_commit_reference
@@ -1551,6 +1582,67 @@ operator|.
 name|sha1
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|struct
+name|tree
+modifier|*
+name|tree
+decl_stmt|;
+if|if
+condition|(
+name|get_sha1_treeish
+argument_list|(
+name|rev
+argument_list|,
+name|sha1
+argument_list|)
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"Failed to resolve '%s' as a valid tree."
+argument_list|)
+argument_list|,
+name|rev
+argument_list|)
+expr_stmt|;
+name|tree
+operator|=
+name|parse_tree_indirect
+argument_list|(
+name|sha1
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|tree
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"Could not parse object '%s'."
+argument_list|)
+argument_list|,
+name|rev
+argument_list|)
+expr_stmt|;
+name|hashcpy
+argument_list|(
+name|sha1
+argument_list|,
+name|tree
+operator|->
+name|object
+operator|.
+name|sha1
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|patch_mode
@@ -1880,7 +1972,10 @@ name|quiet
 condition|)
 name|print_new_head_line
 argument_list|(
-name|commit
+name|lookup_commit_reference
+argument_list|(
+name|sha1
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|remove_branch_state
