@@ -597,26 +597,6 @@ block|}
 decl_stmt|;
 end_decl_stmt
 
-begin_struct
-DECL|struct|imap_store_conf
-struct|struct
-name|imap_store_conf
-block|{
-DECL|member|gen
-name|struct
-name|store_conf
-name|gen
-decl_stmt|;
-DECL|member|server
-name|struct
-name|imap_server_conf
-modifier|*
-name|server
-decl_stmt|;
-block|}
-struct|;
-end_struct
-
 begin_define
 DECL|macro|NIL
 define|#
