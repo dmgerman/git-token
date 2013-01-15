@@ -1135,9 +1135,6 @@ modifier|*
 modifier|*
 name|parse_args
 parameter_list|(
-name|int
-name|argc
-parameter_list|,
 specifier|const
 name|char
 modifier|*
@@ -1156,11 +1153,6 @@ modifier|*
 name|rev_ret
 parameter_list|)
 block|{
-name|int
-name|i
-init|=
-literal|0
-decl_stmt|;
 specifier|const
 name|char
 modifier|*
@@ -1175,12 +1167,13 @@ index|[
 literal|20
 index|]
 decl_stmt|;
-comment|/* 	 * Possible arguments are: 	 * 	 * git reset [-opts]<rev><paths>... 	 * git reset [-opts]<rev> --<paths>... 	 * git reset [-opts] --<paths>... 	 * git reset [-opts]<paths>... 	 * 	 * At this point, argv[i] points immediately after [-opts]. 	 */
+comment|/* 	 * Possible arguments are: 	 * 	 * git reset [-opts]<rev><paths>... 	 * git reset [-opts]<rev> --<paths>... 	 * git reset [-opts] --<paths>... 	 * git reset [-opts]<paths>... 	 * 	 * At this point, argv points immediately after [-opts]. 	 */
 if|if
 condition|(
-name|i
-operator|<
-name|argc
+name|argv
+index|[
+literal|0
+index|]
 condition|)
 block|{
 if|if
@@ -1190,14 +1183,14 @@ name|strcmp
 argument_list|(
 name|argv
 index|[
-name|i
+literal|0
 index|]
 argument_list|,
 literal|"--"
 argument_list|)
 condition|)
 block|{
-name|i
+name|argv
 operator|++
 expr_stmt|;
 comment|/* reset to HEAD, possibly with paths */
@@ -1205,19 +1198,16 @@ block|}
 elseif|else
 if|if
 condition|(
-name|i
-operator|+
+name|argv
+index|[
 literal|1
-operator|<
-name|argc
+index|]
 operator|&&
 operator|!
 name|strcmp
 argument_list|(
 name|argv
 index|[
-name|i
-operator|+
 literal|1
 index|]
 argument_list|,
@@ -1229,15 +1219,15 @@ name|rev
 operator|=
 name|argv
 index|[
-name|i
+literal|0
 index|]
 expr_stmt|;
-name|i
+name|argv
 operator|+=
 literal|2
 expr_stmt|;
 block|}
-comment|/* 		 * Otherwise, argv[i] could be either<rev> or<paths> and 		 * has to be unambiguous. 		 */
+comment|/* 		 * Otherwise, argv[0] could be either<rev> or<paths> and 		 * has to be unambiguous. 		 */
 elseif|else
 if|if
 condition|(
@@ -1246,31 +1236,29 @@ name|get_sha1_committish
 argument_list|(
 name|argv
 index|[
-name|i
+literal|0
 index|]
 argument_list|,
 name|unused
 argument_list|)
 condition|)
 block|{
-comment|/* 			 * Ok, argv[i] looks like a rev; it should not 			 * be a filename. 			 */
+comment|/* 			 * Ok, argv[0] looks like a rev; it should not 			 * be a filename. 			 */
 name|verify_non_filename
 argument_list|(
 name|prefix
 argument_list|,
 name|argv
 index|[
-name|i
+literal|0
 index|]
 argument_list|)
 expr_stmt|;
 name|rev
 operator|=
+operator|*
 name|argv
-index|[
-name|i
 operator|++
-index|]
 expr_stmt|;
 block|}
 else|else
@@ -1282,7 +1270,7 @@ name|prefix
 argument_list|,
 name|argv
 index|[
-name|i
+literal|0
 index|]
 argument_list|,
 literal|1
@@ -1296,17 +1284,16 @@ operator|=
 name|rev
 expr_stmt|;
 return|return
-name|i
-operator|<
-name|argc
+name|argv
+index|[
+literal|0
+index|]
 condition|?
 name|get_pathspec
 argument_list|(
 name|prefix
 argument_list|,
 name|argv
-operator|+
-name|i
 argument_list|)
 else|:
 name|NULL
@@ -1553,8 +1540,6 @@ name|pathspec
 operator|=
 name|parse_args
 argument_list|(
-name|argc
-argument_list|,
 name|argv
 argument_list|,
 name|prefix
