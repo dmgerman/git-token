@@ -244,20 +244,6 @@ block|}
 struct|;
 end_struct
 
-begin_struct
-DECL|struct|msg_data
-struct|struct
-name|msg_data
-block|{
-DECL|member|data
-name|struct
-name|strbuf
-name|data
-decl_stmt|;
-block|}
-struct|;
-end_struct
-
 begin_decl_stmt
 DECL|variable|imap_send_usage
 specifier|static
@@ -7391,7 +7377,7 @@ modifier|*
 name|gctx
 parameter_list|,
 name|struct
-name|msg_data
+name|strbuf
 modifier|*
 name|msg
 parameter_list|)
@@ -7434,10 +7420,7 @@ name|ret
 decl_stmt|;
 name|lf_to_crlf
 argument_list|(
-operator|&
 name|msg
-operator|->
-name|data
 argument_list|)
 expr_stmt|;
 name|memset
@@ -7459,8 +7442,6 @@ name|dlen
 operator|=
 name|msg
 operator|->
-name|data
-operator|.
 name|len
 expr_stmt|;
 name|cb
@@ -7469,10 +7450,7 @@ name|data
 operator|=
 name|strbuf_detach
 argument_list|(
-operator|&
 name|msg
-operator|->
-name|data
 argument_list|,
 name|NULL
 argument_list|)
@@ -8373,12 +8351,10 @@ init|=
 name|STRBUF_INIT
 decl_stmt|;
 name|struct
-name|msg_data
+name|strbuf
 name|msg
 init|=
-block|{
 name|STRBUF_INIT
-block|}
 decl_stmt|;
 name|struct
 name|store
@@ -8666,8 +8642,6 @@ name|all_msgs
 argument_list|,
 operator|&
 name|msg
-operator|.
-name|data
 argument_list|,
 operator|&
 name|ofs
@@ -8684,8 +8658,6 @@ name|wrap_in_html
 argument_list|(
 operator|&
 name|msg
-operator|.
-name|data
 argument_list|)
 expr_stmt|;
 name|r
