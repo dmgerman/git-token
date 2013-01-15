@@ -1954,16 +1954,12 @@ argument_list|,
 name|sha1
 argument_list|)
 expr_stmt|;
-switch|switch
-condition|(
-name|reset_type
-condition|)
-block|{
-case|case
-name|HARD
-case|:
 if|if
 condition|(
+name|reset_type
+operator|==
+name|HARD
+operator|&&
 operator|!
 name|update_ref_status
 operator|&&
@@ -1975,15 +1971,13 @@ argument_list|(
 name|commit
 argument_list|)
 expr_stmt|;
-break|break;
-case|case
-name|SOFT
-case|:
-comment|/* Nothing else to do. */
-break|break;
-case|case
+elseif|else
+if|if
+condition|(
+name|reset_type
+operator|==
 name|MIXED
-case|:
+condition|)
 comment|/* Report what has not been updated. */
 name|update_index_refresh
 argument_list|(
@@ -1998,8 +1992,6 @@ else|:
 name|REFRESH_IN_PORCELAIN
 argument_list|)
 expr_stmt|;
-break|break;
-block|}
 name|remove_branch_state
 argument_list|()
 expr_stmt|;
