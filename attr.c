@@ -3471,6 +3471,8 @@ name|a
 operator|->
 name|u
 operator|.
+name|pat
+operator|.
 name|pattern
 argument_list|,
 name|attr
