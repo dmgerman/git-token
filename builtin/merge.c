@@ -4962,7 +4962,7 @@ argument_list|(
 literal|"Please enter a commit message to explain why this merge is necessary,\n"
 literal|"especially if it merges an updated upstream into a topic branch.\n"
 literal|"\n"
-literal|"Lines starting with '#' will be ignored, and an empty message aborts\n"
+literal|"Lines starting with '%c' will be ignored, and an empty message aborts\n"
 literal|"the commit.\n"
 argument_list|)
 decl_stmt|;
@@ -4985,16 +4985,6 @@ name|strbuf
 name|msg
 init|=
 name|STRBUF_INIT
-decl_stmt|;
-specifier|const
-name|char
-modifier|*
-name|comment
-init|=
-name|_
-argument_list|(
-name|merge_editor_comment
-argument_list|)
 decl_stmt|;
 name|strbuf_addbuf
 argument_list|(
@@ -5019,19 +5009,17 @@ literal|0
 operator|<
 name|option_edit
 condition|)
-name|strbuf_add_lines
+name|strbuf_commented_addf
 argument_list|(
 operator|&
 name|msg
 argument_list|,
-literal|"# "
-argument_list|,
-name|comment
-argument_list|,
-name|strlen
+name|_
 argument_list|(
-name|comment
+name|merge_editor_comment
 argument_list|)
+argument_list|,
+name|comment_line_char
 argument_list|)
 expr_stmt|;
 name|write_merge_msg

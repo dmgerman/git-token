@@ -3768,6 +3768,17 @@ name|precomposed_unicode
 decl_stmt|;
 end_decl_stmt
 
+begin_comment
+comment|/*  * The character that begins a commented line in user-editable file  * that is subject to stripspace.  */
+end_comment
+
+begin_decl_stmt
+specifier|extern
+name|char
+name|comment_line_char
+decl_stmt|;
+end_decl_stmt
+
 begin_enum
 DECL|enum|branch_track
 enum|enum

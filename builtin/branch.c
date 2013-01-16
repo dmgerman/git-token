@@ -3972,16 +3972,18 @@ argument_list|,
 literal|'\n'
 argument_list|)
 expr_stmt|;
-name|strbuf_addf
+name|strbuf_commented_addf
 argument_list|(
 operator|&
 name|buf
 argument_list|,
-literal|"# Please edit the description for the branch\n"
-literal|"#   %s\n"
-literal|"# Lines starting with '#' will be stripped.\n"
+literal|"Please edit the description for the branch\n"
+literal|"  %s\n"
+literal|"Lines starting with '%c' will be stripped.\n"
 argument_list|,
 name|branch_name
+argument_list|,
+name|comment_line_char
 argument_list|)
 expr_stmt|;
 name|fp
