@@ -99,12 +99,12 @@ argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git reset [-q]<commit> [--]<paths>..."
+literal|"git reset [-q]<tree-ish> [--]<paths>..."
 argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git reset --patch [<commit>] [--] [<paths>...]"
+literal|"git reset --patch [<tree-ish>] [--] [<paths>...]"
 argument_list|)
 block|,
 name|NULL
