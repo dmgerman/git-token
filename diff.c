@@ -908,7 +908,6 @@ end_function
 
 begin_function
 DECL|function|parse_algorithm_value
-specifier|static
 name|long
 name|parse_algorithm_value
 parameter_list|(
@@ -21103,6 +21102,63 @@ argument_list|,
 name|HISTOGRAM_DIFF
 argument_list|)
 expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|prefixcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--diff-algorithm="
+argument_list|)
+condition|)
+block|{
+name|long
+name|value
+init|=
+name|parse_algorithm_value
+argument_list|(
+name|arg
+operator|+
+literal|17
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|value
+operator|<
+literal|0
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"option diff-algorithm accepts \"myers\", "
+literal|"\"minimal\", \"patience\" and \"histogram\""
+argument_list|)
+return|;
+comment|/* clear out previous settings */
+name|DIFF_XDL_CLR
+argument_list|(
+name|options
+argument_list|,
+name|NEED_MINIMAL
+argument_list|)
+expr_stmt|;
+name|options
+operator|->
+name|xdl_opts
+operator|&=
+operator|~
+name|XDF_DIFF_ALGORITHM_MASK
+expr_stmt|;
+name|options
+operator|->
+name|xdl_opts
+operator||=
+name|value
+expr_stmt|;
+block|}
 comment|/* flags options */
 elseif|else
 if|if

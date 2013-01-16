@@ -1959,6 +1959,19 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|long
+name|parse_algorithm_value
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|value
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|int
 name|print_stat_summary
 parameter_list|(
