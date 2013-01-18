@@ -5143,13 +5143,11 @@ return|;
 if|if
 condition|(
 operator|!
-name|memcmp
+name|prefixcmp
 argument_list|(
 name|begin
 argument_list|,
 literal|"auto,"
-argument_list|,
-literal|5
 argument_list|)
 condition|)
 block|{
@@ -7028,13 +7026,11 @@ block|}
 if|if
 condition|(
 operator|!
-name|memcmp
+name|prefixcmp
 argument_list|(
 name|line
 argument_list|,
 literal|"parent "
-argument_list|,
-literal|7
 argument_list|)
 condition|)
 block|{
@@ -7119,13 +7115,11 @@ comment|/* 		 * MEDIUM == DEFAULT shows only author with dates. 		 * FULL shows 
 if|if
 condition|(
 operator|!
-name|memcmp
+name|prefixcmp
 argument_list|(
 name|line
 argument_list|,
 literal|"author "
-argument_list|,
-literal|7
 argument_list|)
 condition|)
 block|{
@@ -7157,13 +7151,11 @@ block|}
 if|if
 condition|(
 operator|!
-name|memcmp
+name|prefixcmp
 argument_list|(
 name|line
 argument_list|,
 literal|"committer "
-argument_list|,
-literal|10
 argument_list|)
 operator|&&
 operator|(
