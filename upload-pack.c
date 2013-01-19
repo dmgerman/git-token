@@ -83,6 +83,12 @@ directive|include
 file|"version.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"string-list.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|upload_pack_usage
 specifier|static
@@ -3881,6 +3887,10 @@ expr_stmt|;
 block|}
 end_function
 
+begin_comment
+comment|/* return non-zero if the ref is hidden, otherwise 0 */
+end_comment
+
 begin_function
 DECL|function|mark_our_ref
 specifier|static
@@ -3916,6 +3926,16 @@ argument_list|(
 name|sha1
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|ref_is_hidden
+argument_list|(
+name|refname
+argument_list|)
+condition|)
+return|return
+literal|1
+return|;
 if|if
 condition|(
 operator|!
@@ -3995,6 +4015,8 @@ index|[
 literal|20
 index|]
 decl_stmt|;
+if|if
+condition|(
 name|mark_our_ref
 argument_list|(
 name|refname
@@ -4005,7 +4027,10 @@ name|flag
 argument_list|,
 name|cb_data
 argument_list|)
-expr_stmt|;
+condition|)
+return|return
+literal|0
+return|;
 if|if
 condition|(
 name|capabilities
@@ -4165,6 +4190,40 @@ name|create_pack_file
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+end_function
+
+begin_function
+DECL|function|upload_pack_config
+specifier|static
+name|int
+name|upload_pack_config
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|var
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|value
+parameter_list|,
+name|void
+modifier|*
+name|unused
+parameter_list|)
+block|{
+return|return
+name|parse_hide_refs_config
+argument_list|(
+name|var
+argument_list|,
+name|value
+argument_list|,
+literal|"uploadpack"
+argument_list|)
+return|;
 block|}
 end_function
 
@@ -4389,6 +4448,13 @@ condition|)
 name|die
 argument_list|(
 literal|"attempt to fetch/clone from a shallow repository"
+argument_list|)
+expr_stmt|;
+name|git_config
+argument_list|(
+name|upload_pack_config
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 if|if
