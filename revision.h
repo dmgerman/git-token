@@ -698,6 +698,12 @@ DECL|member|show_log_size
 name|int
 name|show_log_size
 decl_stmt|;
+DECL|member|mailmap
+name|struct
+name|string_list
+modifier|*
+name|mailmap
+decl_stmt|;
 comment|/* Filter by commit log message */
 DECL|member|grep_filter
 name|struct

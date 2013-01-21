@@ -31,6 +31,26 @@ block|}
 struct|;
 end_struct
 
+begin_typedef
+DECL|typedef|compare_strings_fn
+typedef|typedef
+name|int
+function_decl|(
+modifier|*
+name|compare_strings_fn
+function_decl|)
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+parameter_list|)
+function_decl|;
+end_typedef
+
 begin_struct
 DECL|struct|string_list
 struct|struct
@@ -57,6 +77,11 @@ name|strdup_strings
 range|:
 literal|1
 decl_stmt|;
+DECL|member|cmp
+name|compare_strings_fn
+name|cmp
+decl_stmt|;
+comment|/* NULL uses strcmp() */
 block|}
 struct|;
 end_struct
