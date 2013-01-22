@@ -1036,6 +1036,8 @@ if|if
 condition|(
 name|trust_ctime
 operator|&&
+name|check_stat
+operator|&&
 name|ce
 operator|->
 name|ce_ctime
@@ -1059,6 +1061,8 @@ directive|ifdef
 name|USE_NSEC
 if|if
 condition|(
+name|check_stat
+operator|&&
 name|ce
 operator|->
 name|ce_mtime
@@ -1079,6 +1083,8 @@ if|if
 condition|(
 name|trust_ctime
 operator|&&
+name|check_stat
+operator|&&
 name|ce
 operator|->
 name|ce_ctime
@@ -1097,6 +1103,11 @@ name|CTIME_CHANGED
 expr_stmt|;
 endif|#
 directive|endif
+if|if
+condition|(
+name|check_stat
+condition|)
+block|{
 if|if
 condition|(
 name|ce
@@ -1145,12 +1156,15 @@ name|changed
 operator||=
 name|INODE_CHANGED
 expr_stmt|;
+block|}
 ifdef|#
 directive|ifdef
 name|USE_STDEV
 comment|/* 	 * st_dev breaks on network filesystems where different 	 * clients will have different views of what "device" 	 * the filesystem is on 	 */
 if|if
 condition|(
+name|check_stat
+operator|&&
 name|ce
 operator|->
 name|ce_dev
