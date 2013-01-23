@@ -976,6 +976,25 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|message_advice_ref_fetch_first
+specifier|static
+specifier|const
+name|char
+name|message_advice_ref_fetch_first
+index|[]
+init|=
+name|N_
+argument_list|(
+literal|"Updates were rejected because the remote contains work that you do\n"
+literal|"not have locally. This is usually caused by another repository pushing\n"
+literal|"to the same ref. You may want to first merge the remote changes (e.g.,\n"
+literal|"'git pull') before pushing again.\n"
+literal|"See the 'Note about fast-forwards' in 'git push --help' for details."
+argument_list|)
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|message_advice_ref_already_exists
 specifier|static
 specifier|const
@@ -987,6 +1006,23 @@ name|N_
 argument_list|(
 literal|"Updates were rejected because the destination reference already exists\n"
 literal|"in the remote."
+argument_list|)
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|message_advice_ref_needs_force
+specifier|static
+specifier|const
+name|char
+name|message_advice_ref_needs_force
+index|[]
+init|=
+name|N_
+argument_list|(
+literal|"You cannot update a remote ref that points at a non-commit object,\n"
+literal|"or update a remote ref to make it point at a non-commit object,\n"
+literal|"without using the '--force' option.\n"
 argument_list|)
 decl_stmt|;
 end_decl_stmt
@@ -1101,6 +1137,64 @@ argument_list|(
 name|_
 argument_list|(
 name|message_advice_ref_already_exists
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|function|advise_ref_fetch_first
+specifier|static
+name|void
+name|advise_ref_fetch_first
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+if|if
+condition|(
+operator|!
+name|advice_push_fetch_first
+operator|||
+operator|!
+name|advice_push_update_rejected
+condition|)
+return|return;
+name|advise
+argument_list|(
+name|_
+argument_list|(
+name|message_advice_ref_fetch_first
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|function|advise_ref_needs_force
+specifier|static
+name|void
+name|advise_ref_needs_force
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+if|if
+condition|(
+operator|!
+name|advice_push_needs_force
+operator|||
+operator|!
+name|advice_push_update_rejected
+condition|)
+return|return;
+name|advise
+argument_list|(
+name|_
+argument_list|(
+name|message_advice_ref_needs_force
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1273,6 +1367,30 @@ name|REJECT_ALREADY_EXISTS
 condition|)
 block|{
 name|advise_ref_already_exists
+argument_list|()
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|reject_reasons
+operator|&
+name|REJECT_FETCH_FIRST
+condition|)
+block|{
+name|advise_ref_fetch_first
+argument_list|()
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|reject_reasons
+operator|&
+name|REJECT_NEEDS_FORCE
+condition|)
+block|{
+name|advise_ref_needs_force
 argument_list|()
 expr_stmt|;
 block|}
