@@ -1774,11 +1774,20 @@ begin_comment
 comment|/*  * Let callers be aware of the constant return value; this can help  * gcc with -Wuninitialized analysis. We have to restrict this trick to  * gcc, though, because of the variadic macro and the magic ## comma pasting  * behavior. But since we're only trying to help gcc, anyway, it's OK; other  * compilers will fall back to using the function as usual.  */
 end_comment
 
-begin_ifdef
-ifdef|#
-directive|ifdef
+begin_if
+if|#
+directive|if
+name|defined
+argument_list|(
 name|__GNUC__
-end_ifdef
+argument_list|)
+operator|&&
+operator|!
+name|defined
+argument_list|(
+name|__clang__
+argument_list|)
+end_if
 
 begin_define
 DECL|macro|error
