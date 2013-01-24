@@ -1823,6 +1823,16 @@ name|RUN_SETUP
 block|}
 block|,
 block|{
+literal|"check-ignore"
+block|,
+name|cmd_check_ignore
+block|,
+name|RUN_SETUP
+operator||
+name|NEED_WORK_TREE
+block|}
+block|,
+block|{
 literal|"check-ref-format"
 block|,
 name|cmd_check_ref_format
