@@ -198,6 +198,12 @@ name|FILE
 modifier|*
 name|mailname
 decl_stmt|;
+name|struct
+name|strbuf
+name|mailnamebuf
+init|=
+name|STRBUF_INIT
+decl_stmt|;
 name|mailname
 operator|=
 name|fopen
@@ -238,7 +244,8 @@ if|if
 condition|(
 name|strbuf_getline
 argument_list|(
-name|buf
+operator|&
+name|mailnamebuf
 argument_list|,
 name|mailname
 argument_list|,
@@ -265,6 +272,12 @@ name|errno
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|mailnamebuf
+argument_list|)
+expr_stmt|;
 name|fclose
 argument_list|(
 name|mailname
@@ -276,6 +289,20 @@ literal|1
 return|;
 block|}
 comment|/* success! */
+name|strbuf_addbuf
+argument_list|(
+name|buf
+argument_list|,
+operator|&
+name|mailnamebuf
+argument_list|)
+expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|mailnamebuf
+argument_list|)
+expr_stmt|;
 name|fclose
 argument_list|(
 name|mailname
