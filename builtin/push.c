@@ -2057,6 +2057,23 @@ argument_list|,
 name|TRANSPORT_PUSH_PRUNE
 argument_list|)
 block|,
+name|OPT_BIT
+argument_list|(
+literal|0
+argument_list|,
+literal|"no-verify"
+argument_list|,
+operator|&
+name|flags
+argument_list|,
+name|N_
+argument_list|(
+literal|"bypass pre-push hook"
+argument_list|)
+argument_list|,
+name|TRANSPORT_PUSH_NO_HOOK
+argument_list|)
+block|,
 name|OPT_END
 argument_list|()
 block|}
