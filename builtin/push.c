@@ -1004,8 +1004,7 @@ index|[]
 init|=
 name|N_
 argument_list|(
-literal|"Updates were rejected because the destination reference already exists\n"
-literal|"in the remote."
+literal|"Updates were rejected because the tag already exists in the remote."
 argument_list|)
 decl_stmt|;
 end_decl_stmt
