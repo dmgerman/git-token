@@ -4879,12 +4879,9 @@ name|NULL
 condition|)
 name|out
 operator|=
-name|xstrdup
-argument_list|(
 name|commit
 operator|->
 name|buffer
-argument_list|)
 expr_stmt|;
 return|return
 name|out
