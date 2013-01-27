@@ -3221,6 +3221,17 @@ name|object
 modifier|*
 name|o
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|has_sha1_file
+argument_list|(
+name|ref
+operator|->
+name|old_sha1
+argument_list|)
+condition|)
+continue|continue;
 name|o
 operator|=
 name|parse_object
