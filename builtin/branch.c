@@ -5013,11 +5013,12 @@ literal|0
 index|]
 expr_stmt|;
 else|else
-name|usage_with_options
+name|die
 argument_list|(
-name|builtin_branch_usage
-argument_list|,
-name|options
+name|_
+argument_list|(
+literal|"cannot edit description of more than one branch"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|strbuf_addf
@@ -5138,11 +5139,12 @@ literal|1
 argument_list|)
 expr_stmt|;
 else|else
-name|usage_with_options
+name|die
 argument_list|(
-name|builtin_branch_usage
-argument_list|,
-name|options
+name|_
+argument_list|(
+literal|"too many branches for a rename operation"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
