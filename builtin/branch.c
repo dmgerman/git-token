@@ -2514,7 +2514,10 @@ name|char
 modifier|*
 name|sub
 init|=
+name|_
+argument_list|(
 literal|" **** invalid ref ****"
+argument_list|)
 decl_stmt|;
 name|struct
 name|commit
@@ -3271,7 +3274,10 @@ name|filter
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"object '%s' does not point to a commit"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -4992,7 +4998,10 @@ name|detached
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Cannot give description to detached HEAD"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|branch_name
@@ -5058,7 +5067,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"No commit on branch '%s' yet."
+argument_list|)
 argument_list|,
 name|branch_name
 argument_list|)
@@ -5067,7 +5079,10 @@ else|else
 return|return
 name|error
 argument_list|(
-literal|"No such branch '%s'."
+name|_
+argument_list|(
+literal|"No branch named '%s'."
+argument_list|)
 argument_list|,
 name|branch_name
 argument_list|)
