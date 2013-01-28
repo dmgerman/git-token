@@ -2248,6 +2248,59 @@ block|}
 end_function
 
 begin_function
+DECL|function|warn_pathless_add
+specifier|static
+name|void
+name|warn_pathless_add
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|option_name
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|short_name
+parameter_list|)
+block|{
+comment|/* 	 * To be consistent with "git add -p" and most Git 	 * commands, we should default to being tree-wide, but 	 * this is not the original behavior and can't be 	 * changed until users trained themselves not to type 	 * "git add -u" or "git add -A". For now, we warn and 	 * keep the old behavior. Later, this warning can be 	 * turned into a die(...), and eventually we may 	 * reallow the command with a new behavior. 	 */
+name|warning
+argument_list|(
+name|_
+argument_list|(
+literal|"The behavior of 'git add %s (or %s)' with no path argument from a\n"
+literal|"subdirectory of the tree will change in Git 2.0 and should not be used anymore.\n"
+literal|"To add content for the whole tree, run:\n"
+literal|"\n"
+literal|"  git add %s :/\n"
+literal|"  (or git add %s :/)\n"
+literal|"\n"
+literal|"To restrict the command to the current directory, run:\n"
+literal|"\n"
+literal|"  git add %s .\n"
+literal|"  (or git add %s .)\n"
+literal|"\n"
+literal|"With the current Git version, the command is restricted to the current directory."
+argument_list|)
+argument_list|,
+name|option_name
+argument_list|,
+name|short_name
+argument_list|,
+name|option_name
+argument_list|,
+name|short_name
+argument_list|,
+name|option_name
+argument_list|,
+name|short_name
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
 DECL|function|cmd_add
 name|int
 name|cmd_add
@@ -2297,6 +2350,20 @@ decl_stmt|;
 name|char
 modifier|*
 name|seen
+init|=
+name|NULL
+decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|option_with_implicit_dot
+init|=
+name|NULL
+decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|short_option_with_implicit_dot
 init|=
 name|NULL
 decl_stmt|;
@@ -2407,11 +2474,35 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|(
 name|addremove
-operator|||
+condition|)
+block|{
+name|option_with_implicit_dot
+operator|=
+literal|"--all"
+expr_stmt|;
+name|short_option_with_implicit_dot
+operator|=
+literal|"-A"
+expr_stmt|;
+block|}
+if|if
+condition|(
 name|take_worktree_changes
-operator|)
+condition|)
+block|{
+name|option_with_implicit_dot
+operator|=
+literal|"--update"
+expr_stmt|;
+name|short_option_with_implicit_dot
+operator|=
+literal|"-u"
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|option_with_implicit_dot
 operator|&&
 operator|!
 name|argc
@@ -2432,6 +2523,17 @@ block|,
 name|NULL
 block|}
 decl_stmt|;
+if|if
+condition|(
+name|prefix
+condition|)
+name|warn_pathless_add
+argument_list|(
+name|option_with_implicit_dot
+argument_list|,
+name|short_option_with_implicit_dot
+argument_list|)
+expr_stmt|;
 name|argc
 operator|=
 literal|1
