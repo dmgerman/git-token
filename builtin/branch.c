@@ -4886,6 +4886,20 @@ if|if
 condition|(
 name|delete
 condition|)
+block|{
+if|if
+condition|(
+operator|!
+name|argc
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"branch name required"
+argument_list|)
+argument_list|)
+expr_stmt|;
 return|return
 name|delete_branches
 argument_list|(
@@ -4902,6 +4916,7 @@ argument_list|,
 name|quiet
 argument_list|)
 return|;
+block|}
 elseif|else
 if|if
 condition|(
