@@ -93,7 +93,7 @@ struct|;
 end_struct
 
 begin_comment
-comment|/*  * sought contains the full names of remote references that should be  * updated from.  On return, the names that were found on the remote  * will have been removed from the list.  The util members of the  * string_list_items are used internally; they must be NULL on entry  * (and will be NULL on exit).  */
+comment|/*  * sought represents remote references that should be updated from.  * On return, the names that were found on the remote will have been  * marked as such.  */
 end_comment
 
 begin_function_decl
@@ -128,9 +128,13 @@ modifier|*
 name|dest
 parameter_list|,
 name|struct
-name|string_list
+name|ref
+modifier|*
 modifier|*
 name|sought
+parameter_list|,
+name|int
+name|nr_sought
 parameter_list|,
 name|char
 modifier|*
