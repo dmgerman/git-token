@@ -4982,6 +4982,12 @@ name|STRBUF_INIT
 decl_stmt|;
 if|if
 condition|(
+operator|!
+name|argc
+condition|)
+block|{
+if|if
+condition|(
 name|detached
 condition|)
 name|die
@@ -4989,15 +4995,11 @@ argument_list|(
 literal|"Cannot give description to detached HEAD"
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|argc
-condition|)
 name|branch_name
 operator|=
 name|head
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
