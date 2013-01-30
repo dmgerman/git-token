@@ -40,6 +40,15 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|check_stat
+name|int
+name|check_stat
+init|=
+literal|1
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|has_symlinks
 name|int
 name|has_symlinks
