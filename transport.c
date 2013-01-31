@@ -4357,6 +4357,10 @@ condition|)
 block|{
 if|if
 condition|(
+name|head
+operator|!=
+name|NULL
+operator|&&
 operator|!
 name|strcmp
 argument_list|(
