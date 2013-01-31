@@ -286,6 +286,27 @@ value|_UI64_MAX
 end_define
 
 begin_define
+DECL|macro|UINT32_MAX
+define|#
+directive|define
+name|UINT32_MAX
+value|0xffffffff
+end_define
+
+begin_comment
+DECL|macro|UINT32_MAX
+comment|/* 4294967295U */
+end_comment
+
+begin_define
+DECL|macro|STDIN_FILENO
+define|#
+directive|define
+name|STDIN_FILENO
+value|0
+end_define
+
+begin_define
 DECL|macro|STDOUT_FILENO
 define|#
 directive|define
