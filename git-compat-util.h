@@ -514,6 +514,28 @@ begin_comment
 comment|/* Both MinGW and MSVC */
 end_comment
 
+begin_if
+if|#
+directive|if
+name|defined
+argument_list|(
+name|_MSC_VER
+argument_list|)
+end_if
+
+begin_define
+DECL|macro|_WIN32_WINNT
+define|#
+directive|define
+name|_WIN32_WINNT
+value|0x0502
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_define
 DECL|macro|WIN32_LEAN_AND_MEAN
 define|#
