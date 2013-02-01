@@ -1057,6 +1057,18 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* largest postive number a signed 32-bit integer can contain */
+end_comment
+
+begin_define
+DECL|macro|INFINITE_DEPTH
+define|#
+directive|define
+name|INFINITE_DEPTH
+value|0x7fffffff
+end_define
+
 begin_function_decl
 specifier|extern
 name|int
