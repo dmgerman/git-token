@@ -4375,20 +4375,6 @@ argument_list|(
 name|remove_junk_on_signal
 argument_list|)
 expr_stmt|;
-name|setenv
-argument_list|(
-name|CONFIG_ENVIRONMENT
-argument_list|,
-name|mkpath
-argument_list|(
-literal|"%s/config"
-argument_list|,
-name|git_dir
-argument_list|)
-argument_list|,
-literal|1
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|safe_create_leading_directories_const
@@ -4475,12 +4461,6 @@ name|write_config
 argument_list|(
 operator|&
 name|option_config
-argument_list|)
-expr_stmt|;
-comment|/* 	 * At this point, the config exists, so we do not need the 	 * environment variable.  We actually need to unset it, too, to 	 * re-enable parsing of the global configs. 	 */
-name|unsetenv
-argument_list|(
-name|CONFIG_ENVIRONMENT
 argument_list|)
 expr_stmt|;
 name|git_config
