@@ -125,10 +125,15 @@ DECL|enum|grep_header_field
 enum|enum
 name|grep_header_field
 block|{
+DECL|enumerator|GREP_HEADER_FIELD_MIN
+name|GREP_HEADER_FIELD_MIN
+init|=
+literal|0
+block|,
 DECL|enumerator|GREP_HEADER_AUTHOR
 name|GREP_HEADER_AUTHOR
 init|=
-literal|0
+name|GREP_HEADER_FIELD_MIN
 block|,
 DECL|enumerator|GREP_HEADER_COMMITTER
 name|GREP_HEADER_COMMITTER
