@@ -210,12 +210,6 @@ name|long
 name|z_delta_size
 decl_stmt|;
 comment|/* delta data size (compressed) */
-DECL|member|hash
-name|unsigned
-name|int
-name|hash
-decl_stmt|;
-comment|/* name hint hash */
 DECL|member|type
 name|enum
 name|object_type
@@ -227,6 +221,11 @@ name|object_type
 name|in_pack_type
 decl_stmt|;
 comment|/* could be delta */
+DECL|member|hash
+name|uint32_t
+name|hash
+decl_stmt|;
+comment|/* name hint hash */
 DECL|member|in_pack_header_size
 name|unsigned
 name|char
@@ -234,25 +233,29 @@ name|in_pack_header_size
 decl_stmt|;
 DECL|member|preferred_base
 name|unsigned
-name|char
 name|preferred_base
+range|:
+literal|1
 decl_stmt|;
-comment|/* we do not pack this, but is available 				       * to be used as the base object to delta 				       * objects against. 				       */
+comment|/* 				    * we do not pack this, but is available 				    * to be used as the base object to delta 				    * objects against. 				    */
 DECL|member|no_try_delta
 name|unsigned
-name|char
 name|no_try_delta
+range|:
+literal|1
 decl_stmt|;
 DECL|member|tagged
 name|unsigned
-name|char
 name|tagged
+range|:
+literal|1
 decl_stmt|;
 comment|/* near the very tip of refs */
 DECL|member|filled
 name|unsigned
-name|char
 name|filled
+range|:
+literal|1
 decl_stmt|;
 comment|/* assigned write-order */
 block|}
@@ -4635,7 +4638,7 @@ end_function
 begin_function
 DECL|function|name_hash
 specifier|static
-name|unsigned
+name|uint32_t
 name|name_hash
 parameter_list|(
 specifier|const
@@ -4644,7 +4647,7 @@ modifier|*
 name|name
 parameter_list|)
 block|{
-name|unsigned
+name|uint32_t
 name|c
 decl_stmt|,
 name|hash
@@ -4851,7 +4854,7 @@ decl_stmt|;
 name|int
 name|ix
 decl_stmt|;
-name|unsigned
+name|uint32_t
 name|hash
 init|=
 name|name_hash
