@@ -181,6 +181,30 @@ literal|"non-fast forward"
 expr_stmt|;
 break|break;
 case|case
+name|REF_STATUS_REJECT_FETCH_FIRST
+case|:
+name|res
+operator|=
+literal|"error"
+expr_stmt|;
+name|msg
+operator|=
+literal|"fetch first"
+expr_stmt|;
+break|break;
+case|case
+name|REF_STATUS_REJECT_NEEDS_FORCE
+case|:
+name|res
+operator|=
+literal|"error"
+expr_stmt|;
+name|msg
+operator|=
+literal|"needs force"
+expr_stmt|;
+break|break;
+case|case
 name|REF_STATUS_REJECT_ALREADY_EXISTS
 case|:
 name|res

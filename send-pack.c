@@ -1195,6 +1195,12 @@ case|case
 name|REF_STATUS_REJECT_ALREADY_EXISTS
 case|:
 case|case
+name|REF_STATUS_REJECT_FETCH_FIRST
+case|:
+case|case
+name|REF_STATUS_REJECT_NEEDS_FORCE
+case|:
+case|case
 name|REF_STATUS_UPTODATE
 case|:
 continue|continue;

@@ -552,6 +552,22 @@ name|REJECT_ALREADY_EXISTS
 value|0x04
 end_define
 
+begin_define
+DECL|macro|REJECT_FETCH_FIRST
+define|#
+directive|define
+name|REJECT_FETCH_FIRST
+value|0x08
+end_define
+
+begin_define
+DECL|macro|REJECT_NEEDS_FORCE
+define|#
+directive|define
+name|REJECT_NEEDS_FORCE
+value|0x10
+end_define
+
 begin_function_decl
 name|int
 name|transport_push
