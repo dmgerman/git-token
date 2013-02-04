@@ -3751,9 +3751,11 @@ argument_list|,
 name|_
 argument_list|(
 literal|"Please enter the commit message for your changes."
-literal|" Lines starting\nwith '#' will be ignored, and an empty"
+literal|" Lines starting\nwith '%c' will be ignored, and an empty"
 literal|" message aborts the commit.\n"
 argument_list|)
+argument_list|,
+name|comment_line_char
 argument_list|)
 expr_stmt|;
 else|else
@@ -3768,10 +3770,12 @@ name|_
 argument_list|(
 literal|"Please enter the commit message for your changes."
 literal|" Lines starting\n"
-literal|"with '#' will be kept; you may remove them"
+literal|"with '%c' will be kept; you may remove them"
 literal|" yourself if you want to.\n"
 literal|"An empty message aborts the commit.\n"
 argument_list|)
+argument_list|,
+name|comment_line_char
 argument_list|)
 expr_stmt|;
 if|if

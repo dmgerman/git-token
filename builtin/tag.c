@@ -1339,11 +1339,8 @@ index|[]
 init|=
 name|N_
 argument_list|(
-literal|"\n"
-literal|"#\n"
-literal|"# Write a tag message\n"
-literal|"# Lines starting with '#' will be ignored.\n"
-literal|"#\n"
+literal|"\nWrite a tag message\n"
+literal|"Lines starting with '%c' will be ignored.\n"
 argument_list|)
 decl_stmt|;
 end_decl_stmt
@@ -1358,12 +1355,9 @@ index|[]
 init|=
 name|N_
 argument_list|(
-literal|"\n"
-literal|"#\n"
-literal|"# Write a tag message\n"
-literal|"# Lines starting with '#' will be kept; you may remove them"
+literal|"\nWrite a tag message\n"
+literal|"Lines starting with '%c' will be kept; you may remove them"
 literal|" yourself if you want to.\n"
-literal|"#\n"
 argument_list|)
 decl_stmt|;
 end_decl_stmt
@@ -1855,6 +1849,7 @@ argument_list|(
 name|prev
 argument_list|)
 condition|)
+block|{
 name|write_tag_body
 argument_list|(
 name|fd
@@ -1862,7 +1857,23 @@ argument_list|,
 name|prev
 argument_list|)
 expr_stmt|;
-elseif|else
+block|}
+else|else
+block|{
+name|struct
+name|strbuf
+name|buf
+init|=
+name|STRBUF_INIT
+decl_stmt|;
+name|strbuf_addch
+argument_list|(
+operator|&
+name|buf
+argument_list|,
+literal|'\n'
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|opt
@@ -1871,43 +1882,53 @@ name|cleanup_mode
 operator|==
 name|CLEANUP_ALL
 condition|)
-name|write_or_die
+name|strbuf_commented_addf
 argument_list|(
-name|fd
+operator|&
+name|buf
 argument_list|,
 name|_
 argument_list|(
 name|tag_template
 argument_list|)
 argument_list|,
-name|strlen
-argument_list|(
-name|_
-argument_list|(
-name|tag_template
-argument_list|)
-argument_list|)
+name|comment_line_char
 argument_list|)
 expr_stmt|;
 else|else
+name|strbuf_commented_addf
+argument_list|(
+operator|&
+name|buf
+argument_list|,
+name|_
+argument_list|(
+name|tag_template_nocleanup
+argument_list|)
+argument_list|,
+name|comment_line_char
+argument_list|)
+expr_stmt|;
 name|write_or_die
 argument_list|(
 name|fd
 argument_list|,
-name|_
-argument_list|(
-name|tag_template_nocleanup
-argument_list|)
+name|buf
+operator|.
+name|buf
 argument_list|,
-name|strlen
-argument_list|(
-name|_
-argument_list|(
-name|tag_template_nocleanup
-argument_list|)
-argument_list|)
+name|buf
+operator|.
+name|len
 argument_list|)
 expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|buf
+argument_list|)
+expr_stmt|;
+block|}
 name|close
 argument_list|(
 name|fd

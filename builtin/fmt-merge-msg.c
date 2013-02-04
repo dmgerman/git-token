@@ -2951,11 +2951,9 @@ argument_list|,
 literal|'\n'
 argument_list|)
 expr_stmt|;
-name|strbuf_add_lines
+name|strbuf_add_commented_lines
 argument_list|(
 name|tagbuf
-argument_list|,
-literal|"# "
 argument_list|,
 name|sig
 operator|->
