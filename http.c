@@ -4294,6 +4294,11 @@ name|char
 modifier|*
 name|t
 decl_stmt|;
+name|strbuf_reset
+argument_list|(
+name|type
+argument_list|)
+expr_stmt|;
 name|curl_easy_getinfo
 argument_list|(
 name|slot
