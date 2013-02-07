@@ -1340,6 +1340,10 @@ name|failed_errno
 init|=
 name|failed_errno
 decl_stmt|;
+name|char
+modifier|*
+name|str
+decl_stmt|;
 comment|/* 	 * In case of errors we must keep the promise to close FDs 	 * that have been passed in via ->in and ->out. 	 */
 name|need_in
 operator|=
@@ -1387,6 +1391,10 @@ name|cmd
 operator|->
 name|out
 argument_list|)
+expr_stmt|;
+name|str
+operator|=
+literal|"standard input"
 expr_stmt|;
 goto|goto
 name|fail_pipe
@@ -1461,6 +1469,10 @@ name|cmd
 operator|->
 name|in
 argument_list|)
+expr_stmt|;
+name|str
+operator|=
+literal|"standard output"
 expr_stmt|;
 goto|goto
 name|fail_pipe
@@ -1554,11 +1566,17 @@ operator|->
 name|out
 argument_list|)
 expr_stmt|;
+name|str
+operator|=
+literal|"standard error"
+expr_stmt|;
 name|fail_pipe
 label|:
 name|error
 argument_list|(
-literal|"cannot create pipe for %s: %s"
+literal|"cannot create %s pipe for %s: %s"
+argument_list|,
+name|str
 argument_list|,
 name|cmd
 operator|->
