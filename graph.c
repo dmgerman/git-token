@@ -4249,6 +4249,25 @@ operator|!
 name|graph
 condition|)
 return|return;
+comment|/* 	 * When showing a diff of a merge against each of its parents, we 	 * are called once for each parent without graph_update having been 	 * called.  In this case, simply output a single padding line. 	 */
+if|if
+condition|(
+name|graph_is_commit_finished
+argument_list|(
+name|graph
+argument_list|)
+condition|)
+block|{
+name|graph_show_padding
+argument_list|(
+name|graph
+argument_list|)
+expr_stmt|;
+name|shown_commit_line
+operator|=
+literal|1
+expr_stmt|;
+block|}
 while|while
 condition|(
 operator|!
