@@ -26267,7 +26267,9 @@ name|len
 argument_list|,
 literal|1
 argument_list|,
-name|stdout
+name|options
+operator|->
+name|file
 argument_list|)
 expr_stmt|;
 block|}
