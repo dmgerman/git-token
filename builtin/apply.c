@@ -17474,12 +17474,6 @@ operator|->
 name|next
 control|)
 block|{
-specifier|const
-name|unsigned
-name|char
-modifier|*
-name|sha1_ptr
-decl_stmt|;
 name|unsigned
 name|char
 name|sha1
@@ -17520,9 +17514,39 @@ operator|->
 name|is_new
 condition|)
 continue|continue;
+if|if
+condition|(
+name|S_ISGITLINK
+argument_list|(
+name|patch
+operator|->
+name|old_mode
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
+name|get_sha1_hex
+argument_list|(
+name|patch
+operator|->
+name|old_sha1_prefix
+argument_list|,
+name|sha1
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"submoule change for %s without full index name"
+argument_list|,
+name|name
+argument_list|)
+expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
+operator|!
 name|get_sha1_blob
 argument_list|(
 name|patch
@@ -17532,7 +17556,11 @@ argument_list|,
 name|sha1
 argument_list|)
 condition|)
-comment|/* git diff has no index line for mode/type changes */
+block|{
+empty_stmt|;
+comment|/* ok */
+block|}
+elseif|else
 if|if
 condition|(
 operator|!
@@ -17546,6 +17574,7 @@ operator|->
 name|lines_deleted
 condition|)
 block|{
+comment|/* mode-only change: update the current */
 if|if
 condition|(
 name|get_current_sha1
@@ -17565,10 +17594,6 @@ argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
-name|sha1_ptr
-operator|=
-name|sha1
-expr_stmt|;
 block|}
 else|else
 name|die
@@ -17579,11 +17604,6 @@ argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
-else|else
-name|sha1_ptr
-operator|=
-name|sha1
-expr_stmt|;
 name|ce
 operator|=
 name|make_cache_entry
@@ -17592,7 +17612,7 @@ name|patch
 operator|->
 name|old_mode
 argument_list|,
-name|sha1_ptr
+name|sha1
 argument_list|,
 name|name
 argument_list|,
