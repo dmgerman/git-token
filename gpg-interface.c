@@ -710,6 +710,7 @@ if|if
 condition|(
 name|gpg_output
 condition|)
+block|{
 name|strbuf_read
 argument_list|(
 name|gpg_output
@@ -721,6 +722,14 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|close
+argument_list|(
+name|gpg
+operator|.
+name|err
+argument_list|)
+expr_stmt|;
+block|}
 name|ret
 operator|=
 name|finish_command
