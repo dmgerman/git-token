@@ -29,6 +29,12 @@ directive|include
 file|"color.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"utf8.h"
+end_include
+
 begin_function_decl
 specifier|static
 name|int
@@ -3101,7 +3107,7 @@ else|:
 literal|"<%s>"
 expr_stmt|;
 return|return
-name|fprintf
+name|utf8_fprintf
 argument_list|(
 name|outfile
 argument_list|,
@@ -3481,11 +3487,14 @@ name|OPTION_NUMBER
 condition|)
 name|pos
 operator|+=
-name|fprintf
+name|utf8_fprintf
 argument_list|(
 name|outfile
 argument_list|,
+name|_
+argument_list|(
 literal|"-NUM"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
