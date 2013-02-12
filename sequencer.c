@@ -5649,11 +5649,6 @@ name|len
 operator|-
 name|ignore_footer
 decl_stmt|;
-name|int
-name|first
-init|=
-literal|1
-decl_stmt|;
 specifier|const
 name|char
 modifier|*
@@ -5762,32 +5757,6 @@ empty_stmt|;
 comment|/* do nothing */
 name|k
 operator|++
-expr_stmt|;
-if|if
-condition|(
-operator|(
-name|buf
-index|[
-name|k
-index|]
-operator|==
-literal|' '
-operator|||
-name|buf
-index|[
-name|k
-index|]
-operator|==
-literal|'\t'
-operator|)
-operator|&&
-operator|!
-name|first
-condition|)
-continue|continue;
-name|first
-operator|=
-literal|0
 expr_stmt|;
 for|for
 control|(
