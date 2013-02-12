@@ -663,9 +663,7 @@ modifier|*
 name|ref_message_ids
 decl_stmt|;
 DECL|member|add_signoff
-specifier|const
-name|char
-modifier|*
+name|int
 name|add_signoff
 decl_stmt|;
 DECL|member|extra_headers
