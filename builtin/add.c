@@ -82,7 +82,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git add [options] [--]<filepattern>..."
+literal|"git add [options] [--]<pathspec>..."
 argument_list|)
 block|,
 name|NULL
