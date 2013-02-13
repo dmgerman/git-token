@@ -5211,19 +5211,6 @@ name|p
 decl_stmt|;
 if|if
 condition|(
-operator|!
-name|has_extension
-argument_list|(
-name|de
-operator|->
-name|d_name
-argument_list|,
-literal|".idx"
-argument_list|)
-condition|)
-continue|continue;
-if|if
-condition|(
 name|len
 operator|+
 name|namelen
@@ -5236,7 +5223,6 @@ name|path
 argument_list|)
 condition|)
 continue|continue;
-comment|/* Don't reopen a pack we already have. */
 name|strcpy
 argument_list|(
 name|path
@@ -5248,6 +5234,19 @@ operator|->
 name|d_name
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|has_extension
+argument_list|(
+name|de
+operator|->
+name|d_name
+argument_list|,
+literal|".idx"
+argument_list|)
+condition|)
+block|{
+comment|/* Don't reopen a pack we already have. */
 for|for
 control|(
 name|p
@@ -5286,9 +5285,11 @@ block|}
 if|if
 condition|(
 name|p
-condition|)
-continue|continue;
-comment|/* See if it really is a valid .idx file with corresponding 		 * .pack file that we can map. 		 */
+operator|==
+name|NULL
+operator|&&
+comment|/* 			     * See if it really is a valid .idx file with 			     * corresponding .pack file that we can map. 			     */
+operator|(
 name|p
 operator|=
 name|add_packed_git
@@ -5301,18 +5302,16 @@ name|namelen
 argument_list|,
 name|local
 argument_list|)
-expr_stmt|;
-if|if
-condition|(
-operator|!
-name|p
+operator|)
+operator|!=
+name|NULL
 condition|)
-continue|continue;
 name|install_packed_git
 argument_list|(
 name|p
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|closedir
 argument_list|(
