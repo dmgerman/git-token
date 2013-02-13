@@ -36,6 +36,14 @@ name|garbage
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|size_garbage
+specifier|static
+name|off_t
+name|size_garbage
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|real_report_garbage
 specifier|static
@@ -53,6 +61,27 @@ modifier|*
 name|path
 parameter_list|)
 block|{
+name|struct
+name|stat
+name|st
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|stat
+argument_list|(
+name|path
+argument_list|,
+operator|&
+name|st
+argument_list|)
+condition|)
+name|size_garbage
+operator|+=
+name|st
+operator|.
+name|st_size
+expr_stmt|;
 name|warning
 argument_list|(
 literal|"%s: %s"
@@ -101,11 +130,6 @@ name|unsigned
 name|long
 modifier|*
 name|packed_loose
-parameter_list|,
-name|unsigned
-name|long
-modifier|*
-name|garbage
 parameter_list|)
 block|{
 name|struct
@@ -310,9 +334,18 @@ condition|(
 name|verbose
 condition|)
 block|{
-name|error
+name|struct
+name|strbuf
+name|sb
+init|=
+name|STRBUF_INIT
+decl_stmt|;
+name|strbuf_addf
 argument_list|(
-literal|"garbage found: %.*s/%s"
+operator|&
+name|sb
+argument_list|,
+literal|"%.*s/%s"
 argument_list|,
 name|len
 operator|+
@@ -325,11 +358,20 @@ operator|->
 name|d_name
 argument_list|)
 expr_stmt|;
-operator|(
-operator|*
-name|garbage
-operator|)
-operator|++
+name|report_garbage
+argument_list|(
+literal|"garbage found"
+argument_list|,
+name|sb
+operator|.
+name|buf
+argument_list|)
+expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|sb
+argument_list|)
 expr_stmt|;
 block|}
 continue|continue;
@@ -650,9 +692,6 @@ name|loose_size
 argument_list|,
 operator|&
 name|packed_loose
-argument_list|,
-operator|&
-name|garbage
 argument_list|)
 expr_stmt|;
 name|closedir
@@ -804,6 +843,21 @@ argument_list|(
 literal|"garbage: %lu\n"
 argument_list|,
 name|garbage
+argument_list|)
+expr_stmt|;
+name|printf
+argument_list|(
+literal|"size-garbage: %lu\n"
+argument_list|,
+call|(
+name|unsigned
+name|long
+call|)
+argument_list|(
+name|size_garbage
+operator|/
+literal|1024
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
