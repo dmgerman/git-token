@@ -492,7 +492,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Run "gpg" to see if the payload matches the detached signature.  * gpg_output, when set, receives the diagnostic output from GPG.  */
+comment|/*  * Run "gpg" to see if the payload matches the detached signature.  * gpg_output, when set, receives the diagnostic output from GPG.  * gpg_status, when set, receives the status output from GPG.  */
 end_comment
 
 begin_function
@@ -535,6 +535,8 @@ init|=
 block|{
 name|NULL
 block|,
+literal|"--status-fd=1"
+block|,
 literal|"--verify"
 block|,
 literal|"FILE"
@@ -554,6 +556,12 @@ name|int
 name|fd
 decl_stmt|,
 name|ret
+decl_stmt|;
+name|struct
+name|strbuf
+name|buf
+init|=
+name|STRBUF_INIT
 decl_stmt|;
 name|args_gpg
 index|[
@@ -649,6 +657,13 @@ operator|=
 operator|-
 literal|1
 expr_stmt|;
+name|gpg
+operator|.
+name|out
+operator|=
+operator|-
+literal|1
+expr_stmt|;
 if|if
 condition|(
 name|gpg_output
@@ -662,7 +677,7 @@ literal|1
 expr_stmt|;
 name|args_gpg
 index|[
-literal|2
+literal|3
 index|]
 operator|=
 name|path
@@ -730,6 +745,25 @@ name|err
 argument_list|)
 expr_stmt|;
 block|}
+name|strbuf_read
+argument_list|(
+operator|&
+name|buf
+argument_list|,
+name|gpg
+operator|.
+name|out
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+name|close
+argument_list|(
+name|gpg
+operator|.
+name|out
+argument_list|)
+expr_stmt|;
 name|ret
 operator|=
 name|finish_command
@@ -741,6 +775,24 @@ expr_stmt|;
 name|unlink_or_warn
 argument_list|(
 name|path
+argument_list|)
+expr_stmt|;
+name|ret
+operator||=
+operator|!
+name|strstr
+argument_list|(
+name|buf
+operator|.
+name|buf
+argument_list|,
+literal|"\n[GNUPG:] GOODSIG "
+argument_list|)
+expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|buf
 argument_list|)
 expr_stmt|;
 return|return
