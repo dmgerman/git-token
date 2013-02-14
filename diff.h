@@ -975,6 +975,19 @@ define|\
 value|diff_get_color((o)->use_color, ix)
 end_define
 
+begin_function_decl
+specifier|const
+name|char
+modifier|*
+name|diff_line_prefix
+parameter_list|(
+name|struct
+name|diff_options
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_decl_stmt
 specifier|extern
 specifier|const
