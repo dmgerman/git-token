@@ -3591,6 +3591,11 @@ name|char
 modifier|*
 name|gpg_output
 decl_stmt|;
+DECL|member|gpg_status
+name|char
+modifier|*
+name|gpg_status
+decl_stmt|;
 DECL|member|good_bad
 name|char
 name|good_bad
@@ -4676,13 +4681,13 @@ block|{
 block|{
 literal|'G'
 block|,
-literal|": Good signature from "
+literal|"\n[GNUPG:] GOODSIG "
 block|}
 block|,
 block|{
 literal|'B'
 block|,
-literal|": BAD signature from "
+literal|"\n[GNUPG:] BADSIG "
 block|}
 block|, }
 struct|;
@@ -4709,7 +4714,7 @@ name|ctx
 operator|->
 name|signature
 operator|.
-name|gpg_output
+name|gpg_status
 decl_stmt|;
 name|int
 name|i
@@ -4783,6 +4788,8 @@ index|]
 operator|.
 name|check
 argument_list|)
+operator|+
+literal|17
 expr_stmt|;
 name|next
 operator|=
@@ -4843,6 +4850,12 @@ name|gpg_output
 init|=
 name|STRBUF_INIT
 decl_stmt|;
+name|struct
+name|strbuf
+name|gpg_status
+init|=
+name|STRBUF_INIT
+decl_stmt|;
 name|int
 name|status
 decl_stmt|;
@@ -4899,7 +4912,8 @@ argument_list|,
 operator|&
 name|gpg_output
 argument_list|,
-name|NULL
+operator|&
+name|gpg_status
 argument_list|)
 expr_stmt|;
 if|if
@@ -4928,6 +4942,20 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
+name|ctx
+operator|->
+name|signature
+operator|.
+name|gpg_status
+operator|=
+name|strbuf_detach
+argument_list|(
+operator|&
+name|gpg_status
+argument_list|,
+name|NULL
+argument_list|)
+expr_stmt|;
 name|parse_signature_lines
 argument_list|(
 name|ctx
@@ -4935,6 +4963,12 @@ argument_list|)
 expr_stmt|;
 name|out
 label|:
+name|strbuf_release
+argument_list|(
+operator|&
+name|gpg_status
+argument_list|)
+expr_stmt|;
 name|strbuf_release
 argument_list|(
 operator|&
