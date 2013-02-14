@@ -520,6 +520,11 @@ name|struct
 name|strbuf
 modifier|*
 name|gpg_output
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|gpg_status
 parameter_list|)
 block|{
 name|struct
@@ -562,6 +567,14 @@ name|strbuf
 name|buf
 init|=
 name|STRBUF_INIT
+decl_stmt|;
+name|struct
+name|strbuf
+modifier|*
+name|pbuf
+init|=
+operator|&
+name|buf
 decl_stmt|;
 name|args_gpg
 index|[
@@ -745,10 +758,17 @@ name|err
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|gpg_status
+condition|)
+name|pbuf
+operator|=
+name|gpg_status
+expr_stmt|;
 name|strbuf_read
 argument_list|(
-operator|&
-name|buf
+name|pbuf
 argument_list|,
 name|gpg
 operator|.
@@ -782,8 +802,8 @@ operator||=
 operator|!
 name|strstr
 argument_list|(
-name|buf
-operator|.
+name|pbuf
+operator|->
 name|buf
 argument_list|,
 literal|"\n[GNUPG:] GOODSIG "
@@ -795,6 +815,7 @@ operator|&
 name|buf
 argument_list|)
 expr_stmt|;
+comment|/* no matter it was used or not */
 return|return
 name|ret
 return|;

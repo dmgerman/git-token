@@ -60,6 +60,11 @@ name|struct
 name|strbuf
 modifier|*
 name|gpg_output
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|gpg_status
 parameter_list|)
 function_decl|;
 end_function_decl

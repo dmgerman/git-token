@@ -2363,6 +2363,8 @@ name|len
 argument_list|,
 operator|&
 name|gpg_output
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 if|if
@@ -2797,6 +2799,8 @@ name|payload_size
 argument_list|,
 operator|&
 name|verify_message
+argument_list|,
+name|NULL
 argument_list|)
 condition|)
 block|{
