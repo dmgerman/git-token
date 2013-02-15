@@ -7460,6 +7460,31 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* A hook for count-objects to report invalid files in pack directory */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|void
+function_decl|(
+modifier|*
+name|report_garbage
+function_decl|)
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|desc
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function_decl
 specifier|extern
 name|void
