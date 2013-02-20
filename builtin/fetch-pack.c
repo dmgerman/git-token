@@ -653,6 +653,10 @@ index|[
 literal|0
 index|]
 argument_list|,
+name|NULL
+argument_list|,
+literal|0
+argument_list|,
 operator|&
 name|ref
 argument_list|,

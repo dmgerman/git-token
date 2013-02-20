@@ -328,6 +328,13 @@ parameter_list|(
 name|int
 name|in
 parameter_list|,
+name|char
+modifier|*
+name|src_buf
+parameter_list|,
+name|size_t
+name|src_len
+parameter_list|,
 name|struct
 name|ref
 modifier|*
@@ -393,9 +400,11 @@ name|packet_read
 argument_list|(
 name|in
 argument_list|,
-name|NULL
+operator|&
+name|src_buf
 argument_list|,
-name|NULL
+operator|&
+name|src_len
 argument_list|,
 name|packet_buffer
 argument_list|,

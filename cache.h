@@ -7349,6 +7349,13 @@ parameter_list|(
 name|int
 name|in
 parameter_list|,
+name|char
+modifier|*
+name|src_buf
+parameter_list|,
+name|size_t
+name|src_len
+parameter_list|,
 name|struct
 name|ref
 modifier|*

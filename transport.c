@@ -2899,6 +2899,10 @@ index|[
 literal|0
 index|]
 argument_list|,
+name|NULL
+argument_list|,
+literal|0
+argument_list|,
 operator|&
 name|refs
 argument_list|,
@@ -3146,6 +3150,10 @@ name|fd
 index|[
 literal|0
 index|]
+argument_list|,
+name|NULL
+argument_list|,
+literal|0
 argument_list|,
 operator|&
 name|refs_tmp
@@ -4628,6 +4636,10 @@ name|fd
 index|[
 literal|0
 index|]
+argument_list|,
+name|NULL
+argument_list|,
+literal|0
 argument_list|,
 operator|&
 name|tmp_refs
