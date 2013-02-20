@@ -3180,7 +3180,7 @@ name|object
 decl_stmt|;
 if|if
 condition|(
-name|get_sha1
+name|get_sha1_hex
 argument_list|(
 name|line
 operator|+
