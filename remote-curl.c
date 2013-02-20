@@ -1734,7 +1734,7 @@ literal|0
 expr_stmt|;
 name|avail
 operator|=
-name|packet_read_line
+name|packet_read
 argument_list|(
 name|rpc
 operator|->
@@ -1747,6 +1747,8 @@ argument_list|,
 name|rpc
 operator|->
 name|alloc
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 if|if
@@ -2311,7 +2313,7 @@ break|break;
 block|}
 name|n
 operator|=
-name|packet_read_line
+name|packet_read
 argument_list|(
 name|rpc
 operator|->
@@ -2320,6 +2322,8 @@ argument_list|,
 name|buf
 argument_list|,
 name|left
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 if|if
@@ -3203,7 +3207,7 @@ block|{
 name|int
 name|n
 init|=
-name|packet_read_line
+name|packet_read
 argument_list|(
 name|rpc
 operator|->
@@ -3216,6 +3220,8 @@ argument_list|,
 name|rpc
 operator|->
 name|alloc
+argument_list|,
+literal|0
 argument_list|)
 decl_stmt|;
 if|if

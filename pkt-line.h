@@ -113,7 +113,7 @@ empty_stmt|;
 end_empty_stmt
 
 begin_comment
-comment|/*  * Read a packetized line from the descriptor into the buffer, which must be at  * least size bytes long. The return value specifies the number of bytes read  * into the buffer.  *  * If options does not contain PACKET_READ_GENTLE_ON_EOF, we will die under any  * of the following conditions:  *  *   1. Read error from descriptor.  *  *   2. Protocol error from the remote (e.g., bogus length characters).  *  *   3. Receiving a packet larger than "size" bytes.  *  *   4. Truncated output from the remote (e.g., we expected a packet but got  *      EOF, or we got a partial packet followed by EOF).  *  * If options does contain PACKET_READ_GENTLE_ON_EOF, we will not die on  * condition 4 (truncated input), but instead return -1. However, we will still  * die for the other 3 conditions.  */
+comment|/*  * Read a packetized line from the descriptor into the buffer, which must be at  * least size bytes long. The return value specifies the number of bytes read  * into the buffer.  *  * If options does not contain PACKET_READ_GENTLE_ON_EOF, we will die under any  * of the following conditions:  *  *   1. Read error from descriptor.  *  *   2. Protocol error from the remote (e.g., bogus length characters).  *  *   3. Receiving a packet larger than "size" bytes.  *  *   4. Truncated output from the remote (e.g., we expected a packet but got  *      EOF, or we got a partial packet followed by EOF).  *  * If options does contain PACKET_READ_GENTLE_ON_EOF, we will not die on  * condition 4 (truncated input), but instead return -1. However, we will still  * die for the other 3 conditions.  *  * If options contains PACKET_READ_CHOMP_NEWLINE, a trailing newline (if  * present) is removed from the buffer before returning.  */
 end_comment
 
 begin_define
@@ -122,6 +122,14 @@ define|#
 directive|define
 name|PACKET_READ_GENTLE_ON_EOF
 value|(1u<<0)
+end_define
+
+begin_define
+DECL|macro|PACKET_READ_CHOMP_NEWLINE
+define|#
+directive|define
+name|PACKET_READ_CHOMP_NEWLINE
+value|(1u<<1)
 end_define
 
 begin_function_decl
@@ -145,7 +153,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/* Historical convenience wrapper for packet_read that sets no options */
+comment|/*  * Convenience wrapper for packet_read that is not gentle, and sets the  * CHOMP_NEWLINE option.  */
 end_comment
 
 begin_function_decl

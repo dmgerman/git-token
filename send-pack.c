@@ -607,35 +607,10 @@ name|strcmp
 argument_list|(
 name|line
 argument_list|,
-literal|"unpack ok\n"
+literal|"unpack ok"
 argument_list|)
 condition|)
 block|{
-name|char
-modifier|*
-name|p
-init|=
-name|line
-operator|+
-name|strlen
-argument_list|(
-name|line
-argument_list|)
-operator|-
-literal|1
-decl_stmt|;
-if|if
-condition|(
-operator|*
-name|p
-operator|==
-literal|'\n'
-condition|)
-operator|*
-name|p
-operator|=
-literal|'\0'
-expr_stmt|;
 name|error
 argument_list|(
 literal|"unpack failed: %s"
@@ -719,18 +694,6 @@ literal|1
 expr_stmt|;
 break|break;
 block|}
-name|line
-index|[
-name|strlen
-argument_list|(
-name|line
-argument_list|)
-operator|-
-literal|1
-index|]
-operator|=
-literal|'\0'
-expr_stmt|;
 name|refname
 operator|=
 name|line

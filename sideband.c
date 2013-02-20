@@ -163,7 +163,7 @@ name|len
 decl_stmt|;
 name|len
 operator|=
-name|packet_read_line
+name|packet_read
 argument_list|(
 name|in_stream
 argument_list|,
@@ -172,6 +172,8 @@ operator|+
 name|pf
 argument_list|,
 name|LARGE_PACKET_MAX
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 if|if

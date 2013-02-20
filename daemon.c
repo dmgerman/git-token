@@ -3058,7 +3058,7 @@ argument_list|)
 expr_stmt|;
 name|pktlen
 operator|=
-name|packet_read_line
+name|packet_read
 argument_list|(
 literal|0
 argument_list|,
@@ -3068,6 +3068,8 @@ sizeof|sizeof
 argument_list|(
 name|line
 argument_list|)
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|alarm
