@@ -3233,6 +3233,18 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+operator|(
+name|object
+operator|->
+name|flags
+operator|&
+name|CLIENT_SHALLOW
+operator|)
+condition|)
+block|{
 name|object
 operator|->
 name|flags
@@ -3249,6 +3261,7 @@ operator|&
 name|shallows
 argument_list|)
 expr_stmt|;
+block|}
 continue|continue;
 block|}
 if|if
