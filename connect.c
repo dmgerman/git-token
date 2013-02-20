@@ -400,6 +400,8 @@ sizeof|sizeof
 argument_list|(
 name|buffer
 argument_list|)
+argument_list|,
+name|PACKET_READ_GENTLE_ON_EOF
 argument_list|)
 expr_stmt|;
 if|if
