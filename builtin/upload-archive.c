@@ -134,43 +134,13 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|strlen
-argument_list|(
-name|argv
-index|[
-literal|1
-index|]
-argument_list|)
-operator|+
-literal|1
-operator|>
-sizeof|sizeof
-argument_list|(
-name|buf
-argument_list|)
-condition|)
-name|die
-argument_list|(
-literal|"insanely long repository name"
-argument_list|)
-expr_stmt|;
-name|strcpy
-argument_list|(
-name|buf
-argument_list|,
-name|argv
-index|[
-literal|1
-index|]
-argument_list|)
-expr_stmt|;
-comment|/* enter-repo smudges its argument */
-if|if
-condition|(
 operator|!
 name|enter_repo
 argument_list|(
-name|buf
+name|argv
+index|[
+literal|1
+index|]
 argument_list|,
 literal|0
 argument_list|)
@@ -179,7 +149,10 @@ name|die
 argument_list|(
 literal|"'%s' does not appear to be a git repository"
 argument_list|,
-name|buf
+name|argv
+index|[
+literal|1
+index|]
 argument_list|)
 expr_stmt|;
 comment|/* put received options in sent_argv[] */
