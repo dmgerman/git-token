@@ -1413,7 +1413,7 @@ block|}
 block|}
 else|else
 block|{
-name|safe_write
+name|write_or_die
 argument_list|(
 name|out
 argument_list|,

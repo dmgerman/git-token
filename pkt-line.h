@@ -167,21 +167,6 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
-begin_function_decl
-name|ssize_t
-name|safe_write
-parameter_list|(
-name|int
-parameter_list|,
-specifier|const
-name|void
-modifier|*
-parameter_list|,
-name|ssize_t
-parameter_list|)
-function_decl|;
-end_function_decl
-
 begin_endif
 endif|#
 directive|endif

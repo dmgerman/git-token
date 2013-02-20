@@ -3890,7 +3890,7 @@ name|result
 operator|.
 name|len
 condition|)
-name|safe_write
+name|write_or_die
 argument_list|(
 literal|1
 argument_list|,
@@ -4666,7 +4666,7 @@ name|result
 operator|.
 name|len
 condition|)
-name|safe_write
+name|write_or_die
 argument_list|(
 literal|1
 argument_list|,
