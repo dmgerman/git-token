@@ -153,21 +153,19 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Convenience wrapper for packet_read that is not gentle, and sets the  * CHOMP_NEWLINE option.  */
+comment|/*  * Convenience wrapper for packet_read that is not gentle, and sets the  * CHOMP_NEWLINE option. The return value is NULL for a flush packet,  * and otherwise points to a static buffer (that may be overwritten by  * subsequent calls). If the size parameter is not NULL, the length of the  * packet is written to it.  */
 end_comment
 
 begin_function_decl
-name|int
+name|char
+modifier|*
 name|packet_read_line
 parameter_list|(
 name|int
 name|fd
 parameter_list|,
-name|char
+name|int
 modifier|*
-name|buffer
-parameter_list|,
-name|unsigned
 name|size
 parameter_list|)
 function_decl|;
@@ -188,6 +186,16 @@ directive|define
 name|LARGE_PACKET_MAX
 value|65520
 end_define
+
+begin_decl_stmt
+specifier|extern
+name|char
+name|packet_buffer
+index|[
+name|LARGE_PACKET_MAX
+index|]
+decl_stmt|;
+end_decl_stmt
 
 begin_function_decl
 name|int

@@ -110,15 +110,6 @@ name|arg_cmd
 init|=
 literal|"argument "
 decl_stmt|;
-name|char
-name|buf
-index|[
-literal|4096
-index|]
-decl_stmt|;
-name|int
-name|len
-decl_stmt|;
 if|if
 condition|(
 name|argc
@@ -168,26 +159,21 @@ init|;
 condition|;
 control|)
 block|{
-comment|/* This will die if not enough free space in buf */
-name|len
-operator|=
+name|char
+modifier|*
+name|buf
+init|=
 name|packet_read_line
 argument_list|(
 literal|0
 argument_list|,
-name|buf
-argument_list|,
-sizeof|sizeof
-argument_list|(
-name|buf
+name|NULL
 argument_list|)
-argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
-name|len
-operator|==
-literal|0
+operator|!
+name|buf
 condition|)
 break|break;
 comment|/* got a flush */
