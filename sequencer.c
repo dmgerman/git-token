@@ -6182,8 +6182,19 @@ name|ignore_footer
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|len
-operator|&&
+condition|)
+block|{
+comment|/* 			 * The buffer is completely empty.  Leave foom for 			 * the title and body to be filled in by the user. 			 */
+name|append_newlines
+operator|=
+literal|"\n\n"
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
 name|msgbuf
 operator|->
 name|buf
@@ -6195,17 +6206,30 @@ index|]
 operator|!=
 literal|'\n'
 condition|)
+block|{
+comment|/* 			 * Incomplete line.  Complete the line and add a 			 * blank one so that there is an empty line between 			 * the message body and the sob. 			 */
 name|append_newlines
 operator|=
 literal|"\n\n"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
 name|len
-operator|>
+operator|==
 literal|1
-operator|&&
+condition|)
+block|{
+comment|/* 			 * Buffer contains a single newline.  Add another 			 * so that we leave room for the title and body. 			 */
+name|append_newlines
+operator|=
+literal|"\n"
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
 name|msgbuf
 operator|->
 name|buf
@@ -6217,10 +6241,14 @@ index|]
 operator|!=
 literal|'\n'
 condition|)
+block|{
+comment|/* 			 * Buffer ends with a single newline.  Add another 			 * so that there is an empty line between the message 			 * body and the sob. 			 */
 name|append_newlines
 operator|=
 literal|"\n"
 expr_stmt|;
+block|}
+comment|/* else, the buffer already ends with two newlines. */
 if|if
 condition|(
 name|append_newlines
