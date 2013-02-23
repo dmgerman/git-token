@@ -113,7 +113,7 @@ empty_stmt|;
 end_empty_stmt
 
 begin_comment
-comment|/*  * Read a packetized line from the descriptor into the buffer, which must be at  * least size bytes long. The return value specifies the number of bytes read  * into the buffer.  *  * If options does not contain PACKET_READ_GENTLE_ON_EOF, we will die under any  * of the following conditions:  *  *   1. Read error from descriptor.  *  *   2. Protocol error from the remote (e.g., bogus length characters).  *  *   3. Receiving a packet larger than "size" bytes.  *  *   4. Truncated output from the remote (e.g., we expected a packet but got  *      EOF, or we got a partial packet followed by EOF).  *  * If options does contain PACKET_READ_GENTLE_ON_EOF, we will not die on  * condition 4 (truncated input), but instead return -1. However, we will still  * die for the other 3 conditions.  *  * If options contains PACKET_READ_CHOMP_NEWLINE, a trailing newline (if  * present) is removed from the buffer before returning.  */
+comment|/*  * Read a packetized line into the buffer, which must be at least size bytes  * long. The return value specifies the number of bytes read into the buffer.  *  * If src_buffer is not NULL (and nor is *src_buffer), it should point to a  * buffer containing the packet data to parse, of at least *src_len bytes.  * After the function returns, src_buf will be incremented and src_len  * decremented by the number of bytes consumed.  *  * If src_buffer (or *src_buffer) is NULL, then data is read from the  * descriptor "fd".  *  * If options does not contain PACKET_READ_GENTLE_ON_EOF, we will die under any  * of the following conditions:  *  *   1. Read error from descriptor.  *  *   2. Protocol error from the remote (e.g., bogus length characters).  *  *   3. Receiving a packet larger than "size" bytes.  *  *   4. Truncated output from the remote (e.g., we expected a packet but got  *      EOF, or we got a partial packet followed by EOF).  *  * If options does contain PACKET_READ_GENTLE_ON_EOF, we will not die on  * condition 4 (truncated input), but instead return -1. However, we will still  * die for the other 3 conditions.  *  * If options contains PACKET_READ_CHOMP_NEWLINE, a trailing newline (if  * present) is removed from the buffer before returning.  */
 end_comment
 
 begin_define
@@ -138,6 +138,15 @@ name|packet_read
 parameter_list|(
 name|int
 name|fd
+parameter_list|,
+name|char
+modifier|*
+modifier|*
+name|src_buffer
+parameter_list|,
+name|size_t
+modifier|*
+name|src_len
 parameter_list|,
 name|char
 modifier|*
@@ -171,6 +180,31 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Same as packet_read_line, but read from a buf rather than a descriptor;  * see packet_read for details on how src_* is used.  */
+end_comment
+
+begin_function_decl
+name|char
+modifier|*
+name|packet_read_line_buf
+parameter_list|(
+name|char
+modifier|*
+modifier|*
+name|src_buf
+parameter_list|,
+name|size_t
+modifier|*
+name|src_len
+parameter_list|,
+name|int
+modifier|*
+name|size
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_define
 DECL|macro|DEFAULT_PACKET_MAX
 define|#
@@ -196,27 +230,6 @@ name|LARGE_PACKET_MAX
 index|]
 decl_stmt|;
 end_decl_stmt
-
-begin_function_decl
-name|int
-name|packet_get_line
-parameter_list|(
-name|struct
-name|strbuf
-modifier|*
-name|out
-parameter_list|,
-name|char
-modifier|*
-modifier|*
-name|src_buf
-parameter_list|,
-name|size_t
-modifier|*
-name|src_len
-parameter_list|)
-function_decl|;
-end_function_decl
 
 begin_endif
 endif|#

@@ -393,6 +393,10 @@ name|packet_read
 argument_list|(
 name|in
 argument_list|,
+name|NULL
+argument_list|,
+name|NULL
+argument_list|,
 name|packet_buffer
 argument_list|,
 sizeof|sizeof

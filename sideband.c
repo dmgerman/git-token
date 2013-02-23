@@ -167,6 +167,10 @@ name|packet_read
 argument_list|(
 name|in_stream
 argument_list|,
+name|NULL
+argument_list|,
+name|NULL
+argument_list|,
 name|buf
 operator|+
 name|pf
