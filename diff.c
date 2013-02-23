@@ -7242,13 +7242,22 @@ name|sfx_length
 operator|=
 literal|0
 expr_stmt|;
+comment|/* 	 * Note: 	 * if pfx_length is 0, old/new will never reach a - 1 because it 	 * would mean the whole string is common suffix. But then, the 	 * whole string would also be a common prefix, and we would not 	 * have pfx_length equals 0. 	 */
 while|while
 condition|(
 name|a
+operator|+
+name|pfx_length
+operator|-
+literal|1
 operator|<=
 name|old
 operator|&&
 name|b
+operator|+
+name|pfx_length
+operator|-
+literal|1
 operator|<=
 name|new
 operator|&&
