@@ -1838,7 +1838,7 @@ name|char
 modifier|*
 name|usage
 init|=
-literal|"Usage: git credential-wincred<get|store|erase>\n"
+literal|"usage: git credential-wincred<get|store|erase>\n"
 decl_stmt|;
 if|if
 condition|(

@@ -738,7 +738,7 @@ name|char
 modifier|*
 name|usage
 init|=
-literal|"Usage: git credential-osxkeychain<get|store|erase>"
+literal|"usage: git credential-osxkeychain<get|store|erase>"
 decl_stmt|;
 if|if
 condition|(
