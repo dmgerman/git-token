@@ -4051,6 +4051,18 @@ argument_list|,
 name|option_origin
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|real_git_dir
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"--bare and --separate-git-dir are incompatible."
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|option_no_checkout
 operator|=
 literal|1
