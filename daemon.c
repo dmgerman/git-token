@@ -54,25 +54,6 @@ endif|#
 directive|endif
 end_endif
 
-begin_ifndef
-ifndef|#
-directive|ifndef
-name|NI_MAXSERV
-end_ifndef
-
-begin_define
-DECL|macro|NI_MAXSERV
-define|#
-directive|define
-name|NI_MAXSERV
-value|32
-end_define
-
-begin_endif
-endif|#
-directive|endif
-end_endif
-
 begin_ifdef
 ifdef|#
 directive|ifdef
