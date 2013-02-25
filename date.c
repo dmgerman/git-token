@@ -2292,6 +2292,14 @@ expr_stmt|;
 comment|/* Be it commit time or author time, it does not make 		 * sense to specify timestamp way into the future.  Make 		 * sure it is not later than ten days from now... 		 */
 if|if
 condition|(
+operator|(
+name|specified
+operator|!=
+operator|-
+literal|1
+operator|)
+operator|&&
+operator|(
 name|now
 operator|+
 literal|10
@@ -2301,6 +2309,7 @@ operator|*
 literal|3600
 operator|<
 name|specified
+operator|)
 condition|)
 return|return
 literal|0
