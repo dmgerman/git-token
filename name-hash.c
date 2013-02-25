@@ -72,7 +72,11 @@ name|hash
 init|=
 literal|0x123
 decl_stmt|;
-do|do
+while|while
+condition|(
+name|namelen
+operator|--
+condition|)
 block|{
 name|unsigned
 name|char
@@ -98,12 +102,6 @@ operator|+
 name|c
 expr_stmt|;
 block|}
-do|while
-condition|(
-operator|--
-name|namelen
-condition|)
-do|;
 return|return
 name|hash
 return|;
