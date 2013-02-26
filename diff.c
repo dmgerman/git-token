@@ -7086,6 +7086,9 @@ decl_stmt|,
 name|sfx_length
 decl_stmt|;
 name|int
+name|pfx_adjust_for_slash
+decl_stmt|;
+name|int
 name|len_a
 init|=
 name|strlen
@@ -7242,14 +7245,24 @@ name|sfx_length
 operator|=
 literal|0
 expr_stmt|;
-comment|/* 	 * Note: 	 * if pfx_length is 0, old/new will never reach a - 1 because it 	 * would mean the whole string is common suffix. But then, the 	 * whole string would also be a common prefix, and we would not 	 * have pfx_length equals 0. 	 */
+comment|/* 	 * If there is a common prefix, it must end in a slash.  In 	 * that case we let this loop run 1 into the prefix to see the 	 * same slash. 	 * 	 * If there is no common prefix, we cannot do this as it would 	 * underrun the input strings. 	 */
+name|pfx_adjust_for_slash
+operator|=
+operator|(
+name|pfx_length
+condition|?
+literal|1
+else|:
+literal|0
+operator|)
+expr_stmt|;
 while|while
 condition|(
 name|a
 operator|+
 name|pfx_length
 operator|-
-literal|1
+name|pfx_adjust_for_slash
 operator|<=
 name|old
 operator|&&
@@ -7257,7 +7270,7 @@ name|b
 operator|+
 name|pfx_length
 operator|-
-literal|1
+name|pfx_adjust_for_slash
 operator|<=
 name|new
 operator|&&
