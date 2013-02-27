@@ -2897,7 +2897,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * A "string_list_each_func_t" function that canonicalizes an entry  * from GIT_CEILING_DIRECTORIES using real_path_if_valid(), or  * discards it if unusable.  */
+comment|/*  * A "string_list_each_func_t" function that canonicalizes an entry  * from GIT_CEILING_DIRECTORIES using real_path_if_valid(), or  * discards it if unusable.  The presence of an empty entry in  * GIT_CEILING_DIRECTORIES turns off canonicalization for all  * subsequent entries.  */
 end_comment
 
 begin_function
@@ -2913,9 +2913,15 @@ name|item
 parameter_list|,
 name|void
 modifier|*
-name|unused
+name|cb_data
 parameter_list|)
 block|{
+name|int
+modifier|*
+name|empty_entry_found
+init|=
+name|cb_data
+decl_stmt|;
 name|char
 modifier|*
 name|ceil
@@ -2924,33 +2930,60 @@ name|item
 operator|->
 name|string
 decl_stmt|;
-specifier|const
-name|char
-modifier|*
-name|real_path
-decl_stmt|;
 if|if
 condition|(
 operator|!
 operator|*
 name|ceil
-operator|||
+condition|)
+block|{
+operator|*
+name|empty_entry_found
+operator|=
+literal|1
+expr_stmt|;
+return|return
+literal|0
+return|;
+block|}
+elseif|else
+if|if
+condition|(
 operator|!
 name|is_absolute_path
 argument_list|(
 name|ceil
 argument_list|)
 condition|)
+block|{
 return|return
 literal|0
 return|;
+block|}
+elseif|else
+if|if
+condition|(
+operator|*
+name|empty_entry_found
+condition|)
+block|{
+comment|/* Keep entry but do not canonicalize it */
+return|return
+literal|1
+return|;
+block|}
+else|else
+block|{
+specifier|const
+name|char
+modifier|*
 name|real_path
-operator|=
+init|=
 name|real_path_if_valid
 argument_list|(
 name|ceil
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -2978,6 +3011,7 @@ expr_stmt|;
 return|return
 literal|1
 return|;
+block|}
 block|}
 end_function
 
@@ -3125,6 +3159,11 @@ condition|(
 name|env_ceiling_dirs
 condition|)
 block|{
+name|int
+name|empty_entry_found
+init|=
+literal|0
+decl_stmt|;
 name|string_list_split
 argument_list|(
 operator|&
@@ -3147,7 +3186,8 @@ literal|0
 argument_list|,
 name|canonicalize_ceiling_entry
 argument_list|,
-name|NULL
+operator|&
+name|empty_entry_found
 argument_list|)
 expr_stmt|;
 name|ceil_offset
