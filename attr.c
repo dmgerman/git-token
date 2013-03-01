@@ -1356,15 +1356,20 @@ name|flags
 operator|&
 name|EXC_FLAG_NEGATIVE
 condition|)
-name|die
+block|{
+name|warning
 argument_list|(
 name|_
 argument_list|(
-literal|"Negative patterns are forbidden in git attributes\n"
+literal|"Negative patterns are ignored in git attributes\n"
 literal|"Use '\\!' for literal leading exclamation."
 argument_list|)
 argument_list|)
 expr_stmt|;
+return|return
+name|NULL
+return|;
+block|}
 block|}
 name|res
 operator|->
