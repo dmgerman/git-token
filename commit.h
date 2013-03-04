@@ -1173,6 +1173,24 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+name|int
+name|in_merge_bases_many
+parameter_list|(
+name|struct
+name|commit
+modifier|*
+parameter_list|,
+name|int
+parameter_list|,
+name|struct
+name|commit
+modifier|*
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 specifier|extern
 name|int
 name|interactive_add
