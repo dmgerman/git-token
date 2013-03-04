@@ -774,6 +774,15 @@ literal|1
 operator|<<
 literal|2
 operator|)
+block|,
+DECL|enumerator|MATCH_REFS_FOLLOW_TAGS
+name|MATCH_REFS_FOLLOW_TAGS
+init|=
+operator|(
+literal|1
+operator|<<
+literal|3
+operator|)
 block|}
 enum|;
 end_enum

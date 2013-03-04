@@ -1998,6 +1998,23 @@ argument_list|,
 name|TRANSPORT_PUSH_PRUNE
 argument_list|)
 block|,
+name|OPT_BIT
+argument_list|(
+literal|0
+argument_list|,
+literal|"follow-tags"
+argument_list|,
+operator|&
+name|flags
+argument_list|,
+name|N_
+argument_list|(
+literal|"push missing but relevant tags"
+argument_list|)
+argument_list|,
+name|TRANSPORT_PUSH_FOLLOW_TAGS
+argument_list|)
+block|,
 name|OPT_END
 argument_list|()
 block|}
