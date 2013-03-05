@@ -851,6 +851,26 @@ end_function_decl
 
 begin_function_decl
 name|void
+name|clear_commit_marks_many
+parameter_list|(
+name|int
+name|nr
+parameter_list|,
+name|struct
+name|commit
+modifier|*
+modifier|*
+name|commit
+parameter_list|,
+name|unsigned
+name|int
+name|mark
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|void
 name|clear_commit_marks_for_object_array
 parameter_list|(
 name|struct
