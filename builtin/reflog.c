@@ -2160,7 +2160,9 @@ name|next
 control|)
 name|clear_commit_marks
 argument_list|(
-name|tip_commit
+name|elem
+operator|->
+name|item
 argument_list|,
 name|REACHABLE
 argument_list|)
