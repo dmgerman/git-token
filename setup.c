@@ -3467,7 +3467,7 @@ name|prefix
 condition|)
 name|setenv
 argument_list|(
-literal|"GIT_PREFIX"
+name|GIT_PREFIX_ENVIRONMENT
 argument_list|,
 name|prefix
 argument_list|,
@@ -3477,7 +3477,7 @@ expr_stmt|;
 else|else
 name|setenv
 argument_list|(
-literal|"GIT_PREFIX"
+name|GIT_PREFIX_ENVIRONMENT
 argument_list|,
 literal|""
 argument_list|,

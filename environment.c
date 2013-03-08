@@ -601,6 +601,8 @@ name|INDEX_ENVIRONMENT
 block|,
 name|NO_REPLACE_OBJECTS_ENVIRONMENT
 block|,
+name|GIT_PREFIX_ENVIRONMENT
+block|,
 name|NULL
 block|}
 decl_stmt|;
