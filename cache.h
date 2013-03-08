@@ -1941,6 +1941,18 @@ value|"GIT_NOTES_REWRITE_MODE"
 end_define
 
 begin_comment
+comment|/*  * This environment variable is expected to contain a boolean indicating  * whether we should or should not treat:  *  *   GIT_DIR=foo.git git ...  *  * as if GIT_WORK_TREE=. was given. It's not expected that users will make use  * of this, but we use it internally to communicate to sub-processes that we  * are in a bare repo. If not set, defaults to true.  */
+end_comment
+
+begin_define
+DECL|macro|GIT_IMPLICIT_WORK_TREE_ENVIRONMENT
+define|#
+directive|define
+name|GIT_IMPLICIT_WORK_TREE_ENVIRONMENT
+value|"GIT_IMPLICIT_WORK_TREE"
+end_define
+
+begin_comment
 comment|/*  * Repository-local GIT_* environment variables; these will be cleared  * when git spawns a sub-process that runs inside another repository.  * The array is NULL-terminated, which makes it easy to pass in the "env"  * parameter of a run-command invocation, or to do a simple walk.  */
 end_comment
 
