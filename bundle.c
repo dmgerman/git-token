@@ -1133,9 +1133,9 @@ name|printf_ln
 argument_list|(
 name|Q_
 argument_list|(
-literal|"The bundle contains %d ref"
+literal|"The bundle contains this ref:"
 argument_list|,
-literal|"The bundle contains %d refs"
+literal|"The bundle contains these %d refs:"
 argument_list|,
 name|r
 operator|->
@@ -1186,9 +1186,9 @@ name|printf_ln
 argument_list|(
 name|Q_
 argument_list|(
-literal|"The bundle requires this ref"
+literal|"The bundle requires this ref:"
 argument_list|,
-literal|"The bundle requires these %d refs"
+literal|"The bundle requires these %d refs:"
 argument_list|,
 name|r
 operator|->
