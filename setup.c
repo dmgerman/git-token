@@ -944,9 +944,16 @@ if|if
 condition|(
 operator|*
 name|copyfrom
-operator|==
+operator|!=
 literal|')'
 condition|)
+name|die
+argument_list|(
+literal|"Missing ')' at the end of pathspec magic in '%s'"
+argument_list|,
+name|elt
+argument_list|)
+expr_stmt|;
 name|copyfrom
 operator|++
 expr_stmt|;
