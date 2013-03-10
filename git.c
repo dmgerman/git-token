@@ -3094,7 +3094,10 @@ name|printf
 argument_list|(
 literal|"\n%s\n"
 argument_list|,
+name|_
+argument_list|(
 name|git_more_info_string
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|exit
