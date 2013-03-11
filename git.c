@@ -42,10 +42,10 @@ name|char
 name|git_usage_string
 index|[]
 init|=
-literal|"git [--version] [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n"
+literal|"git [--version] [--help] [-c name=value]\n"
+literal|"           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n"
 literal|"           [-p|--paginate|--no-pager] [--no-replace-objects] [--bare]\n"
 literal|"           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n"
-literal|"           [-c name=value] [--help]\n"
 literal|"<command> [<args>]"
 decl_stmt|;
 end_decl_stmt
