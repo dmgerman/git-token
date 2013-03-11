@@ -188,7 +188,9 @@ literal|"\n"
 literal|"  git add %s .\n"
 literal|"  (or git add %s .)\n"
 literal|"\n"
-literal|"With the current Git version, the command is restricted to the current directory."
+literal|"With the current Git version, the command is restricted to "
+literal|"the current directory.\n"
+literal|""
 argument_list|)
 argument_list|,
 name|option_with_implicit_dot
