@@ -1955,7 +1955,7 @@ modifier|*
 name|short_name
 parameter_list|)
 block|{
-comment|/* 	 * To be consistent with "git add -p" and most Git 	 * commands, we should default to being tree-wide, but 	 * this is not the original behavior and can't be 	 * changed until users trained themselves not to type 	 * "git add -u" or "git add -A". For now, we warn and 	 * keep the old behavior. Later, this warning can be 	 * turned into a die(...), and eventually we may 	 * reallow the command with a new behavior. 	 */
+comment|/* 	 * To be consistent with "git add -p" and most Git 	 * commands, we should default to being tree-wide, but 	 * this is not the original behavior and can't be 	 * changed until users trained themselves not to type 	 * "git add -u" or "git add -A". For now, we warn and 	 * keep the old behavior. Later, the behavior can be changed 	 * to tree-wide, keeping the warning for a while, and 	 * eventually we can drop the warning. 	 */
 name|warning
 argument_list|(
 name|_
