@@ -283,6 +283,10 @@ name|struct
 name|string_list
 name|ignored
 decl_stmt|;
+DECL|member|untracked_in_ms
+name|uint32_t
+name|untracked_in_ms
+decl_stmt|;
 block|}
 struct|;
 end_struct
