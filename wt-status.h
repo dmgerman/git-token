@@ -372,6 +372,18 @@ end_function_decl
 
 begin_function_decl
 name|void
+name|wt_status_get_state
+parameter_list|(
+name|struct
+name|wt_status_state
+modifier|*
+name|state
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|void
 name|wt_shortstatus_print
 parameter_list|(
 name|struct
