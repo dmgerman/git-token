@@ -1023,7 +1023,9 @@ name|filter
 init|=
 name|get_stream_filter
 argument_list|(
-name|path
+name|ce
+operator|->
+name|name
 argument_list|,
 name|ce
 operator|->
