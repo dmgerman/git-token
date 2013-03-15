@@ -822,9 +822,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|git_deflate_init_gzip
+DECL|function|do_git_deflate_init
+specifier|static
 name|void
-name|git_deflate_init_gzip
+name|do_git_deflate_init
 parameter_list|(
 name|git_zstream
 modifier|*
@@ -832,17 +833,11 @@ name|strm
 parameter_list|,
 name|int
 name|level
-parameter_list|)
-block|{
-comment|/* 	 * Use default 15 bits, +16 is to generate gzip header/trailer 	 * instead of the zlib wrapper. 	 */
-specifier|const
+parameter_list|,
 name|int
 name|windowBits
-init|=
-literal|15
-operator|+
-literal|16
-decl_stmt|;
+parameter_list|)
+block|{
 name|int
 name|status
 decl_stmt|;
@@ -907,6 +902,63 @@ else|:
 literal|"no message"
 argument_list|)
 expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|function|git_deflate_init_gzip
+name|void
+name|git_deflate_init_gzip
+parameter_list|(
+name|git_zstream
+modifier|*
+name|strm
+parameter_list|,
+name|int
+name|level
+parameter_list|)
+block|{
+comment|/* 	 * Use default 15 bits, +16 is to generate gzip header/trailer 	 * instead of the zlib wrapper. 	 */
+return|return
+name|do_git_deflate_init
+argument_list|(
+name|strm
+argument_list|,
+name|level
+argument_list|,
+literal|15
+operator|+
+literal|16
+argument_list|)
+return|;
+block|}
+end_function
+
+begin_function
+DECL|function|git_deflate_init_raw
+name|void
+name|git_deflate_init_raw
+parameter_list|(
+name|git_zstream
+modifier|*
+name|strm
+parameter_list|,
+name|int
+name|level
+parameter_list|)
+block|{
+comment|/* 	 * Use default 15 bits, negate the value to get raw compressed 	 * data without zlib header and trailer. 	 */
+return|return
+name|do_git_deflate_init
+argument_list|(
+name|strm
+argument_list|,
+name|level
+argument_list|,
+operator|-
+literal|15
+argument_list|)
+return|;
 block|}
 end_function
 
