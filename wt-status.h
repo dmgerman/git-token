@@ -321,13 +321,11 @@ name|int
 name|bisect_in_progress
 decl_stmt|;
 DECL|member|branch
-specifier|const
 name|char
 modifier|*
 name|branch
 decl_stmt|;
 DECL|member|onto
-specifier|const
 name|char
 modifier|*
 name|onto
