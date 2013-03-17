@@ -837,23 +837,13 @@ name|object
 modifier|*
 name|object
 init|=
-name|parse_object
+name|parse_object_or_die
 argument_list|(
 name|sha1
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-operator|!
-name|object
-condition|)
-name|die
-argument_list|(
-literal|"bad object: %s"
 argument_list|,
 name|name
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|add_pending_object
 argument_list|(
 operator|&
