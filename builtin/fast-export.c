@@ -662,10 +662,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|handle_object
+DECL|function|export_blob
 specifier|static
 name|void
-name|handle_object
+name|export_blob
 parameter_list|(
 specifier|const
 name|unsigned
@@ -1787,7 +1787,7 @@ operator|->
 name|mode
 argument_list|)
 condition|)
-name|handle_object
+name|export_blob
 argument_list|(
 name|diff_queued_diff
 operator|.
@@ -2875,7 +2875,7 @@ break|break;
 case|case
 name|OBJ_BLOB
 case|:
-name|handle_object
+name|export_blob
 argument_list|(
 name|tag
 operator|->
