@@ -1890,6 +1890,16 @@ operator|&
 name|file_table
 argument_list|)
 expr_stmt|;
+name|preallocate_hash
+argument_list|(
+operator|&
+name|file_table
+argument_list|,
+name|rename_src_nr
+operator|+
+name|rename_dst_nr
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|i
