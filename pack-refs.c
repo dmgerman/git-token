@@ -211,9 +211,11 @@ name|object
 modifier|*
 name|o
 init|=
-name|parse_object
+name|parse_object_or_die
 argument_list|(
 name|sha1
+argument_list|,
+name|path
 argument_list|)
 decl_stmt|;
 if|if
