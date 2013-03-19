@@ -689,6 +689,14 @@ return|;
 block|}
 end_function
 
+begin_define
+DECL|macro|WARN_IMPLICIT_DOT
+define|#
+directive|define
+name|WARN_IMPLICIT_DOT
+value|(1u<< 0)
+end_define
+
 begin_function
 DECL|function|prune_directory
 specifier|static
@@ -709,6 +717,9 @@ name|pathspec
 parameter_list|,
 name|int
 name|prefix
+parameter_list|,
+name|unsigned
+name|flag
 parameter_list|)
 block|{
 name|char
@@ -810,6 +821,17 @@ name|dst
 operator|++
 operator|=
 name|entry
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|flag
+operator|&
+name|WARN_IMPLICIT_DOT
+condition|)
+comment|/* 			 * "git add -A" was run from a subdirectory with a 			 * new file outside that directory. 			 * 			 * "git add -A" will behave like "git add -A :/" 			 * instead of "git add -A ." in the future. 			 * Warn about the coming behavior change. 			 */
+name|warn_pathless_add
+argument_list|()
 expr_stmt|;
 block|}
 name|dir
@@ -2327,15 +2349,6 @@ block|,
 name|NULL
 block|}
 decl_stmt|;
-if|if
-condition|(
-name|prefix
-operator|&&
-name|addremove
-condition|)
-name|warn_pathless_add
-argument_list|()
-expr_stmt|;
 name|argc
 operator|=
 literal|1
@@ -2540,6 +2553,10 @@ argument_list|(
 operator|&
 name|dir
 argument_list|,
+name|implicit_dot
+condition|?
+name|NULL
+else|:
 name|pathspec
 argument_list|)
 expr_stmt|;
@@ -2557,6 +2574,12 @@ argument_list|,
 name|pathspec
 argument_list|,
 name|baselen
+argument_list|,
+name|implicit_dot
+condition|?
+name|WARN_IMPLICIT_DOT
+else|:
+literal|0
 argument_list|)
 expr_stmt|;
 block|}
