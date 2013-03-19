@@ -82,6 +82,22 @@ name|ftruncate
 value|_chsize
 end_define
 
+begin_define
+DECL|macro|strtoull
+define|#
+directive|define
+name|strtoull
+value|_strtoui64
+end_define
+
+begin_define
+DECL|macro|strtoll
+define|#
+directive|define
+name|strtoll
+value|_strtoi64
+end_define
+
 begin_function
 DECL|function|strcasecmp
 specifier|static
