@@ -164,12 +164,25 @@ parameter_list|(
 name|void
 parameter_list|)
 block|{
+specifier|static
+name|int
+name|shown
+decl_stmt|;
 name|assert
 argument_list|(
 name|option_with_implicit_dot
 operator|&&
 name|short_option_with_implicit_dot
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|shown
+condition|)
+return|return;
+name|shown
+operator|=
+literal|1
 expr_stmt|;
 comment|/* 	 * To be consistent with "git add -p" and most Git 	 * commands, we should default to being tree-wide, but 	 * this is not the original behavior and can't be 	 * changed until users trained themselves not to type 	 * "git add -u" or "git add -A". For now, we warn and 	 * keep the old behavior. Later, the behavior can be changed 	 * to tree-wide, keeping the warning for a while, and 	 * eventually we can drop the warning. 	 */
 name|warning
