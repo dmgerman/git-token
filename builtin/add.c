@@ -135,6 +135,78 @@ block|}
 struct|;
 end_struct
 
+begin_decl_stmt
+DECL|variable|option_with_implicit_dot
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|option_with_implicit_dot
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|short_option_with_implicit_dot
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|short_option_with_implicit_dot
+decl_stmt|;
+end_decl_stmt
+
+begin_function
+DECL|function|warn_pathless_add
+specifier|static
+name|void
+name|warn_pathless_add
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+name|assert
+argument_list|(
+name|option_with_implicit_dot
+operator|&&
+name|short_option_with_implicit_dot
+argument_list|)
+expr_stmt|;
+comment|/* 	 * To be consistent with "git add -p" and most Git 	 * commands, we should default to being tree-wide, but 	 * this is not the original behavior and can't be 	 * changed until users trained themselves not to type 	 * "git add -u" or "git add -A". For now, we warn and 	 * keep the old behavior. Later, the behavior can be changed 	 * to tree-wide, keeping the warning for a while, and 	 * eventually we can drop the warning. 	 */
+name|warning
+argument_list|(
+name|_
+argument_list|(
+literal|"The behavior of 'git add %s (or %s)' with no path argument from a\n"
+literal|"subdirectory of the tree will change in Git 2.0 and should not be used anymore.\n"
+literal|"To add content for the whole tree, run:\n"
+literal|"\n"
+literal|"  git add %s :/\n"
+literal|"  (or git add %s :/)\n"
+literal|"\n"
+literal|"To restrict the command to the current directory, run:\n"
+literal|"\n"
+literal|"  git add %s .\n"
+literal|"  (or git add %s .)\n"
+literal|"\n"
+literal|"With the current Git version, the command is restricted to the current directory."
+argument_list|)
+argument_list|,
+name|option_with_implicit_dot
+argument_list|,
+name|short_option_with_implicit_dot
+argument_list|,
+name|option_with_implicit_dot
+argument_list|,
+name|short_option_with_implicit_dot
+argument_list|,
+name|option_with_implicit_dot
+argument_list|,
+name|short_option_with_implicit_dot
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
 begin_function
 DECL|function|fix_unmerged_status
 specifier|static
@@ -1939,59 +2011,6 @@ block|}
 end_function
 
 begin_function
-DECL|function|warn_pathless_add
-specifier|static
-name|void
-name|warn_pathless_add
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|option_name
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|short_name
-parameter_list|)
-block|{
-comment|/* 	 * To be consistent with "git add -p" and most Git 	 * commands, we should default to being tree-wide, but 	 * this is not the original behavior and can't be 	 * changed until users trained themselves not to type 	 * "git add -u" or "git add -A". For now, we warn and 	 * keep the old behavior. Later, the behavior can be changed 	 * to tree-wide, keeping the warning for a while, and 	 * eventually we can drop the warning. 	 */
-name|warning
-argument_list|(
-name|_
-argument_list|(
-literal|"The behavior of 'git add %s (or %s)' with no path argument from a\n"
-literal|"subdirectory of the tree will change in Git 2.0 and should not be used anymore.\n"
-literal|"To add content for the whole tree, run:\n"
-literal|"\n"
-literal|"  git add %s :/\n"
-literal|"  (or git add %s :/)\n"
-literal|"\n"
-literal|"To restrict the command to the current directory, run:\n"
-literal|"\n"
-literal|"  git add %s .\n"
-literal|"  (or git add %s .)\n"
-literal|"\n"
-literal|"With the current Git version, the command is restricted to the current directory."
-argument_list|)
-argument_list|,
-name|option_name
-argument_list|,
-name|short_name
-argument_list|,
-name|option_name
-argument_list|,
-name|short_name
-argument_list|,
-name|option_name
-argument_list|,
-name|short_name
-argument_list|)
-expr_stmt|;
-block|}
-end_function
-
-begin_function
 DECL|function|cmd_add
 name|int
 name|cmd_add
@@ -2041,20 +2060,6 @@ decl_stmt|;
 name|char
 modifier|*
 name|seen
-init|=
-name|NULL
-decl_stmt|;
-specifier|const
-name|char
-modifier|*
-name|option_with_implicit_dot
-init|=
-name|NULL
-decl_stmt|;
-specifier|const
-name|char
-modifier|*
-name|short_option_with_implicit_dot
 init|=
 name|NULL
 decl_stmt|;
@@ -2219,11 +2224,7 @@ condition|(
 name|prefix
 condition|)
 name|warn_pathless_add
-argument_list|(
-name|option_with_implicit_dot
-argument_list|,
-name|short_option_with_implicit_dot
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|argc
 operator|=
