@@ -2851,19 +2851,6 @@ name|ADD_CACHE_INTENT
 value|16
 end_define
 
-begin_define
-DECL|macro|ADD_CACHE_IMPLICIT_DOT
-define|#
-directive|define
-name|ADD_CACHE_IMPLICIT_DOT
-value|32
-end_define
-
-begin_comment
-DECL|macro|ADD_CACHE_IMPLICIT_DOT
-comment|/* internal to "git add -u/-A" */
-end_comment
-
 begin_function_decl
 specifier|extern
 name|int
