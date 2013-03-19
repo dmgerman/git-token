@@ -5387,7 +5387,7 @@ block|{
 name|int
 name|i
 decl_stmt|;
-name|work_lock
+name|counter_lock
 argument_list|()
 expr_stmt|;
 name|display_progress
@@ -5396,6 +5396,12 @@ name|progress
 argument_list|,
 name|nr_resolved_deltas
 argument_list|)
+expr_stmt|;
+name|counter_unlock
+argument_list|()
+expr_stmt|;
+name|work_lock
+argument_list|()
 expr_stmt|;
 while|while
 condition|(
