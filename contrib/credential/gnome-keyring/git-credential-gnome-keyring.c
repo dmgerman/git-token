@@ -1635,7 +1635,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Usage: %s<"
+literal|"usage: %s<"
 argument_list|,
 name|basename
 argument_list|)

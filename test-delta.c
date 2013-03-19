@@ -105,7 +105,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Usage: %s\n"
+literal|"usage: %s\n"
 argument_list|,
 name|usage_str
 argument_list|)
