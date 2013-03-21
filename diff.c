@@ -27185,7 +27185,7 @@ literal|0
 decl_stmt|;
 name|diff_warn_rename_limit
 argument_list|(
-literal|"diff.renamelimit"
+literal|"diff.renameLimit"
 argument_list|,
 name|opt
 operator|->
