@@ -13475,8 +13475,6 @@ name|struct
 name|object_entry
 modifier|*
 name|oe
-init|=
-name|oe
 decl_stmt|;
 name|struct
 name|branch
