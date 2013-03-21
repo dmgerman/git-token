@@ -1337,8 +1337,6 @@ index|]
 decl_stmt|;
 name|int
 name|failed_errno
-init|=
-name|failed_errno
 decl_stmt|;
 name|char
 modifier|*
@@ -1660,6 +1658,10 @@ name|pid
 operator|=
 name|fork
 argument_list|()
+expr_stmt|;
+name|failed_errno
+operator|=
+name|errno
 expr_stmt|;
 if|if
 condition|(
@@ -2135,8 +2137,6 @@ index|]
 argument_list|,
 name|strerror
 argument_list|(
-name|failed_errno
-operator|=
 name|errno
 argument_list|)
 argument_list|)

@@ -1622,8 +1622,6 @@ argument_list|)
 decl_stmt|;
 name|int
 name|status
-init|=
-name|status
 decl_stmt|;
 name|char
 modifier|*
@@ -1797,6 +1795,14 @@ operator|->
 name|worktree_status
 expr_stmt|;
 break|break;
+default|default:
+name|die
+argument_list|(
+literal|"BUG: unhandled change_type %d in wt_status_print_change_data"
+argument_list|,
+name|change_type
+argument_list|)
+expr_stmt|;
 block|}
 name|one
 operator|=
