@@ -12486,8 +12486,6 @@ name|struct
 name|object_entry
 modifier|*
 name|oe
-init|=
-name|oe
 decl_stmt|;
 name|unsigned
 name|char
@@ -12621,6 +12619,11 @@ name|inline_data
 operator|=
 literal|1
 expr_stmt|;
+name|oe
+operator|=
+name|NULL
+expr_stmt|;
+comment|/* not used with inline_data, but makes gcc happy */
 name|p
 operator|+=
 name|strlen
