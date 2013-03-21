@@ -45,6 +45,14 @@ name|HELP_COMMAND
 value|COMMAND_DIR "/help"
 end_define
 
+begin_define
+DECL|macro|NOLOGIN_COMMAND
+define|#
+directive|define
+name|NOLOGIN_COMMAND
+value|COMMAND_DIR "/no-interactive-login"
+end_define
+
 begin_function
 DECL|function|do_generic_cmd
 specifier|static
@@ -365,6 +373,59 @@ block|,
 name|NULL
 block|}
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|access
+argument_list|(
+name|NOLOGIN_COMMAND
+argument_list|,
+name|F_OK
+argument_list|)
+condition|)
+block|{
+comment|/* Interactive login disabled. */
+specifier|const
+name|char
+modifier|*
+name|argv
+index|[]
+init|=
+block|{
+name|NOLOGIN_COMMAND
+block|,
+name|NULL
+block|}
+decl_stmt|;
+name|int
+name|status
+decl_stmt|;
+name|status
+operator|=
+name|run_command_v_opt
+argument_list|(
+name|argv
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|status
+operator|<
+literal|0
+condition|)
+name|exit
+argument_list|(
+literal|127
+argument_list|)
+expr_stmt|;
+name|exit
+argument_list|(
+name|status
+argument_list|)
+expr_stmt|;
+block|}
 comment|/* Print help if enabled */
 name|run_command_v_opt
 argument_list|(
