@@ -4120,12 +4120,11 @@ argument_list|,
 literal|"-h"
 argument_list|)
 condition|)
-name|usage
+name|usage_with_options
 argument_list|(
 name|update_index_usage
-index|[
-literal|0
-index|]
+argument_list|,
+name|options
 argument_list|)
 expr_stmt|;
 name|git_config
