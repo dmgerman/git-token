@@ -556,8 +556,6 @@ control|)
 block|{
 name|int
 name|cmp
-init|=
-name|cmp
 decl_stmt|,
 name|len
 decl_stmt|;
