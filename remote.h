@@ -253,6 +253,12 @@ name|matching
 range|:
 literal|1
 decl_stmt|;
+DECL|member|exact_sha1
+name|unsigned
+name|exact_sha1
+range|:
+literal|1
+decl_stmt|;
 DECL|member|src
 name|char
 modifier|*
