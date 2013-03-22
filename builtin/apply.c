@@ -10594,7 +10594,7 @@ name|preimage
 operator|=
 name|fixed_preimage
 expr_stmt|;
-comment|/* 	 * Adjust the common context lines in postimage. This can be 	 * done in-place when we are just doing whitespace fixing, 	 * which does not make the string grow, but needs a new buffer 	 * when ignoring whitespace causes the update, since in this case 	 * we could have e.g. tabs converted to multiple spaces. 	 * We trust the caller to tell us if the update can be done 	 * in place (postlen==0) or not. 	 */
+comment|/* 	 * Adjust the common context lines in postimage. This can be 	 * done in-place when we are shrinking it with whitespace 	 * fixing, but needs a new buffer when ignoring whitespace or 	 * expanding leading tabs to spaces. 	 * 	 * We trust the caller to tell us if the update can be done 	 * in place (postlen==0) or not. 	 */
 name|old
 operator|=
 name|postimage
@@ -10872,6 +10872,8 @@ name|fixed
 decl_stmt|;
 name|size_t
 name|fixed_len
+decl_stmt|,
+name|postlen
 decl_stmt|;
 name|int
 name|preimage_limit
@@ -11445,6 +11447,10 @@ name|buf
 operator|+
 name|try
 expr_stmt|;
+name|postlen
+operator|=
+literal|0
+expr_stmt|;
 for|for
 control|(
 name|i
@@ -11572,6 +11578,12 @@ name|fixstart
 argument_list|)
 operator|)
 expr_stmt|;
+name|postlen
+operator|+=
+name|tgtfix
+operator|.
+name|len
+expr_stmt|;
 name|strbuf_release
 argument_list|(
 operator|&
@@ -11695,6 +11707,18 @@ operator|&
 name|fixed_len
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|postlen
+operator|<
+name|postimage
+operator|->
+name|len
+condition|)
+name|postlen
+operator|=
+literal|0
+expr_stmt|;
 name|update_pre_post_images
 argument_list|(
 name|preimage
@@ -11705,7 +11729,7 @@ name|fixed_buf
 argument_list|,
 name|fixed_len
 argument_list|,
-literal|0
+name|postlen
 argument_list|)
 expr_stmt|;
 return|return
