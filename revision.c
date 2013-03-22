@@ -3353,7 +3353,7 @@ comment|/* 	 * Does the destination list contain entries with a date 	 * before 
 if|if
 condition|(
 name|date
-operator|<
+operator|<=
 name|src
 operator|->
 name|item
