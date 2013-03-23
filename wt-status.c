@@ -5644,7 +5644,7 @@ name|color
 argument_list|,
 name|_
 argument_list|(
-literal|"You are currently bisecting branch '%s'."
+literal|"You are currently bisecting, started from branch '%s'."
 argument_list|)
 argument_list|,
 name|state

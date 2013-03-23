@@ -3074,7 +3074,7 @@ name|desc
 argument_list|,
 name|_
 argument_list|(
-literal|"(no branch, bisecting %s)"
+literal|"(no branch, bisect started on %s)"
 argument_list|)
 argument_list|,
 name|state
