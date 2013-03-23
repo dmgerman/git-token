@@ -12341,8 +12341,8 @@ expr_stmt|;
 if|if
 condition|(
 name|nread
-operator|<
-literal|0
+operator|!=
+literal|1
 condition|)
 return|return
 name|error
