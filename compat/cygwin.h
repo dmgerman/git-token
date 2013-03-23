@@ -45,6 +45,45 @@ name|cygwin_lstat_fn
 decl_stmt|;
 end_decl_stmt
 
+begin_function_decl
+name|int
+name|cygwin_get_st_mode_bits
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|,
+name|int
+modifier|*
+name|mode
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_define
+DECL|macro|get_st_mode_bits
+define|#
+directive|define
+name|get_st_mode_bits
+parameter_list|(
+name|p
+parameter_list|,
+name|m
+parameter_list|)
+value|cygwin_get_st_mode_bits((p),(m))
+end_define
+
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|CYGWIN_C
+end_ifndef
+
+begin_comment
+comment|/* cygwin.c needs the original lstat() */
+end_comment
+
 begin_define
 DECL|macro|stat
 define|#
@@ -70,6 +109,11 @@ name|buf
 parameter_list|)
 value|(*cygwin_lstat_fn)(path, buf)
 end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 end_unit
 
