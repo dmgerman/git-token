@@ -239,7 +239,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/** Returns the object, having parsed it to find out what it is. **/
+comment|/*  * Returns the object, having parsed it to find out what it is.  *  * Returns NULL if the object is missing or corrupt.  */
 end_comment
 
 begin_function_decl
@@ -253,6 +253,30 @@ name|unsigned
 name|char
 modifier|*
 name|sha1
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/*  * Like parse_object, but will die() instead of returning NULL. If the  * "name" parameter is not NULL, it is included in the error message  * (otherwise, the sha1 hex is given).  */
+end_comment
+
+begin_function_decl
+name|struct
+name|object
+modifier|*
+name|parse_object_or_die
+parameter_list|(
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|sha1
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|name
 parameter_list|)
 function_decl|;
 end_function_decl
