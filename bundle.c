@@ -1133,9 +1133,9 @@ name|printf_ln
 argument_list|(
 name|Q_
 argument_list|(
-literal|"The bundle contains %d ref"
+literal|"The bundle contains this ref:"
 argument_list|,
-literal|"The bundle contains %d refs"
+literal|"The bundle contains these %d refs:"
 argument_list|,
 name|r
 operator|->
@@ -1156,6 +1156,13 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
+name|r
+operator|=
+operator|&
+name|header
+operator|->
+name|prerequisites
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -1175,20 +1182,13 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|r
-operator|=
-operator|&
-name|header
-operator|->
-name|prerequisites
-expr_stmt|;
 name|printf_ln
 argument_list|(
 name|Q_
 argument_list|(
-literal|"The bundle requires this ref"
+literal|"The bundle requires this ref:"
 argument_list|,
-literal|"The bundle requires these %d refs"
+literal|"The bundle requires these %d refs:"
 argument_list|,
 name|r
 operator|->
