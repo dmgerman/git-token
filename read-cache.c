@@ -6063,9 +6063,9 @@ if|if
 condition|(
 name|hdr_version
 operator|<
-literal|2
+name|INDEX_FORMAT_LB
 operator|||
-literal|4
+name|INDEX_FORMAT_UB
 operator|<
 name|hdr_version
 condition|)
