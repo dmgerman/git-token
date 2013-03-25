@@ -1136,7 +1136,10 @@ name|i_end
 operator|<
 literal|0
 condition|)
-break|break;
+return|return
+operator|-
+literal|1
+return|;
 if|if
 condition|(
 name|fs
