@@ -47,7 +47,7 @@ name|char
 name|commit_tree_usage
 index|[]
 init|=
-literal|"git commit-tree [(-p<sha1>)...] [-S<signer>] [-m<message>] [-F<file>]<sha1><changelog"
+literal|"git commit-tree [(-p<sha1>)...] [-S[<keyid>]] [-m<message>] [-F<file>]<sha1><changelog"
 decl_stmt|;
 end_decl_stmt
 
