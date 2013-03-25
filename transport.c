@@ -556,7 +556,11 @@ control|)
 block|{
 name|int
 name|cmp
-decl_stmt|,
+init|=
+literal|0
+decl_stmt|;
+comment|/* assigned before used */
+name|int
 name|len
 decl_stmt|;
 if|if
