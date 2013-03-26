@@ -2291,6 +2291,42 @@ name|junk_pid
 decl_stmt|;
 end_decl_stmt
 
+begin_enum
+enum|enum
+block|{
+DECL|enumerator|JUNK_LEAVE_NONE
+name|JUNK_LEAVE_NONE
+block|,
+DECL|enumerator|JUNK_LEAVE_REPO
+name|JUNK_LEAVE_REPO
+block|,
+DECL|enumerator|JUNK_LEAVE_ALL
+name|JUNK_LEAVE_ALL
+DECL|variable|junk_mode
+block|}
+name|junk_mode
+init|=
+name|JUNK_LEAVE_NONE
+enum|;
+end_enum
+
+begin_decl_stmt
+DECL|variable|junk_leave_repo_msg
+specifier|static
+specifier|const
+name|char
+name|junk_leave_repo_msg
+index|[]
+init|=
+name|N_
+argument_list|(
+literal|"Clone succeeded, but checkout failed.\n"
+literal|"You can inspect what was checked out with 'git status'\n"
+literal|"and retry the checkout with 'git checkout -f HEAD'\n"
+argument_list|)
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|remove_junk
 specifier|static
@@ -2306,6 +2342,33 @@ name|sb
 init|=
 name|STRBUF_INIT
 decl_stmt|;
+switch|switch
+condition|(
+name|junk_mode
+condition|)
+block|{
+case|case
+name|JUNK_LEAVE_REPO
+case|:
+name|warning
+argument_list|(
+literal|"%s"
+argument_list|,
+name|_
+argument_list|(
+name|junk_leave_repo_msg
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|/* fall-through */
+case|case
+name|JUNK_LEAVE_ALL
+case|:
+return|return;
+default|default:
+comment|/* proceed to removal */
+break|break;
+block|}
 if|if
 condition|(
 name|getpid
@@ -5066,6 +5129,10 @@ argument_list|(
 name|transport
 argument_list|)
 expr_stmt|;
+name|junk_mode
+operator|=
+name|JUNK_LEAVE_REPO
+expr_stmt|;
 name|err
 operator|=
 name|checkout
@@ -5095,9 +5162,9 @@ operator|&
 name|value
 argument_list|)
 expr_stmt|;
-name|junk_pid
+name|junk_mode
 operator|=
-literal|0
+name|JUNK_LEAVE_ALL
 expr_stmt|;
 return|return
 name|err
