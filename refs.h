@@ -804,7 +804,7 @@ end_function_decl
 
 begin_function_decl
 name|int
-name|for_each_recent_reflog_ent
+name|for_each_reflog_ent_reverse
 parameter_list|(
 specifier|const
 name|char
@@ -813,8 +813,6 @@ name|refname
 parameter_list|,
 name|each_reflog_ent_fn
 name|fn
-parameter_list|,
-name|long
 parameter_list|,
 name|void
 modifier|*
