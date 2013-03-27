@@ -222,6 +222,19 @@ end_function_decl
 
 begin_function_decl
 name|void
+name|git_deflate_init_raw
+parameter_list|(
+name|git_zstream
+modifier|*
+parameter_list|,
+name|int
+name|level
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|void
 name|git_deflate_end
 parameter_list|(
 name|git_zstream
