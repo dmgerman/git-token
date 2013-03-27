@@ -117,6 +117,12 @@ directive|include
 file|"mailmap.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"gpg-interface.h"
+end_include
+
 begin_comment
 comment|/* Set a default date-time format for git log ("log.date" config variable) */
 end_comment
@@ -1834,6 +1840,23 @@ block|}
 if|if
 condition|(
 name|grep_config
+argument_list|(
+name|var
+argument_list|,
+name|value
+argument_list|,
+name|cb
+argument_list|)
+operator|<
+literal|0
+condition|)
+return|return
+operator|-
+literal|1
+return|;
+if|if
+condition|(
+name|git_gpg_config
 argument_list|(
 name|var
 argument_list|,
