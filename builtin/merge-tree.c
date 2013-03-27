@@ -1451,7 +1451,7 @@ operator||=
 operator|(
 literal|1
 operator|<<
-literal|1
+name|i
 operator|)
 expr_stmt|;
 if|if
