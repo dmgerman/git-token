@@ -12438,23 +12438,6 @@ return|;
 block|}
 end_function
 
-begin_enum
-DECL|enum|rewrite_result
-enum|enum
-name|rewrite_result
-block|{
-DECL|enumerator|rewrite_one_ok
-name|rewrite_one_ok
-block|,
-DECL|enumerator|rewrite_one_noparents
-name|rewrite_one_noparents
-block|,
-DECL|enumerator|rewrite_one_error
-name|rewrite_one_error
-block|}
-enum|;
-end_enum
-
 begin_function
 DECL|function|rewrite_one
 specifier|static
@@ -12593,7 +12576,6 @@ end_function
 
 begin_function
 DECL|function|rewrite_parents
-specifier|static
 name|int
 name|rewrite_parents
 parameter_list|(
@@ -12606,6 +12588,9 @@ name|struct
 name|commit
 modifier|*
 name|commit
+parameter_list|,
+name|rewrite_parent_fn_t
+name|rewrite_parent
 parameter_list|)
 block|{
 name|struct
@@ -12635,7 +12620,7 @@ name|pp
 decl_stmt|;
 switch|switch
 condition|(
-name|rewrite_one
+name|rewrite_parent
 argument_list|(
 name|revs
 argument_list|,
@@ -13536,6 +13521,8 @@ argument_list|(
 name|revs
 argument_list|,
 name|commit
+argument_list|,
+name|rewrite_one
 argument_list|)
 operator|<
 literal|0
