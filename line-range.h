@@ -64,6 +64,11 @@ parameter_list|,
 name|long
 modifier|*
 name|end
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|path
 parameter_list|)
 function_decl|;
 end_function_decl
