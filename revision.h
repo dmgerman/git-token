@@ -476,6 +476,11 @@ DECL|member|first_parent_only
 name|first_parent_only
 range|:
 literal|1
+decl_stmt|,
+DECL|member|line_level_traverse
+name|line_level_traverse
+range|:
+literal|1
 decl_stmt|;
 comment|/* Diff flags */
 DECL|member|diff
@@ -789,6 +794,12 @@ decl_stmt|;
 DECL|member|count_same
 name|int
 name|count_same
+decl_stmt|;
+comment|/* line level range that we are chasing */
+DECL|member|line_log_data
+name|struct
+name|decoration
+name|line_log_data
 decl_stmt|;
 block|}
 struct|;

@@ -68,6 +68,25 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Scan past a range argument that could be parsed by  * 'parse_range_arg', to help the caller determine the start of the  * filename in '-L n,m:file' syntax.  *  * Returns a pointer to the first character after the 'n,m' part, or  * NULL in case the argument is obviously malformed.  */
+end_comment
+
+begin_function_decl
+specifier|extern
+specifier|const
+name|char
+modifier|*
+name|skip_range_arg
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|arg
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
