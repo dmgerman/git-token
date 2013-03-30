@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_comment
-comment|/*  * I'm tired of doing "vsnprintf()" etc just to open a  * file, so here's a "return static buffer with printf"  * interface for paths.  *  * It's obviously not thread-safe. Sue me. But it's quite  * useful for doing things like  *  *   f = open(mkpath("%s/%s.git", base, name), O_RDONLY);  *  * which is what it's designed for.  */
+comment|/*  * Utilities for paths and pathnames  */
 end_comment
 
 begin_include
@@ -1960,17 +1960,14 @@ block|}
 end_function
 
 begin_function
-DECL|function|set_shared_perm
+DECL|function|adjust_shared_perm
 name|int
-name|set_shared_perm
+name|adjust_shared_perm
 parameter_list|(
 specifier|const
 name|char
 modifier|*
 name|path
-parameter_list|,
-name|int
-name|mode
 parameter_list|)
 block|{
 name|int
@@ -1979,6 +1976,8 @@ decl_stmt|,
 name|shared
 decl_stmt|,
 name|orig_mode
+decl_stmt|,
+name|mode
 decl_stmt|;
 if|if
 condition|(
@@ -1986,31 +1985,10 @@ operator|!
 name|shared_repository
 condition|)
 block|{
-if|if
-condition|(
-name|mode
-condition|)
-return|return
-name|chmod
-argument_list|(
-name|path
-argument_list|,
-name|mode
-operator|&
-operator|~
-name|S_IFMT
-argument_list|)
-return|;
 return|return
 literal|0
 return|;
 block|}
-if|if
-condition|(
-operator|!
-name|mode
-condition|)
-block|{
 if|if
 condition|(
 name|get_st_mode_bits
@@ -2030,12 +2008,6 @@ return|;
 name|orig_mode
 operator|=
 name|mode
-expr_stmt|;
-block|}
-else|else
-name|orig_mode
-operator|=
-literal|0
 expr_stmt|;
 if|if
 condition|(
