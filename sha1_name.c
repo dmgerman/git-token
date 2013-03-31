@@ -3455,6 +3455,17 @@ name|lookup_flags
 operator|=
 name|GET_SHA1_COMMITTISH
 expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|expected_type
+operator|==
+name|OBJ_TREE
+condition|)
+name|lookup_flags
+operator|=
+name|GET_SHA1_TREEISH
+expr_stmt|;
 if|if
 condition|(
 name|get_sha1_1
