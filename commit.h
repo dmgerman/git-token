@@ -36,6 +36,12 @@ directive|include
 file|"decorate.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"gpg-interface.h"
+end_include
+
 begin_struct
 DECL|struct|commit_list
 struct|struct
@@ -1578,6 +1584,29 @@ specifier|const
 name|char
 modifier|*
 name|format_last
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/*  * Check the signature of the given commit. The result of the check is stored in  * sig->result, 'G' for a good signature, 'B' for a bad signature and 'N'  * for no signature at all.  * This may allocate memory for sig->gpg_output, sig->gpg_status, sig->signer  * and sig->key.  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|void
+name|check_commit_signature
+parameter_list|(
+specifier|const
+name|struct
+name|commit
+modifier|*
+name|commit
+parameter_list|,
+name|struct
+name|signature_check
+modifier|*
+name|sigc
 parameter_list|)
 function_decl|;
 end_function_decl
