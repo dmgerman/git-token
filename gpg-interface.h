@@ -31,7 +31,7 @@ DECL|member|result
 name|char
 name|result
 decl_stmt|;
-comment|/* 0 (not checked), 		      * N (checked but no further result), 		      * G (good) 		      * B (bad) */
+comment|/* 0 (not checked), 		      * N (checked but no further result), 		      * U (untrusted good), 		      * G (good) 		      * B (bad) */
 DECL|member|signer
 name|char
 modifier|*

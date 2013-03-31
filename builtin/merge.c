@@ -7576,6 +7576,24 @@ literal|'G'
 case|:
 break|break;
 case|case
+literal|'U'
+case|:
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"Commit %s has an untrusted GPG signature, "
+literal|"allegedly by %s."
+argument_list|)
+argument_list|,
+name|hex
+argument_list|,
+name|signature_check
+operator|.
+name|signer
+argument_list|)
+expr_stmt|;
+case|case
 literal|'B'
 case|:
 name|die

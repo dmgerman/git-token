@@ -5777,6 +5777,18 @@ literal|'B'
 block|,
 literal|"\n[GNUPG:] BADSIG "
 block|}
+block|,
+block|{
+literal|'U'
+block|,
+literal|"\n[GNUPG:] TRUST_NEVER"
+block|}
+block|,
+block|{
+literal|'U'
+block|,
+literal|"\n[GNUPG:] TRUST_UNDEFINED"
+block|}
 block|, }
 struct|;
 end_struct
@@ -5913,6 +5925,16 @@ index|]
 operator|.
 name|result
 expr_stmt|;
+comment|/* The trust messages are not followed by key/signer information */
+if|if
+condition|(
+name|sigc
+operator|->
+name|result
+operator|!=
+literal|'U'
+condition|)
+block|{
 name|sigc
 operator|->
 name|key
@@ -5950,7 +5972,7 @@ operator|-
 name|found
 argument_list|)
 expr_stmt|;
-break|break;
+block|}
 block|}
 block|}
 end_function
