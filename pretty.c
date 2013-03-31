@@ -6079,6 +6079,12 @@ case|:
 case|case
 literal|'B'
 case|:
+case|case
+literal|'U'
+case|:
+case|case
+literal|'N'
+case|:
 name|strbuf_addch
 argument_list|(
 name|sb
