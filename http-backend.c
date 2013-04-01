@@ -413,7 +413,7 @@ argument_list|(
 literal|"protocol error: impossibly long line"
 argument_list|)
 expr_stmt|;
-name|safe_write
+name|write_or_die
 argument_list|(
 name|fd
 argument_list|,
@@ -642,7 +642,7 @@ parameter_list|(
 name|void
 parameter_list|)
 block|{
-name|safe_write
+name|write_or_die
 argument_list|(
 literal|1
 argument_list|,
@@ -868,7 +868,7 @@ expr_stmt|;
 name|end_headers
 argument_list|()
 expr_stmt|;
-name|safe_write
+name|write_or_die
 argument_list|(
 literal|1
 argument_list|,
@@ -1045,7 +1045,7 @@ operator|!
 name|n
 condition|)
 break|break;
-name|safe_write
+name|write_or_die
 argument_list|(
 literal|1
 argument_list|,

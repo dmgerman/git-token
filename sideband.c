@@ -2,6 +2,12 @@ begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_include
 include|#
 directive|include
+file|"cache.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"pkt-line.h"
 end_include
 
@@ -157,15 +163,21 @@ name|len
 decl_stmt|;
 name|len
 operator|=
-name|packet_read_line
+name|packet_read
 argument_list|(
 name|in_stream
+argument_list|,
+name|NULL
+argument_list|,
+name|NULL
 argument_list|,
 name|buf
 operator|+
 name|pf
 argument_list|,
 name|LARGE_PACKET_MAX
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 if|if
@@ -493,7 +505,7 @@ continue|continue;
 case|case
 literal|1
 case|:
-name|safe_write
+name|write_or_die
 argument_list|(
 name|out
 argument_list|,
@@ -626,7 +638,7 @@ index|]
 operator|=
 name|band
 expr_stmt|;
-name|safe_write
+name|write_or_die
 argument_list|(
 name|fd
 argument_list|,
@@ -649,7 +661,7 @@ operator|+
 literal|4
 argument_list|)
 expr_stmt|;
-name|safe_write
+name|write_or_die
 argument_list|(
 name|fd
 argument_list|,
@@ -659,7 +671,7 @@ literal|4
 argument_list|)
 expr_stmt|;
 block|}
-name|safe_write
+name|write_or_die
 argument_list|(
 name|fd
 argument_list|,

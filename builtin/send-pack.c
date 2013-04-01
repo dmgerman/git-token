@@ -299,7 +299,7 @@ argument_list|,
 literal|'\n'
 argument_list|)
 expr_stmt|;
-name|safe_write
+name|write_or_die
 argument_list|(
 literal|1
 argument_list|,
@@ -928,6 +928,10 @@ name|fd
 index|[
 literal|0
 index|]
+argument_list|,
+name|NULL
+argument_list|,
+literal|0
 argument_list|,
 operator|&
 name|remote_refs
