@@ -78,6 +78,15 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|advice_status_u_option
+name|int
+name|advice_status_u_option
+init|=
+literal|1
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|advice_commit_before_merge
 name|int
 name|advice_commit_before_merge
@@ -188,6 +197,13 @@ literal|"statushints"
 block|,
 operator|&
 name|advice_status_hints
+block|}
+block|,
+block|{
+literal|"statusuoption"
+block|,
+operator|&
+name|advice_status_u_option
 block|}
 block|,
 block|{

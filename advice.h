@@ -77,6 +77,13 @@ end_decl_stmt
 begin_decl_stmt
 specifier|extern
 name|int
+name|advice_status_u_option
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
+name|int
 name|advice_commit_before_merge
 decl_stmt|;
 end_decl_stmt
