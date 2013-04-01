@@ -3626,6 +3626,8 @@ operator|&
 name|sb
 argument_list|,
 name|ignore_footer
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 block|}
