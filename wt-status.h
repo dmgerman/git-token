@@ -324,6 +324,10 @@ DECL|member|bisect_in_progress
 name|int
 name|bisect_in_progress
 decl_stmt|;
+DECL|member|revert_in_progress
+name|int
+name|revert_in_progress
+decl_stmt|;
 DECL|member|branch
 name|char
 modifier|*
