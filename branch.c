@@ -1018,6 +1018,21 @@ argument_list|)
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|upstream_missing
+specifier|static
+specifier|const
+name|char
+name|upstream_missing
+index|[]
+init|=
+name|N_
+argument_list|(
+literal|"Cannot setup tracking information; starting point does not exist"
+argument_list|)
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|create_branch
 name|void
@@ -1167,6 +1182,19 @@ argument_list|,
 name|sha1
 argument_list|)
 condition|)
+block|{
+if|if
+condition|(
+name|explicit_tracking
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+name|upstream_missing
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|die
 argument_list|(
 literal|"Not a valid object name: '%s'."
@@ -1174,6 +1202,7 @@ argument_list|,
 name|start_name
 argument_list|)
 expr_stmt|;
+block|}
 switch|switch
 condition|(
 name|dwim_ref
