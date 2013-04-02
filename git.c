@@ -59,7 +59,9 @@ index|[]
 init|=
 name|N_
 argument_list|(
-literal|"See 'git help<command>' for more information on a specific command."
+literal|"'git help -a' and 'git help -g' lists available subcommands and some\n"
+literal|"concept guides. See 'git help<command>' or 'git help<concept>'\n"
+literal|"to read about a specific subcommand or concept."
 argument_list|)
 decl_stmt|;
 end_decl_stmt
