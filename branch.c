@@ -1028,7 +1028,29 @@ index|[]
 init|=
 name|N_
 argument_list|(
-literal|"Cannot setup tracking information; starting point '%s' does not exist"
+literal|"the requested upstream branch '%s' does not exist"
+argument_list|)
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|upstream_advice
+specifier|static
+specifier|const
+name|char
+name|upstream_advice
+index|[]
+init|=
+name|N_
+argument_list|(
+literal|"\n"
+literal|"If you are planning on basing your work on an upstream\n"
+literal|"branch that already exists at the remote, you may need to\n"
+literal|"run \"git fetch\" to retrieve it.\n"
+literal|"\n"
+literal|"If you are planning to push out a new local branch that\n"
+literal|"will track its remote counterpart, you may want to use\n"
+literal|"\"git push -u\" to set the upstream config as you push."
 argument_list|)
 decl_stmt|;
 end_decl_stmt
@@ -1187,6 +1209,36 @@ if|if
 condition|(
 name|explicit_tracking
 condition|)
+block|{
+if|if
+condition|(
+name|advice_set_upstream_failure
+condition|)
+block|{
+name|error
+argument_list|(
+name|_
+argument_list|(
+name|upstream_missing
+argument_list|)
+argument_list|,
+name|start_name
+argument_list|)
+expr_stmt|;
+name|advise
+argument_list|(
+name|_
+argument_list|(
+name|upstream_advice
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|exit
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
 name|die
 argument_list|(
 name|_
@@ -1197,6 +1249,7 @@ argument_list|,
 name|start_name
 argument_list|)
 expr_stmt|;
+block|}
 name|die
 argument_list|(
 literal|"Not a valid object name: '%s'."

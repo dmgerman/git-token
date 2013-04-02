@@ -122,6 +122,15 @@ literal|1
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|advice_set_upstream_failure
+name|int
+name|advice_set_upstream_failure
+init|=
+literal|1
+decl_stmt|;
+end_decl_stmt
+
 begin_struct
 specifier|static
 struct|struct
@@ -232,6 +241,13 @@ literal|"detachedhead"
 block|,
 operator|&
 name|advice_detached_head
+block|}
+block|,
+block|{
+literal|"setupstreamfailure"
+block|,
+operator|&
+name|advice_set_upstream_failure
 block|}
 block|,
 comment|/* make this an alias for backward compatibility */
