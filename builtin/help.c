@@ -191,7 +191,7 @@ name|builtin_help_options
 index|[]
 init|=
 block|{
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'a'
 argument_list|,
@@ -2440,6 +2440,12 @@ operator|&
 name|other_cmds
 argument_list|)
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|show_all
+condition|)
+block|{
 name|printf
 argument_list|(
 literal|"%s\n"
@@ -2450,6 +2456,7 @@ name|git_more_info_string
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|/* 		* We're done. Ignore any remaining args 		*/
 return|return
 literal|0
 return|;
