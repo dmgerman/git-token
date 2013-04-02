@@ -163,6 +163,16 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|show_guides
+specifier|static
+name|int
+name|show_guides
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|colopts
 specifier|static
 name|unsigned
@@ -203,6 +213,21 @@ argument_list|,
 name|N_
 argument_list|(
 literal|"print all available commands"
+argument_list|)
+argument_list|)
+block|,
+name|OPT_BOOL
+argument_list|(
+literal|'g'
+argument_list|,
+literal|"guides"
+argument_list|,
+operator|&
+name|show_guides
+argument_list|,
+name|N_
+argument_list|(
+literal|"print list of useful guides"
 argument_list|)
 argument_list|)
 block|,
@@ -276,7 +301,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git help [--all] [--man|--web|--info] [command]"
+literal|"git help [--all] [--guides] [--man|--web|--info] [command]"
 argument_list|)
 block|,
 name|NULL
@@ -2443,7 +2468,16 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+name|show_guides
+condition|)
+block|{
+comment|/* do action - next patch */
+block|}
+if|if
+condition|(
 name|show_all
+operator|||
+name|show_guides
 condition|)
 block|{
 name|printf
