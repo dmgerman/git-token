@@ -2462,6 +2462,29 @@ name|key
 operator|+
 literal|7
 expr_stmt|;
+comment|/* Handle remote.* variables */
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|name
+argument_list|,
+literal|"pushdefault"
+argument_list|)
+condition|)
+return|return
+name|git_config_string
+argument_list|(
+operator|&
+name|pushremote_name
+argument_list|,
+name|key
+argument_list|,
+name|value
+argument_list|)
+return|;
+comment|/* Handle remote.<name>.* variables */
 if|if
 condition|(
 operator|*
