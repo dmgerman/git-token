@@ -1003,6 +1003,21 @@ return|;
 block|}
 end_function
 
+begin_decl_stmt
+DECL|variable|upstream_not_branch
+specifier|static
+specifier|const
+name|char
+name|upstream_not_branch
+index|[]
+init|=
+name|N_
+argument_list|(
+literal|"Cannot setup tracking information; starting point is not a branch."
+argument_list|)
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|create_branch
 name|void
@@ -1187,7 +1202,10 @@ name|explicit_tracking
 condition|)
 name|die
 argument_list|(
-literal|"Cannot setup tracking information; starting point is not a branch."
+name|_
+argument_list|(
+name|upstream_not_branch
+argument_list|)
 argument_list|)
 expr_stmt|;
 break|break;
@@ -1218,7 +1236,10 @@ name|explicit_tracking
 condition|)
 name|die
 argument_list|(
-literal|"Cannot setup tracking information; starting point is not a branch."
+name|_
+argument_list|(
+name|upstream_not_branch
+argument_list|)
 argument_list|)
 expr_stmt|;
 else|else
