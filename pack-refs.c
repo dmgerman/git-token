@@ -135,6 +135,11 @@ name|cb
 init|=
 name|cb_data
 decl_stmt|;
+name|struct
+name|object
+modifier|*
+name|o
+decl_stmt|;
 name|int
 name|is_tag_ref
 decl_stmt|;
@@ -201,21 +206,15 @@ argument_list|,
 name|path
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|is_tag_ref
-condition|)
-block|{
-name|struct
-name|object
-modifier|*
 name|o
-init|=
-name|parse_object
+operator|=
+name|parse_object_or_die
 argument_list|(
 name|sha1
+argument_list|,
+name|path
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
 name|o
@@ -256,7 +255,6 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 if|if
 condition|(
@@ -679,7 +677,7 @@ name|cbdata
 operator|.
 name|refs_file
 argument_list|,
-literal|"# pack-refs with: peeled \n"
+literal|"# pack-refs with: peeled fully-peeled \n"
 argument_list|)
 expr_stmt|;
 name|for_each_ref

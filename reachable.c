@@ -943,9 +943,11 @@ name|object
 modifier|*
 name|object
 init|=
-name|parse_object
+name|parse_object_or_die
 argument_list|(
 name|sha1
+argument_list|,
+name|path
 argument_list|)
 decl_stmt|;
 name|struct
@@ -960,23 +962,6 @@ operator|*
 operator|)
 name|cb_data
 decl_stmt|;
-if|if
-condition|(
-operator|!
-name|object
-condition|)
-name|die
-argument_list|(
-literal|"bad object ref: %s:%s"
-argument_list|,
-name|path
-argument_list|,
-name|sha1_to_hex
-argument_list|(
-name|sha1
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|add_pending_object
 argument_list|(
 name|revs

@@ -3525,6 +3525,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Read f, which is a packed-refs file, into dir.  *  * A comment line of the form "# pack-refs with: " may contain zero or  * more traits. We interpret the traits as follows:  *  *   No traits:  *  *      Probably no references are peeled. But if the file contains a  *      peeled value for a reference, we will use it.  *  *   peeled:  *  *      References under "refs/tags/", if they *can* be peeled, *are*  *      peeled in this file. References outside of "refs/tags/" are  *      probably not peeled even if they could have been, but if we find  *      a peeled value for such a reference we will use it.  *  *   fully-peeled:  *  *      All references in the file that can be peeled are peeled.  *      Inversely (and this is more important), any references in the  *      file for which no peeled value is recorded is not peelable. This  *      trait should typically be written alongside "peeled" for  *      compatibility with older clients, but we do not require it  *      (i.e., "peeled" is a no-op if "fully-peeled" is set).  */
+end_comment
+
 begin_function
 DECL|function|read_packed_refs
 specifier|static
@@ -3554,11 +3558,18 @@ index|[
 name|PATH_MAX
 index|]
 decl_stmt|;
-name|int
-name|flag
+enum|enum
+block|{
+name|PEELED_NONE
+block|,
+name|PEELED_TAGS
+block|,
+name|PEELED_FULLY
+block|}
+name|peeled
 init|=
-name|REF_ISPACKED
-decl_stmt|;
+name|PEELED_NONE
+enum|;
 while|while
 condition|(
 name|fgets
@@ -3632,12 +3643,26 @@ name|strstr
 argument_list|(
 name|traits
 argument_list|,
+literal|" fully-peeled "
+argument_list|)
+condition|)
+name|peeled
+operator|=
+name|PEELED_FULLY
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|strstr
+argument_list|(
+name|traits
+argument_list|,
 literal|" peeled "
 argument_list|)
 condition|)
-name|flag
-operator||=
-name|REF_KNOWS_PEELED
+name|peeled
+operator|=
+name|PEELED_TAGS
 expr_stmt|;
 comment|/* perhaps other traits later as well */
 continue|continue;
@@ -3664,10 +3689,36 @@ name|refname
 argument_list|,
 name|sha1
 argument_list|,
-name|flag
+name|REF_ISPACKED
 argument_list|,
 literal|1
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|peeled
+operator|==
+name|PEELED_FULLY
+operator|||
+operator|(
+name|peeled
+operator|==
+name|PEELED_TAGS
+operator|&&
+operator|!
+name|prefixcmp
+argument_list|(
+name|refname
+argument_list|,
+literal|"refs/tags/"
+argument_list|)
+operator|)
+condition|)
+name|last
+operator|->
+name|flag
+operator||=
+name|REF_KNOWS_PEELED
 expr_stmt|;
 name|add_ref
 argument_list|(
@@ -3713,6 +3764,7 @@ argument_list|,
 name|sha1
 argument_list|)
 condition|)
+block|{
 name|hashcpy
 argument_list|(
 name|last
@@ -3726,6 +3778,14 @@ argument_list|,
 name|sha1
 argument_list|)
 expr_stmt|;
+comment|/* 			 * Regardless of what the file header said, 			 * we definitely know the value of *this* 			 * reference: 			 */
+name|last
+operator|->
+name|flag
+operator||=
+name|REF_KNOWS_PEELED
+expr_stmt|;
+block|}
 block|}
 block|}
 end_function
