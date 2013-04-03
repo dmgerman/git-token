@@ -222,6 +222,8 @@ index|]
 decl_stmt|;
 name|remove_name_hash
 argument_list|(
+name|istate
+argument_list|,
 name|old
 argument_list|)
 expr_stmt|;
@@ -2211,6 +2213,8 @@ argument_list|)
 expr_stmt|;
 name|remove_name_hash
 argument_list|(
+name|istate
+argument_list|,
 name|ce
 argument_list|)
 expr_stmt|;
@@ -2336,6 +2340,8 @@ name|CE_REMOVE
 condition|)
 name|remove_name_hash
 argument_list|(
+name|istate
+argument_list|,
 name|ce_array
 index|[
 name|i
@@ -7532,18 +7538,9 @@ name|nsec
 operator|=
 literal|0
 expr_stmt|;
-name|istate
-operator|->
-name|name_hash_initialized
-operator|=
-literal|0
-expr_stmt|;
-name|free_hash
+name|free_name_hash
 argument_list|(
-operator|&
 name|istate
-operator|->
-name|name_hash
 argument_list|)
 expr_stmt|;
 name|cache_tree_free
