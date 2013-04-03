@@ -5283,6 +5283,20 @@ condition|)
 block|{
 if|if
 condition|(
+operator|!
+name|argc
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"branch name required"
+argument_list|)
+argument_list|)
+expr_stmt|;
+elseif|else
+if|if
+condition|(
 name|argc
 operator|==
 literal|1
