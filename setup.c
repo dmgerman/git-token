@@ -2301,6 +2301,33 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|git_env_bool
+argument_list|(
+name|GIT_IMPLICIT_WORK_TREE_ENVIRONMENT
+argument_list|,
+literal|1
+argument_list|)
+condition|)
+block|{
+comment|/* #16d */
+name|set_git_dir
+argument_list|(
+name|gitdirenv
+argument_list|)
+expr_stmt|;
+name|free
+argument_list|(
+name|gitfile
+argument_list|)
+expr_stmt|;
+return|return
+name|NULL
+return|;
+block|}
 else|else
 comment|/* #2, #10 */
 name|set_git_work_tree
@@ -2665,6 +2692,15 @@ condition|)
 return|return
 name|NULL
 return|;
+name|setenv
+argument_list|(
+name|GIT_IMPLICIT_WORK_TREE_ENVIRONMENT
+argument_list|,
+literal|"0"
+argument_list|,
+literal|1
+argument_list|)
+expr_stmt|;
 comment|/* --work-tree is set without --git-dir; use discovered one */
 if|if
 condition|(
@@ -3516,7 +3552,7 @@ name|prefix
 condition|)
 name|setenv
 argument_list|(
-literal|"GIT_PREFIX"
+name|GIT_PREFIX_ENVIRONMENT
 argument_list|,
 name|prefix
 argument_list|,
@@ -3526,7 +3562,7 @@ expr_stmt|;
 else|else
 name|setenv
 argument_list|(
-literal|"GIT_PREFIX"
+name|GIT_PREFIX_ENVIRONMENT
 argument_list|,
 literal|""
 argument_list|,
