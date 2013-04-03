@@ -1791,9 +1791,13 @@ name|object
 modifier|*
 name|object
 init|=
-name|parse_object
+name|parse_object_or_die
 argument_list|(
 name|sha1
+argument_list|,
+name|buf
+operator|.
+name|buf
 argument_list|)
 decl_stmt|;
 name|object
@@ -1838,9 +1842,13 @@ name|object
 modifier|*
 name|object
 init|=
-name|parse_object
+name|parse_object_or_die
 argument_list|(
 name|sha1
+argument_list|,
+name|buf
+operator|.
+name|buf
 argument_list|)
 decl_stmt|;
 name|object
@@ -2163,9 +2171,13 @@ block|{
 comment|/* 				 * Need to include e->name as an 				 * independent ref to the pack-objects 				 * input, so that the tag is included 				 * in the output; otherwise we would 				 * end up triggering "empty bundle" 				 * error. 				 */
 name|obj
 operator|=
-name|parse_object
+name|parse_object_or_die
 argument_list|(
 name|sha1
+argument_list|,
+name|e
+operator|->
+name|name
 argument_list|)
 expr_stmt|;
 name|obj
