@@ -1204,14 +1204,13 @@ operator|&
 name|buffer
 argument_list|)
 expr_stmt|;
-name|http_error
-argument_list|(
-name|url
-argument_list|)
-expr_stmt|;
 name|die
 argument_list|(
-literal|"HTTP request failed"
+literal|"unable to access '%s': %s"
+argument_list|,
+name|url
+argument_list|,
+name|curl_errorstr
 argument_list|)
 expr_stmt|;
 block|}
