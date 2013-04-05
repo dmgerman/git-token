@@ -8494,8 +8494,6 @@ case|:
 name|http_error
 argument_list|(
 name|url
-argument_list|,
-name|HTTP_ERROR
 argument_list|)
 expr_stmt|;
 default|default:
