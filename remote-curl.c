@@ -1159,9 +1159,6 @@ break|break;
 case|case
 name|HTTP_MISSING_TARGET
 case|:
-if|if
-condition|(
-operator|!
 name|show_http_message
 argument_list|(
 operator|&
@@ -1170,20 +1167,12 @@ argument_list|,
 operator|&
 name|buffer
 argument_list|)
-condition|)
+expr_stmt|;
 name|die
 argument_list|(
 literal|"repository '%s' not found"
 argument_list|,
 name|url
-argument_list|)
-expr_stmt|;
-name|die
-argument_list|(
-literal|"%s not found: did you run git update-server-info on the"
-literal|" server?"
-argument_list|,
-name|refs_url
 argument_list|)
 expr_stmt|;
 case|case
