@@ -543,10 +543,12 @@ operator|->
 name|two
 argument_list|)
 condition|)
-return|return
+name|hit
+operator|=
 literal|0
-return|;
+expr_stmt|;
 comment|/* ignore unmerged */
+else|else
 comment|/* created "two" -- does it have what we are looking for? */
 name|hit
 operator|=
@@ -1226,6 +1228,7 @@ operator|=
 literal|0
 expr_stmt|;
 comment|/* ignore unmerged */
+else|else
 comment|/* created */
 name|ret
 operator|=
