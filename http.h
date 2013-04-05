@@ -716,6 +716,14 @@ name|HTTP_NO_CACHE
 value|1
 end_define
 
+begin_define
+DECL|macro|HTTP_KEEP_ERROR
+define|#
+directive|define
+name|HTTP_KEEP_ERROR
+value|2
+end_define
+
 begin_comment
 comment|/* Return values for http_request_*() */
 end_comment
