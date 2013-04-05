@@ -4697,11 +4697,11 @@ parameter_list|)
 block|{
 name|error
 argument_list|(
-literal|"%s while accessing %s"
-argument_list|,
-name|curl_errorstr
+literal|"unable to access '%s': %s"
 argument_list|,
 name|url
+argument_list|,
+name|curl_errorstr
 argument_list|)
 expr_stmt|;
 block|}
