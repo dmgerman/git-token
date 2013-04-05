@@ -440,6 +440,16 @@ condition|)
 return|return
 literal|0
 return|;
+if|if
+condition|(
+name|DIFF_OPT_TST
+argument_list|(
+name|o
+argument_list|,
+name|ALLOW_TEXTCONV
+argument_list|)
+condition|)
+block|{
 name|textconv_one
 operator|=
 name|get_textconv
@@ -458,6 +468,7 @@ operator|->
 name|two
 argument_list|)
 expr_stmt|;
+block|}
 name|mf1
 operator|.
 name|size
@@ -1078,6 +1089,16 @@ condition|)
 return|return
 literal|0
 return|;
+if|if
+condition|(
+name|DIFF_OPT_TST
+argument_list|(
+name|o
+argument_list|,
+name|ALLOW_TEXTCONV
+argument_list|)
+condition|)
+block|{
 name|textconv_one
 operator|=
 name|get_textconv
@@ -1096,6 +1117,7 @@ operator|->
 name|two
 argument_list|)
 expr_stmt|;
+block|}
 comment|/* 	 * If we have an unmodified pair, we know that the count will be the 	 * same and don't even have to load the blobs. Unless textconv is in 	 * play, _and_ we are using two different textconv filters (e.g., 	 * because a pair is an exact rename with different textconv attributes 	 * for each side, which might generate different content). 	 */
 if|if
 condition|(
