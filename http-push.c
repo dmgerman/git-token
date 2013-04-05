@@ -8491,9 +8491,13 @@ break|break;
 case|case
 name|HTTP_ERROR
 case|:
-name|http_error
+name|error
 argument_list|(
+literal|"unable to access '%s': %s"
+argument_list|,
 name|url
+argument_list|,
+name|curl_errorstr
 argument_list|)
 expr_stmt|;
 default|default:

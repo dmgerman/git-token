@@ -4685,29 +4685,6 @@ block|}
 end_function
 
 begin_function
-DECL|function|http_error
-name|void
-name|http_error
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|url
-parameter_list|)
-block|{
-name|error
-argument_list|(
-literal|"unable to access '%s': %s"
-argument_list|,
-name|url
-argument_list|,
-name|curl_errorstr
-argument_list|)
-expr_stmt|;
-block|}
-end_function
-
-begin_function
 DECL|function|http_fetch_ref
 name|int
 name|http_fetch_ref
