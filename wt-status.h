@@ -324,6 +324,10 @@ DECL|member|bisect_in_progress
 name|int
 name|bisect_in_progress
 decl_stmt|;
+DECL|member|revert_in_progress
+name|int
+name|revert_in_progress
+decl_stmt|;
 DECL|member|branch
 name|char
 modifier|*
@@ -343,6 +347,14 @@ DECL|member|detached_sha1
 name|unsigned
 name|char
 name|detached_sha1
+index|[
+literal|20
+index|]
+decl_stmt|;
+DECL|member|revert_head_sha1
+name|unsigned
+name|char
+name|revert_head_sha1
 index|[
 literal|20
 index|]
