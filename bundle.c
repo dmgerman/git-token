@@ -343,11 +343,11 @@ name|sha1
 argument_list|)
 operator|||
 operator|(
-literal|40
-operator|<=
 name|buf
 operator|.
 name|len
+operator|>
+literal|40
 operator|&&
 operator|!
 name|isspace
