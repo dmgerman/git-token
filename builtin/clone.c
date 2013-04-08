@@ -1513,7 +1513,7 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"reference repository '%s' is not a local directory."
+literal|"reference repository '%s' is not a local repository."
 argument_list|)
 argument_list|,
 name|item
