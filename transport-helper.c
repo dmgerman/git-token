@@ -256,6 +256,11 @@ name|struct
 name|strbuf
 modifier|*
 name|buffer
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|name
 parameter_list|)
 block|{
 name|strbuf_reset
@@ -301,7 +306,9 @@ argument_list|)
 expr_stmt|;
 name|die
 argument_list|(
-literal|"Reading from remote helper failed"
+literal|"Reading from helper 'git-remote-%s' failed"
+argument_list|,
+name|name
 argument_list|)
 expr_stmt|;
 block|}
@@ -351,6 +358,10 @@ operator|->
 name|out
 argument_list|,
 name|buffer
+argument_list|,
+name|helper
+operator|->
+name|name
 argument_list|)
 return|;
 block|}
@@ -2902,6 +2913,8 @@ name|input
 argument_list|,
 operator|&
 name|cmdbuf
+argument_list|,
+name|name
 argument_list|)
 expr_stmt|;
 if|if
