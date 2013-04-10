@@ -299,9 +299,9 @@ argument_list|,
 literal|"Debug: Remote helper quit.\n"
 argument_list|)
 expr_stmt|;
-name|exit
+name|die
 argument_list|(
-literal|128
+literal|"Reading from remote helper failed"
 argument_list|)
 expr_stmt|;
 block|}
