@@ -2518,7 +2518,7 @@ operator|-
 name|ixs
 condition|)
 do|;
-comment|/* 		 * Try to move back the possibly merged group of changes, to match 		 * the recorded postion in the other file. 		 */
+comment|/* 		 * Try to move back the possibly merged group of changes, to match 		 * the recorded position in the other file. 		 */
 while|while
 condition|(
 name|ixref

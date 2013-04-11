@@ -4628,7 +4628,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Is "commit" a decendant of one of the elements on the "with_commit" list?  */
+comment|/*  * Is "commit" a descendant of one of the elements on the "with_commit" list?  */
 end_comment
 
 begin_function

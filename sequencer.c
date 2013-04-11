@@ -817,7 +817,7 @@ argument_list|,
 name|msg
 argument_list|)
 expr_stmt|;
-comment|/* 		 * A conflict has occured but the porcelain 		 * (typically rebase --interactive) wants to take care 		 * of the commit itself so remove CHERRY_PICK_HEAD 		 */
+comment|/* 		 * A conflict has occurred but the porcelain 		 * (typically rebase --interactive) wants to take care 		 * of the commit itself so remove CHERRY_PICK_HEAD 		 */
 name|unlink
 argument_list|(
 name|git_path

@@ -9559,7 +9559,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Read the patch text in "buffer" taht extends for "size" bytes; stop  * reading after seeing a single patch (i.e. changes to a single file).  * Create fragments (i.e. patch hunks) and hang them to the given patch.  * Return the number of bytes consumed, so that the caller can call us  * again for the next patch.  */
+comment|/*  * Read the patch text in "buffer" that extends for "size" bytes; stop  * reading after seeing a single patch (i.e. changes to a single file).  * Create fragments (i.e. patch hunks) and hang them to the given patch.  * Return the number of bytes consumed, so that the caller can call us  * again for the next patch.  */
 end_comment
 
 begin_function
@@ -14515,7 +14515,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * item->util in the filename table records the status of the path.  * Usually it points at a patch (whose result records the contents  * of it after applying it), but it could be PATH_WAS_DELETED for a  * path that a previously applied patch has already removed, or  * PATH_TO_BE_DELETED for a path that a later patch would remove.  *  * The latter is needed to deal with a case where two paths A and B  * are swapped by first renaming A to B and then renaming B to A;  * moving A to B should not be prevented due to presense of B as we  * will remove it in a later patch.  */
+comment|/*  * item->util in the filename table records the status of the path.  * Usually it points at a patch (whose result records the contents  * of it after applying it), but it could be PATH_WAS_DELETED for a  * path that a previously applied patch has already removed, or  * PATH_TO_BE_DELETED for a path that a later patch would remove.  *  * The latter is needed to deal with a case where two paths A and B  * are swapped by first renaming A to B and then renaming B to A;  * moving A to B should not be prevented due to presence of B as we  * will remove it in a later patch.  */
 end_comment
 
 begin_define
@@ -16985,7 +16985,7 @@ name|patch
 operator|->
 name|old_name
 expr_stmt|;
-comment|/* 	 * A type-change diff is always split into a patch to delete 	 * old, immediately followed by a patch to create new (see 	 * diff.c::run_diff()); in such a case it is Ok that the entry 	 * to be deleted by the previous patch is still in the working 	 * tree and in the index. 	 * 	 * A patch to swap-rename between A and B would first rename A 	 * to B and then rename B to A.  While applying the first one, 	 * the presense of B should not stop A from getting renamed to 	 * B; ask to_be_deleted() about the later rename.  Removal of 	 * B and rename from A to B is handled the same way by asking 	 * was_deleted(). 	 */
+comment|/* 	 * A type-change diff is always split into a patch to delete 	 * old, immediately followed by a patch to create new (see 	 * diff.c::run_diff()); in such a case it is Ok that the entry 	 * to be deleted by the previous patch is still in the working 	 * tree and in the index. 	 * 	 * A patch to swap-rename between A and B would first rename A 	 * to B and then rename B to A.  While applying the first one, 	 * the presence of B should not stop A from getting renamed to 	 * B; ask to_be_deleted() about the later rename.  Removal of 	 * B and rename from A to B is handled the same way by asking 	 * was_deleted(). 	 */
 if|if
 condition|(
 operator|(

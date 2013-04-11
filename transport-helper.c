@@ -5230,7 +5230,7 @@ DECL|member|dest_is_sock
 name|int
 name|dest_is_sock
 decl_stmt|;
-comment|/* Transfer state (TRANSFERING/FLUSHING/FINISHED) */
+comment|/* Transfer state (TRANSFERRING/FLUSHING/FINISHED) */
 DECL|member|state
 name|int
 name|state
