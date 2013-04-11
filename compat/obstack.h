@@ -71,7 +71,7 @@ parameter_list|,
 name|A
 parameter_list|)
 value|((B) + (((P) - (B) + (A))& ~(A)))
-comment|/* Similiar to _BPTR_ALIGN (B, P, A), except optimize the common case    where pointers can be converted to integers, aligned as integers,    and converted back again.  If PTR_INT_TYPE is narrower than a    pointer (e.g., the AS/400), play it safe and compute the alignment    relative to B.  Otherwise, use the faster strategy of computing the    alignment relative to 0.  */
+comment|/* Similar to _BPTR_ALIGN (B, P, A), except optimize the common case    where pointers can be converted to integers, aligned as integers,    and converted back again.  If PTR_INT_TYPE is narrower than a    pointer (e.g., the AS/400), play it safe and compute the alignment    relative to B.  Otherwise, use the faster strategy of computing the    alignment relative to 0.  */
 DECL|macro|__PTR_ALIGN
 define|#
 directive|define
