@@ -705,7 +705,7 @@ name|die
 argument_list|(
 literal|"iconv_open(%s,%s) failed, but needed:\n"
 literal|"    precomposed unicode is not supported.\n"
-literal|"    If you wnat to use decomposed unicode, run\n"
+literal|"    If you want to use decomposed unicode, run\n"
 literal|"    \"git config core.precomposeunicode false\"\n"
 argument_list|,
 name|repo_encoding
