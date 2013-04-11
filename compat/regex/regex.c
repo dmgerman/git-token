@@ -21,7 +21,7 @@ directive|endif
 end_endif
 
 begin_comment
-comment|/* Make sure noone compiles this code with a C++ compiler.  */
+comment|/* Make sure no one compiles this code with a C++ compiler.  */
 end_comment
 
 begin_ifdef
