@@ -100,7 +100,7 @@ struct|;
 end_struct
 
 begin_comment
-comment|/* Linked list of interesting files and their associated ranges.  The  * list must be kept sorted by spec->path */
+comment|/* Linked list of interesting files and their associated ranges.  The  * list must be kept sorted by path.  *  * For simplicity, even though this is highly redundant, each  * line_log_data owns its 'path'.  */
 end_comment
 
 begin_struct
@@ -114,11 +114,10 @@ name|line_log_data
 modifier|*
 name|next
 decl_stmt|;
-DECL|member|spec
-name|struct
-name|diff_filespec
+DECL|member|path
+name|char
 modifier|*
-name|spec
+name|path
 decl_stmt|;
 DECL|member|status
 name|char

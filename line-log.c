@@ -1625,8 +1625,6 @@ name|strcmp
 argument_list|(
 name|p
 operator|->
-name|spec
-operator|->
 name|path
 argument_list|,
 name|path
@@ -1666,6 +1664,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Note: takes ownership of 'path', which happens to be what the only  * caller needs.  */
+end_comment
+
 begin_function
 DECL|function|line_log_data_insert
 specifier|static
@@ -1678,10 +1680,9 @@ modifier|*
 modifier|*
 name|list
 parameter_list|,
-name|struct
-name|diff_filespec
+name|char
 modifier|*
-name|spec
+name|path
 parameter_list|,
 name|long
 name|begin
@@ -1705,8 +1706,6 @@ argument_list|(
 operator|*
 name|list
 argument_list|,
-name|spec
-operator|->
 name|path
 argument_list|,
 operator|&
@@ -1738,9 +1737,9 @@ operator|->
 name|ranges
 argument_list|)
 expr_stmt|;
-name|free_filespec
+name|free
 argument_list|(
-name|spec
+name|path
 argument_list|)
 expr_stmt|;
 return|return;
@@ -1760,9 +1759,9 @@ argument_list|)
 expr_stmt|;
 name|p
 operator|->
-name|spec
+name|path
 operator|=
-name|spec
+name|path
 expr_stmt|;
 name|range_set_append
 argument_list|(
@@ -2044,7 +2043,7 @@ literal|0
 end_if
 
 begin_endif
-unit|static void dump_range_set(struct range_set *rs, const char *desc) { 	int i; 	printf("range set %s (%d items):\n", desc, rs->nr); 	for (i = 0; i< rs->nr; i++) 		printf("\t[%ld,%ld]\n", rs->ranges[i].start, rs->ranges[i].end); }  static void dump_line_log_data(struct line_log_data *r) { 	char buf[4096]; 	while (r) { 		snprintf(buf, 4096, "file %s\n", r->spec->path); 		dump_range_set(&r->ranges, buf); 		r = r->next; 	} }  static void dump_diff_ranges(struct diff_ranges *diff, const char *desc) { 	int i; 	assert(diff->parent.nr == diff->target.nr); 	printf("diff ranges %s (%d items):\n", desc, diff->parent.nr); 	printf("\tparent\ttarget\n"); 	for (i = 0; i< diff->parent.nr; i++) { 		printf("\t[%ld,%ld]\t[%ld,%ld]\n", 		       diff->parent.ranges[i].start, 		       diff->parent.ranges[i].end, 		       diff->target.ranges[i].start, 		       diff->target.ranges[i].end); 	} }
+unit|static void dump_range_set(struct range_set *rs, const char *desc) { 	int i; 	printf("range set %s (%d items):\n", desc, rs->nr); 	for (i = 0; i< rs->nr; i++) 		printf("\t[%ld,%ld]\n", rs->ranges[i].start, rs->ranges[i].end); }  static void dump_line_log_data(struct line_log_data *r) { 	char buf[4096]; 	while (r) { 		snprintf(buf, 4096, "file %s\n", r->path); 		dump_range_set(&r->ranges, buf); 		r = r->next; 	} }  static void dump_diff_ranges(struct diff_ranges *diff, const char *desc) { 	int i; 	assert(diff->parent.nr == diff->target.nr); 	printf("diff ranges %s (%d items):\n", desc, diff->parent.nr); 	printf("\tparent\ttarget\n"); 	for (i = 0; i< diff->parent.nr; i++) { 		printf("\t[%ld,%ld]\t[%ld,%ld]\n", 		       diff->parent.ranges[i].start, 		       diff->parent.ranges[i].end, 		       diff->target.ranges[i].start, 		       diff->target.ranges[i].end); 	} }
 endif|#
 directive|endif
 end_endif
@@ -3189,7 +3188,6 @@ decl_stmt|,
 modifier|*
 name|range_part
 decl_stmt|;
-specifier|const
 name|char
 modifier|*
 name|full_name
@@ -3340,9 +3338,7 @@ argument_list|,
 operator|&
 name|end
 argument_list|,
-name|spec
-operator|->
-name|path
+name|full_name
 argument_list|)
 condition|)
 name|die
@@ -3399,11 +3395,16 @@ argument_list|(
 operator|&
 name|ranges
 argument_list|,
-name|spec
+name|full_name
 argument_list|,
 name|begin
 argument_list|,
 name|end
+argument_list|)
+expr_stmt|;
+name|free_filespec
+argument_list|(
+name|spec
 argument_list|)
 expr_stmt|;
 name|free
@@ -3475,25 +3476,14 @@ argument_list|)
 expr_stmt|;
 name|ret
 operator|->
-name|spec
+name|path
 operator|=
+name|xstrdup
+argument_list|(
 name|r
 operator|->
-name|spec
-expr_stmt|;
-name|assert
-argument_list|(
-name|ret
-operator|->
-name|spec
+name|path
 argument_list|)
-expr_stmt|;
-name|ret
-operator|->
-name|spec
-operator|->
-name|count
-operator|++
 expr_stmt|;
 return|return
 name|ret
@@ -3682,13 +3672,9 @@ name|strcmp
 argument_list|(
 name|a
 operator|->
-name|spec
-operator|->
 name|path
 argument_list|,
 name|b
-operator|->
-name|spec
 operator|->
 name|path
 argument_list|)
@@ -3771,18 +3757,14 @@ argument_list|)
 expr_stmt|;
 name|d
 operator|->
-name|spec
+name|path
 operator|=
+name|xstrdup
+argument_list|(
 name|src
 operator|->
-name|spec
-expr_stmt|;
-name|d
-operator|->
-name|spec
-operator|->
-name|count
-operator|++
+name|path
+argument_list|)
 expr_stmt|;
 operator|*
 name|pp
@@ -4235,8 +4217,6 @@ name|xstrdup
 argument_list|(
 name|r
 operator|->
-name|spec
-operator|->
 name|path
 argument_list|)
 expr_stmt|;
@@ -4553,8 +4533,6 @@ operator|!
 name|strcmp
 argument_list|(
 name|rg
-operator|->
-name|spec
 operator|->
 name|path
 argument_list|,
@@ -6026,8 +6004,6 @@ name|assert
 argument_list|(
 name|rg
 operator|->
-name|spec
-operator|->
 name|path
 argument_list|)
 expr_stmt|;
@@ -6037,8 +6013,6 @@ operator|!
 name|strcmp
 argument_list|(
 name|rg
-operator|->
-name|spec
 operator|->
 name|path
 argument_list|,
@@ -6189,9 +6163,14 @@ name|diff
 argument_list|)
 expr_stmt|;
 comment|/* NEEDSWORK should apply some heuristics to prevent mismatches */
+name|free
+argument_list|(
 name|rg
 operator|->
-name|spec
+name|path
+argument_list|)
+expr_stmt|;
+name|rg
 operator|->
 name|path
 operator|=
@@ -6511,8 +6490,6 @@ operator|&&
 name|strcmp
 argument_list|(
 name|rg
-operator|->
-name|spec
 operator|->
 name|path
 argument_list|,
