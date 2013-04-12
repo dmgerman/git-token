@@ -176,6 +176,17 @@ return|;
 comment|/* we do not break too small filepair */
 if|if
 condition|(
+operator|!
+name|src
+operator|->
+name|size
+condition|)
+return|return
+literal|0
+return|;
+comment|/* we do not let empty files get renamed */
+if|if
+condition|(
 name|diffcore_count_changes
 argument_list|(
 name|src
