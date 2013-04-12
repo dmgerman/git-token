@@ -2388,43 +2388,64 @@ block|{
 block|{
 literal|"attributes"
 block|,
+name|N_
+argument_list|(
 literal|"Defining attributes per path"
+argument_list|)
 block|}
 block|,
 block|{
 literal|"glossary"
 block|,
+name|N_
+argument_list|(
 literal|"A Git glossary"
+argument_list|)
 block|}
 block|,
 block|{
 literal|"ignore"
 block|,
+name|N_
+argument_list|(
 literal|"Specifies intentionally untracked files to ignore"
+argument_list|)
 block|}
 block|,
 block|{
 literal|"modules"
 block|,
+name|N_
+argument_list|(
 literal|"Defining submodule properties"
+argument_list|)
 block|}
 block|,
 block|{
 literal|"revisions"
 block|,
+name|N_
+argument_list|(
 literal|"Specifying revisions and ranges for Git"
+argument_list|)
 block|}
 block|,
 block|{
 literal|"tutorial"
 block|,
+name|N_
+argument_list|(
 literal|"A tutorial introduction to Git (for version 1.5.1 or newer)"
+argument_list|)
 block|}
 block|,
 block|{
 literal|"workflows"
 block|,
+name|N_
+argument_list|(
 literal|"An overview of recommended workflows with Git"
+argument_list|)
 block|}
 block|, }
 struct|;
