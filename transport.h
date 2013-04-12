@@ -245,7 +245,7 @@ literal|2
 index|]
 parameter_list|)
 function_decl|;
-comment|/** get_refs_list(), fetch(), and push_refs() can keep 	 * resources (such as a connection) reserved for futher 	 * use. disconnect() releases these resources. 	 **/
+comment|/** get_refs_list(), fetch(), and push_refs() can keep 	 * resources (such as a connection) reserved for further 	 * use. disconnect() releases these resources. 	 **/
 DECL|member|disconnect
 name|int
 function_decl|(

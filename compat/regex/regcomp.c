@@ -10450,7 +10450,7 @@ comment|/* Functions for parser.  */
 end_comment
 
 begin_comment
-comment|/* Entry point of the parser.    Parse the regular expression REGEXP and return the structure tree.    If an error is occured, ERR is set by error code, and return NULL.    This function build the following tree, from regular expression<reg_exp>: 	   CAT 	   / \ 	  /   \<reg_exp>  EOR     CAT means concatenation.    EOR means end of regular expression.  */
+comment|/* Entry point of the parser.    Parse the regular expression REGEXP and return the structure tree.    If an error has occurred, ERR is set by error code, and return NULL.    This function build the following tree, from regular expression<reg_exp>: 	   CAT 	   / \ 	  /   \<reg_exp>  EOR     CAT means concatenation.    EOR means end of regular expression.  */
 end_comment
 
 begin_function
@@ -18203,7 +18203,7 @@ block|}
 end_function
 
 begin_comment
-comment|/* This is intended for the expressions like "a{1,3}".    Fetch a number from `input', and return the number.    Return -1, if the number field is empty like "{,1}".    Return -2, If an error is occured.  */
+comment|/* This is intended for the expressions like "a{1,3}".    Fetch a number from `input', and return the number.    Return -1, if the number field is empty like "{,1}".    Return -2, if an error has occurred.  */
 end_comment
 
 begin_function

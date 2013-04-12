@@ -12,7 +12,7 @@ comment|/* Written August 1989 by Mike Haertel.    The author may be reached (Em
 end_comment
 
 begin_comment
-comment|/* The algorithm implemented by these routines bears a startling resemblence    to one discovered by Beate Commentz-Walter, although it is not identical.    See "A String Matching Algorithm Fast on the Average," Technical Report,    IBM-Germany, Scientific Center Heidelberg, Tiergartenstrasse 15, D-6900    Heidelberg, Germany.  See also Aho, A.V., and M. Corasick, "Efficient    String Matching:  An Aid to Bibliographic Search," CACM June 1975,    Vol. 18, No. 6, which describes the failure function used below. */
+comment|/* The algorithm implemented by these routines bears a startling resemblance    to one discovered by Beate Commentz-Walter, although it is not identical.    See "A String Matching Algorithm Fast on the Average," Technical Report,    IBM-Germany, Scientific Center Heidelberg, Tiergartenstrasse 15, D-6900    Heidelberg, Germany.  See also Aho, A.V., and M. Corasick, "Efficient    String Matching:  An Aid to Bibliographic Search," CACM June 1975,    Vol. 18, No. 6, which describes the failure function used below. */
 end_comment
 
 begin_include
@@ -2203,7 +2203,7 @@ argument_list|,
 name|delta
 argument_list|)
 expr_stmt|;
-comment|/* Compute the failure function for the decendents of this node. */
+comment|/* Compute the failure function for the descendants of this node. */
 name|treefails
 argument_list|(
 name|curr

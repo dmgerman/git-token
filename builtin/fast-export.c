@@ -284,7 +284,7 @@ else|else
 return|return
 name|error
 argument_list|(
-literal|"Unknown signed-tag mode: %s"
+literal|"Unknown signed-tags mode: %s"
 argument_list|,
 name|arg
 argument_list|)
@@ -2426,7 +2426,7 @@ case|:
 name|die
 argument_list|(
 literal|"Encountered signed tag %s; use "
-literal|"--signed-tag=<mode> to handle it."
+literal|"--signed-tags=<mode> to handle it."
 argument_list|,
 name|sha1_to_hex
 argument_list|(

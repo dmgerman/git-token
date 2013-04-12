@@ -88,7 +88,7 @@ modifier|*
 modifier|*
 name|records
 struct|,
-comment|/* an ocurrence */
+comment|/* an occurrence */
 DECL|member|line_map
 modifier|*
 modifier|*
