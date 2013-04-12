@@ -1646,12 +1646,12 @@ name|commit
 modifier|*
 name|left
 init|=
-name|left
+name|NULL
 decl_stmt|,
 modifier|*
 name|right
 init|=
-name|right
+name|NULL
 decl_stmt|;
 specifier|const
 name|char
@@ -1737,11 +1737,9 @@ name|message
 operator|=
 literal|"(commits not present)"
 expr_stmt|;
+elseif|else
 if|if
 condition|(
-operator|!
-name|message
-operator|&&
 name|prepare_submodule_summary
 argument_list|(
 operator|&
@@ -1916,7 +1914,7 @@ condition|(
 operator|!
 name|message
 condition|)
-block|{
+comment|/* only NULL if we succeeded in setting up the walk */
 name|print_submodule_summary
 argument_list|(
 operator|&
@@ -1931,6 +1929,10 @@ argument_list|,
 name|reset
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|left
+condition|)
 name|clear_commit_marks
 argument_list|(
 name|left
@@ -1939,6 +1941,10 @@ operator|~
 literal|0
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|right
+condition|)
 name|clear_commit_marks
 argument_list|(
 name|right
@@ -1947,7 +1953,6 @@ operator|~
 literal|0
 argument_list|)
 expr_stmt|;
-block|}
 name|strbuf_release
 argument_list|(
 operator|&
