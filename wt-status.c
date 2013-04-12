@@ -6737,8 +6737,9 @@ name|GIT_COLOR_NORMAL
 argument_list|,
 name|_
 argument_list|(
-literal|"It took %.2f seconds to enumerate untracked files."
-literal|"  'status -uno'"
+literal|"It took %.2f seconds to enumerate untracked files. 'status -uno'\n"
+literal|"may speed it up, but you have to be careful not to forget to add\n"
+literal|"new files yourself (see 'git help status')."
 argument_list|)
 argument_list|,
 name|s
@@ -6746,31 +6747,6 @@ operator|->
 name|untracked_in_ms
 operator|/
 literal|1000.0
-argument_list|)
-expr_stmt|;
-name|status_printf_ln
-argument_list|(
-name|s
-argument_list|,
-name|GIT_COLOR_NORMAL
-argument_list|,
-name|_
-argument_list|(
-literal|"may speed it up, but you have to be careful not"
-literal|" to forget to add"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|status_printf_ln
-argument_list|(
-name|s
-argument_list|,
-name|GIT_COLOR_NORMAL
-argument_list|,
-name|_
-argument_list|(
-literal|"new files yourself (see 'git help status')."
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
