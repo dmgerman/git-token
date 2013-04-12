@@ -4438,6 +4438,14 @@ begin_comment
 comment|/*  * Call access(2), but warn for any error except "missing file"  * (ENOENT or ENOTDIR).  */
 end_comment
 
+begin_define
+DECL|macro|ACCESS_EACCES_OK
+define|#
+directive|define
+name|ACCESS_EACCES_OK
+value|(1U<< 0)
+end_define
+
 begin_function_decl
 name|int
 name|access_or_warn
@@ -4449,6 +4457,9 @@ name|path
 parameter_list|,
 name|int
 name|mode
+parameter_list|,
+name|unsigned
+name|flag
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -4464,6 +4475,9 @@ name|path
 parameter_list|,
 name|int
 name|mode
+parameter_list|,
+name|unsigned
+name|flag
 parameter_list|)
 function_decl|;
 end_function_decl
