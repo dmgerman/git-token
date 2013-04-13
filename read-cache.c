@@ -9621,6 +9621,11 @@ specifier|const
 name|char
 modifier|*
 name|path
+parameter_list|,
+name|unsigned
+name|long
+modifier|*
+name|size
 parameter_list|)
 block|{
 name|int
@@ -9775,6 +9780,15 @@ return|return
 name|NULL
 return|;
 block|}
+if|if
+condition|(
+name|size
+condition|)
+operator|*
+name|size
+operator|=
+name|sz
+expr_stmt|;
 return|return
 name|data
 return|;
