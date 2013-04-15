@@ -3236,6 +3236,8 @@ operator|.
 name|flags
 operator||=
 name|DIR_SHOW_OTHER_DIRECTORIES
+operator||
+name|DIR_HIDE_EMPTY_DIRECTORIES
 expr_stmt|;
 name|fill_directory
 argument_list|(
