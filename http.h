@@ -716,6 +716,14 @@ name|HTTP_NO_CACHE
 value|1
 end_define
 
+begin_define
+DECL|macro|HTTP_KEEP_ERROR
+define|#
+directive|define
+name|HTTP_KEEP_ERROR
+value|2
+end_define
+
 begin_comment
 comment|/* Return values for http_request_*() */
 end_comment
@@ -793,25 +801,6 @@ name|result
 parameter_list|,
 name|int
 name|options
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_comment
-comment|/*  * Prints an error message using error() containing url and curl_errorstr,  * and returns ret.  */
-end_comment
-
-begin_function_decl
-name|int
-name|http_error
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|url
-parameter_list|,
-name|int
-name|ret
 parameter_list|)
 function_decl|;
 end_function_decl
