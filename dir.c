@@ -4478,15 +4478,6 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|!
-operator|(
-name|dir
-operator|->
-name|flags
-operator|&
-name|DIR_SHOW_IGNORED
-operator|)
-operator|&&
 name|cache_name_exists
 argument_list|(
 name|pathname
@@ -4862,7 +4853,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * When we find a directory when traversing the filesystem, we  * have three distinct cases:  *  *  - ignore it  *  - see it as a directory  *  - recurse into it  *  * and which one we choose depends on a combination of existing  * git index contents and the flags passed into the directory  * traversal routine.  *  * Case 1: If we *already* have entries in the index under that  * directory name, we recurse into the directory to see all the files,  * unless the directory is excluded and we want to show ignored  * directories  *  * Case 2: If we *already* have that directory name as a gitlink,  * we always continue to see it as a gitlink, regardless of whether  * there is an actual git directory there or not (it might not  * be checked out as a subproject!)  *  * Case 3: if we didn't have it in the index previously, we  * have a few sub-cases:  *  *  (a) if "show_other_directories" is true, we show it as  *      just a directory, unless "hide_empty_directories" is  *      also true and the directory is empty, in which case  *      we just ignore it entirely.  *      if we are looking for ignored directories, look if it  *      contains only ignored files to decide if it must be shown as  *      ignored or not.  *  (b) if it looks like a git directory, and we don't have  *      'no_gitlinks' set we treat it as a gitlink, and show it  *      as a directory.  *  (c) otherwise, we recurse into it.  */
+comment|/*  * When we find a directory when traversing the filesystem, we  * have three distinct cases:  *  *  - ignore it  *  - see it as a directory  *  - recurse into it  *  * and which one we choose depends on a combination of existing  * git index contents and the flags passed into the directory  * traversal routine.  *  * Case 1: If we *already* have entries in the index under that  * directory name, we always recurse into the directory to see  * all the files.  *  * Case 2: If we *already* have that directory name as a gitlink,  * we always continue to see it as a gitlink, regardless of whether  * there is an actual git directory there or not (it might not  * be checked out as a subproject!)  *  * Case 3: if we didn't have it in the index previously, we  * have a few sub-cases:  *  *  (a) if "show_other_directories" is true, we show it as  *      just a directory, unless "hide_empty_directories" is  *      also true and the directory is empty, in which case  *      we just ignore it entirely.  *      if we are looking for ignored directories, look if it  *      contains only ignored files to decide if it must be shown as  *      ignored or not.  *  (b) if it looks like a git directory, and we don't have  *      'no_gitlinks' set we treat it as a gitlink, and show it  *      as a directory.  *  (c) otherwise, we recurse into it.  */
 end_comment
 
 begin_enum
@@ -4928,19 +4919,6 @@ block|{
 case|case
 name|index_directory
 case|:
-if|if
-condition|(
-operator|(
-name|dir
-operator|->
-name|flags
-operator|&
-name|DIR_SHOW_OTHER_DIRECTORIES
-operator|)
-operator|&&
-name|exclude
-condition|)
-break|break;
 return|return
 name|recurse_into_directory
 return|;
