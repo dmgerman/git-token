@@ -5060,7 +5060,7 @@ name|check
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* 	 * We are looking for ignored files and our directory is not ignored, 	 * check if it contains only ignored files 	 */
+comment|/* 	 * We are looking for ignored files and our directory is not ignored, 	 * check if it contains untracked files (i.e. is listed as untracked) 	 */
 if|if
 condition|(
 operator|(
@@ -5106,12 +5106,12 @@ name|flags
 operator||=
 name|DIR_SHOW_IGNORED
 expr_stmt|;
-return|return
+if|if
+condition|(
 name|ignored
-condition|?
+condition|)
+return|return
 name|ignore_directory
-else|:
-name|show_directory
 return|;
 block|}
 if|if
