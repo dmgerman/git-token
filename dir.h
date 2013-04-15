@@ -266,6 +266,13 @@ init|=
 literal|1
 operator|<<
 literal|4
+block|,
+DECL|enumerator|DIR_SHOW_IGNORED_TOO
+name|DIR_SHOW_IGNORED_TOO
+init|=
+literal|1
+operator|<<
+literal|5
 DECL|member|flags
 block|}
 name|flags

@@ -408,12 +408,6 @@ name|dir
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|dir
-operator|.
-name|flags
-operator||=
-name|DIR_COLLECT_IGNORED
-expr_stmt|;
 name|setup_standard_excludes
 argument_list|(
 operator|&
