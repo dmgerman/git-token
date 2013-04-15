@@ -161,6 +161,11 @@ name|char
 modifier|*
 name|path
 parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|line_prefix
+parameter_list|,
 name|unsigned
 name|char
 name|one
