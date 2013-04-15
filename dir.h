@@ -315,12 +315,18 @@ index|[
 literal|3
 index|]
 decl_stmt|;
-comment|/* 	 * Temporary variables which are used during loading of the 	 * per-directory exclude lists. 	 * 	 * exclude_stack points to the top of the exclude_stack, and 	 * basebuf contains the full path to the current 	 * (sub)directory in the traversal. 	 */
+comment|/* 	 * Temporary variables which are used during loading of the 	 * per-directory exclude lists. 	 * 	 * exclude_stack points to the top of the exclude_stack, and 	 * basebuf contains the full path to the current 	 * (sub)directory in the traversal. Exclude points to the 	 * matching exclude struct if the directory is excluded. 	 */
 DECL|member|exclude_stack
 name|struct
 name|exclude_stack
 modifier|*
 name|exclude_stack
+decl_stmt|;
+DECL|member|exclude
+name|struct
+name|exclude
+modifier|*
+name|exclude
 decl_stmt|;
 DECL|member|basebuf
 name|char
@@ -625,17 +631,6 @@ name|struct
 name|dir_struct
 modifier|*
 name|dir
-decl_stmt|;
-DECL|member|exclude
-name|struct
-name|exclude
-modifier|*
-name|exclude
-decl_stmt|;
-DECL|member|path
-name|struct
-name|strbuf
-name|path
 decl_stmt|;
 block|}
 struct|;
