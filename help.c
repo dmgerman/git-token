@@ -2449,6 +2449,7 @@ modifier|*
 name|prefix
 parameter_list|)
 block|{
+comment|/* 	 * The format of this string should be kept stable for compatibility 	 * with external projects that rely on the output of "git version". 	 */
 name|printf
 argument_list|(
 literal|"git version %s\n"
