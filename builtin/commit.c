@@ -4880,6 +4880,8 @@ name|logmsg_reencode
 argument_list|(
 name|commit
 argument_list|,
+name|NULL
+argument_list|,
 name|out_enc
 argument_list|)
 return|;
