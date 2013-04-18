@@ -4242,6 +4242,17 @@ index|[
 literal|20
 index|]
 decl_stmt|;
+if|if
+condition|(
+name|ref
+operator|->
+name|deletion
+condition|)
+name|die
+argument_list|(
+literal|"remote-helpers do not support ref deletion"
+argument_list|)
+expr_stmt|;
 name|private
 operator|=
 name|apply_refspecs
@@ -4311,19 +4322,6 @@ argument_list|(
 name|private
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|ref
-operator|->
-name|deletion
-condition|)
-block|{
-name|die
-argument_list|(
-literal|"remote-helpers do not support ref deletion"
-argument_list|)
-expr_stmt|;
-block|}
 if|if
 condition|(
 name|ref
