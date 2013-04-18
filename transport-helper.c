@@ -2629,7 +2629,7 @@ operator|.
 name|argv
 argument_list|)
 expr_stmt|;
-comment|/* 	 * The fast-import stream of a remote helper that advertises 	 * the "refspec" capability writes to the refs named after the 	 * right hand side of the first refspec matching each ref we 	 * were fetching. 	 * 	 * (If no "refspec" capability was specified, for historical 	 * reasons we default to *:*.) 	 * 	 * Store the result in to_fetch[i].old_sha1.  Callers such 	 * as "git fetch" can use the value to write feedback to the 	 * terminal, populate FETCH_HEAD, and determine what new value 	 * should be written to peer_ref if the update is a 	 * fast-forward or this is a forced update. 	 */
+comment|/* 	 * The fast-import stream of a remote helper that advertises 	 * the "refspec" capability writes to the refs named after the 	 * right hand side of the first refspec matching each ref we 	 * were fetching. 	 * 	 * (If no "refspec" capability was specified, for historical 	 * reasons we default to the equivalent of *:*.) 	 * 	 * Store the result in to_fetch[i].old_sha1.  Callers such 	 * as "git fetch" can use the value to write feedback to the 	 * terminal, populate FETCH_HEAD, and determine what new value 	 * should be written to peer_ref if the update is a 	 * fast-forward or this is a forced update. 	 */
 for|for
 control|(
 name|i
