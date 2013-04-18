@@ -127,6 +127,27 @@ end_function_decl
 
 begin_function_decl
 name|void
+name|format_decorations
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+name|sb
+parameter_list|,
+specifier|const
+name|struct
+name|commit
+modifier|*
+name|commit
+parameter_list|,
+name|int
+name|use_color
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|void
 name|show_decorations
 parameter_list|(
 name|struct
