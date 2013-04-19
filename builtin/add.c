@@ -131,9 +131,106 @@ DECL|member|add_errors
 name|int
 name|add_errors
 decl_stmt|;
+DECL|member|implicit_dot
+specifier|const
+name|char
+modifier|*
+name|implicit_dot
+decl_stmt|;
+DECL|member|implicit_dot_len
+name|size_t
+name|implicit_dot_len
+decl_stmt|;
 block|}
 struct|;
 end_struct
+
+begin_decl_stmt
+DECL|variable|option_with_implicit_dot
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|option_with_implicit_dot
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|short_option_with_implicit_dot
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|short_option_with_implicit_dot
+decl_stmt|;
+end_decl_stmt
+
+begin_function
+DECL|function|warn_pathless_add
+specifier|static
+name|void
+name|warn_pathless_add
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+specifier|static
+name|int
+name|shown
+decl_stmt|;
+name|assert
+argument_list|(
+name|option_with_implicit_dot
+operator|&&
+name|short_option_with_implicit_dot
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|shown
+condition|)
+return|return;
+name|shown
+operator|=
+literal|1
+expr_stmt|;
+comment|/* 	 * To be consistent with "git add -p" and most Git 	 * commands, we should default to being tree-wide, but 	 * this is not the original behavior and can't be 	 * changed until users trained themselves not to type 	 * "git add -u" or "git add -A". For now, we warn and 	 * keep the old behavior. Later, the behavior can be changed 	 * to tree-wide, keeping the warning for a while, and 	 * eventually we can drop the warning. 	 */
+name|warning
+argument_list|(
+name|_
+argument_list|(
+literal|"The behavior of 'git add %s (or %s)' with no path argument from a\n"
+literal|"subdirectory of the tree will change in Git 2.0 and should not be used anymore.\n"
+literal|"To add content for the whole tree, run:\n"
+literal|"\n"
+literal|"  git add %s :/\n"
+literal|"  (or git add %s :/)\n"
+literal|"\n"
+literal|"To restrict the command to the current directory, run:\n"
+literal|"\n"
+literal|"  git add %s .\n"
+literal|"  (or git add %s .)\n"
+literal|"\n"
+literal|"With the current Git version, the command is restricted to "
+literal|"the current directory.\n"
+literal|""
+argument_list|)
+argument_list|,
+name|option_with_implicit_dot
+argument_list|,
+name|short_option_with_implicit_dot
+argument_list|,
+name|option_with_implicit_dot
+argument_list|,
+name|short_option_with_implicit_dot
+argument_list|,
+name|option_with_implicit_dot
+argument_list|,
+name|short_option_with_implicit_dot
+argument_list|)
+expr_stmt|;
+block|}
+end_function
 
 begin_function
 DECL|function|fix_unmerged_status
@@ -226,6 +323,22 @@ name|data
 init|=
 name|cbdata
 decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|implicit_dot
+init|=
+name|data
+operator|->
+name|implicit_dot
+decl_stmt|;
+name|size_t
+name|implicit_dot_len
+init|=
+name|data
+operator|->
+name|implicit_dot_len
+decl_stmt|;
 for|for
 control|(
 name|i
@@ -265,6 +378,26 @@ name|one
 operator|->
 name|path
 decl_stmt|;
+comment|/* 		 * Check if "git add -A" or "git add -u" was run from a 		 * subdirectory with a modified file outside that directory, 		 * and warn if so. 		 * 		 * "git add -u" will behave like "git add -u :/" instead of 		 * "git add -u ." in the future.  This warning prepares for 		 * that change. 		 */
+if|if
+condition|(
+name|implicit_dot
+operator|&&
+name|strncmp_icase
+argument_list|(
+name|path
+argument_list|,
+name|implicit_dot
+argument_list|,
+name|implicit_dot_len
+argument_list|)
+condition|)
+block|{
+name|warn_pathless_add
+argument_list|()
+expr_stmt|;
+continue|continue;
+block|}
 switch|switch
 condition|(
 name|fix_unmerged_status
@@ -422,6 +555,60 @@ name|struct
 name|rev_info
 name|rev
 decl_stmt|;
+name|memset
+argument_list|(
+operator|&
+name|data
+argument_list|,
+literal|0
+argument_list|,
+sizeof|sizeof
+argument_list|(
+name|data
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|data
+operator|.
+name|flags
+operator|=
+name|flags
+operator|&
+operator|~
+name|ADD_CACHE_IMPLICIT_DOT
+expr_stmt|;
+if|if
+condition|(
+operator|(
+name|flags
+operator|&
+name|ADD_CACHE_IMPLICIT_DOT
+operator|)
+operator|&&
+name|prefix
+condition|)
+block|{
+comment|/* 		 * Check for modified files throughout the worktree so 		 * update_callback has a chance to warn about changes 		 * outside the cwd. 		 */
+name|data
+operator|.
+name|implicit_dot
+operator|=
+name|prefix
+expr_stmt|;
+name|data
+operator|.
+name|implicit_dot_len
+operator|=
+name|strlen
+argument_list|(
+name|prefix
+argument_list|)
+expr_stmt|;
+name|pathspec
+operator|=
+name|NULL
+expr_stmt|;
+block|}
 name|init_revisions
 argument_list|(
 operator|&
@@ -468,18 +655,6 @@ name|format_callback
 operator|=
 name|update_callback
 expr_stmt|;
-name|data
-operator|.
-name|flags
-operator|=
-name|flags
-expr_stmt|;
-name|data
-operator|.
-name|add_errors
-operator|=
-literal|0
-expr_stmt|;
 name|rev
 operator|.
 name|diffopt
@@ -514,6 +689,14 @@ return|;
 block|}
 end_function
 
+begin_define
+DECL|macro|WARN_IMPLICIT_DOT
+define|#
+directive|define
+name|WARN_IMPLICIT_DOT
+value|(1u<< 0)
+end_define
+
 begin_function
 DECL|function|prune_directory
 specifier|static
@@ -534,6 +717,9 @@ name|pathspec
 parameter_list|,
 name|int
 name|prefix
+parameter_list|,
+name|unsigned
+name|flag
 parameter_list|)
 block|{
 name|char
@@ -635,6 +821,17 @@ name|dst
 operator|++
 operator|=
 name|entry
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|flag
+operator|&
+name|WARN_IMPLICIT_DOT
+condition|)
+comment|/* 			 * "git add -A" was run from a subdirectory with a 			 * new file outside that directory. 			 * 			 * "git add -A" will behave like "git add -A :/" 			 * instead of "git add -A ." in the future. 			 * Warn about the coming behavior change. 			 */
+name|warn_pathless_add
+argument_list|()
 expr_stmt|;
 block|}
 name|dir
@@ -1939,59 +2136,6 @@ block|}
 end_function
 
 begin_function
-DECL|function|warn_pathless_add
-specifier|static
-name|void
-name|warn_pathless_add
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|option_name
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|short_name
-parameter_list|)
-block|{
-comment|/* 	 * To be consistent with "git add -p" and most Git 	 * commands, we should default to being tree-wide, but 	 * this is not the original behavior and can't be 	 * changed until users trained themselves not to type 	 * "git add -u" or "git add -A". For now, we warn and 	 * keep the old behavior. Later, the behavior can be changed 	 * to tree-wide, keeping the warning for a while, and 	 * eventually we can drop the warning. 	 */
-name|warning
-argument_list|(
-name|_
-argument_list|(
-literal|"The behavior of 'git add %s (or %s)' with no path argument from a\n"
-literal|"subdirectory of the tree will change in Git 2.0 and should not be used anymore.\n"
-literal|"To add content for the whole tree, run:\n"
-literal|"\n"
-literal|"  git add %s :/\n"
-literal|"  (or git add %s :/)\n"
-literal|"\n"
-literal|"To restrict the command to the current directory, run:\n"
-literal|"\n"
-literal|"  git add %s .\n"
-literal|"  (or git add %s .)\n"
-literal|"\n"
-literal|"With the current Git version, the command is restricted to the current directory."
-argument_list|)
-argument_list|,
-name|option_name
-argument_list|,
-name|short_name
-argument_list|,
-name|option_name
-argument_list|,
-name|short_name
-argument_list|,
-name|option_name
-argument_list|,
-name|short_name
-argument_list|)
-expr_stmt|;
-block|}
-end_function
-
-begin_function
 DECL|function|cmd_add
 name|int
 name|cmd_add
@@ -2044,19 +2188,10 @@ name|seen
 init|=
 name|NULL
 decl_stmt|;
-specifier|const
-name|char
-modifier|*
-name|option_with_implicit_dot
+name|int
+name|implicit_dot
 init|=
-name|NULL
-decl_stmt|;
-specifier|const
-name|char
-modifier|*
-name|short_option_with_implicit_dot
-init|=
-name|NULL
+literal|0
 decl_stmt|;
 name|git_config
 argument_list|(
@@ -2214,17 +2349,6 @@ block|,
 name|NULL
 block|}
 decl_stmt|;
-if|if
-condition|(
-name|prefix
-condition|)
-name|warn_pathless_add
-argument_list|(
-name|option_with_implicit_dot
-argument_list|,
-name|short_option_with_implicit_dot
-argument_list|)
-expr_stmt|;
 name|argc
 operator|=
 literal|1
@@ -2232,6 +2356,10 @@ expr_stmt|;
 name|argv
 operator|=
 name|here
+expr_stmt|;
+name|implicit_dot
+operator|=
+literal|1
 expr_stmt|;
 block|}
 name|add_new_files
@@ -2304,6 +2432,14 @@ name|ADD_CACHE_IGNORE_REMOVAL
 else|:
 literal|0
 operator|)
+operator|)
+operator||
+operator|(
+name|implicit_dot
+condition|?
+name|ADD_CACHE_IMPLICIT_DOT
+else|:
+literal|0
 operator|)
 expr_stmt|;
 if|if
@@ -2417,6 +2553,10 @@ argument_list|(
 operator|&
 name|dir
 argument_list|,
+name|implicit_dot
+condition|?
+name|NULL
+else|:
 name|pathspec
 argument_list|)
 expr_stmt|;
@@ -2434,6 +2574,12 @@ argument_list|,
 name|pathspec
 argument_list|,
 name|baselen
+argument_list|,
+name|implicit_dot
+condition|?
+name|WARN_IMPLICIT_DOT
+else|:
+literal|0
 argument_list|)
 expr_stmt|;
 block|}
