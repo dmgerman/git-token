@@ -1286,6 +1286,22 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|void
+name|strbuf_humanise_bytes
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+name|buf
+parameter_list|,
+name|off_t
+name|bytes
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_macro
 name|__attribute__
 argument_list|(
