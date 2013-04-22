@@ -104,10 +104,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|handle_one_ref
+DECL|function|pack_one_ref
 specifier|static
 name|int
-name|handle_one_ref
+name|pack_one_ref
 parameter_list|(
 specifier|const
 name|char
@@ -682,7 +682,7 @@ argument_list|)
 expr_stmt|;
 name|for_each_ref
 argument_list|(
-name|handle_one_ref
+name|pack_one_ref
 argument_list|,
 operator|&
 name|cbdata
