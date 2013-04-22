@@ -2066,6 +2066,10 @@ name|DO_FOR_EACH_INCLUDE_BROKEN
 value|0x01
 end_define
 
+begin_comment
+comment|/*  * current_ref is a performance hack: when iterating over references  * using the for_each_ref*() functions, current_ref is set to the  * current reference's entry before calling the callback function.  If  * the callback function calls peel_ref(), then peel_ref() first  * checks whether the reference to be peeled is the current reference  * (it usually is) and if so, returns that reference's peeled version  * if it is available.  This avoids a refname lookup in a common case.  */
+end_comment
+
 begin_decl_stmt
 DECL|variable|current_ref
 specifier|static
