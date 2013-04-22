@@ -5656,14 +5656,43 @@ return|;
 block|}
 end_function
 
+begin_enum
+DECL|enum|peel_status
+enum|enum
+name|peel_status
+block|{
+comment|/* object was peeled successfully: */
+DECL|enumerator|PEEL_PEELED
+name|PEEL_PEELED
+init|=
+literal|0
+block|,
+comment|/* 	 * object cannot be peeled because the named object (or an 	 * object referred to by a tag in the peel chain), does not 	 * exist. 	 */
+DECL|enumerator|PEEL_INVALID
+name|PEEL_INVALID
+init|=
+operator|-
+literal|1
+block|,
+comment|/* object cannot be peeled because it is not a tag: */
+DECL|enumerator|PEEL_NON_TAG
+name|PEEL_NON_TAG
+init|=
+operator|-
+literal|2
+block|}
+enum|;
+end_enum
+
 begin_comment
-comment|/*  * Peel the named object; i.e., if the object is a tag, resolve the  * tag recursively until a non-tag is found.  Store the result to sha1  * and return 0 iff successful.  If the object is not a tag or is not  * valid, return -1 and leave sha1 unchanged.  */
+comment|/*  * Peel the named object; i.e., if the object is a tag, resolve the  * tag recursively until a non-tag is found.  If successful, store the  * result to sha1 and return PEEL_PEELED.  If the object is not a tag  * or is not valid, return PEEL_NON_TAG or PEEL_INVALID, respectively,  * and leave sha1 unchanged.  */
 end_comment
 
 begin_function
 DECL|function|peel_object
 specifier|static
-name|int
+name|enum
+name|peel_status
 name|peel_object
 parameter_list|(
 specifier|const
@@ -5714,8 +5743,7 @@ operator|<
 literal|0
 condition|)
 return|return
-operator|-
-literal|1
+name|PEEL_INVALID
 return|;
 name|o
 operator|->
@@ -5733,8 +5761,7 @@ operator|!=
 name|OBJ_TAG
 condition|)
 return|return
-operator|-
-literal|1
+name|PEEL_NON_TAG
 return|;
 name|o
 operator|=
@@ -5749,8 +5776,7 @@ operator|!
 name|o
 condition|)
 return|return
-operator|-
-literal|1
+name|PEEL_INVALID
 return|;
 name|hashcpy
 argument_list|(
@@ -5762,7 +5788,7 @@ name|sha1
 argument_list|)
 expr_stmt|;
 return|return
-literal|0
+name|PEEL_PEELED
 return|;
 block|}
 end_function
