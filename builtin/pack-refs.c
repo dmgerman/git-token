@@ -14,7 +14,7 @@ end_include
 begin_include
 include|#
 directive|include
-file|"pack-refs.h"
+file|"refs.h"
 end_include
 
 begin_decl_stmt
