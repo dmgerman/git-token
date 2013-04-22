@@ -3443,6 +3443,18 @@ block|}
 end_function
 
 begin_comment
+comment|/* The length of a peeled reference line in packed-refs, including EOL: */
+end_comment
+
+begin_define
+DECL|macro|PEELED_LINE_LENGTH
+define|#
+directive|define
+name|PEELED_LINE_LENGTH
+value|42
+end_define
+
+begin_comment
 comment|/*  * Parse one line from a packed-refs file.  Write the SHA1 to sha1.  * Return a pointer to the refname within the line (null-terminated),  * or NULL if there was a problem.  */
 end_comment
 
@@ -3772,11 +3784,13 @@ argument_list|(
 name|refline
 argument_list|)
 operator|==
-literal|42
+name|PEELED_LINE_LENGTH
 operator|&&
 name|refline
 index|[
-literal|41
+name|PEELED_LINE_LENGTH
+operator|-
+literal|1
 index|]
 operator|==
 literal|'\n'
