@@ -307,13 +307,13 @@ name|add_would_remove_warning
 init|=
 name|N_
 argument_list|(
-literal|"You ran 'git add' with neither '-A (--all)' or '--no-all', whose\n"
-literal|"behaviour will change in Git 2.0 with respect to paths you removed from\n"
-literal|"your working tree. Paths like '%s' that are\n"
-literal|"removed are ignored with this version of Git.\n"
+literal|"You ran 'git add' with neither '-A (--all)' or '--ignore-removal',\n"
+literal|"whose behaviour will change in Git 2.0 with respect to paths you removed.\n"
+literal|"Paths like '%s' that are\n"
+literal|"removed from your working tree are ignored with this version of Git.\n"
 literal|"\n"
-literal|"* 'git add --no-all<pathspec>', which is the current default, ignores\n"
-literal|"  paths you removed from your working tree.\n"
+literal|"* 'git add --ignore-removal<pathspec>', which is the current default,\n"
+literal|"  ignores paths you removed from your working tree.\n"
 literal|"\n"
 literal|"* 'git add --all<pathspec>' will let you also record the removals.\n"
 literal|"\n"
