@@ -2054,12 +2054,16 @@ expr_stmt|;
 block|}
 end_function
 
+begin_comment
+comment|/* Include broken references in a do_for_each_ref*() iteration: */
+end_comment
+
 begin_define
 DECL|macro|DO_FOR_EACH_INCLUDE_BROKEN
 define|#
 directive|define
 name|DO_FOR_EACH_INCLUDE_BROKEN
-value|01
+value|0x01
 end_define
 
 begin_decl_stmt
@@ -2071,6 +2075,10 @@ modifier|*
 name|current_ref
 decl_stmt|;
 end_decl_stmt
+
+begin_comment
+comment|/*  * Handle one reference in a do_for_each_ref*()-style iteration.  */
+end_comment
 
 begin_function
 DECL|function|do_one_ref
@@ -6154,6 +6162,10 @@ argument_list|)
 expr_stmt|;
 block|}
 end_function
+
+begin_comment
+comment|/*  * Call fn for each reference in the specified submodule for which the  * refname begins with base.  If trim is non-zero, then trim that many  * characters off the beginning of each refname before passing the  * refname to fn.  flags can be DO_FOR_EACH_INCLUDE_BROKEN to include  * broken references in the iteration.  If fn ever returns a non-zero  * value, stop the iteration and return that value; otherwise, return  * 0.  */
+end_comment
 
 begin_function
 DECL|function|do_for_each_ref
