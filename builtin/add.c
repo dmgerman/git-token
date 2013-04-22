@@ -200,6 +200,31 @@ return|;
 block|}
 end_function
 
+begin_decl_stmt
+DECL|variable|add_would_remove_warning
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|add_would_remove_warning
+init|=
+name|N_
+argument_list|(
+literal|"You ran 'git add' with neither '-A (--all)' or '--no-all', whose\n"
+literal|"behaviour will change in Git 2.0 with respect to paths you removed from\n"
+literal|"your working tree. Paths like '%s' that are\n"
+literal|"removed are ignored with this version of Git.\n"
+literal|"\n"
+literal|"* 'git add --no-all<pathspec>', which is the current default, ignores\n"
+literal|"  paths you removed from your working tree.\n"
+literal|"\n"
+literal|"* 'git add --all<pathspec>' will let you also record the removals.\n"
+literal|"\n"
+literal|"Run 'git status' to check the paths you removed from your working tree.\n"
+argument_list|)
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|warn_add_would_remove
 specifier|static
@@ -216,12 +241,7 @@ name|warning
 argument_list|(
 name|_
 argument_list|(
-literal|"In Git 2.0, 'git add<pathspec>...' will also update the\n"
-literal|"index for paths removed from the working tree that match\n"
-literal|"the given pathspec. If you want to 'add' only changed\n"
-literal|"or newly created paths, say 'git add --no-all<pathspec>...'"
-literal|" instead.\n\n"
-literal|"'%s' would be removed from the index without --no-all."
+name|add_would_remove_warning
 argument_list|)
 argument_list|,
 name|path
