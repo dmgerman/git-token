@@ -9280,29 +9280,7 @@ name|peel_status
 decl_stmt|;
 name|int
 name|is_tag_ref
-decl_stmt|;
-comment|/* Do not pack symbolic or broken refs: */
-if|if
-condition|(
-operator|(
-name|entry
-operator|->
-name|flag
-operator|&
-name|REF_ISSYMREF
-operator|)
-operator|||
-operator|!
-name|ref_resolves_to_object
-argument_list|(
-name|entry
-argument_list|)
-condition|)
-return|return
-literal|0
-return|;
-name|is_tag_ref
-operator|=
+init|=
 operator|!
 name|prefixcmp
 argument_list|(
@@ -9312,7 +9290,7 @@ name|name
 argument_list|,
 literal|"refs/tags/"
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 comment|/* ALWAYS pack refs that were already packed or are tags */
 if|if
 condition|(
@@ -9336,6 +9314,26 @@ name|flag
 operator|&
 name|REF_ISPACKED
 operator|)
+condition|)
+return|return
+literal|0
+return|;
+comment|/* Do not pack symbolic or broken refs: */
+if|if
+condition|(
+operator|(
+name|entry
+operator|->
+name|flag
+operator|&
+name|REF_ISSYMREF
+operator|)
+operator|||
+operator|!
+name|ref_resolves_to_object
+argument_list|(
+name|entry
+argument_list|)
 condition|)
 return|return
 literal|0
