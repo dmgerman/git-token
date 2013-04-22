@@ -1836,6 +1836,50 @@ DECL|variable|addremove_explicit
 comment|/* unspecified */
 end_comment
 
+begin_function
+DECL|function|ignore_removal_cb
+specifier|static
+name|int
+name|ignore_removal_cb
+parameter_list|(
+specifier|const
+name|struct
+name|option
+modifier|*
+name|opt
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|arg
+parameter_list|,
+name|int
+name|unset
+parameter_list|)
+block|{
+comment|/* if we are told to ignore, we are not adding removals */
+operator|*
+operator|(
+name|int
+operator|*
+operator|)
+name|opt
+operator|->
+name|value
+operator|=
+operator|!
+name|unset
+condition|?
+literal|0
+else|:
+literal|1
+expr_stmt|;
+return|return
+literal|0
+return|;
+block|}
+end_function
+
 begin_decl_stmt
 DECL|variable|builtin_add_options
 specifier|static
@@ -1972,6 +2016,29 @@ argument_list|(
 literal|"add changes from all tracked and untracked files"
 argument_list|)
 argument_list|)
+block|,
+block|{
+name|OPTION_CALLBACK
+block|,
+literal|0
+block|,
+literal|"ignore-removal"
+block|,
+operator|&
+name|addremove_explicit
+block|,
+name|NULL
+comment|/* takes no arguments */
+block|,
+name|N_
+argument_list|(
+literal|"ignore paths removed in the working tree (same as --no-all)"
+argument_list|)
+block|,
+name|PARSE_OPT_NOARG
+block|,
+name|ignore_removal_cb
+block|}
 block|,
 name|OPT_BOOL
 argument_list|(
