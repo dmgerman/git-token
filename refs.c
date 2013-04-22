@@ -473,7 +473,7 @@ index|[
 literal|20
 index|]
 decl_stmt|;
-comment|/* 	 * If REF_KNOWS_PEELED, then this field holds the peeled value 	 * of this reference, or null if the reference is known not to 	 * be peelable. 	 */
+comment|/* 	 * If REF_KNOWS_PEELED, then this field holds the peeled value 	 * of this reference, or null if the reference is known not to 	 * be peelable.  See the documentation for peel_ref() for an 	 * exact definition of "peelable". 	 */
 DECL|member|peeled
 name|unsigned
 name|char
@@ -5950,6 +5950,23 @@ name|REF_KNOWS_PEELED
 operator|)
 condition|)
 block|{
+if|if
+condition|(
+name|is_null_sha1
+argument_list|(
+name|r
+operator|->
+name|u
+operator|.
+name|value
+operator|.
+name|peeled
+argument_list|)
+condition|)
+return|return
+operator|-
+literal|1
+return|;
 name|hashcpy
 argument_list|(
 name|sha1
