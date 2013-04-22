@@ -3643,6 +3643,22 @@ value|42
 end_define
 
 begin_comment
+comment|/*  * The packed-refs header line that we write out.  Perhaps other  * traits will be added later.  The trailing space is required.  */
+end_comment
+
+begin_decl_stmt
+DECL|variable|PACKED_REFS_HEADER
+specifier|static
+specifier|const
+name|char
+name|PACKED_REFS_HEADER
+index|[]
+init|=
+literal|"# pack-refs with: peeled fully-peeled \n"
+decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|/*  * Parse one line from a packed-refs file.  Write the SHA1 to sha1.  * Return a pointer to the refname within the line (null-terminated),  * or NULL if there was a problem.  */
 end_comment
 
@@ -6023,7 +6039,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Peel the entry (if possible) and return its new peel_status.  */
+comment|/*  * Peel the entry (if possible) and return its new peel_status.  *  * It is OK to call this function with a packed reference entry that  * might be stale and might even refer to an object that has since  * been garbage-collected.  In such a case, if the entry has  * REF_KNOWS_PEELED then leave the status unchanged and return  * PEEL_PEELED or PEEL_NON_TAG; otherwise, return PEEL_INVALID.  */
 end_comment
 
 begin_function
@@ -9209,6 +9225,59 @@ argument_list|,
 name|len
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|peel_entry
+argument_list|(
+name|entry
+argument_list|)
+condition|)
+block|{
+comment|/* This reference could be peeled; write the peeled value: */
+if|if
+condition|(
+name|snprintf
+argument_list|(
+name|line
+argument_list|,
+sizeof|sizeof
+argument_list|(
+name|line
+argument_list|)
+argument_list|,
+literal|"^%s\n"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|entry
+operator|->
+name|u
+operator|.
+name|value
+operator|.
+name|peeled
+argument_list|)
+argument_list|)
+operator|!=
+name|PEELED_LINE_LENGTH
+condition|)
+name|die
+argument_list|(
+literal|"internal error"
+argument_list|)
+expr_stmt|;
+name|write_or_die
+argument_list|(
+operator|*
+name|fd
+argument_list|,
+name|line
+argument_list|,
+name|PEELED_LINE_LENGTH
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 literal|0
 return|;
@@ -9344,6 +9413,18 @@ return|return
 literal|0
 return|;
 block|}
+name|write_or_die
+argument_list|(
+name|fd
+argument_list|,
+name|PACKED_REFS_HEADER
+argument_list|,
+name|strlen
+argument_list|(
+name|PACKED_REFS_HEADER
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|do_for_each_entry_in_dir
 argument_list|(
 name|packed
