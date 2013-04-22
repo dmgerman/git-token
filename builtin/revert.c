@@ -64,7 +64,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git revert [options]<commit-ish>"
+literal|"git revert [options]<commit-ish>..."
 argument_list|)
 block|,
 name|N_
@@ -90,7 +90,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git cherry-pick [options]<commit-ish>"
+literal|"git cherry-pick [options]<commit-ish>..."
 argument_list|)
 block|,
 name|N_
