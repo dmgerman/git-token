@@ -141,11 +141,6 @@ DECL|member|implicit_dot_len
 name|size_t
 name|implicit_dot_len
 decl_stmt|;
-comment|/* only needed for 2.0 transition preparation */
-DECL|member|warn_add_would_remove
-name|int
-name|warn_add_would_remove
-decl_stmt|;
 block|}
 struct|;
 end_struct
@@ -294,56 +289,6 @@ comment|/* 		 * Either an explicit add request, or path exists 		 * in the worki
 return|return
 name|DIFF_STATUS_MODIFIED
 return|;
-block|}
-end_function
-
-begin_decl_stmt
-DECL|variable|add_would_remove_warning
-specifier|static
-specifier|const
-name|char
-modifier|*
-name|add_would_remove_warning
-init|=
-name|N_
-argument_list|(
-literal|"You ran 'git add' with neither '-A (--all)' or '--ignore-removal',\n"
-literal|"whose behaviour will change in Git 2.0 with respect to paths you removed.\n"
-literal|"Paths like '%s' that are\n"
-literal|"removed from your working tree are ignored with this version of Git.\n"
-literal|"\n"
-literal|"* 'git add --ignore-removal<pathspec>', which is the current default,\n"
-literal|"  ignores paths you removed from your working tree.\n"
-literal|"\n"
-literal|"* 'git add --all<pathspec>' will let you also record the removals.\n"
-literal|"\n"
-literal|"Run 'git status' to check the paths you removed from your working tree.\n"
-argument_list|)
-decl_stmt|;
-end_decl_stmt
-
-begin_function
-DECL|function|warn_add_would_remove
-specifier|static
-name|void
-name|warn_add_would_remove
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|path
-parameter_list|)
-block|{
-name|warning
-argument_list|(
-name|_
-argument_list|(
-name|add_would_remove_warning
-argument_list|)
-argument_list|,
-name|path
-argument_list|)
-expr_stmt|;
 block|}
 end_function
 
@@ -526,25 +471,6 @@ break|break;
 case|case
 name|DIFF_STATUS_DELETED
 case|:
-if|if
-condition|(
-name|data
-operator|->
-name|warn_add_would_remove
-condition|)
-block|{
-name|warn_add_would_remove
-argument_list|(
-name|path
-argument_list|)
-expr_stmt|;
-name|data
-operator|->
-name|warn_add_would_remove
-operator|=
-literal|0
-expr_stmt|;
-block|}
 if|if
 condition|(
 name|data
@@ -1802,13 +1728,8 @@ DECL|macro|ADDREMOVE_DEFAULT
 define|#
 directive|define
 name|ADDREMOVE_DEFAULT
-value|0
+value|1
 end_define
-
-begin_comment
-DECL|macro|ADDREMOVE_DEFAULT
-comment|/* Change to 1 in Git 2.0 */
-end_comment
 
 begin_decl_stmt
 DECL|variable|addremove
@@ -2476,35 +2397,6 @@ literal|"-A and -u are mutually incompatible"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/* 	 * Warn when "git add pathspec..." was given without "-u" or "-A" 	 * and pathspec... covers a removed path. 	 */
-name|memset
-argument_list|(
-operator|&
-name|update_data
-argument_list|,
-literal|0
-argument_list|,
-sizeof|sizeof
-argument_list|(
-name|update_data
-argument_list|)
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-operator|!
-name|take_worktree_changes
-operator|&&
-name|addremove_explicit
-operator|<
-literal|0
-condition|)
-name|update_data
-operator|.
-name|warn_add_would_remove
-operator|=
-literal|1
-expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -2516,9 +2408,11 @@ literal|0
 operator|&&
 name|argc
 condition|)
-comment|/* 		 * Turn "git add pathspec..." to "git add -A pathspec..." 		 * in Git 2.0 but not yet 		 */
-empty_stmt|;
-comment|/* addremove = 1; */
+comment|/* Turn "git add pathspec..." to "git add -A pathspec..." */
+name|addremove
+operator|=
+literal|1
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -2988,6 +2882,19 @@ expr_stmt|;
 block|}
 name|plug_bulk_checkin
 argument_list|()
+expr_stmt|;
+name|memset
+argument_list|(
+operator|&
+name|update_data
+argument_list|,
+literal|0
+argument_list|,
+sizeof|sizeof
+argument_list|(
+name|update_data
+argument_list|)
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
