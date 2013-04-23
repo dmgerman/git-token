@@ -398,6 +398,8 @@ argument_list|,
 name|namelen
 argument_list|,
 name|ic_precompose
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 if|if
