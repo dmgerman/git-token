@@ -119,6 +119,7 @@ begin_enum
 DECL|enumerator|ABORT
 DECL|enumerator|VERBATIM
 DECL|enumerator|WARN
+DECL|enumerator|WARN_STRIP
 DECL|enumerator|STRIP
 DECL|variable|signed_tag_mode
 specifier|static
@@ -129,6 +130,8 @@ block|,
 name|VERBATIM
 block|,
 name|WARN
+block|,
+name|WARN_STRIP
 block|,
 name|STRIP
 block|}
@@ -264,6 +267,21 @@ condition|)
 name|signed_tag_mode
 operator|=
 name|WARN
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"warn-strip"
+argument_list|)
+condition|)
+name|signed_tag_mode
+operator|=
+name|WARN_STRIP
 expr_stmt|;
 elseif|else
 if|if
@@ -2460,6 +2478,24 @@ case|case
 name|VERBATIM
 case|:
 break|break;
+case|case
+name|WARN_STRIP
+case|:
+name|warning
+argument_list|(
+literal|"Stripping signature from tag %s"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|tag
+operator|->
+name|object
+operator|.
+name|sha1
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|/* fallthru */
 case|case
 name|STRIP
 case|:
