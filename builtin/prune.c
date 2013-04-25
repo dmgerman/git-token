@@ -754,7 +754,7 @@ literal|"show progress"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_DATE
+name|OPT_EXPIRY_DATE
 argument_list|(
 literal|0
 argument_list|,
