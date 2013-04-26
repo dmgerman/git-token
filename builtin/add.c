@@ -2770,6 +2770,17 @@ goto|;
 block|}
 if|if
 condition|(
+name|implicit_dot
+operator|&&
+name|prefix
+condition|)
+name|refresh_cache
+argument_list|(
+name|REFRESH_QUIET
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|pathspec
 condition|)
 block|{
