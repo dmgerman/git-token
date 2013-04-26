@@ -1983,6 +1983,23 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|void
+name|set_die_is_recursing_routine
+parameter_list|(
+name|int
+function_decl|(
+modifier|*
+name|routine
+function_decl|)
+parameter_list|(
+name|void
+parameter_list|)
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|int
 name|prefixcmp
 parameter_list|(
