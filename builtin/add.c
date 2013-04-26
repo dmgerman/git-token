@@ -307,13 +307,13 @@ name|add_would_remove_warning
 init|=
 name|N_
 argument_list|(
-literal|"You ran 'git add' with neither '-A (--all)' or '--no-all', whose\n"
-literal|"behaviour will change in Git 2.0 with respect to paths you removed from\n"
-literal|"your working tree. Paths like '%s' that are\n"
-literal|"removed are ignored with this version of Git.\n"
+literal|"You ran 'git add' with neither '-A (--all)' or '--ignore-removal',\n"
+literal|"whose behaviour will change in Git 2.0 with respect to paths you removed.\n"
+literal|"Paths like '%s' that are\n"
+literal|"removed from your working tree are ignored with this version of Git.\n"
 literal|"\n"
-literal|"* 'git add --no-all<pathspec>', which is the current default, ignores\n"
-literal|"  paths you removed from your working tree.\n"
+literal|"* 'git add --ignore-removal<pathspec>', which is the current default,\n"
+literal|"  ignores paths you removed from your working tree.\n"
 literal|"\n"
 literal|"* 'git add --all<pathspec>' will let you also record the removals.\n"
 literal|"\n"
@@ -1836,6 +1836,50 @@ DECL|variable|addremove_explicit
 comment|/* unspecified */
 end_comment
 
+begin_function
+DECL|function|ignore_removal_cb
+specifier|static
+name|int
+name|ignore_removal_cb
+parameter_list|(
+specifier|const
+name|struct
+name|option
+modifier|*
+name|opt
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|arg
+parameter_list|,
+name|int
+name|unset
+parameter_list|)
+block|{
+comment|/* if we are told to ignore, we are not adding removals */
+operator|*
+operator|(
+name|int
+operator|*
+operator|)
+name|opt
+operator|->
+name|value
+operator|=
+operator|!
+name|unset
+condition|?
+literal|0
+else|:
+literal|1
+expr_stmt|;
+return|return
+literal|0
+return|;
+block|}
+end_function
+
 begin_decl_stmt
 DECL|variable|builtin_add_options
 specifier|static
@@ -1972,6 +2016,29 @@ argument_list|(
 literal|"add changes from all tracked and untracked files"
 argument_list|)
 argument_list|)
+block|,
+block|{
+name|OPTION_CALLBACK
+block|,
+literal|0
+block|,
+literal|"ignore-removal"
+block|,
+operator|&
+name|addremove_explicit
+block|,
+name|NULL
+comment|/* takes no arguments */
+block|,
+name|N_
+argument_list|(
+literal|"ignore paths removed in the working tree (same as --no-all)"
+argument_list|)
+block|,
+name|PARSE_OPT_NOARG
+block|,
+name|ignore_removal_cb
+block|}
 block|,
 name|OPT_BOOL
 argument_list|(
