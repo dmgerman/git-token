@@ -16,12 +16,6 @@ modifier|*
 name|name
 parameter_list|)
 block|{
-specifier|extern
-name|char
-modifier|*
-modifier|*
-name|environ
-decl_stmt|;
 name|int
 name|src
 decl_stmt|,
