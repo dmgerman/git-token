@@ -5137,7 +5137,9 @@ specifier|static
 name|FORCEINLINE
 name|long
 name|win32_getcurrentthreadid
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 ifdef|#
 directive|ifdef
