@@ -2333,6 +2333,17 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/*  * A critical section used in the implementation of the spawn  * functions (mingw_spawnv[p]e()) and waitpid(). Intialised in  * the replacement main() macro below.  */
+end_comment
+
+begin_decl_stmt
+specifier|extern
+name|CRITICAL_SECTION
+name|pinfo_cs
+decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|/*  * A replacement of main() that ensures that argv[0] has a path  * and that default fmode and std(in|out|err) are in binary mode  */
 end_comment
 
