@@ -30,6 +30,28 @@ begin_comment
 comment|/* DLMALLOC_VERSION */
 end_comment
 
+begin_if
+if|#
+directive|if
+name|defined
+argument_list|(
+name|linux
+argument_list|)
+end_if
+
+begin_define
+DECL|macro|_GNU_SOURCE
+define|#
+directive|define
+name|_GNU_SOURCE
+value|1
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_ifndef
 ifndef|#
 directive|ifndef
