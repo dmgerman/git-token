@@ -781,7 +781,6 @@ end_decl_stmt
 begin_decl_stmt
 DECL|variable|global_argv
 specifier|static
-specifier|const
 name|char
 modifier|*
 modifier|*
@@ -18846,7 +18845,6 @@ parameter_list|(
 name|int
 name|argc
 parameter_list|,
-specifier|const
 name|char
 modifier|*
 modifier|*

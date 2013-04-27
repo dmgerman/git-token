@@ -19,7 +19,6 @@ parameter_list|(
 name|int
 name|argc
 parameter_list|,
-specifier|const
 name|char
 modifier|*
 modifier|*
@@ -98,6 +97,12 @@ name|cp
 operator|.
 name|argv
 operator|=
+operator|(
+specifier|const
+name|char
+operator|*
+operator|*
+operator|)
 name|argv
 operator|+
 literal|1

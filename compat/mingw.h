@@ -2357,7 +2357,7 @@ name|c
 parameter_list|,
 name|v
 parameter_list|)
-value|dummy_decl_mingw_main(); \ static int mingw_main(); \ int main(int argc, const char **argv) \ { \ 	extern CRITICAL_SECTION pinfo_cs; \ 	_fmode = _O_BINARY; \ 	_setmode(_fileno(stdin), _O_BINARY); \ 	_setmode(_fileno(stdout), _O_BINARY); \ 	_setmode(_fileno(stderr), _O_BINARY); \ 	argv[0] = xstrdup(_pgmptr); \ 	InitializeCriticalSection(&pinfo_cs); \ 	return mingw_main(argc, argv); \ } \ static int mingw_main(c,v)
+value|dummy_decl_mingw_main(); \ static int mingw_main(c,v); \ int main(int argc, char **argv) \ { \ 	extern CRITICAL_SECTION pinfo_cs; \ 	_fmode = _O_BINARY; \ 	_setmode(_fileno(stdin), _O_BINARY); \ 	_setmode(_fileno(stdout), _O_BINARY); \ 	_setmode(_fileno(stderr), _O_BINARY); \ 	argv[0] = xstrdup(_pgmptr); \ 	InitializeCriticalSection(&pinfo_cs); \ 	return mingw_main(argc, argv); \ } \ static int mingw_main(c,v)
 end_define
 
 begin_comment
