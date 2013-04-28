@@ -1699,7 +1699,7 @@ name|both_empty
 argument_list|(
 name|entry
 operator|+
-literal|0
+literal|1
 argument_list|,
 name|entry
 operator|+
