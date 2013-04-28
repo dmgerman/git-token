@@ -2342,6 +2342,7 @@ decl_stmt|;
 end_decl_stmt
 
 begin_enum
+specifier|static
 enum|enum
 block|{
 DECL|enumerator|JUNK_LEAVE_NONE
