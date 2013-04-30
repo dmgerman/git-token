@@ -5410,16 +5410,22 @@ condition|(
 operator|!
 name|len
 condition|)
+block|{
 return|return
 name|len
 return|;
 comment|/* syntax Ok, not enough switches */
+block|}
+elseif|else
 if|if
 condition|(
-literal|0
-operator|<
 name|len
-operator|&&
+operator|>
+literal|0
+condition|)
+block|{
+if|if
+condition|(
 name|len
 operator|==
 name|namelen
@@ -5428,13 +5434,7 @@ return|return
 name|len
 return|;
 comment|/* consumed all */
-elseif|else
-if|if
-condition|(
-literal|0
-operator|<
-name|len
-condition|)
+else|else
 return|return
 name|reinterpret
 argument_list|(
@@ -5447,6 +5447,7 @@ argument_list|,
 name|buf
 argument_list|)
 return|;
+block|}
 name|cp
 operator|=
 name|strchr
