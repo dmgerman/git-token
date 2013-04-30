@@ -10156,11 +10156,6 @@ operator|->
 name|pack_name
 argument_list|)
 expr_stmt|;
-name|free
-argument_list|(
-name|base
-argument_list|)
-expr_stmt|;
 name|data
 operator|=
 name|NULL
