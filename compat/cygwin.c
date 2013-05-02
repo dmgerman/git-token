@@ -13,29 +13,6 @@ directive|define
 name|WIN32_LEAN_AND_MEAN
 end_define
 
-begin_ifdef
-ifdef|#
-directive|ifdef
-name|CYGWIN_V15_WIN32API
-end_ifdef
-
-begin_include
-include|#
-directive|include
-file|"../git-compat-util.h"
-end_include
-
-begin_include
-include|#
-directive|include
-file|"win32.h"
-end_include
-
-begin_else
-else|#
-directive|else
-end_else
-
 begin_include
 include|#
 directive|include
@@ -59,11 +36,6 @@ include|#
 directive|include
 file|"../git-compat-util.h"
 end_include
-
-begin_endif
-endif|#
-directive|endif
-end_endif
 
 begin_include
 include|#
