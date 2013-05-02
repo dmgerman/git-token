@@ -696,7 +696,7 @@ if|#
 directive|if
 name|defined
 argument_list|(
-name|WIN32
+name|GIT_WINDOWS_NATIVE
 argument_list|)
 operator|||
 name|defined

@@ -19,11 +19,11 @@ end_comment
 begin_ifndef
 ifndef|#
 directive|ifndef
-name|WIN32
+name|GIT_WINDOWS_NATIVE
 end_ifndef
 
 begin_comment
-comment|/* Not defined by Cygwin */
+comment|/* Not defined for Cygwin */
 end_comment
 
 begin_include
