@@ -4257,6 +4257,15 @@ name|NULL
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|hashcpy
+argument_list|(
+name|ref
+operator|->
+name|old_sha1
+argument_list|,
+name|sha1
+argument_list|)
+expr_stmt|;
 block|}
 name|free
 argument_list|(
