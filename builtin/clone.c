@@ -3107,6 +3107,20 @@ name|mapped_refs
 decl_stmt|;
 if|if
 condition|(
+literal|0
+operator|<=
+name|option_verbosity
+condition|)
+name|printf
+argument_list|(
+name|_
+argument_list|(
+literal|"Checking connectivity... "
+argument_list|)
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|check_everything_connected
 argument_list|(
 name|iterate_ref_map
@@ -3122,6 +3136,20 @@ argument_list|(
 name|_
 argument_list|(
 literal|"remote did not send all necessary objects"
+argument_list|)
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+literal|0
+operator|<=
+name|option_verbosity
+condition|)
+name|printf
+argument_list|(
+name|_
+argument_list|(
+literal|"done\n"
 argument_list|)
 argument_list|)
 expr_stmt|;
