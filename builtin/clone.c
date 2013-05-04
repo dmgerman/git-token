@@ -4161,6 +4161,23 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|option_local
+operator|>
+literal|0
+operator|&&
+operator|!
+name|is_local
+condition|)
+name|warning
+argument_list|(
+name|_
+argument_list|(
+literal|"--local is ignored"
+argument_list|)
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|argc
 operator|==
 literal|2
