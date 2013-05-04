@@ -6586,17 +6586,16 @@ condition|(
 operator|!
 name|commit
 condition|)
-name|die
+name|help_unknown_ref
 argument_list|(
-name|_
-argument_list|(
-literal|"%s - not something we can merge"
-argument_list|)
-argument_list|,
 name|argv
 index|[
 name|i
 index|]
+argument_list|,
+literal|"merge"
+argument_list|,
+literal|"not something we can merge"
 argument_list|)
 expr_stmt|;
 name|remotes
