@@ -3501,7 +3501,7 @@ name|mark_end
 operator|!=
 literal|' '
 operator|||
-name|get_sha1
+name|get_sha1_hex
 argument_list|(
 name|mark_end
 operator|+
