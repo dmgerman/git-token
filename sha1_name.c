@@ -2346,18 +2346,27 @@ condition|)
 block|{
 if|if
 condition|(
-name|at
-operator|==
-literal|0
-operator|&&
 name|str
 index|[
+name|at
+operator|+
 literal|2
 index|]
 operator|==
 literal|'-'
 condition|)
 block|{
+if|if
+condition|(
+name|at
+operator|!=
+literal|0
+condition|)
+comment|/* @{-N} not at start */
+return|return
+operator|-
+literal|1
+return|;
 name|nth_prior
 operator|=
 literal|1
@@ -2585,22 +2594,6 @@ name|co_tz
 decl_stmt|,
 name|co_cnt
 decl_stmt|;
-comment|/* a @{-N} placed anywhere except the start is an error */
-if|if
-condition|(
-name|str
-index|[
-name|at
-operator|+
-literal|2
-index|]
-operator|==
-literal|'-'
-condition|)
-return|return
-operator|-
-literal|1
-return|;
 comment|/* Is it asking for N-th entry, or approxidate? */
 for|for
 control|(
