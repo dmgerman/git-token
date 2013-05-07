@@ -2410,7 +2410,6 @@ name|ret
 operator|>
 literal|0
 condition|)
-block|{
 comment|/* substitute this branch name and restart */
 return|return
 name|get_sha1_1
@@ -2428,7 +2427,6 @@ argument_list|,
 literal|0
 argument_list|)
 return|;
-block|}
 elseif|else
 if|if
 condition|(
@@ -2436,12 +2434,10 @@ name|ret
 operator|==
 literal|0
 condition|)
-block|{
 return|return
 operator|-
 literal|1
 return|;
-block|}
 comment|/* allow "@{...}" to mean the current branch reflog */
 name|refs_found
 operator|=
