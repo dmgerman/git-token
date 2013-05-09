@@ -6594,9 +6594,12 @@ if|if
 condition|(
 name|handle_revision_arg
 argument_list|(
+name|xstrdup
+argument_list|(
 name|sb
 operator|.
 name|buf
+argument_list|)
 argument_list|,
 name|revs
 argument_list|,
