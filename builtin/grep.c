@@ -3670,6 +3670,23 @@ argument_list|,
 name|GREP_BINARY_NOMATCH
 argument_list|)
 block|,
+name|OPT_BOOL
+argument_list|(
+literal|0
+argument_list|,
+literal|"textconv"
+argument_list|,
+operator|&
+name|opt
+operator|.
+name|allow_textconv
+argument_list|,
+name|N_
+argument_list|(
+literal|"process binary files with textconv filters"
+argument_list|)
+argument_list|)
+block|,
 block|{
 name|OPTION_INTEGER
 block|,
