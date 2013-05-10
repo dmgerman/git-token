@@ -475,6 +475,14 @@ argument_list|(
 name|default_date_mode
 argument_list|)
 expr_stmt|;
+name|rev
+operator|->
+name|diffopt
+operator|.
+name|touched_flags
+operator|=
+literal|0
+expr_stmt|;
 block|}
 end_function
 
