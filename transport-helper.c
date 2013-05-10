@@ -3766,7 +3766,12 @@ operator|=
 name|msg
 expr_stmt|;
 return|return
-literal|0
+operator|!
+operator|(
+name|status
+operator|==
+name|REF_STATUS_OK
+operator|)
 return|;
 block|}
 end_function
