@@ -772,6 +772,11 @@ name|struct
 name|decoration
 name|merge_simplification
 decl_stmt|;
+DECL|member|treesame
+name|struct
+name|decoration
+name|treesame
+decl_stmt|;
 comment|/* notes-specific options: which refs to show */
 DECL|member|notes_opt
 name|struct
