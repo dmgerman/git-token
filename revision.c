@@ -3183,15 +3183,11 @@ name|revs
 operator|->
 name|simplify_history
 operator|||
-operator|(
+operator|!
+name|relevant_commit
+argument_list|(
 name|p
-operator|->
-name|object
-operator|.
-name|flags
-operator|&
-name|UNINTERESTING
-operator|)
+argument_list|)
 condition|)
 block|{
 comment|/* Even if a merge with an uninteresting 				 * side branch brought the entire change 				 * we are interested in, we do not want 				 * to lose the other branches of this 				 * merge, so we just keep going. 				 */
