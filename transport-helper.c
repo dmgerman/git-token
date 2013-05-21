@@ -4329,6 +4329,27 @@ name|ref
 operator|->
 name|peer_ref
 condition|)
+block|{
+if|if
+condition|(
+name|strcmp
+argument_list|(
+name|ref
+operator|->
+name|peer_ref
+operator|->
+name|name
+argument_list|,
+name|ref
+operator|->
+name|name
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"remote-helpers do not support old:new syntax"
+argument_list|)
+expr_stmt|;
 name|string_list_append
 argument_list|(
 operator|&
@@ -4341,6 +4362,7 @@ operator|->
 name|name
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
