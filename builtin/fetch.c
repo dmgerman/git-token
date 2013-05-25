@@ -3957,13 +3957,6 @@ init|=
 name|STRING_LIST_INIT_DUP
 decl_stmt|;
 name|struct
-name|string_list_item
-modifier|*
-name|peer_item
-init|=
-name|NULL
-decl_stmt|;
-name|struct
 name|ref
 modifier|*
 name|ref_map
@@ -4127,8 +4120,11 @@ operator|->
 name|peer_ref
 condition|)
 block|{
+name|struct
+name|string_list_item
+modifier|*
 name|peer_item
-operator|=
+init|=
 name|string_list_lookup
 argument_list|(
 operator|&
@@ -4140,7 +4136,7 @@ name|peer_ref
 operator|->
 name|name
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|peer_item
