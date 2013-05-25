@@ -78,7 +78,7 @@ value|0x04
 end_define
 
 begin_comment
-comment|/*  * Calls the specified function for each ref file until it returns  * nonzero, and returns the value.  Please note that it is not safe to  * modify references while an iteration is in progress, unless the  * same callback function invocation that modifies the reference also  * returns a nonzero value to immediately stop the iteration.  */
+comment|/*  * The signature for the callback function for the for_each_*()  * functions below.  The memory pointed to by the refname and sha1  * arguments is only guaranteed to be valid for the duration of a  * single callback invocation.  */
 end_comment
 
 begin_typedef
@@ -107,6 +107,10 @@ name|cb_data
 parameter_list|)
 function_decl|;
 end_typedef
+
+begin_comment
+comment|/*  * The following functions invoke the specified callback function for  * each reference indicated.  If the function ever returns a nonzero  * value, stop the iteration and return that value.  Please note that  * it is not safe to modify references while an iteration is in  * progress, unless the same callback function invocation that  * modifies the reference also returns a nonzero value to immediately  * stop the iteration.  */
+end_comment
 
 begin_function_decl
 specifier|extern
