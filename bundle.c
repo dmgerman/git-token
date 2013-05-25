@@ -1813,12 +1813,9 @@ name|revs
 argument_list|,
 name|object
 argument_list|,
-name|xstrdup
-argument_list|(
 name|buf
 operator|.
 name|buf
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

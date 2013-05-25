@@ -58,8 +58,8 @@ name|object
 modifier|*
 name|item
 decl_stmt|;
+comment|/* 		 * name or NULL.  If non-NULL, the memory pointed to 		 * is owned by this object *except* if it points at 		 * object_array_slopbuf, which is a static copy of the 		 * empty string. 		 */
 DECL|member|name
-specifier|const
 name|char
 modifier|*
 name|name
