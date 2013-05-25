@@ -1943,8 +1943,8 @@ operator|&
 name|ent
 argument_list|)
 expr_stmt|;
-continue|continue;
 block|}
+elseif|else
 if|if
 condition|(
 name|obj
@@ -2007,8 +2007,9 @@ expr_stmt|;
 name|blobs
 operator|++
 expr_stmt|;
-continue|continue;
 block|}
+else|else
+block|{
 name|die
 argument_list|(
 name|_
@@ -2019,6 +2020,7 @@ argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
