@@ -3369,11 +3369,19 @@ name|item
 operator|->
 name|util
 operator|=
-operator|(
-name|void
-operator|*
-operator|)
+name|xmalloc
+argument_list|(
+literal|20
+argument_list|)
+expr_stmt|;
+name|hashcpy
+argument_list|(
+name|item
+operator|->
+name|util
+argument_list|,
 name|sha1
+argument_list|)
 expr_stmt|;
 return|return
 literal|0
@@ -3682,7 +3690,7 @@ argument_list|(
 operator|&
 name|existing_refs
 argument_list|,
-literal|0
+literal|1
 argument_list|)
 expr_stmt|;
 comment|/* 	 * We may have a final lightweight tag that needs to be 	 * checked to see if it needs fetching. 	 */
@@ -4435,7 +4443,7 @@ argument_list|(
 operator|&
 name|existing_refs
 argument_list|,
-literal|0
+literal|1
 argument_list|)
 expr_stmt|;
 return|return
