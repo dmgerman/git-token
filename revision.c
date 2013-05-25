@@ -4246,6 +4246,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Add an entry to refs->cmdline with the specified information.  * *name is copied.  */
+end_comment
+
 begin_function
 DECL|function|add_rev_cmdline
 specifier|static
@@ -4326,7 +4330,10 @@ index|]
 operator|.
 name|name
 operator|=
+name|xstrdup
+argument_list|(
 name|name
+argument_list|)
 expr_stmt|;
 name|info
 operator|->
