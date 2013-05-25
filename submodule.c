@@ -5174,14 +5174,7 @@ index|]
 operator|.
 name|item
 argument_list|,
-name|merges
-operator|.
-name|objects
-index|[
-name|i
-index|]
-operator|.
-name|name
+name|NULL
 argument_list|,
 name|result
 argument_list|)
