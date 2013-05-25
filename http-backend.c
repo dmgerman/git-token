@@ -2219,7 +2219,7 @@ parameter_list|(
 specifier|const
 name|char
 modifier|*
-name|name
+name|refname
 parameter_list|,
 specifier|const
 name|unsigned
@@ -2263,7 +2263,7 @@ name|target
 init|=
 name|resolve_ref_unsafe
 argument_list|(
-name|name
+name|refname
 argument_list|,
 name|unused
 argument_list|,
