@@ -386,6 +386,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|do_fsck_object
+specifier|static
+name|int
+name|do_fsck_object
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|verbose
 specifier|static
 name|int
@@ -398,6 +406,14 @@ DECL|variable|show_stat
 specifier|static
 name|int
 name|show_stat
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|check_self_contained_and_connected
+specifier|static
+name|int
+name|check_self_contained_and_connected
 decl_stmt|;
 end_decl_stmt
 
@@ -960,7 +976,7 @@ end_comment
 begin_function
 DECL|function|check_object
 specifier|static
-name|void
+name|unsigned
 name|check_object
 parameter_list|(
 name|struct
@@ -974,7 +990,9 @@ condition|(
 operator|!
 name|obj
 condition|)
-return|return;
+return|return
+literal|0
+return|;
 if|if
 condition|(
 operator|!
@@ -986,7 +1004,9 @@ operator|&
 name|FLAG_LINK
 operator|)
 condition|)
-return|return;
+return|return
+literal|0
+return|;
 if|if
 condition|(
 operator|!
@@ -1042,15 +1062,20 @@ name|flags
 operator||=
 name|FLAG_CHECKED
 expr_stmt|;
-return|return;
+return|return
+literal|1
+return|;
 block|}
+return|return
+literal|0
+return|;
 block|}
 end_function
 
 begin_function
 DECL|function|check_objects
 specifier|static
-name|void
+name|unsigned
 name|check_objects
 parameter_list|(
 name|void
@@ -1060,6 +1085,10 @@ name|unsigned
 name|i
 decl_stmt|,
 name|max
+decl_stmt|,
+name|foreign_nr
+init|=
+literal|0
 decl_stmt|;
 name|max
 operator|=
@@ -1079,6 +1108,8 @@ condition|;
 name|i
 operator|++
 control|)
+name|foreign_nr
+operator|+=
 name|check_object
 argument_list|(
 name|get_indexed_object
@@ -1087,6 +1118,9 @@ name|i
 argument_list|)
 argument_list|)
 expr_stmt|;
+return|return
+name|foreign_nr
+return|;
 block|}
 end_function
 
@@ -4243,6 +4277,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|do_fsck_object
+operator|&&
 name|fsck_object
 argument_list|(
 name|obj
@@ -8369,6 +8405,12 @@ index|[
 literal|20
 index|]
 decl_stmt|;
+name|unsigned
+name|foreign_nr
+init|=
+literal|1
+decl_stmt|;
+comment|/* zero is a "good" value, assume bad */
 if|if
 condition|(
 name|argc
@@ -8504,6 +8546,31 @@ argument_list|)
 condition|)
 block|{
 name|strict
+operator|=
+literal|1
+expr_stmt|;
+name|do_fsck_object
+operator|=
+literal|1
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--check-self-contained-and-connected"
+argument_list|)
+condition|)
+block|{
+name|strict
+operator|=
+literal|1
+expr_stmt|;
+name|check_self_contained_and_connected
 operator|=
 literal|1
 expr_stmt|;
@@ -9281,6 +9348,8 @@ if|if
 condition|(
 name|strict
 condition|)
+name|foreign_nr
+operator|=
 name|check_objects
 argument_list|()
 expr_stmt|;
@@ -9429,6 +9498,16 @@ operator|)
 name|curr_index
 argument_list|)
 expr_stmt|;
+comment|/* 	 * Let the caller know this pack is not self contained 	 */
+if|if
+condition|(
+name|check_self_contained_and_connected
+operator|&&
+name|foreign_nr
+condition|)
+return|return
+literal|1
+return|;
 return|return
 literal|0
 return|;

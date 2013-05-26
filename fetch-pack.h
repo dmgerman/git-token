@@ -87,6 +87,16 @@ DECL|member|stateless_rpc
 name|stateless_rpc
 range|:
 literal|1
+decl_stmt|,
+DECL|member|check_self_contained_and_connected
+name|check_self_contained_and_connected
+range|:
+literal|1
+decl_stmt|,
+DECL|member|self_contained_and_connected
+name|self_contained_and_connected
+range|:
+literal|1
 decl_stmt|;
 block|}
 struct|;
