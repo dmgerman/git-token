@@ -4199,18 +4199,11 @@ operator|*
 operator|)
 name|data
 decl_stmt|;
-if|if
-condition|(
-operator|!
-name|buf
-condition|)
-name|buf
-operator|=
-name|new_data
-operator|=
-name|get_data_from_pack
+name|assert
 argument_list|(
-name|obj_entry
+name|data
+operator|&&
+literal|"data can only be NULL for large _blobs_"
 argument_list|)
 expr_stmt|;
 comment|/* 			 * we do not need to free the memory here, as the 			 * buf is deleted by the caller. 			 */
