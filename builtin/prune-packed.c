@@ -44,22 +44,6 @@ block|}
 decl_stmt|;
 end_decl_stmt
 
-begin_define
-DECL|macro|DRY_RUN
-define|#
-directive|define
-name|DRY_RUN
-value|01
-end_define
-
-begin_define
-DECL|macro|VERBOSE
-define|#
-directive|define
-name|VERBOSE
-value|02
-end_define
-
 begin_decl_stmt
 DECL|variable|progress
 specifier|static
@@ -196,7 +180,7 @@ if|if
 condition|(
 name|opts
 operator|&
-name|DRY_RUN
+name|PRUNE_PACKED_DRY_RUN
 condition|)
 name|printf
 argument_list|(
@@ -262,8 +246,8 @@ decl_stmt|;
 if|if
 condition|(
 name|opts
-operator|==
-name|VERBOSE
+operator|&
+name|PRUNE_PACKED_VERBOSE
 condition|)
 name|progress
 operator|=
@@ -444,7 +428,7 @@ argument_list|(
 literal|2
 argument_list|)
 condition|?
-name|VERBOSE
+name|PRUNE_PACKED_VERBOSE
 else|:
 literal|0
 decl_stmt|;
@@ -469,7 +453,7 @@ argument_list|(
 literal|"dry run"
 argument_list|)
 argument_list|,
-name|DRY_RUN
+name|PRUNE_PACKED_DRY_RUN
 argument_list|)
 block|,
 name|OPT_NEGBIT
@@ -486,7 +470,7 @@ argument_list|(
 literal|"be quiet"
 argument_list|)
 argument_list|,
-name|VERBOSE
+name|PRUNE_PACKED_VERBOSE
 argument_list|)
 block|,
 name|OPT_END
