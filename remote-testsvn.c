@@ -1587,7 +1587,6 @@ parameter_list|(
 name|int
 name|argc
 parameter_list|,
-specifier|const
 name|char
 modifier|*
 modifier|*

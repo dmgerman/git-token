@@ -136,7 +136,7 @@ argument_list|(
 name|fd
 argument_list|)
 argument_list|,
-literal|0
+name|NULL
 argument_list|,
 name|PAGE_WRITECOPY
 argument_list|,
@@ -144,7 +144,7 @@ literal|0
 argument_list|,
 literal|0
 argument_list|,
-literal|0
+name|NULL
 argument_list|)
 expr_stmt|;
 if|if

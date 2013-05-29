@@ -11430,6 +11430,7 @@ comment|/* Update the state_log if we need */
 end_comment
 
 begin_function
+specifier|static
 name|re_dfastate_t
 modifier|*
 name|internal_function
@@ -11505,7 +11506,7 @@ index|[
 name|cur_idx
 index|]
 operator|==
-literal|0
+name|NULL
 condition|)
 block|{
 name|mctx
@@ -11768,6 +11769,7 @@ comment|/* Skip bytes in the input that correspond to part of a    multi-byte ma
 end_comment
 
 begin_function
+specifier|static
 name|re_dfastate_t
 modifier|*
 name|internal_function

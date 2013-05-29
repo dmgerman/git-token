@@ -231,7 +231,7 @@ name|pthread_t
 name|t
 init|=
 block|{
-literal|0
+name|NULL
 block|}
 decl_stmt|;
 name|t

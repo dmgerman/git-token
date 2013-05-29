@@ -2333,6 +2333,17 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/*  * A critical section used in the implementation of the spawn  * functions (mingw_spawnv[p]e()) and waitpid(). Intialised in  * the replacement main() macro below.  */
+end_comment
+
+begin_decl_stmt
+specifier|extern
+name|CRITICAL_SECTION
+name|pinfo_cs
+decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|/*  * A replacement of main() that ensures that argv[0] has a path  * and that default fmode and std(in|out|err) are in binary mode  */
 end_comment
 
@@ -2346,7 +2357,7 @@ name|c
 parameter_list|,
 name|v
 parameter_list|)
-value|dummy_decl_mingw_main(); \ static int mingw_main(); \ int main(int argc, const char **argv) \ { \ 	extern CRITICAL_SECTION pinfo_cs; \ 	_fmode = _O_BINARY; \ 	_setmode(_fileno(stdin), _O_BINARY); \ 	_setmode(_fileno(stdout), _O_BINARY); \ 	_setmode(_fileno(stderr), _O_BINARY); \ 	argv[0] = xstrdup(_pgmptr); \ 	InitializeCriticalSection(&pinfo_cs); \ 	return mingw_main(argc, argv); \ } \ static int mingw_main(c,v)
+value|dummy_decl_mingw_main(); \ static int mingw_main(c,v); \ int main(int argc, char **argv) \ { \ 	extern CRITICAL_SECTION pinfo_cs; \ 	_fmode = _O_BINARY; \ 	_setmode(_fileno(stdin), _O_BINARY); \ 	_setmode(_fileno(stdout), _O_BINARY); \ 	_setmode(_fileno(stderr), _O_BINARY); \ 	argv[0] = xstrdup(_pgmptr); \ 	InitializeCriticalSection(&pinfo_cs); \ 	return mingw_main(argc, argv); \ } \ static int mingw_main(c,v)
 end_define
 
 begin_comment

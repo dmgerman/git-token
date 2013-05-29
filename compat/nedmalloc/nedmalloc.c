@@ -887,7 +887,9 @@ return|;
 block|}
 name|void
 name|nedmalloc_stats
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 function|THROWSPEC
 block|{
 name|nedpmalloc_stats
@@ -898,7 +900,9 @@ expr_stmt|;
 block|}
 name|size_t
 name|nedmalloc_footprint
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 function|THROWSPEC
 block|{
 return|return
