@@ -2345,6 +2345,8 @@ argument_list|(
 name|user_config
 argument_list|,
 name|R_OK
+argument_list|,
+literal|0
 argument_list|)
 operator|&&
 name|xdg_config
@@ -2355,6 +2357,8 @@ argument_list|(
 name|xdg_config
 argument_list|,
 name|R_OK
+argument_list|,
+literal|0
 argument_list|)
 condition|)
 name|given_config_file
