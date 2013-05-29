@@ -6409,6 +6409,23 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+name|int
+name|parse_expiry_date
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|date
+parameter_list|,
+name|unsigned
+name|long
+modifier|*
+name|timestamp
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|void
 name|datestamp
 parameter_list|(
