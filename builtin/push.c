@@ -944,7 +944,9 @@ argument_list|)
 expr_stmt|;
 name|add_refspec
 argument_list|(
-literal|"HEAD"
+name|branch
+operator|->
+name|name
 argument_list|)
 expr_stmt|;
 break|break;
