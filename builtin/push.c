@@ -575,6 +575,25 @@ expr_stmt|;
 block|}
 end_function
 
+begin_decl_stmt
+DECL|variable|message_detached_head_die
+specifier|static
+specifier|const
+name|char
+name|message_detached_head_die
+index|[]
+init|=
+name|N_
+argument_list|(
+literal|"You are not currently on a branch.\n"
+literal|"To push the history leading to the current (detached HEAD)\n"
+literal|"state now, use\n"
+literal|"\n"
+literal|"    git push %s HEAD:<name-of-remote-branch>\n"
+argument_list|)
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|setup_push_upstream
 specifier|static
@@ -615,11 +634,7 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"You are not currently on a branch.\n"
-literal|"To push the history leading to the current (detached HEAD)\n"
-literal|"state now, use\n"
-literal|"\n"
-literal|"    git push %s HEAD:<name-of-remote-branch>\n"
+name|message_detached_head_die
 argument_list|)
 argument_list|,
 name|remote
