@@ -53,6 +53,14 @@ block|}
 struct|;
 end_struct
 
+begin_comment
+comment|/*  * Bit values set in the flags argument passed to each_ref_fn():  */
+end_comment
+
+begin_comment
+comment|/* Reference is a symbolic reference. */
+end_comment
+
 begin_define
 DECL|macro|REF_ISSYMREF
 define|#
@@ -61,6 +69,10 @@ name|REF_ISSYMREF
 value|0x01
 end_define
 
+begin_comment
+comment|/* Reference is a packed reference. */
+end_comment
+
 begin_define
 DECL|macro|REF_ISPACKED
 define|#
@@ -68,6 +80,10 @@ directive|define
 name|REF_ISPACKED
 value|0x02
 end_define
+
+begin_comment
+comment|/*  * Reference cannot be resolved to an object name: dangling symbolic  * reference (directly or indirectly), corrupt reference file, or  * symbolic reference refers to ill-formatted reference name.  */
+end_comment
 
 begin_define
 DECL|macro|REF_ISBROKEN
@@ -487,6 +503,41 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Flags for controlling behaviour of pack_refs()  * PACK_REFS_PRUNE: Prune loose refs after packing  * PACK_REFS_ALL:   Pack _all_ refs, not just tags and already packed refs  */
+end_comment
+
+begin_define
+DECL|macro|PACK_REFS_PRUNE
+define|#
+directive|define
+name|PACK_REFS_PRUNE
+value|0x0001
+end_define
+
+begin_define
+DECL|macro|PACK_REFS_ALL
+define|#
+directive|define
+name|PACK_REFS_ALL
+value|0x0002
+end_define
+
+begin_comment
+comment|/*  * Write a packed-refs file for the current repository.  * flags: Combination of the above PACK_REFS_* flags.  */
+end_comment
+
+begin_function_decl
+name|int
+name|pack_refs
+parameter_list|(
+name|unsigned
+name|int
+name|flags
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function_decl
 specifier|extern
 name|int
@@ -498,6 +549,10 @@ modifier|*
 parameter_list|)
 function_decl|;
 end_function_decl
+
+begin_comment
+comment|/*  * If refname is a non-symbolic reference that refers to a tag object,  * and the tag can be (recursively) dereferenced to a non-tag object,  * store the SHA1 of the referred-to object to sha1 and return 0.  If  * any of these conditions are not met, return a non-zero value.  * Symbolic references are considered unpeelable, even if they  * ultimately resolve to a peelable tag.  */
+end_comment
 
 begin_function_decl
 specifier|extern
