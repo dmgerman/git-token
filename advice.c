@@ -113,6 +113,15 @@ literal|1
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|advice_object_name_warning
+name|int
+name|advice_object_name_warning
+init|=
+literal|1
+decl_stmt|;
+end_decl_stmt
+
 begin_struct
 specifier|static
 struct|struct
@@ -216,6 +225,13 @@ literal|"detachedhead"
 block|,
 operator|&
 name|advice_detached_head
+block|}
+block|,
+block|{
+literal|"object_name_warning"
+block|,
+operator|&
+name|advice_object_name_warning
 block|}
 block|,
 comment|/* make this an alias for backward compatibility */
