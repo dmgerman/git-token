@@ -3130,13 +3130,7 @@ condition|(
 operator|!
 name|object
 condition|)
-name|die
-argument_list|(
-literal|"did not find object for %s"
-argument_list|,
-name|line
-argument_list|)
-expr_stmt|;
+continue|continue;
 if|if
 condition|(
 name|object
