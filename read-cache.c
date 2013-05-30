@@ -3175,8 +3175,7 @@ name|foundce
 operator|=
 name|index_name_exists
 argument_list|(
-operator|&
-name|the_index
+name|istate
 argument_list|,
 name|ce
 operator|->
