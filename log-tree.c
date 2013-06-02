@@ -71,6 +71,12 @@ directive|include
 file|"sequencer.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"line-log.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|name_decoration
 name|struct
@@ -4229,6 +4235,20 @@ operator|=
 operator|&
 name|log
 expr_stmt|;
+if|if
+condition|(
+name|opt
+operator|->
+name|line_level_traverse
+condition|)
+return|return
+name|line_log_print
+argument_list|(
+name|opt
+argument_list|,
+name|commit
+argument_list|)
+return|;
 name|shown
 operator|=
 name|log_tree_diff
