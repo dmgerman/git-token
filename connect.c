@@ -2826,6 +2826,18 @@ operator|==
 literal|':'
 condition|)
 block|{
+if|if
+condition|(
+name|path
+operator|<
+name|strchrnul
+argument_list|(
+name|host
+argument_list|,
+literal|'/'
+argument_list|)
+condition|)
+block|{
 name|protocol
 operator|=
 name|PROTO_SSH
@@ -2835,6 +2847,13 @@ name|path
 operator|++
 operator|=
 literal|'\0'
+expr_stmt|;
+block|}
+else|else
+comment|/* '/' in the host part, assume local path */
+name|path
+operator|=
+name|end
 expr_stmt|;
 block|}
 block|}
