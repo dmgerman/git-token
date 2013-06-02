@@ -825,6 +825,7 @@ name|cache_entry
 modifier|*
 name|dst
 parameter_list|,
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -1031,6 +1032,7 @@ name|unsigned
 name|int
 name|ce_mode_from_stat
 parameter_list|(
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
