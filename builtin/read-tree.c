@@ -309,6 +309,7 @@ name|char
 modifier|*
 name|label
 parameter_list|,
+specifier|const
 name|struct
 name|cache_entry
 modifier|*

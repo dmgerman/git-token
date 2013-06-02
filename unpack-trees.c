@@ -1195,6 +1195,7 @@ specifier|static
 name|int
 name|verify_uptodate_sparse
 parameter_list|(
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -1213,6 +1214,7 @@ specifier|static
 name|int
 name|verify_absent_sparse
 parameter_list|(
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -1588,6 +1590,7 @@ specifier|static
 name|int
 name|locate_in_src_index
 parameter_list|(
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -4824,6 +4827,7 @@ specifier|static
 name|int
 name|verify_absent
 parameter_list|(
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -5615,6 +5619,7 @@ specifier|static
 name|int
 name|reject_merge
 parameter_list|(
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -5647,11 +5652,13 @@ specifier|static
 name|int
 name|same
 parameter_list|(
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
 name|a
 parameter_list|,
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -5733,6 +5740,7 @@ specifier|static
 name|int
 name|verify_uptodate_1
 parameter_list|(
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -5895,6 +5903,7 @@ specifier|static
 name|int
 name|verify_uptodate
 parameter_list|(
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -5943,6 +5952,7 @@ specifier|static
 name|int
 name|verify_uptodate_sparse
 parameter_list|(
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -5973,6 +5983,7 @@ specifier|static
 name|void
 name|invalidate_ce_path
 parameter_list|(
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -6014,6 +6025,7 @@ specifier|static
 name|int
 name|verify_clean_submodule
 parameter_list|(
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -6041,6 +6053,7 @@ specifier|static
 name|int
 name|verify_clean_subdirectory
 parameter_list|(
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -6458,6 +6471,7 @@ parameter_list|,
 name|int
 name|dtype
 parameter_list|,
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -6620,6 +6634,7 @@ specifier|static
 name|int
 name|verify_absent_1
 parameter_list|(
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -6837,6 +6852,7 @@ specifier|static
 name|int
 name|verify_absent
 parameter_list|(
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -6889,6 +6905,7 @@ specifier|static
 name|int
 name|verify_absent_sparse
 parameter_list|(
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -6945,6 +6962,7 @@ name|cache_entry
 modifier|*
 name|ce
 parameter_list|,
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -7132,11 +7150,13 @@ specifier|static
 name|int
 name|deleted_entry
 parameter_list|(
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
 name|ce
 parameter_list|,
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -7226,6 +7246,7 @@ specifier|static
 name|int
 name|keep_entry
 parameter_list|(
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -7351,16 +7372,19 @@ modifier|*
 name|o
 parameter_list|)
 block|{
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
 name|index
 decl_stmt|;
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
 name|head
 decl_stmt|;
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -7742,6 +7766,7 @@ init|=
 operator|!
 name|remote
 decl_stmt|;
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -8102,6 +8127,7 @@ modifier|*
 name|o
 parameter_list|)
 block|{
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -8112,6 +8138,7 @@ index|[
 literal|0
 index|]
 decl_stmt|;
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -8122,6 +8149,7 @@ index|[
 literal|1
 index|]
 decl_stmt|;
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -8463,6 +8491,7 @@ modifier|*
 name|o
 parameter_list|)
 block|{
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -8473,6 +8502,7 @@ index|[
 literal|0
 index|]
 decl_stmt|;
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -8581,6 +8611,7 @@ modifier|*
 name|o
 parameter_list|)
 block|{
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -8591,6 +8622,7 @@ index|[
 literal|0
 index|]
 decl_stmt|;
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
