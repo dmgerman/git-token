@@ -210,6 +210,33 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * call this to die(), when it is suspected that the user mistyped a  * ref to the command, to give suggested "correct" refs.  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|void
+name|help_unknown_ref
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|ref
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|cmd
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|error
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
