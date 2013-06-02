@@ -10254,7 +10254,7 @@ name|end
 operator|!=
 literal|' '
 operator|||
-name|get_sha1
+name|get_sha1_hex
 argument_list|(
 name|end
 operator|+
