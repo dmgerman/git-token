@@ -2098,9 +2098,11 @@ specifier|static
 name|int
 name|oneway_diff
 parameter_list|(
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
+specifier|const
 modifier|*
 name|src
 parameter_list|,
