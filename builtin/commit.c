@@ -548,9 +548,12 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|show_ignored_in_status
+DECL|variable|have_option_m
 specifier|static
 name|int
 name|show_ignored_in_status
+decl_stmt|,
+name|have_option_m
 decl_stmt|;
 end_decl_stmt
 
@@ -632,6 +635,11 @@ if|if
 condition|(
 name|unset
 condition|)
+block|{
+name|have_option_m
+operator|=
+literal|0
+expr_stmt|;
 name|strbuf_setlen
 argument_list|(
 name|buf
@@ -639,8 +647,13 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
+name|have_option_m
+operator|=
+literal|1
+expr_stmt|;
 if|if
 condition|(
 name|buf
@@ -4991,9 +5004,7 @@ if|if
 condition|(
 name|logfile
 operator|||
-name|message
-operator|.
-name|len
+name|have_option_m
 operator|||
 name|use_message
 operator|||
