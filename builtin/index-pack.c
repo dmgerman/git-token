@@ -4320,6 +4320,12 @@ name|buffer
 operator|=
 name|NULL
 expr_stmt|;
+name|obj
+operator|->
+name|parsed
+operator|=
+literal|0
+expr_stmt|;
 block|}
 if|if
 condition|(

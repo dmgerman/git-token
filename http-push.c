@@ -7287,18 +7287,10 @@ default|default:
 comment|/* Subproject commit - not in this repository */
 break|break;
 block|}
-name|free
+name|free_tree_buffer
 argument_list|(
 name|tree
-operator|->
-name|buffer
 argument_list|)
-expr_stmt|;
-name|tree
-operator|->
-name|buffer
-operator|=
-name|NULL
 expr_stmt|;
 return|return
 name|p
