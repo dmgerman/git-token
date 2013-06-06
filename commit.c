@@ -2870,8 +2870,9 @@ modifier|*
 modifier|*
 name|list
 parameter_list|,
-name|int
-name|lifo
+name|enum
+name|rev_sort_order
+name|sort_order
 parameter_list|)
 block|{
 name|struct
@@ -3097,8 +3098,9 @@ block|}
 comment|/* process the list in topological order */
 if|if
 condition|(
-operator|!
-name|lifo
+name|sort_order
+operator|!=
+name|REV_SORT_IN_GRAPH_ORDER
 condition|)
 name|commit_list_sort_by_date
 argument_list|(
@@ -3212,11 +3214,14 @@ operator|==
 literal|1
 condition|)
 block|{
-if|if
+switch|switch
 condition|(
-operator|!
-name|lifo
+name|sort_order
 condition|)
+block|{
+case|case
+name|REV_SORT_BY_COMMIT_DATE
+case|:
 name|commit_list_insert_by_date
 argument_list|(
 name|parent
@@ -3225,7 +3230,9 @@ operator|&
 name|work
 argument_list|)
 expr_stmt|;
-else|else
+break|break;
+default|default:
+comment|/* REV_SORT_IN_GRAPH_ORDER */
 name|commit_list_insert
 argument_list|(
 name|parent
@@ -3234,6 +3241,8 @@ operator|&
 name|work
 argument_list|)
 expr_stmt|;
+break|break;
+block|}
 block|}
 block|}
 comment|/* 		 * work_item is a commit all of whose children 		 * have already been emitted. we can emit it now. 		 */

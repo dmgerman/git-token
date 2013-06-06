@@ -30,6 +30,12 @@ directive|include
 file|"notes.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"commit.h"
+end_include
+
 begin_define
 DECL|macro|SEEN
 define|#
@@ -297,6 +303,12 @@ name|struct
 name|pathspec
 name|prune_data
 decl_stmt|;
+comment|/* topo-sort */
+DECL|member|sort_order
+name|enum
+name|rev_sort_order
+name|sort_order
+decl_stmt|;
 DECL|member|early_output
 name|unsigned
 name|int
@@ -339,11 +351,6 @@ literal|1
 decl_stmt|,
 DECL|member|simplify_history
 name|simplify_history
-range|:
-literal|1
-decl_stmt|,
-DECL|member|lifo
-name|lifo
 range|:
 literal|1
 decl_stmt|,
