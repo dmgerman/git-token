@@ -68,6 +68,22 @@ index|[]
 decl_stmt|;
 end_decl_stmt
 
+begin_define
+DECL|macro|PRUNE_PACKED_DRY_RUN
+define|#
+directive|define
+name|PRUNE_PACKED_DRY_RUN
+value|01
+end_define
+
+begin_define
+DECL|macro|PRUNE_PACKED_VERBOSE
+define|#
+directive|define
+name|PRUNE_PACKED_VERBOSE
+value|02
+end_define
+
 begin_function_decl
 specifier|extern
 name|void

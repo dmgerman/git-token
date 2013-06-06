@@ -935,6 +935,10 @@ expr_stmt|;
 name|prune_packed_objects
 argument_list|(
 name|show_only
+condition|?
+name|PRUNE_PACKED_DRY_RUN
+else|:
+literal|0
 argument_list|)
 expr_stmt|;
 name|remove_temporary_files
