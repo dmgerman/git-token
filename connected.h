@@ -12,6 +12,12 @@ directive|define
 name|CONNECTED_H
 end_define
 
+begin_struct_decl
+struct_decl|struct
+name|transport
+struct_decl|;
+end_struct_decl
+
 begin_comment
 comment|/*  * Take callback data, and return next object name in the buffer.  * When called after returning the name for the last object, return -1  * to signal EOF, otherwise return 0.  */
 end_comment
@@ -54,6 +60,28 @@ parameter_list|,
 name|void
 modifier|*
 name|cb_data
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|check_everything_connected_with_transport
+parameter_list|(
+name|sha1_iterate_fn
+parameter_list|,
+name|int
+name|quiet
+parameter_list|,
+name|void
+modifier|*
+name|cb_data
+parameter_list|,
+name|struct
+name|transport
+modifier|*
+name|transport
 parameter_list|)
 function_decl|;
 end_function_decl
