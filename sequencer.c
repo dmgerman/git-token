@@ -3305,9 +3305,15 @@ name|allow
 operator|<
 literal|0
 condition|)
-return|return
+block|{
+name|res
+operator|=
 name|allow
-return|;
+expr_stmt|;
+goto|goto
+name|leave
+goto|;
+block|}
 if|if
 condition|(
 operator|!
