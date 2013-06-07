@@ -904,6 +904,9 @@ literal|0
 block|,
 DECL|enumerator|REV_SORT_BY_COMMIT_DATE
 name|REV_SORT_BY_COMMIT_DATE
+block|,
+DECL|enumerator|REV_SORT_BY_AUTHOR_DATE
+name|REV_SORT_BY_AUTHOR_DATE
 block|}
 enum|;
 end_enum
