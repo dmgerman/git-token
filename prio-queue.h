@@ -126,6 +126,22 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* Reverse the LIFO elements */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|void
+name|prio_queue_reverse
+parameter_list|(
+name|struct
+name|prio_queue
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
