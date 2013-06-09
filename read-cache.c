@@ -7573,7 +7573,25 @@ name|initialized
 operator|=
 literal|0
 expr_stmt|;
-comment|/* no need to throw away allocated active_cache */
+name|free
+argument_list|(
+name|istate
+operator|->
+name|cache
+argument_list|)
+expr_stmt|;
+name|istate
+operator|->
+name|cache
+operator|=
+name|NULL
+expr_stmt|;
+name|istate
+operator|->
+name|cache_alloc
+operator|=
+literal|0
+expr_stmt|;
 return|return
 literal|0
 return|;
