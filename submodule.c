@@ -3600,13 +3600,6 @@ name|out
 goto|;
 if|if
 condition|(
-operator|!
-name|the_index
-operator|.
-name|initialized
-condition|)
-if|if
-condition|(
 name|read_cache
 argument_list|()
 operator|<
