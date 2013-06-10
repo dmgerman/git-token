@@ -2191,7 +2191,7 @@ condition|)
 comment|/* default value if none found in config */
 name|get_colorbool_found
 operator|=
-literal|0
+name|GIT_COLOR_AUTO
 expr_stmt|;
 name|get_colorbool_found
 operator|=
