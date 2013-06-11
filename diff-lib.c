@@ -202,6 +202,7 @@ name|diff_options
 modifier|*
 name|diffopt
 parameter_list|,
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -1138,6 +1139,7 @@ name|char
 modifier|*
 name|prefix
 parameter_list|,
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -1194,6 +1196,7 @@ specifier|static
 name|int
 name|get_stat_data
 parameter_list|(
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -1379,6 +1382,7 @@ name|rev_info
 modifier|*
 name|revs
 parameter_list|,
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -1470,11 +1474,13 @@ name|rev_info
 modifier|*
 name|revs
 parameter_list|,
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
 name|old
 parameter_list|,
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -1898,11 +1904,13 @@ name|unpack_trees_options
 modifier|*
 name|o
 parameter_list|,
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
 name|idx
 parameter_list|,
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -2090,9 +2098,11 @@ specifier|static
 name|int
 name|oneway_diff
 parameter_list|(
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
+specifier|const
 modifier|*
 name|src
 parameter_list|,
@@ -2102,6 +2112,7 @@ modifier|*
 name|o
 parameter_list|)
 block|{
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -2112,6 +2123,7 @@ index|[
 literal|0
 index|]
 decl_stmt|;
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
