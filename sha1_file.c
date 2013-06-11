@@ -11778,15 +11778,8 @@ operator|!
 name|map
 condition|)
 return|return
-name|error
-argument_list|(
-literal|"unable to find %s"
-argument_list|,
-name|sha1_to_hex
-argument_list|(
-name|sha1
-argument_list|)
-argument_list|)
+operator|-
+literal|1
 return|;
 if|if
 condition|(
