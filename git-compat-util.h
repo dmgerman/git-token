@@ -504,11 +504,20 @@ name|_SGI_SOURCE
 value|1
 end_define
 
-begin_ifdef
-ifdef|#
-directive|ifdef
+begin_if
+if|#
+directive|if
+name|defined
+argument_list|(
 name|WIN32
-end_ifdef
+argument_list|)
+operator|&&
+operator|!
+name|defined
+argument_list|(
+name|__CYGWIN__
+argument_list|)
+end_if
 
 begin_comment
 comment|/* Both MinGW and MSVC */
@@ -559,6 +568,13 @@ include|#
 directive|include
 file|<windows.h>
 end_include
+
+begin_define
+DECL|macro|GIT_WINDOWS_NATIVE
+define|#
+directive|define
+name|GIT_WINDOWS_NATIVE
+end_define
 
 begin_endif
 endif|#

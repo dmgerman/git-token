@@ -108,7 +108,7 @@ endif|#
 directive|endif
 ifdef|#
 directive|ifdef
-name|_WIN32
+name|GIT_WINDOWS_NATIVE
 name|SYSTEM_INFO
 name|info
 decl_stmt|;

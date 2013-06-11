@@ -348,7 +348,7 @@ end_function
 begin_ifndef
 ifndef|#
 directive|ifndef
-name|WIN32
+name|GIT_WINDOWS_NATIVE
 end_ifndef
 
 begin_function
@@ -756,7 +756,7 @@ condition|)
 block|{
 ifndef|#
 directive|ifndef
-name|WIN32
+name|GIT_WINDOWS_NATIVE
 name|nargv
 index|[
 name|nargc
@@ -880,7 +880,7 @@ end_function
 begin_ifndef
 ifndef|#
 directive|ifndef
-name|WIN32
+name|GIT_WINDOWS_NATIVE
 end_ifndef
 
 begin_function
@@ -949,7 +949,7 @@ end_endif
 begin_ifndef
 ifndef|#
 directive|ifndef
-name|WIN32
+name|GIT_WINDOWS_NATIVE
 end_ifndef
 
 begin_decl_stmt
@@ -1624,7 +1624,7 @@ argument_list|)
 expr_stmt|;
 ifndef|#
 directive|ifndef
-name|WIN32
+name|GIT_WINDOWS_NATIVE
 block|{
 name|int
 name|notify_pipe
