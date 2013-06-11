@@ -2233,6 +2233,32 @@ name|warn_msg
 init|=
 literal|"refname '%.*s' is ambiguous."
 decl_stmt|;
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|object_name_msg
+init|=
+name|N_
+argument_list|(
+literal|"Git normally never creates a ref that ends with 40 hex characters\n"
+literal|"because it will be ignored when you just specify 40-hex. These refs\n"
+literal|"may be created by mistake. For example,\n"
+literal|"\n"
+literal|"  git checkout -b $br $(git rev-parse ...)\n"
+literal|"\n"
+literal|"where \"$br\" is somehow empty and a 40-hex ref is created. Please\n"
+literal|"examine these refs and maybe delete them. Turn this message off by\n"
+literal|"running \"git config advice.object_name_warning false\""
+argument_list|)
+decl_stmt|;
+name|unsigned
+name|char
+name|tmp_sha1
+index|[
+literal|20
+index|]
+decl_stmt|;
 name|char
 modifier|*
 name|real_ref
@@ -2263,9 +2289,65 @@ argument_list|,
 name|sha1
 argument_list|)
 condition|)
+block|{
+name|refs_found
+operator|=
+name|dwim_ref
+argument_list|(
+name|str
+argument_list|,
+name|len
+argument_list|,
+name|tmp_sha1
+argument_list|,
+operator|&
+name|real_ref
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|refs_found
+operator|>
+literal|0
+operator|&&
+name|warn_ambiguous_refs
+condition|)
+block|{
+name|warning
+argument_list|(
+name|warn_msg
+argument_list|,
+name|len
+argument_list|,
+name|str
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|advice_object_name_warning
+condition|)
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"%s\n"
+argument_list|,
+name|_
+argument_list|(
+name|object_name_msg
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+name|free
+argument_list|(
+name|real_ref
+argument_list|)
+expr_stmt|;
 return|return
 literal|0
 return|;
+block|}
 comment|/* basic@{time or number or -number} format to query ref-log */
 name|reflog_len
 operator|=
@@ -2507,9 +2589,23 @@ if|if
 condition|(
 name|warn_ambiguous_refs
 operator|&&
+operator|(
 name|refs_found
 operator|>
 literal|1
+operator|||
+operator|!
+name|get_short_sha1
+argument_list|(
+name|str
+argument_list|,
+name|len
+argument_list|,
+name|tmp_sha1
+argument_list|,
+name|GET_SHA1_QUIETLY
+argument_list|)
+operator|)
 condition|)
 name|warning
 argument_list|(
