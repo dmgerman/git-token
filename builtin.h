@@ -214,6 +214,11 @@ name|struct
 name|notes_rewrite_cfg
 modifier|*
 name|c
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|msg
 parameter_list|)
 function_decl|;
 end_function_decl

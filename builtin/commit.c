@@ -9038,6 +9038,8 @@ expr_stmt|;
 name|finish_copy_notes_for_rewrite
 argument_list|(
 name|cfg
+argument_list|,
+literal|"Notes added by 'git commit --amend'"
 argument_list|)
 expr_stmt|;
 block|}
