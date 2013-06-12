@@ -42,6 +42,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"string-list.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"submodule.h"
 end_include
 
@@ -172,6 +178,118 @@ block|}
 end_function
 
 begin_function
+DECL|function|print_error_files
+specifier|static
+name|void
+name|print_error_files
+parameter_list|(
+name|struct
+name|string_list
+modifier|*
+name|files_list
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|main_msg
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|hints_msg
+parameter_list|,
+name|int
+modifier|*
+name|errs
+parameter_list|)
+block|{
+if|if
+condition|(
+name|files_list
+operator|->
+name|nr
+condition|)
+block|{
+name|int
+name|i
+decl_stmt|;
+name|struct
+name|strbuf
+name|err_msg
+init|=
+name|STRBUF_INIT
+decl_stmt|;
+name|strbuf_addstr
+argument_list|(
+operator|&
+name|err_msg
+argument_list|,
+name|main_msg
+argument_list|)
+expr_stmt|;
+for|for
+control|(
+name|i
+operator|=
+literal|0
+init|;
+name|i
+operator|<
+name|files_list
+operator|->
+name|nr
+condition|;
+name|i
+operator|++
+control|)
+name|strbuf_addf
+argument_list|(
+operator|&
+name|err_msg
+argument_list|,
+literal|"\n    %s"
+argument_list|,
+name|files_list
+operator|->
+name|items
+index|[
+name|i
+index|]
+operator|.
+name|string
+argument_list|)
+expr_stmt|;
+name|strbuf_addstr
+argument_list|(
+operator|&
+name|err_msg
+argument_list|,
+name|hints_msg
+argument_list|)
+expr_stmt|;
+operator|*
+name|errs
+operator|=
+name|error
+argument_list|(
+literal|"%s"
+argument_list|,
+name|err_msg
+operator|.
+name|buf
+argument_list|)
+expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|err_msg
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+end_function
+
+begin_function
 DECL|function|check_submodules_use_gitfiles
 specifier|static
 name|int
@@ -187,6 +305,12 @@ name|int
 name|errs
 init|=
 literal|0
+decl_stmt|;
+name|struct
+name|string_list
+name|files
+init|=
+name|STRING_LIST_INIT_NODUP
 decl_stmt|;
 for|for
 control|(
@@ -311,22 +435,51 @@ argument_list|(
 name|name
 argument_list|)
 condition|)
-name|errs
-operator|=
-name|error
+name|string_list_append
 argument_list|(
-name|_
-argument_list|(
-literal|"submodule '%s' (or one of its nested "
-literal|"submodules) uses a .git directory\n"
-literal|"(use 'rm -rf' if you really want to remove "
-literal|"it including all of its history)"
-argument_list|)
+operator|&
+name|files
 argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
 block|}
+name|print_error_files
+argument_list|(
+operator|&
+name|files
+argument_list|,
+name|Q_
+argument_list|(
+literal|"the following submodule (or one of its nested "
+literal|"submodules)\n uses a .git directory:"
+argument_list|,
+literal|"the following submodules (or one of its nested "
+literal|"submodules)\n use a .git directory:"
+argument_list|,
+name|files
+operator|.
+name|nr
+argument_list|)
+argument_list|,
+name|_
+argument_list|(
+literal|"\n(use 'rm -rf' if you really want to remove "
+literal|"it including all of its history)"
+argument_list|)
+argument_list|,
+operator|&
+name|errs
+argument_list|)
+expr_stmt|;
+name|string_list_clear
+argument_list|(
+operator|&
+name|files
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
 return|return
 name|errs
 return|;
@@ -358,6 +511,30 @@ name|int
 name|errs
 init|=
 literal|0
+decl_stmt|;
+name|struct
+name|string_list
+name|files_staged
+init|=
+name|STRING_LIST_INIT_NODUP
+decl_stmt|;
+name|struct
+name|string_list
+name|files_cached
+init|=
+name|STRING_LIST_INIT_NODUP
+decl_stmt|;
+name|struct
+name|string_list
+name|files_submodule
+init|=
+name|STRING_LIST_INIT_NODUP
+decl_stmt|;
+name|struct
+name|string_list
+name|files_local
+init|=
+name|STRING_LIST_INIT_NODUP
 decl_stmt|;
 name|no_head
 operator|=
@@ -653,16 +830,10 @@ operator|&
 name|CE_INTENT_TO_ADD
 operator|)
 condition|)
-name|errs
-operator|=
-name|error
+name|string_list_append
 argument_list|(
-name|_
-argument_list|(
-literal|"'%s' has staged content different "
-literal|"from both the file and the HEAD\n"
-literal|"(use -f to force removal)"
-argument_list|)
+operator|&
+name|files_staged
 argument_list|,
 name|name
 argument_list|)
@@ -679,16 +850,10 @@ if|if
 condition|(
 name|staged_changes
 condition|)
-name|errs
-operator|=
-name|error
+name|string_list_append
 argument_list|(
-name|_
-argument_list|(
-literal|"'%s' has changes staged in the index\n"
-literal|"(use --cached to keep the file, "
-literal|"or -f to force removal)"
-argument_list|)
+operator|&
+name|files_cached
 argument_list|,
 name|name
 argument_list|)
@@ -713,34 +878,19 @@ argument_list|(
 name|name
 argument_list|)
 condition|)
-block|{
-name|errs
-operator|=
-name|error
+name|string_list_append
 argument_list|(
-name|_
-argument_list|(
-literal|"submodule '%s' (or one of its nested "
-literal|"submodules) uses a .git directory\n"
-literal|"(use 'rm -rf' if you really want to remove "
-literal|"it including all of its history)"
-argument_list|)
+operator|&
+name|files_submodule
 argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
-block|}
 else|else
-name|errs
-operator|=
-name|error
+name|string_list_append
 argument_list|(
-name|_
-argument_list|(
-literal|"'%s' has local modifications\n"
-literal|"(use --cached to keep the file, "
-literal|"or -f to force removal)"
-argument_list|)
+operator|&
+name|files_local
 argument_list|,
 name|name
 argument_list|)
@@ -748,6 +898,148 @@ expr_stmt|;
 block|}
 block|}
 block|}
+name|print_error_files
+argument_list|(
+operator|&
+name|files_staged
+argument_list|,
+name|Q_
+argument_list|(
+literal|"the following file has staged content different "
+literal|"from both the\nfile and the HEAD:"
+argument_list|,
+literal|"the following files have staged content different"
+literal|" from both the\nfile and the HEAD:"
+argument_list|,
+name|files_staged
+operator|.
+name|nr
+argument_list|)
+argument_list|,
+name|_
+argument_list|(
+literal|"\n(use -f to force removal)"
+argument_list|)
+argument_list|,
+operator|&
+name|errs
+argument_list|)
+expr_stmt|;
+name|string_list_clear
+argument_list|(
+operator|&
+name|files_staged
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+name|print_error_files
+argument_list|(
+operator|&
+name|files_cached
+argument_list|,
+name|Q_
+argument_list|(
+literal|"the following file has changes "
+literal|"staged in the index:"
+argument_list|,
+literal|"the following files have changes "
+literal|"staged in the index:"
+argument_list|,
+name|files_cached
+operator|.
+name|nr
+argument_list|)
+argument_list|,
+name|_
+argument_list|(
+literal|"\n(use --cached to keep the file,"
+literal|" or -f to force removal)"
+argument_list|)
+argument_list|,
+operator|&
+name|errs
+argument_list|)
+expr_stmt|;
+name|string_list_clear
+argument_list|(
+operator|&
+name|files_cached
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+name|print_error_files
+argument_list|(
+operator|&
+name|files_submodule
+argument_list|,
+name|Q_
+argument_list|(
+literal|"the following submodule (or one of its nested "
+literal|"submodule)\nuses a .git directory:"
+argument_list|,
+literal|"the following submodules (or one of its nested "
+literal|"submodule)\nuse a .git directory:"
+argument_list|,
+name|files_submodule
+operator|.
+name|nr
+argument_list|)
+argument_list|,
+name|_
+argument_list|(
+literal|"\n(use 'rm -rf' if you really "
+literal|"want to remove it including all "
+literal|"of its history)"
+argument_list|)
+argument_list|,
+operator|&
+name|errs
+argument_list|)
+expr_stmt|;
+name|string_list_clear
+argument_list|(
+operator|&
+name|files_submodule
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+name|print_error_files
+argument_list|(
+operator|&
+name|files_local
+argument_list|,
+name|Q_
+argument_list|(
+literal|"the following file has local modifications:"
+argument_list|,
+literal|"the following files have local modifications:"
+argument_list|,
+name|files_local
+operator|.
+name|nr
+argument_list|)
+argument_list|,
+name|_
+argument_list|(
+literal|"\n(use --cached to keep the file,"
+literal|" or -f to force removal)"
+argument_list|)
+argument_list|,
+operator|&
+name|errs
+argument_list|)
+expr_stmt|;
+name|string_list_clear
+argument_list|(
+operator|&
+name|files_local
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
 return|return
 name|errs
 return|;
