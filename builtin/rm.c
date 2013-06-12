@@ -259,6 +259,10 @@ operator|.
 name|string
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|advice_rm_hints
+condition|)
 name|strbuf_addstr
 argument_list|(
 operator|&
