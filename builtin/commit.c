@@ -147,6 +147,12 @@ directive|include
 file|"sequencer.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"notes-utils.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|builtin_commit_usage
 specifier|static
