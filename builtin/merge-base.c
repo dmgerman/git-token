@@ -602,9 +602,9 @@ name|is_ancestor
 operator|&&
 operator|(
 name|show_all
-operator||
+operator|||
 name|octopus
-operator||
+operator|||
 name|reduce
 operator|)
 condition|)

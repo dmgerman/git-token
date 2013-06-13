@@ -17054,15 +17054,11 @@ name|patch
 operator|->
 name|is_new
 operator|)
-operator||
-operator|(
-literal|0
-operator|<
+operator|||
 name|patch
 operator|->
 name|is_rename
-operator|)
-operator||
+operator|||
 name|patch
 operator|->
 name|is_copy
