@@ -121,11 +121,19 @@ value|(1u<<9)
 end_define
 
 begin_define
+DECL|macro|BOTTOM
+define|#
+directive|define
+name|BOTTOM
+value|(1u<<10)
+end_define
+
+begin_define
 DECL|macro|ALL_REV_FLAGS
 define|#
 directive|define
 name|ALL_REV_FLAGS
-value|((1u<<10)-1)
+value|((1u<<11)-1)
 end_define
 
 begin_define
@@ -776,6 +784,11 @@ DECL|member|merge_simplification
 name|struct
 name|decoration
 name|merge_simplification
+decl_stmt|;
+DECL|member|treesame
+name|struct
+name|decoration
+name|treesame
 decl_stmt|;
 comment|/* notes-specific options: which refs to show */
 DECL|member|notes_opt
