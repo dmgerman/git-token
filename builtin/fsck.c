@@ -724,11 +724,7 @@ name|add_object_array
 argument_list|(
 name|obj
 argument_list|,
-operator|(
-name|void
-operator|*
-operator|)
-name|parent
+name|NULL
 argument_list|,
 operator|&
 name|pending

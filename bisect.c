@@ -98,7 +98,6 @@ end_decl_stmt
 begin_decl_stmt
 DECL|variable|current_bad_sha1
 specifier|static
-specifier|const
 name|unsigned
 name|char
 modifier|*
@@ -2067,7 +2066,17 @@ condition|)
 block|{
 name|current_bad_sha1
 operator|=
+name|xmalloc
+argument_list|(
+literal|20
+argument_list|)
+expr_stmt|;
+name|hashcpy
+argument_list|(
+name|current_bad_sha1
+argument_list|,
 name|sha1
+argument_list|)
 expr_stmt|;
 block|}
 elseif|else
