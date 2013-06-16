@@ -6075,10 +6075,6 @@ DECL|struct|grab_1st_switch_cbdata
 struct|struct
 name|grab_1st_switch_cbdata
 block|{
-DECL|member|found
-name|int
-name|found
-decl_stmt|;
 DECL|member|buf
 name|struct
 name|strbuf
@@ -6242,12 +6238,6 @@ name|end
 operator|-
 name|target
 argument_list|)
-expr_stmt|;
-name|cb
-operator|->
-name|found
-operator|=
-literal|1
 expr_stmt|;
 return|return
 literal|1
