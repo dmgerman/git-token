@@ -5643,7 +5643,7 @@ name|color
 argument_list|,
 name|_
 argument_list|(
-literal|"  (fix conflicts and run \"git commit\")"
+literal|"  (fix conflicts and run \"git cherry-pick --continue\")"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -5656,7 +5656,19 @@ name|color
 argument_list|,
 name|_
 argument_list|(
-literal|"  (all conflicts fixed: run \"git commit\")"
+literal|"  (all conflicts fixed: run \"git cherry-pick --continue\")"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|status_printf_ln
+argument_list|(
+name|s
+argument_list|,
+name|color
+argument_list|,
+name|_
+argument_list|(
+literal|"  (use \"git cherry-pick --abort\" to cancel the cherry-pick operation)"
 argument_list|)
 argument_list|)
 expr_stmt|;
