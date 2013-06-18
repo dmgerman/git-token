@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_comment
-comment|/*  * Builtin "git notes"  *  * Copyright (c) 2010 Johan Herland<johan@herland.net>  *  * Based on git-notes.sh by Johannes Schindelin,  * and builtin-tag.c by Kristian HÃ¸gsberg and Carlos Rica.  */
+comment|/*  * Builtin "git notes"  *  * Copyright (c) 2010 Johan Herland<johan@herland.net>  *  * Based on git-notes.sh by Johannes Schindelin,  * and builtin/tag.c by Kristian HÃ¸gsberg and Carlos Rica.  */
 end_comment
 
 begin_include

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_comment
-comment|/*  * Builtin "git replace"  *  * Copyright (c) 2008 Christian Couder<chriscool@tuxfamily.org>  *  * Based on builtin-tag.c by Kristian HÃ¸gsberg<krh@redhat.com>  * and Carlos Rica<jasampler@gmail.com> that was itself based on  * git-tag.sh and mktag.c by Linus Torvalds.  */
+comment|/*  * Builtin "git replace"  *  * Copyright (c) 2008 Christian Couder<chriscool@tuxfamily.org>  *  * Based on builtin/tag.c by Kristian HÃ¸gsberg<krh@redhat.com>  * and Carlos Rica<jasampler@gmail.com> that was itself based on  * git-tag.sh and mktag.c by Linus Torvalds.  */
 end_comment
 
 begin_include
