@@ -5345,6 +5345,9 @@ argument_list|,
 name|refname
 argument_list|)
 expr_stmt|;
+comment|/* 		 * We might have to loop back here to avoid a race 		 * condition: first we lstat() the file, then we try 		 * to read it as a link or as a file.  But if somebody 		 * changes the type of the file (file<-> directory 		 *<-> symlink) between the lstat() and reading, then 		 * we don't want to report that as an error but rather 		 * try again starting with the lstat(). 		 */
+name|stat_ref
+label|:
 if|if
 condition|(
 name|lstat
@@ -5414,9 +5417,26 @@ name|len
 operator|<
 literal|0
 condition|)
+block|{
+if|if
+condition|(
+name|errno
+operator|==
+name|ENOENT
+operator|||
+name|errno
+operator|==
+name|EINVAL
+condition|)
+comment|/* inconsistent with lstat; retry */
+goto|goto
+name|stat_ref
+goto|;
+else|else
 return|return
 name|NULL
 return|;
+block|}
 name|buffer
 index|[
 name|len
@@ -5501,9 +5521,22 @@ name|fd
 operator|<
 literal|0
 condition|)
+block|{
+if|if
+condition|(
+name|errno
+operator|==
+name|ENOENT
+condition|)
+comment|/* inconsistent with lstat; retry */
+goto|goto
+name|stat_ref
+goto|;
+else|else
 return|return
 name|NULL
 return|;
+block|}
 name|len
 operator|=
 name|read_in_full
