@@ -1313,12 +1313,14 @@ name|up
 init|=
 name|STRBUF_INIT
 decl_stmt|;
-name|strbuf_reset
-argument_list|(
-operator|&
+comment|/* 		 * Note that we assume we only ever have a single set of 		 * credentials in a given program run, so we do not have 		 * to worry about updating this buffer, only setting its 		 * initial value. 		 */
+if|if
+condition|(
+operator|!
 name|up
-argument_list|)
-expr_stmt|;
+operator|.
+name|len
+condition|)
 name|strbuf_addf
 argument_list|(
 operator|&
