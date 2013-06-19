@@ -81,6 +81,11 @@ parameter_list|(
 name|x
 parameter_list|)
 value|((x)& XDF_DIFF_ALGORITHM_MASK)
+DECL|macro|XDF_IGNORE_BLANK_LINES
+define|#
+directive|define
+name|XDF_IGNORE_BLANK_LINES
+value|(1<< 7)
 DECL|macro|XDL_EMIT_FUNCNAMES
 define|#
 directive|define

@@ -113,6 +113,24 @@ end_function_decl
 
 begin_function_decl
 name|int
+name|xdl_blankline
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|line
+parameter_list|,
+name|long
+name|size
+parameter_list|,
+name|long
+name|flags
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
 name|xdl_recmatch
 parameter_list|(
 specifier|const
