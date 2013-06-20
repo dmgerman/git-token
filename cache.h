@@ -5362,19 +5362,6 @@ name|do_check_packed_object_crc
 decl_stmt|;
 end_decl_stmt
 
-begin_comment
-comment|/* for development: log offset of pack access */
-end_comment
-
-begin_decl_stmt
-specifier|extern
-specifier|const
-name|char
-modifier|*
-name|log_pack_access
-decl_stmt|;
-end_decl_stmt
-
 begin_function_decl
 specifier|extern
 name|int
