@@ -2134,6 +2134,11 @@ operator|=
 operator|-
 literal|1
 expr_stmt|;
+name|get_color_ui_found
+operator|=
+operator|-
+literal|1
+expr_stmt|;
 name|git_config_with_options
 argument_list|(
 name|git_get_colorbool_config
@@ -2177,6 +2182,17 @@ operator|=
 name|get_color_ui_found
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|get_colorbool_found
+operator|<
+literal|0
+condition|)
+comment|/* default value if none found in config */
+name|get_colorbool_found
+operator|=
+name|GIT_COLOR_AUTO
+expr_stmt|;
 name|get_colorbool_found
 operator|=
 name|want_color
