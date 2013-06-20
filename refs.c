@@ -3348,7 +3348,7 @@ name|unsigned
 name|int
 name|referrers
 decl_stmt|;
-comment|/* 	 * Iff the packed-refs file associated with this instance is 	 * currently locked for writing, this points at the associated 	 * lock (which is owned by somebody else). 	 */
+comment|/* 	 * Iff the packed-refs file associated with this instance is 	 * currently locked for writing, this points at the associated 	 * lock (which is owned by somebody else).  The referrer count 	 * is also incremented when the file is locked and decremented 	 * when it is unlocked. 	 */
 DECL|member|lock
 name|struct
 name|lock_file
@@ -9612,6 +9612,12 @@ operator|=
 operator|&
 name|packlock
 expr_stmt|;
+comment|/* Increment the reference count to prevent it from being freed: */
+name|acquire_packed_ref_cache
+argument_list|(
+name|packed_ref_cache
+argument_list|)
+expr_stmt|;
 return|return
 literal|0
 return|;
@@ -9709,6 +9715,11 @@ name|lock
 operator|=
 name|NULL
 expr_stmt|;
+name|release_packed_ref_cache
+argument_list|(
+name|packed_ref_cache
+argument_list|)
+expr_stmt|;
 return|return
 name|error
 return|;
@@ -9758,6 +9769,11 @@ operator|->
 name|lock
 operator|=
 name|NULL
+expr_stmt|;
+name|release_packed_ref_cache
+argument_list|(
+name|packed_ref_cache
+argument_list|)
 expr_stmt|;
 name|clear_packed_ref_cache
 argument_list|(
