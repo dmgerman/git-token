@@ -315,11 +315,9 @@ argument_list|,
 literal|"Debug: Remote helper quit.\n"
 argument_list|)
 expr_stmt|;
-name|die
+name|exit
 argument_list|(
-literal|"Reading from helper 'git-remote-%s' failed"
-argument_list|,
-name|name
+literal|128
 argument_list|)
 expr_stmt|;
 block|}
