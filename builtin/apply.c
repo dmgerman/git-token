@@ -4646,7 +4646,7 @@ name|patch
 operator|->
 name|new_name
 operator|=
-name|xstrdup
+name|null_strdup
 argument_list|(
 name|name
 argument_list|)
