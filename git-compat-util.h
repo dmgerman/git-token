@@ -778,23 +778,6 @@ endif|#
 directive|endif
 end_endif
 
-begin_function_decl
-specifier|extern
-name|int
-name|get_st_mode_bits
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|path
-parameter_list|,
-name|int
-modifier|*
-name|mode
-parameter_list|)
-function_decl|;
-end_function_decl
-
 begin_if
 if|#
 directive|if
@@ -1006,12 +989,6 @@ directive|define
 name|_XOPEN_SOURCE
 value|600
 end_define
-
-begin_include
-include|#
-directive|include
-file|"compat/cygwin.h"
-end_include
 
 begin_else
 else|#

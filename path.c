@@ -21,18 +21,9 @@ directive|include
 file|"string-list.h"
 end_include
 
-begin_ifndef
-ifndef|#
-directive|ifndef
-name|get_st_mode_bits
-end_ifndef
-
-begin_comment
-comment|/*  * The replacement lstat(2) we use on Cygwin is incomplete and  * may return wrong permission bits. Most of the time we do not care,  * but the callsites of this wrapper do care.  */
-end_comment
-
 begin_function
 DECL|function|get_st_mode_bits
+specifier|static
 name|int
 name|get_st_mode_bits
 parameter_list|(
@@ -78,11 +69,6 @@ literal|0
 return|;
 block|}
 end_function
-
-begin_endif
-endif|#
-directive|endif
-end_endif
 
 begin_decl_stmt
 DECL|variable|bad_path
