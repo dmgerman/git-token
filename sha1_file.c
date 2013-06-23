@@ -10728,12 +10728,13 @@ operator|&
 name|size
 argument_list|)
 expr_stmt|;
+comment|/* 		 * We could not apply the delta; warn the user, but keep going. 		 * Our failure will be noticed either in the next iteration of 		 * the loop, or if this is the final delta, in the caller when 		 * we return NULL. Those code paths will take care of making 		 * a more explicit warning and retrying with another copy of 		 * the object. 		 */
 if|if
 condition|(
 operator|!
 name|data
 condition|)
-name|die
+name|error
 argument_list|(
 literal|"failed to apply delta"
 argument_list|)
