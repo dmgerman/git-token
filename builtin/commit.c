@@ -147,6 +147,12 @@ directive|include
 file|"sequencer.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"notes-utils.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|builtin_commit_usage
 specifier|static
@@ -9049,6 +9055,8 @@ expr_stmt|;
 name|finish_copy_notes_for_rewrite
 argument_list|(
 name|cfg
+argument_list|,
+literal|"Notes added by 'git commit --amend'"
 argument_list|)
 expr_stmt|;
 block|}
