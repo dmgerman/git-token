@@ -15303,6 +15303,21 @@ name|err
 init|=
 literal|0
 decl_stmt|;
+comment|/* 	 * demote FAIL to WARN to allow inspecting the situation 	 * instead of refusing. 	 */
+name|enum
+name|safe_crlf
+name|crlf_warn
+init|=
+operator|(
+name|safe_crlf
+operator|==
+name|SAFE_CRLF_FAIL
+condition|?
+name|SAFE_CRLF_WARN
+else|:
+name|safe_crlf
+operator|)
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -15619,7 +15634,7 @@ argument_list|,
 operator|&
 name|buf
 argument_list|,
-name|safe_crlf
+name|crlf_warn
 argument_list|)
 condition|)
 block|{
