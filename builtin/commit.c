@@ -8131,6 +8131,11 @@ operator|&
 name|s
 argument_list|)
 expr_stmt|;
+name|status_format
+operator|=
+name|STATUS_FORMAT_NONE
+expr_stmt|;
+comment|/* Ignore status.short */
 name|determine_whence
 argument_list|(
 operator|&
