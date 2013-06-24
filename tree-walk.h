@@ -309,10 +309,10 @@ name|pathspec
 modifier|*
 name|pathspec
 decl_stmt|;
-DECL|member|conflicts
+DECL|member|df_conflicts
 name|unsigned
 name|long
-name|conflicts
+name|df_conflicts
 decl_stmt|;
 DECL|member|fn
 name|traverse_callback_t
