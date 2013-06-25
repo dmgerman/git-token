@@ -2206,13 +2206,10 @@ index|[
 name|num
 index|]
 argument_list|,
-operator|-
-literal|1
+name|prefix
 argument_list|,
 operator|&
 name|sb
-argument_list|,
-name|prefix
 argument_list|)
 expr_stmt|;
 name|error
