@@ -274,16 +274,10 @@ name|char
 modifier|*
 name|name
 parameter_list|,
-name|size_t
-name|len
-parameter_list|,
 specifier|const
 name|char
 modifier|*
 name|prefix
-parameter_list|,
-name|size_t
-name|prefix_len
 parameter_list|,
 name|FILE
 modifier|*

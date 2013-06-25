@@ -335,25 +335,18 @@ specifier|const
 name|char
 modifier|*
 name|name
-parameter_list|,
-name|size_t
-name|len
 parameter_list|)
 block|{
-comment|/* 	 * With "--full-name", prefix_len=0; write_name_quoted_relative() 	 * ignores prefix_len, so this caller needs to pass empty string 	 * in that case (a NULL is good for ""). 	 */
+comment|/* 	 * With "--full-name", prefix_len=0; this caller needs to pass 	 * an empty string in that case (a NULL is good for ""). 	 */
 name|write_name_quoted_relative
 argument_list|(
 name|name
-argument_list|,
-name|len
 argument_list|,
 name|prefix_len
 condition|?
 name|prefix
 else|:
 name|NULL
-argument_list|,
-name|prefix_len
 argument_list|,
 name|stdout
 argument_list|,
@@ -431,10 +424,6 @@ argument_list|(
 name|ent
 operator|->
 name|name
-argument_list|,
-name|ent
-operator|->
-name|len
 argument_list|)
 expr_stmt|;
 block|}
@@ -989,11 +978,6 @@ argument_list|(
 name|ce
 operator|->
 name|name
-argument_list|,
-name|ce_namelen
-argument_list|(
-name|ce
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -1221,8 +1205,6 @@ expr_stmt|;
 name|write_name
 argument_list|(
 name|path
-argument_list|,
-name|len
 argument_list|)
 expr_stmt|;
 block|}
