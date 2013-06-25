@@ -340,13 +340,18 @@ name|size_t
 name|len
 parameter_list|)
 block|{
+comment|/* 	 * With "--full-name", prefix_len=0; write_name_quoted_relative() 	 * ignores prefix_len, so this caller needs to pass empty string 	 * in that case (a NULL is good for ""). 	 */
 name|write_name_quoted_relative
 argument_list|(
 name|name
 argument_list|,
 name|len
 argument_list|,
+name|prefix_len
+condition|?
 name|prefix
+else|:
+name|NULL
 argument_list|,
 name|prefix_len
 argument_list|,
