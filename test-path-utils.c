@@ -681,6 +681,12 @@ literal|"relative_path"
 argument_list|)
 condition|)
 block|{
+name|struct
+name|strbuf
+name|sb
+init|=
+name|STRBUF_INIT
+decl_stmt|;
 specifier|const
 name|char
 modifier|*
@@ -721,6 +727,9 @@ argument_list|(
 name|in
 argument_list|,
 name|prefix
+argument_list|,
+operator|&
+name|sb
 argument_list|)
 expr_stmt|;
 if|if
@@ -746,6 +755,12 @@ condition|?
 name|rel
 else|:
 literal|"(empty)"
+argument_list|)
+expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|sb
 argument_list|)
 expr_stmt|;
 return|return
