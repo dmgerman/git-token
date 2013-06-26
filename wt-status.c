@@ -4943,7 +4943,7 @@ name|color
 argument_list|,
 name|_
 argument_list|(
-literal|"  (fix conflicts and then run \"git am --resolved\")"
+literal|"  (fix conflicts and then run \"git am --continue\")"
 argument_list|)
 argument_list|)
 expr_stmt|;
