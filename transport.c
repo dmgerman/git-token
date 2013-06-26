@@ -7052,7 +7052,7 @@ operator|!
 name|nr_heads
 condition|)
 block|{
-comment|/* 		 * When deepening of a shallow repository is requested, 		 * then local and remote refs are likely to still be equal. 		 * Just feed them all to the fetch method in that case. 		 * This condition shouldn't be met in a non-deepening fetch 		 * (see builtin-fetch.c:quickfetch()). 		 */
+comment|/* 		 * When deepening of a shallow repository is requested, 		 * then local and remote refs are likely to still be equal. 		 * Just feed them all to the fetch method in that case. 		 * This condition shouldn't be met in a non-deepening fetch 		 * (see builtin/fetch.c:quickfetch()). 		 */
 name|heads
 operator|=
 name|xmalloc
