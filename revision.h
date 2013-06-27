@@ -207,6 +207,9 @@ block|,
 DECL|enumerator|REV_CMD_RIGHT
 name|REV_CMD_RIGHT
 block|,
+DECL|enumerator|REV_CMD_MERGE_BASE
+name|REV_CMD_MERGE_BASE
+block|,
 DECL|enumerator|REV_CMD_REV
 name|REV_CMD_REV
 DECL|member|whence
