@@ -485,7 +485,22 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Add a reference to the in-memory packed reference cache.  To actually  * write the reference to the packed-refs file, call pack_refs().  */
+comment|/*  * Lock the packed-refs file for writing.  Flags is passed to  * hold_lock_file_for_update().  Return 0 on success.  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|lock_packed_refs
+parameter_list|(
+name|int
+name|flags
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/*  * Add a reference to the in-memory packed reference cache.  This may  * only be called while the packed-refs file is locked (see  * lock_packed_refs()).  To actually write the packed-refs file, call  * commit_packed_refs().  */
 end_comment
 
 begin_function_decl
@@ -503,6 +518,34 @@ name|unsigned
 name|char
 modifier|*
 name|sha1
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/*  * Write the current version of the packed refs cache from memory to  * disk.  The packed-refs file must already be locked for writing (see  * lock_packed_refs()).  Return zero on success.  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|commit_packed_refs
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/*  * Rollback the lockfile for the packed-refs file, and discard the  * in-memory packed reference cache.  (The packed-refs file will be  * read anew if it is needed again after this function is called.)  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|void
+name|rollback_packed_refs
+parameter_list|(
+name|void
 parameter_list|)
 function_decl|;
 end_function_decl
