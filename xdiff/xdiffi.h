@@ -103,6 +103,10 @@ name|chg1
 decl_stmt|,
 name|chg2
 decl_stmt|;
+DECL|member|ignore
+name|int
+name|ignore
+decl_stmt|;
 DECL|typedef|xdchange_t
 block|}
 name|xdchange_t
