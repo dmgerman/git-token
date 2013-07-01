@@ -923,8 +923,27 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_enum
+DECL|enum|rev_sort_order
+enum|enum
+name|rev_sort_order
+block|{
+DECL|enumerator|REV_SORT_IN_GRAPH_ORDER
+name|REV_SORT_IN_GRAPH_ORDER
+init|=
+literal|0
+block|,
+DECL|enumerator|REV_SORT_BY_COMMIT_DATE
+name|REV_SORT_BY_COMMIT_DATE
+block|,
+DECL|enumerator|REV_SORT_BY_AUTHOR_DATE
+name|REV_SORT_BY_AUTHOR_DATE
+block|}
+enum|;
+end_enum
+
 begin_comment
-comment|/*  * Performs an in-place topological sort of list supplied.  *  *   invariant of resulting list is:  *      a reachable from b => ord(b)< ord(a)  *   in addition, when lifo == 0, commits on parallel tracks are  *   sorted in the dates order.  */
+comment|/*  * Performs an in-place topological sort of list supplied.  *  *   invariant of resulting list is:  *      a reachable from b => ord(b)< ord(a)  *   sort_order further specifies:  *   REV_SORT_IN_GRAPH_ORDER: try to show a commit on a single-parent  *                            chain together.  *   REV_SORT_BY_COMMIT_DATE: show eligible commits in committer-date order.  */
 end_comment
 
 begin_function_decl
@@ -935,10 +954,9 @@ name|struct
 name|commit_list
 modifier|*
 modifier|*
-name|list
 parameter_list|,
-name|int
-name|lifo
+name|enum
+name|rev_sort_order
 parameter_list|)
 function_decl|;
 end_function_decl

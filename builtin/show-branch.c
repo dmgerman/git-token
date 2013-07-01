@@ -3400,10 +3400,11 @@ name|all_mask
 decl_stmt|,
 name|all_revs
 decl_stmt|;
-name|int
-name|lifo
+name|enum
+name|rev_sort_order
+name|sort_order
 init|=
-literal|1
+name|REV_SORT_IN_GRAPH_ORDER
 decl_stmt|;
 name|char
 name|head
@@ -3649,19 +3650,21 @@ literal|"show refs unreachable from any other ref"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_SET_INT
 argument_list|(
 literal|0
 argument_list|,
 literal|"topo-order"
 argument_list|,
 operator|&
-name|lifo
+name|sort_order
 argument_list|,
 name|N_
 argument_list|(
 literal|"show commits in topological order"
 argument_list|)
+argument_list|,
+name|REV_SORT_IN_GRAPH_ORDER
 argument_list|)
 block|,
 name|OPT_BOOLEAN
@@ -3703,7 +3706,7 @@ argument_list|,
 literal|"date-order"
 argument_list|,
 operator|&
-name|lifo
+name|sort_order
 argument_list|,
 name|N_
 argument_list|(
@@ -3711,7 +3714,7 @@ literal|"show commits where no parent comes before its "
 literal|"children"
 argument_list|)
 argument_list|,
-literal|0
+name|REV_SORT_BY_COMMIT_DATE
 argument_list|)
 block|,
 block|{
@@ -4819,7 +4822,7 @@ argument_list|(
 operator|&
 name|seen
 argument_list|,
-name|lifo
+name|sort_order
 argument_list|)
 expr_stmt|;
 comment|/* Give names to commits */

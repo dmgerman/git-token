@@ -1284,7 +1284,7 @@ name|list
 argument_list|,
 name|revs
 operator|->
-name|lifo
+name|sort_order
 argument_list|)
 expr_stmt|;
 while|while
