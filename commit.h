@@ -1657,6 +1657,27 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|int
+name|compare_commits_by_commit_date
+parameter_list|(
+specifier|const
+name|void
+modifier|*
+name|a_
+parameter_list|,
+specifier|const
+name|void
+modifier|*
+name|b_
+parameter_list|,
+name|void
+modifier|*
+name|unused
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
