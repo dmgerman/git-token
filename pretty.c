@@ -1904,7 +1904,6 @@ DECL|function|pp_user_info
 name|void
 name|pp_user_info
 parameter_list|(
-specifier|const
 name|struct
 name|pretty_print_context
 modifier|*
@@ -7896,7 +7895,6 @@ specifier|static
 name|void
 name|pp_header
 parameter_list|(
-specifier|const
 name|struct
 name|pretty_print_context
 modifier|*
@@ -8176,7 +8174,6 @@ DECL|function|pp_title_line
 name|void
 name|pp_title_line
 parameter_list|(
-specifier|const
 name|struct
 name|pretty_print_context
 modifier|*
@@ -8418,7 +8415,6 @@ DECL|function|pp_remainder
 name|void
 name|pp_remainder
 parameter_list|(
-specifier|const
 name|struct
 name|pretty_print_context
 modifier|*
@@ -8575,7 +8571,6 @@ DECL|function|pretty_print_commit
 name|void
 name|pretty_print_commit
 parameter_list|(
-specifier|const
 name|struct
 name|pretty_print_context
 modifier|*
