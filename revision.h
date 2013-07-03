@@ -683,6 +683,11 @@ name|char
 modifier|*
 name|message_id
 decl_stmt|;
+DECL|member|from_ident
+name|struct
+name|ident_split
+name|from_ident
+decl_stmt|;
 DECL|member|ref_message_ids
 name|struct
 name|string_list

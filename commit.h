@@ -42,6 +42,12 @@ directive|include
 file|"gpg-interface.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"string-list.h"
+end_include
+
 begin_struct
 DECL|struct|commit_list
 struct|struct
@@ -520,7 +526,19 @@ DECL|member|color
 name|int
 name|color
 decl_stmt|;
+DECL|member|from_ident
+name|struct
+name|ident_split
+modifier|*
+name|from_ident
+decl_stmt|;
 comment|/* 	 * Fields below here are manipulated internally by pp_* functions and 	 * should not be counted on by callers. 	 */
+comment|/* Manipulated by the pp_* functions internally. */
+DECL|member|in_body_headers
+name|struct
+name|string_list
+name|in_body_headers
+decl_stmt|;
 block|}
 struct|;
 end_struct
