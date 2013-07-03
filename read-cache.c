@@ -3195,8 +3195,7 @@ name|foundce
 operator|=
 name|index_name_exists
 argument_list|(
-operator|&
-name|the_index
+name|istate
 argument_list|,
 name|ce
 operator|->
@@ -4810,9 +4809,10 @@ name|cache_alloc
 operator|*
 sizeof|sizeof
 argument_list|(
-expr|struct
-name|cache_entry
 operator|*
+name|istate
+operator|->
+name|cache
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -7202,9 +7202,10 @@ name|cache_alloc
 argument_list|,
 sizeof|sizeof
 argument_list|(
-expr|struct
-name|cache_entry
 operator|*
+name|istate
+operator|->
+name|cache
 argument_list|)
 argument_list|)
 expr_stmt|;
