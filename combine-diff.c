@@ -7572,6 +7572,18 @@ operator|=
 operator|*
 name|opt
 expr_stmt|;
+name|diff_tree_setup_paths
+argument_list|(
+name|diffopts
+operator|.
+name|pathspec
+operator|.
+name|raw
+argument_list|,
+operator|&
+name|diffopts
+argument_list|)
+expr_stmt|;
 name|diffopts
 operator|.
 name|output_format
@@ -7955,6 +7967,12 @@ name|tmp
 argument_list|)
 expr_stmt|;
 block|}
+name|diff_tree_release_paths
+argument_list|(
+operator|&
+name|diffopts
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
