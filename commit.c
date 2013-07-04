@@ -7006,6 +7006,10 @@ name|bytes
 decl_stmt|,
 name|bad_offset
 decl_stmt|;
+name|unsigned
+name|int
+name|codepoint
+decl_stmt|;
 name|len
 operator|--
 expr_stmt|;
@@ -7046,16 +7050,16 @@ name|bytes
 operator|++
 expr_stmt|;
 block|}
-comment|/* Must be between 1 and 5 more bytes */
+comment|/* 		 * Must be between 1 and 3 more bytes.  Longer sequences result in 		 * codepoints beyond U+10FFFF, which are guaranteed never to exist. 		 */
 if|if
 condition|(
 name|bytes
 operator|<
 literal|1
 operator|||
+literal|3
+operator|<
 name|bytes
-operator|>
-literal|5
 condition|)
 return|return
 name|bad_offset
@@ -7070,6 +7074,17 @@ condition|)
 return|return
 name|bad_offset
 return|;
+comment|/* Place the encoded bits at the bottom of the value. */
+name|codepoint
+operator|=
+operator|(
+name|c
+operator|&
+literal|0x7f
+operator|)
+operator|>>
+name|bytes
+expr_stmt|;
 name|offset
 operator|+=
 name|bytes
@@ -7081,6 +7096,17 @@ expr_stmt|;
 comment|/* And verify that they are good continuation bytes */
 do|do
 block|{
+name|codepoint
+operator|<<=
+literal|6
+expr_stmt|;
+name|codepoint
+operator||=
+operator|*
+name|buf
+operator|&
+literal|0x3f
+expr_stmt|;
 if|if
 condition|(
 operator|(
@@ -7103,7 +7129,44 @@ operator|--
 name|bytes
 condition|)
 do|;
-comment|/* We could/should check the value and length here too */
+comment|/* No codepoints can ever be allocated beyond U+10FFFF. */
+if|if
+condition|(
+name|codepoint
+operator|>
+literal|0x10ffff
+condition|)
+return|return
+name|bad_offset
+return|;
+comment|/* Surrogates are only for UTF-16 and cannot be encoded in UTF-8. */
+if|if
+condition|(
+operator|(
+name|codepoint
+operator|&
+literal|0x1ff800
+operator|)
+operator|==
+literal|0xd800
+condition|)
+return|return
+name|bad_offset
+return|;
+comment|/* U+FFFE and U+FFFF are guaranteed non-characters. */
+if|if
+condition|(
+operator|(
+name|codepoint
+operator|&
+literal|0x1ffffe
+operator|)
+operator|==
+literal|0xfffe
+condition|)
+return|return
+name|bad_offset
+return|;
 block|}
 return|return
 operator|-
@@ -7113,7 +7176,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * This verifies that the buffer is in proper utf8 format.  *  * If it isn't, it assumes any non-utf8 characters are Latin1,  * and does the conversion.  *  * Fixme: we should probably also disallow overlong forms and  * invalid characters. But we don't do that currently.  */
+comment|/*  * This verifies that the buffer is in proper utf8 format.  *  * If it isn't, it assumes any non-utf8 characters are Latin1,  * and does the conversion.  *  * Fixme: we should probably also disallow overlong forms.  * But we don't do that currently.  */
 end_comment
 
 begin_function
