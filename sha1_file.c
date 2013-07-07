@@ -12160,6 +12160,10 @@ block|{
 name|struct
 name|object_info
 name|oi
+init|=
+block|{
+literal|0
+block|}
 decl_stmt|;
 name|oi
 operator|.
