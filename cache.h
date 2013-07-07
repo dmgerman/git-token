@@ -7918,6 +7918,12 @@ name|long
 modifier|*
 name|sizep
 decl_stmt|;
+DECL|member|disk_sizep
+name|unsigned
+name|long
+modifier|*
+name|disk_sizep
+decl_stmt|;
 comment|/* Response */
 enum|enum
 block|{
