@@ -211,6 +211,18 @@ literal|"needs force"
 expr_stmt|;
 break|break;
 case|case
+name|REF_STATUS_REJECT_STALE
+case|:
+name|res
+operator|=
+literal|"error"
+expr_stmt|;
+name|msg
+operator|=
+literal|"stale info"
+expr_stmt|;
+break|break;
+case|case
 name|REF_STATUS_REJECT_ALREADY_EXISTS
 case|:
 name|res

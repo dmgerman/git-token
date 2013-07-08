@@ -8070,6 +8070,11 @@ name|force
 operator|||
 name|force_update
 decl_stmt|;
+name|int
+name|reject_reason
+init|=
+literal|0
+decl_stmt|;
 if|if
 condition|(
 name|ref
@@ -8135,7 +8140,38 @@ name|REF_STATUS_UPTODATE
 expr_stmt|;
 continue|continue;
 block|}
-comment|/* 		 * Decide whether an individual refspec A:B can be 		 * pushed.  The push will succeed if any of the 		 * following are true: 		 * 		 * (1) the remote reference B does not exist 		 * 		 * (2) the remote reference B is being removed (i.e., 		 *     pushing :B where no source is specified) 		 * 		 * (3) the destination is not under refs/tags/, and 		 *     if the old and new value is a commit, the new 		 *     is a descendant of the old. 		 * 		 * (4) it is forced using the +A:B notation, or by 		 *     passing the --force argument 		 */
+comment|/* 		 * Bypass the usual "must fast-forward" check but 		 * replace it with a weaker "the old value must be 		 * this value we observed".  If the remote ref has 		 * moved and is now different from what we expect, 		 * reject any push. 		 * 		 * It also is an error if the user told us to check 		 * with the remote-tracking branch to find the value 		 * to expect, but we did not have such a tracking 		 * branch. 		 */
+if|if
+condition|(
+name|ref
+operator|->
+name|expect_old_sha1
+condition|)
+block|{
+if|if
+condition|(
+name|ref
+operator|->
+name|expect_old_no_trackback
+operator|||
+name|hashcmp
+argument_list|(
+name|ref
+operator|->
+name|old_sha1
+argument_list|,
+name|ref
+operator|->
+name|old_sha1_expect
+argument_list|)
+condition|)
+name|reject_reason
+operator|=
+name|REF_STATUS_REJECT_STALE
+expr_stmt|;
+block|}
+comment|/* 		 * The usual "must fast-forward" rules. 		 * 		 * Decide whether an individual refspec A:B can be 		 * pushed.  The push will succeed if any of the 		 * following are true: 		 * 		 * (1) the remote reference B does not exist 		 * 		 * (2) the remote reference B is being removed (i.e., 		 *     pushing :B where no source is specified) 		 * 		 * (3) the destination is not under refs/tags/, and 		 *     if the old and new value is a commit, the new 		 *     is a descendant of the old. 		 * 		 * (4) it is forced using the +A:B notation, or by 		 *     passing the --force argument 		 */
+elseif|else
 if|if
 condition|(
 operator|!
@@ -8152,12 +8188,6 @@ name|old_sha1
 argument_list|)
 condition|)
 block|{
-name|int
-name|why
-init|=
-literal|0
-decl_stmt|;
-comment|/* why would this push require --force? */
 if|if
 condition|(
 operator|!
@@ -8170,7 +8200,7 @@ argument_list|,
 literal|"refs/tags/"
 argument_list|)
 condition|)
-name|why
+name|reject_reason
 operator|=
 name|REF_STATUS_REJECT_ALREADY_EXISTS
 expr_stmt|;
@@ -8185,7 +8215,7 @@ operator|->
 name|old_sha1
 argument_list|)
 condition|)
-name|why
+name|reject_reason
 operator|=
 name|REF_STATUS_REJECT_FETCH_FIRST
 expr_stmt|;
@@ -8212,7 +8242,7 @@ argument_list|,
 literal|1
 argument_list|)
 condition|)
-name|why
+name|reject_reason
 operator|=
 name|REF_STATUS_REJECT_NEEDS_FORCE
 expr_stmt|;
@@ -8231,10 +8261,12 @@ operator|->
 name|old_sha1
 argument_list|)
 condition|)
-name|why
+name|reject_reason
 operator|=
 name|REF_STATUS_REJECT_NONFASTFORWARD
 expr_stmt|;
+block|}
+comment|/* 		 * "--force" will defeat any rejection implemented 		 * by the rules above. 		 */
 if|if
 condition|(
 operator|!
@@ -8244,12 +8276,12 @@ name|ref
 operator|->
 name|status
 operator|=
-name|why
+name|reject_reason
 expr_stmt|;
 elseif|else
 if|if
 condition|(
-name|why
+name|reject_reason
 condition|)
 name|ref
 operator|->
@@ -8257,7 +8289,6 @@ name|forced_update
 operator|=
 literal|1
 expr_stmt|;
-block|}
 block|}
 block|}
 end_function

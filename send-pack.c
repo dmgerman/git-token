@@ -1135,6 +1135,9 @@ case|case
 name|REF_STATUS_REJECT_NEEDS_FORCE
 case|:
 case|case
+name|REF_STATUS_REJECT_STALE
+case|:
+case|case
 name|REF_STATUS_UPTODATE
 case|:
 continue|continue;
