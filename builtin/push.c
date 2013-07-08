@@ -118,6 +118,15 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|cas
+specifier|static
+name|struct
+name|push_cas_option
+name|cas
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|refspec
 specifier|static
 specifier|const
@@ -2096,6 +2105,31 @@ argument_list|)
 argument_list|,
 name|TRANSPORT_PUSH_FORCE
 argument_list|)
+block|,
+block|{
+name|OPTION_CALLBACK
+block|,
+literal|0
+block|,
+name|CAS_OPT_NAME
+block|,
+operator|&
+name|cas
+block|,
+name|N_
+argument_list|(
+literal|"refname>:<expect"
+argument_list|)
+block|,
+name|N_
+argument_list|(
+literal|"require old value of ref to be at this value"
+argument_list|)
+block|,
+name|PARSE_OPT_OPTARG
+block|,
+name|parseopt_push_cas_option
+block|}
 block|,
 block|{
 name|OPTION_CALLBACK
