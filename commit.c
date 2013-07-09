@@ -7198,16 +7198,30 @@ condition|)
 return|return
 name|bad_offset
 return|;
-comment|/* U+FFFE and U+FFFF are guaranteed non-characters. */
+comment|/* U+xxFFFE and U+xxFFFF are guaranteed non-characters. */
 if|if
 condition|(
 operator|(
 name|codepoint
 operator|&
-literal|0x1ffffe
+literal|0xffffe
 operator|)
 operator|==
 literal|0xfffe
+condition|)
+return|return
+name|bad_offset
+return|;
+comment|/* So are anything in the range U+FDD0..U+FDEF. */
+if|if
+condition|(
+name|codepoint
+operator|>=
+literal|0xfdd0
+operator|&&
+name|codepoint
+operator|<=
+literal|0xfdef
 condition|)
 return|return
 name|bad_offset
