@@ -1404,6 +1404,7 @@ name|matches
 init|=
 literal|0
 decl_stmt|;
+specifier|const
 name|struct
 name|cache_entry
 modifier|*

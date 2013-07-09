@@ -388,6 +388,7 @@ specifier|static
 name|int
 name|add_one_path
 parameter_list|(
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -621,6 +622,7 @@ operator|>=
 literal|0
 condition|)
 block|{
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -694,6 +696,7 @@ operator|<
 name|active_nr
 condition|)
 block|{
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -811,6 +814,7 @@ name|struct
 name|stat
 name|st
 decl_stmt|;
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -2128,6 +2132,7 @@ operator|<
 name|active_nr
 condition|)
 block|{
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -2187,6 +2192,7 @@ operator|<
 name|active_nr
 condition|)
 block|{
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -2644,6 +2650,7 @@ name|pos
 operator|++
 control|)
 block|{
+specifier|const
 name|struct
 name|cache_entry
 modifier|*

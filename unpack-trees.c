@@ -812,6 +812,7 @@ specifier|static
 name|void
 name|unlink_entry
 parameter_list|(
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -947,6 +948,7 @@ name|cnt
 operator|++
 control|)
 block|{
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -1025,6 +1027,7 @@ name|i
 operator|++
 control|)
 block|{
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -1844,6 +1847,7 @@ specifier|static
 name|void
 name|add_same_unmerged
 parameter_list|(
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -3352,6 +3356,7 @@ name|pos
 operator|++
 control|)
 block|{
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -6429,6 +6434,7 @@ modifier|*
 name|st
 parameter_list|)
 block|{
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -6509,6 +6515,7 @@ modifier|*
 name|o
 parameter_list|)
 block|{
+specifier|const
 name|struct
 name|cache_entry
 modifier|*

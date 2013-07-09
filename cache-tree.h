@@ -210,9 +210,11 @@ name|struct
 name|cache_tree
 modifier|*
 parameter_list|,
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
+specifier|const
 modifier|*
 parameter_list|,
 name|int

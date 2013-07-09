@@ -2284,6 +2284,7 @@ name|pos
 decl_stmt|,
 name|mask
 decl_stmt|;
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -2921,6 +2922,7 @@ name|wt_status_change_data
 modifier|*
 name|d
 decl_stmt|;
+specifier|const
 name|struct
 name|cache_entry
 modifier|*

@@ -1922,6 +1922,7 @@ block|,
 literal|0
 block|}
 decl_stmt|;
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -2324,6 +2325,7 @@ modifier|*
 name|type
 parameter_list|)
 block|{
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -2392,6 +2394,7 @@ operator|<
 name|active_nr
 condition|)
 block|{
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -2402,6 +2405,7 @@ index|[
 name|i
 index|]
 decl_stmt|;
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -2526,6 +2530,7 @@ block|{
 name|int
 name|conflict_type
 decl_stmt|;
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -2615,6 +2620,7 @@ block|{
 name|int
 name|conflict_type
 decl_stmt|;
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
