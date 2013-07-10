@@ -97,6 +97,13 @@ begin_comment
 comment|/* NULL terminated */
 end_comment
 
+begin_macro
+name|__attribute__
+argument_list|(
+argument|(sentinel)
+argument_list|)
+end_macro
+
 begin_function_decl
 specifier|extern
 name|int

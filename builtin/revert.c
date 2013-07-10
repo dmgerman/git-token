@@ -246,6 +246,13 @@ return|;
 block|}
 end_function
 
+begin_macro
+name|__attribute__
+argument_list|(
+argument|(sentinel)
+argument_list|)
+end_macro
+
 begin_function
 DECL|function|verify_opt_compatible
 specifier|static
@@ -332,6 +339,13 @@ argument_list|)
 expr_stmt|;
 block|}
 end_function
+
+begin_macro
+name|__attribute__
+argument_list|(
+argument|(sentinel)
+argument_list|)
+end_macro
 
 begin_function
 DECL|function|verify_opt_mutually_compatible
