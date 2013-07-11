@@ -771,6 +771,14 @@ name|strdup_strings
 operator|=
 literal|1
 expr_stmt|;
+name|s
+operator|->
+name|show_branch
+operator|=
+operator|-
+literal|1
+expr_stmt|;
+comment|/* unspecified */
 block|}
 end_function
 
