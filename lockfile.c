@@ -428,6 +428,21 @@ name|int
 name|flags
 parameter_list|)
 block|{
+comment|/* 	 * subtract 5 from size to make sure there's room for adding 	 * ".lock" for the lock file name 	 */
+specifier|static
+specifier|const
+name|size_t
+name|max_path_len
+init|=
+sizeof|sizeof
+argument_list|(
+name|lk
+operator|->
+name|filename
+argument_list|)
+operator|-
+literal|5
+decl_stmt|;
 if|if
 condition|(
 name|strlen
@@ -435,12 +450,7 @@ argument_list|(
 name|path
 argument_list|)
 operator|>=
-sizeof|sizeof
-argument_list|(
-name|lk
-operator|->
-name|filename
-argument_list|)
+name|max_path_len
 condition|)
 return|return
 operator|-
@@ -455,7 +465,6 @@ argument_list|,
 name|path
 argument_list|)
 expr_stmt|;
-comment|/* 	 * subtract 5 from size to make sure there's room for adding 	 * ".lock" for the lock file name 	 */
 if|if
 condition|(
 operator|!
@@ -471,14 +480,7 @@ name|lk
 operator|->
 name|filename
 argument_list|,
-sizeof|sizeof
-argument_list|(
-name|lk
-operator|->
-name|filename
-argument_list|)
-operator|-
-literal|5
+name|max_path_len
 argument_list|)
 expr_stmt|;
 name|strcat
