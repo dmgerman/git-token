@@ -3976,7 +3976,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* 			 * otherwise, the next "git fetch" will 			 * simply fetch from HEAD without updating 			 * any remote tracking branch, which is what 			 * we want. 			 */
+comment|/* 			 * otherwise, the next "git fetch" will 			 * simply fetch from HEAD without updating 			 * any remote-tracking branch, which is what 			 * we want. 			 */
 block|}
 else|else
 block|{

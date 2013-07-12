@@ -5884,7 +5884,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Pretend as if the user told us to merge with the tracking  * branch we have for the upstream of the current branch  */
+comment|/*  * Pretend as if the user told us to merge with the remote-tracking  * branch we have for the upstream of the current branch  */
 end_comment
 
 begin_function
@@ -6012,7 +6012,7 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"No remote tracking branch for %s from %s"
+literal|"No remote-tracking branch for %s from %s"
 argument_list|)
 argument_list|,
 name|branch
