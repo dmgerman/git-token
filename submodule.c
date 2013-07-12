@@ -1426,6 +1426,13 @@ name|rev
 operator|->
 name|date_mode
 expr_stmt|;
+name|ctx
+operator|.
+name|output_encoding
+operator|=
+name|get_log_output_encoding
+argument_list|()
+expr_stmt|;
 name|strbuf_setlen
 argument_list|(
 operator|&

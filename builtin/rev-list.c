@@ -504,6 +504,13 @@ name|revs
 operator|->
 name|commit_format
 expr_stmt|;
+name|ctx
+operator|.
+name|output_encoding
+operator|=
+name|get_log_output_encoding
+argument_list|()
+expr_stmt|;
 name|pretty_print_commit
 argument_list|(
 operator|&
