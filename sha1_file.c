@@ -11959,7 +11959,7 @@ name|pack_entry
 name|e
 decl_stmt|;
 name|int
-name|status
+name|type
 decl_stmt|,
 name|rtype
 decl_stmt|;
@@ -12032,7 +12032,7 @@ argument_list|)
 condition|)
 block|{
 comment|/* Most likely it's a loose object. */
-name|status
+name|type
 operator|=
 name|sha1_loose_object_info
 argument_list|(
@@ -12049,7 +12049,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|status
+name|type
 operator|>=
 literal|0
 condition|)
@@ -12061,7 +12061,7 @@ operator|=
 name|OI_LOOSE
 expr_stmt|;
 return|return
-name|status
+name|type
 return|;
 block|}
 comment|/* Not a loose object; someone else may have just packed it. */
@@ -12080,10 +12080,10 @@ name|e
 argument_list|)
 condition|)
 return|return
-name|status
+name|type
 return|;
 block|}
-name|status
+name|type
 operator|=
 name|packed_object_info
 argument_list|(
@@ -12109,7 +12109,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|status
+name|type
 operator|<
 literal|0
 condition|)
@@ -12123,7 +12123,7 @@ argument_list|,
 name|sha1
 argument_list|)
 expr_stmt|;
-name|status
+name|type
 operator|=
 name|sha1_object_info_extended
 argument_list|(
@@ -12207,7 +12207,7 @@ operator|)
 expr_stmt|;
 block|}
 return|return
-name|status
+name|type
 return|;
 block|}
 end_function
