@@ -140,7 +140,7 @@ name|nul_term_line
 argument_list|,
 name|N_
 argument_list|(
-literal|"input paths are terminated by a NUL character"
+literal|"terminate input and output records by a NUL character"
 argument_list|)
 argument_list|)
 block|,
