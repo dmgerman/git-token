@@ -1054,8 +1054,8 @@ init|=
 name|N_
 argument_list|(
 literal|"Updates were rejected because the tip of your current branch is behind\n"
-literal|"its remote counterpart. Merge the remote changes (e.g. 'git pull')\n"
-literal|"before pushing again.\n"
+literal|"its remote counterpart. Integrate the remote changes (e.g.\n"
+literal|"'git pull ...') before pushing again.\n"
 literal|"See the 'Note about fast-forwards' in 'git push --help' for details."
 argument_list|)
 decl_stmt|;
@@ -1090,8 +1090,8 @@ init|=
 name|N_
 argument_list|(
 literal|"Updates were rejected because a pushed branch tip is behind its remote\n"
-literal|"counterpart. Check out this branch and merge the remote changes\n"
-literal|"(e.g. 'git pull') before pushing again.\n"
+literal|"counterpart. Check out this branch and integrate the remote changes\n"
+literal|"(e.g. 'git pull ...') before pushing again.\n"
 literal|"See the 'Note about fast-forwards' in 'git push --help' for details."
 argument_list|)
 decl_stmt|;
@@ -1109,8 +1109,8 @@ name|N_
 argument_list|(
 literal|"Updates were rejected because the remote contains work that you do\n"
 literal|"not have locally. This is usually caused by another repository pushing\n"
-literal|"to the same ref. You may want to first merge the remote changes (e.g.,\n"
-literal|"'git pull') before pushing again.\n"
+literal|"to the same ref. You may want to first integrate the remote changes\n"
+literal|"(e.g., 'git pull ...') before pushing again.\n"
 literal|"See the 'Note about fast-forwards' in 'git push --help' for details."
 argument_list|)
 decl_stmt|;
