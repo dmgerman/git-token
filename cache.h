@@ -7919,6 +7919,12 @@ struct|struct
 name|object_info
 block|{
 comment|/* Request */
+DECL|member|typep
+name|enum
+name|object_type
+modifier|*
+name|typep
+decl_stmt|;
 DECL|member|sizep
 name|unsigned
 name|long
