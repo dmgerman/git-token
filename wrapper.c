@@ -1631,7 +1631,7 @@ expr_stmt|;
 if|if
 condition|(
 name|fd
-operator|>
+operator|>=
 literal|0
 condition|)
 return|return
