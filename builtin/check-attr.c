@@ -153,7 +153,7 @@ name|nul_term_line
 argument_list|,
 name|N_
 argument_list|(
-literal|"input paths are terminated by a NUL character"
+literal|"terminate input and output records by a NUL character"
 argument_list|)
 argument_list|)
 block|,
@@ -247,6 +247,44 @@ name|value
 operator|=
 literal|"unspecified"
 expr_stmt|;
+if|if
+condition|(
+name|nul_term_line
+condition|)
+block|{
+name|printf
+argument_list|(
+literal|"%s%c"
+comment|/* path */
+literal|"%s%c"
+comment|/* attrname */
+literal|"%s%c"
+comment|/* attrvalue */
+argument_list|,
+name|file
+argument_list|,
+literal|0
+argument_list|,
+name|git_attr_name
+argument_list|(
+name|check
+index|[
+name|j
+index|]
+operator|.
+name|attr
+argument_list|)
+argument_list|,
+literal|0
+argument_list|,
+name|value
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|quote_c_style
 argument_list|(
 name|file
@@ -275,6 +313,7 @@ argument_list|,
 name|value
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 end_function
