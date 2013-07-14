@@ -18,6 +18,12 @@ directive|include
 file|"string-list.h"
 end_include
 
+begin_struct_decl
+struct_decl|struct
+name|pathspec
+struct_decl|;
+end_struct_decl
+
 begin_define
 DECL|macro|RERERE_AUTOUPDATE
 define|#
@@ -95,9 +101,8 @@ specifier|extern
 name|int
 name|rerere_forget
 parameter_list|(
-specifier|const
-name|char
-modifier|*
+name|struct
+name|pathspec
 modifier|*
 parameter_list|)
 function_decl|;
