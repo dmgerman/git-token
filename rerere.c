@@ -4032,8 +4032,6 @@ expr_stmt|;
 name|unmerge_cache
 argument_list|(
 name|pathspec
-operator|->
-name|raw
 argument_list|)
 expr_stmt|;
 name|find_conflict
