@@ -1323,8 +1323,8 @@ modifier|*
 name|patch_mode
 parameter_list|,
 specifier|const
-name|char
-modifier|*
+name|struct
+name|pathspec
 modifier|*
 name|pathspec
 parameter_list|)
