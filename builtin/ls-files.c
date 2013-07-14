@@ -1310,9 +1310,8 @@ name|fill_directory
 argument_list|(
 name|dir
 argument_list|,
+operator|&
 name|pathspec
-operator|.
-name|raw
 argument_list|)
 expr_stmt|;
 if|if
