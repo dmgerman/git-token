@@ -345,6 +345,7 @@ parameter_list|,
 name|int
 name|stage
 parameter_list|,
+specifier|const
 name|struct
 name|pathspec
 modifier|*
@@ -705,6 +706,7 @@ parameter_list|,
 name|int
 name|stage
 parameter_list|,
+specifier|const
 name|struct
 name|pathspec
 modifier|*
