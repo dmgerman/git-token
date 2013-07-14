@@ -61,13 +61,13 @@ decl_stmt|;
 end_decl_stmt
 
 begin_function
-DECL|function|copy_pathspec
+DECL|function|internal_copy_pathspec
 specifier|static
 specifier|const
 name|char
 modifier|*
 modifier|*
-name|copy_pathspec
+name|internal_copy_pathspec
 parameter_list|(
 specifier|const
 name|char
@@ -546,7 +546,7 @@ argument_list|)
 expr_stmt|;
 name|source
 operator|=
-name|copy_pathspec
+name|internal_copy_pathspec
 argument_list|(
 name|prefix
 argument_list|,
@@ -572,7 +572,7 @@ argument_list|)
 expr_stmt|;
 name|dest_path
 operator|=
-name|copy_pathspec
+name|internal_copy_pathspec
 argument_list|(
 name|prefix
 argument_list|,
@@ -600,7 +600,7 @@ condition|)
 comment|/* special case: "." was normalized to "" */
 name|destination
 operator|=
-name|copy_pathspec
+name|internal_copy_pathspec
 argument_list|(
 name|dest_path
 index|[
@@ -652,7 +652,7 @@ argument_list|)
 expr_stmt|;
 name|destination
 operator|=
-name|copy_pathspec
+name|internal_copy_pathspec
 argument_list|(
 name|dest_path
 index|[
