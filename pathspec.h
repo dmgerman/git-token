@@ -114,8 +114,11 @@ name|unsigned
 name|magic
 decl_stmt|;
 DECL|member|len
+DECL|member|prefix
 name|int
 name|len
+decl_stmt|,
+name|prefix
 decl_stmt|;
 DECL|member|nowildcard_len
 name|int

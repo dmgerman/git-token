@@ -39,9 +39,12 @@ literal|1
 decl_stmt|;
 end_decl_stmt
 
+begin_comment
+comment|/*  * Normalize "path", prepending the "prefix" for relative paths. If  * remaining_prefix is not NULL, return the actual prefix still  * remains in the path. For example, prefix = sub1/sub2/ and path is  *  *  foo          -> sub1/sub2/foo  (full prefix)  *  ../foo       -> sub1/foo       (remaining prefix is sub1/)  *  ../../bar    -> bar            (no remaining prefix)  *  ../../sub1/sub2/foo -> sub1/sub2/foo (but no remaining prefix)  *  `pwd`/../bar -> sub1/bar       (no remaining prefix)  */
+end_comment
+
 begin_function
 DECL|function|prefix_path_gently
-specifier|static
 name|char
 modifier|*
 name|prefix_path_gently
@@ -53,6 +56,10 @@ name|prefix
 parameter_list|,
 name|int
 name|len
+parameter_list|,
+name|int
+modifier|*
+name|remaining_prefix
 parameter_list|,
 specifier|const
 name|char
@@ -110,6 +117,15 @@ argument_list|,
 name|temp
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|remaining_prefix
+condition|)
+operator|*
+name|remaining_prefix
+operator|=
+literal|0
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -149,14 +165,25 @@ argument_list|,
 name|path
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|remaining_prefix
+condition|)
+operator|*
+name|remaining_prefix
+operator|=
+name|len
+expr_stmt|;
 block|}
 if|if
 condition|(
-name|normalize_path_copy
+name|normalize_path_copy_len
 argument_list|(
 name|sanitized
 argument_list|,
 name|sanitized
+argument_list|,
+name|remaining_prefix
 argument_list|)
 condition|)
 goto|goto
@@ -321,6 +348,8 @@ name|prefix
 argument_list|,
 name|len
 argument_list|,
+name|NULL
+argument_list|,
 name|path
 argument_list|)
 decl_stmt|;
@@ -379,6 +408,8 @@ argument_list|(
 name|prefix
 argument_list|,
 name|len
+argument_list|,
+name|NULL
 argument_list|,
 name|path
 argument_list|)
