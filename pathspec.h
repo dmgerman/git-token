@@ -59,12 +59,12 @@ DECL|struct|pathspec
 struct|struct
 name|pathspec
 block|{
-DECL|member|raw
+DECL|member|_raw
 specifier|const
 name|char
 modifier|*
 modifier|*
-name|raw
+name|_raw
 decl_stmt|;
 comment|/* get_pathspec() result, not freed by free_pathspec() */
 DECL|member|nr

@@ -762,7 +762,7 @@ name|nr
 condition|?
 name|pathspec
 operator|->
-name|raw
+name|_raw
 index|[
 literal|0
 index|]
@@ -6127,7 +6127,7 @@ name|pathspec
 condition|?
 name|pathspec
 operator|->
-name|raw
+name|_raw
 else|:
 name|NULL
 argument_list|)

@@ -204,7 +204,7 @@ name|s
 operator|=
 name|pathspec
 operator|.
-name|raw
+name|_raw
 expr_stmt|;
 if|if
 condition|(
