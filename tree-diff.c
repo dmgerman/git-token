@@ -918,15 +918,6 @@ argument_list|,
 name|RECURSIVE
 argument_list|)
 expr_stmt|;
-name|opt
-operator|->
-name|pathspec
-operator|.
-name|max_depth
-operator|=
-operator|-
-literal|1
-expr_stmt|;
 name|strbuf_init
 argument_list|(
 operator|&

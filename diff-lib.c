@@ -2371,15 +2371,6 @@ name|recursive
 operator|=
 literal|1
 expr_stmt|;
-name|opts
-operator|.
-name|pathspec
-operator|->
-name|max_depth
-operator|=
-operator|-
-literal|1
-expr_stmt|;
 name|init_tree_desc
 argument_list|(
 operator|&
