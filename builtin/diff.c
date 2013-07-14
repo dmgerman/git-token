@@ -2031,6 +2031,17 @@ operator|.
 name|nr
 condition|)
 block|{
+comment|/* builtin_diff_b_f() */
+name|GUARD_PATHSPEC
+argument_list|(
+operator|&
+name|rev
+operator|.
+name|prune_data
+argument_list|,
+name|PATHSPEC_FROMTOP
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!

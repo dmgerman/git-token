@@ -134,6 +134,20 @@ block|}
 struct|;
 end_struct
 
+begin_define
+DECL|macro|GUARD_PATHSPEC
+define|#
+directive|define
+name|GUARD_PATHSPEC
+parameter_list|(
+name|ps
+parameter_list|,
+name|mask
+parameter_list|)
+define|\
+value|do { \ 		if ((ps)->magic& ~(mask))	       \ 			die("BUG:%s:%d: unsupported magic %x",	\ 			    __FILE__, __LINE__, (ps)->magic& ~(mask)); \ 	} while (0)
+end_define
+
 begin_comment
 comment|/* parse_pathspec flags */
 end_comment

@@ -2826,6 +2826,15 @@ name|entry_not_interesting
 else|:
 name|all_entries_not_interesting
 decl_stmt|;
+name|GUARD_PATHSPEC
+argument_list|(
+name|ps
+argument_list|,
+name|PATHSPEC_FROMTOP
+operator||
+name|PATHSPEC_MAXDEPTH
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!

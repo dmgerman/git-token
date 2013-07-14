@@ -1202,6 +1202,24 @@ decl_stmt|;
 name|int
 name|i
 decl_stmt|;
+comment|/* 	 * follow-rename code is very specific, we need exactly one 	 * path. Magic that matches more than one path is not 	 * supported. 	 */
+name|GUARD_PATHSPEC
+argument_list|(
+operator|&
+name|opt
+operator|->
+name|pathspec
+argument_list|,
+name|PATHSPEC_FROMTOP
+argument_list|)
+expr_stmt|;
+if|#
+directive|if
+literal|0
+comment|/* 	 * We should reject wildcards as well. Unfortunately we 	 * haven't got a reliable way to detect that 'foo\*bar' in 	 * fact has no wildcards. nowildcard_len is merely a hint for 	 * optimization. Let it slip for now until wildmatch is taught 	 * about dry-run mode and returns wildcard info. 	 */
+block|if (opt->pathspec.has_wildcard) 		die("BUG:%s:%d: wildcards are not supported", 		    __FILE__, __LINE__);
+endif|#
+directive|endif
 comment|/* Remove the file creation entry from the diff queue, and remember it */
 name|choice
 operator|=
