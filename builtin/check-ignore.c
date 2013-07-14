@@ -493,9 +493,8 @@ name|seen
 operator|=
 name|find_pathspecs_matching_against_index
 argument_list|(
+operator|&
 name|pathspec
-operator|.
-name|raw
 argument_list|)
 expr_stmt|;
 for|for
@@ -518,10 +517,12 @@ name|full_path
 operator|=
 name|pathspec
 operator|.
-name|raw
+name|items
 index|[
 name|i
 index|]
+operator|.
+name|match
 expr_stmt|;
 name|exclude
 operator|=
