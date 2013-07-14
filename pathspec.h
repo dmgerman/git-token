@@ -33,12 +33,20 @@ value|(1<<1)
 end_define
 
 begin_define
+DECL|macro|PATHSPEC_LITERAL
+define|#
+directive|define
+name|PATHSPEC_LITERAL
+value|(1<<2)
+end_define
+
+begin_define
 DECL|macro|PATHSPEC_ALL_MAGIC
 define|#
 directive|define
 name|PATHSPEC_ALL_MAGIC
 define|\
-value|(PATHSPEC_FROMTOP	| \ 	 PATHSPEC_MAXDEPTH)
+value|(PATHSPEC_FROMTOP	| \ 	 PATHSPEC_MAXDEPTH	| \ 	 PATHSPEC_LITERAL)
 end_define
 
 begin_define

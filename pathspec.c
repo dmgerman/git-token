@@ -204,6 +204,14 @@ literal|'/'
 block|,
 literal|"top"
 block|}
+block|,
+block|{
+name|PATHSPEC_LITERAL
+block|,
+literal|0
+block|,
+literal|"literal"
+block|}
 block|, }
 struct|;
 end_struct
@@ -265,6 +273,10 @@ decl_stmt|,
 name|short_magic
 init|=
 literal|0
+decl_stmt|,
+name|global_magic
+init|=
+literal|0
 decl_stmt|;
 specifier|const
 name|char
@@ -304,6 +316,14 @@ name|GIT_LITERAL_PATHSPECS_ENVIRONMENT
 argument_list|,
 literal|0
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|literal_global
+condition|)
+name|global_magic
+operator||=
+name|PATHSPEC_LITERAL
 expr_stmt|;
 if|if
 condition|(
@@ -674,6 +694,10 @@ operator|*
 name|p_short_magic
 operator|=
 name|short_magic
+expr_stmt|;
+name|magic
+operator||=
+name|global_magic
 expr_stmt|;
 if|if
 condition|(
@@ -1119,7 +1143,9 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|literal_global
+name|magic
+operator|&
+name|PATHSPEC_LITERAL
 condition|)
 name|item
 operator|->
@@ -1947,7 +1973,11 @@ argument_list|,
 name|PATHSPEC_ALL_MAGIC
 operator|&
 operator|~
+operator|(
 name|PATHSPEC_FROMTOP
+operator||
+name|PATHSPEC_LITERAL
+operator|)
 argument_list|,
 name|PATHSPEC_PREFER_CWD
 argument_list|,
