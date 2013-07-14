@@ -1601,9 +1601,8 @@ name|prefix
 else|:
 name|NULL
 argument_list|,
+operator|&
 name|pathspec
-operator|.
-name|raw
 argument_list|,
 literal|0
 argument_list|)
