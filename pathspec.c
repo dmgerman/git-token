@@ -1773,5 +1773,32 @@ expr_stmt|;
 block|}
 end_function
 
+begin_function
+DECL|function|free_pathspec
+name|void
+name|free_pathspec
+parameter_list|(
+name|struct
+name|pathspec
+modifier|*
+name|pathspec
+parameter_list|)
+block|{
+name|free
+argument_list|(
+name|pathspec
+operator|->
+name|items
+argument_list|)
+expr_stmt|;
+name|pathspec
+operator|->
+name|items
+operator|=
+name|NULL
+expr_stmt|;
+block|}
+end_function
+
 end_unit
 

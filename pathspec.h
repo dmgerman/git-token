@@ -245,23 +245,6 @@ end_define
 
 begin_function_decl
 specifier|extern
-name|int
-name|init_pathspec
-parameter_list|(
-name|struct
-name|pathspec
-modifier|*
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-modifier|*
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-specifier|extern
 name|void
 name|parse_pathspec
 parameter_list|(
