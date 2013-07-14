@@ -940,8 +940,6 @@ init|=
 name|common_prefix
 argument_list|(
 name|pattern
-operator|->
-name|raw
 argument_list|)
 decl_stmt|;
 name|overlay_tree_on_cache
