@@ -1626,11 +1626,10 @@ name|report_path_error
 argument_list|(
 name|ps_matched
 argument_list|,
+operator|&
 name|opts
 operator|->
 name|pathspec
-operator|.
-name|raw
 argument_list|,
 name|opts
 operator|->
