@@ -643,7 +643,10 @@ name|i
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Invalid pathspec magic '%.*s' in '%s'"
+argument_list|)
 argument_list|,
 operator|(
 name|int
@@ -665,7 +668,10 @@ literal|')'
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Missing ')' at the end of pathspec magic in '%s'"
+argument_list|)
 argument_list|,
 name|elt
 argument_list|)
@@ -762,7 +768,10 @@ name|i
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Unimplemented pathspec magic '%c' in '%s'"
+argument_list|)
 argument_list|,
 name|ch
 argument_list|,
