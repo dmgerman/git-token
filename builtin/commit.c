@@ -6627,11 +6627,10 @@ name|REFRESH_QUIET
 operator||
 name|REFRESH_UNMERGED
 argument_list|,
+operator|&
 name|s
 operator|.
 name|pathspec
-operator|.
-name|raw
 argument_list|,
 name|NULL
 argument_list|,

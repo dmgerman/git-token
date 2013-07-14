@@ -1414,9 +1414,8 @@ name|the_index
 argument_list|,
 name|REFRESH_QUIET
 argument_list|,
+operator|&
 name|pathspec
-operator|.
-name|raw
 argument_list|,
 name|NULL
 argument_list|,
