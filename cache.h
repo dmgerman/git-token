@@ -2028,6 +2028,14 @@ name|GIT_NOGLOB_PATHSPECS_ENVIRONMENT
 value|"GIT_NOGLOB_PATHSPECS"
 end_define
 
+begin_define
+DECL|macro|GIT_ICASE_PATHSPECS_ENVIRONMENT
+define|#
+directive|define
+name|GIT_ICASE_PATHSPECS_ENVIRONMENT
+value|"GIT_ICASE_PATHSPECS"
+end_define
+
 begin_comment
 comment|/*  * This environment variable is expected to contain a boolean indicating  * whether we should or should not treat:  *  *   GIT_DIR=foo.git git ...  *  * as if GIT_WORK_TREE=. was given. It's not expected that users will make use  * of this, but we use it internally to communicate to sub-processes that we  * are in a bare repo. If not set, defaults to true.  */
 end_comment

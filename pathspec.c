@@ -167,7 +167,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Magic pathspec  *  * Possible future magic semantics include stuff like:  *  *	{ PATHSPEC_ICASE, '\0', "icase" },  *	{ PATHSPEC_RECURSIVE, '*', "recursive" },  *	{ PATHSPEC_REGEXP, '\0', "regexp" },  *  */
+comment|/*  * Magic pathspec  *  * Possible future magic semantics include stuff like:  *  *	{ PATHSPEC_RECURSIVE, '*', "recursive" },  *	{ PATHSPEC_REGEXP, '\0', "regexp" },  *  */
 end_comment
 
 begin_struct
@@ -219,6 +219,14 @@ block|,
 literal|'\0'
 block|,
 literal|"glob"
+block|}
+block|,
+block|{
+name|PATHSPEC_ICASE
+block|,
+literal|'\0'
+block|,
+literal|"icase"
 block|}
 block|, }
 struct|;
@@ -283,6 +291,13 @@ decl_stmt|;
 specifier|static
 name|int
 name|noglob_global
+init|=
+operator|-
+literal|1
+decl_stmt|;
+specifier|static
+name|int
+name|icase_global
 init|=
 operator|-
 literal|1
@@ -398,6 +413,29 @@ argument_list|(
 literal|"global 'glob' and 'noglob' pathspec settings are incompatible"
 argument_list|)
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|icase_global
+operator|<
+literal|0
+condition|)
+name|icase_global
+operator|=
+name|git_env_bool
+argument_list|(
+name|GIT_ICASE_PATHSPECS_ENVIRONMENT
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|icase_global
+condition|)
+name|global_magic
+operator||=
+name|PATHSPEC_ICASE
 expr_stmt|;
 if|if
 condition|(

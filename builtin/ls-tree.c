@@ -922,6 +922,8 @@ operator|&
 name|pathspec
 argument_list|,
 name|PATHSPEC_GLOB
+operator||
+name|PATHSPEC_ICASE
 argument_list|,
 name|PATHSPEC_PREFER_CWD
 argument_list|,
