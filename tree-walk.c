@@ -29,6 +29,12 @@ directive|include
 file|"tree.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"pathspec.h"
+end_include
+
 begin_function
 DECL|function|get_mode
 specifier|static

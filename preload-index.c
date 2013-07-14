@@ -9,6 +9,12 @@ directive|include
 file|"cache.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"pathspec.h"
+end_include
+
 begin_ifdef
 ifdef|#
 directive|ifdef

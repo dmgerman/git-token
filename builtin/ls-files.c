@@ -51,6 +51,12 @@ directive|include
 file|"string-list.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"pathspec.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|abbrev
 specifier|static

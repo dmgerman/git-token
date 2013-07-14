@@ -27,6 +27,12 @@ directive|include
 file|"wildmatch.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"pathspec.h"
+end_include
+
 begin_struct
 DECL|struct|path_simplify
 struct|struct

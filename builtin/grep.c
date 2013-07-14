@@ -87,6 +87,12 @@ directive|include
 file|"dir.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"pathspec.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|grep_usage
 specifier|static

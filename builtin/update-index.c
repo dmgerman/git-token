@@ -51,6 +51,12 @@ directive|include
 file|"parse-options.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"pathspec.h"
+end_include
+
 begin_comment
 comment|/*  * Default to not allowing changes to the list of files. The  * tool doesn't actually care, but this makes it harder to add  * files to the revision control by mistake by doing something  * like "git update-index *" and suddenly having all the object  * files be revision controlled.  */
 end_comment
