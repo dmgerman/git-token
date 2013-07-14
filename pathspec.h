@@ -235,6 +235,14 @@ name|PATHSPEC_PREFIX_ORIGIN
 value|(1<<6)
 end_define
 
+begin_define
+DECL|macro|PATHSPEC_KEEP_ORDER
+define|#
+directive|define
+name|PATHSPEC_KEEP_ORDER
+value|(1<<7)
+end_define
+
 begin_function_decl
 specifier|extern
 name|int
