@@ -177,6 +177,18 @@ DECL|macro|PATHSPEC_MAXDEPTH_VALID
 comment|/* max_depth field is valid */
 end_comment
 
+begin_comment
+comment|/* strip the trailing slash if the given path is a gitlink */
+end_comment
+
+begin_define
+DECL|macro|PATHSPEC_STRIP_SUBMODULE_SLASH_CHEAP
+define|#
+directive|define
+name|PATHSPEC_STRIP_SUBMODULE_SLASH_CHEAP
+value|(1<<3)
+end_define
+
 begin_function_decl
 specifier|extern
 name|int
