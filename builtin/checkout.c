@@ -1499,11 +1499,10 @@ if|if
 condition|(
 name|read_cache_preload
 argument_list|(
+operator|&
 name|opts
 operator|->
 name|pathspec
-operator|.
-name|raw
 argument_list|)
 operator|<
 literal|0
