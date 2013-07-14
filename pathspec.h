@@ -41,12 +41,20 @@ value|(1<<2)
 end_define
 
 begin_define
+DECL|macro|PATHSPEC_GLOB
+define|#
+directive|define
+name|PATHSPEC_GLOB
+value|(1<<3)
+end_define
+
+begin_define
 DECL|macro|PATHSPEC_ALL_MAGIC
 define|#
 directive|define
 name|PATHSPEC_ALL_MAGIC
 define|\
-value|(PATHSPEC_FROMTOP	| \ 	 PATHSPEC_MAXDEPTH	| \ 	 PATHSPEC_LITERAL)
+value|(PATHSPEC_FROMTOP	| \ 	 PATHSPEC_MAXDEPTH	| \ 	 PATHSPEC_LITERAL	| \ 	 PATHSPEC_GLOB)
 end_define
 
 begin_define

@@ -921,7 +921,7 @@ argument_list|(
 operator|&
 name|pathspec
 argument_list|,
-literal|0
+name|PATHSPEC_GLOB
 argument_list|,
 name|PATHSPEC_PREFER_CWD
 argument_list|,

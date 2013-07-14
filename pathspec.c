@@ -167,7 +167,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Magic pathspec  *  * Possible future magic semantics include stuff like:  *  *	{ PATHSPEC_NOGLOB, '!', "noglob" },  *	{ PATHSPEC_ICASE, '\0', "icase" },  *	{ PATHSPEC_RECURSIVE, '*', "recursive" },  *	{ PATHSPEC_REGEXP, '\0', "regexp" },  *  */
+comment|/*  * Magic pathspec  *  * Possible future magic semantics include stuff like:  *  *	{ PATHSPEC_ICASE, '\0', "icase" },  *	{ PATHSPEC_RECURSIVE, '*', "recursive" },  *	{ PATHSPEC_REGEXP, '\0', "regexp" },  *  */
 end_comment
 
 begin_struct
@@ -211,6 +211,14 @@ block|,
 literal|0
 block|,
 literal|"literal"
+block|}
+block|,
+block|{
+name|PATHSPEC_GLOB
+block|,
+literal|'\0'
+block|,
+literal|"glob"
 block|}
 block|, }
 struct|;
@@ -261,6 +269,20 @@ block|{
 specifier|static
 name|int
 name|literal_global
+init|=
+operator|-
+literal|1
+decl_stmt|;
+specifier|static
+name|int
+name|glob_global
+init|=
+operator|-
+literal|1
+decl_stmt|;
+specifier|static
+name|int
+name|noglob_global
 init|=
 operator|-
 literal|1
@@ -324,6 +346,82 @@ condition|)
 name|global_magic
 operator||=
 name|PATHSPEC_LITERAL
+expr_stmt|;
+if|if
+condition|(
+name|glob_global
+operator|<
+literal|0
+condition|)
+name|glob_global
+operator|=
+name|git_env_bool
+argument_list|(
+name|GIT_GLOB_PATHSPECS_ENVIRONMENT
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|glob_global
+condition|)
+name|global_magic
+operator||=
+name|PATHSPEC_GLOB
+expr_stmt|;
+if|if
+condition|(
+name|noglob_global
+operator|<
+literal|0
+condition|)
+name|noglob_global
+operator|=
+name|git_env_bool
+argument_list|(
+name|GIT_NOGLOB_PATHSPECS_ENVIRONMENT
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|glob_global
+operator|&&
+name|noglob_global
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"global 'glob' and 'noglob' pathspec settings are incompatible"
+argument_list|)
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|(
+name|global_magic
+operator|&
+name|PATHSPEC_LITERAL
+operator|)
+operator|&&
+operator|(
+name|global_magic
+operator|&
+operator|~
+name|PATHSPEC_LITERAL
+operator|)
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"global 'literal' pathspec setting is incompatible "
+literal|"with all other global pathspec settings"
+argument_list|)
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
@@ -697,6 +795,42 @@ name|p_short_magic
 operator|=
 name|short_magic
 expr_stmt|;
+comment|/* --noglob-pathspec adds :(literal) _unless_ :(glob) is specifed */
+if|if
+condition|(
+name|noglob_global
+operator|&&
+operator|!
+operator|(
+name|magic
+operator|&
+name|PATHSPEC_GLOB
+operator|)
+condition|)
+name|global_magic
+operator||=
+name|PATHSPEC_LITERAL
+expr_stmt|;
+comment|/* --glob-pathspec is overriden by :(literal) */
+if|if
+condition|(
+operator|(
+name|global_magic
+operator|&
+name|PATHSPEC_GLOB
+operator|)
+operator|&&
+operator|(
+name|magic
+operator|&
+name|PATHSPEC_LITERAL
+operator|)
+condition|)
+name|global_magic
+operator|&=
+operator|~
+name|PATHSPEC_GLOB
+expr_stmt|;
 name|magic
 operator||=
 name|global_magic
@@ -721,6 +855,30 @@ condition|)
 name|die
 argument_list|(
 literal|"BUG: 'prefix' magic is supposed to be used at worktree's root"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|(
+name|magic
+operator|&
+name|PATHSPEC_LITERAL
+operator|)
+operator|&&
+operator|(
+name|magic
+operator|&
+name|PATHSPEC_GLOB
+operator|)
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"%s: 'literal' and 'glob' are incompatible"
+argument_list|)
+argument_list|,
+name|elt
 argument_list|)
 expr_stmt|;
 if|if
@@ -1193,6 +1351,17 @@ literal|0
 expr_stmt|;
 if|if
 condition|(
+name|magic
+operator|&
+name|PATHSPEC_GLOB
+condition|)
+block|{
+comment|/* 		 * FIXME: should we enable ONESTAR in _GLOB for 		 * pattern "* * / * . c"? 		 */
+block|}
+else|else
+block|{
+if|if
+condition|(
 name|item
 operator|->
 name|nowildcard_len
@@ -1231,6 +1400,7 @@ name|flags
 operator||=
 name|PATHSPEC_ONESTAR
 expr_stmt|;
+block|}
 comment|/* sanity checks, pathspec matchers assume these are sane */
 name|assert
 argument_list|(
