@@ -1264,10 +1264,12 @@ name|opt
 operator|->
 name|pathspec
 operator|.
-name|raw
+name|items
 index|[
 literal|0
 index|]
+operator|.
+name|match
 expr_stmt|;
 name|diff_opts
 operator|.
@@ -1382,10 +1384,12 @@ name|opt
 operator|->
 name|pathspec
 operator|.
-name|raw
+name|items
 index|[
 literal|0
 index|]
+operator|.
+name|match
 argument_list|)
 condition|)
 block|{
