@@ -94,6 +94,12 @@ name|char
 modifier|*
 name|match
 decl_stmt|;
+DECL|member|original
+specifier|const
+name|char
+modifier|*
+name|original
+decl_stmt|;
 DECL|member|magic
 name|unsigned
 name|magic
