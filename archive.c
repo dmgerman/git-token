@@ -41,12 +41,6 @@ directive|include
 file|"unpack-trees.h"
 end_include
 
-begin_include
-include|#
-directive|include
-file|"pathspec.h"
-end_include
-
 begin_decl_stmt
 DECL|variable|archive_usage
 specifier|static
@@ -981,10 +975,6 @@ name|struct
 name|tree_desc
 name|t
 decl_stmt|;
-name|struct
-name|pathspec
-name|pathspec
-decl_stmt|;
 name|int
 name|err
 decl_stmt|;
@@ -1201,16 +1191,6 @@ name|the_index
 argument_list|)
 expr_stmt|;
 block|}
-name|init_pathspec
-argument_list|(
-operator|&
-name|pathspec
-argument_list|,
-name|args
-operator|->
-name|pathspec
-argument_list|)
-expr_stmt|;
 name|err
 operator|=
 name|read_tree_recursive
@@ -1226,18 +1206,14 @@ argument_list|,
 literal|0
 argument_list|,
 operator|&
+name|args
+operator|->
 name|pathspec
 argument_list|,
 name|write_archive_entry
 argument_list|,
 operator|&
 name|context
-argument_list|)
-expr_stmt|;
-name|free_pathspec
-argument_list|(
-operator|&
-name|pathspec
 argument_list|)
 expr_stmt|;
 if|if
@@ -1403,10 +1379,16 @@ decl_stmt|;
 name|int
 name|ret
 decl_stmt|;
-name|init_pathspec
+name|parse_pathspec
 argument_list|(
 operator|&
 name|pathspec
+argument_list|,
+literal|0
+argument_list|,
+literal|0
+argument_list|,
+literal|""
 argument_list|,
 name|paths
 argument_list|)
@@ -1463,14 +1445,18 @@ modifier|*
 name|ar_args
 parameter_list|)
 block|{
+comment|/* 	 * must be consistent with parse_pathspec in path_exists() 	 * Also if pathspec patterns are dependent, we're in big 	 * trouble as we test each one separately 	 */
+name|parse_pathspec
+argument_list|(
+operator|&
 name|ar_args
 operator|->
 name|pathspec
-operator|=
-name|pathspec
-operator|=
-name|get_pathspec
-argument_list|(
+argument_list|,
+literal|0
+argument_list|,
+name|PATHSPEC_PREFER_FULL
+argument_list|,
 literal|""
 argument_list|,
 name|pathspec
@@ -1506,7 +1492,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"path not found: %s"
+name|_
+argument_list|(
+literal|"pathspec '%s' did not match any files"
+argument_list|)
 argument_list|,
 operator|*
 name|pathspec
