@@ -213,6 +213,14 @@ name|PATHSPEC_STRIP_SUBMODULE_SLASH_EXPENSIVE
 value|(1<<5)
 end_define
 
+begin_define
+DECL|macro|PATHSPEC_PREFIX_ORIGIN
+define|#
+directive|define
+name|PATHSPEC_PREFIX_ORIGIN
+value|(1<<6)
+end_define
+
 begin_function_decl
 specifier|extern
 name|int
