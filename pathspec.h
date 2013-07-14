@@ -189,6 +189,30 @@ name|PATHSPEC_STRIP_SUBMODULE_SLASH_CHEAP
 value|(1<<3)
 end_define
 
+begin_comment
+comment|/* die if a symlink is part of the given path's directory */
+end_comment
+
+begin_define
+DECL|macro|PATHSPEC_SYMLINK_LEADING_PATH
+define|#
+directive|define
+name|PATHSPEC_SYMLINK_LEADING_PATH
+value|(1<<4)
+end_define
+
+begin_comment
+comment|/*  * This is like a combination of ..LEADING_PATH and .._SLASH_CHEAP  * (but not the same): it strips the trailing slash if the given path  * is a gitlink but also checks and dies if gitlink is part of the  * leading path (i.e. the given path goes beyond a submodule). It's  * safer than _SLASH_CHEAP and also more expensive.  */
+end_comment
+
+begin_define
+DECL|macro|PATHSPEC_STRIP_SUBMODULE_SLASH_EXPENSIVE
+define|#
+directive|define
+name|PATHSPEC_STRIP_SUBMODULE_SLASH_EXPENSIVE
+value|(1<<5)
+end_define
+
 begin_function_decl
 specifier|extern
 name|int
