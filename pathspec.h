@@ -309,16 +309,6 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|int
-name|limit_pathspec_to_literal
-parameter_list|(
-name|void
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-specifier|extern
 name|char
 modifier|*
 name|find_pathspecs_matching_against_index
