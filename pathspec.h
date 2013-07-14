@@ -125,6 +125,36 @@ block|}
 struct|;
 end_struct
 
+begin_comment
+comment|/* parse_pathspec flags */
+end_comment
+
+begin_define
+DECL|macro|PATHSPEC_PREFER_CWD
+define|#
+directive|define
+name|PATHSPEC_PREFER_CWD
+value|(1<<0)
+end_define
+
+begin_comment
+DECL|macro|PATHSPEC_PREFER_CWD
+comment|/* No args means match cwd */
+end_comment
+
+begin_define
+DECL|macro|PATHSPEC_PREFER_FULL
+define|#
+directive|define
+name|PATHSPEC_PREFER_FULL
+value|(1<<1)
+end_define
+
+begin_comment
+DECL|macro|PATHSPEC_PREFER_FULL
+comment|/* No args means match everything */
+end_comment
+
 begin_function_decl
 specifier|extern
 name|int

@@ -1220,6 +1220,25 @@ operator|!
 name|prefix
 condition|)
 return|return;
+if|if
+condition|(
+operator|(
+name|flags
+operator|&
+name|PATHSPEC_PREFER_CWD
+operator|)
+operator|&&
+operator|(
+name|flags
+operator|&
+name|PATHSPEC_PREFER_FULL
+operator|)
+condition|)
+name|die
+argument_list|(
+literal|"BUG: PATHSPEC_PREFER_CWD and PATHSPEC_PREFER_FULL are incompatible"
+argument_list|)
+expr_stmt|;
 comment|/* No arguments with prefix -> prefix pathspec */
 if|if
 condition|(
@@ -1236,6 +1255,27 @@ index|[
 literal|2
 index|]
 decl_stmt|;
+if|if
+condition|(
+name|flags
+operator|&
+name|PATHSPEC_PREFER_FULL
+condition|)
+return|return;
+if|if
+condition|(
+operator|!
+operator|(
+name|flags
+operator|&
+name|PATHSPEC_PREFER_CWD
+operator|)
+condition|)
+name|die
+argument_list|(
+literal|"BUG: PATHSPEC_PREFER_CWD requires arguments"
+argument_list|)
+expr_stmt|;
 name|pathspec
 operator|->
 name|items
@@ -1545,7 +1585,7 @@ operator|&
 operator|~
 name|PATHSPEC_FROMTOP
 argument_list|,
-literal|0
+name|PATHSPEC_PREFER_CWD
 argument_list|,
 name|prefix
 argument_list|,
