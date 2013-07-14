@@ -1648,7 +1648,6 @@ end_comment
 
 begin_function
 DECL|function|simple_length
-specifier|static
 name|int
 name|simple_length
 parameter_list|(
@@ -1701,7 +1700,6 @@ end_function
 
 begin_function
 DECL|function|no_wildcard
-specifier|static
 name|int
 name|no_wildcard
 parameter_list|(
