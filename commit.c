@@ -3253,7 +3253,6 @@ end_function
 
 begin_function
 DECL|function|compare_commits_by_commit_date
-specifier|static
 name|int
 name|compare_commits_by_commit_date
 parameter_list|(
