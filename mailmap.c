@@ -42,6 +42,17 @@ parameter_list|)
 value|fprintf(stderr, __VA_ARGS__)
 end_define
 
+begin_define
+DECL|macro|debug_str
+define|#
+directive|define
+name|debug_str
+parameter_list|(
+name|X
+parameter_list|)
+value|((X) ? (X) : "(none)")
+end_define
+
 begin_else
 else|#
 directive|else
@@ -62,6 +73,27 @@ parameter_list|,
 modifier|...
 parameter_list|)
 block|{}
+end_function
+
+begin_function
+DECL|function|debug_str
+specifier|static
+specifier|inline
+specifier|const
+name|char
+modifier|*
+name|debug_str
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|s
+parameter_list|)
+block|{
+return|return
+name|s
+return|;
+block|}
 end_function
 
 begin_endif
@@ -166,13 +198,19 @@ literal|"mailmap: -- complex: '%s' -> '%s'<%s>\n"
 argument_list|,
 name|s
 argument_list|,
+name|debug_str
+argument_list|(
 name|mi
 operator|->
 name|name
+argument_list|)
 argument_list|,
+name|debug_str
+argument_list|(
 name|mi
 operator|->
 name|email
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|free
@@ -237,13 +275,19 @@ name|debug_mm
 argument_list|(
 literal|"mailmap: - simple: '%s'<%s>\n"
 argument_list|,
+name|debug_str
+argument_list|(
 name|me
 operator|->
 name|name
+argument_list|)
 argument_list|,
+name|debug_str
+argument_list|(
 name|me
 operator|->
 name|email
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|free
@@ -565,13 +609,22 @@ name|debug_mm
 argument_list|(
 literal|"mailmap:  '%s'<%s> -> '%s'<%s>\n"
 argument_list|,
+name|debug_str
+argument_list|(
 name|old_name
+argument_list|)
 argument_list|,
 name|old_email
 argument_list|,
+name|debug_str
+argument_list|(
 name|new_name
+argument_list|)
 argument_list|,
+name|debug_str
+argument_list|(
 name|new_email
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1663,8 +1716,11 @@ operator|)
 operator|*
 name|namelen
 argument_list|,
+name|debug_str
+argument_list|(
 operator|*
 name|name
+argument_list|)
 argument_list|,
 operator|(
 name|int
@@ -1672,8 +1728,11 @@ operator|)
 operator|*
 name|emaillen
 argument_list|,
+name|debug_str
+argument_list|(
 operator|*
 name|email
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|item
@@ -1852,8 +1911,11 @@ operator|)
 operator|*
 name|namelen
 argument_list|,
+name|debug_str
+argument_list|(
 operator|*
 name|name
+argument_list|)
 argument_list|,
 operator|(
 name|int
@@ -1861,8 +1923,11 @@ operator|)
 operator|*
 name|emaillen
 argument_list|,
+name|debug_str
+argument_list|(
 operator|*
 name|email
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
