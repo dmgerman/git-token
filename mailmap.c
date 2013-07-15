@@ -1775,8 +1775,7 @@ operator|.
 name|nr
 condition|)
 block|{
-comment|/* The item has multiple items, so we'll look up on name too */
-comment|/* If the name is not found, we choose the simple entry      */
+comment|/* 			 * The item has multiple items, so we'll look up on 			 * name too. If the name is not found, we choose the 			 * simple entry. 			 */
 name|struct
 name|string_list_item
 modifier|*
