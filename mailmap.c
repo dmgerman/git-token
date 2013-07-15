@@ -1658,10 +1658,10 @@ argument_list|(
 literal|"map_user: map '%.*s'<%.*s>\n"
 argument_list|,
 operator|*
-name|name
+name|namelen
 argument_list|,
 operator|*
-name|namelen
+name|name
 argument_list|,
 operator|*
 name|emaillen
