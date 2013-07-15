@@ -1838,7 +1838,7 @@ expr_stmt|;
 block|}
 name|debug_mm
 argument_list|(
-literal|"map_user:  to '%.*s'<.*%s>\n"
+literal|"map_user:  to '%.*s'<%.*s>\n"
 argument_list|,
 operator|*
 name|namelen
