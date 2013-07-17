@@ -677,12 +677,6 @@ DECL|struct|diff_options
 struct|struct
 name|diff_options
 block|{
-DECL|member|filter
-specifier|const
-name|char
-modifier|*
-name|filter
-decl_stmt|;
 DECL|member|orderfile
 specifier|const
 name|char
@@ -714,6 +708,12 @@ decl_stmt|;
 DECL|member|flags
 name|unsigned
 name|flags
+decl_stmt|;
+comment|/* diff-filter bits */
+DECL|member|filter
+name|unsigned
+name|int
+name|filter
 decl_stmt|;
 DECL|member|use_color
 name|int
