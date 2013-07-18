@@ -3104,6 +3104,9 @@ name|struct
 name|transport
 modifier|*
 name|transport
+parameter_list|,
+name|int
+name|check_connectivity
 parameter_list|)
 block|{
 specifier|const
@@ -3114,6 +3117,11 @@ name|rm
 init|=
 name|mapped_refs
 decl_stmt|;
+if|if
+condition|(
+name|check_connectivity
+condition|)
+block|{
 if|if
 condition|(
 literal|0
@@ -3164,6 +3172,7 @@ literal|"done\n"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|refs
@@ -5232,6 +5241,9 @@ operator|.
 name|buf
 argument_list|,
 name|transport
+argument_list|,
+operator|!
+name|is_local
 argument_list|)
 expr_stmt|;
 name|update_head
