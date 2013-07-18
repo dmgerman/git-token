@@ -12483,7 +12483,7 @@ name|object_info
 name|oi
 init|=
 block|{
-literal|0
+name|NULL
 block|}
 decl_stmt|;
 name|oi
