@@ -7575,6 +7575,23 @@ name|offset
 init|=
 literal|0
 decl_stmt|;
+specifier|static
+specifier|const
+name|unsigned
+name|int
+name|max_codepoint
+index|[]
+init|=
+block|{
+literal|0x7f
+block|,
+literal|0x7ff
+block|,
+literal|0xffff
+block|,
+literal|0x10ffff
+block|}
+decl_stmt|;
 while|while
 condition|(
 name|len
@@ -7592,6 +7609,16 @@ name|int
 name|bytes
 decl_stmt|,
 name|bad_offset
+decl_stmt|;
+name|unsigned
+name|int
+name|codepoint
+decl_stmt|;
+name|unsigned
+name|int
+name|min_val
+decl_stmt|,
+name|max_val
 decl_stmt|;
 name|len
 operator|--
@@ -7633,16 +7660,16 @@ name|bytes
 operator|++
 expr_stmt|;
 block|}
-comment|/* Must be between 1 and 5 more bytes */
+comment|/* 		 * Must be between 1 and 3 more bytes.  Longer sequences result in 		 * codepoints beyond U+10FFFF, which are guaranteed never to exist. 		 */
 if|if
 condition|(
 name|bytes
 operator|<
 literal|1
 operator|||
+literal|3
+operator|<
 name|bytes
-operator|>
-literal|5
 condition|)
 return|return
 name|bad_offset
@@ -7657,6 +7684,35 @@ condition|)
 return|return
 name|bad_offset
 return|;
+comment|/* 		 * Place the encoded bits at the bottom of the value and compute the 		 * valid range. 		 */
+name|codepoint
+operator|=
+operator|(
+name|c
+operator|&
+literal|0x7f
+operator|)
+operator|>>
+name|bytes
+expr_stmt|;
+name|min_val
+operator|=
+name|max_codepoint
+index|[
+name|bytes
+operator|-
+literal|1
+index|]
+operator|+
+literal|1
+expr_stmt|;
+name|max_val
+operator|=
+name|max_codepoint
+index|[
+name|bytes
+index|]
+expr_stmt|;
 name|offset
 operator|+=
 name|bytes
@@ -7668,6 +7724,17 @@ expr_stmt|;
 comment|/* And verify that they are good continuation bytes */
 do|do
 block|{
+name|codepoint
+operator|<<=
+literal|6
+expr_stmt|;
+name|codepoint
+operator||=
+operator|*
+name|buf
+operator|&
+literal|0x3f
+expr_stmt|;
 if|if
 condition|(
 operator|(
@@ -7690,7 +7757,62 @@ operator|--
 name|bytes
 condition|)
 do|;
-comment|/* We could/should check the value and length here too */
+comment|/* Reject codepoints that are out of range for the sequence length. */
+if|if
+condition|(
+name|codepoint
+operator|<
+name|min_val
+operator|||
+name|codepoint
+operator|>
+name|max_val
+condition|)
+return|return
+name|bad_offset
+return|;
+comment|/* Surrogates are only for UTF-16 and cannot be encoded in UTF-8. */
+if|if
+condition|(
+operator|(
+name|codepoint
+operator|&
+literal|0x1ff800
+operator|)
+operator|==
+literal|0xd800
+condition|)
+return|return
+name|bad_offset
+return|;
+comment|/* U+xxFFFE and U+xxFFFF are guaranteed non-characters. */
+if|if
+condition|(
+operator|(
+name|codepoint
+operator|&
+literal|0xffffe
+operator|)
+operator|==
+literal|0xfffe
+condition|)
+return|return
+name|bad_offset
+return|;
+comment|/* So are anything in the range U+FDD0..U+FDEF. */
+if|if
+condition|(
+name|codepoint
+operator|>=
+literal|0xfdd0
+operator|&&
+name|codepoint
+operator|<=
+literal|0xfdef
+condition|)
+return|return
+name|bad_offset
+return|;
 block|}
 return|return
 operator|-
@@ -7700,7 +7822,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * This verifies that the buffer is in proper utf8 format.  *  * If it isn't, it assumes any non-utf8 characters are Latin1,  * and does the conversion.  *  * Fixme: we should probably also disallow overlong forms and  * invalid characters. But we don't do that currently.  */
+comment|/*  * This verifies that the buffer is in proper utf8 format.  *  * If it isn't, it assumes any non-utf8 characters are Latin1,  * and does the conversion.  */
 end_comment
 
 begin_function
