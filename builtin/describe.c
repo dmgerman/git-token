@@ -2678,6 +2678,8 @@ name|args
 argument_list|,
 literal|"name-rev"
 argument_list|,
+literal|"--peel-tag"
+argument_list|,
 literal|"--name-only"
 argument_list|,
 literal|"--no-undefined"

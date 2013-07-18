@@ -1744,6 +1744,10 @@ decl_stmt|,
 name|always
 init|=
 literal|0
+decl_stmt|,
+name|peel_tag
+init|=
+literal|0
 decl_stmt|;
 name|struct
 name|name_ref_data
@@ -1883,6 +1887,33 @@ argument_list|(
 literal|"show abbreviated commit object as fallback"
 argument_list|)
 argument_list|)
+block|,
+block|{
+comment|/* A Hidden OPT_BOOL */
+name|OPTION_SET_INT
+block|,
+literal|0
+block|,
+literal|"peel-tag"
+block|,
+operator|&
+name|peel_tag
+block|,
+name|NULL
+block|,
+name|N_
+argument_list|(
+literal|"dereference tags in the input (internal use)"
+argument_list|)
+block|,
+name|PARSE_OPT_NOARG
+operator||
+name|PARSE_OPT_HIDDEN
+block|,
+name|NULL
+block|,
+literal|1
+block|, 		}
 block|,
 name|OPT_END
 argument_list|()
@@ -2091,6 +2122,39 @@ operator|=
 name|commit
 operator|->
 name|date
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|peel_tag
+condition|)
+block|{
+if|if
+condition|(
+operator|!
+name|commit
+condition|)
+block|{
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"Could not get commit for %s. Skipping.\n"
+argument_list|,
+operator|*
+name|argv
+argument_list|)
+expr_stmt|;
+continue|continue;
+block|}
+name|object
+operator|=
+operator|(
+expr|struct
+name|object
+operator|*
+operator|)
+name|commit
 expr_stmt|;
 block|}
 name|add_object_array
