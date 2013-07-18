@@ -3703,12 +3703,12 @@ argument_list|,
 literal|"date-order"
 argument_list|,
 operator|&
-name|lifo
+name|sort_order
 argument_list|,
 name|N_
 argument_list|(
-literal|"show commits where no parent comes before its "
-literal|"children"
+literal|"topologically sort, maintaining date order "
+literal|"where possible"
 argument_list|)
 argument_list|,
 literal|0
