@@ -97,14 +97,8 @@ begin_comment
 comment|/* NULL terminated */
 end_comment
 
-begin_macro
-name|__attribute__
-argument_list|(
-argument|(sentinel)
-argument_list|)
-end_macro
-
 begin_function_decl
+name|LAST_ARG_MUST_BE_NULL
 specifier|extern
 name|int
 name|execl_git_cmd

@@ -109,14 +109,8 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
-begin_macro
-name|__attribute__
-argument_list|(
-argument|(sentinel)
-argument_list|)
-end_macro
-
 begin_function_decl
+name|LAST_ARG_MUST_BE_NULL
 name|void
 name|argv_array_pushl
 parameter_list|(
