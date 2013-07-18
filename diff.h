@@ -1985,18 +1985,6 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|void
-name|handle_deprecated_show_diff_q
-parameter_list|(
-name|struct
-name|diff_options
-modifier|*
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-specifier|extern
 name|int
 name|print_stat_summary
 parameter_list|(

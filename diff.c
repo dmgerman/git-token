@@ -20277,41 +20277,6 @@ return|;
 block|}
 end_function
 
-begin_comment
-comment|/* Used only by "diff-files" and "diff --no-index" */
-end_comment
-
-begin_function
-DECL|function|handle_deprecated_show_diff_q
-name|void
-name|handle_deprecated_show_diff_q
-parameter_list|(
-name|struct
-name|diff_options
-modifier|*
-name|opt
-parameter_list|)
-block|{
-name|warning
-argument_list|(
-literal|"'diff -q' and 'diff-files -q' are deprecated."
-argument_list|)
-expr_stmt|;
-name|warning
-argument_list|(
-literal|"Use 'diff --diff-filter=d' instead to ignore deleted filepairs."
-argument_list|)
-expr_stmt|;
-name|parse_diff_filter_opt
-argument_list|(
-literal|"d"
-argument_list|,
-name|opt
-argument_list|)
-expr_stmt|;
-block|}
-end_function
-
 begin_function
 DECL|function|diff_opt_parse
 name|int
