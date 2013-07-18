@@ -1290,6 +1290,14 @@ name|output_format
 operator|=
 name|DIFF_FORMAT_PATCH
 expr_stmt|;
+name|rev
+operator|.
+name|diffopt
+operator|.
+name|use_color
+operator|=
+literal|0
+expr_stmt|;
 name|DIFF_OPT_SET
 argument_list|(
 operator|&
