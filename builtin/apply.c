@@ -3776,11 +3776,6 @@ parameter_list|)
 block|{
 name|size_t
 name|len
-init|=
-name|strlen
-argument_list|(
-name|line
-argument_list|)
 decl_stmt|;
 name|size_t
 name|date_len
