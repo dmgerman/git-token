@@ -3573,8 +3573,6 @@ name|struct
 name|transfer_request
 modifier|*
 name|request
-init|=
-name|request_queue_head
 decl_stmt|;
 name|struct
 name|packed_git
