@@ -1299,10 +1299,6 @@ name|buffer
 operator|=
 name|NULL
 expr_stmt|;
-name|size
-operator|=
-literal|0
-expr_stmt|;
 block|}
 elseif|else
 if|if
