@@ -762,11 +762,11 @@ name|object
 modifier|*
 name|obj
 decl_stmt|;
-name|int
-name|eaten
-init|=
+operator|*
+name|eaten_p
+operator|=
 literal|0
-decl_stmt|;
+expr_stmt|;
 name|obj
 operator|=
 name|NULL
@@ -885,7 +885,8 @@ condition|)
 return|return
 name|NULL
 return|;
-name|eaten
+operator|*
+name|eaten_p
 operator|=
 literal|1
 expr_stmt|;
@@ -943,7 +944,8 @@ name|buffer
 operator|=
 name|buffer
 expr_stmt|;
-name|eaten
+operator|*
+name|eaten_p
 operator|=
 literal|1
 expr_stmt|;
@@ -1037,11 +1039,6 @@ operator|->
 name|type
 operator|=
 name|type
-expr_stmt|;
-operator|*
-name|eaten_p
-operator|=
-name|eaten
 expr_stmt|;
 return|return
 name|obj
