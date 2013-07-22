@@ -13057,7 +13057,7 @@ name|_LIBC
 end_ifndef
 
 begin_comment
-comment|/* Local function for parse_bracket_exp only used in case of NOT _LIBC.      Build the range expression which starts from START_ELEM, and ends      at END_ELEM.  The result are written to MBCSET and SBCSET.      RANGE_ALLOC is the allocated size of mbcset->range_starts, and      mbcset->range_ends, is a pointer argument sinse we may      update it.  */
+comment|/* Local function for parse_bracket_exp only used in case of NOT _LIBC.      Build the range expression which starts from START_ELEM, and ends      at END_ELEM.  The result are written to MBCSET and SBCSET.      RANGE_ALLOC is the allocated size of mbcset->range_starts, and      mbcset->range_ends, is a pointer argument since we may      update it.  */
 end_comment
 
 begin_function
@@ -13990,7 +13990,7 @@ name|char
 modifier|*
 name|extra
 decl_stmt|;
-comment|/* Local function for parse_bracket_exp used in _LIBC environement.      Seek the collating symbol entry correspondings to NAME.      Return the index of the symbol in the SYMB_TABLE.  */
+comment|/* Local function for parse_bracket_exp used in _LIBC environment.      Seek the collating symbol entry correspondings to NAME.      Return the index of the symbol in the SYMB_TABLE.  */
 specifier|auto
 specifier|inline
 name|int32_t
@@ -14457,7 +14457,7 @@ return|return
 name|UINT_MAX
 return|;
 block|}
-comment|/* Local function for parse_bracket_exp used in _LIBC environement.      Build the range expression which starts from START_ELEM, and ends      at END_ELEM.  The result are written to MBCSET and SBCSET.      RANGE_ALLOC is the allocated size of mbcset->range_starts, and      mbcset->range_ends, is a pointer argument sinse we may      update it.  */
+comment|/* Local function for parse_bracket_exp used in _LIBC environment.      Build the range expression which starts from START_ELEM, and ends      at END_ELEM.  The result are written to MBCSET and SBCSET.      RANGE_ALLOC is the allocated size of mbcset->range_starts, and      mbcset->range_ends, is a pointer argument since we may      update it.  */
 specifier|auto
 specifier|inline
 name|reg_errcode_t
@@ -14802,7 +14802,7 @@ return|return
 name|REG_NOERROR
 return|;
 block|}
-comment|/* Local function for parse_bracket_exp used in _LIBC environement.      Build the collating element which is represented by NAME.      The result are written to MBCSET and SBCSET.      COLL_SYM_ALLOC is the allocated size of mbcset->coll_sym, is a      pointer argument sinse we may update it.  */
+comment|/* Local function for parse_bracket_exp used in _LIBC environment.      Build the collating element which is represented by NAME.      The result are written to MBCSET and SBCSET.      COLL_SYM_ALLOC is the allocated size of mbcset->coll_sym, is a      pointer argument since we may update it.  */
 specifier|auto
 specifier|inline
 name|reg_errcode_t
@@ -16843,7 +16843,7 @@ block|}
 end_function
 
 begin_comment
-comment|/* Helper function for parse_bracket_exp.      Build the equivalence class which is represented by NAME.      The result are written to MBCSET and SBCSET.      EQUIV_CLASS_ALLOC is the allocated size of mbcset->equiv_classes,      is a pointer argument sinse we may update it.  */
+comment|/* Helper function for parse_bracket_exp.      Build the equivalence class which is represented by NAME.      The result are written to MBCSET and SBCSET.      EQUIV_CLASS_ALLOC is the allocated size of mbcset->equiv_classes,      is a pointer argument since we may update it.  */
 end_comment
 
 begin_function
@@ -17323,7 +17323,7 @@ block|}
 end_function
 
 begin_comment
-comment|/* Helper function for parse_bracket_exp.      Build the character class which is represented by NAME.      The result are written to MBCSET and SBCSET.      CHAR_CLASS_ALLOC is the allocated size of mbcset->char_classes,      is a pointer argument sinse we may update it.  */
+comment|/* Helper function for parse_bracket_exp.      Build the character class which is represented by NAME.      The result are written to MBCSET and SBCSET.      CHAR_CLASS_ALLOC is the allocated size of mbcset->char_classes,      is a pointer argument since we may update it.  */
 end_comment
 
 begin_function
