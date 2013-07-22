@@ -1895,6 +1895,14 @@ name|NEED_WORK_TREE
 block|}
 block|,
 block|{
+literal|"check-mailmap"
+block|,
+name|cmd_check_mailmap
+block|,
+name|RUN_SETUP
+block|}
+block|,
+block|{
 literal|"check-ref-format"
 block|,
 name|cmd_check_ref_format
