@@ -1061,7 +1061,7 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"cannot create temporary subproject %s"
+literal|"cannot create temporary submodule %s"
 argument_list|,
 name|path
 argument_list|)
@@ -1080,7 +1080,7 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"cannot create subproject directory %s"
+literal|"cannot create submodule directory %s"
 argument_list|,
 name|path
 argument_list|)

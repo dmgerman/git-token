@@ -3710,8 +3710,8 @@ name|sort_order
 argument_list|,
 name|N_
 argument_list|(
-literal|"show commits where no parent comes before its "
-literal|"children"
+literal|"topologically sort, maintaining date order "
+literal|"where possible"
 argument_list|)
 argument_list|,
 name|REV_SORT_BY_COMMIT_DATE
