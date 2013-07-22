@@ -158,6 +158,16 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|given_config_blob
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|given_config_blob
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|actions
 DECL|variable|types
 specifier|static
@@ -432,6 +442,26 @@ argument_list|,
 name|N_
 argument_list|(
 literal|"use given config file"
+argument_list|)
+argument_list|)
+block|,
+name|OPT_STRING
+argument_list|(
+literal|0
+argument_list|,
+literal|"blob"
+argument_list|,
+operator|&
+name|given_config_blob
+argument_list|,
+name|N_
+argument_list|(
+literal|"blob-id"
+argument_list|)
+argument_list|,
+name|N_
+argument_list|(
+literal|"read config from given blob object"
 argument_list|)
 argument_list|)
 block|,
@@ -1551,6 +1581,8 @@ name|values
 argument_list|,
 name|given_config_file
 argument_list|,
+name|given_config_blob
+argument_list|,
 name|respect_includes
 argument_list|)
 expr_stmt|;
@@ -1975,6 +2007,8 @@ name|NULL
 argument_list|,
 name|given_config_file
 argument_list|,
+name|given_config_blob
+argument_list|,
 name|respect_includes
 argument_list|)
 expr_stmt|;
@@ -2147,6 +2181,8 @@ name|NULL
 argument_list|,
 name|given_config_file
 argument_list|,
+name|given_config_blob
+argument_list|,
 name|respect_includes
 argument_list|)
 expr_stmt|;
@@ -2232,6 +2268,27 @@ block|}
 end_function
 
 begin_function
+DECL|function|check_blob_write
+specifier|static
+name|void
+name|check_blob_write
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+if|if
+condition|(
+name|given_config_blob
+condition|)
+name|die
+argument_list|(
+literal|"writing config blobs is not supported"
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
 DECL|function|cmd_config
 name|int
 name|cmd_config
@@ -2298,6 +2355,10 @@ operator|+
 operator|!
 operator|!
 name|given_config_file
+operator|+
+operator|!
+operator|!
+name|given_config_blob
 operator|>
 literal|1
 condition|)
@@ -2625,6 +2686,8 @@ name|NULL
 argument_list|,
 name|given_config_file
 argument_list|,
+name|given_config_blob
+argument_list|,
 name|respect_includes
 argument_list|)
 operator|<
@@ -2679,6 +2742,15 @@ argument_list|(
 literal|"not in a git directory"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|given_config_blob
+condition|)
+name|die
+argument_list|(
+literal|"editing blobs is not supported"
+argument_list|)
+expr_stmt|;
 name|git_config
 argument_list|(
 name|git_default_config
@@ -2714,6 +2786,9 @@ block|{
 name|int
 name|ret
 decl_stmt|;
+name|check_blob_write
+argument_list|()
+expr_stmt|;
 name|check_argc
 argument_list|(
 name|argc
@@ -2781,6 +2856,9 @@ operator|==
 name|ACTION_SET_ALL
 condition|)
 block|{
+name|check_blob_write
+argument_list|()
+expr_stmt|;
 name|check_argc
 argument_list|(
 name|argc
@@ -2834,6 +2912,9 @@ operator|==
 name|ACTION_ADD
 condition|)
 block|{
+name|check_blob_write
+argument_list|()
+expr_stmt|;
 name|check_argc
 argument_list|(
 name|argc
@@ -2884,6 +2965,9 @@ operator|==
 name|ACTION_REPLACE_ALL
 condition|)
 block|{
+name|check_blob_write
+argument_list|()
+expr_stmt|;
 name|check_argc
 argument_list|(
 name|argc
@@ -3049,6 +3133,9 @@ operator|==
 name|ACTION_UNSET
 condition|)
 block|{
+name|check_blob_write
+argument_list|()
+expr_stmt|;
 name|check_argc
 argument_list|(
 name|argc
@@ -3107,6 +3194,9 @@ operator|==
 name|ACTION_UNSET_ALL
 condition|)
 block|{
+name|check_blob_write
+argument_list|()
+expr_stmt|;
 name|check_argc
 argument_list|(
 name|argc
@@ -3148,6 +3238,9 @@ block|{
 name|int
 name|ret
 decl_stmt|;
+name|check_blob_write
+argument_list|()
+expr_stmt|;
 name|check_argc
 argument_list|(
 name|argc
@@ -3206,6 +3299,9 @@ block|{
 name|int
 name|ret
 decl_stmt|;
+name|check_blob_write
+argument_list|()
+expr_stmt|;
 name|check_argc
 argument_list|(
 name|argc
