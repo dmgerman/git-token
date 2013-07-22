@@ -14437,6 +14437,7 @@ specifier|static
 name|int
 name|read_file_or_gitlink
 parameter_list|(
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -14928,6 +14929,7 @@ specifier|static
 name|int
 name|verify_index_match
 parameter_list|(
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -15001,6 +15003,7 @@ name|strbuf
 modifier|*
 name|buf
 parameter_list|,
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -15134,6 +15137,7 @@ name|stat
 modifier|*
 name|st
 parameter_list|,
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -15760,6 +15764,7 @@ name|stat
 modifier|*
 name|st
 parameter_list|,
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -16178,6 +16183,7 @@ name|stat
 modifier|*
 name|st
 parameter_list|,
+specifier|const
 name|struct
 name|cache_entry
 modifier|*

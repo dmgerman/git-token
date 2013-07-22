@@ -349,6 +349,7 @@ decl_stmt|;
 name|int
 name|pos
 decl_stmt|;
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -570,6 +571,7 @@ decl_stmt|;
 name|int
 name|pos
 decl_stmt|;
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -1455,6 +1457,7 @@ name|i
 operator|++
 control|)
 block|{
+specifier|const
 name|struct
 name|cache_entry
 modifier|*

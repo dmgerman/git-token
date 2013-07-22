@@ -5667,6 +5667,7 @@ name|pos
 operator|++
 control|)
 block|{
+specifier|const
 name|struct
 name|cache_entry
 modifier|*

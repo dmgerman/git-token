@@ -2970,11 +2970,13 @@ specifier|extern
 name|int
 name|ce_same_name
 parameter_list|(
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
 name|a
 parameter_list|,
+specifier|const
 name|struct
 name|cache_entry
 modifier|*

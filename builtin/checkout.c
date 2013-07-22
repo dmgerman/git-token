@@ -537,6 +537,7 @@ specifier|static
 name|int
 name|skip_same_name
 parameter_list|(
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -585,6 +586,7 @@ parameter_list|(
 name|int
 name|stage
 parameter_list|,
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -680,6 +682,7 @@ parameter_list|(
 name|unsigned
 name|stages
 parameter_list|,
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -1708,6 +1711,7 @@ name|pos
 operator|++
 control|)
 block|{
+specifier|const
 name|struct
 name|cache_entry
 modifier|*

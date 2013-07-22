@@ -1847,6 +1847,7 @@ name|active_nr
 condition|;
 control|)
 block|{
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -2010,6 +2011,14 @@ name|cache_tree_update
 argument_list|(
 name|active_cache_tree
 argument_list|,
+operator|(
+specifier|const
+expr|struct
+name|cache_entry
+operator|*
+specifier|const
+operator|*
+operator|)
 name|active_cache
 argument_list|,
 name|active_nr

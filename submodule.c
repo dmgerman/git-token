@@ -3728,6 +3728,7 @@ name|submodule_prefix
 init|=
 name|STRBUF_INIT
 decl_stmt|;
+specifier|const
 name|struct
 name|cache_entry
 modifier|*

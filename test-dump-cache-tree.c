@@ -361,6 +361,14 @@ name|cache_tree_update
 argument_list|(
 name|another
 argument_list|,
+operator|(
+specifier|const
+expr|struct
+name|cache_entry
+operator|*
+specifier|const
+operator|*
+operator|)
 name|active_cache
 argument_list|,
 name|active_nr
