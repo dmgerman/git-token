@@ -98,6 +98,7 @@ comment|/* NULL terminated */
 end_comment
 
 begin_function_decl
+name|LAST_ARG_MUST_BE_NULL
 specifier|extern
 name|int
 name|execl_git_cmd

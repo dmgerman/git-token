@@ -110,6 +110,7 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+name|LAST_ARG_MUST_BE_NULL
 name|void
 name|argv_array_pushl
 parameter_list|(

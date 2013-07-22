@@ -173,6 +173,7 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+name|LAST_ARG_MUST_BE_NULL
 specifier|extern
 name|int
 name|run_hook
