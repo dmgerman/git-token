@@ -754,7 +754,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/* common methods used by transport.c and builtin-send-pack.c */
+comment|/* common methods used by transport.c and builtin/send-pack.c */
 end_comment
 
 begin_function_decl
