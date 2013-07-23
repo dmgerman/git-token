@@ -715,8 +715,6 @@ block|}
 block|}
 if|if
 condition|(
-name|st
-operator|&&
 name|filter
 condition|)
 block|{
