@@ -1822,6 +1822,14 @@ argument_list|,
 name|end
 argument_list|)
 expr_stmt|;
+name|sort_and_merge_range_set
+argument_list|(
+operator|&
+name|p
+operator|->
+name|ranges
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|ip
