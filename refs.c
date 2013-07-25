@@ -9793,13 +9793,6 @@ name|packed_ref_cache
 modifier|*
 name|packed_ref_cache
 decl_stmt|;
-comment|/* Discard the old cache because it might be invalid: */
-name|clear_packed_ref_cache
-argument_list|(
-operator|&
-name|ref_cache
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|hold_lock_file_for_update
@@ -9821,7 +9814,7 @@ return|return
 operator|-
 literal|1
 return|;
-comment|/* Read the current packed-refs while holding the lock: */
+comment|/* 	 * Get the current packed-refs while holding the lock.  If the 	 * packed-refs file has been modified since we last read it, 	 * this will automatically invalidate the cache and re-read 	 * the packed-refs file. 	 */
 name|packed_ref_cache
 operator|=
 name|get_packed_ref_cache
