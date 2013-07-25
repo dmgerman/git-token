@@ -301,7 +301,7 @@ operator|->
 name|candidate_ok
 condition|)
 block|{
-comment|/* discard the candidate; we know it does not satisify fn */
+comment|/* discard the candidate; we know it does not satisfy fn */
 name|hashcpy
 argument_list|(
 name|ds

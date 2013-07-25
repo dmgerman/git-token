@@ -2429,7 +2429,7 @@ name|rval
 operator|=
 literal|0
 expr_stmt|;
-comment|/* I hope we needn't fill ther regs with -1's when no match was found.  */
+comment|/* I hope we needn't fill their regs with -1's when no match was found.  */
 if|if
 condition|(
 name|result
@@ -5423,7 +5423,7 @@ block|}
 end_decl_stmt
 
 begin_comment
-comment|/* Check whether the regular expression match input string INPUT or not,    and return the index where the matching end, return -1 if not match,    or return -2 in case of an error.    FL_LONGEST_MATCH means we want the POSIX longest matching.    If P_MATCH_FIRST is not NULL, and the match fails, it is set to the    next place where we may want to try matching.    Note that the matcher assume that the maching starts from the current    index of the buffer.  */
+comment|/* Check whether the regular expression match input string INPUT or not,    and return the index where the matching end, return -1 if not match,    or return -2 in case of an error.    FL_LONGEST_MATCH means we want the POSIX longest matching.    If P_MATCH_FIRST is not NULL, and the match fails, it is set to the    next place where we may want to try matching.    Note that the matcher assume that the matching starts from the current    index of the buffer.  */
 end_comment
 
 begin_function
@@ -11173,7 +11173,7 @@ name|node_idx
 index|]
 argument_list|)
 condition|)
-comment|/* The node can't accept the `multi byte', or the        destination was already thrown away, then the node        could't accept the current input `multi byte'.   */
+comment|/* The node can't accept the `multi byte', or the        destination was already thrown away, then the node        couldn't accept the current input `multi byte'.   */
 name|naccepted
 operator|=
 literal|0

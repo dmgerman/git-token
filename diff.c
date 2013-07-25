@@ -26085,7 +26085,7 @@ name|DIFF_FROM_CONTENTS
 argument_list|)
 condition|)
 block|{
-comment|/* 		 * run diff_flush_patch for the exit status. setting 		 * options->file to /dev/null should be safe, becaue we 		 * aren't supposed to produce any output anyway. 		 */
+comment|/* 		 * run diff_flush_patch for the exit status. setting 		 * options->file to /dev/null should be safe, because we 		 * aren't supposed to produce any output anyway. 		 */
 if|if
 condition|(
 name|options

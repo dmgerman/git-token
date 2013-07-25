@@ -170,7 +170,7 @@ DECL|member|maxshift
 name|int
 name|maxshift
 decl_stmt|;
-comment|/* Max shift of self and descendents. */
+comment|/* Max shift of self and descendants. */
 block|}
 struct|;
 end_struct
@@ -1533,7 +1533,7 @@ argument_list|,
 name|recourse
 argument_list|)
 expr_stmt|;
-comment|/* Find, in the chain of fails going back to the root, the first      node that has a descendent on the current label. */
+comment|/* Find, in the chain of fails going back to the root, the first      node that has a descendant on the current label. */
 while|while
 condition|(
 name|fail
@@ -2162,7 +2162,7 @@ operator|->
 name|next
 control|)
 block|{
-comment|/* Enqueue the immediate descendents in the level order queue. */
+comment|/* Enqueue the immediate descendants in the level order queue. */
 name|enqueue
 argument_list|(
 name|curr
@@ -2189,7 +2189,7 @@ name|kwset
 operator|->
 name|mind
 expr_stmt|;
-comment|/* Update the delta table for the descendents of this node. */
+comment|/* Update the delta table for the descendants of this node. */
 name|treedelta
 argument_list|(
 name|curr
@@ -2278,7 +2278,7 @@ name|fail
 operator|->
 name|depth
 expr_stmt|;
-comment|/* If the current node is accepting then the shift at the 		 fail and its descendents should be no larger than the 		 difference of their depths. */
+comment|/* If the current node is accepting then the shift at the 		 fail and its descendants should be no larger than the 		 difference of their depths. */
 if|if
 condition|(
 name|curr
