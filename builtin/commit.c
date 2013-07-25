@@ -2573,29 +2573,6 @@ argument_list|)
 operator|)
 argument_list|)
 expr_stmt|;
-name|date
-operator|=
-name|xmemdupz
-argument_list|(
-name|rb
-operator|+
-name|strlen
-argument_list|(
-literal|"> "
-argument_list|)
-argument_list|,
-name|eol
-operator|-
-operator|(
-name|rb
-operator|+
-name|strlen
-argument_list|(
-literal|"> "
-argument_list|)
-operator|)
-argument_list|)
-expr_stmt|;
 name|len
 operator|=
 name|eol

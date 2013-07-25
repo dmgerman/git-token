@@ -9730,12 +9730,6 @@ block|{
 name|int
 name|total
 init|=
-name|add
-operator|+
-name|del
-decl_stmt|;
-name|total
-operator|=
 name|scale_linear
 argument_list|(
 name|add
@@ -9746,7 +9740,7 @@ name|graph_width
 argument_list|,
 name|max_change
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|total
