@@ -533,7 +533,6 @@ modifier|*
 name|from_ident
 decl_stmt|;
 comment|/* 	 * Fields below here are manipulated internally by pp_* functions and 	 * should not be counted on by callers. 	 */
-comment|/* Manipulated by the pp_* functions internally. */
 DECL|member|in_body_headers
 name|struct
 name|string_list
