@@ -132,6 +132,15 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|warn_on_object_refname_ambiguity
+name|int
+name|warn_on_object_refname_ambiguity
+init|=
+literal|1
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|repository_format_version
 name|int
 name|repository_format_version

@@ -3814,6 +3814,13 @@ end_decl_stmt
 begin_decl_stmt
 specifier|extern
 name|int
+name|warn_on_object_refname_ambiguity
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
+name|int
 name|shared_repository
 decl_stmt|;
 end_decl_stmt
@@ -8013,6 +8020,12 @@ struct|struct
 name|object_info
 block|{
 comment|/* Request */
+DECL|member|typep
+name|enum
+name|object_type
+modifier|*
+name|typep
+decl_stmt|;
 DECL|member|sizep
 name|unsigned
 name|long
