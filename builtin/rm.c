@@ -290,6 +290,60 @@ block|}
 end_function
 
 begin_function
+DECL|function|error_removing_concrete_submodules
+specifier|static
+name|void
+name|error_removing_concrete_submodules
+parameter_list|(
+name|struct
+name|string_list
+modifier|*
+name|files
+parameter_list|,
+name|int
+modifier|*
+name|errs
+parameter_list|)
+block|{
+name|print_error_files
+argument_list|(
+name|files
+argument_list|,
+name|Q_
+argument_list|(
+literal|"the following submodule (or one of its nested "
+literal|"submodules)\n"
+literal|"uses a .git directory:"
+argument_list|,
+literal|"the following submodules (or one of its nested "
+literal|"submodules)\n"
+literal|"use a .git directory:"
+argument_list|,
+name|files
+operator|->
+name|nr
+argument_list|)
+argument_list|,
+name|_
+argument_list|(
+literal|"\n(use 'rm -rf' if you really want to remove "
+literal|"it including all of its history)"
+argument_list|)
+argument_list|,
+name|errs
+argument_list|)
+expr_stmt|;
+name|string_list_clear
+argument_list|(
+name|files
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
 DECL|function|check_submodules_use_gitfiles
 specifier|static
 name|int
@@ -444,40 +498,13 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
-name|print_error_files
+name|error_removing_concrete_submodules
 argument_list|(
 operator|&
 name|files
-argument_list|,
-name|Q_
-argument_list|(
-literal|"the following submodule (or one of its nested "
-literal|"submodules)\n uses a .git directory:"
-argument_list|,
-literal|"the following submodules (or one of its nested "
-literal|"submodules)\n use a .git directory:"
-argument_list|,
-name|files
-operator|.
-name|nr
-argument_list|)
-argument_list|,
-name|_
-argument_list|(
-literal|"\n(use 'rm -rf' if you really want to remove "
-literal|"it including all of its history)"
-argument_list|)
 argument_list|,
 operator|&
 name|errs
-argument_list|)
-expr_stmt|;
-name|string_list_clear
-argument_list|(
-operator|&
-name|files
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 return|return
@@ -969,41 +996,13 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-name|print_error_files
+name|error_removing_concrete_submodules
 argument_list|(
 operator|&
 name|files_submodule
-argument_list|,
-name|Q_
-argument_list|(
-literal|"the following submodule (or one of its nested "
-literal|"submodule)\nuses a .git directory:"
-argument_list|,
-literal|"the following submodules (or one of its nested "
-literal|"submodule)\nuse a .git directory:"
-argument_list|,
-name|files_submodule
-operator|.
-name|nr
-argument_list|)
-argument_list|,
-name|_
-argument_list|(
-literal|"\n(use 'rm -rf' if you really "
-literal|"want to remove it including all "
-literal|"of its history)"
-argument_list|)
 argument_list|,
 operator|&
 name|errs
-argument_list|)
-expr_stmt|;
-name|string_list_clear
-argument_list|(
-operator|&
-name|files_submodule
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 name|print_error_files
