@@ -523,7 +523,7 @@ index|]
 operator|->
 name|src
 expr_stmt|;
-comment|/* 	 * Don't show advice for people who explicitely set 	 * push.default. 	 */
+comment|/* 	 * Don't show advice for people who explicitly set 	 * push.default. 	 */
 if|if
 condition|(
 name|push_default

@@ -1093,7 +1093,7 @@ return|return
 name|new
 return|;
 block|}
-comment|/* 	 * Coalesce new lines into base by finding the LCS 	 * - Create the table to run dynamic programing 	 * - Compute the LCS 	 * - Then reverse read the direction structure: 	 *   - If we have MATCH, assign parent to base flag, and consume 	 *   both baseend and newend 	 *   - Else if we have BASE, consume baseend 	 *   - Else if we have NEW, insert newend lline into base and 	 *   consume newend 	 */
+comment|/* 	 * Coalesce new lines into base by finding the LCS 	 * - Create the table to run dynamic programming 	 * - Compute the LCS 	 * - Then reverse read the direction structure: 	 *   - If we have MATCH, assign parent to base flag, and consume 	 *   both baseend and newend 	 *   - Else if we have BASE, consume baseend 	 *   - Else if we have NEW, insert newend lline into base and 	 *   consume newend 	 */
 name|lcs
 operator|=
 name|xcalloc

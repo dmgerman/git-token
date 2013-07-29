@@ -6033,7 +6033,7 @@ name|NO_PTHREADS
 end_ifndef
 
 begin_comment
-comment|/*  * Join thread, with apporiate errors on failure. Name is name for the  * thread (for error messages). Returns 0 on success, 1 on failure.  */
+comment|/*  * Join thread, with appropriate errors on failure. Name is name for the  * thread (for error messages). Returns 0 on success, 1 on failure.  */
 end_comment
 
 begin_function
@@ -6297,7 +6297,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Join process, with apporiate errors on failure. Name is name for the  * process (for error messages). Returns 0 on success, 1 on failure.  */
+comment|/*  * Join process, with appropriate errors on failure. Name is name for the  * process (for error messages). Returns 0 on success, 1 on failure.  */
 end_comment
 
 begin_function
