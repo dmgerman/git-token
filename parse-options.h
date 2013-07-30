@@ -46,6 +46,9 @@ block|,
 DECL|enumerator|OPTION_SET_PTR
 name|OPTION_SET_PTR
 block|,
+DECL|enumerator|OPTION_CMDMODE
+name|OPTION_CMDMODE
+block|,
 comment|/* options with arguments (usually) */
 DECL|enumerator|OPTION_STRING
 name|OPTION_STRING
@@ -414,6 +417,25 @@ parameter_list|,
 name|p
 parameter_list|)
 value|{ OPTION_SET_PTR, (s), (l), (v), NULL, \ 				      (h), PARSE_OPT_NOARG, NULL, (p) }
+end_define
+
+begin_define
+DECL|macro|OPT_CMDMODE
+define|#
+directive|define
+name|OPT_CMDMODE
+parameter_list|(
+name|s
+parameter_list|,
+name|l
+parameter_list|,
+name|v
+parameter_list|,
+name|h
+parameter_list|,
+name|i
+parameter_list|)
+value|{ OPTION_CMDMODE, (s), (l), (v), NULL, \ 				      (h), PARSE_OPT_NOARG|PARSE_OPT_NONEG, NULL, (i) }
 end_define
 
 begin_define
