@@ -382,6 +382,23 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|void
+name|connect_work_tree_and_git_dir
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|work_tree
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|git_dir
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
