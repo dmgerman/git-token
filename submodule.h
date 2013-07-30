@@ -52,6 +52,24 @@ enum|;
 end_enum
 
 begin_function_decl
+name|int
+name|is_staging_gitmodules_ok
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|void
+name|stage_updated_gitmodules
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|void
 name|set_diffopt_flags_from_submodule_config
 parameter_list|(
