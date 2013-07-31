@@ -2267,7 +2267,7 @@ literal|"  git checkout -b $br $(git rev-parse ...)\n"
 literal|"\n"
 literal|"where \"$br\" is somehow empty and a 40-hex ref is created. Please\n"
 literal|"examine these refs and maybe delete them. Turn this message off by\n"
-literal|"running \"git config advice.object_name_warning false\""
+literal|"running \"git config advice.objectNameWarning false\""
 argument_list|)
 decl_stmt|;
 name|unsigned

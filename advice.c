@@ -269,7 +269,7 @@ name|advice_set_upstream_failure
 block|}
 block|,
 block|{
-literal|"object_name_warning"
+literal|"objectnamewarning"
 block|,
 operator|&
 name|advice_object_name_warning
