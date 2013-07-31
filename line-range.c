@@ -145,6 +145,17 @@ name|term
 return|;
 if|if
 condition|(
+name|num
+operator|==
+literal|0
+condition|)
+name|die
+argument_list|(
+literal|"-L invalid empty range"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|spec
 index|[
 literal|0
