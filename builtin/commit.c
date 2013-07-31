@@ -251,7 +251,41 @@ literal|"If you wish to commit it anyway, use:\n"
 literal|"\n"
 literal|"    git commit --allow-empty\n"
 literal|"\n"
+argument_list|)
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|empty_cherry_pick_advice_single
+specifier|static
+specifier|const
+name|char
+name|empty_cherry_pick_advice_single
+index|[]
+init|=
+name|N_
+argument_list|(
 literal|"Otherwise, please use 'git reset'\n"
+argument_list|)
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|empty_cherry_pick_advice_multi
+specifier|static
+specifier|const
+name|char
+name|empty_cherry_pick_advice_multi
+index|[]
+init|=
+name|N_
+argument_list|(
+literal|"If you wish to skip this commit, use:\n"
+literal|"\n"
+literal|"    git reset\n"
+literal|"\n"
+literal|"Then \"git cherry-pick --continue\" will resume cherry-picking\n"
+literal|"the remaining commits.\n"
 argument_list|)
 decl_stmt|;
 end_decl_stmt
@@ -538,6 +572,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|sequencer_in_use
+specifier|static
+name|int
+name|sequencer_in_use
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|use_editor
 DECL|variable|include_status
 specifier|static
@@ -736,10 +778,26 @@ literal|"CHERRY_PICK_HEAD"
 argument_list|)
 argument_list|)
 condition|)
+block|{
 name|whence
 operator|=
 name|FROM_CHERRY_PICK
 expr_stmt|;
+if|if
+condition|(
+name|file_exists
+argument_list|(
+name|git_path
+argument_list|(
+literal|"sequencer"
+argument_list|)
+argument_list|)
+condition|)
+name|sequencer_in_use
+operator|=
+literal|1
+expr_stmt|;
+block|}
 else|else
 name|whence
 operator|=
@@ -4102,6 +4160,7 @@ name|whence
 operator|==
 name|FROM_CHERRY_PICK
 condition|)
+block|{
 name|fputs
 argument_list|(
 name|_
@@ -4112,6 +4171,33 @@ argument_list|,
 name|stderr
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|sequencer_in_use
+condition|)
+name|fputs
+argument_list|(
+name|_
+argument_list|(
+name|empty_cherry_pick_advice_single
+argument_list|)
+argument_list|,
+name|stderr
+argument_list|)
+expr_stmt|;
+else|else
+name|fputs
+argument_list|(
+name|_
+argument_list|(
+name|empty_cherry_pick_advice_multi
+argument_list|)
+argument_list|,
+name|stderr
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 literal|0
 return|;
