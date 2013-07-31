@@ -92,7 +92,7 @@ comment|/* Allow "-L<something>,+20" to mean starting at<something> 	 * for 20 l
 if|if
 condition|(
 literal|1
-operator|<
+operator|<=
 name|begin
 operator|&&
 operator|(
