@@ -3997,9 +3997,12 @@ expr_stmt|;
 comment|/* Root commit? */
 name|parents
 operator|=
+name|get_saved_parents
+argument_list|(
+name|opt
+argument_list|,
 name|commit
-operator|->
-name|parents
+argument_list|)
 expr_stmt|;
 if|if
 condition|(

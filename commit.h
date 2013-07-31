@@ -397,6 +397,24 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* Shallow copy of the input list */
+end_comment
+
+begin_function_decl
+name|struct
+name|commit_list
+modifier|*
+name|copy_commit_list
+parameter_list|(
+name|struct
+name|commit_list
+modifier|*
+name|list
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function_decl
 name|void
 name|free_commit_list
