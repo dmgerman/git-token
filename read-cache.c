@@ -2382,7 +2382,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Remove all cache ententries marked for removal, that is where  * CE_REMOVE is set in ce_flags.  This is much more effective than  * calling remove_index_entry_at() for each entry to be removed.  */
+comment|/*  * Remove all cache entries marked for removal, that is where  * CE_REMOVE is set in ce_flags.  This is much more effective than  * calling remove_index_entry_at() for each entry to be removed.  */
 end_comment
 
 begin_function
@@ -8859,7 +8859,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Opportunisticly update the index but do not complain if we can't  */
+comment|/*  * Opportunistically update the index but do not complain if we can't  */
 end_comment
 
 begin_function

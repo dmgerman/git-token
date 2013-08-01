@@ -2226,7 +2226,7 @@ name|commit
 modifier|*
 name|p
 decl_stmt|;
-comment|/* Trees have no identifer in fast-export output, thus we have no way 	 * to output tags of trees, tags of tags of trees, etc.  Simply omit 	 * such tags. 	 */
+comment|/* Trees have no identifier in fast-export output, thus we have no way 	 * to output tags of trees, tags of tags of trees, etc.  Simply omit 	 * such tags. 	 */
 name|tagged
 operator|=
 name|tag
