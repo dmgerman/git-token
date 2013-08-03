@@ -6744,7 +6744,7 @@ argument_list|)
 argument_list|)
 block|,
 block|{
-name|OPTION_BOOLEAN
+name|OPTION_SET_INT
 block|,
 literal|'p'
 block|,
@@ -6763,6 +6763,10 @@ block|,
 name|PARSE_OPT_NONEG
 operator||
 name|PARSE_OPT_NOARG
+block|,
+name|NULL
+block|,
+literal|1
 block|}
 block|,
 name|OPT_GROUP

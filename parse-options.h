@@ -68,18 +68,6 @@ block|}
 enum|;
 end_enum
 
-begin_comment
-comment|/* Deprecated synonym */
-end_comment
-
-begin_define
-DECL|macro|OPTION_BOOLEAN
-define|#
-directive|define
-name|OPTION_BOOLEAN
-value|OPTION_COUNTUP
-end_define
-
 begin_enum
 DECL|enum|parse_opt_flags
 enum|enum
@@ -398,6 +386,23 @@ parameter_list|,
 name|h
 parameter_list|)
 value|OPT_SET_INT(s, l, v, h, 1)
+end_define
+
+begin_define
+DECL|macro|OPT_HIDDEN_BOOL
+define|#
+directive|define
+name|OPT_HIDDEN_BOOL
+parameter_list|(
+name|s
+parameter_list|,
+name|l
+parameter_list|,
+name|v
+parameter_list|,
+name|h
+parameter_list|)
+value|{ OPTION_SET_INT, (s), (l), (v), NULL, \ 				      (h), PARSE_OPT_NOARG | PARSE_OPT_HIDDEN, NULL, 1}
 end_define
 
 begin_define
