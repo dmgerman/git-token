@@ -641,12 +641,8 @@ name|builtin_log_options
 index|[]
 init|=
 block|{
-name|OPT_BOOL
+name|OPT__QUIET
 argument_list|(
-literal|0
-argument_list|,
-literal|"quiet"
-argument_list|,
 operator|&
 name|quiet
 argument_list|,
@@ -6991,12 +6987,8 @@ literal|"add a signature"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT__QUIET
 argument_list|(
-literal|0
-argument_list|,
-literal|"quiet"
-argument_list|,
 operator|&
 name|quiet
 argument_list|,
