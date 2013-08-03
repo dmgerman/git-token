@@ -1043,7 +1043,7 @@ literal|"no warning for existing files and files not in index"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'n'
 argument_list|,
