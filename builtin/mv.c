@@ -424,7 +424,7 @@ literal|"force move/rename even if target exists"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'k'
 argument_list|,

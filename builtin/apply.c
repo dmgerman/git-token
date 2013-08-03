@@ -21510,7 +21510,7 @@ block|,
 name|option_parse_p
 block|}
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -21525,7 +21525,7 @@ literal|"ignore additions made by the patch"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -21554,7 +21554,7 @@ argument_list|,
 literal|"binary"
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -21569,7 +21569,7 @@ literal|"show number of added and deleted lines in decimal notation"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -21584,7 +21584,7 @@ literal|"instead of applying the patch, output a summary for the input"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -21599,7 +21599,7 @@ literal|"instead of applying the patch, see if the patch is applicable"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -21614,7 +21614,7 @@ literal|"make sure the patch is applicable to the current index"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -21629,7 +21629,7 @@ literal|"apply a patch without touching the working tree"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -21777,7 +21777,7 @@ block|,
 name|option_parse_space_change
 block|}
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'R'
 argument_list|,
@@ -21792,7 +21792,7 @@ literal|"apply the patch in reverse"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -21807,7 +21807,7 @@ literal|"don't expect at least one line of context"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -21822,7 +21822,7 @@ literal|"leave the rejected hunks in corresponding *.rej files"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,

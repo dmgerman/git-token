@@ -1767,7 +1767,7 @@ name|opts
 index|[]
 init|=
 block|{
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -1784,7 +1784,7 @@ literal|"print only names (no SHA-1)"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -1828,7 +1828,7 @@ argument_list|(
 literal|""
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -1843,7 +1843,7 @@ literal|"list all commits reachable from all refs"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -1858,7 +1858,7 @@ literal|"read from stdin"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -1869,11 +1869,11 @@ name|allow_undefined
 argument_list|,
 name|N_
 argument_list|(
-literal|"allow to print `undefined` names"
+literal|"allow to print `undefined` names (default)"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,

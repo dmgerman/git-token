@@ -784,7 +784,7 @@ literal|"Other"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'z'
 argument_list|,

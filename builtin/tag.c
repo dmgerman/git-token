@@ -2532,7 +2532,7 @@ literal|"Tag creation options"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'a'
 argument_list|,
@@ -2584,7 +2584,7 @@ literal|"read message from file"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'s'
 argument_list|,

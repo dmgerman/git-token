@@ -6376,7 +6376,7 @@ argument_list|,
 name|STATUS_FORMAT_LONG
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'z'
 argument_list|,
@@ -6423,7 +6423,7 @@ operator|)
 literal|"all"
 block|}
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -7705,7 +7705,7 @@ literal|"use autosquash formatted message to squash specified commit"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -7720,7 +7720,7 @@ literal|"the commit is authored by me now (used with -C/-c/--amend)"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'s'
 argument_list|,
@@ -7785,7 +7785,7 @@ literal|"how to strip spaces and #comments from message"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -7839,7 +7839,7 @@ literal|"Commit contents options"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'a'
 argument_list|,
@@ -7854,7 +7854,7 @@ literal|"commit all changed files"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'i'
 argument_list|,
@@ -7869,7 +7869,7 @@ literal|"add specified files to index for commit"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -7884,7 +7884,7 @@ literal|"interactively add files"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'p'
 argument_list|,
@@ -7899,7 +7899,7 @@ literal|"interactively add changes"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'o'
 argument_list|,
@@ -7914,7 +7914,7 @@ literal|"commit only specified files"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'n'
 argument_list|,
@@ -7929,7 +7929,7 @@ literal|"bypass pre-commit hook"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -8012,7 +8012,7 @@ argument_list|,
 name|STATUS_FORMAT_LONG
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'z'
 argument_list|,
@@ -8029,7 +8029,7 @@ literal|"terminate entries with NUL"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -8044,7 +8044,7 @@ literal|"amend previous commit"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,

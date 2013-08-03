@@ -5674,7 +5674,7 @@ literal|"create/reset and checkout a branch"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'l'
 argument_list|,
@@ -5691,7 +5691,7 @@ literal|"create reflog for new branch"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -5800,7 +5800,7 @@ literal|"force checkout (throw away local modifications)"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'m'
 argument_list|,
@@ -5817,7 +5817,7 @@ literal|"perform a 3-way merge with the new branch"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -5854,7 +5854,7 @@ literal|"conflict style (merge or diff3)"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'p'
 argument_list|,
