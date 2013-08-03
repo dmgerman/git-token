@@ -453,7 +453,7 @@ literal|"write the object into the object database"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_COUNTUP
 argument_list|(
 literal|0
 argument_list|,
