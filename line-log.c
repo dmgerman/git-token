@@ -3382,6 +3382,8 @@ name|cb_data
 argument_list|,
 name|lines
 argument_list|,
+literal|1
+argument_list|,
 operator|&
 name|begin
 argument_list|,

@@ -30,7 +30,7 @@ file|"userdiff.h"
 end_include
 
 begin_comment
-comment|/*  * Parse one item in the -L option  */
+comment|/*  * Parse one item in the -L option  *  * 'begin' is applicable only to relative range anchors. Absolute anchors  * ignore this value.  *  * When parsing "-L A,B", parse_loc() is called once for A and once for B.  *  * When parsing A, 'begin' must be a negative number, the absolute value of  * which is the line at which relative start-of-range anchors should be  * based. Beginning of file is represented by -1.  *  * When parsing B, 'begin' must be the positive line number immediately  * following the line computed for 'A'.  */
 end_comment
 
 begin_function
@@ -243,6 +243,17 @@ return|return
 name|term
 return|;
 block|}
+if|if
+condition|(
+name|begin
+operator|<
+literal|0
+condition|)
+name|begin
+operator|=
+operator|-
+name|begin
+expr_stmt|;
 if|if
 condition|(
 name|spec
@@ -465,9 +476,13 @@ argument_list|)
 expr_stmt|;
 name|die
 argument_list|(
-literal|"-L parameter '%s': %s"
+literal|"-L parameter '%s' starting at line %ld: %s"
 argument_list|,
 name|spec
+operator|+
+literal|1
+argument_list|,
+name|begin
 operator|+
 literal|1
 argument_list|,
@@ -1213,6 +1228,9 @@ name|long
 name|lines
 parameter_list|,
 name|long
+name|anchor
+parameter_list|,
+name|long
 modifier|*
 name|begin
 parameter_list|,
@@ -1233,6 +1251,28 @@ operator|*
 name|end
 operator|=
 literal|0
+expr_stmt|;
+if|if
+condition|(
+name|anchor
+operator|<
+literal|1
+condition|)
+name|anchor
+operator|=
+literal|1
+expr_stmt|;
+if|if
+condition|(
+name|anchor
+operator|>
+name|lines
+condition|)
+name|anchor
+operator|=
+name|lines
+operator|+
+literal|1
 expr_stmt|;
 if|if
 condition|(
@@ -1289,7 +1329,8 @@ name|cb_data
 argument_list|,
 name|lines
 argument_list|,
-literal|1
+operator|-
+name|anchor
 argument_list|,
 name|begin
 argument_list|)
