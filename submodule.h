@@ -61,6 +61,23 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+name|int
+name|update_path_in_gitmodules
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|oldpath
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|newpath
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|void
 name|stage_updated_gitmodules
 parameter_list|(
