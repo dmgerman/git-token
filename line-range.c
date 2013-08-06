@@ -829,6 +829,9 @@ name|long
 name|lines
 parameter_list|,
 name|long
+name|anchor
+parameter_list|,
+name|long
 modifier|*
 name|begin
 parameter_list|,
@@ -961,13 +964,17 @@ literal|1
 operator|)
 argument_list|)
 expr_stmt|;
+name|anchor
+operator|--
+expr_stmt|;
+comment|/* input is in human terms */
 name|start
 operator|=
 name|nth_line_cb
 argument_list|(
 name|cb_data
 argument_list|,
-literal|0
+name|anchor
 argument_list|)
 expr_stmt|;
 name|drv
@@ -1094,9 +1101,13 @@ name|p
 condition|)
 name|die
 argument_list|(
-literal|"-L parameter '%s': no match"
+literal|"-L parameter '%s' starting at line %ld: no match"
 argument_list|,
 name|pattern
+argument_list|,
+name|anchor
+operator|+
+literal|1
 argument_list|)
 expr_stmt|;
 operator|*
@@ -1315,6 +1326,8 @@ name|cb_data
 argument_list|,
 name|lines
 argument_list|,
+name|anchor
+argument_list|,
 name|begin
 argument_list|,
 name|end
@@ -1463,6 +1476,8 @@ argument_list|,
 name|NULL
 argument_list|,
 name|NULL
+argument_list|,
+literal|0
 argument_list|,
 literal|0
 argument_list|,
