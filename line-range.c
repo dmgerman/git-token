@@ -234,11 +234,26 @@ if|if
 condition|(
 name|ret
 condition|)
+block|{
+if|if
+condition|(
+name|num
+operator|<=
+literal|0
+condition|)
+name|die
+argument_list|(
+literal|"-L invalid line number: %ld"
+argument_list|,
+name|num
+argument_list|)
+expr_stmt|;
 operator|*
 name|ret
 operator|=
 name|num
 expr_stmt|;
+block|}
 return|return
 name|term
 return|;
