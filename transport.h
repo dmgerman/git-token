@@ -115,6 +115,13 @@ name|got_remote_refs
 range|:
 literal|1
 decl_stmt|;
+comment|/* 	 * Transports that call take-over destroys the data specific to 	 * the transport type while doing so, and cannot be reused. 	 */
+DECL|member|cannot_reuse
+name|unsigned
+name|cannot_reuse
+range|:
+literal|1
+decl_stmt|;
 comment|/** 	 * Returns 0 if successful, positive if the option is not 	 * recognized or is inapplicable, and negative if the option 	 * is applicable but the value is invalid. 	 **/
 DECL|member|set_option
 name|int
