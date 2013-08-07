@@ -5106,14 +5106,10 @@ name|force_create
 operator|+
 operator|!
 operator|!
-name|list
-operator|+
-operator|!
-operator|!
 name|new_upstream
 operator|+
-operator|!
-operator|!
+name|list
+operator|+
 name|unset_upstream
 operator|>
 literal|1
