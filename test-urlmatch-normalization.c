@@ -27,8 +27,8 @@ parameter_list|)
 block|{
 specifier|const
 name|char
-modifier|*
 name|usage
+index|[]
 init|=
 literal|"test-urlmatch-normalization [-p | -l]<url1> |<url1><url2>"
 decl_stmt|;
@@ -120,6 +120,8 @@ literal|3
 condition|)
 name|die
 argument_list|(
+literal|"%s"
+argument_list|,
 name|usage
 argument_list|)
 expr_stmt|;
@@ -194,6 +196,8 @@ name|opt_l
 condition|)
 name|die
 argument_list|(
+literal|"%s"
+argument_list|,
 name|usage
 argument_list|)
 expr_stmt|;

@@ -2571,6 +2571,8 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+literal|"%s"
+argument_list|,
 name|config
 operator|.
 name|url
