@@ -767,7 +767,7 @@ operator|&&
 operator|!
 name|defined
 argument_list|(
-name|clang
+name|__clang__
 argument_list|)
 end_if
 
