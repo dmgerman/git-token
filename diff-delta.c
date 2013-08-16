@@ -1307,10 +1307,6 @@ name|i
 operator|)
 operator|<
 name|hsize
-operator|&&
-name|i
-operator|<
-literal|31
 condition|;
 name|i
 operator|++
