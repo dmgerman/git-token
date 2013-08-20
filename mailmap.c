@@ -943,10 +943,6 @@ name|char
 modifier|*
 name|cp
 decl_stmt|;
-if|if
-condition|(
-name|repo_abbrev
-condition|)
 name|free
 argument_list|(
 operator|*
