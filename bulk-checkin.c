@@ -544,7 +544,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|xread
+name|read_in_full
 argument_list|(
 name|fd
 argument_list|,
