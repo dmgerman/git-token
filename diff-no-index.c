@@ -1192,6 +1192,30 @@ name|i
 operator|+
 literal|2
 condition|)
+block|{
+if|if
+condition|(
+operator|!
+name|no_index
+condition|)
+block|{
+comment|/* 			 * There was no --no-index and there were not two 			 * paths. It is possible that the user intended 			 * to do an inside-repository operation. 			 */
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"Not a git repository\n"
+argument_list|)
+expr_stmt|;
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"To compare two paths outside a working tree:\n"
+argument_list|)
+expr_stmt|;
+block|}
+comment|/* Give the usage message for non-repository usage and exit. */
 name|usagef
 argument_list|(
 literal|"git diff %s<path><path>"
@@ -1203,6 +1227,7 @@ else|:
 literal|"[--no-index]"
 argument_list|)
 expr_stmt|;
+block|}
 name|diff_setup
 argument_list|(
 operator|&
