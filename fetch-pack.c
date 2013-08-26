@@ -4788,6 +4788,11 @@ condition|)
 name|setup_alternate_shallow
 argument_list|()
 expr_stmt|;
+else|else
+name|alternate_shallow_file
+operator|=
+name|NULL
+expr_stmt|;
 if|if
 condition|(
 name|get_pack
@@ -5263,6 +5268,12 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|args
+operator|->
+name|depth
+operator|>
+literal|0
+operator|&&
 name|alternate_shallow_file
 condition|)
 block|{
