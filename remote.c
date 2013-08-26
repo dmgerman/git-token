@@ -10114,18 +10114,6 @@ literal|1
 expr_stmt|;
 break|break;
 default|default:
-comment|/* Nothing to report if neither side has changes. */
-if|if
-condition|(
-operator|!
-name|ours
-operator|&&
-operator|!
-name|theirs
-condition|)
-return|return
-literal|0
-return|;
 comment|/* with base */
 break|break;
 block|}
@@ -10178,6 +10166,29 @@ name|_
 argument_list|(
 literal|"  (use \"git branch --unset-upstream\" to fixup)\n"
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|ours
+operator|&&
+operator|!
+name|theirs
+condition|)
+block|{
+name|strbuf_addf
+argument_list|(
+name|sb
+argument_list|,
+name|_
+argument_list|(
+literal|"Your branch is up-to-date with '%s'.\n"
+argument_list|)
+argument_list|,
+name|base
 argument_list|)
 expr_stmt|;
 block|}
