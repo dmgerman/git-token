@@ -1858,8 +1858,8 @@ literal|1
 argument_list|,
 sizeof|sizeof
 argument_list|(
-expr|struct
-name|lock_file
+operator|*
+name|lock
 argument_list|)
 argument_list|)
 decl_stmt|;
