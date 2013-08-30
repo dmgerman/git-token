@@ -9521,6 +9521,10 @@ name|old_sha1
 parameter_list|,
 name|int
 name|flags
+parameter_list|,
+name|int
+modifier|*
+name|type_p
 parameter_list|)
 block|{
 if|if
@@ -9544,7 +9548,7 @@ name|old_sha1
 argument_list|,
 name|flags
 argument_list|,
-name|NULL
+name|type_p
 argument_list|)
 return|;
 block|}
@@ -15197,6 +15201,8 @@ argument_list|,
 name|oldval
 argument_list|,
 name|flags
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 if|if
