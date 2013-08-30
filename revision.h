@@ -296,6 +296,13 @@ name|struct
 name|rev_cmdline_info
 name|cmdline
 decl_stmt|;
+comment|/* excluding from --branches, --refs, etc. expansion */
+DECL|member|ref_excludes
+name|struct
+name|string_list
+modifier|*
+name|ref_excludes
+decl_stmt|;
 comment|/* Basic information */
 DECL|member|prefix
 specifier|const
