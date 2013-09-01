@@ -193,6 +193,17 @@ name|full_tree
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|extra_refs
+specifier|static
+name|struct
+name|string_list
+name|extra_refs
+init|=
+name|STRING_LIST_INIT_NODUP
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|parse_opt_signed_tag_mode
 specifier|static
@@ -2758,11 +2769,6 @@ name|struct
 name|rev_cmdline_info
 modifier|*
 name|info
-parameter_list|,
-name|struct
-name|string_list
-modifier|*
-name|extra_refs
 parameter_list|)
 block|{
 name|struct
@@ -2912,6 +2918,7 @@ argument_list|)
 expr_stmt|;
 name|string_list_append
 argument_list|(
+operator|&
 name|extra_refs
 argument_list|,
 name|full_name
@@ -3039,6 +3046,7 @@ name|SHOWN
 condition|)
 name|string_list_append
 argument_list|(
+operator|&
 name|extra_refs
 argument_list|,
 name|full_name
@@ -3071,10 +3079,7 @@ specifier|static
 name|void
 name|handle_tags_and_duplicates
 parameter_list|(
-name|struct
-name|string_list
-modifier|*
-name|extra_refs
+name|void
 parameter_list|)
 block|{
 name|struct
@@ -3090,7 +3095,7 @@ control|(
 name|i
 operator|=
 name|extra_refs
-operator|->
+operator|.
 name|nr
 operator|-
 literal|1
@@ -3109,7 +3114,7 @@ modifier|*
 name|name
 init|=
 name|extra_refs
-operator|->
+operator|.
 name|items
 index|[
 name|i
@@ -3123,7 +3128,7 @@ modifier|*
 name|object
 init|=
 name|extra_refs
-operator|->
+operator|.
 name|items
 index|[
 name|i
@@ -3660,12 +3665,6 @@ init|=
 name|OBJECT_ARRAY_INIT
 decl_stmt|;
 name|struct
-name|string_list
-name|extra_refs
-init|=
-name|STRING_LIST_INIT_NODUP
-decl_stmt|;
-name|struct
 name|commit
 modifier|*
 name|commit
@@ -3986,9 +3985,6 @@ operator|&
 name|revs
 operator|.
 name|cmdline
-argument_list|,
-operator|&
-name|extra_refs
 argument_list|)
 expr_stmt|;
 if|if
@@ -4079,10 +4075,7 @@ expr_stmt|;
 block|}
 block|}
 name|handle_tags_and_duplicates
-argument_list|(
-operator|&
-name|extra_refs
-argument_list|)
+argument_list|()
 expr_stmt|;
 if|if
 condition|(
