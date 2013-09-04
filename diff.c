@@ -4086,10 +4086,6 @@ operator|=
 name|whitespace_rule
 argument_list|(
 name|name_b
-condition|?
-name|name_b
-else|:
-name|name_a
 argument_list|)
 expr_stmt|;
 name|ecbdata
@@ -13054,6 +13050,8 @@ operator|->
 name|file
 argument_list|,
 name|one
+operator|->
+name|path
 condition|?
 name|one
 operator|->
@@ -13914,10 +13912,6 @@ operator|=
 name|whitespace_rule
 argument_list|(
 name|name_b
-condition|?
-name|name_b
-else|:
-name|name_a
 argument_list|)
 expr_stmt|;
 if|if
