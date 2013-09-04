@@ -73,10 +73,10 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|null_term_line
+DECL|variable|nul_term_line
 specifier|static
 name|int
-name|null_term_line
+name|nul_term_line
 decl_stmt|;
 end_decl_stmt
 
@@ -139,11 +139,11 @@ argument_list|,
 name|NULL
 argument_list|,
 operator|&
-name|null_term_line
+name|nul_term_line
 argument_list|,
 name|N_
 argument_list|(
-literal|"input paths are terminated by a null character"
+literal|"terminate input and output records by a NUL character"
 argument_list|)
 argument_list|)
 block|,
@@ -224,7 +224,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|null_term_line
+name|nul_term_line
 condition|)
 block|{
 if|if
@@ -630,7 +630,7 @@ decl_stmt|;
 name|int
 name|line_termination
 init|=
-name|null_term_line
+name|nul_term_line
 condition|?
 literal|0
 else|:
@@ -848,7 +848,7 @@ else|else
 block|{
 if|if
 condition|(
-name|null_term_line
+name|nul_term_line
 condition|)
 name|die
 argument_list|(
