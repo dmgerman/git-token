@@ -54,6 +54,51 @@ struct|;
 end_struct
 
 begin_comment
+comment|/**  * Information needed for a single ref update.  Set new_sha1 to the  * new value or to zero to delete the ref.  To check the old value  * while locking the ref, set have_old to 1 and set old_sha1 to the  * value or to zero to ensure the ref does not exist before update.  */
+end_comment
+
+begin_struct
+DECL|struct|ref_update
+struct|struct
+name|ref_update
+block|{
+DECL|member|ref_name
+specifier|const
+name|char
+modifier|*
+name|ref_name
+decl_stmt|;
+DECL|member|new_sha1
+name|unsigned
+name|char
+name|new_sha1
+index|[
+literal|20
+index|]
+decl_stmt|;
+DECL|member|old_sha1
+name|unsigned
+name|char
+name|old_sha1
+index|[
+literal|20
+index|]
+decl_stmt|;
+DECL|member|flags
+name|int
+name|flags
+decl_stmt|;
+comment|/* REF_NODEREF? */
+DECL|member|have_old
+name|int
+name|have_old
+decl_stmt|;
+comment|/* 1 if old_sha1 is valid, 0 otherwise */
+block|}
+struct|;
+end_struct
+
+begin_comment
 comment|/*  * Bit values set in the flags argument passed to each_ref_fn():  */
 end_comment
 
@@ -1123,6 +1168,36 @@ name|oldval
 parameter_list|,
 name|int
 name|flags
+parameter_list|,
+name|enum
+name|action_on_err
+name|onerr
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/**  * Lock all refs and then perform all modifications.  */
+end_comment
+
+begin_function_decl
+name|int
+name|update_refs
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|action
+parameter_list|,
+specifier|const
+name|struct
+name|ref_update
+modifier|*
+modifier|*
+name|updates
+parameter_list|,
+name|int
+name|n
 parameter_list|,
 name|enum
 name|action_on_err
