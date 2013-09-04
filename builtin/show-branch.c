@@ -3486,7 +3486,7 @@ name|builtin_show_branch_options
 index|[]
 init|=
 block|{
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'a'
 argument_list|,
@@ -3501,7 +3501,7 @@ literal|"show remote-tracking and local branches"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'r'
 argument_list|,
@@ -3575,7 +3575,7 @@ operator|-
 literal|1
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -3590,7 +3590,7 @@ literal|"suppress naming strings"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -3605,7 +3605,7 @@ literal|"include the current branch"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -3620,7 +3620,7 @@ literal|"name commits with their object names"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -3635,7 +3635,7 @@ literal|"show possible merge bases"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -3667,7 +3667,7 @@ argument_list|,
 name|REV_SORT_IN_GRAPH_ORDER
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,

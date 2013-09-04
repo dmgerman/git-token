@@ -2817,7 +2817,7 @@ literal|"replace existing notes"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -4277,7 +4277,7 @@ argument_list|)
 argument_list|)
 block|,
 block|{
-name|OPTION_BOOLEAN
+name|OPTION_SET_INT
 block|,
 literal|0
 block|,
@@ -4296,6 +4296,10 @@ block|,
 name|PARSE_OPT_NOARG
 operator||
 name|PARSE_OPT_NONEG
+block|,
+name|NULL
+block|,
+literal|1
 block|}
 block|,
 name|OPT_GROUP
@@ -4307,7 +4311,7 @@ argument_list|)
 argument_list|)
 block|,
 block|{
-name|OPTION_BOOLEAN
+name|OPTION_SET_INT
 block|,
 literal|0
 block|,
@@ -4326,6 +4330,10 @@ block|,
 name|PARSE_OPT_NOARG
 operator||
 name|PARSE_OPT_NONEG
+block|,
+name|NULL
+block|,
+literal|1
 block|}
 block|,
 name|OPT_END
@@ -4934,7 +4942,7 @@ argument_list|,
 name|IGNORE_MISSING
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,

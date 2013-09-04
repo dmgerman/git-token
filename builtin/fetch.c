@@ -343,7 +343,7 @@ operator|&
 name|verbosity
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -358,7 +358,7 @@ literal|"fetch from all remotes"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'a'
 argument_list|,
@@ -404,7 +404,7 @@ literal|"force overwrite of local branch"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'m'
 argument_list|,
@@ -453,7 +453,7 @@ argument_list|,
 name|TAGS_UNSET
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'p'
 argument_list|,
@@ -492,7 +492,7 @@ block|,
 name|option_parse_recurse_submodules
 block|}
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -507,7 +507,7 @@ literal|"dry run"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'k'
 argument_list|,
@@ -522,7 +522,7 @@ literal|"keep downloaded pack"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'u'
 argument_list|,

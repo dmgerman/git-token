@@ -97,7 +97,7 @@ name|check_attr_options
 index|[]
 init|=
 block|{
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'a'
 argument_list|,
@@ -112,7 +112,7 @@ literal|"report all attributes set on file"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -127,7 +127,7 @@ literal|"use .gitattributes only from the index"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -142,7 +142,7 @@ literal|"read file names from stdin"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'z'
 argument_list|,

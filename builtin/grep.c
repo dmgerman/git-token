@@ -3507,7 +3507,7 @@ name|options
 index|[]
 init|=
 block|{
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -3539,7 +3539,7 @@ argument_list|,
 literal|1
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -3576,7 +3576,7 @@ argument_list|(
 literal|""
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'v'
 argument_list|,
@@ -3593,7 +3593,7 @@ literal|"show non-matching lines"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'i'
 argument_list|,
@@ -3610,7 +3610,7 @@ literal|"case insensitive matching"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'w'
 argument_list|,
@@ -3772,7 +3772,7 @@ argument_list|(
 literal|""
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'n'
 argument_list|,
@@ -3846,7 +3846,7 @@ argument_list|,
 literal|1
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'l'
 argument_list|,
@@ -3863,7 +3863,7 @@ literal|"show only filenames instead of matching lines"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -3880,7 +3880,7 @@ literal|"synonym for --files-with-matches"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'L'
 argument_list|,
@@ -3897,7 +3897,7 @@ literal|"show only the names of files without match"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'z'
 argument_list|,
@@ -3914,7 +3914,7 @@ literal|"print NUL after filenames"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'c'
 argument_list|,
@@ -3944,7 +3944,7 @@ literal|"highlight matches"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -3961,7 +3961,7 @@ literal|"print empty line between matches from different files"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -4052,7 +4052,7 @@ argument_list|,
 name|context_callback
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'p'
 argument_list|,
@@ -4069,7 +4069,7 @@ literal|"show a line with the function name before matches"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'W'
 argument_list|,
@@ -4162,7 +4162,7 @@ block|,
 name|and_callback
 block|}
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -4254,7 +4254,7 @@ literal|"indicate hit with exit status without output"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -4334,7 +4334,7 @@ operator|)
 name|default_pager
 block|}
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,

@@ -641,12 +641,8 @@ name|builtin_log_options
 index|[]
 init|=
 block|{
-name|OPT_BOOL
+name|OPT__QUIET
 argument_list|(
-literal|0
-argument_list|,
-literal|"quiet"
-argument_list|,
 operator|&
 name|quiet
 argument_list|,
@@ -6713,7 +6709,7 @@ block|,
 name|keep_callback
 block|}
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -6728,7 +6724,7 @@ literal|"don't output binary diffs"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -6744,7 +6740,7 @@ argument_list|)
 argument_list|)
 block|,
 block|{
-name|OPTION_BOOLEAN
+name|OPTION_SET_INT
 block|,
 literal|'p'
 block|,
@@ -6763,6 +6759,10 @@ block|,
 name|PARSE_OPT_NONEG
 operator||
 name|PARSE_OPT_NOARG
+block|,
+name|NULL
+block|,
+literal|1
 block|}
 block|,
 name|OPT_GROUP
@@ -6987,12 +6987,8 @@ literal|"add a signature"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT__QUIET
 argument_list|(
-literal|0
-argument_list|,
-literal|"quiet"
-argument_list|,
 operator|&
 name|quiet
 argument_list|,

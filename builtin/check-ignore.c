@@ -117,7 +117,7 @@ argument_list|(
 literal|""
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -132,7 +132,7 @@ literal|"read file names from stdin"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'z'
 argument_list|,
@@ -147,7 +147,7 @@ literal|"terminate input and output records by a NUL character"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'n'
 argument_list|,

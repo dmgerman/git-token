@@ -1487,7 +1487,7 @@ argument_list|,
 name|KEEP
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|'p'
 argument_list|,

@@ -1231,7 +1231,7 @@ block|,
 name|option_parse_n
 block|}
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -1246,7 +1246,7 @@ literal|"show a diffstat at the end of the merge"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -1288,7 +1288,7 @@ block|,
 name|DEFAULT_MERGE_LOG_LEN
 block|}
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -1303,7 +1303,7 @@ literal|"create a single commit instead of doing a merge"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -1466,7 +1466,7 @@ operator|&
 name|verbosity
 argument_list|)
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
@@ -1528,7 +1528,7 @@ operator|)
 literal|""
 block|}
 block|,
-name|OPT_BOOLEAN
+name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
