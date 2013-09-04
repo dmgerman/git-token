@@ -10874,15 +10874,19 @@ block|}
 end_function
 
 begin_function
-DECL|function|repack_without_ref
+DECL|function|repack_without_refs
 specifier|static
 name|int
-name|repack_without_ref
+name|repack_without_refs
 parameter_list|(
 specifier|const
 name|char
 modifier|*
-name|refname
+modifier|*
+name|refnames
+parameter_list|,
+name|int
+name|n
 parameter_list|)
 block|{
 name|struct
@@ -10901,18 +10905,49 @@ name|string_list_item
 modifier|*
 name|ref_to_delete
 decl_stmt|;
+name|int
+name|i
+decl_stmt|,
+name|removed
+init|=
+literal|0
+decl_stmt|;
+comment|/* Look for a packed ref */
+for|for
+control|(
+name|i
+operator|=
+literal|0
+init|;
+name|i
+operator|<
+name|n
+condition|;
+name|i
+operator|++
+control|)
 if|if
 condition|(
-operator|!
 name|get_packed_ref
 argument_list|(
-name|refname
+name|refnames
+index|[
+name|i
+index|]
 argument_list|)
+condition|)
+break|break;
+comment|/* Avoid locking if we have nothing to do */
+if|if
+condition|(
+name|i
+operator|==
+name|n
 condition|)
 return|return
 literal|0
 return|;
-comment|/* refname does not exist in packed refs */
+comment|/* no refname exists in packed refs */
 if|if
 condition|(
 name|lock_packed_refs
@@ -10936,7 +10971,10 @@ name|error
 argument_list|(
 literal|"cannot delete '%s' from packed refs"
 argument_list|,
-name|refname
+name|refnames
+index|[
+name|i
+index|]
 argument_list|)
 return|;
 block|}
@@ -10948,21 +10986,46 @@ operator|&
 name|ref_cache
 argument_list|)
 expr_stmt|;
-comment|/* Remove refname from the cache: */
+comment|/* Remove refnames from the cache */
+for|for
+control|(
+name|i
+operator|=
+literal|0
+init|;
+name|i
+operator|<
+name|n
+condition|;
+name|i
+operator|++
+control|)
 if|if
 condition|(
 name|remove_entry
 argument_list|(
 name|packed
 argument_list|,
-name|refname
+name|refnames
+index|[
+name|i
+index|]
 argument_list|)
-operator|==
+operator|!=
 operator|-
 literal|1
 condition|)
+name|removed
+operator|=
+literal|1
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|removed
+condition|)
 block|{
-comment|/* 		 * The packed entry disappeared while we were 		 * acquiring the lock. 		 */
+comment|/* 		 * All packed entries disappeared while we were 		 * acquiring the lock. 		 */
 name|rollback_packed_refs
 argument_list|()
 expr_stmt|;
@@ -10970,7 +11033,7 @@ return|return
 literal|0
 return|;
 block|}
-comment|/* Remove any other accumulated cruft: */
+comment|/* Remove any other accumulated cruft */
 name|do_for_each_entry_in_dir
 argument_list|(
 name|packed
@@ -11010,10 +11073,34 @@ literal|"internal error"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* Write what remains: */
+comment|/* Write what remains */
 return|return
 name|commit_packed_refs
 argument_list|()
+return|;
+block|}
+end_function
+
+begin_function
+DECL|function|repack_without_ref
+specifier|static
+name|int
+name|repack_without_ref
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|refname
+parameter_list|)
+block|{
+return|return
+name|repack_without_refs
+argument_list|(
+operator|&
+name|refname
+argument_list|,
+literal|1
+argument_list|)
 return|;
 block|}
 end_function
