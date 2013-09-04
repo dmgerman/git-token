@@ -9166,9 +9166,6 @@ expr_stmt|;
 name|release_pack_memory
 argument_list|(
 name|size
-argument_list|,
-operator|-
-literal|1
 argument_list|)
 expr_stmt|;
 name|read_unlock
