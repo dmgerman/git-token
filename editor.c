@@ -210,7 +210,10 @@ init|=
 block|{
 name|editor
 block|,
+name|real_path
+argument_list|(
 name|path
+argument_list|)
 block|,
 name|NULL
 block|}
