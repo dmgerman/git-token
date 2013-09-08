@@ -2640,17 +2640,44 @@ block|}
 end_function
 
 begin_function
-DECL|function|die_bad_config
+DECL|function|die_bad_number
 specifier|static
 name|void
-name|die_bad_config
+name|die_bad_number
 parameter_list|(
 specifier|const
 name|char
 modifier|*
 name|name
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|value
 parameter_list|)
 block|{
+specifier|const
+name|char
+modifier|*
+name|reason
+init|=
+name|errno
+operator|==
+name|ERANGE
+condition|?
+literal|"out of range"
+else|:
+literal|"invalid unit"
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|value
+condition|)
+name|value
+operator|=
+literal|""
+expr_stmt|;
 if|if
 condition|(
 name|cf
@@ -2661,20 +2688,28 @@ name|name
 condition|)
 name|die
 argument_list|(
-literal|"bad config value for '%s' in %s"
+literal|"bad numeric config value '%s' for '%s' in %s: %s"
+argument_list|,
+name|value
 argument_list|,
 name|name
 argument_list|,
 name|cf
 operator|->
 name|name
+argument_list|,
+name|reason
 argument_list|)
 expr_stmt|;
 name|die
 argument_list|(
-literal|"bad config value for '%s'"
+literal|"bad numeric config value '%s' for '%s': %s"
+argument_list|,
+name|value
 argument_list|,
 name|name
+argument_list|,
+name|reason
 argument_list|)
 expr_stmt|;
 block|}
@@ -2710,9 +2745,11 @@ operator|&
 name|ret
 argument_list|)
 condition|)
-name|die_bad_config
+name|die_bad_number
 argument_list|(
 name|name
+argument_list|,
+name|value
 argument_list|)
 expr_stmt|;
 return|return
@@ -2753,9 +2790,11 @@ operator|&
 name|ret
 argument_list|)
 condition|)
-name|die_bad_config
+name|die_bad_number
 argument_list|(
 name|name
+argument_list|,
+name|value
 argument_list|)
 expr_stmt|;
 return|return
