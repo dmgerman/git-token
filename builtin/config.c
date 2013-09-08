@@ -1128,9 +1128,10 @@ name|sprintf
 argument_list|(
 name|value
 argument_list|,
-literal|"%d"
+literal|"%"
+name|PRId64
 argument_list|,
-name|git_config_int
+name|git_config_int64
 argument_list|(
 name|key_
 argument_list|,
@@ -1769,10 +1770,10 @@ operator|==
 name|TYPE_INT
 condition|)
 block|{
-name|int
+name|int64_t
 name|v
 init|=
-name|git_config_int
+name|git_config_int64
 argument_list|(
 name|key
 argument_list|,
@@ -1783,7 +1784,8 @@ name|sprintf
 argument_list|(
 name|normalized
 argument_list|,
-literal|"%d"
+literal|"%"
+name|PRId64
 argument_list|,
 name|v
 argument_list|)
