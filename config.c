@@ -2510,17 +2510,17 @@ block|}
 end_function
 
 begin_function
-DECL|function|git_parse_long
+DECL|function|git_parse_int
 specifier|static
 name|int
-name|git_parse_long
+name|git_parse_int
 parameter_list|(
 specifier|const
 name|char
 modifier|*
 name|value
 parameter_list|,
-name|long
+name|int
 modifier|*
 name|ret
 parameter_list|)
@@ -2540,7 +2540,7 @@ name|tmp
 argument_list|,
 name|maximum_signed_value_of_type
 argument_list|(
-name|long
+name|int
 argument_list|)
 argument_list|)
 condition|)
@@ -2664,15 +2664,13 @@ modifier|*
 name|value
 parameter_list|)
 block|{
-name|long
+name|int
 name|ret
-init|=
-literal|0
 decl_stmt|;
 if|if
 condition|(
 operator|!
-name|git_parse_long
+name|git_parse_int
 argument_list|(
 name|value
 argument_list|,
@@ -2849,7 +2847,7 @@ modifier|*
 name|value
 parameter_list|)
 block|{
-name|long
+name|int
 name|v
 init|=
 name|git_config_maybe_bool_text
@@ -2870,7 +2868,7 @@ name|v
 return|;
 if|if
 condition|(
-name|git_parse_long
+name|git_parse_int
 argument_list|(
 name|value
 argument_list|,
