@@ -92,7 +92,7 @@ comment|/* Allow "-L<something>,+20" to mean starting at<something> 	 * for 20 l
 if|if
 condition|(
 literal|1
-operator|<
+operator|<=
 name|begin
 operator|&&
 operator|(
@@ -143,6 +143,17 @@ condition|)
 return|return
 name|term
 return|;
+if|if
+condition|(
+name|num
+operator|==
+literal|0
+condition|)
+name|die
+argument_list|(
+literal|"-L invalid empty range"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|spec
