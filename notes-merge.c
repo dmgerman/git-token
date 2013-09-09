@@ -1033,10 +1033,12 @@ operator|&
 name|opt
 argument_list|)
 expr_stmt|;
-name|diff_tree_release_paths
+name|free_pathspec
 argument_list|(
 operator|&
 name|opt
+operator|.
+name|pathspec
 argument_list|)
 expr_stmt|;
 operator|*
@@ -1469,10 +1471,12 @@ operator|&
 name|opt
 argument_list|)
 expr_stmt|;
-name|diff_tree_release_paths
+name|free_pathspec
 argument_list|(
 operator|&
 name|opt
+operator|.
+name|pathspec
 argument_list|)
 expr_stmt|;
 block|}

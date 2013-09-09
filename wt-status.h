@@ -170,10 +170,8 @@ modifier|*
 name|reference
 decl_stmt|;
 DECL|member|pathspec
-specifier|const
-name|char
-modifier|*
-modifier|*
+name|struct
+name|pathspec
 name|pathspec
 decl_stmt|;
 DECL|member|verbose

@@ -2536,13 +2536,13 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * It is okay if dst == src, but they should not overlap otherwise.  *  * Performs the following normalizations on src, storing the result in dst:  * - Ensures that components are separated by '/' (Windows only)  * - Squashes sequences of '/'.  * - Removes "." components.  * - Removes ".." components, and the components the precede them.  * Returns failure (non-zero) if a ".." component appears as first path  * component anytime during the normalization. Otherwise, returns success (0).  *  * Note that this function is purely textual.  It does not follow symlinks,  * verify the existence of the path, or make any system calls.  */
+comment|/*  * It is okay if dst == src, but they should not overlap otherwise.  *  * Performs the following normalizations on src, storing the result in dst:  * - Ensures that components are separated by '/' (Windows only)  * - Squashes sequences of '/'.  * - Removes "." components.  * - Removes ".." components, and the components the precede them.  * Returns failure (non-zero) if a ".." component appears as first path  * component anytime during the normalization. Otherwise, returns success (0).  *  * Note that this function is purely textual.  It does not follow symlinks,  * verify the existence of the path, or make any system calls.  *  * prefix_len != NULL is for a specific case of prefix_pathspec():  * assume that src == dst and src[0..prefix_len-1] is already  * normalized, any time "../" eats up to the prefix_len part,  * prefix_len is reduced. In the end prefix_len is the remaining  * prefix that has not been overridden by user pathspec.  */
 end_comment
 
 begin_function
-DECL|function|normalize_path_copy
+DECL|function|normalize_path_copy_len
 name|int
-name|normalize_path_copy
+name|normalize_path_copy_len
 parameter_list|(
 name|char
 modifier|*
@@ -2552,6 +2552,10 @@ specifier|const
 name|char
 modifier|*
 name|src
+parameter_list|,
+name|int
+modifier|*
+name|prefix_len
 parameter_list|)
 block|{
 name|char
@@ -2840,6 +2844,24 @@ condition|)
 name|dst
 operator|--
 expr_stmt|;
+if|if
+condition|(
+name|prefix_len
+operator|&&
+operator|*
+name|prefix_len
+operator|>
+name|dst
+operator|-
+name|dst0
+condition|)
+operator|*
+name|prefix_len
+operator|=
+name|dst
+operator|-
+name|dst0
+expr_stmt|;
 block|}
 operator|*
 name|dst
@@ -2848,6 +2870,34 @@ literal|'\0'
 expr_stmt|;
 return|return
 literal|0
+return|;
+block|}
+end_function
+
+begin_function
+DECL|function|normalize_path_copy
+name|int
+name|normalize_path_copy
+parameter_list|(
+name|char
+modifier|*
+name|dst
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|src
+parameter_list|)
+block|{
+return|return
+name|normalize_path_copy_len
+argument_list|(
+name|dst
+argument_list|,
+name|src
+argument_list|,
+name|NULL
+argument_list|)
 return|;
 block|}
 end_function

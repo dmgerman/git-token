@@ -47,6 +47,12 @@ directive|include
 file|"xdiff-interface.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"pathspec.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|rerere_usage
 specifier|static
@@ -428,10 +434,8 @@ literal|"forget"
 argument_list|)
 condition|)
 block|{
-specifier|const
-name|char
-modifier|*
-modifier|*
+name|struct
+name|pathspec
 name|pathspec
 decl_stmt|;
 if|if
@@ -445,10 +449,15 @@ argument_list|(
 literal|"'git rerere forget' without paths is deprecated"
 argument_list|)
 expr_stmt|;
-name|pathspec
-operator|=
-name|get_pathspec
+name|parse_pathspec
 argument_list|(
+operator|&
+name|pathspec
+argument_list|,
+literal|0
+argument_list|,
+name|PATHSPEC_PREFER_CWD
+argument_list|,
 name|prefix
 argument_list|,
 name|argv
@@ -459,6 +468,7 @@ expr_stmt|;
 return|return
 name|rerere_forget
 argument_list|(
+operator|&
 name|pathspec
 argument_list|)
 return|;

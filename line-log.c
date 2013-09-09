@@ -4355,7 +4355,7 @@ index|]
 operator|=
 name|NULL
 expr_stmt|;
-name|init_pathspec
+name|parse_pathspec
 argument_list|(
 operator|&
 name|rev
@@ -4363,6 +4363,12 @@ operator|->
 name|diffopt
 operator|.
 name|pathspec
+argument_list|,
+literal|0
+argument_list|,
+literal|0
+argument_list|,
+literal|""
 argument_list|,
 name|paths
 argument_list|)

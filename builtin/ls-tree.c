@@ -45,6 +45,12 @@ directive|include
 file|"parse-options.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"pathspec.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|line_termination
 specifier|static
@@ -198,7 +204,7 @@ name|s
 operator|=
 name|pathspec
 operator|.
-name|raw
+name|_raw
 expr_stmt|;
 if|if
 condition|(
@@ -909,19 +915,23 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
-name|init_pathspec
+comment|/* 	 * show_recursive() rolls its own matching code and is 	 * generally ignorant of 'struct pathspec'. The magic mask 	 * cannot be lifted until it is converted to use 	 * match_pathspec_depth() or tree_entry_interesting() 	 */
+name|parse_pathspec
 argument_list|(
 operator|&
 name|pathspec
 argument_list|,
-name|get_pathspec
-argument_list|(
+name|PATHSPEC_GLOB
+operator||
+name|PATHSPEC_ICASE
+argument_list|,
+name|PATHSPEC_PREFER_CWD
+argument_list|,
 name|prefix
 argument_list|,
 name|argv
 operator|+
 literal|1
-argument_list|)
 argument_list|)
 expr_stmt|;
 for|for
