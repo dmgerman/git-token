@@ -1200,16 +1200,12 @@ name|struct
 name|pathspec
 name|pathspec
 decl_stmt|;
-comment|/* 	 * git-add--interactive itself does not parse pathspec. It 	 * simply passes the pathspec to other builtin commands. Let's 	 * hope all of them support all magic, or we'll need to limit 	 * the magic here. 	 */
 name|parse_pathspec
 argument_list|(
 operator|&
 name|pathspec
 argument_list|,
-name|PATHSPEC_ALL_MAGIC
-operator|&
-operator|~
-name|PATHSPEC_FROMTOP
+literal|0
 argument_list|,
 name|PATHSPEC_PREFER_FULL
 operator||

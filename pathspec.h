@@ -75,7 +75,7 @@ end_define
 
 begin_comment
 DECL|macro|PATHSPEC_ONESTAR
-comment|/* the pathspec pattern sastisfies GFNM_ONESTAR */
+comment|/* the pathspec pattern satisfies GFNM_ONESTAR */
 end_comment
 
 begin_struct

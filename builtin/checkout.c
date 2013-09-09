@@ -6217,7 +6217,6 @@ condition|(
 name|argc
 condition|)
 block|{
-comment|/* 		 * In patch mode (opts.patch_mode != 0), we pass the 		 * pathspec to an external program, git-add--interactive. 		 * Do not accept any kind of magic that that program 		 * cannot handle. Magic mask is pretty safe to be 		 * lifted for new magic when opts.patch_mode == 0. 		 */
 name|parse_pathspec
 argument_list|(
 operator|&

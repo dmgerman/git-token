@@ -1034,6 +1034,16 @@ block|{
 comment|/* Preserve the actual prefix length of each pattern */
 if|if
 condition|(
+name|short_magic
+condition|)
+name|die
+argument_list|(
+literal|"BUG: prefixing on short magic is not supported"
+argument_list|)
+expr_stmt|;
+elseif|else
+if|if
+condition|(
 name|long_magic_end
 condition|)
 block|{
