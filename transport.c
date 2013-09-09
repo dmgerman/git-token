@@ -5158,6 +5158,12 @@ operator|->
 name|options
 operator|)
 expr_stmt|;
+name|transport
+operator|->
+name|cannot_reuse
+operator|=
+literal|1
+expr_stmt|;
 block|}
 end_function
 
