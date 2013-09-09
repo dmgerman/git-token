@@ -17,6 +17,18 @@ directive|include
 file|"fetch-pack.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"remote.h"
+end_include
+
+begin_include
+include|#
+directive|include
+file|"connect.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|fetch_pack_usage
 specifier|static
