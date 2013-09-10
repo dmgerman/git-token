@@ -1800,7 +1800,7 @@ block|}
 end_function
 
 begin_comment
-comment|/* Use mingw_lstat() instead of lstat()/stat() and  * mingw_fstat() instead of fstat() on Windows.  */
+comment|/*  * Use mingw specific stat()/lstat()/fstat() implementations on Windows.  */
 end_comment
 
 begin_define
@@ -1819,11 +1819,9 @@ name|lseek
 value|_lseeki64
 end_define
 
-begin_ifndef
-ifndef|#
-directive|ifndef
-name|ALREADY_DECLARED_STAT_FUNCS
-end_ifndef
+begin_comment
+comment|/* use struct stat with 64 bit st_size */
+end_comment
 
 begin_define
 DECL|macro|stat
@@ -1898,11 +1896,57 @@ name|lstat
 value|mingw_lstat
 end_define
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|_stati64
+end_ifndef
+
 begin_define
 DECL|macro|_stati64
 define|#
 directive|define
 name|_stati64
+parameter_list|(
+name|x
+parameter_list|,
+name|y
+parameter_list|)
+value|mingw_stat(x,y)
+end_define
+
+begin_elif
+elif|#
+directive|elif
+name|defined
+argument_list|(
+name|_USE_32BIT_TIME_T
+argument_list|)
+end_elif
+
+begin_define
+DECL|macro|_stat32i64
+define|#
+directive|define
+name|_stat32i64
+parameter_list|(
+name|x
+parameter_list|,
+name|y
+parameter_list|)
+value|mingw_stat(x,y)
+end_define
+
+begin_else
+else|#
+directive|else
+end_else
+
+begin_define
+DECL|macro|_stat64
+define|#
+directive|define
+name|_stat64
 parameter_list|(
 name|x
 parameter_list|,
