@@ -214,6 +214,12 @@ parameter_list|)
 value|SIGTERM
 end_define
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|EWOULDBLOCK
+end_ifndef
+
 begin_define
 DECL|macro|EWOULDBLOCK
 define|#
@@ -221,6 +227,11 @@ directive|define
 name|EWOULDBLOCK
 value|EAGAIN
 end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_define
 DECL|macro|SHUT_WR
@@ -302,6 +313,12 @@ name|FD_CLOEXEC
 value|0x1
 end_define
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|EAFNOSUPPORT
+end_ifndef
+
 begin_define
 DECL|macro|EAFNOSUPPORT
 define|#
@@ -310,6 +327,17 @@ name|EAFNOSUPPORT
 value|WSAEAFNOSUPPORT
 end_define
 
+begin_endif
+endif|#
+directive|endif
+end_endif
+
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|ECONNABORTED
+end_ifndef
+
 begin_define
 DECL|macro|ECONNABORTED
 define|#
@@ -317,6 +345,11 @@ directive|define
 name|ECONNABORTED
 value|WSAECONNABORTED
 end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_struct
 DECL|struct|passwd
