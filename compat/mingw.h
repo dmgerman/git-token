@@ -1823,6 +1823,24 @@ begin_comment
 comment|/* use struct stat with 64 bit st_size */
 end_comment
 
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|stat
+end_ifdef
+
+begin_undef
+DECL|macro|stat
+undef|#
+directive|undef
+name|stat
+end_undef
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_define
 DECL|macro|stat
 define|#
@@ -1880,6 +1898,24 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|fstat
+end_ifdef
+
+begin_undef
+DECL|macro|fstat
+undef|#
+directive|undef
+name|fstat
+end_undef
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_define
 DECL|macro|fstat
 define|#
@@ -1887,6 +1923,24 @@ directive|define
 name|fstat
 value|mingw_fstat
 end_define
+
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|lstat
+end_ifdef
+
+begin_undef
+DECL|macro|lstat
+undef|#
+directive|undef
+name|lstat
+end_undef
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_define
 DECL|macro|lstat
