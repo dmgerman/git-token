@@ -1296,6 +1296,17 @@ operator|||
 name|show_killed
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|show_others
+condition|)
+name|dir
+operator|->
+name|flags
+operator||=
+name|DIR_COLLECT_KILLED_ONLY
+expr_stmt|;
 name|fill_directory
 argument_list|(
 name|dir
