@@ -77,6 +77,8 @@ DECL|variable|thin
 specifier|static
 name|int
 name|thin
+init|=
+literal|1
 decl_stmt|;
 end_decl_stmt
 
@@ -1375,17 +1377,17 @@ argument_list|,
 name|receivepack
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|thin
-condition|)
 name|transport_set_option
 argument_list|(
 name|transport
 argument_list|,
 name|TRANS_OPT_THIN
 argument_list|,
+name|thin
+condition|?
 literal|"yes"
+else|:
+name|NULL
 argument_list|)
 expr_stmt|;
 if|if
