@@ -133,6 +133,12 @@ directive|define
 name|WIN32_LEAN_AND_MEAN
 end_define
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|_WIN32_WINNT
+end_ifndef
+
 begin_define
 DECL|macro|_WIN32_WINNT
 define|#
@@ -140,6 +146,11 @@ directive|define
 name|_WIN32_WINNT
 value|0x403
 end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_include
 include|#
