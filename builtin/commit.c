@@ -3606,6 +3606,13 @@ name|commit_editmsg
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|/* 	 * Most hints are counter-productive when the commit has 	 * already started. 	 */
+name|s
+operator|->
+name|hints
+operator|=
+literal|0
+expr_stmt|;
 if|if
 condition|(
 name|clean_message_contents
