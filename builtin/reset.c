@@ -803,9 +803,6 @@ name|format_callback
 operator|=
 name|update_index_from_diff
 expr_stmt|;
-name|read_cache
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|do_diff_cache
@@ -938,11 +935,6 @@ if|if
 condition|(
 name|is_merge
 argument_list|()
-operator|||
-name|read_cache
-argument_list|()
-operator|<
-literal|0
 operator|||
 name|unmerged_cache
 argument_list|()
@@ -1154,6 +1146,21 @@ name|rev_ret
 operator|=
 name|rev
 expr_stmt|;
+if|if
+condition|(
+name|read_cache
+argument_list|()
+operator|<
+literal|0
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"index file corrupt"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|parse_pathspec
 argument_list|(
 name|pathspec
@@ -1161,6 +1168,8 @@ argument_list|,
 literal|0
 argument_list|,
 name|PATHSPEC_PREFER_FULL
+operator||
+name|PATHSPEC_STRIP_SUBMODULE_SLASH_CHEAP
 operator||
 operator|(
 name|patch_mode
