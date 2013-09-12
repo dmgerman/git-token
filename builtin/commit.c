@@ -851,6 +851,13 @@ argument_list|(
 name|s
 argument_list|)
 expr_stmt|;
+name|s
+operator|->
+name|hints
+operator|=
+name|advice_status_hints
+expr_stmt|;
+comment|/* must come after git_config() */
 block|}
 end_function
 
