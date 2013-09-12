@@ -3072,6 +3072,7 @@ argument_list|,
 literal|"HTTP/1.1"
 argument_list|)
 condition|)
+block|{
 name|http_status
 argument_list|(
 literal|405
@@ -3079,6 +3080,28 @@ argument_list|,
 literal|"Method Not Allowed"
 argument_list|)
 expr_stmt|;
+name|hdr_str
+argument_list|(
+literal|"Allow"
+argument_list|,
+operator|!
+name|strcmp
+argument_list|(
+name|c
+operator|->
+name|method
+argument_list|,
+literal|"GET"
+argument_list|)
+condition|?
+literal|"GET, HEAD"
+else|:
+name|c
+operator|->
+name|method
+argument_list|)
+expr_stmt|;
+block|}
 else|else
 name|http_status
 argument_list|(
