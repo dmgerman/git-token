@@ -325,6 +325,38 @@ expr_stmt|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * On some systems (e.g. MinGW 4.0), string.h has _only_ inline  * definition of strcasecmp and no non-inline implementation is  * supplied anywhere, which is, eh, "unusual"; we cannot take an  * address of such a function to store it in namemap.cmp.  This is  * here as a workaround---do not assign strcasecmp directly to  * namemap.cmp until we know no systems that matter have such an  * "unusual" string.h.  */
+end_comment
+
+begin_function
+DECL|function|namemap_cmp
+specifier|static
+name|int
+name|namemap_cmp
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|a
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|b
+parameter_list|)
+block|{
+return|return
+name|strcasecmp
+argument_list|(
+name|a
+argument_list|,
+name|b
+argument_list|)
+return|;
+block|}
+end_function
+
 begin_function
 DECL|function|add_mapping
 specifier|static
@@ -466,7 +498,7 @@ name|namemap
 operator|.
 name|cmp
 operator|=
-name|strcasecmp
+name|namemap_cmp
 expr_stmt|;
 name|item
 operator|->
@@ -1405,7 +1437,7 @@ name|map
 operator|->
 name|cmp
 operator|=
-name|strcasecmp
+name|namemap_cmp
 expr_stmt|;
 if|if
 condition|(
