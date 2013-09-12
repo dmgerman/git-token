@@ -7975,6 +7975,22 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|int64_t
+name|git_config_int64
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|unsigned
 name|long
 name|git_config_ulong
