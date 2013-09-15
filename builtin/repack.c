@@ -1296,7 +1296,7 @@ condition|(
 name|ret
 condition|)
 return|return
-literal|1
+name|ret
 return|;
 name|nr_packs
 operator|=
@@ -1373,7 +1373,7 @@ condition|(
 name|ret
 condition|)
 return|return
-literal|1
+name|ret
 return|;
 name|argv_array_clear
 argument_list|(
