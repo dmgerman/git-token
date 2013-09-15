@@ -2459,6 +2459,14 @@ name|cmd_remote_fd
 block|}
 block|,
 block|{
+literal|"repack"
+block|,
+name|cmd_repack
+block|,
+name|RUN_SETUP
+block|}
+block|,
+block|{
 literal|"replace"
 block|,
 name|cmd_replace
