@@ -1798,9 +1798,14 @@ argument_list|,
 name|fname
 argument_list|)
 condition|)
-name|exit
+name|die_errno
 argument_list|(
-name|errno
+name|_
+argument_list|(
+literal|"renaming '%s' failed"
+argument_list|)
+argument_list|,
+name|fname_old
 argument_list|)
 expr_stmt|;
 name|free
@@ -1859,8 +1864,20 @@ name|ext
 index|]
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|remove_path
 argument_list|(
+name|fname
+argument_list|)
+condition|)
+name|warning
+argument_list|(
+name|_
+argument_list|(
+literal|"removing '%s' failed"
+argument_list|)
+argument_list|,
 name|fname
 argument_list|)
 expr_stmt|;
