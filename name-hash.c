@@ -258,7 +258,7 @@ name|int
 name|namelen
 parameter_list|)
 block|{
-comment|/* 	 * Throw each directory component in the hash for quick lookup 	 * during a git status. Directory components are stored with their 	 * closing slash.  Despite submodules being a directory, they never 	 * reach this point, because they are stored without a closing slash 	 * in index_state.name_hash (as ordinary cache_entries). 	 * 	 * Note that the cache_entry stored with the dir_entry merely 	 * supplies the name of the directory (up to dir_entry.namelen). We 	 * track the number of 'active' files in a directory in dir_entry.nr, 	 * so we can tell if the directory is still relevant, e.g. for git 	 * status. However, if cache_entries are removed, we cannot pinpoint 	 * an exact cache_entry that's still active. It is very possible that 	 * multiple dir_entries point to the same cache_entry. 	 */
+comment|/* 	 * Throw each directory component in the hash for quick lookup 	 * during a git status. Directory components are stored without their 	 * closing slash.  Despite submodules being a directory, they never 	 * reach this point, because they are stored 	 * in index_state.name_hash (as ordinary cache_entries). 	 * 	 * Note that the cache_entry stored with the dir_entry merely 	 * supplies the name of the directory (up to dir_entry.namelen). We 	 * track the number of 'active' files in a directory in dir_entry.nr, 	 * so we can tell if the directory is still relevant, e.g. for git 	 * status. However, if cache_entries are removed, we cannot pinpoint 	 * an exact cache_entry that's still active. It is very possible that 	 * multiple dir_entries point to the same cache_entry. 	 */
 name|struct
 name|dir_entry
 modifier|*
@@ -296,6 +296,9 @@ condition|)
 return|return
 name|NULL
 return|;
+name|namelen
+operator|--
+expr_stmt|;
 comment|/* lookup existing entry for that directory */
 name|dir
 operator|=
@@ -404,8 +407,6 @@ argument_list|,
 name|ce
 argument_list|,
 name|namelen
-operator|-
-literal|1
 argument_list|)
 expr_stmt|;
 block|}
@@ -1080,8 +1081,6 @@ argument_list|,
 name|name
 argument_list|,
 name|namelen
-operator|-
-literal|1
 argument_list|,
 literal|1
 argument_list|)
@@ -1257,6 +1256,8 @@ argument_list|,
 name|name
 argument_list|,
 name|namelen
+operator|-
+literal|1
 argument_list|)
 return|;
 return|return

@@ -3295,6 +3295,8 @@ operator|-
 name|ce
 operator|->
 name|name
+operator|-
+literal|1
 argument_list|)
 expr_stmt|;
 if|if
