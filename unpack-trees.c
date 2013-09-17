@@ -6451,7 +6451,7 @@ name|src
 decl_stmt|;
 name|src
 operator|=
-name|index_name_exists
+name|index_file_exists
 argument_list|(
 name|o
 operator|->
@@ -6606,7 +6606,7 @@ block|}
 comment|/* 	 * The previous round may already have decided to 	 * delete this path, which is in a subdirectory that 	 * is being replaced with a blob. 	 */
 name|result
 operator|=
-name|index_name_exists
+name|index_file_exists
 argument_list|(
 operator|&
 name|o
