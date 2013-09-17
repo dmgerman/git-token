@@ -4310,6 +4310,14 @@ operator|&
 name|symref
 argument_list|)
 expr_stmt|;
+name|for_each_namespaced_ref
+argument_list|(
+name|find_symref
+argument_list|,
+operator|&
+name|symref
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|advertise_refs
