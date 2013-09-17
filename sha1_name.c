@@ -5912,7 +5912,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Many callers know that the user meant to name a committish by  * syntactical positions where the object name appears.  Calling this  * function allows the machinery to disambiguate shorter-than-unique  * abbreviated object names between committish and others.  *  * Note that this does NOT error out when the named object is not a  * committish. It is merely to give a hint to the disambiguation  * machinery.  */
+comment|/*  * Many callers know that the user meant to name a commit-ish by  * syntactical positions where the object name appears.  Calling this  * function allows the machinery to disambiguate shorter-than-unique  * abbreviated object names between commit-ish and others.  *  * Note that this does NOT error out when the named object is not a  * commit-ish. It is merely to give a hint to the disambiguation  * machinery.  */
 end_comment
 
 begin_function

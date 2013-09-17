@@ -88,7 +88,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git describe [options]<committish>*"
+literal|"git describe [options]<commit-ish>*"
 argument_list|)
 block|,
 name|N_
@@ -2899,7 +2899,7 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"--dirty is incompatible with committishes"
+literal|"--dirty is incompatible with commit-ishes"
 argument_list|)
 argument_list|)
 expr_stmt|;
