@@ -98,6 +98,18 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|void
+name|free_tree_buffer
+parameter_list|(
+name|struct
+name|tree
+modifier|*
+name|tree
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/* Parses and returns the tree in the given ent, chasing tags and commits. */
 end_comment
