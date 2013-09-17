@@ -56,6 +56,27 @@ name|server_capabilities
 decl_stmt|;
 end_decl_stmt
 
+begin_function_decl
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|parse_feature_value
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+parameter_list|,
+name|int
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function
 DECL|function|check_ref
 specifier|static
@@ -608,6 +629,7 @@ end_function
 
 begin_function
 DECL|function|parse_feature_value
+specifier|static
 specifier|const
 name|char
 modifier|*
