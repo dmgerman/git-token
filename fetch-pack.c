@@ -3687,6 +3687,9 @@ name|char
 modifier|*
 modifier|*
 name|av
+decl_stmt|,
+modifier|*
+name|cmd_name
 decl_stmt|;
 name|int
 name|do_keep
@@ -3909,6 +3912,8 @@ operator|*
 name|av
 operator|++
 operator|=
+name|cmd_name
+operator|=
 literal|"index-pack"
 expr_stmt|;
 operator|*
@@ -4013,6 +4018,8 @@ operator|*
 name|av
 operator|++
 operator|=
+name|cmd_name
+operator|=
 literal|"unpack-objects"
 expr_stmt|;
 if|if
@@ -4097,10 +4104,7 @@ name|die
 argument_list|(
 literal|"fetch-pack: unable to fork off %s"
 argument_list|,
-name|argv
-index|[
-literal|0
-index|]
+name|cmd_name
 argument_list|)
 expr_stmt|;
 if|if
@@ -4140,10 +4144,7 @@ name|die
 argument_list|(
 literal|"%s failed"
 argument_list|,
-name|argv
-index|[
-literal|0
-index|]
+name|cmd_name
 argument_list|)
 expr_stmt|;
 if|if
