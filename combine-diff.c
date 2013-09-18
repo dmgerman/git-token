@@ -71,6 +71,12 @@ directive|include
 file|"sha1-array.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"revision.h"
+end_include
+
 begin_function
 DECL|function|intersect_paths
 specifier|static
@@ -8001,9 +8007,12 @@ name|commit_list
 modifier|*
 name|parent
 init|=
+name|get_saved_parents
+argument_list|(
+name|rev
+argument_list|,
 name|commit
-operator|->
-name|parents
+argument_list|)
 decl_stmt|;
 name|struct
 name|sha1_array
