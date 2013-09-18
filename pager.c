@@ -230,7 +230,6 @@ name|pager
 operator|=
 name|DEFAULT_PAGER
 expr_stmt|;
-elseif|else
 if|if
 condition|(
 operator|!
