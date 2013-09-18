@@ -3126,9 +3126,9 @@ condition|)
 block|{
 if|if
 condition|(
-literal|0
-operator|<=
-name|option_verbosity
+name|transport
+operator|->
+name|progress
 condition|)
 name|fprintf
 argument_list|(
@@ -3164,9 +3164,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-literal|0
-operator|<=
-name|option_verbosity
+name|transport
+operator|->
+name|progress
 condition|)
 name|fprintf
 argument_list|(
