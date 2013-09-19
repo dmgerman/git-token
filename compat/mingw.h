@@ -2280,6 +2280,14 @@ name|PRIuMAX
 value|"I64u"
 end_define
 
+begin_define
+DECL|macro|PRId64
+define|#
+directive|define
+name|PRId64
+value|"I64d"
+end_define
+
 begin_function_decl
 name|void
 name|mingw_open_html
