@@ -1179,10 +1179,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|update_refs
+DECL|function|reset_refs
 specifier|static
 name|int
-name|update_refs
+name|reset_refs
 parameter_list|(
 specifier|const
 name|char
@@ -2027,7 +2027,7 @@ block|{
 comment|/* Any resets without paths update HEAD to the head being 		 * switched to, saving the previous head in ORIG_HEAD before. */
 name|update_ref_status
 operator|=
-name|update_refs
+name|reset_refs
 argument_list|(
 name|rev
 argument_list|,
