@@ -195,6 +195,10 @@ DECL|member|use_color
 name|int
 name|use_color
 decl_stmt|;
+DECL|member|display_comment_prefix
+name|int
+name|display_comment_prefix
+decl_stmt|;
 DECL|member|relative_paths
 name|int
 name|relative_paths
