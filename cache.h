@@ -6777,6 +6777,28 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Compare split idents for equality or strict ordering. Note that we  * compare only the ident part of the line, ignoring any timestamp.  *  * Because there are two fields, we must choose one as the primary key; we  * currently arbitrarily pick the email.  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|ident_cmp
+parameter_list|(
+specifier|const
+name|struct
+name|ident_split
+modifier|*
+parameter_list|,
+specifier|const
+name|struct
+name|ident_split
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_struct
 DECL|struct|checkout
 struct|struct

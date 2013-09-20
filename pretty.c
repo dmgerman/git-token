@@ -2061,6 +2061,16 @@ condition|(
 name|pp
 operator|->
 name|from_ident
+operator|&&
+name|ident_cmp
+argument_list|(
+name|pp
+operator|->
+name|from_ident
+argument_list|,
+operator|&
+name|ident
+argument_list|)
 condition|)
 block|{
 name|struct
