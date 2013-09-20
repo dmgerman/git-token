@@ -321,6 +321,21 @@ name|component_count
 init|=
 literal|0
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|refname
+argument_list|,
+literal|"@"
+argument_list|)
+condition|)
+comment|/* Refname is a single character '@'. */
+return|return
+operator|-
+literal|1
+return|;
 while|while
 condition|(
 literal|1
@@ -8540,6 +8555,9 @@ name|interpret_branch_name
 argument_list|(
 operator|*
 name|string
+argument_list|,
+operator|*
+name|len
 argument_list|,
 operator|&
 name|buf

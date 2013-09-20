@@ -1031,6 +1031,8 @@ name|interpret_branch_name
 argument_list|(
 name|name
 argument_list|,
+literal|0
+argument_list|,
 operator|&
 name|buf
 argument_list|)

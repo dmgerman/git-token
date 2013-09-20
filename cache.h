@@ -6046,6 +6046,9 @@ name|char
 modifier|*
 name|str
 parameter_list|,
+name|int
+name|len
+parameter_list|,
 name|struct
 name|strbuf
 modifier|*
