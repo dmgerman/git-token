@@ -40,6 +40,7 @@ DECL|variable|quiet
 DECL|variable|verbose
 DECL|variable|stdin_paths
 DECL|variable|show_non_matching
+DECL|variable|no_index
 specifier|static
 name|int
 name|quiet
@@ -49,6 +50,8 @@ decl_stmt|,
 name|stdin_paths
 decl_stmt|,
 name|show_non_matching
+decl_stmt|,
+name|no_index
 decl_stmt|;
 end_decl_stmt
 
@@ -159,6 +162,21 @@ argument_list|,
 name|N_
 argument_list|(
 literal|"show non-matching input paths"
+argument_list|)
+argument_list|)
+block|,
+name|OPT_BOOL
+argument_list|(
+literal|0
+argument_list|,
+literal|"no-index"
+argument_list|,
+operator|&
+name|no_index
+argument_list|,
+name|N_
+argument_list|(
+literal|"ignore index when checking"
 argument_list|)
 argument_list|)
 block|,
@@ -928,6 +946,9 @@ expr_stmt|;
 comment|/* read_cache() is only necessary so we can watch out for submodules. */
 if|if
 condition|(
+operator|!
+name|no_index
+operator|&&
 name|read_cache
 argument_list|()
 operator|<
