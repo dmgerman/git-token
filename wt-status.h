@@ -244,6 +244,10 @@ DECL|member|show_branch
 name|int
 name|show_branch
 decl_stmt|;
+DECL|member|hints
+name|int
+name|hints
+decl_stmt|;
 comment|/* These are computed during processing of the individual sections */
 DECL|member|commitable
 name|int
