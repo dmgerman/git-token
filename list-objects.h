@@ -98,10 +98,6 @@ name|void
 name|mark_edges_uninteresting
 parameter_list|(
 name|struct
-name|commit_list
-modifier|*
-parameter_list|,
-name|struct
 name|rev_info
 modifier|*
 parameter_list|,
