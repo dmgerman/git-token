@@ -49,6 +49,12 @@ directive|include
 file|<gnome-keyring.h>
 end_include
 
+begin_include
+include|#
+directive|include
+file|<gnome-keyring-memory.h>
+end_include
+
 begin_comment
 comment|/*  * This credential struct and API is simplified from git's credential.{h,c}  */
 end_comment
@@ -147,49 +153,6 @@ end_define
 begin_comment
 comment|/* ---------------- common helper functions ----------------- */
 end_comment
-
-begin_function
-DECL|function|free_password
-specifier|static
-specifier|inline
-name|void
-name|free_password
-parameter_list|(
-name|char
-modifier|*
-name|password
-parameter_list|)
-block|{
-name|char
-modifier|*
-name|c
-init|=
-name|password
-decl_stmt|;
-if|if
-condition|(
-operator|!
-name|password
-condition|)
-return|return;
-while|while
-condition|(
-operator|*
-name|c
-condition|)
-operator|*
-name|c
-operator|++
-operator|=
-literal|'\0'
-expr_stmt|;
-name|free
-argument_list|(
-name|password
-argument_list|)
-expr_stmt|;
-block|}
-end_function
 
 begin_function
 DECL|function|warning
@@ -587,7 +550,7 @@ name|entries
 operator|->
 name|data
 expr_stmt|;
-name|free_password
+name|gnome_keyring_memory_free
 argument_list|(
 name|c
 operator|->
@@ -598,7 +561,7 @@ name|c
 operator|->
 name|password
 operator|=
-name|xstrdup
+name|gnome_keyring_memory_strdup
 argument_list|(
 name|password_data
 operator|->
@@ -1044,7 +1007,7 @@ operator|->
 name|username
 argument_list|)
 expr_stmt|;
-name|free_password
+name|gnome_keyring_memory_free
 argument_list|(
 name|c
 operator|->
@@ -1331,7 +1294,7 @@ literal|"password"
 argument_list|)
 condition|)
 block|{
-name|free_password
+name|gnome_keyring_memory_free
 argument_list|(
 name|c
 operator|->
@@ -1342,7 +1305,7 @@ name|c
 operator|->
 name|password
 operator|=
-name|xstrdup
+name|gnome_keyring_memory_strdup
 argument_list|(
 name|value
 argument_list|)
