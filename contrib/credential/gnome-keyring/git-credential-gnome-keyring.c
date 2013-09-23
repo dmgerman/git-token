@@ -1640,9 +1640,11 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
-goto|goto
-name|out
-goto|;
+name|exit
+argument_list|(
+name|EXIT_FAILURE
+argument_list|)
+expr_stmt|;
 block|}
 comment|/* lookup operation callback */
 while|while
