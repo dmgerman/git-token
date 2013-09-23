@@ -1118,10 +1118,8 @@ index|[
 literal|1024
 index|]
 decl_stmt|;
-name|ssize_t
+name|size_t
 name|line_len
-init|=
-literal|0
 decl_stmt|;
 name|char
 modifier|*
