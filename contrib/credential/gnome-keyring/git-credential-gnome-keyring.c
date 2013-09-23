@@ -95,55 +95,6 @@ define|\
 value|{ NULL,NULL,0,NULL,NULL,NULL }
 end_define
 
-begin_function_decl
-name|void
-name|credential_init
-parameter_list|(
-name|struct
-name|credential
-modifier|*
-name|c
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-name|void
-name|credential_clear
-parameter_list|(
-name|struct
-name|credential
-modifier|*
-name|c
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-name|int
-name|credential_read
-parameter_list|(
-name|struct
-name|credential
-modifier|*
-name|c
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-name|void
-name|credential_write
-parameter_list|(
-specifier|const
-name|struct
-name|credential
-modifier|*
-name|c
-parameter_list|)
-function_decl|;
-end_function_decl
-
 begin_typedef
 DECL|typedef|credential_op_cb
 typedef|typedef
@@ -186,20 +137,6 @@ name|CREDENTIAL_OP_END
 define|\
 value|{ NULL,NULL }
 end_define
-
-begin_comment
-comment|/*  * Table with operation callbacks is defined in concrete  * credential helper implementation and contains entries  * like { "get", function_to_get_credential } terminated  * by CREDENTIAL_OP_END.  */
-end_comment
-
-begin_decl_stmt
-DECL|variable|credential_helper_ops
-name|struct
-name|credential_operation
-specifier|const
-name|credential_helper_ops
-index|[]
-decl_stmt|;
-end_decl_stmt
 
 begin_comment
 comment|/* ---------------- common helper functions ----------------- */
