@@ -1155,6 +1155,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|line_len
+operator|&&
 name|buf
 index|[
 name|line_len
