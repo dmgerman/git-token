@@ -40,6 +40,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|<glib.h>
+end_include
+
+begin_include
+include|#
+directive|include
 file|<gnome-keyring.h>
 end_include
 
@@ -1646,6 +1652,11 @@ name|EXIT_FAILURE
 argument_list|)
 expr_stmt|;
 block|}
+name|g_set_application_name
+argument_list|(
+literal|"Git Credential Helper"
+argument_list|)
+expr_stmt|;
 comment|/* lookup operation callback */
 while|while
 condition|(
