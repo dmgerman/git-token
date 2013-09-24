@@ -3161,7 +3161,7 @@ name|printf
 argument_list|(
 name|_
 argument_list|(
-literal|"done\n"
+literal|"done.\n"
 argument_list|)
 argument_list|)
 expr_stmt|;
