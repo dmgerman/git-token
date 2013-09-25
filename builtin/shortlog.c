@@ -831,7 +831,8 @@ condition|(
 operator|!
 name|author
 condition|)
-name|die
+block|{
+name|warning
 argument_list|(
 name|_
 argument_list|(
@@ -848,6 +849,8 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
+return|return;
+block|}
 if|if
 condition|(
 name|log
