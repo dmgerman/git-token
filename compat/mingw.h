@@ -214,6 +214,12 @@ parameter_list|)
 value|SIGTERM
 end_define
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|EWOULDBLOCK
+end_ifndef
+
 begin_define
 DECL|macro|EWOULDBLOCK
 define|#
@@ -221,6 +227,11 @@ directive|define
 name|EWOULDBLOCK
 value|EAGAIN
 end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_define
 DECL|macro|SHUT_WR
@@ -302,6 +313,12 @@ name|FD_CLOEXEC
 value|0x1
 end_define
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|EAFNOSUPPORT
+end_ifndef
+
 begin_define
 DECL|macro|EAFNOSUPPORT
 define|#
@@ -310,6 +327,17 @@ name|EAFNOSUPPORT
 value|WSAEAFNOSUPPORT
 end_define
 
+begin_endif
+endif|#
+directive|endif
+end_endif
+
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|ECONNABORTED
+end_ifndef
+
 begin_define
 DECL|macro|ECONNABORTED
 define|#
@@ -317,6 +345,11 @@ directive|define
 name|ECONNABORTED
 value|WSAECONNABORTED
 end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_struct
 DECL|struct|passwd
@@ -1767,7 +1800,7 @@ block|}
 end_function
 
 begin_comment
-comment|/* Use mingw_lstat() instead of lstat()/stat() and  * mingw_fstat() instead of fstat() on Windows.  */
+comment|/*  * Use mingw specific stat()/lstat()/fstat() implementations on Windows.  */
 end_comment
 
 begin_define
@@ -1786,11 +1819,27 @@ name|lseek
 value|_lseeki64
 end_define
 
-begin_ifndef
-ifndef|#
-directive|ifndef
-name|ALREADY_DECLARED_STAT_FUNCS
-end_ifndef
+begin_comment
+comment|/* use struct stat with 64 bit st_size */
+end_comment
+
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|stat
+end_ifdef
+
+begin_undef
+DECL|macro|stat
+undef|#
+directive|undef
+name|stat
+end_undef
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_define
 DECL|macro|stat
@@ -1849,6 +1898,24 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|fstat
+end_ifdef
+
+begin_undef
+DECL|macro|fstat
+undef|#
+directive|undef
+name|fstat
+end_undef
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_define
 DECL|macro|fstat
 define|#
@@ -1856,6 +1923,24 @@ directive|define
 name|fstat
 value|mingw_fstat
 end_define
+
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|lstat
+end_ifdef
+
+begin_undef
+DECL|macro|lstat
+undef|#
+directive|undef
+name|lstat
+end_undef
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_define
 DECL|macro|lstat
@@ -1865,11 +1950,57 @@ name|lstat
 value|mingw_lstat
 end_define
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|_stati64
+end_ifndef
+
 begin_define
 DECL|macro|_stati64
 define|#
 directive|define
 name|_stati64
+parameter_list|(
+name|x
+parameter_list|,
+name|y
+parameter_list|)
+value|mingw_stat(x,y)
+end_define
+
+begin_elif
+elif|#
+directive|elif
+name|defined
+argument_list|(
+name|_USE_32BIT_TIME_T
+argument_list|)
+end_elif
+
+begin_define
+DECL|macro|_stat32i64
+define|#
+directive|define
+name|_stat32i64
+parameter_list|(
+name|x
+parameter_list|,
+name|y
+parameter_list|)
+value|mingw_stat(x,y)
+end_define
+
+begin_else
+else|#
+directive|else
+end_else
+
+begin_define
+DECL|macro|_stat64
+define|#
+directive|define
+name|_stat64
 parameter_list|(
 name|x
 parameter_list|,
