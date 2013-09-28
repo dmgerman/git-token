@@ -786,6 +786,13 @@ name|strbuf
 modifier|*
 name|effective_url
 decl_stmt|;
+comment|/* 	 * If both base_url and effective_url are non-NULL, the base URL will 	 * be munged to reflect any redirections going from the requested url 	 * to effective_url. See the definition of update_url_from_redirect 	 * for details. 	 */
+DECL|member|base_url
+name|struct
+name|strbuf
+modifier|*
+name|base_url
+decl_stmt|;
 block|}
 struct|;
 end_struct
