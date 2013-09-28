@@ -745,27 +745,38 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/* Options for http_request_*() */
+comment|/* Options for http_get_*() */
 end_comment
 
-begin_define
-DECL|macro|HTTP_NO_CACHE
-define|#
-directive|define
-name|HTTP_NO_CACHE
-value|1
-end_define
-
-begin_define
-DECL|macro|HTTP_KEEP_ERROR
-define|#
-directive|define
-name|HTTP_KEEP_ERROR
-value|2
-end_define
+begin_struct
+DECL|struct|http_get_options
+struct|struct
+name|http_get_options
+block|{
+DECL|member|no_cache
+name|unsigned
+name|no_cache
+range|:
+literal|1
+decl_stmt|,
+DECL|member|keep_error
+name|keep_error
+range|:
+literal|1
+decl_stmt|;
+comment|/* If non-NULL, returns the content-type of the response. */
+DECL|member|content_type
+name|struct
+name|strbuf
+modifier|*
+name|content_type
+decl_stmt|;
+block|}
+struct|;
+end_struct
 
 begin_comment
-comment|/* Return values for http_request_*() */
+comment|/* Return values for http_get_*() */
 end_comment
 
 begin_define
@@ -832,14 +843,11 @@ parameter_list|,
 name|struct
 name|strbuf
 modifier|*
-name|content_type
-parameter_list|,
-name|struct
-name|strbuf
-modifier|*
 name|result
 parameter_list|,
-name|int
+name|struct
+name|http_get_options
+modifier|*
 name|options
 parameter_list|)
 function_decl|;
