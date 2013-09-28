@@ -4705,11 +4705,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|(
 name|ret
 operator|==
 name|HTTP_OK
-operator|)
 operator|&&
 name|move_temp_to_file
 argument_list|(
