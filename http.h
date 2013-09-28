@@ -779,6 +779,13 @@ name|strbuf
 modifier|*
 name|content_type
 decl_stmt|;
+comment|/* 	 * If non-NULL, returns the URL we ended up at, including any 	 * redirects we followed. 	 */
+DECL|member|effective_url
+name|struct
+name|strbuf
+modifier|*
+name|effective_url
+decl_stmt|;
 block|}
 struct|;
 end_struct
