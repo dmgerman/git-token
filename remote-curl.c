@@ -75,20 +75,20 @@ name|remote
 decl_stmt|;
 end_decl_stmt
 
+begin_comment
+comment|/* always ends with a trailing slash */
+end_comment
+
 begin_decl_stmt
 DECL|variable|url
 specifier|static
-specifier|const
-name|char
-modifier|*
+name|struct
+name|strbuf
 name|url
+init|=
+name|STRBUF_INIT
 decl_stmt|;
 end_decl_stmt
-
-begin_comment
-DECL|variable|url
-comment|/* always ends with a trailing slash */
-end_comment
 
 begin_struct
 DECL|struct|options
@@ -669,6 +669,8 @@ argument_list|(
 literal|"%sinfo/refs not valid: is this a git repository?"
 argument_list|,
 name|url
+operator|.
+name|buf
 argument_list|)
 expr_stmt|;
 name|data
@@ -778,6 +780,8 @@ operator|!
 name|http_fetch_ref
 argument_list|(
 name|url
+operator|.
+name|buf
 argument_list|,
 name|ref
 argument_list|)
@@ -1066,6 +1070,8 @@ argument_list|,
 literal|"%sinfo/refs"
 argument_list|,
 name|url
+operator|.
+name|buf
 argument_list|)
 expr_stmt|;
 if|if
@@ -1075,6 +1081,8 @@ operator|!
 name|prefixcmp
 argument_list|(
 name|url
+operator|.
+name|buf
 argument_list|,
 literal|"http://"
 argument_list|)
@@ -1083,6 +1091,8 @@ operator|!
 name|prefixcmp
 argument_list|(
 name|url
+operator|.
+name|buf
 argument_list|,
 literal|"https://"
 argument_list|)
@@ -1106,6 +1116,8 @@ operator|!
 name|strchr
 argument_list|(
 name|url
+operator|.
+name|buf
 argument_list|,
 literal|'?'
 argument_list|)
@@ -1211,6 +1223,8 @@ argument_list|(
 literal|"repository '%s' not found"
 argument_list|,
 name|url
+operator|.
+name|buf
 argument_list|)
 expr_stmt|;
 case|case
@@ -1230,6 +1244,8 @@ argument_list|(
 literal|"Authentication failed for '%s'"
 argument_list|,
 name|url
+operator|.
+name|buf
 argument_list|)
 expr_stmt|;
 default|default:
@@ -1247,6 +1263,8 @@ argument_list|(
 literal|"unable to access '%s': %s"
 argument_list|,
 name|url
+operator|.
+name|buf
 argument_list|,
 name|curl_errorstr
 argument_list|)
@@ -3192,6 +3210,8 @@ argument_list|,
 literal|"%s%s"
 argument_list|,
 name|url
+operator|.
+name|buf
 argument_list|,
 name|svc
 argument_list|)
@@ -3527,6 +3547,8 @@ operator|=
 name|get_http_walker
 argument_list|(
 name|url
+operator|.
+name|buf
 argument_list|)
 expr_stmt|;
 name|walker
@@ -3828,6 +3850,8 @@ operator|++
 index|]
 operator|=
 name|url
+operator|.
+name|buf
 expr_stmt|;
 name|argv
 index|[
@@ -4431,6 +4455,8 @@ operator|++
 index|]
 operator|=
 name|url
+operator|.
+name|buf
 expr_stmt|;
 for|for
 control|(
@@ -4628,6 +4654,8 @@ operator|&
 name|args
 argument_list|,
 name|url
+operator|.
+name|buf
 argument_list|)
 expr_stmt|;
 for|for
@@ -5083,7 +5111,7 @@ block|{
 name|end_url_with_slash
 argument_list|(
 operator|&
-name|buf
+name|url
 argument_list|,
 name|argv
 index|[
@@ -5097,7 +5125,7 @@ block|{
 name|end_url_with_slash
 argument_list|(
 operator|&
-name|buf
+name|url
 argument_list|,
 name|remote
 operator|->
@@ -5108,21 +5136,13 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
-name|url
-operator|=
-name|strbuf_detach
-argument_list|(
-operator|&
-name|buf
-argument_list|,
-name|NULL
-argument_list|)
-expr_stmt|;
 name|http_init
 argument_list|(
 name|remote
 argument_list|,
 name|url
+operator|.
+name|buf
 argument_list|,
 literal|0
 argument_list|)
