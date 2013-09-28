@@ -626,6 +626,14 @@ end_decl_stmt
 
 begin_decl_stmt
 specifier|extern
+name|struct
+name|credential
+name|http_auth
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
 name|char
 name|curl_errorstr
 index|[

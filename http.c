@@ -324,7 +324,6 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|http_auth
-specifier|static
 name|struct
 name|credential
 name|http_auth
@@ -4018,12 +4017,6 @@ return|;
 block|}
 else|else
 block|{
-name|credential_fill
-argument_list|(
-operator|&
-name|http_auth
-argument_list|)
-expr_stmt|;
 return|return
 name|HTTP_REAUTH
 return|;
@@ -4589,6 +4582,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|credential_fill
+argument_list|(
+operator|&
+name|http_auth
+argument_list|)
+expr_stmt|;
 return|return
 name|http_request
 argument_list|(
