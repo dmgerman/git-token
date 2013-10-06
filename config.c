@@ -2420,6 +2420,7 @@ end_function
 
 begin_function
 DECL|function|git_parse_unsigned
+specifier|static
 name|int
 name|git_parse_unsigned
 parameter_list|(
