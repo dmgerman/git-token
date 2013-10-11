@@ -5142,6 +5142,22 @@ expr_stmt|;
 block|}
 else|else
 block|{
+if|if
+condition|(
+name|option_branch
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"Remote branch %s not found in upstream %s"
+argument_list|)
+argument_list|,
+name|option_branch
+argument_list|,
+name|option_origin
+argument_list|)
+expr_stmt|;
 name|warning
 argument_list|(
 name|_
