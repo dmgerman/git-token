@@ -5871,7 +5871,16 @@ name|color
 argument_list|,
 name|_
 argument_list|(
-literal|"You are currently cherry-picking."
+literal|"You are currently cherry-picking commit %s."
+argument_list|)
+argument_list|,
+name|find_unique_abbrev
+argument_list|(
+name|state
+operator|->
+name|cherry_pick_head_sha1
+argument_list|,
+name|DEFAULT_ABBREV
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -6965,6 +6974,14 @@ argument_list|,
 operator|&
 name|st
 argument_list|)
+operator|&&
+operator|!
+name|get_sha1
+argument_list|(
+literal|"CHERRY_PICK_HEAD"
+argument_list|,
+name|sha1
+argument_list|)
 condition|)
 block|{
 name|state
@@ -6972,6 +6989,15 @@ operator|->
 name|cherry_pick_in_progress
 operator|=
 literal|1
+expr_stmt|;
+name|hashcpy
+argument_list|(
+name|state
+operator|->
+name|cherry_pick_head_sha1
+argument_list|,
+name|sha1
+argument_list|)
 expr_stmt|;
 block|}
 if|if

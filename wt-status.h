@@ -365,6 +365,14 @@ index|[
 literal|20
 index|]
 decl_stmt|;
+DECL|member|cherry_pick_head_sha1
+name|unsigned
+name|char
+name|cherry_pick_head_sha1
+index|[
+literal|20
+index|]
+decl_stmt|;
 block|}
 struct|;
 end_struct
