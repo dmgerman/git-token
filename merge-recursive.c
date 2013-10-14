@@ -12070,7 +12070,7 @@ elseif|else
 if|if
 condition|(
 operator|!
-name|strcmp
+name|prefixcmp
 argument_list|(
 name|s
 argument_list|,
@@ -12085,7 +12085,10 @@ name|parse_algorithm_value
 argument_list|(
 name|s
 operator|+
-literal|15
+name|strlen
+argument_list|(
+literal|"diff-algorithm="
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
