@@ -677,7 +677,7 @@ index|[
 literal|1
 index|]
 argument_list|,
-literal|"mingw_path"
+literal|"print_path"
 argument_list|)
 condition|)
 block|{
