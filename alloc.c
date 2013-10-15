@@ -189,7 +189,7 @@ parameter_list|(
 name|name
 parameter_list|)
 define|\
-value|report(#name, name##_allocs, name##_allocs*sizeof(struct name)>> 10)
+value|report(#name, name##_allocs, name##_allocs * sizeof(struct name)>> 10)
 end_define
 
 begin_function
