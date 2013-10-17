@@ -4086,7 +4086,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|cache_name_exists
+name|cache_file_exists
 argument_list|(
 name|pathname
 argument_list|,
@@ -4228,7 +4228,7 @@ enum|;
 end_enum
 
 begin_comment
-comment|/*  * Do not use the alphabetically sorted index to look up  * the directory name; instead, use the case insensitive  * name hash.  */
+comment|/*  * Do not use the alphabetically sorted index to look up  * the directory name; instead, use the case insensitive  * directory hash.  */
 end_comment
 
 begin_function
@@ -4253,15 +4253,11 @@ name|cache_entry
 modifier|*
 name|ce
 init|=
-name|cache_name_exists
+name|cache_dir_exists
 argument_list|(
 name|dirname
 argument_list|,
 name|len
-operator|+
-literal|1
-argument_list|,
-name|ignore_case
 argument_list|)
 decl_stmt|;
 name|unsigned
@@ -4833,7 +4829,7 @@ name|ce
 decl_stmt|;
 name|ce
 operator|=
-name|cache_name_exists
+name|cache_file_exists
 argument_list|(
 name|path
 argument_list|,
@@ -5132,7 +5128,7 @@ name|has_path_in_index
 init|=
 operator|!
 operator|!
-name|cache_name_exists
+name|cache_file_exists
 argument_list|(
 name|path
 operator|->
@@ -5197,18 +5193,8 @@ operator|)
 operator|&&
 operator|!
 name|has_path_in_index
-condition|)
-block|{
-comment|/* 		 * NEEDSWORK: directory_exists_in_index_icase() 		 * assumes that one byte past the given path is 		 * readable and has '/', which needs to be fixed, but 		 * until then, work it around in the caller. 		 */
-name|strbuf_addch
-argument_list|(
-name|path
-argument_list|,
-literal|'/'
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
+operator|&&
+operator|(
 name|directory_exists_in_index
 argument_list|(
 name|path
@@ -5218,40 +5204,14 @@ argument_list|,
 name|path
 operator|->
 name|len
-operator|-
-literal|1
 argument_list|)
 operator|==
 name|index_nonexistent
+operator|)
 condition|)
-block|{
-name|strbuf_setlen
-argument_list|(
-name|path
-argument_list|,
-name|path
-operator|->
-name|len
-operator|-
-literal|1
-argument_list|)
-expr_stmt|;
 return|return
 name|path_none
 return|;
-block|}
-name|strbuf_setlen
-argument_list|(
-name|path
-argument_list|,
-name|path
-operator|->
-name|len
-operator|-
-literal|1
-argument_list|)
-expr_stmt|;
-block|}
 name|exclude
 operator|=
 name|is_excluded
