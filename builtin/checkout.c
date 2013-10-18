@@ -4854,7 +4854,7 @@ decl_stmt|;
 name|int
 name|has_dash_dash
 decl_stmt|;
-comment|/* 	 * case 1: git checkout<ref> -- [<paths>] 	 * 	 *<ref> must be a valid tree, everything after the '--' must be 	 *   a path. 	 * 	 * case 2: git checkout -- [<paths>] 	 * 	 *   everything after the '--' must be paths. 	 * 	 * case 3: git checkout<something> [<paths>] 	 * 	 *   With no paths, if<something> is a commit, that is to 	 *   switch to the branch or detach HEAD at it.  As a special case, 	 *   if<something> is A...B (missing A or B means HEAD but you can 	 *   omit at most one side), and if there is a unique merge base 	 *   between A and B, A...B names that merge base. 	 * 	 *   With no paths, if<something> is _not_ a commit, no -t nor -b 	 *   was given, and there is a tracking branch whose name is 	 *<something> in one and only one remote, then this is a short-hand 	 *   to fork local<something> from that remote-tracking branch. 	 * 	 *   Otherwise<something> shall not be ambiguous. 	 *   - If it's *only* a reference, treat it like case (1). 	 *   - If it's only a path, treat it like case (2). 	 *   - else: fail. 	 * 	 */
+comment|/* 	 * case 1: git checkout<ref> -- [<paths>] 	 * 	 *<ref> must be a valid tree, everything after the '--' must be 	 *   a path. 	 * 	 * case 2: git checkout -- [<paths>] 	 * 	 *   everything after the '--' must be paths. 	 * 	 * case 3: git checkout<something> [--] 	 * 	 *   (a) If<something> is a commit, that is to 	 *       switch to the branch or detach HEAD at it.  As a special case, 	 *       if<something> is A...B (missing A or B means HEAD but you can 	 *       omit at most one side), and if there is a unique merge base 	 *       between A and B, A...B names that merge base. 	 * 	 *   (b) If<something> is _not_ a commit, either "--" is present 	 *       or<something> is not a path, no -t nor -b was given, and 	 *       and there is a tracking branch whose name is<something> 	 *       in one and only one remote, then this is a short-hand to 	 *       fork local<something> from that remote-tracking branch. 	 * 	 *   (c) Otherwise, if "--" is present, treat it like case (1). 	 * 	 *   (d) Otherwise : 	 *       - if it's a reference, treat it like case (1) 	 *       - else if it's a path, treat it like case (2) 	 *       - else: fail. 	 * 	 * case 4: git checkout<something><paths> 	 * 	 *   The first argument must not be ambiguous. 	 *   - If it's *only* a reference, treat it like case (1). 	 *   - If it's only a path, treat it like case (2). 	 *   - else: fail. 	 * 	 */
 if|if
 condition|(
 operator|!
@@ -4930,26 +4930,14 @@ name|rev
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|has_dash_dash
-condition|)
-comment|/* case (1) */
-name|die
-argument_list|(
-name|_
-argument_list|(
-literal|"invalid reference: %s"
-argument_list|)
-argument_list|,
-name|arg
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
+comment|/* 		 * Either case (3) or (4), with<something> not being 		 * a commit, or an attempt to use case (1) with an 		 * invalid ref. 		 * 		 * It's likely an error, but we need to find out if 		 * we should auto-create the branch, case (3).(b). 		 */
+name|int
+name|recover_with_dwim
+init|=
 name|dwim_new_local_branch_ok
-operator|&&
-operator|!
+decl_stmt|;
+if|if
+condition|(
 name|check_filename
 argument_list|(
 name|NULL
@@ -4957,9 +4945,42 @@ argument_list|,
 name|arg
 argument_list|)
 operator|&&
+operator|!
+name|has_dash_dash
+condition|)
+name|recover_with_dwim
+operator|=
+literal|0
+expr_stmt|;
+comment|/* 		 * Accept "git checkout foo" and "git checkout foo --" 		 * as candidates for dwim. 		 */
+if|if
+condition|(
+operator|!
+operator|(
 name|argc
 operator|==
 literal|1
+operator|&&
+operator|!
+name|has_dash_dash
+operator|)
+operator|&&
+operator|!
+operator|(
+name|argc
+operator|==
+literal|2
+operator|&&
+name|has_dash_dash
+operator|)
+condition|)
+name|recover_with_dwim
+operator|=
+literal|0
+expr_stmt|;
+if|if
+condition|(
+name|recover_with_dwim
 condition|)
 block|{
 specifier|const
@@ -4976,12 +4997,9 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|remote
 condition|)
-return|return
-name|argcount
-return|;
+block|{
 operator|*
 name|new_branch
 operator|=
@@ -4991,10 +5009,36 @@ name|arg
 operator|=
 name|remote
 expr_stmt|;
-comment|/* DWIMmed to create local branch */
+comment|/* DWIMmed to create local branch, case (3).(b) */
 block|}
 else|else
 block|{
+name|recover_with_dwim
+operator|=
+literal|0
+expr_stmt|;
+block|}
+block|}
+if|if
+condition|(
+operator|!
+name|recover_with_dwim
+condition|)
+block|{
+if|if
+condition|(
+name|has_dash_dash
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"invalid reference: %s"
+argument_list|)
+argument_list|,
+name|arg
+argument_list|)
+expr_stmt|;
 return|return
 name|argcount
 return|;
@@ -5129,7 +5173,7 @@ operator|!
 name|has_dash_dash
 condition|)
 block|{
-comment|/* case (3 -> 1) */
+comment|/* case (3).(d) -> (1) */
 comment|/* 		 * Do not complain the most common case 		 *	git checkout branch 		 * even if there happen to be a file called 'branch'; 		 * it would be extremely annoying. 		 */
 if|if
 condition|(
