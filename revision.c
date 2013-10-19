@@ -6597,7 +6597,7 @@ name|prune_data
 argument_list|,
 name|PATHSPEC_ALL_MAGIC
 argument_list|,
-literal|0
+name|PATHSPEC_PREFER_FULL
 argument_list|,
 literal|""
 argument_list|,
