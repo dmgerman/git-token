@@ -444,6 +444,10 @@ DECL|member|binary
 name|int
 name|binary
 decl_stmt|;
+DECL|member|allow_textconv
+name|int
+name|allow_textconv
+decl_stmt|;
 DECL|member|extended
 name|int
 name|extended
