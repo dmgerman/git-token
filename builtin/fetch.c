@@ -1022,10 +1022,10 @@ parameter_list|,
 name|struct
 name|refspec
 modifier|*
-name|refs
+name|refspecs
 parameter_list|,
 name|int
-name|ref_count
+name|refspec_count
 parameter_list|,
 name|int
 name|tags
@@ -1072,7 +1072,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|ref_count
+name|refspec_count
 operator|||
 name|tags
 operator|==
@@ -1093,7 +1093,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|ref_count
+name|refspec_count
 condition|;
 name|i
 operator|++
@@ -1104,7 +1104,7 @@ argument_list|(
 name|remote_refs
 argument_list|,
 operator|&
-name|refs
+name|refspecs
 index|[
 name|i
 index|]
@@ -1117,14 +1117,14 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|refs
+name|refspecs
 index|[
 name|i
 index|]
 operator|.
 name|dst
 operator|&&
-name|refs
+name|refspecs
 index|[
 name|i
 index|]
