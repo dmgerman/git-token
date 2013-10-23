@@ -1093,7 +1093,6 @@ name|tracking_branch
 expr_stmt|;
 return|return
 operator|!
-operator|(
 name|remote_find_tracking
 argument_list|(
 name|remote
@@ -1101,16 +1100,6 @@ argument_list|,
 operator|&
 name|query
 argument_list|)
-operator|||
-name|prefixcmp
-argument_list|(
-name|query
-operator|.
-name|src
-argument_list|,
-literal|"refs/heads/"
-argument_list|)
-operator|)
 return|;
 block|}
 end_function
