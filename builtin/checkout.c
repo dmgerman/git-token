@@ -4401,7 +4401,7 @@ literal|"You are on a branch yet to be born"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|parse_commit
+name|parse_commit_or_die
 argument_list|(
 name|new
 operator|->
@@ -5137,7 +5137,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|parse_commit
+name|parse_commit_or_die
 argument_list|(
 name|new
 operator|->
