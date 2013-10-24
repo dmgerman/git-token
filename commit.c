@@ -479,9 +479,6 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|!
-name|commit
-operator|||
 name|parse_commit
 argument_list|(
 name|commit
