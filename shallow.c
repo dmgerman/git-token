@@ -508,16 +508,9 @@ name|util
 expr_stmt|;
 block|}
 block|}
-if|if
-condition|(
-name|parse_commit
+name|parse_commit_or_die
 argument_list|(
 name|commit
-argument_list|)
-condition|)
-name|die
-argument_list|(
-literal|"invalid commit"
 argument_list|)
 expr_stmt|;
 name|cur_depth
