@@ -5248,7 +5248,7 @@ name|url
 argument_list|,
 name|tmp
 argument_list|,
-literal|0
+name|NULL
 argument_list|)
 operator|!=
 name|HTTP_OK
