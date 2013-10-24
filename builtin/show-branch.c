@@ -1141,15 +1141,6 @@ operator|==
 name|flags
 condition|)
 continue|continue;
-if|if
-condition|(
-operator|!
-name|p
-operator|->
-name|object
-operator|.
-name|parsed
-condition|)
 name|parse_commit
 argument_list|(
 name|p
