@@ -9250,6 +9250,9 @@ decl_stmt|;
 comment|/* the rule list is NULL terminated, count them first */
 for|for
 control|(
+name|nr_rules
+operator|=
+literal|0
 init|;
 name|ref_rev_parse_rules
 index|[
