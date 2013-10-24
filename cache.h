@@ -5399,6 +5399,19 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|int
+name|git_open_noatime
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|name
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|void
 modifier|*
 name|map_sha1_file

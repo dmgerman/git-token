@@ -1181,19 +1181,6 @@ name|alt_odb_tail
 decl_stmt|;
 end_decl_stmt
 
-begin_function_decl
-specifier|static
-name|int
-name|git_open_noatime
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|name
-parameter_list|)
-function_decl|;
-end_function_decl
-
 begin_comment
 comment|/*  * Prepare alternate object database registry.  *  * The variable alt_odb_list points at the list of struct  * alternate_object_database.  The elements on this list come from  * non-empty elements from colon separated ALTERNATE_DB_ENVIRONMENT  * environment variable, and $GIT_OBJECT_DIRECTORY/info/alternates,  * whose contents is similar to that environment variable but can be  * LF separated.  Its base points at a statically allocated buffer that  * contains "/the/directory/corresponding/to/.git/objects/...", while  * its name points just after the slash at the end of ".git/objects/"  * in the example above, and has enough space to hold 40-byte hex  * SHA1, an extra slash for the first level indirection, and the  * terminating NUL.  */
 end_comment
@@ -6835,7 +6822,6 @@ end_function
 
 begin_function
 DECL|function|git_open_noatime
-specifier|static
 name|int
 name|git_open_noatime
 parameter_list|(
