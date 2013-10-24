@@ -3538,6 +3538,27 @@ name|flags
 operator||=
 name|ADDED
 expr_stmt|;
+if|if
+condition|(
+name|revs
+operator|->
+name|include_check
+operator|&&
+operator|!
+name|revs
+operator|->
+name|include_check
+argument_list|(
+name|commit
+argument_list|,
+name|revs
+operator|->
+name|include_check_data
+argument_list|)
+condition|)
+return|return
+literal|0
+return|;
 comment|/* 	 * If the commit is uninteresting, don't try to 	 * prune parents - we want the maximal uninteresting 	 * set. 	 * 	 * Normally we haven't parsed the parent 	 * yet, so we won't have a parent of a parent 	 * here. However, it may turn out that we've 	 * reached this commit some other way (where it 	 * wasn't uninteresting), in which case we need 	 * to mark its parents recursively too.. 	 */
 if|if
 condition|(

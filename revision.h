@@ -776,6 +776,26 @@ DECL|member|max_parents
 name|int
 name|max_parents
 decl_stmt|;
+DECL|member|include_check
+name|int
+function_decl|(
+modifier|*
+name|include_check
+function_decl|)
+parameter_list|(
+name|struct
+name|commit
+modifier|*
+parameter_list|,
+name|void
+modifier|*
+parameter_list|)
+function_decl|;
+DECL|member|include_check_data
+name|void
+modifier|*
+name|include_check_data
+decl_stmt|;
 comment|/* diff info for patches and for paths limiting */
 DECL|member|diffopt
 name|struct
