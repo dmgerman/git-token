@@ -760,23 +760,6 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Invalidate the reference cache for the specified submodule.  Use  * submodule=NULL to invalidate the cache for the main module.  This  * function must be called if references are changed via a mechanism  * other than the refs API.  */
-end_comment
-
-begin_function_decl
-specifier|extern
-name|void
-name|invalidate_ref_cache
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|submodule
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_comment
 comment|/** Setup reflog before using. **/
 end_comment
 
