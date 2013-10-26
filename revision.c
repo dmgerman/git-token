@@ -6597,8 +6597,11 @@ operator|->
 name|prune_data
 argument_list|,
 name|PATHSPEC_ALL_MAGIC
+operator|&
+operator|~
+name|PATHSPEC_LITERAL
 argument_list|,
-literal|0
+name|PATHSPEC_LITERAL_PATH
 argument_list|,
 literal|""
 argument_list|,

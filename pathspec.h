@@ -270,6 +270,18 @@ name|PATHSPEC_KEEP_ORDER
 value|(1<<7)
 end_define
 
+begin_comment
+comment|/*  * For the callers that just need pure paths from somewhere else, not  * from command line. Global --*-pathspecs options are ignored. No  * magic is parsed in each pathspec either. If PATHSPEC_LITERAL is  * allowed, then it will automatically set for every pathspec.  */
+end_comment
+
+begin_define
+DECL|macro|PATHSPEC_LITERAL_PATH
+define|#
+directive|define
+name|PATHSPEC_LITERAL_PATH
+value|(1<<8)
+end_define
+
 begin_function_decl
 specifier|extern
 name|void
