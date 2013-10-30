@@ -626,6 +626,14 @@ end_decl_stmt
 
 begin_decl_stmt
 specifier|extern
+name|struct
+name|credential
+name|http_auth
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
 name|char
 name|curl_errorstr
 index|[
@@ -745,27 +753,52 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/* Options for http_request_*() */
+comment|/* Options for http_get_*() */
 end_comment
 
-begin_define
-DECL|macro|HTTP_NO_CACHE
-define|#
-directive|define
-name|HTTP_NO_CACHE
-value|1
-end_define
-
-begin_define
-DECL|macro|HTTP_KEEP_ERROR
-define|#
-directive|define
-name|HTTP_KEEP_ERROR
-value|2
-end_define
+begin_struct
+DECL|struct|http_get_options
+struct|struct
+name|http_get_options
+block|{
+DECL|member|no_cache
+name|unsigned
+name|no_cache
+range|:
+literal|1
+decl_stmt|,
+DECL|member|keep_error
+name|keep_error
+range|:
+literal|1
+decl_stmt|;
+comment|/* If non-NULL, returns the content-type of the response. */
+DECL|member|content_type
+name|struct
+name|strbuf
+modifier|*
+name|content_type
+decl_stmt|;
+comment|/* 	 * If non-NULL, returns the URL we ended up at, including any 	 * redirects we followed. 	 */
+DECL|member|effective_url
+name|struct
+name|strbuf
+modifier|*
+name|effective_url
+decl_stmt|;
+comment|/* 	 * If both base_url and effective_url are non-NULL, the base URL will 	 * be munged to reflect any redirections going from the requested url 	 * to effective_url. See the definition of update_url_from_redirect 	 * for details. 	 */
+DECL|member|base_url
+name|struct
+name|strbuf
+modifier|*
+name|base_url
+decl_stmt|;
+block|}
+struct|;
+end_struct
 
 begin_comment
-comment|/* Return values for http_request_*() */
+comment|/* Return values for http_get_*() */
 end_comment
 
 begin_define
@@ -832,14 +865,11 @@ parameter_list|,
 name|struct
 name|strbuf
 modifier|*
-name|content_type
-parameter_list|,
-name|struct
-name|strbuf
-modifier|*
 name|result
 parameter_list|,
-name|int
+name|struct
+name|http_get_options
+modifier|*
 name|options
 parameter_list|)
 function_decl|;
