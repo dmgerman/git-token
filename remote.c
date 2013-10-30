@@ -4534,7 +4534,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"%s tracks both %s and %s"
+argument_list|)
 argument_list|,
 name|ref2
 operator|->
