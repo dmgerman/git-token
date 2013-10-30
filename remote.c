@@ -4568,7 +4568,7 @@ condition|)
 continue|continue;
 name|item
 operator|=
-name|string_list_lookup
+name|string_list_insert
 argument_list|(
 operator|&
 name|refs
@@ -4583,8 +4583,11 @@ expr_stmt|;
 if|if
 condition|(
 name|item
+operator|->
+name|util
 condition|)
 block|{
+comment|/* Entry already existed */
 if|if
 condition|(
 name|strcmp
@@ -4660,28 +4663,16 @@ operator|=
 name|prev
 expr_stmt|;
 comment|/* skip this; we freed it */
-continue|continue;
 block|}
-name|item
-operator|=
-name|string_list_insert
-argument_list|(
-operator|&
-name|refs
-argument_list|,
-name|ref_map
-operator|->
-name|peer_ref
-operator|->
-name|name
-argument_list|)
-expr_stmt|;
+else|else
+block|{
 name|item
 operator|->
 name|util
 operator|=
 name|ref_map
 expr_stmt|;
+block|}
 block|}
 name|string_list_clear
 argument_list|(
