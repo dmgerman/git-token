@@ -4013,6 +4013,20 @@ name|out
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|!
+name|use_sideband
+condition|)
+comment|/* Closed by start_command() */
+name|xd
+index|[
+literal|0
+index|]
+operator|=
+operator|-
+literal|1
+expr_stmt|;
 name|ret
 operator|=
 name|finish_command
