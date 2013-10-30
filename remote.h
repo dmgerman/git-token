@@ -726,11 +726,13 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Removes and frees any duplicate refs in the map.  */
+comment|/*  * Remove and free all but the first of any entries in the input list  * that map the same remote reference to the same local reference.  If  * there are two entries that map different remote references to the  * same local reference, emit an error message and die.  Return a  * pointer to the head of the resulting list.  */
 end_comment
 
 begin_function_decl
-name|void
+name|struct
+name|ref
+modifier|*
 name|ref_remove_duplicates
 parameter_list|(
 name|struct
