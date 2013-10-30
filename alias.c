@@ -202,8 +202,9 @@ name|xmalloc
 argument_list|(
 sizeof|sizeof
 argument_list|(
-name|char
 operator|*
+operator|*
+name|argv
 argument_list|)
 operator|*
 name|size
