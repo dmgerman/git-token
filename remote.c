@@ -8850,10 +8850,6 @@ init|=
 operator|&
 name|ret
 decl_stmt|;
-name|char
-modifier|*
-name|expn_name
-decl_stmt|;
 for|for
 control|(
 name|ref
@@ -8869,6 +8865,12 @@ operator|->
 name|next
 control|)
 block|{
+name|char
+modifier|*
+name|expn_name
+init|=
+name|NULL
+decl_stmt|;
 if|if
 condition|(
 name|strchr
@@ -8928,11 +8930,6 @@ argument_list|(
 name|expn_name
 argument_list|)
 expr_stmt|;
-name|free
-argument_list|(
-name|expn_name
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|refspec
@@ -8960,6 +8957,11 @@ operator|->
 name|next
 expr_stmt|;
 block|}
+name|free
+argument_list|(
+name|expn_name
+argument_list|)
+expr_stmt|;
 block|}
 return|return
 name|ret
