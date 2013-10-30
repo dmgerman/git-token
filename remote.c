@@ -8803,6 +8803,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Create and return a list of (struct ref) consisting of copies of  * each remote_ref that matches refspec.  refspec must be a pattern.  * Fill in the copies' peer_ref to describe the local tracking refs to  * which they map.  Omit any references that would map to an existing  * local symbolic ref.  */
+end_comment
+
 begin_function
 DECL|function|get_expanded_map
 specifier|static
