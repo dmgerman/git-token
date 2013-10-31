@@ -2279,6 +2279,11 @@ name|large_request
 init|=
 literal|0
 decl_stmt|;
+name|int
+name|needs_100_continue
+init|=
+literal|0
+decl_stmt|;
 comment|/* Try to load the entire request, if we can fit it into the 	 * allocated buffer space we can use HTTP/1.0 and avoid the 	 * chunked encoding mess. 	 */
 while|while
 condition|(
@@ -2365,6 +2370,10 @@ condition|(
 name|large_request
 condition|)
 block|{
+name|struct
+name|slot_results
+name|results
+decl_stmt|;
 do|do
 block|{
 name|err
@@ -2373,7 +2382,8 @@ name|probe_rpc
 argument_list|(
 name|rpc
 argument_list|,
-name|NULL
+operator|&
+name|results
 argument_list|)
 expr_stmt|;
 block|}
@@ -2394,6 +2404,18 @@ return|return
 operator|-
 literal|1
 return|;
+if|if
+condition|(
+name|results
+operator|.
+name|auth_avail
+operator|&
+name|CURLAUTH_GSSNEGOTIATE
+condition|)
+name|needs_100_continue
+operator|=
+literal|1
+expr_stmt|;
 block|}
 name|headers
 operator|=
@@ -2423,6 +2445,10 @@ name|curl_slist_append
 argument_list|(
 name|headers
 argument_list|,
+name|needs_100_continue
+condition|?
+literal|"Expect: 100-continue"
+else|:
 literal|"Expect:"
 argument_list|)
 expr_stmt|;
