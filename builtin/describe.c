@@ -64,7 +64,7 @@ DECL|macro|SEEN
 define|#
 directive|define
 name|SEEN
-value|(1u<<0)
+value|(1u<< 0)
 end_define
 
 begin_define
@@ -2913,7 +2913,6 @@ operator|--
 operator|>
 literal|0
 condition|)
-block|{
 name|describe
 argument_list|(
 operator|*
@@ -2925,7 +2924,6 @@ operator|==
 literal|0
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 return|return
 literal|0
