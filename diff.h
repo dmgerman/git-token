@@ -1426,7 +1426,7 @@ value|4
 end_define
 
 begin_comment
-comment|/*  * Poor man's alternative to parse-option, to allow both sticked form  * (--option=value) and separate form (--option value).  */
+comment|/*  * Poor man's alternative to parse-option, to allow both stuck form  * (--option=value) and separate form (--option value).  */
 end_comment
 
 begin_function_decl
