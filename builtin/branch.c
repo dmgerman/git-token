@@ -5676,7 +5676,6 @@ argument_list|(
 name|branch
 argument_list|)
 condition|)
-block|{
 name|die
 argument_list|(
 name|_
@@ -5689,7 +5688,6 @@ operator|->
 name|name
 argument_list|)
 expr_stmt|;
-block|}
 name|strbuf_addf
 argument_list|(
 operator|&
