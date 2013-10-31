@@ -4688,17 +4688,6 @@ if|if
 condition|(
 name|ref
 operator|->
-name|deletion
-condition|)
-name|die
-argument_list|(
-literal|"remote-helpers do not support ref deletion"
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|ref
-operator|->
 name|peer_ref
 condition|)
 block|{
