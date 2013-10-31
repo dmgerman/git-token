@@ -3951,6 +3951,9 @@ name|struct
 name|ref
 modifier|*
 name|remote_refs
+parameter_list|,
+name|int
+name|flags
 parameter_list|)
 block|{
 name|struct
@@ -4008,6 +4011,10 @@ condition|)
 continue|continue;
 if|if
 condition|(
+name|flags
+operator|&
+name|TRANSPORT_PUSH_DRY_RUN
+operator|||
 operator|!
 name|data
 operator|->
@@ -4453,6 +4460,8 @@ argument_list|(
 name|data
 argument_list|,
 name|remote_refs
+argument_list|,
+name|flags
 argument_list|)
 expr_stmt|;
 return|return
@@ -4761,6 +4770,8 @@ argument_list|(
 name|data
 argument_list|,
 name|remote_refs
+argument_list|,
+name|flags
 argument_list|)
 expr_stmt|;
 return|return
