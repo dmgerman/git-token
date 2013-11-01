@@ -1745,10 +1745,7 @@ expr_stmt|;
 return|return
 name|run_add_interactive
 argument_list|(
-name|sha1_to_hex
-argument_list|(
-name|sha1
-argument_list|)
+name|rev
 argument_list|,
 literal|"--patch=reset"
 argument_list|,
