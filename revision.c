@@ -15875,11 +15875,11 @@ condition|)
 block|{
 while|while
 condition|(
-literal|0
-operator|<
 name|revs
 operator|->
 name|skip_count
+operator|>
+literal|0
 condition|)
 block|{
 name|revs
@@ -15935,11 +15935,9 @@ name|revs
 operator|->
 name|boundary
 condition|)
-block|{
 return|return
 name|c
 return|;
-block|}
 if|if
 condition|(
 operator|!
@@ -16091,7 +16089,6 @@ name|revs
 argument_list|)
 operator|)
 condition|)
-block|{
 name|commit_list_insert
 argument_list|(
 name|c
@@ -16100,7 +16097,6 @@ operator|&
 name|reversed
 argument_list|)
 expr_stmt|;
-block|}
 name|revs
 operator|->
 name|commits
