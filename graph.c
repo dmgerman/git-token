@@ -2563,6 +2563,10 @@ literal|2
 operator|)
 operator|+
 name|dashless_commits
+operator|+
+name|graph
+operator|->
+name|commit_index
 expr_stmt|;
 name|strbuf_write_column
 argument_list|(
@@ -2589,6 +2593,10 @@ literal|2
 operator|)
 operator|+
 name|dashless_commits
+operator|+
+name|graph
+operator|->
+name|commit_index
 expr_stmt|;
 name|strbuf_write_column
 argument_list|(
