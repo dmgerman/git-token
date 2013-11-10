@@ -2551,14 +2551,6 @@ name|cmd_patch_id
 block|}
 block|,
 block|{
-literal|"peek-remote"
-block|,
-name|cmd_ls_remote
-block|,
-name|RUN_SETUP_GENTLY
-block|}
-block|,
-block|{
 literal|"pickaxe"
 block|,
 name|cmd_blame
