@@ -2649,14 +2649,6 @@ name|RUN_SETUP
 block|}
 block|,
 block|{
-literal|"repo-config"
-block|,
-name|cmd_repo_config
-block|,
-name|RUN_SETUP_GENTLY
-block|}
-block|,
-block|{
 literal|"rerere"
 block|,
 name|cmd_rerere
