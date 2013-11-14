@@ -2754,12 +2754,10 @@ argument_list|(
 name|ce
 operator|->
 name|name
-operator|+
-name|prefix_length
 argument_list|,
-name|prefix
+name|NULL
 argument_list|,
-name|prefix_length
+literal|0
 argument_list|)
 expr_stmt|;
 if|if
