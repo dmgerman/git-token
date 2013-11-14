@@ -702,6 +702,10 @@ literal|0
 decl_stmt|,
 name|matched
 decl_stmt|;
+name|char
+modifier|*
+name|name
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -810,6 +814,15 @@ name|ce_flags
 operator|&
 name|CE_MATCHED
 expr_stmt|;
+name|name
+operator|=
+name|xstrdup
+argument_list|(
+name|ce
+operator|->
+name|name
+argument_list|)
+expr_stmt|;
 name|remove_index_entry_at
 argument_list|(
 name|istate
@@ -865,8 +878,6 @@ index|[
 name|i
 index|]
 argument_list|,
-name|ce
-operator|->
 name|name
 argument_list|,
 name|i
@@ -906,13 +917,16 @@ name|error
 argument_list|(
 literal|"cannot unmerge '%s'"
 argument_list|,
-name|ce
-operator|->
 name|name
 argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|free
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|err
