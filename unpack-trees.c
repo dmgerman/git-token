@@ -461,12 +461,6 @@ name|CE_WT_REMOVE
 expr_stmt|;
 name|ce
 operator|->
-name|next
-operator|=
-name|NULL
-expr_stmt|;
-name|ce
-operator|->
 name|ce_flags
 operator|=
 operator|(
