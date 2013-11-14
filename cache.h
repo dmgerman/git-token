@@ -27,12 +27,6 @@ end_include
 begin_include
 include|#
 directive|include
-file|"hash.h"
-end_include
-
-begin_include
-include|#
-directive|include
 file|"hashmap.h"
 end_include
 
