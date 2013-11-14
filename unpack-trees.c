@@ -446,8 +446,6 @@ block|{
 name|clear
 operator||=
 name|CE_HASHED
-operator||
-name|CE_UNHASHED
 expr_stmt|;
 if|if
 condition|(

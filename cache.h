@@ -696,14 +696,6 @@ value|(1<< 20)
 end_define
 
 begin_define
-DECL|macro|CE_UNHASHED
-define|#
-directive|define
-name|CE_UNHASHED
-value|(1<< 21)
-end_define
-
-begin_define
 DECL|macro|CE_WT_REMOVE
 define|#
 directive|define
@@ -825,14 +817,6 @@ begin_comment
 comment|/*  * Copy the sha1 and stat state of a cache entry from one to  * another. But we never change the name, or the hash state!  */
 end_comment
 
-begin_define
-DECL|macro|CE_STATE_MASK
-define|#
-directive|define
-name|CE_STATE_MASK
-value|(CE_HASHED | CE_UNHASHED)
-end_define
-
 begin_function
 DECL|function|copy_cache_entry
 specifier|static
@@ -860,7 +844,7 @@ name|dst
 operator|->
 name|ce_flags
 operator|&
-name|CE_STATE_MASK
+name|CE_HASHED
 decl_stmt|;
 comment|/* Don't copy hash chain and name */
 name|memcpy
@@ -903,7 +887,7 @@ operator|->
 name|ce_flags
 operator|&
 operator|~
-name|CE_STATE_MASK
+name|CE_HASHED
 operator|)
 operator||
 name|state
