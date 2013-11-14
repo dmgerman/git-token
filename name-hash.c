@@ -400,7 +400,7 @@ modifier|*
 name|ce
 parameter_list|)
 block|{
-comment|/* 	 * Release reference to the directory entry (and parents if 0). 	 * 	 * Note: we do not remove / free the entry because there's no 	 * hash.[ch]::remove_hash and dir->next may point to other entries 	 * that are still valid, so we must not free the memory. 	 */
+comment|/* 	 * Release reference to the directory entry. If 0, remove and continue 	 * with parent directory. 	 */
 name|struct
 name|dir_entry
 modifier|*
@@ -422,10 +422,6 @@ while|while
 condition|(
 name|dir
 operator|&&
-name|dir
-operator|->
-name|nr
-operator|&&
 operator|!
 operator|(
 operator|--
@@ -434,12 +430,38 @@ operator|->
 name|nr
 operator|)
 condition|)
-name|dir
-operator|=
+block|{
+name|struct
+name|dir_entry
+modifier|*
+name|parent
+init|=
 name|dir
 operator|->
 name|parent
+decl_stmt|;
+name|hashmap_remove
+argument_list|(
+operator|&
+name|istate
+operator|->
+name|dir_hash
+argument_list|,
+name|dir
+argument_list|,
+name|NULL
+argument_list|)
 expr_stmt|;
+name|free
+argument_list|(
+name|dir
+argument_list|)
+expr_stmt|;
+name|dir
+operator|=
+name|parent
+expr_stmt|;
+block|}
 block|}
 end_function
 
