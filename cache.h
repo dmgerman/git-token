@@ -33,6 +33,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"hashmap.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"advice.h"
 end_include
 
@@ -1327,7 +1333,7 @@ name|name_hash
 decl_stmt|;
 DECL|member|dir_hash
 name|struct
-name|hash_table
+name|hashmap
 name|dir_hash
 decl_stmt|;
 block|}
