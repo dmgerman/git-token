@@ -133,6 +133,19 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|url_is_local_not_ssh
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|url
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
