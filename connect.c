@@ -2804,14 +2804,6 @@ return|;
 block|}
 end_function
 
-begin_define
-DECL|macro|MAX_CMD_LEN
-define|#
-directive|define
-name|MAX_CMD_LEN
-value|1024
-end_define
-
 begin_function
 DECL|function|get_port
 specifier|static
@@ -2991,6 +2983,8 @@ decl_stmt|;
 name|struct
 name|strbuf
 name|cmd
+init|=
+name|STRBUF_INIT
 decl_stmt|;
 comment|/* Without this we cannot rely on waitpid() to tell 	 * what happened to our children. 	 */
 name|signal
@@ -3375,14 +3369,6 @@ name|conn
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|strbuf_init
-argument_list|(
-operator|&
-name|cmd
-argument_list|,
-name|MAX_CMD_LEN
-argument_list|)
-expr_stmt|;
 name|strbuf_addstr
 argument_list|(
 operator|&
@@ -3405,19 +3391,6 @@ operator|&
 name|cmd
 argument_list|,
 name|path
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|cmd
-operator|.
-name|len
-operator|>=
-name|MAX_CMD_LEN
-condition|)
-name|die
-argument_list|(
-literal|"command line too long"
 argument_list|)
 expr_stmt|;
 name|conn
