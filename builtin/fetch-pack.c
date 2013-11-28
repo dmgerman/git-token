@@ -39,7 +39,7 @@ index|[]
 init|=
 literal|"git fetch-pack [--all] [--stdin] [--quiet|-q] [--keep|-k] [--thin] "
 literal|"[--include-tag] [--upload-pack=<git-upload-pack>] [--depth=<n>] "
-literal|"[--no-progress] [-v] [<host>:]<directory> [<refs>...]"
+literal|"[--no-progress] [--diag-url] [-v] [<host>:]<directory> [<refs>...]"
 decl_stmt|;
 end_decl_stmt
 
@@ -518,6 +518,25 @@ condition|(
 operator|!
 name|strcmp
 argument_list|(
+literal|"--diag-url"
+argument_list|,
+name|arg
+argument_list|)
+condition|)
+block|{
+name|args
+operator|.
+name|diag_url
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
 literal|"-v"
 argument_list|,
 name|arg
@@ -824,6 +843,27 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|int
+name|flags
+init|=
+name|args
+operator|.
+name|verbose
+condition|?
+name|CONNECT_VERBOSE
+else|:
+literal|0
+decl_stmt|;
+if|if
+condition|(
+name|args
+operator|.
+name|diag_url
+condition|)
+name|flags
+operator||=
+name|CONNECT_DIAG_URL
+expr_stmt|;
 name|conn
 operator|=
 name|git_connect
@@ -836,15 +876,23 @@ name|args
 operator|.
 name|uploadpack
 argument_list|,
-name|args
-operator|.
-name|verbose
-condition|?
-name|CONNECT_VERBOSE
-else|:
-literal|0
+name|flags
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|conn
+condition|)
+return|return
+name|args
+operator|.
+name|diag_url
+condition|?
+literal|0
+else|:
+literal|1
+return|;
 block|}
 name|get_remote_heads
 argument_list|(

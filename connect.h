@@ -20,6 +20,14 @@ name|CONNECT_VERBOSE
 value|(1u<< 0)
 end_define
 
+begin_define
+DECL|macro|CONNECT_DIAG_URL
+define|#
+directive|define
+name|CONNECT_DIAG_URL
+value|(1u<< 1)
+end_define
+
 begin_function_decl
 specifier|extern
 name|struct
