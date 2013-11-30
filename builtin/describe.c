@@ -849,8 +849,7 @@ block|{
 name|int
 name|is_tag
 init|=
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|path
 argument_list|,

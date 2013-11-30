@@ -2309,8 +2309,7 @@ continue|continue;
 block|}
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|de
 operator|->
@@ -2539,8 +2538,7 @@ argument_list|,
 literal|"HEAD"
 argument_list|)
 operator|||
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|refname
 argument_list|,
@@ -2898,7 +2896,8 @@ expr_stmt|;
 elseif|else
 if|if
 condition|(
-name|prefixcmp
+operator|!
+name|starts_with
 argument_list|(
 name|head_points_at
 argument_list|,

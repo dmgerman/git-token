@@ -111,8 +111,7 @@ literal|'b'
 case|:
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|command
 argument_list|,
@@ -175,8 +174,7 @@ literal|'c'
 case|:
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|command
 argument_list|,
@@ -201,8 +199,7 @@ literal|'s'
 case|:
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|command
 argument_list|,

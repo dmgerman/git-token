@@ -221,8 +221,7 @@ argument_list|)
 operator|+
 literal|1
 operator|&&
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|buf
 argument_list|,
@@ -996,8 +995,7 @@ empty_stmt|;
 comment|/* do nothing */
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|p
 argument_list|,
@@ -3762,8 +3760,7 @@ name|padding
 decl_stmt|;
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|bol
 argument_list|,
@@ -3786,8 +3783,7 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|bol
 argument_list|,

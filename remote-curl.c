@@ -1209,8 +1209,7 @@ expr_stmt|;
 if|if
 condition|(
 operator|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|url
 operator|.
@@ -1219,8 +1218,7 @@ argument_list|,
 literal|"http://"
 argument_list|)
 operator|||
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|url
 operator|.
@@ -4291,8 +4289,7 @@ do|do
 block|{
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|buf
 operator|->
@@ -5055,8 +5052,7 @@ do|do
 block|{
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|buf
 operator|->
@@ -5388,8 +5384,7 @@ condition|)
 break|break;
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|buf
 operator|.
@@ -5428,8 +5423,7 @@ argument_list|,
 literal|"list"
 argument_list|)
 operator|||
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|buf
 operator|.
@@ -5467,8 +5461,7 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|buf
 operator|.
@@ -5488,8 +5481,7 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|buf
 operator|.

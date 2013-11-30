@@ -954,8 +954,7 @@ condition|)
 block|{
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|line
 argument_list|,
@@ -965,8 +964,7 @@ condition|)
 continue|continue;
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|line
 argument_list|,
@@ -1040,8 +1038,7 @@ name|NAK
 return|;
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|line
 argument_list|,
@@ -1797,8 +1794,7 @@ condition|)
 block|{
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|line
 argument_list|,
@@ -1833,8 +1829,7 @@ continue|continue;
 block|}
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|line
 argument_list|,
@@ -2867,7 +2862,8 @@ name|args
 operator|->
 name|depth
 operator|||
-name|prefixcmp
+operator|!
+name|starts_with
 argument_list|(
 name|ref
 operator|->

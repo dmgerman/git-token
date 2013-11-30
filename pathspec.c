@@ -632,8 +632,7 @@ break|break;
 block|}
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|copyfrom
 argument_list|,

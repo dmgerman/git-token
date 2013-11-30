@@ -7259,7 +7259,8 @@ name|size
 operator|<
 literal|3
 operator|||
-name|prefixcmp
+operator|!
+name|starts_with
 argument_list|(
 name|line
 argument_list|,
@@ -7276,7 +7277,8 @@ name|size
 operator|<
 literal|5
 operator|||
-name|prefixcmp
+operator|!
+name|starts_with
 argument_list|(
 name|line
 argument_list|,
@@ -9025,8 +9027,7 @@ literal|0
 expr_stmt|;
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|buffer
 argument_list|,
@@ -9055,8 +9056,7 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|buffer
 argument_list|,
@@ -17526,8 +17526,7 @@ operator|)
 operator|!=
 name|NULL
 operator|&&
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 operator|++
 name|preimage
@@ -17566,8 +17565,7 @@ operator|==
 literal|'\n'
 operator|&&
 comment|/* does the abbreviated name on the index line agree with it? */
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|preimage
 operator|+

@@ -290,8 +290,7 @@ name|argc
 operator|>
 literal|1
 operator|&&
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|argv
 index|[

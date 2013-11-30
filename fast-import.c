@@ -10487,7 +10487,8 @@ condition|(
 operator|!
 name|seen_data_command
 operator|&&
-name|prefixcmp
+operator|!
+name|starts_with
 argument_list|(
 name|command_buf
 operator|.
@@ -10496,7 +10497,8 @@ argument_list|,
 literal|"feature "
 argument_list|)
 operator|&&
-name|prefixcmp
+operator|!
+name|starts_with
 argument_list|(
 name|command_buf
 operator|.
@@ -10594,8 +10596,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|command_buf
 operator|.
@@ -10677,8 +10678,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|command_buf
 operator|.
@@ -10741,7 +10741,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|prefixcmp
+operator|!
+name|starts_with
 argument_list|(
 name|command_buf
 operator|.
@@ -10761,8 +10762,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|command_buf
 operator|.
@@ -12656,8 +12656,7 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|p
 argument_list|,
@@ -13646,8 +13645,7 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|p
 argument_list|,
@@ -14406,7 +14404,8 @@ name|s
 decl_stmt|;
 if|if
 condition|(
-name|prefixcmp
+operator|!
+name|starts_with
 argument_list|(
 name|command_buf
 operator|.
@@ -14733,8 +14732,7 @@ literal|0
 expr_stmt|;
 while|while
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|command_buf
 operator|.
@@ -15045,8 +15043,7 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|command_buf
 operator|.
@@ -15073,8 +15070,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|command_buf
 operator|.
@@ -15179,8 +15175,7 @@ condition|)
 block|{
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|command_buf
 operator|.
@@ -15197,8 +15192,7 @@ expr_stmt|;
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|command_buf
 operator|.
@@ -15215,8 +15209,7 @@ expr_stmt|;
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|command_buf
 operator|.
@@ -15235,8 +15228,7 @@ expr_stmt|;
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|command_buf
 operator|.
@@ -15255,8 +15247,7 @@ expr_stmt|;
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|command_buf
 operator|.
@@ -15294,8 +15285,7 @@ expr_stmt|;
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|command_buf
 operator|.
@@ -15682,7 +15672,8 @@ expr_stmt|;
 comment|/* from ... */
 if|if
 condition|(
-name|prefixcmp
+operator|!
+name|starts_with
 argument_list|(
 name|command_buf
 operator|.
@@ -15872,8 +15863,7 @@ expr_stmt|;
 comment|/* tagger ... */
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|command_buf
 operator|.
@@ -18040,8 +18030,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|option
 argument_list|,
@@ -18120,8 +18109,7 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|option
 argument_list|,
@@ -18157,8 +18145,7 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|option
 argument_list|,
@@ -18177,8 +18164,7 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|option
 argument_list|,
@@ -18197,8 +18183,7 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|option
 argument_list|,
@@ -18217,8 +18202,7 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|option
 argument_list|,
@@ -18234,8 +18218,7 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|option
 argument_list|,
@@ -18277,8 +18260,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|feature
 argument_list|,
@@ -18297,8 +18279,7 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|feature
 argument_list|,
@@ -18321,8 +18302,7 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|feature
 argument_list|,
@@ -18348,8 +18328,7 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|feature
 argument_list|,
@@ -18868,8 +18847,7 @@ condition|)
 continue|continue;
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|a
 operator|+
@@ -19176,8 +19154,7 @@ expr_stmt|;
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|command_buf
 operator|.
@@ -19194,8 +19171,7 @@ expr_stmt|;
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|command_buf
 operator|.
@@ -19210,8 +19186,7 @@ expr_stmt|;
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|command_buf
 operator|.
@@ -19226,8 +19201,7 @@ expr_stmt|;
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|command_buf
 operator|.
@@ -19272,8 +19246,7 @@ break|break;
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|command_buf
 operator|.
@@ -19288,8 +19261,7 @@ expr_stmt|;
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|command_buf
 operator|.
@@ -19304,8 +19276,7 @@ expr_stmt|;
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|command_buf
 operator|.
@@ -19320,8 +19291,7 @@ expr_stmt|;
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|command_buf
 operator|.

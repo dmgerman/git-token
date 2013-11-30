@@ -1869,8 +1869,7 @@ operator|->
 name|old_sha1
 argument_list|)
 operator|&&
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|ref
 operator|->
@@ -1994,8 +1993,7 @@ literal|""
 decl_stmt|;
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|name
 argument_list|,
@@ -2018,8 +2016,7 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|name
 argument_list|,
@@ -2817,8 +2814,7 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|rm
 operator|->
@@ -2844,8 +2840,7 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|rm
 operator|->
@@ -2871,8 +2866,7 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|rm
 operator|->
@@ -3734,7 +3728,8 @@ control|)
 block|{
 if|if
 condition|(
-name|prefixcmp
+operator|!
+name|starts_with
 argument_list|(
 name|ref
 operator|->
@@ -3747,8 +3742,7 @@ continue|continue;
 comment|/* 		 * The peeled ref always follows the matching base 		 * ref, so if we see a peeled ref that we don't want 		 * to fetch then we can mark the ref entry in the list 		 * as one to ignore by setting util to NULL. 		 */
 if|if
 condition|(
-operator|!
-name|suffixcmp
+name|ends_with
 argument_list|(
 name|ref
 operator|->
@@ -4977,8 +4971,7 @@ name|priv
 decl_stmt|;
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|key
 argument_list|,

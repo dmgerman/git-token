@@ -473,8 +473,7 @@ continue|continue;
 block|}
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|de
 operator|->
@@ -652,8 +651,7 @@ name|NULL
 condition|)
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|de
 operator|->
