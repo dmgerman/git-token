@@ -1043,8 +1043,6 @@ argument_list|,
 name|get_git_namespace
 argument_list|()
 argument_list|)
-operator|!=
-literal|0
 condition|)
 return|return
 name|NULL
