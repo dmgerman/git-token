@@ -4998,7 +4998,6 @@ end_function
 
 begin_function
 DECL|function|query_refspecs
-specifier|static
 name|int
 name|query_refspecs
 parameter_list|(
@@ -5857,7 +5856,6 @@ end_function
 
 begin_function
 DECL|function|count_refspec_match
-specifier|static
 name|int
 name|count_refspec_match
 parameter_list|(
