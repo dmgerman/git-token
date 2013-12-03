@@ -850,7 +850,7 @@ name|p_short_magic
 operator|=
 name|short_magic
 expr_stmt|;
-comment|/* --noglob-pathspec adds :(literal) _unless_ :(glob) is specifed */
+comment|/* --noglob-pathspec adds :(literal) _unless_ :(glob) is specified */
 if|if
 condition|(
 name|noglob_global
@@ -866,7 +866,7 @@ name|global_magic
 operator||=
 name|PATHSPEC_LITERAL
 expr_stmt|;
-comment|/* --glob-pathspec is overriden by :(literal) */
+comment|/* --glob-pathspec is overridden by :(literal) */
 if|if
 condition|(
 operator|(

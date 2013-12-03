@@ -673,7 +673,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Limit size of IO chunks, because huge chunks only cause pain.  OS X  * 64-bit is buggy, returning EINVAL if len>= INT_MAX; and even in  * the absense of bugs, large chunks can result in bad latencies when  * you decide to kill the process.  */
+comment|/*  * Limit size of IO chunks, because huge chunks only cause pain.  OS X  * 64-bit is buggy, returning EINVAL if len>= INT_MAX; and even in  * the absence of bugs, large chunks can result in bad latencies when  * you decide to kill the process.  */
 end_comment
 
 begin_define
