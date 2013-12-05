@@ -1078,6 +1078,8 @@ name|REF_NORMAL
 argument_list|,
 operator|&
 name|extra_have
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 name|transport_verify_remote_names

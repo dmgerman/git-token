@@ -2936,6 +2936,8 @@ operator|&
 name|data
 operator|->
 name|extra_have
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 name|data
@@ -3154,6 +3156,8 @@ operator|&
 name|refs_tmp
 argument_list|,
 literal|0
+argument_list|,
+name|NULL
 argument_list|,
 name|NULL
 argument_list|)
@@ -4664,6 +4668,8 @@ operator|&
 name|tmp_refs
 argument_list|,
 name|REF_NORMAL
+argument_list|,
+name|NULL
 argument_list|,
 name|NULL
 argument_list|)

@@ -667,6 +667,11 @@ name|struct
 name|sha1_array
 modifier|*
 name|extra_have
+parameter_list|,
+name|struct
+name|sha1_array
+modifier|*
+name|shallow
 parameter_list|)
 function_decl|;
 end_function_decl
