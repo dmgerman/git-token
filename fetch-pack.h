@@ -24,6 +24,12 @@ directive|include
 file|"run-command.h"
 end_include
 
+begin_struct_decl
+struct_decl|struct
+name|sha1_array
+struct_decl|;
+end_struct_decl
+
 begin_struct
 DECL|struct|fetch_pack_args
 struct|struct
@@ -115,6 +121,12 @@ name|self_contained_and_connected
 range|:
 literal|1
 decl_stmt|;
+DECL|member|cloning
+name|unsigned
+name|cloning
+range|:
+literal|1
+decl_stmt|;
 block|}
 struct|;
 end_struct
@@ -162,6 +174,11 @@ name|sought
 parameter_list|,
 name|int
 name|nr_sought
+parameter_list|,
+name|struct
+name|sha1_array
+modifier|*
+name|shallow
 parameter_list|,
 name|char
 modifier|*

@@ -4967,6 +4967,12 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
+name|transport
+operator|->
+name|cloning
+operator|=
+literal|1
+expr_stmt|;
 if|if
 condition|(
 operator|!

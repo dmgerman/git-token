@@ -134,6 +134,13 @@ name|cannot_reuse
 range|:
 literal|1
 decl_stmt|;
+comment|/* 	 * A hint from caller that it will be performing a clone, not 	 * normal fetch. IOW the repository is guaranteed empty. 	 */
+DECL|member|cloning
+name|unsigned
+name|cloning
+range|:
+literal|1
+decl_stmt|;
 comment|/** 	 * Returns 0 if successful, positive if the option is not 	 * recognized or is inapplicable, and negative if the option 	 * is applicable but the value is invalid. 	 **/
 DECL|member|set_option
 name|int

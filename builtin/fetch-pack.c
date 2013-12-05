@@ -886,6 +886,8 @@ name|sought
 argument_list|,
 name|nr_sought
 argument_list|,
+name|NULL
+argument_list|,
 name|pack_lockfile_ptr
 argument_list|)
 expr_stmt|;
