@@ -267,6 +267,7 @@ name|struct
 name|pack_idx_option
 modifier|*
 parameter_list|,
+specifier|const
 name|unsigned
 name|char
 modifier|*
