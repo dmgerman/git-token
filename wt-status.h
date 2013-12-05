@@ -379,6 +379,17 @@ end_struct
 
 begin_function_decl
 name|void
+name|wt_status_truncate_message_at_cut_line
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|void
 name|wt_status_prepare
 parameter_list|(
 name|struct
