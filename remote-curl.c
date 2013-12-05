@@ -4076,7 +4076,14 @@ argument_list|(
 operator|&
 name|preamble
 argument_list|,
-literal|"%s\n"
+literal|"%s %s\n"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|ref
+operator|->
+name|old_sha1
+argument_list|)
 argument_list|,
 name|ref
 operator|->
