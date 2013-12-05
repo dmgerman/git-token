@@ -947,6 +947,10 @@ if|if
 condition|(
 name|is_repository_shallow
 argument_list|()
+operator|&&
+name|args
+operator|.
+name|stateless_rpc
 condition|)
 name|die
 argument_list|(
