@@ -3137,6 +3137,10 @@ condition|(
 name|depth
 operator|==
 name|INFINITE_DEPTH
+operator|&&
+operator|!
+name|is_repository_shallow
+argument_list|()
 condition|)
 for|for
 control|(
