@@ -127,6 +127,12 @@ name|cloning
 range|:
 literal|1
 decl_stmt|;
+DECL|member|update_shallow
+name|unsigned
+name|update_shallow
+range|:
+literal|1
+decl_stmt|;
 block|}
 struct|;
 end_struct

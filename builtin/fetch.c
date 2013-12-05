@@ -237,6 +237,7 @@ end_decl_stmt
 begin_decl_stmt
 DECL|variable|tags
 DECL|variable|unshallow
+DECL|variable|update_shallow
 specifier|static
 name|int
 name|tags
@@ -244,6 +245,8 @@ init|=
 name|TAGS_DEFAULT
 decl_stmt|,
 name|unshallow
+decl_stmt|,
+name|update_shallow
 decl_stmt|;
 end_decl_stmt
 
@@ -743,6 +746,21 @@ argument_list|)
 block|,
 name|PARSE_OPT_HIDDEN
 block|}
+block|,
+name|OPT_BOOL
+argument_list|(
+literal|0
+argument_list|,
+literal|"update-shallow"
+argument_list|,
+operator|&
+name|update_shallow
+argument_list|,
+name|N_
+argument_list|(
+literal|"accept refs that update .git/shallow"
+argument_list|)
+argument_list|)
 block|,
 name|OPT_END
 argument_list|()
@@ -4353,6 +4371,19 @@ argument_list|,
 name|TRANS_OPT_DEPTH
 argument_list|,
 name|depth
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|update_shallow
+condition|)
+name|set_option
+argument_list|(
+name|transport
+argument_list|,
+name|TRANS_OPT_UPDATE_SHALLOW
+argument_list|,
+literal|"yes"
 argument_list|)
 expr_stmt|;
 return|return

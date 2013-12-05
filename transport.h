@@ -65,6 +65,12 @@ name|self_contained_and_connected
 range|:
 literal|1
 decl_stmt|;
+DECL|member|update_shallow
+name|unsigned
+name|update_shallow
+range|:
+literal|1
+decl_stmt|;
 DECL|member|depth
 name|int
 name|depth
@@ -540,6 +546,18 @@ define|#
 directive|define
 name|TRANS_OPT_FOLLOWTAGS
 value|"followtags"
+end_define
+
+begin_comment
+comment|/* Accept refs that may update .git/shallow without --depth */
+end_comment
+
+begin_define
+DECL|macro|TRANS_OPT_UPDATE_SHALLOW
+define|#
+directive|define
+name|TRANS_OPT_UPDATE_SHALLOW
+value|"updateshallow"
 end_define
 
 begin_comment
