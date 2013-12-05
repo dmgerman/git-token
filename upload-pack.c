@@ -4333,18 +4333,6 @@ argument_list|,
 name|dir
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|is_repository_shallow
-argument_list|()
-operator|&&
-name|stateless_rpc
-condition|)
-name|die
-argument_list|(
-literal|"attempt to push into a shallow repository"
-argument_list|)
-expr_stmt|;
 name|git_config
 argument_list|(
 name|upload_pack_config
