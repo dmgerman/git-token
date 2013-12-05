@@ -967,6 +967,16 @@ argument_list|(
 name|s
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|is_repository_shallow
+argument_list|()
+condition|)
+name|prune_shallow
+argument_list|(
+name|show_only
+argument_list|)
+expr_stmt|;
 return|return
 literal|0
 return|;

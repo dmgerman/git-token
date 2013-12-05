@@ -1519,6 +1519,17 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+specifier|extern
+name|void
+name|prune_shallow
+parameter_list|(
+name|int
+name|show_only
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|int
 name|is_descendant_of
 parameter_list|(
