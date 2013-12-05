@@ -97,6 +97,9 @@ specifier|const
 name|char
 modifier|*
 name|path
+parameter_list|,
+name|int
+name|override
 parameter_list|)
 block|{
 if|if
@@ -111,6 +114,14 @@ argument_list|(
 literal|"BUG: is_repository_shallow must not be called before set_alternate_shallow_file"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|alternate_shallow_file
+operator|&&
+operator|!
+name|override
+condition|)
+return|return;
 name|free
 argument_list|(
 name|alternate_shallow_file
