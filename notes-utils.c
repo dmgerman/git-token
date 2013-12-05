@@ -117,9 +117,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
-name|parent
-operator|||
 name|parse_commit
 argument_list|(
 name|parent

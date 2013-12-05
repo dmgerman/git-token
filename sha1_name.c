@@ -3021,15 +3021,6 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|!
-name|commit
-condition|)
-return|return
-operator|-
-literal|1
-return|;
-if|if
-condition|(
 name|parse_commit
 argument_list|(
 name|commit

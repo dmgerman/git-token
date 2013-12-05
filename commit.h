@@ -288,6 +288,18 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|void
+name|parse_commit_or_die
+parameter_list|(
+name|struct
+name|commit
+modifier|*
+name|item
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/* Find beginning and length of commit subject. */
 end_comment
