@@ -3968,6 +3968,11 @@ operator|&
 name|symref
 argument_list|)
 expr_stmt|;
+name|advertise_shallow_grafts
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
 name|packet_flush
 argument_list|(
 literal|1
@@ -4326,10 +4331,12 @@ if|if
 condition|(
 name|is_repository_shallow
 argument_list|()
+operator|&&
+name|stateless_rpc
 condition|)
 name|die
 argument_list|(
-literal|"attempt to fetch/clone from a shallow repository"
+literal|"attempt to push into a shallow repository"
 argument_list|)
 expr_stmt|;
 name|git_config
