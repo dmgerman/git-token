@@ -629,30 +629,11 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
-begin_struct
-DECL|struct|extra_have_objects
-struct|struct
-name|extra_have_objects
-block|{
-DECL|member|nr
-DECL|member|alloc
-name|int
-name|nr
-decl_stmt|,
-name|alloc
-decl_stmt|;
-DECL|member|array
-name|unsigned
-name|char
-argument_list|(
-operator|*
-name|array
-argument_list|)
-decl|[20]
-decl_stmt|;
-block|}
-struct|;
-end_struct
+begin_struct_decl
+struct_decl|struct
+name|sha1_array
+struct_decl|;
+end_struct_decl
 
 begin_function_decl
 specifier|extern
@@ -683,8 +664,9 @@ name|int
 name|flags
 parameter_list|,
 name|struct
-name|extra_have_objects
+name|sha1_array
 modifier|*
+name|extra_have
 parameter_list|)
 function_decl|;
 end_function_decl

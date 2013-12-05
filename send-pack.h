@@ -96,7 +96,7 @@ modifier|*
 name|remote_refs
 parameter_list|,
 name|struct
-name|extra_have_objects
+name|sha1_array
 modifier|*
 name|extra_have
 parameter_list|)

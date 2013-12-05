@@ -95,6 +95,12 @@ directive|include
 file|"string-list.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"sha1-array.h"
+end_include
+
 begin_comment
 comment|/* rsync support */
 end_comment
@@ -2577,7 +2583,7 @@ literal|1
 decl_stmt|;
 DECL|member|extra_have
 name|struct
-name|extra_have_objects
+name|sha1_array
 name|extra_have
 decl_stmt|;
 block|}

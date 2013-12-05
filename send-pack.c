@@ -71,6 +71,12 @@ directive|include
 file|"version.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"sha1-array.h"
+end_include
+
 begin_function
 DECL|function|feed_object
 specifier|static
@@ -179,7 +185,7 @@ modifier|*
 name|refs
 parameter_list|,
 name|struct
-name|extra_have_objects
+name|sha1_array
 modifier|*
 name|extra
 parameter_list|,
@@ -369,7 +375,7 @@ name|feed_object
 argument_list|(
 name|extra
 operator|->
-name|array
+name|sha1
 index|[
 name|i
 index|]
@@ -922,7 +928,7 @@ modifier|*
 name|remote_refs
 parameter_list|,
 name|struct
-name|extra_have_objects
+name|sha1_array
 modifier|*
 name|extra_have
 parameter_list|)

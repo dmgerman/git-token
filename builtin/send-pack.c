@@ -71,6 +71,12 @@ directive|include
 file|"version.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"sha1-array.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|send_pack_usage
 specifier|static
@@ -408,8 +414,10 @@ modifier|*
 name|conn
 decl_stmt|;
 name|struct
-name|extra_have_objects
+name|sha1_array
 name|extra_have
+init|=
+name|SHA1_ARRAY_INIT
 decl_stmt|;
 name|struct
 name|ref
@@ -1042,19 +1050,6 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
-name|memset
-argument_list|(
-operator|&
-name|extra_have
-argument_list|,
-literal|0
-argument_list|,
-sizeof|sizeof
-argument_list|(
-name|extra_have
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|get_remote_heads
 argument_list|(
 name|fd
