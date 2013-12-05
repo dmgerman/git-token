@@ -4750,7 +4750,10 @@ name|REF_NORMAL
 argument_list|,
 name|NULL
 argument_list|,
-name|NULL
+operator|&
+name|data
+operator|->
+name|shallow
 argument_list|)
 expr_stmt|;
 name|data
@@ -4760,19 +4763,6 @@ operator|=
 literal|1
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|data
-operator|->
-name|shallow
-operator|.
-name|nr
-condition|)
-name|die
-argument_list|(
-literal|"pushing to a shallow repository is not supported"
-argument_list|)
-expr_stmt|;
 name|memset
 argument_list|(
 operator|&
