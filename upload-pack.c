@@ -496,7 +496,9 @@ block|{
 name|shallow_file
 operator|=
 name|setup_temporary_shallow
-argument_list|()
+argument_list|(
+name|NULL
+argument_list|)
 expr_stmt|;
 name|argv
 index|[
