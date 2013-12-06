@@ -229,6 +229,14 @@ literal|'\0'
 block|,
 literal|"icase"
 block|}
+block|,
+block|{
+name|PATHSPEC_EXCLUDE
+block|,
+literal|'!'
+block|,
+literal|"exclude"
+block|}
 block|, }
 struct|;
 end_struct
@@ -1745,6 +1753,10 @@ decl_stmt|,
 name|n
 decl_stmt|,
 name|prefixlen
+decl_stmt|,
+name|nr_exclude
+init|=
+literal|0
 decl_stmt|;
 name|memset
 argument_list|(
@@ -2066,6 +2078,20 @@ index|]
 operator|.
 name|magic
 operator|&
+name|PATHSPEC_EXCLUDE
+condition|)
+name|nr_exclude
+operator|++
+expr_stmt|;
+if|if
+condition|(
+name|item
+index|[
+name|i
+index|]
+operator|.
+name|magic
+operator|&
 name|magic_mask
 condition|)
 name|unsupported_magic
@@ -2155,6 +2181,21 @@ operator|.
 name|magic
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|nr_exclude
+operator|==
+name|n
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"There is nothing to exclude from by :(exclude) patterns.\n"
+literal|"Perhaps you forgot to add either ':/' or '.' ?"
+argument_list|)
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|pathspec
