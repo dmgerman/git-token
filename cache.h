@@ -5167,10 +5167,10 @@ comment|/* object replacement */
 end_comment
 
 begin_define
-DECL|macro|READ_SHA1_FILE_REPLACE
+DECL|macro|LOOKUP_REPLACE_OBJECT
 define|#
 directive|define
-name|READ_SHA1_FILE_REPLACE
+name|LOOKUP_REPLACE_OBJECT
 value|1
 end_define
 
@@ -5236,7 +5236,7 @@ name|type
 argument_list|,
 name|size
 argument_list|,
-name|READ_SHA1_FILE_REPLACE
+name|LOOKUP_REPLACE_OBJECT
 argument_list|)
 return|;
 block|}
