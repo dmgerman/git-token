@@ -995,6 +995,10 @@ name|OPT_END
 argument_list|()
 block|}
 decl_stmt|;
+name|read_replace_refs
+operator|=
+literal|0
+expr_stmt|;
 name|argc
 operator|=
 name|parse_options
