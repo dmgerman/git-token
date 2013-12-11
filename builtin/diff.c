@@ -1597,6 +1597,11 @@ literal|'-'
 condition|)
 break|break;
 block|}
+if|if
+condition|(
+operator|!
+name|no_index
+condition|)
 name|prefix
 operator|=
 name|setup_git_directory_gently
@@ -1650,6 +1655,11 @@ name|no_index
 operator|=
 name|DIFF_NO_INDEX_IMPLICIT
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|no_index
+condition|)
 name|gitmodules_config
 argument_list|()
 expr_stmt|;
