@@ -999,6 +999,15 @@ name|data
 operator|->
 name|sha1
 decl_stmt|;
+name|assert
+argument_list|(
+name|data
+operator|->
+name|info
+operator|.
+name|typep
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|data
@@ -1096,6 +1105,12 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|data
+operator|->
+name|info
+operator|.
+name|sizep
+operator|&&
 name|size
 operator|!=
 name|data
@@ -1396,6 +1411,24 @@ operator|.
 name|mark_query
 operator|=
 literal|0
+expr_stmt|;
+comment|/* 	 * If we are printing out the object, then always fill in the type, 	 * since we will want to decide whether or not to stream. 	 */
+if|if
+condition|(
+name|opt
+operator|->
+name|print_contents
+condition|)
+name|data
+operator|.
+name|info
+operator|.
+name|typep
+operator|=
+operator|&
+name|data
+operator|.
+name|type
 expr_stmt|;
 comment|/* 	 * We are going to call get_sha1 on a potentially very large number of 	 * objects. In most large cases, these will be actual object sha1s. The 	 * cost to double-check that each one is not also a ref (just so we can 	 * warn) ends up dwarfing the actual cost of the object lookups 	 * themselves. We can work around it by just turning off the warning. 	 */
 name|warn_on_object_refname_ambiguity
