@@ -7835,6 +7835,9 @@ parameter_list|,
 name|struct
 name|object_info
 modifier|*
+parameter_list|,
+name|unsigned
+name|flags
 parameter_list|)
 function_decl|;
 end_function_decl

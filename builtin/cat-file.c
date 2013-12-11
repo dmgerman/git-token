@@ -1222,6 +1222,8 @@ operator|&
 name|data
 operator|->
 name|info
+argument_list|,
+name|LOOKUP_REPLACE_OBJECT
 argument_list|)
 operator|<
 literal|0

@@ -12450,6 +12450,9 @@ name|struct
 name|object_info
 modifier|*
 name|oi
+parameter_list|,
+name|unsigned
+name|flags
 parameter_list|)
 block|{
 name|struct
@@ -12626,6 +12629,8 @@ argument_list|(
 name|sha1
 argument_list|,
 name|oi
+argument_list|,
+literal|0
 argument_list|)
 return|;
 block|}
@@ -12762,6 +12767,8 @@ name|sha1
 argument_list|,
 operator|&
 name|oi
+argument_list|,
+name|LOOKUP_REPLACE_OBJECT
 argument_list|)
 operator|<
 literal|0
