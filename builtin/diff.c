@@ -1681,10 +1681,7 @@ expr_stmt|;
 if|if
 condition|(
 name|no_index
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 name|argc
 operator|!=
 name|i
@@ -1699,7 +1696,7 @@ operator|==
 name|DIFF_NO_INDEX_IMPLICIT
 condition|)
 block|{
-comment|/* 				 * There was no --no-index and there were not two 				 * paths. It is possible that the user intended 				 * to do an inside-repository operation. 				 */
+comment|/* 			 * There was no --no-index and there were not two 			 * paths. It is possible that the user intended 			 * to do an inside-repository operation. 			 */
 name|fprintf
 argument_list|(
 name|stderr
@@ -1730,6 +1727,10 @@ literal|"[--no-index]"
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|no_index
+condition|)
 comment|/* If this is a no-index diff, just run it and exit there. */
 name|diff_no_index
 argument_list|(
@@ -1743,7 +1744,6 @@ argument_list|,
 name|prefix
 argument_list|)
 expr_stmt|;
-block|}
 comment|/* Otherwise, we are doing the usual "git" diff */
 name|rev
 operator|.
