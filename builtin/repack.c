@@ -661,8 +661,6 @@ init|=
 name|STRBUF_INIT
 decl_stmt|;
 name|int
-name|nr_packs
-decl_stmt|,
 name|ext
 decl_stmt|,
 name|ret
@@ -1298,10 +1296,6 @@ condition|)
 return|return
 name|ret
 return|;
-name|nr_packs
-operator|=
-literal|0
-expr_stmt|;
 name|out
 operator|=
 name|xfdopen
@@ -1351,9 +1345,6 @@ operator|.
 name|buf
 argument_list|)
 expr_stmt|;
-name|nr_packs
-operator|++
-expr_stmt|;
 block|}
 name|fclose
 argument_list|(
@@ -1384,7 +1375,9 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|nr_packs
+name|names
+operator|.
+name|nr
 operator|&&
 operator|!
 name|quiet
