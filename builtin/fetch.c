@@ -5888,6 +5888,28 @@ name|inf_depth
 expr_stmt|;
 block|}
 block|}
+comment|/* no need to be strict, transport_set_option() will validate it again */
+if|if
+condition|(
+name|depth
+operator|&&
+name|atoi
+argument_list|(
+name|depth
+argument_list|)
+operator|<
+literal|1
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"depth %s is not a positive number"
+argument_list|)
+argument_list|,
+name|depth
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|recurse_submodules
