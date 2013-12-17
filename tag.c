@@ -540,7 +540,8 @@ expr_stmt|;
 comment|/* "object " + sha1 + "\n" */
 if|if
 condition|(
-name|prefixcmp
+operator|!
+name|starts_with
 argument_list|(
 name|bufptr
 argument_list|,
@@ -737,8 +738,7 @@ literal|4
 operator|<
 name|tail
 operator|&&
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|bufptr
 argument_list|,
@@ -805,8 +805,7 @@ literal|7
 operator|<
 name|tail
 operator|&&
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|bufptr
 argument_list|,
@@ -995,7 +994,8 @@ name|len
 operator|<
 name|size
 operator|&&
-name|prefixcmp
+operator|!
+name|starts_with
 argument_list|(
 name|buf
 operator|+
@@ -1004,7 +1004,8 @@ argument_list|,
 name|PGP_SIGNATURE
 argument_list|)
 operator|&&
-name|prefixcmp
+operator|!
+name|starts_with
 argument_list|(
 name|buf
 operator|+

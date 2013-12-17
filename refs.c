@@ -2481,7 +2481,8 @@ name|retval
 decl_stmt|;
 if|if
 condition|(
-name|prefixcmp
+operator|!
+name|starts_with
 argument_list|(
 name|entry
 operator|->
@@ -4151,8 +4152,7 @@ name|peeled
 operator|==
 name|PEELED_TAGS
 operator|&&
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|refname
 argument_list|,
@@ -5777,8 +5777,7 @@ literal|0
 expr_stmt|;
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|buffer
 argument_list|,
@@ -5925,7 +5924,8 @@ expr_stmt|;
 comment|/* 		 * Is it a symbolic ref? 		 */
 if|if
 condition|(
-name|prefixcmp
+operator|!
+name|starts_with
 argument_list|(
 name|buffer
 argument_list|,
@@ -7975,7 +7975,8 @@ condition|(
 operator|!
 name|prefix
 operator|&&
-name|prefixcmp
+operator|!
+name|starts_with
 argument_list|(
 name|pattern
 argument_list|,
@@ -8179,8 +8180,7 @@ return|return
 name|name
 operator|+
 operator|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|name
 argument_list|,
@@ -8189,8 +8189,7 @@ argument_list|)
 condition|?
 literal|11
 else|:
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|name
 argument_list|,
@@ -8199,8 +8198,7 @@ argument_list|)
 condition|?
 literal|10
 else|:
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|name
 argument_list|,
@@ -10080,8 +10078,7 @@ decl_stmt|;
 name|int
 name|is_tag_ref
 init|=
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|entry
 operator|->
@@ -12214,24 +12211,21 @@ condition|(
 name|log_all_ref_updates
 operator|&&
 operator|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|refname
 argument_list|,
 literal|"refs/heads/"
 argument_list|)
 operator|||
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|refname
 argument_list|,
 literal|"refs/remotes/"
 argument_list|)
 operator|||
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|refname
 argument_list|,
@@ -12645,8 +12639,7 @@ argument_list|,
 literal|"HEAD"
 argument_list|)
 operator|||
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|refname
 argument_list|,
@@ -16628,8 +16621,7 @@ argument_list|)
 operator|||
 comment|/* NEEDSWORK: use parse_config_key() once both are merged */
 operator|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|var
 argument_list|,
@@ -16790,7 +16782,8 @@ name|len
 decl_stmt|;
 if|if
 condition|(
-name|prefixcmp
+operator|!
+name|starts_with
 argument_list|(
 name|refname
 argument_list|,

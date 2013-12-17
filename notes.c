@@ -6403,8 +6403,7 @@ else|else
 block|{
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|ref
 argument_list|,
@@ -6417,8 +6416,7 @@ literal|5
 expr_stmt|;
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|ref
 argument_list|,
@@ -6690,8 +6688,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|sb
 operator|->
@@ -6705,8 +6702,7 @@ comment|/* we're happy */
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|sb
 operator|->

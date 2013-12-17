@@ -761,8 +761,7 @@ name|len
 operator|>
 literal|4
 operator|&&
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|buffer
 argument_list|,

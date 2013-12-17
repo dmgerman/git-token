@@ -1404,8 +1404,7 @@ name|status
 return|;
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|var
 argument_list|,

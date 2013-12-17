@@ -584,7 +584,8 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|prefixcmp
+operator|!
+name|starts_with
 argument_list|(
 name|line
 argument_list|,
@@ -656,14 +657,16 @@ condition|)
 break|break;
 if|if
 condition|(
-name|prefixcmp
+operator|!
+name|starts_with
 argument_list|(
 name|line
 argument_list|,
 literal|"ok "
 argument_list|)
 operator|&&
-name|prefixcmp
+operator|!
+name|starts_with
 argument_list|(
 name|line
 argument_list|,

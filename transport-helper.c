@@ -1090,8 +1090,7 @@ name|data
 operator|->
 name|refspecs
 operator|&&
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|capname
 argument_list|,
@@ -1168,8 +1167,7 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|capname
 argument_list|,
@@ -1220,8 +1218,7 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|capname
 argument_list|,
@@ -1272,8 +1269,7 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|capname
 argument_list|,
@@ -1796,8 +1792,7 @@ expr_stmt|;
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|buf
 operator|.
@@ -2162,8 +2157,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|buf
 operator|.
@@ -3522,8 +3516,7 @@ name|status
 decl_stmt|;
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|buf
 operator|->
@@ -3549,8 +3542,7 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|buf
 operator|->

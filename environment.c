@@ -1036,15 +1036,14 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|prefixcmp
+operator|!
+name|starts_with
 argument_list|(
 name|namespaced_ref
 argument_list|,
 name|get_git_namespace
 argument_list|()
 argument_list|)
-operator|!=
-literal|0
 condition|)
 return|return
 name|NULL

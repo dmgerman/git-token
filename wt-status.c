@@ -5063,7 +5063,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|prefixcmp
+operator|!
+name|starts_with
 argument_list|(
 name|s
 operator|->
@@ -6506,8 +6507,7 @@ name|got_nothing
 goto|;
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|sb
 operator|.
@@ -6532,8 +6532,7 @@ expr_stmt|;
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|sb
 operator|.
@@ -6708,7 +6707,8 @@ name|end
 decl_stmt|;
 if|if
 condition|(
-name|prefixcmp
+operator|!
+name|starts_with
 argument_list|(
 name|message
 argument_list|,
@@ -6946,8 +6946,7 @@ name|ofs
 decl_stmt|;
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|ref
 argument_list|,
@@ -6964,8 +6963,7 @@ expr_stmt|;
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|ref
 argument_list|,
@@ -7592,8 +7590,7 @@ name|branch
 decl_stmt|;
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|branch_name
 argument_list|,
@@ -8915,8 +8912,7 @@ name|branch
 expr_stmt|;
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|branch_name
 argument_list|,

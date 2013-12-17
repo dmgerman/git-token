@@ -5224,7 +5224,8 @@ name|i
 decl_stmt|;
 if|if
 condition|(
-name|prefixcmp
+operator|!
+name|starts_with
 argument_list|(
 name|str
 argument_list|,

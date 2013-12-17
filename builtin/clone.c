@@ -2922,7 +2922,8 @@ control|)
 block|{
 if|if
 condition|(
-name|prefixcmp
+operator|!
+name|starts_with
 argument_list|(
 name|ref
 operator|->
@@ -2934,8 +2935,7 @@ condition|)
 continue|continue;
 if|if
 condition|(
-operator|!
-name|suffixcmp
+name|ends_with
 argument_list|(
 name|ref
 operator|->
@@ -3271,8 +3271,7 @@ if|if
 condition|(
 name|our
 operator|&&
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|our
 operator|->
@@ -3525,7 +3524,8 @@ else|else
 block|{
 if|if
 condition|(
-name|prefixcmp
+operator|!
+name|starts_with
 argument_list|(
 name|head
 argument_list|,

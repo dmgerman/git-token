@@ -538,8 +538,7 @@ expr_stmt|;
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|refname
 argument_list|,
@@ -555,8 +554,7 @@ expr_stmt|;
 elseif|else
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|refname
 argument_list|,
@@ -847,7 +845,8 @@ name|data
 operator|->
 name|tags_only
 operator|&&
-name|prefixcmp
+operator|!
+name|starts_with
 argument_list|(
 name|path
 argument_list|,

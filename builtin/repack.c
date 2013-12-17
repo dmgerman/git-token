@@ -385,7 +385,8 @@ condition|)
 block|{
 if|if
 condition|(
-name|suffixcmp
+operator|!
+name|ends_with
 argument_list|(
 name|e
 operator|->

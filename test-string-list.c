@@ -222,8 +222,7 @@ operator|)
 name|cb_data
 decl_stmt|;
 return|return
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|item
 operator|->

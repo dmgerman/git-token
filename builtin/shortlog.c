@@ -415,8 +415,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|oneline
 argument_list|,
@@ -638,7 +637,8 @@ operator|==
 literal|'a'
 operator|)
 operator|||
-name|prefixcmp
+operator|!
+name|starts_with
 argument_list|(
 name|author
 operator|+
@@ -807,8 +807,7 @@ operator|++
 expr_stmt|;
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|buffer
 argument_list|,

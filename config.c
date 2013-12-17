@@ -4919,8 +4919,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|var
 argument_list|,
@@ -4937,8 +4936,7 @@ argument_list|)
 return|;
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|var
 argument_list|,
@@ -4957,8 +4955,7 @@ argument_list|)
 return|;
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|var
 argument_list|,
@@ -4975,8 +4972,7 @@ argument_list|)
 return|;
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|var
 argument_list|,
@@ -4993,8 +4989,7 @@ argument_list|)
 return|;
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|var
 argument_list|,
@@ -5011,8 +5006,7 @@ argument_list|)
 return|;
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|var
 argument_list|,
@@ -5029,8 +5023,7 @@ argument_list|)
 return|;
 if|if
 condition|(
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|var
 argument_list|,
@@ -9254,7 +9247,8 @@ decl_stmt|;
 comment|/* Does it start with "section." ? */
 if|if
 condition|(
-name|prefixcmp
+operator|!
+name|starts_with
 argument_list|(
 name|var
 argument_list|,
