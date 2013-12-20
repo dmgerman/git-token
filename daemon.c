@@ -6616,7 +6616,7 @@ block|}
 if|if
 condition|(
 operator|!
-name|prefixcmp
+name|strcmp
 argument_list|(
 name|arg
 argument_list|,
@@ -6633,7 +6633,7 @@ block|}
 if|if
 condition|(
 operator|!
-name|prefixcmp
+name|strcmp
 argument_list|(
 name|arg
 argument_list|,
