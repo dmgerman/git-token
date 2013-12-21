@@ -611,9 +611,7 @@ specifier|const
 name|char
 modifier|*
 name|exts
-index|[
-literal|2
-index|]
+index|[]
 init|=
 block|{
 literal|".pack"
@@ -1414,7 +1412,10 @@ literal|0
 init|;
 name|ext
 operator|<
-literal|2
+name|ARRAY_SIZE
+argument_list|(
+name|exts
+argument_list|)
 condition|;
 name|ext
 operator|++
@@ -1701,7 +1702,10 @@ literal|0
 init|;
 name|ext
 operator|<
-literal|2
+name|ARRAY_SIZE
+argument_list|(
+name|exts
+argument_list|)
 condition|;
 name|ext
 operator|++
@@ -1836,7 +1840,10 @@ literal|0
 init|;
 name|ext
 operator|<
-literal|2
+name|ARRAY_SIZE
+argument_list|(
+name|exts
+argument_list|)
 condition|;
 name|ext
 operator|++
