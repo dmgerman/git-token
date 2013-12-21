@@ -607,18 +607,27 @@ modifier|*
 name|prefix
 parameter_list|)
 block|{
+struct|struct
+block|{
 specifier|const
 name|char
 modifier|*
+name|name
+decl_stmt|;
+block|}
 name|exts
 index|[]
 init|=
 block|{
+block|{
 literal|".pack"
+block|}
 block|,
+block|{
 literal|".idx"
 block|}
-decl_stmt|;
+block|, 	}
+struct|;
 name|struct
 name|child_process
 name|cmd
@@ -1444,6 +1453,8 @@ name|exts
 index|[
 name|ext
 index|]
+operator|.
+name|name
 argument_list|)
 expr_stmt|;
 if|if
@@ -1478,6 +1489,8 @@ name|exts
 index|[
 name|ext
 index|]
+operator|.
+name|name
 argument_list|)
 expr_stmt|;
 if|if
@@ -1738,6 +1751,8 @@ name|exts
 index|[
 name|ext
 index|]
+operator|.
+name|name
 argument_list|)
 expr_stmt|;
 name|fname_old
@@ -1756,6 +1771,8 @@ name|exts
 index|[
 name|ext
 index|]
+operator|.
+name|name
 argument_list|)
 expr_stmt|;
 if|if
@@ -1869,6 +1886,8 @@ name|exts
 index|[
 name|ext
 index|]
+operator|.
+name|name
 argument_list|)
 expr_stmt|;
 if|if
