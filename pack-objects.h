@@ -94,6 +94,11 @@ name|uint32_t
 name|hash
 decl_stmt|;
 comment|/* name hint hash */
+DECL|member|in_pack_pos
+name|unsigned
+name|int
+name|in_pack_pos
+decl_stmt|;
 DECL|member|in_pack_header_size
 name|unsigned
 name|char

@@ -1936,6 +1936,11 @@ argument_list|(
 literal|"unable to rename temporary index file"
 argument_list|)
 expr_stmt|;
+operator|*
+name|end_of_name_prefix
+operator|=
+literal|'\0'
+expr_stmt|;
 name|free
 argument_list|(
 operator|(
