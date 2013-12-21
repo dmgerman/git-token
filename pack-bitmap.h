@@ -130,7 +130,12 @@ DECL|enumerator|BITMAP_OPT_FULL_DAG
 name|BITMAP_OPT_FULL_DAG
 init|=
 literal|1
-block|}
+block|,
+DECL|enumerator|BITMAP_OPT_HASH_CACHE
+name|BITMAP_OPT_HASH_CACHE
+init|=
+literal|4
+block|, }
 enum|;
 end_enum
 
@@ -401,6 +406,9 @@ specifier|const
 name|char
 modifier|*
 name|filename
+parameter_list|,
+name|uint16_t
+name|options
 parameter_list|)
 function_decl|;
 end_function_decl
