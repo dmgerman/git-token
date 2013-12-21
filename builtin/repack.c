@@ -486,6 +486,8 @@ block|,
 literal|".idx"
 block|,
 literal|".keep"
+block|,
+literal|".bitmap"
 block|}
 decl_stmt|;
 name|int
@@ -631,6 +633,12 @@ block|,
 block|{
 literal|".idx"
 block|}
+block|,
+block|{
+literal|".bitmap"
+block|,
+literal|1
+block|}
 block|, 	}
 struct|;
 name|struct
@@ -744,6 +752,12 @@ name|int
 name|local
 init|=
 literal|0
+decl_stmt|;
+name|int
+name|write_bitmap
+init|=
+operator|-
+literal|1
 decl_stmt|;
 name|struct
 name|option
@@ -870,6 +884,21 @@ argument_list|,
 name|N_
 argument_list|(
 literal|"pass --local to git-pack-objects"
+argument_list|)
+argument_list|)
+block|,
+name|OPT_BOOL
+argument_list|(
+literal|'b'
+argument_list|,
+literal|"write-bitmap-index"
+argument_list|,
+operator|&
+name|write_bitmap
+argument_list|,
+name|N_
+argument_list|(
+literal|"write bitmap index"
 argument_list|)
 argument_list|)
 block|,
@@ -1137,6 +1166,26 @@ operator|&
 name|cmd_args
 argument_list|,
 literal|"--no-reuse-object"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|write_bitmap
+operator|>=
+literal|0
+condition|)
+name|argv_array_pushf
+argument_list|(
+operator|&
+name|cmd_args
+argument_list|,
+literal|"--%swrite-bitmap-index"
+argument_list|,
+name|write_bitmap
+condition|?
+literal|""
+else|:
+literal|"no-"
 argument_list|)
 expr_stmt|;
 if|if
