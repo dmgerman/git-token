@@ -5979,6 +5979,15 @@ name|de
 operator|->
 name|d_name
 argument_list|,
+literal|".bitmap"
+argument_list|)
+operator|||
+name|has_extension
+argument_list|(
+name|de
+operator|->
+name|d_name
+argument_list|,
 literal|".keep"
 argument_list|)
 condition|)
