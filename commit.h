@@ -1512,6 +1512,7 @@ name|strbuf
 modifier|*
 name|msg
 parameter_list|,
+specifier|const
 name|unsigned
 name|char
 modifier|*
@@ -1551,6 +1552,7 @@ name|strbuf
 modifier|*
 name|msg
 parameter_list|,
+specifier|const
 name|unsigned
 name|char
 modifier|*
