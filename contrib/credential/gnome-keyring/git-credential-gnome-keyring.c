@@ -415,8 +415,7 @@ DECL|macro|CREDENTIAL_INIT
 define|#
 directive|define
 name|CREDENTIAL_INIT
-define|\
-value|{ NULL,NULL,0,NULL,NULL,NULL }
+value|{ NULL, NULL, 0, NULL, NULL, NULL }
 end_define
 
 begin_typedef
@@ -458,8 +457,7 @@ DECL|macro|CREDENTIAL_OP_END
 define|#
 directive|define
 name|CREDENTIAL_OP_END
-define|\
-value|{ NULL,NULL }
+value|{ NULL, NULL }
 end_define
 
 begin_comment
