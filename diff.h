@@ -923,6 +923,10 @@ name|void
 modifier|*
 name|output_prefix_data
 decl_stmt|;
+DECL|member|diff_path_counter
+name|int
+name|diff_path_counter
+decl_stmt|;
 block|}
 struct|;
 end_struct
