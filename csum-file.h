@@ -237,6 +237,7 @@ name|struct
 name|sha1file
 modifier|*
 parameter_list|,
+specifier|const
 name|void
 modifier|*
 parameter_list|,

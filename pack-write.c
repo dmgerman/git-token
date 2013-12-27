@@ -286,6 +286,7 @@ name|pack_idx_option
 modifier|*
 name|opts
 parameter_list|,
+specifier|const
 name|unsigned
 name|char
 modifier|*
@@ -326,9 +327,6 @@ name|int
 name|i
 decl_stmt|,
 name|fd
-decl_stmt|;
-name|git_SHA_CTX
-name|ctx
 decl_stmt|;
 name|uint32_t
 name|index_version
@@ -661,13 +659,6 @@ operator|*
 literal|4
 argument_list|)
 expr_stmt|;
-comment|/* compute the SHA1 hash of sorted object names. */
-name|git_SHA1_Init
-argument_list|(
-operator|&
-name|ctx
-argument_list|)
-expr_stmt|;
 comment|/* 	 * Write the actual SHA1 entries.. 	 */
 name|list
 operator|=
@@ -727,18 +718,6 @@ block|}
 name|sha1write
 argument_list|(
 name|f
-argument_list|,
-name|obj
-operator|->
-name|sha1
-argument_list|,
-literal|20
-argument_list|)
-expr_stmt|;
-name|git_SHA1_Update
-argument_list|(
-operator|&
-name|ctx
 argument_list|,
 name|obj
 operator|->
@@ -1034,14 +1013,6 @@ name|CSUM_CLOSE
 else|:
 name|CSUM_FSYNC
 operator|)
-argument_list|)
-expr_stmt|;
-name|git_SHA1_Final
-argument_list|(
-name|sha1
-argument_list|,
-operator|&
-name|ctx
 argument_list|)
 expr_stmt|;
 return|return
