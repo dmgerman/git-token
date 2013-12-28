@@ -59,18 +59,18 @@ decl_stmt|;
 end_decl_stmt
 
 begin_enum
-DECL|enum|repl_fmt
-DECL|enumerator|SHORT
-DECL|enumerator|MEDIUM
-DECL|enumerator|FULL
+DECL|enum|replace_format
 enum|enum
-name|repl_fmt
+name|replace_format
 block|{
-name|SHORT
+DECL|enumerator|REPLACE_FORMAT_SHORT
+name|REPLACE_FORMAT_SHORT
 block|,
-name|MEDIUM
+DECL|enumerator|REPLACE_FORMAT_MEDIUM
+name|REPLACE_FORMAT_MEDIUM
 block|,
-name|FULL
+DECL|enumerator|REPLACE_FORMAT_LONG
+name|REPLACE_FORMAT_LONG
 block|}
 enum|;
 end_enum
@@ -86,10 +86,10 @@ name|char
 modifier|*
 name|pattern
 decl_stmt|;
-DECL|member|fmt
+DECL|member|format
 name|enum
-name|repl_fmt
-name|fmt
+name|replace_format
+name|format
 decl_stmt|;
 block|}
 struct|;
@@ -146,9 +146,9 @@ if|if
 condition|(
 name|data
 operator|->
-name|fmt
+name|format
 operator|==
-name|SHORT
+name|REPLACE_FORMAT_SHORT
 condition|)
 name|printf
 argument_list|(
@@ -162,9 +162,9 @@ if|if
 condition|(
 name|data
 operator|->
-name|fmt
+name|format
 operator|==
-name|MEDIUM
+name|REPLACE_FORMAT_MEDIUM
 condition|)
 name|printf
 argument_list|(
@@ -180,7 +180,7 @@ argument_list|)
 expr_stmt|;
 else|else
 block|{
-comment|/* data->fmt == FULL */
+comment|/* data->format == REPLACE_FORMAT_LONG */
 name|unsigned
 name|char
 name|object
@@ -317,9 +317,9 @@ argument_list|)
 condition|)
 name|data
 operator|.
-name|fmt
+name|format
 operator|=
-name|SHORT
+name|REPLACE_FORMAT_SHORT
 expr_stmt|;
 elseif|else
 if|if
@@ -334,9 +334,9 @@ argument_list|)
 condition|)
 name|data
 operator|.
-name|fmt
+name|format
 operator|=
-name|MEDIUM
+name|REPLACE_FORMAT_MEDIUM
 expr_stmt|;
 elseif|else
 if|if
@@ -346,20 +346,20 @@ name|strcmp
 argument_list|(
 name|format
 argument_list|,
-literal|"full"
+literal|"long"
 argument_list|)
 condition|)
 name|data
 operator|.
-name|fmt
+name|format
 operator|=
-name|FULL
+name|REPLACE_FORMAT_LONG
 expr_stmt|;
 else|else
 name|die
 argument_list|(
 literal|"invalid replace format '%s'\n"
-literal|"valid formats are 'short', 'medium' and 'full'\n"
+literal|"valid formats are 'short', 'medium' and 'long'\n"
 argument_list|,
 name|format
 argument_list|)
