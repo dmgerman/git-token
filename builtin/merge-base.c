@@ -394,9 +394,12 @@ argument_list|)
 expr_stmt|;
 name|result
 operator|=
+name|reduce_heads
+argument_list|(
 name|get_octopus_merge_bases
 argument_list|(
 name|revs
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
