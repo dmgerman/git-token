@@ -1014,6 +1014,10 @@ name|pid
 argument_list|,
 literal|0
 argument_list|)
+operator|||
+name|errno
+operator|==
+name|EPERM
 operator|)
 expr_stmt|;
 if|if
