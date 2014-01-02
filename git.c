@@ -1942,10 +1942,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|handle_internal_command
+DECL|function|handle_builtin
 specifier|static
 name|void
-name|handle_internal_command
+name|handle_builtin
 parameter_list|(
 name|int
 name|argc
@@ -3199,8 +3199,8 @@ condition|(
 literal|1
 condition|)
 block|{
-comment|/* See if it's an internal command */
-name|handle_internal_command
+comment|/* See if it's a builtin */
+name|handle_builtin
 argument_list|(
 operator|*
 name|argcp
@@ -3305,7 +3305,7 @@ expr_stmt|;
 name|git_setup_gettext
 argument_list|()
 expr_stmt|;
-comment|/* 	 * "git-xxxx" is the same as "git xxxx", but we obviously: 	 * 	 *  - cannot take flags in between the "git" and the "xxxx". 	 *  - cannot execute it externally (since it would just do 	 *    the same thing over again) 	 * 	 * So we just directly call the internal command handler, and 	 * die if that one cannot handle it. 	 */
+comment|/* 	 * "git-xxxx" is the same as "git xxxx", but we obviously: 	 * 	 *  - cannot take flags in between the "git" and the "xxxx". 	 *  - cannot execute it externally (since it would just do 	 *    the same thing over again) 	 * 	 * So we just directly call the builtin handler, and die if 	 * that one cannot handle it. 	 */
 if|if
 condition|(
 name|starts_with
@@ -3327,7 +3327,7 @@ index|]
 operator|=
 name|cmd
 expr_stmt|;
-name|handle_internal_command
+name|handle_builtin
 argument_list|(
 name|argc
 argument_list|,
@@ -3336,7 +3336,7 @@ argument_list|)
 expr_stmt|;
 name|die
 argument_list|(
-literal|"cannot handle %s internally"
+literal|"cannot handle %s as a builtin"
 argument_list|,
 name|cmd
 argument_list|)
