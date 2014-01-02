@@ -1677,6 +1677,16 @@ modifier|*
 name|s
 parameter_list|)
 block|{
+if|if
+condition|(
+name|is_builtin
+argument_list|(
+name|s
+argument_list|)
+condition|)
+return|return
+literal|1
+return|;
 name|load_command_list
 argument_list|(
 literal|"git-"
