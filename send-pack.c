@@ -958,6 +958,7 @@ end_function
 
 begin_function
 DECL|function|advertise_shallow_grafts_buf
+specifier|static
 name|void
 name|advertise_shallow_grafts_buf
 parameter_list|(
