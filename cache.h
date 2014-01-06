@@ -4854,7 +4854,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Create the directory containing the named path, using care to be  * somewhat safe against races.  Return one of the scld_error values  * to indicate success/failure.  */
+comment|/*  * Create the directory containing the named path, using care to be  * somewhat safe against races.  Return one of the scld_error values  * to indicate success/failure.  *  * SCLD_VANISHED indicates that one of the ancestor directories of the  * path existed at one point during the function call and then  * suddenly vanished, probably because another process pruned the  * directory while we were working.  To be robust against this kind of  * race, callers might want to try invoking the function again when it  * returns SCLD_VANISHED.  */
 end_comment
 
 begin_enum
@@ -4884,6 +4884,12 @@ name|SCLD_EXISTS
 init|=
 operator|-
 literal|3
+block|,
+DECL|enumerator|SCLD_VANISHED
+name|SCLD_VANISHED
+init|=
+operator|-
+literal|4
 block|}
 enum|;
 end_enum

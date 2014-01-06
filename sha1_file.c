@@ -651,6 +651,18 @@ argument_list|)
 condition|)
 empty_stmt|;
 comment|/* somebody created it since we checked */
+elseif|else
+if|if
+condition|(
+name|errno
+operator|==
+name|ENOENT
+condition|)
+comment|/* 				 * Either mkdir() failed because 				 * somebody just pruned the containing 				 * directory, or stat() failed because 				 * the file that was in our way was 				 * just removed.  Either way, inform 				 * the caller that it might be worth 				 * trying again: 				 */
+name|ret
+operator|=
+name|SCLD_VANISHED
+expr_stmt|;
 else|else
 name|ret
 operator|=
