@@ -5271,7 +5271,6 @@ argument_list|(
 name|si
 argument_list|)
 expr_stmt|;
-comment|/* XXX remove_nonexistent_ours_in_pack() */
 if|if
 condition|(
 operator|!
