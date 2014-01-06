@@ -504,7 +504,8 @@ end_function
 
 begin_function
 DECL|function|safe_create_leading_directories
-name|int
+name|enum
+name|scld_error
 name|safe_create_leading_directories
 parameter_list|(
 name|char
@@ -523,15 +524,17 @@ argument_list|(
 name|path
 argument_list|)
 decl_stmt|;
-name|int
+name|enum
+name|scld_error
 name|ret
 init|=
-literal|0
+name|SCLD_OK
 decl_stmt|;
 while|while
 condition|(
-operator|!
 name|ret
+operator|==
+name|SCLD_OK
 operator|&&
 name|next_component
 condition|)
@@ -610,8 +613,7 @@ argument_list|)
 condition|)
 name|ret
 operator|=
-operator|-
-literal|3
+name|SCLD_EXISTS
 expr_stmt|;
 block|}
 elseif|else
@@ -652,8 +654,7 @@ comment|/* somebody created it since we checked */
 else|else
 name|ret
 operator|=
-operator|-
-literal|1
+name|SCLD_FAILED
 expr_stmt|;
 block|}
 elseif|else
@@ -667,8 +668,7 @@ condition|)
 block|{
 name|ret
 operator|=
-operator|-
-literal|2
+name|SCLD_PERMS
 expr_stmt|;
 block|}
 operator|*
@@ -685,7 +685,8 @@ end_function
 
 begin_function
 DECL|function|safe_create_leading_directories_const
-name|int
+name|enum
+name|scld_error
 name|safe_create_leading_directories_const
 parameter_list|(
 specifier|const
@@ -704,7 +705,8 @@ argument_list|(
 name|path
 argument_list|)
 decl_stmt|;
-name|int
+name|enum
+name|scld_error
 name|result
 init|=
 name|safe_create_leading_directories

@@ -4853,8 +4853,44 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Create the directory containing the named path, using care to be  * somewhat safe against races.  Return one of the scld_error values  * to indicate success/failure.  */
+end_comment
+
+begin_enum
+DECL|enum|scld_error
+enum|enum
+name|scld_error
+block|{
+DECL|enumerator|SCLD_OK
+name|SCLD_OK
+init|=
+literal|0
+block|,
+DECL|enumerator|SCLD_FAILED
+name|SCLD_FAILED
+init|=
+operator|-
+literal|1
+block|,
+DECL|enumerator|SCLD_PERMS
+name|SCLD_PERMS
+init|=
+operator|-
+literal|2
+block|,
+DECL|enumerator|SCLD_EXISTS
+name|SCLD_EXISTS
+init|=
+operator|-
+literal|3
+block|}
+enum|;
+end_enum
+
 begin_function_decl
-name|int
+name|enum
+name|scld_error
 name|safe_create_leading_directories
 parameter_list|(
 name|char
@@ -4865,7 +4901,8 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-name|int
+name|enum
+name|scld_error
 name|safe_create_leading_directories_const
 parameter_list|(
 specifier|const

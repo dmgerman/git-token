@@ -2579,8 +2579,7 @@ argument_list|)
 condition|)
 block|{
 case|case
-operator|-
-literal|3
+name|SCLD_EXISTS
 case|:
 name|errno
 operator|=
@@ -2588,8 +2587,7 @@ name|EEXIST
 expr_stmt|;
 comment|/* fallthru */
 case|case
-operator|-
-literal|1
+name|SCLD_FAILED
 case|:
 name|die_errno
 argument_list|(
