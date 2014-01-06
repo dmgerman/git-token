@@ -514,7 +514,7 @@ parameter_list|)
 block|{
 name|char
 modifier|*
-name|pos
+name|next_component
 init|=
 name|path
 operator|+
@@ -525,7 +525,7 @@ argument_list|)
 decl_stmt|;
 while|while
 condition|(
-name|pos
+name|next_component
 condition|)
 block|{
 name|struct
@@ -538,7 +538,7 @@ name|slash
 init|=
 name|strchr
 argument_list|(
-name|pos
+name|next_component
 argument_list|,
 literal|'/'
 argument_list|)
@@ -563,7 +563,7 @@ condition|)
 name|slash
 operator|++
 expr_stmt|;
-name|pos
+name|next_component
 operator|=
 name|slash
 operator|+
@@ -573,7 +573,7 @@ if|if
 condition|(
 operator|!
 operator|*
-name|pos
+name|next_component
 condition|)
 break|break;
 operator|*
