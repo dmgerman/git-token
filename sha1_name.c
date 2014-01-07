@@ -2314,6 +2314,8 @@ condition|)
 block|{
 if|if
 condition|(
+name|warn_ambiguous_refs
+operator|&&
 name|warn_on_object_refname_ambiguity
 condition|)
 block|{
@@ -2336,8 +2338,6 @@ condition|(
 name|refs_found
 operator|>
 literal|0
-operator|&&
-name|warn_ambiguous_refs
 condition|)
 block|{
 name|warning
