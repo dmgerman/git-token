@@ -16236,7 +16236,7 @@ condition|;
 name|nr_rules
 operator|++
 control|)
-comment|/* no +1 because strlen("%s")< strlen("%.*s") */
+comment|/* -2 for strlen("%.*s") - strlen("%s"); +1 for NUL */
 name|total_len
 operator|+=
 name|strlen
@@ -16246,6 +16246,10 @@ index|[
 name|nr_rules
 index|]
 argument_list|)
+operator|-
+literal|2
+operator|+
+literal|1
 expr_stmt|;
 name|scanf_fmts
 operator|=
