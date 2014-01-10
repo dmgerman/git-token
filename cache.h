@@ -7772,6 +7772,12 @@ name|long
 modifier|*
 name|disk_sizep
 decl_stmt|;
+DECL|member|delta_base_sha1
+name|unsigned
+name|char
+modifier|*
+name|delta_base_sha1
+decl_stmt|;
 comment|/* Response */
 enum|enum
 block|{
