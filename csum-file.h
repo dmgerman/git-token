@@ -230,7 +230,7 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|int
+name|void
 name|sha1write
 parameter_list|(
 name|struct

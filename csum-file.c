@@ -485,7 +485,7 @@ end_function
 
 begin_function
 DECL|function|sha1write
-name|int
+name|void
 name|sha1write
 parameter_list|(
 name|struct
@@ -665,9 +665,6 @@ operator|=
 name|offset
 expr_stmt|;
 block|}
-return|return
-literal|0
-return|;
 block|}
 end_function
 
