@@ -57,12 +57,20 @@ value|(1<<4)
 end_define
 
 begin_define
+DECL|macro|PATHSPEC_EXCLUDE
+define|#
+directive|define
+name|PATHSPEC_EXCLUDE
+value|(1<<5)
+end_define
+
+begin_define
 DECL|macro|PATHSPEC_ALL_MAGIC
 define|#
 directive|define
 name|PATHSPEC_ALL_MAGIC
 define|\
-value|(PATHSPEC_FROMTOP	| \ 	 PATHSPEC_MAXDEPTH	| \ 	 PATHSPEC_LITERAL	| \ 	 PATHSPEC_GLOB		| \ 	 PATHSPEC_ICASE)
+value|(PATHSPEC_FROMTOP	| \ 	 PATHSPEC_MAXDEPTH	| \ 	 PATHSPEC_LITERAL	| \ 	 PATHSPEC_GLOB		| \ 	 PATHSPEC_ICASE		| \ 	 PATHSPEC_EXCLUDE)
 end_define
 
 begin_define
