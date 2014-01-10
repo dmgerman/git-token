@@ -530,6 +530,8 @@ argument_list|(
 name|sha1
 argument_list|,
 name|oi
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 if|if
