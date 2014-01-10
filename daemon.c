@@ -6597,7 +6597,8 @@ continue|continue;
 block|}
 if|if
 condition|(
-name|starts_with
+operator|!
+name|strcmp
 argument_list|(
 name|arg
 argument_list|,
@@ -6613,7 +6614,8 @@ continue|continue;
 block|}
 if|if
 condition|(
-name|starts_with
+operator|!
+name|strcmp
 argument_list|(
 name|arg
 argument_list|,
