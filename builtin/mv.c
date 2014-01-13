@@ -1442,6 +1442,29 @@ argument_list|(
 literal|"multiple sources for the same target"
 argument_list|)
 expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|is_dir_sep
+argument_list|(
+name|dst
+index|[
+name|strlen
+argument_list|(
+name|dst
+argument_list|)
+operator|-
+literal|1
+index|]
+argument_list|)
+condition|)
+name|bad
+operator|=
+name|_
+argument_list|(
+literal|"destination directory does not exist"
+argument_list|)
+expr_stmt|;
 else|else
 name|string_list_insert
 argument_list|(
