@@ -6160,6 +6160,10 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Return true iff abbrev_name is a possible abbreviation for  * full_name according to the rules defined by ref_rev_parse_rules in  * refs.c.  */
+end_comment
+
 begin_function_decl
 specifier|extern
 name|int
@@ -6174,33 +6178,9 @@ specifier|const
 name|char
 modifier|*
 name|full_name
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-modifier|*
-name|rules
 parameter_list|)
 function_decl|;
 end_function_decl
-
-begin_decl_stmt
-specifier|extern
-specifier|const
-name|char
-modifier|*
-name|ref_rev_parse_rules
-index|[]
-decl_stmt|;
-end_decl_stmt
-
-begin_define
-DECL|macro|ref_fetch_rules
-define|#
-directive|define
-name|ref_fetch_rules
-value|ref_rev_parse_rules
-end_define
 
 begin_function_decl
 specifier|extern

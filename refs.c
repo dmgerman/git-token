@@ -8217,6 +8217,7 @@ end_function
 
 begin_decl_stmt
 DECL|variable|ref_rev_parse_rules
+specifier|static
 specifier|const
 name|char
 modifier|*
@@ -8255,12 +8256,6 @@ specifier|const
 name|char
 modifier|*
 name|full_name
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-modifier|*
-name|rules
 parameter_list|)
 block|{
 specifier|const
@@ -8282,7 +8277,7 @@ for|for
 control|(
 name|p
 operator|=
-name|rules
+name|ref_rev_parse_rules
 init|;
 operator|*
 name|p
