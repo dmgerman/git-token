@@ -198,16 +198,16 @@ range|:
 literal|1
 decl_stmt|;
 comment|/* only appear in combined diff */
+comment|/* data should be considered "binary"; -1 means "don't know yet" */
+DECL|member|is_binary
+name|int
+name|is_binary
+decl_stmt|;
 DECL|member|driver
 name|struct
 name|userdiff_driver
 modifier|*
 name|driver
-decl_stmt|;
-comment|/* data should be considered "binary"; -1 means "don't know yet" */
-DECL|member|is_binary
-name|int
-name|is_binary
 decl_stmt|;
 block|}
 struct|;
