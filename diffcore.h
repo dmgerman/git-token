@@ -202,6 +202,8 @@ comment|/* data should be considered "binary"; -1 means "don't know yet" */
 DECL|member|is_binary
 name|int
 name|is_binary
+range|:
+literal|2
 decl_stmt|;
 DECL|member|driver
 name|struct
