@@ -65,6 +65,12 @@ name|self_contained_and_connected
 range|:
 literal|1
 decl_stmt|;
+DECL|member|update_shallow
+name|unsigned
+name|update_shallow
+range|:
+literal|1
+decl_stmt|;
 DECL|member|depth
 name|int
 name|depth
@@ -131,6 +137,13 @@ comment|/* 	 * Transports that call take-over destroys the data specific to 	 * 
 DECL|member|cannot_reuse
 name|unsigned
 name|cannot_reuse
+range|:
+literal|1
+decl_stmt|;
+comment|/* 	 * A hint from caller that it will be performing a clone, not 	 * normal fetch. IOW the repository is guaranteed empty. 	 */
+DECL|member|cloning
+name|unsigned
+name|cloning
 range|:
 literal|1
 decl_stmt|;
@@ -536,6 +549,18 @@ value|"followtags"
 end_define
 
 begin_comment
+comment|/* Accept refs that may update .git/shallow without --depth */
+end_comment
+
+begin_define
+DECL|macro|TRANS_OPT_UPDATE_SHALLOW
+define|#
+directive|define
+name|TRANS_OPT_UPDATE_SHALLOW
+value|"updateshallow"
+end_define
+
+begin_comment
 comment|/**  * Returns 0 if the option was used, non-zero otherwise. Prints a  * message to stderr if the option is not used.  **/
 end_comment
 
@@ -902,44 +927,6 @@ name|alternate_ref_fn
 parameter_list|,
 name|void
 modifier|*
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_struct_decl
-struct_decl|struct
-name|send_pack_args
-struct_decl|;
-end_struct_decl
-
-begin_function_decl
-specifier|extern
-name|int
-name|send_pack
-parameter_list|(
-name|struct
-name|send_pack_args
-modifier|*
-name|args
-parameter_list|,
-name|int
-name|fd
-index|[]
-parameter_list|,
-name|struct
-name|child_process
-modifier|*
-name|conn
-parameter_list|,
-name|struct
-name|ref
-modifier|*
-name|remote_refs
-parameter_list|,
-name|struct
-name|extra_have_objects
-modifier|*
-name|extra_have
 parameter_list|)
 function_decl|;
 end_function_decl

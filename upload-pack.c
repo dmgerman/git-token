@@ -496,7 +496,9 @@ block|{
 name|shallow_file
 operator|=
 name|setup_temporary_shallow
-argument_list|()
+argument_list|(
+name|NULL
+argument_list|)
 expr_stmt|;
 name|argv
 index|[
@@ -3133,6 +3135,10 @@ condition|(
 name|depth
 operator|==
 name|INFINITE_DEPTH
+operator|&&
+operator|!
+name|is_repository_shallow
+argument_list|()
 condition|)
 for|for
 control|(
@@ -3959,6 +3965,11 @@ operator|&
 name|symref
 argument_list|)
 expr_stmt|;
+name|advertise_shallow_grafts
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
 name|packet_flush
 argument_list|(
 literal|1
@@ -4310,16 +4321,6 @@ argument_list|(
 literal|"'%s' does not appear to be a git repository"
 argument_list|,
 name|dir
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|is_repository_shallow
-argument_list|()
-condition|)
-name|die
-argument_list|(
-literal|"attempt to fetch/clone from a shallow repository"
 argument_list|)
 expr_stmt|;
 name|git_config
