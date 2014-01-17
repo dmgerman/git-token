@@ -128,11 +128,6 @@ name|int
 name|count
 decl_stmt|;
 comment|/* Reference count */
-DECL|member|xfrm_flags
-name|int
-name|xfrm_flags
-decl_stmt|;
-comment|/* for use by the xfrm */
 DECL|member|rename_used
 name|int
 name|rename_used
