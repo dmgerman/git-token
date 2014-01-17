@@ -2717,7 +2717,7 @@ operator|)
 operator|-
 literal|1
 operator|||
-name|write
+name|xwrite
 argument_list|(
 name|fd
 argument_list|,
