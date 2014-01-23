@@ -684,6 +684,7 @@ name|delete_redundant
 init|=
 literal|0
 decl_stmt|;
+specifier|const
 name|char
 modifier|*
 name|unpack_unreachable
