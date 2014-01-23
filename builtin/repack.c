@@ -1098,7 +1098,7 @@ argument_list|(
 operator|&
 name|cmd_args
 argument_list|,
-literal|"--max_pack_size=%u"
+literal|"--max-pack-size=%u"
 argument_list|,
 name|max_pack_size
 argument_list|)
