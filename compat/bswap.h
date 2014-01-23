@@ -803,6 +803,17 @@ argument_list|)
 end_if
 
 begin_define
+DECL|macro|get_be16
+define|#
+directive|define
+name|get_be16
+parameter_list|(
+name|p
+parameter_list|)
+value|ntohs(*(unsigned short *)(p))
+end_define
+
+begin_define
 DECL|macro|get_be32
 define|#
 directive|define
@@ -830,6 +841,17 @@ begin_else
 else|#
 directive|else
 end_else
+
+begin_define
+DECL|macro|get_be16
+define|#
+directive|define
+name|get_be16
+parameter_list|(
+name|p
+parameter_list|)
+value|( \ 	(*((unsigned char *)(p) + 0)<< 8) | \ 	(*((unsigned char *)(p) + 1)<< 0) )
+end_define
 
 begin_define
 DECL|macro|get_be32
