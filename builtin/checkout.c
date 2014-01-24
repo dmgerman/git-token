@@ -1581,23 +1581,14 @@ continue|continue;
 comment|/* 		 * Either this entry came from the tree-ish we are 		 * checking the paths out of, or we are checking out 		 * of the index. 		 * 		 * If it comes from the tree-ish, we already know it 		 * matches the pathspec and could just stamp 		 * CE_MATCHED to it from update_some(). But we still 		 * need ps_matched and read_tree_recursive (and 		 * eventually tree_entry_interesting) cannot fill 		 * ps_matched yet. Once it can, we can avoid calling 		 * match_pathspec() for _all_ entries when 		 * opts->source_tree != NULL. 		 */
 if|if
 condition|(
-name|match_pathspec_depth
+name|ce_path_match
 argument_list|(
+name|ce
+argument_list|,
 operator|&
 name|opts
 operator|->
 name|pathspec
-argument_list|,
-name|ce
-operator|->
-name|name
-argument_list|,
-name|ce_namelen
-argument_list|(
-name|ce
-argument_list|)
-argument_list|,
-literal|0
 argument_list|,
 name|ps_matched
 argument_list|)

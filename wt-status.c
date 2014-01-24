@@ -3101,6 +3101,8 @@ operator|&
 name|s
 operator|->
 name|pathspec
+argument_list|,
+name|NULL
 argument_list|)
 condition|)
 continue|continue;

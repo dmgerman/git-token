@@ -3237,26 +3237,6 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
-begin_function_decl
-specifier|extern
-name|int
-name|ce_path_match
-parameter_list|(
-specifier|const
-name|struct
-name|cache_entry
-modifier|*
-name|ce
-parameter_list|,
-specifier|const
-name|struct
-name|pathspec
-modifier|*
-name|pathspec
-parameter_list|)
-function_decl|;
-end_function_decl
-
 begin_define
 DECL|macro|HASH_WRITE_OBJECT
 define|#
