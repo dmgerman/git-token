@@ -425,7 +425,7 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|int
-name|match_pathspec_depth
+name|match_pathspec
 parameter_list|(
 specifier|const
 name|struct
@@ -1123,7 +1123,7 @@ name|seen
 parameter_list|)
 block|{
 return|return
-name|match_pathspec_depth
+name|match_pathspec
 argument_list|(
 name|pathspec
 argument_list|,
@@ -1172,7 +1172,7 @@ name|seen
 parameter_list|)
 block|{
 return|return
-name|match_pathspec_depth
+name|match_pathspec
 argument_list|(
 name|pathspec
 argument_list|,

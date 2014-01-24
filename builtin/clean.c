@@ -4902,7 +4902,7 @@ name|nr
 condition|)
 name|matches
 operator|=
-name|match_pathspec_depth
+name|match_pathspec
 argument_list|(
 operator|&
 name|pathspec

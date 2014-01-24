@@ -4078,7 +4078,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|match_pathspec_depth
+name|match_pathspec
 argument_list|(
 name|pathspec
 argument_list|,
