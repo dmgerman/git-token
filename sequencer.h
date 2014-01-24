@@ -142,6 +142,12 @@ DECL|member|mainline
 name|int
 name|mainline
 decl_stmt|;
+DECL|member|gpg_sign
+specifier|const
+name|char
+modifier|*
+name|gpg_sign
+decl_stmt|;
 comment|/* Merge strategy */
 DECL|member|strategy
 specifier|const
