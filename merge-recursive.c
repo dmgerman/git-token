@@ -1190,7 +1190,11 @@ argument_list|,
 operator|(
 name|refresh
 condition|?
+operator|(
 name|CE_MATCH_REFRESH
+operator||
+name|CE_MATCH_IGNORE_MISSING
+operator|)
 else|:
 literal|0
 operator|)
