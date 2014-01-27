@@ -783,6 +783,13 @@ name|show_edge
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|revs
+operator|->
+name|edge_hint
+condition|)
+block|{
 for|for
 control|(
 name|i
@@ -856,10 +863,6 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|revs
-operator|->
-name|edge_hint
-operator|&&
 operator|!
 operator|(
 name|obj
@@ -881,6 +884,7 @@ argument_list|(
 name|commit
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
