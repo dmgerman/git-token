@@ -3061,6 +3061,18 @@ name|CE_MATCH_IGNORE_SKIP_WORKTREE
 value|04
 end_define
 
+begin_comment
+comment|/* ignore non-existent files during stat update  */
+end_comment
+
+begin_define
+DECL|macro|CE_MATCH_IGNORE_MISSING
+define|#
+directive|define
+name|CE_MATCH_IGNORE_MISSING
+value|0x08
+end_define
+
 begin_function_decl
 specifier|extern
 name|int
