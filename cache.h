@@ -2959,8 +2959,9 @@ parameter_list|,
 name|int
 name|stage
 parameter_list|,
+name|unsigned
 name|int
-name|refresh
+name|refresh_options
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -3071,6 +3072,18 @@ define|#
 directive|define
 name|CE_MATCH_IGNORE_MISSING
 value|0x08
+end_define
+
+begin_comment
+comment|/* enable stat refresh */
+end_comment
+
+begin_define
+DECL|macro|CE_MATCH_REFRESH
+define|#
+directive|define
+name|CE_MATCH_REFRESH
+value|0x10
 end_define
 
 begin_function_decl
