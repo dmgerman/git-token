@@ -2363,7 +2363,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|write
+name|write_in_full
 argument_list|(
 name|fd
 argument_list|,
@@ -2375,8 +2375,10 @@ name|out
 operator|.
 name|len
 argument_list|)
-operator|<
-literal|0
+operator|!=
+name|out
+operator|.
+name|len
 condition|)
 name|die_errno
 argument_list|(
