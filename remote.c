@@ -6085,8 +6085,6 @@ argument_list|(
 name|pattern
 argument_list|,
 name|name
-argument_list|,
-name|ref_rev_parse_rules
 argument_list|)
 condition|)
 continue|continue;
@@ -8877,8 +8875,6 @@ operator|->
 name|src
 argument_list|,
 name|refname
-argument_list|,
-name|ref_fetch_rules
 argument_list|)
 return|;
 block|}
@@ -9152,8 +9148,6 @@ argument_list|,
 name|ref
 operator|->
 name|name
-argument_list|,
-name|ref_fetch_rules
 argument_list|)
 condition|)
 return|return
@@ -11701,8 +11695,6 @@ argument_list|,
 name|ref
 operator|->
 name|name
-argument_list|,
-name|ref_rev_parse_rules
 argument_list|)
 condition|)
 continue|continue;
