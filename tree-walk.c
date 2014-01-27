@@ -2544,6 +2544,14 @@ name|entry
 operator|->
 name|mode
 argument_list|)
+operator|&&
+operator|!
+name|S_ISGITLINK
+argument_list|(
+name|entry
+operator|->
+name|mode
+argument_list|)
 condition|)
 return|return
 literal|0
