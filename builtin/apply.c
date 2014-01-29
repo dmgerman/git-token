@@ -9653,28 +9653,10 @@ block|{
 specifier|static
 specifier|const
 name|char
-modifier|*
-name|binhdr
-index|[]
-init|=
-block|{
-literal|"Binary files "
-block|,
-literal|"Files "
-block|,
-name|NULL
-block|, 		}
-decl_stmt|;
-specifier|static
-specifier|const
-name|char
 name|git_binary
 index|[]
 init|=
 literal|"GIT binary patch\n"
-decl_stmt|;
-name|int
-name|i
 decl_stmt|;
 name|int
 name|hd
@@ -9783,6 +9765,24 @@ literal|8
 argument_list|)
 condition|)
 block|{
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|binhdr
+index|[]
+init|=
+block|{
+literal|"Binary files "
+block|,
+literal|"Files "
+block|,
+name|NULL
+block|, 			}
+decl_stmt|;
+name|int
+name|i
+decl_stmt|;
 for|for
 control|(
 name|i
