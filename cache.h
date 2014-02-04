@@ -3113,6 +3113,19 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|void
+name|set_object_name_for_intent_to_add_entry
+parameter_list|(
+name|struct
+name|cache_entry
+modifier|*
+name|ce
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|int
 name|index_name_is_other
 parameter_list|(
