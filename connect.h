@@ -20,6 +20,14 @@ name|CONNECT_VERBOSE
 value|(1u<< 0)
 end_define
 
+begin_define
+DECL|macro|CONNECT_DIAG_URL
+define|#
+directive|define
+name|CONNECT_DIAG_URL
+value|(1u<< 1)
+end_define
+
 begin_function_decl
 specifier|extern
 name|struct
@@ -121,6 +129,19 @@ parameter_list|,
 name|int
 modifier|*
 name|len_ret
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|url_is_local_not_ssh
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|url
 parameter_list|)
 function_decl|;
 end_function_decl
