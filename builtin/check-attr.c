@@ -615,6 +615,15 @@ name|doubledash
 decl_stmt|,
 name|filei
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|is_bare_repository
+argument_list|()
+condition|)
+name|setup_work_tree
+argument_list|()
+expr_stmt|;
 name|git_config
 argument_list|(
 name|git_default_config
