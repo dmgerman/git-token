@@ -94,14 +94,14 @@ name|IPATTERN
 argument_list|(
 literal|"ada"
 argument_list|,
-literal|"!^(.*[ \t])?(is new|renames|is separate)([ \t].*)?$\n"
+literal|"!^(.*[ \t])?(is[ \t]+new|renames|is[ \t]+separate)([ \t].*)?$\n"
 literal|"!^[ \t]*with[ \t].*$\n"
 literal|"^[ \t]*((procedure|function)[ \t]+.*)$\n"
 literal|"^[ \t]*((package|protected|task)[ \t]+.*)$"
 argument_list|,
 comment|/* -- */
 literal|"[a-zA-Z][a-zA-Z0-9_]*"
-literal|"|[0-9][-+0-9#_.eE]"
+literal|"|[-+]?[0-9][0-9#_.aAbBcCdDeEfF]*([eE][+-]?[0-9_]+)?"
 literal|"|=>|\\.\\.|\\*\\*|:=|/=|>=|<=|<<|>>|<>"
 argument_list|)
 block|,
