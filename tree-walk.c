@@ -3323,9 +3323,7 @@ operator|&
 name|matched
 argument_list|)
 condition|)
-return|return
-name|entry_not_interesting
-return|;
+continue|continue;
 comment|/* 		 * Concatenate base and entry->path into one and do 		 * fnmatch() on it. 		 * 		 * While we could avoid concatenation in certain cases 		 * [1], which saves a memcpy and potentially a 		 * realloc, it turns out not worth it. Measurement on 		 * linux-2.6 does not show any clear improvements, 		 * partly because of the nowildcard_len optimization 		 * in git_fnmatch(). Avoid micro-optimizations here. 		 * 		 * [1] if match_wildcard_base() says the base 		 * directory is already matched, we only need to match 		 * the rest, which is shorter so _in theory_ faster. 		 */
 name|strbuf_add
 argument_list|(
