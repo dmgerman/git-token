@@ -2303,13 +2303,15 @@ literal|0
 return|;
 if|if
 condition|(
-name|fnmatch
+name|wildmatch
 argument_list|(
 name|match_ref_pattern
 argument_list|,
 name|tail
 argument_list|,
 literal|0
+argument_list|,
+name|NULL
 argument_list|)
 condition|)
 return|return

@@ -383,7 +383,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|fnmatch
+name|wildmatch
 argument_list|(
 name|order
 index|[
@@ -395,6 +395,8 @@ operator|.
 name|buf
 argument_list|,
 literal|0
+argument_list|,
+name|NULL
 argument_list|)
 condition|)
 return|return
