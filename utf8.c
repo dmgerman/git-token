@@ -27,11 +27,11 @@ struct|struct
 name|interval
 block|{
 DECL|member|first
-name|int
+name|ucs_char_t
 name|first
 decl_stmt|;
 DECL|member|last
-name|int
+name|ucs_char_t
 name|last
 decl_stmt|;
 block|}
