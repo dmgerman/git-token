@@ -110,6 +110,7 @@ end_include
 begin_decl_stmt
 DECL|variable|cut_line
 specifier|static
+specifier|const
 name|char
 name|cut_line
 index|[]
