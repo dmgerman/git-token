@@ -390,6 +390,17 @@ end_function_decl
 
 begin_function_decl
 name|void
+name|wt_status_add_cut_line
+parameter_list|(
+name|FILE
+modifier|*
+name|fp
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|void
 name|wt_status_prepare
 parameter_list|(
 name|struct
