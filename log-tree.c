@@ -498,7 +498,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|read_replace_refs
+name|check_replace_refs
 condition|)
 return|return
 literal|0

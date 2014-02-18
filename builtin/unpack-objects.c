@@ -2693,7 +2693,7 @@ index|[
 literal|20
 index|]
 decl_stmt|;
-name|read_replace_refs
+name|check_replace_refs
 operator|=
 literal|0
 expr_stmt|;

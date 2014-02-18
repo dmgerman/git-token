@@ -3918,10 +3918,14 @@ name|pack_size_limit_cfg
 decl_stmt|;
 end_decl_stmt
 
+begin_comment
+comment|/*  * Do replace refs need to be checked this run?  This variable is  * initialized to true unless --no-replace-object is used or  * $GIT_NO_REPLACE_OBJECTS is set, but is set to false by some  * commands that do not want replace references to be active.  As an  * optimization it is also set to false if replace references have  * been sought but there were none.  */
+end_comment
+
 begin_decl_stmt
 specifier|extern
 name|int
-name|read_replace_refs
+name|check_replace_refs
 decl_stmt|;
 end_decl_stmt
 
@@ -5330,7 +5334,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|read_replace_refs
+name|check_replace_refs
 condition|)
 return|return
 name|sha1
