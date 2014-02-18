@@ -2326,10 +2326,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|check_blob_write
+DECL|function|check_write
 specifier|static
 name|void
-name|check_blob_write
+name|check_write
 parameter_list|(
 name|void
 parameter_list|)
@@ -3363,7 +3363,7 @@ block|{
 name|int
 name|ret
 decl_stmt|;
-name|check_blob_write
+name|check_write
 argument_list|()
 expr_stmt|;
 name|check_argc
@@ -3433,7 +3433,7 @@ operator|==
 name|ACTION_SET_ALL
 condition|)
 block|{
-name|check_blob_write
+name|check_write
 argument_list|()
 expr_stmt|;
 name|check_argc
@@ -3489,7 +3489,7 @@ operator|==
 name|ACTION_ADD
 condition|)
 block|{
-name|check_blob_write
+name|check_write
 argument_list|()
 expr_stmt|;
 name|check_argc
@@ -3542,7 +3542,7 @@ operator|==
 name|ACTION_REPLACE_ALL
 condition|)
 block|{
-name|check_blob_write
+name|check_write
 argument_list|()
 expr_stmt|;
 name|check_argc
@@ -3742,7 +3742,7 @@ operator|==
 name|ACTION_UNSET
 condition|)
 block|{
-name|check_blob_write
+name|check_write
 argument_list|()
 expr_stmt|;
 name|check_argc
@@ -3803,7 +3803,7 @@ operator|==
 name|ACTION_UNSET_ALL
 condition|)
 block|{
-name|check_blob_write
+name|check_write
 argument_list|()
 expr_stmt|;
 name|check_argc
@@ -3847,7 +3847,7 @@ block|{
 name|int
 name|ret
 decl_stmt|;
-name|check_blob_write
+name|check_write
 argument_list|()
 expr_stmt|;
 name|check_argc
@@ -3908,7 +3908,7 @@ block|{
 name|int
 name|ret
 decl_stmt|;
-name|check_blob_write
+name|check_write
 argument_list|()
 expr_stmt|;
 name|check_argc
