@@ -523,6 +523,27 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * This will run one slot to completion in a blocking manner, similar to how  * curl_easy_perform would work (but we don't want to use that, because  * we do not want to intermingle calls to curl_multi and curl_easy).  *  */
+end_comment
+
+begin_function_decl
+name|int
+name|run_one_slot
+parameter_list|(
+name|struct
+name|active_request_slot
+modifier|*
+name|slot
+parameter_list|,
+name|struct
+name|slot_results
+modifier|*
+name|results
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_ifdef
 ifdef|#
 directive|ifdef
