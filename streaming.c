@@ -739,11 +739,16 @@ condition|(
 operator|!
 name|nst
 condition|)
+block|{
 name|close_istream
 argument_list|(
 name|st
 argument_list|)
 expr_stmt|;
+return|return
+name|NULL
+return|;
+block|}
 name|st
 operator|=
 name|nst
