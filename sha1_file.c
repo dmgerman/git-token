@@ -10215,6 +10215,17 @@ operator|&
 name|w_curs
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|delta_stack
+operator|!=
+name|small_delta_stack
+condition|)
+name|free
+argument_list|(
+name|delta_stack
+argument_list|)
+expr_stmt|;
 return|return
 name|data
 return|;
