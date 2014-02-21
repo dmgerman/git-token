@@ -851,10 +851,6 @@ block|}
 block|}
 end_function
 
-begin_comment
-comment|/*  * NOTE! This returns a statically allocated buffer, so you have to be  * careful about using it. Do an "xstrdup()" if you need to save the  * filename.  *  * Also note that this returns the location for creating.  Reading  * SHA1 file can happen from any alternate directory listed in the  * DB_ENVIRONMENT environment variable if it is not found in  * the primary object database.  */
-end_comment
-
 begin_function
 DECL|function|sha1_file_name
 specifier|const
@@ -962,6 +958,10 @@ name|buf
 return|;
 block|}
 end_function
+
+begin_comment
+comment|/*  * Return the name of the pack or index file with the specified sha1  * in its filename.  *base and *name are scratch space that must be  * provided by the caller.  which should be "pack" or "idx".  */
+end_comment
 
 begin_function
 DECL|function|sha1_get_pack_name
@@ -2402,6 +2402,10 @@ argument_list|)
 expr_stmt|;
 block|}
 end_function
+
+begin_comment
+comment|/*  * Open and mmap the index file at path, perform a couple of  * consistency checks, then record its information to p.  Return 0 on  * success.  */
+end_comment
 
 begin_function
 DECL|function|check_packed_git_idx
@@ -12077,6 +12081,10 @@ literal|1
 return|;
 block|}
 end_function
+
+begin_comment
+comment|/*  * Iff a pack file contains the object named by sha1, return true and  * store its location to e.  */
+end_comment
 
 begin_function
 DECL|function|find_pack_entry
