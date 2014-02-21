@@ -12,6 +12,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"gettext.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"progress.h"
 end_include
 
@@ -1112,7 +1118,10 @@ name|stop_progress_msg
 argument_list|(
 name|p_progress
 argument_list|,
+name|_
+argument_list|(
 literal|"done"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

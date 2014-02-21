@@ -2598,7 +2598,10 @@ name|progress
 operator|=
 name|start_progress
 argument_list|(
+name|_
+argument_list|(
 literal|"Unpacking objects"
+argument_list|)
 argument_list|,
 name|nr_objects
 argument_list|)

@@ -269,7 +269,10 @@ name|progress
 operator|=
 name|start_progress_delay
 argument_list|(
+name|_
+argument_list|(
 literal|"Removing duplicate objects"
+argument_list|)
 argument_list|,
 literal|256
 argument_list|,

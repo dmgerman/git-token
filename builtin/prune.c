@@ -945,7 +945,10 @@ name|progress
 operator|=
 name|start_progress_delay
 argument_list|(
+name|_
+argument_list|(
 literal|"Checking connectivity"
+argument_list|)
 argument_list|,
 literal|0
 argument_list|,

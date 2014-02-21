@@ -981,7 +981,10 @@ name|progress
 operator|=
 name|start_progress_delay
 argument_list|(
+name|_
+argument_list|(
 literal|"Checking out files"
+argument_list|)
 argument_list|,
 name|total
 argument_list|,
