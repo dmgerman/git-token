@@ -55,11 +55,15 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Compare two tree entries, taking into account only path/S_ISDIR(mode),  * but not their sha1's.  *  * NOTE files and directories *always* compare differently, even when having  *      the same name - thanks to base_name_compare().  */
+end_comment
+
 begin_function
-DECL|function|compare_tree_entry
+DECL|function|tree_entry_pathcmp
 specifier|static
 name|int
-name|compare_tree_entry
+name|tree_entry_pathcmp
 parameter_list|(
 name|struct
 name|tree_desc
@@ -147,7 +151,6 @@ operator|->
 name|entry
 argument_list|)
 expr_stmt|;
-comment|/* 	 * NOTE files and directories *always* compare differently, 	 * even when having the same name. 	 */
 name|cmp
 operator|=
 name|base_name_compare
@@ -858,7 +861,7 @@ continue|continue;
 block|}
 name|cmp
 operator|=
-name|compare_tree_entry
+name|tree_entry_pathcmp
 argument_list|(
 name|t1
 argument_list|,
