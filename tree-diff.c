@@ -645,6 +645,7 @@ end_function
 
 begin_function
 DECL|function|diff_tree
+specifier|static
 name|int
 name|diff_tree
 parameter_list|(
