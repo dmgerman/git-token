@@ -27,34 +27,6 @@ directive|include
 file|"tree.h"
 end_include
 
-begin_function_decl
-specifier|static
-name|void
-name|show_path
-parameter_list|(
-name|struct
-name|strbuf
-modifier|*
-name|base
-parameter_list|,
-name|struct
-name|diff_options
-modifier|*
-name|opt
-parameter_list|,
-name|struct
-name|tree_desc
-modifier|*
-name|t1
-parameter_list|,
-name|struct
-name|tree_desc
-modifier|*
-name|t2
-parameter_list|)
-function_decl|;
-end_function_decl
-
 begin_comment
 comment|/*  * Compare two tree entries, taking into account only path/S_ISDIR(mode),  * but not their sha1's.  *  * NOTE files and directories *always* compare differently, even when having  *      the same name - thanks to base_name_compare().  */
 end_comment
