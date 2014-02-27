@@ -103,14 +103,11 @@ expr_stmt|;
 operator|*
 name|modep
 operator|=
-name|canon_mode
-argument_list|(
 name|desc
 operator|->
 name|entry
 operator|.
 name|mode
-argument_list|)
 expr_stmt|;
 return|return
 name|desc
