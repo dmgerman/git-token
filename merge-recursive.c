@@ -1187,7 +1187,17 @@ name|path
 argument_list|,
 name|stage
 argument_list|,
+operator|(
 name|refresh
+condition|?
+operator|(
+name|CE_MATCH_REFRESH
+operator||
+name|CE_MATCH_IGNORE_MISSING
+operator|)
+else|:
+literal|0
+operator|)
 argument_list|)
 expr_stmt|;
 if|if
