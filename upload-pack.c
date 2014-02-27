@@ -482,6 +482,7 @@ name|FILE
 modifier|*
 name|pipe_fd
 decl_stmt|;
+specifier|const
 name|char
 modifier|*
 name|shallow_file
@@ -1247,27 +1248,6 @@ expr_stmt|;
 goto|goto
 name|fail
 goto|;
-block|}
-if|if
-condition|(
-name|shallow_file
-condition|)
-block|{
-if|if
-condition|(
-operator|*
-name|shallow_file
-condition|)
-name|unlink
-argument_list|(
-name|shallow_file
-argument_list|)
-expr_stmt|;
-name|free
-argument_list|(
-name|shallow_file
-argument_list|)
-expr_stmt|;
 block|}
 comment|/* flush the data */
 if|if

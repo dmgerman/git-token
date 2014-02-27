@@ -4481,10 +4481,7 @@ block|}
 if|if
 condition|(
 name|shallow_update
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
 operator|!
 name|checked_connectivity
 condition|)
@@ -4495,19 +4492,6 @@ literal|"If there are errors, try to remove "
 literal|"the reported refs above"
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|alt_shallow_file
-operator|&&
-operator|*
-name|alt_shallow_file
-condition|)
-name|unlink
-argument_list|(
-name|alt_shallow_file
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 end_function
 
@@ -5910,24 +5894,6 @@ operator|=
 literal|1
 expr_stmt|;
 block|}
-block|}
-if|if
-condition|(
-name|alt_shallow_file
-operator|&&
-operator|*
-name|alt_shallow_file
-condition|)
-block|{
-name|unlink
-argument_list|(
-name|alt_shallow_file
-argument_list|)
-expr_stmt|;
-name|alt_shallow_file
-operator|=
-name|NULL
-expr_stmt|;
 block|}
 name|free
 argument_list|(
