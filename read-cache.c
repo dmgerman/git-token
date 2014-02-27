@@ -2923,10 +2923,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|record_intent_to_add
-specifier|static
+DECL|function|set_object_name_for_intent_to_add_entry
 name|void
-name|record_intent_to_add
+name|set_object_name_for_intent_to_add_entry
 parameter_list|(
 name|struct
 name|cache_entry
@@ -3461,7 +3460,7 @@ argument_list|)
 return|;
 block|}
 else|else
-name|record_intent_to_add
+name|set_object_name_for_intent_to_add_entry
 argument_list|(
 name|ce
 argument_list|)
