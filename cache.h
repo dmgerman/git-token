@@ -27,7 +27,7 @@ end_include
 begin_include
 include|#
 directive|include
-file|"hash.h"
+file|"hashmap.h"
 end_include
 
 begin_include
@@ -568,6 +568,11 @@ DECL|struct|cache_entry
 struct|struct
 name|cache_entry
 block|{
+DECL|member|ent
+name|struct
+name|hashmap_entry
+name|ent
+decl_stmt|;
 DECL|member|ce_stat_data
 name|struct
 name|stat_data
@@ -595,12 +600,6 @@ name|sha1
 index|[
 literal|20
 index|]
-decl_stmt|;
-DECL|member|next
-name|struct
-name|cache_entry
-modifier|*
-name|next
 decl_stmt|;
 DECL|member|name
 name|char
@@ -688,14 +687,6 @@ define|#
 directive|define
 name|CE_HASHED
 value|(1<< 20)
-end_define
-
-begin_define
-DECL|macro|CE_UNHASHED
-define|#
-directive|define
-name|CE_UNHASHED
-value|(1<< 21)
 end_define
 
 begin_define
@@ -820,14 +811,6 @@ begin_comment
 comment|/*  * Copy the sha1 and stat state of a cache entry from one to  * another. But we never change the name, or the hash state!  */
 end_comment
 
-begin_define
-DECL|macro|CE_STATE_MASK
-define|#
-directive|define
-name|CE_STATE_MASK
-value|(CE_HASHED | CE_UNHASHED)
-end_define
-
 begin_function
 DECL|function|copy_cache_entry
 specifier|static
@@ -855,21 +838,35 @@ name|dst
 operator|->
 name|ce_flags
 operator|&
-name|CE_STATE_MASK
+name|CE_HASHED
 decl_stmt|;
 comment|/* Don't copy hash chain and name */
 name|memcpy
 argument_list|(
+operator|&
 name|dst
+operator|->
+name|ce_stat_data
 argument_list|,
+operator|&
 name|src
+operator|->
+name|ce_stat_data
 argument_list|,
 name|offsetof
 argument_list|(
 expr|struct
 name|cache_entry
 argument_list|,
-name|next
+name|name
+argument_list|)
+operator|-
+name|offsetof
+argument_list|(
+expr|struct
+name|cache_entry
+argument_list|,
+name|ce_stat_data
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -884,7 +881,7 @@ operator|->
 name|ce_flags
 operator|&
 operator|~
-name|CE_STATE_MASK
+name|CE_HASHED
 operator|)
 operator||
 name|state
@@ -1322,12 +1319,12 @@ literal|1
 decl_stmt|;
 DECL|member|name_hash
 name|struct
-name|hash_table
+name|hashmap
 name|name_hash
 decl_stmt|;
 DECL|member|dir_hash
 name|struct
-name|hash_table
+name|hashmap
 name|dir_hash
 decl_stmt|;
 block|}
@@ -1679,21 +1676,6 @@ parameter_list|,
 name|igncase
 parameter_list|)
 value|index_file_exists(&the_index, (name), (namelen), (igncase))
-end_define
-
-begin_define
-DECL|macro|cache_name_exists
-define|#
-directive|define
-name|cache_name_exists
-parameter_list|(
-name|name
-parameter_list|,
-name|namelen
-parameter_list|,
-name|igncase
-parameter_list|)
-value|index_name_exists(&the_index, (name), (namelen), (igncase))
 end_define
 
 begin_define
@@ -2746,32 +2728,6 @@ name|struct
 name|cache_entry
 modifier|*
 name|index_file_exists
-parameter_list|(
-name|struct
-name|index_state
-modifier|*
-name|istate
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|name
-parameter_list|,
-name|int
-name|namelen
-parameter_list|,
-name|int
-name|igncase
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-specifier|extern
-name|struct
-name|cache_entry
-modifier|*
-name|index_name_exists
 parameter_list|(
 name|struct
 name|index_state
