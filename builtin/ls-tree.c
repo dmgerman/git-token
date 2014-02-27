@@ -915,7 +915,7 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
-comment|/* 	 * show_recursive() rolls its own matching code and is 	 * generally ignorant of 'struct pathspec'. The magic mask 	 * cannot be lifted until it is converted to use 	 * match_pathspec_depth() or tree_entry_interesting() 	 */
+comment|/* 	 * show_recursive() rolls its own matching code and is 	 * generally ignorant of 'struct pathspec'. The magic mask 	 * cannot be lifted until it is converted to use 	 * match_pathspec() or tree_entry_interesting() 	 */
 name|parse_pathspec
 argument_list|(
 operator|&

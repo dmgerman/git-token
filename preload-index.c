@@ -15,6 +15,12 @@ directive|include
 file|"pathspec.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"dir.h"
+end_include
+
 begin_ifdef
 ifdef|#
 directive|ifdef
@@ -248,6 +254,8 @@ operator|&
 name|p
 operator|->
 name|pathspec
+argument_list|,
+name|NULL
 argument_list|)
 condition|)
 continue|continue;
