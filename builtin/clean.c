@@ -838,8 +838,6 @@ operator|->
 name|len
 decl_stmt|,
 name|len
-decl_stmt|,
-name|i
 decl_stmt|;
 name|unsigned
 name|char
@@ -1330,6 +1328,9 @@ operator|!
 name|quiet
 condition|)
 block|{
+name|int
+name|i
+decl_stmt|;
 for|for
 control|(
 name|i
