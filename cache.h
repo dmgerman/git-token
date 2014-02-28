@@ -5297,6 +5297,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * This internal function is only declared here for the benefit of  * lookup_replace_object().  Please do not call it directly.  */
+end_comment
+
 begin_function_decl
 specifier|extern
 specifier|const
@@ -5313,6 +5317,10 @@ name|sha1
 parameter_list|)
 function_decl|;
 end_function_decl
+
+begin_comment
+comment|/*  * If object sha1 should be replaced, return the replacement object's  * name (replaced recursively, if necessary).  The return value is  * either sha1 or a pointer to a permanently-allocated value.  When  * object replacement is suppressed, always return sha1.  */
+end_comment
 
 begin_function
 DECL|function|lookup_replace_object
