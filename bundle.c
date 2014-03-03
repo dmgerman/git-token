@@ -146,7 +146,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|memcpy
+name|hashcpy
 argument_list|(
 name|list
 operator|->
@@ -160,8 +160,6 @@ operator|.
 name|sha1
 argument_list|,
 name|sha1
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 name|list

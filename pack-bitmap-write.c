@@ -2665,7 +2665,7 @@ operator|.
 name|selected_nr
 argument_list|)
 expr_stmt|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|header
 operator|.
@@ -2674,8 +2674,6 @@ argument_list|,
 name|writer
 operator|.
 name|pack_checksum
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 name|sha1write

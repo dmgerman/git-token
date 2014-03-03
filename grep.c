@@ -8980,15 +8980,13 @@ argument_list|(
 literal|20
 argument_list|)
 expr_stmt|;
-name|memcpy
+name|hashcpy
 argument_list|(
 name|gs
 operator|->
 name|identifier
 argument_list|,
 name|identifier
-argument_list|,
-literal|20
 argument_list|)
 expr_stmt|;
 break|break;
