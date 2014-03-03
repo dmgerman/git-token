@@ -21,6 +21,12 @@ directive|include
 file|"pack.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"strbuf.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|pack_compression_level
 specifier|static
@@ -103,11 +109,11 @@ index|[
 literal|20
 index|]
 decl_stmt|;
-name|char
+name|struct
+name|strbuf
 name|packname
-index|[
-name|PATH_MAX
-index|]
+init|=
+name|STRBUF_INIT
 decl_stmt|;
 name|int
 name|i
@@ -214,8 +220,9 @@ name|fd
 argument_list|)
 expr_stmt|;
 block|}
-name|sprintf
+name|strbuf_addf
 argument_list|(
+operator|&
 name|packname
 argument_list|,
 literal|"%s/pack/pack-"
@@ -226,6 +233,7 @@ argument_list|)
 expr_stmt|;
 name|finish_tmp_packfile
 argument_list|(
+operator|&
 name|packname
 argument_list|,
 name|state
@@ -293,6 +301,12 @@ argument_list|(
 operator|*
 name|state
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|packname
 argument_list|)
 expr_stmt|;
 comment|/* Make objects we just wrote available to ourselves */

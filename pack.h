@@ -467,7 +467,8 @@ specifier|extern
 name|void
 name|finish_tmp_packfile
 parameter_list|(
-name|char
+name|struct
+name|strbuf
 modifier|*
 name|name_buffer
 parameter_list|,
