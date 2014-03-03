@@ -4445,7 +4445,7 @@ name|warning
 argument_list|(
 literal|"failed utime() on %s: %s"
 argument_list|,
-name|tmpname
+name|pack_tmp_name
 argument_list|,
 name|strerror
 argument_list|(
