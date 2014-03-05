@@ -2875,7 +2875,7 @@ argument_list|,
 literal|'/'
 argument_list|)
 expr_stmt|;
-comment|/* between path and slash is the name of the 		 * subtree to look for. 		 */
+comment|/* 		 * Between path and slash is the name of the subtree 		 * to look for. 		 */
 name|sub
 operator|=
 name|find_subtree
