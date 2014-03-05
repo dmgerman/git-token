@@ -1129,10 +1129,6 @@ name|combine_diff_path
 modifier|*
 name|next
 decl_stmt|;
-DECL|member|len
-name|int
-name|len
-decl_stmt|;
 DECL|member|path
 name|char
 modifier|*
