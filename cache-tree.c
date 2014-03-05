@@ -2868,25 +2868,11 @@ name|sub
 decl_stmt|;
 name|slash
 operator|=
-name|strchr
+name|strchrnul
 argument_list|(
 name|path
 argument_list|,
 literal|'/'
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-operator|!
-name|slash
-condition|)
-name|slash
-operator|=
-name|path
-operator|+
-name|strlen
-argument_list|(
-name|path
 argument_list|)
 expr_stmt|;
 comment|/* between path and slash is the name of the 		 * subtree to look for. 		 */
