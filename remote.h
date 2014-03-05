@@ -845,6 +845,27 @@ end_function_decl
 
 begin_function_decl
 name|int
+name|check_push_refs
+parameter_list|(
+name|struct
+name|ref
+modifier|*
+name|src
+parameter_list|,
+name|int
+name|nr_refspec
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|refspec
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
 name|match_push_refs
 parameter_list|(
 name|struct
