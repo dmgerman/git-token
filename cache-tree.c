@@ -2909,9 +2909,6 @@ while|while
 condition|(
 operator|*
 name|slash
-operator|&&
-operator|*
-name|slash
 operator|==
 literal|'/'
 condition|)
