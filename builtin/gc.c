@@ -115,6 +115,16 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|detach_auto
+specifier|static
+name|int
+name|detach_auto
+init|=
+literal|1
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|prune_expire
 specifier|static
 specifier|const
@@ -362,6 +372,30 @@ block|{
 name|gc_auto_pack_limit
 operator|=
 name|git_config_int
+argument_list|(
+name|var
+argument_list|,
+name|value
+argument_list|)
+expr_stmt|;
+return|return
+literal|0
+return|;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|var
+argument_list|,
+literal|"gc.autodetach"
+argument_list|)
+condition|)
+block|{
+name|detach_auto
+operator|=
+name|git_config_bool
 argument_list|(
 name|var
 argument_list|,
@@ -1484,17 +1518,50 @@ condition|(
 operator|!
 name|quiet
 condition|)
+block|{
+if|if
+condition|(
+name|detach_auto
+condition|)
 name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
 name|_
 argument_list|(
-literal|"Auto packing the repository for optimum performance. You may also\n"
-literal|"run \"git gc\" manually. See "
-literal|"\"git help gc\" for more information.\n"
+literal|"Auto packing the repository in background for optimum performance.\n"
 argument_list|)
 argument_list|)
+expr_stmt|;
+else|else
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+name|_
+argument_list|(
+literal|"Auto packing the repository for optimum performance.\n"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+name|_
+argument_list|(
+literal|"See \"git help gc\" for manual housekeeping.\n"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|detach_auto
+condition|)
+comment|/* 			 * failure to daemonize is ok, we'll continue 			 * in foreground 			 */
+name|daemonize
+argument_list|()
 expr_stmt|;
 block|}
 else|else
