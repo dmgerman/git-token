@@ -2915,16 +2915,6 @@ condition|)
 name|slash
 operator|++
 expr_stmt|;
-if|if
-condition|(
-operator|!
-operator|*
-name|slash
-condition|)
-return|return
-name|it
-return|;
-comment|/* prefix ended with slashes */
 name|path
 operator|=
 name|slash
