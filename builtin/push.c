@@ -342,8 +342,7 @@ name|push_default
 operator|==
 name|PUSH_DEFAULT_UPSTREAM
 operator|&&
-operator|!
-name|prefixcmp
+name|starts_with
 argument_list|(
 name|matched
 operator|->
