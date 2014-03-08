@@ -482,7 +482,7 @@ condition|)
 block|{
 name|end
 operator|=
-name|strchr
+name|strchrnul
 argument_list|(
 name|msg
 argument_list|,
@@ -492,15 +492,8 @@ expr_stmt|;
 name|len
 operator|=
 name|end
-condition|?
-name|end
 operator|-
 name|msg
-else|:
-name|strlen
-argument_list|(
-name|msg
-argument_list|)
 expr_stmt|;
 name|key
 operator|=
