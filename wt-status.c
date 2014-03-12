@@ -1662,7 +1662,7 @@ case|:
 return|return
 name|_
 argument_list|(
-literal|"new file"
+literal|"new file:"
 argument_list|)
 return|;
 case|case
@@ -1671,7 +1671,7 @@ case|:
 return|return
 name|_
 argument_list|(
-literal|"copied"
+literal|"copied:"
 argument_list|)
 return|;
 case|case
@@ -1680,7 +1680,7 @@ case|:
 return|return
 name|_
 argument_list|(
-literal|"deleted"
+literal|"deleted:"
 argument_list|)
 return|;
 case|case
@@ -1689,7 +1689,7 @@ case|:
 return|return
 name|_
 argument_list|(
-literal|"modified"
+literal|"modified:"
 argument_list|)
 return|;
 case|case
@@ -1698,7 +1698,7 @@ case|:
 return|return
 name|_
 argument_list|(
-literal|"renamed"
+literal|"renamed:"
 argument_list|)
 return|;
 case|case
@@ -1707,7 +1707,7 @@ case|:
 return|return
 name|_
 argument_list|(
-literal|"typechange"
+literal|"typechange:"
 argument_list|)
 return|;
 case|case
@@ -1716,7 +1716,7 @@ case|:
 return|return
 name|_
 argument_list|(
-literal|"unknown"
+literal|"unknown:"
 argument_list|)
 return|;
 case|case
@@ -1725,7 +1725,7 @@ case|:
 return|return
 name|_
 argument_list|(
-literal|"unmerged"
+literal|"unmerged:"
 argument_list|)
 return|;
 default|default:
@@ -1817,6 +1817,10 @@ name|char
 modifier|*
 name|padding
 decl_stmt|;
+specifier|static
+name|int
+name|label_width
+decl_stmt|;
 specifier|const
 name|char
 modifier|*
@@ -1831,11 +1835,6 @@ operator|!
 name|padding
 condition|)
 block|{
-name|int
-name|width
-init|=
-literal|0
-decl_stmt|;
 comment|/* If DIFF_STATUS_* uses outside this range, we're in trouble */
 for|for
 control|(
@@ -1873,23 +1872,25 @@ if|if
 condition|(
 name|len
 operator|>
-name|width
+name|label_width
 condition|)
-name|width
+name|label_width
 operator|=
 name|len
 expr_stmt|;
 block|}
-name|width
+name|label_width
 operator|+=
-literal|2
+name|strlen
+argument_list|(
+literal|" "
+argument_list|)
 expr_stmt|;
-comment|/* colon and a space */
 name|padding
 operator|=
 name|xmallocz
 argument_list|(
-name|width
+name|label_width
 argument_list|)
 expr_stmt|;
 name|memset
@@ -1898,7 +1899,7 @@ name|padding
 argument_list|,
 literal|' '
 argument_list|,
-name|width
+name|label_width
 argument_list|)
 expr_stmt|;
 block|}
@@ -2115,22 +2116,14 @@ argument_list|,
 name|status
 argument_list|)
 expr_stmt|;
-comment|/* 1 for colon, which is not part of "what" */
 name|len
 operator|=
-name|strlen
-argument_list|(
-name|padding
-argument_list|)
+name|label_width
 operator|-
-operator|(
 name|utf8_strwidth
 argument_list|(
 name|what
 argument_list|)
-operator|+
-literal|1
-operator|)
 expr_stmt|;
 name|assert
 argument_list|(
@@ -2155,7 +2148,7 @@ name|s
 argument_list|,
 name|c
 argument_list|,
-literal|"%s:%.*s%s -> %s"
+literal|"%s%.*s%s -> %s"
 argument_list|,
 name|what
 argument_list|,
@@ -2175,7 +2168,7 @@ name|s
 argument_list|,
 name|c
 argument_list|,
-literal|"%s:%.*s%s"
+literal|"%s%.*s%s"
 argument_list|,
 name|what
 argument_list|,
