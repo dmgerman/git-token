@@ -1809,16 +1809,6 @@ argument_list|(
 literal|" "
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|label_width
-operator|<
-literal|20
-condition|)
-name|label_width
-operator|=
-literal|20
-expr_stmt|;
 name|padding
 operator|=
 name|xmallocz
