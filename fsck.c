@@ -1588,6 +1588,9 @@ init|=
 name|commit
 operator|->
 name|buffer
+decl_stmt|,
+modifier|*
+name|tmp
 decl_stmt|;
 name|unsigned
 name|char
@@ -1635,16 +1638,19 @@ argument_list|,
 literal|"invalid author/committer line"
 argument_list|)
 return|;
-if|if
-condition|(
-name|memcmp
+name|buffer
+operator|=
+name|skip_prefix
 argument_list|(
 name|buffer
 argument_list|,
 literal|"tree "
-argument_list|,
-literal|5
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|buffer
 condition|)
 return|return
 name|error_func
@@ -1664,15 +1670,13 @@ condition|(
 name|get_sha1_hex
 argument_list|(
 name|buffer
-operator|+
-literal|5
 argument_list|,
 name|tree_sha1
 argument_list|)
 operator|||
 name|buffer
 index|[
-literal|45
+literal|40
 index|]
 operator|!=
 literal|'\n'
@@ -1692,35 +1696,38 @@ argument_list|)
 return|;
 name|buffer
 operator|+=
-literal|46
+literal|41
 expr_stmt|;
 while|while
 condition|(
-operator|!
-name|memcmp
+operator|(
+name|tmp
+operator|=
+name|skip_prefix
 argument_list|(
 name|buffer
 argument_list|,
 literal|"parent "
-argument_list|,
-literal|7
 argument_list|)
+operator|)
 condition|)
 block|{
+name|buffer
+operator|=
+name|tmp
+expr_stmt|;
 if|if
 condition|(
 name|get_sha1_hex
 argument_list|(
 name|buffer
-operator|+
-literal|7
 argument_list|,
 name|sha1
 argument_list|)
 operator|||
 name|buffer
 index|[
-literal|47
+literal|40
 index|]
 operator|!=
 literal|'\n'
@@ -1740,7 +1747,7 @@ argument_list|)
 return|;
 name|buffer
 operator|+=
-literal|48
+literal|41
 expr_stmt|;
 name|parents
 operator|++
@@ -1875,16 +1882,19 @@ literal|"parent objects missing"
 argument_list|)
 return|;
 block|}
-if|if
-condition|(
-name|memcmp
+name|buffer
+operator|=
+name|skip_prefix
 argument_list|(
 name|buffer
 argument_list|,
 literal|"author "
-argument_list|,
-literal|7
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|buffer
 condition|)
 return|return
 name|error_func
@@ -1899,10 +1909,6 @@ argument_list|,
 literal|"invalid format - expected 'author' line"
 argument_list|)
 return|;
-name|buffer
-operator|+=
-literal|7
-expr_stmt|;
 name|err
 operator|=
 name|fsck_ident
@@ -1925,19 +1931,19 @@ condition|)
 return|return
 name|err
 return|;
-if|if
-condition|(
-name|memcmp
+name|buffer
+operator|=
+name|skip_prefix
 argument_list|(
 name|buffer
 argument_list|,
 literal|"committer "
-argument_list|,
-name|strlen
-argument_list|(
-literal|"committer "
 argument_list|)
-argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|buffer
 condition|)
 return|return
 name|error_func
@@ -1952,13 +1958,6 @@ argument_list|,
 literal|"invalid format - expected 'committer' line"
 argument_list|)
 return|;
-name|buffer
-operator|+=
-name|strlen
-argument_list|(
-literal|"committer "
-argument_list|)
-expr_stmt|;
 name|err
 operator|=
 name|fsck_ident
