@@ -4134,7 +4134,10 @@ name|progress_state
 operator|=
 name|start_progress
 argument_list|(
+name|_
+argument_list|(
 literal|"Writing objects"
+argument_list|)
 argument_list|,
 name|nr_result
 argument_list|)
@@ -10640,7 +10643,10 @@ name|progress_state
 operator|=
 name|start_progress
 argument_list|(
+name|_
+argument_list|(
 literal|"Compressing objects"
+argument_list|)
 argument_list|,
 name|nr_deltas
 argument_list|)
@@ -13634,7 +13640,10 @@ name|progress_state
 operator|=
 name|start_progress
 argument_list|(
+name|_
+argument_list|(
 literal|"Counting objects"
+argument_list|)
 argument_list|,
 literal|0
 argument_list|)

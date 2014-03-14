@@ -887,7 +887,10 @@ name|progress
 operator|=
 name|start_progress_delay
 argument_list|(
+name|_
+argument_list|(
 literal|"Checking connectivity"
+argument_list|)
 argument_list|,
 literal|0
 argument_list|,
@@ -2759,7 +2762,10 @@ name|progress
 operator|=
 name|start_progress
 argument_list|(
+name|_
+argument_list|(
 literal|"Checking object directories"
+argument_list|)
 argument_list|,
 literal|256
 argument_list|)
@@ -3512,7 +3518,10 @@ name|progress
 operator|=
 name|start_progress
 argument_list|(
+name|_
+argument_list|(
 literal|"Checking objects"
+argument_list|)
 argument_list|,
 name|total
 argument_list|)

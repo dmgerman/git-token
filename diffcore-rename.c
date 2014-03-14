@@ -2534,7 +2534,10 @@ name|progress
 operator|=
 name|start_progress_delay
 argument_list|(
+name|_
+argument_list|(
 literal|"Performing inexact rename detection"
+argument_list|)
 argument_list|,
 name|rename_dst_nr
 operator|*
