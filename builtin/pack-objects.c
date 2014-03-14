@@ -13297,7 +13297,7 @@ name|OPT_END
 argument_list|()
 block|, 	}
 decl_stmt|;
-name|read_replace_refs
+name|check_replace_refs
 operator|=
 literal|0
 expr_stmt|;

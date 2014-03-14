@@ -3889,10 +3889,14 @@ name|pack_size_limit_cfg
 decl_stmt|;
 end_decl_stmt
 
+begin_comment
+comment|/*  * Do replace refs need to be checked this run?  This variable is  * initialized to true unless --no-replace-object is used or  * $GIT_NO_REPLACE_OBJECTS is set, but is set to false by some  * commands that do not want replace references to be active.  As an  * optimization it is also set to false if replace references have  * been sought but there were none.  */
+end_comment
+
 begin_decl_stmt
 specifier|extern
 name|int
-name|read_replace_refs
+name|check_replace_refs
 decl_stmt|;
 end_decl_stmt
 
@@ -5277,6 +5281,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * This internal function is only declared here for the benefit of  * lookup_replace_object().  Please do not call it directly.  */
+end_comment
+
 begin_function_decl
 specifier|extern
 specifier|const
@@ -5293,6 +5301,10 @@ name|sha1
 parameter_list|)
 function_decl|;
 end_function_decl
+
+begin_comment
+comment|/*  * If object sha1 should be replaced, return the replacement object's  * name (replaced recursively, if necessary).  The return value is  * either sha1 or a pointer to a permanently-allocated value.  When  * object replacement is suppressed, always return sha1.  */
+end_comment
 
 begin_function
 DECL|function|lookup_replace_object
@@ -5314,7 +5326,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|read_replace_refs
+name|check_replace_refs
 condition|)
 return|return
 name|sha1

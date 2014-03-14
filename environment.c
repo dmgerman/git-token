@@ -338,18 +338,13 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|read_replace_refs
+DECL|variable|check_replace_refs
 name|int
-name|read_replace_refs
+name|check_replace_refs
 init|=
 literal|1
 decl_stmt|;
 end_decl_stmt
-
-begin_comment
-DECL|variable|read_replace_refs
-comment|/* NEEDSWORK: rename to use_replace_refs */
-end_comment
 
 begin_decl_stmt
 DECL|variable|core_eol
@@ -943,7 +938,7 @@ argument_list|(
 name|NO_REPLACE_OBJECTS_ENVIRONMENT
 argument_list|)
 condition|)
-name|read_replace_refs
+name|check_replace_refs
 operator|=
 literal|0
 expr_stmt|;

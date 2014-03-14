@@ -446,7 +446,7 @@ condition|(
 operator|!
 name|replace_object_nr
 condition|)
-name|read_replace_refs
+name|check_replace_refs
 operator|=
 literal|0
 expr_stmt|;
@@ -464,6 +464,10 @@ directive|define
 name|MAXREPLACEDEPTH
 value|5
 end_define
+
+begin_comment
+comment|/*  * If a replacement for object sha1 has been set up, return the  * replacement object's name (replaced recursively, if necessary).  * The return value is either sha1 or a pointer to a  * permanently-allocated value.  This function always respects replace  * references, regardless of the value of check_replace_refs.  */
+end_comment
 
 begin_function
 DECL|function|do_lookup_replace_object
