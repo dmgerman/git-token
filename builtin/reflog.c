@@ -3018,7 +3018,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|fnmatch
+name|wildmatch
 argument_list|(
 name|ent
 operator|->
@@ -3027,6 +3027,8 @@ argument_list|,
 name|ref
 argument_list|,
 literal|0
+argument_list|,
+name|NULL
 argument_list|)
 condition|)
 block|{

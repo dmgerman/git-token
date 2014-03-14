@@ -6274,7 +6274,7 @@ name|data
 decl_stmt|;
 if|if
 condition|(
-name|fnmatch
+name|wildmatch
 argument_list|(
 name|filter
 operator|->
@@ -6283,6 +6283,8 @@ argument_list|,
 name|refname
 argument_list|,
 literal|0
+argument_list|,
+name|NULL
 argument_list|)
 condition|)
 return|return
