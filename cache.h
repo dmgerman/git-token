@@ -6669,6 +6669,17 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|int
+name|date_overflows
+parameter_list|(
+name|unsigned
+name|long
+name|date
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_define
 DECL|macro|IDENT_STRICT
 define|#
