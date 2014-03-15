@@ -1446,9 +1446,6 @@ decl_stmt|;
 name|int
 name|fd
 decl_stmt|;
-name|check_shallow_file_for_update
-argument_list|()
-expr_stmt|;
 name|fd
 operator|=
 name|hold_lock_file_for_update
@@ -1462,6 +1459,9 @@ argument_list|)
 argument_list|,
 name|LOCK_DIE_ON_ERROR
 argument_list|)
+expr_stmt|;
+name|check_shallow_file_for_update
+argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -1665,9 +1665,6 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-name|check_shallow_file_for_update
-argument_list|()
-expr_stmt|;
 name|fd
 operator|=
 name|hold_lock_file_for_update
@@ -1682,6 +1679,9 @@ argument_list|)
 argument_list|,
 name|LOCK_DIE_ON_ERROR
 argument_list|)
+expr_stmt|;
+name|check_shallow_file_for_update
+argument_list|()
 expr_stmt|;
 if|if
 condition|(
