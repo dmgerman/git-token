@@ -2357,6 +2357,14 @@ operator|&
 name|req_buf
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|got_ready
+operator|||
+operator|!
+name|no_done
+condition|)
 name|consume_shallow_list
 argument_list|(
 name|args
