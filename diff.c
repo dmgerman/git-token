@@ -16322,6 +16322,15 @@ block|}
 if|if
 condition|(
 operator|!
+name|S_ISGITLINK
+argument_list|(
+name|one
+operator|->
+name|mode
+argument_list|)
+operator|&&
+operator|(
+operator|!
 name|one
 operator|->
 name|sha1_valid
@@ -16336,6 +16345,7 @@ name|sha1
 argument_list|,
 literal|1
 argument_list|)
+operator|)
 condition|)
 block|{
 name|struct
