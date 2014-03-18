@@ -3754,7 +3754,7 @@ argument_list|)
 expr_stmt|;
 name|err
 operator||=
-name|run_hook
+name|run_hook_le
 argument_list|(
 name|NULL
 argument_list|,

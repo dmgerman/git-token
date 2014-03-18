@@ -806,7 +806,7 @@ literal|0
 return|;
 if|if
 condition|(
-name|run_hook
+name|run_hook_le
 argument_list|(
 name|NULL
 argument_list|,
