@@ -5148,7 +5148,9 @@ if|if
 condition|(
 name|run_commit_hook
 argument_list|(
-literal|1
+literal|0
+operator|<
+name|option_edit
 argument_list|,
 name|get_index_file
 argument_list|()
