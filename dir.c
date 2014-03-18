@@ -939,6 +939,22 @@ return|;
 block|}
 end_function
 
+begin_define
+DECL|macro|DO_MATCH_EXCLUDE
+define|#
+directive|define
+name|DO_MATCH_EXCLUDE
+value|1
+end_define
+
+begin_define
+DECL|macro|DO_MATCH_DIRECTORY
+define|#
+directive|define
+name|DO_MATCH_DIRECTORY
+value|2
+end_define
+
 begin_comment
 comment|/*  * Does 'match' match the given name?  * A match is found if  *  * (1) the 'match' string is leading directory of 'name', or  * (2) the 'match' string is a wildcard and matches 'name', or  * (3) the 'match' string is exactly the same as 'name'.  *  * and the return value tells which case it was.  *  * It returns 0 when there is no match.  */
 end_comment
@@ -965,6 +981,9 @@ name|name
 parameter_list|,
 name|int
 name|namelen
+parameter_list|,
+name|unsigned
+name|flags
 parameter_list|)
 block|{
 comment|/* name/namelen has prefix cut off by caller */
@@ -988,7 +1007,7 @@ name|len
 operator|-
 name|prefix
 decl_stmt|;
-comment|/* 	 * The normal call pattern is: 	 * 1. prefix = common_prefix_len(ps); 	 * 2. prune something, or fill_directory 	 * 3. match_pathspec_depth() 	 * 	 * 'prefix' at #1 may be shorter than the command's prefix and 	 * it's ok for #2 to match extra files. Those extras will be 	 * trimmed at #3. 	 * 	 * Suppose the pathspec is 'foo' and '../bar' running from 	 * subdir 'xyz'. The common prefix at #1 will be empty, thanks 	 * to "../". We may have xyz/foo _and_ XYZ/foo after #2. The 	 * user does not want XYZ/foo, only the "foo" part should be 	 * case-insensitive. We need to filter out XYZ/foo here. In 	 * other words, we do not trust the caller on comparing the 	 * prefix part when :(icase) is involved. We do exact 	 * comparison ourselves. 	 * 	 * Normally the caller (common_prefix_len() in fact) does 	 * _exact_ matching on name[-prefix+1..-1] and we do not need 	 * to check that part. Be defensive and check it anyway, in 	 * case common_prefix_len is changed, or a new caller is 	 * introduced that does not use common_prefix_len. 	 * 	 * If the penalty turns out too high when prefix is really 	 * long, maybe change it to 	 * strncmp(match, name, item->prefix - prefix) 	 */
+comment|/* 	 * The normal call pattern is: 	 * 1. prefix = common_prefix_len(ps); 	 * 2. prune something, or fill_directory 	 * 3. match_pathspec() 	 * 	 * 'prefix' at #1 may be shorter than the command's prefix and 	 * it's ok for #2 to match extra files. Those extras will be 	 * trimmed at #3. 	 * 	 * Suppose the pathspec is 'foo' and '../bar' running from 	 * subdir 'xyz'. The common prefix at #1 will be empty, thanks 	 * to "../". We may have xyz/foo _and_ XYZ/foo after #2. The 	 * user does not want XYZ/foo, only the "foo" part should be 	 * case-insensitive. We need to filter out XYZ/foo here. In 	 * other words, we do not trust the caller on comparing the 	 * prefix part when :(icase) is involved. We do exact 	 * comparison ourselves. 	 * 	 * Normally the caller (common_prefix_len() in fact) does 	 * _exact_ matching on name[-prefix+1..-1] and we do not need 	 * to check that part. Be defensive and check it anyway, in 	 * case common_prefix_len is changed, or a new caller is 	 * introduced that does not use common_prefix_len. 	 * 	 * If the penalty turns out too high when prefix is really 	 * long, maybe change it to 	 * strncmp(match, name, item->prefix - prefix) 	 */
 if|if
 condition|(
 name|item
@@ -1081,6 +1100,45 @@ return|return
 name|MATCHED_RECURSIVELY
 return|;
 block|}
+elseif|else
+if|if
+condition|(
+operator|(
+name|flags
+operator|&
+name|DO_MATCH_DIRECTORY
+operator|)
+operator|&&
+name|match
+index|[
+name|matchlen
+operator|-
+literal|1
+index|]
+operator|==
+literal|'/'
+operator|&&
+name|namelen
+operator|==
+name|matchlen
+operator|-
+literal|1
+operator|&&
+operator|!
+name|ps_strncmp
+argument_list|(
+name|item
+argument_list|,
+name|match
+argument_list|,
+name|name
+argument_list|,
+name|namelen
+argument_list|)
+condition|)
+return|return
+name|MATCHED_EXACTLY
+return|;
 if|if
 condition|(
 name|item
@@ -1121,10 +1179,10 @@ comment|/*  * Given a name and a list of pathspecs, returns the nature of the  *
 end_comment
 
 begin_function
-DECL|function|match_pathspec_depth_1
+DECL|function|do_match_pathspec
 specifier|static
 name|int
-name|match_pathspec_depth_1
+name|do_match_pathspec
 parameter_list|(
 specifier|const
 name|struct
@@ -1147,8 +1205,8 @@ name|char
 modifier|*
 name|seen
 parameter_list|,
-name|int
-name|exclude
+name|unsigned
+name|flags
 parameter_list|)
 block|{
 name|int
@@ -1157,6 +1215,12 @@ decl_stmt|,
 name|retval
 init|=
 literal|0
+decl_stmt|,
+name|exclude
+init|=
+name|flags
+operator|&
+name|DO_MATCH_EXCLUDE
 decl_stmt|;
 name|GUARD_PATHSPEC
 argument_list|(
@@ -1348,6 +1412,8 @@ argument_list|,
 name|name
 argument_list|,
 name|namelen
+argument_list|,
+name|flags
 argument_list|)
 expr_stmt|;
 if|if
@@ -1473,9 +1539,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|match_pathspec_depth
+DECL|function|match_pathspec
 name|int
-name|match_pathspec_depth
+name|match_pathspec
 parameter_list|(
 specifier|const
 name|struct
@@ -1497,6 +1563,9 @@ parameter_list|,
 name|char
 modifier|*
 name|seen
+parameter_list|,
+name|int
+name|is_dir
 parameter_list|)
 block|{
 name|int
@@ -1504,9 +1573,18 @@ name|positive
 decl_stmt|,
 name|negative
 decl_stmt|;
+name|unsigned
+name|flags
+init|=
+name|is_dir
+condition|?
+name|DO_MATCH_DIRECTORY
+else|:
+literal|0
+decl_stmt|;
 name|positive
 operator|=
-name|match_pathspec_depth_1
+name|do_match_pathspec
 argument_list|(
 name|ps
 argument_list|,
@@ -1518,7 +1596,7 @@ name|prefix
 argument_list|,
 name|seen
 argument_list|,
-literal|0
+name|flags
 argument_list|)
 expr_stmt|;
 if|if
@@ -1540,7 +1618,7 @@ name|positive
 return|;
 name|negative
 operator|=
-name|match_pathspec_depth_1
+name|do_match_pathspec
 argument_list|(
 name|ps
 argument_list|,
@@ -1552,7 +1630,9 @@ name|prefix
 argument_list|,
 name|seen
 argument_list|,
-literal|1
+name|flags
+operator||
+name|DO_MATCH_EXCLUDE
 argument_list|)
 expr_stmt|;
 return|return
