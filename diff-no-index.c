@@ -70,10 +70,10 @@ file|"string-list.h"
 end_include
 
 begin_function
-DECL|function|read_directory
+DECL|function|read_directory_contents
 specifier|static
 name|int
-name|read_directory
+name|read_directory_contents
 parameter_list|(
 specifier|const
 name|char
@@ -584,7 +584,7 @@ if|if
 condition|(
 name|name1
 operator|&&
-name|read_directory
+name|read_directory_contents
 argument_list|(
 name|name1
 argument_list|,
@@ -600,7 +600,7 @@ if|if
 condition|(
 name|name2
 operator|&&
-name|read_directory
+name|read_directory_contents
 argument_list|(
 name|name2
 argument_list|,
