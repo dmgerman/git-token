@@ -69,6 +69,12 @@ directive|include
 file|"string-list.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"dir.h"
+end_include
+
 begin_function
 DECL|function|read_directory_contents
 specifier|static
@@ -128,19 +134,9 @@ operator|)
 condition|)
 if|if
 condition|(
-name|strcmp
+operator|!
+name|is_dot_or_dotdot
 argument_list|(
-literal|"."
-argument_list|,
-name|e
-operator|->
-name|d_name
-argument_list|)
-operator|&&
-name|strcmp
-argument_list|(
-literal|".."
-argument_list|,
 name|e
 operator|->
 name|d_name
