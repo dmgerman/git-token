@@ -291,7 +291,7 @@ literal|"^((struct|class|enum)[^;]*)$"
 argument_list|,
 comment|/* -- */
 literal|"[a-zA-Z_][a-zA-Z0-9_]*"
-literal|"|[-+0-9.e]+[fFlL]?|0[xXbB]?[0-9a-fA-F]+[lL]?"
+literal|"|[-+0-9.e]+[fFlL]?|0[xXbB]?[0-9a-fA-F]+[lLuU]*"
 literal|"|[-+*/<>%&^|=!]=|--|\\+\\+|<<=?|>>=?|&&|\\|\\||::|->\\*?|\\.\\*"
 argument_list|)
 block|,
