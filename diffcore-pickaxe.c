@@ -1097,15 +1097,6 @@ name|o
 operator|->
 name|pickaxe_opts
 decl_stmt|;
-name|unsigned
-name|long
-name|len
-init|=
-name|strlen
-argument_list|(
-name|needle
-argument_list|)
-decl_stmt|;
 name|regex_t
 name|regex
 decl_stmt|,
@@ -1233,7 +1224,10 @@ name|kws
 argument_list|,
 name|needle
 argument_list|,
-name|len
+name|strlen
+argument_list|(
+name|needle
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|kwsprep
