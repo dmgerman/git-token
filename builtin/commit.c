@@ -8005,7 +8005,7 @@ name|sign_commit
 block|,
 name|N_
 argument_list|(
-literal|"key id"
+literal|"key-id"
 argument_list|)
 block|,
 name|N_
