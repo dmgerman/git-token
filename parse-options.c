@@ -2317,6 +2317,37 @@ default|default:
 empty_stmt|;
 comment|/* ok. (usually accepts an argument) */
 block|}
+if|if
+condition|(
+name|opts
+operator|->
+name|argh
+operator|&&
+name|strcspn
+argument_list|(
+name|opts
+operator|->
+name|argh
+argument_list|,
+literal|" _"
+argument_list|)
+operator|!=
+name|strlen
+argument_list|(
+name|opts
+operator|->
+name|argh
+argument_list|)
+condition|)
+name|err
+operator||=
+name|optbug
+argument_list|(
+name|opts
+argument_list|,
+literal|"multi-word argh should use dash to separate words"
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(
