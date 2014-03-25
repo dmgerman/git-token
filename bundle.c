@@ -752,6 +752,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/* Remember to update object flag allocation in object.h */
+end_comment
+
 begin_define
 DECL|macro|PREREQ_MARK
 define|#

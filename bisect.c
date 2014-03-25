@@ -171,7 +171,7 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
-comment|/* bits #0-15 in revision.h */
+comment|/* Remember to update object flag allocation in object.h */
 end_comment
 
 begin_define

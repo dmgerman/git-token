@@ -4230,6 +4230,10 @@ begin_comment
 comment|/*  * This interprets names like ':/Initial revision of "git"' by searching  * through history and returning the first commit whose message starts  * the given regular expression.  *  * For future extension, ':/!' is reserved. If you want to match a message  * beginning with a '!', you have to repeat the exclamation mark.  */
 end_comment
 
+begin_comment
+comment|/* Remember to update object flag allocation in object.h */
+end_comment
+
 begin_define
 DECL|macro|ONELINE_SEEN
 define|#
