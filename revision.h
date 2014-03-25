@@ -145,11 +145,19 @@ value|(1u<<10)
 end_define
 
 begin_define
+DECL|macro|TRACK_LINEAR
+define|#
+directive|define
+name|TRACK_LINEAR
+value|(1u<<26)
+end_define
+
+begin_define
 DECL|macro|ALL_REV_FLAGS
 define|#
 directive|define
 name|ALL_REV_FLAGS
-value|((1u<<11)-1)
+value|(((1u<<11)-1) | TRACK_LINEAR)
 end_define
 
 begin_define
@@ -653,6 +661,24 @@ name|leak_pending
 range|:
 literal|1
 decl_stmt|;
+comment|/* --show-linear-break */
+DECL|member|track_linear
+name|unsigned
+name|int
+name|track_linear
+range|:
+literal|1
+decl_stmt|,
+DECL|member|track_first_time
+name|track_first_time
+range|:
+literal|1
+decl_stmt|,
+DECL|member|linear
+name|linear
+range|:
+literal|1
+decl_stmt|;
 DECL|member|date_mode
 name|enum
 name|date_mode
@@ -856,6 +882,18 @@ name|struct
 name|saved_parents
 modifier|*
 name|saved_parents_slab
+decl_stmt|;
+DECL|member|previous_parents
+name|struct
+name|commit_list
+modifier|*
+name|previous_parents
+decl_stmt|;
+DECL|member|break_bar
+specifier|const
+name|char
+modifier|*
+name|break_bar
 decl_stmt|;
 block|}
 struct|;
