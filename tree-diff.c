@@ -27,6 +27,36 @@ directive|include
 file|"tree.h"
 end_include
 
+begin_function_decl
+specifier|static
+name|int
+name|ll_diff_tree_sha1
+parameter_list|(
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|old
+parameter_list|,
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|new
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|base_str
+parameter_list|,
+name|struct
+name|diff_options
+modifier|*
+name|opt
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/*  * Compare two tree entries, taking into account only path/S_ISDIR(mode),  * but not their sha1's.  *  * NOTE files and directories *always* compare differently, even when having  *      the same name - thanks to base_name_compare().  *  * NOTE empty (=invalid) descriptor(s) take part in comparison as +infty,  *      so that they sort *after* valid tree entries.  *  *      Due to this convention, if trees are scanned in sorted order, all  *      non-empty descriptors will be processed first.  */
 end_comment
@@ -523,7 +553,7 @@ argument_list|,
 literal|'/'
 argument_list|)
 expr_stmt|;
-name|diff_tree_sha1
+name|ll_diff_tree_sha1
 argument_list|(
 name|t1
 condition|?
