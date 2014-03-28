@@ -2661,7 +2661,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/* Run a post-merge hook */
-name|run_hook
+name|run_hook_le
 argument_list|(
 name|NULL
 argument_list|,
@@ -5175,8 +5175,12 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|run_hook
+name|run_commit_hook
 argument_list|(
+literal|0
+operator|<
+name|option_edit
+argument_list|,
 name|get_index_file
 argument_list|()
 argument_list|,
@@ -5188,8 +5192,6 @@ literal|"MERGE_MSG"
 argument_list|)
 argument_list|,
 literal|"merge"
-argument_list|,
-name|NULL
 argument_list|,
 name|NULL
 argument_list|)
