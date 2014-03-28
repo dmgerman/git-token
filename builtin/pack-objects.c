@@ -5139,6 +5139,21 @@ expr_stmt|;
 block|}
 end_function
 
+begin_decl_stmt
+DECL|variable|no_closure_warning
+specifier|static
+specifier|const
+name|char
+name|no_closure_warning
+index|[]
+init|=
+name|N_
+argument_list|(
+literal|"disabling bitmap writing, as some objects are not being packed"
+argument_list|)
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|add_object_entry
 specifier|static
@@ -5206,9 +5221,30 @@ operator|&
 name|found_offset
 argument_list|)
 condition|)
+block|{
+comment|/* The pack is missing an object, so it will not have closure */
+if|if
+condition|(
+name|write_bitmap_index
+condition|)
+block|{
+name|warning
+argument_list|(
+name|_
+argument_list|(
+name|no_closure_warning
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|write_bitmap_index
+operator|=
+literal|0
+expr_stmt|;
+block|}
 return|return
 literal|0
 return|;
+block|}
 name|create_object_entry
 argument_list|(
 name|sha1
