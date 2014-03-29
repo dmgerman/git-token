@@ -255,7 +255,6 @@ end_function
 
 begin_function
 DECL|function|git_fnmatch
-specifier|inline
 name|int
 name|git_fnmatch
 parameter_list|(
