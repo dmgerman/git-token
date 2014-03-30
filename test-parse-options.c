@@ -513,8 +513,7 @@ argument_list|,
 literal|"set string to default"
 argument_list|,
 operator|(
-name|unsigned
-name|long
+name|intptr_t
 operator|)
 literal|"default"
 argument_list|)
