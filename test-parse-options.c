@@ -512,9 +512,6 @@ name|string
 argument_list|,
 literal|"set string to default"
 argument_list|,
-operator|(
-name|intptr_t
-operator|)
 literal|"default"
 argument_list|)
 block|,

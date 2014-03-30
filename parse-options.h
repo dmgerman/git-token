@@ -421,7 +421,7 @@ name|h
 parameter_list|,
 name|p
 parameter_list|)
-value|{ OPTION_SET_PTR, (s), (l), (v), NULL, \ 				      (h), PARSE_OPT_NOARG, NULL, (p) }
+value|{ OPTION_SET_PTR, (s), (l), (v), NULL, \ 				      (h), PARSE_OPT_NOARG, NULL, (intptr_t)(p) }
 end_define
 
 begin_define
