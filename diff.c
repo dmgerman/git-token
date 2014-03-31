@@ -22984,7 +22984,7 @@ return|return
 operator|-
 literal|1
 return|;
-comment|/* that is not a -M, -C nor -B option */
+comment|/* that is not a -M, -C, or -B option */
 name|opt1
 operator|=
 name|parse_rename_score

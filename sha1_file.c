@@ -3757,7 +3757,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * This is used by git-repack in case a newly created pack happens to  * contain the same set of objects as an existing one.  In that case  * the resulting file might be different even if its name would be the  * same.  It is best to close any reference to the old pack before it is  * replaced on disk.  Of course no index pointers nor windows for given pack  * must subsist at this point.  If ever objects from this pack are requested  * again, the new version of the pack will be reinitialized through  * reprepare_packed_git().  */
+comment|/*  * This is used by git-repack in case a newly created pack happens to  * contain the same set of objects as an existing one.  In that case  * the resulting file might be different even if its name would be the  * same.  It is best to close any reference to the old pack before it is  * replaced on disk.  Of course no index pointers or windows for given pack  * must subsist at this point.  If ever objects from this pack are requested  * again, the new version of the pack will be reinitialized through  * reprepare_packed_git().  */
 end_comment
 
 begin_function
