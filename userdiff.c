@@ -283,16 +283,14 @@ argument_list|(
 literal|"cpp"
 argument_list|,
 comment|/* Jump targets or access declarations */
-literal|"!^[ \t]*[A-Za-z_][A-Za-z_0-9]*:.*$\n"
-comment|/* C/++ functions/methods at top level */
-literal|"^([A-Za-z_][A-Za-z_0-9]*([ \t*]+[A-Za-z_][A-Za-z_0-9]*([ \t]*::[ \t]*[^[:space:]]+)?){1,}[ \t]*\\([^;]*)$\n"
-comment|/* compound type at top level */
-literal|"^((struct|class|enum)[^;]*)$"
+literal|"!^[ \t]*[A-Za-z_][A-Za-z_0-9]*:[[:space:]]*($|/[/*])\n"
+comment|/* functions/methods, variables, and compounds at top level */
+literal|"^((::[[:space:]]*)?[A-Za-z_].*)$"
 argument_list|,
 comment|/* -- */
 literal|"[a-zA-Z_][a-zA-Z0-9_]*"
-literal|"|[-+0-9.e]+[fFlL]?|0[xXbB]?[0-9a-fA-F]+[lL]?"
-literal|"|[-+*/<>%&^|=!]=|--|\\+\\+|<<=?|>>=?|&&|\\|\\||::|->"
+literal|"|[-+0-9.e]+[fFlL]?|0[xXbB]?[0-9a-fA-F]+[lLuU]*"
+literal|"|[-+*/<>%&^|=!]=|--|\\+\\+|<<=?|>>=?|&&|\\|\\||::|->\\*?|\\.\\*"
 argument_list|)
 block|,
 name|PATTERNS
