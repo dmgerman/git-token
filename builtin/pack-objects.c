@@ -12176,6 +12176,25 @@ block|}
 block|}
 end_function
 
+begin_comment
+comment|/*  * This tracks any options which a reader of the pack might  * not understand, and which would therefore prevent blind reuse  * of what we have on disk.  */
+end_comment
+
+begin_function
+DECL|function|pack_options_allow_reuse
+specifier|static
+name|int
+name|pack_options_allow_reuse
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+return|return
+name|allow_ofs_delta
+return|;
+block|}
+end_function
+
 begin_function
 DECL|function|get_object_list_from_bitmap
 specifier|static
@@ -12203,6 +12222,9 @@ literal|1
 return|;
 if|if
 condition|(
+name|pack_options_allow_reuse
+argument_list|()
+operator|&&
 operator|!
 name|reuse_partial_packfile_from_bitmap
 argument_list|(
