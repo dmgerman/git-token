@@ -786,6 +786,12 @@ operator|=
 name|update_alloc
 argument_list|()
 expr_stmt|;
+name|update
+operator|->
+name|have_old
+operator|=
+literal|1
+expr_stmt|;
 if|if
 condition|(
 operator|(
