@@ -194,6 +194,10 @@ name|alternate_shallow_file
 decl_stmt|;
 end_decl_stmt
 
+begin_comment
+comment|/* Remember to update object flag allocation in object.h */
+end_comment
+
 begin_define
 DECL|macro|COMPLETE
 define|#
