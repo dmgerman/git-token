@@ -3493,6 +3493,7 @@ parameter_list|,
 name|size_t
 name|namesz
 parameter_list|,
+specifier|const
 name|unsigned
 name|char
 modifier|*
