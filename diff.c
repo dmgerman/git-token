@@ -18492,6 +18492,7 @@ argument_list|,
 name|RENAME_EMPTY
 argument_list|)
 expr_stmt|;
+comment|/* pathchange left =NULL by default */
 name|options
 operator|->
 name|change

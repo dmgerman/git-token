@@ -433,6 +433,22 @@ value|(((m)& S_IFMT) == S_IFGITLINK)
 end_define
 
 begin_comment
+comment|/*  * Some mode bits are also used internally for computations.  *  * They *must* not overlap with any valid modes, and they *must* not be emitted  * to outside world - i.e. appear on disk or network. In other words, it's just  * temporary fields, which we internally use, but they have to stay in-house.  *  * ( such approach is valid, as standard S_IF* fits into 16 bits, and in Git  *   codebase mode is `unsigned int` which is assumed to be at least 32 bits )  */
+end_comment
+
+begin_comment
+comment|/* used internally in tree-diff */
+end_comment
+
+begin_define
+DECL|macro|S_DIFFTREE_IFXMIN_NEQ
+define|#
+directive|define
+name|S_DIFFTREE_IFXMIN_NEQ
+value|0x80000000
+end_define
+
+begin_comment
 comment|/*  * Intensive research over the course of many years has shown that  * port 9418 is totally unused by anything else. Or  *  *	Your search - "port 9418" - did not match any documents.  *  * as www.google.com puts it.  *  * This port has been properly assigned for git use by IANA:  * git (Assigned-9418) [I06-050728-0001].  *  *	git  9418/tcp   git pack transfer service  *	git  9418/udp   git pack transfer service  *  * with Linus Torvalds<torvalds@osdl.org> as the point of  * contact. September 2005.  *  * See http://www.iana.org/assignments/port-numbers  */
 end_comment
 
