@@ -737,9 +737,9 @@ name|flags
 operator|&
 name|PARSE_SHA1_OLD
 condition|?
-literal|"%s %s missing<oldvalue>"
+literal|"%s %s: unexpected end of input when reading<oldvalue>"
 else|:
-literal|"%s %s missing<newvalue>"
+literal|"%s %s: unexpected end of input when reading<newvalue>"
 argument_list|,
 name|command
 argument_list|,
