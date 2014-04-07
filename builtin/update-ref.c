@@ -1690,7 +1690,7 @@ name|updates
 argument_list|,
 name|updates_count
 argument_list|,
-name|DIE_ON_ERR
+name|UPDATE_REFS_DIE_ON_ERR
 argument_list|)
 return|;
 block|}
@@ -1875,7 +1875,7 @@ name|NULL
 argument_list|,
 name|flags
 argument_list|,
-name|DIE_ON_ERR
+name|UPDATE_REFS_DIE_ON_ERR
 argument_list|)
 return|;
 block|}

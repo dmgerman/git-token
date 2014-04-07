@@ -1337,7 +1337,7 @@ name|old_orig
 argument_list|,
 literal|0
 argument_list|,
-name|MSG_ON_ERR
+name|UPDATE_REFS_MSG_ON_ERR
 argument_list|)
 expr_stmt|;
 block|}
@@ -1381,7 +1381,7 @@ name|orig
 argument_list|,
 literal|0
 argument_list|,
-name|MSG_ON_ERR
+name|UPDATE_REFS_MSG_ON_ERR
 argument_list|)
 expr_stmt|;
 name|strbuf_release

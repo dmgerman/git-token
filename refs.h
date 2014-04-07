@@ -1102,26 +1102,26 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
-begin_comment
-comment|/** lock a ref and then write its file */
-end_comment
-
 begin_enum
 DECL|enum|action_on_err
-DECL|enumerator|MSG_ON_ERR
-DECL|enumerator|DIE_ON_ERR
-DECL|enumerator|QUIET_ON_ERR
 enum|enum
 name|action_on_err
 block|{
-name|MSG_ON_ERR
+DECL|enumerator|UPDATE_REFS_MSG_ON_ERR
+name|UPDATE_REFS_MSG_ON_ERR
 block|,
-name|DIE_ON_ERR
+DECL|enumerator|UPDATE_REFS_DIE_ON_ERR
+name|UPDATE_REFS_DIE_ON_ERR
 block|,
-name|QUIET_ON_ERR
+DECL|enumerator|UPDATE_REFS_QUIET_ON_ERR
+name|UPDATE_REFS_QUIET_ON_ERR
 block|}
 enum|;
 end_enum
+
+begin_comment
+comment|/** Lock a ref and then write its file */
+end_comment
 
 begin_function_decl
 name|int
