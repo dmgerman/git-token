@@ -824,7 +824,7 @@ name|line_termination
 condition|)
 name|die
 argument_list|(
-literal|"update %s missing [<oldvalue>] NUL"
+literal|"update %s missing<oldvalue>"
 argument_list|,
 name|update
 operator|->
@@ -1089,7 +1089,7 @@ name|line_termination
 condition|)
 name|die
 argument_list|(
-literal|"delete %s missing [<oldvalue>] NUL"
+literal|"delete %s missing<oldvalue>"
 argument_list|,
 name|update
 operator|->
@@ -1225,7 +1225,7 @@ name|line_termination
 condition|)
 name|die
 argument_list|(
-literal|"verify %s missing [<oldvalue>] NUL"
+literal|"verify %s missing<oldvalue>"
 argument_list|,
 name|update
 operator|->
