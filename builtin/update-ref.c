@@ -675,6 +675,15 @@ name|PARSE_SHA1_ALLOW_EMPTY
 condition|)
 block|{
 comment|/* With -z, treat an empty value as all zeros: */
+name|warning
+argument_list|(
+literal|"%s %s: missing<newvalue>, treating as zero"
+argument_list|,
+name|command
+argument_list|,
+name|refname
+argument_list|)
+expr_stmt|;
 name|hashclr
 argument_list|(
 name|sha1
