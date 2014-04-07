@@ -803,7 +803,7 @@ name|ref_name
 condition|)
 name|die
 argument_list|(
-literal|"update line missing<ref>"
+literal|"update: missing<ref>"
 argument_list|)
 expr_stmt|;
 if|if
@@ -830,7 +830,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"update %s missing<newvalue>"
+literal|"update %s: missing<newvalue>"
 argument_list|,
 name|update
 operator|->
@@ -871,7 +871,7 @@ name|line_termination
 condition|)
 name|die
 argument_list|(
-literal|"update %s has extra input: %s"
+literal|"update %s: extra input: %s"
 argument_list|,
 name|update
 operator|->
@@ -936,7 +936,7 @@ name|ref_name
 condition|)
 name|die
 argument_list|(
-literal|"create line missing<ref>"
+literal|"create: missing<ref>"
 argument_list|)
 expr_stmt|;
 if|if
@@ -963,7 +963,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"create %s missing<newvalue>"
+literal|"create %s: missing<newvalue>"
 argument_list|,
 name|update
 operator|->
@@ -981,7 +981,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"create %s given zero<newvalue>"
+literal|"create %s: zero<newvalue>"
 argument_list|,
 name|update
 operator|->
@@ -997,7 +997,7 @@ name|line_termination
 condition|)
 name|die
 argument_list|(
-literal|"create %s has extra input: %s"
+literal|"create %s: extra input: %s"
 argument_list|,
 name|update
 operator|->
@@ -1062,7 +1062,7 @@ name|ref_name
 condition|)
 name|die
 argument_list|(
-literal|"delete line missing<ref>"
+literal|"delete: missing<ref>"
 argument_list|)
 expr_stmt|;
 if|if
@@ -1108,7 +1108,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"delete %s given zero<oldvalue>"
+literal|"delete %s: zero<oldvalue>"
 argument_list|,
 name|update
 operator|->
@@ -1131,7 +1131,7 @@ name|line_termination
 condition|)
 name|die
 argument_list|(
-literal|"delete %s has extra input: %s"
+literal|"delete %s: extra input: %s"
 argument_list|,
 name|update
 operator|->
@@ -1196,7 +1196,7 @@ name|ref_name
 condition|)
 name|die
 argument_list|(
-literal|"verify line missing<ref>"
+literal|"verify: missing<ref>"
 argument_list|)
 expr_stmt|;
 if|if
@@ -1258,7 +1258,7 @@ name|line_termination
 condition|)
 name|die
 argument_list|(
-literal|"verify %s has extra input: %s"
+literal|"verify %s: extra input: %s"
 argument_list|,
 name|update
 operator|->
