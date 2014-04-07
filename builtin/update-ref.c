@@ -323,6 +323,10 @@ expr_stmt|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Parse one whitespace- or NUL-terminated, possibly C-quoted argument  * and append the result to arg.  Return a pointer to the terminator.  * Die if there is an error in how the argument is C-quoted.  This  * function is only used if not -z.  */
+end_comment
+
 begin_function
 DECL|function|parse_arg
 specifier|static
@@ -342,14 +346,62 @@ modifier|*
 name|arg
 parameter_list|)
 block|{
-comment|/* Parse SP-terminated, possibly C-quoted argument */
 if|if
 condition|(
 operator|*
 name|next
-operator|!=
+operator|==
 literal|'"'
 condition|)
+block|{
+specifier|const
+name|char
+modifier|*
+name|orig
+init|=
+name|next
+decl_stmt|;
+if|if
+condition|(
+name|unquote_c_style
+argument_list|(
+name|arg
+argument_list|,
+name|next
+argument_list|,
+operator|&
+name|next
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"badly quoted argument: %s"
+argument_list|,
+name|orig
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|*
+name|next
+operator|&&
+operator|!
+name|isspace
+argument_list|(
+operator|*
+name|next
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"unexpected character after quoted argument: %s"
+argument_list|,
+name|orig
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 while|while
 condition|(
 operator|*
@@ -371,27 +423,7 @@ name|next
 operator|++
 argument_list|)
 expr_stmt|;
-elseif|else
-if|if
-condition|(
-name|unquote_c_style
-argument_list|(
-name|arg
-argument_list|,
-name|next
-argument_list|,
-operator|&
-name|next
-argument_list|)
-condition|)
-name|die
-argument_list|(
-literal|"badly quoted argument: %s"
-argument_list|,
-name|next
-argument_list|)
-expr_stmt|;
-comment|/* Return position after the argument */
+block|}
 return|return
 name|next
 return|;
