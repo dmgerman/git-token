@@ -85,7 +85,6 @@ end_decl_stmt
 begin_decl_stmt
 DECL|variable|updates
 specifier|static
-specifier|const
 name|struct
 name|ref_update
 modifier|*

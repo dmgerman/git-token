@@ -15837,10 +15837,10 @@ name|char
 modifier|*
 name|action
 parameter_list|,
-specifier|const
 name|struct
 name|ref_update
 modifier|*
+specifier|const
 modifier|*
 name|updates_orig
 parameter_list|,
