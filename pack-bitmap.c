@@ -3297,6 +3297,12 @@ condition|(
 name|haves
 condition|)
 block|{
+name|revs
+operator|->
+name|ignore_missing_links
+operator|=
+literal|1
+expr_stmt|;
 name|haves_bitmap
 operator|=
 name|find_objects
@@ -3310,6 +3316,12 @@ argument_list|)
 expr_stmt|;
 name|reset_revision_walk
 argument_list|()
+expr_stmt|;
+name|revs
+operator|->
+name|ignore_missing_links
+operator|=
+literal|0
 expr_stmt|;
 if|if
 condition|(

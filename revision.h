@@ -362,6 +362,11 @@ DECL|member|ignore_missing
 name|ignore_missing
 range|:
 literal|1
+decl_stmt|,
+DECL|member|ignore_missing_links
+name|ignore_missing_links
+range|:
+literal|1
 decl_stmt|;
 comment|/* Traversal flags */
 DECL|member|dense
