@@ -5520,7 +5520,7 @@ name|pbase_tree
 modifier|*
 name|next
 decl_stmt|;
-comment|/* This is a phony "cache" entry; we are not 	 * going to evict it nor find it through _get() 	 * mechanism -- this is for the toplevel node that 	 * would almost always change with any commit. 	 */
+comment|/* This is a phony "cache" entry; we are not 	 * going to evict it or find it through _get() 	 * mechanism -- this is for the toplevel node that 	 * would almost always change with any commit. 	 */
 DECL|member|pcache
 name|struct
 name|pbase_tree_cache

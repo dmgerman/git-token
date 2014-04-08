@@ -8532,7 +8532,7 @@ operator|||
 name|send_mirror
 operator|)
 condition|)
-comment|/* 				 * Remote doesn't have it, and we have no 				 * explicit pattern, and we don't have 				 * --all nor --mirror. 				 */
+comment|/* 				 * Remote doesn't have it, and we have no 				 * explicit pattern, and we don't have 				 * --all or --mirror. 				 */
 goto|goto
 name|free_name
 goto|;

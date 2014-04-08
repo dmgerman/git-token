@@ -49,7 +49,7 @@ file|"url.h"
 end_include
 
 begin_comment
-comment|/*  * We detect based on the cURL version if multi-transfer is  * usable in this implementation and define this symbol accordingly.  * This is not something Makefile should set nor users should pass  * via CFLAGS.  */
+comment|/*  * We detect based on the cURL version if multi-transfer is  * usable in this implementation and define this symbol accordingly.  * This shouldn't be set by the Makefile or by the user (e.g. via CFLAGS).  */
 end_comment
 
 begin_undef

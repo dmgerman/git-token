@@ -2702,7 +2702,7 @@ operator|->
 name|combine_merges
 condition|)
 block|{
-comment|/* No "--first-parent", "-c", nor "--cc" */
+comment|/* No "--first-parent", "-c", or "--cc" */
 name|rev
 operator|->
 name|combine_merges
