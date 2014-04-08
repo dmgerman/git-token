@@ -5417,7 +5417,7 @@ name|override_notes_ref
 argument_list|,
 name|N_
 argument_list|(
-literal|"notes_ref"
+literal|"notes-ref"
 argument_list|)
 argument_list|,
 name|N_
