@@ -501,24 +501,6 @@ argument_list|,
 literal|"obsolete"
 argument_list|)
 block|,
-name|OPT_SET_PTR
-argument_list|(
-literal|0
-argument_list|,
-literal|"default-string"
-argument_list|,
-operator|&
-name|string
-argument_list|,
-literal|"set string to default"
-argument_list|,
-operator|(
-name|unsigned
-name|long
-operator|)
-literal|"default"
-argument_list|)
-block|,
 name|OPT_STRING_LIST
 argument_list|(
 literal|0
