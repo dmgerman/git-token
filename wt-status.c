@@ -9232,6 +9232,14 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+DECL|macro|LABEL
+define|#
+directive|define
+name|LABEL
+parameter_list|(
+name|string
+parameter_list|)
+value|(s->no_gettext ? (string) : _(string))
 name|color_fprintf
 argument_list|(
 name|s
@@ -9256,9 +9264,12 @@ name|fp
 argument_list|,
 name|header_color
 argument_list|,
-name|_
+name|LABEL
+argument_list|(
+name|N_
 argument_list|(
 literal|"gone"
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -9278,9 +9289,12 @@ name|fp
 argument_list|,
 name|header_color
 argument_list|,
-name|_
+name|LABEL
+argument_list|(
+name|N_
 argument_list|(
 literal|"behind "
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -9313,9 +9327,14 @@ name|fp
 argument_list|,
 name|header_color
 argument_list|,
-name|_
+name|LABEL
 argument_list|(
+name|N_
+argument_list|(
+operator|(
 literal|"ahead "
+operator|)
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -9343,9 +9362,14 @@ name|fp
 argument_list|,
 name|header_color
 argument_list|,
-name|_
+name|LABEL
 argument_list|(
+name|N_
+argument_list|(
+operator|(
 literal|"ahead "
+operator|)
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -9370,9 +9394,14 @@ name|fp
 argument_list|,
 name|header_color
 argument_list|,
-name|_
+literal|", %s"
+argument_list|,
+name|LABEL
 argument_list|(
-literal|", behind "
+name|N_
+argument_list|(
+literal|"behind "
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -9639,6 +9668,12 @@ operator|->
 name|prefix
 operator|=
 name|NULL
+expr_stmt|;
+name|s
+operator|->
+name|no_gettext
+operator|=
+literal|1
 expr_stmt|;
 name|wt_shortstatus_print
 argument_list|(
