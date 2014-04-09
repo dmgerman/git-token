@@ -19971,7 +19971,7 @@ name|errno
 argument_list|)
 argument_list|)
 return|;
-comment|/* Normal git tools never deal with .rej, so do not pretend 	 * this is a git patch by saying --git nor give extended 	 * headers.  While at it, maybe please "kompare" that wants 	 * the trailing TAB and some garbage at the end of line ;-). 	 */
+comment|/* Normal git tools never deal with .rej, so do not pretend 	 * this is a git patch by saying --git or giving extended 	 * headers.  While at it, maybe please "kompare" that wants 	 * the trailing TAB and some garbage at the end of line ;-). 	 */
 name|fprintf
 argument_list|(
 name|rej

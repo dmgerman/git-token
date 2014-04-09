@@ -4596,7 +4596,7 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"clean.requireForce set to true and neither -i, -n nor -f given; "
+literal|"clean.requireForce set to true and neither -i, -n, nor -f given; "
 literal|"refusing to clean"
 argument_list|)
 argument_list|)
@@ -4606,8 +4606,8 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"clean.requireForce defaults to true and neither -i, -n nor -f given; "
-literal|"refusing to clean"
+literal|"clean.requireForce defaults to true and neither -i, -n, nor -f given;"
+literal|" refusing to clean"
 argument_list|)
 argument_list|)
 expr_stmt|;

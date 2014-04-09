@@ -23,7 +23,7 @@ struct_decl|;
 end_struct_decl
 
 begin_comment
-comment|/*  * create_delta_index: compute index data from given buffer  *  * This returns a pointer to a struct delta_index that should be passed to  * subsequent create_delta() calls, or to free_delta_index().  A NULL pointer  * is returned on failure.  The given buffer must not be freed nor altered  * before free_delta_index() is called.  The returned pointer must be freed  * using free_delta_index().  */
+comment|/*  * create_delta_index: compute index data from given buffer  *  * This returns a pointer to a struct delta_index that should be passed to  * subsequent create_delta() calls, or to free_delta_index().  A NULL pointer  * is returned on failure.  The given buffer must not be freed or altered  * before free_delta_index() is called.  The returned pointer must be freed  * using free_delta_index().  */
 end_comment
 
 begin_function_decl

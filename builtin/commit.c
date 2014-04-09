@@ -5676,7 +5676,7 @@ name|only_include_assumed
 operator|=
 name|_
 argument_list|(
-literal|"Explicit paths specified without -i nor -o; assuming --only paths..."
+literal|"Explicit paths specified without -i or -o; assuming --only paths..."
 argument_list|)
 expr_stmt|;
 if|if
