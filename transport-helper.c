@@ -4002,7 +4002,7 @@ end_function
 begin_function
 DECL|function|push_update_refs_status
 specifier|static
-name|void
+name|int
 name|push_update_refs_status
 parameter_list|(
 name|struct
@@ -4032,6 +4032,11 @@ name|ref
 init|=
 name|remote_refs
 decl_stmt|;
+name|int
+name|ret
+init|=
+literal|0
+decl_stmt|;
 for|for
 control|(
 init|;
@@ -4052,11 +4057,13 @@ operator|&
 name|buf
 argument_list|)
 condition|)
-name|exit
-argument_list|(
-literal|128
-argument_list|)
+block|{
+name|ret
+operator|=
+literal|1
 expr_stmt|;
+break|break;
+block|}
 if|if
 condition|(
 operator|!
@@ -4148,6 +4155,9 @@ operator|&
 name|buf
 argument_list|)
 expr_stmt|;
+return|return
+name|ret
+return|;
 block|}
 end_function
 
@@ -4525,6 +4535,7 @@ operator|&
 name|buf
 argument_list|)
 expr_stmt|;
+return|return
 name|push_update_refs_status
 argument_list|(
 name|data
@@ -4533,9 +4544,6 @@ name|remote_refs
 argument_list|,
 name|flags
 argument_list|)
-expr_stmt|;
-return|return
-literal|0
 return|;
 block|}
 end_function
@@ -4865,6 +4873,7 @@ argument_list|(
 literal|"Error while running fast-export"
 argument_list|)
 expr_stmt|;
+return|return
 name|push_update_refs_status
 argument_list|(
 name|data
@@ -4873,9 +4882,6 @@ name|remote_refs
 argument_list|,
 name|flags
 argument_list|)
-expr_stmt|;
-return|return
-literal|0
 return|;
 block|}
 end_function
