@@ -2690,6 +2690,7 @@ block|}
 end_function
 
 begin_function
+name|NORETURN
 DECL|function|die_bad_number
 specifier|static
 name|void
