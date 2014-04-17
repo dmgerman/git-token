@@ -2076,7 +2076,7 @@ argument_list|(
 name|git_dir
 argument_list|)
 decl_stmt|;
-comment|/* 		 * TRANSLATORS: The first '%s' is either "Reinitialized 		 * existing" or "Initialized empty", the second " shared" or 		 * "", and the last '%s%s' is the verbatim directory name. 		 */
+comment|/* TRANSLATORS: The first '%s' is either "Reinitialized 		   existing" or "Initialized empty", the second " shared" or 		   "", and the last '%s%s' is the verbatim directory name. */
 name|printf
 argument_list|(
 name|_
