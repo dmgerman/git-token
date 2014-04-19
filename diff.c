@@ -16646,9 +16646,6 @@ name|env
 init|=
 name|ARGV_ARRAY_INIT
 decl_stmt|;
-name|int
-name|retval
-decl_stmt|;
 name|struct
 name|diff_queue_struct
 modifier|*
@@ -16851,8 +16848,8 @@ operator|->
 name|nr
 argument_list|)
 expr_stmt|;
-name|retval
-operator|=
+if|if
+condition|(
 name|run_command_v_opt_cd_env
 argument_list|(
 name|argv
@@ -16866,6 +16863,16 @@ argument_list|,
 name|env
 operator|.
 name|argv
+argument_list|)
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"external diff died, stopping at %s"
+argument_list|)
+argument_list|,
+name|name
 argument_list|)
 expr_stmt|;
 name|remove_tempfile
@@ -16883,26 +16890,6 @@ operator|&
 name|env
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|retval
-condition|)
-block|{
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-literal|"external diff died, stopping at %s.\n"
-argument_list|,
-name|name
-argument_list|)
-expr_stmt|;
-name|exit
-argument_list|(
-literal|1
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 end_function
 
