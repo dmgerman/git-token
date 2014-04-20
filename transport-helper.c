@@ -4674,12 +4674,6 @@ argument_list|,
 literal|"export\n"
 argument_list|)
 expr_stmt|;
-name|strbuf_reset
-argument_list|(
-operator|&
-name|buf
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|ref
@@ -4798,12 +4792,6 @@ name|name
 argument_list|)
 condition|)
 block|{
-name|struct
-name|strbuf
-name|buf
-init|=
-name|STRBUF_INIT
-decl_stmt|;
 if|if
 condition|(
 operator|!
