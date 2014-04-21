@@ -821,11 +821,11 @@ argument_list|,
 name|years
 argument_list|)
 expr_stmt|;
-comment|/* TRANSLATORS: "%s" is "<n> years" */
 name|strbuf_addf
 argument_list|(
 name|timebuf
 argument_list|,
+comment|/* TRANSLATORS: "%s" is "<n> years" */
 name|Q_
 argument_list|(
 literal|"%s, %lu month ago"
