@@ -405,6 +405,8 @@ DECL|variable|default_to_upstream
 specifier|static
 name|int
 name|default_to_upstream
+init|=
+literal|1
 decl_stmt|;
 end_decl_stmt
 
