@@ -12260,7 +12260,21 @@ break|break;
 case|case
 name|DATE_RELATIVE
 case|:
-comment|/* "normal" is used as the fallback for "relative" */
+comment|/* TRANSLATORS: This string is used to tell us the maximum 		   display width for a relative timestamp in "git blame" 		   output.  For C locale, "4 years, 11 months ago", which 		   takes 22 places, is the longest among various forms of 		   relative timestamps, but your language may need more or 		   fewer display columns. */
+name|blame_date_width
+operator|=
+name|utf8_strwidth
+argument_list|(
+name|_
+argument_list|(
+literal|"4 years, 11 months ago"
+argument_list|)
+argument_list|)
+operator|+
+literal|1
+expr_stmt|;
+comment|/* add the null */
+break|break;
 case|case
 name|DATE_LOCAL
 case|:
