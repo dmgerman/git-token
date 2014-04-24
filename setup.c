@@ -100,7 +100,10 @@ argument_list|)
 expr_stmt|;
 name|off
 operator|=
-literal|0
+name|offset_1st_component
+argument_list|(
+name|path
+argument_list|)
 expr_stmt|;
 comment|/* check if work tree is already the prefix */
 if|if
@@ -201,11 +204,6 @@ name|path
 expr_stmt|;
 name|path
 operator|+=
-name|offset_1st_component
-argument_list|(
-name|path
-argument_list|)
-operator|+
 name|off
 expr_stmt|;
 comment|/* check each '/'-terminated level */
