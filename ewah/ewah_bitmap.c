@@ -156,7 +156,7 @@ name|rlw_offset
 operator|/
 sizeof|sizeof
 argument_list|(
-name|size_t
+name|eword_t
 argument_list|)
 operator|)
 expr_stmt|;
