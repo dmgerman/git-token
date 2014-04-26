@@ -1020,6 +1020,23 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+name|list
+operator|&&
+operator|!
+name|delete
+condition|)
+if|if
+condition|(
+operator|!
+name|argc
+condition|)
+name|list
+operator|=
+literal|1
+expr_stmt|;
+if|if
+condition|(
 name|list
 operator|&&
 name|delete
@@ -1037,11 +1054,12 @@ if|if
 condition|(
 name|format
 operator|&&
-name|delete
+operator|!
+name|list
 condition|)
 name|usage_msg_opt
 argument_list|(
-literal|"--format and -d cannot be used together"
+literal|"--format cannot be used when not listing"
 argument_list|,
 name|git_replace_usage
 argument_list|,
@@ -1121,19 +1139,6 @@ argument_list|,
 name|options
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|format
-condition|)
-name|usage_msg_opt
-argument_list|(
-literal|"--format cannot be used when not listing"
-argument_list|,
-name|git_replace_usage
-argument_list|,
-name|options
-argument_list|)
-expr_stmt|;
 return|return
 name|replace_object
 argument_list|(
@@ -1161,19 +1166,6 @@ condition|)
 name|usage_msg_opt
 argument_list|(
 literal|"only one pattern can be given with -l"
-argument_list|,
-name|git_replace_usage
-argument_list|,
-name|options
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|force
-condition|)
-name|usage_msg_opt
-argument_list|(
-literal|"-f needs some arguments"
 argument_list|,
 name|git_replace_usage
 argument_list|,
