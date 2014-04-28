@@ -550,6 +550,7 @@ name|ewah_bitmap
 modifier|*
 name|self
 parameter_list|,
+specifier|const
 name|void
 modifier|*
 name|map
