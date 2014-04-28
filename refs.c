@@ -12107,6 +12107,30 @@ return|;
 block|}
 end_function
 
+begin_function_decl
+specifier|static
+name|int
+name|write_ref_sha1
+parameter_list|(
+name|struct
+name|ref_lock
+modifier|*
+name|lock
+parameter_list|,
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|sha1
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|logmsg
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function
 DECL|function|rename_ref
 name|int
@@ -13422,11 +13446,12 @@ block|}
 end_function
 
 begin_comment
-comment|/* This function must return a meaningful errno */
+comment|/*  * Write sha1 into the ref specified by the lock. Make sure that errno  * is sane on error.  */
 end_comment
 
 begin_function
 DECL|function|write_ref_sha1
+specifier|static
 name|int
 name|write_ref_sha1
 parameter_list|(

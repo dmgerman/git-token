@@ -783,34 +783,6 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/** Writes sha1 into the ref specified by the lock. **/
-end_comment
-
-begin_function_decl
-specifier|extern
-name|int
-name|write_ref_sha1
-parameter_list|(
-name|struct
-name|ref_lock
-modifier|*
-name|lock
-parameter_list|,
-specifier|const
-name|unsigned
-name|char
-modifier|*
-name|sha1
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|msg
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_comment
 comment|/*  * Setup reflog before using. Set errno to something meaningful on failure.  */
 end_comment
 
