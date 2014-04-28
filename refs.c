@@ -9342,7 +9342,7 @@ block|}
 end_function
 
 begin_comment
-comment|/* This function should make sure errno is meaningful on error */
+comment|/*  * Locks a "refs/" ref returning the lock on success and NULL on failure.  * On failure errno is set to something meaningful.  */
 end_comment
 
 begin_function
@@ -9807,6 +9807,7 @@ end_function
 
 begin_function
 DECL|function|lock_ref_sha1
+specifier|static
 name|struct
 name|ref_lock
 modifier|*
