@@ -1741,6 +1741,12 @@ literal|0
 argument_list|,
 literal|0
 argument_list|,
+name|msg
+condition|?
+name|msg
+else|:
+literal|"fetch (unknown)"
+argument_list|,
 operator|&
 name|err
 argument_list|)
@@ -1765,12 +1771,6 @@ condition|(
 name|ref_transaction_commit
 argument_list|(
 name|transaction
-argument_list|,
-name|msg
-condition|?
-name|msg
-else|:
-literal|"fetch (unknown)"
 argument_list|,
 operator|&
 name|err

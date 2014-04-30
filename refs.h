@@ -1178,7 +1178,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * The following functions add a reference check or update to a  * ref_transaction.  In all of them, refname is the name of the  * reference to be affected.  The functions make internal copies of  * refname, so the caller retains ownership of the parameter.  flags  * can be REF_NODEREF; it is passed to update_ref_lock().  */
+comment|/*  * The following functions add a reference check or update to a  * ref_transaction.  In all of them, refname is the name of the  * reference to be affected.  The functions make internal copies of  * refname and msg, so the caller retains ownership of these parameters.  * flags can be REF_NODEREF; it is passed to update_ref_lock().  */
 end_comment
 
 begin_comment
@@ -1217,6 +1217,11 @@ parameter_list|,
 name|int
 name|have_old
 parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|msg
+parameter_list|,
 name|struct
 name|strbuf
 modifier|*
@@ -1251,6 +1256,11 @@ name|new_sha1
 parameter_list|,
 name|int
 name|flags
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|msg
 parameter_list|,
 name|struct
 name|strbuf
@@ -1290,6 +1300,11 @@ parameter_list|,
 name|int
 name|have_old
 parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|msg
+parameter_list|,
 name|struct
 name|strbuf
 modifier|*
@@ -1310,11 +1325,6 @@ name|struct
 name|ref_transaction
 modifier|*
 name|transaction
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|msg
 parameter_list|,
 name|struct
 name|strbuf
