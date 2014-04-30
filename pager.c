@@ -370,7 +370,7 @@ name|i
 operator|++
 index|]
 operator|=
-literal|"LESS=FRSX"
+literal|"LESS=FRX"
 expr_stmt|;
 if|if
 condition|(
