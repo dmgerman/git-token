@@ -12254,8 +12254,7 @@ name|sha1
 argument_list|,
 literal|1
 argument_list|,
-operator|&
-name|flag
+name|NULL
 argument_list|)
 operator|&&
 name|delete_ref
