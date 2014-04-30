@@ -675,7 +675,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/** Locks any ref (for 'HEAD' type refs). */
+comment|/*  * Flags controlling lock_any_ref_for_update(), ref_transaction_update(),  * ref_transaction_create(), etc.  * REF_NODEREF: act on the ref directly, instead of dereferencing  *              symbolic references.  *  * Flags>= 0x100 are reserved for internal use.  */
 end_comment
 
 begin_define
@@ -687,7 +687,7 @@ value|0x01
 end_define
 
 begin_comment
-comment|/* errno is set to something meaningful on failure */
+comment|/*  * This function sets errno to something meaningful on failure.  */
 end_comment
 
 begin_function_decl
