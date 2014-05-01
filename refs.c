@@ -17182,7 +17182,7 @@ name|update
 operator|->
 name|lock
 operator|=
-name|lock_any_ref_for_update
+name|lock_ref_sha1_basic
 argument_list|(
 name|update
 operator|->
