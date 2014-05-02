@@ -1810,7 +1810,6 @@ end_function
 
 begin_function
 DECL|function|show_ident_date
-specifier|static
 specifier|const
 name|char
 modifier|*

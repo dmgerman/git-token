@@ -6944,6 +6944,29 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/*  * Like show_date, but pull the timestamp and tz parameters from  * the ident_split. It will also sanity-check the values and produce  * a well-known sentinel date if they appear bogus.  */
+end_comment
+
+begin_function_decl
+specifier|const
+name|char
+modifier|*
+name|show_ident_date
+parameter_list|(
+specifier|const
+name|struct
+name|ident_split
+modifier|*
+name|id
+parameter_list|,
+name|enum
+name|date_mode
+name|mode
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/*  * Compare split idents for equality or strict ordering. Note that we  * compare only the ident part of the line, ignoring any timestamp.  *  * Because there are two fields, we must choose one as the primary key; we  * currently arbitrarily pick the email.  */
 end_comment
 
