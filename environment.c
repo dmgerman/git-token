@@ -260,7 +260,7 @@ DECL|variable|delta_base_cache_limit
 name|size_t
 name|delta_base_cache_limit
 init|=
-literal|16
+literal|96
 operator|*
 literal|1024
 operator|*
