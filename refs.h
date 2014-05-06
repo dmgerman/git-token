@@ -879,6 +879,40 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/** Check if a particular reflog exists */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|reflog_exists
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|refname
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/** Delete a reflog */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|delete_reflog
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|refname
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/* iterate over reflog entries */
 end_comment
 

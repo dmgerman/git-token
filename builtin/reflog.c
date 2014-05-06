@@ -1893,9 +1893,9 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|file_exists
+name|reflog_exists
 argument_list|(
-name|log_file
+name|ref
 argument_list|)
 condition|)
 goto|goto
