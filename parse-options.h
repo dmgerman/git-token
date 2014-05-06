@@ -798,7 +798,7 @@ name|r
 parameter_list|,
 name|f
 parameter_list|)
-value|(opterror((o),(r),(f)), -1)
+value|(opterror((o),(r),(f)), const_error())
 end_define
 
 begin_endif

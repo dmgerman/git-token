@@ -8547,7 +8547,7 @@ name|config_error_nonbool
 parameter_list|(
 name|s
 parameter_list|)
-value|(config_error_nonbool(s), -1)
+value|(config_error_nonbool(s), const_error())
 end_define
 
 begin_endif
