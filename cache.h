@@ -8531,12 +8531,6 @@ name|defined
 argument_list|(
 name|__GNUC__
 argument_list|)
-operator|&&
-operator|!
-name|defined
-argument_list|(
-name|__clang__
-argument_list|)
 end_if
 
 begin_define
