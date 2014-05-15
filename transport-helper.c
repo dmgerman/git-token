@@ -2263,12 +2263,6 @@ name|transport
 operator|->
 name|data
 decl_stmt|;
-name|struct
-name|argv_array
-name|argv
-init|=
-name|ARGV_ARRAY_INIT
-decl_stmt|;
 name|int
 name|cat_blob_fd
 decl_stmt|,
@@ -2298,7 +2292,9 @@ expr_stmt|;
 name|argv_array_push
 argument_list|(
 operator|&
-name|argv
+name|fastimport
+operator|->
+name|args
 argument_list|,
 literal|"fast-import"
 argument_list|)
@@ -2306,7 +2302,9 @@ expr_stmt|;
 name|argv_array_push
 argument_list|(
 operator|&
-name|argv
+name|fastimport
+operator|->
+name|args
 argument_list|,
 name|debug
 condition|?
@@ -2334,7 +2332,9 @@ expr_stmt|;
 name|argv_array_pushf
 argument_list|(
 operator|&
-name|argv
+name|fastimport
+operator|->
+name|args
 argument_list|,
 literal|"--cat-blob-fd=%d"
 argument_list|,
@@ -2342,14 +2342,6 @@ name|cat_blob_fd
 argument_list|)
 expr_stmt|;
 block|}
-name|fastimport
-operator|->
-name|argv
-operator|=
-name|argv
-operator|.
-name|argv
-expr_stmt|;
 name|fastimport
 operator|->
 name|git_cmd
@@ -2709,13 +2701,6 @@ condition|)
 name|die
 argument_list|(
 literal|"Error while running fast-import"
-argument_list|)
-expr_stmt|;
-name|argv_array_free_detached
-argument_list|(
-name|fastimport
-operator|.
-name|argv
 argument_list|)
 expr_stmt|;
 comment|/* 	 * The fast-import stream of a remote helper that advertises 	 * the "refspec" capability writes to the refs named after the 	 * right hand side of the first refspec matching each ref we 	 * were fetching. 	 * 	 * (If no "refspec" capability was specified, for historical 	 * reasons we default to the equivalent of *:*.) 	 * 	 * Store the result in to_fetch[i].old_sha1.  Callers such 	 * as "git fetch" can use the value to write feedback to the 	 * terminal, populate FETCH_HEAD, and determine what new value 	 * should be written to peer_ref if the update is a 	 * fast-forward or this is a forced update. 	 */
