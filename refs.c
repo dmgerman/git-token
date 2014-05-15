@@ -11645,6 +11645,11 @@ name|lock
 parameter_list|,
 name|int
 name|flag
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|err
 parameter_list|)
 block|{
 if|if
@@ -11674,11 +11679,13 @@ name|lk
 argument_list|)
 decl_stmt|;
 name|int
-name|err
+name|res
 init|=
-name|unlink_or_warn
+name|unlink_or_msg
 argument_list|(
 name|loose_filename
+argument_list|,
+name|err
 argument_list|)
 decl_stmt|;
 name|free
@@ -11688,7 +11695,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|err
+name|res
 condition|)
 return|return
 literal|1
@@ -17289,6 +17296,8 @@ argument_list|,
 name|update
 operator|->
 name|type
+argument_list|,
+name|err
 argument_list|)
 expr_stmt|;
 if|if
