@@ -29,6 +29,12 @@ endif|#
 directive|endif
 end_endif
 
+begin_include
+include|#
+directive|include
+file|"argv-array.h"
+end_include
+
 begin_struct
 DECL|struct|child_process
 struct|struct
@@ -40,6 +46,11 @@ name|char
 modifier|*
 modifier|*
 name|argv
+decl_stmt|;
+DECL|member|args
+name|struct
+name|argv_array
+name|args
 decl_stmt|;
 DECL|member|pid
 name|pid_t
