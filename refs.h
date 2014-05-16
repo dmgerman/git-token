@@ -1314,8 +1314,32 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Commit all of the changes that have been queued in transaction, as  * atomically as possible.  Return a nonzero value if there is a  * problem.  */
+comment|/*  * Commit all of the changes that have been queued in transaction, as  * atomically as possible.  *  * Returns 0 for success, or one of the below error codes for errors.  */
 end_comment
+
+begin_comment
+comment|/* Naming conflict (for example, the ref names A and A/B conflict). */
+end_comment
+
+begin_define
+DECL|macro|TRANSACTION_NAME_CONFLICT
+define|#
+directive|define
+name|TRANSACTION_NAME_CONFLICT
+value|-1
+end_define
+
+begin_comment
+comment|/* All other errors. */
+end_comment
+
+begin_define
+DECL|macro|TRANSACTION_GENERIC_ERROR
+define|#
+directive|define
+name|TRANSACTION_GENERIC_ERROR
+value|-2
+end_define
 
 begin_function_decl
 name|int

@@ -17202,8 +17202,8 @@ argument_list|,
 name|ref_update_compare
 argument_list|)
 expr_stmt|;
-name|ret
-operator|=
+if|if
+condition|(
 name|ref_update_reject_duplicates
 argument_list|(
 name|updates
@@ -17212,14 +17212,16 @@ name|n
 argument_list|,
 name|err
 argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|ret
 condition|)
+block|{
+name|ret
+operator|=
+name|TRANSACTION_GENERIC_ERROR
+expr_stmt|;
 goto|goto
 name|cleanup
 goto|;
+block|}
 comment|/* Acquire all locks while verifying old values */
 for|for
 control|(
@@ -17287,6 +17289,18 @@ operator|->
 name|lock
 condition|)
 block|{
+name|ret
+operator|=
+operator|(
+name|errno
+operator|==
+name|ENOTDIR
+operator|)
+condition|?
+name|TRANSACTION_NAME_CONFLICT
+else|:
+name|TRANSACTION_GENERIC_ERROR
+expr_stmt|;
 if|if
 condition|(
 name|err
@@ -17301,10 +17315,6 @@ name|update
 operator|->
 name|refname
 argument_list|)
-expr_stmt|;
-name|ret
-operator|=
-literal|1
 expr_stmt|;
 goto|goto
 name|cleanup
@@ -17347,8 +17357,8 @@ name|new_sha1
 argument_list|)
 condition|)
 block|{
-name|ret
-operator|=
+if|if
+condition|(
 name|write_ref_sha1
 argument_list|(
 name|update
@@ -17363,7 +17373,8 @@ name|update
 operator|->
 name|msg
 argument_list|)
-expr_stmt|;
+condition|)
+block|{
 name|update
 operator|->
 name|lock
@@ -17371,11 +17382,6 @@ operator|=
 name|NULL
 expr_stmt|;
 comment|/* freed by write_ref_sha1 */
-if|if
-condition|(
-name|ret
-condition|)
-block|{
 if|if
 condition|(
 name|err
@@ -17391,10 +17397,21 @@ operator|->
 name|refname
 argument_list|)
 expr_stmt|;
+name|ret
+operator|=
+name|TRANSACTION_GENERIC_ERROR
+expr_stmt|;
 goto|goto
 name|cleanup
 goto|;
 block|}
+name|update
+operator|->
+name|lock
+operator|=
+name|NULL
+expr_stmt|;
+comment|/* freed by write_ref_sha1 */
 block|}
 block|}
 comment|/* Perform deletes now that updates are safely completed */
@@ -17429,8 +17446,8 @@ operator|->
 name|lock
 condition|)
 block|{
-name|ret
-operator||=
+if|if
+condition|(
 name|delete_ref_loose
 argument_list|(
 name|update
@@ -17443,6 +17460,10 @@ name|type
 argument_list|,
 name|err
 argument_list|)
+condition|)
+name|ret
+operator|=
+name|TRANSACTION_GENERIC_ERROR
 expr_stmt|;
 if|if
 condition|(
@@ -17469,8 +17490,8 @@ name|ref_name
 expr_stmt|;
 block|}
 block|}
-name|ret
-operator||=
+if|if
+condition|(
 name|repack_without_refs
 argument_list|(
 name|delnames
@@ -17479,6 +17500,10 @@ name|delnum
 argument_list|,
 name|err
 argument_list|)
+condition|)
+name|ret
+operator|=
+name|TRANSACTION_GENERIC_ERROR
 expr_stmt|;
 for|for
 control|(
