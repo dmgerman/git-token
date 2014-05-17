@@ -1435,6 +1435,27 @@ argument_list|(
 name|tmpfile
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|hashcmp
+argument_list|(
+name|old
+argument_list|,
+name|new
+argument_list|)
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"new object is the same as the old one: '%s'"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|old
+argument_list|)
+argument_list|)
+return|;
 return|return
 name|replace_object_sha1
 argument_list|(
