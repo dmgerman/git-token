@@ -51,6 +51,11 @@ argument_list|)
 block|,
 name|N_
 argument_list|(
+literal|"git replace [-f] --edit<object>"
+argument_list|)
+block|,
+name|N_
+argument_list|(
 literal|"git replace -d<object>..."
 argument_list|)
 block|,
