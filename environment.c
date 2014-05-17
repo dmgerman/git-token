@@ -513,6 +513,13 @@ literal|'#'
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|auto_comment_line_char
+name|int
+name|auto_comment_line_char
+decl_stmt|;
+end_decl_stmt
+
 begin_comment
 comment|/* Parallel index stat data preload? */
 end_comment
