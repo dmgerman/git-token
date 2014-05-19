@@ -1177,7 +1177,10 @@ name|ref_transaction
 modifier|*
 name|ref_transaction_begin
 parameter_list|(
-name|void
+name|struct
+name|strbuf
+modifier|*
+name|err
 parameter_list|)
 function_decl|;
 end_function_decl
