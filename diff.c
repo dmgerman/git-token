@@ -18804,6 +18804,31 @@ name|EXIT_WITH_STATUS
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|DIFF_OPT_TST
+argument_list|(
+name|options
+argument_list|,
+name|FOLLOW_RENAMES
+argument_list|)
+operator|&&
+name|options
+operator|->
+name|pathspec
+operator|.
+name|nr
+operator|!=
+literal|1
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"--follow requires exactly one pathspec"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
