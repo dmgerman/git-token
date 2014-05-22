@@ -1167,7 +1167,7 @@ decl_stmt|;
 comment|/* 	 * We only show text/plain parts, as other types are likely 	 * to be ugly to look at on the user's terminal. 	 * 	 * TODO should handle "; charset=XXX", and re-encode into 	 * logoutputencoding 	 */
 if|if
 condition|(
-name|strcasecmp
+name|strcmp
 argument_list|(
 name|type
 operator|->
