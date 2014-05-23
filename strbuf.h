@@ -320,6 +320,19 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|void
+name|strbuf_tolower
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+name|sb
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|int
 name|strbuf_cmp
 parameter_list|(
