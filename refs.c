@@ -10911,7 +10911,6 @@ end_function
 
 begin_function
 DECL|function|repack_without_refs
-specifier|static
 name|int
 name|repack_without_refs
 parameter_list|(
