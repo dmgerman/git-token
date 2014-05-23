@@ -529,6 +529,29 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|void
+name|warn_dangling_symrefs
+parameter_list|(
+name|FILE
+modifier|*
+name|fp
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|msg_fmt
+parameter_list|,
+specifier|const
+name|struct
+name|string_list
+modifier|*
+name|refnames
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/*  * Lock the packed-refs file for writing.  Flags is passed to  * hold_lock_file_for_update().  Return 0 on success.  */
 end_comment
