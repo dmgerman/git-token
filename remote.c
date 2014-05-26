@@ -3377,13 +3377,13 @@ name|rs
 init|=
 name|xcalloc
 argument_list|(
+name|nr_refspec
+argument_list|,
 sizeof|sizeof
 argument_list|(
 operator|*
 name|rs
 argument_list|)
-argument_list|,
-name|nr_refspec
 argument_list|)
 decl_stmt|;
 for|for
