@@ -5648,13 +5648,13 @@ name|array
 operator|=
 name|xcalloc
 argument_list|(
+name|num_head
+argument_list|,
 sizeof|sizeof
 argument_list|(
 operator|*
 name|array
 argument_list|)
-argument_list|,
-name|num_head
 argument_list|)
 expr_stmt|;
 for|for
