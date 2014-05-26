@@ -179,13 +179,13 @@ name|pack_revindex
 operator|=
 name|xcalloc
 argument_list|(
+name|pack_revindex_hashsz
+argument_list|,
 sizeof|sizeof
 argument_list|(
 operator|*
 name|pack_revindex
 argument_list|)
-argument_list|,
-name|pack_revindex_hashsz
 argument_list|)
 expr_stmt|;
 for|for
