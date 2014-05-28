@@ -126,6 +126,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|isatty
+argument_list|(
+literal|2
+argument_list|)
+operator|&&
 name|term
 operator|&&
 name|strcmp
