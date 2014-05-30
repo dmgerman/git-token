@@ -724,13 +724,13 @@ elif|#
 directive|elif
 name|defined
 argument_list|(
-name|_BIG_ENDIAN
+name|_LITTLE_ENDIAN
 argument_list|)
 operator|&&
 operator|!
 name|defined
 argument_list|(
-name|_LITTLE_ENDIAN
+name|_BIG_ENDIAN
 argument_list|)
 end_elif
 
