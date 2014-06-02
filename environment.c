@@ -522,7 +522,7 @@ DECL|variable|core_preload_index
 name|int
 name|core_preload_index
 init|=
-literal|0
+literal|1
 decl_stmt|;
 end_decl_stmt
 
