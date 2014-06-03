@@ -1528,6 +1528,20 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|ref_lock
+condition|)
+return|return
+name|error
+argument_list|(
+name|_
+argument_list|(
+literal|"Failed to lock HEAD during fast_forward_to"
+argument_list|)
+argument_list|)
+return|;
 name|strbuf_addf
 argument_list|(
 operator|&
