@@ -415,7 +415,7 @@ name|NULL
 argument_list|,
 literal|0
 argument_list|,
-name|QUIET_ON_ERR
+name|UPDATE_REFS_QUIET_ON_ERR
 argument_list|)
 operator|<
 literal|0

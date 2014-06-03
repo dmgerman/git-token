@@ -2569,7 +2569,7 @@ name|head
 argument_list|,
 literal|0
 argument_list|,
-name|DIE_ON_ERR
+name|UPDATE_REFS_DIE_ON_ERR
 argument_list|)
 expr_stmt|;
 comment|/* 			 * We ignore errors in 'gc --auto', since the 			 * user should see them. 			 */
@@ -7446,7 +7446,7 @@ name|NULL
 argument_list|,
 literal|0
 argument_list|,
-name|DIE_ON_ERR
+name|UPDATE_REFS_DIE_ON_ERR
 argument_list|)
 expr_stmt|;
 goto|goto
@@ -8117,7 +8117,7 @@ name|NULL
 argument_list|,
 literal|0
 argument_list|,
-name|DIE_ON_ERR
+name|UPDATE_REFS_DIE_ON_ERR
 argument_list|)
 expr_stmt|;
 if|if

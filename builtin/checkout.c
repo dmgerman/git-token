@@ -3400,7 +3400,7 @@ name|NULL
 argument_list|,
 name|REF_NODEREF
 argument_list|,
-name|DIE_ON_ERR
+name|UPDATE_REFS_DIE_ON_ERR
 argument_list|)
 expr_stmt|;
 if|if
