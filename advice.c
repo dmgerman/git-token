@@ -510,7 +510,7 @@ parameter_list|)
 block|{
 name|error
 argument_list|(
-literal|"'%s' is not possible because you have unmerged files."
+literal|"%s is not possible because you have unmerged files."
 argument_list|,
 name|me
 argument_list|)
