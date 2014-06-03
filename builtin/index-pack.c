@@ -3017,7 +3017,7 @@ literal|1024
 decl_stmt|;
 name|n
 operator|=
-name|pread
+name|xpread
 argument_list|(
 name|pack_fd
 argument_list|,
