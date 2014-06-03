@@ -1379,7 +1379,30 @@ condition|)
 name|last2
 operator|--
 expr_stmt|;
-comment|/* skip leading whitespace */
+comment|/* skip leading whitespaces, if both begin with whitespace */
+if|if
+condition|(
+name|s1
+operator|<=
+name|last1
+operator|&&
+name|s2
+operator|<=
+name|last2
+operator|&&
+name|isspace
+argument_list|(
+operator|*
+name|s1
+argument_list|)
+operator|&&
+name|isspace
+argument_list|(
+operator|*
+name|s2
+argument_list|)
+condition|)
+block|{
 while|while
 condition|(
 name|isspace
@@ -1414,6 +1437,7 @@ condition|)
 name|s2
 operator|++
 expr_stmt|;
+block|}
 comment|/* early return if both lines are empty */
 if|if
 condition|(
