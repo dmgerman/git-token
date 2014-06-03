@@ -1730,6 +1730,7 @@ operator|=
 name|setup_git_directory
 argument_list|()
 expr_stmt|;
+elseif|else
 if|if
 condition|(
 name|p
