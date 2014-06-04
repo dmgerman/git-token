@@ -3022,6 +3022,15 @@ name|char
 modifier|*
 name|endp
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|arg
+condition|)
+return|return
+operator|-
+literal|1
+return|;
 name|errno
 operator|=
 literal|0
