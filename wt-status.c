@@ -1101,6 +1101,8 @@ name|s
 argument_list|,
 name|c
 argument_list|,
+literal|"%s"
+argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
@@ -1203,6 +1205,8 @@ argument_list|(
 name|s
 argument_list|,
 name|c
+argument_list|,
+literal|"%s"
 argument_list|,
 literal|""
 argument_list|)
@@ -1324,6 +1328,8 @@ name|s
 argument_list|,
 name|c
 argument_list|,
+literal|"%s"
+argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
@@ -1403,6 +1409,8 @@ name|s
 argument_list|,
 name|c
 argument_list|,
+literal|"%s"
+argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
@@ -1431,6 +1439,8 @@ name|WT_STATUS_HEADER
 argument_list|,
 name|s
 argument_list|)
+argument_list|,
+literal|"%s"
 argument_list|,
 literal|""
 argument_list|)
@@ -4831,6 +4841,8 @@ name|s
 argument_list|,
 name|GIT_COLOR_NORMAL
 argument_list|,
+literal|"%s"
+argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
@@ -5345,13 +5357,13 @@ name|comment_line_char
 argument_list|)
 expr_stmt|;
 else|else
-name|fprintf_ln
+name|fputs
 argument_list|(
+literal|""
+argument_list|,
 name|s
 operator|->
 name|fp
-argument_list|,
-literal|""
 argument_list|)
 expr_stmt|;
 block|}
@@ -7862,6 +7874,8 @@ argument_list|,
 name|s
 argument_list|)
 argument_list|,
+literal|"%s"
+argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
@@ -7947,6 +7961,8 @@ argument_list|,
 name|s
 argument_list|)
 argument_list|,
+literal|"%s"
+argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
@@ -7977,6 +7993,8 @@ name|WT_STATUS_HEADER
 argument_list|,
 name|s
 argument_list|)
+argument_list|,
+literal|"%s"
 argument_list|,
 literal|""
 argument_list|)
@@ -8100,6 +8118,8 @@ argument_list|(
 name|s
 argument_list|,
 name|GIT_COLOR_NORMAL
+argument_list|,
+literal|"%s"
 argument_list|,
 literal|""
 argument_list|)
