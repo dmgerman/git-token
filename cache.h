@@ -3963,6 +3963,13 @@ name|comment_line_char
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+specifier|extern
+name|int
+name|auto_comment_line_char
+decl_stmt|;
+end_decl_stmt
+
 begin_enum
 DECL|enum|branch_track
 enum|enum
