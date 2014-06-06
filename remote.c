@@ -7023,14 +7023,11 @@ literal|0
 case|:
 if|if
 condition|(
-operator|!
-name|memcmp
+name|starts_with
 argument_list|(
 name|dst_value
 argument_list|,
 literal|"refs/"
-argument_list|,
-literal|5
 argument_list|)
 condition|)
 name|matched_dst

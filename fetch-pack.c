@@ -2760,16 +2760,13 @@ name|next
 expr_stmt|;
 if|if
 condition|(
-operator|!
-name|memcmp
+name|starts_with
 argument_list|(
 name|ref
 operator|->
 name|name
 argument_list|,
 literal|"refs/"
-argument_list|,
-literal|5
 argument_list|)
 operator|&&
 name|check_refname_format
