@@ -756,12 +756,6 @@ name|defined
 argument_list|(
 name|__GNUC__
 argument_list|)
-operator|&&
-operator|!
-name|defined
-argument_list|(
-name|__clang__
-argument_list|)
 end_if
 
 begin_define
@@ -776,7 +770,7 @@ name|r
 parameter_list|,
 name|f
 parameter_list|)
-value|(opterror((o),(r),(f)), -1)
+value|(opterror((o),(r),(f)), const_error())
 end_define
 
 begin_endif
