@@ -1873,7 +1873,7 @@ index|[]
 init|=
 name|N_
 argument_list|(
-literal|"\nWrite a tag message\n"
+literal|"\nWrite a message for tag:\n  %s\n"
 literal|"Lines starting with '%c' will be ignored.\n"
 argument_list|)
 decl_stmt|;
@@ -1889,7 +1889,7 @@ index|[]
 init|=
 name|N_
 argument_list|(
-literal|"\nWrite a tag message\n"
+literal|"\nWrite a message for tag:\n  %s\n"
 literal|"Lines starting with '%c' will be kept; you may remove them"
 literal|" yourself if you want to.\n"
 argument_list|)
@@ -2425,6 +2425,8 @@ argument_list|(
 name|tag_template
 argument_list|)
 argument_list|,
+name|tag
+argument_list|,
 name|comment_line_char
 argument_list|)
 expr_stmt|;
@@ -2438,6 +2440,8 @@ name|_
 argument_list|(
 name|tag_template_nocleanup
 argument_list|)
+argument_list|,
+name|tag
 argument_list|,
 name|comment_line_char
 argument_list|)
