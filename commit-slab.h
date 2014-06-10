@@ -65,6 +65,23 @@ begin_comment
 comment|/*  * Note that this seemingly redundant second declaration is required  * to allow a terminating semicolon, which makes instantiations look  * like function declarations.  I.e., the expansion of  *  *    define_commit_slab(indegree, int);  *  * ends in 'static int stat_indegreerealloc;'.  This would otherwise  * be a syntax error according (at least) to ISO C.  It's hard to  * catch because GCC silently parses it by default.  */
 end_comment
 
+begin_comment
+comment|/*  * Statically initialize a commit slab named "var". Note that this  * evaluates "stride" multiple times! Example:  *  *   struct indegree indegrees = COMMIT_SLAB_INIT(1, indegrees);  *  */
+end_comment
+
+begin_define
+DECL|macro|COMMIT_SLAB_INIT
+define|#
+directive|define
+name|COMMIT_SLAB_INIT
+parameter_list|(
+name|stride
+parameter_list|,
+name|var
+parameter_list|)
+value|{ \ 	COMMIT_SLAB_SIZE / sizeof(**((var).slab)) / (stride), \ 	(stride), 0, NULL \ }
+end_define
+
 begin_endif
 endif|#
 directive|endif
