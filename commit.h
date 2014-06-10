@@ -106,11 +106,6 @@ name|tree
 modifier|*
 name|tree
 decl_stmt|;
-DECL|member|buffer
-name|char
-modifier|*
-name|buffer
-decl_stmt|;
 block|}
 struct|;
 end_struct
