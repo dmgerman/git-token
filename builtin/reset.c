@@ -496,6 +496,7 @@ decl_stmt|,
 modifier|*
 name|body
 decl_stmt|;
+specifier|const
 name|char
 modifier|*
 name|msg
