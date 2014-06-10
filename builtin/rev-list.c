@@ -465,9 +465,10 @@ name|revs
 operator|->
 name|verbose_header
 operator|&&
+name|get_cached_commit_buffer
+argument_list|(
 name|commit
-operator|->
-name|buffer
+argument_list|)
 condition|)
 block|{
 name|struct
