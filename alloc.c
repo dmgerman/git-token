@@ -116,7 +116,7 @@ end_macro
 begin_macro
 name|DEFINE_ALLOCATOR
 argument_list|(
-argument|commit
+argument|raw_commit
 argument_list|,
 argument|struct commit
 argument_list|)
@@ -139,6 +139,40 @@ argument_list|,
 argument|union any_object
 argument_list|)
 end_macro
+
+begin_function
+DECL|function|alloc_commit_node
+name|void
+modifier|*
+name|alloc_commit_node
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+specifier|static
+name|int
+name|commit_count
+decl_stmt|;
+name|struct
+name|commit
+modifier|*
+name|c
+init|=
+name|alloc_raw_commit_node
+argument_list|()
+decl_stmt|;
+name|c
+operator|->
+name|index
+operator|=
+name|commit_count
+operator|++
+expr_stmt|;
+return|return
+name|c
+return|;
+block|}
+end_function
 
 begin_function
 DECL|function|report
@@ -220,7 +254,7 @@ argument_list|)
 expr_stmt|;
 name|REPORT
 argument_list|(
-name|commit
+name|raw_commit
 argument_list|,
 expr|struct
 name|commit
