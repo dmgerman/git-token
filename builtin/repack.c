@@ -192,6 +192,14 @@ name|strcmp
 argument_list|(
 name|var
 argument_list|,
+literal|"repack.writebitmaps"
+argument_list|)
+operator|||
+operator|!
+name|strcmp
+argument_list|(
+name|var
+argument_list|,
 literal|"pack.writebitmaps"
 argument_list|)
 condition|)
