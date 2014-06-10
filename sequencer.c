@@ -841,13 +841,13 @@ operator|->
 name|parent_label
 argument_list|)
 expr_stmt|;
-name|logmsg_free
+name|unuse_commit_buffer
 argument_list|(
+name|commit
+argument_list|,
 name|msg
 operator|->
 name|message
-argument_list|,
-name|commit
 argument_list|)
 expr_stmt|;
 block|}

@@ -15286,11 +15286,11 @@ operator|&
 name|buf
 argument_list|)
 expr_stmt|;
-name|logmsg_free
+name|unuse_commit_buffer
 argument_list|(
-name|message
-argument_list|,
 name|commit
+argument_list|,
+name|message
 argument_list|)
 expr_stmt|;
 return|return
