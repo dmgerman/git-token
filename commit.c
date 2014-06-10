@@ -7517,10 +7517,12 @@ name|int
 name|commit_tree
 parameter_list|(
 specifier|const
-name|struct
-name|strbuf
+name|char
 modifier|*
 name|msg
+parameter_list|,
+name|size_t
+name|msg_len
 parameter_list|,
 specifier|const
 name|unsigned
@@ -7579,6 +7581,8 @@ operator|=
 name|commit_tree_extended
 argument_list|(
 name|msg
+argument_list|,
+name|msg_len
 argument_list|,
 name|tree
 argument_list|,
@@ -8034,10 +8038,12 @@ name|int
 name|commit_tree_extended
 parameter_list|(
 specifier|const
-name|struct
-name|strbuf
+name|char
 modifier|*
 name|msg
+parameter_list|,
+name|size_t
+name|msg_len
 parameter_list|,
 specifier|const
 name|unsigned
@@ -8093,14 +8099,10 @@ condition|(
 name|memchr
 argument_list|(
 name|msg
-operator|->
-name|buf
 argument_list|,
 literal|'\0'
 argument_list|,
-name|msg
-operator|->
-name|len
+name|msg_len
 argument_list|)
 condition|)
 return|return
@@ -8270,12 +8272,14 @@ literal|'\n'
 argument_list|)
 expr_stmt|;
 comment|/* And add the comment */
-name|strbuf_addbuf
+name|strbuf_add
 argument_list|(
 operator|&
 name|buffer
 argument_list|,
 name|msg
+argument_list|,
+name|msg_len
 argument_list|)
 expr_stmt|;
 comment|/* And check the encoding */
