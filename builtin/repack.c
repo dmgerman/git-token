@@ -1069,6 +1069,8 @@ condition|)
 name|pack_kept_objects
 operator|=
 name|write_bitmap
+operator|>
+literal|0
 expr_stmt|;
 name|packdir
 operator|=
