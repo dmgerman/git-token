@@ -923,11 +923,12 @@ operator|->
 name|buffer
 condition|)
 block|{
+name|set_commit_buffer
+argument_list|(
 name|commit
-operator|->
+argument_list|,
 name|buffer
-operator|=
-name|buffer
+argument_list|)
 expr_stmt|;
 operator|*
 name|eaten_p

@@ -301,6 +301,25 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/*  * Associate an object buffer with the commit. The ownership of the  * memory is handed over to the commit, and must be free()-able.  */
+end_comment
+
+begin_function_decl
+name|void
+name|set_commit_buffer
+parameter_list|(
+name|struct
+name|commit
+modifier|*
+parameter_list|,
+name|void
+modifier|*
+name|buffer
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/*  * Free any cached object buffer associated with the commit.  */
 end_comment
 
