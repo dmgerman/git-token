@@ -3520,6 +3520,8 @@ argument_list|(
 name|cur
 operator|->
 name|item
+argument_list|,
+name|NULL
 argument_list|)
 decl_stmt|;
 name|sha1_abbrev

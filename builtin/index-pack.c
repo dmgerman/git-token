@@ -4382,6 +4382,8 @@ condition|(
 name|detach_commit_buffer
 argument_list|(
 name|commit
+argument_list|,
+name|NULL
 argument_list|)
 operator|!=
 name|data

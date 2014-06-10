@@ -3245,6 +3245,8 @@ operator|!
 name|get_cached_commit_buffer
 argument_list|(
 name|commit
+argument_list|,
+name|NULL
 argument_list|)
 condition|)
 return|return;

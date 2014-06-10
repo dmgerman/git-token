@@ -5241,6 +5241,8 @@ name|list
 index|[
 name|i
 index|]
+argument_list|,
+name|NULL
 argument_list|)
 decl_stmt|;
 if|if
