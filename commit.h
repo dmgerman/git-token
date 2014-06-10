@@ -320,6 +320,63 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/*  * Get any cached object buffer associated with the commit. Returns NULL  * if none. The resulting memory should not be freed.  */
+end_comment
+
+begin_function_decl
+specifier|const
+name|void
+modifier|*
+name|get_cached_commit_buffer
+parameter_list|(
+specifier|const
+name|struct
+name|commit
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/*  * Get the commit's object contents, either from cache or by reading the object  * from disk. The resulting memory should not be modified, and must be given  * to unuse_commit_buffer when the caller is done.  */
+end_comment
+
+begin_function_decl
+specifier|const
+name|void
+modifier|*
+name|get_commit_buffer
+parameter_list|(
+specifier|const
+name|struct
+name|commit
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/*  * Tell the commit subsytem that we are done with a particular commit buffer.  * The commit and buffer should be the input and return value, respectively,  * from an earlier call to get_commit_buffer.  The buffer may or may not be  * freed by this call; callers should not access the memory afterwards.  */
+end_comment
+
+begin_function_decl
+name|void
+name|unuse_commit_buffer
+parameter_list|(
+specifier|const
+name|struct
+name|commit
+modifier|*
+parameter_list|,
+specifier|const
+name|void
+modifier|*
+name|buffer
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/*  * Free any cached object buffer associated with the commit.  */
 end_comment
 
