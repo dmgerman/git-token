@@ -75,10 +75,10 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|write_bitmap
+DECL|variable|write_bitmaps
 specifier|static
 name|int
-name|write_bitmap
+name|write_bitmaps
 init|=
 operator|-
 literal|1
@@ -199,7 +199,7 @@ literal|"pack.writebitmaps"
 argument_list|)
 condition|)
 block|{
-name|write_bitmap
+name|write_bitmaps
 operator|=
 name|git_config_bool
 argument_list|(
@@ -958,7 +958,7 @@ argument_list|,
 literal|"write-bitmap-index"
 argument_list|,
 operator|&
-name|write_bitmap
+name|write_bitmaps
 argument_list|,
 name|N_
 argument_list|(
@@ -1097,7 +1097,7 @@ literal|0
 condition|)
 name|pack_kept_objects
 operator|=
-name|write_bitmap
+name|write_bitmaps
 operator|>
 literal|0
 expr_stmt|;
@@ -1266,7 +1266,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|write_bitmap
+name|write_bitmaps
 operator|>=
 literal|0
 condition|)
@@ -1277,7 +1277,7 @@ name|cmd_args
 argument_list|,
 literal|"--%swrite-bitmap-index"
 argument_list|,
-name|write_bitmap
+name|write_bitmaps
 condition|?
 literal|""
 else|:
