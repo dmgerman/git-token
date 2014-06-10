@@ -187,9 +187,11 @@ directive|define
 name|REPORT
 parameter_list|(
 name|name
+parameter_list|,
+name|type
 parameter_list|)
 define|\
-value|report(#name, name##_allocs, name##_allocs * sizeof(struct name)>> 10)
+value|report(#name, name##_allocs, name##_allocs * sizeof(type)>> 10)
 end_define
 
 begin_function
@@ -203,21 +205,41 @@ block|{
 name|REPORT
 argument_list|(
 name|blob
+argument_list|,
+expr|struct
+name|blob
 argument_list|)
 expr_stmt|;
 name|REPORT
 argument_list|(
+name|tree
+argument_list|,
+expr|struct
 name|tree
 argument_list|)
 expr_stmt|;
 name|REPORT
 argument_list|(
 name|commit
+argument_list|,
+expr|struct
+name|commit
 argument_list|)
 expr_stmt|;
 name|REPORT
 argument_list|(
 name|tag
+argument_list|,
+expr|struct
+name|tag
+argument_list|)
+expr_stmt|;
+name|REPORT
+argument_list|(
+name|object
+argument_list|,
+expr|union
+name|any_object
 argument_list|)
 expr_stmt|;
 block|}
