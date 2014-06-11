@@ -240,7 +240,7 @@ parameter_list|,
 specifier|const
 name|char
 modifier|*
-name|fmt
+name|format
 parameter_list|,
 name|va_list
 name|ap
@@ -272,7 +272,7 @@ argument_list|(
 operator|&
 name|buf
 argument_list|,
-name|fmt
+name|format
 argument_list|,
 name|ap
 argument_list|)
@@ -318,7 +318,7 @@ parameter_list|,
 specifier|const
 name|char
 modifier|*
-name|fmt
+name|format
 parameter_list|,
 modifier|...
 parameter_list|)
@@ -330,14 +330,14 @@ name|va_start
 argument_list|(
 name|ap
 argument_list|,
-name|fmt
+name|format
 argument_list|)
 expr_stmt|;
 name|trace_vprintf
 argument_list|(
 name|key
 argument_list|,
-name|fmt
+name|format
 argument_list|,
 name|ap
 argument_list|)
@@ -358,7 +358,7 @@ parameter_list|(
 specifier|const
 name|char
 modifier|*
-name|fmt
+name|format
 parameter_list|,
 modifier|...
 parameter_list|)
@@ -370,14 +370,14 @@ name|va_start
 argument_list|(
 name|ap
 argument_list|,
-name|fmt
+name|format
 argument_list|)
 expr_stmt|;
 name|trace_vprintf
 argument_list|(
 literal|"GIT_TRACE"
 argument_list|,
-name|fmt
+name|format
 argument_list|,
 name|ap
 argument_list|)
@@ -471,7 +471,7 @@ parameter_list|,
 specifier|const
 name|char
 modifier|*
-name|fmt
+name|format
 parameter_list|,
 modifier|...
 parameter_list|)
@@ -518,7 +518,7 @@ name|va_start
 argument_list|(
 name|ap
 argument_list|,
-name|fmt
+name|format
 argument_list|)
 expr_stmt|;
 name|strbuf_vaddf
@@ -526,7 +526,7 @@ argument_list|(
 operator|&
 name|buf
 argument_list|,
-name|fmt
+name|format
 argument_list|,
 name|ap
 argument_list|)

@@ -132,7 +132,7 @@ parameter_list|,
 specifier|const
 name|char
 modifier|*
-name|fmt
+name|format
 parameter_list|,
 modifier|...
 parameter_list|)
