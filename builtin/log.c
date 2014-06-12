@@ -1673,18 +1673,10 @@ name|reflog_info
 condition|)
 block|{
 comment|/* we allow cycles in reflog ancestry */
-name|free
+name|free_commit_buffer
 argument_list|(
 name|commit
-operator|->
-name|buffer
 argument_list|)
-expr_stmt|;
-name|commit
-operator|->
-name|buffer
-operator|=
-name|NULL
 expr_stmt|;
 block|}
 name|free_commit_list
@@ -8556,18 +8548,10 @@ argument_list|,
 name|commit
 argument_list|)
 expr_stmt|;
-name|free
+name|free_commit_buffer
 argument_list|(
 name|commit
-operator|->
-name|buffer
 argument_list|)
-expr_stmt|;
-name|commit
-operator|->
-name|buffer
-operator|=
-name|NULL
 expr_stmt|;
 comment|/* We put one extra blank line between formatted 		 * patches and this flag is used by log-tree code 		 * to see if it needs to emit a LF before showing 		 * the log; when using one file per patch, we do 		 * not want the extra blank line. 		 */
 if|if

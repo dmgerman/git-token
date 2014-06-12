@@ -301,6 +301,38 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/*  * Free any cached object buffer associated with the commit.  */
+end_comment
+
+begin_function_decl
+name|void
+name|free_commit_buffer
+parameter_list|(
+name|struct
+name|commit
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/*  * Disassociate any cached object buffer from the commit, but do not free it.  * The buffer (or NULL, if none) is returned.  */
+end_comment
+
+begin_function_decl
+specifier|const
+name|void
+modifier|*
+name|detach_commit_buffer
+parameter_list|(
+name|struct
+name|commit
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/* Find beginning and length of commit subject. */
 end_comment
 
