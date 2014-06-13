@@ -744,6 +744,14 @@ name|CE_MATCHED
 value|(1<< 26)
 end_define
 
+begin_define
+DECL|macro|CE_UPDATE_IN_BASE
+define|#
+directive|define
+name|CE_UPDATE_IN_BASE
+value|(1<< 27)
+end_define
+
 begin_comment
 comment|/*  * Extended on-disk flags  */
 end_comment

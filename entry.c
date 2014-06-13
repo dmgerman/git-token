@@ -1143,6 +1143,12 @@ operator|&
 name|st
 argument_list|)
 expr_stmt|;
+name|ce
+operator|->
+name|ce_flags
+operator||=
+name|CE_UPDATE_IN_BASE
+expr_stmt|;
 name|state
 operator|->
 name|istate

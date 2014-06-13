@@ -1296,12 +1296,20 @@ argument_list|(
 name|ce
 argument_list|)
 condition|)
+block|{
+name|ce
+operator|->
+name|ce_flags
+operator||=
+name|CE_UPDATE_IN_BASE
+expr_stmt|;
 name|istate
 operator|->
 name|cache_changed
 operator||=
 name|CE_ENTRY_CHANGED
 expr_stmt|;
+block|}
 comment|/* 	 * if (!was_skip_worktree&& !ce_skip_worktree()) { 	 *	This is perfectly normal. Move on; 	 * } 	 */
 comment|/* 	 * Merge strategies may set CE_UPDATE|CE_REMOVE outside checkout 	 * area as a result of ce_skip_worktree() shortcuts in 	 * verify_absent() and verify_uptodate(). 	 * Make sure they don't modify worktree if they are already 	 * outside checkout area 	 */
 if|if
