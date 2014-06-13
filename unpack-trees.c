@@ -1236,6 +1236,11 @@ name|int
 name|apply_sparse_checkout
 parameter_list|(
 name|struct
+name|index_state
+modifier|*
+name|istate
+parameter_list|,
+name|struct
 name|cache_entry
 modifier|*
 name|ce
@@ -1275,6 +1280,21 @@ name|ce_flags
 operator|&=
 operator|~
 name|CE_SKIP_WORKTREE
+expr_stmt|;
+if|if
+condition|(
+name|was_skip_worktree
+operator|!=
+name|ce_skip_worktree
+argument_list|(
+name|ce
+argument_list|)
+condition|)
+name|istate
+operator|->
+name|cache_changed
+operator||=
+name|CE_ENTRY_CHANGED
 expr_stmt|;
 comment|/* 	 * if (!was_skip_worktree&& !ce_skip_worktree()) { 	 *	This is perfectly normal. Move on; 	 * } 	 */
 comment|/* 	 * Merge strategies may set CE_UPDATE|CE_REMOVE outside checkout 	 * area as a result of ce_skip_worktree() shortcuts in 	 * verify_absent() and verify_uptodate(). 	 * Make sure they don't modify worktree if they are already 	 * outside checkout area 	 */
@@ -5503,6 +5523,11 @@ if|if
 condition|(
 name|apply_sparse_checkout
 argument_list|(
+operator|&
+name|o
+operator|->
+name|result
+argument_list|,
 name|ce
 argument_list|,
 name|o
