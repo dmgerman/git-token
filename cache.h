@@ -1336,6 +1336,14 @@ name|CACHE_TREE_CHANGED
 value|(1<< 5)
 end_define
 
+begin_define
+DECL|macro|SPLIT_INDEX_ORDERED
+define|#
+directive|define
+name|SPLIT_INDEX_ORDERED
+value|(1<< 6)
+end_define
+
 begin_struct_decl
 struct_decl|struct
 name|split_index
