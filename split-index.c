@@ -811,6 +811,8 @@ index|]
 argument_list|,
 name|ADD_CACHE_OK_TO_ADD
 operator||
+name|ADD_CACHE_KEEP_CACHE_TREE
+operator||
 comment|/* 				 * we may have to replay what 				 * merge-recursive.c:update_stages() 				 * does, which has this flag on 				 */
 name|ADD_CACHE_SKIP_DFCHECK
 argument_list|)

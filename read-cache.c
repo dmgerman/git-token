@@ -4637,6 +4637,15 @@ name|option
 operator|&
 name|ADD_CACHE_NEW_ONLY
 decl_stmt|;
+if|if
+condition|(
+operator|!
+operator|(
+name|option
+operator|&
+name|ADD_CACHE_KEEP_CACHE_TREE
+operator|)
+condition|)
 name|cache_tree_invalidate_path
 argument_list|(
 name|istate

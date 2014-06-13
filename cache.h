@@ -2943,6 +2943,19 @@ DECL|macro|ADD_CACHE_NEW_ONLY
 comment|/* Do not replace existing ones */
 end_comment
 
+begin_define
+DECL|macro|ADD_CACHE_KEEP_CACHE_TREE
+define|#
+directive|define
+name|ADD_CACHE_KEEP_CACHE_TREE
+value|32
+end_define
+
+begin_comment
+DECL|macro|ADD_CACHE_KEEP_CACHE_TREE
+comment|/* Do not invalidate cache-tree */
+end_comment
+
 begin_function_decl
 specifier|extern
 name|int
