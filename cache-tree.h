@@ -130,7 +130,7 @@ name|void
 name|cache_tree_invalidate_path
 parameter_list|(
 name|struct
-name|cache_tree
+name|index_state
 modifier|*
 parameter_list|,
 specifier|const

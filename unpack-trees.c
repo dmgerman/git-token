@@ -6093,8 +6093,6 @@ argument_list|(
 name|o
 operator|->
 name|src_index
-operator|->
-name|cache_tree
 argument_list|,
 name|ce
 operator|->
