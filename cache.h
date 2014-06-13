@@ -1380,6 +1380,14 @@ name|struct
 name|hashmap
 name|dir_hash
 decl_stmt|;
+DECL|member|sha1
+name|unsigned
+name|char
+name|sha1
+index|[
+literal|20
+index|]
+decl_stmt|;
 block|}
 struct|;
 end_struct
