@@ -919,6 +919,7 @@ argument_list|(
 literal|"Which one? -m, --reset, or --prefix?"
 argument_list|)
 expr_stmt|;
+comment|/* 	 * NEEDSWORK 	 * 	 * The old index should be read anyway even if we're going to 	 * destroy all index entries because we still need to preserve 	 * certain information such as index version or split-index 	 * mode. 	 */
 if|if
 condition|(
 name|opts
