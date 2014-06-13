@@ -1298,6 +1298,14 @@ name|CE_ENTRY_ADDED
 value|(1<< 3)
 end_define
 
+begin_define
+DECL|macro|RESOLVE_UNDO_CHANGED
+define|#
+directive|define
+name|RESOLVE_UNDO_CHANGED
+value|(1<< 4)
+end_define
+
 begin_struct
 DECL|struct|index_state
 struct|struct
