@@ -752,6 +752,14 @@ name|CE_UPDATE_IN_BASE
 value|(1<< 27)
 end_define
 
+begin_define
+DECL|macro|CE_STRIP_NAME
+define|#
+directive|define
+name|CE_STRIP_NAME
+value|(1<< 28)
+end_define
+
 begin_comment
 comment|/*  * Extended on-disk flags  */
 end_comment
