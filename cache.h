@@ -1488,21 +1488,6 @@ value|read_index_unmerged(&the_index)
 end_define
 
 begin_define
-DECL|macro|write_cache
-define|#
-directive|define
-name|write_cache
-parameter_list|(
-name|newfd
-parameter_list|,
-name|cache
-parameter_list|,
-name|entries
-parameter_list|)
-value|write_index(&the_index, (newfd))
-end_define
-
-begin_define
 DECL|macro|discard_cache
 define|#
 directive|define
@@ -2585,6 +2570,12 @@ begin_comment
 comment|/* Initialize and use the cache information */
 end_comment
 
+begin_struct_decl
+struct_decl|struct
+name|lock_file
+struct_decl|;
+end_struct_decl
+
 begin_function_decl
 specifier|extern
 name|int
@@ -2656,17 +2647,38 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_define
+DECL|macro|COMMIT_LOCK
+define|#
+directive|define
+name|COMMIT_LOCK
+value|(1<< 0)
+end_define
+
+begin_define
+DECL|macro|CLOSE_LOCK
+define|#
+directive|define
+name|CLOSE_LOCK
+value|(1<< 1)
+end_define
+
 begin_function_decl
 specifier|extern
 name|int
-name|write_index
+name|write_locked_index
 parameter_list|(
 name|struct
 name|index_state
 modifier|*
 parameter_list|,
-name|int
-name|newfd
+name|struct
+name|lock_file
+modifier|*
+name|lock
+parameter_list|,
+name|unsigned
+name|flags
 parameter_list|)
 function_decl|;
 end_function_decl
