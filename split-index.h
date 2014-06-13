@@ -71,6 +71,23 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+name|void
+name|save_or_free_index_entry
+parameter_list|(
+name|struct
+name|index_state
+modifier|*
+name|istate
+parameter_list|,
+name|struct
+name|cache_entry
+modifier|*
+name|ce
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|int
 name|read_link_extension
 parameter_list|(
