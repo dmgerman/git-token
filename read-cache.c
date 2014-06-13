@@ -10614,6 +10614,8 @@ condition|(
 operator|!
 name|si
 operator|||
+name|alternate_index_output
+operator|||
 operator|(
 name|istate
 operator|->
