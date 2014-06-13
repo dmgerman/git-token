@@ -2495,6 +2495,15 @@ name|i
 index|]
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|j
+operator|==
+name|istate
+operator|->
+name|cache_nr
+condition|)
+return|return;
 name|istate
 operator|->
 name|cache_changed
