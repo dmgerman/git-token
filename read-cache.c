@@ -8433,6 +8433,9 @@ operator|=
 name|ce
 operator|->
 name|ce_flags
+operator|&
+operator|~
+name|CE_NAMEMASK
 expr_stmt|;
 name|flags
 operator||=
