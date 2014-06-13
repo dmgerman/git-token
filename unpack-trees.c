@@ -5005,6 +5005,15 @@ name|refresh_cache
 operator|=
 literal|1
 expr_stmt|;
+name|state
+operator|.
+name|istate
+operator|=
+operator|&
+name|o
+operator|->
+name|result
+expr_stmt|;
 name|memset
 argument_list|(
 operator|&

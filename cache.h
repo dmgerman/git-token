@@ -7023,6 +7023,12 @@ DECL|struct|checkout
 struct|struct
 name|checkout
 block|{
+DECL|member|istate
+name|struct
+name|index_state
+modifier|*
+name|istate
+decl_stmt|;
 DECL|member|base_dir
 specifier|const
 name|char

@@ -1820,6 +1820,13 @@ name|refresh_cache
 operator|=
 literal|1
 expr_stmt|;
+name|state
+operator|.
+name|istate
+operator|=
+operator|&
+name|the_index
+expr_stmt|;
 for|for
 control|(
 name|pos

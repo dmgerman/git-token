@@ -14756,6 +14756,11 @@ name|int
 name|checkout_target
 parameter_list|(
 name|struct
+name|index_state
+modifier|*
+name|istate
+parameter_list|,
+name|struct
 name|cache_entry
 modifier|*
 name|ce
@@ -14794,6 +14799,12 @@ operator|.
 name|refresh_cache
 operator|=
 literal|1
+expr_stmt|;
+name|costate
+operator|.
+name|istate
+operator|=
+name|istate
 expr_stmt|;
 if|if
 condition|(
@@ -15645,6 +15656,9 @@ if|if
 condition|(
 name|checkout_target
 argument_list|(
+operator|&
+name|the_index
+argument_list|,
 name|ce
 argument_list|,
 operator|&
@@ -16531,6 +16545,9 @@ if|if
 condition|(
 name|checkout_target
 argument_list|(
+operator|&
+name|the_index
+argument_list|,
 operator|*
 name|ce
 argument_list|,
