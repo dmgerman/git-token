@@ -7787,17 +7787,6 @@ name|ret
 return|;
 if|if
 condition|(
-name|istate
-operator|->
-name|cache_nr
-condition|)
-name|die
-argument_list|(
-literal|"index in split-index mode must contain no entries"
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
 name|split_index
 operator|->
 name|base

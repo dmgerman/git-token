@@ -73,6 +73,16 @@ name|unsigned
 name|int
 name|saved_cache_nr
 decl_stmt|;
+DECL|member|nr_deletions
+name|unsigned
+name|int
+name|nr_deletions
+decl_stmt|;
+DECL|member|nr_replacements
+name|unsigned
+name|int
+name|nr_replacements
+decl_stmt|;
 DECL|member|refcount
 name|int
 name|refcount
