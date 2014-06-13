@@ -1996,10 +1996,10 @@ name|int
 name|parse_signed_commit
 parameter_list|(
 specifier|const
-name|unsigned
-name|char
+name|struct
+name|commit
 modifier|*
-name|sha1
+name|commit
 parameter_list|,
 name|struct
 name|strbuf

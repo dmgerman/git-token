@@ -2113,10 +2113,6 @@ condition|(
 name|parse_signed_commit
 argument_list|(
 name|commit
-operator|->
-name|object
-operator|.
-name|sha1
 argument_list|,
 operator|&
 name|payload
