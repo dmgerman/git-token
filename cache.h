@@ -1261,6 +1261,43 @@ parameter_list|)
 value|(offsetof(struct cache_entry,name) + (len) + 1)
 end_define
 
+begin_define
+DECL|macro|SOMETHING_CHANGED
+define|#
+directive|define
+name|SOMETHING_CHANGED
+value|(1<< 0)
+end_define
+
+begin_comment
+DECL|macro|SOMETHING_CHANGED
+comment|/* unclassified changes go here */
+end_comment
+
+begin_define
+DECL|macro|CE_ENTRY_CHANGED
+define|#
+directive|define
+name|CE_ENTRY_CHANGED
+value|(1<< 1)
+end_define
+
+begin_define
+DECL|macro|CE_ENTRY_REMOVED
+define|#
+directive|define
+name|CE_ENTRY_REMOVED
+value|(1<< 2)
+end_define
+
+begin_define
+DECL|macro|CE_ENTRY_ADDED
+define|#
+directive|define
+name|CE_ENTRY_ADDED
+value|(1<< 3)
+end_define
+
 begin_struct
 DECL|struct|index_state
 struct|struct

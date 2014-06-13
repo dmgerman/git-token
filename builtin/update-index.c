@@ -284,7 +284,7 @@ argument_list|)
 expr_stmt|;
 name|active_cache_changed
 operator|=
-literal|1
+name|SOMETHING_CHANGED
 expr_stmt|;
 return|return
 literal|0
@@ -1255,7 +1255,7 @@ argument_list|)
 expr_stmt|;
 name|active_cache_changed
 operator|=
-literal|1
+name|SOMETHING_CHANGED
 expr_stmt|;
 name|report
 argument_list|(
@@ -4564,7 +4564,7 @@ name|preferred_index_format
 condition|)
 name|active_cache_changed
 operator|=
-literal|1
+name|SOMETHING_CHANGED
 expr_stmt|;
 name|the_index
 operator|.

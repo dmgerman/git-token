@@ -255,8 +255,8 @@ expr_stmt|;
 name|istate
 operator|->
 name|cache_changed
-operator|=
-literal|1
+operator||=
+name|CE_ENTRY_CHANGED
 expr_stmt|;
 block|}
 end_function
@@ -2345,8 +2345,8 @@ expr_stmt|;
 name|istate
 operator|->
 name|cache_changed
-operator|=
-literal|1
+operator||=
+name|CE_ENTRY_REMOVED
 expr_stmt|;
 name|istate
 operator|->
@@ -2507,8 +2507,8 @@ return|return;
 name|istate
 operator|->
 name|cache_changed
-operator|=
-literal|1
+operator||=
+name|CE_ENTRY_REMOVED
 expr_stmt|;
 name|istate
 operator|->
@@ -4932,8 +4932,8 @@ expr_stmt|;
 name|istate
 operator|->
 name|cache_changed
-operator|=
-literal|1
+operator||=
+name|CE_ENTRY_ADDED
 expr_stmt|;
 return|return
 literal|0
@@ -5267,6 +5267,7 @@ operator|&=
 operator|~
 name|CE_VALID
 expr_stmt|;
+comment|/* istate->cache_changed is updated in the caller */
 return|return
 name|updated
 return|;
@@ -5752,8 +5753,8 @@ expr_stmt|;
 name|istate
 operator|->
 name|cache_changed
-operator|=
-literal|1
+operator||=
+name|CE_ENTRY_CHANGED
 expr_stmt|;
 block|}
 if|if
