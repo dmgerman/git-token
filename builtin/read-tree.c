@@ -1338,7 +1338,7 @@ condition|)
 name|prime_cache_tree
 argument_list|(
 operator|&
-name|active_cache_tree
+name|the_index
 argument_list|,
 name|trees
 index|[
