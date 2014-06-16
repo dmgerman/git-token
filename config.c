@@ -4850,7 +4850,7 @@ literal|"mailmap.file"
 argument_list|)
 condition|)
 return|return
-name|git_config_string
+name|git_config_pathname
 argument_list|(
 operator|&
 name|git_mailmap_file
