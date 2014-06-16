@@ -7844,6 +7844,7 @@ name|sb
 operator|->
 name|len
 expr_stmt|;
+comment|/* 	 * convert a commit message to UTF-8 first 	 * as far as 'format_commit_item' assumes it in UTF-8 	 */
 name|context
 operator|.
 name|message
@@ -7857,7 +7858,7 @@ name|context
 operator|.
 name|commit_encoding
 argument_list|,
-name|output_enc
+name|utf8
 argument_list|)
 expr_stmt|;
 name|strbuf_expand
@@ -7886,6 +7887,7 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+comment|/* then convert a commit message to an actual output encoding */
 if|if
 condition|(
 name|output_enc
