@@ -494,7 +494,7 @@ parameter_list|)
 block|{
 name|error
 argument_list|(
-literal|"'%s' is not possible because you have unmerged files."
+literal|"%s is not possible because you have unmerged files."
 argument_list|,
 name|me
 argument_list|)
@@ -508,10 +508,9 @@ name|advise
 argument_list|(
 name|_
 argument_list|(
-literal|"Fix them up in the work tree,\n"
-literal|"and then use 'git add/rm<file>' as\n"
-literal|"appropriate to mark resolution and make a commit,\n"
-literal|"or use 'git commit -a'."
+literal|"Fix them up in the work tree, and then use 'git add/rm<file>'\n"
+literal|"as appropriate to mark resolution and make a commit, or use\n"
+literal|"'git commit -a'."
 argument_list|)
 argument_list|)
 expr_stmt|;
