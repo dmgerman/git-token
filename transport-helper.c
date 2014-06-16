@@ -5422,13 +5422,13 @@ name|data
 init|=
 name|xcalloc
 argument_list|(
+literal|1
+argument_list|,
 sizeof|sizeof
 argument_list|(
 operator|*
 name|data
 argument_list|)
-argument_list|,
-literal|1
 argument_list|)
 decl_stmt|;
 name|data
