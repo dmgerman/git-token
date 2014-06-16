@@ -804,6 +804,13 @@ name|strbuf
 modifier|*
 name|content_type
 decl_stmt|;
+comment|/* 	 * If non-NULL, and content_type above is non-NULL, returns 	 * the charset parameter from the content-type. If none is 	 * present, returns an empty string. 	 */
+DECL|member|charset
+name|struct
+name|strbuf
+modifier|*
+name|charset
+decl_stmt|;
 comment|/* 	 * If non-NULL, returns the URL we ended up at, including any 	 * redirects we followed. 	 */
 DECL|member|effective_url
 name|struct
