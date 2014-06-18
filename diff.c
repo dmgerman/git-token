@@ -19419,11 +19419,24 @@ name|argcount
 init|=
 literal|1
 decl_stmt|;
-name|arg
-operator|+=
-name|strlen
+if|if
+condition|(
+operator|!
+name|skip_prefix
 argument_list|(
+name|arg
+argument_list|,
 literal|"--stat"
+argument_list|,
+operator|&
+name|arg
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"BUG: stat option does not begin with --stat: %s"
+argument_list|,
+name|arg
 argument_list|)
 expr_stmt|;
 name|end
