@@ -1747,6 +1747,11 @@ name|char
 modifier|*
 name|line
 decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|arg
+decl_stmt|;
 name|unsigned
 name|char
 name|sha1
@@ -1786,11 +1791,14 @@ condition|)
 block|{
 if|if
 condition|(
-name|starts_with
+name|skip_prefix
 argument_list|(
 name|line
 argument_list|,
 literal|"shallow "
+argument_list|,
+operator|&
+name|arg
 argument_list|)
 condition|)
 block|{
@@ -1798,9 +1806,7 @@ if|if
 condition|(
 name|get_sha1_hex
 argument_list|(
-name|line
-operator|+
-literal|8
+name|arg
 argument_list|,
 name|sha1
 argument_list|)
@@ -1821,11 +1827,14 @@ continue|continue;
 block|}
 if|if
 condition|(
-name|starts_with
+name|skip_prefix
 argument_list|(
 name|line
 argument_list|,
 literal|"unshallow "
+argument_list|,
+operator|&
+name|arg
 argument_list|)
 condition|)
 block|{
@@ -1833,9 +1842,7 @@ if|if
 condition|(
 name|get_sha1_hex
 argument_list|(
-name|line
-operator|+
-literal|10
+name|arg
 argument_list|,
 name|sha1
 argument_list|)

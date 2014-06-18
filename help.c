@@ -1533,6 +1533,11 @@ modifier|*
 name|cb
 parameter_list|)
 block|{
+specifier|const
+name|char
+modifier|*
+name|p
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -1555,11 +1560,14 @@ expr_stmt|;
 comment|/* Also use aliases for command lookup */
 if|if
 condition|(
-name|starts_with
+name|skip_prefix
 argument_list|(
 name|var
 argument_list|,
 literal|"alias."
+argument_list|,
+operator|&
+name|p
 argument_list|)
 condition|)
 name|add_cmdname
@@ -1567,15 +1575,11 @@ argument_list|(
 operator|&
 name|aliases
 argument_list|,
-name|var
-operator|+
-literal|6
+name|p
 argument_list|,
 name|strlen
 argument_list|(
-name|var
-operator|+
-literal|6
+name|p
 argument_list|)
 argument_list|)
 expr_stmt|;
