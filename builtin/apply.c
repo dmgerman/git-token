@@ -18824,19 +18824,23 @@ specifier|const
 name|char
 modifier|*
 name|s
-init|=
-name|buf
 decl_stmt|;
 if|if
 condition|(
+operator|!
+name|skip_prefix
+argument_list|(
+name|buf
+argument_list|,
+literal|"Subproject commit "
+argument_list|,
+operator|&
+name|s
+argument_list|)
+operator|||
 name|get_sha1_hex
 argument_list|(
 name|s
-operator|+
-name|strlen
-argument_list|(
-literal|"Subproject commit "
-argument_list|)
 argument_list|,
 name|ce
 operator|->
