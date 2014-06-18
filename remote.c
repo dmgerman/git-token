@@ -3217,11 +3217,14 @@ operator|&
 name|REF_ISSYMREF
 operator|)
 operator|&&
-name|starts_with
+name|skip_prefix
 argument_list|(
 name|head_ref
 argument_list|,
 literal|"refs/heads/"
+argument_list|,
+operator|&
+name|head_ref
 argument_list|)
 condition|)
 block|{
@@ -3230,11 +3233,6 @@ operator|=
 name|make_branch
 argument_list|(
 name|head_ref
-operator|+
-name|strlen
-argument_list|(
-literal|"refs/heads/"
-argument_list|)
 argument_list|,
 literal|0
 argument_list|)

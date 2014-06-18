@@ -2520,14 +2520,22 @@ argument_list|)
 operator|+
 literal|1
 decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|remote
+decl_stmt|;
 comment|/* A remote branch of the same name is deemed similar */
 if|if
 condition|(
-name|starts_with
+name|skip_prefix
 argument_list|(
 name|refname
 argument_list|,
 literal|"refs/remotes/"
+argument_list|,
+operator|&
+name|remote
 argument_list|)
 operator|&&
 operator|!
@@ -2546,12 +2554,7 @@ name|cb
 operator|->
 name|similar_refs
 argument_list|,
-name|refname
-operator|+
-name|strlen
-argument_list|(
-literal|"refs/remotes/"
-argument_list|)
+name|remote
 argument_list|)
 expr_stmt|;
 return|return

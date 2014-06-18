@@ -4767,23 +4767,16 @@ name|len
 decl_stmt|;
 if|if
 condition|(
-name|starts_with
+name|skip_prefix
 argument_list|(
 name|message
 argument_list|,
 literal|"checkout: moving from "
+argument_list|,
+operator|&
+name|match
 argument_list|)
 condition|)
-block|{
-name|match
-operator|=
-name|message
-operator|+
-name|strlen
-argument_list|(
-literal|"checkout: moving from "
-argument_list|)
-expr_stmt|;
 name|target
 operator|=
 name|strstr
@@ -4793,7 +4786,6 @@ argument_list|,
 literal|" to "
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 operator|!
