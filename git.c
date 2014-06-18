@@ -3437,9 +3437,8 @@ operator|>
 literal|0
 condition|)
 block|{
-if|if
-condition|(
-name|starts_with
+comment|/* translate --help and --version into commands */
+name|skip_prefix
 argument_list|(
 name|argv
 index|[
@@ -3447,14 +3446,13 @@ literal|0
 index|]
 argument_list|,
 literal|"--"
-argument_list|)
-condition|)
+argument_list|,
+operator|&
 name|argv
 index|[
 literal|0
 index|]
-operator|+=
-literal|2
+argument_list|)
 expr_stmt|;
 block|}
 else|else
