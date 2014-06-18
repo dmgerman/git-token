@@ -178,6 +178,7 @@ end_comment
 begin_decl_stmt
 DECL|variable|base_path
 specifier|static
+specifier|const
 name|char
 modifier|*
 name|base_path
@@ -187,6 +188,7 @@ end_decl_stmt
 begin_decl_stmt
 DECL|variable|interpolated_path
 specifier|static
+specifier|const
 name|char
 modifier|*
 name|interpolated_path
@@ -532,6 +534,7 @@ name|char
 modifier|*
 name|path_ok
 parameter_list|(
+specifier|const
 name|char
 modifier|*
 name|directory
@@ -556,6 +559,7 @@ name|char
 modifier|*
 name|path
 decl_stmt|;
+specifier|const
 name|char
 modifier|*
 name|dir
@@ -625,6 +629,7 @@ argument_list|(
 name|dir
 argument_list|)
 decl_stmt|;
+specifier|const
 name|char
 modifier|*
 name|slash
@@ -1271,6 +1276,7 @@ end_function
 begin_decl_stmt
 DECL|variable|access_hook
 specifier|static
+specifier|const
 name|char
 modifier|*
 name|access_hook
@@ -1633,6 +1639,7 @@ specifier|static
 name|int
 name|run_service
 parameter_list|(
+specifier|const
 name|char
 modifier|*
 name|dir
