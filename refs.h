@@ -514,7 +514,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Lock the packed-refs file for writing.  Flags is passed to  * hold_lock_file_for_update().  Return 0 on success.  */
+comment|/*  * Lock the packed-refs file for writing.  Flags is passed to  * hold_lock_file_for_update().  Return 0 on success.  * Errno is set to something meaningful on error.  */
 end_comment
 
 begin_function_decl

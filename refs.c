@@ -10075,6 +10075,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/* This should return a meaningful errno on failure */
+end_comment
+
 begin_function
 DECL|function|lock_packed_refs
 name|int

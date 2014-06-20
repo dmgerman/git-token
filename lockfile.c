@@ -408,6 +408,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/* Make sure errno contains a meaningful value on error */
+end_comment
+
 begin_function
 DECL|function|lock_file
 specifier|static
@@ -452,10 +456,16 @@ argument_list|)
 operator|>=
 name|max_path_len
 condition|)
+block|{
+name|errno
+operator|=
+name|ENAMETOOLONG
+expr_stmt|;
 return|return
 operator|-
 literal|1
 return|;
+block|}
 name|strcpy
 argument_list|(
 name|lk
@@ -578,7 +588,12 @@ operator|->
 name|filename
 argument_list|)
 condition|)
-return|return
+block|{
+name|int
+name|save_errno
+init|=
+name|errno
+decl_stmt|;
 name|error
 argument_list|(
 literal|"cannot fix permission bits on %s"
@@ -587,7 +602,16 @@ name|lk
 operator|->
 name|filename
 argument_list|)
+expr_stmt|;
+name|errno
+operator|=
+name|save_errno
+expr_stmt|;
+return|return
+operator|-
+literal|1
 return|;
+block|}
 block|}
 else|else
 name|lk
@@ -769,6 +793,10 @@ argument_list|)
 expr_stmt|;
 block|}
 end_function
+
+begin_comment
+comment|/* This should return a meaningful errno on failure */
+end_comment
 
 begin_function
 DECL|function|hold_lock_file_for_update
