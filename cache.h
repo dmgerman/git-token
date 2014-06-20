@@ -6409,14 +6409,14 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|int
-name|cache_name_compare
+name|name_compare
 parameter_list|(
 specifier|const
 name|char
 modifier|*
 name|name1
 parameter_list|,
-name|int
+name|size_t
 name|len1
 parameter_list|,
 specifier|const
@@ -6424,7 +6424,7 @@ name|char
 modifier|*
 name|name2
 parameter_list|,
-name|int
+name|size_t
 name|len2
 parameter_list|)
 function_decl|;
