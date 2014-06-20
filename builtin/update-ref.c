@@ -1765,8 +1765,6 @@ name|msg
 argument_list|,
 operator|&
 name|err
-argument_list|,
-name|UPDATE_REFS_QUIET_ON_ERR
 argument_list|)
 condition|)
 name|die
