@@ -16379,7 +16379,7 @@ end_function
 
 begin_function
 DECL|function|ref_transaction_update
-name|void
+name|int
 name|ref_transaction_update
 parameter_list|(
 name|struct
@@ -16409,20 +16409,39 @@ name|flags
 parameter_list|,
 name|int
 name|have_old
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|err
 parameter_list|)
 block|{
 name|struct
 name|ref_update
 modifier|*
 name|update
-init|=
+decl_stmt|;
+if|if
+condition|(
+name|have_old
+operator|&&
+operator|!
+name|old_sha1
+condition|)
+name|die
+argument_list|(
+literal|"BUG: have_old is true but old_sha1 is NULL"
+argument_list|)
+expr_stmt|;
+name|update
+operator|=
 name|add_update
 argument_list|(
 name|transaction
 argument_list|,
 name|refname
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|hashcpy
 argument_list|(
 name|update
@@ -16457,6 +16476,9 @@ argument_list|,
 name|old_sha1
 argument_list|)
 expr_stmt|;
+return|return
+literal|0
+return|;
 block|}
 end_function
 

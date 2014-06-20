@@ -1183,11 +1183,11 @@ comment|/*  * The following functions add a reference check or update to a  * re
 end_comment
 
 begin_comment
-comment|/*  * Add a reference update to transaction.  new_sha1 is the value that  * the reference should have after the update, or zeros if it should  * be deleted.  If have_old is true, then old_sha1 holds the value  * that the reference should have had before the update, or zeros if  * it must not have existed beforehand.  */
+comment|/*  * Add a reference update to transaction.  new_sha1 is the value that  * the reference should have after the update, or zeros if it should  * be deleted.  If have_old is true, then old_sha1 holds the value  * that the reference should have had before the update, or zeros if  * it must not have existed beforehand.  * Function returns 0 on success and non-zero on failure. A failure to update  * means that the transaction as a whole has failed and will need to be  * rolled back. On failure the err buffer will be updated.  */
 end_comment
 
 begin_function_decl
-name|void
+name|int
 name|ref_transaction_update
 parameter_list|(
 name|struct
@@ -1217,6 +1217,11 @@ name|flags
 parameter_list|,
 name|int
 name|have_old
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|err
 parameter_list|)
 function_decl|;
 end_function_decl
