@@ -671,7 +671,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/** Locks a "refs/" ref returning the lock on success and NULL on failure. **/
+comment|/*  * Locks a "refs/" ref returning the lock on success and NULL on failure.  * On failure errno is set to something meaningful.  */
 end_comment
 
 begin_function_decl
@@ -706,6 +706,10 @@ directive|define
 name|REF_NODEREF
 value|0x01
 end_define
+
+begin_comment
+comment|/* errno is set to something meaningful on failure */
+end_comment
 
 begin_function_decl
 specifier|extern
