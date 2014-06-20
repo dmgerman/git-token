@@ -8242,12 +8242,34 @@ argument_list|)
 condition|)
 block|{
 comment|/* accept -<digit>, like traditional "head" */
+if|if
+condition|(
+name|strtol_i
+argument_list|(
+name|arg
+operator|+
+literal|1
+argument_list|,
+literal|10
+argument_list|,
+operator|&
 name|revs
 operator|->
 name|max_count
-operator|=
-name|atoi
+argument_list|)
+operator|<
+literal|0
+operator|||
+name|revs
+operator|->
+name|max_count
+operator|<
+literal|0
+condition|)
+name|die
 argument_list|(
+literal|"'%s': not a non-negative integer"
+argument_list|,
 name|arg
 operator|+
 literal|1
