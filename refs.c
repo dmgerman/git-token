@@ -15959,6 +15959,12 @@ block|{
 name|int
 name|i
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|transaction
+condition|)
+return|return;
 for|for
 control|(
 name|i
