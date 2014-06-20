@@ -16983,11 +16983,6 @@ argument_list|(
 name|delnames
 argument_list|)
 expr_stmt|;
-name|ref_transaction_free
-argument_list|(
-name|transaction
-argument_list|)
-expr_stmt|;
 return|return
 name|ret
 return|;

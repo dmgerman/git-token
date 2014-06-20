@@ -1763,6 +1763,11 @@ argument_list|,
 name|UPDATE_REFS_DIE_ON_ERR
 argument_list|)
 expr_stmt|;
+name|ref_transaction_free
+argument_list|(
+name|transaction
+argument_list|)
+expr_stmt|;
 return|return
 name|ret
 return|;
