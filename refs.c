@@ -8753,6 +8753,8 @@ name|path
 decl_stmt|;
 name|int
 name|result
+decl_stmt|,
+name|save_errno
 decl_stmt|;
 name|strbuf_init
 argument_list|(
@@ -8780,11 +8782,19 @@ argument_list|,
 name|REMOVE_DIR_EMPTY_ONLY
 argument_list|)
 expr_stmt|;
+name|save_errno
+operator|=
+name|errno
+expr_stmt|;
 name|strbuf_release
 argument_list|(
 operator|&
 name|path
 argument_list|)
+expr_stmt|;
+name|errno
+operator|=
+name|save_errno
 expr_stmt|;
 return|return
 name|result
@@ -9290,6 +9300,10 @@ name|logs_found
 return|;
 block|}
 end_function
+
+begin_comment
+comment|/* This function should make sure errno is meaningful on error */
+end_comment
 
 begin_function
 DECL|function|lock_ref_sha1_basic
