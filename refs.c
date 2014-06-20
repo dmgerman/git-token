@@ -12618,6 +12618,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/* This function must set a meaningful errno on failure */
+end_comment
+
 begin_function
 DECL|function|log_ref_setup
 name|int
@@ -12701,14 +12705,28 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-return|return
+block|{
+name|int
+name|save_errno
+init|=
+name|errno
+decl_stmt|;
 name|error
 argument_list|(
 literal|"unable to create directory for %s"
 argument_list|,
 name|logfile
 argument_list|)
+expr_stmt|;
+name|errno
+operator|=
+name|save_errno
+expr_stmt|;
+return|return
+operator|-
+literal|1
 return|;
+block|}
 name|oflags
 operator||=
 name|O_CREAT
@@ -12769,13 +12787,25 @@ name|logfile
 argument_list|)
 condition|)
 block|{
-return|return
+name|int
+name|save_errno
+init|=
+name|errno
+decl_stmt|;
 name|error
 argument_list|(
 literal|"There are still logs under '%s'"
 argument_list|,
 name|logfile
 argument_list|)
+expr_stmt|;
+name|errno
+operator|=
+name|save_errno
+expr_stmt|;
+return|return
+operator|-
+literal|1
 return|;
 block|}
 name|logfd
@@ -12796,7 +12826,12 @@ name|logfd
 operator|<
 literal|0
 condition|)
-return|return
+block|{
+name|int
+name|save_errno
+init|=
+name|errno
+decl_stmt|;
 name|error
 argument_list|(
 literal|"Unable to append to %s: %s"
@@ -12808,7 +12843,16 @@ argument_list|(
 name|errno
 argument_list|)
 argument_list|)
+expr_stmt|;
+name|errno
+operator|=
+name|save_errno
+expr_stmt|;
+return|return
+operator|-
+literal|1
 return|;
+block|}
 block|}
 name|adjust_shared_perm
 argument_list|(
