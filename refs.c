@@ -15947,7 +15947,6 @@ end_function
 
 begin_function
 DECL|function|ref_transaction_free
-specifier|static
 name|void
 name|ref_transaction_free
 parameter_list|(
@@ -15993,25 +15992,6 @@ name|updates
 argument_list|)
 expr_stmt|;
 name|free
-argument_list|(
-name|transaction
-argument_list|)
-expr_stmt|;
-block|}
-end_function
-
-begin_function
-DECL|function|ref_transaction_rollback
-name|void
-name|ref_transaction_rollback
-parameter_list|(
-name|struct
-name|ref_transaction
-modifier|*
-name|transaction
-parameter_list|)
-block|{
-name|ref_transaction_free
 argument_list|(
 name|transaction
 argument_list|)

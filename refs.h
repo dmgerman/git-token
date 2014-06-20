@@ -1155,7 +1155,7 @@ enum|;
 end_enum
 
 begin_comment
-comment|/*  * Begin a reference transaction.  The reference transaction must  * eventually be commited using ref_transaction_commit() or rolled  * back using ref_transaction_rollback().  */
+comment|/*  * Begin a reference transaction.  The reference transaction must  * eventually be commited using ref_transaction_commit() or freed by  * calling ref_transaction_free().  */
 end_comment
 
 begin_function_decl
@@ -1165,22 +1165,6 @@ modifier|*
 name|ref_transaction_begin
 parameter_list|(
 name|void
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_comment
-comment|/*  * Roll back a ref_transaction and free all associated data.  */
-end_comment
-
-begin_function_decl
-name|void
-name|ref_transaction_rollback
-parameter_list|(
-name|struct
-name|ref_transaction
-modifier|*
-name|transaction
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -1308,6 +1292,22 @@ parameter_list|,
 name|enum
 name|action_on_err
 name|onerr
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/*  * Free an existing transaction and all associated data.  */
+end_comment
+
+begin_function_decl
+name|void
+name|ref_transaction_free
+parameter_list|(
+name|struct
+name|ref_transaction
+modifier|*
+name|transaction
 parameter_list|)
 function_decl|;
 end_function_decl
