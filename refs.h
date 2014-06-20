@@ -627,6 +627,11 @@ name|refnames
 parameter_list|,
 name|int
 name|n
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|err
 parameter_list|)
 function_decl|;
 end_function_decl
