@@ -16109,11 +16109,13 @@ name|char
 modifier|*
 name|refname
 parameter_list|,
+specifier|const
 name|unsigned
 name|char
 modifier|*
 name|new_sha1
 parameter_list|,
+specifier|const
 name|unsigned
 name|char
 modifier|*
@@ -16190,6 +16192,7 @@ name|char
 modifier|*
 name|refname
 parameter_list|,
+specifier|const
 name|unsigned
 name|char
 modifier|*
@@ -16266,6 +16269,7 @@ name|char
 modifier|*
 name|refname
 parameter_list|,
+specifier|const
 name|unsigned
 name|char
 modifier|*
