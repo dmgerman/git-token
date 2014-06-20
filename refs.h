@@ -552,7 +552,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Write the current version of the packed refs cache from memory to  * disk.  The packed-refs file must already be locked for writing (see  * lock_packed_refs()).  Return zero on success.  */
+comment|/*  * Write the current version of the packed refs cache from memory to  * disk.  The packed-refs file must already be locked for writing (see  * lock_packed_refs()).  Return zero on success.  * Sets errno to something meaningful on error.  */
 end_comment
 
 begin_function_decl

@@ -10173,6 +10173,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Commit the packed refs changes.  * On error we must make sure that errno contains a meaningful value.  */
+end_comment
+
 begin_function
 DECL|function|commit_packed_refs
 name|int
@@ -10194,6 +10198,11 @@ argument_list|)
 decl_stmt|;
 name|int
 name|error
+init|=
+literal|0
+decl_stmt|;
+name|int
+name|save_errno
 init|=
 literal|0
 decl_stmt|;
@@ -10253,11 +10262,17 @@ operator|->
 name|lock
 argument_list|)
 condition|)
+block|{
+name|save_errno
+operator|=
+name|errno
+expr_stmt|;
 name|error
 operator|=
 operator|-
 literal|1
 expr_stmt|;
+block|}
 name|packed_ref_cache
 operator|->
 name|lock
@@ -10268,6 +10283,10 @@ name|release_packed_ref_cache
 argument_list|(
 name|packed_ref_cache
 argument_list|)
+expr_stmt|;
+name|errno
+operator|=
+name|save_errno
 expr_stmt|;
 return|return
 name|error
