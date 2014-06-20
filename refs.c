@@ -16610,6 +16610,11 @@ name|char
 modifier|*
 name|msg
 parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|err
+parameter_list|,
 name|enum
 name|action_on_err
 name|onerr
@@ -16772,6 +16777,21 @@ operator|->
 name|lock
 condition|)
 block|{
+if|if
+condition|(
+name|err
+condition|)
+name|strbuf_addf
+argument_list|(
+name|err
+argument_list|,
+literal|"Cannot lock the ref '%s'."
+argument_list|,
+name|update
+operator|->
+name|refname
+argument_list|)
+expr_stmt|;
 name|ret
 operator|=
 literal|1
