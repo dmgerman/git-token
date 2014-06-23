@@ -2808,6 +2808,14 @@ name|RUN_SETUP_GENTLY
 block|}
 block|,
 block|{
+literal|"verify-commit"
+block|,
+name|cmd_verify_commit
+block|,
+name|RUN_SETUP
+block|}
+block|,
+block|{
 literal|"verify-pack"
 block|,
 name|cmd_verify_pack
