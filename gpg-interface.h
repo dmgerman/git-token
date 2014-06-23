@@ -48,6 +48,19 @@ end_struct
 
 begin_function_decl
 specifier|extern
+name|void
+name|signature_check_clear
+parameter_list|(
+name|struct
+name|signature_check
+modifier|*
+name|sigc
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|int
 name|sign_buffer
 parameter_list|(
