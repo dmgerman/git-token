@@ -65,6 +65,13 @@ name|free
 argument_list|(
 name|sigc
 operator|->
+name|payload
+argument_list|)
+expr_stmt|;
+name|free
+argument_list|(
+name|sigc
+operator|->
 name|gpg_output
 argument_list|)
 expr_stmt|;
@@ -88,6 +95,12 @@ name|sigc
 operator|->
 name|key
 argument_list|)
+expr_stmt|;
+name|sigc
+operator|->
+name|payload
+operator|=
+name|NULL
 expr_stmt|;
 name|sigc
 operator|->
