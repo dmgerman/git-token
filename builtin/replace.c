@@ -991,7 +991,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Write the contents of the object named by "sha1" to the file "filename",  * pretty-printed for human editing based on its type.  */
+comment|/*  * Write the contents of the object named by "sha1" to the file "filename".  * If "raw" is true, then the object's raw contents are printed according to  * "type". Otherwise, we pretty-print the contents for human editing.  */
 end_comment
 
 begin_function
@@ -1005,6 +1005,13 @@ name|unsigned
 name|char
 modifier|*
 name|sha1
+parameter_list|,
+name|enum
+name|object_type
+name|type
+parameter_list|,
+name|int
+name|raw
 parameter_list|,
 specifier|const
 name|char
@@ -1071,6 +1078,24 @@ argument_list|,
 literal|"cat-file"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|raw
+condition|)
+name|argv_array_push
+argument_list|(
+operator|&
+name|cmd
+operator|.
+name|args
+argument_list|,
+name|typename
+argument_list|(
+name|type
+argument_list|)
+argument_list|)
+expr_stmt|;
+else|else
 name|argv_array_push
 argument_list|(
 operator|&
@@ -1141,6 +1166,9 @@ name|enum
 name|object_type
 name|type
 parameter_list|,
+name|int
+name|raw
+parameter_list|,
 specifier|const
 name|char
 modifier|*
@@ -1174,6 +1202,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+name|raw
+operator|&&
 name|type
 operator|==
 name|OBJ_TREE
@@ -1385,6 +1416,9 @@ name|object_ref
 parameter_list|,
 name|int
 name|force
+parameter_list|,
+name|int
+name|raw
 parameter_list|)
 block|{
 name|char
@@ -1486,6 +1520,10 @@ name|export_object
 argument_list|(
 name|old
 argument_list|,
+name|type
+argument_list|,
+name|raw
+argument_list|,
 name|tmpfile
 argument_list|)
 expr_stmt|;
@@ -1512,6 +1550,8 @@ argument_list|(
 name|new
 argument_list|,
 name|type
+argument_list|,
+name|raw
 argument_list|,
 name|tmpfile
 argument_list|)
@@ -1581,6 +1621,11 @@ parameter_list|)
 block|{
 name|int
 name|force
+init|=
+literal|0
+decl_stmt|;
+name|int
+name|raw
 init|=
 literal|0
 decl_stmt|;
@@ -1681,6 +1726,21 @@ literal|"replace the ref if it exists"
 argument_list|)
 argument_list|)
 block|,
+name|OPT_BOOL
+argument_list|(
+literal|0
+argument_list|,
+literal|"raw"
+argument_list|,
+operator|&
+name|raw
+argument_list|,
+name|N_
+argument_list|(
+literal|"do not pretty-print contents for --edit"
+argument_list|)
+argument_list|)
+block|,
 name|OPT_STRING
 argument_list|(
 literal|0
@@ -1771,6 +1831,23 @@ condition|)
 name|usage_msg_opt
 argument_list|(
 literal|"-f only makes sense when writing a replacement"
+argument_list|,
+name|git_replace_usage
+argument_list|,
+name|options
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|raw
+operator|&&
+name|cmdmode
+operator|!=
+name|MODE_EDIT
+condition|)
+name|usage_msg_opt
+argument_list|(
+literal|"--raw only makes sense with --edit"
 argument_list|,
 name|git_replace_usage
 argument_list|,
@@ -1869,6 +1946,8 @@ literal|0
 index|]
 argument_list|,
 name|force
+argument_list|,
+name|raw
 argument_list|)
 return|;
 case|case
