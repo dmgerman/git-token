@@ -3117,7 +3117,7 @@ literal|1024
 decl_stmt|;
 name|n
 operator|=
-name|pread
+name|xpread
 argument_list|(
 name|get_thread_data
 argument_list|()
