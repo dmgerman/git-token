@@ -900,11 +900,9 @@ operator|==
 name|namelen
 operator|&&
 operator|!
-name|cache_name_compare
+name|memcmp
 argument_list|(
 name|name
-argument_list|,
-name|namelen
 argument_list|,
 name|ce
 operator|->

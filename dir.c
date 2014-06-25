@@ -6128,7 +6128,7 @@ operator|)
 name|p2
 decl_stmt|;
 return|return
-name|cache_name_compare
+name|name_compare
 argument_list|(
 name|e1
 operator|->
