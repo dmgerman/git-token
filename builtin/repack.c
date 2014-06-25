@@ -79,9 +79,6 @@ DECL|variable|write_bitmaps
 specifier|static
 name|int
 name|write_bitmaps
-init|=
-operator|-
-literal|1
 decl_stmt|;
 end_decl_stmt
 
@@ -190,6 +187,14 @@ return|;
 block|}
 if|if
 condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|var
+argument_list|,
+literal|"repack.writebitmaps"
+argument_list|)
+operator|||
 operator|!
 name|strcmp
 argument_list|(
@@ -1125,8 +1130,6 @@ condition|)
 name|pack_kept_objects
 operator|=
 name|write_bitmaps
-operator|>
-literal|0
 expr_stmt|;
 name|packdir
 operator|=
@@ -1294,21 +1297,13 @@ expr_stmt|;
 if|if
 condition|(
 name|write_bitmaps
-operator|>=
-literal|0
 condition|)
-name|argv_array_pushf
+name|argv_array_push
 argument_list|(
 operator|&
 name|cmd_args
 argument_list|,
-literal|"--%swrite-bitmap-index"
-argument_list|,
-name|write_bitmaps
-condition|?
-literal|""
-else|:
-literal|"no-"
+literal|"--write-bitmap-index"
 argument_list|)
 expr_stmt|;
 if|if
