@@ -9198,7 +9198,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|has_extension
+name|ends_with
 argument_list|(
 name|pack_name
 argument_list|,
@@ -9270,7 +9270,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|has_extension
+name|ends_with
 argument_list|(
 name|pack_name
 argument_list|,

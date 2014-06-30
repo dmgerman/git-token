@@ -5857,7 +5857,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|has_extension
+name|ends_with
 argument_list|(
 name|de
 operator|->
@@ -5945,7 +5945,7 @@ condition|)
 continue|continue;
 if|if
 condition|(
-name|has_extension
+name|ends_with
 argument_list|(
 name|de
 operator|->
@@ -5954,7 +5954,7 @@ argument_list|,
 literal|".idx"
 argument_list|)
 operator|||
-name|has_extension
+name|ends_with
 argument_list|(
 name|de
 operator|->
@@ -5963,7 +5963,7 @@ argument_list|,
 literal|".pack"
 argument_list|)
 operator|||
-name|has_extension
+name|ends_with
 argument_list|(
 name|de
 operator|->
@@ -5972,7 +5972,7 @@ argument_list|,
 literal|".bitmap"
 argument_list|)
 operator|||
-name|has_extension
+name|ends_with
 argument_list|(
 name|de
 operator|->

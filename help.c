@@ -962,7 +962,7 @@ name|prefix_len
 expr_stmt|;
 if|if
 condition|(
-name|has_extension
+name|ends_with
 argument_list|(
 name|de
 operator|->
