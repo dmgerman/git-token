@@ -4480,11 +4480,21 @@ operator|*
 operator|)
 name|obj
 decl_stmt|;
+if|if
+condition|(
+name|detach_commit_buffer
+argument_list|(
 name|commit
-operator|->
-name|buffer
-operator|=
+argument_list|,
 name|NULL
+argument_list|)
+operator|!=
+name|data
+condition|)
+name|die
+argument_list|(
+literal|"BUG: parse_object_buffer transmogrified our buffer"
+argument_list|)
 expr_stmt|;
 block|}
 name|obj

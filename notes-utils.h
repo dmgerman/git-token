@@ -37,10 +37,12 @@ modifier|*
 name|parents
 parameter_list|,
 specifier|const
-name|struct
-name|strbuf
+name|char
 modifier|*
 name|msg
+parameter_list|,
+name|size_t
+name|msg_len
 parameter_list|,
 name|unsigned
 name|char

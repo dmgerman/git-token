@@ -15070,6 +15070,7 @@ name|char
 modifier|*
 name|encoding
 decl_stmt|;
+specifier|const
 name|char
 modifier|*
 name|message
@@ -15261,7 +15262,7 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* Find either in the original commit message, or in the temporary */
+comment|/* 	 * Find either in the original commit message, or in the temporary. 	 * Note that we cast away the constness of "message" here. It is 	 * const because it may come from the cached commit buffer. That's OK, 	 * because we know that it is modifiable heap memory, and that while 	 * grep_buffer may modify it for speed, it will restore any 	 * changes before returning. 	 */
 if|if
 condition|(
 name|buf
@@ -15296,6 +15297,10 @@ name|opt
 operator|->
 name|grep_filter
 argument_list|,
+operator|(
+name|char
+operator|*
+operator|)
 name|message
 argument_list|,
 name|strlen
@@ -15310,11 +15315,11 @@ operator|&
 name|buf
 argument_list|)
 expr_stmt|;
-name|logmsg_free
+name|unuse_commit_buffer
 argument_list|(
-name|message
-argument_list|,
 name|commit
+argument_list|,
+name|message
 argument_list|)
 expr_stmt|;
 return|return
