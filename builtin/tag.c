@@ -452,7 +452,7 @@ DECL|enumerator|CONTAINS_YES
 name|CONTAINS_YES
 init|=
 literal|1
-block|, }
+block|}
 enum|;
 end_enum
 
