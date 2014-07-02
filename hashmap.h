@@ -82,6 +82,45 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function
+DECL|function|sha1hash
+specifier|static
+specifier|inline
+name|unsigned
+name|int
+name|sha1hash
+parameter_list|(
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|sha1
+parameter_list|)
+block|{
+comment|/* 	 * Equivalent to 'return *(unsigned int *)sha1;', but safe on 	 * platforms that don't support unaligned reads. 	 */
+name|unsigned
+name|int
+name|hash
+decl_stmt|;
+name|memcpy
+argument_list|(
+operator|&
+name|hash
+argument_list|,
+name|sha1
+argument_list|,
+sizeof|sizeof
+argument_list|(
+name|hash
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return
+name|hash
+return|;
+block|}
+end_function
+
 begin_comment
 comment|/* data structures */
 end_comment
