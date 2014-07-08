@@ -141,6 +141,7 @@ operator|<
 literal|0
 condition|)
 block|{
+comment|/* invalid */
 name|dump_one
 argument_list|(
 name|it
@@ -158,20 +159,6 @@ name|pfx
 argument_list|,
 literal|"#(ref) "
 argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|it
-operator|->
-name|subtree_nr
-operator|!=
-name|ref
-operator|->
-name|subtree_nr
-condition|)
-name|errs
-operator|=
-literal|1
 expr_stmt|;
 block|}
 else|else
@@ -215,6 +202,7 @@ operator|->
 name|subtree_nr
 condition|)
 block|{
+comment|/* claims to be valid but is lying */
 name|dump_one
 argument_list|(
 name|ref
