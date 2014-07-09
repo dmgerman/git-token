@@ -5589,14 +5589,6 @@ argument_list|,
 literal|"Error reading command stream\n"
 argument_list|)
 expr_stmt|;
-else|else
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-literal|"Unexpected end of command stream\n"
-argument_list|)
-expr_stmt|;
 return|return
 literal|1
 return|;
