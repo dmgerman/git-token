@@ -5468,7 +5468,7 @@ condition|)
 block|{
 name|error
 argument_list|(
-literal|"remote needed"
+literal|"remote-curl: usage: git remote-curl<remote> [<url>]"
 argument_list|)
 expr_stmt|;
 return|return
@@ -5580,7 +5580,7 @@ argument_list|)
 condition|)
 name|error
 argument_list|(
-literal|"error reading command stream"
+literal|"remote-curl: error reading command stream from git"
 argument_list|)
 expr_stmt|;
 return|return
@@ -5614,7 +5614,7 @@ name|nongit
 condition|)
 name|die
 argument_list|(
-literal|"Fetch attempted without a local repo"
+literal|"remote-curl: fetch attempted without a local repo"
 argument_list|)
 expr_stmt|;
 name|parse_fetch
@@ -5839,7 +5839,7 @@ else|else
 block|{
 name|error
 argument_list|(
-literal|"unknown command '%s'"
+literal|"remote-curl: unknown command '%s' from git"
 argument_list|,
 name|buf
 operator|.
