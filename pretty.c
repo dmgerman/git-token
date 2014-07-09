@@ -6515,6 +6515,10 @@ name|key
 argument_list|)
 expr_stmt|;
 break|break;
+default|default:
+return|return
+literal|0
+return|;
 block|}
 return|return
 literal|2
