@@ -2477,8 +2477,15 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
-comment|/*  * A replacement of main() that ensures that argv[0] has a path  * and that default fmode and std(in|out|err) are in binary mode  */
+comment|/*  * A replacement of main() that adds win32 specific initialization.  */
 end_comment
+
+begin_function_decl
+name|void
+name|mingw_startup
+parameter_list|()
+function_decl|;
+end_function_decl
 
 begin_define
 DECL|macro|main
@@ -2490,7 +2497,7 @@ name|c
 parameter_list|,
 name|v
 parameter_list|)
-value|dummy_decl_mingw_main(); \ static int mingw_main(c,v); \ int main(int argc, char **argv) \ { \ 	extern CRITICAL_SECTION pinfo_cs; \ 	_fmode = _O_BINARY; \ 	_setmode(_fileno(stdin), _O_BINARY); \ 	_setmode(_fileno(stdout), _O_BINARY); \ 	_setmode(_fileno(stderr), _O_BINARY); \ 	argv[0] = xstrdup(_pgmptr); \ 	InitializeCriticalSection(&pinfo_cs); \ 	return mingw_main(argc, argv); \ } \ static int mingw_main(c,v)
+value|dummy_decl_mingw_main(); \ static int mingw_main(c,v); \ int main(int argc, char **argv) \ { \ 	mingw_startup(); \ 	return mingw_main(__argc, (void *)__argv); \ } \ static int mingw_main(c,v)
 end_define
 
 begin_comment
