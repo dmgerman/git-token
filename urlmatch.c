@@ -2148,8 +2148,9 @@ decl_stmt|;
 name|int
 name|retval
 decl_stmt|;
-name|key
-operator|=
+if|if
+condition|(
+operator|!
 name|skip_prefix
 argument_list|(
 name|var
@@ -2157,12 +2158,10 @@ argument_list|,
 name|collect
 operator|->
 name|section
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-operator|!
+argument_list|,
+operator|&
 name|key
+argument_list|)
 operator|||
 operator|*
 operator|(

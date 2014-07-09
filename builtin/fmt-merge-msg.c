@@ -625,7 +625,9 @@ decl_stmt|;
 name|char
 modifier|*
 name|src
-decl_stmt|,
+decl_stmt|;
+specifier|const
+name|char
 modifier|*
 name|origin
 decl_stmt|;
@@ -959,23 +961,17 @@ block|}
 elseif|else
 if|if
 condition|(
-name|starts_with
+name|skip_prefix
 argument_list|(
 name|line
 argument_list|,
 literal|"remote-tracking branch "
+argument_list|,
+operator|&
+name|origin
 argument_list|)
 condition|)
 block|{
-name|origin
-operator|=
-name|line
-operator|+
-name|strlen
-argument_list|(
-literal|"remote-tracking branch "
-argument_list|)
-expr_stmt|;
 name|string_list_append
 argument_list|(
 operator|&
@@ -1895,9 +1891,6 @@ literal|1
 operator|&&
 name|me
 operator|&&
-operator|(
-name|me
-operator|=
 name|skip_prefix
 argument_list|(
 name|me
@@ -1907,12 +1900,12 @@ operator|->
 name|items
 operator|->
 name|string
+argument_list|,
+operator|&
+name|me
 argument_list|)
-operator|)
-operator|!=
-name|NULL
 operator|&&
-name|skip_prefix
+name|starts_with
 argument_list|(
 name|me
 argument_list|,
