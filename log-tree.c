@@ -2055,6 +2055,13 @@ else|:
 literal|""
 argument_list|)
 expr_stmt|;
+name|graph_show_oneline
+argument_list|(
+name|opt
+operator|->
+name|graph
+argument_list|)
+expr_stmt|;
 name|bol
 operator|=
 operator|(
