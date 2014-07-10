@@ -17,6 +17,11 @@ DECL|struct|signature_check
 struct|struct
 name|signature_check
 block|{
+DECL|member|payload
+name|char
+modifier|*
+name|payload
+decl_stmt|;
 DECL|member|gpg_output
 name|char
 modifier|*
@@ -45,6 +50,19 @@ decl_stmt|;
 block|}
 struct|;
 end_struct
+
+begin_function_decl
+specifier|extern
+name|void
+name|signature_check_clear
+parameter_list|(
+name|struct
+name|signature_check
+modifier|*
+name|sigc
+parameter_list|)
+function_decl|;
+end_function_decl
 
 begin_function_decl
 specifier|extern

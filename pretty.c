@@ -7896,24 +7896,6 @@ operator|.
 name|message
 argument_list|)
 expr_stmt|;
-name|free
-argument_list|(
-name|context
-operator|.
-name|signature_check
-operator|.
-name|gpg_output
-argument_list|)
-expr_stmt|;
-name|free
-argument_list|(
-name|context
-operator|.
-name|signature_check
-operator|.
-name|signer
-argument_list|)
-expr_stmt|;
 block|}
 end_function
 
