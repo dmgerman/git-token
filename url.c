@@ -660,11 +660,11 @@ index|]
 operator|!=
 literal|'/'
 condition|)
-name|strbuf_addstr
+name|strbuf_addch
 argument_list|(
 name|buf
 argument_list|,
-literal|"/"
+literal|'/'
 argument_list|)
 expr_stmt|;
 block|}

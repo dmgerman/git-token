@@ -1698,12 +1698,12 @@ name|sb
 operator|.
 name|len
 condition|)
-name|strbuf_addstr
+name|strbuf_addch
 argument_list|(
 operator|&
 name|sb
 argument_list|,
-literal|" "
+literal|' '
 argument_list|)
 expr_stmt|;
 if|if
