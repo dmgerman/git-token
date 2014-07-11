@@ -308,7 +308,7 @@ operator|>
 literal|0
 condition|)
 do|;
-name|cache_def_free
+name|cache_def_clear
 argument_list|(
 operator|&
 name|cache
