@@ -108,6 +108,16 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|uint64_t
+name|getnanotime
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_ifndef
 ifndef|#
 directive|ifndef
