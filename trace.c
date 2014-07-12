@@ -351,6 +351,16 @@ modifier|*
 name|buf
 parameter_list|)
 block|{
+specifier|static
+name|struct
+name|trace_key
+name|trace_bare
+init|=
+name|TRACE_KEY_INIT
+argument_list|(
+name|BARE
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -368,6 +378,18 @@ name|NULL
 argument_list|)
 expr_stmt|;
 comment|/* is never reset */
+comment|/* unit tests may want to disable additional trace output */
+if|if
+condition|(
+name|trace_want
+argument_list|(
+operator|&
+name|trace_bare
+argument_list|)
+condition|)
+return|return
+literal|1
+return|;
 comment|/* add line prefix here */
 return|return
 literal|1
