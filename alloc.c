@@ -58,7 +58,7 @@ parameter_list|,
 name|type
 parameter_list|)
 define|\
-value|static unsigned int name##_allocs;				\ void *alloc_##name##_node(void)					\ {								\ 	static int nr;						\ 	static type *block;					\ 	void *ret;						\ 								\ 	if (!nr) {						\ 		nr = BLOCKING;					\ 		block = xmalloc(BLOCKING * sizeof(type));	\ 	}							\ 	nr--;							\ 	name##_allocs++;					\ 	ret = block++;						\ 	memset(ret, 0, sizeof(type));				\ 	return ret;						\ }
+value|static struct alloc_state name##_state;				\ void *alloc_##name##_node(void)					\ {								\ 	return alloc_node(&name##_state, sizeof(type));		\ }
 end_define
 
 begin_union
@@ -95,6 +95,123 @@ block|}
 union|;
 end_union
 
+begin_struct
+DECL|struct|alloc_state
+struct|struct
+name|alloc_state
+block|{
+DECL|member|count
+name|int
+name|count
+decl_stmt|;
+comment|/* total number of nodes allocated */
+DECL|member|nr
+name|int
+name|nr
+decl_stmt|;
+comment|/* number of nodes left in current allocation */
+DECL|member|p
+name|void
+modifier|*
+name|p
+decl_stmt|;
+comment|/* first free node in current allocation */
+block|}
+struct|;
+end_struct
+
+begin_function
+DECL|function|alloc_node
+specifier|static
+specifier|inline
+name|void
+modifier|*
+name|alloc_node
+parameter_list|(
+name|struct
+name|alloc_state
+modifier|*
+name|s
+parameter_list|,
+name|size_t
+name|node_size
+parameter_list|)
+block|{
+name|void
+modifier|*
+name|ret
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|s
+operator|->
+name|nr
+condition|)
+block|{
+name|s
+operator|->
+name|nr
+operator|=
+name|BLOCKING
+expr_stmt|;
+name|s
+operator|->
+name|p
+operator|=
+name|xmalloc
+argument_list|(
+name|BLOCKING
+operator|*
+name|node_size
+argument_list|)
+expr_stmt|;
+block|}
+name|s
+operator|->
+name|nr
+operator|--
+expr_stmt|;
+name|s
+operator|->
+name|count
+operator|++
+expr_stmt|;
+name|ret
+operator|=
+name|s
+operator|->
+name|p
+expr_stmt|;
+name|s
+operator|->
+name|p
+operator|=
+operator|(
+name|char
+operator|*
+operator|)
+name|s
+operator|->
+name|p
+operator|+
+name|node_size
+expr_stmt|;
+name|memset
+argument_list|(
+name|ret
+argument_list|,
+literal|0
+argument_list|,
+name|node_size
+argument_list|)
+expr_stmt|;
+return|return
+name|ret
+return|;
+block|}
+end_function
+
 begin_macro
 name|DEFINE_ALLOCATOR
 argument_list|(
@@ -116,15 +233,6 @@ end_macro
 begin_macro
 name|DEFINE_ALLOCATOR
 argument_list|(
-argument|raw_commit
-argument_list|,
-argument|struct commit
-argument_list|)
-end_macro
-
-begin_macro
-name|DEFINE_ALLOCATOR
-argument_list|(
 argument|tag
 argument_list|,
 argument|struct tag
@@ -139,6 +247,15 @@ argument_list|,
 argument|union any_object
 argument_list|)
 end_macro
+
+begin_decl_stmt
+DECL|variable|commit_state
+specifier|static
+name|struct
+name|alloc_state
+name|commit_state
+decl_stmt|;
+end_decl_stmt
 
 begin_function
 DECL|function|alloc_commit_node
@@ -158,8 +275,17 @@ name|commit
 modifier|*
 name|c
 init|=
-name|alloc_raw_commit_node
-argument_list|()
+name|alloc_node
+argument_list|(
+operator|&
+name|commit_state
+argument_list|,
+sizeof|sizeof
+argument_list|(
+expr|struct
+name|commit
+argument_list|)
+argument_list|)
 decl_stmt|;
 name|c
 operator|->
@@ -225,7 +351,7 @@ parameter_list|,
 name|type
 parameter_list|)
 define|\
-value|report(#name, name##_allocs, name##_allocs * sizeof(type)>> 10)
+value|report(#name, name##_state.count, name##_state.count * sizeof(type)>> 10)
 end_define
 
 begin_function
@@ -254,7 +380,7 @@ argument_list|)
 expr_stmt|;
 name|REPORT
 argument_list|(
-name|raw_commit
+name|commit
 argument_list|,
 expr|struct
 name|commit
