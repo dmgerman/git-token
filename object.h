@@ -253,6 +253,26 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|void
+modifier|*
+name|object_as_type
+parameter_list|(
+name|struct
+name|object
+modifier|*
+name|obj
+parameter_list|,
+name|enum
+name|object_type
+name|type
+parameter_list|,
+name|int
+name|quiet
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/*  * Returns the object, having parsed it to find out what it is.  *  * Returns NULL if the object is missing or corrupt.  */
 end_comment
