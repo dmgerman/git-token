@@ -56,8 +56,6 @@ name|create_object
 argument_list|(
 name|sha1
 argument_list|,
-name|OBJ_BLOB
-argument_list|,
 name|alloc_blob_node
 argument_list|()
 argument_list|)

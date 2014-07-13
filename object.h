@@ -246,9 +246,6 @@ name|char
 modifier|*
 name|sha1
 parameter_list|,
-name|int
-name|type
-parameter_list|,
 name|void
 modifier|*
 name|obj

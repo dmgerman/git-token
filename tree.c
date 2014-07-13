@@ -1032,8 +1032,6 @@ name|create_object
 argument_list|(
 name|sha1
 argument_list|,
-name|OBJ_TREE
-argument_list|,
 name|alloc_tree_node
 argument_list|()
 argument_list|)
