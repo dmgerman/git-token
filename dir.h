@@ -349,11 +349,9 @@ modifier|*
 name|exclude
 decl_stmt|;
 DECL|member|basebuf
-name|char
+name|struct
+name|strbuf
 name|basebuf
-index|[
-name|PATH_MAX
-index|]
 decl_stmt|;
 block|}
 struct|;
