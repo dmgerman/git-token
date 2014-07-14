@@ -47,6 +47,24 @@ function_decl|;
 end_typedef
 
 begin_struct
+DECL|struct|prio_queue_entry
+struct|struct
+name|prio_queue_entry
+block|{
+DECL|member|ctr
+name|unsigned
+name|ctr
+decl_stmt|;
+DECL|member|data
+name|void
+modifier|*
+name|data
+decl_stmt|;
+block|}
+struct|;
+end_struct
+
+begin_struct
 DECL|struct|prio_queue
 struct|struct
 name|prio_queue
@@ -54,6 +72,10 @@ block|{
 DECL|member|compare
 name|prio_queue_compare_fn
 name|compare
+decl_stmt|;
+DECL|member|insertion_ctr
+name|unsigned
+name|insertion_ctr
 decl_stmt|;
 DECL|member|cb_data
 name|void
@@ -68,8 +90,8 @@ decl_stmt|,
 name|nr
 decl_stmt|;
 DECL|member|array
-name|void
-modifier|*
+name|struct
+name|prio_queue_entry
 modifier|*
 name|array
 decl_stmt|;
