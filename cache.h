@@ -3763,6 +3763,18 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|int
+name|reopen_lock_file
+parameter_list|(
+name|struct
+name|lock_file
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|void
 name|update_index_if_able
 parameter_list|(
