@@ -76,41 +76,12 @@ name|EXC_FLAG_NEGATIVE
 value|16
 end_define
 
-begin_comment
-comment|/*  * Each excludes file will be parsed into a fresh exclude_list which  * is appended to the relevant exclude_list_group (either EXC_DIRS or  * EXC_FILE).  An exclude_list within the EXC_CMDL exclude_list_group  * can also be used to represent the list of --exclude values passed  * via CLI args.  */
-end_comment
-
 begin_struct
-DECL|struct|exclude_list
-struct|struct
-name|exclude_list
-block|{
-DECL|member|nr
-name|int
-name|nr
-decl_stmt|;
-DECL|member|alloc
-name|int
-name|alloc
-decl_stmt|;
-comment|/* remember pointer to exclude file contents so we can free() */
-DECL|member|filebuf
-name|char
-modifier|*
-name|filebuf
-decl_stmt|;
-comment|/* origin of list, e.g. path to filename, or descriptive string */
-DECL|member|src
-specifier|const
-name|char
-modifier|*
-name|src
-decl_stmt|;
 DECL|struct|exclude
 struct|struct
 name|exclude
 block|{
-comment|/* 		 * This allows callers of last_exclude_matching() etc. 		 * to determine the origin of the matching pattern. 		 */
+comment|/* 	 * This allows callers of last_exclude_matching() etc. 	 * to determine the origin of the matching pattern. 	 */
 DECL|member|el
 name|struct
 name|exclude_list
@@ -145,17 +116,52 @@ DECL|member|flags
 name|int
 name|flags
 decl_stmt|;
-comment|/* 		 * Counting starts from 1 for line numbers in ignore files, 		 * and from -1 decrementing for patterns from CLI args. 		 */
+comment|/* 	 * Counting starts from 1 for line numbers in ignore files, 	 * and from -1 decrementing for patterns from CLI args. 	 */
 DECL|member|srcpos
 name|int
 name|srcpos
 decl_stmt|;
-DECL|member|excludes
 block|}
+struct|;
+end_struct
+
+begin_comment
+comment|/*  * Each excludes file will be parsed into a fresh exclude_list which  * is appended to the relevant exclude_list_group (either EXC_DIRS or  * EXC_FILE).  An exclude_list within the EXC_CMDL exclude_list_group  * can also be used to represent the list of --exclude values passed  * via CLI args.  */
+end_comment
+
+begin_struct
+DECL|struct|exclude_list
+struct|struct
+name|exclude_list
+block|{
+DECL|member|nr
+name|int
+name|nr
+decl_stmt|;
+DECL|member|alloc
+name|int
+name|alloc
+decl_stmt|;
+comment|/* remember pointer to exclude file contents so we can free() */
+DECL|member|filebuf
+name|char
+modifier|*
+name|filebuf
+decl_stmt|;
+comment|/* origin of list, e.g. path to filename, or descriptive string */
+DECL|member|src
+specifier|const
+name|char
+modifier|*
+name|src
+decl_stmt|;
+DECL|member|excludes
+name|struct
+name|exclude
 modifier|*
 modifier|*
 name|excludes
-struct|;
+decl_stmt|;
 block|}
 struct|;
 end_struct
