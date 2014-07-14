@@ -3736,7 +3736,7 @@ index|[
 name|EXC_DIRS
 index|]
 expr_stmt|;
-comment|/* Pop the exclude lists from the EXCL_DIRS exclude_list_group 	 * which originate from directories not in the prefix of the 	 * path being checked. */
+comment|/* 	 * Pop the exclude lists from the EXCL_DIRS exclude_list_group 	 * which originate from directories not in the prefix of the 	 * path being checked. 	 */
 while|while
 condition|(
 operator|(
