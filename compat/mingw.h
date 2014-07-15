@@ -233,6 +233,25 @@ endif|#
 directive|endif
 end_endif
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|ELOOP
+end_ifndef
+
+begin_define
+DECL|macro|ELOOP
+define|#
+directive|define
+name|ELOOP
+value|EMLINK
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_define
 DECL|macro|SHUT_WR
 define|#
