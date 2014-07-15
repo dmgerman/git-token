@@ -1959,9 +1959,9 @@ name|read_ref_full
 argument_list|(
 literal|"HEAD"
 argument_list|,
-name|rev
-argument_list|,
 literal|0
+argument_list|,
+name|rev
 argument_list|,
 operator|&
 name|flag
@@ -4247,9 +4247,9 @@ name|resolve_refdup
 argument_list|(
 literal|"HEAD"
 argument_list|,
-name|rev
-argument_list|,
 literal|0
+argument_list|,
+name|rev
 argument_list|,
 operator|&
 name|flag
@@ -5568,9 +5568,9 @@ name|read_ref_full
 argument_list|(
 literal|"HEAD"
 argument_list|,
-name|rev
-argument_list|,
 literal|0
+argument_list|,
+name|rev
 argument_list|,
 operator|&
 name|flag

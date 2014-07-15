@@ -3731,9 +3731,9 @@ name|ref
 operator|->
 name|refname
 argument_list|,
-name|unused1
+name|RESOLVE_REF_READING
 argument_list|,
-literal|1
+name|unused1
 argument_list|,
 name|NULL
 argument_list|)
@@ -4123,9 +4123,9 @@ name|resolve_ref_unsafe
 argument_list|(
 literal|"HEAD"
 argument_list|,
-name|sha1
+name|RESOLVE_REF_READING
 argument_list|,
-literal|1
+name|sha1
 argument_list|,
 name|NULL
 argument_list|)

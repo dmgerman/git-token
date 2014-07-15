@@ -3425,9 +3425,9 @@ name|resolve_ref_unsafe
 argument_list|(
 name|refname
 argument_list|,
-name|orig_sha1
+name|RESOLVE_REF_READING
 argument_list|,
-literal|1
+name|orig_sha1
 argument_list|,
 operator|&
 name|flag
@@ -4417,9 +4417,9 @@ name|item
 operator|->
 name|string
 argument_list|,
-name|sha1
+name|RESOLVE_REF_READING
 argument_list|,
-literal|1
+name|sha1
 argument_list|,
 operator|&
 name|flag

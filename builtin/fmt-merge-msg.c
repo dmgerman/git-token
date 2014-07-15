@@ -3743,9 +3743,9 @@ name|resolve_refdup
 argument_list|(
 literal|"HEAD"
 argument_list|,
-name|head_sha1
+name|RESOLVE_REF_READING
 argument_list|,
-literal|1
+name|head_sha1
 argument_list|,
 name|NULL
 argument_list|)

@@ -699,9 +699,9 @@ index|]
 operator|->
 name|dst
 argument_list|,
-name|sha1
+name|RESOLVE_REF_READING
 argument_list|,
-literal|1
+name|sha1
 argument_list|,
 name|NULL
 argument_list|)
@@ -1197,9 +1197,9 @@ name|resolve_ref_unsafe
 argument_list|(
 name|name
 argument_list|,
-name|sha1
-argument_list|,
 literal|0
+argument_list|,
+name|sha1
 argument_list|,
 operator|&
 name|flags
@@ -1504,9 +1504,9 @@ name|resolve_ref_unsafe
 argument_list|(
 name|src
 argument_list|,
-name|sha1
-argument_list|,
 literal|0
+argument_list|,
+name|sha1
 argument_list|,
 operator|&
 name|flag
@@ -5042,9 +5042,9 @@ name|resolve_refdup
 argument_list|(
 literal|"HEAD"
 argument_list|,
-name|head_sha1
-argument_list|,
 literal|0
+argument_list|,
+name|head_sha1
 argument_list|,
 name|NULL
 argument_list|)
