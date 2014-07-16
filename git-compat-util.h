@@ -4905,7 +4905,7 @@ directive|endif
 end_endif
 
 begin_comment
-comment|/*  * Preserves errno, prints a message, but gives no warning for ENOENT.  * Always returns the return value of unlink(2).  */
+comment|/*  * Preserves errno, prints a message, but gives no warning for ENOENT.  * Returns 0 on success, which includes trying to unlink an object that does  * not exist.  */
 end_comment
 
 begin_function_decl
@@ -4921,7 +4921,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Likewise for rmdir(2).  */
+comment|/*  * Preserves errno, prints a message, but gives no warning for ENOENT.  * Returns 0 on success, which includes trying to remove a directory that does  * not exist.  */
 end_comment
 
 begin_function_decl
