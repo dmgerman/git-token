@@ -5418,15 +5418,9 @@ name|path
 expr_stmt|;
 name|setup_revisions
 argument_list|(
-sizeof|sizeof
+name|ARRAY_SIZE
 argument_list|(
 name|rev_args
-argument_list|)
-operator|/
-sizeof|sizeof
-argument_list|(
-name|char
-operator|*
 argument_list|)
 operator|-
 literal|1
