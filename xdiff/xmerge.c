@@ -1371,7 +1371,13 @@ name|m
 operator|->
 name|chg1
 argument_list|,
-literal|1
+operator|(
+name|m
+operator|->
+name|mode
+operator|&
+literal|2
+operator|)
 argument_list|,
 name|dest
 condition|?
@@ -1405,7 +1411,7 @@ name|m
 operator|->
 name|chg2
 argument_list|,
-literal|1
+literal|0
 argument_list|,
 name|dest
 condition|?
