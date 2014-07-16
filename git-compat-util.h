@@ -1847,6 +1847,12 @@ directive|include
 file|"wildmatch.h"
 end_include
 
+begin_struct_decl
+struct_decl|struct
+name|strbuf
+struct_decl|;
+end_struct_decl
+
 begin_comment
 comment|/* General helper functions */
 end_comment
@@ -4916,6 +4922,27 @@ specifier|const
 name|char
 modifier|*
 name|path
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/*   * Tries to unlink file.  Returns 0 if unlink succeeded   * or the file already didn't exist.  Returns -1 and   * appends a message to err suitable for   * 'error("%s", err->buf)' on error.   */
+end_comment
+
+begin_function_decl
+name|int
+name|unlink_or_msg
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|file
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|err
 parameter_list|)
 function_decl|;
 end_function_decl
