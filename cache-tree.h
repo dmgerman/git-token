@@ -130,7 +130,7 @@ name|void
 name|cache_tree_invalidate_path
 parameter_list|(
 name|struct
-name|cache_tree
+name|index_state
 modifier|*
 parameter_list|,
 specifier|const
@@ -207,17 +207,8 @@ name|int
 name|cache_tree_update
 parameter_list|(
 name|struct
-name|cache_tree
+name|index_state
 modifier|*
-parameter_list|,
-specifier|const
-name|struct
-name|cache_entry
-modifier|*
-specifier|const
-modifier|*
-parameter_list|,
-name|int
 parameter_list|,
 name|int
 parameter_list|)
@@ -322,8 +313,7 @@ name|void
 name|prime_cache_tree
 parameter_list|(
 name|struct
-name|cache_tree
-modifier|*
+name|index_state
 modifier|*
 parameter_list|,
 name|struct

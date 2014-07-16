@@ -609,6 +609,12 @@ name|unsigned
 name|int
 name|ce_namelen
 decl_stmt|;
+DECL|member|index
+name|unsigned
+name|int
+name|index
+decl_stmt|;
+comment|/* for link extension */
 DECL|member|sha1
 name|unsigned
 name|char
@@ -662,7 +668,7 @@ value|12
 end_define
 
 begin_comment
-comment|/*  * Range 0xFFFF0000 in ce_flags is divided into  * two parts: in-memory flags and on-disk ones.  * Flags in CE_EXTENDED_FLAGS will get saved on-disk  * if you want to save a new flag, add it in  * CE_EXTENDED_FLAGS  *  * In-memory only flags  */
+comment|/*  * Range 0xFFFF0FFF in ce_flags is divided into  * two parts: in-memory flags and on-disk ones.  * Flags in CE_EXTENDED_FLAGS will get saved on-disk  * if you want to save a new flag, add it in  * CE_EXTENDED_FLAGS  *  * In-memory only flags  */
 end_comment
 
 begin_define
@@ -752,6 +758,22 @@ define|#
 directive|define
 name|CE_MATCHED
 value|(1<< 26)
+end_define
+
+begin_define
+DECL|macro|CE_UPDATE_IN_BASE
+define|#
+directive|define
+name|CE_UPDATE_IN_BASE
+value|(1<< 27)
+end_define
+
+begin_define
+DECL|macro|CE_STRIP_NAME
+define|#
+directive|define
+name|CE_STRIP_NAME
+value|(1<< 28)
 end_define
 
 begin_comment
@@ -1277,6 +1299,73 @@ parameter_list|)
 value|(offsetof(struct cache_entry,name) + (len) + 1)
 end_define
 
+begin_define
+DECL|macro|SOMETHING_CHANGED
+define|#
+directive|define
+name|SOMETHING_CHANGED
+value|(1<< 0)
+end_define
+
+begin_comment
+DECL|macro|SOMETHING_CHANGED
+comment|/* unclassified changes go here */
+end_comment
+
+begin_define
+DECL|macro|CE_ENTRY_CHANGED
+define|#
+directive|define
+name|CE_ENTRY_CHANGED
+value|(1<< 1)
+end_define
+
+begin_define
+DECL|macro|CE_ENTRY_REMOVED
+define|#
+directive|define
+name|CE_ENTRY_REMOVED
+value|(1<< 2)
+end_define
+
+begin_define
+DECL|macro|CE_ENTRY_ADDED
+define|#
+directive|define
+name|CE_ENTRY_ADDED
+value|(1<< 3)
+end_define
+
+begin_define
+DECL|macro|RESOLVE_UNDO_CHANGED
+define|#
+directive|define
+name|RESOLVE_UNDO_CHANGED
+value|(1<< 4)
+end_define
+
+begin_define
+DECL|macro|CACHE_TREE_CHANGED
+define|#
+directive|define
+name|CACHE_TREE_CHANGED
+value|(1<< 5)
+end_define
+
+begin_define
+DECL|macro|SPLIT_INDEX_ORDERED
+define|#
+directive|define
+name|SPLIT_INDEX_ORDERED
+value|(1<< 6)
+end_define
+
+begin_struct_decl
+struct_decl|struct
+name|split_index
+struct_decl|;
+end_struct_decl
+
 begin_struct
 DECL|struct|index_state
 struct|struct
@@ -1316,6 +1405,12 @@ name|struct
 name|cache_tree
 modifier|*
 name|cache_tree
+decl_stmt|;
+DECL|member|split_index
+name|struct
+name|split_index
+modifier|*
+name|split_index
 decl_stmt|;
 DECL|member|timestamp
 name|struct
@@ -1509,21 +1604,6 @@ directive|define
 name|read_cache_unmerged
 parameter_list|()
 value|read_index_unmerged(&the_index)
-end_define
-
-begin_define
-DECL|macro|write_cache
-define|#
-directive|define
-name|write_cache
-parameter_list|(
-name|newfd
-parameter_list|,
-name|cache
-parameter_list|,
-name|entries
-parameter_list|)
-value|write_index(&the_index, (newfd))
 end_define
 
 begin_define
@@ -2609,6 +2689,12 @@ begin_comment
 comment|/* Initialize and use the cache information */
 end_comment
 
+begin_struct_decl
+struct_decl|struct
+name|lock_file
+struct_decl|;
+end_struct_decl
+
 begin_function_decl
 specifier|extern
 name|int
@@ -2638,6 +2724,31 @@ name|pathspec
 parameter_list|)
 function_decl|;
 end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|do_read_index
+parameter_list|(
+name|struct
+name|index_state
+modifier|*
+name|istate
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|,
+name|int
+name|must_exist
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/* for testting only! */
+end_comment
 
 begin_function_decl
 specifier|extern
@@ -2680,17 +2791,38 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_define
+DECL|macro|COMMIT_LOCK
+define|#
+directive|define
+name|COMMIT_LOCK
+value|(1<< 0)
+end_define
+
+begin_define
+DECL|macro|CLOSE_LOCK
+define|#
+directive|define
+name|CLOSE_LOCK
+value|(1<< 1)
+end_define
+
 begin_function_decl
 specifier|extern
 name|int
-name|write_index
+name|write_locked_index
 parameter_list|(
 name|struct
 name|index_state
 modifier|*
 parameter_list|,
-name|int
-name|newfd
+name|struct
+name|lock_file
+modifier|*
+name|lock
+parameter_list|,
+name|unsigned
+name|flags
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -2866,6 +2998,19 @@ end_define
 begin_comment
 DECL|macro|ADD_CACHE_NEW_ONLY
 comment|/* Do not replace existing ones */
+end_comment
+
+begin_define
+DECL|macro|ADD_CACHE_KEEP_CACHE_TREE
+define|#
+directive|define
+name|ADD_CACHE_KEEP_CACHE_TREE
+value|32
+end_define
+
+begin_comment
+DECL|macro|ADD_CACHE_KEEP_CACHE_TREE
+comment|/* Do not invalidate cache-tree */
 end_comment
 
 begin_function_decl
@@ -3658,18 +3803,6 @@ name|lock_file
 modifier|*
 parameter_list|,
 name|int
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-specifier|extern
-name|int
-name|commit_locked_index
-parameter_list|(
-name|struct
-name|lock_file
-modifier|*
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -7012,6 +7145,12 @@ DECL|struct|checkout
 struct|struct
 name|checkout
 block|{
+DECL|member|istate
+name|struct
+name|index_state
+modifier|*
+name|istate
+decl_stmt|;
 DECL|member|base_dir
 specifier|const
 name|char

@@ -12046,7 +12046,8 @@ expr_stmt|;
 comment|/* 	 * We are not going to write this out, so this does not matter 	 * right now, but someday we might optimize diff-index --cached 	 * with cache-tree information. 	 */
 name|cache_tree_invalidate_path
 argument_list|(
-name|active_cache_tree
+operator|&
+name|the_index
 argument_list|,
 name|path
 argument_list|)
