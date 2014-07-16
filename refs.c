@@ -5829,7 +5829,7 @@ condition|)
 continue|continue;
 if|if
 condition|(
-name|has_extension
+name|ends_with
 argument_list|(
 name|de
 operator|->
@@ -16360,7 +16360,7 @@ condition|)
 continue|continue;
 if|if
 condition|(
-name|has_extension
+name|ends_with
 argument_list|(
 name|de
 operator|->
