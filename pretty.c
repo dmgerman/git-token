@@ -7155,13 +7155,12 @@ name|trunc_none
 case|:
 break|break;
 block|}
-name|strbuf_addstr
+name|strbuf_addbuf
 argument_list|(
 name|sb
 argument_list|,
+operator|&
 name|local_sb
-operator|.
-name|buf
 argument_list|)
 expr_stmt|;
 block|}
