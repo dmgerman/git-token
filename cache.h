@@ -7252,11 +7252,11 @@ value|{ STRBUF_INIT, 0, 0, 0 }
 end_define
 
 begin_function
-DECL|function|cache_def_free
+DECL|function|cache_def_clear
 specifier|static
 specifier|inline
 name|void
-name|cache_def_free
+name|cache_def_clear
 parameter_list|(
 name|struct
 name|cache_def
