@@ -1415,6 +1415,26 @@ end_define
 
 begin_function_decl
 name|int
+name|mingw_putenv
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|namevalue
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_define
+DECL|macro|putenv
+define|#
+directive|define
+name|putenv
+value|mingw_putenv
+end_define
+
+begin_function_decl
+name|int
 name|mingw_gethostname
 parameter_list|(
 name|char
