@@ -6723,9 +6723,8 @@ control|)
 block|{
 if|if
 condition|(
-literal|0
-operator|==
-name|strncmp
+operator|!
+name|strncasecmp
 argument_list|(
 name|env
 index|[
