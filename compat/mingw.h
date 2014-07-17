@@ -1433,6 +1433,14 @@ name|putenv
 value|mingw_putenv
 end_define
 
+begin_define
+DECL|macro|unsetenv
+define|#
+directive|define
+name|unsetenv
+value|mingw_putenv
+end_define
+
 begin_function_decl
 name|int
 name|mingw_gethostname
