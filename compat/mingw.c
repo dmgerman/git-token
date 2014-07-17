@@ -11656,6 +11656,24 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
+comment|/* simulate TERM to enable auto-color (see color.c) */
+if|if
+condition|(
+operator|!
+name|getenv
+argument_list|(
+literal|"TERM"
+argument_list|)
+condition|)
+name|setenv
+argument_list|(
+literal|"TERM"
+argument_list|,
+literal|"cygwin"
+argument_list|,
+literal|1
+argument_list|)
+expr_stmt|;
 comment|/* initialize critical section for waitpid pinfo_t list */
 name|InitializeCriticalSection
 argument_list|(
