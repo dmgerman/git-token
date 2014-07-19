@@ -1864,6 +1864,34 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|remove_signature
+argument_list|(
+operator|&
+name|buf
+argument_list|)
+condition|)
+block|{
+name|warning
+argument_list|(
+name|_
+argument_list|(
+literal|"the original commit '%s' has a gpg signature."
+argument_list|)
+argument_list|,
+name|old_ref
+argument_list|)
+expr_stmt|;
+name|warning
+argument_list|(
+name|_
+argument_list|(
+literal|"the signature will be removed in the replacement commit!"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
 name|write_sha1_file
 argument_list|(
 name|buf

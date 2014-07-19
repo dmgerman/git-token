@@ -2062,6 +2062,19 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|int
+name|remove_signature
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+name|buf
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|void
 name|print_commit_list
 parameter_list|(
