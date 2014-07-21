@@ -398,6 +398,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/* Make sure errno contains a meaningful value on error */
+end_comment
+
 begin_function
 DECL|function|lock_file
 specifier|static
@@ -442,10 +446,16 @@ argument_list|)
 operator|>=
 name|max_path_len
 condition|)
+block|{
+name|errno
+operator|=
+name|ENAMETOOLONG
+expr_stmt|;
 return|return
 operator|-
 literal|1
 return|;
+block|}
 name|strcpy
 argument_list|(
 name|lk
@@ -568,7 +578,12 @@ operator|->
 name|filename
 argument_list|)
 condition|)
-return|return
+block|{
+name|int
+name|save_errno
+init|=
+name|errno
+decl_stmt|;
 name|error
 argument_list|(
 literal|"cannot fix permission bits on %s"
@@ -577,7 +592,16 @@ name|lk
 operator|->
 name|filename
 argument_list|)
+expr_stmt|;
+name|errno
+operator|=
+name|save_errno
+expr_stmt|;
+return|return
+operator|-
+literal|1
 return|;
+block|}
 block|}
 else|else
 name|lk
@@ -599,9 +623,7 @@ end_function
 
 begin_function
 DECL|function|unable_to_lock_message
-specifier|static
-name|char
-modifier|*
+name|void
 name|unable_to_lock_message
 parameter_list|(
 specifier|const
@@ -611,14 +633,13 @@ name|path
 parameter_list|,
 name|int
 name|err
-parameter_list|)
-block|{
+parameter_list|,
 name|struct
 name|strbuf
+modifier|*
 name|buf
-init|=
-name|STRBUF_INIT
-decl_stmt|;
+parameter_list|)
+block|{
 if|if
 condition|(
 name|err
@@ -628,7 +649,6 @@ condition|)
 block|{
 name|strbuf_addf
 argument_list|(
-operator|&
 name|buf
 argument_list|,
 literal|"Unable to create '%s.lock': %s.\n\n"
@@ -651,7 +671,6 @@ block|}
 else|else
 name|strbuf_addf
 argument_list|(
-operator|&
 name|buf
 argument_list|,
 literal|"Unable to create '%s.lock': %s"
@@ -667,15 +686,6 @@ name|err
 argument_list|)
 argument_list|)
 expr_stmt|;
-return|return
-name|strbuf_detach
-argument_list|(
-operator|&
-name|buf
-argument_list|,
-name|NULL
-argument_list|)
-return|;
 block|}
 end_function
 
@@ -693,27 +703,35 @@ name|int
 name|err
 parameter_list|)
 block|{
-name|char
-modifier|*
-name|msg
+name|struct
+name|strbuf
+name|buf
 init|=
+name|STRBUF_INIT
+decl_stmt|;
 name|unable_to_lock_message
 argument_list|(
 name|path
 argument_list|,
 name|err
+argument_list|,
+operator|&
+name|buf
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|error
 argument_list|(
 literal|"%s"
 argument_list|,
-name|msg
+name|buf
+operator|.
+name|buf
 argument_list|)
 expr_stmt|;
-name|free
+name|strbuf_release
 argument_list|(
-name|msg
+operator|&
+name|buf
 argument_list|)
 expr_stmt|;
 return|return
@@ -738,20 +756,37 @@ name|int
 name|err
 parameter_list|)
 block|{
-name|die
-argument_list|(
-literal|"%s"
-argument_list|,
+name|struct
+name|strbuf
+name|buf
+init|=
+name|STRBUF_INIT
+decl_stmt|;
 name|unable_to_lock_message
 argument_list|(
 name|path
 argument_list|,
 name|err
+argument_list|,
+operator|&
+name|buf
 argument_list|)
+expr_stmt|;
+name|die
+argument_list|(
+literal|"%s"
+argument_list|,
+name|buf
+operator|.
+name|buf
 argument_list|)
 expr_stmt|;
 block|}
 end_function
+
+begin_comment
+comment|/* This should return a meaningful errno on failure */
+end_comment
 
 begin_function
 DECL|function|hold_lock_file_for_update

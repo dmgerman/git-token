@@ -4853,6 +4853,8 @@ argument_list|,
 name|branches
 operator|->
 name|nr
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 name|free
@@ -8551,6 +8553,8 @@ operator|.
 name|stale
 operator|.
 name|nr
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 name|free
