@@ -14168,7 +14168,6 @@ end_function
 
 begin_function
 DECL|function|is_branch
-specifier|static
 name|int
 name|is_branch
 parameter_list|(
