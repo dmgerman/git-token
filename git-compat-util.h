@@ -1638,6 +1638,12 @@ end_define
 begin_ifndef
 ifndef|#
 directive|ifndef
+name|__GNUC__
+end_ifndef
+
+begin_ifndef
+ifndef|#
+directive|ifndef
 name|__attribute__
 end_ifndef
 
@@ -1649,6 +1655,11 @@ parameter_list|(
 name|x
 parameter_list|)
 end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_endif
 endif|#
