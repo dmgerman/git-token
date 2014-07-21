@@ -2263,11 +2263,9 @@ return|return
 name|CURLIOE_OK
 return|;
 block|}
-name|fprintf
+name|error
 argument_list|(
-name|stderr
-argument_list|,
-literal|"Unable to rewind rpc post data - try increasing http.postBuffer\n"
+literal|"unable to rewind rpc post data - try increasing http.postBuffer"
 argument_list|)
 expr_stmt|;
 return|return
@@ -4010,7 +4008,7 @@ name|ret
 condition|?
 name|error
 argument_list|(
-literal|"Fetch failed."
+literal|"fetch failed."
 argument_list|)
 else|:
 literal|0
@@ -5495,11 +5493,9 @@ operator|<
 literal|2
 condition|)
 block|{
-name|fprintf
+name|error
 argument_list|(
-name|stderr
-argument_list|,
-literal|"Remote needed\n"
+literal|"remote-curl: usage: git remote-curl<remote> [<url>]"
 argument_list|)
 expr_stmt|;
 return|return
@@ -5614,19 +5610,9 @@ argument_list|(
 name|stdin
 argument_list|)
 condition|)
-name|fprintf
+name|error
 argument_list|(
-name|stderr
-argument_list|,
-literal|"Error reading command stream\n"
-argument_list|)
-expr_stmt|;
-else|else
-name|fprintf
-argument_list|(
-name|stderr
-argument_list|,
-literal|"Unexpected end of command stream\n"
+literal|"remote-curl: error reading command stream from git"
 argument_list|)
 expr_stmt|;
 return|return
@@ -5660,7 +5646,7 @@ name|nongit
 condition|)
 name|die
 argument_list|(
-literal|"Fetch attempted without a local repo"
+literal|"remote-curl: fetch attempted without a local repo"
 argument_list|)
 expr_stmt|;
 name|parse_fetch
@@ -5873,11 +5859,9 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|fprintf
+name|error
 argument_list|(
-name|stderr
-argument_list|,
-literal|"Unknown command '%s'\n"
+literal|"remote-curl: unknown command '%s' from git"
 argument_list|,
 name|buf
 operator|.
