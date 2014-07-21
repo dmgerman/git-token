@@ -8165,9 +8165,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|fchmod
+name|chmod
 argument_list|(
-name|fd
+name|lock
+operator|->
+name|filename
 argument_list|,
 name|st
 operator|.
@@ -8181,7 +8183,7 @@ condition|)
 block|{
 name|error
 argument_list|(
-literal|"fchmod on %s failed: %s"
+literal|"chmod on %s failed: %s"
 argument_list|,
 name|lock
 operator|->
@@ -9046,9 +9048,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|fchmod
+name|chmod
 argument_list|(
-name|out_fd
+name|lock
+operator|->
+name|filename
 argument_list|,
 name|st
 operator|.
@@ -9064,7 +9068,7 @@ name|ret
 operator|=
 name|error
 argument_list|(
-literal|"fchmod on %s failed: %s"
+literal|"chmod on %s failed: %s"
 argument_list|,
 name|lock
 operator|->
