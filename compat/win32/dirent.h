@@ -69,9 +69,11 @@ name|char
 name|d_name
 index|[
 name|MAX_PATH
+operator|*
+literal|3
 index|]
 decl_stmt|;
-comment|/* file name */
+comment|/* file name (* 3 for UTF-8 conversion) */
 block|}
 struct|;
 end_struct
