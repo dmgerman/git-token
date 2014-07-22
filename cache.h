@@ -9487,6 +9487,17 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|unsigned
+name|int
+name|alloc_commit_index
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/* pkt-line.c */
 end_comment
