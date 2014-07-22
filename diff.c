@@ -8257,13 +8257,13 @@ name|x
 operator|=
 name|xcalloc
 argument_list|(
+literal|1
+argument_list|,
 sizeof|sizeof
 argument_list|(
 operator|*
 name|x
 argument_list|)
-argument_list|,
-literal|1
 argument_list|)
 expr_stmt|;
 name|ALLOC_GROW
