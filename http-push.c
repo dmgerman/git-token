@@ -1099,7 +1099,6 @@ name|curl
 argument_list|,
 name|CURLOPT_IOCTLDATA
 argument_list|,
-operator|&
 name|buffer
 argument_list|)
 expr_stmt|;
