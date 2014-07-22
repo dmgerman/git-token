@@ -34,14 +34,16 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|trace_key
+DECL|variable|trace_packet
 specifier|static
-specifier|const
-name|char
+name|struct
 name|trace_key
-index|[]
+name|trace_packet
 init|=
-literal|"GIT_TRACE_PACKET"
+name|TRACE_KEY_INIT
+argument_list|(
+name|PACKET
+argument_list|)
 decl_stmt|;
 end_decl_stmt
 
@@ -97,7 +99,8 @@ condition|(
 operator|!
 name|trace_want
 argument_list|(
-name|trace_key
+operator|&
+name|trace_packet
 argument_list|)
 condition|)
 return|return;
@@ -167,9 +170,10 @@ argument_list|,
 literal|"PACK ..."
 argument_list|)
 expr_stmt|;
-name|unsetenv
+name|trace_disable
 argument_list|(
-name|trace_key
+operator|&
+name|trace_packet
 argument_list|)
 expr_stmt|;
 block|}
@@ -254,7 +258,8 @@ argument_list|)
 expr_stmt|;
 name|trace_strbuf
 argument_list|(
-name|trace_key
+operator|&
+name|trace_packet
 argument_list|,
 operator|&
 name|out

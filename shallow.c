@@ -1759,13 +1759,18 @@ expr_stmt|;
 block|}
 end_function
 
-begin_define
-DECL|macro|TRACE_KEY
-define|#
-directive|define
-name|TRACE_KEY
-value|"GIT_TRACE_SHALLOW"
-end_define
+begin_decl_stmt
+DECL|variable|trace_shallow
+name|struct
+name|trace_key
+name|trace_shallow
+init|=
+name|TRACE_KEY_INIT
+argument_list|(
+name|SHALLOW
+argument_list|)
+decl_stmt|;
+end_decl_stmt
 
 begin_comment
 comment|/*  * Step 1, split sender shallow commits into "ours" and "theirs"  * Step 2, clean "ours" based on .git/shallow  */
@@ -1792,7 +1797,8 @@ name|i
 decl_stmt|;
 name|trace_printf_key
 argument_list|(
-name|TRACE_KEY
+operator|&
+name|trace_shallow
 argument_list|,
 literal|"shallow: prepare_shallow_info\n"
 argument_list|)
@@ -2011,7 +2017,8 @@ name|dst
 decl_stmt|;
 name|trace_printf_key
 argument_list|(
-name|TRACE_KEY
+operator|&
+name|trace_shallow
 argument_list|,
 literal|"shallow: remove_nonexistent_theirs_shallow\n"
 argument_list|)
@@ -2873,7 +2880,8 @@ name|pi
 decl_stmt|;
 name|trace_printf_key
 argument_list|(
-name|TRACE_KEY
+operator|&
+name|trace_shallow
 argument_list|,
 literal|"shallow: assign_shallow_commits_to_refs\n"
 argument_list|)
@@ -3555,7 +3563,8 @@ name|ca
 decl_stmt|;
 name|trace_printf_key
 argument_list|(
-name|TRACE_KEY
+operator|&
+name|trace_shallow
 argument_list|,
 literal|"shallow: post_assign_shallow\n"
 argument_list|)

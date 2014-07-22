@@ -4767,6 +4767,34 @@ endif|#
 directive|endif
 end_endif
 
+begin_if
+if|#
+directive|if
+name|defined
+argument_list|(
+name|__GNUC__
+argument_list|)
+operator|||
+operator|(
+name|_MSC_VER
+operator|>=
+literal|1400
+operator|)
+end_if
+
+begin_define
+DECL|macro|HAVE_VARIADIC_MACROS
+define|#
+directive|define
+name|HAVE_VARIADIC_MACROS
+value|1
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_comment
 comment|/*  * Preserves errno, prints a message, but gives no warning for ENOENT.  * Always returns the return value of unlink(2).  */
 end_comment
