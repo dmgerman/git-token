@@ -104,6 +104,21 @@ end_define
 
 begin_function_decl
 name|void
+name|string_list_init
+parameter_list|(
+name|struct
+name|string_list
+modifier|*
+name|list
+parameter_list|,
+name|int
+name|strdup_strings
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|void
 name|print_string_list
 parameter_list|(
 specifier|const
