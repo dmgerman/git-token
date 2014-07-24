@@ -6132,6 +6132,7 @@ decl_stmt|;
 name|int
 name|i
 decl_stmt|;
+specifier|const
 name|char
 modifier|*
 name|dir
@@ -6283,10 +6284,7 @@ argument_list|)
 expr_stmt|;
 name|dir
 operator|=
-name|xstrdup
-argument_list|(
 name|arg
-argument_list|)
 expr_stmt|;
 block|}
 if|if
