@@ -4194,6 +4194,11 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
+name|free
+argument_list|(
+name|ref
+argument_list|)
+expr_stmt|;
 block|}
 elseif|else
 if|if
