@@ -742,10 +742,8 @@ modifier|*
 name|git_work_tree
 decl_stmt|;
 name|char
+modifier|*
 name|cwd
-index|[
-name|PATH_MAX
-index|]
 decl_stmt|;
 if|if
 condition|(
@@ -756,20 +754,10 @@ name|key
 argument_list|)
 condition|)
 return|return;
-if|if
-condition|(
-operator|!
-name|getcwd
-argument_list|(
 name|cwd
-argument_list|,
-name|PATH_MAX
-argument_list|)
-condition|)
-name|die
-argument_list|(
-literal|"Unable to get current working directory"
-argument_list|)
+operator|=
+name|xgetcwd
+argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -841,6 +829,11 @@ name|quote_crnl
 argument_list|(
 name|prefix
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|free
+argument_list|(
+name|cwd
 argument_list|)
 expr_stmt|;
 block|}
