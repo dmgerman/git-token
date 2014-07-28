@@ -855,11 +855,6 @@ name|component_count
 init|=
 literal|0
 decl_stmt|;
-name|int
-name|orig_flags
-init|=
-name|flags
-decl_stmt|;
 if|if
 condition|(
 name|refname
@@ -964,7 +959,7 @@ name|check_refname_format_bytewise
 argument_list|(
 name|refname
 argument_list|,
-name|orig_flags
+name|flags
 argument_list|)
 return|;
 name|tmp
