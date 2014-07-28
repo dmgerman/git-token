@@ -3523,6 +3523,17 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|char
+modifier|*
+name|xgetcwd
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function
 DECL|function|xsize_t
 specifier|static
