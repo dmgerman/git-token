@@ -819,10 +819,6 @@ if|if
 condition|(
 operator|!
 name|arg
-operator|||
-operator|!
-operator|*
-name|arg
 condition|)
 block|{
 name|rev
@@ -875,6 +871,10 @@ return|return;
 block|}
 if|if
 condition|(
+operator|!
+operator|*
+name|arg
+operator|||
 name|strchr
 argument_list|(
 name|arg
