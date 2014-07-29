@@ -18,6 +18,12 @@ directive|include
 file|"parse-options.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"hashmap.h"
+end_include
+
 begin_enum
 enum|enum
 block|{
@@ -38,6 +44,12 @@ DECL|struct|remote
 struct|struct
 name|remote
 block|{
+DECL|member|ent
+name|struct
+name|hashmap_entry
+name|ent
+decl_stmt|;
+comment|/* must be first */
 DECL|member|name
 specifier|const
 name|char
