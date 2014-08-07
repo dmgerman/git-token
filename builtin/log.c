@@ -4862,6 +4862,12 @@ literal|'\n'
 argument_list|)
 expr_stmt|;
 block|}
+name|strbuf_release
+argument_list|(
+operator|&
+name|desc
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
