@@ -9471,6 +9471,25 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_struct
+DECL|struct|key_value_info
+struct|struct
+name|key_value_info
+block|{
+DECL|member|filename
+specifier|const
+name|char
+modifier|*
+name|filename
+decl_stmt|;
+DECL|member|linenr
+name|int
+name|linenr
+decl_stmt|;
+block|}
+struct|;
+end_struct
+
 begin_function_decl
 specifier|extern
 name|int
