@@ -8394,7 +8394,7 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|int
+name|void
 name|git_config
 parameter_list|(
 name|config_fn_t

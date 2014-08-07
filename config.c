@@ -6252,7 +6252,7 @@ end_function
 
 begin_function
 DECL|function|git_config
-name|int
+name|void
 name|git_config
 parameter_list|(
 name|config_fn_t
@@ -6263,7 +6263,8 @@ modifier|*
 name|data
 parameter_list|)
 block|{
-return|return
+if|if
+condition|(
 name|git_config_with_options
 argument_list|(
 name|fn
@@ -6274,7 +6275,18 @@ name|NULL
 argument_list|,
 literal|1
 argument_list|)
-return|;
+operator|<
+literal|0
+condition|)
+comment|/* 		 * git_config_with_options() normally returns only 		 * positive values, as most errors are fatal, and 		 * non-fatal potential errors are guarded by "if" 		 * statements that are entered only when no error is 		 * possible. 		 * 		 * If we ever encounter a non-fatal error, it means 		 * something went really wrong and we should stop 		 * immediately. 		 */
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"unknown error occured while reading the configuration files"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
