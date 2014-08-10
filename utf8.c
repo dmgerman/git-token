@@ -2615,6 +2615,13 @@ operator|+=
 name|n
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|src
+operator|>=
+name|end
+condition|)
+break|break;
 name|old
 operator|=
 name|src
