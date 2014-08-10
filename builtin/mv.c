@@ -739,7 +739,10 @@ literal|1
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"destination '%s' is not a directory"
+argument_list|)
 argument_list|,
 name|dest_path
 index|[
