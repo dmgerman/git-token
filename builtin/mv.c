@@ -1189,6 +1189,8 @@ name|src
 argument_list|,
 name|length
 argument_list|)
+decl_stmt|,
+name|last
 decl_stmt|;
 if|if
 condition|(
@@ -1207,18 +1209,9 @@ operator|+
 name|i
 argument_list|)
 expr_stmt|;
-else|else
-block|{
-name|int
-name|last
-decl_stmt|;
-name|modes
-index|[
-name|i
-index|]
-operator|=
-name|WORKING_DIRECTORY
-expr_stmt|;
+elseif|else
+if|if
+condition|(
 name|index_range_of_same_dir
 argument_list|(
 name|src
@@ -1231,12 +1224,6 @@ argument_list|,
 operator|&
 name|last
 argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|last
-operator|-
-name|first
 operator|<
 literal|1
 condition|)
@@ -1249,6 +1236,7 @@ argument_list|)
 expr_stmt|;
 else|else
 block|{
+comment|/* last - first>= 1 */
 name|int
 name|j
 decl_stmt|,
@@ -1256,6 +1244,13 @@ name|dst_len
 decl_stmt|,
 name|n
 decl_stmt|;
+name|modes
+index|[
+name|i
+index|]
+operator|=
+name|WORKING_DIRECTORY
+expr_stmt|;
 name|n
 operator|=
 name|argc
@@ -1422,7 +1417,6 @@ name|last
 operator|-
 name|first
 expr_stmt|;
-block|}
 block|}
 block|}
 elseif|else
