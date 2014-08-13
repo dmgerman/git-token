@@ -1690,6 +1690,16 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
+name|result
+condition|)
+name|die
+argument_list|(
+literal|"curl_easy_init failed"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
 name|curl_ssl_verify
 condition|)
 block|{
@@ -2167,9 +2177,18 @@ argument_list|(
 name|normalized_url
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|curl_global_init
 argument_list|(
 name|CURL_GLOBAL_ALL
+argument_list|)
+operator|!=
+name|CURLE_OK
+condition|)
+name|die
+argument_list|(
+literal|"curl_global_init failed"
 argument_list|)
 expr_stmt|;
 name|http_proactive_auth
