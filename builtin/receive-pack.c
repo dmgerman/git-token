@@ -4572,6 +4572,13 @@ literal|"shallow "
 argument_list|)
 condition|)
 block|{
+name|unsigned
+name|char
+name|sha1
+index|[
+literal|20
+index|]
+decl_stmt|;
 if|if
 condition|(
 name|get_sha1_hex
@@ -4580,7 +4587,7 @@ name|line
 operator|+
 literal|8
 argument_list|,
-name|old_sha1
+name|sha1
 argument_list|)
 condition|)
 name|die
@@ -4596,7 +4603,7 @@ name|sha1_array_append
 argument_list|(
 name|shallow
 argument_list|,
-name|old_sha1
+name|sha1
 argument_list|)
 expr_stmt|;
 continue|continue;
