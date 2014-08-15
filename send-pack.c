@@ -1126,7 +1126,9 @@ modifier|*
 name|ref
 decl_stmt|;
 name|int
-name|new_refs
+name|need_pack_data
+init|=
+literal|0
 decl_stmt|;
 name|int
 name|allow_deleting_refs
@@ -1371,10 +1373,6 @@ name|req_buf
 argument_list|)
 expr_stmt|;
 comment|/* 	 * Finally, tell the other end! 	 */
-name|new_refs
-operator|=
-literal|0
-expr_stmt|;
 for|for
 control|(
 name|ref
@@ -1408,8 +1406,9 @@ name|ref
 operator|->
 name|deletion
 condition|)
-name|new_refs
-operator|++
+name|need_pack_data
+operator|=
+literal|1
 expr_stmt|;
 if|if
 condition|(
@@ -1650,7 +1649,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|new_refs
+name|need_pack_data
 operator|&&
 name|cmds_sent
 condition|)
