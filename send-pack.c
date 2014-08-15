@@ -1115,6 +1115,12 @@ init|=
 name|STRBUF_INIT
 decl_stmt|;
 name|struct
+name|strbuf
+name|cap_buf
+init|=
+name|STRBUF_INIT
+decl_stmt|;
+name|struct
 name|ref
 modifier|*
 name|ref
@@ -1259,6 +1265,68 @@ return|return
 literal|0
 return|;
 block|}
+if|if
+condition|(
+name|status_report
+condition|)
+name|strbuf_addstr
+argument_list|(
+operator|&
+name|cap_buf
+argument_list|,
+literal|" report-status"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|use_sideband
+condition|)
+name|strbuf_addstr
+argument_list|(
+operator|&
+name|cap_buf
+argument_list|,
+literal|" side-band-64k"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|quiet_supported
+operator|&&
+operator|(
+name|args
+operator|->
+name|quiet
+operator|||
+operator|!
+name|args
+operator|->
+name|progress
+operator|)
+condition|)
+name|strbuf_addstr
+argument_list|(
+operator|&
+name|cap_buf
+argument_list|,
+literal|" quiet"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|agent_supported
+condition|)
+name|strbuf_addf
+argument_list|(
+operator|&
+name|cap_buf
+argument_list|,
+literal|" agent=%s"
+argument_list|,
+name|git_user_agent_sanitized
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|/* 	 * NEEDSWORK: why does delete-refs have to be so specific to 	 * send-pack machinery that set_ref_status_for_push() cannot 	 * set this bit for us??? 	 */
 for|for
 control|(
@@ -1381,22 +1449,6 @@ operator|->
 name|new_sha1
 argument_list|)
 decl_stmt|;
-name|int
-name|quiet
-init|=
-name|quiet_supported
-operator|&&
-operator|(
-name|args
-operator|->
-name|quiet
-operator|||
-operator|!
-name|args
-operator|->
-name|progress
-operator|)
-decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -1407,7 +1459,7 @@ argument_list|(
 operator|&
 name|req_buf
 argument_list|,
-literal|"%s %s %s%c%s%s%s%s%s"
+literal|"%s %s %s%c%s"
 argument_list|,
 name|old_hex
 argument_list|,
@@ -1419,36 +1471,9 @@ name|name
 argument_list|,
 literal|0
 argument_list|,
-name|status_report
-condition|?
-literal|" report-status"
-else|:
-literal|""
-argument_list|,
-name|use_sideband
-condition|?
-literal|" side-band-64k"
-else|:
-literal|""
-argument_list|,
-name|quiet
-condition|?
-literal|" quiet"
-else|:
-literal|""
-argument_list|,
-name|agent_supported
-condition|?
-literal|" agent="
-else|:
-literal|""
-argument_list|,
-name|agent_supported
-condition|?
-name|git_user_agent_sanitized
-argument_list|()
-else|:
-literal|""
+name|cap_buf
+operator|.
+name|buf
 argument_list|)
 expr_stmt|;
 else|else
@@ -1556,6 +1581,12 @@ name|strbuf_release
 argument_list|(
 operator|&
 name|req_buf
+argument_list|)
+expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|cap_buf
 argument_list|)
 expr_stmt|;
 if|if
