@@ -272,6 +272,14 @@ name|CHECK_SIZE_ONLY
 value|1
 end_define
 
+begin_define
+DECL|macro|CHECK_BINARY
+define|#
+directive|define
+name|CHECK_BINARY
+value|2
+end_define
+
 begin_function_decl
 specifier|extern
 name|int
