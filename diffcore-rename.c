@@ -753,7 +753,7 @@ name|diff_populate_filespec
 argument_list|(
 name|src
 argument_list|,
-literal|1
+name|CHECK_SIZE_ONLY
 argument_list|)
 condition|)
 return|return
@@ -770,7 +770,7 @@ name|diff_populate_filespec
 argument_list|(
 name|dst
 argument_list|,
-literal|1
+name|CHECK_SIZE_ONLY
 argument_list|)
 condition|)
 return|return

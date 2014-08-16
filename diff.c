@@ -2174,7 +2174,7 @@ name|diff_populate_filespec
 argument_list|(
 name|one
 argument_list|,
-literal|1
+name|CHECK_SIZE_ONLY
 argument_list|)
 expr_stmt|;
 return|return
@@ -11036,7 +11036,7 @@ name|p
 operator|->
 name|one
 argument_list|,
-literal|1
+name|CHECK_SIZE_ONLY
 argument_list|)
 expr_stmt|;
 name|copied
@@ -11070,7 +11070,7 @@ name|p
 operator|->
 name|two
 argument_list|,
-literal|1
+name|CHECK_SIZE_ONLY
 argument_list|)
 expr_stmt|;
 name|copied
@@ -15343,10 +15343,18 @@ name|diff_filespec
 modifier|*
 name|s
 parameter_list|,
+name|unsigned
 name|int
-name|size_only
+name|flags
 parameter_list|)
 block|{
+name|int
+name|size_only
+init|=
+name|flags
+operator|&
+name|CHECK_SIZE_ONLY
+decl_stmt|;
 name|int
 name|err
 init|=
@@ -27155,7 +27163,7 @@ name|p
 operator|->
 name|one
 argument_list|,
-literal|1
+name|CHECK_SIZE_ONLY
 argument_list|)
 operator|||
 name|diff_populate_filespec
@@ -27164,7 +27172,7 @@ name|p
 operator|->
 name|two
 argument_list|,
-literal|1
+name|CHECK_SIZE_ONLY
 argument_list|)
 operator|||
 operator|(
