@@ -1472,37 +1472,31 @@ directive|ifndef
 name|has_dos_drive_prefix
 end_ifndef
 
+begin_function
+DECL|function|git_has_dos_drive_prefix
+specifier|static
+specifier|inline
+name|int
+name|git_has_dos_drive_prefix
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|)
+block|{
+return|return
+literal|0
+return|;
+block|}
+end_function
+
 begin_define
 DECL|macro|has_dos_drive_prefix
 define|#
 directive|define
 name|has_dos_drive_prefix
-parameter_list|(
-name|path
-parameter_list|)
-value|0
-end_define
-
-begin_endif
-endif|#
-directive|endif
-end_endif
-
-begin_ifndef
-ifndef|#
-directive|ifndef
-name|offset_1st_component
-end_ifndef
-
-begin_define
-DECL|macro|offset_1st_component
-define|#
-directive|define
-name|offset_1st_component
-parameter_list|(
-name|path
-parameter_list|)
-value|(is_dir_sep((path)[0]))
+value|git_has_dos_drive_prefix
 end_define
 
 begin_endif
@@ -1515,16 +1509,76 @@ ifndef|#
 directive|ifndef
 name|is_dir_sep
 end_ifndef
+
+begin_function
+DECL|function|git_is_dir_sep
+specifier|static
+specifier|inline
+name|int
+name|git_is_dir_sep
+parameter_list|(
+name|int
+name|c
+parameter_list|)
+block|{
+return|return
+name|c
+operator|==
+literal|'/'
+return|;
+block|}
+end_function
 
 begin_define
 DECL|macro|is_dir_sep
 define|#
 directive|define
 name|is_dir_sep
+value|git_is_dir_sep
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|offset_1st_component
+end_ifndef
+
+begin_function
+DECL|function|git_offset_1st_component
+specifier|static
+specifier|inline
+name|int
+name|git_offset_1st_component
 parameter_list|(
-name|c
+specifier|const
+name|char
+modifier|*
+name|path
 parameter_list|)
-value|((c) == '/')
+block|{
+return|return
+name|is_dir_sep
+argument_list|(
+name|path
+index|[
+literal|0
+index|]
+argument_list|)
+return|;
+block|}
+end_function
+
+begin_define
+DECL|macro|offset_1st_component
+define|#
+directive|define
+name|offset_1st_component
+value|git_offset_1st_component
 end_define
 
 begin_endif
@@ -1538,15 +1592,37 @@ directive|ifndef
 name|find_last_dir_sep
 end_ifndef
 
+begin_function
+DECL|function|git_find_last_dir_sep
+specifier|static
+specifier|inline
+name|char
+modifier|*
+name|git_find_last_dir_sep
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|)
+block|{
+return|return
+name|strrchr
+argument_list|(
+name|path
+argument_list|,
+literal|'/'
+argument_list|)
+return|;
+block|}
+end_function
+
 begin_define
 DECL|macro|find_last_dir_sep
 define|#
 directive|define
 name|find_last_dir_sep
-parameter_list|(
-name|path
-parameter_list|)
-value|strrchr(path, '/')
+value|git_find_last_dir_sep
 end_define
 
 begin_endif
@@ -1600,6 +1676,7 @@ argument_list|)
 end_elif
 
 begin_define
+DECL|macro|NORETURN
 define|#
 directive|define
 name|NORETURN
@@ -1607,6 +1684,7 @@ value|__attribute__((__noreturn__))
 end_define
 
 begin_define
+DECL|macro|NORETURN_PTR
 define|#
 directive|define
 name|NORETURN_PTR
@@ -1623,6 +1701,7 @@ argument_list|)
 end_elif
 
 begin_define
+DECL|macro|NORETURN
 define|#
 directive|define
 name|NORETURN
@@ -1630,6 +1709,7 @@ value|__declspec(noreturn)
 end_define
 
 begin_define
+DECL|macro|NORETURN_PTR
 define|#
 directive|define
 name|NORETURN_PTR
@@ -1641,12 +1721,14 @@ directive|else
 end_else
 
 begin_define
+DECL|macro|NORETURN
 define|#
 directive|define
 name|NORETURN
 end_define
 
 begin_define
+DECL|macro|NORETURN_PTR
 define|#
 directive|define
 name|NORETURN_PTR
@@ -1659,6 +1741,7 @@ name|__attribute__
 end_ifndef
 
 begin_define
+DECL|macro|__attribute__
 define|#
 directive|define
 name|__attribute__
@@ -1710,6 +1793,7 @@ directive|else
 end_else
 
 begin_define
+DECL|macro|LAST_ARG_MUST_BE_NULL
 define|#
 directive|define
 name|LAST_ARG_MUST_BE_NULL
