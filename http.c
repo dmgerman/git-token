@@ -2264,24 +2264,14 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|curlm
-operator|==
-name|NULL
 condition|)
-block|{
-name|fprintf
+name|die
 argument_list|(
-name|stderr
-argument_list|,
-literal|"Error creating curl multi handle.\n"
+literal|"curl_multi_init failed"
 argument_list|)
 expr_stmt|;
-name|exit
-argument_list|(
-literal|1
-argument_list|)
-expr_stmt|;
-block|}
 endif|#
 directive|endif
 if|if
