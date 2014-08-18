@@ -1125,7 +1125,7 @@ end_function
 begin_function
 DECL|function|generate_push_cert
 specifier|static
-name|void
+name|int
 name|generate_push_cert
 parameter_list|(
 name|struct
@@ -1143,6 +1143,11 @@ name|struct
 name|send_pack_args
 modifier|*
 name|args
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|cap_string
 parameter_list|)
 block|{
 specifier|const
@@ -1314,7 +1319,11 @@ name|packet_buf_write
 argument_list|(
 name|req_buf
 argument_list|,
-literal|"push-cert\n"
+literal|"push-cert%c%s"
+argument_list|,
+literal|0
+argument_list|,
+name|cap_string
 argument_list|)
 expr_stmt|;
 for|for
@@ -1396,6 +1405,9 @@ operator|&
 name|cert
 argument_list|)
 expr_stmt|;
+return|return
+name|update_seen
+return|;
 block|}
 end_function
 
@@ -1740,6 +1752,8 @@ name|args
 operator|->
 name|push_cert
 condition|)
+name|cmds_sent
+operator|=
 name|generate_push_cert
 argument_list|(
 operator|&
@@ -1748,6 +1762,10 @@ argument_list|,
 name|remote_refs
 argument_list|,
 name|args
+argument_list|,
+name|cap_buf
+operator|.
+name|buf
 argument_list|)
 expr_stmt|;
 comment|/* 	 * Clear the status for each ref and see if we need to send 	 * the pack data. 	 */
