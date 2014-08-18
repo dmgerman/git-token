@@ -3612,7 +3612,7 @@ index|]
 argument_list|,
 name|value
 argument_list|,
-literal|"^$"
+literal|"a^"
 argument_list|,
 literal|0
 argument_list|)

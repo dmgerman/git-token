@@ -6277,6 +6277,9 @@ name|store
 operator|.
 name|do_not_match
 operator|^
+operator|(
+name|value
+operator|&&
 operator|!
 name|regexec
 argument_list|(
@@ -6292,6 +6295,7 @@ name|NULL
 argument_list|,
 literal|0
 argument_list|)
+operator|)
 operator|)
 operator|)
 return|;
