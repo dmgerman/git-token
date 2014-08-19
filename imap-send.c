@@ -315,6 +315,11 @@ DECL|member|port
 name|int
 name|port
 decl_stmt|;
+DECL|member|folder
+name|char
+modifier|*
+name|folder
+decl_stmt|;
 DECL|member|user
 name|char
 modifier|*
@@ -366,6 +371,9 @@ comment|/* host */
 literal|0
 block|,
 comment|/* port */
+name|NULL
+block|,
+comment|/* folder */
 name|NULL
 block|,
 comment|/* user */
@@ -7470,15 +7478,6 @@ return|;
 block|}
 end_function
 
-begin_decl_stmt
-DECL|variable|imap_folder
-specifier|static
-name|char
-modifier|*
-name|imap_folder
-decl_stmt|;
-end_decl_stmt
-
 begin_function
 DECL|function|git_imap_config
 specifier|static
@@ -7583,7 +7582,9 @@ name|key
 argument_list|)
 condition|)
 block|{
-name|imap_folder
+name|server
+operator|.
+name|folder
 operator|=
 name|xstrdup
 argument_list|(
@@ -7877,7 +7878,9 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|imap_folder
+name|server
+operator|.
+name|folder
 condition|)
 block|{
 name|fprintf
@@ -8042,7 +8045,9 @@ name|ctx
 operator|->
 name|name
 operator|=
-name|imap_folder
+name|server
+operator|.
+name|folder
 expr_stmt|;
 while|while
 condition|(
