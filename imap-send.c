@@ -5494,9 +5494,7 @@ name|struct
 name|child_process
 name|tunnel
 init|=
-block|{
-name|NULL
-block|}
+name|CHILD_PROCESS_INIT
 decl_stmt|;
 name|imap_info
 argument_list|(

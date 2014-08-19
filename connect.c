@@ -3250,6 +3250,8 @@ specifier|static
 name|struct
 name|child_process
 name|no_fork
+init|=
+name|CHILD_PROCESS_INIT
 decl_stmt|;
 end_decl_stmt
 

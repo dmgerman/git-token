@@ -1483,6 +1483,8 @@ decl_stmt|;
 name|struct
 name|child_process
 name|rls
+init|=
+name|CHILD_PROCESS_INIT
 decl_stmt|;
 name|FILE
 modifier|*
@@ -1546,19 +1548,6 @@ name|NULL
 argument_list|)
 expr_stmt|;
 comment|/* write prerequisites */
-name|memset
-argument_list|(
-operator|&
-name|rls
-argument_list|,
-literal|0
-argument_list|,
-sizeof|sizeof
-argument_list|(
-name|rls
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|argv_array_pushl
 argument_list|(
 operator|&
@@ -2452,6 +2441,8 @@ decl_stmt|;
 name|struct
 name|child_process
 name|ip
+init|=
+name|CHILD_PROCESS_INIT
 decl_stmt|;
 if|if
 condition|(
@@ -2479,19 +2470,6 @@ return|return
 operator|-
 literal|1
 return|;
-name|memset
-argument_list|(
-operator|&
-name|ip
-argument_list|,
-literal|0
-argument_list|,
-sizeof|sizeof
-argument_list|(
-name|ip
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|ip
 operator|.
 name|argv

@@ -87,6 +87,8 @@ specifier|static
 name|struct
 name|child_process
 name|pager_process
+init|=
+name|CHILD_PROCESS_INIT
 decl_stmt|;
 end_decl_stmt
 
