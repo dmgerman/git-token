@@ -15763,12 +15763,6 @@ operator|&&
 name|would_convert_to_git
 argument_list|(
 name|path
-argument_list|,
-name|NULL
-argument_list|,
-literal|0
-argument_list|,
-literal|0
 argument_list|)
 operator|)
 condition|)
