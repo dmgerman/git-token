@@ -9718,11 +9718,11 @@ name|ref_lock
 modifier|*
 name|lock
 decl_stmt|;
-name|char
+name|struct
+name|strbuf
 name|ref_name
-index|[
-name|PATH_MAX
-index|]
+init|=
+name|STRBUF_INIT
 decl_stmt|;
 for|for
 control|(
@@ -9739,8 +9739,15 @@ operator|->
 name|next_tag
 control|)
 block|{
-name|sprintf
+name|strbuf_reset
 argument_list|(
+operator|&
+name|ref_name
+argument_list|)
+expr_stmt|;
+name|strbuf_addf
+argument_list|(
+operator|&
 name|ref_name
 argument_list|,
 literal|"tags/%s"
@@ -9755,6 +9762,8 @@ operator|=
 name|lock_ref_sha1
 argument_list|(
 name|ref_name
+operator|.
+name|buf
 argument_list|,
 name|NULL
 argument_list|)
@@ -9784,9 +9793,17 @@ argument_list|(
 literal|"Unable to update %s"
 argument_list|,
 name|ref_name
+operator|.
+name|buf
 argument_list|)
 expr_stmt|;
 block|}
+name|strbuf_release
+argument_list|(
+operator|&
+name|ref_name
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
