@@ -368,11 +368,13 @@ name|xmalloc
 argument_list|(
 sizeof|sizeof
 argument_list|(
-expr|struct
-name|name_decoration
+operator|*
+name|res
 argument_list|)
 operator|+
 name|nlen
+operator|+
+literal|1
 argument_list|)
 decl_stmt|;
 name|memcpy
