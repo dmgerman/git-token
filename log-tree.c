@@ -89,37 +89,6 @@ block|}
 decl_stmt|;
 end_decl_stmt
 
-begin_enum
-DECL|enum|decoration_type
-enum|enum
-name|decoration_type
-block|{
-DECL|enumerator|DECORATION_NONE
-name|DECORATION_NONE
-init|=
-literal|0
-block|,
-DECL|enumerator|DECORATION_REF_LOCAL
-name|DECORATION_REF_LOCAL
-block|,
-DECL|enumerator|DECORATION_REF_REMOTE
-name|DECORATION_REF_REMOTE
-block|,
-DECL|enumerator|DECORATION_REF_TAG
-name|DECORATION_REF_TAG
-block|,
-DECL|enumerator|DECORATION_REF_STASH
-name|DECORATION_REF_STASH
-block|,
-DECL|enumerator|DECORATION_REF_HEAD
-name|DECORATION_REF_HEAD
-block|,
-DECL|enumerator|DECORATION_GRAFTED
-name|DECORATION_GRAFTED
-block|, }
-enum|;
-end_enum
-
 begin_decl_stmt
 DECL|variable|decoration_colors
 specifier|static
@@ -363,7 +332,6 @@ end_define
 
 begin_function
 DECL|function|add_name_decoration
-specifier|static
 name|void
 name|add_name_decoration
 parameter_list|(
