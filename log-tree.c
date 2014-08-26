@@ -79,6 +79,7 @@ end_include
 
 begin_decl_stmt
 DECL|variable|name_decoration
+specifier|static
 name|struct
 name|decoration
 name|name_decoration
@@ -407,6 +408,33 @@ argument_list|,
 name|res
 argument_list|)
 expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|function|get_name_decoration
+specifier|const
+name|struct
+name|name_decoration
+modifier|*
+name|get_name_decoration
+parameter_list|(
+specifier|const
+name|struct
+name|object
+modifier|*
+name|obj
+parameter_list|)
+block|{
+return|return
+name|lookup_decoration
+argument_list|(
+operator|&
+name|name_decoration
+argument_list|,
+name|obj
+argument_list|)
+return|;
 block|}
 end_function
 
@@ -964,6 +992,7 @@ name|char
 modifier|*
 name|prefix
 decl_stmt|;
+specifier|const
 name|struct
 name|name_decoration
 modifier|*
@@ -995,11 +1024,8 @@ argument_list|)
 decl_stmt|;
 name|decoration
 operator|=
-name|lookup_decoration
+name|get_name_decoration
 argument_list|(
-operator|&
-name|name_decoration
-argument_list|,
 operator|&
 name|commit
 operator|->
