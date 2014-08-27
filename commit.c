@@ -3402,7 +3402,9 @@ index|]
 operator|==
 literal|'\n'
 condition|)
-return|return;
+goto|goto
+name|fail_exit
+goto|;
 comment|/* end of header */
 continue|continue;
 block|}
