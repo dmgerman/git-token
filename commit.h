@@ -1947,6 +1947,34 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Search the commit object contents given by "msg" for the header "key".  * Returns a pointer to the start of the header contents, or NULL. The length  * of the header, up to the first newline, is returned via out_len.  *  * Note that some headers (like mergetag) may be multi-line. It is the caller's  * responsibility to parse further in this case!  */
+end_comment
+
+begin_function_decl
+specifier|extern
+specifier|const
+name|char
+modifier|*
+name|find_commit_header
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|msg
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|key
+parameter_list|,
+name|size_t
+modifier|*
+name|out_len
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_typedef
 DECL|typedef|each_mergetag_fn
 typedef|typedef
