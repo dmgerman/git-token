@@ -3278,7 +3278,7 @@ end_function
 begin_function
 DECL|function|date_string
 specifier|static
-name|int
+name|void
 name|date_string
 parameter_list|(
 name|unsigned
@@ -3288,12 +3288,10 @@ parameter_list|,
 name|int
 name|offset
 parameter_list|,
-name|char
+name|struct
+name|strbuf
 modifier|*
 name|buf
-parameter_list|,
-name|int
-name|len
 parameter_list|)
 block|{
 name|int
@@ -3318,12 +3316,9 @@ operator|=
 literal|'-'
 expr_stmt|;
 block|}
-return|return
-name|snprintf
+name|strbuf_addf
 argument_list|(
 name|buf
-argument_list|,
-name|len
 argument_list|,
 literal|"%lu %c%02d%02d"
 argument_list|,
@@ -3339,7 +3334,7 @@ name|offset
 operator|%
 literal|60
 argument_list|)
-return|;
+expr_stmt|;
 block|}
 end_function
 
@@ -4009,12 +4004,10 @@ name|char
 modifier|*
 name|date
 parameter_list|,
-name|char
+name|struct
+name|strbuf
 modifier|*
 name|result
-parameter_list|,
-name|int
-name|maxlen
 parameter_list|)
 block|{
 name|unsigned
@@ -4041,7 +4034,6 @@ return|return
 operator|-
 literal|1
 return|;
-return|return
 name|date_string
 argument_list|(
 name|timestamp
@@ -4049,9 +4041,10 @@ argument_list|,
 name|offset
 argument_list|,
 name|result
-argument_list|,
-name|maxlen
 argument_list|)
+expr_stmt|;
+return|return
+literal|0
 return|;
 block|}
 end_function
@@ -4197,12 +4190,10 @@ DECL|function|datestamp
 name|void
 name|datestamp
 parameter_list|(
-name|char
+name|struct
+name|strbuf
 modifier|*
-name|buf
-parameter_list|,
-name|int
-name|bufsize
+name|out
 parameter_list|)
 block|{
 name|time_t
@@ -4240,9 +4231,7 @@ name|now
 argument_list|,
 name|offset
 argument_list|,
-name|buf
-argument_list|,
-name|bufsize
+name|out
 argument_list|)
 expr_stmt|;
 block|}

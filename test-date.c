@@ -113,6 +113,12 @@ modifier|*
 name|now
 parameter_list|)
 block|{
+name|struct
+name|strbuf
+name|result
+init|=
+name|STRBUF_INIT
+decl_stmt|;
 for|for
 control|(
 init|;
@@ -123,12 +129,6 @@ name|argv
 operator|++
 control|)
 block|{
-name|char
-name|result
-index|[
-literal|100
-index|]
-decl_stmt|;
 name|unsigned
 name|long
 name|t
@@ -136,24 +136,19 @@ decl_stmt|;
 name|int
 name|tz
 decl_stmt|;
+name|strbuf_reset
+argument_list|(
+operator|&
 name|result
-index|[
-literal|0
-index|]
-operator|=
-literal|0
+argument_list|)
 expr_stmt|;
 name|parse_date
 argument_list|(
 operator|*
 name|argv
 argument_list|,
+operator|&
 name|result
-argument_list|,
-sizeof|sizeof
-argument_list|(
-name|result
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -161,6 +156,8 @@ condition|(
 name|sscanf
 argument_list|(
 name|result
+operator|.
+name|buf
 argument_list|,
 literal|"%lu %d"
 argument_list|,
@@ -200,6 +197,12 @@ name|argv
 argument_list|)
 expr_stmt|;
 block|}
+name|strbuf_release
+argument_list|(
+operator|&
+name|result
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
