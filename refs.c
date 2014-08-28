@@ -11740,6 +11740,11 @@ name|removed
 init|=
 literal|0
 decl_stmt|;
+name|assert
+argument_list|(
+name|err
+argument_list|)
+expr_stmt|;
 comment|/* Look for a packed ref */
 for|for
 control|(
@@ -11784,11 +11789,6 @@ literal|0
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|err
-condition|)
-block|{
 name|unable_to_lock_message
 argument_list|(
 name|git_path
@@ -11804,28 +11804,6 @@ expr_stmt|;
 return|return
 operator|-
 literal|1
-return|;
-block|}
-name|unable_to_lock_error
-argument_list|(
-name|git_path
-argument_list|(
-literal|"packed-refs"
-argument_list|)
-argument_list|,
-name|errno
-argument_list|)
-expr_stmt|;
-return|return
-name|error
-argument_list|(
-literal|"cannot delete '%s' from packed refs"
-argument_list|,
-name|refnames
-index|[
-name|i
-index|]
-argument_list|)
 return|;
 block|}
 name|packed
@@ -11932,8 +11910,6 @@ expr_stmt|;
 if|if
 condition|(
 name|ret
-operator|&&
-name|err
 condition|)
 name|strbuf_addf
 argument_list|(
@@ -11973,6 +11949,11 @@ modifier|*
 name|err
 parameter_list|)
 block|{
+name|assert
+argument_list|(
+name|err
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -16525,6 +16506,11 @@ modifier|*
 name|err
 parameter_list|)
 block|{
+name|assert
+argument_list|(
+name|err
+argument_list|)
+expr_stmt|;
 return|return
 name|xcalloc
 argument_list|(
@@ -16758,6 +16744,11 @@ name|ref_update
 modifier|*
 name|update
 decl_stmt|;
+name|assert
+argument_list|(
+name|err
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|transaction
@@ -16915,6 +16906,11 @@ name|ref_update
 modifier|*
 name|update
 decl_stmt|;
+name|assert
+argument_list|(
+name|err
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|transaction
@@ -17066,6 +17062,11 @@ name|ref_update
 modifier|*
 name|update
 decl_stmt|;
+name|assert
+argument_list|(
+name|err
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|transaction
@@ -17406,6 +17407,11 @@ block|{
 name|int
 name|i
 decl_stmt|;
+name|assert
+argument_list|(
+name|err
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|i
@@ -17442,22 +17448,11 @@ name|refname
 argument_list|)
 condition|)
 block|{
-specifier|const
-name|char
-modifier|*
-name|str
-init|=
-literal|"Multiple updates for ref '%s' not allowed."
-decl_stmt|;
-if|if
-condition|(
-name|err
-condition|)
 name|strbuf_addf
 argument_list|(
 name|err
 argument_list|,
-name|str
+literal|"Multiple updates for ref '%s' not allowed."
 argument_list|,
 name|updates
 index|[
@@ -17527,6 +17522,11 @@ name|transaction
 operator|->
 name|updates
 decl_stmt|;
+name|assert
+argument_list|(
+name|err
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|transaction
@@ -17703,10 +17703,6 @@ name|TRANSACTION_NAME_CONFLICT
 else|:
 name|TRANSACTION_GENERIC_ERROR
 expr_stmt|;
-if|if
-condition|(
-name|err
-condition|)
 name|strbuf_addf
 argument_list|(
 name|err
@@ -17784,10 +17780,6 @@ operator|=
 name|NULL
 expr_stmt|;
 comment|/* freed by write_ref_sha1 */
-if|if
-condition|(
-name|err
-condition|)
 name|strbuf_addf
 argument_list|(
 name|err
