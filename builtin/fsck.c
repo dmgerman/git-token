@@ -2021,10 +2021,16 @@ index|]
 operator|=
 name|NULL
 expr_stmt|;
+if|if
+condition|(
 name|fsck_sha1
 argument_list|(
 name|sha1
 argument_list|)
+condition|)
+name|errors_found
+operator||=
+name|ERROR_OBJECT
 expr_stmt|;
 name|free
 argument_list|(
