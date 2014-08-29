@@ -1148,11 +1148,21 @@ name|timeval
 name|it_value
 decl_stmt|;
 block|}
+struct|;
+end_struct
+
+begin_endif
 endif|#
 directive|endif
+end_endif
+
+begin_ifdef
 ifdef|#
 directive|ifdef
 name|NO_SETITIMER
+end_ifdef
+
+begin_define
 DECL|macro|setitimer
 define|#
 directive|define
@@ -1164,30 +1174,49 @@ name|value
 parameter_list|,
 name|ovalue
 parameter_list|)
+end_define
+
+begin_endif
 endif|#
 directive|endif
+end_endif
+
+begin_ifndef
 ifndef|#
 directive|ifndef
 name|NO_LIBGEN_H
+end_ifndef
+
+begin_include
 include|#
 directive|include
 file|<libgen.h>
+end_include
+
+begin_else
 else|#
 directive|else
+end_else
+
+begin_define
+DECL|macro|basename
 define|#
 directive|define
 name|basename
 value|gitbasename
-decl|extern
+end_define
+
+begin_function_decl
+specifier|extern
 name|char
 modifier|*
 name|gitbasename
-argument_list|(
+parameter_list|(
 name|char
-operator|*
-argument_list|)
-struct|;
-end_struct
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
 
 begin_endif
 endif|#
@@ -1583,6 +1612,7 @@ argument_list|)
 end_elif
 
 begin_define
+DECL|macro|NORETURN
 define|#
 directive|define
 name|NORETURN
@@ -1590,6 +1620,7 @@ value|__attribute__((__noreturn__))
 end_define
 
 begin_define
+DECL|macro|NORETURN_PTR
 define|#
 directive|define
 name|NORETURN_PTR
@@ -1606,6 +1637,7 @@ argument_list|)
 end_elif
 
 begin_define
+DECL|macro|NORETURN
 define|#
 directive|define
 name|NORETURN
@@ -1613,6 +1645,7 @@ value|__declspec(noreturn)
 end_define
 
 begin_define
+DECL|macro|NORETURN_PTR
 define|#
 directive|define
 name|NORETURN_PTR
@@ -1624,12 +1657,14 @@ directive|else
 end_else
 
 begin_define
+DECL|macro|NORETURN
 define|#
 directive|define
 name|NORETURN
 end_define
 
 begin_define
+DECL|macro|NORETURN_PTR
 define|#
 directive|define
 name|NORETURN_PTR
@@ -1648,6 +1683,7 @@ name|__attribute__
 end_ifndef
 
 begin_define
+DECL|macro|__attribute__
 define|#
 directive|define
 name|__attribute__
@@ -1704,6 +1740,7 @@ directive|else
 end_else
 
 begin_define
+DECL|macro|LAST_ARG_MUST_BE_NULL
 define|#
 directive|define
 name|LAST_ARG_MUST_BE_NULL
