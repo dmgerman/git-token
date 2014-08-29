@@ -13306,6 +13306,17 @@ argument_list|)
 expr_stmt|;
 break|break;
 case|case
+name|DATE_ISO8601_STRICT
+case|:
+name|blame_date_width
+operator|=
+sizeof|sizeof
+argument_list|(
+literal|"2006-10-19T16:00:04-07:00"
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
 name|DATE_ISO8601
 case|:
 name|blame_date_width
