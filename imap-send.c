@@ -2728,15 +2728,14 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|memcmp
+operator|!
+name|starts_with
 argument_list|(
 name|cmd
 operator|->
 name|cmd
 argument_list|,
 literal|"LOGIN"
-argument_list|,
-literal|5
 argument_list|)
 condition|)
 name|printf
@@ -4661,15 +4660,14 @@ name|stderr
 argument_list|,
 literal|"IMAP command '%s' returned response (%s) - %s\n"
 argument_list|,
-name|memcmp
+operator|!
+name|starts_with
 argument_list|(
 name|cmdp
 operator|->
 name|cmd
 argument_list|,
 literal|"LOGIN"
-argument_list|,
-literal|5
 argument_list|)
 condition|?
 name|cmdp
