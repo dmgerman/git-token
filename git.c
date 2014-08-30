@@ -65,7 +65,7 @@ index|[]
 init|=
 name|N_
 argument_list|(
-literal|"'git help -a' and 'git help -g' lists available subcommands and some\n"
+literal|"'git help -a' and 'git help -g' list available subcommands and some\n"
 literal|"concept guides. See 'git help<command>' or 'git help<concept>'\n"
 literal|"to read about a specific subcommand or concept."
 argument_list|)

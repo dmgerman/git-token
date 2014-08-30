@@ -325,7 +325,7 @@ literal|"the following submodule (or one of its nested "
 literal|"submodules)\n"
 literal|"uses a .git directory:"
 argument_list|,
-literal|"the following submodules (or one of its nested "
+literal|"the following submodules (or one of their nested "
 literal|"submodules)\n"
 literal|"use a .git directory:"
 argument_list|,

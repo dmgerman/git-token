@@ -7075,7 +7075,7 @@ argument_list|(
 name|_
 argument_list|(
 literal|"You have not concluded your merge (MERGE_HEAD exists).\n"
-literal|"Please, commit your changes before you can merge."
+literal|"Please, commit your changes before you merge."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -7109,7 +7109,7 @@ argument_list|(
 name|_
 argument_list|(
 literal|"You have not concluded your cherry-pick (CHERRY_PICK_HEAD exists).\n"
-literal|"Please, commit your changes before you can merge."
+literal|"Please, commit your changes before you merge."
 argument_list|)
 argument_list|)
 expr_stmt|;
