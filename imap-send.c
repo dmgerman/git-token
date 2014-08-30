@@ -5425,13 +5425,13 @@ name|imap
 operator|=
 name|xcalloc
 argument_list|(
+literal|1
+argument_list|,
 sizeof|sizeof
 argument_list|(
 operator|*
 name|imap
 argument_list|)
-argument_list|,
-literal|1
 argument_list|)
 expr_stmt|;
 name|imap
