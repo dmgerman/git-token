@@ -202,11 +202,36 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|implicit_ident_advice
+DECL|variable|implicit_ident_advice_noconfig
 specifier|static
 specifier|const
 name|char
-name|implicit_ident_advice
+name|implicit_ident_advice_noconfig
+index|[]
+init|=
+name|N_
+argument_list|(
+literal|"Your name and email address were configured automatically based\n"
+literal|"on your username and hostname. Please check that they are accurate.\n"
+literal|"You can suppress this message by setting them explicitly. Run the\n"
+literal|"following command and follow the instructions in your editor to edit\n"
+literal|"your configuration file:\n"
+literal|"\n"
+literal|"    git config --global --edit\n"
+literal|"\n"
+literal|"After doing this, you may fix the identity used for this commit with:\n"
+literal|"\n"
+literal|"    git commit --amend --reset-author\n"
+argument_list|)
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|implicit_ident_advice_config
+specifier|static
+specifier|const
+name|char
+name|implicit_ident_advice_config
 index|[]
 init|=
 name|N_
@@ -7333,6 +7358,85 @@ block|}
 end_function
 
 begin_function
+DECL|function|implicit_ident_advice
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|implicit_ident_advice
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+name|char
+modifier|*
+name|user_config
+init|=
+name|NULL
+decl_stmt|;
+name|char
+modifier|*
+name|xdg_config
+init|=
+name|NULL
+decl_stmt|;
+name|int
+name|config_exists
+decl_stmt|;
+name|home_config_paths
+argument_list|(
+operator|&
+name|user_config
+argument_list|,
+operator|&
+name|xdg_config
+argument_list|,
+literal|"config"
+argument_list|)
+expr_stmt|;
+name|config_exists
+operator|=
+name|file_exists
+argument_list|(
+name|user_config
+argument_list|)
+operator|||
+name|file_exists
+argument_list|(
+name|xdg_config
+argument_list|)
+expr_stmt|;
+name|free
+argument_list|(
+name|user_config
+argument_list|)
+expr_stmt|;
+name|free
+argument_list|(
+name|xdg_config
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|config_exists
+condition|)
+return|return
+name|_
+argument_list|(
+name|implicit_ident_advice_config
+argument_list|)
+return|;
+else|else
+return|return
+name|_
+argument_list|(
+name|implicit_ident_advice_noconfig
+argument_list|)
+return|;
+block|}
+end_function
+
+begin_function
 DECL|function|print_summary
 specifier|static
 name|void
@@ -7590,10 +7694,8 @@ argument_list|(
 operator|&
 name|format
 argument_list|,
-name|_
-argument_list|(
 name|implicit_ident_advice
-argument_list|)
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

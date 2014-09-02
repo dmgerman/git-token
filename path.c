@@ -801,6 +801,11 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+name|xdg
+condition|)
+block|{
+if|if
+condition|(
 operator|!
 name|xdg_home
 condition|)
@@ -822,6 +827,7 @@ argument_list|,
 name|file
 argument_list|)
 expr_stmt|;
+block|}
 name|free
 argument_list|(
 name|to_free
