@@ -1623,16 +1623,13 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-name|strbuf_addstr
+name|strbuf_add_absolute_path
 argument_list|(
 operator|&
 name|objdirbuf
 argument_list|,
-name|absolute_path
-argument_list|(
 name|get_object_directory
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|normalize_path_copy
