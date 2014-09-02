@@ -2764,6 +2764,10 @@ name|one_filesystem
 init|=
 literal|1
 decl_stmt|;
+comment|/* 	 * We may have read an incomplete configuration before 	 * setting-up the git directory. If so, clear the cache so 	 * that the next queries to the configuration reload complete 	 * configuration (including the per-repo config file that we 	 * ignored previously). 	 */
+name|git_config_clear
+argument_list|()
+expr_stmt|;
 comment|/* 	 * Let's assume that we are in a git repository. 	 * If it turns out later that we are somewhere else, the value will be 	 * updated accordingly. 	 */
 if|if
 condition|(
