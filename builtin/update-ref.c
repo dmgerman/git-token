@@ -67,16 +67,6 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|transaction
-specifier|static
-name|struct
-name|ref_transaction
-modifier|*
-name|transaction
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|variable|line_termination
 specifier|static
 name|char
@@ -679,6 +669,11 @@ modifier|*
 name|parse_cmd_update
 parameter_list|(
 name|struct
+name|ref_transaction
+modifier|*
+name|transaction
+parameter_list|,
+name|struct
 name|strbuf
 modifier|*
 name|input
@@ -855,6 +850,11 @@ modifier|*
 name|parse_cmd_create
 parameter_list|(
 name|struct
+name|ref_transaction
+modifier|*
+name|transaction
+parameter_list|,
+name|struct
 name|strbuf
 modifier|*
 name|input
@@ -1011,6 +1011,11 @@ name|char
 modifier|*
 name|parse_cmd_delete
 parameter_list|(
+name|struct
+name|ref_transaction
+modifier|*
+name|transaction
+parameter_list|,
 name|struct
 name|strbuf
 modifier|*
@@ -1179,6 +1184,11 @@ name|char
 modifier|*
 name|parse_cmd_verify
 parameter_list|(
+name|struct
+name|ref_transaction
+modifier|*
+name|transaction
+parameter_list|,
 name|struct
 name|strbuf
 modifier|*
@@ -1410,7 +1420,10 @@ specifier|static
 name|void
 name|update_refs_stdin
 parameter_list|(
-name|void
+name|struct
+name|ref_transaction
+modifier|*
+name|transaction
 parameter_list|)
 block|{
 name|struct
@@ -1505,6 +1518,8 @@ name|next
 operator|=
 name|parse_cmd_update
 argument_list|(
+name|transaction
+argument_list|,
 operator|&
 name|input
 argument_list|,
@@ -1527,6 +1542,8 @@ name|next
 operator|=
 name|parse_cmd_create
 argument_list|(
+name|transaction
+argument_list|,
 operator|&
 name|input
 argument_list|,
@@ -1549,6 +1566,8 @@ name|next
 operator|=
 name|parse_cmd_delete
 argument_list|(
+name|transaction
+argument_list|,
 operator|&
 name|input
 argument_list|,
@@ -1571,6 +1590,8 @@ name|next
 operator|=
 name|parse_cmd_verify
 argument_list|(
+name|transaction
+argument_list|,
 operator|&
 name|input
 argument_list|,
@@ -1826,6 +1847,11 @@ name|err
 init|=
 name|STRBUF_INIT
 decl_stmt|;
+name|struct
+name|ref_transaction
+modifier|*
+name|transaction
+decl_stmt|;
 name|transaction
 operator|=
 name|ref_transaction_begin
@@ -1874,7 +1900,9 @@ operator|=
 literal|'\0'
 expr_stmt|;
 name|update_refs_stdin
-argument_list|()
+argument_list|(
+name|transaction
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
