@@ -92,7 +92,7 @@ value|0x02
 end_define
 
 begin_comment
-comment|/*  * Reference cannot be resolved to an object name: dangling symbolic  * reference (directly or indirectly), corrupt reference file, or  * symbolic reference refers to ill-formatted reference name.  */
+comment|/*  * Reference cannot be resolved to an object name: dangling symbolic  * reference (directly or indirectly), corrupt reference file,  * reference exists but name is bad, or symbolic reference refers to  * ill-formatted reference name.  */
 end_comment
 
 begin_define
@@ -101,6 +101,18 @@ define|#
 directive|define
 name|REF_ISBROKEN
 value|0x04
+end_define
+
+begin_comment
+comment|/*  * Reference name is not well formed.  *  * See git-check-ref-format(1) for the definition of well formed ref names.  */
+end_comment
+
+begin_define
+DECL|macro|REF_BAD_NAME
+define|#
+directive|define
+name|REF_BAD_NAME
+value|0x08
 end_define
 
 begin_comment
