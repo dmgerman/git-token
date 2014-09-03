@@ -1253,6 +1253,14 @@ argument_list|,
 name|revs
 argument_list|)
 expr_stmt|;
+comment|/* detached HEAD is not included in the list above */
+name|head_ref
+argument_list|(
+name|add_one_ref
+argument_list|,
+name|revs
+argument_list|)
+expr_stmt|;
 comment|/* Add all reflog info */
 if|if
 condition|(
