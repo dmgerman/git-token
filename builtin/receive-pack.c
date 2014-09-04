@@ -795,6 +795,7 @@ if|if
 condition|(
 name|sent_capabilities
 condition|)
+block|{
 name|packet_write
 argument_list|(
 literal|1
@@ -809,12 +810,51 @@ argument_list|,
 name|path
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
+name|struct
+name|strbuf
+name|cap
+init|=
+name|STRBUF_INIT
+decl_stmt|;
+name|strbuf_addstr
+argument_list|(
+operator|&
+name|cap
+argument_list|,
+literal|"report-status delete-refs side-band-64k quiet"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|prefer_ofs_delta
+condition|)
+name|strbuf_addstr
+argument_list|(
+operator|&
+name|cap
+argument_list|,
+literal|" ofs-delta"
+argument_list|)
+expr_stmt|;
+name|strbuf_addf
+argument_list|(
+operator|&
+name|cap
+argument_list|,
+literal|" agent=%s"
+argument_list|,
+name|git_user_agent_sanitized
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|packet_write
 argument_list|(
 literal|1
 argument_list|,
-literal|"%s %s%c%s%s agent=%s\n"
+literal|"%s %s%c%s\n"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -825,22 +865,22 @@ name|path
 argument_list|,
 literal|0
 argument_list|,
-literal|" report-status delete-refs side-band-64k quiet"
-argument_list|,
-name|prefer_ofs_delta
-condition|?
-literal|" ofs-delta"
-else|:
-literal|""
-argument_list|,
-name|git_user_agent_sanitized
-argument_list|()
+name|cap
+operator|.
+name|buf
+argument_list|)
+expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|cap
 argument_list|)
 expr_stmt|;
 name|sent_capabilities
 operator|=
 literal|1
 expr_stmt|;
+block|}
 block|}
 end_function
 
