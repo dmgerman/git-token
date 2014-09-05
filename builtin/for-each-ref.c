@@ -4852,6 +4852,24 @@ name|cnt
 decl_stmt|;
 if|if
 condition|(
+name|flag
+operator|&
+name|REF_BAD_NAME
+condition|)
+block|{
+name|warning
+argument_list|(
+literal|"ignoring ref with broken name %s"
+argument_list|,
+name|refname
+argument_list|)
+expr_stmt|;
+return|return
+literal|0
+return|;
+block|}
+if|if
+condition|(
 operator|*
 name|cb
 operator|->
