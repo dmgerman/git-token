@@ -5463,6 +5463,11 @@ name|junk_mode
 operator|=
 name|JUNK_LEAVE_ALL
 expr_stmt|;
+name|free
+argument_list|(
+name|refspec
+argument_list|)
+expr_stmt|;
 return|return
 name|err
 return|;
