@@ -13765,7 +13765,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"revision walk setup failed"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
