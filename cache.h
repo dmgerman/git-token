@@ -9570,6 +9570,35 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_macro
+name|__attribute__
+argument_list|(
+argument|(format (printf,
+literal|2
+argument|,
+literal|3
+argument|))
+argument_list|)
+end_macro
+
+begin_function_decl
+specifier|extern
+name|void
+name|fprintf_or_die
+parameter_list|(
+name|FILE
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|fmt
+parameter_list|,
+modifier|...
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function_decl
 specifier|extern
 name|int
