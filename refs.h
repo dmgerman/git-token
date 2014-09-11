@@ -688,7 +688,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Flags controlling lock_any_ref_for_update(), ref_transaction_update(),  * ref_transaction_create(), etc.  * REF_NODEREF: act on the ref directly, instead of dereferencing  *              symbolic references.  *  * Flags>= 0x100 are reserved for internal use.  */
+comment|/*  * Flags controlling lock_any_ref_for_update(), ref_transaction_update(),  * ref_transaction_create(), etc.  * REF_NODEREF: act on the ref directly, instead of dereferencing  *              symbolic references.  * REF_DELETING: tolerate broken refs  *  * Flags>= 0x100 are reserved for internal use.  */
 end_comment
 
 begin_define
@@ -697,6 +697,14 @@ define|#
 directive|define
 name|REF_NODEREF
 value|0x01
+end_define
+
+begin_define
+DECL|macro|REF_DELETING
+define|#
+directive|define
+name|REF_DELETING
+value|0x02
 end_define
 
 begin_comment
