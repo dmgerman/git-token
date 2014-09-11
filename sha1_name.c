@@ -4348,7 +4348,7 @@ condition|)
 return|return
 literal|0
 return|;
-name|commit_list_insert_by_date
+name|commit_list_insert
 argument_list|(
 operator|(
 expr|struct
@@ -7041,6 +7041,12 @@ name|for_each_ref
 argument_list|(
 name|handle_one_ref
 argument_list|,
+operator|&
+name|list
+argument_list|)
+expr_stmt|;
+name|commit_list_sort_by_date
+argument_list|(
 operator|&
 name|list
 argument_list|)

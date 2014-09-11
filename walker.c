@@ -1176,7 +1176,7 @@ name|flags
 operator||=
 name|COMPLETE
 expr_stmt|;
-name|commit_list_insert_by_date
+name|commit_list_insert
 argument_list|(
 name|commit
 argument_list|,
@@ -1563,6 +1563,7 @@ name|walker
 operator|->
 name|get_recover
 condition|)
+block|{
 name|for_each_ref
 argument_list|(
 name|mark_complete
@@ -1570,6 +1571,13 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
+name|commit_list_sort_by_date
+argument_list|(
+operator|&
+name|complete
+argument_list|)
+expr_stmt|;
+block|}
 for|for
 control|(
 name|i
