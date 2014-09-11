@@ -458,6 +458,8 @@ decl_stmt|;
 name|struct
 name|child_process
 name|ec_process
+init|=
+name|CHILD_PROCESS_INIT
 decl_stmt|;
 specifier|const
 name|char
@@ -477,19 +479,6 @@ name|int
 name|version
 decl_stmt|;
 comment|/* emacsclient prints its version number on stderr */
-name|memset
-argument_list|(
-operator|&
-name|ec_process
-argument_list|,
-literal|0
-argument_list|,
-sizeof|sizeof
-argument_list|(
-name|ec_process
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|ec_process
 operator|.
 name|argv

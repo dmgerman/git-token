@@ -1034,9 +1034,7 @@ name|struct
 name|child_process
 name|cmd
 init|=
-block|{
-name|NULL
-block|}
+name|CHILD_PROCESS_INIT
 decl_stmt|;
 name|int
 name|fd
@@ -1237,9 +1235,7 @@ name|struct
 name|child_process
 name|cmd
 init|=
-block|{
-name|argv
-block|}
+name|CHILD_PROCESS_INIT
 decl_stmt|;
 name|struct
 name|strbuf

@@ -136,6 +136,25 @@ block|}
 struct|;
 end_struct
 
+begin_define
+DECL|macro|CHILD_PROCESS_INIT
+define|#
+directive|define
+name|CHILD_PROCESS_INIT
+value|{ NULL, ARGV_ARRAY_INIT }
+end_define
+
+begin_function_decl
+name|void
+name|child_process_init
+parameter_list|(
+name|struct
+name|child_process
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function_decl
 name|int
 name|start_command
