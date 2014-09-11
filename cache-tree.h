@@ -260,6 +260,14 @@ name|WRITE_TREE_SILENT
 value|8
 end_define
 
+begin_define
+DECL|macro|WRITE_TREE_REPAIR
+define|#
+directive|define
+name|WRITE_TREE_REPAIR
+value|16
+end_define
+
 begin_comment
 comment|/* error return codes */
 end_comment
