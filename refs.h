@@ -53,6 +53,10 @@ block|}
 struct|;
 end_struct
 
+begin_comment
+comment|/*  * A ref_transaction represents a collection of ref updates  * that should succeed or fail together.  *  * Calling sequence  * ----------------  * - Allocate and initialize a `struct ref_transaction` by calling  *   `ref_transaction_begin()`.  *  * - List intended ref updates by calling functions like  *   `ref_transaction_update()` and `ref_transaction_create()`.  *  * - Call `ref_transaction_commit()` to execute the transaction.  *   If this succeeds, the ref updates will have taken place and  *   the transaction cannot be rolled back.  *  * - At any time call `ref_transaction_free()` to discard the  *   transaction and free associated resources.  In particular,  *   this rolls back the transaction if it has not been  *   successfully committed.  *  * Error handling  * --------------  *  * On error, transaction functions append a message about what  * went wrong to the 'err' argument.  The message mentions what  * ref was being updated (if any) when the error occurred so it  * can be passed to 'die' or 'error' as-is.  *  * The message is appended to err without first clearing err.  * err will not be '\n' terminated.  */
+end_comment
+
 begin_struct_decl
 struct_decl|struct
 name|ref_transaction
@@ -684,32 +688,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Locks a "refs/" ref returning the lock on success and NULL on failure.  * On failure errno is set to something meaningful.  */
-end_comment
-
-begin_function_decl
-specifier|extern
-name|struct
-name|ref_lock
-modifier|*
-name|lock_ref_sha1
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|refname
-parameter_list|,
-specifier|const
-name|unsigned
-name|char
-modifier|*
-name|old_sha1
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_comment
-comment|/** Locks any ref (for 'HEAD' type refs). */
+comment|/*  * Flags controlling lock_any_ref_for_update(), ref_transaction_update(),  * ref_transaction_create(), etc.  * REF_NODEREF: act on the ref directly, instead of dereferencing  *              symbolic references.  *  * Flags>= 0x100 are reserved for internal use.  */
 end_comment
 
 begin_define
@@ -721,7 +700,7 @@ value|0x01
 end_define
 
 begin_comment
-comment|/* errno is set to something meaningful on failure */
+comment|/*  * This function sets errno to something meaningful on failure.  */
 end_comment
 
 begin_function_decl
@@ -1186,7 +1165,10 @@ name|ref_transaction
 modifier|*
 name|ref_transaction_begin
 parameter_list|(
-name|void
+name|struct
+name|strbuf
+modifier|*
+name|err
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -1196,7 +1178,7 @@ comment|/*  * The following functions add a reference check or update to a  * re
 end_comment
 
 begin_comment
-comment|/*  * Add a reference update to transaction.  new_sha1 is the value that  * the reference should have after the update, or zeros if it should  * be deleted.  If have_old is true, then old_sha1 holds the value  * that the reference should have had before the update, or zeros if  * it must not have existed beforehand.  * Function returns 0 on success and non-zero on failure. A failure to update  * means that the transaction as a whole has failed and will need to be  * rolled back. On failure the err buffer will be updated.  */
+comment|/*  * Add a reference update to transaction.  new_sha1 is the value that  * the reference should have after the update, or zeros if it should  * be deleted.  If have_old is true, then old_sha1 holds the value  * that the reference should have had before the update, or zeros if  * it must not have existed beforehand.  * Function returns 0 on success and non-zero on failure. A failure to update  * means that the transaction as a whole has failed and will need to be  * rolled back.  */
 end_comment
 
 begin_function_decl
@@ -1240,11 +1222,11 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Add a reference creation to transaction.  new_sha1 is the value  * that the reference should have after the update; it must not be the  * null SHA-1.  It is verified that the reference does not exist  * already.  */
+comment|/*  * Add a reference creation to transaction.  new_sha1 is the value  * that the reference should have after the update; it must not be the  * null SHA-1.  It is verified that the reference does not exist  * already.  * Function returns 0 on success and non-zero on failure. A failure to create  * means that the transaction as a whole has failed and will need to be  * rolled back.  */
 end_comment
 
 begin_function_decl
-name|void
+name|int
 name|ref_transaction_create
 parameter_list|(
 name|struct
@@ -1265,16 +1247,21 @@ name|new_sha1
 parameter_list|,
 name|int
 name|flags
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|err
 parameter_list|)
 function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Add a reference deletion to transaction.  If have_old is true, then  * old_sha1 holds the value that the reference should have had before  * the update (which must not be the null SHA-1).  */
+comment|/*  * Add a reference deletion to transaction.  If have_old is true, then  * old_sha1 holds the value that the reference should have had before  * the update (which must not be the null SHA-1).  * Function returns 0 on success and non-zero on failure. A failure to delete  * means that the transaction as a whole has failed and will need to be  * rolled back.  */
 end_comment
 
 begin_function_decl
-name|void
+name|int
 name|ref_transaction_delete
 parameter_list|(
 name|struct
@@ -1298,12 +1285,17 @@ name|flags
 parameter_list|,
 name|int
 name|have_old
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|err
 parameter_list|)
 function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Commit all of the changes that have been queued in transaction, as  * atomically as possible.  Return a nonzero value if there is a  * problem.  * If err is non-NULL we will add an error string to it to explain why  * the transaction failed. The string does not end in newline.  */
+comment|/*  * Commit all of the changes that have been queued in transaction, as  * atomically as possible.  Return a nonzero value if there is a  * problem.  */
 end_comment
 
 begin_function_decl
