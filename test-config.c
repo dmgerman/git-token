@@ -12,7 +12,7 @@ file|"string-list.h"
 end_include
 
 begin_comment
-comment|/*  * This program exposes the C API of the configuration mechanism  * as a set of simple commands in order to facilitate testing.  *  * Reads stdin and prints result of command to stdout:  *  * get_value -> prints the value with highest priority for the entered key  *  * get_value_multi -> prints all values for the entered key in increasing order  *		     of priority  *  * get_int -> print integer value for the entered key or die  *  * get_bool -> print bool value for the entered key or die  *  * configset_get_value -> returns value with the highest priority for the entered key  * 			from a config_set constructed from files entered as arguments.  *  * configset_get_value_multi -> returns value_list for the entered key sorted in  * 				ascending order of priority from a config_set  * 				constructed from files entered as arguments.  *  * Examples:  *  * To print the value with highest priority for key "foo.bAr Baz.rock":  * 	test-config get_value "foo.bAr Baz.rock"  *  */
+comment|/*  * This program exposes the C API of the configuration mechanism  * as a set of simple commands in order to facilitate testing.  *  * Reads stdin and prints result of command to stdout:  *  * get_value -> prints the value with highest priority for the entered key  *  * get_value_multi -> prints all values for the entered key in increasing order  *		     of priority  *  * get_int -> print integer value for the entered key or die  *  * get_bool -> print bool value for the entered key or die  *  * get_string -> print string value for the entered key or die  *  * configset_get_value -> returns value with the highest priority for the entered key  * 			from a config_set constructed from files entered as arguments.  *  * configset_get_value_multi -> returns value_list for the entered key sorted in  * 				ascending order of priority from a config_set  * 				constructed from files entered as arguments.  *  * Examples:  *  * To print the value with highest priority for key "foo.bAr Baz.rock":  * 	test-config get_value "foo.bAr Baz.rock"  *  */
 end_comment
 
 begin_function
@@ -348,6 +348,68 @@ argument_list|(
 literal|"%d\n"
 argument_list|,
 name|val
+argument_list|)
+expr_stmt|;
+goto|goto
+name|exit0
+goto|;
+block|}
+else|else
+block|{
+name|printf
+argument_list|(
+literal|"Value not found for \"%s\"\n"
+argument_list|,
+name|argv
+index|[
+literal|2
+index|]
+argument_list|)
+expr_stmt|;
+goto|goto
+name|exit1
+goto|;
+block|}
+block|}
+elseif|else
+if|if
+condition|(
+name|argc
+operator|==
+literal|3
+operator|&&
+operator|!
+name|strcmp
+argument_list|(
+name|argv
+index|[
+literal|1
+index|]
+argument_list|,
+literal|"get_string"
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
+operator|!
+name|git_config_get_string_const
+argument_list|(
+name|argv
+index|[
+literal|2
+index|]
+argument_list|,
+operator|&
+name|v
+argument_list|)
+condition|)
+block|{
+name|printf
+argument_list|(
+literal|"%s\n"
+argument_list|,
+name|v
 argument_list|)
 expr_stmt|;
 goto|goto
