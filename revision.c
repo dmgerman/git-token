@@ -2130,11 +2130,8 @@ block|{
 comment|/* 		 * If we are simplifying by decoration, then the commit 		 * is worth showing if it has a tag pointing at it. 		 */
 if|if
 condition|(
-name|lookup_decoration
+name|get_name_decoration
 argument_list|(
-operator|&
-name|name_decoration
-argument_list|,
 operator|&
 name|commit
 operator|->

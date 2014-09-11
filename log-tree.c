@@ -79,6 +79,7 @@ end_include
 
 begin_decl_stmt
 DECL|variable|name_decoration
+specifier|static
 name|struct
 name|decoration
 name|name_decoration
@@ -88,37 +89,6 @@ literal|"object names"
 block|}
 decl_stmt|;
 end_decl_stmt
-
-begin_enum
-DECL|enum|decoration_type
-enum|enum
-name|decoration_type
-block|{
-DECL|enumerator|DECORATION_NONE
-name|DECORATION_NONE
-init|=
-literal|0
-block|,
-DECL|enumerator|DECORATION_REF_LOCAL
-name|DECORATION_REF_LOCAL
-block|,
-DECL|enumerator|DECORATION_REF_REMOTE
-name|DECORATION_REF_REMOTE
-block|,
-DECL|enumerator|DECORATION_REF_TAG
-name|DECORATION_REF_TAG
-block|,
-DECL|enumerator|DECORATION_REF_STASH
-name|DECORATION_REF_STASH
-block|,
-DECL|enumerator|DECORATION_REF_HEAD
-name|DECORATION_REF_HEAD
-block|,
-DECL|enumerator|DECORATION_GRAFTED
-name|DECORATION_GRAFTED
-block|, }
-enum|;
-end_enum
 
 begin_decl_stmt
 DECL|variable|decoration_colors
@@ -363,7 +333,6 @@ end_define
 
 begin_function
 DECL|function|add_name_decoration
-specifier|static
 name|void
 name|add_name_decoration
 parameter_list|(
@@ -399,11 +368,13 @@ name|xmalloc
 argument_list|(
 sizeof|sizeof
 argument_list|(
-expr|struct
-name|name_decoration
+operator|*
+name|res
 argument_list|)
 operator|+
 name|nlen
+operator|+
+literal|1
 argument_list|)
 decl_stmt|;
 name|memcpy
@@ -439,6 +410,33 @@ argument_list|,
 name|res
 argument_list|)
 expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|function|get_name_decoration
+specifier|const
+name|struct
+name|name_decoration
+modifier|*
+name|get_name_decoration
+parameter_list|(
+specifier|const
+name|struct
+name|object
+modifier|*
+name|obj
+parameter_list|)
+block|{
+return|return
+name|lookup_decoration
+argument_list|(
+operator|&
+name|name_decoration
+argument_list|,
+name|obj
+argument_list|)
+return|;
 block|}
 end_function
 
@@ -996,6 +994,7 @@ name|char
 modifier|*
 name|prefix
 decl_stmt|;
+specifier|const
 name|struct
 name|name_decoration
 modifier|*
@@ -1027,11 +1026,8 @@ argument_list|)
 decl_stmt|;
 name|decoration
 operator|=
-name|lookup_decoration
+name|get_name_decoration
 argument_list|(
-operator|&
-name|name_decoration
-argument_list|,
 operator|&
 name|commit
 operator|->
