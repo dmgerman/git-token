@@ -315,6 +315,11 @@ DECL|member|port
 name|int
 name|port
 decl_stmt|;
+DECL|member|folder
+name|char
+modifier|*
+name|folder
+decl_stmt|;
 DECL|member|user
 name|char
 modifier|*
@@ -366,6 +371,9 @@ comment|/* host */
 literal|0
 block|,
 comment|/* port */
+name|NULL
+block|,
+comment|/* folder */
 name|NULL
 block|,
 comment|/* user */
@@ -2709,15 +2717,14 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|memcmp
+operator|!
+name|starts_with
 argument_list|(
 name|cmd
 operator|->
 name|cmd
 argument_list|,
 literal|"LOGIN"
-argument_list|,
-literal|5
 argument_list|)
 condition|)
 name|printf
@@ -4402,15 +4409,14 @@ name|stderr
 argument_list|,
 literal|"IMAP command '%s' returned response (%s) - %s\n"
 argument_list|,
-name|memcmp
+operator|!
+name|starts_with
 argument_list|(
 name|cmdp
 operator|->
 name|cmd
 argument_list|,
 literal|"LOGIN"
-argument_list|,
-literal|5
 argument_list|)
 condition|?
 name|cmdp
@@ -5227,20 +5233,6 @@ operator|->
 name|tunnel
 condition|)
 block|{
-specifier|const
-name|char
-modifier|*
-name|argv
-index|[]
-init|=
-block|{
-name|srvc
-operator|->
-name|tunnel
-block|,
-name|NULL
-block|}
-decl_stmt|;
 name|struct
 name|child_process
 name|tunnel
@@ -5256,11 +5248,17 @@ operator|->
 name|tunnel
 argument_list|)
 expr_stmt|;
+name|argv_array_push
+argument_list|(
+operator|&
 name|tunnel
 operator|.
-name|argv
-operator|=
-name|argv
+name|args
+argument_list|,
+name|srvc
+operator|->
+name|tunnel
+argument_list|)
 expr_stmt|;
 name|tunnel
 operator|.
@@ -5294,10 +5292,9 @@ name|die
 argument_list|(
 literal|"cannot start proxy %s"
 argument_list|,
-name|argv
-index|[
-literal|0
-index|]
+name|srvc
+operator|->
+name|tunnel
 argument_list|)
 expr_stmt|;
 name|imap
@@ -7307,15 +7304,6 @@ return|;
 block|}
 end_function
 
-begin_decl_stmt
-DECL|variable|imap_folder
-specifier|static
-name|char
-modifier|*
-name|imap_folder
-decl_stmt|;
-end_decl_stmt
-
 begin_function
 DECL|function|git_imap_config
 specifier|static
@@ -7357,7 +7345,9 @@ argument_list|(
 literal|"imap.folder"
 argument_list|,
 operator|&
-name|imap_folder
+name|server
+operator|.
+name|folder
 argument_list|)
 expr_stmt|;
 if|if
@@ -7604,7 +7594,9 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|imap_folder
+name|server
+operator|.
+name|folder
 condition|)
 block|{
 name|fprintf
@@ -7728,7 +7720,9 @@ argument_list|(
 operator|&
 name|server
 argument_list|,
-name|imap_folder
+name|server
+operator|.
+name|folder
 argument_list|)
 expr_stmt|;
 if|if
