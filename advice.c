@@ -518,8 +518,7 @@ argument_list|(
 name|_
 argument_list|(
 literal|"Fix them up in the work tree, and then use 'git add/rm<file>'\n"
-literal|"as appropriate to mark resolution and make a commit, or use\n"
-literal|"'git commit -a'."
+literal|"as appropriate to mark resolution and make a commit."
 argument_list|)
 argument_list|)
 expr_stmt|;
