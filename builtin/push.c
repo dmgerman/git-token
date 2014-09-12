@@ -2584,6 +2584,23 @@ argument_list|,
 name|TRANSPORT_PUSH_FOLLOW_TAGS
 argument_list|)
 block|,
+name|OPT_BIT
+argument_list|(
+literal|0
+argument_list|,
+literal|"signed"
+argument_list|,
+operator|&
+name|flags
+argument_list|,
+name|N_
+argument_list|(
+literal|"GPG sign the push"
+argument_list|)
+argument_list|,
+name|TRANSPORT_PUSH_CERT
+argument_list|)
+block|,
 name|OPT_END
 argument_list|()
 block|}

@@ -71,6 +71,12 @@ name|update_shallow
 range|:
 literal|1
 decl_stmt|;
+DECL|member|push_cert
+name|unsigned
+name|push_cert
+range|:
+literal|1
+decl_stmt|;
 DECL|member|depth
 name|int
 name|depth
@@ -421,6 +427,14 @@ value|1024
 end_define
 
 begin_define
+DECL|macro|TRANSPORT_PUSH_CERT
+define|#
+directive|define
+name|TRANSPORT_PUSH_CERT
+value|2048
+end_define
+
+begin_define
 DECL|macro|TRANSPORT_SUMMARY_WIDTH
 define|#
 directive|define
@@ -558,6 +572,18 @@ define|#
 directive|define
 name|TRANS_OPT_UPDATE_SHALLOW
 value|"updateshallow"
+end_define
+
+begin_comment
+comment|/* Send push certificates */
+end_comment
+
+begin_define
+DECL|macro|TRANS_OPT_PUSH_CERT
+define|#
+directive|define
+name|TRANS_OPT_PUSH_CERT
+value|"pushcert"
 end_define
 
 begin_comment

@@ -63,6 +63,11 @@ name|dry_run
 range|:
 literal|1
 decl_stmt|,
+DECL|member|push_cert
+name|push_cert
+range|:
+literal|1
+decl_stmt|,
 DECL|member|stateless_rpc
 name|stateless_rpc
 range|:
