@@ -143,6 +143,10 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* If NULL is passed for data, we assume the object is local and read it. */
+end_comment
+
 begin_function_decl
 name|int
 name|fsck_object
@@ -151,6 +155,14 @@ name|struct
 name|object
 modifier|*
 name|obj
+parameter_list|,
+name|void
+modifier|*
+name|data
+parameter_list|,
+name|unsigned
+name|long
+name|size
 parameter_list|,
 name|int
 name|strict
