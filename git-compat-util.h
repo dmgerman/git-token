@@ -495,6 +495,14 @@ value|1
 end_define
 
 begin_define
+DECL|macro|_DEFAULT_SOURCE
+define|#
+directive|define
+name|_DEFAULT_SOURCE
+value|1
+end_define
+
+begin_define
 DECL|macro|_NETBSD_SOURCE
 define|#
 directive|define
