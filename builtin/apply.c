@@ -12705,25 +12705,13 @@ name|nr
 condition|)
 block|{
 comment|/* 		 * NOTE: this knows that we never call remove_first_line() 		 * on anything other than pre/post image. 		 */
-name|img
-operator|->
-name|line
-operator|=
-name|xrealloc
+name|REALLOC_ARRAY
 argument_list|(
 name|img
 operator|->
 name|line
 argument_list|,
 name|nr
-operator|*
-sizeof|sizeof
-argument_list|(
-operator|*
-name|img
-operator|->
-name|line
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|img

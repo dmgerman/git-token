@@ -324,7 +324,7 @@ value|\ 			else {
 comment|/* hash table size to be changed (shrink or expand); rehash */
 value|\ 				new_flags = (khint32_t*)xmalloc(__ac_fsize(new_n_buckets) * sizeof(khint32_t));	\ 				if (!new_flags) return -1;								\ 				memset(new_flags, 0xaa, __ac_fsize(new_n_buckets) * sizeof(khint32_t)); \ 				if (h->n_buckets< new_n_buckets) {
 comment|/* expand */
-value|\ 					khkey_t *new_keys = (khkey_t*)xrealloc((void *)h->keys, new_n_buckets * sizeof(khkey_t)); \ 					if (!new_keys) return -1;							\ 					h->keys = new_keys;									\ 					if (kh_is_map) {									\ 						khval_t *new_vals = (khval_t*)xrealloc((void *)h->vals, new_n_buckets * sizeof(khval_t)); \ 						if (!new_vals) return -1;						\ 						h->vals = new_vals;								\ 					}													\ 				}
+value|\ 					REALLOC_ARRAY(h->keys, new_n_buckets); \ 					if (kh_is_map) {									\ 						REALLOC_ARRAY(h->vals, new_n_buckets); \ 					}													\ 				}
 comment|/* otherwise shrink */
 value|\ 			}															\ 		}																\ 		if (j) {
 comment|/* rehashing is needed */
@@ -338,7 +338,7 @@ value|\ 						} else {
 comment|/* write the element and jump out of the loop */
 value|\ 							h->keys[i] = key;							\ 							if (kh_is_map) h->vals[i] = val;			\ 							break;										\ 						}												\ 					}													\ 				}														\ 			}															\ 			if (h->n_buckets> new_n_buckets) {
 comment|/* shrink the hash table */
-value|\ 				h->keys = (khkey_t*)xrealloc((void *)h->keys, new_n_buckets * sizeof(khkey_t)); \ 				if (kh_is_map) h->vals = (khval_t*)xrealloc((void *)h->vals, new_n_buckets * sizeof(khval_t)); \ 			}															\ 			free(h->flags);
+value|\ 				REALLOC_ARRAY(h->keys, new_n_buckets); \ 				if (kh_is_map) REALLOC_ARRAY(h->vals, new_n_buckets); \ 			}															\ 			free(h->flags);
 comment|/* free the working space */
 value|\ 			h->flags = new_flags;										\ 			h->n_buckets = new_n_buckets;								\ 			h->n_occupied = h->size;									\ 			h->upper_bound = (khint_t)(h->n_buckets * __ac_HASH_UPPER + 0.5); \ 		}																\ 		return 0;														\ 	}																	\ 	SCOPE khint_t kh_put_##name(kh_##name##_t *h, khkey_t key, int *ret) \ 	{																	\ 		khint_t x;														\ 		if (h->n_occupied>= h->upper_bound) {
 comment|/* update the hash table */
