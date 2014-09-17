@@ -1965,6 +1965,7 @@ name|cnt
 argument_list|,
 sizeof|sizeof
 argument_list|(
+operator|*
 name|main_cmds
 operator|.
 name|names
