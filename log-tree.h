@@ -127,7 +127,7 @@ end_function_decl
 
 begin_function_decl
 name|void
-name|format_decorations
+name|format_decorations_extended
 parameter_list|(
 name|struct
 name|strbuf
@@ -142,9 +142,40 @@ name|commit
 parameter_list|,
 name|int
 name|use_color
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|prefix
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|separator
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|suffix
 parameter_list|)
 function_decl|;
 end_function_decl
+
+begin_define
+DECL|macro|format_decorations
+define|#
+directive|define
+name|format_decorations
+parameter_list|(
+name|strbuf
+parameter_list|,
+name|commit
+parameter_list|,
+name|color
+parameter_list|)
+define|\
+value|format_decorations_extended((strbuf), (commit), (color), " (", ", ", ")")
+end_define
 
 begin_function_decl
 name|void

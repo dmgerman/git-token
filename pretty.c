@@ -6210,6 +6210,34 @@ return|return
 literal|1
 return|;
 case|case
+literal|'D'
+case|:
+name|load_ref_decorations
+argument_list|(
+name|DECORATE_SHORT_REFS
+argument_list|)
+expr_stmt|;
+name|format_decorations_extended
+argument_list|(
+name|sb
+argument_list|,
+name|commit
+argument_list|,
+name|c
+operator|->
+name|auto_color
+argument_list|,
+literal|""
+argument_list|,
+literal|", "
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
+return|return
+literal|1
+return|;
+case|case
 literal|'g'
 case|:
 comment|/* reflog info */
