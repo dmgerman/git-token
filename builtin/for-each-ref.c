@@ -3705,13 +3705,13 @@ name|value
 operator|=
 name|xcalloc
 argument_list|(
+name|used_atom_cnt
+argument_list|,
 sizeof|sizeof
 argument_list|(
 expr|struct
 name|atom_value
 argument_list|)
-argument_list|,
-name|used_atom_cnt
 argument_list|)
 expr_stmt|;
 if|if
