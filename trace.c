@@ -1058,8 +1058,8 @@ DECL|function|trace_strbuf
 name|void
 name|trace_strbuf
 parameter_list|(
-specifier|const
-name|char
+name|struct
+name|trace_key
 modifier|*
 name|key
 parameter_list|,
