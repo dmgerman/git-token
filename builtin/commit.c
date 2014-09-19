@@ -10091,7 +10091,7 @@ argument_list|(
 name|_
 argument_list|(
 literal|"Repository has been updated, but unable to write\n"
-literal|"new_index file. Check that disk is not full or quota is\n"
+literal|"new_index file. Check that disk is not full and quota is\n"
 literal|"not exceeded, and then \"git reset HEAD\" to recover."
 argument_list|)
 argument_list|)

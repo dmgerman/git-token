@@ -2565,7 +2565,7 @@ name|flags
 argument_list|,
 name|N_
 argument_list|(
-literal|"show 'other' directories' name only"
+literal|"show 'other' directories' names only"
 argument_list|)
 argument_list|,
 name|DIR_SHOW_OTHER_DIRECTORIES
