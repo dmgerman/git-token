@@ -3986,8 +3986,6 @@ parameter_list|)
 block|{
 name|int
 name|i
-decl_stmt|,
-name|j
 decl_stmt|;
 if|if
 condition|(
@@ -4096,24 +4094,13 @@ operator|*
 literal|2
 operator|)
 decl_stmt|;
-for|for
-control|(
-name|j
-operator|=
-literal|0
-init|;
-name|j
-operator|<
-name|num_spaces
-condition|;
-name|j
-operator|++
-control|)
-name|strbuf_addch
+name|strbuf_addchars
 argument_list|(
 name|sb
 argument_list|,
 literal|' '
+argument_list|,
+name|num_spaces
 argument_list|)
 expr_stmt|;
 block|}
