@@ -8024,6 +8024,14 @@ operator|->
 name|output_format
 operator|!=
 name|DIFF_FORMAT_NO_OUTPUT
+operator|&&
+operator|!
+name|commit_format_is_empty
+argument_list|(
+name|rev
+operator|->
+name|commit_format
+argument_list|)
 condition|)
 name|printf
 argument_list|(

@@ -9706,9 +9706,7 @@ literal|1
 expr_stmt|;
 name|get_commit_format
 argument_list|(
-name|arg
-operator|+
-literal|8
+name|NULL
 argument_list|,
 name|revs
 argument_list|)

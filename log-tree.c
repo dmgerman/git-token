@@ -3604,6 +3604,14 @@ condition|(
 name|opt
 operator|->
 name|use_terminator
+operator|&&
+operator|!
+name|commit_format_is_empty
+argument_list|(
+name|opt
+operator|->
+name|commit_format
+argument_list|)
 condition|)
 block|{
 if|if
@@ -3753,6 +3761,14 @@ operator|->
 name|commit_format
 operator|!=
 name|CMIT_FMT_ONELINE
+operator|&&
+operator|!
+name|commit_format_is_empty
+argument_list|(
+name|opt
+operator|->
+name|commit_format
+argument_list|)
 condition|)
 block|{
 comment|/* 			 * When showing a verbose header (i.e. log message), 			 * and not in --pretty=oneline format, we would want 			 * an extra newline between the end of log and the 			 * diff/diffstat output for readability. 			 */

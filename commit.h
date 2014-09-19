@@ -820,6 +820,17 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|int
+name|commit_format_is_empty
+parameter_list|(
+name|enum
+name|cmit_fmt
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|void
 name|format_commit_message
 parameter_list|(
