@@ -975,6 +975,13 @@ name|pfd
 argument_list|,
 name|pollsize
 argument_list|,
+name|keepalive
+operator|<
+literal|0
+condition|?
+operator|-
+literal|1
+else|:
 literal|1000
 operator|*
 name|keepalive
