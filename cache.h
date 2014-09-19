@@ -6716,6 +6716,9 @@ block|,
 DECL|enumerator|DATE_ISO8601
 name|DATE_ISO8601
 block|,
+DECL|enumerator|DATE_ISO8601_STRICT
+name|DATE_ISO8601_STRICT
+block|,
 DECL|enumerator|DATE_RFC2822
 name|DATE_RFC2822
 block|,

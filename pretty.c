@@ -3696,7 +3696,7 @@ return|;
 case|case
 literal|'i'
 case|:
-comment|/* date, ISO 8601 */
+comment|/* date, ISO 8601-like */
 name|strbuf_addstr
 argument_list|(
 name|sb
@@ -3707,6 +3707,26 @@ operator|&
 name|s
 argument_list|,
 name|DATE_ISO8601
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return
+name|placeholder_len
+return|;
+case|case
+literal|'I'
+case|:
+comment|/* date, ISO 8601 strict */
+name|strbuf_addstr
+argument_list|(
+name|sb
+argument_list|,
+name|show_ident_date
+argument_list|(
+operator|&
+name|s
+argument_list|,
+name|DATE_ISO8601_STRICT
 argument_list|)
 argument_list|)
 expr_stmt|;
