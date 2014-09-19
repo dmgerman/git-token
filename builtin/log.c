@@ -418,7 +418,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"invalid --decorate option: %s"
+argument_list|)
 argument_list|,
 name|arg
 argument_list|)
@@ -748,7 +751,10 @@ name|line_cb
 argument_list|,
 literal|"n,m:file"
 argument_list|,
+name|N_
+argument_list|(
 literal|"Process line range n,m in file, counting from 1"
+argument_list|)
 argument_list|,
 name|log_line_range_callback
 argument_list|)
@@ -828,7 +834,10 @@ literal|1
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"unrecognized argument: %s"
+argument_list|)
 argument_list|,
 name|argv
 index|[
@@ -2341,7 +2350,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Not a valid object name %s"
+argument_list|)
 argument_list|,
 name|obj_name
 argument_list|)
@@ -2397,7 +2409,10 @@ name|buf
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"git show %s: bad file"
+argument_list|)
 argument_list|,
 name|obj_name
 argument_list|)

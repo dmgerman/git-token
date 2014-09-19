@@ -152,7 +152,7 @@ name|OPT_RERERE_AUTOUPDATE
 parameter_list|(
 name|v
 parameter_list|)
-value|OPT_UYN(0, "rerere-autoupdate", (v), \ 	"update the index with reused conflict resolution if possible")
+value|OPT_UYN(0, "rerere-autoupdate", (v), \ 	N_("update the index with reused conflict resolution if possible"))
 end_define
 
 begin_endif
