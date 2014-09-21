@@ -15912,16 +15912,7 @@ block|{
 name|int
 name|ret
 decl_stmt|;
-name|size_t
-name|size
-init|=
-name|xsize_t
-argument_list|(
-name|st
-operator|->
-name|st_size
-argument_list|)
-decl_stmt|;
+comment|/* 	 * Call xsize_t() only when needed to avoid potentially unnecessary 	 * die() for large files. 	 */
 if|if
 condition|(
 name|type
@@ -15977,7 +15968,9 @@ expr_stmt|;
 elseif|else
 if|if
 condition|(
-name|size
+name|st
+operator|->
+name|st_size
 operator|<=
 name|big_file_threshold
 operator|||
@@ -16002,7 +15995,12 @@ name|sha1
 argument_list|,
 name|fd
 argument_list|,
-name|size
+name|xsize_t
+argument_list|(
+name|st
+operator|->
+name|st_size
+argument_list|)
 argument_list|,
 name|type
 argument_list|,
@@ -16020,7 +16018,12 @@ name|sha1
 argument_list|,
 name|fd
 argument_list|,
-name|size
+name|xsize_t
+argument_list|(
+name|st
+operator|->
+name|st_size
+argument_list|)
 argument_list|,
 name|type
 argument_list|,
