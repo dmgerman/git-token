@@ -1577,14 +1577,6 @@ return|;
 block|}
 end_function
 
-begin_define
-DECL|macro|SAMPLE
-define|#
-directive|define
-name|SAMPLE
-value|"From e6807f3efca28b30decfecb1732a56c7db1137ee Mon Sep 17 00:00:00 2001\n"
-end_define
-
 begin_function
 DECL|function|is_format_patch_separator
 specifier|static
@@ -1600,6 +1592,14 @@ name|int
 name|len
 parameter_list|)
 block|{
+specifier|static
+specifier|const
+name|char
+name|SAMPLE
+index|[]
+init|=
+literal|"From e6807f3efca28b30decfecb1732a56c7db1137ee Mon Sep 17 00:00:00 2001\n"
+decl_stmt|;
 specifier|const
 name|char
 modifier|*
