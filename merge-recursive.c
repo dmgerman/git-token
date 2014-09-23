@@ -6853,7 +6853,6 @@ modifier|*
 name|entry
 parameter_list|)
 block|{
-comment|/* 	printf("processing entry, clean cache: %s\n", index_only ? "yes": "no"); 	print_index_entry("\tpath: ", entry); 	*/
 name|int
 name|clean_merge
 init|=
