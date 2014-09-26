@@ -502,11 +502,7 @@ operator|)
 operator|*
 literal|2
 expr_stmt|;
-name|writer
-operator|.
-name|selected
-operator|=
-name|xrealloc
+name|REALLOC_ARRAY
 argument_list|(
 name|writer
 operator|.
@@ -515,12 +511,6 @@ argument_list|,
 name|writer
 operator|.
 name|selected_alloc
-operator|*
-sizeof|sizeof
-argument_list|(
-expr|struct
-name|bitmapped_commit
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

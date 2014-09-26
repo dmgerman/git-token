@@ -2200,11 +2200,7 @@ operator|->
 name|slab_count
 operator|++
 expr_stmt|;
-name|info
-operator|->
-name|slab
-operator|=
-name|xrealloc
+name|REALLOC_ARRAY
 argument_list|(
 name|info
 operator|->
@@ -2213,14 +2209,6 @@ argument_list|,
 name|info
 operator|->
 name|slab_count
-operator|*
-sizeof|sizeof
-argument_list|(
-operator|*
-name|info
-operator|->
-name|slab
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|info

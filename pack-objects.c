@@ -480,11 +480,7 @@ literal|3
 operator|/
 literal|2
 expr_stmt|;
-name|pdata
-operator|->
-name|objects
-operator|=
-name|xrealloc
+name|REALLOC_ARRAY
 argument_list|(
 name|pdata
 operator|->
@@ -493,12 +489,6 @@ argument_list|,
 name|pdata
 operator|->
 name|nr_alloc
-operator|*
-sizeof|sizeof
-argument_list|(
-operator|*
-name|new_entry
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

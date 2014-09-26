@@ -257,11 +257,7 @@ name|alloc
 operator|+=
 literal|32
 expr_stmt|;
-name|list
-operator|->
-name|items
-operator|=
-name|xrealloc
+name|REALLOC_ARRAY
 argument_list|(
 name|list
 operator|->
@@ -270,12 +266,6 @@ argument_list|,
 name|list
 operator|->
 name|alloc
-operator|*
-sizeof|sizeof
-argument_list|(
-expr|struct
-name|string_list_item
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

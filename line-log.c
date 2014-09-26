@@ -3012,19 +3012,11 @@ operator|++
 expr_stmt|;
 block|}
 comment|/* shrink the array to fit the elements */
-name|ends
-operator|=
-name|xrealloc
+name|REALLOC_ARRAY
 argument_list|(
 name|ends
 argument_list|,
 name|cur
-operator|*
-sizeof|sizeof
-argument_list|(
-operator|*
-name|ends
-argument_list|)
 argument_list|)
 expr_stmt|;
 operator|*

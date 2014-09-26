@@ -3898,6 +3898,19 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_define
+DECL|macro|REALLOC_ARRAY
+define|#
+directive|define
+name|REALLOC_ARRAY
+parameter_list|(
+name|x
+parameter_list|,
+name|alloc
+parameter_list|)
+value|(x) = xrealloc((x), (alloc) * sizeof(*(x)))
+end_define
+
 begin_function
 DECL|function|xsize_t
 specifier|static

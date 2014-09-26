@@ -1708,24 +1708,14 @@ argument_list|,
 name|alias_command
 argument_list|)
 expr_stmt|;
-name|new_argv
-operator|=
-name|xrealloc
+name|REALLOC_ARRAY
 argument_list|(
 name|new_argv
 argument_list|,
-sizeof|sizeof
-argument_list|(
-name|char
-operator|*
-argument_list|)
-operator|*
-operator|(
 name|count
 operator|+
 operator|*
 name|argcp
-operator|)
 argument_list|)
 expr_stmt|;
 comment|/* insert after command name */

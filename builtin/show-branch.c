@@ -3004,16 +3004,10 @@ literal|2
 operator|+
 literal|20
 expr_stmt|;
-name|default_arg
-operator|=
-name|xrealloc
+name|REALLOC_ARRAY
 argument_list|(
 name|default_arg
 argument_list|,
-sizeof|sizeof
-expr|*
-name|default_arg
-operator|*
 name|default_alloc
 argument_list|)
 expr_stmt|;
