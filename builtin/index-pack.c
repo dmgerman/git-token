@@ -4415,6 +4415,10 @@ name|fsck_object
 argument_list|(
 name|obj
 argument_list|,
+name|buf
+argument_list|,
+name|size
+argument_list|,
 literal|1
 argument_list|,
 name|fsck_error_function

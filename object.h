@@ -173,15 +173,31 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|int
-name|type_from_string
+name|type_from_string_gently
 parameter_list|(
 specifier|const
 name|char
 modifier|*
 name|str
+parameter_list|,
+name|ssize_t
+parameter_list|,
+name|int
+name|gentle
 parameter_list|)
 function_decl|;
 end_function_decl
+
+begin_define
+DECL|macro|type_from_string
+define|#
+directive|define
+name|type_from_string
+parameter_list|(
+name|str
+parameter_list|)
+value|type_from_string_gently(str, -1, 0)
+end_define
 
 begin_comment
 comment|/*  * Return the current number of buckets in the object hashmap.  */

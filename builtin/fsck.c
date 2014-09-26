@@ -1500,6 +1500,10 @@ name|fsck_object
 argument_list|(
 name|obj
 argument_list|,
+name|NULL
+argument_list|,
+literal|0
+argument_list|,
 name|check_strict
 argument_list|,
 name|fsck_error_func
