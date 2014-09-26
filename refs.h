@@ -1008,16 +1008,8 @@ name|REFNAME_REFSPEC_PATTERN
 value|2
 end_define
 
-begin_define
-DECL|macro|REFNAME_DOT_COMPONENT
-define|#
-directive|define
-name|REFNAME_DOT_COMPONENT
-value|4
-end_define
-
 begin_comment
-comment|/*  * Return 0 iff refname has the correct format for a refname according  * to the rules described in Documentation/git-check-ref-format.txt.  * If REFNAME_ALLOW_ONELEVEL is set in flags, then accept one-level  * reference names.  If REFNAME_REFSPEC_PATTERN is set in flags, then  * allow a "*" wildcard character in place of one of the name  * components.  No leading or repeated slashes are accepted.  If  * REFNAME_DOT_COMPONENT is set in flags, then allow refname  * components to start with "." (but not a whole component equal to  * "." or "..").  */
+comment|/*  * Return 0 iff refname has the correct format for a refname according  * to the rules described in Documentation/git-check-ref-format.txt.  * If REFNAME_ALLOW_ONELEVEL is set in flags, then accept one-level  * reference names.  If REFNAME_REFSPEC_PATTERN is set in flags, then  * allow a "*" wildcard character in place of one of the name  * components.  No leading or repeated slashes are accepted.  */
 end_comment
 
 begin_function_decl

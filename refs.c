@@ -459,37 +459,11 @@ index|]
 operator|==
 literal|'.'
 condition|)
-block|{
-if|if
-condition|(
-operator|!
-operator|(
-name|flags
-operator|&
-name|REFNAME_DOT_COMPONENT
-operator|)
-condition|)
 return|return
 operator|-
 literal|1
 return|;
 comment|/* Component starts with '.'. */
-comment|/* 		 * Even if leading dots are allowed, don't allow "." 		 * as a component (".." is prevented by a rule above). 		 */
-if|if
-condition|(
-name|refname
-index|[
-literal|1
-index|]
-operator|==
-literal|'\0'
-condition|)
-return|return
-operator|-
-literal|1
-return|;
-comment|/* Component equals ".". */
-block|}
 if|if
 condition|(
 name|cp
@@ -990,8 +964,6 @@ argument_list|(
 name|refname
 argument_list|,
 name|REFNAME_ALLOW_ONELEVEL
-operator||
-name|REFNAME_DOT_COMPONENT
 argument_list|)
 condition|)
 name|die
