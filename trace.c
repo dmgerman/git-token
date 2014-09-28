@@ -1891,7 +1891,6 @@ end_comment
 
 begin_function
 DECL|function|getnanotime
-specifier|inline
 name|uint64_t
 name|getnanotime
 parameter_list|(
