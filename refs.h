@@ -848,6 +848,10 @@ modifier|*
 name|refname
 parameter_list|,
 name|unsigned
+name|int
+name|flags
+parameter_list|,
+name|unsigned
 name|long
 name|at_time
 parameter_list|,

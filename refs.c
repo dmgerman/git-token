@@ -14691,6 +14691,10 @@ modifier|*
 name|refname
 parameter_list|,
 name|unsigned
+name|int
+name|flags
+parameter_list|,
+name|unsigned
 name|long
 name|at_time
 parameter_list|,
@@ -14803,6 +14807,19 @@ name|cb
 operator|.
 name|reccnt
 condition|)
+block|{
+if|if
+condition|(
+name|flags
+operator|&
+name|GET_SHA1_QUIETLY
+condition|)
+name|exit
+argument_list|(
+literal|128
+argument_list|)
+expr_stmt|;
+else|else
 name|die
 argument_list|(
 literal|"Log for %s is empty."
@@ -14810,6 +14827,7 @@ argument_list|,
 name|refname
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|cb
