@@ -966,13 +966,13 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * The caller makes sure there is no funny color before  * calling. format_decorations makes sure the same after return.  */
+comment|/*  * The caller makes sure there is no funny color before calling.  * format_decorations_extended makes sure the same after return.  */
 end_comment
 
 begin_function
-DECL|function|format_decorations
+DECL|function|format_decorations_extended
 name|void
-name|format_decorations
+name|format_decorations_extended
 parameter_list|(
 name|struct
 name|strbuf
@@ -987,13 +987,23 @@ name|commit
 parameter_list|,
 name|int
 name|use_color
-parameter_list|)
-block|{
+parameter_list|,
 specifier|const
 name|char
 modifier|*
 name|prefix
-decl_stmt|;
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|separator
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|suffix
+parameter_list|)
+block|{
 specifier|const
 name|struct
 name|name_decoration
@@ -1040,10 +1050,6 @@ operator|!
 name|decoration
 condition|)
 return|return;
-name|prefix
-operator|=
-literal|" ("
-expr_stmt|;
 while|while
 condition|(
 name|decoration
@@ -1110,7 +1116,7 @@ argument_list|)
 expr_stmt|;
 name|prefix
 operator|=
-literal|", "
+name|separator
 expr_stmt|;
 name|decoration
 operator|=
@@ -1126,11 +1132,11 @@ argument_list|,
 name|color_commit
 argument_list|)
 expr_stmt|;
-name|strbuf_addch
+name|strbuf_addstr
 argument_list|(
 name|sb
 argument_list|,
-literal|')'
+name|suffix
 argument_list|)
 expr_stmt|;
 name|strbuf_addstr
