@@ -8867,7 +8867,7 @@ name|a
 operator|.
 name|buf
 argument_list|,
-name|o
+name|a
 operator|.
 name|len
 argument_list|,
@@ -9662,7 +9662,6 @@ modifier|*
 name|entry
 parameter_list|)
 block|{
-comment|/* 	printf("processing entry, clean cache: %s\n", index_only ? "yes": "no"); 	print_index_entry("\tpath: ", entry); 	*/
 name|int
 name|clean_merge
 init|=
