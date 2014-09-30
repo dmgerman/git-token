@@ -8248,6 +8248,14 @@ name|CONFIG_GENERIC_ERROR
 value|7
 end_define
 
+begin_define
+DECL|macro|CONFIG_REGEX_NONE
+define|#
+directive|define
+name|CONFIG_REGEX_NONE
+value|((void *)1)
+end_define
+
 begin_struct
 DECL|struct|git_config_source
 struct|struct
