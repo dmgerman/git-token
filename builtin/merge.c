@@ -4117,24 +4117,14 @@ modifier|*
 name|head_arg
 parameter_list|)
 block|{
+specifier|static
 name|struct
 name|lock_file
-modifier|*
 name|lock
-init|=
-name|xcalloc
-argument_list|(
-literal|1
-argument_list|,
-sizeof|sizeof
-argument_list|(
-expr|struct
-name|lock_file
-argument_list|)
-argument_list|)
 decl_stmt|;
 name|hold_locked_index
 argument_list|(
+operator|&
 name|lock
 argument_list|,
 literal|1
@@ -4154,6 +4144,7 @@ argument_list|(
 operator|&
 name|the_index
 argument_list|,
+operator|&
 name|lock
 argument_list|,
 name|COMMIT_LOCK
@@ -4170,6 +4161,7 @@ argument_list|)
 return|;
 name|rollback_lock_file
 argument_list|(
+operator|&
 name|lock
 argument_list|)
 expr_stmt|;
@@ -4365,6 +4357,7 @@ argument_list|)
 expr_stmt|;
 name|hold_locked_index
 argument_list|(
+operator|&
 name|lock
 argument_list|,
 literal|1
@@ -4398,6 +4391,7 @@ argument_list|(
 operator|&
 name|the_index
 argument_list|,
+operator|&
 name|lock
 argument_list|,
 name|COMMIT_LOCK
@@ -4416,6 +4410,7 @@ argument_list|)
 expr_stmt|;
 name|rollback_lock_file
 argument_list|(
+operator|&
 name|lock
 argument_list|)
 expr_stmt|;
