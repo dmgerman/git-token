@@ -3656,6 +3656,26 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* String appended to a filename to derive the lockfile name: */
+end_comment
+
+begin_define
+DECL|macro|LOCK_SUFFIX
+define|#
+directive|define
+name|LOCK_SUFFIX
+value|".lock"
+end_define
+
+begin_define
+DECL|macro|LOCK_SUFFIX_LEN
+define|#
+directive|define
+name|LOCK_SUFFIX_LEN
+value|5
+end_define
+
 begin_struct
 DECL|struct|lock_file
 struct|struct
