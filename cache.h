@@ -3747,7 +3747,7 @@ begin_function_decl
 specifier|extern
 name|NORETURN
 name|void
-name|unable_to_lock_index_die
+name|unable_to_lock_die
 parameter_list|(
 specifier|const
 name|char

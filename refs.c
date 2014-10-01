@@ -9938,7 +9938,7 @@ goto|goto
 name|retry
 goto|;
 else|else
-name|unable_to_lock_index_die
+name|unable_to_lock_die
 argument_list|(
 name|ref_file
 argument_list|,
