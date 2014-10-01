@@ -16,7 +16,7 @@ file|"sigchain.h"
 end_include
 
 begin_comment
-comment|/*  * File write-locks as used by Git.  *  * For an overview of how to use the lockfile API, please see  *  *     Documentation/technical/api-lockfile.txt  *  * This module keeps track of all locked files in lock_file_list for  * use at cleanup. This list and the lock_file objects that comprise  * it must be kept in self-consistent states at all time, because the  * program can be interrupted any time by a signal, in which case the  * signal handler will walk through the list attempting to clean up  * any open lock files.  *  * A lockfile is owned by the process that created it. The lock_file  * object has an "owner" field that records its owner. This field is  * used to prevent a forked process from closing a lockfile created by  * its parent.  *  * A lock_file object can be in several states:  *  * - Uninitialized.  In this state the object's on_list field must be  *   zero but the rest of its contents need not be initialized.  As  *   soon as the object is used in any way, it is irrevocably  *   registered in the lock_file_list, and on_list is set.  *  * - Locked, lockfile open (after hold_lock_file_for_update(),  *   hold_lock_file_for_append(), or reopen_lock_file()). In this  *   state, the lockfile exists, filename holds the filename of the  *   lockfile, fd holds a file descriptor open for writing to the  *   lockfile, and owner holds the PID of the process that locked the  *   file.  *  * - Locked, lockfile closed (after successful close_lock_file()).  *   Same as the previous state, except that the lockfile is closed  *   and fd is -1.  *  * - Unlocked (after commit_lock_file(), rollback_lock_file(), a  *   failed attempt to lock, or a failed close_lock_file()). In this  *   state, filename[0] == '\0' and fd is -1. The object is left  *   registered in the lock_file_list, and on_list is set.  */
+comment|/*  * File write-locks as used by Git.  *  * For an overview of how to use the lockfile API, please see  *  *     Documentation/technical/api-lockfile.txt  *  * This module keeps track of all locked files in lock_file_list for  * use at cleanup. This list and the lock_file objects that comprise  * it must be kept in self-consistent states at all time, because the  * program can be interrupted any time by a signal, in which case the  * signal handler will walk through the list attempting to clean up  * any open lock files.  *  * A lockfile is owned by the process that created it. The lock_file  * object has an "owner" field that records its owner. This field is  * used to prevent a forked process from closing a lockfile created by  * its parent.  *  * The possible states of a lock_file object are as follows:  *  * - Uninitialized.  In this state the object's on_list field must be  *   zero but the rest of its contents need not be initialized.  As  *   soon as the object is used in any way, it is irrevocably  *   registered in the lock_file_list, and on_list is set.  *  * - Locked, lockfile open (after hold_lock_file_for_update(),  *   hold_lock_file_for_append(), or reopen_lock_file()). In this  *   state:  *   - the lockfile exists  *   - active is set  *   - filename holds the filename of the lockfile  *   - fd holds a file descriptor open for writing to the lockfile  *   - owner holds the PID of the process that locked the file  *  * - Locked, lockfile closed (after successful close_lock_file()).  *   Same as the previous state, except that the lockfile is closed  *   and fd is -1.  *  * - Unlocked (after commit_lock_file(), rollback_lock_file(), a  *   failed attempt to lock, or a failed close_lock_file()).  In this  *   state:  *   - active is unset  *   - filename[0] == '\0' (usually, though there are transitory states  *     in which this condition doesn't hold). Client code should *not*  *     rely on this fact!  *   - fd is -1  *   - the object is left registered in the lock_file_list, and  *     on_list is set.  */
 end_comment
 
 begin_decl_stmt
@@ -435,6 +435,19 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+name|lk
+operator|->
+name|active
+condition|)
+name|die
+argument_list|(
+literal|"BUG: cannot lock_file(\"%s\") using active struct lock_file"
+argument_list|,
+name|path
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 operator|!
 name|lk
 operator|->
@@ -448,6 +461,12 @@ name|fd
 operator|=
 operator|-
 literal|1
+expr_stmt|;
+name|lk
+operator|->
+name|active
+operator|=
+literal|0
 expr_stmt|;
 name|lk
 operator|->
@@ -584,6 +603,12 @@ name|owner
 operator|=
 name|getpid
 argument_list|()
+expr_stmt|;
+name|lk
+operator|->
+name|active
+operator|=
+literal|1
 expr_stmt|;
 if|if
 condition|(
@@ -1101,10 +1126,7 @@ condition|(
 operator|!
 name|lk
 operator|->
-name|filename
-index|[
-literal|0
-index|]
+name|active
 condition|)
 name|die
 argument_list|(
@@ -1157,10 +1179,7 @@ condition|(
 operator|!
 name|lk
 operator|->
-name|filename
-index|[
-literal|0
-index|]
+name|active
 condition|)
 name|die
 argument_list|(
@@ -1233,6 +1252,12 @@ return|;
 block|}
 name|lk
 operator|->
+name|active
+operator|=
+literal|0
+expr_stmt|;
+name|lk
+operator|->
 name|filename
 index|[
 literal|0
@@ -1294,10 +1319,7 @@ condition|(
 operator|!
 name|lk
 operator|->
-name|filename
-index|[
-literal|0
-index|]
+name|active
 condition|)
 return|return;
 if|if
@@ -1315,6 +1337,12 @@ name|lk
 operator|->
 name|filename
 argument_list|)
+expr_stmt|;
+name|lk
+operator|->
+name|active
+operator|=
+literal|0
 expr_stmt|;
 name|lk
 operator|->

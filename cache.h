@@ -3687,6 +3687,11 @@ name|lock_file
 modifier|*
 name|next
 decl_stmt|;
+DECL|member|active
+specifier|volatile
+name|sig_atomic_t
+name|active
+decl_stmt|;
 DECL|member|fd
 name|int
 name|fd
