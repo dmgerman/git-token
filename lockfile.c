@@ -944,9 +944,9 @@ argument_list|,
 name|path
 argument_list|)
 expr_stmt|;
-name|close
+name|rollback_lock_file
 argument_list|(
-name|fd
+name|lk
 argument_list|)
 expr_stmt|;
 return|return
@@ -981,9 +981,9 @@ argument_list|(
 literal|128
 argument_list|)
 expr_stmt|;
-name|close
+name|rollback_lock_file
 argument_list|(
-name|fd
+name|lk
 argument_list|)
 expr_stmt|;
 return|return
