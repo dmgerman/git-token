@@ -10623,6 +10623,10 @@ name|ret
 operator|=
 name|CONFIG_NO_WRITE
 expr_stmt|;
+name|lock
+operator|=
+name|NULL
+expr_stmt|;
 goto|goto
 name|out_free
 goto|;
