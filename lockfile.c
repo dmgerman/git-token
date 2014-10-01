@@ -1233,6 +1233,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|!
 name|lk
 operator|->
 name|filename
@@ -1240,7 +1241,7 @@ index|[
 literal|0
 index|]
 condition|)
-block|{
+return|return;
 if|if
 condition|(
 name|lk
@@ -1272,7 +1273,6 @@ index|]
 operator|=
 literal|0
 expr_stmt|;
-block|}
 block|}
 end_function
 
