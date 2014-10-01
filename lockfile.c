@@ -1263,7 +1263,6 @@ operator|->
 name|filename
 argument_list|)
 expr_stmt|;
-block|}
 name|lk
 operator|->
 name|filename
@@ -1273,6 +1272,7 @@ index|]
 operator|=
 literal|0
 expr_stmt|;
+block|}
 block|}
 end_function
 
