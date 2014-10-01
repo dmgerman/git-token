@@ -3826,6 +3826,19 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|char
+modifier|*
+name|get_locked_file_path
+parameter_list|(
+name|struct
+name|lock_file
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|int
 name|commit_lock_file_to
 parameter_list|(
