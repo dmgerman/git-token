@@ -593,6 +593,11 @@ operator|->
 name|filename
 argument_list|)
 expr_stmt|;
+name|rollback_lock_file
+argument_list|(
+name|lk
+argument_list|)
+expr_stmt|;
 name|errno
 operator|=
 name|save_errno
