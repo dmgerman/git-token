@@ -432,7 +432,7 @@ operator|!
 operator|(
 name|flags
 operator|&
-name|LOCK_NODEREF
+name|LOCK_NO_DEREF
 operator|)
 condition|)
 name|resolve_symlink

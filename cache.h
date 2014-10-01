@@ -3725,10 +3725,10 @@ value|1
 end_define
 
 begin_define
-DECL|macro|LOCK_NODEREF
+DECL|macro|LOCK_NO_DEREF
 define|#
 directive|define
-name|LOCK_NODEREF
+name|LOCK_NO_DEREF
 value|2
 end_define
 
