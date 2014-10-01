@@ -10247,17 +10247,6 @@ name|mark_lock
 argument_list|)
 condition|)
 block|{
-name|int
-name|saved_errno
-init|=
-name|errno
-decl_stmt|;
-name|rollback_lock_file
-argument_list|(
-operator|&
-name|mark_lock
-argument_list|)
-expr_stmt|;
 name|failure
 operator||=
 name|error
@@ -10268,7 +10257,7 @@ name|export_marks_file
 argument_list|,
 name|strerror
 argument_list|(
-name|saved_errno
+name|errno
 argument_list|)
 argument_list|)
 expr_stmt|;
