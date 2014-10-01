@@ -1130,6 +1130,21 @@ index|]
 decl_stmt|;
 if|if
 condition|(
+operator|!
+name|lk
+operator|->
+name|filename
+index|[
+literal|0
+index|]
+condition|)
+name|die
+argument_list|(
+literal|"BUG: attempt to commit unlocked object"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|close_lock_file
 argument_list|(
 name|lk
