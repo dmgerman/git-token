@@ -4971,7 +4971,7 @@ condition|)
 block|{
 name|logerror
 argument_list|(
-literal|"Could not listen to %s: %s"
+literal|"Could not bind to %s: %s"
 argument_list|,
 name|ip2str
 argument_list|(
