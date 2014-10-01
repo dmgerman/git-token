@@ -10432,12 +10432,6 @@ condition|)
 block|{
 if|if
 condition|(
-name|lk
-operator|->
-name|fd
-operator|>=
-literal|0
-operator|&&
 name|close_lock_file
 argument_list|(
 name|lk
