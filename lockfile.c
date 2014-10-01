@@ -31,10 +31,10 @@ decl_stmt|;
 end_decl_stmt
 
 begin_function
-DECL|function|remove_lock_file
+DECL|function|remove_lock_files
 specifier|static
 name|void
-name|remove_lock_file
+name|remove_lock_files
 parameter_list|(
 name|void
 parameter_list|)
@@ -74,16 +74,16 @@ block|}
 end_function
 
 begin_function
-DECL|function|remove_lock_file_on_signal
+DECL|function|remove_lock_files_on_signal
 specifier|static
 name|void
-name|remove_lock_file_on_signal
+name|remove_lock_files_on_signal
 parameter_list|(
 name|int
 name|signo
 parameter_list|)
 block|{
-name|remove_lock_file
+name|remove_lock_files
 argument_list|()
 expr_stmt|;
 name|sigchain_pop
@@ -316,12 +316,12 @@ block|{
 comment|/* One-time initialization */
 name|sigchain_push_common
 argument_list|(
-name|remove_lock_file_on_signal
+name|remove_lock_files_on_signal
 argument_list|)
 expr_stmt|;
 name|atexit
 argument_list|(
-name|remove_lock_file
+name|remove_lock_files
 argument_list|)
 expr_stmt|;
 block|}
