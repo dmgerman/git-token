@@ -2875,6 +2875,11 @@ argument_list|(
 name|hostname
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|hent
+condition|)
+block|{
 name|ap
 operator|=
 name|hent
@@ -2969,6 +2974,7 @@ argument_list|(
 name|addrbuf
 argument_list|)
 expr_stmt|;
+block|}
 endif|#
 directive|endif
 block|}
