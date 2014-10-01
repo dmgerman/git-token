@@ -16,7 +16,7 @@ file|"sigchain.h"
 end_include
 
 begin_comment
-comment|/*  * File write-locks as used by Git.  *  * For an overview of how to use the lockfile API, please see  *  *     Documentation/technical/api-lockfile.txt  *  * This module keeps track of all locked files in lock_file_list for  * use at cleanup. This list and the lock_file objects that comprise  * it must be kept in self-consistent states at all time, because the  * program can be interrupted any time by a signal, in which case the  * signal handler will walk through the list attempting to clean up  * any open lock files.  *  * A lockfile is owned by the process that created it. The lock_file  * object has an "owner" field that records its owner. This field is  * used to prevent a forked process from closing a lockfile created by  * its parent.  *  * A lock_file object can be in several states:  *  * - Uninitialized.  In this state the object's on_list field must be  *   zero but the rest of its contents need not be initialized.  As  *   soon as the object is used in any way, it is irrevocably  *   registered in the lock_file_list, and on_list is set.  *  * - Locked, lockfile open (after hold_lock_file_for_update(),  *   hold_lock_file_for_append(), or reopen_lock_file()). In this  *   state, the lockfile exists, filename holds the filename of the  *   lockfile, fd holds a file descriptor open for writing to the  *   lockfile, and owner holds the PID of the process that locked the  *   file.  *  * - Locked, lockfile closed (after close_lock_file()).  Same as the  *   previous state, except that the lockfile is closed and fd is -1.  *  * - Unlocked (after commit_lock_file(), rollback_lock_file(), or a  *   failed attempt to lock).  In this state, filename[0] == '\0' and  *   fd is -1.  The object is left registered in the lock_file_list,  *   and on_list is set.  */
+comment|/*  * File write-locks as used by Git.  *  * For an overview of how to use the lockfile API, please see  *  *     Documentation/technical/api-lockfile.txt  *  * This module keeps track of all locked files in lock_file_list for  * use at cleanup. This list and the lock_file objects that comprise  * it must be kept in self-consistent states at all time, because the  * program can be interrupted any time by a signal, in which case the  * signal handler will walk through the list attempting to clean up  * any open lock files.  *  * A lockfile is owned by the process that created it. The lock_file  * object has an "owner" field that records its owner. This field is  * used to prevent a forked process from closing a lockfile created by  * its parent.  *  * A lock_file object can be in several states:  *  * - Uninitialized.  In this state the object's on_list field must be  *   zero but the rest of its contents need not be initialized.  As  *   soon as the object is used in any way, it is irrevocably  *   registered in the lock_file_list, and on_list is set.  *  * - Locked, lockfile open (after hold_lock_file_for_update(),  *   hold_lock_file_for_append(), or reopen_lock_file()). In this  *   state, the lockfile exists, filename holds the filename of the  *   lockfile, fd holds a file descriptor open for writing to the  *   lockfile, and owner holds the PID of the process that locked the  *   file.  *  * - Locked, lockfile closed (after successful close_lock_file()).  *   Same as the previous state, except that the lockfile is closed  *   and fd is -1.  *  * - Unlocked (after commit_lock_file(), rollback_lock_file(), a  *   failed attempt to lock, or a failed close_lock_file()). In this  *   state, filename[0] == '\0' and fd is -1. The object is left  *   registered in the lock_file_list, and on_list is set.  */
 end_comment
 
 begin_decl_stmt
@@ -1036,11 +1036,35 @@ operator|=
 operator|-
 literal|1
 expr_stmt|;
-return|return
+if|if
+condition|(
 name|close
 argument_list|(
 name|fd
 argument_list|)
+condition|)
+block|{
+name|int
+name|save_errno
+init|=
+name|errno
+decl_stmt|;
+name|rollback_lock_file
+argument_list|(
+name|lk
+argument_list|)
+expr_stmt|;
+name|errno
+operator|=
+name|save_errno
+expr_stmt|;
+return|return
+operator|-
+literal|1
+return|;
+block|}
+return|return
+literal|0
 return|;
 block|}
 end_function
@@ -1260,11 +1284,15 @@ literal|0
 index|]
 condition|)
 return|return;
+if|if
+condition|(
+operator|!
 name|close_lock_file
 argument_list|(
 name|lk
 argument_list|)
-expr_stmt|;
+condition|)
+block|{
 name|unlink_or_warn
 argument_list|(
 name|lk
@@ -1281,6 +1309,7 @@ index|]
 operator|=
 literal|0
 expr_stmt|;
+block|}
 block|}
 end_function
 
