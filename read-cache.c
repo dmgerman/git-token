@@ -10448,6 +10448,8 @@ argument_list|(
 name|lk
 operator|->
 name|filename
+operator|.
+name|buf
 argument_list|,
 name|alternate_index_output
 argument_list|)
@@ -10462,14 +10464,13 @@ name|active
 operator|=
 literal|0
 expr_stmt|;
+name|strbuf_reset
+argument_list|(
+operator|&
 name|lk
 operator|->
 name|filename
-index|[
-literal|0
-index|]
-operator|=
-literal|0
+argument_list|)
 expr_stmt|;
 return|return
 literal|0

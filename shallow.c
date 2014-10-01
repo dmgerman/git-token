@@ -1502,6 +1502,8 @@ argument_list|,
 name|shallow_lock
 operator|->
 name|filename
+operator|.
+name|buf
 argument_list|)
 expr_stmt|;
 operator|*
@@ -1510,6 +1512,8 @@ operator|=
 name|shallow_lock
 operator|->
 name|filename
+operator|.
+name|buf
 expr_stmt|;
 block|}
 else|else
@@ -1724,6 +1728,8 @@ argument_list|,
 name|shallow_lock
 operator|.
 name|filename
+operator|.
+name|buf
 argument_list|)
 expr_stmt|;
 name|commit_lock_file

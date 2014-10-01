@@ -3708,11 +3708,9 @@ name|char
 name|on_list
 decl_stmt|;
 DECL|member|filename
-name|char
+name|struct
+name|strbuf
 name|filename
-index|[
-name|PATH_MAX
-index|]
 decl_stmt|;
 block|}
 struct|;

@@ -10309,6 +10309,8 @@ argument_list|(
 name|lock
 operator|->
 name|filename
+operator|.
+name|buf
 argument_list|,
 name|st
 operator|.
@@ -10327,6 +10329,8 @@ argument_list|,
 name|lock
 operator|->
 name|filename
+operator|.
+name|buf
 argument_list|,
 name|strerror
 argument_list|(
@@ -10672,6 +10676,8 @@ argument_list|(
 name|lock
 operator|->
 name|filename
+operator|.
+name|buf
 argument_list|)
 expr_stmt|;
 goto|goto
@@ -11200,6 +11206,8 @@ argument_list|(
 name|lock
 operator|->
 name|filename
+operator|.
+name|buf
 argument_list|,
 name|st
 operator|.
@@ -11220,6 +11228,8 @@ argument_list|,
 name|lock
 operator|->
 name|filename
+operator|.
+name|buf
 argument_list|,
 name|strerror
 argument_list|(
@@ -11357,6 +11367,8 @@ argument_list|(
 name|lock
 operator|->
 name|filename
+operator|.
+name|buf
 argument_list|)
 expr_stmt|;
 goto|goto
@@ -11432,6 +11444,8 @@ argument_list|(
 name|lock
 operator|->
 name|filename
+operator|.
+name|buf
 argument_list|)
 expr_stmt|;
 goto|goto
