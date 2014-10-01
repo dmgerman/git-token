@@ -3685,6 +3685,7 @@ DECL|member|next
 name|struct
 name|lock_file
 modifier|*
+specifier|volatile
 name|next
 decl_stmt|;
 DECL|member|active
@@ -3693,10 +3694,12 @@ name|sig_atomic_t
 name|active
 decl_stmt|;
 DECL|member|fd
+specifier|volatile
 name|int
 name|fd
 decl_stmt|;
 DECL|member|owner
+specifier|volatile
 name|pid_t
 name|owner
 decl_stmt|;
