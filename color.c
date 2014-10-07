@@ -349,7 +349,7 @@ end_function
 
 begin_function
 DECL|function|color_parse
-name|void
+name|int
 name|color_parse
 parameter_list|(
 specifier|const
@@ -357,16 +357,12 @@ name|char
 modifier|*
 name|value
 parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|var
-parameter_list|,
 name|char
 modifier|*
 name|dst
 parameter_list|)
 block|{
+return|return
 name|color_parse_mem
 argument_list|(
 name|value
@@ -376,17 +372,15 @@ argument_list|(
 name|value
 argument_list|)
 argument_list|,
-name|var
-argument_list|,
 name|dst
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 end_function
 
 begin_function
 DECL|function|color_parse_mem
-name|void
+name|int
 name|color_parse_mem
 parameter_list|(
 specifier|const
@@ -396,11 +390,6 @@ name|value
 parameter_list|,
 name|int
 name|value_len
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|var
 parameter_list|,
 name|char
 modifier|*
@@ -457,7 +446,9 @@ argument_list|,
 name|GIT_COLOR_RESET
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|0
+return|;
 block|}
 comment|/* [fg [bg]] [attr]... */
 while|while
@@ -818,20 +809,24 @@ name|dst
 operator|=
 literal|0
 expr_stmt|;
-return|return;
+return|return
+literal|0
+return|;
 name|bad
 label|:
-name|die
+return|return
+name|error
 argument_list|(
-literal|"bad color value '%.*s' for variable '%s'"
+name|_
+argument_list|(
+literal|"invalid color value: %.*s"
+argument_list|)
 argument_list|,
 name|value_len
 argument_list|,
 name|value
-argument_list|,
-name|var
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 end_function
 

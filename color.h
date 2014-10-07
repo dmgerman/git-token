@@ -365,18 +365,13 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-name|void
+name|int
 name|color_parse
 parameter_list|(
 specifier|const
 name|char
 modifier|*
 name|value
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|var
 parameter_list|,
 name|char
 modifier|*
@@ -386,7 +381,7 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-name|void
+name|int
 name|color_parse_mem
 parameter_list|(
 specifier|const
@@ -396,11 +391,6 @@ name|value
 parameter_list|,
 name|int
 name|len
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|var
 parameter_list|,
 name|char
 modifier|*
