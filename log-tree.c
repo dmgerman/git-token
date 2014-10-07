@@ -286,8 +286,9 @@ modifier|*
 name|var
 parameter_list|,
 specifier|const
-name|int
-name|ofs
+name|char
+modifier|*
+name|slot_name
 parameter_list|,
 specifier|const
 name|char
@@ -300,9 +301,7 @@ name|slot
 init|=
 name|parse_decorate_color_slot
 argument_list|(
-name|var
-operator|+
-name|ofs
+name|slot_name
 argument_list|)
 decl_stmt|;
 if|if

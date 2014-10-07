@@ -1958,6 +1958,8 @@ name|parse_decorate_color_config
 argument_list|(
 name|var
 argument_list|,
+name|var
+operator|+
 literal|15
 argument_list|,
 name|value
