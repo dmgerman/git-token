@@ -17,6 +17,12 @@ DECL|struct|send_pack_args
 struct|struct
 name|send_pack_args
 block|{
+DECL|member|url
+specifier|const
+name|char
+modifier|*
+name|url
+decl_stmt|;
 DECL|member|verbose
 name|unsigned
 name|verbose
@@ -60,6 +66,11 @@ literal|1
 decl_stmt|,
 DECL|member|dry_run
 name|dry_run
+range|:
+literal|1
+decl_stmt|,
+DECL|member|push_cert
+name|push_cert
 range|:
 literal|1
 decl_stmt|,
