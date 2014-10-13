@@ -9699,17 +9699,6 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-operator|!
-name|delta_search_threads
-condition|)
-comment|/* --threads=0 means autodetect */
-name|delta_search_threads
-operator|=
-name|online_cpus
-argument_list|()
-expr_stmt|;
-if|if
-condition|(
 name|delta_search_threads
 operator|<=
 literal|1
@@ -13560,6 +13549,17 @@ literal|"bad pack compression level %d"
 argument_list|,
 name|pack_compression_level
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|delta_search_threads
+condition|)
+comment|/* --threads=0 means autodetect */
+name|delta_search_threads
+operator|=
+name|online_cpus
+argument_list|()
 expr_stmt|;
 ifdef|#
 directive|ifdef

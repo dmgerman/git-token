@@ -45,6 +45,20 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_else
+else|#
+directive|else
+end_else
+
+begin_define
+DECL|macro|online_cpus
+define|#
+directive|define
+name|online_cpus
+parameter_list|()
+value|1
+end_define
+
 begin_endif
 endif|#
 directive|endif
