@@ -270,11 +270,6 @@ operator|!
 name|allow_bare
 condition|)
 block|{
-name|unlink
-argument_list|(
-name|name
-argument_list|)
-expr_stmt|;
 name|fprintf
 argument_list|(
 name|stderr
