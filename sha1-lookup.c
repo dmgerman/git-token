@@ -236,17 +236,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-if|if
-condition|(
-literal|18
-operator|<=
-name|ofs
-condition|)
-name|die
-argument_list|(
-literal|"cannot happen -- lo and hi are identical"
-argument_list|)
-expr_stmt|;
 block|}
 do|do
 block|{
