@@ -12,7 +12,7 @@ end_include
 begin_include
 include|#
 directive|include
-file|"cache.h"
+file|"lockfile.h"
 end_include
 
 begin_include

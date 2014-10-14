@@ -12,6 +12,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"lockfile.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"cache-tree.h"
 end_include
 
@@ -1478,6 +1484,7 @@ end_function
 begin_function
 DECL|function|prepare_index
 specifier|static
+specifier|const
 name|char
 modifier|*
 name|prepare_index
@@ -1618,6 +1625,8 @@ argument_list|,
 name|index_lock
 operator|.
 name|filename
+operator|.
+name|buf
 argument_list|,
 literal|1
 argument_list|)
@@ -1675,6 +1684,8 @@ argument_list|(
 name|index_lock
 operator|.
 name|filename
+operator|.
+name|buf
 argument_list|)
 expr_stmt|;
 if|if
@@ -1744,6 +1755,8 @@ return|return
 name|index_lock
 operator|.
 name|filename
+operator|.
+name|buf
 return|;
 block|}
 comment|/* 	 * Non partial, non as-is commit. 	 * 	 * (1) get the real index; 	 * (2) update the_index as necessary; 	 * (3) write the_index out to the real index (still locked); 	 * (4) return the name of the locked index file. 	 * 	 * The caller should run hooks on the locked real index, and 	 * (A) if all goes well, commit the real index; 	 * (B) on failure, rollback the real index. 	 */
@@ -1821,6 +1834,8 @@ return|return
 name|index_lock
 operator|.
 name|filename
+operator|.
+name|buf
 return|;
 block|}
 comment|/* 	 * As-is commit. 	 * 	 * (1) return the name of the real index file. 	 * 	 * The caller should run hooks on the real index, 	 * and create commit from the_index. 	 * We still need to refresh the index here. 	 */
@@ -2117,12 +2132,16 @@ argument_list|(
 name|false_lock
 operator|.
 name|filename
+operator|.
+name|buf
 argument_list|)
 expr_stmt|;
 return|return
 name|false_lock
 operator|.
 name|filename
+operator|.
+name|buf
 return|;
 block|}
 end_function

@@ -12,6 +12,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"lockfile.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"exec_cmd.h"
 end_include
 
@@ -10369,6 +10375,8 @@ argument_list|(
 name|lock
 operator|->
 name|filename
+operator|.
+name|buf
 argument_list|,
 name|st
 operator|.
@@ -10387,6 +10395,8 @@ argument_list|,
 name|lock
 operator|->
 name|filename
+operator|.
+name|buf
 argument_list|,
 name|strerror
 argument_list|(
@@ -10683,6 +10693,10 @@ name|ret
 operator|=
 name|CONFIG_NO_WRITE
 expr_stmt|;
+name|lock
+operator|=
+name|NULL
+expr_stmt|;
 goto|goto
 name|out_free
 goto|;
@@ -10728,6 +10742,8 @@ argument_list|(
 name|lock
 operator|->
 name|filename
+operator|.
+name|buf
 argument_list|)
 expr_stmt|;
 goto|goto
@@ -11256,6 +11272,8 @@ argument_list|(
 name|lock
 operator|->
 name|filename
+operator|.
+name|buf
 argument_list|,
 name|st
 operator|.
@@ -11276,6 +11294,8 @@ argument_list|,
 name|lock
 operator|->
 name|filename
+operator|.
+name|buf
 argument_list|,
 name|strerror
 argument_list|(
@@ -11413,6 +11433,8 @@ argument_list|(
 name|lock
 operator|->
 name|filename
+operator|.
+name|buf
 argument_list|)
 expr_stmt|;
 goto|goto
@@ -11488,6 +11510,8 @@ argument_list|(
 name|lock
 operator|->
 name|filename
+operator|.
+name|buf
 argument_list|)
 expr_stmt|;
 goto|goto

@@ -18,6 +18,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"lockfile.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"cache-tree.h"
 end_include
 

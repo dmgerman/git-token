@@ -2,13 +2,13 @@ begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_include
 include|#
 directive|include
-file|"cache.h"
+file|"builtin.h"
 end_include
 
 begin_include
 include|#
 directive|include
-file|"builtin.h"
+file|"lockfile.h"
 end_include
 
 begin_include
@@ -2274,6 +2274,8 @@ operator|->
 name|lk
 operator|->
 name|filename
+operator|.
+name|buf
 argument_list|)
 expr_stmt|;
 name|unlink
