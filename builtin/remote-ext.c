@@ -78,10 +78,12 @@ name|special
 init|=
 literal|0
 decl_stmt|;
-name|size_t
-name|psoff
+specifier|const
+name|char
+modifier|*
+name|service_noprefix
 init|=
-literal|0
+name|service
 decl_stmt|;
 name|struct
 name|strbuf
@@ -89,22 +91,15 @@ name|ret
 init|=
 name|STRBUF_INIT
 decl_stmt|;
-comment|/* Calculate prefix length for \s and lengths for \s and \S */
-if|if
-condition|(
-operator|!
-name|strncmp
+name|skip_prefix
 argument_list|(
-name|service
+name|service_noprefix
 argument_list|,
 literal|"git-"
 argument_list|,
-literal|4
+operator|&
+name|service_noprefix
 argument_list|)
-condition|)
-name|psoff
-operator|=
-literal|4
 expr_stmt|;
 comment|/* Pass the service to command. */
 name|setenv
@@ -120,9 +115,7 @@ name|setenv
 argument_list|(
 literal|"GIT_EXT_SERVICE_NOPREFIX"
 argument_list|,
-name|service
-operator|+
-name|psoff
+name|service_noprefix
 argument_list|,
 literal|1
 argument_list|)
@@ -334,9 +327,7 @@ argument_list|(
 operator|&
 name|ret
 argument_list|,
-name|service
-operator|+
-name|psoff
+name|service_noprefix
 argument_list|)
 expr_stmt|;
 break|break;

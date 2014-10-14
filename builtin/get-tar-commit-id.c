@@ -111,6 +111,11 @@ name|buffer
 operator|+
 name|RECORDSIZE
 decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|comment
+decl_stmt|;
 name|ssize_t
 name|n
 decl_stmt|;
@@ -163,13 +168,15 @@ literal|1
 return|;
 if|if
 condition|(
-name|memcmp
+operator|!
+name|skip_prefix
 argument_list|(
 name|content
 argument_list|,
 literal|"52 comment="
 argument_list|,
-literal|11
+operator|&
+name|comment
 argument_list|)
 condition|)
 return|return
@@ -181,9 +188,7 @@ name|write_in_full
 argument_list|(
 literal|1
 argument_list|,
-name|content
-operator|+
-literal|11
+name|comment
 argument_list|,
 literal|41
 argument_list|)
