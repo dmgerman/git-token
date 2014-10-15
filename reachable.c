@@ -829,7 +829,6 @@ end_function
 
 begin_function
 DECL|function|add_unseen_recent_objects_to_traversal
-specifier|static
 name|int
 name|add_unseen_recent_objects_to_traversal
 parameter_list|(

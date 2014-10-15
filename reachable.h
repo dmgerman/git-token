@@ -20,6 +20,23 @@ end_struct_decl
 
 begin_function_decl
 specifier|extern
+name|int
+name|add_unseen_recent_objects_to_traversal
+parameter_list|(
+name|struct
+name|rev_info
+modifier|*
+name|revs
+parameter_list|,
+name|unsigned
+name|long
+name|timestamp
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|void
 name|mark_reachable_objects
 parameter_list|(
