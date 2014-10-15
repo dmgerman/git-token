@@ -31,6 +31,10 @@ parameter_list|,
 name|int
 name|mark_reflog
 parameter_list|,
+name|unsigned
+name|long
+name|mark_recent
+parameter_list|,
 name|struct
 name|progress
 modifier|*
