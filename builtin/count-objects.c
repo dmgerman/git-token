@@ -315,12 +315,9 @@ operator|*
 name|loose_size
 operator|)
 operator|+=
-name|xsize_t
-argument_list|(
 name|on_disk_bytes
 argument_list|(
 name|st
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
