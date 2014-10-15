@@ -559,6 +559,22 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Remove any objects from the array, freeing all used memory; afterwards  * the array is ready to store more objects with add_object_array().  */
+end_comment
+
+begin_function_decl
+name|void
+name|object_array_clear
+parameter_list|(
+name|struct
+name|object_array
+modifier|*
+name|array
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function_decl
 name|void
 name|clear_object_flags
