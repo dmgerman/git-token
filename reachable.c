@@ -340,6 +340,11 @@ name|i
 operator|++
 control|)
 block|{
+name|struct
+name|blob
+modifier|*
+name|blob
+decl_stmt|;
 comment|/* 		 * The index can contain blobs and GITLINKs, GITLINKs are hashes 		 * that don't actually point to objects in the repository, it's 		 * almost guaranteed that they are NOT blobs, so we don't call 		 * lookup_blob() on them, to avoid populating the hash table 		 * with invalid information 		 */
 if|if
 condition|(
@@ -354,6 +359,8 @@ name|ce_mode
 argument_list|)
 condition|)
 continue|continue;
+name|blob
+operator|=
 name|lookup_blob
 argument_list|(
 name|active_cache
@@ -363,6 +370,18 @@ index|]
 operator|->
 name|sha1
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|blob
+condition|)
+name|blob
+operator|->
+name|object
+operator|.
+name|flags
+operator||=
+name|SEEN
 expr_stmt|;
 comment|/* 		 * We could add the blobs to the pending list, but quite 		 * frankly, we don't care. Once we've looked them up, and 		 * added them as objects, we've really done everything 		 * there is to do for a blob 		 */
 block|}
