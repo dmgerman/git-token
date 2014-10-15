@@ -64,15 +64,14 @@ name|char
 modifier|*
 name|name
 decl_stmt|;
+DECL|member|path
+name|char
+modifier|*
+name|path
+decl_stmt|;
 DECL|member|mode
 name|unsigned
 name|mode
-decl_stmt|;
-DECL|member|context
-name|struct
-name|object_context
-modifier|*
-name|context
 decl_stmt|;
 DECL|member|objects
 block|}
@@ -476,7 +475,7 @@ end_function_decl
 
 begin_function_decl
 name|void
-name|add_object_array_with_context
+name|add_object_array_with_path
 parameter_list|(
 name|struct
 name|object
@@ -493,10 +492,13 @@ name|object_array
 modifier|*
 name|array
 parameter_list|,
-name|struct
-name|object_context
+name|unsigned
+name|mode
+parameter_list|,
+specifier|const
+name|char
 modifier|*
-name|context
+name|path
 parameter_list|)
 function_decl|;
 end_function_decl
