@@ -2026,7 +2026,7 @@ end_function
 
 begin_function
 DECL|function|foreach_alt_odb
-name|void
+name|int
 name|foreach_alt_odb
 parameter_list|(
 name|alt_odb_fn
@@ -2041,6 +2041,11 @@ name|struct
 name|alternate_object_database
 modifier|*
 name|ent
+decl_stmt|;
+name|int
+name|r
+init|=
+literal|0
 decl_stmt|;
 name|prepare_alt_odb
 argument_list|()
@@ -2059,16 +2064,25 @@ name|ent
 operator|->
 name|next
 control|)
-if|if
-condition|(
+block|{
+name|r
+operator|=
 name|fn
 argument_list|(
 name|ent
 argument_list|,
 name|cb
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|r
 condition|)
-return|return;
+break|break;
+block|}
+return|return
+name|r
+return|;
 block|}
 end_function
 

@@ -7514,7 +7514,7 @@ end_typedef
 
 begin_function_decl
 specifier|extern
-name|void
+name|int
 name|foreach_alt_odb
 parameter_list|(
 name|alt_odb_fn
