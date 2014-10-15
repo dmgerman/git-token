@@ -5878,10 +5878,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|handle_reflog
-specifier|static
+DECL|function|add_reflogs_to_pending
 name|void
-name|handle_reflog
+name|add_reflogs_to_pending
 parameter_list|(
 name|struct
 name|rev_info
@@ -11607,7 +11606,7 @@ literal|"--reflog"
 argument_list|)
 condition|)
 block|{
-name|handle_reflog
+name|add_reflogs_to_pending
 argument_list|(
 name|revs
 argument_list|,
