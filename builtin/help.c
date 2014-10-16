@@ -2403,6 +2403,15 @@ argument_list|)
 block|}
 block|,
 block|{
+literal|"everyday"
+block|,
+name|N_
+argument_list|(
+literal|"Everyday Git With 20 Commands Or So"
+argument_list|)
+block|}
+block|,
+block|{
 literal|"glossary"
 block|,
 name|N_
