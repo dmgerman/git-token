@@ -1489,6 +1489,22 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|void
+name|add_index_objects_to_pending
+parameter_list|(
+name|struct
+name|rev_info
+modifier|*
+parameter_list|,
+name|unsigned
+name|int
+name|flags
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_enum
 DECL|enum|commit_action
 enum|enum
