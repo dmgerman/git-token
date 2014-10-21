@@ -4523,6 +4523,11 @@ name|REJECT_NEEDS_FORCE
 expr_stmt|;
 block|}
 block|}
+name|free
+argument_list|(
+name|head
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
