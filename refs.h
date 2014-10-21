@@ -92,7 +92,7 @@ value|0x02
 end_define
 
 begin_comment
-comment|/*  * Reference cannot be resolved to an object name: dangling symbolic  * reference (directly or indirectly), corrupt reference file, or  * symbolic reference refers to ill-formatted reference name.  */
+comment|/*  * Reference cannot be resolved to an object name: dangling symbolic  * reference (directly or indirectly), corrupt reference file,  * reference exists but name is bad, or symbolic reference refers to  * ill-formatted reference name.  */
 end_comment
 
 begin_define
@@ -101,6 +101,18 @@ define|#
 directive|define
 name|REF_ISBROKEN
 value|0x04
+end_define
+
+begin_comment
+comment|/*  * Reference name is not well formed.  *  * See git-check-ref-format(1) for the definition of well formed ref names.  */
+end_comment
+
+begin_define
+DECL|macro|REF_BAD_NAME
+define|#
+directive|define
+name|REF_BAD_NAME
+value|0x08
 end_define
 
 begin_comment
@@ -688,7 +700,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Flags controlling lock_any_ref_for_update(), ref_transaction_update(),  * ref_transaction_create(), etc.  * REF_NODEREF: act on the ref directly, instead of dereferencing  *              symbolic references.  *  * Flags>= 0x100 are reserved for internal use.  */
+comment|/*  * Flags controlling lock_any_ref_for_update(), ref_transaction_update(),  * ref_transaction_create(), etc.  * REF_NODEREF: act on the ref directly, instead of dereferencing  *              symbolic references.  * REF_DELETING: tolerate broken refs  *  * Flags>= 0x100 are reserved for internal use.  */
 end_comment
 
 begin_define
@@ -697,6 +709,14 @@ define|#
 directive|define
 name|REF_NODEREF
 value|0x01
+end_define
+
+begin_define
+DECL|macro|REF_DELETING
+define|#
+directive|define
+name|REF_DELETING
+value|0x02
 end_define
 
 begin_comment
@@ -778,34 +798,6 @@ name|struct
 name|ref_lock
 modifier|*
 name|lock
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_comment
-comment|/** Writes sha1 into the ref specified by the lock. **/
-end_comment
-
-begin_function_decl
-specifier|extern
-name|int
-name|write_ref_sha1
-parameter_list|(
-name|struct
-name|ref_lock
-modifier|*
-name|lock
-parameter_list|,
-specifier|const
-name|unsigned
-name|char
-modifier|*
-name|sha1
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|msg
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -1028,16 +1020,8 @@ name|REFNAME_REFSPEC_PATTERN
 value|2
 end_define
 
-begin_define
-DECL|macro|REFNAME_DOT_COMPONENT
-define|#
-directive|define
-name|REFNAME_DOT_COMPONENT
-value|4
-end_define
-
 begin_comment
-comment|/*  * Return 0 iff refname has the correct format for a refname according  * to the rules described in Documentation/git-check-ref-format.txt.  * If REFNAME_ALLOW_ONELEVEL is set in flags, then accept one-level  * reference names.  If REFNAME_REFSPEC_PATTERN is set in flags, then  * allow a "*" wildcard character in place of one of the name  * components.  No leading or repeated slashes are accepted.  If  * REFNAME_DOT_COMPONENT is set in flags, then allow refname  * components to start with "." (but not a whole component equal to  * "." or "..").  */
+comment|/*  * Return 0 iff refname has the correct format for a refname according  * to the rules described in Documentation/git-check-ref-format.txt.  * If REFNAME_ALLOW_ONELEVEL is set in flags, then accept one-level  * reference names.  If REFNAME_REFSPEC_PATTERN is set in flags, then  * allow a "*" wildcard character in place of one of the name  * components.  No leading or repeated slashes are accepted.  */
 end_comment
 
 begin_function_decl
@@ -1178,7 +1162,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * The following functions add a reference check or update to a  * ref_transaction.  In all of them, refname is the name of the  * reference to be affected.  The functions make internal copies of  * refname, so the caller retains ownership of the parameter.  flags  * can be REF_NODEREF; it is passed to update_ref_lock().  */
+comment|/*  * The following functions add a reference check or update to a  * ref_transaction.  In all of them, refname is the name of the  * reference to be affected.  The functions make internal copies of  * refname and msg, so the caller retains ownership of these parameters.  * flags can be REF_NODEREF; it is passed to update_ref_lock().  */
 end_comment
 
 begin_comment
@@ -1217,6 +1201,11 @@ parameter_list|,
 name|int
 name|have_old
 parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|msg
+parameter_list|,
 name|struct
 name|strbuf
 modifier|*
@@ -1251,6 +1240,11 @@ name|new_sha1
 parameter_list|,
 name|int
 name|flags
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|msg
 parameter_list|,
 name|struct
 name|strbuf
@@ -1290,6 +1284,11 @@ parameter_list|,
 name|int
 name|have_old
 parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|msg
+parameter_list|,
 name|struct
 name|strbuf
 modifier|*
@@ -1299,8 +1298,32 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Commit all of the changes that have been queued in transaction, as  * atomically as possible.  Return a nonzero value if there is a  * problem.  */
+comment|/*  * Commit all of the changes that have been queued in transaction, as  * atomically as possible.  *  * Returns 0 for success, or one of the below error codes for errors.  */
 end_comment
+
+begin_comment
+comment|/* Naming conflict (for example, the ref names A and A/B conflict). */
+end_comment
+
+begin_define
+DECL|macro|TRANSACTION_NAME_CONFLICT
+define|#
+directive|define
+name|TRANSACTION_NAME_CONFLICT
+value|-1
+end_define
+
+begin_comment
+comment|/* All other errors. */
+end_comment
+
+begin_define
+DECL|macro|TRANSACTION_GENERIC_ERROR
+define|#
+directive|define
+name|TRANSACTION_GENERIC_ERROR
+value|-2
+end_define
 
 begin_function_decl
 name|int
@@ -1310,11 +1333,6 @@ name|struct
 name|ref_transaction
 modifier|*
 name|transaction
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|msg
 parameter_list|,
 name|struct
 name|strbuf

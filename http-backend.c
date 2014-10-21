@@ -2240,9 +2240,9 @@ name|resolve_ref_unsafe
 argument_list|(
 name|refname
 argument_list|,
-name|unused
+name|RESOLVE_REF_READING
 argument_list|,
-literal|1
+name|unused
 argument_list|,
 name|NULL
 argument_list|)

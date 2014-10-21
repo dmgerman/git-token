@@ -89,9 +89,9 @@ name|resolve_ref_unsafe
 argument_list|(
 name|HEAD
 argument_list|,
-name|sha1
-argument_list|,
 literal|0
+argument_list|,
+name|sha1
 argument_list|,
 operator|&
 name|flag

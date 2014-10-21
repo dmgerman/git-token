@@ -1847,6 +1847,12 @@ directive|include
 file|"wildmatch.h"
 end_include
 
+begin_struct_decl
+struct_decl|struct
+name|strbuf
+struct_decl|;
+end_struct_decl
+
 begin_comment
 comment|/* General helper functions */
 end_comment
@@ -4905,7 +4911,7 @@ directive|endif
 end_endif
 
 begin_comment
-comment|/*  * Preserves errno, prints a message, but gives no warning for ENOENT.  * Always returns the return value of unlink(2).  */
+comment|/*  * Preserves errno, prints a message, but gives no warning for ENOENT.  * Returns 0 on success, which includes trying to unlink an object that does  * not exist.  */
 end_comment
 
 begin_function_decl
@@ -4921,7 +4927,28 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Likewise for rmdir(2).  */
+comment|/*   * Tries to unlink file.  Returns 0 if unlink succeeded   * or the file already didn't exist.  Returns -1 and   * appends a message to err suitable for   * 'error("%s", err->buf)' on error.   */
+end_comment
+
+begin_function_decl
+name|int
+name|unlink_or_msg
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|file
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|err
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/*  * Preserves errno, prints a message, but gives no warning for ENOENT.  * Returns 0 on success, which includes trying to remove a directory that does  * not exist.  */
 end_comment
 
 begin_function_decl

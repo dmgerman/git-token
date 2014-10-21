@@ -1947,9 +1947,9 @@ name|e
 operator|->
 name|name
 argument_list|,
-name|sha1
+name|RESOLVE_REF_READING
 argument_list|,
-literal|1
+name|sha1
 argument_list|,
 operator|&
 name|flag

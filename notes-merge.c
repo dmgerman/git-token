@@ -3123,9 +3123,9 @@ name|o
 operator|->
 name|local_ref
 argument_list|,
-name|local_sha1
-argument_list|,
 literal|0
+argument_list|,
+name|local_sha1
 argument_list|,
 name|NULL
 argument_list|)
