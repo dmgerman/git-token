@@ -1292,10 +1292,6 @@ modifier|*
 name|extra
 parameter_list|)
 block|{
-specifier|static
-name|int
-name|installed_handler
-decl_stmt|;
 name|struct
 name|strbuf
 name|sb
@@ -1349,12 +1345,6 @@ operator|.
 name|buf
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|installed_handler
-condition|)
-block|{
 name|atexit
 argument_list|(
 name|remove_temporary_shallow
@@ -1365,7 +1355,6 @@ argument_list|(
 name|remove_temporary_shallow_on_signal
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|write_in_full

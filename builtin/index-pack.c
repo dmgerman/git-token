@@ -997,6 +997,22 @@ name|deepest_delta_unlock
 parameter_list|()
 end_define
 
+begin_define
+DECL|macro|type_cas_lock
+define|#
+directive|define
+name|type_cas_lock
+parameter_list|()
+end_define
+
+begin_define
+DECL|macro|type_cas_unlock
+define|#
+directive|define
+name|type_cas_unlock
+parameter_list|()
+end_define
+
 begin_endif
 endif|#
 directive|endif

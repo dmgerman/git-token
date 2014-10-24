@@ -2382,14 +2382,6 @@ name|junk_git_dir
 decl_stmt|;
 end_decl_stmt
 
-begin_decl_stmt
-DECL|variable|junk_pid
-specifier|static
-name|pid_t
-name|junk_pid
-decl_stmt|;
-end_decl_stmt
-
 begin_enum
 specifier|static
 enum|enum
@@ -2469,14 +2461,6 @@ default|default:
 comment|/* proceed to removal */
 break|break;
 block|}
-if|if
-condition|(
-name|getpid
-argument_list|()
-operator|!=
-name|junk_pid
-condition|)
-return|return;
 if|if
 condition|(
 name|junk_git_dir
@@ -4301,11 +4285,6 @@ name|char
 modifier|*
 name|fetch_pattern
 decl_stmt|;
-name|junk_pid
-operator|=
-name|getpid
-argument_list|()
-expr_stmt|;
 name|packet_trace_identity
 argument_list|(
 literal|"clone"
