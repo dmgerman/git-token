@@ -2209,17 +2209,10 @@ literal|1
 argument_list|)
 expr_stmt|;
 comment|/* write pack */
-name|memset
+name|child_process_init
 argument_list|(
 operator|&
 name|rls
-argument_list|,
-literal|0
-argument_list|,
-sizeof|sizeof
-argument_list|(
-name|rls
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|argv_array_pushl
