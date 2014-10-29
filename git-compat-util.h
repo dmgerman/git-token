@@ -4931,6 +4931,11 @@ name|_MSC_VER
 operator|>=
 literal|1400
 operator|)
+operator|||
+name|defined
+argument_list|(
+name|__C99_MACRO_WITH_VA_ARGS
+argument_list|)
 end_if
 
 begin_define
