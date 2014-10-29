@@ -4355,7 +4355,7 @@ name|isxdigit
 parameter_list|(
 name|x
 parameter_list|)
-value|(hexval_table[x] != -1)
+value|(hexval_table[(unsigned char)(x)] != -1)
 end_define
 
 begin_define
