@@ -1558,6 +1558,16 @@ condition|)
 return|return
 name|subcnt
 return|;
+if|if
+condition|(
+operator|!
+name|subcnt
+condition|)
+name|die
+argument_list|(
+literal|"index cache-tree records empty sub-tree"
+argument_list|)
+expr_stmt|;
 name|i
 operator|+=
 name|subcnt
