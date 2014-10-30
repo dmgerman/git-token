@@ -5229,8 +5229,6 @@ argument_list|(
 name|one
 argument_list|,
 name|two
-argument_list|,
-literal|1
 argument_list|)
 expr_stmt|;
 if|if

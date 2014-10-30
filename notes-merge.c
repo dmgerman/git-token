@@ -3361,8 +3361,6 @@ argument_list|(
 name|local
 argument_list|,
 name|remote
-argument_list|,
-literal|1
 argument_list|)
 expr_stmt|;
 if|if
