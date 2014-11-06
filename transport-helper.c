@@ -2366,17 +2366,9 @@ decl_stmt|;
 name|int
 name|i
 decl_stmt|;
-name|memset
+name|child_process_init
 argument_list|(
 name|fastexport
-argument_list|,
-literal|0
-argument_list|,
-sizeof|sizeof
-argument_list|(
-operator|*
-name|fastexport
-argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* we need to duplicate helper->in because we want to use it after 	 * fastexport is done with it. */
