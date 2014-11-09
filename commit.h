@@ -2018,6 +2018,23 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* Find the end of the log message, the right place for a new trailer. */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|ignore_non_trailer
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+name|sb
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_typedef
 DECL|typedef|each_mergetag_fn
 typedef|typedef
