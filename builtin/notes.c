@@ -1523,9 +1523,6 @@ operator|&
 name|len
 argument_list|)
 operator|)
-operator|||
-operator|!
-name|len
 condition|)
 block|{
 name|free
