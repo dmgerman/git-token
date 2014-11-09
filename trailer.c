@@ -1355,6 +1355,8 @@ decl_stmt|;
 name|struct
 name|child_process
 name|cp
+init|=
+name|CHILD_PROCESS_INIT
 decl_stmt|;
 specifier|const
 name|char
@@ -1403,12 +1405,6 @@ operator|=
 name|cmd
 operator|.
 name|buf
-expr_stmt|;
-name|child_process_init
-argument_list|(
-operator|&
-name|cp
-argument_list|)
 expr_stmt|;
 name|cp
 operator|.
