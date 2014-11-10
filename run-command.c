@@ -3416,7 +3416,9 @@ DECL|function|git_atexit_dispatch
 specifier|static
 name|void
 name|git_atexit_dispatch
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 name|size_t
 name|i
@@ -3453,7 +3455,9 @@ DECL|function|git_atexit_clear
 specifier|static
 name|void
 name|git_atexit_clear
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 name|free
 argument_list|(
