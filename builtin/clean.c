@@ -366,7 +366,9 @@ function_decl|(
 modifier|*
 name|fn
 function_decl|)
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 function_decl|;
 block|}
 struct|;
