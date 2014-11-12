@@ -2300,10 +2300,6 @@ name|prefix
 parameter_list|)
 block|{
 name|int
-name|retval
-init|=
-literal|0
-decl_stmt|,
 name|force
 init|=
 literal|0
@@ -2576,32 +2572,48 @@ operator|!
 name|force
 condition|)
 block|{
+name|free_notes
+argument_list|(
+name|t
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
-operator|!
 name|d
 operator|.
 name|given
 condition|)
 block|{
-comment|/* 				 * Redirect to "edit" subcommand. 				 * 				 * We only end up here if none of -m/-F/-c/-C 				 * or -f are given. The original args are 				 * therefore still in argv[0-1]. 				 */
-name|argv
-index|[
-literal|0
-index|]
-operator|=
-literal|"edit"
-expr_stmt|;
 name|free_note_data
 argument_list|(
 operator|&
 name|d
 argument_list|)
 expr_stmt|;
-name|free_notes
+return|return
+name|error
 argument_list|(
-name|t
+name|_
+argument_list|(
+literal|"Cannot add notes. "
+literal|"Found existing notes for object %s. "
+literal|"Use '-f' to overwrite existing notes"
 argument_list|)
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|object
+argument_list|)
+argument_list|)
+return|;
+block|}
+comment|/* 			 * Redirect to "edit" subcommand. 			 * 			 * We only end up here if none of -m/-F/-c/-C or -f are 			 * given. The original args are therefore still in 			 * argv[0-1]. 			 */
+name|argv
+index|[
+literal|0
+index|]
+operator|=
+literal|"edit"
 expr_stmt|;
 return|return
 name|append_edit
@@ -2613,27 +2625,6 @@ argument_list|,
 name|prefix
 argument_list|)
 return|;
-block|}
-name|retval
-operator|=
-name|error
-argument_list|(
-name|_
-argument_list|(
-literal|"Cannot add notes. Found existing notes "
-literal|"for object %s. Use '-f' to overwrite "
-literal|"existing notes"
-argument_list|)
-argument_list|,
-name|sha1_to_hex
-argument_list|(
-name|object
-argument_list|)
-argument_list|)
-expr_stmt|;
-goto|goto
-name|out
-goto|;
 block|}
 name|fprintf
 argument_list|(
@@ -2734,15 +2725,13 @@ argument_list|,
 name|logmsg
 argument_list|)
 expr_stmt|;
-name|out
-label|:
 name|free_notes
 argument_list|(
 name|t
 argument_list|)
 expr_stmt|;
 return|return
-name|retval
+literal|0
 return|;
 block|}
 end_function
