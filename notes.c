@@ -6280,9 +6280,6 @@ name|msglen
 argument_list|)
 operator|)
 operator|||
-operator|!
-name|msglen
-operator|||
 name|type
 operator|!=
 name|OBJ_BLOB
