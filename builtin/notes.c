@@ -93,7 +93,7 @@ argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git notes [--ref<notes_ref>] add [-f] [-m<msg> | -F<file> | (-c | -C)<object>] [<object>]"
+literal|"git notes [--ref<notes_ref>] add [-f] [--allow-empty] [-m<msg> | -F<file> | (-c | -C)<object>] [<object>]"
 argument_list|)
 block|,
 name|N_
@@ -103,12 +103,12 @@ argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git notes [--ref<notes_ref>] append [-m<msg> | -F<file> | (-c | -C)<object>] [<object>]"
+literal|"git notes [--ref<notes_ref>] append [--allow-empty] [-m<msg> | -F<file> | (-c | -C)<object>] [<object>]"
 argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git notes [--ref<notes_ref>] edit [<object>]"
+literal|"git notes [--ref<notes_ref>] edit [--allow-empty] [<object>]"
 argument_list|)
 block|,
 name|N_
@@ -2183,6 +2183,10 @@ name|int
 name|force
 init|=
 literal|0
+decl_stmt|,
+name|allow_empty
+init|=
+literal|0
 decl_stmt|;
 specifier|const
 name|char
@@ -2331,6 +2335,21 @@ name|PARSE_OPT_NONEG
 block|,
 name|parse_reuse_arg
 block|}
+block|,
+name|OPT_BOOL
+argument_list|(
+literal|0
+argument_list|,
+literal|"allow-empty"
+argument_list|,
+operator|&
+name|allow_empty
+argument_list|,
+name|N_
+argument_list|(
+literal|"allow storing empty note"
+argument_list|)
+argument_list|)
 block|,
 name|OPT__FORCE
 argument_list|(
@@ -2533,6 +2552,8 @@ operator|.
 name|buf
 operator|.
 name|len
+operator|||
+name|allow_empty
 condition|)
 block|{
 name|write_note_data
@@ -3065,6 +3086,11 @@ modifier|*
 name|prefix
 parameter_list|)
 block|{
+name|int
+name|allow_empty
+init|=
+literal|0
+decl_stmt|;
 specifier|const
 name|char
 modifier|*
@@ -3225,6 +3251,21 @@ name|PARSE_OPT_NONEG
 block|,
 name|parse_reuse_arg
 block|}
+block|,
+name|OPT_BOOL
+argument_list|(
+literal|0
+argument_list|,
+literal|"allow-empty"
+argument_list|,
+operator|&
+name|allow_empty
+argument_list|,
+name|N_
+argument_list|(
+literal|"allow storing empty note"
+argument_list|)
+argument_list|)
 block|,
 name|OPT_END
 argument_list|()
@@ -3480,6 +3521,8 @@ operator|.
 name|buf
 operator|.
 name|len
+operator|||
+name|allow_empty
 condition|)
 block|{
 name|write_note_data
