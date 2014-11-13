@@ -2393,11 +2393,11 @@ name|struct
 name|tm
 modifier|*
 name|tm
-parameter_list|)
-block|{
+parameter_list|,
 name|time_t
 name|now
-decl_stmt|;
+parameter_list|)
+block|{
 name|struct
 name|tm
 name|now_tm
@@ -2534,6 +2534,11 @@ case|:
 case|case
 literal|'.'
 case|:
+if|if
+condition|(
+operator|!
+name|now
+condition|)
 name|now
 operator|=
 name|time
@@ -2871,6 +2876,8 @@ argument_list|,
 name|end
 argument_list|,
 name|tm
+argument_list|,
+literal|0
 argument_list|)
 decl_stmt|;
 if|if
@@ -5550,6 +5557,9 @@ parameter_list|,
 name|int
 modifier|*
 name|num
+parameter_list|,
+name|time_t
+name|now
 parameter_list|)
 block|{
 name|char
@@ -5614,6 +5624,8 @@ argument_list|,
 name|end
 argument_list|,
 name|tm
+argument_list|,
+name|now
 argument_list|)
 decl_stmt|;
 if|if
@@ -5929,6 +5941,8 @@ name|tm
 argument_list|,
 operator|&
 name|number
+argument_list|,
+name|time_sec
 argument_list|)
 expr_stmt|;
 name|touched
