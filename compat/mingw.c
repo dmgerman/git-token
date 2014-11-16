@@ -1898,8 +1898,10 @@ operator|&&
 operator|(
 name|oflags
 operator|&
-name|O_CREAT
+name|O_ACCMODE
 operator|)
+operator|!=
+name|O_RDONLY
 operator|&&
 name|errno
 operator|==
