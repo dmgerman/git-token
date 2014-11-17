@@ -17719,7 +17719,7 @@ comment|/* ok, the textual part looks sane */
 else|else
 name|die
 argument_list|(
-literal|"sha1 information is lacking or useless for submoule %s"
+literal|"sha1 information is lacking or useless for submodule %s"
 argument_list|,
 name|name
 argument_list|)
