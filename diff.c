@@ -1497,20 +1497,16 @@ argument_list|(
 name|var
 argument_list|)
 return|;
+return|return
 name|color_parse
 argument_list|(
 name|value
-argument_list|,
-name|var
 argument_list|,
 name|diff_colors
 index|[
 name|slot
 index|]
 argument_list|)
-expr_stmt|;
-return|return
-literal|0
 return|;
 block|}
 comment|/* like GNU diff's --suppress-blank-empty option  */

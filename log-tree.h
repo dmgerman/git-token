@@ -47,8 +47,9 @@ modifier|*
 name|var
 parameter_list|,
 specifier|const
-name|int
-name|ofs
+name|char
+modifier|*
+name|slot_name
 parameter_list|,
 specifier|const
 name|char

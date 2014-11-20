@@ -4951,6 +4951,8 @@ operator|+=
 literal|5
 expr_stmt|;
 block|}
+if|if
+condition|(
 name|color_parse_mem
 argument_list|(
 name|begin
@@ -4959,9 +4961,17 @@ name|end
 operator|-
 name|begin
 argument_list|,
-literal|"--pretty format"
-argument_list|,
 name|color
+argument_list|)
+operator|<
+literal|0
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"unable to parse --pretty format"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|strbuf_addstr
