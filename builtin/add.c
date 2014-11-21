@@ -1754,13 +1754,9 @@ literal|"Use -f if you really want to add them.\n"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|die
-argument_list|(
-name|_
-argument_list|(
-literal|"no files added"
-argument_list|)
-argument_list|)
+name|exit_status
+operator|=
+literal|1
 expr_stmt|;
 block|}
 for|for
