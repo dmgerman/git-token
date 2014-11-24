@@ -917,7 +917,7 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|strcmp
+name|strcasecmp
 argument_list|(
 name|name
 argument_list|,
