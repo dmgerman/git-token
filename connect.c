@@ -458,7 +458,7 @@ operator|+
 literal|1
 expr_stmt|;
 block|}
-name|sort_string_list
+name|string_list_sort
 argument_list|(
 operator|&
 name|symref

@@ -2096,7 +2096,7 @@ name|opts
 init|=
 literal|0
 decl_stmt|;
-name|sort_string_list
+name|string_list_sort
 argument_list|(
 operator|&
 name|names

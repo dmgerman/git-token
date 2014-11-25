@@ -4524,7 +4524,7 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-name|sort_string_list
+name|string_list_sort
 argument_list|(
 operator|&
 name|sort_uniq_list
