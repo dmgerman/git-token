@@ -8355,7 +8355,7 @@ name|states
 decl_stmt|;
 name|struct
 name|string_list
-name|delete_refs_list
+name|refs_to_prune
 init|=
 name|STRING_LIST_INIT_NODUP
 decl_stmt|;
@@ -8494,7 +8494,7 @@ decl_stmt|;
 name|string_list_append
 argument_list|(
 operator|&
-name|delete_refs_list
+name|refs_to_prune
 argument_list|,
 name|refname
 argument_list|)
@@ -8503,7 +8503,7 @@ block|}
 name|sort_string_list
 argument_list|(
 operator|&
-name|delete_refs_list
+name|refs_to_prune
 argument_list|)
 expr_stmt|;
 if|if
@@ -8523,7 +8523,7 @@ condition|(
 name|repack_without_refs
 argument_list|(
 operator|&
-name|delete_refs_list
+name|refs_to_prune
 argument_list|,
 operator|&
 name|err
@@ -8640,13 +8640,13 @@ argument_list|,
 name|dangling_msg
 argument_list|,
 operator|&
-name|delete_refs_list
+name|refs_to_prune
 argument_list|)
 expr_stmt|;
 name|string_list_clear
 argument_list|(
 operator|&
-name|delete_refs_list
+name|refs_to_prune
 argument_list|,
 literal|0
 argument_list|)
