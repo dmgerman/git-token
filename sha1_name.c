@@ -1922,13 +1922,6 @@ index|[
 literal|41
 index|]
 decl_stmt|;
-name|exists
-operator|=
-name|has_sha1_file
-argument_list|(
-name|sha1
-argument_list|)
-expr_stmt|;
 name|memcpy
 argument_list|(
 name|hex
@@ -1953,6 +1946,13 @@ condition|)
 return|return
 name|hex
 return|;
+name|exists
+operator|=
+name|has_sha1_file
+argument_list|(
+name|sha1
+argument_list|)
+expr_stmt|;
 while|while
 condition|(
 name|len
