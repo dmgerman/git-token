@@ -1507,15 +1507,20 @@ name|ret
 init|=
 literal|0
 decl_stmt|;
-comment|/* 	 * git_config() can't be used here because it calls git_pathdup() 	 * to get $GIT_CONFIG/config. That call will make setup_git_env() 	 * set git_dir to ".git". 	 * 	 * We are in gitdir setup, no git dir has been found useable yet. 	 * Use a gentler version of git_config() to check if this repo 	 * is a good one. 	 */
-name|strbuf_addf
+name|get_common_dir
 argument_list|(
 operator|&
 name|sb
 argument_list|,
-literal|"%s/config"
-argument_list|,
 name|gitdir
+argument_list|)
+expr_stmt|;
+name|strbuf_addstr
+argument_list|(
+operator|&
+name|sb
+argument_list|,
+literal|"/config"
 argument_list|)
 expr_stmt|;
 name|repo_config
@@ -1524,6 +1529,7 @@ name|sb
 operator|.
 name|buf
 expr_stmt|;
+comment|/* 	 * git_config() can't be used here because it calls git_pathdup() 	 * to get $GIT_CONFIG/config. That call will make setup_git_env() 	 * set git_dir to ".git". 	 * 	 * We are in gitdir setup, no git dir has been found useable yet. 	 * Use a gentler version of git_config() to check if this repo 	 * is a good one. 	 */
 name|git_config_early
 argument_list|(
 name|check_repository_format_version
