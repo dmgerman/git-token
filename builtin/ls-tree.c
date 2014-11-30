@@ -926,6 +926,8 @@ argument_list|,
 name|PATHSPEC_GLOB
 operator||
 name|PATHSPEC_ICASE
+operator||
+name|PATHSPEC_EXCLUDE
 argument_list|,
 name|PATHSPEC_PREFER_CWD
 argument_list|,
