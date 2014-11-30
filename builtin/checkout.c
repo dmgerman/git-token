@@ -7439,6 +7439,16 @@ name|NULL
 expr_stmt|;
 if|if
 condition|(
+operator|!
+name|opts
+operator|.
+name|new_worktree
+condition|)
+name|setup_work_tree
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
 name|conflict_style
 condition|)
 block|{
