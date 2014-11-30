@@ -381,10 +381,15 @@ if|if
 condition|(
 name|verbose
 condition|)
+block|{
 name|report_garbage
 operator|=
 name|real_report_garbage
 expr_stmt|;
+name|report_linked_checkout_garbage
+argument_list|()
+expr_stmt|;
+block|}
 name|for_each_loose_file_in_objdir
 argument_list|(
 name|get_object_directory

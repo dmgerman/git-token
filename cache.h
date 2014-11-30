@@ -4462,6 +4462,16 @@ unit|)))
 empty_stmt|;
 end_empty_stmt
 
+begin_function_decl
+specifier|extern
+name|void
+name|report_linked_checkout_garbage
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/*  * Return the name of the file in the local object database that would  * be used to store a loose object with the specified sha1.  The  * return value is a pointer to a statically allocated buffer that is  * overwritten each time the function is called.  */
 end_comment
