@@ -1565,10 +1565,6 @@ name|buf
 operator|->
 name|len
 decl_stmt|;
-name|FILE
-modifier|*
-name|f
-decl_stmt|;
 comment|/* when called via for_each_ref(), flags is non-zero */
 if|if
 condition|(
@@ -1609,23 +1605,13 @@ operator|->
 name|buf
 argument_list|)
 operator|||
-operator|!
-operator|(
-name|f
-operator|=
-name|fopen
+name|write_file
 argument_list|(
 name|buf
 operator|->
 name|buf
 argument_list|,
-literal|"w"
-argument_list|)
-operator|)
-operator|||
-name|fprintf
-argument_list|(
-name|f
+literal|0
 argument_list|,
 literal|"%s\n"
 argument_list|,
@@ -1634,22 +1620,20 @@ argument_list|(
 name|sha1
 argument_list|)
 argument_list|)
-operator|<
-literal|0
-operator|||
-name|fclose
-argument_list|(
-name|f
-argument_list|)
 condition|)
 return|return
 name|error
 argument_list|(
-literal|"problems writing temporary file %s"
+literal|"problems writing temporary file %s: %s"
 argument_list|,
 name|buf
 operator|->
 name|buf
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
 argument_list|)
 return|;
 name|strbuf_setlen
