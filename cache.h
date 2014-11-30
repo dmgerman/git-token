@@ -4223,16 +4223,13 @@ end_empty_stmt
 
 begin_function_decl
 specifier|extern
-name|char
-modifier|*
-name|git_snpath
+name|void
+name|strbuf_git_path
 parameter_list|(
-name|char
+name|struct
+name|strbuf
 modifier|*
-name|buf
-parameter_list|,
-name|size_t
-name|n
+name|sb
 parameter_list|,
 specifier|const
 name|char
@@ -4247,9 +4244,9 @@ function_decl|(format
 parameter_list|(
 name|printf
 parameter_list|,
-function_decl|3
+function_decl|2
 operator|,
-function_decl|4
+function_decl|3
 end_function_decl
 
 begin_empty_stmt
