@@ -579,8 +579,6 @@ literal|"!/logs"
 block|,
 literal|"/lost-found"
 block|,
-literal|"/modules"
-block|,
 literal|"/objects"
 block|,
 literal|"/refs"
