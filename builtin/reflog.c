@@ -1911,11 +1911,11 @@ condition|)
 block|{
 name|newlog_path
 operator|=
-name|git_pathdup
+name|mkpathdup
 argument_list|(
-literal|"logs/%s.lock"
+literal|"%s.lock"
 argument_list|,
-name|ref
+name|log_file
 argument_list|)
 expr_stmt|;
 name|cb
