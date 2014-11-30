@@ -4740,6 +4740,12 @@ name|file_exists
 argument_list|(
 name|path
 argument_list|)
+operator|&&
+operator|!
+name|is_empty_dir
+argument_list|(
+name|path
+argument_list|)
 condition|)
 name|die
 argument_list|(
