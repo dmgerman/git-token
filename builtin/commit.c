@@ -829,7 +829,7 @@ name|file_exists
 argument_list|(
 name|git_path
 argument_list|(
-literal|"sequencer"
+name|SEQ_DIR
 argument_list|)
 argument_list|)
 condition|)
