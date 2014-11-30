@@ -5659,6 +5659,7 @@ decl_stmt|,
 modifier|*
 name|p
 decl_stmt|;
+specifier|const
 name|char
 modifier|*
 name|path
@@ -9846,6 +9847,7 @@ modifier|*
 name|type_p
 parameter_list|)
 block|{
+specifier|const
 name|char
 modifier|*
 name|ref_file
@@ -10194,7 +10196,7 @@ name|retry
 label|:
 switch|switch
 condition|(
-name|safe_create_leading_directories
+name|safe_create_leading_directories_const
 argument_list|(
 name|ref_file
 argument_list|)
@@ -12160,7 +12162,7 @@ name|retry
 label|:
 switch|switch
 condition|(
-name|safe_create_leading_directories
+name|safe_create_leading_directories_const
 argument_list|(
 name|git_path
 argument_list|(

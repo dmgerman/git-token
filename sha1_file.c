@@ -1972,6 +1972,7 @@ argument_list|,
 name|LOCK_DIE_ON_ERROR
 argument_list|)
 decl_stmt|;
+specifier|const
 name|char
 modifier|*
 name|alt

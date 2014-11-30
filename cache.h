@@ -4321,6 +4321,7 @@ end_comment
 
 begin_function_decl
 specifier|extern
+specifier|const
 name|char
 modifier|*
 name|mkpath
@@ -4350,6 +4351,7 @@ end_empty_stmt
 
 begin_function_decl
 specifier|extern
+specifier|const
 name|char
 modifier|*
 name|git_path
@@ -4379,6 +4381,7 @@ end_empty_stmt
 
 begin_function_decl
 specifier|extern
+specifier|const
 name|char
 modifier|*
 name|git_path_submodule

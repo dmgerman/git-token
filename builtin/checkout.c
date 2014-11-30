@@ -3166,6 +3166,7 @@ index|[
 name|PATH_MAX
 index|]
 decl_stmt|;
+specifier|const
 name|char
 modifier|*
 name|ref_name

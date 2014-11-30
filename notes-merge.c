@@ -1557,7 +1557,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|safe_create_leading_directories
+name|safe_create_leading_directories_const
 argument_list|(
 name|git_path
 argument_list|(
@@ -1634,6 +1634,7 @@ block|{
 name|int
 name|fd
 decl_stmt|;
+specifier|const
 name|char
 modifier|*
 name|path
@@ -1651,7 +1652,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|safe_create_leading_directories
+name|safe_create_leading_directories_const
 argument_list|(
 name|path
 argument_list|)
