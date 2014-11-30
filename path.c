@@ -647,6 +647,15 @@ literal|"logs"
 argument_list|,
 literal|"HEAD"
 argument_list|)
+operator|||
+name|is_dir_file
+argument_list|(
+name|base
+argument_list|,
+literal|"info"
+argument_list|,
+literal|"sparse-checkout"
+argument_list|)
 condition|)
 return|return;
 comment|/* keep this in $GIT_DIR */
