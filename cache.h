@@ -1958,6 +1958,14 @@ value|"GIT_DIR"
 end_define
 
 begin_define
+DECL|macro|GIT_COMMON_DIR_ENVIRONMENT
+define|#
+directive|define
+name|GIT_COMMON_DIR_ENVIRONMENT
+value|"GIT_COMMON_DIR"
+end_define
+
+begin_define
 DECL|macro|GIT_NAMESPACE_ENVIRONMENT
 define|#
 directive|define
@@ -2243,6 +2251,18 @@ specifier|const
 name|char
 modifier|*
 name|get_git_dir
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+specifier|const
+name|char
+modifier|*
+name|get_git_common_dir
 parameter_list|(
 name|void
 parameter_list|)
@@ -3948,6 +3968,8 @@ decl_stmt|,
 name|git_index_env
 decl_stmt|,
 name|git_graft_env
+decl_stmt|,
+name|git_common_dir_env
 decl_stmt|;
 end_decl_stmt
 
