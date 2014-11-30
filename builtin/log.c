@@ -2626,13 +2626,10 @@ name|char
 modifier|*
 name|sha1
 parameter_list|,
-specifier|const
-name|char
+name|struct
+name|strbuf
 modifier|*
 name|base
-parameter_list|,
-name|int
-name|baselen
 parameter_list|,
 specifier|const
 name|char
