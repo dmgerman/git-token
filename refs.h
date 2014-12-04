@@ -1166,7 +1166,7 @@ comment|/*  * The following functions add a reference check or update to a  * re
 end_comment
 
 begin_comment
-comment|/*  * Add a reference update to transaction.  new_sha1 is the value that  * the reference should have after the update, or zeros if it should  * be deleted.  If have_old is true, then old_sha1 holds the value  * that the reference should have had before the update, or zeros if  * it must not have existed beforehand.  * Function returns 0 on success and non-zero on failure. A failure to update  * means that the transaction as a whole has failed and will need to be  * rolled back.  */
+comment|/*  * Add a reference update to transaction.  new_sha1 is the value that  * the reference should have after the update, or null_sha1 if it should  * be deleted.  If have_old is true, then old_sha1 holds the value  * that the reference should have had before the update, or zeros if  * it must not have existed beforehand.  * Function returns 0 on success and non-zero on failure. A failure to update  * means that the transaction as a whole has failed and will need to be  * rolled back.  */
 end_comment
 
 begin_function_decl
