@@ -14852,16 +14852,9 @@ name|sb
 operator|.
 name|len
 condition|)
-name|ret
-operator|=
-name|show_one_reflog_ent
+name|die
 argument_list|(
-operator|&
-name|sb
-argument_list|,
-name|fn
-argument_list|,
-name|cb_data
+literal|"BUG: reverse reflog parser had leftover data"
 argument_list|)
 expr_stmt|;
 name|fclose
