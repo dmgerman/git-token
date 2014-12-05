@@ -2430,7 +2430,7 @@ if|if
 condition|(
 name|nonce_stamp_slop_limit
 operator|&&
-name|abs
+name|labs
 argument_list|(
 name|nonce_stamp_slop
 argument_list|)
