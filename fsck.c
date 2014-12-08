@@ -2591,7 +2591,16 @@ name|object
 argument_list|,
 name|FSCK_WARN
 argument_list|,
-literal|"invalid 'tag' name: %s"
+literal|"invalid 'tag' name: %.*s"
+argument_list|,
+call|(
+name|int
+call|)
+argument_list|(
+name|eol
+operator|-
+name|buffer
+argument_list|)
 argument_list|,
 name|buffer
 argument_list|)
