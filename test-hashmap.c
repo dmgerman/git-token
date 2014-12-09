@@ -334,6 +334,8 @@ block|{
 name|unsigned
 name|int
 name|hash
+init|=
+literal|0
 decl_stmt|;
 switch|switch
 condition|(
