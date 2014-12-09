@@ -723,22 +723,6 @@ return|;
 block|}
 end_function
 
-begin_define
-DECL|macro|COLOR_FOREGROUND
-define|#
-directive|define
-name|COLOR_FOREGROUND
-value|'3'
-end_define
-
-begin_define
-DECL|macro|COLOR_BACKGROUND
-define|#
-directive|define
-name|COLOR_BACKGROUND
-value|'4'
-end_define
-
 begin_comment
 comment|/*  * Write the ANSI color codes for "c" to "out"; the string should  * already have the ANSI escape code in it. "out" should have enough  * space in it to fit any color.  */
 end_comment
@@ -1220,6 +1204,7 @@ operator|++
 operator|=
 literal|';'
 expr_stmt|;
+comment|/* foreground colors are all in the 3x range */
 name|dst
 operator|=
 name|color_output
@@ -1229,7 +1214,7 @@ argument_list|,
 operator|&
 name|fg
 argument_list|,
-name|COLOR_FOREGROUND
+literal|'3'
 argument_list|)
 expr_stmt|;
 block|}
@@ -1254,6 +1239,7 @@ operator|++
 operator|=
 literal|';'
 expr_stmt|;
+comment|/* background colors are all in the 4x range */
 name|dst
 operator|=
 name|color_output
@@ -1263,7 +1249,7 @@ argument_list|,
 operator|&
 name|bg
 argument_list|,
-name|COLOR_BACKGROUND
+literal|'4'
 argument_list|)
 expr_stmt|;
 block|}
