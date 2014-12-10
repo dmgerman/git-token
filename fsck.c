@@ -934,6 +934,11 @@ name|is_hfs_dotgit
 argument_list|(
 name|name
 argument_list|)
+operator|||
+name|is_ntfs_dotgit
+argument_list|(
+name|name
+argument_list|)
 condition|)
 name|has_dotgit
 operator|=
