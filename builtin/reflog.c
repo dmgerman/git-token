@@ -2179,6 +2179,10 @@ name|char
 modifier|*
 name|sha1
 parameter_list|,
+name|unsigned
+name|int
+name|flags
+parameter_list|,
 name|struct
 name|cmd_reflog_expire_cb
 modifier|*
@@ -3423,6 +3427,12 @@ name|explicit_expiry
 init|=
 literal|0
 decl_stmt|;
+name|unsigned
+name|int
+name|flags
+init|=
+literal|0
+decl_stmt|;
 name|default_reflog_expire_unreachable
 operator|=
 name|now
@@ -3871,6 +3881,8 @@ name|e
 operator|->
 name|sha1
 argument_list|,
+name|flags
+argument_list|,
 operator|&
 name|cb
 argument_list|)
@@ -3967,6 +3979,8 @@ argument_list|(
 name|ref
 argument_list|,
 name|sha1
+argument_list|,
+name|flags
 argument_list|,
 operator|&
 name|cb
@@ -4077,6 +4091,12 @@ name|int
 name|i
 decl_stmt|,
 name|status
+init|=
+literal|0
+decl_stmt|;
+name|unsigned
+name|int
+name|flags
 init|=
 literal|0
 decl_stmt|;
@@ -4419,6 +4439,8 @@ argument_list|(
 name|ref
 argument_list|,
 name|sha1
+argument_list|,
+name|flags
 argument_list|,
 operator|&
 name|cb
