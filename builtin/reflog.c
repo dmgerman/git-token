@@ -231,6 +231,11 @@ DECL|struct|expire_reflog_cb
 struct|struct
 name|expire_reflog_cb
 block|{
+DECL|member|flags
+name|unsigned
+name|int
+name|flags
+decl_stmt|;
 DECL|member|policy_cb
 name|void
 modifier|*
@@ -2278,6 +2283,12 @@ argument_list|(
 name|policy_cb
 argument_list|)
 argument_list|)
+expr_stmt|;
+name|cb
+operator|.
+name|flags
+operator|=
+name|flags
 expr_stmt|;
 name|cb
 operator|.
