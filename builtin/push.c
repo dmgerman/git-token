@@ -2499,10 +2499,7 @@ block|,
 operator|&
 name|flags
 block|,
-name|N_
-argument_list|(
-literal|"check"
-argument_list|)
+literal|"check|on-demand"
 block|,
 name|N_
 argument_list|(
