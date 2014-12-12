@@ -5546,6 +5546,17 @@ operator|->
 name|result
 expr_stmt|;
 block|}
+else|else
+block|{
+name|discard_index
+argument_list|(
+operator|&
+name|o
+operator|->
+name|result
+argument_list|)
+expr_stmt|;
+block|}
 name|done
 label|:
 name|clear_exclude_list
