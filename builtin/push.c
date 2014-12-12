@@ -859,6 +859,9 @@ name|branch
 parameter_list|,
 name|int
 name|triangular
+parameter_list|,
+name|int
+name|simple
 parameter_list|)
 block|{
 name|struct
@@ -969,9 +972,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|push_default
-operator|==
-name|PUSH_DEFAULT_SIMPLE
+name|simple
 condition|)
 block|{
 comment|/* Additional safety */
@@ -1249,6 +1250,8 @@ argument_list|,
 name|branch
 argument_list|,
 name|triangular
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 break|break;
@@ -1262,6 +1265,8 @@ argument_list|,
 name|branch
 argument_list|,
 name|triangular
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 break|break;
