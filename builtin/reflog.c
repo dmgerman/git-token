@@ -1785,7 +1785,7 @@ parameter_list|(
 specifier|const
 name|char
 modifier|*
-name|ref
+name|refname
 parameter_list|,
 specifier|const
 name|unsigned
@@ -1850,7 +1850,7 @@ name|lock
 operator|=
 name|lock_any_ref_for_update
 argument_list|(
-name|ref
+name|refname
 argument_list|,
 name|sha1
 argument_list|,
@@ -1869,7 +1869,7 @@ name|error
 argument_list|(
 literal|"cannot lock ref '%s'"
 argument_list|,
-name|ref
+name|refname
 argument_list|)
 return|;
 name|log_file
@@ -1878,7 +1878,7 @@ name|git_pathdup
 argument_list|(
 literal|"logs/%s"
 argument_list|,
-name|ref
+name|refname
 argument_list|)
 expr_stmt|;
 if|if
@@ -1886,7 +1886,7 @@ condition|(
 operator|!
 name|reflog_exists
 argument_list|(
-name|ref
+name|refname
 argument_list|)
 condition|)
 goto|goto
@@ -1906,7 +1906,7 @@ name|git_pathdup
 argument_list|(
 literal|"logs/%s.lock"
 argument_list|,
-name|ref
+name|refname
 argument_list|)
 expr_stmt|;
 name|cb
@@ -1937,7 +1937,7 @@ operator|||
 operator|!
 name|strcmp
 argument_list|(
-name|ref
+name|refname
 argument_list|,
 literal|"HEAD"
 argument_list|)
@@ -2098,7 +2098,7 @@ expr_stmt|;
 block|}
 name|for_each_reflog_ent
 argument_list|(
-name|ref
+name|refname
 argument_list|,
 name|expire_reflog_ent
 argument_list|,
