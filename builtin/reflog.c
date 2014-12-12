@@ -162,9 +162,9 @@ struct|;
 end_struct
 
 begin_struct
-DECL|struct|expire_reflog_cb
+DECL|struct|expire_reflog_policy_cb
 struct|struct
-name|expire_reflog_cb
+name|expire_reflog_policy_cb
 block|{
 DECL|member|newlog
 name|FILE
@@ -1094,7 +1094,7 @@ name|void
 name|mark_reachable
 parameter_list|(
 name|struct
-name|expire_reflog_cb
+name|expire_reflog_policy_cb
 modifier|*
 name|cb
 parameter_list|)
@@ -1305,7 +1305,7 @@ name|int
 name|unreachable
 parameter_list|(
 name|struct
-name|expire_reflog_cb
+name|expire_reflog_policy_cb
 modifier|*
 name|cb
 parameter_list|,
@@ -1452,7 +1452,7 @@ name|cb_data
 parameter_list|)
 block|{
 name|struct
-name|expire_reflog_cb
+name|expire_reflog_policy_cb
 modifier|*
 name|cb
 init|=
@@ -1629,7 +1629,7 @@ name|cb_data
 parameter_list|)
 block|{
 name|struct
-name|expire_reflog_cb
+name|expire_reflog_policy_cb
 modifier|*
 name|cb
 init|=
@@ -1894,7 +1894,7 @@ modifier|*
 name|sha1
 parameter_list|,
 name|struct
-name|expire_reflog_cb
+name|expire_reflog_policy_cb
 modifier|*
 name|cb
 parameter_list|)
@@ -2099,7 +2099,7 @@ name|void
 name|reflog_expiry_cleanup
 parameter_list|(
 name|struct
-name|expire_reflog_cb
+name|expire_reflog_policy_cb
 modifier|*
 name|cb
 parameter_list|)
@@ -2209,7 +2209,7 @@ name|lock_file
 name|reflog_lock
 decl_stmt|;
 name|struct
-name|expire_reflog_cb
+name|expire_reflog_policy_cb
 name|cb
 decl_stmt|;
 name|struct
