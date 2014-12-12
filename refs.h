@@ -752,57 +752,6 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/** Close the file descriptor owned by a lock and return the status */
-end_comment
-
-begin_function_decl
-specifier|extern
-name|int
-name|close_ref
-parameter_list|(
-name|struct
-name|ref_lock
-modifier|*
-name|lock
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_comment
-comment|/** Close and commit the ref locked by the lock */
-end_comment
-
-begin_function_decl
-specifier|extern
-name|int
-name|commit_ref
-parameter_list|(
-name|struct
-name|ref_lock
-modifier|*
-name|lock
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_comment
-comment|/** Release any lock taken but not written. **/
-end_comment
-
-begin_function_decl
-specifier|extern
-name|void
-name|unlock_ref
-parameter_list|(
-name|struct
-name|ref_lock
-modifier|*
-name|lock
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_comment
 comment|/*  * Setup reflog before using. Set errno to something meaningful on failure.  */
 end_comment
 
