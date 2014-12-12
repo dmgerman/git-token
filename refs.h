@@ -700,7 +700,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Flags controlling lock_any_ref_for_update(), ref_transaction_update(),  * ref_transaction_create(), etc.  * REF_NODEREF: act on the ref directly, instead of dereferencing  *              symbolic references.  * REF_DELETING: tolerate broken refs  *  * Flags>= 0x100 are reserved for internal use.  */
+comment|/*  * Flags controlling ref_transaction_update(), ref_transaction_create(), etc.  * REF_NODEREF: act on the ref directly, instead of dereferencing  *              symbolic references.  * REF_DELETING: tolerate broken refs  *  * Flags>= 0x100 are reserved for internal use.  */
 end_comment
 
 begin_define
@@ -718,38 +718,6 @@ directive|define
 name|REF_DELETING
 value|0x02
 end_define
-
-begin_comment
-comment|/*  * This function sets errno to something meaningful on failure.  */
-end_comment
-
-begin_function_decl
-specifier|extern
-name|struct
-name|ref_lock
-modifier|*
-name|lock_any_ref_for_update
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|refname
-parameter_list|,
-specifier|const
-name|unsigned
-name|char
-modifier|*
-name|old_sha1
-parameter_list|,
-name|int
-name|flags
-parameter_list|,
-name|int
-modifier|*
-name|type_p
-parameter_list|)
-function_decl|;
-end_function_decl
 
 begin_comment
 comment|/*  * Setup reflog before using. Set errno to something meaningful on failure.  */
