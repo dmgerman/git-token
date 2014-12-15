@@ -70,6 +70,12 @@ directive|include
 file|"varint.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"utf8.h"
+end_include
+
 begin_function_decl
 specifier|static
 name|struct
@@ -4009,6 +4015,18 @@ condition|)
 block|{
 name|inside
 label|:
+if|if
+condition|(
+name|protect_hfs
+operator|&&
+name|is_hfs_dotgit
+argument_list|(
+name|path
+argument_list|)
+condition|)
+return|return
+literal|0
+return|;
 name|c
 operator|=
 operator|*
