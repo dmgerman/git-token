@@ -527,6 +527,34 @@ name|PROTECT_HFS_DEFAULT
 decl_stmt|;
 end_decl_stmt
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|PROTECT_NTFS_DEFAULT
+end_ifndef
+
+begin_define
+DECL|macro|PROTECT_NTFS_DEFAULT
+define|#
+directive|define
+name|PROTECT_NTFS_DEFAULT
+value|0
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
+begin_decl_stmt
+DECL|variable|protect_ntfs
+name|int
+name|protect_ntfs
+init|=
+name|PROTECT_NTFS_DEFAULT
+decl_stmt|;
+end_decl_stmt
+
 begin_comment
 comment|/*  * The character that begins a commented line in user-editable file  * that is subject to stripspace.  */
 end_comment
