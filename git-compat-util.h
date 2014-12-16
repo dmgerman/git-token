@@ -1254,6 +1254,22 @@ directive|ifndef
 name|NO_OPENSSL
 end_ifndef
 
+begin_define
+DECL|macro|__AVAILABILITY_MACROS_USES_AVAILABILITY
+define|#
+directive|define
+name|__AVAILABILITY_MACROS_USES_AVAILABILITY
+value|0
+end_define
+
+begin_define
+DECL|macro|MAC_OS_X_VERSION_MIN_REQUIRED
+define|#
+directive|define
+name|MAC_OS_X_VERSION_MIN_REQUIRED
+value|MAC_OS_X_VERSION_10_6
+end_define
+
 begin_include
 include|#
 directive|include
@@ -1265,6 +1281,20 @@ include|#
 directive|include
 file|<openssl/err.h>
 end_include
+
+begin_undef
+DECL|macro|MAC_OS_X_VERSION_MIN_REQUIRED
+undef|#
+directive|undef
+name|MAC_OS_X_VERSION_MIN_REQUIRED
+end_undef
+
+begin_undef
+DECL|macro|__AVAILABILITY_MACROS_USES_AVAILABILITY
+undef|#
+directive|undef
+name|__AVAILABILITY_MACROS_USES_AVAILABILITY
+end_undef
 
 begin_endif
 endif|#
