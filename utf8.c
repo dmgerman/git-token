@@ -3423,5 +3423,208 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Pick the next char from the stream, folding as an HFS+ filename comparison  * would. Note that this is _not_ complete by any means. It's just enough  * to make is_hfs_dotgit() work, and should not be used otherwise.  */
+end_comment
+
+begin_function
+DECL|function|next_hfs_char
+specifier|static
+name|ucs_char_t
+name|next_hfs_char
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|in
+parameter_list|)
+block|{
+while|while
+condition|(
+literal|1
+condition|)
+block|{
+name|ucs_char_t
+name|out
+init|=
+name|pick_one_utf8_char
+argument_list|(
+name|in
+argument_list|,
+name|NULL
+argument_list|)
+decl_stmt|;
+comment|/* 		 * check for malformed utf8. Technically this 		 * gets converted to a percent-sequence, but 		 * returning 0 is good enough for is_hfs_dotgit 		 * to realize it cannot be .git 		 */
+if|if
+condition|(
+operator|!
+operator|*
+name|in
+condition|)
+return|return
+literal|0
+return|;
+comment|/* these code points are ignored completely */
+switch|switch
+condition|(
+name|out
+condition|)
+block|{
+case|case
+literal|0x200c
+case|:
+comment|/* ZERO WIDTH NON-JOINER */
+case|case
+literal|0x200d
+case|:
+comment|/* ZERO WIDTH JOINER */
+case|case
+literal|0x200e
+case|:
+comment|/* LEFT-TO-RIGHT MARK */
+case|case
+literal|0x200f
+case|:
+comment|/* RIGHT-TO-LEFT MARK */
+case|case
+literal|0x202a
+case|:
+comment|/* LEFT-TO-RIGHT EMBEDDING */
+case|case
+literal|0x202b
+case|:
+comment|/* RIGHT-TO-LEFT EMBEDDING */
+case|case
+literal|0x202c
+case|:
+comment|/* POP DIRECTIONAL FORMATTING */
+case|case
+literal|0x202d
+case|:
+comment|/* LEFT-TO-RIGHT OVERRIDE */
+case|case
+literal|0x202e
+case|:
+comment|/* RIGHT-TO-LEFT OVERRIDE */
+case|case
+literal|0x206a
+case|:
+comment|/* INHIBIT SYMMETRIC SWAPPING */
+case|case
+literal|0x206b
+case|:
+comment|/* ACTIVATE SYMMETRIC SWAPPING */
+case|case
+literal|0x206c
+case|:
+comment|/* INHIBIT ARABIC FORM SHAPING */
+case|case
+literal|0x206d
+case|:
+comment|/* ACTIVATE ARABIC FORM SHAPING */
+case|case
+literal|0x206e
+case|:
+comment|/* NATIONAL DIGIT SHAPES */
+case|case
+literal|0x206f
+case|:
+comment|/* NOMINAL DIGIT SHAPES */
+case|case
+literal|0xfeff
+case|:
+comment|/* ZERO WIDTH NO-BREAK SPACE */
+continue|continue;
+block|}
+comment|/* 		 * there's a great deal of other case-folding that occurs, 		 * but this is enough to catch anything that will convert 		 * to ".git" 		 */
+return|return
+name|tolower
+argument_list|(
+name|out
+argument_list|)
+return|;
+block|}
+block|}
+end_function
+
+begin_function
+DECL|function|is_hfs_dotgit
+name|int
+name|is_hfs_dotgit
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|)
+block|{
+name|ucs_char_t
+name|c
+decl_stmt|;
+if|if
+condition|(
+name|next_hfs_char
+argument_list|(
+operator|&
+name|path
+argument_list|)
+operator|!=
+literal|'.'
+operator|||
+name|next_hfs_char
+argument_list|(
+operator|&
+name|path
+argument_list|)
+operator|!=
+literal|'g'
+operator|||
+name|next_hfs_char
+argument_list|(
+operator|&
+name|path
+argument_list|)
+operator|!=
+literal|'i'
+operator|||
+name|next_hfs_char
+argument_list|(
+operator|&
+name|path
+argument_list|)
+operator|!=
+literal|'t'
+condition|)
+return|return
+literal|0
+return|;
+name|c
+operator|=
+name|next_hfs_char
+argument_list|(
+operator|&
+name|path
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|c
+operator|&&
+operator|!
+name|is_dir_sep
+argument_list|(
+name|c
+argument_list|)
+condition|)
+return|return
+literal|0
+return|;
+return|return
+literal|1
+return|;
+block|}
+end_function
+
 end_unit
 
