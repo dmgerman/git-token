@@ -421,7 +421,7 @@ end_function
 begin_function
 DECL|function|do_add_entry
 specifier|static
-name|void
+name|int
 name|do_add_entry
 parameter_list|(
 name|struct
@@ -472,6 +472,7 @@ operator|)
 operator||
 name|set
 expr_stmt|;
+return|return
 name|add_index_entry
 argument_list|(
 operator|&
@@ -485,7 +486,7 @@ name|ADD_CACHE_OK_TO_ADD
 operator||
 name|ADD_CACHE_OK_TO_REPLACE
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 end_function
 
@@ -3124,6 +3125,8 @@ name|o
 operator|->
 name|df_conflict_entry
 condition|)
+if|if
+condition|(
 name|do_add_entry
 argument_list|(
 name|o
@@ -3137,7 +3140,11 @@ literal|0
 argument_list|,
 literal|0
 argument_list|)
-expr_stmt|;
+condition|)
+return|return
+operator|-
+literal|1
+return|;
 return|return
 literal|0
 return|;
