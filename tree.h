@@ -27,6 +27,12 @@ name|tree_type
 decl_stmt|;
 end_decl_stmt
 
+begin_struct_decl
+struct_decl|struct
+name|strbuf
+struct_decl|;
+end_struct_decl
+
 begin_struct
 DECL|struct|tree
 struct|struct
@@ -151,11 +157,9 @@ name|unsigned
 name|char
 modifier|*
 parameter_list|,
-specifier|const
-name|char
+name|struct
+name|strbuf
 modifier|*
-parameter_list|,
-name|int
 parameter_list|,
 specifier|const
 name|char
