@@ -337,6 +337,10 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Inserts the given string into the sorted list.  * If the string already exists, the list is not altered.  * Returns the string_list_item, the string is part of.  */
+end_comment
+
 begin_function_decl
 name|struct
 name|string_list_item
@@ -356,27 +360,9 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
-begin_function_decl
-name|struct
-name|string_list_item
-modifier|*
-name|string_list_insert_at_index
-parameter_list|(
-name|struct
-name|string_list
-modifier|*
-name|list
-parameter_list|,
-name|int
-name|insert_at
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|string
-parameter_list|)
-function_decl|;
-end_function_decl
+begin_comment
+comment|/*  * Checks if the given string is part of a sorted list. If it is part of the list,  * return the coresponding string_list_item, NULL otherwise.  */
+end_comment
 
 begin_function_decl
 name|struct

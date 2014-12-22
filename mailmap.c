@@ -390,8 +390,10 @@ name|mailmap_entry
 modifier|*
 name|me
 decl_stmt|;
-name|int
-name|index
+name|struct
+name|string_list_item
+modifier|*
+name|item
 decl_stmt|;
 if|if
 condition|(
@@ -409,32 +411,22 @@ operator|=
 name|NULL
 expr_stmt|;
 block|}
-if|if
-condition|(
-operator|(
-name|index
+name|item
 operator|=
-name|string_list_find_insert_index
+name|string_list_insert
 argument_list|(
 name|map
 argument_list|,
 name|old_email
-argument_list|,
-literal|1
 argument_list|)
-operator|)
-operator|<
-literal|0
+expr_stmt|;
+if|if
+condition|(
+name|item
+operator|->
+name|util
 condition|)
 block|{
-comment|/* mailmap entry exists, invert index value */
-name|index
-operator|=
-operator|-
-literal|1
-operator|-
-name|index
-expr_stmt|;
 name|me
 operator|=
 operator|(
@@ -442,35 +434,13 @@ expr|struct
 name|mailmap_entry
 operator|*
 operator|)
-name|map
+name|item
 operator|->
-name|items
-index|[
-name|index
-index|]
-operator|.
 name|util
 expr_stmt|;
 block|}
 else|else
 block|{
-comment|/* create mailmap entry */
-name|struct
-name|string_list_item
-modifier|*
-name|item
-decl_stmt|;
-name|item
-operator|=
-name|string_list_insert_at_index
-argument_list|(
-name|map
-argument_list|,
-name|index
-argument_list|,
-name|old_email
-argument_list|)
-expr_stmt|;
 name|me
 operator|=
 name|xcalloc
@@ -516,11 +486,9 @@ condition|)
 block|{
 name|debug_mm
 argument_list|(
-literal|"mailmap: adding (simple) entry for %s at index %d\n"
+literal|"mailmap: adding (simple) entry for '%s'\n"
 argument_list|,
 name|old_email
-argument_list|,
-name|index
 argument_list|)
 expr_stmt|;
 comment|/* Replace current name and new email for simple entry */
@@ -589,11 +557,9 @@ argument_list|)
 decl_stmt|;
 name|debug_mm
 argument_list|(
-literal|"mailmap: adding (complex) entry for %s at index %d\n"
+literal|"mailmap: adding (complex) entry for '%s'\n"
 argument_list|,
 name|old_email
-argument_list|,
-name|index
 argument_list|)
 expr_stmt|;
 if|if
