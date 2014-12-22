@@ -1692,7 +1692,7 @@ block|{
 default|default:
 name|die
 argument_list|(
-literal|"Bad type of menu_staff when print menu"
+literal|"Bad type of menu_stuff when print menu"
 argument_list|)
 expr_stmt|;
 case|case
