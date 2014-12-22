@@ -2382,7 +2382,7 @@ expr_stmt|;
 else|else
 name|buf
 operator|=
-name|xmalloc
+name|xmallocz
 argument_list|(
 name|size
 argument_list|)
@@ -3070,7 +3070,7 @@ name|status
 decl_stmt|;
 name|data
 operator|=
-name|xmalloc
+name|xmallocz
 argument_list|(
 name|consume
 condition|?
