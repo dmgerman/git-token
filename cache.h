@@ -422,7 +422,7 @@ value|0030000
 end_define
 
 begin_comment
-comment|/*  * A "directory link" is a link to another git directory.  *  * The value 0160000 is not normally a valid mode, and  * also just happens to be S_IFDIR + S_IFLNK  *  * NOTE! We *really* shouldn't depend on the S_IFxxx macros  * always having the same values everywhere. We should use  * our internal git values for these things, and then we can  * translate that to the OS-specific value. It just so  * happens that everybody shares the same bit representation  * in the UNIX world (and apparently wider too..)  */
+comment|/*  * A "directory link" is a link to another git directory.  *  * The value 0160000 is not normally a valid mode, and  * also just happens to be S_IFDIR + S_IFLNK  */
 end_comment
 
 begin_define
