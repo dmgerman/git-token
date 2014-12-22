@@ -437,6 +437,13 @@ name|defined
 argument_list|(
 name|__MirBSD__
 argument_list|)
+operator|&&
+expr|\
+operator|!
+name|defined
+argument_list|(
+name|__CYGWIN__
+argument_list|)
 end_elif
 
 begin_define
