@@ -39,6 +39,11 @@ name|configured
 range|:
 literal|1
 decl_stmt|,
+DECL|member|quit
+name|quit
+range|:
+literal|1
+decl_stmt|,
 DECL|member|use_http_path
 name|use_http_path
 range|:
