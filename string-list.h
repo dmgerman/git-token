@@ -467,7 +467,7 @@ end_function_decl
 
 begin_function_decl
 name|void
-name|sort_string_list
+name|string_list_sort
 parameter_list|(
 name|struct
 name|string_list

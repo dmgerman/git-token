@@ -1424,7 +1424,7 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
-comment|/* Only call this from inside sort_string_list! */
+comment|/* Only call this from inside string_list_sort! */
 end_comment
 
 begin_function
@@ -1476,9 +1476,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|sort_string_list
+DECL|function|string_list_sort
 name|void
-name|sort_string_list
+name|string_list_sort
 parameter_list|(
 name|struct
 name|string_list

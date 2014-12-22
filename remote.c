@@ -7922,7 +7922,7 @@ argument_list|,
 name|TMP_MARK
 argument_list|)
 expr_stmt|;
-name|sort_string_list
+name|string_list_sort
 argument_list|(
 operator|&
 name|dst_tag
@@ -8243,7 +8243,7 @@ name|util
 operator|=
 name|ref
 expr_stmt|;
-name|sort_string_list
+name|string_list_sort
 argument_list|(
 name|ref_index
 argument_list|)
@@ -11762,7 +11762,7 @@ operator|->
 name|name
 argument_list|)
 expr_stmt|;
-name|sort_string_list
+name|string_list_sort
 argument_list|(
 operator|&
 name|ref_names
