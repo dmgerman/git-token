@@ -47,7 +47,6 @@ end_decl_stmt
 
 begin_function
 DECL|function|system_path
-specifier|const
 name|char
 modifier|*
 name|system_path
@@ -93,7 +92,10 @@ name|path
 argument_list|)
 condition|)
 return|return
+name|xstrdup
+argument_list|(
 name|path
+argument_list|)
 return|;
 ifdef|#
 directive|ifdef
@@ -181,8 +183,7 @@ argument_list|,
 name|path
 argument_list|)
 expr_stmt|;
-name|path
-operator|=
+return|return
 name|strbuf_detach
 argument_list|(
 operator|&
@@ -190,9 +191,6 @@ name|d
 argument_list|,
 name|NULL
 argument_list|)
-expr_stmt|;
-return|return
-name|path
 return|;
 block|}
 end_function
