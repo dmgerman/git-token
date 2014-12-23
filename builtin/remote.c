@@ -1009,6 +1009,7 @@ name|url_nr
 operator|>
 literal|1
 operator|||
+operator|(
 name|strcmp
 argument_list|(
 name|name
@@ -1020,6 +1021,19 @@ index|[
 literal|0
 index|]
 argument_list|)
+operator|&&
+name|strcmp
+argument_list|(
+name|url
+argument_list|,
+name|remote
+operator|->
+name|url
+index|[
+literal|0
+index|]
+argument_list|)
+operator|)
 operator|||
 name|remote
 operator|->
