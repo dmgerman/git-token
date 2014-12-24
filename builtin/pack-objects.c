@@ -13687,7 +13687,7 @@ argument_list|(
 operator|&
 name|rp
 argument_list|,
-literal|"--objects-edge"
+literal|"--objects-edge-aggressive"
 argument_list|)
 expr_stmt|;
 block|}

@@ -441,6 +441,11 @@ name|edge_hint
 range|:
 literal|1
 decl_stmt|,
+DECL|member|edge_hint_aggressive
+name|edge_hint_aggressive
+range|:
+literal|1
+decl_stmt|,
 DECL|member|limited
 name|limited
 range|:
