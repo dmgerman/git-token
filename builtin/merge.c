@@ -5602,6 +5602,12 @@ argument_list|,
 name|fp
 argument_list|)
 expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|msgbuf
+argument_list|)
+expr_stmt|;
 name|fclose
 argument_list|(
 name|fp
