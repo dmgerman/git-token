@@ -200,6 +200,10 @@ DECL|member|ignore_skipworktree
 name|int
 name|ignore_skipworktree
 decl_stmt|;
+DECL|member|ignore_other_worktrees
+name|int
+name|ignore_other_worktrees
+decl_stmt|;
 DECL|member|new_branch
 specifier|const
 name|char
@@ -6478,6 +6482,11 @@ operator|->
 name|path
 argument_list|)
 operator|)
+operator|&&
+operator|!
+name|opts
+operator|->
+name|ignore_other_worktrees
 condition|)
 name|check_linked_checkouts
 argument_list|(
@@ -7317,6 +7326,23 @@ argument_list|,
 name|N_
 argument_list|(
 literal|"check a branch out in a separate working directory"
+argument_list|)
+argument_list|)
+block|,
+name|OPT_BOOL
+argument_list|(
+literal|0
+argument_list|,
+literal|"ignore-other-worktrees"
+argument_list|,
+operator|&
+name|opts
+operator|.
+name|ignore_other_worktrees
+argument_list|,
+name|N_
+argument_list|(
+literal|"do not check if another worktree is holding the given ref"
 argument_list|)
 argument_list|)
 block|,
