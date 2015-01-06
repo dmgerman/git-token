@@ -8030,6 +8030,11 @@ condition|(
 literal|0
 operator|<
 name|verbosity
+operator|||
+name|getenv
+argument_list|(
+literal|"GIT_CURL_VERBOSE"
+argument_list|)
 condition|)
 name|curl_easy_setopt
 argument_list|(
