@@ -67,7 +67,7 @@ name|result
 decl_stmt|;
 name|result
 operator|=
-name|get_merge_bases_many
+name|get_merge_bases_many_dirty
 argument_list|(
 name|rev
 index|[
@@ -81,8 +81,6 @@ argument_list|,
 name|rev
 operator|+
 literal|1
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 if|if
@@ -962,7 +960,7 @@ name|TMP_MARK
 expr_stmt|;
 name|bases
 operator|=
-name|get_merge_bases_many
+name|get_merge_bases_many_dirty
 argument_list|(
 name|derived
 argument_list|,
@@ -973,8 +971,6 @@ argument_list|,
 name|revs
 operator|.
 name|commit
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 comment|/* 	 * There should be one and only one merge base, when we found 	 * a common ancestor among reflog entries. 	 */
