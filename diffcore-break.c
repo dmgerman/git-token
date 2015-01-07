@@ -839,6 +839,14 @@ name|p
 operator|->
 name|score
 expr_stmt|;
+comment|/* 	 * We will be one extra user of the same src side of the 	 * broken pair, if it was used as the rename source for other 	 * paths elsewhere.  Increment to mark that the path stays 	 * in the resulting tree. 	 */
+name|d
+operator|->
+name|one
+operator|->
+name|rename_used
+operator|++
+expr_stmt|;
 name|diff_free_filespec_data
 argument_list|(
 name|d
