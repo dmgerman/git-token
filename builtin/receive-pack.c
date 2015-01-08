@@ -5711,11 +5711,9 @@ condition|(
 operator|!
 name|checked_connectivity
 condition|)
-name|error
+name|die
 argument_list|(
-literal|"BUG: run 'git fsck' for safety.\n"
-literal|"If there are errors, try to remove "
-literal|"the reported refs above"
+literal|"BUG: connectivity check skipped???"
 argument_list|)
 expr_stmt|;
 block|}
