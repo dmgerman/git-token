@@ -4221,6 +4221,27 @@ argument_list|)
 expr_stmt|;
 break|break;
 case|case
+name|REF_STATUS_ATOMIC_PUSH_FAILED
+case|:
+name|print_ref_status
+argument_list|(
+literal|'!'
+argument_list|,
+literal|"[rejected]"
+argument_list|,
+name|ref
+argument_list|,
+name|ref
+operator|->
+name|peer_ref
+argument_list|,
+literal|"atomic push failed"
+argument_list|,
+name|porcelain
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
 name|REF_STATUS_OK
 case|:
 name|print_ok_ref_status

@@ -85,7 +85,7 @@ name|char
 name|send_pack_usage
 index|[]
 init|=
-literal|"git send-pack [--all | --mirror] [--dry-run] [--force] [--receive-pack=<git-receive-pack>] [--verbose] [--thin] [<host>:]<directory> [<ref>...]\n"
+literal|"git send-pack [--all | --mirror] [--dry-run] [--force] [--receive-pack=<git-receive-pack>] [--verbose] [--thin] [--atomic] [<host>:]<directory> [<ref>...]\n"
 literal|"  --all and explicit<ref> specification are mutually exclusive."
 decl_stmt|;
 end_decl_stmt
@@ -748,6 +748,25 @@ block|{
 name|args
 operator|.
 name|use_thin_pack
+operator|=
+literal|1
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--atomic"
+argument_list|)
+condition|)
+block|{
+name|args
+operator|.
+name|atomic
 operator|=
 literal|1
 expr_stmt|;
