@@ -8,12 +8,6 @@ end_include
 begin_include
 include|#
 directive|include
-file|"cache.h"
-end_include
-
-begin_include
-include|#
-directive|include
 file|"exec_cmd.h"
 end_include
 
@@ -26,19 +20,7 @@ end_include
 begin_include
 include|#
 directive|include
-file|"quote.h"
-end_include
-
-begin_include
-include|#
-directive|include
 file|"run-command.h"
-end_include
-
-begin_include
-include|#
-directive|include
-file|"commit.h"
 end_include
 
 begin_decl_stmt
