@@ -10314,7 +10314,7 @@ operator|.
 name|buf
 argument_list|)
 expr_stmt|;
-name|strbuf_reset
+name|strbuf_release
 argument_list|(
 operator|&
 name|err
