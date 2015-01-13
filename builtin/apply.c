@@ -3429,32 +3429,6 @@ block|}
 end_function
 
 begin_function
-DECL|function|null_strdup
-specifier|static
-name|char
-modifier|*
-name|null_strdup
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|s
-parameter_list|)
-block|{
-return|return
-name|s
-condition|?
-name|xstrdup
-argument_list|(
-name|s
-argument_list|)
-else|:
-name|NULL
-return|;
-block|}
-end_function
-
-begin_function
 DECL|function|find_name_common
 specifier|static
 name|char
@@ -3577,7 +3551,7 @@ condition|)
 return|return
 name|squash_slash
 argument_list|(
-name|null_strdup
+name|xstrdup_or_null
 argument_list|(
 name|def
 argument_list|)
@@ -3597,7 +3571,7 @@ condition|)
 return|return
 name|squash_slash
 argument_list|(
-name|null_strdup
+name|xstrdup_or_null
 argument_list|(
 name|def
 argument_list|)
@@ -4720,7 +4694,7 @@ name|patch
 operator|->
 name|new_name
 operator|=
-name|null_strdup
+name|xstrdup_or_null
 argument_list|(
 name|name
 argument_list|)
@@ -5205,7 +5179,7 @@ name|patch
 operator|->
 name|old_name
 operator|=
-name|null_strdup
+name|xstrdup_or_null
 argument_list|(
 name|patch
 operator|->
@@ -5257,7 +5231,7 @@ name|patch
 operator|->
 name|new_name
 operator|=
-name|null_strdup
+name|xstrdup_or_null
 argument_list|(
 name|patch
 operator|->
