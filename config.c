@@ -6722,14 +6722,10 @@ name|e
 operator|->
 name|value_list
 argument_list|,
-name|value
-condition|?
-name|xstrdup
+name|xstrdup_or_null
 argument_list|(
 name|value
 argument_list|)
-else|:
-name|NULL
 argument_list|)
 expr_stmt|;
 name|ALLOC_GROW
