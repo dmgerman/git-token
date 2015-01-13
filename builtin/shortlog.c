@@ -72,7 +72,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git shortlog [<options>] [<revision range>] [[--] [<path>...]]"
+literal|"git shortlog [<options>] [<revision-range>] [[--] [<path>...]]"
 argument_list|)
 block|,
 name|NULL

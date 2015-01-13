@@ -42,7 +42,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git config [options]"
+literal|"git config [<options>]"
 argument_list|)
 block|,
 name|NULL

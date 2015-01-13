@@ -1416,17 +1416,17 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git name-rev [options]<commit>..."
+literal|"git name-rev [<options>]<commit>..."
 argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git name-rev [options] --all"
+literal|"git name-rev [<options>] --all"
 argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git name-rev [options] --stdin"
+literal|"git name-rev [<options>] --stdin"
 argument_list|)
 block|,
 name|NULL

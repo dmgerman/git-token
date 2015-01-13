@@ -36,7 +36,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git prune-packed [-n|--dry-run] [-q|--quiet]"
+literal|"git prune-packed [-n | --dry-run] [-q | --quiet]"
 argument_list|)
 block|,
 name|NULL

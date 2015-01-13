@@ -1843,7 +1843,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git update-index [options] [--] [<file>...]"
+literal|"git update-index [<options>] [--] [<file>...]"
 argument_list|)
 block|,
 name|NULL

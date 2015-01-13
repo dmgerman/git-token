@@ -47,12 +47,12 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git show-branch [-a|--all] [-r|--remotes] [--topo-order | --date-order] [--current] [--color[=<when>] | --no-color] [--sparse] [--more=<n> | --list | --independent | --merge-base] [--no-name | --sha1-name] [--topics] [(<rev> |<glob>)...]"
+literal|"git show-branch [-a | --all] [-r | --remotes] [--topo-order | --date-order] [--current] [--color[=<when>] | --no-color] [--sparse] [--more=<n> | --list | --independent | --merge-base] [--no-name | --sha1-name] [--topics] [(<rev> |<glob>)...]"
 argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git show-branch (-g|--reflog)[=<n>[,<base>]] [--list] [<ref>]"
+literal|"git show-branch (-g | --reflog)[=<n>[,<base>]] [--list] [<ref>]"
 argument_list|)
 block|,
 name|NULL

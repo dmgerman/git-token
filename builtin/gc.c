@@ -66,7 +66,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git gc [options]"
+literal|"git gc [<options>]"
 argument_list|)
 block|,
 name|NULL

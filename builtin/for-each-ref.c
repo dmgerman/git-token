@@ -6090,7 +6090,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git for-each-ref [options] [<pattern>]"
+literal|"git for-each-ref [<options>] [<pattern>]"
 argument_list|)
 block|,
 name|NULL

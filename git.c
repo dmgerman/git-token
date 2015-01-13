@@ -50,7 +50,7 @@ index|[]
 init|=
 literal|"git [--version] [--help] [-C<path>] [-c name=value]\n"
 literal|"           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n"
-literal|"           [-p|--paginate|--no-pager] [--no-replace-objects] [--bare]\n"
+literal|"           [-p | --paginate | --no-pager] [--no-replace-objects] [--bare]\n"
 literal|"           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n"
 literal|"<command> [<args>]"
 decl_stmt|;

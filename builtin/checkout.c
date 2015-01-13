@@ -144,12 +144,12 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git checkout [options]<branch>"
+literal|"git checkout [<options>]<branch>"
 argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git checkout [options] [<branch>] --<file>..."
+literal|"git checkout [<options>] [<branch>] --<file>..."
 argument_list|)
 block|,
 name|NULL
@@ -4058,7 +4058,7 @@ name|_
 argument_list|(
 literal|"If you want to keep them by creating a new branch, "
 literal|"this may be a good time\nto do so with:\n\n"
-literal|" git branch new_branch_name %s\n\n"
+literal|" git branch<new-branch-name> %s\n\n"
 argument_list|)
 argument_list|,
 name|find_unique_abbrev
@@ -6012,7 +6012,7 @@ name|dwim_new_local_branch
 argument_list|,
 name|N_
 argument_list|(
-literal|"second guess 'git checkout no-such-branch'"
+literal|"second guess 'git checkout<no-such-branch>'"
 argument_list|)
 argument_list|)
 block|,

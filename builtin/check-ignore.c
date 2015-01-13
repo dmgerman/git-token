@@ -66,9 +66,9 @@ name|check_ignore_usage
 index|[]
 init|=
 block|{
-literal|"git check-ignore [options] pathname..."
+literal|"git check-ignore [<options>]<pathname>..."
 block|,
-literal|"git check-ignore [options] --stdin<<list-of-paths>"
+literal|"git check-ignore [<options>] --stdin<<list-of-paths>"
 block|,
 name|NULL
 block|}

@@ -100,22 +100,22 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git branch [options] [-r | -a] [--merged | --no-merged]"
+literal|"git branch [<options>] [-r | -a] [--merged | --no-merged]"
 argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git branch [options] [-l] [-f]<branchname> [<start-point>]"
+literal|"git branch [<options>] [-l] [-f]<branch-name> [<start-point>]"
 argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git branch [options] [-r] (-d | -D)<branchname>..."
+literal|"git branch [<options>] [-r] (-d | -D)<branch-name>..."
 argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git branch [options] (-m | -M) [<oldbranch>]<newbranch>"
+literal|"git branch [<options>] (-m | -M) [<old-branch>]<new-branch>"
 argument_list|)
 block|,
 name|NULL

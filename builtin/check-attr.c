@@ -66,12 +66,12 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git check-attr [-a | --all | attr...] [--] pathname..."
+literal|"git check-attr [-a | --all |<attr>...] [--]<pathname>..."
 argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git check-attr --stdin [-z] [-a | --all | attr...]<<list-of-paths>"
+literal|"git check-attr --stdin [-z] [-a | --all |<attr>...]<<list-of-paths>"
 argument_list|)
 block|,
 name|NULL

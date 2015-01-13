@@ -43,7 +43,7 @@ name|char
 name|fetch_pack_usage
 index|[]
 init|=
-literal|"git fetch-pack [--all] [--stdin] [--quiet|-q] [--keep|-k] [--thin] "
+literal|"git fetch-pack [--all] [--stdin] [--quiet | -q] [--keep | -k] [--thin] "
 literal|"[--include-tag] [--upload-pack=<git-upload-pack>] [--depth=<n>] "
 literal|"[--no-progress] [--diag-url] [-v] [<host>:]<directory> [<refs>...]"
 decl_stmt|;

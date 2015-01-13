@@ -88,37 +88,37 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git notes [--ref<notes_ref>] [list [<object>]]"
+literal|"git notes [--ref<notes-ref>] [list [<object>]]"
 argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git notes [--ref<notes_ref>] add [-f] [--allow-empty] [-m<msg> | -F<file> | (-c | -C)<object>] [<object>]"
+literal|"git notes [--ref<notes-ref>] add [-f] [--allow-empty] [-m<msg> | -F<file> | (-c | -C)<object>] [<object>]"
 argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git notes [--ref<notes_ref>] copy [-f]<from-object><to-object>"
+literal|"git notes [--ref<notes-ref>] copy [-f]<from-object><to-object>"
 argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git notes [--ref<notes_ref>] append [--allow-empty] [-m<msg> | -F<file> | (-c | -C)<object>] [<object>]"
+literal|"git notes [--ref<notes-ref>] append [--allow-empty] [-m<msg> | -F<file> | (-c | -C)<object>] [<object>]"
 argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git notes [--ref<notes_ref>] edit [--allow-empty] [<object>]"
+literal|"git notes [--ref<notes-ref>] edit [--allow-empty] [<object>]"
 argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git notes [--ref<notes_ref>] show [<object>]"
+literal|"git notes [--ref<notes-ref>] show [<object>]"
 argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git notes [--ref<notes_ref>] merge [-v | -q] [-s<strategy> ]<notes_ref>"
+literal|"git notes [--ref<notes-ref>] merge [-v | -q] [-s<strategy>]<notes-ref>"
 argument_list|)
 block|,
 name|N_
@@ -133,17 +133,17 @@ argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git notes [--ref<notes_ref>] remove [<object>...]"
+literal|"git notes [--ref<notes-ref>] remove [<object>...]"
 argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git notes [--ref<notes_ref>] prune [-n | -v]"
+literal|"git notes [--ref<notes-ref>] prune [-n | -v]"
 argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git notes [--ref<notes_ref>] get-ref"
+literal|"git notes [--ref<notes-ref>] get-ref"
 argument_list|)
 block|,
 name|NULL
@@ -295,7 +295,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git notes merge [<options>]<notes_ref>"
+literal|"git notes merge [<options>]<notes-ref>"
 argument_list|)
 block|,
 name|N_
@@ -5461,7 +5461,7 @@ argument_list|)
 argument_list|,
 name|N_
 argument_list|(
-literal|"use notes from<notes_ref>"
+literal|"use notes from<notes-ref>"
 argument_list|)
 argument_list|)
 block|,

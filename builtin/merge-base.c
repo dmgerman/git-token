@@ -146,12 +146,12 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git merge-base [-a|--all]<commit><commit>..."
+literal|"git merge-base [-a | --all]<commit><commit>..."
 argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git merge-base [-a|--all] --octopus<commit>..."
+literal|"git merge-base [-a | --all] --octopus<commit>..."
 argument_list|)
 block|,
 name|N_

@@ -48,7 +48,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git column [options]"
+literal|"git column [<options>]"
 argument_list|)
 block|,
 name|NULL

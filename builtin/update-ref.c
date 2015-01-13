@@ -48,17 +48,17 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git update-ref [options] -d<refname> [<oldval>]"
+literal|"git update-ref [<options>] -d<refname> [<old-val>]"
 argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git update-ref [options]<refname><newval> [<oldval>]"
+literal|"git update-ref [<options>]<refname><new-val> [<old-val>]"
 argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git update-ref [options] --stdin [-z]"
+literal|"git update-ref [<options>] --stdin [-z]"
 argument_list|)
 block|,
 name|NULL
