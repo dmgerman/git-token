@@ -1362,18 +1362,6 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|void
-name|clear_cas_option
-parameter_list|(
-name|struct
-name|push_cas_option
-modifier|*
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-specifier|extern
 name|int
 name|is_empty_cas
 parameter_list|(
