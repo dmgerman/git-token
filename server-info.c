@@ -90,9 +90,11 @@ argument_list|)
 expr_stmt|;
 name|fd
 operator|=
-name|mkstemp
+name|git_mkstemp_mode
 argument_list|(
 name|tmp
+argument_list|,
+literal|0666
 argument_list|)
 expr_stmt|;
 if|if
