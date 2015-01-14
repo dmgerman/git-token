@@ -12,24 +12,6 @@ end_include
 begin_include
 include|#
 directive|include
-file|"exec_cmd.h"
-end_include
-
-begin_include
-include|#
-directive|include
-file|"tag.h"
-end_include
-
-begin_include
-include|#
-directive|include
-file|"tree.h"
-end_include
-
-begin_include
-include|#
-directive|include
 file|"builtin.h"
 end_include
 
@@ -37,12 +19,6 @@ begin_include
 include|#
 directive|include
 file|"parse-options.h"
-end_include
-
-begin_include
-include|#
-directive|include
-file|"diff.h"
 end_include
 
 begin_include
