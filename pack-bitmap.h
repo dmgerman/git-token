@@ -216,19 +216,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-name|char
-modifier|*
-name|pack_bitmap_filename
-parameter_list|(
-name|struct
-name|packed_git
-modifier|*
-name|p
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
 name|int
 name|prepare_bitmap_walk
 parameter_list|(
