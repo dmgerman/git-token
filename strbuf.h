@@ -63,11 +63,7 @@ value|{ 0, 0, strbuf_slopbuf }
 end_define
 
 begin_comment
-comment|/**  * Functions  * ---------  */
-end_comment
-
-begin_comment
-comment|/**  * * Life Cycle  */
+comment|/**  * Life Cycle Functions  * --------------------  */
 end_comment
 
 begin_comment
@@ -191,7 +187,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**  * * Related to the size of the buffer  */
+comment|/**  * Functions related to the size of the buffer  * -------------------------------------------  */
 end_comment
 
 begin_comment
@@ -327,7 +323,7 @@ value|strbuf_setlen(sb, 0)
 end_define
 
 begin_comment
-comment|/**  * * Related to the contents of the buffer  */
+comment|/**  * Functions related to the contents of the buffer  * -----------------------------------------------  */
 end_comment
 
 begin_comment
@@ -445,7 +441,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/**  * * Adding data to the buffer  *  * NOTE: All of the functions in this section will grow the buffer as  * necessary.  If they fail for some reason other than memory shortage and the  * buffer hadn't been allocated before (i.e. the `struct strbuf` was set to  * `STRBUF_INIT`), then they will free() it.  */
+comment|/**  * Adding data to the buffer  * -------------------------  *  * NOTE: All of the functions in this section will grow the buffer as  * necessary.  If they fail for some reason other than memory shortage and the  * buffer hadn't been allocated before (i.e. the `struct strbuf` was set to  * `STRBUF_INIT`), then they will free() it.  */
 end_comment
 
 begin_comment
