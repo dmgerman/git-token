@@ -327,7 +327,7 @@ comment|/**  * Functions related to the contents of the buffer  * --------------
 end_comment
 
 begin_comment
-comment|/**  * Strip whitespace from the beginning and end of a string.  * Equivalent to performing `strbuf_rtrim()` followed by `strbuf_ltrim()`.  */
+comment|/**  * Strip whitespace from the beginning (`ltrim`), end (`rtrim`), or both side  * (`trim`) of a string.  */
 end_comment
 
 begin_function_decl
@@ -342,10 +342,6 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
-begin_comment
-comment|/**  * Strip whitespace from the end of a string.  */
-end_comment
-
 begin_function_decl
 specifier|extern
 name|void
@@ -357,10 +353,6 @@ modifier|*
 parameter_list|)
 function_decl|;
 end_function_decl
-
-begin_comment
-comment|/**  * Strip whitespace from the beginning of a string.  */
-end_comment
 
 begin_function_decl
 specifier|extern
