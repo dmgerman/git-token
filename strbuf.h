@@ -1271,7 +1271,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Split str (of length slen) at the specified terminator character.  * Return a null-terminated array of pointers to strbuf objects  * holding the substrings.  The substrings include the terminator,  * except for the last substring, which might be unterminated if the  * original string did not end with a terminator.  If max is positive,  * then split the string into at most max substrings (with the last  * substring containing everything following the (max-1)th terminator  * character).  *  * For lighter-weight alternatives, see string_list_split() and  * string_list_split_in_place().  */
+comment|/**  * Split str (of length slen) at the specified terminator character.  * Return a null-terminated array of pointers to strbuf objects  * holding the substrings.  The substrings include the terminator,  * except for the last substring, which might be unterminated if the  * original string did not end with a terminator.  If max is positive,  * then split the string into at most max substrings (with the last  * substring containing everything following the (max-1)th terminator  * character).  *  * For lighter-weight alternatives, see string_list_split() and  * string_list_split_in_place().  */
 end_comment
 
 begin_function_decl
@@ -1298,7 +1298,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Split a NUL-terminated string at the specified terminator  * character.  See strbuf_split_buf() for more information.  */
+comment|/**  * Split a NUL-terminated string at the specified terminator  * character.  See strbuf_split_buf() for more information.  */
 end_comment
 
 begin_function
@@ -1342,7 +1342,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Split a strbuf at the specified terminator character.  See  * strbuf_split_buf() for more information.  */
+comment|/**  * Split a strbuf at the specified terminator character.  See  * strbuf_split_buf() for more information.  */
 end_comment
 
 begin_function
@@ -1388,7 +1388,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Split a strbuf at the specified terminator character.  See  * strbuf_split_buf() for more information.  */
+comment|/**  * Split a strbuf at the specified terminator character.  See  * strbuf_split_buf() for more information.  */
 end_comment
 
 begin_function
@@ -1425,7 +1425,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Free a NULL-terminated list of strbufs (for example, the return  * values of the strbuf_split*() functions).  */
+comment|/**  * Free a NULL-terminated list of strbufs (for example, the return  * values of the strbuf_split*() functions).  */
 end_comment
 
 begin_function_decl
@@ -1497,7 +1497,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Append s to sb, with the characters '<', '>', '&' and '"' converted  * into XML entities.  */
+comment|/**  * Append s to sb, with the characters '<', '>', '&' and '"' converted  * into XML entities.  */
 end_comment
 
 begin_function_decl
@@ -1684,7 +1684,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Create a newly allocated string using printf format. You can do this easily  * with a strbuf, but this provides a shortcut to save a few lines.  */
+comment|/**  * Create a newly allocated string using printf format. You can do this easily  * with a strbuf, but this provides a shortcut to save a few lines.  */
 end_comment
 
 begin_macro
