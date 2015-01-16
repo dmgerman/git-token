@@ -11458,7 +11458,7 @@ condition|)
 return|return
 literal|0
 return|;
-comment|/* 	 * The hunk does not apply byte-by-byte, but the hash says 	 * it might with whitespace fuzz. We haven't been asked to 	 * ignore whitespace, we were asked to correct whitespace 	 * errors, so let's try matching after whitespace correction. 	 * 	 * The preimage may extend beyond the end of the file, 	 * but in this loop we will only handle the part of the 	 * preimage that falls within the file. 	 */
+comment|/* 	 * The hunk does not apply byte-by-byte, but the hash says 	 * it might with whitespace fuzz. We weren't asked to 	 * ignore whitespace, we were asked to correct whitespace 	 * errors, so let's try matching after whitespace correction. 	 * 	 * The preimage may extend beyond the end of the file, 	 * but in this loop we will only handle the part of the 	 * preimage that falls within the file. 	 */
 name|strbuf_init
 argument_list|(
 operator|&
