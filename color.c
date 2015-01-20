@@ -524,6 +524,9 @@ name|value
 operator|=
 name|val
 expr_stmt|;
+return|return
+literal|0
+return|;
 block|}
 elseif|else
 if|if
