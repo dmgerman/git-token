@@ -173,7 +173,7 @@ name|ewah_bitmap
 modifier|*
 name|tags
 decl_stmt|;
-comment|/* Map from SHA1 -> `stored_bitmap` for all the bitmapped comits */
+comment|/* Map from SHA1 -> `stored_bitmap` for all the bitmapped commits */
 DECL|member|bitmaps
 name|khash_sha1
 modifier|*
