@@ -48,9 +48,9 @@ block|{
 name|N_
 argument_list|(
 literal|"git show-branch [-a|--all] [-r|--remotes] [--topo-order | --date-order]\n"
-literal|"		       [--current] [--color[=<when>] | --no-color] [--sparse]\n"
-literal|"		       [--more=<n> | --list | --independent | --merge-base]\n"
-literal|"	       [--no-name | --sha1-name] [--topics] [(<rev> |<glob>)...]"
+literal|"		[--current] [--color[=<when>] | --no-color] [--sparse]\n"
+literal|"		[--more=<n> | --list | --independent | --merge-base]\n"
+literal|"		[--no-name | --sha1-name] [--topics] [(<rev> |<glob>)...]"
 argument_list|)
 block|,
 name|N_
