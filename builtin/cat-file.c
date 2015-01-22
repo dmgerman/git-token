@@ -373,14 +373,6 @@ operator|==
 name|OBJ_TAG
 condition|)
 block|{
-name|enum
-name|object_type
-name|type
-decl_stmt|;
-name|unsigned
-name|long
-name|size
-decl_stmt|;
 name|char
 modifier|*
 name|buffer
