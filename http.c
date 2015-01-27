@@ -5677,7 +5677,10 @@ name|parse_pack_index
 argument_list|(
 name|sha1
 argument_list|,
-name|NULL
+name|sha1_pack_index_name
+argument_list|(
+name|sha1
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
