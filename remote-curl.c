@@ -5569,6 +5569,9 @@ decl_stmt|;
 name|int
 name|nongit
 decl_stmt|;
+name|git_setup_gettext
+argument_list|()
+expr_stmt|;
 name|git_extract_argv0_path
 argument_list|(
 name|argv
