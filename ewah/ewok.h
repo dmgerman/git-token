@@ -170,11 +170,34 @@ return|;
 block|}
 end_function
 
-begin_ifdef
-ifdef|#
-directive|ifdef
+begin_comment
+comment|/* __builtin_ctzll was not available until 3.4.0 */
+end_comment
+
+begin_if
+if|#
+directive|if
+name|defined
+argument_list|(
 name|__GNUC__
-end_ifdef
+argument_list|)
+operator|&&
+operator|(
+name|__GNUC__
+operator|>
+literal|3
+operator|||
+operator|(
+name|__GNUC__
+operator|==
+literal|3
+operator|&&
+name|__GNUC_MINOR
+operator|>
+literal|3
+operator|)
+operator|)
+end_if
 
 begin_define
 DECL|macro|ewah_bit_ctz64
