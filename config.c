@@ -331,7 +331,18 @@ name|pos
 operator|>
 literal|0
 condition|)
-return|return
+block|{
+name|conf
+operator|->
+name|u
+operator|.
+name|buf
+operator|.
+name|pos
+operator|--
+expr_stmt|;
+if|if
+condition|(
 name|conf
 operator|->
 name|u
@@ -340,7 +351,6 @@ name|buf
 operator|.
 name|buf
 index|[
-operator|--
 name|conf
 operator|->
 name|u
@@ -349,7 +359,18 @@ name|buf
 operator|.
 name|pos
 index|]
+operator|!=
+name|c
+condition|)
+name|die
+argument_list|(
+literal|"BUG: config_buf can only ungetc the same character"
+argument_list|)
+expr_stmt|;
+return|return
+name|c
 return|;
+block|}
 return|return
 name|EOF
 return|;
