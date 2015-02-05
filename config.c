@@ -1229,6 +1229,12 @@ operator|!=
 literal|'\n'
 condition|)
 block|{
+if|if
+condition|(
+name|c
+operator|!=
+name|EOF
+condition|)
 name|cf
 operator|->
 name|do_ungetc
