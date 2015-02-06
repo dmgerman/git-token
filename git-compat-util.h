@@ -1254,6 +1254,12 @@ directive|ifndef
 name|NO_OPENSSL
 end_ifndef
 
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|__APPLE__
+end_ifdef
+
 begin_define
 DECL|macro|__AVAILABILITY_MACROS_USES_AVAILABILITY
 define|#
@@ -1262,13 +1268,37 @@ name|__AVAILABILITY_MACROS_USES_AVAILABILITY
 value|0
 end_define
 
+begin_include
+include|#
+directive|include
+file|<AvailabilityMacros.h>
+end_include
+
+begin_undef
+DECL|macro|DEPRECATED_ATTRIBUTE
+undef|#
+directive|undef
+name|DEPRECATED_ATTRIBUTE
+end_undef
+
 begin_define
-DECL|macro|MAC_OS_X_VERSION_MIN_REQUIRED
+DECL|macro|DEPRECATED_ATTRIBUTE
 define|#
 directive|define
-name|MAC_OS_X_VERSION_MIN_REQUIRED
-value|MAC_OS_X_VERSION_10_6
+name|DEPRECATED_ATTRIBUTE
 end_define
+
+begin_undef
+DECL|macro|__AVAILABILITY_MACROS_USES_AVAILABILITY
+undef|#
+directive|undef
+name|__AVAILABILITY_MACROS_USES_AVAILABILITY
+end_undef
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_include
 include|#
@@ -1281,20 +1311,6 @@ include|#
 directive|include
 file|<openssl/err.h>
 end_include
-
-begin_undef
-DECL|macro|MAC_OS_X_VERSION_MIN_REQUIRED
-undef|#
-directive|undef
-name|MAC_OS_X_VERSION_MIN_REQUIRED
-end_undef
-
-begin_undef
-DECL|macro|__AVAILABILITY_MACROS_USES_AVAILABILITY
-undef|#
-directive|undef
-name|__AVAILABILITY_MACROS_USES_AVAILABILITY
-end_undef
 
 begin_endif
 endif|#
