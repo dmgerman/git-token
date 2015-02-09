@@ -9455,10 +9455,6 @@ name|e
 operator|->
 name|suspect
 decl_stmt|;
-name|struct
-name|commit_info
-name|ci
-decl_stmt|;
 name|int
 name|num
 decl_stmt|;
@@ -9528,6 +9524,10 @@ name|METAINFO_SHOWN
 operator|)
 condition|)
 block|{
+name|struct
+name|commit_info
+name|ci
+decl_stmt|;
 name|suspect
 operator|->
 name|commit
@@ -9590,6 +9590,12 @@ name|longest_author
 operator|=
 name|num
 expr_stmt|;
+name|commit_info_destroy
+argument_list|(
+operator|&
+name|ci
+argument_list|)
+expr_stmt|;
 block|}
 name|num
 operator|=
@@ -9649,12 +9655,6 @@ argument_list|(
 name|sb
 argument_list|,
 name|e
-argument_list|)
-expr_stmt|;
-name|commit_info_destroy
-argument_list|(
-operator|&
-name|ci
 argument_list|)
 expr_stmt|;
 block|}
