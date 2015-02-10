@@ -5014,12 +5014,22 @@ parameter_list|(
 name|void
 parameter_list|)
 block|{
+specifier|static
+name|int
+name|running
+decl_stmt|;
 if|if
 condition|(
+name|running
+operator|||
 operator|!
 name|pack_data
 condition|)
 return|return;
+name|running
+operator|=
+literal|1
+expr_stmt|;
 name|clear_delta_base_cache
 argument_list|()
 expr_stmt|;
@@ -5299,6 +5309,10 @@ expr_stmt|;
 name|pack_data
 operator|=
 name|NULL
+expr_stmt|;
+name|running
+operator|=
+literal|0
 expr_stmt|;
 comment|/* We can't carry a delta across packfiles. */
 name|strbuf_release
