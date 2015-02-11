@@ -1605,26 +1605,8 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Save a copy of the parent list, and return the saved copy.  This is  * used by the log machinery to retrieve the original parents when  * commit->parents has been modified by history simpification.  *  * You may only call save_parents() once per commit (this is checked  * for non-root commits).  *  * get_saved_parents() will transparently return commit->parents if  * history simplification is off.  */
+comment|/*  * The log machinery saves the original parent list so that  * get_saved_parents() can later tell what the real parents of the  * commits are, when commit->parents has been modified by history  * simpification.  *  * get_saved_parents() will transparently return commit->parents if  * history simplification is off.  */
 end_comment
-
-begin_function_decl
-specifier|extern
-name|void
-name|save_parents
-parameter_list|(
-name|struct
-name|rev_info
-modifier|*
-name|revs
-parameter_list|,
-name|struct
-name|commit
-modifier|*
-name|commit
-parameter_list|)
-function_decl|;
-end_function_decl
 
 begin_function_decl
 specifier|extern
@@ -1643,19 +1625,6 @@ name|struct
 name|commit
 modifier|*
 name|commit
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-specifier|extern
-name|void
-name|free_saved_parents
-parameter_list|(
-name|struct
-name|rev_info
-modifier|*
-name|revs
 parameter_list|)
 function_decl|;
 end_function_decl

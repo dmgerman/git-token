@@ -357,28 +357,5 @@ return|;
 block|}
 end_function
 
-begin_function
-DECL|function|git_getpass
-name|char
-modifier|*
-name|git_getpass
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|prompt
-parameter_list|)
-block|{
-return|return
-name|git_prompt
-argument_list|(
-name|prompt
-argument_list|,
-name|PROMPT_ASKPASS
-argument_list|)
-return|;
-block|}
-end_function
-
 end_unit
 

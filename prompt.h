@@ -44,19 +44,6 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
-begin_function_decl
-name|char
-modifier|*
-name|git_getpass
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|prompt
-parameter_list|)
-function_decl|;
-end_function_decl
-
 begin_endif
 endif|#
 directive|endif
