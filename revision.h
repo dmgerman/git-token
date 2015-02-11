@@ -795,6 +795,11 @@ name|struct
 name|grep_opt
 name|grep_filter
 decl_stmt|;
+comment|/* Negate the match of grep_filter */
+DECL|member|invert_grep
+name|int
+name|invert_grep
+decl_stmt|;
 comment|/* Display history graph */
 DECL|member|graph
 name|struct
