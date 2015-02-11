@@ -337,6 +337,13 @@ unit|}
 comment|/* Mark msgid for translation but do not translate it. */
 end_comment
 
+begin_if
+if|#
+directive|if
+operator|!
+name|USE_PARENS_AROUND_GETTEXT_N
+end_if
+
 begin_define
 DECL|macro|N_
 define|#
@@ -347,6 +354,31 @@ name|msgid
 parameter_list|)
 value|msgid
 end_define
+
+begin_else
+else|#
+directive|else
+end_else
+
+begin_comment
+comment|/*  * Strictly speaking, this will lead to invalid C when  * used this way:  *	static const char s[] = N_("FOO");  * which will expand to  *	static const char s[] = ("FOO");  * and in valid C, the initializer on the right hand side must  * be without the parentheses.  But many compilers do accept it  * as a language extension and it will allow us to catch mistakes  * like:  *	static const char *msgs[] = {  *		N_("one")  *		N_("two"),  *		N_("three"),  *		NULL  *	};  * (notice the missing comma on one of the lines) by forcing  * a compilation error, because parenthesised ("one") ("two")  * will not get silently turned into ("onetwo").  */
+end_comment
+
+begin_define
+DECL|macro|N_
+define|#
+directive|define
+name|N_
+parameter_list|(
+name|msgid
+parameter_list|)
+value|(msgid)
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_endif
 endif|#
