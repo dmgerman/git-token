@@ -138,7 +138,7 @@ index|[]
 init|=
 name|N_
 argument_list|(
-literal|"git blame [options] [rev-opts] [rev] [--] file"
+literal|"git blame [<options>] [<rev-opts>] [<rev>] [--] file"
 argument_list|)
 decl_stmt|;
 end_decl_stmt
@@ -159,7 +159,7 @@ literal|""
 block|,
 name|N_
 argument_list|(
-literal|"[rev-opts] are documented in git-rev-list(1)"
+literal|"<rev-opts> are documented in git-rev-list(1)"
 argument_list|)
 block|,
 name|NULL

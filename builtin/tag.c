@@ -82,7 +82,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git tag [-a|-s|-u<key-id>] [-f] [-m<msg>|-F<file>]<tagname> [<head>]"
+literal|"git tag [-a | -s | -u<key-id>] [-f] [-m<msg> | -F<file>]<tagname> [<head>]"
 argument_list|)
 block|,
 name|N_
@@ -92,7 +92,7 @@ argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git tag -l [-n[<num>]] [--contains<commit>] [--points-at<object>] "
+literal|"git tag -l [-n[<num>]] [--contains<commit>] [--points-at<object>]"
 literal|"\n\t\t[<pattern>...]"
 argument_list|)
 block|,

@@ -5185,7 +5185,7 @@ name|char
 name|mailinfo_usage
 index|[]
 init|=
-literal|"git mailinfo [-k|-b] [-m | --message-id] [-u | --encoding=<encoding> | -n] [--scissors | --no-scissors] msg patch< mail>info"
+literal|"git mailinfo [-k | -b] [-m | --message-id] [-u | --encoding=<encoding> | -n] [--scissors | --no-scissors]<msg><patch>< mail>info"
 decl_stmt|;
 end_decl_stmt
 

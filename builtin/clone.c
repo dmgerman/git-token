@@ -116,7 +116,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git clone [options] [--]<repo> [<dir>]"
+literal|"git clone [<options>] [--]<repo> [<dir>]"
 argument_list|)
 block|,
 name|NULL

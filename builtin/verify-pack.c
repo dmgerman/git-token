@@ -260,7 +260,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git verify-pack [-v|--verbose] [-s|--stat-only]<pack>..."
+literal|"git verify-pack [-v | --verbose] [-s | --stat-only]<pack>..."
 argument_list|)
 block|,
 name|NULL

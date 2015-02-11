@@ -576,7 +576,7 @@ literal|"changes and commit them, and you can discard any commits you make in th
 literal|"state without impacting any branches by performing another checkout.\n\n"
 literal|"If you want to create a new branch to retain commits you create, you may\n"
 literal|"do so (now or later) by using -b with the checkout command again. Example:\n\n"
-literal|"  git checkout -b new_branch_name\n\n"
+literal|"  git checkout -b<new-branch-name>\n\n"
 decl_stmt|;
 name|fprintf
 argument_list|(

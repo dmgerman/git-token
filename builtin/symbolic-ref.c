@@ -36,12 +36,12 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git symbolic-ref [options] name [ref]"
+literal|"git symbolic-ref [<options>]<name> [<ref>]"
 argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git symbolic-ref -d [-q] name"
+literal|"git symbolic-ref -d [-q]<name>"
 argument_list|)
 block|,
 name|NULL

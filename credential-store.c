@@ -642,7 +642,7 @@ name|usage
 index|[]
 init|=
 block|{
-literal|"git credential-store [options]<action>"
+literal|"git credential-store [<options>]<action>"
 block|,
 name|NULL
 block|}

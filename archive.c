@@ -60,7 +60,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git archive [options]<tree-ish> [<path>...]"
+literal|"git archive [<options>]<tree-ish> [<path>...]"
 argument_list|)
 block|,
 name|N_
@@ -70,7 +70,7 @@ argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git archive --remote<repo> [--exec<cmd>] [options]<tree-ish> [<path>...]"
+literal|"git archive --remote<repo> [--exec<cmd>] [<options>]<tree-ish> [<path>...]"
 argument_list|)
 block|,
 name|N_

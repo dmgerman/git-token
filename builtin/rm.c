@@ -70,7 +70,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git rm [options] [--]<file>..."
+literal|"git rm [<options>] [--]<file>..."
 argument_list|)
 block|,
 name|NULL

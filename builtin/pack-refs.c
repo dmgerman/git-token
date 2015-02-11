@@ -30,7 +30,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git pack-refs [options]"
+literal|"git pack-refs [<options>]"
 argument_list|)
 block|,
 name|NULL

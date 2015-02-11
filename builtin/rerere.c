@@ -66,7 +66,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git rerere [clear | forget path... | status | remaining | diff | gc]"
+literal|"git rerere [clear | forget<path>... | status | remaining | diff | gc]"
 argument_list|)
 block|,
 name|NULL

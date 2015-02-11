@@ -72,7 +72,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git fmt-merge-msg [-m<message>] [--log[=<n>]|--no-log] [--file<file>]"
+literal|"git fmt-merge-msg [-m<message>] [--log[=<n>] | --no-log] [--file<file>]"
 argument_list|)
 block|,
 name|NULL

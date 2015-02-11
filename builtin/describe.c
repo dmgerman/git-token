@@ -94,12 +94,12 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git describe [options]<commit-ish>*"
+literal|"git describe [<options>] [<commit-ish>...]"
 argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git describe [options] --dirty"
+literal|"git describe [<options>] --dirty"
 argument_list|)
 block|,
 name|NULL

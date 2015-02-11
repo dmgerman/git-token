@@ -307,7 +307,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git apply [options] [<patch>...]"
+literal|"git apply [<options>] [<patch>...]"
 argument_list|)
 block|,
 name|NULL

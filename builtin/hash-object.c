@@ -490,7 +490,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git hash-object [-t<type>] [-w] [--path=<file>|--no-filters] [--stdin] [--]<file>..."
+literal|"git hash-object [-t<type>] [-w] [--path=<file> | --no-filters] [--stdin] [--]<file>..."
 argument_list|)
 block|,
 name|N_

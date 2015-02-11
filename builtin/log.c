@@ -227,7 +227,7 @@ argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git show [options]<object>..."
+literal|"git show [<options>]<object>..."
 argument_list|)
 block|,
 name|NULL
@@ -5831,7 +5831,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git format-patch [options] [<since> |<revision range>]"
+literal|"git format-patch [<options>] [<since> |<revision-range>]"
 argument_list|)
 block|,
 name|NULL

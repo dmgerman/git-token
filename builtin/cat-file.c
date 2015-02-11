@@ -1590,12 +1590,12 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git cat-file (-t|-s|-e|-p|<type>|--textconv)<object>"
+literal|"git cat-file (-t | -s | -e | -p |<type> | --textconv)<object>"
 argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git cat-file (--batch|--batch-check)<<list_of_objects>"
+literal|"git cat-file (--batch | --batch-check)<<list-of-objects>"
 argument_list|)
 block|,
 name|NULL

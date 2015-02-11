@@ -1756,7 +1756,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git rev-parse --parseopt [options] -- [<args>...]"
+literal|"git rev-parse --parseopt [<options>] -- [<args>...]"
 argument_list|)
 block|,
 name|NULL
@@ -2575,9 +2575,9 @@ index|[]
 init|=
 name|N_
 argument_list|(
-literal|"git rev-parse --parseopt [options] -- [<args>...]\n"
+literal|"git rev-parse --parseopt [<options>] -- [<args>...]\n"
 literal|"   or: git rev-parse --sq-quote [<arg>...]\n"
-literal|"   or: git rev-parse [options] [<arg>...]\n"
+literal|"   or: git rev-parse [<options>] [<arg>...]\n"
 literal|"\n"
 literal|"Run \"git rev-parse --parseopt -h\" for more information on the first usage."
 argument_list|)

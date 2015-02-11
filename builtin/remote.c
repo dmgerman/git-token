@@ -71,7 +71,7 @@ argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git remote add [-t<branch>] [-m<master>] [-f] [--tags|--no-tags] [--mirror=<fetch|push>]<name><url>"
+literal|"git remote add [-t<branch>] [-m<master>] [-f] [--tags | --no-tags] [--mirror=<fetch|push>]<name><url>"
 argument_list|)
 block|,
 name|N_

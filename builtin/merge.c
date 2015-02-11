@@ -211,12 +211,12 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git merge [options] [<commit>...]"
+literal|"git merge [<options>] [<commit>...]"
 argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git merge [options]<msg> HEAD<commit>"
+literal|"git merge [<options>]<msg> HEAD<commit>"
 argument_list|)
 block|,
 name|N_

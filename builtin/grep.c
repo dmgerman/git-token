@@ -106,7 +106,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git grep [options] [-e]<pattern> [<rev>...] [[--]<path>...]"
+literal|"git grep [<options>] [-e]<pattern> [<rev>...] [[--]<path>...]"
 argument_list|)
 block|,
 name|NULL

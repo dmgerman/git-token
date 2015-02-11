@@ -58,7 +58,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git verify-tag [-v|--verbose]<tag>..."
+literal|"git verify-tag [-v | --verbose]<tag>..."
 argument_list|)
 block|,
 name|NULL

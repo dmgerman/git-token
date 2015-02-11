@@ -58,7 +58,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git verify-commit [-v|--verbose]<commit>..."
+literal|"git verify-commit [-v | --verbose]<commit>..."
 argument_list|)
 block|,
 name|NULL
