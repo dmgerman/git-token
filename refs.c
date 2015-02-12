@@ -377,7 +377,7 @@ DECL|macro|REF_ISPRUNING
 define|#
 directive|define
 name|REF_ISPRUNING
-value|0x0100
+value|0x04
 end_define
 
 begin_comment
