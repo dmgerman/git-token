@@ -357,6 +357,18 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
+comment|/*  * Flag passed to lock_ref_sha1_basic() telling it to tolerate broken  * refs (i.e., because the reference is about to be deleted anyway).  */
+end_comment
+
+begin_define
+DECL|macro|REF_DELETING
+define|#
+directive|define
+name|REF_DELETING
+value|0x02
+end_define
+
+begin_comment
 comment|/*  * Used as a flag to ref_transaction_delete when a loose ref is being  * pruned.  */
 end_comment
 
