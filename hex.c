@@ -907,7 +907,7 @@ index|[
 literal|4
 index|]
 index|[
-literal|50
+literal|41
 index|]
 decl_stmt|;
 specifier|static
