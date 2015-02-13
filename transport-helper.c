@@ -545,6 +545,19 @@ expr_stmt|;
 block|}
 end_function
 
+begin_function_decl
+specifier|static
+name|void
+name|standard_options
+parameter_list|(
+name|struct
+name|transport
+modifier|*
+name|t
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function
 DECL|function|get_helper
 specifier|static
@@ -1271,6 +1284,11 @@ argument_list|,
 literal|"Debug: Capabilities complete.\n"
 argument_list|)
 expr_stmt|;
+name|standard_options
+argument_list|(
+name|transport
+argument_list|)
+expr_stmt|;
 return|return
 name|data
 operator|->
@@ -1930,11 +1948,6 @@ name|buf
 init|=
 name|STRBUF_INIT
 decl_stmt|;
-name|standard_options
-argument_list|(
-name|transport
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|data
@@ -4307,11 +4320,6 @@ return|return
 literal|0
 return|;
 block|}
-name|standard_options
-argument_list|(
-name|transport
-argument_list|)
-expr_stmt|;
 name|for_each_string_list_item
 argument_list|(
 argument|cas_option
