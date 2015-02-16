@@ -2236,13 +2236,6 @@ modifier|*
 name|cb
 parameter_list|)
 block|{
-name|struct
-name|wt_status
-modifier|*
-name|s
-init|=
-name|cb
-decl_stmt|;
 name|int
 name|status
 decl_stmt|;
@@ -2271,7 +2264,7 @@ name|k
 argument_list|,
 name|v
 argument_list|,
-name|s
+name|NULL
 argument_list|)
 return|;
 block|}
