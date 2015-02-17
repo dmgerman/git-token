@@ -1034,7 +1034,7 @@ comment|/*  * The following functions add a reference check or update to a  * re
 end_comment
 
 begin_comment
-comment|/*  * Add a reference update to transaction.  new_sha1 is the value that  * the reference should have after the update, or null_sha1 if it should  * be deleted.  If old_sha1 is non-NULL, then it is the value  * that the reference should have had before the update, or null_sha1 if  * it must not have existed beforehand.  * Function returns 0 on success and non-zero on failure. A failure to update  * means that the transaction as a whole has failed and will need to be  * rolled back.  */
+comment|/*  * Add a reference update to transaction. new_sha1 is the value that  * the reference should have after the update, or null_sha1 if it  * should be deleted. If new_sha1 is NULL, then the reference is not  * changed at all. old_sha1 is the value that the reference must have  * before the update, or null_sha1 if it must not have existed  * beforehand. The old value is checked after the lock is taken to  * prevent races. If the old value doesn't agree with old_sha1, the  * whole transaction fails. If old_sha1 is NULL, then the previous  * value is not checked.  *  * Return 0 on success and non-zero on failure. Any failure in the  * transaction means that the transaction as a whole has failed and  * will need to be rolled back.  */
 end_comment
 
 begin_function_decl
@@ -1153,6 +1153,42 @@ specifier|const
 name|char
 modifier|*
 name|msg
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|err
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/*  * Verify, within a transaction, that refname has the value old_sha1,  * or, if old_sha1 is null_sha1, then verify that the reference  * doesn't exist. old_sha1 must be non-NULL. Function returns 0 on  * success and non-zero on failure. A failure to verify means that the  * transaction as a whole has failed and will need to be rolled back.  */
+end_comment
+
+begin_function_decl
+name|int
+name|ref_transaction_verify
+parameter_list|(
+name|struct
+name|ref_transaction
+modifier|*
+name|transaction
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|refname
+parameter_list|,
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|old_sha1
+parameter_list|,
+name|unsigned
+name|int
+name|flags
 parameter_list|,
 name|struct
 name|strbuf

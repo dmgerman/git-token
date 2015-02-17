@@ -381,6 +381,18 @@ value|0x04
 end_define
 
 begin_comment
+comment|/*  * Used as a flag in ref_update::flags when the reference should be  * updated to new_sha1.  */
+end_comment
+
+begin_define
+DECL|macro|REF_HAVE_NEW
+define|#
+directive|define
+name|REF_HAVE_NEW
+value|0x08
+end_define
+
+begin_comment
 comment|/*  * Used as a flag in ref_update::flags when old_sha1 should be  * checked.  */
 end_comment
 
@@ -389,7 +401,7 @@ DECL|macro|REF_HAVE_OLD
 define|#
 directive|define
 name|REF_HAVE_OLD
-value|0x08
+value|0x10
 end_define
 
 begin_comment
@@ -16520,6 +16532,7 @@ DECL|struct|ref_update
 struct|struct
 name|ref_update
 block|{
+comment|/* 	 * If (flags& REF_HAVE_NEW), set the reference to this value: 	 */
 DECL|member|new_sha1
 name|unsigned
 name|char
@@ -16528,6 +16541,7 @@ index|[
 literal|20
 index|]
 decl_stmt|;
+comment|/* 	 * If (flags& REF_HAVE_OLD), check that the reference 	 * previously had this value: 	 */
 DECL|member|old_sha1
 name|unsigned
 name|char
@@ -16536,7 +16550,7 @@ index|[
 literal|20
 index|]
 decl_stmt|;
-comment|/* 	 * One or more of REF_HAVE_OLD, REF_NODEREF, 	 * REF_DELETING, and REF_ISPRUNING: 	 */
+comment|/* 	 * One or more of REF_HAVE_NEW, REF_HAVE_OLD, REF_NODEREF, 	 * REF_DELETING, and REF_ISPRUNING: 	 */
 DECL|member|flags
 name|unsigned
 name|int
@@ -16893,6 +16907,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|new_sha1
+operator|&&
 operator|!
 name|is_null_sha1
 argument_list|(
@@ -16930,6 +16946,11 @@ argument_list|,
 name|refname
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|new_sha1
+condition|)
+block|{
 name|hashcpy
 argument_list|(
 name|update
@@ -16939,6 +16960,11 @@ argument_list|,
 name|new_sha1
 argument_list|)
 expr_stmt|;
+name|flags
+operator||=
+name|REF_HAVE_NEW
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|old_sha1
@@ -17119,6 +17145,68 @@ argument_list|,
 name|flags
 argument_list|,
 name|msg
+argument_list|,
+name|err
+argument_list|)
+return|;
+block|}
+end_function
+
+begin_function
+DECL|function|ref_transaction_verify
+name|int
+name|ref_transaction_verify
+parameter_list|(
+name|struct
+name|ref_transaction
+modifier|*
+name|transaction
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|refname
+parameter_list|,
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|old_sha1
+parameter_list|,
+name|unsigned
+name|int
+name|flags
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|err
+parameter_list|)
+block|{
+if|if
+condition|(
+operator|!
+name|old_sha1
+condition|)
+name|die
+argument_list|(
+literal|"BUG: verify called with old_sha1 set to NULL"
+argument_list|)
+expr_stmt|;
+return|return
+name|ref_transaction_update
+argument_list|(
+name|transaction
+argument_list|,
+name|refname
+argument_list|,
+name|NULL
+argument_list|,
+name|old_sha1
+argument_list|,
+name|flags
+argument_list|,
+name|NULL
 argument_list|,
 name|err
 argument_list|)
@@ -17595,6 +17683,12 @@ name|flags
 decl_stmt|;
 if|if
 condition|(
+operator|(
+name|flags
+operator|&
+name|REF_HAVE_NEW
+operator|)
+operator|&&
 name|is_null_sha1
 argument_list|(
 name|update
@@ -17703,8 +17797,21 @@ index|[
 name|i
 index|]
 decl_stmt|;
+name|int
+name|flags
+init|=
+name|update
+operator|->
+name|flags
+decl_stmt|;
 if|if
 condition|(
+operator|(
+name|flags
+operator|&
+name|REF_HAVE_NEW
+operator|)
+operator|&&
 operator|!
 name|is_null_sha1
 argument_list|(
@@ -17792,11 +17899,27 @@ index|[
 name|i
 index|]
 decl_stmt|;
-if|if
-condition|(
+name|int
+name|flags
+init|=
 name|update
 operator|->
-name|lock
+name|flags
+decl_stmt|;
+if|if
+condition|(
+operator|(
+name|flags
+operator|&
+name|REF_HAVE_NEW
+operator|)
+operator|&&
+name|is_null_sha1
+argument_list|(
+name|update
+operator|->
+name|new_sha1
+argument_list|)
 condition|)
 block|{
 if|if
@@ -17827,8 +17950,6 @@ if|if
 condition|(
 operator|!
 operator|(
-name|update
-operator|->
 name|flags
 operator|&
 name|REF_ISPRUNING
