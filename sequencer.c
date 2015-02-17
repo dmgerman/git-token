@@ -1359,8 +1359,6 @@ name|from
 argument_list|,
 literal|0
 argument_list|,
-literal|1
-argument_list|,
 name|sb
 operator|.
 name|buf

@@ -811,11 +811,13 @@ name|refname
 argument_list|,
 name|new_sha1
 argument_list|,
+name|have_old
+condition|?
 name|old_sha1
+else|:
+name|NULL
 argument_list|,
 name|update_flags
-argument_list|,
-name|have_old
 argument_list|,
 name|msg
 argument_list|,
@@ -1319,8 +1321,6 @@ argument_list|,
 name|old_sha1
 argument_list|,
 name|update_flags
-argument_list|,
-literal|1
 argument_list|,
 name|msg
 argument_list|,

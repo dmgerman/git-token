@@ -2292,13 +2292,15 @@ name|ref
 operator|->
 name|new_sha1
 argument_list|,
+name|check_old
+condition|?
 name|ref
 operator|->
 name|old_sha1
+else|:
+name|NULL
 argument_list|,
 literal|0
-argument_list|,
-name|check_old
 argument_list|,
 name|msg
 argument_list|,

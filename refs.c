@@ -16855,9 +16855,6 @@ name|unsigned
 name|int
 name|flags
 parameter_list|,
-name|int
-name|have_old
-parameter_list|,
 specifier|const
 name|char
 modifier|*
@@ -16890,18 +16887,6 @@ condition|)
 name|die
 argument_list|(
 literal|"BUG: update called for transaction that is not open"
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|have_old
-operator|&&
-operator|!
-name|old_sha1
-condition|)
-name|die
-argument_list|(
-literal|"BUG: have_old is true but old_sha1 is NULL"
 argument_list|)
 expr_stmt|;
 if|if
@@ -16954,7 +16939,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|have_old
+name|old_sha1
 condition|)
 block|{
 name|hashcpy
@@ -17045,8 +17030,6 @@ name|null_sha1
 argument_list|,
 name|flags
 argument_list|,
-literal|1
-argument_list|,
 name|msg
 argument_list|,
 name|err
@@ -17103,11 +17086,13 @@ name|refname
 argument_list|,
 name|null_sha1
 argument_list|,
+name|have_old
+condition|?
 name|old_sha1
+else|:
+name|NULL
 argument_list|,
 name|flags
-argument_list|,
-name|have_old
 argument_list|,
 name|msg
 argument_list|,
@@ -17188,10 +17173,6 @@ argument_list|,
 name|oldval
 argument_list|,
 name|flags
-argument_list|,
-operator|!
-operator|!
-name|oldval
 argument_list|,
 name|action
 argument_list|,
