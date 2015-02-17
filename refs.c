@@ -17019,6 +17019,21 @@ modifier|*
 name|err
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|new_sha1
+operator|||
+name|is_null_sha1
+argument_list|(
+name|new_sha1
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"BUG: create called without valid new_sha1"
+argument_list|)
+expr_stmt|;
 return|return
 name|ref_transaction_update
 argument_list|(
