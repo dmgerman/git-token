@@ -17091,6 +17091,20 @@ modifier|*
 name|err
 parameter_list|)
 block|{
+if|if
+condition|(
+name|old_sha1
+operator|&&
+name|is_null_sha1
+argument_list|(
+name|old_sha1
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"BUG: delete called with old_sha1 set to zeros"
+argument_list|)
+expr_stmt|;
 return|return
 name|ref_transaction_update
 argument_list|(
