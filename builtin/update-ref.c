@@ -1152,11 +1152,13 @@ name|transaction
 argument_list|,
 name|refname
 argument_list|,
+name|have_old
+condition|?
 name|old_sha1
+else|:
+name|NULL
 argument_list|,
 name|update_flags
-argument_list|,
-name|have_old
 argument_list|,
 name|msg
 argument_list|,
