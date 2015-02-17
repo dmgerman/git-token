@@ -1063,6 +1063,7 @@ name|char
 modifier|*
 name|old_sha1
 parameter_list|,
+name|unsigned
 name|int
 name|flags
 parameter_list|,
@@ -1106,6 +1107,7 @@ name|char
 modifier|*
 name|new_sha1
 parameter_list|,
+name|unsigned
 name|int
 name|flags
 parameter_list|,
@@ -1146,6 +1148,7 @@ name|char
 modifier|*
 name|old_sha1
 parameter_list|,
+name|unsigned
 name|int
 name|flags
 parameter_list|,
@@ -1256,6 +1259,7 @@ name|char
 modifier|*
 name|oldval
 parameter_list|,
+name|unsigned
 name|int
 name|flags
 parameter_list|,
