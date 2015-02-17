@@ -1260,7 +1260,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/** Lock a ref and then write its file */
+comment|/**  * Lock, update, and unlock a single reference. This function  * basically does a transaction containing a single call to  * ref_transaction_update(). The parameters to this function have the  * same meaning as the corresponding parameters to  * ref_transaction_update(). Handle errors as requested by the `onerr`  * argument.  */
 end_comment
 
 begin_function_decl
@@ -1270,7 +1270,7 @@ parameter_list|(
 specifier|const
 name|char
 modifier|*
-name|action
+name|msg
 parameter_list|,
 specifier|const
 name|char
@@ -1281,13 +1281,13 @@ specifier|const
 name|unsigned
 name|char
 modifier|*
-name|sha1
+name|new_sha1
 parameter_list|,
 specifier|const
 name|unsigned
 name|char
 modifier|*
-name|oldval
+name|old_sha1
 parameter_list|,
 name|unsigned
 name|int
