@@ -9751,7 +9751,7 @@ name|object
 operator|.
 name|sha1
 else|:
-name|NULL
+name|null_sha1
 argument_list|,
 literal|0
 argument_list|,
