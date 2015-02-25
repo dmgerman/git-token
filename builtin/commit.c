@@ -5229,7 +5229,7 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"No existing author found with '%s'"
+literal|"--author '%s' is not 'Name<email>' and matches no existing author"
 argument_list|)
 argument_list|,
 name|name
