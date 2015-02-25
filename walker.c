@@ -1345,14 +1345,10 @@ index|[
 name|targets
 index|]
 operator|=
-name|rf_one
-condition|?
-name|xstrdup
+name|xstrdup_or_null
 argument_list|(
 name|rf_one
 argument_list|)
-else|:
-name|NULL
 expr_stmt|;
 name|targets
 operator|++

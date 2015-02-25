@@ -141,14 +141,10 @@ argument_list|)
 expr_stmt|;
 name|alternate_shallow_file
 operator|=
-name|path
-condition|?
-name|xstrdup
+name|xstrdup_or_null
 argument_list|(
 name|path
 argument_list|)
-else|:
-name|NULL
 expr_stmt|;
 block|}
 end_function

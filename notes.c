@@ -5074,14 +5074,10 @@ name|t
 operator|->
 name|ref
 operator|=
-name|notes_ref
-condition|?
-name|xstrdup
+name|xstrdup_or_null
 argument_list|(
 name|notes_ref
 argument_list|)
-else|:
-name|NULL
 expr_stmt|;
 name|t
 operator|->
