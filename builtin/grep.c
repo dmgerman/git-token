@@ -3553,7 +3553,7 @@ name|opt_exclude
 argument_list|,
 name|N_
 argument_list|(
-literal|"search also in ignored files"
+literal|"ignore files specified via '.gitignore'"
 argument_list|)
 argument_list|,
 literal|1
