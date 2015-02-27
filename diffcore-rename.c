@@ -2372,14 +2372,35 @@ name|sha1
 argument_list|)
 condition|)
 continue|continue;
-else|else
+elseif|else
+if|if
+condition|(
 name|add_rename_dst
 argument_list|(
 name|p
 operator|->
 name|two
 argument_list|)
+operator|<
+literal|0
+condition|)
+block|{
+name|warning
+argument_list|(
+literal|"skipping rename detection, detected"
+literal|" duplicate destination '%s'"
+argument_list|,
+name|p
+operator|->
+name|two
+operator|->
+name|path
+argument_list|)
 expr_stmt|;
+goto|goto
+name|cleanup
+goto|;
+block|}
 block|}
 elseif|else
 if|if
