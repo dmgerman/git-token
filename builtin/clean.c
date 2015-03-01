@@ -3797,11 +3797,12 @@ operator|&
 name|buf
 argument_list|)
 expr_stmt|;
+comment|/* TRANSLATORS: Make sure to keep [y/N] as is */
 name|printf
 argument_list|(
 name|_
 argument_list|(
-literal|"remove %s? "
+literal|"Remove %s [y/N]? "
 argument_list|)
 argument_list|,
 name|qname
