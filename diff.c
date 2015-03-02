@@ -26442,6 +26442,8 @@ condition|(
 name|output_format
 operator|&
 name|DIFF_FORMAT_DIRSTAT
+operator|&&
+name|dirstat_by_line
 condition|)
 name|show_dirstat_by_line
 argument_list|(
