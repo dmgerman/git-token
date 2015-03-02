@@ -66,6 +66,7 @@ specifier|extern
 name|kwset_t
 name|kwsalloc
 parameter_list|(
+name|unsigned
 name|char
 specifier|const
 modifier|*
