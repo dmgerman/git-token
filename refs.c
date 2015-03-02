@@ -9989,11 +9989,6 @@ init|=
 literal|0
 decl_stmt|;
 name|int
-name|missing
-init|=
-literal|0
-decl_stmt|;
-name|int
 name|attempts_remaining
 init|=
 literal|3
@@ -10159,19 +10154,15 @@ goto|goto
 name|error_return
 goto|;
 block|}
-name|missing
-operator|=
+comment|/* 	 * If the ref did not exist and we are creating it, make sure 	 * there is no existing packed ref whose name begins with our 	 * refname, nor a packed ref whose name is a proper prefix of 	 * our refname. 	 */
+if|if
+condition|(
 name|is_null_sha1
 argument_list|(
 name|lock
 operator|->
 name|old_sha1
 argument_list|)
-expr_stmt|;
-comment|/* When the ref did not exist and we are creating it, 	 * make sure there is no existing ref that is packed 	 * whose name begins with our refname, nor a ref whose 	 * name is a proper prefix of our refname. 	 */
-if|if
-condition|(
-name|missing
 operator|&&
 operator|!
 name|is_refname_available
@@ -10257,16 +10248,6 @@ literal|"%s"
 argument_list|,
 name|refname
 argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|missing
-condition|)
-name|lock
-operator|->
-name|force_write
-operator|=
-literal|1
 expr_stmt|;
 if|if
 condition|(
