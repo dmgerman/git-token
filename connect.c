@@ -3369,16 +3369,36 @@ operator|==
 name|PROTO_GIT
 condition|)
 block|{
-comment|/* These underlying connection commands die() if they 		 * cannot connect. 		 */
+comment|/* 		 * Set up virtual host information based on where we will 		 * connect, unless the user has overridden us in 		 * the environment. 		 */
 name|char
 modifier|*
 name|target_host
 init|=
+name|getenv
+argument_list|(
+literal|"GIT_OVERRIDE_VIRTUAL_HOST"
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|target_host
+condition|)
+name|target_host
+operator|=
+name|xstrdup
+argument_list|(
+name|target_host
+argument_list|)
+expr_stmt|;
+else|else
+name|target_host
+operator|=
 name|xstrdup
 argument_list|(
 name|hostandport
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+comment|/* These underlying connection commands die() if they 		 * cannot connect. 		 */
 if|if
 condition|(
 name|git_use_proxy
