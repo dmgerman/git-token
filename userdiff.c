@@ -14,12 +14,6 @@ end_include
 begin_include
 include|#
 directive|include
-file|"cache.h"
-end_include
-
-begin_include
-include|#
-directive|include
 file|"attr.h"
 end_include
 
