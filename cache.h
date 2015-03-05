@@ -10076,7 +10076,7 @@ specifier|extern
 name|int
 name|decimal_width
 parameter_list|(
-name|int
+name|uintmax_t
 parameter_list|)
 function_decl|;
 end_function_decl
