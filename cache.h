@@ -7953,7 +7953,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Iterate over the files in the loose-object parts of the object  * directory "path", triggering the following callbacks:  *  *  - loose_object is called for each loose object we find.  *  *  - loose_cruft is called for any files that do not appear to be  *    loose objects. Note that we only look in the loose object  *    directories "objects/[0-9a-f]{2}/", so we will not report  *    "objects/foobar" as cruft.  *  *  - loose_subdir is called for each top-level hashed subdirectory  *    of the object directory (e.g., "$OBJDIR/f0"). It is called  *    after the objects in the directory are processed.  *  * Any callback that is NULL will be ignored. Callbacks returning non-zero  * will end the iteration.  */
+comment|/*  * Iterate over the files in the loose-object parts of the object  * directory "path", triggering the following callbacks:  *  *  - loose_object is called for each loose object we find.  *  *  - loose_cruft is called for any files that do not appear to be  *    loose objects. Note that we only look in the loose object  *    directories "objects/[0-9a-f]{2}/", so we will not report  *    "objects/foobar" as cruft.  *  *  - loose_subdir is called for each top-level hashed subdirectory  *    of the object directory (e.g., "$OBJDIR/f0"). It is called  *    after the objects in the directory are processed.  *  * Any callback that is NULL will be ignored. Callbacks returning non-zero  * will end the iteration.  *  * In the "buf" variant, "path" is a strbuf which will also be used as a  * scratch buffer, but restored to its original contents before  * the function returns.  */
 end_comment
 
 begin_typedef
@@ -8030,6 +8030,31 @@ name|for_each_loose_file_in_objdir
 parameter_list|(
 specifier|const
 name|char
+modifier|*
+name|path
+parameter_list|,
+name|each_loose_object_fn
+name|obj_cb
+parameter_list|,
+name|each_loose_cruft_fn
+name|cruft_cb
+parameter_list|,
+name|each_loose_subdir_fn
+name|subdir_cb
+parameter_list|,
+name|void
+modifier|*
+name|data
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
+name|for_each_loose_file_in_objdir_buf
+parameter_list|(
+name|struct
+name|strbuf
 modifier|*
 name|path
 parameter_list|,
