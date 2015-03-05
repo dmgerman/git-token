@@ -659,7 +659,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Flags controlling ref_transaction_update(), ref_transaction_create(), etc.  * REF_NODEREF: act on the ref directly, instead of dereferencing  *              symbolic references.  * REF_DELETING: tolerate broken refs  *  * Flags>= 0x100 are reserved for internal use.  */
+comment|/*  * Flags controlling ref_transaction_update(), ref_transaction_create(), etc.  * REF_NODEREF: act on the ref directly, instead of dereferencing  *              symbolic references.  *  * Other flags are reserved for internal use.  */
 end_comment
 
 begin_define
@@ -668,14 +668,6 @@ define|#
 directive|define
 name|REF_NODEREF
 value|0x01
-end_define
-
-begin_define
-DECL|macro|REF_DELETING
-define|#
-directive|define
-name|REF_DELETING
-value|0x02
 end_define
 
 begin_comment
@@ -1038,11 +1030,11 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * The following functions add a reference check or update to a  * ref_transaction.  In all of them, refname is the name of the  * reference to be affected.  The functions make internal copies of  * refname and msg, so the caller retains ownership of these parameters.  * flags can be REF_NODEREF; it is passed to update_ref_lock().  */
+comment|/*  * Reference transaction updates  *  * The following four functions add a reference check or update to a  * ref_transaction.  They have some common similar parameters:  *  *     transaction -- a pointer to an open ref_transaction, obtained  *         from ref_transaction_begin().  *  *     refname -- the name of the reference to be affected.  *  *     flags -- flags affecting the update, passed to  *         update_ref_lock(). Can be REF_NODEREF, which means that  *         symbolic references should not be followed.  *  *     msg -- a message describing the change (for the reflog).  *  *     err -- a strbuf for receiving a description of any error that  *         might have occured.  *  * The functions make internal copies of refname and msg, so the  * caller retains ownership of these parameters.  *  * The functions return 0 on success and non-zero on failure. A  * failure means that the transaction as a whole has failed and needs  * to be rolled back.  */
 end_comment
 
 begin_comment
-comment|/*  * Add a reference update to transaction.  new_sha1 is the value that  * the reference should have after the update, or null_sha1 if it should  * be deleted.  If have_old is true, then old_sha1 holds the value  * that the reference should have had before the update, or zeros if  * it must not have existed beforehand.  * Function returns 0 on success and non-zero on failure. A failure to update  * means that the transaction as a whole has failed and will need to be  * rolled back.  */
+comment|/*  * Add a reference update to transaction. new_sha1 is the value that  * the reference should have after the update, or null_sha1 if it  * should be deleted. If new_sha1 is NULL, then the reference is not  * changed at all. old_sha1 is the value that the reference must have  * before the update, or null_sha1 if it must not have existed  * beforehand. The old value is checked after the lock is taken to  * prevent races. If the old value doesn't agree with old_sha1, the  * whole transaction fails. If old_sha1 is NULL, then the previous  * value is not checked.  *  * See the above comment "Reference transaction updates" for more  * information.  */
 end_comment
 
 begin_function_decl
@@ -1071,11 +1063,9 @@ name|char
 modifier|*
 name|old_sha1
 parameter_list|,
+name|unsigned
 name|int
 name|flags
-parameter_list|,
-name|int
-name|have_old
 parameter_list|,
 specifier|const
 name|char
@@ -1091,7 +1081,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Add a reference creation to transaction.  new_sha1 is the value  * that the reference should have after the update; it must not be the  * null SHA-1.  It is verified that the reference does not exist  * already.  * Function returns 0 on success and non-zero on failure. A failure to create  * means that the transaction as a whole has failed and will need to be  * rolled back.  */
+comment|/*  * Add a reference creation to transaction. new_sha1 is the value that  * the reference should have after the update; it must not be  * null_sha1. It is verified that the reference does not exist  * already.  *  * See the above comment "Reference transaction updates" for more  * information.  */
 end_comment
 
 begin_function_decl
@@ -1114,6 +1104,7 @@ name|char
 modifier|*
 name|new_sha1
 parameter_list|,
+name|unsigned
 name|int
 name|flags
 parameter_list|,
@@ -1131,7 +1122,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Add a reference deletion to transaction.  If have_old is true, then  * old_sha1 holds the value that the reference should have had before  * the update (which must not be the null SHA-1).  * Function returns 0 on success and non-zero on failure. A failure to delete  * means that the transaction as a whole has failed and will need to be  * rolled back.  */
+comment|/*  * Add a reference deletion to transaction. If old_sha1 is non-NULL,  * then it holds the value that the reference should have had before  * the update (which must not be null_sha1).  *  * See the above comment "Reference transaction updates" for more  * information.  */
 end_comment
 
 begin_function_decl
@@ -1154,16 +1145,50 @@ name|char
 modifier|*
 name|old_sha1
 parameter_list|,
+name|unsigned
 name|int
 name|flags
-parameter_list|,
-name|int
-name|have_old
 parameter_list|,
 specifier|const
 name|char
 modifier|*
 name|msg
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|err
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/*  * Verify, within a transaction, that refname has the value old_sha1,  * or, if old_sha1 is null_sha1, then verify that the reference  * doesn't exist. old_sha1 must be non-NULL.  *  * See the above comment "Reference transaction updates" for more  * information.  */
+end_comment
+
+begin_function_decl
+name|int
+name|ref_transaction_verify
+parameter_list|(
+name|struct
+name|ref_transaction
+modifier|*
+name|transaction
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|refname
+parameter_list|,
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|old_sha1
+parameter_list|,
+name|unsigned
+name|int
+name|flags
 parameter_list|,
 name|struct
 name|strbuf
@@ -1235,7 +1260,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/** Lock a ref and then write its file */
+comment|/**  * Lock, update, and unlock a single reference. This function  * basically does a transaction containing a single call to  * ref_transaction_update(). The parameters to this function have the  * same meaning as the corresponding parameters to  * ref_transaction_update(). Handle errors as requested by the `onerr`  * argument.  */
 end_comment
 
 begin_function_decl
@@ -1245,7 +1270,7 @@ parameter_list|(
 specifier|const
 name|char
 modifier|*
-name|action
+name|msg
 parameter_list|,
 specifier|const
 name|char
@@ -1256,14 +1281,15 @@ specifier|const
 name|unsigned
 name|char
 modifier|*
-name|sha1
+name|new_sha1
 parameter_list|,
 specifier|const
 name|unsigned
 name|char
 modifier|*
-name|oldval
+name|old_sha1
 parameter_list|,
+name|unsigned
 name|int
 name|flags
 parameter_list|,

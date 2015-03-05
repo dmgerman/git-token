@@ -1433,12 +1433,13 @@ name|buf
 argument_list|,
 name|sha1
 argument_list|,
+name|forcing
+condition|?
+name|NULL
+else|:
 name|null_sha1
 argument_list|,
 literal|0
-argument_list|,
-operator|!
-name|forcing
 argument_list|,
 name|msg
 argument_list|,
