@@ -338,6 +338,10 @@ DECL|member|revert_in_progress
 name|int
 name|revert_in_progress
 decl_stmt|;
+DECL|member|detached_at
+name|int
+name|detached_at
+decl_stmt|;
 DECL|member|branch
 name|char
 modifier|*
