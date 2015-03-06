@@ -352,6 +352,7 @@ end_comment
 begin_decl_stmt
 DECL|variable|tolower_trans_tbl
 specifier|const
+name|unsigned
 name|char
 name|tolower_trans_tbl
 index|[
