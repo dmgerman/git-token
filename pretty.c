@@ -2828,16 +2828,12 @@ decl_stmt|;
 comment|/* guess if there is an encoding header before a \n\n */
 while|while
 condition|(
-name|strncmp
+operator|!
+name|starts_with
 argument_list|(
 name|cp
 argument_list|,
 literal|"encoding "
-argument_list|,
-name|strlen
-argument_list|(
-literal|"encoding "
-argument_list|)
 argument_list|)
 condition|)
 block|{
