@@ -70,6 +70,54 @@ endif|#
 directive|endif
 end_endif
 
+begin_if
+if|#
+directive|if
+name|defined
+argument_list|(
+name|USE_CURL_FOR_IMAP_SEND
+argument_list|)
+operator|&&
+name|defined
+argument_list|(
+name|NO_OPENSSL
+argument_list|)
+end_if
+
+begin_comment
+comment|/* only available option */
+end_comment
+
+begin_define
+DECL|macro|USE_CURL_DEFAULT
+define|#
+directive|define
+name|USE_CURL_DEFAULT
+value|1
+end_define
+
+begin_else
+else|#
+directive|else
+end_else
+
+begin_comment
+comment|/* strictly opt in */
+end_comment
+
+begin_define
+DECL|macro|USE_CURL_DEFAULT
+define|#
+directive|define
+name|USE_CURL_DEFAULT
+value|0
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_decl_stmt
 DECL|variable|verbosity
 specifier|static
@@ -83,13 +131,10 @@ DECL|variable|use_curl
 specifier|static
 name|int
 name|use_curl
+init|=
+name|USE_CURL_DEFAULT
 decl_stmt|;
 end_decl_stmt
-
-begin_comment
-DECL|variable|use_curl
-comment|/* strictly opt in */
-end_comment
 
 begin_decl_stmt
 DECL|variable|imap_send_usage
@@ -8382,12 +8427,34 @@ condition|)
 block|{
 name|warning
 argument_list|(
-literal|"--use-curl not supported in this build"
+literal|"--curl not supported in this build"
 argument_list|)
 expr_stmt|;
 name|use_curl
 operator|=
 literal|0
+expr_stmt|;
+block|}
+elif|#
+directive|elif
+name|defined
+argument_list|(
+name|NO_OPENSSL
+argument_list|)
+if|if
+condition|(
+operator|!
+name|use_curl
+condition|)
+block|{
+name|warning
+argument_list|(
+literal|"--no-curl not supported in this build"
+argument_list|)
+expr_stmt|;
+name|use_curl
+operator|=
+literal|1
 expr_stmt|;
 block|}
 endif|#
