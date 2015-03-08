@@ -368,6 +368,14 @@ DECL|member|gitignore_invalidated
 name|int
 name|gitignore_invalidated
 decl_stmt|;
+DECL|member|dir_invalidated
+name|int
+name|dir_invalidated
+decl_stmt|;
+DECL|member|dir_opened
+name|int
+name|dir_opened
+decl_stmt|;
 block|}
 struct|;
 end_struct
