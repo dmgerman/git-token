@@ -991,9 +991,9 @@ argument_list|)
 expr_stmt|;
 name|execl
 argument_list|(
-literal|"/bin/sh"
+name|SHELL_PATH
 argument_list|,
-literal|"sh"
+name|SHELL_PATH
 argument_list|,
 literal|"-c"
 argument_list|,
