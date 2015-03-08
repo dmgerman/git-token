@@ -299,11 +299,18 @@ name|check_only
 range|:
 literal|1
 decl_stmt|;
-comment|/* all data in this struct are good */
+comment|/* all data except 'dirs' in this struct are good */
 DECL|member|valid
 name|unsigned
 name|int
 name|valid
+range|:
+literal|1
+decl_stmt|;
+DECL|member|recurse
+name|unsigned
+name|int
+name|recurse
 range|:
 literal|1
 decl_stmt|;
