@@ -299,6 +299,14 @@ name|check_only
 range|:
 literal|1
 decl_stmt|;
+comment|/* all data in this struct are good */
+DECL|member|valid
+name|unsigned
+name|int
+name|valid
+range|:
+literal|1
+decl_stmt|;
 comment|/* null SHA-1 means this directory does not have .gitignore */
 DECL|member|exclude_sha1
 name|unsigned
@@ -355,6 +363,10 @@ comment|/* Statistics */
 DECL|member|dir_created
 name|int
 name|dir_created
+decl_stmt|;
+DECL|member|gitignore_invalidated
+name|int
+name|gitignore_invalidated
 decl_stmt|;
 block|}
 struct|;
@@ -512,6 +524,10 @@ DECL|member|ss_excludes_file
 name|struct
 name|sha1_stat
 name|ss_excludes_file
+decl_stmt|;
+DECL|member|unmanaged_exclude_files
+name|unsigned
+name|unmanaged_exclude_files
 decl_stmt|;
 block|}
 struct|;
