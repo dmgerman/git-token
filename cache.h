@@ -1378,6 +1378,12 @@ name|split_index
 struct_decl|;
 end_struct_decl
 
+begin_struct_decl
+struct_decl|struct
+name|untracked_cache
+struct_decl|;
+end_struct_decl
+
 begin_struct
 DECL|struct|index_state
 struct|struct
@@ -1457,6 +1463,12 @@ name|sha1
 index|[
 literal|20
 index|]
+decl_stmt|;
+DECL|member|untracked
+name|struct
+name|untracked_cache
+modifier|*
+name|untracked
 decl_stmt|;
 block|}
 struct|;

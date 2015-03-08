@@ -1439,6 +1439,23 @@ return|;
 block|}
 end_function
 
+begin_function_decl
+name|void
+name|write_untracked_extension
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+name|out
+parameter_list|,
+name|struct
+name|untracked_cache
+modifier|*
+name|untracked
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
