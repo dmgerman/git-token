@@ -3259,8 +3259,11 @@ operator|->
 name|valid
 operator|&&
 operator|!
-name|match_stat_data
+name|match_stat_data_racy
 argument_list|(
+operator|&
+name|the_index
+argument_list|,
 operator|&
 name|sha1_stat
 operator|->
@@ -7110,8 +7113,11 @@ name|untracked
 operator|->
 name|valid
 operator|||
-name|match_stat_data
+name|match_stat_data_racy
 argument_list|(
+operator|&
+name|the_index
+argument_list|,
 operator|&
 name|untracked
 operator|->
