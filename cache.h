@@ -1372,6 +1372,14 @@ name|SPLIT_INDEX_ORDERED
 value|(1<< 6)
 end_define
 
+begin_define
+DECL|macro|UNTRACKED_CHANGED
+define|#
+directive|define
+name|UNTRACKED_CHANGED
+value|(1<< 7)
+end_define
+
 begin_struct_decl
 struct_decl|struct
 name|split_index
