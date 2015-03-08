@@ -5012,6 +5012,26 @@ condition|(
 name|dir
 operator|->
 name|exclude_per_dir
+operator|&&
+comment|/* 		     * If we know that no files have been added in 		     * this directory (i.e. valid_cached_dir() has 		     * been executed and set untracked->valid) .. 		     */
+operator|(
+operator|!
+name|untracked
+operator|||
+operator|!
+name|untracked
+operator|->
+name|valid
+operator|||
+comment|/* 		      * .. and .gitignore does not exist before 		      * (i.e. null exclude_sha1 and skip_worktree is 		      * not set). Then we can skip loading .gitignore, 		      * which would result in ENOENT anyway. 		      * skip_worktree is taken care in read_directory() 		      */
+operator|!
+name|is_null_sha1
+argument_list|(
+name|untracked
+operator|->
+name|exclude_sha1
+argument_list|)
+operator|)
 condition|)
 block|{
 comment|/* 			 * dir->basebuf gets reused by the traversal, but we 			 * need fname to remain unchanged to ensure the src 			 * member of each struct exclude correctly 			 * back-references its source file.  Other invocations 			 * of add_exclude_list provide stable strings, so we 			 * strbuf_detach() and free() here in the caller. 			 */
@@ -8405,6 +8425,9 @@ name|untracked_cache_dir
 modifier|*
 name|root
 decl_stmt|;
+name|int
+name|i
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -8522,6 +8545,33 @@ name|EXC_CMDL
 index|]
 operator|.
 name|nr
+condition|)
+return|return
+name|NULL
+return|;
+comment|/* 	 * An optimization in prep_exclude() does not play well with 	 * CE_SKIP_WORKTREE. It's a rare case anyway, if a single 	 * entry has that bit set, disable the whole untracked cache. 	 */
+for|for
+control|(
+name|i
+operator|=
+literal|0
+init|;
+name|i
+operator|<
+name|active_nr
+condition|;
+name|i
+operator|++
+control|)
+if|if
+condition|(
+name|ce_skip_worktree
+argument_list|(
+name|active_cache
+index|[
+name|i
+index|]
+argument_list|)
 condition|)
 return|return
 name|NULL
