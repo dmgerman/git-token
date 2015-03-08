@@ -8452,6 +8452,11 @@ operator|!
 name|dir
 operator|->
 name|untracked
+operator|||
+name|getenv
+argument_list|(
+literal|"GIT_DISABLE_UNTRACKED_CACHE"
+argument_list|)
 condition|)
 return|return
 name|NULL
