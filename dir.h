@@ -355,6 +355,11 @@ name|char
 modifier|*
 name|exclude_per_dir
 decl_stmt|;
+DECL|member|ident
+name|struct
+name|strbuf
+name|ident
+decl_stmt|;
 comment|/* 	 * dir_struct#flags must match dir_flags or the untracked 	 * cache is ignored. 	 */
 DECL|member|dir_flags
 name|unsigned
@@ -1526,6 +1531,17 @@ name|struct
 name|untracked_cache
 modifier|*
 name|untracked
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|void
+name|add_untracked_ident
+parameter_list|(
+name|struct
+name|untracked_cache
+modifier|*
 parameter_list|)
 function_decl|;
 end_function_decl

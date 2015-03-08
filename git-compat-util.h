@@ -830,6 +830,12 @@ end_else
 begin_include
 include|#
 directive|include
+file|<sys/utsname.h>
+end_include
+
+begin_include
+include|#
+directive|include
 file|<sys/wait.h>
 end_include
 

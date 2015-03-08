@@ -347,6 +347,9 @@ name|base
 init|=
 name|STRBUF_INIT
 decl_stmt|;
+name|setup_git_directory
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|read_cache
