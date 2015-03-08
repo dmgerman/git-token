@@ -66,6 +66,12 @@ directive|include
 file|"split-index.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"dir.h"
+end_include
+
 begin_comment
 comment|/*  * Error messages expected by scripts out of plumbing commands such as  * read-tree.  Non-scripted Porcelain is not required to use these messages  * and in fact are encouraged to reword them to better suit their particular  * situation better.  See how "git checkout" and "git merge" replaces  * them using setup_unpack_trees_porcelain(), for example.  */
 end_comment
@@ -6015,9 +6021,22 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|!
 name|ce
 condition|)
+return|return;
 name|cache_tree_invalidate_path
+argument_list|(
+name|o
+operator|->
+name|src_index
+argument_list|,
+name|ce
+operator|->
+name|name
+argument_list|)
+expr_stmt|;
+name|untracked_cache_invalidate_path
 argument_list|(
 name|o
 operator|->

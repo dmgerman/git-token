@@ -438,6 +438,15 @@ operator|->
 name|name
 argument_list|)
 expr_stmt|;
+name|untracked_cache_remove_from_index
+argument_list|(
+name|istate
+argument_list|,
+name|old
+operator|->
+name|name
+argument_list|)
+expr_stmt|;
 name|remove_index_entry_at
 argument_list|(
 name|istate
@@ -2665,6 +2674,13 @@ argument_list|,
 name|path
 argument_list|)
 expr_stmt|;
+name|untracked_cache_remove_from_index
+argument_list|(
+name|istate
+argument_list|,
+name|path
+argument_list|)
+expr_stmt|;
 while|while
 condition|(
 name|pos
@@ -4815,6 +4831,15 @@ operator|-
 name|pos
 operator|-
 literal|1
+expr_stmt|;
+name|untracked_cache_add_to_index
+argument_list|(
+name|istate
+argument_list|,
+name|ce
+operator|->
+name|name
+argument_list|)
 expr_stmt|;
 comment|/* 	 * Inserting a merged entry ("stage 0") into the index 	 * will always replace all non-merged entries.. 	 */
 if|if
