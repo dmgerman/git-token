@@ -606,15 +606,14 @@ return|return;
 block|}
 if|if
 condition|(
-name|hexval
+operator|!
+name|isxdigit
 argument_list|(
 name|buffer
 index|[
 literal|0
 index|]
 argument_list|)
-operator|>
-literal|0xf
 condition|)
 continue|continue;
 name|len

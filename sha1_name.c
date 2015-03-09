@@ -3926,13 +3926,11 @@ name|cp
 decl_stmt|;
 if|if
 condition|(
-name|hexval
+operator|!
+name|isxdigit
 argument_list|(
 name|ch
 argument_list|)
-operator|&
-operator|~
-literal|0377
 condition|)
 block|{
 comment|/* We must be looking at g in "SOMETHING-g" 			 * for it to be describe output. 			 */
