@@ -54,7 +54,7 @@ file|"reachable.h"
 end_include
 
 begin_comment
-comment|/*  * reflog expire  */
+comment|/* NEEDSWORK: switch to using parse_options */
 end_comment
 
 begin_decl_stmt
@@ -65,7 +65,7 @@ name|char
 name|reflog_expire_usage
 index|[]
 init|=
-literal|"git reflog expire [--verbose] [--dry-run] [--stale-fix] [--expire=<time>] [--expire-unreachable=<time>] [--all]<refs>..."
+literal|"git reflog expire [--expire=<time>] [--expire-unreachable=<time>] [--rewrite] [--updateref] [--stale-fix] [--dry-run | -n] [--verbose] [--all]<refs>..."
 decl_stmt|;
 end_decl_stmt
 
@@ -77,7 +77,7 @@ name|char
 name|reflog_delete_usage
 index|[]
 init|=
-literal|"git reflog delete [--verbose] [--dry-run] [--rewrite] [--updateref]<refs>..."
+literal|"git reflog delete [--rewrite] [--updateref] [--dry-run | -n] [--verbose]<refs>..."
 decl_stmt|;
 end_decl_stmt
 
