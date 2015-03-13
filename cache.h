@@ -302,6 +302,43 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* The length in bytes and in hex digits of an object name (SHA-1 value). */
+end_comment
+
+begin_define
+DECL|macro|GIT_SHA1_RAWSZ
+define|#
+directive|define
+name|GIT_SHA1_RAWSZ
+value|20
+end_define
+
+begin_define
+DECL|macro|GIT_SHA1_HEXSZ
+define|#
+directive|define
+name|GIT_SHA1_HEXSZ
+value|(2 * GIT_SHA1_RAWSZ)
+end_define
+
+begin_struct
+DECL|struct|object_id
+struct|struct
+name|object_id
+block|{
+DECL|member|hash
+name|unsigned
+name|char
+name|hash
+index|[
+name|GIT_SHA1_RAWSZ
+index|]
+decl_stmt|;
+block|}
+struct|;
+end_struct
+
 begin_if
 if|#
 directive|if
