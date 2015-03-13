@@ -2525,7 +2525,7 @@ name|comment_length
 argument_list|,
 name|sha1
 condition|?
-literal|40
+name|GIT_SHA1_HEXSZ
 else|:
 literal|0
 argument_list|)
@@ -2562,7 +2562,7 @@ argument_list|(
 name|sha1
 argument_list|)
 argument_list|,
-literal|40
+name|GIT_SHA1_HEXSZ
 argument_list|)
 expr_stmt|;
 block|}
