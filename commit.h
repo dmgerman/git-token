@@ -1187,13 +1187,10 @@ DECL|struct|commit_graft
 struct|struct
 name|commit_graft
 block|{
-DECL|member|sha1
-name|unsigned
-name|char
-name|sha1
-index|[
-literal|20
-index|]
+DECL|member|oid
+name|struct
+name|object_id
+name|oid
 decl_stmt|;
 DECL|member|nr_parent
 name|int
@@ -1201,14 +1198,11 @@ name|nr_parent
 decl_stmt|;
 comment|/*< 0 if shallow commit */
 DECL|member|parent
-name|unsigned
-name|char
+name|struct
+name|object_id
 name|parent
 index|[
 name|FLEX_ARRAY
-index|]
-index|[
-literal|20
 index|]
 decl_stmt|;
 comment|/* more */
