@@ -14578,19 +14578,6 @@ argument_list|)
 return|;
 block|}
 comment|/* Set it up */
-name|memset
-argument_list|(
-operator|&
-name|stream
-argument_list|,
-literal|0
-argument_list|,
-sizeof|sizeof
-argument_list|(
-name|stream
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|git_deflate_init
 argument_list|(
 operator|&
