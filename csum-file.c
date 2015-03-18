@@ -735,9 +735,11 @@ name|sink
 operator|<
 literal|0
 condition|)
-return|return
-name|NULL
-return|;
+name|die_errno
+argument_list|(
+literal|"unable to open /dev/null"
+argument_list|)
+expr_stmt|;
 name|check
 operator|=
 name|open
@@ -753,25 +755,13 @@ name|check
 operator|<
 literal|0
 condition|)
-block|{
-name|int
-name|saved_errno
-init|=
-name|errno
-decl_stmt|;
-name|close
+name|die_errno
 argument_list|(
-name|sink
+literal|"unable to open '%s'"
+argument_list|,
+name|name
 argument_list|)
 expr_stmt|;
-name|errno
-operator|=
-name|saved_errno
-expr_stmt|;
-return|return
-name|NULL
-return|;
-block|}
 name|f
 operator|=
 name|sha1fd
