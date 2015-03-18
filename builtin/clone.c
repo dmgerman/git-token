@@ -4776,7 +4776,7 @@ name|die_errno
 argument_list|(
 name|_
 argument_list|(
-literal|"could not create work tree dir '%s'."
+literal|"could not create work tree dir '%s'"
 argument_list|)
 argument_list|,
 name|work_tree
