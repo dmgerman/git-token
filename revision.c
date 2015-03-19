@@ -12679,6 +12679,24 @@ argument_list|(
 literal|"cannot use --grep-reflog without --walk-reflogs"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|revs
+operator|->
+name|first_parent_only
+operator|&&
+name|revs
+operator|->
+name|bisect
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"--first-parent is incompatible with --bisect"
+argument_list|)
+argument_list|)
+expr_stmt|;
 return|return
 name|left
 return|;
