@@ -29,25 +29,6 @@ directive|include
 file|"argv-array.h"
 end_include
 
-begin_ifndef
-ifndef|#
-directive|ifndef
-name|SHELL_PATH
-end_ifndef
-
-begin_define
-DECL|macro|SHELL_PATH
-define|#
-directive|define
-name|SHELL_PATH
-value|"/bin/sh"
-end_define
-
-begin_endif
-endif|#
-directive|endif
-end_endif
-
 begin_function
 DECL|function|child_process_init
 name|void
