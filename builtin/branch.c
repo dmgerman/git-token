@@ -3128,6 +3128,14 @@ name|state
 operator|.
 name|detached_from
 condition|)
+block|{
+comment|/* TRANSLATORS: make sure these match _("HEAD detached at ") 		   and _("HEAD detached from ") in wt-status.c */
+if|if
+condition|(
+name|state
+operator|.
+name|detached_at
+condition|)
 name|strbuf_addf
 argument_list|(
 operator|&
@@ -3135,7 +3143,7 @@ name|desc
 argument_list|,
 name|_
 argument_list|(
-literal|"(detached from %s)"
+literal|"(HEAD detached at %s)"
 argument_list|)
 argument_list|,
 name|state
@@ -3143,6 +3151,23 @@ operator|.
 name|detached_from
 argument_list|)
 expr_stmt|;
+else|else
+name|strbuf_addf
+argument_list|(
+operator|&
+name|desc
+argument_list|,
+name|_
+argument_list|(
+literal|"(HEAD detached from %s)"
+argument_list|)
+argument_list|,
+name|state
+operator|.
+name|detached_from
+argument_list|)
+expr_stmt|;
+block|}
 else|else
 name|strbuf_addstr
 argument_list|(
