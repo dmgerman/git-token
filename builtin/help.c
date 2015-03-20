@@ -2651,7 +2651,6 @@ block|{
 name|int
 name|nongit
 decl_stmt|;
-specifier|const
 name|char
 modifier|*
 name|alias
@@ -2873,6 +2872,11 @@ index|[
 literal|0
 index|]
 argument_list|,
+name|alias
+argument_list|)
+expr_stmt|;
+name|free
+argument_list|(
 name|alias
 argument_list|)
 expr_stmt|;

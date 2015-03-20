@@ -2050,7 +2050,9 @@ argument_list|)
 operator|!=
 literal|1
 condition|)
-continue|continue;
+goto|goto
+name|skip_write_ref
+goto|;
 if|if
 condition|(
 name|read_ref_full
@@ -2114,7 +2116,9 @@ name|flags
 operator||=
 name|UNINTERESTING
 expr_stmt|;
-continue|continue;
+goto|goto
+name|skip_write_ref
+goto|;
 block|}
 comment|/* 		 * Make sure the refs we wrote out is correct; --max-count and 		 * other limiting options could have prevented all the tips 		 * from getting output. 		 * 		 * Non commit objects such as tags and blobs do not have 		 * this issue as they are not affected by those extra 		 * constraints. 		 */
 if|if
@@ -2151,12 +2155,9 @@ operator|->
 name|name
 argument_list|)
 expr_stmt|;
-name|free
-argument_list|(
-name|ref
-argument_list|)
-expr_stmt|;
-continue|continue;
+goto|goto
+name|skip_write_ref
+goto|;
 block|}
 comment|/* 		 * If you run "git bundle create bndl v1.0..v2.0", the 		 * name of the positive ref is "v2.0" but that is the 		 * commit that is referenced by the tag, and not the tag 		 * itself. 		 */
 if|if
@@ -2233,12 +2234,9 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
-name|free
-argument_list|(
-name|ref
-argument_list|)
-expr_stmt|;
-continue|continue;
+goto|goto
+name|skip_write_ref
+goto|;
 block|}
 name|ref_count
 operator|++
@@ -2289,6 +2287,8 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
+name|skip_write_ref
+label|:
 name|free
 argument_list|(
 name|ref
