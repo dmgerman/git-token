@@ -147,6 +147,16 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|ref_paranoia
+name|int
+name|ref_paranoia
+init|=
+operator|-
+literal|1
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|repository_format_version
 name|int
 name|repository_format_version
