@@ -1068,6 +1068,13 @@ name|strbuf_addstr
 argument_list|(
 name|sb
 argument_list|,
+name|color_reset
+argument_list|)
+expr_stmt|;
+name|strbuf_addstr
+argument_list|(
+name|sb
+argument_list|,
 name|decorate_get_color
 argument_list|(
 name|use_color
