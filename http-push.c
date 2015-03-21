@@ -1751,11 +1751,6 @@ operator|==
 name|NULL
 condition|)
 block|{
-name|release_http_pack_request
-argument_list|(
-name|preq
-argument_list|)
-expr_stmt|;
 name|repo
 operator|->
 name|can_update_info_refs
