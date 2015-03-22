@@ -4304,13 +4304,6 @@ name|no_stdin
 operator|=
 literal|1
 expr_stmt|;
-name|fflush
-argument_list|(
-name|s
-operator|->
-name|fp
-argument_list|)
-expr_stmt|;
 name|sm_summary
 operator|.
 name|out
