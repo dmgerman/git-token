@@ -3894,25 +3894,18 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|!
 name|ret
+operator|!=
+name|ce
 condition|)
-block|{
 name|free
 argument_list|(
 name|ce
 argument_list|)
 expr_stmt|;
 return|return
-name|NULL
-return|;
-block|}
-else|else
-block|{
-return|return
 name|ret
 return|;
-block|}
 block|}
 end_function
 
