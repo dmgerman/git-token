@@ -604,6 +604,10 @@ name|check_replace_refs
 operator|=
 literal|0
 expr_stmt|;
+name|ref_paranoia
+operator|=
+literal|1
+expr_stmt|;
 name|init_revisions
 argument_list|(
 operator|&
