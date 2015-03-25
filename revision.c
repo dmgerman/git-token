@@ -13055,6 +13055,21 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|revs
+operator|->
+name|no_walk
+operator|&&
+name|revs
+operator|->
+name|graph
+condition|)
+name|die
+argument_list|(
+literal|"cannot combine --no-walk with --graph"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 operator|!
 name|revs
 operator|->
