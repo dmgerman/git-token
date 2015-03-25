@@ -355,6 +355,30 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/**  * Execute the given command, capturing its stdout in the given strbuf.  * Returns -1 if starting the command fails or reading fails, and otherwise  * returns the exit code of the command. The output collected in the  * buffer is kept even if the command returns a non-zero exit. The hint field  * gives a starting size for the strbuf allocation.  *  * The fields of "cmd" should be set up as they would for a normal run_command  * invocation. But note that there is no need to set cmd->out; the function  * sets it up for the caller.  */
+end_comment
+
+begin_function_decl
+name|int
+name|capture_command
+parameter_list|(
+name|struct
+name|child_process
+modifier|*
+name|cmd
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|buf
+parameter_list|,
+name|size_t
+name|hint
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/*  * The purpose of the following functions is to feed a pipe by running  * a function asynchronously and providing output that the caller reads.  *  * It is expected that no synchronization and mutual exclusion between  * the caller and the feed function is necessary so that the function  * can run in a thread without interfering with the caller.  */
 end_comment
 
