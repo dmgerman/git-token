@@ -5074,6 +5074,11 @@ if|if
 condition|(
 operator|!
 name|show_in_pager
+operator|&&
+operator|!
+name|opt
+operator|.
+name|status_only
 condition|)
 name|setup_pager
 argument_list|()
