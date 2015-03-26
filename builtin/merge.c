@@ -7807,6 +7807,11 @@ name|sha1
 argument_list|)
 condition|)
 block|{
+name|warning
+argument_list|(
+literal|"old-style 'git merge<msg> HEAD<commit>' is deprecated."
+argument_list|)
+expr_stmt|;
 name|strbuf_addstr
 argument_list|(
 operator|&
