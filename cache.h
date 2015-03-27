@@ -8214,8 +8214,16 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Iterate over loose and packed objects in both the local  * repository and any alternates repositories.  */
+comment|/*  * Iterate over loose and packed objects in both the local  * repository and any alternates repositories (unless the  * LOCAL_ONLY flag is set).  */
 end_comment
+
+begin_define
+DECL|macro|FOR_EACH_OBJECT_LOCAL_ONLY
+define|#
+directive|define
+name|FOR_EACH_OBJECT_LOCAL_ONLY
+value|0x1
+end_define
 
 begin_typedef
 DECL|typedef|each_packed_object_fn
@@ -8253,6 +8261,9 @@ name|each_loose_object_fn
 parameter_list|,
 name|void
 modifier|*
+parameter_list|,
+name|unsigned
+name|flags
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -8266,6 +8277,9 @@ name|each_packed_object_fn
 parameter_list|,
 name|void
 modifier|*
+parameter_list|,
+name|unsigned
+name|flags
 parameter_list|)
 function_decl|;
 end_function_decl
