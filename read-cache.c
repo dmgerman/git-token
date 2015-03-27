@@ -3505,11 +3505,6 @@ argument_list|)
 condition|)
 block|{
 comment|/* Nothing changed, really */
-name|free
-argument_list|(
-name|ce
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -3530,6 +3525,11 @@ operator|->
 name|ce_flags
 operator||=
 name|CE_ADDED
+expr_stmt|;
+name|free
+argument_list|(
+name|ce
+argument_list|)
 expr_stmt|;
 return|return
 literal|0
@@ -3556,6 +3556,12 @@ argument_list|,
 name|HASH_WRITE_OBJECT
 argument_list|)
 condition|)
+block|{
+name|free
+argument_list|(
+name|ce
+argument_list|)
+expr_stmt|;
 return|return
 name|error
 argument_list|(
@@ -3564,6 +3570,7 @@ argument_list|,
 name|path
 argument_list|)
 return|;
+block|}
 block|}
 else|else
 name|set_object_name_for_intent_to_add_entry
@@ -3638,7 +3645,11 @@ if|if
 condition|(
 name|pretend
 condition|)
-empty_stmt|;
+name|free
+argument_list|(
+name|ce
+argument_list|)
+expr_stmt|;
 elseif|else
 if|if
 condition|(
@@ -3651,6 +3662,12 @@ argument_list|,
 name|add_option
 argument_list|)
 condition|)
+block|{
+name|free
+argument_list|(
+name|ce
+argument_list|)
+expr_stmt|;
 return|return
 name|error
 argument_list|(
@@ -3659,6 +3676,7 @@ argument_list|,
 name|path
 argument_list|)
 return|;
+block|}
 if|if
 condition|(
 name|verbose
@@ -3876,25 +3894,18 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|!
 name|ret
+operator|!=
+name|ce
 condition|)
-block|{
 name|free
 argument_list|(
 name|ce
 argument_list|)
 expr_stmt|;
 return|return
-name|NULL
-return|;
-block|}
-else|else
-block|{
-return|return
 name|ret
 return|;
-block|}
 block|}
 end_function
 

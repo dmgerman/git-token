@@ -95,10 +95,17 @@ name|type
 operator|!=
 name|OBJ_BLOB
 condition|)
+block|{
+name|free
+argument_list|(
+name|buf
+argument_list|)
+expr_stmt|;
 return|return
 operator|-
 literal|1
 return|;
+block|}
 name|f
 operator|->
 name|ptr
