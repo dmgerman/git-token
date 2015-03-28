@@ -3955,6 +3955,17 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
+comment|/*  * Include broken refs in all ref iterations, which will  * generally choke dangerous operations rather than letting  * them silently proceed without taking the broken ref into  * account.  */
+end_comment
+
+begin_decl_stmt
+specifier|extern
+name|int
+name|ref_paranoia
+decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|/*  * The character that begins a commented line in user-editable file  * that is subject to stripspace.  */
 end_comment
 
