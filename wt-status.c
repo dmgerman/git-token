@@ -9220,6 +9220,15 @@ argument_list|,
 name|base
 argument_list|)
 expr_stmt|;
+name|free
+argument_list|(
+operator|(
+name|char
+operator|*
+operator|)
+name|base
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
