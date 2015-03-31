@@ -4994,18 +4994,7 @@ argument_list|(
 name|p
 argument_list|)
 condition|)
-block|{
-name|warning
-argument_list|(
-literal|"packfile %s cannot be accessed"
-argument_list|,
-name|p
-operator|->
-name|pack_name
-argument_list|)
-expr_stmt|;
 continue|continue;
-block|}
 operator|*
 name|found_offset
 operator|=
