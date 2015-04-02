@@ -1869,7 +1869,7 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"server does not support --atomic push"
+literal|"the receiving end does not support --atomic push"
 argument_list|)
 argument_list|)
 expr_stmt|;
