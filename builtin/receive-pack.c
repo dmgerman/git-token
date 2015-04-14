@@ -4031,6 +4031,38 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * NEEDSWORK: we should consolidate various implementions of "are we  * on an unborn branch?" test into one, and make the unified one more  * robust. !get_sha1() based check used here and elsewhere would not  * allow us to tell an unborn branch from corrupt ref, for example.  * For the purpose of fixing "deploy-to-update does not work when  * pushing into an empty repository" issue, this should suffice for  * now.  */
+end_comment
+
+begin_function
+DECL|function|head_has_history
+specifier|static
+name|int
+name|head_has_history
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+name|unsigned
+name|char
+name|sha1
+index|[
+literal|20
+index|]
+decl_stmt|;
+return|return
+operator|!
+name|get_sha1
+argument_list|(
+literal|"HEAD"
+argument_list|,
+name|sha1
+argument_list|)
+return|;
+block|}
+end_function
+
 begin_function
 DECL|function|push_to_deploy
 specifier|static
@@ -4106,7 +4138,7 @@ literal|"--cached"
 block|,
 literal|"--ignore-submodules"
 block|,
-literal|"HEAD"
+name|NULL
 block|,
 literal|"--"
 block|,
@@ -4242,6 +4274,19 @@ condition|)
 return|return
 literal|"Working directory has unstaged changes"
 return|;
+comment|/* diff-index with either HEAD or an empty tree */
+name|diff_index
+index|[
+literal|4
+index|]
+operator|=
+name|head_has_history
+argument_list|()
+condition|?
+literal|"HEAD"
+else|:
+name|EMPTY_TREE_SHA1_HEX
+expr_stmt|;
 name|child_process_init
 argument_list|(
 operator|&
