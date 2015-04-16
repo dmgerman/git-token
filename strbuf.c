@@ -2668,7 +2668,7 @@ condition|(
 operator|(
 name|ch
 operator|=
-name|fgetc
+name|getc
 argument_list|(
 name|fp
 argument_list|)
