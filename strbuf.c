@@ -2682,6 +2682,14 @@ operator|!=
 name|EOF
 condition|)
 block|{
+if|if
+condition|(
+operator|!
+name|strbuf_avail
+argument_list|(
+name|sb
+argument_list|)
+condition|)
 name|strbuf_grow
 argument_list|(
 name|sb
