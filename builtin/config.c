@@ -2891,9 +2891,9 @@ argument_list|,
 name|_
 argument_list|(
 literal|"# This is Git's per-user configuration file.\n"
-literal|"[core]\n"
+literal|"[user]\n"
 literal|"# Please adapt and uncomment the following lines:\n"
-literal|"#	user = %s\n"
+literal|"#	name = %s\n"
 literal|"#	email = %s\n"
 argument_list|)
 argument_list|,
