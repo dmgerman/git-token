@@ -7633,6 +7633,11 @@ name|pack_keep
 range|:
 literal|1
 decl_stmt|,
+DECL|member|freshened
+name|freshened
+range|:
+literal|1
+decl_stmt|,
 DECL|member|do_not_close
 name|do_not_close
 range|:
