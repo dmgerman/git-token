@@ -4340,8 +4340,7 @@ literal|0
 block|,
 literal|"help-all"
 block|,
-operator|&
-name|options
+name|NULL
 block|,
 name|NULL
 block|,
