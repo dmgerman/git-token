@@ -15021,12 +15021,12 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|freshen_loose_object
+name|freshen_packed_object
 argument_list|(
 name|sha1
 argument_list|)
 operator|||
-name|freshen_packed_object
+name|freshen_loose_object
 argument_list|(
 name|sha1
 argument_list|)
