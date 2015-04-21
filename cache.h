@@ -5236,6 +5236,24 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/**  * Return a newly allocated string with the evaluation of  * "$XDG_CONFIG_HOME/git/$filename" if $XDG_CONFIG_HOME is non-empty, otherwise  * "$HOME/.config/git/$filename". Return NULL upon error.  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|char
+modifier|*
+name|xdg_config_home
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|filename
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/* object replacement */
 end_comment
 
