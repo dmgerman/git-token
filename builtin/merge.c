@@ -7127,12 +7127,6 @@ block|}
 if|if
 condition|(
 operator|!
-name|abort_current_merge
-condition|)
-block|{
-if|if
-condition|(
-operator|!
 name|argc
 condition|)
 block|{
@@ -7176,6 +7170,7 @@ argument_list|,
 literal|"-"
 argument_list|)
 condition|)
+block|{
 name|argv
 index|[
 literal|0
