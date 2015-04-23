@@ -7205,21 +7205,6 @@ decl_stmt|;
 comment|/* 		 * If the merged head is a valid one there is no reason 		 * to forbid "git merge" into a branch yet to be born. 		 * We do the same for "git pull". 		 */
 if|if
 condition|(
-name|argc
-operator|!=
-literal|1
-condition|)
-name|die
-argument_list|(
-name|_
-argument_list|(
-literal|"Can merge only exactly one commit into "
-literal|"empty head"
-argument_list|)
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
 name|squash
 condition|)
 name|die
@@ -7281,6 +7266,20 @@ name|argv
 index|[
 literal|0
 index|]
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|remoteheads
+operator|->
+name|next
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"Can merge only exactly one commit into empty head"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|read_empty
