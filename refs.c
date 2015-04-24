@@ -13604,14 +13604,14 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Write sha1 into the ref specified by the lock. Make sure that errno  * is sane on error.  */
+comment|/*  * Write sha1 into the open lockfile, then close the lockfile. On  * errors, rollback the lockfile and set errno to reflect the problem.  */
 end_comment
 
 begin_function
-DECL|function|write_ref_sha1
+DECL|function|write_ref_to_lockfile
 specifier|static
 name|int
-name|write_ref_sha1
+name|write_ref_to_lockfile
 parameter_list|(
 name|struct
 name|ref_lock
@@ -13623,11 +13623,6 @@ name|unsigned
 name|char
 modifier|*
 name|sha1
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|logmsg
 parameter_list|)
 block|{
 specifier|static
@@ -13798,6 +13793,52 @@ operator|-
 literal|1
 return|;
 block|}
+return|return
+literal|0
+return|;
+block|}
+end_function
+
+begin_comment
+comment|/*  * Write sha1 into the ref specified by the lock. Make sure that errno  * is sane on error.  */
+end_comment
+
+begin_function
+DECL|function|write_ref_sha1
+specifier|static
+name|int
+name|write_ref_sha1
+parameter_list|(
+name|struct
+name|ref_lock
+modifier|*
+name|lock
+parameter_list|,
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|sha1
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|logmsg
+parameter_list|)
+block|{
+if|if
+condition|(
+name|write_ref_to_lockfile
+argument_list|(
+name|lock
+argument_list|,
+name|sha1
+argument_list|)
+condition|)
+return|return
+operator|-
+literal|1
+return|;
 name|clear_loose_ref_cache
 argument_list|(
 operator|&
