@@ -3729,8 +3729,6 @@ return|return
 name|NULL
 return|;
 block|}
-else|else
-block|{
 name|ssh
 operator|=
 name|getenv
@@ -3857,7 +3855,6 @@ argument_list|,
 name|ssh_host
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 else|else
 block|{
