@@ -1489,11 +1489,9 @@ name|REG_EXTENDED
 argument_list|)
 condition|)
 block|{
-name|fprintf
+name|error
 argument_list|(
-name|stderr
-argument_list|,
-literal|"Invalid key pattern: %s\n"
+literal|"invalid key pattern: %s"
 argument_list|,
 name|key_
 argument_list|)
@@ -1589,11 +1587,9 @@ name|REG_EXTENDED
 argument_list|)
 condition|)
 block|{
-name|fprintf
+name|error
 argument_list|(
-name|stderr
-argument_list|,
-literal|"Invalid pattern: %s\n"
+literal|"invalid pattern: %s"
 argument_list|,
 name|regex_
 argument_list|)
