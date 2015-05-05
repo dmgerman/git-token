@@ -3078,6 +3078,8 @@ name|hent
 operator|=
 name|gethostbyname
 argument_list|(
+name|hi
+operator|->
 name|hostname
 operator|.
 name|buf
