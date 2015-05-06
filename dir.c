@@ -33,6 +33,12 @@ directive|include
 file|"pathspec.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"utf8.h"
+end_include
+
 begin_struct
 DECL|struct|path_simplify
 struct|struct
@@ -2824,6 +2830,24 @@ operator|->
 name|filebuf
 operator|=
 name|buf
+expr_stmt|;
+if|if
+condition|(
+name|skip_utf8_bom
+argument_list|(
+operator|&
+name|buf
+argument_list|,
+name|size
+argument_list|)
+condition|)
+name|size
+operator|-=
+name|buf
+operator|-
+name|el
+operator|->
+name|filebuf
 expr_stmt|;
 name|entry
 operator|=
