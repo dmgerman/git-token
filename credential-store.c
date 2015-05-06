@@ -912,13 +912,10 @@ argument_list|,
 name|file
 argument_list|)
 expr_stmt|;
-name|home_config_paths
-argument_list|(
-name|NULL
-argument_list|,
-operator|&
 name|file
-argument_list|,
+operator|=
+name|xdg_config_home
+argument_list|(
 literal|"credentials"
 argument_list|)
 expr_stmt|;
