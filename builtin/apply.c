@@ -968,14 +968,11 @@ name|next
 decl_stmt|;
 comment|/* three-way fallback result */
 DECL|member|threeway_stage
-name|unsigned
-name|char
+name|struct
+name|object_id
 name|threeway_stage
 index|[
 literal|3
-index|]
-index|[
-literal|20
 index|]
 decl_stmt|;
 block|}
@@ -16528,8 +16525,9 @@ name|patch
 operator|->
 name|is_new
 condition|)
-name|hashclr
+name|oidclr
 argument_list|(
+operator|&
 name|patch
 operator|->
 name|threeway_stage
@@ -16547,6 +16545,8 @@ name|threeway_stage
 index|[
 literal|0
 index|]
+operator|.
+name|hash
 argument_list|,
 name|pre_sha1
 argument_list|)
@@ -16559,6 +16559,8 @@ name|threeway_stage
 index|[
 literal|1
 index|]
+operator|.
+name|hash
 argument_list|,
 name|our_sha1
 argument_list|)
@@ -16571,6 +16573,8 @@ name|threeway_stage
 index|[
 literal|2
 index|]
+operator|.
+name|hash
 argument_list|,
 name|post_sha1
 argument_list|)
@@ -20501,8 +20505,9 @@ control|)
 block|{
 if|if
 condition|(
-name|is_null_sha1
+name|is_null_oid
 argument_list|(
+operator|&
 name|patch
 operator|->
 name|threeway_stage
@@ -20574,6 +20579,8 @@ name|stage
 operator|-
 literal|1
 index|]
+operator|.
+name|hash
 argument_list|)
 expr_stmt|;
 if|if
