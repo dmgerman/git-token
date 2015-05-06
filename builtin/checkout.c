@@ -4054,11 +4054,20 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-name|_
+name|Q_
 argument_list|(
+comment|/* The singular version */
+literal|"If you want to keep it by creating a new branch, "
+literal|"this may be a good time\nto do so with:\n\n"
+literal|" git branch<new-branch-name> %s\n\n"
+argument_list|,
+comment|/* The plural version */
 literal|"If you want to keep them by creating a new branch, "
 literal|"this may be a good time\nto do so with:\n\n"
 literal|" git branch<new-branch-name> %s\n\n"
+argument_list|,
+comment|/* Give ngettext() the count */
+name|lost
 argument_list|)
 argument_list|,
 name|find_unique_abbrev
