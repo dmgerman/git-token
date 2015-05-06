@@ -218,6 +218,16 @@ index|]
 argument_list|,
 name|len
 argument_list|)
+operator|&&
+name|object_type_strings
+index|[
+name|i
+index|]
+index|[
+name|len
+index|]
+operator|==
+literal|'\0'
 condition|)
 return|return
 name|i
