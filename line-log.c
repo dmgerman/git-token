@@ -3268,7 +3268,7 @@ index|]
 condition|)
 name|die
 argument_list|(
-literal|"-L argument '%s' not of the form start,end:file"
+literal|"-L argument not 'start,end:file' or ':funcname:file': %s"
 argument_list|,
 name|item
 operator|->
