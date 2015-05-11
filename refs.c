@@ -3890,6 +3890,10 @@ condition|)
 block|{
 comment|/* 		 * We found a directory named "$refname/" (e.g., 		 * "refs/foo/bar/"). It is a problem iff it contains 		 * any ref that is not in "skip". 		 */
 name|struct
+name|nonmatching_ref_data
+name|data
+decl_stmt|;
+name|struct
 name|ref_entry
 modifier|*
 name|entry
@@ -3901,20 +3905,13 @@ index|[
 name|pos
 index|]
 decl_stmt|;
-name|struct
-name|ref_dir
-modifier|*
 name|dir
-init|=
+operator|=
 name|get_ref_dir
 argument_list|(
 name|entry
 argument_list|)
-decl_stmt|;
-name|struct
-name|nonmatching_ref_data
-name|data
-decl_stmt|;
+expr_stmt|;
 name|data
 operator|.
 name|skip
