@@ -12874,7 +12874,11 @@ condition|)
 block|{
 name|error
 argument_list|(
-literal|"%s"
+literal|"unable to rename '%s' to '%s': %s"
+argument_list|,
+name|oldrefname
+argument_list|,
+name|newrefname
 argument_list|,
 name|err
 operator|.
@@ -12885,13 +12889,6 @@ name|strbuf_release
 argument_list|(
 operator|&
 name|err
-argument_list|)
-expr_stmt|;
-name|error
-argument_list|(
-literal|"unable to lock %s for update"
-argument_list|,
-name|newrefname
 argument_list|)
 expr_stmt|;
 goto|goto
@@ -12963,7 +12960,9 @@ condition|)
 block|{
 name|error
 argument_list|(
-literal|"%s"
+literal|"unable to lock %s for rollback: %s"
+argument_list|,
+name|oldrefname
 argument_list|,
 name|err
 operator|.
@@ -12974,13 +12973,6 @@ name|strbuf_release
 argument_list|(
 operator|&
 name|err
-argument_list|)
-expr_stmt|;
-name|error
-argument_list|(
-literal|"unable to lock %s for rollback"
-argument_list|,
-name|oldrefname
 argument_list|)
 expr_stmt|;
 goto|goto
