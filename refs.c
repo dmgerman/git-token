@@ -19077,7 +19077,9 @@ condition|)
 block|{
 name|error
 argument_list|(
-literal|"%s"
+literal|"cannot lock ref '%s': %s"
+argument_list|,
+name|refname
 argument_list|,
 name|err
 operator|.
@@ -19091,12 +19093,8 @@ name|err
 argument_list|)
 expr_stmt|;
 return|return
-name|error
-argument_list|(
-literal|"cannot lock ref '%s'"
-argument_list|,
-name|refname
-argument_list|)
+operator|-
+literal|1
 return|;
 block|}
 if|if
