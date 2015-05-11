@@ -3497,6 +3497,7 @@ decl_stmt|;
 name|int
 name|i
 decl_stmt|;
+specifier|const
 name|char
 modifier|*
 name|path

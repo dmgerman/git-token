@@ -683,12 +683,10 @@ name|char
 modifier|*
 name|refname
 parameter_list|,
-name|char
+name|struct
+name|strbuf
 modifier|*
 name|logfile
-parameter_list|,
-name|int
-name|bufsize
 parameter_list|)
 function_decl|;
 end_function_decl

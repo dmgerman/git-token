@@ -1995,6 +1995,14 @@ value|"GIT_DIR"
 end_define
 
 begin_define
+DECL|macro|GIT_COMMON_DIR_ENVIRONMENT
+define|#
+directive|define
+name|GIT_COMMON_DIR_ENVIRONMENT
+value|"GIT_COMMON_DIR"
+end_define
+
+begin_define
 DECL|macro|GIT_NAMESPACE_ENVIRONMENT
 define|#
 directive|define
@@ -2288,6 +2296,18 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+specifier|const
+name|char
+modifier|*
+name|get_git_common_dir
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|int
 name|is_git_directory
 parameter_list|(
@@ -2341,6 +2361,24 @@ specifier|const
 name|char
 modifier|*
 name|path
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|get_common_dir
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+name|sb
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|gitdir
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -3992,6 +4030,19 @@ name|protect_ntfs
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+specifier|extern
+name|int
+name|git_db_env
+decl_stmt|,
+name|git_index_env
+decl_stmt|,
+name|git_graft_env
+decl_stmt|,
+name|git_common_dir_env
+decl_stmt|;
+end_decl_stmt
+
 begin_comment
 comment|/*  * Include broken refs in all ref iterations, which will  * generally choke dangerous operations rather than letting  * them silently proceed without taking the broken ref into  * account.  */
 end_comment
@@ -4286,16 +4337,13 @@ end_empty_stmt
 
 begin_function_decl
 specifier|extern
-name|char
-modifier|*
-name|git_snpath
+name|void
+name|strbuf_git_path
 parameter_list|(
-name|char
+name|struct
+name|strbuf
 modifier|*
-name|buf
-parameter_list|,
-name|size_t
-name|n
+name|sb
 parameter_list|,
 specifier|const
 name|char
@@ -4310,9 +4358,9 @@ function_decl|(format
 parameter_list|(
 name|printf
 parameter_list|,
-function_decl|3
+function_decl|2
 operator|,
-function_decl|4
+function_decl|3
 end_function_decl
 
 begin_empty_stmt
@@ -4384,6 +4432,7 @@ end_comment
 
 begin_function_decl
 specifier|extern
+specifier|const
 name|char
 modifier|*
 name|mkpath
@@ -4413,6 +4462,7 @@ end_empty_stmt
 
 begin_function_decl
 specifier|extern
+specifier|const
 name|char
 modifier|*
 name|git_path
@@ -4442,6 +4492,7 @@ end_empty_stmt
 
 begin_function_decl
 specifier|extern
+specifier|const
 name|char
 modifier|*
 name|git_path_submodule
@@ -4473,6 +4524,16 @@ begin_empty_stmt
 unit|)))
 empty_stmt|;
 end_empty_stmt
+
+begin_function_decl
+specifier|extern
+name|void
+name|report_linked_checkout_garbage
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
 
 begin_comment
 comment|/*  * Return the name of the file in the local object database that would  * be used to store a loose object with the specified sha1.  The  * return value is a pointer to a statically allocated buffer that is  * overwritten each time the function is called.  */
@@ -10269,6 +10330,40 @@ argument_list|)
 return|;
 block|}
 end_function
+
+begin_macro
+name|__attribute__
+argument_list|(
+argument|(format (printf,
+literal|3
+argument|,
+literal|4
+argument|))
+argument_list|)
+end_macro
+
+begin_function_decl
+specifier|extern
+name|int
+name|write_file
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|,
+name|int
+name|fatal
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|fmt
+parameter_list|,
+modifier|...
+parameter_list|)
+function_decl|;
+end_function_decl
 
 begin_comment
 comment|/* pager.c */

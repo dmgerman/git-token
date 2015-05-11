@@ -6041,10 +6041,6 @@ name|work_tree
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|FILE
-modifier|*
-name|fp
-decl_stmt|;
 comment|/* Update gitfile */
 name|strbuf_addf
 argument_list|(
@@ -6056,37 +6052,13 @@ argument_list|,
 name|work_tree
 argument_list|)
 expr_stmt|;
-name|fp
-operator|=
-name|fopen
+name|write_file
 argument_list|(
 name|file_name
 operator|.
 name|buf
 argument_list|,
-literal|"w"
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-operator|!
-name|fp
-condition|)
-name|die
-argument_list|(
-name|_
-argument_list|(
-literal|"Could not create git link %s"
-argument_list|)
-argument_list|,
-name|file_name
-operator|.
-name|buf
-argument_list|)
-expr_stmt|;
-name|fprintf
-argument_list|(
-name|fp
+literal|1
 argument_list|,
 literal|"gitdir: %s\n"
 argument_list|,
@@ -6099,11 +6071,6 @@ argument_list|,
 operator|&
 name|rel_path
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|fclose
-argument_list|(
-name|fp
 argument_list|)
 expr_stmt|;
 comment|/* Update core.worktree setting */

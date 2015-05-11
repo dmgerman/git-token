@@ -1560,6 +1560,20 @@ argument_list|(
 operator|&
 name|key
 argument_list|,
+literal|"setup: git_common_dir: %s\n"
+argument_list|,
+name|quote_crnl
+argument_list|(
+name|get_git_common_dir
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|trace_printf_key
+argument_list|(
+operator|&
+name|key
+argument_list|,
 literal|"setup: worktree: %s\n"
 argument_list|,
 name|quote_crnl
