@@ -3613,7 +3613,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Return true iff a reference named refname could be created without  * conflicting with the name of an existing reference in dir.  If  * skip is non-NULL, ignore potential conflicts with refs in skip  * (e.g., because they are scheduled for deletion in the same  * operation).  *  * Two reference names conflict if one of them exactly matches the  * leading components of the other; e.g., "refs/foo/bar" conflicts  * with both "refs/foo" and with "refs/foo/bar/baz" but not with  * "refs/foo/bar" or "refs/foo/barbados".  *  * skip must be sorted.  */
+comment|/*  * Return true iff a reference named refname could be created without  * conflicting with the name of an existing reference in dir. If  * extras is non-NULL, it is a list of additional refnames with which  * refname is not allowed to conflict. If skip is non-NULL, ignore  * potential conflicts with refs in skip (e.g., because they are  * scheduled for deletion in the same operation). Behavior is  * undefined if the same name is listed in both extras and skip.  *  * Two reference names conflict if one of them exactly matches the  * leading components of the other; e.g., "refs/foo/bar" conflicts  * with both "refs/foo" and with "refs/foo/bar/baz" but not with  * "refs/foo/bar" or "refs/foo/barbados".  *  * extras and skip must be sorted.  */
 end_comment
 
 begin_function
@@ -3626,6 +3626,12 @@ specifier|const
 name|char
 modifier|*
 name|refname
+parameter_list|,
+specifier|const
+name|struct
+name|string_list
+modifier|*
+name|extras
 parameter_list|,
 specifier|const
 name|struct
@@ -3719,6 +3725,11 @@ name|len
 argument_list|)
 expr_stmt|;
 comment|/* 		 * We are still at a leading dir of the refname (e.g., 		 * "refs/foo"; if there is a reference with that name, 		 * it is a conflict, *unless* it is in skip. 		 */
+if|if
+condition|(
+name|dir
+condition|)
+block|{
 name|pos
 operator|=
 name|search_ref_dir
@@ -3739,13 +3750,12 @@ condition|(
 name|pos
 operator|>=
 literal|0
-condition|)
-block|{
-comment|/* 			 * We found a reference whose name is a proper 			 * prefix of refname; e.g., "refs/foo". 			 */
-if|if
-condition|(
-name|skip
 operator|&&
+operator|(
+operator|!
+name|skip
+operator|||
+operator|!
 name|string_list_has_string
 argument_list|(
 name|skip
@@ -3754,17 +3764,10 @@ name|dirname
 operator|.
 name|buf
 argument_list|)
+operator|)
 condition|)
 block|{
-comment|/* 				 * The reference we just found, e.g., 				 * "refs/foo", is also in skip, so it 				 * is not considered a conflict. 				 * Moreover, the fact that "refs/foo" 				 * exists means that there cannot be 				 * any references anywhere under the 				 * "refs/foo/" namespace (because they 				 * would have conflicted with 				 * "refs/foo"). So we can stop looking 				 * now and return true. 				 */
-name|ret
-operator|=
-literal|1
-expr_stmt|;
-goto|goto
-name|cleanup
-goto|;
-block|}
+comment|/* 				 * We found a reference whose name is 				 * a proper prefix of refname; e.g., 				 * "refs/foo", and is not in skip. 				 */
 name|error
 argument_list|(
 literal|"'%s' exists; cannot create '%s'"
@@ -3780,7 +3783,52 @@ goto|goto
 name|cleanup
 goto|;
 block|}
-comment|/* 		 * Otherwise, we can try to continue our search with 		 * the next component. So try to look up the 		 * directory, e.g., "refs/foo/". 		 */
+block|}
+if|if
+condition|(
+name|extras
+operator|&&
+name|string_list_has_string
+argument_list|(
+name|extras
+argument_list|,
+name|dirname
+operator|.
+name|buf
+argument_list|)
+operator|&&
+operator|(
+operator|!
+name|skip
+operator|||
+operator|!
+name|string_list_has_string
+argument_list|(
+name|skip
+argument_list|,
+name|dirname
+operator|.
+name|buf
+argument_list|)
+operator|)
+condition|)
+block|{
+name|error
+argument_list|(
+literal|"cannot process '%s' and '%s' at the same time"
+argument_list|,
+name|refname
+argument_list|,
+name|dirname
+operator|.
+name|buf
+argument_list|)
+expr_stmt|;
+goto|goto
+name|cleanup
+goto|;
+block|}
+comment|/* 		 * Otherwise, we can try to continue our search with 		 * the next component. So try to look up the 		 * directory, e.g., "refs/foo/". If we come up empty, 		 * we know there is nothing under this whole prefix, 		 * but even in that case we still have to continue the 		 * search for conflicts with extras. 		 */
 name|strbuf_addch
 argument_list|(
 operator|&
@@ -3789,6 +3837,11 @@ argument_list|,
 literal|'/'
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|dir
+condition|)
+block|{
 name|pos
 operator|=
 name|search_ref_dir
@@ -3811,15 +3864,14 @@ operator|<
 literal|0
 condition|)
 block|{
-comment|/* 			 * There was no directory "refs/foo/", so 			 * there is nothing under this whole prefix, 			 * and we are OK. 			 */
-name|ret
+comment|/* 				 * There was no directory "refs/foo/", 				 * so there is nothing under this 				 * whole prefix. So there is no need 				 * to continue looking for conflicting 				 * references. But we need to continue 				 * looking for conflicting extras. 				 */
+name|dir
 operator|=
-literal|1
+name|NULL
 expr_stmt|;
-goto|goto
-name|cleanup
-goto|;
 block|}
+else|else
+block|{
 name|dir
 operator|=
 name|get_ref_dir
@@ -3832,6 +3884,8 @@ name|pos
 index|]
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 block|}
 comment|/* 	 * We are at the leaf of our refname (e.g., "refs/foo/bar"). 	 * There is no point in searching for a reference with that 	 * name, because a refname isn't considered to conflict with 	 * itself. But we still need to check for references whose 	 * names are in the "refs/foo/bar/" namespace, because they 	 * *do* conflict. 	 */
 name|strbuf_addstr
@@ -3854,6 +3908,11 @@ argument_list|,
 literal|'/'
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|dir
+condition|)
+block|{
 name|pos
 operator|=
 name|search_ref_dir
@@ -3876,35 +3935,34 @@ operator|>=
 literal|0
 condition|)
 block|{
-comment|/* 		 * We found a directory named "$refname/" (e.g., 		 * "refs/foo/bar/"). It is a problem iff it contains 		 * any ref that is not in "skip". 		 */
+comment|/* 			 * We found a directory named "$refname/" 			 * (e.g., "refs/foo/bar/"). It is a problem 			 * iff it contains any ref that is not in 			 * "skip". 			 */
 name|struct
 name|nonmatching_ref_data
 name|data
 decl_stmt|;
-name|struct
-name|ref_entry
-modifier|*
-name|entry
-init|=
+name|data
+operator|.
+name|skip
+operator|=
+name|skip
+expr_stmt|;
+name|data
+operator|.
+name|conflicting_refname
+operator|=
+name|NULL
+expr_stmt|;
+name|dir
+operator|=
+name|get_ref_dir
+argument_list|(
 name|dir
 operator|->
 name|entries
 index|[
 name|pos
 index|]
-decl_stmt|;
-name|dir
-operator|=
-name|get_ref_dir
-argument_list|(
-name|entry
 argument_list|)
-expr_stmt|;
-name|data
-operator|.
-name|skip
-operator|=
-name|skip
 expr_stmt|;
 name|sort_ref_dir
 argument_list|(
@@ -3913,7 +3971,6 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|!
 name|do_for_each_entry_in_dir
 argument_list|(
 name|dir
@@ -3927,14 +3984,6 @@ name|data
 argument_list|)
 condition|)
 block|{
-name|ret
-operator|=
-literal|1
-expr_stmt|;
-goto|goto
-name|cleanup
-goto|;
-block|}
 name|error
 argument_list|(
 literal|"'%s' exists; cannot create '%s'"
@@ -3950,6 +3999,96 @@ goto|goto
 name|cleanup
 goto|;
 block|}
+block|}
+block|}
+if|if
+condition|(
+name|extras
+condition|)
+block|{
+comment|/* 		 * Check for entries in extras that start with 		 * "$refname/". We do that by looking for the place 		 * where "$refname/" would be inserted in extras. If 		 * there is an entry at that position that starts with 		 * "$refname/" and is not in skip, then we have a 		 * conflict. 		 */
+for|for
+control|(
+name|pos
+operator|=
+name|string_list_find_insert_index
+argument_list|(
+name|extras
+argument_list|,
+name|dirname
+operator|.
+name|buf
+argument_list|,
+literal|0
+argument_list|)
+init|;
+name|pos
+operator|<
+name|extras
+operator|->
+name|nr
+condition|;
+name|pos
+operator|++
+control|)
+block|{
+specifier|const
+name|char
+modifier|*
+name|extra_refname
+init|=
+name|extras
+operator|->
+name|items
+index|[
+name|pos
+index|]
+operator|.
+name|string
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|starts_with
+argument_list|(
+name|extra_refname
+argument_list|,
+name|dirname
+operator|.
+name|buf
+argument_list|)
+condition|)
+break|break;
+if|if
+condition|(
+operator|!
+name|skip
+operator|||
+operator|!
+name|string_list_has_string
+argument_list|(
+name|skip
+argument_list|,
+name|extra_refname
+argument_list|)
+condition|)
+block|{
+name|error
+argument_list|(
+literal|"cannot process '%s' and '%s' at the same time"
+argument_list|,
+name|refname
+argument_list|,
+name|extra_refname
+argument_list|)
+expr_stmt|;
+goto|goto
+name|cleanup
+goto|;
+block|}
+block|}
+block|}
+comment|/* No conflicts were found */
 name|ret
 operator|=
 literal|1
@@ -9992,6 +10131,12 @@ specifier|const
 name|struct
 name|string_list
 modifier|*
+name|extras
+parameter_list|,
+specifier|const
+name|struct
+name|string_list
+modifier|*
 name|skip
 parameter_list|,
 name|unsigned
@@ -10227,6 +10372,8 @@ operator|!
 name|is_refname_available
 argument_list|(
 name|refname
+argument_list|,
+name|extras
 argument_list|,
 name|skip
 argument_list|,
@@ -12244,6 +12391,8 @@ name|is_refname_available
 argument_list|(
 name|newname
 argument_list|,
+name|NULL
+argument_list|,
 operator|&
 name|skip
 argument_list|,
@@ -12257,6 +12406,8 @@ operator|&&
 name|is_refname_available
 argument_list|(
 name|newname
+argument_list|,
+name|NULL
 argument_list|,
 operator|&
 name|skip
@@ -12607,6 +12758,8 @@ name|NULL
 argument_list|,
 name|NULL
 argument_list|,
+name|NULL
+argument_list|,
 literal|0
 argument_list|,
 name|NULL
@@ -12671,6 +12824,8 @@ operator|=
 name|lock_ref_sha1_basic
 argument_list|(
 name|oldrefname
+argument_list|,
+name|NULL
 argument_list|,
 name|NULL
 argument_list|,
@@ -17424,6 +17579,9 @@ else|:
 name|NULL
 operator|)
 argument_list|,
+operator|&
+name|affected_refnames
+argument_list|,
 name|NULL
 argument_list|,
 name|flags
@@ -18743,6 +18901,8 @@ argument_list|(
 name|refname
 argument_list|,
 name|sha1
+argument_list|,
+name|NULL
 argument_list|,
 name|NULL
 argument_list|,
