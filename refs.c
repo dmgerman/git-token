@@ -3610,37 +3610,6 @@ return|;
 block|}
 end_function
 
-begin_function
-DECL|function|report_refname_conflict
-specifier|static
-name|void
-name|report_refname_conflict
-parameter_list|(
-name|struct
-name|ref_entry
-modifier|*
-name|entry
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|refname
-parameter_list|)
-block|{
-name|error
-argument_list|(
-literal|"'%s' exists; cannot create '%s'"
-argument_list|,
-name|entry
-operator|->
-name|name
-argument_list|,
-name|refname
-argument_list|)
-expr_stmt|;
-block|}
-end_function
-
 begin_comment
 comment|/*  * Return true iff a reference named refname could be created without  * conflicting with the name of an existing reference in dir.  If  * skip is non-NULL, ignore potential conflicts with refs in skip  * (e.g., because they are scheduled for deletion in the same  * operation).  *  * Two reference names conflict if one of them exactly matches the  * leading components of the other; e.g., "refs/foo/bar" conflicts  * with both "refs/foo" and with "refs/foo/bar/baz" but not with  * "refs/foo/bar" or "refs/foo/barbados".  *  * skip must be sorted.  */
 end_comment
@@ -3761,9 +3730,13 @@ return|return
 literal|1
 return|;
 block|}
-name|report_refname_conflict
+name|error
 argument_list|(
+literal|"'%s' exists; cannot create '%s'"
+argument_list|,
 name|entry
+operator|->
+name|name
 argument_list|,
 name|refname
 argument_list|)
@@ -3911,11 +3884,15 @@ condition|)
 return|return
 literal|1
 return|;
-name|report_refname_conflict
+name|error
 argument_list|(
+literal|"'%s' exists; cannot create '%s'"
+argument_list|,
 name|data
 operator|.
 name|found
+operator|->
+name|name
 argument_list|,
 name|refname
 argument_list|)
