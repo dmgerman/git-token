@@ -3613,7 +3613,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Return 0 if a reference named refname could be created without  * conflicting with the name of an existing reference in dir.  * Otherwise, return a negative value. If extras is non-NULL, it is a  * list of additional refnames with which refname is not allowed to  * conflict. If skip is non-NULL, ignore potential conflicts with refs  * in skip (e.g., because they are scheduled for deletion in the same  * operation). Behavior is undefined if the same name is listed in  * both extras and skip.  *  * Two reference names conflict if one of them exactly matches the  * leading components of the other; e.g., "refs/foo/bar" conflicts  * with both "refs/foo" and with "refs/foo/bar/baz" but not with  * "refs/foo/bar" or "refs/foo/barbados".  *  * extras and skip must be sorted.  */
+comment|/*  * Return 0 if a reference named refname could be created without  * conflicting with the name of an existing reference in dir.  * Otherwise, return a negative value and write an explanation to err.  * If extras is non-NULL, it is a list of additional refnames with  * which refname is not allowed to conflict. If skip is non-NULL,  * ignore potential conflicts with refs in skip (e.g., because they  * are scheduled for deletion in the same operation). Behavior is  * undefined if the same name is listed in both extras and skip.  *  * Two reference names conflict if one of them exactly matches the  * leading components of the other; e.g., "refs/foo/bar" conflicts  * with both "refs/foo" and with "refs/foo/bar/baz" but not with  * "refs/foo/bar" or "refs/foo/barbados".  *  * extras and skip must be sorted.  */
 end_comment
 
 begin_function
@@ -3643,6 +3643,11 @@ name|struct
 name|ref_dir
 modifier|*
 name|dir
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|err
 parameter_list|)
 block|{
 specifier|const
@@ -3666,6 +3671,11 @@ operator|-
 literal|1
 decl_stmt|;
 comment|/* 	 * For the sake of comments in this function, suppose that 	 * refname is "refs/foo/bar". 	 */
+name|assert
+argument_list|(
+name|err
+argument_list|)
+expr_stmt|;
 name|strbuf_grow
 argument_list|(
 operator|&
@@ -3769,8 +3779,10 @@ operator|)
 condition|)
 block|{
 comment|/* 				 * We found a reference whose name is 				 * a proper prefix of refname; e.g., 				 * "refs/foo", and is not in skip. 				 */
-name|error
+name|strbuf_addf
 argument_list|(
+name|err
+argument_list|,
 literal|"'%s' exists; cannot create '%s'"
 argument_list|,
 name|dirname
@@ -3814,8 +3826,10 @@ argument_list|)
 operator|)
 condition|)
 block|{
-name|error
+name|strbuf_addf
 argument_list|(
+name|err
+argument_list|,
 literal|"cannot process '%s' and '%s' at the same time"
 argument_list|,
 name|refname
@@ -3985,8 +3999,10 @@ name|data
 argument_list|)
 condition|)
 block|{
-name|error
+name|strbuf_addf
 argument_list|(
+name|err
+argument_list|,
 literal|"'%s' exists; cannot create '%s'"
 argument_list|,
 name|data
@@ -4074,8 +4090,10 @@ name|extra_refname
 argument_list|)
 condition|)
 block|{
-name|error
+name|strbuf_addf
 argument_list|(
+name|err
+argument_list|,
 literal|"cannot process '%s' and '%s' at the same time"
 argument_list|,
 name|refname
@@ -10198,6 +10216,12 @@ name|attempts_remaining
 init|=
 literal|3
 decl_stmt|;
+name|struct
+name|strbuf
+name|err
+init|=
+name|STRBUF_INIT
+decl_stmt|;
 name|lock
 operator|=
 name|xcalloc
@@ -10382,9 +10406,21 @@ argument_list|(
 operator|&
 name|ref_cache
 argument_list|)
+argument_list|,
+operator|&
+name|err
 argument_list|)
 condition|)
 block|{
+name|error
+argument_list|(
+literal|"%s"
+argument_list|,
+name|err
+operator|.
+name|buf
+argument_list|)
+expr_stmt|;
 name|last_errno
 operator|=
 name|ENOTDIR
@@ -10545,12 +10581,6 @@ name|retry
 goto|;
 else|else
 block|{
-name|struct
-name|strbuf
-name|err
-init|=
-name|STRBUF_INIT
-decl_stmt|;
 name|unable_to_lock_message
 argument_list|(
 name|ref_file
@@ -10568,12 +10598,6 @@ argument_list|,
 name|err
 operator|.
 name|buf
-argument_list|)
-expr_stmt|;
-name|strbuf_release
-argument_list|(
-operator|&
-name|err
 argument_list|)
 expr_stmt|;
 goto|goto
@@ -10600,6 +10624,12 @@ label|:
 name|unlock_ref
 argument_list|(
 name|lock
+argument_list|)
+expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|err
 argument_list|)
 expr_stmt|;
 name|errno
@@ -12374,6 +12404,12 @@ name|skip
 init|=
 name|STRING_LIST_INIT_NODUP
 decl_stmt|;
+name|struct
+name|strbuf
+name|err
+init|=
+name|STRBUF_INIT
+decl_stmt|;
 name|int
 name|ret
 decl_stmt|;
@@ -12402,6 +12438,9 @@ argument_list|(
 operator|&
 name|ref_cache
 argument_list|)
+argument_list|,
+operator|&
+name|err
 argument_list|)
 operator|&&
 operator|!
@@ -12419,6 +12458,23 @@ argument_list|(
 operator|&
 name|ref_cache
 argument_list|)
+argument_list|,
+operator|&
+name|err
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|ret
+condition|)
+name|error
+argument_list|(
+literal|"%s"
+argument_list|,
+name|err
+operator|.
+name|buf
 argument_list|)
 expr_stmt|;
 name|string_list_clear
@@ -12427,6 +12483,12 @@ operator|&
 name|skip
 argument_list|,
 literal|0
+argument_list|)
+expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|err
 argument_list|)
 expr_stmt|;
 return|return
