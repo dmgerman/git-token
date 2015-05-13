@@ -1166,6 +1166,8 @@ literal|"Could not write patch"
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|launch_editor
 argument_list|(
 name|file
@@ -1173,6 +1175,14 @@ argument_list|,
 name|NULL
 argument_list|,
 name|NULL
+argument_list|)
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"editing patch failed"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
