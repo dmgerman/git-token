@@ -45,6 +45,12 @@ directive|include
 file|"string-list.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"utf8.h"
+end_include
+
 begin_struct
 DECL|struct|config_source
 struct|struct
@@ -1988,22 +1994,7 @@ operator|->
 name|var
 decl_stmt|;
 comment|/* U+FEFF Byte Order Mark in UTF8 */
-specifier|static
 specifier|const
-name|unsigned
-name|char
-modifier|*
-name|utf8_bom
-init|=
-operator|(
-name|unsigned
-name|char
-operator|*
-operator|)
-literal|"\xef\xbb\xbf"
-decl_stmt|;
-specifier|const
-name|unsigned
 name|char
 modifier|*
 name|bomptr
@@ -2033,14 +2024,14 @@ block|{
 comment|/* We are at the file beginning; skip UTF8-encoded BOM 			 * if present. Sane editors won't put this in on their 			 * own, but e.g. Windows Notepad will do it happily. */
 if|if
 condition|(
-operator|(
-name|unsigned
-name|char
-operator|)
 name|c
 operator|==
+operator|(
 operator|*
 name|bomptr
+operator|&
+literal|0377
+operator|)
 condition|)
 block|{
 name|bomptr
