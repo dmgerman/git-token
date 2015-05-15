@@ -2661,6 +2661,14 @@ expr_stmt|;
 block|}
 end_function
 
+begin_decl_stmt
+DECL|variable|dead
+specifier|static
+name|int
+name|dead
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|die_webcgi
 specifier|static
@@ -2677,19 +2685,21 @@ name|va_list
 name|params
 parameter_list|)
 block|{
-specifier|static
-name|int
-name|dead
-decl_stmt|;
 if|if
 condition|(
-operator|!
 name|dead
+operator|<=
+literal|1
 condition|)
 block|{
-name|dead
-operator|=
-literal|1
+name|vreportf
+argument_list|(
+literal|"fatal: "
+argument_list|,
+name|err
+argument_list|,
+name|params
+argument_list|)
 expr_stmt|;
 name|http_status
 argument_list|(
@@ -2704,15 +2714,6 @@ expr_stmt|;
 name|end_headers
 argument_list|()
 expr_stmt|;
-name|vreportf
-argument_list|(
-literal|"fatal: "
-argument_list|,
-name|err
-argument_list|,
-name|params
-argument_list|)
-expr_stmt|;
 block|}
 name|exit
 argument_list|(
@@ -2720,6 +2721,24 @@ literal|0
 argument_list|)
 expr_stmt|;
 comment|/* we successfully reported a failure ;-) */
+block|}
+end_function
+
+begin_function
+DECL|function|die_webcgi_recursing
+specifier|static
+name|int
+name|die_webcgi_recursing
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+return|return
+name|dead
+operator|++
+operator|>
+literal|1
+return|;
 block|}
 end_function
 
@@ -3043,6 +3062,11 @@ expr_stmt|;
 name|set_die_routine
 argument_list|(
 name|die_webcgi
+argument_list|)
+expr_stmt|;
+name|set_die_is_recursing_routine
+argument_list|(
+name|die_webcgi_recursing
 argument_list|)
 expr_stmt|;
 if|if
