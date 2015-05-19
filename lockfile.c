@@ -915,9 +915,11 @@ name|flags
 operator|&
 name|LOCK_DIE_ON_ERROR
 condition|)
-name|exit
+name|die
 argument_list|(
-literal|128
+literal|"failed to prepare '%s' for appending"
+argument_list|,
+name|path
 argument_list|)
 expr_stmt|;
 name|close

@@ -9793,6 +9793,22 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_define
+DECL|macro|COPY_READ_ERROR
+define|#
+directive|define
+name|COPY_READ_ERROR
+value|(-2)
+end_define
+
+begin_define
+DECL|macro|COPY_WRITE_ERROR
+define|#
+directive|define
+name|COPY_WRITE_ERROR
+value|(-3)
+end_define
+
 begin_function_decl
 specifier|extern
 name|int
