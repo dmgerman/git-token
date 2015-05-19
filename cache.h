@@ -5472,6 +5472,14 @@ name|LOOKUP_REPLACE_OBJECT
 value|1
 end_define
 
+begin_define
+DECL|macro|LOOKUP_UNKNOWN_OBJECT
+define|#
+directive|define
+name|LOOKUP_UNKNOWN_OBJECT
+value|2
+end_define
+
 begin_function_decl
 specifier|extern
 name|void
@@ -8471,6 +8479,12 @@ name|unsigned
 name|char
 modifier|*
 name|delta_base_sha1
+decl_stmt|;
+DECL|member|typename
+name|struct
+name|strbuf
+modifier|*
+name|typename
 decl_stmt|;
 comment|/* Response */
 enum|enum
