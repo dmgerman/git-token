@@ -47,6 +47,12 @@ directive|include
 file|"remote.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"dir.h"
+end_include
+
 begin_function_decl
 specifier|static
 name|int
@@ -6424,10 +6430,6 @@ name|int
 name|object_name_len
 parameter_list|)
 block|{
-name|struct
-name|stat
-name|st
-decl_stmt|;
 name|unsigned
 name|char
 name|sha1
@@ -6449,13 +6451,9 @@ literal|""
 expr_stmt|;
 if|if
 condition|(
-operator|!
-name|lstat
+name|file_exists
 argument_list|(
 name|filename
-argument_list|,
-operator|&
-name|st
 argument_list|)
 condition|)
 name|die
@@ -6571,10 +6569,6 @@ modifier|*
 name|filename
 parameter_list|)
 block|{
-name|struct
-name|stat
-name|st
-decl_stmt|;
 specifier|const
 name|struct
 name|cache_entry
@@ -6801,13 +6795,9 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-operator|!
-name|lstat
+name|file_exists
 argument_list|(
 name|filename
-argument_list|,
-operator|&
-name|st
 argument_list|)
 condition|)
 name|die
