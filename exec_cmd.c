@@ -438,14 +438,6 @@ name|git_exec_path
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|add_path
-argument_list|(
-operator|&
-name|new_path
-argument_list|,
-name|argv0_path
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|old_path
