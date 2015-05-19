@@ -1664,12 +1664,6 @@ init|=
 name|STRBUF_INIT
 decl_stmt|;
 name|struct
-name|strbuf
-name|buf
-init|=
-name|STRBUF_INIT
-decl_stmt|;
-name|struct
 name|menu_item
 modifier|*
 name|menu_item
@@ -1982,12 +1976,6 @@ name|strbuf_release
 argument_list|(
 operator|&
 name|menu
-argument_list|)
-expr_stmt|;
-name|strbuf_release
-argument_list|(
-operator|&
-name|buf
 argument_list|)
 expr_stmt|;
 name|string_list_clear
