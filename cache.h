@@ -5992,6 +5992,12 @@ DECL|member|mode
 name|unsigned
 name|mode
 decl_stmt|;
+comment|/* 	 * symlink_path is only used by get_tree_entry_follow_symlinks, 	 * and only for symlinks that point outside the repository. 	 */
+DECL|member|symlink_path
+name|struct
+name|strbuf
+name|symlink_path
+decl_stmt|;
 block|}
 struct|;
 end_struct
@@ -6042,6 +6048,14 @@ define|#
 directive|define
 name|GET_SHA1_BLOB
 value|040
+end_define
+
+begin_define
+DECL|macro|GET_SHA1_FOLLOW_SYMLINKS
+define|#
+directive|define
+name|GET_SHA1_FOLLOW_SYMLINKS
+value|0100
 end_define
 
 begin_define
