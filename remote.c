@@ -4327,6 +4327,9 @@ name|name_given
 init|=
 literal|0
 decl_stmt|;
+name|read_config
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|name
@@ -4467,9 +4470,6 @@ modifier|*
 name|name
 parameter_list|)
 block|{
-name|read_config
-argument_list|()
-expr_stmt|;
 return|return
 name|remote_get_1
 argument_list|(
@@ -4494,9 +4494,6 @@ modifier|*
 name|name
 parameter_list|)
 block|{
-name|read_config
-argument_list|()
-expr_stmt|;
 return|return
 name|remote_get_1
 argument_list|(
