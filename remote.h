@@ -1137,6 +1137,24 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/**  * Return the fully-qualified refname of the tracking branch for `branch`.  * I.e., what "branch@{upstream}" would give you. Returns NULL if no  * upstream is defined.  */
+end_comment
+
+begin_function_decl
+specifier|const
+name|char
+modifier|*
+name|branch_get_upstream
+parameter_list|(
+name|struct
+name|branch
+modifier|*
+name|branch
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/* Flags to match_refs. */
 end_comment
 
