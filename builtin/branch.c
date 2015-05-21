@@ -637,6 +637,8 @@ init|=
 name|branch_get_upstream
 argument_list|(
 name|branch
+argument_list|,
+name|NULL
 argument_list|)
 decl_stmt|;
 name|unsigned

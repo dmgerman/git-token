@@ -1137,7 +1137,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/**  * Return the fully-qualified refname of the tracking branch for `branch`.  * I.e., what "branch@{upstream}" would give you. Returns NULL if no  * upstream is defined.  */
+comment|/**  * Return the fully-qualified refname of the tracking branch for `branch`.  * I.e., what "branch@{upstream}" would give you. Returns NULL if no  * upstream is defined.  *  * If `err` is not NULL and no upstream is defined, a more specific error  * message is recorded there (if the function does not return NULL, then  * `err` is not touched).  */
 end_comment
 
 begin_function_decl
@@ -1150,6 +1150,11 @@ name|struct
 name|branch
 modifier|*
 name|branch
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|err
 parameter_list|)
 function_decl|;
 end_function_decl
