@@ -233,11 +233,24 @@ name|daemon_mode
 decl_stmt|;
 end_decl_stmt
 
+begin_comment
+comment|/* Allow specifying sha1 if it is a ref tip. */
+end_comment
+
+begin_define
+DECL|macro|ALLOW_TIP_SHA1
+define|#
+directive|define
+name|ALLOW_TIP_SHA1
+value|01
+end_define
+
 begin_decl_stmt
-DECL|variable|allow_tip_sha1_in_want
+DECL|variable|allow_unadvertised_object_request
 specifier|static
+name|unsigned
 name|int
-name|allow_tip_sha1_in_want
+name|allow_unadvertised_object_request
 decl_stmt|;
 end_decl_stmt
 
@@ -2282,6 +2295,15 @@ modifier|*
 name|o
 parameter_list|)
 block|{
+name|int
+name|allow_hidden_ref
+init|=
+operator|(
+name|allow_unadvertised_object_request
+operator|&
+name|ALLOW_TIP_SHA1
+operator|)
+decl_stmt|;
 return|return
 name|o
 operator|->
@@ -2289,7 +2311,7 @@ name|flags
 operator|&
 operator|(
 operator|(
-name|allow_tip_sha1_in_want
+name|allow_hidden_ref
 condition|?
 name|HIDDEN_REF
 else|:
@@ -3775,7 +3797,11 @@ literal|0
 argument_list|,
 name|capabilities
 argument_list|,
-name|allow_tip_sha1_in_want
+operator|(
+name|allow_unadvertised_object_request
+operator|&
+name|ALLOW_TIP_SHA1
+operator|)
 condition|?
 literal|" allow-tip-sha1-in-want"
 else|:
@@ -4108,15 +4134,27 @@ argument_list|,
 name|var
 argument_list|)
 condition|)
-name|allow_tip_sha1_in_want
-operator|=
+block|{
+if|if
+condition|(
 name|git_config_bool
 argument_list|(
 name|var
 argument_list|,
 name|value
 argument_list|)
+condition|)
+name|allow_unadvertised_object_request
+operator||=
+name|ALLOW_TIP_SHA1
 expr_stmt|;
+else|else
+name|allow_unadvertised_object_request
+operator|&=
+operator|~
+name|ALLOW_TIP_SHA1
+expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(

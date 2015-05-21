@@ -281,7 +281,6 @@ begin_decl_stmt
 DECL|variable|non_common_revs
 DECL|variable|multi_ack
 DECL|variable|use_sideband
-DECL|variable|allow_tip_sha1_in_want
 specifier|static
 name|int
 name|non_common_revs
@@ -289,8 +288,27 @@ decl_stmt|,
 name|multi_ack
 decl_stmt|,
 name|use_sideband
-decl_stmt|,
-name|allow_tip_sha1_in_want
+decl_stmt|;
+end_decl_stmt
+
+begin_comment
+comment|/* Allow specifying sha1 if it is a ref tip. */
+end_comment
+
+begin_define
+DECL|macro|ALLOW_TIP_SHA1
+define|#
+directive|define
+name|ALLOW_TIP_SHA1
+value|01
+end_define
+
+begin_decl_stmt
+DECL|variable|allow_unadvertised_object_request
+specifier|static
+name|unsigned
+name|int
+name|allow_unadvertised_object_request
 decl_stmt|;
 end_decl_stmt
 
@@ -2931,7 +2949,11 @@ block|}
 comment|/* Append unmatched requests to the list */
 if|if
 condition|(
-name|allow_tip_sha1_in_want
+operator|(
+name|allow_unadvertised_object_request
+operator|&
+name|ALLOW_TIP_SHA1
+operator|)
 condition|)
 block|{
 for|for
@@ -4437,9 +4459,9 @@ argument_list|,
 literal|"Server supports allow-tip-sha1-in-want\n"
 argument_list|)
 expr_stmt|;
-name|allow_tip_sha1_in_want
-operator|=
-literal|1
+name|allow_unadvertised_object_request
+operator||=
+name|ALLOW_TIP_SHA1
 expr_stmt|;
 block|}
 if|if
