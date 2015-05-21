@@ -1065,6 +1065,24 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+specifier|const
+name|char
+modifier|*
+name|remote_for_branch
+parameter_list|(
+name|struct
+name|branch
+modifier|*
+name|branch
+parameter_list|,
+name|int
+modifier|*
+name|explicit
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|int
 name|branch_has_merge_config
 parameter_list|(
