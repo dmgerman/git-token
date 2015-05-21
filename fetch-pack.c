@@ -303,6 +303,18 @@ name|ALLOW_TIP_SHA1
 value|01
 end_define
 
+begin_comment
+comment|/* Allow request of a sha1 if it is reachable from a ref (possibly hidden ref). */
+end_comment
+
+begin_define
+DECL|macro|ALLOW_REACHABLE_SHA1
+define|#
+directive|define
+name|ALLOW_REACHABLE_SHA1
+value|02
+end_define
+
 begin_decl_stmt
 DECL|variable|allow_unadvertised_object_request
 specifier|static
@@ -2952,7 +2964,11 @@ condition|(
 operator|(
 name|allow_unadvertised_object_request
 operator|&
+operator|(
 name|ALLOW_TIP_SHA1
+operator||
+name|ALLOW_REACHABLE_SHA1
+operator|)
 operator|)
 condition|)
 block|{
@@ -4462,6 +4478,32 @@ expr_stmt|;
 name|allow_unadvertised_object_request
 operator||=
 name|ALLOW_TIP_SHA1
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|server_supports
+argument_list|(
+literal|"allow-reachable-sha1-in-want"
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
+name|args
+operator|->
+name|verbose
+condition|)
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"Server supports allow-reachable-sha1-in-want\n"
+argument_list|)
+expr_stmt|;
+name|allow_unadvertised_object_request
+operator||=
+name|ALLOW_REACHABLE_SHA1
 expr_stmt|;
 block|}
 if|if
