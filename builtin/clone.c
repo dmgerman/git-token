@@ -470,6 +470,21 @@ literal|"reference repository"
 argument_list|)
 argument_list|)
 block|,
+name|OPT_BOOL
+argument_list|(
+literal|0
+argument_list|,
+literal|"dissociate"
+argument_list|,
+operator|&
+name|option_dissociate
+argument_list|,
+name|N_
+argument_list|(
+literal|"use --reference only while cloning"
+argument_list|)
+argument_list|)
+block|,
 name|OPT_STRING
 argument_list|(
 literal|'o'
@@ -562,21 +577,6 @@ argument_list|,
 name|N_
 argument_list|(
 literal|"clone only one branch, HEAD or --branch"
-argument_list|)
-argument_list|)
-block|,
-name|OPT_BOOL
-argument_list|(
-literal|0
-argument_list|,
-literal|"dissociate"
-argument_list|,
-operator|&
-name|option_dissociate
-argument_list|,
-name|N_
-argument_list|(
-literal|"use --reference only while cloning"
 argument_list|)
 argument_list|)
 block|,
