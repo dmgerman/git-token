@@ -18024,7 +18024,7 @@ name|strbuf_addf
 argument_list|(
 name|err
 argument_list|,
-literal|"Cannot lock ref '%s': %s"
+literal|"cannot lock ref '%s': %s"
 argument_list|,
 name|update
 operator|->
@@ -18131,7 +18131,7 @@ name|strbuf_addf
 argument_list|(
 name|err
 argument_list|,
-literal|"Cannot update the ref '%s'."
+literal|"cannot update the ref '%s'."
 argument_list|,
 name|update
 operator|->
