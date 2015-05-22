@@ -10767,7 +10767,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Compare a branch with its upstream, and save their differences (number  * of commits) in *num_ours and *num_theirs.  *  * Return 0 if branch has no upstream (no base), -1 if upstream is missing  * (with "gone" base), otherwise 1 (with base).  */
+comment|/*  * Compare a branch with its upstream, and save their differences (number  * of commits) in *num_ours and *num_theirs. The name of the upstream branch  * (or NULL if no upstream is defined) is returned via *upstream_name, if it  * is not itself NULL.  *  * Returns -1 if num_ours and num_theirs could not be filled in (e.g., no  * upstream defined, or ref does not exist), 0 otherwise.  */
 end_comment
 
 begin_function
@@ -10787,6 +10787,12 @@ parameter_list|,
 name|int
 modifier|*
 name|num_theirs
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|upstream_name
 parameter_list|)
 block|{
 name|unsigned
@@ -10840,11 +10846,21 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|upstream_name
+condition|)
+operator|*
+name|upstream_name
+operator|=
+name|base
+expr_stmt|;
+if|if
+condition|(
 operator|!
 name|base
 condition|)
 return|return
-literal|0
+operator|-
+literal|1
 return|;
 comment|/* Cannot stat if what we used to build on no longer exists */
 if|if
@@ -10924,7 +10940,7 @@ operator|=
 literal|0
 expr_stmt|;
 return|return
-literal|1
+literal|0
 return|;
 block|}
 comment|/* Run "rev-list --left-right ours...theirs" internally... */
@@ -11116,7 +11132,7 @@ name|ALL_REV_FLAGS
 argument_list|)
 expr_stmt|;
 return|return
-literal|1
+literal|0
 return|;
 block|}
 end_function
@@ -11146,6 +11162,11 @@ name|ours
 decl_stmt|,
 name|theirs
 decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|full_base
+decl_stmt|;
 name|char
 modifier|*
 name|base
@@ -11155,7 +11176,7 @@ name|upstream_is_gone
 init|=
 literal|0
 decl_stmt|;
-switch|switch
+if|if
 condition|(
 name|stat_tracking_info
 argument_list|(
@@ -11166,42 +11187,32 @@ name|ours
 argument_list|,
 operator|&
 name|theirs
+argument_list|,
+operator|&
+name|full_base
 argument_list|)
+operator|<
+literal|0
 condition|)
 block|{
-case|case
-literal|0
-case|:
-comment|/* no base */
+if|if
+condition|(
+operator|!
+name|full_base
+condition|)
 return|return
 literal|0
 return|;
-case|case
-operator|-
-literal|1
-case|:
-comment|/* with "gone" base */
 name|upstream_is_gone
 operator|=
 literal|1
 expr_stmt|;
-break|break;
-default|default:
-comment|/* with base */
-break|break;
 block|}
 name|base
 operator|=
 name|shorten_unambiguous_ref
 argument_list|(
-name|branch
-operator|->
-name|merge
-index|[
-literal|0
-index|]
-operator|->
-name|dst
+name|full_base
 argument_list|,
 literal|0
 argument_list|)

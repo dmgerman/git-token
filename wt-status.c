@@ -9169,7 +9169,7 @@ argument_list|,
 name|branch_name
 argument_list|)
 expr_stmt|;
-switch|switch
+if|if
 condition|(
 name|stat_tracking_info
 argument_list|(
@@ -9180,13 +9180,20 @@ name|num_ours
 argument_list|,
 operator|&
 name|num_theirs
+argument_list|,
+operator|&
+name|base
 argument_list|)
+operator|<
+literal|0
 condition|)
 block|{
-case|case
-literal|0
-case|:
-comment|/* no base */
+if|if
+condition|(
+operator|!
+name|base
+condition|)
+block|{
 name|fputc
 argument_list|(
 name|s
@@ -9203,31 +9210,12 @@ name|fp
 argument_list|)
 expr_stmt|;
 return|return;
-case|case
-operator|-
-literal|1
-case|:
-comment|/* with "gone" base */
+block|}
 name|upstream_is_gone
 operator|=
 literal|1
 expr_stmt|;
-break|break;
-default|default:
-comment|/* with base */
-break|break;
 block|}
-name|base
-operator|=
-name|branch
-operator|->
-name|merge
-index|[
-literal|0
-index|]
-operator|->
-name|dst
-expr_stmt|;
 name|base
 operator|=
 name|shorten_unambiguous_ref

@@ -1232,6 +1232,12 @@ parameter_list|,
 name|int
 modifier|*
 name|num_theirs
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|upstream_name
 parameter_list|)
 function_decl|;
 end_function_decl

@@ -2203,6 +2203,11 @@ argument_list|(
 name|branch_name
 argument_list|)
 decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|upstream
+decl_stmt|;
 name|struct
 name|strbuf
 name|fancy
@@ -2219,7 +2224,7 @@ name|added_decoration
 init|=
 literal|1
 decl_stmt|;
-switch|switch
+if|if
 condition|(
 name|stat_tracking_info
 argument_list|(
@@ -2230,27 +2235,24 @@ name|ours
 argument_list|,
 operator|&
 name|theirs
+argument_list|,
+operator|&
+name|upstream
 argument_list|)
+operator|<
+literal|0
 condition|)
 block|{
-case|case
-literal|0
-case|:
-comment|/* no base */
+if|if
+condition|(
+operator|!
+name|upstream
+condition|)
 return|return;
-case|case
-operator|-
-literal|1
-case|:
-comment|/* with "gone" base */
 name|upstream_is_gone
 operator|=
 literal|1
 expr_stmt|;
-break|break;
-default|default:
-comment|/* with base */
-break|break;
 block|}
 if|if
 condition|(
@@ -2261,14 +2263,7 @@ name|ref
 operator|=
 name|shorten_unambiguous_ref
 argument_list|(
-name|branch
-operator|->
-name|merge
-index|[
-literal|0
-index|]
-operator|->
-name|dst
+name|upstream
 argument_list|,
 literal|0
 argument_list|)
