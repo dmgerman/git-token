@@ -4592,7 +4592,7 @@ argument_list|,
 literal|"Mismatch!\n"
 argument_list|)
 expr_stmt|;
-name|free
+name|bitmap_free
 argument_list|(
 name|result
 argument_list|)
