@@ -209,12 +209,9 @@ name|char
 modifier|*
 name|hex
 decl_stmt|;
-name|unsigned
-name|char
+name|struct
+name|object_id
 name|peeled
-index|[
-literal|20
-index|]
 decl_stmt|;
 if|if
 condition|(
@@ -434,6 +431,8 @@ argument_list|(
 name|refname
 argument_list|,
 name|peeled
+operator|.
+name|hash
 argument_list|)
 condition|)
 block|{
@@ -442,6 +441,8 @@ operator|=
 name|find_unique_abbrev
 argument_list|(
 name|peeled
+operator|.
+name|hash
 argument_list|,
 name|abbrev
 argument_list|)
