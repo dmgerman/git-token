@@ -4477,9 +4477,11 @@ index|[
 name|num_rev
 index|]
 argument_list|,
+name|oid_to_hex
+argument_list|(
+operator|&
 name|revkey
-operator|.
-name|hash
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|parse_commit
