@@ -714,6 +714,16 @@ name|struct
 name|connectivity_progress
 name|cp
 decl_stmt|;
+name|struct
+name|each_ref_fn_sha1_adapter
+name|wrapped_add_one_ref
+init|=
+block|{
+name|add_one_ref
+block|,
+name|revs
+block|}
+decl_stmt|;
 comment|/* 	 * Set up revision parsing, and mark us as being interested 	 * in all object types, not just commits. 	 */
 name|revs
 operator|->
@@ -744,17 +754,19 @@ expr_stmt|;
 comment|/* Add all external refs */
 name|for_each_ref
 argument_list|(
-name|add_one_ref
+name|each_ref_fn_adapter
 argument_list|,
-name|revs
+operator|&
+name|wrapped_add_one_ref
 argument_list|)
 expr_stmt|;
 comment|/* detached HEAD is not included in the list above */
 name|head_ref
 argument_list|(
-name|add_one_ref
+name|each_ref_fn_adapter
 argument_list|,
-name|revs
+operator|&
+name|wrapped_add_one_ref
 argument_list|)
 expr_stmt|;
 comment|/* Add all reflog info */

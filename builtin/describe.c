@@ -2520,6 +2520,16 @@ name|OPT_END
 argument_list|()
 block|, 	}
 decl_stmt|;
+name|struct
+name|each_ref_fn_sha1_adapter
+name|wrapped_get_name
+init|=
+block|{
+name|get_name
+block|,
+name|NULL
+block|}
+decl_stmt|;
 name|git_config
 argument_list|(
 name|git_default_config
@@ -2716,9 +2726,10 @@ argument_list|)
 expr_stmt|;
 name|for_each_rawref
 argument_list|(
-name|get_name
+name|each_ref_fn_adapter
 argument_list|,
-name|NULL
+operator|&
+name|wrapped_get_name
 argument_list|)
 expr_stmt|;
 if|if
