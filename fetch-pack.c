@@ -383,13 +383,6 @@ name|unsigned
 name|char
 modifier|*
 name|sha1
-parameter_list|,
-name|int
-name|flag
-parameter_list|,
-name|void
-modifier|*
-name|cb_data
 parameter_list|)
 block|{
 name|struct
@@ -470,10 +463,6 @@ argument_list|,
 name|oid
 operator|->
 name|hash
-argument_list|,
-name|flag
-argument_list|,
-name|cb_data
 argument_list|)
 return|;
 block|}
@@ -1267,10 +1256,6 @@ argument_list|,
 name|ref
 operator|->
 name|old_sha1
-argument_list|,
-literal|0
-argument_list|,
-name|NULL
 argument_list|)
 expr_stmt|;
 block|}
