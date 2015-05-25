@@ -140,10 +140,10 @@ modifier|*
 name|path
 parameter_list|,
 specifier|const
-name|unsigned
-name|char
+name|struct
+name|object_id
 modifier|*
-name|sha1
+name|oid
 parameter_list|,
 name|int
 name|flag
@@ -160,7 +160,9 @@ name|object
 init|=
 name|parse_object_or_die
 argument_list|(
-name|sha1
+name|oid
+operator|->
+name|hash
 argument_list|,
 name|path
 argument_list|)
@@ -714,16 +716,6 @@ name|struct
 name|connectivity_progress
 name|cp
 decl_stmt|;
-name|struct
-name|each_ref_fn_sha1_adapter
-name|wrapped_add_one_ref
-init|=
-block|{
-name|add_one_ref
-block|,
-name|revs
-block|}
-decl_stmt|;
 comment|/* 	 * Set up revision parsing, and mark us as being interested 	 * in all object types, not just commits. 	 */
 name|revs
 operator|->
@@ -754,19 +746,17 @@ expr_stmt|;
 comment|/* Add all external refs */
 name|for_each_ref
 argument_list|(
-name|each_ref_fn_adapter
+name|add_one_ref
 argument_list|,
-operator|&
-name|wrapped_add_one_ref
+name|revs
 argument_list|)
 expr_stmt|;
 comment|/* detached HEAD is not included in the list above */
 name|head_ref
 argument_list|(
-name|each_ref_fn_adapter
+name|add_one_ref
 argument_list|,
-operator|&
-name|wrapped_add_one_ref
+name|revs
 argument_list|)
 expr_stmt|;
 comment|/* Add all reflog info */
