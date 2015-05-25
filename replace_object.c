@@ -274,10 +274,10 @@ modifier|*
 name|refname
 parameter_list|,
 specifier|const
-name|unsigned
-name|char
+name|struct
+name|object_id
 modifier|*
-name|sha1
+name|oid
 parameter_list|,
 name|int
 name|flag
@@ -369,7 +369,9 @@ name|repl_obj
 operator|->
 name|replacement
 argument_list|,
-name|sha1
+name|oid
+operator|->
+name|hash
 argument_list|)
 expr_stmt|;
 comment|/* Register new object */
@@ -408,16 +410,6 @@ specifier|static
 name|int
 name|replace_object_prepared
 decl_stmt|;
-name|struct
-name|each_ref_fn_sha1_adapter
-name|wrapped_register_replace_ref
-init|=
-block|{
-name|register_replace_ref
-block|,
-name|NULL
-block|}
-decl_stmt|;
 if|if
 condition|(
 name|replace_object_prepared
@@ -425,10 +417,9 @@ condition|)
 return|return;
 name|for_each_replace_ref
 argument_list|(
-name|each_ref_fn_adapter
+name|register_replace_ref
 argument_list|,
-operator|&
-name|wrapped_register_replace_ref
+name|NULL
 argument_list|)
 expr_stmt|;
 name|replace_object_prepared
