@@ -7898,12 +7898,9 @@ name|char
 modifier|*
 name|resolves_to
 decl_stmt|;
-name|unsigned
-name|char
+name|struct
+name|object_id
 name|junk
-index|[
-literal|20
-index|]
 decl_stmt|;
 if|if
 condition|(
@@ -7926,6 +7923,8 @@ argument_list|,
 literal|0
 argument_list|,
 name|junk
+operator|.
+name|hash
 argument_list|,
 name|NULL
 argument_list|)
