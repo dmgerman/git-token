@@ -3723,12 +3723,9 @@ argument_list|(
 name|refname
 argument_list|)
 decl_stmt|;
-name|unsigned
-name|char
+name|struct
+name|object_id
 name|peeled
-index|[
-literal|20
-index|]
 decl_stmt|;
 if|if
 condition|(
@@ -3834,6 +3831,8 @@ argument_list|(
 name|refname
 argument_list|,
 name|peeled
+operator|.
+name|hash
 argument_list|)
 condition|)
 name|packet_write
@@ -3842,8 +3841,9 @@ literal|1
 argument_list|,
 literal|"%s %s^{}\n"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|peeled
 argument_list|)
 argument_list|,
