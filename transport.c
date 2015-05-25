@@ -1686,12 +1686,9 @@ name|i
 operator|++
 control|)
 block|{
-name|unsigned
-name|char
-name|sha1
-index|[
-literal|20
-index|]
+name|struct
+name|object_id
+name|oid
 decl_stmt|;
 name|char
 modifier|*
@@ -1714,7 +1711,9 @@ name|i
 index|]
 argument_list|)
 argument_list|,
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|,
 operator|&
 name|ref
@@ -1739,7 +1738,9 @@ name|write_one_ref
 argument_list|(
 name|ref
 argument_list|,
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|,
 literal|0
 argument_list|,
