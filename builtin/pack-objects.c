@@ -3099,10 +3099,10 @@ modifier|*
 name|path
 parameter_list|,
 specifier|const
-name|unsigned
-name|char
+name|struct
+name|object_id
 modifier|*
-name|sha1
+name|oid
 parameter_list|,
 name|int
 name|flag
@@ -3129,7 +3129,9 @@ argument_list|(
 operator|&
 name|to_pack
 argument_list|,
-name|sha1
+name|oid
+operator|->
+name|hash
 argument_list|,
 name|NULL
 argument_list|)
@@ -3511,16 +3513,6 @@ name|to_pack
 operator|.
 name|objects
 decl_stmt|;
-name|struct
-name|each_ref_fn_sha1_adapter
-name|wrapped_mark_tagged
-init|=
-block|{
-name|mark_tagged
-block|,
-name|NULL
-block|}
-decl_stmt|;
 for|for
 control|(
 name|i
@@ -3632,10 +3624,9 @@ block|}
 comment|/* 	 * Mark objects that are at the tip of tags. 	 */
 name|for_each_tag_ref
 argument_list|(
-name|each_ref_fn_adapter
+name|mark_tagged
 argument_list|,
-operator|&
-name|wrapped_mark_tagged
+name|NULL
 argument_list|)
 expr_stmt|;
 comment|/* 	 * Give the objects in the original recency order until 	 * we see a tagged tip. 	 */
@@ -10371,10 +10362,10 @@ modifier|*
 name|path
 parameter_list|,
 specifier|const
-name|unsigned
-name|char
+name|struct
+name|object_id
 modifier|*
-name|sha1
+name|oid
 parameter_list|,
 name|int
 name|flag
@@ -10384,12 +10375,9 @@ modifier|*
 name|cb_data
 parameter_list|)
 block|{
-name|unsigned
-name|char
+name|struct
+name|object_id
 name|peeled
-index|[
-literal|20
-index|]
 decl_stmt|;
 if|if
 condition|(
@@ -10407,6 +10395,8 @@ argument_list|(
 name|path
 argument_list|,
 name|peeled
+operator|.
+name|hash
 argument_list|)
 operator|&&
 comment|/* peelable? */
@@ -10416,6 +10406,8 @@ operator|&
 name|to_pack
 argument_list|,
 name|peeled
+operator|.
+name|hash
 argument_list|,
 name|NULL
 argument_list|)
@@ -10423,7 +10415,9 @@ condition|)
 comment|/* object packed? */
 name|add_object_entry
 argument_list|(
-name|sha1
+name|oid
+operator|->
+name|hash
 argument_list|,
 name|OBJ_TAG
 argument_list|,
@@ -14011,26 +14005,13 @@ name|include_tag
 operator|&&
 name|nr_result
 condition|)
-block|{
-name|struct
-name|each_ref_fn_sha1_adapter
-name|wrapped_add_ref_tag
-init|=
-block|{
-name|add_ref_tag
-block|,
-name|NULL
-block|}
-decl_stmt|;
 name|for_each_ref
 argument_list|(
-name|each_ref_fn_adapter
+name|add_ref_tag
 argument_list|,
-operator|&
-name|wrapped_add_ref_tag
+name|NULL
 argument_list|)
 expr_stmt|;
-block|}
 name|stop_progress
 argument_list|(
 operator|&
