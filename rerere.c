@@ -3959,6 +3959,15 @@ argument_list|,
 name|RERERE_NOAUTOUPDATE
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|fd
+operator|<
+literal|0
+condition|)
+return|return
+literal|0
+return|;
 name|unmerge_cache
 argument_list|(
 name|pathspec
