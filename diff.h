@@ -838,6 +838,26 @@ DECL|member|abbrev
 name|int
 name|abbrev
 decl_stmt|;
+comment|/* white-space error highlighting */
+DECL|macro|WSEH_NEW
+define|#
+directive|define
+name|WSEH_NEW
+value|1
+DECL|macro|WSEH_CONTEXT
+define|#
+directive|define
+name|WSEH_CONTEXT
+value|2
+DECL|macro|WSEH_OLD
+define|#
+directive|define
+name|WSEH_OLD
+value|4
+DECL|member|ws_error_highlight
+name|unsigned
+name|ws_error_highlight
+decl_stmt|;
 DECL|member|prefix
 specifier|const
 name|char
