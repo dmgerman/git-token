@@ -73,6 +73,12 @@ endif|#
 directive|endif
 end_endif
 
+begin_struct_decl
+struct_decl|struct
+name|strbuf
+struct_decl|;
+end_struct_decl
+
 begin_typedef
 DECL|typedef|eword_t
 typedef|typedef
@@ -545,6 +551,22 @@ name|self
 parameter_list|,
 name|int
 name|fd
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
+name|ewah_serialize_strbuf
+parameter_list|(
+name|struct
+name|ewah_bitmap
+modifier|*
+name|self
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
 parameter_list|)
 function_decl|;
 end_function_decl

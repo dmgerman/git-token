@@ -3419,6 +3419,15 @@ name|flags
 operator||=
 name|DIR_SHOW_IGNORED_TOO
 expr_stmt|;
+else|else
+name|dir
+operator|.
+name|untracked
+operator|=
+name|the_index
+operator|.
+name|untracked
+expr_stmt|;
 name|setup_standard_excludes
 argument_list|(
 operator|&

@@ -1409,9 +1409,23 @@ name|SPLIT_INDEX_ORDERED
 value|(1<< 6)
 end_define
 
+begin_define
+DECL|macro|UNTRACKED_CHANGED
+define|#
+directive|define
+name|UNTRACKED_CHANGED
+value|(1<< 7)
+end_define
+
 begin_struct_decl
 struct_decl|struct
 name|split_index
+struct_decl|;
+end_struct_decl
+
+begin_struct_decl
+struct_decl|struct
+name|untracked_cache
 struct_decl|;
 end_struct_decl
 
@@ -1494,6 +1508,12 @@ name|sha1
 index|[
 literal|20
 index|]
+decl_stmt|;
+DECL|member|untracked
+name|struct
+name|untracked_cache
+modifier|*
+name|untracked
 decl_stmt|;
 block|}
 struct|;
@@ -3590,6 +3610,31 @@ specifier|extern
 name|int
 name|match_stat_data
 parameter_list|(
+specifier|const
+name|struct
+name|stat_data
+modifier|*
+name|sd
+parameter_list|,
+name|struct
+name|stat
+modifier|*
+name|st
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|match_stat_data_racy
+parameter_list|(
+specifier|const
+name|struct
+name|index_state
+modifier|*
+name|istate
+parameter_list|,
 specifier|const
 name|struct
 name|stat_data
