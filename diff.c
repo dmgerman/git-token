@@ -328,6 +328,14 @@ name|strcasecmp
 argument_list|(
 name|var
 argument_list|,
+literal|"context"
+argument_list|)
+operator|||
+operator|!
+name|strcasecmp
+argument_list|(
+name|var
+argument_list|,
 literal|"plain"
 argument_list|)
 condition|)
