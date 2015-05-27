@@ -3619,7 +3619,7 @@ name|MAP_FAILED
 condition|)
 name|die_errno
 argument_list|(
-literal|"Out of memory? mmap failed"
+literal|"mmap failed"
 argument_list|)
 expr_stmt|;
 return|return
