@@ -973,8 +973,8 @@ name|DIFF_RESET
 init|=
 literal|0
 block|,
-DECL|enumerator|DIFF_PLAIN
-name|DIFF_PLAIN
+DECL|enumerator|DIFF_CONTEXT
+name|DIFF_CONTEXT
 init|=
 literal|1
 block|,

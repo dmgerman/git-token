@@ -5158,7 +5158,7 @@ decl_stmt|;
 specifier|const
 name|char
 modifier|*
-name|c_plain
+name|c_context
 init|=
 name|diff_get_color
 argument_list|(
@@ -5166,7 +5166,7 @@ name|opt
 operator|->
 name|use_color
 argument_list|,
-name|DIFF_PLAIN
+name|DIFF_CONTEXT
 argument_list|)
 decl_stmt|;
 if|if
@@ -5661,7 +5661,7 @@ name|two
 operator|->
 name|data
 argument_list|,
-name|c_plain
+name|c_context
 argument_list|,
 name|c_reset
 argument_list|)
@@ -5792,7 +5792,7 @@ name|two
 operator|->
 name|data
 argument_list|,
-name|c_plain
+name|c_context
 argument_list|,
 name|c_reset
 argument_list|)

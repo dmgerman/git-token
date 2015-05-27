@@ -4093,13 +4093,13 @@ decl_stmt|;
 specifier|const
 name|char
 modifier|*
-name|c_plain
+name|c_context
 init|=
 name|diff_get_color
 argument_list|(
 name|use_color
 argument_list|,
-name|DIFF_PLAIN
+name|DIFF_CONTEXT
 argument_list|)
 decl_stmt|;
 specifier|const
@@ -4445,7 +4445,7 @@ literal|"%s%s %s%s"
 argument_list|,
 name|c_reset
 argument_list|,
-name|c_plain
+name|c_context
 argument_list|,
 name|c_reset
 argument_list|,
@@ -4642,7 +4642,7 @@ condition|)
 continue|continue;
 name|fputs
 argument_list|(
-name|c_plain
+name|c_context
 argument_list|,
 name|stdout
 argument_list|)
