@@ -10421,6 +10421,23 @@ operator|==
 name|MAP_FAILED
 condition|)
 block|{
+if|if
+condition|(
+name|errno
+operator|==
+name|ENODEV
+operator|&&
+name|S_ISDIR
+argument_list|(
+name|st
+operator|.
+name|st_mode
+argument_list|)
+condition|)
+name|errno
+operator|=
+name|EISDIR
+expr_stmt|;
 name|error
 argument_list|(
 literal|"unable to mmap '%s': %s"
