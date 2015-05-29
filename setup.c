@@ -39,6 +39,14 @@ literal|1
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|work_tree_config_is_bogus
+specifier|static
+name|int
+name|work_tree_config_is_bogus
+decl_stmt|;
+end_decl_stmt
+
 begin_comment
 comment|/*  * The input parameter must contain an absolute path, and it must already be  * normalized.  *  * Find the part of an absolute path that lies inside the work tree by  * dereferencing symlinks outside the work tree, for example:  * /dir1/repo/dir2/file   (work tree is /dir1/repo)      -> dir2/file  * /dir/file              (work tree is /)               -> dir/file  * /dir/symlink1/symlink2 (symlink1 points to work tree) -> symlink2  * /dir/repolink/file     (repolink points to /dir/repo) -> file  * /dir/repo              (exactly equal to work tree)   -> (empty string)  */
 end_comment
@@ -1150,6 +1158,15 @@ condition|(
 name|initialized
 condition|)
 return|return;
+if|if
+condition|(
+name|work_tree_config_is_bogus
+condition|)
+name|die
+argument_list|(
+literal|"unable to set up work tree using invalid config"
+argument_list|)
+expr_stmt|;
 name|work_tree
 operator|=
 name|get_git_work_tree
@@ -1816,12 +1833,18 @@ if|if
 condition|(
 name|git_work_tree_cfg
 condition|)
+block|{
 comment|/* #22.2, #30 */
-name|die
+name|warning
 argument_list|(
 literal|"core.bare and core.worktree do not make sense"
 argument_list|)
 expr_stmt|;
+name|work_tree_config_is_bogus
+operator|=
+literal|1
+expr_stmt|;
+block|}
 comment|/* #18, #26 */
 name|set_git_dir
 argument_list|(
