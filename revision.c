@@ -3604,9 +3604,11 @@ name|UNINTERESTING
 expr_stmt|;
 if|if
 condition|(
-name|parse_commit
+name|parse_commit_gently
 argument_list|(
 name|p
+argument_list|,
+literal|1
 argument_list|)
 operator|<
 literal|0
