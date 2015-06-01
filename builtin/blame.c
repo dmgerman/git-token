@@ -129,6 +129,12 @@ directive|include
 file|"line-log.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"dir.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|blame_usage
 specifier|static
@@ -10758,39 +10764,6 @@ block|}
 block|}
 end_function
 
-begin_comment
-comment|/*  * Used for the command line parsing; check if the path exists  * in the working tree.  */
-end_comment
-
-begin_function
-DECL|function|has_string_in_work_tree
-specifier|static
-name|int
-name|has_string_in_work_tree
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|path
-parameter_list|)
-block|{
-name|struct
-name|stat
-name|st
-decl_stmt|;
-return|return
-operator|!
-name|lstat
-argument_list|(
-name|path
-argument_list|,
-operator|&
-name|st
-argument_list|)
-return|;
-block|}
-end_function
-
 begin_function
 DECL|function|parse_score
 specifier|static
@@ -13580,7 +13553,7 @@ operator|==
 literal|3
 operator|&&
 operator|!
-name|has_string_in_work_tree
+name|file_exists
 argument_list|(
 name|path
 argument_list|)
@@ -13625,7 +13598,7 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|has_string_in_work_tree
+name|file_exists
 argument_list|(
 name|path
 argument_list|)

@@ -1744,12 +1744,6 @@ name|prefix
 parameter_list|)
 block|{
 comment|/* 	 * Make sure all pathspec matched; otherwise it is an error. 	 */
-name|struct
-name|strbuf
-name|sb
-init|=
-name|STRBUF_INIT
-decl_stmt|;
 name|int
 name|num
 decl_stmt|,
@@ -1874,12 +1868,6 @@ name|errors
 operator|++
 expr_stmt|;
 block|}
-name|strbuf_release
-argument_list|(
-operator|&
-name|sb
-argument_list|)
-expr_stmt|;
 return|return
 name|errors
 return|;
