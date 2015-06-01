@@ -333,6 +333,24 @@ end_function_decl
 
 begin_function_decl
 name|int
+name|parse_commit_gently
+parameter_list|(
+name|struct
+name|commit
+modifier|*
+name|item
+parameter_list|,
+name|int
+name|quiet_on_missing
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function
+DECL|function|parse_commit
+specifier|static
+specifier|inline
+name|int
 name|parse_commit
 parameter_list|(
 name|struct
@@ -340,8 +358,17 @@ name|commit
 modifier|*
 name|item
 parameter_list|)
-function_decl|;
-end_function_decl
+block|{
+return|return
+name|parse_commit_gently
+argument_list|(
+name|item
+argument_list|,
+literal|0
+argument_list|)
+return|;
+block|}
+end_function
 
 begin_function_decl
 name|void

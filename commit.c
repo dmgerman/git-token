@@ -2078,14 +2078,17 @@ block|}
 end_function
 
 begin_function
-DECL|function|parse_commit
+DECL|function|parse_commit_gently
 name|int
-name|parse_commit
+name|parse_commit_gently
 parameter_list|(
 name|struct
 name|commit
 modifier|*
 name|item
+parameter_list|,
+name|int
+name|quiet_on_missing
 parameter_list|)
 block|{
 name|enum
@@ -2146,6 +2149,11 @@ operator|!
 name|buffer
 condition|)
 return|return
+name|quiet_on_missing
+condition|?
+operator|-
+literal|1
+else|:
 name|error
 argument_list|(
 literal|"Could not read %s"
