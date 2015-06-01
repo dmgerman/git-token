@@ -138,7 +138,7 @@ index|[]
 init|=
 name|N_
 argument_list|(
-literal|"git blame [<options>] [<rev-opts>] [<rev>] [--] file"
+literal|"git blame [<options>] [<rev-opts>] [<rev>] [--]<file>"
 argument_list|)
 decl_stmt|;
 end_decl_stmt
