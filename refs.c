@@ -5391,6 +5391,21 @@ operator||=
 name|REF_ISBROKEN
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|is_null_sha1
+argument_list|(
+name|sha1
+argument_list|)
+condition|)
+block|{
+comment|/* 				 * It is so astronomically unlikely 				 * that NULL_SHA1 is the SHA-1 of an 				 * actual object that we consider its 				 * appearance in a loose reference 				 * file to be repo corruption 				 * (probably due to a software bug). 				 */
+name|flag
+operator||=
+name|REF_ISBROKEN
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|check_refname_format
