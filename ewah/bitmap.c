@@ -23,7 +23,7 @@ name|EWAH_MASK
 parameter_list|(
 name|x
 parameter_list|)
-value|((eword_t)1<< (x % BITS_IN_WORD))
+value|((eword_t)1<< (x % BITS_IN_EWORD))
 end_define
 
 begin_define
@@ -34,7 +34,7 @@ name|EWAH_BLOCK
 parameter_list|(
 name|x
 parameter_list|)
-value|(x / BITS_IN_WORD)
+value|(x / BITS_IN_EWORD)
 end_define
 
 begin_function
@@ -625,7 +625,7 @@ name|other
 operator|->
 name|bit_size
 operator|/
-name|BITS_IN_WORD
+name|BITS_IN_EWORD
 operator|)
 operator|+
 literal|1
@@ -807,7 +807,7 @@ literal|0
 init|;
 name|offset
 operator|<
-name|BITS_IN_WORD
+name|BITS_IN_EWORD
 condition|;
 operator|++
 name|offset
@@ -831,7 +831,7 @@ literal|0
 init|;
 name|offset
 operator|<
-name|BITS_IN_WORD
+name|BITS_IN_EWORD
 condition|;
 operator|++
 name|offset
@@ -869,7 +869,7 @@ expr_stmt|;
 block|}
 name|pos
 operator|+=
-name|BITS_IN_WORD
+name|BITS_IN_EWORD
 expr_stmt|;
 block|}
 block|}

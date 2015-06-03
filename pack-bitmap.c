@@ -2812,7 +2812,7 @@ literal|0
 init|;
 name|offset
 operator|<
-name|BITS_IN_WORD
+name|BITS_IN_EWORD
 condition|;
 operator|++
 name|offset
@@ -2934,7 +2934,7 @@ expr_stmt|;
 block|}
 name|pos
 operator|+=
-name|BITS_IN_WORD
+name|BITS_IN_EWORD
 expr_stmt|;
 name|i
 operator|++
@@ -3485,7 +3485,7 @@ break|break;
 block|}
 name|reuse_objects
 operator|+=
-name|BITS_IN_WORD
+name|BITS_IN_EWORD
 expr_stmt|;
 block|}
 ifdef|#
@@ -4622,7 +4622,7 @@ literal|0
 init|;
 name|offset
 operator|<
-name|BITS_IN_WORD
+name|BITS_IN_EWORD
 condition|;
 operator|++
 name|offset
@@ -4681,7 +4681,7 @@ return|;
 block|}
 name|pos
 operator|+=
-name|BITS_IN_WORD
+name|BITS_IN_EWORD
 expr_stmt|;
 block|}
 return|return

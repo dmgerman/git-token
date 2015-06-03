@@ -82,10 +82,10 @@ typedef|;
 end_typedef
 
 begin_define
-DECL|macro|BITS_IN_WORD
+DECL|macro|BITS_IN_EWORD
 define|#
 directive|define
-name|BITS_IN_WORD
+name|BITS_IN_EWORD
 value|(sizeof(eword_t) * 8)
 end_define
 
