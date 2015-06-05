@@ -2921,5 +2921,26 @@ return|;
 block|}
 end_function
 
+begin_function
+DECL|function|sleep_millisec
+name|void
+name|sleep_millisec
+parameter_list|(
+name|int
+name|millisec
+parameter_list|)
+block|{
+name|poll
+argument_list|(
+name|NULL
+argument_list|,
+literal|0
+argument_list|,
+name|millisec
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
 end_unit
 
