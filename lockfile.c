@@ -766,7 +766,7 @@ operator|!
 name|random_initialized
 condition|)
 block|{
-name|srandom
+name|srand
 argument_list|(
 operator|(
 name|unsigned
@@ -883,7 +883,7 @@ operator|=
 operator|(
 literal|750
 operator|+
-name|random
+name|rand
 argument_list|()
 operator|%
 literal|500
