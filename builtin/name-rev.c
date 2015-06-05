@@ -772,10 +772,10 @@ modifier|*
 name|path
 parameter_list|,
 specifier|const
-name|unsigned
-name|char
+name|struct
+name|object_id
 modifier|*
-name|sha1
+name|oid
 parameter_list|,
 name|int
 name|flags
@@ -792,7 +792,9 @@ name|o
 init|=
 name|parse_object
 argument_list|(
-name|sha1
+name|oid
+operator|->
+name|hash
 argument_list|)
 decl_stmt|;
 name|struct
@@ -878,7 +880,9 @@ block|}
 block|}
 name|add_to_tip_table
 argument_list|(
-name|sha1
+name|oid
+operator|->
+name|hash
 argument_list|,
 name|path
 argument_list|,

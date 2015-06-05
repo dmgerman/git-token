@@ -274,10 +274,10 @@ modifier|*
 name|refname
 parameter_list|,
 specifier|const
-name|unsigned
-name|char
+name|struct
+name|object_id
 modifier|*
-name|sha1
+name|oid
 parameter_list|,
 name|int
 name|flag
@@ -369,7 +369,9 @@ name|repl_obj
 operator|->
 name|replacement
 argument_list|,
-name|sha1
+name|oid
+operator|->
+name|hash
 argument_list|)
 expr_stmt|;
 comment|/* Register new object */

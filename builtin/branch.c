@@ -1615,10 +1615,10 @@ modifier|*
 name|refname
 parameter_list|,
 specifier|const
-name|unsigned
-name|char
+name|struct
+name|object_id
 modifier|*
-name|sha1
+name|oid
 parameter_list|,
 name|int
 name|flags
@@ -1823,7 +1823,9 @@ name|commit
 operator|=
 name|lookup_commit_reference_gently
 argument_list|(
-name|sha1
+name|oid
+operator|->
+name|hash
 argument_list|,
 literal|1
 argument_list|)
