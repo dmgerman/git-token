@@ -283,7 +283,7 @@ name|GIT_COLOR_RESET
 block|,
 name|GIT_COLOR_NORMAL
 block|,
-comment|/* PLAIN */
+comment|/* CONTEXT */
 name|GIT_COLOR_BOLD
 block|,
 comment|/* METAINFO */
@@ -328,11 +328,19 @@ name|strcasecmp
 argument_list|(
 name|var
 argument_list|,
+literal|"context"
+argument_list|)
+operator|||
+operator|!
+name|strcasecmp
+argument_list|(
+name|var
+argument_list|,
 literal|"plain"
 argument_list|)
 condition|)
 return|return
-name|DIFF_PLAIN
+name|DIFF_CONTEXT
 return|;
 if|if
 condition|(
@@ -3106,7 +3114,7 @@ name|line
 argument_list|,
 name|len
 argument_list|,
-name|DIFF_PLAIN
+name|DIFF_CONTEXT
 argument_list|,
 name|WSEH_CONTEXT
 argument_list|,
@@ -3139,7 +3147,7 @@ block|{
 specifier|const
 name|char
 modifier|*
-name|plain
+name|context
 init|=
 name|diff_get_color
 argument_list|(
@@ -3147,7 +3155,7 @@ name|ecbdata
 operator|->
 name|color_diff
 argument_list|,
-name|DIFF_PLAIN
+name|DIFF_CONTEXT
 argument_list|)
 decl_stmt|;
 specifier|const
@@ -3273,7 +3281,7 @@ name|ecbdata
 operator|->
 name|opt
 argument_list|,
-name|plain
+name|context
 argument_list|,
 name|reset
 argument_list|,
@@ -3393,7 +3401,7 @@ argument_list|(
 operator|&
 name|msgbuf
 argument_list|,
-name|plain
+name|context
 argument_list|)
 expr_stmt|;
 name|strbuf_add
@@ -3858,7 +3866,7 @@ block|{
 specifier|const
 name|char
 modifier|*
-name|plain
+name|context
 init|=
 name|diff_get_color
 argument_list|(
@@ -3866,7 +3874,7 @@ name|ecb
 operator|->
 name|color_diff
 argument_list|,
-name|DIFF_PLAIN
+name|DIFF_CONTEXT
 argument_list|)
 decl_stmt|;
 name|putc
@@ -3886,7 +3894,7 @@ name|ecb
 operator|->
 name|opt
 argument_list|,
-name|plain
+name|context
 argument_list|,
 name|reset
 argument_list|,
@@ -6774,7 +6782,7 @@ name|diff_get_color_opt
 argument_list|(
 name|o
 argument_list|,
-name|DIFF_PLAIN
+name|DIFF_CONTEXT
 argument_list|)
 expr_stmt|;
 block|}
@@ -7226,7 +7234,7 @@ decl_stmt|;
 specifier|const
 name|char
 modifier|*
-name|plain
+name|context
 init|=
 name|diff_get_color
 argument_list|(
@@ -7234,7 +7242,7 @@ name|ecbdata
 operator|->
 name|color_diff
 argument_list|,
-name|DIFF_PLAIN
+name|DIFF_CONTEXT
 argument_list|)
 decl_stmt|;
 specifier|const
@@ -7692,7 +7700,7 @@ name|ecbdata
 operator|->
 name|opt
 argument_list|,
-name|plain
+name|context
 argument_list|,
 name|reset
 argument_list|,
@@ -7739,7 +7747,7 @@ name|ecbdata
 operator|->
 name|opt
 argument_list|,
-name|plain
+name|context
 argument_list|,
 name|reset
 argument_list|,
@@ -7855,7 +7863,7 @@ name|ecbdata
 operator|->
 name|color_diff
 argument_list|,
-name|DIFF_PLAIN
+name|DIFF_CONTEXT
 argument_list|)
 argument_list|,
 name|reset
