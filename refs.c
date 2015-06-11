@@ -9544,15 +9544,13 @@ block|}
 end_function
 
 begin_comment
-comment|/* This function should make sure errno is meaningful on error */
+comment|/*  * Verify that the reference locked by lock has the value old_sha1.  * Fail if the reference doesn't exist and mustexist is set. Return 0  * on success. On error, write an error message to err, set errno, and  * return a negative value.  */
 end_comment
 
 begin_function
 DECL|function|verify_lock
 specifier|static
-name|struct
-name|ref_lock
-modifier|*
+name|int
 name|verify_lock
 parameter_list|(
 name|struct
@@ -9568,8 +9566,18 @@ name|old_sha1
 parameter_list|,
 name|int
 name|mustexist
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|err
 parameter_list|)
 block|{
+name|assert
+argument_list|(
+name|err
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|read_ref_full
@@ -9599,18 +9607,15 @@ name|save_errno
 init|=
 name|errno
 decl_stmt|;
-name|error
+name|strbuf_addf
 argument_list|(
-literal|"Can't verify ref %s"
+name|err
+argument_list|,
+literal|"can't verify ref %s"
 argument_list|,
 name|lock
 operator|->
 name|ref_name
-argument_list|)
-expr_stmt|;
-name|unlock_ref
-argument_list|(
-name|lock
 argument_list|)
 expr_stmt|;
 name|errno
@@ -9618,7 +9623,8 @@ operator|=
 name|save_errno
 expr_stmt|;
 return|return
-name|NULL
+operator|-
+literal|1
 return|;
 block|}
 if|if
@@ -9635,20 +9641,23 @@ name|old_sha1
 argument_list|)
 condition|)
 block|{
-name|error
+name|strbuf_addf
 argument_list|(
-literal|"Ref %s is at %s but expected %s"
+name|err
+argument_list|,
+literal|"ref %s is at %s but expected %s"
 argument_list|,
 name|lock
 operator|->
 name|ref_name
 argument_list|,
-name|oid_to_hex
+name|sha1_to_hex
 argument_list|(
-operator|&
 name|lock
 operator|->
 name|old_oid
+operator|.
+name|hash
 argument_list|)
 argument_list|,
 name|sha1_to_hex
@@ -9657,21 +9666,17 @@ name|old_sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|unlock_ref
-argument_list|(
-name|lock
-argument_list|)
-expr_stmt|;
 name|errno
 operator|=
 name|EBUSY
 expr_stmt|;
 return|return
-name|NULL
+operator|-
+literal|1
 return|;
 block|}
 return|return
-name|lock
+literal|0
 return|;
 block|}
 end_function
@@ -10750,9 +10755,10 @@ name|error_return
 goto|;
 block|}
 block|}
-return|return
+if|if
+condition|(
 name|old_sha1
-condition|?
+operator|&&
 name|verify_lock
 argument_list|(
 name|lock
@@ -10760,8 +10766,20 @@ argument_list|,
 name|old_sha1
 argument_list|,
 name|mustexist
+argument_list|,
+name|err
 argument_list|)
-else|:
+condition|)
+block|{
+name|last_errno
+operator|=
+name|errno
+expr_stmt|;
+goto|goto
+name|error_return
+goto|;
+block|}
+return|return
 name|lock
 return|;
 name|error_return
@@ -18055,7 +18073,7 @@ name|strbuf_addf
 argument_list|(
 name|err
 argument_list|,
-literal|"Cannot lock ref '%s': %s"
+literal|"cannot lock ref '%s': %s"
 argument_list|,
 name|update
 operator|->
@@ -18164,7 +18182,7 @@ name|strbuf_addf
 argument_list|(
 name|err
 argument_list|,
-literal|"Cannot update the ref '%s'."
+literal|"cannot update the ref '%s'."
 argument_list|,
 name|update
 operator|->
