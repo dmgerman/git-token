@@ -94,6 +94,24 @@ end_function_decl
 
 begin_function_decl
 name|int
+name|parse_tree_gently
+parameter_list|(
+name|struct
+name|tree
+modifier|*
+name|tree
+parameter_list|,
+name|int
+name|quiet_on_missing
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function
+DECL|function|parse_tree
+specifier|static
+specifier|inline
+name|int
 name|parse_tree
 parameter_list|(
 name|struct
@@ -101,8 +119,17 @@ name|tree
 modifier|*
 name|tree
 parameter_list|)
-function_decl|;
-end_function_decl
+block|{
+return|return
+name|parse_tree_gently
+argument_list|(
+name|tree
+argument_list|,
+literal|0
+argument_list|)
+return|;
+block|}
+end_function
 
 begin_function_decl
 name|void
