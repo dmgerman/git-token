@@ -143,10 +143,8 @@ operator|||
 name|starts_with
 argument_list|(
 name|buf
-operator|+
-literal|1
 argument_list|,
-literal|"PACK"
+literal|"\1PACK"
 argument_list|)
 condition|)
 block|{
