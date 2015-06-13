@@ -506,10 +506,9 @@ comment|/*  * Used to parse format string and sort specifiers  */
 end_comment
 
 begin_function
-DECL|function|parse_atom
-specifier|static
+DECL|function|parse_ref_filter_atom
 name|int
-name|parse_atom
+name|parse_ref_filter_atom
 parameter_list|(
 specifier|const
 name|char
@@ -889,10 +888,9 @@ comment|/*  * Make sure the format string is well formed, and parse out  * the u
 end_comment
 
 begin_function
-DECL|function|verify_format
-specifier|static
+DECL|function|verify_ref_format
 name|int
-name|verify_format
+name|verify_ref_format
 parameter_list|(
 specifier|const
 name|char
@@ -966,7 +964,7 @@ return|;
 comment|/* sp points at "%(" and ep points at the closing ")" */
 name|at
 operator|=
-name|parse_atom
+name|parse_ref_filter_atom
 argument_list|(
 name|sp
 operator|+
@@ -2300,7 +2298,7 @@ name|char
 modifier|*
 name|formatp
 decl_stmt|;
-comment|/* 	 * We got here because atomname ends in "date" or "date<something>"; 	 * it's not possible that<something> is not ":<format>" because 	 * parse_atom() wouldn't have allowed it, so we can assume that no 	 * ":" means no format is specified, and use the default. 	 */
+comment|/* 	 * We got here because atomname ends in "date" or "date<something>"; 	 * it's not possible that<something> is not ":<format>" because 	 * parse_ref_filter_atom() wouldn't have allowed it, so we can assume that no 	 * ":" means no format is specified, and use the default. 	 */
 name|formatp
 operator|=
 name|strchr
@@ -4853,10 +4851,10 @@ comment|/*  * Given a ref, return the value for the atom.  This lazily gets valu
 end_comment
 
 begin_function
-DECL|function|get_value
+DECL|function|get_ref_atom_value
 specifier|static
 name|void
-name|get_value
+name|get_ref_atom_value
 parameter_list|(
 name|struct
 name|ref_array_item
@@ -5112,10 +5110,9 @@ comment|/*  * A call-back given to for_each_ref().  Filter refs and keep them fo
 end_comment
 
 begin_function
-DECL|function|grab_single_ref
-specifier|static
+DECL|function|ref_filter_handler
 name|int
-name|grab_single_ref
+name|ref_filter_handler
 parameter_list|(
 specifier|const
 name|char
@@ -5361,13 +5358,13 @@ block|}
 end_function
 
 begin_function
-DECL|function|cmp_ref_sort
+DECL|function|cmp_ref_sorting
 specifier|static
 name|int
-name|cmp_ref_sort
+name|cmp_ref_sorting
 parameter_list|(
 name|struct
-name|ref_sort
+name|ref_sorting
 modifier|*
 name|s
 parameter_list|,
@@ -5403,7 +5400,7 @@ operator|->
 name|atom
 index|]
 decl_stmt|;
-name|get_value
+name|get_ref_atom_value
 argument_list|(
 name|a
 argument_list|,
@@ -5415,7 +5412,7 @@ operator|&
 name|va
 argument_list|)
 expr_stmt|;
-name|get_value
+name|get_ref_atom_value
 argument_list|(
 name|b
 argument_list|,
@@ -5503,12 +5500,12 @@ block|}
 end_function
 
 begin_decl_stmt
-DECL|variable|ref_sort
+DECL|variable|ref_sorting
 specifier|static
 name|struct
-name|ref_sort
+name|ref_sorting
 modifier|*
-name|ref_sort
+name|ref_sorting
 decl_stmt|;
 end_decl_stmt
 
@@ -5562,7 +5559,7 @@ name|b_
 operator|)
 decl_stmt|;
 name|struct
-name|ref_sort
+name|ref_sorting
 modifier|*
 name|s
 decl_stmt|;
@@ -5570,7 +5567,7 @@ for|for
 control|(
 name|s
 operator|=
-name|ref_sort
+name|ref_sorting
 init|;
 name|s
 condition|;
@@ -5584,7 +5581,7 @@ block|{
 name|int
 name|cmp
 init|=
-name|cmp_ref_sort
+name|cmp_ref_sorting
 argument_list|(
 name|s
 argument_list|,
@@ -5608,13 +5605,12 @@ block|}
 end_function
 
 begin_function
-DECL|function|sort_refs
-specifier|static
+DECL|function|ref_array_sort
 name|void
-name|sort_refs
+name|ref_array_sort
 parameter_list|(
 name|struct
-name|ref_sort
+name|ref_sorting
 modifier|*
 name|sort
 parameter_list|,
@@ -5624,7 +5620,7 @@ modifier|*
 name|array
 parameter_list|)
 block|{
-name|ref_sort
+name|ref_sorting
 operator|=
 name|sort
 expr_stmt|;
@@ -5992,10 +5988,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|show_ref
-specifier|static
+DECL|function|show_ref_array_item
 name|void
-name|show_ref
+name|show_ref_array_item
 parameter_list|(
 name|struct
 name|ref_array_item
@@ -6074,11 +6069,11 @@ argument_list|,
 name|sp
 argument_list|)
 expr_stmt|;
-name|get_value
+name|get_ref_atom_value
 argument_list|(
 name|info
 argument_list|,
-name|parse_atom
+name|parse_ref_filter_atom
 argument_list|(
 name|sp
 operator|+
@@ -6178,13 +6173,16 @@ expr_stmt|;
 block|}
 end_function
 
+begin_comment
+comment|/*  If no sorting option is given, use refname to sort as default */
+end_comment
+
 begin_function
-DECL|function|default_sort
-specifier|static
+DECL|function|ref_default_sorting
 name|struct
-name|ref_sort
+name|ref_sorting
 modifier|*
-name|default_sort
+name|ref_default_sorting
 parameter_list|(
 name|void
 parameter_list|)
@@ -6198,7 +6196,7 @@ init|=
 literal|"refname"
 decl_stmt|;
 name|struct
-name|ref_sort
+name|ref_sorting
 modifier|*
 name|sort
 init|=
@@ -6223,7 +6221,7 @@ name|sort
 operator|->
 name|atom
 operator|=
-name|parse_atom
+name|parse_ref_filter_atom
 argument_list|(
 name|cstr_name
 argument_list|,
@@ -6242,10 +6240,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|opt_parse_sort
-specifier|static
+DECL|function|parse_opt_ref_sorting
 name|int
-name|opt_parse_sort
+name|parse_opt_ref_sorting
 parameter_list|(
 specifier|const
 name|struct
@@ -6263,7 +6260,7 @@ name|unset
 parameter_list|)
 block|{
 name|struct
-name|ref_sort
+name|ref_sorting
 modifier|*
 modifier|*
 name|sort_tail
@@ -6273,7 +6270,7 @@ operator|->
 name|value
 decl_stmt|;
 name|struct
-name|ref_sort
+name|ref_sorting
 modifier|*
 name|s
 decl_stmt|;
@@ -6344,7 +6341,7 @@ name|s
 operator|->
 name|atom
 operator|=
-name|parse_atom
+name|parse_ref_filter_atom
 argument_list|(
 name|arg
 argument_list|,
@@ -6411,7 +6408,7 @@ init|=
 literal|"%(objectname) %(objecttype)\t%(refname)"
 decl_stmt|;
 name|struct
-name|ref_sort
+name|ref_sorting
 modifier|*
 name|sort
 init|=
@@ -6570,7 +6567,7 @@ literal|"field name to sort on"
 argument_list|)
 argument_list|,
 operator|&
-name|opt_parse_sort
+name|parse_opt_ref_sorting
 argument_list|)
 block|,
 name|OPT_END
@@ -6637,7 +6634,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|verify_format
+name|verify_ref_format
 argument_list|(
 name|format
 argument_list|)
@@ -6656,7 +6653,7 @@ name|sort
 condition|)
 name|sort
 operator|=
-name|default_sort
+name|ref_default_sorting
 argument_list|()
 expr_stmt|;
 comment|/* for warn_ambiguous_refs */
@@ -6690,13 +6687,13 @@ name|argv
 expr_stmt|;
 name|for_each_rawref
 argument_list|(
-name|grab_single_ref
+name|ref_filter_handler
 argument_list|,
 operator|&
 name|ref_cbdata
 argument_list|)
 expr_stmt|;
-name|sort_refs
+name|ref_array_sort
 argument_list|(
 name|sort
 argument_list|,
@@ -6740,7 +6737,7 @@ condition|;
 name|i
 operator|++
 control|)
-name|show_ref
+name|show_ref_array_item
 argument_list|(
 name|ref_cbdata
 operator|.
