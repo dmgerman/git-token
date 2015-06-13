@@ -80,6 +80,22 @@ name|QUOTE_TCL
 value|8
 end_define
 
+begin_define
+DECL|macro|FILTER_REFS_INCLUDE_BROKEN
+define|#
+directive|define
+name|FILTER_REFS_INCLUDE_BROKEN
+value|0x1
+end_define
+
+begin_define
+DECL|macro|FILTER_REFS_ALL
+define|#
+directive|define
+name|FILTER_REFS_ALL
+value|0x2
+end_define
+
 begin_struct
 DECL|struct|atom_value
 struct|struct
@@ -212,11 +228,13 @@ block|{
 DECL|member|array
 name|struct
 name|ref_array
+modifier|*
 name|array
 decl_stmt|;
 DECL|member|filter
 name|struct
 name|ref_filter
+modifier|*
 name|filter
 decl_stmt|;
 block|}
@@ -224,30 +242,26 @@ struct|;
 end_struct
 
 begin_comment
-comment|/*  Callback function for for_each_*ref(). This filters the refs based on the filters set */
+comment|/*  * API for filtering a set of refs. Based on the type of refs the user  * has requested, we iterate through those refs and apply filters  * as per the given ref_filter structure and finally store the  * filtered refs in the ref_array structure.  */
 end_comment
 
 begin_function_decl
 name|int
-name|ref_filter_handler
+name|filter_refs
 parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|refname
-parameter_list|,
-specifier|const
 name|struct
-name|object_id
+name|ref_array
 modifier|*
-name|oid
+name|array
 parameter_list|,
+name|struct
+name|ref_filter
+modifier|*
+name|filter
+parameter_list|,
+name|unsigned
 name|int
-name|flag
-parameter_list|,
-name|void
-modifier|*
-name|cb_data
+name|type
 parameter_list|)
 function_decl|;
 end_function_decl
