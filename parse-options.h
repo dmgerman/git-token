@@ -1142,6 +1142,25 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|parse_opt_passthru_argv
+parameter_list|(
+specifier|const
+name|struct
+name|option
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+parameter_list|,
+name|int
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_define
 DECL|macro|OPT__VERBOSE
 define|#
@@ -1270,6 +1289,28 @@ name|f
 parameter_list|)
 define|\
 value|{ OPTION_CALLBACK, (s), (l), (v), (a), (h), (f), parse_opt_passthru }
+end_define
+
+begin_define
+DECL|macro|OPT_PASSTHRU_ARGV
+define|#
+directive|define
+name|OPT_PASSTHRU_ARGV
+parameter_list|(
+name|s
+parameter_list|,
+name|l
+parameter_list|,
+name|v
+parameter_list|,
+name|a
+parameter_list|,
+name|h
+parameter_list|,
+name|f
+parameter_list|)
+define|\
+value|{ OPTION_CALLBACK, (s), (l), (v), (a), (h), (f), parse_opt_passthru_argv }
 end_define
 
 begin_endif
