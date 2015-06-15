@@ -1810,6 +1810,15 @@ modifier|*
 name|return_error_code
 parameter_list|)
 block|{
+specifier|const
+name|int
+name|max_file_size
+init|=
+literal|1
+operator|<<
+literal|20
+decl_stmt|;
+comment|/* 1MB */
 name|int
 name|error_code
 init|=
@@ -1875,6 +1884,23 @@ block|{
 name|error_code
 operator|=
 name|READ_GITFILE_ERR_NOT_A_FILE
+expr_stmt|;
+goto|goto
+name|cleanup_return
+goto|;
+block|}
+if|if
+condition|(
+name|st
+operator|.
+name|st_size
+operator|>
+name|max_file_size
+condition|)
+block|{
+name|error_code
+operator|=
+name|READ_GITFILE_ERR_TOO_LARGE
 expr_stmt|;
 goto|goto
 name|cleanup_return
@@ -2194,6 +2220,16 @@ case|:
 name|die_errno
 argument_list|(
 literal|"Error opening '%s'"
+argument_list|,
+name|path
+argument_list|)
+expr_stmt|;
+case|case
+name|READ_GITFILE_ERR_TOO_LARGE
+case|:
+name|die
+argument_list|(
+literal|"Too large to be a .git file: '%s'"
 argument_list|,
 name|path
 argument_list|)

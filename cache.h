@@ -2498,6 +2498,14 @@ name|READ_GITFILE_ERR_NOT_A_REPO
 value|7
 end_define
 
+begin_define
+DECL|macro|READ_GITFILE_ERR_TOO_LARGE
+define|#
+directive|define
+name|READ_GITFILE_ERR_TOO_LARGE
+value|8
+end_define
+
 begin_function_decl
 specifier|extern
 specifier|const
