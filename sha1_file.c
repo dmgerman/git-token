@@ -16049,7 +16049,7 @@ name|index_mem
 argument_list|(
 name|sha1
 argument_list|,
-name|NULL
+literal|""
 argument_list|,
 name|size
 argument_list|,
