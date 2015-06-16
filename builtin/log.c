@@ -222,7 +222,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git log [<options>] [<revision range>] [[--]<path>...]"
+literal|"git log [<options>] [<revision-range>] [[--]<path>...]"
 argument_list|)
 block|,
 name|N_
