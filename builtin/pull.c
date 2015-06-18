@@ -2065,6 +2065,21 @@ operator|*
 name|refspecs
 condition|)
 block|{
+if|if
+condition|(
+name|opt_rebase
+condition|)
+name|fprintf_ln
+argument_list|(
+name|stderr
+argument_list|,
+name|_
+argument_list|(
+literal|"There is no candidate for rebasing against among the refs that you just fetched."
+argument_list|)
+argument_list|)
+expr_stmt|;
+else|else
 name|fprintf_ln
 argument_list|(
 name|stderr
@@ -2139,6 +2154,21 @@ literal|"You are not currently on a branch."
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|opt_rebase
+condition|)
+name|fprintf_ln
+argument_list|(
+name|stderr
+argument_list|,
+name|_
+argument_list|(
+literal|"Please specify which branch you want to rebase against."
+argument_list|)
+argument_list|)
+expr_stmt|;
+else|else
 name|fprintf_ln
 argument_list|(
 name|stderr
@@ -2224,6 +2254,21 @@ literal|"There is no tracking information for the current branch."
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|opt_rebase
+condition|)
+name|fprintf_ln
+argument_list|(
+name|stderr
+argument_list|,
+name|_
+argument_list|(
+literal|"Please specify which branch you want to rebase against."
+argument_list|)
+argument_list|)
+expr_stmt|;
+else|else
 name|fprintf_ln
 argument_list|(
 name|stderr
