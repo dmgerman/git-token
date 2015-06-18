@@ -2111,6 +2111,18 @@ name|merge_heads
 init|=
 name|SHA1_ARRAY_INIT
 decl_stmt|;
+name|unsigned
+name|char
+name|orig_head
+index|[
+name|GIT_SHA1_RAWSZ
+index|]
+decl_stmt|,
+name|curr_head
+index|[
+name|GIT_SHA1_RAWSZ
+index|]
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -2232,6 +2244,20 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+name|get_sha1
+argument_list|(
+literal|"HEAD"
+argument_list|,
+name|orig_head
+argument_list|)
+condition|)
+name|hashclr
+argument_list|(
+name|orig_head
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|run_fetch
 argument_list|(
 name|repo
@@ -2249,6 +2275,88 @@ condition|)
 return|return
 literal|0
 return|;
+if|if
+condition|(
+name|get_sha1
+argument_list|(
+literal|"HEAD"
+argument_list|,
+name|curr_head
+argument_list|)
+condition|)
+name|hashclr
+argument_list|(
+name|curr_head
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|is_null_sha1
+argument_list|(
+name|orig_head
+argument_list|)
+operator|&&
+operator|!
+name|is_null_sha1
+argument_list|(
+name|curr_head
+argument_list|)
+operator|&&
+name|hashcmp
+argument_list|(
+name|orig_head
+argument_list|,
+name|curr_head
+argument_list|)
+condition|)
+block|{
+comment|/* 		 * The fetch involved updating the current branch. 		 * 		 * The working tree and the index file are still based on 		 * orig_head commit, but we are merging into curr_head. 		 * Update the working tree to match curr_head. 		 */
+name|warning
+argument_list|(
+name|_
+argument_list|(
+literal|"fetch updated the current branch head.\n"
+literal|"fast-forwarding your working tree from\n"
+literal|"commit %s."
+argument_list|)
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|orig_head
+argument_list|)
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|checkout_fast_forward
+argument_list|(
+name|orig_head
+argument_list|,
+name|curr_head
+argument_list|,
+literal|0
+argument_list|)
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"Cannot fast-forward your working tree.\n"
+literal|"After making sure that you saved anything precious from\n"
+literal|"$ git diff %s\n"
+literal|"output, run\n"
+literal|"$ git reset --hard\n"
+literal|"to recover."
+argument_list|)
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|orig_head
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 name|get_merge_heads
 argument_list|(
 operator|&
