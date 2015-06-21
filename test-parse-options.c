@@ -38,6 +38,17 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|magnitude
+specifier|static
+name|unsigned
+name|long
+name|magnitude
+init|=
+literal|0
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|timestamp
 specifier|static
 name|unsigned
@@ -379,6 +390,18 @@ argument_list|,
 literal|"get a integer, too"
 argument_list|)
 block|,
+name|OPT_MAGNITUDE
+argument_list|(
+literal|'m'
+argument_list|,
+literal|"magnitude"
+argument_list|,
+operator|&
+name|magnitude
+argument_list|,
+literal|"get a magnitude"
+argument_list|)
+block|,
 name|OPT_SET_INT
 argument_list|(
 literal|0
@@ -673,6 +696,13 @@ argument_list|(
 literal|"integer: %d\n"
 argument_list|,
 name|integer
+argument_list|)
+expr_stmt|;
+name|printf
+argument_list|(
+literal|"magnitude: %lu\n"
+argument_list|,
+name|magnitude
 argument_list|)
 expr_stmt|;
 name|printf
