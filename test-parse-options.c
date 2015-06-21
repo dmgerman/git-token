@@ -670,7 +670,7 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"integer: %u\n"
+literal|"integer: %d\n"
 argument_list|,
 name|integer
 argument_list|)
