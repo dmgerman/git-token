@@ -20,6 +20,14 @@ name|GPG_VERIFY_VERBOSE
 value|1
 end_define
 
+begin_define
+DECL|macro|GPG_VERIFY_RAW
+define|#
+directive|define
+name|GPG_VERIFY_RAW
+value|2
+end_define
+
 begin_struct
 DECL|struct|signature_check
 struct|struct
