@@ -12,6 +12,14 @@ directive|define
 name|GPG_INTERFACE_H
 end_define
 
+begin_define
+DECL|macro|GPG_VERIFY_VERBOSE
+define|#
+directive|define
+name|GPG_VERIFY_VERBOSE
+value|1
+end_define
+
 begin_struct
 DECL|struct|signature_check
 struct|struct
@@ -218,6 +226,22 @@ name|struct
 name|signature_check
 modifier|*
 name|sigc
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|void
+name|print_signature_buffer
+parameter_list|(
+specifier|const
+name|struct
+name|signature_check
+modifier|*
+name|sigc
+parameter_list|,
+name|unsigned
+name|flags
 parameter_list|)
 function_decl|;
 end_function_decl
