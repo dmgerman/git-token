@@ -360,7 +360,7 @@ end_function
 
 begin_function
 DECL|function|check_signature
-name|void
+name|int
 name|check_signature
 parameter_list|(
 specifier|const
@@ -491,6 +491,19 @@ operator|&
 name|gpg_output
 argument_list|)
 expr_stmt|;
+return|return
+name|sigc
+operator|->
+name|result
+operator|!=
+literal|'G'
+operator|&&
+name|sigc
+operator|->
+name|result
+operator|!=
+literal|'U'
+return|;
 block|}
 end_function
 

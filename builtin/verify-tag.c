@@ -92,6 +92,9 @@ decl_stmt|;
 name|int
 name|len
 decl_stmt|;
+name|int
+name|ret
+decl_stmt|;
 name|memset
 argument_list|(
 operator|&
@@ -139,6 +142,8 @@ argument_list|(
 literal|"no signature found"
 argument_list|)
 return|;
+name|ret
+operator|=
 name|check_signature
 argument_list|(
 name|buf
@@ -173,17 +178,7 @@ name|sigc
 argument_list|)
 expr_stmt|;
 return|return
-name|sigc
-operator|.
-name|result
-operator|!=
-literal|'G'
-operator|&&
-name|sigc
-operator|.
-name|result
-operator|!=
-literal|'U'
+name|ret
 return|;
 block|}
 end_function

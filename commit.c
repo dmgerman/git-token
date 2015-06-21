@@ -6837,7 +6837,7 @@ end_function
 
 begin_function
 DECL|function|check_commit_signature
-name|void
+name|int
 name|check_commit_signature
 parameter_list|(
 specifier|const
@@ -6864,6 +6864,11 @@ name|signature
 init|=
 name|STRBUF_INIT
 decl_stmt|;
+name|int
+name|ret
+init|=
+literal|1
+decl_stmt|;
 name|sigc
 operator|->
 name|result
@@ -6888,6 +6893,8 @@ condition|)
 goto|goto
 name|out
 goto|;
+name|ret
+operator|=
 name|check_signature
 argument_list|(
 name|payload
@@ -6923,6 +6930,9 @@ operator|&
 name|signature
 argument_list|)
 expr_stmt|;
+return|return
+name|ret
+return|;
 block|}
 end_function
 

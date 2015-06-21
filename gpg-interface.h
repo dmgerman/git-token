@@ -195,7 +195,7 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|void
+name|int
 name|check_signature
 parameter_list|(
 specifier|const
