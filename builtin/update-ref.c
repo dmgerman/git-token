@@ -2078,12 +2078,21 @@ if|if
 condition|(
 name|delete
 condition|)
+comment|/* 		 * For purposes of backwards compatibility, we treat 		 * NULL_SHA1 as "don't care" here: 		 */
 return|return
 name|delete_ref
 argument_list|(
 name|refname
 argument_list|,
+operator|(
 name|oldval
+operator|&&
+operator|!
+name|is_null_sha1
+argument_list|(
+name|oldsha1
+argument_list|)
+operator|)
 condition|?
 name|oldsha1
 else|:

@@ -919,7 +919,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Delete the specified reference. If old_sha1 is non-NULL and not  * NULL_SHA1, then verify that the current value of the reference is  * old_sha1 before deleting it. If old_sha1 is NULL or NULL_SHA1,  * delete the reference if it exists, regardless of its old value.  * flags is passed through to ref_transaction_delete().  */
+comment|/*  * Delete the specified reference. If old_sha1 is non-NULL, then  * verify that the current value of the reference is old_sha1 before  * deleting it. If old_sha1 is NULL, delete the reference if it  * exists, regardless of its old value. It is an error for old_sha1 to  * be NULL_SHA1. flags is passed through to ref_transaction_delete().  */
 end_comment
 
 begin_function_decl

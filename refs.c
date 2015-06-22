@@ -12322,20 +12322,6 @@ name|err
 init|=
 name|STRBUF_INIT
 decl_stmt|;
-comment|/* 	 * Treat NULL_SHA1 and NULL alike, to mean "we don't care what 	 * the old value of the reference was (or even if it didn't 	 * exist)": 	 */
-if|if
-condition|(
-name|old_sha1
-operator|&&
-name|is_null_sha1
-argument_list|(
-name|old_sha1
-argument_list|)
-condition|)
-name|old_sha1
-operator|=
-name|NULL
-expr_stmt|;
 name|transaction
 operator|=
 name|ref_transaction_begin
