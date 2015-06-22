@@ -775,6 +775,7 @@ name|char
 modifier|*
 name|refname
 parameter_list|,
+specifier|const
 name|unsigned
 name|char
 modifier|*
