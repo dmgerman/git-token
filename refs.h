@@ -760,6 +760,33 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/*  * Delete the specified reference. If old_sha1 is non-NULL and not  * NULL_SHA1, then verify that the current value of the reference is  * old_sha1 before deleting it. If old_sha1 is NULL or NULL_SHA1,  * delete the reference if it exists, regardless of its old value.  * flags is passed through to ref_transaction_delete().  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|delete_ref
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|refname
+parameter_list|,
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|old_sha1
+parameter_list|,
+name|unsigned
+name|int
+name|flags
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/** Delete a reflog */
 end_comment
 
