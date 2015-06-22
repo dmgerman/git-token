@@ -7113,7 +7113,7 @@ parameter_list|(
 specifier|const
 name|char
 modifier|*
-name|ref
+name|refname
 parameter_list|,
 name|int
 name|resolve_flags
@@ -7133,7 +7133,7 @@ name|xstrdup_or_null
 argument_list|(
 name|resolve_ref_unsafe
 argument_list|(
-name|ref
+name|refname
 argument_list|,
 name|resolve_flags
 argument_list|,
