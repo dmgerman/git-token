@@ -12496,7 +12496,7 @@ name|error
 argument_list|(
 name|_
 argument_list|(
-literal|"Could not remove branch %s"
+literal|"could not remove reference %s"
 argument_list|)
 argument_list|,
 name|refname
