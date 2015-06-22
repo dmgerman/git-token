@@ -28,6 +28,12 @@ name|FSCK_WARN
 value|2
 end_define
 
+begin_struct_decl
+struct_decl|struct
+name|fsck_options
+struct_decl|;
+end_struct_decl
+
 begin_comment
 comment|/*  * callback function for fsck_walk  * type is the expected type of the object or OBJ_ANY  * the return value is:  *     0	everything OK  *<0	error signaled and abort  *>0	error signaled and do not abort  */
 end_comment
@@ -52,6 +58,11 @@ parameter_list|,
 name|void
 modifier|*
 name|data
+parameter_list|,
+name|struct
+name|fsck_options
+modifier|*
+name|options
 parameter_list|)
 function_decl|;
 end_typedef
@@ -120,6 +131,45 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_struct
+DECL|struct|fsck_options
+struct|struct
+name|fsck_options
+block|{
+DECL|member|walk
+name|fsck_walk_func
+name|walk
+decl_stmt|;
+DECL|member|error_func
+name|fsck_error
+name|error_func
+decl_stmt|;
+DECL|member|strict
+name|unsigned
+name|strict
+range|:
+literal|1
+decl_stmt|;
+block|}
+struct|;
+end_struct
+
+begin_define
+DECL|macro|FSCK_OPTIONS_DEFAULT
+define|#
+directive|define
+name|FSCK_OPTIONS_DEFAULT
+value|{ NULL, fsck_error_function, 0 }
+end_define
+
+begin_define
+DECL|macro|FSCK_OPTIONS_STRICT
+define|#
+directive|define
+name|FSCK_OPTIONS_STRICT
+value|{ NULL, fsck_error_function, 1 }
+end_define
+
 begin_comment
 comment|/* descend in all linked child objects  * the return value is:  *    -1	error in processing the object  *<0	return value of the callback, which lead to an abort  *>0	return value of the first signaled error>0 (in the case of no other errors)  *    0		everything OK  */
 end_comment
@@ -133,12 +183,14 @@ name|object
 modifier|*
 name|obj
 parameter_list|,
-name|fsck_walk_func
-name|walk
-parameter_list|,
 name|void
 modifier|*
 name|data
+parameter_list|,
+name|struct
+name|fsck_options
+modifier|*
+name|options
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -164,11 +216,10 @@ name|unsigned
 name|long
 name|size
 parameter_list|,
-name|int
-name|strict
-parameter_list|,
-name|fsck_error
-name|error_func
+name|struct
+name|fsck_options
+modifier|*
+name|options
 parameter_list|)
 function_decl|;
 end_function_decl

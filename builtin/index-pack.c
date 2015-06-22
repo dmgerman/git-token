@@ -399,6 +399,17 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|fsck_options
+specifier|static
+name|struct
+name|fsck_options
+name|fsck_options
+init|=
+name|FSCK_OPTIONS_STRICT
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|verbose
 specifier|static
 name|int
@@ -1067,6 +1078,11 @@ parameter_list|,
 name|void
 modifier|*
 name|data
+parameter_list|,
+name|struct
+name|fsck_options
+modifier|*
+name|options
 parameter_list|)
 block|{
 if|if
@@ -4730,9 +4746,8 @@ name|buf
 argument_list|,
 name|size
 argument_list|,
-literal|1
-argument_list|,
-name|fsck_error_function
+operator|&
+name|fsck_options
 argument_list|)
 condition|)
 name|die
@@ -4749,9 +4764,10 @@ name|fsck_walk
 argument_list|(
 name|obj
 argument_list|,
-name|mark_link
-argument_list|,
 name|NULL
+argument_list|,
+operator|&
+name|fsck_options
 argument_list|)
 condition|)
 name|die
@@ -9051,6 +9067,12 @@ expr_stmt|;
 name|check_replace_refs
 operator|=
 literal|0
+expr_stmt|;
+name|fsck_options
+operator|.
+name|walk
+operator|=
+name|mark_link
 expr_stmt|;
 name|reset_pack_idx_option
 argument_list|(

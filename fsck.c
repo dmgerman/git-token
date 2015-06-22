@@ -70,12 +70,14 @@ name|tree
 modifier|*
 name|tree
 parameter_list|,
-name|fsck_walk_func
-name|walk
-parameter_list|,
 name|void
 modifier|*
 name|data
+parameter_list|,
+name|struct
+name|fsck_options
+modifier|*
+name|options
 parameter_list|)
 block|{
 name|struct
@@ -152,6 +154,8 @@ argument_list|)
 condition|)
 name|result
 operator|=
+name|options
+operator|->
 name|walk
 argument_list|(
 operator|&
@@ -167,6 +171,8 @@ argument_list|,
 name|OBJ_TREE
 argument_list|,
 name|data
+argument_list|,
+name|options
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -188,6 +194,8 @@ argument_list|)
 condition|)
 name|result
 operator|=
+name|options
+operator|->
 name|walk
 argument_list|(
 operator|&
@@ -203,6 +211,8 @@ argument_list|,
 name|OBJ_BLOB
 argument_list|,
 name|data
+argument_list|,
+name|options
 argument_list|)
 expr_stmt|;
 else|else
@@ -268,12 +278,14 @@ name|commit
 modifier|*
 name|commit
 parameter_list|,
-name|fsck_walk_func
-name|walk
-parameter_list|,
 name|void
 modifier|*
 name|data
+parameter_list|,
+name|struct
+name|fsck_options
+modifier|*
+name|options
 parameter_list|)
 block|{
 name|struct
@@ -300,6 +312,8 @@ literal|1
 return|;
 name|result
 operator|=
+name|options
+operator|->
 name|walk
 argument_list|(
 operator|(
@@ -314,6 +328,8 @@ argument_list|,
 name|OBJ_TREE
 argument_list|,
 name|data
+argument_list|,
+name|options
 argument_list|)
 expr_stmt|;
 if|if
@@ -342,6 +358,8 @@ condition|)
 block|{
 name|result
 operator|=
+name|options
+operator|->
 name|walk
 argument_list|(
 operator|(
@@ -356,6 +374,8 @@ argument_list|,
 name|OBJ_COMMIT
 argument_list|,
 name|data
+argument_list|,
+name|options
 argument_list|)
 expr_stmt|;
 if|if
@@ -400,12 +420,14 @@ name|tag
 modifier|*
 name|tag
 parameter_list|,
-name|fsck_walk_func
-name|walk
-parameter_list|,
 name|void
 modifier|*
 name|data
+parameter_list|,
+name|struct
+name|fsck_options
+modifier|*
+name|options
 parameter_list|)
 block|{
 if|if
@@ -420,6 +442,8 @@ operator|-
 literal|1
 return|;
 return|return
+name|options
+operator|->
 name|walk
 argument_list|(
 name|tag
@@ -429,6 +453,8 @@ argument_list|,
 name|OBJ_ANY
 argument_list|,
 name|data
+argument_list|,
+name|options
 argument_list|)
 return|;
 block|}
@@ -444,12 +470,14 @@ name|object
 modifier|*
 name|obj
 parameter_list|,
-name|fsck_walk_func
-name|walk
-parameter_list|,
 name|void
 modifier|*
 name|data
+parameter_list|,
+name|struct
+name|fsck_options
+modifier|*
+name|options
 parameter_list|)
 block|{
 if|if
@@ -487,9 +515,9 @@ operator|*
 operator|)
 name|obj
 argument_list|,
-name|walk
-argument_list|,
 name|data
+argument_list|,
+name|options
 argument_list|)
 return|;
 case|case
@@ -505,9 +533,9 @@ operator|*
 operator|)
 name|obj
 argument_list|,
-name|walk
-argument_list|,
 name|data
+argument_list|,
+name|options
 argument_list|)
 return|;
 case|case
@@ -523,9 +551,9 @@ operator|*
 operator|)
 name|obj
 argument_list|,
-name|walk
-argument_list|,
 name|data
+argument_list|,
+name|options
 argument_list|)
 return|;
 default|default:
@@ -735,11 +763,10 @@ name|tree
 modifier|*
 name|item
 parameter_list|,
-name|int
-name|strict
-parameter_list|,
-name|fsck_error
-name|error_func
+name|struct
+name|fsck_options
+modifier|*
+name|options
 parameter_list|)
 block|{
 name|int
@@ -984,6 +1011,8 @@ case|:
 if|if
 condition|(
 operator|!
+name|options
+operator|->
 name|strict
 condition|)
 break|break;
@@ -1051,6 +1080,8 @@ name|has_null_sha1
 condition|)
 name|retval
 operator|+=
+name|options
+operator|->
 name|error_func
 argument_list|(
 operator|&
@@ -1069,6 +1100,8 @@ name|has_full_path
 condition|)
 name|retval
 operator|+=
+name|options
+operator|->
 name|error_func
 argument_list|(
 operator|&
@@ -1087,6 +1120,8 @@ name|has_empty_name
 condition|)
 name|retval
 operator|+=
+name|options
+operator|->
 name|error_func
 argument_list|(
 operator|&
@@ -1105,6 +1140,8 @@ name|has_dot
 condition|)
 name|retval
 operator|+=
+name|options
+operator|->
 name|error_func
 argument_list|(
 operator|&
@@ -1123,6 +1160,8 @@ name|has_dotdot
 condition|)
 name|retval
 operator|+=
+name|options
+operator|->
 name|error_func
 argument_list|(
 operator|&
@@ -1141,6 +1180,8 @@ name|has_dotgit
 condition|)
 name|retval
 operator|+=
+name|options
+operator|->
 name|error_func
 argument_list|(
 operator|&
@@ -1159,6 +1200,8 @@ name|has_zero_pad
 condition|)
 name|retval
 operator|+=
+name|options
+operator|->
 name|error_func
 argument_list|(
 operator|&
@@ -1177,6 +1220,8 @@ name|has_bad_modes
 condition|)
 name|retval
 operator|+=
+name|options
+operator|->
 name|error_func
 argument_list|(
 operator|&
@@ -1195,6 +1240,8 @@ name|has_dup_entries
 condition|)
 name|retval
 operator|+=
+name|options
+operator|->
 name|error_func
 argument_list|(
 operator|&
@@ -1213,6 +1260,8 @@ name|not_properly_sorted
 condition|)
 name|retval
 operator|+=
+name|options
+operator|->
 name|error_func
 argument_list|(
 operator|&
@@ -1251,8 +1300,10 @@ name|object
 modifier|*
 name|obj
 parameter_list|,
-name|fsck_error
-name|error_func
+name|struct
+name|fsck_options
+modifier|*
+name|options
 parameter_list|)
 block|{
 specifier|const
@@ -1297,6 +1348,8 @@ case|case
 literal|'\0'
 case|:
 return|return
+name|options
+operator|->
 name|error_func
 argument_list|(
 name|obj
@@ -1334,6 +1387,8 @@ return|;
 block|}
 block|}
 return|return
+name|options
+operator|->
 name|error_func
 argument_list|(
 name|obj
@@ -1363,8 +1418,10 @@ name|object
 modifier|*
 name|obj
 parameter_list|,
-name|fsck_error
-name|error_func
+name|struct
+name|fsck_options
+modifier|*
+name|options
 parameter_list|)
 block|{
 name|char
@@ -1380,6 +1437,8 @@ operator|==
 literal|'<'
 condition|)
 return|return
+name|options
+operator|->
 name|error_func
 argument_list|(
 name|obj
@@ -1409,6 +1468,8 @@ operator|==
 literal|'>'
 condition|)
 return|return
+name|options
+operator|->
 name|error_func
 argument_list|(
 name|obj
@@ -1427,6 +1488,8 @@ operator|!=
 literal|'<'
 condition|)
 return|return
+name|options
+operator|->
 name|error_func
 argument_list|(
 name|obj
@@ -1450,6 +1513,8 @@ operator|!=
 literal|' '
 condition|)
 return|return
+name|options
+operator|->
 name|error_func
 argument_list|(
 name|obj
@@ -1485,6 +1550,8 @@ operator|!=
 literal|'>'
 condition|)
 return|return
+name|options
+operator|->
 name|error_func
 argument_list|(
 name|obj
@@ -1509,6 +1576,8 @@ operator|!=
 literal|' '
 condition|)
 return|return
+name|options
+operator|->
 name|error_func
 argument_list|(
 name|obj
@@ -1543,6 +1612,8 @@ operator|!=
 literal|' '
 condition|)
 return|return
+name|options
+operator|->
 name|error_func
 argument_list|(
 name|obj
@@ -1569,6 +1640,8 @@ argument_list|)
 argument_list|)
 condition|)
 return|return
+name|options
+operator|->
 name|error_func
 argument_list|(
 name|obj
@@ -1591,6 +1664,8 @@ operator|!=
 literal|' '
 condition|)
 return|return
+name|options
+operator|->
 name|error_func
 argument_list|(
 name|obj
@@ -1684,6 +1759,8 @@ literal|'\n'
 operator|)
 condition|)
 return|return
+name|options
+operator|->
 name|error_func
 argument_list|(
 name|obj
@@ -1726,8 +1803,10 @@ name|unsigned
 name|long
 name|size
 parameter_list|,
-name|fsck_error
-name|error_func
+name|struct
+name|fsck_options
+modifier|*
+name|options
 parameter_list|)
 block|{
 name|unsigned
@@ -1770,7 +1849,7 @@ name|commit
 operator|->
 name|object
 argument_list|,
-name|error_func
+name|options
 argument_list|)
 condition|)
 return|return
@@ -1791,6 +1870,8 @@ name|buffer
 argument_list|)
 condition|)
 return|return
+name|options
+operator|->
 name|error_func
 argument_list|(
 operator|&
@@ -1820,6 +1901,8 @@ operator|!=
 literal|'\n'
 condition|)
 return|return
+name|options
+operator|->
 name|error_func
 argument_list|(
 operator|&
@@ -1866,6 +1949,8 @@ operator|!=
 literal|'\n'
 condition|)
 return|return
+name|options
+operator|->
 name|error_func
 argument_list|(
 operator|&
@@ -1935,6 +2020,8 @@ operator|!=
 name|parent_count
 condition|)
 return|return
+name|options
+operator|->
 name|error_func
 argument_list|(
 operator|&
@@ -1957,6 +2044,8 @@ operator|!=
 name|parent_line_count
 condition|)
 return|return
+name|options
+operator|->
 name|error_func
 argument_list|(
 operator|&
@@ -1984,6 +2073,8 @@ name|buffer
 argument_list|)
 condition|)
 return|return
+name|options
+operator|->
 name|error_func
 argument_list|(
 operator|&
@@ -2008,7 +2099,7 @@ name|commit
 operator|->
 name|object
 argument_list|,
-name|error_func
+name|options
 argument_list|)
 expr_stmt|;
 if|if
@@ -2032,6 +2123,8 @@ name|buffer
 argument_list|)
 condition|)
 return|return
+name|options
+operator|->
 name|error_func
 argument_list|(
 operator|&
@@ -2056,7 +2149,7 @@ name|commit
 operator|->
 name|object
 argument_list|,
-name|error_func
+name|options
 argument_list|)
 expr_stmt|;
 if|if
@@ -2074,6 +2167,8 @@ operator|->
 name|tree
 condition|)
 return|return
+name|options
+operator|->
 name|error_func
 argument_list|(
 operator|&
@@ -2117,8 +2212,10 @@ name|unsigned
 name|long
 name|size
 parameter_list|,
-name|fsck_error
-name|error_func
+name|struct
+name|fsck_options
+modifier|*
+name|options
 parameter_list|)
 block|{
 specifier|const
@@ -2149,7 +2246,7 @@ name|buffer
 argument_list|,
 name|size
 argument_list|,
-name|error_func
+name|options
 argument_list|)
 decl_stmt|;
 if|if
@@ -2190,8 +2287,10 @@ name|unsigned
 name|long
 name|size
 parameter_list|,
-name|fsck_error
-name|error_func
+name|struct
+name|fsck_options
+modifier|*
+name|options
 parameter_list|)
 block|{
 name|unsigned
@@ -2265,6 +2364,8 @@ operator|!
 name|buffer
 condition|)
 return|return
+name|options
+operator|->
 name|error_func
 argument_list|(
 operator|&
@@ -2286,6 +2387,8 @@ condition|)
 block|{
 name|ret
 operator|=
+name|options
+operator|->
 name|error_func
 argument_list|(
 operator|&
@@ -2321,7 +2424,7 @@ name|tag
 operator|->
 name|object
 argument_list|,
-name|error_func
+name|options
 argument_list|)
 condition|)
 goto|goto
@@ -2343,6 +2446,8 @@ condition|)
 block|{
 name|ret
 operator|=
+name|options
+operator|->
 name|error_func
 argument_list|(
 operator|&
@@ -2378,6 +2483,8 @@ condition|)
 block|{
 name|ret
 operator|=
+name|options
+operator|->
 name|error_func
 argument_list|(
 operator|&
@@ -2414,6 +2521,8 @@ condition|)
 block|{
 name|ret
 operator|=
+name|options
+operator|->
 name|error_func
 argument_list|(
 operator|&
@@ -2447,6 +2556,8 @@ condition|)
 block|{
 name|ret
 operator|=
+name|options
+operator|->
 name|error_func
 argument_list|(
 operator|&
@@ -2480,6 +2591,8 @@ literal|0
 condition|)
 name|ret
 operator|=
+name|options
+operator|->
 name|error_func
 argument_list|(
 operator|&
@@ -2521,6 +2634,8 @@ condition|)
 block|{
 name|ret
 operator|=
+name|options
+operator|->
 name|error_func
 argument_list|(
 operator|&
@@ -2554,6 +2669,8 @@ condition|)
 block|{
 name|ret
 operator|=
+name|options
+operator|->
 name|error_func
 argument_list|(
 operator|&
@@ -2600,6 +2717,8 @@ argument_list|,
 literal|0
 argument_list|)
 condition|)
+name|options
+operator|->
 name|error_func
 argument_list|(
 operator|&
@@ -2643,6 +2762,8 @@ name|buffer
 argument_list|)
 condition|)
 comment|/* early tags do not contain 'tagger' lines; warn only */
+name|options
+operator|->
 name|error_func
 argument_list|(
 operator|&
@@ -2668,7 +2789,7 @@ name|tag
 operator|->
 name|object
 argument_list|,
-name|error_func
+name|options
 argument_list|)
 expr_stmt|;
 name|done
@@ -2710,8 +2831,10 @@ name|unsigned
 name|long
 name|size
 parameter_list|,
-name|fsck_error
-name|error_func
+name|struct
+name|fsck_options
+modifier|*
+name|options
 parameter_list|)
 block|{
 name|struct
@@ -2729,6 +2852,8 @@ operator|!
 name|tagged
 condition|)
 return|return
+name|options
+operator|->
 name|error_func
 argument_list|(
 operator|&
@@ -2750,7 +2875,7 @@ name|data
 argument_list|,
 name|size
 argument_list|,
-name|error_func
+name|options
 argument_list|)
 return|;
 block|}
@@ -2774,11 +2899,10 @@ name|unsigned
 name|long
 name|size
 parameter_list|,
-name|int
-name|strict
-parameter_list|,
-name|fsck_error
-name|error_func
+name|struct
+name|fsck_options
+modifier|*
+name|options
 parameter_list|)
 block|{
 if|if
@@ -2787,6 +2911,8 @@ operator|!
 name|obj
 condition|)
 return|return
+name|options
+operator|->
 name|error_func
 argument_list|(
 name|obj
@@ -2825,9 +2951,7 @@ operator|*
 operator|)
 name|obj
 argument_list|,
-name|strict
-argument_list|,
-name|error_func
+name|options
 argument_list|)
 return|;
 if|if
@@ -2857,7 +2981,7 @@ name|data
 argument_list|,
 name|size
 argument_list|,
-name|error_func
+name|options
 argument_list|)
 return|;
 if|if
@@ -2887,10 +3011,12 @@ name|data
 argument_list|,
 name|size
 argument_list|,
-name|error_func
+name|options
 argument_list|)
 return|;
 return|return
+name|options
+operator|->
 name|error_func
 argument_list|(
 name|obj

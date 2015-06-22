@@ -153,6 +153,17 @@ name|ctx
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|fsck_options
+specifier|static
+name|struct
+name|fsck_options
+name|fsck_options
+init|=
+name|FSCK_OPTIONS_STRICT
+decl_stmt|;
+end_decl_stmt
+
 begin_comment
 comment|/*  * When running under --strict mode, objects whose reachability are  * suspect are kept in core without getting written in the object  * store.  */
 end_comment
@@ -943,6 +954,11 @@ parameter_list|,
 name|void
 modifier|*
 name|data
+parameter_list|,
+name|struct
+name|fsck_options
+modifier|*
+name|options
 parameter_list|)
 block|{
 name|struct
@@ -1080,9 +1096,8 @@ name|obj_buf
 operator|->
 name|size
 argument_list|,
-literal|1
-argument_list|,
-name|fsck_error_function
+operator|&
+name|fsck_options
 argument_list|)
 condition|)
 name|die
@@ -1090,15 +1105,22 @@ argument_list|(
 literal|"Error in object"
 argument_list|)
 expr_stmt|;
+name|fsck_options
+operator|.
+name|walk
+operator|=
+name|check_object
+expr_stmt|;
 if|if
 condition|(
 name|fsck_walk
 argument_list|(
 name|obj
 argument_list|,
-name|check_object
-argument_list|,
 name|NULL
+argument_list|,
+operator|&
+name|fsck_options
 argument_list|)
 condition|)
 name|die
@@ -1171,6 +1193,8 @@ operator|.
 name|obj
 argument_list|,
 name|OBJ_ANY
+argument_list|,
+name|NULL
 argument_list|,
 name|NULL
 argument_list|)
