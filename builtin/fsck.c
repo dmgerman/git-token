@@ -158,6 +158,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|connectivity_only
+specifier|static
+name|int
+name|connectivity_only
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|check_strict
 specifier|static
 name|int
@@ -1058,6 +1066,18 @@ argument_list|)
 condition|)
 return|return;
 comment|/* it is in pack - forget about it */
+if|if
+condition|(
+name|connectivity_only
+operator|&&
+name|has_sha1_file
+argument_list|(
+name|obj
+operator|->
+name|sha1
+argument_list|)
+condition|)
+return|return;
 name|printf
 argument_list|(
 literal|"missing %s %s\n"
@@ -3241,6 +3261,21 @@ name|OPT_BOOL
 argument_list|(
 literal|0
 argument_list|,
+literal|"connectivity-only"
+argument_list|,
+operator|&
+name|connectivity_only
+argument_list|,
+name|N_
+argument_list|(
+literal|"check only connectivity"
+argument_list|)
+argument_list|)
+block|,
+name|OPT_BOOL
+argument_list|(
+literal|0
+argument_list|,
 literal|"strict"
 argument_list|,
 operator|&
@@ -3417,6 +3452,11 @@ expr_stmt|;
 name|fsck_head_link
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|connectivity_only
+condition|)
 name|fsck_object_dir
 argument_list|(
 name|get_object_directory
