@@ -91,23 +91,10 @@ parameter_list|,
 specifier|const
 name|char
 modifier|*
-name|err
-parameter_list|,
-modifier|...
+name|message
 parameter_list|)
 function_decl|;
 end_typedef
-
-begin_macro
-name|__attribute__
-argument_list|(
-argument|(format (printf,
-literal|3
-argument|,
-literal|4
-argument|))
-argument_list|)
-end_macro
 
 begin_function_decl
 name|int
@@ -124,9 +111,7 @@ parameter_list|,
 specifier|const
 name|char
 modifier|*
-name|fmt
-parameter_list|,
-modifier|...
+name|message
 parameter_list|)
 function_decl|;
 end_function_decl
