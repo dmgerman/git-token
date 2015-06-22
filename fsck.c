@@ -68,6 +68,14 @@ value|-1
 end_define
 
 begin_define
+DECL|macro|FSCK_INFO
+define|#
+directive|define
+name|FSCK_INFO
+value|-2
+end_define
+
+begin_define
 DECL|macro|FOREACH_MSG_ID
 define|#
 directive|define
@@ -82,7 +90,9 @@ value|FUNC(NUL_IN_HEADER, FATAL) \ 	FUNC(UNTERMINATED_HEADER, FATAL) \
 comment|/* errors */
 value|\ 	FUNC(BAD_DATE, ERROR) \ 	FUNC(BAD_DATE_OVERFLOW, ERROR) \ 	FUNC(BAD_EMAIL, ERROR) \ 	FUNC(BAD_NAME, ERROR) \ 	FUNC(BAD_OBJECT_SHA1, ERROR) \ 	FUNC(BAD_PARENT_SHA1, ERROR) \ 	FUNC(BAD_TAG_OBJECT, ERROR) \ 	FUNC(BAD_TIMEZONE, ERROR) \ 	FUNC(BAD_TREE, ERROR) \ 	FUNC(BAD_TREE_SHA1, ERROR) \ 	FUNC(BAD_TYPE, ERROR) \ 	FUNC(DUPLICATE_ENTRIES, ERROR) \ 	FUNC(MISSING_AUTHOR, ERROR) \ 	FUNC(MISSING_COMMITTER, ERROR) \ 	FUNC(MISSING_EMAIL, ERROR) \ 	FUNC(MISSING_GRAFT, ERROR) \ 	FUNC(MISSING_NAME_BEFORE_EMAIL, ERROR) \ 	FUNC(MISSING_OBJECT, ERROR) \ 	FUNC(MISSING_PARENT, ERROR) \ 	FUNC(MISSING_SPACE_BEFORE_DATE, ERROR) \ 	FUNC(MISSING_SPACE_BEFORE_EMAIL, ERROR) \ 	FUNC(MISSING_TAG, ERROR) \ 	FUNC(MISSING_TAG_ENTRY, ERROR) \ 	FUNC(MISSING_TAG_OBJECT, ERROR) \ 	FUNC(MISSING_TREE, ERROR) \ 	FUNC(MISSING_TYPE, ERROR) \ 	FUNC(MISSING_TYPE_ENTRY, ERROR) \ 	FUNC(MULTIPLE_AUTHORS, ERROR) \ 	FUNC(TAG_OBJECT_NOT_TAG, ERROR) \ 	FUNC(TREE_NOT_SORTED, ERROR) \ 	FUNC(UNKNOWN_TYPE, ERROR) \ 	FUNC(ZERO_PADDED_DATE, ERROR) \
 comment|/* warnings */
-value|\ 	FUNC(BAD_FILEMODE, WARN) \ 	FUNC(BAD_TAG_NAME, WARN) \ 	FUNC(EMPTY_NAME, WARN) \ 	FUNC(FULL_PATHNAME, WARN) \ 	FUNC(HAS_DOT, WARN) \ 	FUNC(HAS_DOTDOT, WARN) \ 	FUNC(HAS_DOTGIT, WARN) \ 	FUNC(MISSING_TAGGER_ENTRY, WARN) \ 	FUNC(NULL_SHA1, WARN) \ 	FUNC(ZERO_PADDED_FILEMODE, WARN)
+value|\ 	FUNC(BAD_FILEMODE, WARN) \ 	FUNC(EMPTY_NAME, WARN) \ 	FUNC(FULL_PATHNAME, WARN) \ 	FUNC(HAS_DOT, WARN) \ 	FUNC(HAS_DOTDOT, WARN) \ 	FUNC(HAS_DOTGIT, WARN) \ 	FUNC(NULL_SHA1, WARN) \ 	FUNC(ZERO_PADDED_FILEMODE, WARN) \
+comment|/* infos (reported as warnings, but ignored by default) */
+value|\ 	FUNC(BAD_TAG_NAME, INFO) \ 	FUNC(MISSING_TAGGER_ENTRY, INFO)
 end_define
 
 begin_define
@@ -1006,6 +1016,17 @@ condition|)
 name|msg_type
 operator|=
 name|FSCK_ERROR
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|msg_type
+operator|==
+name|FSCK_INFO
+condition|)
+name|msg_type
+operator|=
+name|FSCK_WARN
 expr_stmt|;
 name|append_msg_id
 argument_list|(
@@ -3805,6 +3826,9 @@ argument_list|,
 literal|0
 argument_list|)
 condition|)
+block|{
+name|ret
+operator|=
 name|report
 argument_list|(
 name|options
@@ -3830,6 +3854,14 @@ argument_list|,
 name|buffer
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|ret
+condition|)
+goto|goto
+name|done
+goto|;
+block|}
 name|buffer
 operator|=
 name|eol
@@ -3849,7 +3881,10 @@ operator|&
 name|buffer
 argument_list|)
 condition|)
+block|{
 comment|/* early tags do not contain 'tagger' lines; warn only */
+name|ret
+operator|=
 name|report
 argument_list|(
 name|options
@@ -3864,6 +3899,14 @@ argument_list|,
 literal|"invalid format - expected 'tagger' line"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|ret
+condition|)
+goto|goto
+name|done
+goto|;
+block|}
 else|else
 name|ret
 operator|=
