@@ -5232,8 +5232,13 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Add a reference to the in-memory packed reference cache.  This may  * only be called while the packed-refs file is locked (see  * lock_packed_refs()).  To actually write the packed-refs file, call  * commit_packed_refs().  */
+end_comment
+
 begin_function
 DECL|function|add_packed_ref
+specifier|static
 name|void
 name|add_packed_ref
 parameter_list|(
@@ -10953,11 +10958,12 @@ block|}
 end_function
 
 begin_comment
-comment|/* This should return a meaningful errno on failure */
+comment|/*  * Lock the packed-refs file for writing. Flags is passed to  * hold_lock_file_for_update(). Return 0 on success. On errors, set  * errno appropriately and return a nonzero value.  */
 end_comment
 
 begin_function
 DECL|function|lock_packed_refs
+specifier|static
 name|int
 name|lock_packed_refs
 parameter_list|(
@@ -11053,11 +11059,12 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Commit the packed refs changes.  * On error we must make sure that errno contains a meaningful value.  */
+comment|/*  * Write the current version of the packed refs cache from memory to  * disk. The packed-refs file must already be locked for writing (see  * lock_packed_refs()). Return zero on success. On errors, set errno  * and return a nonzero value  */
 end_comment
 
 begin_function
 DECL|function|commit_packed_refs
+specifier|static
 name|int
 name|commit_packed_refs
 parameter_list|(
@@ -11186,8 +11193,13 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Rollback the lockfile for the packed-refs file, and discard the  * in-memory packed reference cache.  (The packed-refs file will be  * read anew if it is needed again after this function is called.)  */
+end_comment
+
 begin_function
 DECL|function|rollback_packed_refs
+specifier|static
 name|void
 name|rollback_packed_refs
 parameter_list|(
