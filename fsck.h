@@ -34,6 +34,45 @@ name|fsck_options
 struct_decl|;
 end_struct_decl
 
+begin_function_decl
+name|void
+name|fsck_set_msg_type
+parameter_list|(
+name|struct
+name|fsck_options
+modifier|*
+name|options
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|msg_id
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|msg_type
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|void
+name|fsck_set_msg_types
+parameter_list|(
+name|struct
+name|fsck_options
+modifier|*
+name|options
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|values
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/*  * callback function for fsck_walk  * type is the expected type of the object or OBJ_ANY  * the return value is:  *     0	everything OK  *<0	error signaled and abort  *>0	error signaled and do not abort  */
 end_comment
@@ -135,6 +174,11 @@ name|strict
 range|:
 literal|1
 decl_stmt|;
+DECL|member|msg_type
+name|int
+modifier|*
+name|msg_type
+decl_stmt|;
 block|}
 struct|;
 end_struct
@@ -144,7 +188,7 @@ DECL|macro|FSCK_OPTIONS_DEFAULT
 define|#
 directive|define
 name|FSCK_OPTIONS_DEFAULT
-value|{ NULL, fsck_error_function, 0 }
+value|{ NULL, fsck_error_function, 0, NULL }
 end_define
 
 begin_define
@@ -152,7 +196,7 @@ DECL|macro|FSCK_OPTIONS_STRICT
 define|#
 directive|define
 name|FSCK_OPTIONS_STRICT
-value|{ NULL, fsck_error_function, 1 }
+value|{ NULL, fsck_error_function, 1, NULL }
 end_define
 
 begin_comment
