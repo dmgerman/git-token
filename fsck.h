@@ -28,6 +28,14 @@ name|FSCK_WARN
 value|2
 end_define
 
+begin_define
+DECL|macro|FSCK_IGNORE
+define|#
+directive|define
+name|FSCK_IGNORE
+value|3
+end_define
+
 begin_struct_decl
 struct_decl|struct
 name|fsck_options
