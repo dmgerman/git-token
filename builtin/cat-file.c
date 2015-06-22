@@ -1342,7 +1342,7 @@ end_function
 begin_function
 DECL|function|batch_one_object
 specifier|static
-name|int
+name|void
 name|batch_one_object
 parameter_list|(
 specifier|const
@@ -1386,14 +1386,6 @@ name|enum
 name|follow_symlinks_result
 name|result
 decl_stmt|;
-if|if
-condition|(
-operator|!
-name|obj_name
-condition|)
-return|return
-literal|1
-return|;
 name|result
 operator|=
 name|get_sha1_with_context
@@ -1511,9 +1503,7 @@ argument_list|(
 name|stdout
 argument_list|)
 expr_stmt|;
-return|return
-literal|0
-return|;
+return|return;
 block|}
 if|if
 condition|(
@@ -1551,9 +1541,7 @@ argument_list|(
 name|stdout
 argument_list|)
 expr_stmt|;
-return|return
-literal|0
-return|;
+return|return;
 block|}
 if|if
 condition|(
@@ -1586,9 +1574,7 @@ argument_list|(
 name|stdout
 argument_list|)
 expr_stmt|;
-return|return
-literal|0
-return|;
+return|return;
 block|}
 name|strbuf_expand
 argument_list|(
@@ -1655,9 +1641,6 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-return|return
-literal|0
-return|;
 block|}
 end_function
 
@@ -1840,8 +1823,6 @@ operator|=
 name|p
 expr_stmt|;
 block|}
-name|retval
-operator|=
 name|batch_one_object
 argument_list|(
 name|buf
@@ -1854,11 +1835,6 @@ operator|&
 name|data
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|retval
-condition|)
-break|break;
 block|}
 name|strbuf_release
 argument_list|(
