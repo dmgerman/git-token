@@ -589,28 +589,6 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
-begin_comment
-comment|/*  * Rewrite the packed-refs file, omitting any refs listed in  * 'refnames'. On error, packed-refs will be unchanged, the return  * value is nonzero, and a message about the error is written to the  * 'err' strbuf.  *  * The refs in 'refnames' needn't be sorted. `err` must not be NULL.  */
-end_comment
-
-begin_function_decl
-specifier|extern
-name|int
-name|repack_without_refs
-parameter_list|(
-name|struct
-name|string_list
-modifier|*
-name|refnames
-parameter_list|,
-name|struct
-name|strbuf
-modifier|*
-name|err
-parameter_list|)
-function_decl|;
-end_function_decl
-
 begin_function_decl
 specifier|extern
 name|int

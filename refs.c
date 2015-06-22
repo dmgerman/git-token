@@ -12016,8 +12016,13 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Rewrite the packed-refs file, omitting any refs listed in  * 'refnames'. On error, leave packed-refs unchanged, write an error  * message to 'err', and return a nonzero value.  *  * The refs in 'refnames' needn't be sorted. `err` must not be NULL.  */
+end_comment
+
 begin_function
 DECL|function|repack_without_refs
+specifier|static
 name|int
 name|repack_without_refs
 parameter_list|(
