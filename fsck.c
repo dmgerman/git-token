@@ -70,7 +70,7 @@ parameter_list|)
 define|\
 comment|/* errors */
 define|\
-value|FUNC(BAD_DATE, ERROR) \ 	FUNC(BAD_DATE_OVERFLOW, ERROR) \ 	FUNC(BAD_EMAIL, ERROR) \ 	FUNC(BAD_NAME, ERROR) \ 	FUNC(BAD_OBJECT_SHA1, ERROR) \ 	FUNC(BAD_PARENT_SHA1, ERROR) \ 	FUNC(BAD_TAG_OBJECT, ERROR) \ 	FUNC(BAD_TIMEZONE, ERROR) \ 	FUNC(BAD_TREE, ERROR) \ 	FUNC(BAD_TREE_SHA1, ERROR) \ 	FUNC(BAD_TYPE, ERROR) \ 	FUNC(DUPLICATE_ENTRIES, ERROR) \ 	FUNC(MISSING_AUTHOR, ERROR) \ 	FUNC(MISSING_COMMITTER, ERROR) \ 	FUNC(MISSING_EMAIL, ERROR) \ 	FUNC(MISSING_GRAFT, ERROR) \ 	FUNC(MISSING_NAME_BEFORE_EMAIL, ERROR) \ 	FUNC(MISSING_OBJECT, ERROR) \ 	FUNC(MISSING_PARENT, ERROR) \ 	FUNC(MISSING_SPACE_BEFORE_DATE, ERROR) \ 	FUNC(MISSING_SPACE_BEFORE_EMAIL, ERROR) \ 	FUNC(MISSING_TAG, ERROR) \ 	FUNC(MISSING_TAG_ENTRY, ERROR) \ 	FUNC(MISSING_TAG_OBJECT, ERROR) \ 	FUNC(MISSING_TREE, ERROR) \ 	FUNC(MISSING_TYPE, ERROR) \ 	FUNC(MISSING_TYPE_ENTRY, ERROR) \ 	FUNC(NUL_IN_HEADER, ERROR) \ 	FUNC(TAG_OBJECT_NOT_TAG, ERROR) \ 	FUNC(TREE_NOT_SORTED, ERROR) \ 	FUNC(UNKNOWN_TYPE, ERROR) \ 	FUNC(UNTERMINATED_HEADER, ERROR) \ 	FUNC(ZERO_PADDED_DATE, ERROR) \
+value|FUNC(BAD_DATE, ERROR) \ 	FUNC(BAD_DATE_OVERFLOW, ERROR) \ 	FUNC(BAD_EMAIL, ERROR) \ 	FUNC(BAD_NAME, ERROR) \ 	FUNC(BAD_OBJECT_SHA1, ERROR) \ 	FUNC(BAD_PARENT_SHA1, ERROR) \ 	FUNC(BAD_TAG_OBJECT, ERROR) \ 	FUNC(BAD_TIMEZONE, ERROR) \ 	FUNC(BAD_TREE, ERROR) \ 	FUNC(BAD_TREE_SHA1, ERROR) \ 	FUNC(BAD_TYPE, ERROR) \ 	FUNC(DUPLICATE_ENTRIES, ERROR) \ 	FUNC(MISSING_AUTHOR, ERROR) \ 	FUNC(MISSING_COMMITTER, ERROR) \ 	FUNC(MISSING_EMAIL, ERROR) \ 	FUNC(MISSING_GRAFT, ERROR) \ 	FUNC(MISSING_NAME_BEFORE_EMAIL, ERROR) \ 	FUNC(MISSING_OBJECT, ERROR) \ 	FUNC(MISSING_PARENT, ERROR) \ 	FUNC(MISSING_SPACE_BEFORE_DATE, ERROR) \ 	FUNC(MISSING_SPACE_BEFORE_EMAIL, ERROR) \ 	FUNC(MISSING_TAG, ERROR) \ 	FUNC(MISSING_TAG_ENTRY, ERROR) \ 	FUNC(MISSING_TAG_OBJECT, ERROR) \ 	FUNC(MISSING_TREE, ERROR) \ 	FUNC(MISSING_TYPE, ERROR) \ 	FUNC(MISSING_TYPE_ENTRY, ERROR) \ 	FUNC(MULTIPLE_AUTHORS, ERROR) \ 	FUNC(NUL_IN_HEADER, ERROR) \ 	FUNC(TAG_OBJECT_NOT_TAG, ERROR) \ 	FUNC(TREE_NOT_SORTED, ERROR) \ 	FUNC(UNKNOWN_TYPE, ERROR) \ 	FUNC(UNTERMINATED_HEADER, ERROR) \ 	FUNC(ZERO_PADDED_DATE, ERROR) \
 comment|/* warnings */
 value|\ 	FUNC(BAD_FILEMODE, WARN) \ 	FUNC(BAD_TAG_NAME, WARN) \ 	FUNC(EMPTY_NAME, WARN) \ 	FUNC(FULL_PATHNAME, WARN) \ 	FUNC(HAS_DOT, WARN) \ 	FUNC(HAS_DOTDOT, WARN) \ 	FUNC(HAS_DOTGIT, WARN) \ 	FUNC(MISSING_TAGGER_ENTRY, WARN) \ 	FUNC(NULL_SHA1, WARN) \ 	FUNC(ZERO_PADDED_FILEMODE, WARN)
 end_define
@@ -2762,6 +2762,8 @@ decl_stmt|,
 name|parent_line_count
 init|=
 literal|0
+decl_stmt|,
+name|author_count
 decl_stmt|;
 name|int
 name|err
@@ -3029,9 +3031,12 @@ name|err
 return|;
 block|}
 block|}
-if|if
+name|author_count
+operator|=
+literal|0
+expr_stmt|;
+while|while
 condition|(
-operator|!
 name|skip_prefix
 argument_list|(
 name|buffer
@@ -3042,21 +3047,10 @@ operator|&
 name|buffer
 argument_list|)
 condition|)
-return|return
-name|report
-argument_list|(
-name|options
-argument_list|,
-operator|&
-name|commit
-operator|->
-name|object
-argument_list|,
-name|FSCK_MSG_MISSING_AUTHOR
-argument_list|,
-literal|"invalid format - expected 'author' line"
-argument_list|)
-return|;
+block|{
+name|author_count
+operator|++
+expr_stmt|;
 name|err
 operator|=
 name|fsck_ident
@@ -3070,6 +3064,59 @@ operator|->
 name|object
 argument_list|,
 name|options
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|err
+condition|)
+return|return
+name|err
+return|;
+block|}
+if|if
+condition|(
+name|author_count
+operator|<
+literal|1
+condition|)
+name|err
+operator|=
+name|report
+argument_list|(
+name|options
+argument_list|,
+operator|&
+name|commit
+operator|->
+name|object
+argument_list|,
+name|FSCK_MSG_MISSING_AUTHOR
+argument_list|,
+literal|"invalid format - expected 'author' line"
+argument_list|)
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|author_count
+operator|>
+literal|1
+condition|)
+name|err
+operator|=
+name|report
+argument_list|(
+name|options
+argument_list|,
+operator|&
+name|commit
+operator|->
+name|object
+argument_list|,
+name|FSCK_MSG_MULTIPLE_AUTHORS
+argument_list|,
+literal|"invalid format - multiple 'author' lines"
 argument_list|)
 expr_stmt|;
 if|if
