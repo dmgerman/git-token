@@ -787,6 +787,23 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/*  * Delete the specified references. If there are any problems, emit  * errors but attempt to keep going (i.e., the deletes are not done in  * an all-or-nothing transaction).  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|delete_refs
+parameter_list|(
+name|struct
+name|string_list
+modifier|*
+name|refnames
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/** Delete a reflog */
 end_comment
 
