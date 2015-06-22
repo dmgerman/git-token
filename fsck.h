@@ -204,6 +204,12 @@ name|int
 modifier|*
 name|msg_type
 decl_stmt|;
+DECL|member|skiplist
+name|struct
+name|sha1_array
+modifier|*
+name|skiplist
+decl_stmt|;
 block|}
 struct|;
 end_struct
