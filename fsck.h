@@ -73,6 +73,23 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|int
+name|is_valid_msg_type
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|msg_id
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|msg_type
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/*  * callback function for fsck_walk  * type is the expected type of the object or OBJ_ANY  * the return value is:  *     0	everything OK  *<0	error signaled and abort  *>0	error signaled and do not abort  */
 end_comment
