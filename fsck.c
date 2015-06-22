@@ -2830,7 +2830,9 @@ index|]
 operator|!=
 literal|'\n'
 condition|)
-return|return
+block|{
+name|err
+operator|=
 name|report
 argument_list|(
 name|options
@@ -2844,7 +2846,15 @@ name|FSCK_MSG_BAD_TREE_SHA1
 argument_list|,
 literal|"invalid 'tree' line format - bad sha1"
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|err
+condition|)
+return|return
+name|err
 return|;
+block|}
 name|buffer
 operator|+=
 literal|41
@@ -2878,7 +2888,9 @@ index|]
 operator|!=
 literal|'\n'
 condition|)
-return|return
+block|{
+name|err
+operator|=
 name|report
 argument_list|(
 name|options
@@ -2892,7 +2904,15 @@ name|FSCK_MSG_BAD_PARENT_SHA1
 argument_list|,
 literal|"invalid 'parent' line format - bad sha1"
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|err
+condition|)
+return|return
+name|err
 return|;
+block|}
 name|buffer
 operator|+=
 literal|41
@@ -2949,7 +2969,9 @@ name|nr_parent
 operator|!=
 name|parent_count
 condition|)
-return|return
+block|{
+name|err
+operator|=
 name|report
 argument_list|(
 name|options
@@ -2963,7 +2985,15 @@ name|FSCK_MSG_MISSING_GRAFT
 argument_list|,
 literal|"graft objects missing"
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|err
+condition|)
+return|return
+name|err
 return|;
+block|}
 block|}
 else|else
 block|{
@@ -2973,7 +3003,9 @@ name|parent_count
 operator|!=
 name|parent_line_count
 condition|)
-return|return
+block|{
+name|err
+operator|=
 name|report
 argument_list|(
 name|options
@@ -2987,7 +3019,15 @@ name|FSCK_MSG_MISSING_PARENT
 argument_list|,
 literal|"parent objects missing"
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|err
+condition|)
+return|return
+name|err
 return|;
+block|}
 block|}
 if|if
 condition|(
