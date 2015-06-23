@@ -164,6 +164,13 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|repository_format_precious_objects
+name|int
+name|repository_format_precious_objects
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|git_commit_encoding
 specifier|const
 name|char

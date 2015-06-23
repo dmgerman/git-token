@@ -1228,6 +1228,18 @@ return|return
 literal|0
 return|;
 block|}
+if|if
+condition|(
+name|repository_format_precious_objects
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"cannot prune in a precious-objects repo"
+argument_list|)
+argument_list|)
+expr_stmt|;
 while|while
 condition|(
 name|argc
