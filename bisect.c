@@ -3713,7 +3713,7 @@ name|stderr
 argument_list|,
 literal|"Some good revs are not ancestor of the bad rev.\n"
 literal|"git bisect cannot work properly in this case.\n"
-literal|"Maybe you mistake good and bad revs?\n"
+literal|"Maybe you mistook good and bad revs?\n"
 argument_list|)
 expr_stmt|;
 name|exit
