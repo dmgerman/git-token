@@ -4916,6 +4916,15 @@ name|pos
 operator|-
 literal|1
 expr_stmt|;
+if|if
+condition|(
+operator|!
+operator|(
+name|option
+operator|&
+name|ADD_CACHE_KEEP_CACHE_TREE
+operator|)
+condition|)
 name|untracked_cache_add_to_index
 argument_list|(
 name|istate
