@@ -520,7 +520,7 @@ name|bit_size
 operator|+=
 name|number
 operator|*
-name|BITS_IN_WORD
+name|BITS_IN_EWORD
 expr_stmt|;
 return|return
 name|add_empty_words
@@ -798,7 +798,7 @@ name|bit_size
 operator|+=
 name|can_add
 operator|*
-name|BITS_IN_WORD
+name|BITS_IN_EWORD
 expr_stmt|;
 if|if
 condition|(
@@ -1069,7 +1069,7 @@ name|self
 operator|->
 name|bit_size
 operator|+=
-name|BITS_IN_WORD
+name|BITS_IN_EWORD
 expr_stmt|;
 if|if
 condition|(
@@ -1137,22 +1137,22 @@ init|=
 operator|(
 name|i
 operator|+
-name|BITS_IN_WORD
+name|BITS_IN_EWORD
 operator|)
 operator|/
-name|BITS_IN_WORD
+name|BITS_IN_EWORD
 operator|-
 operator|(
 name|self
 operator|->
 name|bit_size
 operator|+
-name|BITS_IN_WORD
+name|BITS_IN_EWORD
 operator|-
 literal|1
 operator|)
 operator|/
-name|BITS_IN_WORD
+name|BITS_IN_EWORD
 decl_stmt|;
 name|assert
 argument_list|(
@@ -1207,7 +1207,7 @@ operator|<<
 operator|(
 name|i
 operator|%
-name|BITS_IN_WORD
+name|BITS_IN_EWORD
 operator|)
 argument_list|)
 expr_stmt|;
@@ -1253,7 +1253,7 @@ operator|<<
 operator|(
 name|i
 operator|%
-name|BITS_IN_WORD
+name|BITS_IN_EWORD
 operator|)
 argument_list|)
 expr_stmt|;
@@ -1279,7 +1279,7 @@ operator|<<
 operator|(
 name|i
 operator|%
-name|BITS_IN_WORD
+name|BITS_IN_EWORD
 operator|)
 operator|)
 expr_stmt|;
@@ -1422,7 +1422,7 @@ argument_list|(
 name|word
 argument_list|)
 operator|*
-name|BITS_IN_WORD
+name|BITS_IN_EWORD
 decl_stmt|;
 for|for
 control|(
@@ -1457,7 +1457,7 @@ argument_list|(
 name|word
 argument_list|)
 operator|*
-name|BITS_IN_WORD
+name|BITS_IN_EWORD
 expr_stmt|;
 block|}
 operator|++
@@ -1492,7 +1492,7 @@ literal|0
 init|;
 name|c
 operator|<
-name|BITS_IN_WORD
+name|BITS_IN_EWORD
 condition|;
 operator|++
 name|c
