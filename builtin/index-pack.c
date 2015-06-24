@@ -4428,9 +4428,11 @@ argument_list|()
 expr_stmt|;
 name|collision_test_needed
 operator|=
-name|has_sha1_file
+name|has_sha1_file_with_flags
 argument_list|(
 name|sha1
+argument_list|,
+name|HAS_SHA1_QUICK
 argument_list|)
 expr_stmt|;
 name|read_unlock
