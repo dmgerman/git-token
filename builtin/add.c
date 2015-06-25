@@ -301,9 +301,6 @@ name|status
 argument_list|)
 expr_stmt|;
 case|case
-name|DIFF_STATUS_ADDED
-case|:
-case|case
 name|DIFF_STATUS_MODIFIED
 case|:
 case|case
