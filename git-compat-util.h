@@ -232,21 +232,6 @@ end_define
 begin_if
 if|#
 directive|if
-name|defined
-argument_list|(
-name|__GNUC__
-argument_list|)
-operator|&&
-operator|(
-name|__GNUC__
-operator|>=
-literal|3
-operator|)
-end_if
-
-begin_if
-if|#
-directive|if
 name|GIT_GNUC_PREREQ
 argument_list|(
 literal|3
@@ -286,11 +271,6 @@ name|arr
 parameter_list|)
 value|0
 end_define
-
-begin_endif
-endif|#
-directive|endif
-end_endif
 
 begin_endif
 endif|#
