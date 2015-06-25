@@ -7617,8 +7617,6 @@ argument_list|,
 name|mmap_size
 argument_list|,
 name|PROT_READ
-operator||
-name|PROT_WRITE
 argument_list|,
 name|MAP_PRIVATE
 argument_list|,
