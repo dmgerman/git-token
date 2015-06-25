@@ -998,6 +998,34 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/**  * Add the time specified by `tm`, as formatted by `strftime`.  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|void
+name|strbuf_addftime
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+name|sb
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|fmt
+parameter_list|,
+specifier|const
+name|struct
+name|tm
+modifier|*
+name|tm
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/**  * Read a given size of data from a FILE* pointer to the buffer.  *  * NOTE: The buffer is rewound if the read fails. If -1 is returned,  * `errno` must be consulted, like you would do for `read(3)`.  * `strbuf_read()`, `strbuf_read_file()` and `strbuf_getline()` has the  * same behaviour as well.  */
 end_comment
 

@@ -390,6 +390,13 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
+name|setlocale
+argument_list|(
+name|LC_TIME
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
 name|init_gettext_charset
 argument_list|(
 literal|"git"
