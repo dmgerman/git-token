@@ -690,7 +690,7 @@ range|:
 literal|1
 decl_stmt|;
 DECL|member|date_mode
-name|enum
+name|struct
 name|date_mode
 name|date_mode
 decl_stmt|;

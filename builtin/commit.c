@@ -4249,7 +4249,10 @@ argument_list|(
 operator|&
 name|ai
 argument_list|,
-name|DATE_NORMAL
+name|DATE_MODE
+argument_list|(
+name|NORMAL
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -5198,6 +5201,8 @@ decl_stmt|;
 name|ctx
 operator|.
 name|date_mode
+operator|.
+name|type
 operator|=
 name|DATE_NORMAL
 expr_stmt|;

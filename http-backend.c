@@ -568,7 +568,10 @@ name|when
 argument_list|,
 literal|0
 argument_list|,
-name|DATE_RFC2822
+name|DATE_MODE
+argument_list|(
+name|RFC2822
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|hdr_str

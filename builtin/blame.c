@@ -275,11 +275,13 @@ end_decl_stmt
 begin_decl_stmt
 DECL|variable|blame_date_mode
 specifier|static
-name|enum
+name|struct
 name|date_mode
 name|blame_date_mode
 init|=
+block|{
 name|DATE_ISO8601
+block|}
 decl_stmt|;
 end_decl_stmt
 
@@ -8936,6 +8938,7 @@ name|time
 argument_list|,
 name|tz
 argument_list|,
+operator|&
 name|blame_date_mode
 argument_list|)
 expr_stmt|;
@@ -10980,11 +10983,12 @@ argument_list|(
 name|var
 argument_list|)
 return|;
-name|blame_date_mode
-operator|=
 name|parse_date_format
 argument_list|(
 name|value
+argument_list|,
+operator|&
+name|blame_date_mode
 argument_list|)
 expr_stmt|;
 return|return
@@ -13312,6 +13316,8 @@ operator||=
 name|OUTPUT_ANNOTATE_COMPAT
 expr_stmt|;
 name|blame_date_mode
+operator|.
+name|type
 operator|=
 name|DATE_ISO8601
 expr_stmt|;
@@ -13329,6 +13335,8 @@ comment|/* The maximum width used to show the dates */
 switch|switch
 condition|(
 name|blame_date_mode
+operator|.
+name|type
 condition|)
 block|{
 case|case

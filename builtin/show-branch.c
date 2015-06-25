@@ -4153,7 +4153,10 @@ name|timestamp
 argument_list|,
 name|tz
 argument_list|,
-name|DATE_RELATIVE
+name|DATE_MODE
+argument_list|(
+name|RELATIVE
+argument_list|)
 argument_list|)
 argument_list|,
 name|msg

@@ -1457,8 +1457,10 @@ name|reflog_walk_info
 modifier|*
 name|reflog_info
 parameter_list|,
-name|enum
+specifier|const
+name|struct
 name|date_mode
+modifier|*
 name|dmode
 parameter_list|,
 name|int
@@ -1799,8 +1801,10 @@ parameter_list|,
 name|int
 name|oneline
 parameter_list|,
-name|enum
+specifier|const
+name|struct
 name|date_mode
+modifier|*
 name|dmode
 parameter_list|,
 name|int
