@@ -310,9 +310,13 @@ condition|)
 return|return;
 if|if
 condition|(
-name|parse_tree
+name|parse_tree_gently
 argument_list|(
 name|tree
+argument_list|,
+name|revs
+operator|->
+name|ignore_missing_links
 argument_list|)
 operator|<
 literal|0
