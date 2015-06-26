@@ -1802,10 +1802,6 @@ operator|&
 name|UNINTERESTING
 condition|)
 continue|continue;
-if|if
-condition|(
-name|interesting_cache
-condition|)
 operator|*
 name|interesting_cache
 operator|=
