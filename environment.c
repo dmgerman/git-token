@@ -1208,6 +1208,24 @@ name|new_work_tree
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|setenv
+argument_list|(
+name|GIT_WORK_TREE_ENVIRONMENT
+argument_list|,
+name|work_tree
+argument_list|,
+literal|1
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"could not set GIT_WORK_TREE to '%s'"
+argument_list|,
+name|work_tree
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
