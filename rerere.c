@@ -2380,20 +2380,9 @@ argument_list|)
 operator|==
 literal|1
 condition|)
-block|{
-if|if
-condition|(
-name|active_nr
-operator|<=
+name|i
 operator|++
-name|i
-condition|)
-return|return
-name|i
-operator|+
-literal|1
-return|;
-block|}
+expr_stmt|;
 comment|/* Only handle regular files with both stages #2 and #3 */
 if|if
 condition|(
