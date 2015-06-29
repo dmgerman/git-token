@@ -3066,6 +3066,14 @@ name|RUN_SETUP
 block|}
 block|,
 block|{
+literal|"worktree"
+block|,
+name|cmd_worktree
+block|,
+name|RUN_SETUP
+block|}
+block|,
+block|{
 literal|"write-tree"
 block|,
 name|cmd_write_tree

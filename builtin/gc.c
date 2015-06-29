@@ -1468,9 +1468,9 @@ argument_list|(
 operator|&
 name|prune_worktrees
 argument_list|,
-literal|"prune"
+literal|"worktree"
 argument_list|,
-literal|"--worktrees"
+literal|"prune"
 argument_list|,
 literal|"--expire"
 argument_list|,
