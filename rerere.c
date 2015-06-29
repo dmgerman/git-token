@@ -909,6 +909,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Require the exact number of conflict marker letters, no more, no  * less, followed by SP or any whitespace  * (including LF).  */
+end_comment
+
 begin_function
 DECL|function|is_cmarker
 specifier|static
@@ -924,11 +928,26 @@ name|marker_char
 parameter_list|,
 name|int
 name|marker_size
-parameter_list|,
-name|int
-name|want_sp
 parameter_list|)
 block|{
+name|int
+name|want_sp
+decl_stmt|;
+comment|/* 	 * The beginning of our version and the end of their version 	 * always are labeled like "<<<<< ours" or ">>>>> theirs", 	 * hence we set want_sp for them.  Note that the version from 	 * the common ancestor in diff3-style output is not always 	 * labelled (e.g. "||||| common" is often seen but "|||||" 	 * alone is also valid), so we do not set want_sp. 	 */
+name|want_sp
+operator|=
+operator|(
+name|marker_char
+operator|==
+literal|'<'
+operator|)
+operator|||
+operator|(
+name|marker_char
+operator|==
+literal|'>'
+operator|)
+expr_stmt|;
 while|while
 condition|(
 name|marker_size
@@ -1062,8 +1081,6 @@ argument_list|,
 literal|'<'
 argument_list|,
 name|marker_size
-argument_list|,
-literal|1
 argument_list|)
 condition|)
 block|{
@@ -1093,8 +1110,6 @@ argument_list|,
 literal|'|'
 argument_list|,
 name|marker_size
-argument_list|,
-literal|0
 argument_list|)
 condition|)
 block|{
@@ -1124,8 +1139,6 @@ argument_list|,
 literal|'='
 argument_list|,
 name|marker_size
-argument_list|,
-literal|0
 argument_list|)
 condition|)
 block|{
@@ -1159,8 +1172,6 @@ argument_list|,
 literal|'>'
 argument_list|,
 name|marker_size
-argument_list|,
-literal|1
 argument_list|)
 condition|)
 block|{
