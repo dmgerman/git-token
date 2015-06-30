@@ -1968,19 +1968,12 @@ name|pos
 operator|-
 literal|1
 expr_stmt|;
-for|for
-control|(
-name|i
-operator|=
-literal|0
-init|;
-name|i
+while|while
+condition|(
+name|pos
 operator|<
-literal|3
-condition|;
-name|i
-operator|++
-control|)
+name|active_nr
+condition|)
 block|{
 name|enum
 name|object_type
@@ -1990,16 +1983,6 @@ name|unsigned
 name|long
 name|size
 decl_stmt|;
-name|int
-name|j
-decl_stmt|;
-if|if
-condition|(
-name|active_nr
-operator|<=
-name|pos
-condition|)
-break|break;
 name|ce
 operator|=
 name|active_cache
@@ -2028,8 +2011,8 @@ argument_list|,
 name|len
 argument_list|)
 condition|)
-continue|continue;
-name|j
+break|break;
+name|i
 operator|=
 name|ce_stage
 argument_list|(
@@ -2040,7 +2023,7 @@ literal|1
 expr_stmt|;
 name|mmfile
 index|[
-name|j
+name|i
 index|]
 operator|.
 name|ptr
@@ -2060,7 +2043,7 @@ argument_list|)
 expr_stmt|;
 name|mmfile
 index|[
-name|j
+name|i
 index|]
 operator|.
 name|size
@@ -2081,7 +2064,6 @@ condition|;
 name|i
 operator|++
 control|)
-block|{
 if|if
 condition|(
 operator|!
@@ -2112,7 +2094,6 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
-block|}
 comment|/* 	 * NEEDSWORK: handle conflicts from merges with 	 * merge.renormalize set, too 	 */
 name|ll_merge
 argument_list|(
