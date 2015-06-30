@@ -7832,6 +7832,20 @@ operator|.
 name|rebase_interactive_in_progress
 condition|)
 block|{
+if|if
+condition|(
+name|state
+operator|.
+name|rebase_interactive_in_progress
+condition|)
+name|on_what
+operator|=
+name|_
+argument_list|(
+literal|"interactive rebase in progress; onto "
+argument_list|)
+expr_stmt|;
+else|else
 name|on_what
 operator|=
 name|_
