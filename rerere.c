@@ -2278,6 +2278,7 @@ operator|.
 name|size
 argument_list|)
 expr_stmt|;
+comment|/* 	 * Grab the conflict ID and optionally write the original 	 * contents with conflict markers out. 	 */
 name|hunk_no
 operator|=
 name|handle_path
@@ -3818,6 +3819,7 @@ name|string_list_item
 modifier|*
 name|item
 decl_stmt|;
+comment|/* 	 * Recreate the original conflict from the stages in the 	 * index and compute the conflict ID 	 */
 name|ret
 operator|=
 name|handle_cache
@@ -3843,6 +3845,7 @@ argument_list|,
 name|path
 argument_list|)
 return|;
+comment|/* Nuke the recorded resolution for the conflict */
 name|hex
 operator|=
 name|xstrdup
@@ -3895,6 +3898,7 @@ argument_list|)
 argument_list|)
 operator|)
 return|;
+comment|/* 	 * Update the preimage so that the user can resolve the 	 * conflict in the working tree, run us again to record 	 * the postimage. 	 */
 name|handle_cache
 argument_list|(
 name|path
@@ -3918,6 +3922,7 @@ argument_list|,
 name|path
 argument_list|)
 expr_stmt|;
+comment|/* 	 * And remember that we can record resolution for this 	 * conflict when the user is done. 	 */
 name|item
 operator|=
 name|string_list_insert
@@ -4006,6 +4011,7 @@ argument_list|,
 name|RERERE_NOAUTOUPDATE
 argument_list|)
 expr_stmt|;
+comment|/* 	 * The paths may have been resolved (incorrectly); 	 * recover the original conflicted state and then 	 * find the conflicted paths. 	 */
 name|unmerge_cache
 argument_list|(
 name|pathspec
