@@ -502,6 +502,45 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * "rerere" interacts with conflicted file contents using this I/O  * abstraction.  It reads a conflicted contents from one place via  * "getline()" method, and optionally can write it out after  * normalizing the conflicted hunks to the "output".  Subclasses of  * rerere_io embed this structure at the beginning of their own  * rerere_io object.  */
+end_comment
+
+begin_struct
+DECL|struct|rerere_io
+struct|struct
+name|rerere_io
+block|{
+DECL|member|getline
+name|int
+function_decl|(
+modifier|*
+name|getline
+function_decl|)
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+parameter_list|,
+name|struct
+name|rerere_io
+modifier|*
+parameter_list|)
+function_decl|;
+DECL|member|output
+name|FILE
+modifier|*
+name|output
+decl_stmt|;
+DECL|member|wrerror
+name|int
+name|wrerror
+decl_stmt|;
+comment|/* some more stuff */
+block|}
+struct|;
+end_struct
+
 begin_function
 DECL|function|ferr_write
 specifier|static
@@ -595,41 +634,6 @@ expr_stmt|;
 block|}
 end_function
 
-begin_struct
-DECL|struct|rerere_io
-struct|struct
-name|rerere_io
-block|{
-DECL|member|getline
-name|int
-function_decl|(
-modifier|*
-name|getline
-function_decl|)
-parameter_list|(
-name|struct
-name|strbuf
-modifier|*
-parameter_list|,
-name|struct
-name|rerere_io
-modifier|*
-parameter_list|)
-function_decl|;
-DECL|member|output
-name|FILE
-modifier|*
-name|output
-decl_stmt|;
-DECL|member|wrerror
-name|int
-name|wrerror
-decl_stmt|;
-comment|/* some more stuff */
-block|}
-struct|;
-end_struct
-
 begin_function
 DECL|function|rerere_io_putstr
 specifier|static
@@ -669,6 +673,10 @@ argument_list|)
 expr_stmt|;
 block|}
 end_function
+
+begin_comment
+comment|/*  * Write a conflict marker to io->output (if defined).  */
+end_comment
 
 begin_function
 DECL|function|rerere_io_putconflict
@@ -846,6 +854,10 @@ expr_stmt|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Subclass of rerere_io that reads from an on-disk file  */
+end_comment
+
 begin_struct
 DECL|struct|rerere_io_file
 struct|struct
@@ -864,6 +876,10 @@ decl_stmt|;
 block|}
 struct|;
 end_struct
+
+begin_comment
+comment|/*  * ... and its getline() method implementation  */
+end_comment
 
 begin_function
 DECL|function|rerere_file_getline
@@ -1701,6 +1717,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Subclass of rerere_io that reads from an in-core buffer that is a  * strbuf  */
+end_comment
+
 begin_struct
 DECL|struct|rerere_io_mem
 struct|struct
@@ -1719,6 +1739,10 @@ decl_stmt|;
 block|}
 struct|;
 end_struct
+
+begin_comment
+comment|/*  * ... and its getline() method implementation  */
+end_comment
 
 begin_function
 DECL|function|rerere_mem_getline
