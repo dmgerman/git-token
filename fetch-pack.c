@@ -4349,8 +4349,16 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
+name|args
+operator|->
+name|depth
+operator|>
+literal|0
+operator|||
 name|is_repository_shallow
 argument_list|()
+operator|)
 operator|&&
 operator|!
 name|server_supports
