@@ -195,6 +195,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * $GIT_DIR/MERGE_RR file is a collection of records, each of which is  * "conflict ID", a HT and pathname, terminated with a NUL, and is  * used to keep track of the set of paths that "rerere" may need to  * work on (i.e. what is left by the previous invocation of "git  * rerere" during the current conflict resolution session).  */
+end_comment
+
 begin_function
 DECL|function|read_rr
 specifier|static
@@ -2314,6 +2318,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Look at a cache entry at "i" and see if it is not conflicting,  * conflicting and we are willing to handle, or conflicting and  * we are unable to handle, and return the determination in *type.  * Return the cache index to be looked at next, by skipping the  * stages we have already looked at in this invocation of this  * function.  */
+end_comment
+
 begin_function
 DECL|function|check_one_conflict
 specifier|static
@@ -2482,6 +2490,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Scan the index and find paths that have conflicts that rerere can  * handle, i.e. the ones that has both stages #2 and #3.  *  * NEEDSWORK: we do not record or replay a previous "resolve by  * deletion" for a delete-modify conflict, as that is inherently risky  * without knowing what modification is being discarded.  The only  * safe case, i.e. both side doing the deletion and modification that  * are identical to the previous round, might want to be handled,  * though.  */
+end_comment
+
 begin_function
 DECL|function|find_conflict
 specifier|static
@@ -2572,6 +2584,10 @@ literal|0
 return|;
 block|}
 end_function
+
+begin_comment
+comment|/*  * The merge_rr list is meant to hold outstanding conflicted paths  * that rerere could handle.  Abuse the list by adding other types of  * entries to allow the caller to show "rerere remaining".  *  * - Conflicted paths that rerere does not handle are added  * - Conflicted paths that have been resolved are marked as such  *   by storing RERERE_RESOLVED to .util field (where conflict ID  *   is expected to be stored).  *  * Do *not* write MERGE_RR file out after calling this function.  *  * NEEDSWORK: we may want to fix the caller that implements "rerere  * remaining" to do this without abusing merge_rr.  */
+end_comment
 
 begin_function
 DECL|function|rerere_remaining
