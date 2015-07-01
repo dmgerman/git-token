@@ -4101,6 +4101,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Garbage collection support  */
+end_comment
+
 begin_function
 DECL|function|rerere_created_at
 specifier|static
@@ -4185,6 +4189,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Remove the recorded resolution for a given conflict ID  */
+end_comment
+
 begin_function
 DECL|function|unlink_rr_item
 specifier|static
@@ -4227,6 +4235,7 @@ literal|"postimage"
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|/* 	 * NEEDSWORK: what if this rmdir() fails?  Wouldn't we then 	 * assume that we already have preimage recorded in 	 * do_plain_rerere()? 	 */
 name|rmdir
 argument_list|(
 name|git_path
@@ -4334,6 +4343,7 @@ argument_list|(
 literal|"unable to open rr-cache directory"
 argument_list|)
 expr_stmt|;
+comment|/* Collect stale conflict IDs ... */
 while|while
 condition|(
 operator|(
@@ -4423,6 +4433,7 @@ argument_list|(
 name|dir
 argument_list|)
 expr_stmt|;
+comment|/* ... and then remove them one-by-one */
 for|for
 control|(
 name|i
@@ -4460,6 +4471,10 @@ argument_list|)
 expr_stmt|;
 block|}
 end_function
+
+begin_comment
+comment|/*  * During a conflict resolution, after "rerere" recorded the  * preimages, abandon them if the user did not resolve them or  * record their resolutions.  And drop $GIT_DIR/MERGE_RR.  *  * NEEDSWORK: shouldn't we be calling this from "reset --hard"?  */
+end_comment
 
 begin_function
 DECL|function|rerere_clear
