@@ -338,6 +338,16 @@ argument_list|,
 literal|"LV=-c"
 argument_list|)
 expr_stmt|;
+name|argv_array_push
+argument_list|(
+operator|&
+name|pager_process
+operator|.
+name|env_array
+argument_list|,
+literal|"GIT_PAGER_IN_USE"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|start_command
