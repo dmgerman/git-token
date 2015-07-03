@@ -6710,9 +6710,6 @@ name|struct
 name|sha1file
 modifier|*
 name|f
-parameter_list|,
-name|int
-name|nr_unresolved
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -6856,8 +6853,6 @@ expr_stmt|;
 name|fix_unresolved_deltas
 argument_list|(
 name|f
-argument_list|,
-name|nr_unresolved
 argument_list|)
 expr_stmt|;
 name|strbuf_addf
@@ -7438,9 +7433,6 @@ name|struct
 name|sha1file
 modifier|*
 name|f
-parameter_list|,
-name|int
-name|nr_unresolved
 parameter_list|)
 block|{
 name|struct
@@ -7451,17 +7443,13 @@ name|sorted_by_pos
 decl_stmt|;
 name|int
 name|i
-decl_stmt|,
-name|n
-init|=
-literal|0
 decl_stmt|;
 comment|/* 	 * Since many unresolved deltas may well be themselves base objects 	 * for more unresolved deltas, we really want to include the 	 * smallest number of base objects that would cover as much delta 	 * as possible by picking the 	 * trunc deltas first, allowing for other deltas to resolve without 	 * additional base objects.  Since most base objects are to be found 	 * before deltas depending on them, a good heuristic is to start 	 * resolving deltas in the same order as their position in the pack. 	 */
 name|sorted_by_pos
 operator|=
 name|xmalloc
 argument_list|(
-name|nr_unresolved
+name|nr_ref_deltas
 operator|*
 sizeof|sizeof
 argument_list|(
@@ -7485,8 +7473,7 @@ operator|++
 control|)
 name|sorted_by_pos
 index|[
-name|n
-operator|++
+name|i
 index|]
 operator|=
 operator|&
@@ -7499,7 +7486,7 @@ name|qsort
 argument_list|(
 name|sorted_by_pos
 argument_list|,
-name|n
+name|nr_ref_deltas
 argument_list|,
 sizeof|sizeof
 argument_list|(
@@ -7518,7 +7505,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|n
+name|nr_ref_deltas
 condition|;
 name|i
 operator|++
