@@ -2875,7 +2875,7 @@ end_function
 
 begin_function
 DECL|function|strbuf_read_file
-name|int
+name|ssize_t
 name|strbuf_read_file
 parameter_list|(
 name|struct
@@ -2894,7 +2894,8 @@ parameter_list|)
 block|{
 name|int
 name|fd
-decl_stmt|,
+decl_stmt|;
+name|ssize_t
 name|len
 decl_stmt|;
 name|fd
