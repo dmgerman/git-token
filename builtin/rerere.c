@@ -707,15 +707,11 @@ operator|.
 name|string
 decl_stmt|;
 specifier|const
-name|char
+name|struct
+name|rerere_id
 modifier|*
 name|id
 init|=
-operator|(
-specifier|const
-name|char
-operator|*
-operator|)
 name|merge_rr
 operator|.
 name|items
