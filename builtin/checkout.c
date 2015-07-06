@@ -4723,6 +4723,13 @@ name|len
 decl_stmt|,
 name|ret
 decl_stmt|;
+name|unsigned
+name|char
+name|rev
+index|[
+literal|20
+index|]
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -5084,7 +5091,29 @@ argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
-comment|/* 	 * This is to keep resolve_ref() happy. We need a valid HEAD 	 * or is_git_directory() will reject the directory. Any valid 	 * value would do because this value will be ignored and 	 * replaced at the next (real) checkout. 	 */
+comment|/* 	 * This is to keep resolve_ref() happy. We need a valid HEAD 	 * or is_git_directory() will reject the directory. Moreover, HEAD 	 * in the new worktree must resolve to the same value as HEAD in 	 * the current tree since the command invoked to populate the new 	 * worktree will be handed the branch/ref specified by the user. 	 * For instance, if the user asks for the new worktree to be based 	 * at HEAD~5, then the resolved HEAD~5 in the new worktree must 	 * match the resolved HEAD~5 in the current tree in order to match 	 * the user's expectation. 	 */
+if|if
+condition|(
+operator|!
+name|resolve_ref_unsafe
+argument_list|(
+literal|"HEAD"
+argument_list|,
+literal|0
+argument_list|,
+name|rev
+argument_list|,
+name|NULL
+argument_list|)
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"unable to resolve HEAD"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|strbuf_reset
 argument_list|(
 operator|&
@@ -5115,13 +5144,7 @@ literal|"%s\n"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
-name|new
-operator|->
-name|commit
-operator|->
-name|object
-operator|.
-name|sha1
+name|rev
 argument_list|)
 argument_list|)
 expr_stmt|;
