@@ -4671,11 +4671,6 @@ name|struct
 name|checkout_opts
 modifier|*
 name|opts
-parameter_list|,
-name|struct
-name|branch_info
-modifier|*
-name|new
 parameter_list|)
 block|{
 name|struct
@@ -6931,8 +6926,6 @@ return|return
 name|prepare_linked_checkout
 argument_list|(
 name|opts
-argument_list|,
-name|new
 argument_list|)
 return|;
 block|}
