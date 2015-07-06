@@ -4732,21 +4732,6 @@ index|]
 decl_stmt|;
 if|if
 condition|(
-operator|!
-name|new
-operator|->
-name|commit
-condition|)
-name|die
-argument_list|(
-name|_
-argument_list|(
-literal|"no branch specified"
-argument_list|)
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
 name|file_exists
 argument_list|(
 name|path
@@ -6926,6 +6911,22 @@ name|opts
 operator|->
 name|new_worktree
 condition|)
+block|{
+if|if
+condition|(
+operator|!
+name|new
+operator|->
+name|commit
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"no branch specified"
+argument_list|)
+argument_list|)
+expr_stmt|;
 return|return
 name|prepare_linked_checkout
 argument_list|(
@@ -6934,6 +6935,7 @@ argument_list|,
 name|new
 argument_list|)
 return|;
+block|}
 if|if
 condition|(
 operator|!
