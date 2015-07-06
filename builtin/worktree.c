@@ -48,7 +48,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git worktree add<path><branch>"
+literal|"git worktree add [<options>]<path><branch>"
 argument_list|)
 block|,
 name|N_
@@ -771,6 +771,11 @@ name|struct
 name|child_process
 name|c
 decl_stmt|;
+name|int
+name|force
+init|=
+literal|0
+decl_stmt|;
 specifier|const
 name|char
 modifier|*
@@ -791,6 +796,17 @@ name|options
 index|[]
 init|=
 block|{
+name|OPT__FORCE
+argument_list|(
+operator|&
+name|force
+argument_list|,
+name|N_
+argument_list|(
+literal|"checkout<branch> even if already checked out in other worktree"
+argument_list|)
+argument_list|)
+block|,
 name|OPT_END
 argument_list|()
 block|}
@@ -874,6 +890,18 @@ argument_list|,
 name|path
 argument_list|,
 name|NULL
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|force
+condition|)
+name|argv_array_push
+argument_list|(
+operator|&
+name|cmd
+argument_list|,
+literal|"--ignore-other-worktrees"
 argument_list|)
 expr_stmt|;
 name|argv_array_push
