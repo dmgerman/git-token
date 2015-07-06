@@ -1866,7 +1866,7 @@ argument_list|(
 operator|&
 name|cmd
 argument_list|,
-literal|"--ignore-other-worktrees"
+literal|"--force"
 argument_list|)
 expr_stmt|;
 if|if

@@ -188,10 +188,6 @@ DECL|member|ignore_skipworktree
 name|int
 name|ignore_skipworktree
 decl_stmt|;
-DECL|member|ignore_other_worktrees
-name|int
-name|ignore_other_worktrees
-decl_stmt|;
 DECL|member|new_branch
 specifier|const
 name|char
@@ -5028,7 +5024,7 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"'%s' is already checked out at '%s'"
+literal|"'%s' is already checked out at '%s'; use --force to override"
 argument_list|)
 argument_list|,
 name|new
@@ -6041,7 +6037,7 @@ operator|&&
 operator|!
 name|opts
 operator|->
-name|ignore_other_worktrees
+name|force
 condition|)
 name|check_linked_checkouts
 argument_list|(
@@ -6448,23 +6444,6 @@ argument_list|,
 name|N_
 argument_list|(
 literal|"second guess 'git checkout no-such-branch'"
-argument_list|)
-argument_list|)
-block|,
-name|OPT_BOOL
-argument_list|(
-literal|0
-argument_list|,
-literal|"ignore-other-worktrees"
-argument_list|,
-operator|&
-name|opts
-operator|.
-name|ignore_other_worktrees
-argument_list|,
-name|N_
-argument_list|(
-literal|"do not check if another worktree is holding the given ref"
 argument_list|)
 argument_list|)
 block|,
