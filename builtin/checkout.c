@@ -5157,13 +5157,6 @@ argument_list|,
 literal|"../..\n"
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|opts
-operator|->
-name|quiet
-condition|)
 name|fprintf_ln
 argument_list|(
 name|stderr
