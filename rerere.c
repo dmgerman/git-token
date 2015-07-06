@@ -2903,6 +2903,10 @@ modifier|*
 name|path
 parameter_list|)
 block|{
+name|FILE
+modifier|*
+name|f
+decl_stmt|;
 name|int
 name|ret
 decl_stmt|;
@@ -2959,9 +2963,15 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-return|return
+block|{
+name|ret
+operator|=
 literal|1
-return|;
+expr_stmt|;
+goto|goto
+name|out
+goto|;
+block|}
 if|if
 condition|(
 name|read_mmfile
@@ -3042,15 +3052,12 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-operator|!
 name|ret
 condition|)
-block|{
-name|FILE
-modifier|*
-name|f
-decl_stmt|;
-comment|/* 		 * A successful replay of recorded resolution. 		 * Mark that "postimage" was used to help gc. 		 */
+goto|goto
+name|out
+goto|;
+comment|/* 	 * A successful replay of recorded resolution. 	 * Mark that "postimage" was used to help gc. 	 */
 if|if
 condition|(
 name|utime
@@ -3163,7 +3170,6 @@ name|errno
 argument_list|)
 argument_list|)
 return|;
-block|}
 name|out
 label|:
 name|free
