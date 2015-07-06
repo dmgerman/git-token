@@ -140,7 +140,7 @@ parameter_list|(
 specifier|const
 name|char
 modifier|*
-name|hex
+name|id
 parameter_list|,
 specifier|const
 name|char
@@ -153,7 +153,7 @@ name|git_path
 argument_list|(
 literal|"rr-cache/%s/%s"
 argument_list|,
-name|hex
+name|id
 argument_list|,
 name|file
 argument_list|)
@@ -170,7 +170,7 @@ parameter_list|(
 specifier|const
 name|char
 modifier|*
-name|hex
+name|id
 parameter_list|)
 block|{
 name|struct
@@ -183,7 +183,7 @@ name|stat
 argument_list|(
 name|rerere_path
 argument_list|(
-name|hex
+name|id
 argument_list|,
 literal|"postimage"
 argument_list|)
@@ -2740,7 +2740,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Find the conflict identified by "name"; the change between its  * "preimage" (i.e. a previous contents with conflict markers) and its  * "postimage" (i.e. the corresponding contents with conflicts  * resolved) may apply cleanly to the contents stored in "path", i.e.  * the conflict this time around.  *  * Returns 0 for successful replay of recorded resolution, or non-zero  * for failure.  */
+comment|/*  * Find the conflict identified by "id"; the change between its  * "preimage" (i.e. a previous contents with conflict markers) and its  * "postimage" (i.e. the corresponding contents with conflicts  * resolved) may apply cleanly to the contents stored in "path", i.e.  * the conflict this time around.  *  * Returns 0 for successful replay of recorded resolution, or non-zero  * for failure.  */
 end_comment
 
 begin_function
@@ -2752,7 +2752,7 @@ parameter_list|(
 specifier|const
 name|char
 modifier|*
-name|name
+name|id
 parameter_list|,
 specifier|const
 name|char
@@ -2808,7 +2808,7 @@ name|NULL
 argument_list|,
 name|rerere_path
 argument_list|(
-name|name
+name|id
 argument_list|,
 literal|"thisimage"
 argument_list|)
@@ -2828,7 +2828,7 @@ name|cur
 argument_list|,
 name|rerere_path
 argument_list|(
-name|name
+name|id
 argument_list|,
 literal|"thisimage"
 argument_list|)
@@ -2841,7 +2841,7 @@ name|base
 argument_list|,
 name|rerere_path
 argument_list|(
-name|name
+name|id
 argument_list|,
 literal|"preimage"
 argument_list|)
@@ -2854,7 +2854,7 @@ name|other
 argument_list|,
 name|rerere_path
 argument_list|(
-name|name
+name|id
 argument_list|,
 literal|"postimage"
 argument_list|)
@@ -2914,7 +2914,7 @@ name|utime
 argument_list|(
 name|rerere_path
 argument_list|(
-name|name
+name|id
 argument_list|,
 literal|"postimage"
 argument_list|)
@@ -2930,7 +2930,7 @@ literal|"failed utime() on %s: %s"
 argument_list|,
 name|rerere_path
 argument_list|(
-name|name
+name|id
 argument_list|,
 literal|"postimage"
 argument_list|)
@@ -3213,7 +3213,7 @@ decl_stmt|;
 specifier|const
 name|char
 modifier|*
-name|name
+name|id
 init|=
 operator|(
 specifier|const
@@ -3229,7 +3229,7 @@ if|if
 condition|(
 name|has_rerere_resolution
 argument_list|(
-name|name
+name|id
 argument_list|)
 condition|)
 block|{
@@ -3237,7 +3237,7 @@ if|if
 condition|(
 name|merge
 argument_list|(
-name|name
+name|id
 argument_list|,
 name|path
 argument_list|)
@@ -3285,7 +3285,7 @@ name|copy_file
 argument_list|(
 name|rerere_path
 argument_list|(
-name|name
+name|id
 argument_list|,
 literal|"postimage"
 argument_list|)
@@ -3387,7 +3387,7 @@ index|]
 decl_stmt|;
 name|char
 modifier|*
-name|hex
+name|id
 decl_stmt|;
 name|int
 name|ret
@@ -3435,7 +3435,7 @@ operator|<
 literal|1
 condition|)
 continue|continue;
-name|hex
+name|id
 operator|=
 name|xstrdup
 argument_list|(
@@ -3454,7 +3454,7 @@ argument_list|)
 operator|->
 name|util
 operator|=
-name|hex
+name|id
 expr_stmt|;
 comment|/* 		 * If the directory does not exist, create 		 * it.  mkdir_in_gitdir() will fail with 		 * EEXIST if there already is one. 		 * 		 * NEEDSWORK: make sure "gc" does not remove 		 * preimage without removing the directory. 		 */
 if|if
@@ -3465,7 +3465,7 @@ name|git_path
 argument_list|(
 literal|"rr-cache/%s"
 argument_list|,
-name|hex
+name|id
 argument_list|)
 argument_list|)
 condition|)
@@ -3479,7 +3479,7 @@ name|NULL
 argument_list|,
 name|rerere_path
 argument_list|(
-name|hex
+name|id
 argument_list|,
 literal|"preimage"
 argument_list|)
@@ -3810,7 +3810,7 @@ name|filename
 decl_stmt|;
 name|char
 modifier|*
-name|hex
+name|id
 decl_stmt|;
 name|unsigned
 name|char
@@ -3854,7 +3854,7 @@ name|path
 argument_list|)
 return|;
 comment|/* Nuke the recorded resolution for the conflict */
-name|hex
+name|id
 operator|=
 name|xstrdup
 argument_list|(
@@ -3868,7 +3868,7 @@ name|filename
 operator|=
 name|rerere_path
 argument_list|(
-name|hex
+name|id
 argument_list|,
 literal|"postimage"
 argument_list|)
@@ -3915,7 +3915,7 @@ name|sha1
 argument_list|,
 name|rerere_path
 argument_list|(
-name|hex
+name|id
 argument_list|,
 literal|"preimage"
 argument_list|)
@@ -3951,7 +3951,7 @@ name|item
 operator|->
 name|util
 operator|=
-name|hex
+name|id
 expr_stmt|;
 name|fprintf
 argument_list|(
@@ -4122,7 +4122,7 @@ parameter_list|(
 specifier|const
 name|char
 modifier|*
-name|name
+name|id
 parameter_list|)
 block|{
 name|struct
@@ -4134,7 +4134,7 @@ name|stat
 argument_list|(
 name|rerere_path
 argument_list|(
-name|name
+name|id
 argument_list|,
 literal|"preimage"
 argument_list|)
@@ -4164,7 +4164,7 @@ parameter_list|(
 specifier|const
 name|char
 modifier|*
-name|name
+name|id
 parameter_list|)
 block|{
 name|struct
@@ -4176,7 +4176,7 @@ name|stat
 argument_list|(
 name|rerere_path
 argument_list|(
-name|name
+name|id
 argument_list|,
 literal|"postimage"
 argument_list|)
@@ -4210,14 +4210,14 @@ parameter_list|(
 specifier|const
 name|char
 modifier|*
-name|name
+name|id
 parameter_list|)
 block|{
 name|unlink
 argument_list|(
 name|rerere_path
 argument_list|(
-name|name
+name|id
 argument_list|,
 literal|"thisimage"
 argument_list|)
@@ -4227,7 +4227,7 @@ name|unlink
 argument_list|(
 name|rerere_path
 argument_list|(
-name|name
+name|id
 argument_list|,
 literal|"preimage"
 argument_list|)
@@ -4237,7 +4237,7 @@ name|unlink
 argument_list|(
 name|rerere_path
 argument_list|(
-name|name
+name|id
 argument_list|,
 literal|"postimage"
 argument_list|)
@@ -4250,7 +4250,7 @@ name|git_path
 argument_list|(
 literal|"rr-cache/%s"
 argument_list|,
-name|name
+name|id
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4517,7 +4517,7 @@ block|{
 specifier|const
 name|char
 modifier|*
-name|name
+name|id
 init|=
 operator|(
 specifier|const
@@ -4538,12 +4538,12 @@ condition|(
 operator|!
 name|has_rerere_resolution
 argument_list|(
-name|name
+name|id
 argument_list|)
 condition|)
 name|unlink_rr_item
 argument_list|(
-name|name
+name|id
 argument_list|)
 expr_stmt|;
 block|}

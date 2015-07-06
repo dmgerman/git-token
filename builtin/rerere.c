@@ -709,7 +709,7 @@ decl_stmt|;
 specifier|const
 name|char
 modifier|*
-name|name
+name|id
 init|=
 operator|(
 specifier|const
@@ -729,7 +729,7 @@ name|diff_two
 argument_list|(
 name|rerere_path
 argument_list|(
-name|name
+name|id
 argument_list|,
 literal|"preimage"
 argument_list|)
