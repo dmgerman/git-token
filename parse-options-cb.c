@@ -424,9 +424,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|parse_opt_with_commit
+DECL|function|parse_opt_commits
 name|int
-name|parse_opt_with_commit
+name|parse_opt_commits
 parameter_list|(
 specifier|const
 name|struct

@@ -1069,7 +1069,7 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|int
-name|parse_opt_with_commit
+name|parse_opt_commits
 parameter_list|(
 specifier|const
 name|struct
