@@ -1250,6 +1250,50 @@ define|\
 value|{ OPTION_CALLBACK, (s), (l), (v), N_("style"), (h), PARSE_OPT_OPTARG, parseopt_column_callback }
 end_define
 
+begin_define
+DECL|macro|_OPT_CONTAINS_OR_WITH
+define|#
+directive|define
+name|_OPT_CONTAINS_OR_WITH
+parameter_list|(
+name|name
+parameter_list|,
+name|variable
+parameter_list|,
+name|help
+parameter_list|,
+name|flag
+parameter_list|)
+define|\
+value|{ OPTION_CALLBACK, 0, name, (variable), N_("commit"), (help), \ 	  PARSE_OPT_LASTARG_DEFAULT | flag, \ 	  parse_opt_commits, (intptr_t) "HEAD" \ 	}
+end_define
+
+begin_define
+DECL|macro|OPT_CONTAINS
+define|#
+directive|define
+name|OPT_CONTAINS
+parameter_list|(
+name|v
+parameter_list|,
+name|h
+parameter_list|)
+value|_OPT_CONTAINS_OR_WITH("contains", v, h, 0)
+end_define
+
+begin_define
+DECL|macro|OPT_WITH
+define|#
+directive|define
+name|OPT_WITH
+parameter_list|(
+name|v
+parameter_list|,
+name|h
+parameter_list|)
+value|_OPT_CONTAINS_OR_WITH("with", v, h, PARSE_OPT_HIDDEN)
+end_define
+
 begin_endif
 endif|#
 directive|endif
