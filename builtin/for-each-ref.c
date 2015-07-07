@@ -56,6 +56,11 @@ argument_list|(
 literal|"git for-each-ref [--points-at<object>]"
 argument_list|)
 block|,
+name|N_
+argument_list|(
+literal|"git for-each-ref [(--merged | --no-merged) [<object>]]"
+argument_list|)
+block|,
 name|NULL
 block|}
 decl_stmt|;
@@ -280,6 +285,28 @@ literal|"print only refs which points at the given object"
 argument_list|)
 argument_list|,
 name|parse_opt_object_name
+argument_list|)
+block|,
+name|OPT_MERGED
+argument_list|(
+operator|&
+name|filter
+argument_list|,
+name|N_
+argument_list|(
+literal|"print only refs that are merged"
+argument_list|)
+argument_list|)
+block|,
+name|OPT_NO_MERGED
+argument_list|(
+operator|&
+name|filter
+argument_list|,
+name|N_
+argument_list|(
+literal|"print only refs that are not merged"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_END
