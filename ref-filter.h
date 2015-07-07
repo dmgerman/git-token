@@ -249,6 +249,52 @@ struct|;
 end_struct
 
 begin_comment
+comment|/*  Macros for checking --merged and --no-merged options */
+end_comment
+
+begin_define
+DECL|macro|_OPT_MERGED_NO_MERGED
+define|#
+directive|define
+name|_OPT_MERGED_NO_MERGED
+parameter_list|(
+name|option
+parameter_list|,
+name|filter
+parameter_list|,
+name|h
+parameter_list|)
+define|\
+value|{ OPTION_CALLBACK, 0, option, (filter), N_("commit"), (h), \ 	  PARSE_OPT_LASTARG_DEFAULT | PARSE_OPT_NONEG, \ 	  parse_opt_merge_filter, (intptr_t) "HEAD" \ 	}
+end_define
+
+begin_define
+DECL|macro|OPT_MERGED
+define|#
+directive|define
+name|OPT_MERGED
+parameter_list|(
+name|f
+parameter_list|,
+name|h
+parameter_list|)
+value|_OPT_MERGED_NO_MERGED("merged", f, h)
+end_define
+
+begin_define
+DECL|macro|OPT_NO_MERGED
+define|#
+directive|define
+name|OPT_NO_MERGED
+parameter_list|(
+name|f
+parameter_list|,
+name|h
+parameter_list|)
+value|_OPT_MERGED_NO_MERGED("no-merged", f, h)
+end_define
+
+begin_comment
 comment|/*  * API for filtering a set of refs. Based on the type of refs the user  * has requested, we iterate through those refs and apply filters  * as per the given ref_filter structure and finally store the  * filtered refs in the ref_array structure.  */
 end_comment
 
@@ -407,6 +453,31 @@ modifier|*
 name|ref_default_sorting
 parameter_list|(
 name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/*  Function to parse --merged and --no-merged options */
+end_comment
+
+begin_function_decl
+name|int
+name|parse_opt_merge_filter
+parameter_list|(
+specifier|const
+name|struct
+name|option
+modifier|*
+name|opt
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|arg
+parameter_list|,
+name|int
+name|unset
 parameter_list|)
 function_decl|;
 end_function_decl

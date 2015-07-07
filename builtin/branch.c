@@ -4143,6 +4143,10 @@ expr_stmt|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * This function is duplicated in ref-filter. It will eventually be removed  * when we port branch.c to use ref-filter APIs.  */
+end_comment
+
 begin_function
 DECL|function|opt_parse_merge_filter
 specifier|static
