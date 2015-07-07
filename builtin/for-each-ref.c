@@ -61,6 +61,11 @@ argument_list|(
 literal|"git for-each-ref [(--merged | --no-merged) [<object>]]"
 argument_list|)
 block|,
+name|N_
+argument_list|(
+literal|"git for-each-ref [--contains [<object>]]"
+argument_list|)
+block|,
 name|NULL
 block|}
 decl_stmt|;
@@ -306,6 +311,19 @@ argument_list|,
 name|N_
 argument_list|(
 literal|"print only refs that are not merged"
+argument_list|)
+argument_list|)
+block|,
+name|OPT_CONTAINS
+argument_list|(
+operator|&
+name|filter
+operator|.
+name|with_commit
+argument_list|,
+name|N_
+argument_list|(
+literal|"print only refs which contain the commit"
 argument_list|)
 argument_list|)
 block|,
