@@ -3451,6 +3451,7 @@ operator|&
 name|cb
 argument_list|)
 expr_stmt|;
+comment|/* 	 * The following implementation is currently duplicated in ref-filter. It 	 * will eventually be removed when we port branch.c to use ref-filter APIs. 	 */
 if|if
 condition|(
 name|merge_filter
