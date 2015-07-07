@@ -218,6 +218,11 @@ modifier|*
 modifier|*
 name|name_patterns
 decl_stmt|;
+DECL|member|points_at
+name|struct
+name|sha1_array
+name|points_at
+decl_stmt|;
 block|}
 struct|;
 end_struct

@@ -265,6 +265,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * This is currently duplicated in ref-filter.c, and will eventually be  * removed as we port tag.c to use the ref-filter APIs.  */
+end_comment
+
 begin_function
 DECL|function|match_points_at
 specifier|static
