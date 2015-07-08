@@ -22048,6 +22048,7 @@ argument_list|,
 literal|"--no-follow"
 argument_list|)
 condition|)
+block|{
 name|DIFF_OPT_CLR
 argument_list|(
 name|options
@@ -22055,6 +22056,14 @@ argument_list|,
 name|FOLLOW_RENAMES
 argument_list|)
 expr_stmt|;
+name|DIFF_OPT_CLR
+argument_list|(
+name|options
+argument_list|,
+name|DEFAULT_FOLLOW_RENAMES
+argument_list|)
+expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
