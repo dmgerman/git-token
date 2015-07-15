@@ -12538,11 +12538,20 @@ index|[
 literal|20
 index|]
 decl_stmt|;
+if|if
+condition|(
 name|read_ref
 argument_list|(
 name|pseudoref
 argument_list|,
 name|actual_old_sha1
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"could not read ref '%s'"
+argument_list|,
+name|pseudoref
 argument_list|)
 expr_stmt|;
 if|if
@@ -12724,11 +12733,20 @@ argument_list|,
 name|filename
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|read_ref
 argument_list|(
 name|pseudoref
 argument_list|,
 name|actual_old_sha1
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"could not read ref '%s'"
+argument_list|,
+name|pseudoref
 argument_list|)
 expr_stmt|;
 if|if
