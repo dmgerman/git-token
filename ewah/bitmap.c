@@ -16,25 +16,25 @@ file|"ewok.h"
 end_include
 
 begin_define
-DECL|macro|MASK
+DECL|macro|EWAH_MASK
 define|#
 directive|define
-name|MASK
+name|EWAH_MASK
 parameter_list|(
 name|x
 parameter_list|)
-value|((eword_t)1<< (x % BITS_IN_WORD))
+value|((eword_t)1<< (x % BITS_IN_EWORD))
 end_define
 
 begin_define
-DECL|macro|BLOCK
+DECL|macro|EWAH_BLOCK
 define|#
 directive|define
-name|BLOCK
+name|EWAH_BLOCK
 parameter_list|(
 name|x
 parameter_list|)
-value|(x / BITS_IN_WORD)
+value|(x / BITS_IN_EWORD)
 end_define
 
 begin_function
@@ -104,7 +104,7 @@ block|{
 name|size_t
 name|block
 init|=
-name|BLOCK
+name|EWAH_BLOCK
 argument_list|(
 name|pos
 argument_list|)
@@ -185,7 +185,7 @@ index|[
 name|block
 index|]
 operator||=
-name|MASK
+name|EWAH_MASK
 argument_list|(
 name|pos
 argument_list|)
@@ -210,7 +210,7 @@ block|{
 name|size_t
 name|block
 init|=
-name|BLOCK
+name|EWAH_BLOCK
 argument_list|(
 name|pos
 argument_list|)
@@ -231,7 +231,7 @@ name|block
 index|]
 operator|&=
 operator|~
-name|MASK
+name|EWAH_MASK
 argument_list|(
 name|pos
 argument_list|)
@@ -256,7 +256,7 @@ block|{
 name|size_t
 name|block
 init|=
-name|BLOCK
+name|EWAH_BLOCK
 argument_list|(
 name|pos
 argument_list|)
@@ -276,7 +276,7 @@ index|[
 name|block
 index|]
 operator|&
-name|MASK
+name|EWAH_MASK
 argument_list|(
 name|pos
 argument_list|)
@@ -625,7 +625,7 @@ name|other
 operator|->
 name|bit_size
 operator|/
-name|BITS_IN_WORD
+name|BITS_IN_EWORD
 operator|)
 operator|+
 literal|1
@@ -807,7 +807,7 @@ literal|0
 init|;
 name|offset
 operator|<
-name|BITS_IN_WORD
+name|BITS_IN_EWORD
 condition|;
 operator|++
 name|offset
@@ -831,7 +831,7 @@ literal|0
 init|;
 name|offset
 operator|<
-name|BITS_IN_WORD
+name|BITS_IN_EWORD
 condition|;
 operator|++
 name|offset
@@ -869,7 +869,7 @@ expr_stmt|;
 block|}
 name|pos
 operator|+=
-name|BITS_IN_WORD
+name|BITS_IN_EWORD
 expr_stmt|;
 block|}
 block|}
