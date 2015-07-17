@@ -157,6 +157,23 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Check if a branch is checked out in the main worktree or any linked  * worktree and die (with a message describing its checkout location) if  * it is.  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|void
+name|die_if_checked_out
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|branch
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
