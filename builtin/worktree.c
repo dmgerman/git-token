@@ -1445,7 +1445,7 @@ name|stderr
 argument_list|,
 name|_
 argument_list|(
-literal|"Enter %s (identifier %s)"
+literal|"Preparing %s (identifier %s)"
 argument_list|)
 argument_list|,
 name|path
