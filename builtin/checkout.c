@@ -4844,6 +4844,7 @@ decl_stmt|,
 modifier|*
 name|end
 decl_stmt|;
+comment|/* 	 * $GIT_COMMON_DIR/HEAD is practically outside 	 * $GIT_DIR so resolve_ref_unsafe() won't work (it 	 * uses git_path). Parse the ref ourselves. 	 */
 if|if
 condition|(
 name|id
@@ -5090,6 +5091,13 @@ name|dirent
 modifier|*
 name|d
 decl_stmt|;
+name|check_linked_checkout
+argument_list|(
+name|new
+argument_list|,
+name|NULL
+argument_list|)
+expr_stmt|;
 name|strbuf_addf
 argument_list|(
 operator|&
@@ -5125,14 +5133,6 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-comment|/* 	 * $GIT_COMMON_DIR/HEAD is practically outside 	 * $GIT_DIR so resolve_ref_unsafe() won't work (it 	 * uses git_path). Parse the ref ourselves. 	 */
-name|check_linked_checkout
-argument_list|(
-name|new
-argument_list|,
-name|NULL
-argument_list|)
-expr_stmt|;
 while|while
 condition|(
 operator|(
