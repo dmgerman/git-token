@@ -5988,6 +5988,11 @@ operator|!
 name|opts
 operator|->
 name|new_branch
+operator|&&
+operator|!
+name|opts
+operator|->
+name|ignore_other_worktrees
 condition|)
 block|{
 name|unsigned
@@ -6037,11 +6042,6 @@ operator|->
 name|path
 argument_list|)
 operator|)
-operator|&&
-operator|!
-name|opts
-operator|->
-name|ignore_other_worktrees
 condition|)
 name|check_linked_checkouts
 argument_list|(
