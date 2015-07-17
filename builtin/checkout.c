@@ -5064,10 +5064,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|check_linked_checkouts
+DECL|function|die_if_checked_out
 specifier|static
 name|void
-name|check_linked_checkouts
+name|die_if_checked_out
 parameter_list|(
 name|struct
 name|branch_info
@@ -6043,7 +6043,7 @@ name|path
 argument_list|)
 operator|)
 condition|)
-name|check_linked_checkouts
+name|die_if_checked_out
 argument_list|(
 name|new
 argument_list|)
