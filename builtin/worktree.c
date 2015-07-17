@@ -1786,17 +1786,29 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+operator|!
+name|opts
+operator|.
+name|detach
+operator|+
+operator|!
+operator|!
 name|opts
 operator|.
 name|new_branch
-operator|&&
+operator|+
+operator|!
+operator|!
 name|new_branch_force
+operator|>
+literal|1
 condition|)
 name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"-b and -B are mutually exclusive"
+literal|"-b, -B, and --detach are mutually exclusive"
 argument_list|)
 argument_list|)
 expr_stmt|;
