@@ -8455,6 +8455,8 @@ argument_list|(
 operator|&
 name|uts
 argument_list|)
+operator|<
+literal|0
 condition|)
 name|die_errno
 argument_list|(
