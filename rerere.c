@@ -685,7 +685,16 @@ modifier|*
 name|id
 parameter_list|)
 block|{
+specifier|const
+name|int
+name|both
+init|=
+name|RR_HAS_POSTIMAGE
+operator||
+name|RR_HAS_PREIMAGE
+decl_stmt|;
 return|return
+operator|(
 operator|(
 name|id
 operator|->
@@ -693,7 +702,10 @@ name|collection
 operator|->
 name|status
 operator|&
-name|RR_HAS_POSTIMAGE
+name|both
+operator|)
+operator|==
+name|both
 operator|)
 return|;
 block|}
@@ -4043,7 +4055,7 @@ name|util
 operator|=
 name|id
 expr_stmt|;
-comment|/* 		 * If the directory does not exist, create 		 * it.  mkdir_in_gitdir() will fail with 		 * EEXIST if there already is one. 		 * 		 * NEEDSWORK: make sure "gc" does not remove 		 * preimage without removing the directory. 		 */
+comment|/* 		 * Ensure that the directory exists. 		 * mkdir_in_gitdir() will fail with EEXIST if there 		 * already is one. 		 */
 if|if
 condition|(
 name|mkdir_in_gitdir
@@ -4055,9 +4067,29 @@ argument_list|,
 name|NULL
 argument_list|)
 argument_list|)
+operator|&&
+name|errno
+operator|!=
+name|EEXIST
 condition|)
 continue|continue;
-comment|/* 		 * We are the first to encounter this 		 * conflict.  Ask handle_file() to write the 		 * normalized contents to the "preimage" file. 		 */
+comment|/* NEEDSWORK: perhaps we should die? */
+if|if
+condition|(
+name|id
+operator|->
+name|collection
+operator|->
+name|status
+operator|&
+name|RR_HAS_PREIMAGE
+condition|)
+block|{
+empty_stmt|;
+block|}
+else|else
+block|{
+comment|/* 			 * We are the first to encounter this 			 * conflict.  Ask handle_file() to write the 			 * normalized contents to the "preimage" file. 			 * 			 * NEEDSWORK: what should happen if we had a 			 * leftover postimage that is totally 			 * unrelated?  Perhaps we should unlink it? 			 */
 name|handle_file
 argument_list|(
 name|path
@@ -4089,6 +4121,7 @@ argument_list|,
 name|path
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 for|for
 control|(
