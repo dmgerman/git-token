@@ -1120,6 +1120,23 @@ operator|&
 name|CE_UPDATE
 condition|)
 block|{
+if|if
+condition|(
+name|ce
+operator|->
+name|ce_flags
+operator|&
+name|CE_WT_REMOVE
+condition|)
+name|die
+argument_list|(
+literal|"BUG: both update and delete flags are set on %s"
+argument_list|,
+name|ce
+operator|->
+name|name
+argument_list|)
+expr_stmt|;
 name|display_progress
 argument_list|(
 name|progress
@@ -1352,6 +1369,13 @@ operator|->
 name|ce_flags
 operator||=
 name|CE_WT_REMOVE
+expr_stmt|;
+name|ce
+operator|->
+name|ce_flags
+operator|&=
+operator|~
+name|CE_UPDATE
 expr_stmt|;
 block|}
 if|if
