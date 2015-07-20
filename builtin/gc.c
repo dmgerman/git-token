@@ -471,7 +471,7 @@ argument_list|)
 expr_stmt|;
 name|git_config_date_string
 argument_list|(
-literal|"gc.pruneworktreesexpire"
+literal|"gc.worktreepruneexpire"
 argument_list|,
 operator|&
 name|prune_worktrees_expire
