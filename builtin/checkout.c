@@ -3308,6 +3308,12 @@ name|char
 modifier|*
 name|ref_name
 decl_stmt|;
+name|struct
+name|strbuf
+name|err
+init|=
+name|STRBUF_INIT
+decl_stmt|;
 name|ref_name
 operator|=
 name|mkpath
@@ -3335,6 +3341,9 @@ name|ref_name
 argument_list|,
 operator|&
 name|log_file
+argument_list|,
+operator|&
+name|err
 argument_list|)
 expr_stmt|;
 name|log_all_ref_updates
@@ -3358,12 +3367,22 @@ name|stderr
 argument_list|,
 name|_
 argument_list|(
-literal|"Can not do reflog for '%s'\n"
+literal|"Can not do reflog for '%s': %s\n"
 argument_list|)
 argument_list|,
 name|opts
 operator|->
 name|new_orphan_branch
+argument_list|,
+name|err
+operator|.
+name|buf
+argument_list|)
+expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|err
 argument_list|)
 expr_stmt|;
 return|return;

@@ -671,7 +671,7 @@ value|0x01
 end_define
 
 begin_comment
-comment|/*  * Setup reflog before using. Set errno to something meaningful on failure.  */
+comment|/*  * Setup reflog before using. Fill in err and return -1 on failure.  */
 end_comment
 
 begin_function_decl
@@ -687,6 +687,11 @@ name|struct
 name|strbuf
 modifier|*
 name|logfile
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|err
 parameter_list|)
 function_decl|;
 end_function_decl

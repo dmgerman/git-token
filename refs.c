@@ -12729,6 +12729,11 @@ name|unsigned
 name|char
 modifier|*
 name|sha1
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|err
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -12753,6 +12758,11 @@ specifier|const
 name|char
 modifier|*
 name|logmsg
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|err
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -13121,6 +13131,9 @@ argument_list|(
 name|lock
 argument_list|,
 name|orig_sha1
+argument_list|,
+operator|&
+name|err
 argument_list|)
 operator|||
 name|commit_ref_update
@@ -13130,14 +13143,27 @@ argument_list|,
 name|orig_sha1
 argument_list|,
 name|logmsg
+argument_list|,
+operator|&
+name|err
 argument_list|)
 condition|)
 block|{
 name|error
 argument_list|(
-literal|"unable to write current sha1 into %s"
+literal|"unable to write current sha1 into %s: %s"
 argument_list|,
 name|newrefname
+argument_list|,
+name|err
+operator|.
+name|buf
+argument_list|)
+expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|err
 argument_list|)
 expr_stmt|;
 goto|goto
@@ -13211,6 +13237,9 @@ argument_list|(
 name|lock
 argument_list|,
 name|orig_sha1
+argument_list|,
+operator|&
+name|err
 argument_list|)
 operator|||
 name|commit_ref_update
@@ -13220,15 +13249,30 @@ argument_list|,
 name|orig_sha1
 argument_list|,
 name|NULL
+argument_list|,
+operator|&
+name|err
 argument_list|)
 condition|)
+block|{
 name|error
 argument_list|(
-literal|"unable to write current sha1 into %s"
+literal|"unable to write current sha1 into %s: %s"
 argument_list|,
 name|oldrefname
+argument_list|,
+name|err
+operator|.
+name|buf
 argument_list|)
 expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|err
+argument_list|)
+expr_stmt|;
+block|}
 name|log_all_ref_updates
 operator|=
 name|flag
@@ -13490,7 +13534,7 @@ block|}
 end_function
 
 begin_comment
-comment|/* This function must set a meaningful errno on failure */
+comment|/* This function will fill in *err and return -1 on failure */
 end_comment
 
 begin_function
@@ -13507,6 +13551,11 @@ name|struct
 name|strbuf
 modifier|*
 name|sb_logfile
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|err
 parameter_list|)
 block|{
 name|int
@@ -13588,21 +13637,20 @@ operator|<
 literal|0
 condition|)
 block|{
-name|int
-name|save_errno
-init|=
-name|errno
-decl_stmt|;
-name|error
+name|strbuf_addf
 argument_list|(
-literal|"unable to create directory for %s"
+name|err
+argument_list|,
+literal|"unable to create directory for %s: "
+literal|"%s"
 argument_list|,
 name|logfile
-argument_list|)
-expr_stmt|;
+argument_list|,
+name|strerror
+argument_list|(
 name|errno
-operator|=
-name|save_errno
+argument_list|)
+argument_list|)
 expr_stmt|;
 return|return
 operator|-
@@ -13669,21 +13717,15 @@ name|logfile
 argument_list|)
 condition|)
 block|{
-name|int
-name|save_errno
-init|=
-name|errno
-decl_stmt|;
-name|error
+name|strbuf_addf
 argument_list|(
-literal|"There are still logs under '%s'"
+name|err
+argument_list|,
+literal|"There are still logs under "
+literal|"'%s'"
 argument_list|,
 name|logfile
 argument_list|)
-expr_stmt|;
-name|errno
-operator|=
-name|save_errno
 expr_stmt|;
 return|return
 operator|-
@@ -13709,14 +13751,11 @@ operator|<
 literal|0
 condition|)
 block|{
-name|int
-name|save_errno
-init|=
-name|errno
-decl_stmt|;
-name|error
+name|strbuf_addf
 argument_list|(
-literal|"Unable to append to %s: %s"
+name|err
+argument_list|,
+literal|"unable to append to %s: %s"
 argument_list|,
 name|logfile
 argument_list|,
@@ -13725,10 +13764,6 @@ argument_list|(
 name|errno
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|errno
-operator|=
-name|save_errno
 expr_stmt|;
 return|return
 operator|-
@@ -13938,6 +13973,11 @@ name|struct
 name|strbuf
 modifier|*
 name|sb_log_file
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|err
 parameter_list|)
 block|{
 name|int
@@ -13974,6 +14014,8 @@ argument_list|(
 name|refname
 argument_list|,
 name|sb_log_file
+argument_list|,
+name|err
 argument_list|)
 expr_stmt|;
 if|if
@@ -14035,26 +14077,24 @@ condition|(
 name|result
 condition|)
 block|{
-name|int
-name|save_errno
-init|=
+name|strbuf_addf
+argument_list|(
+name|err
+argument_list|,
+literal|"unable to append to %s: %s"
+argument_list|,
+name|log_file
+argument_list|,
+name|strerror
+argument_list|(
 name|errno
-decl_stmt|;
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|close
 argument_list|(
 name|logfd
 argument_list|)
-expr_stmt|;
-name|error
-argument_list|(
-literal|"Unable to append to %s"
-argument_list|,
-name|log_file
-argument_list|)
-expr_stmt|;
-name|errno
-operator|=
-name|save_errno
 expr_stmt|;
 return|return
 operator|-
@@ -14069,21 +14109,19 @@ name|logfd
 argument_list|)
 condition|)
 block|{
-name|int
-name|save_errno
-init|=
-name|errno
-decl_stmt|;
-name|error
+name|strbuf_addf
 argument_list|(
-literal|"Unable to append to %s"
+name|err
+argument_list|,
+literal|"unable to append to %s: %s"
 argument_list|,
 name|log_file
-argument_list|)
-expr_stmt|;
+argument_list|,
+name|strerror
+argument_list|(
 name|errno
-operator|=
-name|save_errno
+argument_list|)
+argument_list|)
 expr_stmt|;
 return|return
 operator|-
@@ -14123,6 +14161,11 @@ specifier|const
 name|char
 modifier|*
 name|msg
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|err
 parameter_list|)
 block|{
 name|struct
@@ -14146,6 +14189,8 @@ name|msg
 argument_list|,
 operator|&
 name|sb
+argument_list|,
+name|err
 argument_list|)
 decl_stmt|;
 name|strbuf_release
@@ -14191,7 +14236,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Write sha1 into the open lockfile, then close the lockfile. On  * errors, rollback the lockfile and set errno to reflect the problem.  */
+comment|/*  * Write sha1 into the open lockfile, then close the lockfile. On  * errors, rollback the lockfile, fill in *err and  * return -1.  */
 end_comment
 
 begin_function
@@ -14210,6 +14255,11 @@ name|unsigned
 name|char
 modifier|*
 name|sha1
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|err
 parameter_list|)
 block|{
 specifier|static
@@ -14236,8 +14286,10 @@ operator|!
 name|o
 condition|)
 block|{
-name|error
+name|strbuf_addf
 argument_list|(
+name|err
+argument_list|,
 literal|"Trying to write ref %s with nonexistent object %s"
 argument_list|,
 name|lock
@@ -14254,10 +14306,6 @@ name|unlock_ref
 argument_list|(
 name|lock
 argument_list|)
-expr_stmt|;
-name|errno
-operator|=
-name|EINVAL
 expr_stmt|;
 return|return
 operator|-
@@ -14280,8 +14328,10 @@ name|ref_name
 argument_list|)
 condition|)
 block|{
-name|error
+name|strbuf_addf
 argument_list|(
+name|err
+argument_list|,
 literal|"Trying to write non-commit object %s to branch %s"
 argument_list|,
 name|sha1_to_hex
@@ -14298,10 +14348,6 @@ name|unlock_ref
 argument_list|(
 name|lock
 argument_list|)
-expr_stmt|;
-name|errno
-operator|=
-name|EINVAL
 expr_stmt|;
 return|return
 operator|-
@@ -14352,13 +14398,10 @@ operator|<
 literal|0
 condition|)
 block|{
-name|int
-name|save_errno
-init|=
-name|errno
-decl_stmt|;
-name|error
+name|strbuf_addf
 argument_list|(
+name|err
+argument_list|,
 literal|"Couldn't write %s"
 argument_list|,
 name|lock
@@ -14374,10 +14417,6 @@ name|unlock_ref
 argument_list|(
 name|lock
 argument_list|)
-expr_stmt|;
-name|errno
-operator|=
-name|save_errno
 expr_stmt|;
 return|return
 operator|-
@@ -14415,6 +14454,11 @@ specifier|const
 name|char
 modifier|*
 name|logmsg
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|err
 parameter_list|)
 block|{
 name|clear_loose_ref_cache
@@ -14440,6 +14484,8 @@ argument_list|,
 name|sha1
 argument_list|,
 name|logmsg
+argument_list|,
+name|err
 argument_list|)
 operator|<
 literal|0
@@ -14471,12 +14517,43 @@ argument_list|,
 name|sha1
 argument_list|,
 name|logmsg
+argument_list|,
+name|err
 argument_list|)
 operator|<
 literal|0
 operator|)
 condition|)
 block|{
+name|char
+modifier|*
+name|old_msg
+init|=
+name|strbuf_detach
+argument_list|(
+name|err
+argument_list|,
+name|NULL
+argument_list|)
+decl_stmt|;
+name|strbuf_addf
+argument_list|(
+name|err
+argument_list|,
+literal|"Cannot update the ref '%s': %s"
+argument_list|,
+name|lock
+operator|->
+name|ref_name
+argument_list|,
+name|old_msg
+argument_list|)
+expr_stmt|;
+name|free
+argument_list|(
+name|old_msg
+argument_list|)
+expr_stmt|;
 name|unlock_ref
 argument_list|(
 name|lock
@@ -14551,6 +14628,15 @@ operator|->
 name|ref_name
 argument_list|)
 condition|)
+block|{
+name|struct
+name|strbuf
+name|log_err
+init|=
+name|STRBUF_INIT
+decl_stmt|;
+if|if
+condition|(
 name|log_ref_write
 argument_list|(
 literal|"HEAD"
@@ -14564,8 +14650,29 @@ argument_list|,
 name|sha1
 argument_list|,
 name|logmsg
+argument_list|,
+operator|&
+name|log_err
+argument_list|)
+condition|)
+block|{
+name|error
+argument_list|(
+literal|"%s"
+argument_list|,
+name|log_err
+operator|.
+name|buf
 argument_list|)
 expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|log_err
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 if|if
 condition|(
@@ -14666,6 +14773,12 @@ name|new_sha1
 index|[
 literal|20
 index|]
+decl_stmt|;
+name|struct
+name|strbuf
+name|err
+init|=
+name|STRBUF_INIT
 decl_stmt|;
 if|if
 condition|(
@@ -14926,7 +15039,7 @@ name|refs_heads_master
 argument_list|,
 name|new_sha1
 argument_list|)
-condition|)
+operator|&&
 name|log_ref_write
 argument_list|(
 name|ref_target
@@ -14936,8 +15049,28 @@ argument_list|,
 name|new_sha1
 argument_list|,
 name|logmsg
+argument_list|,
+operator|&
+name|err
+argument_list|)
+condition|)
+block|{
+name|error
+argument_list|(
+literal|"%s"
+argument_list|,
+name|err
+operator|.
+name|buf
 argument_list|)
 expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|err
+argument_list|)
+expr_stmt|;
+block|}
 name|free
 argument_list|(
 name|git_HEAD
@@ -18182,9 +18315,22 @@ argument_list|,
 name|update
 operator|->
 name|new_sha1
+argument_list|,
+name|err
 argument_list|)
 condition|)
 block|{
+name|char
+modifier|*
+name|write_err
+init|=
+name|strbuf_detach
+argument_list|(
+name|err
+argument_list|,
+name|NULL
+argument_list|)
+decl_stmt|;
 comment|/* 				 * The lock was freed upon failure of 				 * write_ref_to_lockfile(): 				 */
 name|update
 operator|->
@@ -18196,11 +18342,18 @@ name|strbuf_addf
 argument_list|(
 name|err
 argument_list|,
-literal|"cannot update the ref '%s'."
+literal|"cannot update the ref '%s': %s"
 argument_list|,
 name|update
 operator|->
 name|refname
+argument_list|,
+name|write_err
+argument_list|)
+expr_stmt|;
+name|free
+argument_list|(
+name|write_err
 argument_list|)
 expr_stmt|;
 name|ret
@@ -18310,6 +18463,8 @@ argument_list|,
 name|update
 operator|->
 name|msg
+argument_list|,
+name|err
 argument_list|)
 condition|)
 block|{
@@ -18319,17 +18474,6 @@ operator|->
 name|lock
 operator|=
 name|NULL
-expr_stmt|;
-name|strbuf_addf
-argument_list|(
-name|err
-argument_list|,
-literal|"Cannot update the ref '%s'."
-argument_list|,
-name|update
-operator|->
-name|refname
-argument_list|)
 expr_stmt|;
 name|ret
 operator|=
