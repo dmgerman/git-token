@@ -676,17 +676,15 @@ end_comment
 
 begin_function_decl
 name|int
-name|log_ref_setup
+name|safe_create_reflog
 parameter_list|(
 specifier|const
 name|char
 modifier|*
 name|refname
 parameter_list|,
-name|struct
-name|strbuf
-modifier|*
-name|logfile
+name|int
+name|force_create
 parameter_list|,
 name|struct
 name|strbuf
