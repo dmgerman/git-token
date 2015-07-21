@@ -406,6 +406,10 @@ value|0x20
 end_define
 
 begin_comment
+comment|/*  * 0x40 is REF_FORCE_CREATE_REFLOG, so skip it if you're adding a  * value to ref_update::flags  */
+end_comment
+
+begin_comment
 comment|/*  * Try to read one refname component from the front of refname.  * Return the length of the component found, or -1 if the component is  * not legal.  It is legal if it is something reasonable to have under  * ".git/refs/"; We do not like it if:  *  * - any path component of it begins with ".", or  * - it has double dots "..", or  * - it has ASCII control character, "~", "^", ":" or SP, anywhere, or  * - it ends with a "/".  * - it ends with ".lock"  * - it contains a "\" (backslash)  */
 end_comment
 
@@ -12759,6 +12763,9 @@ name|char
 modifier|*
 name|logmsg
 parameter_list|,
+name|int
+name|flags
+parameter_list|,
 name|struct
 name|strbuf
 modifier|*
@@ -13144,6 +13151,8 @@ name|orig_sha1
 argument_list|,
 name|logmsg
 argument_list|,
+literal|0
+argument_list|,
 operator|&
 name|err
 argument_list|)
@@ -13249,6 +13258,8 @@ argument_list|,
 name|orig_sha1
 argument_list|,
 name|NULL
+argument_list|,
+literal|0
 argument_list|,
 operator|&
 name|err
@@ -14059,6 +14070,9 @@ name|strbuf
 modifier|*
 name|sb_log_file
 parameter_list|,
+name|int
+name|flags
+parameter_list|,
 name|struct
 name|strbuf
 modifier|*
@@ -14102,7 +14116,9 @@ name|sb_log_file
 argument_list|,
 name|err
 argument_list|,
-literal|0
+name|flags
+operator|&
+name|REF_FORCE_CREATE_REFLOG
 argument_list|)
 expr_stmt|;
 if|if
@@ -14249,6 +14265,9 @@ name|char
 modifier|*
 name|msg
 parameter_list|,
+name|int
+name|flags
+parameter_list|,
 name|struct
 name|strbuf
 modifier|*
@@ -14276,6 +14295,8 @@ name|msg
 argument_list|,
 operator|&
 name|sb
+argument_list|,
+name|flags
 argument_list|,
 name|err
 argument_list|)
@@ -14542,6 +14563,9 @@ name|char
 modifier|*
 name|logmsg
 parameter_list|,
+name|int
+name|flags
+parameter_list|,
 name|struct
 name|strbuf
 modifier|*
@@ -14571,6 +14595,8 @@ argument_list|,
 name|sha1
 argument_list|,
 name|logmsg
+argument_list|,
+name|flags
 argument_list|,
 name|err
 argument_list|)
@@ -14604,6 +14630,8 @@ argument_list|,
 name|sha1
 argument_list|,
 name|logmsg
+argument_list|,
+name|flags
 argument_list|,
 name|err
 argument_list|)
@@ -14737,6 +14765,8 @@ argument_list|,
 name|sha1
 argument_list|,
 name|logmsg
+argument_list|,
+literal|0
 argument_list|,
 operator|&
 name|log_err
@@ -15136,6 +15166,8 @@ argument_list|,
 name|new_sha1
 argument_list|,
 name|logmsg
+argument_list|,
+literal|0
 argument_list|,
 operator|&
 name|err
@@ -18550,6 +18582,10 @@ argument_list|,
 name|update
 operator|->
 name|msg
+argument_list|,
+name|update
+operator|->
+name|flags
 argument_list|,
 name|err
 argument_list|)
