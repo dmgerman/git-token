@@ -116,6 +116,15 @@ literal|"|[-+]?[0-9.]+([AaIiDdEeFfLlTtXx][Ss]?[-+]?[0-9.]*)?(_[a-zA-Z0-9][a-zA-Z
 literal|"|//|\\*\\*|::|[/<>=]="
 argument_list|)
 block|,
+name|IPATTERN
+argument_list|(
+literal|"fountain"
+argument_list|,
+literal|"^((\\.[^.]|(int|ext|est|int\\.?/ext|i/e)[. ]).*)$"
+argument_list|,
+literal|"[^ \t-]+"
+argument_list|)
+block|,
 name|PATTERNS
 argument_list|(
 literal|"html"
