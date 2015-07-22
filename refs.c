@@ -79,7 +79,7 @@ struct|;
 end_struct
 
 begin_comment
-comment|/*  * How to handle various characters in refnames:  * 0: An acceptable character for refs  * 1: End-of-component  * 2: ., look for a preceding . to reject .. in refs  * 3: {, look for a preceding @ to reject @{ in refs  * 4: A bad character: ASCII control characters, and  *    "*", ":", "?", "[", "\", "^", "~", SP, or TAB  */
+comment|/*  * How to handle various characters in refnames:  * 0: An acceptable character for refs  * 1: End-of-component  * 2: ., look for a preceding . to reject .. in refs  * 3: {, look for a preceding @ to reject @{ in refs  * 4: A bad character: ASCII control characters, and  *    ":", "?", "[", "\", "^", "~", SP, or TAB  * 5: *, reject unless REFNAME_REFSPEC_PATTERN is set  */
 end_comment
 
 begin_decl_stmt
@@ -177,7 +177,7 @@ literal|0
 block|,
 literal|0
 block|,
-literal|4
+literal|5
 block|,
 literal|0
 block|,
@@ -413,7 +413,7 @@ value|0x20
 end_define
 
 begin_comment
-comment|/*  * Try to read one refname component from the front of refname.  * Return the length of the component found, or -1 if the component is  * not legal.  It is legal if it is something reasonable to have under  * ".git/refs/"; We do not like it if:  *  * - any path component of it begins with ".", or  * - it has double dots "..", or  * - it has ASCII control characters, or  * - it has "*", ":", "?", "[", "\", "^", "~", SP, or TAB anywhere, or  * - it ends with a "/", or  * - it ends with ".lock", or  * - it contains a "@{" portion  */
+comment|/*  * Try to read one refname component from the front of refname.  * Return the length of the component found, or -1 if the component is  * not legal.  It is legal if it is something reasonable to have under  * ".git/refs/"; We do not like it if:  *  * - any path component of it begins with ".", or  * - it has double dots "..", or  * - it has ASCII control characters, or  * - it has ":", "?", "[", "\", "^", "~", SP, or TAB anywhere, or  * - it has "*" anywhere unless REFNAME_REFSPEC_PATTERN is set, or  * - it ends with a "/", or  * - it ends with ".lock", or  * - it contains a "@{" portion  */
 end_comment
 
 begin_function
@@ -428,6 +428,7 @@ modifier|*
 name|refname
 parameter_list|,
 name|int
+modifier|*
 name|flags
 parameter_list|)
 block|{
@@ -517,6 +518,32 @@ return|return
 operator|-
 literal|1
 return|;
+case|case
+literal|5
+case|:
+if|if
+condition|(
+operator|!
+operator|(
+operator|*
+name|flags
+operator|&
+name|REFNAME_REFSPEC_PATTERN
+operator|)
+condition|)
+return|return
+operator|-
+literal|1
+return|;
+comment|/* refspec can't be a pattern */
+comment|/* 			 * Unset the pattern flag so that we only accept 			 * a single asterisk for one side of refspec. 			 */
+operator|*
+name|flags
+operator|&=
+operator|~
+name|REFNAME_REFSPEC_PATTERN
+expr_stmt|;
+break|break;
 block|}
 name|last
 operator|=
@@ -630,6 +657,7 @@ name|check_refname_component
 argument_list|(
 name|refname
 argument_list|,
+operator|&
 name|flags
 argument_list|)
 expr_stmt|;
@@ -639,58 +667,10 @@ name|component_len
 operator|<=
 literal|0
 condition|)
-block|{
-if|if
-condition|(
-operator|(
-name|flags
-operator|&
-name|REFNAME_REFSPEC_PATTERN
-operator|)
-operator|&&
-name|refname
-index|[
-literal|0
-index|]
-operator|==
-literal|'*'
-operator|&&
-operator|(
-name|refname
-index|[
-literal|1
-index|]
-operator|==
-literal|'\0'
-operator|||
-name|refname
-index|[
-literal|1
-index|]
-operator|==
-literal|'/'
-operator|)
-condition|)
-block|{
-comment|/* Accept one wildcard as a full refname component. */
-name|flags
-operator|&=
-operator|~
-name|REFNAME_REFSPEC_PATTERN
-expr_stmt|;
-name|component_len
-operator|=
-literal|1
-expr_stmt|;
-block|}
-else|else
-block|{
 return|return
 operator|-
 literal|1
 return|;
-block|}
-block|}
 name|component_count
 operator|++
 expr_stmt|;
