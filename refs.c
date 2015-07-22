@@ -79,7 +79,7 @@ struct|;
 end_struct
 
 begin_comment
-comment|/*  * How to handle various characters in refnames:  * 0: An acceptable character for refs  * 1: End-of-component  * 2: ., look for a preceding . to reject .. in refs  * 3: {, look for a preceding @ to reject @{ in refs  * 4: A bad character: ASCII control characters, "~", "^", ":" or SP  */
+comment|/*  * How to handle various characters in refnames:  * 0: An acceptable character for refs  * 1: End-of-component  * 2: ., look for a preceding . to reject .. in refs  * 3: {, look for a preceding @ to reject @{ in refs  * 4: A bad character: ASCII control characters, and  *    "*", ":", "?", "[", "\", "^", "~", SP, or TAB  */
 end_comment
 
 begin_decl_stmt
@@ -413,7 +413,7 @@ value|0x20
 end_define
 
 begin_comment
-comment|/*  * Try to read one refname component from the front of refname.  * Return the length of the component found, or -1 if the component is  * not legal.  It is legal if it is something reasonable to have under  * ".git/refs/"; We do not like it if:  *  * - any path component of it begins with ".", or  * - it has double dots "..", or  * - it has ASCII control character, "~", "^", ":" or SP, anywhere, or  * - it ends with a "/".  * - it ends with ".lock"  * - it contains a "\" (backslash)  */
+comment|/*  * Try to read one refname component from the front of refname.  * Return the length of the component found, or -1 if the component is  * not legal.  It is legal if it is something reasonable to have under  * ".git/refs/"; We do not like it if:  *  * - any path component of it begins with ".", or  * - it has double dots "..", or  * - it has ASCII control characters, or  * - it has "*", ":", "?", "[", "\", "^", "~", SP, or TAB anywhere, or  * - it ends with a "/", or  * - it ends with ".lock", or  * - it contains a "@{" portion  */
 end_comment
 
 begin_function
