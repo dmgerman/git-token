@@ -69,6 +69,10 @@ name|rerere_dir
 modifier|*
 name|collection
 decl_stmt|;
+DECL|member|variant
+name|int
+name|variant
+decl_stmt|;
 block|}
 struct|;
 end_struct
