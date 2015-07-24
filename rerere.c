@@ -2021,6 +2021,17 @@ argument_list|)
 operator|-
 literal|1
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|mmfile
+index|[
+name|i
+index|]
+operator|.
+name|ptr
+condition|)
+block|{
 name|mmfile
 index|[
 name|i
@@ -2050,6 +2061,7 @@ name|size
 operator|=
 name|size
 expr_stmt|;
+block|}
 block|}
 for|for
 control|(
