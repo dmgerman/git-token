@@ -710,7 +710,7 @@ block|{
 if|if
 condition|(
 name|size
-operator|<
+operator|<=
 sizeof|sizeof
 argument_list|(
 name|buf
@@ -761,6 +761,7 @@ argument_list|)
 operator|-
 literal|1
 decl_stmt|;
+comment|/* 			 * Make sure we will not write everything out 			 * in this round by leaving at least 1 byte 			 * for the next round, giving the next round 			 * a chance to add the terminating LF.  Yuck. 			 */
 if|if
 condition|(
 name|size
