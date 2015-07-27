@@ -10772,6 +10772,17 @@ condition|)
 goto|goto
 name|write_err_out
 goto|;
+name|munmap
+argument_list|(
+name|contents
+argument_list|,
+name|contents_sz
+argument_list|)
+expr_stmt|;
+name|contents
+operator|=
+name|NULL
+expr_stmt|;
 block|}
 if|if
 condition|(
