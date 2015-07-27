@@ -2218,6 +2218,7 @@ argument_list|,
 name|curl_http_proxy
 argument_list|)
 expr_stmt|;
+block|}
 if|#
 directive|if
 name|LIBCURL_VERSION_NUM
@@ -2234,7 +2235,6 @@ argument_list|)
 expr_stmt|;
 endif|#
 directive|endif
-block|}
 name|set_curl_keepalive
 argument_list|(
 name|result
