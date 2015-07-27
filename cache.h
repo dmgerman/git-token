@@ -5717,11 +5717,38 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Return true iff we have an object named sha1, whether local or in  * an alternate object database, and whether packed or loose.  This  * function does not respect replace references.  */
+comment|/*  * Return true iff we have an object named sha1, whether local or in  * an alternate object database, and whether packed or loose.  This  * function does not respect replace references.  *  * If the QUICK flag is set, do not re-check the pack directory  * when we cannot find the object (this means we may give a false  * negative answer if another process is simultaneously repacking).  */
 end_comment
+
+begin_define
+DECL|macro|HAS_SHA1_QUICK
+define|#
+directive|define
+name|HAS_SHA1_QUICK
+value|0x1
+end_define
 
 begin_function_decl
 specifier|extern
+name|int
+name|has_sha1_file_with_flags
+parameter_list|(
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|sha1
+parameter_list|,
+name|int
+name|flags
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function
+DECL|function|has_sha1_file
+specifier|static
+specifier|inline
 name|int
 name|has_sha1_file
 parameter_list|(
@@ -5731,8 +5758,17 @@ name|char
 modifier|*
 name|sha1
 parameter_list|)
-function_decl|;
-end_function_decl
+block|{
+return|return
+name|has_sha1_file_with_flags
+argument_list|(
+name|sha1
+argument_list|,
+literal|0
+argument_list|)
+return|;
+block|}
+end_function
 
 begin_comment
 comment|/*  * Return true iff an alternate object database has a loose object  * with the specified name.  This function does not respect replace  * references.  */

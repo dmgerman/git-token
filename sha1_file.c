@@ -15417,15 +15417,18 @@ block|}
 end_function
 
 begin_function
-DECL|function|has_sha1_file
+DECL|function|has_sha1_file_with_flags
 name|int
-name|has_sha1_file
+name|has_sha1_file_with_flags
 parameter_list|(
 specifier|const
 name|unsigned
 name|char
 modifier|*
 name|sha1
+parameter_list|,
+name|int
+name|flags
 parameter_list|)
 block|{
 name|struct
@@ -15454,6 +15457,15 @@ argument_list|)
 condition|)
 return|return
 literal|1
+return|;
+if|if
+condition|(
+name|flags
+operator|&
+name|HAS_SHA1_QUICK
+condition|)
+return|return
+literal|0
 return|;
 name|reprepare_packed_git
 argument_list|()
