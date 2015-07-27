@@ -2158,6 +2158,10 @@ expr_stmt|;
 block|}
 end_function
 
+begin_comment
+comment|/* Returns 1 if we have successfully freshened the file, 0 otherwise. */
+end_comment
+
 begin_function
 DECL|function|freshen_file
 specifier|static
@@ -2200,6 +2204,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * All of the check_and_freshen functions return 1 if the file exists and was  * freshened (if freshening was requested), 0 otherwise. If they return  * 0, you should not assume that it is safe to skip a write of the object (it  * either does not exist on disk, or has a stale mtime and may be subject to  * pruning).  */
+end_comment
+
 begin_function
 DECL|function|check_and_freshen_file
 specifier|static
@@ -2231,6 +2239,7 @@ if|if
 condition|(
 name|freshen
 operator|&&
+operator|!
 name|freshen_file
 argument_list|(
 name|fn
