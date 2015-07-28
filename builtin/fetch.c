@@ -5347,10 +5347,9 @@ block|{
 if|if
 condition|(
 name|space
-operator|>
+operator|>=
 literal|1
 condition|)
-block|{
 name|string_list_append
 argument_list|(
 name|g
@@ -5365,7 +5364,6 @@ name|space
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 name|value
 operator|+=
 name|space
