@@ -5328,6 +5328,12 @@ argument_list|)
 condition|)
 block|{
 comment|/* split list by white space */
+while|while
+condition|(
+operator|*
+name|value
+condition|)
+block|{
 name|size_t
 name|wordlen
 init|=
@@ -5338,12 +5344,6 @@ argument_list|,
 literal|" \t\n"
 argument_list|)
 decl_stmt|;
-while|while
-condition|(
-operator|*
-name|value
-condition|)
-block|{
 if|if
 condition|(
 name|wordlen
@@ -5376,15 +5376,6 @@ index|]
 operator|!=
 literal|'\0'
 operator|)
-expr_stmt|;
-name|wordlen
-operator|=
-name|strcspn
-argument_list|(
-name|value
-argument_list|,
-literal|" \t\n"
-argument_list|)
 expr_stmt|;
 block|}
 block|}
