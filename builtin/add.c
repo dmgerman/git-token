@@ -2363,10 +2363,6 @@ block|{
 name|int
 name|baselen
 decl_stmt|;
-name|struct
-name|pathspec
-name|empty_pathspec
-decl_stmt|;
 comment|/* Set up the default git porcelain excludes */
 name|memset
 argument_list|(
@@ -2400,19 +2396,6 @@ name|dir
 argument_list|)
 expr_stmt|;
 block|}
-name|memset
-argument_list|(
-operator|&
-name|empty_pathspec
-argument_list|,
-literal|0
-argument_list|,
-sizeof|sizeof
-argument_list|(
-name|empty_pathspec
-argument_list|)
-argument_list|)
-expr_stmt|;
 comment|/* This picks up the paths that are not tracked */
 name|baselen
 operator|=
