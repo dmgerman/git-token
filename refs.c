@@ -8961,11 +8961,14 @@ argument_list|(
 operator|&
 name|ref_cache
 argument_list|,
-literal|"refs/replace/"
+name|git_replace_ref_base
 argument_list|,
 name|fn
 argument_list|,
-literal|13
+name|strlen
+argument_list|(
+name|git_replace_ref_base
+argument_list|)
 argument_list|,
 literal|0
 argument_list|,

@@ -2135,6 +2135,14 @@ value|"GIT_NO_REPLACE_OBJECTS"
 end_define
 
 begin_define
+DECL|macro|GIT_REPLACE_REF_BASE_ENVIRONMENT
+define|#
+directive|define
+name|GIT_REPLACE_REF_BASE_ENVIRONMENT
+value|"GIT_REPLACE_REF_BASE"
+end_define
+
+begin_define
 DECL|macro|GITATTRIBUTES_FILE
 define|#
 directive|define
@@ -4030,6 +4038,14 @@ begin_decl_stmt
 specifier|extern
 name|int
 name|check_replace_refs
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
+name|char
+modifier|*
+name|git_replace_ref_base
 decl_stmt|;
 end_decl_stmt
 
