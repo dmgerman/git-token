@@ -77,6 +77,12 @@ directive|include
 file|"sha1-array.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"gpg-interface.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|send_pack_usage
 specifier|static
@@ -479,6 +485,13 @@ block|{
 literal|0
 block|}
 decl_stmt|;
+name|git_config
+argument_list|(
+name|git_gpg_config
+argument_list|,
+name|NULL
+argument_list|)
+expr_stmt|;
 name|argv
 operator|++
 expr_stmt|;
