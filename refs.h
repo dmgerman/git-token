@@ -829,23 +829,34 @@ name|REF_NODEREF
 value|0x01
 end_define
 
+begin_define
+DECL|macro|REF_FORCE_CREATE_REFLOG
+define|#
+directive|define
+name|REF_FORCE_CREATE_REFLOG
+value|0x40
+end_define
+
 begin_comment
-comment|/*  * Setup reflog before using. Set errno to something meaningful on failure.  */
+comment|/*  * Setup reflog before using. Fill in err and return -1 on failure.  */
 end_comment
 
 begin_function_decl
 name|int
-name|log_ref_setup
+name|safe_create_reflog
 parameter_list|(
 specifier|const
 name|char
 modifier|*
 name|refname
 parameter_list|,
+name|int
+name|force_create
+parameter_list|,
 name|struct
 name|strbuf
 modifier|*
-name|logfile
+name|err
 parameter_list|)
 function_decl|;
 end_function_decl
