@@ -2031,19 +2031,26 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|oldval
+condition|)
+block|{
+if|if
+condition|(
+operator|!
+operator|*
+name|oldval
+condition|)
+comment|/* 			 * The empty string implies that the reference 			 * must not already exist: 			 */
 name|hashclr
 argument_list|(
 name|oldsha1
 argument_list|)
 expr_stmt|;
-comment|/* all-zero hash in case oldval is the empty string */
+elseif|else
 if|if
 condition|(
-name|oldval
-operator|&&
-operator|*
-name|oldval
-operator|&&
 name|get_sha1
 argument_list|(
 name|oldval
@@ -2058,6 +2065,7 @@ argument_list|,
 name|oldval
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|no_deref
@@ -2070,12 +2078,21 @@ if|if
 condition|(
 name|delete
 condition|)
+comment|/* 		 * For purposes of backwards compatibility, we treat 		 * NULL_SHA1 as "don't care" here: 		 */
 return|return
 name|delete_ref
 argument_list|(
 name|refname
 argument_list|,
+operator|(
 name|oldval
+operator|&&
+operator|!
+name|is_null_sha1
+argument_list|(
+name|oldsha1
+argument_list|)
+operator|)
 condition|?
 name|oldsha1
 else|:

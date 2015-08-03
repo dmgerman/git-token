@@ -775,6 +775,7 @@ name|char
 modifier|*
 name|refname
 parameter_list|,
+specifier|const
 name|unsigned
 name|char
 modifier|*
@@ -1245,6 +1246,13 @@ name|delete_ref
 argument_list|(
 name|name
 argument_list|,
+name|is_null_sha1
+argument_list|(
+name|sha1
+argument_list|)
+condition|?
+name|NULL
+else|:
 name|sha1
 argument_list|,
 name|REF_NODEREF
