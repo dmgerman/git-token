@@ -600,6 +600,14 @@ value|(1<< 30)
 end_define
 
 begin_define
+DECL|macro|DIFF_OPT_DEFAULT_FOLLOW_RENAMES
+define|#
+directive|define
+name|DIFF_OPT_DEFAULT_FOLLOW_RENAMES
+value|(1<< 31)
+end_define
+
+begin_define
 DECL|macro|DIFF_OPT_TST
 define|#
 directive|define
