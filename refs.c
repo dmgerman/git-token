@@ -15392,7 +15392,10 @@ name|cb
 operator|->
 name|tz
 argument_list|,
-name|DATE_RFC2822
+name|DATE_MODE
+argument_list|(
+name|RFC2822
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -15447,7 +15450,10 @@ name|cb
 operator|->
 name|tz
 argument_list|,
-name|DATE_RFC2822
+name|DATE_MODE
+argument_list|(
+name|RFC2822
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

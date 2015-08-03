@@ -894,6 +894,8 @@ expr_stmt|;
 name|ctx
 operator|.
 name|date_mode
+operator|.
+name|type
 operator|=
 name|DATE_NORMAL
 expr_stmt|;

@@ -1825,8 +1825,10 @@ name|ident_split
 modifier|*
 name|ident
 parameter_list|,
-name|enum
+specifier|const
+name|struct
 name|date_mode
+modifier|*
 name|mode
 parameter_list|)
 block|{
@@ -2420,6 +2422,7 @@ argument_list|(
 operator|&
 name|ident
 argument_list|,
+operator|&
 name|pp
 operator|->
 name|date_mode
@@ -2441,7 +2444,10 @@ argument_list|(
 operator|&
 name|ident
 argument_list|,
-name|DATE_RFC2822
+name|DATE_MODE
+argument_list|(
+name|RFC2822
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2462,6 +2468,7 @@ argument_list|(
 operator|&
 name|ident
 argument_list|,
+operator|&
 name|pp
 operator|->
 name|date_mode
@@ -3303,8 +3310,10 @@ parameter_list|,
 name|int
 name|len
 parameter_list|,
-name|enum
+specifier|const
+name|struct
 name|date_mode
+modifier|*
 name|dmode
 parameter_list|)
 block|{
@@ -3534,7 +3543,10 @@ argument_list|(
 operator|&
 name|s
 argument_list|,
-name|DATE_RFC2822
+name|DATE_MODE
+argument_list|(
+name|RFC2822
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3554,7 +3566,10 @@ argument_list|(
 operator|&
 name|s
 argument_list|,
-name|DATE_RELATIVE
+name|DATE_MODE
+argument_list|(
+name|RELATIVE
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3574,7 +3589,10 @@ argument_list|(
 operator|&
 name|s
 argument_list|,
-name|DATE_ISO8601
+name|DATE_MODE
+argument_list|(
+name|ISO8601
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3594,7 +3612,10 @@ argument_list|(
 operator|&
 name|s
 argument_list|,
-name|DATE_ISO8601_STRICT
+name|DATE_MODE
+argument_list|(
+name|ISO8601_STRICT
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4701,8 +4722,10 @@ name|reflog_walk_info
 modifier|*
 name|log
 parameter_list|,
-name|enum
+specifier|const
+name|struct
 name|date_mode
+modifier|*
 name|dmode
 parameter_list|)
 block|{
@@ -6210,6 +6233,7 @@ name|pretty_ctx
 operator|->
 name|reflog_info
 argument_list|,
+operator|&
 name|c
 operator|->
 name|pretty_ctx
@@ -6289,6 +6313,7 @@ name|pretty_ctx
 operator|->
 name|reflog_info
 argument_list|,
+operator|&
 name|c
 operator|->
 name|pretty_ctx
@@ -6537,6 +6562,7 @@ name|author
 operator|.
 name|len
 argument_list|,
+operator|&
 name|c
 operator|->
 name|pretty_ctx
@@ -6572,6 +6598,7 @@ name|committer
 operator|.
 name|len
 argument_list|,
+operator|&
 name|c
 operator|->
 name|pretty_ctx
