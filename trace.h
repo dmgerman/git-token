@@ -132,6 +132,27 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|void
+name|trace_verbatim
+parameter_list|(
+name|struct
+name|trace_key
+modifier|*
+name|key
+parameter_list|,
+specifier|const
+name|void
+modifier|*
+name|buf
+parameter_list|,
+name|unsigned
+name|len
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_ifndef
 ifndef|#
 directive|ifndef
