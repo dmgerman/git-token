@@ -2771,6 +2771,16 @@ name|RUN_SETUP
 block|}
 block|,
 block|{
+literal|"pull"
+block|,
+name|cmd_pull
+block|,
+name|RUN_SETUP
+operator||
+name|NEED_WORK_TREE
+block|}
+block|,
+block|{
 literal|"push"
 block|,
 name|cmd_push

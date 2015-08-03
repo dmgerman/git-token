@@ -193,6 +193,16 @@ end_function_decl
 
 begin_function_decl
 name|void
+name|NORETURN
+name|die_conclude_merge
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|void
 name|detach_advice
 parameter_list|(
 specifier|const

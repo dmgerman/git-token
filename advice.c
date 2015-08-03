@@ -555,6 +555,46 @@ block|}
 end_function
 
 begin_function
+DECL|function|die_conclude_merge
+name|void
+name|NORETURN
+name|die_conclude_merge
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+name|error
+argument_list|(
+name|_
+argument_list|(
+literal|"You have not concluded your merge (MERGE_HEAD exists)."
+argument_list|)
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|advice_resolve_conflict
+condition|)
+name|advise
+argument_list|(
+name|_
+argument_list|(
+literal|"Please, commit your changes before you can merge."
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"Exiting because of unfinished merge."
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
 DECL|function|detach_advice
 name|void
 name|detach_advice

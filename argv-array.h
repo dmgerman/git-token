@@ -125,6 +125,22 @@ end_function_decl
 
 begin_function_decl
 name|void
+name|argv_array_pushv
+parameter_list|(
+name|struct
+name|argv_array
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|void
 name|argv_array_pop
 parameter_list|(
 name|struct
