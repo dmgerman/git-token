@@ -10284,6 +10284,12 @@ name|am_state
 name|state
 decl_stmt|;
 name|int
+name|binary
+init|=
+operator|-
+literal|1
+decl_stmt|;
+name|int
 name|keep_cr
 init|=
 operator|-
@@ -10341,6 +10347,21 @@ argument_list|,
 name|N_
 argument_list|(
 literal|"run interactively"
+argument_list|)
+argument_list|)
+block|,
+name|OPT_HIDDEN_BOOL
+argument_list|(
+literal|'b'
+argument_list|,
+literal|"binary"
+argument_list|,
+operator|&
+name|binary
+argument_list|,
+name|N_
+argument_list|(
+literal|"(historical option -- no-op"
 argument_list|)
 argument_list|)
 block|,
@@ -11039,6 +11060,23 @@ argument_list|,
 name|usage
 argument_list|,
 literal|0
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|binary
+operator|>=
+literal|0
+condition|)
+name|fprintf_ln
+argument_list|(
+name|stderr
+argument_list|,
+name|_
+argument_list|(
+literal|"The -b/--binary option has been a no-op for long time, and\n"
+literal|"it will be removed. Please do not use it anymore."
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
