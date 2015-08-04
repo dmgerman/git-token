@@ -11079,6 +11079,12 @@ literal|"it will be removed. Please do not use it anymore."
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|/* Ensure a valid committer ident can be constructed */
+name|git_committer_info
+argument_list|(
+name|IDENT_STRICT
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|read_index_preload
