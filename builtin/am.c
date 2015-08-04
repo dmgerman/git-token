@@ -6757,6 +6757,15 @@ name|fp
 argument_list|)
 expr_stmt|;
 block|}
+name|run_hook_le
+argument_list|(
+name|NULL
+argument_list|,
+literal|"post-applypatch"
+argument_list|,
+name|NULL
+argument_list|)
+expr_stmt|;
 name|strbuf_release
 argument_list|(
 operator|&
