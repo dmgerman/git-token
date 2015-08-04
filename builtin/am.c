@@ -129,6 +129,12 @@ directive|include
 file|"notes-utils.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"rerere.h"
+end_include
+
 begin_comment
 comment|/**  * Returns 1 if the file is empty or does not exist, 0 otherwise.  */
 end_comment
@@ -489,6 +495,10 @@ decl_stmt|;
 DECL|member|ignore_date
 name|int
 name|ignore_date
+decl_stmt|;
+DECL|member|allow_rerere_autoupdate
+name|int
+name|allow_rerere_autoupdate
 decl_stmt|;
 DECL|member|sign_commit
 specifier|const
@@ -6389,6 +6399,13 @@ name|result
 argument_list|)
 condition|)
 block|{
+name|rerere
+argument_list|(
+name|state
+operator|->
+name|allow_rerere_autoupdate
+argument_list|)
+expr_stmt|;
 name|free
 argument_list|(
 name|his_tree_name
@@ -7393,6 +7410,11 @@ name|state
 argument_list|)
 expr_stmt|;
 block|}
+name|rerere
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
 name|do_commit
 argument_list|(
 name|state
@@ -7896,6 +7918,60 @@ block|}
 end_function
 
 begin_comment
+comment|/**  * Resets rerere's merge resolution metadata.  */
+end_comment
+
+begin_function
+DECL|function|am_rerere_clear
+specifier|static
+name|void
+name|am_rerere_clear
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+name|struct
+name|string_list
+name|merge_rr
+init|=
+name|STRING_LIST_INIT_DUP
+decl_stmt|;
+name|int
+name|fd
+init|=
+name|setup_rerere
+argument_list|(
+operator|&
+name|merge_rr
+argument_list|,
+literal|0
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|fd
+operator|<
+literal|0
+condition|)
+return|return;
+name|rerere_clear
+argument_list|(
+operator|&
+name|merge_rr
+argument_list|)
+expr_stmt|;
+name|string_list_clear
+argument_list|(
+operator|&
+name|merge_rr
+argument_list|,
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_comment
 comment|/**  * Resume the current am session by skipping the current patch.  */
 end_comment
 
@@ -7918,6 +7994,9 @@ index|[
 name|GIT_SHA1_RAWSZ
 index|]
 decl_stmt|;
+name|am_rerere_clear
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|get_sha1
@@ -8161,6 +8240,9 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+name|am_rerere_clear
+argument_list|()
+expr_stmt|;
 name|curr_branch
 operator|=
 name|resolve_refdup
@@ -8968,6 +9050,14 @@ name|N_
 argument_list|(
 literal|"use current timestamp for author date"
 argument_list|)
+argument_list|)
+block|,
+name|OPT_RERERE_AUTOUPDATE
+argument_list|(
+operator|&
+name|state
+operator|.
+name|allow_rerere_autoupdate
 argument_list|)
 block|,
 block|{
