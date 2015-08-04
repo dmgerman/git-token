@@ -5340,6 +5340,35 @@ name|state
 argument_list|)
 condition|)
 block|{
+comment|/* 		 * Catch user error to feed us patches when there is a session 		 * in progress: 		 * 		 * 1. mbox path(s) are provided on the command-line. 		 * 2. stdin is not a tty: the user is trying to feed us a patch 		 *    from standard input. This is somewhat unreliable -- stdin 		 *    could be /dev/null for example and the caller did not 		 *    intend to feed us a patch but wanted to continue 		 *    unattended. 		 */
+if|if
+condition|(
+name|argc
+operator|||
+operator|(
+name|resume
+operator|==
+name|RESUME_FALSE
+operator|&&
+operator|!
+name|isatty
+argument_list|(
+literal|0
+argument_list|)
+operator|)
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"previous rebase directory %s still exists but mbox given."
+argument_list|)
+argument_list|,
+name|state
+operator|.
+name|dir
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|resume
