@@ -633,6 +633,16 @@ name|prec
 operator|=
 literal|4
 expr_stmt|;
+name|git_config_get_bool
+argument_list|(
+literal|"am.threeway"
+argument_list|,
+operator|&
+name|state
+operator|->
+name|threeway
+argument_list|)
+expr_stmt|;
 name|state
 operator|->
 name|utf8
