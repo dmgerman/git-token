@@ -3564,7 +3564,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**  * Applies all queued mail.  */
+comment|/**  * Applies all queued mail.  *  * If `resume` is true, we are "resuming". The "msg" and authorship fields, as  * well as the state directory's "patch" file is used as-is for applying the  * patch and committing it.  */
 end_comment
 
 begin_function
@@ -3577,6 +3577,9 @@ name|struct
 name|am_state
 modifier|*
 name|state
+parameter_list|,
+name|int
+name|resume
 parameter_list|)
 block|{
 specifier|const
@@ -3667,6 +3670,23 @@ name|next
 goto|;
 if|if
 condition|(
+name|resume
+condition|)
+block|{
+name|validate_resume_state
+argument_list|(
+name|state
+argument_list|)
+expr_stmt|;
+name|resume
+operator|=
+literal|0
+expr_stmt|;
+block|}
+else|else
+block|{
+if|if
+condition|(
 name|parse_mail
 argument_list|(
 name|state
@@ -3688,6 +3708,7 @@ argument_list|(
 name|state
 argument_list|)
 expr_stmt|;
+block|}
 name|printf_ln
 argument_list|(
 name|_
@@ -3906,6 +3927,8 @@ expr_stmt|;
 name|am_run
 argument_list|(
 name|state
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 block|}
@@ -3986,6 +4009,9 @@ DECL|enumerator|RESUME_FALSE
 name|RESUME_FALSE
 init|=
 literal|0
+block|,
+DECL|enumerator|RESUME_APPLY
+name|RESUME_APPLY
 block|,
 DECL|enumerator|RESUME_RESOLVED
 name|RESUME_RESOLVED
@@ -4241,12 +4267,24 @@ operator|&
 name|state
 argument_list|)
 condition|)
+block|{
+if|if
+condition|(
+name|resume
+operator|==
+name|RESUME_FALSE
+condition|)
+name|resume
+operator|=
+name|RESUME_APPLY
+expr_stmt|;
 name|am_load
 argument_list|(
 operator|&
 name|state
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 name|struct
@@ -4359,6 +4397,20 @@ name|am_run
 argument_list|(
 operator|&
 name|state
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+name|RESUME_APPLY
+case|:
+name|am_run
+argument_list|(
+operator|&
+name|state
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 break|break;
