@@ -2170,11 +2170,14 @@ operator||
 name|NEED_WORK_TREE
 block|}
 block|,
-comment|/* 	 * NEEDSWORK: Once the redirection to git-am.sh in builtin/am.c has 	 * been removed, this entry should be changed to 	 * RUN_SETUP | NEED_WORK_TREE 	 */
 block|{
 literal|"am"
 block|,
 name|cmd_am
+block|,
+name|RUN_SETUP
+operator||
+name|NEED_WORK_TREE
 block|}
 block|,
 block|{
