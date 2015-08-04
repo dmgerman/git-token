@@ -467,6 +467,10 @@ name|char
 modifier|*
 name|resolvemsg
 decl_stmt|;
+DECL|member|ignore_date
+name|int
+name|ignore_date
+decl_stmt|;
 DECL|member|rebasing
 name|int
 name|rebasing
@@ -5914,6 +5918,12 @@ name|author_email
 argument_list|,
 name|state
 operator|->
+name|ignore_date
+condition|?
+name|NULL
+else|:
+name|state
+operator|->
 name|author_date
 argument_list|,
 name|IDENT_STRICT
@@ -8128,6 +8138,23 @@ literal|"restore the original branch and abort the patching operation."
 argument_list|)
 argument_list|,
 name|RESUME_ABORT
+argument_list|)
+block|,
+name|OPT_BOOL
+argument_list|(
+literal|0
+argument_list|,
+literal|"ignore-date"
+argument_list|,
+operator|&
+name|state
+operator|.
+name|ignore_date
+argument_list|,
+name|N_
+argument_list|(
+literal|"use current timestamp for author date"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_HIDDEN_BOOL
