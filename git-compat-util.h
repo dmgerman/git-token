@@ -4282,6 +4282,24 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|int
+name|xopen
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|,
+name|int
+name|flags
+parameter_list|,
+modifier|...
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|ssize_t
 name|xread
 parameter_list|(
