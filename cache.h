@@ -5650,7 +5650,7 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|int
-name|move_temp_to_file
+name|finalize_object_file
 parameter_list|(
 specifier|const
 name|char

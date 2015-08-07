@@ -13791,13 +13791,13 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Move the just written object into its final resting place.  * NEEDSWORK: this should be renamed to finalize_temp_file() as  * "moving" is only a part of what it does, when no patch between  * master to pu changes the call sites of this function.  */
+comment|/*  * Move the just written object into its final resting place.  */
 end_comment
 
 begin_function
-DECL|function|move_temp_to_file
+DECL|function|finalize_object_file
 name|int
-name|move_temp_to_file
+name|finalize_object_file
 parameter_list|(
 specifier|const
 name|char
@@ -14713,7 +14713,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|move_temp_to_file
+name|finalize_object_file
 argument_list|(
 name|tmp_file
 argument_list|,

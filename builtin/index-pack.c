@@ -7463,7 +7463,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|move_temp_to_file
+name|finalize_object_file
 argument_list|(
 name|curr_pack_name
 argument_list|,
@@ -7531,7 +7531,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|move_temp_to_file
+name|finalize_object_file
 argument_list|(
 name|curr_index_name
 argument_list|,
