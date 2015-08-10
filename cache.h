@@ -4418,7 +4418,7 @@ value|0x0040
 end_define
 
 begin_comment
-comment|/*  * Return a statically allocated filename, either generically (mkpath), in  * the repository directory (git_path), or in a submodule's repository  * directory (git_path_submodule). In all cases, note that the result  * may be overwritten by another call to _any_ of the functions. Consider  * using the safer "dup" or "strbuf" formats below.  */
+comment|/*  * Return a statically allocated filename, either generically (mkpath), in  * the repository directory (git_path), or in a submodule's repository  * directory (git_path_submodule). In all cases, note that the result  * may be overwritten by another call to _any_ of the functions. Consider  * using the safer "dup" or "strbuf" formats below (in some cases, the  * unsafe versions have already been removed).  */
 end_comment
 
 begin_function_decl
@@ -4474,41 +4474,6 @@ parameter_list|,
 function_decl|1
 operator|,
 function_decl|2
-end_function_decl
-
-begin_empty_stmt
-unit|)))
-empty_stmt|;
-end_empty_stmt
-
-begin_function_decl
-specifier|extern
-specifier|const
-name|char
-modifier|*
-name|git_path_submodule
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|path
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|fmt
-parameter_list|,
-modifier|...
-parameter_list|)
-function_decl|__attribute__
-parameter_list|(
-function_decl|(format
-parameter_list|(
-name|printf
-parameter_list|,
-function_decl|2
-operator|,
-function_decl|3
 end_function_decl
 
 begin_empty_stmt
