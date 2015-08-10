@@ -1496,21 +1496,19 @@ name|die_errno
 argument_list|(
 literal|"failed to write to %s"
 argument_list|,
+name|get_lock_file_path
+argument_list|(
 name|shallow_lock
-operator|->
-name|filename
-operator|.
-name|buf
+argument_list|)
 argument_list|)
 expr_stmt|;
 operator|*
 name|alternate_shallow_file
 operator|=
+name|get_lock_file_path
+argument_list|(
 name|shallow_lock
-operator|->
-name|filename
-operator|.
-name|buf
+argument_list|)
 expr_stmt|;
 block|}
 else|else
@@ -1723,11 +1721,11 @@ name|die_errno
 argument_list|(
 literal|"failed to write to %s"
 argument_list|,
+name|get_lock_file_path
+argument_list|(
+operator|&
 name|shallow_lock
-operator|.
-name|filename
-operator|.
-name|buf
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|commit_lock_file

@@ -14333,13 +14333,12 @@ name|error
 argument_list|(
 literal|"Couldn't write %s"
 argument_list|,
+name|get_lock_file_path
+argument_list|(
 name|lock
 operator|->
 name|lk
-operator|->
-name|filename
-operator|.
-name|buf
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|unlock_ref
@@ -19582,11 +19581,11 @@ name|error
 argument_list|(
 literal|"cannot fdopen %s (%s)"
 argument_list|,
+name|get_lock_file_path
+argument_list|(
+operator|&
 name|reflog_lock
-operator|.
-name|filename
-operator|.
-name|buf
+argument_list|)
 argument_list|,
 name|strerror
 argument_list|(
@@ -19748,13 +19747,12 @@ name|error
 argument_list|(
 literal|"couldn't write %s"
 argument_list|,
+name|get_lock_file_path
+argument_list|(
 name|lock
 operator|->
 name|lk
-operator|->
-name|filename
-operator|.
-name|buf
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|rollback_lock_file

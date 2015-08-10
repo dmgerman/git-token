@@ -272,6 +272,25 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Return the path of the lockfile. The return value is a pointer to a  * field within the lock_file object and should not be freed.  */
+end_comment
+
+begin_function_decl
+specifier|extern
+specifier|const
+name|char
+modifier|*
+name|get_lock_file_path
+parameter_list|(
+name|struct
+name|lock_file
+modifier|*
+name|lk
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function_decl
 specifier|extern
 name|int
