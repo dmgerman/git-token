@@ -135,33 +135,21 @@ block|}
 end_function
 
 begin_comment
-comment|/* Make sure errno contains a meaningful value on error */
+comment|/*  * Initialize *tempfile if necessary and add it to tempfile_list.  */
 end_comment
 
 begin_function
-DECL|function|create_tempfile
-name|int
-name|create_tempfile
+DECL|function|prepare_tempfile_object
+specifier|static
+name|void
+name|prepare_tempfile_object
 parameter_list|(
 name|struct
 name|tempfile
 modifier|*
 name|tempfile
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|path
 parameter_list|)
 block|{
-name|size_t
-name|pathlen
-init|=
-name|strlen
-argument_list|(
-name|path
-argument_list|)
-decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -188,7 +176,7 @@ name|active
 condition|)
 name|die
 argument_list|(
-literal|"BUG: create_tempfile called for active object"
+literal|"BUG: prepare_tempfile_object called for active object"
 argument_list|)
 expr_stmt|;
 if|if
@@ -232,7 +220,7 @@ name|tempfile
 operator|->
 name|filename
 argument_list|,
-name|pathlen
+literal|0
 argument_list|)
 expr_stmt|;
 name|tempfile
@@ -265,10 +253,38 @@ block|{
 comment|/* This shouldn't happen, but better safe than sorry. */
 name|die
 argument_list|(
-literal|"BUG: create_tempfile called for improperly-reset object"
+literal|"BUG: prepare_tempfile_object called for improperly-reset object"
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+end_function
+
+begin_comment
+comment|/* Make sure errno contains a meaningful value on error */
+end_comment
+
+begin_function
+DECL|function|create_tempfile
+name|int
+name|create_tempfile
+parameter_list|(
+name|struct
+name|tempfile
+modifier|*
+name|tempfile
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|)
+block|{
+name|prepare_tempfile_object
+argument_list|(
+name|tempfile
+argument_list|)
+expr_stmt|;
 name|strbuf_add_absolute_path
 argument_list|(
 operator|&
