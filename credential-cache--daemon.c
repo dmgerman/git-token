@@ -1161,11 +1161,6 @@ argument_list|(
 name|fd
 argument_list|)
 expr_stmt|;
-name|unlink
-argument_list|(
-name|socket_path
-argument_list|)
-expr_stmt|;
 block|}
 end_function
 
@@ -1410,6 +1405,11 @@ argument_list|(
 name|socket_path
 argument_list|,
 name|debug
+argument_list|)
+expr_stmt|;
+name|unlink
+argument_list|(
+name|socket_path
 argument_list|)
 expr_stmt|;
 return|return
