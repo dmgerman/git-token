@@ -85,6 +85,28 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/*  * Register an existing file as a tempfile, meaning that it will be  * deleted when the program exits. The tempfile is considered closed,  * but it can be worked with like any other closed tempfile (for  * example, it can be opened using reopen_tempfile()).  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|void
+name|register_tempfile
+parameter_list|(
+name|struct
+name|tempfile
+modifier|*
+name|tempfile
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/*  * mks_tempfile functions  *  * The following functions attempt to create and open temporary files  * with names derived automatically from a template, in the manner of  * mkstemps(), and arrange for them to be deleted if the program ends  * before they are deleted explicitly. There is a whole family of such  * functions, named according to the following pattern:  *  *     x?mks_tempfile_t?s?m?()  *  * The optional letters have the following meanings:  *  *   x - die if the temporary file cannot be created.  *  *   t - create the temporary file under $TMPDIR (as opposed to  *       relative to the current directory). When these variants are  *       used, template should be the pattern for the filename alone,  *       without a path.  *  *   s - template includes a suffix that is suffixlen characters long.  *  *   m - the temporary file should be created with the specified mode  *       (otherwise, the mode is set to 0600).  *  * None of these functions modify template. If the caller wants to  * know the (absolute) path of the file that was created, it can be  * read from tempfile->filename.  *  * On success, the functions return a file descriptor that is open for  * writing the temporary file. On errors, they return -1 and set errno  * appropriately (except for the "x" variants, which die() on errors).  */
 end_comment
 
