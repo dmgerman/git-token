@@ -1287,6 +1287,28 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+name|len
+operator|||
+operator|(
+name|len
+operator|==
+literal|1
+operator|&&
+operator|*
+name|start
+operator|==
+literal|'/'
+operator|)
+condition|)
+name|die
+argument_list|(
+literal|"No directory name could be guessed.\n"
+literal|"Please specify a directory on the command line"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|is_bare
 condition|)
 name|dir
