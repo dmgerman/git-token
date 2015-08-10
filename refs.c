@@ -15010,10 +15010,11 @@ modifier|*
 name|logmsg
 parameter_list|)
 block|{
-specifier|const
 name|char
 modifier|*
 name|lockpath
+init|=
+name|NULL
 decl_stmt|;
 name|char
 name|ref
@@ -15165,7 +15166,7 @@ goto|;
 block|}
 name|lockpath
 operator|=
-name|mkpath
+name|mkpathdup
 argument_list|(
 literal|"%s.lock"
 argument_list|,
@@ -15290,6 +15291,11 @@ name|error_free_return
 label|:
 name|free
 argument_list|(
+name|lockpath
+argument_list|)
+expr_stmt|;
+name|free
+argument_list|(
 name|git_HEAD
 argument_list|)
 expr_stmt|;
@@ -15298,6 +15304,11 @@ operator|-
 literal|1
 return|;
 block|}
+name|free
+argument_list|(
+name|lockpath
+argument_list|)
+expr_stmt|;
 ifndef|#
 directive|ifndef
 name|NO_SYMLINK_HEAD
