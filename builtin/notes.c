@@ -75,6 +75,12 @@ directive|include
 file|"notes-utils.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"branch.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|git_notes_usage
 specifier|static
@@ -4712,6 +4718,10 @@ expr_stmt|;
 else|else
 block|{
 comment|/* Merge has unresolved conflicts */
+name|char
+modifier|*
+name|existing
+decl_stmt|;
 comment|/* Update .git/NOTES_MERGE_PARTIAL with partial merge result */
 name|update_ref
 argument_list|(
@@ -4731,6 +4741,33 @@ name|UPDATE_REFS_DIE_ON_ERR
 argument_list|)
 expr_stmt|;
 comment|/* Store ref-to-be-updated into .git/NOTES_MERGE_REF */
+name|existing
+operator|=
+name|find_shared_symref
+argument_list|(
+literal|"NOTES_MERGE_REF"
+argument_list|,
+name|default_notes_ref
+argument_list|()
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|existing
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"A notes merge into %s is already in-progress at %s"
+argument_list|)
+argument_list|,
+name|default_notes_ref
+argument_list|()
+argument_list|,
+name|existing
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|create_symref
