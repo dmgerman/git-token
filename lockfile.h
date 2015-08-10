@@ -272,6 +272,33 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|get_lock_file_fd
+parameter_list|(
+name|struct
+name|lock_file
+modifier|*
+name|lk
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|FILE
+modifier|*
+name|get_lock_file_fp
+parameter_list|(
+name|struct
+name|lock_file
+modifier|*
+name|lk
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/*  * Return the path of the file that is locked by the specified  * lock_file object. The caller must free the memory.  */
 end_comment

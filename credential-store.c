@@ -285,9 +285,11 @@ argument_list|)
 expr_stmt|;
 name|write_or_die
 argument_list|(
+name|get_lock_file_fd
+argument_list|(
+operator|&
 name|credential_lock
-operator|.
-name|fd
+argument_list|)
 argument_list|,
 name|buf
 operator|->

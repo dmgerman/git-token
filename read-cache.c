@@ -10840,9 +10840,10 @@ name|do_write_index
 argument_list|(
 name|istate
 argument_list|,
+name|get_lock_file_fd
+argument_list|(
 name|lock
-operator|->
-name|fd
+argument_list|)
 argument_list|,
 literal|0
 argument_list|)
