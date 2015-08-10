@@ -13789,7 +13789,7 @@ parameter_list|,
 name|struct
 name|strbuf
 modifier|*
-name|sb_logfile
+name|logfile
 parameter_list|,
 name|struct
 name|strbuf
@@ -13809,29 +13809,14 @@ name|O_APPEND
 operator||
 name|O_WRONLY
 decl_stmt|;
-name|char
-modifier|*
-name|logfile
-decl_stmt|;
 name|strbuf_git_path
 argument_list|(
-name|sb_logfile
+name|logfile
 argument_list|,
 literal|"logs/%s"
 argument_list|,
 name|refname
 argument_list|)
-expr_stmt|;
-name|logfile
-operator|=
-name|sb_logfile
-operator|->
-name|buf
-expr_stmt|;
-comment|/* make sure the rest of the function can't change "logfile" */
-name|sb_logfile
-operator|=
-name|NULL
 expr_stmt|;
 if|if
 condition|(
@@ -13848,6 +13833,8 @@ condition|(
 name|safe_create_leading_directories
 argument_list|(
 name|logfile
+operator|->
+name|buf
 argument_list|)
 operator|<
 literal|0
@@ -13861,6 +13848,8 @@ literal|"unable to create directory for %s: "
 literal|"%s"
 argument_list|,
 name|logfile
+operator|->
+name|buf
 argument_list|,
 name|strerror
 argument_list|(
@@ -13883,6 +13872,8 @@ operator|=
 name|open
 argument_list|(
 name|logfile
+operator|->
+name|buf
 argument_list|,
 name|oflags
 argument_list|,
@@ -13930,6 +13921,8 @@ condition|(
 name|remove_empty_directories
 argument_list|(
 name|logfile
+operator|->
+name|buf
 argument_list|)
 condition|)
 block|{
@@ -13941,6 +13934,8 @@ literal|"There are still logs under "
 literal|"'%s'"
 argument_list|,
 name|logfile
+operator|->
+name|buf
 argument_list|)
 expr_stmt|;
 return|return
@@ -13953,6 +13948,8 @@ operator|=
 name|open
 argument_list|(
 name|logfile
+operator|->
+name|buf
 argument_list|,
 name|oflags
 argument_list|,
@@ -13974,6 +13971,8 @@ argument_list|,
 literal|"unable to append to %s: %s"
 argument_list|,
 name|logfile
+operator|->
+name|buf
 argument_list|,
 name|strerror
 argument_list|(
@@ -13990,6 +13989,8 @@ block|}
 name|adjust_shared_perm
 argument_list|(
 name|logfile
+operator|->
+name|buf
 argument_list|)
 expr_stmt|;
 name|close
@@ -14242,7 +14243,7 @@ parameter_list|,
 name|struct
 name|strbuf
 modifier|*
-name|sb_log_file
+name|logfile
 parameter_list|,
 name|int
 name|flags
@@ -14264,10 +14265,6 @@ name|O_APPEND
 operator||
 name|O_WRONLY
 decl_stmt|;
-name|char
-modifier|*
-name|log_file
-decl_stmt|;
 if|if
 condition|(
 name|log_all_ref_updates
@@ -14286,7 +14283,7 @@ name|log_ref_setup
 argument_list|(
 name|refname
 argument_list|,
-name|sb_log_file
+name|logfile
 argument_list|,
 name|err
 argument_list|,
@@ -14302,22 +14299,13 @@ condition|)
 return|return
 name|result
 return|;
-name|log_file
-operator|=
-name|sb_log_file
-operator|->
-name|buf
-expr_stmt|;
-comment|/* make sure the rest of the function can't change "log_file" */
-name|sb_log_file
-operator|=
-name|NULL
-expr_stmt|;
 name|logfd
 operator|=
 name|open
 argument_list|(
-name|log_file
+name|logfile
+operator|->
+name|buf
 argument_list|,
 name|oflags
 argument_list|)
@@ -14360,7 +14348,9 @@ name|err
 argument_list|,
 literal|"unable to append to %s: %s"
 argument_list|,
-name|log_file
+name|logfile
+operator|->
+name|buf
 argument_list|,
 name|strerror
 argument_list|(
@@ -14392,7 +14382,9 @@ name|err
 argument_list|,
 literal|"unable to append to %s: %s"
 argument_list|,
-name|log_file
+name|logfile
+operator|->
+name|buf
 argument_list|,
 name|strerror
 argument_list|(
