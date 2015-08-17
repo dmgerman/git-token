@@ -5215,7 +5215,7 @@ name|untracked
 operator|->
 name|valid
 operator|||
-comment|/* 		      * .. and .gitignore does not exist before 		      * (i.e. null exclude_sha1 and skip_worktree is 		      * not set). Then we can skip loading .gitignore, 		      * which would result in ENOENT anyway. 		      * skip_worktree is taken care in read_directory() 		      */
+comment|/* 		      * .. and .gitignore does not exist before 		      * (i.e. null exclude_sha1). Then we can skip 		      * loading .gitignore, which would result in 		      * ENOENT anyway. 		      */
 operator|!
 name|is_null_sha1
 argument_list|(
@@ -8830,9 +8830,6 @@ name|untracked_cache_dir
 modifier|*
 name|root
 decl_stmt|;
-name|int
-name|i
-decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -8955,33 +8952,6 @@ name|EXC_CMDL
 index|]
 operator|.
 name|nr
-condition|)
-return|return
-name|NULL
-return|;
-comment|/* 	 * An optimization in prep_exclude() does not play well with 	 * CE_SKIP_WORKTREE. It's a rare case anyway, if a single 	 * entry has that bit set, disable the whole untracked cache. 	 */
-for|for
-control|(
-name|i
-operator|=
-literal|0
-init|;
-name|i
-operator|<
-name|active_nr
-condition|;
-name|i
-operator|++
-control|)
-if|if
-condition|(
-name|ce_skip_worktree
-argument_list|(
-name|active_cache
-index|[
-name|i
-index|]
-argument_list|)
 condition|)
 return|return
 name|NULL
