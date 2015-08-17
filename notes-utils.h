@@ -139,6 +139,23 @@ struct|;
 end_struct
 
 begin_function_decl
+name|int
+name|parse_notes_merge_strategy
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|v
+parameter_list|,
+name|enum
+name|notes_merge_strategy
+modifier|*
+name|s
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|struct
 name|notes_rewrite_cfg
 modifier|*
