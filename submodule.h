@@ -152,23 +152,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-name|int
-name|parse_submodule_config_option
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|var
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|value
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
 name|void
 name|handle_ignore_submodules_arg
 parameter_list|(
