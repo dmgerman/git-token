@@ -27,6 +27,12 @@ end_struct_decl
 begin_enum
 enum|enum
 block|{
+DECL|enumerator|RECURSE_SUBMODULES_NONE
+name|RECURSE_SUBMODULES_NONE
+init|=
+operator|-
+literal|2
+block|,
 DECL|enumerator|RECURSE_SUBMODULES_ON_DEMAND
 name|RECURSE_SUBMODULES_ON_DEMAND
 init|=

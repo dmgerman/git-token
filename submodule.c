@@ -2031,6 +2031,7 @@ condition|)
 return|return
 name|RECURSE_SUBMODULES_ON_DEMAND
 return|;
+comment|/* TODO: remove the die for history parsing here */
 name|die
 argument_list|(
 literal|"bad %s argument: %s"
