@@ -76,6 +76,23 @@ end_struct
 
 begin_function_decl
 name|int
+name|parse_fetch_recurse_submodules_arg
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|opt
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|arg
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
 name|parse_submodule_config_option
 parameter_list|(
 specifier|const
