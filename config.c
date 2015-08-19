@@ -2963,16 +2963,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|git_config_maybe_bool_text
-specifier|static
+DECL|function|git_parse_maybe_bool
 name|int
-name|git_config_maybe_bool_text
+name|git_parse_maybe_bool
 parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|name
-parameter_list|,
 specifier|const
 name|char
 modifier|*
@@ -3080,10 +3074,8 @@ block|{
 name|int
 name|v
 init|=
-name|git_config_maybe_bool_text
+name|git_parse_maybe_bool
 argument_list|(
-name|name
-argument_list|,
 name|value
 argument_list|)
 decl_stmt|;
@@ -3141,10 +3133,8 @@ block|{
 name|int
 name|v
 init|=
-name|git_config_maybe_bool_text
+name|git_parse_maybe_bool
 argument_list|(
-name|name
-argument_list|,
 name|value
 argument_list|)
 decl_stmt|;
