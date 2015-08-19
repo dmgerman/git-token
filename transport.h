@@ -421,11 +421,19 @@ value|1024
 end_define
 
 begin_define
-DECL|macro|TRANSPORT_PUSH_CERT
+DECL|macro|TRANSPORT_PUSH_CERT_ALWAYS
 define|#
 directive|define
-name|TRANSPORT_PUSH_CERT
+name|TRANSPORT_PUSH_CERT_ALWAYS
 value|2048
+end_define
+
+begin_define
+DECL|macro|TRANSPORT_PUSH_CERT_IF_ASKED
+define|#
+directive|define
+name|TRANSPORT_PUSH_CERT_IF_ASKED
+value|4096
 end_define
 
 begin_define
@@ -433,7 +441,7 @@ DECL|macro|TRANSPORT_PUSH_ATOMIC
 define|#
 directive|define
 name|TRANSPORT_PUSH_ATOMIC
-value|4096
+value|8192
 end_define
 
 begin_define
