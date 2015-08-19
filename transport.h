@@ -71,12 +71,6 @@ name|update_shallow
 range|:
 literal|1
 decl_stmt|;
-DECL|member|push_cert
-name|unsigned
-name|push_cert
-range|:
-literal|1
-decl_stmt|;
 DECL|member|depth
 name|int
 name|depth
