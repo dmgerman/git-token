@@ -198,10 +198,8 @@ return|return
 operator|!
 name|access
 argument_list|(
-name|git_path
-argument_list|(
-literal|"MERGE_HEAD"
-argument_list|)
+name|git_path_merge_head
+argument_list|()
 argument_list|,
 name|F_OK
 argument_list|)
