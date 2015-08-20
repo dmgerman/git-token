@@ -3523,6 +3523,19 @@ name|output_format
 operator|=
 name|DIFF_FORMAT_PATCH
 expr_stmt|;
+comment|/* Turn -m on when --cc/-c was given */
+if|if
+condition|(
+name|rev
+operator|->
+name|combine_merges
+condition|)
+name|rev
+operator|->
+name|ignore_merges
+operator|=
+literal|0
+expr_stmt|;
 block|}
 end_function
 
