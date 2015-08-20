@@ -3501,6 +3501,28 @@ argument_list|,
 name|FOLLOW_RENAMES
 argument_list|)
 expr_stmt|;
+comment|/* Turn --cc/-c into -p --cc/-c when -p was not given */
+if|if
+condition|(
+operator|!
+name|rev
+operator|->
+name|diffopt
+operator|.
+name|output_format
+operator|&&
+name|rev
+operator|->
+name|combine_merges
+condition|)
+name|rev
+operator|->
+name|diffopt
+operator|.
+name|output_format
+operator|=
+name|DIFF_FORMAT_PATCH
+expr_stmt|;
 block|}
 end_function
 
