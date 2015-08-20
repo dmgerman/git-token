@@ -4177,7 +4177,7 @@ name|only_spaces
 init|=
 literal|1
 decl_stmt|;
-comment|/* 	 * Get the start of the trailers by looking starting from the end 	 * for a line with only spaces before lines with one separator. 	 */
+comment|/* 	 * Get the start of the trailers by looking starting from the end 	 * for a line with only spaces before lines with one separator. 	 * The start cannot be the first line. 	 */
 for|for
 control|(
 name|start
@@ -4188,7 +4188,7 @@ literal|1
 init|;
 name|start
 operator|>=
-literal|0
+literal|1
 condition|;
 name|start
 operator|--
