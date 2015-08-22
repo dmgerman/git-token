@@ -861,13 +861,10 @@ operator|!
 name|index_only
 operator|||
 operator|!
-operator|(
+name|ce_intent_to_add
+argument_list|(
 name|ce
-operator|->
-name|ce_flags
-operator|&
-name|CE_INTENT_TO_ADD
-operator|)
+argument_list|)
 condition|)
 name|string_list_append
 argument_list|(
