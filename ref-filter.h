@@ -96,26 +96,11 @@ name|FILTER_REFS_ALL
 value|0x2
 end_define
 
-begin_struct
-DECL|struct|atom_value
-struct|struct
+begin_struct_decl
+struct_decl|struct
 name|atom_value
-block|{
-DECL|member|s
-specifier|const
-name|char
-modifier|*
-name|s
-decl_stmt|;
-DECL|member|ul
-name|unsigned
-name|long
-name|ul
-decl_stmt|;
-comment|/* used for sorting when not FIELD_STR */
-block|}
-struct|;
-end_struct
+struct_decl|;
+end_struct_decl
 
 begin_struct
 DECL|struct|ref_sorting

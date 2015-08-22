@@ -268,6 +268,27 @@ block|, }
 struct|;
 end_struct
 
+begin_struct
+DECL|struct|atom_value
+struct|struct
+name|atom_value
+block|{
+DECL|member|s
+specifier|const
+name|char
+modifier|*
+name|s
+decl_stmt|;
+DECL|member|ul
+name|unsigned
+name|long
+name|ul
+decl_stmt|;
+comment|/* used for sorting when not FIELD_STR */
+block|}
+struct|;
+end_struct
+
 begin_comment
 comment|/*  * An atom is a valid field atom listed above, possibly prefixed with  * a "*" to denote deref_tag().  *  * We parse given format string and sort specifiers, and make a list  * of properties that we need to extract out of objects.  ref_array_item  * structure will hold an array of values extracted that can be  * indexed with the "atom number", which is an index into this  * array.  */
 end_comment
