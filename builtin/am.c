@@ -890,8 +890,6 @@ argument_list|,
 name|name
 argument_list|)
 argument_list|,
-literal|1
-argument_list|,
 name|fmt
 argument_list|,
 name|string
@@ -930,8 +928,6 @@ name|state
 argument_list|,
 name|name
 argument_list|)
-argument_list|,
-literal|1
 argument_list|,
 literal|"%d\n"
 argument_list|,

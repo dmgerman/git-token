@@ -1261,8 +1261,6 @@ name|sb
 operator|.
 name|buf
 argument_list|,
-literal|1
-argument_list|,
 literal|"initializing\n"
 argument_list|)
 expr_stmt|;
@@ -1328,8 +1326,6 @@ name|sb
 operator|.
 name|buf
 argument_list|,
-literal|1
-argument_list|,
 literal|"%s\n"
 argument_list|,
 name|real_path
@@ -1345,8 +1341,6 @@ argument_list|(
 name|sb_git
 operator|.
 name|buf
-argument_list|,
-literal|1
 argument_list|,
 literal|"gitdir: %s/worktrees/%s\n"
 argument_list|,
@@ -1406,8 +1400,6 @@ name|sb
 operator|.
 name|buf
 argument_list|,
-literal|1
-argument_list|,
 literal|"%s\n"
 argument_list|,
 name|sha1_to_hex
@@ -1439,8 +1431,6 @@ argument_list|(
 name|sb
 operator|.
 name|buf
-argument_list|,
-literal|1
 argument_list|,
 literal|"../..\n"
 argument_list|)

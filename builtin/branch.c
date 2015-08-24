@@ -4325,14 +4325,12 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|write_file
+name|write_file_gently
 argument_list|(
 name|git_path
 argument_list|(
 name|edit_description
 argument_list|)
-argument_list|,
-literal|0
 argument_list|,
 literal|"%s"
 argument_list|,

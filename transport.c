@@ -1604,13 +1604,11 @@ operator|->
 name|buf
 argument_list|)
 operator|||
-name|write_file
+name|write_file_gently
 argument_list|(
 name|buf
 operator|->
 name|buf
-argument_list|,
-literal|0
 argument_list|,
 literal|"%s\n"
 argument_list|,

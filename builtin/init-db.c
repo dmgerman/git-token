@@ -1989,8 +1989,6 @@ name|write_file
 argument_list|(
 name|git_link
 argument_list|,
-literal|1
-argument_list|,
 literal|"gitdir: %s\n"
 argument_list|,
 name|git_dir
