@@ -3459,6 +3459,7 @@ operator|&
 name|cb
 argument_list|)
 expr_stmt|;
+comment|/* 	 * The following implementation is currently duplicated in ref-filter. It 	 * will eventually be removed when we port branch.c to use ref-filter APIs. 	 */
 if|if
 condition|(
 name|merge_filter
@@ -4151,6 +4152,10 @@ expr_stmt|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * This function is duplicated in ref-filter. It will eventually be removed  * when we port branch.c to use ref-filter APIs.  */
+end_comment
+
 begin_function
 DECL|function|opt_parse_merge_filter
 specifier|static
@@ -4667,67 +4672,27 @@ argument_list|,
 name|REF_REMOTE_BRANCH
 argument_list|)
 block|,
-block|{
-name|OPTION_CALLBACK
-block|,
-literal|0
-block|,
-literal|"contains"
-block|,
+name|OPT_CONTAINS
+argument_list|(
 operator|&
 name|with_commit
-block|,
-name|N_
-argument_list|(
-literal|"commit"
-argument_list|)
-block|,
+argument_list|,
 name|N_
 argument_list|(
 literal|"print only branches that contain the commit"
 argument_list|)
-block|,
-name|PARSE_OPT_LASTARG_DEFAULT
-block|,
-name|parse_opt_with_commit
-block|,
-operator|(
-name|intptr_t
-operator|)
-literal|"HEAD"
-block|, 		}
-block|,
-block|{
-name|OPTION_CALLBACK
-block|,
-literal|0
-block|,
-literal|"with"
-block|,
-operator|&
-name|with_commit
-block|,
-name|N_
-argument_list|(
-literal|"commit"
 argument_list|)
 block|,
+name|OPT_WITH
+argument_list|(
+operator|&
+name|with_commit
+argument_list|,
 name|N_
 argument_list|(
 literal|"print only branches that contain the commit"
 argument_list|)
-block|,
-name|PARSE_OPT_HIDDEN
-operator||
-name|PARSE_OPT_LASTARG_DEFAULT
-block|,
-name|parse_opt_with_commit
-block|,
-operator|(
-name|intptr_t
-operator|)
-literal|"HEAD"
-block|, 		}
+argument_list|)
 block|,
 name|OPT__ABBREV
 argument_list|(
