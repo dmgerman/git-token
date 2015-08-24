@@ -1790,7 +1790,7 @@ name|path
 operator|.
 name|buf
 argument_list|,
-literal|"%s\n"
+literal|"%s"
 argument_list|,
 name|gitfile
 argument_list|)

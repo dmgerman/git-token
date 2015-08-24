@@ -7049,7 +7049,6 @@ name|pid_file
 argument_list|,
 literal|"%"
 name|PRIuMAX
-literal|"\n"
 argument_list|,
 operator|(
 name|uintmax_t

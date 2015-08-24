@@ -1610,7 +1610,7 @@ name|buf
 operator|->
 name|buf
 argument_list|,
-literal|"%s\n"
+literal|"%s"
 argument_list|,
 name|oid_to_hex
 argument_list|(
