@@ -10172,28 +10172,32 @@ return|;
 block|}
 end_function
 
-begin_function
+begin_expr_stmt
+specifier|static
+name|GIT_PATH_FUNC
+argument_list|(
+argument|git_path_info_exclude
+argument_list|,
+literal|"info/exclude"
+argument_list|)
 DECL|function|setup_standard_excludes
 name|void
 name|setup_standard_excludes
-parameter_list|(
-name|struct
-name|dir_struct
-modifier|*
-name|dir
-parameter_list|)
+argument_list|(
+argument|struct dir_struct *dir
+argument_list|)
 block|{
 specifier|const
 name|char
-modifier|*
+operator|*
 name|path
-decl_stmt|;
+block|;
 name|dir
 operator|->
 name|exclude_per_dir
 operator|=
 literal|".gitignore"
-expr_stmt|;
+block|;
 comment|/* core.excludefile defaulting to $XDG_HOME/git/ignore */
 if|if
 condition|(
@@ -10207,6 +10211,9 @@ argument_list|(
 literal|"ignore"
 argument_list|)
 expr_stmt|;
+end_expr_stmt
+
+begin_if
 if|if
 condition|(
 name|excludes_file
@@ -10239,14 +10246,21 @@ else|:
 name|NULL
 argument_list|)
 expr_stmt|;
+end_if
+
+begin_comment
 comment|/* per repository user preference */
+end_comment
+
+begin_expr_stmt
 name|path
 operator|=
-name|git_path
-argument_list|(
-literal|"info/exclude"
-argument_list|)
+name|git_path_info_exclude
+argument_list|()
 expr_stmt|;
+end_expr_stmt
+
+begin_if
 if|if
 condition|(
 operator|!
@@ -10277,19 +10291,18 @@ else|:
 name|NULL
 argument_list|)
 expr_stmt|;
-block|}
-end_function
+end_if
 
-begin_function
+begin_macro
+unit|}  int
 DECL|function|remove_path
-name|int
 name|remove_path
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|name
-parameter_list|)
+argument_list|(
+argument|const char *name
+argument_list|)
+end_macro
+
+begin_block
 block|{
 name|char
 modifier|*
@@ -10386,7 +10399,7 @@ return|return
 literal|0
 return|;
 block|}
-end_function
+end_block
 
 begin_comment
 comment|/*  * Frees memory within dir which was allocated for exclude lists and  * the exclude_stack.  Does not free dir itself.  */

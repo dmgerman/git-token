@@ -193,6 +193,10 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Returns the path to the hook file, or NULL if the hook is missing  * or disabled. Note that this points to static storage that will be  * overwritten by further calls to find_hook and run_hook_*.  */
+end_comment
+
 begin_function_decl
 specifier|extern
 specifier|const

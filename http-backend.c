@@ -929,12 +929,11 @@ modifier|*
 name|name
 parameter_list|)
 block|{
-specifier|const
 name|char
 modifier|*
 name|p
 init|=
-name|git_path
+name|git_pathdup
 argument_list|(
 literal|"%s"
 argument_list|,
@@ -1091,6 +1090,11 @@ expr_stmt|;
 name|free
 argument_list|(
 name|buf
+argument_list|)
+expr_stmt|;
+name|free
+argument_list|(
+name|p
 argument_list|)
 expr_stmt|;
 block|}

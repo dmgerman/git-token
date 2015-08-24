@@ -5109,10 +5109,8 @@ block|{
 comment|/* --unshallow */
 name|unlink_or_warn
 argument_list|(
-name|git_path
-argument_list|(
-literal|"shallow"
-argument_list|)
+name|git_path_shallow
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|rollback_lock_file

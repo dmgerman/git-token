@@ -271,10 +271,8 @@ name|path
 condition|)
 name|path
 operator|=
-name|git_path
-argument_list|(
-literal|"shallow"
-argument_list|)
+name|git_path_shallow
+argument_list|()
 expr_stmt|;
 comment|/* 	 * fetch-pack sets '--shallow-file ""' as an indicator that no 	 * shallow file should be used. We could just open it and it 	 * will likely fail. But let's do an explicit check instead. 	 */
 if|if
@@ -828,10 +826,8 @@ argument_list|(
 operator|&
 name|shallow_stat
 argument_list|,
-name|git_path
-argument_list|(
-literal|"shallow"
-argument_list|)
+name|git_path_shallow
+argument_list|()
 argument_list|)
 condition|)
 name|die
@@ -1449,10 +1445,8 @@ name|hold_lock_file_for_update
 argument_list|(
 name|shallow_lock
 argument_list|,
-name|git_path
-argument_list|(
-literal|"shallow"
-argument_list|)
+name|git_path_shallow
+argument_list|()
 argument_list|,
 name|LOCK_DIE_ON_ERROR
 argument_list|)
@@ -1674,10 +1668,8 @@ argument_list|(
 operator|&
 name|shallow_lock
 argument_list|,
-name|git_path
-argument_list|(
-literal|"shallow"
-argument_list|)
+name|git_path_shallow
+argument_list|()
 argument_list|,
 name|LOCK_DIE_ON_ERROR
 argument_list|)
@@ -1741,10 +1733,8 @@ else|else
 block|{
 name|unlink
 argument_list|(
-name|git_path
-argument_list|(
-literal|"shallow"
-argument_list|)
+name|git_path_shallow
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|rollback_lock_file
