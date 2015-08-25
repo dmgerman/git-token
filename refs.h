@@ -1564,6 +1564,36 @@ function_decl|;
 end_function_decl
 
 begin_enum
+DECL|enum|ref_type
+enum|enum
+name|ref_type
+block|{
+DECL|enumerator|REF_TYPE_PER_WORKTREE
+name|REF_TYPE_PER_WORKTREE
+block|,
+DECL|enumerator|REF_TYPE_PSEUDOREF
+name|REF_TYPE_PSEUDOREF
+block|,
+DECL|enumerator|REF_TYPE_NORMAL
+name|REF_TYPE_NORMAL
+block|, }
+enum|;
+end_enum
+
+begin_function_decl
+name|enum
+name|ref_type
+name|ref_type
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|refname
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_enum
 DECL|enum|expire_reflog_flags
 enum|enum
 name|expire_reflog_flags
