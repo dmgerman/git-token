@@ -174,6 +174,29 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Check if a per-worktree symref points to a ref in the main worktree  * or any linked worktree, and return the path to the exising worktree  * if it is.  Returns NULL if there is no existing ref.  The caller is  * responsible for freeing the returned path.  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|char
+modifier|*
+name|find_shared_symref
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|symref
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|target
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
