@@ -1754,7 +1754,7 @@ argument_list|(
 operator|&
 name|path
 argument_list|,
-literal|"%s/gitfile"
+literal|"%s/gitdir"
 argument_list|,
 name|gitdir
 argument_list|)
@@ -1790,7 +1790,7 @@ name|path
 operator|.
 name|buf
 argument_list|,
-literal|0
+literal|1
 argument_list|,
 literal|"%s\n"
 argument_list|,
