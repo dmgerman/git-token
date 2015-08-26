@@ -2912,11 +2912,11 @@ name|ps_matched
 operator|=
 name|xcalloc
 argument_list|(
-literal|1
-argument_list|,
 name|pathspec
 operator|.
 name|nr
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 if|if
