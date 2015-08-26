@@ -4177,7 +4177,7 @@ name|only_spaces
 init|=
 literal|1
 decl_stmt|;
-comment|/* 	 * Get the start of the trailers by looking starting from the end 	 * for a line with only spaces before lines with one separator. 	 * The start cannot be the first line. 	 */
+comment|/* 	 * Get the start of the trailers by looking starting from the end 	 * for a line with only spaces before lines with one separator. 	 * The first line must not be analyzed as the others as it 	 * should be either the message title or a blank line. 	 */
 for|for
 control|(
 name|start
