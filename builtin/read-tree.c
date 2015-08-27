@@ -165,7 +165,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git read-tree [[-m [--trivial] [--aggressive] | --reset | --prefix=<prefix>] [-u [--exclude-per-directory=<gitignore>] | -i]] [--no-sparse-checkout] [--index-output=<file>] (--empty |<tree-ish1> [<tree-ish2> [<tree-ish3>]])"
+literal|"git read-tree [(-m [--trivial] [--aggressive] | --reset | --prefix=<prefix>) [-u [--exclude-per-directory=<gitignore>] | -i]] [--no-sparse-checkout] [--index-output=<file>] (--empty |<tree-ish1> [<tree-ish2> [<tree-ish3>]])"
 argument_list|)
 block|,
 name|NULL
