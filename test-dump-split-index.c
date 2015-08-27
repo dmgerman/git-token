@@ -183,6 +183,12 @@ argument_list|(
 literal|"replacements:"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|si
+operator|->
+name|replace_bitmap
+condition|)
 name|ewah_each_bit
 argument_list|(
 name|si
@@ -199,6 +205,12 @@ argument_list|(
 literal|"\ndeletions:"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|si
+operator|->
+name|delete_bitmap
+condition|)
 name|ewah_each_bit
 argument_list|(
 name|si
