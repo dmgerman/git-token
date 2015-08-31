@@ -10554,17 +10554,6 @@ return|;
 block|}
 end_function
 
-begin_macro
-name|__attribute__
-argument_list|(
-argument|(format (printf,
-literal|3
-argument|,
-literal|4
-argument|))
-argument_list|)
-end_macro
-
 begin_function_decl
 specifier|extern
 name|int
@@ -10575,8 +10564,25 @@ name|char
 modifier|*
 name|path
 parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|fmt
+parameter_list|,
+modifier|...
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|int
-name|fatal
+name|write_file_gently
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
 parameter_list|,
 specifier|const
 name|char

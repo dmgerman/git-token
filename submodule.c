@@ -5608,9 +5608,7 @@ name|file_name
 operator|.
 name|buf
 argument_list|,
-literal|1
-argument_list|,
-literal|"gitdir: %s\n"
+literal|"gitdir: %s"
 argument_list|,
 name|relative_path
 argument_list|(
