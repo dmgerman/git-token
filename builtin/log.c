@@ -2724,10 +2724,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|show_rev_tweak_rev
+DECL|function|show_setup_revisions_tweak
 specifier|static
 name|void
-name|show_rev_tweak_rev
+name|show_setup_revisions_tweak
 parameter_list|(
 name|struct
 name|rev_info
@@ -2930,7 +2930,7 @@ name|opt
 operator|.
 name|tweak
 operator|=
-name|show_rev_tweak_rev
+name|show_setup_revisions_tweak
 expr_stmt|;
 name|cmd_log_init
 argument_list|(
@@ -3455,10 +3455,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|default_follow_tweak
+DECL|function|log_setup_revisions_tweak
 specifier|static
 name|void
-name|default_follow_tweak
+name|log_setup_revisions_tweak
 parameter_list|(
 name|struct
 name|rev_info
@@ -3500,6 +3500,41 @@ name|diffopt
 argument_list|,
 name|FOLLOW_RENAMES
 argument_list|)
+expr_stmt|;
+comment|/* Turn --cc/-c into -p --cc/-c when -p was not given */
+if|if
+condition|(
+operator|!
+name|rev
+operator|->
+name|diffopt
+operator|.
+name|output_format
+operator|&&
+name|rev
+operator|->
+name|combine_merges
+condition|)
+name|rev
+operator|->
+name|diffopt
+operator|.
+name|output_format
+operator|=
+name|DIFF_FORMAT_PATCH
+expr_stmt|;
+comment|/* Turn -m on when --cc/-c was given */
+if|if
+condition|(
+name|rev
+operator|->
+name|combine_merges
+condition|)
+name|rev
+operator|->
+name|ignore_merges
+operator|=
+literal|0
 expr_stmt|;
 block|}
 end_function
@@ -3585,7 +3620,7 @@ name|opt
 operator|.
 name|tweak
 operator|=
-name|default_follow_tweak
+name|log_setup_revisions_tweak
 expr_stmt|;
 name|cmd_log_init
 argument_list|(
