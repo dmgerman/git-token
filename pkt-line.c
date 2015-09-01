@@ -11,6 +11,12 @@ directive|include
 file|"pkt-line.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"run-command.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|packet_buffer
 name|char
@@ -79,6 +85,28 @@ argument_list|(
 name|prog
 argument_list|)
 expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|function|get_trace_prefix
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|get_trace_prefix
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+return|return
+name|in_async
+argument_list|()
+condition|?
+literal|"sideband"
+else|:
+name|packet_trace_prefix
+return|;
 block|}
 end_function
 
@@ -306,7 +334,8 @@ name|out
 argument_list|,
 literal|"packet: %12s%c "
 argument_list|,
-name|packet_trace_prefix
+name|get_trace_prefix
+argument_list|()
 argument_list|,
 name|write
 condition|?
