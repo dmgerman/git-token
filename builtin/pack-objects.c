@@ -161,12 +161,12 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git pack-objects --stdout [options...] [< ref-list |< object-list]"
+literal|"git pack-objects --stdout [<options>...] [<<ref-list> |<<object-list>]"
 argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git pack-objects [options...] base-name [< ref-list |< object-list]"
+literal|"git pack-objects [<options>...]<base-name> [<<ref-list> |<<object-list>]"
 argument_list|)
 block|,
 name|NULL
