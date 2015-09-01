@@ -1885,17 +1885,11 @@ argument_list|(
 name|active_cache_tree
 argument_list|)
 condition|)
-block|{
 name|update_main_cache_tree
 argument_list|(
 name|WRITE_TREE_SILENT
 argument_list|)
 expr_stmt|;
-name|active_cache_changed
-operator|=
-literal|1
-expr_stmt|;
-block|}
 if|if
 condition|(
 name|active_cache_changed
