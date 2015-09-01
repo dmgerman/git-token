@@ -40,6 +40,14 @@ name|RERERE_NOAUTOUPDATE
 value|02
 end_define
 
+begin_define
+DECL|macro|RERERE_READONLY
+define|#
+directive|define
+name|RERERE_READONLY
+value|04
+end_define
+
 begin_comment
 comment|/*  * Marks paths that have been hand-resolved and added to the  * index. Set in the util field of such paths after calling  * rerere_remaining.  */
 end_comment
