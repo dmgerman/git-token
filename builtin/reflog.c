@@ -2283,7 +2283,7 @@ name|error
 argument_list|(
 name|_
 argument_list|(
-literal|"%s' for '%s' is not a valid timestamp"
+literal|"'%s' for '%s' is not a valid timestamp"
 argument_list|)
 argument_list|,
 name|value
