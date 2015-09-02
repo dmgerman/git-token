@@ -2963,6 +2963,14 @@ name|cmd_stripspace
 block|}
 block|,
 block|{
+literal|"submodule--helper"
+block|,
+name|cmd_submodule__helper
+block|,
+name|RUN_SETUP
+block|}
+block|,
+block|{
 literal|"symbolic-ref"
 block|,
 name|cmd_symbolic_ref
