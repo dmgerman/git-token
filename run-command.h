@@ -184,6 +184,17 @@ end_function_decl
 
 begin_function_decl
 name|int
+name|finish_command_in_signal
+parameter_list|(
+name|struct
+name|child_process
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
 name|run_command
 parameter_list|(
 name|struct
