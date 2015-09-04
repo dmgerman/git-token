@@ -8,12 +8,6 @@ end_include
 begin_include
 include|#
 directive|include
-file|"pathspec.h"
-end_include
-
-begin_include
-include|#
-directive|include
 file|"wt-status.h"
 end_include
 

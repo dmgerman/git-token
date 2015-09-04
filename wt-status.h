@@ -30,6 +30,12 @@ directive|include
 file|"color.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"pathspec.h"
+end_include
+
 begin_enum
 DECL|enum|color_wt_status
 enum|enum
