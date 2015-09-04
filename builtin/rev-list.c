@@ -1676,6 +1676,20 @@ argument_list|(
 name|rev_list_usage
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|revs
+operator|.
+name|show_notes
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"rev-list does not support display of notes"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|save_commit_buffer
 operator|=
 operator|(
