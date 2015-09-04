@@ -1584,13 +1584,13 @@ name|ps_matched
 operator|=
 name|xcalloc
 argument_list|(
-literal|1
-argument_list|,
 name|opts
 operator|->
 name|pathspec
 operator|.
 name|nr
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 comment|/* 	 * Make sure all pathspecs participated in locating the paths 	 * to be checked out. 	 */
