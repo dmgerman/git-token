@@ -625,6 +625,13 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|git_config_key_is_valid
+argument_list|(
+name|key
+operator|.
+name|buf
+argument_list|)
+operator|&&
 operator|!
 name|git_config_get_value
 argument_list|(
