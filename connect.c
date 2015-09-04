@@ -3610,6 +3610,13 @@ argument_list|,
 name|path
 argument_list|)
 expr_stmt|;
+comment|/* remove repo-local variables from the environment */
+name|conn
+operator|->
+name|env
+operator|=
+name|local_repo_env
+expr_stmt|;
 name|conn
 operator|->
 name|in
@@ -3930,13 +3937,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|/* remove repo-local variables from the environment */
-name|conn
-operator|->
-name|env
-operator|=
-name|local_repo_env
-expr_stmt|;
 name|conn
 operator|->
 name|use_shell
