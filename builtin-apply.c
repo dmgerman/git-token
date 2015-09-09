@@ -2213,7 +2213,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Does the ---/+++ line has the POSIX timestamp after the last HT?  * GNU diff puts epoch there to signal a creation/deletion event.  Is  * this such a timestamp?  */
+comment|/*  * Does the ---/+++ line have the POSIX timestamp after the last HT?  * GNU diff puts epoch there to signal a creation/deletion event.  Is  * this such a timestamp?  */
 end_comment
 
 begin_function
