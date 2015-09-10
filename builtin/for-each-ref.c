@@ -453,6 +453,12 @@ name|name_patterns
 operator|=
 name|argv
 expr_stmt|;
+name|filter
+operator|.
+name|match_as_path
+operator|=
+literal|1
+expr_stmt|;
 name|filter_refs
 argument_list|(
 operator|&
