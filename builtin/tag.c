@@ -99,7 +99,7 @@ block|,
 name|N_
 argument_list|(
 literal|"git tag -l [-n[<num>]] [--contains<commit>] [--points-at<object>]"
-literal|"\n\t\t[--format=<format>] [<pattern>...]"
+literal|"\n\t\t[--format=<format>] [--[no-]merged [<commit>]] [<pattern>...]"
 argument_list|)
 block|,
 name|N_
@@ -2120,6 +2120,28 @@ literal|"print only tags that contain the commit"
 argument_list|)
 argument_list|)
 block|,
+name|OPT_MERGED
+argument_list|(
+operator|&
+name|filter
+argument_list|,
+name|N_
+argument_list|(
+literal|"print only tags that are merged"
+argument_list|)
+argument_list|)
+block|,
+name|OPT_NO_MERGED
+argument_list|(
+operator|&
+name|filter
+argument_list|,
+name|N_
+argument_list|(
+literal|"print only tags that are not merged"
+argument_list|)
+argument_list|)
+block|,
 name|OPT_CALLBACK
 argument_list|(
 literal|0
@@ -2496,6 +2518,20 @@ argument_list|(
 name|_
 argument_list|(
 literal|"--points-at option is only allowed with -l."
+argument_list|)
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|filter
+operator|.
+name|merge_commit
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"--merged and --no-merged option are only allowed with -l"
 argument_list|)
 argument_list|)
 expr_stmt|;
