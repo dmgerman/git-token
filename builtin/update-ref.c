@@ -1806,7 +1806,7 @@ name|create_reflog
 argument_list|,
 name|N_
 argument_list|(
-literal|"create_reflog"
+literal|"create a reflog"
 argument_list|)
 argument_list|)
 block|,
