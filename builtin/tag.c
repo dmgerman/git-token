@@ -870,6 +870,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Currently modified and used in ref-filter as append_lines(), will  * eventually be removed as we port tag.c to use ref-filter APIs.  */
+end_comment
+
 begin_function
 DECL|function|show_tag_lines
 specifier|static

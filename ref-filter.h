@@ -306,6 +306,9 @@ DECL|member|kind
 name|unsigned
 name|int
 name|kind
+decl_stmt|,
+DECL|member|lines
+name|lines
 decl_stmt|;
 block|}
 struct|;
