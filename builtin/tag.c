@@ -99,7 +99,7 @@ block|,
 name|N_
 argument_list|(
 literal|"git tag -l [-n[<num>]] [--contains<commit>] [--points-at<object>]"
-literal|"\n\t\t[<pattern>...]"
+literal|"\n\t\t[--format=<format>] [<pattern>...]"
 argument_list|)
 block|,
 name|N_
@@ -136,6 +136,11 @@ name|struct
 name|ref_sorting
 modifier|*
 name|sorting
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|format
 parameter_list|)
 block|{
 name|struct
@@ -143,9 +148,6 @@ name|ref_array
 name|array
 decl_stmt|;
 name|char
-modifier|*
-name|format
-decl_stmt|,
 modifier|*
 name|to_free
 init|=
@@ -184,6 +186,12 @@ literal|0
 expr_stmt|;
 if|if
 condition|(
+operator|!
+name|format
+condition|)
+block|{
+if|if
+condition|(
 name|filter
 operator|->
 name|lines
@@ -212,6 +220,7 @@ name|format
 operator|=
 literal|"%(refname:short)"
 expr_stmt|;
+block|}
 name|verify_ref_format
 argument_list|(
 name|format
@@ -1826,6 +1835,13 @@ init|=
 operator|&
 name|sorting
 decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|format
+init|=
+name|NULL
+decl_stmt|;
 name|struct
 name|option
 name|options
@@ -2153,6 +2169,26 @@ block|,
 name|parse_opt_object_name
 block|}
 block|,
+name|OPT_STRING
+argument_list|(
+literal|0
+argument_list|,
+literal|"format"
+argument_list|,
+operator|&
+name|format
+argument_list|,
+name|N_
+argument_list|(
+literal|"format"
+argument_list|)
+argument_list|,
+name|N_
+argument_list|(
+literal|"format to use for the output"
+argument_list|)
+argument_list|)
+block|,
 name|OPT_END
 argument_list|()
 block|}
@@ -2398,6 +2434,8 @@ operator|&
 name|filter
 argument_list|,
 name|sorting
+argument_list|,
+name|format
 argument_list|)
 expr_stmt|;
 if|if
