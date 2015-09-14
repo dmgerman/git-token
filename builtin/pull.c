@@ -601,10 +601,7 @@ block|,
 operator|&
 name|opt_rebase
 block|,
-name|N_
-argument_list|(
 literal|"false|true|preserve"
-argument_list|)
 block|,
 name|N_
 argument_list|(
