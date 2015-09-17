@@ -5021,6 +5021,20 @@ name|errno
 operator|=
 literal|0
 expr_stmt|;
+comment|/* negative values would be accepted by strtoul */
+if|if
+condition|(
+name|strchr
+argument_list|(
+name|s
+argument_list|,
+literal|'-'
+argument_list|)
+condition|)
+return|return
+operator|-
+literal|1
+return|;
 name|ul
 operator|=
 name|strtoul
