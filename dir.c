@@ -3440,6 +3440,14 @@ modifier|*
 name|el
 parameter_list|)
 block|{
+name|struct
+name|exclude
+modifier|*
+name|exc
+init|=
+name|NULL
+decl_stmt|;
+comment|/* undecided */
 name|int
 name|i
 decl_stmt|;
@@ -3573,9 +3581,13 @@ operator|->
 name|flags
 argument_list|)
 condition|)
-return|return
+block|{
+name|exc
+operator|=
 name|x
-return|;
+expr_stmt|;
+break|break;
+block|}
 continue|continue;
 block|}
 name|assert
@@ -3637,14 +3649,17 @@ operator|->
 name|flags
 argument_list|)
 condition|)
-return|return
+block|{
+name|exc
+operator|=
 name|x
-return|;
+expr_stmt|;
+break|break;
+block|}
 block|}
 return|return
-name|NULL
+name|exc
 return|;
-comment|/* undecided */
 block|}
 end_function
 
