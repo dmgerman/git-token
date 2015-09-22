@@ -1952,6 +1952,15 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
+name|curl_easy_setopt
+argument_list|(
+name|result
+argument_list|,
+name|CURLOPT_MAXREDIRS
+argument_list|,
+literal|20
+argument_list|)
+expr_stmt|;
 if|#
 directive|if
 name|LIBCURL_VERSION_NUM
