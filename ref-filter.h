@@ -203,13 +203,6 @@ name|unsigned
 name|int
 name|kind
 decl_stmt|;
-DECL|member|ignore
-name|int
-name|ignore
-range|:
-literal|1
-decl_stmt|;
-comment|/* To be removed in the next patch */
 DECL|member|symref
 specifier|const
 name|char
