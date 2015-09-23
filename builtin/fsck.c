@@ -261,6 +261,14 @@ name|ERROR_PACK
 value|04
 end_define
 
+begin_define
+DECL|macro|ERROR_REFS
+define|#
+directive|define
+name|ERROR_REFS
+value|010
+end_define
+
 begin_ifdef
 ifdef|#
 directive|ifdef
@@ -2599,6 +2607,7 @@ argument_list|(
 name|refname
 argument_list|)
 condition|)
+block|{
 name|error
 argument_list|(
 literal|"%s: not a commit"
@@ -2606,6 +2615,11 @@ argument_list|,
 name|refname
 argument_list|)
 expr_stmt|;
+name|errors_found
+operator||=
+name|ERROR_REFS
+expr_stmt|;
+block|}
 name|default_refs
 operator|++
 expr_stmt|;
@@ -2857,12 +2871,18 @@ condition|(
 operator|!
 name|head_points_at
 condition|)
+block|{
+name|errors_found
+operator||=
+name|ERROR_REFS
+expr_stmt|;
 return|return
 name|error
 argument_list|(
 literal|"Invalid HEAD"
 argument_list|)
 return|;
+block|}
 if|if
 condition|(
 operator|!
@@ -2889,6 +2909,11 @@ argument_list|,
 literal|"refs/heads/"
 argument_list|)
 condition|)
+block|{
+name|errors_found
+operator||=
+name|ERROR_REFS
+expr_stmt|;
 return|return
 name|error
 argument_list|(
@@ -2897,6 +2922,7 @@ argument_list|,
 name|head_points_at
 argument_list|)
 return|;
+block|}
 if|if
 condition|(
 name|is_null_oid
@@ -2910,12 +2936,18 @@ if|if
 condition|(
 name|null_is_error
 condition|)
+block|{
+name|errors_found
+operator||=
+name|ERROR_REFS
+expr_stmt|;
 return|return
 name|error
 argument_list|(
 literal|"HEAD: detached HEAD points at nothing"
 argument_list|)
 return|;
+block|}
 name|fprintf
 argument_list|(
 name|stderr
@@ -3003,6 +3035,10 @@ operator|->
 name|sha1
 argument_list|)
 argument_list|)
+expr_stmt|;
+name|errors_found
+operator||=
+name|ERROR_REFS
 expr_stmt|;
 return|return
 literal|1
