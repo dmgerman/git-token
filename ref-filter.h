@@ -203,6 +203,13 @@ name|unsigned
 name|int
 name|kind
 decl_stmt|;
+DECL|member|ignore
+name|int
+name|ignore
+range|:
+literal|1
+decl_stmt|;
+comment|/* To be removed in the next patch */
 DECL|member|symref
 specifier|const
 name|char
@@ -250,6 +257,12 @@ name|ref_array_item
 modifier|*
 modifier|*
 name|items
+decl_stmt|;
+DECL|member|revs
+name|struct
+name|rev_info
+modifier|*
+name|revs
 decl_stmt|;
 block|}
 struct|;
@@ -311,6 +324,11 @@ DECL|member|match_as_path
 name|match_as_path
 range|:
 literal|1
+decl_stmt|,
+DECL|member|detached
+name|detached
+range|:
+literal|1
 decl_stmt|;
 DECL|member|kind
 name|unsigned
@@ -319,6 +337,13 @@ name|kind
 decl_stmt|,
 DECL|member|lines
 name|lines
+decl_stmt|;
+DECL|member|abbrev
+name|int
+name|abbrev
+decl_stmt|,
+DECL|member|verbose
+name|verbose
 decl_stmt|;
 block|}
 struct|;
