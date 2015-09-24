@@ -1297,9 +1297,13 @@ name|progress_update
 operator|=
 literal|1
 expr_stmt|;
-name|sprintf
+name|xsnprintf
 argument_list|(
 name|bufp
+argument_list|,
+name|len
+operator|+
+literal|1
 argument_list|,
 literal|", %s.\n"
 argument_list|,
