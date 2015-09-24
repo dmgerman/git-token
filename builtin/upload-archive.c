@@ -272,17 +272,14 @@ parameter_list|,
 modifier|...
 parameter_list|)
 block|{
-name|char
+name|struct
+name|strbuf
 name|buf
-index|[
-literal|1024
-index|]
+init|=
+name|STRBUF_INIT
 decl_stmt|;
 name|va_list
 name|params
-decl_stmt|;
-name|int
-name|len
 decl_stmt|;
 name|va_start
 argument_list|(
@@ -291,10 +288,9 @@ argument_list|,
 name|fmt
 argument_list|)
 expr_stmt|;
-name|len
-operator|=
-name|vsprintf
+name|strbuf_vaddf
 argument_list|(
+operator|&
 name|buf
 argument_list|,
 name|fmt
@@ -314,7 +310,11 @@ argument_list|,
 literal|3
 argument_list|,
 name|buf
+operator|.
+name|buf
 argument_list|,
+name|buf
+operator|.
 name|len
 argument_list|,
 name|LARGE_PACKET_MAX
@@ -324,6 +324,8 @@ name|die
 argument_list|(
 literal|"sent error to the client: %s"
 argument_list|,
+name|buf
+operator|.
 name|buf
 argument_list|)
 expr_stmt|;
