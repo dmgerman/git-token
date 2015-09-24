@@ -5447,13 +5447,18 @@ name|s
 decl_stmt|;
 name|hdrlen
 operator|=
-name|sprintf
+name|xsnprintf
 argument_list|(
 operator|(
 name|char
 operator|*
 operator|)
 name|hdr
+argument_list|,
+sizeof|sizeof
+argument_list|(
+name|hdr
+argument_list|)
 argument_list|,
 literal|"%s %lu"
 argument_list|,
