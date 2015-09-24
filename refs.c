@@ -11632,7 +11632,7 @@ operator|.
 name|hash
 argument_list|)
 expr_stmt|;
-name|strcpy
+name|memcpy
 argument_list|(
 name|n
 operator|->
@@ -11641,8 +11641,11 @@ argument_list|,
 name|entry
 operator|->
 name|name
+argument_list|,
+name|namelen
 argument_list|)
 expr_stmt|;
+comment|/* includes NUL */
 name|n
 operator|->
 name|next
@@ -18133,6 +18136,8 @@ name|strlen
 argument_list|(
 name|refname
 argument_list|)
+operator|+
+literal|1
 decl_stmt|;
 name|struct
 name|ref_update
@@ -18150,11 +18155,9 @@ name|update
 argument_list|)
 operator|+
 name|len
-operator|+
-literal|1
 argument_list|)
 decl_stmt|;
-name|strcpy
+name|memcpy
 argument_list|(
 operator|(
 name|char
@@ -18165,8 +18168,11 @@ operator|->
 name|refname
 argument_list|,
 name|refname
+argument_list|,
+name|len
 argument_list|)
 expr_stmt|;
+comment|/* includes NUL */
 name|ALLOC_GROW
 argument_list|(
 name|transaction
