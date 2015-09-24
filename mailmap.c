@@ -947,14 +947,6 @@ operator|*
 name|repo_abbrev
 argument_list|)
 expr_stmt|;
-operator|*
-name|repo_abbrev
-operator|=
-name|xmalloc
-argument_list|(
-name|len
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|cp
@@ -974,11 +966,11 @@ operator|++
 control|)
 empty_stmt|;
 comment|/* nothing */
-name|strcpy
-argument_list|(
 operator|*
 name|repo_abbrev
-argument_list|,
+operator|=
+name|xstrdup
+argument_list|(
 name|cp
 argument_list|)
 expr_stmt|;
