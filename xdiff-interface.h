@@ -18,6 +18,18 @@ directive|include
 file|"xdiff/xdiff.h"
 end_include
 
+begin_comment
+comment|/*  * xdiff isn't equipped to handle content over a gigabyte;  * we make the cutoff 1GB - 1MB to give some breathing  * room for constant-sized additions (e.g., merge markers)  */
+end_comment
+
+begin_define
+DECL|macro|MAX_XDIFF_SIZE
+define|#
+directive|define
+name|MAX_XDIFF_SIZE
+value|(1024UL * 1024 * 1023)
+end_define
+
 begin_typedef
 DECL|typedef|xdiff_emit_consume_fn
 typedef|typedef
