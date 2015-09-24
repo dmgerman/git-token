@@ -3921,6 +3921,17 @@ name|ac
 operator|=
 literal|1
 expr_stmt|;
+if|if
+condition|(
+operator|!
+operator|*
+name|av
+condition|)
+name|die
+argument_list|(
+literal|"no branches given, and HEAD is not valid"
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(
