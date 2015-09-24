@@ -3583,6 +3583,7 @@ condition|(
 operator|!
 name|connectivity_only
 condition|)
+block|{
 name|fsck_object_dir
 argument_list|(
 name|get_object_directory
@@ -3649,6 +3650,7 @@ argument_list|(
 name|namebuf
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
