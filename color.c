@@ -726,6 +726,35 @@ return|;
 block|}
 end_function
 
+begin_function
+DECL|function|color_set
+name|void
+name|color_set
+parameter_list|(
+name|char
+modifier|*
+name|dst
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|color_bytes
+parameter_list|)
+block|{
+name|xsnprintf
+argument_list|(
+name|dst
+argument_list|,
+name|COLOR_MAXLEN
+argument_list|,
+literal|"%s"
+argument_list|,
+name|color_bytes
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
 begin_comment
 comment|/*  * Write the ANSI color codes for "c" to "out"; the string should  * already have the ANSI escape code in it. "out" should have enough  * space in it to fit any color.  */
 end_comment
