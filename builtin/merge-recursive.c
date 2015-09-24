@@ -82,9 +82,14 @@ condition|)
 return|return
 name|branch
 return|;
-name|sprintf
+name|xsnprintf
 argument_list|(
 name|githead_env
+argument_list|,
+sizeof|sizeof
+argument_list|(
+name|githead_env
+argument_list|)
 argument_list|,
 literal|"GITHEAD_%s"
 argument_list|,

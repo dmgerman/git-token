@@ -5381,9 +5381,14 @@ operator|*=
 literal|10
 control|)
 empty_stmt|;
-name|sprintf
+name|xsnprintf
 argument_list|(
 name|q_format
+argument_list|,
+sizeof|sizeof
+argument_list|(
+name|q_format
+argument_list|)
 argument_list|,
 literal|";q=0.%%0%dd"
 argument_list|,
@@ -7760,9 +7765,14 @@ argument_list|,
 name|prev_posn
 argument_list|)
 expr_stmt|;
-name|sprintf
+name|xsnprintf
 argument_list|(
 name|range
+argument_list|,
+sizeof|sizeof
+argument_list|(
+name|range
+argument_list|)
 argument_list|,
 literal|"Range: bytes=%ld-"
 argument_list|,
@@ -8631,9 +8641,14 @@ argument_list|,
 name|prev_posn
 argument_list|)
 expr_stmt|;
-name|sprintf
+name|xsnprintf
 argument_list|(
 name|range
+argument_list|,
+sizeof|sizeof
+argument_list|(
+name|range
+argument_list|)
 argument_list|,
 literal|"Range: bytes=%ld-"
 argument_list|,

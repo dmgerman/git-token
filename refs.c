@@ -14706,9 +14706,11 @@ argument_list|)
 expr_stmt|;
 name|len
 operator|=
-name|sprintf
+name|xsnprintf
 argument_list|(
 name|logrec
+argument_list|,
+name|maxlen
 argument_list|,
 literal|"%s %s %s\n"
 argument_list|,

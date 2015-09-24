@@ -453,9 +453,14 @@ index|[
 literal|24
 index|]
 decl_stmt|;
-name|sprintf
+name|xsnprintf
 argument_list|(
 name|buf
+argument_list|,
+sizeof|sizeof
+argument_list|(
+name|buf
+argument_list|)
 argument_list|,
 literal|"ent#%d"
 argument_list|,

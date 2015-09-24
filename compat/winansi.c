@@ -2099,9 +2099,14 @@ name|con2
 condition|)
 return|return;
 comment|/* create a named pipe to communicate with the console thread */
-name|sprintf
+name|xsnprintf
 argument_list|(
 name|name
+argument_list|,
+sizeof|sizeof
+argument_list|(
+name|name
+argument_list|)
 argument_list|,
 literal|"\\\\.\\pipe\\winansi%lu"
 argument_list|,

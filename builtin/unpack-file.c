@@ -72,9 +72,14 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|strcpy
+name|xsnprintf
 argument_list|(
 name|path
+argument_list|,
+sizeof|sizeof
+argument_list|(
+name|path
+argument_list|)
 argument_list|,
 literal|".merge_file_XXXXXX"
 argument_list|)

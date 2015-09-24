@@ -4737,9 +4737,14 @@ argument_list|(
 name|escaped
 argument_list|)
 expr_stmt|;
-name|sprintf
+name|xsnprintf
 argument_list|(
 name|timeout_header
+argument_list|,
+sizeof|sizeof
+argument_list|(
+name|timeout_header
+argument_list|)
 argument_list|,
 literal|"Timeout: Second-%ld"
 argument_list|,
