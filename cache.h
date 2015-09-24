@@ -8314,10 +8314,13 @@ parameter_list|(
 specifier|const
 name|char
 modifier|*
+name|path
+parameter_list|,
+name|size_t
+name|path_len
 parameter_list|,
 name|int
-parameter_list|,
-name|int
+name|local
 parameter_list|)
 function_decl|;
 end_function_decl
