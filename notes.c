@@ -2559,6 +2559,18 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/* hex SHA1 + 19 * '/' + NUL */
+end_comment
+
+begin_define
+DECL|macro|FANOUT_PATH_MAX
+define|#
+directive|define
+name|FANOUT_PATH_MAX
+value|40 + 19 + 1
+end_define
+
 begin_function
 DECL|function|construct_path_with_fanout
 specifier|static
@@ -2648,11 +2660,17 @@ name|fanout
 operator|--
 expr_stmt|;
 block|}
-name|strcpy
+name|xsnprintf
 argument_list|(
 name|path
 operator|+
 name|i
+argument_list|,
+name|FANOUT_PATH_MAX
+operator|-
+name|i
+argument_list|,
+literal|"%s"
 argument_list|,
 name|hex_sha1
 operator|+
@@ -2719,14 +2737,9 @@ specifier|static
 name|char
 name|path
 index|[
-literal|40
-operator|+
-literal|19
-operator|+
-literal|1
+name|FANOUT_PATH_MAX
 index|]
 decl_stmt|;
-comment|/* hex SHA1 + 19 * '/' + NUL */
 name|fanout
 operator|=
 name|determine_fanout
@@ -2849,9 +2862,9 @@ name|assert
 argument_list|(
 name|path_len
 operator|<
-literal|40
-operator|+
-literal|19
+name|FANOUT_PATH_MAX
+operator|-
+literal|1
 argument_list|)
 expr_stmt|;
 name|construct_path_with_fanout
