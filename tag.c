@@ -530,7 +530,7 @@ return|return
 operator|-
 literal|1
 return|;
-name|strncpy
+name|memcpy
 argument_list|(
 name|type
 argument_list|,
