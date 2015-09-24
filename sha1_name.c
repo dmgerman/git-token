@@ -478,9 +478,14 @@ name|next
 operator|=
 name|alt_odb_list
 expr_stmt|;
-name|sprintf
+name|xsnprintf
 argument_list|(
 name|hex
+argument_list|,
+sizeof|sizeof
+argument_list|(
+name|hex
+argument_list|)
 argument_list|,
 literal|"%.2s"
 argument_list|,
@@ -516,11 +521,14 @@ name|DIR
 modifier|*
 name|dir
 decl_stmt|;
-name|sprintf
+comment|/* 		 * every alt_odb struct has 42 extra bytes after the base 		 * for exactly this purpose 		 */
+name|xsnprintf
 argument_list|(
 name|alt
 operator|->
 name|name
+argument_list|,
+literal|42
 argument_list|,
 literal|"%.2s/"
 argument_list|,
