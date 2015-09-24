@@ -290,26 +290,6 @@ decl_stmt|;
 name|char
 modifier|*
 name|new_name
-init|=
-name|xmalloc
-argument_list|(
-name|len
-operator|+
-literal|1
-operator|+
-name|decimal_length
-argument_list|(
-name|generation
-argument_list|)
-operator|+
-comment|/* ~<n> */
-literal|1
-operator|+
-literal|2
-operator|+
-comment|/* ^NN */
-literal|1
-argument_list|)
 decl_stmt|;
 if|if
 condition|(
@@ -339,10 +319,10 @@ name|generation
 operator|>
 literal|0
 condition|)
-name|sprintf
-argument_list|(
 name|new_name
-argument_list|,
+operator|=
+name|xstrfmt
+argument_list|(
 literal|"%.*s~%d^%d"
 argument_list|,
 name|len
@@ -355,10 +335,10 @@ name|parent_number
 argument_list|)
 expr_stmt|;
 else|else
-name|sprintf
-argument_list|(
 name|new_name
-argument_list|,
+operator|=
+name|xstrfmt
+argument_list|(
 literal|"%.*s^%d"
 argument_list|,
 name|len
