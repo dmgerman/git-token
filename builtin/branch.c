@@ -1543,10 +1543,6 @@ modifier|*
 modifier|*
 name|pattern
 decl_stmt|;
-DECL|member|ret
-name|int
-name|ret
-decl_stmt|;
 block|}
 struct|;
 end_struct
@@ -1862,25 +1858,9 @@ condition|(
 operator|!
 name|commit
 condition|)
-block|{
-name|cb
-operator|->
-name|ret
-operator|=
-name|error
-argument_list|(
-name|_
-argument_list|(
-literal|"branch '%s' does not point at a commit"
-argument_list|)
-argument_list|,
-name|refname
-argument_list|)
-expr_stmt|;
 return|return
 literal|0
 return|;
-block|}
 comment|/* Filter with with_commit if specified */
 if|if
 condition|(
@@ -3268,7 +3248,7 @@ end_function
 begin_function
 DECL|function|print_ref_list
 specifier|static
-name|int
+name|void
 name|print_ref_list
 parameter_list|(
 name|int
@@ -3394,12 +3374,6 @@ operator|.
 name|pattern
 operator|=
 name|pattern
-expr_stmt|;
-name|cb
-operator|.
-name|ret
-operator|=
-literal|0
 expr_stmt|;
 comment|/* 	 * First we obtain all regular branch refs and if the HEAD is 	 * detached then we insert that ref to the end of the ref_fist 	 * so that it can be printed and removed first. 	 */
 name|for_each_rawref
@@ -3704,25 +3678,6 @@ operator|&
 name|ref_list
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|cb
-operator|.
-name|ret
-condition|)
-name|error
-argument_list|(
-name|_
-argument_list|(
-literal|"some refs could not be read"
-argument_list|)
-argument_list|)
-expr_stmt|;
-return|return
-name|cb
-operator|.
-name|ret
-return|;
 block|}
 end_function
 
@@ -5093,9 +5048,6 @@ condition|(
 name|list
 condition|)
 block|{
-name|int
-name|ret
-decl_stmt|;
 comment|/*  git branch --local also shows HEAD when it is detached */
 if|if
 condition|(
@@ -5107,8 +5059,6 @@ name|kinds
 operator||=
 name|REF_DETACHED_HEAD
 expr_stmt|;
-name|ret
-operator|=
 name|print_ref_list
 argument_list|(
 name|kinds
@@ -5143,7 +5093,7 @@ literal|0
 argument_list|)
 expr_stmt|;
 return|return
-name|ret
+literal|0
 return|;
 block|}
 elseif|else
