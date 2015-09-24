@@ -1798,9 +1798,14 @@ name|p
 operator|->
 name|no
 condition|)
-name|sprintf
+name|xsnprintf
 argument_list|(
 name|where
+argument_list|,
+sizeof|sizeof
+argument_list|(
+name|where
+argument_list|)
 argument_list|,
 literal|"In '%s' at %d, "
 argument_list|,
@@ -1820,9 +1825,14 @@ name|p
 operator|->
 name|origin
 condition|)
-name|sprintf
+name|xsnprintf
 argument_list|(
 name|where
+argument_list|,
+sizeof|sizeof
+argument_list|(
+name|where
+argument_list|)
 argument_list|,
 literal|"%s, "
 argument_list|,
