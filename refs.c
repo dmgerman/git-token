@@ -9243,22 +9243,7 @@ argument_list|)
 condition|)
 block|{
 comment|/* Append implied '/' '*' if not present. */
-if|if
-condition|(
-name|real_pattern
-operator|.
-name|buf
-index|[
-name|real_pattern
-operator|.
-name|len
-operator|-
-literal|1
-index|]
-operator|!=
-literal|'/'
-condition|)
-name|strbuf_addch
+name|strbuf_complete
 argument_list|(
 operator|&
 name|real_pattern
