@@ -1946,7 +1946,7 @@ end_function
 begin_function
 DECL|function|collect_diff
 specifier|static
-name|void
+name|int
 name|collect_diff
 parameter_list|(
 name|mmfile_t
@@ -2048,6 +2048,7 @@ operator|=
 operator|&
 name|cbdata
 expr_stmt|;
+return|return
 name|xdi_diff
 argument_list|(
 name|parent
@@ -2063,7 +2064,7 @@ argument_list|,
 operator|&
 name|ecb
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 end_function
 
@@ -6082,6 +6083,8 @@ operator|&
 name|diff
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|collect_diff
 argument_list|(
 operator|&
@@ -6092,6 +6095,17 @@ name|file_target
 argument_list|,
 operator|&
 name|diff
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"unable to generate diff for %s"
+argument_list|,
+name|pair
+operator|->
+name|one
+operator|->
+name|path
 argument_list|)
 expr_stmt|;
 comment|/* NEEDSWORK should apply some heuristics to prevent mismatches */
