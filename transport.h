@@ -475,6 +475,22 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/*  * Check whether a transport is allowed by the environment,  * and die otherwise. type should generally be the URL scheme,  * as described in Documentation/git.txt  */
+end_comment
+
+begin_function_decl
+name|void
+name|transport_check_allowed
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|type
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/* Transport options which apply to git:// and scp-style URLs */
 end_comment
 
