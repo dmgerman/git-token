@@ -5585,6 +5585,11 @@ name|name
 operator|=
 name|name
 expr_stmt|;
+name|transport_check_allowed
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|getenv
