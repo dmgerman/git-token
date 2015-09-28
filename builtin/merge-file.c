@@ -536,6 +536,15 @@ literal|1
 return|;
 if|if
 condition|(
+name|mmfs
+index|[
+name|i
+index|]
+operator|.
+name|size
+operator|>
+name|MAX_XDIFF_SIZE
+operator|||
 name|buffer_is_binary
 argument_list|(
 name|mmfs
