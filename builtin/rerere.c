@@ -187,6 +187,9 @@ name|minus
 decl_stmt|,
 name|plus
 decl_stmt|;
+name|int
+name|ret
+decl_stmt|;
 if|if
 condition|(
 name|read_mmfile
@@ -206,6 +209,7 @@ name|file2
 argument_list|)
 condition|)
 return|return
+operator|-
 literal|1
 return|;
 name|printf
@@ -266,6 +270,8 @@ name|outf
 operator|=
 name|outf
 expr_stmt|;
+name|ret
+operator|=
 name|xdi_diff
 argument_list|(
 operator|&
@@ -299,7 +305,7 @@ name|ptr
 argument_list|)
 expr_stmt|;
 return|return
-literal|0
+name|ret
 return|;
 block|}
 end_function
@@ -741,6 +747,8 @@ index|]
 operator|.
 name|util
 decl_stmt|;
+if|if
+condition|(
 name|diff_two
 argument_list|(
 name|rerere_path
@@ -755,6 +763,13 @@ argument_list|,
 name|path
 argument_list|,
 name|path
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"unable to generate diff for %s"
+argument_list|,
+name|name
 argument_list|)
 expr_stmt|;
 block|}

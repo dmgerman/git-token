@@ -4524,6 +4524,8 @@ expr_stmt|;
 name|num_get_patch
 operator|++
 expr_stmt|;
+if|if
+condition|(
 name|diff_hunks
 argument_list|(
 operator|&
@@ -4538,6 +4540,33 @@ name|blame_chunk_cb
 argument_list|,
 operator|&
 name|d
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"unable to generate diff (%s -> %s)"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|parent
+operator|->
+name|commit
+operator|->
+name|object
+operator|.
+name|sha1
+argument_list|)
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|target
+operator|->
+name|commit
+operator|->
+name|object
+operator|.
+name|sha1
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* The rest are the same as the parent */
@@ -5198,6 +5227,8 @@ index|]
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|diff_hunks
 argument_list|(
 name|file_p
@@ -5211,6 +5242,22 @@ name|handle_split_cb
 argument_list|,
 operator|&
 name|d
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"unable to generate diff (%s)"
+argument_list|,
+name|sha1_to_hex
+argument_list|(
+name|parent
+operator|->
+name|commit
+operator|->
+name|object
+operator|.
+name|sha1
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* remainder, if any, all match the preimage */

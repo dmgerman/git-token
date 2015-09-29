@@ -651,6 +651,8 @@ name|size
 operator|=
 name|size
 expr_stmt|;
+if|if
+condition|(
 name|xdi_diff
 argument_list|(
 operator|&
@@ -667,6 +669,11 @@ name|xecfg
 argument_list|,
 operator|&
 name|ecb
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"unable to generate diff"
 argument_list|)
 expr_stmt|;
 name|free

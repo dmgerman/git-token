@@ -65,6 +65,12 @@ directive|include
 file|"sha1-array.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"transport.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|server_capabilities
 specifier|static
@@ -3514,6 +3520,11 @@ argument_list|(
 name|hostandport
 argument_list|)
 expr_stmt|;
+name|transport_check_allowed
+argument_list|(
+literal|"git"
+argument_list|)
+expr_stmt|;
 comment|/* These underlying connection commands die() if they 		 * cannot connect. 		 */
 if|if
 condition|(
@@ -3653,6 +3664,11 @@ name|port
 init|=
 name|NULL
 decl_stmt|;
+name|transport_check_allowed
+argument_list|(
+literal|"ssh"
+argument_list|)
+expr_stmt|;
 name|get_host_and_port
 argument_list|(
 operator|&
@@ -3942,6 +3958,11 @@ operator|->
 name|use_shell
 operator|=
 literal|1
+expr_stmt|;
+name|transport_check_allowed
+argument_list|(
+literal|"file"
+argument_list|)
 expr_stmt|;
 block|}
 name|argv_array_push
