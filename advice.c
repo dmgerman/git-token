@@ -579,7 +579,7 @@ name|advise
 argument_list|(
 name|_
 argument_list|(
-literal|"Please, commit your changes before you can merge."
+literal|"Please, commit your changes before merging."
 argument_list|)
 argument_list|)
 expr_stmt|;
