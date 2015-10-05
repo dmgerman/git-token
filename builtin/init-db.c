@@ -1667,11 +1667,7 @@ literal|"true"
 argument_list|)
 expr_stmt|;
 name|probe_utf8_pathname_composition
-argument_list|(
-name|path
-argument_list|,
-name|len
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 return|return

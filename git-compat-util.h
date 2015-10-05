@@ -1197,11 +1197,7 @@ DECL|macro|probe_utf8_pathname_composition
 define|#
 directive|define
 name|probe_utf8_pathname_composition
-parameter_list|(
-name|a
-parameter_list|,
-name|b
-parameter_list|)
+parameter_list|()
 end_define
 
 begin_endif
