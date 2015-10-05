@@ -3610,6 +3610,19 @@ argument_list|,
 name|path
 argument_list|)
 expr_stmt|;
+comment|/* remove repo-local variables from the environment */
+name|conn
+operator|->
+name|env
+operator|=
+name|local_repo_env
+expr_stmt|;
+name|conn
+operator|->
+name|use_shell
+operator|=
+literal|1
+expr_stmt|;
 name|conn
 operator|->
 name|in
@@ -3635,6 +3648,8 @@ name|ssh
 decl_stmt|;
 name|int
 name|putty
+init|=
+literal|0
 decl_stmt|,
 name|tortoiseplink
 init|=
@@ -3763,21 +3778,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|ssh
 condition|)
-block|{
-name|conn
-operator|->
-name|use_shell
-operator|=
-literal|1
-expr_stmt|;
-name|putty
-operator|=
-literal|0
-expr_stmt|;
-block|}
-else|else
 block|{
 specifier|const
 name|char
@@ -3788,6 +3791,13 @@ name|char
 modifier|*
 name|ssh_dup
 decl_stmt|;
+comment|/* 				 * GIT_SSH is the no-shell version of 				 * GIT_SSH_COMMAND (and must remain so for 				 * historical compatibility). 				 */
+name|conn
+operator|->
+name|use_shell
+operator|=
+literal|0
+expr_stmt|;
 name|ssh
 operator|=
 name|getenv
@@ -3838,6 +3848,8 @@ argument_list|)
 expr_stmt|;
 name|putty
 operator|=
+name|tortoiseplink
+operator|||
 operator|!
 name|strcasecmp
 argument_list|(
@@ -3853,8 +3865,6 @@ name|base
 argument_list|,
 literal|"plink.exe"
 argument_list|)
-operator|||
-name|tortoiseplink
 expr_stmt|;
 name|free
 argument_list|(
@@ -3926,22 +3936,6 @@ name|args
 argument_list|,
 name|ssh_host
 argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-comment|/* remove repo-local variables from the environment */
-name|conn
-operator|->
-name|env
-operator|=
-name|local_repo_env
-expr_stmt|;
-name|conn
-operator|->
-name|use_shell
-operator|=
-literal|1
 expr_stmt|;
 block|}
 name|argv_array_push
