@@ -13412,9 +13412,6 @@ expr_stmt|;
 comment|/* add the null */
 break|break;
 case|case
-name|DATE_LOCAL
-case|:
-case|case
 name|DATE_NORMAL
 case|:
 name|blame_date_width
