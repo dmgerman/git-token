@@ -60,6 +60,22 @@ name|RERERE_RESOLVED
 decl_stmt|;
 end_decl_stmt
 
+begin_struct
+DECL|struct|rerere_id
+struct|struct
+name|rerere_id
+block|{
+DECL|member|hex
+name|char
+name|hex
+index|[
+literal|41
+index|]
+decl_stmt|;
+block|}
+struct|;
+end_struct
+
 begin_function_decl
 specifier|extern
 name|int
@@ -84,6 +100,10 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Given the conflict ID and the name of a "file" used for replaying  * the recorded resolution (e.g. "preimage", "postimage"), return the  * path to that filesystem entity.  With "file" specified with NULL,  * return the path to the directory that houses these files.  */
+end_comment
+
 begin_function_decl
 specifier|extern
 specifier|const
@@ -92,9 +112,9 @@ modifier|*
 name|rerere_path
 parameter_list|(
 specifier|const
-name|char
+name|struct
+name|rerere_id
 modifier|*
-name|hex
 parameter_list|,
 specifier|const
 name|char

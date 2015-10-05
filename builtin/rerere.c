@@ -723,15 +723,11 @@ operator|.
 name|string
 decl_stmt|;
 specifier|const
-name|char
+name|struct
+name|rerere_id
 modifier|*
-name|name
+name|id
 init|=
-operator|(
-specifier|const
-name|char
-operator|*
-operator|)
 name|merge_rr
 operator|.
 name|items
@@ -745,7 +741,7 @@ name|diff_two
 argument_list|(
 name|rerere_path
 argument_list|(
-name|name
+name|id
 argument_list|,
 literal|"preimage"
 argument_list|)
