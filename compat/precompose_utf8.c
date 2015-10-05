@@ -757,15 +757,10 @@ name|dirent_nfc
 operator|->
 name|max_name_len
 decl_stmt|;
-name|size_t
-name|cnt
-decl_stmt|;
 name|errno
 operator|=
 literal|0
 expr_stmt|;
-name|cnt
-operator|=
 name|iconv
 argument_list|(
 name|prec_dir
