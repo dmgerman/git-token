@@ -3683,6 +3683,42 @@ name|good_hex
 argument_list|)
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|term_bad
+argument_list|,
+literal|"new"
+argument_list|)
+operator|&&
+operator|!
+name|strcmp
+argument_list|(
+name|term_good
+argument_list|,
+literal|"old"
+argument_list|)
+condition|)
+block|{
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"The merge base %s is new.\n"
+literal|"The property has changed "
+literal|"between %s and [%s].\n"
+argument_list|,
+name|bad_hex
+argument_list|,
+name|bad_hex
+argument_list|,
+name|good_hex
+argument_list|)
+expr_stmt|;
+block|}
 else|else
 block|{
 name|fprintf
@@ -3809,7 +3845,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * "check_merge_bases" checks that merge bases are not "bad".  *  * - If one is "bad", it means the user assumed something wrong  * and we must exit with a non 0 error code.  * - If one is "good", that's good, we have nothing to do.  * - If one is "skipped", we can't know but we should warn.  * - If we don't know, we should check it out and ask the user to test.  */
+comment|/*  * "check_merge_bases" checks that merge bases are not "bad" (or "new").  *  * - If one is "bad" (or "new"), it means the user assumed something wrong  * and we must exit with a non 0 error code.  * - If one is "good" (or "old"), that's good, we have nothing to do.  * - If one is "skipped", we can't know but we should warn.  * - If we don't know, we should check it out and ask the user to test.  */
 end_comment
 
 begin_function
