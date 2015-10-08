@@ -220,13 +220,13 @@ operator|||
 operator|!
 name|t
 operator|->
-name|ref
+name|update_ref
 operator|||
 operator|!
 operator|*
 name|t
 operator|->
-name|ref
+name|update_ref
 condition|)
 name|die
 argument_list|(
@@ -298,7 +298,7 @@ name|buf
 argument_list|,
 name|t
 operator|->
-name|ref
+name|update_ref
 argument_list|,
 name|commit_sha1
 argument_list|,
@@ -902,6 +902,8 @@ argument_list|(
 name|c
 operator|->
 name|refs
+argument_list|,
+name|NOTES_INIT_WRITABLE
 argument_list|)
 expr_stmt|;
 name|string_list_clear
