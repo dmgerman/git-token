@@ -27,19 +27,6 @@ directive|include
 file|"strbuf.h"
 end_include
 
-begin_decl_stmt
-DECL|variable|cmitmsg
-DECL|variable|patchfile
-specifier|static
-name|FILE
-modifier|*
-name|cmitmsg
-decl_stmt|,
-modifier|*
-name|patchfile
-decl_stmt|;
-end_decl_stmt
-
 begin_struct
 DECL|struct|mailinfo
 struct|struct
@@ -54,6 +41,16 @@ DECL|member|output
 name|FILE
 modifier|*
 name|output
+decl_stmt|;
+DECL|member|cmitmsg
+name|FILE
+modifier|*
+name|cmitmsg
+decl_stmt|;
+DECL|member|patchfile
+name|FILE
+modifier|*
+name|patchfile
 decl_stmt|;
 DECL|member|name
 name|struct
@@ -3585,6 +3582,8 @@ block|{
 if|if
 condition|(
 operator|!
+name|mi
+operator|->
 name|cmitmsg
 condition|)
 return|return
@@ -3702,6 +3701,8 @@ if|if
 condition|(
 name|fseek
 argument_list|(
+name|mi
+operator|->
 name|cmitmsg
 argument_list|,
 literal|0L
@@ -3720,6 +3721,8 @@ name|ftruncate
 argument_list|(
 name|fileno
 argument_list|(
+name|mi
+operator|->
 name|cmitmsg
 argument_list|)
 argument_list|,
@@ -3796,6 +3799,8 @@ name|message_id
 condition|)
 name|fprintf
 argument_list|(
+name|mi
+operator|->
 name|cmitmsg
 argument_list|,
 literal|"Message-Id: %s\n"
@@ -3807,9 +3812,13 @@ argument_list|)
 expr_stmt|;
 name|fclose
 argument_list|(
+name|mi
+operator|->
 name|cmitmsg
 argument_list|)
 expr_stmt|;
+name|mi
+operator|->
 name|cmitmsg
 operator|=
 name|NULL
@@ -3824,6 +3833,8 @@ name|line
 operator|->
 name|buf
 argument_list|,
+name|mi
+operator|->
 name|cmitmsg
 argument_list|)
 expr_stmt|;
@@ -3863,6 +3874,8 @@ name|line
 operator|->
 name|len
 argument_list|,
+name|mi
+operator|->
 name|patchfile
 argument_list|)
 expr_stmt|;
@@ -5063,6 +5076,8 @@ name|line
 init|=
 name|STRBUF_INIT
 decl_stmt|;
+name|mi
+operator|->
 name|cmitmsg
 operator|=
 name|fopen
@@ -5075,6 +5090,8 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
+name|mi
+operator|->
 name|cmitmsg
 condition|)
 block|{
@@ -5088,6 +5105,8 @@ operator|-
 literal|1
 return|;
 block|}
+name|mi
+operator|->
 name|patchfile
 operator|=
 name|fopen
@@ -5100,6 +5119,8 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
+name|mi
+operator|->
 name|patchfile
 condition|)
 block|{
@@ -5110,6 +5131,8 @@ argument_list|)
 expr_stmt|;
 name|fclose
 argument_list|(
+name|mi
+operator|->
 name|cmitmsg
 argument_list|)
 expr_stmt|;
@@ -5208,6 +5231,8 @@ argument_list|)
 expr_stmt|;
 name|fclose
 argument_list|(
+name|mi
+operator|->
 name|patchfile
 argument_list|)
 expr_stmt|;
