@@ -5049,6 +5049,11 @@ expr_stmt|;
 name|handle_body
 argument_list|()
 expr_stmt|;
+name|fclose
+argument_list|(
+name|patchfile
+argument_list|)
+expr_stmt|;
 name|handle_info
 argument_list|()
 expr_stmt|;
