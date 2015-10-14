@@ -990,7 +990,7 @@ if|if
 condition|(
 operator|++
 name|content_top
-operator|>
+operator|>=
 operator|&
 name|content
 index|[
