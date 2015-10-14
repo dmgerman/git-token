@@ -2894,10 +2894,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|decode_header_bq
+DECL|function|decode_header
 specifier|static
-name|int
-name|decode_header_bq
+name|void
+name|decode_header
 parameter_list|(
 name|struct
 name|strbuf
@@ -2933,11 +2933,6 @@ decl_stmt|,
 name|piecebuf
 init|=
 name|STRBUF_INIT
-decl_stmt|;
-name|int
-name|rfc2047
-init|=
-literal|0
 decl_stmt|;
 name|in
 operator|=
@@ -2985,10 +2980,6 @@ argument_list|(
 operator|&
 name|piecebuf
 argument_list|)
-expr_stmt|;
-name|rfc2047
-operator|=
-literal|1
 expr_stmt|;
 if|if
 condition|(
@@ -3083,7 +3074,7 @@ argument_list|)
 operator|)
 condition|)
 goto|goto
-name|decode_header_bq_out
+name|release_return
 goto|;
 if|if
 condition|(
@@ -3100,7 +3091,7 @@ operator|->
 name|len
 condition|)
 goto|goto
-name|decode_header_bq_out
+name|release_return
 goto|;
 name|strbuf_add
 argument_list|(
@@ -3134,7 +3125,7 @@ operator|!=
 literal|'?'
 condition|)
 goto|goto
-name|decode_header_bq_out
+name|release_return
 goto|;
 name|ep
 operator|=
@@ -3153,7 +3144,7 @@ operator|!
 name|ep
 condition|)
 goto|goto
-name|decode_header_bq_out
+name|release_return
 goto|;
 name|strbuf_add
 argument_list|(
@@ -3181,7 +3172,7 @@ condition|)
 block|{
 default|default:
 goto|goto
-name|decode_header_bq_out
+name|release_return
 goto|;
 case|case
 literal|'b'
@@ -3269,7 +3260,7 @@ operator|&
 name|outbuf
 argument_list|)
 expr_stmt|;
-name|decode_header_bq_out
+name|release_return
 label|:
 name|strbuf_release
 argument_list|(
@@ -3289,32 +3280,6 @@ operator|&
 name|piecebuf
 argument_list|)
 expr_stmt|;
-return|return
-name|rfc2047
-return|;
-block|}
-end_function
-
-begin_function
-DECL|function|decode_header
-specifier|static
-name|void
-name|decode_header
-parameter_list|(
-name|struct
-name|strbuf
-modifier|*
-name|it
-parameter_list|)
-block|{
-if|if
-condition|(
-name|decode_header_bq
-argument_list|(
-name|it
-argument_list|)
-condition|)
-return|return;
 block|}
 end_function
 
