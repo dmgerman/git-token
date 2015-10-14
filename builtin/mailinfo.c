@@ -3315,18 +3315,6 @@ name|it
 argument_list|)
 condition|)
 return|return;
-comment|/* otherwise "it" is a straight copy of the input. 	 * This can be binary guck but there is no charset specified. 	 */
-if|if
-condition|(
-name|metainfo_charset
-condition|)
-name|convert_to_utf8
-argument_list|(
-name|it
-argument_list|,
-literal|""
-argument_list|)
-expr_stmt|;
 block|}
 end_function
 
