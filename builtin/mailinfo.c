@@ -96,6 +96,20 @@ name|char
 modifier|*
 name|message_id
 decl_stmt|;
+enum|enum
+block|{
+DECL|enumerator|TE_DONTCARE
+DECL|enumerator|TE_QP
+DECL|enumerator|TE_BASE64
+name|TE_DONTCARE
+block|,
+name|TE_QP
+block|,
+name|TE_BASE64
+DECL|member|transfer_encoding
+block|}
+name|transfer_encoding
+enum|;
 DECL|member|patch_lines
 name|int
 name|patch_lines
@@ -113,24 +127,6 @@ comment|/* still checking in-body headers? */
 block|}
 struct|;
 end_struct
-
-begin_enum
-specifier|static
-enum|enum
-block|{
-DECL|enumerator|TE_DONTCARE
-DECL|enumerator|TE_QP
-DECL|enumerator|TE_BASE64
-name|TE_DONTCARE
-block|,
-name|TE_QP
-block|,
-name|TE_BASE64
-DECL|variable|transfer_encoding
-block|}
-name|transfer_encoding
-enum|;
-end_enum
 
 begin_decl_stmt
 DECL|variable|charset
@@ -1174,6 +1170,11 @@ specifier|static
 name|void
 name|handle_content_transfer_encoding
 parameter_list|(
+name|struct
+name|mailinfo
+modifier|*
+name|mi
+parameter_list|,
 specifier|const
 name|struct
 name|strbuf
@@ -1192,6 +1193,8 @@ argument_list|,
 literal|"base64"
 argument_list|)
 condition|)
+name|mi
+operator|->
 name|transfer_encoding
 operator|=
 name|TE_BASE64
@@ -1208,11 +1211,15 @@ argument_list|,
 literal|"quoted-printable"
 argument_list|)
 condition|)
+name|mi
+operator|->
 name|transfer_encoding
 operator|=
 name|TE_QP
 expr_stmt|;
 else|else
+name|mi
+operator|->
 name|transfer_encoding
 operator|=
 name|TE_DONTCARE
@@ -2867,6 +2874,8 @@ argument_list|)
 expr_stmt|;
 name|handle_content_transfer_encoding
 argument_list|(
+name|mi
+argument_list|,
 operator|&
 name|sb
 argument_list|)
@@ -3075,6 +3084,11 @@ name|void
 name|decode_transfer_encoding
 parameter_list|(
 name|struct
+name|mailinfo
+modifier|*
+name|mi
+parameter_list|,
+name|struct
 name|strbuf
 modifier|*
 name|line
@@ -3087,6 +3101,8 @@ name|ret
 decl_stmt|;
 switch|switch
 condition|(
+name|mi
+operator|->
 name|transfer_encoding
 condition|)
 block|{
@@ -4355,6 +4371,8 @@ name|again
 goto|;
 block|}
 comment|/* set some defaults */
+name|mi
+operator|->
 name|transfer_encoding
 operator|=
 name|TE_DONTCARE
@@ -4522,11 +4540,15 @@ block|}
 comment|/* Unwrap transfer encoding */
 name|decode_transfer_encoding
 argument_list|(
+name|mi
+argument_list|,
 name|line
 argument_list|)
 expr_stmt|;
 switch|switch
 condition|(
+name|mi
+operator|->
 name|transfer_encoding
 condition|)
 block|{
