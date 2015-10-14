@@ -83,6 +83,10 @@ DECL|member|keep_non_patch_brackets_in_subject
 name|int
 name|keep_non_patch_brackets_in_subject
 decl_stmt|;
+DECL|member|patch_lines
+name|int
+name|patch_lines
+decl_stmt|;
 DECL|member|filter_stage
 name|int
 name|filter_stage
@@ -132,14 +136,6 @@ name|strbuf
 name|charset
 init|=
 name|STRBUF_INIT
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-DECL|variable|patch_lines
-specifier|static
-name|int
-name|patch_lines
 decl_stmt|;
 end_decl_stmt
 
@@ -3793,6 +3789,11 @@ specifier|static
 name|void
 name|handle_patch
 parameter_list|(
+name|struct
+name|mailinfo
+modifier|*
+name|mi
+parameter_list|,
 specifier|const
 name|struct
 name|strbuf
@@ -3815,6 +3816,8 @@ argument_list|,
 name|patchfile
 argument_list|)
 expr_stmt|;
+name|mi
+operator|->
 name|patch_lines
 operator|++
 expr_stmt|;
@@ -3869,6 +3872,8 @@ literal|1
 case|:
 name|handle_patch
 argument_list|(
+name|mi
+argument_list|,
 name|line
 argument_list|)
 expr_stmt|;
@@ -4790,6 +4795,8 @@ block|{
 comment|/* only print inbody headers if we output a patch file */
 if|if
 condition|(
+name|mi
+operator|->
 name|patch_lines
 operator|&&
 name|s_hdr_data
