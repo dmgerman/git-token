@@ -196,14 +196,6 @@ decl_stmt|;
 end_decl_stmt
 
 begin_define
-DECL|macro|MAX_HDR_PARSED
-define|#
-directive|define
-name|MAX_HDR_PARSED
-value|10
-end_define
-
-begin_define
 DECL|macro|MAX_BOUNDARIES
 define|#
 directive|define
@@ -1505,6 +1497,14 @@ argument_list|)
 expr_stmt|;
 block|}
 end_function
+
+begin_define
+DECL|macro|MAX_HDR_PARSED
+define|#
+directive|define
+name|MAX_HDR_PARSED
+value|10
+end_define
 
 begin_decl_stmt
 DECL|variable|header
