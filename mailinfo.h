@@ -149,6 +149,10 @@ name|struct
 name|strbuf
 name|log_message
 decl_stmt|;
+DECL|member|input_error
+name|int
+name|input_error
+decl_stmt|;
 block|}
 struct|;
 end_struct
