@@ -5775,9 +5775,14 @@ if|if
 condition|(
 name|option_dissociate
 condition|)
+block|{
+name|close_all_packs
+argument_list|()
+expr_stmt|;
 name|dissociate_from_references
 argument_list|()
 expr_stmt|;
+block|}
 name|junk_mode
 operator|=
 name|JUNK_LEAVE_REPO
