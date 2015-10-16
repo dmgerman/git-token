@@ -5036,7 +5036,7 @@ operator|&
 name|msg
 argument_list|)
 expr_stmt|;
-name|stripspace
+name|strbuf_stripspace
 argument_list|(
 operator|&
 name|msg

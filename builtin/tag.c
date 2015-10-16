@@ -2702,7 +2702,7 @@ name|cleanup_mode
 operator|!=
 name|CLEANUP_NONE
 condition|)
-name|stripspace
+name|strbuf_stripspace
 argument_list|(
 name|buf
 argument_list|,

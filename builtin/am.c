@@ -6424,7 +6424,7 @@ literal|"msg"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|stripspace
+name|strbuf_stripspace
 argument_list|(
 operator|&
 name|msg

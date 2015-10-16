@@ -4394,7 +4394,7 @@ operator|-
 literal|1
 return|;
 block|}
-name|stripspace
+name|strbuf_stripspace
 argument_list|(
 operator|&
 name|buf
