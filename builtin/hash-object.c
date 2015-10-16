@@ -473,7 +473,7 @@ argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git hash-object  --stdin-paths<<list-of-paths>"
+literal|"git hash-object  --stdin-paths"
 argument_list|)
 block|,
 name|NULL

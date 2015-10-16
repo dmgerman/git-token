@@ -803,7 +803,7 @@ literal|1
 condition|)
 name|usage
 argument_list|(
-literal|"git mktag< signaturefile"
+literal|"git mktag"
 argument_list|)
 expr_stmt|;
 if|if

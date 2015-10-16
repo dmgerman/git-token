@@ -68,7 +68,7 @@ init|=
 block|{
 literal|"git check-ignore [<options>]<pathname>..."
 block|,
-literal|"git check-ignore [<options>] --stdin<<list-of-paths>"
+literal|"git check-ignore [<options>] --stdin"
 block|,
 name|NULL
 block|}

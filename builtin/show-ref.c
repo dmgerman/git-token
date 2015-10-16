@@ -59,7 +59,7 @@ argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git show-ref --exclude-existing[=<pattern>]<<ref-list>"
+literal|"git show-ref --exclude-existing[=<pattern>]"
 argument_list|)
 block|,
 name|NULL

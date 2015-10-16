@@ -902,7 +902,7 @@ name|char
 name|patch_id_usage
 index|[]
 init|=
-literal|"git patch-id [--stable | --unstable]< patch"
+literal|"git patch-id [--stable | --unstable]"
 decl_stmt|;
 end_decl_stmt
 
