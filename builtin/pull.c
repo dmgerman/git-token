@@ -289,7 +289,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git pull [options] [<repository> [<refspec>...]]"
+literal|"git pull [<options>] [<repository> [<refspec>...]]"
 argument_list|)
 block|,
 name|NULL
