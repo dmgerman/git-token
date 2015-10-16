@@ -26,10 +26,6 @@ literal|1
 decl_stmt|;
 end_decl_stmt
 
-begin_comment
-comment|/* Help to copy the thing properly quoted for the shell safety.  * any single quote is replaced with '\'', any exclamation point  * is replaced with '\!', and the whole thing is enclosed in a  *  * E.g.  *  original     sq_quote     result  *  name     ==> name      ==> 'name'  *  a b      ==> a b       ==> 'a b'  *  a'b      ==> a'\''b    ==> 'a'\''b'  *  a!b      ==> a'\!'b    ==> 'a'\!'b'  */
-end_comment
-
 begin_function
 DECL|function|need_bs_quote
 specifier|static
@@ -54,6 +50,10 @@ operator|)
 return|;
 block|}
 end_function
+
+begin_comment
+comment|/* Help to copy the thing properly quoted for the shell safety.  * any single quote is replaced with '\'', any exclamation point  * is replaced with '\!', and the whole thing is enclosed in a  * single quote pair.  *  * E.g.  *  original     sq_quote     result  *  name     ==> name      ==> 'name'  *  a b      ==> a b       ==> 'a b'  *  a'b      ==> a'\''b    ==> 'a'\''b'  *  a!b      ==> a'\!'b    ==> 'a'\!'b'  */
+end_comment
 
 begin_function
 DECL|function|sq_quote_buf
