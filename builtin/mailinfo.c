@@ -2140,6 +2140,11 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
+name|mi
+operator|->
+name|metainfo_charset
+operator|||
+operator|!
 name|charset
 operator|||
 operator|!
@@ -2523,12 +2528,6 @@ argument_list|)
 expr_stmt|;
 break|break;
 block|}
-if|if
-condition|(
-name|mi
-operator|->
-name|metainfo_charset
-condition|)
 name|convert_to_utf8
 argument_list|(
 name|mi
@@ -3652,12 +3651,6 @@ operator|=
 literal|0
 expr_stmt|;
 comment|/* normalize the log message to UTF-8. */
-if|if
-condition|(
-name|mi
-operator|->
-name|metainfo_charset
-condition|)
 name|convert_to_utf8
 argument_list|(
 name|mi
