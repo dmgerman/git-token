@@ -75,17 +75,6 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|line
-specifier|static
-name|struct
-name|strbuf
-name|line
-init|=
-name|STRBUF_INIT
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|variable|name
 specifier|static
 name|struct
@@ -4938,6 +4927,12 @@ block|{
 name|int
 name|peek
 decl_stmt|;
+name|struct
+name|strbuf
+name|line
+init|=
+name|STRBUF_INIT
+decl_stmt|;
 name|fin
 operator|=
 name|in
@@ -5086,6 +5081,12 @@ argument_list|)
 expr_stmt|;
 name|handle_info
 argument_list|()
+expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|line
+argument_list|)
 expr_stmt|;
 return|return
 literal|0
