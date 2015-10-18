@@ -226,6 +226,12 @@ argument_list|(
 name|format
 argument_list|)
 expr_stmt|;
+name|filter
+operator|->
+name|with_commit_tag_algo
+operator|=
+literal|1
+expr_stmt|;
 name|filter_refs
 argument_list|(
 operator|&
