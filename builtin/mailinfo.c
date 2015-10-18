@@ -4091,7 +4091,10 @@ specifier|static
 name|int
 name|find_boundary
 parameter_list|(
-name|void
+name|struct
+name|strbuf
+modifier|*
+name|line
 parameter_list|)
 block|{
 while|while
@@ -4099,7 +4102,6 @@ condition|(
 operator|!
 name|strbuf_getline
 argument_list|(
-operator|&
 name|line
 argument_list|,
 name|fin
@@ -4115,7 +4117,6 @@ name|content_top
 operator|&&
 name|is_multipart_boundary
 argument_list|(
-operator|&
 name|line
 argument_list|)
 condition|)
@@ -4263,7 +4264,9 @@ if|if
 condition|(
 operator|!
 name|find_boundary
-argument_list|()
+argument_list|(
+name|line
+argument_list|)
 condition|)
 return|return
 literal|0
@@ -4375,7 +4378,9 @@ if|if
 condition|(
 operator|!
 name|find_boundary
-argument_list|()
+argument_list|(
+name|line
+argument_list|)
 condition|)
 goto|goto
 name|handle_body_out
