@@ -4135,6 +4135,11 @@ specifier|static
 name|int
 name|handle_boundary
 parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+name|line
+parameter_list|,
 name|int
 modifier|*
 name|filter_stage
@@ -4163,7 +4168,7 @@ label|:
 if|if
 condition|(
 name|line
-operator|.
+operator|->
 name|len
 operator|>=
 operator|(
@@ -4179,7 +4184,7 @@ operator|!
 name|memcmp
 argument_list|(
 name|line
-operator|.
+operator|->
 name|buf
 operator|+
 operator|(
@@ -4283,7 +4288,6 @@ while|while
 condition|(
 name|read_one_header_line
 argument_list|(
-operator|&
 name|line
 argument_list|,
 name|fin
@@ -4291,7 +4295,6 @@ argument_list|)
 condition|)
 name|check_header
 argument_list|(
-operator|&
 name|line
 argument_list|,
 name|p_hdr_data
@@ -4310,7 +4313,6 @@ if|if
 condition|(
 name|strbuf_getline
 argument_list|(
-operator|&
 name|line
 argument_list|,
 name|fin
@@ -4323,7 +4325,6 @@ literal|0
 return|;
 name|strbuf_addch
 argument_list|(
-operator|&
 name|line
 argument_list|,
 literal|'\n'
@@ -4426,6 +4427,8 @@ condition|(
 operator|!
 name|handle_boundary
 argument_list|(
+name|line
+argument_list|,
 operator|&
 name|filter_stage
 argument_list|,
