@@ -83,6 +83,15 @@ DECL|member|keep_non_patch_brackets_in_subject
 name|int
 name|keep_non_patch_brackets_in_subject
 decl_stmt|;
+DECL|member|add_message_id
+name|int
+name|add_message_id
+decl_stmt|;
+DECL|member|message_id
+name|char
+modifier|*
+name|message_id
+decl_stmt|;
 DECL|member|patch_lines
 name|int
 name|patch_lines
@@ -100,15 +109,6 @@ comment|/* still checking in-body headers? */
 block|}
 struct|;
 end_struct
-
-begin_decl_stmt
-DECL|variable|message_id
-specifier|static
-name|char
-modifier|*
-name|message_id
-decl_stmt|;
-end_decl_stmt
 
 begin_enum
 specifier|static
@@ -160,14 +160,6 @@ DECL|variable|use_scissors
 specifier|static
 name|int
 name|use_scissors
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-DECL|variable|add_message_id
-specifier|static
-name|int
-name|add_message_id
 decl_stmt|;
 end_decl_stmt
 
@@ -1158,6 +1150,11 @@ specifier|static
 name|void
 name|handle_message_id
 parameter_list|(
+name|struct
+name|mailinfo
+modifier|*
+name|mi
+parameter_list|,
 specifier|const
 name|struct
 name|strbuf
@@ -1167,8 +1164,12 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|mi
+operator|->
 name|add_message_id
 condition|)
+name|mi
+operator|->
 name|message_id
 operator|=
 name|strdup
@@ -2608,6 +2609,11 @@ specifier|static
 name|int
 name|check_header
 parameter_list|(
+name|struct
+name|mailinfo
+modifier|*
+name|mi
+parameter_list|,
 specifier|const
 name|struct
 name|strbuf
@@ -2905,6 +2911,8 @@ argument_list|)
 expr_stmt|;
 name|handle_message_id
 argument_list|(
+name|mi
+argument_list|,
 operator|&
 name|sb
 argument_list|)
@@ -3600,6 +3608,8 @@ name|header_stage
 operator|=
 name|check_header
 argument_list|(
+name|mi
+argument_list|,
 name|line
 argument_list|,
 name|s_hdr_data
@@ -3744,6 +3754,8 @@ condition|)
 block|{
 if|if
 condition|(
+name|mi
+operator|->
 name|message_id
 condition|)
 name|fprintf
@@ -3752,6 +3764,8 @@ name|cmitmsg
 argument_list|,
 literal|"Message-Id: %s\n"
 argument_list|,
+name|mi
+operator|->
 name|message_id
 argument_list|)
 expr_stmt|;
@@ -4350,6 +4364,8 @@ argument_list|)
 condition|)
 name|check_header
 argument_list|(
+name|mi
+argument_list|,
 name|line
 argument_list|,
 name|p_hdr_data
@@ -5128,6 +5144,8 @@ argument_list|)
 condition|)
 name|check_header
 argument_list|(
+name|mi
+argument_list|,
 operator|&
 name|line
 argument_list|,
@@ -5328,6 +5346,13 @@ operator|->
 name|email
 argument_list|)
 expr_stmt|;
+name|free
+argument_list|(
+name|mi
+operator|->
+name|message_id
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
@@ -5472,6 +5497,8 @@ argument_list|,
 literal|"--message-id"
 argument_list|)
 condition|)
+name|mi
+operator|.
 name|add_message_id
 operator|=
 literal|1
