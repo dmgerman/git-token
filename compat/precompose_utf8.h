@@ -112,10 +112,7 @@ begin_function_decl
 name|void
 name|probe_utf8_pathname_composition
 parameter_list|(
-name|char
-modifier|*
-parameter_list|,
-name|int
+name|void
 parameter_list|)
 function_decl|;
 end_function_decl

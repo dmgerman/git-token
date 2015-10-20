@@ -268,9 +268,14 @@ operator|->
 name|name
 argument_list|)
 expr_stmt|;
-name|sprintf
+name|xsnprintf
 argument_list|(
 name|path
+argument_list|,
+sizeof|sizeof
+argument_list|(
+name|path
+argument_list|)
 argument_list|,
 literal|"%s%.*s/"
 argument_list|,

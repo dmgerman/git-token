@@ -248,11 +248,15 @@ operator|+
 literal|1
 operator|)
 expr_stmt|;
-name|strcpy
+name|memcpy
 argument_list|(
 name|m
 argument_list|,
 name|name
+argument_list|,
+name|nlen
+operator|+
+literal|1
 argument_list|)
 expr_stmt|;
 for|for

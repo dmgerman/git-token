@@ -962,13 +962,18 @@ argument_list|)
 return|;
 name|header_len
 operator|=
-name|sprintf
+name|xsnprintf
 argument_list|(
 operator|(
 name|char
 operator|*
 operator|)
 name|obuf
+argument_list|,
+sizeof|sizeof
+argument_list|(
+name|obuf
+argument_list|)
 argument_list|,
 literal|"%s %"
 name|PRIuMAX

@@ -1197,11 +1197,7 @@ DECL|macro|probe_utf8_pathname_composition
 define|#
 directive|define
 name|probe_utf8_pathname_composition
-parameter_list|(
-name|a
-parameter_list|,
-name|b
-parameter_list|)
+parameter_list|()
 end_define
 
 begin_endif
@@ -4542,6 +4538,39 @@ name|len
 return|;
 block|}
 end_function
+
+begin_macro
+name|__attribute__
+argument_list|(
+argument|(format (printf,
+literal|3
+argument|,
+literal|4
+argument|))
+argument_list|)
+end_macro
+
+begin_function_decl
+specifier|extern
+name|int
+name|xsnprintf
+parameter_list|(
+name|char
+modifier|*
+name|dst
+parameter_list|,
+name|size_t
+name|max
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|fmt
+parameter_list|,
+modifier|...
+parameter_list|)
+function_decl|;
+end_function_decl
 
 begin_comment
 comment|/* in ctype.c, for kwset users */

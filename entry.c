@@ -509,9 +509,13 @@ condition|(
 name|to_tempfile
 condition|)
 block|{
-name|strcpy
+name|xsnprintf
 argument_list|(
 name|path
+argument_list|,
+name|TEMPORARY_FILENAME_LENGTH
+argument_list|,
+literal|"%s"
 argument_list|,
 name|symlink
 condition|?

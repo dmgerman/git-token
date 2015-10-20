@@ -337,6 +337,26 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Set the color buffer (which must be COLOR_MAXLEN bytes)  * to the raw color bytes; this is useful for initializing  * default color variables.  */
+end_comment
+
+begin_function_decl
+name|void
+name|color_set
+parameter_list|(
+name|char
+modifier|*
+name|dst
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|color_bytes
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function_decl
 name|int
 name|git_config_colorbool
