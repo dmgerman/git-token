@@ -2879,9 +2879,7 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|struct
-name|cache_entry
-modifier|*
+name|int
 name|index_dir_exists
 parameter_list|(
 name|struct
@@ -2896,6 +2894,23 @@ name|name
 parameter_list|,
 name|int
 name|namelen
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|void
+name|adjust_dirname_case
+parameter_list|(
+name|struct
+name|index_state
+modifier|*
+name|istate
+parameter_list|,
+name|char
+modifier|*
+name|name
 parameter_list|)
 function_decl|;
 end_function_decl
