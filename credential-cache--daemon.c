@@ -26,12 +26,6 @@ end_include
 begin_include
 include|#
 directive|include
-file|"sigchain.h"
-end_include
-
-begin_include
-include|#
-directive|include
 file|"parse-options.h"
 end_include
 
