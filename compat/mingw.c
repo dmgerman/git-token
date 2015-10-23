@@ -11727,9 +11727,12 @@ modifier|*
 name|buf
 parameter_list|)
 block|{
-name|DWORD
+name|unsigned
 name|v
 init|=
+operator|(
+name|unsigned
+operator|)
 name|GetVersion
 argument_list|()
 decl_stmt|;
