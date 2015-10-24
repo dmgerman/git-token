@@ -4122,6 +4122,14 @@ expr_stmt|;
 name|live_children
 operator|--
 expr_stmt|;
+name|child_process_clear
+argument_list|(
+operator|&
+name|blanket
+operator|->
+name|cld
+argument_list|)
+expr_stmt|;
 name|free
 argument_list|(
 name|blanket
