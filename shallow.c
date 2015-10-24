@@ -2415,9 +2415,11 @@ name|commit
 modifier|*
 name|c
 init|=
+name|pop_commit
+argument_list|(
+operator|&
 name|head
-operator|->
-name|item
+argument_list|)
 decl_stmt|;
 name|uint32_t
 modifier|*
@@ -2434,21 +2436,6 @@ argument_list|,
 name|c
 argument_list|)
 decl_stmt|;
-name|p
-operator|=
-name|head
-expr_stmt|;
-name|head
-operator|=
-name|head
-operator|->
-name|next
-expr_stmt|;
-name|free
-argument_list|(
-name|p
-argument_list|)
-expr_stmt|;
 comment|/* XXX check "UNINTERESTING" from pack bitmaps if available */
 if|if
 condition|(
