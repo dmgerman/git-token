@@ -1358,6 +1358,25 @@ end_endif
 begin_ifndef
 ifndef|#
 directive|ifndef
+name|SCNuMAX
+end_ifndef
+
+begin_define
+DECL|macro|SCNuMAX
+define|#
+directive|define
+name|SCNuMAX
+value|PRIuMAX
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
+begin_ifndef
+ifndef|#
+directive|ifndef
 name|PRIu32
 end_ifndef
 
