@@ -2706,7 +2706,7 @@ define|#
 directive|define
 name|DEFAULT_PACKED_GIT_LIMIT
 define|\
-value|((1024L * 1024L) * (sizeof(void*)>= 8 ? 8192 : 256))
+value|((1024L * 1024L) * (size_t)(sizeof(void*)>= 8 ? 8192 : 256))
 end_define
 
 begin_ifdef
