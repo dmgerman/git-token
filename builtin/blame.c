@@ -13685,7 +13685,7 @@ name|contents_from
 condition|)
 name|die
 argument_list|(
-literal|"--contents and --children do not blend well."
+literal|"--contents and --reverse do not blend well."
 argument_list|)
 expr_stmt|;
 else|else
