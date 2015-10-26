@@ -4354,6 +4354,10 @@ name|grafts_replace_parents
 decl_stmt|;
 end_decl_stmt
 
+begin_comment
+comment|/*  * GIT_REPO_VERSION is the version we write by default. The  * _READ variant is the highest number we know how to  * handle.  */
+end_comment
+
 begin_define
 DECL|macro|GIT_REPO_VERSION
 define|#
@@ -4362,10 +4366,25 @@ name|GIT_REPO_VERSION
 value|0
 end_define
 
+begin_define
+DECL|macro|GIT_REPO_VERSION_READ
+define|#
+directive|define
+name|GIT_REPO_VERSION_READ
+value|1
+end_define
+
 begin_decl_stmt
 specifier|extern
 name|int
 name|repository_format_version
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
+name|int
+name|repository_format_precious_objects
 decl_stmt|;
 end_decl_stmt
 
