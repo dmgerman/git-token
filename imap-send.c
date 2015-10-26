@@ -7970,6 +7970,18 @@ operator|.
 name|auth_method
 condition|)
 block|{
+if|#
+directive|if
+name|LIBCURL_VERSION_NUM
+operator|<
+literal|0x072200
+name|warning
+argument_list|(
+literal|"No LOGIN_OPTIONS support in this cURL version"
+argument_list|)
+expr_stmt|;
+else|#
+directive|else
 name|struct
 name|strbuf
 name|auth
@@ -8011,6 +8023,8 @@ operator|&
 name|auth
 argument_list|)
 expr_stmt|;
+endif|#
+directive|endif
 block|}
 if|if
 condition|(
