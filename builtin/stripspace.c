@@ -339,8 +339,8 @@ modifier|*
 name|usage_msg
 init|=
 literal|"\n"
-literal|"  git stripspace [-s | --strip-comments]< input\n"
-literal|"  git stripspace [-c | --comment-lines]< input"
+literal|"  git stripspace [-s | --strip-comments]\n"
+literal|"  git stripspace [-c | --comment-lines]"
 decl_stmt|;
 end_decl_stmt
 

@@ -41,7 +41,7 @@ name|char
 name|builtin_get_tar_commit_id_usage
 index|[]
 init|=
-literal|"git get-tar-commit-id<<tarfile>"
+literal|"git get-tar-commit-id"
 decl_stmt|;
 end_decl_stmt
 
