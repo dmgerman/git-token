@@ -340,7 +340,7 @@ name|STRBUF_INIT
 decl_stmt|;
 while|while
 condition|(
-name|strbuf_getline_lf
+name|strbuf_getline
 argument_list|(
 operator|&
 name|buf
