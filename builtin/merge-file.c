@@ -742,6 +742,16 @@ name|ptr
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|ret
+operator|>
+literal|127
+condition|)
+name|ret
+operator|=
+literal|127
+expr_stmt|;
 return|return
 name|ret
 return|;
