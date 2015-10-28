@@ -1140,6 +1140,25 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/*  * Similar to strbuf_getline(), but uses '\n' as the terminator,  * and additionally treats a '\r' that comes immediately before '\n'  * as part of the terminator.  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|strbuf_getline_crlf
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+parameter_list|,
+name|FILE
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/**  * Like `strbuf_getline`, but keeps the trailing terminator (if  * any) in the buffer.  */
 end_comment
 
