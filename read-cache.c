@@ -91,12 +91,6 @@ end_include
 begin_include
 include|#
 directive|include
-file|"sigchain.h"
-end_include
-
-begin_include
-include|#
-directive|include
 file|"utf8.h"
 end_include
 
