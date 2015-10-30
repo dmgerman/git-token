@@ -8710,11 +8710,17 @@ name|char
 modifier|*
 name|o_sha
 parameter_list|,
+name|unsigned
+name|o_mode
+parameter_list|,
 specifier|const
 name|unsigned
 name|char
 modifier|*
 name|a_sha
+parameter_list|,
+name|unsigned
+name|a_mode
 parameter_list|,
 name|int
 name|renormalize
@@ -8743,6 +8749,15 @@ init|=
 literal|0
 decl_stmt|;
 comment|/* assume changed for safety */
+if|if
+condition|(
+name|a_mode
+operator|!=
+name|o_mode
+condition|)
+return|return
+literal|0
+return|;
 if|if
 condition|(
 name|sha_eq
@@ -9875,7 +9890,11 @@ name|blob_unchanged
 argument_list|(
 name|o_sha
 argument_list|,
+name|o_mode
+argument_list|,
 name|a_sha
+argument_list|,
+name|a_mode
 argument_list|,
 name|normalize
 argument_list|,
@@ -9891,7 +9910,11 @@ name|blob_unchanged
 argument_list|(
 name|o_sha
 argument_list|,
+name|o_mode
+argument_list|,
 name|b_sha
+argument_list|,
+name|b_mode
 argument_list|,
 name|normalize
 argument_list|,
