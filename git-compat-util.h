@@ -1532,6 +1532,25 @@ end_endif
 begin_ifndef
 ifndef|#
 directive|ifndef
+name|SCNuMAX
+end_ifndef
+
+begin_define
+DECL|macro|SCNuMAX
+define|#
+directive|define
+name|SCNuMAX
+value|PRIuMAX
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
+begin_ifndef
+ifndef|#
+directive|ifndef
 name|PRIu32
 end_ifndef
 
@@ -3137,7 +3156,7 @@ define|#
 directive|define
 name|DEFAULT_PACKED_GIT_LIMIT
 define|\
-value|((1024L * 1024L) * (sizeof(void*)>= 8 ? 8192 : 256))
+value|((1024L * 1024L) * (size_t)(sizeof(void*)>= 8 ? 8192 : 256))
 end_define
 
 begin_ifdef

@@ -1105,7 +1105,7 @@ argument_list|(
 name|fp
 argument_list|,
 literal|"%"
-name|PRIuMAX
+name|SCNuMAX
 literal|" %127c"
 argument_list|,
 operator|&
