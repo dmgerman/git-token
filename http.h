@@ -957,12 +957,6 @@ index|[
 name|PATH_MAX
 index|]
 decl_stmt|;
-DECL|member|range_header
-name|struct
-name|curl_slist
-modifier|*
-name|range_header
-decl_stmt|;
 DECL|member|slot
 name|struct
 name|active_request_slot
