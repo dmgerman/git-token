@@ -8208,6 +8208,16 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|void
+name|close_all_packs
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|void
 name|unuse_pack
 parameter_list|(
 name|struct
