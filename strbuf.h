@@ -1226,7 +1226,7 @@ end_comment
 begin_function_decl
 specifier|extern
 name|void
-name|stripspace
+name|strbuf_stripspace
 parameter_list|(
 name|struct
 name|strbuf
@@ -1238,6 +1238,36 @@ name|skip_comments
 parameter_list|)
 function_decl|;
 end_function_decl
+
+begin_comment
+comment|/**  * Temporary alias until all topic branches have switched to use  * strbuf_stripspace directly.  */
+end_comment
+
+begin_function
+DECL|function|stripspace
+specifier|static
+specifier|inline
+name|void
+name|stripspace
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+name|buf
+parameter_list|,
+name|int
+name|skip_comments
+parameter_list|)
+block|{
+name|strbuf_stripspace
+argument_list|(
+name|buf
+argument_list|,
+name|skip_comments
+argument_list|)
+expr_stmt|;
+block|}
+end_function
 
 begin_function
 DECL|function|strbuf_strip_suffix
