@@ -19,7 +19,7 @@ name|char
 name|show_index_usage
 index|[]
 init|=
-literal|"git show-index<<packed archive index>"
+literal|"git show-index"
 decl_stmt|;
 end_decl_stmt
 

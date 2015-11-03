@@ -82,12 +82,12 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git stripspace [-s | --strip-comments]< input"
+literal|"git stripspace [-s | --strip-comments]"
 argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git stripspace [-c | --comment-lines]< input"
+literal|"git stripspace [-c | --comment-lines]"
 argument_list|)
 block|,
 name|NULL
