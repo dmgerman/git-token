@@ -1108,6 +1108,20 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|delete_redundant
+operator|&&
+name|repository_format_precious_objects
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"cannot delete packs in a precious-objects repo"
+argument_list|)
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|pack_kept_objects
 operator|<
 literal|0
