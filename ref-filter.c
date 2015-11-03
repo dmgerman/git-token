@@ -8094,7 +8094,16 @@ name|ul
 condition|)
 name|cmp
 operator|=
-literal|0
+name|strcmp
+argument_list|(
+name|a
+operator|->
+name|refname
+argument_list|,
+name|b
+operator|->
+name|refname
+argument_list|)
 expr_stmt|;
 else|else
 name|cmp
