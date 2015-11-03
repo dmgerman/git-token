@@ -582,6 +582,9 @@ name|done
 goto|;
 block|}
 comment|/* avoid adding it twice */
+name|prepare_alt_odb
+argument_list|()
+expr_stmt|;
 for|for
 control|(
 name|alt_odb
@@ -724,9 +727,6 @@ name|buf
 argument_list|,
 literal|0
 argument_list|)
-expr_stmt|;
-name|prepare_alt_odb
-argument_list|()
 expr_stmt|;
 name|done
 label|:
