@@ -518,7 +518,7 @@ name|usage
 index|[]
 init|=
 block|{
-literal|"git credential-cache [options]<action>"
+literal|"git credential-cache [<options>]<action>"
 block|,
 name|NULL
 block|}
