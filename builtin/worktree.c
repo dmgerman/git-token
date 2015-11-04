@@ -72,7 +72,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git worktree add [<options>]<path><branch>"
+literal|"git worktree add [<options>]<path> [<branch>]"
 argument_list|)
 block|,
 name|N_
