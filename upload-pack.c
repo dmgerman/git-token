@@ -3588,6 +3588,8 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|refname
+operator|&&
 name|ref_is_hidden
 argument_list|(
 name|refname
@@ -3643,7 +3645,10 @@ parameter_list|)
 block|{
 name|mark_our_ref
 argument_list|(
+name|strip_namespace
+argument_list|(
 name|refname
+argument_list|)
 argument_list|,
 name|oid
 argument_list|)
@@ -3765,7 +3770,7 @@ if|if
 condition|(
 name|mark_our_ref
 argument_list|(
-name|refname
+name|refname_nons
 argument_list|,
 name|oid
 argument_list|)
