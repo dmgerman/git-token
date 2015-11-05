@@ -69,38 +69,42 @@ end_include
 begin_ifndef
 ifndef|#
 directive|ifndef
-name|git_SHA_CTX
+name|platform_SHA_CTX
 end_ifndef
 
+begin_comment
+comment|/*  * platform's underlying implementation of SHA-1; could be OpenSSL,  * blk_SHA, Apple CommonCrypto, etc...  Note that including  * SHA1_HEADER may have already defined platform_SHA_CTX for our  * own implementations like block-sha1 and ppc-sha1, so we list  * the default for OpenSSL compatible SHA-1 implementations here.  */
+end_comment
+
 begin_define
-DECL|macro|git_SHA_CTX
+DECL|macro|platform_SHA_CTX
 define|#
 directive|define
-name|git_SHA_CTX
+name|platform_SHA_CTX
 value|SHA_CTX
 end_define
 
 begin_define
-DECL|macro|git_SHA1_Init
+DECL|macro|platform_SHA1_Init
 define|#
 directive|define
-name|git_SHA1_Init
+name|platform_SHA1_Init
 value|SHA1_Init
 end_define
 
 begin_define
-DECL|macro|git_SHA1_Update
+DECL|macro|platform_SHA1_Update
 define|#
 directive|define
-name|git_SHA1_Update
+name|platform_SHA1_Update
 value|SHA1_Update
 end_define
 
 begin_define
-DECL|macro|git_SHA1_Final
+DECL|macro|platform_SHA1_Final
 define|#
 directive|define
-name|git_SHA1_Final
+name|platform_SHA1_Final
 value|SHA1_Final
 end_define
 
@@ -108,6 +112,38 @@ begin_endif
 endif|#
 directive|endif
 end_endif
+
+begin_define
+DECL|macro|git_SHA_CTX
+define|#
+directive|define
+name|git_SHA_CTX
+value|platform_SHA_CTX
+end_define
+
+begin_define
+DECL|macro|git_SHA1_Init
+define|#
+directive|define
+name|git_SHA1_Init
+value|platform_SHA1_Init
+end_define
+
+begin_define
+DECL|macro|git_SHA1_Update
+define|#
+directive|define
+name|git_SHA1_Update
+value|platform_SHA1_Update
+end_define
+
+begin_define
+DECL|macro|git_SHA1_Final
+define|#
+directive|define
+name|git_SHA1_Final
+value|platform_SHA1_Final
+end_define
 
 begin_include
 include|#
