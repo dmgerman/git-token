@@ -11599,6 +11599,25 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Create a directory and (if share is nonzero) adjust its permissions  * according to the shared_repository setting. Only use this for  * directories under $GIT_DIR.  Don't use it for working tree  * directories.  */
+end_comment
+
+begin_function_decl
+name|void
+name|safe_create_dir
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|dir
+parameter_list|,
+name|int
+name|share
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
