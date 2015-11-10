@@ -766,11 +766,12 @@ name|error
 argument_list|(
 literal|"object %s is a %s, not a %s"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|obj
 operator|->
-name|sha1
+name|oid
 argument_list|)
 argument_list|,
 name|typename

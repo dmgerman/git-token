@@ -143,13 +143,10 @@ name|flags
 range|:
 name|FLAG_BITS
 decl_stmt|;
-DECL|member|sha1
-name|unsigned
-name|char
-name|sha1
-index|[
-literal|20
-index|]
+DECL|member|oid
+name|struct
+name|object_id
+name|oid
 decl_stmt|;
 block|}
 struct|;
@@ -163,7 +160,7 @@ name|get_object_hash
 parameter_list|(
 name|x
 parameter_list|)
-value|((x).sha1)
+value|((x).oid.hash)
 end_define
 
 begin_function_decl

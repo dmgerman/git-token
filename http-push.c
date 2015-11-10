@@ -1509,13 +1509,14 @@ name|char
 modifier|*
 name|hex
 init|=
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|request
 operator|->
 name|obj
 operator|->
-name|sha1
+name|oid
 argument_list|)
 decl_stmt|;
 name|struct
@@ -1690,13 +1691,14 @@ name|stderr
 argument_list|,
 literal|"Unable to fetch %s, will not be able to update server info refs\n"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|request
 operator|->
 name|obj
 operator|->
-name|sha1
+name|oid
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1733,13 +1735,14 @@ name|stderr
 argument_list|,
 literal|" which contains %s\n"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|request
 operator|->
 name|obj
 operator|->
-name|sha1
+name|oid
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1915,13 +1918,14 @@ name|char
 modifier|*
 name|hex
 init|=
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|request
 operator|->
 name|obj
 operator|->
-name|sha1
+name|oid
 argument_list|)
 decl_stmt|;
 name|struct
@@ -2919,13 +2923,14 @@ name|stderr
 argument_list|,
 literal|"MKCOL %s failed, aborting (%d/%ld)\n"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|request
 operator|->
 name|obj
 operator|->
-name|sha1
+name|oid
 argument_list|)
 argument_list|,
 name|request
@@ -2982,13 +2987,14 @@ name|stderr
 argument_list|,
 literal|"PUT %s failed, aborting (%d/%ld)\n"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|request
 operator|->
 name|obj
 operator|->
-name|sha1
+name|oid
 argument_list|)
 argument_list|,
 name|request
@@ -3041,13 +3047,14 @@ name|stderr
 argument_list|,
 literal|"    sent %s\n"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|request
 operator|->
 name|obj
 operator|->
-name|sha1
+name|oid
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3073,13 +3080,14 @@ name|stderr
 argument_list|,
 literal|"MOVE %s failed, aborting (%d/%ld)\n"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|request
 operator|->
 name|obj
 operator|->
-name|sha1
+name|oid
 argument_list|)
 argument_list|,
 name|request
@@ -7140,11 +7148,12 @@ name|die
 argument_list|(
 literal|"bad tree object %s"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|obj
 operator|->
-name|sha1
+name|oid
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -7539,11 +7548,12 @@ name|die
 argument_list|(
 literal|"unknown pending object %s (%s)"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|obj
 operator|->
-name|sha1
+name|oid
 argument_list|)
 argument_list|,
 name|name
@@ -8131,11 +8141,12 @@ name|buf
 argument_list|,
 literal|"%s\t%s^{}\n"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|o
 operator|->
-name|sha1
+name|oid
 argument_list|)
 argument_list|,
 name|ls

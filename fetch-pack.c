@@ -2764,15 +2764,16 @@ name|stderr
 argument_list|,
 literal|"Marking %s as complete\n"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|complete
 operator|->
 name|item
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
 argument_list|)
 argument_list|)
 expr_stmt|;

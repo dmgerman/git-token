@@ -2348,11 +2348,12 @@ name|buf
 argument_list|,
 literal|"%s\t%s^{}\n"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|o
 operator|->
-name|sha1
+name|oid
 argument_list|)
 argument_list|,
 name|name_nons

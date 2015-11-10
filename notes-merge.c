@@ -3508,22 +3508,24 @@ argument_list|(
 literal|"Merging remote commit %.7s into local commit %.7s with "
 literal|"merge-base %.7s\n"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|remote
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
 argument_list|)
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|local
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
 argument_list|)
 argument_list|,
 name|sha1_to_hex

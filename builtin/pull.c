@@ -3544,13 +3544,14 @@ name|hashcpy
 argument_list|(
 name|merge_base
 argument_list|,
+name|get_object_hash
+argument_list|(
 name|result
 operator|->
 name|item
 operator|->
 name|object
-operator|.
-name|sha1
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return

@@ -3926,7 +3926,9 @@ name|sha1
 argument_list|,
 name|o
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|)
 expr_stmt|;
 return|return
@@ -5449,7 +5451,9 @@ name|item
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|)
 expr_stmt|;
 block|}
