@@ -11519,19 +11519,6 @@ block|}
 struct|;
 end_struct
 
-begin_function_decl
-specifier|static
-name|int
-name|is_per_worktree_ref
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|refname
-parameter_list|)
-function_decl|;
-end_function_decl
-
 begin_comment
 comment|/*  * An each_ref_entry_fn that is run over loose references only.  If  * the loose reference can be packed, add an entry in the packed ref  * cache.  If the reference should be pruned, also add it to  * ref_to_prune in the pack_refs_cb_data.  */
 end_comment
@@ -11583,12 +11570,14 @@ decl_stmt|;
 comment|/* Do not pack per-worktree refs: */
 if|if
 condition|(
-name|is_per_worktree_ref
+name|ref_type
 argument_list|(
 name|entry
 operator|->
 name|name
 argument_list|)
+operator|!=
+name|REF_TYPE_NORMAL
 condition|)
 return|return
 literal|0
