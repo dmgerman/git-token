@@ -14474,10 +14474,10 @@ comment|/*  * copy the reflog message msg to buf, which has been allocated suffi
 end_comment
 
 begin_function
-DECL|function|copy_msg
+DECL|function|copy_reflog_msg
 specifier|static
 name|int
-name|copy_msg
+name|copy_reflog_msg
 parameter_list|(
 name|char
 modifier|*
@@ -15026,7 +15026,7 @@ name|msglen
 condition|)
 name|len
 operator|+=
-name|copy_msg
+name|copy_reflog_msg
 argument_list|(
 name|logrec
 operator|+
