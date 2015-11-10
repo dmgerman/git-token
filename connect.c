@@ -859,7 +859,9 @@ name|hashcpy
 argument_list|(
 name|ref
 operator|->
-name|old_sha1
+name|old_oid
+operator|.
+name|hash
 argument_list|,
 name|old_sha1
 argument_list|)

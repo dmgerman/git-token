@@ -1036,13 +1036,14 @@ argument_list|(
 name|ref_name
 argument_list|)
 expr_stmt|;
-name|get_sha1_hex
+name|get_oid_hex
 argument_list|(
 name|start
 argument_list|,
+operator|&
 name|ref
 operator|->
-name|old_sha1
+name|old_oid
 argument_list|)
 expr_stmt|;
 if|if
@@ -2001,11 +2002,12 @@ name|printf
 argument_list|(
 literal|"%s %s\n"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|posn
 operator|->
-name|old_sha1
+name|old_oid
 argument_list|)
 argument_list|,
 name|posn
@@ -3929,14 +3931,15 @@ index|]
 operator|=
 name|xstrdup
 argument_list|(
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|to_fetch
 index|[
 name|i
 index|]
 operator|->
-name|old_sha1
+name|old_oid
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4345,11 +4348,12 @@ name|preamble
 argument_list|,
 literal|"%s %s\n"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|ref
 operator|->
-name|old_sha1
+name|old_oid
 argument_list|)
 argument_list|,
 name|ref
@@ -4672,7 +4676,9 @@ name|hashcpy
 argument_list|(
 name|ref
 operator|->
-name|old_sha1
+name|old_oid
+operator|.
+name|hash
 argument_list|,
 name|old_sha1
 argument_list|)

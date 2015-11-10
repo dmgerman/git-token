@@ -685,11 +685,12 @@ name|printf
 argument_list|(
 literal|"%s	%s\n"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|ref
 operator|->
-name|old_sha1
+name|old_oid
 argument_list|)
 argument_list|,
 name|ref

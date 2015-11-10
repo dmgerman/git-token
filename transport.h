@@ -213,7 +213,7 @@ modifier|*
 name|refs
 parameter_list|)
 function_decl|;
-comment|/** 	 * Push the objects and refs. Send the necessary objects, and 	 * then, for any refs where peer_ref is set and 	 * peer_ref->new_sha1 is different from old_sha1, tell the 	 * remote side to update each ref in the list from old_sha1 to 	 * peer_ref->new_sha1. 	 * 	 * Where possible, set the status for each ref appropriately. 	 * 	 * The transport must modify new_sha1 in the ref to the new 	 * value if the remote accepted the change. Note that this 	 * could be a different value from peer_ref->new_sha1 if the 	 * process involved generating new commits. 	 **/
+comment|/** 	 * Push the objects and refs. Send the necessary objects, and 	 * then, for any refs where peer_ref is set and 	 * peer_ref->new_oid is different from old_oid, tell the 	 * remote side to update each ref in the list from old_oid to 	 * peer_ref->new_oid. 	 * 	 * Where possible, set the status for each ref appropriately. 	 * 	 * The transport must modify new_sha1 in the ref to the new 	 * value if the remote accepted the change. Note that this 	 * could be a different value from peer_ref->new_oid if the 	 * process involved generating new commits. 	 **/
 DECL|member|push_refs
 name|int
 function_decl|(
