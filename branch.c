@@ -1350,12 +1350,13 @@ name|hashcpy
 argument_list|(
 name|sha1
 argument_list|,
-name|get_object_hash
-argument_list|(
 name|commit
 operator|->
 name|object
-argument_list|)
+operator|.
+name|oid
+operator|.
+name|hash
 argument_list|)
 expr_stmt|;
 if|if

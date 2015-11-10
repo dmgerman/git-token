@@ -2444,13 +2444,13 @@ name|diff_cache
 argument_list|(
 name|revs
 argument_list|,
-name|get_object_hash
-argument_list|(
-operator|*
 name|ent
 operator|->
 name|item
-argument_list|)
+operator|->
+name|oid
+operator|.
+name|hash
 argument_list|,
 name|ent
 operator|->

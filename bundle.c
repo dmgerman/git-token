@@ -1302,11 +1302,11 @@ name|buf
 operator|=
 name|read_sha1_file
 argument_list|(
-name|get_object_hash
-argument_list|(
-operator|*
 name|tag
-argument_list|)
+operator|->
+name|oid
+operator|.
+name|hash
 argument_list|,
 operator|&
 name|type

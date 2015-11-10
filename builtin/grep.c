@@ -2375,11 +2375,11 @@ name|grep_sha1
 argument_list|(
 name|opt
 argument_list|,
-name|get_object_hash
-argument_list|(
-operator|*
 name|obj
-argument_list|)
+operator|->
+name|oid
+operator|.
+name|hash
 argument_list|,
 name|name
 argument_list|,

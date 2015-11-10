@@ -1193,11 +1193,11 @@ name|type
 init|=
 name|sha1_object_info
 argument_list|(
-name|get_object_hash
-argument_list|(
-operator|*
 name|obj
-argument_list|)
+operator|->
+name|oid
+operator|.
+name|hash
 argument_list|,
 operator|&
 name|size

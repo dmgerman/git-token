@@ -4025,8 +4025,6 @@ name|hashcpy
 argument_list|(
 name|parent_sha1
 argument_list|,
-name|get_object_hash
-argument_list|(
 name|partial
 operator|->
 name|parents
@@ -4034,7 +4032,10 @@ operator|->
 name|item
 operator|->
 name|object
-argument_list|)
+operator|.
+name|oid
+operator|.
+name|hash
 argument_list|)
 expr_stmt|;
 else|else

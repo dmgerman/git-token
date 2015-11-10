@@ -509,12 +509,13 @@ name|hex
 operator|=
 name|find_unique_abbrev
 argument_list|(
-name|get_object_hash
-argument_list|(
 name|commit
 operator|->
 name|object
-argument_list|)
+operator|.
+name|oid
+operator|.
+name|hash
 argument_list|,
 name|DEFAULT_ABBREV
 argument_list|)
