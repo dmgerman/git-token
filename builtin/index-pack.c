@@ -1192,9 +1192,11 @@ name|type
 init|=
 name|sha1_object_info
 argument_list|(
+name|get_object_hash
+argument_list|(
+operator|*
 name|obj
-operator|->
-name|sha1
+argument_list|)
 argument_list|,
 operator|&
 name|size

@@ -3690,11 +3690,12 @@ name|msg
 argument_list|,
 literal|"HEAD"
 argument_list|,
+name|get_object_hash
+argument_list|(
 name|c
 operator|->
 name|object
-operator|.
-name|sha1
+argument_list|)
 argument_list|,
 name|NULL
 argument_list|,

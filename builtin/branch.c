@@ -1780,13 +1780,14 @@ literal|" %s %s%s"
 argument_list|,
 name|find_unique_abbrev
 argument_list|(
+name|get_object_hash
+argument_list|(
 name|item
 operator|->
 name|commit
 operator|->
 name|object
-operator|.
-name|sha1
+argument_list|)
 argument_list|,
 name|filter
 operator|->

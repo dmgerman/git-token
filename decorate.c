@@ -42,9 +42,11 @@ block|{
 return|return
 name|sha1hash
 argument_list|(
+name|get_object_hash
+argument_list|(
+operator|*
 name|obj
-operator|->
-name|sha1
+argument_list|)
 argument_list|)
 operator|%
 name|n
