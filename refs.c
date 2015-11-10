@@ -846,7 +846,7 @@ value|0x40
 end_define
 
 begin_comment
-comment|/*  * A ref_entry represents either a reference or a "subdirectory" of  * references.  *  * Each directory in the reference namespace is represented by a  * ref_entry with (flags& REF_DIR) set and containing a subdir member  * that holds the entries in that directory that have been read so  * far.  If (flags& REF_INCOMPLETE) is set, then the directory and  * its subdirectories haven't been read yet.  REF_INCOMPLETE is only  * used for loose reference directories.  *  * References are represented by a ref_entry with (flags& REF_DIR)  * unset and a value member that describes the reference's value.  The  * flag member is at the ref_entry level, but it is also needed to  * interpret the contents of the value field (in other words, a  * ref_value object is not very much use without the enclosing  * ref_entry).  *  * Reference names cannot end with slash and directories' names are  * always stored with a trailing slash (except for the top-level  * directory, which is always denoted by "").  This has two nice  * consequences: (1) when the entries in each subdir are sorted  * lexicographically by name (as they usually are), the references in  * a whole tree can be generated in lexicographic order by traversing  * the tree in left-to-right, depth-first order; (2) the names of  * references and subdirectories cannot conflict, and therefore the  * presence of an empty subdirectory does not block the creation of a  * similarly-named reference.  (The fact that reference names with the  * same leading components can conflict *with each other* is a  * separate issue that is regulated by verify_refname_available().)  *  * Please note that the name field contains the fully-qualified  * reference (or subdirectory) name.  Space could be saved by only  * storing the relative names.  But that would require the full names  * to be generated on the fly when iterating in do_for_each_ref(), and  * would break callback functions, who have always been able to assume  * that the name strings that they are passed will not be freed during  * the iteration.  */
+comment|/*  * A ref_entry represents either a reference or a "subdirectory" of  * references.  *  * Each directory in the reference namespace is represented by a  * ref_entry with (flags& REF_DIR) set and containing a subdir member  * that holds the entries in that directory that have been read so  * far.  If (flags& REF_INCOMPLETE) is set, then the directory and  * its subdirectories haven't been read yet.  REF_INCOMPLETE is only  * used for loose reference directories.  *  * References are represented by a ref_entry with (flags& REF_DIR)  * unset and a value member that describes the reference's value.  The  * flag member is at the ref_entry level, but it is also needed to  * interpret the contents of the value field (in other words, a  * ref_value object is not very much use without the enclosing  * ref_entry).  *  * Reference names cannot end with slash and directories' names are  * always stored with a trailing slash (except for the top-level  * directory, which is always denoted by "").  This has two nice  * consequences: (1) when the entries in each subdir are sorted  * lexicographically by name (as they usually are), the references in  * a whole tree can be generated in lexicographic order by traversing  * the tree in left-to-right, depth-first order; (2) the names of  * references and subdirectories cannot conflict, and therefore the  * presence of an empty subdirectory does not block the creation of a  * similarly-named reference.  (The fact that reference names with the  * same leading components can conflict *with each other* is a  * separate issue that is regulated by verify_refname_available_dir().)  *  * Please note that the name field contains the fully-qualified  * reference (or subdirectory) name.  Space could be saved by only  * storing the relative names.  But that would require the full names  * to be generated on the fly when iterating in do_for_each_ref(), and  * would break callback functions, who have always been able to assume  * that the name strings that they are passed will not be freed during  * the iteration.  */
 end_comment
 
 begin_struct
@@ -3729,10 +3729,10 @@ comment|/*  * Return 0 if a reference named refname could be created without  * 
 end_comment
 
 begin_function
-DECL|function|verify_refname_available
+DECL|function|verify_refname_available_dir
 specifier|static
 name|int
-name|verify_refname_available
+name|verify_refname_available_dir
 parameter_list|(
 specifier|const
 name|char
@@ -10633,7 +10633,7 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|verify_refname_available
+name|verify_refname_available_dir
 argument_list|(
 name|orig_refname
 argument_list|,
@@ -10708,7 +10708,7 @@ operator|!=
 name|ENOTDIR
 operator|||
 operator|!
-name|verify_refname_available
+name|verify_refname_available_dir
 argument_list|(
 name|orig_refname
 argument_list|,
@@ -10754,7 +10754,7 @@ operator|->
 name|old_oid
 argument_list|)
 operator|&&
-name|verify_refname_available
+name|verify_refname_available_dir
 argument_list|(
 name|refname
 argument_list|,
@@ -13595,7 +13595,7 @@ expr_stmt|;
 name|ret
 operator|=
 operator|!
-name|verify_refname_available
+name|verify_refname_available_dir
 argument_list|(
 name|newname
 argument_list|,
@@ -13615,7 +13615,7 @@ name|err
 argument_list|)
 operator|&&
 operator|!
-name|verify_refname_available
+name|verify_refname_available_dir
 argument_list|(
 name|newname
 argument_list|,
@@ -20091,7 +20091,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|verify_refname_available
+name|verify_refname_available_dir
 argument_list|(
 name|update
 operator|->
@@ -20107,7 +20107,7 @@ argument_list|,
 name|err
 argument_list|)
 operator|||
-name|verify_refname_available
+name|verify_refname_available_dir
 argument_list|(
 name|update
 operator|->
