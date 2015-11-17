@@ -848,10 +848,13 @@ name|out
 decl_stmt|;
 DECL|member|argc
 DECL|member|cpidx
+DECL|member|total
 name|int
 name|argc
 decl_stmt|,
 name|cpidx
+decl_stmt|,
+name|total
 decl_stmt|;
 DECL|member|opt
 specifier|const
