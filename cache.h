@@ -8165,8 +8165,32 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/* A hook for count-objects to report invalid files in pack directory */
+comment|/* A hook to report invalid files in pack directory */
 end_comment
+
+begin_define
+DECL|macro|PACKDIR_FILE_PACK
+define|#
+directive|define
+name|PACKDIR_FILE_PACK
+value|1
+end_define
+
+begin_define
+DECL|macro|PACKDIR_FILE_IDX
+define|#
+directive|define
+name|PACKDIR_FILE_IDX
+value|2
+end_define
+
+begin_define
+DECL|macro|PACKDIR_FILE_GARBAGE
+define|#
+directive|define
+name|PACKDIR_FILE_GARBAGE
+value|4
+end_define
 
 begin_function_decl
 specifier|extern
@@ -8176,10 +8200,8 @@ modifier|*
 name|report_garbage
 function_decl|)
 parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|desc
+name|unsigned
+name|seen_bits
 parameter_list|,
 specifier|const
 name|char

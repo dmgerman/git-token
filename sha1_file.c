@@ -5804,10 +5804,8 @@ modifier|*
 name|report_garbage
 function_decl|)
 parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|desc
+name|unsigned
+name|seen_bits
 parameter_list|,
 specifier|const
 name|char
@@ -5839,43 +5837,17 @@ name|int
 name|last
 parameter_list|)
 block|{
-specifier|const
-name|char
-modifier|*
-name|msg
-decl_stmt|;
-switch|switch
+if|if
 condition|(
 name|seen_bits
+operator|==
+operator|(
+name|PACKDIR_FILE_PACK
+operator||
+name|PACKDIR_FILE_IDX
+operator|)
 condition|)
-block|{
-case|case
-literal|0
-case|:
-name|msg
-operator|=
-literal|"no corresponding .idx or .pack"
-expr_stmt|;
-break|break;
-case|case
-literal|1
-case|:
-name|msg
-operator|=
-literal|"no corresponding .idx"
-expr_stmt|;
-break|break;
-case|case
-literal|2
-case|:
-name|msg
-operator|=
-literal|"no corresponding .pack"
-expr_stmt|;
-break|break;
-default|default:
 return|return;
-block|}
 for|for
 control|(
 init|;
@@ -5888,7 +5860,7 @@ operator|++
 control|)
 name|report_garbage
 argument_list|(
-name|msg
+name|seen_bits
 argument_list|,
 name|list
 operator|->
@@ -6045,7 +6017,7 @@ condition|)
 block|{
 name|report_garbage
 argument_list|(
-literal|"garbage found"
+name|PACKDIR_FILE_GARBAGE
 argument_list|,
 name|path
 argument_list|)
@@ -6439,7 +6411,7 @@ expr_stmt|;
 else|else
 name|report_garbage
 argument_list|(
-literal|"garbage found"
+name|PACKDIR_FILE_GARBAGE
 argument_list|,
 name|path
 operator|.
