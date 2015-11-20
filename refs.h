@@ -1575,11 +1575,19 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Check whether a ref is hidden. If no namespace is set, both the first and  * the second parameter point to the full ref name. If a namespace is set and  * the ref is inside that namespace, the first parameter is a pointer to the  * name of the ref with the namespace prefix removed. If a namespace is set and  * the ref is outside that namespace, the first parameter is NULL. The second  * parameter always points to the full ref name.  */
+end_comment
+
 begin_function_decl
 specifier|extern
 name|int
 name|ref_is_hidden
 parameter_list|(
+specifier|const
+name|char
+modifier|*
+parameter_list|,
 specifier|const
 name|char
 modifier|*
