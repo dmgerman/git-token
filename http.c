@@ -7927,7 +7927,9 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Resuming fetch of pack %s at byte %ld\n"
+literal|"Resuming fetch of pack %s at byte %"
+name|PRIuMAX
+literal|"\n"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -7936,6 +7938,9 @@ operator|->
 name|sha1
 argument_list|)
 argument_list|,
+operator|(
+name|uintmax_t
+operator|)
 name|prev_posn
 argument_list|)
 expr_stmt|;
@@ -8766,10 +8771,15 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-literal|"Resuming fetch of object %s at byte %ld\n"
+literal|"Resuming fetch of object %s at byte %"
+name|PRIuMAX
+literal|"\n"
 argument_list|,
 name|hex
 argument_list|,
+operator|(
+name|uintmax_t
+operator|)
 name|prev_posn
 argument_list|)
 expr_stmt|;
