@@ -122,14 +122,19 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|progress
-DECL|variable|recurse_submodules
 specifier|static
 name|int
 name|progress
 init|=
 operator|-
 literal|1
-decl_stmt|,
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|recurse_submodules
+specifier|static
+name|int
 name|recurse_submodules
 init|=
 name|RECURSE_SUBMODULES_DEFAULT
@@ -2149,22 +2154,6 @@ name|value
 decl_stmt|;
 if|if
 condition|(
-operator|*
-name|recurse_submodules
-operator|!=
-name|RECURSE_SUBMODULES_DEFAULT
-condition|)
-name|die
-argument_list|(
-literal|"%s can only be used once."
-argument_list|,
-name|opt
-operator|->
-name|long_name
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
 name|unset
 condition|)
 operator|*
@@ -2537,11 +2526,6 @@ operator|-
 literal|1
 decl_stmt|;
 name|int
-name|recurse_submodules_from_cmdline
-init|=
-name|RECURSE_SUBMODULES_DEFAULT
-decl_stmt|;
-name|int
 name|rc
 decl_stmt|;
 specifier|const
@@ -2736,7 +2720,7 @@ block|,
 literal|"recurse-submodules"
 block|,
 operator|&
-name|recurse_submodules_from_cmdline
+name|recurse_submodules
 block|,
 name|N_
 argument_list|(
@@ -3007,16 +2991,6 @@ argument_list|(
 literal|"--delete doesn't make sense without any refs"
 argument_list|)
 argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|recurse_submodules_from_cmdline
-operator|!=
-name|RECURSE_SUBMODULES_DEFAULT
-condition|)
-name|recurse_submodules
-operator|=
-name|recurse_submodules_from_cmdline
 expr_stmt|;
 if|if
 condition|(
