@@ -117,18 +117,18 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|saved_environment
+DECL|variable|saved_env_before_alias
 specifier|static
 name|int
-name|saved_environment
+name|saved_env_before_alias
 decl_stmt|;
 end_decl_stmt
 
 begin_function
-DECL|function|save_env
+DECL|function|save_env_before_alias
 specifier|static
 name|void
-name|save_env
+name|save_env_before_alias
 parameter_list|(
 name|void
 parameter_list|)
@@ -138,10 +138,10 @@ name|i
 decl_stmt|;
 if|if
 condition|(
-name|saved_environment
+name|saved_env_before_alias
 condition|)
 return|return;
-name|saved_environment
+name|saved_env_before_alias
 operator|=
 literal|1
 expr_stmt|;
@@ -1438,6 +1438,9 @@ decl_stmt|;
 name|int
 name|unused_nongit
 decl_stmt|;
+name|save_env_before_alias
+argument_list|()
+expr_stmt|;
 name|subdir
 operator|=
 name|setup_git_directory_gently
@@ -3340,7 +3343,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|saved_environment
+name|saved_env_before_alias
 operator|&&
 operator|(
 name|builtin
@@ -3548,9 +3551,6 @@ condition|(
 name|done_alias
 condition|)
 break|break;
-name|save_env
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 operator|!
