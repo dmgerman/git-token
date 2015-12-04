@@ -878,7 +878,7 @@ argument_list|)
 condition|)
 name|report_garbage
 argument_list|(
-literal|"unused in linked checkout"
+name|PACKDIR_FILE_GARBAGE
 argument_list|,
 name|sb
 operator|.
