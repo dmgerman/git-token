@@ -103,34 +103,34 @@ function_decl|;
 end_function_decl
 
 begin_define
-DECL|macro|git_SHA_CTX
+DECL|macro|platform_SHA_CTX
 define|#
 directive|define
-name|git_SHA_CTX
+name|platform_SHA_CTX
 value|ppc_SHA_CTX
 end_define
 
 begin_define
-DECL|macro|git_SHA1_Init
+DECL|macro|platform_SHA1_Init
 define|#
 directive|define
-name|git_SHA1_Init
+name|platform_SHA1_Init
 value|ppc_SHA1_Init
 end_define
 
 begin_define
-DECL|macro|git_SHA1_Update
+DECL|macro|platform_SHA1_Update
 define|#
 directive|define
-name|git_SHA1_Update
+name|platform_SHA1_Update
 value|ppc_SHA1_Update
 end_define
 
 begin_define
-DECL|macro|git_SHA1_Final
+DECL|macro|platform_SHA1_Final
 define|#
 directive|define
-name|git_SHA1_Final
+name|platform_SHA1_Final
 value|ppc_SHA1_Final
 end_define
 
