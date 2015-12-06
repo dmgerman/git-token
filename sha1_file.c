@@ -200,6 +200,15 @@ index|]
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|null_oid
+specifier|const
+name|struct
+name|object_id
+name|null_oid
+decl_stmt|;
+end_decl_stmt
+
 begin_comment
 comment|/*  * This is meant to hold a *small* number of objects that you would  * want read_sha1_file() to be able to return, but yet you do not want  * to write them into the object store (e.g. a browse-only  * application).  */
 end_comment
