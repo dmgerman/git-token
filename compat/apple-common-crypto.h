@@ -136,6 +136,23 @@ endif|#
 directive|endif
 end_endif
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|SHA1_MAX_BLOCK_SIZE
+end_ifndef
+
+begin_error
+error|#
+directive|error
+error|Using Apple Common Crypto library requires setting SHA1_MAX_BLOCK_SIZE
+end_error
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_ifdef
 ifdef|#
 directive|ifdef
