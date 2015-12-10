@@ -66,13 +66,14 @@ condition|(
 name|commit
 condition|)
 return|return
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|commit
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
 argument_list|)
 return|;
 else|else

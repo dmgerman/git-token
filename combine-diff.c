@@ -8658,7 +8658,9 @@ name|item
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|)
 expr_stmt|;
 name|parent
@@ -8674,7 +8676,9 @@ name|commit
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|,
 operator|&
 name|parents

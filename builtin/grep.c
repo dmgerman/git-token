@@ -2377,7 +2377,9 @@ name|opt
 argument_list|,
 name|obj
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|,
 name|name
 argument_list|,
@@ -2431,7 +2433,9 @@ name|read_object_with_reference
 argument_list|(
 name|obj
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|,
 name|tree_type
 argument_list|,
@@ -2456,11 +2460,12 @@ argument_list|(
 literal|"unable to read tree (%s)"
 argument_list|)
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|obj
 operator|->
-name|sha1
+name|oid
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -71,7 +71,9 @@ name|obj
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|,
 operator|&
 name|type
@@ -541,7 +543,9 @@ name|our
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|,
 operator|&
 name|type

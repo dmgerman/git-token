@@ -254,7 +254,9 @@ name|c
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|)
 condition|)
 block|{
@@ -1518,7 +1520,9 @@ name|commit
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|,
 operator|&
 name|type
@@ -1536,13 +1540,14 @@ name|die
 argument_list|(
 literal|"cannot read commit object %s"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|commit
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1556,13 +1561,14 @@ name|die
 argument_list|(
 literal|"expected commit for %s, got %s"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|commit
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
 argument_list|)
 argument_list|,
 name|typename
@@ -1902,13 +1908,14 @@ name|error
 argument_list|(
 literal|"bogus commit object %s"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|item
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
 argument_list|)
 argument_list|)
 return|;
@@ -1932,13 +1939,14 @@ name|error
 argument_list|(
 literal|"bad tree pointer in commit %s"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|item
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
 argument_list|)
 argument_list|)
 return|;
@@ -1975,7 +1983,9 @@ name|item
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|)
 expr_stmt|;
 while|while
@@ -2035,13 +2045,14 @@ name|error
 argument_list|(
 literal|"bad parents in commit %s"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|item
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
 argument_list|)
 argument_list|)
 return|;
@@ -2230,7 +2241,9 @@ name|item
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|,
 operator|&
 name|type
@@ -2254,13 +2267,14 @@ name|error
 argument_list|(
 literal|"Could not read %s"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|item
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
 argument_list|)
 argument_list|)
 return|;
@@ -2281,13 +2295,14 @@ name|error
 argument_list|(
 literal|"Object %s not a commit"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|item
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
 argument_list|)
 argument_list|)
 return|;
@@ -2359,13 +2374,14 @@ literal|"unable to parse commit %s"
 argument_list|,
 name|item
 condition|?
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|item
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
 argument_list|)
 else|:
 literal|"(null)"
@@ -3248,7 +3264,9 @@ name|lookup_commit_reference_gently
 argument_list|(
 name|object
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|,
 literal|1
 argument_list|)
@@ -6790,7 +6808,9 @@ name|desc
 operator|->
 name|obj
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|,
 operator|&
 name|type
@@ -8439,13 +8459,14 @@ name|buffer
 argument_list|,
 literal|"parent %s\n"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|parent
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -8840,15 +8861,16 @@ name|printf
 argument_list|(
 name|format
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|list
 operator|->
 name|item
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
 argument_list|)
 argument_list|)
 expr_stmt|;

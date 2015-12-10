@@ -1797,7 +1797,9 @@ name|positions
 argument_list|,
 name|object
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|,
 operator|&
 name|hash_ret
@@ -1977,7 +1979,9 @@ name|bitmap_position
 argument_list|(
 name|object
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|)
 expr_stmt|;
 if|if
@@ -2199,7 +2203,9 @@ name|commit
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|)
 expr_stmt|;
 if|if
@@ -2233,7 +2239,9 @@ name|commit
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|,
 name|bitmap_pos
 argument_list|)
@@ -2364,7 +2372,9 @@ name|bitmaps
 argument_list|,
 name|object
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|)
 decl_stmt|;
 if|if
@@ -2486,7 +2496,9 @@ name|bitmap_position
 argument_list|(
 name|object
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|)
 expr_stmt|;
 if|if
@@ -2693,7 +2705,9 @@ name|show_reach
 argument_list|(
 name|obj
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|,
 name|obj
 operator|->
@@ -2988,7 +3002,9 @@ name|find_pack_entry_one
 argument_list|(
 name|object
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|,
 name|bitmap_git
 operator|.
@@ -3130,7 +3146,9 @@ name|parse_object_or_die
 argument_list|(
 name|object
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|,
 name|NULL
 argument_list|)
@@ -3201,7 +3219,9 @@ name|tag
 operator|->
 name|tagged
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|,
 name|NULL
 argument_list|)
@@ -4138,7 +4158,9 @@ name|bitmap_position
 argument_list|(
 name|object
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|)
 expr_stmt|;
 if|if
@@ -4151,11 +4173,12 @@ name|die
 argument_list|(
 literal|"Object not in bitmap: %s\n"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|object
 operator|->
-name|sha1
+name|oid
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4217,7 +4240,9 @@ name|commit
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|)
 expr_stmt|;
 if|if
@@ -4230,13 +4255,14 @@ name|die
 argument_list|(
 literal|"Object not in bitmap: %s\n"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|commit
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4360,7 +4386,9 @@ name|bitmaps
 argument_list|,
 name|root
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|)
 expr_stmt|;
 if|if
@@ -4405,11 +4433,12 @@ name|stderr
 argument_list|,
 literal|"Found bitmap for %s. %d bits / %08x checksum\n"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|root
 operator|->
-name|sha1
+name|oid
 argument_list|)
 argument_list|,
 operator|(
@@ -4443,11 +4472,12 @@ name|die
 argument_list|(
 literal|"Commit %s doesn't have an indexed bitmap"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|root
 operator|->
-name|sha1
+name|oid
 argument_list|)
 argument_list|)
 expr_stmt|;

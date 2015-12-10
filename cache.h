@@ -6448,6 +6448,24 @@ block|}
 end_function
 
 begin_comment
+comment|/* Same as the above, except for struct object_id. */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|has_object_file
+parameter_list|(
+specifier|const
+name|struct
+name|object_id
+modifier|*
+name|oid
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/*  * Return true iff an alternate object database has a loose object  * with the specified name.  This function does not respect replace  * references.  */
 end_comment
 

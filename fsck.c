@@ -1284,7 +1284,9 @@ name|skiplist
 argument_list|,
 name|object
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|)
 operator|>=
 literal|0
@@ -1539,13 +1541,14 @@ name|error
 argument_list|(
 literal|"in tree %s: entry %s has bad mode %.6o"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|tree
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
 argument_list|)
 argument_list|,
 name|entry
@@ -1877,11 +1880,12 @@ name|error
 argument_list|(
 literal|"Unknown object type for %s"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|obj
 operator|->
-name|sha1
+name|oid
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3321,7 +3325,9 @@ name|commit
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|)
 expr_stmt|;
 name|parent_count
@@ -3756,7 +3762,9 @@ name|tag
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|,
 operator|&
 name|type
@@ -4500,11 +4508,12 @@ name|warning
 argument_list|(
 literal|"object %s: %s"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|obj
 operator|->
-name|sha1
+name|oid
 argument_list|)
 argument_list|,
 name|message
@@ -4518,11 +4527,12 @@ name|error
 argument_list|(
 literal|"object %s: %s"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|obj
 operator|->
-name|sha1
+name|oid
 argument_list|)
 argument_list|,
 name|message

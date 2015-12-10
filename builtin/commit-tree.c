@@ -79,16 +79,17 @@ modifier|*
 name|parents_p
 parameter_list|)
 block|{
-name|unsigned
-name|char
+name|struct
+name|object_id
 modifier|*
-name|sha1
+name|oid
 init|=
+operator|&
 name|parent
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
 decl_stmt|;
 name|struct
 name|commit_list
@@ -124,9 +125,9 @@ name|error
 argument_list|(
 literal|"duplicate parent %s ignored"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
-name|sha1
+name|oid
 argument_list|)
 argument_list|)
 expr_stmt|;

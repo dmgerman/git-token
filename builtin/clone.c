@@ -3143,7 +3143,9 @@ name|name
 argument_list|,
 name|r
 operator|->
-name|old_sha1
+name|old_oid
+operator|.
+name|hash
 argument_list|,
 literal|0
 argument_list|,
@@ -3263,11 +3265,12 @@ continue|continue;
 if|if
 condition|(
 operator|!
-name|has_sha1_file
+name|has_object_file
 argument_list|(
+operator|&
 name|ref
 operator|->
-name|old_sha1
+name|old_oid
 argument_list|)
 condition|)
 continue|continue;
@@ -3281,7 +3284,9 @@ name|name
 argument_list|,
 name|ref
 operator|->
-name|old_sha1
+name|old_oid
+operator|.
+name|hash
 argument_list|,
 name|NULL
 argument_list|,
@@ -3360,7 +3365,9 @@ name|sha1
 argument_list|,
 name|ref
 operator|->
-name|old_sha1
+name|old_oid
+operator|.
+name|hash
 argument_list|)
 expr_stmt|;
 operator|*
@@ -3630,7 +3637,9 @@ literal|"HEAD"
 argument_list|,
 name|our
 operator|->
-name|old_sha1
+name|old_oid
+operator|.
+name|hash
 argument_list|,
 name|NULL
 argument_list|,
@@ -3669,7 +3678,9 @@ name|lookup_commit_reference
 argument_list|(
 name|our
 operator|->
-name|old_sha1
+name|old_oid
+operator|.
+name|hash
 argument_list|)
 decl_stmt|;
 comment|/* --branch specifies a non-branch (i.e. tags), detach HEAD */
@@ -3683,7 +3694,9 @@ name|c
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|,
 name|NULL
 argument_list|,
@@ -3708,7 +3721,9 @@ literal|"HEAD"
 argument_list|,
 name|remote
 operator|->
-name|old_sha1
+name|old_oid
+operator|.
+name|hash
 argument_list|,
 name|NULL
 argument_list|,
@@ -5545,11 +5560,12 @@ name|next
 control|)
 if|if
 condition|(
-name|is_null_sha1
+name|is_null_oid
 argument_list|(
+operator|&
 name|ref
 operator|->
-name|old_sha1
+name|old_oid
 argument_list|)
 condition|)
 block|{

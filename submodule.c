@@ -1366,15 +1366,16 @@ name|item
 operator|->
 name|object
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|list
 operator|->
 name|item
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3402,13 +3403,17 @@ name|item
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|,
 name|commit
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|,
 literal|""
 argument_list|,
@@ -4796,13 +4801,14 @@ argument_list|)
 argument_list|,
 literal|"^%s"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|a
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -5444,8 +5450,9 @@ literal|"by using:\n\n"
 literal|"  git update-index --cacheinfo 160000 %s \"%s\"\n\n"
 literal|"which will accept this suggestion.\n"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|merges
 operator|.
 name|objects
@@ -5455,7 +5462,7 @@ index|]
 operator|.
 name|item
 operator|->
-name|sha1
+name|oid
 argument_list|)
 argument_list|,
 name|path

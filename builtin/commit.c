@@ -1409,7 +1409,9 @@ name|current_head
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|)
 expr_stmt|;
 if|if
@@ -9755,7 +9757,9 @@ name|current_head
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
+operator|.
+name|hash
 else|:
 name|null_sha1
 argument_list|,
@@ -9898,7 +9902,9 @@ name|current_head
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|,
 name|sha1
 argument_list|)
@@ -9917,7 +9923,9 @@ name|current_head
 operator|->
 name|object
 operator|.
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|,
 name|sha1
 argument_list|)
