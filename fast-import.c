@@ -10223,7 +10223,7 @@ name|failure
 operator||=
 name|error
 argument_list|(
-literal|"Unable to commit marks file %s: %s"
+literal|"Unable to write file %s: %s"
 argument_list|,
 name|export_marks_file
 argument_list|,

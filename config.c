@@ -10906,9 +10906,14 @@ condition|)
 block|{
 name|error
 argument_list|(
-literal|"could not commit config file %s"
+literal|"could not write config file %s: %s"
 argument_list|,
 name|config_filename
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|ret
@@ -11778,9 +11783,14 @@ name|ret
 operator|=
 name|error
 argument_list|(
-literal|"could not commit config file %s"
+literal|"could not write config file %s: %s"
 argument_list|,
 name|config_filename
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|out
