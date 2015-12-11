@@ -21337,7 +21337,7 @@ name|status
 operator||=
 name|error
 argument_list|(
-literal|"unable to commit reflog '%s' (%s)"
+literal|"unable to write reflog %s: %s"
 argument_list|,
 name|log_file
 argument_list|,
