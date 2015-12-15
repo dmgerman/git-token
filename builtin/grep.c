@@ -4742,11 +4742,6 @@ operator|.
 name|nr
 operator|||
 name|cached
-operator|||
-name|online_cpus
-argument_list|()
-operator|==
-literal|1
 condition|)
 name|use_threads
 operator|=
