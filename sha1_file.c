@@ -17677,6 +17677,11 @@ condition|)
 break|break;
 block|}
 block|}
+name|closedir
+argument_list|(
+name|dir
+argument_list|)
+expr_stmt|;
 name|strbuf_setlen
 argument_list|(
 name|path
@@ -17702,11 +17707,6 @@ operator|->
 name|buf
 argument_list|,
 name|data
-argument_list|)
-expr_stmt|;
-name|closedir
-argument_list|(
-name|dir
 argument_list|)
 expr_stmt|;
 return|return
