@@ -6835,6 +6835,11 @@ name|no_binary_diff
 init|=
 literal|0
 decl_stmt|;
+name|int
+name|zero_commit
+init|=
+literal|0
+decl_stmt|;
 name|struct
 name|commit
 modifier|*
@@ -7134,6 +7139,21 @@ argument_list|,
 name|N_
 argument_list|(
 literal|"don't output binary diffs"
+argument_list|)
+argument_list|)
+block|,
+name|OPT_BOOL
+argument_list|(
+literal|0
+argument_list|,
+literal|"zero-commit"
+argument_list|,
+operator|&
+name|zero_commit
+argument_list|,
+name|N_
+argument_list|(
+literal|"output all-zero hash in From header"
 argument_list|)
 argument_list|)
 block|,
@@ -8056,6 +8076,12 @@ operator|.
 name|output_format
 operator||=
 name|DIFF_FORMAT_PATCH
+expr_stmt|;
+name|rev
+operator|.
+name|zero_commit
+operator|=
+name|zero_commit
 expr_stmt|;
 if|if
 condition|(
