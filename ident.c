@@ -459,7 +459,7 @@ name|he
 init|=
 name|gethostbyname
 argument_list|(
-name|buf
+name|host
 argument_list|)
 decl_stmt|;
 if|if
