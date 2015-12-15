@@ -4571,10 +4571,6 @@ argument_list|,
 name|show_in_pager
 argument_list|)
 expr_stmt|;
-name|use_threads
-operator|=
-literal|0
-expr_stmt|;
 block|}
 if|if
 condition|(
@@ -4742,6 +4738,8 @@ operator|.
 name|nr
 operator|||
 name|cached
+operator|||
+name|show_in_pager
 condition|)
 name|use_threads
 operator|=
