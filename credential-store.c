@@ -376,12 +376,7 @@ literal|0
 condition|)
 name|die_errno
 argument_list|(
-literal|"unable to write credential store: %s"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"unable to write credential store"
 argument_list|)
 expr_stmt|;
 block|}
