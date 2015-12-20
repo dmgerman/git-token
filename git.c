@@ -210,7 +210,8 @@ specifier|static
 name|void
 name|restore_env
 parameter_list|(
-name|void
+name|int
+name|external_alias
 parameter_list|)
 block|{
 name|int
@@ -218,6 +219,9 @@ name|i
 decl_stmt|;
 if|if
 condition|(
+operator|!
+name|external_alias
+operator|&&
 name|orig_cwd
 operator|&&
 name|chdir
@@ -254,6 +258,22 @@ name|i
 operator|++
 control|)
 block|{
+if|if
+condition|(
+name|external_alias
+operator|&&
+operator|!
+name|strcmp
+argument_list|(
+name|env_names
+index|[
+name|i
+index|]
+argument_list|,
+name|GIT_PREFIX_ENVIRONMENT
+argument_list|)
+condition|)
+continue|continue;
 if|if
 condition|(
 name|orig_env
@@ -1491,6 +1511,11 @@ decl_stmt|;
 name|commit_pager_choice
 argument_list|()
 expr_stmt|;
+name|restore_env
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
 comment|/* build alias_argv */
 name|alias_argv
 operator|=
@@ -1751,7 +1776,9 @@ literal|1
 expr_stmt|;
 block|}
 name|restore_env
-argument_list|()
+argument_list|(
+literal|0
+argument_list|)
 expr_stmt|;
 name|errno
 operator|=
