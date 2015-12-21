@@ -7391,10 +7391,11 @@ index|[
 literal|20
 index|]
 decl_stmt|;
-DECL|member|reverse_index
+DECL|member|revindex
 name|struct
-name|pack_revindex
-name|reverse_index
+name|revindex_entry
+modifier|*
+name|revindex
 decl_stmt|;
 comment|/* something like ".git/objects/pack/xxxxx.pack" */
 DECL|member|pack_name

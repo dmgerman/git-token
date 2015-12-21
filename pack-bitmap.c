@@ -119,13 +119,6 @@ name|packed_git
 modifier|*
 name|pack
 decl_stmt|;
-comment|/* reverse index for the packfile */
-DECL|member|reverse_index
-name|struct
-name|pack_revindex
-modifier|*
-name|reverse_index
-decl_stmt|;
 comment|/* 	 * Mark the first `reuse_objects` in the packfile as reused: 	 * they will be sent as-is without using them for repacking 	 * calculations 	 */
 DECL|member|reuse_objects
 name|uint32_t
@@ -1239,11 +1232,7 @@ operator|=
 name|kh_init_sha1_pos
 argument_list|()
 expr_stmt|;
-name|bitmap_git
-operator|.
-name|reverse_index
-operator|=
-name|revindex_for_pack
+name|load_pack_revindex
 argument_list|(
 name|bitmap_git
 operator|.
@@ -1678,7 +1667,7 @@ name|find_revindex_position
 argument_list|(
 name|bitmap_git
 operator|.
-name|reverse_index
+name|pack
 argument_list|,
 name|offset
 argument_list|)
@@ -2870,7 +2859,7 @@ operator|=
 operator|&
 name|bitmap_git
 operator|.
-name|reverse_index
+name|pack
 operator|->
 name|revindex
 index|[
@@ -3645,7 +3634,7 @@ name|up_to
 operator|=
 name|bitmap_git
 operator|.
-name|reverse_index
+name|pack
 operator|->
 name|revindex
 index|[
@@ -4806,7 +4795,7 @@ operator|=
 operator|&
 name|bitmap_git
 operator|.
-name|reverse_index
+name|pack
 operator|->
 name|revindex
 index|[
