@@ -12361,12 +12361,12 @@ parameter_list|(
 specifier|const
 name|char
 modifier|*
-name|ref_target
+name|refname
 parameter_list|,
 specifier|const
 name|char
 modifier|*
-name|refs_heads_master
+name|target
 parameter_list|,
 specifier|const
 name|char
@@ -12381,7 +12381,7 @@ init|=
 name|NULL
 decl_stmt|;
 name|char
-name|ref
+name|buf
 index|[
 literal|1000
 index|]
@@ -12395,13 +12395,13 @@ name|written
 decl_stmt|;
 name|char
 modifier|*
-name|git_HEAD
+name|ref_path
 init|=
 name|git_pathdup
 argument_list|(
 literal|"%s"
 argument_list|,
-name|ref_target
+name|refname
 argument_list|)
 decl_stmt|;
 name|unsigned
@@ -12428,7 +12428,7 @@ name|logmsg
 operator|&&
 name|read_ref
 argument_list|(
-name|ref_target
+name|refname
 argument_list|,
 name|old_sha1
 argument_list|)
@@ -12442,7 +12442,7 @@ if|if
 condition|(
 name|safe_create_leading_directories
 argument_list|(
-name|git_HEAD
+name|ref_path
 argument_list|)
 operator|<
 literal|0
@@ -12452,7 +12452,7 @@ name|error
 argument_list|(
 literal|"unable to create directory for %s"
 argument_list|,
-name|git_HEAD
+name|ref_path
 argument_list|)
 return|;
 ifndef|#
@@ -12465,7 +12465,7 @@ condition|)
 block|{
 name|unlink
 argument_list|(
-name|git_HEAD
+name|ref_path
 argument_list|)
 expr_stmt|;
 if|if
@@ -12473,9 +12473,9 @@ condition|(
 operator|!
 name|symlink
 argument_list|(
-name|refs_heads_master
+name|target
 argument_list|,
-name|git_HEAD
+name|ref_path
 argument_list|)
 condition|)
 goto|goto
@@ -12495,23 +12495,23 @@ name|len
 operator|=
 name|snprintf
 argument_list|(
-name|ref
+name|buf
 argument_list|,
 sizeof|sizeof
 argument_list|(
-name|ref
+name|buf
 argument_list|)
 argument_list|,
 literal|"ref: %s\n"
 argument_list|,
-name|refs_heads_master
+name|target
 argument_list|)
 expr_stmt|;
 if|if
 condition|(
 sizeof|sizeof
 argument_list|(
-name|ref
+name|buf
 argument_list|)
 operator|<=
 name|len
@@ -12521,7 +12521,7 @@ name|error
 argument_list|(
 literal|"refname too long: %s"
 argument_list|,
-name|refs_heads_master
+name|target
 argument_list|)
 expr_stmt|;
 goto|goto
@@ -12534,7 +12534,7 @@ name|mkpathdup
 argument_list|(
 literal|"%s.lock"
 argument_list|,
-name|git_HEAD
+name|ref_path
 argument_list|)
 expr_stmt|;
 name|fd
@@ -12576,7 +12576,7 @@ name|write_in_full
 argument_list|(
 name|fd
 argument_list|,
-name|ref
+name|buf
 argument_list|,
 name|len
 argument_list|)
@@ -12612,7 +12612,7 @@ name|rename
 argument_list|(
 name|lockpath
 argument_list|,
-name|git_HEAD
+name|ref_path
 argument_list|)
 operator|<
 literal|0
@@ -12622,7 +12622,7 @@ name|error
 argument_list|(
 literal|"Unable to create %s"
 argument_list|,
-name|git_HEAD
+name|ref_path
 argument_list|)
 expr_stmt|;
 goto|goto
@@ -12633,7 +12633,7 @@ if|if
 condition|(
 name|adjust_shared_perm
 argument_list|(
-name|git_HEAD
+name|ref_path
 argument_list|)
 condition|)
 block|{
@@ -12660,7 +12660,7 @@ argument_list|)
 expr_stmt|;
 name|free
 argument_list|(
-name|git_HEAD
+name|ref_path
 argument_list|)
 expr_stmt|;
 return|return
@@ -12687,14 +12687,14 @@ operator|&&
 operator|!
 name|read_ref
 argument_list|(
-name|refs_heads_master
+name|target
 argument_list|,
 name|new_sha1
 argument_list|)
 operator|&&
 name|log_ref_write
 argument_list|(
-name|ref_target
+name|refname
 argument_list|,
 name|old_sha1
 argument_list|,
@@ -12727,7 +12727,7 @@ expr_stmt|;
 block|}
 name|free
 argument_list|(
-name|git_HEAD
+name|ref_path
 argument_list|)
 expr_stmt|;
 return|return
