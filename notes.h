@@ -633,6 +633,22 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Similar to expand_notes_ref, but will check whether the ref can be located  * via get_sha1 first, and only falls back to expand_notes_ref in the case  * where get_sha1 fails.  */
+end_comment
+
+begin_function_decl
+name|void
+name|expand_loose_notes_ref
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+name|sb
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif

@@ -6750,5 +6750,45 @@ expr_stmt|;
 block|}
 end_function
 
+begin_function
+DECL|function|expand_loose_notes_ref
+name|void
+name|expand_loose_notes_ref
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+name|sb
+parameter_list|)
+block|{
+name|unsigned
+name|char
+name|object
+index|[
+literal|20
+index|]
+decl_stmt|;
+if|if
+condition|(
+name|get_sha1
+argument_list|(
+name|sb
+operator|->
+name|buf
+argument_list|,
+name|object
+argument_list|)
+condition|)
+block|{
+comment|/* fallback to expand_notes_ref */
+name|expand_notes_ref
+argument_list|(
+name|sb
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+end_function
+
 end_unit
 
