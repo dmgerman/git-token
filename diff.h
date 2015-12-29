@@ -604,7 +604,7 @@ DECL|macro|DIFF_OPT_DEFAULT_FOLLOW_RENAMES
 define|#
 directive|define
 name|DIFF_OPT_DEFAULT_FOLLOW_RENAMES
-value|(1<< 31)
+value|(1U<< 31)
 end_define
 
 begin_define
