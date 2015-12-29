@@ -5776,6 +5776,13 @@ operator|.
 name|untracked
 condition|)
 block|{
+name|free_untracked_cache
+argument_list|(
+name|the_index
+operator|.
+name|untracked
+argument_list|)
+expr_stmt|;
 name|the_index
 operator|.
 name|untracked
