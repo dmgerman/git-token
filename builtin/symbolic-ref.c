@@ -438,6 +438,10 @@ argument_list|(
 literal|"Refusing to point HEAD outside of refs/"
 argument_list|)
 expr_stmt|;
+name|ret
+operator|=
+operator|!
+operator|!
 name|create_symref
 argument_list|(
 name|argv
