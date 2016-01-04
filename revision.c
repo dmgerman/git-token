@@ -1564,11 +1564,7 @@ name|flags
 operator||=
 name|flags
 expr_stmt|;
-comment|/* 		 * We'll handle the tagged object by looping or dropping 		 * through to the non-tag handlers below. Do not 		 * propagate data from the tag's pending entry. 		 */
-name|name
-operator|=
-literal|""
-expr_stmt|;
+comment|/* 		 * We'll handle the tagged object by looping or dropping 		 * through to the non-tag handlers below. Do not 		 * propagate path data from the tag's pending entry. 		 */
 name|path
 operator|=
 name|NULL
