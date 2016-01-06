@@ -4488,6 +4488,20 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|FILE
+modifier|*
+name|fopen_for_writing
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_define
 DECL|macro|REALLOC_ARRAY
 define|#
