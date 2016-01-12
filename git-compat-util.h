@@ -1339,6 +1339,26 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_define
+DECL|macro|dirname
+define|#
+directive|define
+name|dirname
+value|gitdirname
+end_define
+
+begin_function_decl
+specifier|extern
+name|char
+modifier|*
+name|gitdirname
+parameter_list|(
+name|char
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
