@@ -1069,6 +1069,28 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/**  * Read the contents of a given file descriptor partially by using only one  * attempt of xread. The third argument can be used to give a hint about the  * file size, to avoid reallocs. Returns the number of new bytes appended to  * the sb.  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|ssize_t
+name|strbuf_read_once
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+parameter_list|,
+name|int
+name|fd
+parameter_list|,
+name|size_t
+name|hint
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/**  * Read the contents of a file, specified by its path. The third argument  * can be used to give a hint about the file size, to avoid reallocs.  */
 end_comment
 

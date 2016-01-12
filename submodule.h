@@ -281,6 +281,9 @@ name|command_line_option
 parameter_list|,
 name|int
 name|quiet
+parameter_list|,
+name|int
+name|max_parallel_jobs
 parameter_list|)
 function_decl|;
 end_function_decl

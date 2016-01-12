@@ -495,6 +495,15 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|max_children
+specifier|static
+name|char
+modifier|*
+name|max_children
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|opt_dry_run
 specifier|static
 name|int
@@ -1013,6 +1022,28 @@ argument_list|,
 name|N_
 argument_list|(
 literal|"control recursive fetching of submodules"
+argument_list|)
+argument_list|,
+name|PARSE_OPT_OPTARG
+argument_list|)
+block|,
+name|OPT_PASSTHRU
+argument_list|(
+literal|'j'
+argument_list|,
+literal|"jobs"
+argument_list|,
+operator|&
+name|max_children
+argument_list|,
+name|N_
+argument_list|(
+literal|"n"
+argument_list|)
+argument_list|,
+name|N_
+argument_list|(
+literal|"number of submodules pulled in parallel"
 argument_list|)
 argument_list|,
 name|PARSE_OPT_OPTARG
@@ -2561,6 +2592,18 @@ operator|&
 name|args
 argument_list|,
 name|opt_recurse_submodules
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|max_children
+condition|)
+name|argv_array_push
+argument_list|(
+operator|&
+name|args
+argument_list|,
+name|max_children
 argument_list|)
 expr_stmt|;
 if|if
