@@ -25,17 +25,11 @@ name|char
 modifier|*
 name|base
 decl_stmt|;
-comment|/* Skip over the disk name in MSDOS pathnames. */
-if|if
-condition|(
-name|has_dos_drive_prefix
+name|skip_dos_drive_prefix
 argument_list|(
+operator|&
 name|path
 argument_list|)
-condition|)
-name|path
-operator|+=
-literal|2
 expr_stmt|;
 for|for
 control|(
