@@ -3546,6 +3546,8 @@ argument_list|,
 literal|"HEAD"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|create_symref
 argument_list|(
 name|head_ref
@@ -3559,6 +3561,23 @@ operator|->
 name|name
 argument_list|,
 name|msg
+argument_list|)
+operator|<
+literal|0
+condition|)
+name|die
+argument_list|(
+literal|"unable to update %s"
+argument_list|,
+name|head_ref
+operator|.
+name|buf
+argument_list|)
+expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|head_ref
 argument_list|)
 expr_stmt|;
 block|}
@@ -3612,6 +3631,8 @@ argument_list|)
 condition|)
 block|{
 comment|/* Local default branch link */
+if|if
+condition|(
 name|create_symref
 argument_list|(
 literal|"HEAD"
@@ -3621,6 +3642,13 @@ operator|->
 name|name
 argument_list|,
 name|NULL
+argument_list|)
+operator|<
+literal|0
+condition|)
+name|die
+argument_list|(
+literal|"unable to update HEAD"
 argument_list|)
 expr_stmt|;
 if|if
