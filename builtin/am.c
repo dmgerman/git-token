@@ -9337,6 +9337,9 @@ argument_list|(
 name|state
 argument_list|)
 expr_stmt|;
+name|close_all_packs
+argument_list|()
+expr_stmt|;
 name|run_command_v_opt
 argument_list|(
 name|argv_gc_auto
