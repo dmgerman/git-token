@@ -4891,14 +4891,12 @@ argument_list|)
 return|;
 if|if
 condition|(
-name|strbuf_getline
+name|strbuf_getline_lf
 argument_list|(
 operator|&
 name|buf
 argument_list|,
 name|f
-argument_list|,
-literal|'\n'
 argument_list|)
 condition|)
 block|{

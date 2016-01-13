@@ -427,14 +427,12 @@ expr_stmt|;
 while|while
 condition|(
 operator|!
-name|strbuf_getline
+name|strbuf_getline_lf
 argument_list|(
 operator|&
 name|sb
 argument_list|,
 name|stdin
-argument_list|,
-literal|'\n'
 argument_list|)
 condition|)
 name|string_list_append

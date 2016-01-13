@@ -296,13 +296,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|strbuf_getline
+name|strbuf_getline_lf
 argument_list|(
 name|buffer
 argument_list|,
 name|helper
-argument_list|,
-literal|'\n'
 argument_list|)
 operator|==
 name|EOF

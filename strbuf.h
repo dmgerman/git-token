@@ -1140,7 +1140,72 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Similar to strbuf_getline(), but uses '\n' as the terminator,  * and additionally treats a '\r' that comes immediately before '\n'  * as part of the terminator.  */
+comment|/**  * The strbuf_getline*() family of functions share this signature, but  * have different line termination conventions.  */
+end_comment
+
+begin_typedef
+DECL|typedef|strbuf_getline_fn
+typedef|typedef
+name|int
+function_decl|(
+modifier|*
+name|strbuf_getline_fn
+function_decl|)
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+parameter_list|,
+name|FILE
+modifier|*
+parameter_list|)
+function_decl|;
+end_typedef
+
+begin_comment
+comment|/* Uses LF as the line terminator */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|strbuf_getline_lf
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+name|sb
+parameter_list|,
+name|FILE
+modifier|*
+name|fp
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/* Uses NUL as the line terminator */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|strbuf_getline_nul
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+name|sb
+parameter_list|,
+name|FILE
+modifier|*
+name|fp
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/*  * Similar to strbuf_getline_lf(), but additionally treats a CR that  * comes immediately before the LF as part of the terminator.  */
 end_comment
 
 begin_function_decl

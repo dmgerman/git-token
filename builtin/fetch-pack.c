@@ -883,14 +883,12 @@ name|STRBUF_INIT
 decl_stmt|;
 while|while
 condition|(
-name|strbuf_getline
+name|strbuf_getline_lf
 argument_list|(
 operator|&
 name|line
 argument_list|,
 name|stdin
-argument_list|,
-literal|'\n'
 argument_list|)
 operator|!=
 name|EOF

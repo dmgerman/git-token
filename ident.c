@@ -370,14 +370,12 @@ return|;
 block|}
 if|if
 condition|(
-name|strbuf_getline
+name|strbuf_getline_lf
 argument_list|(
 operator|&
 name|mailnamebuf
 argument_list|,
 name|mailname
-argument_list|,
-literal|'\n'
 argument_list|)
 operator|==
 name|EOF
