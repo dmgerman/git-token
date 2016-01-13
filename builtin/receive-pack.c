@@ -9463,6 +9463,9 @@ name|RUN_GIT_CMD
 operator||
 name|RUN_COMMAND_STDOUT_TO_STDERR
 decl_stmt|;
+name|close_all_packs
+argument_list|()
+expr_stmt|;
 name|run_command_v_opt
 argument_list|(
 name|argv_gc_auto
