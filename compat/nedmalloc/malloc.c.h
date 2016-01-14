@@ -1510,6 +1510,24 @@ begin_comment
 comment|/*   Try to persuade compilers to inline. The most critical functions for   inlining are defined as macros, so these aren't used for them. */
 end_comment
 
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|__MINGW64_VERSION_MAJOR
+end_ifdef
+
+begin_undef
+DECL|macro|FORCEINLINE
+undef|#
+directive|undef
+name|FORCEINLINE
+end_undef
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_ifndef
 ifndef|#
 directive|ifndef
@@ -2794,6 +2812,13 @@ operator|)
 operator|>
 literal|40100
 end_if
+
+begin_undef
+DECL|macro|_ReadWriteBarrier
+undef|#
+directive|undef
+name|_ReadWriteBarrier
+end_undef
 
 begin_define
 DECL|macro|_ReadWriteBarrier
