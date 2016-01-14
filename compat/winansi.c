@@ -105,6 +105,20 @@ directive|ifdef
 name|__MINGW32__
 end_ifdef
 
+begin_if
+if|#
+directive|if
+operator|!
+name|defined
+argument_list|(
+name|__MINGW64_VERSION_MAJOR
+argument_list|)
+operator|||
+name|__MINGW64_VERSION_MAJOR
+operator|<
+literal|5
+end_if
+
 begin_typedef
 DECL|struct|_CONSOLE_FONT_INFOEX
 typedef|typedef
@@ -147,6 +161,11 @@ typedef|*
 name|PCONSOLE_FONT_INFOEX
 typedef|;
 end_typedef
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_endif
 endif|#
