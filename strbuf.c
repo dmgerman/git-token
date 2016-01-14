@@ -2912,9 +2912,10 @@ directive|endif
 end_endif
 
 begin_function
-DECL|function|strbuf_getline
+DECL|function|strbuf_getdelim
+specifier|static
 name|int
-name|strbuf_getline
+name|strbuf_getdelim
 parameter_list|(
 name|struct
 name|strbuf
@@ -2976,9 +2977,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|strbuf_getline_crlf
+DECL|function|strbuf_getline
 name|int
-name|strbuf_getline_crlf
+name|strbuf_getline
 parameter_list|(
 name|struct
 name|strbuf
@@ -3084,7 +3085,7 @@ name|fp
 parameter_list|)
 block|{
 return|return
-name|strbuf_getline
+name|strbuf_getdelim
 argument_list|(
 name|sb
 argument_list|,
@@ -3112,7 +3113,7 @@ name|fp
 parameter_list|)
 block|{
 return|return
-name|strbuf_getline
+name|strbuf_getdelim
 argument_list|(
 name|sb
 argument_list|,

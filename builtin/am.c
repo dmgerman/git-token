@@ -2853,7 +2853,7 @@ expr_stmt|;
 while|while
 condition|(
 operator|!
-name|strbuf_getline_crlf
+name|strbuf_getline
 argument_list|(
 operator|&
 name|sb
@@ -3022,7 +3022,7 @@ expr_stmt|;
 while|while
 condition|(
 operator|!
-name|strbuf_getline_crlf
+name|strbuf_getline
 argument_list|(
 operator|&
 name|l1
@@ -3115,7 +3115,7 @@ operator|&
 name|l2
 argument_list|)
 expr_stmt|;
-name|strbuf_getline_crlf
+name|strbuf_getline
 argument_list|(
 operator|&
 name|l2
@@ -3129,7 +3129,7 @@ operator|&
 name|l3
 argument_list|)
 expr_stmt|;
-name|strbuf_getline_crlf
+name|strbuf_getline
 argument_list|(
 operator|&
 name|l3
