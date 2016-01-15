@@ -1797,6 +1797,9 @@ argument_list|,
 operator|(
 name|long
 operator|)
+operator|(
+name|intptr_t
+operator|)
 name|hnd
 argument_list|)
 expr_stmt|;
