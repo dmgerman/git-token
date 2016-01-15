@@ -5105,6 +5105,23 @@ block|}
 struct|;
 end_struct
 
+begin_function
+DECL|function|return_0
+specifier|static
+specifier|inline
+name|int
+name|return_0
+parameter_list|(
+name|int
+name|i
+parameter_list|)
+block|{
+return|return
+literal|0
+return|;
+block|}
+end_function
+
 begin_define
 DECL|macro|MLOCK_T
 define|#
@@ -5129,7 +5146,7 @@ name|INITIAL_LOCK
 parameter_list|(
 name|sl
 parameter_list|)
-value|(memset(sl, 0, sizeof(MLOCK_T)), 0)
+value|(memset(sl, 0, sizeof(MLOCK_T)), return_0(0))
 end_define
 
 begin_define
