@@ -843,6 +843,14 @@ goto|;
 block|}
 if|if
 condition|(
+operator|!
+name|log
+operator|->
+name|summary
+condition|)
+block|{
+if|if
+condition|(
 name|log
 operator|->
 name|user_format
@@ -872,6 +880,7 @@ operator|&
 name|ctx
 argument_list|)
 expr_stmt|;
+block|}
 name|insert_one_record
 argument_list|(
 name|log
