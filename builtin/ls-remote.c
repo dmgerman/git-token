@@ -37,7 +37,8 @@ block|{
 name|N_
 argument_list|(
 literal|"git ls-remote [--heads] [--tags] [--refs] [--upload-pack=<exec>]\n"
-literal|"                     [-q | --quiet] [--exit-code] [--get-url] [<repository> [<refs>...]]"
+literal|"                     [-q | --quiet] [--exit-code] [--get-url]\n"
+literal|"                     [--symref] [<repository> [<refs>...]]"
 argument_list|)
 block|,
 name|NULL
@@ -201,6 +202,11 @@ literal|0
 decl_stmt|;
 name|int
 name|status
+init|=
+literal|0
+decl_stmt|;
+name|int
+name|show_symref_target
 init|=
 literal|0
 decl_stmt|;
@@ -376,6 +382,21 @@ literal|"exit with exit code 2 if no matching refs are found"
 argument_list|)
 argument_list|,
 literal|2
+argument_list|)
+block|,
+name|OPT_BOOL
+argument_list|(
+literal|0
+argument_list|,
+literal|"symref"
+argument_list|,
+operator|&
+name|show_symref_target
+argument_list|,
+name|N_
+argument_list|(
+literal|"show underlying ref in addition to the object pointed by it"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_END
@@ -621,9 +642,30 @@ name|name
 argument_list|)
 condition|)
 continue|continue;
+if|if
+condition|(
+name|show_symref_target
+operator|&&
+name|ref
+operator|->
+name|symref
+condition|)
 name|printf
 argument_list|(
-literal|"%s	%s\n"
+literal|"ref: %s\t%s\n"
+argument_list|,
+name|ref
+operator|->
+name|symref
+argument_list|,
+name|ref
+operator|->
+name|name
+argument_list|)
+expr_stmt|;
+name|printf
+argument_list|(
+literal|"%s\t%s\n"
 argument_list|,
 name|oid_to_hex
 argument_list|(
