@@ -31,7 +31,7 @@ name|char
 name|ls_remote_usage
 index|[]
 init|=
-literal|"git ls-remote [--heads] [--tags]  [--upload-pack=<exec>]\n"
+literal|"git ls-remote [--heads] [--tags] [--refs] [--upload-pack=<exec>]\n"
 literal|"                     [-q | --quiet] [--exit-code] [--get-url] [<repository> [<refs>...]]"
 decl_stmt|;
 end_decl_stmt
