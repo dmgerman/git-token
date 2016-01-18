@@ -894,38 +894,6 @@ operator|&
 name|ctx
 argument_list|)
 expr_stmt|;
-comment|/* we can detect a total failure only by seeing "<>" in the output */
-if|if
-condition|(
-name|author
-operator|.
-name|len
-operator|<=
-literal|3
-condition|)
-block|{
-name|warning
-argument_list|(
-name|_
-argument_list|(
-literal|"Missing author: %s"
-argument_list|)
-argument_list|,
-name|oid_to_hex
-argument_list|(
-operator|&
-name|commit
-operator|->
-name|object
-operator|.
-name|oid
-argument_list|)
-argument_list|)
-expr_stmt|;
-goto|goto
-name|out
-goto|;
-block|}
 if|if
 condition|(
 operator|!
@@ -985,8 +953,6 @@ else|:
 literal|"<none>"
 argument_list|)
 expr_stmt|;
-name|out
-label|:
 name|strbuf_release
 argument_list|(
 operator|&
