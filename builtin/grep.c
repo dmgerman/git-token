@@ -4436,10 +4436,34 @@ name|startup_info
 operator|->
 name|have_repository
 condition|)
+block|{
+name|int
+name|fallback
+init|=
+literal|0
+decl_stmt|;
+name|git_config_get_bool
+argument_list|(
+literal|"grep.fallbacktonoindex"
+argument_list|,
+operator|&
+name|fallback
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|fallback
+condition|)
+name|use_index
+operator|=
+literal|0
+expr_stmt|;
+else|else
 comment|/* die the same way as if we did it at the beginning */
 name|setup_git_directory
 argument_list|()
 expr_stmt|;
+block|}
 comment|/* 	 * skip a -- separator; we know it cannot be 	 * separating revisions from pathnames if 	 * we haven't even had any patterns yet 	 */
 if|if
 condition|(
