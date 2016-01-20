@@ -1138,6 +1138,17 @@ value|((ce)->ce_flags |= CE_UPTODATE)
 end_define
 
 begin_define
+DECL|macro|ce_intent_to_add
+define|#
+directive|define
+name|ce_intent_to_add
+parameter_list|(
+name|ce
+parameter_list|)
+value|((ce)->ce_flags& CE_INTENT_TO_ADD)
+end_define
+
+begin_define
 DECL|macro|ce_permissions
 define|#
 directive|define

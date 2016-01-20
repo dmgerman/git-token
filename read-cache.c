@@ -1679,11 +1679,10 @@ return|;
 comment|/* 	 * Intent-to-add entries have not been added, so the index entry 	 * by definition never matches what is in the work tree until it 	 * actually gets added. 	 */
 if|if
 condition|(
+name|ce_intent_to_add
+argument_list|(
 name|ce
-operator|->
-name|ce_flags
-operator|&
-name|CE_INTENT_TO_ADD
+argument_list|)
 condition|)
 return|return
 name|DATA_CHANGED
@@ -6011,11 +6010,10 @@ expr_stmt|;
 elseif|else
 if|if
 condition|(
+name|ce_intent_to_add
+argument_list|(
 name|ce
-operator|->
-name|ce_flags
-operator|&
-name|CE_INTENT_TO_ADD
+argument_list|)
 condition|)
 name|fmt
 operator|=
