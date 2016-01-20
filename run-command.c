@@ -1269,6 +1269,10 @@ operator|&&
 name|code
 operator|!=
 name|SIGQUIT
+operator|&&
+name|code
+operator|!=
+name|SIGPIPE
 condition|)
 name|error
 argument_list|(
