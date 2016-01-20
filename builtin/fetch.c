@@ -4626,11 +4626,9 @@ name|FILE
 modifier|*
 name|fp
 init|=
-name|fopen
+name|fopen_for_writing
 argument_list|(
 name|filename
-argument_list|,
-literal|"w"
 argument_list|)
 decl_stmt|;
 if|if

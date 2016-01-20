@@ -3826,14 +3826,12 @@ name|s
 operator|->
 name|fp
 operator|=
-name|fopen
+name|fopen_for_writing
 argument_list|(
 name|git_path
 argument_list|(
 name|commit_editmsg
 argument_list|)
-argument_list|,
-literal|"w"
 argument_list|)
 expr_stmt|;
 if|if
