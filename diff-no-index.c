@@ -1338,11 +1338,6 @@ name|char
 modifier|*
 modifier|*
 name|argv
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|prefix
 parameter_list|)
 block|{
 name|int
@@ -1363,6 +1358,15 @@ name|strbuf
 name|replacement
 init|=
 name|STRBUF_INIT
+decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|prefix
+init|=
+name|revs
+operator|->
+name|prefix
 decl_stmt|;
 name|diff_setup
 argument_list|(
