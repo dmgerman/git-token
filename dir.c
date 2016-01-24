@@ -9100,7 +9100,105 @@ block|}
 end_function
 
 begin_function
-DECL|function|validate_untracked_cache
+DECL|function|new_untracked_cache
+specifier|static
+name|void
+name|new_untracked_cache
+parameter_list|(
+name|struct
+name|index_state
+modifier|*
+name|istate
+parameter_list|)
+block|{
+name|struct
+name|untracked_cache
+modifier|*
+name|uc
+init|=
+name|xcalloc
+argument_list|(
+literal|1
+argument_list|,
+sizeof|sizeof
+argument_list|(
+operator|*
+name|uc
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|strbuf_init
+argument_list|(
+operator|&
+name|uc
+operator|->
+name|ident
+argument_list|,
+literal|100
+argument_list|)
+expr_stmt|;
+name|uc
+operator|->
+name|exclude_per_dir
+operator|=
+literal|".gitignore"
+expr_stmt|;
+comment|/* should be the same flags used by git-status */
+name|uc
+operator|->
+name|dir_flags
+operator|=
+name|DIR_SHOW_OTHER_DIRECTORIES
+operator||
+name|DIR_HIDE_EMPTY_DIRECTORIES
+expr_stmt|;
+name|istate
+operator|->
+name|untracked
+operator|=
+name|uc
+expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|function|add_untracked_cache
+name|void
+name|add_untracked_cache
+parameter_list|(
+name|struct
+name|index_state
+modifier|*
+name|istate
+parameter_list|)
+block|{
+if|if
+condition|(
+operator|!
+name|istate
+operator|->
+name|untracked
+condition|)
+block|{
+name|new_untracked_cache
+argument_list|(
+name|istate
+argument_list|)
+expr_stmt|;
+name|add_untracked_ident
+argument_list|(
+name|istate
+operator|->
+name|untracked
+argument_list|)
+expr_stmt|;
+name|istate
+operator|->
+name|cache_changed
+operator||=
+name|UNTRACKED_CHANGED
+expr_stmt|;
+block|}
 specifier|static
 name|struct
 name|untracked_cache_dir
@@ -9425,10 +9523,6 @@ return|return
 name|root
 return|;
 block|}
-end_function
-
-begin_function
-DECL|function|read_directory
 name|int
 name|read_directory
 parameter_list|(
@@ -9731,10 +9825,6 @@ operator|->
 name|nr
 return|;
 block|}
-end_function
-
-begin_function
-DECL|function|file_exists
 name|int
 name|file_exists
 parameter_list|(
@@ -9760,10 +9850,6 @@ operator|==
 literal|0
 return|;
 block|}
-end_function
-
-begin_function
-DECL|function|cmp_icase
 specifier|static
 name|int
 name|cmp_icase
@@ -9805,14 +9891,7 @@ operator|-
 name|b
 return|;
 block|}
-end_function
-
-begin_comment
 comment|/*  * Given two normalized paths (a trailing slash is ok), if subdir is  * outside dir, return -1.  Otherwise return the offset in subdir that  * can be used as relative path to dir.  */
-end_comment
-
-begin_function
-DECL|function|dir_inside_of
 name|int
 name|dir_inside_of
 parameter_list|(
@@ -9947,10 +10026,6 @@ operator|-
 literal|1
 return|;
 block|}
-end_function
-
-begin_function
-DECL|function|is_inside_dir
 name|int
 name|is_inside_dir
 parameter_list|(
@@ -10002,10 +10077,6 @@ return|return
 name|rc
 return|;
 block|}
-end_function
-
-begin_function
-DECL|function|is_empty_dir
 name|int
 name|is_empty_dir
 parameter_list|(
@@ -10081,10 +10152,6 @@ return|return
 name|ret
 return|;
 block|}
-end_function
-
-begin_function
-DECL|function|remove_dir_recurse
 specifier|static
 name|int
 name|remove_dir_recurse
@@ -10446,10 +10513,6 @@ return|return
 name|ret
 return|;
 block|}
-end_function
-
-begin_function
-DECL|function|remove_dir_recursively
 name|int
 name|remove_dir_recursively
 parameter_list|(
@@ -10473,9 +10536,6 @@ name|NULL
 argument_list|)
 return|;
 block|}
-end_function
-
-begin_expr_stmt
 specifier|static
 name|GIT_PATH_FUNC
 argument_list|(
@@ -10483,7 +10543,6 @@ argument|git_path_info_exclude
 argument_list|,
 literal|"info/exclude"
 argument_list|)
-DECL|function|setup_standard_excludes
 name|void
 name|setup_standard_excludes
 argument_list|(
@@ -10514,9 +10573,6 @@ argument_list|(
 literal|"ignore"
 argument_list|)
 expr_stmt|;
-end_expr_stmt
-
-begin_if
 if|if
 condition|(
 name|excludes_file
@@ -10549,21 +10605,12 @@ else|:
 name|NULL
 argument_list|)
 expr_stmt|;
-end_if
-
-begin_comment
 comment|/* per repository user preference */
-end_comment
-
-begin_expr_stmt
 name|path
 operator|=
 name|git_path_info_exclude
 argument_list|()
 expr_stmt|;
-end_expr_stmt
-
-begin_if
 if|if
 condition|(
 operator|!
@@ -10594,18 +10641,18 @@ else|:
 name|NULL
 argument_list|)
 expr_stmt|;
-end_if
+block|}
+end_function
 
-begin_macro
-unit|}  int
-DECL|function|remove_path
+begin_function
+name|int
 name|remove_path
-argument_list|(
-argument|const char *name
-argument_list|)
-end_macro
-
-begin_block
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|name
+parameter_list|)
 block|{
 name|char
 modifier|*
@@ -10702,14 +10749,13 @@ return|return
 literal|0
 return|;
 block|}
-end_block
+end_function
 
 begin_comment
 comment|/*  * Frees memory within dir which was allocated for exclude lists and  * the exclude_stack.  Does not free dir itself.  */
 end_comment
 
 begin_function
-DECL|function|clear_directory
 name|void
 name|clear_directory
 parameter_list|(
@@ -10862,25 +10908,20 @@ block|}
 end_function
 
 begin_struct
-DECL|struct|ondisk_untracked_cache
 struct|struct
 name|ondisk_untracked_cache
 block|{
-DECL|member|info_exclude_stat
 name|struct
 name|stat_data
 name|info_exclude_stat
 decl_stmt|;
-DECL|member|excludes_file_stat
 name|struct
 name|stat_data
 name|excludes_file_stat
 decl_stmt|;
-DECL|member|dir_flags
 name|uint32_t
 name|dir_flags
 decl_stmt|;
-DECL|member|info_exclude_sha1
 name|unsigned
 name|char
 name|info_exclude_sha1
@@ -10888,7 +10929,6 @@ index|[
 literal|20
 index|]
 decl_stmt|;
-DECL|member|excludes_file_sha1
 name|unsigned
 name|char
 name|excludes_file_sha1
@@ -10896,7 +10936,6 @@ index|[
 literal|20
 index|]
 decl_stmt|;
-DECL|member|exclude_per_dir
 name|char
 name|exclude_per_dir
 index|[
@@ -10919,47 +10958,39 @@ value|(offsetof(struct ondisk_untracked_cache, exclude_per_dir) + len + 1)
 end_define
 
 begin_struct
-DECL|struct|write_data
 struct|struct
 name|write_data
 block|{
-DECL|member|index
 name|int
 name|index
 decl_stmt|;
 comment|/* number of written untracked_cache_dir */
-DECL|member|check_only
 name|struct
 name|ewah_bitmap
 modifier|*
 name|check_only
 decl_stmt|;
 comment|/* from untracked_cache_dir */
-DECL|member|valid
 name|struct
 name|ewah_bitmap
 modifier|*
 name|valid
 decl_stmt|;
 comment|/* from untracked_cache_dir */
-DECL|member|sha1_valid
 name|struct
 name|ewah_bitmap
 modifier|*
 name|sha1_valid
 decl_stmt|;
 comment|/* set if exclude_sha1 is not null */
-DECL|member|out
 name|struct
 name|strbuf
 name|out
 decl_stmt|;
-DECL|member|sb_stat
 name|struct
 name|strbuf
 name|sb_stat
 decl_stmt|;
-DECL|member|sb_sha1
 name|struct
 name|strbuf
 name|sb_sha1
@@ -10969,7 +11000,6 @@ struct|;
 end_struct
 
 begin_function
-DECL|function|stat_data_to_disk
 specifier|static
 name|void
 name|stat_data_to_disk
@@ -11105,7 +11135,6 @@ block|}
 end_function
 
 begin_function
-DECL|function|write_one_dir
 specifier|static
 name|void
 name|write_one_dir
@@ -11443,7 +11472,6 @@ block|}
 end_function
 
 begin_function
-DECL|function|write_untracked_extension
 name|void
 name|write_untracked_extension
 parameter_list|(
@@ -11882,7 +11910,6 @@ block|}
 end_function
 
 begin_function
-DECL|function|free_untracked
 specifier|static
 name|void
 name|free_untracked
@@ -11975,7 +12002,6 @@ block|}
 end_function
 
 begin_function
-DECL|function|free_untracked_cache
 name|void
 name|free_untracked_cache
 parameter_list|(
@@ -12005,47 +12031,39 @@ block|}
 end_function
 
 begin_struct
-DECL|struct|read_data
 struct|struct
 name|read_data
 block|{
-DECL|member|index
 name|int
 name|index
 decl_stmt|;
-DECL|member|ucd
 name|struct
 name|untracked_cache_dir
 modifier|*
 modifier|*
 name|ucd
 decl_stmt|;
-DECL|member|check_only
 name|struct
 name|ewah_bitmap
 modifier|*
 name|check_only
 decl_stmt|;
-DECL|member|valid
 name|struct
 name|ewah_bitmap
 modifier|*
 name|valid
 decl_stmt|;
-DECL|member|sha1_valid
 name|struct
 name|ewah_bitmap
 modifier|*
 name|sha1_valid
 decl_stmt|;
-DECL|member|data
 specifier|const
 name|unsigned
 name|char
 modifier|*
 name|data
 decl_stmt|;
-DECL|member|end
 specifier|const
 name|unsigned
 name|char
@@ -12057,7 +12075,6 @@ struct|;
 end_struct
 
 begin_function
-DECL|function|stat_data_from_disk
 specifier|static
 name|void
 name|stat_data_from_disk
@@ -12202,7 +12219,6 @@ block|}
 end_function
 
 begin_function
-DECL|function|read_one_dir
 specifier|static
 name|int
 name|read_one_dir
@@ -12601,7 +12617,6 @@ block|}
 end_function
 
 begin_function
-DECL|function|set_check_only
 specifier|static
 name|void
 name|set_check_only
@@ -12643,7 +12658,6 @@ block|}
 end_function
 
 begin_function
-DECL|function|read_stat
 specifier|static
 name|void
 name|read_stat
@@ -12741,7 +12755,6 @@ block|}
 end_function
 
 begin_function
-DECL|function|read_sha1
 specifier|static
 name|void
 name|read_sha1
@@ -12819,7 +12832,6 @@ block|}
 end_function
 
 begin_function
-DECL|function|load_sha1_stat
 specifier|static
 name|void
 name|load_sha1_stat
@@ -12871,7 +12883,6 @@ block|}
 end_function
 
 begin_function
-DECL|function|read_untracked_extension
 name|struct
 name|untracked_cache
 modifier|*
@@ -13414,7 +13425,6 @@ block|}
 end_function
 
 begin_function
-DECL|function|invalidate_one_directory
 specifier|static
 name|void
 name|invalidate_one_directory
@@ -13455,7 +13465,6 @@ comment|/*  * Normally when an entry is added or removed from a directory,  * in
 end_comment
 
 begin_function
-DECL|function|invalidate_one_component
 specifier|static
 name|int
 name|invalidate_one_component
@@ -13574,7 +13583,6 @@ block|}
 end_function
 
 begin_function
-DECL|function|untracked_cache_invalidate_path
 name|void
 name|untracked_cache_invalidate_path
 parameter_list|(
@@ -13628,7 +13636,6 @@ block|}
 end_function
 
 begin_function
-DECL|function|untracked_cache_remove_from_index
 name|void
 name|untracked_cache_remove_from_index
 parameter_list|(
@@ -13654,7 +13661,6 @@ block|}
 end_function
 
 begin_function
-DECL|function|untracked_cache_add_to_index
 name|void
 name|untracked_cache_add_to_index
 parameter_list|(

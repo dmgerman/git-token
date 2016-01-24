@@ -1570,6 +1570,18 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|void
+name|add_untracked_cache
+parameter_list|(
+name|struct
+name|index_state
+modifier|*
+name|istate
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
