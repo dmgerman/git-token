@@ -5725,11 +5725,6 @@ operator|>
 name|UC_DISABLE
 condition|)
 block|{
-name|struct
-name|untracked_cache
-modifier|*
-name|uc
-decl_stmt|;
 if|if
 condition|(
 name|untracked_cache
@@ -5767,8 +5762,11 @@ operator|.
 name|untracked
 condition|)
 block|{
+name|struct
+name|untracked_cache
+modifier|*
 name|uc
-operator|=
+init|=
 name|xcalloc
 argument_list|(
 literal|1
@@ -5779,7 +5777,7 @@ operator|*
 name|uc
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|strbuf_init
 argument_list|(
 operator|&
