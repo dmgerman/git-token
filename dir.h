@@ -1561,17 +1561,6 @@ end_function_decl
 
 begin_function_decl
 name|void
-name|add_untracked_ident
-parameter_list|(
-name|struct
-name|untracked_cache
-modifier|*
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-name|void
 name|add_untracked_cache
 parameter_list|(
 name|struct
