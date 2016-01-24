@@ -626,8 +626,11 @@ name|stderr
 argument_list|,
 name|_
 argument_list|(
-literal|"Testing "
+literal|"Testing mtime in '%s' "
 argument_list|)
+argument_list|,
+name|xgetcwd
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|atexit
@@ -5822,6 +5825,17 @@ name|cache_changed
 operator||=
 name|UNTRACKED_CHANGED
 expr_stmt|;
+name|report
+argument_list|(
+name|_
+argument_list|(
+literal|"Untracked cache enabled for '%s'"
+argument_list|)
+argument_list|,
+name|get_git_work_tree
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -5829,7 +5843,10 @@ condition|(
 name|untracked_cache
 operator|==
 name|UC_DISABLE
-operator|&&
+condition|)
+block|{
+if|if
+condition|(
 name|the_index
 operator|.
 name|untracked
@@ -5853,6 +5870,15 @@ operator|.
 name|cache_changed
 operator||=
 name|UNTRACKED_CHANGED
+expr_stmt|;
+block|}
+name|report
+argument_list|(
+name|_
+argument_list|(
+literal|"Untracked cache disabled"
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 if|if
