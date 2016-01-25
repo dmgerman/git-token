@@ -2498,10 +2498,7 @@ define|\
 value|(isalpha(*(path))&& (path)[1] == ':' ? 2 : 0)
 end_define
 
-begin_function
-DECL|function|mingw_skip_dos_drive_prefix
-specifier|static
-specifier|inline
+begin_function_decl
 name|int
 name|mingw_skip_dos_drive_prefix
 parameter_list|(
@@ -2510,26 +2507,8 @@ modifier|*
 modifier|*
 name|path
 parameter_list|)
-block|{
-name|int
-name|ret
-init|=
-name|has_dos_drive_prefix
-argument_list|(
-operator|*
-name|path
-argument_list|)
-decl_stmt|;
-operator|*
-name|path
-operator|+=
-name|ret
-expr_stmt|;
-return|return
-name|ret
-return|;
-block|}
-end_function
+function_decl|;
+end_function_decl
 
 begin_define
 DECL|macro|skip_dos_drive_prefix
