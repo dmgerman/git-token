@@ -2571,6 +2571,9 @@ name|UPDATE_REFS_DIE_ON_ERR
 argument_list|)
 expr_stmt|;
 comment|/* 			 * We ignore errors in 'gc --auto', since the 			 * user should see them. 			 */
+name|close_all_packs
+argument_list|()
+expr_stmt|;
 name|run_command_v_opt
 argument_list|(
 name|argv_gc_auto
