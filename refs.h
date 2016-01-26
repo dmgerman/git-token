@@ -1211,12 +1211,12 @@ parameter_list|(
 specifier|const
 name|char
 modifier|*
-name|ref
+name|refname
 parameter_list|,
 specifier|const
 name|char
 modifier|*
-name|refs_heads_master
+name|target
 parameter_list|,
 specifier|const
 name|char
