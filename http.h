@@ -263,6 +263,10 @@ DECL|member|auth_avail
 name|long
 name|auth_avail
 decl_stmt|;
+DECL|member|http_connectcode
+name|long
+name|http_connectcode
+decl_stmt|;
 block|}
 struct|;
 end_struct
