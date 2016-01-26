@@ -173,6 +173,11 @@ name|char
 modifier|*
 name|http_proxy
 decl_stmt|;
+DECL|member|http_proxy_authmethod
+name|char
+modifier|*
+name|http_proxy_authmethod
+decl_stmt|;
 block|}
 struct|;
 end_struct
