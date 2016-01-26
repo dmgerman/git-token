@@ -136,11 +136,6 @@ block|{
 name|int
 name|i
 decl_stmt|;
-if|if
-condition|(
-name|saved_env_before_alias
-condition|)
-return|return;
 name|saved_env_before_alias
 operator|=
 literal|1
