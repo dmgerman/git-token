@@ -8246,6 +8246,15 @@ name|char
 modifier|*
 name|v
 decl_stmt|;
+comment|/* Hack for test programs like test-dump-untracked-cache */
+if|if
+condition|(
+name|ignore_untracked_cache_config
+condition|)
+return|return
+operator|-
+literal|1
+return|;
 if|if
 condition|(
 operator|!

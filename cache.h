@@ -10410,6 +10410,17 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * This is a hack for test programs like test-dump-untracked-cache to  * ensure that they do not modify the untracked cache when reading it.  * Do not use it otherwise!  */
+end_comment
+
+begin_decl_stmt
+specifier|extern
+name|int
+name|ignore_untracked_cache_config
+decl_stmt|;
+end_decl_stmt
+
 begin_struct
 DECL|struct|key_value_info
 struct|struct

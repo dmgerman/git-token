@@ -615,6 +615,17 @@ decl_stmt|;
 end_decl_stmt
 
 begin_comment
+comment|/*  * This is a hack for test programs like test-dump-untracked-cache to  * ensure that they do not modify the untracked cache when reading it.  * Do not use it otherwise!  */
+end_comment
+
+begin_decl_stmt
+DECL|variable|ignore_untracked_cache_config
+name|int
+name|ignore_untracked_cache_config
+decl_stmt|;
+end_decl_stmt
+
+begin_comment
 comment|/* This is set by setup_git_dir_gently() and/or git_default_config() */
 end_comment
 
