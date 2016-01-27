@@ -117,14 +117,6 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|saved_env_before_alias
-specifier|static
-name|int
-name|saved_env_before_alias
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|variable|save_restore_env_balance
 specifier|static
 name|int
@@ -144,10 +136,6 @@ block|{
 name|int
 name|i
 decl_stmt|;
-name|saved_env_before_alias
-operator|=
-literal|1
-expr_stmt|;
 name|assert
 argument_list|(
 name|save_restore_env_balance
@@ -3358,13 +3346,6 @@ if|if
 condition|(
 name|builtin
 condition|)
-block|{
-comment|/* 		 * XXX: if we can figure out cases where it is _safe_ 		 * to do, we can avoid spawning a new process when 		 * saved_env_before_alias is true 		 * (i.e. setup_git_dir* has been run once) 		 */
-if|if
-condition|(
-operator|!
-name|saved_env_before_alias
-condition|)
 name|exit
 argument_list|(
 name|run_builtin
@@ -3377,7 +3358,6 @@ name|argv
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 end_function
 
@@ -3536,7 +3516,12 @@ condition|(
 literal|1
 condition|)
 block|{
-comment|/* See if it's a builtin */
+comment|/* 		 * If we tried alias and futzed with our environment, 		 * it no longer is safe to invoke builtins directly in 		 * general.  We have to spawn them as dashed externals. 		 * 		 * NEEDSWORK: if we can figure out cases 		 * where it is safe to do, we can avoid spawning a new 		 * process. 		 */
+if|if
+condition|(
+operator|!
+name|done_alias
+condition|)
 name|handle_builtin
 argument_list|(
 operator|*
