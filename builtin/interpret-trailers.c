@@ -46,7 +46,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git interpret-trailers [--trim-empty] [(--trailer<token>[(=|:)<value>])...] [<file>...]"
+literal|"git interpret-trailers [--in-place] [--trim-empty] [(--trailer<token>[(=|:)<value>])...] [<file>...]"
 argument_list|)
 block|,
 name|NULL
@@ -75,6 +75,11 @@ name|prefix
 parameter_list|)
 block|{
 name|int
+name|in_place
+init|=
+literal|0
+decl_stmt|;
+name|int
 name|trim_empty
 init|=
 literal|0
@@ -91,6 +96,21 @@ name|options
 index|[]
 init|=
 block|{
+name|OPT_BOOL
+argument_list|(
+literal|0
+argument_list|,
+literal|"in-place"
+argument_list|,
+operator|&
+name|in_place
+argument_list|,
+name|N_
+argument_list|(
+literal|"edit files in place"
+argument_list|)
+argument_list|)
+block|,
 name|OPT_BOOL
 argument_list|(
 literal|0
@@ -175,6 +195,8 @@ index|[
 name|i
 index|]
 argument_list|,
+name|in_place
+argument_list|,
 name|trim_empty
 argument_list|,
 operator|&
@@ -183,9 +205,24 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
+if|if
+condition|(
+name|in_place
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"no input file given for in-place editing"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|process_trailers
 argument_list|(
 name|NULL
+argument_list|,
+name|in_place
 argument_list|,
 name|trim_empty
 argument_list|,
@@ -193,6 +230,7 @@ operator|&
 name|trailers
 argument_list|)
 expr_stmt|;
+block|}
 name|string_list_clear
 argument_list|(
 operator|&
