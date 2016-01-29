@@ -3091,14 +3091,12 @@ argument_list|)
 expr_stmt|;
 while|while
 condition|(
-name|strbuf_getline
+name|strbuf_getline_lf
 argument_list|(
 operator|&
 name|sb
 argument_list|,
 name|patterns
-argument_list|,
-literal|'\n'
 argument_list|)
 operator|==
 literal|0

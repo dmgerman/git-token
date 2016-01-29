@@ -552,14 +552,12 @@ argument_list|)
 expr_stmt|;
 name|r
 operator|=
-name|strbuf_getline
+name|strbuf_getline_lf
 argument_list|(
 operator|&
 name|buf
 argument_list|,
 name|input_fh
-argument_list|,
-literal|'\n'
 argument_list|)
 expr_stmt|;
 if|if

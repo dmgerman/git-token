@@ -296,13 +296,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|strbuf_getline
+name|strbuf_getline_lf
 argument_list|(
 name|buffer
 argument_list|,
 name|helper
-argument_list|,
-literal|'\n'
 argument_list|)
 operator|==
 name|EOF
@@ -777,7 +775,7 @@ name|no_disconnect_req
 operator|=
 literal|0
 expr_stmt|;
-comment|/* 	 * Open the output as FILE* so strbuf_getline() can be used. 	 * Do this with duped fd because fclose() will close the fd, 	 * and stuff like taking over will require the fd to remain. 	 */
+comment|/* 	 * Open the output as FILE* so strbuf_getline_*() family of 	 * functions can be used. 	 * Do this with duped fd because fclose() will close the fd, 	 * and stuff like taking over will require the fd to remain. 	 */
 name|duped
 operator|=
 name|dup

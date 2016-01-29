@@ -1914,14 +1914,12 @@ literal|0
 decl_stmt|;
 while|while
 condition|(
-name|strbuf_getline
+name|strbuf_getline_lf
 argument_list|(
 operator|&
 name|line
 argument_list|,
 name|in
-argument_list|,
-literal|'\n'
 argument_list|)
 operator|!=
 name|EOF

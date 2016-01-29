@@ -42,12 +42,10 @@ value|4
 end_define
 
 begin_decl_stmt
-DECL|variable|line_termination
+DECL|variable|nul_term_line
 specifier|static
 name|int
-name|line_termination
-init|=
-literal|'\n'
+name|nul_term_line
 decl_stmt|;
 end_decl_stmt
 
@@ -201,7 +199,11 @@ name|prefix
 argument_list|,
 name|stdout
 argument_list|,
-name|line_termination
+name|nul_term_line
+condition|?
+literal|'\0'
+else|:
+literal|'\n'
 argument_list|)
 expr_stmt|;
 for|for
@@ -812,18 +814,10 @@ name|int
 name|unset
 parameter_list|)
 block|{
-if|if
-condition|(
+name|nul_term_line
+operator|=
+operator|!
 name|unset
-condition|)
-name|line_termination
-operator|=
-literal|'\n'
-expr_stmt|;
-else|else
-name|line_termination
-operator|=
-literal|0
 expr_stmt|;
 return|return
 literal|0
@@ -1404,6 +1398,9 @@ name|nbuf
 init|=
 name|STRBUF_INIT
 decl_stmt|;
+name|strbuf_getline_fn
+name|getline_fn
+decl_stmt|;
 if|if
 condition|(
 name|all
@@ -1413,16 +1410,22 @@ argument_list|(
 literal|"git checkout-index: don't mix '--all' and '--stdin'"
 argument_list|)
 expr_stmt|;
+name|getline_fn
+operator|=
+name|nul_term_line
+condition|?
+name|strbuf_getline_nul
+else|:
+name|strbuf_getline_lf
+expr_stmt|;
 while|while
 condition|(
-name|strbuf_getline
+name|getline_fn
 argument_list|(
 operator|&
 name|buf
 argument_list|,
 name|stdin
-argument_list|,
-name|line_termination
 argument_list|)
 operator|!=
 name|EOF
@@ -1434,7 +1437,8 @@ name|p
 decl_stmt|;
 if|if
 condition|(
-name|line_termination
+operator|!
+name|nul_term_line
 operator|&&
 name|buf
 operator|.

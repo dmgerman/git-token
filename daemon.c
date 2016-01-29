@@ -1979,14 +1979,12 @@ return|return;
 block|}
 while|while
 condition|(
-name|strbuf_getline
+name|strbuf_getline_lf
 argument_list|(
 operator|&
 name|line
 argument_list|,
 name|fp
-argument_list|,
-literal|'\n'
 argument_list|)
 operator|!=
 name|EOF
