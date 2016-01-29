@@ -1,4 +1,35 @@
 begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|__MINGW64_VERSION_MAJOR
+end_ifdef
+
+begin_include
+include|#
+directive|include
+file|<stdint.h>
+end_include
+
+begin_include
+include|#
+directive|include
+file|<wchar.h>
+end_include
+
+begin_typedef
+DECL|typedef|sigset_t
+typedef|typedef
+name|_sigset_t
+name|sigset_t
+typedef|;
+end_typedef
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_include
 include|#
 directive|include
@@ -12,16 +43,30 @@ file|<ws2tcpip.h>
 end_include
 
 begin_comment
-comment|/*  * things that are not available in header files  */
+comment|/* MinGW-w64 reports to have flockfile, but it does not actually have it. */
 end_comment
 
-begin_typedef
-DECL|typedef|pid_t
-typedef|typedef
-name|int
-name|pid_t
-typedef|;
-end_typedef
+begin_ifdef
+ifdef|#
+directive|ifdef
+name|__MINGW64_VERSION_MAJOR
+end_ifdef
+
+begin_undef
+DECL|macro|_POSIX_THREAD_SAFE_FUNCTIONS
+undef|#
+directive|undef
+name|_POSIX_THREAD_SAFE_FUNCTIONS
+end_undef
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
+begin_comment
+comment|/*  * things that are not available in header files  */
+end_comment
 
 begin_typedef
 DECL|typedef|uid_t
@@ -39,6 +84,20 @@ name|socklen_t
 typedef|;
 end_typedef
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|__MINGW64_VERSION_MAJOR
+end_ifndef
+
+begin_typedef
+DECL|typedef|pid_t
+typedef|typedef
+name|int
+name|pid_t
+typedef|;
+end_typedef
+
 begin_define
 DECL|macro|hstrerror
 define|#
@@ -46,6 +105,11 @@ directive|define
 name|hstrerror
 value|strerror
 end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_define
 DECL|macro|S_IFLNK
@@ -82,6 +146,12 @@ parameter_list|)
 value|0
 end_define
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|S_IRWXG
+end_ifndef
+
 begin_define
 DECL|macro|S_IRGRP
 define|#
@@ -114,6 +184,17 @@ name|S_IRWXG
 value|(S_IRGRP | S_IWGRP | S_IXGRP)
 end_define
 
+begin_endif
+endif|#
+directive|endif
+end_endif
+
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|S_IRWXO
+end_ifndef
+
 begin_define
 DECL|macro|S_IROTH
 define|#
@@ -145,6 +226,11 @@ directive|define
 name|S_IRWXO
 value|(S_IROTH | S_IWOTH | S_IXOTH)
 end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_define
 DECL|macro|S_ISUID
@@ -608,6 +694,12 @@ return|;
 block|}
 end_function
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|__MINGW64_VERSION_MAJOR
+end_ifndef
+
 begin_function
 DECL|function|fork
 specifier|static
@@ -628,6 +720,11 @@ literal|1
 return|;
 block|}
 end_function
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_function
 DECL|function|alarm
@@ -1153,6 +1250,12 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|__MINGW64_VERSION_MAJOR
+end_ifndef
+
 begin_function_decl
 name|struct
 name|tm
@@ -1190,6 +1293,11 @@ name|result
 parameter_list|)
 function_decl|;
 end_function_decl
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_function_decl
 name|int
@@ -2086,6 +2194,12 @@ begin_comment
 comment|/*  * Use mingw specific stat()/lstat()/fstat() implementations on Windows.  */
 end_comment
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|__MINGW64_VERSION_MAJOR
+end_ifndef
+
 begin_define
 DECL|macro|off_t
 define|#
@@ -2101,6 +2215,11 @@ directive|define
 name|lseek
 value|_lseeki64
 end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_comment
 comment|/* use struct stat with 64 bit st_size */
@@ -2621,6 +2740,12 @@ name|PATH_SEP
 value|';'
 end_define
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|__MINGW64_VERSION_MAJOR
+end_ifndef
+
 begin_define
 DECL|macro|PRIuMAX
 define|#
@@ -2636,6 +2761,22 @@ directive|define
 name|PRId64
 value|"I64d"
 end_define
+
+begin_else
+else|#
+directive|else
+end_else
+
+begin_include
+include|#
+directive|include
+file|<inttypes.h>
+end_include
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_function_decl
 name|void
