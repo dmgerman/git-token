@@ -4278,7 +4278,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * This interprets names like ':/Initial revision of "git"' by searching  * through history and returning the first commit whose message starts  * the given regular expression.  *  * For future extension, ':/!' is reserved. If you want to match a message  * beginning with a '!', you have to repeat the exclamation mark.  */
+comment|/*  * This interprets names like ':/Initial revision of "git"' by searching  * through history and returning the first commit whose message starts  * the given regular expression.  *  * For negative-matching, prefix the pattern-part with '!-', like: ':/!-WIP'.  *  * For a literal '!' character at the beginning of a pattern, you have to repeat  * that, like: ':/!!foo'  *  * For future extension, all other sequences beginning with ':/!' are reserved.  */
 end_comment
 
 begin_comment
@@ -4442,6 +4442,11 @@ name|found
 init|=
 literal|0
 decl_stmt|;
+name|int
+name|negative
+init|=
+literal|0
+decl_stmt|;
 name|regex_t
 name|regex
 decl_stmt|;
@@ -4455,15 +4460,38 @@ operator|==
 literal|'!'
 condition|)
 block|{
+name|prefix
+operator|++
+expr_stmt|;
 if|if
 condition|(
 name|prefix
 index|[
+literal|0
+index|]
+operator|==
+literal|'-'
+condition|)
+block|{
+name|prefix
+operator|++
+expr_stmt|;
+name|negative
+operator|=
 literal|1
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|prefix
+index|[
+literal|0
 index|]
 operator|!=
 literal|'!'
 condition|)
+block|{
 name|die
 argument_list|(
 literal|"Invalid search pattern: %s"
@@ -4471,9 +4499,7 @@ argument_list|,
 name|prefix
 argument_list|)
 expr_stmt|;
-name|prefix
-operator|++
-expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -4594,6 +4620,9 @@ argument_list|)
 expr_stmt|;
 name|matches
 operator|=
+name|negative
+operator|^
+operator|(
 name|p
 operator|&&
 operator|!
@@ -4612,6 +4641,7 @@ name|NULL
 argument_list|,
 literal|0
 argument_list|)
+operator|)
 expr_stmt|;
 name|unuse_commit_buffer
 argument_list|(
