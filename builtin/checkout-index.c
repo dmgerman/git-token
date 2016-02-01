@@ -800,7 +800,10 @@ expr_stmt|;
 else|else
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"stage should be between 1 and 3 or all"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1010,23 +1013,26 @@ literal|"when creating files, prepend<string>"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_CALLBACK
-argument_list|(
+block|{
+name|OPTION_CALLBACK
+block|,
 literal|0
-argument_list|,
+block|,
 literal|"stage"
-argument_list|,
+block|,
 name|NULL
-argument_list|,
-name|NULL
-argument_list|,
+block|,
+literal|"1-3|all"
+block|,
 name|N_
 argument_list|(
 literal|"copy out the files from named stage"
 argument_list|)
-argument_list|,
+block|,
+name|PARSE_OPT_NONEG
+block|,
 name|option_parse_stage
-argument_list|)
+block|}
 block|,
 name|OPT_END
 argument_list|()
