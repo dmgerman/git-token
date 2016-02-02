@@ -294,6 +294,7 @@ index|[
 name|i
 index|]
 condition|)
+block|{
 name|setenv
 argument_list|(
 name|env_names
@@ -309,7 +310,17 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
+name|free
+argument_list|(
+name|orig_env
+index|[
+name|i
+index|]
+argument_list|)
+expr_stmt|;
+block|}
 else|else
+block|{
 name|unsetenv
 argument_list|(
 name|env_names
@@ -318,6 +329,7 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 end_function
