@@ -4650,7 +4650,7 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
-name|expand_notes_ref
+name|expand_loose_notes_ref
 argument_list|(
 operator|&
 name|remote_ref
