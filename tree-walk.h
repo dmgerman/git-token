@@ -359,6 +359,12 @@ DECL|struct|traverse_info
 struct|struct
 name|traverse_info
 block|{
+DECL|member|traverse_path
+specifier|const
+name|char
+modifier|*
+name|traverse_path
+decl_stmt|;
 DECL|member|prev
 name|struct
 name|traverse_info
