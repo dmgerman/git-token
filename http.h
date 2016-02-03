@@ -604,6 +604,14 @@ end_function_decl
 
 begin_decl_stmt
 specifier|extern
+name|long
+name|int
+name|git_curl_ipresolve
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
 name|int
 name|active_requests
 decl_stmt|;

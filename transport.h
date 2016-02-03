@@ -97,6 +97,25 @@ block|}
 struct|;
 end_struct
 
+begin_enum
+DECL|enum|transport_family
+enum|enum
+name|transport_family
+block|{
+DECL|enumerator|TRANSPORT_FAMILY_ALL
+name|TRANSPORT_FAMILY_ALL
+init|=
+literal|0
+block|,
+DECL|enumerator|TRANSPORT_FAMILY_IPV4
+name|TRANSPORT_FAMILY_IPV4
+block|,
+DECL|enumerator|TRANSPORT_FAMILY_IPV6
+name|TRANSPORT_FAMILY_IPV6
+block|}
+enum|;
+end_enum
+
 begin_struct
 DECL|struct|transport
 struct|struct
@@ -327,6 +346,11 @@ name|struct
 name|git_transport_options
 modifier|*
 name|smart_options
+decl_stmt|;
+DECL|member|family
+name|enum
+name|transport_family
+name|family
 decl_stmt|;
 block|}
 struct|;
