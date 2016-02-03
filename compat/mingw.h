@@ -2639,7 +2639,28 @@ name|has_dos_drive_prefix
 parameter_list|(
 name|path
 parameter_list|)
-value|(isalpha(*(path))&& (path)[1] == ':')
+define|\
+value|(isalpha(*(path))&& (path)[1] == ':' ? 2 : 0)
+end_define
+
+begin_function_decl
+name|int
+name|mingw_skip_dos_drive_prefix
+parameter_list|(
+name|char
+modifier|*
+modifier|*
+name|path
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_define
+DECL|macro|skip_dos_drive_prefix
+define|#
+directive|define
+name|skip_dos_drive_prefix
+value|mingw_skip_dos_drive_prefix
 end_define
 
 begin_define
