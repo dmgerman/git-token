@@ -296,7 +296,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|strbuf_getline_lf
+name|strbuf_getline
 argument_list|(
 name|buffer
 argument_list|,
