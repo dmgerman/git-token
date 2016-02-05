@@ -4783,11 +4783,9 @@ literal|0
 decl_stmt|;
 name|f
 operator|=
-name|fopen
+name|fopen_for_writing
 argument_list|(
 name|file
-argument_list|,
-literal|"w"
 argument_list|)
 expr_stmt|;
 if|if
