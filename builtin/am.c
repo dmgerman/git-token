@@ -8012,6 +8012,10 @@ operator|&
 name|diff_filter_str
 argument_list|,
 literal|1
+argument_list|,
+name|rev_info
+operator|.
+name|prefix
 argument_list|)
 expr_stmt|;
 name|add_pending_sha1
