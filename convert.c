@@ -3205,11 +3205,6 @@ name|enum
 name|crlf_action
 name|git_path_check_crlf
 parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|path
-parameter_list|,
 name|struct
 name|git_attr_check
 modifier|*
@@ -3296,11 +3291,6 @@ name|enum
 name|eol
 name|git_path_check_eol
 parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|path
-parameter_list|,
 name|struct
 name|git_attr_check
 modifier|*
@@ -3366,11 +3356,6 @@ name|convert_driver
 modifier|*
 name|git_path_check_convert
 parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|path
-parameter_list|,
 name|struct
 name|git_attr_check
 modifier|*
@@ -3452,11 +3437,6 @@ specifier|static
 name|int
 name|git_path_check_ident
 parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|path
-parameter_list|,
 name|struct
 name|git_attr_check
 modifier|*
@@ -3691,8 +3671,6 @@ name|crlf_action
 operator|=
 name|git_path_check_crlf
 argument_list|(
-name|path
-argument_list|,
 name|ccheck
 operator|+
 literal|4
@@ -3712,8 +3690,6 @@ name|crlf_action
 operator|=
 name|git_path_check_crlf
 argument_list|(
-name|path
-argument_list|,
 name|ccheck
 operator|+
 literal|0
@@ -3725,8 +3701,6 @@ name|ident
 operator|=
 name|git_path_check_ident
 argument_list|(
-name|path
-argument_list|,
 name|ccheck
 operator|+
 literal|1
@@ -3738,8 +3712,6 @@ name|drv
 operator|=
 name|git_path_check_convert
 argument_list|(
-name|path
-argument_list|,
 name|ccheck
 operator|+
 literal|2
@@ -3751,8 +3723,6 @@ name|eol_attr
 operator|=
 name|git_path_check_eol
 argument_list|(
-name|path
-argument_list|,
 name|ccheck
 operator|+
 literal|3
