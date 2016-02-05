@@ -6678,6 +6678,9 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|close_all_packs
+argument_list|()
+expr_stmt|;
 name|argv_array_pushl
 argument_list|(
 operator|&
