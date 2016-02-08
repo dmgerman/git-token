@@ -338,9 +338,16 @@ argument_list|)
 expr_stmt|;
 else|else
 block|{
-name|strcpy
+name|xsnprintf
 argument_list|(
 name|buffer
+argument_list|,
+sizeof|sizeof
+argument_list|(
+name|buffer
+argument_list|)
+argument_list|,
+literal|"%s"
 argument_list|,
 name|data
 index|[
