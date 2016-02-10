@@ -8818,7 +8818,7 @@ name|REF_STATUS_UPTODATE
 expr_stmt|;
 continue|continue;
 block|}
-comment|/* 		 * Bypass the usual "must fast-forward" check but 		 * replace it with a weaker "the old value must be 		 * this value we observed".  If the remote ref has 		 * moved and is now different from what we expect, 		 * reject any push. 		 * 		 * It also is an error if the user told us to check 		 * with the remote-tracking branch to find the value 		 * to expect, but we did not have such a tracking 		 * branch. 		 */
+comment|/* 		 * If the remote ref has moved and is now different 		 * from what we expect, reject any push. 		 * 		 * It also is an error if the user told us to check 		 * with the remote-tracking branch to find the value 		 * to expect, but we did not have such a tracking 		 * branch. 		 */
 if|if
 condition|(
 name|ref
@@ -8849,11 +8849,19 @@ name|reject_reason
 operator|=
 name|REF_STATUS_REJECT_STALE
 expr_stmt|;
+else|else
+comment|/* If the ref isn't stale then force the update. */
+name|force_ref_update
+operator|=
+literal|1
+expr_stmt|;
 block|}
-comment|/* 		 * The usual "must fast-forward" rules. 		 * 		 * Decide whether an individual refspec A:B can be 		 * pushed.  The push will succeed if any of the 		 * following are true: 		 * 		 * (1) the remote reference B does not exist 		 * 		 * (2) the remote reference B is being removed (i.e., 		 *     pushing :B where no source is specified) 		 * 		 * (3) the destination is not under refs/tags/, and 		 *     if the old and new value is a commit, the new 		 *     is a descendant of the old. 		 * 		 * (4) it is forced using the +A:B notation, or by 		 *     passing the --force argument 		 */
-elseif|else
+comment|/* 		 * If the update isn't already rejected then check 		 * the usual "must fast-forward" rules. 		 * 		 * Decide whether an individual refspec A:B can be 		 * pushed.  The push will succeed if any of the 		 * following are true: 		 * 		 * (1) the remote reference B does not exist 		 * 		 * (2) the remote reference B is being removed (i.e., 		 *     pushing :B where no source is specified) 		 * 		 * (3) the destination is not under refs/tags/, and 		 *     if the old and new value is a commit, the new 		 *     is a descendant of the old. 		 * 		 * (4) it is forced using the +A:B notation, or by 		 *     passing the --force argument 		 */
 if|if
 condition|(
+operator|!
+name|reject_reason
+operator|&&
 operator|!
 name|ref
 operator|->
