@@ -159,9 +159,8 @@ name|char
 modifier|*
 name|path_name
 parameter_list|(
-specifier|const
 name|struct
-name|name_path
+name|strbuf
 modifier|*
 name|path
 parameter_list|,
@@ -187,8 +186,6 @@ operator|&
 name|ret
 argument_list|,
 name|path
-operator|->
-name|base
 argument_list|)
 expr_stmt|;
 name|strbuf_addstr
@@ -225,9 +222,8 @@ name|object
 modifier|*
 name|obj
 parameter_list|,
-specifier|const
 name|struct
-name|name_path
+name|strbuf
 modifier|*
 name|path
 parameter_list|,

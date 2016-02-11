@@ -783,9 +783,8 @@ name|object
 modifier|*
 name|obj
 parameter_list|,
-specifier|const
 name|struct
-name|name_path
+name|strbuf
 modifier|*
 name|path
 parameter_list|,
@@ -878,9 +877,8 @@ name|object
 modifier|*
 name|obj
 parameter_list|,
-specifier|const
 name|struct
-name|name_path
+name|strbuf
 modifier|*
 name|path
 parameter_list|,
