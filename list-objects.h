@@ -44,9 +44,8 @@ name|struct
 name|object
 modifier|*
 parameter_list|,
-specifier|const
 name|struct
-name|name_path
+name|strbuf
 modifier|*
 parameter_list|,
 specifier|const
