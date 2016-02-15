@@ -4199,8 +4199,15 @@ condition|(
 operator|!
 name|patternlen
 operator|&&
+operator|(
 operator|!
 name|namelen
+operator|||
+operator|*
+name|name
+operator|==
+literal|'/'
+operator|)
 condition|)
 return|return
 literal|1
