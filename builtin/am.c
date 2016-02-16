@@ -8566,12 +8566,10 @@ name|pager
 operator|=
 literal|"cat"
 expr_stmt|;
-name|argv_array_push
+name|prepare_pager_args
 argument_list|(
 operator|&
 name|cp
-operator|.
-name|args
 argument_list|,
 name|pager
 argument_list|)
