@@ -3912,7 +3912,10 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
+name|remote_is_configured
+argument_list|(
 name|oldremote
+argument_list|)
 condition|)
 name|die
 argument_list|(
@@ -4939,7 +4942,10 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
+name|remote_is_configured
+argument_list|(
 name|remote
+argument_list|)
 condition|)
 name|die
 argument_list|(
