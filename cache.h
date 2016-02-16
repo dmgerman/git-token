@@ -888,9 +888,19 @@ endif|#
 directive|endif
 end_endif
 
+begin_comment
+comment|/* Forward structure decls */
+end_comment
+
 begin_struct_decl
 struct_decl|struct
 name|pathspec
+struct_decl|;
+end_struct_decl
+
+begin_struct_decl
+struct_decl|struct
+name|child_process
 struct_decl|;
 end_struct_decl
 
@@ -10490,6 +10500,23 @@ specifier|const
 name|char
 modifier|*
 name|cmd
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|void
+name|prepare_pager_args
+parameter_list|(
+name|struct
+name|child_process
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|pager
 parameter_list|)
 function_decl|;
 end_function_decl
