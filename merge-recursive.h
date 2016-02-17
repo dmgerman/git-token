@@ -83,6 +83,10 @@ DECL|member|verbosity
 name|int
 name|verbosity
 decl_stmt|;
+DECL|member|detect_rename
+name|int
+name|detect_rename
+decl_stmt|;
 DECL|member|diff_rename_limit
 name|int
 name|diff_rename_limit
