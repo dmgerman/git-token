@@ -9161,7 +9161,7 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|int
-name|git_config_from_buf
+name|git_config_from_mem
 parameter_list|(
 name|config_fn_t
 name|fn

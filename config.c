@@ -5516,9 +5516,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|git_config_from_buf
+DECL|function|git_config_from_mem
 name|int
-name|git_config_from_buf
+name|git_config_from_mem
 parameter_list|(
 name|config_fn_t
 name|fn
@@ -5714,7 +5714,7 @@ return|;
 block|}
 name|ret
 operator|=
-name|git_config_from_buf
+name|git_config_from_mem
 argument_list|(
 name|fn
 argument_list|,

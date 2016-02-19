@@ -2205,7 +2205,7 @@ name|overwrite
 operator|=
 literal|0
 expr_stmt|;
-name|git_config_from_buf
+name|git_config_from_mem
 argument_list|(
 name|parse_config
 argument_list|,
