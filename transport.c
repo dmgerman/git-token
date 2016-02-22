@@ -7392,17 +7392,11 @@ name|nr_heads
 condition|)
 block|{
 comment|/* 		 * When deepening of a shallow repository is requested, 		 * then local and remote refs are likely to still be equal. 		 * Just feed them all to the fetch method in that case. 		 * This condition shouldn't be met in a non-deepening fetch 		 * (see builtin/fetch.c:quickfetch()). 		 */
-name|heads
-operator|=
-name|xmalloc
+name|ALLOC_ARRAY
 argument_list|(
+name|heads
+argument_list|,
 name|nr_refs
-operator|*
-sizeof|sizeof
-argument_list|(
-operator|*
-name|heads
-argument_list|)
 argument_list|)
 expr_stmt|;
 for|for

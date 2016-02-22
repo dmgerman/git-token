@@ -322,7 +322,7 @@ value|\ 		khint32_t *new_flags = NULL;										\ 		khint_t j = 1;													\
 comment|/* requested size is too small */
 value|\ 			else {
 comment|/* hash table size to be changed (shrink or expand); rehash */
-value|\ 				new_flags = (khint32_t*)xmalloc(__ac_fsize(new_n_buckets) * sizeof(khint32_t));	\ 				if (!new_flags) return -1;								\ 				memset(new_flags, 0xaa, __ac_fsize(new_n_buckets) * sizeof(khint32_t)); \ 				if (h->n_buckets< new_n_buckets) {
+value|\ 				ALLOC_ARRAY(new_flags, __ac_fsize(new_n_buckets)); \ 				if (!new_flags) return -1;								\ 				memset(new_flags, 0xaa, __ac_fsize(new_n_buckets) * sizeof(khint32_t)); \ 				if (h->n_buckets< new_n_buckets) {
 comment|/* expand */
 value|\ 					REALLOC_ARRAY(h->keys, new_n_buckets); \ 					if (kh_is_map) {									\ 						REALLOC_ARRAY(h->vals, new_n_buckets); \ 					}													\ 				}
 comment|/* otherwise shrink */
