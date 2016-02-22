@@ -99,7 +99,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Configure local branch "local" as downstream to branch "remote"  * from remote "origin".  Used by git branch --set-upstream.  */
+comment|/*  * Configure local branch "local" as downstream to branch "remote"  * from remote "origin".  Used by git branch --set-upstream.  * Returns 0 on success.  */
 end_comment
 
 begin_define
@@ -112,7 +112,7 @@ end_define
 
 begin_function_decl
 specifier|extern
-name|void
+name|int
 name|install_branch_config
 parameter_list|(
 name|int
