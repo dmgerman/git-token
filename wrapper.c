@@ -731,6 +731,20 @@ name|void
 modifier|*
 name|ret
 decl_stmt|;
+if|if
+condition|(
+name|unsigned_mult_overflows
+argument_list|(
+name|nmemb
+argument_list|,
+name|size
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"data too large to fit into virtual memory space"
+argument_list|)
+expr_stmt|;
 name|memory_limit_check
 argument_list|(
 name|size
