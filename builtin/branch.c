@@ -2978,9 +2978,6 @@ modifier|*
 name|branch_name
 parameter_list|)
 block|{
-name|int
-name|status
-decl_stmt|;
 name|struct
 name|strbuf
 name|buf
@@ -3132,9 +3129,7 @@ argument_list|,
 name|branch_name
 argument_list|)
 expr_stmt|;
-name|status
-operator|=
-name|git_config_set
+name|git_config_set_or_die
 argument_list|(
 name|name
 operator|.
@@ -3164,7 +3159,7 @@ name|buf
 argument_list|)
 expr_stmt|;
 return|return
-name|status
+literal|0
 return|;
 block|}
 end_function
