@@ -295,7 +295,7 @@ modifier|*
 name|path
 parameter_list|)
 block|{
-name|int
+name|size_t
 name|len
 init|=
 name|strlen
@@ -321,9 +321,12 @@ name|with_slash
 init|=
 name|xmalloc
 argument_list|(
+name|st_add
+argument_list|(
 name|len
-operator|+
+argument_list|,
 literal|2
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|memcpy

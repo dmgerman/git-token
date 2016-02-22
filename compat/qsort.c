@@ -266,9 +266,12 @@ specifier|const
 name|size_t
 name|size
 init|=
+name|st_mult
+argument_list|(
 name|n
-operator|*
+argument_list|,
 name|s
+argument_list|)
 decl_stmt|;
 name|char
 name|buf

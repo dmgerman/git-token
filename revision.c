@@ -2469,13 +2469,16 @@ name|xcalloc
 argument_list|(
 literal|1
 argument_list|,
+name|st_add
+argument_list|(
 sizeof|sizeof
 argument_list|(
 operator|*
 name|st
 argument_list|)
-operator|+
+argument_list|,
 name|n
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|st

@@ -2906,13 +2906,16 @@ name|p
 operator|=
 name|xmalloc
 argument_list|(
+name|st_add
+argument_list|(
 sizeof|sizeof
 argument_list|(
 expr|struct
 name|mem_pool
 argument_list|)
-operator|+
+argument_list|,
 name|mem_pool_alloc
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|p
