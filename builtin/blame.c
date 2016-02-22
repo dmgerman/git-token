@@ -12183,7 +12183,6 @@ operator||
 name|ADD_CACHE_OK_TO_REPLACE
 argument_list|)
 expr_stmt|;
-comment|/* 	 * We are not going to write this out, so this does not matter 	 * right now, but someday we might optimize diff-index --cached 	 * with cache-tree information. 	 */
 name|cache_tree_invalidate_path
 argument_list|(
 operator|&
