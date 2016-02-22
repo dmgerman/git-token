@@ -4493,7 +4493,7 @@ operator|->
 name|name
 argument_list|)
 expr_stmt|;
-name|git_config_set_multivar
+name|git_config_set_multivar_or_die
 argument_list|(
 name|buf
 operator|.
@@ -4524,7 +4524,7 @@ operator|->
 name|name
 argument_list|)
 expr_stmt|;
-name|git_config_set_multivar
+name|git_config_set_multivar_or_die
 argument_list|(
 name|buf
 operator|.
