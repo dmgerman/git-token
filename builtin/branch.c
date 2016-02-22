@@ -3129,7 +3129,7 @@ argument_list|,
 name|branch_name
 argument_list|)
 expr_stmt|;
-name|git_config_set_or_die
+name|git_config_set
 argument_list|(
 name|name
 operator|.
@@ -4488,7 +4488,7 @@ operator|->
 name|name
 argument_list|)
 expr_stmt|;
-name|git_config_set_multivar_or_die
+name|git_config_set_multivar
 argument_list|(
 name|buf
 operator|.
@@ -4519,7 +4519,7 @@ operator|->
 name|name
 argument_list|)
 expr_stmt|;
-name|git_config_set_multivar_or_die
+name|git_config_set_multivar
 argument_list|(
 name|buf
 operator|.

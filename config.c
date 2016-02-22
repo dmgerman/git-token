@@ -9517,9 +9517,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|git_config_set_in_file_or_die
+DECL|function|git_config_set_in_file
 name|void
-name|git_config_set_in_file_or_die
+name|git_config_set_in_file
 parameter_list|(
 specifier|const
 name|char
@@ -9537,7 +9537,7 @@ modifier|*
 name|value
 parameter_list|)
 block|{
-name|git_config_set_multivar_in_file_or_die
+name|git_config_set_multivar_in_file
 argument_list|(
 name|config_filename
 argument_list|,
@@ -9585,9 +9585,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|git_config_set_or_die
+DECL|function|git_config_set
 name|void
-name|git_config_set_or_die
+name|git_config_set
 parameter_list|(
 specifier|const
 name|char
@@ -9600,7 +9600,7 @@ modifier|*
 name|value
 parameter_list|)
 block|{
-name|git_config_set_multivar_or_die
+name|git_config_set_multivar
 argument_list|(
 name|key
 argument_list|,
@@ -11068,9 +11068,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|git_config_set_multivar_in_file_or_die
+DECL|function|git_config_set_multivar_in_file
 name|void
-name|git_config_set_multivar_in_file_or_die
+name|git_config_set_multivar_in_file
 parameter_list|(
 specifier|const
 name|char
@@ -11170,9 +11170,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|git_config_set_multivar_or_die
+DECL|function|git_config_set_multivar
 name|void
-name|git_config_set_multivar_or_die
+name|git_config_set_multivar
 parameter_list|(
 specifier|const
 name|char
@@ -11193,7 +11193,7 @@ name|int
 name|multi_replace
 parameter_list|)
 block|{
-name|git_config_set_multivar_in_file_or_die
+name|git_config_set_multivar_in_file
 argument_list|(
 name|NULL
 argument_list|,

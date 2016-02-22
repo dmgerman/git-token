@@ -9483,7 +9483,7 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|void
-name|git_config_set_in_file_or_die
+name|git_config_set_in_file
 parameter_list|(
 specifier|const
 name|char
@@ -9519,7 +9519,7 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|void
-name|git_config_set_or_die
+name|git_config_set
 parameter_list|(
 specifier|const
 name|char
@@ -9589,7 +9589,7 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|void
-name|git_config_set_multivar_or_die
+name|git_config_set_multivar
 parameter_list|(
 specifier|const
 name|char
@@ -9637,7 +9637,7 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|void
-name|git_config_set_multivar_in_file_or_die
+name|git_config_set_multivar_in_file
 parameter_list|(
 specifier|const
 name|char
