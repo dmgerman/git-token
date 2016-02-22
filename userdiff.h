@@ -134,6 +134,10 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Initialize any textconv-related fields in the driver and return it, or NULL  * if it does not have textconv enabled at all.  */
+end_comment
+
 begin_function_decl
 name|struct
 name|userdiff_driver
