@@ -9479,9 +9479,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|git_config_set_in_file
+DECL|function|git_config_set_in_file_gently
 name|int
-name|git_config_set_in_file
+name|git_config_set_in_file_gently
 parameter_list|(
 specifier|const
 name|char
@@ -9500,7 +9500,7 @@ name|value
 parameter_list|)
 block|{
 return|return
-name|git_config_set_multivar_in_file
+name|git_config_set_multivar_in_file_gently
 argument_list|(
 name|config_filename
 argument_list|,
@@ -9554,9 +9554,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|git_config_set
+DECL|function|git_config_set_gently
 name|int
-name|git_config_set
+name|git_config_set_gently
 parameter_list|(
 specifier|const
 name|char
@@ -9570,7 +9570,7 @@ name|value
 parameter_list|)
 block|{
 return|return
-name|git_config_set_multivar
+name|git_config_set_multivar_gently
 argument_list|(
 name|key
 argument_list|,
@@ -9994,9 +9994,9 @@ comment|/*  * If value==NULL, unset in (remove from) config,  * if value_regex!=
 end_comment
 
 begin_function
-DECL|function|git_config_set_multivar_in_file
+DECL|function|git_config_set_multivar_in_file_gently
 name|int
-name|git_config_set_multivar_in_file
+name|git_config_set_multivar_in_file_gently
 parameter_list|(
 specifier|const
 name|char
@@ -11098,7 +11098,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|git_config_set_multivar_in_file
+name|git_config_set_multivar_in_file_gently
 argument_list|(
 name|config_filename
 argument_list|,
@@ -11129,9 +11129,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|git_config_set_multivar
+DECL|function|git_config_set_multivar_gently
 name|int
-name|git_config_set_multivar
+name|git_config_set_multivar_gently
 parameter_list|(
 specifier|const
 name|char
@@ -11153,7 +11153,7 @@ name|multi_replace
 parameter_list|)
 block|{
 return|return
-name|git_config_set_multivar_in_file
+name|git_config_set_multivar_in_file_gently
 argument_list|(
 name|NULL
 argument_list|,

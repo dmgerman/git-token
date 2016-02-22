@@ -9032,7 +9032,7 @@ value|2
 end_define
 
 begin_comment
-comment|/* git_config_set(), git_config_set_multivar() return the above or these: */
+comment|/* git_config_set_gently(), git_config_set_multivar_gently() return the above or these: */
 end_comment
 
 begin_define
@@ -9463,7 +9463,7 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|int
-name|git_config_set_in_file
+name|git_config_set_in_file_gently
 parameter_list|(
 specifier|const
 name|char
@@ -9503,7 +9503,7 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|int
-name|git_config_set
+name|git_config_set_gently
 parameter_list|(
 specifier|const
 name|char
@@ -9567,7 +9567,7 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|int
-name|git_config_set_multivar
+name|git_config_set_multivar_gently
 parameter_list|(
 specifier|const
 name|char
@@ -9611,7 +9611,7 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|int
-name|git_config_set_multivar_in_file
+name|git_config_set_multivar_in_file_gently
 parameter_list|(
 specifier|const
 name|char

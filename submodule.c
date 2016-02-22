@@ -287,7 +287,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|git_config_set_in_file
+name|git_config_set_in_file_gently
 argument_list|(
 literal|".gitmodules"
 argument_list|,

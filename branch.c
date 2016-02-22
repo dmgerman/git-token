@@ -349,7 +349,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|git_config_set
+name|git_config_set_gently
 argument_list|(
 name|key
 operator|.
@@ -385,7 +385,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|git_config_set
+name|git_config_set_gently
 argument_list|(
 name|key
 operator|.
@@ -422,7 +422,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|git_config_set
+name|git_config_set_gently
 argument_list|(
 name|key
 operator|.

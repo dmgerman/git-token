@@ -8731,7 +8731,7 @@ name|key
 parameter_list|)
 block|{
 return|return
-name|git_config_set_multivar
+name|git_config_set_multivar_gently
 argument_list|(
 name|key
 argument_list|,
