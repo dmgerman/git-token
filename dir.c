@@ -3349,11 +3349,9 @@ return|;
 block|}
 name|buf
 operator|=
-name|xmalloc
+name|xmallocz
 argument_list|(
 name|size
-operator|+
-literal|1
 argument_list|)
 expr_stmt|;
 if|if

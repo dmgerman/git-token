@@ -61,14 +61,12 @@ name|char
 modifier|*
 name|ret
 init|=
-name|xmalloc
+name|xmallocz
 argument_list|(
 name|strlen
 argument_list|(
 name|refname
 argument_list|)
-operator|+
-literal|1
 argument_list|)
 decl_stmt|;
 name|char

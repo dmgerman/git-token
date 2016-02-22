@@ -1075,11 +1075,9 @@ argument_list|)
 expr_stmt|;
 name|empty_cell
 operator|=
-name|xmalloc
+name|xmallocz
 argument_list|(
 name|initial_width
-operator|+
-literal|1
 argument_list|)
 expr_stmt|;
 name|memset
@@ -1090,13 +1088,6 @@ literal|' '
 argument_list|,
 name|initial_width
 argument_list|)
-expr_stmt|;
-name|empty_cell
-index|[
-name|initial_width
-index|]
-operator|=
-literal|'\0'
 expr_stmt|;
 for|for
 control|(

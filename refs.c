@@ -663,14 +663,12 @@ name|result
 decl_stmt|;
 name|buf
 operator|=
-name|xmalloc
+name|xmallocz
 argument_list|(
 name|strlen
 argument_list|(
 name|refname
 argument_list|)
-operator|+
-literal|1
 argument_list|)
 expr_stmt|;
 comment|/* 		 * Does the refname try to escape refs/? 		 * For example: refs/foo/../bar is safe but refs/foo/../../bar 		 * is not. 		 */
