@@ -52,7 +52,7 @@ name|bitmap
 modifier|*
 name|bitmap
 init|=
-name|ewah_malloc
+name|xmalloc
 argument_list|(
 sizeof|sizeof
 argument_list|(
@@ -65,7 +65,7 @@ name|bitmap
 operator|->
 name|words
 operator|=
-name|ewah_calloc
+name|xcalloc
 argument_list|(
 literal|32
 argument_list|,
@@ -137,7 +137,7 @@ name|self
 operator|->
 name|words
 operator|=
-name|ewah_realloc
+name|xrealloc
 argument_list|(
 name|self
 operator|->
@@ -482,7 +482,7 @@ name|bitmap
 operator|->
 name|words
 operator|=
-name|ewah_realloc
+name|xrealloc
 argument_list|(
 name|bitmap
 operator|->
@@ -661,7 +661,7 @@ name|self
 operator|->
 name|words
 operator|=
-name|ewah_realloc
+name|xrealloc
 argument_list|(
 name|self
 operator|->
