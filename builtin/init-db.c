@@ -1141,7 +1141,7 @@ argument_list|,
 name|GIT_REPO_VERSION
 argument_list|)
 expr_stmt|;
-name|git_config_set
+name|git_config_set_or_die
 argument_list|(
 literal|"core.repositoryformatversion"
 argument_list|,
@@ -1244,7 +1244,7 @@ operator|=
 literal|0
 expr_stmt|;
 block|}
-name|git_config_set
+name|git_config_set_or_die
 argument_list|(
 literal|"core.filemode"
 argument_list|,
@@ -1260,7 +1260,7 @@ condition|(
 name|is_bare_repository
 argument_list|()
 condition|)
-name|git_config_set
+name|git_config_set_or_die
 argument_list|(
 literal|"core.bare"
 argument_list|,
@@ -1277,7 +1277,7 @@ init|=
 name|get_git_work_tree
 argument_list|()
 decl_stmt|;
-name|git_config_set
+name|git_config_set_or_die
 argument_list|(
 literal|"core.bare"
 argument_list|,
@@ -1292,7 +1292,7 @@ operator|==
 operator|-
 literal|1
 condition|)
-name|git_config_set
+name|git_config_set_or_die
 argument_list|(
 literal|"core.logallrefupdates"
 argument_list|,
@@ -1309,7 +1309,7 @@ argument_list|,
 name|work_tree
 argument_list|)
 condition|)
-name|git_config_set
+name|git_config_set_or_die
 argument_list|(
 literal|"core.worktree"
 argument_list|,
@@ -1382,7 +1382,7 @@ argument_list|)
 expr_stmt|;
 comment|/* good */
 else|else
-name|git_config_set
+name|git_config_set_or_die
 argument_list|(
 literal|"core.symlinks"
 argument_list|,
@@ -1410,7 +1410,7 @@ argument_list|,
 name|F_OK
 argument_list|)
 condition|)
-name|git_config_set
+name|git_config_set_or_die
 argument_list|(
 literal|"core.ignorecase"
 argument_list|,
@@ -1907,14 +1907,14 @@ argument_list|(
 literal|"BUG: invalid value for shared_repository"
 argument_list|)
 expr_stmt|;
-name|git_config_set
+name|git_config_set_or_die
 argument_list|(
 literal|"core.sharedrepository"
 argument_list|,
 name|buf
 argument_list|)
 expr_stmt|;
-name|git_config_set
+name|git_config_set_or_die
 argument_list|(
 literal|"receive.denyNonFastforwards"
 argument_list|,
