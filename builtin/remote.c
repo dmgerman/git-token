@@ -531,7 +531,7 @@ end_define
 begin_function
 DECL|function|add_branch
 specifier|static
-name|int
+name|void
 name|add_branch
 parameter_list|(
 specifier|const
@@ -599,8 +599,7 @@ argument_list|,
 name|branchname
 argument_list|)
 expr_stmt|;
-return|return
-name|git_config_set_multivar
+name|git_config_set_multivar_or_die
 argument_list|(
 name|key
 argument_list|,
@@ -612,7 +611,7 @@ literal|"^$"
 argument_list|,
 literal|0
 argument_list|)
-return|;
+expr_stmt|;
 block|}
 end_function
 
@@ -1188,8 +1187,6 @@ name|i
 operator|++
 control|)
 block|{
-if|if
-condition|(
 name|add_branch
 argument_list|(
 name|buf
@@ -1212,10 +1209,7 @@ argument_list|,
 operator|&
 name|buf2
 argument_list|)
-condition|)
-return|return
-literal|1
-return|;
+expr_stmt|;
 block|}
 block|}
 if|if
@@ -8896,7 +8890,7 @@ end_function
 begin_function
 DECL|function|add_branches
 specifier|static
-name|int
+name|void
 name|add_branches
 parameter_list|(
 name|struct
@@ -8947,8 +8941,6 @@ condition|;
 name|branches
 operator|++
 control|)
-if|if
-condition|(
 name|add_branch
 argument_list|(
 name|key
@@ -8963,27 +8955,13 @@ argument_list|,
 operator|&
 name|refspec
 argument_list|)
-condition|)
-block|{
+expr_stmt|;
 name|strbuf_release
 argument_list|(
 operator|&
 name|refspec
 argument_list|)
 expr_stmt|;
-return|return
-literal|1
-return|;
-block|}
-name|strbuf_release
-argument_list|(
-operator|&
-name|refspec
-argument_list|)
-expr_stmt|;
-return|return
-literal|0
-return|;
 block|}
 end_function
 
@@ -9079,8 +9057,6 @@ return|return
 literal|1
 return|;
 block|}
-if|if
-condition|(
 name|add_branches
 argument_list|(
 name|remote
@@ -9091,18 +9067,7 @@ name|key
 operator|.
 name|buf
 argument_list|)
-condition|)
-block|{
-name|strbuf_release
-argument_list|(
-operator|&
-name|key
-argument_list|)
 expr_stmt|;
-return|return
-literal|1
-return|;
-block|}
 name|strbuf_release
 argument_list|(
 operator|&
