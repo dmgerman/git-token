@@ -1132,10 +1132,10 @@ decl_stmt|;
 end_decl_stmt
 
 begin_function
-DECL|function|check_socket_directory
+DECL|function|init_socket_directory
 specifier|static
 name|void
-name|check_socket_directory
+name|init_socket_directory
 parameter_list|(
 specifier|const
 name|char
@@ -1192,14 +1192,10 @@ argument_list|,
 name|dir
 argument_list|)
 expr_stmt|;
-name|free
-argument_list|(
-name|path_copy
-argument_list|)
-expr_stmt|;
-return|return;
 block|}
-comment|/* 	 * We must be sure to create the directory with the correct mode, 	 * not just chmod it after the fact; otherwise, there is a race 	 * condition in which somebody can chdir to it, sleep, then try to open 	 * our protected socket. 	 */
+else|else
+block|{
+comment|/* 		 * We must be sure to create the directory with the correct mode, 		 * not just chmod it after the fact; otherwise, there is a race 		 * condition in which somebody can chdir to it, sleep, then try to open 		 * our protected socket. 		 */
 if|if
 condition|(
 name|safe_create_leading_directories_const
@@ -1234,6 +1230,7 @@ argument_list|,
 name|dir
 argument_list|)
 expr_stmt|;
+block|}
 name|free
 argument_list|(
 name|path_copy
@@ -1355,7 +1352,7 @@ argument_list|,
 name|options
 argument_list|)
 expr_stmt|;
-name|check_socket_directory
+name|init_socket_directory
 argument_list|(
 name|socket_path
 argument_list|)
