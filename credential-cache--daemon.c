@@ -1231,6 +1231,15 @@ name|dir
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|chdir
+argument_list|(
+name|dir
+argument_list|)
+condition|)
+comment|/* 		 * We don't actually care what our cwd is; we chdir here just to 		 * be a friendly daemon and avoid tying up our original cwd. 		 * If this fails, it's OK to just continue without that benefit. 		 */
+empty_stmt|;
 name|free
 argument_list|(
 name|path_copy
