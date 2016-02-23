@@ -1352,6 +1352,19 @@ argument_list|,
 name|options
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|is_absolute_path
+argument_list|(
+name|socket_path
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"socket directory must be an absolute path"
+argument_list|)
+expr_stmt|;
 name|init_socket_directory
 argument_list|(
 name|socket_path
