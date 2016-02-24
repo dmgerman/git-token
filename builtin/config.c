@@ -2349,6 +2349,23 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|!
+name|given_config_source
+operator|.
+name|file
+operator|&&
+operator|!
+name|startup_info
+operator|->
+name|have_repository
+condition|)
+name|die
+argument_list|(
+literal|"not in a git directory"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|given_config_source
 operator|.
 name|use_stdin
