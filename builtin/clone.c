@@ -240,6 +240,15 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|family
+specifier|static
+name|enum
+name|transport_family
+name|family
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|option_config
 specifier|static
 name|struct
@@ -618,6 +627,40 @@ name|N_
 argument_list|(
 literal|"set config inside the new repository"
 argument_list|)
+argument_list|)
+block|,
+name|OPT_SET_INT
+argument_list|(
+literal|'4'
+argument_list|,
+literal|"ipv4"
+argument_list|,
+operator|&
+name|family
+argument_list|,
+name|N_
+argument_list|(
+literal|"use IPv4 addresses only"
+argument_list|)
+argument_list|,
+name|TRANSPORT_FAMILY_IPV4
+argument_list|)
+block|,
+name|OPT_SET_INT
+argument_list|(
+literal|'6'
+argument_list|,
+literal|"ipv6"
+argument_list|,
+operator|&
+name|family
+argument_list|,
+name|N_
+argument_list|(
+literal|"use IPv6 addresses only"
+argument_list|)
+argument_list|,
+name|TRANSPORT_FAMILY_IPV6
 argument_list|)
 block|,
 name|OPT_END
@@ -5351,6 +5394,12 @@ name|option_verbosity
 argument_list|,
 name|option_progress
 argument_list|)
+expr_stmt|;
+name|transport
+operator|->
+name|family
+operator|=
+name|family
 expr_stmt|;
 name|path
 operator|=
