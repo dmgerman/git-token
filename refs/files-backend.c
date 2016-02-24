@@ -9702,6 +9702,8 @@ argument_list|(
 name|oldrefname
 argument_list|,
 name|RESOLVE_REF_READING
+operator||
+name|RESOLVE_REF_NO_RECURSE
 argument_list|,
 name|orig_sha1
 argument_list|,
@@ -9801,6 +9803,7 @@ goto|goto
 name|rollback
 goto|;
 block|}
+comment|/* 	 * Since we are doing a shallow lookup, sha1 is not the 	 * correct value to pass to delete_ref as old_sha1. But that 	 * doesn't matter, because an old_sha1 check wouldn't add to 	 * the safety anyway; we want to delete the reference whatever 	 * its current value. 	 */
 if|if
 condition|(
 operator|!
@@ -9809,6 +9812,8 @@ argument_list|(
 name|newrefname
 argument_list|,
 name|RESOLVE_REF_READING
+operator||
+name|RESOLVE_REF_NO_RECURSE
 argument_list|,
 name|sha1
 argument_list|,
@@ -9819,7 +9824,7 @@ name|delete_ref
 argument_list|(
 name|newrefname
 argument_list|,
-name|sha1
+name|NULL
 argument_list|,
 name|REF_NODEREF
 argument_list|)
@@ -9924,7 +9929,7 @@ name|NULL
 argument_list|,
 name|NULL
 argument_list|,
-literal|0
+name|REF_NODEREF
 argument_list|,
 name|NULL
 argument_list|,
@@ -10037,7 +10042,7 @@ name|NULL
 argument_list|,
 name|NULL
 argument_list|,
-literal|0
+name|REF_NODEREF
 argument_list|,
 name|NULL
 argument_list|,
