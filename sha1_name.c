@@ -4652,13 +4652,10 @@ operator|!=
 literal|'!'
 condition|)
 block|{
-name|die
-argument_list|(
-literal|"Invalid search pattern: %s"
-argument_list|,
-name|prefix
-argument_list|)
-expr_stmt|;
+return|return
+operator|-
+literal|1
+return|;
 block|}
 block|}
 if|if
@@ -4673,13 +4670,10 @@ argument_list|,
 name|REG_EXTENDED
 argument_list|)
 condition|)
-name|die
-argument_list|(
-literal|"Invalid search pattern: %s"
-argument_list|,
-name|prefix
-argument_list|)
-expr_stmt|;
+return|return
+operator|-
+literal|1
+return|;
 for|for
 control|(
 name|l
