@@ -5,6 +5,12 @@ directive|include
 file|"cache.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"run-command.h"
+end_include
+
 begin_function
 DECL|function|check_pipe
 specifier|static
@@ -22,6 +28,16 @@ operator|==
 name|EPIPE
 condition|)
 block|{
+if|if
+condition|(
+name|in_async
+argument_list|()
+condition|)
+name|async_exit
+argument_list|(
+literal|141
+argument_list|)
+expr_stmt|;
 name|signal
 argument_list|(
 name|SIGPIPE
