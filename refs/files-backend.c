@@ -11569,6 +11569,13 @@ block|}
 block|}
 if|if
 condition|(
+operator|!
+operator|(
+name|flags
+operator|&
+name|REF_LOG_ONLY
+operator|)
+operator|&&
 name|commit_ref
 argument_list|(
 name|lock
@@ -13828,6 +13835,15 @@ name|flags
 operator|&
 name|REF_DELETING
 operator|)
+operator|&&
+operator|!
+operator|(
+name|update
+operator|->
+name|flags
+operator|&
+name|REF_LOG_ONLY
+operator|)
 condition|)
 block|{
 name|int
@@ -13958,7 +13974,7 @@ name|REF_NEEDS_COMMIT
 operator|)
 condition|)
 block|{
-comment|/* 			 * We didn't have to write anything to the lockfile. 			 * Close it to free up the file descriptor: 			 */
+comment|/* 			 * We didn't call write_ref_to_lockfile(), so 			 * the lockfile is still open. Close it to 			 * free up the file descriptor: 			 */
 if|if
 condition|(
 name|close_ref
@@ -14026,6 +14042,12 @@ operator|->
 name|flags
 operator|&
 name|REF_NEEDS_COMMIT
+operator|||
+name|update
+operator|->
+name|flags
+operator|&
+name|REF_LOG_ONLY
 condition|)
 block|{
 if|if
@@ -14115,6 +14137,15 @@ operator|->
 name|flags
 operator|&
 name|REF_DELETING
+operator|&&
+operator|!
+operator|(
+name|update
+operator|->
+name|flags
+operator|&
+name|REF_LOG_ONLY
+operator|)
 condition|)
 block|{
 if|if

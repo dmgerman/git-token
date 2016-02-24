@@ -81,6 +81,18 @@ comment|/*  * 0x40 is REF_FORCE_CREATE_REFLOG, so skip it if you're adding a  * 
 end_comment
 
 begin_comment
+comment|/*  * Used as a flag in ref_update::flags when we want to log a ref  * update but not actually perform it.  This is used when a symbolic  * ref update is split up.  */
+end_comment
+
+begin_define
+DECL|macro|REF_LOG_ONLY
+define|#
+directive|define
+name|REF_LOG_ONLY
+value|0x80
+end_define
+
+begin_comment
 comment|/*  * Return true iff refname is minimally safe. "Safe" here means that  * deleting a loose reference by this name will not do any damage, for  * example by causing a file that is not a reference to be deleted.  * This function does not check that the reference name is legal; for  * that, use check_refname_format().  *  * We consider a refname that starts with "refs/" to be safe as long  * as any ".." components that it might contain do not escape "refs/".  * Names that do not start with "refs/" are considered safe iff they  * consist entirely of upper case characters and '_' (like "HEAD" and  * "MERGE_HEAD" but not "config" or "FOO/BAR").  */
 end_comment
 
