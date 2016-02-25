@@ -1099,71 +1099,6 @@ expr_stmt|;
 block|}
 end_function
 
-begin_decl_stmt
-DECL|variable|warn_unspecified_push_default_msg
-specifier|static
-name|char
-name|warn_unspecified_push_default_msg
-index|[]
-init|=
-name|N_
-argument_list|(
-literal|"push.default is unset; its implicit value has changed in\n"
-literal|"Git 2.0 from 'matching' to 'simple'. To squelch this message\n"
-literal|"and maintain the traditional behavior, use:\n"
-literal|"\n"
-literal|"  git config --global push.default matching\n"
-literal|"\n"
-literal|"To squelch this message and adopt the new behavior now, use:\n"
-literal|"\n"
-literal|"  git config --global push.default simple\n"
-literal|"\n"
-literal|"When push.default is set to 'matching', git will push local branches\n"
-literal|"to the remote branches that already exist with the same name.\n"
-literal|"\n"
-literal|"Since Git 2.0, Git defaults to the more conservative 'simple'\n"
-literal|"behavior, which only pushes the current branch to the corresponding\n"
-literal|"remote branch that 'git pull' uses to update the current branch.\n"
-literal|"\n"
-literal|"See 'git help config' and search for 'push.default' for further information.\n"
-literal|"(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode\n"
-literal|"'current' instead of 'simple' if you sometimes use older versions of Git)"
-argument_list|)
-decl_stmt|;
-end_decl_stmt
-
-begin_function
-DECL|function|warn_unspecified_push_default_configuration
-specifier|static
-name|void
-name|warn_unspecified_push_default_configuration
-parameter_list|(
-name|void
-parameter_list|)
-block|{
-specifier|static
-name|int
-name|warn_once
-decl_stmt|;
-if|if
-condition|(
-name|warn_once
-operator|++
-condition|)
-return|return;
-name|warning
-argument_list|(
-literal|"%s\n"
-argument_list|,
-name|_
-argument_list|(
-name|warn_unspecified_push_default_msg
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-end_function
-
 begin_function
 DECL|function|is_workflow_triangular
 specifier|static
@@ -1246,10 +1181,6 @@ break|break;
 case|case
 name|PUSH_DEFAULT_UNSPECIFIED
 case|:
-name|warn_unspecified_push_default_configuration
-argument_list|()
-expr_stmt|;
-comment|/* fallthru */
 case|case
 name|PUSH_DEFAULT_SIMPLE
 case|:
