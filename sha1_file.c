@@ -4934,6 +4934,17 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|offset
+operator|<
+literal|0
+condition|)
+name|die
+argument_list|(
+literal|"offset before end of packfile (broken .idx?)"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 operator|!
 name|win
 operator|||
