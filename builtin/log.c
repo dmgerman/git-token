@@ -526,6 +526,9 @@ block|{
 name|init_grep_defaults
 argument_list|()
 expr_stmt|;
+name|init_diff_ui_defaults
+argument_list|()
+expr_stmt|;
 block|}
 end_function
 

@@ -1695,6 +1695,9 @@ condition|)
 name|gitmodules_config
 argument_list|()
 expr_stmt|;
+name|init_diff_ui_defaults
+argument_list|()
+expr_stmt|;
 name|git_config
 argument_list|(
 name|git_diff_ui_config
