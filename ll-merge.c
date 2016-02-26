@@ -1222,13 +1222,11 @@ name|result
 operator|->
 name|ptr
 operator|=
-name|xmalloc
+name|xmallocz
 argument_list|(
 name|result
 operator|->
 name|size
-operator|+
-literal|1
 argument_list|)
 expr_stmt|;
 if|if

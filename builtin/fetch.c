@@ -6101,9 +6101,12 @@ name|refs
 operator|=
 name|xcalloc
 argument_list|(
+name|st_add
+argument_list|(
 name|argc
-operator|+
+argument_list|,
 literal|1
+argument_list|)
 argument_list|,
 sizeof|sizeof
 argument_list|(

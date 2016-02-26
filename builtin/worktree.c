@@ -311,11 +311,9 @@ name|st_size
 expr_stmt|;
 name|path
 operator|=
-name|xmalloc
+name|xmallocz
 argument_list|(
 name|len
-operator|+
-literal|1
 argument_list|)
 expr_stmt|;
 name|read_in_full

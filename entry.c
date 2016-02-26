@@ -48,11 +48,9 @@ name|char
 modifier|*
 name|buf
 init|=
-name|xmalloc
+name|xmallocz
 argument_list|(
 name|path_len
-operator|+
-literal|1
 argument_list|)
 decl_stmt|;
 name|int
