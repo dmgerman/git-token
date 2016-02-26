@@ -1994,6 +1994,10 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Fill the contents of the filespec "df", respecting any textconv defined by  * its userdiff driver.  The "driver" parameter must come from a  * previous call to get_textconv(), and therefore should either be NULL or have  * textconv enabled.  *  * Note that the memory ownership of the resulting buffer depends on whether  * the driver field is NULL. If it is, then the memory belongs to the filespec  * struct. If it is non-NULL, then "outbuf" points to a newly allocated buffer  * that should be freed by the caller.  */
+end_comment
+
 begin_function_decl
 specifier|extern
 name|size_t
@@ -2016,6 +2020,10 @@ name|outbuf
 parameter_list|)
 function_decl|;
 end_function_decl
+
+begin_comment
+comment|/*  * Look up the userdiff driver for the given filespec, and return it if  * and only if it has textconv enabled (otherwise return NULL). The result  * can be passed to fill_textconv().  */
+end_comment
 
 begin_function_decl
 specifier|extern
