@@ -1427,8 +1427,11 @@ operator|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"No directory name could be guessed.\n"
 literal|"Please specify a directory on the command line"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -3608,7 +3611,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"unable to update %s"
+argument_list|)
 argument_list|,
 name|head_ref
 operator|.
@@ -3689,7 +3695,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"unable to update HEAD"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -4221,7 +4230,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"unable to write parameters to config file"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
