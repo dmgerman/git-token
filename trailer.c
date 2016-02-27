@@ -1390,7 +1390,10 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"running trailer command '%s' failed"
+argument_list|)
 argument_list|,
 name|cmd
 operator|.
