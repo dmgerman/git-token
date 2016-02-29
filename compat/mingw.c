@@ -5719,10 +5719,10 @@ name|quoted
 argument_list|)
 expr_stmt|;
 block|}
-name|wargs
-operator|=
-name|xmalloc_array
+name|ALLOC_ARRAY
 argument_list|(
+name|wargs
+argument_list|,
 name|st_add
 argument_list|(
 name|st_mult
@@ -5735,11 +5735,6 @@ name|len
 argument_list|)
 argument_list|,
 literal|1
-argument_list|)
-argument_list|,
-sizeof|sizeof
-argument_list|(
-name|wchar_t
 argument_list|)
 argument_list|)
 expr_stmt|;
