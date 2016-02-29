@@ -1088,8 +1088,8 @@ block|{
 name|N_
 argument_list|(
 literal|"git submodule--helper clone [--prefix=<path>] [--quiet] "
-literal|"[--reference<repository>] [--name<name>] [--url<url>]"
-literal|"[--depth<depth>] [--path<path>]"
+literal|"[--reference<repository>] [--name<name>] [--depth<depth>] "
+literal|"--url<url> --path<path>"
 argument_list|)
 block|,
 name|NULL
@@ -1115,6 +1115,12 @@ expr_stmt|;
 if|if
 condition|(
 name|argc
+operator|||
+operator|!
+name|url
+operator|||
+operator|!
+name|path
 condition|)
 name|usage_with_options
 argument_list|(
