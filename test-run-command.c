@@ -166,11 +166,6 @@ name|int
 name|result
 parameter_list|,
 name|struct
-name|child_process
-modifier|*
-name|cp
-parameter_list|,
-name|struct
 name|strbuf
 modifier|*
 name|err
