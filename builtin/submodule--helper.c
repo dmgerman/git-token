@@ -1089,7 +1089,7 @@ name|N_
 argument_list|(
 literal|"git submodule--helper clone [--prefix=<path>] [--quiet] "
 literal|"[--reference<repository>] [--name<name>] [--url<url>]"
-literal|"[--depth<depth>] [--] [<path>...]"
+literal|"[--depth<depth>] [--path<path>]"
 argument_list|)
 block|,
 name|NULL
