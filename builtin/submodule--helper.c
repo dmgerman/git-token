@@ -1112,6 +1112,17 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|argc
+condition|)
+name|usage_with_options
+argument_list|(
+name|git_submodule_helper_usage
+argument_list|,
+name|module_clone_options
+argument_list|)
+expr_stmt|;
 name|strbuf_addf
 argument_list|(
 operator|&
