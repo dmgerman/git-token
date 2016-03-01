@@ -549,9 +549,11 @@ argument_list|,
 name|_
 argument_list|(
 literal|"Unable to create '%s.lock': %s.\n\n"
-literal|"If no other git process is currently running, this probably means a\n"
-literal|"git process crashed in this repository earlier. Make sure no other git\n"
-literal|"process is running and remove the file manually to continue."
+literal|"Another git process seems to be running in this repository, e.g.\n"
+literal|"an editor opened by 'git commit'. Please make sure all processes\n"
+literal|"are terminated then try again. If it still fails, a git process\n"
+literal|"may have crashed in this repository earlier:\n"
+literal|"remove the file manually to continue."
 argument_list|)
 argument_list|,
 name|absolute_path
