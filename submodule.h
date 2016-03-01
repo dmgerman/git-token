@@ -111,6 +111,14 @@ block|}
 struct|;
 end_struct
 
+begin_define
+DECL|macro|SUBMODULE_UPDATE_STRATEGY_INIT
+define|#
+directive|define
+name|SUBMODULE_UPDATE_STRATEGY_INIT
+value|{SM_UPDATE_UNSPECIFIED, NULL}
+end_define
+
 begin_function_decl
 name|int
 name|is_staging_gitmodules_ok
@@ -488,6 +496,15 @@ specifier|const
 name|char
 modifier|*
 name|git_dir
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
+name|parallel_submodules
+parameter_list|(
+name|void
 parameter_list|)
 function_decl|;
 end_function_decl
