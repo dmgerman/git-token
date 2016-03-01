@@ -2804,7 +2804,7 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"fatal: submodule--helper subcommand must be "
+literal|"submodule--helper subcommand must be "
 literal|"called with a subcommand"
 argument_list|)
 argument_list|)
@@ -2866,7 +2866,7 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"fatal: '%s' is not a valid submodule--helper "
+literal|"'%s' is not a valid submodule--helper "
 literal|"subcommand"
 argument_list|)
 argument_list|,
