@@ -2399,6 +2399,12 @@ name|update
 init|=
 name|NULL
 decl_stmt|;
+name|int
+name|max_jobs
+init|=
+operator|-
+literal|1
+decl_stmt|;
 name|struct
 name|string_list_item
 modifier|*
@@ -2522,6 +2528,21 @@ name|N_
 argument_list|(
 literal|"Create a shallow clone truncated to the "
 literal|"specified number of revisions"
+argument_list|)
+argument_list|)
+block|,
+name|OPT_INTEGER
+argument_list|(
+literal|'j'
+argument_list|,
+literal|"jobs"
+argument_list|,
+operator|&
+name|max_jobs
+argument_list|,
+name|N_
+argument_list|(
+literal|"parallel jobs"
 argument_list|)
 argument_list|)
 block|,
@@ -2654,9 +2675,20 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|max_jobs
+operator|<
+literal|0
+condition|)
+name|max_jobs
+operator|=
+name|parallel_submodules
+argument_list|()
+expr_stmt|;
 name|run_processes_parallel
 argument_list|(
-literal|1
+name|max_jobs
 argument_list|,
 name|update_clone_get_next_task
 argument_list|,
