@@ -4672,7 +4672,7 @@ parameter_list|(
 name|struct
 name|strbuf
 modifier|*
-name|err
+name|out
 parameter_list|,
 name|void
 modifier|*
@@ -4701,7 +4701,7 @@ parameter_list|,
 name|struct
 name|strbuf
 modifier|*
-name|err
+name|out
 parameter_list|,
 name|void
 modifier|*
