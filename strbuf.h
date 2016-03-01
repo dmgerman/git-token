@@ -1141,6 +1141,27 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/**  * Write the whole content of the strbuf to the stream not stopping at  * NUL bytes.  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|ssize_t
+name|strbuf_write
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+name|sb
+parameter_list|,
+name|FILE
+modifier|*
+name|stream
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/**  * Read a line from a FILE *, overwriting the existing contents  * of the strbuf. The second argument specifies the line  * terminator character, typically `'\n'`.  * Reading stops after the terminator or at EOF.  The terminator  * is removed from the buffer before returning.  Returns 0 unless  * there was nothing left before EOF, in which case it returns `EOF`.  */
 end_comment
 
