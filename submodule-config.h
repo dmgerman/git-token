@@ -21,6 +21,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"submodule.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"strbuf.h"
 end_include
 
@@ -60,6 +66,11 @@ specifier|const
 name|char
 modifier|*
 name|ignore
+decl_stmt|;
+DECL|member|update_strategy
+name|struct
+name|submodule_update_strategy
+name|update_strategy
 decl_stmt|;
 comment|/* the sha1 blob id of the responsible .gitmodules file */
 DECL|member|gitmodules_sha1
