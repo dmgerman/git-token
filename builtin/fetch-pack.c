@@ -95,7 +95,10 @@ argument_list|,
 operator|&
 name|oid
 argument_list|)
-operator|&&
+condition|)
+block|{
+if|if
+condition|(
 name|name
 index|[
 name|GIT_SHA1_HEXSZ
@@ -103,19 +106,50 @@ index|]
 operator|==
 literal|' '
 condition|)
+block|{
+comment|/*<sha1><ref>, find refname */
 name|name
 operator|+=
 name|GIT_SHA1_HEXSZ
 operator|+
 literal|1
 expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|name
+index|[
+name|GIT_SHA1_HEXSZ
+index|]
+operator|==
+literal|'\0'
+condition|)
+block|{
+empty_stmt|;
+comment|/*<sha1>, leave sha1 as name */
+block|}
 else|else
+block|{
+comment|/*<ref>, clear cruft from oid */
 name|oidclr
 argument_list|(
 operator|&
 name|oid
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+comment|/*<ref>, clear cruft from get_oid_hex */
+name|oidclr
+argument_list|(
+operator|&
+name|oid
+argument_list|)
+expr_stmt|;
+block|}
 name|ref
 operator|=
 name|alloc_ref
