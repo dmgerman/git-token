@@ -113,9 +113,10 @@ name|int
 name|baselen
 decl_stmt|;
 DECL|member|flags
-name|int
+name|unsigned
 name|flags
 decl_stmt|;
+comment|/* EXC_FLAG_* */
 comment|/* 	 * Counting starts from 1 for line numbers in ignore files, 	 * and from -1 decrementing for patterns from CLI args. 	 */
 DECL|member|srcpos
 name|int
@@ -624,7 +625,7 @@ name|int
 parameter_list|,
 name|int
 parameter_list|,
-name|int
+name|unsigned
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -654,7 +655,7 @@ name|int
 parameter_list|,
 name|int
 parameter_list|,
-name|int
+name|unsigned
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -789,7 +790,7 @@ name|int
 modifier|*
 name|patternlen
 parameter_list|,
-name|int
+name|unsigned
 modifier|*
 name|flags
 parameter_list|,
