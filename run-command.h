@@ -568,11 +568,6 @@ name|start_failure_fn
 function_decl|)
 parameter_list|(
 name|struct
-name|child_process
-modifier|*
-name|cp
-parameter_list|,
-name|struct
 name|strbuf
 modifier|*
 name|err
@@ -605,11 +600,6 @@ name|int
 name|result
 parameter_list|,
 name|struct
-name|child_process
-modifier|*
-name|cp
-parameter_list|,
-name|struct
 name|strbuf
 modifier|*
 name|err
@@ -626,7 +616,7 @@ function_decl|;
 end_typedef
 
 begin_comment
-comment|/**  * Runs up to n processes at the same time. Whenever a process can be  * started, the callback get_next_task_fn is called to obtain the data  * required to start another child process.  *  * The children started via this function run in parallel. Their output  * (both stdout and stderr) is routed to stderr in a manner that output  * from different tasks does not interleave.  *  * If start_failure_fn or task_finished_fn are NULL, default handlers  * will be used. The default handlers will print an error message on  * error without issuing an emergency stop.  */
+comment|/**  * Runs up to n processes at the same time. Whenever a process can be  * started, the callback get_next_task_fn is called to obtain the data  * required to start another child process.  *  * The children started via this function run in parallel. Their output  * (both stdout and stderr) is routed to stderr in a manner that output  * from different tasks does not interleave.  *  * start_failure_fn and task_finished_fn can be NULL to omit any  * special handling.  */
 end_comment
 
 begin_function_decl
