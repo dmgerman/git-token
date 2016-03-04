@@ -395,7 +395,8 @@ begin_function
 DECL|function|pthread_exit
 specifier|static
 specifier|inline
-name|int
+name|void
+name|NORETURN
 name|pthread_exit
 parameter_list|(
 name|void
