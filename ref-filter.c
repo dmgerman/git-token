@@ -438,7 +438,10 @@ name|arg
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"%%(body) does not take arguments"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|atom
@@ -477,7 +480,10 @@ name|arg
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"%%(subject) does not take arguments"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|atom
@@ -1449,7 +1455,10 @@ name|sp
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"malformed field name: %.*s"
+argument_list|)
 argument_list|,
 call|(
 name|int
@@ -1605,7 +1614,10 @@ name|i
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"unknown field name: %.*s"
+argument_list|)
 argument_list|,
 call|(
 name|int
@@ -2422,7 +2434,10 @@ condition|)
 return|return
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"malformed format string %s"
+argument_list|)
 argument_list|,
 name|sp
 argument_list|)
@@ -5351,7 +5366,10 @@ literal|'\0'
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|":strip= requires a positive integer argument"
+argument_list|)
 argument_list|)
 expr_stmt|;
 while|while
@@ -5371,7 +5389,10 @@ literal|'\0'
 case|:
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"ref '%s' does not have %ld components to :strip"
+argument_list|)
 argument_list|,
 name|refname
 argument_list|,
@@ -6313,7 +6334,10 @@ expr_stmt|;
 else|else
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"unknown %.*s format %s"
+argument_list|)
 argument_list|,
 call|(
 name|int
@@ -6421,7 +6445,10 @@ name|buf
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"missing object %s for %s"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -6442,7 +6469,10 @@ name|obj
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"parse_object_buffer failed on %s for %s"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -6538,7 +6568,10 @@ name|buf
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"missing object %s for %s"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -6557,7 +6590,10 @@ name|obj
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"parse_object_buffer failed on %s for %s"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -7875,7 +7911,10 @@ condition|)
 block|{
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"ignoring ref with broken name %s"
+argument_list|)
 argument_list|,
 name|refname
 argument_list|)
@@ -7893,7 +7932,10 @@ condition|)
 block|{
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"ignoring broken ref %s"
+argument_list|)
 argument_list|,
 name|refname
 argument_list|)

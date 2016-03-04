@@ -3591,7 +3591,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"unable to update HEAD"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
