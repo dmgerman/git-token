@@ -1390,6 +1390,12 @@ argument_list|,
 name|repo_abbrev
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|startup_info
+operator|->
+name|have_repository
+condition|)
 name|err
 operator||=
 name|read_mailmap_blob
