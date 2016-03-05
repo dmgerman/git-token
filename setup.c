@@ -4342,7 +4342,6 @@ parameter_list|(
 name|void
 parameter_list|)
 block|{
-return|return
 name|check_repository_format_gently
 argument_list|(
 name|get_git_dir
@@ -4350,6 +4349,15 @@ argument_list|()
 argument_list|,
 name|NULL
 argument_list|)
+expr_stmt|;
+name|startup_info
+operator|->
+name|have_repository
+operator|=
+literal|1
+expr_stmt|;
+return|return
+literal|0
 return|;
 block|}
 end_function
