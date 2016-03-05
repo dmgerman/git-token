@@ -2753,7 +2753,7 @@ argument_list|(
 literal|"Out of memory, getdelim failed"
 argument_list|)
 expr_stmt|;
-comment|/* Restore slopbuf that we moved out of the way before */
+comment|/* 	 * Restore strbuf invariants; if getdelim left us with a NULL pointer, 	 * we can just re-init, but otherwise we should make sure that our 	 * length is empty, and that the result is NUL-terminated. 	 */
 if|if
 condition|(
 operator|!
@@ -2766,6 +2766,12 @@ argument_list|(
 name|sb
 argument_list|,
 literal|0
+argument_list|)
+expr_stmt|;
+else|else
+name|strbuf_reset
+argument_list|(
+name|sb
 argument_list|)
 expr_stmt|;
 return|return
