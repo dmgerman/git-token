@@ -2761,6 +2761,9 @@ name|pathspec
 parameter_list|,
 name|int
 name|exc_std
+parameter_list|,
+name|int
+name|use_index
 parameter_list|)
 block|{
 name|struct
@@ -2786,6 +2789,17 @@ argument_list|(
 name|dir
 argument_list|)
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|use_index
+condition|)
+name|dir
+operator|.
+name|flags
+operator||=
+name|DIR_NO_GITLINKS
 expr_stmt|;
 if|if
 condition|(
@@ -5164,6 +5178,8 @@ operator|&
 name|pathspec
 argument_list|,
 name|use_exclude
+argument_list|,
+name|use_index
 argument_list|)
 expr_stmt|;
 block|}
