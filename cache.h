@@ -8548,6 +8548,29 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/*  * Make sure that a pointer access into an mmap'd index file is within bounds,  * and can provide at least 8 bytes of data.  *  * Note that this is only necessary for variable-length segments of the file  * (like the 64-bit extended offset table), as we compare the size to the  * fixed-length parts when we open the file.  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|void
+name|check_pack_index_ptr
+parameter_list|(
+specifier|const
+name|struct
+name|packed_git
+modifier|*
+name|p
+parameter_list|,
+specifier|const
+name|void
+modifier|*
+name|ptr
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/*  * Return the SHA-1 of the nth object within the specified packfile.  * Open the index if it is not already open.  The return value points  * at the SHA-1 within the mmapped index.  Return NULL if there is an  * error.  */
 end_comment
 
