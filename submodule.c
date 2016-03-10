@@ -287,7 +287,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|git_config_set_in_file
+name|git_config_set_in_file_gently
 argument_list|(
 literal|".gitmodules"
 argument_list|,
@@ -5615,8 +5615,6 @@ argument_list|,
 name|git_dir
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
 name|git_config_set_in_file
 argument_list|(
 name|file_name
@@ -5634,18 +5632,6 @@ argument_list|,
 operator|&
 name|rel_path
 argument_list|)
-argument_list|)
-condition|)
-name|die
-argument_list|(
-name|_
-argument_list|(
-literal|"Could not set core.worktree in %s"
-argument_list|)
-argument_list|,
-name|file_name
-operator|.
-name|buf
 argument_list|)
 expr_stmt|;
 name|strbuf_release
