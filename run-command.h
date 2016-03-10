@@ -508,6 +508,17 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|void
+name|NORETURN
+name|async_exit
+parameter_list|(
+name|int
+name|code
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
