@@ -1701,25 +1701,6 @@ end_endif
 begin_ifndef
 ifndef|#
 directive|ifndef
-name|STRIP_EXTENSION
-end_ifndef
-
-begin_define
-DECL|macro|STRIP_EXTENSION
-define|#
-directive|define
-name|STRIP_EXTENSION
-value|""
-end_define
-
-begin_endif
-endif|#
-directive|endif
-end_endif
-
-begin_ifndef
-ifndef|#
-directive|ifndef
 name|has_dos_drive_prefix
 end_ifndef
 
