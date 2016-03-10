@@ -161,6 +161,20 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|argv_array_detach
+parameter_list|(
+name|struct
+name|argv_array
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
