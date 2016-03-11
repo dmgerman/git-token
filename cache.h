@@ -4146,13 +4146,6 @@ end_decl_stmt
 
 begin_decl_stmt
 specifier|extern
-name|int
-name|shared_repository
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-specifier|extern
 specifier|const
 name|char
 modifier|*
@@ -4235,6 +4228,25 @@ name|long
 name|pack_size_limit_cfg
 decl_stmt|;
 end_decl_stmt
+
+begin_function_decl
+name|void
+name|set_shared_repository
+parameter_list|(
+name|int
+name|value
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
+name|get_shared_repository
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
 
 begin_comment
 comment|/*  * Do replace refs need to be checked this run?  This variable is  * initialized to true unless --no-replace-object is used or  * $GIT_NO_REPLACE_OBJECTS is set, but is set to false by some  * commands that do not want replace references to be active.  As an  * optimization it is also set to false if replace references have  * been sought but there were none.  */

@@ -1682,13 +1682,14 @@ argument_list|)
 operator|==
 literal|0
 condition|)
-name|shared_repository
-operator|=
+name|set_shared_repository
+argument_list|(
 name|git_config_perm
 argument_list|(
 name|var
 argument_list|,
 name|value
+argument_list|)
 argument_list|)
 expr_stmt|;
 elseif|else
