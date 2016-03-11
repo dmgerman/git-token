@@ -4519,9 +4519,13 @@ name|repository_format_precious_objects
 decl_stmt|;
 end_decl_stmt
 
+begin_comment
+comment|/*  * Check the repository format version in the path found in get_git_dir(),  * and die if it is a version we don't understand. Generally one would  * set_git_dir() before calling this, and use it only for "are we in a valid  * repo?".  */
+end_comment
+
 begin_function_decl
 specifier|extern
-name|int
+name|void
 name|check_repository_format
 parameter_list|(
 name|void
