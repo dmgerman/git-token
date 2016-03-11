@@ -2120,7 +2120,10 @@ name|strbuf_addf
 argument_list|(
 name|err
 argument_list|,
+name|_
+argument_list|(
 literal|"Expected git repo version<= %d, found %d"
+argument_list|)
 argument_list|,
 name|GIT_REPO_VERSION_READ
 argument_list|,
@@ -2156,7 +2159,10 @@ name|strbuf_addstr
 argument_list|(
 name|err
 argument_list|,
+name|_
+argument_list|(
 literal|"unknown repository extensions found:"
+argument_list|)
 argument_list|)
 expr_stmt|;
 for|for
