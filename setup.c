@@ -1808,14 +1808,14 @@ name|sb
 operator|.
 name|buf
 expr_stmt|;
-comment|/* 	 * git_config() can't be used here because it calls git_pathdup() 	 * to get $GIT_CONFIG/config. That call will make setup_git_env() 	 * set git_dir to ".git". 	 * 	 * We are in gitdir setup, no git dir has been found useable yet. 	 * Use a gentler version of git_config() to check if this repo 	 * is a good one. 	 */
-name|git_config_early
+comment|/* 	 * Ignore return value; for historical reasons, we must treat a missing 	 * config file as a noop (git-init relies on this). 	 */
+name|git_config_from_file
 argument_list|(
 name|fn
 argument_list|,
-name|NULL
-argument_list|,
 name|repo_config
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
 if|if
