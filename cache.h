@@ -4520,13 +4520,6 @@ end_define
 begin_decl_stmt
 specifier|extern
 name|int
-name|repository_format_version
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-specifier|extern
-name|int
 name|repository_format_precious_objects
 decl_stmt|;
 end_decl_stmt

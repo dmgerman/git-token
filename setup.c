@@ -1929,12 +1929,6 @@ name|buf
 argument_list|)
 expr_stmt|;
 block|}
-name|repository_format_version
-operator|=
-name|candidate
-operator|.
-name|version
-expr_stmt|;
 name|repository_format_precious_objects
 operator|=
 name|candidate
