@@ -627,6 +627,11 @@ name|pretty_given
 range|:
 literal|1
 decl_stmt|,
+DECL|member|expand_tabs_in_log
+name|expand_tabs_in_log
+range|:
+literal|1
+decl_stmt|,
 DECL|member|abbrev_commit
 name|abbrev_commit
 range|:

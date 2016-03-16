@@ -734,6 +734,12 @@ name|date_mode_explicit
 range|:
 literal|1
 decl_stmt|;
+DECL|member|expand_tabs_in_log
+name|unsigned
+name|expand_tabs_in_log
+range|:
+literal|1
+decl_stmt|;
 DECL|member|need_8bit_cte
 name|int
 name|need_8bit_cte

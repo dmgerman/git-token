@@ -3712,6 +3712,14 @@ name|use_color
 expr_stmt|;
 name|ctx
 operator|.
+name|expand_tabs_in_log
+operator|=
+name|opt
+operator|->
+name|expand_tabs_in_log
+expr_stmt|;
+name|ctx
+operator|.
 name|output_encoding
 operator|=
 name|get_log_output_encoding
