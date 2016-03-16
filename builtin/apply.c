@@ -21477,7 +21477,14 @@ name|nr
 operator|<
 literal|0
 condition|)
+block|{
+name|free_patch
+argument_list|(
+name|patch
+argument_list|)
+expr_stmt|;
 break|break;
+block|}
 if|if
 condition|(
 name|apply_in_reverse
