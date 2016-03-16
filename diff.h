@@ -1255,7 +1255,7 @@ parameter_list|,
 name|l
 parameter_list|)
 define|\
-value|(sizeof(struct combine_diff_path) + \ 	 sizeof(struct combine_diff_parent) * (n) + (l) + 1)
+value|st_add4(sizeof(struct combine_diff_path), (l), 1, \ 		st_mult(sizeof(struct combine_diff_parent), (n)))
 end_define
 
 begin_function_decl
