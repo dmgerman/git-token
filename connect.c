@@ -1334,6 +1334,7 @@ argument_list|,
 literal|"git+ssh"
 argument_list|)
 condition|)
+comment|/* deprecated - do not use */
 return|return
 name|PROTO_SSH
 return|;
@@ -1347,6 +1348,7 @@ argument_list|,
 literal|"ssh+git"
 argument_list|)
 condition|)
+comment|/* deprecated - do not use */
 return|return
 name|PROTO_SSH
 return|;
