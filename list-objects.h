@@ -45,11 +45,6 @@ name|object
 modifier|*
 parameter_list|,
 specifier|const
-name|struct
-name|name_path
-modifier|*
-parameter_list|,
-specifier|const
 name|char
 modifier|*
 parameter_list|,
