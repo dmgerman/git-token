@@ -22,12 +22,6 @@ directive|include
 file|"strbuf.h"
 end_include
 
-begin_include
-include|#
-directive|include
-file|"string-list.h"
-end_include
-
 begin_struct
 DECL|struct|dir_entry
 struct|struct
@@ -126,11 +120,6 @@ comment|/* 	 * Counting starts from 1 for line numbers in ignore files, 	 * and 
 DECL|member|srcpos
 name|int
 name|srcpos
-decl_stmt|;
-DECL|member|sticky_paths
-name|struct
-name|string_list
-name|sticky_paths
 decl_stmt|;
 block|}
 struct|;
