@@ -428,6 +428,14 @@ name|opt_gpg_sign
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|opt_allow_unrelated_histories
+specifier|static
+name|int
+name|opt_allow_unrelated_histories
+decl_stmt|;
+end_decl_stmt
+
 begin_comment
 comment|/* Options passed to git-fetch */
 end_comment
@@ -876,6 +884,23 @@ literal|"GPG sign commit"
 argument_list|)
 argument_list|,
 name|PARSE_OPT_OPTARG
+argument_list|)
+block|,
+name|OPT_SET_INT
+argument_list|(
+literal|0
+argument_list|,
+literal|"allow-unrelated-histories"
+argument_list|,
+operator|&
+name|opt_allow_unrelated_histories
+argument_list|,
+name|N_
+argument_list|(
+literal|"allow merging unrelated histories"
+argument_list|)
+argument_list|,
+literal|1
 argument_list|)
 block|,
 comment|/* Options passed to git-fetch */
@@ -2921,6 +2946,20 @@ operator|&
 name|args
 argument_list|,
 name|opt_gpg_sign
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|opt_allow_unrelated_histories
+operator|>
+literal|0
+condition|)
+name|argv_array_push
+argument_list|(
+operator|&
+name|args
+argument_list|,
+literal|"--allow-unrelated-histories"
 argument_list|)
 expr_stmt|;
 name|argv_array_push
