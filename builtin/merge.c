@@ -402,6 +402,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|allow_unrelated_histories
+specifier|static
+name|int
+name|allow_unrelated_histories
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|show_progress
 specifier|static
 name|int
@@ -1464,6 +1472,21 @@ argument_list|,
 name|N_
 argument_list|(
 literal|"abort the current in-progress merge"
+argument_list|)
+argument_list|)
+block|,
+name|OPT_BOOL
+argument_list|(
+literal|0
+argument_list|,
+literal|"allow-unrelated-histories"
+argument_list|,
+operator|&
+name|allow_unrelated_histories
+argument_list|,
+name|N_
+argument_list|(
+literal|"allow merging unrelated histories"
 argument_list|)
 argument_list|)
 block|,
@@ -8322,8 +8345,23 @@ operator|&&
 operator|!
 name|common
 condition|)
-empty_stmt|;
-comment|/* No common ancestors found. We need a real merge. */
+block|{
+comment|/* No common ancestors found. */
+if|if
+condition|(
+operator|!
+name|allow_unrelated_histories
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"refusing to merge unrelated histories"
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|/* otherwise, we need a real merge. */
+block|}
 elseif|else
 if|if
 condition|(
