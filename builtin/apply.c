@@ -9338,6 +9338,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Returns:  *   -1 in case of error,  *   the length of the parsed binary patch otherwise  */
+end_comment
+
 begin_function
 DECL|function|parse_binary
 specifier|static
@@ -9985,6 +9989,16 @@ argument_list|,
 name|patch
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|used
+operator|<
+literal|0
+condition|)
+return|return
+operator|-
+literal|1
+return|;
 if|if
 condition|(
 name|used
