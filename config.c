@@ -792,6 +792,9 @@ decl_stmt|;
 if|if
 condition|(
 name|old
+operator|&&
+operator|*
+name|old
 condition|)
 block|{
 name|strbuf_addstr
