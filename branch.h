@@ -174,6 +174,28 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Update all per-worktree HEADs pointing at the old ref to point the new ref.  * This will be used when renaming a branch. Returns 0 if successful, non-zero  * otherwise.  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|replace_each_worktree_head_symref
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|oldref
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|newref
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
