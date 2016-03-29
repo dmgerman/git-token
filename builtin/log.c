@@ -7494,6 +7494,12 @@ name|CMIT_FMT_EMAIL
 expr_stmt|;
 name|rev
 operator|.
+name|expand_tabs_in_log_default
+operator|=
+literal|0
+expr_stmt|;
+name|rev
+operator|.
 name|verbose_header
 operator|=
 literal|1
