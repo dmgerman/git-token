@@ -261,6 +261,20 @@ name|off64_t
 typedef|;
 end_typedef
 
+begin_if
+if|#
+directive|if
+operator|!
+name|defined
+argument_list|(
+name|_MSC_VER
+argument_list|)
+operator|||
+name|_MSC_VER
+operator|<
+literal|1600
+end_if
+
 begin_define
 DECL|macro|INTMAX_MIN
 define|#
@@ -297,6 +311,22 @@ begin_comment
 DECL|macro|UINT32_MAX
 comment|/* 4294967295U */
 end_comment
+
+begin_else
+else|#
+directive|else
+end_else
+
+begin_include
+include|#
+directive|include
+file|<stdint.h>
+end_include
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_define
 DECL|macro|STDIN_FILENO
