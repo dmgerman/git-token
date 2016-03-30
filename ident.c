@@ -1677,11 +1677,20 @@ operator|&
 name|IDENT_NAME_GIVEN
 operator|)
 condition|)
-name|die
+block|{
+name|fputs
 argument_list|(
-literal|"user.useConfigOnly set but no name given"
+name|env_hint
+argument_list|,
+name|stderr
 argument_list|)
 expr_stmt|;
+name|die
+argument_list|(
+literal|"no name was given and auto-detection is disabled"
+argument_list|)
+expr_stmt|;
+block|}
 name|name
 operator|=
 name|ident_default_name
@@ -1784,11 +1793,20 @@ operator|&
 name|IDENT_MAIL_GIVEN
 operator|)
 condition|)
-name|die
+block|{
+name|fputs
 argument_list|(
-literal|"user.useConfigOnly set but no mail given"
+name|env_hint
+argument_list|,
+name|stderr
 argument_list|)
 expr_stmt|;
+name|die
+argument_list|(
+literal|"no email was given and auto-detection is disabled"
+argument_list|)
+expr_stmt|;
+block|}
 name|email
 operator|=
 name|ident_default_email
