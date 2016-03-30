@@ -1675,7 +1675,7 @@ name|struct
 name|hashmap
 name|file_table
 decl_stmt|;
-comment|/* Add all sources to the hash table */
+comment|/* Add all sources to the hash table in reverse order, because 	 * later on they will be retrieved in LIFO order. 	 */
 name|hashmap_init
 argument_list|(
 operator|&
@@ -1690,14 +1690,16 @@ for|for
 control|(
 name|i
 operator|=
-literal|0
+name|rename_src_nr
+operator|-
+literal|1
 init|;
 name|i
-operator|<
-name|rename_src_nr
+operator|>=
+literal|0
 condition|;
 name|i
-operator|++
+operator|--
 control|)
 name|insert_file_table
 argument_list|(
