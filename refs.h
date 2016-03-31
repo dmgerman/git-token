@@ -41,7 +41,6 @@ value|0x04
 end_define
 
 begin_function_decl
-specifier|extern
 specifier|const
 name|char
 modifier|*
@@ -68,7 +67,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-specifier|extern
 name|char
 modifier|*
 name|resolve_refdup
@@ -94,7 +92,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-specifier|extern
 name|int
 name|read_ref_full
 parameter_list|(
@@ -119,7 +116,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-specifier|extern
 name|int
 name|read_ref
 parameter_list|(
@@ -137,7 +133,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-specifier|extern
 name|int
 name|ref_exists
 parameter_list|(
@@ -150,7 +145,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-specifier|extern
 name|int
 name|is_branch
 parameter_list|(
@@ -167,7 +161,6 @@ comment|/*  * If refname is a non-symbolic reference that refers to a tag object
 end_comment
 
 begin_function_decl
-specifier|extern
 name|int
 name|peel_ref
 parameter_list|(
@@ -189,7 +182,6 @@ comment|/**  * Resolve refname in the nested "gitlink" repository that is locate
 end_comment
 
 begin_function_decl
-specifier|extern
 name|int
 name|resolve_gitlink_ref
 parameter_list|(
@@ -216,7 +208,6 @@ comment|/*  * Return true iff abbrev_name is a possible abbreviation for  * full
 end_comment
 
 begin_function_decl
-specifier|extern
 name|int
 name|refname_match
 parameter_list|(
@@ -234,7 +225,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-specifier|extern
 name|int
 name|dwim_ref
 parameter_list|(
@@ -260,7 +250,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-specifier|extern
 name|int
 name|dwim_log
 parameter_list|(
@@ -383,7 +372,6 @@ comment|/*  * The following functions invoke the specified callback function for
 end_comment
 
 begin_function_decl
-specifier|extern
 name|int
 name|head_ref
 parameter_list|(
@@ -398,7 +386,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-specifier|extern
 name|int
 name|for_each_ref
 parameter_list|(
@@ -413,7 +400,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-specifier|extern
 name|int
 name|for_each_ref_in
 parameter_list|(
@@ -433,7 +419,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-specifier|extern
 name|int
 name|for_each_fullref_in
 parameter_list|(
@@ -457,7 +442,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-specifier|extern
 name|int
 name|for_each_tag_ref
 parameter_list|(
@@ -472,7 +456,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-specifier|extern
 name|int
 name|for_each_branch_ref
 parameter_list|(
@@ -487,7 +470,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-specifier|extern
 name|int
 name|for_each_remote_ref
 parameter_list|(
@@ -502,7 +484,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-specifier|extern
 name|int
 name|for_each_replace_ref
 parameter_list|(
@@ -517,7 +498,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-specifier|extern
 name|int
 name|for_each_glob_ref
 parameter_list|(
@@ -537,7 +517,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-specifier|extern
 name|int
 name|for_each_glob_ref_in
 parameter_list|(
@@ -562,7 +541,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-specifier|extern
 name|int
 name|head_ref_submodule
 parameter_list|(
@@ -582,7 +560,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-specifier|extern
 name|int
 name|for_each_ref_submodule
 parameter_list|(
@@ -602,7 +579,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-specifier|extern
 name|int
 name|for_each_ref_in_submodule
 parameter_list|(
@@ -627,7 +603,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-specifier|extern
 name|int
 name|for_each_tag_ref_submodule
 parameter_list|(
@@ -647,7 +622,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-specifier|extern
 name|int
 name|for_each_branch_ref_submodule
 parameter_list|(
@@ -667,7 +641,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-specifier|extern
 name|int
 name|for_each_remote_ref_submodule
 parameter_list|(
@@ -687,7 +660,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-specifier|extern
 name|int
 name|head_ref_namespaced
 parameter_list|(
@@ -702,7 +674,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-specifier|extern
 name|int
 name|for_each_namespaced_ref
 parameter_list|(
@@ -721,7 +692,6 @@ comment|/* can be used to learn about broken ref and symref */
 end_comment
 
 begin_function_decl
-specifier|extern
 name|int
 name|for_each_rawref
 parameter_list|(
@@ -762,7 +732,6 @@ block|}
 end_function
 
 begin_function_decl
-specifier|extern
 name|void
 name|warn_dangling_symref
 parameter_list|(
@@ -784,7 +753,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-specifier|extern
 name|void
 name|warn_dangling_symrefs
 parameter_list|(
@@ -890,7 +858,6 @@ comment|/** Reads log for the value of ref during at_time. **/
 end_comment
 
 begin_function_decl
-specifier|extern
 name|int
 name|read_ref_at
 parameter_list|(
@@ -941,7 +908,6 @@ comment|/** Check if a particular reflog exists */
 end_comment
 
 begin_function_decl
-specifier|extern
 name|int
 name|reflog_exists
 parameter_list|(
@@ -958,7 +924,6 @@ comment|/*  * Delete the specified reference. If old_sha1 is non-NULL, then  * v
 end_comment
 
 begin_function_decl
-specifier|extern
 name|int
 name|delete_ref
 parameter_list|(
@@ -985,7 +950,6 @@ comment|/*  * Delete the specified references. If there are any problems, emit  
 end_comment
 
 begin_function_decl
-specifier|extern
 name|int
 name|delete_refs
 parameter_list|(
@@ -1002,7 +966,6 @@ comment|/** Delete a reflog */
 end_comment
 
 begin_function_decl
-specifier|extern
 name|int
 name|delete_reflog
 parameter_list|(
@@ -1027,28 +990,33 @@ parameter_list|(
 name|unsigned
 name|char
 modifier|*
-name|osha1
+name|old_sha1
 parameter_list|,
 name|unsigned
 name|char
 modifier|*
-name|nsha1
+name|new_sha1
 parameter_list|,
 specifier|const
 name|char
 modifier|*
+name|committer
 parameter_list|,
 name|unsigned
 name|long
+name|timestamp
 parameter_list|,
 name|int
+name|tz
 parameter_list|,
 specifier|const
 name|char
 modifier|*
+name|msg
 parameter_list|,
 name|void
 modifier|*
+name|cb_data
 parameter_list|)
 function_decl|;
 end_typedef
@@ -1096,14 +1064,15 @@ comment|/*  * Calls the specified function for each reflog file until it returns
 end_comment
 
 begin_function_decl
-specifier|extern
 name|int
 name|for_each_reflog
 parameter_list|(
 name|each_ref_fn
+name|fn
 parameter_list|,
 name|void
 modifier|*
+name|cb_data
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -1129,7 +1098,6 @@ comment|/*  * Return 0 iff refname has the correct format for a refname accordin
 end_comment
 
 begin_function_decl
-specifier|extern
 name|int
 name|check_refname_format
 parameter_list|(
@@ -1145,7 +1113,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-specifier|extern
 specifier|const
 name|char
 modifier|*
@@ -1160,7 +1127,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-specifier|extern
 name|char
 modifier|*
 name|shorten_unambiguous_ref
@@ -1181,7 +1147,6 @@ comment|/** rename ref, return 0 on success **/
 end_comment
 
 begin_function_decl
-specifier|extern
 name|int
 name|rename_ref
 parameter_list|(
@@ -1204,7 +1169,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-specifier|extern
 name|int
 name|create_symref
 parameter_list|(
@@ -1231,7 +1195,6 @@ comment|/*  * Update HEAD of the specified gitdir.  * Similar to create_symref("
 end_comment
 
 begin_function_decl
-specifier|extern
 name|int
 name|set_worktree_head_symref
 parameter_list|(
@@ -1576,7 +1539,6 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
-specifier|extern
 name|int
 name|parse_hide_refs_config
 parameter_list|(
@@ -1602,7 +1564,6 @@ comment|/*  * Check whether a ref is hidden. If no namespace is set, both the fi
 end_comment
 
 begin_function_decl
-specifier|extern
 name|int
 name|ref_is_hidden
 parameter_list|(
@@ -1769,7 +1730,6 @@ comment|/*  * Expire reflog entries for the specified reference. sha1 is the old
 end_comment
 
 begin_function_decl
-specifier|extern
 name|int
 name|reflog_expire
 parameter_list|(
