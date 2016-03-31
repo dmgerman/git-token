@@ -1256,25 +1256,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/* Write a .git file in the submodule to redirect to the superproject. */
-if|if
-condition|(
-name|safe_create_leading_directories_const
-argument_list|(
-name|path
-argument_list|)
-operator|<
-literal|0
-condition|)
-name|die
-argument_list|(
-name|_
-argument_list|(
-literal|"could not create directory '%s'"
-argument_list|)
-argument_list|,
-name|path
-argument_list|)
-expr_stmt|;
 name|strbuf_addf
 argument_list|(
 operator|&
