@@ -1192,7 +1192,9 @@ comment|/* 	 * --all and --mirror are incompatible; neither makes sense 	 * with
 if|if
 condition|(
 operator|(
-name|refspecs
+name|nr_refspecs
+operator|>
+literal|0
 operator|&&
 operator|(
 name|send_all
