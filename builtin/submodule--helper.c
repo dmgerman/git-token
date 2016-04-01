@@ -1363,7 +1363,7 @@ operator|.
 name|buf
 argument_list|)
 expr_stmt|;
-name|fprintf
+name|fprintf_or_die
 argument_list|(
 name|submodule_dot_git
 argument_list|,
