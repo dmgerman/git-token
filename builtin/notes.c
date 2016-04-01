@@ -4232,14 +4232,13 @@ modifier|*
 name|strategy
 parameter_list|)
 block|{
-specifier|const
 name|char
 modifier|*
 name|value
 decl_stmt|;
 if|if
 condition|(
-name|git_config_get_string_const
+name|git_config_get_string
 argument_list|(
 name|key
 argument_list|,
@@ -4265,6 +4264,11 @@ name|key
 argument_list|,
 literal|"unknown notes merge strategy %s"
 argument_list|,
+name|value
+argument_list|)
+expr_stmt|;
+name|free
+argument_list|(
 name|value
 argument_list|)
 expr_stmt|;
