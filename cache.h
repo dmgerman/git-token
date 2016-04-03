@@ -11729,7 +11729,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/* git.c */
+comment|/* setup.c */
 end_comment
 
 begin_struct

@@ -55,15 +55,6 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|git_startup_info
-specifier|static
-name|struct
-name|startup_info
-name|git_startup_info
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|variable|use_pager
 specifier|static
 name|int
@@ -3654,11 +3645,6 @@ name|done_help
 init|=
 literal|0
 decl_stmt|;
-name|startup_info
-operator|=
-operator|&
-name|git_startup_info
-expr_stmt|;
 name|cmd
 operator|=
 name|git_extract_argv0_path

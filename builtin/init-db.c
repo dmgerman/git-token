@@ -1645,6 +1645,12 @@ operator|=
 name|NULL
 expr_stmt|;
 block|}
+name|startup_info
+operator|->
+name|have_repository
+operator|=
+literal|1
+expr_stmt|;
 return|return
 literal|0
 return|;
