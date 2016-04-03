@@ -2705,6 +2705,9 @@ modifier|*
 name|url
 parameter_list|)
 block|{
+name|int
+name|ret
+decl_stmt|;
 name|char
 modifier|*
 name|section_tail
@@ -2840,6 +2843,13 @@ argument_list|,
 name|respect_includes
 argument_list|)
 expr_stmt|;
+name|ret
+operator|=
+operator|!
+name|values
+operator|.
+name|nr
+expr_stmt|;
 name|for_each_string_list_item
 argument_list|(
 argument|item
@@ -2953,7 +2963,7 @@ name|section
 argument_list|)
 expr_stmt|;
 return|return
-literal|0
+name|ret
 return|;
 block|}
 end_function
