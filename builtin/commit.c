@@ -893,6 +893,9 @@ argument_list|(
 name|s
 argument_list|)
 expr_stmt|;
+name|init_diff_ui_defaults
+argument_list|()
+expr_stmt|;
 name|s
 operator|->
 name|hints

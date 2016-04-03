@@ -7275,6 +7275,9 @@ argument_list|,
 literal|"HEAD"
 argument_list|)
 expr_stmt|;
+name|init_diff_ui_defaults
+argument_list|()
+expr_stmt|;
 name|git_config
 argument_list|(
 name|git_merge_config

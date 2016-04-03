@@ -1013,6 +1013,21 @@ comment|/*  * These are to give UI layer defaults.  * The core-level commands su
 end_comment
 
 begin_function
+DECL|function|init_diff_ui_defaults
+name|void
+name|init_diff_ui_defaults
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+name|diff_detect_rename_default
+operator|=
+literal|1
+expr_stmt|;
+block|}
+end_function
+
+begin_function
 DECL|function|git_diff_ui_config
 name|int
 name|git_diff_ui_config
