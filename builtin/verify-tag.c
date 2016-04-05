@@ -491,14 +491,6 @@ name|flags
 operator||=
 name|GPG_VERIFY_VERBOSE
 expr_stmt|;
-comment|/* sometimes the program was terminated because this signal 	 * was received in the process of writing the gpg input: */
-name|signal
-argument_list|(
-name|SIGPIPE
-argument_list|,
-name|SIG_IGN
-argument_list|)
-expr_stmt|;
 while|while
 condition|(
 name|i

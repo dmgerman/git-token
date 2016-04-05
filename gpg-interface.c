@@ -1320,6 +1320,13 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+name|sigchain_push
+argument_list|(
+name|SIGPIPE
+argument_list|,
+name|SIG_IGN
+argument_list|)
+expr_stmt|;
 name|write_in_full
 argument_list|(
 name|gpg
@@ -1394,6 +1401,11 @@ name|finish_command
 argument_list|(
 operator|&
 name|gpg
+argument_list|)
+expr_stmt|;
+name|sigchain_pop
+argument_list|(
+name|SIGPIPE
 argument_list|)
 expr_stmt|;
 name|unlink_or_warn
