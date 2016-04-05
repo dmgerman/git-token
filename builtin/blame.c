@@ -11457,6 +11457,9 @@ name|msg
 init|=
 name|STRBUF_INIT
 decl_stmt|;
+name|read_cache
+argument_list|()
+expr_stmt|;
 name|time
 argument_list|(
 operator|&
