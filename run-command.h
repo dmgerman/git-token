@@ -540,7 +540,7 @@ parameter_list|,
 name|struct
 name|strbuf
 modifier|*
-name|err
+name|out
 parameter_list|,
 name|void
 modifier|*
@@ -555,7 +555,7 @@ function_decl|;
 end_typedef
 
 begin_comment
-comment|/**  * This callback is called whenever there are problems starting  * a new process.  *  * You must not write to stdout or stderr in this function. Add your  * message to the strbuf err instead, which will be printed without  * messing up the output of the other parallel processes.  *  * pp_cb is the callback cookie as passed into run_processes_parallel,  * pp_task_cb is the callback cookie as passed into get_next_task_fn.  *  * Return 0 to continue the parallel processing. To abort return non zero.  * To send a signal to other child processes for abortion, return  * the negative signal number.  */
+comment|/**  * This callback is called whenever there are problems starting  * a new process.  *  * You must not write to stdout or stderr in this function. Add your  * message to the strbuf out instead, which will be printed without  * messing up the output of the other parallel processes.  *  * pp_cb is the callback cookie as passed into run_processes_parallel,  * pp_task_cb is the callback cookie as passed into get_next_task_fn.  *  * Return 0 to continue the parallel processing. To abort return non zero.  * To send a signal to other child processes for abortion, return  * the negative signal number.  */
 end_comment
 
 begin_typedef
@@ -570,7 +570,7 @@ parameter_list|(
 name|struct
 name|strbuf
 modifier|*
-name|err
+name|out
 parameter_list|,
 name|void
 modifier|*
@@ -584,7 +584,7 @@ function_decl|;
 end_typedef
 
 begin_comment
-comment|/**  * This callback is called on every child process that finished processing.  *  * You must not write to stdout or stderr in this function. Add your  * message to the strbuf err instead, which will be printed without  * messing up the output of the other parallel processes.  *  * pp_cb is the callback cookie as passed into run_processes_parallel,  * pp_task_cb is the callback cookie as passed into get_next_task_fn.  *  * Return 0 to continue the parallel processing.  To abort return non zero.  * To send a signal to other child processes for abortion, return  * the negative signal number.  */
+comment|/**  * This callback is called on every child process that finished processing.  *  * You must not write to stdout or stderr in this function. Add your  * message to the strbuf out instead, which will be printed without  * messing up the output of the other parallel processes.  *  * pp_cb is the callback cookie as passed into run_processes_parallel,  * pp_task_cb is the callback cookie as passed into get_next_task_fn.  *  * Return 0 to continue the parallel processing.  To abort return non zero.  * To send a signal to other child processes for abortion, return  * the negative signal number.  */
 end_comment
 
 begin_typedef
@@ -602,7 +602,7 @@ parameter_list|,
 name|struct
 name|strbuf
 modifier|*
-name|err
+name|out
 parameter_list|,
 name|void
 modifier|*

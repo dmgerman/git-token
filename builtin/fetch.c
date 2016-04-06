@@ -256,6 +256,7 @@ specifier|static
 name|int
 name|max_children
 init|=
+operator|-
 literal|1
 decl_stmt|;
 end_decl_stmt

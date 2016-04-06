@@ -4645,7 +4645,7 @@ parameter_list|(
 name|struct
 name|strbuf
 modifier|*
-name|err
+name|out
 parameter_list|,
 name|void
 modifier|*
@@ -4674,7 +4674,7 @@ parameter_list|,
 name|struct
 name|strbuf
 modifier|*
-name|err
+name|out
 parameter_list|,
 name|void
 modifier|*
@@ -5117,13 +5117,12 @@ name|pfd
 argument_list|)
 expr_stmt|;
 comment|/* 	 * When get_next_task added messages to the buffer in its last 	 * iteration, the buffered output is non empty. 	 */
-name|fputs
+name|strbuf_write
 argument_list|(
+operator|&
 name|pp
 operator|->
 name|buffered_output
-operator|.
-name|buf
 argument_list|,
 name|stderr
 argument_list|)
@@ -5694,8 +5693,9 @@ operator|.
 name|len
 condition|)
 block|{
-name|fputs
+name|strbuf_write
 argument_list|(
+operator|&
 name|pp
 operator|->
 name|children
@@ -5704,8 +5704,6 @@ name|i
 index|]
 operator|.
 name|err
-operator|.
-name|buf
 argument_list|,
 name|stderr
 argument_list|)
@@ -5950,8 +5948,9 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|fputs
+name|strbuf_write
 argument_list|(
+operator|&
 name|pp
 operator|->
 name|children
@@ -5960,8 +5959,6 @@ name|i
 index|]
 operator|.
 name|err
-operator|.
-name|buf
 argument_list|,
 name|stderr
 argument_list|)
@@ -5980,13 +5977,12 @@ name|err
 argument_list|)
 expr_stmt|;
 comment|/* Output all other finished child processes */
-name|fputs
+name|strbuf_write
 argument_list|(
+operator|&
 name|pp
 operator|->
 name|buffered_output
-operator|.
-name|buf
 argument_list|,
 name|stderr
 argument_list|)
