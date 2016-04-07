@@ -6254,11 +6254,6 @@ name|REFNAME_ALLOW_ONELEVEL
 argument_list|)
 condition|)
 block|{
-operator|*
-name|flags
-operator||=
-name|REF_ISBROKEN
-expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -6283,6 +6278,11 @@ return|return
 name|NULL
 return|;
 block|}
+operator|*
+name|flags
+operator||=
+name|REF_ISBROKEN
+expr_stmt|;
 name|bad_name
 operator|=
 literal|1
