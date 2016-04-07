@@ -5616,6 +5616,7 @@ name|char
 modifier|*
 name|sha1
 parameter_list|,
+name|unsigned
 name|int
 modifier|*
 name|flags
@@ -5696,6 +5697,7 @@ name|strbuf
 modifier|*
 name|symref
 parameter_list|,
+name|unsigned
 name|int
 modifier|*
 name|flags
@@ -6252,6 +6254,7 @@ name|symref_count
 operator|++
 control|)
 block|{
+name|unsigned
 name|int
 name|read_flags
 init|=
