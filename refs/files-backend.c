@@ -5597,7 +5597,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * A loose ref file doesn't exist; check for a packed ref.  The  * options are forwarded from resolve_safe_unsafe().  */
+comment|/*  * A loose ref file doesn't exist; check for a packed ref.  */
 end_comment
 
 begin_function
@@ -5610,9 +5610,6 @@ specifier|const
 name|char
 modifier|*
 name|refname
-parameter_list|,
-name|int
-name|resolve_flags
 parameter_list|,
 name|unsigned
 name|char
@@ -5670,34 +5667,11 @@ return|return
 literal|0
 return|;
 block|}
-comment|/* The reference is not a packed reference, either. */
-if|if
-condition|(
-name|resolve_flags
-operator|&
-name|RESOLVE_REF_READING
-condition|)
-block|{
-name|errno
-operator|=
-name|ENOENT
-expr_stmt|;
+comment|/* refname is not a packed reference. */
 return|return
 operator|-
 literal|1
 return|;
-block|}
-else|else
-block|{
-name|hashclr
-argument_list|(
-name|sha1
-argument_list|)
-expr_stmt|;
-return|return
-literal|0
-return|;
-block|}
 block|}
 end_function
 
@@ -5903,16 +5877,33 @@ name|resolve_missing_loose_ref
 argument_list|(
 name|refname
 argument_list|,
-name|resolve_flags
-argument_list|,
 name|sha1
 argument_list|,
 name|flags
 argument_list|)
 condition|)
+block|{
+if|if
+condition|(
+name|resolve_flags
+operator|&
+name|RESOLVE_REF_READING
+condition|)
+block|{
+name|errno
+operator|=
+name|ENOENT
+expr_stmt|;
 return|return
 name|NULL
 return|;
+block|}
+name|hashclr
+argument_list|(
+name|sha1
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|bad_name
