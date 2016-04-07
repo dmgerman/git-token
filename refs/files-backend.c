@@ -5717,11 +5717,6 @@ name|sb_contents
 parameter_list|)
 block|{
 name|int
-name|bad_name
-init|=
-literal|0
-decl_stmt|;
-name|int
 name|symref_count
 decl_stmt|;
 operator|*
@@ -5739,11 +5734,6 @@ name|REFNAME_ALLOW_ONELEVEL
 argument_list|)
 condition|)
 block|{
-operator|*
-name|flags
-operator||=
-name|REF_BAD_NAME
-expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -5769,9 +5759,10 @@ name|NULL
 return|;
 block|}
 comment|/* 		 * dwim_ref() uses REF_ISBROKEN to distinguish between 		 * missing refs and refs that were present but invalid, 		 * to complain about the latter to stderr. 		 * 		 * We don't know whether the ref exists, so don't set 		 * REF_ISBROKEN yet. 		 */
-name|bad_name
-operator|=
-literal|1
+operator|*
+name|flags
+operator||=
+name|REF_BAD_NAME
 expr_stmt|;
 block|}
 for|for
@@ -5880,7 +5871,10 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|bad_name
+operator|*
+name|flags
+operator|&
+name|REF_BAD_NAME
 condition|)
 block|{
 name|hashclr
@@ -6168,7 +6162,10 @@ return|;
 block|}
 if|if
 condition|(
-name|bad_name
+operator|*
+name|flags
+operator|&
+name|REF_BAD_NAME
 condition|)
 block|{
 name|hashclr
@@ -6282,10 +6279,8 @@ operator|*
 name|flags
 operator||=
 name|REF_ISBROKEN
-expr_stmt|;
-name|bad_name
-operator|=
-literal|1
+operator||
+name|REF_BAD_NAME
 expr_stmt|;
 block|}
 block|}
