@@ -424,6 +424,18 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/* We allow "recursive" symbolic refs. Only within reason, though */
+end_comment
+
+begin_define
+DECL|macro|SYMREF_MAXDEPTH
+define|#
+directive|define
+name|SYMREF_MAXDEPTH
+value|5
+end_define
+
+begin_comment
 comment|/* Include broken references in a do_for_each_ref*() iteration: */
 end_comment
 
@@ -465,6 +477,33 @@ parameter_list|,
 name|void
 modifier|*
 name|cb_data
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
+name|read_raw_ref
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|refname
+parameter_list|,
+name|unsigned
+name|char
+modifier|*
+name|sha1
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|symref
+parameter_list|,
+name|unsigned
+name|int
+modifier|*
+name|flags
 parameter_list|)
 function_decl|;
 end_function_decl
