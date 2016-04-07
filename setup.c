@@ -429,7 +429,11 @@ literal|"%.*s%s"
 argument_list|,
 name|len
 argument_list|,
+name|len
+condition|?
 name|prefix
+else|:
+literal|""
 argument_list|,
 name|path
 argument_list|)
