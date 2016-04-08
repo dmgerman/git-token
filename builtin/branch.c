@@ -3330,9 +3330,15 @@ argument_list|,
 operator|&
 name|new_upstream
 argument_list|,
+name|N_
+argument_list|(
 literal|"upstream"
+argument_list|)
 argument_list|,
+name|N_
+argument_list|(
 literal|"change the upstream info"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOL
