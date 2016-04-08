@@ -5024,8 +5024,6 @@ name|strlen
 argument_list|(
 name|response
 argument_list|)
-operator|+
-literal|1
 expr_stmt|;
 name|response_64
 operator|=
