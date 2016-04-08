@@ -6915,9 +6915,15 @@ argument_list|(
 operator|&
 name|msg
 argument_list|,
-name|_
+name|Q_
 argument_list|(
+literal|"completed with %d local object"
+argument_list|,
 literal|"completed with %d local objects"
+argument_list|,
+name|nr_objects
+operator|-
+name|nr_objects_initial
 argument_list|)
 argument_list|,
 name|nr_objects
