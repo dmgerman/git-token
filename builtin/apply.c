@@ -21554,6 +21554,22 @@ expr_stmt|;
 block|}
 else|else
 block|{
+if|if
+condition|(
+name|apply_verbosely
+condition|)
+name|say_patch_name
+argument_list|(
+name|stderr
+argument_list|,
+name|_
+argument_list|(
+literal|"Skipped patch '%s'."
+argument_list|)
+argument_list|,
+name|patch
+argument_list|)
+expr_stmt|;
 name|free_patch
 argument_list|(
 name|patch
