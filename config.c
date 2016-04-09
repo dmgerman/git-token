@@ -11221,6 +11221,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|!
 name|git_config_set_multivar_in_file_gently
 argument_list|(
 name|config_filename
@@ -11234,6 +11235,11 @@ argument_list|,
 name|multi_replace
 argument_list|)
 condition|)
+return|return;
+if|if
+condition|(
+name|value
+condition|)
 name|die
 argument_list|(
 name|_
@@ -11244,6 +11250,17 @@ argument_list|,
 name|key
 argument_list|,
 name|value
+argument_list|)
+expr_stmt|;
+else|else
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"could not unset '%s'"
+argument_list|)
+argument_list|,
+name|key
 argument_list|)
 expr_stmt|;
 block|}
