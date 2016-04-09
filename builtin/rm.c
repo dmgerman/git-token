@@ -1443,7 +1443,7 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"Please, stage your changes to .gitmodules or stash them to proceed"
+literal|"Please stage your changes to .gitmodules or stash them to proceed"
 argument_list|)
 argument_list|)
 expr_stmt|;
