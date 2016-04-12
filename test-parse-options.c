@@ -739,13 +739,9 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"quiet: %s\n"
+literal|"quiet: %d\n"
 argument_list|,
 name|quiet
-condition|?
-literal|"yes"
-else|:
-literal|"no"
 argument_list|)
 expr_stmt|;
 name|printf
