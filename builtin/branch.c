@@ -4762,10 +4762,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-name|_
-argument_list|(
 literal|"    git branch -d %s\n"
-argument_list|)
 argument_list|,
 name|branch
 operator|->
@@ -4776,10 +4773,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-name|_
-argument_list|(
 literal|"    git branch --set-upstream-to %s\n"
-argument_list|)
 argument_list|,
 name|branch
 operator|->
