@@ -699,6 +699,15 @@ name|struct
 name|date_mode
 name|date_mode
 decl_stmt|;
+DECL|member|expand_tabs_in_log
+name|int
+name|expand_tabs_in_log
+decl_stmt|;
+comment|/* unset if negative */
+DECL|member|expand_tabs_in_log_default
+name|int
+name|expand_tabs_in_log_default
+decl_stmt|;
 DECL|member|abbrev
 name|unsigned
 name|int
