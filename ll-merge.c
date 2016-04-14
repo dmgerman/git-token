@@ -214,7 +214,7 @@ argument_list|(
 name|opts
 argument_list|)
 expr_stmt|;
-comment|/* 	 * The tentative merge result is the or common ancestor for an internal merge. 	 */
+comment|/* 	 * The tentative merge result is the common ancestor for an 	 * internal merge.  For the final merge, it is "ours" by 	 * default but -Xours/-Xtheirs can tweak the choice. 	 */
 if|if
 condition|(
 name|opts
