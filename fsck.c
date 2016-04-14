@@ -3576,7 +3576,9 @@ name|commit
 operator|->
 name|tree
 condition|)
-return|return
+block|{
+name|err
+operator|=
 name|report
 argument_list|(
 name|options
@@ -3595,7 +3597,15 @@ argument_list|(
 name|tree_sha1
 argument_list|)
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|err
+condition|)
+return|return
+name|err
 return|;
+block|}
 return|return
 literal|0
 return|;
