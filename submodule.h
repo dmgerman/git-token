@@ -27,6 +27,12 @@ end_struct_decl
 begin_enum
 enum|enum
 block|{
+DECL|enumerator|RECURSE_SUBMODULES_CHECK
+name|RECURSE_SUBMODULES_CHECK
+init|=
+operator|-
+literal|4
+block|,
 DECL|enumerator|RECURSE_SUBMODULES_ERROR
 name|RECURSE_SUBMODULES_ERROR
 init|=

@@ -12,6 +12,12 @@ directive|define
 name|GIT_EXEC_CMD_H
 end_define
 
+begin_struct_decl
+struct_decl|struct
+name|argv_array
+struct_decl|;
+end_struct_decl
+
 begin_function_decl
 specifier|extern
 name|void
@@ -70,6 +76,11 @@ modifier|*
 modifier|*
 name|prepare_git_cmd
 parameter_list|(
+name|struct
+name|argv_array
+modifier|*
+name|out
+parameter_list|,
 specifier|const
 name|char
 modifier|*

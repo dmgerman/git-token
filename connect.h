@@ -28,6 +28,22 @@ name|CONNECT_DIAG_URL
 value|(1u<< 1)
 end_define
 
+begin_define
+DECL|macro|CONNECT_IPV4
+define|#
+directive|define
+name|CONNECT_IPV4
+value|(1u<< 2)
+end_define
+
+begin_define
+DECL|macro|CONNECT_IPV6
+define|#
+directive|define
+name|CONNECT_IPV6
+value|(1u<< 3)
+end_define
+
 begin_function_decl
 specifier|extern
 name|struct

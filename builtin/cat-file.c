@@ -2034,8 +2034,6 @@ operator|&
 name|buf
 argument_list|,
 name|stdin
-argument_list|,
-literal|'\n'
 argument_list|)
 operator|!=
 name|EOF

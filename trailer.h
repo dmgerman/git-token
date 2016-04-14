@@ -22,6 +22,9 @@ modifier|*
 name|file
 parameter_list|,
 name|int
+name|in_place
+parameter_list|,
+name|int
 name|trim_empty
 parameter_list|,
 name|struct

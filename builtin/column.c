@@ -433,8 +433,6 @@ operator|&
 name|sb
 argument_list|,
 name|stdin
-argument_list|,
-literal|'\n'
 argument_list|)
 condition|)
 name|string_list_append

@@ -5735,14 +5735,12 @@ return|return
 name|NULL
 return|;
 block|}
-name|strbuf_getline
+name|strbuf_getline_lf
 argument_list|(
 operator|&
 name|buf
 argument_list|,
 name|fp
-argument_list|,
-literal|'\n'
 argument_list|)
 expr_stmt|;
 if|if
@@ -6206,14 +6204,12 @@ expr_stmt|;
 while|while
 condition|(
 operator|!
-name|strbuf_getline
+name|strbuf_getline_lf
 argument_list|(
 operator|&
 name|line
 argument_list|,
 name|f
-argument_list|,
-literal|'\n'
 argument_list|)
 condition|)
 block|{
@@ -10034,9 +10030,7 @@ name|LABEL
 argument_list|(
 name|N_
 argument_list|(
-operator|(
 literal|"ahead "
-operator|)
 argument_list|)
 argument_list|)
 argument_list|)
@@ -10069,9 +10063,7 @@ name|LABEL
 argument_list|(
 name|N_
 argument_list|(
-operator|(
 literal|"ahead "
-operator|)
 argument_list|)
 argument_list|)
 argument_list|)

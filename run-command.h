@@ -508,6 +508,17 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|void
+name|NORETURN
+name|async_exit
+parameter_list|(
+name|int
+name|code
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/**  * This callback should initialize the child process and preload the  * error channel if desired. The preloading of is useful if you want to  * have a message printed directly before the output of the child process.  * pp_cb is the callback cookie as passed to run_processes_parallel.  * You can store a child process specific callback cookie in pp_task_cb.  *  * Even after returning 0 to indicate that there are no more processes,  * this function will be called again until there are no more running  * child processes.  *  * Return 1 if the next child is ready to run.  * Return 0 if there are currently no more tasks to be processed.  * To send a signal to other child processes for abortion,  * return the negative signal number.  */
 end_comment

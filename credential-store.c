@@ -136,14 +136,12 @@ return|;
 block|}
 while|while
 condition|(
-name|strbuf_getline
+name|strbuf_getline_lf
 argument_list|(
 operator|&
 name|line
 argument_list|,
 name|fh
-argument_list|,
-literal|'\n'
 argument_list|)
 operator|!=
 name|EOF
@@ -376,12 +374,7 @@ literal|0
 condition|)
 name|die_errno
 argument_list|(
-literal|"unable to write credential store: %s"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"unable to write credential store"
 argument_list|)
 expr_stmt|;
 block|}

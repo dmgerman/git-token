@@ -27,6 +27,11 @@ end_include
 begin_enum
 enum|enum
 block|{
+DECL|enumerator|REMOTE_UNCONFIGURED
+name|REMOTE_UNCONFIGURED
+init|=
+literal|0
+block|,
 DECL|enumerator|REMOTE_CONFIG
 name|REMOTE_CONFIG
 block|,
@@ -173,6 +178,11 @@ name|char
 modifier|*
 name|http_proxy
 decl_stmt|;
+DECL|member|http_proxy_authmethod
+name|char
+modifier|*
+name|http_proxy_authmethod
+decl_stmt|;
 block|}
 struct|;
 end_struct
@@ -209,10 +219,10 @@ begin_function_decl
 name|int
 name|remote_is_configured
 parameter_list|(
-specifier|const
-name|char
+name|struct
+name|remote
 modifier|*
-name|name
+name|remote
 parameter_list|)
 function_decl|;
 end_function_decl

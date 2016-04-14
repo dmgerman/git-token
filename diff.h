@@ -604,7 +604,7 @@ DECL|macro|DIFF_OPT_DEFAULT_FOLLOW_RENAMES
 define|#
 directive|define
 name|DIFF_OPT_DEFAULT_FOLLOW_RENAMES
-value|(1<< 31)
+value|(1U<< 31)
 end_define
 
 begin_define
@@ -1263,7 +1263,7 @@ parameter_list|,
 name|l
 parameter_list|)
 define|\
-value|(sizeof(struct combine_diff_path) + \ 	 sizeof(struct combine_diff_parent) * (n) + (l) + 1)
+value|st_add4(sizeof(struct combine_diff_path), (l), 1, \ 		st_mult(sizeof(struct combine_diff_parent), (n)))
 end_define
 
 begin_function_decl
@@ -1598,6 +1598,10 @@ modifier|*
 modifier|*
 parameter_list|,
 name|int
+parameter_list|,
+specifier|const
+name|char
+modifier|*
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -1970,10 +1974,6 @@ specifier|const
 name|char
 modifier|*
 modifier|*
-parameter_list|,
-specifier|const
-name|char
-modifier|*
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -1993,6 +1993,10 @@ name|diff_flags
 parameter_list|)
 function_decl|;
 end_function_decl
+
+begin_comment
+comment|/*  * Fill the contents of the filespec "df", respecting any textconv defined by  * its userdiff driver.  The "driver" parameter must come from a  * previous call to get_textconv(), and therefore should either be NULL or have  * textconv enabled.  *  * Note that the memory ownership of the resulting buffer depends on whether  * the driver field is NULL. If it is, then the memory belongs to the filespec  * struct. If it is non-NULL, then "outbuf" points to a newly allocated buffer  * that should be freed by the caller.  */
+end_comment
 
 begin_function_decl
 specifier|extern
@@ -2016,6 +2020,10 @@ name|outbuf
 parameter_list|)
 function_decl|;
 end_function_decl
+
+begin_comment
+comment|/*  * Look up the userdiff driver for the given filespec, and return it if  * and only if it has textconv enabled (otherwise return NULL). The result  * can be passed to fill_textconv().  */
+end_comment
 
 begin_function_decl
 specifier|extern

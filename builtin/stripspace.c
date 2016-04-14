@@ -181,7 +181,7 @@ name|mode
 argument_list|,
 name|N_
 argument_list|(
-literal|"prepend comment character and blank to each line"
+literal|"prepend comment character and space to each line"
 argument_list|)
 argument_list|,
 name|COMMENT_LINES

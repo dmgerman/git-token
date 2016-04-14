@@ -52,6 +52,23 @@ name|pthread_mutex_t
 value|CRITICAL_SECTION
 end_define
 
+begin_function
+DECL|function|return_0
+specifier|static
+specifier|inline
+name|int
+name|return_0
+parameter_list|(
+name|int
+name|i
+parameter_list|)
+block|{
+return|return
+literal|0
+return|;
+block|}
+end_function
+
 begin_define
 DECL|macro|pthread_mutex_init
 define|#
@@ -62,7 +79,7 @@ name|a
 parameter_list|,
 name|b
 parameter_list|)
-value|(InitializeCriticalSection((a)), 0)
+value|return_0((InitializeCriticalSection((a)), 0))
 end_define
 
 begin_define
@@ -378,7 +395,8 @@ begin_function
 DECL|function|pthread_exit
 specifier|static
 specifier|inline
-name|int
+name|void
+name|NORETURN
 name|pthread_exit
 parameter_list|(
 name|void
@@ -390,6 +408,9 @@ name|ExitThread
 argument_list|(
 operator|(
 name|DWORD
+operator|)
+operator|(
+name|intptr_t
 operator|)
 name|ret
 argument_list|)

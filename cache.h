@@ -63,6 +63,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"pack-revindex.h"
+end_include
+
+begin_include
+include|#
+directive|include
 include|SHA1_HEADER
 end_include
 
@@ -922,7 +928,7 @@ DECL|macro|CE_EXTENDED2
 define|#
 directive|define
 name|CE_EXTENDED2
-value|(1<< 31)
+value|(1U<< 31)
 end_define
 
 begin_define
@@ -956,9 +962,19 @@ endif|#
 directive|endif
 end_endif
 
+begin_comment
+comment|/* Forward structure decls */
+end_comment
+
 begin_struct_decl
 struct_decl|struct
 name|pathspec
+struct_decl|;
+end_struct_decl
+
+begin_struct_decl
+struct_decl|struct
+name|child_process
 struct_decl|;
 end_struct_decl
 
@@ -1129,6 +1145,17 @@ parameter_list|(
 name|ce
 parameter_list|)
 value|((ce)->ce_flags |= CE_UPTODATE)
+end_define
+
+begin_define
+DECL|macro|ce_intent_to_add
+define|#
+directive|define
+name|ce_intent_to_add
+parameter_list|(
+name|ce
+parameter_list|)
+value|((ce)->ce_flags& CE_INTENT_TO_ADD)
 end_define
 
 begin_define
@@ -2404,19 +2431,6 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
-name|int
-name|is_git_directory
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|path
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-specifier|extern
 name|char
 modifier|*
 name|get_object_directory
@@ -2532,6 +2546,40 @@ modifier|*
 name|get_git_work_tree
 parameter_list|(
 name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/*  * Return true if the given path is a git directory; note that this _just_  * looks at the directory itself. If you want to know whether "foo/.git"  * is a repository, you must feed that path, not just "foo".  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|is_git_directory
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/*  * Return 1 if the given path is the root of a git repository or  * submodule, else 0. Will not return 1 for bare repositories with the  * exception of creating a bare repository in "foo/.git" and calling  * is_git_repository("foo").  *  * If we run into read errors, we err on the side of saying "yes, it is",  * as we usually consider sub-repos precious, and would prefer to err on the  * side of not disrupting or deleting them.  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|is_nonbare_repository_dir
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+name|path
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -5072,6 +5120,15 @@ name|null_sha1
 index|[
 name|GIT_SHA1_RAWSZ
 index|]
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
+specifier|const
+name|struct
+name|object_id
+name|null_oid
 decl_stmt|;
 end_decl_stmt
 
@@ -8188,6 +8245,12 @@ index|[
 literal|20
 index|]
 decl_stmt|;
+DECL|member|revindex
+name|struct
+name|revindex_entry
+modifier|*
+name|revindex
+decl_stmt|;
 comment|/* something like ".git/objects/pack/xxxxx.pack" */
 DECL|member|pack_name
 name|char
@@ -8492,6 +8555,29 @@ name|path_len
 parameter_list|,
 name|int
 name|local
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/*  * Make sure that a pointer access into an mmap'd index file is within bounds,  * and can provide at least 8 bytes of data.  *  * Note that this is only necessary for variable-length segments of the file  * (like the 64-bit extended offset table), as we compare the size to the  * fixed-length parts when we open the file.  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|void
+name|check_pack_index_ptr
+parameter_list|(
+specifier|const
+name|struct
+name|packed_git
+modifier|*
+name|p
+parameter_list|,
+specifier|const
+name|void
+modifier|*
+name|ptr
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -9002,7 +9088,7 @@ value|2
 end_define
 
 begin_comment
-comment|/* git_config_set(), git_config_set_multivar() return the above or these: */
+comment|/* git_config_set_gently(), git_config_set_multivar_gently() return the above or these: */
 end_comment
 
 begin_define
@@ -9152,10 +9238,15 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|int
-name|git_config_from_buf
+name|git_config_from_mem
 parameter_list|(
 name|config_fn_t
 name|fn
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|origin_type
 parameter_list|,
 specifier|const
 name|char
@@ -9433,6 +9524,26 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|int
+name|git_config_set_in_file_gently
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|void
 name|git_config_set_in_file
 parameter_list|(
 specifier|const
@@ -9453,6 +9564,22 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|int
+name|git_config_set_gently
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|void
 name|git_config_set
 parameter_list|(
 specifier|const
@@ -9501,6 +9628,28 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|int
+name|git_config_set_multivar_gently
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+parameter_list|,
+name|int
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|void
 name|git_config_set_multivar
 parameter_list|(
 specifier|const
@@ -9523,6 +9672,32 @@ end_function_decl
 begin_function_decl
 specifier|extern
 name|int
+name|git_config_set_multivar_in_file_gently
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+parameter_list|,
+name|int
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|void
 name|git_config_set_multivar_in_file
 parameter_list|(
 specifier|const
@@ -9732,6 +9907,30 @@ parameter_list|,
 name|void
 modifier|*
 name|data
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+specifier|const
+name|char
+modifier|*
+name|current_config_origin_type
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+specifier|const
+name|char
+modifier|*
+name|current_config_name
+parameter_list|(
+name|void
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -10400,6 +10599,27 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|git_config_get_untracked_cache
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/*  * This is a hack for test programs like test-dump-untracked-cache to  * ensure that they do not modify the untracked cache when reading it.  * Do not use it otherwise!  */
+end_comment
+
+begin_decl_stmt
+specifier|extern
+name|int
+name|ignore_untracked_cache_config
+decl_stmt|;
+end_decl_stmt
+
 begin_struct
 DECL|struct|key_value_info
 struct|struct
@@ -10932,6 +11152,23 @@ specifier|const
 name|char
 modifier|*
 name|cmd
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|void
+name|prepare_pager_args
+parameter_list|(
+name|struct
+name|child_process
+modifier|*
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|pager
 parameter_list|)
 function_decl|;
 end_function_decl

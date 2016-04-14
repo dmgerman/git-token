@@ -152,6 +152,11 @@ name|char
 modifier|*
 name|ref
 decl_stmt|;
+DECL|member|update_ref
+name|char
+modifier|*
+name|update_ref
+decl_stmt|;
 DECL|member|combine_notes
 name|combine_notes_fn
 name|combine_notes
@@ -194,6 +199,18 @@ define|#
 directive|define
 name|NOTES_INIT_EMPTY
 value|1
+end_define
+
+begin_comment
+comment|/*  * By default, the notes tree is only readable, and the notes ref can be  * any treeish. The notes tree can however be made writable with this flag,  * in which case only strict ref names can be used.  */
+end_comment
+
+begin_define
+DECL|macro|NOTES_INIT_WRITABLE
+define|#
+directive|define
+name|NOTES_INIT_WRITABLE
+value|2
 end_define
 
 begin_comment
@@ -571,6 +588,9 @@ name|struct
 name|string_list
 modifier|*
 name|refs
+parameter_list|,
+name|int
+name|flags
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -624,6 +644,22 @@ end_comment
 begin_function_decl
 name|void
 name|expand_notes_ref
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+name|sb
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/*  * Similar to expand_notes_ref, but will check whether the ref can be located  * via get_sha1 first, and only falls back to expand_notes_ref in the case  * where get_sha1 fails.  */
+end_comment
+
+begin_function_decl
+name|void
+name|expand_loose_notes_ref
 parameter_list|(
 name|struct
 name|strbuf

@@ -347,6 +347,11 @@ name|base
 init|=
 name|STRBUF_INIT
 decl_stmt|;
+comment|/* Hack to avoid modifying the untracked cache when we read it */
+name|ignore_untracked_cache_config
+operator|=
+literal|1
+expr_stmt|;
 name|setup_git_directory
 argument_list|()
 expr_stmt|;

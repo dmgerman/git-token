@@ -315,7 +315,7 @@ name|IsConsoleHandle
 parameter_list|(
 name|h
 parameter_list|)
-value|(((long) (h)& 3) == 3)
+value|(((long) (intptr_t) (h)& 3) == 3)
 end_define
 
 begin_function

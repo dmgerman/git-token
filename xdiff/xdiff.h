@@ -91,11 +91,6 @@ define|#
 directive|define
 name|XDL_EMIT_FUNCNAMES
 value|(1<< 0)
-DECL|macro|XDL_EMIT_COMMON
-define|#
-directive|define
-name|XDL_EMIT_COMMON
-value|(1<< 1)
 DECL|macro|XDL_EMIT_FUNCCONTEXT
 define|#
 directive|define

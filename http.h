@@ -263,6 +263,10 @@ DECL|member|auth_avail
 name|long
 name|auth_avail
 decl_stmt|;
+DECL|member|http_connectcode
+name|long
+name|http_connectcode
+decl_stmt|;
 block|}
 struct|;
 end_struct
@@ -601,6 +605,14 @@ name|void
 parameter_list|)
 function_decl|;
 end_function_decl
+
+begin_decl_stmt
+specifier|extern
+name|long
+name|int
+name|git_curl_ipresolve
+decl_stmt|;
+end_decl_stmt
 
 begin_decl_stmt
 specifier|extern

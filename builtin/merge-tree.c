@@ -1021,7 +1021,7 @@ name|char
 modifier|*
 name|path
 init|=
-name|xmalloc
+name|xmallocz
 argument_list|(
 name|traverse_path_len
 argument_list|(
@@ -1029,8 +1029,6 @@ name|info
 argument_list|,
 name|n
 argument_list|)
-operator|+
-literal|1
 argument_list|)
 decl_stmt|;
 return|return

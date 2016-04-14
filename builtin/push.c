@@ -54,6 +54,12 @@ end_include
 begin_include
 include|#
 directive|include
+file|"submodule-config.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"send-pack.h"
 end_include
 
@@ -122,6 +128,25 @@ name|progress
 init|=
 operator|-
 literal|1
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|recurse_submodules
+specifier|static
+name|int
+name|recurse_submodules
+init|=
+name|RECURSE_SUBMODULES_DEFAULT
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|family
+specifier|static
+name|enum
+name|transport_family
+name|family
 decl_stmt|;
 end_decl_stmt
 
@@ -1083,71 +1108,6 @@ expr_stmt|;
 block|}
 end_function
 
-begin_decl_stmt
-DECL|variable|warn_unspecified_push_default_msg
-specifier|static
-name|char
-name|warn_unspecified_push_default_msg
-index|[]
-init|=
-name|N_
-argument_list|(
-literal|"push.default is unset; its implicit value has changed in\n"
-literal|"Git 2.0 from 'matching' to 'simple'. To squelch this message\n"
-literal|"and maintain the traditional behavior, use:\n"
-literal|"\n"
-literal|"  git config --global push.default matching\n"
-literal|"\n"
-literal|"To squelch this message and adopt the new behavior now, use:\n"
-literal|"\n"
-literal|"  git config --global push.default simple\n"
-literal|"\n"
-literal|"When push.default is set to 'matching', git will push local branches\n"
-literal|"to the remote branches that already exist with the same name.\n"
-literal|"\n"
-literal|"Since Git 2.0, Git defaults to the more conservative 'simple'\n"
-literal|"behavior, which only pushes the current branch to the corresponding\n"
-literal|"remote branch that 'git pull' uses to update the current branch.\n"
-literal|"\n"
-literal|"See 'git help config' and search for 'push.default' for further information.\n"
-literal|"(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode\n"
-literal|"'current' instead of 'simple' if you sometimes use older versions of Git)"
-argument_list|)
-decl_stmt|;
-end_decl_stmt
-
-begin_function
-DECL|function|warn_unspecified_push_default_configuration
-specifier|static
-name|void
-name|warn_unspecified_push_default_configuration
-parameter_list|(
-name|void
-parameter_list|)
-block|{
-specifier|static
-name|int
-name|warn_once
-decl_stmt|;
-if|if
-condition|(
-name|warn_once
-operator|++
-condition|)
-return|return;
-name|warning
-argument_list|(
-literal|"%s\n"
-argument_list|,
-name|_
-argument_list|(
-name|warn_unspecified_push_default_msg
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-end_function
-
 begin_function
 DECL|function|is_workflow_triangular
 specifier|static
@@ -1230,10 +1190,6 @@ break|break;
 case|case
 name|PUSH_DEFAULT_UNSPECIFIED
 case|:
-name|warn_unspecified_push_default_configuration
-argument_list|()
-expr_stmt|;
-comment|/* fallthru */
 case|case
 name|PUSH_DEFAULT_SIMPLE
 case|:
@@ -1566,6 +1522,12 @@ name|verbosity
 argument_list|,
 name|progress
 argument_list|)
+expr_stmt|;
+name|transport
+operator|->
+name|family
+operator|=
+name|family
 expr_stmt|;
 if|if
 condition|(
@@ -2130,7 +2092,7 @@ parameter_list|)
 block|{
 name|int
 modifier|*
-name|flags
+name|recurse_submodules
 init|=
 name|opt
 operator|->
@@ -2138,65 +2100,23 @@ name|value
 decl_stmt|;
 if|if
 condition|(
-operator|*
-name|flags
-operator|&
-operator|(
-name|TRANSPORT_RECURSE_SUBMODULES_CHECK
-operator||
-name|TRANSPORT_RECURSE_SUBMODULES_ON_DEMAND
-operator|)
-condition|)
-name|die
-argument_list|(
-literal|"%s can only be used once."
-argument_list|,
-name|opt
-operator|->
-name|long_name
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|arg
-condition|)
-block|{
-if|if
-condition|(
-operator|!
-name|strcmp
-argument_list|(
-name|arg
-argument_list|,
-literal|"check"
-argument_list|)
+name|unset
 condition|)
 operator|*
-name|flags
-operator||=
-name|TRANSPORT_RECURSE_SUBMODULES_CHECK
+name|recurse_submodules
+operator|=
+name|RECURSE_SUBMODULES_OFF
 expr_stmt|;
 elseif|else
 if|if
 condition|(
-operator|!
-name|strcmp
-argument_list|(
 name|arg
-argument_list|,
-literal|"on-demand"
-argument_list|)
 condition|)
 operator|*
-name|flags
-operator||=
-name|TRANSPORT_RECURSE_SUBMODULES_ON_DEMAND
-expr_stmt|;
-else|else
-name|die
+name|recurse_submodules
+operator|=
+name|parse_push_recurse_submodules_arg
 argument_list|(
-literal|"bad %s argument: %s"
-argument_list|,
 name|opt
 operator|->
 name|long_name
@@ -2204,11 +2124,10 @@ argument_list|,
 name|arg
 argument_list|)
 expr_stmt|;
-block|}
 else|else
 name|die
 argument_list|(
-literal|"option %s needs an argument (check|on-demand)"
+literal|"%s missing parameter"
 argument_list|,
 name|opt
 operator|->
@@ -2465,6 +2384,44 @@ return|;
 block|}
 block|}
 block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|k
+argument_list|,
+literal|"push.recursesubmodules"
+argument_list|)
+condition|)
+block|{
+specifier|const
+name|char
+modifier|*
+name|value
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|git_config_get_value
+argument_list|(
+literal|"push.recursesubmodules"
+argument_list|,
+operator|&
+name|value
+argument_list|)
+condition|)
+name|recurse_submodules
+operator|=
+name|parse_push_recurse_submodules_arg
+argument_list|(
+name|k
+argument_list|,
+name|value
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|git_default_config
 argument_list|(
@@ -2597,7 +2554,7 @@ argument_list|)
 block|,
 name|OPT_BOOL
 argument_list|(
-literal|0
+literal|'d'
 argument_list|,
 literal|"delete"
 argument_list|,
@@ -2709,9 +2666,9 @@ block|,
 literal|"recurse-submodules"
 block|,
 operator|&
-name|flags
+name|recurse_submodules
 block|,
-literal|"check|on-demand"
+literal|"check|on-demand|no"
 block|,
 name|N_
 argument_list|(
@@ -2894,6 +2851,40 @@ argument_list|,
 name|TRANSPORT_PUSH_ATOMIC
 argument_list|)
 block|,
+name|OPT_SET_INT
+argument_list|(
+literal|'4'
+argument_list|,
+literal|"ipv4"
+argument_list|,
+operator|&
+name|family
+argument_list|,
+name|N_
+argument_list|(
+literal|"use IPv4 addresses only"
+argument_list|)
+argument_list|,
+name|TRANSPORT_FAMILY_IPV4
+argument_list|)
+block|,
+name|OPT_SET_INT
+argument_list|(
+literal|'6'
+argument_list|,
+literal|"ipv6"
+argument_list|,
+operator|&
+name|family
+argument_list|,
+name|N_
+argument_list|(
+literal|"use IPv6 addresses only"
+argument_list|)
+argument_list|,
+name|TRANSPORT_FAMILY_IPV6
+argument_list|)
+block|,
 name|OPT_END
 argument_list|()
 block|}
@@ -2977,6 +2968,27 @@ argument_list|(
 literal|"--delete doesn't make sense without any refs"
 argument_list|)
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|recurse_submodules
+operator|==
+name|RECURSE_SUBMODULES_CHECK
+condition|)
+name|flags
+operator||=
+name|TRANSPORT_RECURSE_SUBMODULES_CHECK
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|recurse_submodules
+operator|==
+name|RECURSE_SUBMODULES_ON_DEMAND
+condition|)
+name|flags
+operator||=
+name|TRANSPORT_RECURSE_SUBMODULES_ON_DEMAND
 expr_stmt|;
 if|if
 condition|(
