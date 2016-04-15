@@ -710,11 +710,14 @@ argument_list|,
 literal|"exit"
 argument_list|)
 condition|)
+block|{
+comment|/* 		 * It's important that we clean up our socket first, and then 		 * signal the client only once we have finished the cleanup. 		 * Calling exit() directly does this, because we clean up in 		 * our atexit() handler, and then signal the client when our 		 * process actually ends, which closes the socket and gives 		 * them EOF. 		 */
 name|exit
 argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
