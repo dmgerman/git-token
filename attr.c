@@ -661,7 +661,7 @@ name|int
 name|nowildcardlen
 decl_stmt|;
 DECL|member|flags
-name|int
+name|unsigned
 name|flags
 decl_stmt|;
 comment|/* EXC_FLAG_* */
