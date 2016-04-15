@@ -50,6 +50,9 @@ decl_stmt|,
 modifier|*
 name|two
 decl_stmt|;
+name|setup_git_directory
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|get_sha1

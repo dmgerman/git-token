@@ -7031,16 +7031,6 @@ return|;
 if|if
 condition|(
 operator|!
-name|startup_info
-condition|)
-name|die
-argument_list|(
-literal|"BUG: startup_info struct is not initialized."
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-operator|!
 name|is_inside_work_tree
 argument_list|()
 condition|)

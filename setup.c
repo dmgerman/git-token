@@ -58,6 +58,27 @@ name|STRING_LIST_INIT_DUP
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|the_startup_info
+specifier|static
+name|struct
+name|startup_info
+name|the_startup_info
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|startup_info
+name|struct
+name|startup_info
+modifier|*
+name|startup_info
+init|=
+operator|&
+name|the_startup_info
+decl_stmt|;
+end_decl_stmt
+
 begin_comment
 comment|/*  * The input parameter must contain an absolute path, and it must already be  * normalized.  *  * Find the part of an absolute path that lies inside the work tree by  * dereferencing symlinks outside the work tree, for example:  * /dir1/repo/dir2/file   (work tree is /dir1/repo)      -> dir2/file  * /dir/file              (work tree is /)               -> dir/file  * /dir/symlink1/symlink2 (symlink1 points to work tree) -> symlink2  * /dir/repolink/file     (repolink points to /dir/repo) -> file  * /dir/repo              (exactly equal to work tree)   -> (empty string)  */
 end_comment
@@ -3990,11 +4011,6 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|startup_info
-condition|)
-block|{
 name|startup_info
 operator|->
 name|have_repository
@@ -4012,7 +4028,6 @@ name|prefix
 operator|=
 name|prefix
 expr_stmt|;
-block|}
 return|return
 name|prefix
 return|;
@@ -4327,7 +4342,6 @@ parameter_list|(
 name|void
 parameter_list|)
 block|{
-return|return
 name|check_repository_format_gently
 argument_list|(
 name|get_git_dir
@@ -4335,6 +4349,15 @@ argument_list|()
 argument_list|,
 name|NULL
 argument_list|)
+expr_stmt|;
+name|startup_info
+operator|->
+name|have_repository
+operator|=
+literal|1
+expr_stmt|;
+return|return
+literal|0
 return|;
 block|}
 end_function
