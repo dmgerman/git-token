@@ -728,6 +728,8 @@ argument_list|,
 operator|&
 name|mode
 argument_list|)
+operator|->
+name|hash
 expr_stmt|;
 name|pathlen
 operator|=

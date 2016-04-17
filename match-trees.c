@@ -691,8 +691,8 @@ modifier|*
 name|path
 decl_stmt|;
 specifier|const
-name|unsigned
-name|char
+name|struct
+name|object_id
 modifier|*
 name|elem
 decl_stmt|;
@@ -732,6 +732,8 @@ operator|=
 name|score_trees
 argument_list|(
 name|elem
+operator|->
+name|hash
 argument_list|,
 name|hash2
 argument_list|)
@@ -789,6 +791,8 @@ decl_stmt|;
 name|match_trees
 argument_list|(
 name|elem
+operator|->
+name|hash
 argument_list|,
 name|hash2
 argument_list|,
@@ -984,12 +988,12 @@ name|unsigned
 name|mode
 decl_stmt|;
 specifier|const
-name|unsigned
-name|char
+name|struct
+name|object_id
 modifier|*
-name|sha1
+name|oid
 decl_stmt|;
-name|sha1
+name|oid
 operator|=
 name|tree_entry_extract
 argument_list|(
@@ -1050,7 +1054,9 @@ name|unsigned
 name|char
 operator|*
 operator|)
-name|sha1
+name|oid
+operator|->
+name|hash
 expr_stmt|;
 break|break;
 block|}

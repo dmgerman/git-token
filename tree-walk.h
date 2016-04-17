@@ -69,8 +69,8 @@ DECL|function|tree_entry_extract
 specifier|static
 specifier|inline
 specifier|const
-name|unsigned
-name|char
+name|struct
+name|object_id
 modifier|*
 name|tree_entry_extract
 parameter_list|(
@@ -115,8 +115,6 @@ operator|->
 name|entry
 operator|.
 name|oid
-operator|->
-name|hash
 return|;
 block|}
 end_function
