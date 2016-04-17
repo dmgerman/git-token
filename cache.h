@@ -6876,6 +6876,24 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|get_oid
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|str
+parameter_list|,
+name|struct
+name|object_id
+modifier|*
+name|oid
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_typedef
 DECL|typedef|each_abbrev_fn
 typedef|typedef
