@@ -435,7 +435,9 @@ name|has_sha1_file
 argument_list|(
 name|entry
 operator|.
-name|sha1
+name|oid
+operator|->
+name|hash
 argument_list|)
 operator|||
 operator|(
@@ -451,7 +453,9 @@ name|tree_is_complete
 argument_list|(
 name|entry
 operator|.
-name|sha1
+name|oid
+operator|->
+name|hash
 argument_list|)
 operator|)
 condition|)

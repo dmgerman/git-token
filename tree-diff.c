@@ -931,7 +931,9 @@ index|]
 operator|.
 name|entry
 operator|.
-name|sha1
+name|oid
+operator|->
+name|hash
 expr_stmt|;
 name|mode_i
 operator|=
@@ -1102,7 +1104,9 @@ index|]
 operator|.
 name|entry
 operator|.
-name|sha1
+name|oid
+operator|->
+name|hash
 else|:
 name|NULL
 expr_stmt|;
@@ -1767,13 +1771,13 @@ continue|continue;
 comment|/* diff(t,pi) != Ã¸ */
 if|if
 condition|(
-name|hashcmp
+name|oidcmp
 argument_list|(
 name|t
 operator|.
 name|entry
 operator|.
-name|sha1
+name|oid
 argument_list|,
 name|tp
 index|[
@@ -1782,7 +1786,7 @@ index|]
 operator|.
 name|entry
 operator|.
-name|sha1
+name|oid
 argument_list|)
 operator|||
 operator|(

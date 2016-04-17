@@ -17,12 +17,12 @@ DECL|struct|name_entry
 struct|struct
 name|name_entry
 block|{
-DECL|member|sha1
+DECL|member|oid
 specifier|const
-name|unsigned
-name|char
+name|struct
+name|object_id
 modifier|*
-name|sha1
+name|oid
 decl_stmt|;
 DECL|member|path
 specifier|const
@@ -114,7 +114,9 @@ name|desc
 operator|->
 name|entry
 operator|.
-name|sha1
+name|oid
+operator|->
+name|hash
 return|;
 block|}
 end_function
@@ -141,7 +143,7 @@ operator|*
 operator|)
 name|ne
 operator|->
-name|sha1
+name|oid
 operator|-
 name|ne
 operator|->

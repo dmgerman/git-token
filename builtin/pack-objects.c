@@ -6005,7 +6005,9 @@ name|add_object_entry
 argument_list|(
 name|entry
 operator|.
-name|sha1
+name|oid
+operator|->
+name|hash
 argument_list|,
 name|object_type
 argument_list|(
@@ -6065,7 +6067,9 @@ name|pbase_tree_get
 argument_list|(
 name|entry
 operator|.
-name|sha1
+name|oid
+operator|->
+name|hash
 argument_list|)
 expr_stmt|;
 if|if

@@ -557,15 +557,15 @@ expr_stmt|;
 elseif|else
 if|if
 condition|(
-name|hashcmp
+name|oidcmp
 argument_list|(
 name|e1
 operator|.
-name|sha1
+name|oid
 argument_list|,
 name|e2
 operator|.
-name|sha1
+name|oid
 argument_list|)
 condition|)
 comment|/* they are different */
