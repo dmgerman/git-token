@@ -2388,12 +2388,29 @@ name|stderr
 argument_list|,
 name|_
 argument_list|(
-literal|"If you wish to set tracking information for this branch you can do so with:\n"
-literal|"\n"
-literal|"    git branch --set-upstream-to=%s/<branch> %s\n"
+literal|"If you wish to set tracking information for this branch you can do so with:"
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|"\n"
+argument_list|)
+expr_stmt|;
+name|fprintf_ln
+argument_list|(
+name|stderr
+argument_list|,
+literal|"    git branch --set-upstream-to=%s/%s %s\n"
 argument_list|,
 name|remote_name
+argument_list|,
+name|_
+argument_list|(
+literal|"<branch>"
+argument_list|)
 argument_list|,
 name|curr_branch
 operator|->
