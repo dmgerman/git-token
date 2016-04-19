@@ -2664,6 +2664,12 @@ operator|=
 operator|-
 literal|1
 expr_stmt|;
+name|demux
+operator|.
+name|isolate_sigpipe
+operator|=
+literal|1
+expr_stmt|;
 if|if
 condition|(
 name|start_async
