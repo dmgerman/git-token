@@ -5728,6 +5728,11 @@ decl_stmt|;
 name|int
 name|save_errno
 decl_stmt|;
+operator|*
+name|type
+operator|=
+literal|0
+expr_stmt|;
 name|strbuf_reset
 argument_list|(
 operator|&
