@@ -498,7 +498,7 @@ parameter_list|,
 name|struct
 name|strbuf
 modifier|*
-name|symref
+name|referent
 parameter_list|,
 name|unsigned
 name|int
