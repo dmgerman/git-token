@@ -9680,13 +9680,6 @@ operator|&
 name|loginfo
 argument_list|)
 decl_stmt|;
-specifier|const
-name|char
-modifier|*
-name|symref
-init|=
-name|NULL
-decl_stmt|;
 name|struct
 name|strbuf
 name|err
@@ -9712,8 +9705,9 @@ argument_list|,
 name|oldrefname
 argument_list|)
 return|;
-name|symref
-operator|=
+if|if
+condition|(
+operator|!
 name|resolve_ref_unsafe
 argument_list|(
 name|oldrefname
@@ -9725,7 +9719,15 @@ argument_list|,
 operator|&
 name|flag
 argument_list|)
-expr_stmt|;
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"refname %s not found"
+argument_list|,
+name|oldrefname
+argument_list|)
+return|;
 if|if
 condition|(
 name|flag
@@ -9736,19 +9738,6 @@ return|return
 name|error
 argument_list|(
 literal|"refname %s is a symbolic ref, renaming it is not supported"
-argument_list|,
-name|oldrefname
-argument_list|)
-return|;
-if|if
-condition|(
-operator|!
-name|symref
-condition|)
-return|return
-name|error
-argument_list|(
-literal|"refname %s not found"
 argument_list|,
 name|oldrefname
 argument_list|)
