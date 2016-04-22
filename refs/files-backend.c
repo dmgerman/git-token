@@ -7075,7 +7075,7 @@ name|flags
 parameter_list|,
 name|int
 modifier|*
-name|type_p
+name|type
 parameter_list|,
 name|struct
 name|strbuf
@@ -7111,9 +7111,6 @@ name|int
 name|last_errno
 init|=
 literal|0
-decl_stmt|;
-name|int
-name|type
 decl_stmt|;
 name|int
 name|lflags
@@ -7209,7 +7206,6 @@ name|old_oid
 operator|.
 name|hash
 argument_list|,
-operator|&
 name|type
 argument_list|)
 expr_stmt|;
@@ -7294,20 +7290,10 @@ name|old_oid
 operator|.
 name|hash
 argument_list|,
-operator|&
 name|type
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|type_p
-condition|)
-operator|*
-name|type_p
-operator|=
-name|type
-expr_stmt|;
 if|if
 condition|(
 operator|!
