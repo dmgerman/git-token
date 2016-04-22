@@ -1205,7 +1205,6 @@ end_function
 
 begin_function
 DECL|function|is_worktree_being_rebased
-specifier|static
 name|int
 name|is_worktree_being_rebased
 parameter_list|(
@@ -1311,7 +1310,6 @@ end_function
 
 begin_function
 DECL|function|is_worktree_being_bisected
-specifier|static
 name|int
 name|is_worktree_being_bisected
 parameter_list|(
