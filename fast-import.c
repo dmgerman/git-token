@@ -8370,7 +8370,7 @@ operator|==
 name|n
 operator|&&
 operator|!
-name|strncmp_icase
+name|fspathncmp
 argument_list|(
 name|p
 argument_list|,
@@ -8904,7 +8904,7 @@ operator|==
 name|n
 operator|&&
 operator|!
-name|strncmp_icase
+name|fspathncmp
 argument_list|(
 name|p
 argument_list|,
@@ -9282,7 +9282,7 @@ operator|==
 name|n
 operator|&&
 operator|!
-name|strncmp_icase
+name|fspathncmp
 argument_list|(
 name|p
 argument_list|,
