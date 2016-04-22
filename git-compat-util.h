@@ -1459,25 +1459,6 @@ directive|include
 file|<openssl/err.h>
 end_include
 
-begin_ifdef
-ifdef|#
-directive|ifdef
-name|NO_HMAC_CTX_CLEANUP
-end_ifdef
-
-begin_define
-DECL|macro|HMAC_CTX_cleanup
-define|#
-directive|define
-name|HMAC_CTX_cleanup
-value|HMAC_cleanup
-end_define
-
-begin_endif
-endif|#
-directive|endif
-end_endif
-
 begin_endif
 endif|#
 directive|endif
