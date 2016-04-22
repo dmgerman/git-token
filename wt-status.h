@@ -36,6 +36,12 @@ directive|include
 file|"pathspec.h"
 end_include
 
+begin_struct_decl
+struct_decl|struct
+name|worktree
+struct_decl|;
+end_struct_decl
+
 begin_enum
 DECL|enum|color_wt_status
 enum|enum
@@ -468,6 +474,12 @@ begin_function_decl
 name|int
 name|wt_status_check_rebase
 parameter_list|(
+specifier|const
+name|struct
+name|worktree
+modifier|*
+name|wt
+parameter_list|,
 name|struct
 name|wt_status_state
 modifier|*
