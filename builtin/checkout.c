@@ -5771,6 +5771,8 @@ argument_list|(
 name|new
 operator|->
 name|path
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 name|free

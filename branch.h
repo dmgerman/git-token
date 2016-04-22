@@ -170,6 +170,9 @@ specifier|const
 name|char
 modifier|*
 name|branch
+parameter_list|,
+name|int
+name|ignore_current_worktree
 parameter_list|)
 function_decl|;
 end_function_decl
