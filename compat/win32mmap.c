@@ -138,6 +138,12 @@ argument_list|)
 argument_list|,
 name|NULL
 argument_list|,
+name|prot
+operator|==
+name|PROT_READ
+condition|?
+name|PAGE_READONLY
+else|:
 name|PAGE_WRITECOPY
 argument_list|,
 literal|0
@@ -167,6 +173,12 @@ name|MapViewOfFileEx
 argument_list|(
 name|hmap
 argument_list|,
+name|prot
+operator|==
+name|PROT_READ
+condition|?
+name|FILE_MAP_READ
+else|:
 name|FILE_MAP_COPY
 argument_list|,
 name|h
