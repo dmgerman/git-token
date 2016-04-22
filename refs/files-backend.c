@@ -10160,9 +10160,6 @@ name|char
 modifier|*
 name|logmsg
 parameter_list|,
-name|int
-name|flags
-parameter_list|,
 name|struct
 name|strbuf
 modifier|*
@@ -10567,8 +10564,6 @@ name|orig_sha1
 argument_list|,
 name|logmsg
 argument_list|,
-literal|0
-argument_list|,
 operator|&
 name|err
 argument_list|)
@@ -10674,8 +10669,6 @@ argument_list|,
 name|orig_sha1
 argument_list|,
 name|NULL
-argument_list|,
-literal|0
 argument_list|,
 operator|&
 name|err
@@ -11914,9 +11907,6 @@ name|char
 modifier|*
 name|logmsg
 parameter_list|,
-name|int
-name|flags
-parameter_list|,
 name|struct
 name|strbuf
 modifier|*
@@ -11947,7 +11937,7 @@ name|sha1
 argument_list|,
 name|logmsg
 argument_list|,
-name|flags
+literal|0
 argument_list|,
 name|err
 argument_list|)
@@ -11982,7 +11972,7 @@ name|sha1
 argument_list|,
 name|logmsg
 argument_list|,
-name|flags
+literal|0
 argument_list|,
 name|err
 argument_list|)
@@ -12144,13 +12134,6 @@ block|}
 block|}
 if|if
 condition|(
-operator|!
-operator|(
-name|flags
-operator|&
-name|REF_LOG_ONLY
-operator|)
-operator|&&
 name|commit_ref
 argument_list|(
 name|lock
