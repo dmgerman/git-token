@@ -465,6 +465,18 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+name|int
+name|wt_status_check_rebase
+parameter_list|(
+name|struct
+name|wt_status_state
+modifier|*
+name|state
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|void
 name|wt_shortstatus_print
 parameter_list|(
