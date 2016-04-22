@@ -1675,11 +1675,13 @@ modifier|*
 name|branch
 parameter_list|)
 block|{
-name|char
+specifier|const
+name|struct
+name|worktree
 modifier|*
-name|existing
+name|wt
 decl_stmt|;
-name|existing
+name|wt
 operator|=
 name|find_shared_symref
 argument_list|(
@@ -1690,9 +1692,10 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|existing
+operator|!
+name|wt
 condition|)
-block|{
+return|return;
 name|skip_prefix
 argument_list|(
 name|branch
@@ -1712,10 +1715,11 @@ argument_list|)
 argument_list|,
 name|branch
 argument_list|,
-name|existing
+name|wt
+operator|->
+name|path
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 end_function
 

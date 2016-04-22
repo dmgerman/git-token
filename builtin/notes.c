@@ -4870,9 +4870,11 @@ expr_stmt|;
 else|else
 block|{
 comment|/* Merge has unresolved conflicts */
-name|char
+specifier|const
+name|struct
+name|worktree
 modifier|*
-name|existing
+name|wt
 decl_stmt|;
 comment|/* Update .git/NOTES_MERGE_PARTIAL with partial merge result */
 name|update_ref
@@ -4893,7 +4895,7 @@ name|UPDATE_REFS_DIE_ON_ERR
 argument_list|)
 expr_stmt|;
 comment|/* Store ref-to-be-updated into .git/NOTES_MERGE_REF */
-name|existing
+name|wt
 operator|=
 name|find_shared_symref
 argument_list|(
@@ -4905,7 +4907,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|existing
+name|wt
 condition|)
 name|die
 argument_list|(
@@ -4917,7 +4919,9 @@ argument_list|,
 name|default_notes_ref
 argument_list|()
 argument_list|,
-name|existing
+name|wt
+operator|->
+name|path
 argument_list|)
 expr_stmt|;
 if|if
