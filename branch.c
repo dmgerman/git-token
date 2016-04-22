@@ -1796,12 +1796,13 @@ if|if
 condition|(
 name|set_worktree_head_symref
 argument_list|(
+name|get_worktree_git_dir
+argument_list|(
 name|worktrees
 index|[
 name|i
 index|]
-operator|->
-name|git_dir
+argument_list|)
 argument_list|,
 name|newref
 argument_list|)
