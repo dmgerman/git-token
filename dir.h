@@ -1172,6 +1172,14 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* Constants for remove_dir_recursively: */
+end_comment
+
+begin_comment
+comment|/*  * If a non-directory is found within path, stop and return an error.  * (In this case some empty directories might already have been  * removed.)  */
+end_comment
+
 begin_define
 DECL|macro|REMOVE_DIR_EMPTY_ONLY
 define|#
@@ -1179,6 +1187,10 @@ directive|define
 name|REMOVE_DIR_EMPTY_ONLY
 value|01
 end_define
+
+begin_comment
+comment|/*  * If any Git work trees are found within path, skip them without  * considering it an error.  */
+end_comment
 
 begin_define
 DECL|macro|REMOVE_DIR_KEEP_NESTED_GIT
@@ -1188,6 +1200,10 @@ name|REMOVE_DIR_KEEP_NESTED_GIT
 value|02
 end_define
 
+begin_comment
+comment|/* Remove the contents of path, but leave path itself. */
+end_comment
+
 begin_define
 DECL|macro|REMOVE_DIR_KEEP_TOPLEVEL
 define|#
@@ -1195,6 +1211,10 @@ directive|define
 name|REMOVE_DIR_KEEP_TOPLEVEL
 value|04
 end_define
+
+begin_comment
+comment|/*  * Remove path and its contents, recursively. flags is a combination  * of the above REMOVE_DIR_* constants. Return 0 on success.  *  * This function uses path as temporary scratch space, but restores it  * before returning.  */
+end_comment
 
 begin_function_decl
 specifier|extern
