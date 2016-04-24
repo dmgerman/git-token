@@ -29,7 +29,7 @@ value|0x02
 end_define
 
 begin_comment
-comment|/*  * Used as a flag in ref_update::flags when a loose ref is being  * pruned.  */
+comment|/*  * Used as a flag in ref_update::flags when a loose ref is being  * pruned. This flag must only be used when REF_NODEREF is set.  */
 end_comment
 
 begin_define

@@ -4308,6 +4308,26 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
+name|flags
+operator|&
+name|REF_ISPRUNING
+operator|)
+operator|&&
+operator|!
+operator|(
+name|flags
+operator|&
+name|REF_NODEREF
+operator|)
+condition|)
+name|die
+argument_list|(
+literal|"BUG: REF_ISPRUNING set without REF_NODEREF"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|new_sha1
 operator|&&
 operator|!

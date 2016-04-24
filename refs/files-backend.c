@@ -8638,6 +8638,8 @@ operator|->
 name|sha1
 argument_list|,
 name|REF_ISPRUNING
+operator||
+name|REF_NODEREF
 argument_list|,
 name|NULL
 argument_list|,
