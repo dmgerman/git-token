@@ -186,11 +186,13 @@ name|char
 modifier|*
 name|newname
 parameter_list|,
+specifier|const
 name|struct
 name|string_list
 modifier|*
 name|extras
 parameter_list|,
+specifier|const
 name|struct
 name|string_list
 modifier|*
