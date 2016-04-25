@@ -93,6 +93,18 @@ value|0x80
 end_define
 
 begin_comment
+comment|/*  * Internal flag, meaning that the containing ref_update was via an  * update to HEAD.  */
+end_comment
+
+begin_define
+DECL|macro|REF_UPDATE_VIA_HEAD
+define|#
+directive|define
+name|REF_UPDATE_VIA_HEAD
+value|0x100
+end_define
+
+begin_comment
 comment|/*  * Return true iff refname is minimally safe. "Safe" here means that  * deleting a loose reference by this name will not do any damage, for  * example by causing a file that is not a reference to be deleted.  * This function does not check that the reference name is legal; for  * that, use check_refname_format().  *  * We consider a refname that starts with "refs/" to be safe as long  * as any ".." components that it might contain do not escape "refs/".  * Names that do not start with "refs/" are considered safe iff they  * consist entirely of upper case characters and '_' (like "HEAD" and  * "MERGE_HEAD" but not "config" or "FOO/BAR").  */
 end_comment
 
@@ -265,7 +277,7 @@ index|[
 literal|20
 index|]
 decl_stmt|;
-comment|/* 	 * One or more of REF_HAVE_NEW, REF_HAVE_OLD, REF_NODEREF, 	 * REF_DELETING, and REF_ISPRUNING: 	 */
+comment|/* 	 * One or more of REF_HAVE_NEW, REF_HAVE_OLD, REF_NODEREF, 	 * REF_DELETING, REF_ISPRUNING, REF_LOG_ONLY, and 	 * REF_UPDATE_VIA_HEAD: 	 */
 DECL|member|flags
 name|unsigned
 name|int
@@ -278,6 +290,7 @@ modifier|*
 name|lock
 decl_stmt|;
 DECL|member|type
+name|unsigned
 name|int
 name|type
 decl_stmt|;
