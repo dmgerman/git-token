@@ -3986,18 +3986,6 @@ literal|"input"
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|core_eol
-operator|==
-name|EOL_CRLF
-condition|)
-return|return
-name|error
-argument_list|(
-literal|"core.autocrlf=input conflicts with core.eol=crlf"
-argument_list|)
-return|;
 name|auto_crlf
 operator|=
 name|AUTO_CRLF_INPUT
@@ -4130,22 +4118,6 @@ name|core_eol
 operator|=
 name|EOL_UNSET
 expr_stmt|;
-if|if
-condition|(
-name|core_eol
-operator|==
-name|EOL_CRLF
-operator|&&
-name|auto_crlf
-operator|==
-name|AUTO_CRLF_INPUT
-condition|)
-return|return
-name|error
-argument_list|(
-literal|"core.autocrlf=input conflicts with core.eol=crlf"
-argument_list|)
-return|;
 return|return
 literal|0
 return|;
