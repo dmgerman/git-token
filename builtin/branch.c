@@ -1048,10 +1048,11 @@ name|bname
 argument_list|)
 control|)
 block|{
-specifier|const
 name|char
 modifier|*
 name|target
+init|=
+name|NULL
 decl_stmt|;
 name|int
 name|flags
@@ -1137,7 +1138,7 @@ block|}
 block|}
 name|target
 operator|=
-name|resolve_ref_unsafe
+name|resolve_refdup
 argument_list|(
 name|name
 argument_list|,
@@ -1219,7 +1220,9 @@ name|ret
 operator|=
 literal|1
 expr_stmt|;
-continue|continue;
+goto|goto
+name|next
+goto|;
 block|}
 if|if
 condition|(
@@ -1263,7 +1266,9 @@ name|ret
 operator|=
 literal|1
 expr_stmt|;
-continue|continue;
+goto|goto
+name|next
+goto|;
 block|}
 if|if
 condition|(
@@ -1319,6 +1324,13 @@ argument_list|(
 name|bname
 operator|.
 name|buf
+argument_list|)
+expr_stmt|;
+name|next
+label|:
+name|free
+argument_list|(
+name|target
 argument_list|)
 expr_stmt|;
 block|}
