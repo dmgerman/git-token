@@ -299,6 +299,50 @@ struct|;
 end_struct
 
 begin_comment
+comment|/*  * Add a ref_update with the specified properties to transaction, and  * return a pointer to the new object. This function does not verify  * that refname is well-formed. new_sha1 and old_sha1 are only  * dereferenced if the REF_HAVE_NEW and REF_HAVE_OLD bits,  * respectively, are set in flags.  */
+end_comment
+
+begin_function_decl
+name|struct
+name|ref_update
+modifier|*
+name|ref_transaction_add_update
+parameter_list|(
+name|struct
+name|ref_transaction
+modifier|*
+name|transaction
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|refname
+parameter_list|,
+name|unsigned
+name|int
+name|flags
+parameter_list|,
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|new_sha1
+parameter_list|,
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|old_sha1
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|msg
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/*  * Transaction states.  * OPEN:   The transaction is in a valid state and can accept new updates.  *         An OPEN transaction can be committed.  * CLOSED: A closed transaction is no longer active and no other operations  *         than free can be used on it in this state.  *         A transaction can either become closed by successfully committing  *         an active transaction or if there is a failure while building  *         the transaction thus rendering it failed/inactive.  */
 end_comment
 
