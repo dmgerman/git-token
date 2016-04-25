@@ -299,6 +299,13 @@ name|char
 modifier|*
 name|msg
 decl_stmt|;
+comment|/* 	 * If this ref_update was split off of a symref update via 	 * split_symref_update(), then this member points at that 	 * update. This is used for two purposes: 	 * 1. When reporting errors, we report the refname under which 	 *    the update was originally requested. 	 * 2. When we read the old value of this reference, we 	 *    propagate it back to its parent update for recording in 	 *    the latter's reflog. 	 */
+DECL|member|parent_update
+name|struct
+name|ref_update
+modifier|*
+name|parent_update
+decl_stmt|;
 DECL|member|refname
 specifier|const
 name|char

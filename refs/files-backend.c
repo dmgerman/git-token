@@ -14408,7 +14408,13 @@ operator|->
 name|msg
 argument_list|)
 expr_stmt|;
-comment|/* Change the symbolic ref update to log only: */
+name|new_update
+operator|->
+name|parent_update
+operator|=
+name|update
+expr_stmt|;
+comment|/* 	 * Change the symbolic ref update to log only. Also, it 	 * doesn't need to check its old SHA-1 value, as that will be 	 * done when new_update is processed. 	 */
 name|update
 operator|->
 name|flags
@@ -14416,6 +14422,13 @@ operator||=
 name|REF_LOG_ONLY
 operator||
 name|REF_NODEREF
+expr_stmt|;
+name|update
+operator|->
+name|flags
+operator|&=
+operator|~
+name|REF_HAVE_OLD
 expr_stmt|;
 name|item
 operator|->
@@ -14425,6 +14438,44 @@ name|new_update
 expr_stmt|;
 return|return
 literal|0
+return|;
+block|}
+end_function
+
+begin_comment
+comment|/*  * Return the refname under which update was originally requested.  */
+end_comment
+
+begin_function
+DECL|function|original_update_refname
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|original_update_refname
+parameter_list|(
+name|struct
+name|ref_update
+modifier|*
+name|update
+parameter_list|)
+block|{
+while|while
+condition|(
+name|update
+operator|->
+name|parent_update
+condition|)
+name|update
+operator|=
+name|update
+operator|->
+name|parent_update
+expr_stmt|;
+return|return
+name|update
+operator|->
+name|refname
 return|;
 block|}
 end_function
@@ -14636,6 +14687,16 @@ condition|)
 block|{
 if|if
 condition|(
+name|update
+operator|->
+name|flags
+operator|&
+name|REF_NODEREF
+condition|)
+block|{
+comment|/* 			 * We won't be reading the referent as part of 			 * the transaction, so we have to read it here 			 * to record and possibly check old_sha1: 			 */
+if|if
+condition|(
 name|read_ref_full
 argument_list|(
 name|update
@@ -14671,7 +14732,8 @@ name|strbuf_addf
 argument_list|(
 name|err
 argument_list|,
-literal|"cannot lock ref '%s': can't resolve old value"
+literal|"cannot lock ref '%s': "
+literal|"can't resolve old value"
 argument_list|,
 name|update
 operator|->
@@ -14723,7 +14785,8 @@ name|strbuf_addf
 argument_list|(
 name|err
 argument_list|,
-literal|"cannot lock ref '%s': is at %s but expected %s"
+literal|"cannot lock ref '%s': "
+literal|"is at %s but expected %s"
 argument_list|,
 name|update
 operator|->
@@ -14750,18 +14813,10 @@ return|return
 name|TRANSACTION_GENERIC_ERROR
 return|;
 block|}
-if|if
-condition|(
-operator|!
-operator|(
-name|update
-operator|->
-name|flags
-operator|&
-name|REF_NODEREF
-operator|)
-condition|)
+block|}
+else|else
 block|{
+comment|/* 			 * Create a new update for the reference this 			 * symref is pointing at. Also, we will record 			 * and verify old_sha1 for this update as part 			 * of processing the split-off update, so we 			 * don't have to do it here. 			 */
 name|ret
 operator|=
 name|split_symref_update
@@ -14788,7 +14843,47 @@ name|ret
 return|;
 block|}
 block|}
-elseif|else
+else|else
+block|{
+name|struct
+name|ref_update
+modifier|*
+name|parent_update
+decl_stmt|;
+comment|/* 		 * If this update is happening indirectly because of a 		 * symref update, record the old SHA-1 in the parent 		 * update: 		 */
+for|for
+control|(
+name|parent_update
+operator|=
+name|update
+operator|->
+name|parent_update
+init|;
+name|parent_update
+condition|;
+name|parent_update
+operator|=
+name|parent_update
+operator|->
+name|parent_update
+control|)
+block|{
+name|oidcpy
+argument_list|(
+operator|&
+name|parent_update
+operator|->
+name|lock
+operator|->
+name|old_oid
+argument_list|,
+operator|&
+name|lock
+operator|->
+name|old_oid
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -14828,9 +14923,10 @@ name|err
 argument_list|,
 literal|"cannot lock ref '%s': reference already exists"
 argument_list|,
+name|original_update_refname
+argument_list|(
 name|update
-operator|->
-name|refname
+argument_list|)
 argument_list|)
 expr_stmt|;
 else|else
@@ -14840,9 +14936,10 @@ name|err
 argument_list|,
 literal|"cannot lock ref '%s': is at %s but expected %s"
 argument_list|,
+name|original_update_refname
+argument_list|(
 name|update
-operator|->
-name|refname
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -14864,6 +14961,7 @@ expr_stmt|;
 return|return
 name|TRANSACTION_GENERIC_ERROR
 return|;
+block|}
 block|}
 if|if
 condition|(
