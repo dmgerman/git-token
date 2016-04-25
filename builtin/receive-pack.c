@@ -5721,13 +5721,6 @@ name|REF_ISSYMREF
 operator|)
 condition|)
 return|return;
-name|dst_name
-operator|=
-name|strip_namespace
-argument_list|(
-name|dst_name
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -5757,6 +5750,13 @@ literal|"broken symref"
 expr_stmt|;
 return|return;
 block|}
+name|dst_name
+operator|=
+name|strip_namespace
+argument_list|(
+name|dst_name
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|(

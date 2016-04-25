@@ -1362,9 +1362,6 @@ index|[
 literal|20
 index|]
 decl_stmt|;
-name|int
-name|flag
-decl_stmt|;
 name|struct
 name|commit
 modifier|*
@@ -2055,8 +2052,7 @@ literal|0
 argument_list|,
 name|rev
 argument_list|,
-operator|&
-name|flag
+name|NULL
 argument_list|)
 expr_stmt|;
 name|head

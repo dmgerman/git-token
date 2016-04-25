@@ -7163,8 +7163,6 @@ modifier|*
 name|head_arg
 decl_stmt|;
 name|int
-name|flag
-decl_stmt|,
 name|i
 decl_stmt|,
 name|ret
@@ -7255,8 +7253,7 @@ literal|0
 argument_list|,
 name|head_sha1
 argument_list|,
-operator|&
-name|flag
+name|NULL
 argument_list|)
 expr_stmt|;
 if|if

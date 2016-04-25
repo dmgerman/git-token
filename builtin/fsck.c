@@ -2516,9 +2516,6 @@ name|void
 parameter_list|)
 block|{
 name|int
-name|flag
-decl_stmt|;
-name|int
 name|null_is_error
 init|=
 literal|0
@@ -2546,8 +2543,7 @@ name|head_oid
 operator|.
 name|hash
 argument_list|,
-operator|&
-name|flag
+name|NULL
 argument_list|)
 expr_stmt|;
 if|if
