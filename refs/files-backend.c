@@ -13980,6 +13980,10 @@ operator|->
 name|refname
 argument_list|)
 expr_stmt|;
+name|ret
+operator|=
+name|TRANSACTION_GENERIC_ERROR
+expr_stmt|;
 goto|goto
 name|cleanup
 goto|;
