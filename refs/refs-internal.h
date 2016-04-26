@@ -503,7 +503,7 @@ parameter_list|,
 name|unsigned
 name|int
 modifier|*
-name|flags
+name|type
 parameter_list|)
 function_decl|;
 end_function_decl

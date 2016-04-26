@@ -5661,7 +5661,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Read a raw ref from the filesystem or packed refs file.  *  * If the ref is a sha1, fill in sha1 and return 0.  *  * If the ref is symbolic, fill in *symref with the referrent  * (e.g. "refs/heads/master") and return 0.  The caller is responsible  * for validating the referrent.  Set REF_ISSYMREF in flags.  *  * If the ref doesn't exist, set errno to ENOENT and return -1.  *  * If the ref exists but is neither a symbolic ref nor a sha1, it is  * broken. Set REF_ISBROKEN in flags, set errno to EINVAL, and return  * -1.  *  * If there is another error reading the ref, set errno appropriately and  * return -1.  *  * Backend-specific flags might be set in flags as well, regardless of  * outcome.  *  * sb_path is workspace: the caller should allocate and free it.  *  * It is OK for refname to point into symref. In this case:  * - if the function succeeds with REF_ISSYMREF, symref will be  *   overwritten and the memory pointed to by refname might be changed  *   or even freed.  * - in all other cases, symref will be untouched, and therefore  *   refname will still be valid and unchanged.  */
+comment|/*  * Read a raw ref from the filesystem or packed refs file.  *  * If the ref is a sha1, fill in sha1 and return 0.  *  * If the ref is symbolic, fill in *symref with the referrent  * (e.g. "refs/heads/master") and return 0.  The caller is responsible  * for validating the referrent.  Set REF_ISSYMREF in type.  *  * If the ref doesn't exist, set errno to ENOENT and return -1.  *  * If the ref exists but is neither a symbolic ref nor a sha1, it is  * broken. Set REF_ISBROKEN in type, set errno to EINVAL, and return  * -1.  *  * If there is another error reading the ref, set errno appropriately and  * return -1.  *  * Backend-specific flags might be set in type as well, regardless of  * outcome.  *  * sb_path is workspace: the caller should allocate and free it.  *  * It is OK for refname to point into symref. In this case:  * - if the function succeeds with REF_ISSYMREF, symref will be  *   overwritten and the memory pointed to by refname might be changed  *   or even freed.  * - in all other cases, symref will be untouched, and therefore  *   refname will still be valid and unchanged.  */
 end_comment
 
 begin_function
@@ -5687,7 +5687,7 @@ parameter_list|,
 name|unsigned
 name|int
 modifier|*
-name|flags
+name|type
 parameter_list|)
 block|{
 name|struct
@@ -5783,7 +5783,7 @@ name|refname
 argument_list|,
 name|sha1
 argument_list|,
-name|flags
+name|type
 argument_list|)
 condition|)
 block|{
@@ -5885,7 +5885,7 @@ name|symref
 argument_list|)
 expr_stmt|;
 operator|*
-name|flags
+name|type
 operator||=
 name|REF_ISSYMREF
 expr_stmt|;
@@ -5918,7 +5918,7 @@ name|refname
 argument_list|,
 name|sha1
 argument_list|,
-name|flags
+name|type
 argument_list|)
 condition|)
 block|{
@@ -6064,7 +6064,7 @@ name|buf
 argument_list|)
 expr_stmt|;
 operator|*
-name|flags
+name|type
 operator||=
 name|REF_ISSYMREF
 expr_stmt|;
@@ -6106,7 +6106,7 @@ operator|)
 condition|)
 block|{
 operator|*
-name|flags
+name|type
 operator||=
 name|REF_ISBROKEN
 expr_stmt|;
