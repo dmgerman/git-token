@@ -11597,8 +11597,10 @@ name|lock
 argument_list|)
 condition|)
 block|{
-name|error
+name|strbuf_addf
 argument_list|(
+name|err
+argument_list|,
 literal|"Couldn't set %s"
 argument_list|,
 name|lock
