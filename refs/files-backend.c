@@ -6922,7 +6922,7 @@ name|strbuf_addf
 argument_list|(
 name|err
 argument_list|,
-literal|"can't verify ref %s"
+literal|"can't verify ref '%s'"
 argument_list|,
 name|lock
 operator|->
@@ -6974,7 +6974,7 @@ name|strbuf_addf
 argument_list|(
 name|err
 argument_list|,
-literal|"ref %s is at %s but expected %s"
+literal|"ref '%s' is at %s but expected %s"
 argument_list|,
 name|lock
 operator|->
@@ -7332,7 +7332,7 @@ name|strbuf_addf
 argument_list|(
 name|err
 argument_list|,
-literal|"unable to resolve reference %s: %s"
+literal|"unable to resolve reference '%s': %s"
 argument_list|,
 name|orig_refname
 argument_list|,
@@ -7476,7 +7476,7 @@ name|strbuf_addf
 argument_list|(
 name|err
 argument_list|,
-literal|"unable to create directory for %s"
+literal|"unable to create directory for '%s'"
 argument_list|,
 name|ref_file
 operator|.
@@ -10424,7 +10424,7 @@ name|strbuf_addf
 argument_list|(
 name|err
 argument_list|,
-literal|"unable to create directory for %s: "
+literal|"unable to create directory for '%s': "
 literal|"%s"
 argument_list|,
 name|logfile
@@ -10508,7 +10508,7 @@ name|strbuf_addf
 argument_list|(
 name|err
 argument_list|,
-literal|"There are still logs under "
+literal|"there are still logs under "
 literal|"'%s'"
 argument_list|,
 name|logfile
@@ -10546,7 +10546,7 @@ name|strbuf_addf
 argument_list|(
 name|err
 argument_list|,
-literal|"unable to append to %s: %s"
+literal|"unable to append to '%s': %s"
 argument_list|,
 name|logfile
 operator|->
@@ -10926,7 +10926,7 @@ name|strbuf_addf
 argument_list|(
 name|err
 argument_list|,
-literal|"unable to append to %s: %s"
+literal|"unable to append to '%s': %s"
 argument_list|,
 name|logfile
 operator|->
@@ -10960,7 +10960,7 @@ name|strbuf_addf
 argument_list|(
 name|err
 argument_list|,
-literal|"unable to append to %s: %s"
+literal|"unable to append to '%s': %s"
 argument_list|,
 name|logfile
 operator|->
@@ -11172,7 +11172,7 @@ name|strbuf_addf
 argument_list|(
 name|err
 argument_list|,
-literal|"Trying to write ref %s with nonexistent object %s"
+literal|"trying to write ref '%s' with nonexistent object %s"
 argument_list|,
 name|lock
 operator|->
@@ -11214,7 +11214,7 @@ name|strbuf_addf
 argument_list|(
 name|err
 argument_list|,
-literal|"Trying to write non-commit object %s to branch %s"
+literal|"trying to write non-commit object %s to branch '%s'"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -11285,7 +11285,7 @@ name|strbuf_addf
 argument_list|(
 name|err
 argument_list|,
-literal|"Couldn't write %s"
+literal|"couldn't write '%s'"
 argument_list|,
 name|get_lock_file_path
 argument_list|(
@@ -11429,7 +11429,7 @@ name|strbuf_addf
 argument_list|(
 name|err
 argument_list|,
-literal|"Cannot update the ref '%s': %s"
+literal|"cannot update the ref '%s': %s"
 argument_list|,
 name|lock
 operator|->
@@ -11577,7 +11577,7 @@ name|strbuf_addf
 argument_list|(
 name|err
 argument_list|,
-literal|"Couldn't set %s"
+literal|"couldn't set '%s'"
 argument_list|,
 name|lock
 operator|->
@@ -13504,7 +13504,7 @@ name|strbuf_addf
 argument_list|(
 name|err
 argument_list|,
-literal|"Multiple updates for ref '%s' not allowed."
+literal|"multiple updates for ref '%s' not allowed."
 argument_list|,
 name|refnames
 operator|->
@@ -13971,7 +13971,7 @@ name|strbuf_addf
 argument_list|(
 name|err
 argument_list|,
-literal|"Couldn't close %s.lock"
+literal|"couldn't close '%s.lock'"
 argument_list|,
 name|update
 operator|->

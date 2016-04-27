@@ -2744,7 +2744,7 @@ name|strbuf_addf
 argument_list|(
 name|err
 argument_list|,
-literal|"Could not open '%s' for writing: %s"
+literal|"could not open '%s' for writing: %s"
 argument_list|,
 name|filename
 argument_list|,
@@ -2801,7 +2801,7 @@ name|strbuf_addf
 argument_list|(
 name|err
 argument_list|,
-literal|"Unexpected sha1 when writing %s"
+literal|"unexpected sha1 when writing '%s'"
 argument_list|,
 name|pseudoref
 argument_list|)
@@ -2841,7 +2841,7 @@ name|strbuf_addf
 argument_list|(
 name|err
 argument_list|,
-literal|"Could not write to '%s'"
+literal|"could not write to '%s'"
 argument_list|,
 name|filename
 argument_list|)
@@ -4328,7 +4328,7 @@ name|strbuf_addf
 argument_list|(
 name|err
 argument_list|,
-literal|"refusing to update ref with bad name %s"
+literal|"refusing to update ref with bad name '%s'"
 argument_list|,
 name|refname
 argument_list|)
