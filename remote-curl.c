@@ -2655,7 +2655,8 @@ name|curl_slist
 modifier|*
 name|headers
 init|=
-name|NULL
+name|http_copy_default_headers
+argument_list|()
 decl_stmt|;
 name|struct
 name|strbuf
@@ -2843,7 +2844,8 @@ name|curl_slist
 modifier|*
 name|headers
 init|=
-name|NULL
+name|http_copy_default_headers
+argument_list|()
 decl_stmt|;
 name|int
 name|use_gzip
