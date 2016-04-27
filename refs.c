@@ -699,11 +699,7 @@ return|return
 name|result
 return|;
 block|}
-while|while
-condition|(
-operator|*
-name|refname
-condition|)
+do|do
 block|{
 if|if
 condition|(
@@ -726,6 +722,12 @@ name|refname
 operator|++
 expr_stmt|;
 block|}
+do|while
+condition|(
+operator|*
+name|refname
+condition|)
+do|;
 return|return
 literal|1
 return|;
