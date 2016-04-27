@@ -644,13 +644,21 @@ modifier|*
 name|refname
 parameter_list|)
 block|{
+specifier|const
+name|char
+modifier|*
+name|rest
+decl_stmt|;
 if|if
 condition|(
-name|starts_with
+name|skip_prefix
 argument_list|(
 name|refname
 argument_list|,
 literal|"refs/"
+argument_list|,
+operator|&
+name|rest
 argument_list|)
 condition|)
 block|{
@@ -661,17 +669,17 @@ decl_stmt|;
 name|int
 name|result
 decl_stmt|;
+comment|/* 		 * Does the refname try to escape refs/? 		 * For example: refs/foo/../bar is safe but refs/foo/../../bar 		 * is not. 		 */
 name|buf
 operator|=
 name|xmallocz
 argument_list|(
 name|strlen
 argument_list|(
-name|refname
+name|rest
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/* 		 * Does the refname try to escape refs/? 		 * For example: refs/foo/../bar is safe but refs/foo/../../bar 		 * is not. 		 */
 name|result
 operator|=
 operator|!
@@ -679,12 +687,7 @@ name|normalize_path_copy
 argument_list|(
 name|buf
 argument_list|,
-name|refname
-operator|+
-name|strlen
-argument_list|(
-literal|"refs/"
-argument_list|)
+name|rest
 argument_list|)
 expr_stmt|;
 name|free
