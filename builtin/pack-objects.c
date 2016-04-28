@@ -4103,6 +4103,21 @@ return|;
 block|}
 end_function
 
+begin_decl_stmt
+DECL|variable|no_split_warning
+specifier|static
+specifier|const
+name|char
+name|no_split_warning
+index|[]
+init|=
+name|N_
+argument_list|(
+literal|"disabling bitmap writing, packs are split due to pack.packSizeLimit"
+argument_list|)
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|write_pack_file
 specifier|static
@@ -4366,10 +4381,24 @@ argument_list|(
 name|fd
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|write_bitmap_index
+condition|)
+block|{
+name|warning
+argument_list|(
+name|_
+argument_list|(
+name|no_split_warning
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|write_bitmap_index
 operator|=
 literal|0
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
