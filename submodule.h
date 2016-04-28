@@ -433,6 +433,47 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * This function is intended as a callback for use with  * git_config_from_parameters(). It ignores any config options which  * are not suitable for passing along to a submodule, and accumulates the rest  * in "data", which must be a pointer to a strbuf. The end result can  * be put into $GIT_CONFIG_PARAMETERS for passing to a sub-process.  */
+end_comment
+
+begin_function_decl
+name|int
+name|sanitize_submodule_config
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|var
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|value
+parameter_list|,
+name|void
+modifier|*
+name|data
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/*  * Prepare the "env_array" parameter of a "struct child_process" for executing  * a submodule by clearing any repo-specific envirionment variables, but  * retaining any config approved by sanitize_submodule_config().  */
+end_comment
+
+begin_function_decl
+name|void
+name|prepare_submodule_repo_env
+parameter_list|(
+name|struct
+name|argv_array
+modifier|*
+name|out
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
