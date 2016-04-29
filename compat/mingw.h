@@ -2797,11 +2797,27 @@ name|PATH_SEP
 value|';'
 end_define
 
-begin_ifndef
-ifndef|#
-directive|ifndef
+begin_if
+if|#
+directive|if
+operator|!
+name|defined
+argument_list|(
 name|__MINGW64_VERSION_MAJOR
-end_ifndef
+argument_list|)
+operator|&&
+operator|(
+operator|!
+name|defined
+argument_list|(
+name|_MSC_VER
+argument_list|)
+operator|||
+name|_MSC_VER
+operator|<
+literal|1800
+operator|)
+end_if
 
 begin_define
 DECL|macro|PRIuMAX

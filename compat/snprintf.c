@@ -34,6 +34,18 @@ name|__GNUC__
 operator|<
 literal|4
 operator|)
+operator|&&
+operator|(
+operator|!
+name|defined
+argument_list|(
+name|_MSC_VER
+argument_list|)
+operator|||
+name|_MSC_VER
+operator|<
+literal|1900
+operator|)
 end_if
 
 begin_define
