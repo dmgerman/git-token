@@ -101,12 +101,6 @@ directive|include
 file|"sha1-array.h"
 end_include
 
-begin_include
-include|#
-directive|include
-file|"sigchain.h"
-end_include
-
 begin_decl_stmt
 DECL|variable|transfer_unpack_limit
 specifier|static
@@ -3604,13 +3598,6 @@ decl_stmt|;
 name|int
 name|ret
 decl_stmt|;
-name|sigchain_push
-argument_list|(
-name|SIGPIPE
-argument_list|,
-name|SIG_IGN
-argument_list|)
-expr_stmt|;
 name|ret
 operator|=
 name|recv_sideband
@@ -3628,11 +3615,6 @@ expr_stmt|;
 name|close
 argument_list|(
 name|out
-argument_list|)
-expr_stmt|;
-name|sigchain_pop
-argument_list|(
-name|SIGPIPE
 argument_list|)
 expr_stmt|;
 return|return
@@ -3734,6 +3716,12 @@ operator|.
 name|out
 operator|=
 operator|-
+literal|1
+expr_stmt|;
+name|demux
+operator|.
+name|isolate_sigpipe
+operator|=
 literal|1
 expr_stmt|;
 if|if
