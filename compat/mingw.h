@@ -805,6 +805,14 @@ block|}
 end_function
 
 begin_define
+DECL|macro|SIG_BLOCK
+define|#
+directive|define
+name|SIG_BLOCK
+value|0
+end_define
+
+begin_define
 DECL|macro|SIG_UNBLOCK
 define|#
 directive|define
