@@ -1226,6 +1226,28 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Update HEAD of the specified gitdir.  * Similar to create_symref("relative-git-dir/HEAD", target, NULL), but  * this can update the main working tree's HEAD regardless of where  * $GIT_DIR points to.  * Return 0 if successful, non-zero otherwise.  * */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|set_worktree_head_symref
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|gitdir
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|target
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_enum
 DECL|enum|action_on_err
 enum|enum
