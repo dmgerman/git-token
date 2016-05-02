@@ -548,6 +548,16 @@ decl_stmt|;
 name|size_t
 name|template_len
 decl_stmt|;
+name|struct
+name|repository_format
+name|template_format
+decl_stmt|;
+name|struct
+name|strbuf
+name|err
+init|=
+name|STRBUF_INIT
+decl_stmt|;
 name|DIR
 modifier|*
 name|dir
@@ -669,19 +679,14 @@ argument_list|,
 literal|"config"
 argument_list|)
 expr_stmt|;
-name|repository_format_version
-operator|=
-literal|0
-expr_stmt|;
-name|git_config_from_file
+name|read_repository_format
 argument_list|(
-name|check_repository_format_version
+operator|&
+name|template_format
 argument_list|,
 name|template_path
 operator|.
 name|buf
-argument_list|,
-name|NULL
 argument_list|)
 expr_stmt|;
 name|strbuf_setlen
@@ -692,26 +697,45 @@ argument_list|,
 name|template_len
 argument_list|)
 expr_stmt|;
+comment|/* 	 * No mention of version at all is OK, but anything else should be 	 * verified. 	 */
 if|if
 condition|(
-name|repository_format_version
+name|template_format
+operator|.
+name|version
+operator|>=
+literal|0
 operator|&&
-name|repository_format_version
-operator|!=
-name|GIT_REPO_VERSION
+name|verify_repository_format
+argument_list|(
+operator|&
+name|template_format
+argument_list|,
+operator|&
+name|err
+argument_list|)
+operator|<
+literal|0
 condition|)
 block|{
 name|warning
 argument_list|(
 name|_
 argument_list|(
-literal|"not copying templates of "
-literal|"a wrong format version %d from '%s'"
+literal|"not copying templates from '%s': %s"
 argument_list|)
 argument_list|,
-name|repository_format_version
-argument_list|,
 name|template_dir
+argument_list|,
+name|err
+operator|.
+name|buf
+argument_list|)
+expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|err
 argument_list|)
 expr_stmt|;
 goto|goto
@@ -1011,14 +1035,16 @@ operator|!=
 operator|-
 literal|1
 condition|)
-name|shared_repository
-operator|=
+name|set_shared_repository
+argument_list|(
 name|init_shared_repository
+argument_list|)
 expr_stmt|;
 comment|/* 	 * We would have created the above under user's umask -- under 	 * shared-repository settings, we would need to fix them up. 	 */
 if|if
 condition|(
-name|shared_repository
+name|get_shared_repository
+argument_list|()
 condition|)
 block|{
 name|adjust_shared_perm
@@ -1833,7 +1859,8 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|shared_repository
+name|get_shared_repository
+argument_list|()
 condition|)
 block|{
 name|char
@@ -1845,7 +1872,8 @@ decl_stmt|;
 comment|/* We do not spell "group" and such, so that 		 * the configuration can be read by older version 		 * of git. Note, we use octal numbers for new share modes, 		 * and compatibility values for PERM_GROUP and 		 * PERM_EVERYBODY. 		 */
 if|if
 condition|(
-name|shared_repository
+name|get_shared_repository
+argument_list|()
 operator|<
 literal|0
 condition|)
@@ -1862,13 +1890,15 @@ argument_list|,
 literal|"0%o"
 argument_list|,
 operator|-
-name|shared_repository
+name|get_shared_repository
+argument_list|()
 argument_list|)
 expr_stmt|;
 elseif|else
 if|if
 condition|(
-name|shared_repository
+name|get_shared_repository
+argument_list|()
 operator|==
 name|PERM_GROUP
 condition|)
@@ -1889,7 +1919,8 @@ expr_stmt|;
 elseif|else
 if|if
 condition|(
-name|shared_repository
+name|get_shared_repository
+argument_list|()
 operator|==
 name|PERM_EVERYBODY
 condition|)
@@ -1966,7 +1997,8 @@ argument_list|(
 literal|"Initialized empty"
 argument_list|)
 argument_list|,
-name|shared_repository
+name|get_shared_repository
+argument_list|()
 condition|?
 name|_
 argument_list|(
@@ -2426,11 +2458,13 @@ decl_stmt|;
 comment|/* 				 * At this point we haven't read any configuration, 				 * and we know shared_repository should always be 0; 				 * but just in case we play safe. 				 */
 name|saved
 operator|=
-name|shared_repository
+name|get_shared_repository
+argument_list|()
 expr_stmt|;
-name|shared_repository
-operator|=
+name|set_shared_repository
+argument_list|(
 literal|0
+argument_list|)
 expr_stmt|;
 switch|switch
 condition|(
@@ -2474,9 +2508,10 @@ argument_list|)
 expr_stmt|;
 break|break;
 block|}
-name|shared_repository
-operator|=
+name|set_shared_repository
+argument_list|(
 name|saved
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
@@ -2583,9 +2618,10 @@ operator|!=
 operator|-
 literal|1
 condition|)
-name|shared_repository
-operator|=
+name|set_shared_repository
+argument_list|(
 name|init_shared_repository
+argument_list|)
 expr_stmt|;
 comment|/* 	 * GIT_WORK_TREE makes sense only in conjunction with GIT_DIR 	 * without --bare.  Catch the error early. 	 */
 name|git_dir
