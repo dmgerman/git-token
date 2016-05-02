@@ -1762,8 +1762,10 @@ condition|(
 operator|!
 name|quiet
 condition|)
-name|printf
+name|fprintf
 argument_list|(
+name|stderr
+argument_list|,
 name|_
 argument_list|(
 literal|"Submodule '%s' (%s) registered for path '%s'\n"
