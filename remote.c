@@ -11777,6 +11777,8 @@ literal|"Your branch and '%s' have diverged,\n"
 literal|"and have %d and %d different commits each, "
 literal|"respectively.\n"
 argument_list|,
+name|ours
+operator|+
 name|theirs
 argument_list|)
 argument_list|,
