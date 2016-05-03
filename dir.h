@@ -1268,27 +1268,6 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
-begin_function_decl
-specifier|extern
-name|int
-name|fnmatch_icase
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|pattern
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|string
-parameter_list|,
-name|int
-name|flags
-parameter_list|)
-function_decl|;
-end_function_decl
-
 begin_comment
 comment|/*  * The prefix part of pattern must not contains wildcards.  */
 end_comment
