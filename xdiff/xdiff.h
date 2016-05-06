@@ -86,6 +86,11 @@ define|#
 directive|define
 name|XDF_IGNORE_BLANK_LINES
 value|(1<< 7)
+DECL|macro|XDF_COMPACTION_HEURISTIC
+define|#
+directive|define
+name|XDF_COMPACTION_HEURISTIC
+value|(1<< 8)
 DECL|macro|XDL_EMIT_FUNCNAMES
 define|#
 directive|define
