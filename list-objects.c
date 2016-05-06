@@ -478,7 +478,9 @@ name|lookup_tree
 argument_list|(
 name|entry
 operator|.
-name|sha1
+name|oid
+operator|->
+name|hash
 argument_list|)
 argument_list|,
 name|show
@@ -508,7 +510,9 @@ name|revs
 argument_list|,
 name|entry
 operator|.
-name|sha1
+name|oid
+operator|->
+name|hash
 argument_list|,
 name|show
 argument_list|,
@@ -530,7 +534,9 @@ name|lookup_blob
 argument_list|(
 name|entry
 operator|.
-name|sha1
+name|oid
+operator|->
+name|hash
 argument_list|)
 argument_list|,
 name|show

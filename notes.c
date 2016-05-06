@@ -2263,7 +2263,9 @@ name|val_sha1
 argument_list|,
 name|entry
 operator|.
-name|sha1
+name|oid
+operator|->
+name|hash
 argument_list|)
 expr_stmt|;
 if|if
@@ -2449,7 +2451,9 @@ name|mode
 argument_list|,
 name|entry
 operator|.
-name|sha1
+name|oid
+operator|->
+name|hash
 argument_list|)
 expr_stmt|;
 block|}

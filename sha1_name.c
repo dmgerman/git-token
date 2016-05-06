@@ -6376,6 +6376,39 @@ block|}
 end_function
 
 begin_comment
+comment|/*  * This is like "get_sha1()", but for struct object_id.  */
+end_comment
+
+begin_function
+DECL|function|get_oid
+name|int
+name|get_oid
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|name
+parameter_list|,
+name|struct
+name|object_id
+modifier|*
+name|oid
+parameter_list|)
+block|{
+return|return
+name|get_sha1
+argument_list|(
+name|name
+argument_list|,
+name|oid
+operator|->
+name|hash
+argument_list|)
+return|;
+block|}
+end_function
+
+begin_comment
 comment|/*  * Many callers know that the user meant to name a commit-ish by  * syntactical positions where the object name appears.  Calling this  * function allows the machinery to disambiguate shorter-than-unique  * abbreviated object names between commit-ish and others.  *  * Note that this does NOT error out when the named object is not a  * commit-ish. It is merely to give a hint to the disambiguation  * machinery.  */
 end_comment
 

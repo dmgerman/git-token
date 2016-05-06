@@ -2213,7 +2213,9 @@ name|opt
 argument_list|,
 name|entry
 operator|.
-name|sha1
+name|oid
+operator|->
+name|hash
 argument_list|,
 name|base
 operator|->
@@ -2266,7 +2268,9 @@ name|lock_and_read_sha1_file
 argument_list|(
 name|entry
 operator|.
-name|sha1
+name|oid
+operator|->
+name|hash
 argument_list|,
 operator|&
 name|type
@@ -2287,11 +2291,11 @@ argument_list|(
 literal|"unable to read tree (%s)"
 argument_list|)
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
 name|entry
 operator|.
-name|sha1
+name|oid
 argument_list|)
 argument_list|)
 expr_stmt|;

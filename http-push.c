@@ -7199,7 +7199,9 @@ name|lookup_tree
 argument_list|(
 name|entry
 operator|.
-name|sha1
+name|oid
+operator|->
+name|hash
 argument_list|)
 argument_list|,
 name|p
@@ -7217,7 +7219,9 @@ name|lookup_blob
 argument_list|(
 name|entry
 operator|.
-name|sha1
+name|oid
+operator|->
+name|hash
 argument_list|)
 argument_list|,
 name|p
