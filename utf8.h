@@ -434,7 +434,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Returns true if the the path would match ".git" after HFS case-folding.  * The path should be NUL-terminated, but we will match variants of both ".git\0"  * and ".git/..." (but _not_ ".../.git"). This makes it suitable for both fsck  * and verify_path().  */
+comment|/*  * Returns true if the path would match ".git" after HFS case-folding.  * The path should be NUL-terminated, but we will match variants of both ".git\0"  * and ".git/..." (but _not_ ".../.git"). This makes it suitable for both fsck  * and verify_path().  */
 end_comment
 
 begin_function_decl

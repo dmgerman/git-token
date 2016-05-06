@@ -332,7 +332,7 @@ block|{
 name|int
 name|i
 decl_stmt|;
-comment|/* 	 * To keep track of the shared entries between 	 * istate->base->cache[] and istate->cache[], base entry 	 * position is stored in each base entry. All positions start 	 * from 1 instead of 0, which is resrved to say "this is a new 	 * entry". 	 */
+comment|/* 	 * To keep track of the shared entries between 	 * istate->base->cache[] and istate->cache[], base entry 	 * position is stored in each base entry. All positions start 	 * from 1 instead of 0, which is reserved to say "this is a new 	 * entry". 	 */
 for|for
 control|(
 name|i

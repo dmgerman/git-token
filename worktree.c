@@ -103,7 +103,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * read 'path_to_ref' into 'ref'.  Also if is_detached is not NULL,  * set is_detached to 1 (0) if the ref is detatched (is not detached).  *  * $GIT_COMMON_DIR/$symref (e.g. HEAD) is practically outside $GIT_DIR so  * for linked worktrees, `resolve_ref_unsafe()` won't work (it uses  * git_path). Parse the ref ourselves.  *  * return -1 if the ref is not a proper ref, 0 otherwise (success)  */
+comment|/*  * read 'path_to_ref' into 'ref'.  Also if is_detached is not NULL,  * set is_detached to 1 (0) if the ref is detached (is not detached).  *  * $GIT_COMMON_DIR/$symref (e.g. HEAD) is practically outside $GIT_DIR so  * for linked worktrees, `resolve_ref_unsafe()` won't work (it uses  * git_path). Parse the ref ourselves.  *  * return -1 if the ref is not a proper ref, 0 otherwise (success)  */
 end_comment
 
 begin_function

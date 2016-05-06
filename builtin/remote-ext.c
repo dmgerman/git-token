@@ -754,7 +754,7 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"Comammand input error"
+literal|"Command input error"
 argument_list|)
 expr_stmt|;
 name|exit
