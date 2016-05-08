@@ -3064,16 +3064,11 @@ name|buf
 argument_list|)
 expr_stmt|;
 return|return
-name|error
+name|error_errno
 argument_list|(
 name|_
 argument_list|(
-literal|"could not write branch description template: %s"
-argument_list|)
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
+literal|"could not write branch description template"
 argument_list|)
 argument_list|)
 return|;
