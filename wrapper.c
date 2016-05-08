@@ -2653,18 +2653,13 @@ name|err
 operator|=
 name|errno
 expr_stmt|;
-name|warning
+name|warning_errno
 argument_list|(
-literal|"unable to %s %s: %s"
+literal|"unable to %s %s"
 argument_list|,
 name|op
 argument_list|,
 name|file
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|errno
@@ -2838,19 +2833,14 @@ modifier|*
 name|path
 parameter_list|)
 block|{
-name|warning
+name|warning_errno
 argument_list|(
 name|_
 argument_list|(
-literal|"unable to access '%s': %s"
+literal|"unable to access '%s'"
 argument_list|)
 argument_list|,
 name|path
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
