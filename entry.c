@@ -914,16 +914,11 @@ condition|(
 name|ret
 condition|)
 return|return
-name|error
+name|error_errno
 argument_list|(
-literal|"unable to create symlink %s (%s)"
+literal|"unable to create symlink %s"
 argument_list|,
 name|path
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 return|;
 break|break;
@@ -995,16 +990,11 @@ name|new
 argument_list|)
 expr_stmt|;
 return|return
-name|error
+name|error_errno
 argument_list|(
-literal|"unable to create file %s (%s)"
+literal|"unable to create file %s"
 argument_list|,
 name|path
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 return|;
 block|}
@@ -1473,18 +1463,13 @@ name|buf
 argument_list|)
 condition|)
 return|return
-name|error
+name|error_errno
 argument_list|(
-literal|"unable to unlink old '%s' (%s)"
+literal|"unable to unlink old '%s'"
 argument_list|,
 name|path
 operator|.
 name|buf
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 return|;
 block|}
