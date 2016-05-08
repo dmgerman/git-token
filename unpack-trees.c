@@ -7018,16 +7018,11 @@ argument_list|)
 condition|)
 name|ret
 operator|=
-name|error
+name|error_errno
 argument_list|(
-literal|"cannot stat '%s': %s"
+literal|"cannot stat '%s'"
 argument_list|,
 name|path
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 else|else
@@ -7081,18 +7076,13 @@ operator|!=
 name|ENOENT
 condition|)
 return|return
-name|error
+name|error_errno
 argument_list|(
-literal|"cannot stat '%s': %s"
+literal|"cannot stat '%s'"
 argument_list|,
 name|ce
 operator|->
 name|name
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 return|;
 return|return
