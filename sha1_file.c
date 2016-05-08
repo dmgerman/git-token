@@ -5251,18 +5251,13 @@ name|base
 operator|==
 name|MAP_FAILED
 condition|)
-name|die
+name|die_errno
 argument_list|(
-literal|"packfile %s cannot be mapped: %s"
+literal|"packfile %s cannot be mapped"
 argument_list|,
 name|p
 operator|->
 name|pack_name
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -6198,18 +6193,13 @@ name|errno
 operator|!=
 name|ENOENT
 condition|)
-name|error
+name|error_errno
 argument_list|(
-literal|"unable to open object pack directory: %s: %s"
+literal|"unable to open object pack directory: %s"
 argument_list|,
 name|path
 operator|.
 name|buf
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|strbuf_release
@@ -14809,16 +14799,11 @@ name|EEXIST
 condition|)
 block|{
 return|return
-name|error
+name|error_errno
 argument_list|(
-literal|"unable to write sha1 filename %s: %s"
+literal|"unable to write sha1 filename %s"
 argument_list|,
 name|filename
-argument_list|,
-name|strerror
-argument_list|(
-name|ret
-argument_list|)
 argument_list|)
 return|;
 block|}
@@ -14879,14 +14864,9 @@ operator|<
 literal|0
 condition|)
 return|return
-name|error
+name|error_errno
 argument_list|(
-literal|"file write error (%s)"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"file write error"
 argument_list|)
 return|;
 return|return
@@ -15304,14 +15284,9 @@ argument_list|)
 return|;
 else|else
 return|return
-name|error
+name|error_errno
 argument_list|(
-literal|"unable to create temporary file: %s"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"unable to create temporary file"
 argument_list|)
 return|;
 block|}
@@ -15597,18 +15572,13 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-name|warning
+name|warning_errno
 argument_list|(
-literal|"failed utime() on %s: %s"
+literal|"failed utime() on %s"
 argument_list|,
 name|tmp_file
 operator|.
 name|buf
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -16915,14 +16885,9 @@ expr_stmt|;
 else|else
 name|ret
 operator|=
-name|error
+name|error_errno
 argument_list|(
-literal|"short read %s"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"short read"
 argument_list|)
 expr_stmt|;
 name|free
@@ -17262,16 +17227,11 @@ operator|<
 literal|0
 condition|)
 return|return
-name|error
+name|error_errno
 argument_list|(
-literal|"open(\"%s\"): %s"
+literal|"open(\"%s\")"
 argument_list|,
 name|path
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 return|;
 if|if
@@ -17319,27 +17279,14 @@ operator|->
 name|st_size
 argument_list|)
 condition|)
-block|{
-name|char
-modifier|*
-name|errstr
-init|=
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
-decl_stmt|;
 return|return
-name|error
+name|error_errno
 argument_list|(
-literal|"readlink(\"%s\"): %s"
+literal|"readlink(\"%s\")"
 argument_list|,
 name|path
-argument_list|,
-name|errstr
 argument_list|)
 return|;
-block|}
 if|if
 condition|(
 operator|!
@@ -17639,18 +17586,13 @@ return|return
 literal|0
 return|;
 return|return
-name|error
+name|error_errno
 argument_list|(
-literal|"unable to open %s: %s"
+literal|"unable to open %s"
 argument_list|,
 name|path
 operator|->
 name|buf
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 return|;
 block|}
