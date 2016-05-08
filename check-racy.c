@@ -81,18 +81,13 @@ name|st
 argument_list|)
 condition|)
 block|{
-name|error
+name|error_errno
 argument_list|(
-literal|"lstat(%s): %s"
+literal|"lstat(%s)"
 argument_list|,
 name|ce
 operator|->
 name|name
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 continue|continue;
