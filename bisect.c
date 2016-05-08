@@ -4204,16 +4204,11 @@ name|fd
 operator|<
 literal|0
 condition|)
-name|warning
+name|warning_errno
 argument_list|(
-literal|"could not create file '%s': %s"
+literal|"could not create file '%s'"
 argument_list|,
 name|filename
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 else|else
@@ -4410,16 +4405,11 @@ return|return;
 block|}
 else|else
 block|{
-name|die
+name|die_errno
 argument_list|(
-literal|"could not read file '%s': %s"
+literal|"could not read file '%s'"
 argument_list|,
 name|filename
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
