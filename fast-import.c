@@ -1685,16 +1685,11 @@ operator|!
 name|rpt
 condition|)
 block|{
-name|error
+name|error_errno
 argument_list|(
-literal|"can't write crash report %s: %s"
+literal|"can't write crash report %s"
 argument_list|,
 name|loc
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|free
@@ -10106,16 +10101,11 @@ condition|)
 block|{
 name|failure
 operator||=
-name|error
+name|error_errno
 argument_list|(
-literal|"Unable to write marks file %s: %s"
+literal|"Unable to write marks file %s"
 argument_list|,
 name|export_marks_file
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return;
@@ -10183,16 +10173,11 @@ condition|)
 block|{
 name|failure
 operator||=
-name|error
+name|error_errno
 argument_list|(
-literal|"Unable to write file %s: %s"
+literal|"Unable to write file %s"
 argument_list|,
 name|export_marks_file
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return;
