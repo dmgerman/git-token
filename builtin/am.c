@@ -3539,20 +3539,15 @@ operator|!
 name|in
 condition|)
 return|return
-name|error
+name|error_errno
 argument_list|(
 name|_
 argument_list|(
-literal|"could not open '%s' for reading: %s"
+literal|"could not open '%s' for reading"
 argument_list|)
 argument_list|,
 operator|*
 name|paths
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 return|;
 name|mail
@@ -3589,19 +3584,14 @@ operator|!
 name|out
 condition|)
 return|return
-name|error
+name|error_errno
 argument_list|(
 name|_
 argument_list|(
-literal|"could not open '%s' for writing: %s"
+literal|"could not open '%s' for writing"
 argument_list|)
 argument_list|,
 name|mail
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 return|;
 name|ret
@@ -3976,20 +3966,15 @@ operator|!
 name|fp
 condition|)
 return|return
-name|error
+name|error_errno
 argument_list|(
 name|_
 argument_list|(
-literal|"could not open '%s' for reading: %s"
+literal|"could not open '%s' for reading"
 argument_list|)
 argument_list|,
 operator|*
 name|paths
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 return|;
 while|while
