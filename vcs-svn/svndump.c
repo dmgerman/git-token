@@ -2661,20 +2661,15 @@ name|filename
 argument_list|)
 condition|)
 return|return
-name|error
+name|error_errno
 argument_list|(
-literal|"cannot open %s: %s"
+literal|"cannot open %s"
 argument_list|,
 name|filename
 condition|?
 name|filename
 else|:
 literal|"NULL"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 return|;
 name|init
@@ -2714,16 +2709,11 @@ argument_list|)
 argument_list|)
 condition|)
 return|return
-name|error
+name|error_errno
 argument_list|(
-literal|"cannot open fd %d: %s"
+literal|"cannot open fd %d"
 argument_list|,
 name|in_fd
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 return|;
 name|init

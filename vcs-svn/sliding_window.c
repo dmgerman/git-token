@@ -54,14 +54,9 @@ literal|"delta preimage ends early"
 argument_list|)
 return|;
 return|return
-name|error
+name|error_errno
 argument_list|(
-literal|"cannot read delta preimage: %s"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"cannot read delta preimage"
 argument_list|)
 return|;
 block|}

@@ -263,14 +263,9 @@ operator|<
 literal|0
 condition|)
 return|return
-name|error
+name|error_errno
 argument_list|(
-literal|"ftell error: %s"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"ftell error"
 argument_list|)
 return|;
 if|if
@@ -287,14 +282,9 @@ name|SEEK_SET
 argument_list|)
 condition|)
 return|return
-name|error
+name|error_errno
 argument_list|(
-literal|"seek error: %s"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"seek error"
 argument_list|)
 return|;
 return|return

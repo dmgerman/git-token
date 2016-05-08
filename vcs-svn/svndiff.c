@@ -217,14 +217,9 @@ return|return
 literal|0
 return|;
 return|return
-name|error
+name|error_errno
 argument_list|(
-literal|"cannot write delta postimage: %s"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"cannot write delta postimage"
 argument_list|)
 return|;
 block|}
@@ -250,14 +245,9 @@ name|input
 argument_list|)
 condition|)
 return|return
-name|error
+name|error_errno
 argument_list|(
-literal|"error reading delta: %s"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"error reading delta"
 argument_list|)
 return|;
 return|return
