@@ -264,28 +264,18 @@ block|{
 case|case
 name|COPY_READ_ERROR
 case|:
-name|error
+name|error_errno
 argument_list|(
-literal|"copy-fd: read returned %s"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"copy-fd: read returned"
 argument_list|)
 expr_stmt|;
 break|break;
 case|case
 name|COPY_WRITE_ERROR
 case|:
-name|error
+name|error_errno
 argument_list|(
-literal|"copy-fd: write returned %s"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"copy-fd: write returned"
 argument_list|)
 expr_stmt|;
 break|break;
@@ -305,16 +295,11 @@ operator|!=
 literal|0
 condition|)
 return|return
-name|error
+name|error_errno
 argument_list|(
-literal|"%s: close error: %s"
+literal|"%s: close error"
 argument_list|,
 name|dst
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 return|;
 if|if
