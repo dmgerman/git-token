@@ -1209,19 +1209,14 @@ operator|<
 literal|0
 condition|)
 return|return
-name|error
+name|error_errno
 argument_list|(
 name|_
 argument_list|(
-literal|"could not create temporary file '%s': %s"
+literal|"could not create temporary file '%s'"
 argument_list|)
 argument_list|,
 name|path
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 return|;
 if|if
@@ -1238,19 +1233,14 @@ operator|<
 literal|0
 condition|)
 return|return
-name|error
+name|error_errno
 argument_list|(
 name|_
 argument_list|(
-literal|"failed writing detached signature to '%s': %s"
+literal|"failed writing detached signature to '%s'"
 argument_list|)
 argument_list|,
 name|path
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 return|;
 name|close
