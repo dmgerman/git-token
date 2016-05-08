@@ -353,16 +353,11 @@ operator|<
 literal|0
 condition|)
 return|return
-name|error
+name|error_errno
 argument_list|(
-literal|"could not read file '%s': %s"
+literal|"could not read file '%s'"
 argument_list|,
 name|path
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 return|;
 return|return
