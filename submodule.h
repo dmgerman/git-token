@@ -433,6 +433,22 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Prepare the "env_array" parameter of a "struct child_process" for executing  * a submodule by clearing any repo-specific envirionment variables, but  * retaining any config in the environment.  */
+end_comment
+
+begin_function_decl
+name|void
+name|prepare_submodule_repo_env
+parameter_list|(
+name|struct
+name|argv_array
+modifier|*
+name|out
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif

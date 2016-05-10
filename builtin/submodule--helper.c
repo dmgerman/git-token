@@ -806,11 +806,13 @@ name|git_cmd
 operator|=
 literal|1
 expr_stmt|;
+name|prepare_submodule_repo_env
+argument_list|(
+operator|&
 name|cp
 operator|.
-name|env
-operator|=
-name|local_repo_env
+name|env_array
+argument_list|)
 expr_stmt|;
 name|cp
 operator|.
@@ -1058,8 +1060,8 @@ block|{
 name|N_
 argument_list|(
 literal|"git submodule--helper clone [--prefix=<path>] [--quiet] "
-literal|"[--reference<repository>] [--name<name>] [--url<url>]"
-literal|"[--depth<depth>] [--] [<path>...]"
+literal|"[--reference<repository>] [--name<name>] [--depth<depth>] "
+literal|"--url<url> --path<path>"
 argument_list|)
 block|,
 name|NULL
@@ -1080,6 +1082,23 @@ argument_list|,
 name|git_submodule_helper_usage
 argument_list|,
 literal|0
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|argc
+operator|||
+operator|!
+name|url
+operator|||
+operator|!
+name|path
+condition|)
+name|usage_with_options
+argument_list|(
+name|git_submodule_helper_usage
+argument_list|,
+name|module_clone_options
 argument_list|)
 expr_stmt|;
 name|strbuf_addf
