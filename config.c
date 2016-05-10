@@ -6628,12 +6628,9 @@ name|char
 modifier|*
 name|normalized_key
 decl_stmt|;
-name|int
-name|ret
-decl_stmt|;
 comment|/* 	 * `key` may come from the user, so normalize it before using it 	 * for querying entries from the hashmap. 	 */
-name|ret
-operator|=
+if|if
+condition|(
 name|git_config_parse_key
 argument_list|(
 name|key
@@ -6643,10 +6640,6 @@ name|normalized_key
 argument_list|,
 name|NULL
 argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|ret
 condition|)
 return|return
 name|NULL
