@@ -525,6 +525,16 @@ name|pack_size_limit_cfg
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|hide_dotfiles
+name|enum
+name|hide_dotfiles_type
+name|hide_dotfiles
+init|=
+name|HIDE_DOTFILES_DOTGITONLY
+decl_stmt|;
+end_decl_stmt
+
 begin_ifndef
 ifndef|#
 directive|ifndef
