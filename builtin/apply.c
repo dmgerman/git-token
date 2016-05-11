@@ -414,16 +414,6 @@ name|STRBUF_INIT
 decl_stmt|;
 end_decl_stmt
 
-begin_decl_stmt
-DECL|variable|read_stdin
-specifier|static
-name|int
-name|read_stdin
-init|=
-literal|1
-decl_stmt|;
-end_decl_stmt
-
 begin_function
 DECL|function|parse_whitespace_option
 specifier|static
@@ -22120,6 +22110,11 @@ name|int
 name|options
 init|=
 literal|0
+decl_stmt|;
+name|int
+name|read_stdin
+init|=
+literal|1
 decl_stmt|;
 specifier|const
 name|char
