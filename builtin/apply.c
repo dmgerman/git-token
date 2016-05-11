@@ -705,10 +705,10 @@ comment|/*  * Various "current state", notably line numbers and what  * file (an
 end_comment
 
 begin_decl_stmt
-DECL|variable|linenr
+DECL|variable|state_linenr
 specifier|static
 name|int
-name|linenr
+name|state_linenr
 init|=
 literal|1
 decl_stmt|;
@@ -4700,7 +4700,7 @@ argument_list|(
 literal|"unable to find filename in patch at line %d"
 argument_list|)
 argument_list|,
-name|linenr
+name|state_linenr
 argument_list|)
 expr_stmt|;
 block|}
@@ -4832,7 +4832,7 @@ argument_list|,
 operator|*
 name|name
 argument_list|,
-name|linenr
+name|state_linenr
 argument_list|)
 expr_stmt|;
 name|another
@@ -4883,7 +4883,7 @@ argument_list|(
 literal|"git apply: bad git-diff - inconsistent old filename on line %d"
 argument_list|)
 argument_list|,
-name|linenr
+name|state_linenr
 argument_list|)
 expr_stmt|;
 name|free
@@ -4920,7 +4920,7 @@ argument_list|(
 literal|"git apply: bad git-diff - expected /dev/null on line %d"
 argument_list|)
 argument_list|,
-name|linenr
+name|state_linenr
 argument_list|)
 expr_stmt|;
 block|}
@@ -6544,7 +6544,7 @@ name|size
 operator|-=
 name|len
 expr_stmt|;
-name|linenr
+name|state_linenr
 operator|++
 expr_stmt|;
 for|for
@@ -6569,7 +6569,7 @@ name|line
 operator|+=
 name|len
 operator|,
-name|linenr
+name|state_linenr
 operator|++
 control|)
 block|{
@@ -7449,7 +7449,7 @@ name|line
 operator|+=
 name|len
 operator|,
-name|linenr
+name|state_linenr
 operator|++
 control|)
 block|{
@@ -7520,7 +7520,7 @@ argument_list|(
 literal|"patch fragment without header at line %d: %.*s"
 argument_list|)
 argument_list|,
-name|linenr
+name|state_linenr
 argument_list|,
 operator|(
 name|int
@@ -7612,7 +7612,7 @@ argument_list|)
 argument_list|,
 name|state_p_value
 argument_list|,
-name|linenr
+name|state_linenr
 argument_list|)
 expr_stmt|;
 name|patch
@@ -7655,7 +7655,7 @@ argument_list|(
 literal|"git diff header lacks filename information "
 literal|"(line %d)"
 argument_list|,
-name|linenr
+name|state_linenr
 argument_list|)
 expr_stmt|;
 name|patch
@@ -7752,7 +7752,7 @@ name|len
 operator|+
 name|nextlen
 expr_stmt|;
-name|linenr
+name|state_linenr
 operator|+=
 literal|2
 expr_stmt|;
@@ -7888,7 +7888,7 @@ name|len
 operator|-
 literal|2
 argument_list|,
-name|linenr
+name|state_linenr
 argument_list|)
 expr_stmt|;
 block|}
@@ -8026,7 +8026,7 @@ name|size
 operator|-=
 name|len
 expr_stmt|;
-name|linenr
+name|state_linenr
 operator|++
 expr_stmt|;
 name|added
@@ -8057,7 +8057,7 @@ name|line
 operator|+=
 name|len
 operator|,
-name|linenr
+name|state_linenr
 operator|++
 control|)
 block|{
@@ -8463,7 +8463,7 @@ name|fragment
 operator|->
 name|linenr
 operator|=
-name|linenr
+name|state_linenr
 expr_stmt|;
 name|len
 operator|=
@@ -8491,7 +8491,7 @@ argument_list|(
 literal|"corrupt patch at line %d"
 argument_list|)
 argument_list|,
-name|linenr
+name|state_linenr
 argument_list|)
 expr_stmt|;
 name|fragment
@@ -9031,7 +9031,7 @@ else|else
 return|return
 name|NULL
 return|;
-name|linenr
+name|state_linenr
 operator|++
 expr_stmt|;
 name|buffer
@@ -9063,7 +9063,7 @@ name|used
 operator|+=
 name|llen
 expr_stmt|;
-name|linenr
+name|state_linenr
 operator|++
 expr_stmt|;
 if|if
@@ -9319,7 +9319,7 @@ argument_list|(
 literal|"corrupt binary patch at line %d: %.*s"
 argument_list|)
 argument_list|,
-name|linenr
+name|state_linenr
 operator|-
 literal|1
 argument_list|,
@@ -9413,7 +9413,7 @@ argument_list|(
 literal|"unrecognized binary patch at line %d"
 argument_list|)
 argument_list|,
-name|linenr
+name|state_linenr
 operator|-
 literal|1
 argument_list|)
@@ -9965,7 +9965,7 @@ block|{
 name|int
 name|used
 decl_stmt|;
-name|linenr
+name|state_linenr
 operator|++
 expr_stmt|;
 name|used
@@ -10101,7 +10101,7 @@ name|len
 argument_list|)
 condition|)
 block|{
-name|linenr
+name|state_linenr
 operator|++
 expr_stmt|;
 name|patch
@@ -10147,7 +10147,7 @@ argument_list|(
 literal|"patch with only garbage at line %d"
 argument_list|)
 argument_list|,
-name|linenr
+name|state_linenr
 argument_list|)
 expr_stmt|;
 block|}
