@@ -109,6 +109,13 @@ name|abbrev
 operator|=
 literal|0
 expr_stmt|;
+name|precompose_argv
+argument_list|(
+name|argc
+argument_list|,
+name|argv
+argument_list|)
+expr_stmt|;
 name|argc
 operator|=
 name|setup_revisions
