@@ -237,6 +237,21 @@ function_decl|;
 end_function_decl
 
 begin_function_decl
+specifier|const
+name|char
+modifier|*
+name|submodule_strategy_to_string
+parameter_list|(
+specifier|const
+name|struct
+name|submodule_update_strategy
+modifier|*
+name|s
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
 name|void
 name|handle_ignore_submodules_arg
 parameter_list|(
