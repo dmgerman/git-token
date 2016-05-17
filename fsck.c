@@ -96,7 +96,7 @@ value|FUNC(NUL_IN_HEADER, FATAL) \ 	FUNC(UNTERMINATED_HEADER, FATAL) \
 comment|/* errors */
 value|\ 	FUNC(BAD_DATE, ERROR) \ 	FUNC(BAD_DATE_OVERFLOW, ERROR) \ 	FUNC(BAD_EMAIL, ERROR) \ 	FUNC(BAD_NAME, ERROR) \ 	FUNC(BAD_OBJECT_SHA1, ERROR) \ 	FUNC(BAD_PARENT_SHA1, ERROR) \ 	FUNC(BAD_TAG_OBJECT, ERROR) \ 	FUNC(BAD_TIMEZONE, ERROR) \ 	FUNC(BAD_TREE, ERROR) \ 	FUNC(BAD_TREE_SHA1, ERROR) \ 	FUNC(BAD_TYPE, ERROR) \ 	FUNC(DUPLICATE_ENTRIES, ERROR) \ 	FUNC(MISSING_AUTHOR, ERROR) \ 	FUNC(MISSING_COMMITTER, ERROR) \ 	FUNC(MISSING_EMAIL, ERROR) \ 	FUNC(MISSING_GRAFT, ERROR) \ 	FUNC(MISSING_NAME_BEFORE_EMAIL, ERROR) \ 	FUNC(MISSING_OBJECT, ERROR) \ 	FUNC(MISSING_PARENT, ERROR) \ 	FUNC(MISSING_SPACE_BEFORE_DATE, ERROR) \ 	FUNC(MISSING_SPACE_BEFORE_EMAIL, ERROR) \ 	FUNC(MISSING_TAG, ERROR) \ 	FUNC(MISSING_TAG_ENTRY, ERROR) \ 	FUNC(MISSING_TAG_OBJECT, ERROR) \ 	FUNC(MISSING_TREE, ERROR) \ 	FUNC(MISSING_TYPE, ERROR) \ 	FUNC(MISSING_TYPE_ENTRY, ERROR) \ 	FUNC(MULTIPLE_AUTHORS, ERROR) \ 	FUNC(TAG_OBJECT_NOT_TAG, ERROR) \ 	FUNC(TREE_NOT_SORTED, ERROR) \ 	FUNC(UNKNOWN_TYPE, ERROR) \ 	FUNC(ZERO_PADDED_DATE, ERROR) \
 comment|/* warnings */
-value|\ 	FUNC(BAD_FILEMODE, WARN) \ 	FUNC(EMPTY_NAME, WARN) \ 	FUNC(FULL_PATHNAME, WARN) \ 	FUNC(HAS_DOT, WARN) \ 	FUNC(HAS_DOTDOT, WARN) \ 	FUNC(HAS_DOTGIT, WARN) \ 	FUNC(NULL_SHA1, WARN) \ 	FUNC(ZERO_PADDED_FILEMODE, WARN) \
+value|\ 	FUNC(BAD_FILEMODE, WARN) \ 	FUNC(EMPTY_NAME, WARN) \ 	FUNC(FULL_PATHNAME, WARN) \ 	FUNC(HAS_DOT, WARN) \ 	FUNC(HAS_DOTDOT, WARN) \ 	FUNC(HAS_DOTGIT, WARN) \ 	FUNC(NULL_SHA1, WARN) \ 	FUNC(ZERO_PADDED_FILEMODE, WARN) \ 	FUNC(NUL_IN_COMMIT, WARN) \
 comment|/* infos (reported as warnings, but ignored by default) */
 value|\ 	FUNC(BAD_TAG_NAME, INFO) \ 	FUNC(MISSING_TAGGER_ENTRY, INFO)
 end_define
@@ -3163,6 +3163,13 @@ decl_stmt|;
 name|int
 name|err
 decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|buffer_begin
+init|=
+name|buffer
+decl_stmt|;
 if|if
 condition|(
 name|verify_headers
@@ -3580,7 +3587,9 @@ name|commit
 operator|->
 name|tree
 condition|)
-return|return
+block|{
+name|err
+operator|=
 name|report
 argument_list|(
 name|options
@@ -3599,7 +3608,51 @@ argument_list|(
 name|tree_sha1
 argument_list|)
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|err
+condition|)
+return|return
+name|err
 return|;
+block|}
+if|if
+condition|(
+name|memchr
+argument_list|(
+name|buffer_begin
+argument_list|,
+literal|'\0'
+argument_list|,
+name|size
+argument_list|)
+condition|)
+block|{
+name|err
+operator|=
+name|report
+argument_list|(
+name|options
+argument_list|,
+operator|&
+name|commit
+operator|->
+name|object
+argument_list|,
+name|FSCK_MSG_NUL_IN_COMMIT
+argument_list|,
+literal|"NUL byte in the commit object body"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|err
+condition|)
+return|return
+name|err
+return|;
+block|}
 return|return
 literal|0
 return|;
