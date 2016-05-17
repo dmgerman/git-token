@@ -1025,6 +1025,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|import_marks_file_done
+specifier|static
+name|int
+name|import_marks_file_done
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|relative_marks_paths
 specifier|static
 name|int
@@ -10087,6 +10095,13 @@ if|if
 condition|(
 operator|!
 name|export_marks_file
+operator|||
+operator|(
+name|import_marks_file
+operator|&&
+operator|!
+name|import_marks_file_done
+operator|)
 condition|)
 return|return;
 if|if
@@ -10240,7 +10255,9 @@ name|errno
 operator|==
 name|ENOENT
 condition|)
-return|return;
+goto|goto
+name|done
+goto|;
 comment|/* Marks file does not exist */
 else|else
 name|die_errno
@@ -10444,6 +10461,12 @@ name|fclose
 argument_list|(
 name|f
 argument_list|)
+expr_stmt|;
+name|done
+label|:
+name|import_marks_file_done
+operator|=
+literal|1
 expr_stmt|;
 block|}
 end_function
