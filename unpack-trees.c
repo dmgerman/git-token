@@ -166,35 +166,72 @@ name|char
 modifier|*
 name|msg
 decl_stmt|;
-specifier|const
-name|char
-modifier|*
-name|cmd2
-init|=
+if|if
+condition|(
+operator|!
 name|strcmp
 argument_list|(
 name|cmd
 argument_list|,
 literal|"checkout"
 argument_list|)
-condition|?
-name|cmd
-else|:
-literal|"switch branches"
-decl_stmt|;
-if|if
-condition|(
-name|advice_commit_before_merge
 condition|)
 name|msg
 operator|=
-literal|"Your local changes to the following files would be overwritten by %s:\n%%s"
-literal|"Please, commit your changes or stash them before you can %s."
+name|advice_commit_before_merge
+condition|?
+name|_
+argument_list|(
+literal|"Your local changes to the following files would be overwritten by checkout:\n%%s"
+literal|"Please commit your changes or stash them before you can switch branches."
+argument_list|)
+else|:
+name|_
+argument_list|(
+literal|"Your local changes to the following files would be overwritten by checkout:\n%%s"
+argument_list|)
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|cmd
+argument_list|,
+literal|"merge"
+argument_list|)
+condition|)
+name|msg
+operator|=
+name|advice_commit_before_merge
+condition|?
+name|_
+argument_list|(
+literal|"Your local changes to the following files would be overwritten by merge:\n%%s"
+literal|"Please commit your changes or stash them before you can merge."
+argument_list|)
+else|:
+name|_
+argument_list|(
+literal|"Your local changes to the following files would be overwritten by merge:\n%%s"
+argument_list|)
 expr_stmt|;
 else|else
 name|msg
 operator|=
+name|advice_commit_before_merge
+condition|?
+name|_
+argument_list|(
 literal|"Your local changes to the following files would be overwritten by %s:\n%%s"
+literal|"Please commit your changes or stash them before you can %s."
+argument_list|)
+else|:
+name|_
+argument_list|(
+literal|"Your local changes to the following files would be overwritten by %s:\n%%s"
+argument_list|)
 expr_stmt|;
 name|msgs
 index|[
@@ -212,7 +249,7 @@ name|msg
 argument_list|,
 name|cmd
 argument_list|,
-name|cmd2
+name|cmd
 argument_list|)
 expr_stmt|;
 name|msgs
@@ -220,21 +257,77 @@ index|[
 name|ERROR_NOT_UPTODATE_DIR
 index|]
 operator|=
+name|_
+argument_list|(
 literal|"Updating the following directories would lose untracked files in it:\n%s"
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|advice_commit_before_merge
+operator|!
+name|strcmp
+argument_list|(
+name|cmd
+argument_list|,
+literal|"checkout"
+argument_list|)
 condition|)
 name|msg
 operator|=
-literal|"The following untracked working tree files would be %s by %s:\n%%s"
-literal|"Please move or remove them before you can %s."
+name|advice_commit_before_merge
+condition|?
+name|_
+argument_list|(
+literal|"The following untracked working tree files would be removed by checkout:\n%%s"
+literal|"Please move or remove them before you can switch branches."
+argument_list|)
+else|:
+name|_
+argument_list|(
+literal|"The following untracked working tree files would be removed by checkout:\n%%s"
+argument_list|)
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|cmd
+argument_list|,
+literal|"merge"
+argument_list|)
+condition|)
+name|msg
+operator|=
+name|advice_commit_before_merge
+condition|?
+name|_
+argument_list|(
+literal|"The following untracked working tree files would be removed by merge:\n%%s"
+literal|"Please move or remove them before you can merge."
+argument_list|)
+else|:
+name|_
+argument_list|(
+literal|"The following untracked working tree files would be removed by merge:\n%%s"
+argument_list|)
 expr_stmt|;
 else|else
 name|msg
 operator|=
-literal|"The following untracked working tree files would be %s by %s:\n%%s"
+name|advice_commit_before_merge
+condition|?
+name|_
+argument_list|(
+literal|"The following untracked working tree files would be removed by %s:\n%%s"
+literal|"Please move or remove them before you can %s."
+argument_list|)
+else|:
+name|_
+argument_list|(
+literal|"The following untracked working tree files would be removed by %s:\n%%s"
+argument_list|)
 expr_stmt|;
 name|msgs
 index|[
@@ -245,11 +338,76 @@ name|xstrfmt
 argument_list|(
 name|msg
 argument_list|,
-literal|"removed"
-argument_list|,
 name|cmd
 argument_list|,
-name|cmd2
+name|cmd
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|cmd
+argument_list|,
+literal|"checkout"
+argument_list|)
+condition|)
+name|msg
+operator|=
+name|advice_commit_before_merge
+condition|?
+name|_
+argument_list|(
+literal|"The following untracked working tree files would be overwritten by checkout:\n%%s"
+literal|"Please move or remove them before you can switch branches."
+argument_list|)
+else|:
+name|_
+argument_list|(
+literal|"The following untracked working tree files would be overwritten by checkout:\n%%s"
+argument_list|)
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|cmd
+argument_list|,
+literal|"merge"
+argument_list|)
+condition|)
+name|msg
+operator|=
+name|advice_commit_before_merge
+condition|?
+name|_
+argument_list|(
+literal|"The following untracked working tree files would be overwritten by merge:\n%%s"
+literal|"Please move or remove them before you can merge."
+argument_list|)
+else|:
+name|_
+argument_list|(
+literal|"The following untracked working tree files would be overwritten by merge:\n%%s"
+argument_list|)
+expr_stmt|;
+else|else
+name|msg
+operator|=
+name|advice_commit_before_merge
+condition|?
+name|_
+argument_list|(
+literal|"The following untracked working tree files would be overwritten by %s:\n%%s"
+literal|"Please move or remove them before you can %s."
+argument_list|)
+else|:
+name|_
+argument_list|(
+literal|"The following untracked working tree files would be overwritten by %s:\n%%s"
 argument_list|)
 expr_stmt|;
 name|msgs
@@ -261,11 +419,9 @@ name|xstrfmt
 argument_list|(
 name|msg
 argument_list|,
-literal|"overwritten"
-argument_list|,
 name|cmd
 argument_list|,
-name|cmd2
+name|cmd
 argument_list|)
 expr_stmt|;
 comment|/* 	 * Special case: ERROR_BIND_OVERLAP refers to a pair of paths, we 	 * cannot easily display it as a list. 	 */
@@ -274,28 +430,40 @@ index|[
 name|ERROR_BIND_OVERLAP
 index|]
 operator|=
+name|_
+argument_list|(
 literal|"Entry '%s' overlaps with '%s'.  Cannot bind."
+argument_list|)
 expr_stmt|;
 name|msgs
 index|[
 name|ERROR_SPARSE_NOT_UPTODATE_FILE
 index|]
 operator|=
+name|_
+argument_list|(
 literal|"Cannot update sparse checkout: the following entries are not up-to-date:\n%s"
+argument_list|)
 expr_stmt|;
 name|msgs
 index|[
 name|ERROR_WOULD_LOSE_ORPHANED_OVERWRITTEN
 index|]
 operator|=
+name|_
+argument_list|(
 literal|"The following Working tree files would be overwritten by sparse checkout update:\n%s"
+argument_list|)
 expr_stmt|;
 name|msgs
 index|[
 name|ERROR_WOULD_LOSE_ORPHANED_REMOVED
 index|]
 operator|=
+name|_
+argument_list|(
 literal|"The following Working tree files would be removed by sparse checkout update:\n%s"
+argument_list|)
 expr_stmt|;
 name|opts
 operator|->
@@ -707,7 +875,10 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
+name|_
+argument_list|(
 literal|"Aborting\n"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
