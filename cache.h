@@ -4173,6 +4173,15 @@ end_decl_stmt
 
 begin_decl_stmt
 specifier|extern
+specifier|const
+name|char
+modifier|*
+name|git_hooks_path
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+specifier|extern
 name|int
 name|zlib_compression_level
 decl_stmt|;
