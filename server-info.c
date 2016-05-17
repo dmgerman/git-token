@@ -184,16 +184,11 @@ condition|(
 name|ret
 condition|)
 block|{
-name|error
+name|error_errno
 argument_list|(
-literal|"unable to update %s: %s"
+literal|"unable to update %s"
 argument_list|,
 name|path
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if

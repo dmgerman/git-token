@@ -2707,16 +2707,11 @@ name|io
 operator|.
 name|wrerror
 operator|=
-name|error
+name|error_errno
 argument_list|(
-literal|"Failed to flush %s: %s"
+literal|"Failed to flush %s"
 argument_list|,
 name|path
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -3442,20 +3437,15 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-name|warning
+name|warning_errno
 argument_list|(
-literal|"failed utime() on %s: %s"
+literal|"failed utime() on %s"
 argument_list|,
 name|rerere_path
 argument_list|(
 name|id
 argument_list|,
 literal|"postimage"
-argument_list|)
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3475,16 +3465,11 @@ operator|!
 name|f
 condition|)
 return|return
-name|error
+name|error_errno
 argument_list|(
-literal|"Could not open %s: %s"
+literal|"Could not open %s"
 argument_list|,
 name|path
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 return|;
 if|if
@@ -3506,16 +3491,11 @@ argument_list|)
 operator|!=
 literal|1
 condition|)
-name|error
+name|error_errno
 argument_list|(
-literal|"Could not write %s: %s"
+literal|"Could not write %s"
 argument_list|,
 name|path
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -3526,16 +3506,11 @@ name|f
 argument_list|)
 condition|)
 return|return
-name|error
+name|error_errno
 argument_list|(
-literal|"Writing %s failed: %s"
+literal|"Writing %s failed"
 argument_list|,
 name|path
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 return|;
 name|out
@@ -5389,16 +5364,11 @@ argument_list|,
 name|path
 argument_list|)
 else|:
-name|error
+name|error_errno
 argument_list|(
-literal|"cannot unlink %s: %s"
+literal|"cannot unlink %s"
 argument_list|,
 name|filename
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 operator|)
 return|;

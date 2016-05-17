@@ -447,15 +447,9 @@ name|stderr
 argument_list|)
 condition|)
 return|return
-name|error
+name|error_errno
 argument_list|(
-literal|"failed to redirect stderr to /dev/null: "
-literal|"%s"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"failed to redirect stderr to /dev/null"
 argument_list|)
 return|;
 block|}
@@ -703,7 +697,7 @@ name|f
 condition|)
 name|ret
 operator|=
-name|error
+name|error_errno
 argument_list|(
 literal|"Could not open %s for writing"
 argument_list|,
@@ -736,7 +730,7 @@ literal|1
 condition|)
 name|ret
 operator|=
-name|error
+name|error_errno
 argument_list|(
 literal|"Could not write to %s"
 argument_list|,
@@ -753,7 +747,7 @@ argument_list|)
 condition|)
 name|ret
 operator|=
-name|error
+name|error_errno
 argument_list|(
 literal|"Could not close %s"
 argument_list|,

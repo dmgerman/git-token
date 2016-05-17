@@ -4430,16 +4430,11 @@ operator|<
 literal|0
 condition|)
 block|{
-name|warning
+name|warning_errno
 argument_list|(
-literal|"failed to stat %s: %s"
+literal|"failed to stat %s"
 argument_list|,
 name|pack_tmp_name
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -4490,16 +4485,11 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-name|warning
+name|warning_errno
 argument_list|(
-literal|"failed utime() on %s: %s"
+literal|"failed utime() on %s"
 argument_list|,
 name|pack_tmp_name
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

@@ -424,16 +424,11 @@ name|errno
 operator|!=
 name|EINVAL
 condition|)
-name|error
+name|error_errno
 argument_list|(
 name|_
 argument_list|(
-literal|"failed write to rev-list: %s"
-argument_list|)
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
+literal|"failed write to rev-list"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -465,26 +460,16 @@ operator|.
 name|in
 argument_list|)
 condition|)
-block|{
-name|error
+name|err
+operator|=
+name|error_errno
 argument_list|(
 name|_
 argument_list|(
-literal|"failed to close rev-list's stdin: %s"
-argument_list|)
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
+literal|"failed to close rev-list's stdin"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|err
-operator|=
-operator|-
-literal|1
-expr_stmt|;
-block|}
 name|sigchain_pop
 argument_list|(
 name|SIGPIPE

@@ -323,14 +323,9 @@ operator|<
 literal|0
 condition|)
 return|return
-name|error
+name|error_errno
 argument_list|(
-literal|"error while reading from stdin %s"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"error while reading from stdin"
 argument_list|)
 return|;
 name|s

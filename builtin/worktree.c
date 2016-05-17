@@ -660,17 +660,16 @@ if|if
 condition|(
 name|ret
 condition|)
-name|error
+name|error_errno
 argument_list|(
 name|_
 argument_list|(
-literal|"failed to remove: %s"
+literal|"failed to remove '%s'"
 argument_list|)
 argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+name|path
+operator|.
+name|buf
 argument_list|)
 expr_stmt|;
 block|}

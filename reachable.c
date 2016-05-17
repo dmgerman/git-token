@@ -544,18 +544,13 @@ return|return
 literal|0
 return|;
 return|return
-name|error
+name|error_errno
 argument_list|(
-literal|"unable to stat %s: %s"
+literal|"unable to stat %s"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
 name|sha1
-argument_list|)
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
 argument_list|)
 argument_list|)
 return|;

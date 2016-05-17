@@ -722,18 +722,16 @@ name|errno
 operator|!=
 name|ENOTDIR
 condition|)
-name|warning
+name|warning_errno
 argument_list|(
-literal|"'%s': %s"
+name|_
+argument_list|(
+literal|"failed to stat '%s'"
+argument_list|)
 argument_list|,
 name|ce
 operator|->
 name|name
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* It already vanished from the working tree */

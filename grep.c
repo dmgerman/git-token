@@ -9392,19 +9392,14 @@ name|errno
 operator|!=
 name|ENOENT
 condition|)
-name|error
+name|error_errno
 argument_list|(
 name|_
 argument_list|(
-literal|"'%s': %s"
+literal|"failed to stat '%s'"
 argument_list|)
 argument_list|,
 name|filename
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -9476,19 +9471,14 @@ name|size
 argument_list|)
 condition|)
 block|{
-name|error
+name|error_errno
 argument_list|(
 name|_
 argument_list|(
-literal|"'%s': short read %s"
+literal|"'%s': short read"
 argument_list|)
 argument_list|,
 name|filename
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|close

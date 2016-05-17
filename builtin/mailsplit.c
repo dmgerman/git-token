@@ -582,16 +582,11 @@ operator|==
 name|ENOENT
 condition|)
 continue|continue;
-name|error
+name|error_errno
 argument_list|(
-literal|"cannot opendir %s (%s)"
+literal|"cannot opendir %s"
 argument_list|,
 name|name
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 goto|goto
@@ -948,16 +943,11 @@ operator|!
 name|f
 condition|)
 block|{
-name|error
+name|error_errno
 argument_list|(
-literal|"cannot open mail %s (%s)"
+literal|"cannot open mail %s"
 argument_list|,
 name|file
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 goto|goto
@@ -977,16 +967,11 @@ literal|'\n'
 argument_list|)
 condition|)
 block|{
-name|error
+name|error_errno
 argument_list|(
-literal|"cannot read mail %s (%s)"
+literal|"cannot read mail %s"
 argument_list|,
 name|file
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 goto|goto
@@ -1132,7 +1117,7 @@ operator|!
 name|f
 condition|)
 block|{
-name|error
+name|error_errno
 argument_list|(
 literal|"cannot open mbox %s"
 argument_list|,
@@ -1723,16 +1708,11 @@ operator|-
 literal|1
 condition|)
 block|{
-name|error
+name|error_errno
 argument_list|(
-literal|"cannot stat %s (%s)"
+literal|"cannot stat %s"
 argument_list|,
 name|arg
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return

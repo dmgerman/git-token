@@ -5682,18 +5682,13 @@ operator|<
 literal|0
 condition|)
 block|{
-name|error
+name|error_errno
 argument_list|(
-literal|"readlink(%s): %s"
+literal|"readlink(%s)"
 argument_list|,
 name|elem
 operator|->
 name|path
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return;

@@ -1025,14 +1025,9 @@ operator|!=
 name|EINTR
 condition|)
 block|{
-name|error
+name|error_errno
 argument_list|(
-literal|"poll failed, resuming: %s"
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
+literal|"poll failed, resuming"
 argument_list|)
 expr_stmt|;
 name|sleep

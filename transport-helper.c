@@ -6163,18 +6163,13 @@ operator|!=
 name|EINTR
 condition|)
 block|{
-name|error
+name|error_errno
 argument_list|(
-literal|"read(%s) failed: %s"
+literal|"read(%s) failed"
 argument_list|,
 name|t
 operator|->
 name|src_name
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -6323,18 +6318,13 @@ operator|!=
 name|EWOULDBLOCK
 condition|)
 block|{
-name|error
+name|error_errno
 argument_list|(
-literal|"write(%s) failed: %s"
+literal|"write(%s) failed"
 argument_list|,
 name|t
 operator|->
 name|dest_name
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -6832,16 +6822,11 @@ operator|<
 literal|0
 condition|)
 block|{
-name|error
+name|error_errno
 argument_list|(
-literal|"%s process failed to wait: %s"
+literal|"%s process failed to wait"
 argument_list|,
 name|name
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return

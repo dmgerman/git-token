@@ -3443,19 +3443,14 @@ operator|!
 name|fp
 condition|)
 return|return
-name|error
+name|error_errno
 argument_list|(
 name|_
 argument_list|(
-literal|"cannot open %s: %s\n"
+literal|"cannot open %s"
 argument_list|)
 argument_list|,
 name|filename
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 return|;
 if|if
@@ -4681,19 +4676,14 @@ operator|!
 name|fp
 condition|)
 return|return
-name|error
+name|error_errno
 argument_list|(
 name|_
 argument_list|(
-literal|"cannot open %s: %s\n"
+literal|"cannot open %s"
 argument_list|)
 argument_list|,
 name|filename
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 return|;
 name|fclose

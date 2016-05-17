@@ -1281,7 +1281,7 @@ name|path
 argument_list|,
 name|strerror
 argument_list|(
-name|errno
+name|err
 argument_list|)
 argument_list|)
 return|;
