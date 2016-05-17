@@ -2871,26 +2871,6 @@ name|open_html
 value|mingw_open_html
 end_define
 
-begin_function_decl
-name|void
-name|mingw_mark_as_git_dir
-parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|dir
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_define
-DECL|macro|mark_as_git_dir
-define|#
-directive|define
-name|mark_as_git_dir
-value|mingw_mark_as_git_dir
-end_define
-
 begin_comment
 comment|/**  * Converts UTF-8 encoded string to UTF-16LE.  *  * To support repositories with legacy-encoded file names, invalid UTF-8 bytes  * 0xa0 - 0xff are converted to corresponding printable Unicode chars \u00a0 -  * \u00ff, and invalid UTF-8 bytes 0x80 - 0x9f (which would make non-printable  * Unicode) are converted to hex-code.  *  * Lead-bytes not followed by an appropriate number of trail-bytes, over-long  * encodings and 4-byte encodings> \u10ffff are detected as invalid UTF-8.  *  * Maximum space requirement for the target buffer is two wide chars per UTF-8  * char (((strlen(utf) * 2) + 1) [* sizeof(wchar_t)]).  *  * The maximum space is needed only if the entire input string consists of  * invalid UTF-8 bytes in range 0x80-0x9f, as per the following table:  *  *               |                   | UTF-8 | UTF-16 |  *   Code point  |  UTF-8 sequence   | bytes | words  | ratio  * --------------+-------------------+-------+--------+-------  * 000000-00007f | 0-7f              |   1   |   1    |  1  * 000080-0007ff | c2-df + 80-bf     |   2   |   1    |  0.5  * 000800-00ffff | e0-ef + 2 * 80-bf |   3   |   1    |  0.33  * 010000-10ffff | f0-f4 + 3 * 80-bf |   4   |  2 (a) |  0.5  * invalid       | 80-9f             |   1   |  2 (b) |  2  * invalid       | a0-ff             |   1   |   1    |  1  *  * (a) encoded as UTF-16 surrogate pair  * (b) encoded as two hex digits  *  * Note that, while the UTF-8 encoding scheme can be extended to 5-byte, 6-byte  * or even indefinite-byte sequences, the largest valid code point \u10ffff  * encodes as only 4 UTF-8 bytes.  *  * Parameters:  * wcs: wide char target buffer  * utf: string to convert  * wcslen: size of target buffer (in wchar_t's)  * utflen: size of string to convert, or -1 if 0-terminated  *  * Returns:  * length of converted string (_wcslen(wcs)), or -1 on failure  *  * Errors:  * EINVAL: one of the input parameters is invalid (e.g. NULL)  * ERANGE: the output buffer is too small  */
 end_comment
