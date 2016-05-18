@@ -85,11 +85,11 @@ enum|;
 end_enum
 
 begin_decl_stmt
-DECL|variable|cache
+DECL|variable|the_submodule_cache
 specifier|static
 name|struct
 name|submodule_cache
-name|cache
+name|the_submodule_cache
 decl_stmt|;
 end_decl_stmt
 
@@ -2360,7 +2360,7 @@ return|return;
 name|cache_init
 argument_list|(
 operator|&
-name|cache
+name|the_submodule_cache
 argument_list|)
 expr_stmt|;
 name|is_cache_init
@@ -2395,7 +2395,7 @@ operator|.
 name|cache
 operator|=
 operator|&
-name|cache
+name|the_submodule_cache
 expr_stmt|;
 name|parameter
 operator|.
@@ -2459,7 +2459,7 @@ return|return
 name|config_from_name
 argument_list|(
 operator|&
-name|cache
+name|the_submodule_cache
 argument_list|,
 name|commit_sha1
 argument_list|,
@@ -2496,7 +2496,7 @@ return|return
 name|config_from_path
 argument_list|(
 operator|&
-name|cache
+name|the_submodule_cache
 argument_list|,
 name|commit_sha1
 argument_list|,
@@ -2517,7 +2517,7 @@ block|{
 name|cache_free
 argument_list|(
 operator|&
-name|cache
+name|the_submodule_cache
 argument_list|)
 expr_stmt|;
 name|is_cache_init
