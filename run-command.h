@@ -471,6 +471,10 @@ name|proc_out
 decl_stmt|;
 endif|#
 directive|endif
+DECL|member|isolate_sigpipe
+name|int
+name|isolate_sigpipe
+decl_stmt|;
 block|}
 struct|;
 end_struct
