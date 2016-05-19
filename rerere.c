@@ -5399,7 +5399,6 @@ goto|goto
 name|fail_exit
 goto|;
 block|}
-empty_stmt|;
 comment|/* 	 * Update the preimage so that the user can resolve the 	 * conflict in the working tree, run us again to record 	 * the postimage. 	 */
 name|handle_cache
 argument_list|(
