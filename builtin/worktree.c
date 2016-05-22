@@ -2037,8 +2037,6 @@ argument_list|)
 expr_stmt|;
 name|path
 operator|=
-name|prefix
-condition|?
 name|prefix_filename
 argument_list|(
 name|prefix
@@ -2053,11 +2051,6 @@ index|[
 literal|0
 index|]
 argument_list|)
-else|:
-name|av
-index|[
-literal|0
-index|]
 expr_stmt|;
 name|branch
 operator|=
@@ -2836,6 +2829,15 @@ name|worktree_usage
 argument_list|,
 name|options
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|prefix
+condition|)
+name|prefix
+operator|=
+literal|""
 expr_stmt|;
 if|if
 condition|(
