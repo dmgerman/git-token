@@ -89,12 +89,12 @@ argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git worktree prune [<options>]"
+literal|"git worktree list [<options>]"
 argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git worktree list [<options>]"
+literal|"git worktree prune [<options>]"
 argument_list|)
 block|,
 name|NULL
