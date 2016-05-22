@@ -1509,7 +1509,10 @@ name|sb
 operator|.
 name|buf
 argument_list|,
-literal|"0000000000000000000000000000000000000000"
+name|sha1_to_hex
+argument_list|(
+name|null_sha1
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|strbuf_reset
