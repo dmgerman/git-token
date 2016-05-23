@@ -5534,6 +5534,12 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|s
+operator|->
+name|commitable
+operator|=
+literal|1
+expr_stmt|;
 name|status_printf_ln
 argument_list|(
 name|s
