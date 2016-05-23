@@ -22,10 +22,10 @@ name|char
 modifier|*
 name|path
 decl_stmt|;
-DECL|member|git_dir
+DECL|member|id
 name|char
 modifier|*
-name|git_dir
+name|id
 decl_stmt|;
 DECL|member|head_ref
 name|char
@@ -47,6 +47,10 @@ decl_stmt|;
 DECL|member|is_bare
 name|int
 name|is_bare
+decl_stmt|;
+DECL|member|is_current
+name|int
+name|is_current
 decl_stmt|;
 block|}
 struct|;
@@ -74,6 +78,26 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/*  * Return git dir of the worktree. Note that the path may be relative.  * If wt is NULL, git dir of current worktree is returned.  */
+end_comment
+
+begin_function_decl
+specifier|extern
+specifier|const
+name|char
+modifier|*
+name|get_worktree_git_dir
+parameter_list|(
+specifier|const
+name|struct
+name|worktree
+modifier|*
+name|wt
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/*  * Free up the memory for worktree(s)  */
 end_comment
 
@@ -91,12 +115,14 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Check if a per-worktree symref points to a ref in the main worktree  * or any linked worktree, and return the path to the exising worktree  * if it is.  Returns NULL if there is no existing ref.  The caller is  * responsible for freeing the returned path.  */
+comment|/*  * Check if a per-worktree symref points to a ref in the main worktree  * or any linked worktree, and return the worktree that holds the ref,  * or NULL otherwise. The result may be destroyed by the next call.  */
 end_comment
 
 begin_function_decl
 specifier|extern
-name|char
+specifier|const
+name|struct
+name|worktree
 modifier|*
 name|find_shared_symref
 parameter_list|(
@@ -112,6 +138,82 @@ name|target
 parameter_list|)
 function_decl|;
 end_function_decl
+
+begin_function_decl
+name|int
+name|is_worktree_being_rebased
+parameter_list|(
+specifier|const
+name|struct
+name|worktree
+modifier|*
+name|wt
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|target
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
+name|is_worktree_being_bisected
+parameter_list|(
+specifier|const
+name|struct
+name|worktree
+modifier|*
+name|wt
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|target
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/*  * Similar to git_path() but can produce paths for a specified  * worktree instead of current one  */
+end_comment
+
+begin_function_decl
+specifier|extern
+specifier|const
+name|char
+modifier|*
+name|worktree_git_path
+parameter_list|(
+specifier|const
+name|struct
+name|worktree
+modifier|*
+name|wt
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|fmt
+parameter_list|,
+modifier|...
+parameter_list|)
+function_decl|__attribute__
+parameter_list|(
+function_decl|(format
+parameter_list|(
+name|printf
+parameter_list|,
+function_decl|2
+operator|,
+function_decl|3
+end_function_decl
+
+begin_empty_stmt
+unit|)))
+empty_stmt|;
+end_empty_stmt
 
 begin_endif
 endif|#

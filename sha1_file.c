@@ -1404,7 +1404,7 @@ block|}
 if|if
 condition|(
 operator|!
-name|strcmp_icase
+name|fspathcmp
 argument_list|(
 name|ent
 operator|->
