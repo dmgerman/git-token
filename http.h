@@ -1179,6 +1179,21 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/* setup routine for curl_easy_setopt CURLOPT_DEBUGFUNCTION */
+end_comment
+
+begin_function_decl
+name|void
+name|setup_curl_trace
+parameter_list|(
+name|CURL
+modifier|*
+name|handle
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
