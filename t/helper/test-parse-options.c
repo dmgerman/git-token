@@ -69,14 +69,25 @@ end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|verbose
-DECL|variable|dry_run
-DECL|variable|quiet
 specifier|static
 name|int
 name|verbose
 init|=
-literal|0
-decl_stmt|,
+operator|-
+literal|1
+decl_stmt|;
+end_decl_stmt
+
+begin_comment
+DECL|variable|verbose
+comment|/* unspecified */
+end_comment
+
+begin_decl_stmt
+DECL|variable|dry_run
+DECL|variable|quiet
+specifier|static
+name|int
 name|dry_run
 init|=
 literal|0
@@ -739,13 +750,9 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"quiet: %s\n"
+literal|"quiet: %d\n"
 argument_list|,
 name|quiet
-condition|?
-literal|"yes"
-else|:
-literal|"no"
 argument_list|)
 expr_stmt|;
 name|printf
