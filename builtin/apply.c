@@ -168,6 +168,10 @@ DECL|member|unidiff_zero
 name|int
 name|unidiff_zero
 decl_stmt|;
+DECL|member|unsafe_paths
+name|int
+name|unsafe_paths
+decl_stmt|;
 block|}
 struct|;
 end_struct
@@ -212,14 +216,6 @@ name|int
 name|apply
 init|=
 literal|1
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-DECL|variable|unsafe_paths
-specifier|static
-name|int
-name|unsafe_paths
 decl_stmt|;
 end_decl_stmt
 
@@ -18515,6 +18511,8 @@ block|}
 if|if
 condition|(
 operator|!
+name|state
+operator|->
 name|unsafe_paths
 condition|)
 name|die_on_unsafe_path
@@ -22764,6 +22762,8 @@ argument_list|,
 literal|"unsafe-paths"
 argument_list|,
 operator|&
+name|state
+operator|.
 name|unsafe_paths
 argument_list|,
 name|N_
@@ -23236,6 +23236,8 @@ name|state
 operator|.
 name|check_index
 condition|)
+name|state
+operator|.
 name|unsafe_paths
 operator|=
 literal|0
