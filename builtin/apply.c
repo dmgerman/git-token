@@ -119,6 +119,10 @@ name|update_index
 decl_stmt|;
 comment|/* check_index&& apply */
 comment|/* These boolean parameters control how the apply is done */
+DECL|member|allow_overlap
+name|int
+name|allow_overlap
+decl_stmt|;
 DECL|member|apply_in_reverse
 name|int
 name|apply_in_reverse
@@ -211,14 +215,6 @@ name|int
 name|apply
 init|=
 literal|1
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-DECL|variable|allow_overlap
-specifier|static
-name|int
-name|allow_overlap
 decl_stmt|;
 end_decl_stmt
 
@@ -12645,6 +12641,11 @@ name|void
 name|update_image
 parameter_list|(
 name|struct
+name|apply_state
+modifier|*
+name|state
+parameter_list|,
+name|struct
 name|image
 modifier|*
 name|img
@@ -12997,6 +12998,8 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
+name|state
+operator|->
 name|allow_overlap
 condition|)
 for|for
@@ -14057,6 +14060,8 @@ argument_list|)
 expr_stmt|;
 name|update_image
 argument_list|(
+name|state
+argument_list|,
 name|img
 argument_list|,
 name|applied_pos
@@ -22942,6 +22947,8 @@ argument_list|,
 literal|"allow-overlap"
 argument_list|,
 operator|&
+name|state
+operator|.
 name|allow_overlap
 argument_list|,
 name|N_
