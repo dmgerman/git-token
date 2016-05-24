@@ -172,6 +172,11 @@ DECL|member|unsafe_paths
 name|int
 name|unsafe_paths
 decl_stmt|;
+comment|/* Other non boolean parameters */
+DECL|member|line_termination
+name|int
+name|line_termination
+decl_stmt|;
 block|}
 struct|;
 end_struct
@@ -226,16 +231,6 @@ specifier|const
 name|char
 modifier|*
 name|fake_ancestor
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-DECL|variable|line_termination
-specifier|static
-name|int
-name|line_termination
-init|=
-literal|'\n'
 decl_stmt|;
 end_decl_stmt
 
@@ -19256,6 +19251,11 @@ name|void
 name|numstat_patch_list
 parameter_list|(
 name|struct
+name|apply_state
+modifier|*
+name|state
+parameter_list|,
+name|struct
 name|patch
 modifier|*
 name|patch
@@ -19323,6 +19323,8 @@ name|name
 argument_list|,
 name|stdout
 argument_list|,
+name|state
+operator|->
 name|line_termination
 argument_list|)
 expr_stmt|;
@@ -22069,6 +22071,8 @@ name|numstat
 condition|)
 name|numstat_patch_list
 argument_list|(
+name|state
+argument_list|,
 name|list
 argument_list|)
 expr_stmt|;
@@ -22441,6 +22445,12 @@ name|prefix
 argument_list|)
 else|:
 literal|0
+expr_stmt|;
+name|state
+operator|->
+name|line_termination
+operator|=
+literal|'\n'
 expr_stmt|;
 name|git_apply_config
 argument_list|()
@@ -22827,6 +22837,8 @@ argument_list|,
 name|NULL
 argument_list|,
 operator|&
+name|state
+operator|.
 name|line_termination
 argument_list|,
 name|N_
