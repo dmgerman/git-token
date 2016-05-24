@@ -102,6 +102,11 @@ DECL|member|prefix_length
 name|int
 name|prefix_length
 decl_stmt|;
+comment|/* These boolean parameters control how the apply is done */
+DECL|member|unidiff_zero
+name|int
+name|unidiff_zero
+decl_stmt|;
 block|}
 struct|;
 end_struct
@@ -118,14 +123,6 @@ name|newfd
 init|=
 operator|-
 literal|1
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-DECL|variable|unidiff_zero
-specifier|static
-name|int
-name|unidiff_zero
 decl_stmt|;
 end_decl_stmt
 
@@ -13048,6 +13045,11 @@ name|int
 name|apply_one_fragment
 parameter_list|(
 name|struct
+name|apply_state
+modifier|*
+name|state
+parameter_list|,
+name|struct
 name|image
 modifier|*
 name|img
@@ -13687,6 +13689,8 @@ operator|==
 literal|1
 operator|&&
 operator|!
+name|state
+operator|->
 name|unidiff_zero
 operator|)
 operator|)
@@ -13695,6 +13699,8 @@ comment|/* 	 * A hunk without trailing lines must match at the end. 	 * However,
 name|match_end
 operator|=
 operator|!
+name|state
+operator|->
 name|unidiff_zero
 operator|&&
 operator|!
@@ -14669,6 +14675,11 @@ name|int
 name|apply_fragments
 parameter_list|(
 name|struct
+name|apply_state
+modifier|*
+name|state
+parameter_list|,
+name|struct
 name|image
 modifier|*
 name|img
@@ -14750,6 +14761,8 @@ if|if
 condition|(
 name|apply_one_fragment
 argument_list|(
+name|state
+argument_list|,
 name|img
 argument_list|,
 name|frag
@@ -16272,6 +16285,11 @@ name|int
 name|try_threeway
 parameter_list|(
 name|struct
+name|apply_state
+modifier|*
+name|state
+parameter_list|,
+name|struct
 name|image
 modifier|*
 name|image
@@ -16438,6 +16456,8 @@ if|if
 condition|(
 name|apply_fragments
 argument_list|(
+name|state
+argument_list|,
 operator|&
 name|tmp_image
 argument_list|,
@@ -16703,6 +16723,11 @@ name|int
 name|apply_data
 parameter_list|(
 name|struct
+name|apply_state
+modifier|*
+name|state
+parameter_list|,
+name|struct
 name|patch
 modifier|*
 name|patch
@@ -16751,6 +16776,8 @@ name|direct_to_threeway
 operator|||
 name|apply_fragments
 argument_list|(
+name|state
+argument_list|,
 operator|&
 name|image
 argument_list|,
@@ -16768,6 +16795,8 @@ name|threeway
 operator|||
 name|try_threeway
 argument_list|(
+name|state
+argument_list|,
 operator|&
 name|image
 argument_list|,
@@ -18039,6 +18068,11 @@ name|int
 name|check_patch
 parameter_list|(
 name|struct
+name|apply_state
+modifier|*
+name|state
+parameter_list|,
+name|struct
 name|patch
 modifier|*
 name|patch
@@ -18427,6 +18461,8 @@ if|if
 condition|(
 name|apply_data
 argument_list|(
+name|state
+argument_list|,
 name|patch
 argument_list|,
 operator|&
@@ -18466,6 +18502,11 @@ specifier|static
 name|int
 name|check_patch_list
 parameter_list|(
+name|struct
+name|apply_state
+modifier|*
+name|state
+parameter_list|,
 name|struct
 name|patch
 modifier|*
@@ -18512,6 +18553,8 @@ name|err
 operator||=
 name|check_patch
 argument_list|(
+name|state
+argument_list|,
 name|patch
 argument_list|)
 expr_stmt|;
@@ -21770,6 +21813,8 @@ operator|)
 operator|&&
 name|check_patch_list
 argument_list|(
+name|state
+argument_list|,
 name|list
 argument_list|)
 operator|<
@@ -22685,6 +22730,8 @@ argument_list|,
 literal|"unidiff-zero"
 argument_list|,
 operator|&
+name|state
+operator|.
 name|unidiff_zero
 argument_list|,
 name|N_
