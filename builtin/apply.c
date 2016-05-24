@@ -198,6 +198,10 @@ DECL|member|p_value
 name|int
 name|p_value
 decl_stmt|;
+DECL|member|p_value_known
+name|int
+name|p_value_known
+decl_stmt|;
 DECL|member|p_context
 name|unsigned
 name|int
@@ -225,14 +229,6 @@ name|newfd
 init|=
 operator|-
 literal|1
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-DECL|variable|p_value_known
-specifier|static
-name|int
-name|p_value_known
 decl_stmt|;
 end_decl_stmt
 
@@ -4388,6 +4384,8 @@ comment|/* skip "+++ " */
 if|if
 condition|(
 operator|!
+name|state
+operator|->
 name|p_value_known
 condition|)
 block|{
@@ -4441,6 +4439,8 @@ name|p_value
 operator|=
 name|p
 expr_stmt|;
+name|state
+operator|->
 name|p_value_known
 operator|=
 literal|1
@@ -22473,6 +22473,8 @@ argument_list|(
 name|arg
 argument_list|)
 expr_stmt|;
+name|state
+operator|->
 name|p_value_known
 operator|=
 literal|1
