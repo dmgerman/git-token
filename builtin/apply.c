@@ -233,6 +233,10 @@ DECL|member|whitespace_error
 name|int
 name|whitespace_error
 decl_stmt|;
+DECL|member|squelch_whitespace_errors
+name|int
+name|squelch_whitespace_errors
+decl_stmt|;
 block|}
 struct|;
 end_struct
@@ -295,16 +299,6 @@ enum|;
 end_enum
 
 begin_decl_stmt
-DECL|variable|squelch_whitespace_errors
-specifier|static
-name|int
-name|squelch_whitespace_errors
-init|=
-literal|5
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|variable|applied_after_fixing_ws
 specifier|static
 name|int
@@ -337,6 +331,11 @@ specifier|static
 name|void
 name|parse_whitespace_option
 parameter_list|(
+name|struct
+name|apply_state
+modifier|*
+name|state
+parameter_list|,
 specifier|const
 name|char
 modifier|*
@@ -421,6 +420,8 @@ name|ws_error_action
 operator|=
 name|die_on_ws_error
 expr_stmt|;
+name|state
+operator|->
 name|squelch_whitespace_errors
 operator|=
 literal|0
@@ -7981,8 +7982,12 @@ operator|++
 expr_stmt|;
 if|if
 condition|(
+name|state
+operator|->
 name|squelch_whitespace_errors
 operator|&&
+name|state
+operator|->
 name|squelch_whitespace_errors
 operator|<
 name|state
@@ -22631,6 +22636,8 @@ name|arg
 expr_stmt|;
 name|parse_whitespace_option
 argument_list|(
+name|state
+argument_list|,
 name|arg
 argument_list|)
 expr_stmt|;
@@ -22781,6 +22788,12 @@ name|p_context
 operator|=
 name|UINT_MAX
 expr_stmt|;
+name|state
+operator|->
+name|squelch_whitespace_errors
+operator|=
+literal|5
+expr_stmt|;
 name|strbuf_init
 argument_list|(
 operator|&
@@ -22800,6 +22813,8 @@ name|apply_default_whitespace
 condition|)
 name|parse_whitespace_option
 argument_list|(
+name|state
+argument_list|,
 name|apply_default_whitespace
 argument_list|)
 expr_stmt|;
@@ -23787,8 +23802,12 @@ condition|)
 block|{
 if|if
 condition|(
+name|state
+operator|.
 name|squelch_whitespace_errors
 operator|&&
+name|state
+operator|.
 name|squelch_whitespace_errors
 operator|<
 name|state
@@ -23803,6 +23822,8 @@ name|state
 operator|.
 name|whitespace_error
 operator|-
+name|state
+operator|.
 name|squelch_whitespace_errors
 decl_stmt|;
 name|warning
