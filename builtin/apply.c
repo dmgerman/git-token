@@ -114,6 +114,10 @@ name|check_index
 decl_stmt|;
 comment|/* preimage must match the indexed version */
 comment|/* These boolean parameters control how the apply is done */
+DECL|member|apply_in_reverse
+name|int
+name|apply_in_reverse
+decl_stmt|;
 DECL|member|unidiff_zero
 name|int
 name|unidiff_zero
@@ -202,14 +206,6 @@ name|int
 name|apply
 init|=
 literal|1
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-DECL|variable|apply_in_reverse
-specifier|static
-name|int
-name|apply_in_reverse
 decl_stmt|;
 end_decl_stmt
 
@@ -7911,6 +7907,11 @@ specifier|static
 name|int
 name|parse_fragment
 parameter_list|(
+name|struct
+name|apply_state
+modifier|*
+name|state
+parameter_list|,
 specifier|const
 name|char
 modifier|*
@@ -8145,6 +8146,8 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
+name|state
+operator|->
 name|apply_in_reverse
 operator|&&
 name|ws_error_action
@@ -8168,6 +8171,8 @@ literal|'-'
 case|:
 if|if
 condition|(
+name|state
+operator|->
 name|apply_in_reverse
 operator|&&
 name|ws_error_action
@@ -8202,6 +8207,8 @@ case|:
 if|if
 condition|(
 operator|!
+name|state
+operator|->
 name|apply_in_reverse
 operator|&&
 name|ws_error_action
@@ -8382,6 +8389,11 @@ specifier|static
 name|int
 name|parse_single_patch
 parameter_list|(
+name|struct
+name|apply_state
+modifier|*
+name|state
+parameter_list|,
 specifier|const
 name|char
 modifier|*
@@ -8476,6 +8488,8 @@ name|len
 operator|=
 name|parse_fragment
 argument_list|(
+name|state
+argument_list|,
 name|line
 argument_list|,
 name|size
@@ -9938,6 +9952,8 @@ name|patchsize
 operator|=
 name|parse_single_patch
 argument_list|(
+name|state
+argument_list|,
 name|buffer
 operator|+
 name|offset
@@ -13251,6 +13267,8 @@ name|patch
 expr_stmt|;
 if|if
 condition|(
+name|state
+operator|->
 name|apply_in_reverse
 condition|)
 block|{
@@ -13973,6 +13991,8 @@ name|pos
 decl_stmt|;
 if|if
 condition|(
+name|state
+operator|->
 name|apply_in_reverse
 condition|)
 name|offset
@@ -14126,6 +14146,11 @@ name|int
 name|apply_binary_fragment
 parameter_list|(
 name|struct
+name|apply_state
+modifier|*
+name|state
+parameter_list|,
+name|struct
 name|image
 modifier|*
 name|img
@@ -14182,6 +14207,8 @@ return|;
 comment|/* Binary patch is irreversible without the optional second hunk */
 if|if
 condition|(
+name|state
+operator|->
 name|apply_in_reverse
 condition|)
 block|{
@@ -14333,6 +14360,11 @@ specifier|static
 name|int
 name|apply_binary
 parameter_list|(
+name|struct
+name|apply_state
+modifier|*
+name|state
+parameter_list|,
 name|struct
 name|image
 modifier|*
@@ -14592,6 +14624,8 @@ if|if
 condition|(
 name|apply_binary_fragment
 argument_list|(
+name|state
+argument_list|,
 name|img
 argument_list|,
 name|patch
@@ -14741,6 +14775,8 @@ condition|)
 return|return
 name|apply_binary
 argument_list|(
+name|state
+argument_list|,
 name|img
 argument_list|,
 name|patch
@@ -21719,6 +21755,8 @@ break|break;
 block|}
 if|if
 condition|(
+name|state
+operator|->
 name|apply_in_reverse
 condition|)
 name|reverse_patches
@@ -22783,6 +22821,8 @@ argument_list|,
 literal|"reverse"
 argument_list|,
 operator|&
+name|state
+operator|.
 name|apply_in_reverse
 argument_list|,
 name|N_
