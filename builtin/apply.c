@@ -156,6 +156,10 @@ DECL|member|apply_verbosely
 name|int
 name|apply_verbosely
 decl_stmt|;
+DECL|member|threeway
+name|int
+name|threeway
+decl_stmt|;
 DECL|member|unidiff_zero
 name|int
 name|unidiff_zero
@@ -212,14 +216,6 @@ DECL|variable|no_add
 specifier|static
 name|int
 name|no_add
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-DECL|variable|threeway
-specifier|static
-name|int
-name|threeway
 decl_stmt|;
 end_decl_stmt
 
@@ -16844,6 +16840,8 @@ comment|/* Note: with --reject, apply_fragments() returns 0 */
 if|if
 condition|(
 operator|!
+name|state
+operator|->
 name|threeway
 operator|||
 name|try_threeway
@@ -18327,6 +18325,8 @@ if|if
 condition|(
 name|err
 operator|&&
+name|state
+operator|->
 name|threeway
 condition|)
 block|{
@@ -22794,6 +22794,8 @@ argument_list|,
 literal|"3way"
 argument_list|,
 operator|&
+name|state
+operator|.
 name|threeway
 argument_list|,
 name|N_
@@ -23093,6 +23095,8 @@ name|state
 operator|.
 name|apply_with_reject
 operator|&&
+name|state
+operator|.
 name|threeway
 condition|)
 name|die
@@ -23106,6 +23110,8 @@ name|state
 operator|.
 name|cached
 operator|&&
+name|state
+operator|.
 name|threeway
 condition|)
 name|die
@@ -23115,6 +23121,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|state
+operator|.
 name|threeway
 condition|)
 block|{
