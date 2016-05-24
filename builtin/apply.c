@@ -103,6 +103,11 @@ name|int
 name|prefix_length
 decl_stmt|;
 comment|/* These control what gets looked at and modified */
+DECL|member|apply
+name|int
+name|apply
+decl_stmt|;
+comment|/* this is not a dry-run */
 DECL|member|cached
 name|int
 name|cached
@@ -218,16 +223,6 @@ DECL|variable|p_value_known
 specifier|static
 name|int
 name|p_value_known
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-DECL|variable|apply
-specifier|static
-name|int
-name|apply
-init|=
-literal|1
 decl_stmt|;
 end_decl_stmt
 
@@ -569,6 +564,11 @@ specifier|static
 name|void
 name|set_default_whitespace_mode
 parameter_list|(
+name|struct
+name|apply_state
+modifier|*
+name|state
+parameter_list|,
 specifier|const
 name|char
 modifier|*
@@ -586,6 +586,8 @@ condition|)
 name|ws_error_action
 operator|=
 operator|(
+name|state
+operator|->
 name|apply
 condition|?
 name|warn_on_ws_error
@@ -10132,6 +10134,8 @@ comment|/* Empty patch cannot be applied if it is a text patch 		 * without meta
 if|if
 condition|(
 operator|(
+name|state
+operator|->
 name|apply
 operator|||
 name|state
@@ -13926,6 +13930,8 @@ name|ws_error_action
 operator|==
 name|die_on_ws_error
 condition|)
+name|state
+operator|->
 name|apply
 operator|=
 literal|0
@@ -21917,6 +21923,8 @@ operator|==
 name|die_on_ws_error
 operator|)
 condition|)
+name|state
+operator|->
 name|apply
 operator|=
 literal|0
@@ -21929,6 +21937,8 @@ name|state
 operator|->
 name|check_index
 operator|&&
+name|state
+operator|->
 name|apply
 expr_stmt|;
 if|if
@@ -21981,6 +21991,8 @@ name|state
 operator|->
 name|check
 operator|||
+name|state
+operator|->
 name|apply
 operator|)
 operator|&&
@@ -22005,6 +22017,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|state
+operator|->
 name|apply
 operator|&&
 name|write_out_results
@@ -22439,6 +22453,12 @@ name|prefix
 argument_list|)
 else|:
 literal|0
+expr_stmt|;
+name|state
+operator|->
+name|apply
+operator|=
+literal|1
 expr_stmt|;
 name|state
 operator|->
@@ -23167,6 +23187,8 @@ name|state
 operator|.
 name|apply_with_reject
 condition|)
+name|state
+operator|.
 name|apply
 operator|=
 name|state
@@ -23202,6 +23224,8 @@ operator|.
 name|fake_ancestor
 operator|)
 condition|)
+name|state
+operator|.
 name|apply
 operator|=
 literal|0
@@ -23373,6 +23397,9 @@ literal|0
 expr_stmt|;
 name|set_default_whitespace_mode
 argument_list|(
+operator|&
+name|state
+argument_list|,
 name|whitespace_option
 argument_list|)
 expr_stmt|;
@@ -23398,6 +23425,9 @@ expr_stmt|;
 block|}
 name|set_default_whitespace_mode
 argument_list|(
+operator|&
+name|state
+argument_list|,
 name|whitespace_option
 argument_list|)
 expr_stmt|;
@@ -23479,6 +23509,8 @@ if|if
 condition|(
 name|applied_after_fixing_ws
 operator|&&
+name|state
+operator|.
 name|apply
 condition|)
 name|warning
