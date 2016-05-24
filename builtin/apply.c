@@ -87,6 +87,26 @@ directive|include
 file|"rerere.h"
 end_include
 
+begin_enum
+DECL|enum|ws_error_action
+enum|enum
+name|ws_error_action
+block|{
+DECL|enumerator|nowarn_ws_error
+name|nowarn_ws_error
+block|,
+DECL|enumerator|warn_on_ws_error
+name|warn_on_ws_error
+block|,
+DECL|enumerator|die_on_ws_error
+name|die_on_ws_error
+block|,
+DECL|enumerator|correct_ws_error
+name|correct_ws_error
+block|}
+enum|;
+end_enum
+
 begin_struct
 DECL|struct|apply_state
 struct|struct
@@ -223,6 +243,11 @@ name|int
 name|has_include
 decl_stmt|;
 comment|/* These control whitespace errors */
+DECL|member|ws_error_action
+name|enum
+name|ws_error_action
+name|ws_error_action
+decl_stmt|;
 DECL|member|whitespace_option
 specifier|const
 name|char
@@ -278,31 +303,6 @@ decl_stmt|;
 end_decl_stmt
 
 begin_enum
-DECL|enum|ws_error_action
-specifier|static
-enum|enum
-name|ws_error_action
-block|{
-DECL|enumerator|nowarn_ws_error
-name|nowarn_ws_error
-block|,
-DECL|enumerator|warn_on_ws_error
-name|warn_on_ws_error
-block|,
-DECL|enumerator|die_on_ws_error
-name|die_on_ws_error
-block|,
-DECL|enumerator|correct_ws_error
-name|correct_ws_error
-DECL|variable|ws_error_action
-block|}
-name|ws_error_action
-init|=
-name|warn_on_ws_error
-enum|;
-end_enum
-
-begin_enum
 DECL|enum|ws_ignore
 specifier|static
 enum|enum
@@ -344,6 +344,8 @@ operator|!
 name|option
 condition|)
 block|{
+name|state
+operator|->
 name|ws_error_action
 operator|=
 name|warn_on_ws_error
@@ -361,6 +363,8 @@ literal|"warn"
 argument_list|)
 condition|)
 block|{
+name|state
+operator|->
 name|ws_error_action
 operator|=
 name|warn_on_ws_error
@@ -378,6 +382,8 @@ literal|"nowarn"
 argument_list|)
 condition|)
 block|{
+name|state
+operator|->
 name|ws_error_action
 operator|=
 name|nowarn_ws_error
@@ -395,6 +401,8 @@ literal|"error"
 argument_list|)
 condition|)
 block|{
+name|state
+operator|->
 name|ws_error_action
 operator|=
 name|die_on_ws_error
@@ -412,6 +420,8 @@ literal|"error-all"
 argument_list|)
 condition|)
 block|{
+name|state
+operator|->
 name|ws_error_action
 operator|=
 name|die_on_ws_error
@@ -443,6 +453,8 @@ literal|"fix"
 argument_list|)
 condition|)
 block|{
+name|state
+operator|->
 name|ws_error_action
 operator|=
 name|correct_ws_error
@@ -570,6 +582,8 @@ operator|&&
 operator|!
 name|apply_default_whitespace
 condition|)
+name|state
+operator|->
 name|ws_error_action
 operator|=
 operator|(
@@ -8337,6 +8351,8 @@ name|state
 operator|->
 name|apply_in_reverse
 operator|&&
+name|state
+operator|->
 name|ws_error_action
 operator|==
 name|correct_ws_error
@@ -8364,6 +8380,8 @@ name|state
 operator|->
 name|apply_in_reverse
 operator|&&
+name|state
+operator|->
 name|ws_error_action
 operator|!=
 name|nowarn_ws_error
@@ -8402,6 +8420,8 @@ name|state
 operator|->
 name|apply_in_reverse
 operator|&&
+name|state
+operator|->
 name|ws_error_action
 operator|!=
 name|nowarn_ws_error
@@ -11719,6 +11739,11 @@ name|int
 name|match_fragment
 parameter_list|(
 name|struct
+name|apply_state
+modifier|*
+name|state
+parameter_list|,
+name|struct
 name|image
 modifier|*
 name|img
@@ -11821,6 +11846,8 @@ block|}
 elseif|else
 if|if
 condition|(
+name|state
+operator|->
 name|ws_error_action
 operator|==
 name|correct_ws_error
@@ -12072,6 +12099,8 @@ argument_list|)
 return|;
 if|if
 condition|(
+name|state
+operator|->
 name|ws_error_action
 operator|!=
 name|correct_ws_error
@@ -12475,6 +12504,11 @@ name|int
 name|find_pos
 parameter_list|(
 name|struct
+name|apply_state
+modifier|*
+name|state
+parameter_list|,
+name|struct
 name|image
 modifier|*
 name|img
@@ -12626,6 +12660,8 @@ if|if
 condition|(
 name|match_fragment
 argument_list|(
+name|state
+argument_list|,
 name|img
 argument_list|,
 name|preimage
@@ -13658,6 +13694,8 @@ name|state
 operator|->
 name|whitespace_error
 operator|||
+name|state
+operator|->
 name|ws_error_action
 operator|!=
 name|correct_ws_error
@@ -13999,6 +14037,8 @@ name|applied_pos
 operator|=
 name|find_pos
 argument_list|(
+name|state
+argument_list|,
 name|img
 argument_list|,
 operator|&
@@ -14136,6 +14176,8 @@ operator|&
 name|WS_BLANK_AT_EOF
 operator|)
 operator|&&
+name|state
+operator|->
 name|ws_error_action
 operator|!=
 name|nowarn_ws_error
@@ -14156,6 +14198,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|state
+operator|->
 name|ws_error_action
 operator|==
 name|correct_ws_error
@@ -14176,6 +14220,8 @@ block|}
 comment|/* 			 * We would want to prevent write_out_results() 			 * from taking place in apply_patch() that follows 			 * the callchain led us here, which is: 			 * apply_patch->check_patch_list->check_patch-> 			 * apply_data->apply_fragments->apply_one_fragment 			 */
 if|if
 condition|(
+name|state
+operator|->
 name|ws_error_action
 operator|==
 name|die_on_ws_error
@@ -22172,6 +22218,8 @@ operator|->
 name|whitespace_error
 operator|&&
 operator|(
+name|state
+operator|->
 name|ws_error_action
 operator|==
 name|die_on_ws_error
@@ -22791,6 +22839,12 @@ operator|->
 name|squelch_whitespace_errors
 operator|=
 literal|5
+expr_stmt|;
+name|state
+operator|->
+name|ws_error_action
+operator|=
+name|warn_on_ws_error
 expr_stmt|;
 name|strbuf_init
 argument_list|(
@@ -23841,6 +23895,8 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+name|state
+operator|.
 name|ws_error_action
 operator|==
 name|die_on_ws_error
