@@ -271,6 +271,12 @@ DECL|member|max_len
 name|int
 name|max_len
 decl_stmt|;
+comment|/* 	 * Records filenames that have been touched, in order to handle 	 * the case where more than one patches touch the same file. 	 */
+DECL|member|fn_table
+name|struct
+name|string_list
+name|fn_table
+decl_stmt|;
 comment|/* These control whitespace errors */
 DECL|member|ws_error_action
 name|enum
@@ -1111,19 +1117,6 @@ decl_stmt|;
 block|}
 struct|;
 end_struct
-
-begin_comment
-comment|/*  * Records filenames that have been touched, in order to handle  * the case where more than one patches touch the same file.  */
-end_comment
-
-begin_decl_stmt
-DECL|variable|fn_table
-specifier|static
-name|struct
-name|string_list
-name|fn_table
-decl_stmt|;
-end_decl_stmt
 
 begin_function
 DECL|function|hash_line
@@ -15356,6 +15349,11 @@ name|patch
 modifier|*
 name|in_fn_table
 parameter_list|(
+name|struct
+name|apply_state
+modifier|*
+name|state
+parameter_list|,
 specifier|const
 name|char
 modifier|*
@@ -15381,6 +15379,8 @@ operator|=
 name|string_list_lookup
 argument_list|(
 operator|&
+name|state
+operator|->
 name|fn_table
 argument_list|,
 name|name
@@ -15475,6 +15475,11 @@ name|void
 name|add_to_fn_table
 parameter_list|(
 name|struct
+name|apply_state
+modifier|*
+name|state
+parameter_list|,
+name|struct
 name|patch
 modifier|*
 name|patch
@@ -15500,6 +15505,8 @@ operator|=
 name|string_list_insert
 argument_list|(
 operator|&
+name|state
+operator|->
 name|fn_table
 argument_list|,
 name|patch
@@ -15537,6 +15544,8 @@ operator|=
 name|string_list_insert
 argument_list|(
 operator|&
+name|state
+operator|->
 name|fn_table
 argument_list|,
 name|patch
@@ -15560,6 +15569,11 @@ specifier|static
 name|void
 name|prepare_fn_table
 parameter_list|(
+name|struct
+name|apply_state
+modifier|*
+name|state
+parameter_list|,
 name|struct
 name|patch
 modifier|*
@@ -15599,6 +15613,8 @@ operator|=
 name|string_list_insert
 argument_list|(
 operator|&
+name|state
+operator|->
 name|fn_table
 argument_list|,
 name|patch
@@ -15729,6 +15745,11 @@ modifier|*
 name|previous_patch
 parameter_list|(
 name|struct
+name|apply_state
+modifier|*
+name|state
+parameter_list|,
+name|struct
 name|patch
 modifier|*
 name|patch
@@ -15766,6 +15787,8 @@ name|previous
 operator|=
 name|in_fn_table
 argument_list|(
+name|state
+argument_list|,
 name|patch
 operator|->
 name|old_name
@@ -16096,6 +16119,8 @@ name|previous
 operator|=
 name|previous_patch
 argument_list|(
+name|state
+argument_list|,
 name|patch
 argument_list|,
 operator|&
@@ -17244,6 +17269,8 @@ name|len
 expr_stmt|;
 name|add_to_fn_table
 argument_list|(
+name|state
+argument_list|,
 name|patch
 argument_list|)
 expr_stmt|;
@@ -17362,6 +17389,8 @@ name|previous
 operator|=
 name|previous_patch
 argument_list|(
+name|state
+argument_list|,
 name|patch
 argument_list|,
 operator|&
@@ -18622,6 +18651,8 @@ name|tpatch
 operator|=
 name|in_fn_table
 argument_list|(
+name|state
+argument_list|,
 name|new_name
 argument_list|)
 operator|)
@@ -18985,6 +19016,8 @@ argument_list|)
 expr_stmt|;
 name|prepare_fn_table
 argument_list|(
+name|state
+argument_list|,
 name|patch
 argument_list|)
 expr_stmt|;
@@ -22519,6 +22552,8 @@ expr_stmt|;
 name|string_list_clear
 argument_list|(
 operator|&
+name|state
+operator|->
 name|fn_table
 argument_list|,
 literal|0
@@ -23047,6 +23082,7 @@ operator|->
 name|root
 argument_list|)
 expr_stmt|;
+comment|/*&state->fn_table is cleared at the end of apply_patch() */
 block|}
 end_function
 
