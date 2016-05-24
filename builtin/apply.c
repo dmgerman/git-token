@@ -121,6 +121,26 @@ block|}
 enum|;
 end_enum
 
+begin_comment
+comment|/*  * We need to keep track of how symlinks in the preimage are  * manipulated by the patches.  A patch to add a/b/c where a/b  * is a symlink should not be allowed to affect the directory  * the symlink points at, but if the same patch removes a/b,  * it is perfectly fine, as the patch removes a/b to make room  * to create a directory a/b so that a/b/c can be created.  *  * See also "struct string_list symlink_changes" in "struct  * apply_state".  */
+end_comment
+
+begin_define
+DECL|macro|SYMLINK_GOES_AWAY
+define|#
+directive|define
+name|SYMLINK_GOES_AWAY
+value|01
+end_define
+
+begin_define
+DECL|macro|SYMLINK_IN_RESULT
+define|#
+directive|define
+name|SYMLINK_IN_RESULT
+value|02
+end_define
+
 begin_struct
 DECL|struct|apply_state
 struct|struct
@@ -262,6 +282,12 @@ name|int
 name|linenr
 decl_stmt|;
 comment|/* current line number */
+DECL|member|symlink_changes
+name|struct
+name|string_list
+name|symlink_changes
+decl_stmt|;
+comment|/* we have to track symlinks */
 comment|/* 	 * For "diff-stat" like behaviour, we keep track of the biggest change 	 * we've seen, and the longest filename. That allows us to do simple 	 * scaling. 	 */
 DECL|member|max_change
 name|int
@@ -17936,41 +17962,17 @@ return|;
 block|}
 end_function
 
-begin_comment
-comment|/*  * We need to keep track of how symlinks in the preimage are  * manipulated by the patches.  A patch to add a/b/c where a/b  * is a symlink should not be allowed to affect the directory  * the symlink points at, but if the same patch removes a/b,  * it is perfectly fine, as the patch removes a/b to make room  * to create a directory a/b so that a/b/c can be created.  */
-end_comment
-
-begin_decl_stmt
-DECL|variable|symlink_changes
-specifier|static
-name|struct
-name|string_list
-name|symlink_changes
-decl_stmt|;
-end_decl_stmt
-
-begin_define
-DECL|macro|SYMLINK_GOES_AWAY
-define|#
-directive|define
-name|SYMLINK_GOES_AWAY
-value|01
-end_define
-
-begin_define
-DECL|macro|SYMLINK_IN_RESULT
-define|#
-directive|define
-name|SYMLINK_IN_RESULT
-value|02
-end_define
-
 begin_function
 DECL|function|register_symlink_changes
 specifier|static
 name|uintptr_t
 name|register_symlink_changes
 parameter_list|(
+name|struct
+name|apply_state
+modifier|*
+name|state
+parameter_list|,
 specifier|const
 name|char
 modifier|*
@@ -17990,6 +17992,8 @@ operator|=
 name|string_list_lookup
 argument_list|(
 operator|&
+name|state
+operator|->
 name|symlink_changes
 argument_list|,
 name|path
@@ -18006,6 +18010,8 @@ operator|=
 name|string_list_insert
 argument_list|(
 operator|&
+name|state
+operator|->
 name|symlink_changes
 argument_list|,
 name|path
@@ -18060,6 +18066,11 @@ specifier|static
 name|uintptr_t
 name|check_symlink_changes
 parameter_list|(
+name|struct
+name|apply_state
+modifier|*
+name|state
+parameter_list|,
 specifier|const
 name|char
 modifier|*
@@ -18076,6 +18087,8 @@ operator|=
 name|string_list_lookup
 argument_list|(
 operator|&
+name|state
+operator|->
 name|symlink_changes
 argument_list|,
 name|path
@@ -18106,6 +18119,11 @@ specifier|static
 name|void
 name|prepare_symlink_changes
 parameter_list|(
+name|struct
+name|apply_state
+modifier|*
+name|state
+parameter_list|,
 name|struct
 name|patch
 modifier|*
@@ -18152,6 +18170,8 @@ condition|)
 comment|/* the symlink at patch->old_name is removed */
 name|register_symlink_changes
 argument_list|(
+name|state
+argument_list|,
 name|patch
 operator|->
 name|old_name
@@ -18175,6 +18195,8 @@ condition|)
 comment|/* the symlink at patch->new_name is created or remains */
 name|register_symlink_changes
 argument_list|(
+name|state
+argument_list|,
 name|patch
 operator|->
 name|new_name
@@ -18252,6 +18274,8 @@ name|change
 operator|=
 name|check_symlink_changes
 argument_list|(
+name|state
+argument_list|,
 name|name
 operator|->
 name|buf
@@ -19011,6 +19035,8 @@ literal|0
 decl_stmt|;
 name|prepare_symlink_changes
 argument_list|(
+name|state
+argument_list|,
 name|patch
 argument_list|)
 expr_stmt|;
@@ -23070,6 +23096,16 @@ operator|&
 name|state
 operator|->
 name|limit_by_name
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+name|string_list_clear
+argument_list|(
+operator|&
+name|state
+operator|->
+name|symlink_changes
 argument_list|,
 literal|0
 argument_list|)
