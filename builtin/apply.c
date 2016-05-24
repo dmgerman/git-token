@@ -205,6 +205,10 @@ name|struct
 name|string_list
 name|limit_by_name
 decl_stmt|;
+DECL|member|has_include
+name|int
+name|has_include
+decl_stmt|;
 block|}
 struct|;
 end_struct
@@ -9604,14 +9608,6 @@ begin_comment
 comment|/*  * include/exclude  */
 end_comment
 
-begin_decl_stmt
-DECL|variable|has_include
-specifier|static
-name|int
-name|has_include
-decl_stmt|;
-end_decl_stmt
-
 begin_function
 DECL|function|add_name_limit
 specifier|static
@@ -9809,6 +9805,8 @@ block|}
 comment|/* 	 * If we had any include, a path that does not match any rule is 	 * not used.  Otherwise, we saw bunch of exclude rules (or none) 	 * and such a path is used. 	 */
 return|return
 operator|!
+name|state
+operator|->
 name|has_include
 return|;
 block|}
@@ -22267,6 +22265,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|state
+operator|->
 name|has_include
 operator|=
 literal|1
