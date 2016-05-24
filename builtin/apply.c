@@ -118,6 +118,10 @@ DECL|member|apply_in_reverse
 name|int
 name|apply_in_reverse
 decl_stmt|;
+DECL|member|apply_with_reject
+name|int
+name|apply_with_reject
+decl_stmt|;
 DECL|member|unidiff_zero
 name|int
 name|unidiff_zero
@@ -206,14 +210,6 @@ name|int
 name|apply
 init|=
 literal|1
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-DECL|variable|apply_with_reject
-specifier|static
-name|int
-name|apply_with_reject
 decl_stmt|;
 end_decl_stmt
 
@@ -14825,6 +14821,8 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
+name|state
+operator|->
 name|apply_with_reject
 condition|)
 return|return
@@ -21923,6 +21921,8 @@ operator|<
 literal|0
 operator|&&
 operator|!
+name|state
+operator|->
 name|apply_with_reject
 condition|)
 name|exit
@@ -21942,6 +21942,8 @@ condition|)
 block|{
 if|if
 condition|(
+name|state
+operator|->
 name|apply_with_reject
 condition|)
 name|exit
@@ -22855,6 +22857,8 @@ argument_list|,
 literal|"reject"
 argument_list|,
 operator|&
+name|state
+operator|.
 name|apply_with_reject
 argument_list|,
 name|N_
@@ -22980,6 +22984,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|state
+operator|.
 name|apply_with_reject
 operator|&&
 name|threeway
@@ -23026,6 +23032,8 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+name|state
+operator|.
 name|apply_with_reject
 condition|)
 name|apply
