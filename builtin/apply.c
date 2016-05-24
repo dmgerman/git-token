@@ -184,6 +184,12 @@ name|char
 modifier|*
 name|fake_ancestor
 decl_stmt|;
+DECL|member|patch_input_file
+specifier|const
+name|char
+modifier|*
+name|patch_input_file
+decl_stmt|;
 DECL|member|line_termination
 name|int
 name|line_termination
@@ -316,16 +322,6 @@ init|=
 name|ignore_ws_none
 enum|;
 end_enum
-
-begin_decl_stmt
-DECL|variable|patch_input_file
-specifier|static
-specifier|const
-name|char
-modifier|*
-name|patch_input_file
-decl_stmt|;
-end_decl_stmt
 
 begin_decl_stmt
 DECL|variable|root
@@ -7721,6 +7717,11 @@ specifier|static
 name|void
 name|record_ws_error
 parameter_list|(
+name|struct
+name|apply_state
+modifier|*
+name|state
+parameter_list|,
 name|unsigned
 name|result
 parameter_list|,
@@ -7771,6 +7772,8 @@ name|stderr
 argument_list|,
 literal|"%s:%d: %s.\n%.*s\n"
 argument_list|,
+name|state
+operator|->
 name|patch_input_file
 argument_list|,
 name|linenr
@@ -7796,6 +7799,11 @@ specifier|static
 name|void
 name|check_whitespace
 parameter_list|(
+name|struct
+name|apply_state
+modifier|*
+name|state
+parameter_list|,
 specifier|const
 name|char
 modifier|*
@@ -7826,6 +7834,8 @@ argument_list|)
 decl_stmt|;
 name|record_ws_error
 argument_list|(
+name|state
+argument_list|,
 name|result
 argument_list|,
 name|line
@@ -8101,6 +8111,8 @@ name|correct_ws_error
 condition|)
 name|check_whitespace
 argument_list|(
+name|state
+argument_list|,
 name|line
 argument_list|,
 name|len
@@ -8126,6 +8138,8 @@ name|nowarn_ws_error
 condition|)
 name|check_whitespace
 argument_list|(
+name|state
+argument_list|,
 name|line
 argument_list|,
 name|len
@@ -8162,6 +8176,8 @@ name|nowarn_ws_error
 condition|)
 name|check_whitespace
 argument_list|(
+name|state
+argument_list|,
 name|line
 argument_list|,
 name|len
@@ -13895,6 +13911,8 @@ condition|)
 block|{
 name|record_ws_error
 argument_list|(
+name|state
+argument_list|,
 name|WS_BLANK_AT_EOF
 argument_list|,
 literal|"+"
@@ -21719,6 +21737,8 @@ name|skipped_patch
 init|=
 literal|0
 decl_stmt|;
+name|state
+operator|->
 name|patch_input_file
 operator|=
 name|filename
