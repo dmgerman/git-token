@@ -1933,13 +1933,13 @@ operator|.
 name|detached_from
 condition|)
 block|{
-comment|/* TRANSLATORS: make sure these match _("HEAD detached at ") 		   and _("HEAD detached from ") in wt-status.c */
 if|if
 condition|(
 name|state
 operator|.
 name|detached_at
 condition|)
+comment|/* TRANSLATORS: make sure this matches 			   "HEAD detached at " in wt-status.c */
 name|strbuf_addf
 argument_list|(
 operator|&
@@ -1956,6 +1956,7 @@ name|detached_from
 argument_list|)
 expr_stmt|;
 else|else
+comment|/* TRANSLATORS: make sure this matches 			   "HEAD detached from " in wt-status.c */
 name|strbuf_addf
 argument_list|(
 operator|&
@@ -3367,9 +3368,15 @@ argument_list|,
 operator|&
 name|new_upstream
 argument_list|,
+name|N_
+argument_list|(
 literal|"upstream"
+argument_list|)
 argument_list|,
+name|N_
+argument_list|(
 literal|"change the upstream info"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_BOOL
@@ -4793,10 +4800,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-name|_
-argument_list|(
 literal|"    git branch -d %s\n"
-argument_list|)
 argument_list|,
 name|branch
 operator|->
@@ -4807,10 +4811,7 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
-name|_
-argument_list|(
 literal|"    git branch --set-upstream-to %s\n"
-argument_list|)
 argument_list|,
 name|branch
 operator|->
