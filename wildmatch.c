@@ -693,7 +693,7 @@ operator|==
 literal|'\0'
 condition|)
 break|break;
-comment|/* 				 * Try to advance faster when an asterisk is 				 * followed by a literal. We know in this case 				 * that the the string before the literal 				 * must belong to "*". 				 * If match_slash is false, do not look past 				 * the first slash as it cannot belong to '*'. 				 */
+comment|/* 				 * Try to advance faster when an asterisk is 				 * followed by a literal. We know in this case 				 * that the string before the literal 				 * must belong to "*". 				 * If match_slash is false, do not look past 				 * the first slash as it cannot belong to '*'. 				 */
 if|if
 condition|(
 operator|!
