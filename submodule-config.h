@@ -81,6 +81,10 @@ index|[
 literal|20
 index|]
 decl_stmt|;
+DECL|member|recommend_shallow
+name|int
+name|recommend_shallow
+decl_stmt|;
 block|}
 struct|;
 end_struct
