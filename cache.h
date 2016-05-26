@@ -4351,6 +4351,37 @@ name|auto_comment_line_char
 decl_stmt|;
 end_decl_stmt
 
+begin_comment
+comment|/* Windows only */
+end_comment
+
+begin_enum
+DECL|enum|hide_dotfiles_type
+enum|enum
+name|hide_dotfiles_type
+block|{
+DECL|enumerator|HIDE_DOTFILES_FALSE
+name|HIDE_DOTFILES_FALSE
+init|=
+literal|0
+block|,
+DECL|enumerator|HIDE_DOTFILES_TRUE
+name|HIDE_DOTFILES_TRUE
+block|,
+DECL|enumerator|HIDE_DOTFILES_DOTGITONLY
+name|HIDE_DOTFILES_DOTGITONLY
+block|}
+enum|;
+end_enum
+
+begin_decl_stmt
+specifier|extern
+name|enum
+name|hide_dotfiles_type
+name|hide_dotfiles
+decl_stmt|;
+end_decl_stmt
+
 begin_enum
 DECL|enum|branch_track
 enum|enum
