@@ -10776,6 +10776,12 @@ DECL|member|linenr
 name|int
 name|linenr
 decl_stmt|;
+DECL|member|origin_type
+specifier|const
+name|char
+modifier|*
+name|origin_type
+decl_stmt|;
 block|}
 struct|;
 end_struct
