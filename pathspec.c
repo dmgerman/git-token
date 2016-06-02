@@ -2405,9 +2405,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|free_pathspec
+DECL|function|clear_pathspec
 name|void
-name|free_pathspec
+name|clear_pathspec
 parameter_list|(
 name|struct
 name|pathspec

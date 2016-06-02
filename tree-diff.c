@@ -2302,7 +2302,7 @@ operator|&
 name|diff_opts
 argument_list|)
 expr_stmt|;
-name|free_pathspec
+name|clear_pathspec
 argument_list|(
 operator|&
 name|diff_opts
@@ -2425,7 +2425,7 @@ index|]
 operator|=
 name|NULL
 expr_stmt|;
-name|free_pathspec
+name|clear_pathspec
 argument_list|(
 operator|&
 name|opt
