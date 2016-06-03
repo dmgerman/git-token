@@ -98,6 +98,36 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/*  * Search a worktree that can be unambiguously identified by  * "arg". "prefix" must not be NULL.  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|struct
+name|worktree
+modifier|*
+name|find_worktree
+parameter_list|(
+name|struct
+name|worktree
+modifier|*
+modifier|*
+name|list
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|prefix
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|arg
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/*  * Free up the memory for worktree(s)  */
 end_comment
 
