@@ -128,6 +128,24 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/*  * Return true if the given worktree is the main one.  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|is_main_worktree
+parameter_list|(
+specifier|const
+name|struct
+name|worktree
+modifier|*
+name|wt
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/*  * Free up the memory for worktree(s)  */
 end_comment
 

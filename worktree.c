@@ -1254,6 +1254,27 @@ block|}
 end_function
 
 begin_function
+DECL|function|is_main_worktree
+name|int
+name|is_main_worktree
+parameter_list|(
+specifier|const
+name|struct
+name|worktree
+modifier|*
+name|wt
+parameter_list|)
+block|{
+return|return
+operator|!
+name|wt
+operator|->
+name|id
+return|;
+block|}
+end_function
+
+begin_function
 DECL|function|is_worktree_being_rebased
 name|int
 name|is_worktree_being_rebased
