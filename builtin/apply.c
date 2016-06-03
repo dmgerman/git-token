@@ -156,6 +156,13 @@ DECL|member|prefix_length
 name|int
 name|prefix_length
 decl_stmt|;
+comment|/* 	 * Since lockfile.c keeps a linked list of all created 	 * lock_file structures, it isn't safe to free(lock_file). 	 */
+DECL|member|lock_file
+name|struct
+name|lock_file
+modifier|*
+name|lock_file
+decl_stmt|;
 comment|/* These control what gets looked at and modified */
 DECL|member|apply
 name|int
@@ -22422,7 +22429,8 @@ name|newfd
 operator|=
 name|hold_locked_index
 argument_list|(
-operator|&
+name|state
+operator|->
 name|lock_file
 argument_list|,
 literal|1
@@ -22954,6 +22962,11 @@ specifier|const
 name|char
 modifier|*
 name|prefix
+parameter_list|,
+name|struct
+name|lock_file
+modifier|*
+name|lock_file
 parameter_list|)
 block|{
 name|memset
@@ -22991,6 +23004,12 @@ name|prefix
 argument_list|)
 else|:
 literal|0
+expr_stmt|;
+name|state
+operator|->
+name|lock_file
+operator|=
+name|lock_file
 expr_stmt|;
 name|state
 operator|->
@@ -23303,6 +23322,18 @@ operator|->
 name|unsafe_paths
 operator|=
 literal|0
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|state
+operator|->
+name|lock_file
+condition|)
+name|die
+argument_list|(
+literal|"BUG: state->lock_file should not be NULL"
+argument_list|)
 expr_stmt|;
 block|}
 end_function
@@ -23644,7 +23675,8 @@ argument_list|(
 operator|&
 name|the_index
 argument_list|,
-operator|&
+name|state
+operator|->
 name|lock_file
 argument_list|,
 name|COMMIT_LOCK
@@ -24240,6 +24272,9 @@ operator|&
 name|state
 argument_list|,
 name|prefix
+argument_list|,
+operator|&
+name|lock_file
 argument_list|)
 expr_stmt|;
 name|argc
