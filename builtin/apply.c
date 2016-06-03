@@ -2185,14 +2185,6 @@ specifier|static
 name|int
 name|name_terminate
 parameter_list|(
-specifier|const
-name|char
-modifier|*
-name|name
-parameter_list|,
-name|int
-name|namelen
-parameter_list|,
 name|int
 name|c
 parameter_list|,
@@ -3520,12 +3512,6 @@ if|if
 condition|(
 name|name_terminate
 argument_list|(
-name|start
-argument_list|,
-name|line
-operator|-
-name|start
-argument_list|,
 name|c
 argument_list|,
 name|terminate
