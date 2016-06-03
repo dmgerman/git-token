@@ -479,6 +479,7 @@ name|line_buf
 operator|->
 name|buf
 decl_stmt|;
+specifier|const
 name|char
 modifier|*
 name|p
@@ -491,64 +492,43 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|memcmp
+name|skip_prefix
 argument_list|(
 name|line
 argument_list|,
 literal|"diff-tree "
 argument_list|,
-literal|10
-argument_list|)
-condition|)
+operator|&
 name|p
-operator|+=
-literal|10
-expr_stmt|;
-elseif|else
-if|if
-condition|(
+argument_list|)
+operator|&&
 operator|!
-name|memcmp
+name|skip_prefix
 argument_list|(
 name|line
 argument_list|,
 literal|"commit "
 argument_list|,
-literal|7
-argument_list|)
-condition|)
+operator|&
 name|p
-operator|+=
-literal|7
-expr_stmt|;
-elseif|else
-if|if
-condition|(
+argument_list|)
+operator|&&
 operator|!
-name|memcmp
+name|skip_prefix
 argument_list|(
 name|line
 argument_list|,
 literal|"From "
 argument_list|,
-literal|5
-argument_list|)
-condition|)
+operator|&
 name|p
-operator|+=
-literal|5
-expr_stmt|;
-elseif|else
-if|if
-condition|(
-operator|!
-name|memcmp
+argument_list|)
+operator|&&
+name|starts_with
 argument_list|(
 name|line
 argument_list|,
 literal|"\\ "
-argument_list|,
-literal|2
 argument_list|)
 operator|&&
 literal|12
@@ -582,13 +562,12 @@ condition|(
 operator|!
 name|patchlen
 operator|&&
-name|memcmp
+operator|!
+name|starts_with
 argument_list|(
 name|line
 argument_list|,
 literal|"diff "
-argument_list|,
-literal|5
 argument_list|)
 condition|)
 continue|continue;
@@ -603,28 +582,22 @@ condition|)
 block|{
 if|if
 condition|(
-operator|!
-name|memcmp
+name|starts_with
 argument_list|(
 name|line
 argument_list|,
 literal|"index "
-argument_list|,
-literal|6
 argument_list|)
 condition|)
 continue|continue;
 elseif|else
 if|if
 condition|(
-operator|!
-name|memcmp
+name|starts_with
 argument_list|(
 name|line
 argument_list|,
 literal|"--- "
-argument_list|,
-literal|4
 argument_list|)
 condition|)
 name|before
@@ -661,14 +634,11 @@ condition|)
 block|{
 if|if
 condition|(
-operator|!
-name|memcmp
+name|starts_with
 argument_list|(
 name|line
 argument_list|,
 literal|"@@ -"
-argument_list|,
-literal|4
 argument_list|)
 condition|)
 block|{
@@ -689,13 +659,12 @@ block|}
 comment|/* Split at the end of the patch.  */
 if|if
 condition|(
-name|memcmp
+operator|!
+name|starts_with
 argument_list|(
 name|line
 argument_list|,
 literal|"diff "
-argument_list|,
-literal|5
 argument_list|)
 condition|)
 break|break;
