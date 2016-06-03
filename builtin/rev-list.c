@@ -1780,6 +1780,12 @@ if|if
 condition|(
 name|revs
 operator|.
+name|max_count
+operator|<
+literal|0
+operator|&&
+name|revs
+operator|.
 name|tag_objects
 operator|&&
 name|revs
