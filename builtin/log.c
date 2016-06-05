@@ -5473,11 +5473,13 @@ index|]
 decl_stmt|;
 if|if
 condition|(
+operator|!
+name|cmit_fmt_is_mail
+argument_list|(
 name|rev
 operator|->
 name|commit_format
-operator|!=
-name|CMIT_FMT_EMAIL
+argument_list|)
 condition|)
 name|die
 argument_list|(
