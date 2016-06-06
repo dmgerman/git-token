@@ -1371,16 +1371,9 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-block|{
-name|printf
-argument_list|(
-literal|"#unmatched\n"
-argument_list|)
-expr_stmt|;
 return|return
 literal|1
 return|;
-block|}
 for|for
 control|(
 name|i
