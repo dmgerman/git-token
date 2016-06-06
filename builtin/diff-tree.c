@@ -724,6 +724,13 @@ name|tweak
 operator|=
 name|diff_tree_tweak_rev
 expr_stmt|;
+name|precompose_argv
+argument_list|(
+name|argc
+argument_list|,
+name|argv
+argument_list|)
+expr_stmt|;
 name|argc
 operator|=
 name|setup_revisions
