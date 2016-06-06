@@ -156,7 +156,7 @@ DECL|member|prefix_length
 name|int
 name|prefix_length
 decl_stmt|;
-comment|/* 	 * Since lockfile.c keeps a linked list of all created 	 * lock_file structures, it isn't safe to free(lock_file). 	 */
+comment|/* These are lock_file related */
 DECL|member|lock_file
 name|struct
 name|lock_file
