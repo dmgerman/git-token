@@ -14693,9 +14693,9 @@ if|if
 condition|(
 name|read_ref_full
 argument_list|(
-name|update
-operator|->
-name|refname
+name|referent
+operator|.
+name|buf
 argument_list|,
 literal|0
 argument_list|,
