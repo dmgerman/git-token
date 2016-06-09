@@ -9160,7 +9160,7 @@ name|printf
 argument_list|(
 name|_
 argument_list|(
-literal|"nothing to commit, working directory clean\n"
+literal|"nothing to commit, working tree clean\n"
 argument_list|)
 argument_list|)
 expr_stmt|;
