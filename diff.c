@@ -150,10 +150,13 @@ DECL|variable|diff_compaction_heuristic
 specifier|static
 name|int
 name|diff_compaction_heuristic
-init|=
-literal|1
 decl_stmt|;
 end_decl_stmt
+
+begin_comment
+DECL|variable|diff_compaction_heuristic
+comment|/* experimental */
+end_comment
 
 begin_decl_stmt
 DECL|variable|diff_rename_limit_default
