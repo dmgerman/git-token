@@ -1063,9 +1063,7 @@ name|stateless_rpc
 operator|&&
 name|args
 operator|->
-name|depth
-operator|>
-literal|0
+name|deepen
 condition|)
 block|{
 comment|/* If we sent a depth we will get back "duplicate" 		 * shallow and unshallow commands every time there 		 * is a block of have lines exchanged. 		 */
@@ -1905,9 +1903,7 @@ if|if
 condition|(
 name|args
 operator|->
-name|depth
-operator|>
-literal|0
+name|deepen
 condition|)
 block|{
 name|char
@@ -3062,7 +3058,7 @@ operator|(
 operator|!
 name|args
 operator|->
-name|depth
+name|deepen
 operator|||
 operator|!
 name|starts_with
@@ -3397,7 +3393,7 @@ condition|(
 operator|!
 name|args
 operator|->
-name|depth
+name|deepen
 condition|)
 block|{
 name|for_each_ref
@@ -4489,6 +4485,20 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|args
+operator|->
+name|depth
+operator|>
+literal|0
+condition|)
+name|args
+operator|->
+name|deepen
+operator|=
+literal|1
+expr_stmt|;
+if|if
+condition|(
 name|server_supports
 argument_list|(
 literal|"multi_ack_detailed"
@@ -4834,9 +4844,7 @@ if|if
 condition|(
 name|args
 operator|->
-name|depth
-operator|>
-literal|0
+name|deepen
 condition|)
 name|setup_alternate_shallow
 argument_list|(
@@ -5186,9 +5194,7 @@ if|if
 condition|(
 name|args
 operator|->
-name|depth
-operator|>
-literal|0
+name|deepen
 operator|&&
 name|alternate_shallow_file
 condition|)

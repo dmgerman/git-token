@@ -139,6 +139,12 @@ name|update_shallow
 range|:
 literal|1
 decl_stmt|;
+DECL|member|deepen
+name|unsigned
+name|deepen
+range|:
+literal|1
+decl_stmt|;
 block|}
 struct|;
 end_struct
