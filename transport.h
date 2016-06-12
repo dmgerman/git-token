@@ -77,6 +77,12 @@ name|update_shallow
 range|:
 literal|1
 decl_stmt|;
+DECL|member|deepen_relative
+name|unsigned
+name|deepen_relative
+range|:
+literal|1
+decl_stmt|;
 DECL|member|depth
 name|int
 name|depth
@@ -646,6 +652,18 @@ define|#
 directive|define
 name|TRANS_OPT_DEEPEN_NOT
 value|"deepen-not"
+end_define
+
+begin_comment
+comment|/* Limit the deepen of the fetch if not null */
+end_comment
+
+begin_define
+DECL|macro|TRANS_OPT_DEEPEN_RELATIVE
+define|#
+directive|define
+name|TRANS_OPT_DEEPEN_RELATIVE
+value|"deepen-relative"
 end_define
 
 begin_comment

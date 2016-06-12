@@ -1743,6 +1743,20 @@ if|if
 condition|(
 name|args
 operator|->
+name|deepen_relative
+condition|)
+name|strbuf_addstr
+argument_list|(
+operator|&
+name|c
+argument_list|,
+literal|" deepen-relative"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|args
+operator|->
 name|use_thin_pack
 condition|)
 name|strbuf_addstr
@@ -4949,6 +4963,26 @@ argument_list|(
 name|_
 argument_list|(
 literal|"Server does not support --shallow-exclude"
+argument_list|)
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|server_supports
+argument_list|(
+literal|"deepen-relative"
+argument_list|)
+operator|&&
+name|args
+operator|->
+name|deepen_relative
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"Server does not support --deepen"
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -1458,7 +1458,9 @@ block|,
 name|TRANS_OPT_KEEP
 block|,
 name|TRANS_OPT_FOLLOWTAGS
-block|, 	}
+block|,
+name|TRANS_OPT_DEEPEN_RELATIVE
+block|}
 decl_stmt|;
 end_decl_stmt
 

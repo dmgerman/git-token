@@ -62,6 +62,12 @@ name|string_list
 modifier|*
 name|deepen_not
 decl_stmt|;
+DECL|member|deepen_relative
+name|unsigned
+name|deepen_relative
+range|:
+literal|1
+decl_stmt|;
 DECL|member|quiet
 name|unsigned
 name|quiet
