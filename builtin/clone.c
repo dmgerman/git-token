@@ -165,8 +165,17 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|deepen
+specifier|static
+name|int
+name|deepen
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|option_template
 DECL|variable|option_depth
+DECL|variable|option_since
 specifier|static
 name|char
 modifier|*
@@ -174,6 +183,9 @@ name|option_template
 decl_stmt|,
 modifier|*
 name|option_depth
+decl_stmt|,
+modifier|*
+name|option_since
 decl_stmt|;
 end_decl_stmt
 
@@ -562,6 +574,26 @@ argument_list|,
 name|N_
 argument_list|(
 literal|"create a shallow clone of that depth"
+argument_list|)
+argument_list|)
+block|,
+name|OPT_STRING
+argument_list|(
+literal|0
+argument_list|,
+literal|"shallow-since"
+argument_list|,
+operator|&
+name|option_since
+argument_list|,
+name|N_
+argument_list|(
+literal|"time"
+argument_list|)
+argument_list|,
+name|N_
+argument_list|(
+literal|"create a shallow clone since a specific time"
 argument_list|)
 argument_list|)
 block|,
@@ -4750,6 +4782,16 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|option_depth
+operator|||
+name|option_since
+condition|)
+name|deepen
+operator|=
+literal|1
+expr_stmt|;
+if|if
+condition|(
 name|option_single_branch
 operator|==
 operator|-
@@ -4757,7 +4799,7 @@ literal|1
 condition|)
 name|option_single_branch
 operator|=
-name|option_depth
+name|deepen
 condition|?
 literal|1
 else|:
@@ -5397,6 +5439,18 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|option_since
+condition|)
+name|warning
+argument_list|(
+name|_
+argument_list|(
+literal|"--shallow-since is ignored in local clones; use file:// instead."
+argument_list|)
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 operator|!
 name|access
 argument_list|(
@@ -5507,6 +5561,19 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|option_since
+condition|)
+name|transport_set_option
+argument_list|(
+name|transport
+argument_list|,
+name|TRANS_OPT_DEEPEN_SINCE
+argument_list|,
+name|option_since
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|option_single_branch
 condition|)
 name|transport_set_option
@@ -5538,7 +5605,7 @@ operator|->
 name|smart_options
 operator|&&
 operator|!
-name|option_depth
+name|deepen
 condition|)
 name|transport
 operator|->
