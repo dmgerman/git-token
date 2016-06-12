@@ -2824,11 +2824,6 @@ modifier|*
 name|result
 init|=
 name|NULL
-decl_stmt|,
-modifier|*
-name|backup
-init|=
-name|NULL
 decl_stmt|;
 name|int
 name|i
@@ -2881,8 +2876,6 @@ name|NOT_SHALLOW
 expr_stmt|;
 block|}
 else|else
-name|backup
-operator|=
 name|result
 operator|=
 name|get_shallow_commits
@@ -2904,7 +2897,7 @@ argument_list|)
 expr_stmt|;
 name|free_commit_list
 argument_list|(
-name|backup
+name|result
 argument_list|)
 expr_stmt|;
 for|for
