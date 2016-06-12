@@ -3291,6 +3291,8 @@ block|{
 name|char
 modifier|*
 name|end
+init|=
+name|NULL
 decl_stmt|;
 name|depth
 operator|=
@@ -3306,9 +3308,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|end
-operator|==
-name|arg
+operator|||
+operator|*
+name|end
 operator|||
 name|depth
 operator|<=
