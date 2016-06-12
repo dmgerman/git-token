@@ -1109,7 +1109,10 @@ condition|)
 continue|continue;
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"git fetch-pack: expected shallow list"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1160,7 +1163,10 @@ name|len
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"git fetch-pack: expected ACK/NAK, got EOF"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -1262,7 +1268,10 @@ block|}
 block|}
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"git fetch_pack: expected ACK/NAK, got '%s'"
+argument_list|)
 argument_list|,
 name|line
 argument_list|)
@@ -1530,7 +1539,10 @@ literal|1
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--stateless-rpc requires multi_ack_detailed"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -1968,7 +1980,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"invalid shallow line: %s"
+argument_list|)
 argument_list|,
 name|line
 argument_list|)
@@ -2004,7 +2019,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"invalid unshallow line: %s"
+argument_list|)
 argument_list|,
 name|line
 argument_list|)
@@ -2019,7 +2037,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"object not found: %s"
+argument_list|)
 argument_list|,
 name|line
 argument_list|)
@@ -2035,7 +2056,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"error in object: %s"
+argument_list|)
 argument_list|,
 name|line
 argument_list|)
@@ -2049,7 +2073,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"no shallow found: %s"
+argument_list|)
 argument_list|,
 name|line
 argument_list|)
@@ -2058,7 +2085,10 @@ continue|continue;
 block|}
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"expected shallow/unshallow, got %s"
+argument_list|)
 argument_list|,
 name|line
 argument_list|)
@@ -2250,7 +2280,12 @@ name|print_verbose
 argument_list|(
 name|args
 argument_list|,
-literal|"got ack %d %s"
+name|_
+argument_list|(
+literal|"got %s %d %s"
+argument_list|)
+argument_list|,
+literal|"ack"
 argument_list|,
 name|ack
 argument_list|,
@@ -2310,7 +2345,10 @@ name|commit
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"invalid commit %s"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -2432,7 +2470,10 @@ name|print_verbose
 argument_list|(
 name|args
 argument_list|,
+name|_
+argument_list|(
 literal|"giving up"
+argument_list|)
 argument_list|)
 expr_stmt|;
 break|break;
@@ -2477,7 +2518,10 @@ name|print_verbose
 argument_list|(
 name|args
 argument_list|,
+name|_
+argument_list|(
 literal|"done"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -2548,7 +2592,12 @@ name|print_verbose
 argument_list|(
 name|args
 argument_list|,
-literal|"got ack (%d) %s"
+name|_
+argument_list|(
+literal|"got %s (%d) %s"
+argument_list|)
+argument_list|,
+literal|"ack"
 argument_list|,
 name|ack
 argument_list|,
@@ -2803,7 +2852,10 @@ name|print_verbose
 argument_list|(
 name|args
 argument_list|,
+name|_
+argument_list|(
 literal|"Marking %s as complete"
+argument_list|)
 argument_list|,
 name|oid_to_hex
 argument_list|(
@@ -3577,7 +3629,10 @@ name|print_verbose
 argument_list|(
 name|args
 argument_list|,
+name|_
+argument_list|(
 literal|"already have %s (%s)"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -3750,8 +3805,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"fetch-pack: unable to fork off sideband"
-literal|" demultiplexer"
+name|_
+argument_list|(
+literal|"fetch-pack: unable to fork off sideband demultiplexer"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3789,7 +3846,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"protocol error: bad pack header"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|pass_header
@@ -4122,7 +4182,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"fetch-pack: unable to fork off %s"
+argument_list|)
 argument_list|,
 name|cmd_name
 argument_list|)
@@ -4204,7 +4267,10 @@ expr_stmt|;
 else|else
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"%s failed"
+argument_list|)
 argument_list|,
 name|cmd_name
 argument_list|)
@@ -4221,7 +4287,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"error in sideband demultiplexer"
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -4412,7 +4481,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Server does not support shallow clients"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -4427,7 +4499,10 @@ name|print_verbose
 argument_list|(
 name|args
 argument_list|,
+name|_
+argument_list|(
 literal|"Server supports multi_ack_detailed"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|multi_ack
@@ -4446,7 +4521,10 @@ name|print_verbose
 argument_list|(
 name|args
 argument_list|,
+name|_
+argument_list|(
 literal|"Server supports no-done"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -4474,7 +4552,10 @@ name|print_verbose
 argument_list|(
 name|args
 argument_list|,
+name|_
+argument_list|(
 literal|"Server supports multi_ack"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|multi_ack
@@ -4494,7 +4575,10 @@ name|print_verbose
 argument_list|(
 name|args
 argument_list|,
+name|_
+argument_list|(
 literal|"Server supports side-band-64k"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|use_sideband
@@ -4515,7 +4599,10 @@ name|print_verbose
 argument_list|(
 name|args
 argument_list|,
+name|_
+argument_list|(
 literal|"Server supports side-band"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|use_sideband
@@ -4535,7 +4622,10 @@ name|print_verbose
 argument_list|(
 name|args
 argument_list|,
+name|_
+argument_list|(
 literal|"Server supports allow-tip-sha1-in-want"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|allow_unadvertised_object_request
@@ -4555,7 +4645,10 @@ name|print_verbose
 argument_list|(
 name|args
 argument_list|,
+name|_
+argument_list|(
 literal|"Server supports allow-reachable-sha1-in-want"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|allow_unadvertised_object_request
@@ -4616,7 +4709,10 @@ name|print_verbose
 argument_list|(
 name|args
 argument_list|,
+name|_
+argument_list|(
 literal|"Server supports ofs-delta"
+argument_list|)
 argument_list|)
 expr_stmt|;
 else|else
@@ -4651,7 +4747,10 @@ name|print_verbose
 argument_list|(
 name|args
 argument_list|,
+name|_
+argument_list|(
 literal|"Server version is %.*s"
+argument_list|)
 argument_list|,
 name|agent_len
 argument_list|,
@@ -4711,7 +4810,10 @@ condition|)
 comment|/* When cloning, it is not unusual to have 			 * no common commit. 			 */
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"no common commits"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -4785,7 +4887,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"git fetch-pack: fetch failed."
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|all_done
@@ -5623,7 +5728,10 @@ argument_list|)
 expr_stmt|;
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"no matching remote head"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
