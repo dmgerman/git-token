@@ -294,6 +294,17 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|deepen_not
+specifier|static
+name|struct
+name|string_list
+name|deepen_not
+init|=
+name|STRING_LIST_INIT_NODUP
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|default_rla
 specifier|static
 name|struct
@@ -824,6 +835,26 @@ argument_list|,
 name|N_
 argument_list|(
 literal|"deepen history of shallow repository based on time"
+argument_list|)
+argument_list|)
+block|,
+name|OPT_STRING_LIST
+argument_list|(
+literal|0
+argument_list|,
+literal|"shallow-exclude"
+argument_list|,
+operator|&
+name|deepen_not
+argument_list|,
+name|N_
+argument_list|(
+literal|"revision"
+argument_list|)
+argument_list|,
+name|N_
+argument_list|(
+literal|"deepen history of shallow clone by excluding rev"
 argument_list|)
 argument_list|)
 block|,
@@ -4871,6 +4902,29 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|deepen
+operator|&&
+name|deepen_not
+operator|.
+name|nr
+condition|)
+name|set_option
+argument_list|(
+name|transport
+argument_list|,
+name|TRANS_OPT_DEEPEN_NOT
+argument_list|,
+operator|(
+specifier|const
+name|char
+operator|*
+operator|)
+operator|&
+name|deepen_not
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|update_shallow
 condition|)
 name|set_option
@@ -4908,7 +4962,7 @@ block|{
 name|int
 name|cannot_reuse
 decl_stmt|;
-comment|/* 	 * Once we have set TRANS_OPT_DEEPEN_SINCE, we can't unset it 	 * when remote helper is used (setting it to an empty string 	 * is not unsetting). We could extend the remote helper 	 * protocol for that, but for now, just force a new connection 	 * without deepen-since. 	 */
+comment|/* 	 * Once we have set TRANS_OPT_DEEPEN_SINCE, we can't unset it 	 * when remote helper is used (setting it to an empty string 	 * is not unsetting). We could extend the remote helper 	 * protocol for that, but for now, just force a new connection 	 * without deepen-since. Similar story for deepen-not. 	 */
 name|cannot_reuse
 operator|=
 name|transport
@@ -4916,6 +4970,10 @@ operator|->
 name|cannot_reuse
 operator|||
 name|deepen_since
+operator|||
+name|deepen_not
+operator|.
+name|nr
 expr_stmt|;
 if|if
 condition|(
@@ -6454,6 +6512,10 @@ condition|(
 name|depth
 operator|||
 name|deepen_since
+operator|||
+name|deepen_not
+operator|.
+name|nr
 condition|)
 name|deepen
 operator|=

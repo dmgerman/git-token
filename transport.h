@@ -30,6 +30,12 @@ directive|include
 file|"remote.h"
 end_include
 
+begin_struct_decl
+struct_decl|struct
+name|string_list
+struct_decl|;
+end_struct_decl
+
 begin_struct
 DECL|struct|git_transport_options
 struct|struct
@@ -80,6 +86,13 @@ specifier|const
 name|char
 modifier|*
 name|deepen_since
+decl_stmt|;
+DECL|member|deepen_not
+specifier|const
+name|struct
+name|string_list
+modifier|*
+name|deepen_not
 decl_stmt|;
 DECL|member|uploadpack
 specifier|const
@@ -621,6 +634,18 @@ define|#
 directive|define
 name|TRANS_OPT_DEEPEN_SINCE
 value|"deepen-since"
+end_define
+
+begin_comment
+comment|/* Limit the depth of the fetch based on revs if not null */
+end_comment
+
+begin_define
+DECL|macro|TRANS_OPT_DEEPEN_NOT
+define|#
+directive|define
+name|TRANS_OPT_DEEPEN_NOT
+value|"deepen-not"
 end_define
 
 begin_comment

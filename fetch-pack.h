@@ -55,6 +55,13 @@ name|char
 modifier|*
 name|deepen_since
 decl_stmt|;
+DECL|member|deepen_not
+specifier|const
+name|struct
+name|string_list
+modifier|*
+name|deepen_not
+decl_stmt|;
 DECL|member|quiet
 name|unsigned
 name|quiet
