@@ -49,6 +49,12 @@ DECL|member|depth
 name|int
 name|depth
 decl_stmt|;
+DECL|member|deepen_since
+specifier|const
+name|char
+modifier|*
+name|deepen_since
+decl_stmt|;
 DECL|member|quiet
 name|unsigned
 name|quiet

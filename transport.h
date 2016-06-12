@@ -75,6 +75,12 @@ DECL|member|depth
 name|int
 name|depth
 decl_stmt|;
+DECL|member|deepen_since
+specifier|const
+name|char
+modifier|*
+name|deepen_since
+decl_stmt|;
 DECL|member|uploadpack
 specifier|const
 name|char
@@ -603,6 +609,18 @@ define|#
 directive|define
 name|TRANS_OPT_DEPTH
 value|"depth"
+end_define
+
+begin_comment
+comment|/* Limit the depth of the fetch based on time if not null */
+end_comment
+
+begin_define
+DECL|macro|TRANS_OPT_DEEPEN_SINCE
+define|#
+directive|define
+name|TRANS_OPT_DEEPEN_SINCE
+value|"deepen-since"
 end_define
 
 begin_comment

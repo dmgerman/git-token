@@ -238,6 +238,7 @@ begin_decl_stmt
 DECL|variable|tags
 DECL|variable|unshallow
 DECL|variable|update_shallow
+DECL|variable|deepen
 specifier|static
 name|int
 name|tags
@@ -247,6 +248,8 @@ decl_stmt|,
 name|unshallow
 decl_stmt|,
 name|update_shallow
+decl_stmt|,
+name|deepen
 decl_stmt|;
 end_decl_stmt
 
@@ -267,6 +270,16 @@ specifier|const
 name|char
 modifier|*
 name|depth
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|deepen_since
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|deepen_since
 decl_stmt|;
 end_decl_stmt
 
@@ -791,6 +804,26 @@ argument_list|,
 name|N_
 argument_list|(
 literal|"deepen history of shallow clone"
+argument_list|)
+argument_list|)
+block|,
+name|OPT_STRING
+argument_list|(
+literal|0
+argument_list|,
+literal|"shallow-since"
+argument_list|,
+operator|&
+name|deepen_since
+argument_list|,
+name|N_
+argument_list|(
+literal|"time"
+argument_list|)
+argument_list|,
+name|N_
+argument_list|(
+literal|"deepen history of shallow repository based on time"
 argument_list|)
 argument_list|)
 block|,
@@ -4125,7 +4158,7 @@ decl_stmt|;
 comment|/* 	 * If we are deepening a shallow clone we already have these 	 * objects reachable.  Running rev-list here will return with 	 * a good (0) exit status and we'll bypass the fetch that we 	 * really need to perform.  Claiming failure now will ensure 	 * we perform the network exchange to deepen our history. 	 */
 if|if
 condition|(
-name|depth
+name|deepen
 condition|)
 return|return
 operator|-
@@ -4754,6 +4787,9 @@ name|struct
 name|remote
 modifier|*
 name|remote
+parameter_list|,
+name|int
+name|deepen
 parameter_list|)
 block|{
 name|struct
@@ -4820,6 +4856,21 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|deepen
+operator|&&
+name|deepen_since
+condition|)
+name|set_option
+argument_list|(
+name|transport
+argument_list|,
+name|TRANS_OPT_DEEPEN_SINCE
+argument_list|,
+name|deepen_since
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|update_shallow
 condition|)
 name|set_option
@@ -4854,10 +4905,20 @@ modifier|*
 name|ref_map
 parameter_list|)
 block|{
-if|if
-condition|(
+name|int
+name|cannot_reuse
+decl_stmt|;
+comment|/* 	 * Once we have set TRANS_OPT_DEEPEN_SINCE, we can't unset it 	 * when remote helper is used (setting it to an empty string 	 * is not unsetting). We could extend the remote helper 	 * protocol for that, but for now, just force a new connection 	 * without deepen-since. 	 */
+name|cannot_reuse
+operator|=
 name|transport
 operator|->
+name|cannot_reuse
+operator|||
+name|deepen_since
+expr_stmt|;
+if|if
+condition|(
 name|cannot_reuse
 condition|)
 block|{
@@ -4868,6 +4929,8 @@ argument_list|(
 name|transport
 operator|->
 name|remote
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|transport
@@ -5990,6 +6053,8 @@ operator|=
 name|prepare_transport
 argument_list|(
 name|remote
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 if|if
@@ -6383,6 +6448,16 @@ argument_list|)
 argument_list|,
 name|depth
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|depth
+operator|||
+name|deepen_since
+condition|)
+name|deepen
+operator|=
+literal|1
 expr_stmt|;
 if|if
 condition|(
