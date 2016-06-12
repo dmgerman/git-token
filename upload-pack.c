@@ -1418,6 +1418,7 @@ specifier|static
 name|int
 name|got_sha1
 parameter_list|(
+specifier|const
 name|char
 modifier|*
 name|hex
@@ -1986,6 +1987,11 @@ argument_list|,
 name|NULL
 argument_list|)
 decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|arg
+decl_stmt|;
 name|reset_timeout
 argument_list|()
 expr_stmt|;
@@ -2082,11 +2088,14 @@ continue|continue;
 block|}
 if|if
 condition|(
-name|starts_with
+name|skip_prefix
 argument_list|(
 name|line
 argument_list|,
 literal|"have "
+argument_list|,
+operator|&
+name|arg
 argument_list|)
 condition|)
 block|{
@@ -2094,9 +2103,7 @@ switch|switch
 condition|(
 name|got_sha1
 argument_list|(
-name|line
-operator|+
-literal|5
+name|arg
 argument_list|,
 name|sha1
 argument_list|)
@@ -3151,6 +3158,11 @@ argument_list|,
 name|NULL
 argument_list|)
 decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|arg
+decl_stmt|;
 name|reset_timeout
 argument_list|()
 expr_stmt|;
@@ -3162,11 +3174,14 @@ condition|)
 break|break;
 if|if
 condition|(
-name|starts_with
+name|skip_prefix
 argument_list|(
 name|line
 argument_list|,
 literal|"shallow "
+argument_list|,
+operator|&
+name|arg
 argument_list|)
 condition|)
 block|{
@@ -3186,9 +3201,7 @@ if|if
 condition|(
 name|get_sha1_hex
 argument_list|(
-name|line
-operator|+
-literal|8
+name|arg
 argument_list|,
 name|sha1
 argument_list|)
@@ -3264,11 +3277,14 @@ continue|continue;
 block|}
 if|if
 condition|(
-name|starts_with
+name|skip_prefix
 argument_list|(
 name|line
 argument_list|,
 literal|"deepen "
+argument_list|,
+operator|&
+name|arg
 argument_list|)
 condition|)
 block|{
@@ -3280,9 +3296,7 @@ name|depth
 operator|=
 name|strtol
 argument_list|(
-name|line
-operator|+
-literal|7
+name|arg
 argument_list|,
 operator|&
 name|end
@@ -3294,9 +3308,7 @@ if|if
 condition|(
 name|end
 operator|==
-name|line
-operator|+
-literal|7
+name|arg
 operator|||
 name|depth
 operator|<=
@@ -3314,18 +3326,19 @@ block|}
 if|if
 condition|(
 operator|!
-name|starts_with
+name|skip_prefix
 argument_list|(
 name|line
 argument_list|,
 literal|"want "
+argument_list|,
+operator|&
+name|arg
 argument_list|)
 operator|||
 name|get_sha1_hex
 argument_list|(
-name|line
-operator|+
-literal|5
+name|arg
 argument_list|,
 name|sha1_buf
 argument_list|)
@@ -3340,9 +3353,9 @@ argument_list|)
 expr_stmt|;
 name|features
 operator|=
-name|line
+name|arg
 operator|+
-literal|45
+literal|40
 expr_stmt|;
 if|if
 condition|(
@@ -4419,6 +4432,7 @@ name|i
 operator|++
 control|)
 block|{
+specifier|const
 name|char
 modifier|*
 name|arg
@@ -4491,11 +4505,14 @@ continue|continue;
 block|}
 if|if
 condition|(
-name|starts_with
+name|skip_prefix
 argument_list|(
 name|arg
 argument_list|,
 literal|"--timeout="
+argument_list|,
+operator|&
+name|arg
 argument_list|)
 condition|)
 block|{
@@ -4504,8 +4521,6 @@ operator|=
 name|atoi
 argument_list|(
 name|arg
-operator|+
-literal|10
 argument_list|)
 expr_stmt|;
 name|daemon_mode
