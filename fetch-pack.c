@@ -324,6 +324,80 @@ name|allow_unadvertised_object_request
 decl_stmt|;
 end_decl_stmt
 
+begin_macro
+name|__attribute__
+argument_list|(
+argument|(format (printf,
+literal|2
+argument|,
+literal|3
+argument|))
+argument_list|)
+end_macro
+
+begin_function
+DECL|function|print_verbose
+specifier|static
+specifier|inline
+name|void
+name|print_verbose
+parameter_list|(
+specifier|const
+name|struct
+name|fetch_pack_args
+modifier|*
+name|args
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|fmt
+parameter_list|,
+modifier|...
+parameter_list|)
+block|{
+name|va_list
+name|params
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|args
+operator|->
+name|verbose
+condition|)
+return|return;
+name|va_start
+argument_list|(
+name|params
+argument_list|,
+name|fmt
+argument_list|)
+expr_stmt|;
+name|vfprintf
+argument_list|(
+name|stderr
+argument_list|,
+name|fmt
+argument_list|,
+name|params
+argument_list|)
+expr_stmt|;
+name|va_end
+argument_list|(
+name|params
+argument_list|)
+expr_stmt|;
+name|fputc
+argument_list|(
+literal|'\n'
+argument_list|,
+name|stderr
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
 begin_function
 DECL|function|rev_list_push
 specifier|static
@@ -2066,17 +2140,11 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|args
-operator|->
-name|verbose
-condition|)
-name|fprintf
+name|print_verbose
 argument_list|(
-name|stderr
+name|args
 argument_list|,
-literal|"have %s\n"
+literal|"have %s"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -2176,17 +2244,13 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|args
-operator|->
-name|verbose
-operator|&&
 name|ack
 condition|)
-name|fprintf
+name|print_verbose
 argument_list|(
-name|stderr
+name|args
 argument_list|,
-literal|"got ack %d %s\n"
+literal|"got ack %d %s"
 argument_list|,
 name|ack
 argument_list|,
@@ -2364,17 +2428,11 @@ operator|<
 name|in_vain
 condition|)
 block|{
-if|if
-condition|(
-name|args
-operator|->
-name|verbose
-condition|)
-name|fprintf
+name|print_verbose
 argument_list|(
-name|stderr
+name|args
 argument_list|,
-literal|"giving up\n"
+literal|"giving up"
 argument_list|)
 expr_stmt|;
 break|break;
@@ -2415,17 +2473,11 @@ name|req_buf
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|args
-operator|->
-name|verbose
-condition|)
-name|fprintf
+name|print_verbose
 argument_list|(
-name|stderr
+name|args
 argument_list|,
-literal|"done\n"
+literal|"done"
 argument_list|)
 expr_stmt|;
 if|if
@@ -2492,17 +2544,11 @@ condition|(
 name|ack
 condition|)
 block|{
-if|if
-condition|(
-name|args
-operator|->
-name|verbose
-condition|)
-name|fprintf
+name|print_verbose
 argument_list|(
-name|stderr
+name|args
 argument_list|,
-literal|"got ack (%d) %s\n"
+literal|"got ack (%d) %s"
 argument_list|,
 name|ack
 argument_list|,
@@ -2753,17 +2799,11 @@ operator|->
 name|date
 condition|)
 block|{
-if|if
-condition|(
-name|args
-operator|->
-name|verbose
-condition|)
-name|fprintf
+name|print_verbose
 argument_list|(
-name|stderr
+name|args
 argument_list|,
-literal|"Marking %s as complete\n"
+literal|"Marking %s as complete"
 argument_list|,
 name|oid_to_hex
 argument_list|(
@@ -3515,19 +3555,11 @@ name|retval
 operator|=
 literal|0
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|args
-operator|->
-name|verbose
-condition|)
-continue|continue;
-name|fprintf
+name|print_verbose
 argument_list|(
-name|stderr
+name|args
 argument_list|,
-literal|"want %s (%s)\n"
+literal|"want %s (%s)"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -3541,19 +3573,11 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
-if|if
-condition|(
-operator|!
-name|args
-operator|->
-name|verbose
-condition|)
-continue|continue;
-name|fprintf
+name|print_verbose
 argument_list|(
-name|stderr
+name|args
 argument_list|,
-literal|"already have %s (%s)\n"
+literal|"already have %s (%s)"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -4399,17 +4423,11 @@ literal|"multi_ack_detailed"
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|args
-operator|->
-name|verbose
-condition|)
-name|fprintf
+name|print_verbose
 argument_list|(
-name|stderr
+name|args
 argument_list|,
-literal|"Server supports multi_ack_detailed\n"
+literal|"Server supports multi_ack_detailed"
 argument_list|)
 expr_stmt|;
 name|multi_ack
@@ -4424,17 +4442,11 @@ literal|"no-done"
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|args
-operator|->
-name|verbose
-condition|)
-name|fprintf
+name|print_verbose
 argument_list|(
-name|stderr
+name|args
 argument_list|,
-literal|"Server supports no-done\n"
+literal|"Server supports no-done"
 argument_list|)
 expr_stmt|;
 if|if
@@ -4458,17 +4470,11 @@ literal|"multi_ack"
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|args
-operator|->
-name|verbose
-condition|)
-name|fprintf
+name|print_verbose
 argument_list|(
-name|stderr
+name|args
 argument_list|,
-literal|"Server supports multi_ack\n"
+literal|"Server supports multi_ack"
 argument_list|)
 expr_stmt|;
 name|multi_ack
@@ -4484,17 +4490,11 @@ literal|"side-band-64k"
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|args
-operator|->
-name|verbose
-condition|)
-name|fprintf
+name|print_verbose
 argument_list|(
-name|stderr
+name|args
 argument_list|,
-literal|"Server supports side-band-64k\n"
+literal|"Server supports side-band-64k"
 argument_list|)
 expr_stmt|;
 name|use_sideband
@@ -4511,17 +4511,11 @@ literal|"side-band"
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|args
-operator|->
-name|verbose
-condition|)
-name|fprintf
+name|print_verbose
 argument_list|(
-name|stderr
+name|args
 argument_list|,
-literal|"Server supports side-band\n"
+literal|"Server supports side-band"
 argument_list|)
 expr_stmt|;
 name|use_sideband
@@ -4537,17 +4531,11 @@ literal|"allow-tip-sha1-in-want"
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|args
-operator|->
-name|verbose
-condition|)
-name|fprintf
+name|print_verbose
 argument_list|(
-name|stderr
+name|args
 argument_list|,
-literal|"Server supports allow-tip-sha1-in-want\n"
+literal|"Server supports allow-tip-sha1-in-want"
 argument_list|)
 expr_stmt|;
 name|allow_unadvertised_object_request
@@ -4563,17 +4551,11 @@ literal|"allow-reachable-sha1-in-want"
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|args
-operator|->
-name|verbose
-condition|)
-name|fprintf
+name|print_verbose
 argument_list|(
-name|stderr
+name|args
 argument_list|,
-literal|"Server supports allow-reachable-sha1-in-want\n"
+literal|"Server supports allow-reachable-sha1-in-want"
 argument_list|)
 expr_stmt|;
 name|allow_unadvertised_object_request
@@ -4630,21 +4612,13 @@ argument_list|(
 literal|"ofs-delta"
 argument_list|)
 condition|)
-block|{
-if|if
-condition|(
-name|args
-operator|->
-name|verbose
-condition|)
-name|fprintf
+name|print_verbose
 argument_list|(
-name|stderr
+name|args
 argument_list|,
-literal|"Server supports ofs-delta\n"
+literal|"Server supports ofs-delta"
 argument_list|)
 expr_stmt|;
-block|}
 else|else
 name|prefer_ofs_delta
 operator|=
@@ -4671,17 +4645,13 @@ literal|1
 expr_stmt|;
 if|if
 condition|(
-name|args
-operator|->
-name|verbose
-operator|&&
 name|agent_len
 condition|)
-name|fprintf
+name|print_verbose
 argument_list|(
-name|stderr
+name|args
 argument_list|,
-literal|"Server version is %.*s\n"
+literal|"Server version is %.*s"
 argument_list|,
 name|agent_len
 argument_list|,
