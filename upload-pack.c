@@ -2436,6 +2436,14 @@ operator|=
 operator|-
 literal|1
 expr_stmt|;
+comment|/* 	 * If the next rev-list --stdin encounters an unknown commit, 	 * it terminates, which will cause SIGPIPE in the write loop 	 * below. 	 */
+name|sigchain_push
+argument_list|(
+name|SIGPIPE
+argument_list|,
+name|SIG_IGN
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|start_command
@@ -2447,14 +2455,6 @@ condition|)
 goto|goto
 name|error
 goto|;
-comment|/* 	 * If rev-list --stdin encounters an unknown commit, it 	 * terminates, which will cause SIGPIPE in the write loop 	 * below. 	 */
-name|sigchain_push
-argument_list|(
-name|SIGPIPE
-argument_list|,
-name|SIG_IGN
-argument_list|)
-expr_stmt|;
 name|namebuf
 index|[
 literal|0
@@ -2624,10 +2624,12 @@ operator|.
 name|in
 argument_list|)
 expr_stmt|;
-name|sigchain_pop
-argument_list|(
-name|SIGPIPE
-argument_list|)
+name|cmd
+operator|.
+name|in
+operator|=
+operator|-
+literal|1
 expr_stmt|;
 comment|/* 	 * The commits out of the rev-list are not ancestors of 	 * our ref. 	 */
 name|i
@@ -2657,6 +2659,13 @@ operator|.
 name|out
 argument_list|)
 expr_stmt|;
+name|cmd
+operator|.
+name|out
+operator|=
+operator|-
+literal|1
+expr_stmt|;
 comment|/* 	 * rev-list may have died by encountering a bad commit 	 * in the history, in which case we do want to bail out 	 * even when it showed no commit. 	 */
 if|if
 condition|(
@@ -2669,10 +2678,50 @@ condition|)
 goto|goto
 name|error
 goto|;
+name|sigchain_pop
+argument_list|(
+name|SIGPIPE
+argument_list|)
+expr_stmt|;
 comment|/* All the non-tip ones are ancestors of what we advertised */
 return|return;
 name|error
 label|:
+name|sigchain_pop
+argument_list|(
+name|SIGPIPE
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|cmd
+operator|.
+name|in
+operator|>=
+literal|0
+condition|)
+name|close
+argument_list|(
+name|cmd
+operator|.
+name|in
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|cmd
+operator|.
+name|out
+operator|>=
+literal|0
+condition|)
+name|close
+argument_list|(
+name|cmd
+operator|.
+name|out
+argument_list|)
+expr_stmt|;
 comment|/* Pick one of them (we know there at least is one) */
 for|for
 control|(
