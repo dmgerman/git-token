@@ -32,6 +32,12 @@ name|char
 modifier|*
 name|head_ref
 decl_stmt|;
+DECL|member|lock_reason
+name|char
+modifier|*
+name|lock_reason
+decl_stmt|;
+comment|/* internal use */
 DECL|member|head_sha1
 name|unsigned
 name|char
@@ -51,6 +57,10 @@ decl_stmt|;
 DECL|member|is_current
 name|int
 name|is_current
+decl_stmt|;
+DECL|member|lock_reason_valid
+name|int
+name|lock_reason_valid
 decl_stmt|;
 block|}
 struct|;
@@ -137,6 +147,25 @@ name|int
 name|is_main_worktree
 parameter_list|(
 specifier|const
+name|struct
+name|worktree
+modifier|*
+name|wt
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/*  * Return the reason string if the given worktree is locked or NULL  * otherwise.  */
+end_comment
+
+begin_function_decl
+specifier|extern
+specifier|const
+name|char
+modifier|*
+name|is_worktree_locked
+parameter_list|(
 name|struct
 name|worktree
 modifier|*
