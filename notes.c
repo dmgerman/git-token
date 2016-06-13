@@ -249,6 +249,8 @@ specifier|static
 name|struct
 name|string_list
 name|display_notes_refs
+init|=
+name|STRING_LIST_INIT_NODUP
 decl_stmt|;
 end_decl_stmt
 

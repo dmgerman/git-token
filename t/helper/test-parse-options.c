@@ -123,6 +123,8 @@ specifier|static
 name|struct
 name|string_list
 name|list
+init|=
+name|STRING_LIST_INIT_NODUP
 decl_stmt|;
 end_decl_stmt
 

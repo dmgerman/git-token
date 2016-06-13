@@ -265,6 +265,8 @@ specifier|static
 name|struct
 name|string_list
 name|option_config
+init|=
+name|STRING_LIST_INIT_NODUP
 decl_stmt|;
 end_decl_stmt
 
@@ -274,6 +276,8 @@ specifier|static
 name|struct
 name|string_list
 name|option_reference
+init|=
+name|STRING_LIST_INIT_NODUP
 decl_stmt|;
 end_decl_stmt
 

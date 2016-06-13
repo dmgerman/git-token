@@ -121,6 +121,8 @@ specifier|static
 name|struct
 name|string_list
 name|changed_submodule_paths
+init|=
+name|STRING_LIST_INIT_NODUP
 decl_stmt|;
 end_decl_stmt
 
