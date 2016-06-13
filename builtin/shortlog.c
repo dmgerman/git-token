@@ -1431,12 +1431,14 @@ modifier|*
 name|prefix
 parameter_list|)
 block|{
-specifier|static
 name|struct
 name|shortlog
 name|log
+init|=
+block|{
+name|STRING_LIST_INIT_NODUP
+block|}
 decl_stmt|;
-specifier|static
 name|struct
 name|rev_info
 name|rev
@@ -1449,7 +1451,6 @@ name|startup_info
 operator|->
 name|have_repository
 decl_stmt|;
-specifier|static
 specifier|const
 name|struct
 name|option

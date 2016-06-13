@@ -12878,12 +12878,12 @@ name|final_commit
 init|=
 name|NULL
 decl_stmt|;
-specifier|static
 name|struct
 name|string_list
 name|range_list
+init|=
+name|STRING_LIST_INIT_NODUP
 decl_stmt|;
-specifier|static
 name|int
 name|output_option
 init|=
@@ -12893,13 +12893,11 @@ name|opt
 init|=
 literal|0
 decl_stmt|;
-specifier|static
 name|int
 name|show_stats
 init|=
 literal|0
 decl_stmt|;
-specifier|static
 specifier|const
 name|char
 modifier|*
@@ -12907,7 +12905,6 @@ name|revs_file
 init|=
 name|NULL
 decl_stmt|;
-specifier|static
 specifier|const
 name|char
 modifier|*
@@ -12915,7 +12912,6 @@ name|contents_from
 init|=
 name|NULL
 decl_stmt|;
-specifier|static
 specifier|const
 name|struct
 name|option
