@@ -1468,6 +1468,16 @@ argument_list|,
 literal|"--keep-unreachable"
 argument_list|)
 expr_stmt|;
+name|argv_array_push
+argument_list|(
+operator|&
+name|cmd
+operator|.
+name|args
+argument_list|,
+literal|"--pack-loose-unreachable"
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
