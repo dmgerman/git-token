@@ -5509,7 +5509,7 @@ name|wordlen
 operator|>=
 literal|1
 condition|)
-name|string_list_append
+name|string_list_append_nodup
 argument_list|(
 name|g
 operator|->
@@ -6287,7 +6287,7 @@ name|struct
 name|string_list
 name|list
 init|=
-name|STRING_LIST_INIT_NODUP
+name|STRING_LIST_INIT_DUP
 decl_stmt|;
 name|struct
 name|remote
@@ -6740,13 +6740,6 @@ name|options
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* All names were strdup()ed or strndup()ed */
-name|list
-operator|.
-name|strdup_strings
-operator|=
-literal|1
-expr_stmt|;
 name|string_list_clear
 argument_list|(
 operator|&
