@@ -1033,7 +1033,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/**  * Read the contents of a file, specified by its path. The third argument  * can be used to give a hint about the file size, to avoid reallocs.  */
+comment|/**  * Read the contents of a file, specified by its path. The third argument  * can be used to give a hint about the file size, to avoid reallocs.  * Return the number of bytes read or a negative value if some error  * occurred while opening or reading the file.  */
 end_comment
 
 begin_function_decl
