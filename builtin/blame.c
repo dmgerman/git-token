@@ -12622,7 +12622,7 @@ name|final
 condition|)
 name|die
 argument_list|(
-literal|"More than one commit to dig down to %s and %s?"
+literal|"More than one commit to dig up from, %s and %s?"
 argument_list|,
 name|revs
 operator|->
@@ -12670,7 +12670,7 @@ name|final_commit_name
 condition|)
 name|die
 argument_list|(
-literal|"No commit to dig down to?"
+literal|"No commit to dig up from?"
 argument_list|)
 expr_stmt|;
 return|return
