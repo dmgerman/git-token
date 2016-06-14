@@ -387,7 +387,7 @@ if|if
 condition|(
 name|use_sideband
 condition|)
-return|return
+block|{
 name|send_sideband
 argument_list|(
 literal|1
@@ -400,7 +400,11 @@ name|sz
 argument_list|,
 name|use_sideband
 argument_list|)
+expr_stmt|;
+return|return
+name|sz
 return|;
+block|}
 if|if
 condition|(
 name|fd
