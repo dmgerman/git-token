@@ -6864,6 +6864,14 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
+name|occupied
+operator|+=
+name|c
+operator|->
+name|pretty_ctx
+operator|->
+name|graph_width
+expr_stmt|;
 name|padding
 operator|=
 operator|(
