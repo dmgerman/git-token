@@ -1153,7 +1153,10 @@ argument_list|(
 operator|&
 name|sb
 argument_list|,
+name|_
+argument_list|(
 literal|"%s: fast-forward"
+argument_list|)
 argument_list|,
 name|action_name
 argument_list|(
