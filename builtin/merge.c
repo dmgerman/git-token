@@ -1384,7 +1384,7 @@ name|verify_signatures
 argument_list|,
 name|N_
 argument_list|(
-literal|"Verify that the named commit has a valid GPG signature"
+literal|"verify that the named commit has a valid GPG signature"
 argument_list|)
 argument_list|)
 block|,
