@@ -2155,7 +2155,7 @@ name|warning
 argument_list|(
 name|_
 argument_list|(
-literal|"removing '%s' failed"
+literal|"failed to remove '%s'"
 argument_list|)
 argument_list|,
 name|fname
