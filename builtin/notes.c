@@ -5391,7 +5391,10 @@ argument_list|(
 operator|&
 name|show_only
 argument_list|,
+name|N_
+argument_list|(
 literal|"do not remove, show only"
+argument_list|)
 argument_list|)
 block|,
 name|OPT__VERBOSE
@@ -5399,7 +5402,10 @@ argument_list|(
 operator|&
 name|verbose
 argument_list|,
+name|N_
+argument_list|(
 literal|"report pruned notes"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_END
