@@ -3187,9 +3187,12 @@ argument_list|(
 operator|&
 name|buf
 argument_list|,
+name|_
+argument_list|(
 literal|"Please edit the description for the branch\n"
 literal|"  %s\n"
 literal|"Lines starting with '%c' will be stripped.\n"
+argument_list|)
 argument_list|,
 name|branch_name
 argument_list|,
