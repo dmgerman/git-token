@@ -984,7 +984,7 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"Error wrapping up %s"
+literal|"Error wrapping up %s."
 argument_list|)
 argument_list|,
 name|filename
