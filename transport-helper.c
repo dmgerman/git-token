@@ -5562,7 +5562,7 @@ literal|0
 condition|)
 name|die
 argument_list|(
-name|N_
+name|_
 argument_list|(
 literal|"Could not read ref %s"
 argument_list|)
