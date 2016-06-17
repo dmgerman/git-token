@@ -4290,7 +4290,10 @@ name|git_die_config
 argument_list|(
 name|key
 argument_list|,
+name|_
+argument_list|(
 literal|"unknown notes merge strategy %s"
+argument_list|)
 argument_list|,
 name|value
 argument_list|)
@@ -4545,7 +4548,10 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"cannot mix --commit, --abort or -s/--strategy"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|usage_with_options
@@ -4567,7 +4573,10 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Must specify a notes ref to merge"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|usage_with_options
@@ -4589,7 +4598,10 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"too many parameters"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|usage_with_options
@@ -4697,7 +4709,10 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Unknown -s/--strategy: %s"
+argument_list|)
 argument_list|,
 name|strategy
 argument_list|)
@@ -4938,7 +4953,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Failed to store link to current notes ref (%s)"
+argument_list|)
 argument_list|,
 name|default_notes_ref
 argument_list|()
@@ -4946,9 +4964,12 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
+name|_
+argument_list|(
 literal|"Automatic notes merge failed. Fix conflicts in %s and "
 literal|"commit the result with 'git notes merge --commit', or "
 literal|"abort the merge with 'git notes merge --abort'.\n"
+argument_list|)
 argument_list|,
 name|git_path
 argument_list|(
@@ -5533,7 +5554,10 @@ condition|)
 block|{
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"too many parameters"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|usage_with_options
