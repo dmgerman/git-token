@@ -5979,16 +5979,19 @@ condition|)
 block|{
 name|printf_ln
 argument_list|(
-name|_
-argument_list|(
 name|branch_info
 operator|->
 name|rebase
 operator|==
 name|INTERACTIVE_REBASE
 condition|?
+name|_
+argument_list|(
 literal|"rebases interactively onto remote %s"
+argument_list|)
 else|:
+name|_
+argument_list|(
 literal|"rebases onto remote %s"
 argument_list|)
 argument_list|,
