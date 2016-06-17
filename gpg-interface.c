@@ -29,6 +29,12 @@ directive|include
 file|"sigchain.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"tempfile.h"
+end_include
+
 begin_decl_stmt
 DECL|variable|configured_signing_key
 specifier|static
@@ -1113,11 +1119,10 @@ name|gpg
 init|=
 name|CHILD_PROCESS_INIT
 decl_stmt|;
-name|char
-name|path
-index|[
-name|PATH_MAX
-index|]
+specifier|static
+name|struct
+name|tempfile
+name|temp
 decl_stmt|;
 name|int
 name|fd
@@ -1132,11 +1137,10 @@ name|STRBUF_INIT
 decl_stmt|;
 name|fd
 operator|=
-name|git_mkstemp
+name|mks_tempfile_t
 argument_list|(
-name|path
-argument_list|,
-name|PATH_MAX
+operator|&
+name|temp
 argument_list|,
 literal|".git_vtag_tmpXXXXXX"
 argument_list|)
@@ -1152,10 +1156,8 @@ name|error_errno
 argument_list|(
 name|_
 argument_list|(
-literal|"could not create temporary file '%s'"
+literal|"could not create temporary file"
 argument_list|)
-argument_list|,
-name|path
 argument_list|)
 return|;
 if|if
@@ -1171,7 +1173,7 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-return|return
+block|{
 name|error_errno
 argument_list|(
 name|_
@@ -1179,9 +1181,24 @@ argument_list|(
 literal|"failed writing detached signature to '%s'"
 argument_list|)
 argument_list|,
-name|path
+name|temp
+operator|.
+name|filename
+operator|.
+name|buf
 argument_list|)
+expr_stmt|;
+name|delete_tempfile
+argument_list|(
+operator|&
+name|temp
+argument_list|)
+expr_stmt|;
+return|return
+operator|-
+literal|1
 return|;
+block|}
 name|close
 argument_list|(
 name|fd
@@ -1200,7 +1217,11 @@ literal|"--status-fd=1"
 argument_list|,
 literal|"--verify"
 argument_list|,
-name|path
+name|temp
+operator|.
+name|filename
+operator|.
+name|buf
 argument_list|,
 literal|"-"
 argument_list|,
@@ -1241,9 +1262,10 @@ name|gpg
 argument_list|)
 condition|)
 block|{
-name|unlink
+name|delete_tempfile
 argument_list|(
-name|path
+operator|&
+name|temp
 argument_list|)
 expr_stmt|;
 return|return
@@ -1346,9 +1368,10 @@ argument_list|(
 name|SIGPIPE
 argument_list|)
 expr_stmt|;
-name|unlink_or_warn
+name|delete_tempfile
 argument_list|(
-name|path
+operator|&
+name|temp
 argument_list|)
 expr_stmt|;
 name|ret
