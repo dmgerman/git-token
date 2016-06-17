@@ -1977,35 +1977,58 @@ argument_list|(
 name|git_dir
 argument_list|)
 decl_stmt|;
-comment|/* TRANSLATORS: The first '%s' is either "Reinitialized 		   existing" or "Initialized empty", the second " shared" or 		   "", and the last '%s%s' is the verbatim directory name. */
+if|if
+condition|(
+name|reinit
+condition|)
 name|printf
 argument_list|(
-name|_
-argument_list|(
-literal|"%s%s Git repository in %s%s\n"
-argument_list|)
-argument_list|,
-name|reinit
-condition|?
-name|_
-argument_list|(
-literal|"Reinitialized existing"
-argument_list|)
-else|:
-name|_
-argument_list|(
-literal|"Initialized empty"
-argument_list|)
-argument_list|,
 name|get_shared_repository
 argument_list|()
 condition|?
 name|_
 argument_list|(
-literal|" shared"
+literal|"Reinitialized existing shared Git repository in %s%s\n"
 argument_list|)
 else|:
+name|_
+argument_list|(
+literal|"Reinitialized existing Git repository in %s%s\n"
+argument_list|)
+argument_list|,
+name|git_dir
+argument_list|,
+name|len
+operator|&&
+name|git_dir
+index|[
+name|len
+operator|-
+literal|1
+index|]
+operator|!=
+literal|'/'
+condition|?
+literal|"/"
+else|:
 literal|""
+argument_list|)
+expr_stmt|;
+else|else
+name|printf
+argument_list|(
+name|get_shared_repository
+argument_list|()
+condition|?
+name|_
+argument_list|(
+literal|"Initialized empty shared Git repository in %s%s\n"
+argument_list|)
+else|:
+name|_
+argument_list|(
+literal|"Initialized empty Git repository in %s%s\n"
+argument_list|)
 argument_list|,
 name|git_dir
 argument_list|,
