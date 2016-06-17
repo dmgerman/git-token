@@ -311,7 +311,10 @@ expr_stmt|;
 else|else
 name|printf
 argument_list|(
+name|_
+argument_list|(
 literal|"Would set upstream of '%s' to '%s' of '%s'\n"
+argument_list|)
 argument_list|,
 name|localname
 operator|+
@@ -873,7 +876,10 @@ name|end
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"transport: invalid depth option '%s'"
+argument_list|)
 argument_list|,
 name|value
 argument_list|)
@@ -4388,8 +4394,11 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
+name|_
+argument_list|(
 literal|"The following submodule paths contain changes that can\n"
 literal|"not be found on any remote:\n"
+argument_list|)
 argument_list|)
 expr_stmt|;
 for|for
@@ -4425,11 +4434,14 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
+name|_
+argument_list|(
 literal|"\nPlease try\n\n"
 literal|"	git push --recurse-submodules=on-demand\n\n"
 literal|"or cd to the path and use\n\n"
 literal|"	git push\n\n"
 literal|"to push them to a remote.\n\n"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|string_list_clear
@@ -4441,7 +4453,10 @@ argument_list|)
 expr_stmt|;
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Aborting."
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
