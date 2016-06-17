@@ -756,8 +756,11 @@ name|diagnose_misspelt_rev
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"%s: no such path in the working tree.\n"
 literal|"Use 'git<command> --<path>...' to specify paths that do not exist locally."
+argument_list|)
 argument_list|,
 name|arg
 argument_list|)
@@ -794,9 +797,12 @@ expr_stmt|;
 comment|/* ... or fall back the most general message. */
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"ambiguous argument '%s': unknown revision or path not in the working tree.\n"
 literal|"Use '--' to separate paths from revisions, like this:\n"
 literal|"'git<command> [<revision>...] -- [<file>...]'"
+argument_list|)
 argument_list|,
 name|arg
 argument_list|)
@@ -921,9 +927,12 @@ condition|)
 return|return;
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"ambiguous argument '%s': both revision and filename\n"
 literal|"Use '--' to separate paths from revisions, like this:\n"
 literal|"'git<command> [<revision>...] -- [<file>...]'"
+argument_list|)
 argument_list|,
 name|arg
 argument_list|)
