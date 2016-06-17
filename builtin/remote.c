@@ -7197,7 +7197,10 @@ argument_list|(
 literal|"  Push  URL: %s"
 argument_list|)
 argument_list|,
+name|_
+argument_list|(
 literal|"(no URL)"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -7211,7 +7214,10 @@ argument_list|(
 literal|"  HEAD branch: %s"
 argument_list|)
 argument_list|,
+name|_
+argument_list|(
 literal|"(not queried)"
+argument_list|)
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -7231,7 +7237,10 @@ argument_list|(
 literal|"  HEAD branch: %s"
 argument_list|)
 argument_list|,
+name|_
+argument_list|(
 literal|"(unknown)"
+argument_list|)
 argument_list|)
 expr_stmt|;
 elseif|else
