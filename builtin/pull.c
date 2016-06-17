@@ -4203,7 +4203,7 @@ argument_list|()
 condition|)
 name|die_resolve_conflict
 argument_list|(
-literal|"Pull"
+literal|"pull"
 argument_list|)
 expr_stmt|;
 if|if
