@@ -5918,10 +5918,14 @@ name|branch_info
 operator|->
 name|merge
 decl_stmt|;
-specifier|const
-name|char
-modifier|*
-name|also
+name|int
+name|width
+init|=
+name|show_info
+operator|->
+name|width
+operator|+
+literal|4
 decl_stmt|;
 name|int
 name|i
@@ -6034,12 +6038,8 @@ operator|.
 name|string
 argument_list|)
 expr_stmt|;
-name|also
-operator|=
-name|_
-argument_list|(
-literal|"    and with remote"
-argument_list|)
+name|width
+operator|++
 expr_stmt|;
 block|}
 else|else
@@ -6061,13 +6061,6 @@ operator|.
 name|string
 argument_list|)
 expr_stmt|;
-name|also
-operator|=
-name|_
-argument_list|(
-literal|"   and with remote"
-argument_list|)
-expr_stmt|;
 block|}
 for|for
 control|(
@@ -6086,15 +6079,14 @@ operator|++
 control|)
 name|printf
 argument_list|(
-literal|"    %-*s %s %s\n"
+name|_
+argument_list|(
+literal|"%-*s    and with remote %s\n"
+argument_list|)
 argument_list|,
-name|show_info
-operator|->
 name|width
 argument_list|,
 literal|""
-argument_list|,
-name|also
 argument_list|,
 name|merge
 operator|->
