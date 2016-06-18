@@ -946,7 +946,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Delete the specified references. If there are any problems, emit  * errors but attempt to keep going (i.e., the deletes are not done in  * an all-or-nothing transaction).  */
+comment|/*  * Delete the specified references. If there are any problems, emit  * errors but attempt to keep going (i.e., the deletes are not done in  * an all-or-nothing transaction). flags is passed through to  * ref_transaction_delete().  */
 end_comment
 
 begin_function_decl
@@ -957,6 +957,10 @@ name|struct
 name|string_list
 modifier|*
 name|refnames
+parameter_list|,
+name|unsigned
+name|int
+name|flags
 parameter_list|)
 function_decl|;
 end_function_decl

@@ -9575,6 +9575,10 @@ name|struct
 name|string_list
 modifier|*
 name|refnames
+parameter_list|,
+name|unsigned
+name|int
+name|flags
 parameter_list|)
 block|{
 name|struct
@@ -9700,7 +9704,7 @@ name|refname
 argument_list|,
 name|NULL
 argument_list|,
-literal|0
+name|flags
 argument_list|)
 condition|)
 name|result

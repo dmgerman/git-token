@@ -4952,6 +4952,8 @@ name|delete_refs
 argument_list|(
 operator|&
 name|branches
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|string_list_clear
@@ -8233,6 +8235,8 @@ name|delete_refs
 argument_list|(
 operator|&
 name|refs_to_prune
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|for_each_string_list_item

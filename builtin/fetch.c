@@ -4455,6 +4455,8 @@ name|delete_refs
 argument_list|(
 operator|&
 name|refnames
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|string_list_clear
