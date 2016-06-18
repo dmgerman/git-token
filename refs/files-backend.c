@@ -3735,7 +3735,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Return a pointer to a ref_cache for the specified submodule. For  * the main repository, use submodule==NULL. The returned structure  * will be allocated and initialized but not necessarily populated; it  * should not be freed.  */
+comment|/*  * Return a pointer to a ref_cache for the specified submodule. For  * the main repository, use submodule==NULL; such a call cannot fail.  * For a submodule, the submodule must exist and be a nonbare  * repository, otherwise return NULL.  *  * The returned structure will be allocated and initialized but not  * necessarily populated; it should not be freed.  */
 end_comment
 
 begin_function
@@ -3767,6 +3767,29 @@ condition|(
 operator|!
 name|refs
 condition|)
+block|{
+name|struct
+name|strbuf
+name|submodule_sb
+init|=
+name|STRBUF_INIT
+decl_stmt|;
+name|strbuf_addstr
+argument_list|(
+operator|&
+name|submodule_sb
+argument_list|,
+name|submodule
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|is_nonbare_repository_dir
+argument_list|(
+operator|&
+name|submodule_sb
+argument_list|)
+condition|)
 name|refs
 operator|=
 name|create_ref_cache
@@ -3774,6 +3797,13 @@ argument_list|(
 name|submodule
 argument_list|)
 expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|submodule_sb
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|refs
 return|;
@@ -5477,7 +5507,7 @@ argument_list|)
 expr_stmt|;
 name|refs
 operator|=
-name|lookup_ref_cache
+name|get_ref_cache
 argument_list|(
 name|submodule
 operator|.
@@ -5488,16 +5518,6 @@ if|if
 condition|(
 operator|!
 name|refs
-condition|)
-block|{
-if|if
-condition|(
-operator|!
-name|is_nonbare_repository_dir
-argument_list|(
-operator|&
-name|submodule
-argument_list|)
 condition|)
 block|{
 name|strbuf_release
@@ -5510,16 +5530,6 @@ return|return
 operator|-
 literal|1
 return|;
-block|}
-name|refs
-operator|=
-name|create_ref_cache
-argument_list|(
-name|submodule
-operator|.
-name|buf
-argument_list|)
-expr_stmt|;
 block|}
 name|strbuf_release
 argument_list|(
@@ -7321,6 +7331,14 @@ argument_list|(
 name|submodule
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|refs
+condition|)
+return|return
+literal|0
+return|;
 name|data
 operator|.
 name|prefix
