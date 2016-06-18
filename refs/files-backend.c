@@ -14059,8 +14059,6 @@ argument_list|,
 name|NULL
 argument_list|)
 condition|)
-name|retval
-operator|=
 name|error
 argument_list|(
 literal|"bad ref for %s"
