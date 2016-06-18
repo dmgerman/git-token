@@ -902,31 +902,33 @@ struct|;
 end_struct
 
 begin_comment
-comment|/*  * Call fn for each reference in the specified submodule for which the  * refname begins with prefix. If trim is non-zero, then trim that  * many characters off the beginning of each refname before passing  * the refname to fn. flags can be DO_FOR_EACH_INCLUDE_BROKEN to  * include broken references in the iteration. If fn ever returns a  * non-zero value, stop the iteration and return that value;  * otherwise, return 0.  *  * This is the common backend for the for_each_*ref* functions.  */
+comment|/*  * current_ref_iter is a performance hack: when iterating over  * references using the for_each_ref*() functions, current_ref_iter is  * set to the reference iterator before calling the callback function.  * If the callback function calls peel_ref(), then peel_ref() first  * checks whether the reference to be peeled is the one referred to by  * the iterator (it usually is) and if so, asks the iterator for the  * peeled version of the reference if it is available. This avoids a  * refname lookup in a common case. current_ref_iter is set to NULL  * when the iteration is over.  */
+end_comment
+
+begin_decl_stmt
+specifier|extern
+name|struct
+name|ref_iterator
+modifier|*
+name|current_ref_iter
+decl_stmt|;
+end_decl_stmt
+
+begin_comment
+comment|/*  * The common backend for the for_each_*ref* functions. Call fn for  * each reference in iter. If the iterator itself ever returns  * ITER_ERROR, return -1. If fn ever returns a non-zero value, stop  * the iteration and return that value. Otherwise, return 0. In any  * case, free the iterator when done. This function is basically an  * adapter between the callback style of reference iteration and the  * iterator style.  */
 end_comment
 
 begin_function_decl
 name|int
-name|do_for_each_ref
+name|do_for_each_ref_iterator
 parameter_list|(
-specifier|const
-name|char
+name|struct
+name|ref_iterator
 modifier|*
-name|submodule
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|prefix
+name|iter
 parameter_list|,
 name|each_ref_fn
 name|fn
-parameter_list|,
-name|int
-name|trim
-parameter_list|,
-name|int
-name|flags
 parameter_list|,
 name|void
 modifier|*
