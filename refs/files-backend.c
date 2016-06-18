@@ -2079,11 +2079,11 @@ DECL|struct|ref_entry_cb
 struct|struct
 name|ref_entry_cb
 block|{
-DECL|member|base
+DECL|member|prefix
 specifier|const
 name|char
 modifier|*
-name|base
+name|prefix
 decl_stmt|;
 DECL|member|trim
 name|int
@@ -2153,7 +2153,7 @@ name|name
 argument_list|,
 name|data
 operator|->
-name|base
+name|prefix
 argument_list|)
 condition|)
 return|return
@@ -7061,7 +7061,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Call fn for each reference in the specified ref_cache, omitting  * references not in the containing_dir of base.  fn is called for all  * references, including broken ones.  If fn ever returns a non-zero  * value, stop the iteration and return that value; otherwise, return  * 0.  */
+comment|/*  * Call fn for each reference in the specified ref_cache, omitting  * references not in the containing_dir of prefix. Call fn for all  * references, including broken ones. If fn ever returns a non-zero  * value, stop the iteration and return that value; otherwise, return  * 0.  */
 end_comment
 
 begin_function
@@ -7078,7 +7078,7 @@ parameter_list|,
 specifier|const
 name|char
 modifier|*
-name|base
+name|prefix
 parameter_list|,
 name|each_ref_entry_fn
 name|fn
@@ -7118,10 +7118,10 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|base
+name|prefix
 operator|&&
 operator|*
-name|base
+name|prefix
 condition|)
 block|{
 name|loose_dir
@@ -7130,7 +7130,7 @@ name|find_containing_dir
 argument_list|(
 name|loose_dir
 argument_list|,
-name|base
+name|prefix
 argument_list|,
 literal|0
 argument_list|)
@@ -7166,10 +7166,10 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|base
+name|prefix
 operator|&&
 operator|*
-name|base
+name|prefix
 condition|)
 block|{
 name|packed_dir
@@ -7178,7 +7178,7 @@ name|find_containing_dir
 argument_list|(
 name|packed_dir
 argument_list|,
-name|base
+name|prefix
 argument_list|,
 literal|0
 argument_list|)
@@ -7289,7 +7289,7 @@ parameter_list|,
 specifier|const
 name|char
 modifier|*
-name|base
+name|prefix
 parameter_list|,
 name|each_ref_fn
 name|fn
@@ -7323,9 +7323,9 @@ argument_list|)
 expr_stmt|;
 name|data
 operator|.
-name|base
+name|prefix
 operator|=
-name|base
+name|prefix
 expr_stmt|;
 name|data
 operator|.
@@ -7381,7 +7381,7 @@ name|do_for_each_entry
 argument_list|(
 name|refs
 argument_list|,
-name|base
+name|prefix
 argument_list|,
 name|do_one_ref
 argument_list|,
