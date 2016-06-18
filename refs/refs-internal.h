@@ -782,6 +782,21 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/*  * Iterate over the references in the main ref_store that have a  * reflog. The paths within a directory are iterated over in arbitrary  * order.  */
+end_comment
+
+begin_function_decl
+name|struct
+name|ref_iterator
+modifier|*
+name|files_reflog_iterator_begin
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/* Internal implementation of reference iteration: */
 end_comment
 
