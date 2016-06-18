@@ -3258,24 +3258,6 @@ return|return
 literal|0
 return|;
 block|}
-comment|/* make sure that symrefs are deleted */
-if|if
-condition|(
-name|flags
-operator|&
-name|REF_ISSYMREF
-condition|)
-return|return
-name|unlink
-argument_list|(
-name|git_path
-argument_list|(
-literal|"%s"
-argument_list|,
-name|refname
-argument_list|)
-argument_list|)
-return|;
 name|string_list_append
 argument_list|(
 name|branches
@@ -4953,7 +4935,7 @@ argument_list|(
 operator|&
 name|branches
 argument_list|,
-literal|0
+name|REF_NODEREF
 argument_list|)
 expr_stmt|;
 name|string_list_clear
