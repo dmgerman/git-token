@@ -285,7 +285,7 @@ struct_decl|;
 end_struct_decl
 
 begin_comment
-comment|/*  * Bit values set in the flags argument passed to each_ref_fn():  */
+comment|/*  * Bit values set in the flags argument passed to each_ref_fn() and  * stored in ref_iterator::flags. Other bits are for internal use  * only:  */
 end_comment
 
 begin_comment
