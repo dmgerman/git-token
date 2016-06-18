@@ -1984,10 +1984,10 @@ comment|/*  * Return true iff the reference described by entry can be resolved t
 end_comment
 
 begin_function
-DECL|function|ref_resolves_to_object
+DECL|function|entry_resolves_to_object
 specifier|static
 name|int
-name|ref_resolves_to_object
+name|entry_resolves_to_object
 parameter_list|(
 name|struct
 name|ref_entry
@@ -2171,7 +2171,7 @@ name|DO_FOR_EACH_INCLUDE_BROKEN
 operator|)
 operator|&&
 operator|!
-name|ref_resolves_to_object
+name|entry_resolves_to_object
 argument_list|(
 name|entry
 argument_list|)
@@ -8707,7 +8707,7 @@ name|REF_ISSYMREF
 operator|)
 operator|||
 operator|!
-name|ref_resolves_to_object
+name|entry_resolves_to_object
 argument_list|(
 name|entry
 argument_list|)
