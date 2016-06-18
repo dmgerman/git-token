@@ -526,7 +526,7 @@ value|0x01
 end_define
 
 begin_comment
-comment|/*  * The common backend for the for_each_*ref* functions  */
+comment|/*  * Call fn for each reference in the specified submodule for which the  * refname begins with base. If trim is non-zero, then trim that many  * characters off the beginning of each refname before passing the  * refname to fn. flags can be DO_FOR_EACH_INCLUDE_BROKEN to include  * broken references in the iteration. If fn ever returns a non-zero  * value, stop the iteration and return that value; otherwise, return  * 0.  *  * This is the common backend for the for_each_*ref* functions.  */
 end_comment
 
 begin_function_decl

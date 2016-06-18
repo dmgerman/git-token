@@ -7276,10 +7276,6 @@ return|;
 block|}
 end_function
 
-begin_comment
-comment|/*  * Call fn for each reference in the specified ref_cache for which the  * refname begins with base.  If trim is non-zero, then trim that many  * characters off the beginning of each refname before passing the  * refname to fn.  flags can be DO_FOR_EACH_INCLUDE_BROKEN to include  * broken references in the iteration.  If fn ever returns a non-zero  * value, stop the iteration and return that value; otherwise, return  * 0.  */
-end_comment
-
 begin_function
 DECL|function|do_for_each_ref
 name|int
