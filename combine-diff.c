@@ -8563,7 +8563,7 @@ name|tmp
 argument_list|)
 expr_stmt|;
 block|}
-name|free_pathspec
+name|clear_pathspec
 argument_list|(
 operator|&
 name|diffopts
