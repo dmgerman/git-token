@@ -14,17 +14,17 @@ modifier|*
 name|usage_msg
 init|=
 literal|"\n"
-literal|"  test-date show [time_t]...\n"
+literal|"  test-date relative [time_t]...\n"
 literal|"  test-date parse [date]...\n"
 literal|"  test-date approxidate [date]...\n"
 decl_stmt|;
 end_decl_stmt
 
 begin_function
-DECL|function|show_dates
+DECL|function|show_relative_dates
 specifier|static
 name|void
-name|show_dates
+name|show_relative_dates
 parameter_list|(
 name|char
 modifier|*
@@ -355,10 +355,10 @@ argument_list|(
 operator|*
 name|argv
 argument_list|,
-literal|"show"
+literal|"relative"
 argument_list|)
 condition|)
-name|show_dates
+name|show_relative_dates
 argument_list|(
 name|argv
 operator|+
