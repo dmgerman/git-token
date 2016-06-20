@@ -3024,6 +3024,10 @@ DECL|member|quiet
 name|int
 name|quiet
 decl_stmt|;
+DECL|member|recommend_shallow
+name|int
+name|recommend_shallow
+decl_stmt|;
 DECL|member|reference
 specifier|const
 name|char
@@ -3070,7 +3074,7 @@ DECL|macro|SUBMODULE_UPDATE_CLONE_INIT
 define|#
 directive|define
 name|SUBMODULE_UPDATE_CLONE_INIT
-value|{0, MODULE_LIST_INIT, 0, \ 	SUBMODULE_UPDATE_STRATEGY_INIT, 0, NULL, NULL, NULL, NULL, \ 	STRING_LIST_INIT_DUP, 0}
+value|{0, MODULE_LIST_INIT, 0, \ 	SUBMODULE_UPDATE_STRATEGY_INIT, 0, -1, NULL, NULL, NULL, NULL, \ 	STRING_LIST_INIT_DUP, 0}
 end_define
 
 begin_function
@@ -3607,6 +3611,28 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|suc
+operator|->
+name|recommend_shallow
+operator|&&
+name|sub
+operator|->
+name|recommend_shallow
+operator|==
+literal|1
+condition|)
+name|argv_array_push
+argument_list|(
+operator|&
+name|child
+operator|->
+name|args
+argument_list|,
+literal|"--depth=1"
+argument_list|)
+expr_stmt|;
 name|argv_array_pushl
 argument_list|(
 operator|&
@@ -4074,6 +4100,23 @@ argument_list|,
 name|N_
 argument_list|(
 literal|"parallel jobs"
+argument_list|)
+argument_list|)
+block|,
+name|OPT_BOOL
+argument_list|(
+literal|0
+argument_list|,
+literal|"recommend-shallow"
+argument_list|,
+operator|&
+name|suc
+operator|.
+name|recommend_shallow
+argument_list|,
+name|N_
+argument_list|(
+literal|"whether the initial clone should follow the shallow recommendation"
 argument_list|)
 argument_list|)
 block|,
