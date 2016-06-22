@@ -1408,12 +1408,6 @@ name|in2
 operator|=
 name|DEFAULT_INDENT2
 expr_stmt|;
-name|log
-operator|->
-name|file
-operator|=
-name|stdout
-expr_stmt|;
 block|}
 end_function
 
@@ -1701,6 +1695,16 @@ name|rev
 operator|.
 name|abbrev
 expr_stmt|;
+name|log
+operator|.
+name|file
+operator|=
+name|rev
+operator|.
+name|diffopt
+operator|.
+name|file
+expr_stmt|;
 comment|/* assume HEAD if from a tty */
 if|if
 condition|(
@@ -1774,6 +1778,21 @@ name|shortlog_output
 argument_list|(
 operator|&
 name|log
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|log
+operator|.
+name|file
+operator|!=
+name|stdout
+condition|)
+name|fclose
+argument_list|(
+name|log
+operator|.
+name|file
 argument_list|)
 expr_stmt|;
 return|return
