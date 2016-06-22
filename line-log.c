@@ -4796,6 +4796,10 @@ specifier|const
 name|char
 modifier|*
 name|reset
+parameter_list|,
+name|FILE
+modifier|*
+name|file
 parameter_list|)
 block|{
 name|char
@@ -4858,19 +4862,21 @@ name|fputs
 argument_list|(
 name|prefix
 argument_list|,
-name|stdout
+name|file
 argument_list|)
 expr_stmt|;
 name|fputs
 argument_list|(
 name|color
 argument_list|,
-name|stdout
+name|file
 argument_list|)
 expr_stmt|;
-name|putchar
+name|putc
 argument_list|(
 name|first
+argument_list|,
+name|file
 argument_list|)
 expr_stmt|;
 name|fwrite
@@ -4883,19 +4889,21 @@ name|end
 operator|-
 name|begin
 argument_list|,
-name|stdout
+name|file
 argument_list|)
 expr_stmt|;
 name|fputs
 argument_list|(
 name|reset
 argument_list|,
-name|stdout
+name|file
 argument_list|)
 expr_stmt|;
-name|putchar
+name|putc
 argument_list|(
 literal|'\n'
+argument_list|,
+name|file
 argument_list|)
 expr_stmt|;
 if|if
@@ -4907,7 +4915,7 @@ name|fputs
 argument_list|(
 literal|"\\ No newline at end of file\n"
 argument_list|,
-name|stdout
+name|file
 argument_list|)
 expr_stmt|;
 block|}
@@ -5174,8 +5182,12 @@ operator|&
 name|t_ends
 argument_list|)
 expr_stmt|;
-name|printf
+name|fprintf
 argument_list|(
+name|opt
+operator|->
+name|file
+argument_list|,
 literal|"%s%sdiff --git a/%s b/%s%s\n"
 argument_list|,
 name|prefix
@@ -5197,8 +5209,12 @@ argument_list|,
 name|c_reset
 argument_list|)
 expr_stmt|;
-name|printf
+name|fprintf
 argument_list|(
+name|opt
+operator|->
+name|file
+argument_list|,
 literal|"%s%s--- %s%s%s\n"
 argument_list|,
 name|prefix
@@ -5232,8 +5248,12 @@ argument_list|,
 name|c_reset
 argument_list|)
 expr_stmt|;
-name|printf
+name|fprintf
 argument_list|(
+name|opt
+operator|->
+name|file
+argument_list|,
 literal|"%s%s+++ b/%s%s\n"
 argument_list|,
 name|prefix
@@ -5534,8 +5554,12 @@ literal|1
 expr_stmt|;
 block|}
 comment|/* Now output a diff hunk for this range */
-name|printf
+name|fprintf
 argument_list|(
+name|opt
+operator|->
+name|file
+argument_list|,
 literal|"%s%s@@ -%ld,%ld +%ld,%ld @@%s\n"
 argument_list|,
 name|prefix
@@ -5626,6 +5650,10 @@ argument_list|,
 name|c_context
 argument_list|,
 name|c_reset
+argument_list|,
+name|opt
+operator|->
+name|file
 argument_list|)
 expr_stmt|;
 for|for
@@ -5678,6 +5706,10 @@ argument_list|,
 name|c_old
 argument_list|,
 name|c_reset
+argument_list|,
+name|opt
+operator|->
+name|file
 argument_list|)
 expr_stmt|;
 for|for
@@ -5722,6 +5754,10 @@ argument_list|,
 name|c_new
 argument_list|,
 name|c_reset
+argument_list|,
+name|opt
+operator|->
+name|file
 argument_list|)
 expr_stmt|;
 name|j
@@ -5757,6 +5793,10 @@ argument_list|,
 name|c_context
 argument_list|,
 name|c_reset
+argument_list|,
+name|opt
+operator|->
+name|file
 argument_list|)
 expr_stmt|;
 block|}
@@ -5794,8 +5834,16 @@ modifier|*
 name|range
 parameter_list|)
 block|{
-name|puts
+name|fprintf
 argument_list|(
+name|rev
+operator|->
+name|diffopt
+operator|.
+name|file
+argument_list|,
+literal|"%s\n"
+argument_list|,
 name|output_prefix
 argument_list|(
 operator|&
