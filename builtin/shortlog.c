@@ -1408,6 +1408,12 @@ name|in2
 operator|=
 name|DEFAULT_INDENT2
 expr_stmt|;
+name|log
+operator|->
+name|file
+operator|=
+name|stdout
+expr_stmt|;
 block|}
 end_function
 
@@ -1926,8 +1932,12 @@ operator|->
 name|summary
 condition|)
 block|{
-name|printf
+name|fprintf
 argument_list|(
+name|log
+operator|->
+name|file
+argument_list|,
 literal|"%6d\t%s\n"
 argument_list|,
 operator|(
@@ -1955,8 +1965,12 @@ name|item
 operator|->
 name|util
 decl_stmt|;
-name|printf
+name|fprintf
 argument_list|(
+name|log
+operator|->
+name|file
+argument_list|,
 literal|"%s (%d):\n"
 argument_list|,
 name|item
@@ -2035,22 +2049,32 @@ name|len
 argument_list|,
 literal|1
 argument_list|,
-name|stdout
+name|log
+operator|->
+name|file
 argument_list|)
 expr_stmt|;
 block|}
 else|else
-name|printf
+name|fprintf
 argument_list|(
+name|log
+operator|->
+name|file
+argument_list|,
 literal|"      %s\n"
 argument_list|,
 name|msg
 argument_list|)
 expr_stmt|;
 block|}
-name|putchar
+name|putc
 argument_list|(
 literal|'\n'
+argument_list|,
+name|log
+operator|->
+name|file
 argument_list|)
 expr_stmt|;
 name|onelines
