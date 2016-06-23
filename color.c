@@ -662,6 +662,15 @@ literal|7
 argument_list|,
 literal|27
 argument_list|)
+block|,
+name|ATTR
+argument_list|(
+literal|"strike"
+argument_list|,
+literal|9
+argument_list|,
+literal|29
+argument_list|)
 DECL|macro|ATTR
 undef|#
 directive|undef
