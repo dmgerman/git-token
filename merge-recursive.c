@@ -11428,10 +11428,10 @@ modifier|*
 name|get_ref
 parameter_list|(
 specifier|const
-name|unsigned
-name|char
+name|struct
+name|object_id
 modifier|*
-name|sha1
+name|oid
 parameter_list|,
 specifier|const
 name|char
@@ -11450,7 +11450,9 @@ name|deref_tag
 argument_list|(
 name|parse_object
 argument_list|(
-name|sha1
+name|oid
+operator|->
+name|hash
 argument_list|)
 argument_list|,
 name|name
@@ -11538,14 +11540,14 @@ modifier|*
 name|o
 parameter_list|,
 specifier|const
-name|unsigned
-name|char
+name|struct
+name|object_id
 modifier|*
 name|head
 parameter_list|,
 specifier|const
-name|unsigned
-name|char
+name|struct
+name|object_id
 modifier|*
 name|merge
 parameter_list|,
@@ -11553,8 +11555,8 @@ name|int
 name|num_base_list
 parameter_list|,
 specifier|const
-name|unsigned
-name|char
+name|struct
+name|object_id
 modifier|*
 modifier|*
 name|base_list
@@ -11660,7 +11662,7 @@ index|[
 name|i
 index|]
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
 name|base_list
 index|[
@@ -11678,7 +11680,7 @@ argument_list|(
 literal|"Could not parse object '%s'"
 argument_list|)
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
 name|base_list
 index|[
