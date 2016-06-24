@@ -2017,11 +2017,9 @@ name|commit_sha1
 argument_list|)
 condition|)
 block|{
-name|hashcpy
+name|hashclr
 argument_list|(
 name|gitmodules_sha1
-argument_list|,
-name|null_sha1
 argument_list|)
 expr_stmt|;
 return|return

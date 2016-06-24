@@ -8901,11 +8901,9 @@ argument_list|(
 name|stash
 argument_list|)
 condition|)
-name|hashcpy
+name|hashclr
 argument_list|(
 name|stash
-argument_list|,
-name|null_sha1
 argument_list|)
 expr_stmt|;
 for|for

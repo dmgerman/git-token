@@ -17927,13 +17927,11 @@ operator|->
 name|is_stdin
 condition|)
 block|{
-name|hashcpy
+name|hashclr
 argument_list|(
 name|one
 operator|->
 name|sha1
-argument_list|,
-name|null_sha1
 argument_list|)
 expr_stmt|;
 return|return;
