@@ -2933,11 +2933,12 @@ name|die
 argument_list|(
 literal|"Cannot read blob %s"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|spec
 operator|->
-name|sha1
+name|oid
 argument_list|)
 argument_list|)
 expr_stmt|;

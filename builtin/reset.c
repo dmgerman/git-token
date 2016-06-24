@@ -693,11 +693,12 @@ operator|->
 name|mode
 operator|&&
 operator|!
-name|is_null_sha1
+name|is_null_oid
 argument_list|(
+operator|&
 name|one
 operator|->
-name|sha1
+name|oid
 argument_list|)
 operator|)
 decl_stmt|;
@@ -733,7 +734,9 @@ name|mode
 argument_list|,
 name|one
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|,
 name|one
 operator|->

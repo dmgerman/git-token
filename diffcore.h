@@ -95,13 +95,10 @@ DECL|struct|diff_filespec
 struct|struct
 name|diff_filespec
 block|{
-DECL|member|sha1
-name|unsigned
-name|char
-name|sha1
-index|[
-literal|20
-index|]
+DECL|member|oid
+name|struct
+name|object_id
+name|oid
 decl_stmt|;
 DECL|member|path
 name|char
