@@ -100,11 +100,11 @@ if|if
 condition|(
 name|src
 operator|->
-name|sha1_valid
+name|oid_valid
 operator|&&
 name|dst
 operator|->
-name|sha1_valid
+name|oid_valid
 operator|&&
 operator|!
 name|oidcmp

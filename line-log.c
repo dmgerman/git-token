@@ -5147,7 +5147,7 @@ name|pair
 operator|->
 name|one
 operator|->
-name|sha1_valid
+name|oid_valid
 condition|)
 name|fill_line_ends
 argument_list|(
@@ -5210,7 +5210,7 @@ name|pair
 operator|->
 name|one
 operator|->
-name|sha1_valid
+name|oid_valid
 condition|?
 literal|"a/"
 else|:
@@ -5220,7 +5220,7 @@ name|pair
 operator|->
 name|one
 operator|->
-name|sha1_valid
+name|oid_valid
 condition|?
 name|pair
 operator|->
@@ -5952,7 +5952,7 @@ name|pair
 operator|->
 name|two
 operator|->
-name|sha1_valid
+name|oid_valid
 argument_list|)
 expr_stmt|;
 name|diff_populate_filespec
@@ -5990,7 +5990,7 @@ name|pair
 operator|->
 name|one
 operator|->
-name|sha1_valid
+name|oid_valid
 condition|)
 block|{
 name|diff_populate_filespec

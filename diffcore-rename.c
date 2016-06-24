@@ -340,7 +340,7 @@ name|hash
 argument_list|,
 name|two
 operator|->
-name|sha1_valid
+name|oid_valid
 argument_list|,
 name|two
 operator|->
@@ -1306,7 +1306,7 @@ condition|(
 operator|!
 name|filespec
 operator|->
-name|sha1_valid
+name|oid_valid
 condition|)
 block|{
 if|if

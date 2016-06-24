@@ -7318,7 +7318,7 @@ index|[
 name|i
 index|]
 operator|.
-name|sha1_valid
+name|oid_valid
 operator|=
 operator|!
 name|is_null_oid
@@ -7398,7 +7398,7 @@ name|pair
 operator|->
 name|two
 operator|->
-name|sha1_valid
+name|oid_valid
 operator|=
 operator|!
 name|is_null_oid

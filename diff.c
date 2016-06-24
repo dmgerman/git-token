@@ -11099,13 +11099,13 @@ name|p
 operator|->
 name|one
 operator|->
-name|sha1_valid
+name|oid_valid
 operator|&&
 name|p
 operator|->
 name|two
 operator|->
-name|sha1_valid
+name|oid_valid
 condition|)
 name|content_changed
 operator|=
@@ -15351,7 +15351,7 @@ argument_list|)
 expr_stmt|;
 name|spec
 operator|->
-name|sha1_valid
+name|oid_valid
 operator|=
 name|sha1_valid
 expr_stmt|;
@@ -15763,7 +15763,7 @@ condition|(
 operator|!
 name|s
 operator|->
-name|sha1_valid
+name|oid_valid
 operator|||
 name|reuse_worktree_file
 argument_list|(
@@ -16674,7 +16674,7 @@ operator|(
 operator|!
 name|one
 operator|->
-name|sha1_valid
+name|oid_valid
 operator|||
 name|reuse_worktree_file
 argument_list|(
@@ -16781,7 +16781,7 @@ argument_list|,
 operator|(
 name|one
 operator|->
-name|sha1_valid
+name|oid_valid
 condition|?
 name|one
 operator|->
@@ -16795,7 +16795,7 @@ argument_list|,
 operator|(
 name|one
 operator|->
-name|sha1_valid
+name|oid_valid
 condition|?
 name|one
 operator|->
@@ -16826,7 +16826,7 @@ condition|(
 operator|!
 name|one
 operator|->
-name|sha1_valid
+name|oid_valid
 condition|)
 name|sha1_to_hex_r
 argument_list|(
@@ -17948,7 +17948,7 @@ condition|(
 operator|!
 name|one
 operator|->
-name|sha1_valid
+name|oid_valid
 condition|)
 block|{
 name|struct
@@ -24357,11 +24357,11 @@ if|if
 condition|(
 name|one
 operator|->
-name|sha1_valid
+name|oid_valid
 operator|&&
 name|two
 operator|->
-name|sha1_valid
+name|oid_valid
 operator|&&
 operator|!
 name|oidcmp
@@ -24396,12 +24396,12 @@ condition|(
 operator|!
 name|one
 operator|->
-name|sha1_valid
+name|oid_valid
 operator|&&
 operator|!
 name|two
 operator|->
-name|sha1_valid
+name|oid_valid
 condition|)
 return|return
 literal|1
@@ -24759,7 +24759,7 @@ name|mode
 argument_list|,
 name|s
 operator|->
-name|sha1_valid
+name|oid_valid
 condition|?
 name|oid_to_hex
 argument_list|(
@@ -27945,13 +27945,13 @@ name|p
 operator|->
 name|one
 operator|->
-name|sha1_valid
+name|oid_valid
 operator|&&
 name|p
 operator|->
 name|two
 operator|->
-name|sha1_valid
+name|oid_valid
 operator|)
 operator|||
 operator|(
@@ -29498,7 +29498,7 @@ name|textconv_cache
 operator|&&
 name|df
 operator|->
-name|sha1_valid
+name|oid_valid
 condition|)
 block|{
 operator|*
@@ -29563,7 +29563,7 @@ name|textconv_cache
 operator|&&
 name|df
 operator|->
-name|sha1_valid
+name|oid_valid
 condition|)
 block|{
 comment|/* ignore errors, as we might be in a readonly repository */
