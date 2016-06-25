@@ -678,7 +678,7 @@ expr_stmt|;
 block|}
 return|return
 name|gc_auto_pack_limit
-operator|<=
+operator|<
 name|cnt
 return|;
 block|}
