@@ -2346,7 +2346,16 @@ condition|(
 name|opt
 operator|->
 name|fixed
-operator|||
+condition|)
+name|p
+operator|->
+name|fixed
+operator|=
+literal|1
+expr_stmt|;
+elseif|else
+if|if
+condition|(
 name|is_fixed
 argument_list|(
 name|p
