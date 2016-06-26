@@ -2806,7 +2806,7 @@ name|r
 condition|?
 literal|'!'
 else|:
-literal|'-'
+literal|'t'
 argument_list|,
 name|_
 argument_list|(
@@ -4560,7 +4560,7 @@ argument_list|(
 operator|&
 name|sb
 argument_list|,
-literal|'x'
+literal|'-'
 argument_list|,
 name|_
 argument_list|(
