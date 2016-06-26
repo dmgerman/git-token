@@ -2482,6 +2482,84 @@ value|10
 end_define
 
 begin_function
+DECL|function|format_display
+specifier|static
+name|void
+name|format_display
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+name|display
+parameter_list|,
+name|char
+name|code
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|summary
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|error
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|remote
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|local
+parameter_list|)
+block|{
+name|strbuf_addf
+argument_list|(
+name|display
+argument_list|,
+literal|"%c %-*s "
+argument_list|,
+name|code
+argument_list|,
+name|TRANSPORT_SUMMARY
+argument_list|(
+name|summary
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|strbuf_addf
+argument_list|(
+name|display
+argument_list|,
+literal|"%-*s -> %s"
+argument_list|,
+name|REFCOL_WIDTH
+argument_list|,
+name|remote
+argument_list|,
+name|local
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|error
+condition|)
+name|strbuf_addf
+argument_list|(
+name|display
+argument_list|,
+literal|"  (%s)"
+argument_list|,
+name|error
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
 DECL|function|update_local_ref
 specifier|static
 name|int
@@ -2603,21 +2681,18 @@ name|verbosity
 operator|>
 literal|0
 condition|)
-name|strbuf_addf
+name|format_display
 argument_list|(
 name|display
 argument_list|,
-literal|"= %-*s %-*s -> %s"
+literal|'='
 argument_list|,
-name|TRANSPORT_SUMMARY
-argument_list|(
 name|_
 argument_list|(
 literal|"[up to date]"
 argument_list|)
-argument_list|)
 argument_list|,
-name|REFCOL_WIDTH
+name|NULL
 argument_list|,
 name|remote
 argument_list|,
@@ -2663,24 +2738,21 @@ argument_list|)
 condition|)
 block|{
 comment|/* 		 * If this is the head, and it's not okay to update 		 * the head, and the old value of the head isn't empty... 		 */
-name|strbuf_addf
+name|format_display
 argument_list|(
 name|display
 argument_list|,
-name|_
-argument_list|(
-literal|"! %-*s %-*s -> %s  (can't fetch in current branch)"
-argument_list|)
+literal|'!'
 argument_list|,
-name|TRANSPORT_SUMMARY
-argument_list|(
 name|_
 argument_list|(
 literal|"[rejected]"
 argument_list|)
-argument_list|)
 argument_list|,
-name|REFCOL_WIDTH
+name|_
+argument_list|(
+literal|"can't fetch in current branch"
+argument_list|)
 argument_list|,
 name|remote
 argument_list|,
@@ -2726,11 +2798,9 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-name|strbuf_addf
+name|format_display
 argument_list|(
 name|display
-argument_list|,
-literal|"%c %-*s %-*s -> %s%s"
 argument_list|,
 name|r
 condition|?
@@ -2738,28 +2808,23 @@ literal|'!'
 else|:
 literal|'-'
 argument_list|,
-name|TRANSPORT_SUMMARY
-argument_list|(
 name|_
 argument_list|(
 literal|"[tag update]"
 argument_list|)
-argument_list|)
-argument_list|,
-name|REFCOL_WIDTH
-argument_list|,
-name|remote
-argument_list|,
-name|pretty_ref
 argument_list|,
 name|r
 condition|?
 name|_
 argument_list|(
-literal|"  (unable to update local ref)"
+literal|"unable to update local ref"
 argument_list|)
 else|:
-literal|""
+name|NULL
+argument_list|,
+name|remote
+argument_list|,
+name|pretty_ref
 argument_list|)
 expr_stmt|;
 return|return
@@ -2921,11 +2986,9 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-name|strbuf_addf
+name|format_display
 argument_list|(
 name|display
-argument_list|,
-literal|"%c %-*s %-*s -> %s%s"
 argument_list|,
 name|r
 condition|?
@@ -2933,25 +2996,20 @@ literal|'!'
 else|:
 literal|'*'
 argument_list|,
-name|TRANSPORT_SUMMARY
-argument_list|(
 name|what
-argument_list|)
-argument_list|,
-name|REFCOL_WIDTH
-argument_list|,
-name|remote
-argument_list|,
-name|pretty_ref
 argument_list|,
 name|r
 condition|?
 name|_
 argument_list|(
-literal|"  (unable to update local ref)"
+literal|"unable to update local ref"
 argument_list|)
 else|:
-literal|""
+name|NULL
+argument_list|,
+name|remote
+argument_list|,
+name|pretty_ref
 argument_list|)
 expr_stmt|;
 return|return
@@ -3049,11 +3107,9 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
-name|strbuf_addf
+name|format_display
 argument_list|(
 name|display
-argument_list|,
-literal|"%c %-*s %-*s -> %s%s"
 argument_list|,
 name|r
 condition|?
@@ -3061,26 +3117,22 @@ literal|'!'
 else|:
 literal|' '
 argument_list|,
-name|TRANSPORT_SUMMARY_WIDTH
-argument_list|,
 name|quickref
 operator|.
 name|buf
-argument_list|,
-name|REFCOL_WIDTH
-argument_list|,
-name|remote
-argument_list|,
-name|pretty_ref
 argument_list|,
 name|r
 condition|?
 name|_
 argument_list|(
-literal|"  (unable to update local ref)"
+literal|"unable to update local ref"
 argument_list|)
 else|:
-literal|""
+name|NULL
+argument_list|,
+name|remote
+argument_list|,
+name|pretty_ref
 argument_list|)
 expr_stmt|;
 name|strbuf_release
@@ -3184,11 +3236,9 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
-name|strbuf_addf
+name|format_display
 argument_list|(
 name|display
-argument_list|,
-literal|"%c %-*s %-*s -> %s  (%s)"
 argument_list|,
 name|r
 condition|?
@@ -3196,17 +3246,9 @@ literal|'!'
 else|:
 literal|'+'
 argument_list|,
-name|TRANSPORT_SUMMARY_WIDTH
-argument_list|,
 name|quickref
 operator|.
 name|buf
-argument_list|,
-name|REFCOL_WIDTH
-argument_list|,
-name|remote
-argument_list|,
-name|pretty_ref
 argument_list|,
 name|r
 condition|?
@@ -3219,6 +3261,10 @@ name|_
 argument_list|(
 literal|"forced update"
 argument_list|)
+argument_list|,
+name|remote
+argument_list|,
+name|pretty_ref
 argument_list|)
 expr_stmt|;
 name|strbuf_release
@@ -3233,30 +3279,25 @@ return|;
 block|}
 else|else
 block|{
-name|strbuf_addf
+name|format_display
 argument_list|(
 name|display
 argument_list|,
-literal|"! %-*s %-*s -> %s  %s"
+literal|'!'
 argument_list|,
-name|TRANSPORT_SUMMARY
-argument_list|(
 name|_
 argument_list|(
 literal|"[rejected]"
 argument_list|)
-argument_list|)
 argument_list|,
-name|REFCOL_WIDTH
+name|_
+argument_list|(
+literal|"non-fast-forward"
+argument_list|)
 argument_list|,
 name|remote
 argument_list|,
 name|pretty_ref
-argument_list|,
-name|_
-argument_list|(
-literal|"(non-fast-forward)"
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -4014,14 +4055,12 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
-name|strbuf_addf
+name|format_display
 argument_list|(
 operator|&
 name|note
 argument_list|,
-literal|"* %-*s %-*s -> FETCH_HEAD"
-argument_list|,
-name|TRANSPORT_SUMMARY_WIDTH
+literal|'*'
 argument_list|,
 operator|*
 name|kind
@@ -4030,7 +4069,7 @@ name|kind
 else|:
 literal|"branch"
 argument_list|,
-name|REFCOL_WIDTH
+name|NULL
 argument_list|,
 operator|*
 name|what
@@ -4038,6 +4077,8 @@ condition|?
 name|what
 else|:
 literal|"HEAD"
+argument_list|,
+literal|"FETCH_HEAD"
 argument_list|)
 expr_stmt|;
 if|if
@@ -4483,6 +4524,12 @@ operator|->
 name|next
 control|)
 block|{
+name|struct
+name|strbuf
+name|sb
+init|=
+name|STRBUF_INIT
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -4508,21 +4555,19 @@ operator|=
 literal|1
 expr_stmt|;
 block|}
-name|fprintf
+name|format_display
 argument_list|(
-name|stderr
+operator|&
+name|sb
 argument_list|,
-literal|" x %-*s %-*s -> %s\n"
+literal|'x'
 argument_list|,
-name|TRANSPORT_SUMMARY
-argument_list|(
 name|_
 argument_list|(
 literal|"[deleted]"
 argument_list|)
-argument_list|)
 argument_list|,
-name|REFCOL_WIDTH
+name|NULL
 argument_list|,
 name|_
 argument_list|(
@@ -4535,6 +4580,23 @@ name|ref
 operator|->
 name|name
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|fprintf
+argument_list|(
+name|stderr
+argument_list|,
+literal|" %s\n"
+argument_list|,
+name|sb
+operator|.
+name|buf
+argument_list|)
+expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|sb
 argument_list|)
 expr_stmt|;
 name|warn_dangling_symref
