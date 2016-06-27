@@ -5450,7 +5450,14 @@ name|c
 operator|->
 name|auto_color
 operator|=
-literal|1
+name|want_color
+argument_list|(
+name|c
+operator|->
+name|pretty_ctx
+operator|->
+name|color
+argument_list|)
 expr_stmt|;
 return|return
 literal|7
