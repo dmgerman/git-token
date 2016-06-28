@@ -769,9 +769,15 @@ case|:
 case|case
 name|CRLF_AUTO_CRLF
 case|:
+return|return
+name|EOL_CRLF
+return|;
 case|case
 name|CRLF_AUTO_INPUT
 case|:
+return|return
+name|EOL_LF
+return|;
 case|case
 name|CRLF_TEXT
 case|:
@@ -1095,18 +1101,18 @@ condition|)
 return|return
 literal|0
 return|;
+comment|/* 		 * If the file in the index has any CR in it, do not convert. 		 * This is the new safer autocrlf handling. 		 */
 if|if
 condition|(
-name|crlf_action
+name|checksafe
 operator|==
-name|CRLF_AUTO_INPUT
-operator|||
-name|crlf_action
-operator|==
-name|CRLF_AUTO_CRLF
+name|SAFE_CRLF_RENORMALIZE
 condition|)
-block|{
-comment|/* 			 * If the file in the index has any CR in it, do not convert. 			 * This is the new safer autocrlf handling. 			 */
+name|checksafe
+operator|=
+name|SAFE_CRLF_FALSE
+expr_stmt|;
+elseif|else
 if|if
 condition|(
 name|has_cr_in_index
@@ -1117,7 +1123,6 @@ condition|)
 return|return
 literal|0
 return|;
-block|}
 block|}
 name|check_safe_crlf
 argument_list|(
@@ -1381,17 +1386,6 @@ operator|==
 name|CRLF_AUTO_CRLF
 condition|)
 block|{
-if|if
-condition|(
-name|crlf_action
-operator|==
-name|CRLF_AUTO_INPUT
-operator|||
-name|crlf_action
-operator|==
-name|CRLF_AUTO_CRLF
-condition|)
-block|{
 comment|/* If we have any CR or CRLF line endings, we do not touch it */
 comment|/* This is the new safer autocrlf-handling */
 if|if
@@ -1407,7 +1401,6 @@ condition|)
 return|return
 literal|0
 return|;
-block|}
 if|if
 condition|(
 name|convert_is_binary
@@ -3715,6 +3708,44 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|ca
+operator|->
+name|crlf_action
+operator|==
+name|CRLF_AUTO
+operator|&&
+name|eol_attr
+operator|==
+name|EOL_LF
+condition|)
+name|ca
+operator|->
+name|crlf_action
+operator|=
+name|CRLF_AUTO_INPUT
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|ca
+operator|->
+name|crlf_action
+operator|==
+name|CRLF_AUTO
+operator|&&
+name|eol_attr
+operator|==
+name|EOL_CRLF
+condition|)
+name|ca
+operator|->
+name|crlf_action
+operator|=
+name|CRLF_AUTO_CRLF
+expr_stmt|;
+elseif|else
+if|if
+condition|(
 name|eol_attr
 operator|==
 name|EOL_LF
@@ -3989,14 +4020,12 @@ case|:
 return|return
 literal|"text=auto eol=crlf"
 return|;
-comment|/* This is not supported yet */
 case|case
 name|CRLF_AUTO_INPUT
 case|:
 return|return
 literal|"text=auto eol=lf"
 return|;
-comment|/* This is not supported yet */
 block|}
 return|return
 literal|""
@@ -4655,7 +4684,7 @@ name|len
 argument_list|,
 name|dst
 argument_list|,
-name|SAFE_CRLF_FALSE
+name|SAFE_CRLF_RENORMALIZE
 argument_list|)
 return|;
 block|}
