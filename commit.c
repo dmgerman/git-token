@@ -6137,8 +6137,13 @@ name|inspos
 decl_stmt|,
 name|copypos
 decl_stmt|;
+specifier|const
+name|char
+modifier|*
+name|eoh
+decl_stmt|;
 comment|/* find the end of the header */
-name|inspos
+name|eoh
 operator|=
 name|strstr
 argument_list|(
@@ -6148,6 +6153,22 @@ name|buf
 argument_list|,
 literal|"\n\n"
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|eoh
+condition|)
+name|inspos
+operator|=
+name|buf
+operator|->
+name|len
+expr_stmt|;
+else|else
+name|inspos
+operator|=
+name|eoh
 operator|-
 name|buf
 operator|->
