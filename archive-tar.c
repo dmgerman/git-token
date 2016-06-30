@@ -1888,7 +1888,7 @@ end_function
 begin_function
 DECL|function|write_global_extended_header
 specifier|static
-name|int
+name|void
 name|write_global_extended_header
 parameter_list|(
 name|struct
@@ -1920,11 +1920,6 @@ decl_stmt|;
 name|unsigned
 name|int
 name|mode
-decl_stmt|;
-name|int
-name|err
-init|=
-literal|0
 decl_stmt|;
 if|if
 condition|(
@@ -1980,9 +1975,7 @@ name|ext_header
 operator|.
 name|len
 condition|)
-return|return
-literal|0
-return|;
+return|return;
 name|memset
 argument_list|(
 operator|&
@@ -2065,9 +2058,6 @@ operator|&
 name|ext_header
 argument_list|)
 expr_stmt|;
-return|return
-name|err
-return|;
 block|}
 end_function
 
@@ -2506,18 +2496,11 @@ name|err
 init|=
 literal|0
 decl_stmt|;
-name|err
-operator|=
 name|write_global_extended_header
 argument_list|(
 name|args
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|err
-condition|)
 name|err
 operator|=
 name|write_archive_entries
