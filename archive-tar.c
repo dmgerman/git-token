@@ -99,7 +99,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * This is the max value that a ustar size header can specify, as it is fixed  * at 11 octal digits. POSIX specifies that we switch to extended headers at  * this size.  */
+comment|/*  * This is the max value that a ustar size header can specify, as it is fixed  * at 11 octal digits. POSIX specifies that we switch to extended headers at  * this size.  *  * Likewise for the mtime (which happens to use a buffer of the same size).  */
 end_comment
 
 begin_define
@@ -107,6 +107,14 @@ DECL|macro|USTAR_MAX_SIZE
 define|#
 directive|define
 name|USTAR_MAX_SIZE
+value|077777777777UL
+end_define
+
+begin_define
+DECL|macro|USTAR_MAX_MTIME
+define|#
+directive|define
+name|USTAR_MAX_MTIME
 value|077777777777UL
 end_define
 
@@ -1918,6 +1926,10 @@ name|err
 init|=
 literal|0
 decl_stmt|;
+if|if
+condition|(
+name|sha1
+condition|)
 name|strbuf_append_ext_header
 argument_list|(
 operator|&
@@ -1933,6 +1945,44 @@ argument_list|,
 literal|40
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|args
+operator|->
+name|time
+operator|>
+name|USTAR_MAX_MTIME
+condition|)
+block|{
+name|strbuf_append_ext_header_uint
+argument_list|(
+operator|&
+name|ext_header
+argument_list|,
+literal|"mtime"
+argument_list|,
+name|args
+operator|->
+name|time
+argument_list|)
+expr_stmt|;
+name|args
+operator|->
+name|time
+operator|=
+name|USTAR_MAX_MTIME
+expr_stmt|;
+block|}
+if|if
+condition|(
+operator|!
+name|ext_header
+operator|.
+name|len
+condition|)
+return|return
+literal|0
+return|;
 name|memset
 argument_list|(
 operator|&
@@ -2456,12 +2506,6 @@ name|err
 init|=
 literal|0
 decl_stmt|;
-if|if
-condition|(
-name|args
-operator|->
-name|commit_sha1
-condition|)
 name|err
 operator|=
 name|write_global_extended_header
