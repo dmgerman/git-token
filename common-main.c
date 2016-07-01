@@ -5,6 +5,12 @@ directive|include
 file|"git-compat-util.h"
 end_include
 
+begin_include
+include|#
+directive|include
+file|"exec_cmd.h"
+end_include
+
 begin_function
 DECL|function|main
 name|int
@@ -34,6 +40,19 @@ operator|*
 operator|)
 name|av
 decl_stmt|;
+name|argv
+index|[
+literal|0
+index|]
+operator|=
+name|git_extract_argv0_path
+argument_list|(
+name|argv
+index|[
+literal|0
+index|]
+argument_list|)
+expr_stmt|;
 return|return
 name|cmd_main
 argument_list|(

@@ -3634,13 +3634,10 @@ literal|0
 decl_stmt|;
 name|cmd
 operator|=
-name|git_extract_argv0_path
-argument_list|(
 name|argv
 index|[
 literal|0
 index|]
-argument_list|)
 expr_stmt|;
 if|if
 condition|(

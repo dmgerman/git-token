@@ -14,12 +14,6 @@ end_include
 begin_include
 include|#
 directive|include
-file|"exec_cmd.h"
-end_include
-
-begin_include
-include|#
-directive|include
 file|"run-command.h"
 end_include
 
@@ -6152,14 +6146,6 @@ name|i
 decl_stmt|;
 name|git_setup_gettext
 argument_list|()
-expr_stmt|;
-name|git_extract_argv0_path
-argument_list|(
-name|argv
-index|[
-literal|0
-index|]
-argument_list|)
 expr_stmt|;
 for|for
 control|(

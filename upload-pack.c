@@ -4325,14 +4325,6 @@ argument_list|(
 literal|"upload-pack"
 argument_list|)
 expr_stmt|;
-name|git_extract_argv0_path
-argument_list|(
-name|argv
-index|[
-literal|0
-index|]
-argument_list|)
-expr_stmt|;
 name|check_replace_refs
 operator|=
 literal|0
