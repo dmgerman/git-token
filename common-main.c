@@ -69,27 +69,13 @@ parameter_list|(
 name|int
 name|argc
 parameter_list|,
-name|char
-modifier|*
-modifier|*
-name|av
-parameter_list|)
-block|{
-comment|/* 	 * This const trickery is explained in 	 * 84d32bf7678259c08406571cd6ce4b7a6724dcba 	 */
 specifier|const
 name|char
 modifier|*
 modifier|*
 name|argv
-init|=
-operator|(
-specifier|const
-name|char
-operator|*
-operator|*
-operator|)
-name|av
-decl_stmt|;
+parameter_list|)
+block|{
 comment|/* 	 * Always open file descriptors 0/1/2 to avoid clobbering files 	 * in die().  It also avoids messing up when the pipes are dup'ed 	 * onto stdin/stdout/stderr in the child processes we spawn. 	 */
 name|sanitize_stdfds
 argument_list|()
