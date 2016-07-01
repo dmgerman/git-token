@@ -12,13 +12,14 @@ file|"tree.h"
 end_include
 
 begin_function
-DECL|function|main
+DECL|function|cmd_main
 name|int
-name|main
+name|cmd_main
 parameter_list|(
 name|int
 name|ac
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*

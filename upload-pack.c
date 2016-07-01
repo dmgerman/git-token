@@ -4290,19 +4290,21 @@ block|}
 end_function
 
 begin_function
-DECL|function|main
+DECL|function|cmd_main
 name|int
-name|main
+name|cmd_main
 parameter_list|(
 name|int
 name|argc
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
 name|argv
 parameter_list|)
 block|{
+specifier|const
 name|char
 modifier|*
 name|dir
@@ -4349,6 +4351,7 @@ name|i
 operator|++
 control|)
 block|{
+specifier|const
 name|char
 modifier|*
 name|arg
