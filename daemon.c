@@ -7003,10 +7003,6 @@ literal|"--detach not supported on this platform"
 argument_list|)
 expr_stmt|;
 block|}
-else|else
-name|sanitize_stdfds
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|pid_file

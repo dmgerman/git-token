@@ -2,7 +2,7 @@ begin_unit|revision:0.9.5;language:C;cregit-version:0.0.1
 begin_include
 include|#
 directive|include
-file|"git-compat-util.h"
+file|"cache.h"
 end_include
 
 begin_include
@@ -40,6 +40,10 @@ operator|*
 operator|)
 name|av
 decl_stmt|;
+comment|/* 	 * Always open file descriptors 0/1/2 to avoid clobbering files 	 * in die().  It also avoids messing up when the pipes are dup'ed 	 * onto stdin/stdout/stderr in the child processes we spawn. 	 */
+name|sanitize_stdfds
+argument_list|()
+expr_stmt|;
 name|argv
 index|[
 literal|0
