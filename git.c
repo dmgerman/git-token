@@ -3598,9 +3598,6 @@ name|cmd
 operator|=
 literal|"git-help"
 expr_stmt|;
-name|git_setup_gettext
-argument_list|()
-expr_stmt|;
 name|trace_command_performance
 argument_list|(
 name|argv

@@ -118,9 +118,6 @@ name|get_recover
 init|=
 literal|0
 decl_stmt|;
-name|git_setup_gettext
-argument_list|()
-expr_stmt|;
 while|while
 condition|(
 name|arg

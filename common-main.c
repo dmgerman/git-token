@@ -94,6 +94,9 @@ comment|/* 	 * Always open file descriptors 0/1/2 to avoid clobbering files 	 * 
 name|sanitize_stdfds
 argument_list|()
 expr_stmt|;
+name|git_setup_gettext
+argument_list|()
+expr_stmt|;
 name|argv
 index|[
 literal|0

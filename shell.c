@@ -788,9 +788,6 @@ decl_stmt|;
 name|int
 name|count
 decl_stmt|;
-name|git_setup_gettext
-argument_list|()
-expr_stmt|;
 comment|/* 	 * Special hack to pretend to be a CVS server 	 */
 if|if
 condition|(

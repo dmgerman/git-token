@@ -6144,9 +6144,6 @@ decl_stmt|;
 name|int
 name|i
 decl_stmt|;
-name|git_setup_gettext
-argument_list|()
-expr_stmt|;
 for|for
 control|(
 name|i
