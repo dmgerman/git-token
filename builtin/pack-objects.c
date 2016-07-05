@@ -2059,8 +2059,7 @@ name|entry
 operator|->
 name|type
 decl_stmt|;
-name|unsigned
-name|long
+name|off_t
 name|datalen
 decl_stmt|;
 name|unsigned

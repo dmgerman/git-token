@@ -11290,8 +11290,7 @@ argument_list|,
 name|obj_offset
 argument_list|)
 decl_stmt|;
-name|unsigned
-name|long
+name|off_t
 name|len
 init|=
 name|revidx
