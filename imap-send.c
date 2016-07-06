@@ -8076,6 +8076,11 @@ argument_list|,
 literal|1L
 argument_list|)
 expr_stmt|;
+name|setup_curl_trace
+argument_list|(
+name|curl
+argument_list|)
+expr_stmt|;
 return|return
 name|curl
 return|;
