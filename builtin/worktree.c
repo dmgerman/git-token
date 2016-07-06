@@ -89,12 +89,12 @@ argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git worktree prune [<options>]"
+literal|"git worktree list [<options>]"
 argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git worktree list [<options>]"
+literal|"git worktree prune [<options>]"
 argument_list|)
 block|,
 name|NULL
@@ -545,24 +545,11 @@ condition|)
 block|{
 if|if
 condition|(
-operator|!
-name|strcmp
+name|is_dot_or_dotdot
 argument_list|(
 name|d
 operator|->
 name|d_name
-argument_list|,
-literal|"."
-argument_list|)
-operator|||
-operator|!
-name|strcmp
-argument_list|(
-name|d
-operator|->
-name|d_name
-argument_list|,
-literal|".."
 argument_list|)
 condition|)
 continue|continue;
@@ -1521,7 +1508,10 @@ name|sb
 operator|.
 name|buf
 argument_list|,
-literal|"0000000000000000000000000000000000000000"
+name|sha1_to_hex
+argument_list|(
+name|null_sha1
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|strbuf_reset
@@ -2046,8 +2036,6 @@ argument_list|)
 expr_stmt|;
 name|path
 operator|=
-name|prefix
-condition|?
 name|prefix_filename
 argument_list|(
 name|prefix
@@ -2062,11 +2050,6 @@ index|[
 literal|0
 index|]
 argument_list|)
-else|:
-name|av
-index|[
-literal|0
-index|]
 expr_stmt|;
 name|branch
 operator|=
@@ -2859,6 +2842,15 @@ name|worktree_usage
 argument_list|,
 name|options
 argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|prefix
+condition|)
+name|prefix
+operator|=
+literal|""
 expr_stmt|;
 if|if
 condition|(
