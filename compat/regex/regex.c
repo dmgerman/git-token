@@ -313,6 +313,12 @@ directive|include
 file|<limits.h>
 end_include
 
+begin_include
+include|#
+directive|include
+file|<stdint.h>
+end_include
+
 begin_ifdef
 ifdef|#
 directive|ifdef
