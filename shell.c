@@ -756,13 +756,14 @@ struct|;
 end_struct
 
 begin_function
-DECL|function|main
+DECL|function|cmd_main
 name|int
-name|main
+name|cmd_main
 parameter_list|(
 name|int
 name|argc
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
@@ -787,21 +788,6 @@ decl_stmt|;
 name|int
 name|count
 decl_stmt|;
-name|git_setup_gettext
-argument_list|()
-expr_stmt|;
-name|git_extract_argv0_path
-argument_list|(
-name|argv
-index|[
-literal|0
-index|]
-argument_list|)
-expr_stmt|;
-comment|/* 	 * Always open file descriptors 0/1/2 to avoid clobbering files 	 * in die().  It also avoids messing up when the pipes are dup'ed 	 * onto stdin/stdout/stderr in the child processes we spawn. 	 */
-name|sanitize_stdfds
-argument_list|()
-expr_stmt|;
 comment|/* 	 * Special hack to pretend to be a CVS server 	 */
 if|if
 condition|(

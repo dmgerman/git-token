@@ -54,11 +54,12 @@ end_undef
 
 begin_function
 name|int
-name|main
+name|cmd_main
 parameter_list|(
 name|int
 name|argc
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*

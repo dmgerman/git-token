@@ -24,13 +24,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_function
-DECL|function|main
+DECL|function|cmd_main
 name|int
-name|main
+name|cmd_main
 parameter_list|(
 name|int
 name|argc
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
@@ -55,9 +56,6 @@ index|[
 literal|256
 index|]
 decl_stmt|;
-name|git_setup_gettext
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|argc

@@ -78,12 +78,6 @@ end_include
 begin_include
 include|#
 directive|include
-file|"exec_cmd.h"
-end_include
-
-begin_include
-include|#
-directive|include
 file|"dir.h"
 end_include
 
@@ -793,6 +787,7 @@ end_decl_stmt
 begin_decl_stmt
 DECL|variable|global_argv
 specifier|static
+specifier|const
 name|char
 modifier|*
 modifier|*
@@ -18981,13 +18976,14 @@ block|}
 end_function
 
 begin_function
-DECL|function|main
+DECL|function|cmd_main
 name|int
-name|main
+name|cmd_main
 parameter_list|(
 name|int
 name|argc
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
@@ -18998,17 +18994,6 @@ name|unsigned
 name|int
 name|i
 decl_stmt|;
-name|git_extract_argv0_path
-argument_list|(
-name|argv
-index|[
-literal|0
-index|]
-argument_list|)
-expr_stmt|;
-name|git_setup_gettext
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|argc

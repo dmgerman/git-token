@@ -6191,5 +6191,20 @@ endif|#
 directive|endif
 end_endif
 
+begin_function_decl
+specifier|extern
+name|int
+name|cmd_main
+parameter_list|(
+name|int
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
 end_unit
 
