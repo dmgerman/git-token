@@ -88,7 +88,7 @@ name|struct
 name|string_list
 name|trailers
 init|=
-name|STRING_LIST_INIT_DUP
+name|STRING_LIST_INIT_NODUP
 decl_stmt|;
 name|struct
 name|option
