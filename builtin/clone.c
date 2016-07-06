@@ -169,9 +169,6 @@ DECL|variable|option_shallow_submodules
 specifier|static
 name|int
 name|option_shallow_submodules
-init|=
-operator|-
-literal|1
 decl_stmt|;
 end_decl_stmt
 
@@ -4183,15 +4180,6 @@ condition|(
 name|option_shallow_submodules
 operator|==
 literal|1
-operator|||
-operator|(
-name|option_shallow_submodules
-operator|==
-operator|-
-literal|1
-operator|&&
-name|option_depth
-operator|)
 condition|)
 name|argv_array_push
 argument_list|(
