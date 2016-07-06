@@ -423,6 +423,17 @@ expr_stmt|;
 if|if
 condition|(
 name|t_local
+operator|==
+operator|-
+literal|1
+condition|)
+return|return
+literal|0
+return|;
+comment|/* error; just use +0000 */
+if|if
+condition|(
+name|t_local
 operator|<
 name|t
 condition|)
