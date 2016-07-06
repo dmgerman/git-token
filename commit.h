@@ -810,6 +810,10 @@ name|struct
 name|string_list
 name|in_body_headers
 decl_stmt|;
+DECL|member|graph_width
+name|int
+name|graph_width
+decl_stmt|;
 block|}
 struct|;
 end_struct

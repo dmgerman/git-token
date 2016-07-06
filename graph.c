@@ -2002,6 +2002,25 @@ block|}
 end_function
 
 begin_function
+DECL|function|graph_width
+name|int
+name|graph_width
+parameter_list|(
+name|struct
+name|git_graph
+modifier|*
+name|graph
+parameter_list|)
+block|{
+return|return
+name|graph
+operator|->
+name|width
+return|;
+block|}
+end_function
+
+begin_function
 DECL|function|graph_output_skip_line
 specifier|static
 name|void
