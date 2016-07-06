@@ -3256,11 +3256,12 @@ expr_stmt|;
 comment|/* 	 * Print header line of header.. 	 */
 if|if
 condition|(
+name|cmit_fmt_is_mail
+argument_list|(
 name|opt
 operator|->
 name|commit_format
-operator|==
-name|CMIT_FMT_EMAIL
+argument_list|)
 condition|)
 block|{
 name|log_write_email_headers
@@ -3797,11 +3798,12 @@ condition|)
 block|{
 if|if
 condition|(
+name|cmit_fmt_is_mail
+argument_list|(
 name|ctx
 operator|.
 name|fmt
-operator|==
-name|CMIT_FMT_EMAIL
+argument_list|)
 condition|)
 block|{
 name|strbuf_addstr
