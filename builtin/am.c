@@ -741,7 +741,7 @@ end_comment
 begin_function
 DECL|function|write_state_text
 specifier|static
-name|int
+name|void
 name|write_state_text
 parameter_list|(
 specifier|const
@@ -761,7 +761,6 @@ modifier|*
 name|string
 parameter_list|)
 block|{
-return|return
 name|write_file
 argument_list|(
 name|am_path
@@ -775,14 +774,14 @@ literal|"%s"
 argument_list|,
 name|string
 argument_list|)
-return|;
+expr_stmt|;
 block|}
 end_function
 
 begin_function
 DECL|function|write_state_count
 specifier|static
-name|int
+name|void
 name|write_state_count
 parameter_list|(
 specifier|const
@@ -800,7 +799,6 @@ name|int
 name|value
 parameter_list|)
 block|{
-return|return
 name|write_file
 argument_list|(
 name|am_path
@@ -814,14 +812,14 @@ literal|"%d"
 argument_list|,
 name|value
 argument_list|)
-return|;
+expr_stmt|;
 block|}
 end_function
 
 begin_function
 DECL|function|write_state_bool
 specifier|static
-name|int
+name|void
 name|write_state_bool
 parameter_list|(
 specifier|const
@@ -839,7 +837,6 @@ name|int
 name|value
 parameter_list|)
 block|{
-return|return
 name|write_state_text
 argument_list|(
 name|state
@@ -852,7 +849,7 @@ literal|"t"
 else|:
 literal|"f"
 argument_list|)
-return|;
+expr_stmt|;
 block|}
 end_function
 
