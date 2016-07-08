@@ -123,6 +123,17 @@ begin_comment
 comment|/* Report what we got under get_verbosely */
 end_comment
 
+begin_macro
+name|__attribute__
+argument_list|(
+argument|(format (printf,
+literal|2
+argument|,
+literal|3
+argument|))
+argument_list|)
+end_macro
+
 begin_function_decl
 name|void
 name|walker_say
@@ -135,10 +146,9 @@ parameter_list|,
 specifier|const
 name|char
 modifier|*
+name|fmt
 parameter_list|,
-specifier|const
-name|char
-modifier|*
+modifier|...
 parameter_list|)
 function_decl|;
 end_function_decl
