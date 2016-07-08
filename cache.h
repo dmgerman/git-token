@@ -11209,6 +11209,21 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/**  * Like write_file_buf(), but format the contents into a buffer first.  * Additionally, write_file() will append a newline if one is not already  * present, making it convenient to write text files:  *  *   write_file(path, "counter: %d", ctr);  */
+end_comment
+
+begin_macro
+name|__attribute__
+argument_list|(
+argument|(format (printf,
+literal|2
+argument|,
+literal|3
+argument|))
+argument_list|)
+end_macro
+
 begin_function_decl
 specifier|extern
 name|void
