@@ -3651,6 +3651,8 @@ decl_stmt|;
 if|if
 condition|(
 name|fd
+operator|>=
+literal|0
 condition|)
 block|{
 name|char
