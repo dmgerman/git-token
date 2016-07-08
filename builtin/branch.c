@@ -3196,9 +3196,7 @@ argument_list|,
 name|comment_line_char
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|write_file_gently
+name|write_file
 argument_list|(
 name|git_path
 argument_list|(
@@ -3211,24 +3209,7 @@ name|buf
 operator|.
 name|buf
 argument_list|)
-condition|)
-block|{
-name|strbuf_release
-argument_list|(
-operator|&
-name|buf
-argument_list|)
 expr_stmt|;
-return|return
-name|error_errno
-argument_list|(
-name|_
-argument_list|(
-literal|"could not write branch description template"
-argument_list|)
-argument_list|)
-return|;
-block|}
 name|strbuf_reset
 argument_list|(
 operator|&
