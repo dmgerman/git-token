@@ -4014,6 +4014,23 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|struct
+name|cache_entry
+modifier|*
+name|refresh_cache_entry
+parameter_list|(
+name|struct
+name|cache_entry
+modifier|*
+parameter_list|,
+name|unsigned
+name|int
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|void
 name|update_index_if_able
 parameter_list|(
