@@ -3049,11 +3049,11 @@ decl_stmt|;
 name|int
 name|fd
 init|=
-name|open
+name|xopen
 argument_list|(
 name|path
 argument_list|,
-name|O_RDWR
+name|O_WRONLY
 operator||
 name|O_CREAT
 operator||
@@ -3062,22 +3062,6 @@ argument_list|,
 literal|0666
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|fd
-operator|<
-literal|0
-condition|)
-name|die_errno
-argument_list|(
-name|_
-argument_list|(
-literal|"could not open %s for writing"
-argument_list|)
-argument_list|,
-name|path
-argument_list|)
-expr_stmt|;
 name|va_start
 argument_list|(
 name|params
