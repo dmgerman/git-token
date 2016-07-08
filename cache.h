@@ -11184,6 +11184,31 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/**  * Open (and truncate) the file at path, write the contents of buf to it,  * and close it. Dies if any errors are encountered.  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|void
+name|write_file_buf
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|buf
+parameter_list|,
+name|size_t
+name|len
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_function_decl
 specifier|extern
 name|void
