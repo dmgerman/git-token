@@ -1710,6 +1710,12 @@ name|gitmodules_modified
 init|=
 literal|0
 decl_stmt|;
+name|struct
+name|strbuf
+name|buf
+init|=
+name|STRBUF_INIT
+decl_stmt|;
 for|for
 control|(
 name|i
@@ -1790,12 +1796,12 @@ block|}
 block|}
 else|else
 block|{
-name|struct
-name|strbuf
+name|strbuf_reset
+argument_list|(
+operator|&
 name|buf
-init|=
-name|STRBUF_INIT
-decl_stmt|;
+argument_list|)
+expr_stmt|;
 name|strbuf_addstr
 argument_list|(
 operator|&
@@ -1862,12 +1868,6 @@ name|gitmodules_modified
 operator|=
 literal|1
 expr_stmt|;
-name|strbuf_release
-argument_list|(
-operator|&
-name|buf
-argument_list|)
-expr_stmt|;
 comment|/* Fallthrough and let remove_path() fail. */
 block|}
 block|}
@@ -1899,6 +1899,12 @@ name|path
 argument_list|)
 expr_stmt|;
 block|}
+name|strbuf_release
+argument_list|(
+operator|&
+name|buf
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|gitmodules_modified
