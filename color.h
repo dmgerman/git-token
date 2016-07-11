@@ -30,10 +30,6 @@ name|COLOR_MAXLEN
 value|75
 end_define
 
-begin_comment
-comment|/*  * IMPORTANT: Due to the way these color codes are emulated on Windows,  * write them only using printf(), fprintf(), and fputs(). In particular,  * do not use puts() or write().  */
-end_comment
-
 begin_define
 DECL|macro|GIT_COLOR_NORMAL
 define|#
