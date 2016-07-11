@@ -565,8 +565,13 @@ name|size_t
 name|len
 decl_stmt|;
 name|body
-operator|+=
+operator|=
+name|skip_blank_lines
+argument_list|(
+name|body
+operator|+
 literal|2
+argument_list|)
 expr_stmt|;
 name|eol
 operator|=
