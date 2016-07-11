@@ -121,6 +121,22 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/*  * Return current width of the graph in on-screen characters.  */
+end_comment
+
+begin_function_decl
+name|int
+name|graph_width
+parameter_list|(
+name|struct
+name|git_graph
+modifier|*
+name|graph
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/*  * graph_show_*: helper functions for printing to stdout  */
 end_comment
 
