@@ -2132,11 +2132,6 @@ name|walker
 modifier|*
 name|walker
 parameter_list|,
-name|struct
-name|alt_base
-modifier|*
-name|repo
-parameter_list|,
 name|unsigned
 name|char
 modifier|*
@@ -2519,8 +2514,6 @@ operator|!
 name|fetch_object
 argument_list|(
 name|walker
-argument_list|,
-name|altbase
 argument_list|,
 name|sha1
 argument_list|)
