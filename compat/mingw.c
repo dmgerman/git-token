@@ -11835,7 +11835,9 @@ DECL|function|setup_windows_environment
 specifier|static
 name|void
 name|setup_windows_environment
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 name|char
 modifier|*
@@ -11992,7 +11994,9 @@ specifier|static
 name|NORETURN
 name|void
 name|die_startup
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 name|fputs
 argument_list|(
@@ -12096,7 +12100,9 @@ begin_function
 DECL|function|mingw_startup
 name|void
 name|mingw_startup
-parameter_list|()
+parameter_list|(
+name|void
+parameter_list|)
 block|{
 name|int
 name|i
