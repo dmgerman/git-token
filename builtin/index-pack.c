@@ -1839,8 +1839,7 @@ name|NORETURN
 name|void
 name|bad_object
 parameter_list|(
-name|unsigned
-name|long
+name|off_t
 name|offset
 parameter_list|,
 specifier|const
@@ -1873,8 +1872,7 @@ name|NORETURN
 name|void
 name|bad_object
 parameter_list|(
-name|unsigned
-name|long
+name|off_t
 name|offset
 parameter_list|,
 specifier|const
@@ -1924,9 +1922,14 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"pack has bad object at offset %lu: %s"
+literal|"pack has bad object at offset %"
+name|PRIuMAX
+literal|": %s"
 argument_list|)
 argument_list|,
+operator|(
+name|uintmax_t
+operator|)
 name|offset
 argument_list|,
 name|buf
