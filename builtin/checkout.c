@@ -1565,7 +1565,7 @@ name|error
 argument_list|(
 name|_
 argument_list|(
-literal|"corrupt index file"
+literal|"index file corrupt"
 argument_list|)
 argument_list|)
 return|;
@@ -2582,7 +2582,7 @@ name|error
 argument_list|(
 name|_
 argument_list|(
-literal|"corrupt index file"
+literal|"index file corrupt"
 argument_list|)
 argument_list|)
 return|;
@@ -5977,7 +5977,7 @@ name|force_detach
 argument_list|,
 name|N_
 argument_list|(
-literal|"detach the HEAD at named commit"
+literal|"detach HEAD at named commit"
 argument_list|)
 argument_list|)
 block|,

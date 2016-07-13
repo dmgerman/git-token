@@ -15973,7 +15973,7 @@ name|error
 argument_list|(
 name|_
 argument_list|(
-literal|"read of %s failed"
+literal|"failed to read %s"
 argument_list|)
 argument_list|,
 name|name
@@ -16055,7 +16055,7 @@ name|error
 argument_list|(
 name|_
 argument_list|(
-literal|"read of %s failed"
+literal|"failed to read %s"
 argument_list|)
 argument_list|,
 name|name
@@ -16244,7 +16244,7 @@ name|error
 argument_list|(
 name|_
 argument_list|(
-literal|"read of %s failed"
+literal|"failed to read %s"
 argument_list|)
 argument_list|,
 name|patch

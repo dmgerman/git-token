@@ -1384,7 +1384,7 @@ name|verify_signatures
 argument_list|,
 name|N_
 argument_list|(
-literal|"Verify that the named commit has a valid GPG signature"
+literal|"verify that the named commit has a valid GPG signature"
 argument_list|)
 argument_list|)
 block|,
@@ -6292,7 +6292,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Bad value '%s' in environment '%s'"
+argument_list|)
 argument_list|,
 name|e
 argument_list|,
@@ -6847,7 +6850,10 @@ literal|'\0'
 expr_stmt|;
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"not something we can merge in %s: %s"
+argument_list|)
 argument_list|,
 name|filename
 argument_list|,
@@ -7062,7 +7068,10 @@ index|]
 argument_list|,
 literal|"merge"
 argument_list|,
+name|_
+argument_list|(
 literal|"not something we can merge"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|remotes
@@ -8434,7 +8443,10 @@ block|{
 comment|/* 		 * If head can reach all the merge then we are up to date. 		 * but first the most common case of merging one remote. 		 */
 name|finish_up_to_date
 argument_list|(
+name|_
+argument_list|(
 literal|"Already up-to-date."
+argument_list|)
 argument_list|)
 expr_stmt|;
 goto|goto
@@ -8860,7 +8872,10 @@ condition|)
 block|{
 name|finish_up_to_date
 argument_list|(
+name|_
+argument_list|(
 literal|"Already up-to-date. Yeeah!"
+argument_list|)
 argument_list|)
 expr_stmt|;
 goto|goto
