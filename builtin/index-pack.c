@@ -3083,8 +3083,7 @@ index|]
 operator|.
 name|hdr_size
 decl_stmt|;
-name|unsigned
-name|long
+name|off_t
 name|len
 init|=
 name|obj
@@ -3139,6 +3138,9 @@ operator|*
 literal|1024
 operator|)
 condition|?
+operator|(
+name|int
+operator|)
 name|len
 else|:
 literal|64
@@ -3198,6 +3200,9 @@ operator|*
 literal|1024
 operator|)
 condition|?
+operator|(
+name|ssize_t
+operator|)
 name|len
 else|:
 literal|64
@@ -3243,13 +3248,24 @@ name|die
 argument_list|(
 name|Q_
 argument_list|(
-literal|"premature end of pack file, %lu byte missing"
+literal|"premature end of pack file, %"
+name|PRIuMAX
+literal|" byte missing"
 argument_list|,
-literal|"premature end of pack file, %lu bytes missing"
+literal|"premature end of pack file, %"
+name|PRIuMAX
+literal|" bytes missing"
 argument_list|,
+operator|(
+name|unsigned
+name|int
+operator|)
 name|len
 argument_list|)
 argument_list|,
+operator|(
+name|uintmax_t
+operator|)
 name|len
 argument_list|)
 expr_stmt|;
