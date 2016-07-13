@@ -2005,8 +2005,7 @@ end_comment
 begin_function
 DECL|function|write_reuse_object
 specifier|static
-name|unsigned
-name|long
+name|off_t
 name|write_reuse_object
 parameter_list|(
 name|struct
@@ -2544,8 +2543,7 @@ end_comment
 begin_function
 DECL|function|write_object
 specifier|static
-name|unsigned
-name|long
+name|off_t
 name|write_object
 parameter_list|(
 name|struct
@@ -2565,7 +2563,8 @@ block|{
 name|unsigned
 name|long
 name|limit
-decl_stmt|,
+decl_stmt|;
+name|off_t
 name|len
 decl_stmt|;
 name|int
@@ -2887,8 +2886,7 @@ modifier|*
 name|offset
 parameter_list|)
 block|{
-name|unsigned
-name|long
+name|off_t
 name|size
 decl_stmt|;
 name|int
