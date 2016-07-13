@@ -643,8 +643,7 @@ name|long
 name|size
 decl_stmt|;
 DECL|member|disk_size
-name|unsigned
-name|long
+name|off_t
 name|disk_size
 decl_stmt|;
 DECL|member|rest
@@ -912,8 +911,12 @@ name|strbuf_addf
 argument_list|(
 name|sb
 argument_list|,
-literal|"%lu"
+literal|"%"
+name|PRIuMAX
 argument_list|,
+operator|(
+name|uintmax_t
+operator|)
 name|data
 operator|->
 name|disk_size
