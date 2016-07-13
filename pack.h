@@ -212,6 +212,10 @@ name|progress
 struct_decl|;
 end_struct_decl
 
+begin_comment
+comment|/* Note, the data argument could be NULL if object type is blob */
+end_comment
+
 begin_typedef
 DECL|typedef|verify_fn
 typedef|typedef
