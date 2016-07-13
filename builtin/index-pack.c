@@ -2325,8 +2325,7 @@ name|void
 modifier|*
 name|unpack_entry_data
 parameter_list|(
-name|unsigned
-name|long
+name|off_t
 name|offset
 parameter_list|,
 name|unsigned
