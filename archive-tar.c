@@ -102,6 +102,35 @@ begin_comment
 comment|/*  * This is the max value that a ustar size header can specify, as it is fixed  * at 11 octal digits. POSIX specifies that we switch to extended headers at  * this size.  *  * Likewise for the mtime (which happens to use a buffer of the same size).  */
 end_comment
 
+begin_if
+if|#
+directive|if
+name|ULONG_MAX
+operator|==
+literal|0xFFFFFFFF
+end_if
+
+begin_define
+DECL|macro|USTAR_MAX_SIZE
+define|#
+directive|define
+name|USTAR_MAX_SIZE
+value|ULONG_MAX
+end_define
+
+begin_define
+DECL|macro|USTAR_MAX_MTIME
+define|#
+directive|define
+name|USTAR_MAX_MTIME
+value|ULONG_MAX
+end_define
+
+begin_else
+else|#
+directive|else
+end_else
+
 begin_define
 DECL|macro|USTAR_MAX_SIZE
 define|#
@@ -117,6 +146,11 @@ directive|define
 name|USTAR_MAX_MTIME
 value|077777777777UL
 end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
 
 begin_comment
 comment|/* writes out the whole block, but only if it is full */
