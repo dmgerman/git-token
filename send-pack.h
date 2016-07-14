@@ -12,6 +12,12 @@ directive|define
 name|SEND_PACK_H
 end_define
 
+begin_include
+include|#
+directive|include
+file|"string-list.h"
+end_include
+
 begin_comment
 comment|/* Possible values for push_cert field in send_pack_args. */
 end_comment
@@ -112,6 +118,13 @@ DECL|member|atomic
 name|atomic
 range|:
 literal|1
+decl_stmt|;
+DECL|member|push_options
+specifier|const
+name|struct
+name|string_list
+modifier|*
+name|push_options
 decl_stmt|;
 block|}
 struct|;
