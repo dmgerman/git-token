@@ -308,6 +308,27 @@ argument_list|,
 literal|"--quiet"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|opt
+operator|->
+name|progress
+condition|)
+name|argv_array_pushf
+argument_list|(
+operator|&
+name|rev_list
+operator|.
+name|args
+argument_list|,
+literal|"--progress=%s"
+argument_list|,
+name|_
+argument_list|(
+literal|"Checking connectivity"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|rev_list
 operator|.
 name|git_cmd

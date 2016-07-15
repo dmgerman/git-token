@@ -76,6 +76,11 @@ DECL|member|err_fd
 name|int
 name|err_fd
 decl_stmt|;
+comment|/* If non-zero, show progress as we traverse the objects. */
+DECL|member|progress
+name|int
+name|progress
+decl_stmt|;
 block|}
 struct|;
 end_struct
