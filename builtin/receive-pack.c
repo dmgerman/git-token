@@ -7048,6 +7048,15 @@ name|err_fd
 operator|=
 name|err_fd
 expr_stmt|;
+name|opt
+operator|.
+name|progress
+operator|=
+name|err_fd
+operator|&&
+operator|!
+name|quiet
+expr_stmt|;
 if|if
 condition|(
 name|check_connected
