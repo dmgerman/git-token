@@ -290,10 +290,6 @@ index|]
 operator|=
 literal|"--all"
 expr_stmt|;
-if|if
-condition|(
-name|quiet
-condition|)
 name|argv
 index|[
 name|ac
