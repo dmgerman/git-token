@@ -71,6 +71,11 @@ name|transport
 modifier|*
 name|transport
 decl_stmt|;
+comment|/* 	 * If non-zero, send error messages to this descriptor rather 	 * than stderr. The descriptor is closed before check_connected 	 * returns. 	 */
+DECL|member|err_fd
+name|int
+name|err_fd
+decl_stmt|;
 block|}
 struct|;
 end_struct
