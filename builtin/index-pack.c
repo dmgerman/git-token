@@ -418,6 +418,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|show_resolving_progress
+specifier|static
+name|int
+name|show_resolving_progress
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|show_stat
 specifier|static
 name|int
@@ -6578,6 +6586,8 @@ expr_stmt|;
 if|if
 condition|(
 name|verbose
+operator|||
+name|show_resolving_progress
 condition|)
 name|progress
 operator|=
@@ -9634,6 +9644,23 @@ argument_list|)
 condition|)
 block|{
 name|verbose
+operator|=
+literal|1
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|arg
+argument_list|,
+literal|"--show-resolving-progress"
+argument_list|)
+condition|)
+block|{
+name|show_resolving_progress
 operator|=
 literal|1
 expr_stmt|;
