@@ -1660,6 +1660,11 @@ name|expected_missing
 init|=
 literal|0
 decl_stmt|;
+name|int
+name|contains_ita
+init|=
+literal|0
+decl_stmt|;
 name|path
 operator|=
 name|ce
@@ -1767,8 +1772,8 @@ name|mode
 operator|=
 name|S_IFDIR
 expr_stmt|;
-if|if
-condition|(
+name|contains_ita
+operator|=
 name|sub
 operator|->
 name|cache_tree
@@ -1776,6 +1781,10 @@ operator|->
 name|entry_count
 operator|<
 literal|0
+expr_stmt|;
+if|if
+condition|(
+name|contains_ita
 condition|)
 block|{
 name|to_invalidate
@@ -1900,6 +1909,20 @@ literal|1
 expr_stmt|;
 continue|continue;
 block|}
+comment|/* 		 * "sub" can be an empty tree if all subentries are i-t-a. 		 */
+if|if
+condition|(
+name|contains_ita
+operator|&&
+operator|!
+name|hashcmp
+argument_list|(
+name|sha1
+argument_list|,
+name|EMPTY_TREE_SHA1_BIN
+argument_list|)
+condition|)
+continue|continue;
 name|strbuf_grow
 argument_list|(
 operator|&
