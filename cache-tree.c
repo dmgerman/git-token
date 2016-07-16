@@ -1630,6 +1630,8 @@ name|struct
 name|cache_tree_sub
 modifier|*
 name|sub
+init|=
+name|NULL
 decl_stmt|;
 specifier|const
 name|char
@@ -1883,6 +1885,9 @@ block|}
 comment|/* 		 * CE_INTENT_TO_ADD entries exist on on-disk index but 		 * they are not part of generated trees. Invalidate up 		 * to root to force cache-tree users to read elsewhere. 		 */
 if|if
 condition|(
+operator|!
+name|sub
+operator|&&
 name|ce_intent_to_add
 argument_list|(
 name|ce
