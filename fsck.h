@@ -210,6 +210,12 @@ name|sha1_array
 modifier|*
 name|skiplist
 decl_stmt|;
+DECL|member|object_names
+name|struct
+name|decoration
+modifier|*
+name|object_names
+decl_stmt|;
 block|}
 struct|;
 end_struct
