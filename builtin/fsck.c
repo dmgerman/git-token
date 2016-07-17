@@ -555,6 +555,11 @@ name|int
 name|fsck_error_func
 parameter_list|(
 name|struct
+name|fsck_options
+modifier|*
+name|o
+parameter_list|,
+name|struct
 name|object
 modifier|*
 name|obj

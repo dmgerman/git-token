@@ -1354,6 +1354,8 @@ name|options
 operator|->
 name|error_func
 argument_list|(
+name|options
+argument_list|,
 name|object
 argument_list|,
 name|msg_type
@@ -5024,6 +5026,11 @@ DECL|function|fsck_error_function
 name|int
 name|fsck_error_function
 parameter_list|(
+name|struct
+name|fsck_options
+modifier|*
+name|o
+parameter_list|,
 name|struct
 name|object
 modifier|*
