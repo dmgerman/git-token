@@ -45,6 +45,17 @@ struct|;
 end_struct
 
 begin_comment
+comment|/* avoid conflicts with BSD-only sys/queue.h */
+end_comment
+
+begin_undef
+DECL|macro|LIST_HEAD
+undef|#
+directive|undef
+name|LIST_HEAD
+end_undef
+
+begin_comment
 comment|/* Define a variable with the head and tail of the list. */
 end_comment
 
