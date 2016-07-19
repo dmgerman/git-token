@@ -1998,12 +1998,6 @@ name|lookup_type
 name|lookup_type
 parameter_list|)
 block|{
-name|struct
-name|strbuf
-name|rev
-init|=
-name|STRBUF_INIT
-decl_stmt|;
 name|unsigned
 name|long
 name|config_size
@@ -2205,9 +2199,7 @@ name|parse_config
 argument_list|,
 literal|"submodule-blob"
 argument_list|,
-name|rev
-operator|.
-name|buf
+literal|""
 argument_list|,
 name|config
 argument_list|,
