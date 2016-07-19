@@ -74,6 +74,11 @@ name|struct
 name|string_list
 name|mailmap
 decl_stmt|;
+DECL|member|file
+name|FILE
+modifier|*
+name|file
+decl_stmt|;
 block|}
 struct|;
 end_struct
