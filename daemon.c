@@ -14,12 +14,6 @@ end_include
 begin_include
 include|#
 directive|include
-file|"exec_cmd.h"
-end_include
-
-begin_include
-include|#
-directive|include
 file|"run-command.h"
 end_include
 
@@ -144,6 +138,7 @@ end_comment
 begin_decl_stmt
 DECL|variable|ok_paths
 specifier|static
+specifier|const
 name|char
 modifier|*
 modifier|*
@@ -1146,6 +1141,7 @@ operator|*
 name|ok_paths
 condition|)
 block|{
+specifier|const
 name|char
 modifier|*
 modifier|*
@@ -6146,13 +6142,14 @@ block|}
 end_function
 
 begin_function
-DECL|function|main
+DECL|function|cmd_main
 name|int
-name|main
+name|cmd_main
 parameter_list|(
 name|int
 name|argc
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
@@ -6211,17 +6208,6 @@ decl_stmt|;
 name|int
 name|i
 decl_stmt|;
-name|git_setup_gettext
-argument_list|()
-expr_stmt|;
-name|git_extract_argv0_path
-argument_list|(
-name|argv
-index|[
-literal|0
-index|]
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|i
@@ -6236,6 +6222,7 @@ name|i
 operator|++
 control|)
 block|{
+specifier|const
 name|char
 modifier|*
 name|arg
@@ -7077,10 +7064,6 @@ literal|"--detach not supported on this platform"
 argument_list|)
 expr_stmt|;
 block|}
-else|else
-name|sanitize_stdfds
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|pid_file

@@ -4350,9 +4350,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|main
+DECL|function|cmd_main
 name|int
-name|main
+name|cmd_main
 parameter_list|(
 name|int
 name|argc
@@ -4444,20 +4444,9 @@ name|OPT_END
 argument_list|()
 block|}
 decl_stmt|;
-name|git_setup_gettext
-argument_list|()
-expr_stmt|;
 name|packet_trace_identity
 argument_list|(
 literal|"upload-pack"
-argument_list|)
-expr_stmt|;
-name|git_extract_argv0_path
-argument_list|(
-name|argv
-index|[
-literal|0
-index|]
 argument_list|)
 expr_stmt|;
 name|check_replace_refs

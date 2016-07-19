@@ -8328,13 +8328,14 @@ directive|endif
 end_endif
 
 begin_function
-DECL|function|main
+DECL|function|cmd_main
 name|int
-name|main
+name|cmd_main
 parameter_list|(
 name|int
 name|argc
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
@@ -8353,17 +8354,6 @@ decl_stmt|;
 name|int
 name|nongit_ok
 decl_stmt|;
-name|git_extract_argv0_path
-argument_list|(
-name|argv
-index|[
-literal|0
-index|]
-argument_list|)
-expr_stmt|;
-name|git_setup_gettext
-argument_list|()
-expr_stmt|;
 name|setup_git_directory_gently
 argument_list|(
 operator|&

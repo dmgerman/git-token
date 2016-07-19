@@ -27,6 +27,7 @@ specifier|static
 name|void
 name|show_relative_dates
 parameter_list|(
+specifier|const
 name|char
 modifier|*
 modifier|*
@@ -103,6 +104,7 @@ specifier|static
 name|void
 name|show_dates
 parameter_list|(
+specifier|const
 name|char
 modifier|*
 modifier|*
@@ -139,9 +141,6 @@ block|{
 name|char
 modifier|*
 name|arg
-init|=
-operator|*
-name|argv
 decl_stmt|;
 name|time_t
 name|t
@@ -154,7 +153,8 @@ name|t
 operator|=
 name|strtol
 argument_list|(
-name|arg
+operator|*
+name|argv
 argument_list|,
 operator|&
 name|arg
@@ -207,6 +207,7 @@ specifier|static
 name|void
 name|parse_dates
 parameter_list|(
+specifier|const
 name|char
 modifier|*
 modifier|*
@@ -320,6 +321,7 @@ specifier|static
 name|void
 name|parse_approxidate
 parameter_list|(
+specifier|const
 name|char
 modifier|*
 modifier|*
@@ -379,13 +381,14 @@ block|}
 end_function
 
 begin_function
-DECL|function|main
+DECL|function|cmd_main
 name|int
-name|main
+name|cmd_main
 parameter_list|(
 name|int
 name|argc
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
