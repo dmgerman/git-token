@@ -564,9 +564,6 @@ name|mmfile_t
 modifier|*
 name|file_b
 parameter_list|,
-name|long
-name|ctxlen
-parameter_list|,
 name|xdl_emit_hunk_consume_func_t
 name|hunk_func
 parameter_list|,
@@ -601,12 +598,6 @@ operator|.
 name|flags
 operator|=
 name|xdl_opts
-expr_stmt|;
-name|xecfg
-operator|.
-name|ctxlen
-operator|=
-name|ctxlen
 expr_stmt|;
 name|xecfg
 operator|.
@@ -4565,8 +4556,6 @@ argument_list|,
 operator|&
 name|file_o
 argument_list|,
-literal|0
-argument_list|,
 name|blame_chunk_cb
 argument_list|,
 operator|&
@@ -5268,8 +5257,6 @@ name|file_p
 argument_list|,
 operator|&
 name|file_o
-argument_list|,
-literal|1
 argument_list|,
 name|handle_split_cb
 argument_list|,
