@@ -1987,7 +1987,7 @@ comment|/* we are done */
 else|else
 block|{
 comment|/* cannot resolve yet --- queue it */
-name|hashcpy
+name|hashclr
 argument_list|(
 name|obj_list
 index|[
@@ -1995,8 +1995,6 @@ name|nr
 index|]
 operator|.
 name|sha1
-argument_list|,
-name|null_sha1
 argument_list|)
 expr_stmt|;
 name|add_delta_to_list
@@ -2269,7 +2267,7 @@ name|base_found
 condition|)
 block|{
 comment|/* 			 * The delta base object is itself a delta that 			 * has not been resolved yet. 			 */
-name|hashcpy
+name|hashclr
 argument_list|(
 name|obj_list
 index|[
@@ -2277,8 +2275,6 @@ name|nr
 index|]
 operator|.
 name|sha1
-argument_list|,
-name|null_sha1
 argument_list|)
 expr_stmt|;
 name|add_delta_to_list

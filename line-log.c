@@ -2925,11 +2925,12 @@ name|die
 argument_list|(
 literal|"Cannot read blob %s"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|spec
 operator|->
-name|sha1
+name|oid
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -5146,7 +5147,7 @@ name|pair
 operator|->
 name|one
 operator|->
-name|sha1_valid
+name|oid_valid
 condition|)
 name|fill_line_ends
 argument_list|(
@@ -5217,7 +5218,7 @@ name|pair
 operator|->
 name|one
 operator|->
-name|sha1_valid
+name|oid_valid
 condition|?
 literal|"a/"
 else|:
@@ -5227,7 +5228,7 @@ name|pair
 operator|->
 name|one
 operator|->
-name|sha1_valid
+name|oid_valid
 condition|?
 name|pair
 operator|->
@@ -5991,7 +5992,7 @@ name|pair
 operator|->
 name|two
 operator|->
-name|sha1_valid
+name|oid_valid
 argument_list|)
 expr_stmt|;
 name|diff_populate_filespec
@@ -6029,7 +6030,7 @@ name|pair
 operator|->
 name|one
 operator|->
-name|sha1_valid
+name|oid_valid
 condition|)
 block|{
 name|diff_populate_filespec

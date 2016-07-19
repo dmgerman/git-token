@@ -95,13 +95,10 @@ DECL|struct|diff_filespec
 struct|struct
 name|diff_filespec
 block|{
-DECL|member|sha1
-name|unsigned
-name|char
-name|sha1
-index|[
-literal|20
-index|]
+DECL|member|oid
+name|struct
+name|object_id
+name|oid
 decl_stmt|;
 DECL|member|path
 name|char
@@ -139,13 +136,13 @@ name|short
 name|mode
 decl_stmt|;
 comment|/* file mode */
-DECL|member|sha1_valid
+DECL|member|oid_valid
 name|unsigned
-name|sha1_valid
+name|oid_valid
 range|:
 literal|1
 decl_stmt|;
-comment|/* if true, use sha1 and trust mode; 				  * if false, use the name and read from 				  * the filesystem. 				  */
+comment|/* if true, use oid and trust mode; 				  * if false, use the name and read from 				  * the filesystem. 				  */
 DECL|macro|DIFF_FILE_VALID
 define|#
 directive|define

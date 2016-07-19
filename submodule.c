@@ -2612,7 +2612,9 @@ name|p
 operator|->
 name|two
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|)
 condition|)
 name|string_list_insert
@@ -3379,7 +3381,9 @@ name|p
 operator|->
 name|two
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|)
 condition|)
 name|string_list_append

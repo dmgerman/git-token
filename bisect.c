@@ -3812,11 +3812,9 @@ name|char
 modifier|*
 name|bad_hex
 init|=
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
 name|current_bad_oid
-operator|->
-name|hash
 argument_list|)
 decl_stmt|;
 name|char

@@ -276,11 +276,9 @@ index|]
 operator|==
 literal|'\0'
 condition|)
-name|hashcpy
+name|hashclr
 argument_list|(
 name|commit_sha1
-argument_list|,
-name|null_sha1
 argument_list|)
 expr_stmt|;
 elseif|else
