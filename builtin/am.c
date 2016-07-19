@@ -744,7 +744,7 @@ end_comment
 begin_function
 DECL|function|write_state_text
 specifier|static
-name|int
+name|void
 name|write_state_text
 parameter_list|(
 specifier|const
@@ -764,7 +764,6 @@ modifier|*
 name|string
 parameter_list|)
 block|{
-return|return
 name|write_file
 argument_list|(
 name|am_path
@@ -778,14 +777,14 @@ literal|"%s"
 argument_list|,
 name|string
 argument_list|)
-return|;
+expr_stmt|;
 block|}
 end_function
 
 begin_function
 DECL|function|write_state_count
 specifier|static
-name|int
+name|void
 name|write_state_count
 parameter_list|(
 specifier|const
@@ -803,7 +802,6 @@ name|int
 name|value
 parameter_list|)
 block|{
-return|return
 name|write_file
 argument_list|(
 name|am_path
@@ -817,14 +815,14 @@ literal|"%d"
 argument_list|,
 name|value
 argument_list|)
-return|;
+expr_stmt|;
 block|}
 end_function
 
 begin_function
 DECL|function|write_state_bool
 specifier|static
-name|int
+name|void
 name|write_state_bool
 parameter_list|(
 specifier|const
@@ -842,7 +840,6 @@ name|int
 name|value
 parameter_list|)
 block|{
-return|return
 name|write_state_text
 argument_list|(
 name|state
@@ -855,7 +852,7 @@ literal|"t"
 else|:
 literal|"f"
 argument_list|)
-return|;
+expr_stmt|;
 block|}
 end_function
 
@@ -1690,9 +1687,6 @@ modifier|*
 name|state
 parameter_list|)
 block|{
-name|int
-name|fd
-decl_stmt|;
 specifier|const
 name|char
 modifier|*
@@ -1705,24 +1699,9 @@ argument_list|,
 literal|"final-commit"
 argument_list|)
 decl_stmt|;
-name|fd
-operator|=
-name|xopen
+name|write_file_buf
 argument_list|(
 name|filename
-argument_list|,
-name|O_WRONLY
-operator||
-name|O_CREAT
-argument_list|,
-literal|0666
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|write_in_full
-argument_list|(
-name|fd
 argument_list|,
 name|state
 operator|->
@@ -1731,23 +1710,6 @@ argument_list|,
 name|state
 operator|->
 name|msg_len
-argument_list|)
-operator|<
-literal|0
-condition|)
-name|die_errno
-argument_list|(
-name|_
-argument_list|(
-literal|"could not write to %s"
-argument_list|)
-argument_list|,
-name|filename
-argument_list|)
-expr_stmt|;
-name|close
-argument_list|(
-name|fd
 argument_list|)
 expr_stmt|;
 block|}

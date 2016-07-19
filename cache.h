@@ -11232,10 +11232,14 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/**  * Open (and truncate) the file at path, write the contents of buf to it,  * and close it. Dies if any errors are encountered.  */
+end_comment
+
 begin_function_decl
 specifier|extern
-name|int
-name|write_file
+name|void
+name|write_file_buf
 parameter_list|(
 specifier|const
 name|char
@@ -11245,17 +11249,33 @@ parameter_list|,
 specifier|const
 name|char
 modifier|*
-name|fmt
+name|buf
 parameter_list|,
-modifier|...
+name|size_t
+name|len
 parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/**  * Like write_file_buf(), but format the contents into a buffer first.  * Additionally, write_file() will append a newline if one is not already  * present, making it convenient to write text files:  *  *   write_file(path, "counter: %d", ctr);  */
+end_comment
+
+begin_macro
+name|__attribute__
+argument_list|(
+argument|(format (printf,
+literal|2
+argument|,
+literal|3
+argument|))
+argument_list|)
+end_macro
+
 begin_function_decl
 specifier|extern
-name|int
-name|write_file_gently
+name|void
+name|write_file
 parameter_list|(
 specifier|const
 name|char
