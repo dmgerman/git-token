@@ -1508,6 +1508,8 @@ name|sb
 operator|.
 name|buf
 argument_list|,
+literal|"%s"
+argument_list|,
 name|sha1_to_hex
 argument_list|(
 name|null_sha1
