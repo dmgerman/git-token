@@ -7544,7 +7544,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**  * Do the three-way merge using fake ancestor, his tree constructed  * from the fake ancestor and the postimage of the patch, and our  * state.  */
+comment|/**  * Do the three-way merge using fake ancestor, their tree constructed  * from the fake ancestor and the postimage of the patch, and our  * state.  */
 end_comment
 
 begin_function
@@ -7572,7 +7572,7 @@ parameter_list|,
 name|unsigned
 name|char
 modifier|*
-name|his_tree
+name|their_tree
 parameter_list|)
 block|{
 name|struct
@@ -7601,7 +7601,7 @@ literal|"GITHEAD_%s=%.*s"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
-name|his_tree
+name|their_tree
 argument_list|)
 argument_list|,
 name|linelen
@@ -7687,7 +7687,7 @@ name|args
 argument_list|,
 name|sha1_to_hex
 argument_list|(
-name|his_tree
+name|their_tree
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -7747,7 +7747,7 @@ index|[
 name|GIT_SHA1_RAWSZ
 index|]
 decl_stmt|,
-name|his_tree
+name|their_tree
 index|[
 name|GIT_SHA1_RAWSZ
 index|]
@@ -7940,7 +7940,7 @@ if|if
 condition|(
 name|write_index_as_tree
 argument_list|(
-name|his_tree
+name|their_tree
 argument_list|,
 operator|&
 name|the_index
@@ -7976,7 +7976,7 @@ expr_stmt|;
 name|read_cache
 argument_list|()
 expr_stmt|;
-comment|/* 	 * This is not so wrong. Depending on which base we picked, orig_tree 	 * may be wildly different from ours, but his_tree has the same set of 	 * wildly different changes in parts the patch did not touch, so 	 * recursive ends up canceling them, saying that we reverted all those 	 * changes. 	 */
+comment|/* 	 * This is not so wrong. Depending on which base we picked, orig_tree 	 * may be wildly different from ours, but their_tree has the same set of 	 * wildly different changes in parts the patch did not touch, so 	 * recursive ends up canceling them, saying that we reverted all those 	 * changes. 	 */
 if|if
 condition|(
 name|run_fallback_merge_recursive
@@ -7987,7 +7987,7 @@ name|orig_tree
 argument_list|,
 name|our_tree
 argument_list|,
-name|his_tree
+name|their_tree
 argument_list|)
 condition|)
 block|{
