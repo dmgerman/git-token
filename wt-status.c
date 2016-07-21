@@ -5519,6 +5519,7 @@ name|s
 operator|->
 name|hints
 condition|)
+block|{
 name|status_printf_ln
 argument_list|(
 name|s
@@ -5531,6 +5532,19 @@ literal|"  (fix conflicts and run \"git commit\")"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|status_printf_ln
+argument_list|(
+name|s
+argument_list|,
+name|color
+argument_list|,
+name|_
+argument_list|(
+literal|"  (use \"git merge --abort\" to abort the merge)"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 else|else
 block|{
