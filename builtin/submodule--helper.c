@@ -4156,11 +4156,7 @@ block|}
 else|else
 block|{
 name|idx
-operator|=
-name|suc
-operator|->
-name|current
-operator|-
+operator|-=
 name|suc
 operator|->
 name|list
