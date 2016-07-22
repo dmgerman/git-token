@@ -665,21 +665,6 @@ end_function_decl
 
 begin_function_decl
 name|void
-name|grep_set_pattern_type_option
-parameter_list|(
-name|enum
-name|grep_pattern_type
-parameter_list|,
-name|struct
-name|grep_opt
-modifier|*
-name|opt
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-name|void
 name|grep_commit_pattern_type
 parameter_list|(
 name|enum
