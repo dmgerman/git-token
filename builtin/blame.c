@@ -13681,6 +13681,17 @@ argument_list|)
 expr_stmt|;
 break|break;
 case|case
+name|DATE_UNIX
+case|:
+name|blame_date_width
+operator|=
+sizeof|sizeof
+argument_list|(
+literal|"1161298804"
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
 name|DATE_SHORT
 case|:
 name|blame_date_width
