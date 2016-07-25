@@ -5791,7 +5791,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Create the directory containing the named path, using care to be  * somewhat safe against races.  Return one of the scld_error values  * to indicate success/failure.  *  * SCLD_VANISHED indicates that one of the ancestor directories of the  * path existed at one point during the function call and then  * suddenly vanished, probably because another process pruned the  * directory while we were working.  To be robust against this kind of  * race, callers might want to try invoking the function again when it  * returns SCLD_VANISHED.  */
+comment|/*  * Create the directory containing the named path, using care to be  * somewhat safe against races.  Return one of the scld_error values  * to indicate success/failure.  *  * SCLD_VANISHED indicates that one of the ancestor directories of the  * path existed at one point during the function call and then  * suddenly vanished, probably because another process pruned the  * directory while we were working.  To be robust against this kind of  * race, callers might want to try invoking the function again when it  * returns SCLD_VANISHED.  *  * safe_create_leading_directories() temporarily changes path while it  * is working but restores it before returning.  * safe_create_leading_directories_const() doesn't modify path, even  * temporarily.  */
 end_comment
 
 begin_enum

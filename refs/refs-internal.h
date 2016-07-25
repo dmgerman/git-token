@@ -29,7 +29,7 @@ value|0x02
 end_define
 
 begin_comment
-comment|/*  * Used as a flag in ref_update::flags when a loose ref is being  * pruned.  */
+comment|/*  * Used as a flag in ref_update::flags when a loose ref is being  * pruned. This flag must only be used when REF_NODEREF is set.  */
 end_comment
 
 begin_define
@@ -79,6 +79,30 @@ end_define
 begin_comment
 comment|/*  * 0x40 is REF_FORCE_CREATE_REFLOG, so skip it if you're adding a  * value to ref_update::flags  */
 end_comment
+
+begin_comment
+comment|/*  * Used as a flag in ref_update::flags when we want to log a ref  * update but not actually perform it.  This is used when a symbolic  * ref update is split up.  */
+end_comment
+
+begin_define
+DECL|macro|REF_LOG_ONLY
+define|#
+directive|define
+name|REF_LOG_ONLY
+value|0x80
+end_define
+
+begin_comment
+comment|/*  * Internal flag, meaning that the containing ref_update was via an  * update to HEAD.  */
+end_comment
+
+begin_define
+DECL|macro|REF_UPDATE_VIA_HEAD
+define|#
+directive|define
+name|REF_UPDATE_VIA_HEAD
+value|0x100
+end_define
 
 begin_comment
 comment|/*  * Return true iff refname is minimally safe. "Safe" here means that  * deleting a loose reference by this name will not do any damage, for  * example by causing a file that is not a reference to be deleted.  * This function does not check that the reference name is legal; for  * that, use check_refname_format().  *  * We consider a refname that starts with "refs/" to be safe as long  * as any ".." components that it might contain do not escape "refs/".  * Names that do not start with "refs/" are considered safe iff they  * consist entirely of upper case characters and '_' (like "HEAD" and  * "MERGE_HEAD" but not "config" or "FOO/BAR").  */
@@ -174,11 +198,13 @@ name|char
 modifier|*
 name|newname
 parameter_list|,
+specifier|const
 name|struct
 name|string_list
 modifier|*
 name|extras
 parameter_list|,
+specifier|const
 name|struct
 name|string_list
 modifier|*
@@ -251,7 +277,7 @@ index|[
 literal|20
 index|]
 decl_stmt|;
-comment|/* 	 * One or more of REF_HAVE_NEW, REF_HAVE_OLD, REF_NODEREF, 	 * REF_DELETING, and REF_ISPRUNING: 	 */
+comment|/* 	 * One or more of REF_HAVE_NEW, REF_HAVE_OLD, REF_NODEREF, 	 * REF_DELETING, REF_ISPRUNING, REF_LOG_ONLY, and 	 * REF_UPDATE_VIA_HEAD: 	 */
 DECL|member|flags
 name|unsigned
 name|int
@@ -264,6 +290,7 @@ modifier|*
 name|lock
 decl_stmt|;
 DECL|member|type
+name|unsigned
 name|int
 name|type
 decl_stmt|;
@@ -271,6 +298,13 @@ DECL|member|msg
 name|char
 modifier|*
 name|msg
+decl_stmt|;
+comment|/* 	 * If this ref_update was split off of a symref update via 	 * split_symref_update(), then this member points at that 	 * update. This is used for two purposes: 	 * 1. When reporting errors, we report the refname under which 	 *    the update was originally requested. 	 * 2. When we read the old value of this reference, we 	 *    propagate it back to its parent update for recording in 	 *    the latter's reflog. 	 */
+DECL|member|parent_update
+name|struct
+name|ref_update
+modifier|*
+name|parent_update
 decl_stmt|;
 DECL|member|refname
 specifier|const
@@ -283,6 +317,50 @@ decl_stmt|;
 block|}
 struct|;
 end_struct
+
+begin_comment
+comment|/*  * Add a ref_update with the specified properties to transaction, and  * return a pointer to the new object. This function does not verify  * that refname is well-formed. new_sha1 and old_sha1 are only  * dereferenced if the REF_HAVE_NEW and REF_HAVE_OLD bits,  * respectively, are set in flags.  */
+end_comment
+
+begin_function_decl
+name|struct
+name|ref_update
+modifier|*
+name|ref_transaction_add_update
+parameter_list|(
+name|struct
+name|ref_transaction
+modifier|*
+name|transaction
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|refname
+parameter_list|,
+name|unsigned
+name|int
+name|flags
+parameter_list|,
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|new_sha1
+parameter_list|,
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|old_sha1
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|msg
+parameter_list|)
+function_decl|;
+end_function_decl
 
 begin_comment
 comment|/*  * Transaction states.  * OPEN:   The transaction is in a valid state and can accept new updates.  *         An OPEN transaction can be committed.  * CLOSED: A closed transaction is no longer active and no other operations  *         than free can be used on it in this state.  *         A transaction can either become closed by successfully committing  *         an active transaction or if there is a failure while building  *         the transaction thus rendering it failed/inactive.  */
@@ -481,6 +559,10 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Read the specified reference from the filesystem or packed refs  * file, non-recursively. Set type to describe the reference, and:  *  * - If refname is the name of a normal reference, fill in sha1  *   (leaving referent unchanged).  *  * - If refname is the name of a symbolic reference, write the full  *   name of the reference to which it refers (e.g.  *   "refs/heads/master") to referent and set the REF_ISSYMREF bit in  *   type (leaving sha1 unchanged). The caller is responsible for  *   validating that referent is a valid reference name.  *  * WARNING: refname might be used as part of a filename, so it is  * important from a security standpoint that it be safe in the sense  * of refname_is_safe(). Moreover, for symrefs this function sets  * referent to whatever the repository says, which might not be a  * properly-formatted or even safe reference name. NEITHER INPUT NOR  * OUTPUT REFERENCE NAMES ARE VALIDATED WITHIN THIS FUNCTION.  *  * Return 0 on success. If the ref doesn't exist, set errno to ENOENT  * and return -1. If the ref exists but is neither a symbolic ref nor  * a sha1, it is broken; set REF_ISBROKEN in type, set errno to  * EINVAL, and return -1. If there is another error reading the ref,  * set errno appropriately and return -1.  *  * Backend-specific flags might be set in type as well, regardless of  * outcome.  *  * It is OK for refname to point into referent. If so:  *  * - if the function succeeds with REF_ISSYMREF, referent will be  *   overwritten and the memory formerly pointed to by it might be  *   changed or even freed.  *  * - in all other cases, referent will be untouched, and therefore  *   refname will still be valid and unchanged.  */
+end_comment
+
 begin_function_decl
 name|int
 name|read_raw_ref
@@ -498,12 +580,12 @@ parameter_list|,
 name|struct
 name|strbuf
 modifier|*
-name|symref
+name|referent
 parameter_list|,
 name|unsigned
 name|int
 modifier|*
-name|flags
+name|type
 parameter_list|)
 function_decl|;
 end_function_decl
