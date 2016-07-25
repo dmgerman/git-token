@@ -2663,13 +2663,11 @@ argument_list|,
 literal|'/'
 argument_list|)
 expr_stmt|;
-name|strbuf_addstr
+name|strbuf_addbuf
 argument_list|(
 operator|&
 name|git_submodule_dir
 argument_list|,
-name|buf
-operator|->
 name|buf
 argument_list|)
 expr_stmt|;

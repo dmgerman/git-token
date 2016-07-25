@@ -683,10 +683,8 @@ begin_comment
 comment|/**  * Copy the contents of another buffer at the end of the current one.  */
 end_comment
 
-begin_function
-DECL|function|strbuf_addbuf
-specifier|static
-specifier|inline
+begin_function_decl
+specifier|extern
 name|void
 name|strbuf_addbuf
 parameter_list|(
@@ -701,31 +699,8 @@ name|strbuf
 modifier|*
 name|sb2
 parameter_list|)
-block|{
-name|strbuf_grow
-argument_list|(
-name|sb
-argument_list|,
-name|sb2
-operator|->
-name|len
-argument_list|)
-expr_stmt|;
-name|strbuf_add
-argument_list|(
-name|sb
-argument_list|,
-name|sb2
-operator|->
-name|buf
-argument_list|,
-name|sb2
-operator|->
-name|len
-argument_list|)
-expr_stmt|;
-block|}
-end_function
+function_decl|;
+end_function_decl
 
 begin_comment
 comment|/**  * Copy part of the buffer from a given position till a given length to the  * end of the buffer.  */
