@@ -94,25 +94,6 @@ directive|include
 file|"utf8.h"
 end_include
 
-begin_function_decl
-specifier|static
-name|struct
-name|cache_entry
-modifier|*
-name|refresh_cache_entry
-parameter_list|(
-name|struct
-name|cache_entry
-modifier|*
-name|ce
-parameter_list|,
-name|unsigned
-name|int
-name|options
-parameter_list|)
-function_decl|;
-end_function_decl
-
 begin_comment
 comment|/* Mask for the name length in ce_flags in the on-disk index */
 end_comment
@@ -6103,7 +6084,6 @@ end_function
 
 begin_function
 DECL|function|refresh_cache_entry
-specifier|static
 name|struct
 name|cache_entry
 modifier|*
