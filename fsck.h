@@ -145,6 +145,11 @@ name|fsck_error
 function_decl|)
 parameter_list|(
 name|struct
+name|fsck_options
+modifier|*
+name|o
+parameter_list|,
+name|struct
 name|object
 modifier|*
 name|obj
@@ -164,6 +169,11 @@ begin_function_decl
 name|int
 name|fsck_error_function
 parameter_list|(
+name|struct
+name|fsck_options
+modifier|*
+name|o
+parameter_list|,
 name|struct
 name|object
 modifier|*
@@ -209,6 +219,12 @@ name|struct
 name|sha1_array
 modifier|*
 name|skiplist
+decl_stmt|;
+DECL|member|object_names
+name|struct
+name|decoration
+modifier|*
+name|object_names
 decl_stmt|;
 block|}
 struct|;
