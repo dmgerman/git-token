@@ -1630,6 +1630,8 @@ name|struct
 name|cache_tree_sub
 modifier|*
 name|sub
+init|=
+name|NULL
 decl_stmt|;
 specifier|const
 name|char
@@ -1655,6 +1657,11 @@ name|mode
 decl_stmt|;
 name|int
 name|expected_missing
+init|=
+literal|0
+decl_stmt|;
+name|int
+name|contains_ita
 init|=
 literal|0
 decl_stmt|;
@@ -1765,8 +1772,8 @@ name|mode
 operator|=
 name|S_IFDIR
 expr_stmt|;
-if|if
-condition|(
+name|contains_ita
+operator|=
 name|sub
 operator|->
 name|cache_tree
@@ -1774,6 +1781,10 @@ operator|->
 name|entry_count
 operator|<
 literal|0
+expr_stmt|;
+if|if
+condition|(
+name|contains_ita
 condition|)
 block|{
 name|to_invalidate
@@ -1883,6 +1894,9 @@ block|}
 comment|/* 		 * CE_INTENT_TO_ADD entries exist on on-disk index but 		 * they are not part of generated trees. Invalidate up 		 * to root to force cache-tree users to read elsewhere. 		 */
 if|if
 condition|(
+operator|!
+name|sub
+operator|&&
 name|ce_intent_to_add
 argument_list|(
 name|ce
@@ -1895,6 +1909,20 @@ literal|1
 expr_stmt|;
 continue|continue;
 block|}
+comment|/* 		 * "sub" can be an empty tree if all subentries are i-t-a. 		 */
+if|if
+condition|(
+name|contains_ita
+operator|&&
+operator|!
+name|hashcmp
+argument_list|(
+name|sha1
+argument_list|,
+name|EMPTY_TREE_SHA1_BIN
+argument_list|)
+condition|)
+continue|continue;
 name|strbuf_grow
 argument_list|(
 operator|&
