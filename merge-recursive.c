@@ -11245,7 +11245,7 @@ operator|->
 name|call_depth
 operator|++
 expr_stmt|;
-comment|/* 		 * When the merge fails, the result contains files 		 * with conflict markers. The cleanness flag is 		 * ignored, it was never actually used, as result of 		 * merge_trees has always overwritten it: the committed 		 * "conflicts" were already resolved. 		 */
+comment|/* 		 * When the merge fails, the result contains files 		 * with conflict markers. The cleanness flag is 		 * ignored (unless indicating an error), it was never 		 * actually used, as result of merge_trees has always 		 * overwritten it: the committed "conflicts" were 		 * already resolved. 		 */
 name|discard_cache
 argument_list|()
 expr_stmt|;
@@ -11273,6 +11273,8 @@ name|branch2
 operator|=
 literal|"Temporary merge branch 2"
 expr_stmt|;
+if|if
+condition|(
 name|merge_recursive
 argument_list|(
 name|o
@@ -11288,7 +11290,13 @@ argument_list|,
 operator|&
 name|merged_common_ancestors
 argument_list|)
-expr_stmt|;
+operator|<
+literal|0
+condition|)
+return|return
+operator|-
+literal|1
+return|;
 name|o
 operator|->
 name|branch1
@@ -11361,6 +11369,15 @@ operator|&
 name|mrtree
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|clean
+operator|<
+literal|0
+condition|)
+return|return
+name|clean
+return|;
 if|if
 condition|(
 name|o
@@ -11740,6 +11757,15 @@ argument_list|,
 name|result
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|clean
+operator|<
+literal|0
+condition|)
+return|return
+name|clean
+return|;
 if|if
 condition|(
 name|active_cache_changed
