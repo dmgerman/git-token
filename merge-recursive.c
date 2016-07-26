@@ -5482,10 +5482,7 @@ block|}
 else|else
 name|die
 argument_list|(
-name|_
-argument_list|(
 literal|"BUG: unsupported object type in the tree"
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -10463,10 +10460,7 @@ block|}
 else|else
 name|die
 argument_list|(
-name|_
-argument_list|(
 literal|"BUG: fatal merge failure, shouldn't happen."
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -10875,10 +10869,7 @@ name|processed
 condition|)
 name|die
 argument_list|(
-name|_
-argument_list|(
 literal|"BUG: unprocessed path??? %s"
-argument_list|)
 argument_list|,
 name|entries
 operator|->
