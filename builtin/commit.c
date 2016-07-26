@@ -8658,7 +8658,7 @@ name|no_verify
 argument_list|,
 name|N_
 argument_list|(
-literal|"bypass pre-commit hook"
+literal|"bypass pre-commit and commit-msg hooks"
 argument_list|)
 argument_list|)
 block|,
