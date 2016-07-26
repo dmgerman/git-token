@@ -1536,7 +1536,7 @@ expr_stmt|;
 block|}
 name|die
 argument_list|(
-literal|"Bug in merge-recursive.c"
+literal|"BUG: unmerged index entries in merge-recursive.c"
 argument_list|)
 expr_stmt|;
 block|}
@@ -5480,16 +5480,14 @@ literal|0
 expr_stmt|;
 block|}
 else|else
-block|{
 name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"unsupported object type in the tree"
+literal|"BUG: unsupported object type in the tree"
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 return|return
 name|result
@@ -7925,7 +7923,7 @@ literal|0
 condition|)
 name|die
 argument_list|(
-literal|"ren1_src != ren2_src"
+literal|"BUG: ren1_src != ren2_src"
 argument_list|)
 expr_stmt|;
 name|ren2
@@ -8088,7 +8086,7 @@ literal|0
 condition|)
 name|die
 argument_list|(
-literal|"ren1_dst != ren2_dst"
+literal|"BUG: ren1_dst != ren2_dst"
 argument_list|)
 expr_stmt|;
 name|clean_merge
@@ -10467,7 +10465,7 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"Fatal merge failure, shouldn't happen."
+literal|"BUG: fatal merge failure, shouldn't happen."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -10879,7 +10877,7 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"Unprocessed path??? %s"
+literal|"BUG: unprocessed path??? %s"
 argument_list|)
 argument_list|,
 name|entries

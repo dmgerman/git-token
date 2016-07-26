@@ -3970,7 +3970,7 @@ name|GREP_PATTERN_HEAD
 condition|)
 name|die
 argument_list|(
-literal|"bug: a non-header pattern in grep header list."
+literal|"BUG: a non-header pattern in grep header list."
 argument_list|)
 expr_stmt|;
 if|if
@@ -3989,7 +3989,7 @@ name|field
 condition|)
 name|die
 argument_list|(
-literal|"bug: unknown header field %d"
+literal|"BUG: unknown header field %d"
 argument_list|,
 name|p
 operator|->
@@ -4074,7 +4074,7 @@ name|next
 condition|)
 name|die
 argument_list|(
-literal|"bug: malformed header expr"
+literal|"BUG: malformed header expr"
 argument_list|)
 expr_stmt|;
 if|if
@@ -8441,7 +8441,7 @@ break|break;
 default|default:
 name|die
 argument_list|(
-literal|"bug: unknown binary handling mode"
+literal|"BUG: unknown binary handling mode"
 argument_list|)
 expr_stmt|;
 block|}

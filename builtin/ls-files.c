@@ -749,7 +749,15 @@ name|pos
 condition|)
 name|die
 argument_list|(
-literal|"bug in show-killed-files"
+literal|"BUG: killed-file %.*s not found"
+argument_list|,
+name|ent
+operator|->
+name|len
+argument_list|,
+name|ent
+operator|->
+name|name
 argument_list|)
 expr_stmt|;
 name|pos

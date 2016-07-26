@@ -1539,7 +1539,7 @@ return|;
 default|default:
 name|die
 argument_list|(
-literal|"bug: unhandled unmerged status %x"
+literal|"BUG: unhandled unmerged status %x"
 argument_list|,
 name|stagemask
 argument_list|)
@@ -2248,7 +2248,7 @@ name|what
 condition|)
 name|die
 argument_list|(
-literal|"bug: unhandled diff status %c"
+literal|"BUG: unhandled diff status %c"
 argument_list|,
 name|status
 argument_list|)

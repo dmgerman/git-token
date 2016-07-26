@@ -2626,7 +2626,7 @@ name|blen
 condition|)
 name|die
 argument_list|(
-literal|"Fatal: buffer too small. Please report a bug."
+literal|"BUG: buffer too small. Please report a bug."
 argument_list|)
 expr_stmt|;
 name|va_end

@@ -3183,7 +3183,9 @@ break|break;
 default|default:
 name|die
 argument_list|(
-literal|"internal bug in trailer.c"
+literal|"BUG: trailer.c: unhandled type %d"
+argument_list|,
+name|type
 argument_list|)
 expr_stmt|;
 block|}
