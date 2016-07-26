@@ -2996,6 +2996,8 @@ name|branch2
 operator|=
 literal|"local"
 expr_stmt|;
+name|ret
+operator|=
 name|merge_trees
 argument_list|(
 operator|&
@@ -3017,6 +3019,17 @@ name|tree
 argument_list|,
 operator|&
 name|result
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|ret
+operator|<
+literal|0
+condition|)
+name|exit
+argument_list|(
+literal|128
 argument_list|)
 expr_stmt|;
 name|ret
