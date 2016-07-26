@@ -1568,7 +1568,8 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-name|die
+block|{
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -1576,6 +1577,10 @@ literal|"error building trees"
 argument_list|)
 argument_list|)
 expr_stmt|;
+return|return
+name|NULL
+return|;
+block|}
 name|result
 operator|=
 name|lookup_tree
@@ -4011,8 +4016,8 @@ name|status
 operator|==
 name|SCLD_EXISTS
 condition|)
-block|{
 comment|/* something else exists */
+return|return
 name|error
 argument_list|(
 name|msg
@@ -4024,13 +4029,9 @@ argument_list|(
 literal|": perhaps a D/F conflict?"
 argument_list|)
 argument_list|)
-expr_stmt|;
-return|return
-operator|-
-literal|1
 return|;
-block|}
-name|die
+return|return
+name|error
 argument_list|(
 name|msg
 argument_list|,
@@ -4038,7 +4039,7 @@ name|path
 argument_list|,
 literal|""
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 comment|/* 	 * Do not unlink a file in the work tree if we are not 	 * tracking it. 	 */
 if|if
@@ -4130,6 +4131,11 @@ name|int
 name|update_wd
 parameter_list|)
 block|{
+name|int
+name|ret
+init|=
+literal|0
+decl_stmt|;
 if|if
 condition|(
 name|o
@@ -4194,7 +4200,8 @@ condition|(
 operator|!
 name|buf
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -4208,14 +4215,17 @@ argument_list|)
 argument_list|,
 name|path
 argument_list|)
-expr_stmt|;
+return|;
 if|if
 condition|(
 name|type
 operator|!=
 name|OBJ_BLOB
 condition|)
-name|die
+block|{
+name|ret
+operator|=
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -4230,6 +4240,10 @@ argument_list|,
 name|path
 argument_list|)
 expr_stmt|;
+goto|goto
+name|free_buf
+goto|;
+block|}
 if|if
 condition|(
 name|S_ISREG
@@ -4359,7 +4373,10 @@ name|fd
 operator|<
 literal|0
 condition|)
-name|die_errno
+block|{
+name|ret
+operator|=
+name|error_errno
 argument_list|(
 name|_
 argument_list|(
@@ -4369,6 +4386,10 @@ argument_list|,
 name|path
 argument_list|)
 expr_stmt|;
+goto|goto
+name|free_buf
+goto|;
+block|}
 name|write_in_full
 argument_list|(
 name|fd
@@ -4423,7 +4444,9 @@ argument_list|,
 name|path
 argument_list|)
 condition|)
-name|die_errno
+name|ret
+operator|=
+name|error_errno
 argument_list|(
 name|_
 argument_list|(
@@ -4440,7 +4463,9 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
-name|die
+name|ret
+operator|=
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -4469,6 +4494,9 @@ name|update_index
 label|:
 if|if
 condition|(
+operator|!
+name|ret
+operator|&&
 name|update_cache
 condition|)
 name|add_cacheinfo
@@ -4487,7 +4515,7 @@ name|ADD_CACHE_OK_TO_ADD
 argument_list|)
 expr_stmt|;
 return|return
-literal|0
+name|ret
 return|;
 block|}
 end_function
@@ -5283,6 +5311,10 @@ name|mmbuffer_t
 name|result_buf
 decl_stmt|;
 name|int
+name|ret
+init|=
+literal|0
+decl_stmt|,
 name|merge_status
 decl_stmt|;
 name|merge_status
@@ -5318,7 +5350,9 @@ name|result_buf
 operator|.
 name|ptr
 condition|)
-name|die
+name|ret
+operator|=
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -5328,6 +5362,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+name|ret
+operator|&&
 name|write_sha1_file
 argument_list|(
 name|result_buf
@@ -5347,7 +5384,9 @@ operator|.
 name|hash
 argument_list|)
 condition|)
-name|die
+name|ret
+operator|=
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -5366,6 +5405,13 @@ operator|.
 name|ptr
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|ret
+condition|)
+return|return
+name|ret
+return|;
 name|result
 operator|->
 name|clean
@@ -10877,7 +10923,7 @@ name|o
 operator|->
 name|call_depth
 condition|)
-name|die
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -10905,12 +10951,10 @@ name|oid
 argument_list|)
 argument_list|)
 expr_stmt|;
-else|else
-name|exit
-argument_list|(
-literal|128
-argument_list|)
-expr_stmt|;
+return|return
+operator|-
+literal|1
+return|;
 block|}
 if|if
 condition|(
@@ -11619,14 +11663,15 @@ condition|(
 operator|!
 name|merged_common_ancestors
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
 literal|"merge returned no commit"
 argument_list|)
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 name|discard_cache
 argument_list|()
