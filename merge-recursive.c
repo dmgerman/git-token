@@ -10959,7 +10959,9 @@ condition|(
 name|o
 operator|->
 name|call_depth
-condition|)
+operator|&&
+operator|!
+operator|(
 operator|*
 name|result
 operator|=
@@ -10967,7 +10969,12 @@ name|write_tree_from_memory
 argument_list|(
 name|o
 argument_list|)
-expr_stmt|;
+operator|)
+condition|)
+return|return
+operator|-
+literal|1
+return|;
 return|return
 name|clean
 return|;
