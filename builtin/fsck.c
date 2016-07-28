@@ -1914,6 +1914,7 @@ modifier|*
 name|eaten
 parameter_list|)
 block|{
+comment|/* 	 * Note, buffer may be NULL if type is OBJ_BLOB. See 	 * verify_packfile(), data_valid variable for details. 	 */
 name|struct
 name|object
 modifier|*
