@@ -2510,10 +2510,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|is_empty_line
+DECL|function|is_blank_line
 specifier|static
 name|int
-name|is_empty_line
+name|is_blank_line
 parameter_list|(
 specifier|const
 name|char
@@ -2561,12 +2561,11 @@ block|}
 end_function
 
 begin_function
-DECL|function|skip_empty_lines
-specifier|static
+DECL|function|skip_blank_lines
 specifier|const
 name|char
 modifier|*
-name|skip_empty_lines
+name|skip_blank_lines
 parameter_list|(
 specifier|const
 name|char
@@ -2602,7 +2601,7 @@ break|break;
 if|if
 condition|(
 operator|!
-name|is_empty_line
+name|is_blank_line
 argument_list|(
 name|msg
 argument_list|,
@@ -4395,7 +4394,7 @@ condition|(
 operator|!
 name|linelen
 operator|||
-name|is_empty_line
+name|is_blank_line
 argument_list|(
 name|line
 argument_list|,
@@ -4487,7 +4486,7 @@ name|message
 decl_stmt|;
 name|msg
 operator|=
-name|skip_empty_lines
+name|skip_blank_lines
 argument_list|(
 name|msg
 argument_list|)
@@ -4513,7 +4512,7 @@ argument_list|)
 expr_stmt|;
 name|msg
 operator|=
-name|skip_empty_lines
+name|skip_blank_lines
 argument_list|(
 name|msg
 argument_list|)
@@ -8908,7 +8907,7 @@ condition|)
 break|break;
 if|if
 condition|(
-name|is_empty_line
+name|is_blank_line
 argument_list|(
 name|line
 argument_list|,
@@ -9241,7 +9240,7 @@ block|}
 comment|/* Skip excess blank lines at the beginning of body, if any... */
 name|msg
 operator|=
-name|skip_empty_lines
+name|skip_blank_lines
 argument_list|(
 name|msg
 argument_list|)

@@ -2454,8 +2454,13 @@ name|p
 condition|)
 block|{
 name|p
-operator|+=
+operator|=
+name|skip_blank_lines
+argument_list|(
+name|p
+operator|+
 literal|2
+argument_list|)
 expr_stmt|;
 for|for
 control|(

@@ -3594,9 +3594,12 @@ argument_list|(
 operator|&
 name|sb
 argument_list|,
+name|skip_blank_lines
+argument_list|(
 name|buffer
 operator|+
 literal|2
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|hook_arg1
