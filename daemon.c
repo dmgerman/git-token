@@ -3338,6 +3338,13 @@ argument_list|)
 operator|<
 literal|0
 condition|)
+block|{
+if|if
+condition|(
+name|errno
+operator|!=
+name|ENOTSOCK
+condition|)
 name|logerror
 argument_list|(
 literal|"unable to set SO_KEEPALIVE on socket: %s"
@@ -3348,6 +3355,7 @@ name|errno
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 end_function
 
