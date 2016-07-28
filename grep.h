@@ -202,6 +202,13 @@ name|pcre_extra
 modifier|*
 name|pcre_extra_info
 decl_stmt|;
+DECL|member|pcre_tables
+specifier|const
+name|unsigned
+name|char
+modifier|*
+name|pcre_tables
+decl_stmt|;
 DECL|member|kws
 name|kwset_t
 name|kws
