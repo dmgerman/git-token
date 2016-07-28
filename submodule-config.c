@@ -2370,7 +2370,7 @@ name|git_config_from_mem
 argument_list|(
 name|parse_config
 argument_list|,
-literal|"submodule-blob"
+name|CONFIG_ORIGIN_SUBMODULE_BLOB
 argument_list|,
 name|rev
 operator|.
