@@ -390,7 +390,10 @@ name|char
 name|note_template
 index|[]
 init|=
-literal|"\nWrite/edit the notes for the following object:\n"
+name|N_
+argument_list|(
+literal|"Write/edit the notes for the following object:"
+argument_list|)
 decl_stmt|;
 end_decl_stmt
 
@@ -915,11 +918,30 @@ argument_list|(
 operator|&
 name|buf
 argument_list|,
-name|note_template
+literal|"\n"
 argument_list|,
 name|strlen
 argument_list|(
+literal|"\n"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|strbuf_add_commented_lines
+argument_list|(
+operator|&
+name|buf
+argument_list|,
+name|_
+argument_list|(
 name|note_template
+argument_list|)
+argument_list|,
+name|strlen
+argument_list|(
+name|_
+argument_list|(
+name|note_template
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
