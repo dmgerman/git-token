@@ -1840,13 +1840,6 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|free_pack_by_name
-argument_list|(
-name|name_buffer
-operator|->
-name|buf
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|rename
