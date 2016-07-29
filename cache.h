@@ -8473,6 +8473,25 @@ name|packed_git
 struct|;
 end_struct
 
+begin_comment
+comment|/*  * A most-recently-used ordered version of the packed_git list, which can  * be iterated instead of packed_git (and marked via mru_mark).  */
+end_comment
+
+begin_struct_decl
+struct_decl|struct
+name|mru
+struct_decl|;
+end_struct_decl
+
+begin_decl_stmt
+specifier|extern
+name|struct
+name|mru
+modifier|*
+name|packed_git_mru
+decl_stmt|;
+end_decl_stmt
+
 begin_struct
 DECL|struct|pack_entry
 struct|struct
