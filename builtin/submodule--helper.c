@@ -4627,7 +4627,7 @@ literal|3
 condition|)
 name|die
 argument_list|(
-literal|"submodule--helper relative_path takes exactly 2 arguments, got %d"
+literal|"submodule--helper relative-path takes exactly 2 arguments, got %d"
 argument_list|,
 name|argc
 argument_list|)
