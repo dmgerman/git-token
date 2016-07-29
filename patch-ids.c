@@ -271,6 +271,12 @@ modifier|*
 name|ids
 parameter_list|)
 block|{
+name|patch
+operator|->
+name|commit
+operator|=
+name|commit
+expr_stmt|;
 if|if
 condition|(
 name|commit_patch_id

@@ -30,9 +30,11 @@ index|[
 name|GIT_SHA1_RAWSZ
 index|]
 decl_stmt|;
-DECL|member|seen
-name|char
-name|seen
+DECL|member|commit
+name|struct
+name|commit
+modifier|*
+name|commit
 decl_stmt|;
 block|}
 struct|;
