@@ -110,6 +110,8 @@ argument_list|(
 name|options
 argument_list|,
 name|sha1
+argument_list|,
+literal|0
 argument_list|)
 return|;
 block|}
