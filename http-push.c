@@ -6205,7 +6205,7 @@ name|userFunc
 operator|=
 name|userFunc
 expr_stmt|;
-name|strbuf_addf
+name|strbuf_addstr
 argument_list|(
 operator|&
 name|out_buffer

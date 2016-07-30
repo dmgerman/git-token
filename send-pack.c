@@ -1365,7 +1365,7 @@ name|update_seen
 init|=
 literal|0
 decl_stmt|;
-name|strbuf_addf
+name|strbuf_addstr
 argument_list|(
 operator|&
 name|cert
