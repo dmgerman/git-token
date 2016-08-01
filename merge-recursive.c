@@ -11963,9 +11963,16 @@ name|clean
 operator|<
 literal|0
 condition|)
+block|{
+name|flush_output
+argument_list|(
+name|o
+argument_list|)
+expr_stmt|;
 return|return
 name|clean
 return|;
+block|}
 if|if
 condition|(
 name|o
