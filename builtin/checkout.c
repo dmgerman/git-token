@@ -3049,6 +3049,14 @@ argument_list|,
 name|writeout_error
 argument_list|)
 expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|o
+operator|.
+name|obuf
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|ret
