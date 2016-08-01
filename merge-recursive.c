@@ -118,6 +118,127 @@ file|"submodule.h"
 end_include
 
 begin_function
+DECL|function|flush_output
+specifier|static
+name|void
+name|flush_output
+parameter_list|(
+name|struct
+name|merge_options
+modifier|*
+name|o
+parameter_list|)
+block|{
+if|if
+condition|(
+name|o
+operator|->
+name|obuf
+operator|.
+name|len
+condition|)
+block|{
+name|fputs
+argument_list|(
+name|o
+operator|->
+name|obuf
+operator|.
+name|buf
+argument_list|,
+name|stdout
+argument_list|)
+expr_stmt|;
+name|strbuf_reset
+argument_list|(
+operator|&
+name|o
+operator|->
+name|obuf
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+end_function
+
+begin_function
+DECL|function|err
+specifier|static
+name|int
+name|err
+parameter_list|(
+name|struct
+name|merge_options
+modifier|*
+name|o
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|err
+parameter_list|,
+modifier|...
+parameter_list|)
+block|{
+name|va_list
+name|params
+decl_stmt|;
+name|flush_output
+argument_list|(
+name|o
+argument_list|)
+expr_stmt|;
+name|va_start
+argument_list|(
+name|params
+argument_list|,
+name|err
+argument_list|)
+expr_stmt|;
+name|strbuf_vaddf
+argument_list|(
+operator|&
+name|o
+operator|->
+name|obuf
+argument_list|,
+name|err
+argument_list|,
+name|params
+argument_list|)
+expr_stmt|;
+name|va_end
+argument_list|(
+name|params
+argument_list|)
+expr_stmt|;
+name|error
+argument_list|(
+literal|"%s"
+argument_list|,
+name|o
+operator|->
+name|obuf
+operator|.
+name|buf
+argument_list|)
+expr_stmt|;
+name|strbuf_reset
+argument_list|(
+operator|&
+name|o
+operator|->
+name|obuf
+argument_list|)
+expr_stmt|;
+return|return
+operator|-
+literal|1
+return|;
+block|}
+end_function
+
+begin_function
 DECL|function|shift_tree_object
 specifier|static
 name|struct
@@ -805,50 +926,6 @@ return|;
 block|}
 end_function
 
-begin_function
-DECL|function|flush_output
-specifier|static
-name|void
-name|flush_output
-parameter_list|(
-name|struct
-name|merge_options
-modifier|*
-name|o
-parameter_list|)
-block|{
-if|if
-condition|(
-name|o
-operator|->
-name|obuf
-operator|.
-name|len
-condition|)
-block|{
-name|fputs
-argument_list|(
-name|o
-operator|->
-name|obuf
-operator|.
-name|buf
-argument_list|,
-name|stdout
-argument_list|)
-expr_stmt|;
-name|strbuf_reset
-argument_list|(
-operator|&
-name|o
-operator|->
-name|obuf
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-end_function
-
 begin_macro
 name|__attribute__
 argument_list|(
@@ -1121,6 +1198,11 @@ specifier|static
 name|int
 name|add_cacheinfo
 parameter_list|(
+name|struct
+name|merge_options
+modifier|*
+name|o
+parameter_list|,
 name|unsigned
 name|int
 name|mode
@@ -1181,8 +1263,10 @@ operator|!
 name|ce
 condition|)
 return|return
-name|error
+name|err
 argument_list|(
+name|o
+argument_list|,
 name|_
 argument_list|(
 literal|"addinfo_cache failed for path '%s'"
@@ -1569,8 +1653,10 @@ operator|<
 literal|0
 condition|)
 block|{
-name|error
+name|err
 argument_list|(
+name|o
+argument_list|,
 name|_
 argument_list|(
 literal|"error building trees"
@@ -2993,6 +3079,11 @@ specifier|static
 name|int
 name|update_stages
 parameter_list|(
+name|struct
+name|merge_options
+modifier|*
+name|opt
+parameter_list|,
 specifier|const
 name|char
 modifier|*
@@ -3053,6 +3144,8 @@ if|if
 condition|(
 name|add_cacheinfo
 argument_list|(
+name|opt
+argument_list|,
 name|o
 operator|->
 name|mode
@@ -3083,6 +3176,8 @@ if|if
 condition|(
 name|add_cacheinfo
 argument_list|(
+name|opt
+argument_list|,
 name|a
 operator|->
 name|mode
@@ -3113,6 +3208,8 @@ if|if
 condition|(
 name|add_cacheinfo
 argument_list|(
+name|opt
+argument_list|,
 name|b
 operator|->
 name|mode
@@ -4018,8 +4115,10 @@ name|SCLD_EXISTS
 condition|)
 comment|/* something else exists */
 return|return
-name|error
+name|err
 argument_list|(
+name|o
+argument_list|,
 name|msg
 argument_list|,
 name|path
@@ -4031,8 +4130,10 @@ argument_list|)
 argument_list|)
 return|;
 return|return
-name|error
+name|err
 argument_list|(
+name|o
+argument_list|,
 name|msg
 argument_list|,
 name|path
@@ -4050,8 +4151,10 @@ name|path
 argument_list|)
 condition|)
 return|return
-name|error
+name|err
 argument_list|(
+name|o
+argument_list|,
 name|_
 argument_list|(
 literal|"refusing to lose untracked file at '%s'"
@@ -4084,8 +4187,10 @@ literal|0
 return|;
 comment|/* .. but not some other error (who really cares what?) */
 return|return
-name|error
+name|err
 argument_list|(
+name|o
+argument_list|,
 name|msg
 argument_list|,
 name|path
@@ -4201,8 +4306,10 @@ operator|!
 name|buf
 condition|)
 return|return
-name|error
+name|err
 argument_list|(
+name|o
+argument_list|,
 name|_
 argument_list|(
 literal|"cannot read object %s '%s'"
@@ -4225,8 +4332,10 @@ condition|)
 block|{
 name|ret
 operator|=
-name|error
+name|err
 argument_list|(
+name|o
+argument_list|,
 name|_
 argument_list|(
 literal|"blob expected for %s '%s'"
@@ -4376,14 +4485,21 @@ condition|)
 block|{
 name|ret
 operator|=
-name|error_errno
+name|err
 argument_list|(
+name|o
+argument_list|,
 name|_
 argument_list|(
-literal|"failed to open '%s'"
+literal|"failed to open '%s': %s"
 argument_list|)
 argument_list|,
 name|path
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
 argument_list|)
 expr_stmt|;
 goto|goto
@@ -4446,14 +4562,21 @@ argument_list|)
 condition|)
 name|ret
 operator|=
-name|error_errno
+name|err
 argument_list|(
+name|o
+argument_list|,
 name|_
 argument_list|(
-literal|"failed to symlink '%s'"
+literal|"failed to symlink '%s': %s"
 argument_list|)
 argument_list|,
 name|path
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|free
@@ -4465,8 +4588,10 @@ block|}
 else|else
 name|ret
 operator|=
-name|error
+name|err
 argument_list|(
+name|o
+argument_list|,
 name|_
 argument_list|(
 literal|"do not know what to do with %06o %s '%s'"
@@ -4501,6 +4626,8 @@ name|update_cache
 condition|)
 name|add_cacheinfo
 argument_list|(
+name|o
+argument_list|,
 name|mode
 argument_list|,
 name|oid
@@ -5352,8 +5479,10 @@ name|ptr
 condition|)
 name|ret
 operator|=
-name|error
+name|err
 argument_list|(
+name|o
+argument_list|,
 name|_
 argument_list|(
 literal|"Failed to execute internal merge"
@@ -5386,8 +5515,10 @@ argument_list|)
 condition|)
 name|ret
 operator|=
-name|error
+name|err
 argument_list|(
+name|o
+argument_list|,
 name|_
 argument_list|(
 literal|"Unable to add %s to database"
@@ -6377,6 +6508,8 @@ else|else
 return|return
 name|update_stages
 argument_list|(
+name|o
+argument_list|,
 name|dest
 operator|->
 name|path
@@ -6771,6 +6904,8 @@ name|ret
 operator|=
 name|update_stages
 argument_list|(
+name|o
+argument_list|,
 name|rename
 operator|->
 name|path
@@ -6787,6 +6922,8 @@ name|ret
 operator|=
 name|update_stages
 argument_list|(
+name|o
+argument_list|,
 name|rename
 operator|->
 name|path
@@ -8981,6 +9118,11 @@ specifier|static
 name|int
 name|read_oid_strbuf
 parameter_list|(
+name|struct
+name|merge_options
+modifier|*
+name|o
+parameter_list|,
 specifier|const
 name|struct
 name|object_id
@@ -9026,8 +9168,10 @@ operator|!
 name|buf
 condition|)
 return|return
-name|error
+name|err
 argument_list|(
+name|o
+argument_list|,
 name|_
 argument_list|(
 literal|"cannot read object %s"
@@ -9052,8 +9196,10 @@ name|buf
 argument_list|)
 expr_stmt|;
 return|return
-name|error
+name|err
 argument_list|(
+name|o
+argument_list|,
 name|_
 argument_list|(
 literal|"object %s is not a blob"
@@ -9091,6 +9237,11 @@ specifier|static
 name|int
 name|blob_unchanged
 parameter_list|(
+name|struct
+name|merge_options
+modifier|*
+name|opt
+parameter_list|,
 specifier|const
 name|struct
 name|object_id
@@ -9176,6 +9327,8 @@ if|if
 condition|(
 name|read_oid_strbuf
 argument_list|(
+name|opt
+argument_list|,
 name|o_oid
 argument_list|,
 operator|&
@@ -9184,6 +9337,8 @@ argument_list|)
 operator|||
 name|read_oid_strbuf
 argument_list|(
+name|opt
+argument_list|,
 name|a_oid
 argument_list|,
 operator|&
@@ -9709,6 +9864,8 @@ condition|)
 block|{
 name|add_cacheinfo
 argument_list|(
+name|o
+argument_list|,
 name|mfi
 operator|.
 name|mode
@@ -9805,6 +9962,8 @@ if|if
 condition|(
 name|update_stages
 argument_list|(
+name|o
+argument_list|,
 name|path
 argument_list|,
 operator|&
@@ -9858,6 +10017,8 @@ if|if
 condition|(
 name|update_stages
 argument_list|(
+name|o
+argument_list|,
 name|path
 argument_list|,
 operator|&
@@ -9914,6 +10075,8 @@ if|if
 condition|(
 name|update_stages
 argument_list|(
+name|o
+argument_list|,
 name|path
 argument_list|,
 name|NULL
@@ -10354,6 +10517,8 @@ name|b_oid
 operator|&&
 name|blob_unchanged
 argument_list|(
+name|o
+argument_list|,
 name|o_oid
 argument_list|,
 name|o_mode
@@ -10374,6 +10539,8 @@ name|a_oid
 operator|&&
 name|blob_unchanged
 argument_list|(
+name|o
+argument_list|,
 name|o_oid
 argument_list|,
 name|o_mode
@@ -10923,8 +11090,10 @@ name|o
 operator|->
 name|call_depth
 condition|)
-name|error
+name|err
 argument_list|(
+name|o
+argument_list|,
 name|_
 argument_list|(
 literal|"merging of trees %s and %s failed"
@@ -11664,8 +11833,10 @@ operator|!
 name|merged_common_ancestors
 condition|)
 return|return
-name|error
+name|err
 argument_list|(
+name|o
+argument_list|,
 name|_
 argument_list|(
 literal|"merge returned no commit"
@@ -12054,8 +12225,10 @@ argument_list|)
 operator|)
 condition|)
 return|return
-name|error
+name|err
 argument_list|(
+name|o
+argument_list|,
 name|_
 argument_list|(
 literal|"Could not parse object '%s'"
@@ -12126,8 +12299,10 @@ name|COMMIT_LOCK
 argument_list|)
 condition|)
 return|return
-name|error
+name|err
 argument_list|(
+name|o
+argument_list|,
 name|_
 argument_list|(
 literal|"Unable to write index."
