@@ -1055,31 +1055,20 @@ modifier|*
 name|commit
 parameter_list|)
 block|{
-name|int
-name|i
-decl_stmt|;
-name|flush_output
+name|strbuf_addchars
 argument_list|(
+operator|&
 name|o
-argument_list|)
-expr_stmt|;
-for|for
-control|(
-name|i
-operator|=
+operator|->
+name|obuf
+argument_list|,
+literal|' '
+argument_list|,
 name|o
 operator|->
 name|call_depth
-init|;
-name|i
-operator|--
-condition|;
-control|)
-name|fputs
-argument_list|(
-literal|"  "
-argument_list|,
-name|stdout
+operator|*
+literal|2
 argument_list|)
 expr_stmt|;
 if|if
@@ -1088,8 +1077,13 @@ name|commit
 operator|->
 name|util
 condition|)
-name|printf
+name|strbuf_addf
 argument_list|(
+operator|&
+name|o
+operator|->
+name|obuf
+argument_list|,
 literal|"virtual %s\n"
 argument_list|,
 name|merge_remote_util
@@ -1102,8 +1096,13 @@ argument_list|)
 expr_stmt|;
 else|else
 block|{
-name|printf
+name|strbuf_addf
 argument_list|(
+operator|&
+name|o
+operator|->
+name|obuf
+argument_list|,
 literal|"%s "
 argument_list|,
 name|find_unique_abbrev
@@ -1129,8 +1128,13 @@ argument_list|)
 operator|!=
 literal|0
 condition|)
-name|printf
+name|strbuf_addf
 argument_list|(
+operator|&
+name|o
+operator|->
+name|obuf
+argument_list|,
 name|_
 argument_list|(
 literal|"(bad commit)\n"
@@ -1171,8 +1175,13 @@ if|if
 condition|(
 name|len
 condition|)
-name|printf
+name|strbuf_addf
 argument_list|(
+operator|&
+name|o
+operator|->
+name|obuf
+argument_list|,
 literal|"%.*s\n"
 argument_list|,
 name|len
@@ -1189,6 +1198,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|flush_output
+argument_list|(
+name|o
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
