@@ -66,9 +66,8 @@ decl_stmt|;
 DECL|member|buffer_output
 name|unsigned
 name|buffer_output
-range|:
-literal|1
 decl_stmt|;
+comment|/* 1: output at end, 2: keep buffered */
 DECL|member|renormalize
 name|unsigned
 name|renormalize
