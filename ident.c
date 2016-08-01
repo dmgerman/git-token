@@ -937,6 +937,23 @@ block|}
 end_function
 
 begin_function
+DECL|function|reset_ident_date
+name|void
+name|reset_ident_date
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+name|strbuf_reset
+argument_list|(
+operator|&
+name|git_default_date
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
 DECL|function|crud
 specifier|static
 name|int

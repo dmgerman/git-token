@@ -8882,6 +8882,9 @@ decl_stmt|;
 name|int
 name|apply_status
 decl_stmt|;
+name|reset_ident_date
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 operator|!
