@@ -16,6 +16,47 @@ file|"quote.h"
 end_include
 
 begin_comment
+comment|/*  * "Normalize" a key argument by converting NULL to our trace_default,  * and otherwise passing through the value. All caller-facing functions  * should normalize their inputs in this way, though most get it  * for free by calling get_trace_fd() (directly or indirectly).  */
+end_comment
+
+begin_function
+DECL|function|normalize_trace_key
+specifier|static
+name|void
+name|normalize_trace_key
+parameter_list|(
+name|struct
+name|trace_key
+modifier|*
+modifier|*
+name|key
+parameter_list|)
+block|{
+specifier|static
+name|struct
+name|trace_key
+name|trace_default
+init|=
+block|{
+literal|"GIT_TRACE"
+block|}
+decl_stmt|;
+if|if
+condition|(
+operator|!
+operator|*
+name|key
+condition|)
+operator|*
+name|key
+operator|=
+operator|&
+name|trace_default
+expr_stmt|;
+block|}
+end_function
+
+begin_comment
 comment|/* Get a trace file descriptor from "key" env variable. */
 end_comment
 
@@ -31,30 +72,16 @@ modifier|*
 name|key
 parameter_list|)
 block|{
-specifier|static
-name|struct
-name|trace_key
-name|trace_default
-init|=
-block|{
-literal|"GIT_TRACE"
-block|}
-decl_stmt|;
 specifier|const
 name|char
 modifier|*
 name|trace
 decl_stmt|;
-comment|/* use default "GIT_TRACE" if NULL */
-if|if
-condition|(
-operator|!
-name|key
-condition|)
-name|key
-operator|=
+name|normalize_trace_key
+argument_list|(
 operator|&
-name|trace_default
+name|key
+argument_list|)
 expr_stmt|;
 comment|/* don't open twice */
 if|if
@@ -287,6 +314,12 @@ modifier|*
 name|key
 parameter_list|)
 block|{
+name|normalize_trace_key
+argument_list|(
+operator|&
+name|key
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|key
