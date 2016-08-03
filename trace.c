@@ -350,19 +350,6 @@ expr_stmt|;
 block|}
 end_function
 
-begin_decl_stmt
-DECL|variable|err_msg
-specifier|static
-specifier|const
-name|char
-name|err_msg
-index|[]
-init|=
-literal|"could not trace into fd given by "
-literal|"GIT_TRACE environment variable"
-decl_stmt|;
-end_decl_stmt
-
 begin_function
 DECL|function|prepare_trace_line
 specifier|static
@@ -563,11 +550,20 @@ argument_list|)
 operator|<
 literal|0
 condition|)
+block|{
+name|normalize_trace_key
+argument_list|(
+operator|&
+name|key
+argument_list|)
+expr_stmt|;
 name|warning
 argument_list|(
-literal|"%s: write error (%s)"
+literal|"unable to write trace for %s: %s"
 argument_list|,
-name|err_msg
+name|key
+operator|->
+name|key
 argument_list|,
 name|strerror
 argument_list|(
@@ -575,6 +571,7 @@ name|errno
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 end_function
 
