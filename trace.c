@@ -224,8 +224,8 @@ condition|)
 block|{
 name|warning
 argument_list|(
-literal|"Could not open '%s' for tracing: %s\n"
-literal|"Defaulting to tracing on stderr..."
+literal|"could not open '%s' for tracing: %s\n"
+literal|"         Defaulting to tracing on stderr..."
 argument_list|,
 name|trace
 argument_list|,
@@ -262,16 +262,16 @@ else|else
 block|{
 name|warning
 argument_list|(
-literal|"What does '%s' for %s mean?\n"
-literal|"If you want to trace into a file, then please set "
-literal|"%s to an absolute pathname (starting with /).\n"
-literal|"Defaulting to tracing on stderr..."
-argument_list|,
-name|trace
+literal|"unknown trace value for '%s': %s\n"
+literal|"         If you want to trace into a file, then please set %s\n"
+literal|"         to an absolute pathname (starting with /)\n"
+literal|"         Defaulting to tracing on stderr..."
 argument_list|,
 name|key
 operator|->
 name|key
+argument_list|,
+name|trace
 argument_list|,
 name|key
 operator|->
@@ -358,7 +358,7 @@ name|char
 name|err_msg
 index|[]
 init|=
-literal|"Could not trace into fd given by "
+literal|"could not trace into fd given by "
 literal|"GIT_TRACE environment variable"
 decl_stmt|;
 end_decl_stmt
