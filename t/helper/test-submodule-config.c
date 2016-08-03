@@ -145,6 +145,11 @@ operator|--
 expr_stmt|;
 while|while
 condition|(
+name|arg
+index|[
+literal|0
+index|]
+operator|&&
 name|starts_with
 argument_list|(
 name|arg
