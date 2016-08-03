@@ -571,6 +571,11 @@ name|errno
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|trace_disable
+argument_list|(
+name|key
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_function
