@@ -166,6 +166,14 @@ name|cloning
 range|:
 literal|1
 decl_stmt|;
+comment|/* 	 * These strings will be passed to the {pre, post}-receive hook, 	 * on the remote side, if both sides support the push options capability. 	 */
+DECL|member|push_options
+specifier|const
+name|struct
+name|string_list
+modifier|*
+name|push_options
+decl_stmt|;
 comment|/** 	 * Returns 0 if successful, positive if the option is not 	 * recognized or is inapplicable, and negative if the option 	 * is applicable but the value is invalid. 	 **/
 DECL|member|set_option
 name|int
@@ -466,6 +474,14 @@ define|#
 directive|define
 name|TRANSPORT_PUSH_ATOMIC
 value|8192
+end_define
+
+begin_define
+DECL|macro|TRANSPORT_PUSH_OPTIONS
+define|#
+directive|define
+name|TRANSPORT_PUSH_OPTIONS
+value|16384
 end_define
 
 begin_define
