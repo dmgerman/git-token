@@ -666,6 +666,8 @@ block|{
 name|int
 name|i
 decl_stmt|,
+name|flags
+decl_stmt|,
 name|gitmodules_modified
 init|=
 literal|0
@@ -877,7 +879,38 @@ name|update_mode
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/* 	 * Keep trailing slash, needed to let 	 * "git mv file no-such-dir/" error out. 	 */
+comment|/* 	 * Keep trailing slash, needed to let 	 * "git mv file no-such-dir/" error out, except in the case 	 * "git mv directory no-such-dir/". 	 */
+name|flags
+operator|=
+name|KEEP_TRAILING_SLASH
+expr_stmt|;
+if|if
+condition|(
+name|argc
+operator|==
+literal|1
+operator|&&
+name|is_directory
+argument_list|(
+name|argv
+index|[
+literal|0
+index|]
+argument_list|)
+operator|&&
+operator|!
+name|is_directory
+argument_list|(
+name|argv
+index|[
+literal|1
+index|]
+argument_list|)
+condition|)
+name|flags
+operator|=
+literal|0
+expr_stmt|;
 name|dest_path
 operator|=
 name|internal_copy_pathspec
@@ -890,7 +923,7 @@ name|argc
 argument_list|,
 literal|1
 argument_list|,
-name|KEEP_TRAILING_SLASH
+name|flags
 argument_list|)
 expr_stmt|;
 name|submodule_gitfile
