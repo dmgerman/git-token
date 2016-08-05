@@ -222,12 +222,10 @@ operator|-
 literal|1
 condition|)
 block|{
-name|fprintf
+name|warning
 argument_list|(
-name|stderr
-argument_list|,
 literal|"Could not open '%s' for tracing: %s\n"
-literal|"Defaulting to tracing on stderr...\n"
+literal|"Defaulting to tracing on stderr..."
 argument_list|,
 name|trace
 argument_list|,
@@ -262,14 +260,12 @@ block|}
 block|}
 else|else
 block|{
-name|fprintf
+name|warning
 argument_list|(
-name|stderr
-argument_list|,
 literal|"What does '%s' for %s mean?\n"
 literal|"If you want to trace into a file, then please set "
 literal|"%s to an absolute pathname (starting with /).\n"
-literal|"Defaulting to tracing on stderr...\n"
+literal|"Defaulting to tracing on stderr..."
 argument_list|,
 name|trace
 argument_list|,
@@ -567,11 +563,9 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-name|fprintf
+name|warning
 argument_list|(
-name|stderr
-argument_list|,
-literal|"%s: write error (%s)\n"
+literal|"%s: write error (%s)"
 argument_list|,
 name|err_msg
 argument_list|,
