@@ -2326,7 +2326,7 @@ case|:
 case|case
 name|STATUS_FORMAT_LONG
 case|:
-name|wt_status_print
+name|wt_longstatus_print
 argument_list|(
 name|s
 argument_list|)
@@ -7278,7 +7278,7 @@ name|ignore_submodule_arg
 operator|=
 name|ignore_submodule_arg
 expr_stmt|;
-name|wt_status_print
+name|wt_longstatus_print
 argument_list|(
 operator|&
 name|s

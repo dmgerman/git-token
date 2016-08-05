@@ -831,10 +831,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|wt_status_print_unmerged_header
+DECL|function|wt_longstatus_print_unmerged_header
 specifier|static
 name|void
-name|wt_status_print_unmerged_header
+name|wt_longstatus_print_unmerged_header
 parameter_list|(
 name|struct
 name|wt_status
@@ -1110,10 +1110,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|wt_status_print_cached_header
+DECL|function|wt_longstatus_print_cached_header
 specifier|static
 name|void
-name|wt_status_print_cached_header
+name|wt_longstatus_print_cached_header
 parameter_list|(
 name|struct
 name|wt_status
@@ -1215,10 +1215,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|wt_status_print_dirty_header
+DECL|function|wt_longstatus_print_dirty_header
 specifier|static
 name|void
-name|wt_status_print_dirty_header
+name|wt_longstatus_print_dirty_header
 parameter_list|(
 name|struct
 name|wt_status
@@ -1337,10 +1337,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|wt_status_print_other_header
+DECL|function|wt_longstatus_print_other_header
 specifier|static
 name|void
-name|wt_status_print_other_header
+name|wt_longstatus_print_other_header
 parameter_list|(
 name|struct
 name|wt_status
@@ -1418,10 +1418,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|wt_status_print_trailer
+DECL|function|wt_longstatus_print_trailer
 specifier|static
 name|void
-name|wt_status_print_trailer
+name|wt_longstatus_print_trailer
 parameter_list|(
 name|struct
 name|wt_status
@@ -1730,10 +1730,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|wt_status_print_unmerged_data
+DECL|function|wt_longstatus_print_unmerged_data
 specifier|static
 name|void
-name|wt_status_print_unmerged_data
+name|wt_longstatus_print_unmerged_data
 parameter_list|(
 name|struct
 name|wt_status
@@ -1909,10 +1909,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|wt_status_print_change_data
+DECL|function|wt_longstatus_print_change_data
 specifier|static
 name|void
-name|wt_status_print_change_data
+name|wt_longstatus_print_change_data
 parameter_list|(
 name|struct
 name|wt_status
@@ -2186,7 +2186,7 @@ break|break;
 default|default:
 name|die
 argument_list|(
-literal|"BUG: unhandled change_type %d in wt_status_print_change_data"
+literal|"BUG: unhandled change_type %d in wt_longstatus_print_change_data"
 argument_list|,
 name|change_type
 argument_list|)
@@ -3669,10 +3669,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|wt_status_print_unmerged
+DECL|function|wt_longstatus_print_unmerged
 specifier|static
 name|void
-name|wt_status_print_unmerged
+name|wt_longstatus_print_unmerged
 parameter_list|(
 name|struct
 name|wt_status
@@ -3750,7 +3750,7 @@ operator|!
 name|shown_header
 condition|)
 block|{
-name|wt_status_print_unmerged_header
+name|wt_longstatus_print_unmerged_header
 argument_list|(
 name|s
 argument_list|)
@@ -3760,7 +3760,7 @@ operator|=
 literal|1
 expr_stmt|;
 block|}
-name|wt_status_print_unmerged_data
+name|wt_longstatus_print_unmerged_data
 argument_list|(
 name|s
 argument_list|,
@@ -3772,7 +3772,7 @@ if|if
 condition|(
 name|shown_header
 condition|)
-name|wt_status_print_trailer
+name|wt_longstatus_print_trailer
 argument_list|(
 name|s
 argument_list|)
@@ -3781,10 +3781,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|wt_status_print_updated
+DECL|function|wt_longstatus_print_updated
 specifier|static
 name|void
-name|wt_status_print_updated
+name|wt_longstatus_print_updated
 parameter_list|(
 name|struct
 name|wt_status
@@ -3868,7 +3868,7 @@ operator|!
 name|shown_header
 condition|)
 block|{
-name|wt_status_print_cached_header
+name|wt_longstatus_print_cached_header
 argument_list|(
 name|s
 argument_list|)
@@ -3884,7 +3884,7 @@ operator|=
 literal|1
 expr_stmt|;
 block|}
-name|wt_status_print_change_data
+name|wt_longstatus_print_change_data
 argument_list|(
 name|s
 argument_list|,
@@ -3898,7 +3898,7 @@ if|if
 condition|(
 name|shown_header
 condition|)
-name|wt_status_print_trailer
+name|wt_longstatus_print_trailer
 argument_list|(
 name|s
 argument_list|)
@@ -4030,10 +4030,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|wt_status_print_changed
+DECL|function|wt_longstatus_print_changed
 specifier|static
 name|void
-name|wt_status_print_changed
+name|wt_longstatus_print_changed
 parameter_list|(
 name|struct
 name|wt_status
@@ -4063,7 +4063,7 @@ operator|!
 name|worktree_changes
 condition|)
 return|return;
-name|wt_status_print_dirty_header
+name|wt_longstatus_print_dirty_header
 argument_list|(
 name|s
 argument_list|,
@@ -4136,7 +4136,7 @@ operator|==
 name|DIFF_STATUS_UNMERGED
 condition|)
 continue|continue;
-name|wt_status_print_change_data
+name|wt_longstatus_print_change_data
 argument_list|(
 name|s
 argument_list|,
@@ -4146,7 +4146,7 @@ name|it
 argument_list|)
 expr_stmt|;
 block|}
-name|wt_status_print_trailer
+name|wt_longstatus_print_trailer
 argument_list|(
 name|s
 argument_list|)
@@ -4155,10 +4155,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|wt_status_print_submodule_summary
+DECL|function|wt_longstatus_print_submodule_summary
 specifier|static
 name|void
-name|wt_status_print_submodule_summary
+name|wt_longstatus_print_submodule_summary
 parameter_list|(
 name|struct
 name|wt_status
@@ -4434,10 +4434,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|wt_status_print_other
+DECL|function|wt_longstatus_print_other
 specifier|static
 name|void
-name|wt_status_print_other
+name|wt_longstatus_print_other
 parameter_list|(
 name|struct
 name|wt_status
@@ -4488,7 +4488,7 @@ operator|->
 name|nr
 condition|)
 return|return;
-name|wt_status_print_other_header
+name|wt_longstatus_print_other_header
 argument_list|(
 name|s
 argument_list|,
@@ -4902,10 +4902,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|wt_status_print_verbose
+DECL|function|wt_longstatus_print_verbose
 specifier|static
 name|void
-name|wt_status_print_verbose
+name|wt_longstatus_print_verbose
 parameter_list|(
 name|struct
 name|wt_status
@@ -5076,7 +5076,7 @@ name|fp
 operator|!=
 name|stdout
 condition|)
-name|wt_status_print_trailer
+name|wt_longstatus_print_trailer
 argument_list|(
 name|s
 argument_list|)
@@ -5189,10 +5189,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|wt_status_print_tracking
+DECL|function|wt_longstatus_print_tracking
 specifier|static
 name|void
-name|wt_status_print_tracking
+name|wt_longstatus_print_tracking
 parameter_list|(
 name|struct
 name|wt_status
@@ -5573,7 +5573,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|wt_status_print_trailer
+name|wt_longstatus_print_trailer
 argument_list|(
 name|s
 argument_list|)
@@ -5684,7 +5684,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|wt_status_print_trailer
+name|wt_longstatus_print_trailer
 argument_list|(
 name|s
 argument_list|)
@@ -6908,7 +6908,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|wt_status_print_trailer
+name|wt_longstatus_print_trailer
 argument_list|(
 name|s
 argument_list|)
@@ -7011,7 +7011,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|wt_status_print_trailer
+name|wt_longstatus_print_trailer
 argument_list|(
 name|s
 argument_list|)
@@ -7114,7 +7114,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|wt_status_print_trailer
+name|wt_longstatus_print_trailer
 argument_list|(
 name|s
 argument_list|)
@@ -7197,7 +7197,7 @@ literal|"  (use \"git bisect reset\" to get back to the original branch)"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|wt_status_print_trailer
+name|wt_longstatus_print_trailer
 argument_list|(
 name|s
 argument_list|)
@@ -8306,10 +8306,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|wt_status_print_state
+DECL|function|wt_longstatus_print_state
 specifier|static
 name|void
-name|wt_status_print_state
+name|wt_longstatus_print_state
 parameter_list|(
 name|struct
 name|wt_status
@@ -8436,9 +8436,9 @@ block|}
 end_function
 
 begin_function
-DECL|function|wt_status_print
+DECL|function|wt_longstatus_print
 name|void
-name|wt_status_print
+name|wt_longstatus_print
 parameter_list|(
 name|struct
 name|wt_status
@@ -8699,13 +8699,13 @@ name|s
 operator|->
 name|is_initial
 condition|)
-name|wt_status_print_tracking
+name|wt_longstatus_print_tracking
 argument_list|(
 name|s
 argument_list|)
 expr_stmt|;
 block|}
-name|wt_status_print_state
+name|wt_longstatus_print_state
 argument_list|(
 name|s
 argument_list|,
@@ -8791,17 +8791,17 @@ literal|""
 argument_list|)
 expr_stmt|;
 block|}
-name|wt_status_print_updated
+name|wt_longstatus_print_updated
 argument_list|(
 name|s
 argument_list|)
 expr_stmt|;
-name|wt_status_print_unmerged
+name|wt_longstatus_print_unmerged
 argument_list|(
 name|s
 argument_list|)
 expr_stmt|;
-name|wt_status_print_changed
+name|wt_longstatus_print_changed
 argument_list|(
 name|s
 argument_list|)
@@ -8829,7 +8829,7 @@ argument_list|)
 operator|)
 condition|)
 block|{
-name|wt_status_print_submodule_summary
+name|wt_longstatus_print_submodule_summary
 argument_list|(
 name|s
 argument_list|,
@@ -8837,7 +8837,7 @@ literal|0
 argument_list|)
 expr_stmt|;
 comment|/* staged */
-name|wt_status_print_submodule_summary
+name|wt_longstatus_print_submodule_summary
 argument_list|(
 name|s
 argument_list|,
@@ -8853,7 +8853,7 @@ operator|->
 name|show_untracked_files
 condition|)
 block|{
-name|wt_status_print_other
+name|wt_longstatus_print_other
 argument_list|(
 name|s
 argument_list|,
@@ -8876,7 +8876,7 @@ name|s
 operator|->
 name|show_ignored_files
 condition|)
-name|wt_status_print_other
+name|wt_longstatus_print_other
 argument_list|(
 name|s
 argument_list|,
@@ -8973,7 +8973,7 @@ name|s
 operator|->
 name|verbose
 condition|)
-name|wt_status_print_verbose
+name|wt_longstatus_print_verbose
 argument_list|(
 name|s
 argument_list|)
