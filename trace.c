@@ -224,8 +224,7 @@ condition|)
 block|{
 name|warning
 argument_list|(
-literal|"could not open '%s' for tracing: %s\n"
-literal|"         Defaulting to tracing on stderr..."
+literal|"could not open '%s' for tracing: %s"
 argument_list|,
 name|trace
 argument_list|,
@@ -235,11 +234,10 @@ name|errno
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|trace_disable
+argument_list|(
 name|key
-operator|->
-name|fd
-operator|=
-name|STDERR_FILENO
+argument_list|)
 expr_stmt|;
 block|}
 else|else
@@ -264,8 +262,7 @@ name|warning
 argument_list|(
 literal|"unknown trace value for '%s': %s\n"
 literal|"         If you want to trace into a file, then please set %s\n"
-literal|"         to an absolute pathname (starting with /)\n"
-literal|"         Defaulting to tracing on stderr..."
+literal|"         to an absolute pathname (starting with /)"
 argument_list|,
 name|key
 operator|->
@@ -278,11 +275,10 @@ operator|->
 name|key
 argument_list|)
 expr_stmt|;
+name|trace_disable
+argument_list|(
 name|key
-operator|->
-name|fd
-operator|=
-name|STDERR_FILENO
+argument_list|)
 expr_stmt|;
 block|}
 name|key
