@@ -8437,6 +8437,7 @@ end_function
 
 begin_function
 DECL|function|wt_longstatus_print
+specifier|static
 name|void
 name|wt_longstatus_print
 parameter_list|(
@@ -10245,6 +10246,7 @@ end_function
 
 begin_function
 DECL|function|wt_shortstatus_print
+specifier|static
 name|void
 name|wt_shortstatus_print
 parameter_list|(
@@ -10437,6 +10439,7 @@ end_function
 
 begin_function
 DECL|function|wt_porcelain_print
+specifier|static
 name|void
 name|wt_porcelain_print
 parameter_list|(
@@ -10475,6 +10478,67 @@ argument_list|(
 name|s
 argument_list|)
 expr_stmt|;
+block|}
+end_function
+
+begin_function
+DECL|function|wt_status_print
+name|void
+name|wt_status_print
+parameter_list|(
+name|struct
+name|wt_status
+modifier|*
+name|s
+parameter_list|)
+block|{
+switch|switch
+condition|(
+name|s
+operator|->
+name|status_format
+condition|)
+block|{
+case|case
+name|STATUS_FORMAT_SHORT
+case|:
+name|wt_shortstatus_print
+argument_list|(
+name|s
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+name|STATUS_FORMAT_PORCELAIN
+case|:
+name|wt_porcelain_print
+argument_list|(
+name|s
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+name|STATUS_FORMAT_UNSPECIFIED
+case|:
+name|die
+argument_list|(
+literal|"BUG: finalize_deferred_config() should have been called"
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+name|STATUS_FORMAT_NONE
+case|:
+case|case
+name|STATUS_FORMAT_LONG
+case|:
+name|wt_longstatus_print
+argument_list|(
+name|s
+argument_list|)
+expr_stmt|;
+break|break;
+block|}
 block|}
 end_function
 
