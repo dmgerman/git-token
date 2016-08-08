@@ -1688,11 +1688,9 @@ name|nr
 operator|==
 literal|1
 condition|)
-name|strbuf_addf
+name|strbuf_addstr
 argument_list|(
 name|out
-argument_list|,
-literal|"%s"
 argument_list|,
 name|people
 operator|->

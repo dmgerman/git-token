@@ -568,12 +568,10 @@ name|seq_dir
 init|=
 name|STRBUF_INIT
 decl_stmt|;
-name|strbuf_addf
+name|strbuf_addstr
 argument_list|(
 operator|&
 name|seq_dir
-argument_list|,
-literal|"%s"
 argument_list|,
 name|git_path
 argument_list|(

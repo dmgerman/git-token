@@ -101,7 +101,7 @@ operator|->
 name|argv
 argument_list|)
 expr_stmt|;
-name|strbuf_addf
+name|strbuf_addstr
 argument_list|(
 name|err
 argument_list|,
@@ -143,7 +143,7 @@ modifier|*
 name|task_cb
 parameter_list|)
 block|{
-name|strbuf_addf
+name|strbuf_addstr
 argument_list|(
 name|err
 argument_list|,
@@ -179,7 +179,7 @@ modifier|*
 name|pp_task_cb
 parameter_list|)
 block|{
-name|strbuf_addf
+name|strbuf_addstr
 argument_list|(
 name|err
 argument_list|,

@@ -2420,7 +2420,7 @@ operator||
 name|PARSE_OPT_SHELL_EVAL
 argument_list|)
 expr_stmt|;
-name|strbuf_addf
+name|strbuf_addstr
 argument_list|(
 operator|&
 name|parsed
