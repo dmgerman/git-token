@@ -9154,8 +9154,7 @@ modifier|*
 name|sizep
 decl_stmt|;
 DECL|member|disk_sizep
-name|unsigned
-name|long
+name|off_t
 modifier|*
 name|disk_sizep
 decl_stmt|;
