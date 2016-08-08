@@ -283,7 +283,7 @@ end_function
 begin_function
 DECL|function|parse_ignorewhitespace_option
 specifier|static
-name|void
+name|int
 name|parse_ignorewhitespace_option
 parameter_list|(
 name|struct
@@ -341,7 +341,9 @@ name|ws_ignore_action
 operator|=
 name|ignore_ws_none
 expr_stmt|;
-return|return;
+return|return
+literal|0
+return|;
 block|}
 if|if
 condition|(
@@ -360,9 +362,12 @@ name|ws_ignore_action
 operator|=
 name|ignore_ws_change
 expr_stmt|;
-return|return;
+return|return
+literal|0
+return|;
 block|}
-name|die
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -371,7 +376,7 @@ argument_list|)
 argument_list|,
 name|option
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 end_function
 
@@ -22984,12 +22989,17 @@ expr_stmt|;
 if|if
 condition|(
 name|apply_default_ignorewhitespace
-condition|)
+operator|&&
 name|parse_ignorewhitespace_option
 argument_list|(
 name|state
 argument_list|,
 name|apply_default_ignorewhitespace
+argument_list|)
+condition|)
+name|exit
+argument_list|(
+literal|1
 argument_list|)
 expr_stmt|;
 block|}
