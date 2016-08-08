@@ -3892,7 +3892,7 @@ end_comment
 begin_function
 DECL|function|parse_traditional_patch
 specifier|static
-name|void
+name|int
 name|parse_traditional_patch
 parameter_list|(
 name|struct
@@ -4201,7 +4201,8 @@ condition|(
 operator|!
 name|name
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -4212,7 +4213,10 @@ name|state
 operator|->
 name|linenr
 argument_list|)
-expr_stmt|;
+return|;
+return|return
+literal|0
+return|;
 block|}
 end_function
 
@@ -7456,6 +7460,8 @@ argument_list|)
 condition|)
 continue|continue;
 comment|/* Ok, we'll consider it a patch */
+if|if
+condition|(
 name|parse_traditional_patch
 argument_list|(
 name|state
@@ -7468,7 +7474,11 @@ name|len
 argument_list|,
 name|patch
 argument_list|)
-expr_stmt|;
+condition|)
+return|return
+operator|-
+literal|128
+return|;
 operator|*
 name|hdrsize
 operator|=
