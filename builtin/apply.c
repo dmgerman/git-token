@@ -23697,6 +23697,8 @@ name|OPT_END
 argument_list|()
 block|}
 decl_stmt|;
+if|if
+condition|(
 name|init_apply_state
 argument_list|(
 operator|&
@@ -23706,6 +23708,11 @@ name|prefix
 argument_list|,
 operator|&
 name|lock_file
+argument_list|)
+condition|)
+name|exit
+argument_list|(
+literal|128
 argument_list|)
 expr_stmt|;
 name|argc

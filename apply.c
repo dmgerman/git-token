@@ -318,7 +318,7 @@ end_function
 
 begin_function
 DECL|function|init_apply_state
-name|void
+name|int
 name|init_apply_state
 parameter_list|(
 name|struct
@@ -488,11 +488,10 @@ argument_list|,
 name|apply_default_whitespace
 argument_list|)
 condition|)
-name|exit
-argument_list|(
+return|return
+operator|-
 literal|1
-argument_list|)
-expr_stmt|;
+return|;
 if|if
 condition|(
 name|apply_default_ignorewhitespace
@@ -504,11 +503,13 @@ argument_list|,
 name|apply_default_ignorewhitespace
 argument_list|)
 condition|)
-name|exit
-argument_list|(
+return|return
+operator|-
 literal|1
-argument_list|)
-expr_stmt|;
+return|;
+return|return
+literal|0
+return|;
 block|}
 end_function
 
