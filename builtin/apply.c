@@ -22510,7 +22510,7 @@ end_function
 begin_function
 DECL|function|check_apply_state
 specifier|static
-name|void
+name|int
 name|check_apply_state
 parameter_list|(
 name|struct
@@ -22540,11 +22540,12 @@ name|state
 operator|->
 name|threeway
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 literal|"--reject and --3way cannot be used together."
 argument_list|)
-expr_stmt|;
+return|;
 if|if
 condition|(
 name|state
@@ -22555,11 +22556,12 @@ name|state
 operator|->
 name|threeway
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 literal|"--cached and --3way cannot be used together."
 argument_list|)
-expr_stmt|;
+return|;
 if|if
 condition|(
 name|state
@@ -22571,14 +22573,15 @@ if|if
 condition|(
 name|is_not_gitdir
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
 literal|"--3way outside a repository"
 argument_list|)
 argument_list|)
-expr_stmt|;
+return|;
 name|state
 operator|->
 name|check_index
@@ -22643,14 +22646,15 @@ name|check_index
 operator|&&
 name|is_not_gitdir
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
 literal|"--index outside a repository"
 argument_list|)
 argument_list|)
-expr_stmt|;
+return|;
 if|if
 condition|(
 name|state
@@ -22662,14 +22666,15 @@ if|if
 condition|(
 name|is_not_gitdir
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
 literal|"--cached outside a repository"
 argument_list|)
 argument_list|)
-expr_stmt|;
+return|;
 name|state
 operator|->
 name|check_index
@@ -22696,11 +22701,15 @@ name|state
 operator|->
 name|lock_file
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 literal|"BUG: state->lock_file should not be NULL"
 argument_list|)
-expr_stmt|;
+return|;
+return|return
+literal|0
+return|;
 block|}
 end_function
 
@@ -23734,12 +23743,19 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|check_apply_state
 argument_list|(
 operator|&
 name|state
 argument_list|,
 name|force_apply
+argument_list|)
+condition|)
+name|exit
+argument_list|(
+literal|128
 argument_list|)
 expr_stmt|;
 name|ret
