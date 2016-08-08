@@ -20086,7 +20086,7 @@ end_function
 begin_function
 DECL|function|add_index_file
 specifier|static
-name|void
+name|int
 name|add_index_file
 parameter_list|(
 name|struct
@@ -20143,7 +20143,9 @@ name|state
 operator|->
 name|update_index
 condition|)
-return|return;
+return|return
+literal|0
+return|;
 name|ce
 operator|=
 name|xcalloc
@@ -20223,7 +20225,14 @@ operator|->
 name|sha1
 argument_list|)
 condition|)
-name|die
+block|{
+name|free
+argument_list|(
+name|ce
+argument_list|)
+expr_stmt|;
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -20232,7 +20241,8 @@ argument_list|)
 argument_list|,
 name|path
 argument_list|)
-expr_stmt|;
+return|;
+block|}
 block|}
 else|else
 block|{
@@ -20256,16 +20266,30 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-name|die_errno
+block|{
+name|free
+argument_list|(
+name|ce
+argument_list|)
+expr_stmt|;
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
-literal|"unable to stat newly created file '%s'"
+literal|"unable to stat newly "
+literal|"created file '%s': %s"
 argument_list|)
 argument_list|,
 name|path
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
 argument_list|)
-expr_stmt|;
+argument_list|)
+return|;
+block|}
 name|fill_stat_cache_info
 argument_list|(
 name|ce
@@ -20292,16 +20316,25 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-name|die
+block|{
+name|free
+argument_list|(
+name|ce
+argument_list|)
+expr_stmt|;
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
-literal|"unable to create backing store for newly created file %s"
+literal|"unable to create backing store "
+literal|"for newly created file %s"
 argument_list|)
 argument_list|,
 name|path
 argument_list|)
-expr_stmt|;
+return|;
+block|}
 block|}
 if|if
 condition|(
@@ -20314,7 +20347,14 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-name|die
+block|{
+name|free
+argument_list|(
+name|ce
+argument_list|)
+expr_stmt|;
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -20323,7 +20363,11 @@ argument_list|)
 argument_list|,
 name|path
 argument_list|)
-expr_stmt|;
+return|;
+block|}
+return|return
+literal|0
+return|;
 block|}
 end_function
 
@@ -21065,6 +21109,9 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
+if|if
+condition|(
 name|add_index_file
 argument_list|(
 name|state
@@ -21077,7 +21124,13 @@ name|buf
 argument_list|,
 name|size
 argument_list|)
+condition|)
+name|exit
+argument_list|(
+literal|128
+argument_list|)
 expr_stmt|;
+block|}
 block|}
 end_function
 
