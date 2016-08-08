@@ -4271,7 +4271,7 @@ end_define
 begin_function
 DECL|function|gitdiff_verify_name
 specifier|static
-name|void
+name|int
 name|gitdiff_verify_name
 parameter_list|(
 name|struct
@@ -4324,7 +4324,9 @@ argument_list|,
 name|TERM_TAB
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|0
+return|;
 block|}
 if|if
 condition|(
@@ -4349,7 +4351,8 @@ if|if
 condition|(
 name|isnull
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -4363,7 +4366,7 @@ name|state
 operator|->
 name|linenr
 argument_list|)
-expr_stmt|;
+return|;
 name|another
 operator|=
 name|find_name
@@ -4398,7 +4401,14 @@ operator|+
 literal|1
 argument_list|)
 condition|)
-name|die
+block|{
+name|free
+argument_list|(
+name|another
+argument_list|)
+expr_stmt|;
+return|return
+name|error
 argument_list|(
 operator|(
 name|side
@@ -4420,7 +4430,8 @@ name|state
 operator|->
 name|linenr
 argument_list|)
-expr_stmt|;
+return|;
+block|}
 name|free
 argument_list|(
 name|another
@@ -4448,7 +4459,8 @@ index|]
 operator|!=
 literal|'\n'
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -4459,8 +4471,11 @@ name|state
 operator|->
 name|linenr
 argument_list|)
-expr_stmt|;
+return|;
 block|}
+return|return
+literal|0
+return|;
 block|}
 end_function
 
@@ -4486,6 +4501,7 @@ modifier|*
 name|patch
 parameter_list|)
 block|{
+return|return
 name|gitdiff_verify_name
 argument_list|(
 name|state
@@ -4503,9 +4519,6 @@ name|old_name
 argument_list|,
 name|DIFF_OLD_NAME
 argument_list|)
-expr_stmt|;
-return|return
-literal|0
 return|;
 block|}
 end_function
@@ -4532,6 +4545,7 @@ modifier|*
 name|patch
 parameter_list|)
 block|{
+return|return
 name|gitdiff_verify_name
 argument_list|(
 name|state
@@ -4549,9 +4563,6 @@ name|new_name
 argument_list|,
 name|DIFF_NEW_NAME
 argument_list|)
-expr_stmt|;
-return|return
-literal|0
 return|;
 block|}
 end_function
