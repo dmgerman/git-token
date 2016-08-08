@@ -183,7 +183,7 @@ condition|?
 name|_
 argument_list|(
 literal|"Your local changes to the following files would be overwritten by checkout:\n%%s"
-literal|"Please commit your changes or stash them before you can switch branches."
+literal|"Please commit your changes or stash them before you switch branches."
 argument_list|)
 else|:
 name|_
@@ -209,7 +209,7 @@ condition|?
 name|_
 argument_list|(
 literal|"Your local changes to the following files would be overwritten by merge:\n%%s"
-literal|"Please commit your changes or stash them before you can merge."
+literal|"Please commit your changes or stash them before you merge."
 argument_list|)
 else|:
 name|_
@@ -225,7 +225,7 @@ condition|?
 name|_
 argument_list|(
 literal|"Your local changes to the following files would be overwritten by %s:\n%%s"
-literal|"Please commit your changes or stash them before you can %s."
+literal|"Please commit your changes or stash them before you %s."
 argument_list|)
 else|:
 name|_
@@ -279,7 +279,7 @@ condition|?
 name|_
 argument_list|(
 literal|"The following untracked working tree files would be removed by checkout:\n%%s"
-literal|"Please move or remove them before you can switch branches."
+literal|"Please move or remove them before you switch branches."
 argument_list|)
 else|:
 name|_
@@ -305,7 +305,7 @@ condition|?
 name|_
 argument_list|(
 literal|"The following untracked working tree files would be removed by merge:\n%%s"
-literal|"Please move or remove them before you can merge."
+literal|"Please move or remove them before you merge."
 argument_list|)
 else|:
 name|_
@@ -321,7 +321,7 @@ condition|?
 name|_
 argument_list|(
 literal|"The following untracked working tree files would be removed by %s:\n%%s"
-literal|"Please move or remove them before you can %s."
+literal|"Please move or remove them before you %s."
 argument_list|)
 else|:
 name|_
@@ -360,7 +360,7 @@ condition|?
 name|_
 argument_list|(
 literal|"The following untracked working tree files would be overwritten by checkout:\n%%s"
-literal|"Please move or remove them before you can switch branches."
+literal|"Please move or remove them before you switch branches."
 argument_list|)
 else|:
 name|_
@@ -386,7 +386,7 @@ condition|?
 name|_
 argument_list|(
 literal|"The following untracked working tree files would be overwritten by merge:\n%%s"
-literal|"Please move or remove them before you can merge."
+literal|"Please move or remove them before you merge."
 argument_list|)
 else|:
 name|_
@@ -402,7 +402,7 @@ condition|?
 name|_
 argument_list|(
 literal|"The following untracked working tree files would be overwritten by %s:\n%%s"
-literal|"Please move or remove them before you can %s."
+literal|"Please move or remove them before you %s."
 argument_list|)
 else|:
 name|_
