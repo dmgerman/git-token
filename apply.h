@@ -344,6 +344,22 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|check_apply_state
+parameter_list|(
+name|struct
+name|apply_state
+modifier|*
+name|state
+parameter_list|,
+name|int
+name|force_apply
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_endif
 endif|#
 directive|endif
