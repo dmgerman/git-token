@@ -1701,7 +1701,7 @@ end_define
 begin_function
 DECL|function|read_patch_file
 specifier|static
-name|void
+name|int
 name|read_patch_file
 parameter_list|(
 name|struct
@@ -1726,11 +1726,12 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-name|die_errno
+return|return
+name|error_errno
 argument_list|(
 literal|"git apply: failed to read"
 argument_list|)
-expr_stmt|;
+return|;
 comment|/* 	 * Make sure that we have some slop in the buffer 	 * so that we can do speculative "memcmp" etc, and 	 * see to it that it is NUL-filled. 	 */
 name|strbuf_grow
 argument_list|(
@@ -1754,6 +1755,9 @@ argument_list|,
 name|SLOP
 argument_list|)
 expr_stmt|;
+return|return
+literal|0
+return|;
 block|}
 end_function
 
@@ -21925,6 +21929,8 @@ name|patch_input_file
 operator|=
 name|filename
 expr_stmt|;
+if|if
+condition|(
 name|read_patch_file
 argument_list|(
 operator|&
@@ -21932,7 +21938,13 @@ name|buf
 argument_list|,
 name|fd
 argument_list|)
-expr_stmt|;
+operator|<
+literal|0
+condition|)
+return|return
+operator|-
+literal|128
+return|;
 name|offset
 operator|=
 literal|0
