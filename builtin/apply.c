@@ -19994,7 +19994,7 @@ end_function
 begin_function
 DECL|function|remove_file
 specifier|static
-name|void
+name|int
 name|remove_file
 parameter_list|(
 name|struct
@@ -20029,7 +20029,8 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -20040,7 +20041,7 @@ name|patch
 operator|->
 name|old_name
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 if|if
 condition|(
@@ -20076,6 +20077,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+return|return
+literal|0
+return|;
 block|}
 end_function
 
@@ -21094,6 +21098,9 @@ name|phase
 operator|==
 literal|0
 condition|)
+block|{
+if|if
+condition|(
 name|remove_file
 argument_list|(
 name|state
@@ -21102,7 +21109,13 @@ name|patch
 argument_list|,
 literal|1
 argument_list|)
+condition|)
+name|exit
+argument_list|(
+literal|128
+argument_list|)
 expr_stmt|;
+block|}
 return|return;
 block|}
 if|if
@@ -21140,6 +21153,9 @@ name|phase
 operator|==
 literal|0
 condition|)
+block|{
+if|if
+condition|(
 name|remove_file
 argument_list|(
 name|state
@@ -21150,7 +21166,13 @@ name|patch
 operator|->
 name|is_rename
 argument_list|)
+condition|)
+name|exit
+argument_list|(
+literal|128
+argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|phase
