@@ -18938,7 +18938,7 @@ end_comment
 begin_function
 DECL|function|build_fake_ancestor
 specifier|static
-name|void
+name|int
 name|build_fake_ancestor
 parameter_list|(
 name|struct
@@ -18969,6 +18969,9 @@ specifier|static
 name|struct
 name|lock_file
 name|lock
+decl_stmt|;
+name|int
+name|res
 decl_stmt|;
 comment|/* Once we start supporting the reverse patch, it may be 	 * worth showing the new sha1 prefix, but until then... 	 */
 for|for
@@ -19049,13 +19052,15 @@ condition|)
 empty_stmt|;
 comment|/* ok, the textual part looks sane */
 else|else
-name|die
+return|return
+name|error
 argument_list|(
-literal|"sha1 information is lacking or useless for submodule %s"
+literal|"sha1 information is lacking or "
+literal|"useless for submodule %s"
 argument_list|,
 name|name
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 elseif|else
 if|if
@@ -19100,24 +19105,26 @@ argument_list|,
 name|sha1
 argument_list|)
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 literal|"mode change for %s, which is not "
 literal|"in current HEAD"
 argument_list|,
 name|name
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 else|else
-name|die
+return|return
+name|error
 argument_list|(
 literal|"sha1 information is lacking or useless "
 literal|"(%s)."
 argument_list|,
 name|name
 argument_list|)
-expr_stmt|;
+return|;
 name|ce
 operator|=
 name|make_cache_entry
@@ -19140,7 +19147,8 @@ condition|(
 operator|!
 name|ce
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -19149,7 +19157,7 @@ argument_list|)
 argument_list|,
 name|name
 argument_list|)
-expr_stmt|;
+return|;
 if|if
 condition|(
 name|add_index_entry
@@ -19162,13 +19170,21 @@ argument_list|,
 name|ADD_CACHE_OK_TO_ADD
 argument_list|)
 condition|)
-name|die
+block|{
+name|free
+argument_list|(
+name|ce
+argument_list|)
+expr_stmt|;
+return|return
+name|error
 argument_list|(
 literal|"Could not add %s to temporary index"
 argument_list|,
 name|name
 argument_list|)
-expr_stmt|;
+return|;
+block|}
 block|}
 name|hold_lock_file_for_update
 argument_list|(
@@ -19180,8 +19196,8 @@ argument_list|,
 name|LOCK_DIE_ON_ERROR
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
+name|res
+operator|=
 name|write_locked_index
 argument_list|(
 operator|&
@@ -19192,13 +19208,6 @@ name|lock
 argument_list|,
 name|COMMIT_LOCK
 argument_list|)
-condition|)
-name|die
-argument_list|(
-literal|"Could not write temporary index to %s"
-argument_list|,
-name|filename
-argument_list|)
 expr_stmt|;
 name|discard_index
 argument_list|(
@@ -19206,6 +19215,21 @@ operator|&
 name|result
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|res
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"Could not write temporary index to %s"
+argument_list|,
+name|filename
+argument_list|)
+return|;
+return|return
+literal|0
+return|;
 block|}
 end_function
 
@@ -22208,7 +22232,7 @@ condition|(
 name|state
 operator|->
 name|fake_ancestor
-condition|)
+operator|&&
 name|build_fake_ancestor
 argument_list|(
 name|list
@@ -22217,7 +22241,17 @@ name|state
 operator|->
 name|fake_ancestor
 argument_list|)
+condition|)
+block|{
+name|res
+operator|=
+operator|-
+literal|128
 expr_stmt|;
+goto|goto
+name|end
+goto|;
+block|}
 if|if
 condition|(
 name|state
