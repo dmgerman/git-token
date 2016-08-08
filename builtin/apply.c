@@ -9879,7 +9879,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Read the patch text in "buffer" that extends for "size" bytes; stop  * reading after seeing a single patch (i.e. changes to a single file).  * Create fragments (i.e. patch hunks) and hang them to the given patch.  * Return the number of bytes consumed, so that the caller can call us  * again for the next patch.  */
+comment|/*  * Read the patch text in "buffer" that extends for "size" bytes; stop  * reading after seeing a single patch (i.e. changes to a single file).  * Create fragments (i.e. patch hunks) and hang them to the given patch.  *  * Returns:  *   -1 if no header was found or parse_binary() failed,  *   -128 on another error,  *   the number of bytes consumed otherwise,  *     so that the caller can call us again for the next patch.  */
 end_comment
 
 begin_function
@@ -9929,18 +9929,6 @@ argument_list|,
 name|patch
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|offset
-operator|==
-operator|-
-literal|128
-condition|)
-name|exit
-argument_list|(
-literal|128
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|offset
@@ -10262,7 +10250,8 @@ name|patch
 argument_list|)
 operator|)
 condition|)
-name|die
+block|{
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -10274,6 +10263,11 @@ operator|->
 name|linenr
 argument_list|)
 expr_stmt|;
+return|return
+operator|-
+literal|128
+return|;
+block|}
 block|}
 return|return
 name|offset
@@ -22068,6 +22062,23 @@ argument_list|(
 name|patch
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|nr
+operator|==
+operator|-
+literal|128
+condition|)
+block|{
+name|res
+operator|=
+operator|-
+literal|128
+expr_stmt|;
+goto|goto
+name|end
+goto|;
+block|}
 break|break;
 block|}
 if|if
