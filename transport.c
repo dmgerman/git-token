@@ -2121,6 +2121,16 @@ condition|(
 operator|!
 name|count
 condition|)
+block|{
+name|char
+modifier|*
+name|url
+init|=
+name|transport_anonymize_url
+argument_list|(
+name|dest
+argument_list|)
+decl_stmt|;
 name|fprintf
 argument_list|(
 name|porcelain
@@ -2131,9 +2141,15 @@ name|stderr
 argument_list|,
 literal|"To %s\n"
 argument_list|,
-name|dest
+name|url
 argument_list|)
 expr_stmt|;
+name|free
+argument_list|(
+name|url
+argument_list|)
+expr_stmt|;
+block|}
 switch|switch
 condition|(
 name|ref
