@@ -8391,7 +8391,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * We have seen "diff --git a/... b/..." header (or a traditional patch  * header).  Read hunks that belong to this patch into fragments and hang  * them to the given patch structure.  *  * The (fragment->patch, fragment->size) pair points into the memory given  * by the caller, not a copy, when we return.  */
+comment|/*  * We have seen "diff --git a/... b/..." header (or a traditional patch  * header).  Read hunks that belong to this patch into fragments and hang  * them to the given patch structure.  *  * The (fragment->patch, fragment->size) pair points into the memory given  * by the caller, not a copy, when we return.  *  * Returns:  *   -1 in case of error,  *   the number of bytes in the patch otherwise.  */
 end_comment
 
 begin_function
@@ -8518,7 +8518,14 @@ name|len
 operator|<=
 literal|0
 condition|)
-name|die
+block|{
+name|free
+argument_list|(
+name|fragment
+argument_list|)
+expr_stmt|;
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -8529,7 +8536,8 @@ name|state
 operator|->
 name|linenr
 argument_list|)
-expr_stmt|;
+return|;
+block|}
 name|fragment
 operator|->
 name|patch
@@ -8660,7 +8668,8 @@ name|is_new
 operator|&&
 name|oldlines
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -8671,7 +8680,7 @@ name|patch
 operator|->
 name|new_name
 argument_list|)
-expr_stmt|;
+return|;
 if|if
 condition|(
 literal|0
@@ -8682,7 +8691,8 @@ name|is_delete
 operator|&&
 name|newlines
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -8693,7 +8703,7 @@ name|patch
 operator|->
 name|old_name
 argument_list|)
-expr_stmt|;
+return|;
 if|if
 condition|(
 operator|!
@@ -10002,6 +10012,16 @@ argument_list|,
 name|patch
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|patchsize
+operator|<
+literal|0
+condition|)
+return|return
+operator|-
+literal|128
+return|;
 if|if
 condition|(
 operator|!
