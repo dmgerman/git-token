@@ -998,17 +998,21 @@ operator|&&
 name|l1
 index|[
 name|i1
-operator|++
 index|]
 operator|==
 name|l2
 index|[
 name|i2
-operator|++
 index|]
 condition|)
-empty_stmt|;
-comment|/* keep going */
+block|{
+name|i1
+operator|++
+expr_stmt|;
+name|i2
+operator|++
+expr_stmt|;
+block|}
 block|}
 comment|/* 	 * After running out of one side, the remaining side must have 	 * nothing but whitespace for the lines to match.  Note that 	 * ignore-whitespace-at-eol case may break out of the loop 	 * while there still are characters remaining on both lines. 	 */
 if|if
