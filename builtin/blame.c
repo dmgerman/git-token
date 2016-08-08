@@ -14570,10 +14570,7 @@ argument_list|(
 operator|&
 name|range_list
 argument_list|,
-name|xstrdup
-argument_list|(
 literal|"1"
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|anchor
