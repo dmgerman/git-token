@@ -333,27 +333,22 @@ argument_list|)
 decl_stmt|;
 end_decl_stmt
 
-begin_decl_stmt
+begin_expr_stmt
+specifier|static
+name|GIT_PATH_FUNC
+argument_list|(
+argument|git_path_commit_editmsg
+argument_list|,
+literal|"COMMIT_EDITMSG"
+argument_list|)
 DECL|variable|use_message_buffer
 specifier|static
 specifier|const
 name|char
-modifier|*
+operator|*
 name|use_message_buffer
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
-DECL|variable|commit_editmsg
-specifier|static
-specifier|const
-name|char
-name|commit_editmsg
-index|[]
-init|=
-literal|"COMMIT_EDITMSG"
-decl_stmt|;
-end_decl_stmt
+expr_stmt|;
+end_expr_stmt
 
 begin_decl_stmt
 DECL|variable|index_lock
@@ -3893,10 +3888,8 @@ name|fp
 operator|=
 name|fopen_for_writing
 argument_list|(
-name|git_path
-argument_list|(
-name|commit_editmsg
-argument_list|)
+name|git_path_commit_editmsg
+argument_list|()
 argument_list|)
 expr_stmt|;
 if|if
@@ -3914,10 +3907,8 @@ argument_list|(
 literal|"could not open '%s'"
 argument_list|)
 argument_list|,
-name|git_path
-argument_list|(
-name|commit_editmsg
-argument_list|)
+name|git_path_commit_editmsg
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|/* Ignore status.displayCommentPrefix: we do need comments in COMMIT_EDITMSG. */
@@ -4675,10 +4666,8 @@ name|index_file
 argument_list|,
 literal|"prepare-commit-msg"
 argument_list|,
-name|git_path
-argument_list|(
-name|commit_editmsg
-argument_list|)
+name|git_path_commit_editmsg
+argument_list|()
 argument_list|,
 name|hook_arg1
 argument_list|,
@@ -4738,10 +4727,8 @@ if|if
 condition|(
 name|launch_editor
 argument_list|(
-name|git_path
-argument_list|(
-name|commit_editmsg
-argument_list|)
+name|git_path_commit_editmsg
+argument_list|()
 argument_list|,
 name|NULL
 argument_list|,
@@ -4779,10 +4766,8 @@ name|index_file
 argument_list|,
 literal|"commit-msg"
 argument_list|,
-name|git_path
-argument_list|(
-name|commit_editmsg
-argument_list|)
+name|git_path_commit_editmsg
+argument_list|()
 argument_list|,
 name|NULL
 argument_list|)
@@ -9546,10 +9531,8 @@ argument_list|(
 operator|&
 name|sb
 argument_list|,
-name|git_path
-argument_list|(
-name|commit_editmsg
-argument_list|)
+name|git_path_commit_editmsg
+argument_list|()
 argument_list|,
 literal|0
 argument_list|)
