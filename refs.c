@@ -4976,13 +4976,13 @@ name|st_add
 argument_list|(
 name|st_mult
 argument_list|(
-name|nr_rules
-argument_list|,
 sizeof|sizeof
 argument_list|(
 name|char
 operator|*
 argument_list|)
+argument_list|,
+name|nr_rules
 argument_list|)
 argument_list|,
 name|total_len

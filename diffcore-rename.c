@@ -2592,9 +2592,9 @@ name|xcalloc
 argument_list|(
 name|st_mult
 argument_list|(
-name|num_create
-argument_list|,
 name|NUM_CANDIDATE_PER_DST
+argument_list|,
+name|num_create
 argument_list|)
 argument_list|,
 sizeof|sizeof
