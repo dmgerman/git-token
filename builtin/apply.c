@@ -7280,6 +7280,10 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Find file diff header  *  * Returns:  *  -1 if no header was found  *  -128 in case of error  *   the size of the header in bytes (called "offset") otherwise  */
+end_comment
+
 begin_function
 DECL|function|find_header
 specifier|static
@@ -7451,7 +7455,7 @@ operator|<
 literal|0
 condition|)
 continue|continue;
-name|die
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -7472,6 +7476,10 @@ argument_list|,
 name|line
 argument_list|)
 expr_stmt|;
+return|return
+operator|-
+literal|128
+return|;
 block|}
 if|if
 condition|(
@@ -7539,7 +7547,8 @@ name|patch
 operator|->
 name|def_name
 condition|)
-name|die
+block|{
+name|error
 argument_list|(
 name|Q_
 argument_list|(
@@ -7563,6 +7572,11 @@ operator|->
 name|linenr
 argument_list|)
 expr_stmt|;
+return|return
+operator|-
+literal|128
+return|;
+block|}
 name|patch
 operator|->
 name|old_name
@@ -7598,7 +7612,8 @@ name|patch
 operator|->
 name|new_name
 condition|)
-name|die
+block|{
+name|error
 argument_list|(
 literal|"git diff header lacks filename information "
 literal|"(line %d)"
@@ -7608,6 +7623,11 @@ operator|->
 name|linenr
 argument_list|)
 expr_stmt|;
+return|return
+operator|-
+literal|128
+return|;
+block|}
 name|patch
 operator|->
 name|is_toplevel_relative
@@ -9909,6 +9929,18 @@ argument_list|,
 name|patch
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|offset
+operator|==
+operator|-
+literal|128
+condition|)
+name|exit
+argument_list|(
+literal|128
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|offset
