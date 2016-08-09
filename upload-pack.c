@@ -4406,7 +4406,7 @@ name|advertise_refs
 argument_list|,
 name|N_
 argument_list|(
-literal|"exit immediately after intial ref advertisement"
+literal|"exit immediately after initial ref advertisement"
 argument_list|)
 argument_list|)
 block|,

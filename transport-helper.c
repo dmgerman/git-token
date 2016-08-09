@@ -5879,10 +5879,10 @@ comment|/* Stream state: More data may be coming in this direction. */
 end_comment
 
 begin_define
-DECL|macro|SSTATE_TRANSFERING
+DECL|macro|SSTATE_TRANSFERRING
 define|#
 directive|define
-name|SSTATE_TRANSFERING
+name|SSTATE_TRANSFERRING
 value|0
 end_define
 
@@ -5918,7 +5918,7 @@ name|STATE_NEEDS_READING
 parameter_list|(
 name|state
 parameter_list|)
-value|((state)<= SSTATE_TRANSFERING)
+value|((state)<= SSTATE_TRANSFERRING)
 end_define
 
 begin_define
@@ -7097,7 +7097,7 @@ name|ptg
 operator|.
 name|state
 operator|=
-name|SSTATE_TRANSFERING
+name|SSTATE_TRANSFERRING
 expr_stmt|;
 name|state
 operator|.
@@ -7165,7 +7165,7 @@ name|gtp
 operator|.
 name|state
 operator|=
-name|SSTATE_TRANSFERING
+name|SSTATE_TRANSFERRING
 expr_stmt|;
 name|state
 operator|.
