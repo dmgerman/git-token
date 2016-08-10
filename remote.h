@@ -378,11 +378,6 @@ name|expect_old_sha1
 range|:
 literal|1
 decl_stmt|,
-DECL|member|expect_old_no_trackback
-name|expect_old_no_trackback
-range|:
-literal|1
-decl_stmt|,
 DECL|member|deletion
 name|deletion
 range|:
