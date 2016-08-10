@@ -15413,6 +15413,20 @@ condition|)
 return|return
 literal|0
 return|;
+comment|/* 	 * Similarly, if we'd have to convert the file contents anyway, that 	 * makes the optimization not worthwhile. 	 */
+if|if
+condition|(
+operator|!
+name|want_file
+operator|&&
+name|would_convert_to_git
+argument_list|(
+name|name
+argument_list|)
+condition|)
+return|return
+literal|0
+return|;
 name|len
 operator|=
 name|strlen
