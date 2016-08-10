@@ -3367,7 +3367,7 @@ name|smart_options
 condition|)
 name|die
 argument_list|(
-literal|"Bug detected: Taking over transport requires non-NULL "
+literal|"BUG: taking over transport requires non-NULL "
 literal|"smart_options field."
 argument_list|)
 expr_stmt|;

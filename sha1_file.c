@@ -3879,7 +3879,7 @@ name|do_not_close
 condition|)
 name|die
 argument_list|(
-literal|"BUG! Want to close pack marked 'do-not-close'"
+literal|"BUG: want to close pack marked 'do-not-close'"
 argument_list|)
 expr_stmt|;
 else|else
@@ -11498,7 +11498,7 @@ name|data
 condition|)
 name|die
 argument_list|(
-literal|"BUG in unpack_entry: left loop at a valid delta"
+literal|"BUG: unpack_entry: left loop at a valid delta"
 argument_list|)
 expr_stmt|;
 break|break;

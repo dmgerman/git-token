@@ -4214,6 +4214,17 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|clean
+operator|<
+literal|0
+condition|)
+name|exit
+argument_list|(
+literal|128
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|active_cache_changed
 operator|&&
 name|write_locked_index
