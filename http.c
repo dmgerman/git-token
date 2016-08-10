@@ -5638,11 +5638,9 @@ condition|(
 operator|!
 name|only_two_digit_prefix
 condition|)
-name|strbuf_addf
+name|strbuf_addstr
 argument_list|(
 name|buf
-argument_list|,
-literal|"%s"
 argument_list|,
 name|hex
 operator|+
