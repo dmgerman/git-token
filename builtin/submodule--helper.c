@@ -3042,11 +3042,10 @@ DECL|member|recommend_shallow
 name|int
 name|recommend_shallow
 decl_stmt|;
-DECL|member|reference
-specifier|const
-name|char
-modifier|*
-name|reference
+DECL|member|references
+name|struct
+name|string_list
+name|references
 decl_stmt|;
 DECL|member|depth
 specifier|const
@@ -3104,7 +3103,7 @@ DECL|macro|SUBMODULE_UPDATE_CLONE_INIT
 define|#
 directive|define
 name|SUBMODULE_UPDATE_CLONE_INIT
-value|{0, MODULE_LIST_INIT, 0, \ 	SUBMODULE_UPDATE_STRATEGY_INIT, 0, -1, NULL, NULL, NULL, NULL, \ 	STRING_LIST_INIT_DUP, 0, NULL, 0, 0}
+value|{0, MODULE_LIST_INIT, 0, \ 	SUBMODULE_UPDATE_STRATEGY_INIT, 0, -1, STRING_LIST_INIT_DUP, \ 	NULL, NULL, NULL, \ 	STRING_LIST_INIT_DUP, 0, NULL, 0, 0}
 end_define
 
 begin_function
@@ -3713,20 +3712,39 @@ if|if
 condition|(
 name|suc
 operator|->
-name|reference
+name|references
+operator|.
+name|nr
 condition|)
-name|argv_array_push
+block|{
+name|struct
+name|string_list_item
+modifier|*
+name|item
+decl_stmt|;
+name|for_each_string_list_item
+argument_list|(
+argument|item
+argument_list|,
+argument|&suc->references
+argument_list|)
+name|argv_array_pushl
 argument_list|(
 operator|&
 name|child
 operator|->
 name|args
 argument_list|,
-name|suc
+literal|"--reference"
+argument_list|,
+name|item
 operator|->
-name|reference
+name|string
+argument_list|,
+name|NULL
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|suc
@@ -4341,7 +4359,7 @@ literal|"rebase, merge, checkout or none"
 argument_list|)
 argument_list|)
 block|,
-name|OPT_STRING
+name|OPT_STRING_LIST
 argument_list|(
 literal|0
 argument_list|,
@@ -4350,7 +4368,7 @@ argument_list|,
 operator|&
 name|suc
 operator|.
-name|reference
+name|references
 argument_list|,
 name|N_
 argument_list|(
