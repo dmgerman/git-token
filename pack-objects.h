@@ -131,6 +131,23 @@ range|:
 literal|1
 decl_stmt|;
 comment|/* assigned write-order */
+comment|/* 	 * State flags for depth-first search used for analyzing delta cycles. 	 */
+enum|enum
+block|{
+DECL|enumerator|DFS_NONE
+name|DFS_NONE
+init|=
+literal|0
+block|,
+DECL|enumerator|DFS_ACTIVE
+name|DFS_ACTIVE
+block|,
+DECL|enumerator|DFS_DONE
+name|DFS_DONE
+DECL|member|dfs_state
+block|}
+name|dfs_state
+enum|;
 block|}
 struct|;
 end_struct
