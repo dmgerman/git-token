@@ -624,9 +624,7 @@ name|struct
 name|object_info
 name|oi
 init|=
-block|{
-name|NULL
-block|}
+name|OBJECT_INFO_INIT
 decl_stmt|;
 specifier|const
 name|unsigned
