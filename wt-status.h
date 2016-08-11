@@ -319,6 +319,15 @@ name|enum
 name|wt_status_format
 name|status_format
 decl_stmt|;
+DECL|member|sha1_commit
+name|unsigned
+name|char
+name|sha1_commit
+index|[
+name|GIT_SHA1_RAWSZ
+index|]
+decl_stmt|;
+comment|/* when not Initial */
 comment|/* These are computed during processing of the individual sections */
 DECL|member|commitable
 name|int
