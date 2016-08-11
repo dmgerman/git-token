@@ -9279,6 +9279,26 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|packed_object_info
+parameter_list|(
+name|struct
+name|packed_git
+modifier|*
+name|pack
+parameter_list|,
+name|off_t
+name|offset
+parameter_list|,
+name|struct
+name|object_info
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/* Dumb servers support */
 end_comment

@@ -9654,7 +9654,6 @@ end_function
 
 begin_function
 DECL|function|packed_object_info
-specifier|static
 name|int
 name|packed_object_info
 parameter_list|(
