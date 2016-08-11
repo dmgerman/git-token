@@ -88,9 +88,9 @@ file|"rerere.h"
 end_include
 
 begin_enum
-DECL|enum|ws_error_action
+DECL|enum|apply_ws_error_action
 enum|enum
-name|ws_error_action
+name|apply_ws_error_action
 block|{
 DECL|enumerator|nowarn_ws_error
 name|nowarn_ws_error
@@ -108,9 +108,9 @@ enum|;
 end_enum
 
 begin_enum
-DECL|enum|ws_ignore
+DECL|enum|apply_ws_ignore
 enum|enum
-name|ws_ignore
+name|apply_ws_ignore
 block|{
 DECL|enumerator|ignore_ws_none
 name|ignore_ws_none
@@ -126,18 +126,18 @@ comment|/*  * We need to keep track of how symlinks in the preimage are  * manip
 end_comment
 
 begin_define
-DECL|macro|SYMLINK_GOES_AWAY
+DECL|macro|APPLY_SYMLINK_GOES_AWAY
 define|#
 directive|define
-name|SYMLINK_GOES_AWAY
+name|APPLY_SYMLINK_GOES_AWAY
 value|01
 end_define
 
 begin_define
-DECL|macro|SYMLINK_IN_RESULT
+DECL|macro|APPLY_SYMLINK_IN_RESULT
 define|#
 directive|define
-name|SYMLINK_IN_RESULT
+name|APPLY_SYMLINK_IN_RESULT
 value|02
 end_define
 
@@ -317,12 +317,12 @@ decl_stmt|;
 comment|/* These control whitespace errors */
 DECL|member|ws_error_action
 name|enum
-name|ws_error_action
+name|apply_ws_error_action
 name|ws_error_action
 decl_stmt|;
 DECL|member|ws_ignore_action
 name|enum
-name|ws_ignore
+name|apply_ws_ignore
 name|ws_ignore_action
 decl_stmt|;
 DECL|member|whitespace_option
@@ -18162,7 +18162,7 @@ name|patch
 operator|->
 name|old_name
 argument_list|,
-name|SYMLINK_GOES_AWAY
+name|APPLY_SYMLINK_GOES_AWAY
 argument_list|)
 expr_stmt|;
 if|if
@@ -18187,7 +18187,7 @@ name|patch
 operator|->
 name|new_name
 argument_list|,
-name|SYMLINK_IN_RESULT
+name|APPLY_SYMLINK_IN_RESULT
 argument_list|)
 expr_stmt|;
 block|}
@@ -18271,7 +18271,7 @@ if|if
 condition|(
 name|change
 operator|&
-name|SYMLINK_IN_RESULT
+name|APPLY_SYMLINK_IN_RESULT
 condition|)
 return|return
 literal|1
@@ -18280,7 +18280,7 @@ if|if
 condition|(
 name|change
 operator|&
-name|SYMLINK_GOES_AWAY
+name|APPLY_SYMLINK_GOES_AWAY
 condition|)
 comment|/* 			 * This cannot be "return 0", because we may 			 * see a new one created at a higher level. 			 */
 continue|continue;
