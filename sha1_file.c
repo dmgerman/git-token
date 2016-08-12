@@ -8336,7 +8336,7 @@ argument_list|,
 name|type_len
 argument_list|)
 expr_stmt|;
-comment|/* 	 * Set type to 0 if its an unknown object and 	 * we're obtaining the type using '--allow-unkown-type' 	 * option. 	 */
+comment|/* 	 * Set type to 0 if its an unknown object and 	 * we're obtaining the type using '--allow-unknown-type' 	 * option. 	 */
 if|if
 condition|(
 operator|(
