@@ -2416,6 +2416,8 @@ comment|/* If there is a D/F conflict and the file for such a conflict 	 * curre
 name|struct
 name|string_list
 name|df_sorted_entries
+init|=
+name|STRING_LIST_INIT_NODUP
 decl_stmt|;
 specifier|const
 name|char
@@ -2441,20 +2443,6 @@ name|call_depth
 condition|)
 return|return;
 comment|/* Ensure D/F conflicts are adjacent in the entries list. */
-name|memset
-argument_list|(
-operator|&
-name|df_sorted_entries
-argument_list|,
-literal|0
-argument_list|,
-sizeof|sizeof
-argument_list|(
-expr|struct
-name|string_list
-argument_list|)
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|i
