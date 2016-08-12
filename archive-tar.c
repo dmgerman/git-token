@@ -1189,7 +1189,7 @@ end_function
 begin_function
 DECL|function|write_extended_header
 specifier|static
-name|int
+name|void
 name|write_extended_header
 parameter_list|(
 name|struct
@@ -1296,9 +1296,6 @@ argument_list|,
 name|size
 argument_list|)
 expr_stmt|;
-return|return
-literal|0
-return|;
 block|}
 end_function
 
@@ -1827,8 +1824,6 @@ operator|>
 literal|0
 condition|)
 block|{
-name|err
-operator|=
 name|write_extended_header
 argument_list|(
 name|args
@@ -1844,20 +1839,6 @@ operator|.
 name|len
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|err
-condition|)
-block|{
-name|free
-argument_list|(
-name|buffer
-argument_list|)
-expr_stmt|;
-return|return
-name|err
-return|;
-block|}
 block|}
 name|strbuf_release
 argument_list|(
