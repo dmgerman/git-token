@@ -3928,11 +3928,24 @@ argument_list|,
 name|err
 argument_list|)
 condition|)
-name|die
+block|{
+name|suc
+operator|->
+name|current
+operator|++
+expr_stmt|;
+name|strbuf_addf
 argument_list|(
-literal|"BUG: ce was a submodule before?"
+name|err
+argument_list|,
+literal|"BUG: submodule considered for cloning,"
+literal|"doesn't need cloning any more?\n"
 argument_list|)
 expr_stmt|;
+return|return
+literal|0
+return|;
+block|}
 name|p
 operator|=
 name|xmalloc
