@@ -5921,12 +5921,10 @@ return|return
 literal|1
 return|;
 block|}
-name|strbuf_addstr
+name|strbuf_add_unique_abbrev
 argument_list|(
 name|sb
 argument_list|,
-name|find_unique_abbrev
-argument_list|(
 name|commit
 operator|->
 name|object
@@ -5940,7 +5938,6 @@ operator|->
 name|pretty_ctx
 operator|->
 name|abbrev
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|strbuf_addstr
@@ -6019,12 +6016,10 @@ condition|)
 return|return
 literal|1
 return|;
-name|strbuf_addstr
+name|strbuf_add_unique_abbrev
 argument_list|(
 name|sb
 argument_list|,
-name|find_unique_abbrev
-argument_list|(
 name|commit
 operator|->
 name|tree
@@ -6040,7 +6035,6 @@ operator|->
 name|pretty_ctx
 operator|->
 name|abbrev
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|c
@@ -6170,12 +6164,10 @@ argument_list|,
 literal|' '
 argument_list|)
 expr_stmt|;
-name|strbuf_addstr
+name|strbuf_add_unique_abbrev
 argument_list|(
 name|sb
 argument_list|,
-name|find_unique_abbrev
-argument_list|(
 name|p
 operator|->
 name|item
@@ -6191,7 +6183,6 @@ operator|->
 name|pretty_ctx
 operator|->
 name|abbrev
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

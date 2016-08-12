@@ -3893,12 +3893,10 @@ argument_list|,
 literal|"  "
 argument_list|)
 expr_stmt|;
-name|strbuf_addstr
+name|strbuf_add_unique_abbrev
 argument_list|(
 name|sb
 argument_list|,
-name|find_unique_abbrev
-argument_list|(
 name|commit
 operator|->
 name|object
@@ -3908,7 +3906,6 @@ operator|.
 name|hash
 argument_list|,
 name|DEFAULT_ABBREV
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|strbuf_addch
