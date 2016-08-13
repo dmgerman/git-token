@@ -2178,10 +2178,11 @@ name|obj
 decl_stmt|;
 comment|/* the named object, could be a tag */
 DECL|member|name
-specifier|const
 name|char
-modifier|*
 name|name
+index|[
+name|FLEX_ARRAY
+index|]
 decl_stmt|;
 block|}
 struct|;
