@@ -8753,7 +8753,7 @@ name|desc
 operator|->
 name|name
 operator|=
-name|strdup
+name|xstrdup
 argument_list|(
 name|name
 argument_list|)
