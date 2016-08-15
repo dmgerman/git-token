@@ -268,11 +268,11 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|option_reference
+DECL|variable|option_required_reference
 specifier|static
 name|struct
 name|string_list
-name|option_reference
+name|option_required_reference
 init|=
 name|STRING_LIST_INIT_NODUP
 decl_stmt|;
@@ -504,7 +504,7 @@ argument_list|,
 literal|"reference"
 argument_list|,
 operator|&
-name|option_reference
+name|option_required_reference
 argument_list|,
 name|N_
 argument_list|(
@@ -1760,7 +1760,7 @@ block|{
 name|for_each_string_list
 argument_list|(
 operator|&
-name|option_reference
+name|option_required_reference
 argument_list|,
 name|add_one_reference
 argument_list|,
@@ -5257,7 +5257,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|option_reference
+name|option_required_reference
 operator|.
 name|nr
 condition|)
