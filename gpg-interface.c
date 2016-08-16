@@ -1150,6 +1150,8 @@ name|NULL
 block|,
 literal|"--status-fd=1"
 block|,
+literal|"--keyid-format=long"
+block|,
 literal|"--verify"
 block|,
 literal|"FILE"
@@ -1291,7 +1293,7 @@ literal|1
 expr_stmt|;
 name|args_gpg
 index|[
-literal|3
+literal|4
 index|]
 operator|=
 name|path
