@@ -1145,6 +1145,8 @@ name|gpg_program
 argument_list|,
 literal|"--status-fd=1"
 argument_list|,
+literal|"--keyid-format=long"
+argument_list|,
 literal|"--verify"
 argument_list|,
 name|temp
