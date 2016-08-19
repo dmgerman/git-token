@@ -3560,6 +3560,11 @@ operator|->
 name|path
 operator|&&
 name|advice_detached_head
+operator|&&
+operator|!
+name|opts
+operator|->
+name|force_detach
 condition|)
 name|detach_advice
 argument_list|(
