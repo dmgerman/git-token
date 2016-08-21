@@ -3712,7 +3712,7 @@ operator|)
 condition|?
 name|_
 argument_list|(
-literal|"Cannot revert during a another revert."
+literal|"Cannot revert during another revert."
 argument_list|)
 else|:
 name|_
