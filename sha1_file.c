@@ -10444,11 +10444,15 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * Remove the entry from the cache, but do _not_ free the associated  * entry data. The caller takes ownership of the "data" buffer, and  * should copy out any fields it wants before detaching.  */
+end_comment
+
 begin_function
-DECL|function|clear_delta_base_cache_entry
+DECL|function|detach_delta_base_cache_entry
 specifier|static
 name|void
-name|clear_delta_base_cache_entry
+name|detach_delta_base_cache_entry
 parameter_list|(
 name|struct
 name|delta_base_cache_entry
@@ -11175,7 +11179,7 @@ name|ent
 operator|->
 name|size
 expr_stmt|;
-name|clear_delta_base_cache_entry
+name|detach_delta_base_cache_entry
 argument_list|(
 name|ent
 argument_list|)
