@@ -2674,6 +2674,15 @@ index|]
 operator|=
 literal|0
 expr_stmt|;
+while|while
+condition|(
+name|rchgo
+index|[
+operator|--
+name|ixo
+index|]
+condition|)
+empty_stmt|;
 block|}
 block|}
 block|}
