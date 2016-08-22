@@ -2578,7 +2578,14 @@ operator|-
 name|ixs
 condition|)
 do|;
-comment|/* 		 * Try to move back the possibly merged group of changes, to match 		 * the recorded position in the other file. 		 */
+if|if
+condition|(
+name|ixref
+operator|<
+name|ix
+condition|)
+block|{
+comment|/* 			 * Try to move back the possibly merged group of changes, to match 			 * the recorded position in the other file. 			 */
 while|while
 condition|(
 name|ixref
@@ -2612,7 +2619,8 @@ index|]
 condition|)
 empty_stmt|;
 block|}
-comment|/* 		 * If a group can be moved back and forth, see if there is a 		 * blank line in the moving space. If there is a blank line, 		 * make sure the last blank line is the end of the group. 		 * 		 * As we already shifted the group forward as far as possible 		 * in the earlier loop, we need to shift it back only if at all. 		 */
+block|}
+elseif|else
 if|if
 condition|(
 operator|(
@@ -2624,6 +2632,7 @@ operator|&&
 name|blank_lines
 condition|)
 block|{
+comment|/* 			 * The group can be slid up to make its last line a 			 * blank line. Do so. 			 * 			 * As we already shifted the group forward as far as 			 * possible in the earlier loop, we need to shift it 			 * back only if at all. 			 */
 while|while
 condition|(
 name|ixs
