@@ -2977,6 +2977,27 @@ modifier|*
 name|value
 parameter_list|)
 block|{
+specifier|const
+name|char
+modifier|*
+name|error_type
+init|=
+operator|(
+name|errno
+operator|==
+name|ERANGE
+operator|)
+condition|?
+name|_
+argument_list|(
+literal|"out of range"
+argument_list|)
+else|:
+name|_
+argument_list|(
+literal|"invalid unit"
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -2999,23 +3020,16 @@ operator|)
 condition|)
 name|die
 argument_list|(
-name|errno
-operator|==
-name|ERANGE
-condition|?
 name|_
 argument_list|(
-literal|"bad numeric config value '%s' for '%s': out of range"
-argument_list|)
-else|:
-name|_
-argument_list|(
-literal|"bad numeric config value '%s' for '%s': invalid unit"
+literal|"bad numeric config value '%s' for '%s': %s"
 argument_list|)
 argument_list|,
 name|value
 argument_list|,
 name|name
+argument_list|,
+name|error_type
 argument_list|)
 expr_stmt|;
 switch|switch
@@ -3030,18 +3044,9 @@ name|CONFIG_ORIGIN_BLOB
 case|:
 name|die
 argument_list|(
-name|errno
-operator|==
-name|ERANGE
-condition|?
 name|_
 argument_list|(
-literal|"bad numeric config value '%s' for '%s' in blob %s: out of range"
-argument_list|)
-else|:
-name|_
-argument_list|(
-literal|"bad numeric config value '%s' for '%s' in blob %s: invalid unit"
+literal|"bad numeric config value '%s' for '%s' in blob %s: %s"
 argument_list|)
 argument_list|,
 name|value
@@ -3051,6 +3056,8 @@ argument_list|,
 name|cf
 operator|->
 name|name
+argument_list|,
+name|error_type
 argument_list|)
 expr_stmt|;
 case|case
@@ -3058,18 +3065,9 @@ name|CONFIG_ORIGIN_FILE
 case|:
 name|die
 argument_list|(
-name|errno
-operator|==
-name|ERANGE
-condition|?
 name|_
 argument_list|(
-literal|"bad numeric config value '%s' for '%s' in file %s: out of range"
-argument_list|)
-else|:
-name|_
-argument_list|(
-literal|"bad numeric config value '%s' for '%s' in file %s: invalid unit"
+literal|"bad numeric config value '%s' for '%s' in file %s: %s"
 argument_list|)
 argument_list|,
 name|value
@@ -3079,6 +3077,8 @@ argument_list|,
 name|cf
 operator|->
 name|name
+argument_list|,
+name|error_type
 argument_list|)
 expr_stmt|;
 case|case
@@ -3086,23 +3086,16 @@ name|CONFIG_ORIGIN_STDIN
 case|:
 name|die
 argument_list|(
-name|errno
-operator|==
-name|ERANGE
-condition|?
 name|_
 argument_list|(
-literal|"bad numeric config value '%s' for '%s' in standard input: out of range"
-argument_list|)
-else|:
-name|_
-argument_list|(
-literal|"bad numeric config value '%s' for '%s' in standard input: invalid unit"
+literal|"bad numeric config value '%s' for '%s' in standard input: %s"
 argument_list|)
 argument_list|,
 name|value
 argument_list|,
 name|name
+argument_list|,
+name|error_type
 argument_list|)
 expr_stmt|;
 case|case
@@ -3110,18 +3103,9 @@ name|CONFIG_ORIGIN_SUBMODULE_BLOB
 case|:
 name|die
 argument_list|(
-name|errno
-operator|==
-name|ERANGE
-condition|?
 name|_
 argument_list|(
-literal|"bad numeric config value '%s' for '%s' in submodule-blob %s: out of range"
-argument_list|)
-else|:
-name|_
-argument_list|(
-literal|"bad numeric config value '%s' for '%s' in submodule-blob %s: invalid unit"
+literal|"bad numeric config value '%s' for '%s' in submodule-blob %s: %s"
 argument_list|)
 argument_list|,
 name|value
@@ -3131,6 +3115,8 @@ argument_list|,
 name|cf
 operator|->
 name|name
+argument_list|,
+name|error_type
 argument_list|)
 expr_stmt|;
 case|case
@@ -3138,18 +3124,9 @@ name|CONFIG_ORIGIN_CMDLINE
 case|:
 name|die
 argument_list|(
-name|errno
-operator|==
-name|ERANGE
-condition|?
 name|_
 argument_list|(
-literal|"bad numeric config value '%s' for '%s' in command line %s: out of range"
-argument_list|)
-else|:
-name|_
-argument_list|(
-literal|"bad numeric config value '%s' for '%s' in command line %s: invalid unit"
+literal|"bad numeric config value '%s' for '%s' in command line %s: %s"
 argument_list|)
 argument_list|,
 name|value
@@ -3159,23 +3136,16 @@ argument_list|,
 name|cf
 operator|->
 name|name
+argument_list|,
+name|error_type
 argument_list|)
 expr_stmt|;
 default|default:
 name|die
 argument_list|(
-name|errno
-operator|==
-name|ERANGE
-condition|?
 name|_
 argument_list|(
-literal|"bad numeric config value '%s' for '%s' in %s: out of range"
-argument_list|)
-else|:
-name|_
-argument_list|(
-literal|"bad numeric config value '%s' for '%s' in %s: invalid unit"
+literal|"bad numeric config value '%s' for '%s' in %s: %s"
 argument_list|)
 argument_list|,
 name|value
@@ -3185,6 +3155,8 @@ argument_list|,
 name|cf
 operator|->
 name|name
+argument_list|,
+name|error_type
 argument_list|)
 expr_stmt|;
 block|}
