@@ -3762,6 +3762,25 @@ endif|#
 directive|endif
 end_endif
 
+begin_ifndef
+ifndef|#
+directive|ifndef
+name|O_CLOEXEC
+end_ifndef
+
+begin_define
+DECL|macro|O_CLOEXEC
+define|#
+directive|define
+name|O_CLOEXEC
+value|0
+end_define
+
+begin_endif
+endif|#
+directive|endif
+end_endif
+
 begin_ifdef
 ifdef|#
 directive|ifdef
