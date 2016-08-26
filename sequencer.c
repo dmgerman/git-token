@@ -5876,7 +5876,8 @@ argument_list|,
 name|NULL
 argument_list|)
 decl_stmt|;
-name|die
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -5890,11 +5891,12 @@ argument_list|(
 name|type
 argument_list|)
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 block|}
 else|else
-name|die
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -5903,7 +5905,7 @@ argument_list|)
 argument_list|,
 name|name
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 comment|/* 	 * If we were called as "git cherry-pick<commit>", just 	 * cherry-pick/revert it, set CHERRY_PICK_HEAD / 	 * REVERT_HEAD, and don't touch the sequencer state. 	 * This means it is possible to cherry-pick in the middle 	 * of a cherry-pick sequence. 	 */
 if|if
@@ -5962,14 +5964,15 @@ operator|->
 name|revs
 argument_list|)
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
 literal|"revision walk setup failed"
 argument_list|)
 argument_list|)
-expr_stmt|;
+return|;
 name|cmit
 operator|=
 name|get_revision
@@ -5991,11 +5994,12 @@ operator|->
 name|revs
 argument_list|)
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 literal|"BUG: expected exactly one commit from walk"
 argument_list|)
-expr_stmt|;
+return|;
 return|return
 name|single_pick
 argument_list|(
