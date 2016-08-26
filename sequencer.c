@@ -3012,7 +3012,7 @@ name|res
 operator|==
 literal|1
 operator|)
-condition|)
+operator|&&
 name|update_ref
 argument_list|(
 name|NULL
@@ -3031,8 +3031,13 @@ name|NULL
 argument_list|,
 name|REF_NODEREF
 argument_list|,
-name|UPDATE_REFS_DIE_ON_ERR
+name|UPDATE_REFS_MSG_ON_ERR
 argument_list|)
+condition|)
+name|res
+operator|=
+operator|-
+literal|1
 expr_stmt|;
 if|if
 condition|(
@@ -3057,7 +3062,7 @@ name|res
 operator|==
 literal|1
 operator|)
-condition|)
+operator|&&
 name|update_ref
 argument_list|(
 name|NULL
@@ -3076,8 +3081,13 @@ name|NULL
 argument_list|,
 name|REF_NODEREF
 argument_list|,
-name|UPDATE_REFS_DIE_ON_ERR
+name|UPDATE_REFS_MSG_ON_ERR
 argument_list|)
+condition|)
+name|res
+operator|=
+operator|-
+literal|1
 expr_stmt|;
 if|if
 condition|(
