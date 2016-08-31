@@ -980,10 +980,6 @@ DECL|member|output_prefix
 name|diff_prefix_fn_t
 name|output_prefix
 decl_stmt|;
-DECL|member|output_prefix_length
-name|int
-name|output_prefix_length
-decl_stmt|;
 DECL|member|output_prefix_data
 name|void
 modifier|*

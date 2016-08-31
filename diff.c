@@ -9363,9 +9363,10 @@ operator|=
 name|term_columns
 argument_list|()
 operator|-
-name|options
-operator|->
-name|output_prefix_length
+name|strlen
+argument_list|(
+name|line_prefix
+argument_list|)
 expr_stmt|;
 else|else
 name|width
