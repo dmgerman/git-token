@@ -536,14 +536,6 @@ value|(1<< 22)
 end_define
 
 begin_define
-DECL|macro|DIFF_OPT_SUBMODULE_LOG
-define|#
-directive|define
-name|DIFF_OPT_SUBMODULE_LOG
-value|(1<< 23)
-end_define
-
-begin_define
 DECL|macro|DIFF_OPT_DIRTY_SUBMODULES
 define|#
 directive|define
@@ -729,6 +721,22 @@ name|DIFF_WORDS_PLAIN
 block|,
 DECL|enumerator|DIFF_WORDS_COLOR
 name|DIFF_WORDS_COLOR
+block|}
+enum|;
+end_enum
+
+begin_enum
+DECL|enum|diff_submodule_format
+enum|enum
+name|diff_submodule_format
+block|{
+DECL|enumerator|DIFF_SUBMODULE_SHORT
+name|DIFF_SUBMODULE_SHORT
+init|=
+literal|0
+block|,
+DECL|enumerator|DIFF_SUBMODULE_LOG
+name|DIFF_SUBMODULE_LOG
 block|}
 enum|;
 end_enum
@@ -928,6 +936,11 @@ DECL|member|word_diff
 name|enum
 name|diff_words_type
 name|word_diff
+decl_stmt|;
+DECL|member|submodule_format
+name|enum
+name|diff_submodule_format
+name|submodule_format
 decl_stmt|;
 comment|/* this is set by diffcore for DIFF_FORMAT_PATCH */
 DECL|member|found_changes
