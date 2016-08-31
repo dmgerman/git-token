@@ -1014,6 +1014,10 @@ decl_stmt|;
 name|struct
 name|color
 name|c
+init|=
+block|{
+name|COLOR_UNSPECIFIED
+block|}
 decl_stmt|;
 name|int
 name|val
