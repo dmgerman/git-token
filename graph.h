@@ -12,6 +12,12 @@ directive|define
 name|GRAPH_H
 end_define
 
+begin_include
+include|#
+directive|include
+file|"diff.h"
+end_include
+
 begin_comment
 comment|/* A graph is a pointer to this opaque structure */
 end_comment
@@ -21,6 +27,22 @@ struct_decl|struct
 name|git_graph
 struct_decl|;
 end_struct_decl
+
+begin_comment
+comment|/*  * Called to setup global display of line_prefix diff option.  *  * Passed a diff_options structure which indicates the line_prefix and the  * file to output the prefix to. This is sort of a hack used so that the  * line_prefix will be honored by all flows which also honor "--graph"  * regardless of whether a graph has actually been setup. The normal graph  * flow will honor the exact diff_options passed, but a NULL graph will cause  * display of a line_prefix to stdout.  */
+end_comment
+
+begin_function_decl
+name|void
+name|graph_setup_line_prefix
+parameter_list|(
+name|struct
+name|diff_options
+modifier|*
+name|diffopt
+parameter_list|)
+function_decl|;
+end_function_decl
 
 begin_comment
 comment|/*  * Set up a custom scheme for column colors.  *  * The default column color scheme inserts ANSI color escapes to colorize  * the graph. The various color escapes are stored in an array of strings  * where each entry corresponds to a color, except for the last entry,  * which denotes the escape for resetting the color back to the default.  * When generating the graph, strings from this array are inserted before  * and after the various column characters.  *  * This function allows you to enable a custom array of color escapes.  * The 'colors_max' argument is the index of the last "reset" entry.  *  * This functions must be called BEFORE graph_init() is called.  *  * NOTE: This function isn't used in Git outside graph.c but it is used  * by CGit (http://git.zx2c4.com/cgit/) to use HTML for colors.  */
@@ -205,7 +227,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/*  * Print a commit message strbuf and the remainder of the graph to stdout.  *  * This is similar to graph_show_strbuf(), but it always prints the  * remainder of the graph.  *  * If the strbuf ends with a newline, the output printed by  * graph_show_commit_msg() will end with a newline.  If the strbuf is  * missing a terminating newline (including if it is empty), the output  * printed by graph_show_commit_msg() will also be missing a terminating  * newline.  */
+comment|/*  * Print a commit message strbuf and the remainder of the graph to stdout.  *  * This is similar to graph_show_strbuf(), but it always prints the  * remainder of the graph.  *  * If the strbuf ends with a newline, the output printed by  * graph_show_commit_msg() will end with a newline.  If the strbuf is  * missing a terminating newline (including if it is empty), the output  * printed by graph_show_commit_msg() will also be missing a terminating  * newline.  *  * Note that unlike some other graph display functions, you must pass the file  * handle directly. It is assumed that this is the same file handle as the  * file specified by the graph diff options. This is necessary so that  * graph_show_commit_msg can be called even with a NULL graph.  */
 end_comment
 
 begin_function_decl
@@ -216,6 +238,10 @@ name|struct
 name|git_graph
 modifier|*
 name|graph
+parameter_list|,
+name|FILE
+modifier|*
+name|file
 parameter_list|,
 name|struct
 name|strbuf

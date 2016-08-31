@@ -766,6 +766,16 @@ decl_stmt|,
 modifier|*
 name|b_prefix
 decl_stmt|;
+DECL|member|line_prefix
+specifier|const
+name|char
+modifier|*
+name|line_prefix
+decl_stmt|;
+DECL|member|line_prefix_length
+name|size_t
+name|line_prefix_length
+decl_stmt|;
 DECL|member|flags
 name|unsigned
 name|flags
