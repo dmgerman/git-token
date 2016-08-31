@@ -11335,6 +11335,13 @@ comment|/* path is in the index */
 elseif|else
 if|if
 condition|(
+operator|-
+literal|1
+operator|-
+name|pos
+operator|<
+name|active_nr
+operator|&&
 operator|!
 name|strcmp
 argument_list|(
