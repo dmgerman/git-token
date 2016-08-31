@@ -575,6 +575,8 @@ decl_stmt|;
 name|size_t
 name|alloc
 decl_stmt|;
+name|ret
+operator|=
 name|strbuf_git_path_submodule
 argument_list|(
 operator|&
@@ -585,6 +587,13 @@ argument_list|,
 literal|"objects/"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|ret
+condition|)
+goto|goto
+name|done
+goto|;
 if|if
 condition|(
 operator|!
@@ -2000,7 +2009,7 @@ argument_list|)
 condition|)
 name|message
 operator|=
-literal|"(not checked out)"
+literal|"(not initialized)"
 expr_stmt|;
 elseif|else
 if|if

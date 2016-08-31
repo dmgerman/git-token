@@ -4963,7 +4963,7 @@ end_empty_stmt
 
 begin_function_decl
 specifier|extern
-name|void
+name|int
 name|strbuf_git_path_submodule
 parameter_list|(
 name|struct
