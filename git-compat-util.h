@@ -2422,6 +2422,17 @@ parameter_list|)
 value|(error(__VA_ARGS__), const_error())
 end_define
 
+begin_define
+DECL|macro|error_errno
+define|#
+directive|define
+name|error_errno
+parameter_list|(
+modifier|...
+parameter_list|)
+value|(error_errno(__VA_ARGS__), const_error())
+end_define
+
 begin_endif
 endif|#
 directive|endif
