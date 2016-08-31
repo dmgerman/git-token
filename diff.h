@@ -737,6 +737,9 @@ literal|0
 block|,
 DECL|enumerator|DIFF_SUBMODULE_LOG
 name|DIFF_SUBMODULE_LOG
+block|,
+DECL|enumerator|DIFF_SUBMODULE_INLINE_DIFF
+name|DIFF_SUBMODULE_INLINE_DIFF
 block|}
 enum|;
 end_enum
