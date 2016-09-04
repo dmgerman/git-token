@@ -6751,7 +6751,7 @@ parameter_list|(
 specifier|const
 name|char
 modifier|*
-name|path
+name|submodule
 parameter_list|,
 specifier|const
 name|char
@@ -6769,7 +6769,7 @@ name|len
 init|=
 name|strlen
 argument_list|(
-name|path
+name|submodule
 argument_list|)
 decl_stmt|;
 name|struct
@@ -6784,7 +6784,7 @@ while|while
 condition|(
 name|len
 operator|&&
-name|path
+name|submodule
 index|[
 name|len
 operator|-
@@ -6807,7 +6807,7 @@ literal|1
 return|;
 if|if
 condition|(
-name|path
+name|submodule
 index|[
 name|len
 index|]
@@ -6820,7 +6820,7 @@ name|stripped
 init|=
 name|xmemdupz
 argument_list|(
-name|path
+name|submodule
 argument_list|,
 name|len
 argument_list|)
@@ -6844,7 +6844,7 @@ name|refs
 operator|=
 name|get_ref_store
 argument_list|(
-name|path
+name|submodule
 argument_list|)
 expr_stmt|;
 block|}
