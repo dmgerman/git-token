@@ -188,6 +188,12 @@ name|int
 name|unsafe_paths
 decl_stmt|;
 comment|/* Other non boolean parameters */
+DECL|member|index_file
+specifier|const
+name|char
+modifier|*
+name|index_file
+decl_stmt|;
 DECL|member|apply_verbosity
 name|enum
 name|apply_verbosity
