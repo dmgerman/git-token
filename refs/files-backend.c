@@ -5538,8 +5538,6 @@ name|strlen
 argument_list|(
 name|path
 argument_list|)
-decl_stmt|,
-name|retval
 decl_stmt|;
 name|struct
 name|strbuf
@@ -5619,8 +5617,7 @@ operator|&
 name|submodule
 argument_list|)
 expr_stmt|;
-name|retval
-operator|=
+return|return
 name|resolve_gitlink_ref_recursive
 argument_list|(
 name|refs
@@ -5631,9 +5628,6 @@ name|sha1
 argument_list|,
 literal|0
 argument_list|)
-expr_stmt|;
-return|return
-name|retval
 return|;
 block|}
 end_function
