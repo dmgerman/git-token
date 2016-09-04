@@ -1039,6 +1039,29 @@ parameter_list|)
 function_decl|;
 end_typedef
 
+begin_typedef
+DECL|typedef|delete_refs_fn
+typedef|typedef
+name|int
+name|delete_refs_fn
+parameter_list|(
+name|struct
+name|ref_store
+modifier|*
+name|ref_store
+parameter_list|,
+name|struct
+name|string_list
+modifier|*
+name|refnames
+parameter_list|,
+name|unsigned
+name|int
+name|flags
+parameter_list|)
+function_decl|;
+end_typedef
+
 begin_comment
 comment|/*  * Iterate over the references in the specified ref_store that are  * within find_containing_dir(prefix). If prefix is NULL or the empty  * string, iterate over all references in the submodule.  */
 end_comment
@@ -1371,6 +1394,11 @@ DECL|member|create_symref
 name|create_symref_fn
 modifier|*
 name|create_symref
+decl_stmt|;
+DECL|member|delete_refs
+name|delete_refs_fn
+modifier|*
+name|delete_refs
 decl_stmt|;
 DECL|member|iterator_begin
 name|ref_iterator_begin_fn

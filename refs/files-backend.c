@@ -9598,10 +9598,16 @@ block|}
 end_function
 
 begin_function
-DECL|function|delete_refs
+DECL|function|files_delete_refs
+specifier|static
 name|int
-name|delete_refs
+name|files_delete_refs
 parameter_list|(
+name|struct
+name|ref_store
+modifier|*
+name|ref_store
+parameter_list|,
 name|struct
 name|string_list
 modifier|*
@@ -9617,9 +9623,11 @@ name|files_ref_store
 modifier|*
 name|refs
 init|=
-name|get_files_ref_store
+name|files_downcast
 argument_list|(
-name|NULL
+name|ref_store
+argument_list|,
+literal|0
 argument_list|,
 literal|"delete_refs"
 argument_list|)
@@ -17168,6 +17176,8 @@ block|,
 name|files_peel_ref
 block|,
 name|files_create_symref
+block|,
+name|files_delete_refs
 block|,
 name|files_ref_iterator_begin
 block|,
