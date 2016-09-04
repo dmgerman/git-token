@@ -22538,10 +22538,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|option_parse_exclude
+DECL|function|apply_option_parse_exclude
 specifier|static
 name|int
-name|option_parse_exclude
+name|apply_option_parse_exclude
 parameter_list|(
 specifier|const
 name|struct
@@ -22583,10 +22583,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|option_parse_include
+DECL|function|apply_option_parse_include
 specifier|static
 name|int
-name|option_parse_include
+name|apply_option_parse_include
 parameter_list|(
 specifier|const
 name|struct
@@ -22634,10 +22634,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|option_parse_p
+DECL|function|apply_option_parse_p
 specifier|static
 name|int
-name|option_parse_p
+name|apply_option_parse_p
 parameter_list|(
 specifier|const
 name|struct
@@ -22685,10 +22685,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|option_parse_space_change
+DECL|function|apply_option_parse_space_change
 specifier|static
 name|int
-name|option_parse_space_change
+name|apply_option_parse_space_change
 parameter_list|(
 specifier|const
 name|struct
@@ -22738,10 +22738,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|option_parse_whitespace
+DECL|function|apply_option_parse_whitespace
 specifier|static
 name|int
-name|option_parse_whitespace
+name|apply_option_parse_whitespace
 parameter_list|(
 specifier|const
 name|struct
@@ -22794,10 +22794,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|option_parse_directory
+DECL|function|apply_option_parse_directory
 specifier|static
 name|int
-name|option_parse_directory
+name|apply_option_parse_directory
 parameter_list|(
 specifier|const
 name|struct
@@ -23411,7 +23411,7 @@ argument_list|)
 block|,
 literal|0
 block|,
-name|option_parse_exclude
+name|apply_option_parse_exclude
 block|}
 block|,
 block|{
@@ -23436,7 +23436,7 @@ argument_list|)
 block|,
 literal|0
 block|,
-name|option_parse_include
+name|apply_option_parse_include
 block|}
 block|,
 block|{
@@ -23461,7 +23461,7 @@ argument_list|)
 block|,
 literal|0
 block|,
-name|option_parse_p
+name|apply_option_parse_p
 block|}
 block|,
 name|OPT_BOOL
@@ -23722,7 +23722,7 @@ argument_list|)
 block|,
 literal|0
 block|,
-name|option_parse_whitespace
+name|apply_option_parse_whitespace
 block|}
 block|,
 block|{
@@ -23744,7 +23744,7 @@ argument_list|)
 block|,
 name|PARSE_OPT_NOARG
 block|,
-name|option_parse_space_change
+name|apply_option_parse_space_change
 block|}
 block|,
 block|{
@@ -23766,7 +23766,7 @@ argument_list|)
 block|,
 name|PARSE_OPT_NOARG
 block|,
-name|option_parse_space_change
+name|apply_option_parse_space_change
 block|}
 block|,
 name|OPT_BOOL
@@ -23906,7 +23906,7 @@ argument_list|)
 block|,
 literal|0
 block|,
-name|option_parse_directory
+name|apply_option_parse_directory
 block|}
 block|,
 name|OPT_END
