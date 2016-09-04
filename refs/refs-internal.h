@@ -1352,6 +1352,11 @@ name|ref_transaction_commit_fn
 modifier|*
 name|transaction_commit
 decl_stmt|;
+DECL|member|initial_transaction_commit
+name|ref_transaction_commit_fn
+modifier|*
+name|initial_transaction_commit
+decl_stmt|;
 DECL|member|pack_refs
 name|pack_refs_fn
 modifier|*

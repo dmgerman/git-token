@@ -16013,10 +16013,16 @@ block|}
 end_function
 
 begin_function
-DECL|function|initial_ref_transaction_commit
+DECL|function|files_initial_transaction_commit
+specifier|static
 name|int
-name|initial_ref_transaction_commit
+name|files_initial_transaction_commit
 parameter_list|(
+name|struct
+name|ref_store
+modifier|*
+name|ref_store
+parameter_list|,
 name|struct
 name|ref_transaction
 modifier|*
@@ -16033,9 +16039,11 @@ name|files_ref_store
 modifier|*
 name|refs
 init|=
-name|get_files_ref_store
+name|files_downcast
 argument_list|(
-name|NULL
+name|ref_store
+argument_list|,
+literal|0
 argument_list|,
 literal|"initial_ref_transaction_commit"
 argument_list|)
@@ -17152,6 +17160,8 @@ block|,
 name|files_ref_store_create
 block|,
 name|files_transaction_commit
+block|,
+name|files_initial_transaction_commit
 block|,
 name|files_pack_refs
 block|,
