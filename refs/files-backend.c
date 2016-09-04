@@ -17155,5 +17155,19 @@ return|;
 block|}
 end_function
 
+begin_decl_stmt
+DECL|variable|refs_be_files
+name|struct
+name|ref_storage_be
+name|refs_be_files
+init|=
+block|{
+name|NULL
+block|,
+literal|"files"
+block|}
+decl_stmt|;
+end_decl_stmt
+
 end_unit
 
