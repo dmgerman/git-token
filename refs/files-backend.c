@@ -9197,10 +9197,16 @@ block|}
 end_function
 
 begin_function
-DECL|function|pack_refs
+DECL|function|files_pack_refs
+specifier|static
 name|int
-name|pack_refs
+name|files_pack_refs
 parameter_list|(
+name|struct
+name|ref_store
+modifier|*
+name|ref_store
+parameter_list|,
 name|unsigned
 name|int
 name|flags
@@ -9211,9 +9217,11 @@ name|files_ref_store
 modifier|*
 name|refs
 init|=
-name|get_files_ref_store
+name|files_downcast
 argument_list|(
-name|NULL
+name|ref_store
+argument_list|,
+literal|0
 argument_list|,
 literal|"pack_refs"
 argument_list|)
@@ -16952,6 +16960,8 @@ block|,
 name|files_ref_store_create
 block|,
 name|files_transaction_commit
+block|,
+name|files_pack_refs
 block|,
 name|files_read_raw_ref
 block|,
