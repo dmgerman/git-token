@@ -46,6 +46,30 @@ block|}
 enum|;
 end_enum
 
+begin_enum
+DECL|enum|apply_verbosity
+enum|enum
+name|apply_verbosity
+block|{
+DECL|enumerator|verbosity_silent
+name|verbosity_silent
+init|=
+operator|-
+literal|1
+block|,
+DECL|enumerator|verbosity_normal
+name|verbosity_normal
+init|=
+literal|0
+block|,
+DECL|enumerator|verbosity_verbose
+name|verbosity_verbose
+init|=
+literal|1
+block|}
+enum|;
+end_enum
+
 begin_comment
 comment|/*  * We need to keep track of how symlinks in the preimage are  * manipulated by the patches.  A patch to add a/b/c where a/b  * is a symlink should not be allowed to affect the directory  * the symlink points at, but if the same patch removes a/b,  * it is perfectly fine, as the patch removes a/b to make room  * to create a directory a/b so that a/b/c can be created.  *  * See also "struct string_list symlink_changes" in "struct  * apply_state".  */
 end_comment
@@ -147,10 +171,6 @@ DECL|member|apply_with_reject
 name|int
 name|apply_with_reject
 decl_stmt|;
-DECL|member|apply_verbosely
-name|int
-name|apply_verbosely
-decl_stmt|;
 DECL|member|no_add
 name|int
 name|no_add
@@ -168,6 +188,11 @@ name|int
 name|unsafe_paths
 decl_stmt|;
 comment|/* Other non boolean parameters */
+DECL|member|apply_verbosity
+name|enum
+name|apply_verbosity
+name|apply_verbosity
+decl_stmt|;
 DECL|member|fake_ancestor
 specifier|const
 name|char

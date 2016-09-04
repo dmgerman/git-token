@@ -555,7 +555,7 @@ argument_list|(
 operator|&
 name|state
 operator|.
-name|apply_verbosely
+name|apply_verbosity
 argument_list|,
 name|N_
 argument_list|(
