@@ -914,14 +914,26 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/* refs backends */
+comment|/*  * Only include per-worktree refs in a do_for_each_ref*() iteration.  * Normally this will be used with a files ref_store, since that's  * where all reference backends will presumably store their  * per-worktree refs.  */
 end_comment
+
+begin_define
+DECL|macro|DO_FOR_EACH_PER_WORKTREE_ONLY
+define|#
+directive|define
+name|DO_FOR_EACH_PER_WORKTREE_ONLY
+value|0x02
+end_define
 
 begin_struct_decl
 struct_decl|struct
 name|ref_store
 struct_decl|;
 end_struct_decl
+
+begin_comment
+comment|/* refs backends */
+end_comment
 
 begin_comment
 comment|/*  * Initialize the ref_store for the specified submodule, or for the  * main repository if submodule == NULL. These functions should call  * base_ref_store_init() to initialize the shared part of the  * ref_store and to record the ref_store for later lookup.  */
