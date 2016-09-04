@@ -20603,13 +20603,13 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * We optimistically assume that the directories exist,  * which is true 99% of the time anyway. If they don't,  * we create them and try again.  */
+comment|/*  * We optimistically assume that the directories exist,  * which is true 99% of the time anyway. If they don't,  * we create them and try again.  *  * Returns:  *   -1 on error  *   0 otherwise  */
 end_comment
 
 begin_function
 DECL|function|create_one_file
 specifier|static
-name|void
+name|int
 name|create_one_file
 parameter_list|(
 name|struct
@@ -20643,7 +20643,9 @@ name|state
 operator|->
 name|cached
 condition|)
-return|return;
+return|return
+literal|0
+return|;
 name|res
 operator|=
 name|try_create_file
@@ -20663,17 +20665,18 @@ name|res
 operator|<
 literal|0
 condition|)
-name|exit
-argument_list|(
-literal|128
-argument_list|)
-expr_stmt|;
+return|return
+operator|-
+literal|1
+return|;
 if|if
 condition|(
 operator|!
 name|res
 condition|)
-return|return;
+return|return
+literal|0
+return|;
 if|if
 condition|(
 name|errno
@@ -20688,7 +20691,9 @@ argument_list|(
 name|path
 argument_list|)
 condition|)
-return|return;
+return|return
+literal|0
+return|;
 name|res
 operator|=
 name|try_create_file
@@ -20708,17 +20713,18 @@ name|res
 operator|<
 literal|0
 condition|)
-name|exit
-argument_list|(
-literal|128
-argument_list|)
-expr_stmt|;
+return|return
+operator|-
+literal|1
+return|;
 if|if
 condition|(
 operator|!
 name|res
 condition|)
-return|return;
+return|return
+literal|0
+return|;
 block|}
 if|if
 condition|(
@@ -20829,11 +20835,10 @@ name|res
 operator|<
 literal|0
 condition|)
-name|exit
-argument_list|(
-literal|128
-argument_list|)
-expr_stmt|;
+return|return
+operator|-
+literal|1
+return|;
 if|if
 condition|(
 operator|!
@@ -20850,7 +20855,9 @@ argument_list|,
 name|path
 argument_list|)
 condition|)
-return|return;
+return|return
+literal|0
+return|;
 name|unlink_or_warn
 argument_list|(
 name|newpath
@@ -20870,7 +20877,8 @@ name|nr
 expr_stmt|;
 block|}
 block|}
-name|die_errno
+return|return
+name|error_errno
 argument_list|(
 name|_
 argument_list|(
@@ -20881,7 +20889,7 @@ name|path
 argument_list|,
 name|mode
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 end_function
 
@@ -21157,6 +21165,8 @@ name|S_IFREG
 operator||
 literal|0644
 expr_stmt|;
+if|if
+condition|(
 name|create_one_file
 argument_list|(
 name|state
@@ -21169,7 +21179,11 @@ name|buf
 argument_list|,
 name|size
 argument_list|)
-expr_stmt|;
+condition|)
+return|return
+operator|-
+literal|1
+return|;
 if|if
 condition|(
 name|patch
