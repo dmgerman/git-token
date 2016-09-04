@@ -6444,6 +6444,16 @@ decl_stmt|;
 name|int
 name|symref_count
 decl_stmt|;
+name|struct
+name|ref_store
+modifier|*
+name|refs
+init|=
+name|get_ref_store
+argument_list|(
+name|NULL
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -6524,6 +6534,8 @@ if|if
 condition|(
 name|read_raw_ref
 argument_list|(
+name|refs
+argument_list|,
 name|refname
 argument_list|,
 name|sha1
