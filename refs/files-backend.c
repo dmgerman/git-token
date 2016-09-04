@@ -105,7 +105,7 @@ end_struct
 
 begin_struct_decl
 struct_decl|struct
-name|ref_cache
+name|files_ref_store
 struct_decl|;
 end_struct_decl
 
@@ -130,12 +130,12 @@ DECL|member|sorted
 name|int
 name|sorted
 decl_stmt|;
-comment|/* A pointer to the ref_cache that contains this ref_dir. */
-DECL|member|ref_cache
+comment|/* A pointer to the files_ref_store that contains this ref_dir. */
+DECL|member|ref_store
 name|struct
-name|ref_cache
+name|files_ref_store
 modifier|*
-name|ref_cache
+name|ref_store
 decl_stmt|;
 DECL|member|entries
 name|struct
@@ -280,9 +280,9 @@ modifier|*
 name|create_dir_entry
 parameter_list|(
 name|struct
-name|ref_cache
+name|files_ref_store
 modifier|*
-name|ref_cache
+name|ref_store
 parameter_list|,
 specifier|const
 name|char
@@ -415,7 +415,7 @@ name|create_dir_entry
 argument_list|(
 name|dir
 operator|->
-name|ref_cache
+name|ref_store
 argument_list|,
 literal|"refs/bisect/"
 argument_list|,
@@ -810,9 +810,9 @@ modifier|*
 name|create_dir_entry
 parameter_list|(
 name|struct
-name|ref_cache
+name|files_ref_store
 modifier|*
-name|ref_cache
+name|ref_store
 parameter_list|,
 specifier|const
 name|char
@@ -848,9 +848,9 @@ name|u
 operator|.
 name|subdir
 operator|.
-name|ref_cache
+name|ref_store
 operator|=
-name|ref_cache
+name|ref_store
 expr_stmt|;
 name|direntry
 operator|->
@@ -1231,7 +1231,7 @@ name|create_dir_entry
 argument_list|(
 name|dir
 operator|->
-name|ref_cache
+name|ref_store
 argument_list|,
 name|subdirname
 argument_list|,
@@ -3438,7 +3438,7 @@ name|ref_entry
 modifier|*
 name|root
 decl_stmt|;
-comment|/* 	 * Count of references to the data structure in this instance, 	 * including the pointer from ref_cache::packed if any.  The 	 * data will not be freed as long as the reference count is 	 * nonzero. 	 */
+comment|/* 	 * Count of references to the data structure in this instance, 	 * including the pointer from files_ref_store::packed if any. 	 * The data will not be freed as long as the reference count 	 * is nonzero. 	 */
 DECL|member|referrers
 name|unsigned
 name|int
@@ -3466,14 +3466,14 @@ comment|/*  * Future: need to be in "struct repository"  * when doing a full lib
 end_comment
 
 begin_struct
-DECL|struct|ref_cache
+DECL|struct|files_ref_store
 specifier|static
 struct|struct
-name|ref_cache
+name|files_ref_store
 block|{
 DECL|member|next
 name|struct
-name|ref_cache
+name|files_ref_store
 modifier|*
 name|next
 decl_stmt|;
@@ -3489,7 +3489,7 @@ name|packed_ref_cache
 modifier|*
 name|packed
 decl_stmt|;
-comment|/* 	 * The submodule name, or "" for the main repo.  We allocate 	 * length 1 rather than FLEX_ARRAY so that the main ref_cache 	 * is initialized correctly. 	 */
+comment|/* 	 * The submodule name, or "" for the main repo. We allocate 	 * length 1 rather than FLEX_ARRAY so that the main 	 * files_ref_store is initialized correctly. 	 */
 DECL|member|name
 name|char
 name|name
@@ -3497,13 +3497,13 @@ index|[
 literal|1
 index|]
 decl_stmt|;
-DECL|variable|ref_cache
-DECL|variable|submodule_ref_caches
+DECL|variable|ref_store
+DECL|variable|submodule_ref_stores
 block|}
-name|ref_cache
+name|ref_store
 struct|,
 modifier|*
-name|submodule_ref_caches
+name|submodule_ref_stores
 struct|;
 end_struct
 
@@ -3609,7 +3609,7 @@ name|void
 name|clear_packed_ref_cache
 parameter_list|(
 name|struct
-name|ref_cache
+name|files_ref_store
 modifier|*
 name|refs
 parameter_list|)
@@ -3663,7 +3663,7 @@ name|void
 name|clear_loose_ref_cache
 parameter_list|(
 name|struct
-name|ref_cache
+name|files_ref_store
 modifier|*
 name|refs
 parameter_list|)
@@ -3697,12 +3697,12 @@ comment|/*  * Create a new submodule ref cache and add it to the internal  * set
 end_comment
 
 begin_function
-DECL|function|create_ref_cache
+DECL|function|create_ref_store
 specifier|static
 name|struct
-name|ref_cache
+name|files_ref_store
 modifier|*
-name|create_ref_cache
+name|create_ref_store
 parameter_list|(
 specifier|const
 name|char
@@ -3711,7 +3711,7 @@ name|submodule
 parameter_list|)
 block|{
 name|struct
-name|ref_cache
+name|files_ref_store
 modifier|*
 name|refs
 decl_stmt|;
@@ -3737,9 +3737,9 @@ name|refs
 operator|->
 name|next
 operator|=
-name|submodule_ref_caches
+name|submodule_ref_stores
 expr_stmt|;
-name|submodule_ref_caches
+name|submodule_ref_stores
 operator|=
 name|refs
 expr_stmt|;
@@ -3750,12 +3750,12 @@ block|}
 end_function
 
 begin_function
-DECL|function|lookup_ref_cache
+DECL|function|lookup_ref_store
 specifier|static
 name|struct
-name|ref_cache
+name|files_ref_store
 modifier|*
-name|lookup_ref_cache
+name|lookup_ref_store
 parameter_list|(
 specifier|const
 name|char
@@ -3764,7 +3764,7 @@ name|submodule
 parameter_list|)
 block|{
 name|struct
-name|ref_cache
+name|files_ref_store
 modifier|*
 name|refs
 decl_stmt|;
@@ -3779,13 +3779,13 @@ name|submodule
 condition|)
 return|return
 operator|&
-name|ref_cache
+name|ref_store
 return|;
 for|for
 control|(
 name|refs
 operator|=
-name|submodule_ref_caches
+name|submodule_ref_stores
 init|;
 name|refs
 condition|;
@@ -3817,16 +3817,16 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Return a pointer to a ref_cache for the specified submodule. For  * the main repository, use submodule==NULL; such a call cannot fail.  * For a submodule, the submodule must exist and be a nonbare  * repository, otherwise return NULL.  *  * The returned structure will be allocated and initialized but not  * necessarily populated; it should not be freed.  */
+comment|/*  * Return a pointer to a files_ref_store for the specified submodule. For  * the main repository, use submodule==NULL; such a call cannot fail.  * For a submodule, the submodule must exist and be a nonbare  * repository, otherwise return NULL.  *  * The returned structure will be allocated and initialized but not  * necessarily populated; it should not be freed.  */
 end_comment
 
 begin_function
-DECL|function|get_ref_cache
+DECL|function|get_ref_store
 specifier|static
 name|struct
-name|ref_cache
+name|files_ref_store
 modifier|*
-name|get_ref_cache
+name|get_ref_store
 parameter_list|(
 specifier|const
 name|char
@@ -3835,11 +3835,11 @@ name|submodule
 parameter_list|)
 block|{
 name|struct
-name|ref_cache
+name|files_ref_store
 modifier|*
 name|refs
 init|=
-name|lookup_ref_cache
+name|lookup_ref_store
 argument_list|(
 name|submodule
 argument_list|)
@@ -3874,7 +3874,7 @@ argument_list|)
 condition|)
 name|refs
 operator|=
-name|create_ref_cache
+name|create_ref_store
 argument_list|(
 name|submodule
 argument_list|)
@@ -4350,7 +4350,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * Get the packed_ref_cache for the specified ref_cache, creating it  * if necessary.  */
+comment|/*  * Get the packed_ref_cache for the specified files_ref_store,  * creating it if necessary.  */
 end_comment
 
 begin_function
@@ -4362,7 +4362,7 @@ modifier|*
 name|get_packed_ref_cache
 parameter_list|(
 name|struct
-name|ref_cache
+name|files_ref_store
 modifier|*
 name|refs
 parameter_list|)
@@ -4571,7 +4571,7 @@ modifier|*
 name|get_packed_refs
 parameter_list|(
 name|struct
-name|ref_cache
+name|files_ref_store
 modifier|*
 name|refs
 parameter_list|)
@@ -4618,7 +4618,7 @@ init|=
 name|get_packed_ref_cache
 argument_list|(
 operator|&
-name|ref_cache
+name|ref_store
 argument_list|)
 decl_stmt|;
 if|if
@@ -4677,13 +4677,13 @@ name|dir
 parameter_list|)
 block|{
 name|struct
-name|ref_cache
+name|files_ref_store
 modifier|*
 name|refs
 init|=
 name|dir
 operator|->
-name|ref_cache
+name|ref_store
 decl_stmt|;
 name|DIR
 modifier|*
@@ -5124,7 +5124,7 @@ modifier|*
 name|get_loose_refs
 parameter_list|(
 name|struct
-name|ref_cache
+name|files_ref_store
 modifier|*
 name|refs
 parameter_list|)
@@ -5196,7 +5196,7 @@ value|(1024)
 end_define
 
 begin_comment
-comment|/*  * Called by resolve_gitlink_ref_recursive() after it failed to read  * from the loose refs in ref_cache refs. Find<refname> in the  * packed-refs file for the submodule.  */
+comment|/*  * Called by resolve_gitlink_ref_recursive() after it failed to read  * from the loose refs in refs. Find<refname> in the packed-refs file  * for the submodule.  */
 end_comment
 
 begin_function
@@ -5206,7 +5206,7 @@ name|int
 name|resolve_gitlink_packed_ref
 parameter_list|(
 name|struct
-name|ref_cache
+name|files_ref_store
 modifier|*
 name|refs
 parameter_list|,
@@ -5283,7 +5283,7 @@ name|int
 name|resolve_gitlink_ref_recursive
 parameter_list|(
 name|struct
-name|ref_cache
+name|files_ref_store
 modifier|*
 name|refs
 parameter_list|,
@@ -5546,7 +5546,7 @@ init|=
 name|STRBUF_INIT
 decl_stmt|;
 name|struct
-name|ref_cache
+name|files_ref_store
 modifier|*
 name|refs
 decl_stmt|;
@@ -5587,7 +5587,7 @@ argument_list|)
 expr_stmt|;
 name|refs
 operator|=
-name|get_ref_cache
+name|get_ref_store
 argument_list|(
 name|submodule
 operator|.
@@ -5656,7 +5656,7 @@ argument_list|(
 name|get_packed_refs
 argument_list|(
 operator|&
-name|ref_cache
+name|ref_store
 argument_list|)
 argument_list|,
 name|refname
@@ -6685,7 +6685,7 @@ argument_list|,
 name|get_loose_refs
 argument_list|(
 operator|&
-name|ref_cache
+name|ref_store
 argument_list|)
 argument_list|,
 name|err
@@ -6787,7 +6787,7 @@ argument_list|,
 name|get_packed_refs
 argument_list|(
 operator|&
-name|ref_cache
+name|ref_store
 argument_list|)
 argument_list|,
 name|err
@@ -7450,11 +7450,11 @@ name|flags
 parameter_list|)
 block|{
 name|struct
-name|ref_cache
+name|files_ref_store
 modifier|*
 name|refs
 init|=
-name|get_ref_cache
+name|get_ref_store
 argument_list|(
 name|submodule
 argument_list|)
@@ -8070,7 +8070,7 @@ argument_list|,
 name|get_loose_refs
 argument_list|(
 operator|&
-name|ref_cache
+name|ref_store
 argument_list|)
 argument_list|,
 name|err
@@ -8137,7 +8137,7 @@ argument_list|,
 name|get_loose_refs
 argument_list|(
 operator|&
-name|ref_cache
+name|ref_store
 argument_list|)
 argument_list|,
 name|err
@@ -8183,7 +8183,7 @@ argument_list|,
 name|get_packed_refs
 argument_list|(
 operator|&
-name|ref_cache
+name|ref_store
 argument_list|)
 argument_list|,
 name|err
@@ -8614,7 +8614,7 @@ operator|=
 name|get_packed_ref_cache
 argument_list|(
 operator|&
-name|ref_cache
+name|ref_store
 argument_list|)
 expr_stmt|;
 name|packed_ref_cache
@@ -8657,7 +8657,7 @@ init|=
 name|get_packed_ref_cache
 argument_list|(
 operator|&
-name|ref_cache
+name|ref_store
 argument_list|)
 decl_stmt|;
 name|int
@@ -8792,7 +8792,7 @@ init|=
 name|get_packed_ref_cache
 argument_list|(
 operator|&
-name|ref_cache
+name|ref_store
 argument_list|)
 decl_stmt|;
 if|if
@@ -8828,7 +8828,7 @@ expr_stmt|;
 name|clear_packed_ref_cache
 argument_list|(
 operator|&
-name|ref_cache
+name|ref_store
 argument_list|)
 expr_stmt|;
 block|}
@@ -9556,7 +9556,7 @@ operator|=
 name|get_packed_refs
 argument_list|(
 operator|&
-name|ref_cache
+name|ref_store
 argument_list|)
 expr_stmt|;
 name|do_for_each_entry_in_dir
@@ -9564,7 +9564,7 @@ argument_list|(
 name|get_loose_refs
 argument_list|(
 operator|&
-name|ref_cache
+name|ref_store
 argument_list|)
 argument_list|,
 literal|0
@@ -9710,7 +9710,7 @@ operator|=
 name|get_packed_refs
 argument_list|(
 operator|&
-name|ref_cache
+name|ref_store
 argument_list|)
 expr_stmt|;
 comment|/* Remove refnames from the cache */
@@ -10279,7 +10279,7 @@ init|=
 name|get_packed_refs
 argument_list|(
 operator|&
-name|ref_cache
+name|ref_store
 argument_list|)
 decl_stmt|;
 name|struct
@@ -10290,7 +10290,7 @@ init|=
 name|get_loose_refs
 argument_list|(
 operator|&
-name|ref_cache
+name|ref_store
 argument_list|)
 decl_stmt|;
 if|if
@@ -12132,7 +12132,7 @@ block|{
 name|clear_loose_ref_cache
 argument_list|(
 operator|&
-name|ref_cache
+name|ref_store
 argument_list|)
 expr_stmt|;
 if|if
@@ -15771,7 +15771,7 @@ block|{
 name|clear_loose_ref_cache
 argument_list|(
 operator|&
-name|ref_cache
+name|ref_store
 argument_list|)
 expr_stmt|;
 if|if
@@ -15950,7 +15950,7 @@ expr_stmt|;
 name|clear_loose_ref_cache
 argument_list|(
 operator|&
-name|ref_cache
+name|ref_store
 argument_list|)
 expr_stmt|;
 name|cleanup
