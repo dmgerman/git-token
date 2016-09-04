@@ -484,6 +484,10 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Check whether an attempt to rename old_refname to new_refname would  * cause a D/F conflict with any existing reference (other than  * possibly old_refname). If there would be a conflict, emit an error  * message and return false; otherwise, return true.  *  * Note that this function is not safe against all races with other  * processes (though rename_ref() catches some races that might get by  * this check).  */
+end_comment
+
 begin_function_decl
 name|int
 name|rename_ref_available
@@ -491,12 +495,12 @@ parameter_list|(
 specifier|const
 name|char
 modifier|*
-name|oldname
+name|old_refname
 parameter_list|,
 specifier|const
 name|char
 modifier|*
-name|newname
+name|new_refname
 parameter_list|)
 function_decl|;
 end_function_decl
