@@ -16898,19 +16898,11 @@ operator|!=
 name|ENOENT
 condition|)
 return|return
-name|error
+name|error_errno
 argument_list|(
-name|_
-argument_list|(
-literal|"%s: %s"
-argument_list|)
+literal|"%s"
 argument_list|,
 name|name
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 return|;
 if|if
@@ -17764,19 +17756,11 @@ operator|!=
 name|ENOENT
 condition|)
 return|return
-name|error
+name|error_errno
 argument_list|(
-name|_
-argument_list|(
-literal|"%s: %s"
-argument_list|)
+literal|"%s"
 argument_list|,
 name|old_name
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 return|;
 block|}
@@ -17928,19 +17912,11 @@ goto|goto
 name|is_new
 goto|;
 return|return
-name|error
+name|error_errno
 argument_list|(
-name|_
-argument_list|(
-literal|"%s: %s"
-argument_list|)
+literal|"%s"
 argument_list|,
 name|old_name
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 return|;
 block|}
@@ -18230,16 +18206,11 @@ operator|)
 condition|)
 block|{
 return|return
-name|error
+name|error_errno
 argument_list|(
-literal|"%s: %s"
+literal|"%s"
 argument_list|,
 name|new_name
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 return|;
 block|}
@@ -20980,20 +20951,15 @@ name|ce
 argument_list|)
 expr_stmt|;
 return|return
-name|error
+name|error_errno
 argument_list|(
 name|_
 argument_list|(
 literal|"unable to stat newly "
-literal|"created file '%s': %s"
+literal|"created file '%s'"
 argument_list|)
 argument_list|,
 name|path
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 return|;
 block|}
@@ -22285,19 +22251,14 @@ operator|!
 name|rej
 condition|)
 return|return
-name|error
+name|error_errno
 argument_list|(
 name|_
 argument_list|(
-literal|"cannot open %s: %s"
+literal|"cannot open %s"
 argument_list|)
 argument_list|,
 name|namebuf
-argument_list|,
-name|strerror
-argument_list|(
-name|errno
-argument_list|)
 argument_list|)
 return|;
 comment|/* Normal git tools never deal with .rej, so do not pretend 	 * this is a git patch by saying --git or giving extended 	 * headers.  While at it, maybe please "kompare" that wants 	 * the trailing TAB and some garbage at the end of line ;-). 	 */
