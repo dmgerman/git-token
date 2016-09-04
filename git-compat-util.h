@@ -2473,6 +2473,24 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_extern
+extern|extern void (*get_error_routine(void
+end_extern
+
+begin_expr_stmt
+unit|))
+operator|(
+specifier|const
+name|char
+operator|*
+name|err
+operator|,
+name|va_list
+name|params
+operator|)
+expr_stmt|;
+end_expr_stmt
+
 begin_function_decl
 specifier|extern
 name|void
@@ -2495,6 +2513,24 @@ parameter_list|)
 parameter_list|)
 function_decl|;
 end_function_decl
+
+begin_extern
+extern|extern void (*get_warn_routine(void
+end_extern
+
+begin_expr_stmt
+unit|))
+operator|(
+specifier|const
+name|char
+operator|*
+name|warn
+operator|,
+name|va_list
+name|params
+operator|)
+expr_stmt|;
+end_expr_stmt
 
 begin_function_decl
 specifier|extern
