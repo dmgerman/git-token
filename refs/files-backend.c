@@ -5212,10 +5212,10 @@ comment|/*  * A loose ref file doesn't exist; check for a packed ref.  */
 end_comment
 
 begin_function
-DECL|function|resolve_missing_loose_ref
+DECL|function|resolve_packed_ref
 specifier|static
 name|int
-name|resolve_missing_loose_ref
+name|resolve_packed_ref
 parameter_list|(
 name|struct
 name|files_ref_store
@@ -5420,7 +5420,7 @@ name|out
 goto|;
 if|if
 condition|(
-name|resolve_missing_loose_ref
+name|resolve_packed_ref
 argument_list|(
 name|refs
 argument_list|,
@@ -5557,7 +5557,7 @@ block|{
 comment|/* 		 * Even though there is a directory where the loose 		 * ref is supposed to be, there could still be a 		 * packed ref: 		 */
 if|if
 condition|(
-name|resolve_missing_loose_ref
+name|resolve_packed_ref
 argument_list|(
 name|refs
 argument_list|,
