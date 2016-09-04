@@ -7068,6 +7068,7 @@ end_decl_stmt
 
 begin_function
 DECL|function|files_ref_iterator_begin
+specifier|static
 name|struct
 name|ref_iterator
 modifier|*
@@ -17082,6 +17083,8 @@ block|,
 name|files_peel_ref
 block|,
 name|files_create_symref
+block|,
+name|files_ref_iterator_begin
 block|,
 name|files_read_raw_ref
 block|,

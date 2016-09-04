@@ -6029,7 +6029,11 @@ literal|0
 return|;
 name|iter
 operator|=
-name|files_ref_iterator_begin
+name|refs
+operator|->
+name|be
+operator|->
+name|iterator_begin
 argument_list|(
 name|refs
 argument_list|,

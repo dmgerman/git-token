@@ -758,39 +758,6 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
-begin_struct_decl
-struct_decl|struct
-name|ref_store
-struct_decl|;
-end_struct_decl
-
-begin_comment
-comment|/*  * Iterate over the packed and loose references in the specified  * ref_store that are within find_containing_dir(prefix). If prefix is  * NULL or the empty string, iterate over all references in the  * submodule.  */
-end_comment
-
-begin_function_decl
-name|struct
-name|ref_iterator
-modifier|*
-name|files_ref_iterator_begin
-parameter_list|(
-name|struct
-name|ref_store
-modifier|*
-name|ref_store
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|prefix
-parameter_list|,
-name|unsigned
-name|int
-name|flags
-parameter_list|)
-function_decl|;
-end_function_decl
-
 begin_comment
 comment|/*  * Iterate over the references in the main ref_store that have a  * reflog. The paths within a directory are iterated over in arbitrary  * order.  */
 end_comment
@@ -966,6 +933,12 @@ begin_comment
 comment|/* refs backends */
 end_comment
 
+begin_struct_decl
+struct_decl|struct
+name|ref_store
+struct_decl|;
+end_struct_decl
+
 begin_comment
 comment|/*  * Initialize the ref_store for the specified submodule, or for the  * main repository if submodule == NULL. These functions should call  * base_ref_store_init() to initialize the shared part of the  * ref_store and to record the ref_store for later lookup.  */
 end_comment
@@ -1077,6 +1050,35 @@ specifier|const
 name|char
 modifier|*
 name|logmsg
+parameter_list|)
+function_decl|;
+end_typedef
+
+begin_comment
+comment|/*  * Iterate over the references in the specified ref_store that are  * within find_containing_dir(prefix). If prefix is NULL or the empty  * string, iterate over all references in the submodule.  */
+end_comment
+
+begin_typedef
+DECL|typedef|ref_iterator_begin_fn
+typedef|typedef
+name|struct
+name|ref_iterator
+modifier|*
+name|ref_iterator_begin_fn
+parameter_list|(
+name|struct
+name|ref_store
+modifier|*
+name|ref_store
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|prefix
+parameter_list|,
+name|unsigned
+name|int
+name|flags
 parameter_list|)
 function_decl|;
 end_typedef
@@ -1196,6 +1198,11 @@ DECL|member|create_symref
 name|create_symref_fn
 modifier|*
 name|create_symref
+decl_stmt|;
+DECL|member|iterator_begin
+name|ref_iterator_begin_fn
+modifier|*
+name|iterator_begin
 decl_stmt|;
 DECL|member|read_raw_ref
 name|read_raw_ref_fn
