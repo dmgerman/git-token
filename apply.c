@@ -112,6 +112,7 @@ end_function
 
 begin_function
 DECL|function|parse_whitespace_option
+specifier|static
 name|int
 name|parse_whitespace_option
 parameter_list|(
@@ -277,6 +278,7 @@ end_function
 
 begin_function
 DECL|function|parse_ignorewhitespace_option
+specifier|static
 name|int
 name|parse_ignorewhitespace_option
 parameter_list|(
