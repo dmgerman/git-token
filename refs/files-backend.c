@@ -14353,6 +14353,11 @@ name|int
 name|split_symref_update
 parameter_list|(
 name|struct
+name|files_ref_store
+modifier|*
+name|refs
+parameter_list|,
+name|struct
 name|ref_update
 modifier|*
 name|update
@@ -14906,6 +14911,8 @@ name|ret
 operator|=
 name|split_symref_update
 argument_list|(
+name|refs
+argument_list|,
 name|update
 argument_list|,
 name|referent
