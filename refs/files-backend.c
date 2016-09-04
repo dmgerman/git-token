@@ -5291,9 +5291,10 @@ block|}
 end_function
 
 begin_function
-DECL|function|read_raw_ref
+DECL|function|files_read_raw_ref
+specifier|static
 name|int
-name|read_raw_ref
+name|files_read_raw_ref
 parameter_list|(
 name|struct
 name|ref_store
@@ -6207,7 +6208,7 @@ block|}
 comment|/* 	 * Now we hold the lock and can read the reference without 	 * fear that its value will change. 	 */
 if|if
 condition|(
-name|read_raw_ref
+name|files_read_raw_ref
 argument_list|(
 name|ref_store
 argument_list|,
@@ -16943,6 +16944,8 @@ block|,
 name|files_ref_store_create
 block|,
 name|files_transaction_commit
+block|,
+name|files_read_raw_ref
 block|}
 decl_stmt|;
 end_decl_stmt

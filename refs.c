@@ -6528,6 +6528,10 @@ literal|0
 decl_stmt|;
 if|if
 condition|(
+name|refs
+operator|->
+name|be
+operator|->
 name|read_raw_ref
 argument_list|(
 name|refs
