@@ -360,6 +360,36 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_comment
+comment|/*  * Some aspects of the apply behavior are controlled by the following  * bits in the "options" parameter passed to apply_all_patches().  */
+end_comment
+
+begin_define
+DECL|macro|APPLY_OPT_INACCURATE_EOF
+define|#
+directive|define
+name|APPLY_OPT_INACCURATE_EOF
+value|(1<<0)
+end_define
+
+begin_comment
+DECL|macro|APPLY_OPT_INACCURATE_EOF
+comment|/* accept inaccurate eof */
+end_comment
+
+begin_define
+DECL|macro|APPLY_OPT_RECOUNT
+define|#
+directive|define
+name|APPLY_OPT_RECOUNT
+value|(1<<1)
+end_define
+
+begin_comment
+DECL|macro|APPLY_OPT_RECOUNT
+comment|/* accept inaccurate line count */
+end_comment
+
 begin_endif
 endif|#
 directive|endif

@@ -21933,22 +21933,6 @@ name|lock_file
 decl_stmt|;
 end_decl_stmt
 
-begin_define
-DECL|macro|INACCURATE_EOF
-define|#
-directive|define
-name|INACCURATE_EOF
-value|(1<<0)
-end_define
-
-begin_define
-DECL|macro|RECOUNT
-define|#
-directive|define
-name|RECOUNT
-value|(1<<1)
-end_define
-
 begin_comment
 comment|/*  * Try to apply a patch.  *  * Returns:  *  -128 if a bad error happened (like patch unreadable)  *  -1 if patch did not apply and user cannot deal with it  *   0 if the patch applied  *   1 if the patch did not apply but user might fix it  */
 end_comment
@@ -22075,7 +22059,7 @@ operator|!
 operator|(
 name|options
 operator|&
-name|INACCURATE_EOF
+name|APPLY_OPT_INACCURATE_EOF
 operator|)
 expr_stmt|;
 name|patch
@@ -22087,7 +22071,7 @@ operator|!
 operator|(
 name|options
 operator|&
-name|RECOUNT
+name|APPLY_OPT_RECOUNT
 operator|)
 expr_stmt|;
 name|nr
@@ -23864,7 +23848,7 @@ argument_list|(
 literal|"tolerate incorrectly detected missing new-line at the end of file"
 argument_list|)
 argument_list|,
-name|INACCURATE_EOF
+name|APPLY_OPT_INACCURATE_EOF
 argument_list|)
 block|,
 name|OPT_BIT
@@ -23881,7 +23865,7 @@ argument_list|(
 literal|"do not trust the line counts in the hunk headers"
 argument_list|)
 argument_list|,
-name|RECOUNT
+name|APPLY_OPT_RECOUNT
 argument_list|)
 block|,
 block|{
