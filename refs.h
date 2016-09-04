@@ -156,6 +156,19 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|refs_init_db
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+name|err
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/*  * If refname is a non-symbolic reference that refers to a tag object,  * and the tag can be (recursively) dereferenced to a non-tag object,  * store the SHA1 of the referred-to object to sha1 and return 0.  If  * any of these conditions are not met, return a non-zero value.  * Symbolic references are considered unpeelable, even if they  * ultimately resolve to a peelable tag.  */
 end_comment

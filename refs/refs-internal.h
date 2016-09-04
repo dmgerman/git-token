@@ -945,6 +945,25 @@ function_decl|;
 end_typedef
 
 begin_typedef
+DECL|typedef|ref_init_db_fn
+typedef|typedef
+name|int
+name|ref_init_db_fn
+parameter_list|(
+name|struct
+name|ref_store
+modifier|*
+name|refs
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|err
+parameter_list|)
+function_decl|;
+end_typedef
+
+begin_typedef
 DECL|typedef|ref_transaction_commit_fn
 typedef|typedef
 name|int
@@ -1369,6 +1388,11 @@ DECL|member|init
 name|ref_store_init_fn
 modifier|*
 name|init
+decl_stmt|;
+DECL|member|init_db
+name|ref_init_db_fn
+modifier|*
+name|init_db
 decl_stmt|;
 DECL|member|transaction_commit
 name|ref_transaction_commit_fn
