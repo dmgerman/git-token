@@ -19743,14 +19743,14 @@ name|int
 name|build_fake_ancestor
 parameter_list|(
 name|struct
+name|apply_state
+modifier|*
+name|state
+parameter_list|,
+name|struct
 name|patch
 modifier|*
 name|list
-parameter_list|,
-specifier|const
-name|char
-modifier|*
-name|filename
 parameter_list|)
 block|{
 name|struct
@@ -19992,7 +19992,9 @@ argument_list|(
 operator|&
 name|lock
 argument_list|,
-name|filename
+name|state
+operator|->
+name|fake_ancestor
 argument_list|,
 name|LOCK_DIE_ON_ERROR
 argument_list|)
@@ -20025,7 +20027,9 @@ name|error
 argument_list|(
 literal|"Could not write temporary index to %s"
 argument_list|,
-name|filename
+name|state
+operator|->
+name|fake_ancestor
 argument_list|)
 return|;
 return|return
@@ -23258,11 +23262,9 @@ name|fake_ancestor
 operator|&&
 name|build_fake_ancestor
 argument_list|(
-name|list
-argument_list|,
 name|state
-operator|->
-name|fake_ancestor
+argument_list|,
+name|list
 argument_list|)
 condition|)
 block|{
