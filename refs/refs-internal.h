@@ -1028,6 +1028,35 @@ parameter_list|)
 function_decl|;
 end_typedef
 
+begin_typedef
+DECL|typedef|create_symref_fn
+typedef|typedef
+name|int
+name|create_symref_fn
+parameter_list|(
+name|struct
+name|ref_store
+modifier|*
+name|ref_store
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|ref_target
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|refs_heads_master
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|logmsg
+parameter_list|)
+function_decl|;
+end_typedef
+
 begin_comment
 comment|/*  * Read a reference from the specified reference store, non-recursively.  * Set type to describe the reference, and:  *  * - If refname is the name of a normal reference, fill in sha1  *   (leaving referent unchanged).  *  * - If refname is the name of a symbolic reference, write the full  *   name of the reference to which it refers (e.g.  *   "refs/heads/master") to referent and set the REF_ISSYMREF bit in  *   type (leaving sha1 unchanged). The caller is responsible for  *   validating that referent is a valid reference name.  *  * WARNING: refname might be used as part of a filename, so it is  * important from a security standpoint that it be safe in the sense  * of refname_is_safe(). Moreover, for symrefs this function sets  * referent to whatever the repository says, which might not be a  * properly-formatted or even safe reference name. NEITHER INPUT NOR  * OUTPUT REFERENCE NAMES ARE VALIDATED WITHIN THIS FUNCTION.  *  * Return 0 on success. If the ref doesn't exist, set errno to ENOENT  * and return -1. If the ref exists but is neither a symbolic ref nor  * a sha1, it is broken; set REF_ISBROKEN in type, set errno to  * EINVAL, and return -1. If there is another error reading the ref,  * set errno appropriately and return -1.  *  * Backend-specific flags might be set in type as well, regardless of  * outcome.  *  * It is OK for refname to point into referent. If so:  *  * - if the function succeeds with REF_ISSYMREF, referent will be  *   overwritten and the memory formerly pointed to by it might be  *   changed or even freed.  *  * - in all other cases, referent will be untouched, and therefore  *   refname will still be valid and unchanged.  */
 end_comment
@@ -1133,6 +1162,11 @@ DECL|member|pack_refs
 name|pack_refs_fn
 modifier|*
 name|pack_refs
+decl_stmt|;
+DECL|member|create_symref
+name|create_symref_fn
+modifier|*
+name|create_symref
 decl_stmt|;
 DECL|member|read_raw_ref
 name|read_raw_ref_fn

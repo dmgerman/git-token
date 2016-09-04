@@ -12416,10 +12416,16 @@ block|}
 end_function
 
 begin_function
-DECL|function|create_symref
+DECL|function|files_create_symref
+specifier|static
 name|int
-name|create_symref
+name|files_create_symref
 parameter_list|(
+name|struct
+name|ref_store
+modifier|*
+name|ref_store
+parameter_list|,
 specifier|const
 name|char
 modifier|*
@@ -12450,6 +12456,15 @@ decl_stmt|;
 name|int
 name|ret
 decl_stmt|;
+name|files_downcast
+argument_list|(
+name|ref_store
+argument_list|,
+literal|0
+argument_list|,
+literal|"create_symref"
+argument_list|)
+expr_stmt|;
 name|lock
 operator|=
 name|lock_ref_sha1_basic
@@ -16962,6 +16977,8 @@ block|,
 name|files_transaction_commit
 block|,
 name|files_pack_refs
+block|,
+name|files_create_symref
 block|,
 name|files_read_raw_ref
 block|,
