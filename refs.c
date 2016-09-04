@@ -6031,7 +6031,7 @@ name|iter
 operator|=
 name|files_ref_iterator_begin
 argument_list|(
-name|submodule
+name|refs
 argument_list|,
 name|prefix
 argument_list|,

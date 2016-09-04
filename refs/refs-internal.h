@@ -758,8 +758,14 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_struct_decl
+struct_decl|struct
+name|ref_store
+struct_decl|;
+end_struct_decl
+
 begin_comment
-comment|/*  * Iterate over the packed and loose references in the specified  * submodule that are within find_containing_dir(prefix). If prefix is  * NULL or the empty string, iterate over all references in the  * submodule.  */
+comment|/*  * Iterate over the packed and loose references in the specified  * ref_store that are within find_containing_dir(prefix). If prefix is  * NULL or the empty string, iterate over all references in the  * submodule.  */
 end_comment
 
 begin_function_decl
@@ -768,10 +774,10 @@ name|ref_iterator
 modifier|*
 name|files_ref_iterator_begin
 parameter_list|(
-specifier|const
-name|char
+name|struct
+name|ref_store
 modifier|*
-name|submodule
+name|ref_store
 parameter_list|,
 specifier|const
 name|char
@@ -955,12 +961,6 @@ name|cb_data
 parameter_list|)
 function_decl|;
 end_function_decl
-
-begin_struct_decl
-struct_decl|struct
-name|ref_store
-struct_decl|;
-end_struct_decl
 
 begin_comment
 comment|/* refs backends */

@@ -7073,10 +7073,10 @@ name|ref_iterator
 modifier|*
 name|files_ref_iterator_begin
 parameter_list|(
-specifier|const
-name|char
+name|struct
+name|ref_store
 modifier|*
-name|submodule
+name|ref_store
 parameter_list|,
 specifier|const
 name|char
@@ -7093,9 +7093,11 @@ name|files_ref_store
 modifier|*
 name|refs
 init|=
-name|get_files_ref_store
+name|files_downcast
 argument_list|(
-name|submodule
+name|ref_store
+argument_list|,
+literal|1
 argument_list|,
 literal|"ref_iterator_begin"
 argument_list|)
