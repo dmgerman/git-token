@@ -6604,10 +6604,16 @@ block|}
 end_function
 
 begin_function
-DECL|function|peel_ref
+DECL|function|files_peel_ref
+specifier|static
 name|int
-name|peel_ref
+name|files_peel_ref
 parameter_list|(
+name|struct
+name|ref_store
+modifier|*
+name|ref_store
+parameter_list|,
 specifier|const
 name|char
 modifier|*
@@ -6624,9 +6630,11 @@ name|files_ref_store
 modifier|*
 name|refs
 init|=
-name|get_files_ref_store
+name|files_downcast
 argument_list|(
-name|NULL
+name|ref_store
+argument_list|,
+literal|0
 argument_list|,
 literal|"peel_ref"
 argument_list|)
@@ -16977,6 +16985,8 @@ block|,
 name|files_transaction_commit
 block|,
 name|files_pack_refs
+block|,
+name|files_peel_ref
 block|,
 name|files_create_symref
 block|,
