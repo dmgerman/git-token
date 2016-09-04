@@ -283,11 +283,10 @@ name|unsigned
 name|int
 name|flags
 decl_stmt|;
-DECL|member|lock
-name|struct
-name|ref_lock
+DECL|member|backend_data
+name|void
 modifier|*
-name|lock
+name|backend_data
 decl_stmt|;
 DECL|member|type
 name|unsigned

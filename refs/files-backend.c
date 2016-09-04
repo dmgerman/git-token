@@ -14741,8 +14741,6 @@ argument_list|,
 name|NULL
 argument_list|,
 operator|&
-name|update
-operator|->
 name|lock
 argument_list|,
 operator|&
@@ -14796,10 +14794,10 @@ return|return
 name|ret
 return|;
 block|}
-name|lock
-operator|=
 name|update
 operator|->
+name|backend_data
+operator|=
 name|lock
 expr_stmt|;
 if|if
@@ -14996,12 +14994,19 @@ operator|->
 name|parent_update
 control|)
 block|{
+name|struct
+name|ref_lock
+modifier|*
+name|parent_lock
+init|=
+name|parent_update
+operator|->
+name|backend_data
+decl_stmt|;
 name|oidcpy
 argument_list|(
 operator|&
-name|parent_update
-operator|->
-name|lock
+name|parent_lock
 operator|->
 name|old_oid
 argument_list|,
@@ -15177,7 +15182,7 @@ decl_stmt|;
 comment|/* 			 * The lock was freed upon failure of 			 * write_ref_to_lockfile(): 			 */
 name|update
 operator|->
-name|lock
+name|backend_data
 operator|=
 name|NULL
 expr_stmt|;
@@ -15572,7 +15577,7 @@ name|lock
 init|=
 name|update
 operator|->
-name|lock
+name|backend_data
 decl_stmt|;
 if|if
 condition|(
@@ -15655,7 +15660,7 @@ argument_list|)
 expr_stmt|;
 name|update
 operator|->
-name|lock
+name|backend_data
 operator|=
 name|NULL
 expr_stmt|;
@@ -15708,7 +15713,7 @@ argument_list|)
 expr_stmt|;
 name|update
 operator|->
-name|lock
+name|backend_data
 operator|=
 name|NULL
 expr_stmt|;
@@ -15751,6 +15756,15 @@ index|[
 name|i
 index|]
 decl_stmt|;
+name|struct
+name|ref_lock
+modifier|*
+name|lock
+init|=
+name|update
+operator|->
+name|backend_data
+decl_stmt|;
 if|if
 condition|(
 name|update
@@ -15773,8 +15787,6 @@ if|if
 condition|(
 name|delete_ref_loose
 argument_list|(
-name|update
-operator|->
 name|lock
 argument_list|,
 name|update
@@ -15809,8 +15821,6 @@ argument_list|(
 operator|&
 name|refs_to_delete
 argument_list|,
-name|update
-operator|->
 name|lock
 operator|->
 name|ref_name
@@ -15894,7 +15904,7 @@ index|[
 name|i
 index|]
 operator|->
-name|lock
+name|backend_data
 condition|)
 name|unlock_ref
 argument_list|(
@@ -15905,7 +15915,7 @@ index|[
 name|i
 index|]
 operator|->
-name|lock
+name|backend_data
 argument_list|)
 expr_stmt|;
 name|string_list_clear
