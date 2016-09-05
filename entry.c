@@ -681,11 +681,10 @@ name|stream_blob_to_fd
 argument_list|(
 name|fd
 argument_list|,
+operator|&
 name|ce
 operator|->
 name|oid
-operator|.
-name|hash
 argument_list|,
 name|filter
 argument_list|,

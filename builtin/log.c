@@ -2532,8 +2532,6 @@ argument_list|(
 literal|1
 argument_list|,
 name|oid
-operator|->
-name|hash
 argument_list|,
 name|NULL
 argument_list|,
@@ -2605,8 +2603,6 @@ argument_list|(
 literal|1
 argument_list|,
 name|oid
-operator|->
-name|hash
 argument_list|,
 name|NULL
 argument_list|,

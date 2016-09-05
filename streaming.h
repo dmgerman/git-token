@@ -98,8 +98,8 @@ name|int
 name|fd
 parameter_list|,
 specifier|const
-name|unsigned
-name|char
+name|struct
+name|object_id
 modifier|*
 parameter_list|,
 name|struct

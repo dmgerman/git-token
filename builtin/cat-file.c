@@ -420,9 +420,8 @@ name|stream_blob_to_fd
 argument_list|(
 literal|1
 argument_list|,
+operator|&
 name|oid
-operator|.
-name|hash
 argument_list|,
 name|NULL
 argument_list|,
@@ -577,9 +576,8 @@ name|stream_blob_to_fd
 argument_list|(
 literal|1
 argument_list|,
+operator|&
 name|blob_oid
-operator|.
-name|hash
 argument_list|,
 name|NULL
 argument_list|,
@@ -1259,8 +1257,6 @@ argument_list|(
 literal|1
 argument_list|,
 name|oid
-operator|->
-name|hash
 argument_list|,
 name|NULL
 argument_list|,
