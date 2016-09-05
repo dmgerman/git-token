@@ -3674,7 +3674,9 @@ index|[
 name|i
 index|]
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|)
 expr_stmt|;
 if|if

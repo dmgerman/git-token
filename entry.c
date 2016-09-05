@@ -435,7 +435,9 @@ name|read_sha1_file
 argument_list|(
 name|ce
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|,
 operator|&
 name|type
@@ -681,7 +683,9 @@ name|fd
 argument_list|,
 name|ce
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|,
 name|filter
 argument_list|,
@@ -811,7 +815,9 @@ name|name
 argument_list|,
 name|ce
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|)
 decl_stmt|;
 if|if
@@ -875,11 +881,12 @@ literal|"unable to read sha1 file of %s (%s)"
 argument_list|,
 name|path
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|ce
 operator|->
-name|sha1
+name|oid
 argument_list|)
 argument_list|)
 return|;

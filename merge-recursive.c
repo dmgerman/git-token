@@ -2252,8 +2252,9 @@ name|ce
 operator|->
 name|ce_mode
 expr_stmt|;
-name|hashcpy
+name|oidcpy
 argument_list|(
+operator|&
 name|e
 operator|->
 name|stages
@@ -2265,12 +2266,11 @@ argument_list|)
 index|]
 operator|.
 name|oid
-operator|.
-name|hash
 argument_list|,
+operator|&
 name|ce
 operator|->
-name|sha1
+name|oid
 argument_list|)
 expr_stmt|;
 block|}

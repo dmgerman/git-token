@@ -2343,7 +2343,9 @@ index|[
 name|pos
 index|]
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|,
 operator|&
 name|type
@@ -2412,7 +2414,9 @@ index|[
 name|pos
 index|]
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|)
 expr_stmt|;
 block|}
@@ -3360,7 +3364,9 @@ index|[
 name|pos
 index|]
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|)
 expr_stmt|;
 else|else

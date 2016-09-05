@@ -1115,7 +1115,9 @@ name|find_unique_abbrev
 argument_list|(
 name|ce
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|,
 name|abbrev
 argument_list|)

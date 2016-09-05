@@ -12250,7 +12250,9 @@ name|hashcpy
 argument_list|(
 name|ce
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|,
 name|origin
 operator|->
