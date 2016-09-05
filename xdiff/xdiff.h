@@ -91,6 +91,11 @@ define|#
 directive|define
 name|XDF_COMPACTION_HEURISTIC
 value|(1<< 8)
+DECL|macro|XDF_INDENT_HEURISTIC
+define|#
+directive|define
+name|XDF_INDENT_HEURISTIC
+value|(1<< 9)
 DECL|macro|XDL_EMIT_FUNCNAMES
 define|#
 directive|define
