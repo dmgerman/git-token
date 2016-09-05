@@ -5133,13 +5133,11 @@ literal|"@{-1}"
 expr_stmt|;
 if|if
 condition|(
-name|get_sha1_mb
+name|get_oid_mb
 argument_list|(
 name|arg
 argument_list|,
 name|rev
-operator|->
-name|hash
 argument_list|)
 condition|)
 block|{
