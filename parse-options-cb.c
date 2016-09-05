@@ -844,6 +844,37 @@ block|}
 end_function
 
 begin_comment
+comment|/**  * Report that the option is unknown, so that other code can handle  * it. This can be used as a callback together with  * OPTION_LOWLEVEL_CALLBACK to allow an option to be documented in the  * "-h" output even if it's not being handled directly by  * parse_options().  */
+end_comment
+
+begin_function
+DECL|function|parse_opt_unknown_cb
+name|int
+name|parse_opt_unknown_cb
+parameter_list|(
+specifier|const
+name|struct
+name|option
+modifier|*
+name|opt
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|arg
+parameter_list|,
+name|int
+name|unset
+parameter_list|)
+block|{
+return|return
+operator|-
+literal|2
+return|;
+block|}
+end_function
+
+begin_comment
 comment|/**  * Recreates the command-line option in the strbuf.  */
 end_comment
 
