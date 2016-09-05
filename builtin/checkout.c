@@ -1144,12 +1144,11 @@ argument_list|(
 operator|&
 name|ancestor
 argument_list|,
+operator|&
 name|threeway
 index|[
 literal|0
 index|]
-operator|.
-name|hash
 argument_list|)
 expr_stmt|;
 name|read_mmblob
@@ -1157,12 +1156,11 @@ argument_list|(
 operator|&
 name|ours
 argument_list|,
+operator|&
 name|threeway
 index|[
 literal|1
 index|]
-operator|.
-name|hash
 argument_list|)
 expr_stmt|;
 name|read_mmblob
@@ -1170,12 +1168,11 @@ argument_list|(
 operator|&
 name|theirs
 argument_list|,
+operator|&
 name|threeway
 index|[
 literal|2
 index|]
-operator|.
-name|hash
 argument_list|)
 expr_stmt|;
 comment|/* 	 * NEEDSWORK: re-create conflicts from merges with 	 * merge.renormalize set, too 	 */

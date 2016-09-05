@@ -16358,8 +16358,6 @@ operator|&
 name|base_file
 argument_list|,
 name|base
-operator|->
-name|hash
 argument_list|)
 expr_stmt|;
 name|read_mmblob
@@ -16368,8 +16366,6 @@ operator|&
 name|our_file
 argument_list|,
 name|ours
-operator|->
-name|hash
 argument_list|)
 expr_stmt|;
 name|read_mmblob
@@ -16378,8 +16374,6 @@ operator|&
 name|their_file
 argument_list|,
 name|theirs
-operator|->
-name|hash
 argument_list|)
 expr_stmt|;
 name|status
