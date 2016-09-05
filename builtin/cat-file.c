@@ -324,9 +324,8 @@ name|obj_context
 operator|.
 name|mode
 argument_list|,
+operator|&
 name|oid
-operator|.
-name|hash
 argument_list|,
 literal|1
 argument_list|,
