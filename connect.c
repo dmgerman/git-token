@@ -246,12 +246,12 @@ name|void
 name|die_initial_contact
 parameter_list|(
 name|int
-name|got_at_least_one_head
+name|unexpected
 parameter_list|)
 block|{
 if|if
 condition|(
-name|got_at_least_one_head
+name|unexpected
 condition|)
 name|die
 argument_list|(
@@ -583,10 +583,9 @@ name|orig_list
 init|=
 name|list
 decl_stmt|;
+comment|/* 	 * A hang-up after seeing some response from the other end 	 * means that it is unexpected, as we know the other end is 	 * willing to talk to us.  A hang-up before seeing any 	 * response does not necessarily mean an ACL problem, though. 	 */
 name|int
-name|got_at_least_one_head
-init|=
-literal|0
+name|saw_response
 decl_stmt|;
 operator|*
 name|list
@@ -595,8 +594,14 @@ name|NULL
 expr_stmt|;
 for|for
 control|(
+name|saw_response
+operator|=
+literal|0
 init|;
 condition|;
+name|saw_response
+operator|=
+literal|1
 control|)
 block|{
 name|struct
@@ -660,7 +665,7 @@ literal|0
 condition|)
 name|die_initial_contact
 argument_list|(
-name|got_at_least_one_head
+name|saw_response
 argument_list|)
 expr_stmt|;
 if|if
@@ -893,10 +898,6 @@ operator|&
 name|ref
 operator|->
 name|next
-expr_stmt|;
-name|got_at_least_one_head
-operator|=
-literal|1
 expr_stmt|;
 block|}
 name|annotate_refs_with_symref_info
