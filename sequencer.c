@@ -4591,7 +4591,8 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-name|die_errno
+return|return
+name|error_errno
 argument_list|(
 name|_
 argument_list|(
@@ -4601,7 +4602,7 @@ argument_list|,
 name|git_path_seq_dir
 argument_list|()
 argument_list|)
-expr_stmt|;
+return|;
 return|return
 literal|0
 return|;
