@@ -4411,14 +4411,14 @@ end_function
 begin_function
 DECL|function|read_populate_opts
 specifier|static
-name|void
+name|int
 name|read_populate_opts
 parameter_list|(
 name|struct
 name|replay_opts
 modifier|*
 modifier|*
-name|opts_ptr
+name|opts
 parameter_list|)
 block|{
 if|if
@@ -4430,7 +4430,10 @@ name|git_path_opts_file
 argument_list|()
 argument_list|)
 condition|)
-return|return;
+return|return
+literal|0
+return|;
+comment|/* 	 * The function git_parse_source(), called from git_config_from_file(), 	 * may die() in case of a syntactically incorrect file. We do not care 	 * about this case, though, because we wrote that file ourselves, so we 	 * are pretty certain that it is syntactically correct. 	 */
 if|if
 condition|(
 name|git_config_from_file
@@ -4441,12 +4444,13 @@ name|git_path_opts_file
 argument_list|()
 argument_list|,
 operator|*
-name|opts_ptr
+name|opts
 argument_list|)
 operator|<
 literal|0
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -4456,7 +4460,10 @@ argument_list|,
 name|git_path_opts_file
 argument_list|()
 argument_list|)
-expr_stmt|;
+return|;
+return|return
+literal|0
+return|;
 block|}
 end_function
 
@@ -5648,14 +5655,14 @@ return|return
 name|continue_single_pick
 argument_list|()
 return|;
+if|if
+condition|(
 name|read_populate_opts
 argument_list|(
 operator|&
 name|opts
 argument_list|)
-expr_stmt|;
-if|if
-condition|(
+operator|||
 name|read_populate_todo
 argument_list|(
 operator|&
