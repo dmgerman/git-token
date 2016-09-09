@@ -1565,7 +1565,7 @@ name|error
 argument_list|(
 name|_
 argument_list|(
-literal|"corrupt index file"
+literal|"index file corrupt"
 argument_list|)
 argument_list|)
 return|;
@@ -2582,7 +2582,7 @@ name|error
 argument_list|(
 name|_
 argument_list|(
-literal|"corrupt index file"
+literal|"index file corrupt"
 argument_list|)
 argument_list|)
 return|;
@@ -2996,6 +2996,8 @@ name|branch2
 operator|=
 literal|"local"
 expr_stmt|;
+name|ret
+operator|=
 name|merge_trees
 argument_list|(
 operator|&
@@ -3019,6 +3021,17 @@ operator|&
 name|result
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|ret
+operator|<
+literal|0
+condition|)
+name|exit
+argument_list|(
+literal|128
+argument_list|)
+expr_stmt|;
 name|ret
 operator|=
 name|reset_tree
@@ -3034,6 +3047,14 @@ argument_list|,
 literal|0
 argument_list|,
 name|writeout_error
+argument_list|)
+expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|o
+operator|.
+name|obuf
 argument_list|)
 expr_stmt|;
 if|if
@@ -5979,7 +6000,7 @@ name|force_detach
 argument_list|,
 name|N_
 argument_list|(
-literal|"detach the HEAD at named commit"
+literal|"detach HEAD at named commit"
 argument_list|)
 argument_list|)
 block|,

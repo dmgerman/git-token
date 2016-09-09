@@ -319,6 +319,8 @@ specifier|static
 name|struct
 name|string_list
 name|mailmap
+init|=
+name|STRING_LIST_INIT_NODUP
 decl_stmt|;
 end_decl_stmt
 
@@ -2628,7 +2630,9 @@ name|p
 operator|->
 name|one
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|)
 expr_stmt|;
 name|porigin
@@ -2658,7 +2662,7 @@ operator|&
 name|diff_opts
 argument_list|)
 expr_stmt|;
-name|free_pathspec
+name|clear_pathspec
 argument_list|(
 operator|&
 name|diff_opts
@@ -2905,7 +2909,9 @@ name|p
 operator|->
 name|one
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|)
 expr_stmt|;
 name|porigin
@@ -2927,7 +2933,7 @@ operator|&
 name|diff_opts
 argument_list|)
 expr_stmt|;
-name|free_pathspec
+name|clear_pathspec
 argument_list|(
 operator|&
 name|diff_opts
@@ -6177,7 +6183,9 @@ name|p
 operator|->
 name|one
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|)
 expr_stmt|;
 name|norigin
@@ -6415,7 +6423,7 @@ operator|&
 name|diff_opts
 argument_list|)
 expr_stmt|;
-name|free_pathspec
+name|clear_pathspec
 argument_list|(
 operator|&
 name|diff_opts
@@ -11327,6 +11335,13 @@ comment|/* path is in the index */
 elseif|else
 if|if
 condition|(
+operator|-
+literal|1
+operator|-
+name|pos
+operator|<
+name|active_nr
+operator|&&
 operator|!
 name|strcmp
 argument_list|(
@@ -12894,12 +12909,12 @@ name|final_commit
 init|=
 name|NULL
 decl_stmt|;
-specifier|static
 name|struct
 name|string_list
 name|range_list
+init|=
+name|STRING_LIST_INIT_NODUP
 decl_stmt|;
-specifier|static
 name|int
 name|output_option
 init|=
@@ -12909,13 +12924,11 @@ name|opt
 init|=
 literal|0
 decl_stmt|;
-specifier|static
 name|int
 name|show_stats
 init|=
 literal|0
 decl_stmt|;
-specifier|static
 specifier|const
 name|char
 modifier|*
@@ -12923,7 +12936,6 @@ name|revs_file
 init|=
 name|NULL
 decl_stmt|;
-specifier|static
 specifier|const
 name|char
 modifier|*
@@ -12931,7 +12943,6 @@ name|contents_from
 init|=
 name|NULL
 decl_stmt|;
-specifier|static
 specifier|const
 name|struct
 name|option
@@ -14566,10 +14577,7 @@ argument_list|(
 operator|&
 name|range_list
 argument_list|,
-name|xstrdup
-argument_list|(
 literal|"1"
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|anchor

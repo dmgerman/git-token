@@ -1951,6 +1951,8 @@ parameter_list|,
 name|unsigned
 name|char
 modifier|*
+parameter_list|,
+name|int
 parameter_list|)
 function_decl|;
 end_function_decl

@@ -756,8 +756,11 @@ name|diagnose_misspelt_rev
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"%s: no such path in the working tree.\n"
 literal|"Use 'git<command> --<path>...' to specify paths that do not exist locally."
+argument_list|)
 argument_list|,
 name|arg
 argument_list|)
@@ -794,9 +797,12 @@ expr_stmt|;
 comment|/* ... or fall back the most general message. */
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"ambiguous argument '%s': unknown revision or path not in the working tree.\n"
 literal|"Use '--' to separate paths from revisions, like this:\n"
 literal|"'git<command> [<revision>...] -- [<file>...]'"
+argument_list|)
 argument_list|,
 name|arg
 argument_list|)
@@ -921,9 +927,12 @@ condition|)
 return|return;
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"ambiguous argument '%s': both revision and filename\n"
 literal|"Use '--' to separate paths from revisions, like this:\n"
 literal|"'git<command> [<revision>...] -- [<file>...]'"
+argument_list|)
 argument_list|,
 name|arg
 argument_list|)
@@ -3527,7 +3536,10 @@ name|nongit_ok
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Not a git repository (or any of the parent directories): %s"
+argument_list|)
 argument_list|,
 name|DEFAULT_GIT_DIR_ENVIRONMENT
 argument_list|)
@@ -3541,7 +3553,10 @@ argument_list|)
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"Cannot come back to cwd"
+argument_list|)
 argument_list|)
 expr_stmt|;
 operator|*
@@ -3835,7 +3850,10 @@ argument_list|)
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"Unable to read current working directory"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|offset
@@ -4141,7 +4159,10 @@ argument_list|)
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"Cannot come back to cwd"
+argument_list|)
 argument_list|)
 expr_stmt|;
 operator|*
@@ -4163,8 +4184,11 @@ argument_list|)
 expr_stmt|;
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Not a git repository (or any parent up to mount point %s)\n"
 literal|"Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set)."
+argument_list|)
 argument_list|,
 name|cwd
 operator|.
@@ -4191,7 +4215,10 @@ argument_list|)
 expr_stmt|;
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"Cannot change to '%s/..'"
+argument_list|)
 argument_list|,
 name|cwd
 operator|.
@@ -4438,9 +4465,12 @@ literal|0600
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Problem with core.sharedRepository filemode value "
 literal|"(0%.3o).\nThe owner of files must always have "
 literal|"read and write permissions."
+argument_list|)
 argument_list|,
 name|i
 argument_list|)

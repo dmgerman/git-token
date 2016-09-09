@@ -2227,7 +2227,10 @@ name|fp
 condition|)
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not open file '%s'"
+argument_list|)
 argument_list|,
 name|filename
 argument_list|)
@@ -2267,7 +2270,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Badly quoted content in file '%s': %s"
+argument_list|)
 argument_list|,
 name|filename
 argument_list|,
@@ -3180,13 +3186,32 @@ argument_list|,
 name|term_bad
 argument_list|)
 expr_stmt|;
-name|print_commit_list
-argument_list|(
+for|for
+control|(
+init|;
 name|tried
-argument_list|,
+condition|;
+name|tried
+operator|=
+name|tried
+operator|->
+name|next
+control|)
+name|printf
+argument_list|(
 literal|"%s\n"
 argument_list|,
-literal|"%s\n"
+name|oid_to_hex
+argument_list|(
+operator|&
+name|tried
+operator|->
+name|item
+operator|->
+name|object
+operator|.
+name|oid
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -3205,7 +3230,10 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
+name|_
+argument_list|(
 literal|"We cannot bisect more!\n"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|exit
@@ -3493,7 +3521,10 @@ name|r
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Not a valid commit name %s"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -3661,9 +3692,12 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
+name|_
+argument_list|(
 literal|"The merge base %s is bad.\n"
 literal|"This means the bug has been fixed "
 literal|"between %s and [%s].\n"
+argument_list|)
 argument_list|,
 name|bad_hex
 argument_list|,
@@ -3697,9 +3731,12 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
+name|_
+argument_list|(
 literal|"The merge base %s is new.\n"
 literal|"The property has changed "
 literal|"between %s and [%s].\n"
+argument_list|)
 argument_list|,
 name|bad_hex
 argument_list|,
@@ -3715,9 +3752,12 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
+name|_
+argument_list|(
 literal|"The merge base %s is %s.\n"
 literal|"This means the first '%s' commit is "
 literal|"between %s and [%s].\n"
+argument_list|)
 argument_list|,
 name|bad_hex
 argument_list|,
@@ -3741,9 +3781,12 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
+name|_
+argument_list|(
 literal|"Some %s revs are not ancestor of the %s rev.\n"
 literal|"git bisect cannot work properly in this case.\n"
 literal|"Maybe you mistook %s and %s revs?\n"
+argument_list|)
 argument_list|,
 name|term_good
 argument_list|,
@@ -3788,11 +3831,9 @@ name|char
 modifier|*
 name|bad_hex
 init|=
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
 name|current_bad_oid
-operator|->
-name|hash
 argument_list|)
 decl_stmt|;
 name|char
@@ -3809,11 +3850,14 @@ argument_list|)
 decl_stmt|;
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"the merge base between %s and [%s] "
 literal|"must be skipped.\n"
 literal|"So we cannot be sure the first %s commit is "
 literal|"between %s and %s.\n"
 literal|"We continue anyway."
+argument_list|)
 argument_list|,
 name|bad_hex
 argument_list|,
@@ -3971,7 +4015,10 @@ else|else
 block|{
 name|printf
 argument_list|(
+name|_
+argument_list|(
 literal|"Bisecting: a merge base must be tested\n"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|exit
@@ -4130,7 +4177,10 @@ name|current_bad_oid
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"a %s revision is needed"
+argument_list|)
 argument_list|,
 name|term_bad
 argument_list|)
@@ -4206,7 +4256,10 @@ literal|0
 condition|)
 name|warning_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"could not create file '%s'"
+argument_list|)
 argument_list|,
 name|filename
 argument_list|)
@@ -4419,7 +4472,10 @@ else|else
 block|{
 name|die_errno
 argument_list|(
+name|_
+argument_list|(
 literal|"could not read file '%s'"
+argument_list|)
 argument_list|,
 name|filename
 argument_list|)
@@ -4527,6 +4583,12 @@ name|char
 modifier|*
 name|bisect_rev
 decl_stmt|;
+name|char
+name|steps_msg
+index|[
+literal|32
+index|]
+decl_stmt|;
 name|read_bisect_terms
 argument_list|(
 operator|&
@@ -4543,7 +4605,10 @@ argument_list|()
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"reading bisect refs failed"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|check_good_are_ancestors_of_bad
@@ -4634,7 +4699,10 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
+name|_
+argument_list|(
 literal|"%s was both %s and %s\n"
+argument_list|)
 argument_list|,
 name|oid_to_hex
 argument_list|(
@@ -4662,8 +4730,11 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
+name|_
+argument_list|(
 literal|"No testable commit found.\n"
 literal|"Maybe you started with bad path parameters?\n"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|exit
@@ -4751,34 +4822,42 @@ argument_list|(
 name|all
 argument_list|)
 expr_stmt|;
+name|xsnprintf
+argument_list|(
+name|steps_msg
+argument_list|,
+sizeof|sizeof
+argument_list|(
+name|steps_msg
+argument_list|)
+argument_list|,
+name|Q_
+argument_list|(
+literal|"(roughly %d step)"
+argument_list|,
+literal|"(roughly %d steps)"
+argument_list|,
+name|steps
+argument_list|)
+argument_list|,
+name|steps
+argument_list|)
+expr_stmt|;
+comment|/* TRANSLATORS: the last %s will be replaced with 	   "(roughly %d steps)" translation */
 name|printf
 argument_list|(
-literal|"Bisecting: %d revision%s left to test after this "
-literal|"(roughly %d step%s)\n"
+name|Q_
+argument_list|(
+literal|"Bisecting: %d revision left to test after this %s\n"
+argument_list|,
+literal|"Bisecting: %d revisions left to test after this %s\n"
+argument_list|,
+name|nr
+argument_list|)
 argument_list|,
 name|nr
 argument_list|,
-operator|(
-name|nr
-operator|==
-literal|1
-condition|?
-literal|""
-else|:
-literal|"s"
-operator|)
-argument_list|,
-name|steps
-argument_list|,
-operator|(
-name|steps
-operator|==
-literal|1
-condition|?
-literal|""
-else|:
-literal|"s"
-operator|)
+name|steps_msg
 argument_list|)
 expr_stmt|;
 return|return

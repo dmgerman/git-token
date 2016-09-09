@@ -770,6 +770,11 @@ name|unpack_unreachable
 init|=
 name|NULL
 decl_stmt|;
+name|int
+name|keep_unreachable
+init|=
+literal|0
+decl_stmt|;
 specifier|const
 name|char
 modifier|*
@@ -983,6 +988,21 @@ literal|"with -A, do not loosen objects older than this"
 argument_list|)
 argument_list|)
 block|,
+name|OPT_BOOL
+argument_list|(
+literal|'k'
+argument_list|,
+literal|"keep-unreachable"
+argument_list|,
+operator|&
+name|keep_unreachable
+argument_list|,
+name|N_
+argument_list|(
+literal|"with -a, repack unreachable objects"
+argument_list|)
+argument_list|)
+block|,
 name|OPT_STRING
 argument_list|(
 literal|0
@@ -1117,6 +1137,28 @@ argument_list|(
 name|_
 argument_list|(
 literal|"cannot delete packs in a precious-objects repo"
+argument_list|)
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|keep_unreachable
+operator|&&
+operator|(
+name|unpack_unreachable
+operator|||
+operator|(
+name|pack_everything
+operator|&
+name|LOOSEN_UNREACHABLE
+operator|)
+operator|)
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"--keep-unreachable and -A are incompatible"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1407,6 +1449,33 @@ operator|.
 name|args
 argument_list|,
 literal|"--unpack-unreachable"
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|keep_unreachable
+condition|)
+block|{
+name|argv_array_push
+argument_list|(
+operator|&
+name|cmd
+operator|.
+name|args
+argument_list|,
+literal|"--keep-unreachable"
+argument_list|)
+expr_stmt|;
+name|argv_array_push
+argument_list|(
+operator|&
+name|cmd
+operator|.
+name|args
+argument_list|,
+literal|"--pack-loose-unreachable"
 argument_list|)
 expr_stmt|;
 block|}
@@ -2155,7 +2224,7 @@ name|warning
 argument_list|(
 name|_
 argument_list|(
-literal|"removing '%s' failed"
+literal|"failed to remove '%s'"
 argument_list|)
 argument_list|,
 name|fname

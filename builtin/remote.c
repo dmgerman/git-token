@@ -1387,6 +1387,8 @@ specifier|static
 name|struct
 name|string_list
 name|branch_list
+init|=
+name|STRING_LIST_INIT_NODUP
 decl_stmt|;
 end_decl_stmt
 
@@ -3258,24 +3260,6 @@ return|return
 literal|0
 return|;
 block|}
-comment|/* make sure that symrefs are deleted */
-if|if
-condition|(
-name|flags
-operator|&
-name|REF_ISSYMREF
-condition|)
-return|return
-name|unlink
-argument_list|(
-name|git_path
-argument_list|(
-literal|"%s"
-argument_list|,
-name|refname
-argument_list|)
-argument_list|)
-return|;
 name|string_list_append
 argument_list|(
 name|branches
@@ -4952,6 +4936,8 @@ name|delete_refs
 argument_list|(
 operator|&
 name|branches
+argument_list|,
+name|REF_NODEREF
 argument_list|)
 expr_stmt|;
 name|string_list_clear
@@ -5918,10 +5904,14 @@ name|branch_info
 operator|->
 name|merge
 decl_stmt|;
-specifier|const
-name|char
-modifier|*
-name|also
+name|int
+name|width
+init|=
+name|show_info
+operator|->
+name|width
+operator|+
+literal|4
 decl_stmt|;
 name|int
 name|i
@@ -5979,16 +5969,19 @@ condition|)
 block|{
 name|printf_ln
 argument_list|(
-name|_
-argument_list|(
 name|branch_info
 operator|->
 name|rebase
 operator|==
 name|INTERACTIVE_REBASE
 condition|?
+name|_
+argument_list|(
 literal|"rebases interactively onto remote %s"
+argument_list|)
 else|:
+name|_
+argument_list|(
 literal|"rebases onto remote %s"
 argument_list|)
 argument_list|,
@@ -6031,12 +6024,8 @@ operator|.
 name|string
 argument_list|)
 expr_stmt|;
-name|also
-operator|=
-name|_
-argument_list|(
-literal|"    and with remote"
-argument_list|)
+name|width
+operator|++
 expr_stmt|;
 block|}
 else|else
@@ -6058,13 +6047,6 @@ operator|.
 name|string
 argument_list|)
 expr_stmt|;
-name|also
-operator|=
-name|_
-argument_list|(
-literal|"   and with remote"
-argument_list|)
-expr_stmt|;
 block|}
 for|for
 control|(
@@ -6083,15 +6065,14 @@ operator|++
 control|)
 name|printf
 argument_list|(
-literal|"    %-*s %s %s\n"
+name|_
+argument_list|(
+literal|"%-*s    and with remote %s\n"
+argument_list|)
 argument_list|,
-name|show_info
-operator|->
 name|width
 argument_list|,
 literal|""
-argument_list|,
-name|also
 argument_list|,
 name|merge
 operator|->
@@ -7194,7 +7175,10 @@ argument_list|(
 literal|"  Push  URL: %s"
 argument_list|)
 argument_list|,
+name|_
+argument_list|(
 literal|"(no URL)"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -7208,7 +7192,10 @@ argument_list|(
 literal|"  HEAD branch: %s"
 argument_list|)
 argument_list|,
+name|_
+argument_list|(
 literal|"(not queried)"
+argument_list|)
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -7228,7 +7215,10 @@ argument_list|(
 literal|"  HEAD branch: %s"
 argument_list|)
 argument_list|,
+name|_
+argument_list|(
 literal|"(unknown)"
+argument_list|)
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -8234,6 +8224,8 @@ name|delete_refs
 argument_list|(
 operator|&
 name|refs_to_prune
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|for_each_string_list_item

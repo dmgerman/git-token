@@ -867,10 +867,7 @@ name|string_list_append
 argument_list|(
 name|v
 argument_list|,
-name|xstrdup
-argument_list|(
 name|arg
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return

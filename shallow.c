@@ -2217,12 +2217,12 @@ name|bitmap_size
 init|=
 name|st_mult
 argument_list|(
-name|bitmap_nr
-argument_list|,
 sizeof|sizeof
 argument_list|(
 name|uint32_t
 argument_list|)
+argument_list|,
+name|bitmap_nr
 argument_list|)
 decl_stmt|;
 name|uint32_t

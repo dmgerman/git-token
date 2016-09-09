@@ -2100,7 +2100,7 @@ operator|&
 name|pathspec
 argument_list|)
 expr_stmt|;
-name|free_pathspec
+name|clear_pathspec
 argument_list|(
 operator|&
 name|pathspec
@@ -2936,7 +2936,10 @@ name|remote
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Unexpected option --remote"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -2945,7 +2948,10 @@ name|exec
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Option --exec can only be used together with --remote"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -2954,7 +2960,10 @@ name|output
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Unexpected option --output"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -3085,7 +3094,10 @@ operator|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Unknown archive format '%s'"
+argument_list|)
 argument_list|,
 name|format
 argument_list|)
@@ -3125,7 +3137,10 @@ else|else
 block|{
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Argument not supported for format '%s': -%d"
+argument_list|)
 argument_list|,
 name|format
 argument_list|,

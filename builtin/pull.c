@@ -3991,6 +3991,26 @@ argument_list|,
 literal|"--autostash"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|opt_verify_signatures
+operator|&&
+operator|!
+name|strcmp
+argument_list|(
+name|opt_verify_signatures
+argument_list|,
+literal|"--verify-signatures"
+argument_list|)
+condition|)
+name|warning
+argument_list|(
+name|_
+argument_list|(
+literal|"ignoring --verify-signatures for rebase"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|argv_array_push
 argument_list|(
 operator|&
@@ -4203,7 +4223,7 @@ argument_list|()
 condition|)
 name|die_resolve_conflict
 argument_list|(
-literal|"Pull"
+literal|"pull"
 argument_list|)
 expr_stmt|;
 if|if

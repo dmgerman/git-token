@@ -66,9 +66,8 @@ decl_stmt|;
 DECL|member|buffer_output
 name|unsigned
 name|buffer_output
-range|:
-literal|1
 decl_stmt|;
+comment|/* 1: output at end, 2: keep buffered */
 DECL|member|renormalize
 name|unsigned
 name|renormalize
@@ -223,14 +222,14 @@ modifier|*
 name|o
 parameter_list|,
 specifier|const
-name|unsigned
-name|char
+name|struct
+name|object_id
 modifier|*
 name|head
 parameter_list|,
 specifier|const
-name|unsigned
-name|char
+name|struct
+name|object_id
 modifier|*
 name|merge
 parameter_list|,
@@ -238,8 +237,8 @@ name|int
 name|num_ca
 parameter_list|,
 specifier|const
-name|unsigned
-name|char
+name|struct
+name|object_id
 modifier|*
 modifier|*
 name|ca

@@ -121,6 +121,8 @@ specifier|static
 name|struct
 name|string_list
 name|changed_submodule_paths
+init|=
+name|STRING_LIST_INIT_NODUP
 decl_stmt|;
 end_decl_stmt
 
@@ -2610,7 +2612,9 @@ name|p
 operator|->
 name|two
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|)
 condition|)
 name|string_list_insert
@@ -3377,7 +3381,9 @@ name|p
 operator|->
 name|two
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|)
 condition|)
 name|string_list_append

@@ -188,20 +188,6 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|get_color_slot
-DECL|variable|get_colorbool_slot
-specifier|static
-specifier|const
-name|char
-modifier|*
-name|get_color_slot
-decl_stmt|,
-modifier|*
-name|get_colorbool_slot
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|variable|end_null
 specifier|static
 name|int
@@ -3651,6 +3637,8 @@ decl_stmt|;
 if|if
 condition|(
 name|fd
+operator|>=
+literal|0
 condition|)
 block|{
 name|char

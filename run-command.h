@@ -382,10 +382,53 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/**  * Execute the given command, capturing its stdout in the given strbuf.  * Returns -1 if starting the command fails or reading fails, and otherwise  * returns the exit code of the command. The output collected in the  * buffer is kept even if the command returns a non-zero exit. The hint field  * gives a starting size for the strbuf allocation.  *  * The fields of "cmd" should be set up as they would for a normal run_command  * invocation. But note that there is no need to set cmd->out; the function  * sets it up for the caller.  */
+comment|/**  * Execute the given command, sending "in" to its stdin, and capturing its  * stdout and stderr in the "out" and "err" strbufs. Any of the three may  * be NULL to skip processing.  *  * Returns -1 if starting the command fails or reading fails, and otherwise  * returns the exit code of the command. Any output collected in the  * buffers is kept even if the command returns a non-zero exit. The hint fields  * gives starting sizes for the strbuf allocations.  *  * The fields of "cmd" should be set up as they would for a normal run_command  * invocation. But note that there is no need to set the in, out, or err  * fields; pipe_command handles that automatically.  */
 end_comment
 
 begin_function_decl
+name|int
+name|pipe_command
+parameter_list|(
+name|struct
+name|child_process
+modifier|*
+name|cmd
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|in
+parameter_list|,
+name|size_t
+name|in_len
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|out
+parameter_list|,
+name|size_t
+name|out_hint
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|err
+parameter_list|,
+name|size_t
+name|err_hint
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
+comment|/**  * Convenience wrapper around pipe_command for the common case  * of capturing only stdout.  */
+end_comment
+
+begin_function
+DECL|function|capture_command
+specifier|static
+specifier|inline
 name|int
 name|capture_command
 parameter_list|(
@@ -397,13 +440,32 @@ parameter_list|,
 name|struct
 name|strbuf
 modifier|*
-name|buf
+name|out
 parameter_list|,
 name|size_t
 name|hint
 parameter_list|)
-function_decl|;
-end_function_decl
+block|{
+return|return
+name|pipe_command
+argument_list|(
+name|cmd
+argument_list|,
+name|NULL
+argument_list|,
+literal|0
+argument_list|,
+name|out
+argument_list|,
+name|hint
+argument_list|,
+name|NULL
+argument_list|,
+literal|0
+argument_list|)
+return|;
+block|}
+end_function
 
 begin_comment
 comment|/*  * The purpose of the following functions is to feed a pipe by running  * a function asynchronously and providing output that the caller reads.  *  * It is expected that no synchronization and mutual exclusion between  * the caller and the feed function is necessary so that the function  * can run in a thread without interfering with the caller.  */

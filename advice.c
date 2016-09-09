@@ -501,9 +501,107 @@ modifier|*
 name|me
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|me
+argument_list|,
+literal|"cherry-pick"
+argument_list|)
+condition|)
 name|error
 argument_list|(
-literal|"%s is not possible because you have unmerged files."
+name|_
+argument_list|(
+literal|"Cherry-picking is not possible because you have unmerged files."
+argument_list|)
+argument_list|)
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|me
+argument_list|,
+literal|"commit"
+argument_list|)
+condition|)
+name|error
+argument_list|(
+name|_
+argument_list|(
+literal|"Committing is not possible because you have unmerged files."
+argument_list|)
+argument_list|)
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|me
+argument_list|,
+literal|"merge"
+argument_list|)
+condition|)
+name|error
+argument_list|(
+name|_
+argument_list|(
+literal|"Merging is not possible because you have unmerged files."
+argument_list|)
+argument_list|)
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|me
+argument_list|,
+literal|"pull"
+argument_list|)
+condition|)
+name|error
+argument_list|(
+name|_
+argument_list|(
+literal|"Pulling is not possible because you have unmerged files."
+argument_list|)
+argument_list|)
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+operator|!
+name|strcmp
+argument_list|(
+name|me
+argument_list|,
+literal|"revert"
+argument_list|)
+condition|)
+name|error
+argument_list|(
+name|_
+argument_list|(
+literal|"Reverting is not possible because you have unmerged files."
+argument_list|)
+argument_list|)
+expr_stmt|;
+else|else
+name|error
+argument_list|(
+name|_
+argument_list|(
+literal|"It is not possible to %s because you have unmerged files."
+argument_list|)
 argument_list|,
 name|me
 argument_list|)
@@ -548,7 +646,10 @@ argument_list|)
 expr_stmt|;
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Exiting because of an unresolved conflict."
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -607,9 +708,11 @@ parameter_list|)
 block|{
 specifier|const
 name|char
+modifier|*
 name|fmt
-index|[]
 init|=
+name|_
+argument_list|(
 literal|"Note: checking out '%s'.\n\n"
 literal|"You are in 'detached HEAD' state. You can look around, make experimental\n"
 literal|"changes and commit them, and you can discard any commits you make in this\n"
@@ -617,6 +720,7 @@ literal|"state without impacting any branches by performing another checkout.\n\
 literal|"If you want to create a new branch to retain commits you create, you may\n"
 literal|"do so (now or later) by using -b with the checkout command again. Example:\n\n"
 literal|"  git checkout -b<new-branch-name>\n\n"
+argument_list|)
 decl_stmt|;
 name|fprintf
 argument_list|(

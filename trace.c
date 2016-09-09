@@ -16,6 +16,47 @@ file|"quote.h"
 end_include
 
 begin_comment
+comment|/*  * "Normalize" a key argument by converting NULL to our trace_default,  * and otherwise passing through the value. All caller-facing functions  * should normalize their inputs in this way, though most get it  * for free by calling get_trace_fd() (directly or indirectly).  */
+end_comment
+
+begin_function
+DECL|function|normalize_trace_key
+specifier|static
+name|void
+name|normalize_trace_key
+parameter_list|(
+name|struct
+name|trace_key
+modifier|*
+modifier|*
+name|key
+parameter_list|)
+block|{
+specifier|static
+name|struct
+name|trace_key
+name|trace_default
+init|=
+block|{
+literal|"GIT_TRACE"
+block|}
+decl_stmt|;
+if|if
+condition|(
+operator|!
+operator|*
+name|key
+condition|)
+operator|*
+name|key
+operator|=
+operator|&
+name|trace_default
+expr_stmt|;
+block|}
+end_function
+
+begin_comment
 comment|/* Get a trace file descriptor from "key" env variable. */
 end_comment
 
@@ -31,30 +72,16 @@ modifier|*
 name|key
 parameter_list|)
 block|{
-specifier|static
-name|struct
-name|trace_key
-name|trace_default
-init|=
-block|{
-literal|"GIT_TRACE"
-block|}
-decl_stmt|;
 specifier|const
 name|char
 modifier|*
 name|trace
 decl_stmt|;
-comment|/* use default "GIT_TRACE" if NULL */
-if|if
-condition|(
-operator|!
-name|key
-condition|)
-name|key
-operator|=
+name|normalize_trace_key
+argument_list|(
 operator|&
-name|trace_default
+name|key
+argument_list|)
 expr_stmt|;
 comment|/* don't open twice */
 if|if
@@ -195,12 +222,9 @@ operator|-
 literal|1
 condition|)
 block|{
-name|fprintf
+name|warning
 argument_list|(
-name|stderr
-argument_list|,
-literal|"Could not open '%s' for tracing: %s\n"
-literal|"Defaulting to tracing on stderr...\n"
+literal|"could not open '%s' for tracing: %s"
 argument_list|,
 name|trace
 argument_list|,
@@ -210,11 +234,10 @@ name|errno
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|trace_disable
+argument_list|(
 name|key
-operator|->
-name|fd
-operator|=
-name|STDERR_FILENO
+argument_list|)
 expr_stmt|;
 block|}
 else|else
@@ -235,31 +258,27 @@ block|}
 block|}
 else|else
 block|{
-name|fprintf
+name|warning
 argument_list|(
-name|stderr
+literal|"unknown trace value for '%s': %s\n"
+literal|"         If you want to trace into a file, then please set %s\n"
+literal|"         to an absolute pathname (starting with /)"
 argument_list|,
-literal|"What does '%s' for %s mean?\n"
-literal|"If you want to trace into a file, then please set "
-literal|"%s to an absolute pathname (starting with /).\n"
-literal|"Defaulting to tracing on stderr...\n"
+name|key
+operator|->
+name|key
 argument_list|,
 name|trace
 argument_list|,
 name|key
 operator|->
 name|key
-argument_list|,
-name|key
-operator|->
-name|key
 argument_list|)
 expr_stmt|;
+name|trace_disable
+argument_list|(
 name|key
-operator|->
-name|fd
-operator|=
-name|STDERR_FILENO
+argument_list|)
 expr_stmt|;
 block|}
 name|key
@@ -287,6 +306,12 @@ modifier|*
 name|key
 parameter_list|)
 block|{
+name|normalize_trace_key
+argument_list|(
+operator|&
+name|key
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|key
@@ -320,19 +345,6 @@ literal|0
 expr_stmt|;
 block|}
 end_function
-
-begin_decl_stmt
-DECL|variable|err_msg
-specifier|static
-specifier|const
-name|char
-name|err_msg
-index|[]
-init|=
-literal|"Could not trace into fd given by "
-literal|"GIT_TRACE environment variable"
-decl_stmt|;
-end_decl_stmt
 
 begin_function
 DECL|function|prepare_trace_line
@@ -499,6 +511,72 @@ block|}
 end_function
 
 begin_function
+DECL|function|trace_write
+specifier|static
+name|void
+name|trace_write
+parameter_list|(
+name|struct
+name|trace_key
+modifier|*
+name|key
+parameter_list|,
+specifier|const
+name|void
+modifier|*
+name|buf
+parameter_list|,
+name|unsigned
+name|len
+parameter_list|)
+block|{
+if|if
+condition|(
+name|write_in_full
+argument_list|(
+name|get_trace_fd
+argument_list|(
+name|key
+argument_list|)
+argument_list|,
+name|buf
+argument_list|,
+name|len
+argument_list|)
+operator|<
+literal|0
+condition|)
+block|{
+name|normalize_trace_key
+argument_list|(
+operator|&
+name|key
+argument_list|)
+expr_stmt|;
+name|warning
+argument_list|(
+literal|"unable to write trace for %s: %s"
+argument_list|,
+name|key
+operator|->
+name|key
+argument_list|,
+name|strerror
+argument_list|(
+name|errno
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|trace_disable
+argument_list|(
+name|key
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+end_function
+
+begin_function
 DECL|function|trace_verbatim
 name|void
 name|trace_verbatim
@@ -526,18 +604,13 @@ name|key
 argument_list|)
 condition|)
 return|return;
-name|write_or_whine_pipe
-argument_list|(
-name|get_trace_fd
+name|trace_write
 argument_list|(
 name|key
-argument_list|)
 argument_list|,
 name|buf
 argument_list|,
 name|len
-argument_list|,
-name|err_msg
 argument_list|)
 expr_stmt|;
 block|}
@@ -565,12 +638,9 @@ argument_list|(
 name|buf
 argument_list|)
 expr_stmt|;
-name|write_or_whine_pipe
-argument_list|(
-name|get_trace_fd
+name|trace_write
 argument_list|(
 name|key
-argument_list|)
 argument_list|,
 name|buf
 operator|->
@@ -579,8 +649,6 @@ argument_list|,
 name|buf
 operator|->
 name|len
-argument_list|,
-name|err_msg
 argument_list|)
 expr_stmt|;
 name|strbuf_release

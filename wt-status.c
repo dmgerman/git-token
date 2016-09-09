@@ -1539,10 +1539,7 @@ return|;
 default|default:
 name|die
 argument_list|(
-name|_
-argument_list|(
-literal|"bug: unhandled unmerged status %x"
-argument_list|)
+literal|"BUG: unhandled unmerged status %x"
 argument_list|,
 name|stagemask
 argument_list|)
@@ -2251,10 +2248,7 @@ name|what
 condition|)
 name|die
 argument_list|(
-name|_
-argument_list|(
-literal|"bug: unhandled diff status %c"
-argument_list|)
+literal|"BUG: unhandled diff status %c"
 argument_list|,
 name|status
 argument_list|)
@@ -2553,19 +2547,21 @@ name|new_submodule_commits
 operator|=
 operator|!
 operator|!
-name|hashcmp
+name|oidcmp
 argument_list|(
+operator|&
 name|p
 operator|->
 name|one
 operator|->
-name|sha1
+name|oid
 argument_list|,
+operator|&
 name|p
 operator|->
 name|two
 operator|->
-name|sha1
+name|oid
 argument_list|)
 expr_stmt|;
 block|}

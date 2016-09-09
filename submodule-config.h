@@ -67,6 +67,12 @@ name|char
 modifier|*
 name|ignore
 decl_stmt|;
+DECL|member|branch
+specifier|const
+name|char
+modifier|*
+name|branch
+decl_stmt|;
 DECL|member|update_strategy
 name|struct
 name|submodule_update_strategy
@@ -80,6 +86,10 @@ name|gitmodules_sha1
 index|[
 literal|20
 index|]
+decl_stmt|;
+DECL|member|recommend_shallow
+name|int
+name|recommend_shallow
 decl_stmt|;
 block|}
 struct|;

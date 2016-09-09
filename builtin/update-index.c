@@ -3630,7 +3630,7 @@ goto|goto
 name|redo
 goto|;
 block|}
-name|free_pathspec
+name|clear_pathspec
 argument_list|(
 operator|&
 name|pathspec
@@ -5831,7 +5831,7 @@ break|break;
 default|default:
 name|die
 argument_list|(
-literal|"Bug: bad untracked_cache value: %d"
+literal|"BUG: bad untracked_cache value: %d"
 argument_list|,
 name|untracked_cache
 argument_list|)

@@ -44,66 +44,74 @@ function_decl|;
 end_typedef
 
 begin_comment
-comment|/*  * Make sure that our object store has all the commits necessary to  * connect the ancestry chain to some of our existing refs, and all  * the trees and blobs that these commits use.  *  * Return 0 if Ok, non zero otherwise (i.e. some missing objects)  */
+comment|/*  * Named-arguments struct for check_connected. All arguments are  * optional, and can be left to defaults as set by CHECK_CONNECTED_INIT.  */
 end_comment
 
-begin_function_decl
-specifier|extern
-name|int
-name|check_everything_connected
-parameter_list|(
-name|sha1_iterate_fn
-parameter_list|,
-name|int
-name|quiet
-parameter_list|,
-name|void
-modifier|*
-name|cb_data
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-specifier|extern
-name|int
-name|check_shallow_connected
-parameter_list|(
-name|sha1_iterate_fn
-parameter_list|,
+begin_struct
+DECL|struct|check_connected_options
+struct|struct
+name|check_connected_options
+block|{
+comment|/* Avoid printing any errors to stderr. */
+DECL|member|quiet
 name|int
 name|quiet
-parameter_list|,
-name|void
-modifier|*
-name|cb_data
-parameter_list|,
+decl_stmt|;
+comment|/* --shallow-file to pass to rev-list sub-process */
+DECL|member|shallow_file
 specifier|const
 name|char
 modifier|*
 name|shallow_file
-parameter_list|)
-function_decl|;
-end_function_decl
+decl_stmt|;
+comment|/* Transport whose objects we are checking, if available. */
+DECL|member|transport
+name|struct
+name|transport
+modifier|*
+name|transport
+decl_stmt|;
+comment|/* 	 * If non-zero, send error messages to this descriptor rather 	 * than stderr. The descriptor is closed before check_connected 	 * returns. 	 */
+DECL|member|err_fd
+name|int
+name|err_fd
+decl_stmt|;
+comment|/* If non-zero, show progress as we traverse the objects. */
+DECL|member|progress
+name|int
+name|progress
+decl_stmt|;
+block|}
+struct|;
+end_struct
+
+begin_define
+DECL|macro|CHECK_CONNECTED_INIT
+define|#
+directive|define
+name|CHECK_CONNECTED_INIT
+value|{ 0 }
+end_define
+
+begin_comment
+comment|/*  * Make sure that our object store has all the commits necessary to  * connect the ancestry chain to some of our existing refs, and all  * the trees and blobs that these commits use.  *  * Return 0 if Ok, non zero otherwise (i.e. some missing objects)  *  * If "opt" is NULL, behaves as if CHECK_CONNECTED_INIT was passed.  */
+end_comment
 
 begin_function_decl
-specifier|extern
 name|int
-name|check_everything_connected_with_transport
+name|check_connected
 parameter_list|(
 name|sha1_iterate_fn
-parameter_list|,
-name|int
-name|quiet
+name|fn
 parameter_list|,
 name|void
 modifier|*
 name|cb_data
 parameter_list|,
 name|struct
-name|transport
+name|check_connected_options
 modifier|*
-name|transport
+name|opt
 parameter_list|)
 function_decl|;
 end_function_decl

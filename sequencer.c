@@ -982,7 +982,7 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"Error wrapping up %s"
+literal|"Error wrapping up %s."
 argument_list|)
 argument_list|,
 name|filename
@@ -1151,7 +1151,10 @@ argument_list|(
 operator|&
 name|sb
 argument_list|,
+name|_
+argument_list|(
 literal|"%s: fast-forward"
+argument_list|)
 argument_list|,
 name|action_name
 argument_list|(
@@ -1552,6 +1555,23 @@ operator|&
 name|result
 argument_list|)
 expr_stmt|;
+name|strbuf_release
+argument_list|(
+operator|&
+name|o
+operator|.
+name|obuf
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|clean
+operator|<
+literal|0
+condition|)
+return|return
+name|clean
+return|;
 if|if
 condition|(
 name|active_cache_changed
@@ -2872,6 +2892,15 @@ argument_list|,
 name|opts
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|res
+operator|<
+literal|0
+condition|)
+return|return
+name|res
+return|;
 name|write_message
 argument_list|(
 operator|&
@@ -3665,33 +3694,52 @@ operator|->
 name|action
 condition|)
 block|{
-specifier|const
-name|char
-modifier|*
-name|action_str
-decl_stmt|;
-name|action_str
-operator|=
+if|if
+condition|(
 name|action
 operator|==
 name|REPLAY_REVERT
-condition|?
-literal|"revert"
-else|:
-literal|"cherry-pick"
-expr_stmt|;
+condition|)
 name|error
 argument_list|(
+operator|(
+name|opts
+operator|->
+name|action
+operator|==
+name|REPLAY_REVERT
+operator|)
+condition|?
 name|_
 argument_list|(
-literal|"Cannot %s during a %s"
+literal|"Cannot revert during another revert."
 argument_list|)
-argument_list|,
-name|action_str
-argument_list|,
-name|action_name
+else|:
+name|_
 argument_list|(
+literal|"Cannot revert during a cherry-pick."
+argument_list|)
+argument_list|)
+expr_stmt|;
+else|else
+name|error
+argument_list|(
+operator|(
 name|opts
+operator|->
+name|action
+operator|==
+name|REPLAY_REVERT
+operator|)
+condition|?
+name|_
+argument_list|(
+literal|"Cannot cherry-pick during a revert."
+argument_list|)
+else|:
+name|_
+argument_list|(
+literal|"Cannot cherry-pick during another cherry-pick."
 argument_list|)
 argument_list|)
 expr_stmt|;

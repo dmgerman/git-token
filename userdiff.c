@@ -317,6 +317,21 @@ literal|"|[-+0-9.e]+[fFlL]?|0[xXbB]?[0-9a-fA-F]+[lL]?"
 literal|"|[-+*/<>%&^|=!]=|--|\\+\\+|<<=?|>>=?|&&|\\|\\||::|->"
 argument_list|)
 block|,
+name|IPATTERN
+argument_list|(
+literal|"css"
+argument_list|,
+literal|"![:;][[:space:]]*$\n"
+literal|"^[_a-z0-9].*$"
+argument_list|,
+comment|/* -- */
+comment|/* 	  * This regex comes from W3C CSS specs. Should theoretically also 	  * allow ISO 10646 characters U+00A0 and higher, 	  * but they are not handled in this regex. 	  */
+literal|"-?[_a-zA-Z][-_a-zA-Z0-9]*"
+comment|/* identifiers */
+literal|"|-?[0-9]+|\\#[0-9a-fA-F]+"
+comment|/* numbers */
+argument_list|)
+block|,
 block|{
 literal|"default"
 block|,
