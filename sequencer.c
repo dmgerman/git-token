@@ -3318,7 +3318,7 @@ end_function
 begin_function
 DECL|function|read_and_refresh_cache
 specifier|static
-name|void
+name|int
 name|read_and_refresh_cache
 parameter_list|(
 name|struct
@@ -3355,7 +3355,8 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -3367,7 +3368,7 @@ argument_list|(
 name|opts
 argument_list|)
 argument_list|)
-expr_stmt|;
+return|;
 name|refresh_index
 argument_list|(
 operator|&
@@ -3408,7 +3409,8 @@ argument_list|,
 name|COMMIT_LOCK
 argument_list|)
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -3420,7 +3422,7 @@ argument_list|(
 name|opts
 argument_list|)
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 name|rollback_lock_file
 argument_list|(
@@ -3428,6 +3430,9 @@ operator|&
 name|index_lock
 argument_list|)
 expr_stmt|;
+return|return
+literal|0
+return|;
 block|}
 end_function
 
@@ -5486,11 +5491,17 @@ name|edit
 operator|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|read_and_refresh_cache
 argument_list|(
 name|opts
 argument_list|)
-expr_stmt|;
+condition|)
+return|return
+operator|-
+literal|1
+return|;
 for|for
 control|(
 name|cur
@@ -5790,11 +5801,17 @@ operator|->
 name|revs
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|read_and_refresh_cache
 argument_list|(
 name|opts
 argument_list|)
-expr_stmt|;
+condition|)
+return|return
+operator|-
+literal|1
+return|;
 comment|/* 	 * Decide what to do depending on the arguments; a fresh 	 * cherry-pick should be handled differently from an existing 	 * one that is being continued 	 */
 if|if
 condition|(
