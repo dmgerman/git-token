@@ -35,6 +35,11 @@ DECL|enumerator|SAFE_CRLF_WARN
 name|SAFE_CRLF_WARN
 init|=
 literal|2
+block|,
+DECL|enumerator|SAFE_CRLF_RENORMALIZE
+name|SAFE_CRLF_RENORMALIZE
+init|=
+literal|3
 block|}
 enum|;
 end_enum
