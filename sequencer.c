@@ -3354,6 +3354,13 @@ argument_list|)
 operator|<
 literal|0
 condition|)
+block|{
+name|rollback_lock_file
+argument_list|(
+operator|&
+name|index_lock
+argument_list|)
+expr_stmt|;
 return|return
 name|error
 argument_list|(
@@ -3368,6 +3375,7 @@ name|opts
 argument_list|)
 argument_list|)
 return|;
+block|}
 name|refresh_index
 argument_list|(
 operator|&
@@ -3408,6 +3416,13 @@ argument_list|,
 name|COMMIT_LOCK
 argument_list|)
 condition|)
+block|{
+name|rollback_lock_file
+argument_list|(
+operator|&
+name|index_lock
+argument_list|)
+expr_stmt|;
 return|return
 name|error
 argument_list|(
@@ -3422,6 +3437,7 @@ name|opts
 argument_list|)
 argument_list|)
 return|;
+block|}
 block|}
 name|rollback_lock_file
 argument_list|(
