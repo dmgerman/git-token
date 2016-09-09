@@ -904,7 +904,7 @@ end_function
 begin_function
 DECL|function|write_message
 specifier|static
-name|void
+name|int
 name|write_message
 parameter_list|(
 name|struct
@@ -933,9 +933,26 @@ name|msg_file
 argument_list|,
 name|filename
 argument_list|,
-name|LOCK_DIE_ON_ERROR
+literal|0
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|msg_fd
+operator|<
+literal|0
+condition|)
+return|return
+name|error_errno
+argument_list|(
+name|_
+argument_list|(
+literal|"Could not lock '%s'"
+argument_list|)
+argument_list|,
+name|filename
+argument_list|)
+return|;
 if|if
 condition|(
 name|write_in_full
@@ -953,7 +970,8 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-name|die_errno
+return|return
+name|error_errno
 argument_list|(
 name|_
 argument_list|(
@@ -962,7 +980,7 @@ argument_list|)
 argument_list|,
 name|filename
 argument_list|)
-expr_stmt|;
+return|;
 name|strbuf_release
 argument_list|(
 name|msgbuf
@@ -978,7 +996,8 @@ argument_list|)
 operator|<
 literal|0
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -987,7 +1006,10 @@ argument_list|)
 argument_list|,
 name|filename
 argument_list|)
-expr_stmt|;
+return|;
+return|return
+literal|0
+return|;
 block|}
 end_function
 
@@ -2901,6 +2923,8 @@ condition|)
 return|return
 name|res
 return|;
+name|res
+operator||=
 name|write_message
 argument_list|(
 operator|&
@@ -2927,6 +2951,8 @@ name|remotes
 init|=
 name|NULL
 decl_stmt|;
+name|res
+operator|=
 name|write_message
 argument_list|(
 operator|&
@@ -2953,7 +2979,7 @@ name|remotes
 argument_list|)
 expr_stmt|;
 name|res
-operator|=
+operator||=
 name|try_merge_command
 argument_list|(
 name|opts
