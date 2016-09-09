@@ -1548,13 +1548,14 @@ block|}
 end_function
 
 begin_function
-DECL|function|main
+DECL|function|cmd_main
 name|int
-name|main
+name|cmd_main
 parameter_list|(
 name|int
 name|argc
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
@@ -1594,14 +1595,6 @@ name|char
 modifier|*
 name|url_in
 decl_stmt|;
-name|git_extract_argv0_path
-argument_list|(
-name|argv
-index|[
-literal|0
-index|]
-argument_list|)
-expr_stmt|;
 name|setup_git_directory
 argument_list|()
 expr_stmt|;

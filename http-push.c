@@ -9132,13 +9132,14 @@ block|}
 end_function
 
 begin_function
-DECL|function|main
+DECL|function|cmd_main
 name|int
-name|main
+name|cmd_main
 parameter_list|(
 name|int
 name|argc
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
@@ -9160,6 +9161,7 @@ name|nr_refspec
 init|=
 literal|0
 decl_stmt|;
+specifier|const
 name|char
 modifier|*
 modifier|*
@@ -9217,17 +9219,6 @@ decl_stmt|,
 modifier|*
 name|local_refs
 decl_stmt|;
-name|git_setup_gettext
-argument_list|()
-expr_stmt|;
-name|git_extract_argv0_path
-argument_list|(
-name|argv
-index|[
-literal|0
-index|]
-argument_list|)
-expr_stmt|;
 name|repo
 operator|=
 name|xcalloc
@@ -9261,6 +9252,7 @@ name|argv
 operator|++
 control|)
 block|{
+specifier|const
 name|char
 modifier|*
 name|arg

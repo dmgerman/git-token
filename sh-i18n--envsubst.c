@@ -97,12 +97,13 @@ end_function_decl
 
 begin_function
 name|int
-DECL|function|main
-name|main
+DECL|function|cmd_main
+name|cmd_main
 parameter_list|(
 name|int
 name|argc
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 name|argv

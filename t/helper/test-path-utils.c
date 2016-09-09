@@ -927,13 +927,14 @@ decl_stmt|;
 end_decl_stmt
 
 begin_function
-DECL|function|main
+DECL|function|cmd_main
 name|int
-name|main
+name|cmd_main
 parameter_list|(
 name|int
 name|argc
 parameter_list|,
+specifier|const
 name|char
 modifier|*
 modifier|*
@@ -1236,6 +1237,7 @@ literal|"prefix_path"
 argument_list|)
 condition|)
 block|{
+specifier|const
 name|char
 modifier|*
 name|prefix
