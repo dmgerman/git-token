@@ -2178,10 +2178,11 @@ name|obj
 decl_stmt|;
 comment|/* the named object, could be a tag */
 DECL|member|name
-specifier|const
 name|char
-modifier|*
 name|name
+index|[
+name|FLEX_ARRAY
+index|]
 decl_stmt|;
 block|}
 struct|;
@@ -2197,6 +2198,29 @@ name|commit
 parameter_list|)
 value|((struct merge_remote_desc *)((commit)->util))
 end_define
+
+begin_function_decl
+specifier|extern
+name|void
+name|set_merge_remote_desc
+parameter_list|(
+name|struct
+name|commit
+modifier|*
+name|commit
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|name
+parameter_list|,
+name|struct
+name|object
+modifier|*
+name|obj
+parameter_list|)
+function_decl|;
+end_function_decl
 
 begin_comment
 comment|/*  * Given "name" from the command line to merge, find the commit object  * and return it, while storing merge_remote_desc in its ->util field,  * to allow callers to tell if we are told to merge a tag.  */
