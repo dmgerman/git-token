@@ -4447,7 +4447,7 @@ end_function
 begin_function
 DECL|function|walk_revs_populate_todo
 specifier|static
-name|void
+name|int
 name|walk_revs_populate_todo
 parameter_list|(
 name|struct
@@ -4473,11 +4473,17 @@ modifier|*
 modifier|*
 name|next
 decl_stmt|;
+if|if
+condition|(
 name|prepare_revs
 argument_list|(
 name|opts
 argument_list|)
-expr_stmt|;
+condition|)
+return|return
+operator|-
+literal|1
+return|;
 name|next
 operator|=
 name|todo_list
@@ -4504,6 +4510,9 @@ argument_list|,
 name|next
 argument_list|)
 expr_stmt|;
+return|return
+literal|0
+return|;
 block|}
 end_function
 
@@ -6048,6 +6057,8 @@ argument_list|)
 return|;
 block|}
 comment|/* 	 * Start a new cherry-pick/ revert sequence; but 	 * first, make sure that an existing one isn't in 	 * progress 	 */
+if|if
+condition|(
 name|walk_revs_populate_todo
 argument_list|(
 operator|&
@@ -6055,9 +6066,7 @@ name|todo_list
 argument_list|,
 name|opts
 argument_list|)
-expr_stmt|;
-if|if
-condition|(
+operator|||
 name|create_seq_dir
 argument_list|()
 operator|<
