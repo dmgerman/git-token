@@ -1162,11 +1162,10 @@ argument_list|,
 literal|1
 argument_list|)
 condition|)
-name|exit
-argument_list|(
-literal|128
-argument_list|)
-expr_stmt|;
+return|return
+operator|-
+literal|1
+return|;
 comment|/* the callee should have complained already */
 name|strbuf_addf
 argument_list|(
