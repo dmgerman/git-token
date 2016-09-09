@@ -2297,14 +2297,15 @@ argument_list|,
 name|NULL
 argument_list|)
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
 literal|"Your index file is unmerged."
 argument_list|)
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 else|else
 block|{
