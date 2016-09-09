@@ -7473,6 +7473,9 @@ name|DATE_STRFTIME
 block|,
 DECL|enumerator|DATE_RAW
 name|DATE_RAW
+block|,
+DECL|enumerator|DATE_UNIX
+name|DATE_UNIX
 DECL|member|type
 block|}
 name|type
