@@ -8316,6 +8316,25 @@ end_function_decl
 
 begin_function_decl
 specifier|extern
+name|char
+modifier|*
+name|compute_alternate_path
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|path
+parameter_list|,
+name|struct
+name|strbuf
+modifier|*
+name|err
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
 name|void
 name|add_to_alternates_file
 parameter_list|(
