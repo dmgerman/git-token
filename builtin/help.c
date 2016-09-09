@@ -2133,16 +2133,6 @@ expr_stmt|;
 block|}
 end_function
 
-begin_comment
-comment|/*  * If open_html is not defined in a platform-specific way (see for  * example compat/mingw.h), we use the script web--browse to display  * HTML.  */
-end_comment
-
-begin_ifndef
-ifndef|#
-directive|ifndef
-name|open_html
-end_ifndef
-
 begin_function
 DECL|function|open_html
 specifier|static
@@ -2174,11 +2164,6 @@ argument_list|)
 expr_stmt|;
 block|}
 end_function
-
-begin_endif
-endif|#
-directive|endif
-end_endif
 
 begin_function
 DECL|function|show_html_page
