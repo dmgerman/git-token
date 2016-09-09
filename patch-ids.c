@@ -277,6 +277,14 @@ operator|->
 name|diffopts
 argument_list|)
 expr_stmt|;
+name|ids
+operator|->
+name|diffopts
+operator|.
+name|detect_rename
+operator|=
+literal|0
+expr_stmt|;
 name|DIFF_OPT_SET
 argument_list|(
 operator|&
