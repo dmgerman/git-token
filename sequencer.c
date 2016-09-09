@@ -3240,7 +3240,7 @@ end_function
 begin_function
 DECL|function|prepare_revs
 specifier|static
-name|void
+name|int
 name|prepare_revs
 parameter_list|(
 name|struct
@@ -3282,14 +3282,15 @@ operator|->
 name|revs
 argument_list|)
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
 literal|"revision walk setup failed"
 argument_list|)
 argument_list|)
-expr_stmt|;
+return|;
 if|if
 condition|(
 operator|!
@@ -3299,14 +3300,18 @@ name|revs
 operator|->
 name|commits
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
 literal|"empty commit set passed"
 argument_list|)
 argument_list|)
-expr_stmt|;
+return|;
+return|return
+literal|0
+return|;
 block|}
 end_function
 
