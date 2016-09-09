@@ -1610,7 +1610,8 @@ name|COMMIT_LOCK
 argument_list|)
 condition|)
 comment|/* TRANSLATORS: %s will be "revert" or "cherry-pick" */
-name|die
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -1622,7 +1623,7 @@ argument_list|(
 name|opts
 argument_list|)
 argument_list|)
-expr_stmt|;
+return|;
 name|rollback_lock_file
 argument_list|(
 operator|&
