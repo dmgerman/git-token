@@ -3953,7 +3953,7 @@ end_function
 begin_function
 DECL|function|read_populate_todo
 specifier|static
-name|void
+name|int
 name|read_populate_todo
 parameter_list|(
 name|struct
@@ -3995,7 +3995,8 @@ name|fd
 operator|<
 literal|0
 condition|)
-name|die_errno
+return|return
+name|error_errno
 argument_list|(
 name|_
 argument_list|(
@@ -4005,7 +4006,7 @@ argument_list|,
 name|git_path_todo_file
 argument_list|()
 argument_list|)
-expr_stmt|;
+return|;
 if|if
 condition|(
 name|strbuf_read
@@ -4032,7 +4033,8 @@ operator|&
 name|buf
 argument_list|)
 expr_stmt|;
-name|die
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -4042,7 +4044,7 @@ argument_list|,
 name|git_path_todo_file
 argument_list|()
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 name|close
 argument_list|(
@@ -4072,7 +4074,8 @@ if|if
 condition|(
 name|res
 condition|)
-name|die
+return|return
+name|error
 argument_list|(
 name|_
 argument_list|(
@@ -4082,7 +4085,10 @@ argument_list|,
 name|git_path_todo_file
 argument_list|()
 argument_list|)
-expr_stmt|;
+return|;
+return|return
+literal|0
+return|;
 block|}
 end_function
 
@@ -5648,6 +5654,8 @@ operator|&
 name|opts
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|read_populate_todo
 argument_list|(
 operator|&
@@ -5655,7 +5663,11 @@ name|todo_list
 argument_list|,
 name|opts
 argument_list|)
-expr_stmt|;
+condition|)
+return|return
+operator|-
+literal|1
+return|;
 comment|/* Verify that the conflict has been resolved */
 if|if
 condition|(
