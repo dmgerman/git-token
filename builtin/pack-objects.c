@@ -440,11 +440,22 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|use_bitmap_index_default
+specifier|static
+name|int
+name|use_bitmap_index_default
+init|=
+literal|1
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|use_bitmap_index
 specifier|static
 name|int
 name|use_bitmap_index
 init|=
+operator|-
 literal|1
 decl_stmt|;
 end_decl_stmt
@@ -11089,7 +11100,7 @@ literal|"pack.usebitmaps"
 argument_list|)
 condition|)
 block|{
-name|use_bitmap_index
+name|use_bitmap_index_default
 operator|=
 name|git_config_bool
 argument_list|(
@@ -12398,7 +12409,7 @@ block|}
 end_function
 
 begin_comment
-comment|/*  * This tracks any options which a reader of the pack might  * not understand, and which would therefore prevent blind reuse  * of what we have on disk.  */
+comment|/*  * This tracks any options which pack-reuse code expects to be on, or which a  * reader of the pack might not understand, and which would therefore prevent  * blind reuse of what we have on disk.  */
 end_comment
 
 begin_function
@@ -12411,6 +12422,8 @@ name|void
 parameter_list|)
 block|{
 return|return
+name|pack_to_stdout
+operator|&&
 name|allow_ofs_delta
 return|;
 block|}
@@ -14070,13 +14083,38 @@ name|unpack_unreachable_expiration
 operator|=
 literal|0
 expr_stmt|;
+comment|/* 	 * "soft" reasons not to use bitmaps - for on-disk repack by default we want 	 * 	 * - to produce good pack (with bitmap index not-yet-packed objects are 	 *   packed in suboptimal order). 	 * 	 * - to use more robust pack-generation codepath (avoiding possible 	 *   bugs in bitmap code and possible bitmap index corruption). 	 */
+if|if
+condition|(
+operator|!
+name|pack_to_stdout
+condition|)
+name|use_bitmap_index_default
+operator|=
+literal|0
+expr_stmt|;
+if|if
+condition|(
+name|use_bitmap_index
+operator|<
+literal|0
+condition|)
+name|use_bitmap_index
+operator|=
+name|use_bitmap_index_default
+expr_stmt|;
+comment|/* "hard" reasons not to use bitmaps; these just won't work at all */
 if|if
 condition|(
 operator|!
 name|use_internal_rev_list
 operator|||
+operator|(
 operator|!
 name|pack_to_stdout
+operator|&&
+name|write_bitmap_index
+operator|)
 operator|||
 name|is_repository_shallow
 argument_list|()
