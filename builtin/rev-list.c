@@ -577,13 +577,6 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|revs
-operator|->
-name|graph
-condition|)
-block|{
-if|if
-condition|(
 name|buf
 operator|.
 name|len
@@ -610,11 +603,13 @@ name|revs
 operator|->
 name|graph
 argument_list|,
+name|stdout
+argument_list|,
 operator|&
 name|buf
 argument_list|)
 expr_stmt|;
-comment|/* 				 * Add a newline after the commit message. 				 * 				 * Usually, this newline produces a blank 				 * padding line between entries, in which case 				 * we need to add graph padding on this line. 				 * 				 * However, the commit message may not end in a 				 * newline.  In this case the newline simply 				 * ends the last line of the commit message, 				 * and we don't need any graph output.  (This 				 * always happens with CMIT_FMT_ONELINE, and it 				 * happens with CMIT_FMT_USERFORMAT when the 				 * format doesn't explicitly end in a newline.) 				 */
+comment|/* 			 * Add a newline after the commit message. 			 * 			 * Usually, this newline produces a blank 			 * padding line between entries, in which case 			 * we need to add graph padding on this line. 			 * 			 * However, the commit message may not end in a 			 * newline.  In this case the newline simply 			 * ends the last line of the commit message, 			 * and we don't need any graph output.  (This 			 * always happens with CMIT_FMT_ONELINE, and it 			 * happens with CMIT_FMT_USERFORMAT when the 			 * format doesn't explicitly end in a newline.) 			 */
 if|if
 condition|(
 name|buf
@@ -649,7 +644,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|/* 				 * If the message buffer is empty, just show 				 * the rest of the graph output for this 				 * commit. 				 */
+comment|/* 			 * If the message buffer is empty, just show 			 * the rest of the graph output for this 			 * commit. 			 */
 if|if
 condition|(
 name|graph_show_remainder
@@ -677,46 +672,6 @@ argument_list|(
 literal|'\n'
 argument_list|)
 expr_stmt|;
-block|}
-block|}
-else|else
-block|{
-if|if
-condition|(
-name|revs
-operator|->
-name|commit_format
-operator|!=
-name|CMIT_FMT_USERFORMAT
-operator|||
-name|buf
-operator|.
-name|len
-condition|)
-block|{
-name|fwrite
-argument_list|(
-name|buf
-operator|.
-name|buf
-argument_list|,
-literal|1
-argument_list|,
-name|buf
-operator|.
-name|len
-argument_list|,
-name|stdout
-argument_list|)
-expr_stmt|;
-name|putchar
-argument_list|(
-name|info
-operator|->
-name|hdr_termination
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 name|strbuf_release
 argument_list|(

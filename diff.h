@@ -536,14 +536,6 @@ value|(1<< 22)
 end_define
 
 begin_define
-DECL|macro|DIFF_OPT_SUBMODULE_LOG
-define|#
-directive|define
-name|DIFF_OPT_SUBMODULE_LOG
-value|(1<< 23)
-end_define
-
-begin_define
 DECL|macro|DIFF_OPT_DIRTY_SUBMODULES
 define|#
 directive|define
@@ -733,6 +725,25 @@ block|}
 enum|;
 end_enum
 
+begin_enum
+DECL|enum|diff_submodule_format
+enum|enum
+name|diff_submodule_format
+block|{
+DECL|enumerator|DIFF_SUBMODULE_SHORT
+name|DIFF_SUBMODULE_SHORT
+init|=
+literal|0
+block|,
+DECL|enumerator|DIFF_SUBMODULE_LOG
+name|DIFF_SUBMODULE_LOG
+block|,
+DECL|enumerator|DIFF_SUBMODULE_INLINE_DIFF
+name|DIFF_SUBMODULE_INLINE_DIFF
+block|}
+enum|;
+end_enum
+
 begin_struct
 DECL|struct|diff_options
 struct|struct
@@ -765,6 +776,16 @@ name|a_prefix
 decl_stmt|,
 modifier|*
 name|b_prefix
+decl_stmt|;
+DECL|member|line_prefix
+specifier|const
+name|char
+modifier|*
+name|line_prefix
+decl_stmt|;
+DECL|member|line_prefix_length
+name|size_t
+name|line_prefix_length
 decl_stmt|;
 DECL|member|flags
 name|unsigned
@@ -919,6 +940,11 @@ name|enum
 name|diff_words_type
 name|word_diff
 decl_stmt|;
+DECL|member|submodule_format
+name|enum
+name|diff_submodule_format
+name|submodule_format
+decl_stmt|;
 comment|/* this is set by diffcore for DIFF_FORMAT_PATCH */
 DECL|member|found_changes
 name|int
@@ -979,10 +1005,6 @@ decl_stmt|;
 DECL|member|output_prefix
 name|diff_prefix_fn_t
 name|output_prefix
-decl_stmt|;
-DECL|member|output_prefix_length
-name|int
-name|output_prefix_length
 decl_stmt|;
 DECL|member|output_prefix_data
 name|void
