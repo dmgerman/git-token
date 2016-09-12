@@ -797,6 +797,13 @@ expr_stmt|;
 block|}
 end_function
 
+begin_undef
+DECL|macro|error_errno
+undef|#
+directive|undef
+name|error_errno
+end_undef
+
 begin_function
 DECL|function|error_errno
 name|int
