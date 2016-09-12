@@ -6865,6 +6865,13 @@ name|var
 argument_list|)
 expr_stmt|;
 block|}
+name|argv_array_push
+argument_list|(
+name|out
+argument_list|,
+literal|"GIT_DIR=.git"
+argument_list|)
+expr_stmt|;
 block|}
 end_function
 
