@@ -1634,6 +1634,7 @@ condition|(
 operator|!
 name|no_index
 condition|)
+block|{
 name|prefix
 operator|=
 name|setup_git_directory_gently
@@ -1642,7 +1643,7 @@ operator|&
 name|nongit
 argument_list|)
 expr_stmt|;
-comment|/* 	 * Treat git diff with at least one path outside of the 	 * repo the same as if the command would have been executed 	 * outside of a git repository.  In this case it behaves 	 * the same way as "git diff --no-index<a><b>", which acts 	 * as a colourful "diff" replacement. 	 */
+comment|/* 		 * Treat git diff with at least one path outside of the 		 * repo the same as if the command would have been executed 		 * outside of a git repository.  In this case it behaves 		 * the same way as "git diff --no-index<a><b>", which acts 		 * as a colourful "diff" replacement. 		 */
 if|if
 condition|(
 name|nongit
@@ -1687,6 +1688,7 @@ name|no_index
 operator|=
 name|DIFF_NO_INDEX_IMPLICIT
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
