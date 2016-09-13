@@ -854,6 +854,7 @@ parameter_list|(
 name|int
 name|stage
 parameter_list|,
+specifier|const
 name|struct
 name|cache_entry
 modifier|*
@@ -862,6 +863,7 @@ parameter_list|,
 name|int
 name|pos
 parameter_list|,
+specifier|const
 name|struct
 name|checkout
 modifier|*
@@ -964,6 +966,7 @@ parameter_list|(
 name|int
 name|pos
 parameter_list|,
+specifier|const
 name|struct
 name|checkout
 modifier|*
