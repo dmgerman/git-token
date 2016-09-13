@@ -2730,6 +2730,8 @@ block|{
 literal|"patch-id"
 block|,
 name|cmd_patch_id
+block|,
+name|RUN_SETUP_GENTLY
 block|}
 block|,
 block|{
