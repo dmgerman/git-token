@@ -49,6 +49,9 @@ name|struct
 name|config_set
 name|cs
 decl_stmt|;
+name|setup_git_directory
+argument_list|()
+expr_stmt|;
 name|git_configset_init
 argument_list|(
 operator|&
