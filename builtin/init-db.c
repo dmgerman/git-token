@@ -1010,7 +1010,7 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
-comment|/* First copy the templates -- we might have the default 	 * config file there, in which case we would want to read 	 * from it after installing. 	 */
+comment|/* 	 * First copy the templates -- we might have the default 	 * config file there, in which case we would want to read 	 * from it after installing. 	 */
 name|copy_templates
 argument_list|(
 name|template_path
@@ -1023,11 +1023,11 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
+comment|/* 	 * We must make sure command-line options continue to override any 	 * values we might have just re-read from the config. 	 */
 name|is_bare_repository_cfg
 operator|=
 name|init_is_bare_repository
 expr_stmt|;
-comment|/* reading existing config may have overwrote it */
 if|if
 condition|(
 name|init_shared_repository
