@@ -3704,6 +3704,16 @@ operator|!=
 name|CURLM_CALL_MULTI_PERFORM
 condition|)
 block|{
+name|warning
+argument_list|(
+literal|"curl_multi_add_handle failed: %s"
+argument_list|,
+name|curl_multi_strerror
+argument_list|(
+name|curlm_result
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|active_requests
 operator|--
 expr_stmt|;
