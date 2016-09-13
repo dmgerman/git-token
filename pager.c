@@ -36,10 +36,6 @@ endif|#
 directive|endif
 end_endif
 
-begin_comment
-comment|/*  * This is split up from the rest of git so that we can do  * something different on Windows.  */
-end_comment
-
 begin_decl_stmt
 DECL|variable|pager_process
 specifier|static
