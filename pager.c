@@ -47,6 +47,16 @@ name|CHILD_PROCESS_INIT
 decl_stmt|;
 end_decl_stmt
 
+begin_decl_stmt
+DECL|variable|pager_program
+specifier|static
+specifier|const
+name|char
+modifier|*
+name|pager_program
+decl_stmt|;
+end_decl_stmt
+
 begin_function
 DECL|function|wait_for_pager
 specifier|static
