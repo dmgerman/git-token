@@ -4352,10 +4352,6 @@ condition|(
 name|slot
 operator|->
 name|curl
-operator|&&
-name|curl_session_count
-operator|>
-name|min_curl_sessions
 condition|)
 block|{
 name|xmulti_remove_handle
@@ -4363,6 +4359,13 @@ argument_list|(
 name|slot
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|curl_session_count
+operator|>
+name|min_curl_sessions
+condition|)
+block|{
 name|curl_easy_cleanup
 argument_list|(
 name|slot
@@ -4379,6 +4382,7 @@ expr_stmt|;
 name|curl_session_count
 operator|--
 expr_stmt|;
+block|}
 block|}
 ifdef|#
 directive|ifdef
