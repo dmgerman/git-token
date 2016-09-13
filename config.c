@@ -6038,10 +6038,15 @@ name|char
 modifier|*
 name|repo_config
 init|=
+name|have_git_dir
+argument_list|()
+condition|?
 name|git_pathdup
 argument_list|(
 literal|"config"
 argument_list|)
+else|:
+name|NULL
 decl_stmt|;
 if|if
 condition|(
