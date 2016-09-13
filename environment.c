@@ -1807,5 +1807,20 @@ return|;
 block|}
 end_function
 
+begin_function
+DECL|function|reset_shared_repository
+name|void
+name|reset_shared_repository
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+name|need_shared_repository_from_config
+operator|=
+literal|1
+expr_stmt|;
+block|}
+end_function
+
 end_unit
 

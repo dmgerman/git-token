@@ -1010,11 +1010,17 @@ argument_list|,
 name|NULL
 argument_list|)
 expr_stmt|;
-comment|/* 	 * First copy the templates -- we might have the default 	 * config file there, in which case we would want to read 	 * from it after installing. 	 */
+comment|/* 	 * First copy the templates -- we might have the default 	 * config file there, in which case we would want to read 	 * from it after installing. 	 * 	 * Before reading that config, we also need to clear out any cached 	 * values (since we've just potentially changed what's available on 	 * disk). 	 */
 name|copy_templates
 argument_list|(
 name|template_path
 argument_list|)
+expr_stmt|;
+name|git_config_clear
+argument_list|()
+expr_stmt|;
+name|reset_shared_repository
+argument_list|()
 expr_stmt|;
 name|git_config
 argument_list|(
