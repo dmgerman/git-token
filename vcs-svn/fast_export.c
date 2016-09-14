@@ -372,7 +372,7 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"committer %s<%s@%s> %ld +0000\n"
+literal|"committer %s<%s@%s> %lu +0000\n"
 argument_list|,
 name|author
 argument_list|,
@@ -588,7 +588,7 @@ argument_list|)
 expr_stmt|;
 name|printf
 argument_list|(
-literal|"committer %s<%s@%s> %ld +0000\n"
+literal|"committer %s<%s@%s> %lu +0000\n"
 argument_list|,
 operator|*
 name|author
