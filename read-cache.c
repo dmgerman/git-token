@@ -3199,9 +3199,6 @@ name|st
 parameter_list|,
 name|int
 name|flags
-parameter_list|,
-name|int
-name|force_mode
 parameter_list|)
 block|{
 name|int
@@ -3391,29 +3388,11 @@ name|CE_INTENT_TO_ADD
 expr_stmt|;
 if|if
 condition|(
-name|S_ISREG
-argument_list|(
-name|st_mode
-argument_list|)
-operator|&&
-name|force_mode
-condition|)
-name|ce
-operator|->
-name|ce_mode
-operator|=
-name|create_ce_mode
-argument_list|(
-name|force_mode
-argument_list|)
-expr_stmt|;
-elseif|else
-if|if
-condition|(
 name|trust_executable_bit
 operator|&&
 name|has_symlinks
 condition|)
+block|{
 name|ce
 operator|->
 name|ce_mode
@@ -3423,6 +3402,7 @@ argument_list|(
 name|st_mode
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 comment|/* If there is an existing entry, pick the mode bits and type 		 * from it, otherwise assume unexecutable regular file. 		 */
@@ -3739,9 +3719,6 @@ name|path
 parameter_list|,
 name|int
 name|flags
-parameter_list|,
-name|int
-name|force_mode
 parameter_list|)
 block|{
 name|struct
@@ -3776,8 +3753,6 @@ operator|&
 name|st
 argument_list|,
 name|flags
-argument_list|,
-name|force_mode
 argument_list|)
 return|;
 block|}

@@ -1861,7 +1861,7 @@ name|st
 parameter_list|,
 name|flags
 parameter_list|)
-value|add_to_index(&the_index, (path), (st), (flags), 0)
+value|add_to_index(&the_index, (path), (st), (flags))
 end_define
 
 begin_define
@@ -1874,7 +1874,7 @@ name|path
 parameter_list|,
 name|flags
 parameter_list|)
-value|add_file_to_index(&the_index, (path), (flags), 0)
+value|add_file_to_index(&the_index, (path), (flags))
 end_define
 
 begin_define
@@ -3514,9 +3514,6 @@ modifier|*
 parameter_list|,
 name|int
 name|flags
-parameter_list|,
-name|int
-name|force_mode
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -3537,9 +3534,6 @@ name|path
 parameter_list|,
 name|int
 name|flags
-parameter_list|,
-name|int
-name|force_mode
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -11544,9 +11538,6 @@ name|pathspec
 parameter_list|,
 name|int
 name|flags
-parameter_list|,
-name|int
-name|force_mode
 parameter_list|)
 function_decl|;
 end_function_decl
