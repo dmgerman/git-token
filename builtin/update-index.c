@@ -2043,7 +2043,7 @@ specifier|static
 name|void
 name|chmod_path
 parameter_list|(
-name|int
+name|char
 name|flip
 parameter_list|,
 specifier|const
