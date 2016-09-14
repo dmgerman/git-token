@@ -1368,6 +1368,10 @@ decl_stmt|;
 if|if
 condition|(
 name|l
+operator|-
+name|xecfg
+operator|->
+name|ctxlen
 operator|<=
 name|e1
 operator|||
