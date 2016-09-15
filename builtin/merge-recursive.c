@@ -495,7 +495,10 @@ literal|3
 condition|)
 name|printf
 argument_list|(
+name|_
+argument_list|(
 literal|"Merging %s with %s\n"
+argument_list|)
 argument_list|,
 name|o
 operator|.
