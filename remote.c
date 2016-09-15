@@ -11409,7 +11409,7 @@ if|if
 condition|(
 name|advice_status_hints
 condition|)
-name|strbuf_addf
+name|strbuf_addstr
 argument_list|(
 name|sb
 argument_list|,
@@ -11472,7 +11472,7 @@ if|if
 condition|(
 name|advice_status_hints
 condition|)
-name|strbuf_addf
+name|strbuf_addstr
 argument_list|(
 name|sb
 argument_list|,
@@ -11514,7 +11514,7 @@ if|if
 condition|(
 name|advice_status_hints
 condition|)
-name|strbuf_addf
+name|strbuf_addstr
 argument_list|(
 name|sb
 argument_list|,
@@ -11557,7 +11557,7 @@ if|if
 condition|(
 name|advice_status_hints
 condition|)
-name|strbuf_addf
+name|strbuf_addstr
 argument_list|(
 name|sb
 argument_list|,

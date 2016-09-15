@@ -2106,7 +2106,7 @@ name|d
 operator|->
 name|new_submodule_commits
 condition|)
-name|strbuf_addf
+name|strbuf_addstr
 argument_list|(
 operator|&
 name|extra
@@ -2125,7 +2125,7 @@ name|dirty_submodule
 operator|&
 name|DIRTY_SUBMODULE_MODIFIED
 condition|)
-name|strbuf_addf
+name|strbuf_addstr
 argument_list|(
 operator|&
 name|extra
@@ -2144,7 +2144,7 @@ name|dirty_submodule
 operator|&
 name|DIRTY_SUBMODULE_UNTRACKED
 condition|)
-name|strbuf_addf
+name|strbuf_addstr
 argument_list|(
 operator|&
 name|extra

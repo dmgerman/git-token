@@ -5774,7 +5774,7 @@ name|fast_forward
 operator|==
 name|FF_NO
 condition|)
-name|strbuf_addf
+name|strbuf_addstr
 argument_list|(
 operator|&
 name|buf

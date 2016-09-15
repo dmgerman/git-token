@@ -2457,7 +2457,7 @@ name|i
 operator|>=
 name|limit
 condition|)
-name|strbuf_addf
+name|strbuf_addstr
 argument_list|(
 name|out
 argument_list|,
