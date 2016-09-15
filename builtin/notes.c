@@ -1962,9 +1962,13 @@ argument_list|,
 literal|"refs/notes/"
 argument_list|)
 condition|)
+comment|/* TRANSLATORS: the first %s will be replaced by a 		   git notes command: 'add', 'merge', 'remove', etc.*/
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Refusing to %s notes in %s (outside of refs/notes/)"
+argument_list|)
 argument_list|,
 name|subcommand
 argument_list|,
@@ -3927,7 +3931,10 @@ name|ret
 operator|+=
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Failed to delete ref NOTES_MERGE_PARTIAL"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -3945,7 +3952,10 @@ name|ret
 operator|+=
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Failed to delete ref NOTES_MERGE_REF"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -3959,7 +3969,10 @@ name|ret
 operator|+=
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"Failed to remove 'git notes merge' worktree"
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -4031,7 +4044,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Failed to read ref NOTES_MERGE_PARTIAL"
+argument_list|)
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -4049,7 +4065,10 @@ operator|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not find commit from NOTES_MERGE_PARTIAL."
+argument_list|)
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -4062,7 +4081,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not parse commit from NOTES_MERGE_PARTIAL."
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -4144,7 +4166,10 @@ name|local_ref
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Failed to resolve NOTES_MERGE_REF"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -4162,7 +4187,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Failed to finalize notes merge"
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* Reuse existing commit message in reflog message */
