@@ -3761,8 +3761,11 @@ name|CONFIG_NOTHING_SET
 condition|)
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"cannot overwrite multiple values with a single value\n"
 literal|"       Use a regexp, --add or --replace-all to change %s."
+argument_list|)
 argument_list|,
 name|argv
 index|[
