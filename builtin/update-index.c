@@ -5759,9 +5759,12 @@ literal|1
 condition|)
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"core.untrackedCache is set to true; "
 literal|"remove or change it, if you really want to "
 literal|"disable the untracked cache"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|remove_untracked_cache
@@ -5805,9 +5808,12 @@ literal|0
 condition|)
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"core.untrackedCache is set to false; "
 literal|"remove or change it, if you really want to "
 literal|"enable the untracked cache"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|add_untracked_cache
