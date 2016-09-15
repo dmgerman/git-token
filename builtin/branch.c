@@ -3499,7 +3499,10 @@ argument_list|,
 operator|&
 name|unset_upstream
 argument_list|,
+name|N_
+argument_list|(
 literal|"Unset the upstream info"
+argument_list|)
 argument_list|)
 block|,
 name|OPT__COLOR
