@@ -2199,7 +2199,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git cat-file (-t [--allow-unknown-type]|-s [--allow-unknown-type]|-e|-p|<type>|--textconv)<object>"
+literal|"git cat-file (-t [--allow-unknown-type] | -s [--allow-unknown-type] | -e | -p |<type> | --textconv)<object>"
 argument_list|)
 block|,
 name|N_
