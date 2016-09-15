@@ -1846,7 +1846,14 @@ condition|)
 block|{
 name|warning
 argument_list|(
+name|Q_
+argument_list|(
+literal|"ignoring %s; cannot handle more than %d ref"
+argument_list|,
 literal|"ignoring %s; cannot handle more than %d refs"
+argument_list|,
+name|MAX_REVS
+argument_list|)
 argument_list|,
 name|refname
 argument_list|,
@@ -3855,7 +3862,14 @@ name|reflog
 condition|)
 name|die
 argument_list|(
-literal|"Only %d entries can be shown at one time."
+name|Q_
+argument_list|(
+literal|"only %d entry can be shown at one time."
+argument_list|,
+literal|"only %d entries can be shown at one time."
+argument_list|,
+name|MAX_REVS
+argument_list|)
 argument_list|,
 name|MAX_REVS
 argument_list|)
@@ -4348,7 +4362,14 @@ name|num_rev
 condition|)
 name|die
 argument_list|(
+name|Q_
+argument_list|(
+literal|"cannot handle more than %d rev."
+argument_list|,
 literal|"cannot handle more than %d revs."
+argument_list|,
+name|MAX_REVS
+argument_list|)
 argument_list|,
 name|MAX_REVS
 argument_list|)
