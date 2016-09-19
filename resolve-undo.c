@@ -164,7 +164,9 @@ index|]
 argument_list|,
 name|ce
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|)
 expr_stmt|;
 name|ui

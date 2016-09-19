@@ -161,11 +161,12 @@ name|ce
 operator|->
 name|ce_mode
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|ce
 operator|->
-name|sha1
+name|oid
 argument_list|)
 argument_list|,
 name|ce_stage

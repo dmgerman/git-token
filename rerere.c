@@ -4856,7 +4856,9 @@ name|read_sha1_file
 argument_list|(
 name|ce
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|,
 operator|&
 name|type

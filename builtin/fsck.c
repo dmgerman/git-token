@@ -1402,11 +1402,10 @@ argument_list|(
 name|f
 argument_list|)
 argument_list|,
+operator|&
 name|obj
 operator|->
 name|oid
-operator|.
-name|hash
 argument_list|,
 name|NULL
 argument_list|,
@@ -3674,7 +3673,9 @@ index|[
 name|i
 index|]
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|)
 expr_stmt|;
 if|if

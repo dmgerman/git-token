@@ -923,11 +923,12 @@ name|ce
 operator|->
 name|name
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
+operator|&
 name|ce
 operator|->
-name|sha1
+name|oid
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1803,7 +1804,9 @@ name|sha1
 operator|=
 name|ce
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 expr_stmt|;
 name|mode
 operator|=

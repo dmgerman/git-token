@@ -1147,10 +1147,10 @@ modifier|*
 name|ptr
 parameter_list|,
 specifier|const
-name|unsigned
-name|char
+name|struct
+name|object_id
 modifier|*
-name|sha1
+name|oid
 parameter_list|)
 block|{
 name|unsigned
@@ -1164,11 +1164,12 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|hashcmp
+name|oidcmp
 argument_list|(
-name|sha1
+name|oid
 argument_list|,
-name|null_sha1
+operator|&
+name|null_oid
 argument_list|)
 condition|)
 block|{
@@ -1195,7 +1196,9 @@ name|ptr
 operator|=
 name|read_sha1_file
 argument_list|(
-name|sha1
+name|oid
+operator|->
+name|hash
 argument_list|,
 operator|&
 name|type
@@ -1219,9 +1222,9 @@ name|die
 argument_list|(
 literal|"unable to read blob object %s"
 argument_list|,
-name|sha1_to_hex
+name|oid_to_hex
 argument_list|(
-name|sha1
+name|oid
 argument_list|)
 argument_list|)
 expr_stmt|;

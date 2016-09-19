@@ -15,6 +15,12 @@ end_define
 begin_include
 include|#
 directive|include
+file|"cache.h"
+end_include
+
+begin_include
+include|#
+directive|include
 file|"xdiff/xdiff.h"
 end_include
 
@@ -167,10 +173,10 @@ modifier|*
 name|ptr
 parameter_list|,
 specifier|const
-name|unsigned
-name|char
+name|struct
+name|object_id
 modifier|*
-name|sha1
+name|oid
 parameter_list|)
 function_decl|;
 end_function_decl

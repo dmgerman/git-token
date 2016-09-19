@@ -2487,11 +2487,11 @@ parameter_list|(
 name|int
 name|fd
 parameter_list|,
-name|unsigned
 specifier|const
-name|char
+name|struct
+name|object_id
 modifier|*
-name|sha1
+name|oid
 parameter_list|,
 name|struct
 name|stream_filter
@@ -2530,7 +2530,9 @@ name|st
 operator|=
 name|open_istream
 argument_list|(
-name|sha1
+name|oid
+operator|->
+name|hash
 argument_list|,
 operator|&
 name|type

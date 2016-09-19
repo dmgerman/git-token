@@ -3589,7 +3589,9 @@ name|hash
 argument_list|,
 name|ce
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|)
 expr_stmt|;
 block|}
@@ -11958,7 +11960,9 @@ name|hash
 argument_list|,
 name|ce
 operator|->
-name|sha1
+name|oid
+operator|.
+name|hash
 argument_list|)
 expr_stmt|;
 name|sum

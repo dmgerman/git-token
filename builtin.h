@@ -148,13 +148,13 @@ name|unsigned
 name|mode
 parameter_list|,
 specifier|const
-name|unsigned
-name|char
+name|struct
+name|object_id
 modifier|*
-name|sha1
+name|oid
 parameter_list|,
 name|int
-name|sha1_valid
+name|oid_valid
 parameter_list|,
 name|char
 modifier|*
