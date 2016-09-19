@@ -1557,12 +1557,15 @@ name|advice_resolve_conflict
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"You have not concluded your previous "
 literal|"notes merge (%s exists).\nPlease, use "
 literal|"'git notes merge --commit' or 'git notes "
 literal|"merge --abort' to commit/abort the "
 literal|"previous merge before you start a new "
 literal|"notes merge."
+argument_list|)
 argument_list|,
 name|git_path
 argument_list|(
@@ -1573,8 +1576,11 @@ expr_stmt|;
 else|else
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"You have not concluded your notes merge "
 literal|"(%s exists)."
+argument_list|)
 argument_list|,
 name|git_path
 argument_list|(
