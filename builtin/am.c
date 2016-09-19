@@ -10566,7 +10566,7 @@ init|=
 block|{
 name|N_
 argument_list|(
-literal|"git am [<options>] [(<mbox>|<Maildir>)...]"
+literal|"git am [<options>] [(<mbox> |<Maildir>)...]"
 argument_list|)
 block|,
 name|N_

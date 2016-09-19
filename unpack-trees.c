@@ -452,7 +452,7 @@ index|]
 operator|=
 name|_
 argument_list|(
-literal|"The following Working tree files would be overwritten by sparse checkout update:\n%s"
+literal|"The following working tree files would be overwritten by sparse checkout update:\n%s"
 argument_list|)
 expr_stmt|;
 name|msgs
@@ -462,7 +462,7 @@ index|]
 operator|=
 name|_
 argument_list|(
-literal|"The following Working tree files would be removed by sparse checkout update:\n%s"
+literal|"The following working tree files would be removed by sparse checkout update:\n%s"
 argument_list|)
 expr_stmt|;
 name|opts
