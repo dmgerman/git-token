@@ -156,6 +156,19 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|refs_init_db
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+name|err
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/*  * If refname is a non-symbolic reference that refers to a tag object,  * and the tag can be (recursively) dereferenced to a non-tag object,  * store the SHA1 of the referred-to object to sha1 and return 0.  If  * any of these conditions are not met, return a non-zero value.  * Symbolic references are considered unpeelable, even if they  * ultimately resolve to a peelable tag.  */
 end_comment
@@ -178,7 +191,7 @@ function_decl|;
 end_function_decl
 
 begin_comment
-comment|/**  * Resolve refname in the nested "gitlink" repository that is located  * at path.  If the resolution is successful, return 0 and set sha1 to  * the name of the object; otherwise, return a non-zero value.  */
+comment|/**  * Resolve refname in the nested "gitlink" repository in the specified  * submodule (which must be non-NULL). If the resolution is  * successful, return 0 and set sha1 to the name of the object;  * otherwise, return a non-zero value.  */
 end_comment
 
 begin_function_decl
@@ -188,7 +201,7 @@ parameter_list|(
 specifier|const
 name|char
 modifier|*
-name|path
+name|submodule
 parameter_list|,
 specifier|const
 name|char
@@ -1764,6 +1777,18 @@ parameter_list|,
 name|void
 modifier|*
 name|policy_cb_data
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
+name|ref_storage_backend_exists
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|name
 parameter_list|)
 function_decl|;
 end_function_decl
