@@ -6458,6 +6458,40 @@ return|;
 block|}
 end_function
 
+begin_function
+DECL|function|rfc_callback
+specifier|static
+name|int
+name|rfc_callback
+parameter_list|(
+specifier|const
+name|struct
+name|option
+modifier|*
+name|opt
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|arg
+parameter_list|,
+name|int
+name|unset
+parameter_list|)
+block|{
+return|return
+name|subject_prefix_callback
+argument_list|(
+name|opt
+argument_list|,
+literal|"RFC PATCH"
+argument_list|,
+name|unset
+argument_list|)
+return|;
+block|}
+end_function
+
 begin_decl_stmt
 DECL|variable|numbered_cmdline_opt
 specifier|static
@@ -8274,6 +8308,30 @@ name|OPTION_CALLBACK
 block|,
 literal|0
 block|,
+literal|"rfc"
+block|,
+operator|&
+name|rev
+block|,
+name|NULL
+block|,
+name|N_
+argument_list|(
+literal|"Use [RFC PATCH] instead of [PATCH]"
+argument_list|)
+block|,
+name|PARSE_OPT_NOARG
+operator||
+name|PARSE_OPT_NONEG
+block|,
+name|rfc_callback
+block|}
+block|,
+block|{
+name|OPTION_CALLBACK
+block|,
+literal|0
+block|,
 literal|"subject-prefix"
 block|,
 operator|&
@@ -9180,7 +9238,7 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"--subject-prefix and -k are mutually exclusive."
+literal|"--subject-prefix/--rfc and -k are mutually exclusive."
 argument_list|)
 argument_list|)
 expr_stmt|;
