@@ -5519,7 +5519,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|regexec
+name|regexec_buf
 argument_list|(
 name|word_regex
 argument_list|,
@@ -5527,6 +5527,13 @@ name|buffer
 operator|->
 name|ptr
 operator|+
+operator|*
+name|begin
+argument_list|,
+name|buffer
+operator|->
+name|size
+operator|-
 operator|*
 name|begin
 argument_list|,
