@@ -269,7 +269,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"Unknown option %s"
+name|_
+argument_list|(
+literal|"unknown option %s"
+argument_list|)
 argument_list|,
 name|arg
 argument_list|)
@@ -316,7 +319,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"Could not parse object '%s'"
+name|_
+argument_list|(
+literal|"could not parse object '%s'"
+argument_list|)
 argument_list|,
 name|argv
 index|[
@@ -336,8 +342,24 @@ block|}
 else|else
 name|warning
 argument_list|(
-literal|"Cannot handle more than %d bases. "
+name|Q_
+argument_list|(
+literal|"cannot handle more than %d base. "
 literal|"Ignoring %s."
+argument_list|,
+literal|"cannot handle more than %d bases. "
+literal|"Ignoring %s."
+argument_list|,
+operator|(
+name|int
+operator|)
+name|ARRAY_SIZE
+argument_list|(
+name|bases
+argument_list|)
+operator|-
+literal|1
+argument_list|)
 argument_list|,
 operator|(
 name|int
@@ -367,7 +389,10 @@ condition|)
 comment|/* "--" "<head>" "<remote>" */
 name|die
 argument_list|(
-literal|"Not handling anything other than two heads merge."
+name|_
+argument_list|(
+literal|"not handling anything other than two heads merge."
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|o
@@ -404,7 +429,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"Could not resolve ref '%s'"
+name|_
+argument_list|(
+literal|"could not resolve ref '%s'"
+argument_list|)
 argument_list|,
 name|o
 operator|.
@@ -425,7 +453,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"Could not resolve ref '%s'"
+name|_
+argument_list|(
+literal|"could not resolve ref '%s'"
+argument_list|)
 argument_list|,
 name|o
 operator|.
@@ -464,7 +495,10 @@ literal|3
 condition|)
 name|printf
 argument_list|(
+name|_
+argument_list|(
 literal|"Merging %s with %s\n"
+argument_list|)
 argument_list|,
 name|o
 operator|.

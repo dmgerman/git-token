@@ -1013,7 +1013,7 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"Please supply the note contents using either -m or -F option"
+literal|"please supply the note contents using either -m or -F option"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1089,7 +1089,7 @@ name|error
 argument_list|(
 name|_
 argument_list|(
-literal|"The note contents have been left in %s"
+literal|"the note contents have been left in %s"
 argument_list|)
 argument_list|,
 name|d
@@ -1416,7 +1416,7 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"Failed to resolve '%s' as a valid ref."
+literal|"failed to resolve '%s' as a valid ref."
 argument_list|)
 argument_list|,
 name|arg
@@ -1450,7 +1450,7 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"Failed to read object '%s'."
+literal|"failed to read object '%s'."
 argument_list|)
 argument_list|,
 name|arg
@@ -1473,7 +1473,7 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"Cannot read note data from non-blob object '%s'."
+literal|"cannot read note data from non-blob object '%s'."
 argument_list|)
 argument_list|,
 name|arg
@@ -1707,7 +1707,7 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"Malformed input line: '%s'."
+literal|"malformed input line: '%s'."
 argument_list|)
 argument_list|,
 name|buf
@@ -1749,7 +1749,7 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"Failed to resolve '%s' as a valid ref."
+literal|"failed to resolve '%s' as a valid ref."
 argument_list|)
 argument_list|,
 name|split
@@ -1778,7 +1778,7 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"Failed to resolve '%s' as a valid ref."
+literal|"failed to resolve '%s' as a valid ref."
 argument_list|)
 argument_list|,
 name|split
@@ -1829,7 +1829,7 @@ name|error
 argument_list|(
 name|_
 argument_list|(
-literal|"Failed to copy notes from '%s' to '%s'"
+literal|"failed to copy notes from '%s' to '%s'"
 argument_list|)
 argument_list|,
 name|split
@@ -1962,9 +1962,13 @@ argument_list|,
 literal|"refs/notes/"
 argument_list|)
 condition|)
+comment|/* TRANSLATORS: the first %s will be replaced by a 		   git notes command: 'add', 'merge', 'remove', etc.*/
 name|die
 argument_list|(
-literal|"Refusing to %s notes in %s (outside of refs/notes/)"
+name|_
+argument_list|(
+literal|"refusing to %s notes in %s (outside of refs/notes/)"
+argument_list|)
 argument_list|,
 name|subcommand
 argument_list|,
@@ -2106,7 +2110,7 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"Failed to resolve '%s' as a valid ref."
+literal|"failed to resolve '%s' as a valid ref."
 argument_list|)
 argument_list|,
 name|argv
@@ -2149,7 +2153,7 @@ name|error
 argument_list|(
 name|_
 argument_list|(
-literal|"No note found for object %s."
+literal|"no note found for object %s."
 argument_list|)
 argument_list|,
 name|sha1_to_hex
@@ -2480,7 +2484,7 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"Failed to resolve '%s' as a valid ref."
+literal|"failed to resolve '%s' as a valid ref."
 argument_list|)
 argument_list|,
 name|object_ref
@@ -2937,7 +2941,7 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"Failed to resolve '%s' as a valid ref."
+literal|"failed to resolve '%s' as a valid ref."
 argument_list|)
 argument_list|,
 name|argv
@@ -2972,7 +2976,7 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"Failed to resolve '%s' as a valid ref."
+literal|"failed to resolve '%s' as a valid ref."
 argument_list|)
 argument_list|,
 name|object_ref
@@ -3065,7 +3069,7 @@ name|error
 argument_list|(
 name|_
 argument_list|(
-literal|"Missing notes on source object %s. Cannot "
+literal|"missing notes on source object %s. Cannot "
 literal|"copy."
 argument_list|)
 argument_list|,
@@ -3431,7 +3435,7 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"Failed to resolve '%s' as a valid ref."
+literal|"failed to resolve '%s' as a valid ref."
 argument_list|)
 argument_list|,
 name|object_ref
@@ -3810,7 +3814,7 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"Failed to resolve '%s' as a valid ref."
+literal|"failed to resolve '%s' as a valid ref."
 argument_list|)
 argument_list|,
 name|object_ref
@@ -3845,7 +3849,7 @@ name|error
 argument_list|(
 name|_
 argument_list|(
-literal|"No note found for object %s."
+literal|"no note found for object %s."
 argument_list|)
 argument_list|,
 name|sha1_to_hex
@@ -3927,7 +3931,10 @@ name|ret
 operator|+=
 name|error
 argument_list|(
-literal|"Failed to delete ref NOTES_MERGE_PARTIAL"
+name|_
+argument_list|(
+literal|"failed to delete ref NOTES_MERGE_PARTIAL"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -3945,7 +3952,10 @@ name|ret
 operator|+=
 name|error
 argument_list|(
-literal|"Failed to delete ref NOTES_MERGE_REF"
+name|_
+argument_list|(
+literal|"failed to delete ref NOTES_MERGE_REF"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -3959,7 +3969,10 @@ name|ret
 operator|+=
 name|error
 argument_list|(
-literal|"Failed to remove 'git notes merge' worktree"
+name|_
+argument_list|(
+literal|"failed to remove 'git notes merge' worktree"
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -4031,7 +4044,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"Failed to read ref NOTES_MERGE_PARTIAL"
+name|_
+argument_list|(
+literal|"failed to read ref NOTES_MERGE_PARTIAL"
+argument_list|)
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -4049,7 +4065,10 @@ operator|)
 condition|)
 name|die
 argument_list|(
-literal|"Could not find commit from NOTES_MERGE_PARTIAL."
+name|_
+argument_list|(
+literal|"could not find commit from NOTES_MERGE_PARTIAL."
+argument_list|)
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -4062,7 +4081,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"Could not parse commit from NOTES_MERGE_PARTIAL."
+name|_
+argument_list|(
+literal|"could not parse commit from NOTES_MERGE_PARTIAL."
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -4144,7 +4166,10 @@ name|local_ref
 condition|)
 name|die
 argument_list|(
-literal|"Failed to resolve NOTES_MERGE_REF"
+name|_
+argument_list|(
+literal|"failed to resolve NOTES_MERGE_REF"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -4162,7 +4187,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"Failed to finalize notes merge"
+name|_
+argument_list|(
+literal|"failed to finalize notes merge"
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* Reuse existing commit message in reflog message */
@@ -4597,7 +4625,7 @@ name|error
 argument_list|(
 name|_
 argument_list|(
-literal|"Must specify a notes ref to merge"
+literal|"must specify a notes ref to merge"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4733,7 +4761,7 @@ name|error
 argument_list|(
 name|_
 argument_list|(
-literal|"Unknown -s/--strategy: %s"
+literal|"unknown -s/--strategy: %s"
 argument_list|)
 argument_list|,
 name|strategy
@@ -4950,7 +4978,7 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"A notes merge into %s is already in-progress at %s"
+literal|"a notes merge into %s is already in-progress at %s"
 argument_list|)
 argument_list|,
 name|default_notes_ref
@@ -4977,7 +5005,7 @@ name|die
 argument_list|(
 name|_
 argument_list|(
-literal|"Failed to store link to current notes ref (%s)"
+literal|"failed to store link to current notes ref (%s)"
 argument_list|)
 argument_list|,
 name|default_notes_ref
@@ -5982,7 +6010,7 @@ name|error
 argument_list|(
 name|_
 argument_list|(
-literal|"Unknown subcommand: %s"
+literal|"unknown subcommand: %s"
 argument_list|)
 argument_list|,
 name|argv

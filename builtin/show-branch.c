@@ -1846,7 +1846,14 @@ condition|)
 block|{
 name|warning
 argument_list|(
+name|Q_
+argument_list|(
+literal|"ignoring %s; cannot handle more than %d ref"
+argument_list|,
 literal|"ignoring %s; cannot handle more than %d refs"
+argument_list|,
+name|MAX_REVS
+argument_list|)
 argument_list|,
 name|refname
 argument_list|,
@@ -2821,7 +2828,10 @@ name|MAX_REVS
 condition|)
 name|error
 argument_list|(
+name|_
+argument_list|(
 literal|"no matching refs with %s"
+argument_list|)
 argument_list|,
 name|av
 argument_list|)
@@ -3717,8 +3727,11 @@ condition|)
 comment|/* 			 * Asking for --more in reflog mode does not 			 * make sense.  --list is Ok. 			 * 			 * Also --all and --remotes do not make sense either. 			 */
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--reflog is incompatible with --all, --remotes, "
 literal|"--independent or --merge-base"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3820,7 +3833,10 @@ name|av
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"no branches given, and HEAD is not valid"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3832,7 +3848,10 @@ literal|1
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--reflog option needs one branch name"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -3843,7 +3862,14 @@ name|reflog
 condition|)
 name|die
 argument_list|(
-literal|"Only %d entries can be shown at one time."
+name|Q_
+argument_list|(
+literal|"only %d entry can be shown at one time."
+argument_list|,
+literal|"only %d entries can be shown at one time."
+argument_list|,
+name|MAX_REVS
+argument_list|)
 argument_list|,
 name|MAX_REVS
 argument_list|)
@@ -3872,7 +3898,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"No such ref %s"
+name|_
+argument_list|(
+literal|"no such ref %s"
+argument_list|)
 argument_list|,
 operator|*
 name|av
@@ -4333,7 +4362,14 @@ name|num_rev
 condition|)
 name|die
 argument_list|(
+name|Q_
+argument_list|(
+literal|"cannot handle more than %d rev."
+argument_list|,
 literal|"cannot handle more than %d revs."
+argument_list|,
+name|MAX_REVS
+argument_list|)
 argument_list|,
 name|MAX_REVS
 argument_list|)
@@ -4354,7 +4390,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"'%s' is not a valid ref."
+argument_list|)
 argument_list|,
 name|ref_name
 index|[
@@ -4378,7 +4417,10 @@ name|commit
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"cannot find commit %s (%s)"
+argument_list|)
 argument_list|,
 name|ref_name
 index|[

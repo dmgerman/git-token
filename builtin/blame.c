@@ -13621,7 +13621,10 @@ literal|0
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--progress can't be used with --incremental or porcelain formats"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|show_progress
@@ -14123,7 +14126,10 @@ name|contents_from
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--contents and --reverse do not blend well."
+argument_list|)
 argument_list|)
 expr_stmt|;
 else|else
@@ -14214,7 +14220,10 @@ name|contents_from
 condition|)
 name|die
 argument_list|(
-literal|"Cannot use --contents with final commit object name"
+name|_
+argument_list|(
+literal|"cannot use --contents with final commit object name"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -14244,7 +14253,10 @@ name|final_commit
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--reverse and --first-parent together require specified latest commit"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -14399,7 +14411,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--reverse --first-parent together require range along first-parent chain"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -14481,7 +14496,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"no such path %s in %s"
+argument_list|)
 argument_list|,
 name|path
 argument_list|,
@@ -14565,7 +14583,10 @@ name|final_buf
 condition|)
 name|die
 argument_list|(
-literal|"Cannot read blob %s for path %s"
+name|_
+argument_list|(
+literal|"cannot read blob %s for path %s"
+argument_list|)
 argument_list|,
 name|oid_to_hex
 argument_list|(
@@ -14700,7 +14721,14 @@ operator|)
 condition|)
 name|die
 argument_list|(
+name|Q_
+argument_list|(
+literal|"file %s has only %lu line"
+argument_list|,
 literal|"file %s has only %lu lines"
+argument_list|,
+name|lno
+argument_list|)
 argument_list|,
 name|path
 argument_list|,

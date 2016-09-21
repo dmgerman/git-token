@@ -4230,35 +4230,23 @@ specifier|static
 name|char
 modifier|*
 name|refuse_unconfigured_deny_msg
-index|[]
 init|=
-block|{
-literal|"By default, updating the current branch in a non-bare repository"
-block|,
-literal|"is denied, because it will make the index and work tree inconsistent"
-block|,
-literal|"with what you pushed, and will require 'git reset --hard' to match"
-block|,
-literal|"the work tree to HEAD."
-block|,
-literal|""
-block|,
-literal|"You can set 'receive.denyCurrentBranch' configuration variable to"
-block|,
-literal|"'ignore' or 'warn' in the remote repository to allow pushing into"
-block|,
-literal|"its current branch; however, this is not recommended unless you"
-block|,
-literal|"arranged to update its work tree to match what you pushed in some"
-block|,
-literal|"other way."
-block|,
-literal|""
-block|,
-literal|"To squelch this message and still keep the default behaviour, set"
-block|,
+name|N_
+argument_list|(
+literal|"By default, updating the current branch in a non-bare repository\n"
+literal|"is denied, because it will make the index and work tree inconsistent\n"
+literal|"with what you pushed, and will require 'git reset --hard' to match\n"
+literal|"the work tree to HEAD.\n"
+literal|"\n"
+literal|"You can set 'receive.denyCurrentBranch' configuration variable to\n"
+literal|"'ignore' or 'warn' in the remote repository to allow pushing into\n"
+literal|"its current branch; however, this is not recommended unless you\n"
+literal|"arranged to update its work tree to match what you pushed in some\n"
+literal|"other way.\n"
+literal|"\n"
+literal|"To squelch this message and still keep the default behaviour, set\n"
 literal|"'receive.denyCurrentBranch' configuration variable to 'refuse'."
-block|}
+argument_list|)
 decl_stmt|;
 end_decl_stmt
 
@@ -4271,33 +4259,14 @@ parameter_list|(
 name|void
 parameter_list|)
 block|{
-name|int
-name|i
-decl_stmt|;
-for|for
-control|(
-name|i
-operator|=
-literal|0
-init|;
-name|i
-operator|<
-name|ARRAY_SIZE
-argument_list|(
-name|refuse_unconfigured_deny_msg
-argument_list|)
-condition|;
-name|i
-operator|++
-control|)
 name|rp_error
 argument_list|(
 literal|"%s"
 argument_list|,
+name|_
+argument_list|(
 name|refuse_unconfigured_deny_msg
-index|[
-name|i
-index|]
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -4309,25 +4278,18 @@ specifier|static
 name|char
 modifier|*
 name|refuse_unconfigured_deny_delete_current_msg
-index|[]
 init|=
-block|{
-literal|"By default, deleting the current branch is denied, because the next"
-block|,
-literal|"'git clone' won't result in any file checked out, causing confusion."
-block|,
-literal|""
-block|,
-literal|"You can set 'receive.denyDeleteCurrent' configuration variable to"
-block|,
-literal|"'warn' or 'ignore' in the remote repository to allow deleting the"
-block|,
-literal|"current branch, with or without a warning message."
-block|,
-literal|""
-block|,
+name|N_
+argument_list|(
+literal|"By default, deleting the current branch is denied, because the next\n"
+literal|"'git clone' won't result in any file checked out, causing confusion.\n"
+literal|"\n"
+literal|"You can set 'receive.denyDeleteCurrent' configuration variable to\n"
+literal|"'warn' or 'ignore' in the remote repository to allow deleting the\n"
+literal|"current branch, with or without a warning message.\n"
+literal|"\n"
 literal|"To squelch this message, you can set it to 'refuse'."
-block|}
+argument_list|)
 decl_stmt|;
 end_decl_stmt
 
@@ -4340,33 +4302,14 @@ parameter_list|(
 name|void
 parameter_list|)
 block|{
-name|int
-name|i
-decl_stmt|;
-for|for
-control|(
-name|i
-operator|=
-literal|0
-init|;
-name|i
-operator|<
-name|ARRAY_SIZE
-argument_list|(
-name|refuse_unconfigured_deny_delete_current_msg
-argument_list|)
-condition|;
-name|i
-operator|++
-control|)
 name|rp_error
 argument_list|(
 literal|"%s"
 argument_list|,
+name|_
+argument_list|(
 name|refuse_unconfigured_deny_delete_current_msg
-index|[
-name|i
-index|]
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
