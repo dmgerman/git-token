@@ -293,15 +293,6 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
-DECL|variable|pager_program
-specifier|const
-name|char
-modifier|*
-name|pager_program
-decl_stmt|;
-end_decl_stmt
-
-begin_decl_stmt
 DECL|variable|pager_use_color
 name|int
 name|pager_use_color
@@ -1193,6 +1184,29 @@ block|}
 end_function
 
 begin_function
+DECL|function|have_git_dir
+name|int
+name|have_git_dir
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+return|return
+name|startup_info
+operator|->
+name|have_repository
+operator|||
+name|git_dir
+operator|||
+name|getenv
+argument_list|(
+name|GIT_DIR_ENVIRONMENT
+argument_list|)
+return|;
+block|}
+end_function
+
+begin_function
 DECL|function|get_git_dir
 specifier|const
 name|char
@@ -1799,6 +1813,21 @@ block|}
 return|return
 name|the_shared_repository
 return|;
+block|}
+end_function
+
+begin_function
+DECL|function|reset_shared_repository
+name|void
+name|reset_shared_repository
+parameter_list|(
+name|void
+parameter_list|)
+block|{
+name|need_shared_repository_from_config
+operator|=
+literal|1
+expr_stmt|;
 block|}
 end_function
 

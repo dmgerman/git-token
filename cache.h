@@ -2357,6 +2357,19 @@ index|[]
 decl_stmt|;
 end_decl_stmt
 
+begin_comment
+comment|/*  * Returns true iff we have a configured git repository (either via  * setup_git_directory, or in the environment via $GIT_DIR).  */
+end_comment
+
+begin_function_decl
+name|int
+name|have_git_dir
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_decl_stmt
 specifier|extern
 name|int
@@ -4258,6 +4271,10 @@ name|pack_size_limit_cfg
 decl_stmt|;
 end_decl_stmt
 
+begin_comment
+comment|/*  * Accessors for the core.sharedrepository config which lazy-load the value  * from the config (if not already set). The "reset" function can be  * used to unset "set" or cached value, meaning that the value will be loaded  * fresh from the config file on the next call to get_shared_repository().  */
+end_comment
+
 begin_function_decl
 name|void
 name|set_shared_repository
@@ -4271,6 +4288,15 @@ end_function_decl
 begin_function_decl
 name|int
 name|get_shared_repository
+parameter_list|(
+name|void
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|void
+name|reset_shared_repository
 parameter_list|(
 name|void
 parameter_list|)
@@ -11506,15 +11532,6 @@ name|void
 parameter_list|)
 function_decl|;
 end_function_decl
-
-begin_decl_stmt
-specifier|extern
-specifier|const
-name|char
-modifier|*
-name|pager_program
-decl_stmt|;
-end_decl_stmt
 
 begin_function_decl
 specifier|extern
