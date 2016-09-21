@@ -6089,15 +6089,6 @@ argument_list|,
 literal|"\n"
 argument_list|)
 expr_stmt|;
-name|print_signature
-argument_list|(
-name|rev
-operator|->
-name|diffopt
-operator|.
-name|file
-argument_list|)
-expr_stmt|;
 block|}
 end_function
 
@@ -7881,7 +7872,7 @@ name|fprintf
 argument_list|(
 name|file
 argument_list|,
-literal|"base-commit: %s\n"
+literal|"\nbase-commit: %s\n"
 argument_list|,
 name|oid_to_hex
 argument_list|(
@@ -10078,6 +10069,15 @@ operator|.
 name|file
 argument_list|)
 expr_stmt|;
+name|print_signature
+argument_list|(
+name|rev
+operator|.
+name|diffopt
+operator|.
+name|file
+argument_list|)
+expr_stmt|;
 name|total
 operator|++
 expr_stmt|;
@@ -10263,6 +10263,18 @@ condition|(
 name|shown
 condition|)
 block|{
+name|print_bases
+argument_list|(
+operator|&
+name|bases
+argument_list|,
+name|rev
+operator|.
+name|diffopt
+operator|.
+name|file
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|rev
@@ -10289,18 +10301,6 @@ expr_stmt|;
 else|else
 name|print_signature
 argument_list|(
-name|rev
-operator|.
-name|diffopt
-operator|.
-name|file
-argument_list|)
-expr_stmt|;
-name|print_bases
-argument_list|(
-operator|&
-name|bases
-argument_list|,
 name|rev
 operator|.
 name|diffopt
