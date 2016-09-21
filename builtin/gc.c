@@ -106,7 +106,7 @@ specifier|static
 name|int
 name|aggressive_depth
 init|=
-literal|250
+literal|50
 decl_stmt|;
 end_decl_stmt
 
