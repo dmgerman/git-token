@@ -946,15 +946,6 @@ expr_stmt|;
 block|}
 end_function
 
-begin_decl_stmt
-DECL|variable|state
-specifier|static
-name|struct
-name|checkout
-name|state
-decl_stmt|;
-end_decl_stmt
-
 begin_function
 DECL|function|check_updates
 specifier|static
@@ -965,6 +956,12 @@ name|struct
 name|unpack_trees_options
 modifier|*
 name|o
+parameter_list|,
+specifier|const
+name|struct
+name|checkout
+modifier|*
+name|state
 parameter_list|)
 block|{
 name|unsigned
@@ -1259,7 +1256,6 @@ name|checkout_entry
 argument_list|(
 name|ce
 argument_list|,
-operator|&
 name|state
 argument_list|,
 name|NULL
@@ -5195,6 +5191,10 @@ name|struct
 name|exclude_list
 name|el
 decl_stmt|;
+name|struct
+name|checkout
+name|state
+decl_stmt|;
 if|if
 condition|(
 name|len
@@ -5913,6 +5913,9 @@ operator|=
 name|check_updates
 argument_list|(
 name|o
+argument_list|,
+operator|&
+name|state
 argument_list|)
 condition|?
 operator|(
