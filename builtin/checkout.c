@@ -1361,6 +1361,8 @@ decl_stmt|;
 name|struct
 name|checkout
 name|state
+init|=
+name|CHECKOUT_INIT
 decl_stmt|;
 specifier|static
 name|char
@@ -1893,19 +1895,6 @@ return|return
 literal|1
 return|;
 comment|/* Now we are committed to check them out */
-name|memset
-argument_list|(
-operator|&
-name|state
-argument_list|,
-literal|0
-argument_list|,
-sizeof|sizeof
-argument_list|(
-name|state
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|state
 operator|.
 name|force
