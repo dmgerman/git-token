@@ -529,6 +529,10 @@ if|if
 condition|(
 name|ai
 operator|&&
+name|ai
+operator|->
+name|ai_canonname
+operator|&&
 name|strchr
 argument_list|(
 name|ai
