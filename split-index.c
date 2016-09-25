@@ -455,7 +455,7 @@ name|istate
 operator|->
 name|cache_nr
 expr_stmt|;
-name|memcpy
+name|COPY_ARRAY
 argument_list|(
 name|si
 operator|->
@@ -467,14 +467,6 @@ name|istate
 operator|->
 name|cache
 argument_list|,
-sizeof|sizeof
-argument_list|(
-operator|*
-name|istate
-operator|->
-name|cache
-argument_list|)
-operator|*
 name|istate
 operator|->
 name|cache_nr
@@ -851,7 +843,7 @@ operator|->
 name|cache_alloc
 argument_list|)
 expr_stmt|;
-name|memcpy
+name|COPY_ARRAY
 argument_list|(
 name|istate
 operator|->
@@ -863,14 +855,6 @@ name|base
 operator|->
 name|cache
 argument_list|,
-sizeof|sizeof
-argument_list|(
-operator|*
-name|istate
-operator|->
-name|cache
-argument_list|)
-operator|*
 name|istate
 operator|->
 name|cache_nr
