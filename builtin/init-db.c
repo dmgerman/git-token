@@ -747,7 +747,7 @@ argument_list|(
 operator|&
 name|path
 argument_list|,
-name|get_git_dir
+name|get_git_common_dir
 argument_list|()
 argument_list|)
 expr_stmt|;
