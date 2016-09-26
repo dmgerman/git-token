@@ -4072,7 +4072,7 @@ end_function
 begin_function
 DECL|function|add_sha1_to_argv
 specifier|static
-name|void
+name|int
 name|add_sha1_to_argv
 parameter_list|(
 specifier|const
@@ -4098,6 +4098,9 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
+return|return
+literal|0
+return|;
 block|}
 end_function
 

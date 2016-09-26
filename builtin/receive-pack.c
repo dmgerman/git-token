@@ -1556,7 +1556,7 @@ end_function
 begin_function
 DECL|function|show_one_alternate_sha1
 specifier|static
-name|void
+name|int
 name|show_one_alternate_sha1
 parameter_list|(
 specifier|const
@@ -1579,6 +1579,9 @@ argument_list|,
 name|sha1
 argument_list|)
 expr_stmt|;
+return|return
+literal|0
+return|;
 block|}
 end_function
 

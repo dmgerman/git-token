@@ -101,7 +101,7 @@ end_function_decl
 begin_typedef
 DECL|typedef|for_each_sha1_fn
 typedef|typedef
-name|void
+name|int
 function_decl|(
 modifier|*
 name|for_each_sha1_fn
@@ -123,7 +123,7 @@ function_decl|;
 end_typedef
 
 begin_function_decl
-name|void
+name|int
 name|sha1_array_for_each_unique
 parameter_list|(
 name|struct

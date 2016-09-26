@@ -276,7 +276,7 @@ end_function
 
 begin_function
 DECL|function|sha1_array_for_each_unique
-name|void
+name|int
 name|sha1_array_for_each_unique
 parameter_list|(
 name|struct
@@ -323,6 +323,9 @@ name|i
 operator|++
 control|)
 block|{
+name|int
+name|ret
+decl_stmt|;
 if|if
 condition|(
 name|i
@@ -350,6 +353,8 @@ index|]
 argument_list|)
 condition|)
 continue|continue;
+name|ret
+operator|=
 name|fn
 argument_list|(
 name|array
@@ -362,7 +367,17 @@ argument_list|,
 name|data
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|ret
+condition|)
+return|return
+name|ret
+return|;
 block|}
+return|return
+literal|0
+return|;
 block|}
 end_function
 

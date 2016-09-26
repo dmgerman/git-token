@@ -2162,7 +2162,7 @@ end_struct
 begin_function
 DECL|function|batch_object_cb
 specifier|static
-name|void
+name|int
 name|batch_object_cb
 parameter_list|(
 specifier|const
@@ -2211,6 +2211,9 @@ operator|->
 name|expand
 argument_list|)
 expr_stmt|;
+return|return
+literal|0
+return|;
 block|}
 end_function
 
