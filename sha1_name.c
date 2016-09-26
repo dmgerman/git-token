@@ -108,6 +108,8 @@ name|char
 name|hex_pfx
 index|[
 name|GIT_SHA1_HEXSZ
+operator|+
+literal|1
 index|]
 decl_stmt|;
 DECL|member|bin_pfx
@@ -1426,17 +1428,6 @@ name|ds
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|memset
-argument_list|(
-name|ds
-operator|->
-name|hex_pfx
-argument_list|,
-literal|'x'
-argument_list|,
-name|GIT_SHA1_HEXSZ
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|i
@@ -1570,6 +1561,15 @@ operator|->
 name|len
 operator|=
 name|len
+expr_stmt|;
+name|ds
+operator|->
+name|hex_pfx
+index|[
+name|len
+index|]
+operator|=
+literal|'\0'
 expr_stmt|;
 name|prepare_alt_odb
 argument_list|()
@@ -1753,11 +1753,7 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"short SHA1 %.*s is ambiguous."
-argument_list|,
-name|ds
-operator|.
-name|len
+literal|"short SHA1 %s is ambiguous."
 argument_list|,
 name|ds
 operator|.
