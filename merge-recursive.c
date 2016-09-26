@@ -1163,7 +1163,7 @@ argument_list|)
 operator|!=
 literal|0
 condition|)
-name|strbuf_addf
+name|strbuf_addstr
 argument_list|(
 operator|&
 name|o

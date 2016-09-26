@@ -4441,12 +4441,13 @@ operator|->
 name|current
 operator|++
 expr_stmt|;
-name|strbuf_addf
+name|strbuf_addstr
 argument_list|(
 name|err
 argument_list|,
-literal|"BUG: submodule considered for cloning,"
-literal|"doesn't need cloning any more?\n"
+literal|"BUG: submodule considered for "
+literal|"cloning, doesn't need cloning "
+literal|"any more?\n"
 argument_list|)
 expr_stmt|;
 return|return
