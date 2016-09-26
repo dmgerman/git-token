@@ -1648,6 +1648,20 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|HAS_MULTI_BITS
+argument_list|(
+name|flags
+operator|&
+name|GET_SHA1_DISAMBIGUATORS
+argument_list|)
+condition|)
+name|die
+argument_list|(
+literal|"BUG: multiple get_short_sha1 disambiguator flags"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|flags
 operator|&
 name|GET_SHA1_COMMIT
