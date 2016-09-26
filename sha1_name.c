@@ -1753,7 +1753,10 @@ condition|)
 return|return
 name|error
 argument_list|(
-literal|"short SHA1 %s is ambiguous."
+name|_
+argument_list|(
+literal|"short SHA1 %s is ambiguous"
+argument_list|)
 argument_list|,
 name|ds
 operator|.
