@@ -3753,7 +3753,8 @@ specifier|static
 name|int
 name|checkout
 parameter_list|(
-name|void
+name|int
+name|submodule_progress
 parameter_list|)
 block|{
 name|unsigned
@@ -4107,6 +4108,18 @@ argument_list|,
 literal|"--jobs=%d"
 argument_list|,
 name|max_jobs
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|submodule_progress
+condition|)
+name|argv_array_push
+argument_list|(
+operator|&
+name|args
+argument_list|,
+literal|"--progress"
 argument_list|)
 expr_stmt|;
 name|err
@@ -4730,6 +4743,9 @@ decl_stmt|,
 name|complete_refs_before_fetch
 init|=
 literal|1
+decl_stmt|;
+name|int
+name|submodule_progress
 decl_stmt|;
 name|struct
 name|refspec
@@ -5943,6 +5959,13 @@ operator|.
 name|buf
 argument_list|)
 expr_stmt|;
+comment|/* 	 * We want to show progress for recursive submodule clones iff 	 * we did so for the main clone. But only the transport knows 	 * the final decision for this flag, so we need to rescue the value 	 * before we free the transport. 	 */
+name|submodule_progress
+operator|=
+name|transport
+operator|->
+name|progress
+expr_stmt|;
 name|transport_unlock_pack
 argument_list|(
 name|transport
@@ -5972,7 +5995,9 @@ expr_stmt|;
 name|err
 operator|=
 name|checkout
-argument_list|()
+argument_list|(
+name|submodule_progress
+argument_list|)
 expr_stmt|;
 name|strbuf_release
 argument_list|(

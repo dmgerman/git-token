@@ -2202,6 +2202,9 @@ name|reference
 parameter_list|,
 name|int
 name|quiet
+parameter_list|,
+name|int
+name|progress
 parameter_list|)
 block|{
 name|struct
@@ -2242,6 +2245,20 @@ operator|.
 name|args
 argument_list|,
 literal|"--quiet"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|progress
+condition|)
+name|argv_array_push
+argument_list|(
+operator|&
+name|cp
+operator|.
+name|args
+argument_list|,
+literal|"--progress"
 argument_list|)
 expr_stmt|;
 if|if
@@ -2883,6 +2900,11 @@ name|quiet
 init|=
 literal|0
 decl_stmt|;
+name|int
+name|progress
+init|=
+literal|0
+decl_stmt|;
 name|FILE
 modifier|*
 name|submodule_dot_git
@@ -3049,6 +3071,21 @@ operator|&
 name|quiet
 argument_list|,
 literal|"Suppress output for cloning a submodule"
+argument_list|)
+block|,
+name|OPT_BOOL
+argument_list|(
+literal|0
+argument_list|,
+literal|"progress"
+argument_list|,
+operator|&
+name|progress
+argument_list|,
+name|N_
+argument_list|(
+literal|"force cloning progress"
+argument_list|)
 argument_list|)
 block|,
 name|OPT_END
@@ -3235,6 +3272,8 @@ operator|&
 name|reference
 argument_list|,
 name|quiet
+argument_list|,
+name|progress
 argument_list|)
 condition|)
 name|die
@@ -3508,6 +3547,10 @@ name|submodule_update_strategy
 name|update
 decl_stmt|;
 comment|/* configuration parameters which are passed on to the children */
+DECL|member|progress
+name|int
+name|progress
+decl_stmt|;
 DECL|member|quiet
 name|int
 name|quiet
@@ -3577,7 +3620,7 @@ DECL|macro|SUBMODULE_UPDATE_CLONE_INIT
 define|#
 directive|define
 name|SUBMODULE_UPDATE_CLONE_INIT
-value|{0, MODULE_LIST_INIT, 0, \ 	SUBMODULE_UPDATE_STRATEGY_INIT, 0, -1, STRING_LIST_INIT_DUP, \ 	NULL, NULL, NULL, \ 	STRING_LIST_INIT_DUP, 0, NULL, 0, 0}
+value|{0, MODULE_LIST_INIT, 0, \ 	SUBMODULE_UPDATE_STRATEGY_INIT, 0, 0, -1, STRING_LIST_INIT_DUP, \ 	NULL, NULL, NULL, \ 	STRING_LIST_INIT_DUP, 0, NULL, 0, 0}
 end_define
 
 begin_function
@@ -4075,6 +4118,22 @@ operator|->
 name|args
 argument_list|,
 literal|"clone"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|suc
+operator|->
+name|progress
+condition|)
+name|argv_array_push
+argument_list|(
+operator|&
+name|child
+operator|->
+name|args
+argument_list|,
+literal|"--progress"
 argument_list|)
 expr_stmt|;
 if|if
@@ -4932,6 +4991,23 @@ argument_list|,
 name|N_
 argument_list|(
 literal|"don't print cloning progress"
+argument_list|)
+argument_list|)
+block|,
+name|OPT_BOOL
+argument_list|(
+literal|0
+argument_list|,
+literal|"progress"
+argument_list|,
+operator|&
+name|suc
+operator|.
+name|progress
+argument_list|,
+name|N_
+argument_list|(
+literal|"force cloning progress"
 argument_list|)
 argument_list|)
 block|,
