@@ -1925,8 +1925,6 @@ operator|&
 name|pathspec
 argument_list|,
 literal|0
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 name|refresh_cache_or_die
