@@ -7173,6 +7173,14 @@ name|flags
 operator|&
 name|GET_SHA1_ONLY_TO_DIE
 decl_stmt|;
+if|if
+condition|(
+name|only_to_die
+condition|)
+name|flags
+operator||=
+name|GET_SHA1_QUIETLY
+expr_stmt|;
 name|memset
 argument_list|(
 name|oc
