@@ -8276,6 +8276,14 @@ struct|;
 end_struct
 
 begin_define
+DECL|macro|CHECKOUT_INIT
+define|#
+directive|define
+name|CHECKOUT_INIT
+value|{ NULL, "" }
+end_define
+
+begin_define
 DECL|macro|TEMPORARY_FILENAME_LENGTH
 define|#
 directive|define

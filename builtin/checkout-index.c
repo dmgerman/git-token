@@ -92,6 +92,8 @@ specifier|static
 name|struct
 name|checkout
 name|state
+init|=
+name|CHECKOUT_INIT
 decl_stmt|;
 end_decl_stmt
 
