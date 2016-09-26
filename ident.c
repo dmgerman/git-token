@@ -1572,6 +1572,8 @@ name|char
 modifier|*
 name|env_hint
 init|=
+name|N_
+argument_list|(
 literal|"\n"
 literal|"*** Please tell me who you are.\n"
 literal|"\n"
@@ -1583,6 +1585,7 @@ literal|"\n"
 literal|"to set your account\'s default identity.\n"
 literal|"Omit --global to set the identity only in this repository.\n"
 literal|"\n"
+argument_list|)
 decl_stmt|;
 end_decl_stmt
 
@@ -1680,7 +1683,10 @@ condition|)
 block|{
 name|fputs
 argument_list|(
+name|_
+argument_list|(
 name|env_hint
+argument_list|)
 argument_list|,
 name|stderr
 argument_list|)
@@ -1709,7 +1715,10 @@ condition|)
 block|{
 name|fputs
 argument_list|(
+name|_
+argument_list|(
 name|env_hint
+argument_list|)
 argument_list|,
 name|stderr
 argument_list|)
@@ -1746,7 +1755,10 @@ name|using_default
 condition|)
 name|fputs
 argument_list|(
+name|_
+argument_list|(
 name|env_hint
+argument_list|)
 argument_list|,
 name|stderr
 argument_list|)
@@ -1796,7 +1808,10 @@ condition|)
 block|{
 name|fputs
 argument_list|(
+name|_
+argument_list|(
 name|env_hint
+argument_list|)
 argument_list|,
 name|stderr
 argument_list|)
@@ -1821,7 +1836,10 @@ condition|)
 block|{
 name|fputs
 argument_list|(
+name|_
+argument_list|(
 name|env_hint
+argument_list|)
 argument_list|,
 name|stderr
 argument_list|)

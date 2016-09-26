@@ -255,15 +255,21 @@ name|unexpected
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"The remote end hung up upon initial contact"
+argument_list|)
 argument_list|)
 expr_stmt|;
 else|else
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Could not read from remote repository.\n\n"
 literal|"Please make sure you have the correct access rights\n"
 literal|"and the repository exists."
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

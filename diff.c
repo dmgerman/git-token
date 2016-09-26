@@ -348,6 +348,32 @@ decl_stmt|;
 end_decl_stmt
 
 begin_function
+DECL|function|die_want_option
+specifier|static
+name|NORETURN
+name|void
+name|die_want_option
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|option_name
+parameter_list|)
+block|{
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"option '%s' requires a value"
+argument_list|)
+argument_list|,
+name|option_name
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+begin_function
 DECL|function|parse_diff_color_slot
 specifier|static
 name|int
@@ -19129,7 +19155,10 @@ literal|1
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--name-only, --name-status, --check and -s are mutually exclusive"
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* 	 * Most of the time we can say "there are changes" 	 * only by checking if there are changed paths, but 	 * --ignore-whitespace* options force us to look 	 * inside contents. 	 */
@@ -20057,9 +20086,9 @@ index|[
 literal|1
 index|]
 condition|)
-name|die
+name|die_want_option
 argument_list|(
-literal|"Option '--stat-width' requires a value"
+literal|"--stat-width"
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -20139,9 +20168,9 @@ index|[
 literal|1
 index|]
 condition|)
-name|die
+name|die_want_option
 argument_list|(
-literal|"Option '--stat-name-width' requires a value"
+literal|"--stat-name-width"
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -20221,9 +20250,9 @@ index|[
 literal|1
 index|]
 condition|)
-name|die
+name|die_want_option
 argument_list|(
-literal|"Option '--stat-graph-width' requires a value"
+literal|"--stat-graph-width"
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -20303,9 +20332,9 @@ index|[
 literal|1
 index|]
 condition|)
-name|die
+name|die_want_option
 argument_list|(
-literal|"Option '--stat-count' requires a value"
+literal|"--stat-count"
 argument_list|)
 expr_stmt|;
 elseif|else

@@ -8344,9 +8344,12 @@ name|char
 name|commit_utf8_warn
 index|[]
 init|=
+name|N_
+argument_list|(
 literal|"Warning: commit message did not conform to UTF-8.\n"
 literal|"You may want to amend it after fixing the message, or set the config\n"
 literal|"variable i18n.commitencoding to the encoding your project uses.\n"
+argument_list|)
 decl_stmt|;
 end_decl_stmt
 
@@ -8601,7 +8604,10 @@ name|fprintf
 argument_list|(
 name|stderr
 argument_list|,
+name|_
+argument_list|(
 name|commit_utf8_warn
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
