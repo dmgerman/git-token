@@ -17653,12 +17653,10 @@ name|abbrev
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|strbuf_addstr
+name|strbuf_add_unique_abbrev
 argument_list|(
 name|msg
 argument_list|,
-name|find_unique_abbrev
-argument_list|(
 name|two
 operator|->
 name|oid
@@ -17666,7 +17664,6 @@ operator|.
 name|hash
 argument_list|,
 name|abbrev
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
