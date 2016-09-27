@@ -3103,9 +3103,9 @@ comment|/*  * Represent a group of changed lines in an xdfile_t (i.e., a contigu
 end_comment
 
 begin_struct
-DECL|struct|group
+DECL|struct|xdlgroup
 struct|struct
-name|group
+name|xdlgroup
 block|{
 comment|/* 	 * The index of the first changed line in the group, or the index of 	 * the unchanged line above which the (empty) group is located. 	 */
 DECL|member|start
@@ -3136,7 +3136,7 @@ modifier|*
 name|xdf
 parameter_list|,
 name|struct
-name|group
+name|xdlgroup
 modifier|*
 name|g
 parameter_list|)
@@ -3186,7 +3186,7 @@ modifier|*
 name|xdf
 parameter_list|,
 name|struct
-name|group
+name|xdlgroup
 modifier|*
 name|g
 parameter_list|)
@@ -3262,7 +3262,7 @@ modifier|*
 name|xdf
 parameter_list|,
 name|struct
-name|group
+name|xdlgroup
 modifier|*
 name|g
 parameter_list|)
@@ -3337,7 +3337,7 @@ modifier|*
 name|xdf
 parameter_list|,
 name|struct
-name|group
+name|xdlgroup
 modifier|*
 name|g
 parameter_list|,
@@ -3448,7 +3448,7 @@ modifier|*
 name|xdf
 parameter_list|,
 name|struct
-name|group
+name|xdlgroup
 modifier|*
 name|g
 parameter_list|,
@@ -3599,7 +3599,7 @@ name|flags
 parameter_list|)
 block|{
 name|struct
-name|group
+name|xdlgroup
 name|g
 decl_stmt|,
 name|go
