@@ -152,9 +152,24 @@ return|;
 block|}
 end_function
 
+begin_comment
+comment|/*  * The _gently versions of these functions warn and return false on a  * corrupt tree entry rather than dying,  */
+end_comment
+
 begin_function_decl
 name|void
 name|update_tree_entry
+parameter_list|(
+name|struct
+name|tree_desc
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
+name|update_tree_entry_gently
 parameter_list|(
 name|struct
 name|tree_desc
@@ -184,6 +199,27 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+name|int
+name|init_tree_desc_gently
+parameter_list|(
+name|struct
+name|tree_desc
+modifier|*
+name|desc
+parameter_list|,
+specifier|const
+name|void
+modifier|*
+name|buf
+parameter_list|,
+name|unsigned
+name|long
+name|size
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/*  * Helper function that does both tree_entry_extract() and update_tree_entry()  * and returns true for success  */
 end_comment
@@ -191,6 +227,21 @@ end_comment
 begin_function_decl
 name|int
 name|tree_entry
+parameter_list|(
+name|struct
+name|tree_desc
+modifier|*
+parameter_list|,
+name|struct
+name|name_entry
+modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+name|int
+name|tree_entry_gently
 parameter_list|(
 name|struct
 name|tree_desc
