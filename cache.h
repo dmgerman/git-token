@@ -7301,6 +7301,24 @@ parameter_list|)
 function_decl|;
 end_function_decl
 
+begin_function_decl
+specifier|extern
+name|int
+name|set_disambiguate_hint_config
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|var
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|value
+parameter_list|)
+function_decl|;
+end_function_decl
+
 begin_comment
 comment|/*  * Try to read a SHA1 in hexadecimal format from the 40 characters  * starting at hex.  Write the 20-byte result to sha1 in binary form.  * Return 0 on success.  Reading stops if a NUL is encountered in the  * input, so it is safe to pass this function an arbitrary  * null-terminated string.  */
 end_comment
