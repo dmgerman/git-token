@@ -162,7 +162,7 @@ if|if
 condition|(
 name|size
 operator|<
-literal|24
+literal|23
 operator|||
 name|buf
 index|[
@@ -173,7 +173,10 @@ index|]
 condition|)
 name|die
 argument_list|(
-literal|"corrupt tree file"
+name|_
+argument_list|(
+literal|"too-short tree object"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|path
@@ -190,14 +193,27 @@ if|if
 condition|(
 operator|!
 name|path
-operator|||
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"malformed mode in tree entry for tree"
+argument_list|)
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 operator|!
 operator|*
 name|path
 condition|)
 name|die
 argument_list|(
-literal|"corrupt tree file"
+name|_
+argument_list|(
+literal|"empty filename in tree entry for tree"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|len
@@ -499,7 +515,10 @@ name|len
 condition|)
 name|die
 argument_list|(
-literal|"corrupt tree file"
+name|_
+argument_list|(
+literal|"too-short tree file"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|buf
