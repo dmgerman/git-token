@@ -3260,12 +3260,10 @@ name|name
 argument_list|)
 expr_stmt|;
 else|else
-name|strbuf_addf
+name|strbuf_addstr
 argument_list|(
 operator|&
 name|sb
-argument_list|,
-literal|"%s"
 argument_list|,
 name|ce
 operator|->

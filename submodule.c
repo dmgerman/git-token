@@ -2156,12 +2156,10 @@ argument_list|,
 literal|'.'
 argument_list|)
 expr_stmt|;
-name|strbuf_addf
+name|strbuf_addstr
 argument_list|(
 operator|&
 name|sb
-argument_list|,
-literal|"%s"
 argument_list|,
 name|find_unique_abbrev
 argument_list|(
