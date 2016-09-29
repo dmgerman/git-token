@@ -5438,6 +5438,10 @@ condition|(
 name|c
 operator|->
 name|auto_color
+operator|&&
+name|sb
+operator|->
+name|len
 condition|)
 name|strbuf_addstr
 argument_list|(
