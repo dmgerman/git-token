@@ -334,7 +334,24 @@ name|idx_entry
 modifier|*
 name|entries
 decl_stmt|;
-comment|/* Note that the pack header checks are actually performed by 	 * use_pack when it first opens the pack file.  If anything 	 * goes wrong during those checks then the call will die out 	 * immediately. 	 */
+if|if
+condition|(
+operator|!
+name|is_pack_valid
+argument_list|(
+name|p
+argument_list|)
+condition|)
+return|return
+name|error
+argument_list|(
+literal|"packfile %s cannot be accessed"
+argument_list|,
+name|p
+operator|->
+name|pack_name
+argument_list|)
+return|;
 name|git_SHA1_Init
 argument_list|(
 operator|&
