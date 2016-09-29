@@ -3927,6 +3927,11 @@ block|{
 name|int
 name|i
 decl_stmt|;
+name|int
+name|chars_written
+init|=
+literal|0
+decl_stmt|;
 if|if
 condition|(
 name|graph
@@ -3984,6 +3989,9 @@ argument_list|,
 literal|'|'
 argument_list|)
 expr_stmt|;
+name|chars_written
+operator|++
+expr_stmt|;
 if|if
 condition|(
 name|col
@@ -4000,12 +4008,10 @@ name|num_parents
 operator|>
 literal|2
 condition|)
-name|strbuf_addchars
-argument_list|(
-name|sb
-argument_list|,
-literal|' '
-argument_list|,
+block|{
+name|int
+name|len
+init|=
 operator|(
 name|graph
 operator|->
@@ -4015,9 +4021,23 @@ literal|2
 operator|)
 operator|*
 literal|2
+decl_stmt|;
+name|strbuf_addchars
+argument_list|(
+name|sb
+argument_list|,
+literal|' '
+argument_list|,
+name|len
 argument_list|)
 expr_stmt|;
+name|chars_written
+operator|+=
+name|len
+expr_stmt|;
+block|}
 else|else
+block|{
 name|strbuf_addch
 argument_list|(
 name|sb
@@ -4025,6 +4045,10 @@ argument_list|,
 literal|' '
 argument_list|)
 expr_stmt|;
+name|chars_written
+operator|++
+expr_stmt|;
+block|}
 block|}
 name|graph_pad_horizontally
 argument_list|(
@@ -4032,9 +4056,7 @@ name|graph
 argument_list|,
 name|sb
 argument_list|,
-name|graph
-operator|->
-name|num_columns
+name|chars_written
 argument_list|)
 expr_stmt|;
 comment|/* 	 * Update graph->prev_state since we have output a padding line 	 */
