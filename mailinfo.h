@@ -130,6 +130,11 @@ name|int
 name|header_stage
 decl_stmt|;
 comment|/* still checking in-body headers? */
+DECL|member|inbody_header_accum
+name|struct
+name|strbuf
+name|inbody_header_accum
+decl_stmt|;
 DECL|member|p_hdr_data
 name|struct
 name|strbuf
