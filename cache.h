@@ -1861,7 +1861,7 @@ name|st
 parameter_list|,
 name|flags
 parameter_list|)
-value|add_to_index(&the_index, (path), (st), (flags), 0)
+value|add_to_index(&the_index, (path), (st), (flags))
 end_define
 
 begin_define
@@ -1874,7 +1874,20 @@ name|path
 parameter_list|,
 name|flags
 parameter_list|)
-value|add_file_to_index(&the_index, (path), (flags), 0)
+value|add_file_to_index(&the_index, (path), (flags))
+end_define
+
+begin_define
+DECL|macro|chmod_cache_entry
+define|#
+directive|define
+name|chmod_cache_entry
+parameter_list|(
+name|ce
+parameter_list|,
+name|flip
+parameter_list|)
+value|chmod_index_entry(&the_index, (ce), (flip))
 end_define
 
 begin_define
@@ -3501,9 +3514,6 @@ modifier|*
 parameter_list|,
 name|int
 name|flags
-parameter_list|,
-name|int
-name|force_mode
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -3524,9 +3534,6 @@ name|path
 parameter_list|,
 name|int
 name|flags
-parameter_list|,
-name|int
-name|force_mode
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -3559,6 +3566,26 @@ parameter_list|,
 name|unsigned
 name|int
 name|refresh_options
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|chmod_index_entry
+parameter_list|(
+name|struct
+name|index_state
+modifier|*
+parameter_list|,
+name|struct
+name|cache_entry
+modifier|*
+name|ce
+parameter_list|,
+name|char
+name|flip
 parameter_list|)
 function_decl|;
 end_function_decl
@@ -11660,9 +11687,6 @@ name|pathspec
 parameter_list|,
 name|int
 name|flags
-parameter_list|,
-name|int
-name|force_mode
 parameter_list|)
 function_decl|;
 end_function_decl
