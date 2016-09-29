@@ -3978,6 +3978,10 @@ condition|)
 block|{
 if|if
 condition|(
+name|http_auth
+operator|.
+name|protocol
+operator|&&
 operator|!
 name|strcmp
 argument_list|(
