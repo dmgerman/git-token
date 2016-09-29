@@ -744,14 +744,6 @@ modifier|*
 name|slp
 parameter_list|)
 block|{
-if|if
-condition|(
-name|slp
-operator|->
-name|nitems
-operator|>
-literal|0
-condition|)
 name|QSORT
 argument_list|(
 name|slp

@@ -1949,12 +1949,6 @@ modifier|*
 name|committers
 parameter_list|)
 block|{
-if|if
-condition|(
-name|authors
-operator|->
-name|nr
-condition|)
 name|QSORT
 argument_list|(
 name|authors
@@ -1968,12 +1962,6 @@ argument_list|,
 name|cmp_string_list_util_as_integral
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|committers
-operator|->
-name|nr
-condition|)
 name|QSORT
 argument_list|(
 name|committers
