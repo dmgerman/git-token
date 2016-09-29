@@ -7505,7 +7505,7 @@ operator|&
 name|info
 argument_list|)
 expr_stmt|;
-name|qsort
+name|QSORT
 argument_list|(
 name|info
 operator|.
@@ -7518,16 +7518,6 @@ operator|.
 name|list
 operator|->
 name|nr
-argument_list|,
-sizeof|sizeof
-argument_list|(
-operator|*
-name|info
-operator|.
-name|list
-operator|->
-name|items
-argument_list|)
 argument_list|,
 name|cmp_string_with_push
 argument_list|)

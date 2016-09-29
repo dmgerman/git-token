@@ -818,7 +818,7 @@ operator|=
 literal|0
 expr_stmt|;
 block|}
-name|qsort
+name|QSORT
 argument_list|(
 name|hash
 operator|->
@@ -829,16 +829,6 @@ operator|<<
 name|hash
 operator|->
 name|alloc_log2
-argument_list|,
-sizeof|sizeof
-argument_list|(
-name|hash
-operator|->
-name|data
-index|[
-literal|0
-index|]
-argument_list|)
 argument_list|,
 name|spanhash_cmp
 argument_list|)

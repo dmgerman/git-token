@@ -1464,7 +1464,7 @@ name|cmp
 else|:
 name|strcmp
 expr_stmt|;
-name|qsort
+name|QSORT
 argument_list|(
 name|list
 operator|->
@@ -1473,14 +1473,6 @@ argument_list|,
 name|list
 operator|->
 name|nr
-argument_list|,
-sizeof|sizeof
-argument_list|(
-operator|*
-name|list
-operator|->
-name|items
-argument_list|)
 argument_list|,
 name|cmp_items
 argument_list|)

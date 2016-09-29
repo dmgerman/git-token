@@ -9049,7 +9049,7 @@ name|ref_sorting
 operator|=
 name|sorting
 expr_stmt|;
-name|qsort
+name|QSORT
 argument_list|(
 name|array
 operator|->
@@ -9058,13 +9058,6 @@ argument_list|,
 name|array
 operator|->
 name|nr
-argument_list|,
-sizeof|sizeof
-argument_list|(
-expr|struct
-name|ref_array_item
-operator|*
-argument_list|)
 argument_list|,
 name|compare_refs
 argument_list|)

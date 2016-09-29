@@ -1086,7 +1086,7 @@ operator|.
 name|sorted
 condition|)
 block|{
-name|qsort
+name|QSORT
 argument_list|(
 name|tip_table
 operator|.
@@ -1095,14 +1095,6 @@ argument_list|,
 name|tip_table
 operator|.
 name|nr
-argument_list|,
-sizeof|sizeof
-argument_list|(
-operator|*
-name|tip_table
-operator|.
-name|table
-argument_list|)
 argument_list|,
 name|tipcmp
 argument_list|)

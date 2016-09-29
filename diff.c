@@ -11464,7 +11464,7 @@ name|changed
 condition|)
 return|return;
 comment|/* Show all directories with more than x% of the changes */
-name|qsort
+name|QSORT
 argument_list|(
 name|dir
 operator|.
@@ -11473,16 +11473,6 @@ argument_list|,
 name|dir
 operator|.
 name|nr
-argument_list|,
-sizeof|sizeof
-argument_list|(
-name|dir
-operator|.
-name|files
-index|[
-literal|0
-index|]
-argument_list|)
 argument_list|,
 name|dirstat_compare
 argument_list|)
@@ -11702,7 +11692,7 @@ name|changed
 condition|)
 return|return;
 comment|/* Show all directories with more than x% of the changes */
-name|qsort
+name|QSORT
 argument_list|(
 name|dir
 operator|.
@@ -11711,16 +11701,6 @@ argument_list|,
 name|dir
 operator|.
 name|nr
-argument_list|,
-sizeof|sizeof
-argument_list|(
-name|dir
-operator|.
-name|files
-index|[
-literal|0
-index|]
-argument_list|)
 argument_list|,
 name|dirstat_compare
 argument_list|)
@@ -28584,7 +28564,7 @@ init|=
 operator|&
 name|diff_queued_diff
 decl_stmt|;
-name|qsort
+name|QSORT
 argument_list|(
 name|q
 operator|->
@@ -28593,16 +28573,6 @@ argument_list|,
 name|q
 operator|->
 name|nr
-argument_list|,
-sizeof|sizeof
-argument_list|(
-name|q
-operator|->
-name|queue
-index|[
-literal|0
-index|]
-argument_list|)
 argument_list|,
 name|diffnamecmp
 argument_list|)

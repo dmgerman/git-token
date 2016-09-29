@@ -1160,19 +1160,11 @@ expr_stmt|;
 block|}
 block|}
 comment|/* renumber them */
-name|qsort
+name|QSORT
 argument_list|(
 name|info
 argument_list|,
 name|num_pack
-argument_list|,
-sizeof|sizeof
-argument_list|(
-name|info
-index|[
-literal|0
-index|]
-argument_list|)
 argument_list|,
 name|compare_info
 argument_list|)

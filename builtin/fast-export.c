@@ -1938,7 +1938,7 @@ name|int
 name|i
 decl_stmt|;
 comment|/* 	 * Handle files below a directory first, in case they are all deleted 	 * and the directory changes to a file or symlink. 	 */
-name|qsort
+name|QSORT
 argument_list|(
 name|q
 operator|->
@@ -1947,16 +1947,6 @@ argument_list|,
 name|q
 operator|->
 name|nr
-argument_list|,
-sizeof|sizeof
-argument_list|(
-name|q
-operator|->
-name|queue
-index|[
-literal|0
-index|]
-argument_list|)
 argument_list|,
 name|depth_first
 argument_list|)

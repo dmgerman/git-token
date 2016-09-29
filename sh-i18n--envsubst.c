@@ -752,7 +752,7 @@ name|nitems
 operator|>
 literal|0
 condition|)
-name|qsort
+name|QSORT
 argument_list|(
 name|slp
 operator|->
@@ -761,16 +761,6 @@ argument_list|,
 name|slp
 operator|->
 name|nitems
-argument_list|,
-sizeof|sizeof
-argument_list|(
-name|slp
-operator|->
-name|item
-index|[
-literal|0
-index|]
-argument_list|)
 argument_list|,
 name|cmp_string
 argument_list|)
