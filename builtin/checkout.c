@@ -5152,7 +5152,9 @@ operator|&&
 operator|(
 name|check_filename
 argument_list|(
-name|NULL
+name|opts
+operator|->
+name|prefix
 argument_list|,
 name|arg
 argument_list|)
@@ -5397,7 +5399,9 @@ name|argc
 condition|)
 name|verify_non_filename
 argument_list|(
-name|NULL
+name|opts
+operator|->
+name|prefix
 argument_list|,
 name|arg
 argument_list|)
