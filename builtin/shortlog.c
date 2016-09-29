@@ -1882,7 +1882,7 @@ name|log
 operator|->
 name|sort_by_number
 condition|)
-name|qsort
+name|QSORT
 argument_list|(
 name|log
 operator|->
@@ -1895,12 +1895,6 @@ operator|->
 name|list
 operator|.
 name|nr
-argument_list|,
-sizeof|sizeof
-argument_list|(
-expr|struct
-name|string_list_item
-argument_list|)
 argument_list|,
 name|log
 operator|->
