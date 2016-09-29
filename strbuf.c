@@ -1170,7 +1170,7 @@ name|pos
 argument_list|,
 name|len
 argument_list|,
-name|NULL
+literal|""
 argument_list|,
 literal|0
 argument_list|)
