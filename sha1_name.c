@@ -452,6 +452,16 @@ name|next
 control|)
 block|{
 name|struct
+name|strbuf
+modifier|*
+name|buf
+init|=
+name|alt_scratch_buf
+argument_list|(
+name|alt
+argument_list|)
+decl_stmt|;
+name|struct
 name|dirent
 modifier|*
 name|de
@@ -460,14 +470,9 @@ name|DIR
 modifier|*
 name|dir
 decl_stmt|;
-comment|/* 		 * every alt_odb struct has 42 extra bytes after the base 		 * for exactly this purpose 		 */
-name|xsnprintf
+name|strbuf_addf
 argument_list|(
-name|alt
-operator|->
-name|name
-argument_list|,
-literal|42
+name|buf
 argument_list|,
 literal|"%.2s/"
 argument_list|,
@@ -478,9 +483,9 @@ name|dir
 operator|=
 name|opendir
 argument_list|(
-name|alt
+name|buf
 operator|->
-name|scratch
+name|buf
 argument_list|)
 expr_stmt|;
 if|if
