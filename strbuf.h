@@ -1301,6 +1301,23 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/**  * Normalize in-place the path contained in the strbuf. See  * normalize_path_copy() for details. If an error occurs, the contents of "sb"  * are left untouched, and -1 is returned.  */
+end_comment
+
+begin_function_decl
+specifier|extern
+name|int
+name|strbuf_normalize_path
+parameter_list|(
+name|struct
+name|strbuf
+modifier|*
+name|sb
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/**  * Strip whitespace from a buffer. The second parameter controls if  * comments are considered contents to be removed or not.  */
 end_comment
 
