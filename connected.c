@@ -337,6 +337,14 @@ literal|1
 expr_stmt|;
 name|rev_list
 operator|.
+name|env
+operator|=
+name|opt
+operator|->
+name|env
+expr_stmt|;
+name|rev_list
+operator|.
 name|in
 operator|=
 operator|-
