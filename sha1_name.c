@@ -480,7 +480,7 @@ name|opendir
 argument_list|(
 name|alt
 operator|->
-name|base
+name|scratch
 argument_list|)
 expr_stmt|;
 if|if

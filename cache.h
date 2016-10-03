@@ -8482,14 +8482,18 @@ name|char
 modifier|*
 name|name
 decl_stmt|;
-DECL|member|base
+DECL|member|scratch
 name|char
-name|base
+modifier|*
+name|scratch
+decl_stmt|;
+DECL|member|path
+name|char
+name|path
 index|[
 name|FLEX_ARRAY
 index|]
 decl_stmt|;
-comment|/* more */
 block|}
 modifier|*
 name|alt_odb_list
