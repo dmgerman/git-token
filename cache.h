@@ -8571,6 +8571,24 @@ function_decl|;
 end_function_decl
 
 begin_comment
+comment|/*  * Allocate a "struct alternate_object_database" but do _not_ actually  * add it to the list of alternates.  */
+end_comment
+
+begin_function_decl
+name|struct
+name|alternate_object_database
+modifier|*
+name|alloc_alt_odb
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|dir
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_comment
 comment|/*  * Add the directory to the on-disk alternates file; the new entry will also  * take effect in the current process.  */
 end_comment
 
