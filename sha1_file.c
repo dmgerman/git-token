@@ -1224,7 +1224,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|strcmp
+name|fspathcmp
 argument_list|(
 name|path
 operator|->
