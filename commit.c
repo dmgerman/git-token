@@ -5188,18 +5188,12 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/* Now collect the result */
-name|memcpy
+name|COPY_ARRAY
 argument_list|(
 name|work
 argument_list|,
 name|array
 argument_list|,
-sizeof|sizeof
-argument_list|(
-operator|*
-name|array
-argument_list|)
-operator|*
 name|cnt
 argument_list|)
 expr_stmt|;

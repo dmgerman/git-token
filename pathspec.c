@@ -2380,7 +2380,7 @@ operator|->
 name|nr
 argument_list|)
 expr_stmt|;
-name|memcpy
+name|COPY_ARRAY
 argument_list|(
 name|dst
 operator|->
@@ -2390,12 +2390,6 @@ name|src
 operator|->
 name|items
 argument_list|,
-sizeof|sizeof
-argument_list|(
-expr|struct
-name|pathspec_item
-argument_list|)
-operator|*
 name|dst
 operator|->
 name|nr
