@@ -2948,10 +2948,18 @@ name|INIT_DB_QUIET
 value|0x0001
 end_define
 
+begin_define
+DECL|macro|INIT_DB_EXIST_OK
+define|#
+directive|define
+name|INIT_DB_EXIST_OK
+value|0x0002
+end_define
+
 begin_function_decl
 specifier|extern
 name|int
-name|set_git_dir_init
+name|init_db
 parameter_list|(
 specifier|const
 name|char
@@ -2963,16 +2971,6 @@ name|char
 modifier|*
 name|real_git_dir
 parameter_list|,
-name|int
-parameter_list|)
-function_decl|;
-end_function_decl
-
-begin_function_decl
-specifier|extern
-name|int
-name|init_db
-parameter_list|(
 specifier|const
 name|char
 modifier|*
