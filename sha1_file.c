@@ -1637,29 +1637,6 @@ operator|==
 literal|'#'
 condition|)
 continue|continue;
-if|if
-condition|(
-operator|!
-name|is_absolute_path
-argument_list|(
-name|entry
-argument_list|)
-operator|&&
-name|depth
-condition|)
-block|{
-name|error
-argument_list|(
-literal|"%s: ignoring relative alternate object store %s"
-argument_list|,
-name|relative_base
-argument_list|,
-name|entry
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
 name|link_alt_odb_entry
 argument_list|(
 name|entry
@@ -1673,7 +1650,6 @@ operator|.
 name|buf
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|string_list_clear
 argument_list|(
