@@ -2150,6 +2150,40 @@ expr_stmt|;
 block|}
 end_function
 
+begin_function
+DECL|function|add_to_alternates_memory
+name|void
+name|add_to_alternates_memory
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|reference
+parameter_list|)
+block|{
+comment|/* 	 * Make sure alternates are initialized, or else our entry may be 	 * overwritten when they are. 	 */
+name|prepare_alt_odb
+argument_list|()
+expr_stmt|;
+name|link_alt_odb_entries
+argument_list|(
+name|reference
+argument_list|,
+name|strlen
+argument_list|(
+name|reference
+argument_list|)
+argument_list|,
+literal|'\n'
+argument_list|,
+name|NULL
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
 begin_comment
 comment|/*  * Compute the exact path an alternate is at and returns it. In case of  * error NULL is returned and the human readable error is added to `err`  * `path` may be relative and should point to $GITDIR.  * `err` must not be null.  */
 end_comment
