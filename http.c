@@ -2045,6 +2045,12 @@ operator|!
 name|http_auth
 operator|.
 name|username
+operator|||
+operator|!
+operator|*
+name|http_auth
+operator|.
+name|username
 condition|)
 block|{
 if|if
