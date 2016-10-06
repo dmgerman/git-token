@@ -7111,6 +7111,15 @@ name|GET_SHA1_ONLY_TO_DIE
 value|04000
 end_define
 
+begin_define
+DECL|macro|GET_SHA1_DISAMBIGUATORS
+define|#
+directive|define
+name|GET_SHA1_DISAMBIGUATORS
+define|\
+value|(GET_SHA1_COMMIT | GET_SHA1_COMMITTISH | \ 	GET_SHA1_TREE | GET_SHA1_TREEISH | \ 	GET_SHA1_BLOB)
+end_define
+
 begin_function_decl
 specifier|extern
 name|int
@@ -7313,6 +7322,24 @@ name|each_abbrev_fn
 parameter_list|,
 name|void
 modifier|*
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|set_disambiguate_hint_config
+parameter_list|(
+specifier|const
+name|char
+modifier|*
+name|var
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|value
 parameter_list|)
 function_decl|;
 end_function_decl

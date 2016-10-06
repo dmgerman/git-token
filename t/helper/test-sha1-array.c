@@ -14,7 +14,7 @@ end_include
 begin_function
 DECL|function|print_sha1
 specifier|static
-name|void
+name|int
 name|print_sha1
 parameter_list|(
 specifier|const
@@ -38,6 +38,9 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
+return|return
+literal|0
+return|;
 block|}
 end_function
 
