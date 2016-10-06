@@ -5985,6 +5985,7 @@ goto|goto
 name|out
 goto|;
 block|}
+comment|/* 		 * It doesn't look like a refname; fall through to just 		 * treating it like a non-symlink, and reading whatever it 		 * points to. 		 */
 block|}
 comment|/* Is it a directory? */
 if|if
@@ -6048,6 +6049,14 @@ condition|(
 name|errno
 operator|==
 name|ENOENT
+operator|&&
+operator|!
+name|S_ISLNK
+argument_list|(
+name|st
+operator|.
+name|st_mode
+argument_list|)
 condition|)
 comment|/* inconsistent with lstat; retry */
 goto|goto
