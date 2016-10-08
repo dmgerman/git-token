@@ -1095,11 +1095,6 @@ return|return
 operator|-
 literal|1
 return|;
-if|if
-condition|(
-operator|*
-name|opt_value
-condition|)
 name|free
 argument_list|(
 operator|*
