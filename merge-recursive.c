@@ -1131,17 +1131,13 @@ argument_list|)
 expr_stmt|;
 else|else
 block|{
-name|strbuf_addf
+name|strbuf_add_unique_abbrev
 argument_list|(
 operator|&
 name|o
 operator|->
 name|obuf
 argument_list|,
-literal|"%s "
-argument_list|,
-name|find_unique_abbrev
-argument_list|(
 name|commit
 operator|->
 name|object
@@ -1152,6 +1148,15 @@ name|hash
 argument_list|,
 name|DEFAULT_ABBREV
 argument_list|)
+expr_stmt|;
+name|strbuf_addch
+argument_list|(
+operator|&
+name|o
+operator|->
+name|obuf
+argument_list|,
+literal|' '
 argument_list|)
 expr_stmt|;
 if|if
