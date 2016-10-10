@@ -2266,7 +2266,7 @@ argument_list|(
 literal|"BUG: PATHSPEC_MAXDEPTH_VALID and PATHSPEC_KEEP_ORDER are incompatible"
 argument_list|)
 expr_stmt|;
-name|qsort
+name|QSORT
 argument_list|(
 name|pathspec
 operator|->
@@ -2275,12 +2275,6 @@ argument_list|,
 name|pathspec
 operator|->
 name|nr
-argument_list|,
-sizeof|sizeof
-argument_list|(
-expr|struct
-name|pathspec_item
-argument_list|)
 argument_list|,
 name|pathspec_item_cmp
 argument_list|)

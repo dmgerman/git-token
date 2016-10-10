@@ -2808,19 +2808,13 @@ name|progress
 argument_list|)
 expr_stmt|;
 comment|/* cost matrix sorted by most to least similar pair */
-name|qsort
+name|QSORT
 argument_list|(
 name|mx
 argument_list|,
 name|dst_cnt
 operator|*
 name|NUM_CANDIDATE_PER_DST
-argument_list|,
-sizeof|sizeof
-argument_list|(
-operator|*
-name|mx
-argument_list|)
 argument_list|,
 name|score_compare
 argument_list|)

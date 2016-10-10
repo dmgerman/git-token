@@ -685,7 +685,7 @@ init|=
 literal|0
 decl_stmt|;
 comment|/* output cursor */
-name|qsort
+name|QSORT
 argument_list|(
 name|rs
 operator|->
@@ -694,12 +694,6 @@ argument_list|,
 name|rs
 operator|->
 name|nr
-argument_list|,
-sizeof|sizeof
-argument_list|(
-expr|struct
-name|range
-argument_list|)
 argument_list|,
 name|range_cmp
 argument_list|)

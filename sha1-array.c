@@ -115,7 +115,7 @@ modifier|*
 name|array
 parameter_list|)
 block|{
-name|qsort
+name|QSORT
 argument_list|(
 name|array
 operator|->
@@ -124,14 +124,6 @@ argument_list|,
 name|array
 operator|->
 name|nr
-argument_list|,
-sizeof|sizeof
-argument_list|(
-operator|*
-name|array
-operator|->
-name|sha1
-argument_list|)
 argument_list|,
 name|void_hashcmp
 argument_list|)

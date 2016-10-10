@@ -1894,7 +1894,7 @@ operator|->
 name|nr
 condition|)
 return|return;
-name|qsort
+name|QSORT
 argument_list|(
 name|dir
 operator|->
@@ -1903,14 +1903,6 @@ argument_list|,
 name|dir
 operator|->
 name|nr
-argument_list|,
-sizeof|sizeof
-argument_list|(
-operator|*
-name|dir
-operator|->
-name|entries
-argument_list|)
 argument_list|,
 name|ref_entry_cmp
 argument_list|)
