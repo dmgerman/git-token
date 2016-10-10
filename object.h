@@ -99,7 +99,7 @@ value|3
 end_define
 
 begin_comment
-comment|/*  * object flag allocation:  * revision.h:      0---------10                                26  * fetch-pack.c:    0---4  * walker.c:        0-2  * upload-pack.c:               11----------------19  * builtin/blame.c:               12-13  * bisect.c:                               16  * bundle.c:                               16  * http-push.c:                            16-----19  * commit.c:                               16-----19  * sha1_name.c:                                     20  */
+comment|/*  * object flag allocation:  * revision.h:      0---------10                                26  * fetch-pack.c:    0---4  * walker.c:        0-2  * upload-pack.c:       4       11----------------19  * builtin/blame.c:               12-13  * bisect.c:                               16  * bundle.c:                               16  * http-push.c:                            16-----19  * commit.c:                               16-----19  * sha1_name.c:                                     20  */
 end_comment
 
 begin_define

@@ -152,6 +152,22 @@ decl_stmt|;
 end_decl_stmt
 
 begin_decl_stmt
+DECL|variable|deepen_since_ok
+specifier|static
+name|int
+name|deepen_since_ok
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
+DECL|variable|deepen_not_ok
+specifier|static
+name|int
+name|deepen_not_ok
+decl_stmt|;
+end_decl_stmt
+
+begin_decl_stmt
 DECL|variable|fetch_fsck_objects
 specifier|static
 name|int
@@ -323,6 +339,80 @@ name|int
 name|allow_unadvertised_object_request
 decl_stmt|;
 end_decl_stmt
+
+begin_macro
+name|__attribute__
+argument_list|(
+argument|(format (printf,
+literal|2
+argument|,
+literal|3
+argument|))
+argument_list|)
+end_macro
+
+begin_function
+DECL|function|print_verbose
+specifier|static
+specifier|inline
+name|void
+name|print_verbose
+parameter_list|(
+specifier|const
+name|struct
+name|fetch_pack_args
+modifier|*
+name|args
+parameter_list|,
+specifier|const
+name|char
+modifier|*
+name|fmt
+parameter_list|,
+modifier|...
+parameter_list|)
+block|{
+name|va_list
+name|params
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|args
+operator|->
+name|verbose
+condition|)
+return|return;
+name|va_start
+argument_list|(
+name|params
+argument_list|,
+name|fmt
+argument_list|)
+expr_stmt|;
+name|vfprintf
+argument_list|(
+name|stderr
+argument_list|,
+name|fmt
+argument_list|,
+name|params
+argument_list|)
+expr_stmt|;
+name|va_end
+argument_list|(
+name|params
+argument_list|)
+expr_stmt|;
+name|fputc
+argument_list|(
+literal|'\n'
+argument_list|,
+name|stderr
+argument_list|)
+expr_stmt|;
+block|}
+end_function
 
 begin_function
 DECL|function|rev_list_push
@@ -989,9 +1079,7 @@ name|stateless_rpc
 operator|&&
 name|args
 operator|->
-name|depth
-operator|>
-literal|0
+name|deepen
 condition|)
 block|{
 comment|/* If we sent a depth we will get back "duplicate" 		 * shallow and unshallow commands every time there 		 * is a block of have lines exchanged. 		 */
@@ -1035,7 +1123,10 @@ condition|)
 continue|continue;
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"git fetch-pack: expected shallow list"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1086,7 +1177,10 @@ name|len
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"git fetch-pack: expected ACK/NAK, got EOF"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -1188,7 +1282,10 @@ block|}
 block|}
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"git fetch_pack: expected ACK/NAK, got '%s'"
+argument_list|)
 argument_list|,
 name|line
 argument_list|)
@@ -1475,7 +1572,10 @@ literal|1
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"--stateless-rpc requires multi_ack_detailed"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -1662,6 +1762,20 @@ if|if
 condition|(
 name|args
 operator|->
+name|deepen_relative
+condition|)
+name|strbuf_addstr
+argument_list|(
+operator|&
+name|c
+argument_list|,
+literal|" deepen-relative"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|args
+operator|->
 name|use_thin_pack
 condition|)
 name|strbuf_addstr
@@ -1710,6 +1824,30 @@ operator|&
 name|c
 argument_list|,
 literal|" ofs-delta"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|deepen_since_ok
+condition|)
+name|strbuf_addstr
+argument_list|(
+operator|&
+name|c
+argument_list|,
+literal|" deepen-since"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|deepen_not_ok
+condition|)
+name|strbuf_addstr
+argument_list|(
+operator|&
+name|c
+argument_list|,
+literal|" deepen-not"
 argument_list|)
 expr_stmt|;
 if|if
@@ -1822,6 +1960,90 @@ operator|->
 name|depth
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|args
+operator|->
+name|deepen_since
+condition|)
+block|{
+name|unsigned
+name|long
+name|max_age
+init|=
+name|approxidate
+argument_list|(
+name|args
+operator|->
+name|deepen_since
+argument_list|)
+decl_stmt|;
+name|packet_buf_write
+argument_list|(
+operator|&
+name|req_buf
+argument_list|,
+literal|"deepen-since %lu"
+argument_list|,
+name|max_age
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|args
+operator|->
+name|deepen_not
+condition|)
+block|{
+name|int
+name|i
+decl_stmt|;
+for|for
+control|(
+name|i
+operator|=
+literal|0
+init|;
+name|i
+operator|<
+name|args
+operator|->
+name|deepen_not
+operator|->
+name|nr
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|struct
+name|string_list_item
+modifier|*
+name|s
+init|=
+name|args
+operator|->
+name|deepen_not
+operator|->
+name|items
+operator|+
+name|i
+decl_stmt|;
+name|packet_buf_write
+argument_list|(
+operator|&
+name|req_buf
+argument_list|,
+literal|"deepen-not %s"
+argument_list|,
+name|s
+operator|->
+name|string
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 name|packet_buf_flush
 argument_list|(
 operator|&
@@ -1838,9 +2060,7 @@ if|if
 condition|(
 name|args
 operator|->
-name|depth
-operator|>
-literal|0
+name|deepen
 condition|)
 block|{
 name|char
@@ -1913,7 +2133,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"invalid shallow line: %s"
+argument_list|)
 argument_list|,
 name|line
 argument_list|)
@@ -1949,7 +2172,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"invalid unshallow line: %s"
+argument_list|)
 argument_list|,
 name|line
 argument_list|)
@@ -1964,7 +2190,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"object not found: %s"
+argument_list|)
 argument_list|,
 name|line
 argument_list|)
@@ -1980,7 +2209,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"error in object: %s"
+argument_list|)
 argument_list|,
 name|line
 argument_list|)
@@ -1994,7 +2226,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"no shallow found: %s"
+argument_list|)
 argument_list|,
 name|line
 argument_list|)
@@ -2003,7 +2238,10 @@ continue|continue;
 block|}
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"expected shallow/unshallow, got %s"
+argument_list|)
 argument_list|,
 name|line
 argument_list|)
@@ -2085,17 +2323,11 @@ name|sha1
 argument_list|)
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|args
-operator|->
-name|verbose
-condition|)
-name|fprintf
+name|print_verbose
 argument_list|(
-name|stderr
+name|args
 argument_list|,
-literal|"have %s\n"
+literal|"have %s"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -2195,17 +2427,18 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|args
-operator|->
-name|verbose
-operator|&&
 name|ack
 condition|)
-name|fprintf
+name|print_verbose
 argument_list|(
-name|stderr
+name|args
 argument_list|,
-literal|"got ack %d %s\n"
+name|_
+argument_list|(
+literal|"got %s %d %s"
+argument_list|)
+argument_list|,
+literal|"ack"
 argument_list|,
 name|ack
 argument_list|,
@@ -2265,7 +2498,10 @@ name|commit
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"invalid commit %s"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -2400,17 +2636,14 @@ operator|<
 name|in_vain
 condition|)
 block|{
-if|if
-condition|(
-name|args
-operator|->
-name|verbose
-condition|)
-name|fprintf
+name|print_verbose
 argument_list|(
-name|stderr
+name|args
 argument_list|,
-literal|"giving up\n"
+name|_
+argument_list|(
+literal|"giving up"
+argument_list|)
 argument_list|)
 expr_stmt|;
 break|break;
@@ -2451,17 +2684,14 @@ name|req_buf
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|args
-operator|->
-name|verbose
-condition|)
-name|fprintf
+name|print_verbose
 argument_list|(
-name|stderr
+name|args
 argument_list|,
-literal|"done\n"
+name|_
+argument_list|(
+literal|"done"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -2528,17 +2758,16 @@ condition|(
 name|ack
 condition|)
 block|{
-if|if
-condition|(
-name|args
-operator|->
-name|verbose
-condition|)
-name|fprintf
+name|print_verbose
 argument_list|(
-name|stderr
+name|args
 argument_list|,
-literal|"got ack (%d) %s\n"
+name|_
+argument_list|(
+literal|"got %s (%d) %s"
+argument_list|)
+argument_list|,
+literal|"ack"
 argument_list|,
 name|ack
 argument_list|,
@@ -2789,17 +3018,14 @@ operator|->
 name|date
 condition|)
 block|{
-if|if
-condition|(
-name|args
-operator|->
-name|verbose
-condition|)
-name|fprintf
+name|print_verbose
 argument_list|(
-name|stderr
+name|args
 argument_list|,
-literal|"Marking %s as complete\n"
+name|_
+argument_list|(
+literal|"Marking %s as complete"
+argument_list|)
 argument_list|,
 name|oid_to_hex
 argument_list|(
@@ -3006,7 +3232,7 @@ operator|(
 operator|!
 name|args
 operator|->
-name|depth
+name|deepen
 operator|||
 operator|!
 name|starts_with
@@ -3341,7 +3567,7 @@ condition|(
 operator|!
 name|args
 operator|->
-name|depth
+name|deepen
 condition|)
 block|{
 name|for_each_ref
@@ -3551,19 +3777,11 @@ name|retval
 operator|=
 literal|0
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|args
-operator|->
-name|verbose
-condition|)
-continue|continue;
-name|fprintf
+name|print_verbose
 argument_list|(
-name|stderr
+name|args
 argument_list|,
-literal|"want %s (%s)\n"
+literal|"want %s (%s)"
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -3577,19 +3795,14 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
-if|if
-condition|(
-operator|!
-name|args
-operator|->
-name|verbose
-condition|)
-continue|continue;
-name|fprintf
+name|print_verbose
 argument_list|(
-name|stderr
+name|args
 argument_list|,
-literal|"already have %s (%s)\n"
+name|_
+argument_list|(
+literal|"already have %s (%s)"
+argument_list|)
 argument_list|,
 name|sha1_to_hex
 argument_list|(
@@ -3770,8 +3983,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
-literal|"fetch-pack: unable to fork off sideband"
-literal|" demultiplexer"
+name|_
+argument_list|(
+literal|"fetch-pack: unable to fork off sideband demultiplexer"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3809,7 +4024,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"protocol error: bad pack header"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|pass_header
@@ -4142,7 +4360,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"fetch-pack: unable to fork off %s"
+argument_list|)
 argument_list|,
 name|cmd_name
 argument_list|)
@@ -4224,7 +4445,10 @@ expr_stmt|;
 else|else
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"%s failed"
+argument_list|)
 argument_list|,
 name|cmd_name
 argument_list|)
@@ -4241,7 +4465,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"error in sideband demultiplexer"
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -4426,8 +4653,33 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"Server does not support shallow clients"
 argument_list|)
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|args
+operator|->
+name|depth
+operator|>
+literal|0
+operator|||
+name|args
+operator|->
+name|deepen_since
+operator|||
+name|args
+operator|->
+name|deepen_not
+condition|)
+name|args
+operator|->
+name|deepen
+operator|=
+literal|1
 expr_stmt|;
 if|if
 condition|(
@@ -4437,17 +4689,14 @@ literal|"multi_ack_detailed"
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|args
-operator|->
-name|verbose
-condition|)
-name|fprintf
+name|print_verbose
 argument_list|(
-name|stderr
+name|args
 argument_list|,
-literal|"Server supports multi_ack_detailed\n"
+name|_
+argument_list|(
+literal|"Server supports multi_ack_detailed"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|multi_ack
@@ -4462,17 +4711,14 @@ literal|"no-done"
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|args
-operator|->
-name|verbose
-condition|)
-name|fprintf
+name|print_verbose
 argument_list|(
-name|stderr
+name|args
 argument_list|,
-literal|"Server supports no-done\n"
+name|_
+argument_list|(
+literal|"Server supports no-done"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -4496,17 +4742,14 @@ literal|"multi_ack"
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|args
-operator|->
-name|verbose
-condition|)
-name|fprintf
+name|print_verbose
 argument_list|(
-name|stderr
+name|args
 argument_list|,
-literal|"Server supports multi_ack\n"
+name|_
+argument_list|(
+literal|"Server supports multi_ack"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|multi_ack
@@ -4522,17 +4765,14 @@ literal|"side-band-64k"
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|args
-operator|->
-name|verbose
-condition|)
-name|fprintf
+name|print_verbose
 argument_list|(
-name|stderr
+name|args
 argument_list|,
-literal|"Server supports side-band-64k\n"
+name|_
+argument_list|(
+literal|"Server supports side-band-64k"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|use_sideband
@@ -4549,17 +4789,14 @@ literal|"side-band"
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|args
-operator|->
-name|verbose
-condition|)
-name|fprintf
+name|print_verbose
 argument_list|(
-name|stderr
+name|args
 argument_list|,
-literal|"Server supports side-band\n"
+name|_
+argument_list|(
+literal|"Server supports side-band"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|use_sideband
@@ -4575,17 +4812,14 @@ literal|"allow-tip-sha1-in-want"
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|args
-operator|->
-name|verbose
-condition|)
-name|fprintf
+name|print_verbose
 argument_list|(
-name|stderr
+name|args
 argument_list|,
-literal|"Server supports allow-tip-sha1-in-want\n"
+name|_
+argument_list|(
+literal|"Server supports allow-tip-sha1-in-want"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|allow_unadvertised_object_request
@@ -4601,17 +4835,14 @@ literal|"allow-reachable-sha1-in-want"
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-name|args
-operator|->
-name|verbose
-condition|)
-name|fprintf
+name|print_verbose
 argument_list|(
-name|stderr
+name|args
 argument_list|,
-literal|"Server supports allow-reachable-sha1-in-want\n"
+name|_
+argument_list|(
+literal|"Server supports allow-reachable-sha1-in-want"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|allow_unadvertised_object_request
@@ -4668,21 +4899,16 @@ argument_list|(
 literal|"ofs-delta"
 argument_list|)
 condition|)
-block|{
-if|if
-condition|(
-name|args
-operator|->
-name|verbose
-condition|)
-name|fprintf
+name|print_verbose
 argument_list|(
-name|stderr
+name|args
 argument_list|,
-literal|"Server supports ofs-delta\n"
+name|_
+argument_list|(
+literal|"Server supports ofs-delta"
+argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 else|else
 name|prefer_ofs_delta
 operator|=
@@ -4709,17 +4935,16 @@ literal|1
 expr_stmt|;
 if|if
 condition|(
-name|args
-operator|->
-name|verbose
-operator|&&
 name|agent_len
 condition|)
-name|fprintf
+name|print_verbose
 argument_list|(
-name|stderr
+name|args
 argument_list|,
-literal|"Server version is %.*s\n"
+name|_
+argument_list|(
+literal|"Server version is %.*s"
+argument_list|)
 argument_list|,
 name|agent_len
 argument_list|,
@@ -4727,6 +4952,78 @@ name|agent_feature
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|server_supports
+argument_list|(
+literal|"deepen-since"
+argument_list|)
+condition|)
+name|deepen_since_ok
+operator|=
+literal|1
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|args
+operator|->
+name|deepen_since
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"Server does not support --shallow-since"
+argument_list|)
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|server_supports
+argument_list|(
+literal|"deepen-not"
+argument_list|)
+condition|)
+name|deepen_not_ok
+operator|=
+literal|1
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|args
+operator|->
+name|deepen_not
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"Server does not support --shallow-exclude"
+argument_list|)
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|server_supports
+argument_list|(
+literal|"deepen-relative"
+argument_list|)
+operator|&&
+name|args
+operator|->
+name|deepen_relative
+condition|)
+name|die
+argument_list|(
+name|_
+argument_list|(
+literal|"Server does not support --deepen"
+argument_list|)
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|everything_local
@@ -4779,7 +5076,10 @@ condition|)
 comment|/* When cloning, it is not unusual to have 			 * no common commit. 			 */
 name|warning
 argument_list|(
+name|_
+argument_list|(
 literal|"no common commits"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -4800,9 +5100,7 @@ if|if
 condition|(
 name|args
 operator|->
-name|depth
-operator|>
-literal|0
+name|deepen
 condition|)
 name|setup_alternate_shallow
 argument_list|(
@@ -4853,7 +5151,10 @@ argument_list|)
 condition|)
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"git fetch-pack: fetch failed."
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|all_done
@@ -5149,9 +5450,7 @@ if|if
 condition|(
 name|args
 operator|->
-name|depth
-operator|>
-literal|0
+name|deepen
 operator|&&
 name|alternate_shallow_file
 condition|)
@@ -5691,7 +5990,10 @@ argument_list|)
 expr_stmt|;
 name|die
 argument_list|(
+name|_
+argument_list|(
 literal|"no matching remote head"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
