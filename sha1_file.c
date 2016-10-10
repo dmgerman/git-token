@@ -8857,24 +8857,14 @@ block|{
 name|struct
 name|object_info
 name|oi
+init|=
+name|OBJECT_INFO_INIT
 decl_stmt|;
 name|oi
 operator|.
 name|sizep
 operator|=
 name|sizep
-expr_stmt|;
-name|oi
-operator|.
-name|typename
-operator|=
-name|NULL
-expr_stmt|;
-name|oi
-operator|.
-name|typep
-operator|=
-name|NULL
 expr_stmt|;
 return|return
 name|parse_sha1_header_extended
@@ -10037,7 +10027,6 @@ end_function
 
 begin_function
 DECL|function|packed_object_info
-specifier|static
 name|int
 name|packed_object_info
 parameter_list|(
@@ -14043,9 +14032,7 @@ name|struct
 name|object_info
 name|oi
 init|=
-block|{
-name|NULL
-block|}
+name|OBJECT_INFO_INIT
 decl_stmt|;
 name|oi
 operator|.

@@ -9530,6 +9530,18 @@ block|}
 struct|;
 end_struct
 
+begin_comment
+comment|/*  * Initializer for a "struct object_info" that wants no items. You may  * also memset() the memory to all-zeroes.  */
+end_comment
+
+begin_define
+DECL|macro|OBJECT_INFO_INIT
+define|#
+directive|define
+name|OBJECT_INFO_INIT
+value|{NULL}
+end_define
+
 begin_function_decl
 specifier|extern
 name|int
@@ -9546,6 +9558,26 @@ modifier|*
 parameter_list|,
 name|unsigned
 name|flags
+parameter_list|)
+function_decl|;
+end_function_decl
+
+begin_function_decl
+specifier|extern
+name|int
+name|packed_object_info
+parameter_list|(
+name|struct
+name|packed_git
+modifier|*
+name|pack
+parameter_list|,
+name|off_t
+name|offset
+parameter_list|,
+name|struct
+name|object_info
+modifier|*
 parameter_list|)
 function_decl|;
 end_function_decl
