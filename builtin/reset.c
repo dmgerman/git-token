@@ -105,7 +105,7 @@ argument_list|)
 block|,
 name|N_
 argument_list|(
-literal|"git reset [-q]<tree-ish> [--]<paths>..."
+literal|"git reset [-q] [<tree-ish>] [--]<paths>..."
 argument_list|)
 block|,
 name|N_
