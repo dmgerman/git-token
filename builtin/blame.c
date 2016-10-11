@@ -10566,7 +10566,7 @@ decl_stmt|;
 name|int
 name|auto_abbrev
 init|=
-name|default_abbrev
+name|DEFAULT_ABBREV
 decl_stmt|;
 for|for
 control|(
