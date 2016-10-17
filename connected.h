@@ -81,6 +81,14 @@ DECL|member|progress
 name|int
 name|progress
 decl_stmt|;
+comment|/* 	 * Insert these variables into the environment of the child process. 	 */
+DECL|member|env
+specifier|const
+name|char
+modifier|*
+modifier|*
+name|env
+decl_stmt|;
 block|}
 struct|;
 end_struct
