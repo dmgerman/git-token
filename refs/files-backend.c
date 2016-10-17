@@ -5336,6 +5336,11 @@ decl_stmt|;
 name|int
 name|save_errno
 decl_stmt|;
+name|int
+name|remaining_retries
+init|=
+literal|3
+decl_stmt|;
 operator|*
 name|type
 operator|=
@@ -5391,7 +5396,17 @@ name|buf
 expr_stmt|;
 name|stat_ref
 label|:
-comment|/* 	 * We might have to loop back here to avoid a race 	 * condition: first we lstat() the file, then we try 	 * to read it as a link or as a file.  But if somebody 	 * changes the type of the file (file<-> directory 	 *<-> symlink) between the lstat() and reading, then 	 * we don't want to report that as an error but rather 	 * try again starting with the lstat(). 	 */
+comment|/* 	 * We might have to loop back here to avoid a race 	 * condition: first we lstat() the file, then we try 	 * to read it as a link or as a file.  But if somebody 	 * changes the type of the file (file<-> directory 	 *<-> symlink) between the lstat() and reading, then 	 * we don't want to report that as an error but rather 	 * try again starting with the lstat(). 	 * 	 * We'll keep a count of the retries, though, just to avoid 	 * any confusing situation sending us into an infinite loop. 	 */
+if|if
+condition|(
+name|remaining_retries
+operator|--
+operator|<=
+literal|0
+condition|)
+goto|goto
+name|out
+goto|;
 if|if
 condition|(
 name|lstat
@@ -5538,6 +5553,7 @@ goto|goto
 name|out
 goto|;
 block|}
+comment|/* 		 * It doesn't look like a refname; fall through to just 		 * treating it like a non-symlink, and reading whatever it 		 * points to. 		 */
 block|}
 comment|/* Is it a directory? */
 if|if
@@ -5603,6 +5619,14 @@ condition|(
 name|errno
 operator|==
 name|ENOENT
+operator|&&
+operator|!
+name|S_ISLNK
+argument_list|(
+name|st
+operator|.
+name|st_mode
+argument_list|)
 condition|)
 comment|/* inconsistent with lstat; retry */
 goto|goto
